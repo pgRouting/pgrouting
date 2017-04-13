@@ -18,35 +18,18 @@ add_subdirectory(sigs)
 
 #-------------------
 # From the parent get the subdirectories that have the SQL files
+#
+# configuring the PgRouting_SQL_FILES variable
 #-------------------
 
 set(PgRouting_SQL_DIRECTORIES
     ${PgRouting_SOURCE_NAMES}
     ${PgRouting_SQL_DIRECTORIES})
 
-#set(PgRouting_SQL_FILES "")
 
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory(${subdir})
-    list(APPEND SCRIPT_DEPENDENCIES ${subdir}/${subdir}_sql)
 endforeach()
-
-if (PgRouting_DEBUG)
-    message(STATUS "SCRIPT_DEPENDENCIES=")
-    foreach (d ${SCRIPT_DEPENDENCIES})
-        message(STATUS ${d})
-    endforeach()
-endif()
-
-
-#-------------------
-# Target current_script
-#
-# 
-#-------------------
-
-set(file_out "pgrouting--${PGROUTING_VERSION}.sql")
-
 
 if (PgRouting_DEBUG)
     message(STATUS "PgRouting_SQL_FILES=")
@@ -55,12 +38,13 @@ if (PgRouting_DEBUG)
     endforeach()
 endif()
 
-file(GLOB common_contents  ${CMAKE_CURRENT_BINARY_DIR}/common/*.sql)
-foreach (f ${common_contents})
-    message(STATUS "file in common ${f}")
-endforeach()
+
 
 #-------------------
+# TARGET: PgRouting_SQL_FILE
+#
+# Builds:  pgrouting--${PGROUTING_VERSION}.sql
+# 
 # add the scripts subdirectory
 # the variable ${PgRouting_SQL_FILES} should already be set at this point
 #
@@ -68,22 +52,23 @@ endforeach()
 # has the perl for building the update files
 #-------------------
 
+# subdirectory that has the perl files
 add_subdirectory(scripts)
 
+set(PgRouting_CURRENT_SQL_FILE "pgrouting--${PGROUTING_VERSION}.sql")
+
+
 add_custom_command(
-    OUTPUT ${file_out}
+    OUTPUT ${PgRouting_CURRENT_SQL_FILE}
     COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-file.pl '${PgRouting_SQL_FILES}'
     DEPENDS
-    ${SCRIPT_DEPENDENCIES}
     scripts/build-extension-file.pl
-    build_update_script
     ${PgRouting_SQL_FILES}
-    COMMENT "dependencies:  ${PgRouting_SQL_FILES}"
     )
 
-add_custom_target(current_script ALL
+add_custom_target(PgRouting_SQL_FILE ALL
     DEPENDS
-    ${file_out}
+    ${PgRouting_CURRENT_SQL_FILE}
     )
 
 #-------------------
@@ -91,8 +76,6 @@ add_custom_target(current_script ALL
 #
 #
 #-------------------
-
-message(STATUS "THIS CMAKE_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}")
 
 if (PgRouting_DEBUG)
     message(STATUS "OLD_SIGNATURES=")
@@ -103,17 +86,14 @@ endif()
 
 foreach (old_s ${OLD_SIGNATURES})
     SET (UPDATE_FILES ${UPDATE_FILES} pgrouting--${old_s}--${PGROUTING_VERSION}.sql)
-    SET (PgRouting_SQL_FILES ${PgRouting_SQL_FILES} "${CMAKE_BINARY_DIR}/sql-scripts/pgrouting--${old_s}--${PGROUTING_VERSION}.sql")
+    SET (PgRouting_SQL_FILES_TO_INSTALL ${PgRouting_SQL_FILES_TO_INSTALL} "${CMAKE_BINARY_DIR}/sql-scripts/pgrouting--${old_s}--${PGROUTING_VERSION}.sql")
     add_custom_command(
         OUTPUT pgrouting--${old_s}--${PGROUTING_VERSION}.sql
         COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl ${old_s} ${PgRouting_DEBUG}
         DEPENDS 
-        ${SCRIPT_DEPENDENCIES}
         ./scripts/build-extension-update-files1.pl
-        build_update_script
-        ${file_out}
-        signatures_sigs
-        current_script
+        ${PgRouting_CURRENT_SQL_FILE}
+        PgRouting_SQL_FILE
         ./sigs/pgrouting--${old_s}.sig
         )
 endforeach()
@@ -123,5 +103,4 @@ add_custom_target(update_files ALL
     ${UPDATE_FILES}
     )
 
-SET(PgRouting_SQL_FILES  ${PgRouting_SQL_FILES} ${CMAKE_BINARY_DIR}/sql-scripts/${file_out} PARENT_SCOPE)
-
+SET(PgRouting_SQL_FILES_TO_INSTALL  ${PgRouting_SQL_FILES_TO_INSTALL} ${CMAKE_BINARY_DIR}/sql-scripts/${PgRouting_CURRENT_SQL_FILE} PARENT_SCOPE)

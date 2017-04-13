@@ -20,6 +20,4 @@ foreach (f ${OLD_SIGNATURES})
 endforeach()
 configure_file(pgrouting--${PGROUTING_VERSION}.sig pgrouting--${PGROUTING_VERSION}.sig COPYONLY)
 
-add_custom_target(signatures_sigs DEPENDS ${SIGNATURE_FILES} pgrouting--${PGROUTING_VERSION}.sig)
-
 set(OLD_SIGNATURES ${OLD_SIGNATURES} PARENT_SCOPE)

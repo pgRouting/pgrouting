@@ -29,21 +29,13 @@ sub Usage {
 my $version = "@PGROUTING_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
 my $PgRouting_SQL_FILES =  "@PgRouting_SQL_FILES@";
-
-print "debug status= $DEBUG\n" if $DEBUG;
-print "working_directory $working_directory\n" if $DEBUG;
-print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
-
-print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
 my @sql_file = split(/;/, $PgRouting_SQL_FILES);
+my $out_file_name = "$working_directory/@PgRouting_CURRENT_SQL_FILE@";
 
+print "Working_directory $working_directory\n"      if $DEBUG;
  
-my $out_file_name = "@CMAKE_CURRENT_BINARY_DIR@/../pgrouting--$version.sql";
 open(OUT, ">", "$out_file_name")
-    || die "pgrouting--$version.sql ERROR: failed to create '$out_file_name' : $!\n";
-
-print "Generating $out_file_name\n" if $DEBUG;
-
+    || die "@PgRouting_CURRENT_SQL_FILE@ ERROR: failed to create: '$out_file_name' : $!\n";
 
 foreach my $f (@sql_file) {
     print "--  $f\n" if $DEBUG;
@@ -61,7 +53,6 @@ exit 0;
 sub get_contents {
     my ($file) = @_;
     local $/=undef;
-    print "trying ro open $file\n";
     die "ERROR: Failed to find: $file\n" unless -f $file;
     open(IN, $file) || die "pgrouting--$version.sql ERROR: Failed to open $file\n";
     my @contents = <IN>;

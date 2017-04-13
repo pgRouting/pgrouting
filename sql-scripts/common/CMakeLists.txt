@@ -15,9 +15,6 @@ foreach (f ${LOCAL_FILES})
     list(APPEND PACKAGE_SQL_FILES  ${CMAKE_CURRENT_BINARY_DIR}/${f})
 endforeach()
 
-add_custom_target(common_sql DEPENDS ${PACKAGE_SQL_FILES} SOURCES ${LOCAL_FILES})
-
 set(PgRouting_SQL_FILES ${PgRouting_SQL_FILES} ${PACKAGE_SQL_FILES} PARENT_SCOPE)
 
 configure_file(pgrouting.control pgrouting.control)
-add_custom_target(pgrouting_control DEPENDS pgrouting.control)
