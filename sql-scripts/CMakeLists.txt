@@ -106,9 +106,11 @@ foreach (old_s ${OLD_SIGNATURES})
     add_custom_command(
         OUTPUT pgrouting--${old_s}--${PGROUTING_VERSION}.sql
         COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl ${old_s} ${PgRouting_DEBUG}
-        DEPENDS ${SCRIPT_DEPENDENCIES}
-        ${file_out}
+        DEPENDS 
+        ${SCRIPT_DEPENDENCIES}
+        ./scripts/build-extension-update-files1.pl
         build_update_script
+        ${file_out}
         signatures_sigs
         current_script
         ./sigs/pgrouting--${old_s}.sig

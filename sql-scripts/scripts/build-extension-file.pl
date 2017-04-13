@@ -28,17 +28,14 @@ sub Usage {
 
 my $version = "@PGROUTING_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
-my $PgRouting_SQL_FILES =  shift @ARGV || die "ERROR: no files found";
+my $PgRouting_SQL_FILES =  "@PACKAGE_SQL_FILES@";
 
 print "debug status= $DEBUG\n" if $DEBUG;
 print "working_directory $working_directory\n" if $DEBUG;
 print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
 
-print "PACKAGE_SQL_FILES:\n @PACKAGE_SQL_FILES@";
-
-$PgRouting_SQL_FILES =~ s/'//gms;
 print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
-my @sql_file = split(/ /, $PgRouting_SQL_FILES);
+my @sql_file = split(/;/, $PgRouting_SQL_FILES);
 
  
 my $out_file_name = "@CMAKE_CURRENT_BINARY_DIR@/../pgrouting--$version.sql";

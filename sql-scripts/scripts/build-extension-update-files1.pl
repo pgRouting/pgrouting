@@ -147,7 +147,7 @@ sub generate_upgrade_script {
 
         # check if the old signature is in the new signature map
         my $exists = $function_map{$old_function} || '0';
-        print "$old_version WARNING: DROP $old_function (does not exists on $new_version)\n"
+        print "$old_version  **WARN: DROP $old_function (does not exists on $new_version)\n"
               if $DEBUG and not $exists and $old_function !~ /^_/;
         print "$old_version    INFO: DROP $old_function (does not exists on $new_version)\n"
               if $DEBUG and not $exists and $old_function =~ /^_/;
