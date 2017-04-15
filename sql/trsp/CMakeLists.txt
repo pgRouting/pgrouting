@@ -1,9 +1,8 @@
 
 SET(LOCAL_FILES
-    MY_FUNCTION_NAME.sql
+    trsp_V2.2.sql
+    vias_trsp_V2.2.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

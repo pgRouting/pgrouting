@@ -1,9 +1,10 @@
 
 SET(LOCAL_FILES
-    MY_FUNCTION_NAME.sql
+    _dijkstra.sql
+    dijkstra.sql
+    dijkstraCost.sql
+    dijkstraVia.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

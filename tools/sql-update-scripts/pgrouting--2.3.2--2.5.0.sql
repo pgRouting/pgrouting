@@ -43,14 +43,6 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_drivingdistance(text,bigint,double 
 DROP FUNCTION IF EXISTS _pgr_drivingdistance(text,bigint,double precision,boolean);
 
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
-
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_fakecontraction(text,integer[]);
-DROP FUNCTION IF EXISTS pgr_fakecontraction(text,integer[]);
-
-
 ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,anyarray,anyarray,text);
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,anyarray,anyarray,text);
 
@@ -65,6 +57,14 @@ DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,anyarray,text);
 
 ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,bigint,bigint,text);
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text);
+
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
+
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_fakecontraction(text,integer[]);
+DROP FUNCTION IF EXISTS pgr_fakecontraction(text,integer[]);
 
 
 ------------------------------------------
@@ -239,7 +239,7 @@ DROP TYPE contraction_vertex;
          'v2.5.0-dev'::varchar AS tag,
          ''::varchar AS hash,
          ''::varchar AS branch,
-         '1.54.0'::varchar AS boost;
+         '..'::varchar AS boost;
  
  $BODY$
  LANGUAGE sql IMMUTABLE;

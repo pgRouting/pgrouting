@@ -1,9 +1,13 @@
 
 SET(LOCAL_FILES
-    MY_FUNCTION_NAME.sql
+    _max_flow.sql
+    edmondsKarp.sql
+    boykovKolmogorov.sql
+    pushRelabel.sql
+    maxFlow.sql
+    maxCardinalityMatch.sql
+    edge_disjoint_paths.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

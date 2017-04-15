@@ -1,9 +1,11 @@
 
 SET(LOCAL_FILES
-    MY_FUNCTION_NAME.sql
+    withPointsCostMatrix.sql
+    dijkstraCostMatrix.sql
+    bdDijkstraCostMatrix.sql
+    astarCostMatrix.sql
+    bdAstarCostMatrix.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

@@ -1,9 +1,7 @@
 
 SET(LOCAL_FILES
-    MY_FUNCTION_NAME.sql
+    label_graph.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})
