@@ -46,8 +46,8 @@ project(PGROUTING)
 #---------------------------------------------
 #---------------------------------------------
 
-if(POLICY CMP0046)
-   cmake_policy(SET CMP0046 OLD)
+if(POLICY CMP0054)
+   cmake_policy(SET CMP0054 OLD)
 endif()
 
 if(MSVC)
@@ -243,7 +243,13 @@ if (PGROUTING_DEBUG)
     message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 endif()
 
+#----------------------
+# PGROUTING library name used in the pgr_functions
+#  '$libdir/${PGROUTING_LIBRARY_NAME}'
+#----------------------
+set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
 
+add_subdirectory(sql)
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 # Windows compiler flags
@@ -570,18 +576,12 @@ message("Building the library names")
 set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_SHORT_VERSION}")
 
 
-#----------------------
-# PGROUTING library name used in the pgr_functions
-#  '$libdir/${PGROUTING_LIBRARY_NAME}'
-#----------------------
-set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
 
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
     ${PGROUTING_OBJECTS})
 
 install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
-
 
 
 if(APPLE)
@@ -593,59 +593,36 @@ if(WIN32 AND MSVC)
     set_target_properties(${PGROUTING_LIB_NAME} PROPERTIES PREFIX "lib")
 endif(WIN32 AND MSVC)
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#
-# Handling SQL files
-#
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#
-add_custom_target(build-time-sql-directory ALL
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/sql_queries")
-
-set(TEMP_LIB_FILENAME "${CMAKE_BINARY_DIR}/sql_queries/lib-pgrouting--version.sql.in")
-file(WRITE ${TEMP_LIB_FILENAME} "")
-
-#-------------------
-# add the subdirectories that have the SQL files
-#-------------------
-
-set(PgRouting_SQL_DIRECTORIES
-    ${PgRouting_SOURCE_NAMES}
-    ${PgRouting_SQL_DIRECTORIES})
-
-set(PACKAGE_SQL_FILES "")
-
-foreach (subdir ${PgRouting_SQL_DIRECTORIES})
-    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
-endforeach()
 
 
-if (CDEBUG)
-    foreach (files ${PACKAGE_SQL_FILES})
-        message("${files}")
-    endforeach()
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+# INSTALLATION
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+
+if (WIN32 AND MSVC)
+    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/Release/libpgrouting-2.5.dll")
+else()
+    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/libpgrouting-2.5.so")
 endif()
 
-ADD_CUSTOM_TARGET(ProcessSQLFiles ALL)
-foreach(file_in ${PACKAGE_SQL_FILES})
-    get_filename_component(file_name ${file_in} NAME)
-    set(file_out "${CMAKE_BINARY_DIR}/sql_queries/${file_name}")
-    configure_file(${file_in} ${file_out})
+# this will create the commands in the makefile under the install target
+#if(UNIX)
+#    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
+#else()
+#    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
+#endif()
 
-    add_dependencies(ProcessSQLFiles ${file_in})
-    file(READ "${file_out}" CONTENTS)
-    string(REGEX REPLACE "/\\*PGR-(GNU|MIT).*PGR-(GNU|MIT)\\*/" "" STRIP_CONTENTS "${CONTENTS}")
-    string(REGEX REPLACE "/\\*FOR.*USER\\*/" "" CONTENTS "${STRIP_CONTENTS}")
-    file(APPEND ${TEMP_LIB_FILENAME} "${CONTENTS}")
-endforeach()
+message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 
-configure_file("${TEMP_LIB_FILENAME}"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
+install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
+
+
+install(FILES
+    ${PgRouting_SQL_FILES_TO_INSTALL}
+    DESTINATION "${SHARE_DIR}"
     )
-message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql")
-#
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
@@ -656,63 +633,9 @@ add_subdirectory(doxygen)
 add_subdirectory(doc)
 
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Handling pgrouting.control.in files
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#
-configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
-
-message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
-#
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-# create the signature file for this release
-#message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
-#execute_process(
-#COMMAND cp ${PGROUTING_SOURCE_DIR}/tools/curr-sig/pgrouting--${PGROUTING_VERSION}.sig ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sig
-    #COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file.pl ${PGROUTING_VERSION}
-    #WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-    #RESULT_VARIABLE SIG_RESULT
-    #)
-    #if(SIG_RESULT)
-    #message(FATAL_ERROR "SIG_RESULT: ${SIG_RESULT}")
-    #endif(SIG_RESULT)
-
-# create the extension update scripts
-file(GLOB THE_VERSION_UPDATE_FILES "${PGROUTING_SOURCE_DIR}/tools/sql-update-scripts/*--*--*.sql")
-
-foreach (f ${THE_VERSION_UPDATE_FILES})
-    message("${f}")
-    execute_process(
-        COMMAND cp ${f} ${CMAKE_BINARY_DIR}/lib/
-        WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-        RESULT_VARIABLE UPDATE_RESULT
-        )
-    if(UPDATE_RESULT)
-        message(FATAL_ERROR "UPDATE_RESULT: ${UPDATE_RESULT}")
-    endif()
-endforeach()
-
-# make a list of the files we need to install for version updates
-file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
-
-# this will create the commands in the makefile under the install target
-if(UNIX)
-    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
-else()
-    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
+if (PGROUTING_DEBUG)
+    foreach (f ${PgRouting_SQL_FILES})
+        message(STATUS ${f})
+    endforeach()
 endif()
-
-message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
-
-install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
-
-install(FILES
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
-    ${VERSION_UPDATE_FILES}
-    DESTINATION "${SHARE_DIR}")
 

@@ -2,4 +2,6 @@
 --------------------------------------------------------------------------------
 --                pgr_version
 --------------------------------------------------------------------------------
-SELECT version FROM pgr_version(); -- This changes infrequently
+\echo -- q1
+SELECT version FROM pgr_version(); 
+\echo -- q2

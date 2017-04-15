@@ -274,18 +274,14 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
          boost varchar
      ) AS
  $BODY$
+     SELECT '2.5.0'::varchar AS version,
+         'v2.5.0-dev'::varchar AS tag,
+         ''::varchar AS hash,
+         ''::varchar AS branch,
+         '..'::varchar AS boost;
  
- DECLARE
- 
- BEGIN
-     RETURN QUERY SELECT '2.5.0'::varchar AS version,
-                         'v2.5.0-dev'::varchar AS tag,
-                         ''::varchar AS hash,
-                         ''::varchar AS branch,
-                         '1.54.0'::varchar AS boost;
- END;
  $BODY$
- LANGUAGE plpgsql IMMUTABLE;
+ LANGUAGE sql IMMUTABLE;
  
  
  
