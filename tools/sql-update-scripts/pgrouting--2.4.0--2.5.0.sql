@@ -51,10 +51,6 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_dijkstra(text,bigint,bigint,boolean
 DROP FUNCTION IF EXISTS _pgr_dijkstra(text,bigint,bigint,boolean,boolean);
 
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
-
-
 ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,anyarray,anyarray,text,boolean);
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,anyarray,anyarray,text,boolean);
 
@@ -71,46 +67,35 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,bigint,bigint,text,boo
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text,boolean);
 
 
- -- cannot change name of input parameter edges_sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
 
 
- -- cannot change name of input parameter start_vid
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
-
-
- -- Row type defined by OUT parameters is different
+------------------------------------------
+--       New functions:  2.3
+--    Signature change:  2.5
+-- Inner query changed:  2.5
+------------------------------------------
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,anyarray,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,anyarray,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,anyarray,bigint,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,bigint,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
+
+
 
 
 -- now install the new extension
@@ -209,18 +194,14 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
          boost varchar
      ) AS
  $BODY$
+     SELECT '2.5.0'::varchar AS version,
+         'v2.5.0-dev'::varchar AS tag,
+         ''::varchar AS hash,
+         ''::varchar AS branch,
+         '..'::varchar AS boost;
  
- DECLARE
- 
- BEGIN
-     RETURN QUERY SELECT '2.5.0'::varchar AS version,
-                         'v2.5.0-dev'::varchar AS tag,
-                         ''::varchar AS hash,
-                         'fix/update-scripts'::varchar AS branch,
-                         '1.54.0'::varchar AS boost;
- END;
  $BODY$
- LANGUAGE plpgsql IMMUTABLE;
+ LANGUAGE sql IMMUTABLE;
  
  
  
@@ -1881,8 +1862,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-     sql text,
-     start_v anyarray,
+     edges_sql text,
+     start_vids anyarray,
      distance FLOAT,
      directed BOOLEAN DEFAULT TRUE,
      equicost BOOLEAN DEFAULT FALSE,
@@ -1899,7 +1880,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
      edges_sql text,
-     start_v bigint,
+     start_vid bigint,
      distance FLOAT8,
      directed BOOLEAN DEFAULT TRUE,
      OUT seq integer,
@@ -6110,7 +6091,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  
  -- V2 signature
- CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
  RETURNS SETOF pgr_costresult AS
  $BODY$
  DECLARE
@@ -6708,7 +6689,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  
  -- OLD SIGNATURE
- CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
    RETURNS SETOF pgr_costresult AS
    $BODY$
    DECLARE

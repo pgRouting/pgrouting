@@ -39,6 +39,145 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_pointtoid(geometry,double precision,
 DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
 
 
+ ------------------------------------------
+--    New functions:  2.0
+-- Signature change:  2.1
+--       Deprecated:  2.1
+------------------------------------------
+-- pgr_dijkstra:
+-- 2.0.1: {      sql, source_id, target_id, directed, has_reverse_cost}
+-- 2.5.0: {edges_sql, start_vid,   end_vid, directed, has_rcost}
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
+
+
+
+
+------------------------------------------
+--    New functions:  2.0
+--       Deprecated:  2.1
+--       Deprecated:  2.1 & 2.2
+------------------------------------------
+-- pgr_ksp
+-- 2.0.1: {      sql, source_id, target_id, no_paths,has_reverse_cost}
+-- 2.5.0: {edges_sql, start_vid,   end_vid, k,       has_rcost}
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
+DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
+
+
+
+
+------------------------------------------
+--    New functions:  2.0
+-- Signature change:  2.1
+--       Deprecated:  2.1 & 2.2
+------------------------------------------
+-- pgr_pgr_drivingdistance
+-- 2.0.1: {      sql, source_id, distance, has_reverse_cost}   
+-- 2.5.0: {edges_sql,  source,    distance, directed, has_rcost}
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);
+
+
+
+
+------------------------------------------
+--    New functions:  2.0
+-- Signature change:  2.2
+--       Deprecated:  2.2
+------------------------------------------
+-- pgr_apspjohnson
+-- 2.0.1: {      sql}
+-- 2.5.0: {edges_sql}
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspjohnson(text);
+DROP FUNCTION IF EXISTS pgr_apspjohnson(text);
+
+
+-- pgr_apspwarshall
+-- 2.0.1: {      sql, directed, has_reverse_cost}
+-- 2.5.0: {edges_sql, directed, has_rcost}
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspwarshall(text,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_apspwarshall(text,boolean,boolean);
+
+
+-- pgr_kdijkstrapath
+-- 2.0.1: {sql,source_vid, target_vid, directed, has_reverse_cost}
+-- 2.5.0: {sql,    source,    targets, directed, has_rcost} 
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
+
+
+-- pgr_kdijkstracost
+-- 2.0.1: {sql,source_vid, target_vid, directed, has_reverse_cost}
+-- 2.5.0: {sql,    source,    targets, directed, has_rcost} 
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
+
+
+
+
+------------------------------------------
+--    New functions:  2.0
+-- Signature change:  2.2
+------------------------------------------
+-- pgr_version
+-- 2.0.1:  {version,tag,build,hash,branch,boost}
+-- 2.5.0:  {version,tag,hash,branch,boost}
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
+DROP FUNCTION IF EXISTS pgr_version();
+
+
+
+
+------------------------------------------
+--    New functions:  2.0
+-- Signature change:  2.2
+------------------------------------------
+-- pgr_trsp
+-- 2.0.1:  {      sql, source_vid, target_vid, directed, has_reverse_cost, turn_restrict_sql}
+-- 2.5.0:  {edges_sql,  start_vid,    end_vid, directed, has_rcost,        restrictions_sql}
+
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vid","end_vid","directed","has_rcost","restrictions_sql"}'
+WHERE proname = 'pgr_trsp'
+    AND proargnames = '{"sql","source_vid","target_vid","directed","has_reverse_cost","turn_restrict_sql"}';
+
+
+------------------------------------------
+--    New functions:  2.0
+-- Signature change:  2.4
+--       Deprecated:  2.4
+------------------------------------------
+-- pgr_bddijkstra
+-- 2.0.1: {      sql, source_vid, target_vid, directed, has_reverse_cost}   
+-- 2.5.0: {edges_sql,  start_vid,    end_vid, directed, has_rcost}
+
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vid","end_vid","directed","has_rcost"}'
+WHERE proname = 'pgr_bddijkstra'
+    AND proargnames = '{"sql","source_vid","target_vid","directed","has_reverse_cost"}';
+
+
+------------------------------------------
+-- New functions on 2.0
+-- Signature change on 2.3
+-- Deprecated on 2.4
+------------------------------------------
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
+
+
+
+
 -- now install the new extension
 
 -- \echo Use "CREATE EXTENSION pgrouting" to load this file. \quit
@@ -135,18 +274,14 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
          boost varchar
      ) AS
  $BODY$
+     SELECT '2.5.0'::varchar AS version,
+         'v2.5.0-dev'::varchar AS tag,
+         ''::varchar AS hash,
+         ''::varchar AS branch,
+         '..'::varchar AS boost;
  
- DECLARE
- 
- BEGIN
-     RETURN QUERY SELECT '2.5.0'::varchar AS version,
-                         'v2.5.0-dev'::varchar AS tag,
-                         ''::varchar AS hash,
-                         'fix/update-scripts'::varchar AS branch,
-                         '1.54.0'::varchar AS boost;
- END;
  $BODY$
- LANGUAGE plpgsql IMMUTABLE;
+ LANGUAGE sql IMMUTABLE;
  
  
  
@@ -1807,8 +1942,8 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-     sql text,
-     start_v anyarray,
+     edges_sql text,
+     start_vids anyarray,
      distance FLOAT,
      directed BOOLEAN DEFAULT TRUE,
      equicost BOOLEAN DEFAULT FALSE,
@@ -1825,7 +1960,7 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
      edges_sql text,
-     start_v bigint,
+     start_vid bigint,
      distance FLOAT8,
      directed BOOLEAN DEFAULT TRUE,
      OUT seq integer,
@@ -6036,7 +6171,7 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  
  
  -- V2 signature
- CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
  RETURNS SETOF pgr_costresult AS
  $BODY$
  DECLARE
@@ -6634,7 +6769,7 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  
  
  -- OLD SIGNATURE
- CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
    RETURNS SETOF pgr_costresult AS
    $BODY$
    DECLARE
