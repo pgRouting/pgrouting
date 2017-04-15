@@ -209,8 +209,7 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean
          'v2.5.0-dev'::varchar AS tag,
          ''::varchar AS hash,
          ''::varchar AS branch,
-         '..'::varchar AS boost;
- 
+         '1.54.0'::varchar AS boost;
  $BODY$
  LANGUAGE sql IMMUTABLE;
  

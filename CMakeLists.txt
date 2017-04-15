@@ -249,7 +249,7 @@ endif()
 #----------------------
 set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
 
-add_subdirectory(sql)
+
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 # Windows compiler flags
@@ -357,7 +357,6 @@ else(Boost_INCLUDE_DIRS)
     message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
 
-#-------
 include_directories(${Boost_INCLUDE_DIRS})
 
 
@@ -576,7 +575,6 @@ message("Building the library names")
 set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_SHORT_VERSION}")
 
 
-
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
     ${PGROUTING_OBJECTS})
@@ -594,6 +592,15 @@ if(WIN32 AND MSVC)
 endif(WIN32 AND MSVC)
 
 
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+# sql subdirectory creates the files:
+#  pgrouting--(version).sql
+#  pgrouting--(oldVersion)--(version).sql
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+
+add_subdirectory(sql)
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
