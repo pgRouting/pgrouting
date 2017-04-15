@@ -6586,7 +6586,7 @@ COMMENT ON FUNCTION pgr_dijkstra( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN) IS '
 
 
 -- OLD SIGNATURE
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source BIGINT, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
   RETURNS SETOF pgr_costresult AS
   $BODY$
   DECLARE
@@ -6921,7 +6921,7 @@ COMMENT ON FUNCTION pgr_bdDijkstra( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
     IS 'pgr_dijkstra(Deprecated signature)';
 
-COMMENT ON FUNCTION pgr_drivingDistance(text,  INTEGER,  FLOAT8,  BOOLEAN,  BOOLEAN)
+COMMENT ON FUNCTION pgr_drivingDistance(text,  BIGINT,  FLOAT8,  BOOLEAN,  BOOLEAN)
     IS 'pgr_drivingDistance(Deprecated signature)';
 
 ------------------------

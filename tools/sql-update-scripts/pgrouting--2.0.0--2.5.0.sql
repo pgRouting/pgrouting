@@ -23,6 +23,10 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_createtopology(text,double precision
 DROP FUNCTION IF EXISTS pgr_createtopology(text,double precision,text,text,text,text,text);
 
 
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);
+
+
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_makedistancematrix(text);
 DROP FUNCTION IF EXISTS pgr_makedistancematrix(text);
 
@@ -6768,7 +6772,7 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
  
  
  -- OLD SIGNATURE
- CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source BIGINT, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
    RETURNS SETOF pgr_costresult AS
    $BODY$
    DECLARE
@@ -7103,7 +7107,7 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
  COMMENT ON FUNCTION pgr_dijkstra(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
      IS 'pgr_dijkstra(Deprecated signature)';
  
- COMMENT ON FUNCTION pgr_drivingDistance(text,  INTEGER,  FLOAT8,  BOOLEAN,  BOOLEAN)
+ COMMENT ON FUNCTION pgr_drivingDistance(text,  BIGINT,  FLOAT8,  BOOLEAN,  BOOLEAN)
      IS 'pgr_drivingDistance(Deprecated signature)';
  
  ------------------------
