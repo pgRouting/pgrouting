@@ -1,9 +1,8 @@
 
 SET(LOCAL_FILES
-    MY_FUNCTION_NAME.sql
+    routing_ksp.sql
+    withPoints_ksp.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

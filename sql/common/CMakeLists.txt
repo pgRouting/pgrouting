@@ -1,9 +1,14 @@
 
 SET(LOCAL_FILES
-    MY_FUNCTION_NAME.sql
+    pgRouting-header.sql
+    pgrouting-types.sql
+    pgrouting_version.sql
+    pgrouting_utilities.sql
+    pgr_parameter_check.sql
+    utilities_pgr.sql
+    createIndex.sql
+    _point_toId.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})
@@ -11,3 +16,5 @@ foreach (f ${LOCAL_FILES})
 endforeach()
 
 set(PgRouting_SQL_FILES ${PgRouting_SQL_FILES} ${PACKAGE_SQL_FILES} PARENT_SCOPE)
+
+configure_file(pgrouting.control pgrouting.control)

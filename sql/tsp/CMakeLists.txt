@@ -1,9 +1,11 @@
 
 SET(LOCAL_FILES
-    MY_FUNCTION_NAME.sql
+    tsp_v2.0_matrix.sql
+    tsp_v2.0_coordinates.sql
+    routing_tsp_wrappers.sql
+    TSP.sql
+    eucledianTSP.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})
