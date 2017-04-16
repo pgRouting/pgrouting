@@ -59,10 +59,6 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,bigint,bigint,text);
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text);
 
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
-
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_fakecontraction(text,integer[]);
 DROP FUNCTION IF EXISTS pgr_fakecontraction(text,integer[]);
 
@@ -83,31 +79,29 @@ WHERE proname = 'pgr_bddijkstra'
 
 
 ------------------------------------------
---    New functions:  2.1
--- Signature change:  2.4
+--       New functions:  2.1
+--    Signature change:  2.4
 ------------------------------------------
--- pgr_drivingdistance
--- 2.3.2:  {sql,start_v,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
--- 2.5.0:  {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+-- 2.3.2: {edges_sql,start_v,  distance,directed,seq,node,edge,cost,agg_cost}
+-- 2.5.0: {edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost}
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-
-
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{"edges_sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}';
 
 
 ------------------------------------------
---     New function:  2.1
--- Signature change:  2.2
+--       New functions:  2.1
+--    Signature change:  2.4
 ------------------------------------------
--- pgr_drivingdistance
--- 2.3.2:  {edges_sql, start_v,   distance, directed, seq, node, edge, cost, agg_cost}
--- 2.5.0:  {edges_sql, start_vid, distance, directed, seq, node, edge, cost, agg_cost}
+-- 2.3.2: {sql,      start_v,   distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+-- 2.5.0: {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
-
-
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vids","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{"sql","start_v","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}';
 
 
 ------------------------------------------
@@ -6729,7 +6723,7 @@ DROP TYPE contraction_vertex;
  
  
  -- OLD SIGNATURE
- CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source BIGINT, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
    RETURNS SETOF pgr_costresult AS
    $BODY$
    DECLARE
@@ -7064,7 +7058,7 @@ DROP TYPE contraction_vertex;
  COMMENT ON FUNCTION pgr_dijkstra(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
      IS 'pgr_dijkstra(Deprecated signature)';
  
- COMMENT ON FUNCTION pgr_drivingDistance(text,  INTEGER,  FLOAT8,  BOOLEAN,  BOOLEAN)
+ COMMENT ON FUNCTION pgr_drivingDistance(text,  BIGINT,  FLOAT8,  BOOLEAN,  BOOLEAN)
      IS 'pgr_drivingDistance(Deprecated signature)';
  
  ------------------------

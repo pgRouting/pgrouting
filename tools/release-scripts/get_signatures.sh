@@ -4,10 +4,11 @@ set -e
 
 if [  "$#" -lt 3 ] ; then
     echo "Usage: getSignatures.sh VERSION DB_ARGS"
-    echo "  VERSION like '2.4.0'"
-    echo "  DB_NAME like 'routing'"
-    echo "  DIR: 'curr-sig' OR 'sigs'"
+    echo "  VERSION like '2.5.0'"
+    echo "  DB_NAME like 'routing'  (will be deleted if it exists)"
+    echo "  DIR: 'sql/sigs'  is relative to the root of the repository"
     echo "  (optional) DB_ARGS like  -U postgres -h localhost -p 5432 "
+    echo "Exeute from the root of the repository"
     exit 0
 fi
 
@@ -19,9 +20,10 @@ shift
 shift
 # DB_ARGS is the remaining of the arguments
 
-FILE=tools/$DIR/pgrouting--$VERSION.sig
+FILE=$DIR/pgrouting--$VERSION.sig
 #FILE=test.sig
 
+dropdb --if-exists $* $DB_NAME
 createdb $* $DB_NAME
 
 psql  $*  $DB_NAME <<EOF
