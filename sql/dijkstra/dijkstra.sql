@@ -38,7 +38,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], true, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -61,7 +61,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -85,7 +85,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -109,7 +109,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, false) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -133,7 +133,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE

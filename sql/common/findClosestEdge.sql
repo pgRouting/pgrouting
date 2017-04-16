@@ -69,7 +69,7 @@ BEGIN
                   USING HINT = 'Please veryfy the column names: id, the_geom';
     END;
 
-    sql =' 
+    sql ='
     WITH
     safesql AS (' || safe_sql || '),
     close_ones AS
@@ -83,7 +83,7 @@ BEGIN
     third_q AS
     (SELECT DISTINCT(id) id, distance, line, blade FROM close_ones WHERE distance = (select min_dist from closest_ones) ORDER BY id LIMIT 1),
     dump_values AS
-    (SELECT id, 
+    (SELECT id,
         (ST_length(ST_GeometryN(st_split(line, blade),1))/ST_length(line))::FLOAT AS fraction,
         (line << ' || quote_literal(point_geom::TEXT) || '::geometry) as rightSide
         FROM third_q)

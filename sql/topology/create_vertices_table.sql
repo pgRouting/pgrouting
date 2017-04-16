@@ -21,7 +21,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/* 
+/*
 
 This function should not be used directly. Use assign_vertex_id instead
 Inserts a point into the vertices tablei "vname" with the srid "srid", and return an id
@@ -41,7 +41,7 @@ Last changes: 2013-03-22
 .. function:: pgr_createVerticesTable(edge_table text, the_geom text, source text default 'source', target text default 'target')
 
   Based on "source" and "target" columns creates the vetrices_pgr table for edge_table
-  Ignores rows where "source" or "target" have NULL values 
+  Ignores rows where "source" or "target" have NULL values
 
   Author: Vicky Vergara <vicky_vergara@hotmail,com>
 
@@ -70,7 +70,7 @@ DECLARE
     sourcename text;
     targetname text;
     query text;
-    ecnt bigint; 
+    ecnt bigint;
     srid integer;
     sourcetype text;
     targettype text;
@@ -85,9 +85,9 @@ DECLARE
     err bool;
 
 
-BEGIN 
+BEGIN
   fnName = 'pgr_createVerticesTable';
-  raise notice 'PROCESSING:'; 
+  raise notice 'PROCESSING:';
   raise notice 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
   execute 'show client_min_messages' into debuglevel;
 
@@ -104,7 +104,7 @@ BEGIN
     vertname= sname||'.'||vname;
     rows_where = ' AND ('||rows_where||')';
   raise debug '--> Edge table exists: OK';
-   
+
   raise debug 'Checking column names';
     select * into sourcename from _pgr_getColumnName(sname, tname,source,2, fnName);
     select * into targetname from _pgr_getColumnName(sname, tname,target,2, fnName);
@@ -165,7 +165,7 @@ BEGIN
     -- if the where clasuse is ill formed it will be caught in the exception
     sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
     EXECUTE sql into dummyRec;
-    -- end 
+    -- end
 
     -- if above where clasue works this one should work
     -- any error will be caught by the exception also
@@ -173,7 +173,7 @@ BEGIN
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
     raise debug '%',sql;
     EXECUTE SQL  into notincluded;
-    EXCEPTION WHEN OTHERS THEN  
+    EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
          RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
          RAISE NOTICE '%',sql;
@@ -182,7 +182,7 @@ BEGIN
 
 
 
-    
+
   BEGIN
      raise DEBUG 'initializing %',vertname;
        execute 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' into naming;
@@ -197,25 +197,25 @@ BEGIN
                 quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
        execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||_pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
        execute 'set client_min_messages  to '|| debuglevel;
-       raise DEBUG  '  ------>OK'; 
-       EXCEPTION WHEN OTHERS THEN  
+       raise DEBUG  '  ------>OK';
+       EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
          RAISE NOTICE 'ERROR: Initializing vertex table';
          RAISE NOTICE '%',sql;
          RETURN 'FAIL';
-  END;       
+  END;
 
   BEGIN
        raise notice 'Populating %, please wait...',vertname;
        sql= 'with
 		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
-		                  ' where ('|| gname || ' IS NULL 
-                                    or '||sourcename||' is null 
-                                    or '||targetname||' is null)=false 
+		                  ' where ('|| gname || ' IS NULL
+                                    or '||sourcename||' is null
+                                    or '||targetname||' is null)=false
                                      '||rows_where||')
 			union (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
-			          ' where ('|| gname || ' IS NULL 
-                                    or '||sourcename||' is null 
+			          ' where ('|| gname || ' IS NULL
+                                    or '||sourcename||' is null
                                     or '||targetname||' is null)=false
                                      '||rows_where||'))
 		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
@@ -225,7 +225,7 @@ BEGIN
        execute sql;
        GET DIAGNOSTICS totcount = ROW_COUNT;
 
-       sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b 
+       sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
             where '||sourcename||'=b.id and '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
        RAISE debug '%',sql;
        execute sql into included;
@@ -241,7 +241,7 @@ BEGIN
        Raise notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname),_pgr_quote_ident(vertname);
        raise notice '----------------------------------------------';
     END;
-    
+
     RETURN 'OK';
  EXCEPTION WHEN OTHERS THEN
    RAISE NOTICE 'Unexpected error %', SQLERRM; -- issue 210,211
@@ -250,5 +250,5 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_createVerticesTable(text,text,text,text,text) 
+COMMENT ON FUNCTION pgr_createVerticesTable(text,text,text,text,text)
 IS 'args: edge_table, the_geom:=''the_geom'',source:=''source'', target:=''target'' rows_where:=''true'' - creates a vertices table based on the source and target identifiers for selected rows';

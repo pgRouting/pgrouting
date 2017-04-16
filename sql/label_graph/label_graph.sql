@@ -47,9 +47,9 @@ DECLARE
         rec_count record;
         rec_single record;
         graph_id integer;
-        gids int [];   
+        gids int [];
 
-BEGIN   
+BEGIN
         raise notice 'Processing:';
         raise notice 'pgr_brokenGraph(''%'',''%'',''%'',''%'',''%'',''%'')', edge_table,id,source,target,subgraph,rows_where;
         raise notice 'Performing initial checks, please hold on ...';
@@ -64,7 +64,7 @@ BEGIN
                 IF schema_name is null then
                         raise notice 'no schema';
                         return 'FAIL';
-                else 
+                else
                         if table_name is null then
                                 raise notice 'no table';
                                 return 'FAIL';
@@ -119,7 +119,7 @@ BEGIN
         Raise Notice 'Starting - Checking temporary column';
         Begin
                 raise debug 'Checking Checking temporary columns existance';
-                
+
                 While True
                         Loop
                                 execute 'select * from pgr_isColumnInTable('|| quote_literal(table_schema_name) ||', '|| quote_literal(garbage) ||')' into naming;
@@ -143,7 +143,7 @@ BEGIN
                 EXECUTE 'select count(*) as count from '|| pgr_quote_ident(table_schema_name) ||' where '|| rows_where ||'' into rec_count;
                 if rec_count.count = 0 then
                         RETURN 'rows_where condition generated 0 rows';
-                end if; 
+                end if;
 
                 WHILE TRUE
                         LOOP
@@ -171,7 +171,7 @@ BEGIN
                                                         EXIT;
                                                 END IF;
                                         END LOOP;
-                                
+
                                 ------ Following is to exit the while loop. 0 means no more -1 id.
                                 EXECUTE 'SELECT COUNT(*) AS count FROM '|| pgr_quote_ident(table_schema_name) ||' WHERE '|| rows_where ||' AND ' || pgr_quote_ident(subgraph) || ' = -1' INTO rec_count;
                                 If (rec_count.count = 0) THEN

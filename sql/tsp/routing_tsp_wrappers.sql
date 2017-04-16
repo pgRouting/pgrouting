@@ -40,7 +40,7 @@ $body$
 declare
     sql text;
     r record;
-    
+
 begin
     dmatrix := array[]::double precision[];
     ids := array[]::integer[];

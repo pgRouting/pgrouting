@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
            (NULL,NULL) when schema was not found.
 
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-  
+
   HISTORY
      2015/11/01 Changed to handle views and refactored
      Created: 2013/08/19  for handling schemas
@@ -72,7 +72,7 @@ BEGIN
 
     i := strpos(tab,'.');
     IF (i <> 0) THEN
-        sn := split_part(tab, '.',1); 
+        sn := split_part(tab, '.',1);
         tn := split_part(tab, '.',2);
     ELSE
         sn := current_schema;
@@ -80,19 +80,19 @@ BEGIN
     END IF;
 
 
-   SELECT schema_name INTO sname 
+   SELECT schema_name INTO sname
    FROM information_schema.schemata WHERE schema_name = sn;
 
     IF sname IS NOT NULL THEN -- found schema (as is)
-       SELECT table_name, table_type INTO tname, ttype 
-       FROM information_schema.tables 
+       SELECT table_name, table_type INTO tname, ttype
+       FROM information_schema.tables
        WHERE
                 table_type = ANY(var_types) and
                 table_schema = sname and
                 table_name = tn ;
         IF tname is NULL THEN
-            SELECT table_name, table_type INTO tname, ttype 
-            FROM information_schema.tables 
+            SELECT table_name, table_type INTO tname, ttype
+            FROM information_schema.tables
             WHERE
                 table_type  = ANY(var_types) and
                 table_schema = sname and
@@ -100,21 +100,21 @@ BEGIN
         END IF;
     END IF;
     IF sname is NULL or tname is NULL THEN --schema not found or table not found
-        SELECT schema_name INTO sname 
-        FROM information_schema.schemata 
+        SELECT schema_name INTO sname
+        FROM information_schema.schemata
         WHERE schema_name = lower(sn) ;
 
         IF sname IS NOT NULL THEN -- found schema (with lower caps)
-            SELECT table_name, table_type INTO tname, ttype 
-            FROM information_schema.tables 
+            SELECT table_name, table_type INTO tname, ttype
+            FROM information_schema.tables
             WHERE
                 table_type  =  ANY(var_types) and
                 table_schema = sname and
                 table_name= tn ;
-                
+
            IF tname IS NULL THEN
-                SELECT table_name, table_type INTO tname, ttype 
-                FROM information_schema.tables 
+                SELECT table_name, table_type INTO tname, ttype
+                FROM information_schema.tables
                 WHERE
                     table_type  =  ANY(var_types) and
                     table_schema = sname and

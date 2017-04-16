@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- Legacy FUNCTIONs that were ment to be used by 
+-- Legacy FUNCTIONs that were ment to be used by
 -- Temporarly while the rewrite of 2.0
 -- These FUNCTIONs wer used on the plpgsql functions
 
@@ -60,7 +60,7 @@ ROWS 1000;
 CREATE OR REPLACE FUNCTION pgr_apspJohnson(edges_sql text)
 RETURNS SETOF pgr_costResult AS
 $BODY$
-    SELECT (row_number() over () - 1)::integer, start_vid::integer, end_vid::integer, agg_cost 
+    SELECT (row_number() over () - 1)::integer, start_vid::integer, end_vid::integer, agg_cost
     FROM  pgr_johnson($1, TRUE);
 $BODY$
 LANGUAGE sql VOLATILE
@@ -122,7 +122,7 @@ ROWS 1000;
 CREATE OR REPLACE FUNCTION pgr_astar(edges_sql TEXT, source_id INTEGER, target_id INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
 RETURNS SETOF pgr_costresult AS
 $BODY$
-    SELECT seq - 1, node::INTEGER, edge::INTEGER, cost 
+    SELECT seq - 1, node::INTEGER, edge::INTEGER, cost
     FROM pgr_astar($1, ARRAY[$2], ARRAY[$3], $4);
 $BODY$
 LANGUAGE sql VOLATILE

@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
     sql text,
-    via_edges bigint[], 
-    fraction float[], 
+    via_edges bigint[],
+    fraction float[],
     directed BOOLEAN DEFAULT TRUE,
 
     OUT seq INTEGER,
@@ -64,7 +64,7 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
           WHEN OTHERS THEN
             has_rcost = false;
      END;
- 
+
 
       IF array_length(via_edges, 1) != array_length(fraction, 1) then
         RAISE EXCEPTION 'The length of via_edges is different of length of via_edges';
@@ -74,11 +74,11 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
       LOOP
           IF fraction[i] = 0 THEN
               sql_on_vertex := 'SELECT source FROM ('|| sql || ') __a where id = ' || via_edges[i];
-              EXECUTE sql_on_vertex into dummyrec; 
+              EXECUTE sql_on_vertex into dummyrec;
               via_vertices[i] = dummyrec.source;
           ELSE IF fraction[i] = 1 THEN
               sql_on_vertex := 'SELECT target FROM ('|| sql || ') __a where id = ' || via_edges[i];
-              EXECUTE sql_on_vertex into dummyrec; 
+              EXECUTE sql_on_vertex into dummyrec;
               via_vertices[i] = dummyrec.target;
           ELSE
               via_vertices[i] = -i;
@@ -92,7 +92,7 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
                               reverse_cost *  ' || fraction[i] || '  AS reverse_cost
                           FROM (SELECT * FROM (' || sql || ') __b' || i || ' where id = ' || via_edges[i] || ') __a' || i ||')';
                       v_union = ' UNION ';
-               ELSE 
+               ELSE
                    sql_new_vertices = sql_new_vertices || v_union ||
                           '(SELECT id, source, ' ||  -i || ' AS target, cost * ' || fraction[i] || ' AS cost
                           FROM (SELECT * FROM (' || sql || ') __b' || i || ' WHERE id = ' || via_edges[i] || ') __a' || i ||')
@@ -106,7 +106,7 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
      END LOOP;
 
      IF sql_new_vertices = ' ' THEN
-         new_edges := sql; 
+         new_edges := sql;
      ELSE
          IF has_rcost THEN
             new_edges:= 'WITH
@@ -125,11 +125,11 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
                       WINDOW w AS (PARTITION BY id  ORDER BY reverse_cost ASC) ) as n2
                       WHERE source IS NOT NULL),
                    more_union AS ( SELECT * from (
-                       (SELECT * FROM original) 
-                             UNION 
-                       (SELECT * FROM the_union) 
-                             UNION 
-                       (SELECT * FROM first_part) 
+                       (SELECT * FROM original)
+                             UNION
+                       (SELECT * FROM the_union)
+                             UNION
+                       (SELECT * FROM first_part)
                              UNION
                        (SELECT * FROM second_part) ) _union )
                   SELECT *  FROM more_union';
@@ -143,10 +143,10 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
                       WINDOW w AS (PARTITION BY id  ORDER BY cost ASC) ) as n2
                       WHERE target IS NOT NULL ),
                    more_union AS ( SELECT * from (
-                       (SELECT * FROM original) 
-                             UNION 
-                       (SELECT * FROM the_union) 
-                             UNION 
+                       (SELECT * FROM original)
+                             UNION
+                       (SELECT * FROM the_union)
+                             UNION
                        (SELECT * FROM first_part) ) _union )
                   SELECT *  FROM more_union';
           END IF;

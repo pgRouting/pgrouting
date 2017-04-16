@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text,OUT sname text,OUT tname text)
 RETURNS RECORD AS
-$BODY$ 
+$BODY$
 BEGIN
     raise notice 'pgr_getTableName: This function will no longer be soported';
     select * from _pgr_getTableName(tab, 0, 'pgr_getTableName') into sname,tname;

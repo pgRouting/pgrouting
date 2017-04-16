@@ -37,7 +37,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source BIGINT, di
 
       sql = edges_sql;
       IF (has_reverse != has_rcost) THEN
-         IF (has_reverse) THEN 
+         IF (has_reverse) THEN
              -- the user says it doesn't have reverse cost but its false
              -- removing from query
              RAISE NOTICE 'Contradiction found: has_rcost set to false but reverse_cost column found';

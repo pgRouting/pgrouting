@@ -57,7 +57,7 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
         SELECT ARRAY(SELECT DISTINCT UNNEST(targets) ORDER BY 1) INTO targets;
 
         sseq = 0; i = 1;
-        FOR result IN 
+        FOR result IN
             SELECT seq, a.end_vid::INTEGER AS id1, a.node::INTEGER AS i2, a.edge::INTEGER AS id3, cost
             FROM pgr_dijkstra(new_sql, source, targets, directed) a ORDER BY a.end_vid, seq LOOP
             WHILE (result.id1 != targets[i]) LOOP
@@ -149,7 +149,7 @@ BEGIN
     SELECT ARRAY(SELECT DISTINCT UNNEST(targets) ORDER BY 1) INTO targets;
 
     sseq = 0; i = 1;
-    FOR result IN 
+    FOR result IN
         SELECT ((row_number() over()) -1)::INTEGER, a.start_vid::INTEGER, a.end_vid::INTEGER, agg_cost
         FROM pgr_dijkstraCost(new_sql, source, targets, directed) a ORDER BY end_vid LOOP
         WHILE (result.id2 != targets[i]) LOOP

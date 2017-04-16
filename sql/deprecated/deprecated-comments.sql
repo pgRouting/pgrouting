@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 COMMENT ON FUNCTION pgr_astar(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
     IS 'pgr_astar(Deprecated signature)';
 
-COMMENT ON FUNCTION pgr_bdAstar( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)    
+COMMENT ON FUNCTION pgr_bdAstar( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
     IS 'pgr_bdAstar(Deprecated signature)';
 
 COMMENT ON FUNCTION pgr_bdDijkstra( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)

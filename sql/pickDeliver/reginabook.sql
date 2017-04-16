@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -33,8 +33,8 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     customers_sql TEXT,
     max_vehicles INTEGER,
     capacity FLOAT,
-    speed FLOAT DEFAULT 1, 
-    max_cycles INTEGER DEFAULT 10, 
+    speed FLOAT DEFAULT 1,
+    max_cycles INTEGER DEFAULT 10,
 
     OUT seq INTEGER,
     OUT vehicle_id INTEGER,
@@ -73,7 +73,7 @@ BEGIN
             capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number, $$ || speed || $$ AS speed
             FROM customer_data WHERE id = 0 LIMIT 1
         $$;
---  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time 
+--  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
         p_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  $$ || max_cycles || $$ )),

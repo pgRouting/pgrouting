@@ -32,11 +32,11 @@ create or replace function pgr_vrpOneDepot(
 	vehicle_sql text,
 	cost_sql text,
 	depot_id integer,
-	 
-	OUT oid integer, 
-	OUT opos integer, 
-	OUT vid integer, 
-	OUT tarrival integer, 
+
+	OUT oid integer,
+	OUT opos integer,
+	OUT vid integer,
+	OUT tarrival integer,
 	OUT tdepart integer)
 returns setof record as
 'MODULE_PATHNAME', 'vrp'

@@ -36,10 +36,10 @@ declare
     rr record;
     pct float;
     debuglevel text;
-    
+
 begin
     -- find the closest edge within tol distance
-    execute 'select * from ' || _pgr_quote_ident(edges) || 
+    execute 'select * from ' || _pgr_quote_ident(edges) ||
             ' where st_dwithin(''' || pnt::text ||
             '''::geometry, the_geom, ' || tol || ') order by st_distance(''' || pnt::text ||
             '''::geometry, the_geom) asc limit 1' into rr;
@@ -90,7 +90,7 @@ declare
     nn integer;
     i integer;
     g geometry;
-    
+
 begin
     RAISE NOTICE 'Deperecated function: pgr_flipEdges';
     -- get the count of edges, and return if only one edge
@@ -139,7 +139,7 @@ declare
     t text;
     p geometry;
     g geometry[];
-    
+
 begin
     RAISE NOTICE 'Deperecated function: pgr_textToPoints';
     -- convert commas to space and split on ';'
@@ -171,7 +171,7 @@ $body$
 declare
     v integer[];
     g geometry;
-    
+
 begin
     RAISE NOTICE 'Deperecated function: pgr_pointsToVids';
     -- cycle through each point and locate the nearest edge and vertex on that edge

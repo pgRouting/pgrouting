@@ -144,7 +144,7 @@ DROP TYPE contraction_vertex;
  ---
  --- pgRouting provides geospatial routing functionality.
  --- http://pgrouting.org
- --- copyright 
+ --- copyright
  --- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  ---
  ---
@@ -256,7 +256,7 @@ DROP TYPE contraction_vertex;
             (NULL,NULL) when schema was not found.
  
     Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-   
+ 
    HISTORY
       2015/11/01 Changed to handle views and refactored
       Created: 2013/08/19  for handling schemas
@@ -287,7 +287,7 @@ DROP TYPE contraction_vertex;
  
      i := strpos(tab,'.');
      IF (i <> 0) THEN
-         sn := split_part(tab, '.',1); 
+         sn := split_part(tab, '.',1);
          tn := split_part(tab, '.',2);
      ELSE
          sn := current_schema;
@@ -295,19 +295,19 @@ DROP TYPE contraction_vertex;
      END IF;
  
  
-    SELECT schema_name INTO sname 
+    SELECT schema_name INTO sname
     FROM information_schema.schemata WHERE schema_name = sn;
  
      IF sname IS NOT NULL THEN -- found schema (as is)
-        SELECT table_name, table_type INTO tname, ttype 
-        FROM information_schema.tables 
+        SELECT table_name, table_type INTO tname, ttype
+        FROM information_schema.tables
         WHERE
                  table_type = ANY(var_types) and
                  table_schema = sname and
                  table_name = tn ;
          IF tname is NULL THEN
-             SELECT table_name, table_type INTO tname, ttype 
-             FROM information_schema.tables 
+             SELECT table_name, table_type INTO tname, ttype
+             FROM information_schema.tables
              WHERE
                  table_type  = ANY(var_types) and
                  table_schema = sname and
@@ -315,21 +315,21 @@ DROP TYPE contraction_vertex;
          END IF;
      END IF;
      IF sname is NULL or tname is NULL THEN --schema not found or table not found
-         SELECT schema_name INTO sname 
-         FROM information_schema.schemata 
+         SELECT schema_name INTO sname
+         FROM information_schema.schemata
          WHERE schema_name = lower(sn) ;
  
          IF sname IS NOT NULL THEN -- found schema (with lower caps)
-             SELECT table_name, table_type INTO tname, ttype 
-             FROM information_schema.tables 
+             SELECT table_name, table_type INTO tname, ttype
+             FROM information_schema.tables
              WHERE
                  table_type  =  ANY(var_types) and
                  table_schema = sname and
                  table_name= tn ;
-                 
+ 
             IF tname IS NULL THEN
-                 SELECT table_name, table_type INTO tname, ttype 
-                 FROM information_schema.tables 
+                 SELECT table_name, table_type INTO tname, ttype
+                 FROM information_schema.tables
                  WHERE
                      table_type  =  ANY(var_types) and
                      table_schema = sname and
@@ -700,14 +700,14 @@ DROP TYPE contraction_vertex;
  
  CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default false)
    RETURNS bool AS
-   $BODY$  
+   $BODY$
  
    DECLARE
    rec record;
    rec1 record;
    has_rcost boolean;
    safesql text;
-   BEGIN 
+   BEGIN
      IF (big) THEN
         RAISE EXCEPTION 'This function is for old style functions';
      END IF;
@@ -743,7 +743,7 @@ DROP TYPE contraction_vertex;
              USING ERRCODE = 'XX000';
          END IF;
      END IF;
-  
+ 
  
      IF fn IN ('astar') THEN
          BEGIN
@@ -798,7 +798,7 @@ DROP TYPE contraction_vertex;
          EXCEPTION
            WHEN OTHERS THEN
              has_rcost = false;
-             return has_rcost;  
+             return has_rcost;
        END;
        if (has_rcost) then
          IF (big) then
@@ -828,14 +828,14 @@ DROP TYPE contraction_vertex;
  
  /************************************************************************
  .. function:: _pgr_onError(errCond,reportErrs,functionname,msgerr,hinto,msgok)
-   
+ 
    If the error condition is is true, i.e., there is an error,
     it will raise a message based on the reportErrs:
    0: debug_      raise debug_
    1: report     raise notice
-   2: abort      throw a raise_exception  
-    Examples:  
-    
+   2: abort      throw a raise_exception
+    Examples:
+ 
  	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
                       'Two columns share the same name');
  	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
@@ -844,12 +844,12 @@ DROP TYPE contraction_vertex;
                       'Two columns share the same name', 'Idname and gname must be different',
                       'Column names are OK');
  
-    
+ 
     Author: Vicky Vergara <vicky_vergara@hotmail.com>>
  
    HISTORY
       Created: 2014/JUl/28  handling the errors, and have a more visual output
-   
+ 
  ************************************************************************/
  
  CREATE OR REPLACE FUNCTION _pgr_onError(
@@ -862,7 +862,7 @@ DROP TYPE contraction_vertex;
    RETURNS void AS
  $BODY$
  BEGIN
-   if errCond=true then 
+   if errCond=true then
       if reportErrs=0 then
         raise debug '----> PGR DEBUG in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
       else
@@ -882,23 +882,23 @@ DROP TYPE contraction_vertex;
  
  /************************************************************************
  .. function:: _pgr_msg(msgKind, fnName, msg)
-   
+ 
    It will raise a message based on the msgKind:
    0: debug_      raise debug_
    1: notice     raise notice
    anything else: report     raise notice
  
-    Examples:  
-    
+    Examples:
+ 
  	*	preforn _pgr_msg( 1, 'pgr_createToplogy', 'Starting a long process... ');
  	*	preforn _pgr_msg( 1, 'pgr_createToplogy');
  
-    
+ 
     Author: Vicky Vergara <vicky_vergara@hotmail.com>>
  
    HISTORY
       Created: 2014/JUl/28  handling the errors, and have a more visual output
-   
+ 
  ************************************************************************/
  
  CREATE OR REPLACE FUNCTION _pgr_msg(IN msgKind int, IN fnName text, IN msg text default '---->OK')
@@ -920,11 +920,11 @@ DROP TYPE contraction_vertex;
  .. function:: _pgr_getColumnType(tab,col,reportErrs,fname) returns text
  
      Returns:
-           type   the types of the registered column "col" in table "tab" or "sname.tname" 
+           type   the types of the registered column "col" in table "tab" or "sname.tname"
            NULL   when "tab"/"sname"/"tname" is not found or when "col" is not in table "tab"/"sname.tname"
      unless otherwise indicated raises debug_  on errors
-  
-  Examples:  
+ 
+  Examples:
  	* 	 select  _pgr_getColumnType('tab','col');
  	* 	 select  _pgr_getColumnType('myschema','mytable','col');
          	 execute 'select _pgr_getColumnType('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
@@ -933,7 +933,7 @@ DROP TYPE contraction_vertex;
     Author: Vicky Vergara <vicky_vergara@hotmail.com>>
  
    HISTORY
-      Created: 2014/JUL/28 
+      Created: 2014/JUL/28
  ************************************************************************/
  
  CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text,
@@ -946,7 +946,7 @@ DROP TYPE contraction_vertex;
      err boolean;
  BEGIN
  
-     EXECUTE 'select data_type  from information_schema.columns ' 
+     EXECUTE 'select data_type  from information_schema.columns '
              || 'where table_name = '||quote_literal(tname)
                   || ' and table_schema=' || quote_literal(sname)
                   || ' and column_name='||quote_literal(cname)
@@ -975,7 +975,7 @@ DROP TYPE contraction_vertex;
      naming record;
      err boolean;
  BEGIN
-   
+ 
      select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
      sname=naming.sname;
      tname=naming.tname;
@@ -995,16 +995,16 @@ DROP TYPE contraction_vertex;
  .. function:: _pgr_get_statement( sql ) returns the original statement if its a prepared statement
  
      Returns:
-           sname,vname  registered schemaname, vertices table name 
-     
-           
-  Examples:  
+           sname,vname  registered schemaname, vertices table name
+ 
+ 
+  Examples:
      select * from _pgr_dijkstra(_pgr_get_statament($1),$2,$3,$4);
  
     Author: Vicky Vergara <vicky_vergara@hotmail.com>>
  
    HISTORY
-      Created: 2014/JUL/27 
+      Created: 2014/JUL/27
  ************************************************************************/
  CREATE OR REPLACE FUNCTION _pgr_get_statement(o_sql text)
  RETURNS text AS
@@ -1027,19 +1027,19 @@ DROP TYPE contraction_vertex;
  .. function:: _pgr_checkVertTab(vertname,columnsArr,reportErrs) returns record of sname,vname
  
      Returns:
-           sname,vname  registered schemaname, vertices table name 
-     
+           sname,vname  registered schemaname, vertices table name
+ 
      if the table is not found will stop any further checking.
      if a column is missing, then its added as integer ---  (id also as integer but is bigserial when the vertices table is created with the pgr functions)
-           
-  Examples:  
+ 
+  Examples:
  	* 	execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
  	* 	execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
  
     Author: Vicky Vergara <vicky_vergara@hotmail.com>>
  
    HISTORY
-      Created: 2014/JUL/27 
+      Created: 2014/JUL/27
  ************************************************************************/
  CREATE OR REPLACE FUNCTION _pgr_checkVertTab(vertname text, columnsArr  text[],
      IN reportErrs int default 1, IN fnName text default '_pgr_checkVertTab',
@@ -1067,7 +1067,7 @@ DROP TYPE contraction_vertex;
            'Vertex Table: ' || vertname || ' not found',
            'Please create ' || vertname || ' using  _pgr_createTopology() or pgr_createVerticesTable()',
            'Vertex Table: ' || vertname || ' found');
-     
+ 
  
      perform _pgr_msg(msgKind, fnName, 'Checking columns of ' || vertname);
        FOREACH cname IN ARRAY columnsArr
@@ -1095,9 +1095,9 @@ DROP TYPE contraction_vertex;
  /************************************************************************
  .. function:: _pgr_createIndex(tab, col,indextype)
                _pgr_createIndex(sname,tname,colname,indextypes)
-               
+ 
     if the column is not indexed it creates a 'gist' index otherwise a 'btree' index
-    Examples:  
+    Examples:
  	* 	 select  _pgr_createIndex('tab','col','btree');
  	* 	 select  _pgr_createIndex('myschema','mytable','col','gist');
  	* 	 perform 'select _pgr_createIndex('||quote_literal('tab')||','||quote_literal('col')||','||quote_literal('btree'))' ;
@@ -1108,11 +1108,11 @@ DROP TYPE contraction_vertex;
     Postcondition:
        sname.tname.colname its indexed using the indextype
  
-   
+ 
     Author: Vicky Vergara <vicky_vergara@hotmail.com>>
  
    HISTORY
-      Created: 2014/JUL/28 
+      Created: 2014/JUL/28
  ************************************************************************/
  
  CREATE OR REPLACE FUNCTION _pgr_createIndex(
@@ -1136,10 +1136,10 @@ DROP TYPE contraction_vertex;
         perform _pgr_msg(msgKind, fnName);
      else
        if indext = 'gist' then
-         query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+         query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||'
                           on '||tabname||' using gist('||quote_ident(colname)||')';
        else
-         query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+         query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||'
                           on '||tabname||' using btree('||quote_ident(colname)||')';
        end if;
        perform _pgr_msg(msgKind, fnName, 'Adding index ' || tabname || '_' ||  colname || '_idx');
@@ -1184,11 +1184,11 @@ DROP TYPE contraction_vertex;
  /*
  .. function:: _pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
  Using tolerance to determine if its an existing point:
-     - Inserts a point into the vertices table "vertname" with the srid "srid", 
+     - Inserts a point into the vertices table "vertname" with the srid "srid",
  and returns
      - the id of the new point
      - the id of the existing point.
-    
+ 
  Tolerance is the minimal distance between existing points and the new point to create a new point.
  
  Last changes: 2013-03-22
@@ -1199,7 +1199,7 @@ DROP TYPE contraction_vertex;
  */
  
  CREATE OR REPLACE FUNCTION _pgr_pointToId(
-     point geometry, 
+     point geometry,
      tolerance double precision,
      vertname text,
      srid integer)
@@ -1219,7 +1219,7 @@ DROP TYPE contraction_vertex;
              || srid ||')) AS d, id, the_geom
      FROM '||_pgr_quote_ident(vertname)||'
      WHERE ST_DWithin(
-         the_geom, 
+         the_geom,
          ST_GeomFromText(
              ST_AsText(' || quote_literal(point::text) ||'),
              ' || srid || '),' || tolerance||')
@@ -1275,7 +1275,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
+     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], true, false, true) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1298,7 +1298,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
+     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false, true) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1322,7 +1322,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
+     SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1346,7 +1346,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost 
+     SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, false) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1370,7 +1370,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
+     SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1398,7 +1398,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.start_vid, a.end_vid, a.agg_cost 
+     SELECT a.start_vid, a.end_vid, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1418,7 +1418,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.start_vid, a.end_vid, a.agg_cost 
+     SELECT a.start_vid, a.end_vid, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1438,7 +1438,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.start_vid, a.end_vid, a.agg_cost 
+     SELECT a.start_vid, a.end_vid, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1458,7 +1458,7 @@ DROP TYPE contraction_vertex;
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  $BODY$
-     SELECT a.start_vid, a.end_vid, a.agg_cost 
+     SELECT a.start_vid, a.end_vid, a.agg_cost
      FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true) AS a;
  $BODY$
  LANGUAGE sql VOLATILE
@@ -1510,10 +1510,10 @@ DROP TYPE contraction_vertex;
  
  
  
- CREATE OR REPLACE FUNCTION pgr_floydWarshall(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE, 
+ CREATE OR REPLACE FUNCTION pgr_floydWarshall(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE,
    OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
    RETURNS SETOF RECORD AS
-  'MODULE_PATHNAME', 'floydWarshall'  
+  'MODULE_PATHNAME', 'floydWarshall'
      LANGUAGE c VOLATILE;
  
  
@@ -1758,9 +1758,9 @@ DROP TYPE contraction_vertex;
      distance FLOAT,
  
      directed BOOLEAN DEFAULT TRUE,
-     driving_side CHAR DEFAULT 'b', 
-     details BOOLEAN DEFAULT FALSE, 
-     equicost BOOLEAN DEFAULT FALSE, 
+     driving_side CHAR DEFAULT 'b',
+     details BOOLEAN DEFAULT FALSE,
+     equicost BOOLEAN DEFAULT FALSE,
  
      OUT seq INTEGER,
      OUT start_vid BIGINT,
@@ -1780,8 +1780,8 @@ DROP TYPE contraction_vertex;
      distance FLOAT,
  
      directed BOOLEAN DEFAULT TRUE,
-     driving_side CHAR DEFAULT 'b', 
-     details BOOLEAN DEFAULT FALSE, 
+     driving_side CHAR DEFAULT 'b',
+     details BOOLEAN DEFAULT FALSE,
  
      OUT seq INTEGER,
      OUT node BIGINT,
@@ -1847,10 +1847,10 @@ DROP TYPE contraction_vertex;
      'MODULE_PATHNAME', 'kshortest_path'
      LANGUAGE c STABLE STRICT;
  
- -- V2 the graph is directed and there are no heap paths 
+ -- V2 the graph is directed and there are no heap paths
  CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid integer, end_vid integer, k integer, has_rcost boolean)
    RETURNS SETOF pgr_costresult3 AS
-   $BODY$  
+   $BODY$
    DECLARE
    has_reverse boolean;
    sql TEXT;
@@ -1862,14 +1862,14 @@ DROP TYPE contraction_vertex;
           IF (has_rcost) THEN
             -- user says that it has reverse_cost but its not true
             RAISE EXCEPTION 'has_reverse_cost set to true but reverse_cost not found';
-          ELSE  
+          ELSE
             -- user says that it does not have reverse_cost but it does have it
             -- to ignore we remove reverse_cost from the query
             sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
           END IF;
        END IF;
  
-       RETURN query SELECT ((row_number() over()) -1)::integer  AS seq,  (path_id - 1)::integer AS id1, node::integer AS id2, edge::integer AS id3, cost 
+       RETURN query SELECT ((row_number() over()) -1)::integer  AS seq,  (path_id - 1)::integer AS id1, node::integer AS id2, edge::integer AS id3, cost
              FROM _pgr_ksp(sql::text, start_vid, end_vid, k, TRUE, FALSE) WHERE path_id <= k;
    END
    $BODY$
@@ -1898,10 +1898,10 @@ DROP TYPE contraction_vertex;
  
  
  CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
-     edges_sql TEXT, 
+     edges_sql TEXT,
      points_sql TEXT,
-     start_pid BIGINT, 
-     end_pid BIGINT, 
+     start_pid BIGINT,
+     end_pid BIGINT,
      k INTEGER,
  
      directed BOOLEAN DEFAULT TRUE,
@@ -1919,7 +1919,7 @@ DROP TYPE contraction_vertex;
  
  
  CREATE OR REPLACE FUNCTION _pgr_unnest_matrix(matrix float8[][], OUT start_vid integer, OUT end_vid integer, out agg_cost float8)
- RETURNS SETOF record AS 
+ RETURNS SETOF record AS
  
  $body$
  DECLARE
@@ -1965,9 +1965,9 @@ DROP TYPE contraction_vertex;
      IF endpt = -1 THEN endpt := startpt;
      END IF;
  
-     
+ 
      RETURN QUERY
-     WITH 
+     WITH
      result AS (
          SELECT * FROM pgr_TSP(
          $$SELECT * FROM ___tmp2 $$,
@@ -2062,7 +2062,7 @@ DROP TYPE contraction_vertex;
  declare
      sql text;
      r record;
-     
+ 
  begin
      dmatrix := array[]::double precision[];
      ids := array[]::integer[];
@@ -2142,7 +2142,7 @@ DROP TYPE contraction_vertex;
  -----------------------------------------------------------------------
  -- Core function for alpha shape computation.
  -- The sql should return vertex ids and x,y values. Return ordered
- -- vertex ids. 
+ -- vertex ids.
  -----------------------------------------------------------------------
  CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
      RETURNS SETOF record
@@ -2171,7 +2171,7 @@ DROP TYPE contraction_vertex;
  		geoms := array[]::geometry[];
  		i := 1;
  
- 		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''', ' || alpha || ')' 
+ 		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''', ' || alpha || ')'
  		LOOP
  			x[i] = vertex_result.x;
  			y[i] = vertex_result.y;
@@ -3546,7 +3546,7 @@ DROP TYPE contraction_vertex;
  CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
      orders_sql TEXT,
      vehicles_sql TEXT,
-     max_cycles INTEGER DEFAULT 10, 
+     max_cycles INTEGER DEFAULT 10,
  
      OUT seq INTEGER,
      OUT vehicle_number INTEGER,
@@ -3572,7 +3572,7 @@ DROP TYPE contraction_vertex;
      orders_sql TEXT,
      vehicles_sql TEXT,
      matrix_cell_sql TEXT,
-     max_cycles INTEGER DEFAULT 10, 
+     max_cycles INTEGER DEFAULT 10,
  
      OUT seq INTEGER,
      OUT vehicle_number INTEGER,
@@ -3601,8 +3601,8 @@ DROP TYPE contraction_vertex;
      customers_sql TEXT,
      max_vehicles INTEGER,
      capacity FLOAT,
-     speed FLOAT DEFAULT 1, 
-     max_cycles INTEGER DEFAULT 10, 
+     speed FLOAT DEFAULT 1,
+     max_cycles INTEGER DEFAULT 10,
  
      OUT seq INTEGER,
      OUT vehicle_id INTEGER,
@@ -3641,7 +3641,7 @@ DROP TYPE contraction_vertex;
              capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number, $$ || speed || $$ AS speed
              FROM customer_data WHERE id = 0 LIMIT 1
          $$;
- --  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time 
+ --  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time
      final_sql = $$ WITH
          customer_data AS ($$ || customers_sql || $$ ),
          p_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  $$ || max_cycles || $$ )),
@@ -3671,11 +3671,11 @@ DROP TYPE contraction_vertex;
  	vehicle_sql text,
  	cost_sql text,
  	depot_id integer,
- 	 
- 	OUT oid integer, 
- 	OUT opos integer, 
- 	OUT vid integer, 
- 	OUT tarrival integer, 
+ 
+ 	OUT oid integer,
+ 	OUT opos integer,
+ 	OUT vid integer,
+ 	OUT tarrival integer,
  	OUT tdepart integer)
  returns setof record as
  'MODULE_PATHNAME', 'vrp'
@@ -4030,8 +4030,8 @@ DROP TYPE contraction_vertex;
  
  CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
      sql text,
-     via_edges bigint[], 
-     fraction float[], 
+     via_edges bigint[],
+     fraction float[],
      directed BOOLEAN DEFAULT TRUE,
  
      OUT seq INTEGER,
@@ -4067,7 +4067,7 @@ DROP TYPE contraction_vertex;
            WHEN OTHERS THEN
              has_rcost = false;
       END;
-  
+ 
  
        IF array_length(via_edges, 1) != array_length(fraction, 1) then
          RAISE EXCEPTION 'The length of via_edges is different of length of via_edges';
@@ -4077,11 +4077,11 @@ DROP TYPE contraction_vertex;
        LOOP
            IF fraction[i] = 0 THEN
                sql_on_vertex := 'SELECT source FROM ('|| sql || ') __a where id = ' || via_edges[i];
-               EXECUTE sql_on_vertex into dummyrec; 
+               EXECUTE sql_on_vertex into dummyrec;
                via_vertices[i] = dummyrec.source;
            ELSE IF fraction[i] = 1 THEN
                sql_on_vertex := 'SELECT target FROM ('|| sql || ') __a where id = ' || via_edges[i];
-               EXECUTE sql_on_vertex into dummyrec; 
+               EXECUTE sql_on_vertex into dummyrec;
                via_vertices[i] = dummyrec.target;
            ELSE
                via_vertices[i] = -i;
@@ -4095,7 +4095,7 @@ DROP TYPE contraction_vertex;
                                reverse_cost *  ' || fraction[i] || '  AS reverse_cost
                            FROM (SELECT * FROM (' || sql || ') __b' || i || ' where id = ' || via_edges[i] || ') __a' || i ||')';
                        v_union = ' UNION ';
-                ELSE 
+                ELSE
                     sql_new_vertices = sql_new_vertices || v_union ||
                            '(SELECT id, source, ' ||  -i || ' AS target, cost * ' || fraction[i] || ' AS cost
                            FROM (SELECT * FROM (' || sql || ') __b' || i || ' WHERE id = ' || via_edges[i] || ') __a' || i ||')
@@ -4109,7 +4109,7 @@ DROP TYPE contraction_vertex;
       END LOOP;
  
       IF sql_new_vertices = ' ' THEN
-          new_edges := sql; 
+          new_edges := sql;
       ELSE
           IF has_rcost THEN
              new_edges:= 'WITH
@@ -4128,11 +4128,11 @@ DROP TYPE contraction_vertex;
                        WINDOW w AS (PARTITION BY id  ORDER BY reverse_cost ASC) ) as n2
                        WHERE source IS NOT NULL),
                     more_union AS ( SELECT * from (
-                        (SELECT * FROM original) 
-                              UNION 
-                        (SELECT * FROM the_union) 
-                              UNION 
-                        (SELECT * FROM first_part) 
+                        (SELECT * FROM original)
+                              UNION
+                        (SELECT * FROM the_union)
+                              UNION
+                        (SELECT * FROM first_part)
                               UNION
                         (SELECT * FROM second_part) ) _union )
                    SELECT *  FROM more_union';
@@ -4146,10 +4146,10 @@ DROP TYPE contraction_vertex;
                        WINDOW w AS (PARTITION BY id  ORDER BY cost ASC) ) as n2
                        WHERE target IS NOT NULL ),
                     more_union AS ( SELECT * from (
-                        (SELECT * FROM original) 
-                              UNION 
-                        (SELECT * FROM the_union) 
-                              UNION 
+                        (SELECT * FROM original)
+                              UNION
+                        (SELECT * FROM the_union)
+                              UNION
                         (SELECT * FROM first_part) ) _union )
                    SELECT *  FROM more_union';
            END IF;
@@ -4185,7 +4185,7 @@ DROP TYPE contraction_vertex;
  2014-july: fixes issue 211
  */
  
- CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision, 
+ CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision,
  		   the_geom text default 'the_geom', id text default 'id',
  		   source text default 'source', target text default 'target',rows_where text default 'true',
  		   clean boolean default FALSE)
@@ -4230,7 +4230,7 @@ DROP TYPE contraction_vertex;
  BEGIN
      msgKind = 1; -- notice
      fnName = 'pgr_createTopology';
-     raise notice 'PROCESSING:'; 
+     raise notice 'PROCESSING:';
      raise notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
      execute 'show client_min_messages' into debuglevel;
  
@@ -4244,7 +4244,7 @@ DROP TYPE contraction_vertex;
          tabname=sname||'.'||tname;
          vname=tname||'_vertices_pgr';
          vertname= sname||'.'||vname;
-         rows_where = ' AND ('||rows_where||')'; 
+         rows_where = ' AND ('||rows_where||')';
        raise DEBUG '     --> OK';
  
  
@@ -4312,7 +4312,7 @@ DROP TYPE contraction_vertex;
  
  
  
-     BEGIN 
+     BEGIN
          -- issue #193 & issue #210 & #213
          -- this sql is for trying out the where clause
          -- the select * is to avoid any column name conflicts
@@ -4320,7 +4320,7 @@ DROP TYPE contraction_vertex;
          -- if the where clasuse is ill formed it will be caught in the exception
          sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
          EXECUTE sql into dummyRec;
-         -- end 
+         -- end
  
          -- if above where clasue works this one should work
          -- any error will be caught by the exception also
@@ -4328,23 +4328,23 @@ DROP TYPE contraction_vertex;
  	    idname||' IS NOT NULL)=false '||rows_where;
          EXECUTE SQL  into notincluded;
  
-         if clean then 
+         if clean then
              raise debug 'Cleaning previous Topology ';
                 execute 'UPDATE ' || _pgr_quote_ident(tabname) ||
-                ' SET '||sourcename||' = NULL,'||targetname||' = NULL'; 
-         else 
+                ' SET '||sourcename||' = NULL,'||targetname||' = NULL';
+         else
              raise debug 'Creating topology for edges with non assigned topology';
              if rows_where=' AND (true)' then
-                 rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)'; 
+                 rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)';
              end if;
          end if;
          -- my thoery is that the select Count(*) will never go through here
-         EXCEPTION WHEN OTHERS THEN  
+         EXCEPTION WHEN OTHERS THEN
               RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
-              RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition'; 
+              RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
               RAISE NOTICE '%',sql;
-              RETURN 'FAIL'; 
-     END;    
+              RETURN 'FAIL';
+     END;
  
      BEGIN
           raise DEBUG 'initializing %',vertname;
@@ -4353,7 +4353,7 @@ DROP TYPE contraction_vertex;
           emptied = false;
           set client_min_messages  to warning;
           IF sname=naming.sname AND vname=naming.tname  THEN
-             if clean then 
+             if clean then
                  execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
                  execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
                  emptied = true;
@@ -4369,12 +4369,12 @@ DROP TYPE contraction_vertex;
           END IF;
           execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
           execute 'set client_min_messages  to '|| debuglevel;
-          raise DEBUG  '  ------>OK'; 
-          EXCEPTION WHEN OTHERS THEN  
+          raise DEBUG  '  ------>OK';
+          EXCEPTION WHEN OTHERS THEN
               RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
               RAISE NOTICE 'ERROR: something went wrong when initializing the verties table';
-              RETURN 'FAIL'; 
-     END;       
+              RETURN 'FAIL';
+     END;
  
  
  
@@ -4395,9 +4395,9 @@ DROP TYPE contraction_vertex;
  
              source_id := _pgr_pointToId(points.source, tolerance,vertname,srid);
              target_id := _pgr_pointToId(points.target, tolerance,vertname,srid);
-             BEGIN                         
-                 sql := 'UPDATE ' || _pgr_quote_ident(tabname) || 
-                     ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text || 
+             BEGIN
+                 sql := 'UPDATE ' || _pgr_quote_ident(tabname) ||
+                     ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text ||
                      ' WHERE ' || idname || ' =  ' || points.id::text;
  
                  IF sql IS NULL THEN
@@ -4405,10 +4405,10 @@ DROP TYPE contraction_vertex;
                  ELSE
                      EXECUTE sql;
                  END IF;
-                 EXCEPTION WHEN OTHERS THEN 
+                 EXCEPTION WHEN OTHERS THEN
                      RAISE NOTICE '%', SQLERRM;
                      RAISE NOTICE '%',sql;
-                     RETURN 'FAIL'; 
+                     RETURN 'FAIL';
              end;
          END LOOP;
          raise notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
@@ -4425,7 +4425,7 @@ DROP TYPE contraction_vertex;
  
  $BODY$
  LANGUAGE plpgsql VOLATILE STRICT;
- COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text,boolean) 
+ COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text,boolean)
  IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', target:=''target'',rows_where:=''true'' - fills columns source and target in the geometry table and creates a vertices table for selected rows';
  
  
@@ -5007,7 +5007,7 @@ DROP TYPE contraction_vertex;
  IS 'args:edge_table , s_in_rules , s_out_rules, t_in_rules , t_out_rules, two_way_if_null:= true, oneway:=''oneway'',source:= ''source'',target:=''target'' - Analizes the directionality of the edges based on the rules';
  
  
- /* 
+ /*
  
  This function should not be used directly. Use assign_vertex_id instead
  Inserts a point into the vertices tablei "vname" with the srid "srid", and return an id
@@ -5027,7 +5027,7 @@ DROP TYPE contraction_vertex;
  .. function:: pgr_createVerticesTable(edge_table text, the_geom text, source text default 'source', target text default 'target')
  
    Based on "source" and "target" columns creates the vetrices_pgr table for edge_table
-   Ignores rows where "source" or "target" have NULL values 
+   Ignores rows where "source" or "target" have NULL values
  
    Author: Vicky Vergara <vicky_vergara@hotmail,com>
  
@@ -5056,7 +5056,7 @@ DROP TYPE contraction_vertex;
      sourcename text;
      targetname text;
      query text;
-     ecnt bigint; 
+     ecnt bigint;
      srid integer;
      sourcetype text;
      targettype text;
@@ -5071,9 +5071,9 @@ DROP TYPE contraction_vertex;
      err bool;
  
  
- BEGIN 
+ BEGIN
    fnName = 'pgr_createVerticesTable';
-   raise notice 'PROCESSING:'; 
+   raise notice 'PROCESSING:';
    raise notice 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
    execute 'show client_min_messages' into debuglevel;
  
@@ -5090,7 +5090,7 @@ DROP TYPE contraction_vertex;
      vertname= sname||'.'||vname;
      rows_where = ' AND ('||rows_where||')';
    raise debug '--> Edge table exists: OK';
-    
+ 
    raise debug 'Checking column names';
      select * into sourcename from _pgr_getColumnName(sname, tname,source,2, fnName);
      select * into targetname from _pgr_getColumnName(sname, tname,target,2, fnName);
@@ -5151,7 +5151,7 @@ DROP TYPE contraction_vertex;
      -- if the where clasuse is ill formed it will be caught in the exception
      sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
      EXECUTE sql into dummyRec;
-     -- end 
+     -- end
  
      -- if above where clasue works this one should work
      -- any error will be caught by the exception also
@@ -5159,7 +5159,7 @@ DROP TYPE contraction_vertex;
  		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
      raise debug '%',sql;
      EXECUTE SQL  into notincluded;
-     EXCEPTION WHEN OTHERS THEN  
+     EXCEPTION WHEN OTHERS THEN
           RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
           RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
           RAISE NOTICE '%',sql;
@@ -5168,7 +5168,7 @@ DROP TYPE contraction_vertex;
  
  
  
-     
+ 
    BEGIN
       raise DEBUG 'initializing %',vertname;
         execute 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' into naming;
@@ -5183,25 +5183,25 @@ DROP TYPE contraction_vertex;
                  quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
         execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||_pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
         execute 'set client_min_messages  to '|| debuglevel;
-        raise DEBUG  '  ------>OK'; 
-        EXCEPTION WHEN OTHERS THEN  
+        raise DEBUG  '  ------>OK';
+        EXCEPTION WHEN OTHERS THEN
           RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
           RAISE NOTICE 'ERROR: Initializing vertex table';
           RAISE NOTICE '%',sql;
           RETURN 'FAIL';
-   END;       
+   END;
  
    BEGIN
         raise notice 'Populating %, please wait...',vertname;
         sql= 'with
  		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
- 		                  ' where ('|| gname || ' IS NULL 
-                                     or '||sourcename||' is null 
-                                     or '||targetname||' is null)=false 
+ 		                  ' where ('|| gname || ' IS NULL
+                                     or '||sourcename||' is null
+                                     or '||targetname||' is null)=false
                                       '||rows_where||')
  			union (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
- 			          ' where ('|| gname || ' IS NULL 
-                                     or '||sourcename||' is null 
+ 			          ' where ('|| gname || ' IS NULL
+                                     or '||sourcename||' is null
                                      or '||targetname||' is null)=false
                                       '||rows_where||'))
  		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
@@ -5211,7 +5211,7 @@ DROP TYPE contraction_vertex;
         execute sql;
         GET DIAGNOSTICS totcount = ROW_COUNT;
  
-        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b 
+        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
              where '||sourcename||'=b.id and '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
         RAISE debug '%',sql;
         execute sql into included;
@@ -5227,7 +5227,7 @@ DROP TYPE contraction_vertex;
         Raise notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname),_pgr_quote_ident(vertname);
         raise notice '----------------------------------------------';
      END;
-     
+ 
      RETURN 'OK';
   EXCEPTION WHEN OTHERS THEN
     RAISE NOTICE 'Unexpected error %', SQLERRM; -- issue 210,211
@@ -5236,11 +5236,11 @@ DROP TYPE contraction_vertex;
  $BODY$
    LANGUAGE plpgsql VOLATILE STRICT;
  
- COMMENT ON FUNCTION pgr_createVerticesTable(text,text,text,text,text) 
+ COMMENT ON FUNCTION pgr_createVerticesTable(text,text,text,text,text)
  IS 'args: edge_table, the_geom:=''the_geom'',source:=''source'', target:=''target'' rows_where:=''true'' - creates a vertices table based on the source and target identifiers for selected rows';
  
  
- CREATE OR REPLACE FUNCTION pgr_nodeNetwork(edge_table text, tolerance double precision, 
+ CREATE OR REPLACE FUNCTION pgr_nodeNetwork(edge_table text, tolerance double precision,
  			id text default 'id', the_geom text default 'the_geom', table_ending text default 'noded',
              rows_where text DEFAULT ''::text, outall boolean DEFAULT false) RETURNS text AS
  $BODY$
@@ -5269,10 +5269,10 @@ DROP TYPE contraction_vertex;
      geomtype text;
      debuglevel text;
      rows_where text;
-    
+ 
  
  BEGIN
-   raise notice 'PROCESSING:'; 
+   raise notice 'PROCESSING:';
    raise notice 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
      edge_table, tolerance, id,  the_geom, table_ending, rows_where, outall;
    raise notice 'Performing checks, please wait .....';
@@ -5289,7 +5289,7 @@ DROP TYPE contraction_vertex;
      ELSE
  	RAISE DEBUG '  -----> OK';
      END IF;
-   
+ 
      intab=sname||'.'||tname;
      outname=tname||'_'||table_ending;
      outtab= sname||'.'||outname;
@@ -5297,17 +5297,17 @@ DROP TYPE contraction_vertex;
      rows_where = CASE WHEN length(rows_where) > 2 THEN ' WHERE (' || rows_where || ')' ELSE '' END;
    END;
  
-   BEGIN 
+   BEGIN
         raise DEBUG 'Checking id column "%" columns in  % ',id,intab;
         EXECUTE 'select _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(id)||')' INTO n_pkey;
         IF n_pkey is NULL then
            raise notice  'ERROR: id column "%"  not found in %',id,intab;
            RETURN 'FAIL';
         END IF;
-   END; 
+   END;
  
  
-   BEGIN 
+   BEGIN
         raise DEBUG 'Checking id column "%" columns in  % ',the_geom,intab;
         EXECUTE 'select _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(the_geom)||')' INTO n_geom;
         IF n_geom is NULL then
@@ -5320,8 +5320,8 @@ DROP TYPE contraction_vertex;
  	raise notice  'ERROR: id and the_geom columns have the same name "%" in %',n_pkey,intab;
          RETURN 'FAIL';
    END IF;
-  
-   BEGIN 
+ 
+   BEGIN
         	raise DEBUG 'Checking the SRID of the geometry "%"', n_geom;
         	EXECUTE 'SELECT ST_SRID(' || quote_ident(n_geom) || ') as srid '
            		|| ' FROM ' || _pgr_quote_ident(intab)
@@ -5340,9 +5340,9 @@ DROP TYPE contraction_vertex;
  
      BEGIN
        RAISE DEBUG 'Checking "%" column in % is indexed',n_pkey,intab;
-       if (_pgr_isColumnIndexed(intab,n_pkey)) then 
+       if (_pgr_isColumnIndexed(intab,n_pkey)) then
  	RAISE DEBUG '  ------>OK';
-       else 
+       else
          RAISE DEBUG ' ------> Adding  index "%_%_idx".',n_pkey,intab;
  
  	set client_min_messages  to warning;
@@ -5353,9 +5353,9 @@ DROP TYPE contraction_vertex;
  
      BEGIN
        RAISE DEBUG 'Checking "%" column in % is indexed',n_geom,intab;
-       if (_pgr_iscolumnindexed(intab,n_geom)) then 
+       if (_pgr_iscolumnindexed(intab,n_geom)) then
  	RAISE DEBUG '  ------>OK';
-       else 
+       else
          RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',intab,n_geom;
  	set client_min_messages  to warning;
          execute 'CREATE INDEX '
@@ -5382,8 +5382,8 @@ DROP TYPE contraction_vertex;
                  quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
         execute 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||'  USING GIST ('||quote_ident(n_geom)||')';
  	execute 'set client_min_messages  to '|| debuglevel;
-        raise DEBUG  '  ------>OK'; 
-     END;  
+        raise DEBUG  '  ------>OK';
+     END;
  ----------------
  
  
@@ -5400,22 +5400,22 @@ DROP TYPE contraction_vertex;
  
  --    -- First creates temp table with intersection points
      p_ret = 'create temp table intergeom on commit drop as (
-         select l1.' || quote_ident(n_pkey) || ' as l1id, 
-                l2.' || quote_ident(n_pkey) || ' as l2id, 
+         select l1.' || quote_ident(n_pkey) || ' as l1id,
+                l2.' || quote_ident(n_pkey) || ' as l2id,
  	       l1.' || quote_ident(n_geom) || ' as line,
  	       _pgr_startpoint(l2.' || quote_ident(n_geom) || ') as source,
  	       _pgr_endpoint(l2.' || quote_ident(n_geom) || ') as target,
-                st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
-         from (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l1 
-              join (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l2 
+                st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom
+         from (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l1
+              join (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l2
               on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
-         'where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and 
- 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and 
- 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false and 
- 	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and 
+         'where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and
+ 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and
+ 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false and
+ 	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and
  	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false  )';
-     raise debug '%',p_ret;	
-     EXECUTE p_ret;	
+     raise debug '%',p_ret;
+     EXECUTE p_ret;
  
      -- second temp table with locus (index of intersection point on the line)
      -- to avoid updating the previous table
@@ -5423,7 +5423,7 @@ DROP TYPE contraction_vertex;
  --    drop table if exists inter_loc;
  
  --HAD TO CHANGE THIS QUERY
- -- p_ret= 'create temp table inter_loc on commit drop as ( 
+ -- p_ret= 'create temp table inter_loc on commit drop as (
  --        select l1id, l2id, ' || vst_line_locate_point || '(line,point) as locus from (
  --        select DISTINCT l1id, l2id, line, (ST_DumpPoints(geom)).geom as point from intergeom) as foo
  --        where ' || vst_line_locate_point || '(line,point)<>0 and ' || vst_line_locate_point || '(line,point)<>1)';
@@ -5432,22 +5432,22 @@ DROP TYPE contraction_vertex;
           union
          (select l1id, l2id, ' || vst_line_locate_point || '(line,target) as locus from intergeom)) as foo
          where locus<>0 and locus<>1)';
-     raise debug  '%',p_ret;	
-     EXECUTE p_ret;	
+     raise debug  '%',p_ret;
+     EXECUTE p_ret;
  
      -- index on l1id
      create index inter_loc_id_idx on inter_loc(l1id);
  
-     -- Then computes the intersection on the lines subset, which is much smaller than full set 
+     -- Then computes the intersection on the lines subset, which is much smaller than full set
      -- as there are very few intersection points
  
  --- outab needs to be formally created with id, old_id, subid,the_geom, source,target
  ---  so it can be inmediatly be used with createTopology
  
  --   EXECUTE 'drop table if exists ' || _pgr_quote_ident(outtab);
- --   EXECUTE 'create table ' || _pgr_quote_ident(outtab) || ' as 
+ --   EXECUTE 'create table ' || _pgr_quote_ident(outtab) || ' as
       P_RET = 'insert into '||_pgr_quote_ident(outtab)||' (old_id,sub_id,'||quote_ident(n_geom)||') (  with cut_locations as (
-            select l1id as lid, locus 
+            select l1id as lid, locus
             from inter_loc
             -- then generates start and end locus for each line that have to be cut buy a location point
             UNION ALL
@@ -5457,24 +5457,24 @@ DROP TYPE contraction_vertex;
             select i.l1id  as lid, 1 as locus
             from inter_loc i left join ' || _pgr_quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
             order by lid, locus
-        ), 
-        -- we generate a row_number index column for each input line 
-        -- to be able to self-join the table to cut a line between two consecutive locations 
+        ),
+        -- we generate a row_number index column for each input line
+        -- to be able to self-join the table to cut a line between two consecutive locations
         loc_with_idx as (
             select lid, locus, row_number() over (partition by lid order by locus) as idx
             from cut_locations
-        ) 
+        )
         -- finally, each original line is cut with consecutive locations using linear referencing functions
-        select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || ' 
+        select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || '
         from loc_with_idx loc1 join loc_with_idx loc2 using (lid) join ' || _pgr_quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = loc1.lid)
         where loc2.idx = loc1.idx+1
             -- keeps only linestring geometries
             and geometryType(' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'') ';
-     raise debug  '%',p_ret;	
-     EXECUTE p_ret;	
+     raise debug  '%',p_ret;
+     EXECUTE p_ret;
  	GET DIAGNOSTICS splits = ROW_COUNT;
          execute 'with diff as (select distinct old_id from '||_pgr_quote_ident(outtab)||' )
-                  select count(*) from diff' into touched; 
+                  select count(*) from diff' into touched;
  	-- here, it misses all original line that did not need to be cut by intersection points: these lines
  	-- are already clean
  	-- inserts them in the final result: all lines which gid is not in the res table.
@@ -5532,9 +5532,9 @@ DROP TYPE contraction_vertex;
          rec_count record;
          rec_single record;
          graph_id integer;
-         gids int [];   
+         gids int [];
  
- BEGIN   
+ BEGIN
          raise notice 'Processing:';
          raise notice 'pgr_brokenGraph(''%'',''%'',''%'',''%'',''%'',''%'')', edge_table,id,source,target,subgraph,rows_where;
          raise notice 'Performing initial checks, please hold on ...';
@@ -5549,7 +5549,7 @@ DROP TYPE contraction_vertex;
                  IF schema_name is null then
                          raise notice 'no schema';
                          return 'FAIL';
-                 else 
+                 else
                          if table_name is null then
                                  raise notice 'no table';
                                  return 'FAIL';
@@ -5604,7 +5604,7 @@ DROP TYPE contraction_vertex;
          Raise Notice 'Starting - Checking temporary column';
          Begin
                  raise debug 'Checking Checking temporary columns existance';
-                 
+ 
                  While True
                          Loop
                                  execute 'select * from pgr_isColumnInTable('|| quote_literal(table_schema_name) ||', '|| quote_literal(garbage) ||')' into naming;
@@ -5628,7 +5628,7 @@ DROP TYPE contraction_vertex;
                  EXECUTE 'select count(*) as count from '|| pgr_quote_ident(table_schema_name) ||' where '|| rows_where ||'' into rec_count;
                  if rec_count.count = 0 then
                          RETURN 'rows_where condition generated 0 rows';
-                 end if; 
+                 end if;
  
                  WHILE TRUE
                          LOOP
@@ -5656,7 +5656,7 @@ DROP TYPE contraction_vertex;
                                                          EXIT;
                                                  END IF;
                                          END LOOP;
-                                 
+ 
                                  ------ Following is to exit the while loop. 0 means no more -1 id.
                                  EXECUTE 'SELECT COUNT(*) AS count FROM '|| pgr_quote_ident(table_schema_name) ||' WHERE '|| rows_where ||' AND ' || pgr_quote_ident(subgraph) || ' = -1' INTO rec_count;
                                  If (rec_count.count = 0) THEN
@@ -5823,7 +5823,7 @@ DROP TYPE contraction_vertex;
  
  CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text,OUT sname text,OUT tname text)
  RETURNS RECORD AS
- $BODY$ 
+ $BODY$
  BEGIN
      raise notice 'pgr_getTableName: This function will no longer be soported';
      select * from _pgr_getTableName(tab, 0, 'pgr_getTableName') into sname,tname;
@@ -5984,7 +5984,7 @@ DROP TYPE contraction_vertex;
          END IF;
      END IF;
  
-     RETURN query SELECT seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost 
+     RETURN query SELECT seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
      FROM pgr_astar(sql, ARRAY[$2], ARRAY[$3], directed);
  END
  $BODY$
@@ -6093,7 +6093,7 @@ DROP TYPE contraction_vertex;
          SELECT ARRAY(SELECT DISTINCT UNNEST(targets) ORDER BY 1) INTO targets;
  
          sseq = 0; i = 1;
-         FOR result IN 
+         FOR result IN
              SELECT seq, a.end_vid::INTEGER AS id1, a.node::INTEGER AS i2, a.edge::INTEGER AS id3, cost
              FROM pgr_dijkstra(new_sql, source, targets, directed) a ORDER BY a.end_vid, seq LOOP
              WHILE (result.id1 != targets[i]) LOOP
@@ -6185,7 +6185,7 @@ DROP TYPE contraction_vertex;
      SELECT ARRAY(SELECT DISTINCT UNNEST(targets) ORDER BY 1) INTO targets;
  
      sseq = 0; i = 1;
-     FOR result IN 
+     FOR result IN
          SELECT ((row_number() over()) -1)::INTEGER, a.start_vid::INTEGER, a.end_vid::INTEGER, agg_cost
          FROM pgr_dijkstraCost(new_sql, source, targets, directed) a ORDER BY end_vid LOOP
          WHILE (result.id2 != targets[i]) LOOP
@@ -6246,10 +6246,10 @@ DROP TYPE contraction_vertex;
      rr record;
      pct float;
      debuglevel text;
-     
+ 
  begin
      -- find the closest edge within tol distance
-     execute 'select * from ' || _pgr_quote_ident(edges) || 
+     execute 'select * from ' || _pgr_quote_ident(edges) ||
              ' where st_dwithin(''' || pnt::text ||
              '''::geometry, the_geom, ' || tol || ') order by st_distance(''' || pnt::text ||
              '''::geometry, the_geom) asc limit 1' into rr;
@@ -6300,7 +6300,7 @@ DROP TYPE contraction_vertex;
      nn integer;
      i integer;
      g geometry;
-     
+ 
  begin
      RAISE NOTICE 'Deperecated function: pgr_flipEdges';
      -- get the count of edges, and return if only one edge
@@ -6349,7 +6349,7 @@ DROP TYPE contraction_vertex;
      t text;
      p geometry;
      g geometry[];
-     
+ 
  begin
      RAISE NOTICE 'Deperecated function: pgr_textToPoints';
      -- convert commas to space and split on ';'
@@ -6381,7 +6381,7 @@ DROP TYPE contraction_vertex;
  declare
      v integer[];
      g geometry;
-     
+ 
  begin
      RAISE NOTICE 'Deperecated function: pgr_pointsToVids';
      -- cycle through each point and locate the nearest edge and vertex on that edge
@@ -6408,7 +6408,7 @@ DROP TYPE contraction_vertex;
  */
  declare
      r record;
-     
+ 
  begin
      RAISE NOTICE 'Deprecated function pgr_pointsToDMatrix';
      dmatrix := array[]::double precision[];
@@ -6418,7 +6418,7 @@ DROP TYPE contraction_vertex;
      for r in with nodes as (select row_number() over()::integer as id, p from (select unnest(pnts) as p) as foo)
          -- compute a row of distances
          select i, array_agg(dist) as arow from (
-             select a.id as i, b.id as j, 
+             select a.id as i, b.id as j,
                  case when mode=0
                      then st_distance(a.p, b.p)
                      else st_distance_sphere(a.p, b.p)
@@ -6499,7 +6499,7 @@ DROP TYPE contraction_vertex;
  
          -- compute kdijkstra() for this row
          for rr in execute 'select * from pgr_dijkstracost($1, $2, $3, false)'
-                   using 'select id, source, target, cost from ' || edges || 
+                   using 'select id, source, target, cost from ' || edges ||
                          ' where the_geom && ''' || bbox::text || '''::geometry'::text, vids[i], vids[i+1:nn] loop
  
              -- TODO need to check that all node were reachable from source
@@ -6580,7 +6580,7 @@ DROP TYPE contraction_vertex;
      DROP TABLE IF EXISTS __x___y____temp;
      RETURN dmatrix;
  
-     EXCEPTION WHEN others THEN 
+     EXCEPTION WHEN others THEN
         DROP TABLE IF EXISTS __x___y____temp;
         raise exception '% %', SQLERRM, SQLSTATE;
  END
@@ -6641,7 +6641,7 @@ DROP TYPE contraction_vertex;
  
        sql = edges_sql;
        IF (has_reverse != has_rcost) THEN
-          IF (has_reverse) THEN 
+          IF (has_reverse) THEN
               -- the user says it doesn't have reverse cost but its false
               -- removing from query
               RAISE NOTICE 'Contradiction found: has_rcost set to false but reverse_cost column found';
@@ -6954,7 +6954,7 @@ DROP TYPE contraction_vertex;
  COMMENT ON FUNCTION pgr_astar(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
      IS 'pgr_astar(Deprecated signature)';
  
- COMMENT ON FUNCTION pgr_bdAstar( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)    
+ COMMENT ON FUNCTION pgr_bdAstar( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
      IS 'pgr_bdAstar(Deprecated signature)';
  
  COMMENT ON FUNCTION pgr_bdDijkstra( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
