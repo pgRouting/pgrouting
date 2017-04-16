@@ -75,13 +75,7 @@ CREATE TYPE pgr_geomResult AS
 -- This file is release unde an MIT-X license.
 -- -------------------------------------------------------------------
 
-/*
-.. function:: pgr_version()
 
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
-
-   Returns the version of pgrouting,Git build,Git hash, Git branch and boost
-*/
 
 CREATE OR REPLACE FUNCTION pgr_version()
 RETURNS TABLE(
@@ -104,27 +98,7 @@ LANGUAGE sql IMMUTABLE;
 
 
 
-/*
-.. function:: _pgr_getTableName(tab)
 
-   Examples:
-        *          select * from  _pgr_getTableName('tab');
-        *        naming record;
-                 execute 'select * from  _pgr_getTableName('||quote_literal(tab)||')' INTO naming;
-                 schema=naming.sname; table=naming.tname
-
-
-   Returns (schema,name) of table "tab" considers Caps and when not found considers lowercases
-           (schema,NULL) when table was not found
-           (NULL,NULL) when schema was not found.
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     2015/11/01 Changed to handle views and refactored
-     Created: 2013/08/19  for handling schemas
-
-*/
 
 
 CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 0, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
@@ -209,27 +183,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-/*
-.. function:: _pgr_getColumnName(sname,tname,col,reportErrs default 1) returns text
-.. function:: _pgr_getColumnName(tab,col,reportErrs default 1) returns text
 
-    Returns:
-          cname  registered column "col" in table "tab" or "sname.tname" considers Caps and when not found considers lowercases
-          NULL   when "tab"/"sname"/"tname" is not found or when "col" is not in table "tab"/"sname.tname"
-    unless otherwise indicated raises notices on errors
-
- Examples:
-        *          select  _pgr_getColumnName('tab','col');
-        *          select  _pgr_getColumnName('myschema','mytable','col');
-                 execute 'select _pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
-                 execute 'select _pgr_getColumnName('||quote_literal(sname)||','||quote_literal(sname)||','||quote_literal('col')||')' INTO column;
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2013/08/19  for handling schemas
-     Modified: 2014/JUL/28 added overloadig
-*/
 
 
 CREATE OR REPLACE FUNCTION _pgr_getColumnName(sname text, tname text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
@@ -281,24 +235,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/*
-.. function:: _pgr_isColumnInTable(tab, col)
 
-   Examples:
-        *          select  _pgr_isColumnName('tab','col');
-        *        flag boolean;
-                 execute 'select _pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
-
-   Returns true  if column "col" exists in table "tab"
-           false when "tab" doesn't exist or when "col" is not in table "tab"
-
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
-
-   Modified by: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Modified: 2013/08/19  for handling schemas
-*/
 CREATE OR REPLACE FUNCTION _pgr_isColumnInTable(tab text, col text)
 RETURNS boolean AS
 $BODY$
@@ -312,23 +249,7 @@ $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/*
-.. function:: _pgr_isColumnIndexed(tab, col)
 
-   Examples:
-        *          select  _pgr_isColumnIndexed('tab','col');
-        *        flag boolean;
-                 execute 'select _pgr_getColumnIndexed('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
-
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
-
-   Modified by: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-   Returns true  when column "col" in table "tab" is indexed.
-           false when table "tab"  is not found or
-                 when column "col" is nor found in table "tab" or
-                   when column "col" is not indexed
-*/
 
 CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(sname text, tname text, cname text,
       IN reportErrs int default 1, IN fnName text default '_pgr_isColumnIndexed')
@@ -420,18 +341,7 @@ END
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-/*
-.. function:: _pgr_quote_ident(text)
 
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
-
-   Function to split a string on '.' characters and then quote the
-   components as postgres identifiers and then join them back together
-   with '.' characters. multile '.' will get collapsed into a single
-   '.' so 'schema...table' till get returned as 'schema."table"' and
-   'Schema.table' becomes '"Schema'.'table"'
-
-*/
 
 create or replace function _pgr_quote_ident(idname text)
     returns text as
@@ -456,15 +366,7 @@ end;
 $body$
 language plpgsql immutable;
 
-/*
- * function for comparing version strings.
- * Ex: select _pgr_version_less(postgis_lib_version(), '2.1');
 
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
- *
- * needed because postgis 2.1 deprecates some function names and
- * we need to detect the version at runtime
-*/
 CREATE OR REPLACE FUNCTION _pgr_versionless(v1 text, v2 text)
   RETURNS boolean AS
 $BODY$
@@ -689,31 +591,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
 
 
 
-/************************************************************************
-.. function:: _pgr_onError(errCond,reportErrs,functionname,msgerr,hinto,msgok)
 
-  If the error condition is is true, i.e., there is an error,
-   it will raise a message based on the reportErrs:
-  0: debug_      raise debug_
-  1: report     raise notice
-  2: abort      throw a raise_exception
-   Examples:
-
-	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name');
-	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name', 'Idname and gname must be different');
-    *	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name', 'Idname and gname must be different',
-                     'Column names are OK');
-
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUl/28  handling the errors, and have a more visual output
-
-************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_onError(
   IN errCond boolean,  -- true there is an error
@@ -743,26 +621,7 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
-/************************************************************************
-.. function:: _pgr_msg(msgKind, fnName, msg)
 
-  It will raise a message based on the msgKind:
-  0: debug_      raise debug_
-  1: notice     raise notice
-  anything else: report     raise notice
-
-   Examples:
-
-	*	preforn _pgr_msg( 1, 'pgr_createToplogy', 'Starting a long process... ');
-	*	preforn _pgr_msg( 1, 'pgr_createToplogy');
-
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUl/28  handling the errors, and have a more visual output
-
-************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_msg(IN msgKind int, IN fnName text, IN msg text default '---->OK')
   RETURNS void AS
@@ -778,26 +637,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/************************************************************************
-.. function:: _pgr_getColumnType(sname,tname,col,reportErrs,fnName) returns text
-.. function:: _pgr_getColumnType(tab,col,reportErrs,fname) returns text
 
-    Returns:
-          type   the types of the registered column "col" in table "tab" or "sname.tname"
-          NULL   when "tab"/"sname"/"tname" is not found or when "col" is not in table "tab"/"sname.tname"
-    unless otherwise indicated raises debug_  on errors
-
- Examples:
-	* 	 select  _pgr_getColumnType('tab','col');
-	* 	 select  _pgr_getColumnType('myschema','mytable','col');
-        	 execute 'select _pgr_getColumnType('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
-        	 execute 'select _pgr_getColumnType('||quote_literal(sname)||','||quote_literal(sname)||','||quote_literal('col')||')' INTO column;
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUL/28
-************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text,
      IN reportErrs int default 0, IN fnName text default '_pgr_getColumnType')
@@ -854,21 +694,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-/************************************************************************
-.. function:: _pgr_get_statement( sql ) returns the original statement if its a prepared statement
 
-    Returns:
-          sname,vname  registered schemaname, vertices table name
-
-
- Examples:
-    select * from _pgr_dijkstra(_pgr_get_statament($1),$2,$3,$4);
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUL/27
-************************************************************************/
 CREATE OR REPLACE FUNCTION _pgr_get_statement(o_sql text)
 RETURNS text AS
 $BODY$
@@ -886,24 +712,7 @@ $BODY$
 LANGUAGE plpgsql STABLE STRICT;
 
 
-/************************************************************************
-.. function:: _pgr_checkVertTab(vertname,columnsArr,reportErrs) returns record of sname,vname
 
-    Returns:
-          sname,vname  registered schemaname, vertices table name
-
-    if the table is not found will stop any further checking.
-    if a column is missing, then its added as integer ---  (id also as integer but is bigserial when the vertices table is created with the pgr functions)
-
- Examples:
-	* 	execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
-	* 	execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUL/27
-************************************************************************/
 CREATE OR REPLACE FUNCTION _pgr_checkVertTab(vertname text, columnsArr  text[],
     IN reportErrs int default 1, IN fnName text default '_pgr_checkVertTab',
     OUT sname text,OUT vname text)
@@ -955,28 +764,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-/************************************************************************
-.. function:: _pgr_createIndex(tab, col,indextype)
-              _pgr_createIndex(sname,tname,colname,indextypes)
 
-   if the column is not indexed it creates a 'gist' index otherwise a 'btree' index
-   Examples:
-	* 	 select  _pgr_createIndex('tab','col','btree');
-	* 	 select  _pgr_createIndex('myschema','mytable','col','gist');
-	* 	 perform 'select _pgr_createIndex('||quote_literal('tab')||','||quote_literal('col')||','||quote_literal('btree'))' ;
-	* 	 perform 'select _pgr_createIndex('||quote_literal('myschema')||','||quote_literal('mytable')||','||quote_literal('col')||','||quote_literal('gist')')' ;
-   Precondition:
-      sname.tname.colname is a valid column on table tname in schema sname
-      indext  is the indexType btree or gist
-   Postcondition:
-      sname.tname.colname its indexed using the indextype
-
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUL/28
-************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_createIndex(
     sname text, tname text, colname text, indext text,
@@ -1044,22 +832,7 @@ $BODY$
 
 
 
-/*
-.. function:: _pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
-Using tolerance to determine if its an existing point:
-    - Inserts a point into the vertices table "vertname" with the srid "srid",
-and returns
-    - the id of the new point
-    - the id of the existing point.
 
-Tolerance is the minimal distance between existing points and the new point to create a new point.
-
-Last changes: 2013-03-22
-
-HISTORY
-Last changes: 2013-03-22
-2013-08-19: handling schemas
-*/
 
 CREATE OR REPLACE FUNCTION _pgr_pointToId(
     point geometry,
@@ -1851,10 +1624,7 @@ END;
 $body$
 language plpgsql volatile cost 500 ROWS 50;
 
-/*
-    Old signature has:
-    sql: id INTEGER, x FLOAT, y FLOAT
-*/
+
 
 
 
@@ -2568,15 +2338,7 @@ LANGUAGE 'c' IMMUTABLE;
 
 
 
-/*  pgr_trsp    VERTEX
 
- - if size of restrictions_sql  is Zero or no restrictions_sql are given
-     then call to pgr_dijkstra is made
-
- - because it reads the data wrong, when there is a reverse_cost column:
-   - put all data costs in one cost column and
-   - a call is made to trsp without only the positive values
-*/
 CREATE OR REPLACE FUNCTION pgr_trsp(
     edges_sql TEXT,
     start_vid INTEGER,
@@ -2622,14 +2384,7 @@ COST 100
 ROWS 1000;
 
 
-/* pgr_trspVia Vertices
- - if size of restrictions_sql  is Zero or no restrictions_sql are given
-     then call to pgr_dijkstra is made
 
- - because it reads the data wrong, when there is a reverse_cost column:
-   - put all data costs in one cost column and
-   - a call is made to trspViaVertices without only the positive values
-*/
 CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
     edges_sql TEXT,
     via_vids ANYARRAY,
@@ -2730,14 +2485,7 @@ ROWS 1000;
 create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
-/*
- *  pgr_trsp(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
- *
- *  Compute TRSP with via points. We compute the path between vids[i] and vids[i+1] and chain the results together.
- *
- *  NOTE: this is a prototype function, we can gain a lot of efficiencies by implementing this in C/C++
- *
-*/
+
 declare
     i integer;
     rr pgr_costresult3;
@@ -2788,15 +2536,7 @@ $body$
 create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
-/*
- *  pgr_trsp(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
- *
- *  Compute TRSP with edge_ids and pposition along edge. We compute the path between eids[i], pcts[i] and eids[i+1], pcts[i+1]
- *  and chain the results together.
- *
- *  NOTE: this is a prototype function, we can gain a lot of efficiencies by implementing this in C/C++
- *
-*/
+
 declare
     i integer;
     rr pgr_costresult3;
@@ -2899,32 +2639,7 @@ $body$
 
 
 ----------------------------------------------------------------------------------------------------------
-/*this via functions are not documented they will be deleted on 2.2
 
-create or replace function pgr_trsp(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
-    RETURNS SETOF pgr_costresult AS
-$body$
-begin
-    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspVia( sql, vids, directed, has_reverse_cost, turn_restrict_sql);
-end;
-$body$
-    language plpgsql stable
-    cost 100
-    rows 1000;
-
-
-
-create or replace function pgr_trsp(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
-    RETURNS SETOF pgr_costresult AS
-$body$
-begin
-    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspVia(sql, eids, pcts, directed, has_reverse_cost, turn_restrict_sql);
-end;
-$body$
-    language plpgsql stable
-    cost 100
-    rows 1000;
-*/
 
 
 
@@ -3205,9 +2920,7 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
 
 
 
-/***********************************
-        MANY TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
@@ -3221,9 +2934,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   $BODY$
   LANGUAGE SQL VOLATILE;
 
-/***********************************
-        ONE TO ONE
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
@@ -3237,9 +2948,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   $BODY$
   LANGUAGE SQL VOLATILE;
 
-/***********************************
-        ONE TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
@@ -3253,9 +2962,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   $BODY$
   LANGUAGE SQL VOLATILE;
 
-/***********************************
-        MANY TO ONE
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
@@ -3288,9 +2995,7 @@ CREATE OR REPLACE FUNCTION pgr_maxCardinalityMatch(
 
 
 
-/***********************************
-        MANY TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
@@ -3311,9 +3016,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
  'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
     LANGUAGE c VOLATILE;
 
-/***********************************
-        ONE TO ONE
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
@@ -3335,9 +3038,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
   $BODY$
 LANGUAGE sql VOLATILE;
 
-/***********************************
-        ONE TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
@@ -3360,9 +3061,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
   $BODY$
 LANGUAGE sql VOLATILE;
 
-/***********************************
-        MANY TO ONE
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
@@ -3547,9 +3246,7 @@ LANGUAGE c VOLATILE STRICT;
 
 
 
-/*
-ONE TO ONE
-*/
+
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -3573,9 +3270,7 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'one_to_one_withPoints'
 LANGUAGE c VOLATILE;
 
-/*
-ONE TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -3601,9 +3296,7 @@ RETURNS SETOF RECORD AS
 LANGUAGE c VOLATILE;
 
 
-/*
-MANY TO ONE
-*/
+
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -3631,9 +3324,7 @@ LANGUAGE c VOLATILE;
 
 
 
-/*
-MANY TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -3662,9 +3353,7 @@ LANGUAGE c VOLATILE;
 
 
 
-/*
-ONE TO ONE
-*/
+
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3692,9 +3381,7 @@ BEGIN
     ROWS 1000;
 
 
-/*
-ONE TO MANY
-*/
+
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3722,9 +3409,7 @@ BEGIN
     COST 100
     ROWS 1000;
 
-/*
-MANY TO ONE
-*/
+
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3752,9 +3437,7 @@ BEGIN
     COST 100
     ROWS 1000;
 
-/*
-MANY TO MANY
-*/
+
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3784,9 +3467,7 @@ BEGIN
     ROWS 1000;
 
 
-/*
-ONE TO ONE
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
@@ -3810,9 +3491,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
-/*
-ONE TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
@@ -3836,9 +3515,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
-/*
-MANY TO ONE
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
@@ -3862,9 +3539,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
-/*
-MANY TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
@@ -4031,22 +3706,7 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
 
 
 
-/*
-.. function:: _pgr_createtopology(edge_table, tolerance,the_geom,id,source,target,rows_where)
 
-Based on the geometry:
-Fill the source and target column for all lines.
-All line end points within a distance less than tolerance, are assigned the same id
-
-Author: Christian Gonzalez <christian.gonzalez@sigis.com.ve>
-Author: Stephen Woodbridge <woodbri@imaptools.com>
-Modified by: Vicky Vergara <vicky_vergara@hotmail,com>
-
-HISTORY
-Last changes: 2013-03-22
-2013-08-19:  handling schemas
-2014-july: fixes issue 211
-*/
 
 CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision,
 		   the_geom text default 'the_geom', id text default 'id',
@@ -4297,47 +3957,7 @@ IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', targe
 
 
 
-/*
-.. function:: pgr_analyzeGraph(edge_tab, tolerance,the_geom, source,target)
 
-   Analyzes the "edge_tab" and "edge_tab_vertices_pgr" tables and flags if
-   nodes are deadends, ie vertices_tmp.cnt=1 and identifies nodes
-   that might be disconnected because of gaps < tolerance or because of
-   zlevel errors in the data. For example:
-
-.. code-block:: sql
-
-       select pgr_analyzeGraph('mytab', 0.000002);
-
-   After the analyzing the graph, deadends are identified by *cnt=1*
-   in the "vertices_tmp" table and potential problems are identified
-   with *chk=1*.  (Using 'source' and 'target' columns for analysis)
-
-.. code-block:: sql
-
-       select * from vertices_tmp where chk = 1;
-
-HISOTRY
-:Author: Stephen Woodbridge <woodbri@swoodbridge.com>
-:Modified: 2013/08/20 by Vicky Vergara <vicky_vergara@hotmail.com>
-
-Makes more checks:
-   checks table edge_tab exists in the schema
-   checks source and target columns exist in edge_tab
-   checks that source and target are completely populated i.e. do not have NULL values
-   checks table edge_tabVertices exist in the appropriate schema
-       if not, it creates it and populates it
-   checks 'cnt','chk' columns exist in  edge_tabVertices
-       if not, it creates them
-   checks if 'id' column of edge_tabVertices is indexed
-       if not, it creates the index
-   checks if 'source','target',the_geom columns of edge_tab are indexed
-       if not, it creates their index
-   populates cnt in edge_tabVertices  <--- changed the way it was processed, because on large tables took to long.
-					   For sure I am wrong doing this, but it gave me the same result as the original.
-   populates chk                      <--- added a notice for big tables, because it takes time
-           (edge_tab text, the_geom text, tolerance double precision)
-*/
 
 CREATE OR REPLACE FUNCTION pgr_analyzegraph(edge_table text,tolerance double precision,the_geom text default 'the_geom',id text default 'id',source text default 'source',target text default 'target',rows_where text default 'true')
 RETURNS character varying AS
@@ -4394,10 +4014,7 @@ BEGIN
     vertname= sname||'.'||vname;
     rows_where = ' AND ('||rows_where||')';
     raise DEBUG '     --> OK';
-/*    EXCEPTION WHEN raise_exception THEN
-      RAISE NOTICE 'ERROR: something went wrong checking the table name';
-      RETURN 'FAIL';
-*/
+
   END;
 
   BEGIN
@@ -4637,73 +4254,7 @@ COMMENT ON FUNCTION pgr_analyzeGraph(text,double precision,text,text,text,text,t
 
 
 
-/*
-.. function:: _pgr_analyzeOneway(tab, col, s_in_rules, s_out_rules, t_in_rules, t_out_rules)
 
-   This function analyzes oneway streets in a graph and identifies any
-   flipped segments. Basically if you count the edges coming into a node
-   and the edges exiting a node the number has to be greater than one.
-
-   * tab              - edge table name (TEXT)
-   * col              - oneway column name (TEXT)
-   * s_in_rules       - source node in rules
-   * s_out_rules      - source node out rules
-   * t_in_tules       - target node in rules
-   * t_out_rules      - target node out rules
-   * two_way_if_null  - flag to treat oneway nNULL values as by directional
-
-   After running this on a graph you can identify nodes with potential
-   problems with the following query.
-
-.. code-block:: sql
-
-       select * from vertices_tmp where in=0 or out=0;
-
-   The rules are defined as an array of text strings that if match the "col"
-   value would be counted as true for the source or target in or out condition.
-
-   Example
-   =======
-
-   Lets assume we have a table "st" of edges and a column "one_way" that
-   might have values like:
-
-   * 'FT'    - oneway from the source to the target node.
-   * 'TF'    - oneway from the target to the source node.
-   * 'B'     - two way street.
-   * ''      - empty field, assume teoway.
-   * <NULL>  - NULL field, use two_way_if_null flag.
-
-   Then we could form the following query to analyze the oneway streets for
-   errors.
-
-.. code-block:: sql
-
-   select _pgr_analyzeOneway('st', 'one_way',
-        ARRAY['', 'B', 'TF'],
-        ARRAY['', 'B', 'FT'],
-        ARRAY['', 'B', 'FT'],
-        ARRAY['', 'B', 'TF'],
-        true);
-
-   -- now we can see the problem nodes
-   select * from vertices_tmp where ein=0 or eout=0;
-
-   -- and the problem edges connected to those nodes
-   select gid
-
-     from st a, vertices_tmp b
-    where a.source=b.id and ein=0 or eout=0
-   union
-   select gid
-     from st a, vertices_tmp b
-    where a.target=b.id and ein=0 or eout=0;
-
-Typically these problems are generated by a break in the network, the
-oneway direction set wrong, maybe an error releted to zlevels or
-a network that is not properly noded.
-
-*/
 
 CREATE OR REPLACE FUNCTION pgr_analyzeOneway(
    edge_table text,
@@ -4870,33 +4421,11 @@ COMMENT ON FUNCTION pgr_analyzeOneway(text,TEXT[],TEXT[], TEXT[],TEXT[],boolean,
 IS 'args:edge_table , s_in_rules , s_out_rules, t_in_rules , t_out_rules, two_way_if_null:= true, oneway:=''oneway'',source:= ''source'',target:=''target'' - Analizes the directionality of the edges based on the rules';
 
 
-/*
-
-This function should not be used directly. Use assign_vertex_id instead
-Inserts a point into the vertices tablei "vname" with the srid "srid", and return an id
-of a new point or an existing point. Tolerance is the minimal distance
-between existing points and the new point to create a new point.
-
-Modified by: Vicky Vergara <vicky_vergara@hotmail,com>
-
-HISTORY
-Last changes: 2013-03-22
-2013-08-19: handling schemas
-*/
 
 
 
-/*
-.. function:: pgr_createVerticesTable(edge_table text, the_geom text, source text default 'source', target text default 'target')
 
-  Based on "source" and "target" columns creates the vetrices_pgr table for edge_table
-  Ignores rows where "source" or "target" have NULL values
 
-  Author: Vicky Vergara <vicky_vergara@hotmail,com>
-
- HISTORY
-    Created 2013-08-19
-*/
 
 CREATE OR REPLACE FUNCTION pgr_createverticestable(
    edge_table text,
@@ -5108,9 +4637,7 @@ CREATE OR REPLACE FUNCTION pgr_nodeNetwork(edge_table text, tolerance double pre
             rows_where text DEFAULT ''::text, outall boolean DEFAULT false) RETURNS text AS
 $BODY$
 DECLARE
-	/*
-	 * Author: Nicolas Ribot, 2013
-	*/
+	
 	p_num int := 0;
 	p_ret text := '';
     pgis_ver_old boolean := _pgr_versionless(postgis_lib_version(), '2.1.0.0');
@@ -5542,9 +5069,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/*
-MANY TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCostMatrix(
     edges_sql TEXT,
@@ -5571,9 +5096,7 @@ ROWS 1000;
 
 --  DIJKSTRA DMatrix
 
-/***********************************
-        MANY TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_dijkstraCostMatrix(edges_sql TEXT, vids ANYARRAY, directed BOOLEAN DEFAULT true,
     OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
@@ -6096,15 +5619,7 @@ ROWS 1000;
 create or replace function pgr_pointtoedgenode(edges text, pnt geometry, tol float8)
     returns integer as
 $body$
-/*
- *  pgr_pointtoedgenode(edges text, pnt geometry, tol float8)
- *
- *  Given and table of edges with a spatial index on the_geom
- *  and a point geometry search for the closest edge within tol distance to the edges
- *  then compute the projection of the point onto the line segment and select source or target
- *  based on whether the projected point is closer to the respective end and return source or target.
- *  If no edge is within tol distance then return -1
-*/
+
 declare
     rr record;
     pct float;
@@ -6150,15 +5665,7 @@ $body$
 create or replace function pgr_flipedges(ga geometry[])
     returns geometry[] as
 $body$
-/*
- *  pgr_flipedges(ga geometry[])
- *
- *  Given an array of linestrings that are supposedly connected end to end like the results
- *  of a route, check the edges and flip any end for end if they do not connect with the
- *  previous seegment and return the array with the segments flipped as appropriate.
- *
- *  NOTE: no error checking is done for conditions like adjacent edges are not connected.
-*/
+
 declare
     nn integer;
     i integer;
@@ -6201,12 +5708,7 @@ $body$
 create or replace function pgr_texttopoints(pnts text, srid integer DEFAULT(4326))
     returns geometry[] as
 $body$
-/*
- *  pgr_texttopoints(pnts text, srid integer DEFAULT(4326))
- *
- *  Given a text string of the format "x,y;x,y;x,y;..." and the srid to use,
- *  split the string and create and array point geometries
-*/
+
 declare
     a text[];
     t text;
@@ -6233,14 +5735,7 @@ $body$
 create or replace function pgr_pointstovids(pnts geometry[], edges text, tol float8 DEFAULT(0.01))
     returns integer[] as
 $body$
-/*
- *  pgr_pointstovids(pnts geometry[], edges text, tol float8 DEFAULT(0.01))
- *
- *  Given an array of point geometries and an edge table and a max search tol distance
- *  convert points into vertex ids using pgr_pointtoedgenode()
- *
- *  NOTE: You need to check the results for any vids=-1 which indicates if failed to locate an edge
-*/
+
 declare
     v integer[];
     g geometry;
@@ -6261,14 +5756,7 @@ $body$
 create or replace function pgr_pointstodmatrix(pnts geometry[], mode integer default (0), OUT dmatrix double precision[], OUT ids integer[])
     returns record as
 $body$
-/*
- *  pgr_pointstodmatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[])
- *
- *  Create a distance symmetric distance matrix suitable for TSP using Euclidean distances
- *  based on the st_distance(). You might want to create a variant of this the uses st_distance_sphere()
- *  or st_distance_spheriod() or some other function.
- *
-*/
+
 declare
     r record;
 
@@ -6305,22 +5793,7 @@ $body$
 create or replace function pgr_vidstodmatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[])
     returns record as
 $body$
-/*
- *  pgr_vidstodmatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1),
- *                    OUT dmatrix double precision[], OUT ids integer[])
- *
- *  This function that's an array vertex ids, the original array of points, the edge table name and a tol.
- *  It then computes kdijkstra() distances for each vertex to all the other vertices and creates a symmetric
- *  distances matrix suitable for TSP. The pnt array and the tol are used to establish a BBOX for limiteding
- *  selection of edges.the extents of the points is expanded by tol.
- *
- *  NOTES:
- *  1. we compute a symmetric matrix because TSP requires that so the distances are better the Euclidean but
- *     but are not perfect
- *  2. kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than
- *     the cost might get set to -1.0, so the dmatrix should be checked for this as it makes it invalid for TSP
- *
-*/
+
 declare
     i integer;
     j integer;
@@ -6541,9 +6014,7 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     LANGUAGE c VOLATILE;
 
 
-/***********************************
-        ONE TO ONE
-***********************************/
+
 
 
 --FUNCTIONS
@@ -6608,9 +6079,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
-/***********************************
-        ONE TO MANY
-***********************************/
+
 
 --INTERNAL FUNCTIONS
 
@@ -6674,9 +6143,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
-/***********************************
-        MANY TO ONE
-***********************************/
+
 
 --FUNCTIONS
 
@@ -6740,9 +6207,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
-/***********************************
-        MANY TO MANY
-***********************************/
+
 
 
 --FUNCTIONS

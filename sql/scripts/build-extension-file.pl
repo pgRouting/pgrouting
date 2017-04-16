@@ -78,12 +78,14 @@ sub eliminate_license {
         USER\*/
     }[]gsxi;
 
-    #$contents =~ s/\$\{PGROUTING_LIBRARY_NAME\}/libpgrouting-2.5/g;
-    #$contents =~ s/\$\{PGROUTING_VERSION\}/$version/g;
-    #$contents =~ s/\$\{PGROUTING_FULL_VERSION\}/v$version-dev/g;
-    #$contents =~ s/\$\{PGROUTING_GIT_HASH\}//g;
-    #$contents =~ s/\$\{PGROUTING_GIT_BRANCH\}//g;
-    #$contents =~ s/\$\{Boost_MAJOR_VERSION\}.\$\{Boost_MINOR_VERSION\}.\$\{Boost_SUBMINOR_VERSION\}/1.54.0/g;
+    $contents =~ s{
+        /\*
+        .*?
+        \*/
+    }[]gsxi;
+
+
+
     return $contents;
 }
 
