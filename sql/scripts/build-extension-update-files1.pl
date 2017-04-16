@@ -466,6 +466,7 @@ sub underscored {
     my @commands = ();
 
     # underscored are dropped
+    # Users should not be using this functions
 
     if ($old_version =~ /$version_2_1/ and $new_version !~ /$version_2_1/) {
         push @commands,  "\n\n------------------------------------------\n";
@@ -501,8 +502,8 @@ sub pgr_gsoc_vrppdtw {
 
     if ($old_version =~ /$version_2_1|$version_2_2/) {
         push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "-- New functions on 2.1\n";
-        push @commands,  "-- Signature change on 2.3\n";
+        push @commands,  "--   New function: 2.1\n";
+        push @commands,  "-- (types) change: 2.3\n";
         push @commands,  "------------------------------------------\n";
 
         push @commands, drop_special_case_function("pgr_gsoc_vrppdtw(text,integer,integer)", $old_version, $new_version);
