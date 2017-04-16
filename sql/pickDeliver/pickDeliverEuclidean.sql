@@ -47,6 +47,6 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
 )
 
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliverEuclidean'
+ 'MODULE_PATHNAME', 'pickDeliverEuclidean'
     LANGUAGE c IMMUTABLE STRICT;
 

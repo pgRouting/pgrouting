@@ -35,7 +35,7 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     has_reverse_cost boolean,
     turn_restrict_sql text DEFAULT null)
 RETURNS SETOF pgr_costResult
-AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'turn_restrict_shortest_path_vertex'
+AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_vertex'
 LANGUAGE 'c' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
@@ -48,7 +48,7 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     has_reverse_cost boolean,
     turn_restrict_sql text DEFAULT null)
 RETURNS SETOF pgr_costResult
-AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'turn_restrict_shortest_path_edge'
+AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_edge'
 LANGUAGE 'c' IMMUTABLE;
 
 

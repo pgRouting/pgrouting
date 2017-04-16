@@ -35,5 +35,5 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     OUT target BIGINT
     )
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'maximum_cardinality_matching'
+ 'MODULE_PATHNAME', 'maximum_cardinality_matching'
     LANGUAGE c IMMUTABLE STRICT;

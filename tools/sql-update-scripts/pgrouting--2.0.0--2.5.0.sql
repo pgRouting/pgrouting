@@ -1323,7 +1323,7 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
      OUT cost float,
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'many_to_many_dijkstra'
+ 'MODULE_PATHNAME', 'many_to_many_dijkstra'
  LANGUAGE c IMMUTABLE STRICT;
  
  
@@ -1562,7 +1562,7 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
      OUT route_agg_cost FLOAT)
  
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'dijkstraVia'
+  'MODULE_PATHNAME', 'dijkstraVia'
      LANGUAGE c IMMUTABLE STRICT;
  
  

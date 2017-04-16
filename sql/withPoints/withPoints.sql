@@ -50,7 +50,7 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_withPoints'
+'MODULE_PATHNAME', 'one_to_one_withPoints'
 LANGUAGE c IMMUTABLE STRICT;
 
 /*
@@ -77,7 +77,7 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_many_withPoints'
+'MODULE_PATHNAME', 'one_to_many_withPoints'
 LANGUAGE c IMMUTABLE STRICT;
 
 
@@ -105,7 +105,7 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_one_withPoints'
+'MODULE_PATHNAME', 'many_to_one_withPoints'
 LANGUAGE c IMMUTABLE STRICT;
 
 
@@ -136,7 +136,7 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_many_withPoints'
+'MODULE_PATHNAME', 'many_to_many_withPoints'
 LANGUAGE c IMMUTABLE STRICT;
 
 

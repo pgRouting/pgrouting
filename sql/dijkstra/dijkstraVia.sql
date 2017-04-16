@@ -70,7 +70,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     OUT route_agg_cost FLOAT)
 
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'dijkstraVia'
+ 'MODULE_PATHNAME', 'dijkstraVia'
     LANGUAGE c IMMUTABLE STRICT;
 
 

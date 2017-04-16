@@ -43,7 +43,7 @@ CREATE OR REPLACE FUNCTION _pgr_bdAstar(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-    '$libdir/${PGROUTING_LIBRARY_NAME}', 'bd_astar'
+    'MODULE_PATHNAME', 'bd_astar'
 LANGUAGE C IMMUTABLE STRICT;
 
 

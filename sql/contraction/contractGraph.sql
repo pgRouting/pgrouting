@@ -42,6 +42,6 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT cost float)
 
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'contractGraph'
+ 'MODULE_PATHNAME', 'contractGraph'
     LANGUAGE c IMMUTABLE STRICT;
 

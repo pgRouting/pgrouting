@@ -27,69 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*
-CREATE OR REPLACE FUNCTION _pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
-    only_cost BOOLEAN DEFAULT false,
-    normal BOOLEAN DEFAULT true,
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'astarOneToOne'
-LANGUAGE c IMMUTABLE STRICT;
-
-
-CREATE OR REPLACE FUNCTION _pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vids ANYARRAY,
-    directed BOOLEAN DEFAULT true,
-    heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
-    only_cost BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'astarOneToMany'
-LANGUAGE c IMMUTABLE STRICT;
-
-CREATE OR REPLACE FUNCTION _pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vids ANYARRAY,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
-    only_cost BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'astarManyToOne'
-LANGUAGE c IMMUTABLE STRICT;
-*/
 
 CREATE OR REPLACE FUNCTION _pgr_astar(
     edges_sql TEXT, -- XY edges sql
@@ -110,5 +47,5 @@ CREATE OR REPLACE FUNCTION _pgr_astar(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'astarManyToMany'
+'MODULE_PATHNAME', 'astarManyToMany'
 LANGUAGE c IMMUTABLE STRICT;

@@ -1289,7 +1289,7 @@ DROP TYPE contraction_vertex;
      OUT cost float,
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'many_to_many_dijkstra'
+ 'MODULE_PATHNAME', 'many_to_many_dijkstra'
  LANGUAGE c IMMUTABLE STRICT;
  
  
@@ -1528,7 +1528,7 @@ DROP TYPE contraction_vertex;
      OUT route_agg_cost FLOAT)
  
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'dijkstraVia'
+  'MODULE_PATHNAME', 'dijkstraVia'
      LANGUAGE c IMMUTABLE STRICT;
  
  
