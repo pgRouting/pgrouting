@@ -4,10 +4,10 @@ SELECT plan(52);
 
 
 SELECT has_function('pgr_drivingdistance',
-    ARRAY['text', 'integer', 'double precision', 'boolean', 'boolean']);
+    ARRAY['text', 'bigint', 'double precision', 'boolean', 'boolean']);
 
 SELECT function_returns('pgr_drivingdistance',
-    ARRAY['text', 'integer', 'double precision', 'boolean', 'boolean'],
+    ARRAY['text', 'bigint', 'double precision', 'boolean', 'boolean'],
     'setof pgr_costresult');
 
 

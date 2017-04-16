@@ -190,8 +190,8 @@ WHERE proname = 'pgr_bddijkstra'
 
 
 ------------------------------------------
--- New functions on 2.1
--- Signature change on 2.3
+--   New function: 2.1
+-- (types) change: 2.3
 ------------------------------------------
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_gsoc_vrppdtw(text,integer,integer);
