@@ -78,31 +78,29 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
 ------------------------------------------
---    New functions:  2.1
--- Signature change:  2.4
+--       New functions:  2.1
+--    Signature change:  2.4
 ------------------------------------------
--- pgr_drivingdistance
--- 2.2.1:  {sql,start_v,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
--- 2.5.0:  {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+-- 2.2.1: {edges_sql,start_v,  distance,directed,seq,node,edge,cost,agg_cost}
+-- 2.5.0: {edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost}
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-
-
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{"edges_sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}';
 
 
 ------------------------------------------
---     New function:  2.1
--- Signature change:  2.2
+--       New functions:  2.1
+--    Signature change:  2.4
 ------------------------------------------
--- pgr_drivingdistance
--- 2.2.1:  {edges_sql, start_v,   distance, directed, seq, node, edge, cost, agg_cost}
--- 2.5.0:  {edges_sql, start_vid, distance, directed, seq, node, edge, cost, agg_cost}
+-- 2.2.1: {sql,      start_v,   distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+-- 2.5.0: {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
-
-
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vids","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{"sql","start_v","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}';
 
 
 -- now install the new extension

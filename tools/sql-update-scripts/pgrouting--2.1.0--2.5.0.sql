@@ -227,31 +227,42 @@ DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
 
 
 ------------------------------------------
---    New functions:  2.1
--- Signature change:  2.4
+--       New functions:  2.0
+--    Signature change:  2.1
 ------------------------------------------
--- pgr_drivingdistance
--- 2.1.0:  {sql,start_v,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
--- 2.5.0:  {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+-- 2.1.0: {sql,source,distance,directed,has_rcost}
+-- 2.5.0: {edges_sql,source,distance,directed,has_rcost}
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-
-
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","source","distance","directed","has_rcost"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{"sql","source","distance","directed","has_rcost"}';
 
 
 ------------------------------------------
---     New function:  2.1
--- Signature change:  2.2
+--       New functions:  2.1
+--    Signature change:  2.4
 ------------------------------------------
--- pgr_drivingdistance
--- 2.1.0:  {      sql, start_v,   distance, directed, seq, node, edge, cost, agg_cost}
--- 2.5.0:  {edges_sql, start_vid, distance, directed, seq, node, edge, cost, agg_cost}
+-- 2.1.0: {      sql,start_v,  distance,directed,seq,node,edge,cost,agg_cost}
+-- 2.5.0: {edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost}
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{"sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}';
 
 
+------------------------------------------
+--       New functions:  2.1
+--    Signature change:  2.4
+------------------------------------------
+-- 2.1.0: {sql,      start_v,   distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+-- 2.5.0: {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vids","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{"sql","start_v","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}';
 
 
 -- now install the new extension
