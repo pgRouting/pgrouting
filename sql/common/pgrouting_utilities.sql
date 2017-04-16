@@ -434,7 +434,7 @@ begin
     return nv1 < nv2;
 end;
 $BODY$
-  LANGUAGE plpgsql IMMUTABLE STRICT
+  LANGUAGE plpgsql VOLATILE
   COST 1;
 
 create or replace function _pgr_startPoint(g geometry)

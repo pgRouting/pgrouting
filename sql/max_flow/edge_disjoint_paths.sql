@@ -47,7 +47,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     )
   RETURNS SETOF RECORD AS
  'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
+    LANGUAGE c VOLATILE;
 
 /***********************************
         ONE TO ONE

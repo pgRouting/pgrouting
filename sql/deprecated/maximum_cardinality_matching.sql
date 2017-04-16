@@ -36,4 +36,4 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     )
   RETURNS SETOF RECORD AS
  'MODULE_PATHNAME', 'maximum_cardinality_matching'
-    LANGUAGE c IMMUTABLE STRICT;
+    LANGUAGE c VOLATILE;

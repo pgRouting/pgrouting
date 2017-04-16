@@ -610,7 +610,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      return nv1 < nv2;
  end;
  $BODY$
-   LANGUAGE plpgsql IMMUTABLE STRICT
+   LANGUAGE plpgsql VOLATILE
    COST 1;
  
  create or replace function _pgr_startPoint(g geometry)
@@ -1201,38 +1201,6 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  
  
- /*
- CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, directed BOOLEAN,
-     only_cost BOOLEAN DEFAULT false,
-   OUT seq integer, OUT path_seq integer, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-   RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'one_to_one_dijkstra'
-     LANGUAGE c IMMUTABLE STRICT;
- 
-     -- One to many
- 
- 
- CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vids ANYARRAY, directed BOOLEAN DEFAULT true,
-     only_cost BOOLEAN DEFAULT false,
-   OUT seq integer, OUT path_seq integer, OUT end_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-   RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'one_to_many_dijkstra'
-     LANGUAGE c IMMUTABLE STRICT;
- 
- 
- --  many to one
- 
- 
- CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vids ANYARRAY, end_vid BIGINT, directed BOOLEAN DEFAULT true,
-     only_cost BOOLEAN DEFAULT false,
-     OUT seq integer, OUT path_seq integer, OUT start_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
- RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'many_to_one_dijkstra'
- LANGUAGE c IMMUTABLE STRICT;
- 
- --  many to many
- */
- 
  CREATE OR REPLACE FUNCTION _pgr_dijkstra(
      edges_sql TEXT,
      start_vids ANYARRAY,
@@ -1251,7 +1219,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT agg_cost float)
  RETURNS SETOF RECORD AS
  'MODULE_PATHNAME', 'many_to_many_dijkstra'
- LANGUAGE c IMMUTABLE STRICT;
+ LANGUAGE c VOLATILE;
  
  
  -- V3 signature 1 to 1
@@ -1490,7 +1458,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
    RETURNS SETOF RECORD AS
   'MODULE_PATHNAME', 'dijkstraVia'
-     LANGUAGE c IMMUTABLE STRICT;
+     LANGUAGE c VOLATILE;
  
  
  
@@ -1498,82 +1466,19 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE,
    OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'johnson'
-     LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'johnson'
+     LANGUAGE c VOLATILE;
  
  
  
  CREATE OR REPLACE FUNCTION pgr_floydWarshall(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE, 
    OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'floydWarshall'  
-     LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'floydWarshall'  
+     LANGUAGE c VOLATILE;
  
  
  
- /*
- CREATE OR REPLACE FUNCTION _pgr_astar(
-     edges_sql TEXT, -- XY edges sql
-     start_vid BIGINT,
-     end_vid BIGINT,
-     directed BOOLEAN DEFAULT true,
-     heuristic INTEGER DEFAULT 5,
-     factor FLOAT DEFAULT 1.0,
-     epsilon FLOAT DEFAULT 1.0,
-     only_cost BOOLEAN DEFAULT false,
-     normal BOOLEAN DEFAULT true,
- 
-     OUT seq INTEGER,
-     OUT path_seq INTEGER,
-     OUT node BIGINT,
-     OUT edge BIGINT,
-     OUT cost FLOAT,
-     OUT agg_cost FLOAT)
- RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'astarOneToOne'
- LANGUAGE c IMMUTABLE STRICT;
- 
- 
- CREATE OR REPLACE FUNCTION _pgr_astar(
-     edges_sql TEXT, -- XY edges sql
-     start_vid BIGINT,
-     end_vids ANYARRAY,
-     directed BOOLEAN DEFAULT true,
-     heuristic INTEGER DEFAULT 5,
-     factor FLOAT DEFAULT 1.0,
-     epsilon FLOAT DEFAULT 1.0,
-     only_cost BOOLEAN DEFAULT false,
-     OUT seq INTEGER,
-     OUT path_seq INTEGER,
-     OUT end_vid BIGINT,
-     OUT node BIGINT,
-     OUT edge BIGINT,
-     OUT cost FLOAT,
-     OUT agg_cost FLOAT)
- RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'astarOneToMany'
- LANGUAGE c IMMUTABLE STRICT;
- 
- CREATE OR REPLACE FUNCTION _pgr_astar(
-     edges_sql TEXT, -- XY edges sql
-     start_vids ANYARRAY,
-     end_vid BIGINT,
-     directed BOOLEAN DEFAULT true,
-     heuristic INTEGER DEFAULT 5,
-     factor FLOAT DEFAULT 1.0,
-     epsilon FLOAT DEFAULT 1.0,
-     only_cost BOOLEAN DEFAULT false,
-     OUT seq INTEGER,
-     OUT path_seq INTEGER,
-     OUT start_vid BIGINT,
-     OUT node BIGINT,
-     OUT edge BIGINT,
-     OUT cost FLOAT,
-     OUT agg_cost FLOAT)
- RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'astarManyToOne'
- LANGUAGE c IMMUTABLE STRICT;
- */
  
  CREATE OR REPLACE FUNCTION _pgr_astar(
      edges_sql TEXT, -- XY edges sql
@@ -1594,8 +1499,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'astarManyToMany'
- LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'astarManyToMany'
+ LANGUAGE c VOLATILE;
  
  
  CREATE OR REPLACE FUNCTION pgr_astar(
@@ -1825,7 +1730,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
    RETURNS SETOF RECORD AS
-      '$libdir/libpgrouting-2.5', 'many_withPointsDD'
+      'MODULE_PATHNAME', 'many_withPointsDD'
   LANGUAGE c VOLATILE STRICT;
  
  
@@ -1869,7 +1774,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
    RETURNS SETOF RECORD AS
-      '$libdir/libpgrouting-2.5', 'driving_many_to_dist'
+      'MODULE_PATHNAME', 'driving_many_to_dist'
   LANGUAGE c VOLATILE STRICT;
  
  
@@ -1900,7 +1805,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  CREATE OR REPLACE FUNCTION _pgr_ksp(edges_sql text, start_vid bigint, end_vid bigint, k integer, directed boolean, heap_paths boolean,
    OUT seq integer, OUT path_id integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
    RETURNS SETOF RECORD AS
-     '$libdir/libpgrouting-2.5', 'kshortest_path'
+     'MODULE_PATHNAME', 'kshortest_path'
      LANGUAGE c STABLE STRICT;
  
  -- V2 the graph is directed and there are no heap paths 
@@ -1969,7 +1874,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT node BIGINT, OUT edge BIGINT,
      OUT cost FLOAT, OUT agg_cost FLOAT)
    RETURNS SETOF RECORD AS
-     '$libdir/libpgrouting-2.5', 'withPoints_ksp'
+     'MODULE_PATHNAME', 'withPoints_ksp'
      LANGUAGE c STABLE STRICT;
  
  
@@ -2162,7 +2067,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF record
- AS '$libdir/libpgrouting-2.5', 'newTSP'
+ AS 'MODULE_PATHNAME', 'newTSP'
  LANGUAGE c VOLATILE STRICT;
  
  
@@ -2188,7 +2093,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF record
- AS '$libdir/libpgrouting-2.5', 'eucledianTSP'
+ AS 'MODULE_PATHNAME', 'eucledianTSP'
  LANGUAGE c VOLATILE STRICT;
  
  
@@ -2202,8 +2107,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  -----------------------------------------------------------------------
  CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
      RETURNS SETOF record
-     AS '$libdir/libpgrouting-2.5', 'alphashape'
-     LANGUAGE c IMMUTABLE STRICT;
+     AS 'MODULE_PATHNAME', 'alphashape'
+     LANGUAGE c VOLATILE;
  
  ----------------------------------------------------------
  -- Draws an alpha shape around given set of points.
@@ -2287,8 +2192,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF RECORD AS
-     '$libdir/libpgrouting-2.5', 'bd_astar'
- LANGUAGE C IMMUTABLE STRICT;
+     'MODULE_PATHNAME', 'bd_astar'
+ LANGUAGE C VOLATILE;
  
  
  
@@ -2535,8 +2440,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'bdDijkstra'
- LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'bdDijkstra'
+ LANGUAGE c VOLATILE;
  
  
  
@@ -2742,7 +2647,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      has_reverse_cost boolean,
      turn_restrict_sql text DEFAULT null)
  RETURNS SETOF pgr_costResult
- AS '$libdir/libpgrouting-2.5', 'turn_restrict_shortest_path_vertex'
+ AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_vertex'
  LANGUAGE 'c' IMMUTABLE;
  
  CREATE OR REPLACE FUNCTION _pgr_trsp(
@@ -2755,7 +2660,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      has_reverse_cost boolean,
      turn_restrict_sql text DEFAULT null)
  RETURNS SETOF pgr_costResult
- AS '$libdir/libpgrouting-2.5', 'turn_restrict_shortest_path_edge'
+ AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_edge'
  LANGUAGE 'c' IMMUTABLE;
  
  
@@ -3140,8 +3045,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT residual_capacity BIGINT
      )
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'max_flow_many_to_many'
-     LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'max_flow_many_to_many'
+     LANGUAGE c VOLATILE;
  
  
  
@@ -3475,8 +3380,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT target BIGINT
      )
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'maximum_cardinality_matching'
-     LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'maximum_cardinality_matching'
+     LANGUAGE c VOLATILE;
  
  
  
@@ -3501,8 +3406,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT agg_cost FLOAT
      )
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'edge_disjoint_paths_many_to_many'
-     LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
+     LANGUAGE c VOLATILE;
  
  /***********************************
          ONE TO ONE
@@ -3594,8 +3499,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost float)
  
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'contractGraph'
-     LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'contractGraph'
+     LANGUAGE c VOLATILE;
  
  
  
@@ -3619,8 +3524,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  )
  
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'pickDeliverEuclidean'
-     LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'pickDeliverEuclidean'
+     LANGUAGE c VOLATILE;
  
  
  
@@ -3645,8 +3550,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  )
  
  RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'pickDeliver'
- LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'pickDeliver'
+ LANGUAGE c VOLATILE;
  
  
  
@@ -3734,7 +3639,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  	OUT tarrival integer, 
  	OUT tdepart integer)
  returns setof record as
- '$libdir/libpgrouting-2.5', 'vrp'
+ 'MODULE_PATHNAME', 'vrp'
  LANGUAGE c VOLATILE STRICT;
  
  
@@ -3763,8 +3668,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'one_to_one_withPoints'
- LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'one_to_one_withPoints'
+ LANGUAGE c VOLATILE;
  
  /*
  ONE TO MANY
@@ -3790,8 +3695,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'one_to_many_withPoints'
- LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'one_to_many_withPoints'
+ LANGUAGE c VOLATILE;
  
  
  /*
@@ -3818,8 +3723,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'many_to_one_withPoints'
- LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'many_to_one_withPoints'
+ LANGUAGE c VOLATILE;
  
  
  
@@ -3849,8 +3754,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT cost FLOAT,
      OUT agg_cost FLOAT)
  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'many_to_many_withPoints'
- LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'many_to_many_withPoints'
+ LANGUAGE c VOLATILE;
  
  
  
@@ -6730,8 +6635,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      OUT target BIGINT
      )
    RETURNS SETOF RECORD AS
-  '$libdir/libpgrouting-2.5', 'maximum_cardinality_matching'
-     LANGUAGE c IMMUTABLE STRICT;
+  'MODULE_PATHNAME', 'maximum_cardinality_matching'
+     LANGUAGE c VOLATILE;
  
  
  /***********************************
