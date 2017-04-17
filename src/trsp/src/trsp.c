@@ -46,6 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
+#if 0
 #undef DEBUG
 //#define DEBUG 1
 
@@ -55,13 +56,16 @@ PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 #else
 #define DBG(format,...) do { ; } while (0)
 #endif
+#endif
 
+#if 0
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
 //#ifdef PG_MODULE_MAGIC
 //PG_MODULE_MAGIC;
 //#endif
+#endif
 
 typedef struct edge_columns
 {
@@ -291,9 +295,9 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 static int compute_trsp(
     char* sql,
     int dovertex,
-    int start_id,
+    int64_t start_id,
     double start_pos,
-    int end_id,
+    int64_t end_id,
     double end_pos,
     bool directed, 
     bool has_reverse_cost,
@@ -306,10 +310,11 @@ static int compute_trsp(
   SPIPlanPtr SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  int ntuples;
+  uint32_t TUPLIMIT = 1000;
+  uint32_t ntuples;
 
   edge_t *edges = NULL;
-  int total_tuples = 0;
+  uint32_t total_tuples = 0;
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
@@ -317,11 +322,11 @@ static int compute_trsp(
   edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif //_MSC_VER
   restrict_t *restricts = NULL;
-  int total_restrict_tuples = 0;
+  uint32_t total_restrict_tuples = 0;
   restrict_columns_t restrict_columns = {.target_id= -1, .via_path= -1,
                                  .to_cost= -1};
-  int v_max_id=0;
-  int v_min_id=INT_MAX;
+  int64_t v_max_id=0;
+  int64_t v_min_id=INT_MAX;
 
   /* track if start and end are both in edge tuples */
   int s_count = 0;
@@ -329,7 +334,7 @@ static int compute_trsp(
 
   char *err_msg;
   int ret = -1;
-  register int z;
+  uint32_t z;
 
   PGR_DBG("start turn_restrict_shortest_path\n");
         
@@ -382,7 +387,7 @@ static int compute_trsp(
               return finish(SPIcode, ret);	  
           }
 
-          int t;
+          uint32_t t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
                 
@@ -448,7 +453,7 @@ static int compute_trsp(
     
   }
 
-  PGR_DBG("Min vertex id: %i , Max vid: %i",v_min_id,v_max_id);
+  PGR_DBG("Min vertex id: %ld , Max vid: %ld",v_min_id,v_max_id);
   PGR_DBG("Total %i edge tuples", total_tuples);
 
   if(s_count == 0) {
@@ -466,7 +471,7 @@ static int compute_trsp(
       end_id   -= v_min_id;
   }
   
-  DBG("Fetching restriction tuples\n");
+ PGR_DBG("Fetching restriction tuples\n");
         
   if (restrict_sql == NULL) {
       PGR_DBG("Sql for restrictions is null.");
@@ -510,7 +515,7 @@ static int compute_trsp(
                   return finish(SPIcode, ret);
               }
 
-              int t;
+              uint32_t t;
               SPITupleTable *tuptable = SPI_tuptable;
               TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
@@ -661,7 +666,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
               total_cost+=path[i].cost;
             }
         }
-        DBG("Total cost is: %f",total_cost);
+        PGR_DBG("Total cost is: %f",total_cost);
 #endif
 
       // total number of tuples to be returned 
