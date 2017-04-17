@@ -602,8 +602,8 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
-  uint32_t             call_cntr;
 #if 0
+  uint32_t             call_cntr;
   int                  max_calls;
 #endif
   TupleDesc            tuple_desc;
@@ -694,8 +694,8 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   // stuff done on every call of the function 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = funcctx->call_cntr;
 #if 0
+  call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
 #endif
   tuple_desc = funcctx->tuple_desc;
@@ -711,13 +711,13 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(char));
 
-      values[0] = Int32GetDatum(call_cntr);
+      values[0] = Int32GetDatum(funcctx->call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
       nulls[2] = false;
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
       nulls[3] = false;
 		      
       tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -745,8 +745,8 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
-  uint32_t             call_cntr;
 #if 0
+  uint32_t             call_cntr;
   uint32_t             max_calls;
 #endif
   TupleDesc            tuple_desc;
@@ -855,8 +855,8 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   // stuff done on every call of the function 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = funcctx->call_cntr;
 #if 0
+  call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
 #endif
   tuple_desc = funcctx->tuple_desc;
@@ -872,13 +872,13 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(char));
 
-      values[0] = Int32GetDatum(call_cntr);
+      values[0] = Int32GetDatum(funcctx->call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
       nulls[2] = false;
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
       nulls[3] = false;
 		      
       tuple = heap_form_tuple(tuple_desc, values, nulls);
