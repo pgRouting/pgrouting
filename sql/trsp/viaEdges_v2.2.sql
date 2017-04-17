@@ -34,9 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
+/*
 ------------------------------
 -- pgr_trspViaEdges Wrapper
 ------------------------------
+*/
 CREATE OR REPLACE FUNCTION pgr_trspViaEdges(
     sql TEXT,
     eids INTEGER[],

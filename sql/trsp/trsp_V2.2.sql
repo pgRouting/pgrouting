@@ -20,12 +20,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/*
 -----------------------------------------------------------------------
 -- Core function for time_dependent_shortest_path computation
 -- See README for description
 -----------------------------------------------------------------------
 --TODO - Do we need to add another sql text for the query on time-dependent-weights table?
 --     - For now just checking with static data, so the query is similar to shortest_paths.
+*/
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,

@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
+/*
 -----------------------------------------------------------------------
 -- Function _pgr_parameter_check
 -- Check's the parameters type of the sql input
@@ -34,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- Query styles:
 -- dijkstra (id, source, target, cost, [reverse_cost])
 -- johnson (source, target, cost, [reverse_cost])
+*/
 
 CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default false)
   RETURNS bool AS

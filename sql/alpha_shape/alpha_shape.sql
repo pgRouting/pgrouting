@@ -23,21 +23,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
+/*
 -----------------------------------------------------------------------
 -- Core function for alpha shape computation.
 -- The sql should return vertex ids and x,y values. Return ordered
 -- vertex ids.
 -----------------------------------------------------------------------
+*/
 CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
     RETURNS SETOF record
     AS 'MODULE_PATHNAME', 'alphashape'
     LANGUAGE c VOLATILE;
 
+/*
 ----------------------------------------------------------
 -- Draws an alpha shape around given set of points.
 -- ** This should be rewritten as an aggregate. **
 ----------------------------------------------------------
+*/
 CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAULT 0)
 	RETURNS geometry AS
 	$$

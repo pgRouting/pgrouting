@@ -31,11 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  - Else
    a call to _pgr_trspViaVertices
      - which calls repetedly the original C/C++ code
-*/
 
 ------------------------------
 -- pgr_trspViaVertices Wrapper
 ------------------------------
+*/
 CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
     edges_sql TEXT,
     via_vids ANYARRAY,

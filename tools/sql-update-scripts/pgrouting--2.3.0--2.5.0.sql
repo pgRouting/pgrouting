@@ -184,15 +184,6 @@ DROP TYPE contraction_vertex;
 
 
 
--- -------------------------------------------------------------------
--- pgrouting_version.sql
--- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
--- Copyright 2013 Stephen Woodbridge
--- This file is release unde an MIT-X license.
--- -------------------------------------------------------------------
-
-
-
 CREATE OR REPLACE FUNCTION pgr_version()
 RETURNS TABLE(
         "version" varchar,
@@ -209,7 +200,6 @@ $BODY$
         '1.54.0'::varchar AS boost;
 $BODY$
 LANGUAGE sql IMMUTABLE;
-
 
 
 
@@ -568,16 +558,7 @@ language plpgsql IMMUTABLE;
 
 
 
------------------------------------------------------------------------
--- Function _pgr_parameter_check
--- Check's the parameters type of the sql input
------------------------------------------------------------------------
 
--- change the default to true when all the functions will use the bigint
--- put TRUE when it uses BGINT
--- Query styles:
--- dijkstra (id, source, target, cost, [reverse_cost])
--- johnson (source, target, cost, [reverse_cost])
 
 CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default false)
   RETURNS bool AS
@@ -1888,20 +1869,12 @@ LANGUAGE c VOLATILE STRICT;
 
 
 
------------------------------------------------------------------------
--- Core function for alpha shape computation.
--- The sql should return vertex ids and x,y values. Return ordered
--- vertex ids.
------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
     RETURNS SETOF record
     AS 'MODULE_PATHNAME', 'alphashape'
     LANGUAGE c VOLATILE;
 
-----------------------------------------------------------
--- Draws an alpha shape around given set of points.
--- ** This should be rewritten as an aggregate. **
-----------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAULT 0)
 	RETURNS geometry AS
 	$$
@@ -2420,12 +2393,7 @@ LANGUAGE SQL VOLATILE
 COST 100
 ROWS 1000;
 
------------------------------------------------------------------------
--- Core function for time_dependent_shortest_path computation
--- See README for description
------------------------------------------------------------------------
---TODO - Do we need to add another sql text for the query on time-dependent-weights table?
---     - For now just checking with static data, so the query is similar to shortest_paths.
+
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,
@@ -2752,10 +2720,6 @@ $body$
     language plpgsql stable
     cost 100
     rows 1000;
-
-
-----------------------------------------------------------------------------------------------------------
-
 
 
 
