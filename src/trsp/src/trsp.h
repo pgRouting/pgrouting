@@ -48,7 +48,7 @@ typedef struct path_element
     long vertex_id;
     long edge_id;
     float8 cost;
-} path_element_t;
+} path_element_tt;
 
 #ifdef __cplusplus
 extern "C" {
@@ -63,7 +63,7 @@ int trsp_node_wrapper(
 			int64_t end_vertex,
 		    bool directed, 
 		    bool has_reverse_cost,
-            path_element_t **path, 
+            path_element_tt **path, 
             size_t *path_count, 
             char **err_msg
             );
@@ -80,7 +80,7 @@ int trsp_edge_wrapper(
             double end_pos,
 		    bool directed, 
 		    bool has_reverse_cost,
-            path_element_t **path, 
+            path_element_tt **path, 
             size_t *path_count, 
             char **err_msg
             );

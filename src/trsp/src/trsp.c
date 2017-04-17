@@ -306,7 +306,7 @@ static int compute_trsp(
     bool directed, 
     bool has_reverse_cost,
     char* restrict_sql,
-    path_element_t **path,
+    path_element_tt **path,
     size_t *path_count) 
 {
 
@@ -609,7 +609,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   int                  max_calls;
 #endif
   TupleDesc            tuple_desc;
-  path_element_t      *path;
+  path_element_tt      *path;
   char *               sql;
 
 
@@ -701,7 +701,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   max_calls = funcctx->max_calls;
 #endif
   tuple_desc = funcctx->tuple_desc;
-  path = (path_element_t*) funcctx->user_fctx;
+  path = (path_element_tt*) funcctx->user_fctx;
 
   if (funcctx->call_cntr < funcctx->max_calls)    // do when there is more left to send 
     {
@@ -752,7 +752,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   uint32_t             max_calls;
 #endif
   TupleDesc            tuple_desc;
-  path_element_t      *path;
+  path_element_tt      *path;
   char *               sql;
 
   // stuff done only on the first call of the function 
@@ -862,7 +862,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   max_calls = funcctx->max_calls;
 #endif
   tuple_desc = funcctx->tuple_desc;
-  path = (path_element_t*) funcctx->user_fctx;
+  path = (path_element_tt*) funcctx->user_fctx;
 
   if (funcctx->call_cntr < funcctx->max_calls)    // do when there is more left to send 
     {

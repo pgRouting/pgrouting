@@ -34,7 +34,7 @@ typedef struct path_element
     int vertex_id;
     int edge_id;
     double cost;
-}path_element_t;
+}path_element_tt;
 */
 
 typedef struct{
@@ -96,13 +96,13 @@ public:
     int my_dijkstra(edge_t *edges, size_t edge_count,
                     long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, size_t *path_count,
+                    path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
     int my_dijkstra(edge_t *edges, size_t edge_count,
                     long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, size_t *path_count,
+                    path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
@@ -110,14 +110,14 @@ public:
                     long start_edge, double start_part,
                     long end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, size_t *path_count,
+                    path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
     int multi_dijkstra(edge_t *edges, size_t edge_count,
                        std::vector<int> vertices,
                        bool directed, bool has_reverse_cost,
-                       path_element_t **path, size_t *path_count,
+                       path_element_tt **path, size_t *path_count,
                        char **err_msg,
                        std::vector<PDVI> &ruleList);
 
@@ -131,7 +131,7 @@ private:
     double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge, bool isStart);
     bool addEdge(edge edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
-    bool get_single_cost(double total_cost, path_element_t **path, size_t *path_count);
+    bool get_single_cost(double total_cost, path_element_tt **path, size_t *path_count);
     void init();
     void deleteall();
 
@@ -148,7 +148,7 @@ private:
     bool isStartVirtual;
     bool isEndVirtual;
     
-    std::vector <path_element_t> m_vecPath;
+    std::vector <path_element_tt> m_vecPath;
     PARENT_PATH *parent;
     CostHolder *m_dCost;
     RuleTable m_ruleTable;

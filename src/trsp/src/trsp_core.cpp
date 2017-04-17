@@ -16,7 +16,7 @@ int trsp_node_wrapper(
     int64_t end_vertex,
     bool directed,
     bool has_reverse_cost,
-    path_element_t **path,
+    path_element_tt **path,
     size_t *path_count,
     char **err_msg
     )
@@ -68,7 +68,7 @@ int trsp_edge_wrapper(
     double end_pos,
     bool directed,
     bool has_reverse_cost,
-    path_element_t **path,
+    path_element_tt **path,
     size_t *path_count,
     char **err_msg
     )
