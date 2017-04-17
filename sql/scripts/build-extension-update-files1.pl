@@ -648,13 +648,14 @@ sub drop_special_case_function {
 }
 
 
-# we have all the data we need, so write the extension update script
 sub write_script {
-    my ($old_version, $new_version, $types, $cmds) = @_;
+    my ($old_version, $new_version, $types, $commands) = @_;
 
-    # open the extension update script or die if we can't
+    my $contents = get_current_sql($types);
+
     open(OUT, ">$output_directory/pgrouting--$old_version--$new_version.sql")
     || die "ERROR: failed to create '$output_directory/pgrouting-pgrouting--$old_version--$new_version.sql' : $!\n";
+
 
     # write out the header and the commands to clean up the old extension
     print OUT <<EOF;
@@ -673,49 +674,39 @@ sub write_script {
 -------------------------------------
 
 
--- $cmds
+$commands
 
--- now install the new extension
+$contents
 
 EOF
 
-# open the new extension.sql file
-# and load it into an array
-open(IN, $curr_sql_file_name) ||
-die "ERROR: Failed to find '$curr_sql_file_name' : $!\n";
-my @file = <IN>;
-close(IN);
-
-# comment out the TYPEs that the new extension defines
-# that already existed in the old extension
-# so they will not abort the script
-remove_types(\@file, $types);
-
-# append the new extension SQL to the update script
-print OUT "-- @file";
-close(OUT);
-print "  -- Created lib/pgrouting--$old_version--$new_version.sql.in\n" if $DEBUG;
+    close(OUT);
+    print "  -- Created lib/pgrouting--$old_version--$new_version.sql.in\n" if $DEBUG;
 }
 
 
-sub remove_types {
-    my ($data, $types) = @_;
+sub get_current_sql {
+    my ($types) = @_;
 
+    open(IN, $curr_sql_file_name) ||
+    die "ERROR: Failed to find '$curr_sql_file_name' : $!\n";
+    my @file = <IN>;
+    close(IN);
+    my $contents = join('', @file);
+
+    #remove existing types
     for my $type (@{$types}) {
-        my $state = 1;
-        for my $x (@{$data}) {
-            if ($state == 1) {
-                next unless $x =~ m/create\s+type\s+$type\b/i;
-                $x = "-- $x";
-                $state = 2
-                unless $x =~ m/create\s+type\s+$type\s+as\s*\([^\)]+\)/i;
-            }
-            elsif ($state == 2) {
-                $x = "-- $x";
-                last if $x =~ /\)\s*;/;
-            }
-        }
+        $contents =~ s{
+            create\s+type\s+$type
+            .*?
+            \);
+        }[]gsxi;
     }
+
+
+    $contents =~ s/\\echo Use "CREATE EXTENSION pgrouting" to load this file. \\quit//;
+        
+    return $contents
 }
 
 
