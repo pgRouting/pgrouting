@@ -28,7 +28,7 @@
 
 typedef struct edge
 {
-    int id;
+    long id;
     long source;
     long target;
     float8 cost;
@@ -51,41 +51,42 @@ typedef struct path_element
 } path_element_t;
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 int trsp_node_wrapper(
 			edge_t *edges, 
-			unsigned int edge_count, 
+			size_t edge_count, 
 			restrict_t *restricts, 
-			int restrict_count,
-			int start_vertex, 
-			int end_vertex,
+			size_t restrict_count,
+			int64_t start_vertex, 
+			int64_t end_vertex,
 		    bool directed, 
 		    bool has_reverse_cost,
             path_element_t **path, 
-            int *path_count, 
+            size_t *path_count, 
             char **err_msg
             );
 
-#ifdef __cplusplus
-extern "C"
-#endif
 
 int trsp_edge_wrapper(
 			edge_t *edges, 
-			unsigned int edge_count, 
+			size_t edge_count, 
 			restrict_t *restricts, 
-			int restrict_count,
-			int start_edge, 
+			size_t restrict_count,
+			int64_t start_edge, 
             double start_pos,
-			int end_edge,
+			int64_t end_edge,
             double end_pos,
 		    bool directed, 
 		    bool has_reverse_cost,
             path_element_t **path, 
-            int *path_count, 
+            size_t *path_count, 
             char **err_msg
             );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

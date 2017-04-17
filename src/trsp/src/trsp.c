@@ -303,7 +303,7 @@ static int compute_trsp(
     bool has_reverse_cost,
     char* restrict_sql,
     path_element_t **path,
-    int *path_count) 
+    size_t *path_count) 
 {
 
   int SPIcode;
@@ -580,7 +580,7 @@ static int compute_trsp(
 
   PGR_DBG("ret = %i\n", ret);
 
-  PGR_DBG("*path_count = %i\n", *path_count);
+  PGR_DBG("*path_count = %ld\n", *path_count);
 
   if (ret < 0)
     {
@@ -600,8 +600,10 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
-  int                  call_cntr;
+  uint32_t             call_cntr;
+#if 0
   int                  max_calls;
+#endif
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
@@ -610,7 +612,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t path_count = 0;
 
       int ret = -1;
       if (ret == -1) {}; // to avoid warning set but not used
@@ -670,7 +672,15 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 #endif
 
       // total number of tuples to be returned 
+#if 1
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = path_count;
+#else
+        funcctx->max_calls = (uint32_t)path_count;
+#endif
+#else
       funcctx->max_calls = path_count;
+#endif
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
@@ -683,11 +693,13 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   funcctx = SRF_PERCALL_SETUP();
 
   call_cntr = funcctx->call_cntr;
+#if 0
   max_calls = funcctx->max_calls;
+#endif
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
-  if (call_cntr < max_calls)    // do when there is more left to send 
+  if (funcctx->call_cntr < funcctx->max_calls)    // do when there is more left to send 
     {
       HeapTuple    tuple;
       Datum        result;
@@ -731,8 +743,10 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  uint32_t             call_cntr;
+#if 0
+  uint32_t             max_calls;
+#endif
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
@@ -740,7 +754,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t path_count = 0;
 #ifdef DEBUG
       int ret = -1;
 #endif
@@ -819,7 +833,15 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 #endif
 
       // total number of tuples to be returned 
+#if 1
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = path_count;
+#else
+        funcctx->max_calls = (uint32_t)path_count;
+#endif
+#else
       funcctx->max_calls = path_count;
+#endif
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
@@ -832,11 +854,13 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   funcctx = SRF_PERCALL_SETUP();
 
   call_cntr = funcctx->call_cntr;
+#if 0
   max_calls = funcctx->max_calls;
+#endif
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
-  if (call_cntr < max_calls)    // do when there is more left to send 
+  if (funcctx->call_cntr < funcctx->max_calls)    // do when there is more left to send 
     {
       HeapTuple    tuple;
       Datum        result;
