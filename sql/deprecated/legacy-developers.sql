@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- Legacy FUNCTIONs that were ment to be used by 
+-- Legacy FUNCTIONs that were ment to be used by
 -- pgRouting developers
 -- These FUNCTIONs wer used on the plpgsql FUNCTIONs
 
@@ -38,9 +38,9 @@ BEGIN
     EXECUTE 'SELECT ' || quote_ident(col) || ' FROM ' || table_name || ' LIMIT 1';
     RETURN col;
     EXCEPTION WHEN others THEN
-    BEGIN 
+    BEGIN
         EXECUTE 'SELECT ' || quote_ident(lower(col)) || ' FROM ' || table_name || ' LIMIT 1';
-        RETURN lower(col); 
+        RETURN lower(col);
         EXCEPTION WHEN others THEN
             RETURN NULL;
     END;
@@ -55,7 +55,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 -- deprecated on 2.1.0
 CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text,OUT sname text,OUT tname text)
 RETURNS RECORD AS
-$BODY$ 
+$BODY$
 DECLARE
     table_oid regclass;
     table_name text;
@@ -64,7 +64,7 @@ BEGIN
     -- $1 := replace($1, '"', '');
     SELECT * FROM _pgr_getTableName($1, 0, 'pgr_getTableName') into sname,tname;
     EXCEPTION WHEN others THEN
-    BEGIN 
+    BEGIN
         table_oid := lower($1)::regclass;
         SELECT * FROM _pgr_getTableName(lower($1), 0, 'pgr_getTableName') into sname,tname;
         EXCEPTION WHEN others THEN
@@ -196,7 +196,7 @@ DECLARE
     nn integer;
     i integer;
     g geometry;
-    
+
 BEGIN
     nn := array_length(ga, 1);
     IF nn = 1 THEN
@@ -235,7 +235,7 @@ DECLARE
     t text;
     p geometry;
     g geometry[];
-    
+
 BEGIN
     a := string_to_array(replace(pnts, ',', ' '), ';');
     FOR t in SELECT unnest(a) LOOP
@@ -281,7 +281,7 @@ BEGIN
 
     FOR rr IN EXECUTE
         'SELECT start_vid, end_vid, agg_cost FROM pgr_dijkstraCostMatrix($1, $2, $3)'
-        USING 
+        USING
             sql, ids, dir
     LOOP
         dmatrix[(SELECT idx FROM generate_subscripts(ids, 1) AS idx WHERE ids[idx] = rr.start_vid)]
@@ -332,7 +332,7 @@ BEGIN
 
     FOR rr IN EXECUTE
         'SELECT start_vid, end_vid, agg_cost FROM pgr_dijkstraCostMatrix($1, $2, false)'
-        USING 
+        USING
             'SELECT id, source, target, cost FROM ' || edges,
             ids
     LOOP
@@ -344,7 +344,7 @@ BEGIN
 end;
 $BODY$
 LANGUAGE plpgsql STABLE cost 200;
-           
+
 
 
 -- Added on 2.1.0
@@ -354,14 +354,14 @@ CREATE OR REPLACE FUNCTION pgr_pointstodmatrix(pnts geometry[], mode integer def
 $BODY$
 DECLARE
     r record;
-    
+
 BEGIN
     dmatrix := array[]::double precision[];
     ids := array[]::integer[];
 
     FOR r in with nodes AS (SELECT row_number() over()::integer AS id, p FROM (select unnest(pnts) AS p) AS foo)
         SELECT i, array_agg(dist) AS arow FROM (
-            SELECT a.id AS i, b.id AS j, 
+            SELECT a.id AS i, b.id AS j,
                 case when mode=0
                     THEN ST_distance(a.p, b.p)
                     ELSE ST_distance_sphere(a.p, b.p)
@@ -410,9 +410,9 @@ DECLARE
     rr record;
     pct float;
     debuglevel text;
-    
+
 BEGIN
-    execute 'SELECT * FROM ' || quote_ident(edges) || 
+    execute 'SELECT * FROM ' || quote_ident(edges) ||
             ' where ST_dwithin(''' || pnt::text ||
             '''::geometry, the_geom, ' || tol || ') ORDER BY ST_distance(''' || pnt::text ||
             '''::geometry, the_geom) asc limit 1' into rr;
@@ -427,7 +427,7 @@ BEGIN
         ELSE
             pct := ST_lineLocatePoint(rr.the_geom, pnt);
         END IF;
-        
+
         IF pct < 0.5 THEN
             RETURN rr.source;
         ELSE

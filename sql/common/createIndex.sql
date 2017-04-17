@@ -28,9 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /************************************************************************
 .. function:: _pgr_createIndex(tab, col,indextype)
               _pgr_createIndex(sname,tname,colname,indextypes)
-              
+
    if the column is not indexed it creates a 'gist' index otherwise a 'btree' index
-   Examples:  
+   Examples:
 	* 	 select  _pgr_createIndex('tab','col','btree');
 	* 	 select  _pgr_createIndex('myschema','mytable','col','gist');
 	* 	 perform 'select _pgr_createIndex('||quote_literal('tab')||','||quote_literal('col')||','||quote_literal('btree'))' ;
@@ -41,11 +41,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    Postcondition:
       sname.tname.colname its indexed using the indextype
 
-  
+
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
   HISTORY
-     Created: 2014/JUL/28 
+     Created: 2014/JUL/28
 ************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_createIndex(
@@ -69,10 +69,10 @@ BEGIN
        perform _pgr_msg(msgKind, fnName);
     else
       if indext = 'gist' then
-        query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+        query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||'
                          on '||tabname||' using gist('||quote_ident(colname)||')';
       else
-        query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+        query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||'
                          on '||tabname||' using btree('||quote_ident(colname)||')';
       end if;
       perform _pgr_msg(msgKind, fnName, 'Adding index ' || tabname || '_' ||  colname || '_idx');

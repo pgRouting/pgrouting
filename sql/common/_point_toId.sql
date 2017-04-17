@@ -25,11 +25,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
 .. function:: _pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
 Using tolerance to determine if its an existing point:
-    - Inserts a point into the vertices table "vertname" with the srid "srid", 
+    - Inserts a point into the vertices table "vertname" with the srid "srid",
 and returns
     - the id of the new point
     - the id of the existing point.
-   
+
 Tolerance is the minimal distance between existing points and the new point to create a new point.
 
 Last changes: 2013-03-22
@@ -40,7 +40,7 @@ Last changes: 2013-03-22
 */
 
 CREATE OR REPLACE FUNCTION _pgr_pointToId(
-    point geometry, 
+    point geometry,
     tolerance double precision,
     vertname text,
     srid integer)
@@ -60,7 +60,7 @@ BEGIN
             || srid ||')) AS d, id, the_geom
     FROM '||_pgr_quote_ident(vertname)||'
     WHERE ST_DWithin(
-        the_geom, 
+        the_geom,
         ST_GeomFromText(
             ST_AsText(' || quote_literal(point::text) ||'),
             ' || srid || '),' || tolerance||')

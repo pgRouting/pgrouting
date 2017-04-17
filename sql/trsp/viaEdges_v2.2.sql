@@ -28,15 +28,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  - When there are no restrictions:
    a call to _pgr_withPointsVia
- - Else 
+ - Else
    a call to _pgr_trspViaEdges
      - which calls repetedly the original C/C++ code
 */
 
 
+/*
 ------------------------------
 -- pgr_trspViaEdges Wrapper
 ------------------------------
+*/
 CREATE OR REPLACE FUNCTION pgr_trspViaEdges(
     sql TEXT,
     eids INTEGER[],

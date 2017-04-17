@@ -4,7 +4,7 @@ File: dijkstraViaVertex.sql
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 
 ------
@@ -70,7 +70,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     OUT route_agg_cost FLOAT)
 
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'dijkstraVia'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'dijkstraVia'
+    LANGUAGE c VOLATILE;
 
 

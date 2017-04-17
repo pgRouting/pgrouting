@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost 
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost 
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -76,7 +76,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost 
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -96,7 +96,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost 
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE

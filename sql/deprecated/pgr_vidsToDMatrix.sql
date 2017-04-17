@@ -82,7 +82,7 @@ BEGIN
     DROP TABLE IF EXISTS __x___y____temp;
     RETURN dmatrix;
 
-    EXCEPTION WHEN others THEN 
+    EXCEPTION WHEN others THEN
        DROP TABLE IF EXISTS __x___y____temp;
        raise exception '% %', SQLERRM, SQLSTATE;
 END

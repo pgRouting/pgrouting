@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2016 Rohith Reddy
-Mail: 
+Mail:
 
 ------
 
@@ -42,6 +42,6 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT cost float)
 
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'contractGraph'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'contractGraph'
+    LANGUAGE c VOLATILE;
 

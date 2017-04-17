@@ -26,14 +26,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /************************************************************************
 .. function:: _pgr_onError(errCond,reportErrs,functionname,msgerr,hinto,msgok)
-  
+
   If the error condition is is true, i.e., there is an error,
    it will raise a message based on the reportErrs:
   0: debug_      raise debug_
   1: report     raise notice
-  2: abort      throw a raise_exception  
-   Examples:  
-   
+  2: abort      throw a raise_exception
+   Examples:
+
 	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
                      'Two columns share the same name');
 	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
@@ -42,12 +42,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
                      'Two columns share the same name', 'Idname and gname must be different',
                      'Column names are OK');
 
-   
+
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
   HISTORY
      Created: 2014/JUl/28  handling the errors, and have a more visual output
-  
+
 ************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_onError(
@@ -60,7 +60,7 @@ CREATE OR REPLACE FUNCTION _pgr_onError(
   RETURNS void AS
 $BODY$
 BEGIN
-  if errCond=true then 
+  if errCond=true then
      if reportErrs=0 then
        raise debug '----> PGR DEBUG in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
      else
@@ -80,23 +80,23 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 /************************************************************************
 .. function:: _pgr_msg(msgKind, fnName, msg)
-  
+
   It will raise a message based on the msgKind:
   0: debug_      raise debug_
   1: notice     raise notice
   anything else: report     raise notice
 
-   Examples:  
-   
+   Examples:
+
 	*	preforn _pgr_msg( 1, 'pgr_createToplogy', 'Starting a long process... ');
 	*	preforn _pgr_msg( 1, 'pgr_createToplogy');
 
-   
+
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
   HISTORY
      Created: 2014/JUl/28  handling the errors, and have a more visual output
-  
+
 ************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_msg(IN msgKind int, IN fnName text, IN msg text default '---->OK')
@@ -118,11 +118,11 @@ LANGUAGE plpgsql VOLATILE STRICT;
 .. function:: _pgr_getColumnType(tab,col,reportErrs,fname) returns text
 
     Returns:
-          type   the types of the registered column "col" in table "tab" or "sname.tname" 
+          type   the types of the registered column "col" in table "tab" or "sname.tname"
           NULL   when "tab"/"sname"/"tname" is not found or when "col" is not in table "tab"/"sname.tname"
     unless otherwise indicated raises debug_  on errors
- 
- Examples:  
+
+ Examples:
 	* 	 select  _pgr_getColumnType('tab','col');
 	* 	 select  _pgr_getColumnType('myschema','mytable','col');
         	 execute 'select _pgr_getColumnType('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
@@ -131,7 +131,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
   HISTORY
-     Created: 2014/JUL/28 
+     Created: 2014/JUL/28
 ************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text,
@@ -144,7 +144,7 @@ DECLARE
     err boolean;
 BEGIN
 
-    EXECUTE 'select data_type  from information_schema.columns ' 
+    EXECUTE 'select data_type  from information_schema.columns '
             || 'where table_name = '||quote_literal(tname)
                  || ' and table_schema=' || quote_literal(sname)
                  || ' and column_name='||quote_literal(cname)
@@ -173,7 +173,7 @@ DECLARE
     naming record;
     err boolean;
 BEGIN
-  
+
     select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
     sname=naming.sname;
     tname=naming.tname;
@@ -193,16 +193,16 @@ LANGUAGE plpgsql VOLATILE STRICT;
 .. function:: _pgr_get_statement( sql ) returns the original statement if its a prepared statement
 
     Returns:
-          sname,vname  registered schemaname, vertices table name 
-    
-          
- Examples:  
+          sname,vname  registered schemaname, vertices table name
+
+
+ Examples:
     select * from _pgr_dijkstra(_pgr_get_statament($1),$2,$3,$4);
 
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
   HISTORY
-     Created: 2014/JUL/27 
+     Created: 2014/JUL/27
 ************************************************************************/
 CREATE OR REPLACE FUNCTION _pgr_get_statement(o_sql text)
 RETURNS text AS
@@ -225,19 +225,19 @@ LANGUAGE plpgsql STABLE STRICT;
 .. function:: _pgr_checkVertTab(vertname,columnsArr,reportErrs) returns record of sname,vname
 
     Returns:
-          sname,vname  registered schemaname, vertices table name 
-    
+          sname,vname  registered schemaname, vertices table name
+
     if the table is not found will stop any further checking.
     if a column is missing, then its added as integer ---  (id also as integer but is bigserial when the vertices table is created with the pgr functions)
-          
- Examples:  
+
+ Examples:
 	* 	execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
 	* 	execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
 
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
   HISTORY
-     Created: 2014/JUL/27 
+     Created: 2014/JUL/27
 ************************************************************************/
 CREATE OR REPLACE FUNCTION _pgr_checkVertTab(vertname text, columnsArr  text[],
     IN reportErrs int default 1, IN fnName text default '_pgr_checkVertTab',
@@ -265,7 +265,7 @@ BEGIN
           'Vertex Table: ' || vertname || ' not found',
           'Please create ' || vertname || ' using  _pgr_createTopology() or pgr_createVerticesTable()',
           'Vertex Table: ' || vertname || ' found');
-    
+
 
     perform _pgr_msg(msgKind, fnName, 'Checking columns of ' || vertname);
       FOREACH cname IN ARRAY columnsArr

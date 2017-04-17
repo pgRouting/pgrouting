@@ -1,9 +1,11 @@
+/*
 -- -------------------------------------------------------------------
 -- pgrouting_version.sql
 -- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
 -- Copyright 2013 Stephen Woodbridge
 -- This file is release unde an MIT-X license.
 -- -------------------------------------------------------------------
+*/
 
 /*
 .. function:: pgr_version()
@@ -12,6 +14,7 @@
 
    Returns the version of pgrouting,Git build,Git hash, Git branch and boost
 */
+
 
 CREATE OR REPLACE FUNCTION pgr_version()
 RETURNS TABLE(
@@ -29,4 +32,3 @@ $BODY$
         '${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}'::varchar AS boost;
 $BODY$
 LANGUAGE sql IMMUTABLE;
-

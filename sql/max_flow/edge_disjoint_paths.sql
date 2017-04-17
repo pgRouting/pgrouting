@@ -46,8 +46,8 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     OUT agg_cost FLOAT
     )
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_many_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
+    LANGUAGE c VOLATILE;
 
 /***********************************
         ONE TO ONE

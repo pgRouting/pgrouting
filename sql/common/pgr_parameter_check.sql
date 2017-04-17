@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
+/*
 -----------------------------------------------------------------------
 -- Function _pgr_parameter_check
 -- Check's the parameters type of the sql input
@@ -34,17 +35,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- Query styles:
 -- dijkstra (id, source, target, cost, [reverse_cost])
 -- johnson (source, target, cost, [reverse_cost])
+*/
 
 CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default false)
   RETURNS bool AS
-  $BODY$  
+  $BODY$
 
   DECLARE
   rec record;
   rec1 record;
   has_rcost boolean;
   safesql text;
-  BEGIN 
+  BEGIN
     IF (big) THEN
        RAISE EXCEPTION 'This function is for old style functions';
     END IF;
@@ -80,7 +82,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
             USING ERRCODE = 'XX000';
         END IF;
     END IF;
- 
+
 
     IF fn IN ('astar') THEN
         BEGIN
@@ -135,7 +137,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
         EXCEPTION
           WHEN OTHERS THEN
             has_rcost = false;
-            return has_rcost;  
+            return has_rcost;
       END;
       if (has_rcost) then
         IF (big) then

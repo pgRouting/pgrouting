@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION _pgr_unnest_matrix(matrix float8[][], OUT start_vid integer, OUT end_vid integer, out agg_cost float8)
-RETURNS SETOF record AS 
+RETURNS SETOF record AS
 
 $body$
 DECLARE
@@ -71,9 +71,9 @@ BEGIN
     IF endpt = -1 THEN endpt := startpt;
     END IF;
 
-    
+
     RETURN QUERY
-    WITH 
+    WITH
     result AS (
         SELECT * FROM pgr_TSP(
         $$SELECT * FROM ___tmp2 $$,

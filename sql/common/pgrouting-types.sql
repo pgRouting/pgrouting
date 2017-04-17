@@ -23,8 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 --  pgRouting 2.0 types
 
-
-
 CREATE TYPE pgr_costResult AS
 (
     seq integer,
@@ -32,8 +30,6 @@ CREATE TYPE pgr_costResult AS
     id2 integer,
     cost float8
 );
-
-
 
 CREATE TYPE pgr_costResult3 AS
 (
@@ -51,4 +47,3 @@ CREATE TYPE pgr_geomResult AS
     id2 integer,
     geom geometry
 );
-

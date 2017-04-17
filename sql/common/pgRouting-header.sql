@@ -7,7 +7,7 @@
 ---
 --- pgRouting provides geospatial routing functionality.
 --- http://pgrouting.org
---- copyright 
+--- copyright
 --- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ---
 ---

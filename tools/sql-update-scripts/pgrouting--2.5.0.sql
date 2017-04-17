@@ -7,7 +7,7 @@
 ---
 --- pgRouting provides geospatial routing functionality.
 --- http://pgrouting.org
---- copyright 
+--- copyright
 --- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ---
 ---
@@ -39,8 +39,6 @@
 
 --  pgRouting 2.0 types
 
-
-
 CREATE TYPE pgr_costResult AS
 (
     seq integer,
@@ -48,8 +46,6 @@ CREATE TYPE pgr_costResult AS
     id2 integer,
     cost float8
 );
-
-
 
 CREATE TYPE pgr_costResult3 AS
 (
@@ -68,20 +64,9 @@ CREATE TYPE pgr_geomResult AS
     geom geometry
 );
 
--- -------------------------------------------------------------------
--- pgrouting_version.sql
--- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
--- Copyright 2013 Stephen Woodbridge
--- This file is release unde an MIT-X license.
--- -------------------------------------------------------------------
 
-/*
-.. function:: pgr_version()
 
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
 
-   Returns the version of pgrouting,Git build,Git hash, Git branch and boost
-*/
 
 CREATE OR REPLACE FUNCTION pgr_version()
 RETURNS TABLE(
@@ -104,27 +89,6 @@ LANGUAGE sql IMMUTABLE;
 
 
 
-/*
-.. function:: _pgr_getTableName(tab)
-
-   Examples:
-        *          select * from  _pgr_getTableName('tab');
-        *        naming record;
-                 execute 'select * from  _pgr_getTableName('||quote_literal(tab)||')' INTO naming;
-                 schema=naming.sname; table=naming.tname
-
-
-   Returns (schema,name) of table "tab" considers Caps and when not found considers lowercases
-           (schema,NULL) when table was not found
-           (NULL,NULL) when schema was not found.
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-  
-  HISTORY
-     2015/11/01 Changed to handle views and refactored
-     Created: 2013/08/19  for handling schemas
-
-*/
 
 
 CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 0, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
@@ -150,7 +114,7 @@ BEGIN
 
     i := strpos(tab,'.');
     IF (i <> 0) THEN
-        sn := split_part(tab, '.',1); 
+        sn := split_part(tab, '.',1);
         tn := split_part(tab, '.',2);
     ELSE
         sn := current_schema;
@@ -158,19 +122,19 @@ BEGIN
     END IF;
 
 
-   SELECT schema_name INTO sname 
+   SELECT schema_name INTO sname
    FROM information_schema.schemata WHERE schema_name = sn;
 
     IF sname IS NOT NULL THEN -- found schema (as is)
-       SELECT table_name, table_type INTO tname, ttype 
-       FROM information_schema.tables 
+       SELECT table_name, table_type INTO tname, ttype
+       FROM information_schema.tables
        WHERE
                 table_type = ANY(var_types) and
                 table_schema = sname and
                 table_name = tn ;
         IF tname is NULL THEN
-            SELECT table_name, table_type INTO tname, ttype 
-            FROM information_schema.tables 
+            SELECT table_name, table_type INTO tname, ttype
+            FROM information_schema.tables
             WHERE
                 table_type  = ANY(var_types) and
                 table_schema = sname and
@@ -178,21 +142,21 @@ BEGIN
         END IF;
     END IF;
     IF sname is NULL or tname is NULL THEN --schema not found or table not found
-        SELECT schema_name INTO sname 
-        FROM information_schema.schemata 
+        SELECT schema_name INTO sname
+        FROM information_schema.schemata
         WHERE schema_name = lower(sn) ;
 
         IF sname IS NOT NULL THEN -- found schema (with lower caps)
-            SELECT table_name, table_type INTO tname, ttype 
-            FROM information_schema.tables 
+            SELECT table_name, table_type INTO tname, ttype
+            FROM information_schema.tables
             WHERE
                 table_type  =  ANY(var_types) and
                 table_schema = sname and
                 table_name= tn ;
-                
+
            IF tname IS NULL THEN
-                SELECT table_name, table_type INTO tname, ttype 
-                FROM information_schema.tables 
+                SELECT table_name, table_type INTO tname, ttype
+                FROM information_schema.tables
                 WHERE
                     table_type  =  ANY(var_types) and
                     table_schema = sname and
@@ -209,27 +173,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-/*
-.. function:: _pgr_getColumnName(sname,tname,col,reportErrs default 1) returns text
-.. function:: _pgr_getColumnName(tab,col,reportErrs default 1) returns text
 
-    Returns:
-          cname  registered column "col" in table "tab" or "sname.tname" considers Caps and when not found considers lowercases
-          NULL   when "tab"/"sname"/"tname" is not found or when "col" is not in table "tab"/"sname.tname"
-    unless otherwise indicated raises notices on errors
-
- Examples:
-        *          select  _pgr_getColumnName('tab','col');
-        *          select  _pgr_getColumnName('myschema','mytable','col');
-                 execute 'select _pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
-                 execute 'select _pgr_getColumnName('||quote_literal(sname)||','||quote_literal(sname)||','||quote_literal('col')||')' INTO column;
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2013/08/19  for handling schemas
-     Modified: 2014/JUL/28 added overloadig
-*/
 
 
 CREATE OR REPLACE FUNCTION _pgr_getColumnName(sname text, tname text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
@@ -281,24 +225,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/*
-.. function:: _pgr_isColumnInTable(tab, col)
 
-   Examples:
-        *          select  _pgr_isColumnName('tab','col');
-        *        flag boolean;
-                 execute 'select _pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
-
-   Returns true  if column "col" exists in table "tab"
-           false when "tab" doesn't exist or when "col" is not in table "tab"
-
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
-
-   Modified by: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Modified: 2013/08/19  for handling schemas
-*/
 CREATE OR REPLACE FUNCTION _pgr_isColumnInTable(tab text, col text)
 RETURNS boolean AS
 $BODY$
@@ -312,23 +239,7 @@ $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/*
-.. function:: _pgr_isColumnIndexed(tab, col)
 
-   Examples:
-        *          select  _pgr_isColumnIndexed('tab','col');
-        *        flag boolean;
-                 execute 'select _pgr_getColumnIndexed('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
-
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
-
-   Modified by: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-   Returns true  when column "col" in table "tab" is indexed.
-           false when table "tab"  is not found or
-                 when column "col" is nor found in table "tab" or
-                   when column "col" is not indexed
-*/
 
 CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(sname text, tname text, cname text,
       IN reportErrs int default 1, IN fnName text default '_pgr_isColumnIndexed')
@@ -420,18 +331,7 @@ END
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-/*
-.. function:: _pgr_quote_ident(text)
 
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
-
-   Function to split a string on '.' characters and then quote the
-   components as postgres identifiers and then join them back together
-   with '.' characters. multile '.' will get collapsed into a single
-   '.' so 'schema...table' till get returned as 'schema."table"' and
-   'Schema.table' becomes '"Schema'.'table"'
-
-*/
 
 create or replace function _pgr_quote_ident(idname text)
     returns text as
@@ -456,15 +356,7 @@ end;
 $body$
 language plpgsql immutable;
 
-/*
- * function for comparing version strings.
- * Ex: select _pgr_version_less(postgis_lib_version(), '2.1');
 
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
- *
- * needed because postgis 2.1 deprecates some function names and
- * we need to detect the version at runtime
-*/
 CREATE OR REPLACE FUNCTION _pgr_versionless(v1 text, v2 text)
   RETURNS boolean AS
 $BODY$
@@ -512,7 +404,7 @@ begin
     return nv1 < nv2;
 end;
 $BODY$
-  LANGUAGE plpgsql IMMUTABLE STRICT
+  LANGUAGE plpgsql VOLATILE
   COST 1;
 
 create or replace function _pgr_startPoint(g geometry)
@@ -550,27 +442,18 @@ language plpgsql IMMUTABLE;
 
 
 
------------------------------------------------------------------------
--- Function _pgr_parameter_check
--- Check's the parameters type of the sql input
------------------------------------------------------------------------
 
--- change the default to true when all the functions will use the bigint
--- put TRUE when it uses BGINT
--- Query styles:
--- dijkstra (id, source, target, cost, [reverse_cost])
--- johnson (source, target, cost, [reverse_cost])
 
 CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default false)
   RETURNS bool AS
-  $BODY$  
+  $BODY$
 
   DECLARE
   rec record;
   rec1 record;
   has_rcost boolean;
   safesql text;
-  BEGIN 
+  BEGIN
     IF (big) THEN
        RAISE EXCEPTION 'This function is for old style functions';
     END IF;
@@ -606,7 +489,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
             USING ERRCODE = 'XX000';
         END IF;
     END IF;
- 
+
 
     IF fn IN ('astar') THEN
         BEGIN
@@ -661,7 +544,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
         EXCEPTION
           WHEN OTHERS THEN
             has_rcost = false;
-            return has_rcost;  
+            return has_rcost;
       END;
       if (has_rcost) then
         IF (big) then
@@ -689,31 +572,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
 
 
 
-/************************************************************************
-.. function:: _pgr_onError(errCond,reportErrs,functionname,msgerr,hinto,msgok)
-  
-  If the error condition is is true, i.e., there is an error,
-   it will raise a message based on the reportErrs:
-  0: debug_      raise debug_
-  1: report     raise notice
-  2: abort      throw a raise_exception  
-   Examples:  
-   
-	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name');
-	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name', 'Idname and gname must be different');
-    *	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name', 'Idname and gname must be different',
-                     'Column names are OK');
 
-   
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUl/28  handling the errors, and have a more visual output
-  
-************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_onError(
   IN errCond boolean,  -- true there is an error
@@ -725,7 +584,7 @@ CREATE OR REPLACE FUNCTION _pgr_onError(
   RETURNS void AS
 $BODY$
 BEGIN
-  if errCond=true then 
+  if errCond=true then
      if reportErrs=0 then
        raise debug '----> PGR DEBUG in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
      else
@@ -743,26 +602,7 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
-/************************************************************************
-.. function:: _pgr_msg(msgKind, fnName, msg)
-  
-  It will raise a message based on the msgKind:
-  0: debug_      raise debug_
-  1: notice     raise notice
-  anything else: report     raise notice
 
-   Examples:  
-   
-	*	preforn _pgr_msg( 1, 'pgr_createToplogy', 'Starting a long process... ');
-	*	preforn _pgr_msg( 1, 'pgr_createToplogy');
-
-   
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUl/28  handling the errors, and have a more visual output
-  
-************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_msg(IN msgKind int, IN fnName text, IN msg text default '---->OK')
   RETURNS void AS
@@ -778,26 +618,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/************************************************************************
-.. function:: _pgr_getColumnType(sname,tname,col,reportErrs,fnName) returns text
-.. function:: _pgr_getColumnType(tab,col,reportErrs,fname) returns text
 
-    Returns:
-          type   the types of the registered column "col" in table "tab" or "sname.tname" 
-          NULL   when "tab"/"sname"/"tname" is not found or when "col" is not in table "tab"/"sname.tname"
-    unless otherwise indicated raises debug_  on errors
- 
- Examples:  
-	* 	 select  _pgr_getColumnType('tab','col');
-	* 	 select  _pgr_getColumnType('myschema','mytable','col');
-        	 execute 'select _pgr_getColumnType('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
-        	 execute 'select _pgr_getColumnType('||quote_literal(sname)||','||quote_literal(sname)||','||quote_literal('col')||')' INTO column;
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUL/28 
-************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text,
      IN reportErrs int default 0, IN fnName text default '_pgr_getColumnType')
@@ -809,7 +630,7 @@ DECLARE
     err boolean;
 BEGIN
 
-    EXECUTE 'select data_type  from information_schema.columns ' 
+    EXECUTE 'select data_type  from information_schema.columns '
             || 'where table_name = '||quote_literal(tname)
                  || ' and table_schema=' || quote_literal(sname)
                  || ' and column_name='||quote_literal(cname)
@@ -838,7 +659,7 @@ DECLARE
     naming record;
     err boolean;
 BEGIN
-  
+
     select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
     sname=naming.sname;
     tname=naming.tname;
@@ -854,21 +675,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-/************************************************************************
-.. function:: _pgr_get_statement( sql ) returns the original statement if its a prepared statement
 
-    Returns:
-          sname,vname  registered schemaname, vertices table name 
-    
-          
- Examples:  
-    select * from _pgr_dijkstra(_pgr_get_statament($1),$2,$3,$4);
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUL/27 
-************************************************************************/
 CREATE OR REPLACE FUNCTION _pgr_get_statement(o_sql text)
 RETURNS text AS
 $BODY$
@@ -886,24 +693,7 @@ $BODY$
 LANGUAGE plpgsql STABLE STRICT;
 
 
-/************************************************************************
-.. function:: _pgr_checkVertTab(vertname,columnsArr,reportErrs) returns record of sname,vname
 
-    Returns:
-          sname,vname  registered schemaname, vertices table name 
-    
-    if the table is not found will stop any further checking.
-    if a column is missing, then its added as integer ---  (id also as integer but is bigserial when the vertices table is created with the pgr functions)
-          
- Examples:  
-	* 	execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
-	* 	execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
-
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUL/27 
-************************************************************************/
 CREATE OR REPLACE FUNCTION _pgr_checkVertTab(vertname text, columnsArr  text[],
     IN reportErrs int default 1, IN fnName text default '_pgr_checkVertTab',
     OUT sname text,OUT vname text)
@@ -930,7 +720,7 @@ BEGIN
           'Vertex Table: ' || vertname || ' not found',
           'Please create ' || vertname || ' using  _pgr_createTopology() or pgr_createVerticesTable()',
           'Vertex Table: ' || vertname || ' found');
-    
+
 
     perform _pgr_msg(msgKind, fnName, 'Checking columns of ' || vertname);
       FOREACH cname IN ARRAY columnsArr
@@ -955,28 +745,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-/************************************************************************
-.. function:: _pgr_createIndex(tab, col,indextype)
-              _pgr_createIndex(sname,tname,colname,indextypes)
-              
-   if the column is not indexed it creates a 'gist' index otherwise a 'btree' index
-   Examples:  
-	* 	 select  _pgr_createIndex('tab','col','btree');
-	* 	 select  _pgr_createIndex('myschema','mytable','col','gist');
-	* 	 perform 'select _pgr_createIndex('||quote_literal('tab')||','||quote_literal('col')||','||quote_literal('btree'))' ;
-	* 	 perform 'select _pgr_createIndex('||quote_literal('myschema')||','||quote_literal('mytable')||','||quote_literal('col')||','||quote_literal('gist')')' ;
-   Precondition:
-      sname.tname.colname is a valid column on table tname in schema sname
-      indext  is the indexType btree or gist
-   Postcondition:
-      sname.tname.colname its indexed using the indextype
 
-  
-   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
-  HISTORY
-     Created: 2014/JUL/28 
-************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_createIndex(
     sname text, tname text, colname text, indext text,
@@ -999,10 +768,10 @@ BEGIN
        perform _pgr_msg(msgKind, fnName);
     else
       if indext = 'gist' then
-        query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+        query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||'
                          on '||tabname||' using gist('||quote_ident(colname)||')';
       else
-        query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+        query = 'create  index '||_pgr_quote_ident(tname||'_'||colname||'_idx')||'
                          on '||tabname||' using btree('||quote_ident(colname)||')';
       end if;
       perform _pgr_msg(msgKind, fnName, 'Adding index ' || tabname || '_' ||  colname || '_idx');
@@ -1044,25 +813,10 @@ $BODY$
 
 
 
-/*
-.. function:: _pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
-Using tolerance to determine if its an existing point:
-    - Inserts a point into the vertices table "vertname" with the srid "srid", 
-and returns
-    - the id of the new point
-    - the id of the existing point.
-   
-Tolerance is the minimal distance between existing points and the new point to create a new point.
 
-Last changes: 2013-03-22
-
-HISTORY
-Last changes: 2013-03-22
-2013-08-19: handling schemas
-*/
 
 CREATE OR REPLACE FUNCTION _pgr_pointToId(
-    point geometry, 
+    point geometry,
     tolerance double precision,
     vertname text,
     srid integer)
@@ -1082,7 +836,7 @@ BEGIN
             || srid ||')) AS d, id, the_geom
     FROM '||_pgr_quote_ident(vertname)||'
     WHERE ST_DWithin(
-        the_geom, 
+        the_geom,
         ST_GeomFromText(
             ST_AsText(' || quote_literal(point::text) ||'),
             ' || srid || '),' || tolerance||')
@@ -1103,38 +857,6 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-/*
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, directed BOOLEAN,
-    only_cost BOOLEAN DEFAULT false,
-  OUT seq integer, OUT path_seq integer, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'one_to_one_dijkstra'
-    LANGUAGE c IMMUTABLE STRICT;
-
-    -- One to many
-
-
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vids ANYARRAY, directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-  OUT seq integer, OUT path_seq integer, OUT end_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'one_to_many_dijkstra'
-    LANGUAGE c IMMUTABLE STRICT;
-
-
---  many to one
-
-
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vids ANYARRAY, end_vid BIGINT, directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-    OUT seq integer, OUT path_seq integer, OUT start_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'many_to_one_dijkstra'
-LANGUAGE c IMMUTABLE STRICT;
-
---  many to many
-*/
-
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(
     edges_sql TEXT,
     start_vids ANYARRAY,
@@ -1152,8 +874,8 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(
     OUT cost float,
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'many_to_many_dijkstra'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME', 'many_to_many_dijkstra'
+LANGUAGE c VOLATILE;
 
 
 -- V3 signature 1 to 1
@@ -1170,7 +892,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], true, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1193,7 +915,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1217,7 +939,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1241,7 +963,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, false) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1265,7 +987,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
+    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1293,7 +1015,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost 
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1313,7 +1035,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost 
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1333,7 +1055,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost 
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1353,7 +1075,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost 
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -1391,8 +1113,8 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     OUT route_agg_cost FLOAT)
 
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'dijkstraVia'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'dijkstraVia'
+    LANGUAGE c VOLATILE;
 
 
 
@@ -1400,82 +1122,19 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
 CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE,
   OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'johnson'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'johnson'
+    LANGUAGE c VOLATILE;
 
 
 
-CREATE OR REPLACE FUNCTION pgr_floydWarshall(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE, 
+CREATE OR REPLACE FUNCTION pgr_floydWarshall(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE,
   OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'floydWarshall'  
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'floydWarshall'
+    LANGUAGE c VOLATILE;
 
 
 
-/*
-CREATE OR REPLACE FUNCTION _pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
-    only_cost BOOLEAN DEFAULT false,
-    normal BOOLEAN DEFAULT true,
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'astarOneToOne'
-LANGUAGE c IMMUTABLE STRICT;
-
-
-CREATE OR REPLACE FUNCTION _pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vids ANYARRAY,
-    directed BOOLEAN DEFAULT true,
-    heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
-    only_cost BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'astarOneToMany'
-LANGUAGE c IMMUTABLE STRICT;
-
-CREATE OR REPLACE FUNCTION _pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vids ANYARRAY,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
-    only_cost BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'astarManyToOne'
-LANGUAGE c IMMUTABLE STRICT;
-*/
 
 CREATE OR REPLACE FUNCTION _pgr_astar(
     edges_sql TEXT, -- XY edges sql
@@ -1496,8 +1155,8 @@ CREATE OR REPLACE FUNCTION _pgr_astar(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'astarManyToMany'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME', 'astarManyToMany'
+LANGUAGE c VOLATILE;
 
 
 CREATE OR REPLACE FUNCTION pgr_astar(
@@ -1716,9 +1375,9 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     distance FLOAT,
 
     directed BOOLEAN DEFAULT TRUE,
-    driving_side CHAR DEFAULT 'b', 
-    details BOOLEAN DEFAULT FALSE, 
-    equicost BOOLEAN DEFAULT FALSE, 
+    driving_side CHAR DEFAULT 'b',
+    details BOOLEAN DEFAULT FALSE,
+    equicost BOOLEAN DEFAULT FALSE,
 
     OUT seq INTEGER,
     OUT start_vid BIGINT,
@@ -1727,7 +1386,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-     '$libdir/libpgrouting-2.5', 'many_withPointsDD'
+     'MODULE_PATHNAME', 'many_withPointsDD'
  LANGUAGE c VOLATILE STRICT;
 
 
@@ -1738,8 +1397,8 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     distance FLOAT,
 
     directed BOOLEAN DEFAULT TRUE,
-    driving_side CHAR DEFAULT 'b', 
-    details BOOLEAN DEFAULT FALSE, 
+    driving_side CHAR DEFAULT 'b',
+    details BOOLEAN DEFAULT FALSE,
 
     OUT seq INTEGER,
     OUT node BIGINT,
@@ -1771,7 +1430,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-     '$libdir/libpgrouting-2.5', 'driving_many_to_dist'
+     'MODULE_PATHNAME', 'driving_many_to_dist'
  LANGUAGE c VOLATILE STRICT;
 
 
@@ -1802,13 +1461,13 @@ ROWS 1000;
 CREATE OR REPLACE FUNCTION _pgr_ksp(edges_sql text, start_vid bigint, end_vid bigint, k integer, directed boolean, heap_paths boolean,
   OUT seq integer, OUT path_id integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
-    '$libdir/libpgrouting-2.5', 'kshortest_path'
+    'MODULE_PATHNAME', 'kshortest_path'
     LANGUAGE c STABLE STRICT;
 
--- V2 the graph is directed and there are no heap paths 
+-- V2 the graph is directed and there are no heap paths
 CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid integer, end_vid integer, k integer, has_rcost boolean)
   RETURNS SETOF pgr_costresult3 AS
-  $BODY$  
+  $BODY$
   DECLARE
   has_reverse boolean;
   sql TEXT;
@@ -1820,14 +1479,14 @@ CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid integer, end_vid in
          IF (has_rcost) THEN
            -- user says that it has reverse_cost but its not true
            RAISE EXCEPTION 'has_reverse_cost set to true but reverse_cost not found';
-         ELSE  
+         ELSE
            -- user says that it does not have reverse_cost but it does have it
            -- to ignore we remove reverse_cost from the query
            sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
          END IF;
       END IF;
 
-      RETURN query SELECT ((row_number() over()) -1)::integer  AS seq,  (path_id - 1)::integer AS id1, node::integer AS id2, edge::integer AS id3, cost 
+      RETURN query SELECT ((row_number() over()) -1)::integer  AS seq,  (path_id - 1)::integer AS id1, node::integer AS id2, edge::integer AS id3, cost
             FROM _pgr_ksp(sql::text, start_vid, end_vid, k, TRUE, FALSE) WHERE path_id <= k;
   END
   $BODY$
@@ -1856,10 +1515,10 @@ CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid bigint, end_vid big
 
 
 CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
-    edges_sql TEXT, 
+    edges_sql TEXT,
     points_sql TEXT,
-    start_pid BIGINT, 
-    end_pid BIGINT, 
+    start_pid BIGINT,
+    end_pid BIGINT,
     k INTEGER,
 
     directed BOOLEAN DEFAULT TRUE,
@@ -1871,13 +1530,13 @@ CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
     OUT node BIGINT, OUT edge BIGINT,
     OUT cost FLOAT, OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-    '$libdir/libpgrouting-2.5', 'withPoints_ksp'
+    'MODULE_PATHNAME', 'withPoints_ksp'
     LANGUAGE c STABLE STRICT;
 
 
 
 CREATE OR REPLACE FUNCTION _pgr_unnest_matrix(matrix float8[][], OUT start_vid integer, OUT end_vid integer, out agg_cost float8)
-RETURNS SETOF record AS 
+RETURNS SETOF record AS
 
 $body$
 DECLARE
@@ -1923,9 +1582,9 @@ BEGIN
     IF endpt = -1 THEN endpt := startpt;
     END IF;
 
-    
+
     RETURN QUERY
-    WITH 
+    WITH
     result AS (
         SELECT * FROM pgr_TSP(
         $$SELECT * FROM ___tmp2 $$,
@@ -1946,10 +1605,7 @@ END;
 $body$
 language plpgsql volatile cost 500 ROWS 50;
 
-/*
-    Old signature has:
-    sql: id INTEGER, x FLOAT, y FLOAT
-*/
+
 
 
 
@@ -2020,7 +1676,7 @@ $body$
 declare
     sql text;
     r record;
-    
+
 begin
     dmatrix := array[]::double precision[];
     ids := array[]::integer[];
@@ -2064,7 +1720,7 @@ CREATE OR REPLACE FUNCTION pgr_TSP(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF record
-AS '$libdir/libpgrouting-2.5', 'newTSP'
+AS 'MODULE_PATHNAME', 'newTSP'
 LANGUAGE c VOLATILE STRICT;
 
 
@@ -2090,27 +1746,19 @@ CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF record
-AS '$libdir/libpgrouting-2.5', 'eucledianTSP'
+AS 'MODULE_PATHNAME', 'eucledianTSP'
 LANGUAGE c VOLATILE STRICT;
 
 
 
 
 
------------------------------------------------------------------------
--- Core function for alpha shape computation.
--- The sql should return vertex ids and x,y values. Return ordered
--- vertex ids. 
------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
     RETURNS SETOF record
-    AS '$libdir/libpgrouting-2.5', 'alphashape'
-    LANGUAGE c IMMUTABLE STRICT;
+    AS 'MODULE_PATHNAME', 'alphashape'
+    LANGUAGE c VOLATILE;
 
-----------------------------------------------------------
--- Draws an alpha shape around given set of points.
--- ** This should be rewritten as an aggregate. **
-----------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAULT 0)
 	RETURNS geometry AS
 	$$
@@ -2129,7 +1777,7 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAU
 		geoms := array[]::geometry[];
 		i := 1;
 
-		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''', ' || alpha || ')' 
+		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''', ' || alpha || ')'
 		LOOP
 			x[i] = vertex_result.x;
 			y[i] = vertex_result.y;
@@ -2189,8 +1837,8 @@ CREATE OR REPLACE FUNCTION _pgr_bdAstar(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-    '$libdir/libpgrouting-2.5', 'bd_astar'
-LANGUAGE C IMMUTABLE STRICT;
+    'MODULE_PATHNAME', 'bd_astar'
+LANGUAGE C VOLATILE;
 
 
 
@@ -2437,8 +2085,8 @@ CREATE OR REPLACE FUNCTION _pgr_bdDijkstra(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'bdDijkstra'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME', 'bdDijkstra'
+LANGUAGE c VOLATILE;
 
 
 
@@ -2629,12 +2277,7 @@ LANGUAGE SQL VOLATILE
 COST 100
 ROWS 1000;
 
------------------------------------------------------------------------
--- Core function for time_dependent_shortest_path computation
--- See README for description
------------------------------------------------------------------------
---TODO - Do we need to add another sql text for the query on time-dependent-weights table?
---     - For now just checking with static data, so the query is similar to shortest_paths.
+
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,
@@ -2644,7 +2287,7 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     has_reverse_cost boolean,
     turn_restrict_sql text DEFAULT null)
 RETURNS SETOF pgr_costResult
-AS '$libdir/libpgrouting-2.5', 'turn_restrict_shortest_path_vertex'
+AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_vertex'
 LANGUAGE 'c' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
@@ -2657,21 +2300,13 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     has_reverse_cost boolean,
     turn_restrict_sql text DEFAULT null)
 RETURNS SETOF pgr_costResult
-AS '$libdir/libpgrouting-2.5', 'turn_restrict_shortest_path_edge'
+AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_edge'
 LANGUAGE 'c' IMMUTABLE;
 
 
 
 
-/*  pgr_trsp    VERTEX
 
- - if size of restrictions_sql  is Zero or no restrictions_sql are given
-     then call to pgr_dijkstra is made
-
- - because it reads the data wrong, when there is a reverse_cost column:
-   - put all data costs in one cost column and
-   - a call is made to trsp without only the positive values
-*/
 CREATE OR REPLACE FUNCTION pgr_trsp(
     edges_sql TEXT,
     start_vid INTEGER,
@@ -2717,14 +2352,7 @@ COST 100
 ROWS 1000;
 
 
-/* pgr_trspVia Vertices
- - if size of restrictions_sql  is Zero or no restrictions_sql are given
-     then call to pgr_dijkstra is made
 
- - because it reads the data wrong, when there is a reverse_cost column:
-   - put all data costs in one cost column and
-   - a call is made to trspViaVertices without only the positive values
-*/
 CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
     edges_sql TEXT,
     via_vids ANYARRAY,
@@ -2825,14 +2453,7 @@ ROWS 1000;
 create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
-/*
- *  pgr_trsp(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
- *
- *  Compute TRSP with via points. We compute the path between vids[i] and vids[i+1] and chain the results together.
- *
- *  NOTE: this is a prototype function, we can gain a lot of efficiencies by implementing this in C/C++
- *
-*/
+
 declare
     i integer;
     rr pgr_costresult3;
@@ -2883,15 +2504,7 @@ $body$
 create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
-/*
- *  pgr_trsp(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
- *
- *  Compute TRSP with edge_ids and pposition along edge. We compute the path between eids[i], pcts[i] and eids[i+1], pcts[i+1]
- *  and chain the results together.
- *
- *  NOTE: this is a prototype function, we can gain a lot of efficiencies by implementing this in C/C++
- *
-*/
+
 declare
     i integer;
     rr pgr_costresult3;
@@ -2993,35 +2606,6 @@ $body$
     rows 1000;
 
 
-----------------------------------------------------------------------------------------------------------
-/*this via functions are not documented they will be deleted on 2.2
-
-create or replace function pgr_trsp(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
-    RETURNS SETOF pgr_costresult AS
-$body$
-begin
-    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspVia( sql, vids, directed, has_reverse_cost, turn_restrict_sql);
-end;
-$body$
-    language plpgsql stable
-    cost 100
-    rows 1000;
-
-
-
-create or replace function pgr_trsp(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
-    RETURNS SETOF pgr_costresult AS
-$body$
-begin
-    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspVia(sql, eids, pcts, directed, has_reverse_cost, turn_restrict_sql);
-end;
-$body$
-    language plpgsql stable
-    cost 100
-    rows 1000;
-*/
-
-
 
 ----------------------------
 --    MANY TO MANY
@@ -3042,8 +2626,8 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     OUT residual_capacity BIGINT
     )
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'max_flow_many_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'max_flow_many_to_many'
+    LANGUAGE c VOLATILE;
 
 
 
@@ -3300,9 +2884,7 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
 
 
 
-/***********************************
-        MANY TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
@@ -3316,9 +2898,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   $BODY$
   LANGUAGE SQL VOLATILE;
 
-/***********************************
-        ONE TO ONE
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
@@ -3332,9 +2912,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   $BODY$
   LANGUAGE SQL VOLATILE;
 
-/***********************************
-        ONE TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
@@ -3348,9 +2926,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   $BODY$
   LANGUAGE SQL VOLATILE;
 
-/***********************************
-        MANY TO ONE
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
@@ -3377,15 +2953,13 @@ CREATE OR REPLACE FUNCTION pgr_maxCardinalityMatch(
     OUT target BIGINT
     )
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'maximum_cardinality_matching'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'maximum_cardinality_matching'
+    LANGUAGE c VOLATILE;
 
 
 
 
-/***********************************
-        MANY TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
@@ -3403,12 +2977,10 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     OUT agg_cost FLOAT
     )
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'edge_disjoint_paths_many_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
+    LANGUAGE c VOLATILE;
 
-/***********************************
-        ONE TO ONE
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
@@ -3430,9 +3002,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
   $BODY$
 LANGUAGE sql VOLATILE;
 
-/***********************************
-        ONE TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
@@ -3455,9 +3025,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
   $BODY$
 LANGUAGE sql VOLATILE;
 
-/***********************************
-        MANY TO ONE
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
@@ -3496,15 +3064,15 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT cost float)
 
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'contractGraph'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'contractGraph'
+    LANGUAGE c VOLATILE;
 
 
 
 CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
     orders_sql TEXT,
     vehicles_sql TEXT,
-    max_cycles INTEGER DEFAULT 10, 
+    max_cycles INTEGER DEFAULT 10,
 
     OUT seq INTEGER,
     OUT vehicle_number INTEGER,
@@ -3521,8 +3089,8 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
 )
 
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'pickDeliverEuclidean'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'pickDeliverEuclidean'
+    LANGUAGE c VOLATILE;
 
 
 
@@ -3530,7 +3098,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     orders_sql TEXT,
     vehicles_sql TEXT,
     matrix_cell_sql TEXT,
-    max_cycles INTEGER DEFAULT 10, 
+    max_cycles INTEGER DEFAULT 10,
 
     OUT seq INTEGER,
     OUT vehicle_number INTEGER,
@@ -3547,8 +3115,8 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
 )
 
 RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'pickDeliver'
-LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'pickDeliver'
+LANGUAGE c VOLATILE;
 
 
 
@@ -3559,8 +3127,8 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     customers_sql TEXT,
     max_vehicles INTEGER,
     capacity FLOAT,
-    speed FLOAT DEFAULT 1, 
-    max_cycles INTEGER DEFAULT 10, 
+    speed FLOAT DEFAULT 1,
+    max_cycles INTEGER DEFAULT 10,
 
     OUT seq INTEGER,
     OUT vehicle_id INTEGER,
@@ -3599,7 +3167,7 @@ BEGIN
             capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number, $$ || speed || $$ AS speed
             FROM customer_data WHERE id = 0 LIMIT 1
         $$;
---  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time 
+--  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
         p_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  $$ || max_cycles || $$ )),
@@ -3629,22 +3197,20 @@ create or replace function pgr_vrpOneDepot(
 	vehicle_sql text,
 	cost_sql text,
 	depot_id integer,
-	 
-	OUT oid integer, 
-	OUT opos integer, 
-	OUT vid integer, 
-	OUT tarrival integer, 
+
+	OUT oid integer,
+	OUT opos integer,
+	OUT vid integer,
+	OUT tarrival integer,
 	OUT tdepart integer)
 returns setof record as
-'$libdir/libpgrouting-2.5', 'vrp'
+'MODULE_PATHNAME', 'vrp'
 LANGUAGE c VOLATILE STRICT;
 
 
 
 
-/*
-ONE TO ONE
-*/
+
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -3665,12 +3231,10 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'one_to_one_withPoints'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME', 'one_to_one_withPoints'
+LANGUAGE c VOLATILE;
 
-/*
-ONE TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -3692,13 +3256,11 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'one_to_many_withPoints'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME', 'one_to_many_withPoints'
+LANGUAGE c VOLATILE;
 
 
-/*
-MANY TO ONE
-*/
+
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -3720,15 +3282,13 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'many_to_one_withPoints'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME', 'many_to_one_withPoints'
+LANGUAGE c VOLATILE;
 
 
 
 
-/*
-MANY TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -3751,15 +3311,13 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'$libdir/libpgrouting-2.5', 'many_to_many_withPoints'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME', 'many_to_many_withPoints'
+LANGUAGE c VOLATILE;
 
 
 
 
-/*
-ONE TO ONE
-*/
+
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3787,9 +3345,7 @@ BEGIN
     ROWS 1000;
 
 
-/*
-ONE TO MANY
-*/
+
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3817,9 +3373,7 @@ BEGIN
     COST 100
     ROWS 1000;
 
-/*
-MANY TO ONE
-*/
+
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3847,9 +3401,7 @@ BEGIN
     COST 100
     ROWS 1000;
 
-/*
-MANY TO MANY
-*/
+
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3879,9 +3431,7 @@ BEGIN
     ROWS 1000;
 
 
-/*
-ONE TO ONE
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
@@ -3905,9 +3455,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
-/*
-ONE TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
@@ -3931,9 +3479,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
-/*
-MANY TO ONE
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
@@ -3957,9 +3503,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
-/*
-MANY TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
@@ -3988,8 +3532,8 @@ ROWS 1000;
 
 CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
     sql text,
-    via_edges bigint[], 
-    fraction float[], 
+    via_edges bigint[],
+    fraction float[],
     directed BOOLEAN DEFAULT TRUE,
 
     OUT seq INTEGER,
@@ -4025,7 +3569,7 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
           WHEN OTHERS THEN
             has_rcost = false;
      END;
- 
+
 
       IF array_length(via_edges, 1) != array_length(fraction, 1) then
         RAISE EXCEPTION 'The length of via_edges is different of length of via_edges';
@@ -4035,11 +3579,11 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
       LOOP
           IF fraction[i] = 0 THEN
               sql_on_vertex := 'SELECT source FROM ('|| sql || ') __a where id = ' || via_edges[i];
-              EXECUTE sql_on_vertex into dummyrec; 
+              EXECUTE sql_on_vertex into dummyrec;
               via_vertices[i] = dummyrec.source;
           ELSE IF fraction[i] = 1 THEN
               sql_on_vertex := 'SELECT target FROM ('|| sql || ') __a where id = ' || via_edges[i];
-              EXECUTE sql_on_vertex into dummyrec; 
+              EXECUTE sql_on_vertex into dummyrec;
               via_vertices[i] = dummyrec.target;
           ELSE
               via_vertices[i] = -i;
@@ -4053,7 +3597,7 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
                               reverse_cost *  ' || fraction[i] || '  AS reverse_cost
                           FROM (SELECT * FROM (' || sql || ') __b' || i || ' where id = ' || via_edges[i] || ') __a' || i ||')';
                       v_union = ' UNION ';
-               ELSE 
+               ELSE
                    sql_new_vertices = sql_new_vertices || v_union ||
                           '(SELECT id, source, ' ||  -i || ' AS target, cost * ' || fraction[i] || ' AS cost
                           FROM (SELECT * FROM (' || sql || ') __b' || i || ' WHERE id = ' || via_edges[i] || ') __a' || i ||')
@@ -4067,7 +3611,7 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
      END LOOP;
 
      IF sql_new_vertices = ' ' THEN
-         new_edges := sql; 
+         new_edges := sql;
      ELSE
          IF has_rcost THEN
             new_edges:= 'WITH
@@ -4086,11 +3630,11 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
                       WINDOW w AS (PARTITION BY id  ORDER BY reverse_cost ASC) ) as n2
                       WHERE source IS NOT NULL),
                    more_union AS ( SELECT * from (
-                       (SELECT * FROM original) 
-                             UNION 
-                       (SELECT * FROM the_union) 
-                             UNION 
-                       (SELECT * FROM first_part) 
+                       (SELECT * FROM original)
+                             UNION
+                       (SELECT * FROM the_union)
+                             UNION
+                       (SELECT * FROM first_part)
                              UNION
                        (SELECT * FROM second_part) ) _union )
                   SELECT *  FROM more_union';
@@ -4104,10 +3648,10 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
                       WINDOW w AS (PARTITION BY id  ORDER BY cost ASC) ) as n2
                       WHERE target IS NOT NULL ),
                    more_union AS ( SELECT * from (
-                       (SELECT * FROM original) 
-                             UNION 
-                       (SELECT * FROM the_union) 
-                             UNION 
+                       (SELECT * FROM original)
+                             UNION
+                       (SELECT * FROM the_union)
+                             UNION
                        (SELECT * FROM first_part) ) _union )
                   SELECT *  FROM more_union';
           END IF;
@@ -4126,24 +3670,9 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
 
 
 
-/*
-.. function:: _pgr_createtopology(edge_table, tolerance,the_geom,id,source,target,rows_where)
 
-Based on the geometry:
-Fill the source and target column for all lines.
-All line end points within a distance less than tolerance, are assigned the same id
 
-Author: Christian Gonzalez <christian.gonzalez@sigis.com.ve>
-Author: Stephen Woodbridge <woodbri@imaptools.com>
-Modified by: Vicky Vergara <vicky_vergara@hotmail,com>
-
-HISTORY
-Last changes: 2013-03-22
-2013-08-19:  handling schemas
-2014-july: fixes issue 211
-*/
-
-CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision, 
+CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision,
 		   the_geom text default 'the_geom', id text default 'id',
 		   source text default 'source', target text default 'target',rows_where text default 'true',
 		   clean boolean default FALSE)
@@ -4188,7 +3717,7 @@ DECLARE
 BEGIN
     msgKind = 1; -- notice
     fnName = 'pgr_createTopology';
-    raise notice 'PROCESSING:'; 
+    raise notice 'PROCESSING:';
     raise notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
     execute 'show client_min_messages' into debuglevel;
 
@@ -4202,7 +3731,7 @@ BEGIN
         tabname=sname||'.'||tname;
         vname=tname||'_vertices_pgr';
         vertname= sname||'.'||vname;
-        rows_where = ' AND ('||rows_where||')'; 
+        rows_where = ' AND ('||rows_where||')';
       raise DEBUG '     --> OK';
 
 
@@ -4270,7 +3799,7 @@ BEGIN
 
 
 
-    BEGIN 
+    BEGIN
         -- issue #193 & issue #210 & #213
         -- this sql is for trying out the where clause
         -- the select * is to avoid any column name conflicts
@@ -4278,7 +3807,7 @@ BEGIN
         -- if the where clasuse is ill formed it will be caught in the exception
         sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
         EXECUTE sql into dummyRec;
-        -- end 
+        -- end
 
         -- if above where clasue works this one should work
         -- any error will be caught by the exception also
@@ -4286,23 +3815,23 @@ BEGIN
 	    idname||' IS NOT NULL)=false '||rows_where;
         EXECUTE SQL  into notincluded;
 
-        if clean then 
+        if clean then
             raise debug 'Cleaning previous Topology ';
                execute 'UPDATE ' || _pgr_quote_ident(tabname) ||
-               ' SET '||sourcename||' = NULL,'||targetname||' = NULL'; 
-        else 
+               ' SET '||sourcename||' = NULL,'||targetname||' = NULL';
+        else
             raise debug 'Creating topology for edges with non assigned topology';
             if rows_where=' AND (true)' then
-                rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)'; 
+                rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)';
             end if;
         end if;
         -- my thoery is that the select Count(*) will never go through here
-        EXCEPTION WHEN OTHERS THEN  
+        EXCEPTION WHEN OTHERS THEN
              RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
-             RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition'; 
+             RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
              RAISE NOTICE '%',sql;
-             RETURN 'FAIL'; 
-    END;    
+             RETURN 'FAIL';
+    END;
 
     BEGIN
          raise DEBUG 'initializing %',vertname;
@@ -4311,7 +3840,7 @@ BEGIN
          emptied = false;
          set client_min_messages  to warning;
          IF sname=naming.sname AND vname=naming.tname  THEN
-            if clean then 
+            if clean then
                 execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
                 execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
                 emptied = true;
@@ -4327,12 +3856,12 @@ BEGIN
          END IF;
          execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
          execute 'set client_min_messages  to '|| debuglevel;
-         raise DEBUG  '  ------>OK'; 
-         EXCEPTION WHEN OTHERS THEN  
+         raise DEBUG  '  ------>OK';
+         EXCEPTION WHEN OTHERS THEN
              RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
              RAISE NOTICE 'ERROR: something went wrong when initializing the verties table';
-             RETURN 'FAIL'; 
-    END;       
+             RETURN 'FAIL';
+    END;
 
 
 
@@ -4353,9 +3882,9 @@ BEGIN
 
             source_id := _pgr_pointToId(points.source, tolerance,vertname,srid);
             target_id := _pgr_pointToId(points.target, tolerance,vertname,srid);
-            BEGIN                         
-                sql := 'UPDATE ' || _pgr_quote_ident(tabname) || 
-                    ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text || 
+            BEGIN
+                sql := 'UPDATE ' || _pgr_quote_ident(tabname) ||
+                    ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text ||
                     ' WHERE ' || idname || ' =  ' || points.id::text;
 
                 IF sql IS NULL THEN
@@ -4363,10 +3892,10 @@ BEGIN
                 ELSE
                     EXECUTE sql;
                 END IF;
-                EXCEPTION WHEN OTHERS THEN 
+                EXCEPTION WHEN OTHERS THEN
                     RAISE NOTICE '%', SQLERRM;
                     RAISE NOTICE '%',sql;
-                    RETURN 'FAIL'; 
+                    RETURN 'FAIL';
             end;
         END LOOP;
         raise notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
@@ -4383,7 +3912,7 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text,boolean) 
+COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text,boolean)
 IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', target:=''target'',rows_where:=''true'' - fills columns source and target in the geometry table and creates a vertices table for selected rows';
 
 
@@ -4392,47 +3921,7 @@ IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', targe
 
 
 
-/*
-.. function:: pgr_analyzeGraph(edge_tab, tolerance,the_geom, source,target)
 
-   Analyzes the "edge_tab" and "edge_tab_vertices_pgr" tables and flags if
-   nodes are deadends, ie vertices_tmp.cnt=1 and identifies nodes
-   that might be disconnected because of gaps < tolerance or because of
-   zlevel errors in the data. For example:
-
-.. code-block:: sql
-
-       select pgr_analyzeGraph('mytab', 0.000002);
-
-   After the analyzing the graph, deadends are identified by *cnt=1*
-   in the "vertices_tmp" table and potential problems are identified
-   with *chk=1*.  (Using 'source' and 'target' columns for analysis)
-
-.. code-block:: sql
-
-       select * from vertices_tmp where chk = 1;
-
-HISOTRY
-:Author: Stephen Woodbridge <woodbri@swoodbridge.com>
-:Modified: 2013/08/20 by Vicky Vergara <vicky_vergara@hotmail.com>
-
-Makes more checks:
-   checks table edge_tab exists in the schema
-   checks source and target columns exist in edge_tab
-   checks that source and target are completely populated i.e. do not have NULL values
-   checks table edge_tabVertices exist in the appropriate schema
-       if not, it creates it and populates it
-   checks 'cnt','chk' columns exist in  edge_tabVertices
-       if not, it creates them
-   checks if 'id' column of edge_tabVertices is indexed
-       if not, it creates the index
-   checks if 'source','target',the_geom columns of edge_tab are indexed
-       if not, it creates their index
-   populates cnt in edge_tabVertices  <--- changed the way it was processed, because on large tables took to long.
-					   For sure I am wrong doing this, but it gave me the same result as the original.
-   populates chk                      <--- added a notice for big tables, because it takes time
-           (edge_tab text, the_geom text, tolerance double precision)
-*/
 
 CREATE OR REPLACE FUNCTION pgr_analyzegraph(edge_table text,tolerance double precision,the_geom text default 'the_geom',id text default 'id',source text default 'source',target text default 'target',rows_where text default 'true')
 RETURNS character varying AS
@@ -4489,10 +3978,7 @@ BEGIN
     vertname= sname||'.'||vname;
     rows_where = ' AND ('||rows_where||')';
     raise DEBUG '     --> OK';
-/*    EXCEPTION WHEN raise_exception THEN
-      RAISE NOTICE 'ERROR: something went wrong checking the table name';
-      RETURN 'FAIL';
-*/
+
   END;
 
   BEGIN
@@ -4732,73 +4218,7 @@ COMMENT ON FUNCTION pgr_analyzeGraph(text,double precision,text,text,text,text,t
 
 
 
-/*
-.. function:: _pgr_analyzeOneway(tab, col, s_in_rules, s_out_rules, t_in_rules, t_out_rules)
 
-   This function analyzes oneway streets in a graph and identifies any
-   flipped segments. Basically if you count the edges coming into a node
-   and the edges exiting a node the number has to be greater than one.
-
-   * tab              - edge table name (TEXT)
-   * col              - oneway column name (TEXT)
-   * s_in_rules       - source node in rules
-   * s_out_rules      - source node out rules
-   * t_in_tules       - target node in rules
-   * t_out_rules      - target node out rules
-   * two_way_if_null  - flag to treat oneway nNULL values as by directional
-
-   After running this on a graph you can identify nodes with potential
-   problems with the following query.
-
-.. code-block:: sql
-
-       select * from vertices_tmp where in=0 or out=0;
-
-   The rules are defined as an array of text strings that if match the "col"
-   value would be counted as true for the source or target in or out condition.
-
-   Example
-   =======
-
-   Lets assume we have a table "st" of edges and a column "one_way" that
-   might have values like:
-
-   * 'FT'    - oneway from the source to the target node.
-   * 'TF'    - oneway from the target to the source node.
-   * 'B'     - two way street.
-   * ''      - empty field, assume teoway.
-   * <NULL>  - NULL field, use two_way_if_null flag.
-
-   Then we could form the following query to analyze the oneway streets for
-   errors.
-
-.. code-block:: sql
-
-   select _pgr_analyzeOneway('st', 'one_way',
-        ARRAY['', 'B', 'TF'],
-        ARRAY['', 'B', 'FT'],
-        ARRAY['', 'B', 'FT'],
-        ARRAY['', 'B', 'TF'],
-        true);
-
-   -- now we can see the problem nodes
-   select * from vertices_tmp where ein=0 or eout=0;
-
-   -- and the problem edges connected to those nodes
-   select gid
-
-     from st a, vertices_tmp b
-    where a.source=b.id and ein=0 or eout=0
-   union
-   select gid
-     from st a, vertices_tmp b
-    where a.target=b.id and ein=0 or eout=0;
-
-Typically these problems are generated by a break in the network, the
-oneway direction set wrong, maybe an error releted to zlevels or
-a network that is not properly noded.
-
-*/
 
 CREATE OR REPLACE FUNCTION pgr_analyzeOneway(
    edge_table text,
@@ -4965,33 +4385,11 @@ COMMENT ON FUNCTION pgr_analyzeOneway(text,TEXT[],TEXT[], TEXT[],TEXT[],boolean,
 IS 'args:edge_table , s_in_rules , s_out_rules, t_in_rules , t_out_rules, two_way_if_null:= true, oneway:=''oneway'',source:= ''source'',target:=''target'' - Analizes the directionality of the edges based on the rules';
 
 
-/* 
-
-This function should not be used directly. Use assign_vertex_id instead
-Inserts a point into the vertices tablei "vname" with the srid "srid", and return an id
-of a new point or an existing point. Tolerance is the minimal distance
-between existing points and the new point to create a new point.
-
-Modified by: Vicky Vergara <vicky_vergara@hotmail,com>
-
-HISTORY
-Last changes: 2013-03-22
-2013-08-19: handling schemas
-*/
 
 
 
-/*
-.. function:: pgr_createVerticesTable(edge_table text, the_geom text, source text default 'source', target text default 'target')
 
-  Based on "source" and "target" columns creates the vetrices_pgr table for edge_table
-  Ignores rows where "source" or "target" have NULL values 
 
-  Author: Vicky Vergara <vicky_vergara@hotmail,com>
-
- HISTORY
-    Created 2013-08-19
-*/
 
 CREATE OR REPLACE FUNCTION pgr_createverticestable(
    edge_table text,
@@ -5014,7 +4412,7 @@ DECLARE
     sourcename text;
     targetname text;
     query text;
-    ecnt bigint; 
+    ecnt bigint;
     srid integer;
     sourcetype text;
     targettype text;
@@ -5029,9 +4427,9 @@ DECLARE
     err bool;
 
 
-BEGIN 
+BEGIN
   fnName = 'pgr_createVerticesTable';
-  raise notice 'PROCESSING:'; 
+  raise notice 'PROCESSING:';
   raise notice 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
   execute 'show client_min_messages' into debuglevel;
 
@@ -5048,7 +4446,7 @@ BEGIN
     vertname= sname||'.'||vname;
     rows_where = ' AND ('||rows_where||')';
   raise debug '--> Edge table exists: OK';
-   
+
   raise debug 'Checking column names';
     select * into sourcename from _pgr_getColumnName(sname, tname,source,2, fnName);
     select * into targetname from _pgr_getColumnName(sname, tname,target,2, fnName);
@@ -5109,7 +4507,7 @@ BEGIN
     -- if the where clasuse is ill formed it will be caught in the exception
     sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
     EXECUTE sql into dummyRec;
-    -- end 
+    -- end
 
     -- if above where clasue works this one should work
     -- any error will be caught by the exception also
@@ -5117,7 +4515,7 @@ BEGIN
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
     raise debug '%',sql;
     EXECUTE SQL  into notincluded;
-    EXCEPTION WHEN OTHERS THEN  
+    EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
          RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
          RAISE NOTICE '%',sql;
@@ -5126,7 +4524,7 @@ BEGIN
 
 
 
-    
+
   BEGIN
      raise DEBUG 'initializing %',vertname;
        execute 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' into naming;
@@ -5141,25 +4539,25 @@ BEGIN
                 quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
        execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||_pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
        execute 'set client_min_messages  to '|| debuglevel;
-       raise DEBUG  '  ------>OK'; 
-       EXCEPTION WHEN OTHERS THEN  
+       raise DEBUG  '  ------>OK';
+       EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
          RAISE NOTICE 'ERROR: Initializing vertex table';
          RAISE NOTICE '%',sql;
          RETURN 'FAIL';
-  END;       
+  END;
 
   BEGIN
        raise notice 'Populating %, please wait...',vertname;
        sql= 'with
 		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
-		                  ' where ('|| gname || ' IS NULL 
-                                    or '||sourcename||' is null 
-                                    or '||targetname||' is null)=false 
+		                  ' where ('|| gname || ' IS NULL
+                                    or '||sourcename||' is null
+                                    or '||targetname||' is null)=false
                                      '||rows_where||')
 			union (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
-			          ' where ('|| gname || ' IS NULL 
-                                    or '||sourcename||' is null 
+			          ' where ('|| gname || ' IS NULL
+                                    or '||sourcename||' is null
                                     or '||targetname||' is null)=false
                                      '||rows_where||'))
 		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
@@ -5169,7 +4567,7 @@ BEGIN
        execute sql;
        GET DIAGNOSTICS totcount = ROW_COUNT;
 
-       sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b 
+       sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
             where '||sourcename||'=b.id and '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
        RAISE debug '%',sql;
        execute sql into included;
@@ -5185,7 +4583,7 @@ BEGIN
        Raise notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname),_pgr_quote_ident(vertname);
        raise notice '----------------------------------------------';
     END;
-    
+
     RETURN 'OK';
  EXCEPTION WHEN OTHERS THEN
    RAISE NOTICE 'Unexpected error %', SQLERRM; -- issue 210,211
@@ -5194,18 +4592,16 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_createVerticesTable(text,text,text,text,text) 
+COMMENT ON FUNCTION pgr_createVerticesTable(text,text,text,text,text)
 IS 'args: edge_table, the_geom:=''the_geom'',source:=''source'', target:=''target'' rows_where:=''true'' - creates a vertices table based on the source and target identifiers for selected rows';
 
 
-CREATE OR REPLACE FUNCTION pgr_nodeNetwork(edge_table text, tolerance double precision, 
+CREATE OR REPLACE FUNCTION pgr_nodeNetwork(edge_table text, tolerance double precision,
 			id text default 'id', the_geom text default 'the_geom', table_ending text default 'noded',
             rows_where text DEFAULT ''::text, outall boolean DEFAULT false) RETURNS text AS
 $BODY$
 DECLARE
-	/*
-	 * Author: Nicolas Ribot, 2013
-	*/
+	
 	p_num int := 0;
 	p_ret text := '';
     pgis_ver_old boolean := _pgr_versionless(postgis_lib_version(), '2.1.0.0');
@@ -5227,10 +4623,10 @@ DECLARE
     geomtype text;
     debuglevel text;
     rows_where text;
-   
+
 
 BEGIN
-  raise notice 'PROCESSING:'; 
+  raise notice 'PROCESSING:';
   raise notice 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
     edge_table, tolerance, id,  the_geom, table_ending, rows_where, outall;
   raise notice 'Performing checks, please wait .....';
@@ -5247,7 +4643,7 @@ BEGIN
     ELSE
 	RAISE DEBUG '  -----> OK';
     END IF;
-  
+
     intab=sname||'.'||tname;
     outname=tname||'_'||table_ending;
     outtab= sname||'.'||outname;
@@ -5255,17 +4651,17 @@ BEGIN
     rows_where = CASE WHEN length(rows_where) > 2 THEN ' WHERE (' || rows_where || ')' ELSE '' END;
   END;
 
-  BEGIN 
+  BEGIN
        raise DEBUG 'Checking id column "%" columns in  % ',id,intab;
        EXECUTE 'select _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(id)||')' INTO n_pkey;
        IF n_pkey is NULL then
           raise notice  'ERROR: id column "%"  not found in %',id,intab;
           RETURN 'FAIL';
        END IF;
-  END; 
+  END;
 
 
-  BEGIN 
+  BEGIN
        raise DEBUG 'Checking id column "%" columns in  % ',the_geom,intab;
        EXECUTE 'select _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(the_geom)||')' INTO n_geom;
        IF n_geom is NULL then
@@ -5278,8 +4674,8 @@ BEGIN
 	raise notice  'ERROR: id and the_geom columns have the same name "%" in %',n_pkey,intab;
         RETURN 'FAIL';
   END IF;
- 
-  BEGIN 
+
+  BEGIN
        	raise DEBUG 'Checking the SRID of the geometry "%"', n_geom;
        	EXECUTE 'SELECT ST_SRID(' || quote_ident(n_geom) || ') as srid '
           		|| ' FROM ' || _pgr_quote_ident(intab)
@@ -5298,9 +4694,9 @@ BEGIN
 
     BEGIN
       RAISE DEBUG 'Checking "%" column in % is indexed',n_pkey,intab;
-      if (_pgr_isColumnIndexed(intab,n_pkey)) then 
+      if (_pgr_isColumnIndexed(intab,n_pkey)) then
 	RAISE DEBUG '  ------>OK';
-      else 
+      else
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',n_pkey,intab;
 
 	set client_min_messages  to warning;
@@ -5311,9 +4707,9 @@ BEGIN
 
     BEGIN
       RAISE DEBUG 'Checking "%" column in % is indexed',n_geom,intab;
-      if (_pgr_iscolumnindexed(intab,n_geom)) then 
+      if (_pgr_iscolumnindexed(intab,n_geom)) then
 	RAISE DEBUG '  ------>OK';
-      else 
+      else
         RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',intab,n_geom;
 	set client_min_messages  to warning;
         execute 'CREATE INDEX '
@@ -5340,8 +4736,8 @@ BEGIN
                 quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
        execute 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||'  USING GIST ('||quote_ident(n_geom)||')';
 	execute 'set client_min_messages  to '|| debuglevel;
-       raise DEBUG  '  ------>OK'; 
-    END;  
+       raise DEBUG  '  ------>OK';
+    END;
 ----------------
 
 
@@ -5358,22 +4754,22 @@ BEGIN
 
 --    -- First creates temp table with intersection points
     p_ret = 'create temp table intergeom on commit drop as (
-        select l1.' || quote_ident(n_pkey) || ' as l1id, 
-               l2.' || quote_ident(n_pkey) || ' as l2id, 
+        select l1.' || quote_ident(n_pkey) || ' as l1id,
+               l2.' || quote_ident(n_pkey) || ' as l2id,
 	       l1.' || quote_ident(n_geom) || ' as line,
 	       _pgr_startpoint(l2.' || quote_ident(n_geom) || ') as source,
 	       _pgr_endpoint(l2.' || quote_ident(n_geom) || ') as target,
-               st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
-        from (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l1 
-             join (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l2 
+               st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom
+        from (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l1
+             join (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l2
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
-        'where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and 
-	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and 
-	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false and 
-	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and 
+        'where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and
+	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and
+	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false and
+	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and
 	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false  )';
-    raise debug '%',p_ret;	
-    EXECUTE p_ret;	
+    raise debug '%',p_ret;
+    EXECUTE p_ret;
 
     -- second temp table with locus (index of intersection point on the line)
     -- to avoid updating the previous table
@@ -5381,7 +4777,7 @@ BEGIN
 --    drop table if exists inter_loc;
 
 --HAD TO CHANGE THIS QUERY
--- p_ret= 'create temp table inter_loc on commit drop as ( 
+-- p_ret= 'create temp table inter_loc on commit drop as (
 --        select l1id, l2id, ' || vst_line_locate_point || '(line,point) as locus from (
 --        select DISTINCT l1id, l2id, line, (ST_DumpPoints(geom)).geom as point from intergeom) as foo
 --        where ' || vst_line_locate_point || '(line,point)<>0 and ' || vst_line_locate_point || '(line,point)<>1)';
@@ -5390,22 +4786,22 @@ BEGIN
          union
         (select l1id, l2id, ' || vst_line_locate_point || '(line,target) as locus from intergeom)) as foo
         where locus<>0 and locus<>1)';
-    raise debug  '%',p_ret;	
-    EXECUTE p_ret;	
+    raise debug  '%',p_ret;
+    EXECUTE p_ret;
 
     -- index on l1id
     create index inter_loc_id_idx on inter_loc(l1id);
 
-    -- Then computes the intersection on the lines subset, which is much smaller than full set 
+    -- Then computes the intersection on the lines subset, which is much smaller than full set
     -- as there are very few intersection points
 
 --- outab needs to be formally created with id, old_id, subid,the_geom, source,target
 ---  so it can be inmediatly be used with createTopology
 
 --   EXECUTE 'drop table if exists ' || _pgr_quote_ident(outtab);
---   EXECUTE 'create table ' || _pgr_quote_ident(outtab) || ' as 
+--   EXECUTE 'create table ' || _pgr_quote_ident(outtab) || ' as
      P_RET = 'insert into '||_pgr_quote_ident(outtab)||' (old_id,sub_id,'||quote_ident(n_geom)||') (  with cut_locations as (
-           select l1id as lid, locus 
+           select l1id as lid, locus
            from inter_loc
            -- then generates start and end locus for each line that have to be cut buy a location point
            UNION ALL
@@ -5415,24 +4811,24 @@ BEGIN
            select i.l1id  as lid, 1 as locus
            from inter_loc i left join ' || _pgr_quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
            order by lid, locus
-       ), 
-       -- we generate a row_number index column for each input line 
-       -- to be able to self-join the table to cut a line between two consecutive locations 
+       ),
+       -- we generate a row_number index column for each input line
+       -- to be able to self-join the table to cut a line between two consecutive locations
        loc_with_idx as (
            select lid, locus, row_number() over (partition by lid order by locus) as idx
            from cut_locations
-       ) 
+       )
        -- finally, each original line is cut with consecutive locations using linear referencing functions
-       select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || ' 
+       select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || '
        from loc_with_idx loc1 join loc_with_idx loc2 using (lid) join ' || _pgr_quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = loc1.lid)
        where loc2.idx = loc1.idx+1
            -- keeps only linestring geometries
            and geometryType(' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'') ';
-    raise debug  '%',p_ret;	
-    EXECUTE p_ret;	
+    raise debug  '%',p_ret;
+    EXECUTE p_ret;
 	GET DIAGNOSTICS splits = ROW_COUNT;
         execute 'with diff as (select distinct old_id from '||_pgr_quote_ident(outtab)||' )
-                 select count(*) from diff' into touched; 
+                 select count(*) from diff' into touched;
 	-- here, it misses all original line that did not need to be cut by intersection points: these lines
 	-- are already clean
 	-- inserts them in the final result: all lines which gid is not in the res table.
@@ -5490,9 +4886,9 @@ DECLARE
         rec_count record;
         rec_single record;
         graph_id integer;
-        gids int [];   
+        gids int [];
 
-BEGIN   
+BEGIN
         raise notice 'Processing:';
         raise notice 'pgr_brokenGraph(''%'',''%'',''%'',''%'',''%'',''%'')', edge_table,id,source,target,subgraph,rows_where;
         raise notice 'Performing initial checks, please hold on ...';
@@ -5507,7 +4903,7 @@ BEGIN
                 IF schema_name is null then
                         raise notice 'no schema';
                         return 'FAIL';
-                else 
+                else
                         if table_name is null then
                                 raise notice 'no table';
                                 return 'FAIL';
@@ -5562,7 +4958,7 @@ BEGIN
         Raise Notice 'Starting - Checking temporary column';
         Begin
                 raise debug 'Checking Checking temporary columns existance';
-                
+
                 While True
                         Loop
                                 execute 'select * from pgr_isColumnInTable('|| quote_literal(table_schema_name) ||', '|| quote_literal(garbage) ||')' into naming;
@@ -5586,7 +4982,7 @@ BEGIN
                 EXECUTE 'select count(*) as count from '|| pgr_quote_ident(table_schema_name) ||' where '|| rows_where ||'' into rec_count;
                 if rec_count.count = 0 then
                         RETURN 'rows_where condition generated 0 rows';
-                end if; 
+                end if;
 
                 WHILE TRUE
                         LOOP
@@ -5614,7 +5010,7 @@ BEGIN
                                                         EXIT;
                                                 END IF;
                                         END LOOP;
-                                
+
                                 ------ Following is to exit the while loop. 0 means no more -1 id.
                                 EXECUTE 'SELECT COUNT(*) AS count FROM '|| pgr_quote_ident(table_schema_name) ||' WHERE '|| rows_where ||' AND ' || pgr_quote_ident(subgraph) || ' = -1' INTO rec_count;
                                 If (rec_count.count = 0) THEN
@@ -5637,9 +5033,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/*
-MANY TO MANY
-*/
+
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCostMatrix(
     edges_sql TEXT,
@@ -5666,9 +5060,7 @@ ROWS 1000;
 
 --  DIJKSTRA DMatrix
 
-/***********************************
-        MANY TO MANY
-***********************************/
+
 
 CREATE OR REPLACE FUNCTION pgr_dijkstraCostMatrix(edges_sql TEXT, vids ANYARRAY, directed BOOLEAN DEFAULT true,
     OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
@@ -5781,7 +5173,7 @@ ROWS 1000;
 
 CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text,OUT sname text,OUT tname text)
 RETURNS RECORD AS
-$BODY$ 
+$BODY$
 BEGIN
     raise notice 'pgr_getTableName: This function will no longer be soported';
     select * from _pgr_getTableName(tab, 0, 'pgr_getTableName') into sname,tname;
@@ -5942,7 +5334,7 @@ BEGIN
         END IF;
     END IF;
 
-    RETURN query SELECT seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost 
+    RETURN query SELECT seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
     FROM pgr_astar(sql, ARRAY[$2], ARRAY[$3], directed);
 END
 $BODY$
@@ -6051,7 +5443,7 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
         SELECT ARRAY(SELECT DISTINCT UNNEST(targets) ORDER BY 1) INTO targets;
 
         sseq = 0; i = 1;
-        FOR result IN 
+        FOR result IN
             SELECT seq, a.end_vid::INTEGER AS id1, a.node::INTEGER AS i2, a.edge::INTEGER AS id3, cost
             FROM pgr_dijkstra(new_sql, source, targets, directed) a ORDER BY a.end_vid, seq LOOP
             WHILE (result.id1 != targets[i]) LOOP
@@ -6143,7 +5535,7 @@ BEGIN
     SELECT ARRAY(SELECT DISTINCT UNNEST(targets) ORDER BY 1) INTO targets;
 
     sseq = 0; i = 1;
-    FOR result IN 
+    FOR result IN
         SELECT ((row_number() over()) -1)::INTEGER, a.start_vid::INTEGER, a.end_vid::INTEGER, agg_cost
         FROM pgr_dijkstraCost(new_sql, source, targets, directed) a ORDER BY end_vid LOOP
         WHILE (result.id2 != targets[i]) LOOP
@@ -6191,23 +5583,15 @@ ROWS 1000;
 create or replace function pgr_pointtoedgenode(edges text, pnt geometry, tol float8)
     returns integer as
 $body$
-/*
- *  pgr_pointtoedgenode(edges text, pnt geometry, tol float8)
- *
- *  Given and table of edges with a spatial index on the_geom
- *  and a point geometry search for the closest edge within tol distance to the edges
- *  then compute the projection of the point onto the line segment and select source or target
- *  based on whether the projected point is closer to the respective end and return source or target.
- *  If no edge is within tol distance then return -1
-*/
+
 declare
     rr record;
     pct float;
     debuglevel text;
-    
+
 begin
     -- find the closest edge within tol distance
-    execute 'select * from ' || _pgr_quote_ident(edges) || 
+    execute 'select * from ' || _pgr_quote_ident(edges) ||
             ' where st_dwithin(''' || pnt::text ||
             '''::geometry, the_geom, ' || tol || ') order by st_distance(''' || pnt::text ||
             '''::geometry, the_geom) asc limit 1' into rr;
@@ -6245,20 +5629,12 @@ $body$
 create or replace function pgr_flipedges(ga geometry[])
     returns geometry[] as
 $body$
-/*
- *  pgr_flipedges(ga geometry[])
- *
- *  Given an array of linestrings that are supposedly connected end to end like the results
- *  of a route, check the edges and flip any end for end if they do not connect with the
- *  previous seegment and return the array with the segments flipped as appropriate.
- *
- *  NOTE: no error checking is done for conditions like adjacent edges are not connected.
-*/
+
 declare
     nn integer;
     i integer;
     g geometry;
-    
+
 begin
     RAISE NOTICE 'Deperecated function: pgr_flipEdges';
     -- get the count of edges, and return if only one edge
@@ -6296,18 +5672,13 @@ $body$
 create or replace function pgr_texttopoints(pnts text, srid integer DEFAULT(4326))
     returns geometry[] as
 $body$
-/*
- *  pgr_texttopoints(pnts text, srid integer DEFAULT(4326))
- *
- *  Given a text string of the format "x,y;x,y;x,y;..." and the srid to use,
- *  split the string and create and array point geometries
-*/
+
 declare
     a text[];
     t text;
     p geometry;
     g geometry[];
-    
+
 begin
     RAISE NOTICE 'Deperecated function: pgr_textToPoints';
     -- convert commas to space and split on ';'
@@ -6328,18 +5699,11 @@ $body$
 create or replace function pgr_pointstovids(pnts geometry[], edges text, tol float8 DEFAULT(0.01))
     returns integer[] as
 $body$
-/*
- *  pgr_pointstovids(pnts geometry[], edges text, tol float8 DEFAULT(0.01))
- *
- *  Given an array of point geometries and an edge table and a max search tol distance
- *  convert points into vertex ids using pgr_pointtoedgenode()
- *
- *  NOTE: You need to check the results for any vids=-1 which indicates if failed to locate an edge
-*/
+
 declare
     v integer[];
     g geometry;
-    
+
 begin
     RAISE NOTICE 'Deperecated function: pgr_pointsToVids';
     -- cycle through each point and locate the nearest edge and vertex on that edge
@@ -6356,17 +5720,10 @@ $body$
 create or replace function pgr_pointstodmatrix(pnts geometry[], mode integer default (0), OUT dmatrix double precision[], OUT ids integer[])
     returns record as
 $body$
-/*
- *  pgr_pointstodmatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[])
- *
- *  Create a distance symmetric distance matrix suitable for TSP using Euclidean distances
- *  based on the st_distance(). You might want to create a variant of this the uses st_distance_sphere()
- *  or st_distance_spheriod() or some other function.
- *
-*/
+
 declare
     r record;
-    
+
 begin
     RAISE NOTICE 'Deprecated function pgr_pointsToDMatrix';
     dmatrix := array[]::double precision[];
@@ -6376,7 +5733,7 @@ begin
     for r in with nodes as (select row_number() over()::integer as id, p from (select unnest(pnts) as p) as foo)
         -- compute a row of distances
         select i, array_agg(dist) as arow from (
-            select a.id as i, b.id as j, 
+            select a.id as i, b.id as j,
                 case when mode=0
                     then st_distance(a.p, b.p)
                     else st_distance_sphere(a.p, b.p)
@@ -6400,22 +5757,7 @@ $body$
 create or replace function pgr_vidstodmatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[])
     returns record as
 $body$
-/*
- *  pgr_vidstodmatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1),
- *                    OUT dmatrix double precision[], OUT ids integer[])
- *
- *  This function that's an array vertex ids, the original array of points, the edge table name and a tol.
- *  It then computes kdijkstra() distances for each vertex to all the other vertices and creates a symmetric
- *  distances matrix suitable for TSP. The pnt array and the tol are used to establish a BBOX for limiteding
- *  selection of edges.the extents of the points is expanded by tol.
- *
- *  NOTES:
- *  1. we compute a symmetric matrix because TSP requires that so the distances are better the Euclidean but
- *     but are not perfect
- *  2. kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than
- *     the cost might get set to -1.0, so the dmatrix should be checked for this as it makes it invalid for TSP
- *
-*/
+
 declare
     i integer;
     j integer;
@@ -6457,7 +5799,7 @@ begin
 
         -- compute kdijkstra() for this row
         for rr in execute 'select * from pgr_dijkstracost($1, $2, $3, false)'
-                  using 'select id, source, target, cost from ' || edges || 
+                  using 'select id, source, target, cost from ' || edges ||
                         ' where the_geom && ''' || bbox::text || '''::geometry'::text, vids[i], vids[i+1:nn] loop
 
             -- TODO need to check that all node were reachable from source
@@ -6538,7 +5880,7 @@ BEGIN
     DROP TABLE IF EXISTS __x___y____temp;
     RETURN dmatrix;
 
-    EXCEPTION WHEN others THEN 
+    EXCEPTION WHEN others THEN
        DROP TABLE IF EXISTS __x___y____temp;
        raise exception '% %', SQLERRM, SQLSTATE;
 END
@@ -6599,7 +5941,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source BIGINT, di
 
       sql = edges_sql;
       IF (has_reverse != has_rcost) THEN
-         IF (has_reverse) THEN 
+         IF (has_reverse) THEN
              -- the user says it doesn't have reverse cost but its false
              -- removing from query
              RAISE NOTICE 'Contradiction found: has_rcost set to false but reverse_cost column found';
@@ -6632,13 +5974,11 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     OUT target BIGINT
     )
   RETURNS SETOF RECORD AS
- '$libdir/libpgrouting-2.5', 'maximum_cardinality_matching'
-    LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'maximum_cardinality_matching'
+    LANGUAGE c VOLATILE;
 
 
-/***********************************
-        ONE TO ONE
-***********************************/
+
 
 
 --FUNCTIONS
@@ -6703,9 +6043,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
-/***********************************
-        ONE TO MANY
-***********************************/
+
 
 --INTERNAL FUNCTIONS
 
@@ -6769,9 +6107,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
-/***********************************
-        MANY TO ONE
-***********************************/
+
 
 --FUNCTIONS
 
@@ -6835,9 +6171,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
-/***********************************
-        MANY TO MANY
-***********************************/
+
 
 
 --FUNCTIONS
@@ -6912,7 +6246,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
 COMMENT ON FUNCTION pgr_astar(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
     IS 'pgr_astar(Deprecated signature)';
 
-COMMENT ON FUNCTION pgr_bdAstar( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)    
+COMMENT ON FUNCTION pgr_bdAstar( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)
     IS 'pgr_bdAstar(Deprecated signature)';
 
 COMMENT ON FUNCTION pgr_bdDijkstra( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN)

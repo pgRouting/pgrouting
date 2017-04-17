@@ -41,7 +41,7 @@ Last changes: 2013-03-22
 2014-july: fixes issue 211
 */
 
-CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision, 
+CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision,
 		   the_geom text default 'the_geom', id text default 'id',
 		   source text default 'source', target text default 'target',rows_where text default 'true',
 		   clean boolean default FALSE)
@@ -86,7 +86,7 @@ DECLARE
 BEGIN
     msgKind = 1; -- notice
     fnName = 'pgr_createTopology';
-    raise notice 'PROCESSING:'; 
+    raise notice 'PROCESSING:';
     raise notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
     execute 'show client_min_messages' into debuglevel;
 
@@ -100,7 +100,7 @@ BEGIN
         tabname=sname||'.'||tname;
         vname=tname||'_vertices_pgr';
         vertname= sname||'.'||vname;
-        rows_where = ' AND ('||rows_where||')'; 
+        rows_where = ' AND ('||rows_where||')';
       raise DEBUG '     --> OK';
 
 
@@ -168,7 +168,7 @@ BEGIN
 
 
 
-    BEGIN 
+    BEGIN
         -- issue #193 & issue #210 & #213
         -- this sql is for trying out the where clause
         -- the select * is to avoid any column name conflicts
@@ -176,7 +176,7 @@ BEGIN
         -- if the where clasuse is ill formed it will be caught in the exception
         sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
         EXECUTE sql into dummyRec;
-        -- end 
+        -- end
 
         -- if above where clasue works this one should work
         -- any error will be caught by the exception also
@@ -184,23 +184,23 @@ BEGIN
 	    idname||' IS NOT NULL)=false '||rows_where;
         EXECUTE SQL  into notincluded;
 
-        if clean then 
+        if clean then
             raise debug 'Cleaning previous Topology ';
                execute 'UPDATE ' || _pgr_quote_ident(tabname) ||
-               ' SET '||sourcename||' = NULL,'||targetname||' = NULL'; 
-        else 
+               ' SET '||sourcename||' = NULL,'||targetname||' = NULL';
+        else
             raise debug 'Creating topology for edges with non assigned topology';
             if rows_where=' AND (true)' then
-                rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)'; 
+                rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)';
             end if;
         end if;
         -- my thoery is that the select Count(*) will never go through here
-        EXCEPTION WHEN OTHERS THEN  
+        EXCEPTION WHEN OTHERS THEN
              RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
-             RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition'; 
+             RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
              RAISE NOTICE '%',sql;
-             RETURN 'FAIL'; 
-    END;    
+             RETURN 'FAIL';
+    END;
 
     BEGIN
          raise DEBUG 'initializing %',vertname;
@@ -209,7 +209,7 @@ BEGIN
          emptied = false;
          set client_min_messages  to warning;
          IF sname=naming.sname AND vname=naming.tname  THEN
-            if clean then 
+            if clean then
                 execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
                 execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
                 emptied = true;
@@ -225,12 +225,12 @@ BEGIN
          END IF;
          execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
          execute 'set client_min_messages  to '|| debuglevel;
-         raise DEBUG  '  ------>OK'; 
-         EXCEPTION WHEN OTHERS THEN  
+         raise DEBUG  '  ------>OK';
+         EXCEPTION WHEN OTHERS THEN
              RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
              RAISE NOTICE 'ERROR: something went wrong when initializing the verties table';
-             RETURN 'FAIL'; 
-    END;       
+             RETURN 'FAIL';
+    END;
 
 
 
@@ -251,9 +251,9 @@ BEGIN
 
             source_id := _pgr_pointToId(points.source, tolerance,vertname,srid);
             target_id := _pgr_pointToId(points.target, tolerance,vertname,srid);
-            BEGIN                         
-                sql := 'UPDATE ' || _pgr_quote_ident(tabname) || 
-                    ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text || 
+            BEGIN
+                sql := 'UPDATE ' || _pgr_quote_ident(tabname) ||
+                    ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text ||
                     ' WHERE ' || idname || ' =  ' || points.id::text;
 
                 IF sql IS NULL THEN
@@ -261,10 +261,10 @@ BEGIN
                 ELSE
                     EXECUTE sql;
                 END IF;
-                EXCEPTION WHEN OTHERS THEN 
+                EXCEPTION WHEN OTHERS THEN
                     RAISE NOTICE '%', SQLERRM;
                     RAISE NOTICE '%',sql;
-                    RETURN 'FAIL'; 
+                    RETURN 'FAIL';
             end;
         END LOOP;
         raise notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
@@ -281,7 +281,7 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text,boolean) 
+COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text,boolean)
 IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', target:=''target'',rows_where:=''true'' - fills columns source and target in the geometry table and creates a vertices table for selected rows';
 
 

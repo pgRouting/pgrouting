@@ -24,38 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, directed BOOLEAN,
-    only_cost BOOLEAN DEFAULT false,
-  OUT seq integer, OUT path_seq integer, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_dijkstra'
-    LANGUAGE c IMMUTABLE STRICT;
-
-    -- One to many
-
-
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vids ANYARRAY, directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-  OUT seq integer, OUT path_seq integer, OUT end_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_many_dijkstra'
-    LANGUAGE c IMMUTABLE STRICT;
-
-
---  many to one
-
-
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vids ANYARRAY, end_vid BIGINT, directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-    OUT seq integer, OUT path_seq integer, OUT start_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_one_dijkstra'
-LANGUAGE c IMMUTABLE STRICT;
-
---  many to many
-*/
-
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(
     edges_sql TEXT,
     start_vids ANYARRAY,
@@ -73,5 +41,5 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(
     OUT cost float,
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_many_dijkstra'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME', 'many_to_many_dijkstra'
+LANGUAGE c VOLATILE;

@@ -33,7 +33,7 @@ $body$
 */
 declare
     r record;
-    
+
 begin
     RAISE NOTICE 'Deprecated function pgr_pointsToDMatrix';
     dmatrix := array[]::double precision[];
@@ -43,7 +43,7 @@ begin
     for r in with nodes as (select row_number() over()::integer as id, p from (select unnest(pnts) as p) as foo)
         -- compute a row of distances
         select i, array_agg(dist) as arow from (
-            select a.id as i, b.id as j, 
+            select a.id as i, b.id as j,
                 case when mode=0
                     then st_distance(a.p, b.p)
                     else st_distance_sphere(a.p, b.p)
@@ -124,7 +124,7 @@ begin
 
         -- compute kdijkstra() for this row
         for rr in execute 'select * from pgr_dijkstracost($1, $2, $3, false)'
-                  using 'select id, source, target, cost from ' || edges || 
+                  using 'select id, source, target, cost from ' || edges ||
                         ' where the_geom && ''' || bbox::text || '''::geometry'::text, vids[i], vids[i+1:nn] loop
 
             -- TODO need to check that all node were reachable from source

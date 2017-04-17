@@ -24,10 +24,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
-    edges_sql TEXT, 
+    edges_sql TEXT,
     points_sql TEXT,
-    start_pid BIGINT, 
-    end_pid BIGINT, 
+    start_pid BIGINT,
+    end_pid BIGINT,
     k INTEGER,
 
     directed BOOLEAN DEFAULT TRUE,
@@ -39,6 +39,6 @@ CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
     OUT node BIGINT, OUT edge BIGINT,
     OUT cost FLOAT, OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-    '$libdir/${PGROUTING_LIBRARY_NAME}', 'withPoints_ksp'
+    'MODULE_PATHNAME', 'withPoints_ksp'
     LANGUAGE c STABLE STRICT;
 

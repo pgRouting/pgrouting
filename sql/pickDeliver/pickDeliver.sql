@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -31,7 +31,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     orders_sql TEXT,
     vehicles_sql TEXT,
     matrix_cell_sql TEXT,
-    max_cycles INTEGER DEFAULT 10, 
+    max_cycles INTEGER DEFAULT 10,
 
     OUT seq INTEGER,
     OUT vehicle_number INTEGER,
@@ -48,7 +48,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
 )
 
 RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliver'
-LANGUAGE c IMMUTABLE STRICT;
+ 'MODULE_PATHNAME', 'pickDeliver'
+LANGUAGE c VOLATILE;
 
 
