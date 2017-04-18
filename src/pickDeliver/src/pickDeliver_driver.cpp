@@ -48,7 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   max_cycles INTEGER,
  ***********************************************************/
 void
-do_pgr_pickDeliverEuclidean(
+do_pgr_pickDeliver(
         PickDeliveryOrders_t *customers_arr,
         size_t total_customers,
 
@@ -56,7 +56,6 @@ do_pgr_pickDeliverEuclidean(
         size_t total_vehicles,
 
         int max_cycles,
-        int initial_solution_id,
 
         General_vehicle_orders_t **return_tuples,
         size_t *return_count,
@@ -85,8 +84,7 @@ do_pgr_pickDeliverEuclidean(
                 orders,
                 vehicles,
                 max_cycles,
-                initial_solution_id);
-
+                4);
         err << pd_problem.get_error();
         if (!err.str().empty()) {
             log << pd_problem.get_log();
@@ -102,9 +100,6 @@ do_pgr_pickDeliverEuclidean(
         } catch (AssertFailedException &except) {
             log << pd_problem.get_log();
             throw except;
-        } catch(...) {
-            log << "Caught unknown exception!";
-            throw;
         }
 
         log << pd_problem.get_log();

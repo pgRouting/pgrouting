@@ -32,6 +32,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     vehicles_sql TEXT,
     matrix_cell_sql TEXT,
     max_cycles INTEGER DEFAULT 10,
+    initial_id INTEGER DEFAULT 4,
 
     OUT seq INTEGER,
     OUT vehicle_number INTEGER,

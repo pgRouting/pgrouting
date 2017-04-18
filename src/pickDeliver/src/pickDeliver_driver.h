@@ -25,8 +25,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#ifndef SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
-#define SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
+#ifndef SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
+#define SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
 #pragma once
 
 #include "./../../common/src/pgr_types.h"
@@ -41,12 +41,11 @@ extern "C" {
       capacity FLOAT,
       max_cycles INTEGER,
      ********************************************************/
-    void do_pgr_pickDeliverEuclidean(
+    void do_pgr_pickDeliver(
             PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
 
             int max_cycles,
-            int initial_solution_id,
 
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,
@@ -60,4 +59,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
+#endif  // SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_

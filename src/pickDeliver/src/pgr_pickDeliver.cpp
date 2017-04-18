@@ -49,30 +49,17 @@ namespace vrp {
 
 
 Solution
-Pgr_pickDeliver::optimize(const Solution init_solution) {
+Pgr_pickDeliver::optimize(const Solution solution) {
     /*
-     * OPtimize the initial solution
+     * Optimize a solution
      */
-    Optimize solution(init_solution, m_max_cycles);
-#if 0
-    solution.decrease_truck();
-    solution.move_duration_based();
-    solution.move_wait_time_based();
-    solution.inter_swap();
-#endif
-    log << solution.best_solution.tau("optimized");
-    return solution.best_solution;
+    Optimize opt_solution(solution, m_max_cycles);
+    log << opt_solution.best_solution.tau("optimized");
+    return opt_solution.best_solution;
 }
 
 void
 Pgr_pickDeliver::solve() {
-    solutions.push_back(Initial_solution(4, m_orders.size()));
-#if 1
-    // optimization pending
-    solutions.push_back(Optimize(solutions.back()));
-#endif
-
-#if 0 
     auto initial_sols = solutions;
 
     if (m_initial_id == 0) {
@@ -80,28 +67,28 @@ Pgr_pickDeliver::solve() {
         for (int i = 1; i < 7; ++i) {
             initial_sols.push_back(Initial_solution(i, m_orders.size()));
             log << "solution " << i << "\n" << initial_sols.back().tau();
+            // TODO calculate the time it takes
+            log << "Initial solution " << i << " duration: " << initial_sols.back().duration();
         }
     } else {
         log << "only trying " << m_initial_id << "\n";
         initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
+        // TODO calculate the time it takes
+        log << "Initial solution " << m_initial_id << " duration: " << initial_sols[0].duration();
     }
 
-    log << "one order per truck duration = " << initial_sols[0].duration();
-#endif
 
     /*
      * Sorting solutions: the best is at the back
      */
-    pgassert(!solutions.empty());
-    std::sort(solutions.begin(), solutions.end(), []
+    pgassert(!initial_sols.empty());
+    std::sort(initial_sols.begin(), initial_sols.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
             });
 
-#if 0
     solutions.push_back(Optimize(initial_sols.back()));
-    pgassert(solutions.size() == 1);
-#endif
+    pgassert(!solutions.empty());
 
     log << "best solution duration = " << solutions.back().duration();
 }
@@ -133,12 +120,10 @@ Pgr_pickDeliver::get_postgres_result() const {
     result.push_back(aggregates);
 
 
-#if 0
 #ifndef NDEBUG
     for (const auto sol : solutions) {
         log << sol.tau();
     }
-#endif
 #endif
     return result;
 }
@@ -165,36 +150,27 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     log << "\n *** Constructor of problem ***\n";
 
-#if 1
-    if (!m_trucks.build_fleet(vehicles)
-#else
     log << "\n Building fleet";
-    size_t node_id(0);
-    if (!m_trucks.build_fleet(vehicles, node_id)
-#endif  // >>>>>>> release/2.5
+    if (!m_trucks.build_fleet(vehicles)
             || !m_trucks.is_fleet_ok()) {
         error << m_trucks.get_error();
         return;
     }
 
-#if 1  //  <<<<<<< HEAD
 
-    m_orders.build_orders(pd_orders);
-#else
-    log << " ---> OK\n";
 
-#if 0
+#ifndef NDEBUG
     for (const auto t : m_trucks) {
         log << t << "\n";
     }
 #endif
 
-
     log << "\n Building orders";
-    m_orders.build_orders(pd_orders, node_id);
-#endif  // >>>>>>> release/2.5
+    m_orders.build_orders(pd_orders);
+    log << " ---> OK\n";
 
-#if 0
+
+#ifndef NDEBUG
     for (const auto &o : m_orders) {
         log << o << "\n";
     }
