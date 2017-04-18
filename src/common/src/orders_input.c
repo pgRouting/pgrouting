@@ -42,39 +42,6 @@ void fetch_pd_orders(
     pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
 
-#if 0
-<<<<<<< HEAD
-    pd_order->pick_x = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
-    pd_order->pick_y = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
-
-    pd_order->pick_open_t = (column_found(info[4].colNumber)) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[4]) :
-        0;
-
-    pd_order->pick_close_t = (column_found(info[5].colNumber)) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[5]) :
-        DBL_MAX;
-
-    pd_order->pick_service_t = (column_found(info[6].colNumber)) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[6]) :
-        0;
-
-    pd_order->deliver_x = pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
-    pd_order->deliver_y = pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
-
-    pd_order->deliver_open_t = (column_found(info[9].colNumber)) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[9]) :
-        pd_order->pick_open_t;
-
-    pd_order->deliver_close_t = (column_found(info[10].colNumber)) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[10]) :
-        pd_order->pick_close_t;
-
-    pd_order->deliver_service_t = (column_found(info[11].colNumber)) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[11]) :
-        pd_order->pick_service_t;
-=======
-#else
     /*
      * the pickups
      */
@@ -105,38 +72,6 @@ void fetch_pd_orders(
         pgr_SPI_getBigInt(tuple, tupdesc, info[13]) : 0;
 }
 
-#if 0
-static
-void fetch_pd_orders_with_id(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info[10],
-        PickDeliveryOrders_t *pd_order) {
-    pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
-
-    pd_order->pick_node_id = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
-    pd_order->pick_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
-    pd_order->pick_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
-
-    if (column_found(info[5].colNumber)) {
-        pd_order->pick_service_t = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
-    } else {
-        pd_order->pick_service_t = 0;
-    }
-
-    pd_order->deliver_node_id = pgr_SPI_getBigInt(tuple, tupdesc, info[6]);
-    pd_order->deliver_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
-    pd_order->deliver_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
-
-    if (column_found(info[9].colNumber)) {
-        pd_order->deliver_service_t =
-            pgr_SPI_getFloat8(tuple, tupdesc, info[9]);
-    } else {
-        pd_order->deliver_service_t = 0;
-    }
-}
-#endif
 
 
 static
@@ -266,8 +201,6 @@ pgr_get_pd_orders_general(
         PGR_DBG("Finish reading %ld orders for eucledian", (*total_pd_orders));
     }
     time_msg("reading edges", start_t, clock());
-
-#endif
 }
 
 void
@@ -285,112 +218,3 @@ pgr_get_pd_orders_with_id(
         size_t *total_pd_orders) {
     pgr_get_pd_orders_general(pd_orders_sql, pd_orders, total_pd_orders, true);
 }
-
-#if 0
-void
-pgr_get_pd_orders_with_id(
-        char *pd_orders_sql,
-        PickDeliveryOrders_t **pd_orders,
-        size_t *total_pd_orders) {
-    const int tuple_limit = 1000000;
-
-    PGR_DBG("pgr_get_pd_orders_with_id");
-    PGR_DBG("%s", pd_orders_sql);
-
-    Column_info_t info[10];
-
-    int i;
-    for (i = 0; i < 10; ++i) {
-        info[i].colNumber = -1;
-        info[i].type = 0;
-        info[i].strict = true;
-        info[i].eType = ANY_NUMERICAL;
-    }
-
-    info[0].name = strdup("id");
-    info[1].name = strdup("demand");
-    info[2].name = strdup("pick_node_id");
-    info[3].name = strdup("pick_open");
-    info[4].name = strdup("pick_close");
-    info[5].name = strdup("pick_service");
-    info[6].name = strdup("deliver_node_id");
-    info[7].name = strdup("deliver_open");
-    info[8].name = strdup("deliver_close");
-    info[9].name = strdup("deliver_service");
-
-    info[0].eType = ANY_INTEGER;
-    info[2].eType = ANY_INTEGER;
-    info[6].eType = ANY_INTEGER;
-
-<<<<<<< HEAD
-    info[4].strict = false;
-=======
-#if 0
->>>>>>> release/2.5
-    info[5].strict = false;
-    info[6].strict = false;
-    info[10].strict = false;
-    info[11].strict = false;
-#endif
-
-    size_t ntuples;
-    size_t total_tuples;
-
-    void *SPIplan;
-    SPIplan = pgr_SPI_prepare(pd_orders_sql);
-    Portal SPIportal;
-    SPIportal = pgr_SPI_cursor_open(SPIplan);
-
-    bool moredata = TRUE;
-    (*total_pd_orders) = total_tuples = 0;
-
-    /* on the first tuple get the column numbers */
-
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
-        if (total_tuples == 0) {
-            pgr_fetch_column_info(info, 10);
-        }
-        ntuples = SPI_processed;
-        total_tuples += ntuples;
-        PGR_DBG("SPI_processed %ld", ntuples);
-        if (ntuples > 0) {
-            if ((*pd_orders) == NULL)
-                (*pd_orders) = (PickDeliveryOrders_t *)palloc0(
-                        total_tuples * sizeof(PickDeliveryOrders_t));
-            else
-                (*pd_orders) = (PickDeliveryOrders_t *)repalloc(
-                        (*pd_orders),
-                        total_tuples * sizeof(PickDeliveryOrders_t));
-
-            if ((*pd_orders) == NULL) {
-                elog(ERROR, "Out of memory");
-            }
-
-            size_t t;
-            SPITupleTable *tuptable = SPI_tuptable;
-            TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %ld", ntuples);
-            for (t = 0; t < ntuples; t++) {
-                HeapTuple tuple = tuptable->vals[t];
-                fetch_pd_orders_with_id(&tuple, &tupdesc, info,
-                        &(*pd_orders)[total_tuples - ntuples + t]);
-            }
-            SPI_freetuptable(tuptable);
-        } else {
-            moredata = FALSE;
-        }
-    }
-
-    SPI_cursor_close(SPIportal);
-
-    if (total_tuples == 0) {
-        (*total_pd_orders) = 0;
-        PGR_DBG("NO orders");
-        return;
-    }
-
-    (*total_pd_orders) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_pd_orders));
-}
-#endif
