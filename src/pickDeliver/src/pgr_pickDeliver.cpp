@@ -138,7 +138,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         int initial) :
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
-    m_node_id(0)
+    m_node_id(0),
+    m_cost_matrix(cost_matrix),
+    m_trucks(vehicles, cost_matrix)
 {
     PD_problem(this);
     pgassert(!pd_orders.empty());
@@ -149,7 +151,17 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     std::ostringstream tmplog;
 
     log << "\n *** Constructor for the matrix version ***\n";
+#ifndef NDEBUG
+    log << m_cost_matrix;
+#endif
 
+#if 0
+    if (!m_trucks.build_fleet(vehicles, m_cost_matrix)
+            || !m_trucks.is_fleet_ok()) {
+        error << m_trucks.get_error();
+        return;
+    }
+#endif
 }  //  constructor
 
 /***** Constructor for the eculedian version *******/
@@ -162,6 +174,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
     m_node_id(0)
+    // TODO build the fleet in the constructor
 {
     PD_problem(this);
     pgassert(!pd_orders.empty());

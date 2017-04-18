@@ -38,7 +38,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_messages.h"
 #include "./pd_problem.h"
 
+
 namespace pgrouting {
+
+
+namespace tsp {
+class Dmatrix;
+}
 namespace vrp {
 
 class Pgr_pickDeliver;
@@ -65,14 +71,10 @@ class Fleet : public Pgr_messages, public PD_problem {
       *
       */
      Fleet() = default;
-     /* TODO move code to .cpp */
-     Fleet(const Fleet &fleet) :
-         Pgr_messages(),
-         PD_problem(),
-         m_trucks(fleet.m_trucks),
-         used(fleet.used),
-         un_used(fleet.un_used)
-    {}
+
+     Fleet(const std::vector<Vehicle_t> &vehicles, const pgrouting::tsp::Dmatrix &cost_matrix);
+
+     Fleet(const Fleet &fleet);
 
      /* TODO move code to .cpp */
      Fleet& operator=(const Fleet &fleet) {

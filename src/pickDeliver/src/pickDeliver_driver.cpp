@@ -98,14 +98,16 @@ do_pgr_pickDeliver(
         }
 
         log << "Read data\n";
-        *log_msg = pgr_msg(log.str().c_str());
-        return;
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
                 cost_matrix,
                 max_cycles,
                 initial_solution_id);
+
+        log << pd_problem.get_log();
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
         err << pd_problem.get_error();
         if (!err.str().empty()) {
             log << pd_problem.get_log();

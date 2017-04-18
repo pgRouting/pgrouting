@@ -34,10 +34,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./vehicle_pickDeliver.h"
 #include "./pgr_pickDeliver.h"
 #include "./../../common/src/identifiers.hpp"
+#include "./../../tsp/src/Dmatrix.h"
 
 
 namespace pgrouting {
 namespace vrp {
+
+
+Fleet::Fleet(
+        const std::vector<Vehicle_t> &vehicles,
+        const pgrouting::tsp::Dmatrix &cost_matrix) :
+    Pgr_messages(),
+    PD_problem(),
+    used(),
+    un_used() {
+        // TODO build the fleet
+    }
+
+Fleet::Fleet(const Fleet &fleet) :
+    Pgr_messages(),
+    PD_problem(),
+    m_trucks(fleet.m_trucks),
+    used(fleet.used),
+    un_used(fleet.un_used)
+    {}
+
 
 
 Vehicle_pickDeliver
@@ -93,6 +114,58 @@ Fleet::get_truck(const Order order) {
 }
 
 
+#if 0
+/*! builds a fleet for the matrix version
+ */
+bool
+Fleet::build_fleet(
+        std::vector<Vehicle_t> vehicles) {
+    /*
+     *  creating a phoney truck with max capacity and max window
+     *  with the start & end points of the first vehicle given
+     */
+    vehicles.push_back({
+            -1,
+            std::numeric_limits<double>::infinity(),
+            vehicles[0].speed,
+            vehicles[0].start_x,
+            vehicles[0].start_y,
+            vehicles[0].start_node_id,
+            1,
+            0,
+            std::numeric_limits<double>::infinity(),
+            0,
+            vehicles[0].end_x,
+            vehicles[0].end_y,
+            vehicles[0].end_node_id,
+            0,
+            std::numeric_limits<double>::infinity(),
+            0});
+
+
+    for (auto vehicle : vehicles) {
+        if (vehicle.cant_v < 0) {
+            error << "Illegal number of vehicles found vehicle";
+            log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
+            continue;
+        }
+
+        auto starting_site = Vehicle_node(
+                {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
+        auto ending_site = Vehicle_node(
+                {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
+
+        if (!(starting_site.is_start()
+                    && ending_site.is_end())) {
+        }
+    }
+}
+#endif
+
+
+
+/*! builds a fleet for the eucledian version
+ */
 bool
 Fleet::build_fleet(
         std::vector<Vehicle_t> vehicles) {

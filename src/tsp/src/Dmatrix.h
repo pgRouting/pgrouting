@@ -108,6 +108,10 @@ class Dmatrix {
             std::ostream &log,
             const Dmatrix &matrix);
 
+    double empty() const {
+        return ids.empty();
+    }
+
  protected:
     void set_ids(const std::vector<matrix_cell> &data_costs);
     std::vector<int64_t> ids;

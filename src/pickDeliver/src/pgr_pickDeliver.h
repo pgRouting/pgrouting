@@ -108,12 +108,15 @@ class Pgr_pickDeliver : public Pgr_messages{
  private:
     //! used define the initial solution algorithm to be used
     int m_initial_id;
+
+    //! maximum cycles in the optimization
     size_t m_max_cycles;
-    //! used to keep track of the next id the node gets
+
+    //! used to keep track of the next id the node gets in the eucledian version
     size_t m_node_id;
     std::vector<Vehicle_node> m_nodes;
-    Fleet m_trucks;
     pgrouting::tsp::Dmatrix m_cost_matrix;
+    Fleet m_trucks;
     PD_Orders m_orders;
     std::vector<Solution> solutions;
 };
