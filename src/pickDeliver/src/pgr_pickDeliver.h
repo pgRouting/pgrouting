@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/identifiers.hpp"
+#include "./../../tsp/src/Dmatrix.h"
 
 #include "./pgr_messages.h"
 #include "./vehicle_node.h"
@@ -57,6 +58,13 @@ class Pgr_pickDeliver : public Pgr_messages{
     Pgr_pickDeliver(
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
+            size_t max_cycles,
+            int initial);
+
+    Pgr_pickDeliver(
+            const std::vector<PickDeliveryOrders_t> &pd_orders,
+            const std::vector<Vehicle_t> &vehicles,
+            const pgrouting::tsp::Dmatrix &cost_matrix,
             size_t max_cycles,
             int initial);
 
@@ -105,9 +113,8 @@ class Pgr_pickDeliver : public Pgr_messages{
     size_t m_node_id;
     std::vector<Vehicle_node> m_nodes;
     Fleet m_trucks;
-#if 1
+    pgrouting::tsp::Dmatrix m_cost_matrix;
     PD_Orders m_orders;
-#endif
     std::vector<Solution> solutions;
 };
 

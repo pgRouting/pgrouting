@@ -42,10 +42,12 @@ extern "C" {
       max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliver(
-            PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
+            PickDeliveryOrders_t pd_orders_arr[], size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
+            Matrix_cell_t *matrix_cells_arr, size_t total_cells,
 
             int max_cycles,
+            int initial_solution_id,
 
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,

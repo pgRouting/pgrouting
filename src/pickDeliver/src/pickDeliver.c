@@ -125,7 +125,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-#if 0
+
     do_pgr_pickDeliver(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
@@ -139,7 +139,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-#endif
 
     time_msg("pgr_pickDeliver", start_t, clock());
 
@@ -148,8 +147,11 @@ process(
         (*result_count) = 0;
         (*result_tuples) = NULL;
     }
-
+#if 0
     pgr_global_report(log_msg, notice_msg, err_msg);
+#else
+    pgr_global_report(notice_msg, log_msg, err_msg);
+#endif
 
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);

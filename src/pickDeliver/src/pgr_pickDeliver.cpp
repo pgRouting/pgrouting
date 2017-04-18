@@ -128,9 +128,31 @@ Pgr_pickDeliver::get_postgres_result() const {
     return result;
 }
 
+/***** Constructor  for the matrix version *******/
 
+Pgr_pickDeliver::Pgr_pickDeliver(
+        const std::vector<PickDeliveryOrders_t> &pd_orders,
+        const std::vector<Vehicle_t> &vehicles,
+        const pgrouting::tsp::Dmatrix &cost_matrix,
+        size_t p_max_cycles,
+        int initial) :
+    m_initial_id(initial),
+    m_max_cycles(p_max_cycles),
+    m_node_id(0)
+{
+    PD_problem(this);
+    pgassert(!pd_orders.empty());
+    pgassert(!vehicles.empty());
+    pgassert(!cost_matrix.empty());
+    pgassert(m_initial_id > 0 && m_initial_id < 7);
 
-/***** Constructor *******/
+    std::ostringstream tmplog;
+
+    log << "\n *** Constructor for the matrix version ***\n";
+
+}  //  constructor
+
+/***** Constructor for the eculedian version *******/
 
 Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,

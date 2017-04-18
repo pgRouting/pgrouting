@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./pickDeliverEuclidean_driver.h"
+#include "./pickDeliver_driver.h"
 
 #include <string.h>
 #include <sstream>
@@ -37,25 +37,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "./pgr_pickDeliver.h"
+#include "./../../tsp/src/Dmatrix.h"
 
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
 
-/************************************************************
-  customers_sql TEXT,
-  max_vehicles INTEGER,
-  capacity FLOAT,
-  max_cycles INTEGER,
- ***********************************************************/
 void
 do_pgr_pickDeliver(
-        PickDeliveryOrders_t *customers_arr,
+        PickDeliveryOrders_t customers_arr[],
         size_t total_customers,
 
         Vehicle_t *vehicles_arr,
         size_t total_vehicles,
 
+        Matrix_cell_t *matrix_cells_arr,
+        size_t total_cells,
+
         int max_cycles,
+        int initial_solution_id,
 
         General_vehicle_orders_t **return_tuples,
         size_t *return_count,
@@ -67,24 +66,46 @@ do_pgr_pickDeliver(
     std::ostringstream notice;
     std::ostringstream err;
     try {
-        std::ostringstream tmp_log;
-        *return_tuples = NULL;
-        *return_count = 0;
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(total_customers);
+        pgassert(total_vehicles);
+        pgassert(total_vehicles);
+        pgassert(*return_count == 0);
+        pgassert(!(*return_tuples));
+
 
         /*
          * transform to C++ containers
          */
         std::vector<PickDeliveryOrders_t> orders(
                 customers_arr, customers_arr + total_customers);
+
         std::vector<Vehicle_t> vehicles(
                 vehicles_arr, vehicles_arr + total_vehicles);
 
+        std::vector <Matrix_cell_t> data_costs(
+                matrix_cells_arr,
+                matrix_cells_arr + total_cells);
+
+        pgrouting::tsp::Dmatrix cost_matrix(data_costs);
+
+        if (!cost_matrix.has_no_infinity()) {
+            err << "An Infinity value was found on the Matrix";
+            *err_msg = pgr_msg(err.str().c_str());
+            return;
+        }
+
         log << "Read data\n";
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
+                cost_matrix,
                 max_cycles,
-                4);
+                initial_solution_id);
         err << pd_problem.get_error();
         if (!err.str().empty()) {
             log << pd_problem.get_log();
