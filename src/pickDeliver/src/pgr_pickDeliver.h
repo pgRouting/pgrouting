@@ -58,8 +58,7 @@ class Pgr_pickDeliver : public Pgr_messages{
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
             size_t max_cycles,
-            int initial,
-            std::string &error);
+            int initial);
 
     void solve();
 

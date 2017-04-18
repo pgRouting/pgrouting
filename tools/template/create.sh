@@ -5,12 +5,16 @@
 MY_FUNCTION_NAME="funnyDijkstra"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara@hotmail.com" 
-YEAR="2016"
+YEAR="2017"
 
 # Note: the "\n     " (change line and four spaces) after each comma
 # first line are the inputs
+#   - the compulsory parameters with no name
+#   - the optional parameters with name
 # second line are the outputs
-MY_QUERY_LINE1="edges_sql TEXT,\n    start_vid BIGINT,\n    end_vid BIGINT,\n    directed BOOLEAN DEFAULT true,\n    only_cost BOOLEAN DEFAULT false,"
+#   - all with a name
+
+MY_QUERY_LINE1="TEXT,\n    BIGINT,\n    BIGINT,\n    directed BOOLEAN DEFAULT true,\n    only_cost BOOLEAN DEFAULT false,"
 MY_QUERY_LINE2="    OUT seq INTEGER,\n    OUT path_seq INTEGER,\n    OUT node BIGINT,\n    OUT edge BIGINT,\n    OUT cost FLOAT,\n    OUT agg_cost FLOAT"
 
 
@@ -132,8 +136,8 @@ sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/test/test.con
 echo "updating test/doc-function1.test.sql"
 sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/test/doc-function1.test.sql
 
-echo "updating the test/pgtap/types-check.sql"
-sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/types-check.sql
+echo "updating the test/pgtap/function1-typesCheck.sql"
+sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-types-check.sql
 
 echo "updating the test/pgtap/function1-compare-dijkstra.sql"
 sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-compare-dijkstra.sql
@@ -143,9 +147,12 @@ sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/
 
 mv "$MY_FUNCTION_NAME"/test/doc-function1.test.sql "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".test.sql
 mv "$MY_FUNCTION_NAME"/test/doc-function1.result "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".result
-mv "$MY_FUNCTION_NAME"/test/pgtap/function1-compare-dijkstra.sql "$MY_FUNCTION_NAME"/test//pgtap/"$MY_FUNCTION_NAME"-compare-dijkstra.sql
-mv "$MY_FUNCTION_NAME"/test/pgtap/function1-innerQuery.sql "$MY_FUNCTION_NAME"/test//pgtap/"$MY_FUNCTION_NAME"-innerQuery.sql
+mv "$MY_FUNCTION_NAME"/test/pgtap/function1-types-check.sql "$MY_FUNCTION_NAME"/test/pgtap/"$MY_FUNCTION_NAME"-types-check.sql
+mv "$MY_FUNCTION_NAME"/test/pgtap/function1-compare-dijkstra.sql "$MY_FUNCTION_NAME"/test/pgtap/"$MY_FUNCTION_NAME"-compare-dijkstra.sql
+mv "$MY_FUNCTION_NAME"/test/pgtap/function1-innerQuery.sql "$MY_FUNCTION_NAME"/test/pgtap/"$MY_FUNCTION_NAME"-innerQuery.sql
 
 #move the whole structure to its place
+mv "$MY_FUNCTION_NAME/sql" "../../sql-scripts/$MY_FUNCTION_NAME"
 mv "$MY_FUNCTION_NAME" ../../src/"$MY_FUNCTION_NAME"
+
 exit

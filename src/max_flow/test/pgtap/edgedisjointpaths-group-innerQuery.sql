@@ -27,19 +27,19 @@ SELECT function_returns('pgr_edgedisjointpaths',
 
 
 -- DIRECTED
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', 2, 3)');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', 2, ARRAY[3])');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', ARRAY[2], 3)');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', ARRAY[2], ARRAY[3])');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', 2, 3, true)');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', 2, ARRAY[3], true)');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', ARRAY[2], 3, true)');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', ARRAY[2], ARRAY[3], true)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', 2, 3)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', 2, ARRAY[3])');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', ARRAY[2], 3)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', ARRAY[2], ARRAY[3])');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', 2, 3, true)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', 2, ARRAY[3], true)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', ARRAY[2], 3, true)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', ARRAY[2], ARRAY[3], true)');
 -- UNDIRECTED
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', 2, 3, false)');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', 2, ARRAY[3], false)');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', ARRAY[2], 3, false)');
-SELECT style_cardinalitymatch('pgr_edgedisjointpaths', ', ARRAY[2], ARRAY[3], false)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', 2, 3, false)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', 2, ARRAY[3], false)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', ARRAY[2], 3, false)');
+SELECT style_dijkstra('pgr_edgedisjointpaths', ', ARRAY[2], ARRAY[3], false)');
 
 SELECT finish();
 ROLLBACK;

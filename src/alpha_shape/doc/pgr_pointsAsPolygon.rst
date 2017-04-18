@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -12,7 +12,7 @@
 pgr_pointsAsPolygon
 ===============================================================================
 
-.. index:: 
+.. index::
     single: pgr_pointsAsPolygon(text,float8)
 
 Name

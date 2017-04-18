@@ -106,12 +106,14 @@ Fleet::build_fleet(
             vehicles[0].speed,
             vehicles[0].start_x,
             vehicles[0].start_y,
+            vehicles[0].start_node_id,
             1,
             0,
             std::numeric_limits<double>::infinity(),
             0,
             vehicles[0].end_x,
             vehicles[0].end_y,
+            vehicles[0].end_node_id,
             0,
             std::numeric_limits<double>::infinity(),
             0});
@@ -131,7 +133,7 @@ Fleet::build_fleet(
 
         if (!(starting_site.is_start()
                     && ending_site.is_end())) {
-            error << "Illegal values found on vehcile";
+            error << "Illegal values found on vehicle";
             return false;
         }
 
@@ -164,13 +166,18 @@ Fleet::is_fleet_ok() const {
             return false;
         }
         if (!truck.is_feasable()) {
-            error << "Truck is not feasable";
+            error << "Truck is not feasible";
             return false;
         }
     }
     return true;
 }
 
+/**
+ * Given an order,
+ * Cycle trhugh all the trucks to verify if the order can be served by
+ * at least one truck
+ */
 bool
 Fleet::is_order_ok(const Order &order) const {
     for (const auto truck : m_trucks) {
@@ -178,14 +185,29 @@ Fleet::is_order_ok(const Order &order) const {
         if (truck.is_order_feasable(order)) {
             return true;
         }
-#if 0
-        auto test_truck = truck;
-        test_truck.push_back(order);
+        log << "checking order " << order.id()
+            << "on truck " << truck.id() << "\n";
 
-        if (test_truck.is_feasable()) {
-            return true;
+#if 0
+        /* order 23 is not feasable */
+        if (order.id() == 11) {
+            auto t = truck;
+            t.push_back(order);
+            log << "truck with order 11" << t << "\n";
+            pgassertwm(false, log.str());
         }
 #endif
+        /*
+         * The order must be valid given the speed
+         */
+        if (!order.is_valid(truck.speed())) continue; 
+
+        /*
+         * if its feasable, then the one truck is found
+         */
+        if (truck.is_order_feasable(order)) {
+            return true;
+        }
     }
     return false;
 }

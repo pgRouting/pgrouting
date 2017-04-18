@@ -54,7 +54,7 @@ PgrFlowGraph::PgrFlowGraph(
 }
 
 PgrFlowGraph::PgrFlowGraph(
-        const std::vector<pgr_basic_edge_t> &edges,
+        const std::vector<pgr_edge_t> &edges,
         const std::set<int64_t> &source_vertices,
         const std::set<int64_t> &sink_vertices,
         bool directed) {
@@ -130,7 +130,7 @@ void PgrFlowGraph::insert_edges(
  * for the edge_disjoint_paths  algorithms
  */
 void PgrFlowGraph::insert_edges_edge_disjoint(
-        const std::vector<pgr_basic_edge_t> &edges,
+        const std::vector<pgr_edge_t> &edges,
         bool directed) {
     bool added;
     for (const auto edge : edges) {
@@ -145,10 +145,10 @@ void PgrFlowGraph::insert_edges_edge_disjoint(
         E_to_id.insert(std::pair<E, int64_t>(e_rev,
                     edge.id));
         if (directed) {
-            capacity[e] = edge.going ? 1 : 0;
-            capacity[e_rev] = edge.coming ? 1 : 0;
+            capacity[e] = edge.cost >= 0 ? 1 : 0;
+            capacity[e_rev] = edge.reverse_cost >= 0 ? 1 : 0;
         } else {
-            if (edge.going || edge.coming) {
+            if (edge.cost >= 0 || edge.reverse_cost >= 0) {
                 capacity[e] = 1;
                 capacity[e_rev] = 1;
             }
@@ -250,10 +250,11 @@ PgrFlowGraph::flow_dfs(V vertex,
     }
 }
 
-void
+std::vector<General_path_element_t>
 PgrFlowGraph::get_edge_disjoint_paths(
-        std::vector<General_path_element_t> &path_elements,
         int64_t flow) {
+    std::vector<General_path_element_t> path_elements;
+
     std::vector<std::vector<int64_t> > paths(flow, std::vector<int64_t>());
     int64_t path_id = 0;
     Eout_it ei, e_end, ei2, e2_end;
@@ -299,6 +300,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
         edge.edge = -1;
         path_elements.push_back(edge);
     }
+    return path_elements;
 }
 
 

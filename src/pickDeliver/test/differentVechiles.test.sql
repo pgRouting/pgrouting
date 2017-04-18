@@ -1,18 +1,11 @@
 
-
 INSERT into vehicles(start_x, start_y, start_open, start_close, capacity, number)
-VALUES (40, 50, 0, 400, 200, 1);
+VALUES (40, 50, 0, 400, 200, 25);
 
-UPDATE vehicles SET number = 1;
-
-ALTER TABLE vehicles DROP COLUMN number;
-
-SELECT * INTO results
-FROM _pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * FROM vehicles',
     30);
-
 
 WITH
 orders_id AS (
@@ -20,18 +13,22 @@ orders_id AS (
 ), 
 results_id AS (
     SELECT DISTINCT order_id AS id
-    FROM results
-    WHERE stop_type NOT IN (1, 6, -1)
+    FROM _pgr_pickDeliverEuclidean(
+        'SELECT * FROM orders ORDER BY id',
+        'SELECT * FROM vehicles',
+        30)
+    WHERE stop_type NOT IN (0, 5, -1)
     ORDER BY order_id
 )
-SELECT count(*)=53 FROM orders_id LEFT JOIN results_id USING(ID);
+SELECT * FROM orders_id LEFT JOIN results_id USING(ID);
 
 WITH
-the_results AS (
+results AS (
     SELECT * 
-    FROM results
+    FROM _pgr_pickDeliverEuclidean(
+        'SELECT * FROM orders ORDER BY id',
+        'SELECT * FROM vehicles',
+        30)
 )
-SELECT ((SELECT max(vehicle_number) FROM results) * 2 + 53 * 2 + 1) =
-    (SELECT count(*) from the_results) AS correct_value;
-
--- SELECT * FROM results;
+SELECT ((1 + (SELECT max(vehicle_id) FROM results) * 2 + 53 * 2) = 
+    (SELECT count(*) from results)) AS correct_value;

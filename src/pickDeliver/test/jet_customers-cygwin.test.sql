@@ -78,11 +78,11 @@ BGE	1466	-1424	-84.636927799999995	30.971598100000001
 -- crashes backend
 WITH
 pickups AS (
-    SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
+    SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
     FROM  jet_customers WHERE pindex = 0 AND id != 0
 ),
 deliveries AS (
-    SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
+    SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
     FROM  jet_customers WHERE dindex = 0 AND id != 0
 )
 SELECT * INTO jet_orders

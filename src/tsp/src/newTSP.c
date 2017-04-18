@@ -131,7 +131,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("eucledianTSP", start_t, clock());
+    time_msg("TSP", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);

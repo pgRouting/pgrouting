@@ -1,0 +1,38 @@
+#VERSION pgrouting 2.0.1
+#TYPES
+pgr_costresult
+pgr_costresult3
+pgr_geomresult
+#FUNCTIONS
+pgr_alphashape(text)
+pgr_analyzegraph(text,double precision,text,text,text,text,text)
+pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
+pgr_apspjohnson(text)
+pgr_apspwarshall(text,boolean,boolean)
+pgr_astar(text,integer,integer,boolean,boolean)
+pgr_bdastar(text,integer,integer,boolean,boolean)
+pgr_bddijkstra(text,integer,integer,boolean,boolean)
+pgr_createtopology(text,double precision,text,text,text,text,text)
+pgr_createverticestable(text,text,text,text,text)
+pgr_dijkstra(text,integer,integer,boolean,boolean)
+pgr_drivingdistance(text,integer,double precision,boolean,boolean)
+pgr_endpoint(geometry)
+pgr_getcolumnname(text,text)
+pgr_gettablename(text)
+pgr_iscolumnindexed(text,text)
+pgr_iscolumnintable(text,text)
+pgr_kdijkstracost(text,integer,integer[],boolean,boolean)
+pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)
+pgr_ksp(text,integer,integer,integer,boolean)
+pgr_makedistancematrix(text)
+pgr_nodenetwork(text,double precision,text,text,text)
+pgr_pointsaspolygon(character varying)
+pgr_pointtoid(geometry,double precision,text,integer)
+pgr_quote_ident(text)
+pgr_startpoint(geometry)
+pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+pgr_trsp(text,integer,integer,boolean,boolean,text)
+pgr_tsp(double precision[],integer,integer)
+pgr_tsp(text,integer,integer)
+pgr_version()
+pgr_versionless(text,text)

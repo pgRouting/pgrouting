@@ -15,11 +15,15 @@ pgr_dijkstra
 ``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
 In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* pgr_dijkstra(one to one) 2.0.0, signature change 2.1.0
+* pgr_dijkstra(other signatures) 2.1.0
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -84,7 +88,7 @@ Minimal signature
     pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
 
 :Example:
 
@@ -210,7 +214,7 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
@@ -235,7 +239,7 @@ Column         Type               Default     Description
 .. pgr_dijkstra_parameters_end
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: return_path_start
     :end-before: return_path_end
 
@@ -314,11 +318,6 @@ The examples in this section use the following:
    :start-after: -- q17
    :end-before: -- q18
 
-
-.. rubric:: History
-
-* Added functionality in version 2.1.0
-* Renamed in version 2.0.0
 
 
 See Also

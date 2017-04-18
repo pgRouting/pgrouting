@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -9,10 +9,10 @@
 
 .. _pgr_version:
 
-pgr_version 
+pgr_version
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: version()
 
 Name
@@ -36,11 +36,15 @@ Description
 
 Returns a table with:
 
-:version: ``varchar`` pgRouting version
-:tag: ``varchar`` Git tag of pgRouting build
-:hash: ``varchar`` Git hash of pgRouting build
-:branch: ``varchar`` Git branch of pgRouting build
-:boost: ``varchar`` Boost version
+===========  =========== ===============================
+Column        Type       Description
+===========  =========== ===============================
+**version**  ``varchar`` pgRouting version
+**tag**      ``varchar`` Git tag of pgRouting build
+**hash**     ``varchar`` Git hash of pgRouting build
+**branch**   ``varchar`` Git branch of pgRouting build
+**boost**    ``varchar`` Boost version
+===========  =========== ===============================
 
 
 .. rubric:: History
@@ -53,14 +57,9 @@ Examples
 
 * Query for full version string
 
-.. code-block:: sql
-
-    SELECT pgr_version();
-
-                      pgr_version
-    -----------------------------------------------
-     (2.2.0,pgrouting-2.2.0,9fd33c5,master,1.54.0)
-    (1 row)
+.. literalinclude:: doc-pgr_version.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 
 
@@ -70,13 +69,9 @@ Examples
 
     SELECT version, boost FROM pgr_version();
 
-      version  | boost  
+      version  | boost
     -----------+--------
      2.2.0-dev | 1.49.0
     (1 row)
 
 
-See Also
--------------------------------------------------------------------------------
-
-* :ref:`pgr_versionless` to compare two version numbers

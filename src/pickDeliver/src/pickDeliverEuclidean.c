@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver.c
+File: pickDeliverEuclidean.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -44,27 +44,16 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(pickDeliverEuclidean);
 
 
-/*********************************************************************/
-/*                MODIFY AS NEEDED                                   */
 static
 void
 process(
         char* pd_orders_sql,
         char* vehicles_sql,
         int max_cycles,
-        int initial,
-
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
     if (max_cycles < 0) {
-        elog(ERROR, "Illegal value in parameter: max_cycles");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        return;
-    }
-
-    if (initial <= 0 || initial > 6) {
-        elog(ERROR, "Illegal value in parameter: initial");
+        elog(ERROR, "Illegal value in parameter: max_cycles %d", max_cycles);
         (*result_count) = 0;
         (*result_tuples) = NULL;
         return;
@@ -76,8 +65,6 @@ process(
     PickDeliveryOrders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
     pgr_get_pd_orders(pd_orders_sql,
-           1, 1,
-           0, 0,
            &pd_orders_arr, &total_pd_orders);
 
     PGR_DBG("Load vehicles");
@@ -87,8 +74,33 @@ process(
            &vehicles_arr, &total_vehicles);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
+    for (size_t i = 0; i < total_pd_orders; i++) {
+        PGR_DBG("%ld %f pick %f %f %ld - %f %f %f deliver %f %f %ld - %f %f %f ",
+                pd_orders_arr[i].id,
+                pd_orders_arr[i].demand,
+
+                pd_orders_arr[i].pick_x,
+                pd_orders_arr[i].pick_y,
+                pd_orders_arr[i].pick_node_id,
+
+                pd_orders_arr[i].pick_open_t,
+                pd_orders_arr[i].pick_close_t,
+                pd_orders_arr[i].pick_service_t,
+
+                pd_orders_arr[i].deliver_x,
+                pd_orders_arr[i].deliver_y,
+                pd_orders_arr[i].deliver_node_id,
+
+                pd_orders_arr[i].deliver_open_t,
+                pd_orders_arr[i].deliver_close_t,
+                pd_orders_arr[i].deliver_service_t
+               );
+    }
+
+
+
     for (size_t i = 0; i < total_vehicles; i++) {
-        PGR_DBG("%ld %f %f / %f %f %f %f %f / %f %f %f %f %f / %ld ",
+        PGR_DBG("%ld %f %f , start %f %f %f %f %f end %f %f %f %f %f number %ld ",
                vehicles_arr[i].id,
                vehicles_arr[i].capacity,
                vehicles_arr[i].speed,
@@ -105,7 +117,8 @@ process(
                vehicles_arr[i].end_close_t,
                vehicles_arr[i].end_service_t,
 
-               vehicles_arr[i].cant_v);
+               vehicles_arr[i].cant_v
+               );
     }
 
     if (total_pd_orders == 0 || total_vehicles == 0) {
@@ -121,11 +134,11 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_pickDeliver(
+#if 1
+    do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
             max_cycles,
-            initial,
 
             result_tuples,
             result_count,
@@ -133,8 +146,8 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
-    time_msg("_pgr_ipickDeliver", start_t, clock());
+#endif
+    time_msg("_pgr_pickDeliverEuclidean", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -151,6 +164,7 @@ process(
     if (vehicles_arr) pfree(vehicles_arr);
 
     pgr_SPI_finish();
+
 }
 /*                                                                            */
 /******************************************************************************/
@@ -188,7 +202,6 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT32(2),
-                PG_GETARG_INT32(3),
                 &result_tuples,
                 &result_count);
 
@@ -253,7 +266,7 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
         values[3] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[4] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[5] = Int32GetDatum(result_tuples[call_cntr].stop_type);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].stop_type + 1);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cargo);
         values[7] = Float8GetDatum(result_tuples[call_cntr].travelTime);
         values[8] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
