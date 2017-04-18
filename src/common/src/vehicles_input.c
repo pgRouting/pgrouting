@@ -258,7 +258,11 @@ void pgr_get_vehicles_general(
     }
 
     (*total_vehicles) = total_tuples;
-    PGR_DBG("Finish reading %ld vehicles for eucledian", (*total_vehicles));
+    if (with_id) {
+        PGR_DBG("Finish reading %ld vehicles for matrix", (*total_vehicles));
+    } else {
+        PGR_DBG("Finish reading %ld vehicles for eucledian", (*total_vehicles));
+    }
     time_msg("reading edges", start_t, clock());
 
 }

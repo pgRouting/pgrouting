@@ -6,11 +6,13 @@ DROP TABLE IF EXISTS dist_matrix CASCADE;
 CREATE TABLE orders (
       id BIGINT PRIMARY KEY, 
       demand FLOAT, 
+      p_node_id BIGINT,
       p_x FLOAT, 
       p_y FLOAT, 
       p_open FLOAT, 
       p_close FLOAT, 
       p_service FLOAT, 
+      d_node_id BIGINT,
       d_x FLOAT, 
       d_y FLOAT, 
       d_open FLOAT, 
@@ -20,6 +22,7 @@ CREATE TABLE orders (
 
 CREATE TABLE vehicles (
   id BIGSERIAL PRIMARY KEY, 
+  start_node_id BIGINT,
   start_x FLOAT, 
   start_y FLOAT, 
   start_open FLOAT, 
@@ -89,11 +92,32 @@ VALUES
 INSERT INTO vehicles (start_x,  start_y,  start_open,  start_close,  "number",  capacity)
 VALUES (40,  50,  0,  1236,  25,  200);
 
+WITH points AS (
+    SELECT DISTINCT p_x AS x, p_y AS y FROM orders
+    UNION
+    SELECT DISTINCT d_x, d_y FROM orders),
+t_points AS (SELECT row_number() over() AS id, x, y FROM points),
+first  AS (SELECT orders.id AS id , t_points.id AS p_node_id from orders JOIN t_points ON (x = p_x AND y = p_y)),
+second AS (SELECT orders.id AS id , t_points.id AS d_node_id from orders JOIN t_points ON (x = d_x AND y = d_y)),
+third  AS (SELECT id, p_node_id, d_node_id from first JOIN second USING (id))
+UPDATE orders SET p_node_id = third.p_node_id, d_node_id = third.d_node_id 
+FROM third WHERE third.id = orders.id;
+
+WITH 
+the_ids AS (SELECT p_node_id AS id FROM orders UNION SELECT d_node_id FROM orders),
+the_max AS (SELECT max(id) FROM the_ids)
+UPDATE vehicles SET start_node_id = max FROM the_max;
+
+/*
 WITH
-A AS (SELECT id AS start_vid, x, y FROM customer),
-B AS (SELECT id AS end_vid, x, y FROM customer)
-SELECT start_vid, end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
+A AS (
+    SELECT p_node_id AS id, p_x AS x, p_y AS y FROM orders
+    UNION
+    SELECT d_node_id, d_x, d_y FROM orders
+    UNION
+    SELECT start_node_id, start_x, start_y FROM vehicles
+)
+SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
 INTO dist_matrix
-FROM A, B;
-
-
+FROM A, A AS B WHERE A.id != B.id;
+*/

@@ -141,7 +141,7 @@ process(
             &err_msg);
 #endif
 
-    time_msg("_pgr_ipickDeliver", start_t, clock());
+    time_msg("pgr_pickDeliver", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
