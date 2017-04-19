@@ -157,16 +157,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         log << "\n *** Constructor for the matrix version ***\n";
 
-        log << "\n *** Building trucks\n";
-
-        log << m_trucks;
-#if 0
-        if (!m_trucks.build_fleet(vehicles, m_cost_matrix)
-                || !m_trucks.is_fleet_ok()) {
+        if (!m_trucks.is_fleet_ok()) {
+            // TODO revise the function
+            pgassert(false);
             error << m_trucks.get_error();
             return;
         }
-#endif
     }  //  constructor
 
 

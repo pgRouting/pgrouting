@@ -41,19 +41,6 @@ namespace pgrouting {
 namespace vrp {
 
 
-#if 0
-Fleet::Fleet(
-        const std::vector<Vehicle_t> &vehicles,
-        const pgrouting::tsp::Dmatrix &cost_matrix) :
-    PD_problem(),
-    used(),
-    un_used() {
-        build_fleet(vehicles, cost_matrix);
-        Identifiers<size_t> unused(m_trucks.size());
-        un_used = unused;
-    }
-#endif
-
 Fleet::Fleet(const Fleet &fleet) :
     PD_problem(),
     m_trucks(fleet.m_trucks),
@@ -125,91 +112,18 @@ Fleet::get_truck(const Order order) {
 }
 
 
-#if 0
-/*! builds a fleet for the matrix version
- */
-void
-Fleet::build_fleet(
-        std::vector<Vehicle_t> vehicles,
-        const pgrouting::tsp::Dmatrix &cost_matrix
-        ) {
-    /*
-       creating a phoney truck with max capacity and max window
-       with the start & end points of the first vehicle given
+/*! builds a fleet
 
-     id; capacity; speed;
-     start_x; start_y; start_node_id;
+  Vehicle_t 
 
-     cant_v;
+  id; capacity; speed;
+  start_x; start_y; start_node_id;
 
-     start_open_t; start_close_t; start_service_t;
-     end_x; end_y; end_node_id; end_open_t; end_close_t; end_service_t;
+  cant_v;
 
-     */
-    vehicles.push_back({
-            -1,
-            std::numeric_limits<double>::infinity(),
-            vehicles[0].speed,
+  start_open_t; start_close_t; start_service_t;
+  end_x; end_y; end_node_id; end_open_t; end_close_t; end_service_t;
 
-            vehicles[0].start_x,
-            vehicles[0].start_y,
-            vehicles[0].start_node_id,
-
-            1,
-
-            0,
-            std::numeric_limits<double>::infinity(),
-            0,
-
-            vehicles[0].end_x,
-            vehicles[0].end_y,
-            vehicles[0].end_node_id,
-            0,
-            std::numeric_limits<double>::infinity(),
-            0});
-
-
-    for (auto vehicle : vehicles) {
-        if (vehicle.cant_v <= 0) {
-            error << "Illegal number of vehicles found";
-            log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
-            continue;
-        }
-
-        auto start_node_id = cost_matrix.get_index(vehicle.start_node_id);
-        auto end_node_id = cost_matrix.get_index(vehicle.end_node_id);
-
-        auto starting_site = Vehicle_node(
-                {start_node_id, vehicle, Tw_node::NodeType::kStart});
-        auto ending_site = Vehicle_node(
-                {end_node_id, vehicle, Tw_node::NodeType::kEnd});
-
-
-        pgassert(starting_site.is_start() && ending_site.is_end());
-
-
-        problem->add_node(starting_site);
-        problem->add_node(ending_site);
-
-        for (int i = 0; i < vehicle.cant_v; ++i) {
-            m_trucks.push_back(Vehicle_pickDeliver(
-                        m_trucks.size(),
-                        vehicle.id,
-                        starting_site,
-                        ending_site,
-                        vehicle.capacity,
-                        vehicle.speed));
-            log << "inserting " << m_trucks.back().id();
-            pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
-        }
-    }
-
-    return;
-}
-#endif
-
-
-/*! builds a fleet for the eucledian version
 */
 bool
 Fleet::build_fleet(
@@ -303,15 +217,6 @@ Fleet::is_order_ok(const Order &order) const {
         log << "checking order " << order.id()
             << "on truck " << truck.id() << "\n";
 
-#if 0
-        /* order 23 is not feasable */
-        if (order.id() == 11) {
-            auto t = truck;
-            t.push_back(order);
-            log << "truck with order 11" << t << "\n";
-            pgassertwm(false, log.str());
-        }
-#endif
         /*
          * The order must be valid given the speed
          */

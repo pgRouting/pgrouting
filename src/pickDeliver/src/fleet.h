@@ -74,10 +74,6 @@ class Fleet : public PD_problem {
 
      Fleet(const std::vector<Vehicle_t> &vehicles);
 
-#if 0
-     Fleet(const std::vector<Vehicle_t> &vehicles,
-             const pgrouting::tsp::Dmatrix &cost_matrix);
-#endif
      Fleet(const Fleet &fleet);
 
      /* TODO move code to .cpp */
@@ -86,21 +82,9 @@ class Fleet : public PD_problem {
          used = fleet.used;
          un_used = fleet.un_used;
          return *this;
-    }
+     }
 
      
-#if 0
-     /* @brief build fleet for matrix version
-      *
-      * @params [in] vehicles 
-      * @params [in] cost_matrix
-      *
-      */
-     void build_fleet(
-             std::vector<Vehicle_t> vehicles,
-             const pgrouting::tsp::Dmatrix &cost_matrix);
-#endif
-
      /* @brief build fleet for eucledian version
       *
       * @params [in] vehicles 
