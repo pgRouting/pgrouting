@@ -75,7 +75,7 @@ class Node {
  protected:
      pgrouting::Point m_point;
      size_t m_id;                ///< internal node number
-     int64_t m_original_id;  // /< user supplied node number
+     int64_t m_original_id;      // /< user supplied node number
 };
 
 }  //  namespace vrp

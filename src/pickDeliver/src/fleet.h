@@ -72,10 +72,12 @@ class Fleet : public PD_problem {
       */
      Fleet() = default;
 
-     Fleet(Pgr_pickDeliver *problem,
-             const std::vector<Vehicle_t> &vehicles,
-             const pgrouting::tsp::Dmatrix &cost_matrix);
+     Fleet(const std::vector<Vehicle_t> &vehicles);
 
+#if 0
+     Fleet(const std::vector<Vehicle_t> &vehicles,
+             const pgrouting::tsp::Dmatrix &cost_matrix);
+#endif
      Fleet(const Fleet &fleet);
 
      /* TODO move code to .cpp */
@@ -87,6 +89,7 @@ class Fleet : public PD_problem {
     }
 
      
+#if 0
      /* @brief build fleet for matrix version
       *
       * @params [in] vehicles 
@@ -96,6 +99,7 @@ class Fleet : public PD_problem {
      void build_fleet(
              std::vector<Vehicle_t> vehicles,
              const pgrouting::tsp::Dmatrix &cost_matrix);
+#endif
 
      /* @brief build fleet for eucledian version
       *

@@ -41,17 +41,18 @@ namespace pgrouting {
 namespace vrp {
 
 
+#if 0
 Fleet::Fleet(
-        Pgr_pickDeliver *problem,
         const std::vector<Vehicle_t> &vehicles,
         const pgrouting::tsp::Dmatrix &cost_matrix) :
-    PD_problem(problem),
+    PD_problem(),
     used(),
     un_used() {
         build_fleet(vehicles, cost_matrix);
         Identifiers<size_t> unused(m_trucks.size());
         un_used = unused;
     }
+#endif
 
 Fleet::Fleet(const Fleet &fleet) :
     PD_problem(),
@@ -60,6 +61,15 @@ Fleet::Fleet(const Fleet &fleet) :
     un_used(fleet.un_used)
     {}
 
+Fleet::Fleet(
+        const std::vector<Vehicle_t> &vehicles) :
+    PD_problem(),
+    used(),
+    un_used() {
+        build_fleet(vehicles);
+        Identifiers<size_t> unused(m_trucks.size());
+        un_used = unused;
+    }
 
 
 Vehicle_pickDeliver
@@ -115,6 +125,7 @@ Fleet::get_truck(const Order order) {
 }
 
 
+#if 0
 /*! builds a fleet for the matrix version
  */
 void
@@ -180,7 +191,6 @@ Fleet::build_fleet(
         problem->add_node(starting_site);
         problem->add_node(ending_site);
 
-#if 1
         for (int i = 0; i < vehicle.cant_v; ++i) {
             m_trucks.push_back(Vehicle_pickDeliver(
                         m_trucks.size(),
@@ -192,12 +202,11 @@ Fleet::build_fleet(
             log << "inserting " << m_trucks.back().id();
             pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
         }
-#endif
     }
 
     return;
 }
-
+#endif
 
 
 /*! builds a fleet for the eucledian version
@@ -240,14 +249,10 @@ Fleet::build_fleet(
         auto ending_site = Vehicle_node(
                 {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
-        if (!(starting_site.is_start()
-                    && ending_site.is_end())) {
-            error << "Illegal values found on vehicle";
-            return false;
-        }
-
         problem->add_node(starting_site);
         problem->add_node(ending_site);
+
+        pgassert(starting_site.is_start() && ending_site.is_end());
 
         for (int i = 0; i < vehicle.cant_v; ++i) {
             m_trucks.push_back(Vehicle_pickDeliver(
@@ -265,6 +270,7 @@ Fleet::build_fleet(
     un_used = unused;
     return true;
 }
+
 
 bool
 Fleet::is_fleet_ok() const {

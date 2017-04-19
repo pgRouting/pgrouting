@@ -83,17 +83,19 @@ process(
     PGR_DBG("total vehicles %ld", total_vehicles);
 
     for (size_t i = 0; i < total_vehicles; i++) {
-        PGR_DBG("%ld %f %f / %f %f %f %f %f / %f %f %f %f %f / %ld ",
+        PGR_DBG("%ld %f %f / %ld %f %f %f %f %f / %ld %f %f %f %f %f / %ld ",
                vehicles_arr[i].id,
                vehicles_arr[i].capacity,
                vehicles_arr[i].speed,
 
+               vehicles_arr[i].start_node_id,
                vehicles_arr[i].start_x,
                vehicles_arr[i].start_y,
                vehicles_arr[i].start_open_t,
                vehicles_arr[i].start_close_t,
                vehicles_arr[i].start_service_t,
 
+               vehicles_arr[i].end_node_id,
                vehicles_arr[i].end_x,
                vehicles_arr[i].end_y,
                vehicles_arr[i].end_open_t,

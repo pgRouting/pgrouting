@@ -147,8 +147,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_node_id(0),
     m_nodes(),
     m_cost_matrix(cost_matrix), 
-    m_trucks(this, vehicles, cost_matrix) {
-        PD_problem(this);
+    m_trucks(vehicles) {
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
         pgassert(!cost_matrix.empty());
@@ -160,8 +159,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         log << "\n *** Building trucks\n";
 
-        m_trucks.build_fleet(vehicles, cost_matrix);
-
         log << m_trucks;
 #if 0
         if (!m_trucks.build_fleet(vehicles, m_cost_matrix)
@@ -171,6 +168,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         }
 #endif
     }  //  constructor
+
+
 
 /***** Constructor for the eculedian version *******/
 
@@ -185,10 +184,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     /*
      * the problem has unknown number of nodes
      */
-    m_node_id(0)
-    // TODO build the fleet in the constructor
+    m_node_id(0),
+    m_nodes(),
+    m_trucks(vehicles)
 {
-    //PD_problem(this);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
     pgassert(m_initial_id > 0 && m_initial_id < 7);
@@ -198,8 +197,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     log << "\n *** Constructor of problem ***\n";
 
     log << "\n Building fleet";
-    if (!m_trucks.build_fleet(vehicles)
-            || !m_trucks.is_fleet_ok()) {
+    if (!m_trucks.is_fleet_ok()) {
         error << m_trucks.get_error();
         return;
     }
