@@ -147,7 +147,7 @@ process(
         (*result_count) = 0;
         (*result_tuples) = NULL;
     }
-#if 0
+#if 1
     pgr_global_report(log_msg, notice_msg, err_msg);
 #else
     pgr_global_report(notice_msg, log_msg, err_msg);

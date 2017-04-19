@@ -75,6 +75,7 @@ class Pgr_messages {
 #endif
 
 
+
  protected:
     mutable std::ostringstream log;
     mutable std::ostringstream notice;

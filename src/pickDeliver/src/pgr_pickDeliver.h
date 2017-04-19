@@ -48,7 +48,7 @@ namespace vrp {
 
 class Order;
 
-class Pgr_pickDeliver : public Pgr_messages{
+class Pgr_pickDeliver : public PD_problem {
     friend class Initial_solution;
     friend class Optimize;
 
@@ -114,7 +114,9 @@ class Pgr_pickDeliver : public Pgr_messages{
 
     //! used to keep track of the next id the node gets in the eucledian version
     size_t m_node_id;
+
     std::vector<Vehicle_node> m_nodes;
+
     pgrouting::tsp::Dmatrix m_cost_matrix;
     Fleet m_trucks;
     PD_Orders m_orders;

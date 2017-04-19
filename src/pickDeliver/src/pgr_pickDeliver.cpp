@@ -128,7 +128,9 @@ Pgr_pickDeliver::get_postgres_result() const {
     return result;
 }
 
-/***** Constructor  for the matrix version *******/
+/** Constructor  for the matrix version
+ *
+ */
 
 Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
@@ -136,33 +138,39 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const pgrouting::tsp::Dmatrix &cost_matrix,
         size_t p_max_cycles,
         int initial) :
+    PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
+    /*
+     * the problem has cost_matrix.size() nodes
+     */
     m_node_id(0),
-    m_cost_matrix(cost_matrix),
-    m_trucks(vehicles, cost_matrix)
-{
-    PD_problem(this);
-    pgassert(!pd_orders.empty());
-    pgassert(!vehicles.empty());
-    pgassert(!cost_matrix.empty());
-    pgassert(m_initial_id > 0 && m_initial_id < 7);
+    m_nodes(),
+    m_cost_matrix(cost_matrix), 
+    m_trucks(this, vehicles, cost_matrix) {
+        PD_problem(this);
+        pgassert(!pd_orders.empty());
+        pgassert(!vehicles.empty());
+        pgassert(!cost_matrix.empty());
+        pgassert(m_initial_id > 0 && m_initial_id < 7);
 
-    std::ostringstream tmplog;
+        std::ostringstream tmplog;
 
-    log << "\n *** Constructor for the matrix version ***\n";
-#ifndef NDEBUG
-    log << m_cost_matrix;
-#endif
+        log << "\n *** Constructor for the matrix version ***\n";
 
+        log << "\n *** Building trucks\n";
+
+        m_trucks.build_fleet(vehicles, cost_matrix);
+
+        log << m_trucks;
 #if 0
-    if (!m_trucks.build_fleet(vehicles, m_cost_matrix)
-            || !m_trucks.is_fleet_ok()) {
-        error << m_trucks.get_error();
-        return;
-    }
+        if (!m_trucks.build_fleet(vehicles, m_cost_matrix)
+                || !m_trucks.is_fleet_ok()) {
+            error << m_trucks.get_error();
+            return;
+        }
 #endif
-}  //  constructor
+    }  //  constructor
 
 /***** Constructor for the eculedian version *******/
 
@@ -171,12 +179,16 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
         int initial) :
+    PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
+    /*
+     * the problem has unknown number of nodes
+     */
     m_node_id(0)
     // TODO build the fleet in the constructor
 {
-    PD_problem(this);
+    //PD_problem(this);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
     pgassert(m_initial_id > 0 && m_initial_id < 7);

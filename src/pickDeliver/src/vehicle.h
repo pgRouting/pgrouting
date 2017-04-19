@@ -73,7 +73,7 @@ class Vehicle {
 
  public:
      /*
-      * (twv, cv, fleet_size, wait_time, dureation)
+      * (twv, cv, fleet_size, wait_time, duration)
       */
      typedef std::tuple< int, int, size_t, double, double > Cost;
      std::vector<General_vehicle_orders_t>

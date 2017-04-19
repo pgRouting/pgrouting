@@ -41,7 +41,7 @@ namespace pgrouting {
 namespace vrp {
 
 
-class Solution : public Pgr_messages, public PD_problem {
+class Solution : public PD_problem {
     friend class Optimize;
  protected:
      double EPSILON;
@@ -68,7 +68,6 @@ class Solution : public Pgr_messages, public PD_problem {
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
-         Pgr_messages(),
          PD_problem(),
          EPSILON(0.0001),
          fleet(sol.fleet),

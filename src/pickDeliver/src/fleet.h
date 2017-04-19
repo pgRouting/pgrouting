@@ -50,13 +50,13 @@ namespace vrp {
 class Pgr_pickDeliver;
 class PD_Orders;
 
-class Fleet : public Pgr_messages, public PD_problem {
-     typedef std::vector<Vehicle_pickDeliver> Trucks;
+class Fleet : public PD_problem {
+     //typedef std::vector<Vehicle_pickDeliver> Trucks;
 
  public:
      // static Pgr_pickDeliver* problem;
-     typedef Trucks::iterator iterator;
-     Trucks m_trucks;
+     typedef std::vector<Vehicle_pickDeliver>::iterator iterator;
+      std::vector<Vehicle_pickDeliver> m_trucks;
 
  protected:
      Identifiers<size_t> used;
@@ -72,7 +72,9 @@ class Fleet : public Pgr_messages, public PD_problem {
       */
      Fleet() = default;
 
-     Fleet(const std::vector<Vehicle_t> &vehicles, const pgrouting::tsp::Dmatrix &cost_matrix);
+     Fleet(Pgr_pickDeliver *problem,
+             const std::vector<Vehicle_t> &vehicles,
+             const pgrouting::tsp::Dmatrix &cost_matrix);
 
      Fleet(const Fleet &fleet);
 
@@ -84,8 +86,26 @@ class Fleet : public Pgr_messages, public PD_problem {
          return *this;
     }
 
+     
+     /* @brief build fleet for matrix version
+      *
+      * @params [in] vehicles 
+      * @params [in] cost_matrix
+      *
+      */
+     void build_fleet(
+             std::vector<Vehicle_t> vehicles,
+             const pgrouting::tsp::Dmatrix &cost_matrix);
+
+     /* @brief build fleet for eucledian version
+      *
+      * @params [in] vehicles 
+      *
+      */
      bool build_fleet(
              std::vector<Vehicle_t> vehicles);
+
+
      void set_compatibles(const PD_Orders &orders);
 
      bool is_fleet_ok() const;
@@ -104,6 +124,9 @@ class Fleet : public Pgr_messages, public PD_problem {
      iterator end() {return m_trucks.end();}
 
      //@}
+
+     friend std::ostream& operator << (std::ostream &log, const Fleet &v);
+
 };
 
 

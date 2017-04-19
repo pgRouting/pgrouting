@@ -40,7 +40,7 @@ namespace vrp {
 class Pgr_pickDeliver;
 class Order;
 
-class PD_Orders : public Pgr_messages , public PD_problem {
+class PD_Orders : public PD_problem {
      typedef std::vector<Order> Orders;
 
  public:

@@ -42,17 +42,18 @@ namespace vrp {
 
 
 Fleet::Fleet(
+        Pgr_pickDeliver *problem,
         const std::vector<Vehicle_t> &vehicles,
         const pgrouting::tsp::Dmatrix &cost_matrix) :
-    Pgr_messages(),
-    PD_problem(),
+    PD_problem(problem),
     used(),
     un_used() {
-        // TODO build the fleet
+        build_fleet(vehicles, cost_matrix);
+        Identifiers<size_t> unused(m_trucks.size());
+        un_used = unused;
     }
 
 Fleet::Fleet(const Fleet &fleet) :
-    Pgr_messages(),
     PD_problem(),
     m_trucks(fleet.m_trucks),
     used(fleet.used),
@@ -114,27 +115,41 @@ Fleet::get_truck(const Order order) {
 }
 
 
-#if 0
 /*! builds a fleet for the matrix version
  */
-bool
+void
 Fleet::build_fleet(
-        std::vector<Vehicle_t> vehicles) {
+        std::vector<Vehicle_t> vehicles,
+        const pgrouting::tsp::Dmatrix &cost_matrix
+        ) {
     /*
-     *  creating a phoney truck with max capacity and max window
-     *  with the start & end points of the first vehicle given
+       creating a phoney truck with max capacity and max window
+       with the start & end points of the first vehicle given
+
+     id; capacity; speed;
+     start_x; start_y; start_node_id;
+
+     cant_v;
+
+     start_open_t; start_close_t; start_service_t;
+     end_x; end_y; end_node_id; end_open_t; end_close_t; end_service_t;
+
      */
     vehicles.push_back({
             -1,
             std::numeric_limits<double>::infinity(),
             vehicles[0].speed,
+
             vehicles[0].start_x,
             vehicles[0].start_y,
             vehicles[0].start_node_id,
+
             1,
+
             0,
             std::numeric_limits<double>::infinity(),
             0,
+
             vehicles[0].end_x,
             vehicles[0].end_y,
             vehicles[0].end_node_id,
@@ -144,28 +159,49 @@ Fleet::build_fleet(
 
 
     for (auto vehicle : vehicles) {
-        if (vehicle.cant_v < 0) {
-            error << "Illegal number of vehicles found vehicle";
+        if (vehicle.cant_v <= 0) {
+            error << "Illegal number of vehicles found";
             log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
             continue;
         }
 
-        auto starting_site = Vehicle_node(
-                {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
-        auto ending_site = Vehicle_node(
-                {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
+        auto start_node_id = cost_matrix.get_index(vehicle.start_node_id);
+        auto end_node_id = cost_matrix.get_index(vehicle.end_node_id);
 
-        if (!(starting_site.is_start()
-                    && ending_site.is_end())) {
+        auto starting_site = Vehicle_node(
+                {start_node_id, vehicle, Tw_node::NodeType::kStart});
+        auto ending_site = Vehicle_node(
+                {end_node_id, vehicle, Tw_node::NodeType::kEnd});
+
+
+        pgassert(starting_site.is_start() && ending_site.is_end());
+
+
+        problem->add_node(starting_site);
+        problem->add_node(ending_site);
+
+#if 1
+        for (int i = 0; i < vehicle.cant_v; ++i) {
+            m_trucks.push_back(Vehicle_pickDeliver(
+                        m_trucks.size(),
+                        vehicle.id,
+                        starting_site,
+                        ending_site,
+                        vehicle.capacity,
+                        vehicle.speed));
+            log << "inserting " << m_trucks.back().id();
+            pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
         }
-    }
-}
 #endif
+    }
+
+    return;
+}
 
 
 
 /*! builds a fleet for the eucledian version
- */
+*/
 bool
 Fleet::build_fleet(
         std::vector<Vehicle_t> vehicles) {
@@ -297,6 +333,22 @@ Fleet::set_compatibles(const PD_Orders &orders) {
         truck.set_compatibles(orders);
     }
 }
+
+/*
+ * FRIENDS
+ */
+
+std::ostream&
+operator << (std::ostream &log, const Fleet &f) {
+    log << "fleet\n";
+    for (const auto v : f.m_trucks) {
+        log << v;
+    }
+    log << "end fleet\n";
+
+    return log;
+}
+
 
 }  //  namespace vrp
 }  //  namespace pgrouting
