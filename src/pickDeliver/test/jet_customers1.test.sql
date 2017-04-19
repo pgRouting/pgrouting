@@ -1,4 +1,9 @@
 
+-- drop table if exists jet_customers;
+-- drop table if exists jet_orders;
+-- drop table if exists jet_vehicles;
+
+
 CREATE TABLE jet_customers (
     airport character varying,
     id integer,
@@ -112,5 +117,4 @@ SELECT *
 FROM _pgr_pickDeliverEuclidean(
     $$ SELECT * from jet_orders $$,
     $$ SELECT * FROM jet_vehicles $$
-);
-
+)
