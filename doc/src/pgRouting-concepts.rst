@@ -148,7 +148,7 @@ Once you have all the preparation work done above, computing a route is fairly e
 We have a lot of different algorithms that can work with your prepared road
 network. The general form of a route query is:
 
-.. code-block:: sql
+.. code-block:: none
 
     select pgr_dijkstra(`SELECT * FROM myroads', 1, 2)
 
