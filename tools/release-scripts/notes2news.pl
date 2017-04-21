@@ -3,23 +3,18 @@
 use strict;
 
 sub Usage {
-  die "Usage: notes2news infile [outfile]\n";
+  die "Usage: notes2news.pl (from the root of the repository)\n";
 }
 
-my $in = shift @ARGV || Usage();
-my $out = shift @ARGV;
 
-# set up the output io channel
+my $in_file = "doc/src/release_notes.rst";
+my $out_file = "NEWS";
+
 my $ofh;
-if ( defined $out ) {
-  open($ofh, ">$out") || die "ERROR: failed to open '$out' for write! : $!\n";
-}
-else {
-  $ofh = *STDOUT;
-}
+open($ofh, ">$out_file") || die "ERROR: failed to open '$out_file' for write! : $!\n";
 
 my $ifh;
-open($ifh, "$in") || die "ERROR: failed to open '$in' for read! : $!\n";
+open($ifh, "$in_file") || die "ERROR: failed to open '$in_file' for read! : $!\n";
 
 my $skipping = 1;
 while (my $line = <$ifh>) {
@@ -42,5 +37,5 @@ while (my $line = <$ifh>) {
 }
 
 close($ifh);
-close($ofh) if $out;
+close($ofh);
 
