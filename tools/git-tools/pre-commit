@@ -28,7 +28,7 @@ echo "notes $NOTES"
 echo "notes 2 news $NOTES2NEWS"
 echo "news $NEWS"
 
-if [[ $NOTES == "doc/src/release_notes.rst" || $NOTES2NEWS == "tools/release-scripts/notes2news.pl" || $NEWS="NEWS" ]]
+if [[ "b$NOTES" == "bdoc/src/release_notes.rst" || "b$NOTES2NEWS" == "btools/release-scripts/notes2news.pl" || "b$NEWS" == "NEWS" ]]
 then
     echo "CHANGED: 'doc/src/release_notes.rst' or 'tools/release-scripts/notes2news.pl' or 'NEWS'"
     echo "Regenerating NEWS"
