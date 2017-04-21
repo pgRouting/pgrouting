@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -26,14 +26,14 @@ Synopsis
 
 The function reads edges from a not "noded" network table and writes the "noded" edges into a new table.
 
-.. index:: 
+.. index::
 	single: pgr_NodeNetwork(Complete Signature)
 
 .. code-block:: sql
 
     pgr_nodenetwork(edge_table, tolerance, id, text the_geom, table_ending, rows_where, outall)
     RETURNS TEXT
-  
+
 
 Description
 -------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ A common problem associated with bringing GIS data into pgRouting is the fact th
 
 What we mean by "noded" is that at every intersection in the road network all the edges will be broken into separate road segments. There are cases like an over-pass and under-pass intersection where you can not traverse from the over-pass to the under-pass, but this function does not have the ability to detect and accommodate those situations.
 
-This function reads the ``edge_table`` table, that has a primary key column ``id`` and geometry column named ``the_geom`` and intersect all the segments in it against all the other segments and then creates a table ``edge_table_noded``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node. 
+This function reads the ``edge_table`` table, that has a primary key column ``id`` and geometry column named ``the_geom`` and intersect all the segments in it against all the other segments and then creates a table ``edge_table_noded``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node.
 
 Parameters
 
@@ -52,7 +52,7 @@ Parameters
 :the_geom: ``text`` Geometry column name of the network table. Default value is ``the_geom``.
 :table_ending: ``text`` Suffix for the new table's. Default value is ``noded``.
 
-The output table will have for  ``edge_table_noded``  
+The output table will have for  ``edge_table_noded``
 
 :id: ``bigint`` Unique identifier for the table
 :old_id: ``bigint``  Identifier of the edge in original table
@@ -82,11 +82,11 @@ Let's create the topology for the data in :ref:`sampledata`
 	NOTICE:  Rows with NULL geometry or NULL id: 0
 	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 	NOTICE:  ----------------------------------------------
- 	pgr_createtopology 
+ 	pgr_createtopology
 	--------------------
  	 OK
 	(1 row)
-	
+
 Now we can analyze the network.
 
 .. code-block:: sql
@@ -106,12 +106,12 @@ Now we can analyze the network.
 	NOTICE:  Potential gaps found near dead ends: 1
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
- 	pgr_analyzegraph 
+ 	pgr_analyzegraph
 	------------------
  	 OK
 	(1 row)
 
-The analysis tell us that the network has a gap and and an intersection. We try to fix the problem using:
+The analysis tell us that the network has a gap and an intersection. We try to fix the problem using:
 
 .. code-block:: sql
 
@@ -128,17 +128,17 @@ The analysis tell us that the network has a gap and and an intersection. We try 
 	NOTICE:         Total New segments: 21
 	NOTICE:   New Table: public.edge_table_noded
 	NOTICE:  ----------------------------------
- 	pgr_nodenetwork 
+ 	pgr_nodenetwork
 	-----------------
  	 OK
 	(1 row)
-	
+
 Inspecting the generated table, we can see that edges 13,14 and 18 has been segmented
 
 .. code-block:: sql
 
 	SELECT old_id,sub_id FROM edge_table_noded ORDER BY old_id,sub_id;
- 	 old_id | sub_id 
+ 	 old_id | sub_id
 	--------+--------
   	 1      |      1
   	 2      |      1
@@ -162,7 +162,7 @@ Inspecting the generated table, we can see that edges 13,14 and 18 has been segm
  	 18     |      1
  	 18     |      2
 	(21 rows)
-		
+
 We can create the topology of the new network
 
 .. code-block:: sql
@@ -176,16 +176,16 @@ We can create the topology of the new network
 	NOTICE:  Rows with NULL geometry or NULL id: 0
 	NOTICE:  Vertices table for table public.edge_table_noded is: public.edge_table_noded_vertices_pgr
 	NOTICE:  ----------------------------------------------
- 	pgr_createtopology 
+ 	pgr_createtopology
 	--------------------
  	 OK
 	(1 row)
-	
+
 Now let's analyze the new topology
 
 .. code-block:: sql
 
-	SELECT pgr_analyzegraph('edge_table_noded', 0.001); 
+	SELECT pgr_analyzegraph('edge_table_noded', 0.001);
 	NOTICE:  PROCESSING:
 	NOTICE:  pgr_analyzeGraph('edge_table_noded',0.001,'the_geom','id','source','target','true')
 	NOTICE:  Performing checks, pelase wait...
@@ -200,7 +200,7 @@ Now let's analyze the new topology
 	NOTICE:  Potential gaps found near dead ends: 0
 	NOTICE:               Intersections detected: 0
 	NOTICE:                      Ring geometries: 0
- 	pgr_createtopology 
+ 	pgr_createtopology
 	--------------------
  	 OK
 	(1 row)
@@ -225,24 +225,24 @@ Images
 
 	.. Rubric:: Before Image
 
-	.. image:: images/before_node_net.png 
+	.. image:: images/before_node_net.png
 		:scale: 60%
-		:alt: before image 
+		:alt: before image
 		:align: left
 
 
 	.. Rubric:: After Image
 
-	.. image:: images/after_node_net.png 
+	.. image:: images/after_node_net.png
 		:scale: 60%
-		:alt: after image 
+		:alt: after image
 		:align: left
 
 
 Comparing the results
 -------------------------------------------------------------------------------
 
-Comparing with the Analysis in the original edge_table, we see that.  
+Comparing with the Analysis in the original edge_table, we see that.
 
 +------------------+-----------------------------------------+--------------------------------------------------------------+
 |                  |                Before                   |                        After                                 |
@@ -275,7 +275,7 @@ Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 i
 
    - Add a column old_id into edge_table, this column is going to keep track the id of the original edge
    - Insert only the segmented edges, that is, the ones whose max(sub_id) >1
- 
+
 .. code-block:: sql
 
 	alter table edge_table drop column if exists old_id;
@@ -284,7 +284,7 @@ Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 i
    		(with
        		segmented as (select old_id,count(*) as i from edge_table_noded group by old_id)
    		select  segments.old_id,dir,cost,reverse_cost,segments.the_geom
-       			from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id) 
+       			from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id)
        			where edges.id in (select old_id from segmented where i>1) );
 
 We recreate the topology:
@@ -301,7 +301,7 @@ We recreate the topology:
 	NOTICE:  Rows with NULL geometry or NULL id: 0
 	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 	NOTICE:  ----------------------------------------------
- 	pgr_createtopology 
+ 	pgr_createtopology
 	--------------------
  	OK
 	(1 row)
@@ -328,7 +328,7 @@ To get the same analysis results as the topology of edge_table_noded, we do the 
 	NOTICE:  Potential gaps found near dead ends: 0
 	NOTICE:               Intersections detected: 0
 	NOTICE:                      Ring geometries: 0
- 	pgr_createtopology 
+ 	pgr_createtopology
 	--------------------
  	OK
 	(1 row)
@@ -354,7 +354,7 @@ To get the same analysis results as the original edge_table, we do the following
 	NOTICE:  Potential gaps found near dead ends: 1
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
- 	pgr_createtopology 
+ 	pgr_createtopology
 	--------------------
  	OK
 	(1 row)
@@ -379,7 +379,7 @@ Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 is a
 	NOTICE:  Potential gaps found near dead ends: 0
 	NOTICE:               Intersections detected: 5
 	NOTICE:                      Ring geometries: 0
- 	pgr_createtopology 
+ 	pgr_createtopology
 	--------------------
  	OK
 	(1 row)

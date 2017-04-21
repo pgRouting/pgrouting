@@ -38,19 +38,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_messages.h"
 #include "./pd_problem.h"
 
+
 namespace pgrouting {
+
+
+namespace tsp {
+class Dmatrix;
+}
 namespace vrp {
 
 class Pgr_pickDeliver;
 class PD_Orders;
 
-class Fleet : public Pgr_messages, public PD_problem {
-     typedef std::vector<Vehicle_pickDeliver> Trucks;
+class Fleet : public PD_problem {
+     //typedef std::vector<Vehicle_pickDeliver> Trucks;
 
  public:
      // static Pgr_pickDeliver* problem;
-     typedef Trucks::iterator iterator;
-     Trucks m_trucks;
+     typedef std::vector<Vehicle_pickDeliver>::iterator iterator;
+      std::vector<Vehicle_pickDeliver> m_trucks;
 
  protected:
      Identifiers<size_t> used;
@@ -65,14 +71,10 @@ class Fleet : public Pgr_messages, public PD_problem {
       *
       */
      Fleet() = default;
-     /* TODO move code to .cpp */
-     Fleet(const Fleet &fleet) :
-         Pgr_messages(),
-         PD_problem(),
-         m_trucks(fleet.m_trucks),
-         used(fleet.used),
-         un_used(fleet.un_used)
-    {}
+
+     Fleet(const std::vector<Vehicle_t> &vehicles);
+
+     Fleet(const Fleet &fleet);
 
      /* TODO move code to .cpp */
      Fleet& operator=(const Fleet &fleet) {
@@ -80,10 +82,18 @@ class Fleet : public Pgr_messages, public PD_problem {
          used = fleet.used;
          un_used = fleet.un_used;
          return *this;
-    }
+     }
 
+     
+     /* @brief build fleet for eucledian version
+      *
+      * @params [in] vehicles 
+      *
+      */
      bool build_fleet(
              std::vector<Vehicle_t> vehicles);
+
+
      void set_compatibles(const PD_Orders &orders);
 
      bool is_fleet_ok() const;
@@ -102,6 +112,9 @@ class Fleet : public Pgr_messages, public PD_problem {
      iterator end() {return m_trucks.end();}
 
      //@}
+
+     friend std::ostream& operator << (std::ostream &log, const Fleet &v);
+
 };
 
 

@@ -34,10 +34,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./vehicle_pickDeliver.h"
 #include "./pgr_pickDeliver.h"
 #include "./../../common/src/identifiers.hpp"
+#include "./../../tsp/src/Dmatrix.h"
 
 
 namespace pgrouting {
 namespace vrp {
+
+
+Fleet::Fleet(const Fleet &fleet) :
+    PD_problem(),
+    m_trucks(fleet.m_trucks),
+    used(fleet.used),
+    un_used(fleet.un_used)
+    {}
+
+Fleet::Fleet(
+        const std::vector<Vehicle_t> &vehicles) :
+    PD_problem(),
+    used(),
+    un_used() {
+        build_fleet(vehicles);
+        Identifiers<size_t> unused(m_trucks.size());
+        un_used = unused;
+    }
 
 
 Vehicle_pickDeliver
@@ -93,6 +112,19 @@ Fleet::get_truck(const Order order) {
 }
 
 
+/*! builds a fleet
+
+  Vehicle_t 
+
+  id; capacity; speed;
+  start_x; start_y; start_node_id;
+
+  cant_v;
+
+  start_open_t; start_close_t; start_service_t;
+  end_x; end_y; end_node_id; end_open_t; end_close_t; end_service_t;
+
+*/
 bool
 Fleet::build_fleet(
         std::vector<Vehicle_t> vehicles) {
@@ -106,12 +138,14 @@ Fleet::build_fleet(
             vehicles[0].speed,
             vehicles[0].start_x,
             vehicles[0].start_y,
+            vehicles[0].start_node_id,
             1,
             0,
             std::numeric_limits<double>::infinity(),
             0,
             vehicles[0].end_x,
             vehicles[0].end_y,
+            vehicles[0].end_node_id,
             0,
             std::numeric_limits<double>::infinity(),
             0});
@@ -121,7 +155,7 @@ Fleet::build_fleet(
         if (vehicle.cant_v < 0) {
             error << "Illegal number of vehicles found vehicle";
             log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
-            continue;
+            return false;
         }
 
         auto starting_site = Vehicle_node(
@@ -129,14 +163,17 @@ Fleet::build_fleet(
         auto ending_site = Vehicle_node(
                 {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
-        if (!(starting_site.is_start()
-                    && ending_site.is_end())) {
-            error << "Illegal values found on vehcile";
-            return false;
-        }
-
         problem->add_node(starting_site);
         problem->add_node(ending_site);
+
+        if (!(starting_site.is_start()
+                    && ending_site.is_end())) {
+            error << "Illegal values found on vehicle";
+            log << "id: " << vehicle.id;
+            pgassert(!get_error().empty());
+            return false;
+        }
+        pgassert(starting_site.is_start() && ending_site.is_end());
 
         for (int i = 0; i < vehicle.cant_v; ++i) {
             m_trucks.push_back(Vehicle_pickDeliver(
@@ -155,22 +192,29 @@ Fleet::build_fleet(
     return true;
 }
 
+
 bool
 Fleet::is_fleet_ok() const {
+    if (!get_error().empty()) return false;
     for (auto truck : m_trucks) {
         if (!(truck.start_site().is_start()
                     && truck.end_site().is_end())) {
-            error << "Illegal values found on vehcile";
+            error << "Illegal values found on vehicle";
             return false;
         }
         if (!truck.is_feasable()) {
-            error << "Truck is not feasable";
+            error << "Truck is not feasible";
             return false;
         }
     }
     return true;
 }
 
+/**
+ * Given an order,
+ * Cycle trhugh all the trucks to verify if the order can be served by
+ * at least one truck
+ */
 bool
 Fleet::is_order_ok(const Order &order) const {
     for (const auto truck : m_trucks) {
@@ -178,14 +222,20 @@ Fleet::is_order_ok(const Order &order) const {
         if (truck.is_order_feasable(order)) {
             return true;
         }
-#if 0
-        auto test_truck = truck;
-        test_truck.push_back(order);
+        log << "checking order " << order.id()
+            << "on truck " << truck.id() << "\n";
 
-        if (test_truck.is_feasable()) {
+        /*
+         * The order must be valid given the speed
+         */
+        if (!order.is_valid(truck.speed())) continue; 
+
+        /*
+         * if its feasable, then the one truck is found
+         */
+        if (truck.is_order_feasable(order)) {
             return true;
         }
-#endif
     }
     return false;
 }
@@ -202,6 +252,22 @@ Fleet::set_compatibles(const PD_Orders &orders) {
         truck.set_compatibles(orders);
     }
 }
+
+/*
+ * FRIENDS
+ */
+
+std::ostream&
+operator << (std::ostream &log, const Fleet &f) {
+    log << "fleet\n";
+    for (const auto v : f.m_trucks) {
+        log << v;
+    }
+    log << "end fleet\n";
+
+    return log;
+}
+
 
 }  //  namespace vrp
 }  //  namespace pgrouting

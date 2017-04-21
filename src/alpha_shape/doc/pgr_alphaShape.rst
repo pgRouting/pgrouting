@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -12,7 +12,7 @@
 pgr_alphaShape
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: pgr_alphashape(text,float8)
 
 Name

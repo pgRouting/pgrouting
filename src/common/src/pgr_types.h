@@ -224,16 +224,25 @@ enum graphType {UNDIRECTED = 0, DIRECTED};
 /**************************************************************************
  * pickDelivery types
  * ***********************************************************************/
+/*
+ * its with either (foo_x, foo_y) pairs (for eucledian or with foo_node_id (for matrix)
+ */
 typedef struct {
     int64_t id;
     double demand;
+
     double pick_x;
     double pick_y;
+    int64_t pick_node_id;
+
     double pick_open_t;
     double pick_close_t;
     double pick_service_t;
+
     double deliver_x;
     double deliver_y;
+    int64_t deliver_node_id;
+
     double deliver_open_t;
     double deliver_close_t;
     double deliver_service_t;
@@ -241,18 +250,28 @@ typedef struct {
 
 
 
+/*
+ * its with either (foo_x, foo_y) pairs for eucledian or with foo_node_id (for matrix)
+ */
 typedef struct {
     int64_t id;
     double capacity;
     double speed;
+
     double start_x;
     double start_y;
+    int64_t start_node_id;
+
     int64_t cant_v;
+
     double start_open_t;
     double start_close_t;
     double start_service_t;
+
     double end_x;
     double end_y;
+    int64_t end_node_id;
+
     double end_open_t;
     double end_close_t;
     double end_service_t;

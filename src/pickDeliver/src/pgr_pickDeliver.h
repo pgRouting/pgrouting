@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/identifiers.hpp"
+#include "./../../tsp/src/Dmatrix.h"
 
 #include "./pgr_messages.h"
 #include "./vehicle_node.h"
@@ -47,7 +48,7 @@ namespace vrp {
 
 class Order;
 
-class Pgr_pickDeliver : public Pgr_messages{
+class Pgr_pickDeliver : public PD_problem {
     friend class Initial_solution;
     friend class Optimize;
 
@@ -58,8 +59,14 @@ class Pgr_pickDeliver : public Pgr_messages{
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
             size_t max_cycles,
-            int initial,
-            std::string &error);
+            int initial);
+
+    Pgr_pickDeliver(
+            const std::vector<PickDeliveryOrders_t> &pd_orders,
+            const std::vector<Vehicle_t> &vehicles,
+            const pgrouting::tsp::Dmatrix &cost_matrix,
+            size_t max_cycles,
+            int initial);
 
     void solve();
 
@@ -101,14 +108,18 @@ class Pgr_pickDeliver : public Pgr_messages{
  private:
     //! used define the initial solution algorithm to be used
     int m_initial_id;
+
+    //! maximum cycles in the optimization
     size_t m_max_cycles;
-    //! used to keep track of the next id the node gets
+
+    //! used to keep track of the next id the node gets in the eucledian version
     size_t m_node_id;
+
     std::vector<Vehicle_node> m_nodes;
+
+    pgrouting::tsp::Dmatrix m_cost_matrix;
     Fleet m_trucks;
-#if 1
     PD_Orders m_orders;
-#endif
     std::vector<Solution> solutions;
 };
 

@@ -48,7 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   max_cycles INTEGER,
  ***********************************************************/
 void
-do_pgr_pickDeliver(
+do_pgr_pickDeliverEuclidean(
         PickDeliveryOrders_t *customers_arr,
         size_t total_customers,
 
@@ -56,7 +56,7 @@ do_pgr_pickDeliver(
         size_t total_vehicles,
 
         int max_cycles,
-        int optimization,
+        int initial_solution_id,
 
         General_vehicle_orders_t **return_tuples,
         size_t *return_count,
@@ -81,19 +81,17 @@ do_pgr_pickDeliver(
                 vehicles_arr, vehicles_arr + total_vehicles);
 
         log << "Read data\n";
-        std::string error("");
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
                 max_cycles,
-                optimization,
-                error);
-        log << pd_problem.get_log();
+                initial_solution_id);
 
-        if (error.compare("")) {
+        err << pd_problem.get_error();
+        if (!err.str().empty()) {
             log << pd_problem.get_log();
-            *log_msg = strdup(log.str().c_str());
-            *err_msg = strdup(error.c_str());
+            *log_msg = pgr_msg(log.str().c_str());
+            *err_msg = pgr_msg(err.str().c_str());
             return;
         }
         log << pd_problem.get_log();
@@ -104,6 +102,9 @@ do_pgr_pickDeliver(
         } catch (AssertFailedException &except) {
             log << pd_problem.get_log();
             throw except;
+        } catch(...) {
+            log << "Caught unknown exception!";
+            throw;
         }
 
         log << pd_problem.get_log();

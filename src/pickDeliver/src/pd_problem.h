@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_PICKDELIVER_SRC_PD_PROBLEM_H_
 #pragma once
 
+#include "./pgr_messages.h"
 
 
 
@@ -34,11 +35,12 @@ namespace pgrouting {
 namespace vrp {
 
 class Pgr_pickDeliver;
+class Pgr_messages;
 
-class PD_problem {
+class PD_problem : public Pgr_messages {
  public:
     explicit PD_problem(Pgr_pickDeliver* p_problem);
-    PD_problem(const PD_problem &) { }
+    PD_problem(const PD_problem &problem);
     PD_problem() { }
 
  protected:

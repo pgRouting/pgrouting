@@ -98,7 +98,7 @@ class Identifiers {
 
     //! \brief true when both sets are equal
     /*!
-     * @param [in] other set of identifiers
+     * @param [in] rhs set of identifiers to be compared
      */
     bool operator==(const Identifiers<T> &rhs) const {
         return std::equal(m_ids.begin(), m_ids.end(), rhs.m_ids.begin());
@@ -107,9 +107,10 @@ class Identifiers {
     //! @name  set UNION
     /// @{
 
-    //! \brief set UNION set
-    /*!
-     * @param [in] other set of identifiers
+    /*! \brief set UNION set
+     *
+     * @param[in] lhs Identifiers
+     * @param[in] rhs Identifiers
      */
     friend Identifiers<T> operator +(
             const Identifiers<T> &lhs,
@@ -144,10 +145,13 @@ class Identifiers {
     //! @name  set INTERSECTION
     /// @{
 
-    //! \brief set INTERSECTION set
-    /*!
-      * @param [in] other is a set of identifiers of type *Identifiers<T>*
-      */
+    /*! \brief set INTERSECTION 
+     *
+     *
+     * @param[in] lhs  Identifiers
+     * @param[in] rhs  Identifiers
+     */
+
     friend Identifiers<T> operator *(
                 const Identifiers<T> &lhs,
                 const Identifiers<T> &rhs) {
@@ -169,9 +173,9 @@ class Identifiers {
         return *this;
     }
 
-    //! \brief compund set IINTERSECTION element
+    //! \brief compund set INTERSECTION element
     /*!
-     * @param [in] other is an identifiers of type *T*
+     * @param[in] element is an identifiers of type *T*
      */
     Identifiers<T>& operator *=(const T &element) {
         if (has(element)) {
@@ -189,9 +193,10 @@ class Identifiers {
     //! @name  set DIFFERENCE
     /// @{
 
-    //! \brief set DIFFERENCE set
-    /*!
-     * @param [in] other is a set of identifiers of type *Identifiers<T>*
+    /* \brief set DIFFERENCE set
+     *
+     * @param[in] lhs Identifiers
+     * @param[in] rhs Identifiers
      */
     friend
         Identifiers<T> operator -(
@@ -219,7 +224,7 @@ class Identifiers {
 
     //! \brief compund set DIFFERENCE element
     /*!
-      @param [in] other is a set of identifiers of type *T*
+      @param[in] element to be removed
       */
     Identifiers<T>& operator -=(const T &element) {
             m_ids.erase(element);

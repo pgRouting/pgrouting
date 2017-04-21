@@ -35,57 +35,70 @@ namespace vrp {
 
 /*! \brief get log (hints) messages
  *
- * \returns the current contents of the log and clears the log
+ * \returns the current contents of the log
  *
  */
 std::string
-Pgr_messages::get_log() {
+Pgr_messages::get_log() const {
     std::string str = log.str();
-    log.str("");
-    log.clear();
     return str;
 }
 
 /*! \brief get notice messages
  *
- * \returns the current contents of the log and clears the log
+ * \returns the current contents of the log
  *
  */
 std::string
-Pgr_messages::get_notice() {
+Pgr_messages::get_notice() const {
     std::string str = notice.str();
-    notice.str("");
-    notice.clear();
     return str;
 }
 
 /*! \brief get error messages
  *
- * \returns the current contents of the log and clears the log
+ * \returns the current contents of the log
  *
  */
 std::string
-Pgr_messages::get_error() {
+Pgr_messages::get_error() const {
     std::string str = error.str();
-    error.str("");
-    error.clear();
     return str;
 }
 
 #ifndef NDEBUG
-/*! \brief get debuging logs
+/*! \brief get debugging logs
  *
  * \returns the current contents of the log and clears the log
  *
  */
 std::string
-Pgr_messages::get_dbglog() {
+Pgr_messages::get_dbglog() const{
     std::string str = dbg_log.str();
-    dbg_log.str("");
-    dbg_log.clear();
     return str;
 }
 #endif
+
+/*! \brief get error messages
+ *
+ * clears the all logs
+ */
+void
+Pgr_messages::clear_msg() {
+    log.str("");
+    log.clear();
+
+    notice.str("");
+    notice.clear();
+
+    error.str("");
+    error.clear();
+
+#ifndef NDEBUG
+    dbg_log.str("");
+    dbg_log.clear();
+#endif
+}
 
 
 }  //  namespace vrp

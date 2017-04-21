@@ -17,18 +17,19 @@ Name
 
 ``pgr_bdAstarCost`` — Returns the shortest path using A* algorithm.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org//libs/graph
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.5.0
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 Signature Summary
 -----------------
-
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 .. code-block:: none
 
@@ -47,15 +48,6 @@ Using these signatures, will load once the graph and perform several one to one 
   - The result is the union of the results of the one to one `pgr_bdAstarCost`.
   - The extra ``start_vid`` and/or ``end_vid`` in the result is used to distinguish to which path it belongs.
 
-.. NOTE:: This signature is deprecated
-
-    .. code-block:: sql
-
-        pgr_bdastar(sql, source integer, target integer, directed boolean, has_rcost boolean)
-        RETURNS SET OF pgr_costResult
-
-    - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`bd_astar-v2`
 
 
 
@@ -108,7 +100,7 @@ This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in
     * and/or **epsilon**.
 
 .. NOTE::
-    In the One to One signature, because of the deprecated signature existance, it is compulsory to indicate if the graph is **directed** or **undirected**.
+    In the One to One signature, because of the deprecated signature existence, it is compulsory to indicate if the graph is **directed** or **undirected**.
 
 :Example: Directed using Heuristic 2
 
@@ -192,20 +184,17 @@ This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to 
 Description of the Signatures
 --------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
-.. include:: ./bdAstar.rst
+.. include:: bdAstar-family.rst
     :start-after: parameters_begin
     :end-before: parameters_end
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
-
-
-
 
 
 
@@ -213,7 +202,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`bdAstar`
-* The examples use the :ref:`sampledata` network.
+* :ref:`sampledata` network.
+* `Migration Guide <https://github.com/cvvergara/pgrouting/wiki/Migration-Guide#pgr_bdastar>`_
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
 

@@ -1,5 +1,4 @@
 \echo -- q00
-SELECT id, source, target, cost, reverse_cost FROM edge_table;
 \echo -- q01
 
 SET client_min_messages TO ERROR;

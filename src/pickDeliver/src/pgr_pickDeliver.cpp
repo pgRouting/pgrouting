@@ -49,19 +49,13 @@ namespace vrp {
 
 
 Solution
-Pgr_pickDeliver::optimize(const Solution init_solution) {
+Pgr_pickDeliver::optimize(const Solution solution) {
     /*
-     * OPtimize the initial solution
+     * Optimize a solution
      */
-    Optimize solution(init_solution, m_max_cycles);
-#if 0
-    solution.decrease_truck();
-    solution.move_duration_based();
-    solution.move_wait_time_based();
-    solution.inter_swap();
-#endif
-    log << solution.best_solution.tau("optimized");
-    return solution.best_solution;
+    Optimize opt_solution(solution, m_max_cycles);
+    log << opt_solution.best_solution.tau("optimized");
+    return opt_solution.best_solution;
 }
 
 void
@@ -73,13 +67,16 @@ Pgr_pickDeliver::solve() {
         for (int i = 1; i < 7; ++i) {
             initial_sols.push_back(Initial_solution(i, m_orders.size()));
             log << "solution " << i << "\n" << initial_sols.back().tau();
+            // TODO calculate the time it takes
+            log << "Initial solution " << i << " duration: " << initial_sols.back().duration();
         }
     } else {
         log << "only trying " << m_initial_id << "\n";
         initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
+        // TODO calculate the time it takes
+        log << "Initial solution " << m_initial_id << " duration: " << initial_sols[0].duration();
     }
 
-    log << "one order per truck duration = " << initial_sols[0].duration();
 
     /*
      * Sorting solutions: the best is at the back
@@ -91,8 +88,8 @@ Pgr_pickDeliver::solve() {
             });
 
     solutions.push_back(Optimize(initial_sols.back()));
+    pgassert(!solutions.empty());
 
-    pgassert(solutions.size() == 1);
     log << "best solution duration = " << solutions.back().duration();
 }
 
@@ -108,11 +105,11 @@ Pgr_pickDeliver::get_postgres_result() const {
              *
              * (twv, cv, fleet, wait, duration)
              */
-            -2,
-            solutions.back().twvTot(),
-            solutions.back().cvTot(),
-            -1,
-            -1,  // summary
+            -2,  // sumary row on vehicle_number
+            solutions.back().twvTot(), // on vehicle_id
+            solutions.back().cvTot(),  // on vehicle_seq
+            -1,  // on order_id
+            -2,  // on stop_type (gets increased later by one so it gets -1)
             -1,  // not accounting total loads
             solutions.back().total_travel_time(),
             -1,  // not accounting arrival_travel_time
@@ -123,60 +120,119 @@ Pgr_pickDeliver::get_postgres_result() const {
     result.push_back(aggregates);
 
 
-#if 0
 #ifndef NDEBUG
     for (const auto sol : solutions) {
         log << sol.tau();
     }
 #endif
-#endif
     return result;
 }
 
+/** Constructor  for the matrix version
+ *
+ */
+
+Pgr_pickDeliver::Pgr_pickDeliver(
+        const std::vector<PickDeliveryOrders_t> &pd_orders,
+        const std::vector<Vehicle_t> &vehicles,
+        const pgrouting::tsp::Dmatrix &cost_matrix,
+        size_t p_max_cycles,
+        int initial) :
+    PD_problem(this),
+    m_initial_id(initial),
+    m_max_cycles(p_max_cycles),
+    /*
+     * the problem has cost_matrix.size() nodes
+     */
+    m_node_id(0),
+    m_nodes(),
+    m_cost_matrix(cost_matrix), 
+    m_trucks(vehicles) {
+        pgassert(!pd_orders.empty());
+        pgassert(!vehicles.empty());
+        pgassert(!cost_matrix.empty());
+        pgassert(m_initial_id > 0 && m_initial_id < 7);
+
+        std::ostringstream tmplog;
+
+        log << "\n *** Constructor for the matrix version ***\n";
+
+        if (!m_trucks.is_fleet_ok()) {
+            // TODO revise the function
+            pgassert(false);
+            error << m_trucks.get_error();
+            return;
+        }
+    }  //  constructor
 
 
-/***** Constructor *******/
+
+/***** Constructor for the eculedian version *******/
 
 Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
-        int initial,
-        std::string &err) :
+        int initial) :
+    PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
-    m_node_id(0)
+    /*
+     * the problem has unknown number of nodes
+     */
+    m_node_id(0),
+    m_nodes(),
+    m_trucks(vehicles)
 {
-    PD_problem(this);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
     pgassert(m_initial_id > 0 && m_initial_id < 7);
 
     std::ostringstream tmplog;
-    err = "";
 
     log << "\n *** Constructor of problem ***\n";
 
-    if (!m_trucks.build_fleet(vehicles)
-            || !m_trucks.is_fleet_ok()) {
+    if (!m_trucks.get_error().empty()) {
         error << m_trucks.get_error();
-        err = error.str();
+        log << m_trucks.get_log();
+        return;
+    }
+
+    log << "\n Building fleet";
+    if (!m_trucks.is_fleet_ok()) {
+        error << m_trucks.get_error();
         return;
     }
 
 
+
+#ifndef NDEBUG
+    for (const auto t : m_trucks) {
+        log << t << "\n";
+    }
+#endif
+
+    log << "\n Building orders";
     m_orders.build_orders(pd_orders);
+    log << " ---> OK\n";
+
+
+#ifndef NDEBUG
+    for (const auto &o : m_orders) {
+        log << o << "\n";
+    }
+#endif
 
     /*
      * check the (S, P, D, E) order on all vehicles
-     * stop when a feasable truck is found
+     * stop when a feasible truck is found
      */
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {
             error << "The order "
                 << o.pickup().original_id()
                 << " is not feasible on any truck";
-            err = error.str();
+            log << "\n" << o;
             return;
         }
     }

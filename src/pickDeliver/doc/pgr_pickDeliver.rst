@@ -21,11 +21,11 @@ __pgr_pickDeliver
 Name
 -------------------------------------------------------------------------------
 
-``_pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
+``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 

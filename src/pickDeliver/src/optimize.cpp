@@ -456,7 +456,7 @@ Optimize::move_reduce_cost(
     auto to_truck = to;
 
     /*
-     * dont move from a real truck to a phoney truck
+     * don't move from a real truck to a phoney truck
      */
     if (!from_truck.is_phony() && to_truck.is_phony()) {
         return false;
@@ -504,8 +504,12 @@ Optimize::move_reduce_cost(
             problem->dbg_log << "\n" << fleet[from_pos].tau();
 #endif
 
+#if 1
             from_truck.erase(order);
+#else
+            to_truck.insert(order);
             move_order(order, fleet[from_pos], fleet[to_pos]);
+#endif
             moved = true;
             save_if_best();
 
@@ -514,6 +518,8 @@ Optimize::move_reduce_cost(
             problem->dbg_log << "\n" << fleet[to_pos].tau();
             problem->dbg_log << "\n" << fleet[from_pos].tau();
 #endif
+        } else {
+            to_truck.erase(order);
         }
     }
     return moved;

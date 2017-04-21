@@ -1,0 +1,509 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+CREATE TABLE jet_customers (
+    airport character varying,
+    id integer,
+    x double precision,
+    y double precision,
+    pindex integer,
+    dindex integer,
+    demand integer,
+    opentime double precision,
+    closetime double precision,
+    servicetime double precision
+);
+CREATE TABLE
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 1, 2320738.4688434978, 126348.38967116659, 0, 2, 4, 3448, 2853448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 3, 2320738.4688434978, 126348.38967116659, 0, 4, 4, 3448, 2853448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 5, 2320738.4688434978, 126348.38967116659, 0, 6, 4, 3448, 2853448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 7, 2320738.4688434978, 126348.38967116659, 0, 8, 4, 3448, 2853448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 9, 2320738.4688434978, 126348.38967116659, 0, 10, 4, 3448, 2853448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 11, 2320738.4688434978, 126348.38967116659, 0, 12, 4, 3448, 2853448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 13, 2383186.1525343237, 448251.25888828852, 0, 14, 4, 3463, 2853463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 15, 2383186.1525343237, 448251.25888828852, 0, 16, 4, 3463, 2853463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 17, 2383186.1525343237, 448251.25888828852, 0, 18, 4, 3463, 2853463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 19, 2383186.1525343237, 448251.25888828852, 0, 20, 4, 3463, 2853463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 21, 2383186.1525343237, 448251.25888828852, 0, 22, 4, 3463, 2853463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 23, 2383186.1525343237, 448251.25888828852, 0, 24, 4, 3463, 2853463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 25, 1981144.5525029898, -1903041.2384292425, 0, 26, 2, 3576, 2853576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 27, 1981144.5525029898, -1903041.2384292425, 0, 28, 2, 3576, 2853576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 29, 1981144.5525029898, -1903041.2384292425, 0, 30, 2, 3576, 2853576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 31, 1981144.5525029898, -1903041.2384292425, 0, 32, 2, 3576, 2853576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 33, 1981144.5525029898, -1903041.2384292425, 0, 34, 2, 3576, 2853576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 35, 1981144.5525029898, -1903041.2384292425, 0, 36, 2, 3576, 2853576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 37, 2138409.5568088419, -119451.50568778868, 0, 38, 5, 3624, 2853624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 39, 2138409.5568088419, -119451.50568778868, 0, 40, 5, 3624, 2853624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 41, 2138409.5568088419, -119451.50568778868, 0, 42, 5, 3624, 2853624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 43, 2138409.5568088419, -119451.50568778868, 0, 44, 5, 3624, 2853624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 45, 2138409.5568088419, -119451.50568778868, 0, 46, 5, 3624, 2853624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 47, 2138409.5568088419, -119451.50568778868, 0, 48, 5, 3624, 2853624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 49, 2387491.1007072991, 34459.351848672632, 0, 50, 1, 4265, 2854265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 51, 2387491.1007072991, 34459.351848672632, 0, 52, 1, 4265, 2854265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 53, 2387491.1007072991, 34459.351848672632, 0, 54, 1, 4265, 2854265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 55, 2387491.1007072991, 34459.351848672632, 0, 56, 1, 4265, 2854265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 57, 2387491.1007072991, 34459.351848672632, 0, 58, 1, 4265, 2854265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 59, 2387491.1007072991, 34459.351848672632, 0, 60, 1, 4265, 2854265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 61, 2035310.7411768832, -176076.78362264115, 0, 62, 1, 4355, 2854355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 63, 2035310.7411768832, -176076.78362264115, 0, 64, 1, 4355, 2854355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 65, 2035310.7411768832, -176076.78362264115, 0, 66, 1, 4355, 2854355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 67, 2035310.7411768832, -176076.78362264115, 0, 68, 1, 4355, 2854355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 69, 2035310.7411768832, -176076.78362264115, 0, 70, 1, 4355, 2854355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 71, 2035310.7411768832, -176076.78362264115, 0, 72, 1, 4355, 2854355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 2, 2320738.4688434978, 126348.38967116659, 1, 0, -4, 3448, 6903448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 4, 2383186.1525343237, 448251.25888828852, 3, 0, -4, 3448, 6903448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 6, 1981144.5525029898, -1903041.2384292425, 5, 0, -4, 3448, 6903448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 8, 2138409.5568088419, -119451.50568778868, 7, 0, -4, 3448, 6903448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 10, 2387491.1007072991, 34459.351848672632, 9, 0, -4, 3448, 6903448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 12, 2035310.7411768832, -176076.78362264115, 11, 0, -4, 3448, 6903448, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 14, 2320738.4688434978, 126348.38967116659, 13, 0, -4, 3463, 6903463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 16, 2383186.1525343237, 448251.25888828852, 15, 0, -4, 3463, 6903463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 18, 1981144.5525029898, -1903041.2384292425, 17, 0, -4, 3463, 6903463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 20, 2138409.5568088419, -119451.50568778868, 19, 0, -4, 3463, 6903463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 22, 2387491.1007072991, 34459.351848672632, 21, 0, -4, 3463, 6903463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 24, 2035310.7411768832, -176076.78362264115, 23, 0, -4, 3463, 6903463, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 26, 2320738.4688434978, 126348.38967116659, 25, 0, -2, 3576, 6903576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 28, 2383186.1525343237, 448251.25888828852, 27, 0, -2, 3576, 6903576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 30, 1981144.5525029898, -1903041.2384292425, 29, 0, -2, 3576, 6903576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 32, 2138409.5568088419, -119451.50568778868, 31, 0, -2, 3576, 6903576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 34, 2387491.1007072991, 34459.351848672632, 33, 0, -2, 3576, 6903576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 36, 2035310.7411768832, -176076.78362264115, 35, 0, -2, 3576, 6903576, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 38, 2320738.4688434978, 126348.38967116659, 37, 0, -5, 3624, 6903624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 40, 2383186.1525343237, 448251.25888828852, 39, 0, -5, 3624, 6903624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 42, 1981144.5525029898, -1903041.2384292425, 41, 0, -5, 3624, 6903624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 44, 2138409.5568088419, -119451.50568778868, 43, 0, -5, 3624, 6903624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 46, 2387491.1007072991, 34459.351848672632, 45, 0, -5, 3624, 6903624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 48, 2035310.7411768832, -176076.78362264115, 47, 0, -5, 3624, 6903624, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 50, 2320738.4688434978, 126348.38967116659, 49, 0, -1, 4265, 6904265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 52, 2383186.1525343237, 448251.25888828852, 51, 0, -1, 4265, 6904265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 54, 1981144.5525029898, -1903041.2384292425, 53, 0, -1, 4265, 6904265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 56, 2138409.5568088419, -119451.50568778868, 55, 0, -1, 4265, 6904265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 58, 2387491.1007072991, 34459.351848672632, 57, 0, -1, 4265, 6904265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 60, 2035310.7411768832, -176076.78362264115, 59, 0, -1, 4265, 6904265, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 62, 2320738.4688434978, 126348.38967116659, 61, 0, -1, 4355, 6904355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BGR', 64, 2383186.1525343237, 448251.25888828852, 63, 0, -1, 4355, 6904355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MIA', 66, 1981144.5525029898, -1903041.2384292425, 65, 0, -1, 4355, 6904355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 68, 2138409.5568088419, -119451.50568778868, 67, 0, -1, 4355, 6904355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('MVY', 70, 2387491.1007072991, 34459.351848672632, 69, 0, -1, 4355, 6904355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 72, 2035310.7411768832, -176076.78362264115, 71, 0, -1, 4355, 6904355, 450000);
+INSERT 0 1
+INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 0, 2138409.5568088419, -119451.50568778868, 0, 0, 0, 0, 7200000, 0);
+INSERT 0 1
+SELECT * FROM
+pgr_gsoc_vrppdtw(
+    $$
+    SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex
+    FROM jet_customers
+    $$,
+    2, 5 
+);
+ seq | id1 | id2 |       cost       
+-----+-----+-----+------------------
+   1 |   1 |   0 |                0
+   2 |   1 |   1 | 756041.534309013
+   3 |   1 |   2 | 1206041.53430901
+   4 |   1 |   9 | 1656041.53430901
+   5 |   1 |  55 | 2219617.54028161
+   6 |   1 |  10 | 2669617.54028161
+   7 |   1 |  56 | 3412414.68435656
+   8 |   1 |   0 | 3412414.68435656
+   9 |   2 |   0 |                0
+  10 |   2 |  37 |           453624
+  11 |   2 |  38 | 1209665.53430901
+  12 |   2 |   7 | 1659665.53430901
+  13 |   2 |  50 | 2109665.53430901
+  14 |   2 |  49 | 2673241.54028161
+  15 |   2 |   8 | 3416038.68435656
+  16 |   2 |   0 | 3416038.68435656
+  17 |   3 |   0 |                0
+  18 |   3 |  41 |           453624
+  19 |   3 |  22 | 1196421.14407495
+  20 |   3 |  53 | 1646421.14407495
+  21 |   3 |  51 | 2096421.14407495
+  22 |   3 |  21 | 2960235.44410608
+  23 |   3 |  52 | 3410235.44410608
+  24 |   3 |  42 | 6245652.35863014
+  25 |   3 |  54 | 6695652.35863014
+  26 |   3 |   0 | 8486161.95545447
+  27 |   4 |   0 |                0
+  28 |   4 |  11 | 756041.534309013
+  29 |   4 |  14 | 1206041.53430901
+  30 |   4 |  15 | 1983945.74350518
+  31 |   4 |  16 | 2433945.74350518
+  32 |   4 |  13 | 2883945.74350518
+  33 |   4 |  12 | 4048650.44230927
+  34 |   4 |   0 | 4166276.06828385
+  35 |   5 |   0 |                0
+  36 |   5 |  29 | 2240509.59682434
+  37 |   5 |  27 | 2690509.59682434
+  38 |   5 |  25 | 3140509.59682434
+  39 |   5 |  30 | 3590509.59682434
+  40 |   5 |  26 | 6098116.52980668
+  41 |   5 |  28 | 6876020.73900285
+  42 |   5 |   0 | 7494245.62585413
+  43 |   6 |   0 |                0
+  44 |   6 |  35 | 2240509.59682434
+  45 |   6 |  33 | 2690509.59682434
+  46 |   6 |  31 | 3140509.59682434
+  47 |   6 |  36 | 5318323.30326404
+  48 |   6 |  34 | 6178635.95232348
+  49 |   6 |  32 | 6921433.09639843
+  50 |   6 |   0 | 6921433.09639843
+  51 |   7 |   0 |                0
+  52 |   7 |  47 |           453624
+  53 |   7 |  45 |           903624
+  54 |   7 |  46 | 1646421.14407495
+  55 |   7 |  48 | 2506733.79313438
+  56 |   7 |  43 | 3074359.41910896
+  57 |   7 |  44 | 3524359.41910896
+  58 |   7 |   0 | 3524359.41910896
+  59 |   8 |   0 |                0
+  60 |   8 |  59 | 742797.144074952
+  61 |   8 |  57 | 1192797.14407495
+  62 |   8 |  58 | 1642797.14407495
+  63 |   8 |  62 | 2206373.15004755
+  64 |   8 |  61 | 3072221.64789589
+  65 |   8 |  60 | 3522221.64789589
+  66 |   8 |   0 | 3639847.27387047
+  67 |   9 |   0 |                0
+  68 |   9 |  67 |  567625.62597458
+  69 |   9 |  65 | 1017625.62597458
+  70 |   9 |  63 | 1467625.62597458
+  71 |   9 |  66 | 3645439.33241429
+  72 |   9 |  68 | 5885948.92923862
+  73 |   9 |  64 |  6954173.8160899
+  74 |   9 |   0 | 7572398.70294118
+  75 |  10 |   0 |                0
+  76 |  10 |  19 | 1068224.88685128
+  77 |  10 |  17 | 1518224.88685128
+  78 |  10 |  18 | 4353641.80137534
+  79 |  10 |  20 | 6594151.39819967
+  80 |  10 |   0 | 6594151.39819967
+  81 |  11 |   0 |                0
+  82 |  11 |  71 |  567625.62597458
+  83 |  11 |  72 | 1017625.62597458
+  84 |  11 |  69 | 1467625.62597458
+  85 |  11 |  70 | 2327938.27503401
+  86 |  11 |   0 | 2620735.41910896
+  87 |  12 |   0 |                0
+  88 |  12 |  39 |           453624
+  89 |  12 |   5 | 1209665.53430901
+  90 |  12 |   3 | 1659665.53430901
+  91 |  12 |  40 | 2437569.74350518
+  92 |  12 |  23 | 2887569.74350518
+  93 |  12 |   4 | 3337569.74350518
+  94 |  12 |  24 | 4502274.44230927
+  95 |  12 |   6 | 6680088.14874897
+  96 |  12 |   0 | 8470597.74557331
+(96 rows)
+
+SELECT *
+FROM _pgr_pickDeliver(
+    $$
+    SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex
+    FROM jet_customers
+    $$,
+    2, 5
+);
+ seq | vehicle_id | vehicle_seq | stop_id |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time  
+-----+------------+-------------+---------+------------------+------------------+-----------+--------------+------------------
+   1 |          1 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+   2 |          1 |           2 |       1 | 306041.534309013 | 306041.534309013 |         0 |       450000 | 756041.534309013
+   3 |          1 |           3 |       2 |                0 | 756041.534309013 |         0 |       450000 | 1206041.53430901
+   4 |          1 |           4 |       9 |                0 | 1206041.53430901 |         0 |       450000 | 1656041.53430901
+   5 |          1 |           5 |      55 | 113576.005972599 | 1769617.54028161 |         0 |       450000 | 2219617.54028161
+   6 |          1 |           6 |      10 |                0 | 2219617.54028161 |         0 |       450000 | 2669617.54028161
+   7 |          1 |           7 |      56 | 292797.144074952 | 2962414.68435656 |         0 |       450000 | 3412414.68435656
+   8 |          1 |           8 |       0 |                0 | 3412414.68435656 |         0 |            0 | 3412414.68435656
+   9 |          2 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  10 |          2 |           2 |      37 |                0 |                0 |      3624 |       450000 |           453624
+  11 |          2 |           3 |      38 | 306041.534309013 | 759665.534309013 |         0 |       450000 | 1209665.53430901
+  12 |          2 |           4 |       7 |                0 | 1209665.53430901 |         0 |       450000 | 1659665.53430901
+  13 |          2 |           5 |      50 |                0 | 1659665.53430901 |         0 |       450000 | 2109665.53430901
+  14 |          2 |           6 |      49 | 113576.005972599 | 2223241.54028161 |         0 |       450000 | 2673241.54028161
+  15 |          2 |           7 |       8 | 292797.144074952 | 2966038.68435656 |         0 |       450000 | 3416038.68435656
+  16 |          2 |           8 |       0 |                0 | 3416038.68435656 |         0 |            0 | 3416038.68435656
+  17 |          3 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  18 |          3 |           2 |      41 |                0 |                0 |      3624 |       450000 |           453624
+  19 |          3 |           3 |      22 | 292797.144074952 | 746421.144074952 |         0 |       450000 | 1196421.14407495
+  20 |          3 |           4 |      53 |                0 | 1196421.14407495 |         0 |       450000 | 1646421.14407495
+  21 |          3 |           5 |      51 |                0 | 1646421.14407495 |         0 |       450000 | 2096421.14407495
+  22 |          3 |           6 |      21 |  413814.30003113 | 2510235.44410608 |         0 |       450000 | 2960235.44410608
+  23 |          3 |           7 |      52 |                0 | 2960235.44410608 |         0 |       450000 | 3410235.44410608
+  24 |          3 |           8 |      42 | 2385416.91452406 | 5795652.35863014 |         0 |       450000 | 6245652.35863014
+  25 |          3 |           9 |      54 |                0 | 6245652.35863014 |         0 |       450000 | 6695652.35863014
+  26 |          3 |          10 |       0 | 1790509.59682434 | 8486161.95545447 |         0 |            0 | 8486161.95545447
+  27 |          4 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  28 |          4 |           2 |      11 | 306041.534309013 | 306041.534309013 |         0 |       450000 | 756041.534309013
+  29 |          4 |           3 |      14 |                0 | 756041.534309013 |         0 |       450000 | 1206041.53430901
+  30 |          4 |           4 |      15 | 327904.209196169 | 1533945.74350518 |         0 |       450000 | 1983945.74350518
+  31 |          4 |           5 |      16 |                0 | 1983945.74350518 |         0 |       450000 | 2433945.74350518
+  32 |          4 |           6 |      13 |                0 | 2433945.74350518 |         0 |       450000 | 2883945.74350518
+  33 |          4 |           7 |      12 | 714704.698804085 | 3598650.44230927 |         0 |       450000 | 4048650.44230927
+  34 |          4 |           8 |       0 |  117625.62597458 | 4166276.06828385 |         0 |            0 | 4166276.06828385
+  35 |          5 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  36 |          5 |           2 |      29 | 1790509.59682434 | 1790509.59682434 |         0 |       450000 | 2240509.59682434
+  37 |          5 |           3 |      27 |                0 | 2240509.59682434 |         0 |       450000 | 2690509.59682434
+  38 |          5 |           4 |      25 |                0 | 2690509.59682434 |         0 |       450000 | 3140509.59682434
+  39 |          5 |           5 |      30 |                0 | 3140509.59682434 |         0 |       450000 | 3590509.59682434
+  40 |          5 |           6 |      26 | 2057606.93298234 | 5648116.52980668 |         0 |       450000 | 6098116.52980668
+  41 |          5 |           7 |      28 | 327904.209196169 | 6426020.73900285 |         0 |       450000 | 6876020.73900285
+  42 |          5 |           8 |       0 | 618224.886851279 | 7494245.62585413 |         0 |            0 | 7494245.62585413
+  43 |          6 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  44 |          6 |           2 |      35 | 1790509.59682434 | 1790509.59682434 |         0 |       450000 | 2240509.59682434
+  45 |          6 |           3 |      33 |                0 | 2240509.59682434 |         0 |       450000 | 2690509.59682434
+  46 |          6 |           4 |      31 |                0 | 2690509.59682434 |         0 |       450000 | 3140509.59682434
+  47 |          6 |           5 |      36 | 1727813.70643971 | 4868323.30326404 |         0 |       450000 | 5318323.30326404
+  48 |          6 |           6 |      34 | 410312.649059432 | 5728635.95232348 |         0 |       450000 | 6178635.95232348
+  49 |          6 |           7 |      32 | 292797.144074952 | 6471433.09639843 |         0 |       450000 | 6921433.09639843
+  50 |          6 |           8 |       0 |                0 | 6921433.09639843 |         0 |            0 | 6921433.09639843
+  51 |          7 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  52 |          7 |           2 |      47 |                0 |                0 |      3624 |       450000 |           453624
+  53 |          7 |           3 |      45 |                0 |           453624 |         0 |       450000 |           903624
+  54 |          7 |           4 |      46 | 292797.144074952 | 1196421.14407495 |         0 |       450000 | 1646421.14407495
+  55 |          7 |           5 |      48 | 410312.649059432 | 2056733.79313438 |         0 |       450000 | 2506733.79313438
+  56 |          7 |           6 |      43 |  117625.62597458 | 2624359.41910896 |         0 |       450000 | 3074359.41910896
+  57 |          7 |           7 |      44 |                0 | 3074359.41910896 |         0 |       450000 | 3524359.41910896
+  58 |          7 |           8 |       0 |                0 | 3524359.41910896 |         0 |            0 | 3524359.41910896
+  59 |          8 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  60 |          8 |           2 |      59 | 292797.144074952 | 292797.144074952 |         0 |       450000 | 742797.144074952
+  61 |          8 |           3 |      57 |                0 | 742797.144074952 |         0 |       450000 | 1192797.14407495
+  62 |          8 |           4 |      58 |                0 | 1192797.14407495 |         0 |       450000 | 1642797.14407495
+  63 |          8 |           5 |      62 | 113576.005972599 | 1756373.15004755 |         0 |       450000 | 2206373.15004755
+  64 |          8 |           6 |      61 | 415848.497848335 | 2622221.64789589 |         0 |       450000 | 3072221.64789589
+  65 |          8 |           7 |      60 |                0 | 3072221.64789589 |         0 |       450000 | 3522221.64789589
+  66 |          8 |           8 |       0 |  117625.62597458 | 3639847.27387047 |         0 |            0 | 3639847.27387047
+  67 |          9 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  68 |          9 |           2 |      67 |  117625.62597458 |  117625.62597458 |         0 |       450000 |  567625.62597458
+  69 |          9 |           3 |      65 |                0 |  567625.62597458 |         0 |       450000 | 1017625.62597458
+  70 |          9 |           4 |      63 |                0 | 1017625.62597458 |         0 |       450000 | 1467625.62597458
+  71 |          9 |           5 |      66 | 1727813.70643971 | 3195439.33241429 |         0 |       450000 | 3645439.33241429
+  72 |          9 |           6 |      68 | 1790509.59682434 | 5435948.92923862 |         0 |       450000 | 5885948.92923862
+  73 |          9 |           7 |      64 | 618224.886851279 |  6504173.8160899 |         0 |       450000 |  6954173.8160899
+  74 |          9 |           8 |       0 | 618224.886851279 | 7572398.70294118 |         0 |            0 | 7572398.70294118
+  75 |         10 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  76 |         10 |           2 |      19 | 618224.886851279 | 618224.886851279 |         0 |       450000 | 1068224.88685128
+  77 |         10 |           3 |      17 |                0 | 1068224.88685128 |         0 |       450000 | 1518224.88685128
+  78 |         10 |           4 |      18 | 2385416.91452406 | 3903641.80137534 |         0 |       450000 | 4353641.80137534
+  79 |         10 |           5 |      20 | 1790509.59682434 | 6144151.39819967 |         0 |       450000 | 6594151.39819967
+  80 |         10 |           6 |       0 |                0 | 6594151.39819967 |         0 |            0 | 6594151.39819967
+  81 |         11 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  82 |         11 |           2 |      71 |  117625.62597458 |  117625.62597458 |         0 |       450000 |  567625.62597458
+  83 |         11 |           3 |      72 |                0 |  567625.62597458 |         0 |       450000 | 1017625.62597458
+  84 |         11 |           4 |      69 |                0 | 1017625.62597458 |         0 |       450000 | 1467625.62597458
+  85 |         11 |           5 |      70 | 410312.649059432 | 1877938.27503401 |         0 |       450000 | 2327938.27503401
+  86 |         11 |           6 |       0 | 292797.144074952 | 2620735.41910896 |         0 |            0 | 2620735.41910896
+  87 |         12 |           1 |       0 |                0 |                0 |         0 |            0 |                0
+  88 |         12 |           2 |      39 |                0 |                0 |      3624 |       450000 |           453624
+  89 |         12 |           3 |       5 | 306041.534309013 | 759665.534309013 |         0 |       450000 | 1209665.53430901
+  90 |         12 |           4 |       3 |                0 | 1209665.53430901 |         0 |       450000 | 1659665.53430901
+  91 |         12 |           5 |      40 | 327904.209196169 | 1987569.74350518 |         0 |       450000 | 2437569.74350518
+  92 |         12 |           6 |      23 |                0 | 2437569.74350518 |         0 |       450000 | 2887569.74350518
+  93 |         12 |           7 |       4 |                0 | 2887569.74350518 |         0 |       450000 | 3337569.74350518
+  94 |         12 |           8 |      24 | 714704.698804085 | 4052274.44230927 |         0 |       450000 | 4502274.44230927
+  95 |         12 |           9 |       6 | 1727813.70643971 | 6230088.14874897 |         0 |       450000 | 6680088.14874897
+  96 |         12 |          10 |       0 | 1790509.59682434 | 8470597.74557331 |         0 |            0 | 8470597.74557331
+  97 |         -2 |           0 |       0 | 33904164.0735066 |               -1 |     14496 |     32400000 | 66318660.0735066
+(97 rows)
+
+WITH
+customer_data AS (SELECT * FROM jet_customers),
+pickups AS (
+    SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
+    FROM  customer_data WHERE pindex = 0 AND id != 0
+),
+deliveries AS (
+    SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
+    FROM  customer_data WHERE dindex = 0 AND id != 0
+)
+SELECT * INTO jet_orders FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
+SELECT 36
+WITH
+customer_data AS (select * from jet_customers)
+SELECT id, x AS start_x, y AS start_y,
+opentime AS start_open, closetime AS start_close,
+2 AS capacity,  5  AS number INTO jet_vehicles
+FROM customer_data WHERE id = 0 LIMIT 1;
+SELECT 1
+SELECT *
+FROM _pgr_pickDeliverEuclidean(
+    $$ SELECT * from jet_orders $$,
+    $$ SELECT * FROM jet_vehicles$$
+);
+ seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time  
+-----+----------------+------------+-------------+----------+-----------+-------+------------------+------------------+-----------+--------------+------------------
+   1 |              1 |          0 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+   2 |              1 |          0 |           2 |       67 |         2 |     1 |  117625.62597458 |  117625.62597458 |         0 |       450000 |  567625.62597458
+   3 |              1 |          0 |           3 |       71 |         2 |     2 |                0 |  567625.62597458 |         0 |       450000 | 1017625.62597458
+   4 |              1 |          0 |           4 |       71 |         3 |     1 |                0 | 1017625.62597458 |         0 |       450000 | 1467625.62597458
+   5 |              1 |          0 |           5 |       67 |         3 |     0 |  117625.62597458 | 1585251.25194916 |         0 |       450000 | 2035251.25194916
+   6 |              1 |          0 |           6 |       -1 |         6 |     0 |                0 | 2035251.25194916 |         0 |            0 | 2035251.25194916
+   7 |              2 |          0 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+   8 |              2 |          0 |           2 |       65 |         2 |     1 |  117625.62597458 |  117625.62597458 |         0 |       450000 |  567625.62597458
+   9 |              2 |          0 |           3 |       65 |         3 |     0 | 1727813.70643971 | 2295439.33241429 |         0 |       450000 | 2745439.33241429
+  10 |              2 |          0 |           4 |       35 |         2 |     2 |                0 | 2745439.33241429 |         0 |       450000 | 3195439.33241429
+  11 |              2 |          0 |           5 |       35 |         3 |     0 | 1727813.70643971 | 4923253.03885399 |         0 |       450000 | 5373253.03885399
+  12 |              2 |          0 |           6 |       -1 |         6 |     0 |  117625.62597458 | 5490878.66482857 |         0 |            0 | 5490878.66482857
+  13 |              3 |          0 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  14 |              3 |          0 |           2 |       29 |         2 |     2 | 1790509.59682434 | 1790509.59682434 |         0 |       450000 | 2240509.59682434
+  15 |              3 |          0 |           3 |       29 |         3 |     0 |                0 | 2240509.59682434 |         0 |       450000 | 2690509.59682434
+  16 |              3 |          0 |           4 |       31 |         2 |     2 |                0 | 2690509.59682434 |         0 |       450000 | 3140509.59682434
+  17 |              3 |          0 |           5 |       31 |         3 |     0 | 1790509.59682434 | 4931019.19364867 |         0 |       450000 | 5381019.19364867
+  18 |              3 |          0 |           6 |       -1 |         6 |     0 |                0 | 5381019.19364867 |         0 |            0 | 5381019.19364867
+  19 |              4 |          0 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  20 |              4 |          0 |           2 |       55 |         2 |     1 | 292797.144074952 | 292797.144074952 |         0 |       450000 | 742797.144074952
+  21 |              4 |          0 |           3 |       55 |         3 |     0 | 292797.144074952 |  1035594.2881499 |         0 |       450000 |  1485594.2881499
+  22 |              4 |          0 |           4 |       -1 |         6 |     0 |                0 |  1485594.2881499 |         0 |            0 |  1485594.2881499
+  23 |              5 |          0 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  24 |              5 |          0 |           2 |       33 |         2 |     2 | 1790509.59682434 | 1790509.59682434 |         0 |       450000 | 2240509.59682434
+  25 |              5 |          0 |           3 |       33 |         3 |     0 | 1979653.01367811 | 4220162.61050245 |         0 |       450000 | 4670162.61050245
+  26 |              5 |          0 |           4 |       -1 |         6 |     0 | 292797.144074952 |  4962959.7545774 |         0 |            0 |  4962959.7545774
+  27 |              6 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  28 |              6 |         -1 |           2 |       59 |         3 |    -1 |  117625.62597458 |  117625.62597458 |         0 |       450000 |  567625.62597458
+  29 |              6 |         -1 |           3 |       69 |         2 |     0 |                0 |  567625.62597458 |         0 |       450000 | 1017625.62597458
+  30 |              6 |         -1 |           4 |       63 |         2 |     1 |                0 | 1017625.62597458 |         0 |       450000 | 1467625.62597458
+  31 |              6 |         -1 |           5 |       61 |         2 |     2 |                0 | 1467625.62597458 |         0 |       450000 | 1917625.62597458
+  32 |              6 |         -1 |           6 |       59 |         2 |     3 | 410312.649059432 | 2327938.27503401 |         0 |       450000 | 2777938.27503401
+  33 |              6 |         -1 |           7 |       69 |         3 |     2 |                0 | 2777938.27503401 |         0 |       450000 | 3227938.27503401
+  34 |              6 |         -1 |           8 |       61 |         3 |     1 | 113576.005972599 | 3341514.28100661 |         0 |       450000 | 3791514.28100661
+  35 |              6 |         -1 |           9 |       63 |         3 |     0 | 327904.209196169 | 4119418.49020278 |         0 |       450000 | 4569418.49020278
+  36 |              6 |         -1 |          10 |       57 |         2 |     1 |  413814.30003113 | 4983232.79023391 |         0 |       450000 | 5433232.79023391
+  37 |              6 |         -1 |          11 |       57 |         3 |     0 |                0 | 5433232.79023391 |         0 |       450000 | 5883232.79023391
+  38 |              6 |         -1 |          12 |       -1 |         6 |     0 | 292797.144074952 | 6176029.93430886 |         0 |            0 | 6176029.93430886
+  39 |              7 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  40 |              7 |         -1 |           2 |        7 |         2 |     4 | 306041.534309013 | 306041.534309013 |         0 |       450000 | 756041.534309013
+  41 |              7 |         -1 |           3 |        5 |         2 |     8 |                0 | 756041.534309013 |         0 |       450000 | 1206041.53430901
+  42 |              7 |         -1 |           4 |        3 |         2 |    12 |                0 | 1206041.53430901 |         0 |       450000 | 1656041.53430901
+  43 |              7 |         -1 |           5 |        1 |         2 |    16 |                0 | 1656041.53430901 |         0 |       450000 | 2106041.53430901
+  44 |              7 |         -1 |           6 |        1 |         3 |    12 |                0 | 2106041.53430901 |         0 |       450000 | 2556041.53430901
+  45 |              7 |         -1 |           7 |        3 |         3 |     8 | 327904.209196169 | 2883945.74350518 |         0 |       450000 | 3333945.74350518
+  46 |              7 |         -1 |           8 |        7 |         3 |     4 | 618224.886851279 | 3952170.63035646 |         0 |       450000 | 4402170.63035646
+  47 |              7 |         -1 |           9 |        5 |         3 |     0 | 1790509.59682434 |  6192680.2271808 |         0 |       450000 |  6642680.2271808
+  48 |              7 |         -1 |          10 |       -1 |         6 |     0 | 1790509.59682434 | 8433189.82400513 |         0 |            0 | 8433189.82400513
+  49 |              8 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  50 |              8 |         -1 |           2 |       11 |         2 |     4 | 306041.534309013 | 306041.534309013 |         0 |       450000 | 756041.534309013
+  51 |              8 |         -1 |           3 |       13 |         3 |     0 |                0 | 756041.534309013 |         0 |       450000 | 1206041.53430901
+  52 |              8 |         -1 |           4 |        9 |         2 |     4 |                0 | 1206041.53430901 |         0 |       450000 | 1656041.53430901
+  53 |              8 |         -1 |           5 |       15 |         2 |     8 | 327904.209196169 | 1983945.74350518 |         0 |       450000 | 2433945.74350518
+  54 |              8 |         -1 |           6 |       13 |         2 |    12 |                0 | 2433945.74350518 |         0 |       450000 | 2883945.74350518
+  55 |              8 |         -1 |           7 |       15 |         3 |     8 |                0 | 2883945.74350518 |         0 |       450000 | 3333945.74350518
+  56 |              8 |         -1 |           8 |        9 |         3 |     4 |  413814.30003113 | 3747760.04353631 |         0 |       450000 | 4197760.04353631
+  57 |              8 |         -1 |           9 |       11 |         3 |     0 | 410312.649059432 | 4608072.69259574 |         0 |       450000 | 5058072.69259574
+  58 |              8 |         -1 |          10 |       -1 |         6 |     0 |  117625.62597458 | 5175698.31857032 |         0 |            0 | 5175698.31857032
+  59 |              9 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  60 |              9 |         -1 |           2 |       39 |         2 |     5 |                0 |                0 |      3624 |       450000 |           453624
+  61 |              9 |         -1 |           3 |       37 |         2 |    10 |                0 |           453624 |         0 |       450000 |           903624
+  62 |              9 |         -1 |           4 |       37 |         3 |     5 | 306041.534309013 | 1209665.53430901 |         0 |       450000 | 1659665.53430901
+  63 |              9 |         -1 |           5 |       23 |         2 |     9 | 327904.209196169 | 1987569.74350518 |         0 |       450000 | 2437569.74350518
+  64 |              9 |         -1 |           6 |       21 |         2 |    13 |                0 | 2437569.74350518 |         0 |       450000 | 2887569.74350518
+  65 |              9 |         -1 |           7 |       39 |         3 |     8 |                0 | 2887569.74350518 |         0 |       450000 | 3337569.74350518
+  66 |              9 |         -1 |           8 |       21 |         3 |     4 |  413814.30003113 | 3751384.04353631 |         0 |       450000 | 4201384.04353631
+  67 |              9 |         -1 |           9 |       23 |         3 |     0 | 410312.649059432 | 4611696.69259574 |         0 |       450000 | 5061696.69259574
+  68 |              9 |         -1 |          10 |       -1 |         6 |     0 |  117625.62597458 | 5179322.31857032 |         0 |            0 | 5179322.31857032
+  69 |             10 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  70 |             10 |         -1 |           2 |       47 |         2 |     5 |                0 |                0 |      3624 |       450000 |           453624
+  71 |             10 |         -1 |           3 |       53 |         2 |     6 | 292797.144074952 | 746421.144074952 |         0 |       450000 | 1196421.14407495
+  72 |             10 |         -1 |           4 |       51 |         2 |     7 |                0 | 1196421.14407495 |         0 |       450000 | 1646421.14407495
+  73 |             10 |         -1 |           5 |       49 |         2 |     8 |                0 | 1646421.14407495 |         0 |       450000 | 2096421.14407495
+  74 |             10 |         -1 |           6 |       49 |         3 |     7 | 113576.005972599 | 2209997.15004755 |         0 |       450000 | 2659997.15004755
+  75 |             10 |         -1 |           7 |       51 |         3 |     6 | 327904.209196169 | 2987901.35924372 |         0 |       450000 | 3437901.35924372
+  76 |             10 |         -1 |           8 |       47 |         3 |     1 | 714704.698804085 |  4152606.0580478 |         0 |       450000 |  4602606.0580478
+  77 |             10 |         -1 |           9 |       53 |         3 |     0 | 1727813.70643971 | 6330419.76448751 |         0 |       450000 | 6780419.76448751
+  78 |             10 |         -1 |          10 |       -1 |         6 |     0 | 1790509.59682434 | 8570929.36131185 |         0 |            0 | 8570929.36131185
+  79 |             11 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  80 |             11 |         -1 |           2 |       45 |         2 |     5 |                0 |                0 |      3624 |       450000 |           453624
+  81 |             11 |         -1 |           3 |       43 |         2 |    10 |                0 |           453624 |         0 |       450000 |           903624
+  82 |             11 |         -1 |           4 |       43 |         3 |     5 |                0 |           903624 |         0 |       450000 |          1353624
+  83 |             11 |         -1 |           5 |       41 |         2 |    10 |                0 |          1353624 |         0 |       450000 |          1803624
+  84 |             11 |         -1 |           6 |       41 |         3 |     5 | 1790509.59682434 | 3594133.59682434 |         0 |       450000 | 4044133.59682434
+  85 |             11 |         -1 |           7 |       45 |         3 |     0 | 1979653.01367811 | 6023786.61050245 |         0 |       450000 | 6473786.61050245
+  86 |             11 |         -1 |           8 |       -1 |         6 |     0 | 292797.144074952 |  6766583.7545774 |         0 |            0 |  6766583.7545774
+  87 |             12 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  88 |             12 |         -1 |           2 |       19 |         2 |     4 | 618224.886851279 | 618224.886851279 |         0 |       450000 | 1068224.88685128
+  89 |             12 |         -1 |           3 |       17 |         2 |     8 |                0 | 1068224.88685128 |         0 |       450000 | 1518224.88685128
+  90 |             12 |         -1 |           4 |       17 |         3 |     4 | 2385416.91452406 | 3903641.80137534 |         0 |       450000 | 4353641.80137534
+  91 |             12 |         -1 |           5 |       19 |         3 |     0 | 1790509.59682434 | 6144151.39819967 |         0 |       450000 | 6594151.39819967
+  92 |             12 |         -1 |           6 |       -1 |         6 |     0 |                0 | 6594151.39819967 |         0 |            0 | 6594151.39819967
+  93 |             13 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
+  94 |             13 |         -1 |           2 |       25 |         2 |     2 | 1790509.59682434 | 1790509.59682434 |         0 |       450000 | 2240509.59682434
+  95 |             13 |         -1 |           3 |       27 |         2 |     4 |                0 | 2240509.59682434 |         0 |       450000 | 2690509.59682434
+  96 |             13 |         -1 |           4 |       25 |         3 |     2 | 2057606.93298234 | 4748116.52980668 |         0 |       450000 | 5198116.52980668
+  97 |             13 |         -1 |           5 |       27 |         3 |     0 | 327904.209196169 | 5526020.73900285 |         0 |       450000 | 5976020.73900285
+  98 |             13 |         -1 |           6 |       -1 |         6 |     0 | 618224.886851279 | 6594245.62585413 |         0 |            0 | 6594245.62585413
+  99 |             -2 |          1 |           1 |       -1 |        -1 |    -1 | 40434981.6885514 |               -1 |     10872 |     32400000 | 72845853.6885514
+(99 rows)
+
+ROLLBACK;
+ROLLBACK

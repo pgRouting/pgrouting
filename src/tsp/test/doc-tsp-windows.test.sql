@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo -- q1
 SELECT * FROM pgr_TSP(
@@ -17,13 +16,6 @@ SELECT * FROM pgr_eucledianTSP(
 );
 
 \echo -- q3
-SELECT * FROM pgr_TSP(
-    (SELECT * FROM pgr_vidsToDMatrix(
-            'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-            (SELECT array_agg(id) from edge_table_vertices_pgr WHERE id < 14)::INTEGER[], false , true, true)
-    ),
-    1
-);
 
 \echo -- q4
 SELECT * FROM pgr_TSP(
@@ -36,5 +28,3 @@ SELECT * FROM pgr_TSP(
     randomize := false
 );
 \echo -- q5
-
-ROLLBACK;

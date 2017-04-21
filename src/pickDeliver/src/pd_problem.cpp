@@ -31,9 +31,13 @@ namespace vrp {
 
 Pgr_pickDeliver* PD_problem::problem;
 
-PD_problem::PD_problem(Pgr_pickDeliver* p_problem) {
-    PD_problem::problem = p_problem;
+PD_problem::PD_problem(Pgr_pickDeliver* p_problem) :
+    Pgr_messages() {
+        PD_problem::problem = p_problem;
 }
+
+PD_problem::PD_problem(const PD_problem &problem) :
+    Pgr_messages(problem) { }
 
 }  //  namespace vrp
 }  //  namespace pgrouting
