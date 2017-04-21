@@ -31,10 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /** @brief Reads the pick-Deliver orders
  *
  * @param[in] pd_orders_sql
- * @param[in] default_pick_window_t
- * @param[in] default_deliver_window_t
- * @param[in] default_pick_service_t
- * @param[in] default_deliver_service_t
  * @param[out] pd_orders
  * @param[out] total_pd_orders
  */
@@ -47,10 +43,6 @@ pgr_get_pd_orders(
 /** @brief Reads the pick-Deliver orders
  *
  * @param[in] pd_orders_sql
- * @param[in] default_pick_window_t
- * @param[in] default_deliver_window_t
- * @param[in] default_pick_service_t
- * @param[in] default_deliver_service_t
  * @param[out] pd_orders
  * @param[out] total_pd_orders
  */

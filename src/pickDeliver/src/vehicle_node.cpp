@@ -59,8 +59,9 @@ Vehicle_node::evaluate(double cargoLimit) {
 }
 
 /*!
-  \param[in] pred The node preceding this node (in the path).
-  \param[in] cargoLimit The cargo limit of the vehicle.
+  \param[in] pred The node preceding this node in the path.
+  \param[in] cargoLimit of the vehicle.
+  \param[in] speed of the vehicle.
   */
 void
 Vehicle_node::evaluate(
