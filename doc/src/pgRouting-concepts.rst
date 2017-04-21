@@ -232,6 +232,28 @@ Where:
 .. no_id_edges_sql_end
 
 
+
+.. pgr_dijkstra_via_parameters_start
+
+Description of the parameters of the signatures
+...............................................................................
+
+=================== ====================== ========= =========================================
+Parameter           Type                   Default   Description
+=================== ====================== ========= =========================================
+**edges_sql**       ``TEXT``                         SQL query as described above.
+**via_vertices**    ``ARRAY[ANY-INTEGER]``           Array of ordered vertices identifiers that are going to be visited.
+**directed**        ``BOOLEAN``            ``true``  - When ``true`` Graph is considered `Directed`
+                                                     - When ``false`` the graph is considered as Undirected.
+**strict**          ``BOOLEAN``            ``false`` - When ``false`` ignores missing paths returning all paths found
+                                                     - When ``true`` if a path is missing stops and returns `EMPTY SET`
+**U_turn_on_edge**  ``BOOLEAN``            ``true``  - When ``true`` departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is allowed.
+                                                     - When ``false`` when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is used when no other path is found.
+=================== ====================== ========= =========================================
+
+.. pgr_dijkstra_via_parameters_end
+
+
 .. xy_edges_sql_start
 
 Description of the edges_sql query for astar like functions
