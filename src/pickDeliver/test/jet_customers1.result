@@ -185,6 +185,7 @@ FROM _pgr_pickDeliverEuclidean(
     $$ SELECT * from jet_orders $$,
     $$ SELECT * FROM jet_vehicles $$
 )
+ROLLBACK;
  seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time  
 -----+----------------+------------+-------------+----------+-----------+-------+------------------+------------------+-----------+--------------+------------------
    1 |              1 |          0 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
@@ -287,5 +288,4 @@ FROM _pgr_pickDeliverEuclidean(
   98 |             13 |         -1 |          10 |       -1 |         6 |     0 | 1790509.59682434 | 8470597.74557331 |         0 |            0 | 8470597.74557331
   99 |             -2 |          0 |           0 |       -1 |        -1 |    -1 | 29529644.5429109 |               -1 |     18120 |     32400000 | 61947764.5429109
 (99 rows)
-ROLLBACK;
-ROLLBACK
+

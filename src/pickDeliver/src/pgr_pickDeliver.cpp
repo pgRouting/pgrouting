@@ -192,6 +192,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     log << "\n *** Constructor of problem ***\n";
 
+    if (!m_trucks.get_error().empty()) {
+        error << m_trucks.get_error();
+        log << m_trucks.get_log();
+        return;
+    }
+
     log << "\n Building fleet";
     if (!m_trucks.is_fleet_ok()) {
         error << m_trucks.get_error();

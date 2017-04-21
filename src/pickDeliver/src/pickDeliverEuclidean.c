@@ -54,7 +54,10 @@ process(
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
     if (max_cycles < 0) {
-        elog(ERROR, "Illegal value in parameter: max_cycles %d", max_cycles);
+        ereport(ERROR,
+                (errcode(ERRCODE_INTERNAL_ERROR),
+                 errmsg("Illegal value in parameter: max_cycles"),
+                 errhint("Negative value found: max_cycles: %d ", max_cycles)));
         (*result_count) = 0;
         (*result_tuples) = NULL;
         return;

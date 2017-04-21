@@ -49,21 +49,28 @@ class Pgr_messages {
      * \returns the current contents of the log and clears the log
      *
      */
-    std::string get_log();
+    std::string get_log() const;
 
     /*! \brief get_notice
      *
      * \returns the current contents of the log and clears the log
      *
      */
-    std::string get_notice();
+    std::string get_notice() const;
 
     /*! \brief get_error
      *
      * \returns the current contents of the log and clears the log
      *
      */
-    std::string get_error();
+    std::string get_error() const;
+
+    /*! \brief clear_msg
+     *
+     * Clears All the messages
+     *
+     */
+    void clear_msg();
 
 #ifndef NDEBUG
     /*! \brief get_error
@@ -71,7 +78,7 @@ class Pgr_messages {
      * \returns the current contents of the log and clears the log
      *
      */
-    std::string get_dbglog();
+    std::string get_dbglog() const;
 #endif
 
 

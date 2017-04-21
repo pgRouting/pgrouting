@@ -31,13 +31,13 @@ PREPARE q7 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    initial := -1);
+    initial_id := -1);
 
 PREPARE q8 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    initial := 7);
+    initial_id := 7);
 
 
 SELECT throws_ok('q6',

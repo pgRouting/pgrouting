@@ -12,10 +12,10 @@ SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
 */
 
 SELECT has_function('_pgr_pickdelivereuclidean',
-    ARRAY['text', 'text', 'integer']);
+    ARRAY['text', 'text', 'integer', 'integer']);
 
 SELECT function_returns('_pgr_pickdelivereuclidean',
-    ARRAY['text', 'text', 'integer'],
+    ARRAY['text', 'text', 'integer', 'integer'],
     'setof record');
 
 /* testing the pick/deliver orders*/
