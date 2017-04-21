@@ -3,7 +3,7 @@
 use strict;
 
 sub Usage {
-  die "Usage: notes2news.pl (from the root of the repository)\n";
+  die "Usage: notes2news.pl (from the root of the repository or pre-commit hook)\n";
 }
 
 
