@@ -150,6 +150,8 @@ Experimental and Proposed functions
   contraction-family
   flow-family
   pgr_labelGraph
+  pgr_pickDeliver
+  pgr_pickDeliverEuclidean
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 

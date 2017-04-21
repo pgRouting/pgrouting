@@ -44,7 +44,7 @@ pgRouting 2.5.0 Release Notes
 To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
 
 
-.. enhancement::
+.. rubric:: enhancment:
 
 * pgr_version is now on SQL language
 
@@ -412,7 +412,7 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 
 - Instead of generating many libraries:
   - All functions are encapsulated in one library
-  - The library has a the prefix 2-1-0
+  - The library has the prefix 2-1-0
 
 
 
@@ -439,8 +439,8 @@ With the release of pgRouting 2.0.0 the library has abandoned backwards compatib
 The main Goals for this release are:
 
 * Major restructuring of pgRouting.
-* Standardiziation of the function naming
-* Prepararation of the project for future development.
+* Standardization of the function naming
+* Preparation of the project for future development.
 
 As a result of this effort:
 
@@ -470,7 +470,7 @@ As a result of this effort:
 * Compatibility with PostgreSQL 9.1 or newer
 * Compatibility with PostGIS 2.0 or newer
 * Installs as PostgreSQL EXTENSION
-* Return types refactored and unified
+* Return types re factored and unified
 * Support for table SCHEMA in function parameters
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
@@ -491,27 +491,27 @@ The following release notes have been copied from the previous ``RELEASE_NOTES``
 Changes for release 1.05
 ...............................................................................
 
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.03
 ...............................................................................
 
 * Much faster topology creation
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.02
 ...............................................................................
 
-* Shooting* bugfixes
+* Shooting* bug fixes
 * Compilation problems solved
 
 
 Changes for release 1.01
 ...............................................................................
 
-* Shooting* bugfixes
+* Shooting* bug fixes
 
 
 Changes for release 1.0
@@ -519,14 +519,14 @@ Changes for release 1.0
 
 * Core and extra functions are separated
 * Cmake build process
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.0.0b
 ...............................................................................
 
 * Additional SQL file with more simple names for wrapper functions
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.0.0a
@@ -540,7 +540,7 @@ Changes for release 0.9.9
 ...............................................................................
 
 * PostgreSQL 8.2 support
-* Shortest path functions return empty result if they couldn’t find any path
+* Shortest path functions return empty result if they could not find any path
 
 
 Changes for release 0.9.8

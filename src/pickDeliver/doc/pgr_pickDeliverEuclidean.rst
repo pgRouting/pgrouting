@@ -99,12 +99,12 @@ pgr_pickDeliverEuclidean(Complete Signature)
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: pd_euclidean_sql_start
     :end-before: pd_euclidean_sql_end
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: pd_vehicle_sql_start
     :end-before: pd_vehicle_sql_end
 
@@ -130,7 +130,7 @@ Column            Type                Default    Description
 ================= ================== ========= =================================================
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: return_vrp_start
     :end-before: return_vrp_end
 

@@ -353,6 +353,21 @@ Where:
 
 .. points_sql_end
 
+
+.. pd_euclidean_sql_start
+
+.. note:: TODO 
+
+.. pd_euclidean_sql_end
+
+.. pd_vehicle_sql_start
+
+.. note:: TODO 
+
+.. pd_vehicle_sql_end
+
+
+
 .. _return_values:
 
 Return columns & values
@@ -419,6 +434,12 @@ Column                 Type                  Description
 =====================  ====================  =================================================
 
 .. result_flow_end
+
+.. return_vrp_start
+
+.. note:: TODO 
+
+.. return_vrp_end
 
 
 .. _advanced_topics:
