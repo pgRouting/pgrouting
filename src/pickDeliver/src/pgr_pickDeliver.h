@@ -37,16 +37,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/identifiers.hpp"
 #include "./../../tsp/src/Dmatrix.h"
 
-#include "./pgr_messages.h"
 #include "./vehicle_node.h"
 #include "./fleet.h"
-#include "./orders.h"
 #include "./solution.h"
 
 namespace pgrouting {
 namespace vrp {
 
 class Order;
+class PD_orders;
 
 class Pgr_pickDeliver : public PD_problem {
     friend class Initial_solution;

@@ -53,17 +53,13 @@ class PD_Orders : public PD_problem {
      Orders m_orders;
 
  public:
-     /* @brief constructor
-      *
-      * @params [in] p_problem \t pointer to problem
-      *
+     /*! @name constructors
+      * @{ 
       */
      PD_Orders() = default;
      PD_Orders(const PD_Orders&) = default;
+     /*!@}*/
 
-     // TODO(vicky) return the new node_id
-     void build_orders(
-             const std::vector<PickDeliveryOrders_t> &pd_orders);
      void set_compatibles(double speed);
      // TODO(vicky) check if it has to be const
      size_t find_best_J(Identifiers<size_t> &within_this_set) const;
@@ -72,8 +68,10 @@ class PD_Orders : public PD_problem {
 
      bool is_valid(double speed) const;
 
-     //! name vector like functions
-     //@{
+     /*! @name std container functions
+      * functions with same "meaning" as an std container
+      * @{
+      */
      Order& operator[](OID o);
      const Order& operator[](OID o) const;
      size_t size() const {return m_orders.size();}
@@ -81,7 +79,11 @@ class PD_Orders : public PD_problem {
      o_iterator end() {return m_orders.end();}
      o_const_iterator begin() const {return m_orders.begin();}
      o_const_iterator end() const {return m_orders.end();}
-     //@}
+     /*!@}*/
+
+     // TODO this should be private called by the contructor
+     void build_orders(
+             const std::vector<PickDeliveryOrders_t> &pd_orders);
 };
 
 

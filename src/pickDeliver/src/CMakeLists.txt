@@ -4,7 +4,7 @@ ADD_LIBRARY(pickDeliver OBJECT
     tw_node.cpp
     vehicle_node.cpp
     order.cpp
-    orders.cpp
+    pd_orders.cpp
     fleet.cpp
     vehicle.cpp
     pd_problem.cpp
