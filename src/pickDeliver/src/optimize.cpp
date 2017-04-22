@@ -58,20 +58,20 @@ Optimize::Optimize(
 
 void
 Optimize::inter_swap(size_t times) {
-    problem->log << tau("before sort");
+    msg.log << tau("before sort");
     sort_by_size();
-    problem->log << tau("after sort");
+    msg.log << tau("after sort");
 
     size_t i = 0;
     while (inter_swap() && (++i < times)) {
-        problem-> log << "\n***************************" << i;
+        msg.log << "\n***************************" << i;
         std::rotate(fleet.begin(), fleet.begin() + 1, fleet.end());
     }
-    problem->log << tau("before sort");
+    msg.log << tau("before sort");
     best_solution.sort_by_id();
     this->fleet = best_solution.fleet;
-    problem->log << tau("after sort");
-    problem->log <<  best_solution.tau();
+    msg.log << tau("after sort");
+    msg.log <<  best_solution.tau();
 }
 
 /*
@@ -84,7 +84,7 @@ Optimize::inter_swap(size_t times) {
  */
 bool
 Optimize::inter_swap() {
-    problem->log
+    msg.log
         << "\n" <<tau("before");
     delete_empty_truck();
     auto swapped_f = false;
@@ -96,7 +96,7 @@ Optimize::inter_swap() {
             if (&from == &to) break;
 
 #if 0
-            problem->log
+            msg.log
                 << "\nto " << to.id()
                 << "from " << from.id();
             auto swapped = false;
@@ -105,7 +105,7 @@ Optimize::inter_swap() {
             swapped_f = swap_order() || swapped_f;
             move_reduce_cost(from, to);
 #if 0
-            problem->log << "++++++++" << p_swaps;
+            msg.log << "++++++++" << p_swaps;
 #endif
         }
     }
@@ -113,7 +113,7 @@ Optimize::inter_swap() {
         swapped_f = swap_order() || swapped_f;
     }
 
-    problem->log
+    msg.log
         << "\n" <<tau("after");
     delete_empty_truck();
 
@@ -145,8 +145,8 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
         auto from_order = from_truck.orders()[from_orders.front()];
 #if 0
         pgassert(from_truck.has_order(from_order));
-        problem->log << "\n" << from_orders;
-        problem->log << "\n from " << from_order.id()
+        msg.log << "\n" << from_orders;
+        msg.log << "\n from " << from_order.id()
             << "," << from_order.pickup().original_id();
         pgassert(from_truck.has_order(from_order));
 #endif
@@ -160,8 +160,8 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 
             auto to_order = to.orders()[to_orders.front()];
 #if 0
-            problem->log << "\n" << to_orders;
-            problem->log << "\n To " << to_order.id();
+            msg.log << "\n" << to_orders;
+            msg.log << "\n To " << to_order.id();
 #endif
             auto curr_to_duration = to_truck.duration();
 
@@ -170,8 +170,8 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
              */
 #if 0
             pgassert(from_truck.has_order(from_order));
-            problem->log << "\n" << from_truck.tau();
-            problem->log << "\n" << from_order.id();
+            msg.log << "\n" << from_truck.tau();
+            msg.log << "\n" << from_order.id();
             pgassert(from_truck.has_order(from_order));
 #endif
             from_truck.erase(from_order);
@@ -190,12 +190,12 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
                  *   - or from_truck duration is reduced
                  */
 #if 1
-                problem->log << "\n Can swap";
-                problem->log << "\n Curr_from_duration " << curr_from_duration;
-                problem->log << " Curr_to_duration " << curr_to_duration;
-                problem->log << "\n  new_from_duration "
+                msg.log << "\n Can swap";
+                msg.log << "\n Curr_from_duration " << curr_from_duration;
+                msg.log << " Curr_to_duration " << curr_to_duration;
+                msg.log << "\n  new_from_duration "
                     << from_truck.duration();
-                problem->log << "  new_to_duration " << to_truck.duration();
+                msg.log << "  new_to_duration " << to_truck.duration();
 #endif
                 auto estimated_delta =
                     - (curr_from_duration + curr_to_duration)
@@ -208,7 +208,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
                         estimated_delta < 0 ||
                         estimated_duration < best_solution.duration()) {
 #endif
-                    problem->log
+                    msg.log
                         << "\n Found Swap order "
                         << from_order.pickup().original_id()
                         << " from truck " << from_truck.id()
@@ -244,7 +244,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 bool
 Optimize::swap_order() {
 #if 0
-    problem->log << "++++++++" << p_swaps;
+    msg.log << "++++++++" << p_swaps;
 #endif
     while (!p_swaps.empty()) {
         auto swap_data = p_swaps.top();
@@ -268,7 +268,7 @@ Optimize::swap_order() {
                 fleet[to_pos].orders()[swap_data.to_order], fleet[to_pos])) {
             save_if_best();
 #if 0
-            problem->log
+            msg.log
                 << "\n Swapping order "
                 << fleet[from_pos].orders()[
                     swap_data.from_order].pickup().original_id()
@@ -279,9 +279,9 @@ Optimize::swap_order() {
                 << " of truck " <<  fleet[to_pos].id();
 #endif
 #if 0
-            problem->log << "\nswappping after:";
-            problem->log << "\n" <<  fleet[to_pos].tau();
-            problem->log << "\n" << fleet[from_pos].tau();
+            msg.log << "\nswappping after:";
+            msg.log << "\n" <<  fleet[to_pos].tau();
+            msg.log << "\n" << fleet[from_pos].tau();
 #endif
             return true;
         }
@@ -366,14 +366,14 @@ Optimize::move_duration_based() {
     size_t i(0);
 
     sort_by_duration();
-    problem->log << tau("\nmove duration based");
+    msg.log << tau("\nmove duration based");
     while (move_reduce_cost() && (++i < local_limit)) { }
     delete_empty_truck();
 
     i = 0;
     sort_by_duration();
     std::reverse(fleet.begin(), fleet.end());
-    problem->log << tau("\nmove duration based");
+    msg.log << tau("\nmove duration based");
     while (move_reduce_cost() && (++i < local_limit)) { }
     sort_by_duration();
     delete_empty_truck();
@@ -389,14 +389,14 @@ Optimize::move_wait_time_based() {
     size_t i(0);
 
     sort_for_move();
-    problem->log << tau("\nmove wait_time based");
+    msg.log << tau("\nmove wait_time based");
     while (move_reduce_cost() && (++i < local_limit)) { }
     delete_empty_truck();
 
     i = 0;
     sort_for_move();
     std::reverse(fleet.begin(), fleet.end());
-    problem->log << tau("\nmove wait_time based");
+    msg.log << tau("\nmove wait_time based");
     while (move_reduce_cost() && (++i < local_limit)) { }
     sort_by_duration();
     delete_empty_truck();
@@ -494,14 +494,14 @@ Optimize::move_reduce_cost(
          */
         to_truck.insert(order);
         if (to_truck.is_feasable()) {
-            problem->log
+            msg.log
                 << "\n    Move order " << order.pickup().original_id()
                 << " from truck " << from_truck.id()
                 << " to truck " << to_truck.id();
 #ifndef NDEBUG
-            problem->dbg_log << "\nMove before:";
-            problem->dbg_log << "\n" << fleet[to_pos].tau();
-            problem->dbg_log << "\n" << fleet[from_pos].tau();
+            msg.dbg_log << "\nMove before:";
+            msg.dbg_log << "\n" << fleet[to_pos].tau();
+            msg.dbg_log << "\n" << fleet[from_pos].tau();
 #endif
 
 #if 1
@@ -514,9 +514,9 @@ Optimize::move_reduce_cost(
             save_if_best();
 
 #ifndef NDEBUG
-            problem->dbg_log << "\nMove after:";
-            problem->dbg_log << "\n" << fleet[to_pos].tau();
-            problem->dbg_log << "\n" << fleet[from_pos].tau();
+            msg.dbg_log << "\nMove after:";
+            msg.dbg_log << "\n" << fleet[to_pos].tau();
+            msg.dbg_log << "\n" << fleet[from_pos].tau();
 #endif
         } else {
             to_truck.erase(order);
@@ -624,18 +624,18 @@ void
 Optimize::save_if_best() {
     if (duration() < best_solution.duration()) {
         best_solution = (*this);
-        problem->log << "\n*********** best by duration"
+        msg.log << "\n*********** best by duration"
             << best_solution.cost_str();
 #ifndef NDEBUG
-        problem->dbg_log << best_solution.tau("best by duration");
+        msg.dbg_log << best_solution.tau("best by duration");
 #endif
     }
     if (fleet.size() < best_solution.fleet.size()) {
         best_solution = (*this);
-        problem->log << "\n*********** best by fleet size"
+        msg.log << "\n*********** best by fleet size"
             << best_solution.cost_str();
 #ifndef NDEBUG
-        problem->dbg_log << best_solution.tau("best by fleet size");
+        msg.dbg_log << best_solution.tau("best by fleet size");
 #endif
     }
 }

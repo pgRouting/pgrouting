@@ -78,7 +78,7 @@ Initial_solution::do_while_foo(int kind) {
     invariant();
     pgassert(kind > 0 && kind < 7);
 
-    log << "\nInitial_solution::do_while_foo\n";
+    msg.log << "\nInitial_solution::do_while_foo\n";
     Identifiers<size_t> notused;
     bool out_of_trucks;
 
@@ -115,7 +115,7 @@ Initial_solution::do_while_foo(int kind) {
 void
 Initial_solution::one_truck_all_orders() {
     invariant();
-    log << "\nInitial_solution::one_truck_all_orders\n";
+    msg.log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
     while (!unassigned.empty()) {
         auto order(truck.orders()[*unassigned.begin()]);

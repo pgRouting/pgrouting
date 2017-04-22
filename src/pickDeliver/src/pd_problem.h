@@ -37,11 +37,14 @@ namespace vrp {
 class Pgr_pickDeliver;
 class Pgr_messages;
 
-class PD_problem : public Pgr_messages {
+class PD_problem {
  public:
     explicit PD_problem(Pgr_pickDeliver* p_problem);
     PD_problem(const PD_problem &problem);
     PD_problem() { }
+
+ public:
+     static Pgr_messages msg;
 
  protected:
      static Pgr_pickDeliver* problem;

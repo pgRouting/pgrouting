@@ -84,7 +84,7 @@ Pgr_messages::get_dbglog() const{
  * clears the all logs
  */
 void
-Pgr_messages::clear_msg() {
+Pgr_messages::clear() {
     log.str("");
     log.clear();
 

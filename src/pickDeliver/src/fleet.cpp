@@ -62,9 +62,9 @@ Fleet::Fleet(
 Vehicle_pickDeliver
 Fleet::get_truck() {
     auto id = un_used.front();
-    log << "id" << id
+    msg.log << "id" << id
         << "size" << m_trucks.size();
-    pgassertwm(id < m_trucks.size(), log.str());
+    pgassertwm(id < m_trucks.size(), msg.log.str());
     used += id;
     if (un_used.size() > 1) un_used -= id;
     return m_trucks[id];
@@ -82,9 +82,9 @@ Fleet::get_truck(size_t order) {
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order)) {
             id = truck.id();
-            log << "id" << id
+            msg.log << "id" << id
                 << "size" << m_trucks.size();
-            pgassertwm(id < m_trucks.size(), log.str());
+            pgassertwm(id < m_trucks.size(), msg.get_log());
             used += id;
             if (un_used.size() > 1) un_used -= id;
             break;
@@ -100,9 +100,9 @@ Fleet::get_truck(const Order order) {
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order.id())) {
             id = truck.id();
-            log << "id" << id
+            msg.log << "id" << id
                 << "size" << m_trucks.size();
-            pgassertwm(id < m_trucks.size(), log.str());
+            pgassertwm(id < m_trucks.size(), msg.get_log());
             used += id;
             if (un_used.size() > 1) un_used -= id;
             break;
@@ -112,17 +112,12 @@ Fleet::get_truck(const Order order) {
 }
 
 
-/*! builds a fleet
+/*!
+  builds a fleet from a vector of Vehicle_t 
 
-  Vehicle_t 
-
-  id; capacity; speed;
-  start_x; start_y; start_node_id;
-
-  cant_v;
-
-  start_open_t; start_close_t; start_service_t;
-  end_x; end_y; end_node_id; end_open_t; end_close_t; end_service_t;
+  - creates a phoney truck with unlimited capacity and unlimited closing times
+  - checks that the number of vehicles is a legal value
+  - creates the requested vehicles
 
 */
 bool
@@ -133,19 +128,31 @@ Fleet::build_fleet(
      *  with the start & end points of the first vehicle given
      */
     vehicles.push_back({
+            /*
+             * id, capacity
+             */
             -1,
             std::numeric_limits<double>::infinity(),
+
             vehicles[0].speed,
             vehicles[0].start_x,
             vehicles[0].start_y,
             vehicles[0].start_node_id,
+
+            /*
+             * cant_v, start_open_t, start_close_t, start_service_t
+             */
             1,
             0,
             std::numeric_limits<double>::infinity(),
             0,
+
             vehicles[0].end_x,
             vehicles[0].end_y,
             vehicles[0].end_node_id,
+            /*
+             * end_open_t, end_close_t, end_service_t
+             */
             0,
             std::numeric_limits<double>::infinity(),
             0});
@@ -153,8 +160,8 @@ Fleet::build_fleet(
 
     for (auto vehicle : vehicles) {
         if (vehicle.cant_v < 0) {
-            error << "Illegal number of vehicles found vehicle";
-            log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
+            msg.error << "Illegal number of vehicles found vehicle";
+            msg.log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
             return false;
         }
 
@@ -168,9 +175,9 @@ Fleet::build_fleet(
 
         if (!(starting_site.is_start()
                     && ending_site.is_end())) {
-            error << "Illegal values found on vehicle";
-            log << "id: " << vehicle.id;
-            pgassert(!get_error().empty());
+            msg.error << "Illegal values found on vehicle";
+            msg.log << "id: " << vehicle.id;
+            pgassert(!msg.get_error().empty());
             return false;
         }
         pgassert(starting_site.is_start() && ending_site.is_end());
@@ -183,7 +190,7 @@ Fleet::build_fleet(
                         ending_site,
                         vehicle.capacity,
                         vehicle.speed));
-            log << "inserting " << m_trucks.back().id();
+            msg.log << "inserting " << m_trucks.back().id();
             pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
         }
     }
@@ -195,15 +202,15 @@ Fleet::build_fleet(
 
 bool
 Fleet::is_fleet_ok() const {
-    if (!get_error().empty()) return false;
+    if (!msg.get_error().empty()) return false;
     for (auto truck : m_trucks) {
         if (!(truck.start_site().is_start()
                     && truck.end_site().is_end())) {
-            error << "Illegal values found on vehicle";
+            msg.error << "Illegal values found on vehicle";
             return false;
         }
         if (!truck.is_feasable()) {
-            error << "Truck is not feasible";
+            msg.error << "Truck is not feasible";
             return false;
         }
     }
@@ -222,7 +229,7 @@ Fleet::is_order_ok(const Order &order) const {
         if (truck.is_order_feasable(order)) {
             return true;
         }
-        log << "checking order " << order.id()
+        msg.log << "checking order " << order.id()
             << "on truck " << truck.id() << "\n";
 
         /*

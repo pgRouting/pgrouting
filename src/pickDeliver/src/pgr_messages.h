@@ -44,38 +44,38 @@ class Pgr_messages {
         return *this;
     }
 
-    /*! \brief get_log
+    /*! @brief get_log
      *
      * \returns the current contents of the log and clears the log
      *
      */
     std::string get_log() const;
 
-    /*! \brief get_notice
+    /*! @brief get_notice
      *
-     * \returns the current contents of the log and clears the log
+     * @returns the current contents of the log and clears the log
      *
      */
     std::string get_notice() const;
 
-    /*! \brief get_error
+    /*! @brief get_error
      *
-     * \returns the current contents of the log and clears the log
+     * @returns the current contents of the log and clears the log
      *
      */
     std::string get_error() const;
 
-    /*! \brief clear_msg
+    /*! @brief clear
      *
      * Clears All the messages
      *
      */
-    void clear_msg();
+    void clear();
 
 #ifndef NDEBUG
-    /*! \brief get_error
+    /*! @brief get_error
      *
-     * \returns the current contents of the log and clears the log
+     * @returns the current contents of the log and clears the log
      *
      */
     std::string get_dbglog() const;
@@ -83,10 +83,10 @@ class Pgr_messages {
 
 
 
- protected:
-    mutable std::ostringstream log;
-    mutable std::ostringstream notice;
-    mutable std::ostringstream error;
+ public:
+    std::ostringstream log;
+    std::ostringstream notice;
+    std::ostringstream error;
 #ifndef NDEBUG
     mutable std::ostringstream dbg_log;
 #endif

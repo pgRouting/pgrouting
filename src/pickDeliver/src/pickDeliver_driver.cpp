@@ -105,31 +105,31 @@ do_pgr_pickDeliver(
                 max_cycles,
                 initial_solution_id);
 
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
         *log_msg = pgr_msg(log.str().c_str());
         return;
-        err << pd_problem.get_error();
+        err << pd_problem.msg.get_error();
         if (!err.str().empty()) {
-            log << pd_problem.get_log();
+            log << pd_problem.msg.get_log();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
             return;
         }
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
 
         try {
             pd_problem.solve();
         } catch (AssertFailedException &except) {
-            log << pd_problem.get_log();
+            log << pd_problem.msg.get_log();
             throw except;
         }
 
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
         log << "Finish solve\n";
 
         auto solution = pd_problem.get_postgres_result();
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
         log << "solution size: " << solution.size() << "\n";
 
 
@@ -141,7 +141,7 @@ do_pgr_pickDeliver(
         }
         (*return_count) = solution.size();
 
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?

@@ -51,12 +51,10 @@ class Pgr_pickDeliver;
 class PD_Orders;
 
 class Fleet : public PD_problem {
-     //typedef std::vector<Vehicle_pickDeliver> Trucks;
 
  public:
-     // static Pgr_pickDeliver* problem;
      typedef std::vector<Vehicle_pickDeliver>::iterator iterator;
-      std::vector<Vehicle_pickDeliver> m_trucks;
+     std::vector<Vehicle_pickDeliver> m_trucks;
 
  protected:
      Identifiers<size_t> used;
@@ -65,16 +63,15 @@ class Fleet : public PD_problem {
 
 
  public:
-     /* @brief constructor
-      *
-      * @params [in] p_problem \t pointer to problem
-      *
+     /*! @name constructor
+      * @{
       */
      Fleet() = default;
 
      Fleet(const std::vector<Vehicle_t> &vehicles);
 
      Fleet(const Fleet &fleet);
+     /*!@}*/
 
      /* TODO move code to .cpp */
      Fleet& operator=(const Fleet &fleet) {
@@ -83,16 +80,6 @@ class Fleet : public PD_problem {
          un_used = fleet.un_used;
          return *this;
      }
-
-     
-     /* @brief build fleet for eucledian version
-      *
-      * @params [in] vehicles 
-      *
-      */
-     bool build_fleet(
-             std::vector<Vehicle_t> vehicles);
-
 
      void set_compatibles(const PD_Orders &orders);
 
@@ -104,16 +91,26 @@ class Fleet : public PD_problem {
      Vehicle_pickDeliver get_truck(size_t order);
      Vehicle_pickDeliver get_truck(const Order order);
 
-     //! name vector like functions
-     //@{
+     /*! @name vector like functions
+      * @{
+      */
      size_t size() const {return m_trucks.size();}
      Vehicle_pickDeliver& operator[](size_t i);
      iterator begin() {return m_trucks.begin();}
      iterator end() {return m_trucks.end();}
 
-     //@}
+     /*!@}*/
 
      friend std::ostream& operator << (std::ostream &log, const Fleet &v);
+
+ private:
+     /*! @brief build the fleet
+      *
+      * @param[in] vehicles of type Vehicle_t
+      */
+     bool build_fleet(
+             std::vector<Vehicle_t> vehicles);
+
 
 };
 
