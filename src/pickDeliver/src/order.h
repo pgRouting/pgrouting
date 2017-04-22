@@ -91,15 +91,31 @@ class Order {
      size_t pickup_id;
      size_t delivery_id;
 
-     /*
-      * I = this
-      * I -> {J}
+     /*! Stores all the orders that can be placed after this order
+      *
+
+      @dot
+      digraph G {
+      graph [rankdir=LR];
+      this [color=green];
+      this -> "{J}";
+      }
+      @enddot
+
       */
      Identifiers<size_t> m_compatibleJ;
 
-     /*
-      * J = this
-      * {I} -> J
+     /*! Stores all the orders that can be placed before this order
+      *
+
+      @dot
+      digraph G {
+      graph [rankdir=LR];
+      this [color=green];
+      "{I}" -> this;
+      }
+      @enddot
+
       */
      Identifiers<size_t> m_compatibleI;
 

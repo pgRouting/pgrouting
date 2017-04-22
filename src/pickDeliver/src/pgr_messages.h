@@ -84,8 +84,11 @@ class Pgr_messages {
 
 
  public:
+    /*! Stores the hint information*/
     std::ostringstream log;
+    /*! Stores the notice information*/
     std::ostringstream notice;
+    /*! Stores the error information*/
     std::ostringstream error;
 #ifndef NDEBUG
     mutable std::ostringstream dbg_log;
