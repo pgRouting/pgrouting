@@ -72,8 +72,6 @@ class Pgr_pickDeliver : public PD_problem {
     std::vector<General_vehicle_orders_t>
         get_postgres_result() const;
 
-    /*****************/
-
     const Order order_of(const Vehicle_node &node) const;
     const Vehicle_node& node(ID id) const;
 #if 0
@@ -91,7 +89,7 @@ class Pgr_pickDeliver : public PD_problem {
      * gets the orders {J} that can be visited after visiting order I
      */
     inline Identifiers<size_t> compatibleJ(size_t I) const {
-        return m_orders[I].m_compatibleJ;
+        return m_orders[I].subsetJ(Identifiers<size_t>());
     }
 
     inline Order orders(size_t o) const {return m_orders[o];}

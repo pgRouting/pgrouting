@@ -69,8 +69,7 @@ PD_Orders::build_orders(
         m_orders.push_back(
                 Order(order_id++,
                     pickup,
-                    delivery,
-                    problem));
+                    delivery));
     }  //  for (creating orders)
 
 #if 0

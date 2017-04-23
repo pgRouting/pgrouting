@@ -32,40 +32,79 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iostream>
 #include "./vehicle_node.h"
 #include "./../../common/src/identifiers.hpp"
+#include "./pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
-class Pgr_pickDeliver;
-class Initial_solution;
 
-
-class Order {
+class Order : public PD_problem {
  public:
-     friend class Initial_solution;
-     friend class Pgr_pickDeliver;
-
+     /*! @name Constructors
+      * @{
+      */
      Order(size_t p_id,
              const Vehicle_node &p_pickup,
-             const Vehicle_node &p_deliver,
-             const Pgr_pickDeliver *p_problem);
+             const Vehicle_node &p_deliver);
 
      Order(const Order &) = default;
+     /*!@}*/
 
 
+     /*! @name Accessors
+      * @{
+      */
 
-     /*************accesosrs*/
-
+     /*! The delivery node identifier
+      *
+      * It hold's the idx of the node
+      */
      inline size_t id() const {return m_id;}
-     const Vehicle_node& delivery() const;
-     const Vehicle_node& pickup() const;
-#if 0
-     void setCompatibles(double speed);
-#endif
-     void set_compatibles(const Order order, double speed);
 
-     /*!
+     /*! The delivery node identifier
+      *
+      * It hold's the idx of the node
+      */
+     const Vehicle_node& delivery() const;
+
+     /*! The delivery node identifier
+      *
+      * It hold's the idx of the node
+      */
+     const Vehicle_node& pickup() const;
+
+     /*! Get a subset of the orders that can be placed after @this order
+      
+      @dot
+      digraph G {
+      graph [rankdir=LR];
+      this [color=green];
+      this -> "this.J * J" -> this;
+      }
+      @enddot
+
+      * @param[in] J set of orders
+      * @result ithe set intersection of the @b J orders with the @b compatible_J orders of @this order
+      */
+     Identifiers<size_t> subsetJ(const Identifiers<size_t> &J) const;
+     Identifiers<size_t> subsetI(const Identifiers<size_t> &I) const;
+     /*!@}*/
+
+
+     /*! @name Modifiers
+      * @{
+      */
+
+     void set_compatibles(const Order order, double speed);
+     /*!@}*/
+
+     /*! @name To be or not to be
+      * @{
+      */
+
+     /*! @brief validate a pickup/delivery order 
+      *
       * An order is valid when:
       *   - The pickup is well formed
       *   - The delivery is well formed
@@ -74,21 +113,52 @@ class Order {
      bool is_valid(double speed) const;
 
 
-     bool isCompatibleIJ(const Order &other, double speed) const;
-#if 0
-     bool isOrderCompatibleStart(const Vehicle_node &node) const;
-     bool isOrderCompatibleEnd(const Vehicle_node &node) const;
-#endif
-     Identifiers<size_t> subsetJ(const Identifiers<size_t> &J) const;
-     Identifiers<size_t> subsetI(const Identifiers<size_t> &I) const;
+     /*! @brief Can order @b I be placed before @b this order?
+      *
+
+      @dot
+      digraph G {
+      graph [rankdir=LR];
+      this [color=green];
+      "I" -> this;
+      }
+      @enddot
+
+      @param[in] I order
+      @param[in] speed to be used for evaluating the order
+
+      @returns true when order @b I can be placed before @b this order
+      */
+     bool isCompatibleIJ(const Order &I, double speed) const;
+     /*!@}*/
+
+
+
+     /*! @name Friends
+      * @{
+      */
 
      friend std::ostream& operator << (std::ostream&, const Order &);
+     /*!@}*/
 
-     //    void moveOrder(const int toRoute);
  private:
+     /*! The order's identifier
+      *
+      * It holds the original order identifier given in a row of PickDeliveryOrders_t
+      */
      size_t m_id;
 
+     /*! The pick up node identifier
+      *
+      * It hold's the idx of the node
+      */
+
      size_t pickup_id;
+
+     /*! The delivery node identifier
+      *
+      * It hold's the idx of the node
+      */
      size_t delivery_id;
 
      /*! Stores all the orders that can be placed after this order
@@ -102,6 +172,9 @@ class Order {
       }
       @enddot
 
+      @todo TODO
+      - compatability changes based on the speed this is not taking that into account (here) 
+      - check where is it talking that into account
       */
      Identifiers<size_t> m_compatibleJ;
 
@@ -118,10 +191,6 @@ class Order {
 
       */
      Identifiers<size_t> m_compatibleI;
-
-
-     /* order belongs to this problem */
-     const Pgr_pickDeliver *problem;
 };
 
 }  //  namespace vrp
