@@ -23,12 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/*! @file order.h */
+
 #ifndef SRC_PICKDELIVER_SRC_ORDER_H_
 #define SRC_PICKDELIVER_SRC_ORDER_H_
 #pragma once
 
 
-#include <set>
 #include <iostream>
 #include "./vehicle_node.h"
 #include "./../../common/src/identifiers.hpp"
@@ -36,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
-
 
 
 class Order : public PD_problem {
@@ -80,7 +80,7 @@ class Order : public PD_problem {
       digraph G {
       graph [rankdir=LR];
       this [color=green];
-      this -> "this.J * J" -> this;
+      this -> "this.J * J";
       }
       @enddot
 
