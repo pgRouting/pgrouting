@@ -15,7 +15,7 @@ Example
 in `foo.c` file
 
 ```
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
+#include "c_input/edges_input.h"
+#include "c_input/arrays_input.h"
 ```
 
