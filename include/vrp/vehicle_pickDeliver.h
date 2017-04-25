@@ -30,10 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <set>
-#include "./order.h"
-#include "./pd_orders.h"
-#include "./tw_node.h"
-#include "./vehicle.h"
+#include "vrp/order.h"
+#include "vrp/pd_orders.h"
+#include "vrp/tw_node.h"
+#include "vrp/vehicle.h"
 #include "./../../common/src/identifiers.hpp"
 
 namespace pgrouting {

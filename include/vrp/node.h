@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <ostream>
-#include "../include/base_node.h"
+#include "vrp/base_node.h"
 #include "../../common/src/xy_vertex.h"
 
 namespace pgrouting {

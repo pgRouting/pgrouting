@@ -34,10 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 
-#include "./vehicle_pickDeliver.h"
-#include "./fleet.h"
-#include "./pgr_messages.h"
-#include "./pd_problem.h"
+#include "vrp/vehicle_pickDeliver.h"
+#include "vrp/fleet.h"
+#include "vrp/pgr_messages.h"
+#include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {

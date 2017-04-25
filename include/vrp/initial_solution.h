@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: dnode.h
+FILE: initial_solution.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,46 +23,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file dnode.h */
+/*! @file initial_solution.h */
 
-#ifndef SRC_PICKDELIVER_SRC_DNODE_H_
-#define SRC_PICKDELIVER_SRC_DNODE_H_
+#ifndef SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_
+#define SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_
 #pragma once
 
-#include <string>
-#include <ostream>
-#include "../include/base_node.h"
-#include "./pd_problem.h"
+#include <set>
+#include <deque>
+#include "vrp/pd_orders.h"
+#include "vrp/solution.h"
+#include "./../../common/src/identifiers.hpp"
 
 namespace pgrouting {
 namespace vrp {
 
-/*! @class Dnode
- * @brief The Dnode class defines a the operations when its a matrix.
- *
- */
 
-class Dnode : public Base_node, public PD_problem {
+class Pgr_pickDeliver;
+
+
+class Initial_solution : public Solution {
  public:
-     Dnode() = default;
-     Dnode(size_t id, int64_t original_id);
+     Initial_solution(
+             int kind,
+             size_t);
+
+     void invariant() const;
+
+ private:
+     /*
+      * one truck per order
+      */
+     void one_truck_all_orders();
+
+     void do_while_foo(int kind);
 
 
-     using Base_node::isSamePos;
-     using Base_node::operator==;
-     /*! @name to be or not to be
-     @{
-     bool isSamePos(const Dnode &other) const;
-     bool operator==(const Dnode &rhs) const;
-     @}*/
-
-     double distance(const Dnode &other) const;
-     double comparable_distance(const Dnode &other) const;
-
-     friend std::ostream& operator << (std::ostream &log, const Dnode &node);
+ private:
+     Identifiers<size_t> all_orders;
+     Identifiers<PD_Orders::OID> unassigned;
+     Identifiers<size_t> assigned;
 };
 
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_NODE_H_
+#endif  // SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_

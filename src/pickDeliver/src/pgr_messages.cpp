@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <sstream>
-#include "../include/pgr_messages.h"
+#include "vrp/pgr_messages.h"
 
 namespace pgrouting {
 namespace vrp {

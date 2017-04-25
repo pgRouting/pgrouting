@@ -39,9 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/identifiers.hpp"
 #include "./../../tsp/src/Dmatrix.h"
 
-#include "./vehicle_node.h"
-#include "./fleet.h"
-#include "./solution.h"
+#include "vrp/vehicle_node.h"
+#include "vrp/fleet.h"
+#include "vrp/solution.h"
 
 namespace pgrouting {
 namespace vrp {

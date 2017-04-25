@@ -23,16 +23,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "../include/fleet.h"
+#include "vrp/fleet.h"
 
 #include <string>
 #include <vector>
 #include <limits>
 
-#include "../include/pd_orders.h"
-#include "../include/tw_node.h"
-#include "../include/vehicle_pickDeliver.h"
-#include "../include/pgr_pickDeliver.h"
+#include "vrp/pd_orders.h"
+#include "vrp/tw_node.h"
+#include "vrp/vehicle_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 #include "./../../common/src/identifiers.hpp"
 #include "./../../tsp/src/Dmatrix.h"
 
