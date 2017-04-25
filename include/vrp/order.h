@@ -74,7 +74,7 @@ class Order : public PD_problem {
       */
      const Vehicle_node& pickup() const;
 
-     /*! Get a subset of the orders that can be placed after @this order
+     /*! Get a subset of the orders that can be placed after @b this order
       
       @dot
       digraph G {
@@ -85,7 +85,7 @@ class Order : public PD_problem {
       @enddot
 
       * @param[in] J set of orders
-      * @result ithe set intersection of the @b J orders with the @b compatible_J orders of @this order
+      * @result ithe set intersection of the @b J orders with the @b compatible_J orders of @b this order
       */
      Identifiers<size_t> subsetJ(const Identifiers<size_t> &J) const;
      Identifiers<size_t> subsetI(const Identifiers<size_t> &I) const;
