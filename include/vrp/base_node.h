@@ -29,9 +29,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VRP_BASE_NODE_H_
 #pragma once
 
-#include <cstddef>
 #include <string>
 #include <ostream>
+#include <stdlib.h>
 
 namespace pgrouting {
 namespace vrp {
