@@ -36,6 +36,7 @@ namespace vrp {
  */
 void
 Vehicle_node::evaluate(double cargoLimit) {
+     /*! @todo TODO evaluate with matrix also*/
     if (is_start()) {
         /* time */
         m_travel_time = 0;
@@ -68,6 +69,7 @@ Vehicle_node::evaluate(
         const Vehicle_node &pred,
         double cargoLimit,
         double speed) {
+     /*! @todo TODO evaluate with matrix also*/
     /* time */
     m_travel_time    = pred.travel_time_to(*this, speed);
     m_arrival_time   = pred.departure_time() + travel_time();
@@ -137,6 +139,7 @@ Vehicle_node::Vehicle_node(const Tw_node &node)
 
 bool
 Vehicle_node::deltaGeneratesTWV(double delta_time) const {
+     /*! @todo TODO evaluate with matrix also*/
     return is_late_arrival(m_arrival_time + delta_time);
 }
 
@@ -150,6 +153,7 @@ double
 Vehicle_node::arrival_i_arrives_j(
         const Vehicle_node &other,
         double speed) const {
+     /*! @todo TODO evaluate with matrix also*/
     return other.arrival_time()
         + other.service_time()
         + other.travel_time_to(*this, speed);

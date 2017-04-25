@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/*! @file vehicle_pickDeliver.h */
+
 #ifndef SRC_PICKDELIVER_SRC_VEHICLE_PICKDELIVER_H_
 #define SRC_PICKDELIVER_SRC_VEHICLE_PICKDELIVER_H_
 #pragma once

@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
 
-FILE: pgr_pickDeliver.h
+FILE: pd_problem.h
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -22,6 +22,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+/*! @file pd_problem.h */
 
 #ifndef SRC_PICKDELIVER_SRC_PD_PROBLEM_H_
 #define SRC_PICKDELIVER_SRC_PD_PROBLEM_H_

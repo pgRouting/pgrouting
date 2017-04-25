@@ -206,6 +206,7 @@ Fleet::is_fleet_ok() const {
     for (auto truck : m_trucks) {
         if (!(truck.start_site().is_start()
                     && truck.end_site().is_end())) {
+            pgassertwm(false, "should never pass thru here");
             msg.error << "Illegal values found on vehicle";
             return false;
         }

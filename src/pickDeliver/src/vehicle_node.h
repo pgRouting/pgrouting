@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/*! @file vehicle_node.h */
+
 #ifndef SRC_PICKDELIVER_SRC_VEHICLE_NODE_H_
 #define SRC_PICKDELIVER_SRC_VEHICLE_NODE_H_
 #pragma once
@@ -47,6 +49,7 @@ namespace vrp {
 
 class Vehicle_node: public Tw_node {
  public:
+
      /** @name log */
      ///@ {
 
@@ -137,6 +140,7 @@ class Vehicle_node: public Tw_node {
 
      /** @name mutators */
      ///@ {
+     /*! @todo TODO evaluate with matrix also*/
      void evaluate(double cargoLimit);
      void evaluate(const Vehicle_node &pred, double cargoLimit, double speed);
      ///@}

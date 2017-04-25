@@ -172,6 +172,7 @@ Vehicle::insert(POS at, Vehicle_node node) {
     pgassert(at <= m_path.size());
 
     m_path.insert(m_path.begin() + at, node);
+        /*! @todo TODO evaluate with matrix also*/
     evaluate(at);
 
     pgassert(at < m_path.size());
@@ -241,6 +242,7 @@ Vehicle::erase(const Vehicle_node &node) {
     }
 
     erase(pos);
+        /*! @todo TODO evaluate with matrix also*/
     evaluate(pos);
 
     invariant();
@@ -315,6 +317,7 @@ Vehicle::erase(POS at) {
     pgassert(!m_path[at].is_end());
 
     m_path.erase(m_path.begin() + at);
+        /*! @todo TODO evaluate with matrix also*/
     evaluate(at);
 
     invariant();
@@ -330,6 +333,7 @@ Vehicle::swap(POS i, POS j) {
     pgassert(!m_path[j].is_end());
 
     std::swap(m_path[i], m_path[j]);
+        /*! @todo TODO evaluate with matrix also*/
     i < j ? evaluate(i) : evaluate(j);
 
     invariant();
@@ -340,6 +344,7 @@ void
 Vehicle::evaluate() {
     invariant();
 
+        /*! @todo TODO evaluate with matrix also*/
     evaluate(0);
 
     invariant();
@@ -362,8 +367,10 @@ Vehicle::evaluate(POS from) {
 
     while (node != m_path.end()) {
         if (node == m_path.begin()) {
+        /*! @todo TODO evaluate with matrix also*/
             node->evaluate(m_capacity);
         } else {
+        /*! @todo TODO evaluate with matrix also*/
             node->evaluate(*(node - 1), m_capacity, m_speed);
         }
 
@@ -468,6 +475,7 @@ Vehicle::Vehicle(
         m_path.clear();
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
+        /*! @todo TODO evaluate with matrix also*/
         evaluate(0);
         invariant();
     }

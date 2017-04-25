@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: orders.h
+FILE: pd_orders.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/*! @file pd_orders.h */
+
 #ifndef SRC_PICKDELIVER_SRC_ORDERS_H_
 #define SRC_PICKDELIVER_SRC_ORDERS_H_
 #pragma once
@@ -30,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/identifiers.hpp"
-#include "./pgr_messages.h"
 #include "./pd_problem.h"
 
 

@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: pgr_pickDeliver.h
+FILE: pgr_messages.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -22,6 +22,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+/*! @file pgr_messages.h */
 
 #ifndef SRC_PICKDELIVER_SRC_PGR_MESSAGES_H_
 #define SRC_PICKDELIVER_SRC_PGR_MESSAGES_H_

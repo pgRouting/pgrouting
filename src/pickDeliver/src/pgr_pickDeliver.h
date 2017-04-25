@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/*! @file pgr_pickDeliver.h */
+
 #ifndef SRC_PICKDELIVER_SRC_PGR_PICKDELIVER_H_
 #define SRC_PICKDELIVER_SRC_PGR_PICKDELIVER_H_
 #pragma once
@@ -50,6 +52,7 @@ class PD_orders;
 class Pgr_pickDeliver : public PD_problem {
     friend class Initial_solution;
     friend class Optimize;
+    friend class Dnode;
 
     typedef size_t ID;
 

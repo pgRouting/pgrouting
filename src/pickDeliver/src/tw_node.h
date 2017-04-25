@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/*! @file tw_node.h */
+
 #ifndef SRC_PICKDELIVER_SRC_TW_NODE_H_
 #define SRC_PICKDELIVER_SRC_TW_NODE_H_
 #pragma once
@@ -32,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_assert.h"
 
-#include "./node.h"
+#include "../include/node.h"
 
 namespace pgrouting {
 namespace vrp {

@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./node.h"
+#include "../include/node.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -55,9 +55,8 @@ Node::comparable_distance(const Node &other) const {
 
 
 Node::Node(size_t id, int64_t original_id, double _x, double _y)
-    : m_point(_x, _y),
-    m_id(id),
-    m_original_id(original_id) {
+    : Base_node(id, original_id),
+        m_point(_x, _y) {
     }
 
 bool

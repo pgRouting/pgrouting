@@ -23,11 +23,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/*! @file node.h */
+
 #ifndef SRC_PICKDELIVER_SRC_NODE_H_
 #define SRC_PICKDELIVER_SRC_NODE_H_
 #pragma once
 
 #include <string>
+#include <ostream>
+#include "../include/base_node.h"
 #include "../../common/src/xy_vertex.h"
 
 namespace pgrouting {
@@ -43,17 +47,8 @@ namespace vrp {
  *
  */
 
-// class Node : public Point {
-class Node {
+class Node : public Base_node {
  public:
-     /** @name accessors */
-     ///@ {
-
-     inline size_t id() const {return m_id;}
-     inline int64_t original_id() const {return m_original_id;}
-
-     ///@}
-
      Node() = default;
      Node(size_t id, int64_t original_id, double _x, double _y);
 
@@ -62,20 +57,20 @@ class Node {
      ///@ {
 
      bool isSamePos(const Node &other) const;
-#if 0
-     double travel_time_to(const Node &node2) const;
-#endif
-     friend std::ostream& operator << (std::ostream &log, const Node &node);
+
      bool operator ==(const Node &rhs) const;
 
      double distance(const Node &other) const;
      double comparable_distance(const Node &other) const;
 
+     friend std::ostream& operator << (std::ostream &log, const Node &node);
 
  protected:
      pgrouting::Point m_point;
+#if 0
      size_t m_id;                ///< internal node number
-     int64_t m_original_id;      // /< user supplied node number
+     int64_t m_original_id;      ///< user supplied node number
+#endif
 };
 
 }  //  namespace vrp

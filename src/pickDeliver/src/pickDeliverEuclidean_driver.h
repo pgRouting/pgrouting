@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver_driver.h
+File: pickDeliverEuclidean_driver.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,6 +25,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+/*! @file pickDeliverEuclidean_driver.h */
+
 #ifndef SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
 #define SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
 #pragma once

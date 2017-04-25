@@ -280,7 +280,8 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
 const Vehicle_node&
 Pgr_pickDeliver::node(ID id) const {
     pgassert(id < m_nodes.size());
-    pgassert(id == m_nodes[id].id());
+    msg.log << "id = " << id << "m_nodes[id].id()" << m_nodes[id].id() << "\n";
+    pgassertwm(id == m_nodes[id].id(), msg.get_log().c_str());
     return m_nodes[id];
 }
 

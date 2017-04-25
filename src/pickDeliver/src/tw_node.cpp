@@ -38,6 +38,7 @@ namespace vrp {
 double
 Tw_node::travel_time_to(const Node &other, double speed) const {
     pgassert(speed != 0);
+     /*! @todo TODO evaluate with matrix also*/
     return distance(other) / speed;
 }
 
@@ -182,7 +183,7 @@ Tw_node::is_end() const {
 bool
 Tw_node::operator ==(const Tw_node &rhs) const {
     if (&rhs == this) return true;
-    return (static_cast<Node>(*this) == static_cast<Node>(rhs));
+    return (dynamic_cast<const Node*>(this) == dynamic_cast<const Node*>(&rhs));
 }
 
 

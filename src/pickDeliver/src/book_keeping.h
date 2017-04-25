@@ -23,6 +23,7 @@
  *
  *********************************************************************PGR-GNU*/
 
+/*! @file book_keeping.h */
 
 #ifndef SRC_PICKDELIVER_SRC_BOOK_KEEPING_H_
 #define SRC_PICKDELIVER_SRC_BOOK_KEEPING_H_
