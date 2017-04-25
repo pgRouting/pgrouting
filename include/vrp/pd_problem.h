@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file pd_problem.h */
 
-#ifndef SRC_PICKDELIVER_SRC_PD_PROBLEM_H_
-#define SRC_PICKDELIVER_SRC_PD_PROBLEM_H_
+#ifndef INCLUDE_VRP_PD_PROBLEM_H_
+#define INCLUDE_VRP_PD_PROBLEM_H_
 #pragma once
 
 #include "vrp/pgr_messages.h"
@@ -55,4 +55,4 @@ class PD_problem {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_PD_PROBLEM_H_
+#endif  // INCLUDE_VRP_PD_PROBLEM_H_

@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file pd_orders.h */
 
-#ifndef SRC_PICKDELIVER_SRC_ORDERS_H_
-#define SRC_PICKDELIVER_SRC_ORDERS_H_
+#ifndef INCLUDE_VRP_PD_ORDERS_H_
+#define INCLUDE_VRP_PD_ORDERS_H_
 #pragma once
 
 #include <vector>
@@ -82,7 +82,7 @@ class PD_Orders : public PD_problem {
      o_const_iterator end() const {return m_orders.end();}
      /*!@}*/
 
-     // TODO this should be private called by the contructor
+     // TODO(vicky) this should be private called by the contructor
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders);
 };
@@ -91,4 +91,4 @@ class PD_Orders : public PD_problem {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_ORDERS_H_
+#endif  // INCLUDE_VRP_PD_ORDERS_H_

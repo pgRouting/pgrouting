@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file tw_node.h */
 
-#ifndef SRC_PICKDELIVER_SRC_TW_NODE_H_
-#define SRC_PICKDELIVER_SRC_TW_NODE_H_
+#ifndef INCLUDE_VRP_TW_NODE_H_
+#define INCLUDE_VRP_TW_NODE_H_
 #pragma once
 
 #include <string>
@@ -293,4 +293,4 @@ class Tw_node: public Node {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_TW_NODE_H_
+#endif  // INCLUDE_VRP_TW_NODE_H_

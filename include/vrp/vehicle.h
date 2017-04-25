@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file vehicle.h */
 
-#ifndef SRC_PICKDELIVER_SRC_VEHICLE_H_
-#define SRC_PICKDELIVER_SRC_VEHICLE_H_
+#ifndef INCLUDE_VRP_VEHICLE_H_
+#define INCLUDE_VRP_VEHICLE_H_
 #pragma once
 
 #include <deque>
@@ -336,4 +336,4 @@ class Vehicle {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_VEHICLE_H_
+#endif  // INCLUDE_VRP_VEHICLE_H_

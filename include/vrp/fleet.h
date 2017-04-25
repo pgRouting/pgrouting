@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file fleet.h */
 
-#ifndef SRC_PICKDELIVER_SRC_FLEET_H_
-#define SRC_PICKDELIVER_SRC_FLEET_H_
+#ifndef INCLUDE_VRP_FLEET_H_
+#define INCLUDE_VRP_FLEET_H_
 #pragma once
 
 #include <deque>
@@ -53,7 +53,6 @@ class Pgr_pickDeliver;
 class PD_Orders;
 
 class Fleet : public PD_problem {
-
  public:
      typedef std::vector<Vehicle_pickDeliver>::iterator iterator;
      std::vector<Vehicle_pickDeliver> m_trucks;
@@ -70,7 +69,7 @@ class Fleet : public PD_problem {
       */
      Fleet() = default;
 
-     Fleet(const std::vector<Vehicle_t> &vehicles);
+     explicit Fleet(const std::vector<Vehicle_t> &vehicles);
 
      Fleet(const Fleet &fleet);
      /*!@}*/
@@ -112,12 +111,10 @@ class Fleet : public PD_problem {
       */
      bool build_fleet(
              std::vector<Vehicle_t> vehicles);
-
-
 };
 
 
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_FLEET_H_
+#endif  // INCLUDE_VRP_FLEET_H_
