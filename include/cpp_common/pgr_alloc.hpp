@@ -42,7 +42,7 @@ extern "C" {
 #include <string>
 
 /*! \fn pgr_alloc(std::size_t size, T *ptr)
- 
+
 \brief allocates memory
 
 - Does a malloc or realloc depending on the ptr value

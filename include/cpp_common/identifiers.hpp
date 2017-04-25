@@ -6,9 +6,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2016 Rohith Reddy
-Mail: 
+Mail:
 
 
 This program is free software; you can redistribute it and/or modify
@@ -120,7 +120,7 @@ class Identifiers {
         return union_ids;
     }
 
-    //! \brief compound set UNION set 
+    //! \brief compound set UNION set
     /*!
      * @param [in] other set of identifiers
      */
@@ -129,7 +129,7 @@ class Identifiers {
         m_ids.insert(other.m_ids.begin(), other.m_ids.end());
         return *this;
     }
-    //! \brief compound set UNION element 
+    //! \brief compound set UNION element
     /*!
      * @param [in] element of type *T*
      */
@@ -145,7 +145,7 @@ class Identifiers {
     //! @name  set INTERSECTION
     /// @{
 
-    /*! \brief set INTERSECTION 
+    /*! \brief set INTERSECTION
      *
      *
      * @param[in] lhs  Identifiers
@@ -232,7 +232,7 @@ class Identifiers {
     }
 
     /// @}
-    
+
     //! \brief Prints the set of identifiers
     friend
         std::ostream&

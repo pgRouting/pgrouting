@@ -4,14 +4,14 @@
  *
  * Copyright 2014 Stephen Woodbridge <woodbri@imaptools.com>
  * Copyright 2014 Vicky Vergara <vicky_vergara@hotmail.com>
- *      
+ *
  * This is free software; you can redistribute and/or modify it under
  * the terms of the MIT License. Please file MIT-LICENSE for details.
- *  
+ *
  *****************************************************************PGR-MIT*/
 
-#ifndef  SRC_COMMON_SRC_PGR_ASSERT_H_
-#define  SRC_COMMON_SRC_PGR_ASSERT_H_
+#ifndef  INCLUDE_CPP_COMMON_PGR_ASSERT_H_
+#define  INCLUDE_CPP_COMMON_PGR_ASSERT_H_
 #pragma once
 
 #include <string>
@@ -31,7 +31,7 @@
  * This file provides an alternative to assert functionality that will
  * convert all pgassert() into C++ throw using an AssertFailedException class.
  *
- * This allows catching errors and do appropriate clean up 
+ * This allows catching errors and do appropriate clean up
  * re-throw if needed to catch errors in the postgresql environment
  *
  * **Do not crash the backend server.**
@@ -88,7 +88,7 @@
 
 /*! @def pgassertwm(expr, msg)
   @brief Adds a message to the assertion.
- 
+
  Example:
  @code
     pgassert(2+2 == 5, "Expected a 4 as result");
@@ -110,12 +110,12 @@
 #endif
 
 /*! @brief returns the execution path of the trace
- 
+
   In case of a failed exception the backtrace can be is shown in the error message.
 
   Does not work for windows, please read:
   http://stackoverflow.com/questions/27639931/can-not-find-execinfo-h-when-setup-malpack
- 
+
  */
 std::string get_backtrace();
 std::string get_backtrace(const std::string &);
@@ -133,4 +133,4 @@ class AssertFailedException : public std::exception {
      virtual ~AssertFailedException() throw() {}
 };
 
-#endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_
+#endif  //  INCLUDE_CPP_COMMON_PGR_ASSERT_H_
