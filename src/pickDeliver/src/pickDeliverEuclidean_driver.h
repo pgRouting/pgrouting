@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
 #pragma once
 
-#include "./../../common/src/pgr_types.h"
+#include "c_types/pgr_types.h"
 
 #ifdef __cplusplus
 extern "C" {

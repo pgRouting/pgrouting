@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <utility>
 
-#include "./../../common/src/pgr_types.h"
 #include "cpp_common/pgr_assert.h"
 
 #include "vrp/vehicle_node.h"

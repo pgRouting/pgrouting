@@ -27,7 +27,6 @@
 #include <vector>
 #include <algorithm>
 
-#include "./pgr_types.h"
 #include "cpp_common/pgr_assert.h"
 
 

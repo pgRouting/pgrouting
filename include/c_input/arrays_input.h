@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_INPUT_ARRAYS_INPUT_H_
 #pragma once
 
-#include "./pgr_types.h"
+#include "c_types/pgr_types.h"
 
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
 

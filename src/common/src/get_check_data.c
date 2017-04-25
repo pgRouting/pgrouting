@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "catalog/pg_type.h"
 
 
-#include "./pgr_types.h"
+#include "c_types/pgr_types.h"
 #include "./debug_macro.h"
 #include "./get_check_data.h"
 

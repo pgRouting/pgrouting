@@ -28,7 +28,6 @@ along with this program; if not, write to the Free Software
 #include <algorithm>
 #include <utility>
 
-#include "./pgr_types.h"
 #include "cpp_common/pgr_assert.h"
 
 void Path::push_front(Path_t data) {

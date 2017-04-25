@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 
-#include "./pgr_types.h"
+#include "c_types/pgr_types.h"
 #include "./time_msg.h"
 #include "./debug_macro.h"
 #include "c_input/arrays_input.h"

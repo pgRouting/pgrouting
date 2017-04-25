@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <vector>
 
-#include "./pgr_types.h"
+#include "c_types/pgr_types.h"
 #include "cpp_common/identifiers.hpp"
 
 namespace pgrouting {

@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iostream>
 #include <vector>
 
-#include "../../common/src/pgr_types.h"
+#include "c_types/pgr_types.h"
 
 namespace pgrouting {
 namespace tsp {

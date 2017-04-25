@@ -35,8 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <iostream>
 #include <algorithm>
-#include "./pgr_types.h"
-#include "./pgr_base_graph.hpp"
+#include "c_types/pgr_types.h"
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 class Path {

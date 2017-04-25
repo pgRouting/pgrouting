@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_INPUT_POINTS_INPUT_H_
 #pragma once
 
-#include "./pgr_types.h"
+#include "c_types/pgr_types.h"
 
 /*! @brief pgr_get_points 
 

@@ -36,7 +36,7 @@
 #include <set>
 #include <string>
 
-#include "../../common/src/pgr_types.h"
+#include "c_types/pgr_types.h"
 #include "cpp_common/pgr_assert.h"
 #include "./Dmatrix.h"
 #include "./eucledianDmatrix.h"

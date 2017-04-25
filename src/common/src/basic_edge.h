@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_COMMON_SRC_BASIC_EDGE_H_
 #pragma once
 
-#include "./pgr_types.h"
+#include "c_types/pgr_types.h"
 
 
 namespace pgrouting {

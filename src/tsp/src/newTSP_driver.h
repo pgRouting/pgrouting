@@ -31,7 +31,7 @@
 #define SRC_TSP_SRC_NEWTSP_DRIVER_H_
 #pragma once
 
-#include "../../common/src/pgr_types.h"
+#include "c_types/pgr_types.h"
 
 #ifdef __cplusplus
 extern "C" {

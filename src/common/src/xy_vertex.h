@@ -36,7 +36,7 @@
 #include <CGAL/Simple_cartesian.h>
 #include <vector>
 
-#include "./pgr_types.h"
+#include "c_types/pgr_types.h"
 
 
 namespace pgrouting {
