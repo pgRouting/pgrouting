@@ -1,17 +1,21 @@
 Purpose of this directory
 ----------------------------------
 
-- Directory to have the files included exclusively by the `*.c` files
+- Directory having files included exclusively by the `*.c` files
 - forbidden to be used on c++ code
   - this prohibition is not enforced but will be in the future
+
+- Convention:
+  - files must end with `_input`
+
 
 Example
 ----------------------------------
 
-in `dijkstra.c` file
+in `foo.c` file
 
 ```
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
+#include "c_common/edges_input.h"
+#include "c_common/arrays_input.h"
 ```
 

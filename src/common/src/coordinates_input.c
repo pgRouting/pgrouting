@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./postgres_connection.h"
 
-#include "./coordinates_input.h"
+#include "c_input/coordinates_input.h"
 #include "./debug_macro.h"
 #include "./pgr_types.h"
 #include "./get_check_data.h"

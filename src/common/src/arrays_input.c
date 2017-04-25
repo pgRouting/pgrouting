@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"
 #include "./time_msg.h"
 #include "./debug_macro.h"
-#include "./arrays_input.h"
+#include "c_input/arrays_input.h"
 #include <assert.h>
 
 static
