@@ -31,7 +31,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <ostream>
+
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <stdint.h>
+#endif
 
 namespace pgrouting {
 namespace vrp {
