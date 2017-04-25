@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_allpairs.hpp"
 
-#include "./../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 
 

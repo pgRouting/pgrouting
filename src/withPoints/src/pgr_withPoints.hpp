@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/basePath_SSEC.hpp"
+#include "cpp_common/basePath_SSEC.hpp"
 
 int
 check_points(

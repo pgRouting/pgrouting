@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cmath>
 
 #include "./tour.h"
-#include "../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
 
 namespace pgrouting {

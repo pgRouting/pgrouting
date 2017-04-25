@@ -38,8 +38,8 @@
 #include "./pgr_tsp.hpp"
 #include "./eucledianDmatrix.h"
 
-#include "./../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
 void
 do_pgr_eucledianTSP(

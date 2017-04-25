@@ -44,9 +44,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 
 
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/basePath_SSEC.hpp"
-#include "./../../common/src/pgr_base_graph.hpp"
+#include "cpp_common/pgr_assert.h"
+#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 namespace pgrouting {

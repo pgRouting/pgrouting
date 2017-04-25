@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <iostream>
 #include "vrp/vehicle_node.h"
-#include "./../../common/src/identifiers.hpp"
+#include "cpp_common/identifiers.hpp"
 #include "vrp/pd_problem.h"
 
 namespace pgrouting {

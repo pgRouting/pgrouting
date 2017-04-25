@@ -37,7 +37,7 @@
 #include <string>
 
 #include "../../common/src/pgr_types.h"
-#include "../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 #include "./Dmatrix.h"
 #include "./eucledianDmatrix.h"
 #include "./tour.h"
