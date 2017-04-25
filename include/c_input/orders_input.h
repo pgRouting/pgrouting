@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_ORDERS_INPUT_H_
-#define SRC_COMMON_SRC_ORDERS_INPUT_H_
+#ifndef INCLUDE_C_INPUT_ORDERS_INPUT_H_
+#define INCLUDE_C_INPUT_ORDERS_INPUT_H_
 #pragma once
 
 #include "./pgr_types.h"
@@ -52,4 +52,4 @@ pgr_get_pd_orders_with_id(
         PickDeliveryOrders_t **pd_orders,
         size_t *total_pd_orders);
 
-#endif  // SRC_COMMON_SRC_ORDERS_INPUT_H_
+#endif  // INCLUDE_C_INPUT_ORDERS_INPUT_H_
