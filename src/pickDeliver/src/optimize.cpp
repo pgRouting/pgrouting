@@ -30,10 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_assert.h"
 
-#include "./solution.h"
-#include "./book_keeping.h"
-#include "./optimize.h"
-#include "./pgr_pickDeliver.h"
+#include "../include/solution.h"
+#include "../include/book_keeping.h"
+#include "../include/optimize.h"
+#include "../include/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {

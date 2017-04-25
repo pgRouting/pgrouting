@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "../include/dnode.h"
-#include "./pgr_pickDeliver.h"
+#include "../include/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {

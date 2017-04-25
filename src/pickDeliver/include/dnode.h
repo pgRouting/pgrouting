@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <ostream>
 #include "../include/base_node.h"
-#include "../src/pd_problem.h"
+#include "./pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
