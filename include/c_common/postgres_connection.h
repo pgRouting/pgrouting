@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
-#define SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
+#ifndef INCLUDE_C_COMMON_POSTGRES_CONNECTION_H_
+#define INCLUDE_C_COMMON_POSTGRES_CONNECTION_H_
 #pragma once
 
 
@@ -74,4 +74,4 @@ SPIPlanPtr pgr_SPI_prepare(char* sql);
 Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan);
 char* pgr_cstring2char(const char *inStr);
 
-#endif  // SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
+#endif  // INCLUDE_C_COMMON_POSTGRES_CONNECTION_H_

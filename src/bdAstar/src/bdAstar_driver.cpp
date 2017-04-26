@@ -27,13 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/bidirectional/bdAstar_driver.h"
+#include "drivers/bdAstar/bdAstar_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
 
-#include "bidirectional/pgr_bdAstar.hpp"
+#include "bdAstar/pgr_bdAstar.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -77,8 +78,8 @@ pgr_bdAstar(
 
     pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
     std::deque<Path> paths;
-    for (const auto source: sources) {
-        for (const auto target: targets) {
+    for (const auto source : sources) {
+        for (const auto target : targets) {
             fn_bdAstar.clear();
 
             paths.push_back(fn_bdAstar.pgr_bdAstar(

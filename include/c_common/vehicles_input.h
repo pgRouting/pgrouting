@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_INPUT_VEHICLES_INPUT_H_
-#define INCLUDE_C_INPUT_VEHICLES_INPUT_H_
+#ifndef INCLUDE_C_COMMON_VEHICLES_INPUT_H_
+#define INCLUDE_C_COMMON_VEHICLES_INPUT_H_
 #pragma once
 
 #include "c_types/pgr_types.h"
@@ -52,4 +52,4 @@ pgr_get_vehicles_with_id(
         Vehicle_t **vehicles,
         size_t *total_vehicles);
 
-#endif  // INCLUDE_C_INPUT_VEHICLES_INPUT_H_
+#endif  // INCLUDE_C_COMMON_VEHICLES_INPUT_H_

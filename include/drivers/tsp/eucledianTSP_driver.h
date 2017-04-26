@@ -27,8 +27,8 @@
  *
  *  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
-#define SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_TSP_EUCLEDIANTSP_DRIVER_H_
+#define INCLUDE_DRIVERS_TSP_EUCLEDIANTSP_DRIVER_H_
 #pragma once
 
 #include "c_types/pgr_types.h"
@@ -62,4 +62,4 @@ do_pgr_eucledianTSP(
 }
 #endif
 
-#endif  // SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_TSP_EUCLEDIANTSP_DRIVER_H_

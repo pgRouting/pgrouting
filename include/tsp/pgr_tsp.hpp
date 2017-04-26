@@ -27,22 +27,18 @@
  *
  *  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_TSP_SRC_PGR_TSP_HPP_
-#define SRC_TSP_SRC_PGR_TSP_HPP_
+#ifndef INCLUDE_TSP_PGR_TSP_HPP_
+#define INCLUDE_TSP_PGR_TSP_HPP_
 #pragma once
+
+#include <time.h>
 
 #include <sstream>
 #include <vector>
 #include <set>
 #include <string>
-
-#include <time.h>
-#if 0
 #include <utility>
-#include <iomanip>
 #include <limits>
-#include <algorithm>
-#endif
 #include <cmath>
 
 #include "c_types/pgr_types.h"
@@ -50,8 +46,6 @@
 #include "cpp_common/Dmatrix.h"
 #include "tsp/eucledianDmatrix.h"
 #include "tsp/tour.h"
-
-#include "cpp_common/pgr_assert.h"
 
 
 
@@ -678,4 +672,4 @@ TSP<MATRIX>::annealing(
 }  // namespace tsp
 }  // namespace pgrouting
 
-#endif   // SRC_TSP_SRC_PGR_TSP_HPP_
+#endif   // INCLUDE_TSP_PGR_TSP_HPP_

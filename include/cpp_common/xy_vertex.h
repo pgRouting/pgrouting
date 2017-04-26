@@ -22,8 +22,8 @@
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_XY_VERTEX_H_
-#define SRC_COMMON_SRC_XY_VERTEX_H_
+#ifndef INCLUDE_CPP_COMMON_XY_VERTEX_H_
+#define INCLUDE_CPP_COMMON_XY_VERTEX_H_
 #pragma once
 
 #ifdef Max
@@ -99,4 +99,4 @@ std::vector < XY_vertex > extract_vertices(
 
 }  // namespace pgrouting
 
-#endif  // SRC_COMMON_SRC_XY_VERTEX_H_
+#endif  // INCLUDE_CPP_COMMON_XY_VERTEX_H_

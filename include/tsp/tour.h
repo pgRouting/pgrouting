@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_TSP_SRC_TOUR_H_
-#define SRC_TSP_SRC_TOUR_H_
+#ifndef INCLUDE_TSP_TOUR_H_
+#define INCLUDE_TSP_TOUR_H_
 #pragma once
 
 #include <stdlib.h>
@@ -157,4 +157,4 @@ class Tour {
 }  // namespace tsp
 }  // namespace pgrouting
 
-#endif  // SRC_TSP_SRC_TOUR_H_
+#endif  // INCLUDE_TSP_TOUR_H_

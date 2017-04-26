@@ -66,14 +66,13 @@ else
         python code_linter/styleguide/cpplint/cpplint.py src/*/src/*.h
         python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/*/src/*.hpp
         echo --------------------
-        echo ------   *.h  ------
+        echo ------ C HEADER  ------
         echo --------------------
-        python code_linter/styleguide/cpplint/cpplint.py include/*/*.h
-        python code_linter/styleguide/cpplint/cpplint.py include/drivers/*/*.h
+        python code_linter/styleguide/cpplint/cpplint.py include/drivers/*/*.h include/c_types/*.h include/c_common/*.h
         echo --------------------
-        echo ------ *.hpp  ------
+        echo ------ C++ HEADER  ------
         echo --------------------
-        python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp --headers=hpp --filter=-runtime/references include/*/*.hpp
+        python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp --filter=-runtime/references include/*/*.h*
 
     else
         echo --------------------
@@ -84,6 +83,18 @@ else
         echo ------ *.cpp  ------
         echo --------------------
         python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/$DIRECTORY/src/*.cpp
+        echo --------------------
+        echo ------   C HEADER  ------
+        echo --------------------
+        python code_linter/styleguide/cpplint/cpplint.py include/drivers/$DIRECTORY/*.h
+        echo --------------------
+        echo ------ C++ HEADER  ------
+        echo --------------------
+        python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp --filter=-runtime/references include/$DIRECTORY/*.h*
+        echo --------------------
+        echo ------ this shouild fail  ------
+        echo --------------------
+        python code_linter/styleguide/cpplint/cpplint.py src/$DIRECTORY/src/*.h*
     fi
 fi
 

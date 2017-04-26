@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_GET_CHECK_DATA_H_
-#define SRC_COMMON_SRC_GET_CHECK_DATA_H_
+#ifndef INCLUDE_C_COMMON_GET_CHECK_DATA_H_
+#define INCLUDE_C_COMMON_GET_CHECK_DATA_H_
 #pragma once
 
 bool column_found(int colNumber);
@@ -63,4 +63,4 @@ char* pgr_SPI_getText(
 
 char* pgr_stradd(const char *a, const char *b);
 
-#endif  // SRC_COMMON_SRC_GET_CHECK_DATA_H_
+#endif  // INCLUDE_C_COMMON_GET_CHECK_DATA_H_

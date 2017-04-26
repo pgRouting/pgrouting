@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_TIME_MSG_H_
-#define SRC_COMMON_SRC_TIME_MSG_H_
+#ifndef INCLUDE_C_COMMON_TIME_MSG_H_
+#define INCLUDE_C_COMMON_TIME_MSG_H_
 #pragma once
 
 #include <time.h>
@@ -32,4 +32,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void time_msg(char *msg, clock_t start_t, clock_t end_t);
 
-#endif  // SRC_COMMON_SRC_TIME_MSG_H_
+#endif  // INCLUDE_C_COMMON_TIME_MSG_H_

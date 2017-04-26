@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: bdAstar_driver.h
+File: bdDijkstra_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_BIDIRECTIONAL_BDASTAR_DRIVER_H_
-#define INCLUDE_DRIVERS_BIDIRECTIONAL_BDASTAR_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_BDDIJKSTRA_BDDIJKSTRA_DRIVER_H_
+#define INCLUDE_DRIVERS_BDDIJKSTRA_BDDIJKSTRA_DRIVER_H_
 #pragma once
 
 #include "c_types/pgr_types.h"
@@ -37,17 +37,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-    /*********************************************************
-      edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-     ********************************************************/
 
-
-    void do_pgr_bdAstar(
-            Pgr_edge_xy_t  *data_edges,
+    void do_pgr_bdDijkstra(
+            pgr_edge_t  *data_edges,
             size_t total_edges,
             int64_t  *start_vidsArr,
             size_t size_start_vidsArr,
@@ -55,21 +47,17 @@ extern "C" {
             size_t size_end_vidsArr,
 
             bool directed,
-            int heuristic,
-            double factor,
-            double epsilon,
             bool only_cost,
 
             General_path_element_t **return_tuples,
             size_t *return_count,
-
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
+            char ** log_msg,
+            char ** notice_msg,
+            char ** err_msg);
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  //  INCLUDE_DRIVERS_BIDIRECTIONAL_BDASTAR_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_BDDIJKSTRA_BDDIJKSTRA_DRIVER_H_

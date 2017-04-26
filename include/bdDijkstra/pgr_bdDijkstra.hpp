@@ -23,12 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BIDIRECTIONAL_PGR_BDDIJKSTRA_HPP_
-#define INCLUDE_BIDIRECTIONAL_PGR_BDDIJKSTRA_HPP_
+#ifndef INCLUDE_BDDIJKSTRA_PGR_BDDIJKSTRA_HPP_
+#define INCLUDE_BDDIJKSTRA_PGR_BDDIJKSTRA_HPP_
 #pragma once
 
 
-#include "bidirectional/pgr_bidirectional.hpp"
+#include "cpp_common/pgr_bidirectional.hpp"
 
 #include <string>
 #include <queue>
@@ -146,4 +146,4 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 }  // namespace bidirectional
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BIDIRECTIONAL_PGR_BDDIJKSTRA_HPP_
+#endif  // INCLUDE_BDDIJKSTRA_PGR_BDDIJKSTRA_HPP_

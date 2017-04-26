@@ -22,8 +22,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_C_INPUT_COORDINATES_INPUT_H_
-#define INCLUDE_C_INPUT_COORDINATES_INPUT_H_
+#ifndef INCLUDE_C_COMMON_COORDINATES_INPUT_H_
+#define INCLUDE_C_COMMON_COORDINATES_INPUT_H_
 #pragma once
 
 #include "c_types/pgr_types.h"
@@ -38,4 +38,4 @@ void pgr_get_coordinates(
         Coordinate_t **coordinates,
         size_t *total_coordinates);
 
-#endif  // INCLUDE_C_INPUT_COORDINATES_INPUT_H_
+#endif  // INCLUDE_C_COMMON_COORDINATES_INPUT_H_

@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef INCLUDE_C_COMMON_E_REPORT_H_
+#define INCLUDE_C_COMMON_E_REPORT_H_
 #pragma once
 
 /*! @name Postgres ereport
@@ -81,8 +83,7 @@ pgr_global_report(
  */
 void
 pgr_notice(
-        char* notice_msg
-        );
+        char* notice_msg);
 
 /*! @brief notice with hint
  *
@@ -97,8 +98,7 @@ pgr_notice(
 void
 pgr_notice2(
         char* log_msg,
-        char* notice_msg
-        );
+        char* notice_msg);
 
 /*! @brief error with no hint
  *
@@ -134,3 +134,5 @@ pgr_error2(
         char* log_msg,
         char* error_msg);
 ///@}
+
+#endif  // INCLUDE_C_COMMON_E_REPORT_H_

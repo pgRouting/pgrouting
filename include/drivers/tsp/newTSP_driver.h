@@ -27,8 +27,8 @@
  *
  *  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_TSP_SRC_NEWTSP_DRIVER_H_
-#define SRC_TSP_SRC_NEWTSP_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_TSP_NEWTSP_DRIVER_H_
+#define INCLUDE_DRIVERS_TSP_NEWTSP_DRIVER_H_
 #pragma once
 
 #include "c_types/pgr_types.h"
@@ -62,4 +62,4 @@ do_pgr_tsp(
 }
 #endif
 
-#endif  // SRC_TSP_SRC_NEWTSP_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_TSP_NEWTSP_DRIVER_H_

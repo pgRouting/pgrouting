@@ -25,8 +25,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef SRC_WITHPOINTS_SRC_GET_NEW_QUERIES_H_
-#define SRC_WITHPOINTS_SRC_GET_NEW_QUERIES_H_
+#ifndef INCLUDE_DRIVERS_WITHPOINTS_GET_NEW_QUERIES_H_
+#define INCLUDE_DRIVERS_WITHPOINTS_GET_NEW_QUERIES_H_
 
 #pragma once
 
@@ -47,4 +47,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_WITHPOINTS_SRC_GET_NEW_QUERIES_H_
+#endif  // INCLUDE_DRIVERS_WITHPOINTS_GET_NEW_QUERIES_H_
