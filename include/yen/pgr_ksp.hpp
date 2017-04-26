@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_ALGORITHM_PGR_KSP_HPP_
 #pragma once
 
-#include "algorithm/pgr_dijkstra.hpp"
+#include "dijkstra/pgr_dijkstra.hpp"
 
 #include <sstream>
 #include <deque>
