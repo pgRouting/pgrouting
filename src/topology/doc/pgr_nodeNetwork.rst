@@ -111,7 +111,7 @@ Now we can analyze the network.
  	 OK
 	(1 row)
 
-The analysis tell us that the network has a gap and and an intersection. We try to fix the problem using:
+The analysis tell us that the network has a gap and an intersection. We try to fix the problem using:
 
 .. code-block:: sql
 
