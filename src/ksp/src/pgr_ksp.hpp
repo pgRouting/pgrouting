@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#include "algorithm/pgr_dijkstra.hpp"
 
 #include <sstream>
 #include <deque>
