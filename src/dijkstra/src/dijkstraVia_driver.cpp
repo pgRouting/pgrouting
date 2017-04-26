@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./dijkstraVia_driver.h"
+#include "drivers/dijkstra/dijkstraVia_driver.h"
 
 #include <sstream>
 #include <deque>

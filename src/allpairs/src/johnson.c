@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_types.h"
 #include "c_input/edges_input.h"
 
-#include "./johnson_driver.h"
+#include "drivers/allpairs/johnson_driver.h"
 
 PGDLLEXPORT Datum johnson(PG_FUNCTION_ARGS);
 

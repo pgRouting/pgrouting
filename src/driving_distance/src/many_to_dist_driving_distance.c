@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_types.h"
 #include "c_input/edges_input.h"
 #include "c_input/arrays_input.h"
-#include "./drivedist_driver.h"
+#include "drivers/driving_distance/drivedist_driver.h"
 
 
 PGDLLEXPORT Datum driving_many_to_dist(PG_FUNCTION_ARGS);

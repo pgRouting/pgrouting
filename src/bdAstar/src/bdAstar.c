@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_input/arrays_input.h"
 
 
-#include "./../../astar/src/astar_driver.h" // for check_parameters
-#include "./bdAstar_driver.h"
+#include "drivers/astar/astar_driver.h" // for check_parameters
+#include "drivers/bidirectional/bdAstar_driver.h"
 
 PGDLLEXPORT Datum bd_astar(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(bd_astar);

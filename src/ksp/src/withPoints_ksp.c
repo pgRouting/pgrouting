@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_input/edges_input.h"
 #include "c_input/points_input.h"
 #include "./../../withPoints/src/get_new_queries.h"
-#include "./withPoints_ksp_driver.h"
+#include "drivers/yen/withPoints_ksp_driver.h"
 #include "./../../common/src/debug_macro.h"
 
 PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS);

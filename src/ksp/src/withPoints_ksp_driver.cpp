@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./withPoints_ksp_driver.h"
+#include "drivers/yen/withPoints_ksp_driver.h"
 
 
 #include <sstream>

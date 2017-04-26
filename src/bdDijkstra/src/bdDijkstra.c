@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_input/edges_input.h"
 #include "c_input/arrays_input.h"
 
-#include "./bdDijkstra_driver.h"
+#include "drivers/bidirectional/bdDijkstra_driver.h"
 
 PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(bdDijkstra);

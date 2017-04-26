@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_types.h"
 #include "c_input/edges_input.h"
 #include "c_input/arrays_input.h"
-#include "./dijkstra_driver.h"
+#include "drivers/dijkstra/dijkstra_driver.h"
 
 PG_MODULE_MAGIC;
 

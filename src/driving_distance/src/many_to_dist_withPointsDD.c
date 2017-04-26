@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_input/arrays_input.h"
 #include "c_input/points_input.h"
 #include "./../../withPoints/src/get_new_queries.h"
-#include "./withPoints_dd_driver.h"
+#include "drivers/driving_distance/withPoints_dd_driver.h"
 
 
 PGDLLEXPORT Datum many_withPointsDD(PG_FUNCTION_ARGS);

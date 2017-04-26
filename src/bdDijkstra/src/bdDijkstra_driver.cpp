@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "bidirectional/pgr_bdDijkstra.hpp"
-#include "./bdDijkstra_driver.h"
+#include "drivers/bidirectional/bdDijkstra_driver.h"
 
 
 #include "cpp_common/pgr_alloc.hpp"

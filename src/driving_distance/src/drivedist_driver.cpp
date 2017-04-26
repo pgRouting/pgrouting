@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./drivedist_driver.h"
+#include "drivers/driving_distance/drivedist_driver.h"
 
 #include <sstream>
 #include <deque>
