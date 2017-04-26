@@ -31,7 +31,7 @@
 #define INCLUDE_DRIVERS_TSP_NEWTSP_DRIVER_H_
 #pragma once
 
-#include "c_types/pgr_types.h"
+#include "c_types/matrix_cell_t.h"
 #include "c_types/general_path_element_t.h"
 
 

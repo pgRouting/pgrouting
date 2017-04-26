@@ -1,11 +1,6 @@
 /*PGR-GNU*****************************************************************
-File: johnson_driver.h
+File: pgr_types.h
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -26,31 +21,44 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_DRIVERS_ALLPAIRS_JOHNSON_DRIVER_H_
-#define INCLUDE_DRIVERS_ALLPAIRS_JOHNSON_DRIVER_H_
+/*! @file */
 
+#ifndef INCLUDE_C_TYPES_PGR_MATRIX_CELL_T
+#define INCLUDE_C_TYPES_PGR_MATRIX_CELL_T
 #pragma once
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/matrix_cell_t.h"
 
 #ifdef __cplusplus
-extern "C" {
+
+#include <cstddef>
+
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
 #endif
 
-//  CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN,
-void
-do_pgr_johnson(
-        pgr_edge_t  *data_edges,
-        size_t total_tuples,
-        bool directed,
-        Matrix_cell_t **return_tuples,
-        size_t *return_count,
-        char ** err_msg);
+#include <postgres.h>
 
-
-#ifdef __cplusplus
-}
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
 #endif
 
-#endif  // INCLUDE_DRIVERS_ALLPAIRS_JOHNSON_DRIVER_H_
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
+
+typedef struct matrix_cell {
+    int64_t from_vid;
+    int64_t to_vid;
+    double cost;
+} Matrix_cell_t;
+
+#endif  // INCLUDE_C_TYPES_PGR_MATRIX_CELL_T

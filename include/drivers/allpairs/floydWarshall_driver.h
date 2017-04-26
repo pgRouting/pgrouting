@@ -31,7 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
 #pragma once
 
-#include "c_types/pgr_types.h"
+#include "c_types/pgr_edge_t.h"
+#include "c_types/matrix_cell_t.h"
 
 #ifdef __cplusplus
 extern "C" {

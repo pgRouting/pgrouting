@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_DRIVER_H_
 #define SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_DRIVER_H_
 
-#include "c_types/pgr_types.h"
+#include "c_types/pgr_edge_t.h"
 #include "c_types/general_path_element_t.h"
 
 

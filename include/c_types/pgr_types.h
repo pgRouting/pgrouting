@@ -143,6 +143,7 @@ typedef struct {
   int64_t edge_id;
 } pgr_basic_edge_t;
 
+#if 0
 typedef struct {
     int64_t id;
     int64_t source;
@@ -150,6 +151,7 @@ typedef struct {
     double cost;
     double reverse_cost;
 } pgr_edge_t;
+#endif
 
 typedef struct {
   int64_t edge;
@@ -166,11 +168,13 @@ typedef struct {
     double cost;
 } pgr_path_t;
 
+#if 0
 typedef struct matrix_cell {
     int64_t from_vid;
     int64_t to_vid;
     double cost;
 } Matrix_cell_t;
+#endif
 
 // Restrictions used in pgr_turnRestrictions
 

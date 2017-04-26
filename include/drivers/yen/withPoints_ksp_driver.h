@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "c_types/pgr_types.h"
+#include "c_types/pgr_edge_t.h"
 #include "c_types/general_path_element_t.h"
 
 
