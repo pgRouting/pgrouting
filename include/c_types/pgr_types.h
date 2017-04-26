@@ -21,6 +21,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/*! @file */
 
 #ifndef INCLUDE_C_TYPES_PGR_TYPES_H_
 #define INCLUDE_C_TYPES_PGR_TYPES_H_
@@ -53,11 +54,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // For int64_t etc
 #include <stdint.h>
 
+#if 0
 typedef struct  {
     int64_t id;
     double x;
     double y;
 } Coordinate_t;
+#endif
 
 typedef struct edge_astar {
     int id;
@@ -71,6 +74,7 @@ typedef struct edge_astar {
     double t_y;
 } edge_astar_t;
 
+#if 0
 typedef struct {
     int64_t id;
     int64_t source;
@@ -82,7 +86,7 @@ typedef struct {
     double x2;
     double y2;
 } Pgr_edge_xy_t;
-
+#endif
 
 typedef struct {
     int64_t vertex_id;
@@ -90,6 +94,7 @@ typedef struct {
     double cost;
 } path_element_t;
 
+#if 0
 /*
  * This one is for processing
  */
@@ -99,7 +104,6 @@ struct Path_t{
     double cost;
     double agg_cost;
 };
-
 /*
  * This ones are for returning the info to postgres
  */
@@ -113,6 +117,7 @@ typedef struct {
     double cost;
     double agg_cost;
 } General_path_element_t;
+#endif
 
 
 typedef struct {

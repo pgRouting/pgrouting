@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: boost_interface_drivedist.h
+File: coordinate_t.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2017 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -21,31 +21,43 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/*! @file */
 
-#ifndef INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVEDIST_DRIVER_H_
-#define INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVEDIST_DRIVER_H_
+#ifndef INCLUDE_C_TYPES_COORDINATE_T_
+#define INCLUDE_C_TYPES_COORDINATE_T_
+#pragma once
 
-#include "c_types/pgr_types.h"
-#include "c_types/general_path_element_t.h"
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-    void do_pgr_driving_many_to_dist(
-            pgr_edge_t* edges, size_t total_edges,
-            int64_t* start_vertex, size_t s_len,
-            double distance,
-            bool directed,
-            bool equicost,
-            General_path_element_t** return_tuples, size_t* return_count,
-            char **log_msg,
-            char **notice_msg,
-            char **err_msg);
 
 #ifdef __cplusplus
-}
+
+#include <cstddef>
+
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
 #endif
 
-#endif  // INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVEDIST_DRIVER_H_
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
+typedef struct  {
+    int64_t id;
+    double x;
+    double y;
+} Coordinate_t;
+
+#endif  // INCLUDE_C_TYPES_COORDINATE_T_

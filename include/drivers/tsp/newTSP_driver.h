@@ -32,6 +32,8 @@
 #pragma once
 
 #include "c_types/pgr_types.h"
+#include "c_types/general_path_element_t.h"
+
 
 #ifdef __cplusplus
 extern "C" {
