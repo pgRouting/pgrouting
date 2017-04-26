@@ -134,6 +134,7 @@ typedef struct {
 } Routes_t;
 
 
+#if 0
 typedef struct {
   int64_t id;
   int64_t source;
@@ -143,7 +144,6 @@ typedef struct {
   int64_t edge_id;
 } pgr_basic_edge_t;
 
-#if 0
 typedef struct {
     int64_t id;
     int64_t source;

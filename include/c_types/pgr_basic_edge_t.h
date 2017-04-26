@@ -1,13 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: maximum_cardinality_matching_driver.h
+File: pgr_types.h
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Function's developer:
-Copyright (c) 2016 Andrea Nardelli
-Mail: nrd.nardelli@gmail.com
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -26,32 +21,47 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/*! @file */
 
-#ifndef SRC_MAX_FLOW_SRC_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
-#define SRC_MAX_FLOW_SRC_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
-
-#include "c_types/pgr_basic_edge_t.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-    void
-        do_pgr_maximum_cardinality_matching(
-            pgr_basic_edge_t *data_edges,
-            size_t total_edges,
-            bool directed,
-
-            pgr_basic_edge_t **return_tuples,
-            size_t *return_count,
-
-            char** log_msg,
-            char** notice_msg,
-            char **err_msg);
+#ifndef INCLUDE_C_TYPES_BASIC_EDGE_T_H_
+#define INCLUDE_C_TYPES_BASIC_EDGE_T_H_
+#pragma once
 
 
 #ifdef __cplusplus
-}
+
+#include <cstddef>
+
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
 #endif
 
-#endif  // SRC_MAX_FLOW_SRC_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
+
+typedef struct {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  bool going;
+  bool coming;
+  int64_t edge_id;
+} pgr_basic_edge_t;
+
+#endif  // INCLUDE_C_TYPES_BASIC_EDGE_T_H_
