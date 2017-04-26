@@ -22,7 +22,7 @@
 
  ********************************************************************PGR-GNU*/
 
-#include "./xy_vertex.h"
+#include "cpp_common/xy_vertex.h"
 
 #include <vector>
 #include <algorithm>
