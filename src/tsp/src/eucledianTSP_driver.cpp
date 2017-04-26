@@ -28,15 +28,15 @@
  *  ******************************************************************** PGR-GNU*/
 
 
-#include "./eucledianTSP_driver.h"
+#include "drivers/tsp/eucledianTSP_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <vector>
 #include <algorithm>
 
-#include "./pgr_tsp.hpp"
-#include "./eucledianDmatrix.h"
+#include "tsp/pgr_tsp.hpp"
+#include "tsp/eucledianDmatrix.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"

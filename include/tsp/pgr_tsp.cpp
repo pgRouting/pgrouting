@@ -28,7 +28,7 @@
  *  ********************************************************************PGR-GNU*/
 
 
-#include "./pgr_tsp.hpp"
+#include "tsp/pgr_tsp.hpp"
 
 #include <time.h>
 

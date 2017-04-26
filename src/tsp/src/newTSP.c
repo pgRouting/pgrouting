@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_types/pgr_types.h"
 #include "c_common/matrixRows_input.h"
-#include "./newTSP_driver.h"
+#include "drivers/tsp/newTSP_driver.h"
 
 
 

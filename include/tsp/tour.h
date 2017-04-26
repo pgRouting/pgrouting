@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <numeric>
 #include <vector>
 
-#include "./Dmatrix.h"
+#include "cpp_common/Dmatrix.h"
 
 
 namespace pgrouting {

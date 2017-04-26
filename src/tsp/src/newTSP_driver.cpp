@@ -27,15 +27,15 @@
  *
  *  ******************************************************************** PGR-GNU*/
 
-#include "./newTSP_driver.h"
+#include "drivers/tsp/newTSP_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <vector>
 #include <algorithm>
 
-#include "./Dmatrix.h"
-#include "./pgr_tsp.hpp"
+#include "cpp_common/Dmatrix.h"
+#include "tsp/pgr_tsp.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
