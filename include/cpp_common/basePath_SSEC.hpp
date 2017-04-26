@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_BASEPATH_SSEC_HPP_
-#define SRC_COMMON_SRC_BASEPATH_SSEC_HPP_
+#ifndef INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_
+#define INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_
 #pragma once
 
 
@@ -329,4 +329,4 @@ class Path {
 };
 
 
-#endif  // SRC_COMMON_SRC_BASEPATH_SSEC_HPP_
+#endif  // INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_

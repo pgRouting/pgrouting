@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef INCLUDE_DRIVERS_YEN_WITHPOINTS_KSP_DRIVER_H_
+#define INCLUDE_DRIVERS_YEN_WITHPOINTS_KSP_DRIVER_H_
 #pragma once
 
 #include "c_types/pgr_types.h"
@@ -63,3 +65,4 @@ extern "C" {
     }
 #endif
 
+#endif  // INCLUDE_DRIVERS_YEN_WITHPOINTS_KSP_DRIVER_H_

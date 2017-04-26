@@ -122,7 +122,8 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
                 forward_predecessor[next_node] = current_node;
                 forward_edge[next_node] = graph[*out].id;
                 forward_queue.push({
-                        forward_cost[next_node] + heuristic(next_node, v_target),
+                        forward_cost[next_node]
+                            + heuristic(next_node, v_target),
                         next_node});
             }
         }
@@ -147,7 +148,8 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
                 backward_predecessor[next_node] = current_node;
                 backward_edge[next_node] = graph[*in].id;
                 backward_queue.push({
-                        backward_cost[next_node] + heuristic(next_node, v_source),
+                        backward_cost[next_node]
+                            + heuristic(next_node, v_source),
                         next_node});
             }
         }

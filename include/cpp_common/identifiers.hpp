@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_IDENTIFIERS_HPP_
-#define SRC_COMMON_SRC_IDENTIFIERS_HPP_
+#ifndef INCLUDE_CPP_COMMON_IDENTIFIERS_HPP_
+#define INCLUDE_CPP_COMMON_IDENTIFIERS_HPP_
 #pragma once
 
 #include <set>
@@ -55,7 +55,7 @@ class Identifiers {
     Identifiers<T>(const Identifiers<T>&) = default;
     Identifiers<T>(const std::set<T>& data) {
         m_ids = data;
-    };
+    }
 
     /* @brief initializes with {1 ~ number}
      *
@@ -63,8 +63,10 @@ class Identifiers {
      */
     explicit Identifiers<T>(const size_t number) {
         size_t i(0);
-        std::generate_n(std::inserter(m_ids, m_ids.begin()), number, [&i](){ return i++; });
-    };
+        std::generate_n(std::inserter(m_ids, m_ids.begin()),
+                number,
+                [&i](){ return i++; });
+    }
 
     //@}
 
@@ -86,7 +88,6 @@ class Identifiers {
     std::set<T> m_ids;
 
  public:
-
     //! \brief true ids() has element
     /*!
      * @param [in] other Identifier of type *T*
@@ -248,4 +249,4 @@ class Identifiers {
     /// @}
 };
 
-#endif  // SRC_COMMON_SRC_IDENTIFIERS_HPP_
+#endif  // INCLUDE_CPP_COMMON_IDENTIFIERS_HPP_

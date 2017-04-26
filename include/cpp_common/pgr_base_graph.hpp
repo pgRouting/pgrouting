@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_
-#define SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_
+#ifndef INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_
+#define INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_
 #pragma once
 
 #include <boost/graph/iteration_macros.hpp>
@@ -865,4 +865,4 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_
+#endif  // INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_

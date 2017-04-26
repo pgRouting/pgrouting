@@ -38,7 +38,8 @@ if ! test -d code_linter; then
     cd ../..
 fi
 
-DIRECTORY=$1
+DIRECTORY="$1"
+
 if test -z "$DIRECTORY"; then
     echo --------------------
     echo ------   *.c  ------
@@ -61,25 +62,28 @@ if test -z "$DIRECTORY"; then
     python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references include/*/*.hpp
     python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references include/*/*/*.hpp
 else
-    echo --------------------
-    echo ------   *.c  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/$DIRECTORY/src/*.c
-    echo --------------------
-    echo ------ *.cpp  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/$DIRECTORY/src/*.cpp
-    echo --------------------
-    echo ------   *.h  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py src/$DIRECTORY/src/*.h
-    python code_linter/styleguide/cpplint/cpplint.py include/$DIRECTORY/*.h
-    python code_linter/styleguide/cpplint/cpplint.py include/drivers/$DIRECTORY/*.h
-    echo --------------------
-    echo ------ *.hpp  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/$DIRECTORY/src/*.hpp
-    python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp --headers=hpp --filter=-runtime/references include/$DIRECTORY/*.hpp
-fi
+    if [ "$DIRECTORY" = "h" ]; then
+        python code_linter/styleguide/cpplint/cpplint.py src/*/src/*.h
+        python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/*/src/*.hpp
+        echo --------------------
+        echo ------   *.h  ------
+        echo --------------------
+        python code_linter/styleguide/cpplint/cpplint.py include/*/*.h
+        python code_linter/styleguide/cpplint/cpplint.py include/drivers/*/*.h
+        echo --------------------
+        echo ------ *.hpp  ------
+        echo --------------------
+        python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp --headers=hpp --filter=-runtime/references include/*/*.hpp
 
+    else
+        echo --------------------
+        echo ------   *.c  ------
+        echo --------------------
+        python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/$DIRECTORY/src/*.c
+        echo --------------------
+        echo ------ *.cpp  ------
+        echo --------------------
+        python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/$DIRECTORY/src/*.cpp
+    fi
+fi
 

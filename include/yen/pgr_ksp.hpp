@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_ALGORITHM_PGR_KSP_HPP_
-#define INCLUDE_ALGORITHM_PGR_KSP_HPP_
+#ifndef INCLUDE_YEN_PGR_KSP_HPP_
+#define INCLUDE_YEN_PGR_KSP_HPP_
 #pragma once
 
 #include "dijkstra/pgr_dijkstra.hpp"
@@ -260,4 +260,4 @@ void Pgr_ksp< G >::executeYen(G &graph, int K) {
     }
 }
 
-#endif  // INCLUDE_ALGORITHM_PGR_KSP_HPP_
+#endif  // INCLUDE_YEN_PGR_KSP_HPP_
