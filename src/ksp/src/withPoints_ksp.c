@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/edges_input.h"
 #include "c_common/points_input.h"
-#include "./../../withPoints/src/get_new_queries.h"
+#include "drivers/withPoints/get_new_queries.h"
 #include "drivers/yen/withPoints_ksp_driver.h"
 #include "c_common/debug_macro.h"
 

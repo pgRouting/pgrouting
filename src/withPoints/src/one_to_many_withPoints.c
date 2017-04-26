@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 #include "c_common/points_input.h"
-#include "./get_new_queries.h"
+#include "drivers/withPoints/get_new_queries.h"
 #include "./many_to_many_withPoints_driver.h"
 
 PGDLLEXPORT Datum one_to_many_withPoints(PG_FUNCTION_ARGS);

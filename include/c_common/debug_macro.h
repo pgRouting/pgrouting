@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef NDEBUG
 
-#include "./postgres_connection.h"
+#include "c_common/postgres_connection.h"
 
 #define PGR_DBG(...) \
     elog(DEBUG3, __VA_ARGS__)
