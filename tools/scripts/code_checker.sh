@@ -41,14 +41,6 @@ fi
 DIRECTORY=$1
 if test -z "$DIRECTORY"; then
     echo --------------------
-    echo ------   *.h  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py src/*/src/*.h
-    echo --------------------
-    echo ------ *.hpp  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/*/src/*.hpp
-    echo --------------------
     echo ------   *.c  ------
     echo --------------------
     python code_linter/styleguide/cpplint/cpplint.py --extensions=c src/*/src/*.c
@@ -56,6 +48,18 @@ if test -z "$DIRECTORY"; then
     echo ------ *.cpp  ------
     echo --------------------
     python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/*/src/*.cpp
+    echo --------------------
+    echo ------   *.h  ------
+    echo --------------------
+    python code_linter/styleguide/cpplint/cpplint.py src/*/src/*.h
+    python code_linter/styleguide/cpplint/cpplint.py include/*/*.hpp
+    python code_linter/styleguide/cpplint/cpplint.py include/*/*/*.hpp
+    echo --------------------
+    echo ------ *.hpp  ------
+    echo --------------------
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/*/src/*.hpp
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references include/*/*.hpp
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references include/*/*/*.hpp
 else
     echo --------------------
     echo ------   *.c  ------
@@ -74,6 +78,7 @@ else
     echo ------ *.hpp  ------
     echo --------------------
     python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/$DIRECTORY/src/*.hpp
+    python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp --headers=hpp --filter=-runtime/references include/$DIRECTORY/*.hpp
 fi
 
 

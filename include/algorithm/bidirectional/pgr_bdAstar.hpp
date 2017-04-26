@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_BD_ASTAR_SRC_BIDIRASTAR_H_
-#define SRC_BD_ASTAR_SRC_BIDIRASTAR_H_
+#ifndef INCLUDE_ALGORITHM_BIDIRECTIONAL_PGR_BDASTAR_HPP_
+#define INCLUDE_ALGORITHM_BIDIRECTIONAL_PGR_BDASTAR_HPP_
 #pragma once
 
 
@@ -79,7 +79,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
         m_heuristic(5),
         m_factor(1.0) {
         m_log << "pgr_bdAstar constructor\n";
-    };
+    }
 
     ~Pgr_bdAstar() = default;
 
@@ -104,8 +104,6 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
     using Pgr_bidirectional<G>::clean_log;
 
  private:
-
-
     void explore_forward(const Cost_Vertex_pair &node) {
         typename G::EO_i out, out_end;
 
@@ -123,7 +121,9 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
                 forward_cost[next_node] = edge_cost + current_cost;
                 forward_predecessor[next_node] = current_node;
                 forward_edge[next_node] = graph[*out].id;
-                forward_queue.push({forward_cost[next_node] + heuristic(next_node, v_target) , next_node});
+                forward_queue.push({
+                        forward_cost[next_node] + heuristic(next_node, v_target),
+                        next_node});
             }
         }
         forward_finished[current_node] = true;
@@ -146,7 +146,9 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
                 backward_cost[next_node] = edge_cost + current_cost;
                 backward_predecessor[next_node] = current_node;
                 backward_edge[next_node] = graph[*in].id;
-                backward_queue.push({backward_cost[next_node] + heuristic(next_node, v_source), next_node});
+                backward_queue.push({
+                        backward_cost[next_node] + heuristic(next_node, v_source),
+                        next_node});
             }
         }
         backward_finished[current_node] = true;
@@ -184,6 +186,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
     double m_factor;
 };
 
-}  // namespace pgrouting;
-}  //namespace bidirectional;
-#endif  // SRC_BD_ASTAR_SRC_BIDIRASTAR_H_
+}  // namespace bidirectional
+}  // namespace pgrouting
+
+#endif  // INCLUDE_ALGORITHM_BIDIRECTIONAL_PGR_BDASTAR_HPP_

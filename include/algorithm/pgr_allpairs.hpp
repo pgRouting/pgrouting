@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // http://www.cs.rpi.edu/~musser/archive/2005/gsd/restricted/FloydWarshall/FloydWarshall.pdf
 
-#ifndef SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
-#define SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
+#ifndef INCLUDE_ALGORITHM_PGR_ALLPAIRS_HPP_
+#define INCLUDE_ALGORITHM_PGR_ALLPAIRS_HPP_
 #pragma once
 
 
@@ -314,4 +314,4 @@ Pgr_allpairs< G >::make_result(
     }  // for i
 }
 
-#endif  // SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
+#endif  // INCLUDE_ALGORITHM_PGR_ALLPAIRS_HPP_

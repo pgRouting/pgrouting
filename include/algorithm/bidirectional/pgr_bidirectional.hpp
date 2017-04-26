@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_BASTAR_SRC_BIDIRASTAR_H_
-#define SRC_BASTAR_SRC_BIDIRASTAR_H_
+#ifndef INCLUDE_ALGORITHM_BIDIRECTIONAL_PGR_BIDIRECTIONAL_HPP_
+#define INCLUDE_ALGORITHM_BIDIRECTIONAL_PGR_BIDIRECTIONAL_HPP_
 #pragma once
 
 
@@ -231,9 +231,9 @@ class Pgr_bidirectional {
     std::vector<int64_t> forward_edge;
     std::vector<V> forward_predecessor;
     std::vector<double> forward_cost;
-
 };
 
-} // namespace pgrouting
-} // namespace bidirectional
-#endif  // SRC_BD_ASTAR_SRC_BIDIRECTIONAL_H_
+}  // namespace bidirectional
+}  // namespace pgrouting
+
+#endif  // INCLUDE_ALGORITHM_BIDIRECTIONAL_PGR_BIDIRECTIONAL_HPP_

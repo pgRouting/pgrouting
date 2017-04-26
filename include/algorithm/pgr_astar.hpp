@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_ASTAR_SRC_PGR_ASTAR_HPP_
-#define SRC_ASTAR_SRC_PGR_ASTAR_HPP_
+#ifndef INCLUDE_ALGORITHM_PGR_ASTAR_HPP_
+#define INCLUDE_ALGORITHM_PGR_ASTAR_HPP_
 #pragma once
 
 #include <boost/config.hpp>
@@ -356,4 +356,4 @@ class Pgr_astar {
 }  // namespace algorithms
 }  // namespace pgrouting
 
-#endif  // SRC_ASTAR_SRC_PGR_ASTAR_HPP_
+#endif  // INCLUDE_ALGORITHM_PGR_ASTAR_HPP_

@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef INCLUDE_ALGORITHM_PGR_KSP_HPP_
+#define INCLUDE_ALGORITHM_PGR_KSP_HPP_
 #pragma once
 
 #include "algorithm/pgr_dijkstra.hpp"
@@ -38,7 +40,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 template < class G >
 class Pgr_ksp {
  public:
-     std::deque<Path> Yen(G &graph, int64_t source, int64_t target, int K, bool heap_paths);
+     std::deque<Path> Yen(
+             G &graph,
+             int64_t source,
+             int64_t target,
+             int K,
+             bool heap_paths);
      void clear();
 
  private:
@@ -170,7 +177,9 @@ Pgr_ksp< G >::Yen(G &graph,
 
     std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
             [](const Path &left, const Path &right) -> bool {
-            for (size_t i = 0 ; i < (std::min)(left.size(), right.size()); ++i) {
+            for (size_t i = 0;
+                i < (std::min)(left.size(), right.size());
+                ++i) {
             if (left[i].node < right[i].node) return true;
             if (left[i].node > right[i].node) return false;
             }
@@ -196,13 +205,10 @@ void Pgr_ksp< G >::removeVertices(G &graph, const Path &subpath) {
 
 template < class G >
 void Pgr_ksp< G >::doNextCycle(G &graph) {
-
-
     int64_t spurNodeId;
 
 
     for (unsigned int i = 0; i < curr_result_path.size(); ++i) {
-
         spurNodeId = curr_result_path[i].node;
 
         auto rootPath = curr_result_path.getSubpath(i);
@@ -253,3 +259,5 @@ void Pgr_ksp< G >::executeYen(G &graph, int K) {
 #endif
     }
 }
+
+#endif  // INCLUDE_ALGORITHM_PGR_KSP_HPP_
