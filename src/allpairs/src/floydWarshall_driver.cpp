@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "./pgr_allpairs.hpp"
+#include "algorithm/pgr_allpairs.hpp"
 
 #include "cpp_common/pgr_assert.h"
 
