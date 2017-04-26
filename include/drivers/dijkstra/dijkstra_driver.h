@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-File: many_to_many_dijkstra_driver.h
+File: dijkstra_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_
-#define SRC_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_
+#define INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_
 
 #include "c_types/pgr_types.h"
 
@@ -64,4 +64,4 @@ extern "C" {
     }
 #endif
 
-#endif  // SRC_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_

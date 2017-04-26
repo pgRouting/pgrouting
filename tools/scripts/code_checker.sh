@@ -74,6 +74,7 @@ else
     echo --------------------
     python code_linter/styleguide/cpplint/cpplint.py src/$DIRECTORY/src/*.h
     python code_linter/styleguide/cpplint/cpplint.py include/$DIRECTORY/*.h
+    python code_linter/styleguide/cpplint/cpplint.py include/drivers/$DIRECTORY/*.h
     echo --------------------
     echo ------ *.hpp  ------
     echo --------------------

@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_ALGORITHM_PGR_DIJKSTRA_HPP_
-#define INCLUDE_ALGORITHM_PGR_DIJKSTRA_HPP_
+#ifndef INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#define INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
 #pragma once
 
 #include <boost/config.hpp>
@@ -582,4 +582,4 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
     return found;
 }
 
-#endif  // INCLUDE_ALGORITHM_PGR_DIJKSTRA_HPP_
+#endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
