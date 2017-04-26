@@ -22,16 +22,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/e_report.h"
-#include "./../../common/src/time_msg.h"
+#include "c_common/debug_macro.h"
+#include "c_common/e_report.h"
+#include "c_common/time_msg.h"
 #include "c_types/pgr_types.h"
-#include "c_input/edges_input.h"
-#include "c_input/arrays_input.h"
-#include "c_input/points_input.h"
+#include "c_common/edges_input.h"
+#include "c_common/arrays_input.h"
+#include "c_common/points_input.h"
 #include "./../../withPoints/src/get_new_queries.h"
 #include "drivers/driving_distance/withPoints_dd_driver.h"
 

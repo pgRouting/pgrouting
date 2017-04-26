@@ -22,12 +22,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./postgres_connection.h"
-#include "./debug_macro.h"
+#include "c_common/postgres_connection.h"
+#include "c_common/debug_macro.h"
 #include "c_types/pgr_types.h"
-#include "./get_check_data.h"
-#include "c_input/edges_input.h"
-#include "./time_msg.h"
+#include "c_common/get_check_data.h"
+#include "c_common/edges_input.h"
+#include "c_common/time_msg.h"
 
 static
 void fetch_basic_edge(

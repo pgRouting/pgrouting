@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 
 #include "catalog/pg_type.h"
 
@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
-#include "../../common/src/debug_macro.h"
+#include "c_common/debug_macro.h"
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
