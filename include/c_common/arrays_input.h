@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_ARRAYS_INPUT_H_
 #pragma once
 
-#include "c_common/postgres_connection.h"
+#include "c_common/pgr_types.h"
 #include "utils/array.h"
 
 
