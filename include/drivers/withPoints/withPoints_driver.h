@@ -44,7 +44,7 @@ extern "C" {
 // start_pid ANYARRAY,
 // end_pid BIGINT,
 // directed BOOLEAN DEFAULT true,
-    void do_pgr_many_to_many_withPoints(
+    void do_pgr_withPoints(
             pgr_edge_t *edges,
             size_t total_edges,
 

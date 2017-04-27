@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: one_to_many_withPoints.c
+File: withPoints.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -38,10 +38,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "c_common/points_input.h"
 #include "drivers/withPoints/get_new_queries.h"
-#include "./many_to_many_withPoints_driver.h"
+#include "drivers/withPoints/withPoints_driver.h"
 
-PGDLLEXPORT Datum many_to_many_withPoints(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(many_to_many_withPoints);
+PGDLLEXPORT Datum withPoints(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(withPoints);
 
 
 static
@@ -57,6 +57,8 @@ process(
         char *driving_side,
         bool details,
         bool only_cost,
+        bool normal,
+
         General_path_element_t **result_tuples,
         size_t *result_count) {
     driving_side[0] = estimate_drivingSide(driving_side[0]);
@@ -64,10 +66,10 @@ process(
     pgr_SPI_connect();
 
     size_t size_start_pidsArr = 0;
-    int64_t* start_pidsArr = pgr_get_bigIntArray(&size_start_pidsArr, starts);
+    int64_t* start_pidsArr = NULL;
 
     size_t size_end_pidsArr = 0;
-    int64_t* end_pidsArr = pgr_get_bigIntArray(&size_end_pidsArr, ends);
+    int64_t* end_pidsArr = NULL;
 
     Point_on_edge_t *points = NULL;
     size_t total_points = 0;
@@ -84,13 +86,32 @@ process(
 
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_edges(
-            edges_of_points_query, &edges_of_points, &total_edges_of_points);
-
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
+
+    PGR_DBG("normal = %d", normal);
+    if (normal) {
+        pgr_get_edges(
+                edges_of_points_query, &edges_of_points, &total_edges_of_points);
+        pgr_get_edges(edges_no_points_query, &edges, &total_edges);
+
+        start_pidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_pidsArr, starts);
+        end_pidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_pidsArr, ends);
+    } else {
+
+        pgr_get_edges_reversed(
+                edges_of_points_query, &edges_of_points, &total_edges_of_points);
+        pgr_get_edges_reversed(edges_no_points_query, &edges, &total_edges);
+
+        end_pidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_pidsArr, starts);
+        start_pidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_pidsArr, ends);
+    }
+
 
     free(edges_of_points_query);
     free(edges_no_points_query);
@@ -105,7 +126,7 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_pgr_many_to_many_withPoints(
+    do_pgr_withPoints(
             edges, total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,
@@ -116,7 +137,7 @@ process(
             details,
             directed,
             only_cost,
-            true,
+            normal,
 
             result_tuples, result_count,
             &log_msg,
@@ -152,7 +173,7 @@ process(
 
 
 PGDLLEXPORT Datum
-many_to_many_withPoints(PG_FUNCTION_ARGS) {
+withPoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -177,6 +198,7 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
         // details BOOLEAN -- DEFAULT false,
         // directed BOOLEAN -- DEFAULT true,
         // only_cost BOOLEAN DEFAULT false,
+        // normal BOOLEAN DEFAULT true,
 
 
         process(
@@ -188,6 +210,7 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
+                PG_GETARG_BOOL(8),
                 &result_tuples,
                 &result_count);
 

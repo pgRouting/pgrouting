@@ -153,6 +153,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         // end_vids ANYARRAY,
         // directed BOOLEAN default true,
         // only_cost BOOLEAN default false
+        // normal BOOLEAN default true
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),

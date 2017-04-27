@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./many_to_many_withPoints_driver.h"
+#include "drivers/withPoints/withPoints_driver.h"
 
 #include <algorithm>
 #include <sstream>
@@ -80,7 +80,7 @@ pgr_dijkstra(
 // directed BOOLEAN DEFAULT true
 
 void
-do_pgr_many_to_many_withPoints(
+do_pgr_withPoints(
         pgr_edge_t *edges, size_t total_edges,
         Point_on_edge_t *points_p, size_t total_points,
         pgr_edge_t *edges_of_points, size_t total_edges_of_points,
@@ -158,6 +158,8 @@ do_pgr_many_to_many_withPoints(
         std::vector< int64_t >
             end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
 
+        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        vertices = pgrouting::extract_vertices(vertices, new_edges);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -165,16 +167,17 @@ do_pgr_many_to_many_withPoints(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(vertices, gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(new_edges);
+
             paths = pgr_dijkstra(
                     digraph,
                     start_vertices, end_vertices,
                     only_cost, normal);
         } else {
             log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(vertices, gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(new_edges);
             paths = pgr_dijkstra(
