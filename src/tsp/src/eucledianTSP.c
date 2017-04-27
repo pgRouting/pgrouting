@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_types/pgr_types.h"
+
 #include "c_common/coordinates_input.h"
 #include "drivers/tsp/eucledianTSP_driver.h"
 

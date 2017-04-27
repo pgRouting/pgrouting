@@ -41,7 +41,6 @@
 #include <limits>
 #include <cmath>
 
-#include "c_types/pgr_types.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/Dmatrix.h"
 #include "tsp/eucledianDmatrix.h"

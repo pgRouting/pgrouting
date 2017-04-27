@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: coordinates_input.h
+File: pgr_types.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -21,20 +21,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_C_COMMON_COORDINATES_INPUT_H_
-#define INCLUDE_C_COMMON_COORDINATES_INPUT_H_
+/*! @file */
+
+#ifndef INCLUDE_C_TYPES_GRAPH_ENUM_H_
+#define INCLUDE_C_TYPES_GRAPH_ENUM_H_
 #pragma once
 
-#include "c_types/coordinate_t.h"
+enum graphType {UNDIRECTED = 0, DIRECTED};
 
-/*!
-  bigint id,
-  float x,
-  float y,
-  */
-void pgr_get_coordinates(
-        char *sql,
-        Coordinate_t **coordinates,
-        size_t *total_coordinates);
 
-#endif  // INCLUDE_C_COMMON_COORDINATES_INPUT_H_
+#endif  // INCLUDE_C_TYPES_GRAPH_ENUM_H_

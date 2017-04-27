@@ -28,10 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_MAX_FLOW_SRC_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
 #pragma once
 
-#include "c_types/pgr_types.h"
-#ifdef unlink
-#undef unlink
-#endif
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>

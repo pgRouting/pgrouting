@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: pgr_basic_edge_t.h
+File: pickDeliveryOrders_t.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
+Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
 ------
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_BASIC_EDGE_T_H_
-#define INCLUDE_C_TYPES_BASIC_EDGE_T_H_
+#ifndef INCLUDE_C_TYPES_PICKDELIVER
+#define INCLUDE_C_TYPES_PICKDELIVER
 #pragma once
 
 
@@ -55,13 +55,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdint.h>
 
 
+/**************************************************************************
+ * pickDelivery types
+ * ***********************************************************************/
+/*
+ * its with either (foo_x, foo_y) pairs (for eucledian or with foo_node_id (for matrix)
+ */
 typedef struct {
-  int64_t id;
-  int64_t source;
-  int64_t target;
-  bool going;
-  bool coming;
-  int64_t edge_id;
-} pgr_basic_edge_t;
+    int64_t id;
+    double demand;
 
-#endif  // INCLUDE_C_TYPES_BASIC_EDGE_T_H_
+    double pick_x;
+    double pick_y;
+    int64_t pick_node_id;
+
+    double pick_open_t;
+    double pick_close_t;
+    double pick_service_t;
+
+    double deliver_x;
+    double deliver_y;
+    int64_t deliver_node_id;
+
+    double deliver_open_t;
+    double deliver_close_t;
+    double deliver_service_t;
+} PickDeliveryOrders_t;
+
+#endif  // INCLUDE_C_TYPES_PICKDELIVER

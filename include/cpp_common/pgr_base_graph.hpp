@@ -37,12 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <limits>
 
-#include "c_types/pgr_types.h"  // for pgr_edge_t
+#include "c_types/graph_enum.h"
 
 #include "cpp_common/basic_vertex.h"
 #include "cpp_common/xy_vertex.h"
-
 #include "cpp_common/basic_edge.h"
+
 #include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {

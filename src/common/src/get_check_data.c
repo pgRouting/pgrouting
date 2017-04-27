@@ -22,14 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "c_common/postgres_connection.h"
+#include "c_common/get_check_data.h"
 
 #include "catalog/pg_type.h"
 
-
-#include "c_types/pgr_types.h"
 #include "c_common/debug_macro.h"
-#include "c_common/get_check_data.h"
 
 char*
 pgr_stradd(const char* a, const char* b) {

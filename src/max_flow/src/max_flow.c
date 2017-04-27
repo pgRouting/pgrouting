@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_types/pgr_types.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 #include "./max_flow_driver.h"

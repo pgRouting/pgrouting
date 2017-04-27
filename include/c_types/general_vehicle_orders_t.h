@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_basic_edge_t.h
+File: general_vehicle_orders_t.h
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_BASIC_EDGE_T_H_
-#define INCLUDE_C_TYPES_BASIC_EDGE_T_H_
+#ifndef INCLUDE_C_TYPES_GENERAL_VEHICLE_ORDERS_T_H_
+#define INCLUDE_C_TYPES_GENERAL_VEHICLE_ORDERS_T_H_
 #pragma once
 
 
@@ -55,13 +55,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdint.h>
 
 
-typedef struct {
-  int64_t id;
-  int64_t source;
-  int64_t target;
-  bool going;
-  bool coming;
-  int64_t edge_id;
-} pgr_basic_edge_t;
+/*
+   OUT seq INTEGER,        done in the .c code
+   OUT vehicle_seq INTEGER,
+   OUT vehicle_id INTEGER,
+   OUT order_id BIGINT,
+   OUT travelTime FLOAT,
+   OUT arrivalTime FLOAT,
+   OUT waitTime FLOAT,
+   OUT serviceTime FLOAT,
+   OUT departureTime FLOAT,
+   */
 
-#endif  // INCLUDE_C_TYPES_BASIC_EDGE_T_H_
+typedef struct  {
+    int vehicle_number;
+    int64_t vehicle_id;
+    int vehicle_seq;
+    int64_t order_id;
+    int stop_type;
+    double cargo;
+    double travelTime;
+    double arrivalTime;
+    double waitTime;
+    double serviceTime;
+    double departureTime;
+} General_vehicle_orders_t;
+
+/*************************************************************************/
+
+#endif  // INCLUDE_C_TYPES_GENERAL_VEHICLE_ORDERS_T_H_

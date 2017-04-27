@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: coordinates_input.h
+File: point_on_edge_t.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2017 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -21,20 +21,44 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_C_COMMON_COORDINATES_INPUT_H_
-#define INCLUDE_C_COMMON_COORDINATES_INPUT_H_
+/*! @file */
+
+#ifndef INCLUDE_C_TYPES_POINT_ON_EDGE_T_H_
+#define INCLUDE_C_TYPES_POINT_ON_EDGE_T_H_
 #pragma once
 
-#include "c_types/coordinate_t.h"
+#ifdef __cplusplus
 
-/*!
-  bigint id,
-  float x,
-  float y,
-  */
-void pgr_get_coordinates(
-        char *sql,
-        Coordinate_t **coordinates,
-        size_t *total_coordinates);
+#include <cstddef>
 
-#endif  // INCLUDE_C_COMMON_COORDINATES_INPUT_H_
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
+
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
+typedef struct {
+    int64_t pid;
+    int64_t edge_id;
+    char side;  // 'r', 'l', 'b' (default is both)
+    double fraction;
+    int64_t vertex_id;  // number is negative and is used for processing
+} Point_on_edge_t;
+
+#endif  // INCLUDE_C_TYPES_POINT_ON_EDGE_T_H_

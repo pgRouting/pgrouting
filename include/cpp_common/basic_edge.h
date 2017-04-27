@@ -26,8 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_BASIC_EDGE_H_
 #pragma once
 
-#include "c_types/pgr_types.h"
-
+#include <stdint.h>
 
 namespace pgrouting {
 

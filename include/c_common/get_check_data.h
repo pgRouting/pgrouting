@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_GET_CHECK_DATA_H_
 #pragma once
 
+#include "c_types/column_info_t.h"
+
 bool column_found(int colNumber);
 
 void pgr_fetch_column_info(

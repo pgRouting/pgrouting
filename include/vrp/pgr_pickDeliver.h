@@ -35,7 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <sstream>
 
-#include "c_types/pgr_types.h"
+#include "c_types/general_vehicle_orders_t.h"
+#include "c_types/vehicle_t.h"
+#include "c_types/pickDeliveryOrders_t.h"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/Dmatrix.h"
 

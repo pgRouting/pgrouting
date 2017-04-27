@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: coordinates_input.h
+File: pgr_types.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -21,20 +21,48 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_C_COMMON_COORDINATES_INPUT_H_
-#define INCLUDE_C_COMMON_COORDINATES_INPUT_H_
+/*! @file */
+
+#ifndef INCLUDE_C_TYPES_COLUMN_INFO_T_H_
+#define INCLUDE_C_TYPES_COLUMN_INFO_T_H_
 #pragma once
 
-#include "c_types/coordinate_t.h"
+#include "c_common/postgres_connection.h"
 
-/*!
-  bigint id,
-  float x,
-  float y,
-  */
-void pgr_get_coordinates(
-        char *sql,
-        Coordinate_t **coordinates,
-        size_t *total_coordinates);
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
 
-#endif  // INCLUDE_C_COMMON_COORDINATES_INPUT_H_
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// For NULL & size_t
+#include <stdlib.h>
+
+
+// used for getting the data
+typedef
+enum {
+    ANY_INTEGER,
+    ANY_NUMERICAL,
+    TEXT,
+    CHAR1
+} expectType;
+
+
+typedef
+struct {
+    int colNumber;
+    uint64_t type;
+    bool strict;
+    char *name;
+    expectType eType;
+} Column_info_t;
+
+
+#endif  // INCLUDE_C_TYPES_COLUMN_INFO_T_H_
+

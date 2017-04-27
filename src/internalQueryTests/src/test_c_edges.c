@@ -28,10 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_common/debug_macro.h"
-#include "c_types/pgr_types.h"
+
 #include "c_common/edges_input.h"
 
 #include "./test_c_edges_driver.h"

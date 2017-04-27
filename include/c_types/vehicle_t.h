@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: pgr_basic_edge_t.h
+File: vehicle_t.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
+Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
 ------
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_BASIC_EDGE_T_H_
-#define INCLUDE_C_TYPES_BASIC_EDGE_T_H_
+#ifndef INCLUDE_C_TYPES_VEHICHLE_T_H
+#define INCLUDE_C_TYPES_VEHICHLE_T_H
 #pragma once
 
 
@@ -54,14 +54,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // For int64_t etc
 #include <stdint.h>
 
-
+/*
+ * its with either (foo_x, foo_y) pairs for eucledian or with foo_node_id (for matrix)
+ */
 typedef struct {
-  int64_t id;
-  int64_t source;
-  int64_t target;
-  bool going;
-  bool coming;
-  int64_t edge_id;
-} pgr_basic_edge_t;
+    int64_t id;
+    double capacity;
+    double speed;
 
-#endif  // INCLUDE_C_TYPES_BASIC_EDGE_T_H_
+    double start_x;
+    double start_y;
+    int64_t start_node_id;
+
+    int64_t cant_v;
+
+    double start_open_t;
+    double start_close_t;
+    double start_service_t;
+
+    double end_x;
+    double end_y;
+    int64_t end_node_id;
+
+    double end_open_t;
+    double end_close_t;
+    double end_service_t;
+} Vehicle_t;
+
+
+#endif  // INCLUDE_C_TYPES_VEHICHLE_T_H

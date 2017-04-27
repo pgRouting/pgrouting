@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: pgr_types.h
+File: matrix_cell_t.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
 ------
