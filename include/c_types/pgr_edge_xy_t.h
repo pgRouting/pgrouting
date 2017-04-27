@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_EDGE_XY_T_H
-#define INCLUDE_C_TYPES_PGR_EDGE_XY_T_H
+#ifndef INCLUDE_C_TYPES_PGR_EDGE_XY_T_H_
+#define INCLUDE_C_TYPES_PGR_EDGE_XY_T_H_
 #pragma once
 
 
@@ -66,4 +66,4 @@ typedef struct {
     double y2;
 } Pgr_edge_xy_t;
 
-#endif  // INCLUDE_C_TYPES_PGR_EDGE_XY_T_H
+#endif  // INCLUDE_C_TYPES_PGR_EDGE_XY_T_H_

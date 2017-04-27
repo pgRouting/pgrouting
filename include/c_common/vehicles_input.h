@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_VEHICLES_INPUT_H_
 #pragma once
 
-#include "c_types/vehicle_t.h"
+#include "c_types/pickDeliver/vehicle_t.h"
 
 /** @brief Reads the vehicles orders
  *

@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_COORDINATE_T_
-#define INCLUDE_C_TYPES_COORDINATE_T_
+#ifndef INCLUDE_C_TYPES_COORDINATE_T_H_
+#define INCLUDE_C_TYPES_COORDINATE_T_H_
 #pragma once
 
 
@@ -60,4 +60,4 @@ typedef struct  {
     double y;
 } Coordinate_t;
 
-#endif  // INCLUDE_C_TYPES_COORDINATE_T_
+#endif  // INCLUDE_C_TYPES_COORDINATE_T_H_

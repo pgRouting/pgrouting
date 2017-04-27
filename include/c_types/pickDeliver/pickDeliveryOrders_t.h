@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PICKDELIVER
-#define INCLUDE_C_TYPES_PICKDELIVER
+#ifndef INCLUDE_C_TYPES_PICKDELIVER_PICKDELIVERYORDERS_T_H_
+#define INCLUDE_C_TYPES_PICKDELIVER_PICKDELIVERYORDERS_T_H_
 #pragma once
 
 
@@ -82,4 +82,4 @@ typedef struct {
     double deliver_service_t;
 } PickDeliveryOrders_t;
 
-#endif  // INCLUDE_C_TYPES_PICKDELIVER
+#endif  // INCLUDE_C_TYPES_PICKDELIVER_PICKDELIVERYORDERS_T_H_

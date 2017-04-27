@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_MATRIX_CELL_T
-#define INCLUDE_C_TYPES_PGR_MATRIX_CELL_T
+#ifndef INCLUDE_C_TYPES_MATRIX_CELL_T_H_
+#define INCLUDE_C_TYPES_MATRIX_CELL_T_H_
 #pragma once
 
 
@@ -61,4 +61,4 @@ typedef struct matrix_cell {
     double cost;
 } Matrix_cell_t;
 
-#endif  // INCLUDE_C_TYPES_PGR_MATRIX_CELL_T
+#endif  // INCLUDE_C_TYPES_MATRIX_CELL_T_H_
