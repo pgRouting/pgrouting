@@ -27,7 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_TYPES_COLUMN_INFO_T_H_
 #pragma once
 
-#include "c_common/postgres_connection.h"
+
+#ifdef __cplusplus
+
+#include <cstddef>
+
+#else  // __cplusplus
 
 // for bool
 #ifdef __GNUC__
@@ -42,6 +47,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // For NULL & size_t
 #include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
 
 
 // used for getting the data
