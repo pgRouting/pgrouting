@@ -59,6 +59,22 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,bigint,bigint,text);
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text);
 
 
+ALTER EXTENSION pgrouting DROP FUNCTION _pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean,boolean);
+DROP FUNCTION IF EXISTS _pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean,boolean);
+
+
+ALTER EXTENSION pgrouting DROP FUNCTION _pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean,boolean);
+DROP FUNCTION IF EXISTS _pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean,boolean);
+
+
+ALTER EXTENSION pgrouting DROP FUNCTION _pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean,boolean);
+DROP FUNCTION IF EXISTS _pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean,boolean);
+
+
+ALTER EXTENSION pgrouting DROP FUNCTION _pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean,boolean);
+DROP FUNCTION IF EXISTS _pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean,boolean);
+
+
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_fakecontraction(text,integer[]);
 DROP FUNCTION IF EXISTS pgr_fakecontraction(text,integer[]);
 
@@ -1204,9 +1220,6 @@ COMMENT ON FUNCTION  pgr_dijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgr_dij
 COMMENT ON FUNCTION  pgr_dijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgr_dijkstraCost(One to Many)';
 COMMENT ON FUNCTION  pgr_dijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgr_dijkstraCost(Many to One)';
 COMMENT ON FUNCTION  pgr_dijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgr_dijkstraCost(Many to Many)';
-
-
-
 
 
 CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
@@ -3327,86 +3340,6 @@ LANGUAGE c VOLATILE STRICT;
 
 
 
-
-
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pid BIGINT,
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    only_cost BOOLEAN DEFAULT false, -- gets path
-
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'one_to_one_withPoints'
-LANGUAGE c VOLATILE;
-
-
-
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pids ANYARRAY,
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    only_cost BOOLEAN DEFAULT false, -- gets path
-
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT end_pid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'one_to_many_withPoints'
-LANGUAGE c VOLATILE;
-
-
-
-
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pids ANYARRAY,
-    end_pid BIGINT,
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    only_cost BOOLEAN DEFAULT false, -- gets path
-
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_pid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'many_to_one_withPoints'
-LANGUAGE c VOLATILE;
-
-
-
-
-
-
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -3417,6 +3350,7 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     details BOOLEAN,
 
     only_cost BOOLEAN DEFAULT false, -- gets path
+    normal BOOLEAN DEFAULT true, -- false for many to onu
 
 
     OUT seq INTEGER,
@@ -3428,9 +3362,8 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'many_to_many_withPoints'
+'MODULE_PATHNAME', 'withPoints'
 LANGUAGE c VOLATILE;
-
 
 
 
@@ -3452,14 +3385,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
-    END
-    $BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100
-    ROWS 1000;
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::bigint[], ARRAY[$4]::bigint[], $5, $6, $7) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 
 
@@ -3481,14 +3412,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
-    END
-    $BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100
-    ROWS 1000;
+SELECT a.seq, a.path_seq, a.end_pid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::bigint[], $4::bigint[], $5, $6, $7) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 
 CREATE OR REPLACE FUNCTION pgr_withPoints(
@@ -3509,14 +3438,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
-    END
-    $BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100
-    ROWS 1000;
+SELECT a.seq, a.path_seq, a.start_pid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::bigint[], ARRAY[$4]::bigint[], $5, $6, $7, FALSE, FALSE) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 
 CREATE OR REPLACE FUNCTION pgr_withPoints(
@@ -3538,14 +3465,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
-    END
-    $BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100
-    ROWS 1000;
+SELECT a.seq, a.path_seq, a.start_pid, a.end_pid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::bigint[], $4::bigint[], $5, $6, $7) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 
 
@@ -3563,12 +3488,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT $3, $4, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, TRUE, TRUE) AS a;
-END
+    SELECT $3, $4, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -3587,12 +3510,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT $3, a.end_pid, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
-END
+    SELECT $3, a.end_pid, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::BIGINT[], $4::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -3611,12 +3532,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT a.start_pid, $4, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
-END
+    SELECT a.start_pid, $4, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -3635,12 +3554,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT a.start_pid, a.end_pid, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
-END
+    SELECT a.start_pid, a.end_pid, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::BIGINT[], $4::BIGINT[], $5,  $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
