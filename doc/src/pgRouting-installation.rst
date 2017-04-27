@@ -96,10 +96,10 @@ Goto :ref:`install-short` to the compile instructions (there is no tar ball).
 
 .. _install_enable_db:
 
-Enabeling and upgrading in the database
+Enabling and upgrading in the database
 ----------------------------------------------
 
-.. rubric:: Enabeling the database
+.. rubric:: Enabling the database
 
 pgRouting is an extension and depends on postGIS. Enabling postGIS before enabling pgRouting in the database
 
