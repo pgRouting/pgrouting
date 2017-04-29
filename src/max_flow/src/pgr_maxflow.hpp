@@ -42,7 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "./../../common/src/pgr_types.h"
+#include "c_types/pgr_flow_t.h"
+#include "c_types/pgr_edge_t.h"
+#include "c_types/general_path_element_t.h"
+
 
 
 namespace pgrouting {

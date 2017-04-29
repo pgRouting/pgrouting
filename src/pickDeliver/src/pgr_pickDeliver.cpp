@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 
 #include <sstream>
 #include <string>
@@ -31,17 +31,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <utility>
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
-#include "./vehicle_node.h"
-#include "./vehicle_pickDeliver.h"
-#include "./order.h"
-#include "./orders.h"
-#include "./fleet.h"
-#include "./solution.h"
-#include "./initial_solution.h"
-#include "./optimize.h"
+#include "vrp/vehicle_node.h"
+#include "vrp/vehicle_pickDeliver.h"
+#include "vrp/order.h"
+#include "vrp/pd_orders.h"
+#include "vrp/fleet.h"
+#include "vrp/solution.h"
+#include "vrp/initial_solution.h"
+#include "vrp/optimize.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -54,7 +53,7 @@ Pgr_pickDeliver::optimize(const Solution solution) {
      * Optimize a solution
      */
     Optimize opt_solution(solution, m_max_cycles);
-    log << opt_solution.best_solution.tau("optimized");
+    msg.log << opt_solution.best_solution.tau("optimized");
     return opt_solution.best_solution;
 }
 
@@ -63,18 +62,18 @@ Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
     if (m_initial_id == 0) {
-        log << "trying all \n";
+        msg.log << "trying all \n";
         for (int i = 1; i < 7; ++i) {
             initial_sols.push_back(Initial_solution(i, m_orders.size()));
-            log << "solution " << i << "\n" << initial_sols.back().tau();
+            msg.log << "solution " << i << "\n" << initial_sols.back().tau();
             // TODO calculate the time it takes
-            log << "Initial solution " << i << " duration: " << initial_sols.back().duration();
+            msg.log << "Initial solution " << i << " duration: " << initial_sols.back().duration();
         }
     } else {
-        log << "only trying " << m_initial_id << "\n";
+        msg.log << "only trying " << m_initial_id << "\n";
         initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
         // TODO calculate the time it takes
-        log << "Initial solution " << m_initial_id << " duration: " << initial_sols[0].duration();
+        msg.log << "Initial solution " << m_initial_id << " duration: " << initial_sols[0].duration();
     }
 
 
@@ -90,7 +89,7 @@ Pgr_pickDeliver::solve() {
     solutions.push_back(Optimize(initial_sols.back()));
     pgassert(!solutions.empty());
 
-    log << "best solution duration = " << solutions.back().duration();
+    msg.log << "best solution duration = " << solutions.back().duration();
 }
 
 
@@ -122,7 +121,7 @@ Pgr_pickDeliver::get_postgres_result() const {
 
 #ifndef NDEBUG
     for (const auto sol : solutions) {
-        log << sol.tau();
+        msg.log << sol.tau();
     }
 #endif
     return result;
@@ -148,19 +147,28 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_nodes(),
     m_cost_matrix(cost_matrix), 
     m_trucks(vehicles) {
+        pgassert(msg.get_error().empty());
+
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
         pgassert(!cost_matrix.empty());
         pgassert(m_initial_id > 0 && m_initial_id < 7);
 
+        pgassert(msg.get_error().empty());
         std::ostringstream tmplog;
 
-        log << "\n *** Constructor for the matrix version ***\n";
+        msg.log << "\n *** Constructor for the matrix version ***\n";
+
+        if (!msg.get_error().empty()) {
+            return;
+        }
+
+        pgassert(msg.get_error().empty());
 
         if (!m_trucks.is_fleet_ok()) {
             // TODO revise the function
             pgassert(false);
-            error << m_trucks.get_error();
+            msg.error << m_trucks.msg.get_error();
             return;
         }
     }  //  constructor
@@ -190,17 +198,18 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     std::ostringstream tmplog;
 
-    log << "\n *** Constructor of problem ***\n";
+    msg.log << "\n *** Constructor of problem ***\n";
 
-    if (!m_trucks.get_error().empty()) {
-        error << m_trucks.get_error();
-        log << m_trucks.get_log();
+    if (!msg.get_error().empty()) {
         return;
     }
 
-    log << "\n Building fleet";
+    pgassert(msg.get_error().empty());
+    msg.log << "\n Building fleet";
     if (!m_trucks.is_fleet_ok()) {
-        error << m_trucks.get_error();
+        pgassert(msg.get_error().empty());
+        pgassert(!m_trucks.msg.get_error().empty());
+        msg.error << m_trucks.msg.get_error();
         return;
     }
 
@@ -208,18 +217,18 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
 #ifndef NDEBUG
     for (const auto t : m_trucks) {
-        log << t << "\n";
+        msg.log << t << "\n";
     }
 #endif
 
-    log << "\n Building orders";
+    msg.log << "\n Building orders";
     m_orders.build_orders(pd_orders);
-    log << " ---> OK\n";
+    msg.log << " ---> OK\n";
 
 
 #ifndef NDEBUG
     for (const auto &o : m_orders) {
-        log << o << "\n";
+        msg.log << o << "\n";
     }
 #endif
 
@@ -229,10 +238,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      */
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {
-            error << "The order "
+            msg.error << "The order "
                 << o.pickup().original_id()
                 << " is not feasible on any truck";
-            log << "\n" << o;
+            msg.log << "\n" << o;
             return;
         }
     }
@@ -270,7 +279,8 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
 const Vehicle_node&
 Pgr_pickDeliver::node(ID id) const {
     pgassert(id < m_nodes.size());
-    pgassert(id == m_nodes[id].id());
+    msg.log << "id = " << id << "m_nodes[id].id()" << m_nodes[id].id() << "\n";
+    pgassertwm(id == m_nodes[id].id(), msg.get_log().c_str());
     return m_nodes[id];
 }
 

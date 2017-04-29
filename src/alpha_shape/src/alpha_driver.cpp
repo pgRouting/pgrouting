@@ -59,7 +59,7 @@ corresponding to the Alpha shape.
 #include <algorithm>
 #include <set>
 
-#include "./../../common/src/pgr_alloc.hpp"
+#include "cpp_common/pgr_alloc.hpp"
 
 typedef double coord_type;
 

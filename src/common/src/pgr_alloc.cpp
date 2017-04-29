@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_alloc.hpp"
+#include "cpp_common/pgr_alloc.hpp"
 #include <string>
 
 char *

@@ -27,16 +27,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./floydWarshall_driver.h"
+#include "drivers/allpairs/floydWarshall_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "./pgr_allpairs.hpp"
+#include "allpairs/pgr_allpairs.hpp"
 
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_types.h"
+#include "cpp_common/pgr_assert.h"
 
 
 void

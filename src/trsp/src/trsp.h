@@ -25,7 +25,7 @@
 #define MAX_RULE_LENGTH 5
 
 #include "postgres.h"
-#include "./../../common/src/pgr_types.h"
+#include "c_types/pgr_types.h"
 
 
 typedef struct edge

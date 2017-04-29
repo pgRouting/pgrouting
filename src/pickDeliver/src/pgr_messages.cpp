@@ -26,65 +26,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <sstream>
-#include "./pgr_messages.h"
+#include "vrp/pgr_messages.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
 
-/*! \brief get log (hints) messages
- *
- * \returns the current contents of the log
- *
- */
 std::string
 Pgr_messages::get_log() const {
-    std::string str = log.str();
-    return str;
+    return log.str();
 }
 
-/*! \brief get notice messages
- *
- * \returns the current contents of the log
- *
- */
 std::string
 Pgr_messages::get_notice() const {
-    std::string str = notice.str();
-    return str;
+    return notice.str();
 }
 
-/*! \brief get error messages
- *
- * \returns the current contents of the log
- *
- */
 std::string
 Pgr_messages::get_error() const {
-    std::string str = error.str();
-    return str;
+    return error.str();
 }
 
 #ifndef NDEBUG
-/*! \brief get debugging logs
- *
- * \returns the current contents of the log and clears the log
- *
- */
 std::string
 Pgr_messages::get_dbglog() const{
-    std::string str = dbg_log.str();
-    return str;
+    return dbg_log.str();
 }
 #endif
 
-/*! \brief get error messages
- *
- * clears the all logs
- */
 void
-Pgr_messages::clear_msg() {
+Pgr_messages::clear() {
     log.str("");
     log.clear();
 

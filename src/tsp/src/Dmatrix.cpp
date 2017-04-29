@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./Dmatrix.h"
+#include "cpp_common/Dmatrix.h"
 
 #include <string.h>
 #include <sstream>
@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cmath>
 
-#include "./tour.h"
-#include "../../common/src/pgr_assert.h"
+#include "tsp/tour.h"
+#include "cpp_common/pgr_assert.h"
 
 
 namespace pgrouting {

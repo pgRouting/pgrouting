@@ -27,18 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./withPoints_ksp_driver.h"
+#include "drivers/yen/withPoints_ksp_driver.h"
 
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "./pgr_ksp.hpp"
+#include "yen/pgr_ksp.hpp"
 
 #include "./../../withPoints/src/pgr_withPoints.hpp"
-#include "./../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPointsKSP(

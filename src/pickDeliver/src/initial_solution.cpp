@@ -24,13 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./initial_solution.h"
+#include "vrp/initial_solution.h"
 #include <deque>
 #include <algorithm>
 #include <set>
-#include "./../../common/src/pgr_assert.h"
-#include "./solution.h"
-#include "./pgr_pickDeliver.h"
+#include "cpp_common/pgr_assert.h"
+#include "vrp/solution.h"
+#include "vrp/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -78,7 +78,7 @@ Initial_solution::do_while_foo(int kind) {
     invariant();
     pgassert(kind > 0 && kind < 7);
 
-    log << "\nInitial_solution::do_while_foo\n";
+    msg.log << "\nInitial_solution::do_while_foo\n";
     Identifiers<size_t> notused;
     bool out_of_trucks;
 
@@ -115,7 +115,7 @@ Initial_solution::do_while_foo(int kind) {
 void
 Initial_solution::one_truck_all_orders() {
     invariant();
-    log << "\nInitial_solution::one_truck_all_orders\n";
+    msg.log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
     while (!unassigned.empty()) {
         auto order(truck.orders()[*unassigned.begin()]);

@@ -44,12 +44,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT $3, $4, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, TRUE, TRUE) AS a;
-END
+    SELECT $3, $4, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -70,12 +68,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT $3, a.end_pid, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
-END
+    SELECT $3, a.end_pid, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::BIGINT[], $4::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -96,12 +92,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT a.start_pid, $4, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
-END
+    SELECT a.start_pid, $4, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -122,11 +116,9 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT a.start_pid, a.end_pid, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
-END
+    SELECT a.start_pid, a.end_pid, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::BIGINT[], $4::BIGINT[], $5,  $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;

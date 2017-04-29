@@ -36,10 +36,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "./pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_alloc.hpp"
 
 /************************************************************
   customers_sql TEXT,
@@ -87,31 +87,31 @@ do_pgr_pickDeliverEuclidean(
                 max_cycles,
                 initial_solution_id);
 
-        err << pd_problem.get_error();
+        err << pd_problem.msg.get_error();
         if (!err.str().empty()) {
-            log << pd_problem.get_log();
+            log << pd_problem.msg.get_log();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
             return;
         }
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
 
         try {
             pd_problem.solve();
         } catch (AssertFailedException &except) {
-            log << pd_problem.get_log();
+            log << pd_problem.msg.get_log();
             throw except;
         } catch(...) {
             log << "Caught unknown exception!";
             throw;
         }
 
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
         log << "Finish solve\n";
 
         auto solution = pd_problem.get_postgres_result();
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
         log << "solution size: " << solution.size() << "\n";
 
 
@@ -123,7 +123,7 @@ do_pgr_pickDeliverEuclidean(
         }
         (*return_count) = solution.size();
 
-        log << pd_problem.get_log();
+        log << pd_problem.msg.get_log();
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?

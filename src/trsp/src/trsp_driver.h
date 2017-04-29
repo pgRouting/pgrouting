@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #define MAX_RULE_LENGTH 5
 
-#include "../../common/src/pgr_types.h"
+#include "c_types/pgr_types.h"
 typedef pgr_edge_t edge_t;
 typedef Restrict_t restrict_t;
 
