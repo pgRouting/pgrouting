@@ -2,28 +2,52 @@
 
 set -e
 
+#---------------------------------------------------------------------
+# Functions used in the script
+function error_msg() {
+
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo
+    echo
+    echo "FATAL: $1"
+    echo
+    echo
+    echo
+    echo "*****************************************************"
+    echo "*****************************************************"
+}
+
 function git_no_change {
 
 if [[ $(git status | grep 'Changes not staged for commit:') ]]; then
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo
-    echo
-    echo "FATAL: There are changes staged on git"
+    error_msg " There are changes staged on git"
     echo
     echo "HINT: Verify the changes and commit them"
     echo
     echo
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
     sleep 5
     git status
-    exit 1
+    echo "*****************************************************"
+    echo "*****************************************************"
+    #exit 1
 fi
 
 }
+
+function test_file {                                                                                                                                                        
+
+if [ -f tools/sigs/pgrouting--$1.sig ]
+then
+    echo "- [x] tools/sigs/pgrouting--$1.sig"
+else
+    echo "  FATAL: tools/sigs/pgrouting--$1.sig Not found"
+fi
+}
+
+
+#---------------------------------------------------------------------
 
 
 if [[ -z  $1 ]]; then
@@ -67,7 +91,7 @@ else
 fi
 
 
-#git_no_change
+git_no_change
 
 echo - [x] No files changed before execution.
 echo
@@ -83,22 +107,7 @@ if [[ "$GIT_BRANCH" == "$BRANCH" ]]; then
     echo "- [x] Already in branch $BRANCH";
     echo
 else
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo
-    echo
-    echo "  FATAL: Current Branch: $BRANCH";
-    echo
-    echo "  HINT: perform a:"
-    echo "\`\`\`"
-    echo git checkout $BRANCH
-    echo "\`\`\`"
-    echo
-    echo
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
+    error_msg "Current Branch is not: $BRANCH"
     exit 1
 fi
 
@@ -118,14 +127,14 @@ fi
 
 sh tools/scripts/fix_typos.sh
 
-#git_no_change
+git_no_change
 
 echo "- [x] No typos found by script"
 
 
 #---------------------------------------------------------------------
 echo
-echo "### Verify Change Log"
+echo "### Verify release_notes.rst & NEWS"
 echo
 #---------------------------------------------------------------------
  
@@ -133,208 +142,127 @@ if [[ -n $DEBUG ]]; then
     echo
     echo "\`\`\`"
     echo "grep $MAYOR.$MINOR.$MICRO doc/src/release_notes.rst | grep ref"
+    echo "grep $PREV_REL doc/src/release_notes.rst | grep ref"
+    echo "tools/release-scripts/notes2news.pl"
     echo "\`\`\`"
     echo
 fi
 
 CURRENTNEWS=$(grep $MAYOR.$MINOR.$MICRO doc/src/release_notes.rst | grep ref)
 if [[ $? != 0 ]]; then
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo
-    echo
-    echo "FATAL: Section $MAYOR.$MINOR.$MICRO in release_notes.rst file is missing"
-    echo
-    echo
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
+    error_msg "Section $MAYOR.$MINOR.$MICRO in release_notes.rst file is missing"
     exit 1
 else
     echo "- [x] release_notes.rst section $MAYOR.$MINOR.$MICRO exists"
 fi
 
-if [[ -n $DEBUG ]]; then
-    echo
-    echo "\`\`\`"
-    grep $PREV_REL doc/src/release_notes.rst | grep ref
-    echo "\`\`\`"
-    echo
-fi
+
 OLDNEWS=$(grep $PREV_REL doc/src/release_notes.rst | grep ref)
 if [[ $? != 0 ]]; then
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo
-    echo
-    echo "FATAL: Section $PREV_REL in release_notes.rst file is missing"
-    echo
-    echo
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
+    error_msg "Section $PREV_REL in release_notes.rst file is missing"
     exit 1
 else
     echo "- [x] release_notes.rst section $PREV_REL exists"
 fi
 
 
+tools/release-scripts/notes2news.pl
 
-
-
-#---------------------------------------------------------------------
-echo
-echo "### Verify Current NEWS"
-echo
-#---------------------------------------------------------------------
-
-if [[ -n $DEBUG ]]; then
-    echo "\`\`\`"
-    echo "tools/release-scripts/notes2news.pl"
-    echo "\`\`\`"
-fi
-
-echo
-
-$(tools/release-scripts/notes2news.pl)
 git_no_change
 
 echo "- [x] NEWS is up to date"
 
-if [[ $? != 0 ]]; then
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo
-    echo
-    echo "FATAL: Section $MAYOR.$MINOR.$MICRO in NEWS file is missing"
-    echo
-    echo
-    echo "*****************************************************"
-    echo "*****************************************************"
-    echo "*****************************************************"
-    exit 1
-else
-    echo "- [x] NEWS section $MAYOR.$MINOR.$MICRO exists"
-    echo 
-fi
-
-
 
 
 #---------------------------------------------------------------------
 echo
-echo "### Verify $PREV_REL NEWS & CHANGLOG"
-echo
-#---------------------------------------------------------------------
-
-echo "- [x] Checking NEWS section $PREV_REL exists"
-echo "\`\`\`"
-echo "grep $PREV_REL NEWS"
-echo "\`\`\`"
-OLDNEWS=$(grep $PREV_REL NEWS)
-if [[ $? != 0 ]]; then
-    echo "$PREV_REL NEWS are missing in NEWS file"
-    exit 1
-else
-    echo 
-fi
-
-
-#---------------------------------------------------------------------
-echo
-echo "### Check version information"
+echo "## Check version information"
 echo 
 #---------------------------------------------------------------------
-echo "- [x] Check mayor information"
-echo "\`\`\`"
-echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MAJOR \"$MAYOR\")'"
-echo "\`\`\`"
+#---------------------------------------------------------------------
+echo
+echo "- CMakeLists"
+echo 
+#---------------------------------------------------------------------
+
+if [[ -n $DEBUG ]]; then
+    echo "\`\`\`"
+    echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MAJOR \"$MAYOR\")'"
+    echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MINOR \"$MINOR\")'"
+    echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH \"$MICRO\")'"
+    echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_DEV \"$RC\")'"
+    echo "\`\`\`"
+fi
+
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MAJOR' | grep $MAYOR) != "set(PGROUTING_VERSION_MAJOR \"$MAYOR\")" ]]; then
     echo "FATAL: PGROUTING_VERSION_MAJOR is not $MAYOR"
     exit 1
 else
-    echo
+    echo "  - [x] mayor information is OK"
 fi
 
 
-echo "- [x] Check minor information"
-echo "\`\`\`"
-echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MINOR \"$MINOR\")'"
-echo "\`\`\`"
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MINOR' | grep $MINOR) !=  "set(PGROUTING_VERSION_MINOR \"$MINOR\")" ]]; then
     echo "FATAL: PGROUTING_VERSION_MINOR is not $MINOR"
     exit 1
 else
-    echo
+    echo "  - [x] Check minor information is OK"
 fi
 
-echo "- [x] Check patch information"
-echo "\`\`\`"
-echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH \"$MICRO\")'"
-echo "\`\`\`"
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH' | grep $MICRO) !=  "set(PGROUTING_VERSION_PATCH \"$MICRO\")" ]]; then
     echo "FATAL: PGROUTING_VERSION_PATCH is not $MICRO"
     exit 1
 else
-    echo
+    echo "  - [x] Check patch information is OK"
 fi
 
-echo "\`\`\`"
-echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_DEV \"$RC\")'"
-echo "\`\`\`"
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_DEV' ) !=  "set(PGROUTING_VERSION_DEV \"$RC\")" ]]; then
     echo "FATAL: PGROUTING_VERSION_DEV is not $RC"
     exit 1
 else
-    echo "- [x] Check dev information"
-    echo 
+    echo "  - [x] Check dev information is OK"
 fi
 
 
 #---------------------------------------------------------------------
 echo
-echo "### Check pgr_version test result"
+echo "- src/common/test/doc-pgr_version.result"
 echo 
 #---------------------------------------------------------------------
 
-echo "\`\`\`"
-echo "cat doc/test/utilities-any.result | grep \"$MAYOR.$MINOR.$MICRO\""
-echo "\`\`\`"
-if [[ $(cat doc/test/utilities-any.result | grep "$MAYOR.$MINOR.$MICRO") != "$MAYOR.$MINOR.$MICRO" ]]; then
-    echo "FATAL: doc/test/utilities-any.result is not $MAYOR.$MINOR.$MICRO"
+if [[ -n $DEBUG ]]; then
+    echo "\`\`\`"
+    echo "cat src/common/test/doc-pgr_version.result | grep \"$MAYOR.$MINOR.$MICRO\""
+    echo "\`\`\`"
+fi
+
+if [[ $(cat src/common/test/doc-pgr_version.result | grep "$MAYOR.$MINOR.$MICRO") != " $MAYOR.$MINOR.$MICRO" ]]; then
+    error_msg "src/common/test/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO"
     exit 1
 else
     echo "- [x] pgr_version result: OK"
-    echo 
 fi
 
-echo "\`\`\`"
-echo "cat VERSION | grep \"release/$MAYOR.$MINOR\""
-echo "\`\`\`"
+#---------------------------------------------------------------------
+echo
+echo "- VERSION"
+echo 
+#---------------------------------------------------------------------
+if [[ -n $DEBUG ]]; then
+    echo "\`\`\`"
+    echo "cat VERSION | grep \"release/$MAYOR.$MINOR\""
+    echo "\`\`\`"
+fi
 if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
-    echo "FATAL: VERSION branch should be release/$MAYOR.$MINOR"
+    error_msg "FATAL: VERSION branch should be release/$MAYOR.$MINOR"
     exit 1
 else
     echo "  -[x] VERSION file branch: OK"
-    echo 
 fi
-
-#---------------------------------------------------------------------
-function test_file {                                                                                                                                                        
-
-if [ -f tools/sigs/pgrouting--$1.sig ]
-then
-    echo "- [x] tools/sigs/pgrouting--$1.sig"
-else
-    echo "  FATAL: tools/sigs/pgrouting--$1.sig Not found"
-fi
-}
 
 #---------------------------------------------------------------------
 echo "### Checking signature files"
+test_file $PREV_REL
 test_file 2.4.0
 test_file 2.3.2
 test_file 2.3.1
