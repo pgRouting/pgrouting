@@ -67,7 +67,7 @@ else
 fi
 
 
-git_no_change
+#git_no_change
 
 echo - [x] No files changed before execution.
 echo
@@ -80,8 +80,8 @@ echo
 GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
 if [[ "$GIT_BRANCH" == "$BRANCH" ]]; then
-   echo " - [x] Already in branch $BRANCH";
-echo
+    echo "- [x] Already in branch $BRANCH";
+    echo
 else
     echo "*****************************************************"
     echo "*****************************************************"
@@ -90,7 +90,7 @@ else
     echo
     echo "  FATAL: Current Branch: $BRANCH";
     echo
-    echo "  HINT: perform a:
+    echo "  HINT: perform a:"
     echo "\`\`\`"
     echo git checkout $BRANCH
     echo "\`\`\`"
@@ -108,50 +108,119 @@ echo "### Verify typos"
 echo
 #---------------------------------------------------------------------
 
-echo "\`\`\`"
-echo sh tools/scripts/fix_typos.sh
-echo "\`\`\`"
+if [[ -n $DEBUG ]]; then
+    echo
+    echo "\`\`\`"
+    echo sh tools/scripts/fix_typos.sh
+    echo "\`\`\`"
+    echo
+fi
 
 sh tools/scripts/fix_typos.sh
 
-if [[ $? != 0 ]]; then
-    echo "FATAL: Typos were found"
-    exit 1
-else
-    echo "- [x] Typos checked: OK"
-fi
+#git_no_change
+
+echo "- [x] No typos found by script"
 
 
 #---------------------------------------------------------------------
 echo
-echo "### Verify Current NEWS & CHANGLOG"
+echo "### Verify Change Log"
 echo
 #---------------------------------------------------------------------
-echo
-echo "- [x] Checking NEWS section $MAYOR.$MINOR.$MICRO exists"
-echo "\`\`\`"
-echo "grep $MAYOR.$MINOR.$MICRO NEWS"
-echo "\`\`\`"
-CURRENTNEWS=$(grep $MAYOR.$MINOR.$MICRO NEWS)
-if [[ $? != 0 ]]; then
-    echo "FATAL: Section $MAYOR.$MINOR.$MICRO in NEWS file is missing"
-    exit 1
-else
-    echo 
+ 
+if [[ -n $DEBUG ]]; then
+    echo
+    echo "\`\`\`"
+    echo "grep $MAYOR.$MINOR.$MICRO doc/src/release_notes.rst | grep ref"
+    echo "\`\`\`"
+    echo
 fi
 
-
-echo "- [x] Checking release_notes.rst file section $MAYOR.$MINOR.$MICRO exists"
-echo "\`\`\`"
-echo "grep $MAYOR.$MINOR.$MICRO doc/src/release_notes.rst | grep ref"
-echo "\`\`\`"
 CURRENTNEWS=$(grep $MAYOR.$MINOR.$MICRO doc/src/release_notes.rst | grep ref)
 if [[ $? != 0 ]]; then
-    echo "FATAL: Section $MAYOR.$MINOR.$MICRO in release_notes.rst file are missing"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo
+    echo
+    echo "FATAL: Section $MAYOR.$MINOR.$MICRO in release_notes.rst file is missing"
+    echo
+    echo
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
     exit 1
 else
+    echo "- [x] release_notes.rst section $MAYOR.$MINOR.$MICRO exists"
+fi
+
+if [[ -n $DEBUG ]]; then
+    echo
+    echo "\`\`\`"
+    grep $PREV_REL doc/src/release_notes.rst | grep ref
+    echo "\`\`\`"
+    echo
+fi
+OLDNEWS=$(grep $PREV_REL doc/src/release_notes.rst | grep ref)
+if [[ $? != 0 ]]; then
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo
+    echo
+    echo "FATAL: Section $PREV_REL in release_notes.rst file is missing"
+    echo
+    echo
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    exit 1
+else
+    echo "- [x] release_notes.rst section $PREV_REL exists"
+fi
+
+
+
+
+
+#---------------------------------------------------------------------
+echo
+echo "### Verify Current NEWS"
+echo
+#---------------------------------------------------------------------
+
+if [[ -n $DEBUG ]]; then
+    echo "\`\`\`"
+    echo "tools/release-scripts/notes2news.pl"
+    echo "\`\`\`"
+fi
+
+echo
+
+$(tools/release-scripts/notes2news.pl)
+git_no_change
+
+echo "- [x] NEWS is up to date"
+
+if [[ $? != 0 ]]; then
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo
+    echo
+    echo "FATAL: Section $MAYOR.$MINOR.$MICRO in NEWS file is missing"
+    echo
+    echo
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    exit 1
+else
+    echo "- [x] NEWS section $MAYOR.$MINOR.$MICRO exists"
     echo 
 fi
+
 
 
 
@@ -172,21 +241,6 @@ if [[ $? != 0 ]]; then
 else
     echo 
 fi
-
-
-echo "- [x] Checking release_notes.rst section $PREV_REL exists"
-echo "\`\`\`"
-grep $PREV_REL doc/src/release_notes.rst | grep ref
-echo "\`\`\`"
-OLDNEWS=$(grep $PREV_REL doc/src/release_notes.rst | grep ref)
-if [[ $? != 0 ]]; then
-    echo "$PREV_REL NEWS are missing in release_notes.rst file"
-    exit 1
-else
-    echo 
-fi
-
-
 
 
 #---------------------------------------------------------------------
