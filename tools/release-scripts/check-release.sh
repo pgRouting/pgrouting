@@ -38,11 +38,12 @@ fi
 
 function test_file {                                                                                                                                                        
 
-if [ -f tools/sigs/pgrouting--$1.sig ]
+if [ -f sql/sigs/pgrouting--$1.sig ]
 then
-    echo "- [x] tools/sigs/pgrouting--$1.sig"
+    echo "- [x] sql/sigs/pgrouting--$1.sig"
 else
-    echo "  FATAL: tools/sigs/pgrouting--$1.sig Not found"
+    error_msg "  FATAL: tools/sigs/pgrouting--$1.sig Not found"
+    exit 1
 fi
 }
 
@@ -53,42 +54,44 @@ fi
 if [[ -z  $1 ]]; then
     echo "Mayor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last [branch]";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
     exit 1;
 fi
 if [[ -z  $2 ]]; then
     echo "Minor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last [branch]";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
     exit 1;
 fi
 
 if [[ -z  $3 ]]; then
     echo "Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last [branch]";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
     exit 1;
 fi
 
 if [[ -z  $4 ]]; then
     echo "Last Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last [branch]";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
     exit 1;
 fi
 
+
+if [[ -z  $4 ]]; then
+    echo "Last Micro missing";
+    echo "Usage"
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
+    exit 1;
+fi
 
 MAYOR=$1
 MINOR=$2
 MICRO=$3
 PREV_REL=$4
 RC="-dev"
-
-if [[ -z  $5 ]]; then
-    BRANCH="release/$MAYOR.$MINOR"
-else
-    BRANCH=$5
-fi
+BRANCH=$5
 
 
 git_no_change
@@ -182,7 +185,6 @@ echo
 #---------------------------------------------------------------------
 echo
 echo "- CMakeLists"
-echo 
 #---------------------------------------------------------------------
 
 if [[ -n $DEBUG ]]; then
@@ -225,9 +227,9 @@ fi
 
 
 #---------------------------------------------------------------------
-echo
+
 echo "- src/common/test/doc-pgr_version.result"
-echo 
+
 #---------------------------------------------------------------------
 
 if [[ -n $DEBUG ]]; then
@@ -240,28 +242,33 @@ if [[ $(cat src/common/test/doc-pgr_version.result | grep "$MAYOR.$MINOR.$MICRO"
     error_msg "src/common/test/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO"
     exit 1
 else
-    echo "- [x] pgr_version result: OK"
+    echo "  - [x]  src/common/test/doc-pgr_version.result"
 fi
 
 #---------------------------------------------------------------------
-echo
+
 echo "- VERSION"
-echo 
+
 #---------------------------------------------------------------------
+
 if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
     echo "cat VERSION | grep \"release/$MAYOR.$MINOR\""
     echo "\`\`\`"
 fi
+
 if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
-    error_msg "FATAL: VERSION branch should be release/$MAYOR.$MINOR"
+    error_msg "VERSION should have release/$MAYOR.$MINOR"
     exit 1
 else
     echo "  -[x] VERSION file branch: OK"
 fi
 
 #---------------------------------------------------------------------
+echo
 echo "### Checking signature files"
+echo
+#---------------------------------------------------------------------
 test_file $PREV_REL
 test_file 2.4.0
 test_file 2.3.2
@@ -278,19 +285,25 @@ test_file 2.0.0
 
 
 #---------------------------------------------------------------------
+echo
 echo "### Locally make a clean build as Release"
+echo
 #---------------------------------------------------------------------
-echo "\`\`\`"
-echo "bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO"
-echo "bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO"
-echo "bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO"
-echo "bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO"
-echo "\`\`\`"
+if [[ -n $DEBUG ]]; then
+    echo "\`\`\`"
+    echo "bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO"
+    echo "bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO"
+    echo "bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO"
+    echo "bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO"
+    echo "\`\`\`"
+fi
 
 
-bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO
-bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
-bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
+if [[ "$BRANGH" == "develop" || $BRANCH == "master" ]]; then
+    bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO
+    bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
+    bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
+fi
 bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
 
 echo - [x] completed local builds
