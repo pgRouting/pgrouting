@@ -2,6 +2,30 @@
 
 set -e
 
+function git_no_change {
+
+if [[ $(git status | grep 'Changes not staged for commit:') ]]; then
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo
+    echo
+    echo "FATAL: There are changes staged on git"
+    echo
+    echo "HINT: Verify the changes and commit them"
+    echo
+    echo
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    sleep 5
+    git status
+    exit 1
+fi
+
+}
+
+
 if [[ -z  $1 ]]; then
     echo "Mayor missing";
     echo "Usage"
@@ -41,6 +65,11 @@ if [[ -z  $5 ]]; then
 else
     BRANCH=$5
 fi
+
+
+git_no_change
+
+echo - [x] No files changed before execution.
 
 #---------------------------------------------------------------------
 echo "### Verify branch to be $BRANCH"

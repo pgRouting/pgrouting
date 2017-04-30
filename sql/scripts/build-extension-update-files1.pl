@@ -107,7 +107,7 @@ sub read_and_parse_signature_file {
     open(IN, $file) || die "ERROR: Failed to open '$file'\n";
 
     # state:
-    # 0 - starting proces
+    # 0 - starting process
     # 1 - processing types
     # 2 - processing functions
     # Other kinds of postgres objctes are not used in 2.x version of pgRouting
@@ -231,7 +231,7 @@ sub generate_upgrade_script {
     for my $x (@{$otype}) {
         my $name = lc($x);
         if (!exists $ntype_h{$name}) {
-            #types no longer used are droped form the extension
+            #types no longer used are dropped form the extension
             push @commands, "ALTER EXTENSION pgrouting DROP TYPE $name;\n";
             push @commands, "DROP TYPE $name;\n";
         } else {

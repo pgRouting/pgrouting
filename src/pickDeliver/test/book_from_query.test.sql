@@ -38,9 +38,9 @@ CREATE TABLE jet_flyers AS
     s1.iata_faa  AS from_airport,
     s2.iata_faa  AS to_airport,
     (1 + mod(s1.id, 5))::integer AS num_passengers,
-    -- the passengers dont want to depart before this time
+    -- the passengers don't want to depart before this time
     mod(s1.id,7)*60 AS departureFromTime,
-    -- the passengers dont want to arrive after this time
+    -- the passengers don't want to arrive after this time
     (mod(s1.id,7) + 4) * 60 AS arrivalToTime
     FROM
     -- people departing from BOS BGR MIA TEB

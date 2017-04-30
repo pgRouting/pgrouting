@@ -82,7 +82,7 @@ class PD_Orders : public PD_problem {
      o_const_iterator end() const {return m_orders.end();}
      /*!@}*/
 
-     // TODO(vicky) this should be private called by the contructor
+     // TODO(vicky) this should be private called by the constructor
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders);
 };

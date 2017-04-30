@@ -206,7 +206,7 @@ Fleet::is_fleet_ok() const {
     for (auto truck : m_trucks) {
         if (!(truck.start_site().is_start()
                     && truck.end_site().is_end())) {
-            pgassertwm(false, "should never pass thru here");
+            pgassertwm(false, "should never pass through here");
             msg.error << "Illegal values found on vehicle";
             return false;
         }
@@ -239,7 +239,7 @@ Fleet::is_order_ok(const Order &order) const {
         if (!order.is_valid(truck.speed())) continue; 
 
         /*
-         * if its feasable, then the one truck is found
+         * if its feasible, then the one truck is found
          */
         if (truck.is_order_feasable(order)) {
             return true;
