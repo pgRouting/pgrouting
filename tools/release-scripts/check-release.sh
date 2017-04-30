@@ -70,6 +70,7 @@ fi
 git_no_change
 
 echo - [x] No files changed before execution.
+echo
 
 #---------------------------------------------------------------------
 echo "### Verify branch to be $BRANCH"
@@ -77,17 +78,28 @@ echo
 #---------------------------------------------------------------------
 
 GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-echo "- [x] Working Branch: $BRANCH";
-echo
 
 if [[ "$GIT_BRANCH" == "$BRANCH" ]]; then
-   echo "  - [x] Already in branch $BRANCH";
+   echo " - [x] Already in branch $BRANCH";
+echo
 else
-   echo "  - Current Branch: $BRANCH";
-   echo "\`\`\`"
-   echo git checkout $BRANCH
-   echo "\`\`\`"
-   exit 1
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo
+    echo
+    echo "  FATAL: Current Branch: $BRANCH";
+    echo
+    echo "  HINT: perform a:
+    echo "\`\`\`"
+    echo git checkout $BRANCH
+    echo "\`\`\`"
+    echo
+    echo
+    echo "*****************************************************"
+    echo "*****************************************************"
+    echo "*****************************************************"
+    exit 1
 fi
 
 #---------------------------------------------------------------------
