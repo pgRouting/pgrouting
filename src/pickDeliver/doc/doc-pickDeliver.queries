@@ -17,10 +17,10 @@ SELECT * FROM pgr_pickDeliver(
     SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
     FROM A, A AS B WHERE A.id != B.id',
     30);
-ERROR:  function pgr_pickdeliver(unknown, unknown, unknown, integer) does not exist
-LINE 1: SELECT * FROM pgr_pickDeliver(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+ seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo | travel_time | arrival_time | wait_time | service_time | departure_time 
+-----+----------------+------------+-------------+----------+-----------+-------+-------------+--------------+-----------+--------------+----------------
+(0 rows)
+
 --q2
 ROLLBACK;
 ROLLBACK
