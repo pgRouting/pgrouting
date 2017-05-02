@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./vehicle_pickDeliver.h"
+#include "vrp/vehicle_pickDeliver.h"
 
 #include <iostream>
 #include <deque>
@@ -33,10 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 
-#include "./../../common/src/pgr_assert.h"
-#include "./order.h"
-#include "./vehicle.h"
-#include "./pgr_pickDeliver.h"
+#include "cpp_common/pgr_assert.h"
+#include "vrp/order.h"
+#include "vrp/vehicle.h"
+#include "vrp/pgr_pickDeliver.h"
 
 
 
@@ -85,8 +85,7 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         double p_capacity,
         double p_speed) :
     Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed),
-    cost((std::numeric_limits<double>::max)())
-    {
+    cost((std::numeric_limits<double>::max)()) {
         m_orders_in_vehicle.clear();
 
         invariant();
@@ -301,10 +300,12 @@ Vehicle_pickDeliver::do_while_feasable(
             assigned += order.id();
             unassigned -= order.id();
             if (kind == 5) {
-                current_feasable = m_orders[order.id()].subsetJ(current_feasable);
+                current_feasable = m_orders[order.id()].subsetJ(
+                        current_feasable);
             }
             if (kind == 6) {
-                current_feasable = m_orders[order.id()].subsetI(current_feasable);
+                current_feasable = m_orders[order.id()].subsetI(
+                        current_feasable);
             }
         }
 

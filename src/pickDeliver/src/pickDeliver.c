@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliverEuclidean.c
+File: pickDeliver.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,29 +27,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
-#include "utils/array.h"
-
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/e_report.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/orders_input.h"
-#include "./../../common/src/vehicles_input.h"
-#include "./../../common/src/matrixRows_input.h"
-
-
-#if 0
+#include "c_common/postgres_connection.h"
+#include "c_common/debug_macro.h"
+#include "c_common/e_report.h"
+#include "c_common/time_msg.h"
+#include "c_common/orders_input.h"
+#include "c_common/vehicles_input.h"
+#include "c_common/matrixRows_input.h"
 #include "./pickDeliver_driver.h"
-#endif
 
 PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(pickDeliver);
 
 
-/*********************************************************************/
-/*                MODIFY AS NEEDED                                   */
 static
 void
 process(
@@ -57,10 +48,19 @@ process(
         char* vehicles_sql,
         char* matrix_sql,
         int max_cycles,
+        int initial_solution_id,
+
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
     if (max_cycles < 0) {
-        elog(ERROR, "Illegal value in parameter: max_cycles %d", max_cycles);
+        elog(ERROR, "Illegal value in parameter: max_cycles");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+
+    if (initial_solution_id < 0 || initial_solution_id > 6) {
+        elog(ERROR, "Illegal value in parameter: initial");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         return;
@@ -82,25 +82,26 @@ process(
     PGR_DBG("total vehicles %ld", total_vehicles);
 
     for (size_t i = 0; i < total_vehicles; i++) {
-        PGR_DBG("%ld %f %f / %f %f %f %f %f / %f %f %f %f %f / %ld ",
+        PGR_DBG("%ld %f %f / %ld %f %f %f %f %f / %ld %f %f %f %f %f / %ld ",
                vehicles_arr[i].id,
                vehicles_arr[i].capacity,
                vehicles_arr[i].speed,
 
+               vehicles_arr[i].start_node_id,
                vehicles_arr[i].start_x,
                vehicles_arr[i].start_y,
                vehicles_arr[i].start_open_t,
                vehicles_arr[i].start_close_t,
                vehicles_arr[i].start_service_t,
 
+               vehicles_arr[i].end_node_id,
                vehicles_arr[i].end_x,
                vehicles_arr[i].end_y,
                vehicles_arr[i].end_open_t,
                vehicles_arr[i].end_close_t,
                vehicles_arr[i].end_service_t,
 
-               vehicles_arr[i].cant_v
-               );
+               vehicles_arr[i].cant_v);
     }
 
     PGR_DBG("load matrix");
@@ -125,11 +126,13 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-#if 0
+
     do_pgr_pickDeliver(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
+            matrix_cells_arr, total_cells,
             max_cycles,
+            initial_solution_id,
 
             result_tuples,
             result_count,
@@ -137,17 +140,19 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-#endif
 
-    time_msg("_pgr_ipickDeliver", start_t, clock());
+    time_msg("pgr_pickDeliver", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
         (*result_count) = 0;
         (*result_tuples) = NULL;
     }
-
+#if 1
     pgr_global_report(log_msg, notice_msg, err_msg);
+#else
+    pgr_global_report(notice_msg, log_msg, err_msg);
+#endif
 
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
@@ -157,10 +162,12 @@ process(
     if (matrix_cells_arr) pfree(matrix_cells_arr);
 
     pgr_SPI_finish();
-
 }
-/*                                                                            */
+
+
+
 /******************************************************************************/
+
 
 PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS) {
@@ -168,11 +175,8 @@ pickDeliver(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     General_vehicle_orders_t *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -180,14 +184,11 @@ pickDeliver(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
+        /**********************************************************************
            orders_sql TEXT,
-           max_vehicles INTEGER,
-           capacity FLOAT,
-           speed FLOAT,
-           max_cycles INTEGER,
+           vehicles_sql TEXT,
+           matrix_cell_sql TEXT,
+           max_cycles INTEGER DEFAULT 10,
          **********************************************************************/
 
         PGR_DBG("Calling process");
@@ -196,10 +197,10 @@ pickDeliver(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
                 PG_GETARG_INT32(3),
+                PG_GETARG_INT32(4),
                 &result_tuples,
                 &result_count);
 
-        /*                                                                   */
         /*********************************************************************/
 
 #if PGSQL_VERSION > 95
@@ -231,16 +232,21 @@ pickDeliver(PG_FUNCTION_ARGS) {
         bool*       nulls;
         size_t      call_cntr = funcctx->call_cntr;
 
-        /*********************************************************************/
-        /*                          MODIFY!!!!!                              */
-        /* This has to match you output otherwise the server crashes          */
-        /*
-           OUT seq INTEGER,
-           OUT vehicle_id INTEGER,
-           OUT vehicle_seq INTEGER,
-           OUT order_id BIGINT,
-           OUT cost FLOAT,
-           OUT agg_cost FLOAT
+        /*********************************************************************
+
+          OUT seq INTEGER,
+          OUT vehicle_number INTEGER,
+          OUT vehicle_id BIGINT,
+          OUT vehicle_seq INTEGER,
+          OUT order_id BIGINT,
+          OUT stop_type INT,
+          OUT cargo FLOAT,
+          OUT travel_time FLOAT,
+          OUT arrival_time FLOAT,
+          OUT wait_time FLOAT,
+          OUT service_time FLOAT,
+          OUT departure_time FLOAT
+
          *********************************************************************/
 
 
@@ -254,7 +260,6 @@ pickDeliver(PG_FUNCTION_ARGS) {
         }
 
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_number);
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);

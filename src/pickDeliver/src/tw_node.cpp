@@ -23,12 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./tw_node.h"
+#include "vrp/tw_node.h"
 
 #include <limits>
 #include <string>
 
-#include "./../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
 
 namespace pgrouting {
@@ -38,6 +38,7 @@ namespace vrp {
 double
 Tw_node::travel_time_to(const Node &other, double speed) const {
     pgassert(speed != 0);
+     /*! @todo TODO evaluate with matrix also*/
     return distance(other) / speed;
 }
 
@@ -91,7 +92,9 @@ Tw_node::is_tight_compatible_IJ(const Tw_node &I, double speed) const {
 }
 
 bool
-Tw_node::is_partially_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
+Tw_node::is_partially_waitTime_compatible_IJ(
+        const Tw_node &I,
+        double speed) const {
     return
         is_compatible_IJ(I, speed)
          && is_early_arrival(arrival_j_opens_i(I, speed));
@@ -180,7 +183,7 @@ Tw_node::is_end() const {
 bool
 Tw_node::operator ==(const Tw_node &rhs) const {
     if (&rhs == this) return true;
-    return (static_cast<Node>(*this) == static_cast<Node>(rhs));
+    return (dynamic_cast<const Node*>(this) == dynamic_cast<const Node*>(&rhs));
 }
 
 
@@ -243,7 +246,7 @@ Tw_node::Tw_node(
         size_t id,
         Vehicle_t data,
         NodeType type) :
-    Node(id, data.id, data.start_x, data.start_y),
+    Node(id, data.start_node_id, data.start_x, data.start_y),
     m_opens(data.start_open_t),
     m_closes(data.start_close_t),
     m_service_time(data.start_service_t),
@@ -251,6 +254,7 @@ Tw_node::Tw_node(
     m_type(type) {
         if (m_type == kEnd) {
             m_point = pgrouting::Point(data.end_x, data.end_y);
+            m_original_id = data.end_node_id;
             m_opens = data.end_open_t;
             m_closes = data.end_close_t;
             m_service_time = data.end_service_t;

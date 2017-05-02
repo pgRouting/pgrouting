@@ -2,7 +2,7 @@
 File: pickDeliverEuclidean.c
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -27,15 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/e_report.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/orders_input.h"
-#include "./../../common/src/vehicles_input.h"
+#include "c_common/debug_macro.h"
+#include "c_common/e_report.h"
+#include "c_common/time_msg.h"
+#include "c_common/orders_input.h"
+#include "c_common/vehicles_input.h"
 
 #include "./pickDeliverEuclidean_driver.h"
 
@@ -50,10 +49,21 @@ process(
         char* pd_orders_sql,
         char* vehicles_sql,
         int max_cycles,
+        int initial_solution_id,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
     if (max_cycles < 0) {
-        elog(ERROR, "Illegal value in parameter: max_cycles %d", max_cycles);
+        ereport(ERROR,
+                (errcode(ERRCODE_INTERNAL_ERROR),
+                 errmsg("Illegal value in parameter: max_cycles"),
+                 errhint("Negative value found: max_cycles: %d ", max_cycles)));
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+
+    if (initial_solution_id <= 0 || initial_solution_id > 6) {
+        elog(ERROR, "Illegal value in parameter: initial");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         return;
@@ -130,15 +140,15 @@ process(
     PGR_DBG("Total %ld orders in query:", total_pd_orders);
 
     PGR_DBG("Starting processing");
-            clock_t start_t = clock();
+    clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-#if 1
     do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
             max_cycles,
+            initial_solution_id,
 
             result_tuples,
             result_count,
@@ -146,7 +156,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-#endif
     time_msg("_pgr_pickDeliverEuclidean", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
@@ -191,10 +200,9 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
            orders_sql TEXT,
-           max_vehicles INTEGER,
-           capacity FLOAT,
-           speed FLOAT,
+           vehicles_sql INTEGER,
            max_cycles INTEGER,
+           initial_id INTEGER,
          **********************************************************************/
 
         PGR_DBG("Calling process");
@@ -202,6 +210,7 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT32(2),
+                PG_GETARG_INT32(3),
                 &result_tuples,
                 &result_count);
 

@@ -26,66 +26,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <sstream>
-#include "./pgr_messages.h"
+#include "vrp/pgr_messages.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
 
-/*! \brief get log (hints) messages
- *
- * \returns the current contents of the log and clears the log
- *
- */
 std::string
-Pgr_messages::get_log() {
-    std::string str = log.str();
-    log.str("");
-    log.clear();
-    return str;
+Pgr_messages::get_log() const {
+    return log.str();
 }
 
-/*! \brief get notice messages
- *
- * \returns the current contents of the log and clears the log
- *
- */
 std::string
-Pgr_messages::get_notice() {
-    std::string str = notice.str();
-    notice.str("");
-    notice.clear();
-    return str;
+Pgr_messages::get_notice() const {
+    return notice.str();
 }
 
-/*! \brief get error messages
- *
- * \returns the current contents of the log and clears the log
- *
- */
 std::string
-Pgr_messages::get_error() {
-    std::string str = error.str();
-    error.str("");
-    error.clear();
-    return str;
+Pgr_messages::get_error() const {
+    return error.str();
 }
 
 #ifndef NDEBUG
-/*! \brief get debugging logs
- *
- * \returns the current contents of the log and clears the log
- *
- */
 std::string
-Pgr_messages::get_dbglog() {
-    std::string str = dbg_log.str();
-    dbg_log.str("");
-    dbg_log.clear();
-    return str;
+Pgr_messages::get_dbglog() const{
+    return dbg_log.str();
 }
 #endif
+
+void
+Pgr_messages::clear() {
+    log.str("");
+    log.clear();
+
+    notice.str("");
+    notice.clear();
+
+    error.str("");
+    error.clear();
+
+#ifndef NDEBUG
+    dbg_log.str("");
+    dbg_log.clear();
+#endif
+}
 
 
 }  //  namespace vrp

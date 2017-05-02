@@ -22,15 +22,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./postgres_connection.h"
+#include "c_common/vehicles_input.h"
 
 #include <limits.h>
 
-#include "./debug_macro.h"
-#include "./pgr_types.h"
-#include "./get_check_data.h"
-#include "./vehicles_input.h"
-#include "./time_msg.h"
+#include "c_types/column_info_t.h"
+
+#include "c_common/debug_macro.h"
+#include "c_common/get_check_data.h"
+#include "c_common/time_msg.h"
 
 
 static
@@ -51,6 +51,9 @@ void fetch_vehicles(
         0 :
         pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
 
+    vehicle->speed = column_found(info[13].colNumber) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[13]) :
+        1;
     vehicle->cant_v =  column_found(info[4].colNumber) ?
         pgr_SPI_getBigInt(tuple, tupdesc, info[4]) :
         1;
@@ -94,48 +97,6 @@ void fetch_vehicles(
 }
 
 
-#if 0
-static
-void fetch_vehicles_with_id(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info[14],
-        Vehicle_t *vehicle) {
-
-    vehicle->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    vehicle->capacity = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
-    vehicle->cant_v =  column_found(info[2].colNumber) ?
-        pgr_SPI_getBigInt(tuple, tupdesc, info[2]) :
-        1;
-    vehicle->start_node_id = pgr_SPI_getBigInt(tuple, tupdesc, info[3]);
-
-    vehicle->start_open_t = column_found(info[4].colNumber) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[4]) :
-        0;
-    vehicle->start_close_t = column_found(info[5].colNumber) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[5]) :
-        DBL_MAX;
-    vehicle->start_service_t = column_found(info[6].colNumber) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[6]) :
-        0;
-
-    vehicle->end_node_id = column_found(info[7].colNumber) ?
-        pgr_SPI_getBigInt(tuple, tupdesc, info[7]) :
-        vehicle->start_node_id;
-    vehicle->end_open_t = column_found(info[8].colNumber) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[8]) :
-        vehicle->start_open_t;
-    vehicle->end_close_t = column_found(info[9].colNumber) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[9]) :
-        vehicle->start_close_t;
-    vehicle->end_service_t = column_found(info[10].colNumber) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[10]) :
-        vehicle->start_service_t;
-    vehicle->speed = column_found(info[11].colNumber) ?
-        pgr_SPI_getFloat8(tuple, tupdesc, info[11]) :
-        1;
-}
-#endif
 
 static
 void pgr_get_vehicles_general(
@@ -255,7 +216,11 @@ void pgr_get_vehicles_general(
     }
 
     (*total_vehicles) = total_tuples;
-    PGR_DBG("Finish reading %ld vehicles for eucledian", (*total_vehicles));
+    if (with_id) {
+        PGR_DBG("Finish reading %ld vehicles for matrix", (*total_vehicles));
+    } else {
+        PGR_DBG("Finish reading %ld vehicles for eucledian", (*total_vehicles));
+    }
     time_msg("reading edges", start_t, clock());
 
 }

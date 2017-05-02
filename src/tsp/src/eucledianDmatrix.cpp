@@ -24,14 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./eucledianDmatrix.h"
+#include "tsp/eucledianDmatrix.h"
 
 #include <algorithm>
 #include <vector>
 #include <cmath>
 
-#include "./tour.h"
-#include "../../common/src/pgr_assert.h"
+#include "tsp/tour.h"
+#include "cpp_common/pgr_assert.h"
 
 
 namespace pgrouting {

@@ -382,6 +382,7 @@ include_directories(${CGAL_INCLUDE_DIR})
 set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/common/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
+    ${PGROUTING_SOURCE_DIR}/include
     )
 
 #-------

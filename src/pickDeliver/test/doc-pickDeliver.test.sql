@@ -1,21 +1,17 @@
-/*
-TODO code to create the eucledian matrix table and to modify the orders
-
 \echo --q1
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
-    'SELECT * from dist_matrix',
+    'WITH
+    A AS (
+        SELECT p_node_id AS id, p_x AS x, p_y AS y FROM orders
+        UNION
+        SELECT d_node_id AS id, d_x, d_y FROM orders
+        UNION
+        SELECT start_node_id, start_x, start_y FROM vehicles
+    )
+    SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
+    FROM A, A AS B WHERE A.id != B.id',
     30);
 
-*/
 \echo --q2
-SELECT * FROM _pgr_pickDeliver(
-    'select * from customer order by id', 25, 200, 1, 30);
-\echo --q3
-
-SELECT * FROM _pgr_pickDeliver(
-    'SELECT * FROM orders ORDER BY id',
-    'SELECT * FROM vehicles',
-    30);
-\echo --q4

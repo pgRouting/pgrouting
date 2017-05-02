@@ -97,7 +97,7 @@ Description of the Signature
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../sql/dijkstra/dijkstraVia.sql
+.. include:: pgRouting-concepts.rst
     :start-after: pgr_dijkstra_via_parameters_start
     :end-before: pgr_dijkstra_via_parameters_end
 

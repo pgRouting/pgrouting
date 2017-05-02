@@ -27,17 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/e_report.h"
-#include "./../../common/src/edges_input.h"
-#include "./../../common/src/points_input.h"
-#include "./../../withPoints/src/get_new_queries.h"
-#include "./withPoints_ksp_driver.h"
-#include "./../../common/src/debug_macro.h"
+#include "c_common/time_msg.h"
+#include "c_common/e_report.h"
+
+#include "c_common/edges_input.h"
+#include "c_common/points_input.h"
+
+#include "drivers/withPoints/get_new_queries.h"
+#include "drivers/yen/withPoints_ksp_driver.h"
+#include "c_common/debug_macro.h"
 
 PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(withPoints_ksp);

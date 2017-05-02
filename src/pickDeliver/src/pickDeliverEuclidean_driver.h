@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver_driver.h
+File: pickDeliverEuclidean_driver.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,11 +25,16 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#pragma once
-#ifndef SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
-#define SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
 
-#include "./../../common/src/pgr_types.h"
+/*! @file pickDeliverEuclidean_driver.h */
+
+#ifndef SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
+#define SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
+#pragma once
+
+#include "c_types/pickDeliver/general_vehicle_orders_t.h"
+#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
+#include "c_types/pickDeliver/vehicle_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,6 +51,7 @@ extern "C" {
             Vehicle_t *vehicles_arr, size_t total_vehicles,
 
             int max_cycles,
+            int initial_solution_id,
 
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,
@@ -59,4 +65,4 @@ extern "C" {
 }
 #endif
 
-#endif  //  SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
+#endif  // SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_

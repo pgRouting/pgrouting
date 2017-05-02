@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
--- Legacy FUNCTIONs that were ment to be used by
--- Temporarly while the rewrite of 2.0
+-- Legacy FUNCTIONs that were meant to be used by
+-- Temporarily while the rewrite of 2.0
 -- These FUNCTIONs wer used on the plpgsql functions
 
 

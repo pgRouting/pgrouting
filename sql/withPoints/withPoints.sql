@@ -30,121 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
 ONE TO ONE
 */
-
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pid BIGINT,
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    only_cost BOOLEAN DEFAULT false, -- gets path
-
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'one_to_one_withPoints'
-LANGUAGE c VOLATILE;
-
-/*
-ONE TO MANY
-*/
-
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pids ANYARRAY,
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    only_cost BOOLEAN DEFAULT false, -- gets path
-
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT end_pid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'one_to_many_withPoints'
-LANGUAGE c VOLATILE;
-
-
-/*
-MANY TO ONE
-*/
-
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pids ANYARRAY,
-    end_pid BIGINT,
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    only_cost BOOLEAN DEFAULT false, -- gets path
-
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_pid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'many_to_one_withPoints'
-LANGUAGE c VOLATILE;
-
-
-
-
-/*
-MANY TO MANY
-*/
-
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pids ANYARRAY,
-    end_pids ANYARRAY,
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    only_cost BOOLEAN DEFAULT false, -- gets path
-
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_pid BIGINT,
-    OUT end_pid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'many_to_many_withPoints'
-LANGUAGE c VOLATILE;
-
-
-
-
-/*
-ONE TO ONE
-*/
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -162,14 +47,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
-    END
-    $BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100
-    ROWS 1000;
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::bigint[], ARRAY[$4]::bigint[], $5, $6, $7) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 
 /*
@@ -193,14 +76,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
-    END
-    $BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100
-    ROWS 1000;
+SELECT a.seq, a.path_seq, a.end_pid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::bigint[], $4::bigint[], $5, $6, $7) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 /*
 MANY TO ONE
@@ -223,14 +104,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
-    END
-    $BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100
-    ROWS 1000;
+SELECT a.seq, a.path_seq, a.start_pid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::bigint[], ARRAY[$4]::bigint[], $5, $6, $7, FALSE, FALSE) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 /*
 MANY TO MANY
@@ -254,11 +133,9 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
-    END
-    $BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100
-    ROWS 1000;
+SELECT a.seq, a.path_seq, a.start_pid, a.end_pid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::bigint[], $4::bigint[], $5, $6, $7) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;

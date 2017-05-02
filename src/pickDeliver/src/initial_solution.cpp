@@ -24,20 +24,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./initial_solution.h"
+#include "vrp/initial_solution.h"
 #include <deque>
 #include <algorithm>
 #include <set>
-#include "./../../common/src/pgr_assert.h"
-#include "./solution.h"
-#include "./pgr_pickDeliver.h"
+#include "cpp_common/pgr_assert.h"
+#include "vrp/solution.h"
+#include "vrp/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
 
 void
 Initial_solution::invariant() const {
-
     /* this checks there is no order duplicated */
     pgassert(all_orders == (assigned + unassigned));
     pgassert((assigned * unassigned).empty());
@@ -46,30 +45,28 @@ Initial_solution::invariant() const {
 
 Initial_solution::Initial_solution(
         int kind,
-        size_t number_of_orders
-        ) :
+        size_t number_of_orders) :
     Solution(),
     all_orders(number_of_orders),
     unassigned(number_of_orders),
-    assigned()
-{
-    invariant();
-    pgassert(kind >= 0 && kind < 7);
+    assigned() {
+        invariant();
+        pgassert(kind >= 0 && kind < 7);
 
-    switch (kind) {
-        case 0:
-            one_truck_all_orders();
-            break;
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-            do_while_foo(kind);
-            break;
-        default: pgassert(false);
-    }
+        switch (kind) {
+            case 0:
+                one_truck_all_orders();
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                do_while_foo(kind);
+                break;
+            default: pgassert(false);
+        }
 
     invariant();
 }
@@ -81,13 +78,13 @@ Initial_solution::do_while_foo(int kind) {
     invariant();
     pgassert(kind > 0 && kind < 7);
 
-    log << "\nInitial_solution::do_while_foo\n";
+    msg.log << "\nInitial_solution::do_while_foo\n";
     Identifiers<size_t> notused;
     bool out_of_trucks;
 
     while (!unassigned.empty()) {
         auto truck = out_of_trucks?
-            trucks.get_truck(unassigned.front()) : 
+            trucks.get_truck(unassigned.front()) :
             trucks.get_truck();
         /*
          * kind 1 to 7 work with the same code structure
@@ -118,7 +115,7 @@ Initial_solution::do_while_foo(int kind) {
 void
 Initial_solution::one_truck_all_orders() {
     invariant();
-    log << "\nInitial_solution::one_truck_all_orders\n";
+    msg.log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
     while (!unassigned.empty()) {
         auto order(truck.orders()[*unassigned.begin()]);
