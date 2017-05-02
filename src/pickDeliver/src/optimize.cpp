@@ -97,7 +97,7 @@ Optimize::inter_swap() {
 
 #if 0
             msg.log
-                << "\nto " << to.id()
+                << "\n to " << to.id()
                 << "from " << from.id();
             auto swapped = false;
 #endif

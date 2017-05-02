@@ -173,7 +173,7 @@ class Order : public PD_problem {
       @enddot
 
       @todo TODO
-      - compatability changes based on the speed this is not taking that into account (here) 
+      - compatibility changes based on the speed this is not taking that into account (here) 
       - check where is it talking that into account
       */
      Identifiers<size_t> m_compatibleJ;

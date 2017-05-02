@@ -104,7 +104,7 @@ Pgr_pickDeliver::get_postgres_result() const {
              *
              * (twv, cv, fleet, wait, duration)
              */
-            -2,  // sumary row on vehicle_number
+            -2,  // summary row on vehicle_number
             solutions.back().twvTot(), // on vehicle_id
             solutions.back().cvTot(),  // on vehicle_seq
             -1,  // on order_id

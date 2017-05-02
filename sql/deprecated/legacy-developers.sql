@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- Legacy FUNCTIONs that were ment to be used by
+-- Legacy FUNCTIONs that were meant to be used by
 -- pgRouting developers
 -- These FUNCTIONs wer used on the plpgsql FUNCTIONs
 

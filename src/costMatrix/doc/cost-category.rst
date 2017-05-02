@@ -15,6 +15,8 @@ Cost - Category
 .. index from here
 
 * :ref:`pgr_aStarCost`
+* :ref:`pgr_bdAstarCost`
+* :ref:`pgr_bdDijkstraCost`
 * :ref:`pgr_dijkstraCost`
 * :ref:`pgr_withPointsCost`
 
