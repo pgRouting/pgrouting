@@ -66,7 +66,7 @@ class Initial_solution : public Solution {
      Identifiers<size_t> assigned;
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

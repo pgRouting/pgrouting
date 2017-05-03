@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 Order
 Vehicle_pickDeliver::get_worse_order(
@@ -404,6 +405,7 @@ Vehicle_pickDeliver::is_order_feasable(const Order &order) const {
 }
 
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

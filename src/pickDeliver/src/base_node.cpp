@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 bool
 Base_node::isSamePos(const Base_node &rhs) const {
@@ -74,6 +75,7 @@ Base_node::operator ==(const Base_node &rhs) const {
          && (original_id() == rhs.original_id());
 }
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

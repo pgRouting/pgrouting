@@ -129,7 +129,7 @@ class Swap_bk {
      bool empty() {return m_swaps.empty();}
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

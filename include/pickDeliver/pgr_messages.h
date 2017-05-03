@@ -98,7 +98,7 @@ class Pgr_messages {
 #endif
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

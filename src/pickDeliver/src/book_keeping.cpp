@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 Swap_info::Swap_info(const Vehicle_pickDeliver &from,
         const Vehicle_pickDeliver &to,
@@ -71,5 +72,6 @@ std::ostream& operator<< (std::ostream &log, const Swap_bk &data) {
 }
 
 
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting

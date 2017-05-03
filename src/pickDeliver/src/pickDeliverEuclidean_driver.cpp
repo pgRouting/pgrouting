@@ -152,5 +152,3 @@ do_pgr_pickDeliverEuclidean(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-

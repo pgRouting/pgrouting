@@ -292,7 +292,7 @@ class Tw_node: public Node {
      NodeType m_type;       ///< The demand for the Node
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

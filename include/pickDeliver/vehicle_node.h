@@ -187,7 +187,7 @@ class Vehicle_node: public Tw_node {
      ///@}
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

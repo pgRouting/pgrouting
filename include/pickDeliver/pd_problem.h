@@ -53,7 +53,7 @@ class PD_problem {
      static Pgr_pickDeliver* problem;
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

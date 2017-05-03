@@ -98,7 +98,7 @@ do_pgr_pickDeliver(
         }
 
         log << "Read data\n";
-        pgrouting::vrp::Pgr_pickDeliver pd_problem(
+        pgrouting::vrp::pickDeliver::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
                 cost_matrix,
@@ -170,5 +170,3 @@ do_pgr_pickDeliver(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-

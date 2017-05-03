@@ -126,7 +126,7 @@ class Pgr_pickDeliver : public PD_problem {
     std::vector<Solution> solutions;
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

@@ -83,7 +83,7 @@ class Optimize : public Solution {
      Swap_bk p_swaps;
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

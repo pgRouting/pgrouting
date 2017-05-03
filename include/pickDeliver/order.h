@@ -194,7 +194,7 @@ class Order : public PD_problem {
      Identifiers<size_t> m_compatibleI;
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

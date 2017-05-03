@@ -88,7 +88,7 @@ class Base_node {
      int64_t m_original_id;      ///< user supplied node number
 };
 
-}  //  namespace pickDeliver
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

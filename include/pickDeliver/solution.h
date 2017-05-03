@@ -115,7 +115,7 @@ class Solution : public PD_problem {
 };
 
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

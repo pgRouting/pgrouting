@@ -335,7 +335,7 @@ class Vehicle {
      POS getPosHighLimit(const Vehicle_node &node) const;
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

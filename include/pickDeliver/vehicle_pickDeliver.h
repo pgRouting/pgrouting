@@ -177,7 +177,7 @@ class Vehicle_pickDeliver : public Vehicle {
      ID pop_front();
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

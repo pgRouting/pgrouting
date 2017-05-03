@@ -63,7 +63,7 @@ class Dnode : public Base_node, public PD_problem {
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

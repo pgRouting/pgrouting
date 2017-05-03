@@ -74,7 +74,7 @@ class Node : public Base_node {
 #endif
 };
 
-}  // namespace pickDeliver
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 
