@@ -1,8 +1,5 @@
 
 SET(LOCAL_FILES
-    pickDeliverEuclidean.sql
-    pickDeliver.sql
-    reginabook.sql
     )
 
 foreach (f ${LOCAL_FILES})
