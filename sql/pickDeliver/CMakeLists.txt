@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
     pickDeliverEuclidean.sql
-    #pickDeliver.sql
+    pickDeliver.sql
     reginabook.sql
     )
 

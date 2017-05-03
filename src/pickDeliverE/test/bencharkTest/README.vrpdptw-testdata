@@ -1,0 +1,33 @@
+
+# Li & Lim benchmark
+
+Here you find instance definitions and the best known solutions
+(to our knowledge) for the 100, 200, 400, 600, 800, and 1000 customer
+instances of Li & Lim's PDPTW benchmark problems. The version reported
+here has a hierarchical objective:
+
+ 1. Minimize number of vehicles
+ 2. Minimize total distance.
+
+Distance and time should be calculated with double precision, total
+distance results are rounded to two decimals. Exact methods typically
+use a total distance objective and use integral or low precision distance
+and time calculations. Hence, results are not directly comparable.
+
+This data base was built from data published at
+http://www.sintef.no/Projectweb/TOP/PDPTW/Li--Lim-benchmark/
+
+The data loads into a schema named "testdata" and there are 352 test cases
+with each test cases loaded into a table. there is a summary table called
+"pdp_problems" which lists each data table as "instance" and provides
+additional information about the best know result and the number of
+vehicles and vehicle capacity for each test cases.
+
+You might load these with commands like:
+
+```
+createdb -U postgres -h localhost pickdelivery_tests
+zcat vrpdptw-testdata.sql.gz | psql -U postgres -h localhost pickdelivery_tests
+```
+
+
