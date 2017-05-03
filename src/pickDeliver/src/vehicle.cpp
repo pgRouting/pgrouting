@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include ""pickDeliver/vehicle.h"
+#include "pickDeliver/vehicle.h"
 
 #include <deque>
 #include <iostream>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 
-#include ""pickDeliver/pgr_pickDeliver.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 
 
 namespace pgrouting {
