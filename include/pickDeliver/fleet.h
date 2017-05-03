@@ -48,6 +48,7 @@ namespace tsp {
 class Dmatrix;
 }
 namespace vrp {
+namespace pickdeliver {
 
 class Pgr_pickDeliver;
 class PD_Orders;
@@ -114,7 +115,8 @@ class Fleet : public PD_problem {
 };
 
 
-}  //  namespace vrp
-}  //  namespace pgrouting
+}  // namespace pickDeliver
+}  // namespace vrp
+}  // namespace pgrouting
 
 #endif  // INCLUDE_PICKDELIVER_FLEET_H_

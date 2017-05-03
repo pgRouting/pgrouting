@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 
 /*! \class Tw_node
@@ -291,7 +292,8 @@ class Tw_node: public Node {
      NodeType m_type;       ///< The demand for the Node
 };
 
-}  //  namespace vrp
-}  //  namespace pgrouting
+}  // namespace pickDeliver
+}  // namespace vrp
+}  // namespace pgrouting
 
 #endif  // INCLUDE_PICKDELIVER_TW_NODE_H_

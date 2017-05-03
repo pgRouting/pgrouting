@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 /*! \class Node
  * \brief The Node class defines a point in 2D space with an id.
@@ -73,7 +74,8 @@ class Node : public Base_node {
 #endif
 };
 
-}  //  namespace vrp
-}  //  namespace pgrouting
+}  // namespace pickDeliver
+}  // namespace vrp
+}  // namespace pgrouting
 
 #endif  // INCLUDE_PICKDELIVER_NODE_H_

@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 /*! @class Dnode
  * @brief The Dnode class defines a the operations when its a matrix.
@@ -62,7 +63,8 @@ class Dnode : public Base_node, public PD_problem {
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
 };
 
-}  //  namespace vrp
-}  //  namespace pgrouting
+}  // namespace pickDeliver
+}  // namespace vrp
+}  // namespace pgrouting
 
 #endif  // INCLUDE_PICKDELIVER_DNODE_H_

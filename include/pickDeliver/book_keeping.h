@@ -39,6 +39,7 @@
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 class Swap_bk;
 class Swap_info {
@@ -128,6 +129,7 @@ class Swap_bk {
      bool empty() {return m_swaps.empty();}
 };
 
+}  // namespace pickDeliver
 }  // namespace vrp
 }  // namespace pgrouting
 
