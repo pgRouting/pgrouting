@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file vehicle.h */
 
-#ifndef INCLUDE_VRP_VEHICLE_H_
-#define INCLUDE_VRP_VEHICLE_H_
+#ifndef INCLUDE_PICKDELIVER_VEHICLE_H_
+#define INCLUDE_PICKDELIVER_VEHICLE_H_
 #pragma once
 
 #include <deque>
@@ -48,7 +48,7 @@ namespace vrp {
 /*! @class Vehicle
  *  @brief Vehicle with time windows
  *
- * General functionality for a vehicle in a VRP problem
+ * General functionality for a vehicle in a PICKDELIVER problem
  *
  * Recommended use:
  *
@@ -337,4 +337,4 @@ class Vehicle {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_VEHICLE_H_
+#endif  // INCLUDE_PICKDELIVER_VEHICLE_H_

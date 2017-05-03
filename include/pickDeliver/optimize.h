@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file optimize.h */
 
-#ifndef INCLUDE_VRP_OPTIMIZE_H_
-#define INCLUDE_VRP_OPTIMIZE_H_
+#ifndef INCLUDE_PICKDELIVER_OPTIMIZE_H_
+#define INCLUDE_PICKDELIVER_OPTIMIZE_H_
 #pragma once
 
 #include "vrp/optimize.h"
@@ -85,4 +85,4 @@ class Optimize : public Solution {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_OPTIMIZE_H_
+#endif  // INCLUDE_PICKDELIVER_OPTIMIZE_H_

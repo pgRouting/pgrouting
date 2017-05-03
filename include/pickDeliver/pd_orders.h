@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file pd_orders.h */
 
-#ifndef INCLUDE_VRP_PD_ORDERS_H_
-#define INCLUDE_VRP_PD_ORDERS_H_
+#ifndef INCLUDE_PICKDELIVER_PD_ORDERS_H_
+#define INCLUDE_PICKDELIVER_PD_ORDERS_H_
 #pragma once
 
 #include <vector>
@@ -91,4 +91,4 @@ class PD_Orders : public PD_problem {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_PD_ORDERS_H_
+#endif  // INCLUDE_PICKDELIVER_PD_ORDERS_H_

@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file pgr_messages.h */
 
-#ifndef INCLUDE_VRP_PGR_MESSAGES_H_
-#define INCLUDE_VRP_PGR_MESSAGES_H_
+#ifndef INCLUDE_PICKDELIVER_PGR_MESSAGES_H_
+#define INCLUDE_PICKDELIVER_PGR_MESSAGES_H_
 #pragma once
 
 
@@ -100,4 +100,4 @@ class Pgr_messages {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_PGR_MESSAGES_H_
+#endif  // INCLUDE_PICKDELIVER_PGR_MESSAGES_H_

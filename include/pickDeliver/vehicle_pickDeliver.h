@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file vehicle_pickDeliver.h */
 
-#ifndef INCLUDE_VRP_VEHICLE_PICKDELIVER_H_
-#define INCLUDE_VRP_VEHICLE_PICKDELIVER_H_
+#ifndef INCLUDE_PICKDELIVER_VEHICLE_PICKDELIVER_H_
+#define INCLUDE_PICKDELIVER_VEHICLE_PICKDELIVER_H_
 #pragma once
 
 #include <set>
@@ -179,4 +179,4 @@ class Vehicle_pickDeliver : public Vehicle {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_VEHICLE_PICKDELIVER_H_
+#endif  // INCLUDE_PICKDELIVER_VEHICLE_PICKDELIVER_H_

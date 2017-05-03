@@ -25,8 +25,8 @@
 
 /*! @file book_keeping.h */
 
-#ifndef INCLUDE_VRP_BOOK_KEEPING_H_
-#define INCLUDE_VRP_BOOK_KEEPING_H_
+#ifndef INCLUDE_PICKDELIVER_BOOK_KEEPING_H_
+#define INCLUDE_PICKDELIVER_BOOK_KEEPING_H_
 #pragma once
 
 #include <queue>
@@ -131,4 +131,4 @@ class Swap_bk {
 }  // namespace vrp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_VRP_BOOK_KEEPING_H_
+#endif  // INCLUDE_PICKDELIVER_BOOK_KEEPING_H_
