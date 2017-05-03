@@ -98,7 +98,7 @@ do_pgr_pickDeliver(
         }
 
         log << "Read data\n";
-        pgrouting::vrp::pickDeliver::Pgr_pickDeliver pd_problem(
+        pgrouting::vrp::pickdeliver::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
                 cost_matrix,
