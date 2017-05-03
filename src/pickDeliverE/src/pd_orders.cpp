@@ -23,14 +23,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/pd_orders.h"
+#include "pickDeliverE/pd_orders.h"
 
 #include <vector>
 
-#include "vrp/order.h"
-#include "vrp/tw_node.h"
-#include "vrp/vehicle_node.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliverE/order.h"
+#include "pickDeliverE/tw_node.h"
+#include "pickDeliverE/vehicle_node.h"
+#include "pickDeliverE/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {

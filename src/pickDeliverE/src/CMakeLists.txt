@@ -1,7 +1,6 @@
-ADD_LIBRARY(pickDeliver OBJECT
+ADD_LIBRARY(pickDeliverE OBJECT
     base_node.cpp
     node.cpp
-    #dnode.cpp
     tw_node.cpp
     vehicle_node.cpp
 
@@ -24,6 +23,5 @@ ADD_LIBRARY(pickDeliver OBJECT
     pickDeliverEuclidean.c
 
     pickDeliver_driver.cpp
-    #pickDeliver.c
 
     )
