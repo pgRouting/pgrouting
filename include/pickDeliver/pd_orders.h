@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "cpp_common/identifiers.hpp"
-#include "vrp/pd_problem.h"
+#include "pickDeliver/pd_problem.h"
 
 
 namespace pgrouting {

@@ -29,8 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_PICKDELIVER_OPTIMIZE_H_
 #pragma once
 
-#include "vrp/optimize.h"
-#include "vrp/book_keeping.h"
+#include "pickDeliver/optimize.h"
+#include "pickDeliver/book_keeping.h"
 
 namespace pgrouting {
 namespace vrp {

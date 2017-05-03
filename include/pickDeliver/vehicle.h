@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 
-#include "vrp/vehicle_node.h"
+#include "pickDeliver/vehicle_node.h"
 #include "c_types/pickDeliver/general_vehicle_orders_t.h"
 
 namespace pgrouting {
