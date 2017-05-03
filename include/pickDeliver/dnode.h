@@ -46,7 +46,7 @@ namespace pickdeliver {
 class Dnode : public Base_node, public PD_problem {
  public:
      Dnode() = default;
-     Dnode(size_t id, int64_t original_id);
+     Dnode(size_t id, int64_t original_id, double, double);
 
 
      using Base_node::isSamePos;

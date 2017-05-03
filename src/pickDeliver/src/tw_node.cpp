@@ -37,7 +37,7 @@ namespace pickdeliver {
 
 
 double
-Tw_node::travel_time_to(const Node &other, double speed) const {
+Tw_node::travel_time_to(const Dnode &other, double speed) const {
     pgassert(speed != 0);
      /*! @todo TODO evaluate with matrix also*/
     return distance(other) / speed;
@@ -184,7 +184,7 @@ Tw_node::is_end() const {
 bool
 Tw_node::operator ==(const Tw_node &rhs) const {
     if (&rhs == this) return true;
-    return (dynamic_cast<const Node*>(this) == dynamic_cast<const Node*>(&rhs));
+    return (dynamic_cast<const Dnode*>(this) == dynamic_cast<const Dnode*>(&rhs));
 }
 
 
@@ -228,14 +228,14 @@ Tw_node::Tw_node(
         size_t id,
         PickDeliveryOrders_t data,
         NodeType type) :
-    Node(id, data.id, data.pick_x, data.pick_y),
+    Dnode(id, data.id, data.pick_x, data.pick_y),
     m_opens(data.pick_open_t),
     m_closes(data.pick_close_t),
     m_service_time(data.pick_service_t),
     m_demand(data.demand),
     m_type(type)  {
         if (m_type == kDelivery) {
-            m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
+            //m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
             m_opens = data.deliver_open_t;
             m_closes = data.deliver_close_t;
             m_service_time = data.deliver_service_t;
@@ -247,14 +247,14 @@ Tw_node::Tw_node(
         size_t id,
         Vehicle_t data,
         NodeType type) :
-    Node(id, data.start_node_id, data.start_x, data.start_y),
+    Dnode(id, data.start_node_id, data.start_x, data.start_y),
     m_opens(data.start_open_t),
     m_closes(data.start_close_t),
     m_service_time(data.start_service_t),
     m_demand(0),
     m_type(type) {
         if (m_type == kEnd) {
-            m_point = pgrouting::Point(data.end_x, data.end_y);
+            //m_point = pgrouting::Point(data.end_x, data.end_y);
             m_original_id = data.end_node_id;
             m_opens = data.end_open_t;
             m_closes = data.end_close_t;
@@ -265,7 +265,7 @@ Tw_node::Tw_node(
 
 /*! * \brief Print the contents of a Twnode object. */
 std::ostream& operator << (std::ostream &log, const Tw_node &n) {
-    log << static_cast<const Node&>(n)
+    log << static_cast<const Dnode&>(n)
         << "[opens = " << n.m_opens
         << "\tcloses = " << n.m_closes
         << "\tservice = " << n.m_service_time

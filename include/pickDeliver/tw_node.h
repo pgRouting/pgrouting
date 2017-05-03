@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "cpp_common/pgr_assert.h"
 
-#include "pickDeliver/node.h"
+#include "pickDeliver/dnode.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -53,7 +53,7 @@ namespace pickdeliver {
  * values and requirements for \c type and \c streetid.
  *
  */
-class Tw_node: public Node {
+class Tw_node: public Dnode {
  public:
      typedef enum {
          kStart = 0,  // /< starting site
@@ -107,7 +107,7 @@ class Tw_node: public Node {
      inline double window_length() const {return m_closes - m_opens;}
 
      /*! \brief time = distance / speed. */
-     double travel_time_to(const Node &other, double speed) const;
+     double travel_time_to(const Dnode &other, double speed) const;
 
      ///@}
 
@@ -270,7 +270,7 @@ class Tw_node: public Node {
 
 
 
-     Tw_node() : Node() {}
+     Tw_node() : Dnode() {}
      Tw_node(const Tw_node &other) = default;
      Tw_node(
              size_t id,

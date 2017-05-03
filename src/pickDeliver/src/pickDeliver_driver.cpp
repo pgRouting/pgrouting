@@ -106,8 +106,10 @@ do_pgr_pickDeliver(
                 initial_solution_id);
 
         log << pd_problem.msg.get_log();
+#if 0
         *log_msg = pgr_msg(log.str().c_str());
         return;
+#endif
         err << pd_problem.msg.get_error();
         if (!err.str().empty()) {
             log << pd_problem.msg.get_log();

@@ -50,22 +50,23 @@ Dnode::distance(const Dnode &other) const {
      << "\t matrix.get_index" << problem->m_cost_matrix.get_index(original_id())
      << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(original_id()));
 
-    msg.log << "other id" << id()
-     << "\t original_id" << original_id()
-     << "\t matrix.get_id" << problem->m_cost_matrix.get_id(original_id())
-     << "\t matrix.get_index" << problem->m_cost_matrix.get_index(original_id())
-     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(original_id()));
+    msg.log << "other id" << other.id()
+     << "\t original_id" << other.original_id()
+     << "\t matrix.get_id" << problem->m_cost_matrix.get_id(other.original_id())
+     << "\t matrix.get_index" << problem->m_cost_matrix.get_index(other.original_id())
+     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(other.original_id()));
 
     return problem->m_cost_matrix.distance(0,0);
 }
 
 double
 Dnode::comparable_distance(const Dnode &other) const {
+    distance(other);
     return problem->m_cost_matrix.comparable_distance(0,0);
 }
 
 
-Dnode::Dnode(size_t id, int64_t original_id)
+Dnode::Dnode(size_t id, int64_t original_id, double, double)
     : Base_node(id, original_id) {
     }
 
