@@ -22,6 +22,4 @@ ADD_LIBRARY(pickDeliverE OBJECT
     pickDeliverEuclidean_driver.cpp
     pickDeliverEuclidean.c
 
-    pickDeliver_driver.cpp
-
     )
