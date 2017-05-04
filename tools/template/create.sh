@@ -18,14 +18,17 @@ MY_QUERY_LINE1="TEXT,\n    BIGINT,\n    BIGINT,\n    directed BOOLEAN DEFAULT tr
 MY_QUERY_LINE2="    OUT seq INTEGER,\n    OUT path_seq INTEGER,\n    OUT node BIGINT,\n    OUT edge BIGINT,\n    OUT cost FLOAT,\n    OUT agg_cost FLOAT"
 
 
-MY_RETURN_VALUE_TYPE="General_path_element_t" 
 MY_FUNCTION_NAME_UPPER=$(echo $MY_FUNCTION_NAME | tr 'a-z' 'A-Z')
 MY_FUNCTION_NAME_LOWER=$(echo $MY_FUNCTION_NAME | tr 'A-Z' 'a-z')
 
 # Available types to store the edge information:
 #  http://docs.pgrouting.org/doxy/dev/structpgr__edge__t.html
 #  http://docs.pgrouting.org/doxy/dev/structPgr__edge__xy__t.html
+MY_RETURN_VALUE_TYPE="General_path_element_t" 
+MY_RETURN_VALUE_FILE=$(echo $MY_RETURN_VALUE_TYPE | tr 'A-Z' 'a-z')
+
 MY_EDGE_TYPE="pgr_edge_t"
+MY_EDGE_FILE=$(echo $MY_EDGE_TYPE | tr 'A-Z' 'a-z')
 
 # Available functions that read the edge information:
 # http://docs.pgrouting.org/doxy/dev/edges__input_8h.html#
@@ -99,9 +102,11 @@ sed -i "s/DEVELOPER_NAME/$DEVELOPER_NAME/" "$MY_FUNCTION_NAME"/src/function1_dri
 sed -i "s/DEVELOPER_EMAIL/$DEVELOPER_EMAIL/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/MY_EDGE_TYPE/$MY_EDGE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
+sed -i "s/MY_EDGE_FILE/$MY_EDGE_FILE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/MY_RETURN_VALUE_TYPE/$MY_RETURN_VALUE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
+sed -i "s/MY_RETURN_VALUE_FILE/$MY_RETURN_VALUE_FILE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 mv "$MY_FUNCTION_NAME"/src/function1_driver.h "$MY_FUNCTION_NAME"/src/"$MY_FUNCTION_NAME"_driver.h
 
 echo "updating the src/function1_driver.cpp"
@@ -137,7 +142,7 @@ echo "updating test/doc-function1.test.sql"
 sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/test/doc-function1.test.sql
 
 echo "updating the test/pgtap/function1-typesCheck.sql"
-sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-types-check.sql
+sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-typesCheck.sql
 
 echo "updating the test/pgtap/function1-compare-dijkstra.sql"
 sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-compare-dijkstra.sql
@@ -147,12 +152,12 @@ sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/
 
 mv "$MY_FUNCTION_NAME"/test/doc-function1.test.sql "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".test.sql
 mv "$MY_FUNCTION_NAME"/test/doc-function1.result "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".result
-mv "$MY_FUNCTION_NAME"/test/pgtap/function1-types-check.sql "$MY_FUNCTION_NAME"/test/pgtap/"$MY_FUNCTION_NAME"-types-check.sql
+mv "$MY_FUNCTION_NAME"/test/pgtap/function1-typesCheck.sql "$MY_FUNCTION_NAME"/test/pgtap/"$MY_FUNCTION_NAME"-typesCheck.sql
 mv "$MY_FUNCTION_NAME"/test/pgtap/function1-compare-dijkstra.sql "$MY_FUNCTION_NAME"/test/pgtap/"$MY_FUNCTION_NAME"-compare-dijkstra.sql
 mv "$MY_FUNCTION_NAME"/test/pgtap/function1-innerQuery.sql "$MY_FUNCTION_NAME"/test/pgtap/"$MY_FUNCTION_NAME"-innerQuery.sql
 
 #move the whole structure to its place
-mv "$MY_FUNCTION_NAME/sql" "../../sql-scripts/$MY_FUNCTION_NAME"
+mv "$MY_FUNCTION_NAME/sql" "../../sql/$MY_FUNCTION_NAME"
 mv "$MY_FUNCTION_NAME" ../../src/"$MY_FUNCTION_NAME"
 
 exit

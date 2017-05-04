@@ -31,7 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_MY_FUNCTION_NAME_UPPER_SRC_MY_FUNCTION_NAME_UPPER_DRIVER_H_
 #pragma once
 
-#include "./../../common/src/pgr_types.h"
+#include "c_types/MY_EDGE_FILE.h"
+#include "c_types/MY_RETURN_VALUE_FILE.h"
 
 #ifdef __cplusplus
 extern "C" {
