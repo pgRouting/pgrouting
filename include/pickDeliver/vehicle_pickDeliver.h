@@ -175,6 +175,11 @@ class Vehicle_pickDeliver : public Vehicle {
 
      ID pop_back();
      ID pop_front();
+
+
+     friend std::ostream& operator<<(
+             std::ostream &log,
+             const Vehicle_pickDeliver &v);
 };
 
 }  // namespace pickdeliver

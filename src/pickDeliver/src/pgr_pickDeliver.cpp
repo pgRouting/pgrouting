@@ -326,8 +326,8 @@ std::ostream& operator<<(
     for (const auto n : pd_prob.m_nodes) {
         log << n << "\n";
     }
-    log << "The vehicles\n" << pd_prob.m_trucks;
 #endif
+    log << "The vehicles\n" << pd_prob.m_trucks;
 
     log << "The nodes\n";
     log << "The orders\n" << pd_prob.m_orders;

@@ -404,6 +404,12 @@ Vehicle_pickDeliver::is_order_feasable(const Order &order) const {
     return test_truck.is_feasable();
 }
 
+std::ostream& operator << (std::ostream &log, const Vehicle_pickDeliver &v) {
+    log << static_cast<const Vehicle&>(v);
+    log << "feasable_orders " << v.m_feasable_orders;
+    return log;
+}
+
 
 }  //  namespace pickdeliver
 }  //  namespace vrp
