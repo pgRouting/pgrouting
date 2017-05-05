@@ -191,7 +191,8 @@ Fleet::build_fleet(
                         ending_site,
                         vehicle.capacity,
                         vehicle.speed));
-            msg.log << "inserting " << m_trucks.back().id();
+            msg.log << "inserted Vehicle" << m_trucks.back().id();
+            msg.log << "\n";
             pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
         }
     }

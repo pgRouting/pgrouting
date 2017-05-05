@@ -50,7 +50,7 @@ namespace vrp {
 namespace pickdeliver {
 
 class Order;
-class PD_orders;
+class PD_Orders;
 
 class Pgr_pickDeliver : public PD_problem {
     friend class Initial_solution;
@@ -107,7 +107,14 @@ class Pgr_pickDeliver : public PD_problem {
     }
     Fleet trucks() const {return m_trucks;}
 
+    friend std::ostream& operator<<(
+            std::ostream &log,
+            const Pgr_pickDeliver &pd_prob);
+
     /// @{
+    //! The Distance/time matrix
+    pgrouting::tsp::Dmatrix m_cost_matrix;
+
  private:
     //! used define the initial solution algorithm to be used
     int m_initial_id;
@@ -120,7 +127,6 @@ class Pgr_pickDeliver : public PD_problem {
 
     std::vector<Vehicle_node> m_nodes;
 
-    pgrouting::tsp::Dmatrix m_cost_matrix;
     Fleet m_trucks;
     PD_Orders m_orders;
     std::vector<Solution> solutions;

@@ -75,6 +75,8 @@ class Order : public PD_problem {
       */
      const Vehicle_node& pickup() const;
 
+     double distance() const;
+
      /*! Get a subset of the orders that can be placed after @b this order
       
       @dot

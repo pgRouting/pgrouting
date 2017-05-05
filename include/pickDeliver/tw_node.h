@@ -274,7 +274,7 @@ class Tw_node: public Dnode {
      Tw_node(const Tw_node &other) = default;
      Tw_node(
              size_t id,
-             PickDeliveryOrders_t data,
+             const PickDeliveryOrders_t data,
              NodeType type);
      Tw_node(
              size_t id,

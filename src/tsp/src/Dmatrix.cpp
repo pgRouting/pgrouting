@@ -129,15 +129,15 @@ Dmatrix::has_no_infinity() const {
 }
 
 
+/*!
+ * Triangle Inequality Theorem.
+ *  The sum of the lengths of any two sides of a triangle is greater than the length of the third side.
+ *  NOTE: can also be equal for streets
+ * costs[i][k] != inf
+ * costs[i][k] <= costs[i][j] + costs[j][k] 
+ */
 bool
 Dmatrix::obeys_triangle_inequality() const {
-    /*
-     * Triangle Inequality Theorem.
-     *  The sum of the lengths of any two sides of a triangle is greater than the length of the third side.
-     *  NOTE: can also be equal for streets
-     * costs[i][k] != inf
-     * costs[i][k] <= costs[i][j] + costs[j][k] 
-     */
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
             for (size_t k = 0; k < costs.size(); ++k) {

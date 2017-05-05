@@ -60,6 +60,7 @@ class PD_Orders : public PD_problem {
       */
      PD_Orders() = default;
      PD_Orders(const PD_Orders&) = default;
+     explicit PD_Orders(const std::vector<PickDeliveryOrders_t> &pd_orders);
      /*!@}*/
 
      void set_compatibles(double speed);
@@ -86,6 +87,8 @@ class PD_Orders : public PD_problem {
      // TODO(vicky) this should be private called by the constructor
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders);
+
+     friend std::ostream& operator << (std::ostream &log, const PD_Orders &);
 };
 
 

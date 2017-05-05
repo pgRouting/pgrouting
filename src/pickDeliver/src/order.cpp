@@ -55,6 +55,11 @@ Order::Order(
     delivery_id(p_delivery.id()) {
     }
 
+double
+Order::distance() const {
+    return pickup().distance(delivery());
+}
+
 std::ostream&
 operator << (std::ostream &log, const Order &order) {
     log << "\n\nOrder " << order.m_id << ":\n"
@@ -84,7 +89,9 @@ operator << (std::ostream &log, const Order &order) {
     for (const auto o : order.m_compatibleJ) {
         log << o << ", ";
     }
-    log << "}";
+    log << "}\n";
+
+    log << "Cost (distinace/time): " << order.distance();
 
     return log;
 }

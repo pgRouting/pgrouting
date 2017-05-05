@@ -223,19 +223,29 @@ bool Tw_node::is_valid() const {
     return false;
 }
 
-
+/*!
+ *
+ * - Insert the node as if it was a pickup
+ * - if the node was a kDelivery modify the information
+ *
+ * @param[in] id   index of the m_nodes container of the problem
+ * @param[in] data The original information
+ * @param[in] type the kind of node it is
+ */
 Tw_node::Tw_node(
         size_t id,
-        PickDeliveryOrders_t data,
+        const PickDeliveryOrders_t data,
         NodeType type) :
-    Dnode(id, data.id, data.pick_x, data.pick_y),
+    Dnode(id, data.pick_node_id, data.pick_x, data.pick_y),
     m_opens(data.pick_open_t),
     m_closes(data.pick_close_t),
     m_service_time(data.pick_service_t),
     m_demand(data.demand),
     m_type(type)  {
         if (m_type == kDelivery) {
+            //TODO this is used when its the Node
             //m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
+            m_original_id = data.deliver_node_id;
             m_opens = data.deliver_open_t;
             m_closes = data.deliver_close_t;
             m_service_time = data.deliver_service_t;

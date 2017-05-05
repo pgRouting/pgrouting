@@ -44,19 +44,29 @@ std::ostream& operator << (std::ostream &log, const Dnode &node) {
 
 double
 Dnode::distance(const Dnode &other) const {
+#if 1
     msg.log << "id" << id()
      << "\t original_id" << original_id()
      << "\t matrix.get_id" << problem->m_cost_matrix.get_id(original_id())
      << "\t matrix.get_index" << problem->m_cost_matrix.get_index(original_id())
-     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(original_id()));
+     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(original_id()))
+     << "\n";
 
     msg.log << "other id" << other.id()
      << "\t original_id" << other.original_id()
      << "\t matrix.get_id" << problem->m_cost_matrix.get_id(other.original_id())
      << "\t matrix.get_index" << problem->m_cost_matrix.get_index(other.original_id())
-     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(other.original_id()));
+     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(other.original_id()))
+     << "\n";
 
-    return problem->m_cost_matrix.distance(0,0);
+    msg.log << "Distance " << problem->m_cost_matrix.distance(
+            problem->m_cost_matrix.get_index(original_id()),
+            problem->m_cost_matrix.get_index(other.original_id()))
+        << "\n\n";
+#endif
+    return problem->m_cost_matrix.distance(
+            problem->m_cost_matrix.get_index(original_id()),
+            problem->m_cost_matrix.get_index(other.original_id()));
 }
 
 double

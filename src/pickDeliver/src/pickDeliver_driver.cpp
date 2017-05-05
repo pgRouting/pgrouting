@@ -74,6 +74,7 @@ do_pgr_pickDeliver(
         pgassert(total_vehicles);
         pgassert(*return_count == 0);
         pgassert(!(*return_tuples));
+        log << "do_pgr_pickDeliver\n";
 
 
         /*
@@ -105,11 +106,6 @@ do_pgr_pickDeliver(
                 max_cycles,
                 initial_solution_id);
 
-        log << pd_problem.msg.get_log();
-#if 0
-        *log_msg = pgr_msg(log.str().c_str());
-        return;
-#endif
         err << pd_problem.msg.get_error();
         if (!err.str().empty()) {
             log << pd_problem.msg.get_log();
@@ -118,7 +114,14 @@ do_pgr_pickDeliver(
             return;
         }
         log << pd_problem.msg.get_log();
+        pd_problem.msg.clear();
         log << "Finish Reading data\n";
+        log << pd_problem;
+        log << pd_problem.msg.get_log();
+#if 1
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
+#endif
 
         try {
             pd_problem.solve();
