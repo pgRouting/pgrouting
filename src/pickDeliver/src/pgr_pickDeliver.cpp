@@ -130,6 +130,14 @@ Pgr_pickDeliver::get_postgres_result() const {
 
 /** Constructor  for the matrix version
  *
+ * - Builds the:
+ *    matrix
+ *    fleet
+ *    orders
+ *    nodes
+ *
+ * - Checks the:
+ *   fleet
  */
 
 Pgr_pickDeliver::Pgr_pickDeliver(
@@ -147,43 +155,56 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      */
     m_node_id(0),
     m_nodes(),
-    m_trucks(vehicles)
+    m_trucks(vehicles),
+    m_orders(pd_orders)
 {
-    pgassert(msg.get_error().empty());
 
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
     pgassert(!cost_matrix.empty());
     pgassert(m_initial_id > 0 && m_initial_id < 7);
 
-    pgassert(msg.get_error().empty());
-    std::ostringstream tmplog;
-
-#ifdef FOO
-    msg.log << "the matrix\n " << m_cost_matrix;
-#else
-    msg.log << "the matrix LOOKS OK\n";
-#endif
-
     msg.log << "\n *** Constructor for the matrix version ***\n";
+    msg.log << "Check problem has no errors\n";
 
-    if (!msg.get_error().empty()) {
+    msg.error << m_trucks.msg.get_error();
+    msg.error << m_orders.msg.get_error();
+    if (msg.get_error().empty()) {
+        /*
+         * data has errors
+         */
+        msg.log << m_trucks.msg.get_log();
+        msg.log << m_orders.msg.get_log();
         return;
     }
-
     pgassert(msg.get_error().empty());
+    pgassert(m_trucks.msg.get_error().empty());
+    pgassert(m_orders.msg.get_error().empty());
 
+
+    /* 
+     * checking the fleet
+     */
     if (!m_trucks.is_fleet_ok()) {
-        // TODO revise the function
-        pgassert(false);
         msg.error << m_trucks.msg.get_error();
+        msg.log << m_trucks.msg.get_log();
         return;
     }
 
-    // TODO building the orders shoul not care about vehicles
-    msg.log << "\n Building orders";
-    m_orders.build_orders(pd_orders);
-    msg.log << " ---> OK\n";
+    /*
+     * check the (S, P, D, E) order on all vehicles
+     * stop when a feasible Vehicle is found
+     */
+    for (const auto &o : m_orders) {
+        if (!m_trucks.is_order_ok(o)) {
+            msg.error << "An order is not feasible in all vehicles";
+            msg.log << "Check order #" << o.id() << "\n"
+                << o << "\n";
+            return;
+        }
+    }
+
+    m_trucks.set_compatibles(m_orders);
 }  //  constructor
 
 

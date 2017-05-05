@@ -120,6 +120,7 @@ Fleet::get_truck(const Order order) {
   - checks that the number of vehicles is a legal value
   - creates the requested vehicles
 
+  ERROR when cant_v <= 0
 */
 bool
 Fleet::build_fleet(
@@ -160,9 +161,9 @@ Fleet::build_fleet(
 
 
     for (auto vehicle : vehicles) {
-        if (vehicle.cant_v < 0) {
+        if (vehicle.cant_v <= 0) {
             msg.error << "Illegal number of vehicles found vehicle";
-            msg.log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
+            msg.log << vehicle.cant_v << "<= 0 on vehicle " << vehicle.id;
             return false;
         }
 
@@ -174,13 +175,6 @@ Fleet::build_fleet(
         problem->add_node(starting_site);
         problem->add_node(ending_site);
 
-        if (!(starting_site.is_start()
-                    && ending_site.is_end())) {
-            msg.error << "Illegal values found on vehicle";
-            msg.log << "id: " << vehicle.id;
-            pgassert(!msg.get_error().empty());
-            return false;
-        }
         pgassert(starting_site.is_start() && ending_site.is_end());
 
         for (int i = 0; i < vehicle.cant_v; ++i) {
@@ -201,19 +195,20 @@ Fleet::build_fleet(
     return true;
 }
 
-
+/*!
+ *
+ * Not ok when:
+ * - there was an error building the fleet
+ * - a truck is not feasable
+ *
+ */
 bool
 Fleet::is_fleet_ok() const {
     if (!msg.get_error().empty()) return false;
     for (auto truck : m_trucks) {
-        if (!(truck.start_site().is_start()
-                    && truck.end_site().is_end())) {
-            pgassertwm(false, "should never pass through here");
-            msg.error << "Illegal values found on vehicle";
-            return false;
-        }
         if (!truck.is_feasable()) {
-            msg.error << "Truck is not feasible";
+            msg.error << "Vehicle is not feasible";
+            msg.log << "Check vehicle #:" << truck.id();
             return false;
         }
     }
@@ -228,13 +223,14 @@ Fleet::is_fleet_ok() const {
 bool
 Fleet::is_order_ok(const Order &order) const {
     for (const auto truck : m_trucks) {
+#if 0
         if (!order.is_valid(truck.speed())) continue;
         if (truck.is_order_feasable(order)) {
             return true;
         }
         msg.log << "checking order " << order.id()
             << "on truck " << truck.id() << "\n";
-
+#endif
         /*
          * The order must be valid given the speed
          */

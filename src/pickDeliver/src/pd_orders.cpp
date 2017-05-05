@@ -92,25 +92,7 @@ PD_Orders::build_orders(
                     pickup,
                     delivery));
 
-#if 1
-        auto o = m_orders.back();
-        pgassert(o.delivery().demand() == -order.demand);
-#if 0
-        msg.log << "ORDER\n"
-            << "original id of the order:" << o.original_id()
-            << "internal idx of the order:" << o.id()
-            << "pickup.demand:" << o.pickup().demand()
-            << "internal idx of the order:" << o.id()
-            << "\n";
-#endif
-#endif
     }  //  for (creating orders)
-
-#if 0
-    for (auto &o : m_orders) {
-        o.setCompatibles();
-    }
-#endif
 }
 
 bool
