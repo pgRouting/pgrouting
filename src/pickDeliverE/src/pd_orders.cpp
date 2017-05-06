@@ -67,7 +67,7 @@ PD_Orders::build_orders(
          * add into an order
          */
         m_orders.push_back(
-                Order(order_id++,
+                Order(order_id++, order.id,
                     pickup,
                     delivery));
     }  //  for (creating orders)

@@ -46,17 +46,17 @@ Order::subsetJ(const Identifiers<size_t> &J) const {
 
 
 Order::Order(
-        size_t p_id,
+        size_t p_idx, int64_t p_id, 
         const Vehicle_node &p_pickup,
         const Vehicle_node &p_delivery) :
-    m_id(p_id),
+    Identifier(p_idx, p_id),
     pickup_id(p_pickup.id()),
     delivery_id(p_delivery.id()) {
     }
 
 std::ostream&
 operator << (std::ostream &log, const Order &order) {
-    log << "\n\nOrder " << order.m_id << ":\n"
+    log << "\n\nOrder " << order.id() << ":\n"
         << "\tPickup: " << order.pickup() << "\n"
         << "\tDelivery: " << order.delivery() << "\n\n";
 #if 0

@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 
+#include "cpp_common/identifier.h"
 #include "pickDeliver/vehicle_node.h"
 #include "c_types/pickDeliver/general_vehicle_orders_t.h"
 
@@ -69,11 +70,9 @@ namespace pickdeliver {
  * @sa @ref Vehicle_node
  */
 
-class Vehicle {
+class Vehicle : public Identifier {
  protected:
      typedef size_t POS;
-     size_t m_idx;
-     int64_t m_id;
      std::deque< Vehicle_node > m_path;
      double m_capacity;
      double m_speed;
@@ -95,7 +94,7 @@ class Vehicle {
              double speed);
 
 
-     bool is_phony() {return m_id < 0;}
+     bool is_phony() {return id() < 0;}
 
      /*! @name deque like functions
 
@@ -216,8 +215,6 @@ class Vehicle {
       */
      bool empty() const;
 
-     size_t idx() const {return m_idx;}
-     size_t id() const {return m_id;}
 
 
      /// @{

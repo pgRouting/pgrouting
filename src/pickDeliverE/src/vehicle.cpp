@@ -139,7 +139,7 @@ Vehicle::get_postgres_result(
     int vehicle_seq(1);
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data =
-                {vid, m_kind, vehicle_seq,
+                {vid, id(), vehicle_seq,
                 /*
                  * The original_id is invalid for stops type 0 and 5
                  */
@@ -461,14 +461,13 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
 
 Vehicle::Vehicle(
-        size_t p_id,
-        int64_t p_kind,
+        size_t p_idx,
+        int64_t p_id,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_m_capacity,
         double p_speed) :
-    m_idx(p_id),
-    m_kind(p_kind),
+    Identifier(p_idx, p_id),
     m_capacity(p_m_capacity),
     m_speed(p_speed)
     {
@@ -507,9 +506,8 @@ std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** VEHICLE " << v.idx() << "***************\n";
-    log << "id = " << v.idx()
-        << "\tkind = " <<  v.m_kind
+    log << "\n\n****************** " << v.idx() << "th VEHICLE***************\n";
+    log << "id = " << v.id()
         << "\tcapacity = " << v.m_capacity
         << "\tspeed = " << v.m_speed << "\n";
 

@@ -140,7 +140,7 @@ Vehicle::get_postgres_result(
     int vehicle_seq(1);
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data =
-                {vid, m_id, vehicle_seq,
+                {vid, id(), vehicle_seq,
                 /*
                  * The original_id is invalid for stops type 0 and 5
                  */
@@ -468,8 +468,7 @@ Vehicle::Vehicle(
         const Vehicle_node &ending_site,
         double p_m_capacity,
         double p_speed) :
-    m_idx(p_idx),
-    m_id(p_id),
+    Identifier(p_idx, p_id),
     m_capacity(p_m_capacity),
     m_speed(p_speed)
     {

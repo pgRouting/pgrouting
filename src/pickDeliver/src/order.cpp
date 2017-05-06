@@ -51,8 +51,7 @@ Order::Order(
         size_t p_idx,
         const Vehicle_node &p_pickup,
         const Vehicle_node &p_delivery) :
-    m_id(p_id),
-    m_idx(p_idx),
+    Identifier(p_idx, p_id),
     pickup_id(p_pickup.id()),
     delivery_id(p_delivery.id()) {
     }

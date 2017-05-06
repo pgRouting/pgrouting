@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <iostream>
 #include "pickDeliver/vehicle_node.h"
+#include "cpp_common/identifier.h"
 #include "cpp_common/identifiers.hpp"
 #include "pickDeliver/pd_problem.h"
 
@@ -40,7 +41,7 @@ namespace vrp {
 namespace pickdeliver {
 
 
-class Order : public PD_problem {
+class Order : public Identifier, public PD_problem {
  public:
      /*! @name Constructors
       * @{
@@ -59,6 +60,7 @@ class Order : public PD_problem {
       * @{
       */
 
+#if 0
      /*! The delivery node identifier
       *
       * It hold's the idx of the Order
@@ -75,6 +77,7 @@ class Order : public PD_problem {
      inline int64_t id() const {
          return m_id;
      }
+#endif
 
      /*! The delivery node
       *
@@ -158,6 +161,7 @@ class Order : public PD_problem {
      /*!@}*/
 
  private:
+#if 0
      /*! The order's identifier
       *
       * It holds the original order identifier given in a row of PickDeliveryOrders_t
@@ -169,7 +173,7 @@ class Order : public PD_problem {
       * It holds the idx order identifier within a PD_orders container
       */
      size_t m_idx;
-
+#endif
      /*! The pick up node identifier
       *
       * It hold's the idx of the node

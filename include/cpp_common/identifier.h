@@ -45,7 +45,7 @@ class Identifier {
 
      friend std::ostream& operator<<(std::ostream& log, const Identifier&);
 
- public:
+ private:
      size_t  m_idx;
      int64_t m_id;
 };

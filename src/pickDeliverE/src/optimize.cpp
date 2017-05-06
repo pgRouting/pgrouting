@@ -597,7 +597,7 @@ Optimize::decrease_truck(size_t cycle) {
             orders.pop_front()) {
         /* Step 2: grab an order */
         auto order = fleet[position].orders()[orders.front()];
-        pgassert(order.id() == orders.front());
+        pgassert(order.idx() == orders.front());
 
 
         /* Step 3: cycle the fleet (in reverse order)
