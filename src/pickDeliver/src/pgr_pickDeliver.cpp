@@ -198,7 +198,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {
             msg.error << "An order is not feasible in all vehicles";
-            msg.log << "Check order #" << o.id() << "\n"
+            // TODO should be id()
+            msg.log << "Check order #" << o.idx() << "\n"
                 << o << "\n";
             return;
         }

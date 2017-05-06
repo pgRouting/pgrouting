@@ -45,7 +45,9 @@ class Order : public PD_problem {
      /*! @name Constructors
       * @{
       */
-     Order(size_t p_id,
+     Order(
+             int64_t p_id,
+             size_t p_idx,
              const Vehicle_node &p_pickup,
              const Vehicle_node &p_deliver);
 
@@ -59,25 +61,36 @@ class Order : public PD_problem {
 
      /*! The delivery node identifier
       *
-      * It hold's the idx of the node
+      * It hold's the idx of the Order
       */
-     inline size_t id() const {return m_id;}
+     inline size_t idx() const {
+         return m_idx;
+     }
 
      /*! The delivery node identifier
       *
-      * It hold's the idx of the node
+      * @returns the original id of the Order
+      */
+
+     inline int64_t id() const {
+         return m_id;
+     }
+
+     /*! The delivery node
+      *
+      * @returns the reference to the delivery node
       */
      const Vehicle_node& delivery() const;
 
      /*! The delivery node identifier
       *
-      * It hold's the idx of the node
+      * @returns the reference to the pickup node
       */
      const Vehicle_node& pickup() const;
 
      double distance() const;
 
-     /*! Get a subset of the orders that can be placed after @b this order
+     /*! Get a subset of the orders identifiers that can be placed after @b this order
       
       @dot
       digraph G {
@@ -149,7 +162,13 @@ class Order : public PD_problem {
       *
       * It holds the original order identifier given in a row of PickDeliveryOrders_t
       */
-     size_t m_id;
+     int64_t m_id;
+
+     /*! The order's identifier
+      *
+      * It holds the idx order identifier within a PD_orders container
+      */
+     size_t m_idx;
 
      /*! The pick up node identifier
       *

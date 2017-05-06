@@ -147,7 +147,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 #if 0
         pgassert(from_truck.has_order(from_order));
         msg.log << "\n" << from_orders;
-        msg.log << "\n from " << from_order.id()
+        msg.log << "\n from " << from_order.idx()
             << "," << from_order.pickup().original_id();
         pgassert(from_truck.has_order(from_order));
 #endif
@@ -162,7 +162,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
             auto to_order = to.orders()[to_orders.front()];
 #if 0
             msg.log << "\n" << to_orders;
-            msg.log << "\n To " << to_order.id();
+            msg.log << "\n To " << to_order.idx();
 #endif
             auto curr_to_duration = to_truck.duration();
 
@@ -172,7 +172,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 #if 0
             pgassert(from_truck.has_order(from_order));
             msg.log << "\n" << from_truck.tau();
-            msg.log << "\n" << from_order.id();
+            msg.log << "\n" << from_order.idx();
             pgassert(from_truck.has_order(from_order));
 #endif
             from_truck.erase(from_order);
@@ -218,15 +218,15 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 
                     swapped = true;
 #if 0
-                    best_to_order = to_order.id();
-                    best_from_order = from_order.id();
+                    best_to_order = to_order.idx();
+                    best_from_order = from_order.idx();
 #endif
                     p_swaps.push(
                             Swap_info(
                                 from,
                                 to,
-                                from_order.id(),
-                                to_order.id(),
+                                from_order.idx(),
+                                to_order.idx(),
                                 estimated_delta));
 #if 1
                 }
@@ -488,7 +488,7 @@ Optimize::move_reduce_cost(
          * removing an order decreases the duration
          */
         auto order = from_truck.orders()[from_orders.front()];
-        from_orders -= order.id();
+        from_orders -= order.idx();
 
         /*
          * insert it in the "to" truck
@@ -598,7 +598,7 @@ Optimize::decrease_truck(size_t cycle) {
             orders.pop_front()) {
         /* Step 2: grab an order */
         auto order = fleet[position].orders()[orders.front()];
-        pgassert(order.id() == orders.front());
+        pgassert(order.idx() == orders.front());
 
 
         /* Step 3: cycle the fleet (in reverse order)

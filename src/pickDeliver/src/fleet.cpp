@@ -99,7 +99,7 @@ Vehicle_pickDeliver
 Fleet::get_truck(const Order order) {
     auto id = m_trucks.front().id();
     for (auto truck : m_trucks) {
-        if (truck.feasable_orders().has(order.id())) {
+        if (truck.feasable_orders().has(order.idx())) {
             id = truck.id();
             msg.log << "id" << id
                 << "size" << m_trucks.size();

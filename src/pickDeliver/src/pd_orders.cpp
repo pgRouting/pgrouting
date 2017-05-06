@@ -45,7 +45,7 @@ void
 PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders
         ) {
-    OID order_id(0);
+    OID order_ctr(0);
     for (const auto order : pd_orders) {
         /*
          * SAMPLE CORRECT INFORMATION
@@ -88,7 +88,7 @@ PD_Orders::build_orders(
          * add into an order
          */
         m_orders.push_back(
-                Order(order_id++,
+                Order(order.id, order_ctr++,
                     pickup,
                     delivery));
 
