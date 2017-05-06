@@ -26,6 +26,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_IDENTIFIER_H_
 #pragma once
 
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#include <stdint.h>
+#endif
+
 #include <ostream>
 
 namespace pgrouting {
