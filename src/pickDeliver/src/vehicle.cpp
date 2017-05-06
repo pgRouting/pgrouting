@@ -487,7 +487,7 @@ Vehicle::Vehicle(
 std::string
 Vehicle::tau() const {
     std::ostringstream log;
-    log << "Truck " << id() << " (";
+    log << "Truck " << idx() << " (";
     for (const auto p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";
@@ -509,7 +509,7 @@ operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
     log << "\n\n****************** VEHICLE " << v.id() << "***************\n";
-    log << "id = " << v.id()
+    log << "id = " << v.idx()
         << "\tkind = " <<  v.m_kind
         << "\tcapacity = " << v.m_capacity
         << "\tspeed = " << v.m_speed << "\n";
