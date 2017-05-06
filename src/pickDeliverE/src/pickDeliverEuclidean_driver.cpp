@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./pickDeliverEuclidean_driver.h"
+#include "drivers/pickDeliver/pickDeliverEuclidean_driver.h"
 
 #include <string.h>
 #include <sstream>
@@ -152,5 +152,3 @@ do_pgr_pickDeliverEuclidean(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-

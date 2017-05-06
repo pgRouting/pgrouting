@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./pickDeliver_driver.h"
+#include "drivers/pickDeliver/pickDeliver_driver.h"
 
 #include <string.h>
 #include <sstream>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 #include "cpp_common/Dmatrix.h"
 
 #include "cpp_common/pgr_assert.h"
@@ -74,6 +74,7 @@ do_pgr_pickDeliver(
         pgassert(total_vehicles);
         pgassert(*return_count == 0);
         pgassert(!(*return_tuples));
+        log << "do_pgr_pickDeliver\n";
 
 
         /*
@@ -98,16 +99,13 @@ do_pgr_pickDeliver(
         }
 
         log << "Read data\n";
-        pgrouting::vrp::Pgr_pickDeliver pd_problem(
+        pgrouting::vrp::pickdeliver::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
                 cost_matrix,
                 max_cycles,
                 initial_solution_id);
 
-        log << pd_problem.msg.get_log();
-        *log_msg = pgr_msg(log.str().c_str());
-        return;
         err << pd_problem.msg.get_error();
         if (!err.str().empty()) {
             log << pd_problem.msg.get_log();
@@ -116,7 +114,14 @@ do_pgr_pickDeliver(
             return;
         }
         log << pd_problem.msg.get_log();
+        pd_problem.msg.clear();
         log << "Finish Reading data\n";
+        log << pd_problem;
+        log << pd_problem.msg.get_log();
+#if 1
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
+#endif
 
         try {
             pd_problem.solve();
@@ -170,5 +175,3 @@ do_pgr_pickDeliver(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-

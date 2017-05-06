@@ -23,22 +23,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/fleet.h"
+#include "pickDeliver/fleet.h"
 
 #include <string>
 #include <vector>
 #include <limits>
 
-#include "vrp/pd_orders.h"
-#include "vrp/tw_node.h"
-#include "vrp/vehicle_pickDeliver.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/pd_orders.h"
+#include "pickDeliver/tw_node.h"
+#include "pickDeliver/vehicle_pickDeliver.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/Dmatrix.h"
 
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 
 Fleet::Fleet(const Fleet &fleet) :
@@ -190,7 +191,8 @@ Fleet::build_fleet(
                         ending_site,
                         vehicle.capacity,
                         vehicle.speed));
-            msg.log << "inserting " << m_trucks.back().id();
+            msg.log << "inserted Vehicle" << m_trucks.back().id();
+            msg.log << "\n";
             pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
         }
     }
@@ -277,5 +279,6 @@ operator << (std::ostream &log, const Fleet &f) {
 }
 
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting

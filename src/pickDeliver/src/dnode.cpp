@@ -23,11 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/dnode.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/dnode.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 #if 0
 bool Dnode::isSamePos(const Dnode &other) const {
@@ -43,28 +44,39 @@ std::ostream& operator << (std::ostream &log, const Dnode &node) {
 
 double
 Dnode::distance(const Dnode &other) const {
+#if 1
     msg.log << "id" << id()
      << "\t original_id" << original_id()
      << "\t matrix.get_id" << problem->m_cost_matrix.get_id(original_id())
      << "\t matrix.get_index" << problem->m_cost_matrix.get_index(original_id())
-     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(original_id()));
+     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(original_id()))
+     << "\n";
 
-    msg.log << "other id" << id()
-     << "\t original_id" << original_id()
-     << "\t matrix.get_id" << problem->m_cost_matrix.get_id(original_id())
-     << "\t matrix.get_index" << problem->m_cost_matrix.get_index(original_id())
-     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(original_id()));
+    msg.log << "other id" << other.id()
+     << "\t original_id" << other.original_id()
+     << "\t matrix.get_id" << problem->m_cost_matrix.get_id(other.original_id())
+     << "\t matrix.get_index" << problem->m_cost_matrix.get_index(other.original_id())
+     << "\t matrix.get_index" << problem->m_cost_matrix.get_id(problem->m_cost_matrix.get_index(other.original_id()))
+     << "\n";
 
-    return problem->m_cost_matrix.distance(0,0);
+    msg.log << "Distance " << problem->m_cost_matrix.distance(
+            problem->m_cost_matrix.get_index(original_id()),
+            problem->m_cost_matrix.get_index(other.original_id()))
+        << "\n\n";
+#endif
+    return problem->m_cost_matrix.distance(
+            problem->m_cost_matrix.get_index(original_id()),
+            problem->m_cost_matrix.get_index(other.original_id()));
 }
 
 double
 Dnode::comparable_distance(const Dnode &other) const {
+    distance(other);
     return problem->m_cost_matrix.comparable_distance(0,0);
 }
 
 
-Dnode::Dnode(size_t id, int64_t original_id)
+Dnode::Dnode(size_t id, int64_t original_id, double, double)
     : Base_node(id, original_id) {
     }
 
@@ -79,6 +91,7 @@ Dnode::operator ==(const Dnode &rhs) const {
 }
 #endif
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

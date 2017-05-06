@@ -23,18 +23,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/pd_orders.h"
+#include "pickDeliver/pd_orders.h"
 
 #include <vector>
 
-#include "vrp/order.h"
-#include "vrp/tw_node.h"
-#include "vrp/vehicle_node.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/order.h"
+#include "pickDeliver/tw_node.h"
+#include "pickDeliver/vehicle_node.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
+PD_Orders::PD_Orders(
+        const std::vector<PickDeliveryOrders_t> &pd_orders) {
+    build_orders(pd_orders);
+}
 
 void
 PD_Orders::build_orders(
@@ -45,23 +50,39 @@ PD_Orders::build_orders(
         /*
          * SAMPLE CORRECT INFORMATION
          *
-         * id | demand | pick_x | pick_y | pick_open_t | pick_close_t | pick_service_t | deliver_x | deliver_y | deliver_open_t | deliver_open_t | deliver_close_t | deliver_service_t
-         * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
+         *  id | demand | p_node_id | p_x | p_y | p_open | p_close | p_service | d_node_id | d_x | d_y | d_open | d_close | d_service 
+         * ----+--------+-----------+-----+-----+--------+---------+-----------+-----------+-----+-----+--------+---------+-----------
+         *  11 |     10 |        99 |  35 |  69 |    448 |     505 |        90 |        97 |  45 |  68 |    912 |     967 |        90
+         *   
          */
+
 
         /*
          * Creating the pickup & delivery nodes
          */
         Vehicle_node pickup(
                 {problem->node_id()++, order, Tw_node::NodeType::kPickup});
+
+        pgassert(pickup.demand() == order.demand);
+        pgassert(pickup.opens() == order.pick_open_t);
+        pgassert(pickup.closes() == order.pick_close_t);
+        pgassert(pickup.original_id() == order.pick_node_id);
+
         Vehicle_node delivery(
                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
+
+        pgassert(delivery.demand() == -order.demand);
+        pgassert(delivery.opens() == order.deliver_open_t);
+        pgassert(delivery.closes() == order.deliver_close_t);
+        pgassert(delivery.original_id() == order.deliver_node_id);
 
         pickup.set_Did(delivery.id());
         delivery.set_Pid(pickup.id());
 
+
         problem->add_node(pickup);
         problem->add_node(delivery);
+
 
         /*
          * add into an order
@@ -70,6 +91,19 @@ PD_Orders::build_orders(
                 Order(order_id++,
                     pickup,
                     delivery));
+
+#if 1
+        auto o = m_orders.back();
+        pgassert(o.delivery().demand() == -order.demand);
+#if 0
+        msg.log << "ORDER\n"
+            << "original id of the order:" << o.original_id()
+            << "internal idx of the order:" << o.id()
+            << "pickup.demand:" << o.pickup().demand()
+            << "internal idx of the order:" << o.id()
+            << "\n";
+#endif
+#endif
     }  //  for (creating orders)
 
 #if 0
@@ -151,6 +185,15 @@ PD_Orders::find_best_I(
     return best_order;
 }
 
+std::ostream& operator << (std::ostream &log, const PD_Orders &orders) {
+    log << "*******   ORDERS   *********\n";
+    for (const auto o : orders) {
+        log << o << "\n";
+    }
+    log << "*******\n";
+    return log;
+}
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting

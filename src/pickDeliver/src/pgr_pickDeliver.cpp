@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 
 #include <sstream>
 #include <string>
@@ -33,17 +33,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 
-#include "vrp/vehicle_node.h"
-#include "vrp/vehicle_pickDeliver.h"
-#include "vrp/order.h"
-#include "vrp/pd_orders.h"
-#include "vrp/fleet.h"
-#include "vrp/solution.h"
-#include "vrp/initial_solution.h"
-#include "vrp/optimize.h"
+#include "pickDeliver/vehicle_node.h"
+#include "pickDeliver/vehicle_pickDeliver.h"
+#include "pickDeliver/order.h"
+#include "pickDeliver/pd_orders.h"
+#include "pickDeliver/fleet.h"
+#include "pickDeliver/solution.h"
+#include "pickDeliver/initial_solution.h"
+#include "pickDeliver/optimize.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 
 
@@ -138,6 +139,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         size_t p_max_cycles,
         int initial) :
     PD_problem(this),
+    m_cost_matrix(cost_matrix), 
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
     /*
@@ -145,33 +147,44 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      */
     m_node_id(0),
     m_nodes(),
-    m_cost_matrix(cost_matrix), 
-    m_trucks(vehicles) {
-        pgassert(msg.get_error().empty());
+    m_trucks(vehicles)
+{
+    pgassert(msg.get_error().empty());
 
-        pgassert(!pd_orders.empty());
-        pgassert(!vehicles.empty());
-        pgassert(!cost_matrix.empty());
-        pgassert(m_initial_id > 0 && m_initial_id < 7);
+    pgassert(!pd_orders.empty());
+    pgassert(!vehicles.empty());
+    pgassert(!cost_matrix.empty());
+    pgassert(m_initial_id > 0 && m_initial_id < 7);
 
-        pgassert(msg.get_error().empty());
-        std::ostringstream tmplog;
+    pgassert(msg.get_error().empty());
+    std::ostringstream tmplog;
 
-        msg.log << "\n *** Constructor for the matrix version ***\n";
+#ifdef FOO
+    msg.log << "the matrix\n " << m_cost_matrix;
+#else
+    msg.log << "the matrix LOOKS OK\n";
+#endif
 
-        if (!msg.get_error().empty()) {
-            return;
-        }
+    msg.log << "\n *** Constructor for the matrix version ***\n";
 
-        pgassert(msg.get_error().empty());
+    if (!msg.get_error().empty()) {
+        return;
+    }
 
-        if (!m_trucks.is_fleet_ok()) {
-            // TODO revise the function
-            pgassert(false);
-            msg.error << m_trucks.msg.get_error();
-            return;
-        }
-    }  //  constructor
+    pgassert(msg.get_error().empty());
+
+    if (!m_trucks.is_fleet_ok()) {
+        // TODO revise the function
+        pgassert(false);
+        msg.error << m_trucks.msg.get_error();
+        return;
+    }
+
+    // TODO building the orders shoul not care about vehicles
+    msg.log << "\n Building orders";
+    m_orders.build_orders(pd_orders);
+    msg.log << " ---> OK\n";
+}  //  constructor
 
 
 
@@ -284,6 +297,23 @@ Pgr_pickDeliver::node(ID id) const {
     return m_nodes[id];
 }
 
+std::ostream& operator<<(
+        std::ostream &log,
+        const Pgr_pickDeliver &pd_prob) {
+#if 0
+    log << "The matrix\n" << pd_prob.m_cost_matrix;
+    for (const auto n : pd_prob.m_nodes) {
+        log << n << "\n";
+    }
+    log << "The vehicles\n" << pd_prob.m_trucks;
+#endif
 
+    log << "The nodes\n";
+    log << "The orders\n" << pd_prob.m_orders;
+    return log;
+
+}
+
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting

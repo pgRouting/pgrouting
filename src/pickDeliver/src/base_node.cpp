@@ -23,10 +23,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/base_node.h"
+#include "pickDeliver/base_node.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 bool
 Base_node::isSamePos(const Base_node &rhs) const {
@@ -74,6 +75,7 @@ Base_node::operator ==(const Base_node &rhs) const {
          && (original_id() == rhs.original_id());
 }
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

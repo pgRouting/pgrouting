@@ -24,14 +24,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "vrp/order.h"
+#include "pickDeliver/order.h"
 
 #include <set>
 #include "cpp_common/pgr_assert.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 
 Identifiers<size_t>
@@ -53,6 +54,11 @@ Order::Order(
     pickup_id(p_pickup.id()),
     delivery_id(p_delivery.id()) {
     }
+
+double
+Order::distance() const {
+    return pickup().distance(delivery());
+}
 
 std::ostream&
 operator << (std::ostream &log, const Order &order) {
@@ -83,7 +89,9 @@ operator << (std::ostream &log, const Order &order) {
     for (const auto o : order.m_compatibleJ) {
         log << o << ", ";
     }
-    log << "}";
+    log << "}\n";
+
+    log << "Cost (distinace/time): " << order.distance();
 
     return log;
 }
@@ -165,6 +173,7 @@ Order::isCompatibleIJ(const Order &I, double speed) const {
     return all_cases &&  (case1 ||  case2 ||  case3);
 }
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

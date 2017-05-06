@@ -105,6 +105,7 @@ set(PgRouting_SOURCE_NAMES
     "max_flow"    # 2.3
     "contraction" # 2.3
     "pickDeliver" # 2.3
+    "pickDeliverE" # 2.5
     "vrp_basic"   # 2.0 
     "withPoints"  # 2.2
 

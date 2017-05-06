@@ -24,16 +24,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "vrp/initial_solution.h"
+#include "pickDeliver/initial_solution.h"
 #include <deque>
 #include <algorithm>
 #include <set>
 #include "cpp_common/pgr_assert.h"
-#include "vrp/solution.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/solution.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 void
 Initial_solution::invariant() const {
@@ -134,5 +135,6 @@ Initial_solution::one_truck_all_orders() {
 
 
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
