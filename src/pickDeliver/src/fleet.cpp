@@ -79,10 +79,10 @@ Fleet::release_truck(size_t id) {
 
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
-    auto id = m_trucks.front().id();
+    auto id = m_trucks.front().idx();
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order)) {
-            id = truck.id();
+            id = truck.idx();
             msg.log << "id" << id
                 << "size" << m_trucks.size();
             pgassertwm(id < m_trucks.size(), msg.get_log());
@@ -97,10 +97,10 @@ Fleet::get_truck(size_t order) {
 
 Vehicle_pickDeliver
 Fleet::get_truck(const Order order) {
-    auto id = m_trucks.front().id();
+    auto id = m_trucks.front().idx();
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order.idx())) {
-            id = truck.id();
+            id = truck.idx();
             msg.log << "id" << id
                 << "size" << m_trucks.size();
             pgassertwm(id < m_trucks.size(), msg.get_log());
@@ -185,9 +185,9 @@ Fleet::build_fleet(
                         ending_site,
                         vehicle.capacity,
                         vehicle.speed));
-            msg.log << "inserted Vehicle" << m_trucks.back().id();
+            msg.log << "inserted Vehicle" << m_trucks.back().idx();
             msg.log << "\n";
-            pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
+            pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
         }
     }
     Identifiers<size_t> unused(m_trucks.size());
@@ -208,7 +208,7 @@ Fleet::is_fleet_ok() const {
     for (auto truck : m_trucks) {
         if (!truck.is_feasable()) {
             msg.error << "Vehicle is not feasible";
-            msg.log << "Check vehicle #:" << truck.id();
+            msg.log << "Check vehicle #:" << truck.idx();
             return false;
         }
     }

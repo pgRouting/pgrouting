@@ -61,15 +61,18 @@ namespace pickdeliver {
  *
  * A vehicle is a sequence of @ref Vehicle_node
  * from @b starting site to @b ending site.
+ * has:
+ * @b capacity
+ * @b speed
+ * @b factor TODO(vicky)
  *
  * @sa @ref Vehicle_node
  */
 
 class Vehicle {
  protected:
-     typedef size_t ID;
      typedef size_t POS;
-     ID m_id;
+     size_t m_idx;
      int64_t m_kind;
      std::deque< Vehicle_node > m_path;
      double m_capacity;
@@ -84,7 +87,7 @@ class Vehicle {
            get_postgres_result(int vid) const;
 
      Vehicle(
-             ID id,
+             size_t idx,
              int64_t kind,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
@@ -213,10 +216,10 @@ class Vehicle {
       */
      bool empty() const;
 
-     ID id() const {return m_id;}
+     size_t idx() const {return m_idx;}
 
 
-     /// @ {
+     /// @{
      Cost cost() const;
      bool cost_compare(const Cost&, const Cost&) const;
 

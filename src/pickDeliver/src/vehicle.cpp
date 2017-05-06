@@ -462,13 +462,13 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
 
 Vehicle::Vehicle(
-        ID p_id,
+        size_t p_idx,
         int64_t p_kind,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_m_capacity,
         double p_speed) :
-    m_id(p_id),
+    m_idx(p_idx),
     m_kind(p_kind),
     m_capacity(p_m_capacity),
     m_speed(p_speed)
@@ -509,7 +509,7 @@ operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
     log << "\n\n****************** VEHICLE " << v.id() << "***************\n";
-    log << "id = " << v.m_id
+    log << "id = " << v.id()
         << "\tkind = " <<  v.m_kind
         << "\tcapacity = " << v.m_capacity
         << "\tspeed = " << v.m_speed << "\n";

@@ -79,13 +79,13 @@ Vehicle_pickDeliver::get_first_order() const {
 
 
 Vehicle_pickDeliver::Vehicle_pickDeliver(
-        size_t id,
-        size_t kind,
+        size_t idx,
+        int64_t kind,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_capacity,
         double p_speed) :
-    Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed),
+    Vehicle(idx, kind, starting_site, ending_site, p_capacity, p_speed),
     cost((std::numeric_limits<double>::max)()) {
         m_orders_in_vehicle.clear();
 
@@ -347,7 +347,7 @@ Vehicle_pickDeliver::pop_back() {
 
     pgassert(pick_itr->is_pickup());
 
-    ID deleted_pick_id = pick_itr->id();
+    size_t deleted_pick_id = pick_itr->id();
 
     for (const auto o : m_orders) {
         if (o.pickup().id() == deleted_pick_id) {
@@ -374,7 +374,7 @@ Vehicle_pickDeliver::pop_front() {
 
     pgassert(pick_itr->is_pickup());
 
-    ID deleted_pick_id = pick_itr->id();
+    size_t deleted_pick_id = pick_itr->id();
 
     for (const auto o : m_orders) {
         if (o.pickup().id() == deleted_pick_id) {
