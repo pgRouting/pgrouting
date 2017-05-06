@@ -461,13 +461,13 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
 
 Vehicle::Vehicle(
-        ID p_id,
+        size_t p_id,
         int64_t p_kind,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_m_capacity,
         double p_speed) :
-    m_id(p_id),
+    m_idx(p_id),
     m_kind(p_kind),
     m_capacity(p_m_capacity),
     m_speed(p_speed)
@@ -486,7 +486,7 @@ Vehicle::Vehicle(
 std::string
 Vehicle::tau() const {
     std::ostringstream log;
-    log << "Truck " << id() << " (";
+    log << "Truck " << idx() << " (";
     for (const auto p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";
@@ -507,8 +507,8 @@ std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** VEHICLE " << v.id() << "***************\n";
-    log << "id = " << v.m_id
+    log << "\n\n****************** VEHICLE " << v.idx() << "***************\n";
+    log << "id = " << v.idx()
         << "\tkind = " <<  v.m_kind
         << "\tcapacity = " << v.m_capacity
         << "\tspeed = " << v.m_speed << "\n";

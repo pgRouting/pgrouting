@@ -212,9 +212,9 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
                     msg.log
                         << "\n Found Swap order "
                         << from_order.pickup().original_id()
-                        << " from truck " << from_truck.id()
+                        << " from truck " << from_truck.idx()
                         << " with order " << to_order.pickup().original_id()
-                        << " of truck " << to_truck.id();
+                        << " of truck " << to_truck.idx();
 
                     swapped = true;
 #if 0
@@ -254,12 +254,12 @@ Optimize::swap_order() {
         size_t to_pos = 0;
 
         for (; from_pos < fleet.size()
-                && fleet[from_pos].id() != swap_data.from_truck.id()
+                && fleet[from_pos].idx() != swap_data.from_truck.idx()
                 ; ++from_pos) {
         }
         pgassert(from_pos < fleet.size());
         for (; to_pos < fleet.size()
-                && fleet[to_pos].id() != swap_data.to_truck.id()
+                && fleet[to_pos].idx() != swap_data.to_truck.idx()
                 ; ++to_pos) {
         }
         pgassert(to_pos < fleet.size());
@@ -470,12 +470,12 @@ Optimize::move_reduce_cost(
     size_t to_pos = 0;
 
     for (; from_pos < fleet.size()
-            && fleet[from_pos].id() != from_truck.id()
+            && fleet[from_pos].idx() != from_truck.idx()
             ; ++from_pos) {
     }
     pgassert(from_pos < fleet.size());
     for (; to_pos < fleet.size()
-            && fleet[to_pos].id() != to_truck.id()
+            && fleet[to_pos].idx() != to_truck.idx()
             ; ++to_pos) {
     }
     pgassert(to_pos < fleet.size());
@@ -497,8 +497,8 @@ Optimize::move_reduce_cost(
         if (to_truck.is_feasable()) {
             msg.log
                 << "\n    Move order " << order.pickup().original_id()
-                << " from truck " << from_truck.id()
-                << " to truck " << to_truck.id();
+                << " from truck " << from_truck.idx()
+                << " to truck " << to_truck.idx();
 #ifndef NDEBUG
             msg.dbg_log << "\nMove before:";
             msg.dbg_log << "\n" << fleet[to_pos].tau();

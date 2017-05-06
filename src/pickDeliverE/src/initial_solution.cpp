@@ -92,13 +92,13 @@ Initial_solution::do_while_foo(int kind) {
         truck.do_while_feasable(kind, unassigned, assigned);
 
         if (truck.orders_in_vehicle().empty()) {
-            out_of_trucks = notused.has(truck.id());
+            out_of_trucks = notused.has(truck.idx());
             if (out_of_trucks) {
                 for (auto t : notused) {
                     trucks.release_truck(t);
                 }
             }
-            notused += truck.id();
+            notused += truck.idx();
             continue;
         }
         fleet.push_back(truck);

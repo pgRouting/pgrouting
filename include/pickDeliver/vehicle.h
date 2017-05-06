@@ -73,7 +73,7 @@ class Vehicle {
  protected:
      typedef size_t POS;
      size_t m_idx;
-     int64_t m_kind;
+     int64_t m_id;
      std::deque< Vehicle_node > m_path;
      double m_capacity;
      double m_speed;
@@ -95,7 +95,7 @@ class Vehicle {
              double speed);
 
 
-     bool is_phony() {return m_kind < 0;}
+     bool is_phony() {return m_id < 0;}
 
      /*! @name deque like functions
 
@@ -217,6 +217,7 @@ class Vehicle {
      bool empty() const;
 
      size_t idx() const {return m_idx;}
+     size_t id() const {return m_id;}
 
 
      /// @{

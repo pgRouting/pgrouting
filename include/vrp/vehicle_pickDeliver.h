@@ -58,7 +58,7 @@ class Vehicle_pickDeliver : public Vehicle {
      friend class Optimize;
 
      Vehicle_pickDeliver(
-             ID id,
+             size_t id,
              size_t kind,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
@@ -172,8 +172,8 @@ class Vehicle_pickDeliver : public Vehicle {
       * \returns id of the removed order
       */
 
-     ID pop_back();
-     ID pop_front();
+     size_t pop_back();
+     size_t pop_front();
 };
 
 }  //  namespace vrp

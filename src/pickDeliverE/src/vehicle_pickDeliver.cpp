@@ -346,7 +346,7 @@ Vehicle_pickDeliver::pop_back() {
 
     pgassert(pick_itr->is_pickup());
 
-    ID deleted_pick_id = pick_itr->id();
+    auto deleted_pick_id = pick_itr->id();
 
     for (const auto o : m_orders) {
         if (o.pickup().id() == deleted_pick_id) {
@@ -373,7 +373,7 @@ Vehicle_pickDeliver::pop_front() {
 
     pgassert(pick_itr->is_pickup());
 
-    ID deleted_pick_id = pick_itr->id();
+    auto deleted_pick_id = pick_itr->id();
 
     for (const auto o : m_orders) {
         if (o.pickup().id() == deleted_pick_id) {
