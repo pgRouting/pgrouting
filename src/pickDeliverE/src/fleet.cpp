@@ -98,7 +98,7 @@ Vehicle_pickDeliver
 Fleet::get_truck(const Order order) {
     auto id = m_trucks.front().idx();
     for (auto truck : m_trucks) {
-        if (truck.feasable_orders().has(order.id())) {
+        if (truck.feasable_orders().has(order.idx())) {
             id = truck.idx();
             msg.log << "id" << id
                 << "size" << m_trucks.size();
@@ -230,7 +230,7 @@ Fleet::is_order_ok(const Order &order) const {
         if (truck.is_order_feasable(order)) {
             return true;
         }
-        msg.log << "checking order " << order.id()
+        msg.log << "checking order " << order.idx()
             << "on truck " << truck.idx() << "\n";
 
         /*

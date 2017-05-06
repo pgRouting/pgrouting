@@ -57,13 +57,6 @@ class Order : public Identifier, public PD_problem {
       * @{
       */
 
-#if 0
-     /*! The delivery node identifier
-      *
-      * It hold's the idx of the node
-      */
-     inline size_t id() const {return m_id;}
-#endif
 
      /*! The delivery node identifier
       *
@@ -145,14 +138,6 @@ class Order : public Identifier, public PD_problem {
      /*!@}*/
 
  private:
-#if 0
-     /*! The order's identifier
-      *
-      * It holds the original order identifier given in a row of PickDeliveryOrders_t
-      */
-     size_t m_id;
-#endif
-
      /*! The pick up node identifier
       *
       * It hold's the idx of the node

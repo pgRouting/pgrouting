@@ -50,13 +50,14 @@ Order::Order(
         const Vehicle_node &p_pickup,
         const Vehicle_node &p_delivery) :
     Identifier(p_idx, p_id),
+    //m_idx(p_idx),
     pickup_id(p_pickup.id()),
     delivery_id(p_delivery.id()) {
     }
 
 std::ostream&
 operator << (std::ostream &log, const Order &order) {
-    log << "\n\nOrder " << order.id() << ":\n"
+    log << "\n\nOrder " << order.idx() << ":\n"
         << "\tPickup: " << order.pickup() << "\n"
         << "\tDelivery: " << order.delivery() << "\n\n";
 #if 0
@@ -73,13 +74,13 @@ operator << (std::ostream &log, const Order &order) {
 #endif
     log << "\nThere are | {I}| = "
         << order.m_compatibleI.size()
-        << " -> order(" << order.id()
+        << " -> order(" << order.idx()
         << ") -> | {J}| = " << order.m_compatibleJ.size()
         << "\n\n {";
     for (const auto o : order.m_compatibleI) {
         log << o << ", ";
     }
-    log << "} -> " << order.id() << " -> {";
+    log << "} -> " << order.idx() << " -> {";
     for (const auto o : order.m_compatibleJ) {
         log << o << ", ";
     }
@@ -121,18 +122,18 @@ Order::is_valid(double speed) const {
  */
 void
 Order::set_compatibles(const Order J, double speed) {
-    if (J.id() == id()) return;
+    if (J.idx() == idx()) return;
     if (J.isCompatibleIJ(*this, speed)) {
         /*
          * this -> {J}
          */
-        m_compatibleJ += J.id();
+        m_compatibleJ += J.idx();
     }
     if (this->isCompatibleIJ(J, speed)) {
         /*
          * {J} -> this
          */
-        m_compatibleI += J.id();
+        m_compatibleI += J.idx();
     }
 }
 
