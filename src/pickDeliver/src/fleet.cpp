@@ -254,6 +254,8 @@ Fleet::operator[](size_t i) {
 
 void
 Fleet::set_compatibles(const PD_Orders &orders) {
+    msg.entering(__PRETTY_FUNCTION__);
+    msg.log << "Entering: " << __PRETTY_FUNCTION__ << "\n";
     for (auto &truck : m_trucks) {
         truck.set_compatibles(orders);
     }

@@ -61,9 +61,11 @@ Pgr_pickDeliver::optimize(const Solution solution) {
 void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
+    msg.log << "Entering: " << __PRETTY_FUNCTION__ << "\n";
 
     if (m_initial_id == 0) {
         msg.log << "trying all \n";
+    return;
         for (int i = 1; i < 7; ++i) {
             initial_sols.push_back(Initial_solution(i, m_orders.size()));
             msg.log << "solution " << i << "\n" << initial_sols.back().tau();
@@ -75,6 +77,7 @@ Pgr_pickDeliver::solve() {
         initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
         // TODO calculate the time it takes
         msg.log << "Initial solution " << m_initial_id << " duration: " << initial_sols[0].duration();
+        return;
     }
 
 
@@ -87,9 +90,10 @@ Pgr_pickDeliver::solve() {
             return rhs < lhs;
             });
 
+#if 0
     solutions.push_back(Optimize(initial_sols.back()));
     pgassert(!solutions.empty());
-
+#endif
     msg.log << "best solution duration = " << solutions.back().duration();
 }
 
@@ -97,6 +101,7 @@ Pgr_pickDeliver::solve() {
 
 std::vector< General_vehicle_orders_t >
 Pgr_pickDeliver::get_postgres_result() const {
+    if (solutions.empty()) return std::vector< General_vehicle_orders_t >();
     auto result = solutions.back().get_postgres_result();
 
     General_vehicle_orders_t aggregates = {
@@ -158,7 +163,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_trucks(vehicles),
     m_orders(pd_orders)
 {
-
+    msg.entering(__PRETTY_FUNCTION__);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
     pgassert(!cost_matrix.empty());
@@ -227,6 +232,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_nodes(),
     m_trucks(vehicles)
 {
+    msg.entering(__PRETTY_FUNCTION__);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
     pgassert(m_initial_id > 0 && m_initial_id < 7);

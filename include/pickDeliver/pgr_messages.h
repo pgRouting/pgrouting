@@ -84,6 +84,13 @@ class Pgr_messages {
     std::string get_dbglog() const;
 #endif
 
+    void entering(const char* function) {
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#else
+    log << "ENTERING: " << function << "\n";
+#endif
+    }
+
 
 
  public:
@@ -97,6 +104,11 @@ class Pgr_messages {
     mutable std::ostringstream dbg_log;
 #endif
 };
+
+
+
+
+
 
 }  // namespace pickdeliver
 }  // namespace vrp

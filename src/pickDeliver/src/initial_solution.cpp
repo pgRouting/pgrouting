@@ -76,10 +76,10 @@ Initial_solution::Initial_solution(
 
 void
 Initial_solution::do_while_foo(int kind) {
+    msg.log << "Entering: " << __PRETTY_FUNCTION__ << "\n";
     invariant();
     pgassert(kind > 0 && kind < 7);
 
-    msg.log << "\nInitial_solution::do_while_foo\n";
     Identifiers<size_t> notused;
     bool out_of_trucks;
 
@@ -91,6 +91,8 @@ Initial_solution::do_while_foo(int kind) {
          * kind 1 to 7 work with the same code structure
          */
         truck.do_while_feasable(kind, unassigned, assigned);
+        msg.log << truck;
+        pgassertwm(false, msg.get_log().c_str());
 
         if (truck.orders_in_vehicle().empty()) {
             out_of_trucks = notused.has(truck.idx());

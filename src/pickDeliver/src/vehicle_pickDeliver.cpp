@@ -390,6 +390,7 @@ Vehicle_pickDeliver::pop_front() {
 
 void
 Vehicle_pickDeliver::set_compatibles(const PD_Orders &orders) {
+    msg.log << "Entering: " << __PRETTY_FUNCTION__ << "\n";
     m_orders = orders;
     for (const auto o : orders) {
         if (is_order_feasable(o)) m_feasable_orders += o.idx();
@@ -399,8 +400,11 @@ Vehicle_pickDeliver::set_compatibles(const PD_Orders &orders) {
 
 bool
 Vehicle_pickDeliver::is_order_feasable(const Order &order) const {
+    msg.log << "Entering: " << __PRETTY_FUNCTION__ << "\n";
     auto test_truck =  *this;
     test_truck.push_back(order);
+    msg.log << test_truck;
+    pgassertwm(false, msg.log.str().c_str());
     return test_truck.is_feasable();
 }
 
