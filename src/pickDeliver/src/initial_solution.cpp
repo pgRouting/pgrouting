@@ -76,7 +76,7 @@ Initial_solution::Initial_solution(
 
 void
 Initial_solution::do_while_foo(int kind) {
-    msg.log << "Entering: " << __PRETTY_FUNCTION__ << "\n";
+    ENTERING();
     invariant();
     pgassert(kind > 0 && kind < 7);
 
