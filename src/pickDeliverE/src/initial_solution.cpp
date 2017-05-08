@@ -80,7 +80,7 @@ Initial_solution::do_while_foo(int kind) {
 
     msg.log << "\nInitial_solution::do_while_foo\n";
     Identifiers<size_t> notused;
-    bool out_of_trucks;
+    bool out_of_trucks(true);
 
     while (!unassigned.empty()) {
         auto truck = out_of_trucks?

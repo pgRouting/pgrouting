@@ -81,7 +81,7 @@ Initial_solution::do_while_foo(int kind) {
     pgassert(kind > 0 && kind < 7);
 
     Identifiers<size_t> notused;
-    bool out_of_trucks;
+    bool out_of_trucks(true);
 
     while (!unassigned.empty()) {
         auto truck = out_of_trucks?
