@@ -36,6 +36,13 @@ namespace pgrouting {
 namespace vrp {
 
 
+PD_Orders::PD_Orders(
+        const std::vector<PickDeliveryOrders_t> &pd_orders
+        ) {
+    build_orders(pd_orders);
+}
+
+
 void
 PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders

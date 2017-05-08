@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/Dmatrix.h"
 
+#include "pickDeliver/base_node.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/fleet.h"
 #include "vrp/solution.h"
@@ -118,10 +119,11 @@ class Pgr_pickDeliver : public PD_problem {
     size_t m_node_id;
 
     std::vector<Vehicle_node> m_nodes;
+    std::vector<std::unique_ptr<pickdeliver::Base_node>> m_base_nodes;
 
     pgrouting::tsp::Dmatrix m_cost_matrix;
-    Fleet m_trucks;
     PD_Orders m_orders;
+    Fleet m_trucks;
     std::vector<Solution> solutions;
 };
 

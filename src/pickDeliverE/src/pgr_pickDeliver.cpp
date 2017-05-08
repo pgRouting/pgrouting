@@ -190,6 +190,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      */
     m_node_id(0),
     m_nodes(),
+    m_base_nodes(),
+    m_orders(pd_orders),
     m_trucks(vehicles)
 {
     pgassert(!pd_orders.empty());
@@ -222,7 +224,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 #endif
 
     msg.log << "\n Building orders";
-    m_orders.build_orders(pd_orders);
+    //m_orders.build_orders(pd_orders);
     msg.log << " ---> OK\n";
 
 
