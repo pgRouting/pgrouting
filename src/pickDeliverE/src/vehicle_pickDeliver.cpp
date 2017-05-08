@@ -73,7 +73,7 @@ Order
 Vehicle_pickDeliver::get_first_order() const {
     invariant();
     pgassert(!empty());
-    return m_orders[m_path[1].id()];
+    return m_orders[m_path[1].idx()];
 }
 
 
@@ -346,10 +346,10 @@ Vehicle_pickDeliver::pop_back() {
 
     pgassert(pick_itr->is_pickup());
 
-    auto deleted_pick_id = pick_itr->id();
+    auto deleted_pick_idx = pick_itr->idx();
 
     for (const auto o : m_orders) {
-        if (o.pickup().id() == deleted_pick_id) {
+        if (o.pickup().idx() == deleted_pick_idx) {
             erase(o);
             invariant();
             return o.idx();
@@ -373,10 +373,10 @@ Vehicle_pickDeliver::pop_front() {
 
     pgassert(pick_itr->is_pickup());
 
-    auto deleted_pick_id = pick_itr->id();
+    auto deleted_pick_idx = pick_itr->idx();
 
     for (const auto o : m_orders) {
-        if (o.pickup().id() == deleted_pick_id) {
+        if (o.pickup().idx() == deleted_pick_idx) {
             erase(o);
             invariant();
             return o.idx();

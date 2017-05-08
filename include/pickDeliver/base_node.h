@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <ostream>
+#include "cpp_common/identifier.h"
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <stdint.h>
@@ -45,22 +46,23 @@ namespace pickdeliver {
  *
  * A Base_node is an identifier of a Node or Dnode.
  */
-class Base_node {
+class Base_node : public Identifier {
  public:
      /*! @name accessors
      @{
      */
 
+#if 0
      /*! @brief Returns the idx */
-     size_t  id() const;
+     size_t  idx() const;
 
      /*! @brief Returns the original id */
-     int64_t original_id() const;
-
+     int64_t id() const;
+#endif
      ///@}
 
      Base_node() = default;
-     Base_node(size_t id, int64_t original_id);
+     Base_node(size_t, int64_t);
 
 
      /** @name to be or not to be */
@@ -84,8 +86,10 @@ class Base_node {
 
 
  protected:
-     size_t m_id;                ///< internal node number
-     int64_t m_original_id;      ///< user supplied node number
+#if 0
+     size_t m_idx;                ///< internal node number
+     int64_t m_id;      ///< user supplied node number
+#endif
 };
 
 }  //  namespace pickdeliver

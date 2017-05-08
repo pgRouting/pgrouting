@@ -106,13 +106,15 @@ do_pgr_pickDeliver(
                 max_cycles,
                 initial_solution_id);
 
-        if (!pd_problem.msg.get_error().empty()) {
+        if (!pd_problem.msg.has_error()) {
+            log << "ERROR found\n";
             log << pd_problem.msg.get_log();
             err << pd_problem.msg.get_error();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
             return;
         }
+        pgassert(false);
         log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
         pd_problem.msg.clear();

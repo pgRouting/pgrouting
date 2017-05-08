@@ -43,6 +43,11 @@ Identifier::id() const {
     return m_id;
 }
 
+void
+Identifier::reset_id(int64_t _id) {
+    m_id = _id;
+}
+
 std::ostream& operator<<(std::ostream& log, const Identifier &ident) {
     log << "id(idx) = " << ident.id() << "(" << ident.idx() << ")";
     return log;

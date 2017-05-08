@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <ostream>
-#include "vrp/base_node.h"
+#include "pickDeliver/base_node.h"
 #include "cpp_common/xy_vertex.h"
 
 namespace pgrouting {
@@ -47,7 +47,7 @@ namespace vrp {
  *
  */
 
-class Node : public Base_node {
+class Node : public pickdeliver::Base_node {
  public:
      Node() = default;
      Node(size_t id, int64_t original_id, double _x, double _y);

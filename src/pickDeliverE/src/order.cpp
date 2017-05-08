@@ -51,8 +51,8 @@ Order::Order(
         const Vehicle_node &p_delivery) :
     Identifier(p_idx, p_id),
     //m_idx(p_idx),
-    pickup_id(p_pickup.id()),
-    delivery_id(p_delivery.id()) {
+    pickup_id(p_pickup.idx()),
+    delivery_id(p_delivery.idx()) {
     }
 
 std::ostream&

@@ -34,8 +34,8 @@ bool Node::isSamePos(const Node &other) const {
 }
 
 std::ostream& operator << (std::ostream &log, const Node &node) {
-    log << node.m_original_id
-        << "(" << node.m_id << ")"
+    log << node.id()
+        << "(" << node.idx() << ")"
        << " (x,y) = (" << node.m_point.x() << ", " << node.m_point.y() << ")";
     return log;
 }
@@ -55,8 +55,8 @@ Node::comparable_distance(const Node &other) const {
 }
 
 
-Node::Node(size_t id, int64_t original_id, double _x, double _y)
-    : Base_node(id, original_id),
+Node::Node(size_t _idx, int64_t _id, double _x, double _y)
+    : Base_node(_idx, _id),
         m_point(_x, _y) {
     }
 
@@ -64,8 +64,8 @@ bool
 Node::operator ==(const Node &rhs) const {
     if (&rhs == this) return true;
     return
-        (id() == rhs.id())
-         && (original_id() == rhs.original_id())
+        (idx() == rhs.idx())
+         && (id() == rhs.id())
          && (m_point == rhs.m_point);
 }
 

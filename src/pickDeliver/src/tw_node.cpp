@@ -233,10 +233,10 @@ bool Tw_node::is_valid() const {
  * @param[in] type the kind of node it is
  */
 Tw_node::Tw_node(
-        size_t id,
+        size_t idx,
         const PickDeliveryOrders_t data,
         NodeType type) :
-    Dnode(id, data.pick_node_id, data.pick_x, data.pick_y),
+    Dnode(idx, data.pick_node_id, data.pick_x, data.pick_y),
     m_opens(data.pick_open_t),
     m_closes(data.pick_close_t),
     m_service_time(data.pick_service_t),
@@ -245,7 +245,7 @@ Tw_node::Tw_node(
         if (m_type == kDelivery) {
             //TODO this is used when its the Node
             //m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
-            m_original_id = data.deliver_node_id;
+            reset_id(data.deliver_node_id);
             m_opens = data.deliver_open_t;
             m_closes = data.deliver_close_t;
             m_service_time = data.deliver_service_t;
@@ -254,10 +254,10 @@ Tw_node::Tw_node(
     }
 
 Tw_node::Tw_node(
-        size_t id,
+        size_t idx,
         Vehicle_t data,
         NodeType type) :
-    Dnode(id, data.start_node_id, data.start_x, data.start_y),
+    Dnode(idx, data.start_node_id, data.start_x, data.start_y),
     m_opens(data.start_open_t),
     m_closes(data.start_close_t),
     m_service_time(data.start_service_t),
@@ -265,7 +265,7 @@ Tw_node::Tw_node(
     m_type(type) {
         if (m_type == kEnd) {
             //m_point = pgrouting::Point(data.end_x, data.end_y);
-            m_original_id = data.end_node_id;
+            reset_id(data.end_node_id);
             m_opens = data.end_open_t;
             m_closes = data.end_close_t;
             m_service_time = data.end_service_t;

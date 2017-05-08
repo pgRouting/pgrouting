@@ -26,27 +26,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <sstream>
-#include "pickDeliver/pgr_messages.h"
+#include "cpp_common/pgr_messages.h"
 
 namespace pgrouting {
-namespace vrp {
-namespace pickdeliver {
 
 
 
 std::string
 Pgr_messages::get_log() const {
-    return log.str();
+    auto str = log.str();
+    log.str("");
+    log.clear();
+    return str;
 }
 
 std::string
 Pgr_messages::get_notice() const {
-    return notice.str();
+    auto str = notice.str();
+    notice.str("");
+    notice.clear();
+    return str;
+}
+
+bool
+Pgr_messages::has_error() const {
+    return  !error.str().empty();
 }
 
 std::string
 Pgr_messages::get_error() const {
-    return error.str();
+    auto str = error.str();
+    error.str("");
+    error.clear();
+    return str;
 }
 
 #ifndef NDEBUG
@@ -74,6 +86,4 @@ Pgr_messages::clear() {
 }
 
 
-}  //  namespace pickdeliver
-}  //  namespace vrp
 }  //  namespace pgrouting

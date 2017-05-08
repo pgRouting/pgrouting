@@ -210,9 +210,9 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 #endif
                     msg.log
                         << "\n Found Swap order "
-                        << from_order.pickup().original_id()
+                        << from_order.pickup().id()
                         << " from truck " << from_truck.idx()
-                        << " with order " << to_order.pickup().original_id()
+                        << " with order " << to_order.pickup().id()
                         << " of truck " << to_truck.idx();
 
                     swapped = true;
@@ -495,7 +495,7 @@ Optimize::move_reduce_cost(
         to_truck.insert(order);
         if (to_truck.is_feasable()) {
             msg.log
-                << "\n    Move order " << order.pickup().original_id()
+                << "\n    Move order " << order.pickup().id()
                 << " from truck " << from_truck.idx()
                 << " to truck " << to_truck.idx();
 #ifndef NDEBUG

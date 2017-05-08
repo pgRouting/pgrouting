@@ -57,8 +57,8 @@ PD_Orders::build_orders(
         Vehicle_node delivery(
                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
-        pickup.set_Did(delivery.id());
-        delivery.set_Pid(pickup.id());
+        pickup.set_Did(delivery.idx());
+        delivery.set_Pid(pickup.idx());
 
         problem->add_node(pickup);
         problem->add_node(delivery);

@@ -239,7 +239,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {
             msg.error << "The order "
-                << o.pickup().original_id()
+                << o.pickup().id()
                 << " is not feasible on any truck";
             msg.log << "\n" << o;
             return;
@@ -255,7 +255,7 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
     pgassert(node.is_pickup() ||  node.is_delivery());
     if (node.is_pickup()) {
         for (const auto o : m_orders) {
-            if (o.pickup().id() == node.id()) {
+            if (o.pickup().idx() == node.idx()) {
                 return o;
             }
         }
@@ -263,7 +263,7 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
     pgassert(node.is_delivery());
 
     for (const auto o : m_orders) {
-        if (o.delivery().id() == node.id()) {
+        if (o.delivery().idx() == node.idx()) {
             return o;
         }
     }
@@ -279,8 +279,8 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
 const Vehicle_node&
 Pgr_pickDeliver::node(ID id) const {
     pgassert(id < m_nodes.size());
-    msg.log << "id = " << id << "m_nodes[id].id()" << m_nodes[id].id() << "\n";
-    pgassertwm(id == m_nodes[id].id(), msg.get_log().c_str());
+    msg.log << "id = " << id << "m_nodes[id].idx()" << m_nodes[id].idx() << "\n";
+    pgassertwm(id == m_nodes[id].idx(), msg.get_log().c_str());
     return m_nodes[id];
 }
 

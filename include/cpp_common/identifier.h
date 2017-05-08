@@ -42,6 +42,7 @@ class Identifier {
 
      int64_t id() const;
      size_t idx() const;
+     void reset_id(int64_t);
 
      friend std::ostream& operator<<(std::ostream& log, const Identifier&);
 

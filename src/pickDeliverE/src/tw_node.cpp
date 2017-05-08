@@ -254,7 +254,7 @@ Tw_node::Tw_node(
     m_type(type) {
         if (m_type == kEnd) {
             m_point = pgrouting::Point(data.end_x, data.end_y);
-            m_original_id = data.end_node_id;
+            reset_id(data.end_node_id);
             m_opens = data.end_open_t;
             m_closes = data.end_close_t;
             m_service_time = data.end_service_t;

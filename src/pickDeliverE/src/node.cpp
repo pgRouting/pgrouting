@@ -33,8 +33,8 @@ bool Node::isSamePos(const Node &other) const {
 }
 
 std::ostream& operator << (std::ostream &log, const Node &node) {
-    log << node.m_original_id
-        << "(" << node.m_id << ")"
+    log << node.id()
+        << "(" << node.idx() << ")"
        << " (x,y) = (" << node.m_point.x() << ", " << node.m_point.y() << ")";
     return log;
 }
@@ -63,8 +63,8 @@ bool
 Node::operator ==(const Node &rhs) const {
     if (&rhs == this) return true;
     return
-        (id() == rhs.id())
-         && (original_id() == rhs.original_id())
+        (idx() == rhs.idx())
+         && (id() == rhs.id())
          && (m_point == rhs.m_point);
 }
 

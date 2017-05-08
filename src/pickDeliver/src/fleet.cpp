@@ -54,9 +54,11 @@ Fleet::Fleet(
     PD_problem(),
     used(),
     un_used() {
+        ENTERING();
         build_fleet(vehicles);
         Identifiers<size_t> unused(m_trucks.size());
         un_used = unused;
+        EXITING();
     }
 
 
@@ -97,6 +99,7 @@ Fleet::get_truck(size_t order) {
 
 Vehicle_pickDeliver
 Fleet::get_truck(const Order order) {
+    ENTERING();
     auto id = m_trucks.front().idx();
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order.idx())) {
@@ -125,6 +128,7 @@ Fleet::get_truck(const Order order) {
 bool
 Fleet::build_fleet(
         std::vector<Vehicle_t> vehicles) {
+    ENTERING();
     /*
      *  creating a phoney truck with max capacity and max window
      *  with the start & end points of the first vehicle given
@@ -164,6 +168,7 @@ Fleet::build_fleet(
         if (vehicle.cant_v <= 0) {
             msg.error << "Illegal number of vehicles found vehicle";
             msg.log << vehicle.cant_v << "<= 0 on vehicle " << vehicle.id;
+            EXITING();
             return false;
         }
 
@@ -185,13 +190,16 @@ Fleet::build_fleet(
                         ending_site,
                         vehicle.capacity,
                         vehicle.speed));
+#if 0
             msg.log << "inserted Vehicle" << m_trucks.back().idx();
             msg.log << "\n";
+#endif
             pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
         }
     }
     Identifiers<size_t> unused(m_trucks.size());
     un_used = unused;
+    EXITING();
     return true;
 }
 
@@ -204,14 +212,17 @@ Fleet::build_fleet(
  */
 bool
 Fleet::is_fleet_ok() const {
+    ENTERING();
     if (!msg.get_error().empty()) return false;
     for (auto truck : m_trucks) {
         if (!truck.is_feasable()) {
             msg.error << "Vehicle is not feasible";
             msg.log << "Check vehicle #:" << truck.idx();
+            EXITING();
             return false;
         }
     }
+    EXITING();
     return true;
 }
 
@@ -222,6 +233,7 @@ Fleet::is_fleet_ok() const {
  */
 bool
 Fleet::is_order_ok(const Order &order) const {
+    ENTERING();
     for (const auto truck : m_trucks) {
 #if 0
         if (!order.is_valid(truck.speed())) continue;
@@ -240,9 +252,11 @@ Fleet::is_order_ok(const Order &order) const {
          * if its feasible, then the one truck is found
          */
         if (truck.is_order_feasable(order)) {
+            EXITING();
             return true;
         }
     }
+    EXITING();
     return false;
 }
 
@@ -254,8 +268,7 @@ Fleet::operator[](size_t i) {
 
 void
 Fleet::set_compatibles(const PD_Orders &orders) {
-    msg.entering(__PRETTY_FUNCTION__);
-    msg.log << "Entering: " << __PRETTY_FUNCTION__ << "\n";
+    ENTERING();
     for (auto &truck : m_trucks) {
         truck.set_compatibles(orders);
     }

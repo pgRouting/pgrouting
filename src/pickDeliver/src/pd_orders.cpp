@@ -45,6 +45,7 @@ void
 PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders
         ) {
+    ENTERING();
     OID order_ctr(0);
     for (const auto order : pd_orders) {
         /*
@@ -66,7 +67,7 @@ PD_Orders::build_orders(
         pgassert(pickup.demand() == order.demand);
         pgassert(pickup.opens() == order.pick_open_t);
         pgassert(pickup.closes() == order.pick_close_t);
-        pgassert(pickup.original_id() == order.pick_node_id);
+        pgassert(pickup.id() == order.pick_node_id);
 
         Vehicle_node delivery(
                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
@@ -74,10 +75,10 @@ PD_Orders::build_orders(
         pgassert(delivery.demand() == -order.demand);
         pgassert(delivery.opens() == order.deliver_open_t);
         pgassert(delivery.closes() == order.deliver_close_t);
-        pgassert(delivery.original_id() == order.deliver_node_id);
+        pgassert(delivery.id() == order.deliver_node_id);
 
-        pickup.set_Did(delivery.id());
-        delivery.set_Pid(pickup.id());
+        pickup.set_Did(delivery.idx());
+        delivery.set_Pid(pickup.idx());
 
 
         problem->add_node(pickup);
@@ -93,12 +94,15 @@ PD_Orders::build_orders(
                     delivery));
 
     }  //  for (creating orders)
+    EXITING();
 }
 
 bool
 PD_Orders::is_valid(double speed) const {
+    ENTERING();
     for (const auto &o : m_orders) {
         if (!o.is_valid(speed)) {
+            EXITING();
             return false;
         }
         pgassert(o.pickup().is_pickup());
@@ -106,6 +110,7 @@ PD_Orders::is_valid(double speed) const {
         /* P -> D */
         pgassert(o.delivery().is_compatible_IJ(o.pickup(), speed));
     }
+    EXITING();
     return true;
 }
 
@@ -123,16 +128,19 @@ PD_Orders::operator[](OID i) const {
 
 void
 PD_Orders::set_compatibles(double speed) {
+    ENTERING();
     for (auto &I : m_orders) {
         for (const auto J : m_orders) {
             I.set_compatibles(J, speed);
         }
     }
+    EXITING();
 }
 
 size_t
 PD_Orders::find_best_J(
         Identifiers<size_t> &within_this_set) const {
+    ENTERING();
     pgassert(!within_this_set.empty());
     auto best_order = within_this_set.front();
     size_t max_size = 0;
@@ -145,6 +153,7 @@ PD_Orders::find_best_J(
             best_order = o;
         }
     }
+    EXITING();
     return best_order;
 }
 
@@ -152,6 +161,7 @@ PD_Orders::find_best_J(
 size_t
 PD_Orders::find_best_I(
         Identifiers<size_t> &within_this_set) const {
+    ENTERING();
     pgassert(!within_this_set.empty());
     auto best_order = within_this_set.front();
     size_t max_size = 0;
@@ -164,6 +174,7 @@ PD_Orders::find_best_I(
             best_order = o;
         }
     }
+    EXITING();
     return best_order;
 }
 

@@ -78,7 +78,7 @@ Vehicle::insert(std::pair<POS, POS> position_limits, const Vehicle_node &node) {
     return best;
 
     pgassert(best < m_path.size());
-    pgassert(m_path[best].id() == node.id());
+    pgassert(m_path[best].idx() == node.idx());
     invariant();
 }
 
@@ -144,7 +144,7 @@ Vehicle::get_postgres_result(
                 /*
                  * The original_id is invalid for stops type 0 and 5
                  */
-                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.original_id(),
+                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.id(),
                 p_stop.type(),
                 p_stop.cargo(),
                 p_stop.travel_time(),
@@ -177,7 +177,7 @@ Vehicle::insert(POS at, Vehicle_node node) {
     evaluate(at);
 
     pgassert(at < m_path.size());
-    pgassert(m_path[at].id() == node.id());
+    pgassert(m_path[at].idx() == node.idx());
     invariant();
 }
 
@@ -238,7 +238,7 @@ Vehicle::erase(const Vehicle_node &node) {
 
     POS pos = 0;
     for ( ; pos < m_path.size() ; ++pos) {
-        if (node.id() == m_path[pos].id())
+        if (node.idx() == m_path[pos].idx())
             break;
     }
 
@@ -490,7 +490,7 @@ Vehicle::tau() const {
     for (const auto p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";
-        log << p_stop.original_id();
+        log << p_stop.id();
     }
     log << ")" << " \t(cv, twv, wait_time, duration) = ("
         << cvTot() << ", "
