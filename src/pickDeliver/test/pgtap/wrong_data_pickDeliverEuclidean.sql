@@ -95,6 +95,7 @@ UPDATE orders SET d_close = 967 WHERE id =11;
 UPDATE vehicles SET start_open = 3000  WHERE id = 0;
 UPDATE vehicles SET start_open = 3000;
 
+SELECT todo(1);
 SELECT throws_ok('q5',
     'XX000',
     'Illegal values found on vehicle',
@@ -109,7 +110,6 @@ UPDATE vehicles SET start_open = 0;
 --------------------------------------
 UPDATE orders SET p_open = 600 WHERE id =11;
 
-SELECT todo(1);
 SELECT throws_ok('q5',
     'XX000',
     'The order 11 is not feasible on any truck',
