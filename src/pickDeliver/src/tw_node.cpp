@@ -274,7 +274,7 @@ Tw_node::Tw_node(
 
 
 /*! * \brief Print the contents of a Twnode object. */
-std::ostream& operator << (std::ostream &log, const Tw_node &n) {
+std::ostream& operator<<(std::ostream &log, const Tw_node &n) {
     log << static_cast<const Dnode&>(n)
         << "[opens = " << n.m_opens
         << "\tcloses = " << n.m_closes

@@ -190,7 +190,7 @@ class Tw_node: public Dnode {
 
 
      /*! * \brief Print the contents of a Twnode object. */
-     friend std::ostream& operator << (std::ostream &log, const Tw_node &node);
+     friend std::ostream& operator<<(std::ostream &log, const Tw_node &node);
 
      bool operator ==(const Tw_node &rhs) const;
 
@@ -271,7 +271,7 @@ class Tw_node: public Dnode {
 
 
      Tw_node() : Dnode() {}
-     Tw_node(const Tw_node &other) = default;
+     Tw_node(const Tw_node &) = default;
      Tw_node(
              size_t id,
              const PickDeliveryOrders_t data,
