@@ -270,7 +270,7 @@ class Tw_node: public pickdeliver::Node {
 
 
      Tw_node() : Node() {}
-     Tw_node(const Tw_node &other) = default;
+     Tw_node(const Tw_node &) = default;
      Tw_node(
              size_t id,
              PickDeliveryOrders_t data,

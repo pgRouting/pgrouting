@@ -100,7 +100,7 @@ Vehicle_node::evaluate(
 
 std::ostream&
 operator << (std::ostream &log, const Vehicle_node &v) {
-    log << static_cast<Tw_node>(v)
+    log << static_cast<const Tw_node&>(v)
         << " twv = " << v.has_twv()
         << ", twvTot = " << v.twvTot()
         << ", cvTot = " << v.cvTot()
