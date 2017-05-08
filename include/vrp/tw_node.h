@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "cpp_common/pgr_assert.h"
 
-#include "vrp/node.h"
+#include "pickDeliver/node.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -52,7 +52,7 @@ namespace vrp {
  * values and requirements for \c type and \c streetid.
  *
  */
-class Tw_node: public Node {
+class Tw_node: public pickdeliver::Node {
  public:
      typedef enum {
          kStart = 0,  // /< starting site
