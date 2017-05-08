@@ -189,7 +189,7 @@ class Tw_node: public pickdeliver::Node {
 
 
      /*! * \brief Print the contents of a Twnode object. */
-     friend std::ostream& operator << (std::ostream &log, const Tw_node &node);
+     friend std::ostream& operator<< (std::ostream &log, const Tw_node &node);
 
      bool operator ==(const Tw_node &rhs) const;
 

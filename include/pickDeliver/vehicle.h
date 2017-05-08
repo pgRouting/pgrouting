@@ -251,7 +251,9 @@ class Vehicle : public Identifier, public PD_problem {
      bool is_feasable() const {
          return !(has_twv() ||  has_cv());
      }
-     const Vehicle_node start_site() const {return m_path.front();}
+     Vehicle_node start_site() const {
+         return m_path.front();
+     }
      const Vehicle_node end_site() const {return m_path.back();}
      double speed() const {return m_speed;}
      double capacity() const {return m_capacity;}
