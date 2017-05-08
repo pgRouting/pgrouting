@@ -60,8 +60,8 @@ Pgr_pickDeliver::optimize(const Solution solution) {
 
 void
 Pgr_pickDeliver::solve() {
+    ENTERING();
     auto initial_sols = solutions;
-    msg.log << "Entering: " << __PRETTY_FUNCTION__ << "\n";
 
     if (m_initial_id == 0) {
         msg.log << "trying all \n";
@@ -77,6 +77,7 @@ Pgr_pickDeliver::solve() {
         initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
         // TODO calculate the time it takes
         msg.log << "Initial solution " << m_initial_id << " duration: " << initial_sols[0].duration();
+        EXITING();
         return;
     }
 
@@ -87,6 +88,7 @@ Pgr_pickDeliver::solve() {
     pgassert(!initial_sols.empty());
     std::sort(initial_sols.begin(), initial_sols.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
+            EXITING();
             return rhs < lhs;
             });
 
@@ -95,6 +97,7 @@ Pgr_pickDeliver::solve() {
     pgassert(!solutions.empty());
 #endif
     msg.log << "best solution duration = " << solutions.back().duration();
+    EXITING();
 }
 
 
