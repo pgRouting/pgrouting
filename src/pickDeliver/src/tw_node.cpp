@@ -80,16 +80,16 @@ bool
 Tw_node::is_partially_compatible_IJ(const Tw_node &I, double speed) const {
     return
         is_compatible_IJ(I, speed)
-         && !is_early_arrival(arrival_j_opens_i(I, speed))
-         && is_late_arrival(arrival_j_closes_i(I, speed));
+        && !is_early_arrival(arrival_j_opens_i(I, speed))
+        && is_late_arrival(arrival_j_closes_i(I, speed));
 }
 
 bool
 Tw_node::is_tight_compatible_IJ(const Tw_node &I, double speed) const {
     return
         is_compatible_IJ(I, speed)
-         && !is_early_arrival(arrival_j_opens_i(I, speed))
-         && !is_late_arrival(arrival_j_closes_i(I, speed));
+        && !is_early_arrival(arrival_j_opens_i(I, speed))
+        && !is_late_arrival(arrival_j_closes_i(I, speed));
 }
 
 bool
@@ -98,14 +98,14 @@ Tw_node::is_partially_waitTime_compatible_IJ(
         double speed) const {
     return
         is_compatible_IJ(I, speed)
-         && is_early_arrival(arrival_j_opens_i(I, speed));
+        && is_early_arrival(arrival_j_opens_i(I, speed));
 }
 
 bool
 Tw_node::is_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
     return
         is_compatible_IJ(I, speed)
-         && is_early_arrival(arrival_j_opens_i(I, speed));
+        && is_early_arrival(arrival_j_opens_i(I, speed));
 }
 
 
@@ -125,59 +125,59 @@ bool
 Tw_node::is_start() const {
     return
         m_type == kStart
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() == 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() == 0);
 }
 
 bool
 Tw_node::is_pickup() const {
     return m_type == kPickup
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() > 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() > 0);
 }
 
 
 bool
 Tw_node::is_delivery() const {
     return m_type == kDelivery
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() < 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() < 0);
 }
 
 
 bool
 Tw_node::is_dump() const {
     return m_type == kDump
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() <= 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() <= 0);
 }
 
 
 bool
 Tw_node::is_load() const {
     return m_type == kLoad
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() >= 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() >= 0);
 }
 
 
 bool
 Tw_node::is_end() const {
     return m_type == kEnd
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() == 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() == 0);
 }
 
 

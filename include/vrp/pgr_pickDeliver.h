@@ -105,6 +105,15 @@ class Pgr_pickDeliver : public PD_problem {
     void add_node(const Vehicle_node &node) {
         m_nodes.push_back(node);
     }
+
+    void add_base_node(std::unique_ptr<pickdeliver::Base_node> node_ptr) {
+        m_base_nodes.push_back(std::move(node_ptr));
+    }
+
+#if 1
+    // TODO delete this function
+    bool nodesOK() const;
+#endif
     Fleet trucks() const {return m_trucks;}
 
     /// @{
@@ -119,8 +128,10 @@ class Pgr_pickDeliver : public PD_problem {
     size_t m_node_id;
 
     std::vector<Vehicle_node> m_nodes;
+ public:
     std::vector<std::unique_ptr<pickdeliver::Base_node>> m_base_nodes;
 
+ private:
     pgrouting::tsp::Dmatrix m_cost_matrix;
     PD_Orders m_orders;
     Fleet m_trucks;

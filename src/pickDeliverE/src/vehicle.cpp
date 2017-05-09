@@ -143,7 +143,7 @@ Vehicle::get_postgres_result(
                 /*
                  * The original_id is invalid for stops type 0 and 5
                  */
-                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.id(),
+                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.order(),
                 p_stop.type(),
                 p_stop.cargo(),
                 p_stop.travel_time(),

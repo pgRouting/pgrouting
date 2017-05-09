@@ -26,8 +26,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "vrp/pd_orders.h"
 
 #include <vector>
+#include <memory>
 
 #include "vrp/order.h"
+#include "pickDeliver/node.h"
 #include "vrp/tw_node.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/pgr_pickDeliver.h"
@@ -59,16 +61,38 @@ PD_Orders::build_orders(
         /*
          * Creating the pickup & delivery nodes
          */
+        //pickdeliver::Node b_pickup(problem->node_id(), order.pick_node_id, order.pick_x, order.pick_y);
+        std::unique_ptr<pickdeliver::Base_node> b_pick(new pickdeliver::Node(
+                problem->node_id(), order.pick_node_id, order.pick_x, order.pick_y
+                ));
+        msg.log <<  order.id << ": " << problem->node_id() << "," << order.pick_node_id << "\n";
         Vehicle_node pickup(
                 {problem->node_id()++, order, Tw_node::NodeType::kPickup});
+
+        msg.log << b_pick->idx() << ",";
+        msg.log << b_pick->id() << "\n";
+        msg.log << pickup.idx() << ",";
+        msg.log << pickup.id() << "\n";
+
+
+        std::unique_ptr<pickdeliver::Base_node> b_drop(new pickdeliver::Node(
+                problem->node_id(), order.deliver_node_id, order.deliver_x, order.deliver_y
+                ));
         Vehicle_node delivery(
                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
+
 
         pickup.set_Did(delivery.idx());
         delivery.set_Pid(pickup.idx());
 
+        problem->add_base_node(std::move(b_pick));
+        problem->add_base_node(std::move(b_drop));
         problem->add_node(pickup);
         problem->add_node(delivery);
+
+        pgassert(problem->nodesOK());
+
+
 
         /*
          * add into an order

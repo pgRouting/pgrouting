@@ -46,6 +46,36 @@ namespace pgrouting {
 namespace vrp {
 
 
+#if 1
+    // TODO delete this function
+bool
+Pgr_pickDeliver::nodesOK() const {
+    ENTERING();
+    if (m_nodes.empty() && m_base_nodes.empty()) return true;
+
+    msg.log << "     m_nodes: " << m_nodes.size();
+    for(const auto n : m_nodes) {
+        msg.log << n.id() << ",";
+    }
+
+    msg.log << "\n";
+
+    msg.log << "m_base_nodes: " << m_base_nodes.size();
+    for(auto const &n : m_base_nodes) {
+        msg.log << n->id() << ",";
+    }
+
+    pgassertwm(m_nodes.size() == m_base_nodes.size(), msg.get_log().c_str());
+    msg.log << "\n";
+//    pgassertwm(false, msg.get_log().c_str());
+
+    for (size_t i = 0; i < m_nodes.size() ; ++i) {
+        pgassertwm(m_nodes[i].id() ==  m_base_nodes[i]->id(), msg.get_log().c_str());
+        pgassertwm(m_nodes[i].idx() ==  m_base_nodes[i]->idx(), msg.get_log().c_str());
+    }
+    return true;
+}
+#endif
 
 Solution
 Pgr_pickDeliver::optimize(const Solution solution) {
