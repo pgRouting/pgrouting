@@ -69,11 +69,12 @@ PD_Orders::build_orders(
         Vehicle_node pickup(
                 {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
+#if 0
         msg.log << b_pick->idx() << ",";
         msg.log << b_pick->id() << "\n";
         msg.log << pickup.idx() << ",";
         msg.log << pickup.id() << "\n";
-
+#endif
 
         std::unique_ptr<pickdeliver::Base_node> b_drop(new pickdeliver::Node(
                 problem->node_id(), order.deliver_node_id, order.deliver_x, order.deliver_y
@@ -81,6 +82,9 @@ PD_Orders::build_orders(
         Vehicle_node delivery(
                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
+        msg.log << "distance " << pickup.distance(delivery) << "\n";
+        msg.log << "other d " << b_pick->distance(*b_drop) << "\n";
+        pgassertwm(pickup.distance(delivery) == b_pick->distance(*b_drop), msg.get_log().c_str());
 
         pickup.set_Did(delivery.idx());
         delivery.set_Pid(pickup.idx());

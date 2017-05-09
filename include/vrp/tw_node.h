@@ -53,7 +53,7 @@ namespace vrp {
  * values and requirements for \c type and \c streetid.
  *
  */
-class Tw_node: public pickdeliver::Node , public PD_problem {
+class Tw_node: public pickdeliver::Node {
  public:
      typedef enum {
          kStart = 0,  // /< starting site

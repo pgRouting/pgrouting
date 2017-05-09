@@ -42,6 +42,7 @@ std::ostream& operator << (std::ostream &log, const Node &node) {
 
 double
 Node::distance(const Node &other) const {
+    ENTERING();
     auto dx = m_point.x() - other.m_point.x();
     auto dy = m_point.y() - other.m_point.y();
     return sqrt(dx * dx + dy * dy);
