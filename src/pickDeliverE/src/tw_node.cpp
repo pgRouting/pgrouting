@@ -43,8 +43,10 @@ Tw_node::travel_time_to(const Node &other, double speed) const {
     msg.log << "-----------\n";
     msg.log << (*from) << "\n";
     msg.log << (*to) << "\n";
-    msg.log << from->distance(*to) << " == " << distance(other) << "\n";
-    pgassertwm(from->distance(*to) == distance(other), msg.get_log().c_str());
+#if 0
+    msg.log << from->distance(&to) << " == " << distance(other) << "\n";
+    pgassertwm(from->distance(to) == distance(other), msg.get_log().c_str());
+#endif
 #if 0
     pgassert(problem->m_base_nodes[idx()]->distance(*(problem->m_base_nodes[idx()])) == distance(other));
     msg.clear();

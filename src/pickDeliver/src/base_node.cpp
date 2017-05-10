@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "pickDeliver/base_node.h"
+#include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -47,16 +48,23 @@ Base_node::idx() const {
 #endif
 
 std::ostream& operator << (std::ostream &log, const Base_node &node) {
-    log << node.id()
-        << "(" << node.idx() << ")";
+    node.print(log);
     return log;
 }
 
-double
-Base_node::distance(const Base_node &) const {
-    return 0;
+void
+Base_node::print(std::ostream& os) const {
+    os << "USING BASE_NODE\n";
+    os << id()
+        << "(" << idx() << ")";
 }
 
+#if 0
+double
+Base_node::distance(const std::unique_ptr<pgrouting::vrp::pickdeliver::Base_node>::pointer node) const {
+    return 0;
+}
+#endif
 double
 Base_node::comparable_distance(const Base_node &) const {
     return 0;

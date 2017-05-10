@@ -49,7 +49,7 @@ namespace pickdeliver {
  *
  */
 
-class Node : public Base_node , public PD_problem{
+class Node : public Base_node , public PD_problem {
  public:
      Node() = default;
      Node(size_t id, int64_t original_id, double _x, double _y);
@@ -62,10 +62,12 @@ class Node : public Base_node , public PD_problem{
 
      bool operator ==(const Node &rhs) const;
 
-     double distance(const Node &other) const;
+     double distance(const Node &) const;
+     double distance(const Base_node *) const;
      double comparable_distance(const Node &other) const;
 
      friend std::ostream& operator << (std::ostream &log, const Node &node);
+     void print(std::ostream& os) const;
 
  protected:
      pgrouting::Point m_point;

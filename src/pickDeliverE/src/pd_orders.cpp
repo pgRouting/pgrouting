@@ -82,9 +82,21 @@ PD_Orders::build_orders(
         Vehicle_node delivery(
                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
+        msg.log << "pick " << pickup << "\n";
+        msg.log << "drop " << delivery << "\n";
         msg.log << "distance " << pickup.distance(delivery) << "\n";
-        msg.log << "other d " << b_pick->distance(*b_drop) << "\n";
-        pgassertwm(pickup.distance(delivery) == b_pick->distance(*b_drop), msg.get_log().c_str());
+        msg.log << ".............\n";
+        msg.log << "pick " << *b_pick << "\n";
+        msg.log << "drop " << *b_drop << "\n";
+        pickdeliver::Node p = *dynamic_cast<pickdeliver::Node*>(b_pick.get());
+        pickdeliver::Node d = *dynamic_cast<pickdeliver::Node*>(b_drop.get());
+        msg.log << "distance " << p.distance(d) << "\n";
+        msg.log << "distance " << p.distance(b_drop.get()) << "\n";
+        // TODO
+        // msg.log << "distance " << b_pick->distance(b_drop.get()) << "\n";
+
+        pgassertwm(false, msg.get_log().c_str());
+        //pgassertwm(pickup.distance(delivery) == b_pick->distance(*b_drop), msg.get_log().c_str());
 
         pickup.set_Did(delivery.idx());
         delivery.set_Pid(pickup.idx());

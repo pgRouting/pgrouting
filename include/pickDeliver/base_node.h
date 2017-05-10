@@ -31,7 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <ostream>
+#include <memory>
 #include "cpp_common/identifier.h"
+#include "vrp/pd_problem.h"
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <stdint.h>
@@ -80,10 +82,14 @@ class Base_node : public Identifier {
      /*! @name distance
      @{
      */
-     virtual double distance(const Base_node &other) const;
+#if 1
+     double distance(const std::unique_ptr<pgrouting::vrp::pickdeliver::Base_node>::pointer node) const;
+#endif
      virtual double comparable_distance(const Base_node &other) const;
      /*!@}*/
 
+
+     virtual void print(std::ostream& os) const;
 
  protected:
 #if 0
