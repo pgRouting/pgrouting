@@ -65,6 +65,7 @@ class Tw_node: public pickdeliver::Node {
      } NodeType;
 
 
+#if 0
      inline void set_Pid(size_t id) {
          m_otherid = id;
      }
@@ -82,7 +83,7 @@ class Tw_node: public pickdeliver::Node {
          pgassert(is_delivery());
          return m_otherid;
      }
-
+#endif
 
      /** @name accessors */
      ///@ {
@@ -291,7 +292,9 @@ class Tw_node: public pickdeliver::Node {
      double m_closes;       ///< closing time of the node
      double m_service_time;  // /< time it takes to be served
      double m_demand;       ///< The demand for the Node
+#if 0
      size_t m_otherid;      ///< the other's internal id
+#endif
      NodeType m_type;       ///< The demand for the Node
 };
 

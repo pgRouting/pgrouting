@@ -295,12 +295,15 @@ std::ostream& operator << (std::ostream &log, const Tw_node &n) {
         << "\tservice = " << n.m_service_time
         << "\tdemand = " << n.m_demand
         << "\ttype = " << n.type_str()
-        << "]";
+        << "]"
+        << "\n";
+#if 0
     if (n.is_pickup() ||  n.is_delivery()) {
         log << "->" << n.m_otherid << "\n";
     } else {
         log << "\n";
     }
+#endif
     return log;
 }
 

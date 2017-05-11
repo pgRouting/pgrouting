@@ -98,8 +98,10 @@ PD_Orders::build_orders(
 
         pgassertwm(pickup.distance(delivery) == b_pick->distance(*b_drop.get()), msg.get_log().c_str());
 
+#if 0
         pickup.set_Did(delivery.idx());
         delivery.set_Pid(pickup.idx());
+#endif
 
         problem->add_base_node(std::move(b_pick));
         problem->add_base_node(std::move(b_drop));
