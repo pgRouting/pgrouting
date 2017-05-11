@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 #include <sstream>
+#include <memory>
+#include <utility>
 
 #include "c_types/pickDeliver/general_vehicle_orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
@@ -111,7 +113,7 @@ class Pgr_pickDeliver : public PD_problem {
     }
 
 #if 1
-    // TODO delete this function
+    // TODO(vicky) delete this function
     bool nodesOK() const;
 #endif
     Fleet trucks() const {return m_trucks;}
@@ -128,7 +130,9 @@ class Pgr_pickDeliver : public PD_problem {
     size_t m_node_id;
 
     std::vector<Vehicle_node> m_nodes;
+
  public:
+    // TODO(vicky) make this private
     std::vector<std::unique_ptr<pickdeliver::Base_node>> m_base_nodes;
 
  private:

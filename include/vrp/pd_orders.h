@@ -59,7 +59,7 @@ class PD_Orders : public PD_problem {
       */
      PD_Orders() = default;
      PD_Orders(const PD_Orders&) = default;
-     PD_Orders(const std::vector<PickDeliveryOrders_t>&);
+     explicit PD_Orders(const std::vector<PickDeliveryOrders_t>&);
      /*!@}*/
 
      void set_compatibles(double speed);

@@ -277,7 +277,7 @@ class Tw_node : public Identifier, public PD_problem {
 
 
 
-     Tw_node() = default; // : Node() {}
+     Tw_node() = default;
      Tw_node(const Tw_node &) = default;
      Tw_node(
              size_t id,

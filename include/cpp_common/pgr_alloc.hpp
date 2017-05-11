@@ -36,7 +36,7 @@ extern "C" {
 #endif
 
 #include "c_common/postgres_connection.h"
-#include <utils/palloc.h>
+#include "utils/palloc.h"
 }
 
 #include <string>
