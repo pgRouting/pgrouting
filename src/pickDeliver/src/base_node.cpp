@@ -61,7 +61,7 @@ Base_node::print(std::ostream& os) const {
 
 #if 0
 double
-Base_node::distance(const std::unique_ptr<pgrouting::vrp::pickdeliver::Base_node>::pointer node) const {
+Base_node::distance(const Base_node &node) const {
     return 0;
 }
 #endif

@@ -73,6 +73,13 @@ Dnode::distance(const Dnode &other) const {
 }
 
 double
+Dnode::distance(const Base_node &other) const {
+    return problem->m_cost_matrix.distance(
+            problem->m_cost_matrix.get_index(id()),
+            problem->m_cost_matrix.get_index(other.id()));
+}
+
+double
 Dnode::comparable_distance(const Dnode &other) const {
     distance(other);
     return problem->m_cost_matrix.comparable_distance(0,0);

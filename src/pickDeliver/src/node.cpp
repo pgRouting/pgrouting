@@ -63,6 +63,23 @@ Node::distance(const Node &other) const {
 }
 
 double
+Node::distance(const Base_node &node) const {
+    if (auto other = dynamic_cast<const Node*>(&node)) {
+        ENTERING();
+        auto dx = m_point.x() - other->m_point.x();
+        auto dy = m_point.y() - other->m_point.y();
+        msg.log << *this << "\n";
+        msg.log << other << "\n";
+        msg.log << "dx: " << dx << "\n";
+        msg.log << "dy: " << dx << "\n";
+        msg.log << "d: " << sqrt(dx * dx + dy * dy) << "\n";
+        EXITING();
+        return sqrt(dx * dx + dy * dy);
+    }
+    return 0;
+}
+
+double
 Node::distance(const Base_node *n) const {
     ENTERING();
     EXITING();

@@ -88,15 +88,15 @@ PD_Orders::build_orders(
         msg.log << ".............\n";
         msg.log << "pick " << *b_pick << "\n";
         msg.log << "drop " << *b_drop << "\n";
+#if 0
         pickdeliver::Node p = *dynamic_cast<pickdeliver::Node*>(b_pick.get());
         pickdeliver::Node d = *dynamic_cast<pickdeliver::Node*>(b_drop.get());
         msg.log << "distance " << p.distance(d) << "\n";
         msg.log << "distance " << p.distance(b_drop.get()) << "\n";
-        // TODO
-        // msg.log << "distance " << b_pick->distance(b_drop.get()) << "\n";
+#endif
+        msg.log << "distance " << b_pick->distance(*b_drop.get()) << "\n";
 
-        pgassertwm(false, msg.get_log().c_str());
-        //pgassertwm(pickup.distance(delivery) == b_pick->distance(*b_drop), msg.get_log().c_str());
+        pgassertwm(pickup.distance(delivery) == b_pick->distance(*b_drop.get()), msg.get_log().c_str());
 
         pickup.set_Did(delivery.idx());
         delivery.set_Pid(pickup.idx());

@@ -83,7 +83,7 @@ class Base_node : public Identifier {
      @{
      */
 #if 1
-     double distance(const std::unique_ptr<pgrouting::vrp::pickdeliver::Base_node>::pointer node) const;
+     virtual double distance(const Base_node &node) const = 0;
 #endif
      virtual double comparable_distance(const Base_node &other) const;
      /*!@}*/
