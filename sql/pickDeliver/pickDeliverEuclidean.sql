@@ -30,8 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
     orders_sql TEXT,
     vehicles_sql TEXT,
+    factor FLOAT DEFAULT 1,
     max_cycles INTEGER DEFAULT 10,
-    initial_id INTEGER DEFAULT 4,
+    initial_sol INTEGER DEFAULT 4,
 
     OUT seq INTEGER,
     OUT vehicle_number INTEGER,
