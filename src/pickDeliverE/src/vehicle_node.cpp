@@ -61,8 +61,6 @@ Vehicle_node::evaluate(double cargoLimit) {
     }
 }
 
-// TODO travel_time_to
-
 
 /*!
   \param[in] pred The node preceding this node in the path.

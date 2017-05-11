@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <memory>
+#include <utility>
 
 #include "vrp/order.h"
 #include "pickDeliver/node.h"
@@ -61,11 +62,13 @@ PD_Orders::build_orders(
         /*
          * Creating the pickup & delivery nodes
          */
-        //pickdeliver::Node b_pickup(problem->node_id(), order.pick_node_id, order.pick_x, order.pick_y);
         std::unique_ptr<pickdeliver::Base_node> b_pick(new pickdeliver::Node(
-                problem->node_id(), order.pick_node_id, order.pick_x, order.pick_y
-                ));
-        msg.log <<  order.id << ": " << problem->node_id() << "," << order.pick_node_id << "\n";
+                problem->node_id(),
+                order.pick_node_id,
+                order.pick_x,
+                order.pick_y));
+        msg.log <<  order.id << ": " << problem->node_id()
+            << "," << order.pick_node_id << "\n";
         Vehicle_node pickup(
                 {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
@@ -77,8 +80,10 @@ PD_Orders::build_orders(
 #endif
 
         std::unique_ptr<pickdeliver::Base_node> b_drop(new pickdeliver::Node(
-                problem->node_id(), order.deliver_node_id, order.deliver_x, order.deliver_y
-                ));
+                problem->node_id(),
+                order.deliver_node_id,
+                order.deliver_x,
+                order.deliver_y));
         Vehicle_node delivery(
                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
@@ -95,7 +100,9 @@ PD_Orders::build_orders(
         msg.log << "distance " << p.distance(b_drop.get()) << "\n";
         msg.log << "distance " << b_pick->distance(*b_drop.get()) << "\n";
 
-        pgassertwm(pickup.distance(delivery) == b_pick->distance(*b_drop.get()), msg.get_log().c_str());
+        pgassertwm(
+                pickup.distance(delivery) == b_pick->distance(*b_drop.get()),
+                msg.get_log().c_str());
 
         pickup.set_Did(delivery.idx());
         delivery.set_Pid(pickup.idx());

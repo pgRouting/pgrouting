@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 #include <limits>
+#include <memory>
+#include <utility>
 
 #include "vrp/pd_orders.h"
 #include "vrp/tw_node.h"
@@ -166,14 +168,18 @@ Fleet::build_fleet(
         }
 
         std::unique_ptr<pickdeliver::Base_node> b_start(new pickdeliver::Node(
-                    problem->node_id(), vehicle.start_node_id, vehicle.start_x, vehicle.start_y
-                    ));
+                    problem->node_id(),
+                    vehicle.start_node_id,
+                    vehicle.start_x,
+                    vehicle.start_y));
         auto starting_site = Vehicle_node(
                 {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
 
         std::unique_ptr<pickdeliver::Base_node> b_end(new pickdeliver::Node(
-                    problem->node_id(), vehicle.end_node_id, vehicle.end_x, vehicle.end_y
-                    ));
+                    problem->node_id(),
+                    vehicle.end_node_id,
+                    vehicle.end_x,
+                    vehicle.end_y));
         auto ending_site = Vehicle_node(
                 {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
@@ -247,7 +253,7 @@ Fleet::is_order_ok(const Order &order) const {
         /*
          * The order must be valid given the speed
          */
-        if (!order.is_valid(truck.speed())) continue; 
+        if (!order.is_valid(truck.speed())) continue;
 
         /*
          * if its feasible, then the one truck is found

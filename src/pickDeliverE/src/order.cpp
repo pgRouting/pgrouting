@@ -46,11 +46,10 @@ Order::subsetJ(const Identifiers<size_t> &J) const {
 
 
 Order::Order(
-        size_t p_idx, int64_t p_id, 
+        size_t p_idx, int64_t p_id,
         const Vehicle_node &p_pickup,
         const Vehicle_node &p_delivery) :
     Identifier(p_idx, p_id),
-    //m_idx(p_idx),
     pickup_id(p_pickup.idx()),
     delivery_id(p_delivery.idx()) {
     }

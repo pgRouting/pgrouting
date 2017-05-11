@@ -85,7 +85,8 @@ process(
     PGR_DBG("total vehicles %ld", total_vehicles);
 
     for (size_t i = 0; i < total_pd_orders; i++) {
-        PGR_DBG("%ld %f pick %f %f %ld - %f %f %f deliver %f %f %ld - %f %f %f ",
+        PGR_DBG("%ld %f pick %f %f %ld - "
+                "%f %f %f deliver %f %f %ld - %f %f %f ",
                 pd_orders_arr[i].id,
                 pd_orders_arr[i].demand,
 
@@ -103,14 +104,14 @@ process(
 
                 pd_orders_arr[i].deliver_open_t,
                 pd_orders_arr[i].deliver_close_t,
-                pd_orders_arr[i].deliver_service_t
-               );
+                pd_orders_arr[i].deliver_service_t);
     }
 
 
 
     for (size_t i = 0; i < total_vehicles; i++) {
-        PGR_DBG("%ld %f %f , start %f %f %f %f %f end %f %f %f %f %f number %ld ",
+        PGR_DBG("%ld %f %f , start %f %f %f %f %f "
+                "end %f %f %f %f %f number %ld ",
                vehicles_arr[i].id,
                vehicles_arr[i].capacity,
                vehicles_arr[i].speed,
@@ -127,8 +128,7 @@ process(
                vehicles_arr[i].end_close_t,
                vehicles_arr[i].end_service_t,
 
-               vehicles_arr[i].cant_v
-               );
+               vehicles_arr[i].cant_v);
     }
 
     if (total_pd_orders == 0 || total_vehicles == 0) {
@@ -173,7 +173,6 @@ process(
     if (vehicles_arr) pfree(vehicles_arr);
 
     pgr_SPI_finish();
-
 }
 /*                                                                            */
 /******************************************************************************/
