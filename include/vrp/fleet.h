@@ -68,7 +68,7 @@ class Fleet : public PD_problem {
       */
      Fleet() = default;
 
-     explicit Fleet(const std::vector<Vehicle_t> &vehicles);
+     Fleet(const std::vector<Vehicle_t> &vehicles, double factor);
 
      Fleet(const Fleet &fleet);
      /*!@}*/
@@ -109,7 +109,8 @@ class Fleet : public PD_problem {
       * @param[in] vehicles of type Vehicle_t
       */
      bool build_fleet(
-             std::vector<Vehicle_t> vehicles);
+             std::vector<Vehicle_t> vehicles,
+             double factor);
 };
 
 

@@ -158,6 +158,8 @@ process(
     do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
+
+            factor,
             max_cycles,
             initial_solution_id,
 

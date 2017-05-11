@@ -65,6 +65,7 @@ class Pgr_pickDeliver : public PD_problem {
     Pgr_pickDeliver(
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
+            double factor,
             size_t max_cycles,
             int initial);
 
@@ -72,6 +73,7 @@ class Pgr_pickDeliver : public PD_problem {
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
             const pgrouting::tsp::Dmatrix &cost_matrix,
+            double factor,
             size_t max_cycles,
             int initial);
 

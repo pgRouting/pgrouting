@@ -51,11 +51,11 @@ Fleet::Fleet(const Fleet &fleet) :
     {}
 
 Fleet::Fleet(
-        const std::vector<Vehicle_t> &vehicles) :
+        const std::vector<Vehicle_t> &vehicles, double factor) :
     PD_problem(),
     used(),
     un_used() {
-        build_fleet(vehicles);
+        build_fleet(vehicles, factor);
         Identifiers<size_t> unused(m_trucks.size());
         un_used = unused;
     }
@@ -124,7 +124,8 @@ Fleet::get_truck(const Order order) {
 */
 bool
 Fleet::build_fleet(
-        std::vector<Vehicle_t> vehicles) {
+        std::vector<Vehicle_t> vehicles,
+        double factor) {
     /*
      *  creating a phoney truck with max capacity and max window
      *  with the start & end points of the first vehicle given
@@ -206,7 +207,8 @@ Fleet::build_fleet(
                         starting_site,
                         ending_site,
                         vehicle.capacity,
-                        vehicle.speed));
+                        vehicle.speed,
+                        factor));
             msg.log << "inserting " << m_trucks.back().idx();
             pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
         }
