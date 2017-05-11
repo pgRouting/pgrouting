@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "vrp/vehicle_node.h"
+#include "vrp/pd_problem.h"
+#include "vrp/pgr_pickDeliver.h"
 
 
 namespace pgrouting {
@@ -59,6 +61,9 @@ Vehicle_node::evaluate(double cargoLimit) {
     }
 }
 
+// TODO travel_time_to
+
+
 /*!
   \param[in] pred The node preceding this node in the path.
   \param[in] cargoLimit of the vehicle.
@@ -71,6 +76,7 @@ Vehicle_node::evaluate(
         double speed) {
      /*! @todo TODO evaluate with matrix also*/
     /* time */
+
     m_travel_time    = pred.travel_time_to(*this, speed);
     m_arrival_time   = pred.departure_time() + travel_time();
     m_wait_time      = is_early_arrival(arrival_time()) ?

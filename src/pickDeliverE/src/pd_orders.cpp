@@ -94,11 +94,9 @@ PD_Orders::build_orders(
         msg.log << "distance " << p.distance(d) << "\n";
         msg.log << "distance " << p.distance(b_drop.get()) << "\n";
         msg.log << "distance " << b_pick->distance(*b_drop.get()) << "\n";
-#endif
 
         pgassertwm(pickup.distance(delivery) == b_pick->distance(*b_drop.get()), msg.get_log().c_str());
 
-#if 0
         pickup.set_Did(delivery.idx());
         delivery.set_Pid(pickup.idx());
 #endif

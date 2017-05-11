@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/identifier.h"
 
 #include "vrp/pd_problem.h"
 #include "pickDeliver/node.h"
@@ -53,7 +54,7 @@ namespace vrp {
  * values and requirements for \c type and \c streetid.
  *
  */
-class Tw_node: public pickdeliver::Node {
+class Tw_node : public Identifier, public PD_problem {
  public:
      typedef enum {
          kStart = 0,  // /< starting site
@@ -110,7 +111,10 @@ class Tw_node: public pickdeliver::Node {
      inline double window_length() const {return m_closes - m_opens;}
 
      /*! \brief time = distance / speed. */
-     double travel_time_to(const Node &other, double speed) const;
+#if 0
+     double travel_time_to(const pickdeliver::Node &other, double speed) const;
+#endif
+     double travel_time_to(const Tw_node &other, double speed) const;
 
      ///@}
 
@@ -273,7 +277,7 @@ class Tw_node: public pickdeliver::Node {
 
 
 
-     Tw_node() : Node() {}
+     Tw_node() = default; // : Node() {}
      Tw_node(const Tw_node &) = default;
      Tw_node(
              size_t id,

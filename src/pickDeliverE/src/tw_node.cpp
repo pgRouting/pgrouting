@@ -37,12 +37,22 @@ namespace vrp {
 
 
 double
-Tw_node::travel_time_to(const Node &other, double speed) const {
-    auto const & from(problem->m_base_nodes[idx()]);
-    auto const & to(problem->m_base_nodes[other.idx()]);
+Tw_node::travel_time_to(const Tw_node &to, double speed) const {
+    auto from = static_cast<const pickdeliver::Node&>(*problem->m_base_nodes[idx()].get());
+    auto destination   = static_cast<const pickdeliver::Node&>(*problem->m_base_nodes[to.idx()].get());
+    pgassert(speed != 0);
+     /*! @todo TODO evaluate with matrix also*/
+    return from.distance(destination) / speed;
+}
+
+
+#if 0
+double
+Tw_node::travel_time_to(const pickdeliver::Node &to, double speed) const {
+    auto from = static_cast<const pickdeliver::Node&>(*problem->m_base_nodes[idx()].get());
     msg.log << "-----------\n";
-    msg.log << (*from) << "\n";
-    msg.log << (*to) << "\n";
+    msg.log << from << "\n";
+    msg.log << to << "\n";
 #if 0
     msg.log << from->distance(&to) << " == " << distance(other) << "\n";
     pgassertwm(from->distance(to) == distance(other), msg.get_log().c_str());
@@ -62,9 +72,9 @@ Tw_node::travel_time_to(const Node &other, double speed) const {
 
     pgassert(speed != 0);
      /*! @todo TODO evaluate with matrix also*/
-    return distance(other) / speed;
+    return from.distance(to) / speed;
 }
-
+#endif
 
 /*
  * I -> J = (*this)
@@ -204,9 +214,14 @@ Tw_node::is_end() const {
 
 
 bool
-Tw_node::operator ==(const Tw_node &rhs) const {
-    if (&rhs == this) return true;
-    return (dynamic_cast<const Node*>(this) == dynamic_cast<const Node*>(&rhs));
+Tw_node::operator ==(const Tw_node &other) const {
+    if (&other == this) return true;
+    auto lhs = static_cast<const pickdeliver::Node&>(*problem->m_base_nodes[idx()].get());
+    auto rhs = static_cast<const pickdeliver::Node&>(*problem->m_base_nodes[other.idx()].get());
+    return lhs == rhs;
+#if 0
+    return (dynamic_cast<const pickdeliver::Node*>(this) == dynamic_cast<const pickdeliver::Node*>(&rhs));
+#endif
 }
 
 
@@ -250,7 +265,7 @@ Tw_node::Tw_node(
         size_t id,
         PickDeliveryOrders_t data,
         NodeType type) :
-    Node(id, data.pick_node_id, data.pick_x, data.pick_y),
+    Identifier(id, data.pick_node_id),
     m_order(data.id),
     m_opens(data.pick_open_t),
     m_closes(data.pick_close_t),
@@ -258,7 +273,6 @@ Tw_node::Tw_node(
     m_demand(data.demand),
     m_type(type)  {
         if (m_type == kDelivery) {
-            m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
             reset_id(data.deliver_node_id);
             m_opens = data.deliver_open_t;
             m_closes = data.deliver_close_t;
@@ -271,14 +285,13 @@ Tw_node::Tw_node(
         size_t id,
         Vehicle_t data,
         NodeType type) :
-    Node(id, data.start_node_id, data.start_x, data.start_y),
+    Identifier(id, data.start_node_id),
     m_opens(data.start_open_t),
     m_closes(data.start_close_t),
     m_service_time(data.start_service_t),
     m_demand(0),
     m_type(type) {
         if (m_type == kEnd) {
-            m_point = pgrouting::Point(data.end_x, data.end_y);
             reset_id(data.end_node_id);
             m_opens = data.end_open_t;
             m_closes = data.end_close_t;
@@ -289,7 +302,7 @@ Tw_node::Tw_node(
 
 /*! * \brief Print the contents of a Twnode object. */
 std::ostream& operator << (std::ostream &log, const Tw_node &n) {
-    log << static_cast<const pickdeliver::Node&>(n)
+    log << static_cast<const pickdeliver::Node&>(*n.problem->m_base_nodes[n.idx()].get())
         << "[opens = " << n.m_opens
         << "\tcloses = " << n.m_closes
         << "\tservice = " << n.m_service_time
