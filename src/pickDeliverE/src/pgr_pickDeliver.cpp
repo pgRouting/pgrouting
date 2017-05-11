@@ -271,7 +271,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {
             msg.error << "The order "
-                << o.pickup().id()
+                << o.pickup().order()
                 << " is not feasible on any truck";
             msg.log << "\n" << o;
             return;
