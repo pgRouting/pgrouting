@@ -143,7 +143,7 @@ Vehicle::get_postgres_result(
                 /*
                  * The original_id is invalid for stops type 0 and 5
                  */
-                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.id(),
+                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.order(),
                 p_stop.type(),
                 p_stop.cargo(),
                 p_stop.travel_time(),
@@ -469,12 +469,11 @@ Vehicle::Vehicle(
         double p_speed) :
     Identifier(p_idx, p_id),
     m_capacity(p_m_capacity),
-    m_speed(p_speed)
-    {
+    m_speed(p_speed) {
         m_path.clear();
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
-        /*! @todo TODO evaluate with matrix also*/
+        /*! @todo TODO(vicky) evaluate with matrix also*/
         evaluate(0);
         invariant();
     }
@@ -506,7 +505,7 @@ std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** " << v.idx() << "th VEHICLE***************\n";
+    log << "\n\n****************** " << v.idx() << "th VEHICLE*************\n";
     log << "id = " << v.id()
         << "\tcapacity = " << v.m_capacity
         << "\tspeed = " << v.m_speed << "\n";

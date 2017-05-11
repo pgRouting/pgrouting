@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "pickDeliver/dnode.h"
 #include "pickDeliver/pgr_pickDeliver.h"
+#include "cpp_common/pgr_messages.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -66,6 +67,13 @@ Dnode::distance(const Dnode &other) const {
         << "\n\n";
 #endif
     EXITING();
+    return problem->m_cost_matrix.distance(
+            problem->m_cost_matrix.get_index(id()),
+            problem->m_cost_matrix.get_index(other.id()));
+}
+
+double
+Dnode::distance(const Base_node &other) const {
     return problem->m_cost_matrix.distance(
             problem->m_cost_matrix.get_index(id()),
             problem->m_cost_matrix.get_index(other.id()));

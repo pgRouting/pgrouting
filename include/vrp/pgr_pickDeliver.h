@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 #include <sstream>
+#include <memory>
+#include <utility>
 
 #include "c_types/pickDeliver/general_vehicle_orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
@@ -41,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/Dmatrix.h"
 
+#include "pickDeliver/base_node.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/fleet.h"
 #include "vrp/solution.h"
@@ -104,6 +107,15 @@ class Pgr_pickDeliver : public PD_problem {
     void add_node(const Vehicle_node &node) {
         m_nodes.push_back(node);
     }
+
+    void add_base_node(std::unique_ptr<pickdeliver::Base_node> node_ptr) {
+        m_base_nodes.push_back(std::move(node_ptr));
+    }
+
+#if 1
+    // TODO(vicky) delete this function
+    bool nodesOK() const;
+#endif
     Fleet trucks() const {return m_trucks;}
 
     /// @{
@@ -119,9 +131,14 @@ class Pgr_pickDeliver : public PD_problem {
 
     std::vector<Vehicle_node> m_nodes;
 
+ public:
+    // TODO(vicky) make this private
+    std::vector<std::unique_ptr<pickdeliver::Base_node>> m_base_nodes;
+
+ private:
     pgrouting::tsp::Dmatrix m_cost_matrix;
-    Fleet m_trucks;
     PD_Orders m_orders;
+    Fleet m_trucks;
     std::vector<Solution> solutions;
 };
 

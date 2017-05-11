@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "pickDeliver/node.h"
 
+#include "cpp_common/pgr_assert.h"
+
 namespace pgrouting {
 namespace vrp {
 namespace pickdeliver {
@@ -34,17 +36,54 @@ bool Node::isSamePos(const Node &other) const {
 }
 
 std::ostream& operator << (std::ostream &log, const Node &node) {
-    log << node.id()
-        << "(" << node.idx() << ")"
-       << " (x,y) = (" << node.m_point.x() << ", " << node.m_point.y() << ")";
+    node.print(log);
     return log;
+}
+
+void
+Node::print(std::ostream& os) const {
+    os << "USING NODE\n";
+    os << id()
+        << "(" << idx() << ")"
+       << " (x,y) = (" << m_point.x() << ", " << m_point.y() << ")";
 }
 
 double
 Node::distance(const Node &other) const {
+    ENTERING();
     auto dx = m_point.x() - other.m_point.x();
     auto dy = m_point.y() - other.m_point.y();
+    msg.log << *this << "\n";
+    msg.log << other << "\n";
+    msg.log << "dx: " << dx << "\n";
+    msg.log << "dy: " << dx << "\n";
+    msg.log << "d: " << sqrt(dx * dx + dy * dy) << "\n";
+    EXITING();
     return sqrt(dx * dx + dy * dy);
+}
+
+double
+Node::distance(const Base_node &node) const {
+    if (auto other = dynamic_cast<const Node*>(&node)) {
+        ENTERING();
+        auto dx = m_point.x() - other->m_point.x();
+        auto dy = m_point.y() - other->m_point.y();
+        msg.log << *this << "\n";
+        msg.log << other << "\n";
+        msg.log << "dx: " << dx << "\n";
+        msg.log << "dy: " << dx << "\n";
+        msg.log << "d: " << sqrt(dx * dx + dy * dy) << "\n";
+        EXITING();
+        return sqrt(dx * dx + dy * dy);
+    }
+    return 0;
+}
+
+double
+Node::distance(const Base_node *n) const {
+    ENTERING();
+    EXITING();
+    return distance(*dynamic_cast<const Node*>(n)); 
 }
 
 double

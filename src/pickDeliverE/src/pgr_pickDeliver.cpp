@@ -46,6 +46,37 @@ namespace pgrouting {
 namespace vrp {
 
 
+#if 1
+    // TODO(vicky) delete this function
+bool
+Pgr_pickDeliver::nodesOK() const {
+    ENTERING();
+    if (m_nodes.empty() && m_base_nodes.empty()) return true;
+
+    msg.log << "     m_nodes: " << m_nodes.size();
+    for (const auto n : m_nodes) {
+        msg.log << n.id() << ",";
+    }
+
+    msg.log << "\n";
+
+    msg.log << "m_base_nodes: " << m_base_nodes.size();
+    for (auto const &n : m_base_nodes) {
+        msg.log << n->id() << ",";
+    }
+
+    pgassertwm(m_nodes.size() == m_base_nodes.size(), msg.get_log().c_str());
+    msg.log << "\n";
+
+    for (size_t i = 0; i < m_nodes.size() ; ++i) {
+        pgassertwm(m_nodes[i].id() ==  m_base_nodes[i]->id(),
+                msg.get_log().c_str());
+        pgassertwm(m_nodes[i].idx() ==  m_base_nodes[i]->idx(),
+                msg.get_log().c_str());
+    }
+    return true;
+}
+#endif
 
 Solution
 Pgr_pickDeliver::optimize(const Solution solution) {
@@ -66,14 +97,16 @@ Pgr_pickDeliver::solve() {
         for (int i = 1; i < 7; ++i) {
             initial_sols.push_back(Initial_solution(i, m_orders.size()));
             msg.log << "solution " << i << "\n" << initial_sols.back().tau();
-            // TODO calculate the time it takes
-            msg.log << "Initial solution " << i << " duration: " << initial_sols.back().duration();
+            // TODO(vicky) calculate the time it takes
+            msg.log << "Initial solution " << i
+                << " duration: " << initial_sols.back().duration();
         }
     } else {
         msg.log << "only trying " << m_initial_id << "\n";
         initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
-        // TODO calculate the time it takes
-        msg.log << "Initial solution " << m_initial_id << " duration: " << initial_sols[0].duration();
+        // TODO(vicky) calculate the time it takes
+        msg.log << "Initial solution " << m_initial_id
+            << " duration: " << initial_sols[0].duration();
     }
 
 
@@ -105,8 +138,8 @@ Pgr_pickDeliver::get_postgres_result() const {
              * (twv, cv, fleet, wait, duration)
              */
             -2,  // summary row on vehicle_number
-            solutions.back().twvTot(), // on vehicle_id
-            solutions.back().cvTot(),  // on vehicle_seq
+            solutions.back().twvTot(),  // on vehicle_id
+            solutions.back().cvTot(),   // on vehicle_seq
             -1,  // on order_id
             -2,  // on stop_type (gets increased later by one so it gets -1)
             -1,  // not accounting total loads
@@ -145,7 +178,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      */
     m_node_id(0),
     m_nodes(),
-    m_cost_matrix(cost_matrix), 
+    m_cost_matrix(cost_matrix),
     m_trucks(vehicles) {
         pgassert(msg.get_error().empty());
 
@@ -166,7 +199,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         pgassert(msg.get_error().empty());
 
         if (!m_trucks.is_fleet_ok()) {
-            // TODO revise the function
+            // TODO(vicky) revise the function
             pgassert(false);
             msg.error << m_trucks.msg.get_error();
             return;
@@ -190,8 +223,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      */
     m_node_id(0),
     m_nodes(),
-    m_trucks(vehicles)
-{
+    m_base_nodes(),
+    m_orders(pd_orders),
+    m_trucks(vehicles) {
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
     pgassert(m_initial_id > 0 && m_initial_id < 7);
@@ -222,7 +256,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 #endif
 
     msg.log << "\n Building orders";
-    m_orders.build_orders(pd_orders);
     msg.log << " ---> OK\n";
 
 
@@ -239,7 +272,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {
             msg.error << "The order "
-                << o.pickup().id()
+                << o.pickup().order()
                 << " is not feasible on any truck";
             msg.log << "\n" << o;
             return;
@@ -279,7 +312,8 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
 const Vehicle_node&
 Pgr_pickDeliver::node(ID id) const {
     pgassert(id < m_nodes.size());
-    msg.log << "id = " << id << "m_nodes[id].idx()" << m_nodes[id].idx() << "\n";
+    msg.log << "id = " << id
+        << "m_nodes[id].idx()" << m_nodes[id].idx() << "\n";
     pgassertwm(id == m_nodes[id].idx(), msg.get_log().c_str());
     return m_nodes[id];
 }

@@ -32,8 +32,7 @@ namespace vrp {
 Pgr_pickDeliver* PD_problem::problem;
 Pgr_messages PD_problem::msg;
 
-PD_problem::PD_problem(Pgr_pickDeliver* p_problem)
-{
+PD_problem::PD_problem(Pgr_pickDeliver* p_problem) {
     PD_problem::problem = p_problem;
     msg.clear();
 }

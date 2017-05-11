@@ -34,7 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/identifier.h"
 
+#include "vrp/pd_problem.h"
 #include "pickDeliver/node.h"
 
 namespace pgrouting {
@@ -52,7 +54,7 @@ namespace vrp {
  * values and requirements for \c type and \c streetid.
  *
  */
-class Tw_node: public pickdeliver::Node {
+class Tw_node : public Identifier, public PD_problem {
  public:
      typedef enum {
          kStart = 0,  // /< starting site
@@ -64,6 +66,7 @@ class Tw_node: public pickdeliver::Node {
      } NodeType;
 
 
+#if 0
      inline void set_Pid(size_t id) {
          m_otherid = id;
      }
@@ -81,11 +84,13 @@ class Tw_node: public pickdeliver::Node {
          pgassert(is_delivery());
          return m_otherid;
      }
-
+#endif
 
      /** @name accessors */
      ///@ {
 
+     /*! \brief Returns the opening time.*/
+     inline int64_t order() const {return m_order;}
 
      /*! \brief Returns the opening time.*/
      inline double opens() const {return m_opens;}
@@ -106,7 +111,10 @@ class Tw_node: public pickdeliver::Node {
      inline double window_length() const {return m_closes - m_opens;}
 
      /*! \brief time = distance / speed. */
-     double travel_time_to(const Node &other, double speed) const;
+#if 0
+     double travel_time_to(const pickdeliver::Node &other, double speed) const;
+#endif
+     double travel_time_to(const Tw_node &other, double speed) const;
 
      ///@}
 
@@ -269,7 +277,7 @@ class Tw_node: public pickdeliver::Node {
 
 
 
-     Tw_node() : Node() {}
+     Tw_node() = default;
      Tw_node(const Tw_node &) = default;
      Tw_node(
              size_t id,
@@ -283,11 +291,14 @@ class Tw_node: public pickdeliver::Node {
  protected:
      bool is_valid() const;
 
+     int64_t m_order;       ///< order to which it belongs
      double m_opens;        ///< opening time of the node
      double m_closes;       ///< closing time of the node
      double m_service_time;  // /< time it takes to be served
      double m_demand;       ///< The demand for the Node
+#if 0
      size_t m_otherid;      ///< the other's internal id
+#endif
      NodeType m_type;       ///< The demand for the Node
 };
 
