@@ -64,7 +64,7 @@ class Node : public Base_node , public PD_problem {
 
      double distance(const Node &) const;
      double distance(const Base_node *) const;
-     double distance(const Base_node &) const override;
+     double distance(const Base_node &) const;
      double comparable_distance(const Node &other) const;
 
      friend std::ostream& operator << (std::ostream &log, const Node &node);

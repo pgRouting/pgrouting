@@ -58,7 +58,7 @@ class Dnode : public Base_node, public PD_problem {
      @}*/
 
      double distance(const Dnode &other) const;
-     double distance(const Base_node &) const override;
+     double distance(const Base_node &) const;
 
      double comparable_distance(const Dnode &other) const;
 
