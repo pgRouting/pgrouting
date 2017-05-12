@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/orders_input.h"
 #include "c_common/vehicles_input.h"
 
-#include "./pickDeliverEuclidean_driver.h"
+#include "drivers/pickDeliver/pickDeliverEuclidean_driver.h"
 
 PGDLLEXPORT Datum
 pickDeliverEuclidean(PG_FUNCTION_ARGS);
@@ -48,10 +48,21 @@ void
 process(
         char* pd_orders_sql,
         char* vehicles_sql,
+        double factor,
         int max_cycles,
         int initial_solution_id,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
+    if (factor <= 0) {
+        ereport(ERROR,
+                (errcode(ERRCODE_INTERNAL_ERROR),
+                 errmsg("Illegal value in parameter: factor"),
+                 errhint("Value found: %f <= 0", factor)));
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+
     if (max_cycles < 0) {
         ereport(ERROR,
                 (errcode(ERRCODE_INTERNAL_ERROR),
@@ -85,7 +96,8 @@ process(
     PGR_DBG("total vehicles %ld", total_vehicles);
 
     for (size_t i = 0; i < total_pd_orders; i++) {
-        PGR_DBG("%ld %f pick %f %f %ld - %f %f %f deliver %f %f %ld - %f %f %f ",
+        PGR_DBG("%ld %f pick %f %f %ld - "
+                "%f %f %f deliver %f %f %ld - %f %f %f ",
                 pd_orders_arr[i].id,
                 pd_orders_arr[i].demand,
 
@@ -103,14 +115,14 @@ process(
 
                 pd_orders_arr[i].deliver_open_t,
                 pd_orders_arr[i].deliver_close_t,
-                pd_orders_arr[i].deliver_service_t
-               );
+                pd_orders_arr[i].deliver_service_t);
     }
 
 
 
     for (size_t i = 0; i < total_vehicles; i++) {
-        PGR_DBG("%ld %f %f , start %f %f %f %f %f end %f %f %f %f %f number %ld ",
+        PGR_DBG("%ld %f %f , start %f %f %f %f %f "
+                "end %f %f %f %f %f number %ld ",
                vehicles_arr[i].id,
                vehicles_arr[i].capacity,
                vehicles_arr[i].speed,
@@ -127,8 +139,7 @@ process(
                vehicles_arr[i].end_close_t,
                vehicles_arr[i].end_service_t,
 
-               vehicles_arr[i].cant_v
-               );
+               vehicles_arr[i].cant_v);
     }
 
     if (total_pd_orders == 0 || total_vehicles == 0) {
@@ -147,6 +158,8 @@ process(
     do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
+
+            factor,
             max_cycles,
             initial_solution_id,
 
@@ -173,7 +186,6 @@ process(
     if (vehicles_arr) pfree(vehicles_arr);
 
     pgr_SPI_finish();
-
 }
 /*                                                                            */
 /******************************************************************************/
@@ -209,8 +221,9 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                PG_GETARG_INT32(2),
+                PG_GETARG_FLOAT8(2),
                 PG_GETARG_INT32(3),
+                PG_GETARG_INT32(4),
                 &result_tuples,
                 &result_count);
 

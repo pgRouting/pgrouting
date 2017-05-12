@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliverEuclidean_driver.h
+File: pickDeliver_driver.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,15 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file pickDeliverEuclidean_driver.h */
+/*! @file pickDeliver_driver.h */
 
-#ifndef SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
-#define SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_PICKDELIVER_PICKDELIVER_DRIVER_H_
+#define INCLUDE_DRIVERS_PICKDELIVER_PICKDELIVER_DRIVER_H_
 #pragma once
 
-#include "c_types/pickDeliver/general_vehicle_orders_t.h"
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
+#include "c_types/matrix_cell_t.h"
+#include "c_types/pickDeliver/general_vehicle_orders_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,9 +47,10 @@ extern "C" {
       capacity FLOAT,
       max_cycles INTEGER,
      ********************************************************/
-    void do_pgr_pickDeliverEuclidean(
-            PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
+    void do_pgr_pickDeliver(
+            PickDeliveryOrders_t pd_orders_arr[], size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
+            Matrix_cell_t *matrix_cells_arr, size_t total_cells,
 
             int max_cycles,
             int initial_solution_id,
@@ -65,4 +67,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_PICKDELIVER_PICKDELIVER_DRIVER_H_

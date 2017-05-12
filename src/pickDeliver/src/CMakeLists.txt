@@ -1,7 +1,7 @@
 ADD_LIBRARY(pickDeliver OBJECT
     base_node.cpp
     node.cpp
-    #dnode.cpp
+    dnode.cpp
     tw_node.cpp
     vehicle_node.cpp
 
@@ -20,10 +20,8 @@ ADD_LIBRARY(pickDeliver OBJECT
     pgr_pickDeliver.cpp
     pgr_messages.cpp
 
-    pickDeliverEuclidean_driver.cpp
-    pickDeliverEuclidean.c
 
     pickDeliver_driver.cpp
-    #pickDeliver.c
+    pickDeliver.c
 
     )

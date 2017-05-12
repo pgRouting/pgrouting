@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./pickDeliver_driver.h"
+#include "drivers/pickDeliver/pickDeliver_driver.h"
 
 #include <string.h>
 #include <sstream>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/pgr_pickDeliver.h"
 #include "cpp_common/Dmatrix.h"
 
 #include "cpp_common/pgr_assert.h"
@@ -74,6 +74,7 @@ do_pgr_pickDeliver(
         pgassert(total_vehicles);
         pgassert(*return_count == 0);
         pgassert(!(*return_tuples));
+        log << "do_pgr_pickDeliver\n";
 
 
         /*
@@ -98,50 +99,62 @@ do_pgr_pickDeliver(
         }
 
         log << "Read data\n";
-        pgrouting::vrp::Pgr_pickDeliver pd_problem(
+        pgrouting::vrp::pickdeliver::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
                 cost_matrix,
                 max_cycles,
                 initial_solution_id);
 
-        log << pd_problem.msg.get_log();
-        *log_msg = pgr_msg(log.str().c_str());
-        return;
-        err << pd_problem.msg.get_error();
-        if (!err.str().empty()) {
+        if (!pd_problem.msg.has_error()) {
+            log << "ERROR found\n";
             log << pd_problem.msg.get_log();
+            err << pd_problem.msg.get_error();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
             return;
         }
+        pgassert(false);
         log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
+        pd_problem.msg.clear();
 
+#if 1
+        log << pd_problem;
+        log << pd_problem.msg.get_log();
+        log << "Finish printing read data\n";
+        pd_problem.msg.clear();
+#endif
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
         try {
             pd_problem.solve();
+
+            log << pd_problem.msg.get_log();
+            log << "Finish solve\n";
+            pd_problem.msg.clear();
+            *log_msg = pgr_msg(log.str().c_str());
+            return;
         } catch (AssertFailedException &except) {
             log << pd_problem.msg.get_log();
             throw except;
         }
 
-        log << pd_problem.msg.get_log();
-        log << "Finish solve\n";
-
         auto solution = pd_problem.get_postgres_result();
+
         log << pd_problem.msg.get_log();
         log << "solution size: " << solution.size() << "\n";
+        pd_problem.msg.clear();
 
-
-        (*return_tuples) = pgr_alloc(solution.size(), (*return_tuples));
-        int seq = 0;
-        for (const auto &row : solution) {
-            (*return_tuples)[seq] = row;
-            ++seq;
+        if (!solution.empty()) {
+            (*return_tuples) = pgr_alloc(solution.size(), (*return_tuples));
+            int seq = 0;
+            for (const auto &row : solution) {
+                (*return_tuples)[seq] = row;
+                ++seq;
+            }
         }
         (*return_count) = solution.size();
-
-        log << pd_problem.msg.get_log();
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
@@ -170,5 +183,3 @@ do_pgr_pickDeliver(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-

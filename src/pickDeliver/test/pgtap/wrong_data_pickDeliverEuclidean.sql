@@ -7,7 +7,7 @@ PREPARE q1 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    30);
+    max_cycles := 30);
 
 
 SELECT lives_ok('q1', 'Original query should not fail');
@@ -19,25 +19,25 @@ PREPARE q6 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    -1);
+    max_cycles := -1);
 
 PREPARE q61 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    0);
+    max_cycles := 0);
 
 PREPARE q7 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    initial_id := -1);
+    initial_sol := -1);
 
 PREPARE q8 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    initial_id := 7);
+    initial_sol := 7);
 
 
 SELECT throws_ok('q6',
@@ -95,6 +95,7 @@ UPDATE orders SET d_close = 967 WHERE id =11;
 UPDATE vehicles SET start_open = 3000  WHERE id = 0;
 UPDATE vehicles SET start_open = 3000;
 
+SELECT todo(1);
 SELECT throws_ok('q5',
     'XX000',
     'Illegal values found on vehicle',

@@ -24,11 +24,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "vrp/vehicle_node.h"
+#include "pickDeliver/vehicle_node.h"
 
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 
 /*!
@@ -100,7 +101,7 @@ Vehicle_node::evaluate(
 
 std::ostream&
 operator << (std::ostream &log, const Vehicle_node &v) {
-    log << static_cast<Tw_node>(v)
+    log << static_cast<const Tw_node&>(v)
         << " twv = " << v.has_twv()
         << ", twvTot = " << v.twvTot()
         << ", cvTot = " << v.cvTot()
@@ -159,5 +160,6 @@ Vehicle_node::arrival_i_arrives_j(
         + other.travel_time_to(*this, speed);
 }
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting

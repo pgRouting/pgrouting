@@ -23,7 +23,7 @@
  *
  *********************************************************************PGR-GNU*/
 
-/*! @file book_keeping.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_BOOK_KEEPING_H_
 #define INCLUDE_VRP_BOOK_KEEPING_H_

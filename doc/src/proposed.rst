@@ -140,7 +140,6 @@ Experimental and Proposed functions
 
 .. rubric:: Vehicle Routing Problems
 
--  :ref:`pgr_pickDeliverEuclidean` - VRP Pickup & Delivery with Euclidean distances
 -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
 -  :ref:`pgr_vrp_basic` - VRP One Depot
 
@@ -152,7 +151,6 @@ Experimental and Proposed functions
   contraction-family
   flow-family
   pgr_labelGraph
-  pgr_pickDeliverEuclidean
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
@@ -171,4 +169,6 @@ Experimental and Proposed functions
     :hidden:
     ..
      ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
+    -  :ref:`pgr_pickDeliverEuclidean` - VRP Pickup & Delivery with Euclidean distances
+    pgr_pickDeliverEuclidean
 

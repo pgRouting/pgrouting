@@ -104,7 +104,8 @@ set(PgRouting_SOURCE_NAMES
     #----------------------
     "max_flow"    # 2.3
     "contraction" # 2.3
-    "pickDeliver" # 2.3
+    #"pickDeliver" # 2.3
+    "pickDeliverE" # 2.5
     "vrp_basic"   # 2.0 
     "withPoints"  # 2.2
 
@@ -191,8 +192,10 @@ endif()
 
 if(COMPILER_SUPPORTS_CXX11)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+    message(STATUS "Using  -std=c++11.")
 elseif(COMPILER_SUPPORTS_CXX0X)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+    message(STATUS "Using  -std=c++0x.")
 else()
     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 flags support.")
 endif()

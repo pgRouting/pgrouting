@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: dnode.h
+FILE: pgr_pickDeliver.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,46 +23,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file dnode.h */
 
-#ifndef INCLUDE_VRP_DNODE_H_
-#define INCLUDE_VRP_DNODE_H_
-#pragma once
-
-#include <string>
-#include <ostream>
-#include "vrp/base_node.h"
 #include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
 
-/*! @class Dnode
- * @brief The Dnode class defines a the operations when its a matrix.
- *
- */
+Pgr_pickDeliver* PD_problem::problem;
+Pgr_messages PD_problem::msg;
 
-class Dnode : public Base_node, public PD_problem {
- public:
-     Dnode() = default;
-     Dnode(size_t id, int64_t original_id);
+PD_problem::PD_problem(Pgr_pickDeliver* p_problem) {
+    PD_problem::problem = p_problem;
+    msg.clear();
+}
 
+PD_problem::PD_problem(const PD_problem &)
+    { }
 
-     using Base_node::isSamePos;
-     using Base_node::operator==;
-     /*! @name to be or not to be
-     @{
-     bool isSamePos(const Dnode &other) const;
-     bool operator==(const Dnode &rhs) const;
-     @}*/
-
-     double distance(const Dnode &other) const;
-     double comparable_distance(const Dnode &other) const;
-
-     friend std::ostream& operator << (std::ostream &log, const Dnode &node);
-};
 
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_DNODE_H_

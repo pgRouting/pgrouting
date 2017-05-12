@@ -24,13 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "vrp/book_keeping.h"
+#include "pickDeliver/book_keeping.h"
 
 #include <queue>
 #include <iostream>
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 Swap_info::Swap_info(const Vehicle_pickDeliver &from,
         const Vehicle_pickDeliver &to,
@@ -48,12 +49,12 @@ std::ostream& operator << (std::ostream& log, const Swap_info &d) {
     log << "\n" << d.from_truck.tau() << " --> "
         << d.from_order
         << "("
-        << d.from_truck.orders()[d.from_order].pickup().original_id()
+        << d.from_truck.orders()[d.from_order].pickup().id()
         << ")"
         << "\n" << d.to_truck.tau() << " --> "
         << d.to_order
         << "("
-        << d.to_truck.orders()[d.to_order].pickup().original_id()
+        << d.to_truck.orders()[d.to_order].pickup().id()
         << ")"
         << "\n" << "delta = " << d.estimated_delta;
     return log;
@@ -71,5 +72,6 @@ std::ostream& operator<< (std::ostream &log, const Swap_bk &data) {
 }
 
 
+}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting

@@ -23,31 +23,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file node.h */
+/*! @file */
 
-#ifndef INCLUDE_VRP_NODE_H_
-#define INCLUDE_VRP_NODE_H_
+#ifndef INCLUDE_PICKDELIVER_NODE_H_
+#define INCLUDE_PICKDELIVER_NODE_H_
 #pragma once
 
 #include <string>
 #include <ostream>
 #include "vrp/base_node.h"
 #include "cpp_common/xy_vertex.h"
+#include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
-/*! \class Node
- * \brief The Node class defines a point in 2D space with an id.
+/*! @class Node
+ * @brief The Node class defines a point in 2D space with an id.
  *
  * A Node is a point that defines a location in 2D space. It maintains
- * a user \c id and an internal \c nid along with its \c x, \c y location.
+ * a user @c id and an internal @c nid along with its @c x, @c y location.
  * This is the base object that things like depots, customer locations, etc.
  * are built upon.
  *
  */
-
-class Node : public Base_node {
+class Node : public Base_node , public PD_problem {
  public:
      Node() = default;
      Node(size_t id, int64_t original_id, double _x, double _y);
@@ -60,10 +61,13 @@ class Node : public Base_node {
 
      bool operator ==(const Node &rhs) const;
 
-     double distance(const Node &other) const;
+     double distance(const Node &) const;
+     double distance(const Base_node *) const;
+     double distance(const Base_node &) const;
      double comparable_distance(const Node &other) const;
 
      friend std::ostream& operator << (std::ostream &log, const Node &node);
+     void print(std::ostream& os) const;
 
  protected:
      pgrouting::Point m_point;
@@ -73,7 +77,8 @@ class Node : public Base_node {
 #endif
 };
 
-}  //  namespace vrp
-}  //  namespace pgrouting
+}  // namespace pickdeliver
+}  // namespace vrp
+}  // namespace pgrouting
 
-#endif  // INCLUDE_VRP_NODE_H_
+#endif  // INCLUDE_PICKDELIVER_NODE_H_

@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+/*! @file */
+
 #ifndef INCLUDE_CPP_COMMON_PGR_ALLOC_HPP_
 #define INCLUDE_CPP_COMMON_PGR_ALLOC_HPP_
 #pragma once
@@ -36,7 +38,7 @@ extern "C" {
 #endif
 
 #include "c_common/postgres_connection.h"
-#include <utils/palloc.h>
+#include "utils/palloc.h"
 }
 
 #include <string>

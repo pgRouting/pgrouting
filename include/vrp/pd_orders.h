@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file pd_orders.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_PD_ORDERS_H_
 #define INCLUDE_VRP_PD_ORDERS_H_
@@ -59,6 +59,7 @@ class PD_Orders : public PD_problem {
       */
      PD_Orders() = default;
      PD_Orders(const PD_Orders&) = default;
+     explicit PD_Orders(const std::vector<PickDeliveryOrders_t>&);
      /*!@}*/
 
      void set_compatibles(double speed);

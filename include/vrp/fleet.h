@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file fleet.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_FLEET_H_
 #define INCLUDE_VRP_FLEET_H_
@@ -37,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 
 #include "vrp/vehicle_pickDeliver.h"
-#include "vrp/pgr_messages.h"
 #include "vrp/pd_problem.h"
 
 
@@ -69,7 +68,7 @@ class Fleet : public PD_problem {
       */
      Fleet() = default;
 
-     explicit Fleet(const std::vector<Vehicle_t> &vehicles);
+     Fleet(const std::vector<Vehicle_t> &vehicles, double factor);
 
      Fleet(const Fleet &fleet);
      /*!@}*/
@@ -110,7 +109,8 @@ class Fleet : public PD_problem {
       * @param[in] vehicles of type Vehicle_t
       */
      bool build_fleet(
-             std::vector<Vehicle_t> vehicles);
+             std::vector<Vehicle_t> vehicles,
+             double factor);
 };
 
 
