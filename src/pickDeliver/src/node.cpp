@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./node.h"
+#include "vrp/node.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -32,16 +32,10 @@ bool Node::isSamePos(const Node &other) const {
     return comparable_distance(other) == 0;
 }
 
-#if 0
-double Node::travel_time_to(const Node &other) const {
-    return distance(other);
-}
-#endif
-
 std::ostream& operator << (std::ostream &log, const Node &node) {
     log << node.m_original_id
         << "(" << node.m_id << ")"
-       << "(" << node.m_point.x() << ", " << node.m_point.y() << ")";
+       << " (x,y) = (" << node.m_point.x() << ", " << node.m_point.y() << ")";
     return log;
 }
 
@@ -61,9 +55,8 @@ Node::comparable_distance(const Node &other) const {
 
 
 Node::Node(size_t id, int64_t original_id, double _x, double _y)
-    : m_point(_x, _y),
-    m_id(id),
-    m_original_id(original_id) {
+    : Base_node(id, original_id),
+        m_point(_x, _y) {
     }
 
 bool

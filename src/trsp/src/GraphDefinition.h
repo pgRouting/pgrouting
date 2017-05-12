@@ -15,9 +15,9 @@
 
 typedef std::vector<long> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
-typedef std::pair<int, bool> PIB;
+typedef std::pair<long, bool> PIB;
 typedef std::pair<double, PIB> PDP;
-typedef std::pair<double, std::vector<int> > PDVI;
+typedef std::pair<double, std::vector<long> > PDVI;
 
 /*
 typedef struct edge 
@@ -34,12 +34,12 @@ typedef struct path_element
     int vertex_id;
     int edge_id;
     double cost;
-}path_element_t;
+}path_element_tt;
 */
 
 typedef struct{
     long ed_ind[2];
-    int v_pos[2];
+    long v_pos[2];
 } PARENT_PATH;
 
 typedef struct Rule{
@@ -91,47 +91,47 @@ public:
     ~GraphDefinition(void);
 
     int my_dijkstra(long start_vertex, long end_vertex,
-                    unsigned int edge_count, char** err_msg);
+                    size_t edge_count, char** err_msg);
 
-    int my_dijkstra(edge_t *edges, unsigned int edge_count,
+    int my_dijkstra(edge_t *edges, size_t edge_count,
                     long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, int *path_count,
+                    path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
-    int my_dijkstra(edge_t *edges, unsigned int edge_count,
+    int my_dijkstra(edge_t *edges, size_t edge_count,
                     long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, int *path_count,
+                    path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
-    int my_dijkstra(edge_t *edges, unsigned int edge_count,
-                    int start_edge, double start_part,
-                    int end_edge, double end_part,
+    int my_dijkstra(edge_t *edges, size_t edge_count,
+                    long start_edge, double start_part,
+                    long end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, int *path_count,
+                    path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
-    int multi_dijkstra(edge_t *edges, unsigned int edge_count,
+    int multi_dijkstra(edge_t *edges, size_t edge_count,
                        std::vector<int> vertices,
                        bool directed, bool has_reverse_cost,
-                       path_element_t **path, int *path_count,
+                       path_element_tt **path, size_t *path_count,
                        char **err_msg,
                        std::vector<PDVI> &ruleList);
 
-    bool construct_graph(edge_t *edges, int edge_count,
+    bool construct_graph(edge_t *edges, size_t edge_count,
                          bool has_reverse_cost, bool directed);
 
 
 private:
-    double construct_path(long ed_id, int v_pos);
+    double construct_path(long ed_id, long v_pos);
     void explore(long cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
     double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge, bool isStart);
     bool addEdge(edge edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
-    bool get_single_cost(double total_cost, path_element_t **path, int *path_count);
+    bool get_single_cost(double total_cost, path_element_tt **path, size_t *path_count);
     void init();
     void deleteall();
 
@@ -140,15 +140,15 @@ private:
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
     long max_node_id;
-    int max_edge_id;
-    int m_lStartEdgeId;
-    int m_lEndEdgeId;
+    long max_edge_id;
+    long m_lStartEdgeId;
+    long m_lEndEdgeId;
     double m_dStartpart;
     double m_dEndPart;
     bool isStartVirtual;
     bool isEndVirtual;
     
-    std::vector <path_element_t> m_vecPath;
+    std::vector <path_element_tt> m_vecPath;
     PARENT_PATH *parent;
     CostHolder *m_dCost;
     RuleTable m_ruleTable;

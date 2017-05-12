@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_5_0`
 * :ref:`changelog_2_4_1`
 * :ref:`changelog_2_4_0`
 * :ref:`changelog_2_3_2`
@@ -34,6 +35,64 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_2_5_0:
+
+pgRouting 2.5.0 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
+
+
+.. rubric:: enhancement:
+
+* pgr_version is now on SQL language
+
+.. rubric:: Breaking change on:
+
+* pgr_edgeDisjointPaths:
+
+  * Added path_id, cost and agg_cost columns on the result
+  * Parameter names changed
+  * The many version results are the union of the one to one version
+
+.. rubric:: New Signatures:
+
+* pgr_bdAstar(one to one)
+
+.. rubric:: New Proposed functions
+
+* pgr_bdAstar(one to many)
+* pgr_bdAstar(many to one)
+* pgr_bdAstar(many to many)
+* pgr_bdAstarCost(one to one)
+* pgr_bdAstarCost(one to many)
+* pgr_bdAstarCost(many to one)
+* pgr_bdAstarCost(many to many)
+* pgr_bdAstarCostMatrix
+* pgr_bdDijkstra(one to many)
+* pgr_bdDijkstra(many to one)
+* pgr_bdDijkstra(many to many)
+* pgr_bdDijkstraCost(one to one)
+* pgr_bdDijkstraCost(one to many)
+* pgr_bdDijkstraCost(many to one)
+* pgr_bdDijkstraCost(many to many)
+* pgr_bdDijkstraCostMatrix
+
+.. rubric:: Deprecated Signatures
+
+* pgr_bdastar - use pgr_bdAstar instead
+
+.. rubric:: Renamed Functions
+
+* pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
+* pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
+* pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
+* pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
+
+.. rubric:: Deprecated function
+
+* pgr_pointToEdgeNode
 
 .. _changelog_2_4_1:
 
@@ -353,7 +412,7 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 
 - Instead of generating many libraries:
   - All functions are encapsulated in one library
-  - The library has a the prefix 2-1-0
+  - The library has the prefix 2-1-0
 
 
 
@@ -380,8 +439,8 @@ With the release of pgRouting 2.0.0 the library has abandoned backwards compatib
 The main Goals for this release are:
 
 * Major restructuring of pgRouting.
-* Standardiziation of the function naming
-* Prepararation of the project for future development.
+* Standardization of the function naming
+* Preparation of the project for future development.
 
 As a result of this effort:
 
@@ -411,7 +470,7 @@ As a result of this effort:
 * Compatibility with PostgreSQL 9.1 or newer
 * Compatibility with PostGIS 2.0 or newer
 * Installs as PostgreSQL EXTENSION
-* Return types refactored and unified
+* Return types re factored and unified
 * Support for table SCHEMA in function parameters
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
@@ -432,27 +491,27 @@ The following release notes have been copied from the previous ``RELEASE_NOTES``
 Changes for release 1.05
 ...............................................................................
 
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.03
 ...............................................................................
 
 * Much faster topology creation
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.02
 ...............................................................................
 
-* Shooting* bugfixes
+* Shooting* bug fixes
 * Compilation problems solved
 
 
 Changes for release 1.01
 ...............................................................................
 
-* Shooting* bugfixes
+* Shooting* bug fixes
 
 
 Changes for release 1.0
@@ -460,14 +519,14 @@ Changes for release 1.0
 
 * Core and extra functions are separated
 * Cmake build process
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.0.0b
 ...............................................................................
 
 * Additional SQL file with more simple names for wrapper functions
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.0.0a
@@ -481,7 +540,7 @@ Changes for release 0.9.9
 ...............................................................................
 
 * PostgreSQL 8.2 support
-* Shortest path functions return empty result if they couldn’t find any path
+* Shortest path functions return empty result if they could not find any path
 
 
 Changes for release 0.9.8

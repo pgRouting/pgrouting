@@ -25,7 +25,7 @@ Routing Functions
 
 :ref:`pgr_astar` - Shortest Path A*
 
-:ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
+:ref:`pgr_bdAstar` - Bi-directional A* Shortest Path
 
 :ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 

@@ -20,7 +20,3 @@ SELECT * FROM pgr_astar(
     'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
     ARRAY[7, 2], ARRAY[3, 12], heuristic := 2);
 \echo --q6
-SELECT * FROM pgr_astar(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
-    2, 12, true, true);
-\echo --q7

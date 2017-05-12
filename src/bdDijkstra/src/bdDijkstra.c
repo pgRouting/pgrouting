@@ -28,15 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
+#include "utils/array.h"
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/e_report.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/edges_input.h"
 
-#include "./bdDijkstra_driver.h"
+#include "c_common/debug_macro.h"
+#include "c_common/e_report.h"
+#include "c_common/time_msg.h"
+
+#include "c_common/edges_input.h"
+#include "c_common/arrays_input.h"
+
+#include "drivers/bdDijkstra/bdDijkstra_driver.h"
 
 PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(bdDijkstra);
@@ -48,22 +51,26 @@ static
 void
 process(
         char* edges_sql,
-        int64_t start_vid,
-        int64_t end_vid,
+        ArrayType *starts,
+        ArrayType *ends,
         bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
+
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-
-    if (start_vid == end_vid) {
-        pgr_SPI_finish();
-        return;
-    }
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
@@ -80,12 +87,13 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
     do_pgr_bdDijkstra(
-            edges,
-            total_edges,
-            start_vid,
-            end_vid,
+            edges, total_edges,
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
+
             directed,
             only_cost,
+
             result_tuples,
             result_count,
             &log_msg,
@@ -137,8 +145,8 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
-                PG_GETARG_INT64(2),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
@@ -175,6 +183,8 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
+
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
@@ -187,22 +197,25 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
            OUT agg_cost FLOAT
          ***********************************************************************/
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+        size_t numb = 8;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

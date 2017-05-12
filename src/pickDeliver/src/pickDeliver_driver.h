@@ -25,11 +25,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#pragma once
+
+/*! @file pickDeliver_driver.h */
+
 #ifndef SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
 #define SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
+#pragma once
 
-#include "./../../common/src/pgr_types.h"
+#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
+#include "c_types/pickDeliver/vehicle_t.h"
+#include "c_types/matrix_cell_t.h"
+#include "c_types/pickDeliver/general_vehicle_orders_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -42,19 +48,23 @@ extern "C" {
       max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliver(
-            Customer_t *customers_arr, size_t total_customers,
-            int max_vehicles,
-            double capacity,
-            double speed,
+            PickDeliveryOrders_t pd_orders_arr[], size_t total_pd_orders,
+            Vehicle_t *vehicles_arr, size_t total_vehicles,
+            Matrix_cell_t *matrix_cells_arr, size_t total_cells,
+
             int max_cycles,
+            int initial_solution_id,
+
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,
-            char ** log_msg,
-            char ** err_msg);
+
+            char **log_msg,
+            char **notice_msg,
+            char **err_msg);
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  //  SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
+#endif  // SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_

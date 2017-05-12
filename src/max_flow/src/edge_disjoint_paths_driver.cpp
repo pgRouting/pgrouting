@@ -27,25 +27,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_edgedisjointpaths.hpp"
+#include "./edge_disjoint_paths_driver.h"
 
 #include <sstream>
 #include <vector>
 #include <set>
 
-#include "./../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_types.h"
+#include "./pgr_maxflow.hpp"
 
-#include "./edge_disjoint_paths_driver.h"
+#include "cpp_common/identifiers.hpp"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
+
+
+static
+std::vector<General_path_element_t>
+single_execution(
+        std::vector<pgr_edge_t> edges,
+        int64_t source,
+        int64_t target,
+        bool directed) {
+
+    std::set<int64_t> set_source_vertices;
+    std::set<int64_t> set_sink_vertices;
+    set_source_vertices.insert(source);
+    set_sink_vertices.insert(target);
+    pgrouting::graph::PgrFlowGraph G(
+            edges,
+            set_source_vertices,
+            set_sink_vertices, directed);
+
+    /*
+     * boykov_kolmogorov is only for directed graphs
+     */
+    return G.edge_disjoint_paths();
+}
 
 void
 do_pgr_edge_disjoint_paths(
-    pgr_basic_edge_t *data_edges,
+    pgr_edge_t *data_edges,
     size_t total_edges,
-    int64_t *source_vertices,
+    int64_t *sources,
     size_t size_source_verticesArr,
-    int64_t *sink_vertices,
+    int64_t *sinks,
     size_t size_sink_verticesArr,
     bool directed,
     General_path_element_t **return_tuples,
@@ -57,33 +81,82 @@ do_pgr_edge_disjoint_paths(
     std::ostringstream notice;
     std::ostringstream err;
     try {
-        std::vector<General_path_element_t> path_elements;
-        std::set<int64_t> set_source_vertices;
-        std::set<int64_t> set_sink_vertices;
-        for (size_t i = 0; i < size_source_verticesArr; ++i) {
-            set_source_vertices.insert(source_vertices[i]);
-        }
-        for (size_t i = 0; i < size_sink_verticesArr; ++i) {
-            set_sink_vertices.insert(sink_vertices[i]);
+        std::set<int64_t> set_source_vertices(
+                sources, sources + size_source_verticesArr);
+        std::set<int64_t> set_sink_vertices(
+                sinks, sinks + size_sink_verticesArr);
+        std::vector<pgr_edge_t> edges(
+                data_edges, data_edges + total_edges);
+
+
+        std::vector<General_path_element_t> paths;
+        for (const auto &s : set_source_vertices) {
+            for (const auto &t : set_sink_vertices) {
+                auto path = single_execution(
+                        edges,
+                        s,
+                        t,
+                        directed);
+                paths.insert(paths.end(), path.begin(), path.end());
+            }
         }
 
-        pgrouting::flow::PgrEdgeDisjointPathsGraph<pgrouting::FlowGraph> G;
+        if (paths.empty()) {
+            *return_tuples = nullptr;
+            *return_count = 0;
+            return;
+        }
 
         /*
-         * boykov_kolmogorov is only for directed graphs
+         * Initializing the cost
          */
-
-        G.create_edge_disjoint_paths_graph(data_edges, total_edges,
-                set_source_vertices,
-                set_sink_vertices, directed);
-        auto flow = G.boykov_kolmogorov();
-        G.get_edge_disjoint_paths(path_elements, flow);
-
-        (*return_tuples) = pgr_alloc(path_elements.size(), (*return_tuples));
-        for (size_t i = 0; i < path_elements.size(); ++i) {
-            (*return_tuples)[i] = path_elements[i];
+        for (auto &r : paths) {
+            r.agg_cost = r.cost = 0;
         }
-        *return_count = path_elements.size();
+
+        /*
+         * Calculating the cost
+         */
+        auto found = paths.size();
+        for (const auto &e : edges) {
+            for (auto &r : paths) {
+                if (r.edge == e.id) {
+                    r.cost = (r.node == e.source) ?
+                        e.cost : e.reverse_cost;
+                    --found;
+                }
+            }
+            if (found == 0) break;
+        }
+
+        /*
+         * Calculating the agg_cost
+         */
+        auto prev = paths[0];
+        for (auto &r : paths) {
+            if (r.seq == 1) {
+                r.agg_cost = 0;
+            } else {
+                r.agg_cost = prev.agg_cost + prev.cost;
+            }
+            prev = r;
+        }
+
+        /*
+         * Numbering the paths
+         */
+        int path_id(0);
+        for (auto &r : paths) {
+            r.start_id = path_id;
+            if (r.edge == -1) ++path_id;
+        }
+
+
+        (*return_tuples) = pgr_alloc(paths.size(), (*return_tuples));
+        for (size_t i = 0; i < paths.size(); ++i) {
+            (*return_tuples)[i] = paths[i];
+        }
+        *return_count = paths.size();
 
 
         *log_msg = log.str().empty()?

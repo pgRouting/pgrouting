@@ -15,6 +15,8 @@ Cost Matrix - Category
 .. index from here
 
 * :ref:`pgr_aStarCostMatrix`
+* :ref:`pgr_bdAstarCostMatrix`
+* :ref:`pgr_bdDijkstraCostMatrix`
 * :ref:`pgr_dijkstraCostMatrix`
 * :ref:`pgr_withPointsCostMatrix`
 
@@ -28,6 +30,8 @@ Cost Matrix - Category
     :hidden:
 
     pgr_aStarCostMatrix
+    pgr_bdAstarCostMatrix
+    pgr_bdDijkstraCostMatrix
     pgr_dijkstraCostMatrix
     pgr_withPointsCostMatrix
 

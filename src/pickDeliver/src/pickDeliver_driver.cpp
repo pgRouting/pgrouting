@@ -36,89 +36,139 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "./pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
+#include "cpp_common/Dmatrix.h"
 
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_alloc.hpp"
 
-/************************************************************
-  customers_sql TEXT,
-  max_vehicles INTEGER,
-  capacity FLOAT,
-  max_cycles INTEGER,
- ***********************************************************/
 void
 do_pgr_pickDeliver(
-        Customer_t *customers_arr,
+        PickDeliveryOrders_t customers_arr[],
         size_t total_customers,
-        int max_vehicles,
-        double capacity,
-        double speed,
-        int max_cycles,
-        General_vehicle_orders_t **result_tuples,
-        size_t *total_count,
-        char ** log_msg,
-        char ** err_msg) {
-    std::ostringstream log;
-    try {
-        std::ostringstream tmp_log;
-        *result_tuples = NULL;
-        *total_count = 0;
 
-        log << "Read data\n";
-        std::string error("");
-        pgrouting::vrp::Pgr_pickDeliver pd_problem(
-                customers_arr,
-                total_customers,
-                max_vehicles,
-                capacity,
-                speed,
-                max_cycles,
-                error);
-        if (error.compare("")) {
-            pd_problem.get_log(log);
-            *log_msg = strdup(log.str().c_str());
-            *err_msg = strdup(error.c_str());
+        Vehicle_t *vehicles_arr,
+        size_t total_vehicles,
+
+        Matrix_cell_t *matrix_cells_arr,
+        size_t total_cells,
+
+        int max_cycles,
+        int initial_solution_id,
+
+        General_vehicle_orders_t **return_tuples,
+        size_t *return_count,
+
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
+    std::ostringstream log;
+    std::ostringstream notice;
+    std::ostringstream err;
+    try {
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(total_customers);
+        pgassert(total_vehicles);
+        pgassert(total_vehicles);
+        pgassert(*return_count == 0);
+        pgassert(!(*return_tuples));
+
+
+        /*
+         * transform to C++ containers
+         */
+        std::vector<PickDeliveryOrders_t> orders(
+                customers_arr, customers_arr + total_customers);
+
+        std::vector<Vehicle_t> vehicles(
+                vehicles_arr, vehicles_arr + total_vehicles);
+
+        std::vector <Matrix_cell_t> data_costs(
+                matrix_cells_arr,
+                matrix_cells_arr + total_cells);
+
+        pgrouting::tsp::Dmatrix cost_matrix(data_costs);
+
+        if (!cost_matrix.has_no_infinity()) {
+            err << "An Infinity value was found on the Matrix";
+            *err_msg = pgr_msg(err.str().c_str());
             return;
         }
-        pd_problem.get_log(tmp_log);
+
+        log << "Read data\n";
+        pgrouting::vrp::Pgr_pickDeliver pd_problem(
+                orders,
+                vehicles,
+                cost_matrix,
+                max_cycles,
+                initial_solution_id);
+
+        log << pd_problem.msg.get_log();
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
+        err << pd_problem.msg.get_error();
+        if (!err.str().empty()) {
+            log << pd_problem.msg.get_log();
+            *log_msg = pgr_msg(log.str().c_str());
+            *err_msg = pgr_msg(err.str().c_str());
+            return;
+        }
+        log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
 
         try {
             pd_problem.solve();
         } catch (AssertFailedException &except) {
-            pd_problem.get_log(log);
+            log << pd_problem.msg.get_log();
             throw except;
         }
 
-        pd_problem.get_log(log);
+        log << pd_problem.msg.get_log();
         log << "Finish solve\n";
 
-        std::vector<General_vehicle_orders_t> solution;
-        pd_problem.get_postgres_result(solution);
-        pd_problem.get_log(tmp_log);
+        auto solution = pd_problem.get_postgres_result();
+        log << pd_problem.msg.get_log();
         log << "solution size: " << solution.size() << "\n";
 
 
-        (*result_tuples) = pgr_alloc(solution.size(), (*result_tuples));
+        (*return_tuples) = pgr_alloc(solution.size(), (*return_tuples));
         int seq = 0;
         for (const auto &row : solution) {
-            (*result_tuples)[seq] = row;
+            (*return_tuples)[seq] = row;
             ++seq;
         }
-        (*total_count) = solution.size();
+        (*return_count) = solution.size();
 
-        pd_problem.get_log(log);
-        *log_msg = strdup(log.str().c_str());
+        log << pd_problem.msg.get_log();
+
+        pgassert(*err_msg == NULL);
+        *log_msg = log.str().empty()?
+            nullptr :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            nullptr :
+            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch (std::exception& except) {
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
+
 

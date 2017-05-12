@@ -22,13 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include "c_common/restrictions_input.h"
 
-#include "./postgres_connection.h"
-#include "./debug_macro.h"
-#include "./pgr_types.h"
-#include "./time_msg.h"
-#include "./get_check_data.h"
-#include "./restrictions_input.h"
+#include "c_types/column_info_t.h"
+
+#include "c_common/debug_macro.h"
+#include "c_common/time_msg.h"
+#include "c_common/get_check_data.h"
 
 
 static

@@ -71,11 +71,14 @@ gettext_compact = False
 exclude_patterns = [
     'doc/build',
     'pgr_withPointsVia.rst',
+    'pgr_pickDeliver.rst',
+    'src/pickDeliver',
     'maxFlowApplications.rst',
     '*/notUsed',
     'tools/template'
     ]
 
+#    'src/pickDeliver/doc/pgr_withPointsVia.rst',
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
 

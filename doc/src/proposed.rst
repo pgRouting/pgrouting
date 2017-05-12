@@ -14,7 +14,7 @@ Stable proposed Functions
 
 ..  stable-begin-warning
 
-.. warning:: These are proposed functions for next mayor release.
+.. warning:: Proposed functions for next mayor release.
 
   - They are not officially in the current release.
   - They will likely officially be part of the next mayor release:
@@ -43,6 +43,23 @@ As part of the :ref:`dijkstra`
    :start-after: index from here
    :end-before: index to here
 
+:ref:`bdAstar`
+ 
+.. include:: bdAstar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`bdDijkstra`
+ 
+.. include:: bdDijkstra-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`maxFlow`
+
+.. include:: flow-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
 :ref:`withPoints`
 
@@ -74,6 +91,8 @@ As part of the :ref:`dijkstra`
     :hidden:
 
     aStar-family
+    bdAstar-family
+    bdDijkstra-family
     withPoints-family
 
     cost-category
@@ -89,7 +108,7 @@ Experimental and Proposed functions
 
 ..  begin-warn-expr
 
-.. warning:: These are proposed functions
+.. warning:: Experimental functions
 
   - They are not officially of the current release.
   - They likely will not be officially be part of the next release:
@@ -114,16 +133,6 @@ Experimental and Proposed functions
 
 - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
-:ref:`maxFlow`
-
-.. include:: flow-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
-
-.. rubric:: Convenience
-
--  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
 
 .. rubric:: Graph Analysis
 
@@ -131,17 +140,19 @@ Experimental and Proposed functions
 
 .. rubric:: Vehicle Routing Problems
 
+-  :ref:`pgr_pickDeliverEuclidean` - VRP Pickup & Delivery with Euclidean distances
 -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
 -  :ref:`pgr_vrp_basic` - VRP One Depot
 
+.. TODO deprecate pgr_gsocvrppdtw
 
 .. toctree::
   :hidden:
 
   contraction-family
   flow-family
-  pgr_pointToEdgeNode
   pgr_labelGraph
+  pgr_pickDeliverEuclidean
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 

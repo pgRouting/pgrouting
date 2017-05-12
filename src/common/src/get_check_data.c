@@ -22,14 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/get_check_data.h"
 
 #include "catalog/pg_type.h"
 
-
-#include "./pgr_types.h"
-#include "./debug_macro.h"
-#include "./get_check_data.h"
+#include "c_common/debug_macro.h"
 
 char*
 pgr_stradd(const char* a, const char* b) {
@@ -193,7 +190,7 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
 double
 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
-    bool isnull;
+    bool isnull = false;
     double value = 0.0;
     binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
     if (isnull)
