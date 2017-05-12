@@ -180,7 +180,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_node_id(0),
     m_nodes(),
     m_cost_matrix(cost_matrix),
-    m_trucks(vehicles,factor) {
+    m_trucks(vehicles, factor) {
         pgassert(msg.get_error().empty());
 
         pgassert(!pd_orders.empty());

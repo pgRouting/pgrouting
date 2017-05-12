@@ -83,7 +83,7 @@ double
 Node::distance(const Base_node *n) const {
     ENTERING();
     EXITING();
-    return distance(*dynamic_cast<const Node*>(n)); 
+    return distance(*dynamic_cast<const Node*>(n));
 }
 
 double
