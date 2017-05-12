@@ -26,6 +26,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
 CREATE OR REPLACE FUNCTION pgr_astar(
     edges_sql TEXT, -- XY edges sql
     start_vid BIGINT,
@@ -34,6 +35,7 @@ CREATE OR REPLACE FUNCTION pgr_astar(
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
     epsilon FLOAT DEFAULT 1.0,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
@@ -43,12 +45,10 @@ CREATE OR REPLACE FUNCTION pgr_astar(
 
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7);
-END
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_astar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -70,12 +70,10 @@ CREATE OR REPLACE FUNCTION pgr_astar(
 
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7);
-END
+    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_astar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -97,12 +95,10 @@ CREATE OR REPLACE FUNCTION pgr_astar(
 
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7);
-END
+    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_astar(_pgr_get_statement($1), $2::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, normal:=false) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -125,12 +121,17 @@ CREATE OR REPLACE FUNCTION pgr_astar(
 
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT *
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7);
-END
+    SELECT *
+    FROM _pgr_astar(_pgr_get_statement($1), $2::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(One to One)';
+COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(One to Many)';
+COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(Many to One)';
+COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(Many to Many)';

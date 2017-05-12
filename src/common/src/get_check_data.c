@@ -193,7 +193,7 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
 double
 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
-    bool isnull;
+    bool isnull = false;
     double value = 0.0;
     binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
     if (isnull)

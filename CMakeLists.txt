@@ -78,22 +78,22 @@ set(PgRouting_SOURCE_NAMES
     # "dijkstra" can not be removed 
     #   Has the command needed to link with prostgresl
     #----------------------
-    "dijkstra" 
+    "dijkstra" #2.1
 
     #----------------------
     # Directories that have being rewritten
     #----------------------
-    "allpairs"
-    "astar"
-    "driving_distance"
-    "ksp"
-    "tsp"
+    "allpairs" # 2.2
+    "astar"    # 2.4
+    "driving_distance" # 2.1
+    "ksp" # 2.1
+    "tsp" # 2.3
 
     #----------------------
     # Code needs to be rewritten
     #----------------------
     "alpha_shape"
-    "bd_astar"
+    "bdAstar"    # 2.5
     "bdDijkstra" # 2.4
     "trsp"
 
@@ -126,18 +126,14 @@ set(PgRouting_SQL_DIRECTORIES
     # Proposed
     #  Not officially on the release
     #----------------------
-    "convenience"  # most are deprecated
     "label_graph"  # needs to be rewritten using Boost
     "costMatrix"   # proposed on 2.3
 
     #----------------------
     # Wrappers for backwards compatibility 
     #----------------------
-    "bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
-    "apsp_johnson"  # 2.0 wrap of pgr_johnson
-    "apsp_warshall" # 2.0 wrap of pgr_warshall
-    "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
     "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
+    "deprecated"
     )
 
 #---------------------------------------------
@@ -211,9 +207,9 @@ endif()
 #-----------------------------------------------------------------------------
 
 set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "4")
-set(PGROUTING_VERSION_PATCH "1")
-set(PGROUTING_VERSION_DEV "")
+set(PGROUTING_VERSION_MINOR "5")
+set(PGROUTING_VERSION_PATCH "0")
+set(PGROUTING_VERSION_DEV "-dev")
 
 set(PGROUTING_SHORT_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
 set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
@@ -225,9 +221,14 @@ set(PGROUTING_FULL_VERSION "v${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}")
 #---------------------------------------------
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-#string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
+set(PGROUTING_GIT_HASH "")
 string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
+
+if ( NOT "${PGROUTING_GIT_BRANCH}" STREQUAL "master")
+    set (PGROUTING_GIT_HASH  "")
+    set (PGROUTING_GIT_BRANCH  "")
+endif()
 
 
 if (PGROUTING_DEBUG)
@@ -491,8 +492,9 @@ if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math ")
 endif()
 
-set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -pedantic -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic  -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+# TODO use -Werror when TRSP gets rewritten
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -pedantic -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -668,26 +670,33 @@ message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
 
 # create the signature file for this release
-message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
-execute_process(
-    COMMAND cp ${PGROUTING_SOURCE_DIR}/tools/curr-sig/pgrouting--${PGROUTING_VERSION}.sig ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sig
+#message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
+#execute_process(
+#COMMAND cp ${PGROUTING_SOURCE_DIR}/tools/curr-sig/pgrouting--${PGROUTING_VERSION}.sig ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sig
     #COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file.pl ${PGROUTING_VERSION}
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-    RESULT_VARIABLE SIG_RESULT
-    )
-if(SIG_RESULT)
-    message(FATAL_ERROR "SIG_RESULT: ${SIG_RESULT}")
-endif(SIG_RESULT)
+    #WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    #RESULT_VARIABLE SIG_RESULT
+    #)
+    #if(SIG_RESULT)
+    #message(FATAL_ERROR "SIG_RESULT: ${SIG_RESULT}")
+    #endif(SIG_RESULT)
 
 # create the extension update scripts
-execute_process(
-    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files.pl ${PGROUTING_VERSION} ${PGROUTING_SOURCE_DIR}
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-    RESULT_VARIABLE UPDATE_RESULT
-    )
-if(UPDATE_RESULT)
-    message(FATAL_ERROR "UPDATE_RESULT: ${UPDATE_RESULT}")
-endif()
+file(GLOB THE_VERSION_UPDATE_FILES "${PGROUTING_SOURCE_DIR}/tools/sql-update-scripts/*--*--*.sql")
+
+foreach (f ${THE_VERSION_UPDATE_FILES})
+    if (PGROUTING_DEBUG)
+        message(STATUS "${f}")
+    endif()
+    execute_process(
+        COMMAND cp ${f} ${CMAKE_BINARY_DIR}/lib/
+        WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+        RESULT_VARIABLE UPDATE_RESULT
+        )
+    if(UPDATE_RESULT)
+        message(FATAL_ERROR "UPDATE_RESULT: ${UPDATE_RESULT}")
+    endif()
+endforeach()
 
 # make a list of the files we need to install for version updates
 file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")

@@ -1,18 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.1
-
--- Started on 2017-03-12 13:34:07
-
-
-
---
--- TOC entry 318 (class 1259 OID 15659206)
--- Name: jet_customers; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE jet_customers (
     airport character varying,
@@ -27,11 +12,6 @@ CREATE TABLE jet_customers (
     servicetime double precision
 );
 
---
--- TOC entry 4308 (class 0 OID 15659206)
--- Dependencies: 318
--- Data for Name: jet_customers; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
 INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 1, 2320738.4688434978, 126348.38967116659, 0, 2, 4, 3448, 2853448, 450000);
 INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('BOS', 3, 2320738.4688434978, 126348.38967116659, 0, 4, 4, 3448, 2853448, 450000);
@@ -107,22 +87,48 @@ INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, 
 INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 72, 2035310.7411768832, -176076.78362264115, 71, 0, -1, 4355, 6904355, 450000);
 INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 0, 2138409.5568088419, -119451.50568778868, 0, 0, 0, 0, 7200000, 0);
 
-SELECT 
-n.seq, n.id1 AS jet, n.id2 AS cust, pd.airport, pd.demand AS pas, 
-(n.cost/1000/600)::numeric(10,2) AS c_hrs  
-FROM 
+SELECT * FROM
 pgr_gsoc_vrppdtw(
     $$
-    SELECT 
-    id, x, y, demand, 
-    opentime, closetime, servicetime, 
-    pindex, dindex 
-    FROM jet_customers 
-    ORDER BY id
+    SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex
+    FROM jet_customers
     $$,
-    2,
-    5
-) AS n LEFT JOIN 
-jet_customers AS pd ON n.id2 = pd.id
-ORDER BY n.seq;
+    2, 5 -- 2 vehicles, capacity 5
+);
 
+SELECT *
+FROM _pgr_pickDeliver(
+    $$
+    SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex
+    FROM jet_customers
+    $$,
+    2, 5
+);
+
+
+
+-- converting data to use euclidean
+WITH
+customer_data AS (SELECT * FROM jet_customers),
+pickups AS (
+    SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
+    FROM  customer_data WHERE pindex = 0 AND id != 0
+),
+deliveries AS (
+    SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
+    FROM  customer_data WHERE dindex = 0 AND id != 0
+)
+SELECT * INTO jet_orders FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
+
+WITH
+customer_data AS (select * from jet_customers)
+SELECT id, x AS start_x, y AS start_y,
+opentime AS start_open, closetime AS start_close,
+2 AS capacity,  5  AS number INTO jet_vehicles
+FROM customer_data WHERE id = 0 LIMIT 1;
+
+SELECT *
+FROM _pgr_pickDeliverEuclidean(
+    $$ SELECT * from jet_orders $$,
+    $$ SELECT * FROM jet_vehicles$$
+);

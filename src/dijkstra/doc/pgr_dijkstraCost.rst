@@ -216,7 +216,7 @@ Description of the Signatures
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ./pgr_dijkstra.rst
+.. include:: pgr_dijkstra.rst
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
 

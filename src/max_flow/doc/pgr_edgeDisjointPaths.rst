@@ -18,15 +18,17 @@ Name
 
 ``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
+
+.. Rubric:: Availability: 2.3.0
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 
@@ -44,21 +46,21 @@ The main characterics are:
   - Returns EMPTY SET when source and destination are the same, or cannot be reached.
   - The graph can be directed or undirected.
   - One to many, many to one, many to many versions are also supported.
-  - Uses :ref:`pgr_maxFlowBoykovKolmogorov` to calculate the paths.
-  - No `cost` or `aggregate cost` of the paths are returned. (Under discussion)
+  - Uses :ref:`pgr_boykovKolmogorov` to calculate the paths.
 
 Signature Summary
 -----------------
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
-    pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex, directed)
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
-    pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertices, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
 
-    RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge) OR EMPTY SET
+    RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 
 Signatures
@@ -67,15 +69,16 @@ Signatures
 .. index::
     single: edgeDisjointPaths(Minimal Use) - Proposed
 
-Minimal signature
+Minimal use
 .................
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
-    RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
+    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
-The minimal signature is between `source_vertex` and `destination_vertex` for a `directed` graph.
+The minimal use is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
 
 :Example:
 
@@ -89,13 +92,16 @@ The minimal signature is between `source_vertex` and `destination_vertex` for a 
 One to One
 .......................................
 
-The available signature calculates edge disjoint paths from one source vertex to one destination vertex.
-The graph can be directed or undirected.
+This signature finds the set of dijoint paths from one ``start_vid`` to one ``end_vid``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
-    RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
+    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example:
 
@@ -110,12 +116,20 @@ The graph can be directed or undirected.
 One to Many
 .......................................
 
-The available signature calculates the maximum flow from one source vertex to many sink vertices.
+This signature finds the sset of disjoint paths  from the ``start_vid`` to each one of the ``end_vid`` in ``end_vids``:
+  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  - on an **undirected** graph when ``directed`` flag is set to ``false``.
+  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+
+
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge) OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
+    RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example:
 
@@ -131,13 +145,17 @@ The available signature calculates the maximum flow from one source vertex to ma
 Many to One
 .......................................
 
-The available signature calculates the maximum flow from many source vertices to one sink vertex.
+This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to the ``end_vid``:
+  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  - on an **undirected** graph when ``directed`` flag is set to ``false``.
+  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex)
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge)
-      OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
+    RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example:
 
@@ -153,12 +171,17 @@ The available signature calculates the maximum flow from many source vertices to
 Many to Many
 .......................................
 
-The available signature calculates the maximum flow from many sources to many sinks.
+This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to each one of the ``end_vid`` in ``end_vids``:
+  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  - on an **undirected** graph when ``directed`` flag is set to ``false``.
+  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+  - The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertices, directed)
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example:
 
@@ -171,52 +194,24 @@ The available signature calculates the maximum flow from many sources to many si
 Description of the Signatures
 ----------------------------------------------
 
-Description of the SQL query
-.......................................
-
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-====================  ===================   =================================================
-Column                Type                  Description
-====================  ===================   =================================================
-**id**                ``ANY-INTEGER``       Identifier of the edge.
-**source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**going**             ``ANY-NUMERIC``       A positive value represents the existence of the edge (source, target).
-**coming**            ``ANY-NUMERIC``       A positive value represents the existence of the edge (target, source).
-====================  ===================   =================================================
-
-Where:
-  - :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-  - :ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION
-
-Description of the parameters of the signatures
-........................................................
-
-================= ====================== =================================================
-Column            Type                   Description
-================= ====================== =================================================
-**edges_sql**     ``TEXT``               SQL query as described above.
-**source_vertex** ``BIGINT``             Identifier(s) of the source vertex(vertices).
-**sink_vertex**   ``BIGINT``             Identifier(s) of the destination vertex(vertices).
-**directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Default TRUE.
-================= ====================== =================================================
-
-Description of the return values
-........................................................
-
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
-**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vertices are in the query.
-**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-============== ========== =================================================
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 
+.. include:: pgr_dijkstra.rst
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
+
+
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_start
+    :end-before: return_path_end
+
+See Also
+--------
+
+* :ref:`maxFlow`
 
 .. rubric:: Indices and tables
 

@@ -37,8 +37,8 @@ CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid integer, end_vid in
   has_reverse boolean;
   sql TEXT;
   BEGIN
-      RAISE NOTICE 'Deprecated function';
-      has_reverse =_pgr_parameter_check('ksp', edges_sql::text, false);
+      RAISE NOTICE 'Deprecated signature of pgr_ksp';
+      has_reverse =_pgr_parameter_check('dijkstra', edges_sql::text, false);
       sql = edges_sql;
       IF (has_reverse != has_rcost) THEN
          IF (has_rcost) THEN

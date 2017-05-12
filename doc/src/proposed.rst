@@ -43,6 +43,23 @@ As part of the :ref:`dijkstra`
    :start-after: index from here
    :end-before: index to here
 
+:ref:`bdAstar`
+ 
+.. include:: bdAstar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`bdDijkstra`
+ 
+.. include:: bdDijkstra-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`maxFlow`
+
+.. include:: flow-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
 :ref:`withPoints`
 
@@ -74,6 +91,8 @@ As part of the :ref:`dijkstra`
     :hidden:
 
     aStar-family
+    bdAstar-family
+    bdDijkstra-family
     withPoints-family
 
     cost-category
@@ -114,16 +133,6 @@ Experimental and Proposed functions
 
 - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
-:ref:`maxFlow`
-
-.. include:: flow-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
-
-.. rubric:: Convenience
-
--  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
 
 .. rubric:: Graph Analysis
 
@@ -140,7 +149,6 @@ Experimental and Proposed functions
 
   contraction-family
   flow-family
-  pgr_pointToEdgeNode
   pgr_labelGraph
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot

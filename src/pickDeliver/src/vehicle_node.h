@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_VEHICLE_NODE_H_
+#define SRC_PICKDELIVER_SRC_VEHICLE_NODE_H_
 #pragma once
 
 
@@ -136,7 +138,7 @@ class Vehicle_node: public Tw_node {
      /** @name mutators */
      ///@ {
      void evaluate(double cargoLimit);
-     void evaluate(const Vehicle_node &pred, double cargoLimit);
+     void evaluate(const Vehicle_node &pred, double cargoLimit, double speed);
      ///@}
 
      /** @name Document*/
@@ -144,13 +146,15 @@ class Vehicle_node: public Tw_node {
 
      /*! \brief returns the arrval time at \b this visited after \b other */
      double arrival_i_arrives_j(
-             const Vehicle_node &other) const;
+             const Vehicle_node &other,
+             double speed) const;
 
      ///@}
 
 
 
      /*! \brief Construct from parameters */
+     Vehicle_node() : Tw_node() {};
      Vehicle_node(const Vehicle_node &node) = default;
      Vehicle_node(const Tw_node &node);
 
@@ -181,3 +185,5 @@ class Vehicle_node: public Tw_node {
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_VEHICLE_NODE_H_

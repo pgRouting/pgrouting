@@ -42,7 +42,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $2, $3, $4, $5, $6, true) a;
+    FROM _pgr_astar(_pgr_get_statement($1), $2, $2, $3, $4, $5::FLOAT, $6::FLOAT, true) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

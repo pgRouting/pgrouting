@@ -25,78 +25,100 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-/***********************************
-        ONE TO ONE
-***********************************/
-
-CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN source_vertex bigint,
-    IN destination_vertex bigint,
-    IN directed BOOLEAN DEFAULT TRUE,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT
-    )
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_one_to_one'
-    LANGUAGE c IMMUTABLE STRICT;
-
-/***********************************
-        ONE TO MANY
-***********************************/
-
-CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN source_vertex bigint,
-    IN destination_vertices ANYARRAY,
-    IN directed BOOLEAN DEFAULT TRUE,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT
-    )
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_one_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
-
-/***********************************
-        MANY TO ONE
-***********************************/
-
-CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN source_vertices ANYARRAY,
-    IN destination_vertex BIGINT,
-    IN directed BOOLEAN DEFAULT TRUE,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT
-    )
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_many_to_one'
-    LANGUAGE c IMMUTABLE STRICT;
 
 /***********************************
         MANY TO MANY
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN source_vertices ANYARRAY,
-    IN destination_vertices ANYARRAY,
-    IN directed BOOLEAN DEFAULT TRUE,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
+    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
-    OUT edge BIGINT
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT
     )
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_many_to_many'
     LANGUAGE c IMMUTABLE STRICT;
+
+/***********************************
+        ONE TO ONE
+***********************************/
+
+CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
+    TEXT,
+    bigint,
+    bigint,
+    directed BOOLEAN DEFAULT TRUE,
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+    SELECT a.seq, a.path_id, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
+  $BODY$
+LANGUAGE sql VOLATILE;
+
+/***********************************
+        ONE TO MANY
+***********************************/
+
+CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
+    TEXT,
+    bigint,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT TRUE,
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+    SELECT a.seq, a.path_id, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4) AS a;
+  $BODY$
+LANGUAGE sql VOLATILE;
+
+/***********************************
+        MANY TO ONE
+***********************************/
+
+CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
+    TEXT,
+    ANYARRAY,
+    BIGINT,
+    IN directed BOOLEAN DEFAULT TRUE,
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+    SELECT a.seq, a.path_id, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
+  $BODY$
+LANGUAGE sql VOLATILE;

@@ -1,10 +1,13 @@
 ADD_LIBRARY(pickDeliver OBJECT
-    #   point.cpp
+    book_keeping.cpp
     node.cpp
     tw_node.cpp
     vehicle_node.cpp
     order.cpp
+    orders.cpp
+    fleet.cpp
     vehicle.cpp
+    pd_problem.cpp
     vehicle_pickDeliver.cpp
 
     solution.cpp
@@ -12,9 +15,10 @@ ADD_LIBRARY(pickDeliver OBJECT
     optimize.cpp
 
     pgr_pickDeliver.cpp
+    pgr_messages.cpp
 
-    pickDeliver_driver.cpp
-    customers_input.c
+    pickDeliverEuclidean_driver.cpp
+    pickDeliverEuclidean.c
     pickDeliver.c
 
     )

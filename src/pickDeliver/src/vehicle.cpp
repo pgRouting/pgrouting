@@ -131,24 +131,30 @@ Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
 
 
 
-void
+std::vector<General_vehicle_orders_t>
 Vehicle::get_postgres_result(
-        int vid,
-        std::vector< General_vehicle_orders_t > &result) const {
+        int vid) const {
+    std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
-    int i(1);
+    int vehicle_seq(1);
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data =
-                {vid, i,
-                p_stop.original_id(),
+                {vid, m_kind, vehicle_seq,
+                /*
+                 * The original_id is invalid for stops type 0 and 5
+                 */
+                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.original_id(),
+                p_stop.type(),
+                p_stop.cargo(),
                 p_stop.travel_time(),
                 p_stop.arrival_time(),
                 p_stop.wait_time(),
                 p_stop.service_time(),
                 p_stop.departure_time()};
         result.push_back(data);
-        ++i;
+        ++vehicle_seq;
     }
+    return result;
 }
 
 
@@ -184,12 +190,12 @@ Vehicle::deltaTime(const Vehicle_node &node, POS pos) const {
     auto prev = m_path[pos-1];
     auto next = m_path[pos];
     auto original_time = next.travel_time();
-    auto tt_p_n = prev.travel_time_to(node);
+    auto tt_p_n = prev.travel_time_to(node, m_speed);
     tt_p_n = node.is_early_arrival(prev.departure_time() + tt_p_n) ?
         node.closes() - prev.departure_time()
         : tt_p_n;
 
-    auto tt_n_x = node.travel_time_to(next);
+    auto tt_n_x = node.travel_time_to(next, m_speed);
     tt_p_n = next.is_early_arrival(
             prev.departure_time() + tt_p_n + node.service_time() + tt_n_x) ?
         next.closes() - (prev.departure_time() + tt_p_n + node.service_time())
@@ -356,9 +362,9 @@ Vehicle::evaluate(POS from) {
 
     while (node != m_path.end()) {
         if (node == m_path.begin()) {
-            node->evaluate(max_capacity);
+            node->evaluate(m_capacity);
         } else {
-            node->evaluate(*(node - 1), max_capacity);
+            node->evaluate(*(node - 1), m_capacity, m_speed);
         }
 
         ++node;
@@ -405,7 +411,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const {
 
     /* J == m_path[low_limit - 1] */
     while (low_limit > low
-             && m_path[low_limit - 1].is_compatible_IJ(nodeI)) {
+             && m_path[low_limit - 1].is_compatible_IJ(nodeI, m_speed)) {
         --low_limit;
     }
 
@@ -437,7 +443,7 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
     /* I == m_path[high_limit] */
     while (high_limit < high
-             && nodeJ.is_compatible_IJ(m_path[high_limit])) {
+             && nodeJ.is_compatible_IJ(m_path[high_limit], m_speed)) {
         ++high_limit;
     }
 
@@ -449,11 +455,16 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
 Vehicle::Vehicle(
         ID p_id,
+        int64_t p_kind,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
-        double p_max_capacity) :
+        double p_m_capacity,
+        double p_speed) :
     m_id(p_id),
-    max_capacity(p_max_capacity) {
+    m_kind(p_kind),
+    m_capacity(p_m_capacity),
+    m_speed(p_speed)
+    {
         m_path.clear();
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
@@ -488,10 +499,15 @@ std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** TRUCK " << v.id() << "***************";
+    log << "\n\n****************** TRUCK " << v.id() << "***************\n";
+    log << "id" << v.m_id
+        << "\tkind" <<  v.m_kind
+        << "\t capacity" << v.m_capacity
+        << "\t speed" << v.m_speed << "\n";
+
     for (const auto &path_stop : v.path()) {
-        log << "\nPath_stop" << ++i << "\n";
-        log << path_stop;
+        log << "Path_stop" << ++i << "\n";
+        log << path_stop << "\n";
     }
     return log;
 }

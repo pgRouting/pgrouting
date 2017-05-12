@@ -34,7 +34,7 @@ MAYOR=$1
 MINOR=$2
 MICRO=$3
 PREV_REL=$4
-RC=""
+RC="-dev"
 
 if [[ -z  $5 ]]; then
     BRANCH="release/$MAYOR.$MINOR"
@@ -316,7 +316,7 @@ echo "\`\`\`"
 echo tools/testers/algorithm-tester.pl -documentation
 echo git status
 echo "\`\`\`"
-tools/testers/algorithm-tester.pl -documentation > build/tmp_generate_doc.txt
+tools/testers/algorithm-tester.pl -documentation
 if [[ $? != 0 ]]; then
     echo "FATAL errors found generating documentation result files"
     exit 1

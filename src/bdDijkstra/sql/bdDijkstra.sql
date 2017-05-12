@@ -1,9 +1,9 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2016 Celia Virginia Vergara Castillo
+Copyright (c) 2017 Celia Virginia Vergara Castillo
 mail: vicky_vergara@hotmail.com
 
 ------
@@ -24,25 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
-CREATE OR REPLACE FUNCTION _pgr_bdDijkstra(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN,
-    only_cost BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'bdDijkstra'
-LANGUAGE c IMMUTABLE STRICT;
-
-
--- V3 signature
+-- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
     edges_sql TEXT,
     start_vid BIGINT,
@@ -55,39 +37,100 @@ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-DECLARE
-statement_txt record;
-sql TEXT;
-BEGIN
-    RETURN query
-    SELECT * FROM _pgr_bdDijkstra(_pgr_get_statement($1), start_vid, end_vid, true, false);
-  END
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], true, false) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+-- TODO directed BOOLEAN DEFAULT TRUE,  on version 3
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
+    edges_sql TEXT,
+    start_vid BIGINT,
+    end_vid BIGINT,
+    directed BOOLEAN,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, false) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+-- ONE TO MANY
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
+    edges_sql TEXT,
+    start_vid BIGINT,
+    end_vids ANYARRAY,
+    directed BOOLEAN DEFAULT TRUE,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false) as a;
+$BODY$
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
 
--- V3
+-- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
     edges_sql TEXT,
-    start_vid BIGINT,
+    start_vids ANYARRAY,
     end_vid BIGINT,
-    directed BOOLEAN,
+    directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-DECLARE
-BEGIN
-    RETURN query SELECT *
-    FROM _pgr_bdDijkstra(_pgr_get_statement($1), start_vid, end_vid, directed, false);
-  END
+    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false) as a;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+
+
+-- MANY TO MANY
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
+    edges_sql TEXT,
+    start_vids ANYARRAY,
+    end_vids ANYARRAY,
+    directed BOOLEAN DEFAULT TRUE,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false) as a;
+$BODY$
+LANGUAGE SQL VOLATILE
 COST 100
 ROWS 1000;
