@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 
 #include "vrp/order.h"
-#include "pickDeliver/node.h"
+#include "vrp/node.h"
 #include "vrp/tw_node.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/pgr_pickDeliver.h"

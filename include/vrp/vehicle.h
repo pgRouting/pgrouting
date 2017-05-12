@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file vehicle.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_VEHICLE_H_
 #define INCLUDE_VRP_VEHICLE_H_

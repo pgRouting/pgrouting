@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file pgr_pickDeliver.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_PGR_PICKDELIVER_H_
 #define INCLUDE_VRP_PGR_PICKDELIVER_H_
@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/Dmatrix.h"
 
-#include "pickDeliver/base_node.h"
+#include "vrp/base_node.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/fleet.h"
 #include "vrp/solution.h"

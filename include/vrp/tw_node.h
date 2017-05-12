@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file tw_node.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_TW_NODE_H_
 #define INCLUDE_VRP_TW_NODE_H_
@@ -37,21 +37,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifier.h"
 
 #include "vrp/pd_problem.h"
-#include "pickDeliver/node.h"
+#include "vrp/node.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
-/*! \class Tw_node
- * \brief Extends the \ref Node class to create a Node with time window attributes.
+/*! @class Tw_node
+ * @brief Extends the Node class to create a Node with time window attributes.
  *
  * A Time Window node is a Node with addition attributes and methods to
  * to support Time Windows and to model a more complex Node need in many
  * vehicle routing problems.
  *
  * Most application specific code will extend this class and define the specific
- * values and requirements for \c type and \c streetid.
+ * values and requirements for @c type and @c streetid.
  *
  */
 class Tw_node : public Identifier, public PD_problem {
@@ -89,28 +89,28 @@ class Tw_node : public Identifier, public PD_problem {
      /** @name accessors */
      ///@ {
 
-     /*! \brief Returns the opening time.*/
+     /*! @brief Returns the opening time.*/
      inline int64_t order() const {return m_order;}
 
-     /*! \brief Returns the opening time.*/
+     /*! @brief Returns the opening time.*/
      inline double opens() const {return m_opens;}
 
-     /*! \brief Returns the closing time. */
+     /*! @brief Returns the closing time. */
      inline double closes() const {return m_closes;}
 
-     /*! \brief Returns the demand associated with this node. */
+     /*! @brief Returns the demand associated with this node. */
      inline double demand() const {return m_demand;}
 
-     /*! * \brief Returns the service time for this node. */
+     /*! * @brief Returns the service time for this node. */
      inline double service_time() const { return m_service_time;}
 
-     /*! * \brief Returns the type of this node. */
+     /*! * @brief Returns the type of this node. */
      inline NodeType type() const { return m_type;}
 
-     /*! \brief Returns the length of time between the opening and closing. */
+     /*! @brief Returns the length of time between the opening and closing. */
      inline double window_length() const {return m_closes - m_opens;}
 
-     /*! \brief time = distance / speed. */
+     /*! @brief time = distance / speed. */
 #if 0
      double travel_time_to(const pickdeliver::Node &other, double speed) const;
 #endif
@@ -130,7 +130,7 @@ class Tw_node : public Identifier, public PD_problem {
      ///@ {
 
 
-     /*! \brief is_start
+     /*! @brief is_start
       *
       * To be a start node:
       *   - type is kStart
@@ -140,7 +140,7 @@ class Tw_node : public Identifier, public PD_problem {
      bool is_start() const;
 
 
-     /*! \brief is_pickup
+     /*! @brief is_pickup
       *
       * To be a pickup node:
       *   - type is kPickup
@@ -150,7 +150,7 @@ class Tw_node : public Identifier, public PD_problem {
      bool is_pickup() const;
 
 
-     /*! \brief is_delivery
+     /*! @brief is_delivery
       *
       * To be a delivery node:
       *   - type is kDelivery
@@ -160,7 +160,7 @@ class Tw_node : public Identifier, public PD_problem {
      bool is_delivery() const;
 
 
-     /*! \brief is_dump
+     /*! @brief is_dump
       *
       * To be a dump node:
       *   - type is kDump
@@ -170,7 +170,7 @@ class Tw_node : public Identifier, public PD_problem {
      bool is_dump() const;
 
 
-     /*! \brief is_Load
+     /*! @brief is_Load
       *
       * To be a Load node:
       *   - type is kLoad
@@ -180,7 +180,7 @@ class Tw_node : public Identifier, public PD_problem {
      bool is_load() const;
 
 
-     /*! \brief is_end
+     /*! @brief is_end
       *
       * To be a End node:
       *   - type is kEnd
@@ -196,23 +196,23 @@ class Tw_node : public Identifier, public PD_problem {
 
 
 
-     /*! * \brief Print the contents of a Twnode object. */
+     /*! * @brief Print the contents of a Twnode object. */
      friend std::ostream& operator<< (std::ostream &log, const Tw_node &node);
 
      bool operator ==(const Tw_node &rhs) const;
 
 
 
-     /*! \brief True when \b arrivalTime is before it \b opens */
+     /*! @brief True when @b arrivalTime is before it @b opens */
      inline bool is_early_arrival(double arrival_time) const {
          return arrival_time < m_opens;
      }
 
-     /*! \brief True when \b arrivalTime is after it \b closes */
+     /*! @brief True when @b arrivalTime is after it @b closes */
      inline bool is_late_arrival(double arrival_time) const {
          return arrival_time > m_closes;
      }
-     /*! \brief True when \b arrivalTime in the time window */
+     /*! @brief True when @b arrivalTime in the time window */
      inline bool is_on_time(double arrival_time) const {
          return !is_early_arrival(arrival_time)
              && !is_late_arrival(arrival_time);
@@ -225,48 +225,48 @@ class Tw_node : public Identifier, public PD_problem {
      /** @name document functions */
      ///@ {
      /*!
-      * The actual arrival time at \b This node, given that:
-      * \b this node is visited directly after \b other node
-      *   and that the actual arrival time at \b other node was opens(other)
+      * The actual arrival time at @b This node, given that:
+      * @b this node is visited directly after @b other node
+      *   and that the actual arrival time at @b other node was opens(other)
       **/
      double arrival_j_opens_i(const Tw_node &I, double speed) const;
 
      /*!
-      * The actual arrival time at \b this node, given that:
-      * \b this node is visited directly after \b other node
-      * and that the actual arrival time at \b other node was closes(other)
+      * The actual arrival time at @b this node, given that:
+      * @b this node is visited directly after @b other node
+      * and that the actual arrival time at @b other node was closes(other)
       **/
      double arrival_j_closes_i(const Tw_node &I, double speed) const;
 
 
      /*
-      * is possible to arrive to \b this after visiting \bother
-      *   - departing as early as possible from \b other it can arrives to \b this
+      * is possible to arrive to @b this after visiting @bother
+      *   - departing as early as possible from @b other it can arrives to @b this
       */
      bool is_compatible_IJ(const Tw_node &I, double speed) const;
 
      /*
-      * is possible to arrive to \b this after visiting \bother
-      *   - departing as late as possible from \b other it can arrives to \b this
+      * is possible to arrive to @b this after visiting @bother
+      *   - departing as late as possible from @b other it can arrives to @b this
       */
      bool is_partially_compatible_IJ(const Tw_node &I, double speed) const;
 
      /*
-      * is possible to arrive to \b this after visiting \bother
-      *   - departing as late as possible from \b other it can arrives to \b this
+      * is possible to arrive to @b this after visiting @bother
+      *   - departing as late as possible from @b other it can arrives to @b this
       */
      bool is_tight_compatible_IJ(const Tw_node &I, double speed) const;
 
      /*
-      * is possible to arrive to \b this after visiting \b other
-      *   - departing as late as possible from \b other it can arrives to \b this
+      * is possible to arrive to @b this after visiting @b other
+      *   - departing as late as possible from @b other it can arrives to @b this
       */
      bool is_partially_waitTime_compatible_IJ(
              const Tw_node &I,
              double speed) const;
 
      /*
-      * is compatible to arrive to \b this after visiting \b other
+      * is compatible to arrive to @b this after visiting @b other
       * - is fully compatible
       * - does not have a waiting time when arriving as earliest as possible after
       */
