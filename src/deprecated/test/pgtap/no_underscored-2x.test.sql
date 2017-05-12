@@ -11,6 +11,7 @@ SELECT  results_eq('SELECT  2, sname, tname FROM pgr_getTableName(''EDes2'')',
     'SELECT 2, ''public''::TEXT, NULL::TEXT ');
 
 
+select todo(1);
 SELECT  results_eq('SELECT  3,  pgr_getColumnName(''EDGe_table'', ''SOuRce'')' ,
     'SELECT 3, ''source''::TEXT ');
 SELECT  results_eq('SELECT  4,  pgr_getColumnName(''EDes2'', ''SOuRce'') ',
@@ -21,6 +22,7 @@ SELECT  results_eq('SELECT  6,  pgr_getColumnName(''EDes2'', ''SOuce'') ',
     'SELECT 6,  NULL::TEXT ');
 
 
+select todo(1);
 SELECT  results_eq('SELECT  7, pgr_isColumnInTable(''EDGe_table'', ''SOuRce'') ',
     'SELECT 7, true ');
 SELECT  results_eq('SELECT  8, pgr_isColumnInTable(''EDes2'', ''SOuRce'')',
@@ -45,6 +47,7 @@ SELECT  results_eq('SELECT  15, pgr_versionless(''2.1.0foobar23'', ''2.1-beta'')
     'SELECT 15,  true ');
 
 
+select todo(1);
 SELECT  results_eq('SELECT  16, pgr_quote_ident(''idname.text'') ',
     'SELECT 16,  ''idname.text''::TEXT ');
 

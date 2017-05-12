@@ -20,6 +20,9 @@ SELECT* from pgr_eucledianTSP(
 );
 \echo -- q3
 SET client_min_messages TO DEBUG1;
+
+-- TODO see what this outputs
+
 SELECT* from pgr_eucledianTSP(
     $$
     SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
