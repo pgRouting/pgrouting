@@ -63,7 +63,8 @@ class Vehicle_pickDeliver : public Vehicle {
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
              double p_capacity,
-             double p_speed);
+             double p_speed,
+             double factor);
 
      Vehicle_pickDeliver(const Vehicle_pickDeliver &) = default;
 

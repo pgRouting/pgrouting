@@ -168,6 +168,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
         const pgrouting::tsp::Dmatrix &cost_matrix,
+        double factor,
         size_t p_max_cycles,
         int initial) :
     PD_problem(this),
@@ -179,7 +180,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_node_id(0),
     m_nodes(),
     m_cost_matrix(cost_matrix),
-    m_trucks(vehicles) {
+    m_trucks(vehicles,factor) {
         pgassert(msg.get_error().empty());
 
         pgassert(!pd_orders.empty());
@@ -213,6 +214,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
+        double factor,
         size_t p_max_cycles,
         int initial) :
     PD_problem(this),
@@ -225,7 +227,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_nodes(),
     m_base_nodes(),
     m_orders(pd_orders),
-    m_trucks(vehicles) {
+    m_trucks(vehicles, factor) {
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
     pgassert(m_initial_id > 0 && m_initial_id < 7);

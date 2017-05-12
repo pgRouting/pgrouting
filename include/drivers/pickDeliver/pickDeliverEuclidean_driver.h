@@ -50,6 +50,7 @@ extern "C" {
             PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
 
+            double factor,
             int max_cycles,
             int initial_solution_id,
 

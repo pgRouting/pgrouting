@@ -83,8 +83,9 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_capacity,
-        double p_speed) :
-    Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed),
+        double p_speed,
+        double factor) :
+    Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed, factor),
     cost((std::numeric_limits<double>::max)()) {
         m_orders_in_vehicle.clear();
 
@@ -393,7 +394,7 @@ Vehicle_pickDeliver::set_compatibles(const PD_Orders &orders) {
     for (const auto o : orders) {
         if (is_order_feasable(o)) m_feasable_orders += o.idx();
     }
-    m_orders.set_compatibles(m_speed);
+    m_orders.set_compatibles(speed());
 }
 
 bool

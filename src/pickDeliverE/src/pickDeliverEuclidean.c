@@ -48,10 +48,21 @@ void
 process(
         char* pd_orders_sql,
         char* vehicles_sql,
+        double factor,
         int max_cycles,
         int initial_solution_id,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
+    if (factor <= 0) {
+        ereport(ERROR,
+                (errcode(ERRCODE_INTERNAL_ERROR),
+                 errmsg("Illegal value in parameter: factor"),
+                 errhint("Value found: %f <= 0", factor)));
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+
     if (max_cycles < 0) {
         ereport(ERROR,
                 (errcode(ERRCODE_INTERNAL_ERROR),
@@ -147,6 +158,8 @@ process(
     do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
+
+            factor,
             max_cycles,
             initial_solution_id,
 
@@ -208,8 +221,9 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                PG_GETARG_INT32(2),
+                PG_GETARG_FLOAT8(2),
                 PG_GETARG_INT32(3),
+                PG_GETARG_INT32(4),
                 &result_tuples,
                 &result_count);
 

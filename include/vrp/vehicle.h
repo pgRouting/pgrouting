@@ -73,7 +73,9 @@ class Vehicle : public Identifier {
  protected:
      typedef size_t POS;
      std::deque< Vehicle_node > m_path;
+ private:
      double m_capacity;
+     double m_factor;
      double m_speed;
 
  public:
@@ -89,11 +91,13 @@ class Vehicle : public Identifier {
              int64_t kind,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
-             double m_capacity,
-             double speed);
+             double p_capacity,
+             double p_speed,
+             double p_factor);
 
 
-     bool is_phony() {return id() < 0;}
+     bool is_phony() const {return id() < 0;}
+     bool speed() const;
 
      /*! @name deque like functions
 
@@ -255,7 +259,9 @@ class Vehicle : public Identifier {
      Vehicle_node end_site() const {
          return m_path.back();
      }
+#if 0
      double speed() const {return m_speed;}
+#endif
      double capacity() const {return m_capacity;}
      /// @}
 
