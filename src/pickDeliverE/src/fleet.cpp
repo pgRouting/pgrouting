@@ -121,6 +121,8 @@ Fleet::get_truck(const Order order) {
   - checks that the number of vehicles is a legal value
   - creates the requested vehicles
 
+  @param[in] vehicles  the list of vehicles
+  @param[in] factor    the multiplier to speed up or slow down
 */
 bool
 Fleet::build_fleet(

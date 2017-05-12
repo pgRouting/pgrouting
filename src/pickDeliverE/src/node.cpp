@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "pickDeliver/node.h"
+#include "vrp/node.h"
 
 #include "cpp_common/pgr_assert.h"
 
@@ -83,7 +83,7 @@ double
 Node::distance(const Base_node *n) const {
     ENTERING();
     EXITING();
-    return distance(*dynamic_cast<const Node*>(n)); 
+    return distance(*dynamic_cast<const Node*>(n));
 }
 
 double

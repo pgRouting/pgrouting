@@ -22,6 +22,8 @@
 
  ********************************************************************PGR-GNU*/
 
+/*! @file */
+
 #ifndef INCLUDE_CPP_COMMON_XY_VERTEX_H_
 #define INCLUDE_CPP_COMMON_XY_VERTEX_H_
 #pragma once

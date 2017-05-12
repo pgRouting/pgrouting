@@ -1,6 +1,9 @@
 ADD_LIBRARY(pickDeliverE OBJECT
+    base_node.cpp
+    node.cpp
     tw_node.cpp
     vehicle_node.cpp
+    pgr_messages.cpp
 
     order.cpp
     pd_orders.cpp

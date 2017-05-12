@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file node.h */
+/*! @file */
 
 #ifndef INCLUDE_PICKDELIVER_NODE_H_
 #define INCLUDE_PICKDELIVER_NODE_H_
@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <ostream>
-#include "pickDeliver/base_node.h"
+#include "vrp/base_node.h"
 #include "cpp_common/xy_vertex.h"
 #include "vrp/pd_problem.h"
 
@@ -39,16 +39,15 @@ namespace pgrouting {
 namespace vrp {
 namespace pickdeliver {
 
-/*! \class Node
- * \brief The Node class defines a point in 2D space with an id.
+/*! @class Node
+ * @brief The Node class defines a point in 2D space with an id.
  *
  * A Node is a point that defines a location in 2D space. It maintains
- * a user \c id and an internal \c nid along with its \c x, \c y location.
+ * a user @c id and an internal @c nid along with its @c x, @c y location.
  * This is the base object that things like depots, customer locations, etc.
  * are built upon.
  *
  */
-
 class Node : public Base_node , public PD_problem {
  public:
      Node() = default;

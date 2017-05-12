@@ -63,7 +63,7 @@ Pgr_messages::get_error() const {
 
 #ifndef NDEBUG
 std::string
-Pgr_messages::get_dbglog() const{
+Pgr_messages::get_dbglog() const {
     return dbg_log.str();
 }
 #endif
