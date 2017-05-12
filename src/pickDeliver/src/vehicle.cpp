@@ -78,7 +78,7 @@ Vehicle::insert(std::pair<POS, POS> position_limits, const Vehicle_node &node) {
     return best;
 
     pgassert(best < m_path.size());
-    pgassert(m_path[best].id() == node.id());
+    pgassert(m_path[best].idx() == node.idx());
     invariant();
 }
 
@@ -140,11 +140,11 @@ Vehicle::get_postgres_result(
     int vehicle_seq(1);
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data =
-                {vid, m_kind, vehicle_seq,
+                {vid, id(), vehicle_seq,
                 /*
                  * The original_id is invalid for stops type 0 and 5
                  */
-                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.original_id(),
+                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.id(),
                 p_stop.type(),
                 p_stop.cargo(),
                 p_stop.travel_time(),
@@ -177,7 +177,7 @@ Vehicle::insert(POS at, Vehicle_node node) {
     evaluate(at);
 
     pgassert(at < m_path.size());
-    pgassert(m_path[at].id() == node.id());
+    pgassert(m_path[at].idx() == node.idx());
     invariant();
 }
 
@@ -238,7 +238,7 @@ Vehicle::erase(const Vehicle_node &node) {
 
     POS pos = 0;
     for ( ; pos < m_path.size() ; ++pos) {
-        if (node.id() == m_path[pos].id())
+        if (node.idx() == m_path[pos].idx())
             break;
     }
 
@@ -462,14 +462,13 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
 
 Vehicle::Vehicle(
-        ID p_id,
-        int64_t p_kind,
+        size_t p_idx,
+        int64_t p_id,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_m_capacity,
         double p_speed) :
-    m_id(p_id),
-    m_kind(p_kind),
+    Identifier(p_idx, p_id),
     m_capacity(p_m_capacity),
     m_speed(p_speed)
     {
@@ -487,11 +486,11 @@ Vehicle::Vehicle(
 std::string
 Vehicle::tau() const {
     std::ostringstream log;
-    log << "Truck " << id() << " (";
+    log << "Truck " << idx() << " (";
     for (const auto p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";
-        log << p_stop.original_id();
+        log << p_stop.id();
     }
     log << ")" << " \t(cv, twv, wait_time, duration) = ("
         << cvTot() << ", "
@@ -508,9 +507,8 @@ std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** VEHICLE " << v.id() << "***************\n";
-    log << "id = " << v.m_id
-        << "\tkind = " <<  v.m_kind
+    log << "\n\n****************** " << v.idx() << "th VEHICLE***************\n";
+    log << "id = " << v.id()
         << "\tcapacity = " << v.m_capacity
         << "\tspeed = " << v.m_speed << "\n";
 

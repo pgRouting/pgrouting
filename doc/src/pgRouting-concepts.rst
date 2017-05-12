@@ -356,13 +356,13 @@ Where:
 
 .. pd_euclidean_sql_start
 
-.. note:: TODO 
+.. note TODO 
 
 .. pd_euclidean_sql_end
 
 .. pd_vehicle_sql_start
 
-.. note:: TODO 
+.. note TODO 
 
 .. pd_vehicle_sql_end
 

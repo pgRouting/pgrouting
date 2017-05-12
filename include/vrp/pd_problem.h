@@ -23,13 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file pd_problem.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_PD_PROBLEM_H_
 #define INCLUDE_VRP_PD_PROBLEM_H_
 #pragma once
 
-#include "vrp/pgr_messages.h"
+#include "cpp_common/pgr_messages.h"
 
 
 
@@ -37,7 +37,6 @@ namespace pgrouting {
 namespace vrp {
 
 class Pgr_pickDeliver;
-class Pgr_messages;
 
 class PD_problem {
  public:

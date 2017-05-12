@@ -1,13 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver.sql
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Copyright (c) 2017 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
 
 ------
 
@@ -27,27 +21,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
-    orders_sql TEXT,
-    vehicles_sql TEXT,
-    max_cycles INTEGER DEFAULT 10,
-    initial_id INTEGER DEFAULT 4,
+#include "cpp_common/identifier.h"
 
-    OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
-    OUT vehicle_seq INTEGER,
-    OUT order_id BIGINT,
-    OUT stop_type INT,
-    OUT cargo FLOAT,
-    OUT travel_time FLOAT,
-    OUT arrival_time FLOAT,
-    OUT wait_time FLOAT,
-    OUT service_time FLOAT,
-    OUT departure_time FLOAT
-)
 
-  RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'pickDeliverEuclidean'
-    LANGUAGE c VOLATILE;
+namespace pgrouting {
 
+
+Identifier::Identifier(
+        const size_t _idx,
+        const int64_t _id) :
+    m_idx(_idx),
+    m_id(_id) {}
+
+size_t
+Identifier::idx() const {
+    return m_idx;
+}
+
+int64_t
+Identifier::id() const {
+    return m_id;
+}
+
+void
+Identifier::reset_id(int64_t _id) {
+    m_id = _id;
+}
+
+std::ostream& operator<<(std::ostream& log, const Identifier &ident) {
+    log << "id(idx) = " << ident.id() << "(" << ident.idx() << ")";
+    return log;
+}
+
+}  // namespace pgrouting

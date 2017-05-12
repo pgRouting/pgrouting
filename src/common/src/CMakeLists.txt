@@ -17,6 +17,7 @@ ADD_LIBRARY(common OBJECT
 
     time_msg.c
     pgr_assert.cpp
+    identifier.cpp
 
     basic_vertex.cpp
     xy_vertex.cpp

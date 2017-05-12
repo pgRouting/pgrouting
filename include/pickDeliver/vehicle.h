@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 
+#include "cpp_common/identifier.h"
 #include "pickDeliver/vehicle_node.h"
 #include "c_types/pickDeliver/general_vehicle_orders_t.h"
 
@@ -61,16 +62,17 @@ namespace pickdeliver {
  *
  * A vehicle is a sequence of @ref Vehicle_node
  * from @b starting site to @b ending site.
+ * has:
+ * @b capacity
+ * @b speed
+ * @b factor TODO(vicky)
  *
  * @sa @ref Vehicle_node
  */
 
-class Vehicle {
+class Vehicle : public Identifier, public PD_problem {
  protected:
-     typedef size_t ID;
      typedef size_t POS;
-     ID m_id;
-     int64_t m_kind;
      std::deque< Vehicle_node > m_path;
      double m_capacity;
      double m_speed;
@@ -84,7 +86,7 @@ class Vehicle {
            get_postgres_result(int vid) const;
 
      Vehicle(
-             ID id,
+             size_t idx,
              int64_t kind,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
@@ -92,7 +94,7 @@ class Vehicle {
              double speed);
 
 
-     bool is_phony() {return m_kind < 0;}
+     bool is_phony() {return id() < 0;}
 
      /*! @name deque like functions
 
@@ -213,10 +215,9 @@ class Vehicle {
       */
      bool empty() const;
 
-     ID id() const {return m_id;}
 
 
-     /// @ {
+     /// @{
      Cost cost() const;
      bool cost_compare(const Cost&, const Cost&) const;
 
@@ -250,7 +251,9 @@ class Vehicle {
      bool is_feasable() const {
          return !(has_twv() ||  has_cv());
      }
-     const Vehicle_node start_site() const {return m_path.front();}
+     Vehicle_node start_site() const {
+         return m_path.front();
+     }
      const Vehicle_node end_site() const {return m_path.back();}
      double speed() const {return m_speed;}
      double capacity() const {return m_capacity;}

@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file vehicle_node.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_VEHICLE_NODE_H_
 #define INCLUDE_VRP_VEHICLE_NODE_H_
@@ -158,7 +158,7 @@ class Vehicle_node: public Tw_node {
 
      /*! \brief Construct from parameters */
      Vehicle_node() : Tw_node() {}
-     Vehicle_node(const Vehicle_node &node) = default;
+     Vehicle_node(const Vehicle_node &) = default;
      explicit Vehicle_node(const Tw_node &node);
 
  protected:

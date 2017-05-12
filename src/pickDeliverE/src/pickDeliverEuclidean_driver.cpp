@@ -55,6 +55,7 @@ do_pgr_pickDeliverEuclidean(
         Vehicle_t *vehicles_arr,
         size_t total_vehicles,
 
+        double factor,
         int max_cycles,
         int initial_solution_id,
 
@@ -84,6 +85,7 @@ do_pgr_pickDeliverEuclidean(
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
+                factor,
                 max_cycles,
                 initial_solution_id);
 

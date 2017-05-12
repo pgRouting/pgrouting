@@ -24,56 +24,66 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "vrp/base_node.h"
+#include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 bool
 Base_node::isSamePos(const Base_node &rhs) const {
-    return original_id() == rhs.original_id();
+    return id() == rhs.id();
 }
 
-
+#if 0
 int64_t
-Base_node::original_id() const {
-    return m_original_id;
-}
-
-size_t
 Base_node::id() const {
     return m_id;
 }
 
+size_t
+Base_node::idx() const {
+    return m_idx;
+}
+#endif
+
 std::ostream& operator << (std::ostream &log, const Base_node &node) {
-    log << node.m_original_id
-        << "(" << node.m_id << ")";
+    node.print(log);
     return log;
 }
 
-double
-Base_node::distance(const Base_node &) const {
-    return 0;
+void
+Base_node::print(std::ostream& os) const {
+    os << "USING BASE_NODE\n";
+    os << id()
+        << "(" << idx() << ")";
 }
 
+#if 0
+double
+Base_node::distance(const Base_node &node) const {
+    return 0;
+}
+#endif
 double
 Base_node::comparable_distance(const Base_node &) const {
     return 0;
 }
 
 
-Base_node::Base_node(size_t id, int64_t original_id)
-    : m_id(id),
-    m_original_id(original_id) {
+Base_node::Base_node(size_t _idx, int64_t _id)
+    : Identifier(_idx, _id) {
     }
 
 bool
 Base_node::operator ==(const Base_node &rhs) const {
     if (&rhs == this) return true;
     return
-        (id() == rhs.id())
-         && (original_id() == rhs.original_id());
+        (idx() == rhs.idx())
+         && (id() == rhs.id());
 }
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

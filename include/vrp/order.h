@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file order.h */
+/*! @file */
 
 #ifndef INCLUDE_VRP_ORDER_H_
 #define INCLUDE_VRP_ORDER_H_
@@ -31,20 +31,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <iostream>
-#include "vrp/vehicle_node.h"
+#include "cpp_common/identifier.h"
 #include "cpp_common/identifiers.hpp"
+#include "vrp/vehicle_node.h"
 #include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
-class Order : public PD_problem {
+class Order : public Identifier, public PD_problem {
  public:
      /*! @name Constructors
       * @{
       */
-     Order(size_t p_id,
+     Order(size_t p_id, int64_t p_idx,
              const Vehicle_node &p_pickup,
              const Vehicle_node &p_deliver);
 
@@ -56,11 +57,6 @@ class Order : public PD_problem {
       * @{
       */
 
-     /*! The delivery node identifier
-      *
-      * It hold's the idx of the node
-      */
-     inline size_t id() const {return m_id;}
 
      /*! The delivery node identifier
       *
@@ -142,12 +138,6 @@ class Order : public PD_problem {
      /*!@}*/
 
  private:
-     /*! The order's identifier
-      *
-      * It holds the original order identifier given in a row of PickDeliveryOrders_t
-      */
-     size_t m_id;
-
      /*! The pick up node identifier
       *
       * It hold's the idx of the node

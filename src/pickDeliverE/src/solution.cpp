@@ -167,7 +167,7 @@ Solution::sort_by_id() {
     std::sort(fleet.begin(), fleet.end(), []
             (const Vehicle_pickDeliver &lhs, const Vehicle_pickDeliver &rhs)
             -> bool {
-            return lhs.id() < rhs.id();
+            return lhs.idx() < rhs.idx();
             });
 }
 

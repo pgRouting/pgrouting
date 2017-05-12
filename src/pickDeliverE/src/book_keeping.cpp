@@ -48,12 +48,12 @@ std::ostream& operator << (std::ostream& log, const Swap_info &d) {
     log << "\n" << d.from_truck.tau() << " --> "
         << d.from_order
         << "("
-        << d.from_truck.orders()[d.from_order].pickup().original_id()
+        << d.from_truck.orders()[d.from_order].pickup().id()
         << ")"
         << "\n" << d.to_truck.tau() << " --> "
         << d.to_order
         << "("
-        << d.to_truck.orders()[d.to_order].pickup().original_id()
+        << d.to_truck.orders()[d.to_order].pickup().id()
         << ")"
         << "\n" << "delta = " << d.estimated_delta;
     return log;

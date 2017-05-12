@@ -1,9 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: pickDeliver.sql
 
-FILE: pgr_pickDeliver.h
-
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail:
 
 ------
 
@@ -21,26 +25,30 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
- ********************************************************************PGR-GNU*/
+********************************************************************PGR-GNU*/
 
+CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
+    orders_sql TEXT,
+    vehicles_sql TEXT,
+    factor FLOAT DEFAULT 1,
+    max_cycles INTEGER DEFAULT 10,
+    initial_sol INTEGER DEFAULT 4,
 
-#include "vrp/pd_problem.h"
+    OUT seq INTEGER,
+    OUT vehicle_number INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT vehicle_seq INTEGER,
+    OUT order_id BIGINT,
+    OUT stop_type INT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+)
 
-namespace pgrouting {
-namespace vrp {
-
-Pgr_pickDeliver* PD_problem::problem;
-Pgr_messages PD_problem::msg;
-
-PD_problem::PD_problem(Pgr_pickDeliver* p_problem) {
-    PD_problem::problem = p_problem;
-    msg.clear();
-}
-
-PD_problem::PD_problem(const PD_problem &)
-    { }
-
-
-}  //  namespace vrp
-}  //  namespace pgrouting
+  RETURNS SETOF RECORD AS
+ 'MODULE_PATHNAME', 'pickDeliverEuclidean'
+    LANGUAGE c VOLATILE;
 

@@ -23,10 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file pgr_messages.h */
+/*! @file */
 
-#ifndef INCLUDE_VRP_PGR_MESSAGES_H_
-#define INCLUDE_VRP_PGR_MESSAGES_H_
+#ifndef INCLUDE_CPP_COMMON_PGR_MESSAGES_H_
+#define INCLUDE_CPP_COMMON_PGR_MESSAGES_H_
 #pragma once
 
 
@@ -35,8 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 
 namespace pgrouting {
-namespace vrp {
-
 
 class Pgr_messages {
  public:
@@ -63,6 +61,12 @@ class Pgr_messages {
     /*! @brief get_error
      *
      * @returns the current contents of the log and clears the log
+     */
+    bool has_error() const;
+
+    /*! @brief get_error
+     *
+     * @returns the current contents of the log and clears the log
      *
      */
     std::string get_error() const;
@@ -83,21 +87,40 @@ class Pgr_messages {
     std::string get_dbglog() const;
 #endif
 
+#if 0
+    void entering(const char* function) {
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#else
+    log << "ENTERING: " << function << "\n";
+#endif
+    }
+#endif
 
 
  public:
     /*! Stores the hint information*/
-    std::ostringstream log;
+    mutable std::ostringstream log;
     /*! Stores the notice information*/
-    std::ostringstream notice;
+    mutable std::ostringstream notice;
     /*! Stores the error information*/
-    std::ostringstream error;
+    mutable std::ostringstream error;
 #ifndef NDEBUG
     mutable std::ostringstream dbg_log;
 #endif
 };
 
-}  //  namespace vrp
-}  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_PGR_MESSAGES_H_
+
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#define ENTERING()
+#define EXITING()
+#else
+#define ENTERING() msg.log << "--> " << __PRETTY_FUNCTION__ << "\n"
+#define EXITING() msg.log << "<-- " << __PRETTY_FUNCTION__ << "\n"
+#endif
+
+
+
+}  // namespace pgrouting
+
+#endif  // INCLUDE_CPP_COMMON_PGR_MESSAGES_H_

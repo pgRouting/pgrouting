@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_PICKDELIVER_PD_PROBLEM_H_
 #pragma once
 
-#include "pickDeliver/pgr_messages.h"
+#include "cpp_common/pgr_messages.h"
 
 
 
@@ -38,7 +38,6 @@ namespace vrp {
 namespace pickdeliver {
 
 class Pgr_pickDeliver;
-class Pgr_messages;
 
 class PD_problem {
  public:

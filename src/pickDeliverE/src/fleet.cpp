@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 #include <limits>
+#include <memory>
+#include <utility>
 
 #include "vrp/pd_orders.h"
 #include "vrp/tw_node.h"
@@ -49,11 +51,11 @@ Fleet::Fleet(const Fleet &fleet) :
     {}
 
 Fleet::Fleet(
-        const std::vector<Vehicle_t> &vehicles) :
+        const std::vector<Vehicle_t> &vehicles, double factor) :
     PD_problem(),
     used(),
     un_used() {
-        build_fleet(vehicles);
+        build_fleet(vehicles, factor);
         Identifiers<size_t> unused(m_trucks.size());
         un_used = unused;
     }
@@ -78,10 +80,10 @@ Fleet::release_truck(size_t id) {
 
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
-    auto id = m_trucks.front().id();
+    auto id = m_trucks.front().idx();
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order)) {
-            id = truck.id();
+            id = truck.idx();
             msg.log << "id" << id
                 << "size" << m_trucks.size();
             pgassertwm(id < m_trucks.size(), msg.get_log());
@@ -96,10 +98,10 @@ Fleet::get_truck(size_t order) {
 
 Vehicle_pickDeliver
 Fleet::get_truck(const Order order) {
-    auto id = m_trucks.front().id();
+    auto id = m_trucks.front().idx();
     for (auto truck : m_trucks) {
-        if (truck.feasable_orders().has(order.id())) {
-            id = truck.id();
+        if (truck.feasable_orders().has(order.idx())) {
+            id = truck.idx();
             msg.log << "id" << id
                 << "size" << m_trucks.size();
             pgassertwm(id < m_trucks.size(), msg.get_log());
@@ -119,10 +121,13 @@ Fleet::get_truck(const Order order) {
   - checks that the number of vehicles is a legal value
   - creates the requested vehicles
 
+  @param[in] vehicles  the list of vehicles
+  @param[in] factor    the multiplier to speed up or slow down
 */
 bool
 Fleet::build_fleet(
-        std::vector<Vehicle_t> vehicles) {
+        std::vector<Vehicle_t> vehicles,
+        double factor) {
     /*
      *  creating a phoney truck with max capacity and max window
      *  with the start & end points of the first vehicle given
@@ -165,13 +170,28 @@ Fleet::build_fleet(
             return false;
         }
 
+        std::unique_ptr<pickdeliver::Base_node> b_start(new pickdeliver::Node(
+                    problem->node_id(),
+                    vehicle.start_node_id,
+                    vehicle.start_x,
+                    vehicle.start_y));
         auto starting_site = Vehicle_node(
                 {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
+
+        std::unique_ptr<pickdeliver::Base_node> b_end(new pickdeliver::Node(
+                    problem->node_id(),
+                    vehicle.end_node_id,
+                    vehicle.end_x,
+                    vehicle.end_y));
         auto ending_site = Vehicle_node(
                 {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
+        problem->add_base_node(std::move(b_start));
+        problem->add_base_node(std::move(b_end));
         problem->add_node(starting_site);
         problem->add_node(ending_site);
+
+        pgassert(problem->nodesOK());
 
         if (!(starting_site.is_start()
                     && ending_site.is_end())) {
@@ -189,9 +209,10 @@ Fleet::build_fleet(
                         starting_site,
                         ending_site,
                         vehicle.capacity,
-                        vehicle.speed));
-            msg.log << "inserting " << m_trucks.back().id();
-            pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
+                        vehicle.speed,
+                        factor));
+            msg.log << "inserting " << m_trucks.back().idx();
+            pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
         }
     }
     Identifiers<size_t> unused(m_trucks.size());
@@ -230,13 +251,13 @@ Fleet::is_order_ok(const Order &order) const {
         if (truck.is_order_feasable(order)) {
             return true;
         }
-        msg.log << "checking order " << order.id()
-            << "on truck " << truck.id() << "\n";
+        msg.log << "checking order " << order.idx()
+            << "on truck " << truck.idx() << "\n";
 
         /*
          * The order must be valid given the speed
          */
-        if (!order.is_valid(truck.speed())) continue; 
+        if (!order.is_valid(truck.speed())) continue;
 
         /*
          * if its feasible, then the one truck is found
