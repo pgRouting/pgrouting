@@ -1,6 +1,11 @@
 --These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
 --The edge in the edge table are augmented with road-like categories for capacity values.
 
+<<<<<<< .merge_file_3J6trI
+=======
+BEGIN;
+SET client_min_messages TO NOTICE;
+>>>>>>> .merge_file_lrybU8
 
 \echo -- q1
 SELECT * FROM pgr_maxFlowEdmondsKarp(
@@ -55,3 +60,7 @@ SELECT * FROM pgr_maxFlowEdmondsKarp(
 );
 
 \echo -- q5
+<<<<<<< .merge_file_3J6trI
+=======
+ROLLBACK;
+>>>>>>> .merge_file_lrybU8

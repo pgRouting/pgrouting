@@ -1,7 +1,13 @@
 --These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
 --The edge in the edge table are augmented with road-like categories for capacity values.
 
+<<<<<<< .merge_file_YHVwNA
 
+=======
+BEGIN;
+
+SET client_min_messages TO NOTICE;
+>>>>>>> .merge_file_ko2Krj
 
 \echo -- q1
 SELECT * FROM pgr_maxFlowPushRelabel(
@@ -57,3 +63,7 @@ SELECT * FROM pgr_maxFlowPushRelabel(
 
 \echo -- q5
 
+<<<<<<< .merge_file_YHVwNA
+=======
+ROLLBACK;
+>>>>>>> .merge_file_ko2Krj

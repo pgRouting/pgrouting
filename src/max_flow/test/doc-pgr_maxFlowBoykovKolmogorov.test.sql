@@ -1,3 +1,11 @@
+<<<<<<< .merge_file_bwPMK2
+=======
+--These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
+--The edge in the edge table are augmented with road-like categories for capacity values.
+
+BEGIN;
+SET client_min_messages TO NOTICE;
+>>>>>>> .merge_file_H33irE
 
 \echo -- q1
 SELECT * FROM pgr_maxFlowBoykovKolmogorov(
@@ -52,3 +60,7 @@ SELECT * FROM pgr_maxFlowBoykovKolmogorov(
 );
 
 \echo -- q5
+<<<<<<< .merge_file_bwPMK2
+=======
+ROLLBACK;
+>>>>>>> .merge_file_H33irE
