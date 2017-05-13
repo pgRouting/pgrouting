@@ -28,16 +28,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/e_report.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/edges_input.h"
-#include "./../../common/src/arrays_input.h"
-#include "./dijkstra_driver.h"
+#include "c_common/debug_macro.h"
+#include "c_common/e_report.h"
+#include "c_common/time_msg.h"
+#include "c_common/edges_input.h"
+#include "c_common/arrays_input.h"
+#include "drivers/dijkstra/dijkstra_driver.h"
 
 PG_MODULE_MAGIC;
 
@@ -154,6 +153,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         // end_vids ANYARRAY,
         // directed BOOLEAN default true,
         // only_cost BOOLEAN default false
+        // normal BOOLEAN default true
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),

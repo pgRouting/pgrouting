@@ -71,6 +71,9 @@ gettext_compact = False
 exclude_patterns = [
     'doc/build',
     'pgr_withPointsVia.rst',
+    'pgr_pickDeliver.rst',
+    'pgr_pickDeliverEuclidean.rst',
+    'src/pickDeliver',
     'maxFlowApplications.rst',
     '*/notUsed',
     'tools/template'

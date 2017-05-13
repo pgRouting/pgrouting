@@ -22,78 +22,75 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./postgres_connection.h"
+#include "c_common/orders_input.h"
 
-#include "./debug_macro.h"
-#include "./pgr_types.h"
-#include "./get_check_data.h"
-#include "./orders_input.h"
+#include "c_types/column_info_t.h"
+
+#include "c_common/debug_macro.h"
+#include "c_common/get_check_data.h"
+#include "c_common/time_msg.h"
 
 
 static
 void fetch_pd_orders(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
-        Column_info_t info[12],
-        double default_pick_window_t,
-        double default_deliver_window_t,
-        double default_pick_service_t,
-        double default_deliver_service_t,
+        Column_info_t info[14],
+        bool with_id,
         PickDeliveryOrders_t *pd_order) {
     pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
-    pd_order->pick_x = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
-    pd_order->pick_y = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
+
+    /*
+     * the pickups
+     */
+    pd_order->pick_x = with_id ? 
+        0 : pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
+    pd_order->pick_y =  with_id ? 
+        0 : pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
     pd_order->pick_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
+    pd_order->pick_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
+    pd_order->pick_service_t = column_found(info[6].colNumber) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[6]) : 0;
 
-    if (column_found(info[5].colNumber)) {
-        pd_order->pick_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
-    } else {
-        pd_order->pick_close_t = pd_order->pick_open_t + default_pick_window_t;
-    }
-    if (column_found(info[6].colNumber)) {
-        pd_order->pick_service_t = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
-    } else {
-        pd_order->pick_service_t = default_pick_service_t;
-    }
-
-    pd_order->deliver_x = pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
-    pd_order->deliver_y = pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
+    /*
+     * the deliveries
+     */
+    pd_order->deliver_x =  with_id ?
+        0 : pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
+    pd_order->deliver_y =  with_id ?
+        0 : pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
     pd_order->deliver_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[9]);
-    if (column_found(info[10].colNumber)) {
-        pd_order->deliver_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[10]);
-    } else {
-        pd_order->pick_close_t =
-            pd_order->deliver_open_t + default_deliver_window_t;
-    }
-    if (column_found(info[11].colNumber)) {
-        pd_order->deliver_service_t =
-            pgr_SPI_getFloat8(tuple, tupdesc, info[11]);
-    } else {
-        pd_order->deliver_service_t = default_deliver_service_t;
-    }
+    pd_order->deliver_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[10]);
+    pd_order->deliver_service_t = column_found(info[11].colNumber) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[11]) : 0;
+
+    pd_order->pick_node_id = with_id ? 
+        pgr_SPI_getBigInt(tuple, tupdesc, info[12]) : 0;
+    pd_order->deliver_node_id = with_id ? 
+        pgr_SPI_getBigInt(tuple, tupdesc, info[13]) : 0;
 }
 
 
 
+static
 void
-pgr_get_pd_orders(
+pgr_get_pd_orders_general(
         char *pd_orders_sql,
-        double default_pick_window_t,
-        double default_deliver_window_t,
-        double default_pick_service_t,
-        double default_deliver_service_t,
         PickDeliveryOrders_t **pd_orders,
-        size_t *total_pd_orders) {
+        size_t *total_pd_orders,
+        bool with_id) {
+    clock_t start_t = clock();
+
     const int tuple_limit = 1000000;
 
     PGR_DBG("pgr_get_pd_orders_data");
     PGR_DBG("%s", pd_orders_sql);
 
-    Column_info_t info[12];
+    Column_info_t info[14];
 
     int i;
-    for (i = 0; i < 12; ++i) {
+    for (i = 0; i < 14; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
@@ -102,23 +99,41 @@ pgr_get_pd_orders(
 
     info[0].name = strdup("id");
     info[1].name = strdup("demand");
-    info[2].name = strdup("pick_x");
-    info[3].name = strdup("pick_y");
-    info[4].name = strdup("pick_open");
-    info[5].name = strdup("pick_close");
-    info[6].name = strdup("pick_service");
-    info[7].name = strdup("deliver_x");
-    info[8].name = strdup("deliver_y");
-    info[9].name = strdup("deliver_open");
-    info[10].name = strdup("deliver_close");
-    info[11].name = strdup("deliver_service");
+    info[2].name = strdup("p_x");
+    info[3].name = strdup("p_y");
+    info[4].name = strdup("p_open");
+    info[5].name = strdup("p_close");
+    info[6].name = strdup("p_service");
+    info[7].name = strdup("d_x");
+    info[8].name = strdup("d_y");
+    info[9].name = strdup("d_open");
+    info[10].name = strdup("d_close");
+    info[11].name = strdup("d_service");
+    info[12].name = strdup("p_node_id");
+    info[13].name = strdup("d_node_id");
 
     info[0].eType = ANY_INTEGER;
+    info[12].eType = ANY_INTEGER;
+    info[13].eType = ANY_INTEGER;
 
-    info[5].strict = false;
+    /* service is optional*/
     info[6].strict = false;
-    info[10].strict = false;
     info[11].strict = false;
+    /* nodes are going to be ignored*/
+    info[12].strict = false;
+    info[13].strict = false;
+
+    if (with_id) {
+        /* (x,y) values are ignored*/
+        info[2].strict = false;
+        info[3].strict = false;
+        info[7].strict = false;
+        info[8].strict = false;
+        /* nodes are compulsory*/
+        info[12].strict = true;
+        info[13].strict = true;
+    }
+
 
 
     size_t ntuples;
@@ -137,7 +152,7 @@ pgr_get_pd_orders(
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
-            pgr_fetch_column_info(info, 12);
+            pgr_fetch_column_info(info, 14);
         }
         ntuples = SPI_processed;
         total_tuples += ntuples;
@@ -161,11 +176,7 @@ pgr_get_pd_orders(
             PGR_DBG("processing %ld", ntuples);
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
-                fetch_pd_orders(&tuple, &tupdesc, info,
-                        default_pick_window_t,
-                        default_deliver_window_t,
-                        default_pick_service_t,
-                        default_deliver_service_t,
+                fetch_pd_orders(&tuple, &tupdesc, info, with_id,
                         &(*pd_orders)[total_tuples - ntuples + t]);
             }
             SPI_freetuptable(tuptable);
@@ -183,5 +194,26 @@ pgr_get_pd_orders(
     }
 
     (*total_pd_orders) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_pd_orders));
+    if (with_id) {
+        PGR_DBG("Finish reading %ld orders for matrix", (*total_pd_orders));
+    } else {
+        PGR_DBG("Finish reading %ld orders for eucledian", (*total_pd_orders));
+    }
+    time_msg("reading edges", start_t, clock());
+}
+
+void
+pgr_get_pd_orders(
+        char *pd_orders_sql,
+        PickDeliveryOrders_t **pd_orders,
+        size_t *total_pd_orders) {
+    pgr_get_pd_orders_general(pd_orders_sql, pd_orders, total_pd_orders, false);
+}
+
+void
+pgr_get_pd_orders_with_id(
+        char *pd_orders_sql,
+        PickDeliveryOrders_t **pd_orders,
+        size_t *total_pd_orders) {
+    pgr_get_pd_orders_general(pd_orders_sql, pd_orders, total_pd_orders, true);
 }

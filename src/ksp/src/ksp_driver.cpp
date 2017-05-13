@@ -23,19 +23,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#include "./ksp_driver.h"
+#include "drivers/yen/ksp_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "./pgr_ksp.hpp"
+#include "yen/pgr_ksp.hpp"
 
-#include "./../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_types.h"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
-#include "./../../common/src/pgr_base_graph.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 

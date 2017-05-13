@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo -- q1
 SELECT * FROM pgr_TSP(
@@ -29,5 +28,3 @@ SELECT * FROM pgr_TSP(
     randomize := false
 );
 \echo -- q5
-
-ROLLBACK;

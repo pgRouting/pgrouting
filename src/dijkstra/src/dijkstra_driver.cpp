@@ -27,18 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./dijkstra_driver.h"
+#include "drivers/dijkstra/dijkstra_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <algorithm>
 
-#include "./pgr_dijkstra.hpp"
+#include "dijkstra/pgr_dijkstra.hpp"
 
-#include "../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_types.h"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
 template < class G >
 std::deque< Path >

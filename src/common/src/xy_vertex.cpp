@@ -22,13 +22,12 @@
 
  ********************************************************************PGR-GNU*/
 
-#include "./xy_vertex.h"
+#include "cpp_common/xy_vertex.h"
 
 #include <vector>
 #include <algorithm>
 
-#include "./pgr_types.h"
-#include "./pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
 
 namespace pgrouting {

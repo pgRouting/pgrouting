@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 #include <vector>
 
-#include "../../common/src/identifiers.hpp"
+#include "cpp_common/identifiers.hpp"
 
 
 namespace pgrouting {

@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./Dmatrix.h"
+#include "cpp_common/Dmatrix.h"
 
 #include <string.h>
 #include <sstream>
@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cmath>
 
-#include "./tour.h"
-#include "../../common/src/pgr_assert.h"
+#include "tsp/tour.h"
+#include "cpp_common/pgr_assert.h"
 
 
 namespace pgrouting {
@@ -81,6 +81,11 @@ Dmatrix::has_id(int64_t id) const {
 }
 
 
+/*! given a users id returns the internal index
+ *
+ * in[] id
+ * returns index
+ */
 size_t
 Dmatrix::get_index(int64_t id) const {
     auto pos = std::lower_bound(ids.begin(), ids.end(), id);
@@ -124,15 +129,15 @@ Dmatrix::has_no_infinity() const {
 }
 
 
+/*!
+ * Triangle Inequality Theorem.
+ *  The sum of the lengths of any two sides of a triangle is greater than the length of the third side.
+ *  NOTE: can also be equal for streets
+ * costs[i][k] != inf
+ * costs[i][k] <= costs[i][j] + costs[j][k] 
+ */
 bool
 Dmatrix::obeys_triangle_inequality() const {
-    /*
-     * Triangle Inequality Theorem.
-     *  The sum of the lengths of any two sides of a triangle is greater than the length of the third side.
-     *  NOTE: can also be equal for streets
-     * costs[i][k] != inf
-     * costs[i][k] <= costs[i][j] + costs[j][k] 
-     */
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
             for (size_t k = 0; k < costs.size(); ++k) {
@@ -164,6 +169,9 @@ Dmatrix::is_symmetric() const {
 }
 
 
+/**
+ * 
+ */
 std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
     for (const auto id : matrix.ids) {
         log << "\t" << id;
@@ -173,20 +181,23 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
     for (const auto row : matrix.costs) {
         size_t j = 0;
         for (const auto cost : row) {
-            log << "(" << i << "," << j << ")"
-                << "\t(" << matrix.ids[i] << "," << matrix.ids[j] << ")"
+            log << "Internal(" << i << "," << j << ")"
+                << "\tUsers(" << matrix.ids[i] << "," << matrix.ids[j] << ")"
+                << "\t = " << cost
+#if 0
                 << "\t(" << matrix.get_index(matrix.ids[i])
                 << "," << matrix.get_index(matrix.ids[j]) << ")"
-                << "\t = " << cost
                 << "\t = " << matrix.costs[i][j]
                 << "\t = " << matrix.costs[j][i]
                 << "=inf:" <<  (matrix.costs[i][j] == (std::numeric_limits<double>::infinity)())
                 << "=inf:" <<  (matrix.costs[j][i] == (std::numeric_limits<double>::infinity)())
+#endif
                 << "\n";
             ++j;
         }
         ++i;
     }
+#if 0
     for (size_t i = 0; i < matrix.costs.size(); ++i) {
         for (size_t j = 0; j < matrix.costs.size(); ++j) {
             for (size_t k = 0; k < matrix.costs.size(); ++k) {
@@ -198,7 +209,7 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
             }
         }
     }
-
+#endif
     return log;
 }
 

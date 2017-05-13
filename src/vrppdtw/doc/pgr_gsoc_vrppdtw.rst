@@ -48,7 +48,7 @@ Complete signature
     Returns set of pgr_costResult[]:
 
 
-.. rubric:: Example:
+.. rubric:: Example: Show the id1
 
 .. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
    :start-after: --q1
@@ -58,7 +58,7 @@ Complete signature
 Description of the Signatures
 -------------------------------
 
-Description of the inner sql query
+Description of the sql query
 .........................................................................................
 
 ================  ===================   =================================================
@@ -110,8 +110,24 @@ Column             Type            Description
 
 
 
+Examples
+-------------------------------------------------------------------------------
+
+.. rubric:: Example: Total number of rows returned
+
+.. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
+   :start-after: --q2
+   :end-before: --q3
+
+.. rubric:: Example: Results for only id1 values: 1, 5, and 9
+
+.. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
+   :start-after: --q3
+   :end-before: --q4
+
+
 See Also
 -------------------------------------------------------------------------------
 
-* The example use :ref:`pickDeliverData`
+* The examples use :ref:`pickDeliverData`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem

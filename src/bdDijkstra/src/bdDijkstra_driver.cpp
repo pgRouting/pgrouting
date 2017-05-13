@@ -27,20 +27,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include "drivers/bdDijkstra/bdDijkstra_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
 
-#include "./pgr_bdDijkstra.hpp"
-#include "./bdDijkstra_driver.h"
+#include "bdDijkstra/pgr_bdDijkstra.hpp"
 
 
-#include "./../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_types.h"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
-#include "./../../common/src/pgr_base_graph.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 
@@ -69,8 +69,8 @@ pgr_bdDijkstra(
     pgrouting::bidirectional::Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
 
     std::deque<Path> paths;
-    for (const auto source: sources) {
-        for (const auto target: targets) {
+    for (const auto source : sources) {
+        for (const auto target : targets) {
             fn_bdDijkstra.clear();
             paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(
                         graph.get_V(source), graph.get_V(target), only_cost));

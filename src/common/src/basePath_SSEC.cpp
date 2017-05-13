@@ -21,15 +21,14 @@ along with this program; if not, write to the Free Software
 
 ********************************************************************PGR-GNU*/
 
-#include "./basePath_SSEC.hpp"
+#include "cpp_common/basePath_SSEC.hpp"
 
 #include <deque>
 #include <iostream>
 #include <algorithm>
 #include <utility>
 
-#include "./pgr_types.h"
-#include "./pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
 void Path::push_front(Path_t data) {
     path.push_front(data);

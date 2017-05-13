@@ -22,33 +22,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./postgres_connection.h"
+#include "c_common/vehicles_input.h"
 
 #include <limits.h>
 
-#include "./debug_macro.h"
-#include "./pgr_types.h"
-#include "./get_check_data.h"
-#include "./vehicles_input.h"
+#include "c_types/column_info_t.h"
+
+#include "c_common/debug_macro.h"
+#include "c_common/get_check_data.h"
+#include "c_common/time_msg.h"
 
 
 static
 void fetch_vehicles(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
-        Column_info_t info[14],
-        Vehicle_t *vehicle) {
+        Column_info_t info[16],
+        Vehicle_t *vehicle,
+        bool with_id) {
 
     vehicle->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     vehicle->capacity = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
-    vehicle->start_x = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
-    vehicle->start_y = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
 
-    vehicle->cant_v =  column_found(info[4].colNumber) ?
-        pgr_SPI_getBigInt(tuple, tupdesc, info[4]) :
-        1;
+    vehicle->start_x = with_id ?
+        0 :
+        pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
+    vehicle->start_y = with_id ?
+        0 :
+        pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
+
     vehicle->speed = column_found(info[13].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[13]) :
+        1;
+    vehicle->cant_v =  column_found(info[4].colNumber) ?
+        pgr_SPI_getBigInt(tuple, tupdesc, info[4]) :
         1;
     vehicle->start_open_t = column_found(info[5].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[5]) :
@@ -75,24 +82,39 @@ void fetch_vehicles(
     vehicle->end_service_t = column_found(info[12].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[12]) :
         vehicle->start_service_t;
+
+    vehicle->speed = column_found(info[13].colNumber) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[13]) :
+        1;
+    vehicle->start_node_id = with_id ?
+        pgr_SPI_getBigInt(tuple, tupdesc, info[14]) :
+        0;
+    vehicle->end_node_id = with_id ?
+        (column_found(info[12].colNumber) ?
+            pgr_SPI_getBigInt(tuple, tupdesc, info[15]) :
+            vehicle->start_node_id) :
+        0;
 }
 
 
 
-void
-pgr_get_vehicles(
+static
+void pgr_get_vehicles_general(
         char *vehicles_sql,
         Vehicle_t **vehicles,
-        size_t *total_vehicles) {
+        size_t *total_vehicles,
+        bool with_id) {
+    clock_t start_t = clock();
+
     const int tuple_limit = 1000000;
 
     PGR_DBG("pgr_get_vehicles");
     PGR_DBG("%s", vehicles_sql);
 
-    Column_info_t info[14];
+    Column_info_t info[16];
 
     int i;
-    for (i = 0; i < 14; ++i) {
+    for (i = 0; i < 16; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
@@ -101,7 +123,6 @@ pgr_get_vehicles(
 
     info[0].name = strdup("id");
     info[1].name = strdup("capacity");
-    info[13].name = strdup("speed");
     info[2].name = strdup("start_x");
     info[3].name = strdup("start_y");
     info[4].name = strdup("number");
@@ -113,14 +134,29 @@ pgr_get_vehicles(
     info[10].name = strdup("end_open");
     info[11].name = strdup("end_close");
     info[12].name = strdup("end_service");
+    info[13].name = strdup("speed");
+    info[14].name = strdup("start_node_id");
+    info[15].name = strdup("end_node_id");
 
     info[0].eType = ANY_INTEGER;
     info[4].eType = ANY_INTEGER;
+    info[14].eType = ANY_INTEGER;
+    info[15].eType = ANY_INTEGER;
 
-    for (i = 4; i < 14; ++i) {
+    for (i = 4; i < 16; ++i) {
         info[i].strict = false;
     }
 
+    if (with_id) {
+        /*
+         *  with id, then start_x and start_y are optional
+         *  start_node_id is compulsory
+         */
+        info[2].strict = false;
+        info[3].strict = false;
+        info[14].strict = true;
+
+    }
 
     size_t ntuples;
     size_t total_tuples;
@@ -138,7 +174,7 @@ pgr_get_vehicles(
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
-            pgr_fetch_column_info(info, 14);
+            pgr_fetch_column_info(info, 16);
         }
         ntuples = SPI_processed;
         total_tuples += ntuples;
@@ -163,7 +199,7 @@ pgr_get_vehicles(
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_vehicles(&tuple, &tupdesc, info,
-                        &(*vehicles)[total_tuples - ntuples + t]);
+                        &(*vehicles)[total_tuples - ntuples + t], with_id);
             }
             SPI_freetuptable(tuptable);
         } else {
@@ -180,5 +216,28 @@ pgr_get_vehicles(
     }
 
     (*total_vehicles) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_vehicles));
+    if (with_id) {
+        PGR_DBG("Finish reading %ld vehicles for matrix", (*total_vehicles));
+    } else {
+        PGR_DBG("Finish reading %ld vehicles for eucledian", (*total_vehicles));
+    }
+    time_msg("reading edges", start_t, clock());
+
 }
+
+void
+pgr_get_vehicles(
+        char *vehicles_sql,
+        Vehicle_t **vehicles,
+        size_t *total_vehicles) {
+    pgr_get_vehicles_general( vehicles_sql, vehicles, total_vehicles, false);
+}
+
+void
+pgr_get_vehicles_with_id(
+        char *vehicles_sql,
+        Vehicle_t **vehicles,
+        size_t *total_vehicles) {
+    pgr_get_vehicles_general(vehicles_sql, vehicles, total_vehicles, true);
+}
+

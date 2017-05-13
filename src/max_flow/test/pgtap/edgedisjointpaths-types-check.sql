@@ -136,19 +136,19 @@ SELECT set_eq('edp_v_m2m', 'edp_q_m2m','many to many: Expected returning, column
 -- testing column names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
-    $$SELECT  '{"edges_sql","start_vid","end_vid","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"","","","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
-    $$SELECT  '{"edges_sql","start_vid","end_vids","directed","seq","path_id","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"","","","directed","seq","path_id","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
-    $$SELECT  '{"edges_sql","start_vids","end_vid","directed","seq","path_id","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"","","","directed","seq","path_id","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
-    $$SELECT  '{"edges_sql","start_vids","end_vids","directed","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"","","","directed","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 
 SELECT * FROM finish();

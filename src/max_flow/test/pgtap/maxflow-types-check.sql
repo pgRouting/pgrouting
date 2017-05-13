@@ -17,19 +17,19 @@ SELECT function_returns('pgr_maxflow', ARRAY[ 'text', 'anyarray', 'anyarray' ], 
 -- testing column names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  '{"edges_sql","source","target"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","source_vertices","sink_vertices"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  '{"edges_sql","source","targets"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","source_vertices","sink_vertices"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  '{"edges_sql","sources","target"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","source_vertices","sink_vertices"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  '{"edges_sql","sources","targets"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","source_vertices","sink_vertices"}'::TEXT[] $$
 );
 
 

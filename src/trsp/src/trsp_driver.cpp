@@ -34,8 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 int trsp_node_wrapper(
     edge_t *edges,         size_t edge_count,
     restrict_t *restricts, size_t restrict_count,
-    int start_vertex,
-    int end_vertex,
+    int64_t start_vertex,
+    int64_t end_vertex,
     bool directed,
     bool has_reverse_cost,
     path_element_t **path, size_t *path_count,
@@ -84,9 +84,9 @@ int trsp_node_wrapper(
 int trsp_edge_wrapper(
     edge_t *edges,          size_t edge_count,
     restrict_t *restricts,  size_t restrict_count,
-    int start_edge,
+    int64_t start_edge,
     double start_pos,
-    int end_edge,
+    int64_t end_edge,
     double end_pos,
     bool directed,
     bool has_reverse_cost,
