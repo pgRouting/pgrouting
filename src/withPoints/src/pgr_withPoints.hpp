@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 #include <vector>
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/basePath_SSEC.hpp"
+#include "c_types/point_on_edge_t.h"
+#include "cpp_common/basePath_SSEC.hpp"
 
 int
 check_points(

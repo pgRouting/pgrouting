@@ -9,7 +9,7 @@
  * the terms of the MIT License. Please file MIT-LICENSE for details.
  *
  *****************************************************************PGR-MIT*/
-#include "./pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
 #include <stdio.h>
 #include <stdlib.h>

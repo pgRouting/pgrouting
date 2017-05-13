@@ -22,17 +22,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./postgres_connection.h"
+#include "c_common/arrays_input.h"
 
 #include "utils/lsyscache.h"
 #include "catalog/pg_type.h"
-#include "utils/array.h"
 
 
-#include "./pgr_types.h"
-#include "./time_msg.h"
-#include "./debug_macro.h"
-#include "./arrays_input.h"
+#include "c_common/time_msg.h"
+#include "c_common/debug_macro.h"
 #include <assert.h>
 
 static

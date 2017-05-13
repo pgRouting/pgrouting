@@ -237,4 +237,3 @@ ALTER TABLE edge_table RENAME coming TO reverse_cost;
 END;
 $BODY$
 LANGUAGE plpgsql;
-

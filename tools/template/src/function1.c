@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *  - should allways be first in the C code
  */
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 
 /**
  *  funcapi.h
@@ -66,12 +66,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include "fmgr.h"
 
-#include "./../../common/src/debug_macro.h" // for macro PGR_DBG
-#include "./../../common/src/e_report.h"  // for pgr_global_report
-#include "./../../common/src/time_msg.h"  // for time_msg & clock
-#include "./../../common/src/pgr_types.h"  // for the current accepted types
-#include "./../../common/src/edges_input.h" // for functions to get edges informtion
+#include "c_common/debug_macro.h" // for macro PGR_DBG
+#include "c_common/e_report.h"  // for pgr_global_report
+#include "c_common/time_msg.h"  // for time_msg & clock
+#include "c_common/edges_input.h" // for functions to get edges informtion
 
+// TODO move to include/drivers directory
 #include "./MY_FUNCTION_NAME_driver.h"  // the C++ code of the function
 
 PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);

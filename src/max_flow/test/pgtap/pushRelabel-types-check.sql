@@ -17,19 +17,19 @@ SELECT function_returns('pgr_pushrelabel', ARRAY[ 'text', 'anyarray', 'anyarray'
 -- testing column names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_pushrelabel'$$,
-    $$SELECT  '{"edges_sql","source","target","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
+    $$SELECT  '{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_pushrelabel'$$,
-    $$SELECT  '{"edges_sql","source","targets","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
+    $$SELECT  '{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_pushrelabel'$$,
-    $$SELECT  '{"edges_sql","sources","target","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
+    $$SELECT  '{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_pushrelabel'$$,
-    $$SELECT  '{"edges_sql","sources","targets","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
+    $$SELECT  '{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
 );
 
 

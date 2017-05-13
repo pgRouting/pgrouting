@@ -1,25 +1,39 @@
 
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS vehicles CASCADE;
+DROP TABLE IF EXISTS dist_matrix CASCADE;
 
 CREATE TABLE orders (
       id BIGINT PRIMARY KEY, 
       demand FLOAT, 
-      pick_x FLOAT, 
-      pick_y FLOAT, 
-      pick_open FLOAT, 
-      pick_close FLOAT, 
-      pick_service FLOAT, 
-      deliver_x FLOAT, 
-      deliver_y FLOAT, 
-      deliver_open FLOAT, 
-      deliver_close FLOAT, 
-      deliver_service FLOAT
+      p_node_id BIGINT,
+      p_x FLOAT, 
+      p_y FLOAT, 
+      p_open FLOAT, 
+      p_close FLOAT, 
+      p_service FLOAT, 
+      d_node_id BIGINT,
+      d_x FLOAT, 
+      d_y FLOAT, 
+      d_open FLOAT, 
+      d_close FLOAT, 
+      d_service FLOAT
+);
+
+CREATE TABLE vehicles (
+  id BIGSERIAL PRIMARY KEY, 
+  start_node_id BIGINT,
+  start_x FLOAT, 
+  start_y FLOAT, 
+  start_open FLOAT, 
+  start_close FLOAT, 
+  "number" integer, 
+  capacity FLOAT
 );
 
 INSERT INTO orders (id,  demand, 
-pick_x,  pick_y ,  pick_open,  pick_close,  pick_service, 
-deliver_x,  deliver_y ,  deliver_open,  deliver_close,  deliver_service)
+p_x,  p_y ,  p_open,  p_close,  p_service, 
+d_x,  d_y ,  d_open,  d_close,  d_service)
 VALUES
 (3,  10, 42, 66,   65,  146, 90, 45, 65, 997, 1068, 90), 
 (5,  10, 42, 65,   15,   67, 90, 40, 66, 170,  225, 90), 
@@ -75,17 +89,35 @@ VALUES
 (98, 20, 58, 75,   30,   84, 90, 62, 80, 196,  239, 90), 
 (100,20, 55, 85,  647,  726, 90, 55, 80, 743,  820, 90);
 
-
-CREATE TABLE vehicles (
-  id BIGSERIAL PRIMARY KEY, 
-  start_x FLOAT, 
-  start_y FLOAT, 
-  start_open FLOAT, 
-  start_close FLOAT, 
-  "number" integer, 
-  capacity FLOAT
-);
-
 INSERT INTO vehicles (start_x,  start_y,  start_open,  start_close,  "number",  capacity)
 VALUES (40,  50,  0,  1236,  25,  200);
 
+WITH points AS (
+    SELECT DISTINCT p_x AS x, p_y AS y FROM orders
+    UNION
+    SELECT DISTINCT d_x, d_y FROM orders),
+t_points AS (SELECT row_number() over() AS id, x, y FROM points),
+first  AS (SELECT orders.id AS id , t_points.id AS p_node_id from orders JOIN t_points ON (x = p_x AND y = p_y)),
+second AS (SELECT orders.id AS id , t_points.id AS d_node_id from orders JOIN t_points ON (x = d_x AND y = d_y)),
+third  AS (SELECT id, p_node_id, d_node_id from first JOIN second USING (id))
+UPDATE orders SET p_node_id = third.p_node_id, d_node_id = third.d_node_id 
+FROM third WHERE third.id = orders.id;
+
+WITH 
+the_ids AS (SELECT p_node_id AS id FROM orders UNION SELECT d_node_id FROM orders),
+the_max AS (SELECT max(id) FROM the_ids)
+UPDATE vehicles SET start_node_id = max FROM the_max;
+
+/*
+WITH
+A AS (
+    SELECT p_node_id AS id, p_x AS x, p_y AS y FROM orders
+    UNION
+    SELECT d_node_id, d_x, d_y FROM orders
+    UNION
+    SELECT start_node_id, start_x, start_y FROM vehicles
+)
+SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
+INTO dist_matrix
+FROM A, A AS B WHERE A.id != B.id;
+*/

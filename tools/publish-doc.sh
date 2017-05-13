@@ -5,6 +5,7 @@
 #
 # Publish Documentation
 # ------------------------------------------------------------------------------
+
 if test a$1 = a ; then
     echo "Usage: publish-doc.sh dir"
     echo "       where dir might be dev or v2.0"

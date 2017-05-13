@@ -1,5 +1,4 @@
 
-        -- x1, y1, x2, y2
 \echo -- q1
 SELECT * FROM pgr_bdAstarCost(
     'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2

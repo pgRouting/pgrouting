@@ -23,21 +23,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./tw_node.h"
+#include "pickDeliver/tw_node.h"
 
 #include <limits>
 #include <string>
 
-#include "./../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 
 double
-Tw_node::travel_time_to(const Node &other, double speed) const {
+Tw_node::travel_time_to(const Dnode &other, double speed) const {
     pgassert(speed != 0);
+     /*! @todo TODO evaluate with matrix also*/
     return distance(other) / speed;
 }
 
@@ -78,30 +80,32 @@ bool
 Tw_node::is_partially_compatible_IJ(const Tw_node &I, double speed) const {
     return
         is_compatible_IJ(I, speed)
-         && !is_early_arrival(arrival_j_opens_i(I, speed))
-         && is_late_arrival(arrival_j_closes_i(I, speed));
+        && !is_early_arrival(arrival_j_opens_i(I, speed))
+        && is_late_arrival(arrival_j_closes_i(I, speed));
 }
 
 bool
 Tw_node::is_tight_compatible_IJ(const Tw_node &I, double speed) const {
     return
         is_compatible_IJ(I, speed)
-         && !is_early_arrival(arrival_j_opens_i(I, speed))
-         && !is_late_arrival(arrival_j_closes_i(I, speed));
+        && !is_early_arrival(arrival_j_opens_i(I, speed))
+        && !is_late_arrival(arrival_j_closes_i(I, speed));
 }
 
 bool
-Tw_node::is_partially_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
+Tw_node::is_partially_waitTime_compatible_IJ(
+        const Tw_node &I,
+        double speed) const {
     return
         is_compatible_IJ(I, speed)
-         && is_early_arrival(arrival_j_opens_i(I, speed));
+        && is_early_arrival(arrival_j_opens_i(I, speed));
 }
 
 bool
 Tw_node::is_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
     return
         is_compatible_IJ(I, speed)
-         && is_early_arrival(arrival_j_opens_i(I, speed));
+        && is_early_arrival(arrival_j_opens_i(I, speed));
 }
 
 
@@ -121,66 +125,66 @@ bool
 Tw_node::is_start() const {
     return
         m_type == kStart
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() == 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() == 0);
 }
 
 bool
 Tw_node::is_pickup() const {
     return m_type == kPickup
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() > 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() > 0);
 }
 
 
 bool
 Tw_node::is_delivery() const {
     return m_type == kDelivery
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() < 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() < 0);
 }
 
 
 bool
 Tw_node::is_dump() const {
     return m_type == kDump
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() <= 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() <= 0);
 }
 
 
 bool
 Tw_node::is_load() const {
     return m_type == kLoad
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() >= 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() >= 0);
 }
 
 
 bool
 Tw_node::is_end() const {
     return m_type == kEnd
-         && (0 <= opens())
-         && (opens() < closes())
-         && (service_time() >= 0)
-         && (demand() == 0);
+        && (0 <= opens())
+        && (opens() < closes())
+        && (service_time() >= 0)
+        && (demand() == 0);
 }
 
 
 bool
 Tw_node::operator ==(const Tw_node &rhs) const {
     if (&rhs == this) return true;
-    return (static_cast<Node>(*this) == static_cast<Node>(rhs));
+    return (dynamic_cast<const Dnode*>(this) == dynamic_cast<const Dnode*>(&rhs));
 }
 
 
@@ -219,19 +223,29 @@ bool Tw_node::is_valid() const {
     return false;
 }
 
-
+/*!
+ *
+ * - Insert the node as if it was a pickup
+ * - if the node was a kDelivery modify the information
+ *
+ * @param[in] id   index of the m_nodes container of the problem
+ * @param[in] data The original information
+ * @param[in] type the kind of node it is
+ */
 Tw_node::Tw_node(
-        size_t id,
-        PickDeliveryOrders_t data,
+        size_t idx,
+        const PickDeliveryOrders_t data,
         NodeType type) :
-    Node(id, data.id, data.pick_x, data.pick_y),
+    Dnode(idx, data.pick_node_id, data.pick_x, data.pick_y),
     m_opens(data.pick_open_t),
     m_closes(data.pick_close_t),
     m_service_time(data.pick_service_t),
     m_demand(data.demand),
     m_type(type)  {
         if (m_type == kDelivery) {
-            m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
+            //TODO this is used when its the Node
+            //m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
+            reset_id(data.deliver_node_id);
             m_opens = data.deliver_open_t;
             m_closes = data.deliver_close_t;
             m_service_time = data.deliver_service_t;
@@ -240,17 +254,18 @@ Tw_node::Tw_node(
     }
 
 Tw_node::Tw_node(
-        size_t id,
+        size_t idx,
         Vehicle_t data,
         NodeType type) :
-    Node(id, data.id, data.start_x, data.start_y),
+    Dnode(idx, data.start_node_id, data.start_x, data.start_y),
     m_opens(data.start_open_t),
     m_closes(data.start_close_t),
     m_service_time(data.start_service_t),
     m_demand(0),
     m_type(type) {
         if (m_type == kEnd) {
-            m_point = pgrouting::Point(data.end_x, data.end_y);
+            //m_point = pgrouting::Point(data.end_x, data.end_y);
+            reset_id(data.end_node_id);
             m_opens = data.end_open_t;
             m_closes = data.end_close_t;
             m_service_time = data.end_service_t;
@@ -259,22 +274,25 @@ Tw_node::Tw_node(
 
 
 /*! * \brief Print the contents of a Twnode object. */
-std::ostream& operator << (std::ostream &log, const Tw_node &n) {
-    log << static_cast<const Node&>(n)
+std::ostream& operator<<(std::ostream &log, const Tw_node &n) {
+    log << static_cast<const Dnode&>(n)
         << "[opens = " << n.m_opens
         << "\tcloses = " << n.m_closes
         << "\tservice = " << n.m_service_time
         << "\tdemand = " << n.m_demand
         << "\ttype = " << n.type_str()
         << "]";
+#if 0
     if (n.is_pickup() ||  n.is_delivery()) {
         log << "->" << n.m_otherid << "\n";
     } else {
         log << "\n";
     }
+#endif
     return log;
 }
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

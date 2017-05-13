@@ -148,7 +148,7 @@ Once you have all the preparation work done above, computing a route is fairly e
 We have a lot of different algorithms that can work with your prepared road
 network. The general form of a route query is:
 
-.. code-block:: sql
+.. code-block:: none
 
     select pgr_dijkstra(`SELECT * FROM myroads', 1, 2)
 
@@ -230,6 +230,28 @@ Where:
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 .. no_id_edges_sql_end
+
+
+
+.. pgr_dijkstra_via_parameters_start
+
+Description of the parameters of the signatures
+...............................................................................
+
+=================== ====================== ========= =========================================
+Parameter           Type                   Default   Description
+=================== ====================== ========= =========================================
+**edges_sql**       ``TEXT``                         SQL query as described above.
+**via_vertices**    ``ARRAY[ANY-INTEGER]``           Array of ordered vertices identifiers that are going to be visited.
+**directed**        ``BOOLEAN``            ``true``  - When ``true`` Graph is considered `Directed`
+                                                     - When ``false`` the graph is considered as Undirected.
+**strict**          ``BOOLEAN``            ``false`` - When ``false`` ignores missing paths returning all paths found
+                                                     - When ``true`` if a path is missing stops and returns `EMPTY SET`
+**U_turn_on_edge**  ``BOOLEAN``            ``true``  - When ``true`` departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is allowed.
+                                                     - When ``false`` when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is used when no other path is found.
+=================== ====================== ========= =========================================
+
+.. pgr_dijkstra_via_parameters_end
 
 
 .. xy_edges_sql_start
@@ -331,6 +353,21 @@ Where:
 
 .. points_sql_end
 
+
+.. pd_euclidean_sql_start
+
+.. note TODO 
+
+.. pd_euclidean_sql_end
+
+.. pd_vehicle_sql_start
+
+.. note TODO 
+
+.. pd_vehicle_sql_end
+
+
+
 .. _return_values:
 
 Return columns & values
@@ -397,6 +434,12 @@ Column                 Type                  Description
 =====================  ====================  =================================================
 
 .. result_flow_end
+
+.. return_vrp_start
+
+.. note:: TODO 
+
+.. return_vrp_end
 
 
 .. _advanced_topics:

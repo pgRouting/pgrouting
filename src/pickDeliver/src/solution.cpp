@@ -23,13 +23,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./solution.h"
-#include <vector>
+#include "pickDeliver/solution.h"
 
-#include "./pgr_pickDeliver.h"
+#include <vector>
+#include <string>
+#include <algorithm>
+
+#include "pickDeliver/pgr_pickDeliver.h"
+#include "c_types/pickDeliver/general_vehicle_orders_t.h"
 
 namespace pgrouting {
 namespace vrp {
+namespace pickdeliver {
 
 std::vector<General_vehicle_orders_t>
 Solution::get_postgres_result() const {
@@ -163,7 +168,7 @@ Solution::sort_by_id() {
     std::sort(fleet.begin(), fleet.end(), []
             (const Vehicle_pickDeliver &lhs, const Vehicle_pickDeliver &rhs)
             -> bool {
-            return lhs.id() < rhs.id();
+            return lhs.idx() < rhs.idx();
             });
 }
 
@@ -232,5 +237,6 @@ Solution::Solution() :
     trucks(problem->trucks())
 {}
 
+}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting

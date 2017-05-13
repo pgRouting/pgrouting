@@ -27,14 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/edges_input.h"
+#include "c_common/debug_macro.h"
+#include "c_common/time_msg.h"
+#include "c_common/edges_input.h"
 
-#include "./johnson_driver.h"
+#include "drivers/allpairs/johnson_driver.h"
 
 PGDLLEXPORT Datum johnson(PG_FUNCTION_ARGS);
 
