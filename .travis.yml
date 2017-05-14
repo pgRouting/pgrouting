@@ -17,6 +17,7 @@ language: cpp
 compiler:
     - gcc
 
+env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
 
 matrix:
   include:
