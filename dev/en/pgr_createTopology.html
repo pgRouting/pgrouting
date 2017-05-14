@@ -458,14 +458,14 @@ SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=
  OK
 (1 row)
 
-SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, 
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;,
     rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;);
  pgr_createtopology 
 --------------------
  OK
 (1 row)
 
-SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;, 
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;,
     rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;);
  pgr_createtopology 
 --------------------
@@ -474,14 +474,14 @@ SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=
 </pre></div>
 </div>
 <p>Selecting the rows where the geometry is near the geometry of the row with <tt class="docutils literal"><span class="pre">gid</span></tt> =100 of the table <tt class="docutils literal"><span class="pre">othertable</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, 
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;,
     rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;);
  pgr_createtopology 
 --------------------
  OK
 (1 row)
 
-SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;, 
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;,
     rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;);
  pgr_createtopology 
 --------------------
@@ -552,7 +552,7 @@ NOTICE:  ----------------------------------------------
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Mar 21, 2017.<br/>
+      Last updated on May 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

@@ -174,19 +174,38 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Returns a table with:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">version:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> pgRouting version</td>
+<tr class="row-even"><td><strong>version</strong></td>
+<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td>pgRouting version</td>
 </tr>
-<tr class="field-even field"><th class="field-name">tag:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git tag of pgRouting build</td>
+<tr class="row-odd"><td><strong>tag</strong></td>
+<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td>Git tag of pgRouting build</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">hash:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git hash of pgRouting build</td>
+<tr class="row-even"><td><strong>hash</strong></td>
+<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td>Git hash of pgRouting build</td>
 </tr>
-<tr class="field-even field"><th class="field-name">branch:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git branch of pgRouting build</td>
+<tr class="row-odd"><td><strong>branch</strong></td>
+<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td>Git branch of pgRouting build</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">boost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Boost version</td>
+<tr class="row-even"><td><strong>boost</strong></td>
+<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td>Boost version</td>
 </tr>
 </tbody>
 </table>
@@ -200,12 +219,11 @@
 <ul class="simple">
 <li>Query for full version string</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_version</span><span class="p">();</span>
-
-                  <span class="n">pgr_version</span>
-<span class="c1">-----------------------------------------------</span>
- <span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="n">pgrouting</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="n">fd33c5</span><span class="p">,</span><span class="n">master</span><span class="p">,</span><span class="mi">1</span><span class="p">.</span><span class="mi">54</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT version FROM pgr_version();
+ version 
+---------
+ 2.5.0
+(1 row)
 </pre></div>
 </div>
 <ul class="simple">
@@ -235,7 +253,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Mar 21, 2017.<br/>
+      Last updated on May 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
