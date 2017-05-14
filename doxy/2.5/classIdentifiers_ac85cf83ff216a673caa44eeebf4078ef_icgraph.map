@@ -1,0 +1,8 @@
+<map id="Identifiers::front" name="Identifiers::front">
+<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a8e40b3cf3839a6a3ef50cc2f7288ea99" title="add edges(shortuct) to the graph during contraction " alt="" coords="172,5,343,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#aef91793bf9d9b4e12b2b648268f64545" title="pgrouting::contraction\l::Pgr_linear::doContraction" alt="" coords="169,70,346,111"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#adba42b168e6b63a40466ed043f40cf21" title="pgrouting::vrp::PD\l_Orders::find_best_I" alt="" coords="187,135,327,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#ae625fa7656f8284dfca19f9a0f04dae0" title="pgrouting::vrp::PD\l_Orders::find_best_J" alt="" coords="186,201,329,242"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="188,266,327,307"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Optimize.html#a39173d526079577d40c59371bcfcc680" title="pgrouting::vrp::Optimize\l::swap_worse" alt="" coords="177,331,338,373"/>
+</map>

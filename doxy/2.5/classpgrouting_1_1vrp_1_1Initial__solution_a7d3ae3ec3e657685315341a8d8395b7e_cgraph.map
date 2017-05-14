@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Initial_solution::one_truck_all_orders" name="pgrouting::vrp::Initial_solution::one_truck_all_orders">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="220,5,359,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="213,70,365,111"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889" title="pgrouting::vrp::Initial\l_solution::invariant" alt="" coords="219,135,359,177"/>
+</map>

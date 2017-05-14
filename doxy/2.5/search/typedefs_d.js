@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['path_5felement_5ft',['path_element_t',['../trsp_8h.html#a0d9814712039cb4b46fb2ab88751878e',1,'trsp.h']]],
+  ['path_5felement_5ftt',['path_element_tt',['../trsp_8h.html#adfa1ab41027fc911470a0328c9c9772a',1,'trsp.h']]],
   ['pdp',['PDP',['../GraphDefinition_8h.html#a201f29a23ae268300cc7bf8219d62813',1,'GraphDefinition.h']]],
-  ['pdvi',['PDVI',['../GraphDefinition_8h.html#a2b47d44b968d09a78256a0b251e805d5',1,'GraphDefinition.h']]],
-  ['pib',['PIB',['../GraphDefinition_8h.html#ade490f5fc3d1825686a11a795c5397fe',1,'GraphDefinition.h']]],
+  ['pdvi',['PDVI',['../GraphDefinition_8h.html#aa4d1f45e5aed3e185fe0e647d416b584',1,'GraphDefinition.h']]],
+  ['pib',['PIB',['../GraphDefinition_8h.html#a52a148325e3d4db94fe2f01755168ec5',1,'GraphDefinition.h']]],
   ['pii',['PII',['../VRP__Solver_8h.html#a66f07903c2de34f8864e17dd89eea319',1,'VRP_Solver.h']]],
   ['point',['Point',['../alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9',1,'Point():&#160;alpha_driver.cpp'],['../namespacepgrouting.html#aead1fc5bb8b586fc6ee92075b56f7559',1,'pgrouting::Point()']]],
   ['polygon_5f2',['Polygon_2',['../alpha__driver_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86',1,'alpha_driver.cpp']]],

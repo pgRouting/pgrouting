@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -120,11 +120,13 @@ $(document).ready(function(){initNavTree('classPgr__dijkstra_1_1dijkstra__one__g
 <div class="dynheader">
 Inheritance diagram for Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classPgr__dijkstra_1_1dijkstra__one__goal__visitor.png" usemap="#Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor_map" alt=""/>
-  <map id="Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor_map" name="Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor_map">
-</map>
- </div></div>
+<div class="center"><img src="classPgr__dijkstra_1_1dijkstra__one__goal__visitor__inherit__graph.png" border="0" usemap="#Pgr__dijkstra_3_01G_01_4_1_1dijkstra__one__goal__visitor_inherit__map" alt="Inheritance graph"/></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPgr__dijkstra_1_1dijkstra__one__goal__visitor__coll__graph.png" border="0" usemap="#Pgr__dijkstra_3_01G_01_4_1_1dijkstra__one__goal__visitor_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -172,7 +174,9 @@ template&lt;class G&gt; </div>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00259">259</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;: <a class="code" href="classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html#a1711de04ab5b93e9d6e064383fd00d5f">m_goal</a>(goal) {}</div>
+<div class="ttc" id="classPgr__dijkstra_1_1dijkstra__one__goal__visitor_html_a1711de04ab5b93e9d6e064383fd00d5f"><div class="ttname"><a href="classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html#a1711de04ab5b93e9d6e064383fd00d5f">Pgr_dijkstra::dijkstra_one_goal_visitor::m_goal</a></div><div class="ttdeci">V m_goal</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00270">pgr_dijkstra.hpp:270</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -215,7 +219,18 @@ template&lt;class B_G &gt; </div>
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00261">261</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00270">Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor::m_goal</a>, <a class="el" href="signalhandler_8h_source.html#l00142">REG_SIGINT</a>, and <a class="el" href="signalhandler_8h_source.html#l00148">THROW_ON_SIGINT</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                                {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor"></span>                  <a class="code" href="signalhandler_8h.html#a1592d0e20d4fd61c988c4804318bc2ae">REG_SIGINT</a>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                  <a class="code" href="signalhandler_8h.html#aeb783180527e13209102d4afd57110c5">THROW_ON_SIGINT</a>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor"></span>                  <span class="keywordflow">if</span> (u == <a class="code" href="classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html#a1711de04ab5b93e9d6e064383fd00d5f">m_goal</a>) <span class="keywordflow">throw</span> found_goals();</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                  num_edges(g);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;              }</div>
+<div class="ttc" id="signalhandler_8h_html_a1592d0e20d4fd61c988c4804318bc2ae"><div class="ttname"><a href="signalhandler_8h.html#a1592d0e20d4fd61c988c4804318bc2ae">REG_SIGINT</a></div><div class="ttdeci">#define REG_SIGINT</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00142">signalhandler.h:142</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_1_1dijkstra__one__goal__visitor_html_a1711de04ab5b93e9d6e064383fd00d5f"><div class="ttname"><a href="classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html#a1711de04ab5b93e9d6e064383fd00d5f">Pgr_dijkstra::dijkstra_one_goal_visitor::m_goal</a></div><div class="ttdeci">V m_goal</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00270">pgr_dijkstra.hpp:270</a></div></div>
+<div class="ttc" id="signalhandler_8h_html_aeb783180527e13209102d4afd57110c5"><div class="ttname"><a href="signalhandler_8h.html#aeb783180527e13209102d4afd57110c5">THROW_ON_SIGINT</a></div><div class="ttdeci">#define THROW_ON_SIGINT</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00148">signalhandler.h:148</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -246,7 +261,7 @@ template&lt;class G&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a></li>
+<li>/home/vicky/pgrouting/pgrouting/pgrouting/include/dijkstra/<a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -254,7 +269,7 @@ template&lt;class G&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPgr__dijkstra.html">Pgr_dijkstra</a></li><li class="navelem"><a class="el" href="classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html">dijkstra_one_goal_visitor</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:27 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:13 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

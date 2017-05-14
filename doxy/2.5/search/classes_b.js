@@ -25,12 +25,11 @@ var searchData=
   ['pgr_5fflow_5ft',['pgr_flow_t',['../structpgr__flow__t.html',1,'']]],
   ['pgr_5fksp',['Pgr_ksp',['../classPgr__ksp.html',1,'']]],
   ['pgr_5flinear',['Pgr_linear',['../classpgrouting_1_1contraction_1_1Pgr__linear.html',1,'pgrouting::contraction']]],
-  ['pgr_5fmessages',['Pgr_messages',['../classpgrouting_1_1vrp_1_1Pgr__messages.html',1,'pgrouting::vrp']]],
+  ['pgr_5fmessages',['Pgr_messages',['../classpgrouting_1_1Pgr__messages.html',1,'pgrouting']]],
   ['pgr_5fpath_5ft',['pgr_path_t',['../structpgr__path__t.html',1,'']]],
   ['pgr_5fpickdeliver',['Pgr_pickDeliver',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html',1,'pgrouting::vrp']]],
   ['pgrcardinalitygraph',['PgrCardinalityGraph',['../classpgrouting_1_1flow_1_1PgrCardinalityGraph.html',1,'pgrouting::flow']]],
   ['pgrflowgraph',['PgrFlowGraph',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html',1,'pgrouting::graph']]],
-  ['pickdeliveryorders_5ft',['PickDeliveryOrders_t',['../structPickDeliveryOrders__t.html',1,'']]],
   ['point',['Point',['../structPoint.html',1,'']]],
   ['point_5fon_5fedge_5ft',['Point_on_edge_t',['../structPoint__on__edge__t.html',1,'']]],
   ['pointcompare',['pointCompare',['../structpointCompare.html',1,'']]]

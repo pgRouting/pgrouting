@@ -1,0 +1,12 @@
+<map id="pgrouting::Identifier::id" name="pgrouting::Identifier::id">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a735015a1c30c5a1680d2ab303f1aa4c9" title="pgrouting::vrp::Vehicle\l::get_postgres_result" alt="" coords="216,5,368,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a6b87e5fcd837821ae04884a9d767efb7" title="pgrouting::vrp::Vehicle\l::is_phony" alt="" coords="216,70,368,111"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html#a32c30c8072e1a592dd4c1e028d18f04b" title="@ { " alt="" coords="207,135,377,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Optimize.html#a18e362ade6f898d3b1cbba0505e5abcf" title="pgrouting::vrp::Optimize\l::move_reduce_cost" alt="" coords="211,201,373,242"/>
+<area shape="rect" id="node6" href="$namespacepgrouting.html#a1c8b6dbb6aca870e491d897cf57d89c6" title="pgrouting::operator\&lt;\&lt;" alt="" coords="219,267,365,293"/>
+<area shape="rect" id="node7" href="$namespacepgrouting_1_1vrp.html#ad52d4d4bcd5667c19bd9c78f72dde8c7" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="206,317,378,344"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Node.html#a088359997724af805602e719ebb90e2b" title="pgrouting::vrp::pickdeliver\l::Node::operator==" alt="" coords="207,369,377,410"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html#adef6bdad3f3f91d27f6f9cd0e2a3d927" title="pgrouting::vrp::pickdeliver\l::Base_node::operator==" alt="" coords="207,434,377,475"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Node.html#af9021338babcd58c7dcdab97ac7d2d2d" title="pgrouting::vrp::pickdeliver\l::Node::print" alt="" coords="207,499,377,541"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html#aed42f2f8a3a9b9296c483d4ebbb7954a" title="pgrouting::vrp::pickdeliver\l::Base_node::print" alt="" coords="207,565,377,606"/>
+</map>

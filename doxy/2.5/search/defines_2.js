@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['inf',['INF',['../VRP__Solver_8h.html#a12c2040f25d8e3a7b9e1c2024c618cb6',1,'VRP_Solver.h']]],
-  ['int8arrayoid',['INT8ARRAYOID',['../contractGraph_8c.html#acaf704d7b041882edfbce47b53c1090f',1,'contractGraph.c']]]
+  ['entering',['ENTERING',['../pgr__messages_8h.html#a08a51dadded6f22312848c4eec4484c4',1,'pgr_messages.h']]],
+  ['exiting',['EXITING',['../pgr__messages_8h.html#a65dad9e98c3e268141dc89f9da5aeec8',1,'pgr_messages.h']]]
 ];

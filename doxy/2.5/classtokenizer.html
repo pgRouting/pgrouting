@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -116,6 +116,13 @@ $(document).ready(function(){initNavTree('classtokenizer.html','');});
 <div class="contents">
 
 <p><code>#include &quot;<a class="el" href="Utils_8h_source.html">Utils.h</a>&quot;</code></p>
+<div class="dynheader">
+Collaboration diagram for tokenizer:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtokenizer__coll__graph.png" border="0" usemap="#tokenizer_coll__map" alt="Collaboration graph"/></div>
+<map name="tokenizer_coll__map" id="tokenizer_coll__map">
+<area shape="rect" id="node2" title="STL class. " alt="" coords="4,5,83,32"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -174,7 +181,13 @@ Private Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="Utils_8h_source.html#l00042">42</a> of file <a class="el" href="Utils_8h_source.html">Utils.h</a>.</p>
 
 <p>References <a class="el" href="Utils_8h_source.html#l00038">delim</a>, <a class="el" href="Utils_8h_source.html#l00039">pos</a>, and <a class="el" href="Utils_8h_source.html#l00038">s</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                              : <a class="code" href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">s</a>(xs), <a class="code" href="classtokenizer.html#ac72caaa0185fd6b418dfc2efd8d9f489">delim</a>(xdelim) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">pos</a> = <a class="code" href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">s</a>.find_first_not_of(<a class="code" href="classtokenizer.html#ac72caaa0185fd6b418dfc2efd8d9f489">delim</a>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="ttc" id="classtokenizer_html_a222e64f5649224bf295364c6954b76e3"><div class="ttname"><a href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">tokenizer::s</a></div><div class="ttdeci">std::string s</div><div class="ttdef"><b>Definition:</b> <a href="Utils_8h_source.html#l00038">Utils.h:38</a></div></div>
+<div class="ttc" id="classtokenizer_html_ac72caaa0185fd6b418dfc2efd8d9f489"><div class="ttname"><a href="classtokenizer.html#ac72caaa0185fd6b418dfc2efd8d9f489">tokenizer::delim</a></div><div class="ttdeci">std::string delim</div><div class="ttdef"><b>Definition:</b> <a href="Utils_8h_source.html#l00038">Utils.h:38</a></div></div>
+<div class="ttc" id="classtokenizer_html_a7849e50b15b670b4596e01b1eff4894d"><div class="ttname"><a href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">tokenizer::pos</a></div><div class="ttdeci">std::string::size_type pos</div><div class="ttdef"><b>Definition:</b> <a href="Utils_8h_source.html#l00039">Utils.h:39</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -204,6 +217,19 @@ Private Attributes</h2></td></tr>
 <p>References <a class="el" href="Utils_8h_source.html#l00039">pos</a>.</p>
 
 <p>Referenced by <a class="el" href="Utils_8h_source.html#l00081">StringTokenizer::parse()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                           {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">pos</a> != std::string::npos;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="ttc" id="classtokenizer_html_a7849e50b15b670b4596e01b1eff4894d"><div class="ttname"><a href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">tokenizer::pos</a></div><div class="ttdeci">std::string::size_type pos</div><div class="ttdef"><b>Definition:</b> <a href="Utils_8h_source.html#l00039">Utils.h:39</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtokenizer_a7e00728809c2ac8b0c4c022600097cb7_icgraph.png" border="0" usemap="#classtokenizer_a7e00728809c2ac8b0c4c022600097cb7_icgraph" alt=""/></div>
+<map name="classtokenizer_a7e00728809c2ac8b0c4c022600097cb7_icgraph" id="classtokenizer_a7e00728809c2ac8b0c4c022600097cb7_icgraph">
+<area shape="rect" id="node2" href="classStringTokenizer.html#ac95470d4a7fbb7a5af9640d427c9f0d4" title="StringTokenizer::parse" alt="" coords="195,12,349,39"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -233,6 +259,24 @@ Private Attributes</h2></td></tr>
 <p>References <a class="el" href="Utils_8h_source.html#l00038">delim</a>, <a class="el" href="Utils_8h_source.html#l00039">pos</a>, and <a class="el" href="Utils_8h_source.html#l00038">s</a>.</p>
 
 <p>Referenced by <a class="el" href="Utils_8h_source.html#l00081">StringTokenizer::parse()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                           {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::string::size_type end_pos = <a class="code" href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">s</a>.find_first_of(<a class="code" href="classtokenizer.html#ac72caaa0185fd6b418dfc2efd8d9f489">delim</a>, <a class="code" href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">pos</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::string token = <a class="code" href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">s</a>.substr(<a class="code" href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">pos</a>, end_pos-<a class="code" href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">pos</a>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">pos</a> = <a class="code" href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">s</a>.find_first_not_of(<a class="code" href="classtokenizer.html#ac72caaa0185fd6b418dfc2efd8d9f489">delim</a>, end_pos);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> token;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="ttc" id="classtokenizer_html_a222e64f5649224bf295364c6954b76e3"><div class="ttname"><a href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">tokenizer::s</a></div><div class="ttdeci">std::string s</div><div class="ttdef"><b>Definition:</b> <a href="Utils_8h_source.html#l00038">Utils.h:38</a></div></div>
+<div class="ttc" id="classtokenizer_html_ac72caaa0185fd6b418dfc2efd8d9f489"><div class="ttname"><a href="classtokenizer.html#ac72caaa0185fd6b418dfc2efd8d9f489">tokenizer::delim</a></div><div class="ttdeci">std::string delim</div><div class="ttdef"><b>Definition:</b> <a href="Utils_8h_source.html#l00038">Utils.h:38</a></div></div>
+<div class="ttc" id="classtokenizer_html_a7849e50b15b670b4596e01b1eff4894d"><div class="ttname"><a href="classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d">tokenizer::pos</a></div><div class="ttdeci">std::string::size_type pos</div><div class="ttdef"><b>Definition:</b> <a href="Utils_8h_source.html#l00039">Utils.h:39</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtokenizer_a1100e65df2c744c3170c540b7d051721_icgraph.png" border="0" usemap="#classtokenizer_a1100e65df2c744c3170c540b7d051721_icgraph" alt=""/></div>
+<map name="classtokenizer_a1100e65df2c744c3170c540b7d051721_icgraph" id="classtokenizer_a1100e65df2c744c3170c540b7d051721_icgraph">
+<area shape="rect" id="node2" href="classStringTokenizer.html#ac95470d4a7fbb7a5af9640d427c9f0d4" title="StringTokenizer::parse" alt="" coords="201,5,354,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -310,7 +354,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="Utils_8h_source.html">Utils.h</a></li>
+<li>/home/vicky/pgrouting/pgrouting/pgrouting/src/vrp_basic/src/<a class="el" href="Utils_8h_source.html">Utils.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -318,7 +362,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classtokenizer.html">tokenizer</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:27 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:13 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

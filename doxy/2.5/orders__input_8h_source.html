@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: orders_input.h Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/include/c_common/orders_input.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -132,33 +132,34 @@ $(document).ready(function(){initNavTree('orders__input_8h_source.html','');});
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> ********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef SRC_COMMON_SRC_ORDERS_INPUT_H_</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_COMMON_SRC_ORDERS_INPUT_H_</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef INCLUDE_C_COMMON_ORDERS_INPUT_H_</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_C_COMMON_ORDERS_INPUT_H_</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__types_8h.html">./pgr_types.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;c_types/pickDeliver/pickDeliveryOrders_t.h&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="orders__input_8h.html#a9cf4c4f1af8b879141cf50ef6f6d01c2">pgr_get_pd_orders</a>(</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">char</span> *pd_orders_sql,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">double</span> default_pick_window_t,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">double</span> default_deliver_window_t,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">double</span> default_pick_service_t,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">double</span> default_deliver_service_t,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="structPickDeliveryOrders__t.html">PickDeliveryOrders_t</a> **pd_orders,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">size_t</span> *total_pd_orders);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif  // SRC_COMMON_SRC_ORDERS_INPUT_H_</span></div>
-<div class="ttc" id="structPickDeliveryOrders__t_html"><div class="ttname"><a href="structPickDeliveryOrders__t.html">PickDeliveryOrders_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00227">pgr_types.h:227</a></div></div>
-<div class="ttc" id="orders__input_8h_html_a9cf4c4f1af8b879141cf50ef6f6d01c2"><div class="ttname"><a href="orders__input_8h.html#a9cf4c4f1af8b879141cf50ef6f6d01c2">pgr_get_pd_orders</a></div><div class="ttdeci">void pgr_get_pd_orders(char *pd_orders_sql, double default_pick_window_t, double default_deliver_window_t, double default_pick_service_t, double default_deliver_service_t, PickDeliveryOrders_t **pd_orders, size_t *total_pd_orders)</div><div class="ttdoc">Reads the pick-Deliver orders. </div><div class="ttdef"><b>Definition:</b> <a href="orders__input_8c_source.html#l00080">orders_input.c:80</a></div></div>
-<div class="ttc" id="pgr__types_8h_html"><div class="ttname"><a href="pgr__types_8h.html">pgr_types.h</a></div></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="orders__input_8h.html#a37b88b6f6ab64b2b19a87d16ec213363">pgr_get_pd_orders</a>(</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">char</span> *pd_orders_sql,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        PickDeliveryOrders_t **pd_orders,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">size_t</span> *total_pd_orders);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="orders__input_8h.html#a9ae2ecfe19bbe8ffef46b67c117ccd36">pgr_get_pd_orders_with_id</a>(</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">char</span> *pd_orders_sql,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        PickDeliveryOrders_t **pd_orders,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">size_t</span> *total_pd_orders);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif  // INCLUDE_C_COMMON_ORDERS_INPUT_H_</span></div>
+<div class="ttc" id="orders__input_8h_html_a37b88b6f6ab64b2b19a87d16ec213363"><div class="ttname"><a href="orders__input_8h.html#a37b88b6f6ab64b2b19a87d16ec213363">pgr_get_pd_orders</a></div><div class="ttdeci">void pgr_get_pd_orders(char *pd_orders_sql, PickDeliveryOrders_t **pd_orders, size_t *total_pd_orders)</div><div class="ttdoc">Reads the pick-Deliver orders. </div><div class="ttdef"><b>Definition:</b> <a href="orders__input_8c_source.html#l00206">orders_input.c:206</a></div></div>
+<div class="ttc" id="orders__input_8h_html_a9ae2ecfe19bbe8ffef46b67c117ccd36"><div class="ttname"><a href="orders__input_8h.html#a9ae2ecfe19bbe8ffef46b67c117ccd36">pgr_get_pd_orders_with_id</a></div><div class="ttdeci">void pgr_get_pd_orders_with_id(char *pd_orders_sql, PickDeliveryOrders_t **pd_orders, size_t *total_pd_orders)</div><div class="ttdoc">Reads the pick-Deliver orders. </div><div class="ttdef"><b>Definition:</b> <a href="orders__input_8c_source.html#l00214">orders_input.c:214</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="orders__input_8h.html">orders_input.h</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:25 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9c50192407c36db226c38a2cd2bf7829.html">c_common</a></li><li class="navelem"><a class="el" href="orders__input_8h.html">orders_input.h</a></li>
+    <li class="footer">Generated on Sat May 13 2017 23:32:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

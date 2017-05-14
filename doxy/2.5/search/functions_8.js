@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['id',['id',['../classpgrouting_1_1vrp_1_1Node.html#a03378bc471bd808b34ff0d6b1b99e16e',1,'pgrouting::vrp::Node::id()'],['../classpgrouting_1_1vrp_1_1Order.html#a7a0ad46d6994439bc8b4459ac5976fcf',1,'pgrouting::vrp::Order::id()'],['../classpgrouting_1_1vrp_1_1Vehicle.html#a1ad6378ddaaa7ca5c6d5fa03953569be',1,'pgrouting::vrp::Vehicle::id()']]],
+  ['id',['id',['../classpgrouting_1_1Identifier.html#a04eb2b760246fbcc2f6dc0a011c3d340',1,'pgrouting::Identifier']]],
+  ['identifier',['Identifier',['../classpgrouting_1_1Identifier.html#a1a6b53e85b2454fb4c3f7bed36a5e385',1,'pgrouting::Identifier::Identifier()=default'],['../classpgrouting_1_1Identifier.html#aa0a3f24509bd2aded9e50436a1cf285b',1,'pgrouting::Identifier::Identifier(const Identifier &amp;v)=default'],['../classpgrouting_1_1Identifier.html#a67ede6474cbf098cd4d18cb778c30ccf',1,'pgrouting::Identifier::Identifier(const size_t _idx, const int64_t _id)']]],
   ['identifiers',['Identifiers',['../classIdentifiers.html#a6c5c5c6da14550282adc68b679f74cb8',1,'Identifiers::Identifiers()=default'],['../classIdentifiers.html#a74517f7f7f7af7303512cc5ad9228861',1,'Identifiers::Identifiers(const Identifiers&lt; T &gt; &amp;)=default'],['../classIdentifiers.html#a458d516f984c0144451bcfb89e75233c',1,'Identifiers::Identifiers(const std::set&lt; T &gt; &amp;data)'],['../classIdentifiers.html#aec0b735bdbb707a91b12d4659aef534e',1,'Identifiers::Identifiers(const size_t number)']]],
+  ['idx',['idx',['../classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6',1,'pgrouting::Identifier']]],
   ['import_5ffrom_5ffile',['import_from_file',['../performance_2dijkstra_2pgRouting_8cpp.html#a4e7ce6219854047eaf3c76bea4efe704',1,'import_from_file(const std::string &amp;input_file_name, pgr_edge_t *edges, unsigned int *count, int64_t start_vertex, int64_t end_vertex, bool &amp;found):&#160;pgRouting.cpp'],['../pgRouting_8cpp.html#a4e7ce6219854047eaf3c76bea4efe704',1,'import_from_file(const std::string &amp;input_file_name, pgr_edge_t *edges, unsigned int *count, int64_t start_vertex, int64_t end_vertex, bool &amp;found):&#160;pgRouting.cpp']]],
   ['in_5fdegree',['in_degree',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a4ec55b04efa97c9f75a3e78e5e2875ed',1,'pgrouting::graph::Pgr_base_graph::in_degree(int64_t vertex_id) const '],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a4e12d0776531d64bed28e5619b47c2fd',1,'pgrouting::graph::Pgr_base_graph::in_degree(V &amp;v) const ']]],
   ['in_5fdegree_5ffrom_5fvertex',['in_degree_from_vertex',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a50eafbebc9b5e056cd81033251eddb0b',1,'pgrouting::graph::Pgr_contractionGraph']]],
@@ -9,7 +11,7 @@ var searchData=
   ['initial_5fsolution',['Initial_solution',['../classpgrouting_1_1vrp_1_1Initial__solution.html#a0ed2750a07c6de761d7ca0b659a287ec',1,'pgrouting::vrp::Initial_solution']]],
   ['initialize',['initialize',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adcd46d9c2709a597a33379aa3541bde0',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
   ['insert',['insert',['../classpgrouting_1_1vrp_1_1Vehicle.html#af98de97049075d4db58f3e97dc9185aa',1,'pgrouting::vrp::Vehicle::insert(POS pos, Vehicle_node node)'],['../classpgrouting_1_1vrp_1_1Vehicle.html#aa22d65f920e996e3497bff86876b181f',1,'pgrouting::vrp::Vehicle::insert(std::pair&lt; POS, POS &gt; position_limits, const Vehicle_node &amp;node)'],['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688',1,'pgrouting::vrp::Vehicle_pickDeliver::insert()']]],
-  ['insert_5fedges',['insert_edges',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7',1,'pgrouting::graph::Pgr_base_graph::insert_edges(const T *edges, int64_t count)'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#adf97e69a48e3d65856b77fdc19d741eb',1,'pgrouting::graph::Pgr_base_graph::insert_edges(const std::vector&lt; T &gt; &amp;edges)'],['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a1205cab14888698d33ef2119f9df058a',1,'pgrouting::graph::PgrFlowGraph::insert_edges()']]],
+  ['insert_5fedges',['insert_edges',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a1205cab14888698d33ef2119f9df058a',1,'pgrouting::graph::PgrFlowGraph::insert_edges()'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7',1,'pgrouting::graph::Pgr_base_graph::insert_edges(const T *edges, int64_t count)'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#adf97e69a48e3d65856b77fdc19d741eb',1,'pgrouting::graph::Pgr_base_graph::insert_edges(const std::vector&lt; T &gt; &amp;edges)']]],
   ['insert_5fedges_5fedge_5fdisjoint',['insert_edges_edge_disjoint',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a587ea830e32014d17bdb64528010e6e3',1,'pgrouting::graph::PgrFlowGraph']]],
   ['insert_5fedges_5fpush_5frelabel',['insert_edges_push_relabel',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a65541cac3e38500f1b052730c513cbfb',1,'pgrouting::graph::PgrFlowGraph']]],
   ['insert_5fless_5ftravel_5ftime',['insert_less_travel_time',['../classpgrouting_1_1vrp_1_1Vehicle.html#a43b1afad2e0d74af5b5d79dbd6829446',1,'pgrouting::vrp::Vehicle']]],
@@ -17,7 +19,7 @@ var searchData=
   ['insertunservedorders',['insertUnservedOrders',['../classCVRPSolver.html#a46471aa397eebe84b6ae9b950f296ce3',1,'CVRPSolver']]],
   ['instance',['instance',['../classSignalHandler.html#ac9a307bf2b20263020913657b094db9e',1,'SignalHandler']]],
   ['inter_5fswap',['inter_swap',['../classpgrouting_1_1vrp_1_1Optimize.html#a8c70bf0623e2f035e5a17c44f65a182a',1,'pgrouting::vrp::Optimize::inter_swap(size_t times)'],['../classpgrouting_1_1vrp_1_1Optimize.html#ad1d48cf5916df017926e6d0d7b1fd987',1,'pgrouting::vrp::Optimize::inter_swap()']]],
-  ['invariant',['invariant',['../classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889',1,'pgrouting::vrp::Initial_solution::invariant()'],['../classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8',1,'pgrouting::vrp::Vehicle::invariant()'],['../classpgrouting_1_1tsp_1_1TSP.html#a5de0bad588d29b4290302fd0a307032f',1,'pgrouting::tsp::TSP::invariant()']]],
+  ['invariant',['invariant',['../classpgrouting_1_1tsp_1_1TSP.html#a5de0bad588d29b4290302fd0a307032f',1,'pgrouting::tsp::TSP::invariant()'],['../classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889',1,'pgrouting::vrp::Initial_solution::invariant()'],['../classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8',1,'pgrouting::vrp::Vehicle::invariant()']]],
   ['is_5fcompatible_5fij',['is_compatible_IJ',['../classpgrouting_1_1vrp_1_1Tw__node.html#ab5e20b48da4b3dfc53b6aa945d7e92e7',1,'pgrouting::vrp::Tw_node']]],
   ['is_5fdead_5fend',['is_dead_end',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#ad86d555801d7bcdc29209f75dae1d83f',1,'pgrouting::contraction::Pgr_deadend']]],
   ['is_5fdelivery',['is_delivery',['../classpgrouting_1_1vrp_1_1Tw__node.html#afd31f5b45277da0062025e66a37f4ea1',1,'pgrouting::vrp::Tw_node']]],
@@ -35,7 +37,7 @@ var searchData=
   ['is_5forder_5fok',['is_order_ok',['../classpgrouting_1_1vrp_1_1Fleet.html#a8216fc81b69d7d38e0e5753cabf7098b',1,'pgrouting::vrp::Fleet']]],
   ['is_5fpartially_5fcompatible_5fij',['is_partially_compatible_IJ',['../classpgrouting_1_1vrp_1_1Tw__node.html#a3203e380901c818a47a62a6df113892a',1,'pgrouting::vrp::Tw_node']]],
   ['is_5fpartially_5fwaittime_5fcompatible_5fij',['is_partially_waitTime_compatible_IJ',['../classpgrouting_1_1vrp_1_1Tw__node.html#a5f5fa98be2d17c9232813cf350f20e74',1,'pgrouting::vrp::Tw_node']]],
-  ['is_5fphony',['is_phony',['../classpgrouting_1_1vrp_1_1Vehicle.html#aab0696eacc34f99e4219ceea40e33d21',1,'pgrouting::vrp::Vehicle']]],
+  ['is_5fphony',['is_phony',['../classpgrouting_1_1vrp_1_1Vehicle.html#a6b87e5fcd837821ae04884a9d767efb7',1,'pgrouting::vrp::Vehicle']]],
   ['is_5fpickup',['is_pickup',['../classpgrouting_1_1vrp_1_1Tw__node.html#a0d7d424f0132c1f1ed75e9c5b1e3d55e',1,'pgrouting::vrp::Tw_node']]],
   ['is_5fsource',['is_source',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#aa36f93dbcd678e3efb82f6cbe13fc080',1,'pgrouting::graph::Pgr_base_graph']]],
   ['is_5fstart',['is_start',['../classpgrouting_1_1vrp_1_1Tw__node.html#a8849b4f343980675cde9e63d686590d0',1,'pgrouting::vrp::Tw_node']]],
@@ -47,8 +49,8 @@ var searchData=
   ['is_5fvalid_5fcontraction',['is_valid_contraction',['../contractGraph__driver_8cpp.html#a5760443ab98e9225e5d3c544e0bb6d38',1,'contractGraph_driver.cpp']]],
   ['is_5fwaittime_5fcompatible_5fij',['is_waitTime_compatible_IJ',['../classpgrouting_1_1vrp_1_1Tw__node.html#aaf8d97b788b38d5294a611e8f8192980',1,'pgrouting::vrp::Tw_node']]],
   ['isbetter',['isBetter',['../classCMoveInfo.html#a5dfa4238d9569757cd90fb351f9754a9',1,'CMoveInfo']]],
-  ['iscompatibleij',['isCompatibleIJ',['../classpgrouting_1_1vrp_1_1Order.html#ab1844c4aaaa6dc39b41bd6cc18b8555f',1,'pgrouting::vrp::Order']]],
+  ['iscompatibleij',['isCompatibleIJ',['../classpgrouting_1_1vrp_1_1Order.html#a6881a6c6a44d927f24c57d7eefe07b6f',1,'pgrouting::vrp::Order']]],
   ['isequal',['isEqual',['../classPath.html#adf67930d9eaea5c23c9a5262fc846a73',1,'Path']]],
-  ['issamepos',['isSamePos',['../classpgrouting_1_1vrp_1_1Node.html#ab529d695cecf7d1bf357d763338e77eb',1,'pgrouting::vrp::Node']]],
+  ['issamepos',['isSamePos',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html#a32c30c8072e1a592dd4c1e028d18f04b',1,'pgrouting::vrp::pickdeliver::Base_node::isSamePos()'],['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Node.html#a510a957faf61fd0ffcc8be57f5286288',1,'pgrouting::vrp::pickdeliver::Node::isSamePos()']]],
   ['istabumove',['isTabuMove',['../classCVRPSolver.html#a33c8852cdb507ade8adfc5d292911e20',1,'CVRPSolver']]]
 ];

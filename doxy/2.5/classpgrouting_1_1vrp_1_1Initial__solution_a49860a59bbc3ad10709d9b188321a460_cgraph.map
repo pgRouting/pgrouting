@@ -1,0 +1,8 @@
+<map id="pgrouting::vrp::Initial_solution::do_while_foo" name="pgrouting::vrp::Initial_solution::do_while_foo">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a7403db1a0429477f326190b282d30927" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="215,5,369,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="223,85,361,126"/>
+<area shape="rect" id="node4" href="$classIdentifiers.html#a8478c7e81c288e05c0eb7988869d5997" title="true ids() has element " alt="" coords="238,151,346,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889" title="pgrouting::vrp::Initial\l_solution::invariant" alt="" coords="222,202,362,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Solution.html#a371eb25be74472610011a18ac21c62fc" title="pgrouting::vrp::Solution\l::is_feasable" alt="" coords="214,267,370,309"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7" title="pgrouting::vrp::Fleet\l::release_truck" alt="" coords="223,333,361,374"/>
+</map>

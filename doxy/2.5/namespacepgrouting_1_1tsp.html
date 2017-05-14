@@ -160,7 +160,13 @@ Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="tour_8cpp_source.html#l00036">36</a> of file <a class="el" href="tour_8cpp_source.html">tour.cpp</a>.</p>
 
 <p>References <a class="el" href="tour_8h_source.html#l00154">pgrouting::tsp::Tour::cities</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                          {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;city : tour.cities) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        log &lt;&lt; city &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a86527af9611591bd084e1cdee40bb5da"></a>
@@ -190,7 +196,17 @@ Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="eucledianDmatrix_8cpp_source.html#l00153">153</a> of file <a class="el" href="eucledianDmatrix_8cpp_source.html">eucledianDmatrix.cpp</a>.</p>
 
 <p>References <a class="el" href="eucledianDmatrix_8h_source.html#l00115">pgrouting::tsp::eucledianDmatrix::coordinates</a>, and <a class="el" href="eucledianDmatrix_8h_source.html#l00112">pgrouting::tsp::eucledianDmatrix::ids</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                                                        {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <span class="keywordtype">id</span> : matrix.ids) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; id;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> row : matrix.coordinates) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        log &lt;&lt; row.id &lt;&lt; <span class="stringliteral">&quot;(&quot;</span> &lt;&lt; row.x &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; row.y &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a2088d8e44f8425c3414e8f73560856e5"></a>
@@ -217,9 +233,58 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="Dmatrix_8cpp_source.html#l00167">167</a> of file <a class="el" href="Dmatrix_8cpp_source.html">Dmatrix.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Dmatrix_8cpp_source.html#l00175">175</a> of file <a class="el" href="Dmatrix_8cpp_source.html">Dmatrix.cpp</a>.</p>
 
-<p>References <a class="el" href="Dmatrix_8h_source.html#l00117">pgrouting::tsp::Dmatrix::costs</a>, <a class="el" href="Dmatrix_8cpp_source.html#l00085">pgrouting::tsp::Dmatrix::get_index()</a>, and <a class="el" href="Dmatrix_8h_source.html#l00113">pgrouting::tsp::Dmatrix::ids</a>.</p>
+<p>References <a class="el" href="Dmatrix_8h_source.html#l00123">pgrouting::tsp::Dmatrix::costs</a>, <a class="el" href="Dmatrix_8cpp_source.html#l00090">pgrouting::tsp::Dmatrix::get_index()</a>, and <a class="el" href="Dmatrix_8h_source.html#l00119">pgrouting::tsp::Dmatrix::ids</a>.</p>
+<div class="fragment"><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                                               {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <span class="keywordtype">id</span> : matrix.ids) {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; id;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordtype">size_t</span> i = 0;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> row : matrix.costs) {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordtype">size_t</span> j = 0;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> cost : row) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Internal(&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; j &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\tUsers(&quot;</span> &lt;&lt; matrix.ids[i] &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; matrix.ids[j] &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\t = &quot;</span> &lt;&lt; cost</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor"></span>                &lt;&lt; <span class="stringliteral">&quot;\t(&quot;</span> &lt;&lt; matrix.get_index(matrix.ids[i])</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; matrix.get_index(matrix.ids[j]) &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\t = &quot;</span> &lt;&lt; matrix.costs[i][j]</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\t = &quot;</span> &lt;&lt; matrix.costs[j][i]</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;=inf:&quot;</span> &lt;&lt;  (matrix.costs[i][j] == (std::numeric_limits&lt;double&gt;::infinity)())</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;=inf:&quot;</span> &lt;&lt;  (matrix.costs[j][i] == (std::numeric_limits&lt;double&gt;::infinity)())</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor"></span>                &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            ++j;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        ++i;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matrix.costs.size(); ++i) {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; matrix.costs.size(); ++j) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; matrix.costs.size(); ++k) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                log &lt;&lt; matrix.costs[i][k] &lt;&lt; <span class="stringliteral">&quot; &lt;= (&quot;</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                    &lt;&lt; matrix.costs[i][j] &lt;&lt; <span class="stringliteral">&quot; + &quot;</span>  &lt;&lt; matrix.costs[j][k] &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    &lt;&lt; (matrix.costs[i][k]</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                            &lt;= (matrix.costs[i][j] + matrix.costs[j][k]))</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                    &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacepgrouting_1_1tsp_a2088d8e44f8425c3414e8f73560856e5_cgraph.png" border="0" usemap="#namespacepgrouting_1_1tsp_a2088d8e44f8425c3414e8f73560856e5_cgraph" alt=""/></div>
+<map name="namespacepgrouting_1_1tsp_a2088d8e44f8425c3414e8f73560856e5_cgraph" id="namespacepgrouting_1_1tsp_a2088d8e44f8425c3414e8f73560856e5_cgraph">
+<area shape="rect" id="node2" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a246cfe9b55dfea352065c3222d973d47" title="original id &#45;&gt; idx " alt="" coords="227,5,381,46"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -229,7 +294,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1tsp.html">tsp</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:29 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:14 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

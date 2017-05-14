@@ -7,6 +7,10 @@ var searchData=
   ['backward_5ffinished',['backward_finished',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab11a1d3c3525c178718d172ce3dbc655',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
   ['backward_5fpredecessor',['backward_predecessor',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4ecb47d0dbeab63cd57721bc88cb13ad',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
   ['backward_5fqueue',['backward_queue',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a0a54fb704d67bb33cdac08d447b829e9',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
+  ['base_5fnode',['Base_node',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html',1,'pgrouting::vrp::pickdeliver']]],
+  ['base_5fnode',['Base_node',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html#a7aeccbaf5a6c06077a826ef03aa6354e',1,'pgrouting::vrp::pickdeliver::Base_node::Base_node()=default'],['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html#a221ba4ba5c41611af3aded4ac0c16b15',1,'pgrouting::vrp::pickdeliver::Base_node::Base_node(size_t, int64_t)']]],
+  ['base_5fnode_2ecpp',['base_node.cpp',['../base__node_8cpp.html',1,'']]],
+  ['base_5fnode_2eh',['base_node.h',['../base__node_8h.html',1,'']]],
   ['basepath_5fssec_2ecpp',['basePath_SSEC.cpp',['../basePath__SSEC_8cpp.html',1,'']]],
   ['basepath_5fssec_2ehpp',['basePath_SSEC.hpp',['../basePath__SSEC_8hpp.html',1,'']]],
   ['basic_5fedge',['Basic_edge',['../classpgrouting_1_1Basic__edge.html',1,'pgrouting']]],
@@ -37,6 +41,6 @@ var searchData=
   ['boost_5fgraph',['boost_graph',['../classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#af740b57d54f4b1678fda2e89254b5f2a',1,'pgrouting::flow::PgrCardinalityGraph']]],
   ['boykov_5fkolmogorov',['boykov_kolmogorov',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5928ee304759464fa5da7706115d4f1e',1,'pgrouting::graph::PgrFlowGraph']]],
   ['buff',['buff',['../Tester_8cpp.html#a42c1ba0cab5bc73236253f2ab7c522c2',1,'Tester.cpp']]],
-  ['build_5ffleet',['build_fleet',['../classpgrouting_1_1vrp_1_1Fleet.html#a50be0142419e2255f1915c33dfb263a8',1,'pgrouting::vrp::Fleet']]],
-  ['build_5forders',['build_orders',['../classpgrouting_1_1vrp_1_1PD__Orders.html#a091e23dc2752ff1f6892869fd3a47ed7',1,'pgrouting::vrp::PD_Orders']]]
+  ['build_5ffleet',['build_fleet',['../classpgrouting_1_1vrp_1_1Fleet.html#a84505248f08d5fee3859ebc953a3952e',1,'pgrouting::vrp::Fleet']]],
+  ['build_5forders',['build_orders',['../classpgrouting_1_1vrp_1_1PD__Orders.html#aba7df29ae94dea36e793989ba84fd42d',1,'pgrouting::vrp::PD_Orders']]]
 ];

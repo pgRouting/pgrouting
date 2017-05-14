@@ -1,0 +1,6 @@
+<map id="pgrouting::Pgr_messages::get_error" name="pgrouting::Pgr_messages::get_error">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#a84505248f08d5fee3859ebc953a3952e" title="build the fleet " alt="" coords="251,5,389,46"/>
+<area shape="rect" id="node3" href="$pickDeliverEuclidean__driver_8cpp.html#ab554288fb12abe3aff1adced4d164178" title="do_pgr_pickDeliverEuclidean" alt="" coords="225,71,415,97"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Fleet.html#a91fc03802b40a016ead83dc8b2360869" title="pgrouting::vrp::Fleet\l::is_fleet_ok" alt="" coords="251,122,389,163"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e" title="Constructor for the matrix version. " alt="" coords="464,151,659,193"/>
+</map>

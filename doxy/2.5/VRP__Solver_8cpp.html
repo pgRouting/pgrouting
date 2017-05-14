@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: VRP_Solver.cpp File Reference</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/vrp_basic/src/VRP_Solver.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -120,6 +120,13 @@ $(document).ready(function(){initNavTree('VRP__Solver_8cpp.html','');});
 <code>#include &lt;string&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__logger_8h_source.html">../../common/src/pgr_logger.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for VRP_Solver.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="VRP__Solver_8cpp__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2vrp__basic_2src_2VRP__Solver_8cpp" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2vrp__basic_2src_2VRP__Solver_8cpp" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2vrp__basic_2src_2VRP__Solver_8cpp">
+<area shape="rect" id="node2" href="VRP__Solver_8h.html" title="./VRP_Solver.h" alt="" coords="173,133,285,160"/><area shape="rect" id="node10" href="pgr__logger_8h.html" title="../../common/src/pgr\l_logger.h" alt="" coords="575,126,715,167"/></map>
+</div>
 </div>
 <p><a href="VRP__Solver_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -214,7 +221,11 @@ Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00041">41</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00088">CVehicleInfo::m_iVehicleId</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                                                     {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span>(cur.<a class="code" href="classCVehicleInfo.html#a5ab3de3fb56355077e149b2cf01cbb03">m_iVehicleId</a> != that.<a class="code" href="classCVehicleInfo.html#a5ab3de3fb56355077e149b2cf01cbb03">m_iVehicleId</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="ttc" id="classCVehicleInfo_html_a5ab3de3fb56355077e149b2cf01cbb03"><div class="ttname"><a href="classCVehicleInfo.html#a5ab3de3fb56355077e149b2cf01cbb03">CVehicleInfo::m_iVehicleId</a></div><div class="ttdeci">int m_iVehicleId</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00088">VRP_Solver.h:88</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a1d9f78a92125953c142327ead8b26106"></a>
@@ -244,7 +255,16 @@ Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00045">45</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00225">CTourInfo::m_vehicleInfo</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00229">CTourInfo::m_viOrderIds</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                               {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span> (cur.<a class="code" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">m_vehicleInfo</a> != that.<a class="code" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">m_vehicleInfo</a>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (cur.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.size() != that.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.size())</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> std::equal(cur.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.begin(), cur.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.end(), that.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.begin());</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="ttc" id="classCTourInfo_html_a6dbb9aa6da8b431959a71da2e4bbb5b0"><div class="ttname"><a href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">CTourInfo::m_viOrderIds</a></div><div class="ttdeci">std::vector&lt; int &gt; m_viOrderIds</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00229">VRP_Solver.h:229</a></div></div>
+<div class="ttc" id="classCTourInfo_html_aa565d21d7cd50eaaf55fc5b6fe63c5ac"><div class="ttname"><a href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">CTourInfo::m_vehicleInfo</a></div><div class="ttdeci">CVehicleInfo m_vehicleInfo</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00225">VRP_Solver.h:225</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a433db060c84714821b9d2c96bd31e983"></a>
@@ -274,7 +294,16 @@ Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00053">53</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00324">CMoveInfo::m_vInitialTour</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00325">CMoveInfo::m_vModifiedTour</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                               {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> (!(cur.<a class="code" href="classCMoveInfo.html#a45a74179f8ebed6f9ae6e8e850ebfb43">m_vInitialTour</a> == that.<a class="code" href="classCMoveInfo.html#a45a74179f8ebed6f9ae6e8e850ebfb43">m_vInitialTour</a>))</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (!(cur.<a class="code" href="classCMoveInfo.html#ad5657e94911f46968af4b0ead46e4c20">m_vModifiedTour</a> == that.<a class="code" href="classCMoveInfo.html#ad5657e94911f46968af4b0ead46e4c20">m_vModifiedTour</a>))</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="ttc" id="classCMoveInfo_html_a45a74179f8ebed6f9ae6e8e850ebfb43"><div class="ttname"><a href="classCMoveInfo.html#a45a74179f8ebed6f9ae6e8e850ebfb43">CMoveInfo::m_vInitialTour</a></div><div class="ttdeci">std::vector&lt; CTourInfo &gt; m_vInitialTour</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00324">VRP_Solver.h:324</a></div></div>
+<div class="ttc" id="classCMoveInfo_html_ad5657e94911f46968af4b0ead46e4c20"><div class="ttname"><a href="classCMoveInfo.html#ad5657e94911f46968af4b0ead46e4c20">CMoveInfo::m_vModifiedTour</a></div><div class="ttdeci">std::vector&lt; CTourInfo &gt; m_vModifiedTour</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00325">VRP_Solver.h:325</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -283,7 +312,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e28fcb41c27d94935e6e1bded8372f10.html">vrp_basic</a></li><li class="navelem"><a class="el" href="dir_2c959b9bc6ee9cc8204048449dea20e7.html">src</a></li><li class="navelem"><a class="el" href="VRP__Solver_8cpp.html">VRP_Solver.cpp</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:26 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:13 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

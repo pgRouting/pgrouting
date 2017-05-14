@@ -1,0 +1,6 @@
+<map id="pgrouting::vrp::Tw_node::is_pickup" name="pgrouting::vrp::Tw_node::is_pickup">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#a6952f655243e030be6d5db4b1aebfe57" title="validate a pickup/delivery order " alt="" coords="197,5,339,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8d99ae2ed01e632538a5eb57acc896c3" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="205,70,331,111"/>
+<area shape="rect" id="node4" href="$namespacepgrouting_1_1vrp.html#aa9c24d8cacf37d936cd899f2afd34780" title="Print the contents of a Twnode object. " alt="" coords="182,136,354,163"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#aea16e373ce09c00176bd304963279fe8" title="pgrouting::vrp::Pgr\l_pickDeliver::order_of" alt="" coords="193,187,343,229"/>
+</map>

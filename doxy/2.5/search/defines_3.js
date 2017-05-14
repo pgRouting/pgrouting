@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['max_5frule_5flength',['MAX_RULE_LENGTH',['../pgr__types_8h.html#a2b2d1b8288abf80b6781151bdde6101f',1,'MAX_RULE_LENGTH():&#160;pgr_types.h'],['../trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f',1,'MAX_RULE_LENGTH():&#160;trsp.h'],['../trsp__driver_8h.html#a2b2d1b8288abf80b6781151bdde6101f',1,'MAX_RULE_LENGTH():&#160;trsp_driver.h']]],
-  ['maximum_5fmove_5ffrequency',['MAXIMUM_MOVE_FREQUENCY',['../VRP__Solver_8h.html#a3d26350f9e232526c3458a5a07a1acfc',1,'VRP_Solver.h']]],
-  ['maximum_5ftry',['MAXIMUM_TRY',['../VRP__Solver_8h.html#a666deaa7b397689eaef86f0355296b66',1,'VRP_Solver.h']]]
+  ['inf',['INF',['../VRP__Solver_8h.html#a12c2040f25d8e3a7b9e1c2024c618cb6',1,'VRP_Solver.h']]],
+  ['int8arrayoid',['INT8ARRAYOID',['../contractGraph_8c.html#acaf704d7b041882edfbce47b53c1090f',1,'contractGraph.c']]]
 ];

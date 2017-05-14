@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -119,12 +119,17 @@ $(document).ready(function(){initNavTree('classSIGQUIT__Handler.html','');});
 <div class="dynheader">
 Inheritance diagram for SIGQUIT_Handler:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classSIGQUIT__Handler.png" usemap="#SIGQUIT_Handler_map" alt=""/>
-  <map id="SIGQUIT_Handler_map" name="SIGQUIT_Handler_map">
-<area href="classEventHandler.html" alt="EventHandler" shape="rect" coords="0,0,112,24"/>
-</map>
- </div></div>
+<div class="center"><img src="classSIGQUIT__Handler__inherit__graph.png" border="0" usemap="#SIGQUIT__Handler_inherit__map" alt="Inheritance graph"/></div>
+<map name="SIGQUIT__Handler_inherit__map" id="SIGQUIT__Handler_inherit__map">
+<area shape="rect" id="node2" href="classEventHandler.html" title="EventHandler" alt="" coords="19,5,120,32"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for SIGQUIT_Handler:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSIGQUIT__Handler__coll__graph.png" border="0" usemap="#SIGQUIT__Handler_coll__map" alt="Collaboration graph"/></div>
+<map name="SIGQUIT__Handler_coll__map" id="SIGQUIT__Handler_coll__map">
+<area shape="rect" id="node2" href="classEventHandler.html" title="EventHandler" alt="" coords="19,5,120,32"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -167,7 +172,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00127">127</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;: <a class="code" href="classSIGQUIT__Handler.html#acc4794a2e828d331c2ccd51e5cb45c19">abortive_quit_</a>(0) {}</div>
+<div class="ttc" id="classSIGQUIT__Handler_html_acc4794a2e828d331c2ccd51e5cb45c19"><div class="ttname"><a href="classSIGQUIT__Handler.html#acc4794a2e828d331c2ccd51e5cb45c19">SIGQUIT_Handler::abortive_quit_</a></div><div class="ttdeci">sig_atomic_t abortive_quit_</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00138">signalhandler.h:138</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -196,7 +203,9 @@ Private Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00135">135</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
 
 <p>References <a class="el" href="signalhandler_8h_source.html#l00138">abortive_quit_</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{ <span class="keywordflow">return</span> this-&gt;<a class="code" href="classSIGQUIT__Handler.html#acc4794a2e828d331c2ccd51e5cb45c19">abortive_quit_</a>;}</div>
+<div class="ttc" id="classSIGQUIT__Handler_html_acc4794a2e828d331c2ccd51e5cb45c19"><div class="ttname"><a href="classSIGQUIT__Handler.html#acc4794a2e828d331c2ccd51e5cb45c19">SIGQUIT_Handler::abortive_quit_</a></div><div class="ttdeci">sig_atomic_t abortive_quit_</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00138">signalhandler.h:138</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="af65ad11173d2c238a126c57f5255a5c7"></a>
@@ -226,7 +235,11 @@ Private Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00130">130</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
 
 <p>References <a class="el" href="signalhandler_8h_source.html#l00138">abortive_quit_</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                        {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (signum == SIGQUIT) this-&gt;<a class="code" href="classSIGQUIT__Handler.html#acc4794a2e828d331c2ccd51e5cb45c19">abortive_quit_</a> =  1;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  }</div>
+<div class="ttc" id="classSIGQUIT__Handler_html_acc4794a2e828d331c2ccd51e5cb45c19"><div class="ttname"><a href="classSIGQUIT__Handler.html#acc4794a2e828d331c2ccd51e5cb45c19">SIGQUIT_Handler::abortive_quit_</a></div><div class="ttdeci">sig_atomic_t abortive_quit_</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00138">signalhandler.h:138</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -255,7 +268,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="signalhandler_8h_source.html">signalhandler.h</a></li>
+<li>/home/vicky/pgrouting/pgrouting/pgrouting/src/common/src/<a class="el" href="signalhandler_8h_source.html">signalhandler.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -263,7 +276,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classSIGQUIT__Handler.html">SIGQUIT_Handler</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:27 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:13 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

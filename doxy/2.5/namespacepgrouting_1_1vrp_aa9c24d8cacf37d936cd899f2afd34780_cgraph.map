@@ -1,0 +1,6 @@
+<map id="pgrouting::vrp::operator&lt;&lt;" name="pgrouting::vrp::operator&lt;&lt;">
+<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="227,5,386,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#afd31f5b45277da0062025e66a37f4ea1" title="is_delivery " alt="" coords="243,57,370,98"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a0d7d424f0132c1f1ed75e9c5b1e3d55e" title="is_pickup " alt="" coords="243,122,370,163"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a6836b6dbb111f5a8fbe9423d95784787" title="pgrouting::vrp::Tw\l_node::type_str" alt="" coords="243,187,370,229"/>
+</map>

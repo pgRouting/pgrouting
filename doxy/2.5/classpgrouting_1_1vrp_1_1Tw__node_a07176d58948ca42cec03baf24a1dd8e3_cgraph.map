@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Tw_node::is_on_time" name="pgrouting::vrp::Tw_node::is_on_time">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a4049eacb07b80235585854b225bfa285" title="True when arrivalTime is before it opens. " alt="" coords="181,5,333,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#afe54350e05e5c064dfaa5e56c453dc68" title="True when arrivalTime is after it closes. " alt="" coords="185,70,330,111"/>
+</map>

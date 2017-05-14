@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -94,7 +94,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
-      <li><a href="#index_p"><span>p</span></a></li>
       <li class="current"><a href="#index_s"><span>s</span></a></li>
     </ul>
   </div>
@@ -144,6 +143,9 @@ $(document).ready(function(){initNavTree('functions_rela.html','');});
 <li>Dmatrix::tourCost
 : <a class="el" href="classpgrouting_1_1tsp_1_1Tour.html#a6bd396e474e70a9b2eedbf7dcfe5c918">pgrouting::tsp::Tour</a>
 </li>
+<li>Dnode
+: <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a1bcb3dda45fd46691975d917bb4594df">pgrouting::vrp::Pgr_pickDeliver</a>
+</li>
 </ul>
 
 
@@ -156,8 +158,7 @@ $(document).ready(function(){initNavTree('functions_rela.html','');});
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>Initial_solution
-: <a class="el" href="classpgrouting_1_1vrp_1_1Order.html#a196ba6fb904c6d6b31d970df3ff28f25">pgrouting::vrp::Order</a>
-, <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a196ba6fb904c6d6b31d970df3ff28f25">pgrouting::vrp::Pgr_pickDeliver</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a196ba6fb904c6d6b31d970df3ff28f25">pgrouting::vrp::Pgr_pickDeliver</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a196ba6fb904c6d6b31d970df3ff28f25">pgrouting::vrp::Vehicle_pickDeliver</a>
 </li>
 </ul>
@@ -186,11 +187,14 @@ $(document).ready(function(){initNavTree('functions_rela.html','');});
 , <a class="el" href="classpgrouting_1_1CH__edge.html#a5c7deebdf081821ad7789016fc2bc3d9">pgrouting::CH_edge</a>
 , <a class="el" href="classpgrouting_1_1CH__vertex.html#a70d797c1ab6e20724cfbb2c23bb1ff2c">pgrouting::CH_vertex</a>
 , <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a821adfac3c93392e5603f96b02f317ca">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+, <a class="el" href="classpgrouting_1_1Identifier.html#a81ff40eb611f39cc3bd056ec1aa3f67d">pgrouting::Identifier</a>
 , <a class="el" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a2317d9af554ff3d5f57a09b075046c5e">pgrouting::tsp::Dmatrix</a>
 , <a class="el" href="classpgrouting_1_1tsp_1_1eucledianDmatrix.html#ab74ca6be398d3f72bc219343f9e2434f">pgrouting::tsp::eucledianDmatrix</a>
 , <a class="el" href="classpgrouting_1_1tsp_1_1Tour.html#a76e3bbd1f92afacd7f9787bb4bf2a83a">pgrouting::tsp::Tour</a>
-, <a class="el" href="classpgrouting_1_1vrp_1_1Node.html#a79dc74265ac46585d838e68285ddf735">pgrouting::vrp::Node</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1Fleet.html#a159eb2f65a5d85cf773b44385742ad9f">pgrouting::vrp::Fleet</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Order.html#a35cdd37a811c627b997a31e7e04b3262">pgrouting::vrp::Order</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html#a160fc3bc299f823fef172025fb73311e">pgrouting::vrp::pickdeliver::Base_node</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1pickdeliver_1_1Node.html#a79dc74265ac46585d838e68285ddf735">pgrouting::vrp::pickdeliver::Node</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Solution.html#a9bd311dd2a3505fca51408c4f73a7c8f">pgrouting::vrp::Solution</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Swap__bk.html#a4d1f84035327556f9596e5a02ab130f0">pgrouting::vrp::Swap_bk</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Swap__info.html#a0d007a3ecbc8b789f9574a6b6b5b0a80">pgrouting::vrp::Swap_info</a>
@@ -211,13 +215,6 @@ $(document).ready(function(){initNavTree('functions_rela.html','');});
 </ul>
 
 
-<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
-<li>Pgr_pickDeliver
-: <a class="el" href="classpgrouting_1_1vrp_1_1Order.html#a4b21de4eb04385b3bb4651595957dc5a">pgrouting::vrp::Order</a>
-</li>
-</ul>
-
-
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>Swap_bk
 : <a class="el" href="classpgrouting_1_1vrp_1_1Swap__info.html#aa1bb9b594a402078037adf23b7ff8e7a">pgrouting::vrp::Swap_info</a>
@@ -228,7 +225,7 @@ $(document).ready(function(){initNavTree('functions_rela.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:30 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:14 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

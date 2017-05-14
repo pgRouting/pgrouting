@@ -1,0 +1,8 @@
+<map id="pgrouting::vrp::PD_Orders::build_orders" name="pgrouting::vrp::PD_Orders::build_orders">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ac652e78507fad717d0b9398edb781444" title="pgrouting::vrp::Pgr\l_pickDeliver::add_base_node" alt="" coords="201,5,394,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a29ac4c9f908dc5a106f360e97660b6d1" title="pgrouting::vrp::Pgr\l_pickDeliver::add_node" alt="" coords="218,70,377,111"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Node.html#af7e6644a6d3daa7a3fd53b36602e0cd3" title="pgrouting::vrp::pickdeliver\l::Node::distance" alt="" coords="212,135,383,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1Pgr__messages.html#ab95afb74f6165ef76d6caf7415b378c6" title="get_log " alt="" coords="443,257,613,298"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a512937fe4b72890a7834abb0bd7e5f45" title="pgrouting::vrp::Pgr\l_pickDeliver::node_id" alt="" coords="224,253,371,294"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ad26d3f2cc122835364eb1ee97d090415" title="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK" alt="" coords="219,318,375,359"/>
+</map>

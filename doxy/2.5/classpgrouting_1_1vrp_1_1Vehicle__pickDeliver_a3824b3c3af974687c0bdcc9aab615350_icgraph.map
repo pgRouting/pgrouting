@@ -1,0 +1,7 @@
+<map id="pgrouting::vrp::Vehicle_pickDeliver::erase" name="pgrouting::vrp::Vehicle_pickDeliver::erase">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a7403db1a0429477f326190b282d30927" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="210,5,363,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a4f8e527bcd5a3ffc23dff8c3951dc337" title="pgrouting::vrp::Optimize\l::move_order" alt="" coords="206,85,367,126"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a1cc938f784f87e65647aa90e3f9946a2" title="The order that is picked last is removed. " alt="" coords="207,150,366,191"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acaadbc4ac95ca48c7151fe4631fbe259" title="pgrouting::vrp::Vehicle\l_pickDeliver::pop_front" alt="" coords="209,215,365,257"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Optimize.html#a3d0a917f2993449c45ce0febbff2e13f" title="pgrouting::vrp::Optimize\l::swap_order" alt="" coords="206,281,367,322"/>
+</map>

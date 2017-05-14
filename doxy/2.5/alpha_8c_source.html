@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: alpha.c Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/alpha_shape/src/alpha.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -132,11 +132,11 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/postgres_connection.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="postgres__connection_8h.html">c_common/postgres_connection.h</a>&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;catalog/pg_type.h&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__types_8h.html">c_types/pgr_types.h</a>&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="alpha__driver_8h.html">alpha_driver.h</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;PGDLLEXPORT Datum <a class="code" href="alpha_8c.html#a7539769eb3b91d75704c2d9b775129c3">alphashape</a>(PG_FUNCTION_ARGS);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#undef DEBUG</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;../../common/src/debug_macro.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="debug__macro_8h.html">c_common/debug_macro.h</a>&quot;</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">// The number of tuples to fetch from the SPI cursor at each iteration</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="alpha_8c.html#a0938455e5ec9df9cd6255f4fcc04162b">   46</a></span>&#160;<span class="preprocessor">#define TUPLIMIT 1000</span></div>
@@ -435,11 +435,14 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="ttc" id="alpha__driver_8h_html"><div class="ttname"><a href="alpha__driver_8h.html">alpha_driver.h</a></div></div>
 <div class="ttc" id="postgres_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="postgres_8h_source.html#l00023">postgres.h:23</a></div></div>
 <div class="ttc" id="structvertex__columns_html_a0c582ef5b2f2c44c8cbf6b89ebc8d183"><div class="ttname"><a href="structvertex__columns.html#a0c582ef5b2f2c44c8cbf6b89ebc8d183">vertex_columns::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00062">alpha.c:62</a></div></div>
+<div class="ttc" id="debug__macro_8h_html"><div class="ttname"><a href="debug__macro_8h.html">debug_macro.h</a></div></div>
 <div class="ttc" id="alpha_8c_html_a0938455e5ec9df9cd6255f4fcc04162b"><div class="ttname"><a href="alpha_8c.html#a0938455e5ec9df9cd6255f4fcc04162b">TUPLIMIT</a></div><div class="ttdeci">#define TUPLIMIT</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00046">alpha.c:46</a></div></div>
 <div class="ttc" id="structvertex__columns_html_a03a173f0d61443a379ca4e6afce8f0eb"><div class="ttname"><a href="structvertex__columns.html#a03a173f0d61443a379ca4e6afce8f0eb">vertex_columns::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00061">alpha.c:61</a></div></div>
 <div class="ttc" id="alpha_8c_html_a800c891e5d5eb186fddf615d946e4d60"><div class="ttname"><a href="alpha_8c.html#a800c891e5d5eb186fddf615d946e4d60">vertex_columns_t</a></div><div class="ttdeci">struct vertex_columns vertex_columns_t</div></div>
+<div class="ttc" id="pgr__types_8h_html"><div class="ttname"><a href="pgr__types_8h.html">pgr_types.h</a></div></div>
 <div class="ttc" id="alpha_8c_html_a4f47c3e26aa156219529477b79343691"><div class="ttname"><a href="alpha_8c.html#a4f47c3e26aa156219529477b79343691">compute_alpha_shape</a></div><div class="ttdeci">static int compute_alpha_shape(char *sql, float8 alpha, vertex_t **res, size_t *res_count)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00112">alpha.c:112</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_a64fca5dabc4ad9db224e524a154bbff1"><div class="ttname"><a href="alpha__driver_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a></div><div class="ttdeci">int alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00171">alpha_driver.cpp:171</a></div></div>
+<div class="ttc" id="postgres__connection_8h_html"><div class="ttname"><a href="postgres__connection_8h.html">postgres_connection.h</a></div></div>
 <div class="ttc" id="structvertex_html_a11f52ec2e920d56500baefe5a2e2bba7"><div class="ttname"><a href="structvertex.html#a11f52ec2e920d56500baefe5a2e2bba7">vertex::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00034">alpha_driver.h:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -447,7 +450,7 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha_8c.html">alpha.c</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:25 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

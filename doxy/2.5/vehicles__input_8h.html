@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: vehicles_input.h File Reference</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/include/c_common/vehicles_input.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -110,15 +110,30 @@ $(document).ready(function(){initNavTree('vehicles__input_8h.html','');});
 <div class="title">vehicles_input.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./pgr_types.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;c_types/pickDeliver/vehicle_t.h&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for vehicles_input.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="vehicles__input_8h__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2c__common_2vehicles__input_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="vehicles__input_8h__dep__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2c__common_2vehicles__input_8hdep" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2c__common_2vehicles__input_8hdep" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2c__common_2vehicles__input_8hdep">
+<area shape="rect" id="node2" href="vehicles__input_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/src/vehicles\l_input.c" alt="" coords="5,126,176,197"/><area shape="rect" id="node3" href="pickDeliverEuclidean_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliverE/src\l/pickDeliverEuclidean.c" alt="" coords="201,126,359,197"/></map>
+</div>
 </div>
 <p><a href="vehicles__input_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7e8b7a1a200a9d6118438700f8cddcab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vehicles__input_8h.html#a7e8b7a1a200a9d6118438700f8cddcab">pgr_get_vehicles</a> (char *vehicles_sql, <a class="el" href="structVehicle__t.html">Vehicle_t</a> **vehicles, size_t *total_vehicles)</td></tr>
+<tr class="memitem:a7e8b7a1a200a9d6118438700f8cddcab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vehicles__input_8h.html#a7e8b7a1a200a9d6118438700f8cddcab">pgr_get_vehicles</a> (char *vehicles_sql, Vehicle_t **vehicles, size_t *total_vehicles)</td></tr>
 <tr class="memdesc:a7e8b7a1a200a9d6118438700f8cddcab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the vehicles orders.  <a href="#a7e8b7a1a200a9d6118438700f8cddcab">More...</a><br/></td></tr>
 <tr class="separator:a7e8b7a1a200a9d6118438700f8cddcab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2d3adde1bee2a9377cab1b035c5169a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vehicles__input_8h.html#af2d3adde1bee2a9377cab1b035c5169a">pgr_get_vehicles_with_id</a> (char *vehicles_sql, Vehicle_t **vehicles, size_t *total_vehicles)</td></tr>
+<tr class="memdesc:af2d3adde1bee2a9377cab1b035c5169a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the vehicles orders.  <a href="#af2d3adde1bee2a9377cab1b035c5169a">More...</a><br/></td></tr>
+<tr class="separator:af2d3adde1bee2a9377cab1b035c5169a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a7e8b7a1a200a9d6118438700f8cddcab"></a>
@@ -134,7 +149,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structVehicle__t.html">Vehicle_t</a> **&#160;</td>
+          <td class="paramtype">Vehicle_t **&#160;</td>
           <td class="paramname"><em>vehicles</em>, </td>
         </tr>
         <tr>
@@ -155,20 +170,98 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">vehicles_sql</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">default_capacity</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">default_open_t</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">default_close_t</td><td></td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">vehicles</td><td></td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">total_vehicles</td><td></td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="vehicles__input_8c_source.html#l00083">83</a> of file <a class="el" href="vehicles__input_8c_source.html">vehicles_input.c</a>.</p>
+<p>Definition at line <a class="el" href="vehicles__input_8c_source.html#l00229">229</a> of file <a class="el" href="vehicles__input_8c_source.html">vehicles_input.c</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00191">ANY_INTEGER</a>, <a class="el" href="pgr__types_8h_source.html#l00192">ANY_NUMERICAL</a>, <a class="el" href="pgr__types_8h_source.html#l00199">Column_info_t::colNumber</a>, <a class="el" href="pgr__types_8h_source.html#l00203">Column_info_t::eType</a>, <a class="el" href="vehicles__input_8c_source.html#l00036">fetch_vehicles()</a>, <a class="el" href="pgr__types_8h_source.html#l00202">Column_info_t::name</a>, <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>, <a class="el" href="get__check__data_8c_source.html#l00073">pgr_fetch_column_info()</a>, <a class="el" href="postgres__connection_8c_source.html#l00108">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00095">pgr_SPI_prepare()</a>, <a class="el" href="pgr__types_8h_source.html#l00201">Column_info_t::strict</a>, and <a class="el" href="pgr__types_8h_source.html#l00200">Column_info_t::type</a>.</p>
+<p>References <a class="el" href="vehicles__input_8c_source.html#l00102">pgr_get_vehicles_general()</a>.</p>
 
-<p>Referenced by <a class="el" href="pickDeliver_8c_source.html#l00050">process()</a>.</p>
+<p>Referenced by <a class="el" href="pickDeliverEuclidean_8c_source.html#l00048">process()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355">pgr_get_vehicles_general</a>( vehicles_sql, vehicles, total_vehicles, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
+<div class="ttc" id="vehicles__input_8c_html_af860b69fdf7c334dd9d9f37f60a33355"><div class="ttname"><a href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355">pgr_get_vehicles_general</a></div><div class="ttdeci">static void pgr_get_vehicles_general(char *vehicles_sql, Vehicle_t **vehicles, size_t *total_vehicles, bool with_id)</div><div class="ttdef"><b>Definition:</b> <a href="vehicles__input_8c_source.html#l00102">vehicles_input.c:102</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="vehicles__input_8h_a7e8b7a1a200a9d6118438700f8cddcab_cgraph.png" border="0" usemap="#vehicles__input_8h_a7e8b7a1a200a9d6118438700f8cddcab_cgraph" alt=""/></div>
+<map name="vehicles__input_8h_a7e8b7a1a200a9d6118438700f8cddcab_cgraph" id="vehicles__input_8h_a7e8b7a1a200a9d6118438700f8cddcab_cgraph">
+<area shape="rect" id="node2" href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355" title="pgr_get_vehicles_general" alt="" coords="174,5,343,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="vehicles__input_8h_a7e8b7a1a200a9d6118438700f8cddcab_icgraph.png" border="0" usemap="#vehicles__input_8h_a7e8b7a1a200a9d6118438700f8cddcab_icgraph" alt=""/></div>
+<map name="vehicles__input_8h_a7e8b7a1a200a9d6118438700f8cddcab_icgraph" id="vehicles__input_8h_a7e8b7a1a200a9d6118438700f8cddcab_icgraph">
+<area shape="rect" id="node2" href="pickDeliverEuclidean_8c.html#ae01c69f9e07f1206518fc4e74ed1a5be" title="process" alt="" coords="174,5,242,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af2d3adde1bee2a9377cab1b035c5169a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pgr_get_vehicles_with_id </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>vehicles_sql</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vehicle_t **&#160;</td>
+          <td class="paramname"><em>vehicles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>total_vehicles</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the vehicles orders. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vehicles_sql</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">vehicles</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">total_vehicles</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="vehicles__input_8c_source.html#l00237">237</a> of file <a class="el" href="vehicles__input_8c_source.html">vehicles_input.c</a>.</p>
+
+<p>References <a class="el" href="vehicles__input_8c_source.html#l00102">pgr_get_vehicles_general()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <a class="code" href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355">pgr_get_vehicles_general</a>(vehicles_sql, vehicles, total_vehicles, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
+<div class="ttc" id="vehicles__input_8c_html_af860b69fdf7c334dd9d9f37f60a33355"><div class="ttname"><a href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355">pgr_get_vehicles_general</a></div><div class="ttdeci">static void pgr_get_vehicles_general(char *vehicles_sql, Vehicle_t **vehicles, size_t *total_vehicles, bool with_id)</div><div class="ttdef"><b>Definition:</b> <a href="vehicles__input_8c_source.html#l00102">vehicles_input.c:102</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="vehicles__input_8h_af2d3adde1bee2a9377cab1b035c5169a_cgraph.png" border="0" usemap="#vehicles__input_8h_af2d3adde1bee2a9377cab1b035c5169a_cgraph" alt=""/></div>
+<map name="vehicles__input_8h_af2d3adde1bee2a9377cab1b035c5169a_cgraph" id="vehicles__input_8h_af2d3adde1bee2a9377cab1b035c5169a_cgraph">
+<area shape="rect" id="node2" href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355" title="pgr_get_vehicles_general" alt="" coords="222,5,391,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -177,8 +270,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="vehicles__input_8h.html">vehicles_input.h</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:26 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9c50192407c36db226c38a2cd2bf7829.html">c_common</a></li><li class="navelem"><a class="el" href="vehicles__input_8h.html">vehicles_input.h</a></li>
+    <li class="footer">Generated on Sat May 13 2017 23:32:12 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

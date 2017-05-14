@@ -1,6 +1,7 @@
 var searchData=
 [
   ['abortivequit',['abortiveQuit',['../classSIGQUIT__Handler.html#a7a9d751ba7a950ce25b0d3319ff7991b',1,'SIGQUIT_Handler']]],
+  ['add_5fbase_5fnode',['add_base_node',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ac652e78507fad717d0b9398edb781444',1,'pgrouting::vrp::Pgr_pickDeliver']]],
   ['add_5fcontracted_5fedge_5fvertices',['add_contracted_edge_vertices',['../classpgrouting_1_1CH__edge.html#a2bff292b91e87794f3454a7666611b6d',1,'pgrouting::CH_edge::add_contracted_edge_vertices()'],['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a6be942fd91ea1efe2ed447cd34fabb25',1,'pgrouting::graph::Pgr_contractionGraph::add_contracted_edge_vertices()']]],
   ['add_5fcontracted_5fvertex',['add_contracted_vertex',['../classpgrouting_1_1CH__edge.html#a2239815ed827bcd3d70f1fba769bbf11',1,'pgrouting::CH_edge::add_contracted_vertex()'],['../classpgrouting_1_1CH__vertex.html#a0ae0801beafccce4d8022fb89a6bf78e',1,'pgrouting::CH_vertex::add_contracted_vertex()']]],
   ['add_5fedge_5fpair',['add_edge_pair',['../classpgrouting_1_1contraction_1_1Pgr__linear.html#acdf297158ead28ab5daddf675435ae84',1,'pgrouting::contraction::Pgr_linear']]],
@@ -9,7 +10,7 @@ var searchData=
   ['add_5fnode',['add_node',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a29ac4c9f908dc5a106f360e97660b6d1',1,'pgrouting::vrp::Pgr_pickDeliver']]],
   ['add_5fshortcut',['add_shortcut',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#aac41e36df4c781649a2287799878b295',1,'pgrouting::graph::Pgr_contractionGraph::add_shortcut()'],['../classpgrouting_1_1contraction_1_1Pgr__linear.html#a8e40b3cf3839a6a3ef50cc2f7288ea99',1,'pgrouting::contraction::Pgr_linear::add_shortcut(G &amp;graph, V vertex, E incoming_edge, E outgoing_edge)'],['../classpgrouting_1_1contraction_1_1Pgr__linear.html#aeb08804897e66ddd5fde322f4ba00120',1,'pgrouting::contraction::Pgr_linear::add_shortcut(G &amp;graph, pgrouting::CH_edge &amp;shortcut)']]],
   ['add_5fvertex_5fid',['add_vertex_id',['../classpgrouting_1_1CH__vertex.html#ab03c743fffb91f4514914701e1f3fee3',1,'pgrouting::CH_vertex']]],
-  ['add_5fvertices',['add_vertices',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab13f36eb0578e04260de70dcde6850ab',1,'pgrouting::graph::Pgr_base_graph::add_vertices()'],['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5910494389846e0c9c5892180d4cc9dd',1,'pgrouting::graph::PgrFlowGraph::add_vertices()']]],
+  ['add_5fvertices',['add_vertices',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5910494389846e0c9c5892180d4cc9dd',1,'pgrouting::graph::PgrFlowGraph::add_vertices()'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab13f36eb0578e04260de70dcde6850ab',1,'pgrouting::graph::Pgr_base_graph::add_vertices()']]],
   ['adddepot',['addDepot',['../classCVRPSolver.html#aab34664104fe3d48c0755be99415daa4',1,'CVRPSolver']]],
   ['adddepottoordercost',['addDepotToOrderCost',['../classCVRPSolver.html#aaf3424d07d07840dfa578630069f2a1a',1,'CVRPSolver']]],
   ['addedge',['addEdge',['../classGraphDefinition.html#a2c40687b3b05b7420adc718ede9af365',1,'GraphDefinition']]],

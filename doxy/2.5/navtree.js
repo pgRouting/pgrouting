@@ -11,6 +11,7 @@ var NAVTREE =
       [ "Setup Travis", "index.html#setup_travis", null ],
       [ "File conventions", "index.html#file_convetions", null ]
     ] ],
+    [ "Purpose of this directory", "md__home_vicky_pgrouting_pgrouting_pgrouting_include_c_common_README.html", null ],
     [ "Contraction", "Contraction.html", [
       [ "Introduction", "Contraction.html#contraction_intro", [
         [ "The contraction skeleton", "Contraction.html#contraction_skeleton", null ],
@@ -75,17 +76,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Contraction.html",
-"classCDepotInfo.html#a9cc717747d360086504806771214eb17",
-"classPath.html",
-"classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a9a673da5f6fab0c8377099d8cd8f653d",
-"classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a7226271b2387e65e8f59375098ec2207",
-"classpgrouting_1_1vrp_1_1Order.html#a70a71f8d25607ecdec13cc5ba85990fd",
-"classpgrouting_1_1vrp_1_1Vehicle.html#af6f2699743bf2fd8e96c3d9b6954662b",
-"edge__disjoint__paths__driver_8cpp.html#af803bb905273bb98498a91469dd673ae",
-"issue191-good_8h.html",
-"pgr__maxflow_8cpp_source.html",
-"structedge__columns.html#ab56450475f6dbbc6f05b6a01e6c4b62d",
-"withPoints__ksp__driver_8h_source.html"
+"classCDepotInfo.html#a6c26af812d77e27de5ea7a33d05e9ff8",
+"classIdentifiers.html#aa0d4197c14509f864c88ac0fda7a94cf",
+"classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html#a887a13971fa73bc5af766be32e5562e9",
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#af95be0914ef2a758090a329710200494",
+"classpgrouting_1_1vrp_1_1Order.html#a7ea35b02b812474d4b0c19da2784fc5f",
+"classpgrouting_1_1vrp_1_1Vehicle__node.html#a7c29d2182238ce26d5921ff38bd5d5e5",
+"dir_77068d28bd694a89d92f3e64a8393ae0.html",
+"globals_func.html",
+"pgr__assert_8cpp_source.html",
+"structdistance__columns.html#ad8755e4073c1a32c3dc776fe0d4651cb",
+"withPoints__dd__driver_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

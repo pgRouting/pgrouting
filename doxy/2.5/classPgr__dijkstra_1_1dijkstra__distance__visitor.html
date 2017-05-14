@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -120,11 +120,13 @@ $(document).ready(function(){initNavTree('classPgr__dijkstra_1_1dijkstra__distan
 <div class="dynheader">
 Inheritance diagram for Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classPgr__dijkstra_1_1dijkstra__distance__visitor.png" usemap="#Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor_map" alt=""/>
-  <map id="Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor_map" name="Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor_map">
-</map>
- </div></div>
+<div class="center"><img src="classPgr__dijkstra_1_1dijkstra__distance__visitor__inherit__graph.png" border="0" usemap="#Pgr__dijkstra_3_01G_01_4_1_1dijkstra__distance__visitor_inherit__map" alt="Inheritance graph"/></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPgr__dijkstra_1_1dijkstra__distance__visitor__coll__graph.png" border="0" usemap="#Pgr__dijkstra_3_01G_01_4_1_1dijkstra__distance__visitor_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -192,7 +194,15 @@ template&lt;class G&gt; </div>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00299">299</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                                                  :</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;              <a class="code" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a6b2a0983ad5601c4958fa93302124af9">m_distance_goal</a>(distance_goal),</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;              <a class="code" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a646d3ba58e8a9ca81c9b4fa036e06fc7">m_nodes</a>(nodesInDistance),</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;              <a class="code" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a2c9603c83a991c3ffb90a865b04364ba">m_dist</a>(distances) {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;              }</div>
+<div class="ttc" id="classPgr__dijkstra_1_1dijkstra__distance__visitor_html_a646d3ba58e8a9ca81c9b4fa036e06fc7"><div class="ttname"><a href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a646d3ba58e8a9ca81c9b4fa036e06fc7">Pgr_dijkstra::dijkstra_distance_visitor::m_nodes</a></div><div class="ttdeci">std::deque&lt; V &gt; &amp; m_nodes</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00319">pgr_dijkstra.hpp:319</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_1_1dijkstra__distance__visitor_html_a2c9603c83a991c3ffb90a865b04364ba"><div class="ttname"><a href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a2c9603c83a991c3ffb90a865b04364ba">Pgr_dijkstra::dijkstra_distance_visitor::m_dist</a></div><div class="ttdeci">std::vector&lt; double &gt; &amp; m_dist</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00320">pgr_dijkstra.hpp:320</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_1_1dijkstra__distance__visitor_html_a6b2a0983ad5601c4958fa93302124af9"><div class="ttname"><a href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a6b2a0983ad5601c4958fa93302124af9">Pgr_dijkstra::dijkstra_distance_visitor::m_distance_goal</a></div><div class="ttdeci">double m_distance_goal</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00318">pgr_dijkstra.hpp:318</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -235,7 +245,21 @@ template&lt;class B_G &gt; </div>
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00308">308</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00320">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor::m_dist</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00318">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor::m_distance_goal</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00319">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor::m_nodes</a>, <a class="el" href="signalhandler_8h_source.html#l00142">REG_SIGINT</a>, and <a class="el" href="signalhandler_8h_source.html#l00148">THROW_ON_SIGINT</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                               {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor"></span>                  <a class="code" href="signalhandler_8h.html#a1592d0e20d4fd61c988c4804318bc2ae">REG_SIGINT</a>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                  <a class="code" href="signalhandler_8h.html#aeb783180527e13209102d4afd57110c5">THROW_ON_SIGINT</a>;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="preprocessor"></span>                  <a class="code" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a646d3ba58e8a9ca81c9b4fa036e06fc7">m_nodes</a>.push_back(u);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                  <span class="keywordflow">if</span> (<a class="code" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a2c9603c83a991c3ffb90a865b04364ba">m_dist</a>[u] &gt;= <a class="code" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a6b2a0983ad5601c4958fa93302124af9">m_distance_goal</a>) <span class="keywordflow">throw</span> found_goals();</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                  num_edges(g);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;              }</div>
+<div class="ttc" id="signalhandler_8h_html_a1592d0e20d4fd61c988c4804318bc2ae"><div class="ttname"><a href="signalhandler_8h.html#a1592d0e20d4fd61c988c4804318bc2ae">REG_SIGINT</a></div><div class="ttdeci">#define REG_SIGINT</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00142">signalhandler.h:142</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_1_1dijkstra__distance__visitor_html_a646d3ba58e8a9ca81c9b4fa036e06fc7"><div class="ttname"><a href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a646d3ba58e8a9ca81c9b4fa036e06fc7">Pgr_dijkstra::dijkstra_distance_visitor::m_nodes</a></div><div class="ttdeci">std::deque&lt; V &gt; &amp; m_nodes</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00319">pgr_dijkstra.hpp:319</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_1_1dijkstra__distance__visitor_html_a2c9603c83a991c3ffb90a865b04364ba"><div class="ttname"><a href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a2c9603c83a991c3ffb90a865b04364ba">Pgr_dijkstra::dijkstra_distance_visitor::m_dist</a></div><div class="ttdeci">std::vector&lt; double &gt; &amp; m_dist</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00320">pgr_dijkstra.hpp:320</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_1_1dijkstra__distance__visitor_html_a6b2a0983ad5601c4958fa93302124af9"><div class="ttname"><a href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a6b2a0983ad5601c4958fa93302124af9">Pgr_dijkstra::dijkstra_distance_visitor::m_distance_goal</a></div><div class="ttdeci">double m_distance_goal</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00318">pgr_dijkstra.hpp:318</a></div></div>
+<div class="ttc" id="signalhandler_8h_html_aeb783180527e13209102d4afd57110c5"><div class="ttname"><a href="signalhandler_8h.html#aeb783180527e13209102d4afd57110c5">THROW_ON_SIGINT</a></div><div class="ttdeci">#define THROW_ON_SIGINT</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00148">signalhandler.h:148</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -318,7 +342,7 @@ template&lt;class G&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a></li>
+<li>/home/vicky/pgrouting/pgrouting/pgrouting/include/dijkstra/<a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -326,7 +350,7 @@ template&lt;class G&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPgr__dijkstra.html">Pgr_dijkstra</a></li><li class="navelem"><a class="el" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html">dijkstra_distance_visitor</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:27 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:13 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: pgr_dijkstra.hpp File Reference</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/include/dijkstra/pgr_dijkstra.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -118,8 +118,22 @@ $(document).ready(function(){initNavTree('pgr__dijkstra_8hpp.html','');});
 <code>#include &lt;set&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
 <code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &quot;<a class="el" href="basePath__SSEC_8hpp_source.html">./../../common/src/basePath_SSEC.hpp</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="pgr__base__graph_8hpp_source.html">./../../common/src/pgr_base_graph.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="basePath__SSEC_8hpp_source.html">cpp_common/basePath_SSEC.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__base__graph_8hpp_source.html">cpp_common/pgr_base_graph.hpp</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for pgr_dijkstra.hpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2dijkstra_2pgr__dijkstra_8hpp" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2dijkstra_2pgr__dijkstra_8hpp" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2dijkstra_2pgr__dijkstra_8hpp">
+<area shape="rect" id="node9" href="basePath__SSEC_8hpp.html" title="cpp_common/basePath\l_SSEC.hpp" alt="" coords="339,126,497,167"/><area shape="rect" id="node10" href="pgr__base__graph_8hpp.html" title="cpp_common/pgr_base\l_graph.hpp" alt="" coords="201,217,359,258"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp__dep__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2dijkstra_2pgr__dijkstra_8hppdep" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2dijkstra_2pgr__dijkstra_8hppdep" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2dijkstra_2pgr__dijkstra_8hppdep">
+<area shape="rect" id="node2" href="dijkstra__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstra\l_driver.cpp" alt="" coords="5,126,163,197"/><area shape="rect" id="node3" href="dijkstraVia__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstraVia\l_driver.cpp" alt="" coords="187,126,364,197"/><area shape="rect" id="node4" href="drivedist__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/driving_distance\l/src/drivedist_driver.cpp" alt="" coords="389,126,549,197"/><area shape="rect" id="node5" href="withPoints__dd__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/driving_distance\l/src/withPoints_dd_driver.cpp" alt="" coords="575,126,769,197"/><area shape="rect" id="node6" href="withPoints__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/withPoints/src/withPoints\l_driver.cpp" alt="" coords="794,126,989,197"/><area shape="rect" id="node7" href="pgr__ksp_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_ksp.hpp" alt="" coords="1014,133,1180,189"/></map>
+</div>
 </div>
 <p><a href="pgr__dijkstra_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -205,6 +219,21 @@ template&lt;class G &gt; </div>
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00077">77</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00394">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classPgr__dijkstra.html">Pgr_dijkstra&lt; G &gt;</a> fn_dijkstra;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> fn_dijkstra.<a class="code" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">dijkstra</a>(graph, source, target, only_cost);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html_a78d6855cf47cb741d8baff32e7cdfe54"><div class="ttname"><a href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">Path dijkstra(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">one to one </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00394">pgr_dijkstra.hpp:394</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp_a0ad9c7b5ca01d97d65d40448eef6bb86_cgraph.png" border="0" usemap="#pgr__dijkstra_8hpp_a0ad9c7b5ca01d97d65d40448eef6bb86_cgraph" alt=""/></div>
+<map name="pgr__dijkstra_8hpp_a0ad9c7b5ca01d97d65d40448eef6bb86_cgraph" id="pgr__dijkstra_8hpp_a0ad9c7b5ca01d97d65d40448eef6bb86_cgraph">
+<area shape="rect" id="node2" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="one to one " alt="" coords="144,5,285,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -249,6 +278,25 @@ template&lt;class G &gt; </div>
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00089">89</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00394">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::sort(targets.begin(), targets.end());</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    targets.erase(</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            std::unique(targets.begin(), targets.end()),</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            targets.end());</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="classPgr__dijkstra.html">Pgr_dijkstra&lt; G &gt;</a> fn_dijkstra;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> fn_dijkstra.<a class="code" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">dijkstra</a>(graph, source, targets, only_cost);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html_a78d6855cf47cb741d8baff32e7cdfe54"><div class="ttname"><a href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">Path dijkstra(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">one to one </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00394">pgr_dijkstra.hpp:394</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp_a6f1c3af1f6af7d564b1d0d7f3ff5f00d_cgraph.png" border="0" usemap="#pgr__dijkstra_8hpp_a6f1c3af1f6af7d564b1d0d7f3ff5f00d_cgraph" alt=""/></div>
+<map name="pgr__dijkstra_8hpp_a6f1c3af1f6af7d564b1d0d7f3ff5f00d_cgraph" id="pgr__dijkstra_8hpp_a6f1c3af1f6af7d564b1d0d7f3ff5f00d_cgraph">
+<area shape="rect" id="node2" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="one to one " alt="" coords="144,5,285,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -293,6 +341,26 @@ template&lt;class G &gt; </div>
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00105">105</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00394">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::sort(sources.begin(), sources.end());</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    sources.erase(</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            std::unique(sources.begin(), sources.end()),</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            sources.end());</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="classPgr__dijkstra.html">Pgr_dijkstra&lt; G &gt;</a> fn_dijkstra;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> fn_dijkstra.<a class="code" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">dijkstra</a>(graph, sources, target, only_cost);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html_a78d6855cf47cb741d8baff32e7cdfe54"><div class="ttname"><a href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">Path dijkstra(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">one to one </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00394">pgr_dijkstra.hpp:394</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp_a087afc12b49931341757b890686bffa0_cgraph.png" border="0" usemap="#pgr__dijkstra_8hpp_a087afc12b49931341757b890686bffa0_cgraph" alt=""/></div>
+<map name="pgr__dijkstra_8hpp_a087afc12b49931341757b890686bffa0_cgraph" id="pgr__dijkstra_8hpp_a087afc12b49931341757b890686bffa0_cgraph">
+<area shape="rect" id="node2" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="one to one " alt="" coords="144,5,285,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -337,6 +405,31 @@ template&lt;class G &gt; </div>
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00122">122</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00394">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::sort(sources.begin(), sources.end());</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    sources.erase(</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            std::unique(sources.begin(), sources.end()),</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            sources.end());</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    std::sort(targets.begin(), targets.end());</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    targets.erase(</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            std::unique(targets.begin(), targets.end()),</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            targets.end());</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="classPgr__dijkstra.html">Pgr_dijkstra&lt; G &gt;</a> fn_dijkstra;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">return</span> fn_dijkstra.<a class="code" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">dijkstra</a>(graph, sources, targets, only_cost);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html_a78d6855cf47cb741d8baff32e7cdfe54"><div class="ttname"><a href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">Path dijkstra(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">one to one </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00394">pgr_dijkstra.hpp:394</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp_a1f9f8207feecc9bbba3fb466b0eb684f_cgraph.png" border="0" usemap="#pgr__dijkstra_8hpp_a1f9f8207feecc9bbba3fb466b0eb684f_cgraph" alt=""/></div>
+<map name="pgr__dijkstra_8hpp_a1f9f8207feecc9bbba3fb466b0eb684f_cgraph" id="pgr__dijkstra_8hpp_a1f9f8207feecc9bbba3fb466b0eb684f_cgraph">
+<area shape="rect" id="node2" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="one to one " alt="" coords="144,5,285,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -382,7 +475,31 @@ template&lt;class G &gt; </div>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00360">Pgr_dijkstra&lt; G &gt;::drivingDistance()</a>.</p>
 
-<p>Referenced by <a class="el" href="drivedist__driver_8cpp_source.html#l00041">do_pgr_driving_many_to_dist()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00060">do_pgr_many_withPointsDD()</a>, and <a class="el" href="driving_8cpp_source.html#l00028">process_drivingDistance()</a>.</p>
+<p>Referenced by <a class="el" href="drivedist__driver_8cpp_source.html#l00040">do_pgr_driving_many_to_dist()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, and <a class="el" href="driving_8cpp_source.html#l00028">process_drivingDistance()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                       {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classPgr__dijkstra.html">Pgr_dijkstra&lt; G &gt;</a> fn_dijkstra;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> fn_dijkstra.<a class="code" href="classPgr__dijkstra.html#a35c67d60454ca40449f9a47dfa40a2f4">drivingDistance</a>(graph, start_vids, distance, equicost);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html_a35c67d60454ca40449f9a47dfa40a2f4"><div class="ttname"><a href="classPgr__dijkstra.html#a35c67d60454ca40449f9a47dfa40a2f4">Pgr_dijkstra::drivingDistance</a></div><div class="ttdeci">Path drivingDistance(G &amp;graph, int64_t start_vertex, double distance)</div><div class="ttdoc">1 to distance </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00360">pgr_dijkstra.hpp:360</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp_aa4524c319c5b91a9a02adef9d9c498cb_cgraph.png" border="0" usemap="#pgr__dijkstra_8hpp_aa4524c319c5b91a9a02adef9d9c498cb_cgraph" alt=""/></div>
+<map name="pgr__dijkstra_8hpp_aa4524c319c5b91a9a02adef9d9c498cb_cgraph" id="pgr__dijkstra_8hpp_aa4524c319c5b91a9a02adef9d9c498cb_cgraph">
+<area shape="rect" id="node2" href="classPgr__dijkstra.html#a35c67d60454ca40449f9a47dfa40a2f4" title="1 to distance " alt="" coords="192,5,381,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp_aa4524c319c5b91a9a02adef9d9c498cb_icgraph.png" border="0" usemap="#pgr__dijkstra_8hpp_aa4524c319c5b91a9a02adef9d9c498cb_icgraph" alt=""/></div>
+<map name="pgr__dijkstra_8hpp_aa4524c319c5b91a9a02adef9d9c498cb_icgraph" id="pgr__dijkstra_8hpp_aa4524c319c5b91a9a02adef9d9c498cb_icgraph">
+<area shape="rect" id="node2" href="drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="214,5,359,46"/><area shape="rect" id="node3" href="withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="193,71,381,97"/><area shape="rect" id="node4" href="driving_8cpp.html#a54752be3f5a512499a6ec47446cc44a2" title="process_drivingDistance" alt="" coords="204,121,369,148"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -421,6 +538,21 @@ template&lt;class G &gt; </div>
 <p>Definition at line <a class="el" href="pgr__dijkstra_8hpp_source.html#l00065">65</a> of file <a class="el" href="pgr__dijkstra_8hpp_source.html">pgr_dijkstra.hpp</a>.</p>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00360">Pgr_dijkstra&lt; G &gt;::drivingDistance()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                         {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classPgr__dijkstra.html">Pgr_dijkstra&lt; G &gt;</a> fn_dijkstra;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> fn_dijkstra.<a class="code" href="classPgr__dijkstra.html#a35c67d60454ca40449f9a47dfa40a2f4">drivingDistance</a>(graph, source, distance);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html_a35c67d60454ca40449f9a47dfa40a2f4"><div class="ttname"><a href="classPgr__dijkstra.html#a35c67d60454ca40449f9a47dfa40a2f4">Pgr_dijkstra::drivingDistance</a></div><div class="ttdeci">Path drivingDistance(G &amp;graph, int64_t start_vertex, double distance)</div><div class="ttdoc">1 to distance </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00360">pgr_dijkstra.hpp:360</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="pgr__dijkstra_8hpp_ad08c5ab10326761fefbb099db1637919_cgraph.png" border="0" usemap="#pgr__dijkstra_8hpp_ad08c5ab10326761fefbb099db1637919_cgraph" alt=""/></div>
+<map name="pgr__dijkstra_8hpp_ad08c5ab10326761fefbb099db1637919_cgraph" id="pgr__dijkstra_8hpp_ad08c5ab10326761fefbb099db1637919_cgraph">
+<area shape="rect" id="node2" href="classPgr__dijkstra.html#a35c67d60454ca40449f9a47dfa40a2f4" title="1 to distance " alt="" coords="192,5,381,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -429,8 +561,8 @@ template&lt;class G &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_2a52a6a5123eeb3ef09f6d5b6e1e597e.html">src</a></li><li class="navelem"><a class="el" href="pgr__dijkstra_8hpp.html">pgr_dijkstra.hpp</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:26 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_1930df11331c7ed9b5d4e307344eb08e.html">dijkstra</a></li><li class="navelem"><a class="el" href="pgr__dijkstra_8hpp.html">pgr_dijkstra.hpp</a></li>
+    <li class="footer">Generated on Sat May 13 2017 23:32:12 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

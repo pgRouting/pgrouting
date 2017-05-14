@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: testit.cpp Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/trsp/tester/testit.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -149,7 +149,7 @@ $(document).ready(function(){initNavTree('testit_8cpp_source.html','');});
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ruleTable.clear();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classGraphDefinition.html">GraphDefinition</a> gdef;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> res = gdef.<a class="code" href="classGraphDefinition.html#a28ac0738dd5ebcc6d1fc32071a9e828a">my_dijkstra</a>(<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>, <a class="code" href="issue191-bad-m1_8h.html#a31a1aa6ebfbeb2dac6b910658a75466d">NEDGE</a>, 2963487, 0.5, 3345813, 0.5, &amp;path, &amp;path_count, &amp;err_msg, ruleTable);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> res = gdef.<a class="code" href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7">my_dijkstra</a>(<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>, <a class="code" href="issue191-bad-m1_8h.html#a31a1aa6ebfbeb2dac6b910658a75466d">NEDGE</a>, 2963487, 0.5, 3345813, 0.5, &amp;path, &amp;path_count, &amp;err_msg, ruleTable);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (res &lt; 0) {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        printf(<span class="stringliteral">&quot;error: res: %d\n&quot;</span>, res);</div>
@@ -171,21 +171,21 @@ $(document).ready(function(){initNavTree('testit_8cpp_source.html','');});
 <div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
 <div class="ttc" id="classGraphDefinition_html"><div class="ttname"><a href="classGraphDefinition.html">GraphDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8h_source.html#l00087">GraphDefinition.h:87</a></div></div>
 <div class="ttc" id="GraphDefinition_8h_html"><div class="ttname"><a href="GraphDefinition_8h.html">GraphDefinition.h</a></div></div>
-<div class="ttc" id="classGraphDefinition_html_a28ac0738dd5ebcc6d1fc32071a9e828a"><div class="ttname"><a href="classGraphDefinition.html#a28ac0738dd5ebcc6d1fc32071a9e828a">GraphDefinition::my_dijkstra</a></div><div class="ttdeci">int my_dijkstra(long start_vertex, long end_vertex, unsigned int edge_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8cpp_source.html#l00270">GraphDefinition.cpp:270</a></div></div>
 <div class="ttc" id="utils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
+<div class="ttc" id="classGraphDefinition_html_add1e17a19370022849bc5fa0a0a993c7"><div class="ttname"><a href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7">GraphDefinition::my_dijkstra</a></div><div class="ttdeci">int my_dijkstra(long start_vertex, long end_vertex, size_t edge_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8cpp_source.html#l00270">GraphDefinition.cpp:270</a></div></div>
 <div class="ttc" id="postgres_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="postgres_8h_source.html#l00023">postgres.h:23</a></div></div>
 <div class="ttc" id="issue191-bad-m1_8h_html_a31a1aa6ebfbeb2dac6b910658a75466d"><div class="ttname"><a href="issue191-bad-m1_8h.html#a31a1aa6ebfbeb2dac6b910658a75466d">NEDGE</a></div><div class="ttdeci">#define NEDGE</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00023">issue191-bad-m1.h:23</a></div></div>
-<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00087">pgr_types.h:87</a></div></div>
+<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00058">pgr_types.h:58</a></div></div>
 <div class="ttc" id="testit_8cpp_html_a840291bc02cba5474a4cb46a9b9566fe"><div class="ttname"><a href="testit_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdef"><b>Definition:</b> <a href="testit_8cpp_source.html#l00033">testit.cpp:33</a></div></div>
 <div class="ttc" id="issue191-bad-m1_8h_html"><div class="ttname"><a href="issue191-bad-m1_8h.html">issue191-bad-m1.h</a></div></div>
-<div class="ttc" id="structpath__element__t_html_a9fffdd8747e83dc763bba6e8c7191e63"><div class="ttname"><a href="structpath__element__t.html#a9fffdd8747e83dc763bba6e8c7191e63">path_element_t::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00090">pgr_types.h:90</a></div></div>
+<div class="ttc" id="structpath__element__t_html_a9fffdd8747e83dc763bba6e8c7191e63"><div class="ttname"><a href="structpath__element__t.html#a9fffdd8747e83dc763bba6e8c7191e63">path_element_t::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00061">pgr_types.h:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ff9a90ff40b28e0f207f5cd80dcba32.html">trsp</a></li><li class="navelem"><a class="el" href="dir_d41efa9f2b4e139e73e0382c4486131a.html">tester</a></li><li class="navelem"><a class="el" href="testit_8cpp.html">testit.cpp</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:25 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:12 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

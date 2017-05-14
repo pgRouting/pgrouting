@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -117,6 +117,13 @@ $(document).ready(function(){initNavTree('classCTourInfo.html','');});
 <div class="contents">
 
 <p><code>#include &quot;<a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>&quot;</code></p>
+<div class="dynheader">
+Collaboration diagram for CTourInfo:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo__coll__graph.png" border="0" usemap="#CTourInfo_coll__map" alt="Collaboration graph"/></div>
+<map name="CTourInfo_coll__map" id="CTourInfo_coll__map">
+<area shape="rect" id="node2" href="classCVehicleInfo.html" title="CVehicleInfo" alt="" coords="5,5,101,32"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -209,7 +216,15 @@ Friends</h2></td></tr>
 <p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00082">82</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00231">m_dTotalCost</a>, <a class="el" href="VRP__Solver_8h_source.html#l00232">m_dTotalDistance</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00233">m_dTotalTraveltime</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                     {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="classCTourInfo.html#a05106e978f61000fb66df503f58f4049">m_dTotalCost</a> = 0.0;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="classCTourInfo.html#aa4bef0ee6af6197837e4a2c1dd06855a">m_dTotalDistance</a> = 0.0;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classCTourInfo.html#a7afb1eb931d433602de77211ed59163d">m_dTotalTraveltime</a> = 0.0;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="ttc" id="classCTourInfo_html_aa4bef0ee6af6197837e4a2c1dd06855a"><div class="ttname"><a href="classCTourInfo.html#aa4bef0ee6af6197837e4a2c1dd06855a">CTourInfo::m_dTotalDistance</a></div><div class="ttdeci">double m_dTotalDistance</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00232">VRP_Solver.h:232</a></div></div>
+<div class="ttc" id="classCTourInfo_html_a7afb1eb931d433602de77211ed59163d"><div class="ttname"><a href="classCTourInfo.html#a7afb1eb931d433602de77211ed59163d">CTourInfo::m_dTotalTraveltime</a></div><div class="ttdeci">double m_dTotalTraveltime</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00233">VRP_Solver.h:233</a></div></div>
+<div class="ttc" id="classCTourInfo_html_a05106e978f61000fb66df503f58f4049"><div class="ttname"><a href="classCTourInfo.html#a05106e978f61000fb66df503f58f4049">CTourInfo::m_dTotalCost</a></div><div class="ttdeci">double m_dTotalCost</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00231">VRP_Solver.h:231</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="ad7777834dc7d8a6b519294aea37e425c"></a>
@@ -226,7 +241,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00087">87</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{ }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -256,6 +272,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00231">m_dTotalCost</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00144">CSolutionInfo::addTour()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00677">CVRPSolver::getCostForInsert()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#a05106e978f61000fb66df503f58f4049">m_dTotalCost</a>;}</div>
+<div class="ttc" id="classCTourInfo_html_a05106e978f61000fb66df503f58f4049"><div class="ttname"><a href="classCTourInfo.html#a05106e978f61000fb66df503f58f4049">CTourInfo::m_dTotalCost</a></div><div class="ttdeci">double m_dTotalCost</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00231">VRP_Solver.h:231</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_ad4a04aa9fee7710c4e0d612a2bfa5912_icgraph.png" border="0" usemap="#classCTourInfo_ad4a04aa9fee7710c4e0d612a2bfa5912_icgraph" alt=""/></div>
+<map name="classCTourInfo_ad4a04aa9fee7710c4e0d612a2bfa5912_icgraph" id="classCTourInfo_ad4a04aa9fee7710c4e0d612a2bfa5912_icgraph">
+<area shape="rect" id="node2" href="classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045" title="CSolutionInfo::addTour" alt="" coords="213,5,369,32"/><area shape="rect" id="node3" href="classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="189,56,392,83"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -285,6 +312,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00232">m_dTotalDistance</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00144">CSolutionInfo::addTour()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00677">CVRPSolver::getCostForInsert()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#aa4bef0ee6af6197837e4a2c1dd06855a">m_dTotalDistance</a>;}</div>
+<div class="ttc" id="classCTourInfo_html_aa4bef0ee6af6197837e4a2c1dd06855a"><div class="ttname"><a href="classCTourInfo.html#aa4bef0ee6af6197837e4a2c1dd06855a">CTourInfo::m_dTotalDistance</a></div><div class="ttdeci">double m_dTotalDistance</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00232">VRP_Solver.h:232</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a94375b17ea41ebaa2520f6084dac3d54_icgraph.png" border="0" usemap="#classCTourInfo_a94375b17ea41ebaa2520f6084dac3d54_icgraph" alt=""/></div>
+<map name="classCTourInfo_a94375b17ea41ebaa2520f6084dac3d54_icgraph" id="classCTourInfo_a94375b17ea41ebaa2520f6084dac3d54_icgraph">
+<area shape="rect" id="node2" href="classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045" title="CSolutionInfo::addTour" alt="" coords="237,5,393,32"/><area shape="rect" id="node3" href="classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="213,56,416,83"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -314,6 +352,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00227">m_iEndDepotId</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__core_8cpp_source.html#l00139">find_vrp_solution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00677">CVRPSolver::getCostForInsert()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00357">CVRPSolver::getPotentialInsert()</a>, <a class="el" href="Tester_8cpp_source.html#l00191">print_solution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00616">CVRPSolver::updateTourCosts()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#a2f39d2ebd99f40e412fb2a70b72f7661">m_iEndDepotId</a>;}</div>
+<div class="ttc" id="classCTourInfo_html_a2f39d2ebd99f40e412fb2a70b72f7661"><div class="ttname"><a href="classCTourInfo.html#a2f39d2ebd99f40e412fb2a70b72f7661">CTourInfo::m_iEndDepotId</a></div><div class="ttdeci">int m_iEndDepotId</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00227">VRP_Solver.h:227</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a07109bda93132a10a902c748829bc64e_icgraph.png" border="0" usemap="#classCTourInfo_a07109bda93132a10a902c748829bc64e_icgraph" alt=""/></div>
+<map name="classCTourInfo_a07109bda93132a10a902c748829bc64e_icgraph" id="classCTourInfo_a07109bda93132a10a902c748829bc64e_icgraph">
+<area shape="rect" id="node2" href="VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="261,5,381,32"/><area shape="rect" id="node3" href="classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="220,56,423,83"/><area shape="rect" id="node4" href="classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="473,74,647,115"/><area shape="rect" id="node5" href="Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2" title="print_solution" alt="" coords="272,157,371,184"/><area shape="rect" id="node6" href="classCVRPSolver.html#a454e4158281f70f3f450ecf08319546e" title="CVRPSolver::updateTourCosts" alt="" coords="219,208,424,235"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -343,6 +392,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00229">m_viOrderIds</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00144">CSolutionInfo::addTour()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00139">find_vrp_solution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00677">CVRPSolver::getCostForInsert()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00357">CVRPSolver::getPotentialInsert()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00599">CVRPSolver::insertOrder()</a>, <a class="el" href="Tester_8cpp_source.html#l00191">print_solution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00616">CVRPSolver::updateTourCosts()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>;}</div>
+<div class="ttc" id="classCTourInfo_html_a6dbb9aa6da8b431959a71da2e4bbb5b0"><div class="ttname"><a href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">CTourInfo::m_viOrderIds</a></div><div class="ttdeci">std::vector&lt; int &gt; m_viOrderIds</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00229">VRP_Solver.h:229</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a88edb80bf3bda693a25d11c1344ae97e_icgraph.png" border="0" usemap="#classCTourInfo_a88edb80bf3bda693a25d11c1344ae97e_icgraph" alt=""/></div>
+<map name="classCTourInfo_a88edb80bf3bda693a25d11c1344ae97e_icgraph" id="classCTourInfo_a88edb80bf3bda693a25d11c1344ae97e_icgraph">
+<area shape="rect" id="node2" href="classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045" title="CSolutionInfo::addTour" alt="" coords="254,5,410,32"/><area shape="rect" id="node3" href="VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="272,56,392,83"/><area shape="rect" id="node4" href="classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="231,107,433,133"/><area shape="rect" id="node5" href="classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="483,125,658,166"/><area shape="rect" id="node6" href="classCVRPSolver.html#afe08f85c746f5cec359e2ee8fb2ee1d0" title="CVRPSolver::insertOrder" alt="" coords="486,237,655,264"/><area shape="rect" id="node7" href="Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2" title="print_solution" alt="" coords="283,259,381,285"/><area shape="rect" id="node8" href="classCVRPSolver.html#a454e4158281f70f3f450ecf08319546e" title="CVRPSolver::updateTourCosts" alt="" coords="229,309,435,336"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -364,6 +424,29 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00066">CVehicleInfo::getRemainingCapacity()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00225">m_vehicleInfo</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00357">CVRPSolver::getPotentialInsert()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                    {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span>(<a class="code" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">m_vehicleInfo</a>.<a class="code" href="classCVehicleInfo.html#a99f38490b220f3673ff6b3a50e5e0a4e">getRemainingCapacity</a>());</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="ttc" id="classCVehicleInfo_html_a99f38490b220f3673ff6b3a50e5e0a4e"><div class="ttname"><a href="classCVehicleInfo.html#a99f38490b220f3673ff6b3a50e5e0a4e">CVehicleInfo::getRemainingCapacity</a></div><div class="ttdeci">int getRemainingCapacity()</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00066">VRP_Solver.h:66</a></div></div>
+<div class="ttc" id="classCTourInfo_html_aa565d21d7cd50eaaf55fc5b6fe63c5ac"><div class="ttname"><a href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">CTourInfo::m_vehicleInfo</a></div><div class="ttdeci">CVehicleInfo m_vehicleInfo</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00225">VRP_Solver.h:225</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a914e8967494dcb633f156bd41e84eb81_cgraph.png" border="0" usemap="#classCTourInfo_a914e8967494dcb633f156bd41e84eb81_cgraph" alt=""/></div>
+<map name="classCTourInfo_a914e8967494dcb633f156bd41e84eb81_cgraph" id="classCTourInfo_a914e8967494dcb633f156bd41e84eb81_cgraph">
+<area shape="rect" id="node2" href="classCVehicleInfo.html#a99f38490b220f3673ff6b3a50e5e0a4e" title="CVehicleInfo::getRemaining\lCapacity" alt="" coords="275,5,461,46"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a914e8967494dcb633f156bd41e84eb81_icgraph.png" border="0" usemap="#classCTourInfo_a914e8967494dcb633f156bd41e84eb81_icgraph" alt=""/></div>
+<map name="classCTourInfo_a914e8967494dcb633f156bd41e84eb81_icgraph" id="classCTourInfo_a914e8967494dcb633f156bd41e84eb81_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="275,5,450,46"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -393,6 +476,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00229">m_viOrderIds</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__core_8cpp_source.html#l00139">find_vrp_solution()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.size();}</div>
+<div class="ttc" id="classCTourInfo_html_a6dbb9aa6da8b431959a71da2e4bbb5b0"><div class="ttname"><a href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">CTourInfo::m_viOrderIds</a></div><div class="ttdeci">std::vector&lt; int &gt; m_viOrderIds</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00229">VRP_Solver.h:229</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_afb41915c324048c47a4bdf64a70eec08_icgraph.png" border="0" usemap="#classCTourInfo_afb41915c324048c47a4bdf64a70eec08_icgraph" alt=""/></div>
+<map name="classCTourInfo_afb41915c324048c47a4bdf64a70eec08_icgraph" id="classCTourInfo_afb41915c324048c47a4bdf64a70eec08_icgraph">
+<area shape="rect" id="node2" href="VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="232,12,352,39"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -422,6 +516,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00226">m_iStartDepotId</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__core_8cpp_source.html#l00139">find_vrp_solution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00677">CVRPSolver::getCostForInsert()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00357">CVRPSolver::getPotentialInsert()</a>, <a class="el" href="Tester_8cpp_source.html#l00191">print_solution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00616">CVRPSolver::updateTourCosts()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#a9db9cb1027bfec2e4e9b171843ae797a">m_iStartDepotId</a>;}</div>
+<div class="ttc" id="classCTourInfo_html_a9db9cb1027bfec2e4e9b171843ae797a"><div class="ttname"><a href="classCTourInfo.html#a9db9cb1027bfec2e4e9b171843ae797a">CTourInfo::m_iStartDepotId</a></div><div class="ttdeci">int m_iStartDepotId</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00226">VRP_Solver.h:226</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_afbb2a06f880213c22a23a556e684d70b_icgraph.png" border="0" usemap="#classCTourInfo_afbb2a06f880213c22a23a556e684d70b_icgraph" alt=""/></div>
+<map name="classCTourInfo_afbb2a06f880213c22a23a556e684d70b_icgraph" id="classCTourInfo_afbb2a06f880213c22a23a556e684d70b_icgraph">
+<area shape="rect" id="node2" href="VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="267,5,387,32"/><area shape="rect" id="node3" href="classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="225,56,428,83"/><area shape="rect" id="node4" href="classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="478,74,653,115"/><area shape="rect" id="node5" href="Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2" title="print_solution" alt="" coords="277,157,376,184"/><area shape="rect" id="node6" href="classCVRPSolver.html#a454e4158281f70f3f450ecf08319546e" title="CVRPSolver::updateTourCosts" alt="" coords="224,208,429,235"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -452,6 +557,22 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00230">m_viStartTime</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__core_8cpp_source.html#l00139">find_vrp_solution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00357">CVRPSolver::getPotentialInsert()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                               {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;         <span class="keywordflow">if</span> ((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) pos &gt;= <a class="code" href="classCTourInfo.html#ae1c929cf63b34f594e8cb4430fa657db">m_viStartTime</a>.size())</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;             <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;         <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;             <span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#ae1c929cf63b34f594e8cb4430fa657db">m_viStartTime</a>[pos];</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;     }</div>
+<div class="ttc" id="classCTourInfo_html_ae1c929cf63b34f594e8cb4430fa657db"><div class="ttname"><a href="classCTourInfo.html#ae1c929cf63b34f594e8cb4430fa657db">CTourInfo::m_viStartTime</a></div><div class="ttdeci">std::vector&lt; int &gt; m_viStartTime</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00230">VRP_Solver.h:230</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a73e8ae3b055b08d1d9392498bf56a7ee_icgraph.png" border="0" usemap="#classCTourInfo_a73e8ae3b055b08d1d9392498bf56a7ee_icgraph" alt=""/></div>
+<map name="classCTourInfo_a73e8ae3b055b08d1d9392498bf56a7ee_icgraph" id="classCTourInfo_a73e8ae3b055b08d1d9392498bf56a7ee_icgraph">
+<area shape="rect" id="node2" href="VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="244,5,364,32"/><area shape="rect" id="node3" href="classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="217,57,391,98"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -481,6 +602,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00233">m_dTotalTraveltime</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00144">CSolutionInfo::addTour()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00677">CVRPSolver::getCostForInsert()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#a7afb1eb931d433602de77211ed59163d">m_dTotalTraveltime</a>;}</div>
+<div class="ttc" id="classCTourInfo_html_a7afb1eb931d433602de77211ed59163d"><div class="ttname"><a href="classCTourInfo.html#a7afb1eb931d433602de77211ed59163d">CTourInfo::m_dTotalTraveltime</a></div><div class="ttdeci">double m_dTotalTraveltime</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00233">VRP_Solver.h:233</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_afba603f47cfe77fe124436b57299c637_icgraph.png" border="0" usemap="#classCTourInfo_afba603f47cfe77fe124436b57299c637_icgraph" alt=""/></div>
+<map name="classCTourInfo_afba603f47cfe77fe124436b57299c637_icgraph" id="classCTourInfo_afba603f47cfe77fe124436b57299c637_icgraph">
+<area shape="rect" id="node2" href="classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045" title="CSolutionInfo::addTour" alt="" coords="247,5,403,32"/><area shape="rect" id="node3" href="classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="224,56,427,83"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -510,6 +642,27 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00073">CVehicleInfo::getId()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00225">m_vehicleInfo</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00144">CSolutionInfo::addTour()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00734">CVRPSolver::attemptVehicleExchange()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00139">find_vrp_solution()</a>, <a class="el" href="Tester_8cpp_source.html#l00191">print_solution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00112">CSolutionInfo::replaceTour()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">m_vehicleInfo</a>.<a class="code" href="classCVehicleInfo.html#a259ae223ccf44cd5ab7ce26398772fa3">getId</a>();}</div>
+<div class="ttc" id="classCVehicleInfo_html_a259ae223ccf44cd5ab7ce26398772fa3"><div class="ttname"><a href="classCVehicleInfo.html#a259ae223ccf44cd5ab7ce26398772fa3">CVehicleInfo::getId</a></div><div class="ttdeci">int getId()</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00073">VRP_Solver.h:73</a></div></div>
+<div class="ttc" id="classCTourInfo_html_aa565d21d7cd50eaaf55fc5b6fe63c5ac"><div class="ttname"><a href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">CTourInfo::m_vehicleInfo</a></div><div class="ttdeci">CVehicleInfo m_vehicleInfo</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00225">VRP_Solver.h:225</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_aa293f37c8f79cff6c234077b0679fac1_cgraph.png" border="0" usemap="#classCTourInfo_aa293f37c8f79cff6c234077b0679fac1_cgraph" alt=""/></div>
+<map name="classCTourInfo_aa293f37c8f79cff6c234077b0679fac1_cgraph" id="classCTourInfo_aa293f37c8f79cff6c234077b0679fac1_cgraph">
+<area shape="rect" id="node2" href="classCVehicleInfo.html#a259ae223ccf44cd5ab7ce26398772fa3" title="CVehicleInfo::getId" alt="" coords="214,5,349,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_aa293f37c8f79cff6c234077b0679fac1_icgraph.png" border="0" usemap="#classCTourInfo_aa293f37c8f79cff6c234077b0679fac1_icgraph" alt=""/></div>
+<map name="classCTourInfo_aa293f37c8f79cff6c234077b0679fac1_icgraph" id="classCTourInfo_aa293f37c8f79cff6c234077b0679fac1_icgraph">
+<area shape="rect" id="node2" href="classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045" title="CSolutionInfo::addTour" alt="" coords="231,5,387,32"/><area shape="rect" id="node3" href="classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393" title="CVRPSolver::attemptVehicle\lExchange" alt="" coords="213,57,405,98"/><area shape="rect" id="node4" href="VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="249,123,369,149"/><area shape="rect" id="node5" href="Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2" title="print_solution" alt="" coords="260,173,359,200"/><area shape="rect" id="node6" href="classCSolutionInfo.html#a18c0d607d4c5c3119858bc8ea6590580" title="CSolutionInfo::replaceTour" alt="" coords="221,224,398,251"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -539,6 +692,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00225">m_vehicleInfo</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00734">CVRPSolver::attemptVehicleExchange()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00599">CVRPSolver::insertOrder()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">m_vehicleInfo</a>;}</div>
+<div class="ttc" id="classCTourInfo_html_aa565d21d7cd50eaaf55fc5b6fe63c5ac"><div class="ttname"><a href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">CTourInfo::m_vehicleInfo</a></div><div class="ttdeci">CVehicleInfo m_vehicleInfo</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00225">VRP_Solver.h:225</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a472803511c17a75f750bcdcf8df72136_icgraph.png" border="0" usemap="#classCTourInfo_a472803511c17a75f750bcdcf8df72136_icgraph" alt=""/></div>
+<map name="classCTourInfo_a472803511c17a75f750bcdcf8df72136_icgraph" id="classCTourInfo_a472803511c17a75f750bcdcf8df72136_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393" title="CVRPSolver::attemptVehicle\lExchange" alt="" coords="224,5,416,46"/><area shape="rect" id="node3" href="classCVRPSolver.html#afe08f85c746f5cec359e2ee8fb2ee1d0" title="CVRPSolver::insertOrder" alt="" coords="235,71,405,97"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -586,6 +750,20 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00229">m_viOrderIds</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00599">CVRPSolver::insertOrder()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                                {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.insert(<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.begin() + pos, orderId);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="ttc" id="classCTourInfo_html_a6dbb9aa6da8b431959a71da2e4bbb5b0"><div class="ttname"><a href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">CTourInfo::m_viOrderIds</a></div><div class="ttdeci">std::vector&lt; int &gt; m_viOrderIds</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00229">VRP_Solver.h:229</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_ac7a8b3ea9abf1f12b7872159dc62f0b1_icgraph.png" border="0" usemap="#classCTourInfo_ac7a8b3ea9abf1f12b7872159dc62f0b1_icgraph" alt=""/></div>
+<map name="classCTourInfo_ac7a8b3ea9abf1f12b7872159dc62f0b1_icgraph" id="classCTourInfo_ac7a8b3ea9abf1f12b7872159dc62f0b1_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#afe08f85c746f5cec359e2ee8fb2ee1d0" title="CVRPSolver::insertOrder" alt="" coords="206,5,375,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -608,6 +786,20 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00229">m_viOrderIds</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00599">CVRPSolver::insertOrder()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                   {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.erase(<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.begin() + pos);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="ttc" id="classCTourInfo_html_a6dbb9aa6da8b431959a71da2e4bbb5b0"><div class="ttname"><a href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">CTourInfo::m_viOrderIds</a></div><div class="ttdeci">std::vector&lt; int &gt; m_viOrderIds</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00229">VRP_Solver.h:229</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_aecafef8fae1a628beca2739bcfb6d583_icgraph.png" border="0" usemap="#classCTourInfo_aecafef8fae1a628beca2739bcfb6d583_icgraph" alt=""/></div>
+<map name="classCTourInfo_aecafef8fae1a628beca2739bcfb6d583_icgraph" id="classCTourInfo_aecafef8fae1a628beca2739bcfb6d583_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#afe08f85c746f5cec359e2ee8fb2ee1d0" title="CVRPSolver::insertOrder" alt="" coords="217,5,386,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -638,6 +830,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00227">m_iEndDepotId</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00262">CVRPSolver::generateInitialSolution()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;{<a class="code" href="classCTourInfo.html#a2f39d2ebd99f40e412fb2a70b72f7661">m_iEndDepotId</a> = depotId;}</div>
+<div class="ttc" id="classCTourInfo_html_a2f39d2ebd99f40e412fb2a70b72f7661"><div class="ttname"><a href="classCTourInfo.html#a2f39d2ebd99f40e412fb2a70b72f7661">CTourInfo::m_iEndDepotId</a></div><div class="ttdeci">int m_iEndDepotId</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00227">VRP_Solver.h:227</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a774bd7b689aa879d67b19c6875897360_icgraph.png" border="0" usemap="#classCTourInfo_a774bd7b689aa879d67b19c6875897360_icgraph" alt=""/></div>
+<map name="classCTourInfo_a774bd7b689aa879d67b19c6875897360_icgraph" id="classCTourInfo_a774bd7b689aa879d67b19c6875897360_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#a98e957d6621f536a52dbd9a98e3b7347" title="CVRPSolver::generateInitial\lSolution" alt="" coords="219,5,405,46"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -668,6 +871,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00226">m_iStartDepotId</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00262">CVRPSolver::generateInitialSolution()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;{<a class="code" href="classCTourInfo.html#a9db9cb1027bfec2e4e9b171843ae797a">m_iStartDepotId</a> = depotId;}</div>
+<div class="ttc" id="classCTourInfo_html_a9db9cb1027bfec2e4e9b171843ae797a"><div class="ttname"><a href="classCTourInfo.html#a9db9cb1027bfec2e4e9b171843ae797a">CTourInfo::m_iStartDepotId</a></div><div class="ttdeci">int m_iStartDepotId</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00226">VRP_Solver.h:226</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_af19e416323ab901041d06419a433f4c7_icgraph.png" border="0" usemap="#classCTourInfo_af19e416323ab901041d06419a433f4c7_icgraph" alt=""/></div>
+<map name="classCTourInfo_af19e416323ab901041d06419a433f4c7_icgraph" id="classCTourInfo_af19e416323ab901041d06419a433f4c7_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#a98e957d6621f536a52dbd9a98e3b7347" title="CVRPSolver::generateInitial\lSolution" alt="" coords="224,5,411,46"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -698,6 +912,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00230">m_viStartTime</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00616">CVRPSolver::updateTourCosts()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{<a class="code" href="classCTourInfo.html#ae1c929cf63b34f594e8cb4430fa657db">m_viStartTime</a> = vStartTime;}</div>
+<div class="ttc" id="classCTourInfo_html_ae1c929cf63b34f594e8cb4430fa657db"><div class="ttname"><a href="classCTourInfo.html#ae1c929cf63b34f594e8cb4430fa657db">CTourInfo::m_viStartTime</a></div><div class="ttdeci">std::vector&lt; int &gt; m_viStartTime</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00230">VRP_Solver.h:230</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_adc67bee772f3d746eb7ab883fff00d7c_icgraph.png" border="0" usemap="#classCTourInfo_adc67bee772f3d746eb7ab883fff00d7c_icgraph" alt=""/></div>
+<map name="classCTourInfo_adc67bee772f3d746eb7ab883fff00d7c_icgraph" id="classCTourInfo_adc67bee772f3d746eb7ab883fff00d7c_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#a454e4158281f70f3f450ecf08319546e" title="CVRPSolver::updateTourCosts" alt="" coords="216,5,421,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -728,6 +953,17 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00225">m_vehicleInfo</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00734">CVRPSolver::attemptVehicleExchange()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00262">CVRPSolver::generateInitialSolution()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;{<a class="code" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">m_vehicleInfo</a> = vehicleInfo;}</div>
+<div class="ttc" id="classCTourInfo_html_aa565d21d7cd50eaaf55fc5b6fe63c5ac"><div class="ttname"><a href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">CTourInfo::m_vehicleInfo</a></div><div class="ttdeci">CVehicleInfo m_vehicleInfo</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00225">VRP_Solver.h:225</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_a7b2c7e9d818a467f994ad7c571a4bc96_icgraph.png" border="0" usemap="#classCTourInfo_a7b2c7e9d818a467f994ad7c571a4bc96_icgraph" alt=""/></div>
+<map name="classCTourInfo_a7b2c7e9d818a467f994ad7c571a4bc96_icgraph" id="classCTourInfo_a7b2c7e9d818a467f994ad7c571a4bc96_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393" title="CVRPSolver::attemptVehicle\lExchange" alt="" coords="224,5,416,46"/><area shape="rect" id="node3" href="classCVRPSolver.html#a98e957d6621f536a52dbd9a98e3b7347" title="CVRPSolver::generateInitial\lSolution" alt="" coords="227,70,413,111"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -766,6 +1002,23 @@ Friends</h2></td></tr>
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00231">m_dTotalCost</a>, <a class="el" href="VRP__Solver_8h_source.html#l00232">m_dTotalDistance</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00233">m_dTotalTraveltime</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00616">CVRPSolver::updateTourCosts()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classCTourInfo.html#a05106e978f61000fb66df503f58f4049">m_dTotalCost</a> = cost;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="classCTourInfo.html#aa4bef0ee6af6197837e4a2c1dd06855a">m_dTotalDistance</a> = distance;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="classCTourInfo.html#a7afb1eb931d433602de77211ed59163d">m_dTotalTraveltime</a> = travelTime;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="ttc" id="classCTourInfo_html_aa4bef0ee6af6197837e4a2c1dd06855a"><div class="ttname"><a href="classCTourInfo.html#aa4bef0ee6af6197837e4a2c1dd06855a">CTourInfo::m_dTotalDistance</a></div><div class="ttdeci">double m_dTotalDistance</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00232">VRP_Solver.h:232</a></div></div>
+<div class="ttc" id="classCTourInfo_html_a7afb1eb931d433602de77211ed59163d"><div class="ttname"><a href="classCTourInfo.html#a7afb1eb931d433602de77211ed59163d">CTourInfo::m_dTotalTraveltime</a></div><div class="ttdeci">double m_dTotalTraveltime</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00233">VRP_Solver.h:233</a></div></div>
+<div class="ttc" id="classCTourInfo_html_a05106e978f61000fb66df503f58f4049"><div class="ttname"><a href="classCTourInfo.html#a05106e978f61000fb66df503f58f4049">CTourInfo::m_dTotalCost</a></div><div class="ttdeci">double m_dTotalCost</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00231">VRP_Solver.h:231</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCTourInfo_ac5a226925fe44ba1e5aed566bf479908_icgraph.png" border="0" usemap="#classCTourInfo_ac5a226925fe44ba1e5aed566bf479908_icgraph" alt=""/></div>
+<map name="classCTourInfo_ac5a226925fe44ba1e5aed566bf479908_icgraph" id="classCTourInfo_ac5a226925fe44ba1e5aed566bf479908_icgraph">
+<area shape="rect" id="node2" href="classCVRPSolver.html#a454e4158281f70f3f450ecf08319546e" title="CVRPSolver::updateTourCosts" alt="" coords="208,5,413,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -803,7 +1056,16 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00045">45</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                               {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span> (cur.<a class="code" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">m_vehicleInfo</a> != that.<a class="code" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">m_vehicleInfo</a>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (cur.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.size() != that.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.size())</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> std::equal(cur.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.begin(), cur.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.end(), that.<a class="code" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">m_viOrderIds</a>.begin());</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="ttc" id="classCTourInfo_html_a6dbb9aa6da8b431959a71da2e4bbb5b0"><div class="ttname"><a href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">CTourInfo::m_viOrderIds</a></div><div class="ttdeci">std::vector&lt; int &gt; m_viOrderIds</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00229">VRP_Solver.h:229</a></div></div>
+<div class="ttc" id="classCTourInfo_html_aa565d21d7cd50eaaf55fc5b6fe63c5ac"><div class="ttname"><a href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">CTourInfo::m_vehicleInfo</a></div><div class="ttdeci">CVehicleInfo m_vehicleInfo</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00225">VRP_Solver.h:225</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -1022,8 +1284,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a></li>
-<li><a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a></li>
+<li>/home/vicky/pgrouting/pgrouting/pgrouting/src/vrp_basic/src/<a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a></li>
+<li>/home/vicky/pgrouting/pgrouting/pgrouting/src/vrp_basic/src/<a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -1031,7 +1293,7 @@ Friends</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classCTourInfo.html">CTourInfo</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:27 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:13 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

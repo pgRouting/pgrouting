@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: pgr_withPoints.hpp Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/withPoints/src/pgr_withPoints.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -141,8 +141,8 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8hpp_source.html','');
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/basePath_SSEC.hpp&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="point__on__edge__t_8h.html">c_types/point_on_edge_t.h</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="basePath__SSEC_8hpp.html">cpp_common/basePath_SSEC.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">int</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="pgr__withPoints_8hpp.html#aafd53873fa63967f96fc3bfcd6481d6c">check_points</a>(</div>
@@ -181,19 +181,21 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8hpp_source.html','');
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif  // SRC_WITHPOINTS_SRC_PGR_WITHPOINTS_HPP_</span></div>
 <div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
-<div class="ttc" id="pgr__withPoints_8hpp_html_aafd53873fa63967f96fc3bfcd6481d6c"><div class="ttname"><a href="pgr__withPoints_8hpp.html#aafd53873fa63967f96fc3bfcd6481d6c">check_points</a></div><div class="ttdeci">int check_points(std::vector&lt; Point_on_edge_t &gt; &amp;points, std::ostringstream &amp;log)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00064">pgr_withPoints.cpp:64</a></div></div>
-<div class="ttc" id="pgr__withPoints_8hpp_html_a78454780d695ee33ad171a220e3e9f38"><div class="ttname"><a href="pgr__withPoints_8hpp.html#a78454780d695ee33ad171a220e3e9f38">eliminate_details_dd</a></div><div class="ttdeci">void eliminate_details_dd(Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00107">pgr_withPoints.cpp:107</a></div></div>
-<div class="ttc" id="pgr__withPoints_8hpp_html_a0ed4ba674c8ad93b59ff6a23c43a744f"><div class="ttname"><a href="pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">eliminate_details</a></div><div class="ttdeci">void eliminate_details(Path &amp;path, const std::vector&lt; pgr_edge_t &gt; &amp;point_edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00128">pgr_withPoints.cpp:128</a></div></div>
-<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00042">basePath_SSEC.hpp:42</a></div></div>
-<div class="ttc" id="pgr__withPoints_8hpp_html_a8cec1ed8745e8bf1970157f97c499f43"><div class="ttname"><a href="pgr__withPoints_8hpp.html#a8cec1ed8745e8bf1970157f97c499f43">adjust_pids</a></div><div class="ttdeci">void adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00193">pgr_withPoints.cpp:193</a></div></div>
-<div class="ttc" id="pgr__withPoints_8hpp_html_a1bbabefee9e49fba0af4190ec65d1529"><div class="ttname"><a href="pgr__withPoints_8hpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a></div><div class="ttdeci">bool create_new_edges(std::vector&lt; Point_on_edge_t &gt; &amp;points, const std::vector&lt; pgr_edge_t &gt; &amp;edges, char driving_side, std::vector&lt; pgr_edge_t &gt; &amp;new_edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00229">pgr_withPoints.cpp:229</a></div></div>
+<div class="ttc" id="point__on__edge__t_8h_html"><div class="ttname"><a href="point__on__edge__t_8h.html">point_on_edge_t.h</a></div></div>
+<div class="ttc" id="pgr__withPoints_8hpp_html_aafd53873fa63967f96fc3bfcd6481d6c"><div class="ttname"><a href="pgr__withPoints_8hpp.html#aafd53873fa63967f96fc3bfcd6481d6c">check_points</a></div><div class="ttdeci">int check_points(std::vector&lt; Point_on_edge_t &gt; &amp;points, std::ostringstream &amp;log)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00063">pgr_withPoints.cpp:63</a></div></div>
+<div class="ttc" id="pgr__withPoints_8hpp_html_a78454780d695ee33ad171a220e3e9f38"><div class="ttname"><a href="pgr__withPoints_8hpp.html#a78454780d695ee33ad171a220e3e9f38">eliminate_details_dd</a></div><div class="ttdeci">void eliminate_details_dd(Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00106">pgr_withPoints.cpp:106</a></div></div>
+<div class="ttc" id="pgr__withPoints_8hpp_html_a0ed4ba674c8ad93b59ff6a23c43a744f"><div class="ttname"><a href="pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">eliminate_details</a></div><div class="ttdeci">void eliminate_details(Path &amp;path, const std::vector&lt; pgr_edge_t &gt; &amp;point_edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00127">pgr_withPoints.cpp:127</a></div></div>
+<div class="ttc" id="basePath__SSEC_8hpp_html"><div class="ttname"><a href="basePath__SSEC_8hpp.html">basePath_SSEC.hpp</a></div></div>
+<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
+<div class="ttc" id="pgr__withPoints_8hpp_html_a8cec1ed8745e8bf1970157f97c499f43"><div class="ttname"><a href="pgr__withPoints_8hpp.html#a8cec1ed8745e8bf1970157f97c499f43">adjust_pids</a></div><div class="ttdeci">void adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00192">pgr_withPoints.cpp:192</a></div></div>
+<div class="ttc" id="pgr__withPoints_8hpp_html_a1bbabefee9e49fba0af4190ec65d1529"><div class="ttname"><a href="pgr__withPoints_8hpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a></div><div class="ttdeci">bool create_new_edges(std::vector&lt; Point_on_edge_t &gt; &amp;points, const std::vector&lt; pgr_edge_t &gt; &amp;edges, char driving_side, std::vector&lt; pgr_edge_t &gt; &amp;new_edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00228">pgr_withPoints.cpp:228</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_db4188eb592e899b4ab759c326d3f65f.html">withPoints</a></li><li class="navelem"><a class="el" href="dir_8dc78dc14affe115084060e017054e86.html">src</a></li><li class="navelem"><a class="el" href="pgr__withPoints_8hpp.html">pgr_withPoints.hpp</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:25 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:12 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

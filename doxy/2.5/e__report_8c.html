@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: e_report.c File Reference</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/common/src/e_report.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -110,9 +110,16 @@ $(document).ready(function(){initNavTree('e__report_8c.html','');});
 <div class="title">e_report.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="postgres__connection_8h_source.html">./postgres_connection.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="debug__macro_8h_source.html">./debug_macro.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="e__report_8h_source.html">./e_report.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="postgres__connection_8h_source.html">c_common/postgres_connection.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="debug__macro_8h_source.html">c_common/debug_macro.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="e__report_8h_source.html">c_common/e_report.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for e_report.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="e__report_8c__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2e__report_8c" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2e__report_8c" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2e__report_8c">
+<area shape="rect" id="node2" href="postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,184,227,211"/><area shape="rect" id="node3" href="debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="91,109,269,136"/><area shape="rect" id="node4" href="e__report_8h.html" title="c_common/e_report.h" alt="" coords="294,109,441,136"/></map>
+</div>
 </div>
 <p><a href="e__report_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -161,6 +168,33 @@ Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="e__report_8c_source.html#l00061">61</a> of file <a class="el" href="e__report_8c_source.html">e_report.c</a>.</p>
 
 <p>References <a class="el" href="postgres__connection_8c_source.html#l00052">pgr_cstring2char()</a>, and <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                     {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned error message = %s&quot;</span>, err);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">char</span> *error = NULL;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (*err_msg) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        error = <a class="code" href="postgres__connection_8c.html#a92be7b70bae8b40280045023922bffb4">pgr_cstring2char</a>(*err_msg);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        free(*err_msg);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">if</span> (err) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        ereport(ERROR,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                (errmsg_internal(<span class="stringliteral">&quot;Unexpected&quot;</span>),</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                 errhint(<span class="stringliteral">&quot;%s&quot;</span>, err)));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_a92be7b70bae8b40280045023922bffb4"><div class="ttname"><a href="postgres__connection_8c.html#a92be7b70bae8b40280045023922bffb4">pgr_cstring2char</a></div><div class="ttdeci">char * pgr_cstring2char(const char *inStr)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00052">postgres_connection.c:52</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="e__report_8c_a4c5fc9e694e072410322f8660e99057b_cgraph.png" border="0" usemap="#e__report_8c_a4c5fc9e694e072410322f8660e99057b_cgraph" alt=""/></div>
+<map name="e__report_8c_a4c5fc9e694e072410322f8660e99057b_cgraph" id="e__report_8c_a4c5fc9e694e072410322f8660e99057b_cgraph">
+<area shape="rect" id="node2" href="postgres__connection_8c.html#a92be7b70bae8b40280045023922bffb4" title="pgr_cstring2char" alt="" coords="129,5,247,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -201,7 +235,18 @@ Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="e__report_8c_source.html#l00079">79</a> of file <a class="el" href="e__report_8c_source.html">e_report.c</a>.</p>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                   {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned log message = %s&quot;</span>, log);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned error message = %s&quot;</span>, err);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (err) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        ereport(ERROR,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                (errmsg_internal(<span class="stringliteral">&quot;%s&quot;</span>, err),</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                 errhint(<span class="stringliteral">&quot;%s&quot;</span>, log)));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aa7833fe4baf65aa901e1129575e7deb2"></a>
@@ -244,7 +289,44 @@ Functions</h2></td></tr>
 </div><!-- fragment --> 
 <p>Definition at line <a class="el" href="e__report_8c_source.html#l00093">93</a> of file <a class="el" href="e__report_8c_source.html">e_report.c</a>.</p>
 
-<p>Referenced by <a class="el" href="ksp_8c_source.html#l00040">compute()</a>, and <a class="el" href="astar_8c_source.html#l00048">process()</a>.</p>
+<p>Referenced by <a class="el" href="ksp_8c_source.html#l00039">compute()</a>, and <a class="el" href="astar_8c_source.html#l00047">process()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                   {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (!notice &amp;&amp; log) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        ereport(DEBUG1,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                (errmsg_internal(<span class="stringliteral">&quot;%s&quot;</span>, log)));</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (notice) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span> (log) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            ereport(NOTICE,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    (errmsg_internal(<span class="stringliteral">&quot;%s&quot;</span>, notice),</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                     errhint(<span class="stringliteral">&quot;%s&quot;</span>, log)));</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            ereport(NOTICE,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    (errmsg_internal(<span class="stringliteral">&quot;%s&quot;</span>, notice)));</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">if</span> (err) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">if</span> (log) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            ereport(ERROR,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    (errmsg_internal(<span class="stringliteral">&quot;%s&quot;</span>, err),</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                     errhint(<span class="stringliteral">&quot;%s&quot;</span>, log)));</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            ereport(ERROR,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    (errmsg_internal(<span class="stringliteral">&quot;%s&quot;</span>, err)));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="e__report_8c_aa7833fe4baf65aa901e1129575e7deb2_icgraph.png" border="0" usemap="#e__report_8c_aa7833fe4baf65aa901e1129575e7deb2_icgraph" alt=""/></div>
+<map name="e__report_8c_aa7833fe4baf65aa901e1129575e7deb2_icgraph" id="e__report_8c_aa7833fe4baf65aa901e1129575e7deb2_icgraph">
+<area shape="rect" id="node2" href="ksp_8c.html#a52758640112b3890a121f34736385839" title="compute" alt="" coords="176,5,248,32"/><area shape="rect" id="node3" href="astar_8c.html#aaaf7184e9c115d16cd3d635bdaadf808" title="process" alt="" coords="178,56,246,83"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -274,6 +356,24 @@ Functions</h2></td></tr>
 <p>References <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>.</p>
 
 <p>Referenced by <a class="el" href="e__report_8c_source.html#l00042">pgr_notice2()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                      {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned notice message = %s&quot;</span>, notice);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> (notice) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        ereport(NOTICE,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                (errmsg(<span class="stringliteral">&quot;%s&quot;</span>, notice)));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="e__report_8c_a23a4841988771dc4e53aca10a515e9fc_icgraph.png" border="0" usemap="#e__report_8c_a23a4841988771dc4e53aca10a515e9fc_icgraph" alt=""/></div>
+<map name="e__report_8c_a23a4841988771dc4e53aca10a515e9fc_icgraph" id="e__report_8c_a23a4841988771dc4e53aca10a515e9fc_icgraph">
+<area shape="rect" id="node2" href="e__report_8h.html#ade714d8aeb3ee5a3a0ac93952117ec08" title="notice with hint " alt="" coords="137,5,226,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -311,6 +411,32 @@ Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="e__report_8c_source.html#l00042">42</a> of file <a class="el" href="e__report_8c_source.html">e_report.c</a>.</p>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>, and <a class="el" href="e__report_8c_source.html#l00031">pgr_notice()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                      {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned log message = %s&quot;</span>, log);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned notice message = %s&quot;</span>, notice);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (log) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="e__report_8c.html#a23a4841988771dc4e53aca10a515e9fc">pgr_notice</a>(notice);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span> (notice) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        ereport(NOTICE,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                (errmsg(<span class="stringliteral">&quot;%s&quot;</span>, notice),</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                 errhint(<span class="stringliteral">&quot;%s&quot;</span>, log)));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
+<div class="ttc" id="e__report_8c_html_a23a4841988771dc4e53aca10a515e9fc"><div class="ttname"><a href="e__report_8c.html#a23a4841988771dc4e53aca10a515e9fc">pgr_notice</a></div><div class="ttdeci">void pgr_notice(char *notice)</div><div class="ttdoc">notice with no hint </div><div class="ttdef"><b>Definition:</b> <a href="e__report_8c_source.html#l00031">e_report.c:31</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="e__report_8c_aab1527246778c9e1623342636ac1d6de_cgraph.png" border="0" usemap="#e__report_8c_aab1527246778c9e1623342636ac1d6de_cgraph" alt=""/></div>
+<map name="e__report_8c_aab1527246778c9e1623342636ac1d6de_cgraph" id="e__report_8c_aab1527246778c9e1623342636ac1d6de_cgraph">
+<area shape="rect" id="node2" href="e__report_8c.html#a23a4841988771dc4e53aca10a515e9fc" title="notice with no hint " alt="" coords="144,5,227,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -320,7 +446,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="e__report_8c.html">e_report.c</a></li>
-    <li class="footer">Generated on Tue Mar 21 2017 19:26:25 for PGROUTING by
+    <li class="footer">Generated on Sat May 13 2017 23:32:12 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
