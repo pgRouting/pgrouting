@@ -5,12 +5,11 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-#choose precise or trusty
+#choose trusty
 
-#group: edge
-#dist: trusty    
-
-#dist: precise
+group: edge
+dist: trusty    
+sudo: required
 
 
 language: cpp
@@ -18,34 +17,15 @@ language: cpp
 compiler:
     - gcc
 
-
 env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
-      
+
 matrix:
   include:
     - os: linux
-      sudo: required
-      dist: precise
-      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
-
-
-    - os: linux
-      sudo: required
-      dist: precise
-      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres
-
-
-    - os: linux
-      sudo: required
-      dist: trusty
-      group: edge
       env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
 
 
     - os: linux
-      sudo: required
-      dist: trusty
-      group: edge
       env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
 
 
