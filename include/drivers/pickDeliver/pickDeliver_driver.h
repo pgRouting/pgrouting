@@ -52,6 +52,7 @@ extern "C" {
             Vehicle_t *vehicles_arr, size_t total_vehicles,
             Matrix_cell_t *matrix_cells_arr, size_t total_cells,
 
+            double factor,
             int max_cycles,
             int initial_solution_id,
 

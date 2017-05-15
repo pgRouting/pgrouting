@@ -62,7 +62,7 @@ PD_Orders::build_orders(
         /*
          * Creating the pickup & delivery nodes
          */
-        std::unique_ptr<pickdeliver::Base_node> b_pick(new pickdeliver::Node(
+        std::unique_ptr<Base_node> b_pick(new pickdeliver::Node(
                 problem->node_id(),
                 order.pick_node_id,
                 order.pick_x,
@@ -79,7 +79,7 @@ PD_Orders::build_orders(
         msg.log << pickup.id() << "\n";
 #endif
 
-        std::unique_ptr<pickdeliver::Base_node> b_drop(new pickdeliver::Node(
+        std::unique_ptr<Base_node> b_drop(new pickdeliver::Node(
                 problem->node_id(),
                 order.deliver_node_id,
                 order.deliver_x,

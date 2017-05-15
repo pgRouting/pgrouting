@@ -41,7 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 /*! \class Base_node
  * \brief The Base_node class defines the operations that can be performed in a 2D node.
@@ -98,7 +97,6 @@ class Base_node : public Identifier {
 #endif
 };
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

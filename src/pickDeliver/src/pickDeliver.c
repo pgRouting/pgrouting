@@ -142,6 +142,8 @@ process(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
             matrix_cells_arr, total_cells,
+
+            factor,
             max_cycles,
             initial_solution_id,
 

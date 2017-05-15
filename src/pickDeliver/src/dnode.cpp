@@ -24,12 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "pickDeliver/dnode.h"
-#include "pickDeliver/pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 #include "cpp_common/pgr_messages.h"
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 #if 0
 bool Dnode::isSamePos(const Dnode &other) const {
@@ -101,7 +100,6 @@ Dnode::operator ==(const Dnode &rhs) const {
 }
 #endif
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

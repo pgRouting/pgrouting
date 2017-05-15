@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "pickDeliver/pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 #include "cpp_common/Dmatrix.h"
 
 #include "cpp_common/pgr_assert.h"
@@ -53,6 +53,7 @@ do_pgr_pickDeliver(
         Matrix_cell_t *matrix_cells_arr,
         size_t total_cells,
 
+        double factor,
         int max_cycles,
         int initial_solution_id,
 
@@ -99,13 +100,15 @@ do_pgr_pickDeliver(
         }
 
         log << "Read data\n";
-        pgrouting::vrp::pickdeliver::Pgr_pickDeliver pd_problem(
+        pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
                 cost_matrix,
+                factor,
                 max_cycles,
                 initial_solution_id);
 
+#if 0
         if (!pd_problem.msg.has_error()) {
             log << "ERROR found\n";
             log << pd_problem.msg.get_log();
@@ -119,7 +122,7 @@ do_pgr_pickDeliver(
         log << "Finish Reading data\n";
         pd_problem.msg.clear();
 
-#if 1
+#if 0
         log << pd_problem;
         log << pd_problem.msg.get_log();
         log << "Finish printing read data\n";
@@ -155,7 +158,7 @@ do_pgr_pickDeliver(
             }
         }
         (*return_count) = solution.size();
-
+#endif
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             nullptr :

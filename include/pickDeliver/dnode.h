@@ -32,11 +32,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <ostream>
 #include "vrp/base_node.h"
-#include "pickDeliver/pd_problem.h"
+#include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 /*! @class Dnode
  * @brief The Dnode class defines a the operations when its a matrix.
@@ -65,7 +64,6 @@ class Dnode : public Base_node, public PD_problem {
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
 };
 
-}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

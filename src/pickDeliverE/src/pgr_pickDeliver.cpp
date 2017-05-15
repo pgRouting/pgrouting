@@ -170,13 +170,18 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         double factor,
         size_t p_max_cycles,
         int initial) :
-    PD_problem(this),
+    PD_problem(this)
+#if 0
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
     m_node_id(0),
     m_nodes(),
     m_cost_matrix(cost_matrix),
-    m_trucks(vehicles, factor) {
+    m_trucks(vehicles, factor)
+#endif
+{
+        ENTERING();
+#if 0
         pgassert(msg.get_error().empty());
 
         pgassert(!pd_orders.empty());
@@ -186,7 +191,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         pgassert(msg.get_error().empty());
 
-        ENTERING();
 
         if (!msg.get_error().empty()) {
             return;
@@ -194,7 +198,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         pgassert(msg.get_error().empty());
 
-#if 0
         if (!m_trucks.is_fleet_ok()) {
             // TODO(vicky) revise the function
             pgassert(false);

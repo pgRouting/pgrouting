@@ -170,7 +170,7 @@ Fleet::build_fleet(
             return false;
         }
 
-        std::unique_ptr<pickdeliver::Base_node> b_start(new pickdeliver::Node(
+        std::unique_ptr<Base_node> b_start(new pickdeliver::Node(
                     problem->node_id(),
                     vehicle.start_node_id,
                     vehicle.start_x,
@@ -178,7 +178,7 @@ Fleet::build_fleet(
         auto starting_site = Vehicle_node(
                 {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
 
-        std::unique_ptr<pickdeliver::Base_node> b_end(new pickdeliver::Node(
+        std::unique_ptr<Base_node> b_end(new pickdeliver::Node(
                     problem->node_id(),
                     vehicle.end_node_id,
                     vehicle.end_x,
