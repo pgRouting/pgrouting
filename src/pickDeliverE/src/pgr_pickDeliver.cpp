@@ -74,6 +74,7 @@ Pgr_pickDeliver::nodesOK() const {
         pgassertwm(m_nodes[i].idx() ==  m_base_nodes[i]->idx(),
                 msg.get_log().c_str());
     }
+    EXITING();
     return true;
 }
 #endif

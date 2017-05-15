@@ -87,9 +87,11 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         double factor) :
     Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed, factor),
     cost((std::numeric_limits<double>::max)()) {
+        ENTERING();
         m_orders_in_vehicle.clear();
 
         invariant();
+        EXITING();
     }
 
 

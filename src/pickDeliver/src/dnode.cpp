@@ -72,10 +72,10 @@ Dnode::distance(const Dnode &other) const {
 }
 
 double
-Dnode::distance(const Base_node &other) const {
+Dnode::distance(const Base_node *other) const {
     return problem->m_cost_matrix.distance(
             problem->m_cost_matrix.get_index(id()),
-            problem->m_cost_matrix.get_index(other.id()));
+            problem->m_cost_matrix.get_index(other->id()));
 }
 
 double

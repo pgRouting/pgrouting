@@ -148,7 +148,7 @@ Fleet::add_vehicle(
                     vehicle.capacity,
                     vehicle.speed,
                     factor));
-        msg.log << "inserting " << m_trucks.back().idx();
+        msg.log << "inserting vehicle: " << m_trucks.back().idx() << "\n";
         pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
     }
 
@@ -250,6 +250,7 @@ Fleet::build_fleet(
 
 bool
 Fleet::is_fleet_ok() const {
+    ENTERING();
     if (!msg.get_error().empty()) return false;
     for (auto truck : m_trucks) {
         if (!(truck.start_site().is_start()
@@ -263,6 +264,7 @@ Fleet::is_fleet_ok() const {
             return false;
         }
     }
+    EXITING();
     return true;
 }
 
@@ -273,6 +275,7 @@ Fleet::is_fleet_ok() const {
  */
 bool
 Fleet::is_order_ok(const Order &order) const {
+    ENTERING();
     for (const auto truck : m_trucks) {
         if (!order.is_valid(truck.speed())) continue;
         if (truck.is_order_feasable(order)) {
@@ -290,9 +293,11 @@ Fleet::is_order_ok(const Order &order) const {
          * if its feasible, then the one truck is found
          */
         if (truck.is_order_feasable(order)) {
+            EXITING();
             return true;
         }
     }
+    EXITING();
     return false;
 }
 

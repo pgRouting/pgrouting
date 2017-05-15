@@ -472,12 +472,16 @@ Vehicle::Vehicle(
     m_capacity(p_m_capacity),
     m_factor(p_factor),
     m_speed(p_speed) {
+        ENTERING();
         m_path.clear();
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
         /*! @todo TODO(vicky) evaluate with matrix also*/
+        msg.log << "before calling evaluate\n";
         evaluate(0);
+        msg.log << "after calling evaluate\n";
         invariant();
+        EXITING();
     }
 
 
