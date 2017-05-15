@@ -63,11 +63,11 @@ double
 Base_node::distance(const Base_node &node) const {
     return 0;
 }
-#endif
 double
 Base_node::comparable_distance(const Base_node &) const {
     return 0;
 }
+#endif
 
 
 Base_node::Base_node(size_t _idx, int64_t _id)

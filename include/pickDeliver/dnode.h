@@ -56,10 +56,14 @@ class Dnode : public Base_node, public PD_problem {
      bool operator==(const Dnode &rhs) const;
      @}*/
 
+#if 0
      double distance(const Dnode &other) const;
+#endif
      double distance(const Base_node *) const;
 
+#if 0
      double comparable_distance(const Dnode &other) const;
+#endif
 
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
 };

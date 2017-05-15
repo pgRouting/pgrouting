@@ -42,10 +42,10 @@ std::ostream& operator << (std::ostream &log, const Dnode &node) {
     return log;
 }
 
+#if 0
 double
 Dnode::distance(const Dnode &other) const {
     ENTERING();
-#if 0
     msg.log << "idx" << idx()
      << "\t id " << id()
      << "\t matrix.get_id " << problem->m_cost_matrix.get_id(id())
@@ -64,26 +64,29 @@ Dnode::distance(const Dnode &other) const {
             problem->m_cost_matrix.get_index(id()),
             problem->m_cost_matrix.get_index(other.id()))
         << "\n\n";
-#endif
     EXITING();
     return problem->m_cost_matrix.distance(
             problem->m_cost_matrix.get_index(id()),
             problem->m_cost_matrix.get_index(other.id()));
 }
+#endif
 
 double
 Dnode::distance(const Base_node *other) const {
+    ENTERING();
+    EXITING();
     return problem->m_cost_matrix.distance(
             problem->m_cost_matrix.get_index(id()),
             problem->m_cost_matrix.get_index(other->id()));
 }
 
+#if 0
 double
 Dnode::comparable_distance(const Dnode &other) const {
     distance(other);
     return problem->m_cost_matrix.comparable_distance(0,0);
 }
-
+#endif
 
 Dnode::Dnode(size_t id, int64_t original_id, double, double)
     : Base_node(id, original_id) {

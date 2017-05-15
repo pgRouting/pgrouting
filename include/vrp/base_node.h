@@ -84,7 +84,9 @@ class Base_node : public Identifier {
 #if 1
      virtual double distance(const Base_node *node) const = 0;
 #endif
+#if 0
      virtual double comparable_distance(const Base_node &other) const;
+#endif
      /*!@}*/
 
 

@@ -32,7 +32,7 @@ namespace vrp {
 namespace pickdeliver {
 
 bool Node::isSamePos(const Node &other) const {
-    return comparable_distance(other) == 0;
+    return distance(other) == 0;
 }
 
 std::ostream& operator << (std::ostream &log, const Node &node) {
@@ -53,15 +53,18 @@ Node::distance(const Node &other) const {
     ENTERING();
     auto dx = m_point.x() - other.m_point.x();
     auto dy = m_point.y() - other.m_point.y();
+#if 0
     msg.log << *this << "\n";
     msg.log << other << "\n";
     msg.log << "dx: " << dx << "\n";
     msg.log << "dy: " << dx << "\n";
     msg.log << "d: " << sqrt(dx * dx + dy * dy) << "\n";
+#endif
     EXITING();
     return sqrt(dx * dx + dy * dy);
 }
 
+#if 0
 double
 Node::distance(const Base_node &node) const {
     if (auto other = dynamic_cast<const Node*>(&node)) {
@@ -78,6 +81,7 @@ Node::distance(const Base_node &node) const {
     }
     return 0;
 }
+#endif
 
 double
 Node::distance(const Base_node *n) const {
@@ -86,13 +90,14 @@ Node::distance(const Base_node *n) const {
     return distance(*dynamic_cast<const Node*>(n));
 }
 
+#if 0
 double
 Node::comparable_distance(const Node &other) const {
     auto dx = m_point.x() - other.m_point.x();
     auto dy = m_point.y() - other.m_point.y();
     return dx * dx + dy * dy;
 }
-
+#endif
 
 Node::Node(size_t _idx, int64_t _id, double _x, double _y)
     : Base_node(_idx, _id),
