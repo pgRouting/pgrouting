@@ -42,6 +42,7 @@ namespace pgrouting {
 namespace vrp {
 
 class Order;
+class Vehicle_node;
 
 class PD_Orders : public PD_problem {
      typedef std::vector<Order> Orders;
@@ -89,7 +90,14 @@ class PD_Orders : public PD_problem {
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders);
 
-#if 1
+ private:
+     void add_order(
+             int64_t,
+             std::unique_ptr<Base_node>,
+             Vehicle_node,
+             std::unique_ptr<Base_node>,
+             Vehicle_node);
+
      template <typename T> std::unique_ptr<Base_node> create_b_pick (
              const PickDeliveryOrders_t &order,
              size_t node_id) {
@@ -111,7 +119,6 @@ class PD_Orders : public PD_problem {
                      order.deliver_y));
          return std::move(b_drop);
      }
-#endif
 };
 
 }  //  namespace vrp

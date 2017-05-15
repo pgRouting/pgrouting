@@ -48,6 +48,29 @@ PD_Orders::PD_Orders(
 
 
 void
+PD_Orders:: add_order(
+        int64_t order_id,
+        std::unique_ptr<Base_node> b_pick, 
+        Vehicle_node pick, 
+        std::unique_ptr<Base_node> b_drop,
+        Vehicle_node drop) {
+    problem->add_base_node(std::move(b_pick));
+    problem->add_base_node(std::move(b_drop));
+    problem->add_node(pick);
+    problem->add_node(drop);
+
+    pgassert(problem->nodesOK());
+    /*
+     * add into an order
+     */
+    m_orders.push_back(
+            Order(m_orders.size(), order_id,
+                pick,
+                drop));
+}
+
+
+void
 PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders
         ) {
@@ -74,6 +97,10 @@ PD_Orders::build_orders(
                     {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
 
+            add_order(order.id,
+                    std::move(b_pick), pickup,
+                    std::move(b_drop), delivery);
+#if 0
             problem->add_base_node(std::move(b_pick));
             problem->add_base_node(std::move(b_drop));
             problem->add_node(pickup);
@@ -87,6 +114,7 @@ PD_Orders::build_orders(
                     Order(order_id++, order.id,
                         pickup,
                         delivery));
+#endif
         } else {
             /*
              * Creating the pickup & delivery nodes
