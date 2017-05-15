@@ -63,6 +63,7 @@ PD_Orders::build_orders(
         /*
          * Creating the pickup & delivery nodes
          */
+#if 0
         std::unique_ptr<Base_node> b_pick(new pickdeliver::Node(
                 problem->node_id(),
                 order.pick_node_id,
@@ -70,6 +71,8 @@ PD_Orders::build_orders(
                 order.pick_y));
         msg.log <<  order.id << ": " << problem->node_id()
             << "," << order.pick_node_id << "\n";
+#endif
+        auto b_pick = create_b_pick<pickdeliver::Node>(order, problem->node_id());
         Vehicle_node pickup(
                 {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
@@ -79,13 +82,14 @@ PD_Orders::build_orders(
         msg.log << b_pick->id() << "\n";
         msg.log << pickup.idx() << ",";
         msg.log << pickup.id() << "\n";
-#endif
 
         std::unique_ptr<Base_node> b_drop(new pickdeliver::Node(
                 problem->node_id(),
                 order.deliver_node_id,
                 order.deliver_x,
                 order.deliver_y));
+#endif
+        auto b_drop = create_b_deliver<pickdeliver::Node>(order, problem->node_id());
         Vehicle_node delivery(
                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
