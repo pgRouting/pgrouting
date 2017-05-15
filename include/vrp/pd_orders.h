@@ -38,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
-class Pgr_pickDeliver;
 class Order;
 
 class PD_Orders : public PD_problem {
@@ -86,8 +85,45 @@ class PD_Orders : public PD_problem {
      // TODO(vicky) this should be private called by the constructor
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders);
-};
 
+#if 0
+     template <typename T> void add_order(
+             const std::vector<PickDeliveryOrders_t>&) {
+         std::unique_ptr<Base_node> b_pick(new T(
+                     problem->node_id(),
+                     order.pick_node_id,
+                     order.pick_x,
+                     order.pick_y));
+         msg.log <<  order.id << ": " << problem->node_id()
+             << "," << order.pick_node_id << "\n";
+         Vehicle_node pickup(
+                 {problem->node_id()++, order, Tw_node::NodeType::kPickup});
+
+
+         std::unique_ptr<Base_node> b_drop(new T(
+                     problem->node_id(),
+                     order.deliver_node_id,
+                     order.deliver_x,
+                     order.deliver_y));
+         Vehicle_node delivery(
+                 {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
+
+         problem->add_base_node(std::move(b_pick));
+         problem->add_base_node(std::move(b_drop));
+         problem->add_node(pickup);
+         problem->add_node(delivery);
+
+         pgassert(problem->nodesOK());
+         /*
+          * add into an order
+          */
+         m_orders.push_back(
+                 Order(order_id++, order.id,
+                     pickup,
+                     delivery));
+     }
+#endif
+};
 
 }  //  namespace vrp
 }  //  namespace pgrouting

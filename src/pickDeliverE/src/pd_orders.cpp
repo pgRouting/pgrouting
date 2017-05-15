@@ -73,8 +73,8 @@ PD_Orders::build_orders(
         Vehicle_node pickup(
                 {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
-        pgassert(!problem->m_cost_matrix.empty());
 #if 0
+        pgassert(!problem->m_cost_matrix.empty());
         msg.log << b_pick->idx() << ",";
         msg.log << b_pick->id() << "\n";
         msg.log << pickup.idx() << ",";
