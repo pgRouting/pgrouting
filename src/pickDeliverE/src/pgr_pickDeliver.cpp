@@ -177,10 +177,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_nodes(),
     m_base_nodes(),
     m_cost_matrix(cost_matrix),
-    m_orders(pd_orders)
-#if 0
+    m_orders(pd_orders),
     m_trucks(vehicles, factor)
-#endif
 {
         ENTERING();
 #if 0

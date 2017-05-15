@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 
 #include "vrp/pd_orders.h"
+#include "pickDeliver/dnode.h"
 #include "vrp/tw_node.h"
 #include "vrp/vehicle_pickDeliver.h"
 #include "vrp/pgr_pickDeliver.h"
@@ -209,63 +210,37 @@ Fleet::build_fleet(
             return false;
         }
 
-#if 0
-        std::unique_ptr<Base_node> b_start(new pickdeliver::Node(
-                    problem->node_id(),
-                    vehicle.start_node_id,
-                    vehicle.start_x,
-                    vehicle.start_y));
-#endif
-        auto b_start = create_b_start<pickdeliver::Node>(vehicle, problem->node_id());
+        if  (problem->m_cost_matrix.empty()) {
+            /*
+             * Euclidean version
+             */
+            auto b_start = create_b_start<pickdeliver::Node>(vehicle, problem->node_id());
+            auto starting_site = Vehicle_node(
+                    {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
 
-        auto starting_site = Vehicle_node(
-                {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
+            auto b_end = create_b_end<pickdeliver::Node>(vehicle, problem->node_id());
+            auto ending_site = Vehicle_node(
+                    {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
-        auto b_end = create_b_end<pickdeliver::Node>(vehicle, problem->node_id());
-#if 0
-        std::unique_ptr<Base_node> b_end(new pickdeliver::Node(
-                    problem->node_id(),
-                    vehicle.end_node_id,
-                    vehicle.end_x,
-                    vehicle.end_y));
-#endif
-        auto ending_site = Vehicle_node(
-                {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
+            add_vehicle(vehicle, factor,
+                    std::move(b_start), starting_site,
+                    std::move(b_end), ending_site);
+        } else {
+            /*
+             * Matrix version
+             */
+            auto b_start = create_b_start<Dnode>(vehicle, problem->node_id());
+            auto starting_site = Vehicle_node(
+                    {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
 
-        add_vehicle(vehicle, factor,
-                std::move(b_start), starting_site,
-                std::move(b_end), ending_site);
+            auto b_end = create_b_end<Dnode>(vehicle, problem->node_id());
+            auto ending_site = Vehicle_node(
+                    {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
-#if 0
-        problem->add_base_node(std::move(b_start));
-        problem->add_base_node(std::move(b_end));
-        problem->add_node(starting_site);
-        problem->add_node(ending_site);
-
-        pgassert(problem->nodesOK());
-
-        if (!(starting_site.is_start()
-                    && ending_site.is_end())) {
-            msg.error << "Illegal values found on vehicle";
-            msg.log << "id: " << vehicle.id;
-            pgassert(!msg.get_error().empty());
-            return false;
+            add_vehicle(vehicle, factor,
+                    std::move(b_start), starting_site,
+                    std::move(b_end), ending_site);
         }
-        pgassert(starting_site.is_start() && ending_site.is_end());
-
-        for (int i = 0; i < vehicle.cant_v; ++i) {
-            m_trucks.push_back(Vehicle_pickDeliver(
-                        m_trucks.size(),
-                        vehicle.id,
-                        starting_site,
-                        ending_site,
-                        vehicle.capacity,
-                        vehicle.speed,
-                        factor));
-            msg.log << "inserting " << m_trucks.back().idx();
-            pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
-        }
-#endif
     }
     Identifiers<size_t> unused(m_trucks.size());
     un_used = unused;

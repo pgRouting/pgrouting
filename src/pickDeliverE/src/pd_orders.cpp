@@ -101,7 +101,7 @@ PD_Orders::build_orders(
                     std::move(b_drop), delivery);
         } else {
             /*
-             * Creating the pickup & delivery nodes
+             * matrix version
              */
             auto b_pick = create_b_pick<Dnode>(order, problem->node_id());
             Vehicle_node pickup(
