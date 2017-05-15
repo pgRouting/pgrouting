@@ -136,9 +136,9 @@ class Pgr_pickDeliver : public PD_problem {
  public:
     // TODO(vicky) make this private
     std::vector<std::unique_ptr<Base_node>> m_base_nodes;
+    pgrouting::tsp::Dmatrix m_cost_matrix;
 
  private:
-    pgrouting::tsp::Dmatrix m_cost_matrix;
     PD_Orders m_orders;
     Fleet m_trucks;
     std::vector<Solution> solutions;
