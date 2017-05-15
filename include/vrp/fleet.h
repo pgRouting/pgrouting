@@ -111,6 +111,37 @@ class Fleet : public PD_problem {
      bool build_fleet(
              std::vector<Vehicle_t> vehicles,
              double factor);
+
+     void add_vehicle(
+             Vehicle_t,
+             double factor,
+             std::unique_ptr<Base_node>,
+             Vehicle_node,
+             std::unique_ptr<Base_node>,
+             Vehicle_node);
+
+     template <typename T> std::unique_ptr<Base_node> create_b_start (
+             const Vehicle_t &vehicle,
+             size_t node_id) {
+         std::unique_ptr<Base_node> b_start(new T(
+                     node_id,
+                     vehicle.start_node_id,
+                     vehicle.start_x,
+                     vehicle.start_y));
+         return std::move(b_start);
+     }
+
+     template <typename T> std::unique_ptr<Base_node> create_b_end (
+             const Vehicle_t &vehicle,
+             size_t node_id) {
+         std::unique_ptr<Base_node> b_end(new T(
+                     node_id,
+                     vehicle.end_node_id,
+                     vehicle.end_x,
+                     vehicle.end_y));
+         return std::move(b_end);
+     }
+
 };
 
 
