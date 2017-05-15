@@ -74,7 +74,6 @@ void
 PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders
         ) {
-    OID order_id(0);
     ENTERING();
     for (const auto order : pd_orders) {
         /*
@@ -100,21 +99,6 @@ PD_Orders::build_orders(
             add_order(order.id,
                     std::move(b_pick), pickup,
                     std::move(b_drop), delivery);
-#if 0
-            problem->add_base_node(std::move(b_pick));
-            problem->add_base_node(std::move(b_drop));
-            problem->add_node(pickup);
-            problem->add_node(delivery);
-
-            pgassert(problem->nodesOK());
-            /*
-             * add into an order
-             */
-            m_orders.push_back(
-                    Order(order_id++, order.id,
-                        pickup,
-                        delivery));
-#endif
         } else {
             /*
              * Creating the pickup & delivery nodes
@@ -127,29 +111,12 @@ PD_Orders::build_orders(
             Vehicle_node delivery(
                     {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
-
-            problem->add_base_node(std::move(b_pick));
-            problem->add_base_node(std::move(b_drop));
-            problem->add_node(pickup);
-            problem->add_node(delivery);
-
-            pgassert(problem->nodesOK());
-            /*
-             * add into an order
-             */
-            m_orders.push_back(
-                    Order(order_id++, order.id,
-                        pickup,
-                        delivery));
-
+            add_order(order.id,
+                    std::move(b_pick), pickup,
+                    std::move(b_drop), delivery);
         }
     }  //  for (creating orders)
 
-#if 0
-    for (auto &o : m_orders) {
-        o.setCompatibles();
-    }
-#endif
     EXITING();
 }
 
