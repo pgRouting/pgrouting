@@ -52,6 +52,7 @@ PD_Orders::build_orders(
         ) {
     OID order_id(0);
     for (const auto order : pd_orders) {
+        ENTERING();
         /*
          * SAMPLE CORRECT INFORMATION
          *
@@ -131,6 +132,7 @@ PD_Orders::build_orders(
         o.setCompatibles();
     }
 #endif
+    EXITING();
 }
 
 bool

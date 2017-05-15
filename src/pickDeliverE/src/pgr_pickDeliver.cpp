@@ -170,13 +170,15 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         double factor,
         size_t p_max_cycles,
         int initial) :
-    PD_problem(this)
-#if 0
+    PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
     m_node_id(0),
     m_nodes(),
+    m_base_nodes(),
     m_cost_matrix(cost_matrix),
+    m_orders(pd_orders)
+#if 0
     m_trucks(vehicles, factor)
 #endif
 {
@@ -224,6 +226,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_node_id(0),
     m_nodes(),
     m_base_nodes(),
+    m_cost_matrix(),
     m_orders(pd_orders),
     m_trucks(vehicles, factor) {
         pgassert(!pd_orders.empty());
