@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "vrp/order.h"
 #include "vrp/node.h"
+#include "pickDeliver/dnode.h"
 #include "vrp/tw_node.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/pgr_pickDeliver.h"
@@ -51,8 +52,8 @@ PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders
         ) {
     OID order_id(0);
+    ENTERING();
     for (const auto order : pd_orders) {
-        ENTERING();
         /*
          * SAMPLE CORRECT INFORMATION
          *
@@ -60,76 +61,60 @@ PD_Orders::build_orders(
          * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
          */
 
-        /*
-         * Creating the pickup & delivery nodes
-         */
-#if 0
-        std::unique_ptr<Base_node> b_pick(new pickdeliver::Node(
-                problem->node_id(),
-                order.pick_node_id,
-                order.pick_x,
-                order.pick_y));
-        msg.log <<  order.id << ": " << problem->node_id()
-            << "," << order.pick_node_id << "\n";
-#endif
-        auto b_pick = create_b_pick<pickdeliver::Node>(order, problem->node_id());
-        Vehicle_node pickup(
-                {problem->node_id()++, order, Tw_node::NodeType::kPickup});
+        if  (problem->m_cost_matrix.empty()) {
+            /*
+             * Euclidean version
+             */
+            auto b_pick = create_b_pick<pickdeliver::Node>(order, problem->node_id());
+            Vehicle_node pickup(
+                    {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
-#if 0
-        pgassert(!problem->m_cost_matrix.empty());
-        msg.log << b_pick->idx() << ",";
-        msg.log << b_pick->id() << "\n";
-        msg.log << pickup.idx() << ",";
-        msg.log << pickup.id() << "\n";
-
-        std::unique_ptr<Base_node> b_drop(new pickdeliver::Node(
-                problem->node_id(),
-                order.deliver_node_id,
-                order.deliver_x,
-                order.deliver_y));
-#endif
-        auto b_drop = create_b_deliver<pickdeliver::Node>(order, problem->node_id());
-        Vehicle_node delivery(
-                {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
-
-#if 0
-        msg.log << "pick " << pickup << "\n";
-        msg.log << "drop " << delivery << "\n";
-        msg.log << "distance " << pickup.distance(delivery) << "\n";
-        msg.log << ".............\n";
-        msg.log << "pick " << *b_pick << "\n";
-        msg.log << "drop " << *b_drop << "\n";
-        pickdeliver::Node p = *dynamic_cast<pickdeliver::Node*>(b_pick.get());
-        pickdeliver::Node d = *dynamic_cast<pickdeliver::Node*>(b_drop.get());
-        msg.log << "distance " << p.distance(d) << "\n";
-        msg.log << "distance " << p.distance(b_drop.get()) << "\n";
-        msg.log << "distance " << b_pick->distance(*b_drop.get()) << "\n";
-
-        pgassertwm(
-                pickup.distance(delivery) == b_pick->distance(*b_drop.get()),
-                msg.get_log().c_str());
-
-        pickup.set_Did(delivery.idx());
-        delivery.set_Pid(pickup.idx());
-#endif
-
-        problem->add_base_node(std::move(b_pick));
-        problem->add_base_node(std::move(b_drop));
-        problem->add_node(pickup);
-        problem->add_node(delivery);
-
-        pgassert(problem->nodesOK());
+            auto b_drop = create_b_deliver<pickdeliver::Node>(order, problem->node_id());
+            Vehicle_node delivery(
+                    {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
 
+            problem->add_base_node(std::move(b_pick));
+            problem->add_base_node(std::move(b_drop));
+            problem->add_node(pickup);
+            problem->add_node(delivery);
 
-        /*
-         * add into an order
-         */
-        m_orders.push_back(
-                Order(order_id++, order.id,
-                    pickup,
-                    delivery));
+            pgassert(problem->nodesOK());
+            /*
+             * add into an order
+             */
+            m_orders.push_back(
+                    Order(order_id++, order.id,
+                        pickup,
+                        delivery));
+        } else {
+            /*
+             * Creating the pickup & delivery nodes
+             */
+            auto b_pick = create_b_pick<Dnode>(order, problem->node_id());
+            Vehicle_node pickup(
+                    {problem->node_id()++, order, Tw_node::NodeType::kPickup});
+
+            auto b_drop = create_b_deliver<Dnode>(order, problem->node_id());
+            Vehicle_node delivery(
+                    {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
+
+
+            problem->add_base_node(std::move(b_pick));
+            problem->add_base_node(std::move(b_drop));
+            problem->add_node(pickup);
+            problem->add_node(delivery);
+
+            pgassert(problem->nodesOK());
+            /*
+             * add into an order
+             */
+            m_orders.push_back(
+                    Order(order_id++, order.id,
+                        pickup,
+                        delivery));
+
+        }
     }  //  for (creating orders)
 
 #if 0
