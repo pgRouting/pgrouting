@@ -3216,6 +3216,34 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
 
 
 
+CREATE OR REPLACE FUNCTION pgr_pickDeliver(
+    orders_sql TEXT,
+    vehicles_sql TEXT,
+    matrix_cell_sql TEXT,
+    max_cycles INTEGER DEFAULT 10,
+    initial_id INTEGER DEFAULT 4,
+
+    OUT seq INTEGER,
+    OUT vehicle_number INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT vehicle_seq INTEGER,
+    OUT order_id BIGINT,
+    OUT stop_type INT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+)
+
+RETURNS SETOF RECORD AS
+ 'MODULE_PATHNAME', 'pickDeliver'
+LANGUAGE c VOLATILE;
+
+
+
+
 CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
     orders_sql TEXT,
     vehicles_sql TEXT,
