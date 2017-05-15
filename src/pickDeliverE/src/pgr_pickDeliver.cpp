@@ -163,7 +163,6 @@ Pgr_pickDeliver::get_postgres_result() const {
 /** Constructor  for the matrix version
  *
  */
-
 Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
@@ -174,9 +173,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
-    /*
-     * the problem has cost_matrix.size() nodes
-     */
     m_node_id(0),
     m_nodes(),
     m_cost_matrix(cost_matrix),
@@ -189,9 +185,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         pgassert(m_initial_id > 0 && m_initial_id < 7);
 
         pgassert(msg.get_error().empty());
-        std::ostringstream tmplog;
 
-        msg.log << "\n *** Constructor for the matrix version ***\n";
+        ENTERING();
 
         if (!msg.get_error().empty()) {
             return;
@@ -199,12 +194,15 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         pgassert(msg.get_error().empty());
 
+#if 0
         if (!m_trucks.is_fleet_ok()) {
             // TODO(vicky) revise the function
             pgassert(false);
             msg.error << m_trucks.msg.get_error();
             return;
         }
+#endif
+        EXITING();
     }  //  constructor
 
 
@@ -220,69 +218,67 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
-    /*
-     * the problem has unknown number of nodes
-     */
     m_node_id(0),
     m_nodes(),
     m_base_nodes(),
     m_orders(pd_orders),
     m_trucks(vehicles, factor) {
-    pgassert(!pd_orders.empty());
-    pgassert(!vehicles.empty());
-    pgassert(m_initial_id > 0 && m_initial_id < 7);
+        pgassert(!pd_orders.empty());
+        pgassert(!vehicles.empty());
+        pgassert(factor > 0);
+        pgassert(m_initial_id > 0 && m_initial_id < 7);
 
-    std::ostringstream tmplog;
+        ENTERING();
 
-    msg.log << "\n *** Constructor of problem ***\n";
-
-    if (!msg.get_error().empty()) {
-        return;
-    }
-
-    pgassert(msg.get_error().empty());
-    msg.log << "\n Building fleet";
-    if (!m_trucks.is_fleet_ok()) {
-        pgassert(msg.get_error().empty());
-        pgassert(!m_trucks.msg.get_error().empty());
-        msg.error << m_trucks.msg.get_error();
-        return;
-    }
-
-
-
-#ifndef NDEBUG
-    for (const auto t : m_trucks) {
-        msg.log << t << "\n";
-    }
-#endif
-
-    msg.log << "\n Building orders";
-    msg.log << " ---> OK\n";
-
-
-#ifndef NDEBUG
-    for (const auto &o : m_orders) {
-        msg.log << o << "\n";
-    }
-#endif
-
-    /*
-     * check the (S, P, D, E) order on all vehicles
-     * stop when a feasible truck is found
-     */
-    for (const auto &o : m_orders) {
-        if (!m_trucks.is_order_ok(o)) {
-            msg.error << "The order "
-                << o.pickup().order()
-                << " is not feasible on any truck";
-            msg.log << "\n" << o;
+        if (!msg.get_error().empty()) {
             return;
         }
-    }
 
-    m_trucks.set_compatibles(m_orders);
-}  //  constructor
+        pgassert(msg.get_error().empty());
+
+        msg.log << "\n Checking fleet";
+        if (!m_trucks.is_fleet_ok()) {
+            pgassert(msg.get_error().empty());
+            pgassert(!m_trucks.msg.get_error().empty());
+            msg.error << m_trucks.msg.get_error();
+            return;
+        }
+
+
+
+#ifndef NDEBUG
+        for (const auto t : m_trucks) {
+            msg.log << t << "\n";
+        }
+#endif
+
+        msg.log << "\n Building orders";
+        msg.log << " ---> OK\n";
+
+
+#ifndef NDEBUG
+        for (const auto &o : m_orders) {
+            msg.log << o << "\n";
+        }
+#endif
+
+        /*
+         * check the (S, P, D, E) order on all vehicles
+         * stop when a feasible truck is found
+         */
+        for (const auto &o : m_orders) {
+            if (!m_trucks.is_order_ok(o)) {
+                msg.error << "The order "
+                    << o.pickup().order()
+                    << " is not feasible on any truck";
+                msg.log << "\n" << o;
+                return;
+            }
+        }
+
+        m_trucks.set_compatibles(m_orders);
+        EXITING();
+    }  //  constructor
 
 
 const Order

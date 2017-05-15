@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <ostream>
-#include "pickDeliver/base_node.h"
+#include "vrp/base_node.h"
 #include "pickDeliver/pd_problem.h"
 
 namespace pgrouting {

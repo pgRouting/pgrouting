@@ -47,11 +47,22 @@ process(
         char* pd_orders_sql,
         char* vehicles_sql,
         char* matrix_sql,
+        double factor,
         int max_cycles,
         int initial_solution_id,
 
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
+    if (factor <= 0) {
+        ereport(ERROR,
+                (errcode(ERRCODE_INTERNAL_ERROR),
+                 errmsg("Illegal value in parameter: factor"),
+                 errhint("Value found: %f <= 0", factor)));
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+
     if (max_cycles < 0) {
         elog(ERROR, "Illegal value in parameter: max_cycles");
         (*result_count) = 0;
@@ -188,16 +199,18 @@ pickDeliver(PG_FUNCTION_ARGS) {
            orders_sql TEXT,
            vehicles_sql TEXT,
            matrix_cell_sql TEXT,
-           max_cycles INTEGER DEFAULT 10,
+           factor FLOAT DEFAULT 1,
+           max_cycles  INTEGER DEFAULT 10,
+           initial_sol INTEGER DEFAULT 4,
          **********************************************************************/
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
-                PG_GETARG_INT32(3),
+                PG_GETARG_FLOAT8(3),
                 PG_GETARG_INT32(4),
+                PG_GETARG_INT32(5),
                 &result_tuples,
                 &result_count);
 

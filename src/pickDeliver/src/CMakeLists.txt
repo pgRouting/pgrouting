@@ -1,6 +1,4 @@
 ADD_LIBRARY(pickDeliver OBJECT
-    base_node.cpp
-    node.cpp
     dnode.cpp
     tw_node.cpp
     vehicle_node.cpp
@@ -18,7 +16,6 @@ ADD_LIBRARY(pickDeliver OBJECT
     optimize.cpp
 
     pgr_pickDeliver.cpp
-    pgr_messages.cpp
 
 
     pickDeliver_driver.cpp
