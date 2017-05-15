@@ -53,6 +53,7 @@ Pgr_pickDeliver::nodesOK() const {
     ENTERING();
     if (m_nodes.empty() && m_base_nodes.empty()) return true;
 
+#if 0
     msg.log << "     m_nodes: " << m_nodes.size();
     for (const auto n : m_nodes) {
         msg.log << n.id() << ",";
@@ -64,10 +65,11 @@ Pgr_pickDeliver::nodesOK() const {
     for (auto const &n : m_base_nodes) {
         msg.log << n->id() << ",";
     }
-
+#endif
     pgassertwm(m_nodes.size() == m_base_nodes.size(), msg.get_log().c_str());
+#if 0
     msg.log << "\n";
-
+#endif
     for (size_t i = 0; i < m_nodes.size() ; ++i) {
         pgassertwm(m_nodes[i].id() ==  m_base_nodes[i]->id(),
                 msg.get_log().c_str());
@@ -182,16 +184,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_trucks(vehicles, factor)
 {
         ENTERING();
-#if 0
-        pgassert(msg.get_error().empty());
-
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
-        pgassert(!cost_matrix.empty());
+        pgassert(!m_cost_matrix.empty());
         pgassert(m_initial_id > 0 && m_initial_id < 7);
-
-        pgassert(msg.get_error().empty());
-
 
         if (!msg.get_error().empty()) {
             return;
@@ -199,12 +195,45 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         pgassert(msg.get_error().empty());
 
+        msg.log << "\n Checking fleet ...";
         if (!m_trucks.is_fleet_ok()) {
-            // TODO(vicky) revise the function
-            pgassert(false);
+            pgassert(msg.get_error().empty());
+            pgassert(!m_trucks.msg.get_error().empty());
             msg.error << m_trucks.msg.get_error();
             return;
         }
+        msg.log << "fleet OK \n";
+
+#if 0
+        for (const auto t : m_trucks) {
+            msg.log << t << "\n";
+        }
+#endif
+#if 0
+        for (const auto &o : m_orders) {
+            msg.log << o << "\n";
+        }
+#endif
+
+        /*
+         * check the (S, P, D, E) order on all vehicles
+         * stop when a feasible truck is found
+         */
+        msg.log << "\n Checking orders";
+        for (const auto &o : m_orders) {
+#if 1
+            if (!m_trucks.is_order_ok(o)) {
+                msg.error << "The order "
+                    << o.pickup().order()
+                    << " is not feasible on any truck";
+                msg.log << "\n" << o;
+                return;
+            }
+#endif
+        }
+        msg.log << "orders OK \n";
+#if 0
+        m_trucks.set_compatibles(m_orders);
 #endif
         EXITING();
     }  //  constructor
@@ -228,12 +257,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_cost_matrix(),
     m_orders(pd_orders),
     m_trucks(vehicles, factor) {
+        ENTERING();
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
+        pgassert(m_cost_matrix.empty());
         pgassert(factor > 0);
         pgassert(m_initial_id > 0 && m_initial_id < 7);
-
-        ENTERING();
 
         if (!msg.get_error().empty()) {
             return;
@@ -255,13 +284,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         for (const auto t : m_trucks) {
             msg.log << t << "\n";
         }
-#endif
-
-        msg.log << "\n Building orders";
-        msg.log << " ---> OK\n";
-
-
-#ifndef NDEBUG
         for (const auto &o : m_orders) {
             msg.log << o << "\n";
         }
@@ -271,6 +293,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
          * check the (S, P, D, E) order on all vehicles
          * stop when a feasible truck is found
          */
+        msg.log << "\n Checking orders";
         for (const auto &o : m_orders) {
             if (!m_trucks.is_order_ok(o)) {
                 msg.error << "The order "
