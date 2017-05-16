@@ -45,8 +45,6 @@ namespace vrp {
  * about the node in a path and provides the tools evaluate the node
  * and to set and get these attribute values.
  */
-
-
 class Vehicle_node: public Tw_node {
  public:
      /** @name log */
@@ -161,7 +159,7 @@ class Vehicle_node: public Tw_node {
      Vehicle_node(const Vehicle_node &) = default;
      explicit Vehicle_node(const Tw_node &node);
 
- protected:
+ private:
      /** @name Node evaluation members */
      ///@ {
 

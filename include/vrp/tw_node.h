@@ -80,6 +80,7 @@ class Tw_node : public Identifier, public PD_problem {
 
      /*! @brief Returns the demand associated with this node. */
      inline double demand() const {return m_demand;}
+     inline void demand(double value) {m_demand = value;}
 
      /*! * @brief Returns the service time for this node. */
      inline double service_time() const {return m_service_time;}
@@ -268,6 +269,7 @@ class Tw_node : public Identifier, public PD_problem {
  protected:
      bool is_valid() const;
 
+ private:
      int64_t m_order;       ///< order to which it belongs
      double m_opens;        ///< opening time of the node
      double m_closes;       ///< closing time of the node
