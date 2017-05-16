@@ -29,11 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_PICKDELIVER_BASE_NODE_H_
 #pragma once
 
-#include <string>
-#include <ostream>
-#include <memory>
+#include <iosfwd>
 #include "cpp_common/identifier.h"
-#include "vrp/pd_problem.h"
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <stdint.h>
@@ -49,27 +46,14 @@ namespace vrp {
  */
 class Base_node : public Identifier {
  public:
-     /*! @name accessors
-     @{
-     */
-
-#if 0
-     /*! @brief Returns the idx */
-     size_t  idx() const;
-
-     /*! @brief Returns the original id */
-     int64_t id() const;
-#endif
-     ///@}
 
      Base_node() = default;
      Base_node(size_t, int64_t);
 
 
      /** @name to be or not to be */
-     ///@ {
+     /*!@{*/
 
-     virtual bool isSamePos(const Base_node &other) const;
      virtual bool operator ==(const Base_node &rhs) const;
 
      /*!@}*/
@@ -81,22 +65,12 @@ class Base_node : public Identifier {
      /*! @name distance
      @{
      */
-#if 1
      virtual double distance(const Base_node *node) const = 0;
-#endif
-#if 0
-     virtual double comparable_distance(const Base_node &other) const;
-#endif
      /*!@}*/
 
 
+ private:
      virtual void print(std::ostream& os) const;
-
- protected:
-#if 0
-     size_t m_idx;                ///< internal node number
-     int64_t m_id;      ///< user supplied node number
-#endif
 };
 
 }  //  namespace vrp
