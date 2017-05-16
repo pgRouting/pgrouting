@@ -1,17 +1,20 @@
-#ifndef GRAPHDEFINITION_H
+#ifndef SRC_TRSP_SRC_GRAPHDEFINITION_H
 #define GRAPHDEFINITION_H
+
+#include <stdlib.h>
 
 #include <vector>
 #include <map>
 #include <queue>
 #include <string>
-#include <stdlib.h>
 #include <iostream>
+#include <utility>
 #include <functional>
+
 
 #include "trsp.h"
 
-//using namespace std;
+// using namespace std;
 
 typedef std::vector<long> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
@@ -37,18 +40,18 @@ typedef struct path_element
 }path_element_tt;
 */
 
-typedef struct{
+typedef struct {
     long ed_ind[2];
     long v_pos[2];
 } PARENT_PATH;
 
-typedef struct Rule{
+typedef struct Rule {
     double cost;
     std::vector<long> precedencelist;
     Rule(double c, std::vector<long> p) : cost(c), precedencelist(p) { }
 }Rule;
 
-typedef struct{
+typedef struct {
     double startCost, endCost;
 } CostHolder;
 
@@ -56,9 +59,8 @@ typedef std::map<long, std::vector<Rule> > RuleTable;
 
 
 
-class GraphEdgeInfo
-{
-public:
+class GraphEdgeInfo {
+ public:
     long m_lEdgeID;
     long m_lEdgeIndex;
     short m_sDirection;
@@ -66,7 +68,7 @@ public:
     double m_dReverseCost;
     LongVector m_vecStartConnectedEdge;
     LongVector m_vecEndConnedtedEdge;
-    //LongVector m_vecConnectedNode;
+    // LongVector m_vecConnectedNode;
     bool m_bIsLeadingRestrictedEdge;
     VectorOfLongVector m_vecRestrictedEdge;
 
@@ -78,15 +80,14 @@ public:
 
 
 typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
-typedef std::map<long,LongVector> Long2LongVectorMap;
-typedef std::map<long,long> Long2LongMap;
+typedef std::map<long, LongVector> Long2LongVectorMap;
+typedef std::map<long, long> Long2LongMap;
 
 
 
 
-class GraphDefinition
-{
-public:
+class GraphDefinition {
+ public:
     GraphDefinition(void);
     ~GraphDefinition(void);
 
@@ -125,17 +126,22 @@ public:
                          bool has_reverse_cost, bool directed);
 
 
-private:
+ private:
     double construct_path(long ed_id, long v_pos);
-    void explore(long cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
-    double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge, bool isStart);
+    void explore(long cur_node, GraphEdgeInfo& cur_edge, bool isStart,
+                 LongVector &vecIndex, std::priority_queue<PDP,
+                 std::vector<PDP>, std::greater<PDP> > &que);
+    double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge,
+                              bool isStart);
     bool addEdge(edge edgeIn);
-    bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
-    bool get_single_cost(double total_cost, path_element_tt **path, size_t *path_count);
+    bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge,
+                     bool bIsStartNodeSame);
+    bool get_single_cost(double total_cost, path_element_tt **path,
+                         size_t *path_count);
     void init();
     void deleteall();
 
-private:
+ private:
     GraphEdgeVector m_vecEdgeVector;
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
@@ -147,7 +153,7 @@ private:
     double m_dEndPart;
     bool isStartVirtual;
     bool isEndVirtual;
-    
+
     std::vector <path_element_tt> m_vecPath;
     PARENT_PATH *parent;
     CostHolder *m_dCost;
@@ -156,4 +162,4 @@ private:
     bool m_bIsGraphConstructed;
 };
 
-#endif
+#endif  // SRC_TRSP_SRC_GRAPHDEFINITION_H
