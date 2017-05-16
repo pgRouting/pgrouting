@@ -223,9 +223,9 @@ Tw_node::is_end() const {
 bool
 Tw_node::operator ==(const Tw_node &other) const {
     if (&other == this) return true;
-    auto lhs = static_cast<const pickdeliver::Node&>(
+    auto lhs = static_cast<const Node&>(
             *problem->m_base_nodes[idx()].get());
-    auto rhs = static_cast<const pickdeliver::Node&>(
+    auto rhs = static_cast<const Node&>(
             *problem->m_base_nodes[other.idx()].get());
     return lhs == rhs;
 }
@@ -308,7 +308,7 @@ Tw_node::Tw_node(
 
 /*! * \brief Print the contents of a Twnode object. */
 std::ostream& operator << (std::ostream &log, const Tw_node &n) {
-    log << static_cast<const pickdeliver::Node&>(
+    log << static_cast<const Node&>(
             *n.problem->m_base_nodes[n.idx()].get())
         << "[opens = " << n.m_opens
         << "\tcloses = " << n.m_closes
@@ -317,13 +317,6 @@ std::ostream& operator << (std::ostream &log, const Tw_node &n) {
         << "\ttype = " << n.type_str()
         << "]"
         << "\n";
-#if 0
-    if (n.is_pickup() ||  n.is_delivery()) {
-        log << "->" << n.m_otherid << "\n";
-    } else {
-        log << "\n";
-    }
-#endif
     return log;
 }
 

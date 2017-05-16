@@ -87,11 +87,11 @@ PD_Orders::build_orders(
             /*
              * Euclidean version
              */
-            auto b_pick = create_b_pick<pickdeliver::Node>(order, problem->node_id());
+            auto b_pick = create_b_pick<Node>(order, problem->node_id());
             Vehicle_node pickup(
                     {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
-            auto b_drop = create_b_deliver<pickdeliver::Node>(order, problem->node_id());
+            auto b_drop = create_b_deliver<Node>(order, problem->node_id());
             Vehicle_node delivery(
                     {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 

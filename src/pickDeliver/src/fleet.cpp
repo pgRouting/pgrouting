@@ -214,11 +214,11 @@ Fleet::build_fleet(
             /*
              * Euclidean version
              */
-            auto b_start = create_b_start<pickdeliver::Node>(vehicle, problem->node_id());
+            auto b_start = create_b_start<Node>(vehicle, problem->node_id());
             auto starting_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
 
-            auto b_end = create_b_end<pickdeliver::Node>(vehicle, problem->node_id());
+            auto b_end = create_b_end<Node>(vehicle, problem->node_id());
             auto ending_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
