@@ -31,9 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-#include <string>
 #include <vector>
-#include <sstream>
 #include <memory>
 #include <utility>
 
@@ -42,24 +40,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/Dmatrix.h"
-
-#include "vrp/base_node.h"
-#include "vrp/vehicle_node.h"
 #include "vrp/fleet.h"
+#include "vrp/pd_orders.h"
 #include "vrp/solution.h"
 
 namespace pgrouting {
 namespace vrp {
 
 class Order;
-class PD_orders;
+class Vehicle_node;
+class Base_node;
 
 class Pgr_pickDeliver : public PD_problem {
-    friend class Initial_solution;
-    friend class Optimize;
-    friend class Dnode;
 
-    typedef size_t ID;
 
  public:
     Pgr_pickDeliver(
@@ -82,9 +75,9 @@ class Pgr_pickDeliver : public PD_problem {
     std::vector<General_vehicle_orders_t>
         get_postgres_result() const;
 
-    const Order order_of(const Vehicle_node &node) const;
-    const Vehicle_node& node(ID id) const;
 #if 0
+    const Order& order_of(const Vehicle_node &node) const;
+    const Vehicle_node& node(size_t id) const;
     const PD_Orders& orders() const {return m_orders;}
 #endif
 
@@ -94,6 +87,7 @@ class Pgr_pickDeliver : public PD_problem {
     //! name orders handling (TODO? in a class?
     /// @{
 
+#if 0
     /*! \brief I -> {J}
      *
      * gets the orders {J} that can be visited after visiting order I
@@ -101,8 +95,8 @@ class Pgr_pickDeliver : public PD_problem {
     inline Identifiers<size_t> compatibleJ(size_t I) const {
         return m_orders[I].subsetJ(Identifiers<size_t>());
     }
-
     inline Order orders(size_t o) const {return m_orders[o];}
+#endif
 
     inline size_t& node_id() {return m_node_id;}
 
@@ -118,8 +112,9 @@ class Pgr_pickDeliver : public PD_problem {
     // TODO(vicky) delete this function
     bool nodesOK() const;
 #endif
+#if 1
     Fleet trucks() const {return m_trucks;}
-
+#endif
     /// @{
  private:
     //! used define the initial solution algorithm to be used

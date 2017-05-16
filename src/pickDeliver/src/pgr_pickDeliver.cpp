@@ -309,11 +309,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     }  //  constructor
 
 
-const Order
+#if 0
+const Order&
 Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
     pgassert(node.is_pickup() ||  node.is_delivery());
     if (node.is_pickup()) {
-        for (const auto o : m_orders) {
+        for (const auto &o : m_orders) {
             if (o.pickup().idx() == node.idx()) {
                 return o;
             }
@@ -321,7 +322,7 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
     }
     pgassert(node.is_delivery());
 
-    for (const auto o : m_orders) {
+    for (const auto &o : m_orders) {
         if (o.delivery().idx() == node.idx()) {
             return o;
         }
@@ -336,14 +337,14 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
 
 
 const Vehicle_node&
-Pgr_pickDeliver::node(ID id) const {
+Pgr_pickDeliver::node(size_t id) const {
     pgassert(id < m_nodes.size());
     msg.log << "id = " << id
         << "m_nodes[id].idx()" << m_nodes[id].idx() << "\n";
     pgassertwm(id == m_nodes[id].idx(), msg.get_log().c_str());
     return m_nodes[id];
 }
-
+#endif
 
 }  //  namespace vrp
 }  //  namespace pgrouting
