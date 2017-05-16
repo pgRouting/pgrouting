@@ -75,28 +75,9 @@ class Pgr_pickDeliver : public PD_problem {
     std::vector<General_vehicle_orders_t>
         get_postgres_result() const;
 
-#if 0
-    const Order& order_of(const Vehicle_node &node) const;
-    const Vehicle_node& node(size_t id) const;
-    const PD_Orders& orders() const {return m_orders;}
-#endif
 
     Solution optimize(const Solution init_solution);
     size_t max_cycles() const {return m_max_cycles;}
-
-    //! name orders handling (TODO? in a class?
-    /// @{
-
-#if 0
-    /*! \brief I -> {J}
-     *
-     * gets the orders {J} that can be visited after visiting order I
-     */
-    inline Identifiers<size_t> compatibleJ(size_t I) const {
-        return m_orders[I].subsetJ(Identifiers<size_t>());
-    }
-    inline Order orders(size_t o) const {return m_orders[o];}
-#endif
 
     inline size_t& node_id() {return m_node_id;}
 
@@ -112,10 +93,8 @@ class Pgr_pickDeliver : public PD_problem {
     // TODO(vicky) delete this function
     bool nodesOK() const;
 #endif
-#if 1
     Fleet trucks() const {return m_trucks;}
-#endif
-    /// @{
+
  private:
     //! used define the initial solution algorithm to be used
     int m_initial_id;

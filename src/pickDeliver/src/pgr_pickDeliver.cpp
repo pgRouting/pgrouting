@@ -46,30 +46,13 @@ namespace pgrouting {
 namespace vrp {
 
 
-#if 1
-    // TODO(vicky) delete this function
+// TODO(vicky) delete this function
 bool
 Pgr_pickDeliver::nodesOK() const {
     ENTERING();
     if (m_nodes.empty() && m_base_nodes.empty()) return true;
 
-#if 0
-    msg.log << "     m_nodes: " << m_nodes.size();
-    for (const auto n : m_nodes) {
-        msg.log << n.id() << ",";
-    }
-
-    msg.log << "\n";
-
-    msg.log << "m_base_nodes: " << m_base_nodes.size();
-    for (auto const &n : m_base_nodes) {
-        msg.log << n->id() << ",";
-    }
-#endif
     pgassertwm(m_nodes.size() == m_base_nodes.size(), msg.get_log().c_str());
-#if 0
-    msg.log << "\n";
-#endif
     for (size_t i = 0; i < m_nodes.size() ; ++i) {
         pgassertwm(m_nodes[i].id() ==  m_base_nodes[i]->id(),
                 msg.get_log().c_str());
@@ -79,7 +62,6 @@ Pgr_pickDeliver::nodesOK() const {
     EXITING();
     return true;
 }
-#endif
 
 Solution
 Pgr_pickDeliver::optimize(const Solution solution) {
@@ -308,43 +290,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         EXITING();
     }  //  constructor
 
-
-#if 0
-const Order&
-Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
-    pgassert(node.is_pickup() ||  node.is_delivery());
-    if (node.is_pickup()) {
-        for (const auto &o : m_orders) {
-            if (o.pickup().idx() == node.idx()) {
-                return o;
-            }
-        }
-    }
-    pgassert(node.is_delivery());
-
-    for (const auto &o : m_orders) {
-        if (o.delivery().idx() == node.idx()) {
-            return o;
-        }
-    }
-#ifndef NDEBUG
-    std::ostringstream err_log;
-    err_log << "Order of" << node << " not found";
-#endif
-    pgassertwm(false, err_log.str());
-    return m_orders[0];
-}
-
-
-const Vehicle_node&
-Pgr_pickDeliver::node(size_t id) const {
-    pgassert(id < m_nodes.size());
-    msg.log << "id = " << id
-        << "m_nodes[id].idx()" << m_nodes[id].idx() << "\n";
-    pgassertwm(id == m_nodes[id].idx(), msg.get_log().c_str());
-    return m_nodes[id];
-}
-#endif
 
 }  //  namespace vrp
 }  //  namespace pgrouting
