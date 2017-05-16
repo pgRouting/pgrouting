@@ -25,20 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "vrp/fleet.h"
 
-#include <string>
 #include <vector>
-#include <limits>
 #include <memory>
 #include <utility>
+#include <limits>
 
-#include "vrp/pd_orders.h"
 #include "pickDeliver/dnode.h"
-#include "vrp/tw_node.h"
-#include "vrp/vehicle_pickDeliver.h"
 #include "vrp/pgr_pickDeliver.h"
-#include "cpp_common/identifiers.hpp"
-#include "cpp_common/Dmatrix.h"
-
 
 namespace pgrouting {
 namespace vrp {
@@ -123,7 +116,6 @@ Fleet::add_vehicle(
         Vehicle_node starting_site,
         std::unique_ptr<Base_node> b_end,
         Vehicle_node ending_site) {
-
     problem->add_base_node(std::move(b_start));
     problem->add_base_node(std::move(b_end));
     problem->add_node(starting_site);
@@ -151,7 +143,6 @@ Fleet::add_vehicle(
         msg.log << "inserting vehicle: " << m_trucks.back().idx() << "\n";
         pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
     }
-
 }
 
 /*!
