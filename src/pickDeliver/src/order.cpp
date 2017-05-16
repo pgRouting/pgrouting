@@ -26,9 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "vrp/order.h"
 
-#include <set>
-#include "cpp_common/pgr_assert.h"
-#include "vrp/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -50,8 +47,8 @@ Order::Order(
         const Vehicle_node &p_pickup,
         const Vehicle_node &p_delivery) :
     Identifier(p_idx, p_id),
-    pickup_id(p_pickup.idx()),
-    delivery_id(p_delivery.idx()) {
+    m_pickup(p_pickup),
+    m_delivery(p_delivery) {
     }
 
 std::ostream&
@@ -59,18 +56,6 @@ operator << (std::ostream &log, const Order &order) {
     log << "\n\nOrder " << order.idx() << ":\n"
         << "\tPickup: " << order.pickup() << "\n"
         << "\tDelivery: " << order.delivery() << "\n\n";
-#if 0
-    if (order.delivery().is_partially_compatible_IJ(order.pickup(), speed)) {
-        log << "\tis_partially_compatible_IJ: ";
-    } else if (order.delivery().is_tight_compatible_IJ(order.pickup(), speed)) {
-        log << "\tis_tight_compatible_IJ: ";
-    } else if (order.delivery().is_waitTime_compatible_IJ(
-                order.pickup(), speed)) {
-        log << "\tis_waitTime_compatible_IJ: ";
-    } else {
-        pgassert(false);
-    }
-#endif
     log << "\nThere are | {I}| = "
         << order.m_compatibleI.size()
         << " -> order(" << order.idx()
@@ -92,13 +77,13 @@ operator << (std::ostream &log, const Order &order) {
 
 const Vehicle_node&
 Order::delivery() const {
-    return problem->node(delivery_id);
+    return m_delivery;
 }
 
 
 const Vehicle_node&
 Order::pickup() const {
-    return problem->node(pickup_id);
+    return m_pickup;
 }
 
 

@@ -73,7 +73,7 @@ class Vehicle_pickDeliver : public Vehicle {
      bool is_order_feasable(const Order &order) const;
      Identifiers<size_t> feasable_orders() const {return m_feasable_orders;}
 
-     PD_Orders orders() const {return m_orders;}
+     const PD_Orders& orders() const {return m_orders;}
      size_t orders_size() const {return m_orders_in_vehicle.size();}
      Identifiers<size_t> orders_in_vehicle() const {return m_orders_in_vehicle;}
 
