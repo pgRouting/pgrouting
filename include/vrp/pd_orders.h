@@ -32,8 +32,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <memory>
 #include <utility>
+
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "cpp_common/identifiers.hpp"
+
 #include "vrp/base_node.h"
 #include "vrp/pd_problem.h"
 
@@ -50,11 +52,6 @@ class PD_Orders : public PD_problem {
  public:
      typedef Orders::iterator o_iterator;
      typedef Orders::const_iterator o_const_iterator;
-     typedef size_t OID;
-     typedef Identifiers<OID> setof_OID;
-
- protected:
-     Orders m_orders;
 
  public:
      /*! @name constructors
@@ -66,7 +63,6 @@ class PD_Orders : public PD_problem {
      /*!@}*/
 
      void set_compatibles(double speed);
-     // TODO(vicky) check if it has to be const
      size_t find_best_J(Identifiers<size_t> &within_this_set) const;
      size_t find_best_I(Identifiers<size_t> &within_this_set) const;
 
@@ -77,8 +73,8 @@ class PD_Orders : public PD_problem {
       * functions with same "meaning" as an std container
       * @{
       */
-     Order& operator[](OID o);
-     const Order& operator[](OID o) const;
+     Order& operator[](size_t o);
+     const Order& operator[](size_t o) const;
      size_t size() const {return m_orders.size();}
      o_iterator begin() {return m_orders.begin();}
      o_iterator end() {return m_orders.end();}
@@ -86,17 +82,16 @@ class PD_Orders : public PD_problem {
      o_const_iterator end() const {return m_orders.end();}
      /*!@}*/
 
-     // TODO(vicky) this should be private called by the constructor
+ private:
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders);
 
- private:
      void add_order(
-             int64_t,
+             const PickDeliveryOrders_t &,
              std::unique_ptr<Base_node>,
-             Vehicle_node,
+             const Vehicle_node&,
              std::unique_ptr<Base_node>,
-             Vehicle_node);
+             const Vehicle_node&);
 
      template <typename T> std::unique_ptr<Base_node> create_b_pick(
              const PickDeliveryOrders_t &order,
@@ -119,6 +114,10 @@ class PD_Orders : public PD_problem {
                      order.deliver_y));
          return std::move(b_drop);
      }
+
+ private:
+     Orders m_orders;
+
 };
 
 }  //  namespace vrp

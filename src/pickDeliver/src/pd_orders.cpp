@@ -29,12 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <memory>
 #include <utility>
 
-#include "vrp/order.h"
-#include "vrp/node.h"
-#include "pickDeliver/dnode.h"
-#include "vrp/tw_node.h"
-#include "vrp/vehicle_node.h"
 #include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/dnode.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -49,11 +45,11 @@ PD_Orders::PD_Orders(
 
 void
 PD_Orders:: add_order(
-        int64_t order_id,
+        const PickDeliveryOrders_t &order,
         std::unique_ptr<Base_node> b_pick, 
-        Vehicle_node pick, 
+        const Vehicle_node &pick, 
         std::unique_ptr<Base_node> b_drop,
-        Vehicle_node drop) {
+        const Vehicle_node &drop) {
     problem->add_base_node(std::move(b_pick));
     problem->add_base_node(std::move(b_drop));
     problem->add_node(pick);
@@ -64,7 +60,7 @@ PD_Orders:: add_order(
      * add into an order
      */
     m_orders.push_back(
-            Order(m_orders.size(), order_id,
+            Order(m_orders.size(), order.id,
                 pick,
                 drop));
 }
@@ -96,7 +92,7 @@ PD_Orders::build_orders(
                     {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
 
-            add_order(order.id,
+            add_order(order,
                     std::move(b_pick), pickup,
                     std::move(b_drop), delivery);
         } else {
@@ -111,7 +107,7 @@ PD_Orders::build_orders(
             Vehicle_node delivery(
                     {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
-            add_order(order.id,
+            add_order(order,
                     std::move(b_pick), pickup,
                     std::move(b_drop), delivery);
         }
@@ -135,13 +131,13 @@ PD_Orders::is_valid(double speed) const {
 }
 
 Order&
-PD_Orders::operator[](OID i) {
+PD_Orders::operator[](size_t i) {
     pgassert(i < m_orders.size());
     return m_orders[i];
 }
 
 const Order&
-PD_Orders::operator[](OID i) const {
+PD_Orders::operator[](size_t i) const {
     pgassert(i < m_orders.size());
     return m_orders[i];
 }

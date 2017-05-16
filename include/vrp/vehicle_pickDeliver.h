@@ -50,7 +50,7 @@ class Vehicle_pickDeliver : public Vehicle {
      Identifiers<size_t> m_orders_in_vehicle;
      PD_Orders m_orders;
      //! orders that fit in the truck
-     Identifiers<PD_Orders::OID> m_feasable_orders;
+     Identifiers<size_t> m_feasable_orders;
 
 
  public:
@@ -163,8 +163,8 @@ class Vehicle_pickDeliver : public Vehicle {
 
      void do_while_feasable(
              int kind,
-             Identifiers<PD_Orders::OID> &unassigned,
-             Identifiers<PD_Orders::OID> &assigned);
+             Identifiers<size_t> &unassigned,
+             Identifiers<size_t> &assigned);
 
 
      /*!

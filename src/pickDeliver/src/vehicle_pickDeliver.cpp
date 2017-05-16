@@ -257,8 +257,8 @@ Vehicle_pickDeliver::push_front(const Order &order) {
 void
 Vehicle_pickDeliver::do_while_feasable(
         int kind,
-        Identifiers<PD_Orders::OID> &unassigned,
-        Identifiers<PD_Orders::OID> &assigned) {
+        Identifiers<size_t> &unassigned,
+        Identifiers<size_t> &assigned) {
     pgassert(is_feasable());
     auto current_feasable = m_feasable_orders * unassigned;
 
