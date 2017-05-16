@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_PICKDELIVER_BASE_NODE_H_
-#define INCLUDE_PICKDELIVER_BASE_NODE_H_
+#ifndef INCLUDE_VRP_BASE_NODE_H_
+#define INCLUDE_VRP_BASE_NODE_H_
 #pragma once
 
 #include <iosfwd>
@@ -46,7 +46,6 @@ namespace vrp {
  */
 class Base_node : public Identifier {
  public:
-
      Base_node() = default;
      Base_node(size_t, int64_t);
 
@@ -76,4 +75,4 @@ class Base_node : public Identifier {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_PICKDELIVER_BASE_NODE_H_
+#endif  // INCLUDE_VRP_BASE_NODE_H_

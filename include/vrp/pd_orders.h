@@ -98,7 +98,7 @@ class PD_Orders : public PD_problem {
              std::unique_ptr<Base_node>,
              Vehicle_node);
 
-     template <typename T> std::unique_ptr<Base_node> create_b_pick (
+     template <typename T> std::unique_ptr<Base_node> create_b_pick(
              const PickDeliveryOrders_t &order,
              size_t node_id) {
          std::unique_ptr<Base_node> b_pick(new T(
@@ -109,7 +109,7 @@ class PD_Orders : public PD_problem {
          return std::move(b_pick);
      }
 
-     template <typename T> std::unique_ptr<Base_node> create_b_deliver (
+     template <typename T> std::unique_ptr<Base_node> create_b_deliver(
              const PickDeliveryOrders_t &order,
              size_t node_id) {
          std::unique_ptr<Base_node> b_drop(new T(

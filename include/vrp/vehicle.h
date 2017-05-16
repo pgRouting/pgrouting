@@ -73,6 +73,7 @@ class Vehicle : public Identifier, public PD_problem {
  protected:
      typedef size_t POS;
      std::deque< Vehicle_node > m_path;
+
  private:
      double m_capacity;
      double m_factor;

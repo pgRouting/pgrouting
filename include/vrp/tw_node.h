@@ -57,34 +57,14 @@ namespace vrp {
 class Tw_node : public Identifier, public PD_problem {
  public:
      typedef enum {
-         kStart = 0,  // /< starting site
-         kPickup,  // /< pickup site
-         kDelivery,  // /< delivery site
-         kDump,  // /< dump site, empties truck
-         kLoad,  // /< load site, fills the truck
+         kStart = 0,  ///< starting site
+         kPickup,  ///< pickup site
+         kDelivery,  ///< delivery site
+         kDump,  ///< dump site, empties truck
+         kLoad,  ///< load site, fills the truck
          kEnd        ///< ending site
      } NodeType;
 
-
-#if 0
-     inline void set_Pid(size_t id) {
-         m_otherid = id;
-     }
-
-     inline void set_Did(size_t id) {
-         m_otherid = id;
-     }
-
-     inline size_t Did() const {
-         pgassert(is_pickup());
-         return m_otherid;
-     }
-
-     inline size_t Pid() const {
-         pgassert(is_delivery());
-         return m_otherid;
-     }
-#endif
 
      /** @name accessors */
      ///@ {
@@ -102,18 +82,15 @@ class Tw_node : public Identifier, public PD_problem {
      inline double demand() const {return m_demand;}
 
      /*! * @brief Returns the service time for this node. */
-     inline double service_time() const { return m_service_time;}
+     inline double service_time() const {return m_service_time;}
 
      /*! * @brief Returns the type of this node. */
-     inline NodeType type() const { return m_type;}
+     inline NodeType type() const {return m_type;}
 
      /*! @brief Returns the length of time between the opening and closing. */
      inline double window_length() const {return m_closes - m_opens;}
 
      /*! @brief time = distance / speed. */
-#if 0
-     double travel_time_to(const pickdeliver::Node &other, double speed) const;
-#endif
      double travel_time_to(const Tw_node &other, double speed) const;
 
      ///@}
@@ -192,13 +169,15 @@ class Tw_node : public Identifier, public PD_problem {
 
      std::string type_str() const;
 
-     ///@}
-
+     /*!@}*/
 
 
      /*! * @brief Print the contents of a Twnode object. */
      friend std::ostream& operator<< (std::ostream &log, const Tw_node &node);
 
+     /*! @name to be or not to be
+      * @{
+      */
      bool operator ==(const Tw_node &rhs) const;
 
 
@@ -217,9 +196,7 @@ class Tw_node : public Identifier, public PD_problem {
          return !is_early_arrival(arrival_time)
              && !is_late_arrival(arrival_time);
      }
-
-
-
+     /*!@}*/
 
 
      /** @name document functions */
@@ -296,9 +273,6 @@ class Tw_node : public Identifier, public PD_problem {
      double m_closes;       ///< closing time of the node
      double m_service_time;  // /< time it takes to be served
      double m_demand;       ///< The demand for the Node
-#if 0
-     size_t m_otherid;      ///< the other's internal id
-#endif
      NodeType m_type;       ///< The demand for the Node
 };
 

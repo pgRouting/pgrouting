@@ -33,6 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <tuple>
 #include <string>
 #include <vector>
+#include <memory>
+#include <utility>
 
 #include "cpp_common/identifiers.hpp"
 
@@ -120,7 +122,7 @@ class Fleet : public PD_problem {
              std::unique_ptr<Base_node>,
              Vehicle_node);
 
-     template <typename T> std::unique_ptr<Base_node> create_b_start (
+     template <typename T> std::unique_ptr<Base_node> create_b_start(
              const Vehicle_t &vehicle,
              size_t node_id) {
          std::unique_ptr<Base_node> b_start(new T(
@@ -131,7 +133,7 @@ class Fleet : public PD_problem {
          return std::move(b_start);
      }
 
-     template <typename T> std::unique_ptr<Base_node> create_b_end (
+     template <typename T> std::unique_ptr<Base_node> create_b_end(
              const Vehicle_t &vehicle,
              size_t node_id) {
          std::unique_ptr<Base_node> b_end(new T(
@@ -141,7 +143,6 @@ class Fleet : public PD_problem {
                      vehicle.end_y));
          return std::move(b_end);
      }
-
 };
 
 
