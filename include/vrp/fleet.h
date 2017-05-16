@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VRP_FLEET_H_
 #pragma once
 
+#if 0
 #include <deque>
 #include <tuple>
 #include <string>
@@ -40,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "vrp/vehicle_pickDeliver.h"
 #include "vrp/pd_problem.h"
-
+#endif
 
 namespace pgrouting {
 

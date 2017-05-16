@@ -117,7 +117,6 @@ class PD_Orders : public PD_problem {
 
  private:
      Orders m_orders;
-
 };
 
 }  //  namespace vrp

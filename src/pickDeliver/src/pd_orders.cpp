@@ -46,8 +46,8 @@ PD_Orders::PD_Orders(
 void
 PD_Orders:: add_order(
         const PickDeliveryOrders_t &order,
-        std::unique_ptr<Base_node> b_pick, 
-        const Vehicle_node &pick, 
+        std::unique_ptr<Base_node> b_pick,
+        const Vehicle_node &pick,
         std::unique_ptr<Base_node> b_drop,
         const Vehicle_node &drop) {
     problem->add_base_node(std::move(b_pick));
@@ -88,8 +88,10 @@ PD_Orders::build_orders(
                     {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
             auto b_drop = create_b_deliver<Node>(order, problem->node_id());
-            Vehicle_node delivery(
-                    {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
+            Vehicle_node delivery({
+                    problem->node_id()++,
+                    order,
+                    Tw_node::NodeType::kDelivery});
 
 
             add_order(order,
@@ -104,8 +106,10 @@ PD_Orders::build_orders(
                     {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
             auto b_drop = create_b_deliver<Dnode>(order, problem->node_id());
-            Vehicle_node delivery(
-                    {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
+            Vehicle_node delivery({
+                    problem->node_id()++,
+                    order,
+                    Tw_node::NodeType::kDelivery});
 
             add_order(order,
                     std::move(b_pick), pickup,
