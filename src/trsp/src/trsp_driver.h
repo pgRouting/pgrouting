@@ -20,8 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_TRSP_SRC_TRSP_DRIVER_H
-#define SRC_TRSP_SRC_TRSP_DRIVER_H
+#ifndef SRC_TRSP_SRC_TRSP_DRIVER_H_
+#define SRC_TRSP_SRC_TRSP_DRIVER_H_
 
 #define MAX_RULE_LENGTH 5
 
@@ -61,4 +61,4 @@ extern "C" {
 }
 #endif
 
-#endif // SRC_TRSP_SRC_TRSP_DRIVER_H
+#endif // SRC_TRSP_SRC_TRSP_DRIVER_H_
