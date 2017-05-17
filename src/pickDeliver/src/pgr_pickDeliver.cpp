@@ -191,10 +191,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         for (const auto t : m_trucks) {
             msg.log << t << "\n";
         }
-#endif
         for (const auto &o : m_orders) {
             msg.log << o << "\n";
         }
+#endif
 
         /*
          * check the (S, P, D, E) order on all vehicles
@@ -230,7 +230,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 #if 0
         m_trucks.set_compatibles(m_orders);
 #endif
-        msg.error << "constructor OK";
         EXITING();
     }  //  constructor
 

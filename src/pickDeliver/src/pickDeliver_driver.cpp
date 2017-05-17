@@ -99,6 +99,7 @@ do_pgr_pickDeliver(
             return;
         }
 
+        // TODO(vicky) wrap with a try and make a throw???
         log << "Initialize problem\n";
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
@@ -117,6 +118,9 @@ do_pgr_pickDeliver(
         }
         log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
+
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
 
         try {
             pd_problem.solve();

@@ -264,29 +264,11 @@ Fleet::is_fleet_ok() const {
  */
 bool
 Fleet::is_order_ok(const Order &order) const {
-    ENTERING();
     for (const auto truck : m_trucks) {
         if (!order.is_valid(truck.speed())) continue;
         if (truck.is_order_feasable(order)) {
             return true;
         }
-#if 0
-        msg.log << "checking order " << order.idx()
-            << "on truck " << truck.idx() << "\n";
-
-        /*
-         * The order must be valid given the speed
-         */
-        if (!order.is_valid(truck.speed())) continue;
-
-        /*
-         * if its feasible, then the one truck is found
-         */
-        if (truck.is_order_feasable(order)) {
-            EXITING();
-            return true;
-        }
-#endif
     }
     return false;
 }

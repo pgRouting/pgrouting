@@ -59,20 +59,35 @@ SELECT * FROM orders ORDER BY id;
   98 |     20 |        10 |  58 |  75 |     30 |      84 |        90 |        11 |  62 |  80 |    196 |     239 |        90
  100 |     20 |        46 |  55 |  85 |    647 |     726 |        90 |       100 |  55 |  80 |    743 |     820 |        90
 (53 rows)
+
 SELECT * FROM vehicles ORDER BY id;
  id | start_node_id | start_x | start_y | start_open | start_close | number | capacity
 ----+---------------+---------+---------+------------+-------------+--------+----------
-  1 |           100 |      40 |      50 |          0 |        1236 |     25 |      200
+  1 |           101 |      40 |      50 |          0 |        1236 |     25 |      200
 (1 row)
+
+WITH
+A AS (
+    SELECT p_node_id AS id, p_x AS x, p_y AS y FROM orders
+    UNION
+    SELECT d_node_id AS id, d_x, d_y FROM orders
+    UNION
+    SELECT start_node_id, start_x, start_y FROM vehicles
+)
+SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
+FROM A, A AS B
+WHERE A.id != B.id AND A.id in (89, 25, 101) AND B.id in (89, 25, 101)
+ORDER BY start_vid, end_vid;
  start_vid | end_vid |     agg_cost
 -----------+---------+------------------
         25 |      89 |                2
-        25 |     100 | 66.2872536767062
+        25 |     101 | 35.0570962859162
         89 |      25 |                2
-        89 |     100 |               35
-        89 |     100 | 66.7083203206317
-       100 |      25 | 66.2872536767062
-       100 |      89 |               35
+        89 |     101 |               35
+       101 |      25 | 35.0570962859162
+       101 |      89 |               35
+(6 rows)
+
 --q1
 SELECT * FROM pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
