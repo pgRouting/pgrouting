@@ -354,26 +354,6 @@ Where:
 .. points_sql_end
 
 
-.. pd_sql_start
-
-.. note:: TODO: Matrix version orders_sql
-
-.. pd_sql_end
-
-.. pd_euclidean_sql_start
-
-.. note:: TODO: Euclidean version orders_sql
-
-.. pd_euclidean_sql_end
-
-.. pd_vehicle_sql_start
-
-.. note:: TODO: VRP vehicles_sql
-
-.. pd_vehicle_sql_end
-
-
-
 .. _return_values:
 
 Return columns & values
@@ -440,19 +420,6 @@ Column                 Type                  Description
 =====================  ====================  =================================================
 
 .. result_flow_end
-
-.. return_vrp_euclidean_start
-
-.. note:: TODO: Eucliden version return
-
-.. return_vrp_euclidean_end
-
-.. return_vrp_start
-
-.. note:: TODO: Matrix version return
-
-.. return_vrp_end
-
 
 .. _advanced_topics:
 

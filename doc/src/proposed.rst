@@ -163,5 +163,4 @@ Experimental and Proposed functions
     :hidden:
     ..
      ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
-    pgr_pickDeliverEuclidean
 

@@ -85,6 +85,94 @@ Characteristics:
 - Six different optional different initial solutions
 
 
+
+Inner Queries
+-------------
+
+.. pd_matrix_sql_start
+
+.. warning:: TODO: FIX becuase the following is outdated
+
+Description of the orders_sql query
+.........................................................................................
+
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the customer.
+
+                                        - A value of ``0`` identifies the starting location
+
+**demand**        ``ANY-NUMERICAL``     How much is added / removed from the vehicle.
+
+                                        - Negative value is a delivery,
+                                        - Positive value is a pickup,
+
+**openTime**      ``ANY-NUMERICAL``     The time relative to 0, when the customer opens.
+**closeTime**     ``ANY-NUMERICAL``     The time relative to 0, when the customer closes.
+**serviceTime**   ``ANY-NUMERICAL``     The duration of the loading / unloading.
+**pickup_id**     ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
+**deliver_id**    ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
+================  ===================   =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+
+.. pd_matrix_sql_end
+
+.. pd_euclidean_sql_start
+
+.. warning:: TODO: FIX becuase the following is outdated
+
+Description of the orders_sql query
+.........................................................................................
+
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the customer.
+
+                                        - A value of ``0`` identifies the starting location
+
+**x**             ``ANY-NUMERICAL``     ``X`` coordinate of the location.
+**y**             ``ANY-NUMERICAL``     ``Y`` coordinate of the location.
+**demand**        ``ANY-NUMERICAL``     How much is added / removed from the vehicle.
+
+                                        - Negative value is a delivery,
+                                        - Positive value is a pickup,
+
+**openTime**      ``ANY-NUMERICAL``     The time relative to 0, when the customer opens.
+**closeTime**     ``ANY-NUMERICAL``     The time relative to 0, when the customer closes.
+**serviceTime**   ``ANY-NUMERICAL``     The duration of the loading / unloading.
+**pickup_id**     ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
+**deliver_id**    ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
+================  ===================   =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+
+.. pd_euclidean_sql_end
+
+.. pd_vehicle_sql_start
+
+.. warning:: TODO: Write
+
+
+Description of the vehicles_sql query
+.........................................................................................
+
+.. pd_vehicle_sql_end
+
+.. pd_parameters_start
+
+.. warning:: TODO: FIX becuase the following is outdated
+
 Description of the parameters of the signatures
 ...............................................................................
 
@@ -93,9 +181,9 @@ Column            Type                Default    Description
 ================= ================== ========= =================================================
 **orders_sql**    ``TEXT``                     Orders SQL query as described above.
 **vehicles_sql**  ``TEXT``                     Vehciles SQL query as described above.
-**factor**        ``NUMERIC``          1       multiplier for the travel time
+**factor**        ``NUMERIC``          1       $multiplier for the travel time
 **max_cycles**    ``INTEGER``          10      Array of identifiers of starting vertices.
-**initial_sol**   ``INTEGER``          4       Identifier of the ending vertex of the path.
+**initial**       ``INTEGER``          4       Identifier of the ending vertex of the path.
 
                                                   * ``1`` One order per truck
                                                   * ``2`` push front
@@ -106,11 +194,74 @@ Column            Type                Default    Description
 
 ================= ================== ========= =================================================
 
+.. pd_parameters_end
+
+
+Results
+---------
+
+.. return_vrp_euclidean_start
+
+.. warning:: TODO: FIX becuase the following is outdated
+
+Description of the result
+.........................................................................................
+
+:RETURNS SET OF: (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)
+
+=================== ============= =================================================
+Column              Type           Description
+=================== ============= =================================================
+**seq**              INTEGER      Sequential value starting from **1**.
+**vehicle_id**       INTEGER      Current vehicle identifier.
+**vehicle_seq**      INTEGER      Sequential value starting from **1** for the current vehicle.
+**stop_id**          BIGINT       Visited customer identifier.
+**travel_time**      FLOAT        Travel time from previous ``stop_id`` to current ``stop_id``.
+**arrival_time**     FLOAT        Previous ``departure_time`` plus current ``travel_time``.
+**wait_time**        FLOAT        Time spent waiting for ``stop_id`` to open.
+**service_time**     FLOAT        Service time at current stop_id.
+**departure_time**   FLOAT        Previous :math:`departure\_time + travel\_time + wait\_time + service\_time`.
+                                    - When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehicle_id``.
+                                    - When ``vehicle_id = -1`` has the aggregate total time
+=================== ============= =================================================
+
+
+.. return_vrp_euclidean_end
+
+.. return_vrp_matrix_start
+
+.. warning:: TODO: FIX becuase the following is outdated
+
+Description of the result
+.........................................................................................
+
+:RETURNS SET OF: (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)
+
+=================== ============= =================================================
+Column              Type           Description
+=================== ============= =================================================
+**seq**              INTEGER      Sequential value starting from **1**.
+**vehicle_id**       INTEGER      Current vehicle identifier.
+**vehicle_seq**      INTEGER      Sequential value starting from **1** for the current vehicle.
+**stop_id**          BIGINT       Visited customer identifier.
+**travel_time**      FLOAT        Travel time from previous ``stop_id`` to current ``stop_id``.
+**arrival_time**     FLOAT        Previous ``departure_time`` plus current ``travel_time``.
+**wait_time**        FLOAT        Time spent waiting for ``stop_id`` to open.
+**service_time**     FLOAT        Service time at current stop_id.
+**departure_time**   FLOAT        Previous :math:`departure\_time + travel\_time + wait\_time + service\_time`.
+                                    - When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehicle_id``.
+                                    - When ``vehicle_id = -1`` has the aggregate total time
+=================== ============= =================================================
+
+.. return_vrp_matrix_end
+
+
+
 
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* https://en.wikipedia.org/wiki/Vehicle_routing_problem
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
