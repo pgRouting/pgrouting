@@ -52,8 +52,6 @@ class Vehicle_node;
 class Base_node;
 
 class Pgr_pickDeliver : public PD_problem {
-
-
  public:
     Pgr_pickDeliver(
             const std::vector<PickDeliveryOrders_t> &pd_orders,

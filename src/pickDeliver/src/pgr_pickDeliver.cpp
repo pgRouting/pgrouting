@@ -163,8 +163,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_base_nodes(),
     m_cost_matrix(cost_matrix),
     m_orders(pd_orders),
-    m_trucks(vehicles, factor)
-{
+    m_trucks(vehicles, factor) {
         ENTERING();
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
@@ -214,13 +213,16 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                     msg.log << "****** With speed: " << t.speed() << "\n";
                     msg.log << t.start_site() << "\n";
                     msg.log << o.pickup() << "\n";
-                    msg.log << "travel time to " << t.start_site().travel_time_to(o.pickup(), t.speed()) << "\n";
-                    msg.log << "yet other" << m_cost_matrix.distance(o.pickup().id(), t.start_site().id()) << "\n";
+                    msg.log << "travel time to "
+                        << t.start_site().travel_time_to(
+                                o.pickup(), t.speed()) << "\n";
 
                     msg.log << o.delivery() << "\n";
                     msg.log << t.end_site() << "\n";
-                    msg.log << "travel time to " << t.start_site().travel_time_to(o.delivery(), t.speed()) << "\n";
-                    msg.log << "yet other" << m_cost_matrix.distance(o.delivery().id(), t.start_site().id()) << "\n\nn";
+                    msg.log << "travel time to "
+                        << t.start_site().travel_time_to(
+                                o.delivery(), t.speed())
+                        << "\n";
                     t.push_back(o);
                 }
                 return;
