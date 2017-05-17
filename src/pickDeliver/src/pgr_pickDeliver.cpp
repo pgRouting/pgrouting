@@ -227,8 +227,13 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             }
         }
         msg.log << "orders OK \n";
-#if 0
+
         m_trucks.set_compatibles(m_orders);
+#if 0
+        msg.error << "foo";
+        for (const auto t : m_trucks) {
+            msg.log << t << "\n";
+        }
 #endif
         EXITING();
     }  //  constructor

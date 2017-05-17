@@ -119,8 +119,6 @@ do_pgr_pickDeliver(
         log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
 
-        *log_msg = pgr_msg(log.str().c_str());
-        return;
 
         try {
             pd_problem.solve();
@@ -131,6 +129,7 @@ do_pgr_pickDeliver(
             log << "Caught unknown exception!";
             throw;
         }
+
 
         log << pd_problem.msg.get_log();
         log << "Finish solve\n";
