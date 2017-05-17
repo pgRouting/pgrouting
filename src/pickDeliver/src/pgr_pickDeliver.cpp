@@ -170,6 +170,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         pgassert(!vehicles.empty());
         pgassert(!m_cost_matrix.empty());
         pgassert(m_initial_id > 0 && m_initial_id < 7);
+        pgassert(nodesOK());
 
         if (!msg.get_error().empty()) {
             return;
@@ -191,11 +192,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             msg.log << t << "\n";
         }
 #endif
-#if 0
         for (const auto &o : m_orders) {
             msg.log << o << "\n";
         }
-#endif
 
         /*
          * check the (S, P, D, E) order on all vehicles
@@ -203,20 +202,35 @@ Pgr_pickDeliver::Pgr_pickDeliver(
          */
         msg.log << "\n Checking orders";
         for (const auto &o : m_orders) {
-#if 1
             if (!m_trucks.is_order_ok(o)) {
                 msg.error << "The order "
-                    << o.pickup().order()
+                    << o.id()
                     << " is not feasible on any truck";
                 msg.log << "\n" << o;
+                double old_speed(0);
+                for (auto t : m_trucks) {
+                    if (old_speed == t.speed()) continue;
+                    old_speed = t.speed();
+                    msg.log << "****** With speed: " << t.speed() << "\n";
+                    msg.log << t.start_site() << "\n";
+                    msg.log << o.pickup() << "\n";
+                    msg.log << "travel time to " << t.start_site().travel_time_to(o.pickup(), t.speed()) << "\n";
+                    msg.log << "yet other" << m_cost_matrix.distance(o.pickup().id(), t.start_site().id()) << "\n";
+
+                    msg.log << o.delivery() << "\n";
+                    msg.log << t.end_site() << "\n";
+                    msg.log << "travel time to " << t.start_site().travel_time_to(o.delivery(), t.speed()) << "\n";
+                    msg.log << "yet other" << m_cost_matrix.distance(o.delivery().id(), t.start_site().id()) << "\n\nn";
+                    t.push_back(o);
+                }
                 return;
             }
-#endif
         }
         msg.log << "orders OK \n";
 #if 0
         m_trucks.set_compatibles(m_orders);
 #endif
+        msg.error << "constructor OK";
         EXITING();
     }  //  constructor
 

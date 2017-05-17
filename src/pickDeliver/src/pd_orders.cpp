@@ -55,7 +55,6 @@ PD_Orders:: add_order(
     problem->add_node(pick);
     problem->add_node(drop);
 
-    pgassert(problem->nodesOK());
     /*
      * add into an order
      */
@@ -101,6 +100,13 @@ PD_Orders::build_orders(
             /*
              * matrix version
              */
+            msg.log << "pickup \n"
+                << "pick_node_id: " << order.pick_node_id
+                << "\n";
+
+            msg.log << "pickup \n"
+                << "deliver_node_id: " << order.deliver_node_id
+                << "\n";
             auto b_pick = create_b_pick<Dnode>(order, problem->node_id());
             Vehicle_node pickup(
                     {problem->node_id()++, order, Tw_node::NodeType::kPickup});

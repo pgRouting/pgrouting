@@ -121,8 +121,6 @@ Fleet::add_vehicle(
     problem->add_node(starting_site);
     problem->add_node(ending_site);
 
-    pgassert(problem->nodesOK());
-
     if (!(starting_site.is_start()
                 && ending_site.is_end())) {
         msg.error << "Illegal values found on vehicle";
@@ -272,6 +270,7 @@ Fleet::is_order_ok(const Order &order) const {
         if (truck.is_order_feasable(order)) {
             return true;
         }
+#if 0
         msg.log << "checking order " << order.idx()
             << "on truck " << truck.idx() << "\n";
 
@@ -287,8 +286,8 @@ Fleet::is_order_ok(const Order &order) const {
             EXITING();
             return true;
         }
+#endif
     }
-    EXITING();
     return false;
 }
 

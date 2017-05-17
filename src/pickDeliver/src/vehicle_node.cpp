@@ -104,11 +104,11 @@ operator << (std::ostream &log, const Vehicle_node &v) {
         << ", twvTot = " << v.twvTot()
         << ", cvTot = " << v.cvTot()
         << ", cargo = " << v.cargo()
-        << ", travel _time = " << v.travel_time()
-        << ", arrival _time = " << v.arrival_time()
-        << ", wait _time = " << v.wait_time()
-        << ", service _time = " << v.service_time()
-        << ", departure _time = " << v.departure_time();
+        << ", travel_time = " << v.travel_time()
+        << ", arrival_time = " << v.arrival_time()
+        << ", wait_time = " << v.wait_time()
+        << ", service_time = " << v.service_time()
+        << ", departure_time = " << v.departure_time();
     return log;
 }
 

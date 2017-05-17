@@ -51,38 +51,6 @@ Tw_node::travel_time_to(const Tw_node &to, double speed) const {
 }
 
 
-#if 0
-double
-Tw_node::travel_time_to(const pickdeliver::Node &to, double speed) const {
-    auto from = static_cast<const pickdeliver::Node&>(
-            *problem->m_base_nodes[idx()].get());
-    msg.log << "-----------\n";
-    msg.log << from << "\n";
-    msg.log << to << "\n";
-#if 0
-    msg.log << from->distance(&to) << " == " << distance(other) << "\n";
-    pgassertwm(from->distance(to) == distance(other), msg.get_log().c_str());
-#endif
-#if 0
-    pgassert(problem->m_base_nodes[idx()]->
-            distance(*(problem->m_base_nodes[idx()])) == distance(other));
-    msg.clear();
-    msg.log << "idx" << idx() << ","
-        << "other idx" << other.idx() << "\tdist "
-        << distance(other);
-    pgassert(problem->nodesOK());
-    msg.log << "from" << from->idx()
-     << "\tto" << to->idx() << "\tdist "
-     << from->distance(*to);
-    pgassertwm(false, msg.get_log().c_str());
-#endif
-
-    pgassert(speed != 0);
-     /*! @todo TODO evaluate with matrix also*/
-    return from.distance(to) / speed;
-}
-#endif
-
 /*
  * I -> J = (*this)
  */

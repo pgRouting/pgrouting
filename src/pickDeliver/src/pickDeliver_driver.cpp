@@ -99,7 +99,7 @@ do_pgr_pickDeliver(
             return;
         }
 
-        log << "Read data\n";
+        log << "Initialize problem\n";
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
@@ -118,46 +118,23 @@ do_pgr_pickDeliver(
         log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
 
-#if 0
-        if (!pd_problem.msg.has_error()) {
-            log << "ERROR found\n";
-            log << pd_problem.msg.get_log();
-            err << pd_problem.msg.get_error();
-            *log_msg = pgr_msg(log.str().c_str());
-            *err_msg = pgr_msg(err.str().c_str());
-            return;
-        }
-        pgassert(false);
-        log << pd_problem.msg.get_log();
-        log << "Finish Reading data\n";
-        pd_problem.msg.clear();
-
-#if 0
-        log << pd_problem;
-        log << pd_problem.msg.get_log();
-        log << "Finish printing read data\n";
-        pd_problem.msg.clear();
-#endif
-        *log_msg = pgr_msg(log.str().c_str());
-        return;
         try {
             pd_problem.solve();
-
-            log << pd_problem.msg.get_log();
-            log << "Finish solve\n";
-            pd_problem.msg.clear();
-            *log_msg = pgr_msg(log.str().c_str());
-            return;
         } catch (AssertFailedException &except) {
             log << pd_problem.msg.get_log();
             throw except;
+        } catch(...) {
+            log << "Caught unknown exception!";
+            throw;
         }
 
-        auto solution = pd_problem.get_postgres_result();
+        log << pd_problem.msg.get_log();
+        log << "Finish solve\n";
 
+        auto solution = pd_problem.get_postgres_result();
         log << pd_problem.msg.get_log();
         log << "solution size: " << solution.size() << "\n";
-        pd_problem.msg.clear();
+
 
         if (!solution.empty()) {
             (*return_tuples) = pgr_alloc(solution.size(), (*return_tuples));
@@ -168,7 +145,7 @@ do_pgr_pickDeliver(
             }
         }
         (*return_count) = solution.size();
-#endif
+
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             nullptr :
