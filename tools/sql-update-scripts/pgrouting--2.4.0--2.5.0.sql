@@ -3159,7 +3159,7 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
 
 
 
-CREATE OR REPLACE FUNCTION pgr_pickDeliver(
+CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     orders_sql TEXT,
     vehicles_sql TEXT,
     matrix_cell_sql TEXT,

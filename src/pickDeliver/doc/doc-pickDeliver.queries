@@ -89,7 +89,7 @@ ORDER BY start_vid, end_vid;
 (6 rows)
 
 --q1
-SELECT * FROM pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
     

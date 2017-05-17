@@ -17,7 +17,7 @@ ORDER BY start_vid, end_vid;
 
 \echo --q1
 -- using the default values
-SELECT * FROM pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
     -- matrix query
