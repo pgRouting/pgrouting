@@ -1,5 +1,5 @@
-#ifndef SRC_TRSP_SRC_GRAPHDEFINITION_H
-#define GRAPHDEFINITION_H
+#ifndef SRC_TRSP_SRC_GRAPHDEFINITION_H_
+#define SRC_TRSP_SRC_GRAPHDEFINITION_H_
 
 #include <stdlib.h>
 
@@ -162,4 +162,4 @@ class GraphDefinition {
     bool m_bIsGraphConstructed;
 };
 
-#endif  // SRC_TRSP_SRC_GRAPHDEFINITION_H
+#endif  // SRC_TRSP_SRC_GRAPHDEFINITION_H_
