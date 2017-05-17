@@ -138,12 +138,12 @@ Experimental and Proposed functions
 
 -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 
-.. rubric:: Vehicle Routing Problems
 
--  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
--  :ref:`pgr_vrp_basic` - VRP One Depot
+:ref:`VRP`
 
-.. TODO deprecate pgr_gsocvrppdtw
+.. include:: VRP-category.rst
+   :start-after: index from here
+   :end-before: index to here
 
 .. toctree::
   :hidden:
@@ -151,13 +151,7 @@ Experimental and Proposed functions
   contraction-family
   flow-family
   pgr_labelGraph
-  pgr_gsoc_vrppdtw
-  pgr_vrpOneDepot
-
-
-
-
-
+  VRP-category
 
 
 
@@ -169,6 +163,5 @@ Experimental and Proposed functions
     :hidden:
     ..
      ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
-    -  :ref:`pgr_pickDeliverEuclidean` - VRP Pickup & Delivery with Euclidean distances
     pgr_pickDeliverEuclidean
 
