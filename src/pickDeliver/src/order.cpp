@@ -24,15 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "pickDeliver/order.h"
+#include "vrp/order.h"
 
-#include <set>
-#include "cpp_common/pgr_assert.h"
-#include "pickDeliver/pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 
 Identifiers<size_t>
@@ -47,55 +43,35 @@ Order::subsetJ(const Identifiers<size_t> &J) const {
 
 
 Order::Order(
-        int64_t p_id,
-        size_t p_idx,
+        size_t p_idx, int64_t p_id,
         const Vehicle_node &p_pickup,
         const Vehicle_node &p_delivery) :
     Identifier(p_idx, p_id),
-    pickup_id(p_pickup.idx()),
-    delivery_id(p_delivery.idx()) {
+    m_pickup(p_pickup),
+    m_delivery(p_delivery) {
     }
-
-double
-Order::distance() const {
-    return pickup().distance(delivery());
-}
 
 std::ostream&
-operator << (std::ostream &log, const Order &order) {
-    log << "\n\nOrder " << order.id() << ":\n"
-#if 0
-        << "\tOrder idx: " << order.m_idx << "\n"
-#endif
+operator<< (std::ostream &log, const Order &order) {
+    log << "\n\nOrder "
+        << static_cast<Identifier>(order) << ": \n"
         << "\tPickup: " << order.pickup() << "\n"
-        << "\tDelivery: " << order.delivery() << "\n\n";
-#if 0
-    if (order.delivery().is_partially_compatible_IJ(order.pickup(), speed)) {
-        log << "\tis_partially_compatible_IJ: ";
-    } else if (order.delivery().is_tight_compatible_IJ(order.pickup(), speed)) {
-        log << "\tis_tight_compatible_IJ: ";
-    } else if (order.delivery().is_waitTime_compatible_IJ(
-                order.pickup(), speed)) {
-        log << "\tis_waitTime_compatible_IJ: ";
-    } else {
-        pgassert(false);
-    }
-#endif
-    log << "There are | {I}| = "
+        << "\tDelivery: " << order.delivery() << "\n\n"
+        << "\tTravel time: "
+        << order.pickup().travel_time_to(order.delivery(), 1);
+    log << "\nThere are | {I}| = "
         << order.m_compatibleI.size()
-        << " -> order(" << order.id()
+        << " -> order(" << order.idx()
         << ") -> | {J}| = " << order.m_compatibleJ.size()
-        << "\n {";
+        << "\n\n {";
     for (const auto o : order.m_compatibleI) {
         log << o << ", ";
     }
-    log << "} -> " << order.id() << " -> {";
+    log << "} -> " << order.idx() << " -> {";
     for (const auto o : order.m_compatibleJ) {
         log << o << ", ";
     }
-    log << "}\n";
-
-    log << "Cost (distinace/time): " << order.distance();
+    log << "}";
 
     return log;
 }
@@ -104,13 +80,13 @@ operator << (std::ostream &log, const Order &order) {
 
 const Vehicle_node&
 Order::delivery() const {
-    return problem->node(delivery_id);
+    return m_delivery;
 }
 
 
 const Vehicle_node&
 Order::pickup() const {
-    return problem->node(pickup_id);
+    return m_pickup;
 }
 
 
@@ -177,7 +153,6 @@ Order::isCompatibleIJ(const Order &I, double speed) const {
     return all_cases &&  (case1 ||  case2 ||  case3);
 }
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
 

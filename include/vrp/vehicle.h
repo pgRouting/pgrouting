@@ -69,10 +69,11 @@ namespace vrp {
  * @sa @ref Vehicle_node
  */
 
-class Vehicle : public Identifier {
+class Vehicle : public Identifier, public PD_problem {
  protected:
      typedef size_t POS;
      std::deque< Vehicle_node > m_path;
+
  private:
      double m_capacity;
      double m_factor;
@@ -250,9 +251,11 @@ class Vehicle : public Identifier {
      bool has_cv() const {
          return cvTot() != 0;
      }
+
      bool is_feasable() const {
          return !(has_twv() ||  has_cv());
      }
+
      Vehicle_node start_site() const {
          return m_path.front();
      }

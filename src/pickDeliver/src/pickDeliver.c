@@ -47,11 +47,22 @@ process(
         char* pd_orders_sql,
         char* vehicles_sql,
         char* matrix_sql,
+        double factor,
         int max_cycles,
         int initial_solution_id,
 
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
+    if (factor <= 0) {
+        ereport(ERROR,
+                (errcode(ERRCODE_INTERNAL_ERROR),
+                 errmsg("Illegal value in parameter: factor"),
+                 errhint("Value found: %f <= 0", factor)));
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+
     if (max_cycles < 0) {
         elog(ERROR, "Illegal value in parameter: max_cycles");
         (*result_count) = 0;
@@ -80,6 +91,30 @@ process(
     pgr_get_vehicles_with_id(vehicles_sql,
            &vehicles_arr, &total_vehicles);
     PGR_DBG("total vehicles %ld", total_vehicles);
+
+
+    for (size_t i = 0; i < total_pd_orders; i++) {
+        PGR_DBG("%ld %f pick %f %f %ld - "
+                "%f %f %f deliver %f %f %ld - %f %f %f ",
+                pd_orders_arr[i].id,
+                pd_orders_arr[i].demand,
+
+                pd_orders_arr[i].pick_x,
+                pd_orders_arr[i].pick_y,
+                pd_orders_arr[i].pick_node_id,
+
+                pd_orders_arr[i].pick_open_t,
+                pd_orders_arr[i].pick_close_t,
+                pd_orders_arr[i].pick_service_t,
+
+                pd_orders_arr[i].deliver_x,
+                pd_orders_arr[i].deliver_y,
+                pd_orders_arr[i].deliver_node_id,
+
+                pd_orders_arr[i].deliver_open_t,
+                pd_orders_arr[i].deliver_close_t,
+                pd_orders_arr[i].deliver_service_t);
+    }
 
     for (size_t i = 0; i < total_vehicles; i++) {
         PGR_DBG("%ld %f %f / %ld %f %f %f %f %f / %ld %f %f %f %f %f / %ld ",
@@ -131,6 +166,8 @@ process(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
             matrix_cells_arr, total_cells,
+
+            factor,
             max_cycles,
             initial_solution_id,
 
@@ -188,16 +225,18 @@ pickDeliver(PG_FUNCTION_ARGS) {
            orders_sql TEXT,
            vehicles_sql TEXT,
            matrix_cell_sql TEXT,
-           max_cycles INTEGER DEFAULT 10,
+           factor FLOAT DEFAULT 1,
+           max_cycles  INTEGER DEFAULT 10,
+           initial_sol INTEGER DEFAULT 4,
          **********************************************************************/
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
-                PG_GETARG_INT32(3),
+                PG_GETARG_FLOAT8(3),
                 PG_GETARG_INT32(4),
+                PG_GETARG_INT32(5),
                 &result_tuples,
                 &result_count);
 
@@ -265,7 +304,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
         values[3] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[4] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[5] = Int32GetDatum(result_tuples[call_cntr].stop_type);
+        values[5] = Int32GetDatum(result_tuples[call_cntr].stop_type + 1);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cargo);
         values[7] = Float8GetDatum(result_tuples[call_cntr].travelTime);
         values[8] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);

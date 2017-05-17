@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(92);
+SELECT plan(94);
 SET client_min_messages TO ERROR;
 
 /* A call looks like this
@@ -10,6 +10,14 @@ SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
     $$SELECT * FROM vehicles ORDER BY id$$,
     30);
 */
+
+SELECT todo(2);
+SELECT has_function('pgr_pickdelivereuclidean',
+    ARRAY['text', 'text', 'numeric', 'integer', 'integer']);
+
+SELECT function_returns('pgr_pickdelivereuclidean',
+    ARRAY['text', 'text', 'numeric', 'integer', 'integer'],
+    'setof record');
 
 SELECT has_function('_pgr_pickdelivereuclidean',
     ARRAY['text', 'text', 'double precision', 'integer', 'integer']);

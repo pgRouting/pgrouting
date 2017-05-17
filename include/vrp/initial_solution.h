@@ -61,7 +61,7 @@ class Initial_solution : public Solution {
 
  private:
      Identifiers<size_t> all_orders;
-     Identifiers<PD_Orders::OID> unassigned;
+     Identifiers<size_t> unassigned;
      Identifiers<size_t> assigned;
 };
 

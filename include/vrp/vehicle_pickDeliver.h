@@ -50,7 +50,7 @@ class Vehicle_pickDeliver : public Vehicle {
      Identifiers<size_t> m_orders_in_vehicle;
      PD_Orders m_orders;
      //! orders that fit in the truck
-     Identifiers<PD_Orders::OID> m_feasable_orders;
+     Identifiers<size_t> m_feasable_orders;
 
 
  public:
@@ -73,7 +73,7 @@ class Vehicle_pickDeliver : public Vehicle {
      bool is_order_feasable(const Order &order) const;
      Identifiers<size_t> feasable_orders() const {return m_feasable_orders;}
 
-     PD_Orders orders() const {return m_orders;}
+     const PD_Orders& orders() const {return m_orders;}
      size_t orders_size() const {return m_orders_in_vehicle.size();}
      Identifiers<size_t> orders_in_vehicle() const {return m_orders_in_vehicle;}
 
@@ -163,8 +163,8 @@ class Vehicle_pickDeliver : public Vehicle {
 
      void do_while_feasable(
              int kind,
-             Identifiers<PD_Orders::OID> &unassigned,
-             Identifiers<PD_Orders::OID> &assigned);
+             Identifiers<size_t> &unassigned,
+             Identifiers<size_t> &assigned);
 
 
      /*!

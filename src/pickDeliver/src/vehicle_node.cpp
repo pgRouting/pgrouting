@@ -24,12 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "pickDeliver/vehicle_node.h"
+#include "vrp/vehicle_node.h"
 
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 
 /*!
@@ -37,7 +36,6 @@ namespace pickdeliver {
  */
 void
 Vehicle_node::evaluate(double cargoLimit) {
-     /*! @todo TODO evaluate with matrix also*/
     if (is_start()) {
         /* time */
         m_travel_time = 0;
@@ -60,6 +58,7 @@ Vehicle_node::evaluate(double cargoLimit) {
     }
 }
 
+
 /*!
   \param[in] pred The node preceding this node in the path.
   \param[in] cargoLimit of the vehicle.
@@ -70,7 +69,6 @@ Vehicle_node::evaluate(
         const Vehicle_node &pred,
         double cargoLimit,
         double speed) {
-     /*! @todo TODO evaluate with matrix also*/
     /* time */
     m_travel_time    = pred.travel_time_to(*this, speed);
     m_arrival_time   = pred.departure_time() + travel_time();
@@ -86,11 +84,11 @@ Vehicle_node::evaluate(
 
     /* cargo aggregates */
     if (is_dump() &&  pred.cargo() >= 0) {
-        m_demand = -pred.cargo();
+        demand(-pred.cargo());
     }
     m_cargo = pred.cargo() + demand();
 
-    /* cargo aggregates */
+    /* violations aggregates */
 
     m_twvTot = has_twv() ? pred.twvTot() + 1 : pred.twvTot();
     m_cvTot = has_cv(cargoLimit) ? pred.cvTot() + 1 : pred.cvTot();
@@ -106,11 +104,11 @@ operator << (std::ostream &log, const Vehicle_node &v) {
         << ", twvTot = " << v.twvTot()
         << ", cvTot = " << v.cvTot()
         << ", cargo = " << v.cargo()
-        << ", travel _time = " << v.travel_time()
-        << ", arrival _time = " << v.arrival_time()
-        << ", wait _time = " << v.wait_time()
-        << ", service _time = " << v.service_time()
-        << ", departure _time = " << v.departure_time();
+        << ", travel_time = " << v.travel_time()
+        << ", arrival_time = " << v.arrival_time()
+        << ", wait_time = " << v.wait_time()
+        << ", service_time = " << v.service_time()
+        << ", departure_time = " << v.departure_time();
     return log;
 }
 
@@ -140,7 +138,6 @@ Vehicle_node::Vehicle_node(const Tw_node &node)
 
 bool
 Vehicle_node::deltaGeneratesTWV(double delta_time) const {
-     /*! @todo TODO evaluate with matrix also*/
     return is_late_arrival(m_arrival_time + delta_time);
 }
 
@@ -154,12 +151,10 @@ double
 Vehicle_node::arrival_i_arrives_j(
         const Vehicle_node &other,
         double speed) const {
-     /*! @todo TODO evaluate with matrix also*/
     return other.arrival_time()
         + other.service_time()
         + other.travel_time_to(*this, speed);
 }
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting

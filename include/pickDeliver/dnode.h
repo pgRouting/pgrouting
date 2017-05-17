@@ -30,42 +30,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <string>
-#include <ostream>
-#include "pickDeliver/base_node.h"
-#include "pickDeliver/pd_problem.h"
+#include <iosfwd>
+#include "vrp/base_node.h"
+#include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 /*! @class Dnode
- * @brief The Dnode class defines a the operations when its a matrix.
+ * @brief The Dnode class defines a the basic operations when data is a matrix.
  *
+ * currently needs the PD_problem
  */
-
 class Dnode : public Base_node, public PD_problem {
  public:
+     /*! @name constructors
+      * @{
+      */
      Dnode() = default;
+     /*! @brief data constructor */
      Dnode(size_t id, int64_t original_id, double, double);
+     /*!@}*/
 
 
-     using Base_node::isSamePos;
      using Base_node::operator==;
-     /*! @name to be or not to be
-     @{
-     bool isSamePos(const Dnode &other) const;
-     bool operator==(const Dnode &rhs) const;
-     @}*/
 
-     double distance(const Dnode &other) const;
-     double distance(const Base_node &) const;
-
-     double comparable_distance(const Dnode &other) const;
+     double distance(const Base_node *) const;
 
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
 };
 
-}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 

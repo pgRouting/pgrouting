@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "pickDeliver/vehicle.h"
+#include "vrp/vehicle.h"
 
 #include <deque>
 #include <iostream>
@@ -36,12 +36,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 
-#include "pickDeliver/pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 
 void
@@ -144,7 +143,7 @@ Vehicle::get_postgres_result(
                 /*
                  * The original_id is invalid for stops type 0 and 5
                  */
-                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.id(),
+                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.order(),
                 p_stop.type(),
                 p_stop.cargo(),
                 p_stop.travel_time(),
@@ -192,12 +191,12 @@ Vehicle::deltaTime(const Vehicle_node &node, POS pos) const {
     auto prev = m_path[pos-1];
     auto next = m_path[pos];
     auto original_time = next.travel_time();
-    auto tt_p_n = prev.travel_time_to(node, m_speed);
+    auto tt_p_n = prev.travel_time_to(node, speed());
     tt_p_n = node.is_early_arrival(prev.departure_time() + tt_p_n) ?
         node.closes() - prev.departure_time()
         : tt_p_n;
 
-    auto tt_n_x = node.travel_time_to(next, m_speed);
+    auto tt_n_x = node.travel_time_to(next, speed());
     tt_p_n = next.is_early_arrival(
             prev.departure_time() + tt_p_n + node.service_time() + tt_n_x) ?
         next.closes() - (prev.departure_time() + tt_p_n + node.service_time())
@@ -372,7 +371,7 @@ Vehicle::evaluate(POS from) {
             node->evaluate(m_capacity);
         } else {
         /*! @todo TODO evaluate with matrix also*/
-            node->evaluate(*(node - 1), m_capacity, m_speed);
+            node->evaluate(*(node - 1), m_capacity, speed());
         }
 
         ++node;
@@ -419,7 +418,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const {
 
     /* J == m_path[low_limit - 1] */
     while (low_limit > low
-             && m_path[low_limit - 1].is_compatible_IJ(nodeI, m_speed)) {
+             && m_path[low_limit - 1].is_compatible_IJ(nodeI, speed())) {
         --low_limit;
     }
 
@@ -451,7 +450,7 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
     /* I == m_path[high_limit] */
     while (high_limit < high
-             && nodeJ.is_compatible_IJ(m_path[high_limit], m_speed)) {
+             && nodeJ.is_compatible_IJ(m_path[high_limit], speed())) {
         ++high_limit;
     }
 
@@ -467,17 +466,22 @@ Vehicle::Vehicle(
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_m_capacity,
-        double p_speed) :
+        double p_speed,
+        double p_factor) :
     Identifier(p_idx, p_id),
     m_capacity(p_m_capacity),
-    m_speed(p_speed)
-    {
+    m_factor(p_factor),
+    m_speed(p_speed) {
+        ENTERING();
         m_path.clear();
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
-        /*! @todo TODO evaluate with matrix also*/
+        /*! @todo TODO(vicky) evaluate with matrix also*/
+        msg.log << "before calling evaluate\n";
         evaluate(0);
+        msg.log << "after calling evaluate\n";
         invariant();
+        EXITING();
     }
 
 
@@ -501,16 +505,23 @@ Vehicle::tau() const {
     return log.str();
 }
 
+bool
+Vehicle::speed() const {
+    return m_speed/m_factor;
+}
+
 /****** FRIENDS *******/
 
 std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** " << v.idx() << "th VEHICLE***************\n";
+    log << "\n\n****************** " << v.idx() << "th VEHICLE*************\n";
     log << "id = " << v.id()
         << "\tcapacity = " << v.m_capacity
-        << "\tspeed = " << v.m_speed << "\n";
+        << "\tfactor = " << v.m_factor << "\n"
+        << "\tspeed = " << v.m_speed << "\n"
+        << "\tnew speed = " << v.speed() << "\n";
 
     for (const auto &path_stop : v.path()) {
         log << "Path_stop" << ++i << "\n";
@@ -534,6 +545,6 @@ operator<(const Vehicle &lhs, const Vehicle &rhs) {
     return false;
 }
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
+
