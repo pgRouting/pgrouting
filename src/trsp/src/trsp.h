@@ -18,9 +18,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
- 
-#ifndef _TRSP_H
-#define _TRSP_H
+
+#ifndef SRC_TRSP_SRC_TRSP_H_
+#define SRC_TRSP_SRC_TRSP_H_
 
 #define MAX_RULE_LENGTH 5
 
@@ -28,8 +28,7 @@
 #include "c_types/pgr_types.h"
 
 
-typedef struct edge
-{
+typedef struct edge {
     long id;
     long source;
     long target;
@@ -37,16 +36,14 @@ typedef struct edge
     float8 reverse_cost;
 } edge_t;
 
-typedef struct restrict_struct
-{
-		int target_id;
-		float8 to_cost;
-        int via[MAX_RULE_LENGTH];
-} 
+typedef struct restrict_struct {
+    int target_id;
+    float8 to_cost;
+    int via[MAX_RULE_LENGTH];
+}
 restrict_t;
 
-typedef struct path_element 
-{
+typedef struct path_element {
     long vertex_id;
     long edge_id;
     float8 cost;
@@ -57,38 +54,38 @@ extern "C" {
 #endif
 
 int trsp_node_wrapper(
-			edge_t *edges, 
-			size_t edge_count, 
-			restrict_t *restricts, 
-			size_t restrict_count,
-			int64_t start_vertex, 
-			int64_t end_vertex,
-		    bool directed, 
-		    bool has_reverse_cost,
-            path_element_tt **path, 
-            size_t *path_count, 
-            char **err_msg
-            );
+    edge_t *edges,
+    size_t edge_count,
+    restrict_t *restricts,
+    size_t restrict_count,
+    int64_t start_vertex,
+    int64_t end_vertex,
+    bool directed,
+    bool has_reverse_cost,
+    path_element_tt **path,
+    size_t *path_count,
+    char **err_msg
+);
 
 
 int trsp_edge_wrapper(
-			edge_t *edges, 
-			size_t edge_count, 
-			restrict_t *restricts, 
-			size_t restrict_count,
-			int64_t start_edge, 
-            double start_pos,
-			int64_t end_edge,
-            double end_pos,
-		    bool directed, 
-		    bool has_reverse_cost,
-            path_element_tt **path, 
-            size_t *path_count, 
-            char **err_msg
-            );
+    edge_t *edges,
+    size_t edge_count,
+    restrict_t *restricts,
+    size_t restrict_count,
+    int64_t start_edge,
+    double start_pos,
+    int64_t end_edge,
+    double end_pos,
+    bool directed,
+    bool has_reverse_cost,
+    path_element_tt **path,
+    size_t *path_count,
+    char **err_msg
+);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif
+#endif  // SRC_TRSP_SRC_TRSP_H_
