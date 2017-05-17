@@ -24,17 +24,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "pickDeliver/pd_problem.h"
+#include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 Pgr_pickDeliver* PD_problem::problem;
 Pgr_messages PD_problem::msg;
 
-PD_problem::PD_problem(Pgr_pickDeliver* p_problem)
-{
+PD_problem::PD_problem(Pgr_pickDeliver* p_problem) {
     PD_problem::problem = p_problem;
     msg.clear();
 }
@@ -43,6 +41,6 @@ PD_problem::PD_problem(const PD_problem &)
     { }
 
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
+

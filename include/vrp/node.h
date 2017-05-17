@@ -25,19 +25,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_PICKDELIVER_NODE_H_
-#define INCLUDE_PICKDELIVER_NODE_H_
+#ifndef INCLUDE_VRP_NODE_H_
+#define INCLUDE_VRP_NODE_H_
 #pragma once
 
 #include <string>
-#include <ostream>
+#include <iosfwd>
 #include "vrp/base_node.h"
 #include "cpp_common/xy_vertex.h"
 #include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 /*! @class Node
  * @brief The Node class defines a point in 2D space with an id.
@@ -48,37 +47,31 @@ namespace pickdeliver {
  * are built upon.
  *
  */
-class Node : public Base_node , public PD_problem {
+class Node : public Base_node {
  public:
      Node() = default;
      Node(size_t id, int64_t original_id, double _x, double _y);
 
 
-     /** @name state */
-     ///@ {
-
-     bool isSamePos(const Node &other) const;
-
+     /** @name to be or not to be */
+     /*!@{*/
      bool operator ==(const Node &rhs) const;
+     /*!@}*/
 
-     double distance(const Node &) const;
+     /** @brief Calculates distance between two Node */
      double distance(const Base_node *) const;
-     double distance(const Base_node &) const;
-     double comparable_distance(const Node &other) const;
 
      friend std::ostream& operator << (std::ostream &log, const Node &node);
+
+ private:
+     double distance(const Node &) const;
      void print(std::ostream& os) const;
 
- protected:
+ private:
      pgrouting::Point m_point;
-#if 0
-     size_t m_id;                ///< internal node number
-     int64_t m_original_id;      ///< user supplied node number
-#endif
 };
 
-}  // namespace pickdeliver
 }  // namespace vrp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_PICKDELIVER_NODE_H_
+#endif  // INCLUDE_VRP_NODE_H_

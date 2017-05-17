@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /************************************************************
   customers_sql TEXT,
   max_vehicles INTEGER,
+  factor FLOAT,
   capacity FLOAT,
   max_cycles INTEGER,
  ***********************************************************/
@@ -81,7 +82,7 @@ do_pgr_pickDeliverEuclidean(
         std::vector<Vehicle_t> vehicles(
                 vehicles_arr, vehicles_arr + total_vehicles);
 
-        log << "Read data\n";
+        log << "Initialize problem\n";
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
@@ -117,11 +118,13 @@ do_pgr_pickDeliverEuclidean(
         log << "solution size: " << solution.size() << "\n";
 
 
-        (*return_tuples) = pgr_alloc(solution.size(), (*return_tuples));
-        int seq = 0;
-        for (const auto &row : solution) {
-            (*return_tuples)[seq] = row;
-            ++seq;
+        if (!solution.empty()) {
+            (*return_tuples) = pgr_alloc(solution.size(), (*return_tuples));
+            int seq = 0;
+            for (const auto &row : solution) {
+                (*return_tuples)[seq] = row;
+                ++seq;
+            }
         }
         (*return_count) = solution.size();
 

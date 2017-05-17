@@ -103,6 +103,9 @@ class Dmatrix {
     double comparable_distance(size_t i, size_t j) const {
         return distance(i, j);}
 
+    double distance(int64_t i, int64_t j) const {
+        return distance(get_index(i), get_index(j));}
+
     double distance(size_t i, size_t j) const {
         return costs[i][j];}
 

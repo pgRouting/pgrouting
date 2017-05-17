@@ -79,9 +79,9 @@ Signature Summary
 .. code-block:: none
 
     _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
-    RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
-         travel_time, arrival_time, wait_time, service_time,  departure_time)
+    _pgr_pickDeliver(customers_sql, max_vehicles, capacity, [factor, max_cycles, initial_sol])
+    RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
+                    travel_time, arrival_time, wait_time, service_time, departure_time)
 
 
 
@@ -146,74 +146,30 @@ Description of the Signatures
 -------------------------------
 
 
-Description of the customers_sql query
-.........................................................................................
-
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the customer.
-
-                                        - A value of ``0`` identifies the starting location
-
-**x**             ``ANY-NUMERICAL``     ``X`` coordinate of the location.
-**y**             ``ANY-NUMERICAL``     ``Y`` coordinate of the location.
-**demand**        ``ANY-NUMERICAL``     How much is added / removed from the vehicle.
-
-                                        - Negative value is a delivery,
-                                        - Positive value is a pickup,
-
-**openTime**      ``ANY-NUMERICAL``     The time relative to 0, when the customer opens.
-**closeTime**     ``ANY-NUMERICAL``     The time relative to 0, when the customer closes.
-**serviceTime**   ``ANY-NUMERICAL``     The duration of the loading / unloading.
-**pickup_id**     ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
-**deliver_id**    ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
-================  ===================   =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. include:: VRP-category.rst
+    :start-after: pd_matrix_sql_start
+    :end-before: pd_matrix_sql_end
 
 
-Description of the parameters of the signatures
-.........................................................................................
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_start
+    :end-before: pd_vehicle_sql_end
 
-================== =========== ======== =================================================
-Column             Type        Default     Description
-================== =========== ======== =================================================
-**customers_sql**  ``TEXT``             SQL query as described above.
-**max_vehicles**   ``INTEGER``          Maximum number of vehicles in the result. (currently is ignored)
-**capacity**       ``FLOAT``            Capacity of the vehicle.
-**speed**          ``FLOAT``   1        Speed of the vehicle.
-**max_cycles**     ``INTEGER`` 30       A multiplier for internal cycles (currently is ignored)
-================== =========== ======== =================================================
 
-Description of the result
-.........................................................................................
+.. include:: VRP-category.rst
+    :start-after: pd_parameters_start
+    :end-before: pd_parameters_end
 
-:RETURNS SET OF: (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)
-
-=================== ============= =================================================
-Column              Type           Description
-=================== ============= =================================================
-**seq**              INTEGER      Sequential value starting from **1**.
-**vehicle_id**       INTEGER      Current vehicle identifier.
-**vehicle_seq**      INTEGER      Sequential value starting from **1** for the current vehicle.
-**stop_id**          BIGINT       Visited customer identifier.
-**travel_time**      FLOAT        Travel time from previous ``stop_id`` to current ``stop_id``.
-**arrival_time**     FLOAT        Previous ``departure_time`` plus current ``travel_time``.
-**wait_time**        FLOAT        Time spent waiting for ``stop_id`` to open.
-**service_time**     FLOAT        Service time at current stop_id.
-**departure_time**   FLOAT        Previous :math:`departure\_time + travel\_time + wait\_time + service\_time`.
-                                    - When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehicle_id``.
-                                    - When ``vehicle_id = -1`` has the aggregate total time
-=================== ============= =================================================
-
+.. include:: VRP-category.rst
+    :start-after: return_vrp_matrix_start
+    :end-before: return_vrp_matrix_end
 
 
 See Also
 -------------------------------------------------------------------------------
+
+* :ref:`VRP`
+* The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

@@ -23,86 +23,113 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "pickDeliver/pd_orders.h"
+#include "vrp/pd_orders.h"
 
 #include <vector>
+#include <memory>
+#include <utility>
 
-#include "pickDeliver/order.h"
-#include "pickDeliver/tw_node.h"
-#include "pickDeliver/vehicle_node.h"
-#include "pickDeliver/pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
+#include "pickDeliver/dnode.h"
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
+
 
 PD_Orders::PD_Orders(
-        const std::vector<PickDeliveryOrders_t> &pd_orders) {
+        const std::vector<PickDeliveryOrders_t> &pd_orders
+        ) {
     build_orders(pd_orders);
 }
+
+
+void
+PD_Orders:: add_order(
+        const PickDeliveryOrders_t &order,
+        std::unique_ptr<Base_node> b_pick,
+        const Vehicle_node &pick,
+        std::unique_ptr<Base_node> b_drop,
+        const Vehicle_node &drop) {
+    problem->add_base_node(std::move(b_pick));
+    problem->add_base_node(std::move(b_drop));
+    problem->add_node(pick);
+    problem->add_node(drop);
+
+    /*
+     * add into an order
+     */
+    m_orders.push_back(
+            Order(m_orders.size(), order.id,
+                pick,
+                drop));
+}
+
 
 void
 PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders
         ) {
     ENTERING();
-    OID order_ctr(0);
     for (const auto order : pd_orders) {
         /*
          * SAMPLE CORRECT INFORMATION
          *
-         *  id | demand | p_node_id | p_x | p_y | p_open | p_close | p_service | d_node_id | d_x | d_y | d_open | d_close | d_service 
-         * ----+--------+-----------+-----+-----+--------+---------+-----------+-----------+-----+-----+--------+---------+-----------
-         *  11 |     10 |        99 |  35 |  69 |    448 |     505 |        90 |        97 |  45 |  68 |    912 |     967 |        90
-         *   
+         * id | demand | pick_x | pick_y | pick_open_t | pick_close_t | pick_service_t | deliver_x | deliver_y | deliver_open_t | deliver_open_t | deliver_close_t | deliver_service_t
+         * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
          */
 
+        if  (problem->m_cost_matrix.empty()) {
+            /*
+             * Euclidean version
+             */
+            auto b_pick = create_b_pick<Node>(order, problem->node_id());
+            Vehicle_node pickup(
+                    {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
-        /*
-         * Creating the pickup & delivery nodes
-         */
-        Vehicle_node pickup(
-                {problem->node_id()++, order, Tw_node::NodeType::kPickup});
-
-        pgassert(pickup.demand() == order.demand);
-        pgassert(pickup.opens() == order.pick_open_t);
-        pgassert(pickup.closes() == order.pick_close_t);
-        pgassert(pickup.id() == order.pick_node_id);
-
-        Vehicle_node delivery(
-                {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
-
-        pgassert(delivery.demand() == -order.demand);
-        pgassert(delivery.opens() == order.deliver_open_t);
-        pgassert(delivery.closes() == order.deliver_close_t);
-        pgassert(delivery.id() == order.deliver_node_id);
-
-        pickup.set_Did(delivery.idx());
-        delivery.set_Pid(pickup.idx());
+            auto b_drop = create_b_deliver<Node>(order, problem->node_id());
+            Vehicle_node delivery({
+                    problem->node_id()++,
+                    order,
+                    Tw_node::NodeType::kDelivery});
 
 
-        problem->add_node(pickup);
-        problem->add_node(delivery);
+            add_order(order,
+                    std::move(b_pick), pickup,
+                    std::move(b_drop), delivery);
+        } else {
+            /*
+             * matrix version
+             */
+            msg.log << "pickup \n"
+                << "pick_node_id: " << order.pick_node_id
+                << "\n";
 
+            msg.log << "pickup \n"
+                << "deliver_node_id: " << order.deliver_node_id
+                << "\n";
+            auto b_pick = create_b_pick<Dnode>(order, problem->node_id());
+            Vehicle_node pickup(
+                    {problem->node_id()++, order, Tw_node::NodeType::kPickup});
 
-        /*
-         * add into an order
-         */
-        m_orders.push_back(
-                Order(order.id, order_ctr++,
-                    pickup,
-                    delivery));
+            auto b_drop = create_b_deliver<Dnode>(order, problem->node_id());
+            Vehicle_node delivery({
+                    problem->node_id()++,
+                    order,
+                    Tw_node::NodeType::kDelivery});
 
+            add_order(order,
+                    std::move(b_pick), pickup,
+                    std::move(b_drop), delivery);
+        }
     }  //  for (creating orders)
+
     EXITING();
 }
 
 bool
 PD_Orders::is_valid(double speed) const {
-    ENTERING();
     for (const auto &o : m_orders) {
         if (!o.is_valid(speed)) {
-            EXITING();
             return false;
         }
         pgassert(o.pickup().is_pickup());
@@ -110,37 +137,33 @@ PD_Orders::is_valid(double speed) const {
         /* P -> D */
         pgassert(o.delivery().is_compatible_IJ(o.pickup(), speed));
     }
-    EXITING();
     return true;
 }
 
 Order&
-PD_Orders::operator[](OID i) {
+PD_Orders::operator[](size_t i) {
     pgassert(i < m_orders.size());
     return m_orders[i];
 }
 
 const Order&
-PD_Orders::operator[](OID i) const {
+PD_Orders::operator[](size_t i) const {
     pgassert(i < m_orders.size());
     return m_orders[i];
 }
 
 void
 PD_Orders::set_compatibles(double speed) {
-    ENTERING();
     for (auto &I : m_orders) {
         for (const auto J : m_orders) {
             I.set_compatibles(J, speed);
         }
     }
-    EXITING();
 }
 
 size_t
 PD_Orders::find_best_J(
         Identifiers<size_t> &within_this_set) const {
-    ENTERING();
     pgassert(!within_this_set.empty());
     auto best_order = within_this_set.front();
     size_t max_size = 0;
@@ -153,7 +176,6 @@ PD_Orders::find_best_J(
             best_order = o;
         }
     }
-    EXITING();
     return best_order;
 }
 
@@ -161,7 +183,6 @@ PD_Orders::find_best_J(
 size_t
 PD_Orders::find_best_I(
         Identifiers<size_t> &within_this_set) const {
-    ENTERING();
     pgassert(!within_this_set.empty());
     auto best_order = within_this_set.front();
     size_t max_size = 0;
@@ -174,19 +195,9 @@ PD_Orders::find_best_I(
             best_order = o;
         }
     }
-    EXITING();
     return best_order;
 }
 
-std::ostream& operator << (std::ostream &log, const PD_Orders &orders) {
-    log << "*******   ORDERS   *********\n";
-    for (const auto o : orders) {
-        log << o << "\n";
-    }
-    log << "*******\n";
-    return log;
-}
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting
