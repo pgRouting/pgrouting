@@ -30,17 +30,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#include <iostream>
+#include <iosfwd>
 #include "cpp_common/identifier.h"
 #include "cpp_common/identifiers.hpp"
 #include "vrp/vehicle_node.h"
-#include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
-class Order : public Identifier, public PD_problem {
+class Order : public Identifier {
  public:
      /*! @name Constructors
       * @{
@@ -143,13 +142,13 @@ class Order : public Identifier, public PD_problem {
       * It hold's the idx of the node
       */
 
-     size_t pickup_id;
+     Vehicle_node m_pickup;
 
      /*! The delivery node identifier
       *
       * It hold's the idx of the node
       */
-     size_t delivery_id;
+     Vehicle_node m_delivery;
 
      /*! Stores all the orders that can be placed after this order
       *

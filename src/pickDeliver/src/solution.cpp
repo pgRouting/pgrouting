@@ -23,18 +23,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "pickDeliver/solution.h"
+#include "vrp/solution.h"
 
 #include <vector>
 #include <string>
 #include <algorithm>
 
-#include "pickDeliver/pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 #include "c_types/pickDeliver/general_vehicle_orders_t.h"
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
 
 std::vector<General_vehicle_orders_t>
 Solution::get_postgres_result() const {
@@ -237,6 +236,5 @@ Solution::Solution() :
     trucks(problem->trucks())
 {}
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting

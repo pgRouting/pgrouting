@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "pickDeliver/pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 #include "cpp_common/Dmatrix.h"
 
 #include "cpp_common/pgr_assert.h"
@@ -53,6 +53,7 @@ do_pgr_pickDeliver(
         Matrix_cell_t *matrix_cells_arr,
         size_t total_cells,
 
+        double factor,
         int max_cycles,
         int initial_solution_id,
 
@@ -98,53 +99,45 @@ do_pgr_pickDeliver(
             return;
         }
 
-        log << "Read data\n";
-        pgrouting::vrp::pickdeliver::Pgr_pickDeliver pd_problem(
+        // TODO(vicky) wrap with a try and make a throw???
+        log << "Initialize problem\n";
+        pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
                 cost_matrix,
+                factor,
                 max_cycles,
                 initial_solution_id);
 
-        if (!pd_problem.msg.has_error()) {
-            log << "ERROR found\n";
+        err << pd_problem.msg.get_error();
+        if (!err.str().empty()) {
             log << pd_problem.msg.get_log();
-            err << pd_problem.msg.get_error();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
             return;
         }
-        pgassert(false);
         log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
-        pd_problem.msg.clear();
 
-#if 1
-        log << pd_problem;
-        log << pd_problem.msg.get_log();
-        log << "Finish printing read data\n";
-        pd_problem.msg.clear();
-#endif
-        *log_msg = pgr_msg(log.str().c_str());
-        return;
+
         try {
             pd_problem.solve();
-
-            log << pd_problem.msg.get_log();
-            log << "Finish solve\n";
-            pd_problem.msg.clear();
-            *log_msg = pgr_msg(log.str().c_str());
-            return;
         } catch (AssertFailedException &except) {
             log << pd_problem.msg.get_log();
             throw except;
+        } catch(...) {
+            log << "Caught unknown exception!";
+            throw;
         }
 
-        auto solution = pd_problem.get_postgres_result();
 
         log << pd_problem.msg.get_log();
+        log << "Finish solve\n";
+
+        auto solution = pd_problem.get_postgres_result();
+        log << pd_problem.msg.get_log();
         log << "solution size: " << solution.size() << "\n";
-        pd_problem.msg.clear();
+
 
         if (!solution.empty()) {
             (*return_tuples) = pgr_alloc(solution.size(), (*return_tuples));

@@ -29,11 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace vrp {
-namespace pickdeliver {
-
-bool Node::isSamePos(const Node &other) const {
-    return comparable_distance(other) == 0;
-}
 
 std::ostream& operator << (std::ostream &log, const Node &node) {
     node.print(log);
@@ -42,58 +37,34 @@ std::ostream& operator << (std::ostream &log, const Node &node) {
 
 void
 Node::print(std::ostream& os) const {
-    os << "USING NODE\n";
     os << id()
+#ifndef NDEBUG
         << "(" << idx() << ")"
+#endif
        << " (x,y) = (" << m_point.x() << ", " << m_point.y() << ")";
 }
 
 double
 Node::distance(const Node &other) const {
-    ENTERING();
     auto dx = m_point.x() - other.m_point.x();
     auto dy = m_point.y() - other.m_point.y();
-    msg.log << *this << "\n";
-    msg.log << other << "\n";
-    msg.log << "dx: " << dx << "\n";
-    msg.log << "dy: " << dx << "\n";
-    msg.log << "d: " << sqrt(dx * dx + dy * dy) << "\n";
-    EXITING();
     return sqrt(dx * dx + dy * dy);
 }
 
-double
-Node::distance(const Base_node &node) const {
-    if (auto other = dynamic_cast<const Node*>(&node)) {
-        ENTERING();
-        auto dx = m_point.x() - other->m_point.x();
-        auto dy = m_point.y() - other->m_point.y();
-        msg.log << *this << "\n";
-        msg.log << other << "\n";
-        msg.log << "dx: " << dx << "\n";
-        msg.log << "dy: " << dx << "\n";
-        msg.log << "d: " << sqrt(dx * dx + dy * dy) << "\n";
-        EXITING();
-        return sqrt(dx * dx + dy * dy);
-    }
-    return 0;
-}
-
+/**
+ * para[in] n bas node to be casted as Node
+ */
 double
 Node::distance(const Base_node *n) const {
-    ENTERING();
-    EXITING();
     return distance(*dynamic_cast<const Node*>(n));
 }
 
-double
-Node::comparable_distance(const Node &other) const {
-    auto dx = m_point.x() - other.m_point.x();
-    auto dy = m_point.y() - other.m_point.y();
-    return dx * dx + dy * dy;
-}
-
-
+/**
+ * @param[in] _idx index to a container
+ * @param[in] _id  original identifier
+ * @param[in] _x   coordinate value
+ * @param[in] _y   coordinate value
+ */
 Node::Node(size_t _idx, int64_t _id, double _x, double _y)
     : Base_node(_idx, _id),
         m_point(_x, _y) {
@@ -108,6 +79,5 @@ Node::operator ==(const Node &rhs) const {
          && (m_point == rhs.m_point);
 }
 
-}  //  namespace pickdeliver
 }  //  namespace vrp
 }  //  namespace pgrouting

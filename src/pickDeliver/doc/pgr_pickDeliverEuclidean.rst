@@ -9,8 +9,10 @@
 
 .. _pgr_pickDeliverEuclidean:
 
-pgr_pickDeliverEuclidean:
+__pgr_pickDeliverEuclidean:
 ===============================================================================
+
+.. warning:: Under development: Changes in code/documentation are without notice
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
@@ -25,8 +27,8 @@ Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehic
 - Optimization problem is NP-hard.
 - Pickup and Delivery:
 
-   - capacitated
-   - with time windows.
+  - capacitated
+  - with time windows.
 
 - The vehicles
 
@@ -65,10 +67,9 @@ Signature Summary
 
 .. code-block:: none
 
-    _pgr_pickDeliverEuclidean(orders_sql, vehicles_sql, max_cycles, initial)
+    _pgr_pickDeliverEuclidean(orders_sql, vehicles_sql, [,factor, max_cycles, initial_sol])
     RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
                     travel_time, arrival_time, wait_time, service_time, departure_time)
-
 
 
 
@@ -85,61 +86,44 @@ pgr_pickDeliverEuclidean(Complete Signature)
 
 .. code-block:: none
 
-    _pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [, max_cycles, initial])
+    _pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor , max_cycles, initial_sol])
     RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
                     travel_time, arrival_time, wait_time, service_time, departure_time)
 
 :Example:
 
 .. literalinclude:: ./doc-pickDeliverEuclidean.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: --q1
+   :end-before: --q2
 
 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
+.. include:: VRP-category.rst
     :start-after: pd_euclidean_sql_start
     :end-before: pd_euclidean_sql_end
 
 
-.. include:: pgRouting-concepts.rst
+.. include:: VRP-category.rst
     :start-after: pd_vehicle_sql_start
     :end-before: pd_vehicle_sql_end
 
 
-Description of the parameters of the signatures
-...............................................................................
+.. include:: VRP-category.rst
+    :start-after: pd_parameters_start
+    :end-before: pd_parameters_end
 
-================= ================== ========= =================================================
-Column            Type                Default    Description
-================= ================== ========= =================================================
-**orders_sql**     ``TEXT``                     Orders SQL query as described above.
-**vehicles_sql**  ``TEXT``                      Vehciles SQL query as described above.
-**max_cycles**    ``INTEGER``          10       Array of identifiers of starting vertices.
-**initial**       ``INTEGER``          4        Identifier of the ending vertex of the path.
-
-                                                  * ``1`` One order per truck
-                                                  * ``2`` push front
-                                                  * ``3`` push back
-                                                  * ``4`` best insert
-                                                  * ``5`` order that allows more orders to be inserted at the back
-                                                  * ``6`` order that allows more orders to be inserted at the front
-
-================= ================== ========= =================================================
-
-
-.. include:: pgRouting-concepts.rst
-    :start-after: return_vrp_start
-    :end-before: return_vrp_end
+.. include:: VRP-category.rst
+    :start-after: return_vrp_euclidean_start
+    :end-before: return_vrp_euclidean_end
 
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* :ref:`VRP`
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables

@@ -29,23 +29,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VRP_FLEET_H_
 #pragma once
 
-#include <deque>
-#include <tuple>
-#include <string>
+#include <iosfwd>
 #include <vector>
+#include <memory>
+#include <utility>
 
 #include "cpp_common/identifiers.hpp"
-
-#include "vrp/vehicle_pickDeliver.h"
 #include "vrp/pd_problem.h"
-
+#include "vrp/vehicle_pickDeliver.h"
 
 namespace pgrouting {
-
-
-namespace tsp {
-class Dmatrix;
-}
 namespace vrp {
 
 class Pgr_pickDeliver;
@@ -55,11 +48,6 @@ class Fleet : public PD_problem {
  public:
      typedef std::vector<Vehicle_pickDeliver>::iterator iterator;
      std::vector<Vehicle_pickDeliver> m_trucks;
-
- protected:
-     Identifiers<size_t> used;
-     Identifiers<size_t> un_used;
-
 
 
  public:
@@ -104,6 +92,9 @@ class Fleet : public PD_problem {
      friend std::ostream& operator << (std::ostream &log, const Fleet &v);
 
  private:
+     Identifiers<size_t> used;
+     Identifiers<size_t> un_used;
+
      /*! @brief build the fleet
       *
       * @param[in] vehicles of type Vehicle_t
@@ -111,6 +102,36 @@ class Fleet : public PD_problem {
      bool build_fleet(
              std::vector<Vehicle_t> vehicles,
              double factor);
+
+     void add_vehicle(
+             Vehicle_t,
+             double factor,
+             std::unique_ptr<Base_node>,
+             Vehicle_node,
+             std::unique_ptr<Base_node>,
+             Vehicle_node);
+
+     template <typename T> std::unique_ptr<Base_node> create_b_start(
+             const Vehicle_t &vehicle,
+             size_t node_id) {
+         std::unique_ptr<Base_node> b_start(new T(
+                     node_id,
+                     vehicle.start_node_id,
+                     vehicle.start_x,
+                     vehicle.start_y));
+         return std::move(b_start);
+     }
+
+     template <typename T> std::unique_ptr<Base_node> create_b_end(
+             const Vehicle_t &vehicle,
+             size_t node_id) {
+         std::unique_ptr<Base_node> b_end(new T(
+                     node_id,
+                     vehicle.end_node_id,
+                     vehicle.end_x,
+                     vehicle.end_y));
+         return std::move(b_end);
+     }
 };
 
 

@@ -106,7 +106,7 @@ FROM third WHERE third.id = orders.id;
 WITH 
 the_ids AS (SELECT p_node_id AS id FROM orders UNION SELECT d_node_id FROM orders),
 the_max AS (SELECT max(id) FROM the_ids)
-UPDATE vehicles SET start_node_id = max FROM the_max;
+UPDATE vehicles SET start_node_id = max+1 FROM the_max;
 
 /*
 WITH

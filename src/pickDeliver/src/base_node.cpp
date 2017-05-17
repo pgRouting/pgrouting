@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: pgr_pickDeliver.h
+FILE: base_node.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,24 +23,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
-#include "vrp/pd_problem.h"
+#include "vrp/base_node.h"
+#include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {
 namespace vrp {
 
-Pgr_pickDeliver* PD_problem::problem;
-Pgr_messages PD_problem::msg;
-
-PD_problem::PD_problem(Pgr_pickDeliver* p_problem) {
-    PD_problem::problem = p_problem;
-    msg.clear();
+std::ostream& operator << (std::ostream &log, const Base_node &node) {
+    node.print(log);
+    return log;
 }
 
-PD_problem::PD_problem(const PD_problem &)
-    { }
+void
+Base_node::print(std::ostream& os) const {
+    os << id()
+        << "(" << idx() << ")";
+}
 
+Base_node::Base_node(size_t _idx, int64_t _id)
+    : Identifier(_idx, _id) {
+    }
+
+bool
+Base_node::operator ==(const Base_node &rhs) const {
+    if (&rhs == this) return true;
+    return
+        (idx() == rhs.idx())
+         && (id() == rhs.id());
+}
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
 

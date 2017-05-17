@@ -31,9 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-#include <string>
 #include <vector>
-#include <sstream>
 #include <memory>
 #include <utility>
 
@@ -42,25 +40,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/Dmatrix.h"
-
-#include "vrp/base_node.h"
-#include "vrp/vehicle_node.h"
 #include "vrp/fleet.h"
+#include "vrp/pd_orders.h"
 #include "vrp/solution.h"
 
 namespace pgrouting {
 namespace vrp {
 
 class Order;
-class PD_orders;
+class Vehicle_node;
+class Base_node;
 
 class Pgr_pickDeliver : public PD_problem {
-    friend class Initial_solution;
-    friend class Optimize;
-    friend class Dnode;
-
-    typedef size_t ID;
-
  public:
     Pgr_pickDeliver(
             const std::vector<PickDeliveryOrders_t> &pd_orders,
@@ -82,27 +73,9 @@ class Pgr_pickDeliver : public PD_problem {
     std::vector<General_vehicle_orders_t>
         get_postgres_result() const;
 
-    const Order order_of(const Vehicle_node &node) const;
-    const Vehicle_node& node(ID id) const;
-#if 0
-    const PD_Orders& orders() const {return m_orders;}
-#endif
 
     Solution optimize(const Solution init_solution);
     size_t max_cycles() const {return m_max_cycles;}
-
-    //! name orders handling (TODO? in a class?
-    /// @{
-
-    /*! \brief I -> {J}
-     *
-     * gets the orders {J} that can be visited after visiting order I
-     */
-    inline Identifiers<size_t> compatibleJ(size_t I) const {
-        return m_orders[I].subsetJ(Identifiers<size_t>());
-    }
-
-    inline Order orders(size_t o) const {return m_orders[o];}
 
     inline size_t& node_id() {return m_node_id;}
 
@@ -110,7 +83,7 @@ class Pgr_pickDeliver : public PD_problem {
         m_nodes.push_back(node);
     }
 
-    void add_base_node(std::unique_ptr<pickdeliver::Base_node> node_ptr) {
+    void add_base_node(std::unique_ptr<Base_node> node_ptr) {
         m_base_nodes.push_back(std::move(node_ptr));
     }
 
@@ -120,7 +93,6 @@ class Pgr_pickDeliver : public PD_problem {
 #endif
     Fleet trucks() const {return m_trucks;}
 
-    /// @{
  private:
     //! used define the initial solution algorithm to be used
     int m_initial_id;
@@ -135,10 +107,10 @@ class Pgr_pickDeliver : public PD_problem {
 
  public:
     // TODO(vicky) make this private
-    std::vector<std::unique_ptr<pickdeliver::Base_node>> m_base_nodes;
+    std::vector<std::unique_ptr<Base_node>> m_base_nodes;
+    pgrouting::tsp::Dmatrix m_cost_matrix;
 
  private:
-    pgrouting::tsp::Dmatrix m_cost_matrix;
     PD_Orders m_orders;
     Fleet m_trucks;
     std::vector<Solution> solutions;
