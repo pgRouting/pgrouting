@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_TYPES_H_
-#define INCLUDE_C_TYPES_PGR_TYPES_H_
+#ifndef INCLUDE_C_TYPES_PGR_PATH_T_H_
+#define INCLUDE_C_TYPES_PGR_PATH_T_H_
 #pragma once
 
 
@@ -54,24 +54,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // For int64_t etc
 #include <stdint.h>
 
-
 typedef struct {
-    int64_t vertex_id;
-    int64_t edge_id;
-    double cost;
-} path_element_t;
-
-/**************************************************************************
- * return type for contraction
- * ***********************************************************************/
-typedef struct {
-    int64_t id;
-    char* type;
+    int seq;
     int64_t source;
-    int64_t target;
+    int64_t edge;
     double cost;
-    int64_t *contracted_vertices;
-    int contracted_vertices_size;
-} pgr_contracted_blob;
+} pgr_path_t;
 
-#endif  // INCLUDE_C_TYPES_PGR_TYPES_H_
+#endif  // INCLUDE_C_TYPES_PGR_PATH_T_H_
