@@ -5,12 +5,11 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-#choose precise or trusty
+#choose trusty
 
-#group: edge
-#dist: trusty    
-
-#dist: precise
+group: edge
+dist: trusty
+sudo: required
 
 
 language: cpp
@@ -18,34 +17,15 @@ language: cpp
 compiler:
     - gcc
 
-
 env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
-      
+
 matrix:
   include:
     - os: linux
-      sudo: required
-      dist: precise
-      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
-
-
-    - os: linux
-      sudo: required
-      dist: precise
-      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres
-
-
-    - os: linux
-      sudo: required
-      dist: trusty
-      group: edge
       env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
 
 
     - os: linux
-      sudo: required
-      dist: trusty
-      group: edge
       env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
 
 
@@ -93,11 +73,10 @@ before_script:
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   # tests as part of script so if a test fails the build fails
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER
   - ./tools/testers/pg_prove_tests.sh $PG_USER DEBUG
 
-#after_script: 
-  # blank
+after_script:
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER -ignorenotice
 
 #after_success:
   # blank
