@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Vehicle Routing Functions Category: &mdash; pgRouting Manual (2.5-dev)</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v2.5.0-dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Stable proposed Functions" href="proposed.html" />
+    <link rel="next" title="__pgr_pickDeliver" href="pgr_pickDeliver.html" />
+    <link rel="prev" title="pgr_labelGraph - Proposed" href="pgr_labelGraph.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types_index.html">pgRouting Data Types</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Vehicle Routing Functions Category:</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics:</a></li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#description-of-the-orders-sql-query">Description of the orders_sql query</a></li>
+<li><a class="reference internal" href="#id1">Description of the orders_sql query</a></li>
+<li><a class="reference internal" href="#description-of-the-vehicles-sql-query">Description of the vehicles_sql query</a></li>
+<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#results">Results</a><ul>
+<li><a class="reference internal" href="#description-of-the-result">Description of the result</a></li>
+<li><a class="reference internal" href="#id2">Description of the result</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_labelGraph.html" title="Previous Chapter: pgr_labelGraph - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_labelGraph -...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_pickDeliver.html" title="Next Chapter: __pgr_pickDeliver"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">__pgr_pickDelive... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="vehicle-routing-functions-category">
+<span id="vrp"></span><h1>Vehicle Routing Functions Category:<a class="headerlink" href="#vehicle-routing-functions-category" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Experimental functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="rubric">Pickup and delivery problem</p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_pickDeliver.html#pgr-pickdeliver"><em>__pgr_pickDeliver</em></a> - Pickup &amp; Delivery using a Cost Matrix</li>
+<li><a class="reference internal" href="pgr_pickDeliverEuclidean.html#pgr-pickdelivereuclidean"><em>__pgr_pickDeliverEuclidean:</em></a> - Pickup &amp; Delivery with Euclidean distances</li>
+<li><a class="reference internal" href="pgr_gsoc_vrppdtw.html#pgr-gsocvrppdtw"><em>pgr_gsoc_vrppdtw - Proposed</em></a> - VRP Pickup &amp; Delivery (Euclidean)</li>
+</ul>
+<p class="rubric">Delivery prolem</p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_vrpOneDepot.html#pgr-vrp-basic"><em>pgr_vrpOneDepot - Proposed</em></a> - VRP One Depot</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">TODO</p>
+</div>
+<p class="rubric">The following is a sketch</p>
+<p>Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles.</p>
+<ul class="simple">
+<li>Optimization problem is NP-hard.</li>
+<li>Pickup and Delivery:<ul>
+<li>capacitated</li>
+<li>with time windows.</li>
+</ul>
+</li>
+<li>The vehicles<ul>
+<li>have (x, y) start and ending locations.</li>
+<li>have a start and ending service times.</li>
+<li>have opening and closing times for the start and ending locations.</li>
+</ul>
+</li>
+<li>An order is for doing a pickup and a a deliver.<ul>
+<li>has (x, y) pickup and delivery locations.</li>
+<li>has opening and closing times for the pickup and delivery locations.</li>
+<li>has a pickup and deliver service times.</li>
+</ul>
+</li>
+<li>There is a customer where to deliver a pickup.<ul>
+<li>travel time between customers is distance / speed</li>
+<li>pickup and delivery pair is done with the same vehicle.</li>
+<li>A pickup is done before the delivery.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>No multiple time windows for a location.</li>
+<li>Less vehicle used is considered better.</li>
+<li>Less total duration is better.</li>
+<li>Less wait time is better.</li>
+<li>Six different optional different initial solutions</li>
+</ul>
+</div>
+<div class="section" id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TODO: FIX becuase the following is outdated</p>
+</div>
+<div class="section" id="description-of-the-orders-sql-query">
+<h3>Description of the orders_sql query<a class="headerlink" href="#description-of-the-orders-sql-query" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="16%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><p class="first">Identifier of the customer.</p>
+<ul class="last simple">
+<li>A value of <tt class="docutils literal"><span class="pre">0</span></tt> identifies the starting location</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>demand</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><p class="first">How much is added / removed from the vehicle.</p>
+<ul class="last simple">
+<li>Negative value is a delivery,</li>
+<li>Positive value is a pickup,</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>openTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The time relative to 0, when the customer opens.</td>
+</tr>
+<tr class="row-odd"><td><strong>closeTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The time relative to 0, when the customer closes.</td>
+</tr>
+<tr class="row-even"><td><strong>serviceTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The duration of the loading / unloading.</td>
+</tr>
+<tr class="row-odd"><td><strong>pickup_id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Value used when the current customer is a Delivery to find the corresponding Pickup</td>
+</tr>
+<tr class="row-even"><td><strong>deliver_id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Value used when the current customer is a Pickup to find the corresponding Delivery</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TODO: FIX becuase the following is outdated</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Description of the orders_sql query<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="16%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><p class="first">Identifier of the customer.</p>
+<ul class="last simple">
+<li>A value of <tt class="docutils literal"><span class="pre">0</span></tt> identifies the starting location</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>x</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">X</span></tt> coordinate of the location.</td>
+</tr>
+<tr class="row-even"><td><strong>y</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Y</span></tt> coordinate of the location.</td>
+</tr>
+<tr class="row-odd"><td><strong>demand</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><p class="first">How much is added / removed from the vehicle.</p>
+<ul class="last simple">
+<li>Negative value is a delivery,</li>
+<li>Positive value is a pickup,</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>openTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The time relative to 0, when the customer opens.</td>
+</tr>
+<tr class="row-odd"><td><strong>closeTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The time relative to 0, when the customer closes.</td>
+</tr>
+<tr class="row-even"><td><strong>serviceTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The duration of the loading / unloading.</td>
+</tr>
+<tr class="row-odd"><td><strong>pickup_id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Value used when the current customer is a Delivery to find the corresponding Pickup</td>
+</tr>
+<tr class="row-even"><td><strong>deliver_id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Value used when the current customer is a Pickup to find the corresponding Delivery</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TODO: Write</p>
+</div>
+</div>
+<div class="section" id="description-of-the-vehicles-sql-query">
+<h3>Description of the vehicles_sql query<a class="headerlink" href="#description-of-the-vehicles-sql-query" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TODO: FIX becuase the following is outdated</p>
+</div>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="16%" />
+<col width="8%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>orders_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>&nbsp;</td>
+<td>Orders SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>vehicles_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>&nbsp;</td>
+<td>Vehciles SQL query as described above.</td>
+</tr>
+<tr class="row-even"><td><strong>factor</strong></td>
+<td><tt class="docutils literal"><span class="pre">NUMERIC</span></tt></td>
+<td>1</td>
+<td>$multiplier for the travel time</td>
+</tr>
+<tr class="row-odd"><td><strong>max_cycles</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>10</td>
+<td>Array of identifiers of starting vertices.</td>
+</tr>
+<tr class="row-even"><td><strong>initial</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>4</td>
+<td><p class="first">Identifier of the ending vertex of the path.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">1</span></tt> One order per truck</li>
+<li><tt class="docutils literal"><span class="pre">2</span></tt> push front</li>
+<li><tt class="docutils literal"><span class="pre">3</span></tt> push back</li>
+<li><tt class="docutils literal"><span class="pre">4</span></tt> best insert</li>
+<li><tt class="docutils literal"><span class="pre">5</span></tt> order that allows more orders to be inserted at the back</li>
+<li><tt class="docutils literal"><span class="pre">6</span></tt> order that allows more orders to be inserted at the front</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TODO: FIX becuase the following is outdated</p>
+</div>
+<div class="section" id="description-of-the-result">
+<h3>Description of the result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">RETURNS SET OF:</th><td class="field-body">(seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="10%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td>INTEGER</td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>vehicle_id</strong></td>
+<td>INTEGER</td>
+<td>Current vehicle identifier.</td>
+</tr>
+<tr class="row-even"><td><strong>vehicle_seq</strong></td>
+<td>INTEGER</td>
+<td>Sequential value starting from <strong>1</strong> for the current vehicle.</td>
+</tr>
+<tr class="row-odd"><td><strong>stop_id</strong></td>
+<td>BIGINT</td>
+<td>Visited customer identifier.</td>
+</tr>
+<tr class="row-even"><td><strong>travel_time</strong></td>
+<td>FLOAT</td>
+<td>Travel time from previous <tt class="docutils literal"><span class="pre">stop_id</span></tt> to current <tt class="docutils literal"><span class="pre">stop_id</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><strong>arrival_time</strong></td>
+<td>FLOAT</td>
+<td>Previous <tt class="docutils literal"><span class="pre">departure_time</span></tt> plus current <tt class="docutils literal"><span class="pre">travel_time</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><strong>wait_time</strong></td>
+<td>FLOAT</td>
+<td>Time spent waiting for <tt class="docutils literal"><span class="pre">stop_id</span></tt> to open.</td>
+</tr>
+<tr class="row-odd"><td><strong>service_time</strong></td>
+<td>FLOAT</td>
+<td>Service time at current stop_id.</td>
+</tr>
+<tr class="row-even"><td><strong>departure_time</strong></td>
+<td>FLOAT</td>
+<td><dl class="first last docutils">
+<dt>Previous <span class="math">\(departure\_time + travel\_time + wait\_time + service\_time\)</span>.</dt>
+<dd><ul class="first last simple">
+<li>When <tt class="docutils literal"><span class="pre">stop_id</span> <span class="pre">=</span> <span class="pre">0</span></tt> and <tt class="docutils literal"><span class="pre">vehicle_seq</span> <span class="pre">!=</span> <span class="pre">1</span></tt> has the total time for the current <tt class="docutils literal"><span class="pre">vehicle_id</span></tt>.</li>
+<li>When <tt class="docutils literal"><span class="pre">vehicle_id</span> <span class="pre">=</span> <span class="pre">-1</span></tt> has the aggregate total time</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TODO: FIX becuase the following is outdated</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Description of the result<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">RETURNS SET OF:</th><td class="field-body">(seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="10%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td>INTEGER</td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>vehicle_id</strong></td>
+<td>INTEGER</td>
+<td>Current vehicle identifier.</td>
+</tr>
+<tr class="row-even"><td><strong>vehicle_seq</strong></td>
+<td>INTEGER</td>
+<td>Sequential value starting from <strong>1</strong> for the current vehicle.</td>
+</tr>
+<tr class="row-odd"><td><strong>stop_id</strong></td>
+<td>BIGINT</td>
+<td>Visited customer identifier.</td>
+</tr>
+<tr class="row-even"><td><strong>travel_time</strong></td>
+<td>FLOAT</td>
+<td>Travel time from previous <tt class="docutils literal"><span class="pre">stop_id</span></tt> to current <tt class="docutils literal"><span class="pre">stop_id</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><strong>arrival_time</strong></td>
+<td>FLOAT</td>
+<td>Previous <tt class="docutils literal"><span class="pre">departure_time</span></tt> plus current <tt class="docutils literal"><span class="pre">travel_time</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><strong>wait_time</strong></td>
+<td>FLOAT</td>
+<td>Time spent waiting for <tt class="docutils literal"><span class="pre">stop_id</span></tt> to open.</td>
+</tr>
+<tr class="row-odd"><td><strong>service_time</strong></td>
+<td>FLOAT</td>
+<td>Service time at current stop_id.</td>
+</tr>
+<tr class="row-even"><td><strong>departure_time</strong></td>
+<td>FLOAT</td>
+<td><dl class="first last docutils">
+<dt>Previous <span class="math">\(departure\_time + travel\_time + wait\_time + service\_time\)</span>.</dt>
+<dd><ul class="first last simple">
+<li>When <tt class="docutils literal"><span class="pre">stop_id</span> <span class="pre">=</span> <span class="pre">0</span></tt> and <tt class="docutils literal"><span class="pre">vehicle_seq</span> <span class="pre">!=</span> <span class="pre">1</span></tt> has the total time for the current <tt class="docutils literal"><span class="pre">vehicle_id</span></tt>.</li>
+<li>When <tt class="docutils literal"><span class="pre">vehicle_id</span> <span class="pre">=</span> <span class="pre">-1</span></tt> has the aggregate total time</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
+<li>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
+      Last updated on May 17, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
