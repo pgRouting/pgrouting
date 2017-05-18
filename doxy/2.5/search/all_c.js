@@ -8,7 +8,7 @@ var searchData=
   ['loadunit',['loadUnit',['../classCVehicleInfo.html#aef29040feb75b114df9b3ba4d5659bb9',1,'CVehicleInfo']]],
   ['loadvehicles',['loadVehicles',['../Tester_8cpp.html#a900dcb2a68170aa825c8d8702d65e986',1,'loadVehicles():&#160;Tester.cpp'],['../VRP__core_8cpp.html#ae0be48c2f4a9f870acc0174318f7362c',1,'loadVehicles(vrp_vehicles_t *vehicles, int vehicle_count):&#160;VRP_core.cpp']]],
   ['log',['log',['../classpgrouting_1_1Pgr__messages.html#a7bc802659e3e98f9e4ed1d829d5220b2',1,'pgrouting::Pgr_messages::log()'],['../classpgrouting_1_1tsp_1_1TSP.html#aefc002eb4850028ef3d20a86c657835b',1,'pgrouting::tsp::TSP::log()'],['../classPgr__ksp.html#a16c80803b9be6728cf64de6809ae851d',1,'Pgr_ksp::log()'],['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a9f46d85304598d59946b36904bad8bb3',1,'pgrouting::bidirectional::Pgr_bidirectional::log()']]],
-  ['long2longmap',['Long2LongMap',['../GraphDefinition_8h.html#a8b3461bd01ca3081dab8246818d5dc04',1,'GraphDefinition.h']]],
-  ['long2longvectormap',['Long2LongVectorMap',['../GraphDefinition_8h.html#ae9033d9b3008f9595da6c865fa7fa86a',1,'GraphDefinition.h']]],
+  ['long2longmap',['Long2LongMap',['../GraphDefinition_8h.html#a1b9f162ac4960c2d81e4f000ba5f5377',1,'GraphDefinition.h']]],
+  ['long2longvectormap',['Long2LongVectorMap',['../GraphDefinition_8h.html#ad3655213dd4eda118e48f254fbbb51e3',1,'GraphDefinition.h']]],
   ['longvector',['LongVector',['../GraphDefinition_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5',1,'LongVector():&#160;GraphDefinition.h'],['../utils_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5',1,'LongVector():&#160;utils.h']]]
 ];

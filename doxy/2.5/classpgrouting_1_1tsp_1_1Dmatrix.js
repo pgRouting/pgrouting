@@ -4,6 +4,7 @@ var classpgrouting_1_1tsp_1_1Dmatrix =
     [ "Dmatrix", "classpgrouting_1_1tsp_1_1Dmatrix.html#aa3f9469dea2c6400e38c0f8db23c774c", null ],
     [ "Dmatrix", "classpgrouting_1_1tsp_1_1Dmatrix.html#ab22e286c676d19bcb04411f3484514aa", null ],
     [ "comparable_distance", "classpgrouting_1_1tsp_1_1Dmatrix.html#acc4b35ef148eeb5f5a63c8e0112f2741", null ],
+    [ "distance", "classpgrouting_1_1tsp_1_1Dmatrix.html#aa3bb59e1972502685517499584874617", null ],
     [ "distance", "classpgrouting_1_1tsp_1_1Dmatrix.html#ad8af3bc3ef622d1770de17967f6686a7", null ],
     [ "empty", "classpgrouting_1_1tsp_1_1Dmatrix.html#a30eee65dcf6fc2d532944588f1fdee01", null ],
     [ "get_id", "classpgrouting_1_1tsp_1_1Dmatrix.html#a4824434e65d99df5a57764e8b3bf7aef", null ],

@@ -1,9 +1,7 @@
 <map id="pgrouting::vrp::operator&lt;&lt;" name="pgrouting::vrp::operator&lt;&lt;">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#ad1f415343af5551eed4063d50fbb1936" title="The delivery node identifier. " alt="" coords="268,5,409,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="259,71,418,97"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3203e380901c818a47a62a6df113892a" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="275,121,402,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aea8358d87dde8ba8e719e7f96a99850a" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="241,201,436,242"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aaf8d97b788b38d5294a611e8f8192980" title="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ" alt="" coords="227,266,450,307"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Order.html#a875194fc94b844b51db8bd40ed6ad5f4" title="The delivery node identifier. " alt="" coords="268,331,409,373"/>
-<area shape="rect" id="node8" href="$classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47" title="Identifiers::size" alt="" coords="283,397,394,424"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#ad1f415343af5551eed4063d50fbb1936" title="The delivery node identifier. " alt="" coords="229,5,371,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="422,159,581,185"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Order.html#a875194fc94b844b51db8bd40ed6ad5f4" title="The delivery node identifier. " alt="" coords="229,122,371,163"/>
+<area shape="rect" id="node5" href="$classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47" title="Identifiers::size" alt="" coords="245,188,355,215"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a5c38c9da463ed2d27d21d18fb99efcd2" title="time = distance / speed. " alt="" coords="227,239,373,281"/>
 </map>

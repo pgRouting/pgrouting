@@ -1,5 +1,5 @@
 <map id="pgrouting::vrp::Vehicle::invariant" name="pgrouting::vrp::Vehicle::invariant">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a7403db1a0429477f326190b282d30927" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="870,556,1023,612"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="870,556,1023,612"/>
 <area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a83c771d03509fdbd709a3aabeb926da5" title="return true when no nodes are in the truck " alt="" coords="212,170,364,211"/>
 <area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a547a781b7d5ef9121b52e8c9ca0ce1ad" title="pgrouting::vrp::Vehicle\l_pickDeliver::get_first_order" alt="" coords="426,60,611,102"/>
 <area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a90dda012ef7b314ea06a76dd7611f542" title="pgrouting::vrp::Vehicle\l_pickDeliver::get_worse_order" alt="" coords="419,228,618,270"/>

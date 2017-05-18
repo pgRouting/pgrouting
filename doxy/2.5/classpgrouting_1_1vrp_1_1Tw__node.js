@@ -16,6 +16,7 @@ var classpgrouting_1_1vrp_1_1Tw__node =
     [ "arrival_j_opens_i", "classpgrouting_1_1vrp_1_1Tw__node.html#af574cbe6f96703feea5311d9482b2bf8", null ],
     [ "closes", "classpgrouting_1_1vrp_1_1Tw__node.html#ac9349481baefcf809b0bf31ad6e65719", null ],
     [ "demand", "classpgrouting_1_1vrp_1_1Tw__node.html#a561022bf17ce680711eea5a7b2146dd1", null ],
+    [ "demand", "classpgrouting_1_1vrp_1_1Tw__node.html#acfed3664d81aa73633e0aec086146a6e", null ],
     [ "id", "classpgrouting_1_1vrp_1_1Tw__node.html#a04eb2b760246fbcc2f6dc0a011c3d340", null ],
     [ "idx", "classpgrouting_1_1vrp_1_1Tw__node.html#a8a62909e1ef823d91e630c53132c14e6", null ],
     [ "is_compatible_IJ", "classpgrouting_1_1vrp_1_1Tw__node.html#ab5e20b48da4b3dfc53b6aa945d7e92e7", null ],

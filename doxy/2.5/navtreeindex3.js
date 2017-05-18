@@ -1,7 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html#a887a13971fa73bc5af766be32e5562e9":[5,0,0,0,0,1,1],
-"classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html#ad2f88b5370731bb4cd43d82c29ccc541":[5,0,0,0,0,1,2],
 "classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html":[5,0,0,0,0,2],
 "classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html#a661efbaf80f2de62790ed0e69b65a487":[5,0,0,0,0,2,0],
 "classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html#a8713785466213580e94ead2e1b4ee4f8":[5,0,0,0,0,2,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX3 =
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#af190fa2b23e4c4237971e4a92af80458":[5,0,0,4,0,11],
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#af36a60d4971439b58c3bcba1cd6c49c8":[5,0,0,4,0,36],
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#af403c5f2fa90d9be39d0f71a289673c2":[5,0,0,4,0,7],
-"classpgrouting_1_1graph_1_1Pgr__base__graph.html#af843e29278991d63fc0dd64101223121":[5,0,0,4,0,20]
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#af843e29278991d63fc0dd64101223121":[5,0,0,4,0,20],
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#af95be0914ef2a758090a329710200494":[5,0,0,4,0,47],
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#af99d7c620d0a572e15ff6c4802e04e53":[5,0,0,4,0,10]
 };

@@ -153,25 +153,25 @@ $(document).ready(function(){initNavTree('trsp__driver_8cpp_source.html','');});
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::ostringstream log;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::vector&lt;PDVI&gt; ruleTable;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">int</span> j;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        ruleTable.clear();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;restrict_count; i++) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            std::vector&lt;int64_t&gt; seq;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            seq.clear();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            seq.push_back(restricts[i].target_id);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">for</span>(j = 0; j&lt;<a class="code" href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a> &amp;&amp; restricts[i].<a class="code" href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">via</a>[j]&gt;-1; j++)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                seq.push_back(restricts[i].via[j]);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            ruleTable.push_back(make_pair(restricts[i].to_cost, seq));</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="classGraphDefinition.html">GraphDefinition</a> gdef(edges, static_cast&lt;unsigned int&gt;(edge_count), directed, has_reverse_cost);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">int</span> res = gdef.<a class="code" href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7">my_dijkstra</a>(start_vertex, end_vertex, path, path_count, log);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        std::vector&lt;PDVI&gt; ruleTable;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">int</span> j;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        ruleTable.clear();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; restrict_count; i++) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            std::vector&lt;int64_t&gt; seq;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            seq.clear();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            seq.push_back(restricts[i].target_id);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">for</span> (j = 0; j &lt; <a class="code" href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a> &amp;&amp; restricts[i].<a class="code" href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">via</a>[j] &gt; -1; j++) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                seq.push_back(restricts[i].via[j]);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            ruleTable.push_back(make_pair(restricts[i].to_cost, seq));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="classGraphDefinition.html">GraphDefinition</a> gdef(edges, static_cast&lt;unsigned int&gt;(edge_count),</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        directed, has_reverse_cost);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">int</span> res = gdef.<a class="code" href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7">my_dijkstra</a>(start_vertex, end_vertex, path, path_count,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            log);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (res &lt; 0)</div>
@@ -204,33 +204,33 @@ $(document).ready(function(){initNavTree('trsp__driver_8cpp_source.html','');});
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">char</span> **err_msg) {</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::ostringstream log;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        std::vector&lt;PDVI&gt; ruleTable;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordtype">int</span> j;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        ruleTable.clear();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;restrict_count; i++) {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            std::vector&lt;int64_t&gt; seq;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            seq.clear();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            seq.push_back(restricts[i].target_id);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">for</span>(j = 0; j&lt;<a class="code" href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a> &amp;&amp; restricts[i].<a class="code" href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">via</a>[j]&gt;-1; j++)</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                seq.push_back(restricts[i].via[j]);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            ruleTable.push_back(make_pair(restricts[i].to_cost, seq));</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="classGraphDefinition.html">GraphDefinition</a> gdef(edges, static_cast&lt;unsigned int&gt;(edge_count), directed, has_reverse_cost);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        int64_t start_vertex = 0;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        int64_t end_vertex = 0;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        gdef.add_virtual_vertices(</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                start_edge, start_pos,</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                end_edge, end_pos,</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                start_vertex, end_vertex);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordtype">int</span> res = gdef.<a class="code" href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7">my_dijkstra</a>(start_vertex, end_vertex, path, path_count, log);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        std::vector&lt;PDVI&gt; ruleTable;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">int</span> j;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        ruleTable.clear();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; restrict_count; i++) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            std::vector&lt;int64_t&gt; seq;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            seq.clear();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            seq.push_back(restricts[i].target_id);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">for</span> (j = 0; j &lt; <a class="code" href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a> &amp;&amp; restricts[i].<a class="code" href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">via</a>[j] &gt;- 1; j++) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                seq.push_back(restricts[i].via[j]);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            ruleTable.push_back(make_pair(restricts[i].to_cost, seq));</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="classGraphDefinition.html">GraphDefinition</a> gdef(edges, static_cast&lt;unsigned int&gt;(edge_count),</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        directed, has_reverse_cost);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        int64_t start_vertex = 0;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        int64_t end_vertex = 0;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        gdef.add_virtual_vertices(</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                start_edge, start_pos,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                end_edge, end_pos,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                start_vertex, end_vertex);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">int</span> res = gdef.<a class="code" href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7">my_dijkstra</a>(start_vertex, end_vertex, path, path_count,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            log);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (res &lt; 0)</div>
@@ -250,7 +250,7 @@ $(document).ready(function(){initNavTree('trsp__driver_8cpp_source.html','');});
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;}</div>
 <div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
-<div class="ttc" id="classGraphDefinition_html"><div class="ttname"><a href="classGraphDefinition.html">GraphDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8h_source.html#l00087">GraphDefinition.h:87</a></div></div>
+<div class="ttc" id="classGraphDefinition_html"><div class="ttname"><a href="classGraphDefinition.html">GraphDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8h_source.html#l00089">GraphDefinition.h:89</a></div></div>
 <div class="ttc" id="trsp__driver_8cpp_html_ad2b77a72f659aad981556c43f523a13b"><div class="ttname"><a href="trsp__driver_8cpp.html#ad2b77a72f659aad981556c43f523a13b">trsp_node_wrapper</a></div><div class="ttdeci">int trsp_node_wrapper(edge_t *edges, size_t edge_count, restrict_t *restricts, size_t restrict_count, int64_t start_vertex, int64_t end_vertex, bool directed, bool has_reverse_cost, path_element_t **path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="trsp__driver_8cpp_source.html#l00034">trsp_driver.cpp:34</a></div></div>
 <div class="ttc" id="trsp__driver_8cpp_html_a5d467f92eb10534552a29268427c6450"><div class="ttname"><a href="trsp__driver_8cpp.html#a5d467f92eb10534552a29268427c6450">trsp_edge_wrapper</a></div><div class="ttdeci">int trsp_edge_wrapper(edge_t *edges, size_t edge_count, restrict_t *restricts, size_t restrict_count, int64_t start_edge, double start_pos, int64_t end_edge, double end_pos, bool directed, bool has_reverse_cost, path_element_t **path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="trsp__driver_8cpp_source.html#l00084">trsp_driver.cpp:84</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00031">trsp.h:31</a></div></div>
@@ -258,16 +258,16 @@ $(document).ready(function(){initNavTree('trsp__driver_8cpp_source.html','');});
 <div class="ttc" id="classGraphDefinition_html_add1e17a19370022849bc5fa0a0a993c7"><div class="ttname"><a href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7">GraphDefinition::my_dijkstra</a></div><div class="ttdeci">int my_dijkstra(long start_vertex, long end_vertex, size_t edge_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8cpp_source.html#l00270">GraphDefinition.cpp:270</a></div></div>
 <div class="ttc" id="trsp_8h_html_a2b2d1b8288abf80b6781151bdde6101f"><div class="ttname"><a href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a></div><div class="ttdeci">#define MAX_RULE_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00025">trsp.h:25</a></div></div>
 <div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00058">pgr_types.h:58</a></div></div>
-<div class="ttc" id="structrestrict__struct_html_a3d3c0413b11970bcb6178f90c28e0807"><div class="ttname"><a href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">restrict_struct::via</a></div><div class="ttdeci">int via[5]</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00044">trsp.h:44</a></div></div>
+<div class="ttc" id="structrestrict__struct_html_a3d3c0413b11970bcb6178f90c28e0807"><div class="ttname"><a href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">restrict_struct::via</a></div><div class="ttdeci">int via[5]</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00042">trsp.h:42</a></div></div>
 <div class="ttc" id="trsp__driver_8h_html"><div class="ttname"><a href="trsp__driver_8h.html">trsp_driver.h</a></div></div>
-<div class="ttc" id="structrestrict__struct_html"><div class="ttname"><a href="structrestrict__struct.html">restrict_struct</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00040">trsp.h:40</a></div></div>
+<div class="ttc" id="structrestrict__struct_html"><div class="ttname"><a href="structrestrict__struct.html">restrict_struct</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00039">trsp.h:39</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ff9a90ff40b28e0f207f5cd80dcba32.html">trsp</a></li><li class="navelem"><a class="el" href="dir_b47eebdcbf6a29b61fc577aaf4f15079.html">src</a></li><li class="navelem"><a class="el" href="trsp__driver_8cpp.html">trsp_driver.cpp</a></li>
-    <li class="footer">Generated on Sat May 13 2017 23:32:12 for PGROUTING by
+    <li class="footer">Generated on Wed May 17 2017 19:12:29 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

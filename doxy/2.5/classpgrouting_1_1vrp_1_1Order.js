@@ -13,10 +13,8 @@ var classpgrouting_1_1vrp_1_1Order =
     [ "subsetI", "classpgrouting_1_1vrp_1_1Order.html#a3f3b10a29ba63bf20e00383bcc0af81d", null ],
     [ "subsetJ", "classpgrouting_1_1vrp_1_1Order.html#aa87eb6f0477ec5a6ab34ab0422c99994", null ],
     [ "operator<<", "classpgrouting_1_1vrp_1_1Order.html#a35cdd37a811c627b997a31e7e04b3262", null ],
-    [ "delivery_id", "classpgrouting_1_1vrp_1_1Order.html#a992d134384e48d69cdc9f21cccb1a1fd", null ],
     [ "m_compatibleI", "classpgrouting_1_1vrp_1_1Order.html#a70a71f8d25607ecdec13cc5ba85990fd", null ],
     [ "m_compatibleJ", "classpgrouting_1_1vrp_1_1Order.html#a77c107f2f6eaf6da2561c4ffa858a74c", null ],
-    [ "msg", "classpgrouting_1_1vrp_1_1Order.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
-    [ "pickup_id", "classpgrouting_1_1vrp_1_1Order.html#a700f84c4bee1cd1bd8b14c006d5e02a9", null ],
-    [ "problem", "classpgrouting_1_1vrp_1_1Order.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
+    [ "m_delivery", "classpgrouting_1_1vrp_1_1Order.html#a9bdb982340168ecebe3be10b043a501c", null ],
+    [ "m_pickup", "classpgrouting_1_1vrp_1_1Order.html#aabe8094c5e8e6ffdc726a0762438852b", null ]
 ];

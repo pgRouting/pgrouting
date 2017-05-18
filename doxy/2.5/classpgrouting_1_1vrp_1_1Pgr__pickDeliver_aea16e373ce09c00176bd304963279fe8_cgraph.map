@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Pgr_pickDeliver::order_of" name="pgrouting::vrp::Pgr_pickDeliver::order_of">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="203,5,362,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#afd31f5b45277da0062025e66a37f4ea1" title="is_delivery " alt="" coords="219,57,346,98"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a0d7d424f0132c1f1ed75e9c5b1e3d55e" title="is_pickup " alt="" coords="219,122,346,163"/>
-</map>

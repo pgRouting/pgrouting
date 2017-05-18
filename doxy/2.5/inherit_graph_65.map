@@ -1,17 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="5,100,139,127"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html" title="pgrouting::vrp::Order" alt="" coords="201,129,343,156"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Base__node.html" title="The Base_node class defines the operations that can be performed in a 2D node. " alt="" coords="187,63,357,105"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html" title="Extends the Node class to create a Node with time window attributes. " alt="" coords="191,180,353,207"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle.html" title="Vehicle with time windows. " alt="" coords="196,12,348,39"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Node.html" title="The Node class defines a point in 2D space with an id. " alt="" coords="413,93,584,134"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level. " alt="" coords="405,180,592,207"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html" title="pgrouting::vrp::Vehicle\l_pickDeliver" alt="" coords="423,5,575,46"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title="pgrouting::vrp::PD\l_problem" alt="" coords="8,282,136,323"/>
-<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Fleet.html" title="pgrouting::vrp::Fleet" alt="" coords="203,413,341,440"/>
-<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1PD__Orders.html" title="pgrouting::vrp::PD\l_Orders" alt="" coords="208,282,336,323"/>
-<area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html" title="pgrouting::vrp::Pgr\l_pickDeliver" alt="" coords="207,347,337,389"/>
-<area shape="rect" id="node13" href="$classpgrouting_1_1vrp_1_1Solution.html" title="pgrouting::vrp::Solution" alt="" coords="194,464,350,491"/>
-<area shape="rect" id="node14" href="$classpgrouting_1_1vrp_1_1Initial__solution.html" title="pgrouting::vrp::Initial\l_solution" alt="" coords="429,427,569,469"/>
-<area shape="rect" id="node15" href="$classpgrouting_1_1vrp_1_1Optimize.html" title="pgrouting::vrp::Optimize" alt="" coords="418,493,579,520"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1TSP.html" title="pgrouting::tsp::TSP\l\&lt; MATRIX \&gt;" alt="" coords="129,5,263,46"/>
 </map>

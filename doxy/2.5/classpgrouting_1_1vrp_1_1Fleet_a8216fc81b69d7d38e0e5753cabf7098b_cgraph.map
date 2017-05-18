@@ -1,4 +1,3 @@
 <map id="pgrouting::vrp::Fleet::is_order_ok" name="pgrouting::vrp::Fleet::is_order_ok">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="193,5,351,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Order.html#a6952f655243e030be6d5db4b1aebfe57" title="validate a pickup/delivery order " alt="" coords="201,57,343,98"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#a6952f655243e030be6d5db4b1aebfe57" title="validate a pickup/delivery order " alt="" coords="192,5,333,46"/>
 </map>

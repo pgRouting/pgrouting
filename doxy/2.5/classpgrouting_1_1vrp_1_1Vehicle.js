@@ -49,5 +49,7 @@ var classpgrouting_1_1vrp_1_1Vehicle =
     [ "m_capacity", "classpgrouting_1_1vrp_1_1Vehicle.html#a73c3d5f2c651df4801337169ab397206", null ],
     [ "m_factor", "classpgrouting_1_1vrp_1_1Vehicle.html#a06b1d6b0c1c8b98824dacc451b746118", null ],
     [ "m_path", "classpgrouting_1_1vrp_1_1Vehicle.html#a57aa8629a815adf2c107f7a44500fb56", null ],
-    [ "m_speed", "classpgrouting_1_1vrp_1_1Vehicle.html#a0824ea9c5194ac5774863fb045b83002", null ]
+    [ "m_speed", "classpgrouting_1_1vrp_1_1Vehicle.html#a0824ea9c5194ac5774863fb045b83002", null ],
+    [ "msg", "classpgrouting_1_1vrp_1_1Vehicle.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
+    [ "problem", "classpgrouting_1_1vrp_1_1Vehicle.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
 ];

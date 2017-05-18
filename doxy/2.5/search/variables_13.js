@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['y',['Y',['../structPoint.html#afd3632a85aefc15a129a8ebc4b8412b9',1,'Point::Y()'],['../structvertex__columns.html#af6b920645f2544a029fbe6c1d31498c1',1,'vertex_columns::y()'],['../structvertex.html#a8b9f211498390a67c369fd43f3722a19',1,'vertex::y()'],['../structorder__columns.html#a8c782e03394acd048a1555f029e87410',1,'order_columns::y()'],['../structvrp__orders.html#ae0cc289c6283033e1a2121d3db8fd30b',1,'vrp_orders::y()'],['../structCoordinate__t.html#abbc494db10b22a87bede79c5b62be604',1,'Coordinate_t::y()']]],
-  ['y1',['y1',['../structPgr__edge__xy__t.html#a2042ed5c17215de537ce94b9ff73fd77',1,'Pgr_edge_xy_t']]],
-  ['y2',['y2',['../structPgr__edge__xy__t.html#a6ee26f23bfc079a5e9583a7edcb683d4',1,'Pgr_edge_xy_t']]]
+  ['x',['x',['../structvertex__columns.html#a0c582ef5b2f2c44c8cbf6b89ebc8d183',1,'vertex_columns::x()'],['../structvertex.html#a11f52ec2e920d56500baefe5a2e2bba7',1,'vertex::x()'],['../structorder__columns.html#abc33373945a759ba2ff1590d72c9e9e4',1,'order_columns::x()'],['../structvrp__orders.html#a7d133f64690588baaaac37034f5948af',1,'vrp_orders::x()'],['../structCoordinate__t.html#a4e83334eabbe707ae5433ff65f60a475',1,'Coordinate_t::x()'],['../structPoint.html#a9a3d900d37caa93c8266045f9a15ddfd',1,'Point::X()']]],
+  ['x1',['x1',['../structPgr__edge__xy__t.html#a1bec47d220030b3f2c0c3d00aaee7b61',1,'Pgr_edge_xy_t']]],
+  ['x2',['x2',['../structPgr__edge__xy__t.html#abdf9d0604ecf134ffa25174f477bf0c6',1,'Pgr_edge_xy_t']]]
 ];

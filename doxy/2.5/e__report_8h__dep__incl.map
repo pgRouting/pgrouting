@@ -13,8 +13,9 @@
 <area shape="rect" id="node13" href="$edge__disjoint__paths_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/edge\l_disjoint_paths.c" alt="" coords="2267,117,2425,187"/>
 <area shape="rect" id="node14" href="$max__flow_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/max\l_flow.c" alt="" coords="2451,117,2604,187"/>
 <area shape="rect" id="node15" href="$maximum__cardinality__matching_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/maximum\l_cardinality_matching.c" alt="" coords="2629,117,2816,187"/>
-<area shape="rect" id="node16" href="$pickDeliverEuclidean_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliverE/src\l/pickDeliverEuclidean.c" alt="" coords="2841,117,2999,187"/>
-<area shape="rect" id="node17" href="$eucledianTSP_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/tsp/src/eucledianTSP.c" alt="" coords="3024,124,3208,180"/>
-<area shape="rect" id="node18" href="$newTSP_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/tsp/src/newTSP.c" alt="" coords="3233,124,3385,180"/>
-<area shape="rect" id="node19" href="$withPoints_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/withPoints/src/withPoints.c" alt="" coords="3410,124,3616,180"/>
+<area shape="rect" id="node16" href="$pickDeliver_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/src/pickDeliver.c" alt="" coords="2841,124,3055,180"/>
+<area shape="rect" id="node17" href="$pickDeliverEuclidean_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/src/pickDeliver\lEuclidean.c" alt="" coords="3079,117,3283,187"/>
+<area shape="rect" id="node18" href="$eucledianTSP_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/tsp/src/eucledianTSP.c" alt="" coords="3308,124,3492,180"/>
+<area shape="rect" id="node19" href="$newTSP_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/tsp/src/newTSP.c" alt="" coords="3517,124,3669,180"/>
+<area shape="rect" id="node20" href="$withPoints_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/withPoints/src/withPoints.c" alt="" coords="3694,124,3900,180"/>
 </map>

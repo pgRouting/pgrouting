@@ -9,7 +9,7 @@ var classpgrouting_1_1vrp_1_1Vehicle__pickDeliver =
     [ "cost_compare", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acc73992a7fe2a903bdaf35c5b3da0d09", null ],
     [ "cvTot", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ac7497e9823f6f5f10743fe5c15f54e69", null ],
     [ "deltaTime", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a37934771b6c2ed2644eec4e61a7cfe5a", null ],
-    [ "do_while_feasable", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a7403db1a0429477f326190b282d30927", null ],
+    [ "do_while_feasable", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2", null ],
     [ "duration", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a990ae125d07ee6bed08a31730f7e5faa", null ],
     [ "empty", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a83c771d03509fdbd709a3aabeb926da5", null ],
     [ "end_site", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a045c3a9a58b87092413c650be2529d13", null ],
@@ -36,7 +36,7 @@ var classpgrouting_1_1vrp_1_1Vehicle__pickDeliver =
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a0ff5f16ae974de8e47b34dd92cd84570", null ],
     [ "is_order_feasable", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a295058a55941fda712442687710e0800", null ],
     [ "is_phony", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a6b87e5fcd837821ae04884a9d767efb7", null ],
-    [ "orders", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a4c503670ba89ef0bc70b9f16f3e2878e", null ],
+    [ "orders", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a00be9b14d548b9bb959baf395fec7e62", null ],
     [ "orders_in_vehicle", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae87fb8e4e4c97f347190916044877f06", null ],
     [ "orders_size", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a29fa1db0481ca446927ff0cbb8356c04", null ],
     [ "path", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a80a01b40f29f6c46466f5c89bdc2c136", null ],
@@ -60,8 +60,10 @@ var classpgrouting_1_1vrp_1_1Vehicle__pickDeliver =
     [ "Initial_solution", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a196ba6fb904c6d6b31d970df3ff28f25", null ],
     [ "Optimize", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a7095b2afb20c698734f4c9b0446659f5", null ],
     [ "cost", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a976c43e59901630a840b467a2bdf5bc2", null ],
-    [ "m_feasable_orders", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3607abe3bfb98df2ae7ccd3c9379d3f6", null ],
+    [ "m_feasable_orders", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa98849adc639ced279db9826c21cb606", null ],
     [ "m_orders", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ac1a7780fc43539dae0e48e5e06e13adb", null ],
     [ "m_orders_in_vehicle", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa37c262014640696495e49e189876830", null ],
-    [ "m_path", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a57aa8629a815adf2c107f7a44500fb56", null ]
+    [ "m_path", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a57aa8629a815adf2c107f7a44500fb56", null ],
+    [ "msg", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
+    [ "problem", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
 ];

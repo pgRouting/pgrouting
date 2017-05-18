@@ -25,5 +25,5 @@ var classpgrouting_1_1vrp_1_1Initial__solution =
     [ "msg", "classpgrouting_1_1vrp_1_1Initial__solution.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
     [ "problem", "classpgrouting_1_1vrp_1_1Initial__solution.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ],
     [ "trucks", "classpgrouting_1_1vrp_1_1Initial__solution.html#ad1a5c383405030e3dbf3247a7f9c7673", null ],
-    [ "unassigned", "classpgrouting_1_1vrp_1_1Initial__solution.html#aaed181e84c05b8f37efe4df0f086db3c", null ]
+    [ "unassigned", "classpgrouting_1_1vrp_1_1Initial__solution.html#a5f99d3dca1bbe8ec49f52fba63621fda", null ]
 ];

@@ -1,7 +1,8 @@
 <map id="pgrouting::vrp::Tw_node::travel_time_to" name="pgrouting::vrp::Tw_node::travel_time_to">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a844f5255b91e2d804e152d42a199648a" title="@ { " alt="" coords="201,5,367,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ac2ba2bee420b2f8df1e09828d968e4e6" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="201,70,367,111"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#af574cbe6f96703feea5311d9482b2bf8" title="@ { " alt="" coords="203,135,365,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a37934771b6c2ed2644eec4e61a7cfe5a" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="208,201,360,242"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="208,266,360,307"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a844f5255b91e2d804e152d42a199648a" title="@ { " alt="" coords="203,5,370,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ac2ba2bee420b2f8df1e09828d968e4e6" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="204,70,369,111"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#af574cbe6f96703feea5311d9482b2bf8" title="@ { " alt="" coords="205,135,368,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a37934771b6c2ed2644eec4e61a7cfe5a" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="211,201,363,242"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="211,266,363,307"/>
+<area shape="rect" id="node7" href="$namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="201,332,373,359"/>
 </map>

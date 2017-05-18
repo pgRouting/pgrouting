@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::pickdeliver::Tw_node::is_late_arrival" name="pgrouting::vrp::pickdeliver::Tw_node::is_late_arrival">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a5fe883a16def8e154e75d8917135003f" title="True when at this node does not violate time windows. " alt="" coords="224,5,395,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a8c21169bf7686ab0384c0b0366c96e9e" title="True when arrivalTime in the time window. " alt="" coords="224,70,395,111"/>
+</map>
