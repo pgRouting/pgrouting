@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
 #pragma once
 
-#include "c_types/pgr_contracted_blob.h"
+#include "c_types/contracted_rt.h"
 #include "c_types/pgr_edge_t.h"
 
 #ifdef __cplusplus
