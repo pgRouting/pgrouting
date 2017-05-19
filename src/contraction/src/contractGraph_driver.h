@@ -4,9 +4,9 @@ File: contractGraph_driver.h
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2016 Rohith Reddy
-Mail: 
+Mail:
 
 ------
 
@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
 #pragma once
 
-#include "c_types/pgr_types.h"
+#include "c_types/pgr_contracted_blob.h"
 #include "c_types/pgr_edge_t.h"
 
 #ifdef __cplusplus
