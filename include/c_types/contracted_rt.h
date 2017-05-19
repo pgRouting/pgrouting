@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_TYPES_CONTRACTED_BLOB_H_
-#define INCLUDE_C_TYPES_PGR_TYPES_CONTRACTED_BLOB_H_
+#ifndef INCLUDE_C_TYPES_CONTRACTED_RT_H_
+#define INCLUDE_C_TYPES_CONTRACTED_RT_H_
 #pragma once
 
 
@@ -68,4 +68,4 @@ typedef struct {
     int contracted_vertices_size;
 } pgr_contracted_blob;
 
-#endif  // INCLUDE_C_TYPES_PGR_TYPES_CONTRACTED_BLOB_H_
+#endif  // INCLUDE_C_TYPES_CONTRACTED_RT_H_
