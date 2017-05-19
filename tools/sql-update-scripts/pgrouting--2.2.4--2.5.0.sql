@@ -3676,6 +3676,25 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
 
 
 
+CREATE OR REPLACE FUNCTION pgr_vickyDijkstra(
+    TEXT,
+    BIGINT,
+    BIGINT,
+    directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
+        OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+'$libdir/libpgrouting-2.5', 'vickyDijkstra'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+
 
 
 CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision,
