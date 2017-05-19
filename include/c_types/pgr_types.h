@@ -70,18 +70,4 @@ typedef struct {
     double cost;
 } pgr_path_t;
 
-
-// /**************************************************************************
-//  * return type for contraction
-//  * ***********************************************************************/
-// typedef struct {
-//     int64_t id;
-//     char* type;
-//     int64_t source;
-//     int64_t target;
-//     double cost;
-//     int64_t *contracted_vertices;
-//     int contracted_vertices_size;
-// } pgr_contracted_blob;
-
 #endif  // INCLUDE_C_TYPES_PGR_TYPES_H_
