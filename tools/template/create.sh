@@ -85,15 +85,15 @@ cp -r src  "$MY_FUNCTION_NAME"
 cp -r pgtap  "$MY_FUNCTION_NAME"
 
 function substitute() {
-    perl -pi -e "s/$1/$2/" $MY_FUNCTION_NAME/src/*
-    perl -pi -e "s/$1/$2/" $MY_FUNCTION_NAME/doc/*
-    perl -pi -e "s/$1/$2/" $MY_FUNCTION_NAME/sql/*
-    perl -pi -e "s/$1/$2/" $MY_FUNCTION_NAME/test/*
-    perl -pi -e "s/$1/$2/" $MY_FUNCTION_NAME/pgtap/*
+    perl -pi -e "s/$1/$2/g" $MY_FUNCTION_NAME/src/*
+    perl -pi -e "s/$1/$2/g" $MY_FUNCTION_NAME/doc/*
+    perl -pi -e "s/$1/$2/g" $MY_FUNCTION_NAME/sql/*
+    perl -pi -e "s/$1/$2/g" $MY_FUNCTION_NAME/test/*
+    perl -pi -e "s/$1/$2/g" $MY_FUNCTION_NAME/pgtap/*
 }
 
-substitute "MY_FUNCTION_NAME_LOWER" $MY_FUNCTION_NAME_LOWER
-substitute "MY_FUNCTION_NAME_UPPER" $MY_FUNCTION_NAME_UPPER
+substitute "MY_FUNCTION_NAME_LOWER" "$MY_FUNCTION_NAME_LOWER"
+substitute "MY_FUNCTION_NAME_UPPER" "$MY_FUNCTION_NAME_UPPER"
 substitute "MY_FUNCTION_NAME" $MY_FUNCTION_NAME
 substitute "MY_QUERY_LINE1" "$MY_QUERY_LINE1"
 substitute "MY_QUERY_LINE2" "$MY_QUERY_LINE2"
