@@ -4,16 +4,16 @@ function usage() {
 if [  "$#" -lt 1 ] ; then
     echo "Usage: sh ./create.sh <action>"
     echo "  <action> = clean, overwrite, missing"
-    echo "  clean action will:"
+    echo "  clean action will:   ONLY ACTIVE ONE"
     echo "    - remove the directories:"
     echo "      src/MY_FUNCTION_NAME/src"
     echo "      src/MY_FUNCTION_NAME/doc"
     echo "      src/MY_FUNCTION_NAME/test"
     echo "      include/drivers/MY_FUNCTION_NAME"
     echo "    - and start from scratch"
-    echo "  overwrite action will"
+    echo "  overwrite action will: TODO"
     echo "    -  overwite the files if they exist"
-    echo "  missing will:"
+    echo "  missing will: TODO"
     echo "    - skip files that exist"
     echo "    - write the missing files only"
     exit 1
@@ -103,6 +103,7 @@ substitute "MY_FUNCTION_NAME" $MY_FUNCTION_NAME
 substitute "MY_FUNCTION_NAME" $MY_FUNCTION_NAME
 substitute "YEAR" $YEAR
 substitute "MY_EDGE_TYPE" $MY_EDGE_TYPE
+substitute "MY_EDGE_FILE" $MY_EDGE_FILE
 substitute "MY_EDGE_FUNCTION" $MY_EDGE_FUNCTION
 substitute "MY_RETURN_VALUE_TYPE" $MY_RETURN_VALUE_TYPE
 substitute "MY_RETURN_VALUE_FILE" $MY_RETURN_VALUE_FILE
@@ -138,6 +139,7 @@ if [[  "$1" == "clean"  ]] ; then
     rm -rf ../../sql/$MY_FUNCTION_NAME
     rm -rf ../../src/$MY_FUNCTION_NAME
     mkdir -p ../../sql/$MY_FUNCTION_NAME
+    mkdir -p ../../include/drivers/$MY_FUNCTION_NAME
 fi
 
 #moving the whole structure to its final location
@@ -149,95 +151,3 @@ mv $MY_FUNCTION_NAME                    ../../src
 
 exit 0;
 
-#####   SQL   #########
-echo "updating the /sql/CMakeLists.txt"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/sql/CMakeLists.txt
-
-# /sql/function1.sql   
-echo "Updating the .sql in sql"
-sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/sql/function1.sql
-sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/sql/function1.sql
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/sql/function1.sql
-sed -i "s/DEVELOPER_NAME/$DEVELOPER_NAME/" "$MY_FUNCTION_NAME"/sql/function1.sql
-sed -i "s/DEVELOPER_EMAIL/$DEVELOPER_EMAIL/" "$MY_FUNCTION_NAME"/sql/function1.sql
-sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/sql/function1.sql
-mv "$MY_FUNCTION_NAME"/sql/function1.sql "$MY_FUNCTION_NAME"/sql/"$MY_FUNCTION_NAME".sql
-
-
-#####   SRC   #########
-echo "updating the /sql/CMakeLists.txt"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/src/CMakeLists.txt
-
-echo "updating the function1.c file in src"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/src/function1.c
-sed -i "s/DEVELOPER_NAME/$DEVELOPER_NAME/" "$MY_FUNCTION_NAME"/src/function1.c
-sed -i "s/DEVELOPER_EMAIL/$DEVELOPER_EMAIL/" "$MY_FUNCTION_NAME"/src/function1.c
-sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/src/function1.c
-sed -i "s/MY_EDGE_TYPE/$MY_EDGE_TYPE/" "$MY_FUNCTION_NAME"/src/function1.c
-sed -i "s/MY_EDGE_FUNCTION/$MY_EDGE_FUNCTION/" "$MY_FUNCTION_NAME"/src/function1.c
-sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/src/function1.c
-sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/src/function1.c
-sed -i "s/MY_RETURN_VALUE_TYPE/$MY_RETURN_VALUE_TYPE/" "$MY_FUNCTION_NAME"/src/function1.c
-mv "$MY_FUNCTION_NAME"/src/function1.c "$MY_FUNCTION_NAME"/src/"$MY_FUNCTION_NAME".c
-
-echo "updating the src/function1_driver.h"
-sed -i "s/MY_FUNCTION_NAME_UPPER/$MY_FUNCTION_NAME_UPPER/g" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/DEVELOPER_NAME/$DEVELOPER_NAME/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/DEVELOPER_EMAIL/$DEVELOPER_EMAIL/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/MY_EDGE_TYPE/$MY_EDGE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/MY_EDGE_FILE/$MY_EDGE_FILE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/MY_RETURN_VALUE_TYPE/$MY_RETURN_VALUE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-sed -i "s/MY_RETURN_VALUE_FILE/$MY_RETURN_VALUE_FILE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
-mv "$MY_FUNCTION_NAME"/src/function1_driver.h "$MY_FUNCTION_NAME"/src/"$MY_FUNCTION_NAME"_driver.h
-
-echo "updating the src/function1_driver.cpp"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
-sed -i "s/DEVELOPER_NAME/$DEVELOPER_NAME/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
-sed -i "s/DEVELOPER_EMAIL/$DEVELOPER_EMAIL/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
-sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
-sed -i "s/MY_EDGE_TYPE/$MY_EDGE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
-sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
-sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
-sed -i "s/MY_RETURN_VALUE_TYPE/$MY_RETURN_VALUE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
-mv "$MY_FUNCTION_NAME"/src/function1_driver.cpp "$MY_FUNCTION_NAME"/src/"$MY_FUNCTION_NAME"_driver.cpp
-
-#####   DOC   #########
-
-echo "updating the doc/pgr_function1.cpp"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/doc/pgr_function1.rst
-sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/doc/pgr_function1.rst
-sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/doc/pgr_function1.rst
-sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/doc/pgr_function1.rst
-mv "$MY_FUNCTION_NAME"/doc/pgr_function1.rst "$MY_FUNCTION_NAME"/doc/pgr_"$MY_FUNCTION_NAME".rst
-
-echo "updating the doc/doc-pgr_function1.queries"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/doc/doc-pgr_function1.queries
-mv "$MY_FUNCTION_NAME"/doc/doc-pgr_function1.queries "$MY_FUNCTION_NAME"/doc/doc-pgr_"$MY_FUNCTION_NAME".queries
-
-#####   TEST   #########
-
-echo "updating test/test.conf"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/test/test.conf
-
-echo "updating test/doc-function1.test.sql"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/test/doc-function1.test.sql
-
-echo "updating the test/pgtap/function1-typesCheck.sql"
-sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-typesCheck.sql
-
-echo "updating the test/pgtap/function1-compare-dijkstra.sql"
-sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-compare-dijkstra.sql
-
-echo "updating the test/pgtap/function1-innerQuery.sql"
-sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-innerQuery.sql
-
-
-#move the whole structure to its place
-mv "$MY_FUNCTION_NAME/sql" "../../sql/$MY_FUNCTION_NAME"
-mv "$MY_FUNCTION_NAME" ../../src/"$MY_FUNCTION_NAME"
-
-exit

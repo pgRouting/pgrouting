@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./MY_FUNCTION_NAME_driver.h"
+#include "drivers/MY_FUNCTION_NAME/MY_FUNCTION_NAME_driver.h"
 
 #include <sstream>
 #include <deque>

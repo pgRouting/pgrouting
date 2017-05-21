@@ -45,34 +45,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 #include "c_common/postgres_connection.h"
 
-/**
- *  funcapi.h
- *
- *  - While developing to not show postgres header files warnings:
- *    - wrap the file(s) with the appropiate dignostic to be ignored
- */
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-
-#include "funcapi.h"
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
 
 #include "c_common/debug_macro.h" // for macro PGR_DBG
 #include "c_common/e_report.h"  // for pgr_global_report
 #include "c_common/time_msg.h"  // for time_msg & clock
 #include "c_common/edges_input.h" // for functions to get edges informtion
 
-// TODO move to include/drivers directory
-#include "./vickyDijkstra_driver.h"  // the C++ code of the function
+#include "drivers/vickyDijkstra/vickyDijkstra_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum vickyDijkstra(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(vickyDijkstra);
