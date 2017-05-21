@@ -55,13 +55,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdint.h>
 
 
-typedef struct {
-    int seq;
-    int64_t source;
-    int64_t edge;
-    double cost;
-} pgr_path_t;
-
 
 /**************************************************************************
  * return type for contraction
