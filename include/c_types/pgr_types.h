@@ -61,16 +61,6 @@ typedef struct {
     double cost;
 } path_element_t;
 
-
-
-typedef struct {
-    int seq;
-    int64_t source;
-    int64_t edge;
-    double cost;
-} pgr_path_t;
-
-
 /**************************************************************************
  * return type for contraction
  * ***********************************************************************/
