@@ -55,11 +55,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdint.h>
 
 
-typedef struct {
-    int64_t vertex_id;
-    int64_t edge_id;
-    double cost;
-} path_element_t;
 
 /**************************************************************************
  * return type for contraction
