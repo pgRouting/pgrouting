@@ -46,10 +46,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 
-#include "c_common/debug_macro.h" // for macro PGR_DBG
-#include "c_common/e_report.h"  // for pgr_global_report
-#include "c_common/time_msg.h"  // for time_msg & clock
-#include "c_common/edges_input.h" // for functions to get edges informtion
+/* for macro PGR_DBG */
+#include "c_common/debug_macro.h"
+/* for pgr_global_report */
+#include "c_common/e_report.h"
+/* for time_msg & clock */
+#include "c_common/time_msg.h"
+/* for functions to get edges informtion */
+#include "c_common/edges_input.h"
 
 #include "drivers/MY_FUNCTION_NAME/MY_FUNCTION_NAME_driver.h"  // the link to the C++ code of the function
 
@@ -76,8 +80,9 @@ process(
         bool only_cost,
         MY_RETURN_VALUE_TYPE **result_tuples,
         size_t *result_count) {
-
-    /* https://www.postgresql.org/docs/current/static/spi-spi-connect.html */
+    /*
+     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
+     */
     pgr_SPI_connect();
 
 
@@ -108,7 +113,9 @@ process(
     size_t total_edges = 0;
 
     if (start_vid == end_vid) {
-        /* https://www.postgresql.org/docs/current/static/spi-spi-finish.html */
+        /*
+         * https://www.postgresql.org/docs/current/static/spi-spi-finish.html
+         */
         pgr_SPI_finish();
         return;
     }
