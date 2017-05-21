@@ -29,7 +29,7 @@ fi
 
 
 #dont put pgr_ on MY_FUNCTION_NAME that is done automatically
-MY_FUNCTION_NAME="vickyDijkstra"
+MY_FUNCTION_NAME="funnyDijkstra"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara\@hotmail.com" 
 YEAR="2017"

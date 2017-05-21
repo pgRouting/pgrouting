@@ -109,7 +109,6 @@ set(PgRouting_SOURCE_NAMES
     "withPoints"  # 2.2
 
     # template generated name
-    "vickyDijkstra"
     #"funnyDijkstra"
 
     )
