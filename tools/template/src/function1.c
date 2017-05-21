@@ -74,8 +74,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // TODO move to include/drivers directory
 #include "./MY_FUNCTION_NAME_driver.h"  // the C++ code of the function
 
-PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);
 PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);
 
 
 /******************************************************************************/

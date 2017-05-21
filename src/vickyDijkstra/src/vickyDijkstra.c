@@ -74,8 +74,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // TODO move to include/drivers directory
 #include "./vickyDijkstra_driver.h"  // the C++ code of the function
 
-PG_FUNCTION_INFO_V1(vickyDijkstra);
 PGDLLEXPORT Datum vickyDijkstra(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(vickyDijkstra);
 
 
 /******************************************************************************/
