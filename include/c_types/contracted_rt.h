@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: pgr_types.h
+File: contracted_rt.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2017 pgRouting developers
+Mail: project@pgrouting.org
 
 ------
 
@@ -66,6 +66,6 @@ typedef struct {
     double cost;
     int64_t *contracted_vertices;
     int contracted_vertices_size;
-} pgr_contracted_blob;
+} contracted_rt;
 
 #endif  // INCLUDE_C_TYPES_CONTRACTED_RT_H_

@@ -54,7 +54,7 @@ extern "C" {
         size_t size_contraction_order,
         int64_t max_cycles,
         bool directed,
-        pgr_contracted_blob **return_tuples,
+        contracted_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
