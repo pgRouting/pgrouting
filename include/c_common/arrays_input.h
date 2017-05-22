@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // for ArrayType
 #include "utils/array.h"
-#include <stdlib.h>
+#include <stdint.h>
 
 
 /** @brief enforces the input array to be @b NOT empty */
