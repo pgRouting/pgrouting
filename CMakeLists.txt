@@ -325,8 +325,14 @@ endif(NOT POSTGRESQL_FOUND)
 
 if(NOT POSTGRESQL_VERSION_STRING)
     message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
-endif(NOT POSTGRESQL_VERSION_STRING)
+endif()
+
 string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
+
+# for XbetaY XalphaY XrcY -> X.Y
+string(REGEX REPLACE "^([0-9]+)[beta|alpha|rc].*" "\\1.0" POSTGRESQL_VERSION ${POSTGRESQL_VERSION})
+
+#for X.Y.Z -> XY  Y<10 
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
