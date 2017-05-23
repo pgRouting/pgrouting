@@ -209,6 +209,7 @@ ls ${PGPATHEDB}/share/extension/pgrouting*
 #cp *.dll ${PGPATHEDB}/lib/  #TODO remove this once we fix so the .dlls are created in lib folder
 cp lib/*.dll ${PGPATHEDB}/lib/
 cp sql/pgrouting*.sql ${PGPATHEDB}/share/extension/
+cp sql/*.control ${PGPATHEDB}/share/extension/
 cp lib/common/*.control ${PGPATHEDB}/share/extension/
 
 #---------------
