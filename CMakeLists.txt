@@ -618,10 +618,10 @@ add_subdirectory(sql)
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
-if (WIN32 AND MSVC)
-    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/Release/libpgrouting-2.5.dll")
-else()
+if (UNIX)
     SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/libpgrouting-2.5.so")
+else()
+    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/Release/libpgrouting-2.5.dll")
 endif()
 
 # this will create the commands in the makefile under the install target
