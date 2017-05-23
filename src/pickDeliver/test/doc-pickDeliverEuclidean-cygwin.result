@@ -4,8 +4,8 @@ SET client_min_messages TO NOTICE;
 SET
 --q1
 SELECT * FROM _pgr_pickDeliverEuclidean(
-    \'SELECT * FROM orders\',
-    \'SELECT * from vehicles\'
+    'SELECT * FROM orders ORDER BY ID',
+    'SELECT * from vehicles'
 );
  seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time  
 -----+----------------+------------+-------------+----------+-----------+-------+------------------+------------------+-----------+--------------+------------------
