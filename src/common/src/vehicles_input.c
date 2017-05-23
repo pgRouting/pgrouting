@@ -26,6 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <limits.h>
 
+#if PGSQL_VERSION = 100
+#include <float.h>
+#endif
+
+
 #include "c_types/column_info_t.h"
 
 #include "c_common/debug_macro.h"
