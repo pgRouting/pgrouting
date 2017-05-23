@@ -26,7 +26,6 @@ my $DBNAME = "pgr_test__db__test";
 my $DBUSER;
 my $DBHOST;
 my $DBPORT;
-my $POSTGRES_MIN_VERSION = '9.2';
 
 sub Usage {
     die "Usage: algorithm-tester.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
@@ -53,7 +52,7 @@ print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
 my ($vpg, $postgis_ver, $vpgr, $psql);
 my $alg = '';
 my @testpath = ("doc/", "src/");
-my $clean = 0;
+my $clean;
 my $ignore;
 
 $postgis_ver = '';
@@ -129,6 +128,8 @@ my $connopts = "";
 $connopts .= " -U $DBUSER" if defined $DBUSER;
 $connopts .= " -h $DBHOST" if defined $DBHOST;
 $connopts .= " -p $DBPORT" if defined $DBPORT;
+
+mysystem("dropdb $connopts $DBNAME") if $clean;
 
 %main::tests = ();
 my @cfgs = ();
@@ -377,9 +378,8 @@ sub process_single_test{
 }
 
 sub createTestDB {
-    print "-> createTestDB\n" if $DEBUG;
     my $databaseName = shift;
-    #dropTestDB() if dbExists($databaseName);
+    dropTestDB() if dbExists($databaseName);
 
     my $template;
 
@@ -391,25 +391,18 @@ sub createTestDB {
         print "-- DBSHARE: $dbshare\n";
     }
 
-    createdatabase($dbver, $dbshare, $databaseName);
-
     # first create a database with postgis installed in it
     if (version_greater_eq($dbver, '9.1') &&
         -f "$dbshare/extension/postgis.control") {
-
-=pod
         mysystem("createdb $connopts $databaseName");
         die "ERROR: Failed to create database '$databaseName'!\n"
         unless dbExists($databaseName);
-=cut
         my $encoding = '';
         if ($OS =~ /msys/
             || $OS =~ /MSWin/) {
             $encoding = "SET client_encoding TO 'UTF8';";
         }
         print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
-        print "$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName\n";
-
         mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
 #        print "-- Trying to install pgTap extension \n" if $DEBUG;
 #        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
@@ -501,9 +494,9 @@ sub version_greater_eq {
 
 
 sub getServerVersion {
-    my $version = `$psql $connopts -q -t -c "select version()" postgres`;
-    print "$psql $connopts -q -t -c \"select version()\" postgres\n    # RETURNED: $version\n" if $VERBOSE;
-    if ($version =~ m/PostgreSQL (\d+(\.\d+)?(\.\d+)?)/) {
+    my $v = `$psql $connopts -q -t -c "select version()" postgres`;
+    print "$psql $connopts -q -t -c \"select version()\" postgres\n    # RETURNED: $v\n" if $VERBOSE;
+    if ($v =~ m/PostgreSQL (\d+(\.\d+)?(\.\d+)?)/) {
         print "    # Got ($1)\n" if $VERBOSE;
         return $1;
     }
@@ -575,42 +568,3 @@ sub want_tests {
 }
 
 
-
-sub createdatabase {
-    my $dbver = shift;
-    my $dbshare = shift;
-    my $databaseName = shift;
-    print "-> createdatabase\n" if $DEBUG;
-    die "Unsupported postgreSQL version found $dbver\n"
-    unless version_greater_eq($dbver, $POSTGRES_MIN_VERSION);
-
-    mysystem("dropdb --if-exists $connopts $databaseName") if $clean;
-
-    die "ERROR: Database '$databaseName' already exists!\n"
-    unless not dbExists($databaseName);
-
-
-    mysystem("createdb $connopts $databaseName");
-
-    die "ERROR: Failed to create database '$databaseName'!\n"
-    unless dbExists($databaseName);
-}
-
-
-sub create_postgis_extension {
-    my $databaseName = shift;
-        my $encoding = '';
-        if ($OS =~ /msys/
-            || $OS =~ /MSWin/) {
-            $encoding = "SET client_encoding TO 'UTF8';";
-        }
-        print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
-        print "$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName\n";
-
-        mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
-#        print "-- Trying to install pgTap extension \n" if $DEBUG;
-#        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
-#        if ($? != 0) {
-#            print "Failed: create extension pgtap\n" if $VERBOSE || $DRYRUN;
-#            die;
-    }
