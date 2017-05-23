@@ -403,6 +403,8 @@ sub createTestDB {
             $encoding = "SET client_encoding TO 'UTF8';";
         }
         print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
+        print "$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName\n";
+
         mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
 #        print "-- Trying to install pgTap extension \n" if $DEBUG;
 #        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
