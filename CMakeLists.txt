@@ -618,11 +618,11 @@ add_subdirectory(sql)
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
-if (UNIX)
-    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/libpgrouting-2.5.so")
-else()
-    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/Release/libpgrouting-2.5.dll")
-endif()
+#if (UNIX)
+#    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/libpgrouting-2.5.so")
+#else()
+#    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib" *.dll)
+#endif()
 
 # this will create the commands in the makefile under the install target
 #if(UNIX)
