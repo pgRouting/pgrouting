@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <limits.h>
 
-#if PGSQL_VERSION = 100
+#if defind PGSQL_VERSION & PGSQL_VERSION == 100
 #include <float.h>
 #endif
 
