@@ -24,9 +24,9 @@ if [ $JENKINS_DEBUG -eq 1 ]
 then
     #---------------
     echo
-    echo ***************************
+    echo "***************************"
     echo Recived variables
-    echo ***************************
+    echo "**************************"
     #---------------
     echo "OS_BUILD ${OS_BUILD}"
     echo "PG_VER ${PG_VER}"
@@ -40,9 +40,9 @@ fi
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo Deduced variables
-echo ***************************
+echo "***************************"
 #---------------
 
 export PGUSER=postgres
@@ -119,18 +119,18 @@ cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo "Current contents of PGPATH ${PGPATH}"
-echo ***************************
+echo "***************************"
 #---------------
 ls ${PGPATH}/lib/libpgrouting*
 ls ${PGPATH}/share/extension/pgrouting*
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo "Current contents of PGPATHEDB ${PGPATHEDB}"
-echo ***************************
+echo "***************************"
 #---------------
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
@@ -142,18 +142,18 @@ rm ${PGPATHEDB}/share/extension/pgrouting*
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo "After removing in PGPATH ${PGPATH}"
-echo ***************************
+echo "***************************"
 #---------------
 ls ${PGPATH}/lib/libpgrouting*
 ls ${PGPATH}/share/extension/pgrouting*
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo "After removing in PGPATHEDB ${PGPATHEDB}"
-echo ***************************
+echo "***************************"
 #---------------
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
@@ -171,35 +171,35 @@ cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo make
-echo ***************************
+echo "***************************"
 #---------------
 make 
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo make install
-echo ***************************
+echo "***************************"
 #---------------
 make install
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo "Current contents of PGPATH ${PGPATH}"
-echo ***************************
+echo "***************************"
 #---------------
 ls ${PGPATH}/lib/libpgrouting*
 ls ${PGPATH}/share/extension/pgrouting*
 
 #---------------
 echo
-echo ***************************
+echo "***************************"
 echo "Current contents of PGPATHEDB ${PGPATHEDB}"
 echo Should be empty
-echo ***************************
+echo "***************************"
 #---------------
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
@@ -208,13 +208,15 @@ ls ${PGPATHEDB}/share/extension/pgrouting*
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
 #cp *.dll ${PGPATHEDB}/lib/  #TODO remove this once we fix so the .dlls are created in lib folder
 cp lib/*.dll ${PGPATHEDB}/lib/
-cp lib/*.sql ${PGPATHEDB}/share/extension/
-cp lib/*.control ${PGPATHEDB}/share/extension/
+cp sql/pgrouting*.sql ${PGPATHEDB}/share/extension/
+cp lib/common/*.control ${PGPATHEDB}/share/extension/
 
-echo "After copy in PGPATH ${PGPATH}"
-ls ${PGPATH}/lib/libpgrouting*
-ls ${PGPATH}/share/extension/pgrouting*
-echo "After copyin PGPATHEDB ${PGPATHEDB}"
+#---------------
+echo
+echo "***************************"
+echo "After copying to PGPATHEDB ${PGPATHEDB}"
+echo "***************************"
+#---------------
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
 
