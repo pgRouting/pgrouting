@@ -589,7 +589,6 @@ add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
     ${PGROUTING_OBJECTS})
 
-install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 
 
 if(APPLE)
@@ -618,24 +617,8 @@ add_subdirectory(sql)
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
-#if (UNIX)
-#    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/libpgrouting-2.5.so")
-#else()
-#    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib" *.dll)
-#endif()
 
-# this will create the commands in the makefile under the install target
-#if(UNIX)
-#    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
-#else()
-#    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
-#endif()
-
-message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
-
-install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
-
-
+install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 install(FILES
     ${PgRouting_SQL_FILES_TO_INSTALL}
     DESTINATION "${SHARE_DIR}"
