@@ -352,6 +352,9 @@ endif(WIN32)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DPGSQL_VERSION=${PGSQL_VERSION}")
+message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
+message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
+message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
 message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 
 
@@ -511,6 +514,7 @@ endif()
 # TODO use -Werror when TRSP gets rewritten
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -pedantic -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+
 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
