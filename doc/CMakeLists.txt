@@ -156,6 +156,23 @@ if(WITH_DOC)
                 COMMENT "Generating ${DOC_TARGET} documentation ...")
         endforeach()
 
+        #for internationalization
+        add_custom_command(
+            TARGET doc POST_BUILD
+            COMMAND ${SPHINX_EXECUTABLE} 
+            #-q  # Enable for quiet mode 
+            #-Q  # Enable for even more quiet mode
+            -v  # increase verbosity
+            -b gettext
+            -E  # don't use a saved environment, always read all file
+            -a  # write all files; default is to only write new and changed files
+            -d "${SPHINX_CACHE_DIR}" 
+            -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+            "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+            "${PGROUTING_BINARY_DIR}/doc/gettext/en"
+            COMMENT "Generating gettext documentation ...")
+        #sphinx-intl update-txconfig-resources --pot-dir doc/i18n --transifex-project-name pgrouting
+
         if(BUILD_LATEX)
             if(LATEX_COMPILER)
                 add_custom_command(
