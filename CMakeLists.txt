@@ -351,11 +351,6 @@ endif(WIN32)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DPGSQL_VERSION=${PGSQL_VERSION}")
-message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
-message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
-message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
-message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
-
 
 
 #---------------------------------------------
@@ -523,7 +518,6 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-t
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-set(PGROUTING_DEBUG ON)
 if (PGROUTING_DEBUG)
     message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
     message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
@@ -537,7 +531,6 @@ if (PGROUTING_DEBUG)
     message(STATUS "WIN32=${WIN32}")
     message(STATUS "MSVC=${MSVC}")
 endif()
-set(PGROUTING_DEBUG OFF)
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
