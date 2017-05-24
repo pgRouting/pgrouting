@@ -52,9 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif  // __cplusplus
 
 // For int64_t etc
-#if defined(__MINGW32__) && defined(_MSC_VER)
 #include <stdint.h>
-#endif
 
 
 
