@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-24 14:15-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../pgr_eucledianTSP.rst:13
+msgid "pgr_eucledianTSP"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:16
+msgid "Name"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:18
+msgid "``pgr_eucledianTSP`` - Returns a route that visits all the coordinates pairs exactly once."
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:22
+msgid "Availability: 2.3.0"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:24
+msgid "Synopsis"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:26
+msgid "The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:28
+msgid "Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:30
+msgid "This implementation uses simulated annealing to return the approximate solution when the input is given in the form of coordinates."
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:33
+msgid "Signature Summary"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:48
+msgid "Signatures"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:54
+msgid "Minimal Signature"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:0
+#: ../../pgr_eucledianTSP.rst:0
+msgid "Example"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:63
+msgid "Because the documentation examples are auto generated and tested for non changing results, and the default is to have random execution, the example is wrapping the actual call."
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:75
+msgid "Complete Signature"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:90
+msgid "Example:"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:96
+msgid "Description of the Signatures"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:99
+msgid "Description of the coordinates SQL query"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:102
+#: ../../tsp_return_values.txt:16
+msgid "Column"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:102
+#: ../../tsp_parameters.txt:17
+#: ../../tsp_return_values.txt:16
+msgid "Type"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:102
+#: ../../tsp_parameters.txt:17
+#: ../../tsp_return_values.txt:16
+msgid "Description"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:104
+msgid "**id**"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:104
+#: ../../tsp_parameters.txt:19
+#: ../../tsp_parameters.txt:20
+#: ../../tsp_return_values.txt:19
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:104
+msgid "Identifier of the coordinate. (optional)"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:105
+msgid "**x**"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:105
+#: ../../pgr_eucledianTSP.rst:106
+#: ../../tsp_parameters.txt:21
+#: ../../tsp_parameters.txt:25
+#: ../../tsp_parameters.txt:26
+#: ../../tsp_parameters.txt:27
+#: ../../tsp_return_values.txt:20
+#: ../../tsp_return_values.txt:23
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:105
+msgid "X value of the coordinate."
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:106
+msgid "**y**"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:106
+msgid "Y value of the coordinate."
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:110
+msgid "When the value of **id** is not given then the coordinates will receive an **id** starting from 1, in the order given."
+msgstr ""
+
+#: ../../tsp_parameters.txt:12
+msgid "Description Of the Control parameters"
+msgstr ""
+
+#: ../../tsp_parameters.txt:14
+msgid "The control parameters are optional, and have a default value."
+msgstr ""
+
+#: ../../tsp_parameters.txt:17
+msgid "Parameter"
+msgstr ""
+
+#: ../../tsp_parameters.txt:17
+msgid "Default"
+msgstr ""
+
+#: ../../tsp_parameters.txt:19
+msgid "**start_vid**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:19
+#: ../../tsp_parameters.txt:20
+msgid "`0`"
+msgstr ""
+
+#: ../../tsp_parameters.txt:19
+msgid "The greedy part of the implementation will use this identifier."
+msgstr ""
+
+#: ../../tsp_parameters.txt:20
+msgid "**end_vid**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:20
+msgid "Last visiting vertex before returning to start_vid."
+msgstr ""
+
+#: ../../tsp_parameters.txt:21
+msgid "**max_processing_time**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:21
+msgid "`+infinity`"
+msgstr ""
+
+#: ../../tsp_parameters.txt:21
+msgid "Stop the annealing processing when the value is reached."
+msgstr ""
+
+#: ../../tsp_parameters.txt:22
+msgid "**tries_per_temperature**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:22
+#: ../../tsp_parameters.txt:23
+#: ../../tsp_parameters.txt:24
+#: ../../tsp_return_values.txt:18
+msgid "``INTEGER``"
+msgstr ""
+
+#: ../../tsp_parameters.txt:22
+msgid "`500`"
+msgstr ""
+
+#: ../../tsp_parameters.txt:22
+msgid "Maximum number of times a neighbor(s) is searched in each temperature."
+msgstr ""
+
+#: ../../tsp_parameters.txt:23
+msgid "**max_changes_per_temperature**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:23
+msgid "`60`"
+msgstr ""
+
+#: ../../tsp_parameters.txt:23
+msgid "Maximum number of times the solution is changed in each temperature."
+msgstr ""
+
+#: ../../tsp_parameters.txt:24
+msgid "**max_consecutive_non_changes**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:24
+#: ../../tsp_parameters.txt:25
+msgid "`100`"
+msgstr ""
+
+#: ../../tsp_parameters.txt:24
+msgid "Maximum number of consecutive times the solution is not changed in each temperature."
+msgstr ""
+
+#: ../../tsp_parameters.txt:25
+msgid "**initial_temperature**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:25
+msgid "Starting temperature."
+msgstr ""
+
+#: ../../tsp_parameters.txt:26
+msgid "**final_temperature**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:26
+msgid "`0.1`"
+msgstr ""
+
+#: ../../tsp_parameters.txt:26
+msgid "Ending temperature."
+msgstr ""
+
+#: ../../tsp_parameters.txt:27
+msgid "**cooling_factor**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:27
+msgid "`0.9`"
+msgstr ""
+
+#: ../../tsp_parameters.txt:27
+msgid "Value between between 0 and 1 (not including) used to calculate the next temperature."
+msgstr ""
+
+#: ../../tsp_parameters.txt:28
+msgid "**randomize**"
+msgstr ""
+
+#: ../../tsp_parameters.txt:28
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../tsp_parameters.txt:28
+msgid "`true`"
+msgstr ""
+
+#: ../../tsp_parameters.txt:28
+msgid "Choose the random seed"
+msgstr ""
+
+#: ../../tsp_parameters.txt:30
+msgid "true: Use current time as seed"
+msgstr ""
+
+#: ../../tsp_parameters.txt:31
+msgid "false: Use `1` as seed. Using this value will get the same results with the same data in each execution."
+msgstr ""
+
+#: ../../tsp_return_values.txt:11
+msgid "Description of the return values"
+msgstr ""
+
+#: ../../tsp_return_values.txt:13
+msgid "Returns set of ``(seq, node, cost, agg_cost)``"
+msgstr ""
+
+#: ../../tsp_return_values.txt:18
+msgid "**seq**"
+msgstr ""
+
+#: ../../tsp_return_values.txt:18
+msgid "Row sequence."
+msgstr ""
+
+#: ../../tsp_return_values.txt:19
+msgid "**node**"
+msgstr ""
+
+#: ../../tsp_return_values.txt:19
+msgid "Identifier of the node/coordinate/point."
+msgstr ""
+
+#: ../../tsp_return_values.txt:20
+msgid "**cost**"
+msgstr ""
+
+#: ../../tsp_return_values.txt:21
+msgid "Cost to traverse from the current ``node`` ito the next ``node`` in the path sequence."
+msgstr ""
+
+#: ../../tsp_return_values.txt:21
+msgid "``0`` for the last row in the path sequence."
+msgstr ""
+
+#: ../../tsp_return_values.txt:23
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../tsp_return_values.txt:24
+msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
+msgstr ""
+
+#: ../../tsp_return_values.txt:24
+msgid "``0`` for the first row in the path sequence."
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:126
+msgid "Examples"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:128
+msgid "Skipping the Simulated Annealing & showing some process information"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:136
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:140
+msgid "History"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:141
+msgid "New in version 2.3.0"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:146
+msgid "See Also"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:148
+msgid ":ref:`tsp`"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:149
+msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
+msgstr ""
+
+#: ../../pgr_eucledianTSP.rst:150
+msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
+msgstr ""
+
