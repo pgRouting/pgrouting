@@ -482,24 +482,28 @@ endif()
 #compiler directives
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+# for UNIX & JENKINS
 if(UNIX OR (WIN32 AND NOT MSVC))
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99")
+endif()
+
+CHECK_C_COMPILER_FLAG("-fPIC" C_COMPILER_SUPPORTS_FPIC)
+CHECK_CXX_COMPILER_FLAG("-fPIC" CXX_COMPILER_SUPPORTS_FPIC)
+if(C_COMPILER_SUPPORTS_FPIC)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC ")
+endif()
+if(CXX_COMPILER_SUPPORTS_FPIC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
+endif()
+
+#for appveyor
+if(WIN32 AND MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
 endif()
 
 
 CHECK_C_COMPILER_FLAG("-frounding-math" C_COMPILER_SUPPORTS_ROUNDING_MATH)
 CHECK_CXX_COMPILER_FLAG("-frounding-math" CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
-
-
-if(NOT WIN32)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC ")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
-endif()
-
-if(WIN32 AND MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
-endif()
-
 if(C_COMPILER_SUPPORTS_ROUNDING_MATH)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frounding-math ")
 endif()
@@ -510,6 +514,7 @@ endif()
 # TODO use -Werror when TRSP gets rewritten
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -pedantic -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
