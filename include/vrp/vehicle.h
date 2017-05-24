@@ -98,7 +98,7 @@ class Vehicle : public Identifier, public PD_problem {
 
 
      bool is_phony() const {return id() < 0;}
-     bool speed() const;
+     double speed() const;
 
      /*! @name deque like functions
 
