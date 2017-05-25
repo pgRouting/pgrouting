@@ -81,7 +81,7 @@ if(WITH_DOC)
 
         file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.rst" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
         file(COPY "../tools/testers/sampledata.sql" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/")
-        configure_file(".tx/config" ".tx/config" COPYONLY)
+        configure_file("tx_config" ".tx/config" COPYONLY)
 
 
         #message(STATUS "PGROUTING_BINARY_DIR = ${PGROUTING_BINARY_DIR}")
@@ -173,18 +173,6 @@ if(WITH_DOC)
             "${PGROUTING_BINARY_DIR}/doc/_build/gettext"
             COMMENT "Generating gettext documentation ...")
 
-
-        # exectued from this directory
-        # will add missing pot files to transifex
-        # sphinx-intl must be installed
-        # sphinx-intl update-txconfig-resources --pot-dir _build/gettext --transifex-project-name pgrouting
-
-        # exectued from this directory
-        # set up the locale directory
-        # suppose language documentation es is going to be generated
-        # sphinx-intl update -p _build/gettext -l es
-
-        # tx pull -l es
 
         if(BUILD_LATEX)
             if(LATEX_COMPILER)
