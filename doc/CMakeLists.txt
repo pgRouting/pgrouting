@@ -169,9 +169,20 @@ if(WITH_DOC)
             -d "${SPHINX_CACHE_DIR}" 
             -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
             "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-            "${PGROUTING_BINARY_DIR}/doc/gettext/en"
+            "${PGROUTING_BINARY_DIR}/doc/_build/gettext"
             COMMENT "Generating gettext documentation ...")
-        #sphinx-intl update-txconfig-resources --pot-dir doc/i18n --transifex-project-name pgrouting
+
+        # exectued from this directory
+        # will add missing pot files to transifex
+        # sphinx-intl must be installed
+        # sphinx-intl update-txconfig-resources --pot-dir _build/gettext --transifex-project-name pgrouting
+
+        # exectued from this directory
+        # set up the locale directory
+        # suppose language documentation es is going to be generated
+        # sphinx-intl update -p _build/gettext -l es
+
+        # tx pull -l es
 
         if(BUILD_LATEX)
             if(LATEX_COMPILER)
