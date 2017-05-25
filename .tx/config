@@ -4,7 +4,7 @@ type = PO
 
 [pgrouting.pgr_analyzeGraph]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_analyzeGraph.po
-source_file = build/doc/_build/locale/pgr_analyzeGraph.pot
+source_file = build/doc/_build/gettext/pgr_analyzeGraph.pot
 source_lang = en
 
 [pgrouting.pot--pgr_analyzeGraph]
@@ -689,36 +689,36 @@ source_lang = en
 
 [pgrouting.topology-functions]
 file_filter = locale/<lang>/LC_MESSAGES/topology-functions.po
-source_file = build/doc/_build/locale/topology-functions.pot
+source_file = build/doc/_build/gettext/topology-functions.pot
 source_lang = en
 
 [pgrouting.pgr_johnson]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_johnson.po
-source_file = build/doc/_build/locale/pgr_johnson.pot
+source_file = build/doc/_build/gettext/pgr_johnson.pot
 source_lang = en
 
 [pgrouting.pgr_contractGraph]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_contractGraph.po
-source_file = build/doc/_build/locale/pgr_contractGraph.pot
+source_file = build/doc/_build/gettext/pgr_contractGraph.pot
 source_lang = en
 
 [pgrouting.pgr_createTopology]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_createTopology.po
-source_file = build/doc/_build/locale/pgr_createTopology.pot
+source_file = build/doc/_build/gettext/pgr_createTopology.pot
 source_lang = en
 
 [pgrouting.TSP-family]
 file_filter = locale/<lang>/LC_MESSAGES/TSP-family.po
-source_file = build/doc/_build/locale/TSP-family.pot
+source_file = build/doc/_build/gettext/TSP-family.pot
 source_lang = en
 
 [pgrouting.pgr_maxCardinalityMatch]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_maxCardinalityMatch.po
-source_file = build/doc/_build/locale/pgr_maxCardinalityMatch.pot
+source_file = build/doc/_build/gettext/pgr_maxCardinalityMatch.pot
 source_lang = en
 
 [pgrouting.KSP-category]
 file_filter = locale/<lang>/LC_MESSAGES/KSP-category.po
-source_file = build/doc/_build/locale/KSP-category.pot
+source_file = build/doc/_build/gettext/KSP-category.pot
 source_lang = en
 
