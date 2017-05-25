@@ -81,6 +81,7 @@ if(WITH_DOC)
 
         file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.rst" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
         file(COPY "../tools/testers/sampledata.sql" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/")
+        configure_file(".tx/config" ".tx/config" COPYONLY)
 
 
         #message(STATUS "PGROUTING_BINARY_DIR = ${PGROUTING_BINARY_DIR}")
@@ -171,6 +172,7 @@ if(WITH_DOC)
             "${PGR_DOCUMENTATION_SOURCE_DIR}" 
             "${PGROUTING_BINARY_DIR}/doc/_build/gettext"
             COMMENT "Generating gettext documentation ...")
+
 
         # exectued from this directory
         # will add missing pot files to transifex
