@@ -169,7 +169,7 @@ if(WITH_DOC)
             -d "${SPHINX_CACHE_DIR}" 
             -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
             "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-            "${PGROUTING_BINARY_DIR}/doc/_build/gettext"
+            "${PGROUTING_BINARY_DIR}/doc/_build/locale"
             COMMENT "Generating gettext documentation ...")
 
         # exectued from this directory
