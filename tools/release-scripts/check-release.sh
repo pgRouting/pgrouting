@@ -217,10 +217,10 @@ else
 fi
 
 echo "\`\`\`"
-echo "cat VERSION | grep \"release/$MAYOR.$MINOR\""
+echo "cat VERSION | grep \"$BRANCH\""
 echo "\`\`\`"
-if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
-    echo "FATAL: VERSION branch should be release/$MAYOR.$MINOR"
+if [[ $(cat VERSION | grep "$BRANCH") != *"$BRANCH" ]]; then
+    echo "FATAL: VERSION branch should be $BRANCH"
     exit 1
 else
     echo "  -[x] VERSION file branch: OK"
