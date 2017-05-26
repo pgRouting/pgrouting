@@ -118,7 +118,7 @@ void get_postgres_result(
         G &graph,
         const Identifiers<int64_t> remaining_vertices,
         const std::vector< pgrouting::CH_edge > shortcut_edges,
-        pgr_contracted_blob **return_tuples) {
+        contracted_rt **return_tuples) {
     (*return_tuples) = pgr_alloc(
             remaining_vertices.size() + shortcut_edges.size(),
             (*return_tuples));
@@ -178,7 +178,7 @@ do_pgr_contractGraph(
         size_t size_contraction_order,
         int64_t max_cycles,
         bool directed,
-        pgr_contracted_blob **return_tuples,
+        contracted_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
