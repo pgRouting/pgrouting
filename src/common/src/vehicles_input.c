@@ -25,6 +25,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/vehicles_input.h"
 
 #include <limits.h>
+#if PGSQL_VERSION > 96
+#include <float.h>
+#endif
+
+#if PGSQL_VERSION == 100
+#include <float.h>
+#endif
+
 
 #include "c_types/column_info_t.h"
 

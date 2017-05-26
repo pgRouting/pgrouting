@@ -25,7 +25,8 @@ SELECT
 SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
     $$SELECT * FROM orders WHERE id = 11 $$,
     $$SELECT * FROM vehicles $$,
-    30);
+    max_cycles := 30
+    );
 
 
 PREPARE real_types AS

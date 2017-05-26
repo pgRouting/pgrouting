@@ -42,7 +42,7 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM orders WHERE id = 11$$,  $$SELECT * FROM vehicles ORDER BY id$$, 30)';
+    end_sql = ' FROM orders WHERE id = 11$$,  $$SELECT * FROM vehicles ORDER BY id$$, max_cycles := 30)';
     
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -77,7 +77,7 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM orders WHERE id = 11$$,  $$SELECT * FROM vehicles ORDER BY id$$, 30)';
+    end_sql = ' FROM orders WHERE id = 11$$,  $$SELECT * FROM vehicles ORDER BY id$$, max_cycles := 30)';
     
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -115,7 +115,7 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM  vehicles $$, 30)';
+    end_sql = ' FROM  vehicles $$, max_cycles := 30)';
     
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -152,7 +152,7 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM vehicles $$, 30)';
+    end_sql = ' FROM vehicles $$, max_cycles := 30)';
     
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
