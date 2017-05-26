@@ -87,7 +87,7 @@ Column         Type           Description
 **end_vid**     ``BIGINT``  Identifier of the ending vertex.
 **k**           ``INTEGER`` The desiered number of paths.
 **directed**    ``BOOLEAN`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-**heap_paths**  ``BOOLEAN`` (optional). When ``true`` returns all the paths stored in the process heap. Default is ``false`` which only returns ``k`` pahts.
+**heap_paths**  ``BOOLEAN`` (optional). When ``true`` returns all the paths stored in the process heap. Default is ``false`` which only returns ``k`` paths.
 ============== ============ =================================================
 
 Roughly, if the shortest path has ``N`` edges, the heap will contain about than ``N * k`` paths for small value of ``k`` and ``k > 1``.
