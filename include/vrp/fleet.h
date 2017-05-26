@@ -107,9 +107,9 @@ class Fleet : public PD_problem {
              Vehicle_t,
              double factor,
              std::unique_ptr<Base_node>,
-             Vehicle_node,
+             const Vehicle_node&,
              std::unique_ptr<Base_node>,
-             Vehicle_node);
+             const Vehicle_node&);
 
      template <typename T> std::unique_ptr<Base_node> create_b_start(
              const Vehicle_t &vehicle,

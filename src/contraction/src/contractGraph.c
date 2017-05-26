@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_types/pgr_types.h"
+#include "c_types/contracted_rt.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 #include "./contractGraph_driver.h"
@@ -56,7 +56,7 @@ process(char* edges_sql,
         ArrayType* forbidden,
 
         bool directed,
-        pgr_contracted_blob **result_tuples,
+        contracted_rt **result_tuples,
         size_t *result_count) {
     /*
      * nothing to do
@@ -132,7 +132,7 @@ contractGraph(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    pgr_contracted_blob  *result_tuples = NULL;
+    contracted_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -179,7 +179,7 @@ contractGraph(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_contracted_blob*) funcctx->user_fctx;
+    result_tuples = (contracted_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple   tuple;

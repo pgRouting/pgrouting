@@ -7,7 +7,7 @@ SELECT * INTO results
 FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    30);
+    max_cycles := 30);
 
 DECLARE q1 CURSOR FOR
 SELECT DISTINCT order_id
