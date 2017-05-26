@@ -2,362 +2,362 @@
 host = https://www.transifex.com
 type = PO
 
-[pgr-documentation-v25.pgr_analyzeGraph]
+[pgrouting.pgr_analyzeGraph]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_analyzeGraph.po
 source_file = _build/gettext/pgr_analyzeGraph.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_boykovKolmogorov]
+[pgrouting.pgr_boykovKolmogorov]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_boykovKolmogorov.po
 source_file = _build/gettext/pgr_boykovKolmogorov.pot
 source_lang = en
 
-[pgr-documentation-v25.withPoints-family]
+[pgrouting.withPoints-family]
 file_filter = locale/<lang>/LC_MESSAGES/withPoints-family.po
 source_file = _build/gettext/withPoints-family.pot
 source_lang = en
 
-[pgr-documentation-v25.cost-category]
+[pgrouting.cost-category]
 file_filter = locale/<lang>/LC_MESSAGES/cost-category.po
 source_file = _build/gettext/cost-category.pot
 source_lang = en
 
-[pgr-documentation-v25.costMatrix-category]
+[pgrouting.costMatrix-category]
 file_filter = locale/<lang>/LC_MESSAGES/costMatrix-category.po
 source_file = _build/gettext/costMatrix-category.pot
 source_lang = en
 
-[pgr-documentation-v25.types_index]
+[pgrouting.types_index]
 file_filter = locale/<lang>/LC_MESSAGES/types_index.po
 source_file = _build/gettext/types_index.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_maxFlow]
+[pgrouting.pgr_maxFlow]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_maxFlow.po
 source_file = _build/gettext/pgr_maxFlow.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_withPointsDD]
+[pgrouting.pgr_withPointsDD]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_withPointsDD.po
 source_file = _build/gettext/pgr_withPointsDD.pot
 source_lang = en
 
-[pgr-documentation-v25.geom_result]
+[pgrouting.geom_result]
 file_filter = locale/<lang>/LC_MESSAGES/geom_result.po
 source_file = _build/gettext/geom_result.pot
 source_lang = en
 
-[pgr-documentation-v25.pgRouting-concepts]
+[pgrouting.pgRouting-concepts]
 file_filter = locale/<lang>/LC_MESSAGES/pgRouting-concepts.po
 source_file = _build/gettext/pgRouting-concepts.pot
 source_lang = en
 
-[pgr-documentation-v25.bdDijkstra-family]
+[pgrouting.bdDijkstra-family]
 file_filter = locale/<lang>/LC_MESSAGES/bdDijkstra-family.po
 source_file = _build/gettext/bdDijkstra-family.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_withPointsKSP]
+[pgrouting.pgr_withPointsKSP]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_withPointsKSP.po
 source_file = _build/gettext/pgr_withPointsKSP.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_dijkstraCostMatrix]
+[pgrouting.pgr_dijkstraCostMatrix]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_dijkstraCostMatrix.po
 source_file = _build/gettext/pgr_dijkstraCostMatrix.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_eucledianTSP]
+[pgrouting.pgr_eucledianTSP]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_eucledianTSP.po
 source_file = _build/gettext/pgr_eucledianTSP.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_dijkstraCost]
+[pgrouting.pgr_dijkstraCost]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_dijkstraCost.po
 source_file = _build/gettext/pgr_dijkstraCost.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_aStar]
+[pgrouting.pgr_aStar]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_aStar.po
 source_file = _build/gettext/pgr_aStar.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_drivingDistance]
+[pgrouting.pgr_drivingDistance]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_drivingDistance.po
 source_file = _build/gettext/pgr_drivingDistance.pot
 source_lang = en
 
-[pgr-documentation-v25.aStar-family]
+[pgrouting.aStar-family]
 file_filter = locale/<lang>/LC_MESSAGES/aStar-family.po
 source_file = _build/gettext/aStar-family.pot
 source_lang = en
 
-[pgr-documentation-v25.cost_result]
+[pgrouting.cost_result]
 file_filter = locale/<lang>/LC_MESSAGES/cost_result.po
 source_file = _build/gettext/cost_result.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_withPointsCostMatrix]
+[pgrouting.pgr_withPointsCostMatrix]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_withPointsCostMatrix.po
 source_file = _build/gettext/pgr_withPointsCostMatrix.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_gsoc_vrppdtw]
+[pgrouting.pgr_gsoc_vrppdtw]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_gsoc_vrppdtw.po
 source_file = _build/gettext/pgr_gsoc_vrppdtw.pot
 source_lang = en
 
-[pgr-documentation-v25.index]
+[pgrouting.index]
 file_filter = locale/<lang>/LC_MESSAGES/index.po
 source_file = _build/gettext/index.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_trsp]
+[pgrouting.pgr_trsp]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_trsp.po
 source_file = _build/gettext/pgr_trsp.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_withPoints]
+[pgrouting.pgr_withPoints]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_withPoints.po
 source_file = _build/gettext/pgr_withPoints.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_bdDijkstra]
+[pgrouting.pgr_bdDijkstra]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_bdDijkstra.po
 source_file = _build/gettext/pgr_bdDijkstra.pot
 source_lang = en
 
-[pgr-documentation-v25.routingFunctions]
+[pgrouting.routingFunctions]
 file_filter = locale/<lang>/LC_MESSAGES/routingFunctions.po
 source_file = _build/gettext/routingFunctions.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_vrpOneDepot]
+[pgrouting.pgr_vrpOneDepot]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_vrpOneDepot.po
 source_file = _build/gettext/pgr_vrpOneDepot.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_TSP]
+[pgrouting.pgr_TSP]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_TSP.po
 source_file = _build/gettext/pgr_TSP.pot
 source_lang = en
 
-[pgr-documentation-v25.drivingDistance-category]
+[pgrouting.drivingDistance-category]
 file_filter = locale/<lang>/LC_MESSAGES/drivingDistance-category.po
 source_file = _build/gettext/drivingDistance-category.pot
 source_lang = en
 
-[pgr-documentation-v25.contraction-family]
+[pgrouting.contraction-family]
 file_filter = locale/<lang>/LC_MESSAGES/contraction-family.po
 source_file = _build/gettext/contraction-family.pot
 source_lang = en
 
-[pgr-documentation-v25.bdAstar-family]
+[pgrouting.bdAstar-family]
 file_filter = locale/<lang>/LC_MESSAGES/bdAstar-family.po
 source_file = _build/gettext/bdAstar-family.pot
 source_lang = en
 
-[pgr-documentation-v25.sampledata]
+[pgrouting.sampledata]
 file_filter = locale/<lang>/LC_MESSAGES/sampledata.po
 source_file = _build/gettext/sampledata.pot
 source_lang = en
 
-[pgr-documentation-v25.VRP-category]
+[pgrouting.VRP-category]
 file_filter = locale/<lang>/LC_MESSAGES/VRP-category.po
 source_file = _build/gettext/VRP-category.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_pushRelabel]
+[pgrouting.pgr_pushRelabel]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_pushRelabel.po
 source_file = _build/gettext/pgr_pushRelabel.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_labelGraph]
+[pgrouting.pgr_labelGraph]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_labelGraph.po
 source_file = _build/gettext/pgr_labelGraph.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_pointsAsPolygon]
+[pgrouting.pgr_pointsAsPolygon]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_pointsAsPolygon.po
 source_file = _build/gettext/pgr_pointsAsPolygon.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_nodeNetwork]
+[pgrouting.pgr_nodeNetwork]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_nodeNetwork.po
 source_file = _build/gettext/pgr_nodeNetwork.pot
 source_lang = en
 
-[pgr-documentation-v25.proposed]
+[pgrouting.proposed]
 file_filter = locale/<lang>/LC_MESSAGES/proposed.po
 source_file = _build/gettext/proposed.pot
 source_lang = en
 
-[pgr-documentation-v25.pgRouting-installation]
+[pgrouting.pgRouting-installation]
 file_filter = locale/<lang>/LC_MESSAGES/pgRouting-installation.po
 source_file = _build/gettext/pgRouting-installation.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_alphaShape]
+[pgrouting.pgr_alphaShape]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_alphaShape.po
 source_file = _build/gettext/pgr_alphaShape.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_aStarCost]
+[pgrouting.pgr_aStarCost]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_aStarCost.po
 source_file = _build/gettext/pgr_aStarCost.pot
 source_lang = en
 
-[pgr-documentation-v25.dijkstra-family]
+[pgrouting.dijkstra-family]
 file_filter = locale/<lang>/LC_MESSAGES/dijkstra-family.po
 source_file = _build/gettext/dijkstra-family.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_dijkstra]
+[pgrouting.pgr_dijkstra]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_dijkstra.po
 source_file = _build/gettext/pgr_dijkstra.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_withPointsCost]
+[pgrouting.pgr_withPointsCost]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_withPointsCost.po
 source_file = _build/gettext/pgr_withPointsCost.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_bdDijkstraCostMatrix]
+[pgrouting.pgr_bdDijkstraCostMatrix]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_bdDijkstraCostMatrix.po
 source_file = _build/gettext/pgr_bdDijkstraCostMatrix.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_version]
+[pgrouting.pgr_version]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_version.po
 source_file = _build/gettext/pgr_version.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_pickDeliver]
+[pgrouting.pgr_pickDeliver]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_pickDeliver.po
 source_file = _build/gettext/pgr_pickDeliver.pot
 source_lang = en
 
-[pgr-documentation-v25.pgRouting-introduction]
+[pgrouting.pgRouting-introduction]
 file_filter = locale/<lang>/LC_MESSAGES/pgRouting-introduction.po
 source_file = _build/gettext/pgRouting-introduction.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_floydWarshall]
+[pgrouting.pgr_floydWarshall]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_floydWarshall.po
 source_file = _build/gettext/pgr_floydWarshall.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_aStarCostMatrix]
+[pgrouting.pgr_aStarCostMatrix]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_aStarCostMatrix.po
 source_file = _build/gettext/pgr_aStarCostMatrix.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_edmondsKarp]
+[pgrouting.pgr_edmondsKarp]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_edmondsKarp.po
 source_file = _build/gettext/pgr_edmondsKarp.pot
 source_lang = en
 
-[pgr-documentation-v25.release_notes]
+[pgrouting.release_notes]
 file_filter = locale/<lang>/LC_MESSAGES/release_notes.po
 source_file = _build/gettext/release_notes.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_bdAstarCost]
+[pgrouting.pgr_bdAstarCost]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_bdAstarCost.po
 source_file = _build/gettext/pgr_bdAstarCost.pot
 source_lang = en
 
-[pgr-documentation-v25.support]
+[pgrouting.support]
 file_filter = locale/<lang>/LC_MESSAGES/support.po
 source_file = _build/gettext/support.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_dijkstraVia]
+[pgrouting.pgr_dijkstraVia]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_dijkstraVia.po
 source_file = _build/gettext/pgr_dijkstraVia.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_bdDijkstraCost]
+[pgrouting.pgr_bdDijkstraCost]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_bdDijkstraCost.po
 source_file = _build/gettext/pgr_bdDijkstraCost.pot
 source_lang = en
 
-[pgr-documentation-v25.flow-family]
+[pgrouting.flow-family]
 file_filter = locale/<lang>/LC_MESSAGES/flow-family.po
 source_file = _build/gettext/flow-family.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_edgeDisjointPaths]
+[pgrouting.pgr_edgeDisjointPaths]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_edgeDisjointPaths.po
 source_file = _build/gettext/pgr_edgeDisjointPaths.pot
 source_lang = en
 
-[pgr-documentation-v25.allpairs-family]
+[pgrouting.allpairs-family]
 file_filter = locale/<lang>/LC_MESSAGES/allpairs-family.po
 source_file = _build/gettext/allpairs-family.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_KSP]
+[pgrouting.pgr_KSP]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_KSP.po
 source_file = _build/gettext/pgr_KSP.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_pickDeliverEuclidean]
+[pgrouting.pgr_pickDeliverEuclidean]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_pickDeliverEuclidean.po
 source_file = _build/gettext/pgr_pickDeliverEuclidean.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_analyzeOneWay]
+[pgrouting.pgr_analyzeOneWay]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_analyzeOneWay.po
 source_file = _build/gettext/pgr_analyzeOneWay.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_bdAstar]
+[pgrouting.pgr_bdAstar]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_bdAstar.po
 source_file = _build/gettext/pgr_bdAstar.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_bdAstarCostMatrix]
+[pgrouting.pgr_bdAstarCostMatrix]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_bdAstarCostMatrix.po
 source_file = _build/gettext/pgr_bdAstarCostMatrix.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_createVerticesTable]
+[pgrouting.pgr_createVerticesTable]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_createVerticesTable.po
 source_file = _build/gettext/pgr_createVerticesTable.pot
 source_lang = en
 
-[pgr-documentation-v25.topology-functions]
+[pgrouting.topology-functions]
 file_filter = locale/<lang>/LC_MESSAGES/topology-functions.po
 source_file = _build/gettext/topology-functions.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_johnson]
+[pgrouting.pgr_johnson]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_johnson.po
 source_file = _build/gettext/pgr_johnson.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_contractGraph]
+[pgrouting.pgr_contractGraph]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_contractGraph.po
 source_file = _build/gettext/pgr_contractGraph.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_createTopology]
+[pgrouting.pgr_createTopology]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_createTopology.po
 source_file = _build/gettext/pgr_createTopology.pot
 source_lang = en
 
-[pgr-documentation-v25.TSP-family]
+[pgrouting.TSP-family]
 file_filter = locale/<lang>/LC_MESSAGES/TSP-family.po
 source_file = _build/gettext/TSP-family.pot
 source_lang = en
 
-[pgr-documentation-v25.pgr_maxCardinalityMatch]
+[pgrouting.pgr_maxCardinalityMatch]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_maxCardinalityMatch.po
 source_file = _build/gettext/pgr_maxCardinalityMatch.pot
 source_lang = en
 
-[pgr-documentation-v25.KSP-category]
+[pgrouting.KSP-category]
 file_filter = locale/<lang>/LC_MESSAGES/KSP-category.po
 source_file = _build/gettext/KSP-category.pot
 source_lang = en
