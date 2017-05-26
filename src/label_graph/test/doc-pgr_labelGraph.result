@@ -11,12 +11,12 @@ SELECT pgr_labelGraph('edge_table', 'id', 'source', 'target', 'subgraph');
  OK
 (1 row)
 
-SELECT subgraph, count(*) FROM edge_table group by subgraph;
- subgraph | count 
-----------+-------
-        1 |    16
-        3 |     1
-        2 |     1
+SELECT DISTINCT subgraph FROM edge_table ORDER BY subgraph;
+ subgraph 
+----------
+        1
+        2
+        3
 (3 rows)
 
 --q2

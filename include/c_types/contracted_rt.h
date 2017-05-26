@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: pgr_types.h
+File: contracted_rt.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2017 pgRouting developers
+Mail: project@pgrouting.org
 
 ------
 
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_TYPES_H_
-#define INCLUDE_C_TYPES_PGR_TYPES_H_
+#ifndef INCLUDE_C_TYPES_CONTRACTED_RT_H_
+#define INCLUDE_C_TYPES_CONTRACTED_RT_H_
 #pragma once
 
 
@@ -55,22 +55,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdint.h>
 
 
-typedef struct {
-    int64_t vertex_id;
-    int64_t edge_id;
-    double cost;
-} path_element_t;
-
-
-
-typedef struct {
-    int seq;
-    int64_t source;
-    int64_t edge;
-    double cost;
-} pgr_path_t;
-
-
 /**************************************************************************
  * return type for contraction
  * ***********************************************************************/
@@ -82,6 +66,6 @@ typedef struct {
     double cost;
     int64_t *contracted_vertices;
     int contracted_vertices_size;
-} pgr_contracted_blob;
+} contracted_rt;
 
-#endif  // INCLUDE_C_TYPES_PGR_TYPES_H_
+#endif  // INCLUDE_C_TYPES_CONTRACTED_RT_H_

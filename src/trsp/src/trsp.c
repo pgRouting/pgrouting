@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "catalog/pg_type.h"
 #include "c_common/debug_macro.h"
-#include "c_types/pgr_types.h"
 
 
 #if 0

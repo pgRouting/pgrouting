@@ -113,21 +113,15 @@ Fleet::add_vehicle(
         Vehicle_t vehicle,
         double factor,
         std::unique_ptr<Base_node> b_start,
-        Vehicle_node starting_site,
+        const Vehicle_node &starting_site,
         std::unique_ptr<Base_node> b_end,
-        Vehicle_node ending_site) {
+        const Vehicle_node &ending_site) {
+    pgassert(starting_site.is_start() && ending_site.is_end());
+
     problem->add_base_node(std::move(b_start));
     problem->add_base_node(std::move(b_end));
     problem->add_node(starting_site);
     problem->add_node(ending_site);
-
-    if (!(starting_site.is_start()
-                && ending_site.is_end())) {
-        msg.error << "Illegal values found on vehicle";
-        msg.log << "id: " << vehicle.id;
-        pgassert(!msg.get_error().empty());
-    }
-    pgassert(starting_site.is_start() && ending_site.is_end());
 
     for (int i = 0; i < vehicle.cant_v; ++i) {
         m_trucks.push_back(Vehicle_pickDeliver(
@@ -211,6 +205,16 @@ Fleet::build_fleet(
             auto ending_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
+            if (!(starting_site.is_start()
+                        && ending_site.is_end())) {
+                msg.clear();
+                msg.error << "Illegal values found on vehicle";
+                msg.log << "id: " << vehicle.id;
+                pgassert(!msg.get_error().empty());
+                return false;
+            }
+
+            pgassertwm(starting_site.is_start() && ending_site.is_end(), msg.get_error().c_str());
             add_vehicle(vehicle, factor,
                     std::move(b_start), starting_site,
                     std::move(b_end), ending_site);
@@ -226,6 +230,15 @@ Fleet::build_fleet(
             auto ending_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
+            if (!(starting_site.is_start()
+                        && ending_site.is_end())) {
+                msg.clear();
+                msg.error << "Illegal values found on vehicle";
+                msg.log << "id: " << vehicle.id;
+                pgassert(!msg.get_error().empty());
+                return false;
+            }
+            pgassert(starting_site.is_start() && ending_site.is_end());
             add_vehicle(vehicle, factor,
                     std::move(b_start), starting_site,
                     std::move(b_end), ending_site);

@@ -26,8 +26,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_ARRAYS_INPUT_H_
 #pragma once
 
-#include "c_types/pgr_types.h"
+
+// first file to include
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
+
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// for ArrayType
 #include "utils/array.h"
+#include <stdint.h>
 
 
 /** @brief enforces the input array to be @b NOT empty */

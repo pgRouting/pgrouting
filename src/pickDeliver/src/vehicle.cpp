@@ -505,7 +505,7 @@ Vehicle::tau() const {
     return log.str();
 }
 
-bool
+double
 Vehicle::speed() const {
     return m_speed/m_factor;
 }
