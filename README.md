@@ -6,8 +6,8 @@
 
 ### Branches
 
-* The *master* branch has the latest minor release.
-* The *develop* branch has the next minor release.
+* The *master* branch has the latest minor release. (2.4.0)
+* The *develop* branch has the next minor release. (2.5.0-dev)
 
 For the complete list of releases go to:
 https://github.com/pgRouting/pgrouting/releases
@@ -41,7 +41,6 @@ https://github.com/pgRouting/pgrouting/releases
         <td><img src="http://winnie.postgis.net:1500/buildStatus/icon?job=pgRouting_matrix_branch_develop" alt="Jenkins Status"/></td>
 		<td></td>
 	</tr>
-
 	<tr>
 		<td>gh-pages</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=gh-pages" alt="Build Status"/></td>
@@ -96,7 +95,7 @@ Family of functions include:
 
 Building reqirements
 --------------------
-* perl 
+* Perl 
 * C and C++ compilers
   * GNU >= 4.6
   * MSVC >= 18.0
@@ -126,7 +125,7 @@ For MinGW on Windows
 	make
 	make install
 
-Also pre-built Windows binaries can be downloaded from http://.postgis.net/windows_downloads
+Also pre-built Windows binaries can be downloaded from https://postgis.net/windows_downloads
 
 For Linux
 	

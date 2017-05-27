@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_funnyDijkstra(
+SELECT * FROM pgr_MY_FUNCTION_NAME(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3
 );
@@ -18,7 +18,7 @@ SELECT * FROM pgr_funnyDijkstra(
 (6 rows)
 
 -- q2
-SELECT * FROM pgr_funnyDijkstra(
+SELECT * FROM pgr_MY_FUNCTION_NAME(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
     FALSE

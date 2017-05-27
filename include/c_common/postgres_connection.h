@@ -31,6 +31,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-pedantic"
 #endif
 
+#ifdef __clang__
+#pragma clang diagnostic ignored "-pedantic"
+#endif
+
 #include <postgres.h>
 
 
@@ -38,6 +42,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wsign-conversion"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#ifdef __clang__
+#pragma clang diagnostic ignored "-Wsign-conversion"
+#pragma clang diagnostic ignored "-Wunused-parameter"
 #endif
 
 #include "executor/spi.h"
@@ -48,12 +57,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic pop
 #endif
 
+#ifdef __clang__
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop
+#endif
+
 #include "utils/builtins.h"  // for text_to_cstring
 
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
 
+#ifdef __clang__
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#endif
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wunused-parameter"
@@ -64,6 +82,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
+#endif
+
+#ifdef __clang__
+#pragma clang diagnostic pop
 #endif
 
 
