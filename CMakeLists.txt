@@ -325,8 +325,14 @@ endif(NOT POSTGRESQL_FOUND)
 
 if(NOT POSTGRESQL_VERSION_STRING)
     message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
-endif(NOT POSTGRESQL_VERSION_STRING)
+endif()
+
 string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
+
+# for XbetaY XalphaY XrcY -> X.Y
+string(REGEX REPLACE "^([0-9]+)[beta|alpha|rc].*" "\\1.0" POSTGRESQL_VERSION ${POSTGRESQL_VERSION})
+
+#for X.Y.Z -> XY  Y<10 
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
@@ -343,9 +349,8 @@ if(WIN32)
 endif(WIN32)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DPGSQL_VERSION=${PGSQL_VERSION}")
-message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
-
 
 
 #---------------------------------------------
@@ -476,24 +481,28 @@ endif()
 #compiler directives
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+# for UNIX & JENKINS
 if(UNIX OR (WIN32 AND NOT MSVC))
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99")
 endif()
 
-
-CHECK_C_COMPILER_FLAG("-frounding-math" C_COMPILER_SUPPORTS_ROUNDING_MATH)
-CHECK_CXX_COMPILER_FLAG("-frounding-math" CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
-
-
 if(NOT WIN32)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC ")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
+    CHECK_C_COMPILER_FLAG("-fPIC" C_COMPILER_SUPPORTS_FPIC)
+    CHECK_CXX_COMPILER_FLAG("-fPIC" CXX_COMPILER_SUPPORTS_FPIC)
+    if(C_COMPILER_SUPPORTS_FPIC)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC ")
+    endif()
+    if(CXX_COMPILER_SUPPORTS_FPIC)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
+    endif()
 endif()
 
 if(WIN32 AND MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
 endif()
 
+CHECK_C_COMPILER_FLAG("-frounding-math" C_COMPILER_SUPPORTS_ROUNDING_MATH)
+CHECK_CXX_COMPILER_FLAG("-frounding-math" CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
 if(C_COMPILER_SUPPORTS_ROUNDING_MATH)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frounding-math ")
 endif()
@@ -504,6 +513,8 @@ endif()
 # TODO use -Werror when TRSP gets rewritten
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -pedantic -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+
+
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -583,7 +594,6 @@ add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
     ${PGROUTING_OBJECTS})
 
-install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 
 
 if(APPLE)
@@ -612,24 +622,8 @@ add_subdirectory(sql)
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
-if (WIN32 AND MSVC)
-    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/Release/libpgrouting-2.5.dll")
-else()
-    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/libpgrouting-2.5.so")
-endif()
 
-# this will create the commands in the makefile under the install target
-#if(UNIX)
-#    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
-#else()
-#    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
-#endif()
-
-message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
-
-install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
-
-
+install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 install(FILES
     ${PgRouting_SQL_FILES_TO_INSTALL}
     DESTINATION "${SHARE_DIR}"
