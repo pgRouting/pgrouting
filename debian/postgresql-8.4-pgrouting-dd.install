@@ -1,0 +1,3 @@
+debian/tmp/usr/lib/postgresql/8.4/lib/librouting_dd.so
+debian/tmp/usr/share/postlbs/routing_dd.sql
+debian/tmp/usr/share/postlbs/routing_dd_wrappers.sql

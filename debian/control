@@ -1,0 +1,52 @@
+Source: pgrouting
+Section: misc
+Priority: optional
+Maintainer: Daniel Kastl <daniel@georepublic.de>
+Build-Depends: debhelper (>= 7), postgresql-server-dev-8.4, cmake, cdbs, libboost-graph-dev, libcgal-dev, gaul-devel
+Standards-Version: 3.8.4
+Homepage: http://www.pgrouting.org
+
+Package: postgresql-8.4-pgrouting
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, postgresql-8.4-postgis
+Suggests: postgresql-8.4-pgrouting-dd, postgresql-8.4-pgrouting-tsp
+Description: routing functionality support for PostgreSQL 8.4
+ pgRouting is part of PostLBS, which provides core tools for Location Based Services (LBS) 
+ as Open Source Software (OSS). Its tools are similar to those found on proprietary software.
+ pgRouting adds support for some routing algorithm to the PostgreSQL 
+ object-relational database. 
+ pgRouting core includes three types of shortest path implementation. And combination with 
+ PostGIS provides more useful functionnality. 
+ .
+ This package contains pgRouting core functionality.
+ This package supports PostgreSQL 8.4.
+
+Package: postgresql-8.4-pgrouting-tsp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, postgresql-8.4-pgrouting, gaul-devel
+Suggests: postgresql-8.4-pgrouting-dd
+Description: routing functionality support for PostgreSQL 8.4
+ pgRouting is part of PostLBS, which provides core tools for Location Based Services (LBS) 
+ as Open Source Software (OSS). Its tools are similar to those found on proprietary software.
+ pgRouting adds support for some routing algorithm to the PostgreSQL 
+ object-relational database. 
+ pgRouting core includes three types of shortest path implementation. And combination with 
+ PostGIS provides more useful functionnality. 
+ .
+ This package contains pgRouting extra - Traveling Salesperson Problem solver.
+ This package supports PostgreSQL 8.4.
+
+Package: postgresql-8.4-pgrouting-dd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, postgresql-8.4-pgrouting, libcgal4
+Suggests: postgresql-8.4-pgrouting-tsp
+Description: routing functionality support for PostgreSQL 8.4
+ pgRouting is part of PostLBS, which provides core tools for Location Based Services (LBS) 
+ as Open Source Software (OSS). Its tools are similar to those found on proprietary software.
+ pgRouting adds support for some routing algorithm to the PostgreSQL 
+ object-relational database. 
+ pgRouting core includes three types of shortest path implementation. And combination with 
+ PostGIS provides more useful functionnality. 
+ .
+ This package contains pgRouting extra - Driving Distance calculation.
+ This package supports PostgreSQL 8.4.
