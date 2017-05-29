@@ -216,8 +216,8 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
+                PG_GETARG_INT64(3),
 #if 0
                 /*
                  *  handling arrays example
@@ -226,8 +226,8 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
 #endif
-                PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
+                PG_GETARG_BOOL(5),
                 &result_tuples,
                 &result_count);
 
