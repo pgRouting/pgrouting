@@ -21,6 +21,9 @@ option(BUILD_MAN
 option(DOC_USE_BOOTSTRAP
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
+option(BUILD_LOCALE
+    "Set ON|OFF (default=ON) to build Translated Documentation" OFF)
+
 
 if(NOT WITH_DOC)
     return()
@@ -105,7 +108,6 @@ configure_file("tx_config" ".tx/config" COPYONLY)
 #message(STATUS "PGROUTING_BINARY_DIR = ${PGROUTING_BINARY_DIR}")
 
 # Sphinx cache with pickled ReST documents
-set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
 
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${PGR_DOCUMENTATION_BUILD_DIR}")
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${PGR_DOCUMENTATION_BUILD_DIR}")
@@ -122,7 +124,6 @@ configure_file(
 # Add documentation to targets
 set(DOC_TARGETS html)
 
-#option(BUILD_MAN "Create a target for building man pages." ON)
 
 if (BUILD_MAN)
     if (SPHINX_VERSION VERSION_LESS 1.0)
@@ -146,9 +147,10 @@ if (BUILD_LATEX)
 endif()
 
 # The doc target will build all documentation targets.
-add_custom_target(doc #ALL
+add_custom_target(doc 
     COMMENT "Building documentation with Sphinx")
-# add_custom_target(doc)
+add_custom_target(html 
+    COMMENT "Building html documentation with Sphinx")
 
 # Localization output directory
 #set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
@@ -160,37 +162,38 @@ configure_file(
 
 foreach (DOC_TARGET ${DOC_TARGETS})
     add_custom_command(
-        TARGET doc POST_BUILD
-        COMMAND ${SPHINX_EXECUTABLE} 
-        # -q  # Enable for quiet mode 
-        # -Q  # Enable for even more quiet mode
-        # -v  # increase verbosity
-        -b ${DOC_TARGET}
-        #-E  # don't use a saved environment, always read all file
-        #-a  # write all files; default is to only write new and changed files
-        -d "${SPHINX_CACHE_DIR}" 
-        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${PGR_DOCUMENTATION_BUILD_DIR}/${DOC_TARGET}/en"
-        COMMENT "Generating ${DOC_TARGET} documentation ...")
-endforeach()
-
-#for internationalization
-if (false)
-    add_custom_command(
-        TARGET doc POST_BUILD
+        TARGET ${DOC_TARGET} POST_BUILD
         COMMAND ${SPHINX_EXECUTABLE} 
         #-q  # Enable for quiet mode 
         #-Q  # Enable for even more quiet mode
-        -v  # increase verbosity
-        -b gettext
-        -E  # don't use a saved environment, always read all file
-        -a  # write all files; default is to only write new and changed files
-        -d "${SPHINX_CACHE_DIR}" 
+        #-v  # increase verbosity
+        #-E  # don't use a saved environment, always read all file
+        #-a  # write all files; default is to only write new and changed files
+        -b ${DOC_TARGET}
         -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
         "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "$${PGR_DOCUMENTATION_BUILD_DIR}/gettext"
+        "${PGR_DOCUMENTATION_SOURCE_DIR}/${DOC_TARGET}/en"
+        COMMENT "Generating ${DOC_TARGET} documentation ...")
+    add_dependencies(doc ${DOC_TARGETS})
+endforeach()
+
+if (BUILD_LOCALE)
+    add_custom_target(locale 
+        COMMENT "Building documentation with Sphinx")
+    add_custom_command(
+        TARGET locale POST_BUILD
+        COMMAND ${SPHINX_EXECUTABLE} 
+        #-q  # Enable for quiet mode 
+        #-Q  # Enable for even more quiet mode
+        #-v  # increase verbosity
+        #-E  # don't use a saved environment, always read all file
+        #-a  # write all files; default is to only write new and changed files
+        -b gettext
+        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+        "${PGR_DOCUMENTATION_BUILD_DIR}/gettext"
         COMMENT "Generating gettext documentation ...")
+    add_dependencies(doc locale)
 endif()
 
 
@@ -209,6 +212,7 @@ if(BUILD_LATEX)
         list(APPEND DOC_TARGETS pdf)
     endif()
 endif()
+
 
 message("-- Building documentation enabled for: ${DOC_TARGETS}")
 
