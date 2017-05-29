@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 /**
- *  postgres_connection.h 
+ *  postgres_connection.h
  *
  *  - should allways be first in the C code
  */
@@ -215,6 +215,7 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
 #if 0
