@@ -236,5 +236,6 @@ SELECT * FROM _pgr_pickDeliver(
 (127 rows)
 
 --q2
+--q3
 ROLLBACK;
 ROLLBACK

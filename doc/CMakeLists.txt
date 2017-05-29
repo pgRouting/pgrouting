@@ -98,13 +98,7 @@ add_subdirectory("withPoints")
 #add_subdirectory("static")
 #add_subdirectory("themes")
 
-file(GLOB  PGR_DOCUMENTATION_SOURCES "../src/*/doc/*")
-foreach (file ${PGR_DOCUMENTATION_SOURCES})
-    #message("${file}")
-    file(COPY "${file}" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
-endforeach()
-
-file(COPY "../tools/testers/sampledata.sql" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/")
+configure_file("../tools/testers/sampledata.sql" "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/sampledata.sql")
 configure_file("tx_config" ".tx/config" COPYONLY)
 
 
