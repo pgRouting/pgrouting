@@ -71,6 +71,7 @@ message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
 # ---------- TO FLATTEN THE DOCUMENTATION ---------
 
 add_subdirectory("src")
+add_subdirectory("images")
 
 file(GLOB  PGR_DOCUMENTATION_SOURCES "../src/*/doc/*")
 foreach (file ${PGR_DOCUMENTATION_SOURCES})
