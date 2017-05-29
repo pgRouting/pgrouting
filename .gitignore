@@ -3,6 +3,7 @@ build
 fix_typos
 code_linter
 
+run.sh
 .DS_Store
 .vagrant
 tools/vagrant/packaging.sh
