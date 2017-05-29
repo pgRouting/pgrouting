@@ -190,15 +190,56 @@ special characteristics of the problem.
 
 A recommendation is to play with the values and see what fits to the particular data.
 
+.. tsp control parameters begin
 
-..
-    description of control parameters
+Description Of the Control parameters
+.....................................................................
+
+The control parameters are optional, and have a default value.
+
+=============================== ===========  ============  =================================================
+Parameter                       Type         Default       Description
+=============================== ===========  ============  =================================================
+**start_vid**                   ``BIGINT``    `0`          The greedy part of the implementation will use this identifier.
+**end_vid**                     ``BIGINT``    `0`          Last visiting vertex before returning to start_vid.
+**max_processing_time**         ``FLOAT``    `+infinity`   Stop the annealing processing when the value is reached.
+**tries_per_temperature**       ``INTEGER``  `500`         Maximum number of times a neighbor(s) is searched in each temperature.
+**max_changes_per_temperature** ``INTEGER``  `60`          Maximum number of times the solution is changed in each temperature.
+**max_consecutive_non_changes** ``INTEGER``  `100`         Maximum number of consecutive times the solution is not changed in each temperature.
+**initial_temperature**         ``FLOAT``    `100`         Starting temperature.
+**final_temperature**           ``FLOAT``    `0.1`         Ending temperature.
+**cooling_factor**              ``FLOAT``    `0.9`         Value between between 0 and 1 (not including) used to calculate the next temperature.
+**randomize**                   ``BOOLEAN``  `true`        Choose the random seed
+
+                                                           - true: Use current time as seed
+                                                           - false: Use `1` as seed. Using this value will get the same results with the same data in each execution.
+
+=============================== ===========  ============  =================================================
 
 
-.. include:: tsp_parameters.txt
+.. tsp control parameters end
 
+.. tsp return values begin
 
+Description of the return columns
+...............................................................................
 
+Returns set of ``(seq, node, cost, agg_cost)``
+
+============= =========== =================================================
+Column           Type              Description
+============= =========== =================================================
+**seq**       ``INTEGER`` Row sequence.
+**node**      ``BIGINT``  Identifier of the node/coordinate/point.
+**cost**      ``FLOAT``   Cost to traverse from the current ``node`` ito the next ``node`` in the path sequence.
+                            - ``0`` for the last row in the path sequence.
+
+**agg_cost**  ``FLOAT``   Aggregate cost from the ``node`` at ``seq = 1`` to the current node.
+                            - ``0`` for the first row in the path sequence.
+
+============= =========== =================================================
+
+.. tsp return values end
 
 See Also
 .........................

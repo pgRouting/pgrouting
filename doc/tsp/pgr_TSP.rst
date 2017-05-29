@@ -127,16 +127,17 @@ To generate a symmetric matrix
 If using directed := true, the resulting non symmetric matrix must be converted to
 symmetric by fixing the non symmetric values according to your application needs.
 
-..
-    description of the configuration parameters
 
-.. include:: tsp_parameters.txt
+.. literalinclude:: TSP-family.rst
+   :start-after: tsp control parameters begin
+   :end-before: tsp control parameters end
 
 
-..
-    description of the return values
+.. literalinclude:: TSP-family.rst
+   :start-after: tsp return values begin
+   :end-before: tsp return values end
 
-.. include:: tsp_return_values.txt
+
 
 
 

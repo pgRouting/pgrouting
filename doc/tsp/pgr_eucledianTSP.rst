@@ -109,16 +109,15 @@ Column  Type              Description
 
 When the value of **id** is not given then the coordinates will receive an **id** starting from 1, in the order given.
 
-..
-    description of the configuration parameters
 
-.. include:: tsp_parameters.txt
+.. literalinclude:: TSP-family.rst
+   :start-after: tsp control parameters begin
+   :end-before: tsp control parameters end
 
 
-..
-    description of the return values
-
-.. include:: tsp_return_values.txt
+.. literalinclude:: TSP-family.rst
+   :start-after: tsp return values begin
+   :end-before: tsp return values end
 
 
 
