@@ -67,6 +67,7 @@ static
 void
 process(
         char* edges_sql,
+        char *restrictions_sql,
         int64_t start_vid,
         int64_t end_vid,
 #if 0
