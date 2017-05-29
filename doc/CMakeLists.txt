@@ -73,6 +73,8 @@ message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
 add_subdirectory("src")
 add_subdirectory("images")
 
+add_subdirectory("allpairs")
+
 file(GLOB  PGR_DOCUMENTATION_SOURCES "../src/*/doc/*")
 foreach (file ${PGR_DOCUMENTATION_SOURCES})
     #message("${file}")
