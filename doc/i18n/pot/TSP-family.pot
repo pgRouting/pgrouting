@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-25 12:08-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -240,203 +240,261 @@ msgstr ""
 msgid "A recommendation is to play with the values and see what fits to the particular data."
 msgstr ""
 
-#: ../../tsp_parameters.txt:12
+#: ../../TSP-family.rst:196
 msgid "Description Of the Control parameters"
 msgstr ""
 
-#: ../../tsp_parameters.txt:14
+#: ../../TSP-family.rst:198
 msgid "The control parameters are optional, and have a default value."
 msgstr ""
 
-#: ../../tsp_parameters.txt:17
+#: ../../TSP-family.rst:201
 msgid "Parameter"
 msgstr ""
 
-#: ../../tsp_parameters.txt:17
+#: ../../TSP-family.rst:201
+#: ../../TSP-family.rst:230
 msgid "Type"
 msgstr ""
 
-#: ../../tsp_parameters.txt:17
+#: ../../TSP-family.rst:201
 msgid "Default"
 msgstr ""
 
-#: ../../tsp_parameters.txt:17
+#: ../../TSP-family.rst:201
+#: ../../TSP-family.rst:230
 msgid "Description"
 msgstr ""
 
-#: ../../tsp_parameters.txt:19
+#: ../../TSP-family.rst:203
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:19
-#: ../../tsp_parameters.txt:20
+#: ../../TSP-family.rst:203
+#: ../../TSP-family.rst:204
+#: ../../TSP-family.rst:233
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../tsp_parameters.txt:19
-#: ../../tsp_parameters.txt:20
+#: ../../TSP-family.rst:203
+#: ../../TSP-family.rst:204
 msgid "`0`"
 msgstr ""
 
-#: ../../tsp_parameters.txt:19
+#: ../../TSP-family.rst:203
 msgid "The greedy part of the implementation will use this identifier."
 msgstr ""
 
-#: ../../tsp_parameters.txt:20
+#: ../../TSP-family.rst:204
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:20
+#: ../../TSP-family.rst:204
 msgid "Last visiting vertex before returning to start_vid."
 msgstr ""
 
-#: ../../tsp_parameters.txt:21
+#: ../../TSP-family.rst:205
 msgid "**max_processing_time**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:21
-#: ../../tsp_parameters.txt:25
-#: ../../tsp_parameters.txt:26
-#: ../../tsp_parameters.txt:27
+#: ../../TSP-family.rst:205
+#: ../../TSP-family.rst:209
+#: ../../TSP-family.rst:210
+#: ../../TSP-family.rst:211
+#: ../../TSP-family.rst:234
+#: ../../TSP-family.rst:237
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../tsp_parameters.txt:21
+#: ../../TSP-family.rst:205
 msgid "`+infinity`"
 msgstr ""
 
-#: ../../tsp_parameters.txt:21
+#: ../../TSP-family.rst:205
 msgid "Stop the annealing processing when the value is reached."
 msgstr ""
 
-#: ../../tsp_parameters.txt:22
+#: ../../TSP-family.rst:206
 msgid "**tries_per_temperature**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:22
-#: ../../tsp_parameters.txt:23
-#: ../../tsp_parameters.txt:24
+#: ../../TSP-family.rst:206
+#: ../../TSP-family.rst:207
+#: ../../TSP-family.rst:208
+#: ../../TSP-family.rst:232
 msgid "``INTEGER``"
 msgstr ""
 
-#: ../../tsp_parameters.txt:22
+#: ../../TSP-family.rst:206
 msgid "`500`"
 msgstr ""
 
-#: ../../tsp_parameters.txt:22
+#: ../../TSP-family.rst:206
 msgid "Maximum number of times a neighbor(s) is searched in each temperature."
 msgstr ""
 
-#: ../../tsp_parameters.txt:23
+#: ../../TSP-family.rst:207
 msgid "**max_changes_per_temperature**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:23
+#: ../../TSP-family.rst:207
 msgid "`60`"
 msgstr ""
 
-#: ../../tsp_parameters.txt:23
+#: ../../TSP-family.rst:207
 msgid "Maximum number of times the solution is changed in each temperature."
 msgstr ""
 
-#: ../../tsp_parameters.txt:24
+#: ../../TSP-family.rst:208
 msgid "**max_consecutive_non_changes**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:24
-#: ../../tsp_parameters.txt:25
+#: ../../TSP-family.rst:208
+#: ../../TSP-family.rst:209
 msgid "`100`"
 msgstr ""
 
-#: ../../tsp_parameters.txt:24
+#: ../../TSP-family.rst:208
 msgid "Maximum number of consecutive times the solution is not changed in each temperature."
 msgstr ""
 
-#: ../../tsp_parameters.txt:25
+#: ../../TSP-family.rst:209
 msgid "**initial_temperature**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:25
+#: ../../TSP-family.rst:209
 msgid "Starting temperature."
 msgstr ""
 
-#: ../../tsp_parameters.txt:26
+#: ../../TSP-family.rst:210
 msgid "**final_temperature**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:26
+#: ../../TSP-family.rst:210
 msgid "`0.1`"
 msgstr ""
 
-#: ../../tsp_parameters.txt:26
+#: ../../TSP-family.rst:210
 msgid "Ending temperature."
 msgstr ""
 
-#: ../../tsp_parameters.txt:27
+#: ../../TSP-family.rst:211
 msgid "**cooling_factor**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:27
+#: ../../TSP-family.rst:211
 msgid "`0.9`"
 msgstr ""
 
-#: ../../tsp_parameters.txt:27
+#: ../../TSP-family.rst:211
 msgid "Value between between 0 and 1 (not including) used to calculate the next temperature."
 msgstr ""
 
-#: ../../tsp_parameters.txt:28
+#: ../../TSP-family.rst:212
 msgid "**randomize**"
 msgstr ""
 
-#: ../../tsp_parameters.txt:28
+#: ../../TSP-family.rst:212
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../tsp_parameters.txt:28
+#: ../../TSP-family.rst:212
 msgid "`true`"
 msgstr ""
 
-#: ../../tsp_parameters.txt:28
+#: ../../TSP-family.rst:212
 msgid "Choose the random seed"
 msgstr ""
 
-#: ../../tsp_parameters.txt:30
+#: ../../TSP-family.rst:214
 msgid "true: Use current time as seed"
 msgstr ""
 
-#: ../../tsp_parameters.txt:31
+#: ../../TSP-family.rst:215
 msgid "false: Use `1` as seed. Using this value will get the same results with the same data in each execution."
 msgstr ""
 
-#: ../../TSP-family.rst:204
+#: ../../TSP-family.rst:225
+msgid "Description of the return columns"
+msgstr ""
+
+#: ../../TSP-family.rst:227
+msgid "Returns set of ``(seq, node, cost, agg_cost)``"
+msgstr ""
+
+#: ../../TSP-family.rst:230
+msgid "Column"
+msgstr ""
+
+#: ../../TSP-family.rst:232
+msgid "**seq**"
+msgstr ""
+
+#: ../../TSP-family.rst:232
+msgid "Row sequence."
+msgstr ""
+
+#: ../../TSP-family.rst:233
+msgid "**node**"
+msgstr ""
+
+#: ../../TSP-family.rst:233
+msgid "Identifier of the node/coordinate/point."
+msgstr ""
+
+#: ../../TSP-family.rst:234
+msgid "**cost**"
+msgstr ""
+
+#: ../../TSP-family.rst:235
+msgid "Cost to traverse from the current ``node`` ito the next ``node`` in the path sequence."
+msgstr ""
+
+#: ../../TSP-family.rst:235
+msgid "``0`` for the last row in the path sequence."
+msgstr ""
+
+#: ../../TSP-family.rst:237
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../TSP-family.rst:238
+msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
+msgstr ""
+
+#: ../../TSP-family.rst:238
+msgid "``0`` for the first row in the path sequence."
+msgstr ""
+
+#: ../../TSP-family.rst:245
 msgid "See Also"
 msgstr ""
 
-#: ../../TSP-family.rst:207
+#: ../../TSP-family.rst:248
 msgid "References"
 msgstr ""
 
-#: ../../TSP-family.rst:208
+#: ../../TSP-family.rst:249
 msgid "`Simulated annaeling algorithm for beginners <http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`_"
 msgstr ""
 
-#: ../../TSP-family.rst:210
+#: ../../TSP-family.rst:251
 msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
 msgstr ""
 
-#: ../../TSP-family.rst:211
+#: ../../TSP-family.rst:252
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
 msgstr ""
 
-#: ../../TSP-family.rst:214
+#: ../../TSP-family.rst:255
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../TSP-family.rst:215
+#: ../../TSP-family.rst:256
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../TSP-family.rst:216
+#: ../../TSP-family.rst:257
 msgid ":ref:`search`"
 msgstr ""
 

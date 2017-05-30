@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-25 12:08-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,32 +90,23 @@ msgid "Description of the Matrix Cell SQL query"
 msgstr ""
 
 #: ../../pgr_TSP.rst:109
-#: ../../tsp_return_values.txt:16
 msgid "Column"
 msgstr ""
 
 #: ../../pgr_TSP.rst:109
-#: ../../tsp_parameters.txt:17
-#: ../../tsp_return_values.txt:16
 msgid "Type"
 msgstr ""
 
 #: ../../pgr_TSP.rst:109
-#: ../../tsp_parameters.txt:17
-#: ../../tsp_return_values.txt:16
 msgid "Description"
 msgstr ""
 
 #: ../../pgr_TSP.rst:111
-#: ../../tsp_parameters.txt:19
 msgid "**start_vid**"
 msgstr ""
 
 #: ../../pgr_TSP.rst:111
 #: ../../pgr_TSP.rst:112
-#: ../../tsp_parameters.txt:19
-#: ../../tsp_parameters.txt:20
-#: ../../tsp_return_values.txt:19
 msgid "``BIGINT``"
 msgstr ""
 
@@ -124,7 +115,6 @@ msgid "Identifier of the starting vertex."
 msgstr ""
 
 #: ../../pgr_TSP.rst:112
-#: ../../tsp_parameters.txt:20
 msgid "**end_vid**"
 msgstr ""
 
@@ -133,17 +123,10 @@ msgid "Identifier of the ending vertex."
 msgstr ""
 
 #: ../../pgr_TSP.rst:113
-#: ../../tsp_return_values.txt:23
 msgid "**agg_cost**"
 msgstr ""
 
 #: ../../pgr_TSP.rst:113
-#: ../../tsp_parameters.txt:21
-#: ../../tsp_parameters.txt:25
-#: ../../tsp_parameters.txt:26
-#: ../../tsp_parameters.txt:27
-#: ../../tsp_return_values.txt:20
-#: ../../tsp_return_values.txt:23
 msgid "``FLOAT``"
 msgstr ""
 
@@ -183,228 +166,43 @@ msgstr ""
 msgid "If using directed := true, the resulting non symmetric matrix must be converted to symmetric by fixing the non symmetric values according to your application needs."
 msgstr ""
 
-#: ../../tsp_parameters.txt:12
-msgid "Description Of the Control parameters"
-msgstr ""
-
-#: ../../tsp_parameters.txt:14
-msgid "The control parameters are optional, and have a default value."
-msgstr ""
-
-#: ../../tsp_parameters.txt:17
-msgid "Parameter"
-msgstr ""
-
-#: ../../tsp_parameters.txt:17
-msgid "Default"
-msgstr ""
-
-#: ../../tsp_parameters.txt:19
-#: ../../tsp_parameters.txt:20
-msgid "`0`"
-msgstr ""
-
-#: ../../tsp_parameters.txt:19
-msgid "The greedy part of the implementation will use this identifier."
-msgstr ""
-
-#: ../../tsp_parameters.txt:20
-msgid "Last visiting vertex before returning to start_vid."
-msgstr ""
-
-#: ../../tsp_parameters.txt:21
-msgid "**max_processing_time**"
-msgstr ""
-
-#: ../../tsp_parameters.txt:21
-msgid "`+infinity`"
-msgstr ""
-
-#: ../../tsp_parameters.txt:21
-msgid "Stop the annealing processing when the value is reached."
-msgstr ""
-
-#: ../../tsp_parameters.txt:22
-msgid "**tries_per_temperature**"
-msgstr ""
-
-#: ../../tsp_parameters.txt:22
-#: ../../tsp_parameters.txt:23
-#: ../../tsp_parameters.txt:24
-#: ../../tsp_return_values.txt:18
-msgid "``INTEGER``"
-msgstr ""
-
-#: ../../tsp_parameters.txt:22
-msgid "`500`"
-msgstr ""
-
-#: ../../tsp_parameters.txt:22
-msgid "Maximum number of times a neighbor(s) is searched in each temperature."
-msgstr ""
-
-#: ../../tsp_parameters.txt:23
-msgid "**max_changes_per_temperature**"
-msgstr ""
-
-#: ../../tsp_parameters.txt:23
-msgid "`60`"
-msgstr ""
-
-#: ../../tsp_parameters.txt:23
-msgid "Maximum number of times the solution is changed in each temperature."
-msgstr ""
-
-#: ../../tsp_parameters.txt:24
-msgid "**max_consecutive_non_changes**"
-msgstr ""
-
-#: ../../tsp_parameters.txt:24
-#: ../../tsp_parameters.txt:25
-msgid "`100`"
-msgstr ""
-
-#: ../../tsp_parameters.txt:24
-msgid "Maximum number of consecutive times the solution is not changed in each temperature."
-msgstr ""
-
-#: ../../tsp_parameters.txt:25
-msgid "**initial_temperature**"
-msgstr ""
-
-#: ../../tsp_parameters.txt:25
-msgid "Starting temperature."
-msgstr ""
-
-#: ../../tsp_parameters.txt:26
-msgid "**final_temperature**"
-msgstr ""
-
-#: ../../tsp_parameters.txt:26
-msgid "`0.1`"
-msgstr ""
-
-#: ../../tsp_parameters.txt:26
-msgid "Ending temperature."
-msgstr ""
-
-#: ../../tsp_parameters.txt:27
-msgid "**cooling_factor**"
-msgstr ""
-
-#: ../../tsp_parameters.txt:27
-msgid "`0.9`"
-msgstr ""
-
-#: ../../tsp_parameters.txt:27
-msgid "Value between between 0 and 1 (not including) used to calculate the next temperature."
-msgstr ""
-
-#: ../../tsp_parameters.txt:28
-msgid "**randomize**"
-msgstr ""
-
-#: ../../tsp_parameters.txt:28
-msgid "``BOOLEAN``"
-msgstr ""
-
-#: ../../tsp_parameters.txt:28
-msgid "`true`"
-msgstr ""
-
-#: ../../tsp_parameters.txt:28
-msgid "Choose the random seed"
-msgstr ""
-
-#: ../../tsp_parameters.txt:30
-msgid "true: Use current time as seed"
-msgstr ""
-
-#: ../../tsp_parameters.txt:31
-msgid "false: Use `1` as seed. Using this value will get the same results with the same data in each execution."
-msgstr ""
-
-#: ../../tsp_return_values.txt:11
-msgid "Description of the return values"
-msgstr ""
-
-#: ../../tsp_return_values.txt:13
-msgid "Returns set of ``(seq, node, cost, agg_cost)``"
-msgstr ""
-
-#: ../../tsp_return_values.txt:18
-msgid "**seq**"
-msgstr ""
-
-#: ../../tsp_return_values.txt:18
-msgid "Row sequence."
-msgstr ""
-
-#: ../../tsp_return_values.txt:19
-msgid "**node**"
-msgstr ""
-
-#: ../../tsp_return_values.txt:19
-msgid "Identifier of the node/coordinate/point."
-msgstr ""
-
-#: ../../tsp_return_values.txt:20
-msgid "**cost**"
-msgstr ""
-
-#: ../../tsp_return_values.txt:21
-msgid "Cost to traverse from the current ``node`` ito the next ``node`` in the path sequence."
-msgstr ""
-
-#: ../../tsp_return_values.txt:21
-msgid "``0`` for the last row in the path sequence."
-msgstr ""
-
-#: ../../tsp_return_values.txt:24
-msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
-msgstr ""
-
-#: ../../tsp_return_values.txt:24
-msgid "``0`` for the first row in the path sequence."
-msgstr ""
-
-#: ../../pgr_TSP.rst:144
+#: ../../pgr_TSP.rst:145
 msgid "Examples"
 msgstr ""
 
-#: ../../pgr_TSP.rst:146
+#: ../../pgr_TSP.rst:147
 msgid "Using with points of interest."
 msgstr ""
 
-#: ../../pgr_TSP.rst:148
+#: ../../pgr_TSP.rst:149
 msgid "To generate a symmetric matrix:"
 msgstr ""
 
-#: ../../pgr_TSP.rst:150
+#: ../../pgr_TSP.rst:151
 msgid "the **side** information of pointsOfInterset is ignored by not including it in the query"
 msgstr ""
 
-#: ../../pgr_TSP.rst:151
+#: ../../pgr_TSP.rst:152
 msgid "and **directed := false**"
 msgstr ""
 
-#: ../../pgr_TSP.rst:157
+#: ../../pgr_TSP.rst:158
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
-#: ../../pgr_TSP.rst:162
+#: ../../pgr_TSP.rst:163
 msgid "See Also"
 msgstr ""
 
-#: ../../pgr_TSP.rst:164
+#: ../../pgr_TSP.rst:165
 msgid ":ref:`tsp`"
 msgstr ""
 
-#: ../../pgr_TSP.rst:165
+#: ../../pgr_TSP.rst:166
 msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
 msgstr ""
 
-#: ../../pgr_TSP.rst:166
+#: ../../pgr_TSP.rst:167
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
 msgstr ""
 
