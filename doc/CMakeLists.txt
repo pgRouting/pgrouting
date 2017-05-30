@@ -103,6 +103,11 @@ configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
     "${PGROUTING_BINARY_DIR}/doc/html/en/index.html")
 
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
+    "${PGR_DOCUMENTATION_BUILD_DIR}/conf.py"
+    @ONLY)
+
 # Add documentation to targets
 set(DOC_TARGETS html)
 
@@ -131,46 +136,48 @@ endif()
 # The doc target will build all documentation targets.
 add_custom_target(doc 
     COMMENT "Building documentation with Sphinx")
-add_custom_target(html 
-    COMMENT "Building html documentation with Sphinx")
 
 # Localization output directory
 #set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
 
-configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
-    "${PGR_DOCUMENTATION_BUILD_DIR}/conf.py"
-    @ONLY)
+set(PGR_DOCUMENTATION_LANGUAGES "en" "es")
+
 
 foreach (DOC_TARGET ${DOC_TARGETS})
-    add_custom_command(
-        TARGET ${DOC_TARGET} POST_BUILD
-        COMMAND ${SPHINX_EXECUTABLE} 
-        #-q  # Enable for quiet mode 
-        #-Q  # Enable for even more quiet mode
-        #-v  # increase verbosity
-        #-E  # don't use a saved environment, always read all file
-        #-a  # write all files; default is to only write new and changed files
-        -b ${DOC_TARGET}
-        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}/${DOC_TARGET}/en"
-        COMMENT "Generating ${DOC_TARGET} documentation ...")
-    add_dependencies(doc ${DOC_TARGETS})
+    foreach (lang ${PGR_DOCUMENTATION_LANGUAGES})
+        add_custom_target("${DOC_TARGETS}-${lang}"
+            COMMENT "Building ${DOC_TARGET}/${lang} documentation with Sphinx")
+        add_custom_command(
+            TARGET "${DOC_TARGET}-${lang}" POST_BUILD
+            COMMAND ${SPHINX_EXECUTABLE} 
+            #-q  # Enable for quiet mode 
+            #-Q  # Enable for even more quiet mode
+            #-v  # increase verbosity
+            #-E  # don't use a saved environment, always read all file
+            #-a  # write all files; default is to only write new and changed files
+            -b ${DOC_TARGET}
+            -D language='${lang}'
+            -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+            "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+            "${PGR_DOCUMENTATION_SOURCE_DIR}/${DOC_TARGET}/${lang}"
+            COMMENT "Generating ${DOC_TARGET}/${lang} documentation ...")
+        add_dependencies(doc "${DOC_TARGETS}-${lang}")
+    endforeach()
 endforeach()
 
-if (TRUE) 
+if (FALSE) 
     add_custom_command(
         TARGET doc POST_BUILD
-        COMMAND sphinx-intl build
+        COMMAND sphinx-intl build -d ${CMAKE_SOURCE_DIR}/locale
 
         COMMAND ${SPHINX_EXECUTABLE} 
+        -v 
         -b html
         -D language='es'
         -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
         "${PGR_DOCUMENTATION_SOURCE_DIR}" 
         "${PGR_DOCUMENTATION_SOURCE_DIR}/html/es"
-    COMMENT "Generating ${DOC_TARGET}/es documentation ...")
+        COMMENT "Generating html/es documentation ...")
 endif()
 
 
