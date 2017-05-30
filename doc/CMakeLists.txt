@@ -159,6 +159,21 @@ foreach (DOC_TARGET ${DOC_TARGETS})
     add_dependencies(doc ${DOC_TARGETS})
 endforeach()
 
+if (TRUE) 
+    add_custom_command(
+        TARGET doc POST_BUILD
+        COMMAND sphinx-intl build
+
+        COMMAND ${SPHINX_EXECUTABLE} 
+        -b html
+        -D language='es'
+        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+        "${PGR_DOCUMENTATION_SOURCE_DIR}/html/es"
+    COMMENT "Generating ${DOC_TARGET}/es documentation ...")
+endif()
+
+
 if (BUILD_LOCALE)
     add_custom_target(locale 
         COMMENT "Building documentation with Sphinx")
@@ -181,14 +196,6 @@ if (BUILD_LOCALE)
 
             # COMMAND tx pull -r pgrouting.pgr_createVerticesTable -f -l es
 
-            #COMMAND sphinx-intl build
-
-            #COMMAND ${SPHINX_EXECUTABLE} 
-            #-b html
-            #-D language='es'
-            #-c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-            #"${PGR_DOCUMENTATION_SOURCE_DIR}" 
-            #"${PGR_DOCUMENTATION_SOURCE_DIR}/html/es"
 
             COMMENT "Generating ${DOC_TARGET} documentation ...")
     else()
