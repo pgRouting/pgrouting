@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../pgr_maxFlow.rst:13
 msgid "pgr_maxFlow - Proposed"
@@ -23,12 +24,12 @@ msgstr ""
 
 #: ../../pgr_maxFlow.rst:17
 msgid "Synopsis"
-msgstr ""
+msgstr "Sinopsis"
 
 #: ../../pgr_maxFlow.rst:19
 msgid ""
-"``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from "
-"the source(s) to the targets(s) using the Push Relabel algorithm."
+"``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the "
+"source(s) to the targets(s) using the Push Relabel algorithm."
 msgstr ""
 
 #: ../../pgr_maxFlow.rst:25
@@ -108,7 +109,8 @@ msgid "The graph is **directed**."
 msgstr ""
 
 #: ../../pgr_maxFlow.rst:37
-msgid "When the maximum flow is 0 then there is no flow and **0** is returned."
+msgid ""
+"When the maximum flow is 0 then there is no flow and **0** is returned."
 msgstr ""
 
 #: ../../pgr_maxFlow.rst:39
@@ -139,9 +141,10 @@ msgstr ""
 msgid "Calculates the maximum flow from the `source` to the `target`."
 msgstr ""
 
-#: ../../pgr_maxFlow.rst
+#: ../../pgr_maxFlow.rst:0 ../../pgr_maxFlow.rst:0 ../../pgr_maxFlow.rst:0
+#: ../../pgr_maxFlow.rst:0
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: ../../pgr_maxFlow.rst:82
 msgid "One to Many"
@@ -177,14 +180,13 @@ msgstr ""
 msgid "Description of the edges_sql query for Max-flow like functions"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:9 ../../pgr_maxFlow.rst:152
@@ -203,7 +205,7 @@ msgstr ""
 #: ../../pgRouting-concepts.rst:9 ../../pgr_maxFlow.rst:152
 #: ../../pgr_maxFlow.rst:169
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../pgRouting-concepts.rst:11
 msgid "**id**"
@@ -245,8 +247,8 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:18
@@ -263,15 +265,15 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -338,7 +340,7 @@ msgstr ""
 
 #: ../../pgr_maxFlow.rst:175
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../pgr_maxFlow.rst:177
 msgid ":ref:`maxFlow`"
@@ -349,19 +351,18 @@ msgid "http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 msgstr ""
 
 #: ../../pgr_maxFlow.rst:179
-#, python-format
-msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
+msgid ""
+"https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 msgstr ""
 
 #: ../../pgr_maxFlow.rst:182
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../pgr_maxFlow.rst:183
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../pgr_maxFlow.rst:184
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

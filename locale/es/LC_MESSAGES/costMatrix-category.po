@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../costMatrix-category.rst:13
 msgid "Cost Matrix - Category"
@@ -83,16 +84,17 @@ msgstr ""
 
 #: ../../costMatrix-category.rst:43
 msgid "Synopsis"
-msgstr ""
+msgstr "Sinopsis"
 
 #: ../../costMatrix-category.rst:45
 msgid ""
-":ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` "
-"must value :math:`\\infty`."
+":ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` must "
+"value :math:`\\infty`."
 msgstr ""
 
 #: ../../costMatrix-category.rst:47
-msgid "This collection of functions will return a cost matrix in form of a table."
+msgid ""
+"This collection of functions will return a cost matrix in form of a table."
 msgstr ""
 
 #: ../../costMatrix-category.rst:51
@@ -107,7 +109,7 @@ msgstr ""
 msgid "Can be used as input to :ref:`pgr_tsp`."
 msgstr ""
 
-#: ../../costMatrix-category.rst
+#: ../../costMatrix-category.rst:0
 msgid "directly"
 msgstr ""
 
@@ -131,14 +133,12 @@ msgstr ""
 
 #: ../../costMatrix-category.rst:62
 msgid ""
-"By setting the upper triangle to be the mirror image of the lower "
-"triangle."
+"By setting the upper triangle to be the mirror image of the lower triangle."
 msgstr ""
 
 #: ../../costMatrix-category.rst:63
 msgid ""
-"By setting the lower triangle to be the mirror image of the upper "
-"triangle."
+"By setting the lower triangle to be the mirror image of the upper triangle."
 msgstr ""
 
 #: ../../costMatrix-category.rst:65
@@ -155,8 +155,8 @@ msgstr ""
 
 #: ../../costMatrix-category.rst:69
 msgid ""
-"Returns the sum of the costs of the shortest path for pair combination of"
-" nodes in the graph."
+"Returns the sum of the costs of the shortest path for pair combination of "
+"nodes in the graph."
 msgstr ""
 
 #: ../../costMatrix-category.rst:70
@@ -174,7 +174,8 @@ msgid ""
 msgstr ""
 
 #: ../../costMatrix-category.rst:75
-msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../costMatrix-category.rst:77
@@ -183,8 +184,8 @@ msgstr ""
 
 #: ../../costMatrix-category.rst:79
 msgid ""
-"When the starting vertex and ending vertex are the different and there is"
-" no path."
+"When the starting vertex and ending vertex are the different and there is no"
+" path."
 msgstr ""
 
 #: ../../costMatrix-category.rst:81
@@ -199,8 +200,7 @@ msgstr ""
 
 #: ../../costMatrix-category.rst:85
 msgid ""
-"Depending on the function and its parameters, the results can be "
-"symmetric."
+"Depending on the function and its parameters, the results can be symmetric."
 msgstr ""
 
 #: ../../costMatrix-category.rst:87
@@ -229,7 +229,7 @@ msgstr ""
 
 #: ../../costMatrix-category.rst:101
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../costMatrix-category.rst:103
 msgid ":ref:`pgr_tsp`"
@@ -237,13 +237,12 @@ msgstr ""
 
 #: ../../costMatrix-category.rst:106
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../costMatrix-category.rst:107
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../costMatrix-category.rst:108
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

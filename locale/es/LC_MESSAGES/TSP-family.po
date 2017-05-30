@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../TSP-family.rst:13
 msgid "Traveling Sales Person - Family of functions"
@@ -49,8 +50,8 @@ msgstr ""
 
 #: ../../TSP-family.rst:38
 msgid ""
-"A discussion about the work of Hamilton & Kirkman can be found in the "
-"book **Graph Theory (Biggs et  al. 1976)**."
+"A discussion about the work of Hamilton & Kirkman can be found in the book "
+"**Graph Theory (Biggs et  al. 1976)**."
 msgstr ""
 
 #: ../../TSP-family.rst:41
@@ -63,12 +64,12 @@ msgstr ""
 
 #: ../../TSP-family.rst:44
 msgid ""
-"It is believed that the general form of the TSP have been first studied "
-"by Kalr Menger in Vienna and Harvard. The problem  was  later promoted by"
-" Hassler, Whitney  &  Merrill at Princeton. A detailed  description about"
-" the connection between Menger & Whitney, and the development of the TSP "
-"can be found in  `On the history of combinatorial optimization (till "
-"1960) <http://www.cwi.nl/~lex/files/histco.ps>`_"
+"It is believed that the general form of the TSP have been first studied by "
+"Kalr Menger in Vienna and Harvard. The problem  was  later promoted by "
+"Hassler, Whitney  &  Merrill at Princeton. A detailed  description about the"
+" connection between Menger & Whitney, and the development of the TSP can be "
+"found in  `On the history of combinatorial optimization (till 1960) "
+"<http://www.cwi.nl/~lex/files/histco.ps>`_"
 msgstr ""
 
 #: ../../TSP-family.rst:50
@@ -78,8 +79,8 @@ msgstr ""
 #: ../../TSP-family.rst:52
 msgid ""
 "Given a collection of cities and travel cost between each pair, find the "
-"cheapest way for visiting all of the cities and returning to the starting"
-" point."
+"cheapest way for visiting all of the cities and returning to the starting "
+"point."
 msgstr ""
 
 #: ../../TSP-family.rst:56
@@ -92,8 +93,8 @@ msgstr ""
 
 #: ../../TSP-family.rst:60
 msgid ""
-"traveling costs from city A to city B are just as much as traveling from "
-"B to A."
+"traveling costs from city A to city B are just as much as traveling from B "
+"to A."
 msgstr ""
 
 #: ../../TSP-family.rst:62
@@ -117,13 +118,14 @@ msgid "And  :math:`n-2` choices for the third city, etc."
 msgstr ""
 
 #: ../../TSP-family.rst:69
-msgid "Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`."
+msgid ""
+"Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`."
 msgstr ""
 
 #: ../../TSP-family.rst:70
 msgid ""
-"Now since our travel costs do not depend on the direction we take around "
-"the tour:"
+"Now since our travel costs do not depend on the direction we take around the"
+" tour:"
 msgstr ""
 
 #: ../../TSP-family.rst:72
@@ -140,16 +142,16 @@ msgstr ""
 
 #: ../../TSP-family.rst:78
 msgid ""
-"The simulated annealing algorithm was originally inspired from the "
-"process of annealing in metal work."
+"The simulated annealing algorithm was originally inspired from the process "
+"of annealing in metal work."
 msgstr ""
 
 #: ../../TSP-family.rst:81
 msgid ""
 "Annealing involves heating and cooling a material to alter its physical "
-"properties due to the changes in its internal structure. As the metal "
-"cools its new structure becomes fixed, consequently causing the metal to "
-"retain its newly obtained properties. [C001]_"
+"properties due to the changes in its internal structure. As the metal cools "
+"its new structure becomes fixed, consequently causing the metal to retain "
+"its newly obtained properties. [C001]_"
 msgstr ""
 
 #: ../../TSP-family.rst:88
@@ -158,22 +160,21 @@ msgstr ""
 
 #: ../../TSP-family.rst:89
 msgid ""
-"Given an initial solution, the simulated annealing process, will start "
-"with a high temperature and gradually cool down until the desired "
-"temperature is reached."
+"Given an initial solution, the simulated annealing process, will start with "
+"a high temperature and gradually cool down until the desired temperature is "
+"reached."
 msgstr ""
 
 #: ../../TSP-family.rst:92
 msgid ""
-"For each temperature, a neighbouring new solution **snew** is calculated."
-" The higher the temperature the higher the probability of accepting the "
-"new solution as a possible bester solution."
+"For each temperature, a neighbouring new solution **snew** is calculated. "
+"The higher the temperature the higher the probability of accepting the new "
+"solution as a possible bester solution."
 msgstr ""
 
 #: ../../TSP-family.rst:95
 msgid ""
-"Once the desired temperature is reached, the best solution found is "
-"returned"
+"Once the desired temperature is reached, the best solution found is returned"
 msgstr ""
 
 #: ../../TSP-family.rst:118
@@ -192,24 +193,25 @@ msgstr ""
 
 #: ../../TSP-family.rst:125
 msgid ""
-"max_changes_per_temperature: limits the number of changes in the solution"
-" per temperature"
+"max_changes_per_temperature: limits the number of changes in the solution "
+"per temperature"
 msgstr ""
 
 #: ../../TSP-family.rst:126
 msgid ""
-"max_consecutive_non_changes: limits the number of consecutive non changes"
-" per temperature"
+"max_consecutive_non_changes: limits the number of consecutive non changes "
+"per temperature"
 msgstr ""
 
 #: ../../TSP-family.rst:128
 msgid ""
-"This is done by doing some book keeping on the times **solution ← snew;**"
-" is executed."
+"This is done by doing some book keeping on the times **solution ← snew;** is"
+" executed."
 msgstr ""
 
 #: ../../TSP-family.rst:130
-msgid "max_changes_per_temperature: Increases by one when **solution** changes"
+msgid ""
+"max_changes_per_temperature: Increases by one when **solution** changes"
 msgstr ""
 
 #: ../../TSP-family.rst:131
@@ -220,12 +222,13 @@ msgstr ""
 
 #: ../../TSP-family.rst:133
 msgid ""
-"Additionally to stop the algorithm at a higher temperature than the "
-"desired one:"
+"Additionally to stop the algorithm at a higher temperature than the desired "
+"one:"
 msgstr ""
 
 #: ../../TSP-family.rst:135
-msgid "max_processing_time: limits the time the simulated annealing is performed."
+msgid ""
+"max_processing_time: limits the time the simulated annealing is performed."
 msgstr ""
 
 #: ../../TSP-family.rst:136
@@ -281,14 +284,14 @@ msgstr ""
 
 #: ../../TSP-family.rst:183
 msgid ""
-"For a faster decreasing the temperature set **cooling_factor** to a "
-"smaller number, and set to a higher number for a slower decrease."
+"For a faster decreasing the temperature set **cooling_factor** to a smaller "
+"number, and set to a higher number for a slower decrease."
 msgstr ""
 
 #: ../../TSP-family.rst:186
 msgid ""
-"When for the same given data the same results are needed, set "
-"**randomize** to `false`."
+"When for the same given data the same results are needed, set **randomize** "
+"to `false`."
 msgstr ""
 
 #: ../../TSP-family.rst:188
@@ -323,7 +326,7 @@ msgstr ""
 
 #: ../../TSP-family.rst:201 ../../TSP-family.rst:230
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../TSP-family.rst:203
 msgid "**start_vid**"
@@ -465,8 +468,8 @@ msgstr ""
 
 #: ../../TSP-family.rst:215
 msgid ""
-"false: Use `1` as seed. Using this value will get the same results with "
-"the same data in each execution."
+"false: Use `1` as seed. Using this value will get the same results with the "
+"same data in each execution."
 msgstr ""
 
 #: ../../TSP-family.rst:225
@@ -503,8 +506,8 @@ msgstr ""
 
 #: ../../TSP-family.rst:235
 msgid ""
-"Cost to traverse from the current ``node`` ito the next ``node`` in the "
-"path sequence."
+"Cost to traverse from the current ``node`` ito the next ``node`` in the path"
+" sequence."
 msgstr ""
 
 #: ../../TSP-family.rst:235
@@ -525,7 +528,7 @@ msgstr ""
 
 #: ../../TSP-family.rst:245
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../TSP-family.rst:248
 msgid "References"
@@ -533,28 +536,26 @@ msgstr ""
 
 #: ../../TSP-family.rst:249
 msgid ""
-"`Simulated annaeling algorithm for beginners "
-"<http://www.theprojectspot.com/tutorial-post/simulated-annealing-"
-"algorithm-for-beginners/6>`_"
+"`Simulated annaeling algorithm for beginners <http://www.theprojectspot.com"
+"/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`_"
 msgstr ""
 
 #: ../../TSP-family.rst:251
 msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
-msgstr ""
+msgstr "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
 
 #: ../../TSP-family.rst:252
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
-msgstr ""
+msgstr "http://en.wikipedia.org/wiki/Simulated_annealing"
 
 #: ../../TSP-family.rst:255
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../TSP-family.rst:256
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../TSP-family.rst:257
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

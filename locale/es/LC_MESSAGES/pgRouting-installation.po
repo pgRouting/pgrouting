@@ -1,29 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../pgRouting-installation.rst:13
 msgid "Installation"
-msgstr ""
+msgstr "Instalación"
 
 #: ../../pgRouting-installation.rst:16
 msgid "Table of Contents"
-msgstr ""
+msgstr "Contenido"
 
 #: ../../pgRouting-installation.rst:17
 msgid ":ref:`install-short`"
@@ -55,17 +56,17 @@ msgstr ""
 
 #: ../../pgRouting-installation.rst:25
 msgid ""
-"Instructions for downloading and installing binaries for different "
-"Operative systems instructions and additional notes and corrections not "
-"included in this documentation can be found in `Installation wiki "
+"Instructions for downloading and installing binaries for different Operative"
+" systems instructions and additional notes and corrections not included in "
+"this documentation can be found in `Installation wiki "
 "<https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-"
 "Installation-and-building-pgRouting>`__"
 msgstr ""
 
 #: ../../pgRouting-installation.rst:27
 msgid ""
-"To use pgRouting postGIS needs to be installed, please read the "
-"information about installation in this `Install Guide "
+"To use pgRouting postGIS needs to be installed, please read the information "
+"about installation in this `Install Guide "
 "<http://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
 msgstr ""
 
@@ -133,8 +134,8 @@ msgstr ""
 
 #: ../../pgRouting-installation.rst:104
 msgid ""
-"pgRouting is an extension and depends on postGIS. Enabling postGIS before"
-" enabling pgRouting in the database"
+"pgRouting is an extension and depends on postGIS. Enabling postGIS before "
+"enabling pgRouting in the database"
 msgstr ""
 
 #: ../../pgRouting-installation.rst:113
@@ -163,8 +164,8 @@ msgstr ""
 
 #: ../../pgRouting-installation.rst:132
 msgid ""
-"To be able to compile pgRouting, make sure that the following "
-"dependencies are met:"
+"To be able to compile pgRouting, make sure that the following dependencies "
+"are met:"
 msgstr ""
 
 #: ../../pgRouting-installation.rst:134
@@ -185,7 +186,7 @@ msgstr ""
 
 #: ../../pgRouting-installation.rst:139
 msgid "CMake >= 2.8.8"
-msgstr ""
+msgstr "CMake >= 2.8.8"
 
 #: ../../pgRouting-installation.rst:140
 msgid "CGAL >=  4.2"
@@ -269,8 +270,8 @@ msgstr ""
 
 #: ../../pgRouting-installation.rst:214
 msgid ""
-"Most of the effort of the documentation has being on the HTML files. Some"
-" variables for the documentation:"
+"Most of the effort of the documentation has being on the HTML files. Some "
+"variables for the documentation:"
 msgstr ""
 
 #: ../../pgRouting-installation.rst:218
@@ -364,8 +365,8 @@ msgstr ""
 
 #: ../../pgRouting-installation.rst:253
 msgid ""
-"We have tested on several platforms, For installing or reinstalling all "
-"the steps are needed."
+"We have tested on several platforms, For installing or reinstalling all the "
+"steps are needed."
 msgstr ""
 
 #: ../../pgRouting-installation.rst:255
@@ -406,17 +407,16 @@ msgstr ""
 
 #: ../../pgRouting-installation.rst:305
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../pgRouting-installation.rst:308
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../pgRouting-installation.rst:309
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../pgRouting-installation.rst:310
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

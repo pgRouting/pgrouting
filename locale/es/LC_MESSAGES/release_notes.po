@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../release_notes.rst:13
 msgid "Release Notes"
-msgstr ""
+msgstr "Notas de versión"
 
 #: ../../release_notes.rst:15
 msgid ""
@@ -33,63 +34,63 @@ msgstr ""
 
 #: ../../release_notes.rst:21
 msgid ":ref:`changelog_2_5_0`"
-msgstr ""
+msgstr ":ref:`changelog_2_5_0`"
 
 #: ../../release_notes.rst:22
 msgid ":ref:`changelog_2_4_1`"
-msgstr ""
+msgstr ":ref:`changelog_2_4_1`"
 
 #: ../../release_notes.rst:23
 msgid ":ref:`changelog_2_4_0`"
-msgstr ""
+msgstr ":ref:`changelog_2_4_0`"
 
 #: ../../release_notes.rst:24
 msgid ":ref:`changelog_2_3_2`"
-msgstr ""
+msgstr ":ref:`changelog_2_3_2`"
 
 #: ../../release_notes.rst:25
 msgid ":ref:`changelog_2_3_1`"
-msgstr ""
+msgstr ":ref:`changelog_2_3_1`"
 
 #: ../../release_notes.rst:26
 msgid ":ref:`changelog_2_3_0`"
-msgstr ""
+msgstr ":ref:`changelog_2_3_0`"
 
 #: ../../release_notes.rst:27
 msgid ":ref:`changelog_2_2_4`"
-msgstr ""
+msgstr ":ref:`changelog_2_2_4`"
 
 #: ../../release_notes.rst:28
 msgid ":ref:`changelog_2_2_3`"
-msgstr ""
+msgstr ":ref:`changelog_2_2_3`"
 
 #: ../../release_notes.rst:29
 msgid ":ref:`changelog_2_2_2`"
-msgstr ""
+msgstr ":ref:`changelog_2_2_2`"
 
 #: ../../release_notes.rst:30
 msgid ":ref:`changelog_2_2_1`"
-msgstr ""
+msgstr ":ref:`changelog_2_2_1`"
 
 #: ../../release_notes.rst:31
 msgid ":ref:`changelog_2_2_0`"
-msgstr ""
+msgstr ":ref:`changelog_2_2_0`"
 
 #: ../../release_notes.rst:32
 msgid ":ref:`changelog_2_1_0`"
-msgstr ""
+msgstr ":ref:`changelog_2_1_0`"
 
 #: ../../release_notes.rst:33
 msgid ":ref:`changelog_2_0_1`"
-msgstr ""
+msgstr ":ref:`changelog_2_0_1`"
 
 #: ../../release_notes.rst:34
 msgid ":ref:`changelog_2_0_0`"
-msgstr ""
+msgstr ":ref:`changelog_2_0_0`"
 
 #: ../../release_notes.rst:35
 msgid ":ref:`changelog_1_x`"
-msgstr ""
+msgstr ":ref:`changelog_1_x`"
 
 #: ../../release_notes.rst:42
 msgid "pgRouting 2.5.0 Release Notes"
@@ -630,7 +631,7 @@ msgstr ""
 
 #: ../../release_notes.rst:292
 msgid "pgr_nodeNetwork"
-msgstr ""
+msgstr "pgr_nodeNetwork"
 
 #: ../../release_notes.rst:294
 msgid "Adding a row_where and outall optional parameters"
@@ -794,14 +795,14 @@ msgstr ""
 
 #: ../../release_notes.rst:360
 msgid ""
-"pgr_alphaShape function now can generate better (multi)polygon with holes"
-" and alpha parameter."
+"pgr_alphaShape function now can generate better (multi)polygon with holes "
+"and alpha parameter."
 msgstr ""
 
 #: ../../release_notes.rst:364
 msgid ""
-"Proposed functions from Steve Woodbridge, (Classified as Convenience by "
-"the author.)"
+"Proposed functions from Steve Woodbridge, (Classified as Convenience by the "
+"author.)"
 msgstr ""
 
 #: ../../release_notes.rst:366
@@ -812,8 +813,8 @@ msgstr ""
 
 #: ../../release_notes.rst:367
 msgid ""
-"pgr_flipEdges - flip the edges in an array of geometries so the connect "
-"end to end."
+"pgr_flipEdges - flip the edges in an array of geometries so the connect end "
+"to end."
 msgstr ""
 
 #: ../../release_notes.rst:368
@@ -823,15 +824,18 @@ msgid ""
 msgstr ""
 
 #: ../../release_notes.rst:369
-msgid "pgr_pointsToVids - convert an array of point geometries into vertex ids."
+msgid ""
+"pgr_pointsToVids - convert an array of point geometries into vertex ids."
 msgstr ""
 
 #: ../../release_notes.rst:370
-msgid "pgr_pointsToDMatrix - Create a distance matrix from an array of points."
+msgid ""
+"pgr_pointsToDMatrix - Create a distance matrix from an array of points."
 msgstr ""
 
 #: ../../release_notes.rst:371 ../../release_notes.rst:372
-msgid "pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
+msgid ""
+"pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
 msgstr ""
 
 #: ../../release_notes.rst:374
@@ -852,11 +856,11 @@ msgstr ""
 
 #: ../../release_notes.rst:381
 msgid "pgr_getColumnName"
-msgstr ""
+msgstr "pgr_getColumnName"
 
 #: ../../release_notes.rst:382
 msgid "pgr_getTableName"
-msgstr ""
+msgstr "pgr_getTableName"
 
 #: ../../release_notes.rst:383
 msgid "pgr_isColumnCndexed"
@@ -864,27 +868,27 @@ msgstr ""
 
 #: ../../release_notes.rst:384
 msgid "pgr_isColumnInTable"
-msgstr ""
+msgstr "pgr_isColumnInTable"
 
 #: ../../release_notes.rst:385
 msgid "pgr_quote_ident"
-msgstr ""
+msgstr "pgr_quote_ident"
 
 #: ../../release_notes.rst:386
 msgid "pgr_versionless"
-msgstr ""
+msgstr "pgr_versionless"
 
 #: ../../release_notes.rst:387
 msgid "pgr_startPoint"
-msgstr ""
+msgstr "pgr_startPoint"
 
 #: ../../release_notes.rst:388
 msgid "pgr_endPoint"
-msgstr ""
+msgstr "pgr_endPoint"
 
 #: ../../release_notes.rst:389
 msgid "pgr_pointToId"
-msgstr ""
+msgstr "pgr_pointToId"
 
 #: ../../release_notes.rst:392
 msgid "No longer supported"
@@ -932,8 +936,8 @@ msgstr ""
 
 #: ../../release_notes.rst:413
 msgid ""
-"Instead of generating many libraries: - All functions are encapsulated in"
-" one library - The library has the prefix 2-1-0"
+"Instead of generating many libraries: - All functions are encapsulated in "
+"one library - The library has the prefix 2-1-0"
 msgstr ""
 
 #: ../../release_notes.rst:422
@@ -1009,83 +1013,99 @@ msgstr ""
 
 #: ../../release_notes.rst:456
 msgid ""
-"Graph Analytics - tools for detecting and fixing connection some problems"
-" in a graph"
+"Graph Analytics - tools for detecting and fixing connection some problems in"
+" a graph"
 msgstr ""
+"Análisis gráfico - herramientas para detectar y arreglar algunos problemas "
+"de conexión en un gráfico de red"
 
 #: ../../release_notes.rst:457
 msgid "A collection of useful utility functions"
-msgstr ""
+msgstr "Una colección de funciones útiles"
 
 #: ../../release_notes.rst:458
 msgid ""
-"Two new All Pairs Short Path algorithms (pgr_apspJohnson, "
-"pgr_apspWarshall)"
+"Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)"
 msgstr ""
+"Dos nuevos algoritmos para el camino más corto de todos pares  "
+"(pgr_apspJohnson, pgr_apspWarshall)"
 
 #: ../../release_notes.rst:459
 msgid ""
 "Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, "
 "pgr_bdDijkstra)"
 msgstr ""
+"Algoritmos para el Dijkstra bidireccional y la  búsqueda A*(pgr_bdAstar, "
+"pgr_bdDijkstra)"
 
 #: ../../release_notes.rst:460
 msgid "One to many nodes search (pgr_kDijkstra)"
-msgstr ""
+msgstr "Búsqueda de uno a varios nodos (pgr_kDijkstra)"
 
 #: ../../release_notes.rst:461
 msgid "K alternate paths shortest path (pgr_ksp)"
-msgstr ""
+msgstr " K rutas más cortas alternas de (pgr_ksp)"
 
 #: ../../release_notes.rst:462
 msgid ""
 "New TSP solver that simplifies the code and the build process (pgr_tsp), "
 "dropped \"Gaul Library\" dependency"
 msgstr ""
+"Nuevo solucionador TSP  que simplifica el código donde  el proceso de "
+"compilación (pgr_tsp), ya no dependene de la biblioteca \"Gaul Library\" "
 
 #: ../../release_notes.rst:463
 msgid "Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star"
 msgstr ""
+"Ruta más corta con giros restringidos (pgr_trsp) que reemplaza a la estrella"
+" fugaz \"Shooting Star\""
 
 #: ../../release_notes.rst:464
 msgid "Dropped support for Shooting Star"
-msgstr ""
+msgstr "Se deja de soportar a la Estrella fugaz \"Shooting Star\""
 
 #: ../../release_notes.rst:465
 msgid ""
 "Built a test infrastructure that is run before major code changes are "
 "checked in"
 msgstr ""
+"Se construye una  infraestructura de pruebas que se ejecuta antes de que se "
+"incorporen grandes cambios al código principal."
 
 #: ../../release_notes.rst:466
 msgid ""
-"Tested and fixed most all of the outstanding bugs reported against 1.x "
-"that existing in the 2.0-dev code base."
+"Tested and fixed most all of the outstanding bugs reported against 1.x that "
+"existing in the 2.0-dev code base."
 msgstr ""
+"Se probó y se arreglaron todos los errores excepcionales registrados en la "
+"versión 1.x existente en la base del código 2.0-dev."
 
 #: ../../release_notes.rst:467
 msgid "Improved build process for Windows"
-msgstr ""
+msgstr "Proceso de compilación mejorados para Windows"
 
 #: ../../release_notes.rst:468
-msgid "Automated testing on Linux and Windows platforms trigger by every commit"
+msgid ""
+"Automated testing on Linux and Windows platforms trigger by every commit"
 msgstr ""
+"Automatizado de pruebas en plataformas Linux y Windows por cada cambio "
+"permanente"
 
 #: ../../release_notes.rst:469
 msgid "Modular library design"
-msgstr ""
+msgstr "Diseño modular de bibliotecas"
 
 #: ../../release_notes.rst:470
 msgid "Compatibility with PostgreSQL 9.1 or newer"
-msgstr ""
+msgstr "Compatibilidad con PostgreSQL 9.1 o posterior"
 
 #: ../../release_notes.rst:471
 msgid "Compatibility with PostGIS 2.0 or newer"
-msgstr ""
+msgstr "Compatibilidad con PostGIS 2.0 o posterior"
 
 #: ../../release_notes.rst:472
 msgid "Installs as PostgreSQL EXTENSION"
-msgstr ""
+msgstr "Se instala como EXTENSION de PostgreSQL"
 
 #: ../../release_notes.rst:473
 msgid "Return types re factored and unified"
@@ -1093,19 +1113,19 @@ msgstr ""
 
 #: ../../release_notes.rst:474
 msgid "Support for table SCHEMA in function parameters"
-msgstr ""
+msgstr "Soporte para esquema en los parámetros de las funciones"
 
 #: ../../release_notes.rst:475
 msgid "Support for ``st_`` PostGIS function prefix"
-msgstr ""
+msgstr "Soporte para el prefijo ``st_`` de las funciones de PostGIS "
 
 #: ../../release_notes.rst:476
 msgid "Added ``pgr_`` prefix to functions and types"
-msgstr ""
+msgstr "Prefijo ``pgr_``  agregado a las funciones y tipos"
 
 #: ../../release_notes.rst:477
 msgid "Better documentation: http://docs.pgrouting.org"
-msgstr ""
+msgstr "Mejor documentación: http://docs.pgrouting.org"
 
 #: ../../release_notes.rst:478
 msgid "shooting_star is discontinued"
@@ -1113,20 +1133,19 @@ msgstr ""
 
 #: ../../release_notes.rst:485
 msgid "pgRouting 1.x Release Notes"
-msgstr ""
+msgstr "Notas de versión de pgRouting 1.x "
 
 #: ../../release_notes.rst:487
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"1.x "
+"To see the issues closed by this release see the `Git closed issues for 1.x "
 "<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_"
-" on Github. The following release notes have been copied from the "
-"previous ``RELEASE_NOTES`` file and are kept as a reference."
+" on Github. The following release notes have been copied from the previous "
+"``RELEASE_NOTES`` file and are kept as a reference."
 msgstr ""
 
 #: ../../release_notes.rst:492
 msgid "Changes for release 1.05"
-msgstr ""
+msgstr "Cambios para la versión 1.05"
 
 #: ../../release_notes.rst:494 ../../release_notes.rst:501
 #: ../../release_notes.rst:522 ../../release_notes.rst:529
@@ -1135,15 +1154,15 @@ msgstr ""
 
 #: ../../release_notes.rst:498
 msgid "Changes for release 1.03"
-msgstr ""
+msgstr "Cambios para la versión 1.03"
 
 #: ../../release_notes.rst:500
 msgid "Much faster topology creation"
-msgstr ""
+msgstr "Creación de topología mucho más rápida"
 
 #: ../../release_notes.rst:505
 msgid "Changes for release 1.02"
-msgstr ""
+msgstr "Cambios para la versión 1.02"
 
 #: ../../release_notes.rst:507 ../../release_notes.rst:514
 msgid "Shooting* bug fixes"
@@ -1151,71 +1170,73 @@ msgstr ""
 
 #: ../../release_notes.rst:508
 msgid "Compilation problems solved"
-msgstr ""
+msgstr "Se resolvieron problemas de compilación"
 
 #: ../../release_notes.rst:512
 msgid "Changes for release 1.01"
-msgstr ""
+msgstr "Cambios para la  versión 1.01"
 
 #: ../../release_notes.rst:518
 msgid "Changes for release 1.0"
-msgstr ""
+msgstr "Cambios para la versión 1.0"
 
 #: ../../release_notes.rst:520
 msgid "Core and extra functions are separated"
-msgstr ""
+msgstr "Núcleo y funciones adicionales están separadas"
 
 #: ../../release_notes.rst:521
 msgid "Cmake build process"
-msgstr ""
+msgstr "Proceso de compilación con CMake "
 
 #: ../../release_notes.rst:526
 msgid "Changes for release 1.0.0b"
-msgstr ""
+msgstr "Cambios para la versión 1.0.0b"
 
 #: ../../release_notes.rst:528
 msgid "Additional SQL file with more simple names for wrapper functions"
 msgstr ""
+"Archivos SQL adicionales con nombres más simples para las funciones de la "
+"envolturas"
 
 #: ../../release_notes.rst:533
 msgid "Changes for release 1.0.0a"
-msgstr ""
+msgstr "Cambios para la versión 1.0.0a"
 
 #: ../../release_notes.rst:535
 msgid "Shooting* shortest path algorithm for real road networks"
-msgstr ""
+msgstr "Algoritmo de ruta más corta Shooting\\* para redes de camino reales"
 
 #: ../../release_notes.rst:536
 msgid "Several SQL bugs were fixed"
-msgstr ""
+msgstr "Se arreglaron varios errores de SQL"
 
 #: ../../release_notes.rst:540
 msgid "Changes for release 0.9.9"
-msgstr ""
+msgstr "Cambios para la versión 0.9.9"
 
 #: ../../release_notes.rst:542
 msgid "PostgreSQL 8.2 support"
-msgstr ""
+msgstr "Soporte PostgreSQL 8.2"
 
 #: ../../release_notes.rst:543
 msgid ""
-"Shortest path functions return empty result if they could not find any "
-"path"
+"Shortest path functions return empty result if they could not find any path"
 msgstr ""
 
 #: ../../release_notes.rst:547
 msgid "Changes for release 0.9.8"
-msgstr ""
+msgstr "Cambios para versión 0.9.8"
 
 #: ../../release_notes.rst:549
 msgid "Renumbering scheme was added to shortest path functions"
 msgstr ""
+"Esquema de numeración ha sido añadido a las funciones de ruta más cortos"
 
 #: ../../release_notes.rst:550
 msgid "Directed shortest path functions were added"
-msgstr ""
+msgstr "Se agregaron funciones de ruta más cortos dirigidas"
 
 #: ../../release_notes.rst:551
 msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
 msgstr ""
-
+"routing_postgis.SQL fue modificado para utilizar dijkstra en la búsqueda TSP"

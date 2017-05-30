@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../pgr_edmondsKarp.rst:14
 msgid "pgr_edmondsKarp - Proposed"
@@ -23,13 +24,12 @@ msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:18
 msgid "Synopsis"
-msgstr ""
+msgstr "Sinopsis"
 
 #: ../../pgr_edmondsKarp.rst:20
 msgid ""
-"``pgr_edmondsKarp`` — Calculates the flow on the graph edges that "
-"maximizes the flow from the sources to the targets using Push Relabel "
-"Algorithm."
+"``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes "
+"the flow from the sources to the targets using Push Relabel Algorithm."
 msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:26
@@ -150,9 +150,9 @@ msgstr ""
 
 #: ../../flow-family.rst:18
 msgid ""
-"The maximum flow through the graph is guaranteed to be the value returned"
-" by :ref:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
-"parameters and can be calculated:"
+"The maximum flow through the graph is guaranteed to be the value returned by"
+" :ref:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and"
+" can be calculated:"
 msgstr ""
 
 #: ../../flow-family.rst:20
@@ -181,9 +181,10 @@ msgid ""
 "`source` to the `target`."
 msgstr ""
 
-#: ../../pgr_edmondsKarp.rst
+#: ../../pgr_edmondsKarp.rst:0 ../../pgr_edmondsKarp.rst:0
+#: ../../pgr_edmondsKarp.rst:0 ../../pgr_edmondsKarp.rst:0
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: ../../pgr_edmondsKarp.rst:83
 msgid "One to Many"
@@ -201,8 +202,8 @@ msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:106
 msgid ""
-"Calculates the flow on the graph edges that maximizes the flow from all "
-"of the `sources` to the `target`."
+"Calculates the flow on the graph edges that maximizes the flow from all of "
+"the `sources` to the `target`."
 msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:125
@@ -211,8 +212,8 @@ msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:127
 msgid ""
-"Calculates the flow on the graph edges that maximizes the flow from all "
-"of the `sources` to all of the `targets`."
+"Calculates the flow on the graph edges that maximizes the flow from all of "
+"the `sources` to all of the `targets`."
 msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:142
@@ -223,23 +224,22 @@ msgstr ""
 msgid "Description of the edges_sql query for Max-flow like functions"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst:7 ../../pgRouting-concepts.rst:9
-#: ../../pgr_maxFlow.rst:7
+#: ../../pgRouting-concepts.rst:9 ../../pgr_maxFlow.rst:7
+#: ../../pgRouting-concepts.rst:7
 msgid "Column"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst:7 ../../pgRouting-concepts.rst:9
-#: ../../pgr_maxFlow.rst:7
+#: ../../pgRouting-concepts.rst:9 ../../pgr_maxFlow.rst:7
+#: ../../pgRouting-concepts.rst:7
 msgid "Type"
 msgstr ""
 
@@ -247,10 +247,10 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst:7 ../../pgRouting-concepts.rst:9
-#: ../../pgr_maxFlow.rst:7
+#: ../../pgRouting-concepts.rst:9 ../../pgr_maxFlow.rst:7
+#: ../../pgRouting-concepts.rst:7
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../pgRouting-concepts.rst:11
 msgid "**id**"
@@ -266,21 +266,21 @@ msgstr ""
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../pgRouting-concepts.rst:11 ../../pgRouting-concepts.rst:12
-#: ../../pgr_maxFlow.rst:10
+#: ../../pgRouting-concepts.rst:12 ../../pgr_maxFlow.rst:10
+#: ../../pgRouting-concepts.rst:11
 msgid "**source**"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst:11 ../../pgRouting-concepts.rst:12
+#: ../../pgRouting-concepts.rst:12 ../../pgRouting-concepts.rst:11
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../pgRouting-concepts.rst:12 ../../pgRouting-concepts.rst:13
-#: ../../pgr_maxFlow.rst:12
+#: ../../pgRouting-concepts.rst:13 ../../pgr_maxFlow.rst:12
+#: ../../pgRouting-concepts.rst:12
 msgid "**target**"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst:12 ../../pgRouting-concepts.rst:13
+#: ../../pgRouting-concepts.rst:13 ../../pgRouting-concepts.rst:12
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
@@ -294,8 +294,8 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:18
@@ -312,15 +312,15 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -344,10 +344,10 @@ msgstr ""
 msgid "The edges SQL query as described above."
 msgstr ""
 
+#: ../../pgr_maxFlow.rst:10 ../../pgr_maxFlow.rst:12
 #: ../../pgRouting-concepts.rst:10 ../../pgRouting-concepts.rst:11
 #: ../../pgRouting-concepts.rst:12 ../../pgRouting-concepts.rst:13
-#: ../../pgRouting-concepts.rst:14 ../../pgr_maxFlow.rst:10
-#: ../../pgr_maxFlow.rst:12
+#: ../../pgRouting-concepts.rst:14
 msgid "``BIGINT``"
 msgstr ""
 
@@ -421,7 +421,7 @@ msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:160
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../pgr_edmondsKarp.rst:162
 msgid ""
@@ -434,19 +434,17 @@ msgid "http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
 msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:164
-#, python-format
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 msgstr ""
 
 #: ../../pgr_edmondsKarp.rst:167
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../pgr_edmondsKarp.rst:168
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../pgr_edmondsKarp.rst:169
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

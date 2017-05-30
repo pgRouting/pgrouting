@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../pgr_bdAstarCost.rst:13
 msgid "pgr_bdAstarCost - Proposed"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:16
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../pgr_bdAstarCost.rst:18
 msgid "``pgr_bdAstarCost`` — Returns the shortest path using A* algorithm."
@@ -103,14 +104,13 @@ msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:46
 msgid ""
-"Using these signatures, will load once the graph and perform several one "
-"to one `pgr_bdAstarCost`"
+"Using these signatures, will load once the graph and perform several one to "
+"one `pgr_bdAstarCost`"
 msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:48
 msgid ""
-"The result is the union of the results of the one to one "
-"`pgr_bdAstarCost`."
+"The result is the union of the results of the one to one `pgr_bdAstarCost`."
 msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:49
@@ -129,8 +129,7 @@ msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:75
 msgid ""
-"This usage finds the shortest path from the ``start_vid`` to the "
-"``end_vid``"
+"This usage finds the shortest path from the ``start_vid`` to the ``end_vid``"
 msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:72
@@ -149,9 +148,11 @@ msgstr ""
 msgid "with **epsilon**'s value 1"
 msgstr ""
 
-#: ../../pgr_bdAstarCost.rst
+#: ../../pgr_bdAstarCost.rst:0 ../../pgr_bdAstarCost.rst:0
+#: ../../pgr_bdAstarCost.rst:0 ../../pgr_bdAstarCost.rst:0
+#: ../../pgr_bdAstarCost.rst:0
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: ../../pgr_bdAstarCost.rst:77
 msgid "Using the defaults"
@@ -188,9 +189,8 @@ msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:103
 msgid ""
-"In the One to One signature, because of the deprecated signature "
-"existence, it is compulsory to indicate if the graph is **directed** or "
-"**undirected**."
+"In the One to One signature, because of the deprecated signature existence, "
+"it is compulsory to indicate if the graph is **directed** or **undirected**."
 msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:105
@@ -216,8 +216,8 @@ msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:152
 msgid ""
-"This usage finds the shortest path from each ``start_vid`` in "
-"``start_vids`` to the ``end_vid`` allowing the user to choose"
+"This usage finds the shortest path from each ``start_vid`` in ``start_vids``"
+" to the ``end_vid`` allowing the user to choose"
 msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:154
@@ -230,9 +230,8 @@ msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:176
 msgid ""
-"This usage finds the shortest path from each ``start_vid`` in "
-"``start_vids`` to each ``end_vid`` in ``end_vids`` allowing the user to "
-"choose"
+"This usage finds the shortest path from each ``start_vid`` in ``start_vids``"
+" to each ``end_vid`` in ``end_vids`` allowing the user to choose"
 msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:178
@@ -247,21 +246,21 @@ msgstr ""
 msgid "Description of the edges_sql query for astar like functions"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst:9
+#: ../../pgRouting-concepts.rst:9 ../../pgRouting-concepts.rst:9
 msgid "Column"
 msgstr ""
 
-#: ../../bdAstar-family.rst:7 ../../pgRouting-concepts.rst:9
+#: ../../pgRouting-concepts.rst:9 ../../bdAstar-family.rst:7
+#: ../../pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
@@ -269,17 +268,18 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: ../../bdAstar-family.rst:7 ../../pgRouting-concepts.rst:9
+#: ../../pgRouting-concepts.rst:9 ../../bdAstar-family.rst:7
+#: ../../pgRouting-concepts.rst:9
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../pgRouting-concepts.rst:11
 msgid "**id**"
 msgstr ""
 
-#: ../../bdAstar-family.rst:10 ../../bdAstar-family.rst:12
 #: ../../pgRouting-concepts.rst:11 ../../pgRouting-concepts.rst:12
-#: ../../pgRouting-concepts.rst:13
+#: ../../pgRouting-concepts.rst:13 ../../bdAstar-family.rst:10
+#: ../../bdAstar-family.rst:12
 msgid "``ANY-INTEGER``"
 msgstr ""
 
@@ -319,8 +319,8 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:18
@@ -337,8 +337,8 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:22
@@ -377,7 +377,7 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -385,7 +385,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
@@ -516,8 +516,8 @@ msgstr ""
 
 #: ../../bdAstar-family.rst:28
 msgid ""
-"(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. "
-"see :ref:`astar_factor`"
+"(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see "
+":ref:`astar_factor`"
 msgstr ""
 
 #: ../../bdAstar-family.rst:29
@@ -544,14 +544,14 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:11
 msgid ""
-"Identifier of the starting vertex. Used when multiple starting vetrices "
-"are in the query."
+"Identifier of the starting vertex. Used when multiple starting vetrices are "
+"in the query."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:12
 msgid ""
-"Identifier of the ending vertex. Used when multiple ending vertices are "
-"in the query."
+"Identifier of the ending vertex. Used when multiple ending vertices are in "
+"the query."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:13
@@ -564,7 +564,7 @@ msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:202
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../pgr_bdAstarCost.rst:204
 msgid ":ref:`bdAstar`"
@@ -586,17 +586,16 @@ msgstr ""
 
 #: ../../pgr_bdAstarCost.rst:208
 msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
-msgstr ""
+msgstr "http://en.wikipedia.org/wiki/A*_search_algorithm"
 
 #: ../../pgr_bdAstarCost.rst:211
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../pgr_bdAstarCost.rst:212
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../pgr_bdAstarCost.rst:213
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

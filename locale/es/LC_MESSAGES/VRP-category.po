@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../VRP-category.rst:13
 msgid "Vehicle Routing Functions Category:"
@@ -91,8 +92,7 @@ msgstr ""
 
 #: ../../VRP-category.rst:24
 msgid ""
-":ref:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean "
-"distances"
+":ref:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
 msgstr ""
 
 #: ../../VRP-category.rst:25
@@ -109,7 +109,7 @@ msgstr ""
 
 #: ../../VRP-category.rst:43
 msgid "Introduction"
-msgstr ""
+msgstr "Introducción"
 
 #: ../../VRP-category.rst:46
 msgid "TODO"
@@ -121,8 +121,8 @@ msgstr ""
 
 #: ../../VRP-category.rst:50
 msgid ""
-"Problem: Distribute and optimize the pickup-delivery pairs into a fleet "
-"of vehicles."
+"Problem: Distribute and optimize the pickup-delivery pairs into a fleet of "
+"vehicles."
 msgstr ""
 
 #: ../../VRP-category.rst:52
@@ -243,7 +243,7 @@ msgstr ""
 #: ../../VRP-category.rst:180 ../../VRP-category.rst:213
 #: ../../VRP-category.rst:241
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../VRP-category.rst:102 ../../VRP-category.rst:136
 msgid "**id**"
@@ -317,8 +317,8 @@ msgstr ""
 
 #: ../../VRP-category.rst:114 ../../VRP-category.rst:150
 msgid ""
-"Value used when the current customer is a Delivery to find the "
-"corresponding Pickup"
+"Value used when the current customer is a Delivery to find the corresponding"
+" Pickup"
 msgstr ""
 
 #: ../../VRP-category.rst:115 ../../VRP-category.rst:151
@@ -327,15 +327,15 @@ msgstr ""
 
 #: ../../VRP-category.rst:115 ../../VRP-category.rst:151
 msgid ""
-"Value used when the current customer is a Pickup to find the "
-"corresponding Delivery"
+"Value used when the current customer is a Pickup to find the corresponding "
+"Delivery"
 msgstr ""
 
 #: ../../VRP-category.rst:118 ../../VRP-category.rst:154
 msgid "Where:"
 msgstr ""
 
-#: ../../VRP-category.rst
+#: ../../VRP-category.rst:0 ../../VRP-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -343,7 +343,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../VRP-category.rst
+#: ../../VRP-category.rst:0 ../../VRP-category.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
@@ -479,7 +479,7 @@ msgstr ""
 msgid "Description of the result"
 msgstr ""
 
-#: ../../VRP-category.rst
+#: ../../VRP-category.rst:0 ../../VRP-category.rst:0
 msgid "RETURNS SET OF"
 msgstr ""
 
@@ -593,7 +593,7 @@ msgstr ""
 
 #: ../../VRP-category.rst:262
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../VRP-category.rst:264
 msgid "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
@@ -601,17 +601,16 @@ msgstr ""
 
 #: ../../VRP-category.rst:265
 msgid "The queries use the :ref:`sampledata` network."
-msgstr ""
+msgstr "La consulta usa la red de ejemplo  :ref:`sampledata`"
 
 #: ../../VRP-category.rst:268
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../VRP-category.rst:269
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../VRP-category.rst:270
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

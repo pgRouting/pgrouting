@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../pgr_pickDeliverEuclidean.rst:13
 msgid "__pgr_pickDeliverEuclidean:"
@@ -87,12 +88,12 @@ msgstr ""
 
 #: ../../pgr_pickDeliverEuclidean.rst:23
 msgid "Synopsis"
-msgstr ""
+msgstr "Sinopsis"
 
 #: ../../pgr_pickDeliverEuclidean.rst:25
 msgid ""
-"Problem: Distribute and optimize the pickup-delivery pairs into a fleet "
-"of vehicles."
+"Problem: Distribute and optimize the pickup-delivery pairs into a fleet of "
+"vehicles."
 msgstr ""
 
 #: ../../pgr_pickDeliverEuclidean.rst:27
@@ -199,15 +200,15 @@ msgstr ""
 msgid "pgr_pickDeliverEuclidean(Complete Signature)"
 msgstr ""
 
-#: ../../pgr_pickDeliverEuclidean.rst
+#: ../../pgr_pickDeliverEuclidean.rst:0
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: ../../pgr_pickDeliverEuclidean.rst:101
 msgid "Description of the Signatures"
 msgstr ""
 
-#: ../../VRP-category.rst:3
+#: ../../VRP-category.rst:3 ../../VRP-category.rst:3 ../../VRP-category.rst:3
 msgid "TODO: FIX becuase the following is outdated"
 msgstr ""
 
@@ -215,17 +216,17 @@ msgstr ""
 msgid "Description of the orders_sql query"
 msgstr ""
 
-#: ../../VRP-category.rst:9 ../../VRP-category.rst:11
+#: ../../VRP-category.rst:9 ../../VRP-category.rst:9 ../../VRP-category.rst:11
 msgid "Column"
 msgstr ""
 
-#: ../../VRP-category.rst:9 ../../VRP-category.rst:11
+#: ../../VRP-category.rst:9 ../../VRP-category.rst:9 ../../VRP-category.rst:11
 msgid "Type"
 msgstr ""
 
-#: ../../VRP-category.rst:9 ../../VRP-category.rst:11
+#: ../../VRP-category.rst:9 ../../VRP-category.rst:9 ../../VRP-category.rst:11
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../VRP-category.rst:11
 msgid "**id**"
@@ -312,8 +313,8 @@ msgstr ""
 
 #: ../../VRP-category.rst:25
 msgid ""
-"Value used when the current customer is a Delivery to find the "
-"corresponding Pickup"
+"Value used when the current customer is a Delivery to find the corresponding"
+" Pickup"
 msgstr ""
 
 #: ../../VRP-category.rst:26
@@ -322,15 +323,15 @@ msgstr ""
 
 #: ../../VRP-category.rst:26
 msgid ""
-"Value used when the current customer is a Pickup to find the "
-"corresponding Delivery"
+"Value used when the current customer is a Pickup to find the corresponding "
+"Delivery"
 msgstr ""
 
 #: ../../VRP-category.rst:29
 msgid "Where:"
 msgstr ""
 
-#: ../../VRP-category.rst
+#: ../../VRP-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -338,7 +339,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../VRP-category.rst
+#: ../../VRP-category.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
@@ -454,7 +455,7 @@ msgstr ""
 msgid "Description of the result"
 msgstr ""
 
-#: ../../VRP-category.rst
+#: ../../VRP-category.rst:0
 msgid "RETURNS SET OF"
 msgstr ""
 
@@ -565,7 +566,7 @@ msgstr ""
 
 #: ../../pgr_pickDeliverEuclidean.rst:124
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../pgr_pickDeliverEuclidean.rst:126
 msgid ":ref:`VRP`"
@@ -573,17 +574,16 @@ msgstr ""
 
 #: ../../pgr_pickDeliverEuclidean.rst:127
 msgid "The queries use the :ref:`sampledata` network."
-msgstr ""
+msgstr "La consulta usa la red de ejemplo  :ref:`sampledata`"
 
 #: ../../pgr_pickDeliverEuclidean.rst:130
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../pgr_pickDeliverEuclidean.rst:131
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../pgr_pickDeliverEuclidean.rst:132
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../pgr_contractGraph.rst:13
 msgid "pgr_contractGraph - Proposed"
@@ -97,14 +98,13 @@ msgstr ""
 
 #: ../../pgr_contractGraph.rst:30
 msgid "Synopsis"
-msgstr ""
+msgstr "Sinopsis"
 
 #: ../../pgr_contractGraph.rst:32
 msgid ""
-"Contraction reduces the size of the graph by removing some of the "
-"vertices and edges and, for example, might add edges that represent a "
-"sequence of original edges decreasing the total time and space used in "
-"graph algorithms."
+"Contraction reduces the size of the graph by removing some of the vertices "
+"and edges and, for example, might add edges that represent a sequence of "
+"original edges decreasing the total time and space used in graph algorithms."
 msgstr ""
 
 #: ../../pgr_contractGraph.rst:35
@@ -163,9 +163,10 @@ msgstr ""
 msgid "Minimal signature"
 msgstr ""
 
-#: ../../pgr_contractGraph.rst
+#: ../../pgr_contractGraph.rst:0 ../../pgr_contractGraph.rst:0
+#: ../../pgr_contractGraph.rst:0 ../../pgr_contractGraph.rst:0
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: ../../pgr_contractGraph.rst:80
 msgid "Making a dead end contraction and a linear contraction."
@@ -185,14 +186,13 @@ msgstr ""
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:9 ../../pgr_contractGraph.rst:109
@@ -212,7 +212,7 @@ msgstr ""
 #: ../../pgRouting-concepts.rst:9 ../../pgr_contractGraph.rst:109
 #: ../../pgr_contractGraph.rst:130
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../pgRouting-concepts.rst:11 ../../pgr_contractGraph.rst:136
 msgid "**id**"
@@ -257,8 +257,8 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:18
@@ -275,15 +275,15 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -291,7 +291,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
@@ -341,8 +341,8 @@ msgstr ""
 
 #: ../../pgr_contractGraph.rst:115
 msgid ""
-"(optional). Identifiers of vertices forbidden from contraction. Default "
-"is an empty array."
+"(optional). Identifiers of vertices forbidden from contraction. Default is "
+"an empty array."
 msgstr ""
 
 #: ../../pgr_contractGraph.rst:116
@@ -380,7 +380,8 @@ msgid "Description of the return values"
 msgstr ""
 
 #: ../../pgr_contractGraph.rst:125
-msgid "RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)"
+msgid ""
+"RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)"
 msgstr ""
 
 #: ../../pgr_contractGraph.rst:127
@@ -454,14 +455,14 @@ msgstr ""
 
 #: ../../pgr_contractGraph.rst:146
 msgid ""
-"Identifier of the source vertex of the current edge `id`. Valid values "
-"when `type = 'e'`."
+"Identifier of the source vertex of the current edge `id`. Valid values when "
+"`type = 'e'`."
 msgstr ""
 
 #: ../../pgr_contractGraph.rst:147
 msgid ""
-"Identifier of the target vertex of the current edge `id`. Valid values "
-"when `type = 'e'`."
+"Identifier of the target vertex of the current edge `id`. Valid values when "
+"`type = 'e'`."
 msgstr ""
 
 #: ../../pgr_contractGraph.rst:148
@@ -469,12 +470,13 @@ msgid "``FLOAT``"
 msgstr ""
 
 #: ../../pgr_contractGraph.rst:148
-msgid "Weight of the edge (`source`, `target`). Valid values when `type = 'e'`."
+msgid ""
+"Weight of the edge (`source`, `target`). Valid values when `type = 'e'`."
 msgstr ""
 
 #: ../../pgr_contractGraph.rst:152
 msgid "Examples"
-msgstr ""
+msgstr "Ejemplos"
 
 #: ../../pgr_contractGraph.rst:154
 msgid "Only dead end contraction"
@@ -486,13 +488,12 @@ msgstr ""
 
 #: ../../pgr_contractGraph.rst:168
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../pgr_contractGraph.rst:169
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../pgr_contractGraph.rst:170
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../withPoints-family.rst:14
 msgid "withPoints - Family of functions"
@@ -83,14 +84,13 @@ msgstr ""
 
 #: ../../withPoints-family.rst:47
 msgid "Images"
-msgstr ""
+msgstr "Imágenes"
 
 #: ../../withPoints-family.rst:49
 msgid ""
-"The squared vertices are the temporary vertices, The temporary vertices "
-"are added acordng to the dirving side, The following images visualy show "
-"the diferences on how depending on the driving side the data is "
-"interpreted."
+"The squared vertices are the temporary vertices, The temporary vertices are "
+"added acordng to the dirving side, The following images visualy show the "
+"diferences on how depending on the driving side the data is interpreted."
 msgstr ""
 
 #: ../../withPoints-family.rst:53
@@ -107,12 +107,12 @@ msgstr ""
 
 #: ../../withPoints-family.rst:68
 msgid "Introduction"
-msgstr ""
+msgstr "Introducción"
 
 #: ../../withPoints-family.rst:70
 msgid ""
-"This famly of functions was thought for routing vehicles, but might as "
-"well work for some other application that we can not think of."
+"This famly of functions was thought for routing vehicles, but might as well "
+"work for some other application that we can not think of."
 msgstr ""
 
 #: ../../withPoints-family.rst:73
@@ -123,12 +123,11 @@ msgstr ""
 
 #: ../../withPoints-family.rst:76
 msgid ""
-"When given a point identified with a `pid` that its being mapped to and "
-"edge with an identifier `edge_id`, with a `fraction` along that edge "
-"(from the source to the target of the edge) and some additional "
-"information about which `side` of the edge the point is on, then routing "
-"from arbitrary points more accurately reflect routing vehicles in road "
-"networks,"
+"When given a point identified with a `pid` that its being mapped to and edge"
+" with an identifier `edge_id`, with a `fraction` along that edge (from the "
+"source to the target of the edge) and some additional information about "
+"which `side` of the edge the point is on, then routing from arbitrary points"
+" more accurately reflect routing vehicles in road networks,"
 msgstr ""
 
 #: ../../withPoints-family.rst:87
@@ -154,7 +153,8 @@ msgid "pgr_withPointsDD is pgr_drivingDistance based"
 msgstr ""
 
 #: ../../withPoints-family.rst:89
-msgid "In all this functions we have to take care of as many aspects as possible:"
+msgid ""
+"In all this functions we have to take care of as many aspects as possible:"
 msgstr ""
 
 #: ../../withPoints-family.rst:91
@@ -178,7 +178,8 @@ msgid "In either side of the street."
 msgstr ""
 
 #: ../../withPoints-family.rst:99
-msgid "Compulsory arrival on the side of the street where the point is located."
+msgid ""
+"Compulsory arrival on the side of the street where the point is located."
 msgstr ""
 
 #: ../../withPoints-family.rst:101
@@ -199,8 +200,8 @@ msgstr ""
 
 #: ../../withPoints-family.rst:108
 msgid ""
-"Permanent, for example the set of points of clients stored in a table in "
-"the data base"
+"Permanent, for example the set of points of clients stored in a table in the"
+" data base"
 msgstr ""
 
 #: ../../withPoints-family.rst:109
@@ -233,8 +234,8 @@ msgstr ""
 
 #: ../../withPoints-family.rst:120
 msgid ""
-"The reason for doing this is to avoid confusion when there is a vertex "
-"with the same number as identifier as the points identifier."
+"The reason for doing this is to avoid confusion when there is a vertex with "
+"the same number as identifier as the points identifier."
 msgstr ""
 
 #: ../../withPoints-family.rst:123
@@ -243,8 +244,8 @@ msgstr ""
 
 #: ../../withPoints-family.rst:125
 msgid ""
-"Let :math:`G_d(V,E)` where :math:`V` is the set of vertices and :math:`E`"
-" is the set of edges be the original directed graph."
+"Let :math:`G_d(V,E)` where :math:`V` is the set of vertices and :math:`E` is"
+" the set of edges be the original directed graph."
 msgstr ""
 
 #: ../../withPoints-family.rst:127
@@ -266,10 +267,11 @@ msgid "Point Definition"
 msgstr ""
 
 #: ../../withPoints-family.rst:135
-msgid "A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`"
+msgid ""
+"A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`"
 msgstr ""
 
-#: ../../withPoints-family.rst
+#: ../../withPoints-family.rst:0
 msgid "ped"
 msgstr ""
 
@@ -277,7 +279,7 @@ msgstr ""
 msgid "is the point identifier"
 msgstr ""
 
-#: ../../withPoints-family.rst
+#: ../../withPoints-family.rst:0
 msgid "eid"
 msgstr ""
 
@@ -285,7 +287,7 @@ msgstr ""
 msgid "is an edge id of the `edges_sql`"
 msgstr ""
 
-#: ../../withPoints-family.rst
+#: ../../withPoints-family.rst:0
 msgid "fraction"
 msgstr ""
 
@@ -293,7 +295,7 @@ msgstr ""
 msgid "represents where the edge `eid` will be cut."
 msgstr ""
 
-#: ../../withPoints-family.rst
+#: ../../withPoints-family.rst:0
 msgid "side"
 msgstr ""
 
@@ -370,7 +372,7 @@ msgstr ""
 msgid "(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6"
 msgstr ""
 
-#: ../../withPoints-family.rst
+#: ../../withPoints-family.rst:0
 msgid "Remember"
 msgstr ""
 
@@ -397,4 +399,3 @@ msgstr ""
 #: ../../withPoints-family.rst:181
 msgid "Edge (15, 9,12, 10) is removed."
 msgstr ""
-

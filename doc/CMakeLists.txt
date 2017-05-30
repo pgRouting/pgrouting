@@ -165,57 +165,30 @@ foreach (DOC_TARGET ${DOC_TARGETS})
     endforeach()
 endforeach()
 
-if (FALSE) 
-    add_custom_command(
-        TARGET doc POST_BUILD
-        COMMAND sphinx-intl build -d ${CMAKE_SOURCE_DIR}/locale
-
-        COMMAND ${SPHINX_EXECUTABLE} 
-        -v 
-        -b html
-        -D language='es'
-        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}/html/es"
-        COMMENT "Generating html/es documentation ...")
-endif()
-
 
 if (BUILD_LOCALE)
     add_custom_target(locale 
         COMMENT "Building documentation with Sphinx")
-    if (true)
-        add_custom_command(
-            TARGET locale POST_BUILD
-            COMMAND ${SPHINX_EXECUTABLE} 
-            #-q  # Enable for quiet mode 
-            #-Q  # Enable for even more quiet mode
-            #-v  # increase verbosity
-            #-E  # don't use a saved environment, always read all file
-            #-a  # write all files; default is to only write new and changed files
-            -b gettext
-            -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-            "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-            "${PGR_DOCUMENTATION_BUILD_DIR}/gettext"
+    add_custom_command(
+        TARGET locale POST_BUILD
+        COMMAND ${SPHINX_EXECUTABLE} 
+        #-q  # Enable for quiet mode 
+        #-Q  # Enable for even more quiet mode
+        #-v  # increase verbosity
+        #-E  # don't use a saved environment, always read all file
+        #-a  # write all files; default is to only write new and changed files
+        -b gettext
+        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+        "${PGR_DOCUMENTATION_BUILD_DIR}/gettext"
 
-            #COMMAND sphinx-intl update
-            #-p ${PGR_DOCUMENTATION_BUILD_DIR}/gettext -l es -l en
+        #COMMAND sphinx-intl update
+        #-p ${PGR_DOCUMENTATION_BUILD_DIR}/gettext -l es -l en
 
-            # COMMAND tx pull -r pgrouting.pgr_createVerticesTable -f -l es
+        # COMMAND tx pull -r pgrouting.pgr_createVerticesTable -f -l es
 
 
-            COMMENT "Generating ${DOC_TARGET} documentation ...")
-    else()
-        add_custom_command(
-            TARGET locale POST_BUILD
-            COMMAND ${SPHINX_EXECUTABLE} 
-            -b html
-            -D language='es'
-            -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-            "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-            "${PGR_DOCUMENTATION_SOURCE_DIR}/html/es"
-            COMMENT "Generating ${DOC_TARGET} documentation ...")
-    endif()
+        COMMENT "Generating ${DOC_TARGET} documentation ...")
     add_dependencies(doc locale)
 endif()
 

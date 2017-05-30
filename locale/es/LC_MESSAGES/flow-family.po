@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../flow-family.rst:13
 msgid "Flow - Family of functions"
@@ -23,26 +24,26 @@ msgstr ""
 
 #: ../../flow-family.rst:17
 msgid ""
-":ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel"
-" algorithm."
+":ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel "
+"algorithm."
 msgstr ""
 
 #: ../../flow-family.rst:18
 msgid ""
-":ref:`pgr_BoykovKolmogorov` - Boykov and Kolmogorov with details of flow "
-"on edges."
+":ref:`pgr_BoykovKolmogorov` - Boykov and Kolmogorov with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../flow-family.rst:19
 msgid ""
-":ref:`pgr_EdmondsKarp` - Edmonds and Karp algorithm with details of flow "
-"on edges."
+":ref:`pgr_EdmondsKarp` - Edmonds and Karp algorithm with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../flow-family.rst:20
 msgid ""
-":ref:`pgr_PushRelabel` - Push and relabel algorithm with details of flow "
-"on edges."
+":ref:`pgr_PushRelabel` - Push and relabel algorithm with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../flow-family.rst:21
@@ -51,14 +52,14 @@ msgstr ""
 
 #: ../../flow-family.rst:23
 msgid ""
-":ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two"
-" groups of vertices."
+":ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two "
+"groups of vertices."
 msgstr ""
 
 #: ../../flow-family.rst:24
 msgid ""
-":ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality "
-"matching in a graph."
+":ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching "
+"in a graph."
 msgstr ""
 
 #: ../../proposed.rst:3
@@ -167,9 +168,9 @@ msgstr ""
 
 #: ../../flow-family.rst:64
 msgid ""
-"The maximum flow through the graph is guaranteed to be the value returned"
-" by :ref:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
-"parameters and can be calculated:"
+"The maximum flow through the graph is guaranteed to be the value returned by"
+" :ref:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and"
+" can be calculated:"
 msgstr ""
 
 #: ../../flow-family.rst:66
@@ -182,8 +183,8 @@ msgstr ""
 
 #: ../../flow-family.rst:72
 msgid ""
-":ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum "
-"is guaranteed to be the same on the functions :ref:`pgr_pushRelabel "
+":ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is "
+"guaranteed to be the same on the functions :ref:`pgr_pushRelabel "
 "<pgr_pushRelabel>`, :ref:`pgr_edmondsKarp <pgr_edmondsKarp>`, "
 ":ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow "
 "through each edge may vary."
@@ -197,22 +198,22 @@ msgstr ""
 msgid ""
 "A flow network is a directed graph where each edge has a capacity and a "
 "flow. The flow through an edge must not exceed the capacity of the edge. "
-"Additionally, the incoming and outgoing flow of a node must be equal "
-"except the for source which only has outgoing flow, and the "
-"destination(sink) which only has incoming flow."
+"Additionally, the incoming and outgoing flow of a node must be equal except "
+"the for source which only has outgoing flow, and the destination(sink) which"
+" only has incoming flow."
 msgstr ""
 
 #: ../../flow-family.rst:83
 msgid ""
-"Maximum flow algorithms calculate the maximum flow through the graph and "
-"the flow of each edge."
+"Maximum flow algorithms calculate the maximum flow through the graph and the"
+" flow of each edge."
 msgstr ""
 
 #: ../../flow-family.rst:85
 msgid ""
 "The maximum flow through the graph is guaranteed to be the same with all "
-"implementations, but the actual flow through each edge may vary. Given "
-"the following query:"
+"implementations, but the actual flow through each edge may vary. Given the "
+"following query:"
 msgstr ""
 
 #: ../../flow-family.rst:89
@@ -239,8 +240,8 @@ msgstr ""
 
 #: ../../flow-family.rst:99
 msgid ""
-":math:`source\\_vertex  \\cup  sink\\_vertex  \\bigcup  source_i  "
-"\\bigcup  target_i`"
+":math:`source\\_vertex  \\cup  sink\\_vertex  \\bigcup  source_i  \\bigcup  "
+"target_i`"
 msgstr ""
 
 #: ../../flow-family.rst:101
@@ -249,12 +250,12 @@ msgstr ""
 
 #: ../../flow-family.rst:103
 msgid ""
-":math:`E = \\begin{cases} &\\{(source_i, target_i, capacity_i) \\text{ "
-"when } capacity > 0 \\} &\\quad  \\text{ if } reverse\\_capacity = "
-"\\varnothing \\\\ \\\\ &\\{(source_i, target_i, capacity_i) \\text{ when "
-"} capacity > 0 \\} \\\\ \\cup &\\{(target_i, source_i, "
-"reverse\\_capacity_i) \\text{ when } reverse\\_capacity_i > 0)\\} &\\quad"
-" \\text{ if } reverse\\_capacity \\neq \\varnothing \\\\ \\end{cases}`"
+":math:`E = \\begin{cases} &\\{(source_i, target_i, capacity_i) \\text{ when "
+"} capacity > 0 \\} &\\quad  \\text{ if } reverse\\_capacity = \\varnothing "
+"\\\\ \\\\ &\\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 "
+"\\} \\\\ \\cup &\\{(target_i, source_i, reverse\\_capacity_i) \\text{ when }"
+" reverse\\_capacity_i > 0)\\} &\\quad \\text{ if } reverse\\_capacity \\neq "
+"\\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 #: ../../flow-family.rst:107
@@ -299,8 +300,8 @@ msgstr ""
 msgid ""
 ":math:`\\boldsymbol{\\Phi}` is a subset of the original edges with their "
 "residual capacity and flow. The maximum flow through the graph can be "
-"obtained by aggregating on the source or sink and summing the flow "
-"from/to it. In particular:"
+"obtained by aggregating on the source or sink and summing the flow from/to "
+"it. In particular:"
 msgstr ""
 
 #: ../../flow-family.rst:125
@@ -317,9 +318,8 @@ msgstr ""
 
 #: ../../flow-family.rst:131
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../flow-family.rst:133
 msgid "https://en.wikipedia.org/wiki/Maximum_flow_problem"
 msgstr ""
-

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../pgr_KSP.rst:13
 msgid "pgr_KSP"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:16
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../pgr_KSP.rst:18
 msgid "``pgr_KSP`` — Returns the \"K\" shortest paths."
@@ -43,12 +44,12 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:32
 msgid "Synopsis"
-msgstr ""
+msgstr "Sinopsis"
 
 #: ../../pgr_KSP.rst:34
 msgid ""
-"The K shortest path routing algorithm based on Yen's algorithm. \"K\" is "
-"the number of shortest paths desired."
+"The K shortest path routing algorithm based on Yen's algorithm. \"K\" is the"
+" number of shortest paths desired."
 msgstr ""
 
 #: ../../pgr_KSP.rst:37
@@ -75,14 +76,13 @@ msgstr ""
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:9 ../../pgr_KSP.rst:83 ../../pgr_KSP.rst:103
@@ -99,7 +99,7 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:9 ../../pgr_KSP.rst:83 ../../pgr_KSP.rst:103
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../pgRouting-concepts.rst:11
 msgid "**id**"
@@ -144,8 +144,8 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:18
@@ -162,15 +162,15 @@ msgstr ""
 
 #: ../../pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -178,7 +178,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../pgRouting-concepts.rst
+#: ../../pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
@@ -245,8 +245,8 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:89
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default"
-" is ``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default is"
+" ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../pgr_KSP.rst:90
@@ -255,14 +255,14 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:90
 msgid ""
-"(optional). When ``true`` returns all the paths stored in the process "
-"heap. Default is ``false`` which only returns ``k`` pahts."
+"(optional). When ``true`` returns all the paths stored in the process heap. "
+"Default is ``false`` which only returns ``k`` pahts."
 msgstr ""
 
 #: ../../pgr_KSP.rst:93
 msgid ""
-"Roughly, if the shortest path has ``N`` edges, the heap will contain "
-"about than ``N * k`` paths for small value of ``k`` and ``k > 1``."
+"Roughly, if the shortest path has ``N`` edges, the heap will contain about "
+"than ``N * k`` paths for small value of ``k`` and ``k > 1``."
 msgstr ""
 
 #: ../../pgr_KSP.rst:98
@@ -270,7 +270,8 @@ msgid "Description of the return values"
 msgstr ""
 
 #: ../../pgr_KSP.rst:100
-msgid "Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``"
+msgid ""
+"Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``"
 msgstr ""
 
 #: ../../pgr_KSP.rst:105
@@ -287,8 +288,8 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:106
 msgid ""
-"Relative position in the path of ``node`` and ``edge``. Has value **1** "
-"for the beginning of a path."
+"Relative position in the path of ``node`` and ``edge``. Has value **1** for "
+"the beginning of a path."
 msgstr ""
 
 #: ../../pgr_KSP.rst:107
@@ -297,8 +298,8 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:107
 msgid ""
-"Path identifier. The ordering of the paths For two paths i, j if i < j "
-"then agg_cost(i) <= agg_cost(j)."
+"Path identifier. The ordering of the paths For two paths i, j if i < j then "
+"agg_cost(i) <= agg_cost(j)."
 msgstr ""
 
 #: ../../pgr_KSP.rst:108
@@ -315,8 +316,8 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:109
 msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the "
-"path sequence. ``-1`` for the last node of the route."
+"Identifier of the edge used to go from ``node`` to the next node in the path"
+" sequence. ``-1`` for the last node of the route."
 msgstr ""
 
 #: ../../pgr_KSP.rst:110 ../../pgr_KSP.rst:111
@@ -325,8 +326,8 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:110
 msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next node in the "
-"path sequence."
+"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
+"sequence."
 msgstr ""
 
 #: ../../pgr_KSP.rst:111
@@ -340,8 +341,8 @@ msgstr ""
 #: ../../pgr_KSP.rst:115
 msgid ""
 "During the transition to 3.0, because pgr_ksp version 2.0 doesn't have "
-"defined a directed flag nor a heap_path flag, when pgr_ksp is used with "
-"only one flag version 2.0 signature will be used."
+"defined a directed flag nor a heap_path flag, when pgr_ksp is used with only"
+" one flag version 2.0 signature will be used."
 msgstr ""
 
 #: ../../pgr_KSP.rst:119
@@ -390,11 +391,11 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:173
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
 #: ../../pgr_KSP.rst:175
 msgid "http://en.wikipedia.org/wiki/K_shortest_path_routing"
-msgstr ""
+msgstr "http://en.wikipedia.org/wiki/K_shortest_path_routing"
 
 #: ../../pgr_KSP.rst:176
 msgid ":ref:`sampledata` network."
@@ -402,13 +403,12 @@ msgstr ""
 
 #: ../../pgr_KSP.rst:179
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../pgr_KSP.rst:180
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../pgr_KSP.rst:181
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`Búsqueda <search>`"
