@@ -176,10 +176,10 @@ if (BUILD_LOCALE)
             "${PGR_DOCUMENTATION_SOURCE_DIR}" 
             "${PGR_DOCUMENTATION_BUILD_DIR}/gettext"
 
-            COMMAND sphinx-intl update
-            -p ${PGR_DOCUMENTATION_BUILD_DIR}/gettext -l es -l en
+            #COMMAND sphinx-intl update
+            #-p ${PGR_DOCUMENTATION_BUILD_DIR}/gettext -l es -l en
 
-            COMMAND tx pull -r pgrouting.pgr_createVerticesTable -f -l es
+            # COMMAND tx pull -r pgrouting.pgr_createVerticesTable -f -l es
 
             #COMMAND sphinx-intl build
 
