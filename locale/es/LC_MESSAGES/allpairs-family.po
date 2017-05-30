@@ -1,0 +1,975 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 08:52-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+#: ../../allpairs-family.rst:14
+msgid "All Pairs - Family of Functions"
+msgstr ""
+
+#: ../../allpairs-family.rst:16
+msgid "The following functions work an all vertices pair combinations"
+msgstr ""
+
+#: ../../allpairs-family.rst:33
+msgid "Performance"
+msgstr ""
+
+#: ../../allpairs-family.rst:40
+msgid "The following tests:"
+msgstr ""
+
+#: ../../allpairs-family.rst:36
+msgid "non server computer"
+msgstr ""
+
+#: ../../allpairs-family.rst:37
+msgid "with AMD 64 CPU"
+msgstr ""
+
+#: ../../allpairs-family.rst:38
+msgid "4G memory"
+msgstr ""
+
+#: ../../allpairs-family.rst:39
+msgid "trusty"
+msgstr ""
+
+#: ../../allpairs-family.rst:40
+msgid "posgreSQL version 9.3"
+msgstr ""
+
+#: ../../allpairs-family.rst:43
+msgid "Data"
+msgstr ""
+
+#: ../../allpairs-family.rst:45
+msgid "The following data was used"
+msgstr ""
+
+#: ../../allpairs-family.rst:53
+msgid "Data processing was done with osm2pgrouting-alpha"
+msgstr ""
+
+#: ../../allpairs-family.rst:66
+msgid "Results"
+msgstr ""
+
+#: ../../allpairs-family.rst
+msgid "Test"
+msgstr ""
+
+#: ../../allpairs-family.rst:68
+msgid "One"
+msgstr ""
+
+#: ../../allpairs-family.rst:70
+msgid ""
+"This test is not with a bounding box The density of the passed graph is "
+"extremely low. For each <SIZE> 30 tests were executed to get the average "
+"The tested query is:"
+msgstr ""
+
+#: ../../allpairs-family.rst:83 ../../allpairs-family.rst:140
+msgid "The results of this tests are presented as:"
+msgstr ""
+
+#: ../../allpairs-family.rst ../../allpairs-family.rst:94
+#: ../../allpairs-family.rst:151
+msgid "SIZE"
+msgstr ""
+
+#: ../../allpairs-family.rst:85
+msgid "is the number of edges given as input."
+msgstr ""
+
+#: ../../allpairs-family.rst ../../allpairs-family.rst:94
+#: ../../allpairs-family.rst:151
+msgid "EDGES"
+msgstr ""
+
+#: ../../allpairs-family.rst:86 ../../allpairs-family.rst:143
+msgid "is the total number of records in the query."
+msgstr ""
+
+#: ../../allpairs-family.rst ../../allpairs-family.rst:94
+#: ../../allpairs-family.rst:151
+msgid "DENSITY"
+msgstr ""
+
+#: ../../allpairs-family.rst:87 ../../allpairs-family.rst:144
+msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
+msgstr ""
+
+#: ../../allpairs-family.rst ../../allpairs-family.rst:94
+#: ../../allpairs-family.rst:151
+msgid "OUT ROWS"
+msgstr ""
+
+#: ../../allpairs-family.rst:88 ../../allpairs-family.rst:145
+msgid "is the number of records returned by the queries."
+msgstr ""
+
+#: ../../allpairs-family.rst ../../allpairs-family.rst:94
+#: ../../allpairs-family.rst:151
+msgid "Floyd-Warshall"
+msgstr ""
+
+#: ../../allpairs-family.rst:89 ../../allpairs-family.rst:146
+msgid "is the average execution time in seconds of pgr_floydWarshall."
+msgstr ""
+
+#: ../../allpairs-family.rst ../../allpairs-family.rst:94
+#: ../../allpairs-family.rst:151
+msgid "Johnson"
+msgstr ""
+
+#: ../../allpairs-family.rst:90 ../../allpairs-family.rst:147
+msgid "is the average execution time in seconds of pgr_johnson."
+msgstr ""
+
+#: ../../allpairs-family.rst:96
+msgid "500"
+msgstr ""
+
+#: ../../allpairs-family.rst:96
+msgid "0.18E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:96
+msgid "1346"
+msgstr ""
+
+#: ../../allpairs-family.rst:96
+msgid "0.14"
+msgstr ""
+
+#: ../../allpairs-family.rst:96
+msgid "0.13"
+msgstr ""
+
+#: ../../allpairs-family.rst:97
+msgid "1000"
+msgstr ""
+
+#: ../../allpairs-family.rst:97
+msgid "0.36E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:97
+msgid "2655"
+msgstr ""
+
+#: ../../allpairs-family.rst:97
+msgid "0.23"
+msgstr ""
+
+#: ../../allpairs-family.rst:97
+msgid "0.18"
+msgstr ""
+
+#: ../../allpairs-family.rst:98
+msgid "1500"
+msgstr ""
+
+#: ../../allpairs-family.rst:98
+msgid "0.55E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:98
+msgid "4110"
+msgstr ""
+
+#: ../../allpairs-family.rst:98 ../../allpairs-family.rst:99
+#: ../../allpairs-family.rst:158
+msgid "0.37"
+msgstr ""
+
+#: ../../allpairs-family.rst:98
+msgid "0.34"
+msgstr ""
+
+#: ../../allpairs-family.rst:99
+msgid "2000"
+msgstr ""
+
+#: ../../allpairs-family.rst:99
+msgid "0.73E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:99
+msgid "5676"
+msgstr ""
+
+#: ../../allpairs-family.rst:99
+msgid "0.56"
+msgstr ""
+
+#: ../../allpairs-family.rst:100
+msgid "2500"
+msgstr ""
+
+#: ../../allpairs-family.rst:100
+msgid "0.89E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:100
+msgid "7177"
+msgstr ""
+
+#: ../../allpairs-family.rst:100
+msgid "0.84"
+msgstr ""
+
+#: ../../allpairs-family.rst:100
+msgid "0.51"
+msgstr ""
+
+#: ../../allpairs-family.rst:101
+msgid "3000"
+msgstr ""
+
+#: ../../allpairs-family.rst:101
+msgid "1.07E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:101
+msgid "8778"
+msgstr ""
+
+#: ../../allpairs-family.rst:101
+msgid "1.28"
+msgstr ""
+
+#: ../../allpairs-family.rst:101
+msgid "0.68"
+msgstr ""
+
+#: ../../allpairs-family.rst:102
+msgid "3500"
+msgstr ""
+
+#: ../../allpairs-family.rst:102
+msgid "1.24E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:102
+msgid "10526"
+msgstr ""
+
+#: ../../allpairs-family.rst:102
+msgid "2.08"
+msgstr ""
+
+#: ../../allpairs-family.rst:102
+msgid "0.95"
+msgstr ""
+
+#: ../../allpairs-family.rst:103
+msgid "4000"
+msgstr ""
+
+#: ../../allpairs-family.rst:103
+msgid "1.41E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:103
+msgid "12484"
+msgstr ""
+
+#: ../../allpairs-family.rst:103
+msgid "3.16"
+msgstr ""
+
+#: ../../allpairs-family.rst:103
+msgid "1.24"
+msgstr ""
+
+#: ../../allpairs-family.rst:104
+msgid "4500"
+msgstr ""
+
+#: ../../allpairs-family.rst:104
+msgid "1.58E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:104
+msgid "14354"
+msgstr ""
+
+#: ../../allpairs-family.rst:104
+msgid "4.49"
+msgstr ""
+
+#: ../../allpairs-family.rst:104
+msgid "1.47"
+msgstr ""
+
+#: ../../allpairs-family.rst:105
+msgid "5000"
+msgstr ""
+
+#: ../../allpairs-family.rst:105
+msgid "1.76E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:105
+msgid "16503"
+msgstr ""
+
+#: ../../allpairs-family.rst:105
+msgid "6.05"
+msgstr ""
+
+#: ../../allpairs-family.rst:105
+msgid "1.78"
+msgstr ""
+
+#: ../../allpairs-family.rst:106
+msgid "5500"
+msgstr ""
+
+#: ../../allpairs-family.rst:106
+msgid "1.93E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:106
+msgid "18623"
+msgstr ""
+
+#: ../../allpairs-family.rst:106
+msgid "7.53"
+msgstr ""
+
+#: ../../allpairs-family.rst:106
+msgid "2.03"
+msgstr ""
+
+#: ../../allpairs-family.rst:107
+msgid "6000"
+msgstr ""
+
+#: ../../allpairs-family.rst:107
+msgid "2.11E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:107
+msgid "20710"
+msgstr ""
+
+#: ../../allpairs-family.rst:107
+msgid "8.47"
+msgstr ""
+
+#: ../../allpairs-family.rst:107
+msgid "2.37"
+msgstr ""
+
+#: ../../allpairs-family.rst:108
+msgid "6500"
+msgstr ""
+
+#: ../../allpairs-family.rst:108
+msgid "2.28E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:108
+msgid "22752"
+msgstr ""
+
+#: ../../allpairs-family.rst:108
+msgid "9.99"
+msgstr ""
+
+#: ../../allpairs-family.rst:108
+msgid "2.68"
+msgstr ""
+
+#: ../../allpairs-family.rst:109
+msgid "7000"
+msgstr ""
+
+#: ../../allpairs-family.rst:109
+msgid "2.46E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:109
+msgid "24687"
+msgstr ""
+
+#: ../../allpairs-family.rst:109
+msgid "11.82"
+msgstr ""
+
+#: ../../allpairs-family.rst:109
+msgid "3.12"
+msgstr ""
+
+#: ../../allpairs-family.rst:110
+msgid "7500"
+msgstr ""
+
+#: ../../allpairs-family.rst:110
+msgid "2.64E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:110
+msgid "26861"
+msgstr ""
+
+#: ../../allpairs-family.rst:110
+msgid "13.94"
+msgstr ""
+
+#: ../../allpairs-family.rst:110
+msgid "3.60"
+msgstr ""
+
+#: ../../allpairs-family.rst:111
+msgid "8000"
+msgstr ""
+
+#: ../../allpairs-family.rst:111
+msgid "2.83E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:111
+msgid "29050"
+msgstr ""
+
+#: ../../allpairs-family.rst:111
+msgid "15.61"
+msgstr ""
+
+#: ../../allpairs-family.rst:111
+msgid "4.09"
+msgstr ""
+
+#: ../../allpairs-family.rst:112
+msgid "8500"
+msgstr ""
+
+#: ../../allpairs-family.rst:112
+msgid "3.01E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:112
+msgid "31693"
+msgstr ""
+
+#: ../../allpairs-family.rst:112
+msgid "17.43"
+msgstr ""
+
+#: ../../allpairs-family.rst:112
+msgid "4.63"
+msgstr ""
+
+#: ../../allpairs-family.rst:113
+msgid "9000"
+msgstr ""
+
+#: ../../allpairs-family.rst:113
+msgid "3.17E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:113
+msgid "33879"
+msgstr ""
+
+#: ../../allpairs-family.rst:113
+msgid "19.19"
+msgstr ""
+
+#: ../../allpairs-family.rst:113
+msgid "5.34"
+msgstr ""
+
+#: ../../allpairs-family.rst:114
+msgid "9500"
+msgstr ""
+
+#: ../../allpairs-family.rst:114
+msgid "3.35E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:114
+msgid "36287"
+msgstr ""
+
+#: ../../allpairs-family.rst:114
+msgid "20.77"
+msgstr ""
+
+#: ../../allpairs-family.rst:114
+msgid "6.24"
+msgstr ""
+
+#: ../../allpairs-family.rst:115
+msgid "10000"
+msgstr ""
+
+#: ../../allpairs-family.rst:115
+msgid "3.52E-7"
+msgstr ""
+
+#: ../../allpairs-family.rst:115
+msgid "38491"
+msgstr ""
+
+#: ../../allpairs-family.rst:115
+msgid "23.26"
+msgstr ""
+
+#: ../../allpairs-family.rst:115
+msgid "6.51"
+msgstr ""
+
+#: ../../allpairs-family.rst:119
+msgid "Two"
+msgstr ""
+
+#: ../../allpairs-family.rst:121
+msgid ""
+"This test is with a bounding box The density of the passed graph higher "
+"than of the Test One. For each <SIZE> 30 tests were executed to get the "
+"average The tested edge query is:"
+msgstr ""
+
+#: ../../allpairs-family.rst:133
+msgid "The tested queries"
+msgstr ""
+
+#: ../../allpairs-family.rst:142
+msgid "is the size of the bounding box."
+msgstr ""
+
+#: ../../allpairs-family.rst:153
+msgid "0.001"
+msgstr ""
+
+#: ../../allpairs-family.rst:153
+msgid "44"
+msgstr ""
+
+#: ../../allpairs-family.rst:153
+msgid "0.0608"
+msgstr ""
+
+#: ../../allpairs-family.rst:153
+msgid "1197"
+msgstr ""
+
+#: ../../allpairs-family.rst:153 ../../allpairs-family.rst:154
+msgid "0.10"
+msgstr ""
+
+#: ../../allpairs-family.rst:154
+msgid "0.002"
+msgstr ""
+
+#: ../../allpairs-family.rst:154
+msgid "99"
+msgstr ""
+
+#: ../../allpairs-family.rst:154
+msgid "0.0251"
+msgstr ""
+
+#: ../../allpairs-family.rst:154
+msgid "4330"
+msgstr ""
+
+#: ../../allpairs-family.rst:155
+msgid "0.003"
+msgstr ""
+
+#: ../../allpairs-family.rst:155
+msgid "223"
+msgstr ""
+
+#: ../../allpairs-family.rst:155
+msgid "0.0122"
+msgstr ""
+
+#: ../../allpairs-family.rst:155
+msgid "18849"
+msgstr ""
+
+#: ../../allpairs-family.rst:155
+msgid "0.12"
+msgstr ""
+
+#: ../../allpairs-family.rst:156
+msgid "0.004"
+msgstr ""
+
+#: ../../allpairs-family.rst:156
+msgid "358"
+msgstr ""
+
+#: ../../allpairs-family.rst:156
+msgid "0.0085"
+msgstr ""
+
+#: ../../allpairs-family.rst:156
+msgid "71834"
+msgstr ""
+
+#: ../../allpairs-family.rst:156
+msgid "0.16"
+msgstr ""
+
+#: ../../allpairs-family.rst:157
+msgid "0.005"
+msgstr ""
+
+#: ../../allpairs-family.rst:157
+msgid "470"
+msgstr ""
+
+#: ../../allpairs-family.rst:157
+msgid "0.0070"
+msgstr ""
+
+#: ../../allpairs-family.rst:157
+msgid "116290"
+msgstr ""
+
+#: ../../allpairs-family.rst:157
+msgid "0.22"
+msgstr ""
+
+#: ../../allpairs-family.rst:157
+msgid "0.19"
+msgstr ""
+
+#: ../../allpairs-family.rst:158
+msgid "0.006"
+msgstr ""
+
+#: ../../allpairs-family.rst:158
+msgid "639"
+msgstr ""
+
+#: ../../allpairs-family.rst:158
+msgid "0.0055"
+msgstr ""
+
+#: ../../allpairs-family.rst:158
+msgid "207030"
+msgstr ""
+
+#: ../../allpairs-family.rst:158
+msgid "0.27"
+msgstr ""
+
+#: ../../allpairs-family.rst:159
+msgid "0.007"
+msgstr ""
+
+#: ../../allpairs-family.rst:159
+msgid "843"
+msgstr ""
+
+#: ../../allpairs-family.rst:159
+msgid "0.0043"
+msgstr ""
+
+#: ../../allpairs-family.rst:159
+msgid "346930"
+msgstr ""
+
+#: ../../allpairs-family.rst:159
+msgid "0.64"
+msgstr ""
+
+#: ../../allpairs-family.rst:159
+msgid "0.38"
+msgstr ""
+
+#: ../../allpairs-family.rst:160
+msgid "0.008"
+msgstr ""
+
+#: ../../allpairs-family.rst:160
+msgid "996"
+msgstr ""
+
+#: ../../allpairs-family.rst:160
+msgid "0.0037"
+msgstr ""
+
+#: ../../allpairs-family.rst:160
+msgid "469936"
+msgstr ""
+
+#: ../../allpairs-family.rst:160
+msgid "0.90"
+msgstr ""
+
+#: ../../allpairs-family.rst:160
+msgid "0.49"
+msgstr ""
+
+#: ../../allpairs-family.rst:161
+msgid "0.009"
+msgstr ""
+
+#: ../../allpairs-family.rst:161
+msgid "1146"
+msgstr ""
+
+#: ../../allpairs-family.rst:161
+msgid "0.0032"
+msgstr ""
+
+#: ../../allpairs-family.rst:161
+msgid "613135"
+msgstr ""
+
+#: ../../allpairs-family.rst:161
+msgid "1.26"
+msgstr ""
+
+#: ../../allpairs-family.rst:161
+msgid "0.62"
+msgstr ""
+
+#: ../../allpairs-family.rst:162
+msgid "0.010"
+msgstr ""
+
+#: ../../allpairs-family.rst:162
+msgid "1360"
+msgstr ""
+
+#: ../../allpairs-family.rst:162
+msgid "0.0027"
+msgstr ""
+
+#: ../../allpairs-family.rst:162
+msgid "849304"
+msgstr ""
+
+#: ../../allpairs-family.rst:162
+msgid "1.87"
+msgstr ""
+
+#: ../../allpairs-family.rst:162
+msgid "0.82"
+msgstr ""
+
+#: ../../allpairs-family.rst:163
+msgid "0.011"
+msgstr ""
+
+#: ../../allpairs-family.rst:163
+msgid "1573"
+msgstr ""
+
+#: ../../allpairs-family.rst:163
+msgid "0.0024"
+msgstr ""
+
+#: ../../allpairs-family.rst:163
+msgid "1147101"
+msgstr ""
+
+#: ../../allpairs-family.rst:163
+msgid "2.65"
+msgstr ""
+
+#: ../../allpairs-family.rst:163
+msgid "1.04"
+msgstr ""
+
+#: ../../allpairs-family.rst:164
+msgid "0.012"
+msgstr ""
+
+#: ../../allpairs-family.rst:164
+msgid "1789"
+msgstr ""
+
+#: ../../allpairs-family.rst:164
+msgid "0.0021"
+msgstr ""
+
+#: ../../allpairs-family.rst:164
+msgid "1483629"
+msgstr ""
+
+#: ../../allpairs-family.rst:164
+msgid "3.72"
+msgstr ""
+
+#: ../../allpairs-family.rst:164
+msgid "1.35"
+msgstr ""
+
+#: ../../allpairs-family.rst:165
+msgid "0.013"
+msgstr ""
+
+#: ../../allpairs-family.rst:165
+msgid "1975"
+msgstr ""
+
+#: ../../allpairs-family.rst:165
+msgid "0.0019"
+msgstr ""
+
+#: ../../allpairs-family.rst:165
+msgid "1846897"
+msgstr ""
+
+#: ../../allpairs-family.rst:165
+msgid "4.86"
+msgstr ""
+
+#: ../../allpairs-family.rst:165
+msgid "1.68"
+msgstr ""
+
+#: ../../allpairs-family.rst:166
+msgid "0.014"
+msgstr ""
+
+#: ../../allpairs-family.rst:166
+msgid "2281"
+msgstr ""
+
+#: ../../allpairs-family.rst:166
+msgid "0.0017"
+msgstr ""
+
+#: ../../allpairs-family.rst:166
+msgid "2438298"
+msgstr ""
+
+#: ../../allpairs-family.rst:166
+msgid "7.08"
+msgstr ""
+
+#: ../../allpairs-family.rst:166
+msgid "2.28"
+msgstr ""
+
+#: ../../allpairs-family.rst:167
+msgid "0.015"
+msgstr ""
+
+#: ../../allpairs-family.rst:167
+msgid "2588"
+msgstr ""
+
+#: ../../allpairs-family.rst:167
+msgid "0.0015"
+msgstr ""
+
+#: ../../allpairs-family.rst:167
+msgid "3156007"
+msgstr ""
+
+#: ../../allpairs-family.rst:167
+msgid "10.28"
+msgstr ""
+
+#: ../../allpairs-family.rst:167
+msgid "2.80"
+msgstr ""
+
+#: ../../allpairs-family.rst:168
+msgid "0.016"
+msgstr ""
+
+#: ../../allpairs-family.rst:168
+msgid "2958"
+msgstr ""
+
+#: ../../allpairs-family.rst:168
+msgid "0.0013"
+msgstr ""
+
+#: ../../allpairs-family.rst:168
+msgid "4090618"
+msgstr ""
+
+#: ../../allpairs-family.rst:168
+msgid "14.67"
+msgstr ""
+
+#: ../../allpairs-family.rst:168
+msgid "3.76"
+msgstr ""
+
+#: ../../allpairs-family.rst:169
+msgid "0.017"
+msgstr ""
+
+#: ../../allpairs-family.rst:169
+msgid "3247"
+msgstr ""
+
+#: ../../allpairs-family.rst:169
+msgid "0.0012"
+msgstr ""
+
+#: ../../allpairs-family.rst:169
+msgid "4868919"
+msgstr ""
+
+#: ../../allpairs-family.rst:169
+msgid "18.12"
+msgstr ""
+
+#: ../../allpairs-family.rst:169
+msgid "4.48"
+msgstr ""
+
+#: ../../allpairs-family.rst:174
+msgid "See Also"
+msgstr ""
+
+#: ../../allpairs-family.rst:176
+msgid ":ref:`pgr_johnson`"
+msgstr ""
+
+#: ../../allpairs-family.rst:177
+msgid ":ref:`pgr_floydWarshall`"
+msgstr ""
+
+#: ../../allpairs-family.rst:178
+msgid ""
+"`Boost floyd-Warshall "
+"<http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ "
+"algorithm"
+msgstr ""
+
+#: ../../allpairs-family.rst:181
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../allpairs-family.rst:182
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../allpairs-family.rst:183
+msgid ":ref:`search`"
+msgstr ""
+

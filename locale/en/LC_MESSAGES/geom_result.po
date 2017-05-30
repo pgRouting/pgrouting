@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 08:27-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+#: ../../geom_result.rst:13
+msgid "pgr_geomResult[]"
+msgstr ""
+
+#: ../../geom_result.rst:19
+msgid "Name"
+msgstr ""
+
+#: ../../geom_result.rst:21
+msgid ""
+"``pgr_geomResult[]`` — A set of records to describe a path result with "
+"geometry attribute."
+msgstr ""
+
+#: ../../geom_result.rst:25
+msgid "Description"
+msgstr ""
+
+#: ../../geom_result.rst
+msgid "seq"
+msgstr ""
+
+#: ../../geom_result.rst:37
+msgid "sequential ID indicating the path order"
+msgstr ""
+
+#: ../../geom_result.rst
+msgid "id1"
+msgstr ""
+
+#: ../../geom_result.rst:38 ../../geom_result.rst:39
+msgid "generic name, to be specified by the function"
+msgstr ""
+
+#: ../../geom_result.rst
+msgid "id2"
+msgstr ""
+
+#: ../../geom_result.rst
+msgid "geom"
+msgstr ""
+
+#: ../../geom_result.rst:40
+msgid "geometry attribute"
+msgstr ""
+
+#: ../../geom_result.rst:44
+msgid "History"
+msgstr ""
+
+#: ../../geom_result.rst:45
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../geom_result.rst:46
+msgid "Replaces ``geoms``"
+msgstr ""
+
+#: ../../geom_result.rst:50
+msgid "See Also"
+msgstr ""
+
+#: ../../geom_result.rst:52
+msgid ":ref:`introduction`"
+msgstr ""
+

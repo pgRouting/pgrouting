@@ -1,0 +1,251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 08:27-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+#: ../../pgr_labelGraph.rst:15
+msgid "pgr_labelGraph - Proposed"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:18
+msgid "Name"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:20
+msgid ""
+"``pgr_labelGraph`` — Locates and labels sub-networks within a network "
+"which are not topologically connected."
+msgstr ""
+
+#: ../../proposed.rst:3
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../proposed.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../proposed.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../proposed.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../proposed.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../proposed.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../proposed.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../proposed.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../proposed.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../proposed.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../proposed.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../proposed.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../proposed.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../proposed.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../proposed.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:28
+msgid "Synopsis"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:30
+msgid ""
+"Must be run after ``pgr_createTopology()``. No use of ``geometry`` "
+"column. Only ``id``, ``source`` and  ``target`` columns are required."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:32
+msgid "The function returns:"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:34
+msgid ""
+"``OK`` when a column with provided name has been generated and populated "
+"successfully. All connected edges will have unique similar integer "
+"values. In case of ``rows_where`` condition, non participating rows will "
+"have -1 integer values."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:35
+msgid ""
+"``FAIL`` when the processing cannot be finished due to some error. Notice"
+" will be thrown accordingly."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:36
+msgid ""
+"``rows_where condition generated 0 rows`` when passed SQL condition has "
+"not been fulfilled by any row."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:48
+msgid "Description"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:50
+msgid ""
+"A network behind any routing query may consist of sub-networks completely"
+" isolated from each other. Possible reasons could be:"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:52
+msgid "An island with no bridge connecting to the mainland."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:53
+msgid ""
+"An edge or mesh of edges failed to connect to other networks because of "
+"human negligence during data generation."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:54
+msgid "The data is not properly noded."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:55
+msgid "Topology creation failed to succeed."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:57
+msgid ""
+"pgr_labelGraph() will create an integer column (with the name provided by"
+" the user) and will assign same integer values to all those edges in the "
+"network which are connected topologically. Thus better analysis regarding"
+" network structure is possible. In case of ``rows_where`` condition, non "
+"participating rows will have -1 integer values."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:59
+msgid ""
+"Prerequisites: Must run ``pgr_createTopology()`` in order to generate "
+"``source`` and ``target`` columns. Primary key column ``id`` should also "
+"be there in the network table."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:62
+msgid "Function accepts the following parameters:"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst
+msgid "edge_table"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:64
+msgid "``text`` Network table name, with optional schema name."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst
+msgid "id"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:65
+msgid "``text`` Primary key column name of the network table. Default is ``id``."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst
+msgid "source"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:66
+msgid ""
+"``text`` Source column name generated after ``pgr_createTopology()``. "
+"Default is ``source``."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst
+msgid "target"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:67
+msgid ""
+"``text`` Target column name generated after ``pgr_createTopology()``. "
+"Default is ``target``."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst
+msgid "subgraph"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:68
+msgid ""
+"``text`` Column name which will hold the integer labels for each sub-"
+"graph. Default is ``subgraph``."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst
+msgid "rows_where"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:69
+msgid ""
+"``text`` The SQL where condition. Default is ``true``, means the "
+"processing will be done on the whole table."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:75
+msgid "Example Usage"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:77
+msgid "The sample data, has 3 subgraphs."
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:85
+msgid "See Also"
+msgstr ""
+
+#: ../../pgr_labelGraph.rst:87
+msgid ""
+"`pgr_createTopology "
+"<https://github.com/Zia-/pgrouting/blob/develop/src/common/sql/pgrouting_topology.sql>`_"
+" to create the topology of a table based on its geometry and tolerance "
+"value."
+msgstr ""
+
