@@ -13,7 +13,7 @@ option(BUILD_LATEX
     "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
 option(BUILD_HTML
-    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
+    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" OFF)
 
 option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
@@ -76,33 +76,15 @@ message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
 add_subdirectory("src")
 add_subdirectory("images")
 
-add_subdirectory("allpairs")
-add_subdirectory("alpha_shape")
-add_subdirectory("astar")
-add_subdirectory("bdAstar")
-add_subdirectory("bdDijkstra")
-add_subdirectory("common")
-add_subdirectory("contraction")
-add_subdirectory("costMatrix")
-add_subdirectory("dijkstra")
-add_subdirectory("driving_distance")
-add_subdirectory("ksp")
-add_subdirectory("label_graph")
-add_subdirectory("max_flow")
-add_subdirectory("pickDeliver")
-add_subdirectory("topology")
-add_subdirectory("trsp")
-add_subdirectory("tsp")
-add_subdirectory("vrp_basic")
-add_subdirectory("vrppdtw")
-add_subdirectory("withPoints")
+foreach (subdir ${PgRouting_DOC_DIRECTORIES})
+    add_subdirectory(${subdir})
+endforeach()
 
 
 #add_subdirectory("static")
 #add_subdirectory("themes")
 
 configure_file("../tools/testers/sampledata.sql" "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/sampledata.sql")
-configure_file("tx_config" ".tx/config" COPYONLY)
 
 
 #message(STATUS "PGROUTING_BINARY_DIR = ${PGROUTING_BINARY_DIR}")
@@ -180,21 +162,49 @@ endforeach()
 if (BUILD_LOCALE)
     add_custom_target(locale 
         COMMENT "Building documentation with Sphinx")
-    add_custom_command(
-        TARGET locale POST_BUILD
-        COMMAND ${SPHINX_EXECUTABLE} 
-        #-q  # Enable for quiet mode 
-        #-Q  # Enable for even more quiet mode
-        #-v  # increase verbosity
-        #-E  # don't use a saved environment, always read all file
-        #-a  # write all files; default is to only write new and changed files
-        -b gettext
-        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${PGR_DOCUMENTATION_BUILD_DIR}/gettext"
-        COMMENT "Generating gettext documentation ...")
+    if (true)
+        add_custom_command(
+            TARGET locale POST_BUILD
+            COMMAND ${SPHINX_EXECUTABLE} 
+            #-q  # Enable for quiet mode 
+            #-Q  # Enable for even more quiet mode
+            #-v  # increase verbosity
+            #-E  # don't use a saved environment, always read all file
+            #-a  # write all files; default is to only write new and changed files
+            -b gettext
+            -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+            "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+            "${PGR_DOCUMENTATION_BUILD_DIR}/gettext"
+
+            COMMAND sphinx-intl update
+            -p ${PGR_DOCUMENTATION_BUILD_DIR}/gettext -l es -l en
+
+            COMMAND tx pull -r pgrouting.pgr_createVerticesTable -f -l es
+
+            #COMMAND sphinx-intl build
+
+            #COMMAND ${SPHINX_EXECUTABLE} 
+            #-b html
+            #-D language='es'
+            #-c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+            #"${PGR_DOCUMENTATION_SOURCE_DIR}" 
+            #"${PGR_DOCUMENTATION_SOURCE_DIR}/html/es"
+
+            COMMENT "Generating ${DOC_TARGET} documentation ...")
+    else()
+        add_custom_command(
+            TARGET locale POST_BUILD
+            COMMAND ${SPHINX_EXECUTABLE} 
+            -b html
+            -D language='es'
+            -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+            "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+            "${PGR_DOCUMENTATION_SOURCE_DIR}/html/es"
+            COMMENT "Generating ${DOC_TARGET} documentation ...")
+    endif()
     add_dependencies(doc locale)
 endif()
+
 
 
 if(BUILD_LATEX)
