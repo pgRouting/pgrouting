@@ -69,7 +69,7 @@ process(
         char* edges_sql,
         ArrayType *border_verticesArr,
         bool directed,
-#if 0
+#if 1
         /*
          * handling arrays example
          */
@@ -84,16 +84,13 @@ process(
     pgr_SPI_connect();
 
 #if 1
-    /*
-     *  handling arrays example
-     */
 
     PGR_DBG("Initializing arrays");
     int64_t* start_borderverticesArr = NULL;
     size_t size_start_borderverticesArr = 0;
     start_borderverticesArr = (int64_t*)
         pgr_get_bigIntArray(&size_start_borderverticesArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_borderverticesArr);
+    PGR_DBG("start_borderverticesArr size %ld ", size_start_borderverticesArr);
 
 #endif
 
@@ -132,9 +129,7 @@ process(
             start_vid,
             end_vid,
 #if 1
-    /*
-     *  handling arrays example
-     */
+
 
             start_borderverticesArr, size_start_borderverticesArr,
 #endif
