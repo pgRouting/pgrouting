@@ -6,6 +6,7 @@ SET client_min_messages TO ERROR;
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
+SELECT todo_start();
 CREATE or REPLACE FUNCTION dijkstratrsp_compare_dijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
@@ -66,8 +67,7 @@ $BODY$
 language plpgsql;
 
 SELECT * from dijkstratrsp_compare_dijkstra();
-
+SELECT todo_end();
 
 SELECT * FROM finish();
 ROLLBACK;
-
