@@ -5,9 +5,12 @@ SELECT has_function('pgr_dijkstratrsp');
 
 SELECT has_function('pgr_dijkstratrsp', ARRAY[ 'text', 'text', 'bigint', 'bigint', 'boolean', 'boolean' ]);
 
-SELECT todo_start();
-SELECT function_returns('pgr_dijkstratrsp', ARRAY[ 'int', 'int', 'bigint', 'bigint', 'float', 'float' ], 'setof record');
-SELECT todo_end();
+--SELECT todo_start();
+SELECT function_returns('pgr_dijkstratrsp',
+    --ARRAY['text','bigint','bigint','boolean'],
+    ARRAY[ 'int', 'int', 'bigint', 'bigint', 'float', 'float' ],
+     'set of record');
+--SELECT todo_end();
 
 -- testing column names
 SELECT bag_has(
