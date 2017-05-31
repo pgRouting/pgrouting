@@ -24,6 +24,9 @@ option(DOC_USE_BOOTSTRAP
 option(BUILD_LOCALE
     "Set ON|OFF (default=ON) to build Translated Documentation" OFF)
 
+#TODO make variables for the languages
+#set(PGR_DOCUMENTATION_LANGUAGES "en" "es")
+set(PGR_DOCUMENTATION_LANGUAGES "en")
 
 if(NOT WITH_DOC)
     return()
@@ -140,7 +143,6 @@ add_custom_target(doc
 # Localization output directory
 #set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
 
-set(PGR_DOCUMENTATION_LANGUAGES "en" "es")
 
 
 foreach (DOC_TARGET ${DOC_TARGETS})
