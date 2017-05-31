@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -31,7 +31,6 @@ CREATE OR REPLACE FUNCTION pgr_areaContraction(
     TEXT,
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
         OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
@@ -42,4 +41,3 @@ CREATE OR REPLACE FUNCTION pgr_areaContraction(
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'areaContraction'
 LANGUAGE c IMMUTABLE STRICT;
-

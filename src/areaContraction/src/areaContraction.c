@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 /**
- *  postgres_connection.h 
+ *  postgres_connection.h
  *
  *  - should allways be first in the C code
  */
@@ -67,8 +67,8 @@ static
 void
 process(
         char* edges_sql,
-        int64_t start_vid,
-        int64_t end_vid,
+        ArrayType *border_verticesArr,
+        bool directed,
 #if 0
         /*
          * handling arrays example
@@ -76,15 +76,14 @@ process(
         ArrayType *starts,
         ArrayType *ends,
 #endif
-        bool directed,
-        bool only_cost,
+        // bool directed,
+        // bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
     pgr_SPI_connect();
-
 
 #if 0
     /*
@@ -213,8 +212,8 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
-                PG_GETARG_INT64(2),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_BOOL(2),
 #if 0
                 /*
                  *  handling arrays example
@@ -223,8 +222,8 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
 #endif
-                PG_GETARG_BOOL(3),
-                PG_GETARG_BOOL(4),
+                // PG_GETARG_BOOL(3),
+                // PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
