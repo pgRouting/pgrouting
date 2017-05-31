@@ -1,8 +1,6 @@
 
 SET(LOCAL_FILES
     aStar-family.rst
-    doc-aStarCost.queries
-    doc-astar.queries
     pgr_aStarCost.rst
     pgr_aStar.rst
     )

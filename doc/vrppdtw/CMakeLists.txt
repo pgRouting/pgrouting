@@ -1,6 +1,5 @@
 
 SET(LOCAL_FILES
-     doc-gsoc_vrppdtw.queries
      pgr_gsoc_vrppdtw.rst
     )
 

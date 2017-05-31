@@ -134,14 +134,6 @@ This signature performs the optimization based on the optional parameters
          travel_time, arrival_time, wait_time, service_time,  departure_time)
 
 
-:Example:
-
-This example use the following data: TODO put link
-
-.. literalinclude:: doc-pickDeliver.queries
-   :start-after: --q2
-   :end-before: --q3
-
 Description of the Signatures
 -------------------------------
 

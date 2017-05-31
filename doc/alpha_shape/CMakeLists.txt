@@ -1,7 +1,5 @@
 
 SET(LOCAL_FILES
-    doc-pgr_alphashape.queries
-    doc-pgr_pointsAsPolygon.queries
     pgr_alphaShape.rst
     pgr_pointsAsPolygon.rst
     )

@@ -1,6 +1,5 @@
 
 SET(LOCAL_FILES
-     doc-pgr_labelGraph.queries
      pgr_labelGraph.rst
     )
 

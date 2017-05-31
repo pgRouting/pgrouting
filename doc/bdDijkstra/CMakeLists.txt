@@ -1,8 +1,6 @@
 
 SET(LOCAL_FILES
     bdDijkstra-family.rst
-    doc-pgr_bdDijkstraCost.queries
-    doc-pgr_bdDijkstra.queries
     pgr_bdDijkstraCost.rst
     pgr_bdDijkstra.rst
     )

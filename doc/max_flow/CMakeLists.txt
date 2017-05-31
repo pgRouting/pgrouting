@@ -7,13 +7,6 @@ SET(LOCAL_FILES
     pgr_edgeDisjointPaths.rst
     pgr_maxCardinalityMatch.rst
     pgr_pushRelabel.rst
-
-    doc-pgr_maxFlow.queries
-    doc-pgr_boykovKolmogorov.queries
-    doc-pgr_edmondsKarp.queries
-    doc-pgr_edgeDisjointPaths.queries
-    doc-pgr_maxCardinalityMatch.queries
-    doc-pgr_pushRelabel.queries
     )
 
 foreach (f ${LOCAL_FILES})

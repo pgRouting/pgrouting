@@ -4,9 +4,6 @@ SET(LOCAL_FILES
     pgr_dijkstraCost.rst
     pgr_dijkstra.rst
     pgr_dijkstraVia.rst
-    doc-pgr_dijkstraCost.queries
-    doc-pgr_dijkstra.queries
-    doc-pgr_dijkstraVia.queries
     )
 
 foreach (f ${LOCAL_FILES})

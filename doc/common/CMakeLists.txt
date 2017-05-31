@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
     cost_result.rst
-    doc-pgr_version.queries
     geom_result.rst
     pgr_version.rst
     types_index.rst

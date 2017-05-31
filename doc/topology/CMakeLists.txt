@@ -6,9 +6,6 @@ SET(LOCAL_FILES
     pgr_analyzeOneWay.rst
     pgr_createVerticesTable.rst
     topology-functions.rst
-
-    doc-pgr_analyzeGraph.queries
-    doc-pgr_createTopology.queries
     )
 
 foreach (f ${LOCAL_FILES})

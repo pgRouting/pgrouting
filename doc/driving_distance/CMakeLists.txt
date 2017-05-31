@@ -1,6 +1,5 @@
 
 SET(LOCAL_FILES
-    doc-pgr_drivingDistance.queries
     drivingDistance-category.rst
     pgr_drivingDistance.rst
     )

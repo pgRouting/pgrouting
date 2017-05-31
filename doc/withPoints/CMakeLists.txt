@@ -1,13 +1,8 @@
 
 SET(LOCAL_FILES
-    doc-pgr_withPointsDD.queries
-    doc-pgr_withPoints.queries
     pgr_withPointsDD.rst
     pgr_withPoints.rst
     withPoints-family.rst
-    doc-pgr_withPointsCost.queries
-    doc-pgr_withPointsKSP.queries
-    doc-pgr_withPointsVia.queries
     pgr_withPointsCost.rst
     pgr_withPointsKSP.rst
     pgr_withPointsVia.rst

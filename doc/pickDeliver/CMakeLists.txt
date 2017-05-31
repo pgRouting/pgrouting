@@ -1,7 +1,5 @@
 
 SET(LOCAL_FILES
-     doc-pickDeliverEuclidean.queries
-     doc-pickDeliver.queries
      pgr_pickDeliverEuclidean.rst
      pgr_pickDeliver.rst
      VRP-category.rst

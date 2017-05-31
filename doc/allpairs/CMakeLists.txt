@@ -1,8 +1,6 @@
 
 SET(LOCAL_FILES
     allpairs-family.rst
-    doc-floydWarshall.queries
-    doc-johnson.queries
     pgr_floydWarshall.rst
     pgr_johnson.rst
     )

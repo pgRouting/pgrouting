@@ -1,10 +1,7 @@
 
 SET(LOCAL_FILES
     contraction-family.rst
-    doc-contractGraph.queries
-    doc-contraction.queries
     pgr_contractGraph.rst
-    proof_of_concept.queries
     )
 
 foreach (f ${LOCAL_FILES})

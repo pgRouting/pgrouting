@@ -1,6 +1,5 @@
 
 SET(LOCAL_FILES
-    doc-trsp.queries
     pgr_trsp.rst
     )
 

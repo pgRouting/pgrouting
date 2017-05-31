@@ -7,7 +7,6 @@ SET(LOCAL_FILES
     cost-category.rst
     pgr_bdAstarCostMatrix.rst
     pgr_dijkstraCostMatrix.rst
-    doc-pgr_fooDmatrix.queries
     )
 
 foreach (f ${LOCAL_FILES})

@@ -2,7 +2,6 @@
 SET(LOCAL_FILES
      KSP-category.rst
      pgr_KSP.rst
-     doc-ksp.queries
     )
 
 foreach (f ${LOCAL_FILES})

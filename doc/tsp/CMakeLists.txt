@@ -3,8 +3,6 @@ SET(LOCAL_FILES
     pgr_eucledianTSP.rst
     pgr_TSP.rst
     TSP-family.rst
-    doc-pgr_eucledianTSP.queries
-    doc-pgr_TSP.queries
     )
 
 foreach (f ${LOCAL_FILES})

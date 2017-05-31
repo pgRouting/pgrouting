@@ -78,6 +78,7 @@ message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
 
 add_subdirectory("src")
 add_subdirectory("images")
+add_subdirectory("queries")
 
 foreach (subdir ${PgRouting_DOC_DIRECTORIES})
     add_subdirectory(${subdir})
