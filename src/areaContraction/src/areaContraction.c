@@ -76,8 +76,6 @@ process(
         ArrayType *starts,
         ArrayType *ends,
 #endif
-        // bool directed,
-        // bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     /*
@@ -85,23 +83,18 @@ process(
      */
     pgr_SPI_connect();
 
-#if 0
+#if 1
     /*
      *  handling arrays example
      */
 
     PGR_DBG("Initializing arrays");
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-    start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
+    int64_t* start_borderverticesArr = NULL;
+    size_t size_start_borderverticesArr = 0;
+    start_borderverticesArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_borderverticesArr, starts);
+    PGR_DBG("start_vidsArr size %ld ", size_start_borderverticesArr);
 
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-    end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
 #endif
 
     (*result_tuples) = NULL;
@@ -138,17 +131,15 @@ process(
             total_edges,
             start_vid,
             end_vid,
-#if 0
+#if 1
     /*
      *  handling arrays example
      */
 
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
+            start_borderverticesArr, size_start_borderverticesArr,
 #endif
 
             directed,
-            only_cost,
             result_tuples,
             result_count,
             &log_msg,
@@ -167,13 +158,12 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-#if 0
+#if 1
     /*
      *  handling arrays example
      */
 
-    if (end_vidsArr) pfree(end_vidsArr);
-    if (start_vidsArr) pfree(start_vidsArr);
+    if (start_borderverticesArr) pfree(start_borderverticesArr);
 #endif
 
     pgr_SPI_finish();
@@ -205,7 +195,6 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
            TEXT,
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
          **********************************************************************/
 
 
@@ -222,8 +211,6 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
 #endif
-                // PG_GETARG_BOOL(3),
-                // PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
