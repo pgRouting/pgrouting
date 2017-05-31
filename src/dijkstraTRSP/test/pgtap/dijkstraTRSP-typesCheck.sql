@@ -8,8 +8,8 @@ SELECT has_function('pgr_dijkstratrsp', ARRAY[ 'text', 'text', 'bigint', 'bigint
 --SELECT todo_start();
 SELECT function_returns('pgr_dijkstratrsp',
     --ARRAY['text','bigint','bigint','boolean'],
-    ARRAY[ 'int', 'int', 'bigint', 'bigint', 'float', 'float' ],
-     'set of record');
+    ARRAY[ 'text', 'text', 'bigint', 'bigint', 'boolean', 'boolean' ],
+     'setof record');
 --SELECT todo_end();
 
 -- testing column names
