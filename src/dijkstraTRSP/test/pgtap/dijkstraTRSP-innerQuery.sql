@@ -11,10 +11,11 @@ SELECT function_returns('pgr_dijkstratrsp',
     ARRAY['text', 'text', 'bigint', 'bigint', 'boolean','boolean'],
     'setof record');
 
+SELECT todo_start();
 SELECT style_dijkstra('pgr_dijkstratrsp', ', 2, 3)');
 SELECT style_dijkstra('pgr_dijkstratrsp', ', 2, 3, true)');
 SELECT style_dijkstra('pgr_dijkstratrsp', ', 2, 3, false)');
-
+SELECT todo_end();
 
 SELECT finish();
 ROLLBACK;
