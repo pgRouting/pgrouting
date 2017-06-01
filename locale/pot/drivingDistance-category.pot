@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,27 +16,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../drivingDistance-category.rst:14
+#: ../../build/doc/drivingDistance-category.rst:14
 msgid "Driving Distance - Category"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:18
+#: ../../build/doc/drivingDistance-category.rst:18
 msgid ":ref:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:19
+#: ../../build/doc/drivingDistance-category.rst:19
 msgid ":ref:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:20
+#: ../../build/doc/drivingDistance-category.rst:20
 msgid "Post pocessing"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:22
+#: ../../build/doc/drivingDistance-category.rst:22
 msgid ":ref:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:23
+#: ../../build/doc/drivingDistance-category.rst:23
 msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
 msgstr ""
 

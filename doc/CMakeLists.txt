@@ -6,47 +6,71 @@
 # Daniel Kastl 03/2013
 #
 
-option(WITH_DOC
-     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+#---------------------------------------------
+# Kind of sphinx output
+#---------------------------------------------
 
-option(BUILD_LATEX
+option(WITH_ALL_DOC
+    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+
+option(LATEX
     "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
-option(BUILD_HTML
+option(HTML
     "Set ON|OFF (default=ON) to build Documentation library tree as HTML" OFF)
 
-option(BUILD_MAN
+option(MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
-option(DOC_USE_BOOTSTRAP
-    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
+option(LOCALE
+    "Set ON|OFF (default=OFF) to build the locale files of all languages.
+    All other options are ignored
+    All supported languages are considered" OFF
+    )
 
-option(BUILD_LOCALE
-    "Set ON|OFF (default=ON) to build Translated Documentation" OFF)
-
-#TODO make variables for the languages
-#set(PGR_DOCUMENTATION_LANGUAGES "en" "es")
-set(PGR_DOCUMENTATION_LANGUAGES "en")
+if (NOT LOCALE)
+    foreach(opt HTML LATEX MAN)
+        if (${${opt}} OR WITH_ALL_DOC)
+            string(TOLOWER ${opt} val)
+            list(APPEND PgRouting_DOC_TARGETS ${val})
+            set(WITH_DOC ON)
+        endif()
+    endforeach()
+else()
+    set(WITH_DOC ON)
+endif()
 
 if(NOT WITH_DOC)
     return()
 endif()
 
-#message("PROCESSING DOCUMENTATION------------")
 
-find_package(Sphinx REQUIRED)
+#---------------------------------------------
+# Checking for prerwquisites
+#---------------------------------------------
+find_package(Sphinx ${SPHINX_MINIMUM_VERSION} REQUIRED)
+
 if (NOT SPHINX_FOUND)
-    message(WARNING "Sphinx not found. Cannot generate documentation!")
-    return()
+    message(FATAL_ERROR "Sphinx not found.
+    Cannot generate documentation!
+    Install Sphinx or build without documentation")
 endif()
+
 if (SPHINX_VERSION VERSION_LESS 1.0)
     message(WARNING "Your Sphinx version is too old!
-    This project requires Sphinx v1.0 or above to produce
+    This project requires Sphinx v${SPHINX_MINIMUM_VERSION} or above to produce
     proper documentation (you have v${SPHINX_VERSION}).
     You will get output but it will have errors.")
 endif()
 
 
+
+
+#---------------------------------------------
+# Kind of "looks"
+#---------------------------------------------
+option(DOC_USE_BOOTSTRAP
+    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
 if (DOC_USE_BOOTSTRAP)
     set(SPHINX_INCLUDE "import sphinx_bootstrap_theme")
@@ -67,6 +91,15 @@ endif()
 if(NOT DEFINED SPHINX_THEME_DIR)
     set(SPHINX_THEME_DIR)
 endif()
+
+
+#TODO make variables for the languages
+#set(PGR_DOCUMENTATION_LANGUAGES "en" "es")
+set(PGR_DOCUMENTATION_LANGUAGES "en")
+
+#message("PROCESSING DOCUMENTATION------------")
+
+
 
 # configured documentation tools and intermediate build results
 set(PGR_DOCUMENTATION_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
@@ -183,7 +216,7 @@ if (BUILD_LOCALE)
         -b gettext
         -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
         "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${PGR_DOCUMENTATION_BUILD_DIR}/gettext"
+        "${CMAKE_SOURCE_DIR}/locale/pot" 
 
         #COMMAND sphinx-intl update
         #-p ${PGR_DOCUMENTATION_BUILD_DIR}/gettext -l es -l en

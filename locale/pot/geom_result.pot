@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,68 +16,68 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../geom_result.rst:13
+#: ../../build/doc/geom_result.rst:13
 msgid "pgr_geomResult[]"
 msgstr ""
 
-#: ../../geom_result.rst:19
+#: ../../build/doc/geom_result.rst:19
 msgid "Name"
 msgstr ""
 
-#: ../../geom_result.rst:21
+#: ../../build/doc/geom_result.rst:21
 msgid "``pgr_geomResult[]`` — A set of records to describe a path result with geometry attribute."
 msgstr ""
 
-#: ../../geom_result.rst:25
+#: ../../build/doc/geom_result.rst:25
 msgid "Description"
 msgstr ""
 
-#: ../../geom_result.rst:0
+#: ../../build/doc/geom_result.rst:0
 msgid "seq"
 msgstr ""
 
-#: ../../geom_result.rst:37
+#: ../../build/doc/geom_result.rst:37
 msgid "sequential ID indicating the path order"
 msgstr ""
 
-#: ../../geom_result.rst:0
+#: ../../build/doc/geom_result.rst:0
 msgid "id1"
 msgstr ""
 
-#: ../../geom_result.rst:38
-#: ../../geom_result.rst:39
+#: ../../build/doc/geom_result.rst:38
+#: ../../build/doc/geom_result.rst:39
 msgid "generic name, to be specified by the function"
 msgstr ""
 
-#: ../../geom_result.rst:0
+#: ../../build/doc/geom_result.rst:0
 msgid "id2"
 msgstr ""
 
-#: ../../geom_result.rst:0
+#: ../../build/doc/geom_result.rst:0
 msgid "geom"
 msgstr ""
 
-#: ../../geom_result.rst:40
+#: ../../build/doc/geom_result.rst:40
 msgid "geometry attribute"
 msgstr ""
 
-#: ../../geom_result.rst:44
+#: ../../build/doc/geom_result.rst:44
 msgid "History"
 msgstr ""
 
-#: ../../geom_result.rst:45
+#: ../../build/doc/geom_result.rst:45
 msgid "New in version 2.0.0"
 msgstr ""
 
-#: ../../geom_result.rst:46
+#: ../../build/doc/geom_result.rst:46
 msgid "Replaces ``geoms``"
 msgstr ""
 
-#: ../../geom_result.rst:50
+#: ../../build/doc/geom_result.rst:50
 msgid "See Also"
 msgstr ""
 
-#: ../../geom_result.rst:52
+#: ../../build/doc/geom_result.rst:52
 msgid ":ref:`introduction`"
 msgstr ""
 

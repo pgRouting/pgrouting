@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,660 +16,660 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../VRP-category.rst:13
+#: ../../build/doc/VRP-category.rst:13
 msgid "Vehicle Routing Functions Category:"
 msgstr ""
 
-#: ../../proposed.rst:3
+#: ../../build/doc/proposed.rst:3
 msgid "Experimental functions"
 msgstr ""
 
-#: ../../proposed.rst:5
+#: ../../build/doc/proposed.rst:5
 msgid "They are not officially of the current release."
 msgstr ""
 
-#: ../../proposed.rst:6
+#: ../../build/doc/proposed.rst:6
 msgid "They likely will not be officially be part of the next release:"
 msgstr ""
 
-#: ../../proposed.rst:8
+#: ../../build/doc/proposed.rst:8
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
-#: ../../proposed.rst:9
+#: ../../build/doc/proposed.rst:9
 msgid "Name might change."
 msgstr ""
 
-#: ../../proposed.rst:10
+#: ../../build/doc/proposed.rst:10
 msgid "Signature might change."
 msgstr ""
 
-#: ../../proposed.rst:11
+#: ../../build/doc/proposed.rst:11
 msgid "Functionality might change."
 msgstr ""
 
-#: ../../proposed.rst:12
+#: ../../build/doc/proposed.rst:12
 msgid "pgTap tests might be missing."
 msgstr ""
 
-#: ../../proposed.rst:13
+#: ../../build/doc/proposed.rst:13
 msgid "Might need c/c++ coding."
 msgstr ""
 
-#: ../../proposed.rst:14
+#: ../../build/doc/proposed.rst:14
 msgid "May lack documentation."
 msgstr ""
 
-#: ../../proposed.rst:15
+#: ../../build/doc/proposed.rst:15
 msgid "Documentation if any might need to be rewritten."
 msgstr ""
 
-#: ../../proposed.rst:16
+#: ../../build/doc/proposed.rst:16
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
 
-#: ../../proposed.rst:17
+#: ../../build/doc/proposed.rst:17
 msgid "Might need a lot of feedback from the comunity."
 msgstr ""
 
-#: ../../proposed.rst:18
+#: ../../build/doc/proposed.rst:18
 msgid "Might depend on a proposed function of pgRouting"
 msgstr ""
 
-#: ../../proposed.rst:19
+#: ../../build/doc/proposed.rst:19
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../VRP-category.rst:22
+#: ../../build/doc/VRP-category.rst:22
 msgid "Pickup and delivery problem"
 msgstr ""
 
-#: ../../VRP-category.rst:23
+#: ../../build/doc/VRP-category.rst:23
 msgid ":ref:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
 msgstr ""
 
-#: ../../VRP-category.rst:24
+#: ../../build/doc/VRP-category.rst:24
 msgid ":ref:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
 msgstr ""
 
-#: ../../VRP-category.rst:25
+#: ../../build/doc/VRP-category.rst:25
 msgid ":ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)"
 msgstr ""
 
-#: ../../VRP-category.rst:28
+#: ../../build/doc/VRP-category.rst:28
 msgid "Delivery prolem"
 msgstr ""
 
-#: ../../VRP-category.rst:29
+#: ../../build/doc/VRP-category.rst:29
 msgid ":ref:`pgr_vrp_basic` - VRP One Depot"
 msgstr ""
 
-#: ../../VRP-category.rst:43
+#: ../../build/doc/VRP-category.rst:43
 msgid "Introduction"
 msgstr ""
 
-#: ../../VRP-category.rst:46
+#: ../../build/doc/VRP-category.rst:46
 msgid "TODO"
 msgstr ""
 
-#: ../../VRP-category.rst:49
+#: ../../build/doc/VRP-category.rst:49
 msgid "The following is a sketch"
 msgstr ""
 
-#: ../../VRP-category.rst:50
+#: ../../build/doc/VRP-category.rst:50
 msgid "Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles."
 msgstr ""
 
-#: ../../VRP-category.rst:52
+#: ../../build/doc/VRP-category.rst:52
 msgid "Optimization problem is NP-hard."
 msgstr ""
 
-#: ../../VRP-category.rst:53
+#: ../../build/doc/VRP-category.rst:53
 msgid "Pickup and Delivery:"
 msgstr ""
 
-#: ../../VRP-category.rst:55
+#: ../../build/doc/VRP-category.rst:55
 msgid "capacitated"
 msgstr ""
 
-#: ../../VRP-category.rst:56
+#: ../../build/doc/VRP-category.rst:56
 msgid "with time windows."
 msgstr ""
 
-#: ../../VRP-category.rst:58
+#: ../../build/doc/VRP-category.rst:58
 msgid "The vehicles"
 msgstr ""
 
-#: ../../VRP-category.rst:60
+#: ../../build/doc/VRP-category.rst:60
 msgid "have (x, y) start and ending locations."
 msgstr ""
 
-#: ../../VRP-category.rst:61
+#: ../../build/doc/VRP-category.rst:61
 msgid "have a start and ending service times."
 msgstr ""
 
-#: ../../VRP-category.rst:62
+#: ../../build/doc/VRP-category.rst:62
 msgid "have opening and closing times for the start and ending locations."
 msgstr ""
 
-#: ../../VRP-category.rst:64
+#: ../../build/doc/VRP-category.rst:64
 msgid "An order is for doing a pickup and a a deliver."
 msgstr ""
 
-#: ../../VRP-category.rst:66
+#: ../../build/doc/VRP-category.rst:66
 msgid "has (x, y) pickup and delivery locations."
 msgstr ""
 
-#: ../../VRP-category.rst:67
+#: ../../build/doc/VRP-category.rst:67
 msgid "has opening and closing times for the pickup and delivery locations."
 msgstr ""
 
-#: ../../VRP-category.rst:68
+#: ../../build/doc/VRP-category.rst:68
 msgid "has a pickup and deliver service times."
 msgstr ""
 
-#: ../../VRP-category.rst:70
+#: ../../build/doc/VRP-category.rst:70
 msgid "There is a customer where to deliver a pickup."
 msgstr ""
 
-#: ../../VRP-category.rst:72
+#: ../../build/doc/VRP-category.rst:72
 msgid "travel time between customers is distance / speed"
 msgstr ""
 
-#: ../../VRP-category.rst:73
+#: ../../build/doc/VRP-category.rst:73
 msgid "pickup and delivery pair is done with the same vehicle."
 msgstr ""
 
-#: ../../VRP-category.rst:74
+#: ../../build/doc/VRP-category.rst:74
 msgid "A pickup is done before the delivery."
 msgstr ""
 
-#: ../../VRP-category.rst:79
+#: ../../build/doc/VRP-category.rst:79
 msgid "Characteristics:"
 msgstr ""
 
-#: ../../VRP-category.rst:81
+#: ../../build/doc/VRP-category.rst:81
 msgid "No multiple time windows for a location."
 msgstr ""
 
-#: ../../VRP-category.rst:82
+#: ../../build/doc/VRP-category.rst:82
 msgid "Less vehicle used is considered better."
 msgstr ""
 
-#: ../../VRP-category.rst:83
+#: ../../build/doc/VRP-category.rst:83
 msgid "Less total duration is better."
 msgstr ""
 
-#: ../../VRP-category.rst:84
+#: ../../build/doc/VRP-category.rst:84
 msgid "Less wait time is better."
 msgstr ""
 
-#: ../../VRP-category.rst:85
+#: ../../build/doc/VRP-category.rst:85
 msgid "Six different optional different initial solutions"
 msgstr ""
 
-#: ../../VRP-category.rst:90
+#: ../../build/doc/VRP-category.rst:90
 msgid "Inner Queries"
 msgstr ""
 
-#: ../../VRP-category.rst:94
-#: ../../VRP-category.rst:128
-#: ../../VRP-category.rst:174
-#: ../../VRP-category.rst:205
-#: ../../VRP-category.rst:233
+#: ../../build/doc/VRP-category.rst:94
+#: ../../build/doc/VRP-category.rst:128
+#: ../../build/doc/VRP-category.rst:174
+#: ../../build/doc/VRP-category.rst:205
+#: ../../build/doc/VRP-category.rst:233
 msgid "TODO: FIX becuase the following is outdated"
 msgstr ""
 
-#: ../../VRP-category.rst:97
-#: ../../VRP-category.rst:131
+#: ../../build/doc/VRP-category.rst:97
+#: ../../build/doc/VRP-category.rst:131
 msgid "Description of the orders_sql query"
 msgstr ""
 
-#: ../../VRP-category.rst:100
-#: ../../VRP-category.rst:134
-#: ../../VRP-category.rst:180
-#: ../../VRP-category.rst:213
-#: ../../VRP-category.rst:241
+#: ../../build/doc/VRP-category.rst:100
+#: ../../build/doc/VRP-category.rst:134
+#: ../../build/doc/VRP-category.rst:180
+#: ../../build/doc/VRP-category.rst:213
+#: ../../build/doc/VRP-category.rst:241
 msgid "Column"
 msgstr ""
 
-#: ../../VRP-category.rst:100
-#: ../../VRP-category.rst:134
-#: ../../VRP-category.rst:180
-#: ../../VRP-category.rst:213
-#: ../../VRP-category.rst:241
+#: ../../build/doc/VRP-category.rst:100
+#: ../../build/doc/VRP-category.rst:134
+#: ../../build/doc/VRP-category.rst:180
+#: ../../build/doc/VRP-category.rst:213
+#: ../../build/doc/VRP-category.rst:241
 msgid "Type"
 msgstr ""
 
-#: ../../VRP-category.rst:100
-#: ../../VRP-category.rst:134
-#: ../../VRP-category.rst:180
-#: ../../VRP-category.rst:213
-#: ../../VRP-category.rst:241
+#: ../../build/doc/VRP-category.rst:100
+#: ../../build/doc/VRP-category.rst:134
+#: ../../build/doc/VRP-category.rst:180
+#: ../../build/doc/VRP-category.rst:213
+#: ../../build/doc/VRP-category.rst:241
 msgid "Description"
 msgstr ""
 
-#: ../../VRP-category.rst:102
-#: ../../VRP-category.rst:136
+#: ../../build/doc/VRP-category.rst:102
+#: ../../build/doc/VRP-category.rst:136
 msgid "**id**"
 msgstr ""
 
-#: ../../VRP-category.rst:102
-#: ../../VRP-category.rst:114
-#: ../../VRP-category.rst:115
-#: ../../VRP-category.rst:136
-#: ../../VRP-category.rst:150
-#: ../../VRP-category.rst:151
+#: ../../build/doc/VRP-category.rst:102
+#: ../../build/doc/VRP-category.rst:114
+#: ../../build/doc/VRP-category.rst:115
+#: ../../build/doc/VRP-category.rst:136
+#: ../../build/doc/VRP-category.rst:150
+#: ../../build/doc/VRP-category.rst:151
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../VRP-category.rst:102
-#: ../../VRP-category.rst:136
+#: ../../build/doc/VRP-category.rst:102
+#: ../../build/doc/VRP-category.rst:136
 msgid "Identifier of the customer."
 msgstr ""
 
-#: ../../VRP-category.rst:104
-#: ../../VRP-category.rst:138
+#: ../../build/doc/VRP-category.rst:104
+#: ../../build/doc/VRP-category.rst:138
 msgid "A value of ``0`` identifies the starting location"
 msgstr ""
 
-#: ../../VRP-category.rst:106
-#: ../../VRP-category.rst:142
+#: ../../build/doc/VRP-category.rst:106
+#: ../../build/doc/VRP-category.rst:142
 msgid "**demand**"
 msgstr ""
 
-#: ../../VRP-category.rst:106
-#: ../../VRP-category.rst:111
-#: ../../VRP-category.rst:112
-#: ../../VRP-category.rst:113
-#: ../../VRP-category.rst:140
-#: ../../VRP-category.rst:141
-#: ../../VRP-category.rst:142
-#: ../../VRP-category.rst:147
-#: ../../VRP-category.rst:148
-#: ../../VRP-category.rst:149
+#: ../../build/doc/VRP-category.rst:106
+#: ../../build/doc/VRP-category.rst:111
+#: ../../build/doc/VRP-category.rst:112
+#: ../../build/doc/VRP-category.rst:113
+#: ../../build/doc/VRP-category.rst:140
+#: ../../build/doc/VRP-category.rst:141
+#: ../../build/doc/VRP-category.rst:142
+#: ../../build/doc/VRP-category.rst:147
+#: ../../build/doc/VRP-category.rst:148
+#: ../../build/doc/VRP-category.rst:149
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../VRP-category.rst:106
-#: ../../VRP-category.rst:142
+#: ../../build/doc/VRP-category.rst:106
+#: ../../build/doc/VRP-category.rst:142
 msgid "How much is added / removed from the vehicle."
 msgstr ""
 
-#: ../../VRP-category.rst:108
-#: ../../VRP-category.rst:144
+#: ../../build/doc/VRP-category.rst:108
+#: ../../build/doc/VRP-category.rst:144
 msgid "Negative value is a delivery,"
 msgstr ""
 
-#: ../../VRP-category.rst:109
-#: ../../VRP-category.rst:145
+#: ../../build/doc/VRP-category.rst:109
+#: ../../build/doc/VRP-category.rst:145
 msgid "Positive value is a pickup,"
 msgstr ""
 
-#: ../../VRP-category.rst:111
-#: ../../VRP-category.rst:147
+#: ../../build/doc/VRP-category.rst:111
+#: ../../build/doc/VRP-category.rst:147
 msgid "**openTime**"
 msgstr ""
 
-#: ../../VRP-category.rst:111
-#: ../../VRP-category.rst:147
+#: ../../build/doc/VRP-category.rst:111
+#: ../../build/doc/VRP-category.rst:147
 msgid "The time relative to 0, when the customer opens."
 msgstr ""
 
-#: ../../VRP-category.rst:112
-#: ../../VRP-category.rst:148
+#: ../../build/doc/VRP-category.rst:112
+#: ../../build/doc/VRP-category.rst:148
 msgid "**closeTime**"
 msgstr ""
 
-#: ../../VRP-category.rst:112
-#: ../../VRP-category.rst:148
+#: ../../build/doc/VRP-category.rst:112
+#: ../../build/doc/VRP-category.rst:148
 msgid "The time relative to 0, when the customer closes."
 msgstr ""
 
-#: ../../VRP-category.rst:113
-#: ../../VRP-category.rst:149
+#: ../../build/doc/VRP-category.rst:113
+#: ../../build/doc/VRP-category.rst:149
 msgid "**serviceTime**"
 msgstr ""
 
-#: ../../VRP-category.rst:113
-#: ../../VRP-category.rst:149
+#: ../../build/doc/VRP-category.rst:113
+#: ../../build/doc/VRP-category.rst:149
 msgid "The duration of the loading / unloading."
 msgstr ""
 
-#: ../../VRP-category.rst:114
-#: ../../VRP-category.rst:150
+#: ../../build/doc/VRP-category.rst:114
+#: ../../build/doc/VRP-category.rst:150
 msgid "**pickup_id**"
 msgstr ""
 
-#: ../../VRP-category.rst:114
-#: ../../VRP-category.rst:150
+#: ../../build/doc/VRP-category.rst:114
+#: ../../build/doc/VRP-category.rst:150
 msgid "Value used when the current customer is a Delivery to find the corresponding Pickup"
 msgstr ""
 
-#: ../../VRP-category.rst:115
-#: ../../VRP-category.rst:151
+#: ../../build/doc/VRP-category.rst:115
+#: ../../build/doc/VRP-category.rst:151
 msgid "**deliver_id**"
 msgstr ""
 
-#: ../../VRP-category.rst:115
-#: ../../VRP-category.rst:151
+#: ../../build/doc/VRP-category.rst:115
+#: ../../build/doc/VRP-category.rst:151
 msgid "Value used when the current customer is a Pickup to find the corresponding Delivery"
 msgstr ""
 
-#: ../../VRP-category.rst:118
-#: ../../VRP-category.rst:154
+#: ../../build/doc/VRP-category.rst:118
+#: ../../build/doc/VRP-category.rst:154
 msgid "Where:"
 msgstr ""
 
-#: ../../VRP-category.rst:0
-#: ../../VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../VRP-category.rst:120
-#: ../../VRP-category.rst:156
+#: ../../build/doc/VRP-category.rst:120
+#: ../../build/doc/VRP-category.rst:156
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../VRP-category.rst:0
-#: ../../VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../VRP-category.rst:121
-#: ../../VRP-category.rst:157
+#: ../../build/doc/VRP-category.rst:121
+#: ../../build/doc/VRP-category.rst:157
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../VRP-category.rst:140
+#: ../../build/doc/VRP-category.rst:140
 msgid "**x**"
 msgstr ""
 
-#: ../../VRP-category.rst:140
+#: ../../build/doc/VRP-category.rst:140
 msgid "``X`` coordinate of the location."
 msgstr ""
 
-#: ../../VRP-category.rst:141
+#: ../../build/doc/VRP-category.rst:141
 msgid "**y**"
 msgstr ""
 
-#: ../../VRP-category.rst:141
+#: ../../build/doc/VRP-category.rst:141
 msgid "``Y`` coordinate of the location."
 msgstr ""
 
-#: ../../VRP-category.rst:164
+#: ../../build/doc/VRP-category.rst:164
 msgid "TODO: Write"
 msgstr ""
 
-#: ../../VRP-category.rst:168
+#: ../../build/doc/VRP-category.rst:168
 msgid "Description of the vehicles_sql query"
 msgstr ""
 
-#: ../../VRP-category.rst:177
+#: ../../build/doc/VRP-category.rst:177
 msgid "Description of the parameters of the signatures"
 msgstr ""
 
-#: ../../VRP-category.rst:180
+#: ../../build/doc/VRP-category.rst:180
 msgid "Default"
 msgstr ""
 
-#: ../../VRP-category.rst:182
+#: ../../build/doc/VRP-category.rst:182
 msgid "**orders_sql**"
 msgstr ""
 
-#: ../../VRP-category.rst:182
-#: ../../VRP-category.rst:183
+#: ../../build/doc/VRP-category.rst:182
+#: ../../build/doc/VRP-category.rst:183
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../VRP-category.rst:182
+#: ../../build/doc/VRP-category.rst:182
 msgid "Orders SQL query as described above."
 msgstr ""
 
-#: ../../VRP-category.rst:183
+#: ../../build/doc/VRP-category.rst:183
 msgid "**vehicles_sql**"
 msgstr ""
 
-#: ../../VRP-category.rst:183
+#: ../../build/doc/VRP-category.rst:183
 msgid "Vehciles SQL query as described above."
 msgstr ""
 
-#: ../../VRP-category.rst:184
+#: ../../build/doc/VRP-category.rst:184
 msgid "**factor**"
 msgstr ""
 
-#: ../../VRP-category.rst:184
+#: ../../build/doc/VRP-category.rst:184
 msgid "``NUMERIC``"
 msgstr ""
 
-#: ../../VRP-category.rst:184
+#: ../../build/doc/VRP-category.rst:184
 msgid "1"
 msgstr ""
 
-#: ../../VRP-category.rst:184
+#: ../../build/doc/VRP-category.rst:184
 msgid "$multiplier for the travel time"
 msgstr ""
 
-#: ../../VRP-category.rst:185
+#: ../../build/doc/VRP-category.rst:185
 msgid "**max_cycles**"
 msgstr ""
 
-#: ../../VRP-category.rst:185
-#: ../../VRP-category.rst:186
+#: ../../build/doc/VRP-category.rst:185
+#: ../../build/doc/VRP-category.rst:186
 msgid "``INTEGER``"
 msgstr ""
 
-#: ../../VRP-category.rst:185
+#: ../../build/doc/VRP-category.rst:185
 msgid "10"
 msgstr ""
 
-#: ../../VRP-category.rst:185
+#: ../../build/doc/VRP-category.rst:185
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../VRP-category.rst:186
+#: ../../build/doc/VRP-category.rst:186
 msgid "**initial**"
 msgstr ""
 
-#: ../../VRP-category.rst:186
+#: ../../build/doc/VRP-category.rst:186
 msgid "4"
 msgstr ""
 
-#: ../../VRP-category.rst:186
+#: ../../build/doc/VRP-category.rst:186
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../VRP-category.rst:188
+#: ../../build/doc/VRP-category.rst:188
 msgid "``1`` One order per truck"
 msgstr ""
 
-#: ../../VRP-category.rst:189
+#: ../../build/doc/VRP-category.rst:189
 msgid "``2`` push front"
 msgstr ""
 
-#: ../../VRP-category.rst:190
+#: ../../build/doc/VRP-category.rst:190
 msgid "``3`` push back"
 msgstr ""
 
-#: ../../VRP-category.rst:191
+#: ../../build/doc/VRP-category.rst:191
 msgid "``4`` best insert"
 msgstr ""
 
-#: ../../VRP-category.rst:192
+#: ../../build/doc/VRP-category.rst:192
 msgid "``5`` order that allows more orders to be inserted at the back"
 msgstr ""
 
-#: ../../VRP-category.rst:193
+#: ../../build/doc/VRP-category.rst:193
 msgid "``6`` order that allows more orders to be inserted at the front"
 msgstr ""
 
-#: ../../VRP-category.rst:201
+#: ../../build/doc/VRP-category.rst:201
 msgid "Results"
 msgstr ""
 
-#: ../../VRP-category.rst:208
-#: ../../VRP-category.rst:236
+#: ../../build/doc/VRP-category.rst:208
+#: ../../build/doc/VRP-category.rst:236
 msgid "Description of the result"
 msgstr ""
 
-#: ../../VRP-category.rst:0
-#: ../../VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
 msgid "RETURNS SET OF"
 msgstr ""
 
-#: ../../VRP-category.rst:210
-#: ../../VRP-category.rst:238
+#: ../../build/doc/VRP-category.rst:210
+#: ../../build/doc/VRP-category.rst:238
 msgid "(seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)"
 msgstr ""
 
-#: ../../VRP-category.rst:215
-#: ../../VRP-category.rst:243
+#: ../../build/doc/VRP-category.rst:215
+#: ../../build/doc/VRP-category.rst:243
 msgid "**seq**"
 msgstr ""
 
-#: ../../VRP-category.rst:215
-#: ../../VRP-category.rst:216
-#: ../../VRP-category.rst:217
-#: ../../VRP-category.rst:243
-#: ../../VRP-category.rst:244
-#: ../../VRP-category.rst:245
+#: ../../build/doc/VRP-category.rst:215
+#: ../../build/doc/VRP-category.rst:216
+#: ../../build/doc/VRP-category.rst:217
+#: ../../build/doc/VRP-category.rst:243
+#: ../../build/doc/VRP-category.rst:244
+#: ../../build/doc/VRP-category.rst:245
 msgid "INTEGER"
 msgstr ""
 
-#: ../../VRP-category.rst:215
-#: ../../VRP-category.rst:243
+#: ../../build/doc/VRP-category.rst:215
+#: ../../build/doc/VRP-category.rst:243
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../VRP-category.rst:216
-#: ../../VRP-category.rst:244
+#: ../../build/doc/VRP-category.rst:216
+#: ../../build/doc/VRP-category.rst:244
 msgid "**vehicle_id**"
 msgstr ""
 
-#: ../../VRP-category.rst:216
-#: ../../VRP-category.rst:244
+#: ../../build/doc/VRP-category.rst:216
+#: ../../build/doc/VRP-category.rst:244
 msgid "Current vehicle identifier."
 msgstr ""
 
-#: ../../VRP-category.rst:217
-#: ../../VRP-category.rst:245
+#: ../../build/doc/VRP-category.rst:217
+#: ../../build/doc/VRP-category.rst:245
 msgid "**vehicle_seq**"
 msgstr ""
 
-#: ../../VRP-category.rst:217
-#: ../../VRP-category.rst:245
+#: ../../build/doc/VRP-category.rst:217
+#: ../../build/doc/VRP-category.rst:245
 msgid "Sequential value starting from **1** for the current vehicle."
 msgstr ""
 
-#: ../../VRP-category.rst:218
-#: ../../VRP-category.rst:246
+#: ../../build/doc/VRP-category.rst:218
+#: ../../build/doc/VRP-category.rst:246
 msgid "**stop_id**"
 msgstr ""
 
-#: ../../VRP-category.rst:218
-#: ../../VRP-category.rst:246
+#: ../../build/doc/VRP-category.rst:218
+#: ../../build/doc/VRP-category.rst:246
 msgid "BIGINT"
 msgstr ""
 
-#: ../../VRP-category.rst:218
-#: ../../VRP-category.rst:246
+#: ../../build/doc/VRP-category.rst:218
+#: ../../build/doc/VRP-category.rst:246
 msgid "Visited customer identifier."
 msgstr ""
 
-#: ../../VRP-category.rst:219
-#: ../../VRP-category.rst:247
+#: ../../build/doc/VRP-category.rst:219
+#: ../../build/doc/VRP-category.rst:247
 msgid "**travel_time**"
 msgstr ""
 
-#: ../../VRP-category.rst:219
-#: ../../VRP-category.rst:220
-#: ../../VRP-category.rst:221
-#: ../../VRP-category.rst:222
-#: ../../VRP-category.rst:223
-#: ../../VRP-category.rst:247
-#: ../../VRP-category.rst:248
-#: ../../VRP-category.rst:249
-#: ../../VRP-category.rst:250
-#: ../../VRP-category.rst:251
+#: ../../build/doc/VRP-category.rst:219
+#: ../../build/doc/VRP-category.rst:220
+#: ../../build/doc/VRP-category.rst:221
+#: ../../build/doc/VRP-category.rst:222
+#: ../../build/doc/VRP-category.rst:223
+#: ../../build/doc/VRP-category.rst:247
+#: ../../build/doc/VRP-category.rst:248
+#: ../../build/doc/VRP-category.rst:249
+#: ../../build/doc/VRP-category.rst:250
+#: ../../build/doc/VRP-category.rst:251
 msgid "FLOAT"
 msgstr ""
 
-#: ../../VRP-category.rst:219
-#: ../../VRP-category.rst:247
+#: ../../build/doc/VRP-category.rst:219
+#: ../../build/doc/VRP-category.rst:247
 msgid "Travel time from previous ``stop_id`` to current ``stop_id``."
 msgstr ""
 
-#: ../../VRP-category.rst:220
-#: ../../VRP-category.rst:248
+#: ../../build/doc/VRP-category.rst:220
+#: ../../build/doc/VRP-category.rst:248
 msgid "**arrival_time**"
 msgstr ""
 
-#: ../../VRP-category.rst:220
-#: ../../VRP-category.rst:248
+#: ../../build/doc/VRP-category.rst:220
+#: ../../build/doc/VRP-category.rst:248
 msgid "Previous ``departure_time`` plus current ``travel_time``."
 msgstr ""
 
-#: ../../VRP-category.rst:221
-#: ../../VRP-category.rst:249
+#: ../../build/doc/VRP-category.rst:221
+#: ../../build/doc/VRP-category.rst:249
 msgid "**wait_time**"
 msgstr ""
 
-#: ../../VRP-category.rst:221
-#: ../../VRP-category.rst:249
+#: ../../build/doc/VRP-category.rst:221
+#: ../../build/doc/VRP-category.rst:249
 msgid "Time spent waiting for ``stop_id`` to open."
 msgstr ""
 
-#: ../../VRP-category.rst:222
-#: ../../VRP-category.rst:250
+#: ../../build/doc/VRP-category.rst:222
+#: ../../build/doc/VRP-category.rst:250
 msgid "**service_time**"
 msgstr ""
 
-#: ../../VRP-category.rst:222
-#: ../../VRP-category.rst:250
+#: ../../build/doc/VRP-category.rst:222
+#: ../../build/doc/VRP-category.rst:250
 msgid "Service time at current stop_id."
 msgstr ""
 
-#: ../../VRP-category.rst:223
-#: ../../VRP-category.rst:251
+#: ../../build/doc/VRP-category.rst:223
+#: ../../build/doc/VRP-category.rst:251
 msgid "**departure_time**"
 msgstr ""
 
-#: ../../VRP-category.rst:224
-#: ../../VRP-category.rst:252
+#: ../../build/doc/VRP-category.rst:224
+#: ../../build/doc/VRP-category.rst:252
 msgid "Previous :math:`departure\\_time + travel\\_time + wait\\_time + service\\_time`."
 msgstr ""
 
-#: ../../VRP-category.rst:224
-#: ../../VRP-category.rst:252
+#: ../../build/doc/VRP-category.rst:224
+#: ../../build/doc/VRP-category.rst:252
 msgid "When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehicle_id``."
 msgstr ""
 
-#: ../../VRP-category.rst:225
-#: ../../VRP-category.rst:253
+#: ../../build/doc/VRP-category.rst:225
+#: ../../build/doc/VRP-category.rst:253
 msgid "When ``vehicle_id = -1`` has the aggregate total time"
 msgstr ""
 
-#: ../../VRP-category.rst:262
+#: ../../build/doc/VRP-category.rst:262
 msgid "See Also"
 msgstr ""
 
-#: ../../VRP-category.rst:264
+#: ../../build/doc/VRP-category.rst:264
 msgid "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
 msgstr ""
 
-#: ../../VRP-category.rst:265
+#: ../../build/doc/VRP-category.rst:265
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
-#: ../../VRP-category.rst:268
+#: ../../build/doc/VRP-category.rst:268
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../VRP-category.rst:269
+#: ../../build/doc/VRP-category.rst:269
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../VRP-category.rst:270
+#: ../../build/doc/VRP-category.rst:270
 msgid ":ref:`search`"
 msgstr ""
 
