@@ -258,6 +258,7 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
+	// TODO(mg) Create a structure with the names & types needed
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);                     // --seq
         values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].start_id); // --component
         values[3] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);      // --n_seq

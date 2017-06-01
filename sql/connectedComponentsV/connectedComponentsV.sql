@@ -28,11 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_connectedComponentsV(
-    TEXT,
-        OUT seq INTEGER,
-    OUT component BIGINT,
-    OUT n_seq INTEGER,
-    OUT node BIGINT)
+    TEXT,                       -- edges_sql
+        OUT seq INTEGER,        -- seq
+    OUT component BIGINT,       -- the lowest number of the node in the component
+    OUT n_seq INTEGER,          -- nth_seq of the node in the component
+    OUT node BIGINT)            -- the number of the node
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'connectedComponentsV'
