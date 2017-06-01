@@ -117,11 +117,7 @@ process(
     do_pgr_areaContraction(
             edges,
             total_edges,
-            start_vid,
-            end_vid,
-
-            start_borderverticesArr, size_start_borderverticesArr,
-
+            border_vertices, border_vertices_size,
             directed,
             result_tuples,
             result_count,
@@ -142,7 +138,7 @@ process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-    if (start_borderverticesArr) pfree(start_borderverticesArr);
+    if (border_vertices) pfree(border_vertices);
 
     pgr_SPI_finish();
 }
