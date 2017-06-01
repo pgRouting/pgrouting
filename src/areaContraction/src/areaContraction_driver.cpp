@@ -56,7 +56,7 @@ pgr_areaContraction(
         G &graph,
         int64_t borderVertice) {
     Path path;
-    return path()
+    return path;
 }
 
 
@@ -80,7 +80,7 @@ do_pgr_areaContraction(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
+        pgassert(data_edges_size != 0);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -89,18 +89,15 @@ do_pgr_areaContraction(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges(data_edges, data_edges_size);
             path = pgr_areaContraction(digraph,
                   borderVertices);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_edges(data_edges, data_edges_size);
             path = pgr_areaContraction(
-                    undigraph,
-                    start_vid,
-                    end_vid,
-                    only_cost);
+                    undigraph);
         }
 
         auto count = path.size();
