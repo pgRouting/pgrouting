@@ -51,8 +51,6 @@ extern "C" {
                 size_t total_edges,
                 int64_t start_vid,
                 int64_t end_vid,
-                bool directed,
-                bool only_cost,
                 General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,

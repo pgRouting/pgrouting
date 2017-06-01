@@ -76,8 +76,6 @@ process(
         ArrayType *starts,
         ArrayType *ends,
 #endif
-        bool directed,
-        bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     /*
@@ -148,8 +146,6 @@ process(
             end_vidsArr, size_end_vidsArr,
 #endif
 
-            directed,
-            only_cost,
             result_tuples,
             result_count,
             &log_msg,
@@ -222,8 +218,6 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
 #endif
-                PG_GETARG_BOOL(3),
-                PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 

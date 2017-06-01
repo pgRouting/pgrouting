@@ -54,11 +54,10 @@ Path
 pgr_connectedComponentsV(
         G &graph,
         int64_t source,
-        int64_t target,
-        bool only_cost = false) {
+        int64_t target) {
     Path path;
     Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
+    return fn_dijkstra.dijkstra(graph, source, target);
 }
 
 
@@ -68,8 +67,6 @@ do_pgr_connectedComponentsV(
         size_t total_edges,
         int64_t start_vid,
         int64_t end_vid,
-        bool directed,
-        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -86,28 +83,17 @@ do_pgr_connectedComponentsV(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+        graphType gType = UNDIRECTED;
 
         Path path;
 
-        if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            path = pgr_connectedComponentsV(digraph,
-                    start_vid,
-                    end_vid,
-                    only_cost);
-        } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_connectedComponentsV(
-                    undigraph,
-                    start_vid,
-                    end_vid,
-                    only_cost);
-        }
+        log << "Working with Undirected Graph\n";
+        pgrouting::UndirectedGraph undigraph(gType);
+        undigraph.insert_edges(data_edges, total_edges);
+        path = pgr_connectedComponentsV(
+                undigraph,
+                start_vid,
+                end_vid);
 
         auto count = path.size();
 
