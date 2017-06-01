@@ -218,13 +218,12 @@ if (BUILD_LOCALE)
         "${PGR_DOCUMENTATION_SOURCE_DIR}" 
         "${CMAKE_SOURCE_DIR}/locale/pot" 
 
-        #COMMAND sphinx-intl update
-        #-p ${PGR_DOCUMENTATION_BUILD_DIR}/gettext -l es -l en
+        #COMMAND sphinx-intl update -p ${PGR_DOCUMENTATION_BUILD_DIR}/locale -l es -l en
 
         # COMMAND tx pull -r pgrouting.pgr_createVerticesTable -f -l es
 
 
-        COMMENT "Generating ${DOC_TARGET} documentation ...")
+        COMMENT "Generating POT files ...")
     add_dependencies(doc locale)
 endif()
 
