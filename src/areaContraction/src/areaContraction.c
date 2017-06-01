@@ -76,7 +76,6 @@ process(
      */
     pgr_SPI_connect();
 
-#if 1
 
     PGR_DBG("Initializing arrays");
     int64_t* border_vertices = NULL;
@@ -84,10 +83,6 @@ process(
     border_vertices = (int64_t*)
         pgr_get_bigIntArray(&border_vertices_size, border_verticesArr);
     PGR_DBG("border_vertices size %ld ", border_vertices_size);
-
-
-
-#endif
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
