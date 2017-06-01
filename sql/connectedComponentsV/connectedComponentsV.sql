@@ -32,8 +32,8 @@ CREATE OR REPLACE FUNCTION pgr_connectedComponentsV(
     BIGINT,
     BIGINT,
         OUT seq INTEGER,
-    OUT component INTEGER,
-    OUT n_seq BIGINT,
+    OUT component BIGINT,
+    OUT n_seq INTEGER,
     OUT node BIGINT)
 
 RETURNS SETOF RECORD AS
