@@ -119,11 +119,8 @@ process(
             total_edges,
             start_vid,
             end_vid,
-#if 1
-
 
             start_borderverticesArr, size_start_borderverticesArr,
-#endif
 
             directed,
             result_tuples,
@@ -145,10 +142,7 @@ process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-#if 1
-
     if (start_borderverticesArr) pfree(start_borderverticesArr);
-#endif
 
     pgr_SPI_finish();
 }
