@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:27-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,69 +17,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.4.0\n"
 
-#: ../../pgr_pointsAsPolygon.rst:13
+#: ../../build/doc/pgr_pointsAsPolygon.rst:13
 msgid "pgr_pointsAsPolygon"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:19
+#: ../../build/doc/pgr_pointsAsPolygon.rst:19
 msgid "Name"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:21
+#: ../../build/doc/pgr_pointsAsPolygon.rst:21
 msgid "``pgr_pointsAsPolygon`` — Draws an alpha shape around given set of points."
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:25
+#: ../../build/doc/pgr_pointsAsPolygon.rst:25
 msgid "Synopsis"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:27
+#: ../../build/doc/pgr_pointsAsPolygon.rst:27
 msgid "Returns the alpha shape as (multi)polygon geometry."
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:35
+#: ../../build/doc/pgr_pointsAsPolygon.rst:35
 msgid "Description"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst
+#: ../../build/doc/pgr_pointsAsPolygon.rst
 msgid "sql"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:37
+#: ../../build/doc/pgr_pointsAsPolygon.rst:37
 msgid ""
 "``text`` a SQL query, which should return a set of rows with the "
 "following columns:"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst
+#: ../../build/doc/pgr_pointsAsPolygon.rst
 msgid "id"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:43
+#: ../../build/doc/pgr_pointsAsPolygon.rst:43
 msgid "``int4`` identifier of the vertex"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst
+#: ../../build/doc/pgr_pointsAsPolygon.rst
 msgid "x"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:44
+#: ../../build/doc/pgr_pointsAsPolygon.rst:44
 msgid "``float8`` x-coordinate"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst
+#: ../../build/doc/pgr_pointsAsPolygon.rst
 msgid "y"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:45
+#: ../../build/doc/pgr_pointsAsPolygon.rst:45
 msgid "``float8`` y-coordinate"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst
+#: ../../build/doc/pgr_pointsAsPolygon.rst
 msgid "alpha"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:47
+#: ../../build/doc/pgr_pointsAsPolygon.rst:47
 msgid ""
 "(optional) ``float8`` alpha value. If specified alpha value equals 0 "
 "(default), then optimal alpha value is used. For more information, see "
@@ -87,52 +87,52 @@ msgid ""
 "<http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html>`_."
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:50
+#: ../../build/doc/pgr_pointsAsPolygon.rst:50
 msgid "Returns a (multi)polygon geometry (with holes)."
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:54
+#: ../../build/doc/pgr_pointsAsPolygon.rst:54
 msgid "History"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:55
+#: ../../build/doc/pgr_pointsAsPolygon.rst:55
 msgid "Renamed in version 2.0.0"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:56
+#: ../../build/doc/pgr_pointsAsPolygon.rst:56
 msgid "Added alpha argument with default 0 (use optimal value) in version 2.1.0"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:57
+#: ../../build/doc/pgr_pointsAsPolygon.rst:57
 msgid ""
 "Supported to return a (multi)polygon geometry (with holes) in version "
 "2.1.0"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:61
+#: ../../build/doc/pgr_pointsAsPolygon.rst:61
 msgid "Examples"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:62
+#: ../../build/doc/pgr_pointsAsPolygon.rst:62
 msgid ""
 "In the following query there is no way to control which point in the "
 "polygon is the first in the list, so you may get similar but different "
 "results than the following which are also correct."
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:69
+#: ../../build/doc/pgr_pointsAsPolygon.rst:69
 msgid "The query use the :ref:`sampledata` network."
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:73
+#: ../../build/doc/pgr_pointsAsPolygon.rst:73
 msgid "See Also"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:75
+#: ../../build/doc/pgr_pointsAsPolygon.rst:75
 msgid ":ref:`pgr_drivingDistance` - Driving Distance"
 msgstr ""
 
-#: ../../pgr_pointsAsPolygon.rst:76
+#: ../../build/doc/pgr_pointsAsPolygon.rst:76
 msgid ":ref:`pgr_alphashape` - Alpha shape computation"
 msgstr ""
 

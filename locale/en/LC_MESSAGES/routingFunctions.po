@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:27-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,107 +17,107 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.4.0\n"
 
-#: ../../routingFunctions.rst:15
+#: ../../build/doc/routingFunctions.rst:15
 msgid "Routing Functions"
 msgstr ""
 
-#: ../../routingFunctions.rst:21
+#: ../../build/doc/routingFunctions.rst:21
 msgid ":ref:`all_pairs`"
 msgstr ""
 
-#: ../../routingFunctions.rst:23
+#: ../../build/doc/routingFunctions.rst:23
 msgid ":ref:`pgr_floydWarshall` - Floyd-Warshall's Algorithm"
 msgstr ""
 
-#: ../../routingFunctions.rst:24
+#: ../../build/doc/routingFunctions.rst:24
 msgid ":ref:`pgr_johnson`- Johnson’s Algorithm"
 msgstr ""
 
-#: ../../routingFunctions.rst:26
+#: ../../build/doc/routingFunctions.rst:26
 msgid ":ref:`pgr_astar` - Shortest Path A*"
 msgstr ""
 
-#: ../../routingFunctions.rst:28
+#: ../../build/doc/routingFunctions.rst:28
 msgid ":ref:`pgr_bdAstar` - Bi-directional A* Shortest Path"
 msgstr ""
 
-#: ../../routingFunctions.rst:30
+#: ../../build/doc/routingFunctions.rst:30
 msgid ":ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path"
 msgstr ""
 
-#: ../../routingFunctions.rst:33
+#: ../../build/doc/routingFunctions.rst:33
 msgid ":ref:`dijkstra`"
 msgstr ""
 
-#: ../../dijkstra-family.rst:3
+#: ../../build/doc/dijkstra-family.rst:3
 msgid ":ref:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
 msgstr ""
 
-#: ../../dijkstra-family.rst:4
+#: ../../build/doc/dijkstra-family.rst:4
 msgid ":ref:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 
-#: ../../dijkstra-family.rst:5
+#: ../../build/doc/dijkstra-family.rst:5
 msgid ":ref:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
 msgstr ""
 
-#: ../../dijkstra-family.rst:6
+#: ../../build/doc/dijkstra-family.rst:6
 msgid ""
 ":ref:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
 "information."
 msgstr ""
 
-#: ../../dijkstra-family.rst:7
+#: ../../build/doc/dijkstra-family.rst:7
 msgid ""
 ":ref:`pgr_ksp` - Use Yen algorithm with pgr_dijkstra to get the K "
 "shortest paths."
 msgstr ""
 
-#: ../../dijkstra-family.rst:8
+#: ../../build/doc/dijkstra-family.rst:8
 msgid ":ref:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
 msgstr ""
 
-#: ../../routingFunctions.rst:39
+#: ../../build/doc/routingFunctions.rst:39
 msgid ":ref:`pgr_ksp` - K-Shortest Path"
 msgstr ""
 
-#: ../../routingFunctions.rst:41
+#: ../../build/doc/routingFunctions.rst:41
 msgid ":ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)"
 msgstr ""
 
-#: ../../routingFunctions.rst:43
+#: ../../build/doc/routingFunctions.rst:43
 msgid ":ref:`tsp`"
 msgstr ""
 
-#: ../../TSP-family.rst:3
+#: ../../build/doc/TSP-family.rst:3
 msgid ":ref:`pgr_TSP` - When input is given as matrix cell information."
 msgstr ""
 
-#: ../../TSP-family.rst:4
+#: ../../build/doc/TSP-family.rst:4
 msgid ":ref:`pgr_eucledianTSP` - When input are coordinates."
 msgstr ""
 
-#: ../../routingFunctions.rst:49
+#: ../../build/doc/routingFunctions.rst:49
 msgid ":ref:`drivingDistance`"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:3
+#: ../../build/doc/drivingDistance-category.rst:3
 msgid ":ref:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:4
+#: ../../build/doc/drivingDistance-category.rst:4
 msgid ":ref:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:5
+#: ../../build/doc/drivingDistance-category.rst:5
 msgid "Post pocessing"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:7
+#: ../../build/doc/drivingDistance-category.rst:7
 msgid ":ref:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 
-#: ../../drivingDistance-category.rst:8
+#: ../../build/doc/drivingDistance-category.rst:8
 msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
 msgstr ""
 

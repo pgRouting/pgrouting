@@ -1,447 +1,394 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.4.0\n"
 
-#: ../../pgr_nodeNetwork.rst:13
+#: ../../build/doc/pgr_nodeNetwork.rst:13
 msgid "pgr_nodeNetwork"
-msgstr "pgr_nodeNetwork"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:16
+#: ../../build/doc/pgr_nodeNetwork.rst:16
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:18
+#: ../../build/doc/pgr_nodeNetwork.rst:18
 msgid "``pgr_nodeNetwork`` - Nodes an network edge table."
 msgstr ""
-"``pgr_nodeNetwork`` -  Crea los nodos de una tabla de bordes de la red."
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "Author"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:20
+#: ../../build/doc/pgr_nodeNetwork.rst:20
 msgid "Nicolas Ribot"
-msgstr "Nicolas Ribot"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "Copyright"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:21
+#: ../../build/doc/pgr_nodeNetwork.rst:21
 msgid "Nicolas Ribot, The source code is released under the MIT-X license."
-msgstr "Nicolas Ribot, el código fuente está liberado bajo la licencia MIT-X."
-
-#: ../../pgr_nodeNetwork.rst:25
-msgid "Synopsis"
-msgstr "Sinopsis"
-
-#: ../../pgr_nodeNetwork.rst:27
-msgid ""
-"The function reads edges from a not \"noded\" network table and writes the "
-"\"noded\" edges into a new table."
 msgstr ""
-"La función carga los bordes de una tabla que no tiene los nodos en las "
-"intersecciones y reescribe los bordes con los nodos en una nueva tabla."
 
-#: ../../pgr_nodeNetwork.rst:39
+#: ../../build/doc/pgr_nodeNetwork.rst:25
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:27
+msgid ""
+"The function reads edges from a not \"noded\" network table and writes "
+"the \"noded\" edges into a new table."
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:39
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:41
+#: ../../build/doc/pgr_nodeNetwork.rst:41
 msgid ""
 "A common problem associated with bringing GIS data into pgRouting is the "
 "fact that the data is often not \"noded\" correctly. This will create "
 "invalid topologies, which will result in routes that are incorrect."
 msgstr ""
-"Un problema común asociado con la incorporación de datos SIG en pgRouting es"
-" el hecho de que los datos a menudo no están correctamente referenciados con"
-" nodos. Esto provoca topologías no válidas, que resultan en rutas que son "
-"incorrectas."
 
-#: ../../pgr_nodeNetwork.rst:43
+#: ../../build/doc/pgr_nodeNetwork.rst:43
 msgid ""
-"What we mean by \"noded\" is that at every intersection in the road network "
-"all the edges will be broken into separate road segments. There are cases "
-"like an over-pass and under-pass intersection where you can not traverse "
-"from the over-pass to the under-pass, but this function does not have the "
-"ability to detect and accommodate those situations."
+"What we mean by \"noded\" is that at every intersection in the road "
+"network all the edges will be broken into separate road segments. There "
+"are cases like an over-pass and under-pass intersection where you can not"
+" traverse from the over-pass to the under-pass, but this function does "
+"not have the ability to detect and accommodate those situations."
 msgstr ""
-"Que los bordes estén indicados con nodos significa que, en en cada "
-"intersección de la red de caminos, los bordes se descompondrán en segmentos "
-"separados del camino. Los casos como una intersección de puente o túnel "
-"donde no existe conexión vial no son detectados por esta función."
 
-#: ../../pgr_nodeNetwork.rst:45
+#: ../../build/doc/pgr_nodeNetwork.rst:45
 msgid ""
-"This function reads the ``edge_table`` table, that has a primary key column "
-"``id`` and geometry column named ``the_geom`` and intersect all the segments"
-" in it against all the other segments and then creates a table "
-"``edge_table_noded``. It uses the ``tolerance`` for deciding that multiple "
-"nodes within the tolerance are considered the same node."
+"This function reads the ``edge_table`` table, that has a primary key "
+"column ``id`` and geometry column named ``the_geom`` and intersect all "
+"the segments in it against all the other segments and then creates a "
+"table ``edge_table_noded``. It uses the ``tolerance`` for deciding that "
+"multiple nodes within the tolerance are considered the same node."
 msgstr ""
-"Esta función lee la tabla  ``table_in``, que tiene una columna de clave "
-"principal ``gid_cname`` y columna de la geometría llamada ``geo_cname``,  y "
-"verifica la intersección de todos los segmentos contra todos los demás "
-"segmentos creando una tabla de salida ``table_out``. Usa la tolerancia "
-"``tolerance`` para decidir cuáles nodos son considerados como mismo nodo."
 
-#: ../../pgr_nodeNetwork.rst:47
+#: ../../build/doc/pgr_nodeNetwork.rst:47
 msgid "Parameters"
-msgstr "Parámetros"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:0 ../../pgr_nodeNetwork.rst:250
+#: ../../build/doc/pgr_nodeNetwork.rst ../../build/doc/pgr_nodeNetwork.rst:250
 msgid "edge_table"
-msgstr "edge_table"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:49
+#: ../../build/doc/pgr_nodeNetwork.rst:49
 msgid "``text`` Network table name. (may contain the schema name as well)"
-msgstr "``text`` La tabla de la red. (puede contener el nombre del esquema)"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "tolerance"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:50
+#: ../../build/doc/pgr_nodeNetwork.rst:50
 msgid "``float8`` tolerance for coincident points (in projection unit)dd"
 msgstr ""
-"``float8`` tolerancia para puntos de coincidencia (en la unidad de "
-"proyección)"
 
-#: ../../pgr_nodeNetwork.rst:0 ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "id"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:51
+#: ../../build/doc/pgr_nodeNetwork.rst:51
 msgid ""
 "``text`` Primary key column name of the network table. Default value is "
 "``id``."
 msgstr ""
-"``text``Nombre de la columna de la clave principal de la tabla de red. Valor"
-" por defecto es ``id``'."
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "the_geom"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:52
+#: ../../build/doc/pgr_nodeNetwork.rst:52
 msgid ""
 "``text`` Geometry column name of the network table. Default value is "
 "``the_geom``."
 msgstr ""
-"``text``  nombre de la columna de la geometría en la tabla de la red. El "
-"valor por defecto es `the_geom``"
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "table_ending"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:53
+#: ../../build/doc/pgr_nodeNetwork.rst:53
 msgid "``text`` Suffix for the new table's. Default value is ``noded``."
 msgstr ""
-"``text`` sufijo para la nueva tabla. El valor predeterminado es ``noded``."
 
-#: ../../pgr_nodeNetwork.rst:55
+#: ../../build/doc/pgr_nodeNetwork.rst:55
 msgid "The output table will have for  ``edge_table_noded``"
-msgstr "La tabla de salida tendrá para  ``edge_table_noded``"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:57
+#: ../../build/doc/pgr_nodeNetwork.rst:57
 msgid "``bigint`` Unique identifier for the table"
-msgstr "``bigint`` identificador del vértice."
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "old_id"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:58
+#: ../../build/doc/pgr_nodeNetwork.rst:58
 msgid "``bigint``  Identifier of the edge in original table"
-msgstr "``bigint`` identificador del borde en la tabla original"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "sub_id"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:59
+#: ../../build/doc/pgr_nodeNetwork.rst:59
 msgid "``integer`` Segment number of the original edge"
-msgstr "``integer`` número del segmento del borde original"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "source"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:60
+#: ../../build/doc/pgr_nodeNetwork.rst:60
 msgid ""
-"``integer`` Empty source column to be used with  :ref:`pgr_create_topology` "
-"function"
+"``integer`` Empty source column to be used with  "
+":ref:`pgr_create_topology` function"
 msgstr ""
-"``integer`` columna vacía para utilizarse con la función "
-":ref:`pgr_create_topology` "
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "target"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:61
+#: ../../build/doc/pgr_nodeNetwork.rst:61
 msgid ""
-"``integer`` Empty target column to be used with  :ref:`pgr_create_topology` "
-"function"
+"``integer`` Empty target column to be used with  "
+":ref:`pgr_create_topology` function"
 msgstr ""
-"``integer`` Columna vacía para el destino. Para utilizarse con la función "
-":ref:`pgr_create_topology` "
 
-#: ../../pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst
 msgid "the geom"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:62
+#: ../../build/doc/pgr_nodeNetwork.rst:62
 msgid "``geometry`` Geometry column of the noded network"
-msgstr "``geometry`` Columna de geometría de la red discontínua"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:65
+#: ../../build/doc/pgr_nodeNetwork.rst:65
 msgid "History"
-msgstr "Historia"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:66
+#: ../../build/doc/pgr_nodeNetwork.rst:66
 msgid "New in version 2.0.0"
-msgstr "Nuevo en la versión 2.0.0"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:70
+#: ../../build/doc/pgr_nodeNetwork.rst:70
 msgid "Example"
-msgstr "Ejemplo"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:72
+#: ../../build/doc/pgr_nodeNetwork.rst:72
 msgid "Let's create the topology for the data in :ref:`sampledata`"
-msgstr "Vamos a crear la topología de los datos :ref:`sampledata`"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:90
+#: ../../build/doc/pgr_nodeNetwork.rst:90
 msgid "Now we can analyze the network."
-msgstr "Ahora podemos analizar la red."
-
-#: ../../pgr_nodeNetwork.rst:114
-msgid ""
-"The analysis tell us that the network has a gap and an intersection. We try "
-"to fix the problem using:"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:136
+#: ../../build/doc/pgr_nodeNetwork.rst:114
 msgid ""
-"Inspecting the generated table, we can see that edges 13,14 and 18 has been "
-"segmented"
+"The analysis tell us that the network has a gap and an intersection. We "
+"try to fix the problem using:"
 msgstr ""
-"Inspeccionar la tabla generada, podemos ver que los bordes 13,14 y 18 ha "
-"sido segmentado"
 
-#: ../../pgr_nodeNetwork.rst:166
+#: ../../build/doc/pgr_nodeNetwork.rst:136
+msgid ""
+"Inspecting the generated table, we can see that edges 13,14 and 18 has "
+"been segmented"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:166
 msgid "We can create the topology of the new network"
-msgstr "Podemos crear la topología de la nueva red  "
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:184
+#: ../../build/doc/pgr_nodeNetwork.rst:184
 msgid "Now let's analyze the new topology"
-msgstr "Ahora analicemos la nueva topología"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:210
+#: ../../build/doc/pgr_nodeNetwork.rst:210
 msgid "Images"
-msgstr "Imágenes"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:0 ../../pgr_nodeNetwork.rst:227
+#: ../../build/doc/pgr_nodeNetwork.rst ../../build/doc/pgr_nodeNetwork.rst:227
 msgid "Before Image"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:0 ../../pgr_nodeNetwork.rst:235
+#: ../../build/doc/pgr_nodeNetwork.rst ../../build/doc/pgr_nodeNetwork.rst:235
 msgid "After Image"
 msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:243
+#: ../../build/doc/pgr_nodeNetwork.rst:243
 msgid "Comparing the results"
-msgstr "Comparando los resultados"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:245
+#: ../../build/doc/pgr_nodeNetwork.rst:245
 msgid "Comparing with the Analysis in the original edge_table, we see that."
-msgstr "Comparando con el análisis del edge_table original,  vemos que:"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:248
+#: ../../build/doc/pgr_nodeNetwork.rst:248
 msgid "Before"
-msgstr "Antes de"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:248
+#: ../../build/doc/pgr_nodeNetwork.rst:248
 msgid "After"
-msgstr "Después de"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:250
+#: ../../build/doc/pgr_nodeNetwork.rst:250
 msgid "Table name"
-msgstr "Nombre de la tabla"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:250
+#: ../../build/doc/pgr_nodeNetwork.rst:250
 msgid "edge_table_noded"
-msgstr "edge_table_noded"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:252
+#: ../../build/doc/pgr_nodeNetwork.rst:252
 msgid "Fields"
-msgstr "Campos"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:252
+#: ../../build/doc/pgr_nodeNetwork.rst:252
 msgid "All original fields"
-msgstr "Todos los campos originales"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:252
+#: ../../build/doc/pgr_nodeNetwork.rst:252
 msgid "Has only basic fields to do a topology analysis"
-msgstr "Tiene solamente campos básicos para hacer un análisis de topología"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:254
+#: ../../build/doc/pgr_nodeNetwork.rst:254
 msgid "Dead ends"
-msgstr "Callejones sin salida"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:254
+#: ../../build/doc/pgr_nodeNetwork.rst:254
 msgid "Edges with 1 dead end: 1,6,24"
-msgstr "Los bordes con 1 callejón sin salida: 1,6,24"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:255
+#: ../../build/doc/pgr_nodeNetwork.rst:255
 msgid "Edges with 2 dead ends  17,18"
-msgstr "Bordes con 2 callejones sin salida 17,18"
-
-#: ../../pgr_nodeNetwork.rst:257
-msgid ""
-"Edge 17's right node is a dead end because there is no other edge sharing "
-"that same node. (cnt=1)"
 msgstr ""
-"Nodo derecho borde de 17 es un callejón sin salida porque no hay ningún otro"
-" borde que comparta ese mismo nodo. (cnt = 1)"
 
-#: ../../pgr_nodeNetwork.rst:254
+#: ../../build/doc/pgr_nodeNetwork.rst:257
+msgid ""
+"Edge 17's right node is a dead end because there is no other edge sharing"
+" that same node. (cnt=1)"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:254
 msgid "Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2"
-msgstr "Los bordes con 1 callejón sin salida: 1-1, 6-1,14-2, 18-1-17-1 18-2"
-
-#: ../../pgr_nodeNetwork.rst:261
-msgid "Isolated segments"
-msgstr "Segmentos aislados"
-
-#: ../../pgr_nodeNetwork.rst:261
-msgid "two isolated segments:  17 and 18 both they have 2 dead ends"
-msgstr "dos aislados segmentos: 17 y 18 ambos tienen 2 callejones sin salida"
-
-#: ../../pgr_nodeNetwork.rst:262
-msgid "No Isolated segments"
-msgstr "Segmentos no aislados"
-
-#: ../../pgr_nodeNetwork.rst:262
-msgid "Edge 17 now shares a node with edges 14-1 and 14-2"
-msgstr "Borde 17 ahora comparte un nodo con bordes 14-1 y 14-2"
-
-#: ../../pgr_nodeNetwork.rst:263
-msgid "Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2"
-msgstr "Bordes 18-1 y 18-2 compartir un nodo con bordes 13-1 y 13-2"
-
-#: ../../pgr_nodeNetwork.rst:265
-msgid "Gaps"
-msgstr "Espacios"
-
-#: ../../pgr_nodeNetwork.rst:265
-msgid ""
-"There is a gap between edge 17 and 14 because edge 14 is near to the right "
-"node of edge 17"
 msgstr ""
-"Existe un espacio entre 17 y 14 borde borde 14 es cerca del nodo derecho del"
-" borde 17"
 
-#: ../../pgr_nodeNetwork.rst:265
+#: ../../build/doc/pgr_nodeNetwork.rst:261
+msgid "Isolated segments"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:261
+msgid "two isolated segments:  17 and 18 both they have 2 dead ends"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:262
+msgid "No Isolated segments"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:262
+msgid "Edge 17 now shares a node with edges 14-1 and 14-2"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:263
+msgid "Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:265
+msgid "Gaps"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:265
+msgid ""
+"There is a gap between edge 17 and 14 because edge 14 is near to the "
+"right node of edge 17"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:265
 msgid ""
 "Edge 14 was segmented Now edges: 14-1 14-2 17 share the same node The "
 "tolerance value was taken in account"
 msgstr ""
-"Borde 14 fue segmentado ahora bordes: 14-1 14-2 17 comparten el mismo nodo, "
-"el valor de tolerancia fue tomado en cuenta"
 
-#: ../../pgr_nodeNetwork.rst:269
+#: ../../build/doc/pgr_nodeNetwork.rst:269
 msgid "Intersections"
-msgstr "Intersecciones"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:269
+#: ../../build/doc/pgr_nodeNetwork.rst:269
 msgid "Edges 13 and 18 were intersecting"
-msgstr "Bordes 13 y 18 años se intersectan"
-
-#: ../../pgr_nodeNetwork.rst:269
-msgid ""
-"Edges were segmented, So, now in the interection's point there is a node and"
-" the following edges share it: 13-1 13-2 18-1 18-2"
 msgstr ""
-"Bordes fueron segmentados, ahora en el punto de la interesección hay un nodo"
-" y los bordes siguientes lo comparten: 13-1 13-2-18-1 18-2"
 
-#: ../../pgr_nodeNetwork.rst:274
+#: ../../build/doc/pgr_nodeNetwork.rst:269
 msgid ""
-"Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and "
-"18-2 into our edge-table, copying the data for dir,cost,and reverse cost "
-"with tho following steps:"
+"Edges were segmented, So, now in the interection's point there is a node "
+"and the following edges share it: 13-1 13-2 18-1 18-2"
 msgstr ""
-"Ahora, vamos a incluir los segmentos 13-1, 13-2-14-1, 14-2, 18-1 y 18-2 en "
-"nuestra tabla de bordes, copiando además los datos para dir, costo y costo "
-"inverso con los siguientes los pasos:"
 
-#: ../../pgr_nodeNetwork.rst:276
+#: ../../build/doc/pgr_nodeNetwork.rst:274
 msgid ""
-"Add a column old_id into edge_table, this column is going to keep track the "
-"id of the original edge"
+"Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and"
+" 18-2 into our edge-table, copying the data for dir,cost,and reverse cost"
+" with tho following steps:"
 msgstr ""
-"Agregar una columna old_id en edge_table, esta columna va a seguir la pista "
-"el id del borde original"
 
-#: ../../pgr_nodeNetwork.rst:277
+#: ../../build/doc/pgr_nodeNetwork.rst:276
 msgid ""
-"Insert only the segmented edges, that is, the ones whose max(sub_id) >1"
+"Add a column old_id into edge_table, this column is going to keep track "
+"the id of the original edge"
 msgstr ""
-"Introduzca sólo los bordes segmentados, es decir, aquellos cuyo max(sub_id) "
-"> 1"
 
-#: ../../pgr_nodeNetwork.rst:290
+#: ../../build/doc/pgr_nodeNetwork.rst:277
+msgid "Insert only the segmented edges, that is, the ones whose max(sub_id) >1"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:290
 msgid "We recreate the topology:"
-msgstr "Recreamos la topología:"
-
-#: ../../pgr_nodeNetwork.rst:310
-msgid ""
-"To get the same analysis results as the topology of edge_table_noded, we do "
-"the following query:"
 msgstr ""
-"Para obtener los mismos resultados de análisis que la topología de "
-"edge_table_noded, hacemos la siguiente consulta:"
 
-#: ../../pgr_nodeNetwork.rst:337
+#: ../../build/doc/pgr_nodeNetwork.rst:310
+msgid ""
+"To get the same analysis results as the topology of edge_table_noded, we "
+"do the following query:"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:337
 msgid ""
 "To get the same analysis results as the original edge_table, we do the "
 "following query:"
 msgstr ""
-"Para obtener los mismos resultados de análisis como el edge_table original, "
-"hacemos la siguiente consulta:"
 
-#: ../../pgr_nodeNetwork.rst:362
+#: ../../build/doc/pgr_nodeNetwork.rst:362
 msgid ""
-"Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 "
-"is an under pass and there is also a street level juction, and the same "
-"happens with edges 17 and 13."
+"Or we can analyze everything because, maybe edge 18 is an overpass, edge "
+"14 is an under pass and there is also a street level juction, and the "
+"same happens with edges 17 and 13."
 msgstr ""
-"O podemos analizar todo porque, tal vez edge 18 es un puente, borde 14 es un"
-" bajo paso y también hay una juntura nivel calle, y lo mismo ocurre con los "
-"bordes 17 y 13."
 
-#: ../../pgr_nodeNetwork.rst:389
+#: ../../build/doc/pgr_nodeNetwork.rst:389
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
-#: ../../pgr_nodeNetwork.rst:391
+#: ../../build/doc/pgr_nodeNetwork.rst:391
 msgid ""
 ":ref:`topology` for an overview of a topology for routing algorithms. "
 ":ref:`pgr_analyze_oneway` to analyze directionality of the edges. "
@@ -449,7 +396,4 @@ msgid ""
 ":ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge "
 "table."
 msgstr ""
-":ref:`topology` para tener una visión general de una topología de algoritmos de encaminamiento. \n"
-":ref:`pgr_analyze_oneway` para analizar la direccionalidad de los bordes. \n"
-":ref:`pgr_create_topology` para crear una topología basado en la geometría.\n"
-":ref:`pgr_analyze_graph` para analizar los bordes y los nodos de la tabla del borde."
+

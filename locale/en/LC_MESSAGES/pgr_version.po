@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:27-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,104 +17,105 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.4.0\n"
 
-#: ../../pgr_version.rst:13
+#: ../../build/doc/pgr_version.rst:13
 msgid "pgr_version"
 msgstr ""
 
-#: ../../pgr_version.rst:19
+#: ../../build/doc/pgr_version.rst:19
 msgid "Name"
 msgstr ""
 
-#: ../../pgr_version.rst:21
+#: ../../build/doc/pgr_version.rst:21
 msgid "``pgr_version`` — Query for pgRouting version information."
 msgstr ""
 
-#: ../../pgr_version.rst:25
+#: ../../build/doc/pgr_version.rst:25
 msgid "Synopsis"
 msgstr ""
 
-#: ../../pgr_version.rst:27
+#: ../../build/doc/pgr_version.rst:27
 msgid "Returns a table with pgRouting version information."
 msgstr ""
 
-#: ../../pgr_version.rst:35 ../../pgr_version.rst:40
+#: ../../build/doc/pgr_version.rst:35 ../../build/doc/pgr_version.rst:40
 msgid "Description"
 msgstr ""
 
-#: ../../pgr_version.rst:37
+#: ../../build/doc/pgr_version.rst:37
 msgid "Returns a table with:"
 msgstr ""
 
-#: ../../pgr_version.rst:40
+#: ../../build/doc/pgr_version.rst:40
 msgid "Column"
 msgstr ""
 
-#: ../../pgr_version.rst:40
+#: ../../build/doc/pgr_version.rst:40
 msgid "Type"
 msgstr ""
 
-#: ../../pgr_version.rst:42
+#: ../../build/doc/pgr_version.rst:42
 msgid "**version**"
 msgstr ""
 
-#: ../../pgr_version.rst:42 ../../pgr_version.rst:43 ../../pgr_version.rst:44
-#: ../../pgr_version.rst:45 ../../pgr_version.rst:46
+#: ../../build/doc/pgr_version.rst:42 ../../build/doc/pgr_version.rst:43
+#: ../../build/doc/pgr_version.rst:44 ../../build/doc/pgr_version.rst:45
+#: ../../build/doc/pgr_version.rst:46
 msgid "``varchar``"
 msgstr ""
 
-#: ../../pgr_version.rst:42
+#: ../../build/doc/pgr_version.rst:42
 msgid "pgRouting version"
 msgstr ""
 
-#: ../../pgr_version.rst:43
+#: ../../build/doc/pgr_version.rst:43
 msgid "**tag**"
 msgstr ""
 
-#: ../../pgr_version.rst:43
+#: ../../build/doc/pgr_version.rst:43
 msgid "Git tag of pgRouting build"
 msgstr ""
 
-#: ../../pgr_version.rst:44
+#: ../../build/doc/pgr_version.rst:44
 msgid "**hash**"
 msgstr ""
 
-#: ../../pgr_version.rst:44
+#: ../../build/doc/pgr_version.rst:44
 msgid "Git hash of pgRouting build"
 msgstr ""
 
-#: ../../pgr_version.rst:45
+#: ../../build/doc/pgr_version.rst:45
 msgid "**branch**"
 msgstr ""
 
-#: ../../pgr_version.rst:45
+#: ../../build/doc/pgr_version.rst:45
 msgid "Git branch of pgRouting build"
 msgstr ""
 
-#: ../../pgr_version.rst:46
+#: ../../build/doc/pgr_version.rst:46
 msgid "**boost**"
 msgstr ""
 
-#: ../../pgr_version.rst:46
+#: ../../build/doc/pgr_version.rst:46
 msgid "Boost version"
 msgstr ""
 
-#: ../../pgr_version.rst:51
+#: ../../build/doc/pgr_version.rst:51
 msgid "History"
 msgstr ""
 
-#: ../../pgr_version.rst:52
+#: ../../build/doc/pgr_version.rst:52
 msgid "New in version 2.0.0"
 msgstr ""
 
-#: ../../pgr_version.rst:56
+#: ../../build/doc/pgr_version.rst:56
 msgid "Examples"
 msgstr ""
 
-#: ../../pgr_version.rst:58
+#: ../../build/doc/pgr_version.rst:58
 msgid "Query for full version string"
 msgstr ""
 
-#: ../../pgr_version.rst:66
+#: ../../build/doc/pgr_version.rst:66
 msgid "Query for ``version`` and ``boost`` attribute"
 msgstr ""
 

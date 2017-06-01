@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:27-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.4.0\n"
 
-#: ../../topology-functions.rst:13
+#: ../../build/doc/topology-functions.rst:13
 msgid "Topology - Family of Functions"
 msgstr ""
 
-#: ../../topology-functions.rst:15
+#: ../../build/doc/topology-functions.rst:15
 msgid ""
 "The pgRouting's topology of a network, represented with an edge table "
 "with source and target attributes and a vertices table associated with "
@@ -30,27 +30,27 @@ msgid ""
 "provide a function to node an unoded network."
 msgstr ""
 
-#: ../../topology-functions.rst:19
+#: ../../build/doc/topology-functions.rst:19
 msgid ":ref:`pgr_create_topology` -  to create a topology based on the geometry."
 msgstr ""
 
-#: ../../topology-functions.rst:20
+#: ../../build/doc/topology-functions.rst:20
 msgid ""
 ":ref:`pgr_create_vert_table` - to reconstruct the vertices table based on"
 " the source and target information."
 msgstr ""
 
-#: ../../topology-functions.rst:21
+#: ../../build/doc/topology-functions.rst:21
 msgid ""
 ":ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge"
 " table."
 msgstr ""
 
-#: ../../topology-functions.rst:22
+#: ../../build/doc/topology-functions.rst:22
 msgid ":ref:`pgr_analyze_oneway` - to analyze directionality of the edges."
 msgstr ""
 
-#: ../../topology-functions.rst:23
+#: ../../build/doc/topology-functions.rst:23
 msgid ":ref:`pgr_node_network`  -to create nodes to a not noded edge table."
 msgstr ""
 

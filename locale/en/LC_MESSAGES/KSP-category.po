@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:27-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.4.0\n"
 
-#: ../../KSP-category.rst:14
+#: ../../build/doc/KSP-category.rst:14
 msgid "KSP Category"
 msgstr ""
 
-#: ../../KSP-category.rst:18
+#: ../../build/doc/KSP-category.rst:18
 msgid ":ref:`pgr_KSP` - Driving Distance based on pgr_dijkstra"
 msgstr ""
 
-#: ../../KSP-category.rst:19
+#: ../../build/doc/KSP-category.rst:19
 msgid ":ref:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:27-0500\n"
+"POT-Creation-Date: 2017-06-01 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,79 +17,79 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.4.0\n"
 
-#: ../../pgr_vrpOneDepot.rst:14
+#: ../../build/doc/pgr_vrpOneDepot.rst:14
 msgid "pgr_vrpOneDepot - Proposed"
 msgstr ""
 
-#: ../../proposed.rst:3
+#: ../../build/doc/proposed.rst:3
 msgid "Experimental functions"
 msgstr ""
 
-#: ../../proposed.rst:5
+#: ../../build/doc/proposed.rst:5
 msgid "They are not officially of the current release."
 msgstr ""
 
-#: ../../proposed.rst:6
+#: ../../build/doc/proposed.rst:6
 msgid "They likely will not be officially be part of the next release:"
 msgstr ""
 
-#: ../../proposed.rst:8
+#: ../../build/doc/proposed.rst:8
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
-#: ../../proposed.rst:9
+#: ../../build/doc/proposed.rst:9
 msgid "Name might change."
 msgstr ""
 
-#: ../../proposed.rst:10
+#: ../../build/doc/proposed.rst:10
 msgid "Signature might change."
 msgstr ""
 
-#: ../../proposed.rst:11
+#: ../../build/doc/proposed.rst:11
 msgid "Functionality might change."
 msgstr ""
 
-#: ../../proposed.rst:12
+#: ../../build/doc/proposed.rst:12
 msgid "pgTap tests might be missing."
 msgstr ""
 
-#: ../../proposed.rst:13
+#: ../../build/doc/proposed.rst:13
 msgid "Might need c/c++ coding."
 msgstr ""
 
-#: ../../proposed.rst:14
+#: ../../build/doc/proposed.rst:14
 msgid "May lack documentation."
 msgstr ""
 
-#: ../../proposed.rst:15
+#: ../../build/doc/proposed.rst:15
 msgid "Documentation if any might need to be rewritten."
 msgstr ""
 
-#: ../../proposed.rst:16
+#: ../../build/doc/proposed.rst:16
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
 
-#: ../../proposed.rst:17
+#: ../../build/doc/proposed.rst:17
 msgid "Might need a lot of feedback from the comunity."
 msgstr ""
 
-#: ../../proposed.rst:18
+#: ../../build/doc/proposed.rst:18
 msgid "Might depend on a proposed function of pgRouting"
 msgstr ""
 
-#: ../../proposed.rst:19
+#: ../../build/doc/proposed.rst:19
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../pgr_vrpOneDepot.rst:21
+#: ../../build/doc/pgr_vrpOneDepot.rst:21
 msgid "No documentation available from the original developer"
 msgstr ""
 
-#: ../../pgr_vrpOneDepot.rst:23
+#: ../../build/doc/pgr_vrpOneDepot.rst:23
 msgid ":ref:`type_cost_result`"
 msgstr ""
 
-#: ../../pgr_vrpOneDepot.rst:24
+#: ../../build/doc/pgr_vrpOneDepot.rst:24
 msgid "http://en.wikipedia.org/wiki/Vehicle_routing_problem"
 msgstr ""
 
