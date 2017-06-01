@@ -243,9 +243,9 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
                OUT seq INTEGER,
-    OUT component INTEGER,
-    OUT n_seq BIGINT,
-    OUT node BIGINT
+               OUT component BIGINT,
+               OUT n_seq INTEGER,
+               OUT node BIGINT
          ***********************************************************************/
 
         values = palloc(6 * sizeof(Datum));
@@ -260,7 +260,7 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
 	// TODO(mg) Create a structure with the names & types needed
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);                     // --seq
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].start_id); // --component
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id); // --component
         values[3] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);      // --n_seq
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);     // --node
         /**********************************************************************/
