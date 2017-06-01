@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -55,22 +55,18 @@ Path
 pgr_areaContraction(
         G &graph,
         int64_t source,
-        int64_t target,
-        bool only_cost = false) {
+        int64_t target) {
     Path path;
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
+    return path()
 }
 
 
 void
 do_pgr_areaContraction(
         pgr_edge_t  *data_edges,
-        size_t total_edges,
-        int64_t start_vid,
-        int64_t end_vid,
+        size_t data_edges_size,
+        int64_t borderVertices,
         bool directed,
-        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -96,9 +92,7 @@ do_pgr_areaContraction(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             path = pgr_areaContraction(digraph,
-                    start_vid,
-                    end_vid,
-                    only_cost);
+                  borderVertices);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
