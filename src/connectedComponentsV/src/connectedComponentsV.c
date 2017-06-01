@@ -274,10 +274,9 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].component);
+        values[3] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
