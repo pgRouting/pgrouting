@@ -156,9 +156,6 @@ process(
     if (err_msg) pfree(err_msg);
 
 #if 1
-    /*
-     *  handling arrays example
-     */
 
     if (start_borderverticesArr) pfree(start_borderverticesArr);
 #endif
@@ -200,15 +197,9 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_BOOL(2),
-#if 0
-
-#endif
                 &result_tuples,
                 &result_count);
 
-
-        /*                                                                    */
-        /**********************************************************************/
 
 #if PGSQL_VERSION > 94
         funcctx->max_calls = result_count;
