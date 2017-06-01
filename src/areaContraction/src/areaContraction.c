@@ -54,6 +54,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 /* for functions to get edges informtion */
 #include "c_common/edges_input.h"
+#include "c_common/arrays_input.h"
 
 #include "drivers/areaContraction/areaContraction_driver.h"  // the link to the C++ code of the function
 
@@ -87,7 +88,6 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-#if
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
