@@ -54,7 +54,7 @@ static
 Path
 pgr_areaContraction(
         G &graph,
-        int64_t borderVertice) {
+        int64_t* borderVertices) {
     Path path;
     return path;
 }
@@ -64,7 +64,7 @@ void
 do_pgr_areaContraction(
         pgr_edge_t  *data_edges,
         size_t data_edges_size,
-        int64_t borderVertices,
+        int64_t* borderVertices,
         bool directed,
         General_path_element_t **return_tuples,
         size_t *return_count,
@@ -96,8 +96,8 @@ do_pgr_areaContraction(
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, data_edges_size);
-            path = pgr_areaContraction(
-                    undigraph);
+            path = pgr_areaContraction(undigraph,
+                    borderVertices);
         }
 
         auto count = path.size();
