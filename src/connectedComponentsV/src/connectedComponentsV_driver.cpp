@@ -52,12 +52,10 @@ template < class G >
 static
 Path
 pgr_connectedComponentsV(
-        G &graph,
-        int64_t source,
-        int64_t target) {
+        G &graph) {
     Path path;
     Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target);
+    return fn_dijkstra.dijkstra(graph);
 }
 
 
@@ -65,8 +63,6 @@ void
 do_pgr_connectedComponentsV(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        int64_t start_vid,
-        int64_t end_vid,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -91,9 +87,7 @@ do_pgr_connectedComponentsV(
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         path = pgr_connectedComponentsV(
-                undigraph,
-                start_vid,
-                end_vid);
+                undigraph);
 
         auto count = path.size();
 

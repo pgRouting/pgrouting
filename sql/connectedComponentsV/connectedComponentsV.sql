@@ -29,8 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_connectedComponentsV(
     TEXT,
-    BIGINT,
-    BIGINT,
         OUT seq INTEGER,
     OUT component BIGINT,
     OUT n_seq INTEGER,

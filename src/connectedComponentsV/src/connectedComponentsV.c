@@ -67,8 +67,6 @@ static
 void
 process(
         char* edges_sql,
-        int64_t start_vid,
-        int64_t end_vid,
 #if 0
         /*
          * handling arrays example
@@ -110,14 +108,6 @@ process(
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    if (start_vid == end_vid) {
-        /*
-         * https://www.postgresql.org/docs/current/static/spi-spi-finish.html
-         */
-        pgr_SPI_finish();
-        return;
-    }
-
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
@@ -135,8 +125,6 @@ process(
     do_pgr_connectedComponentsV(
             edges,
             total_edges,
-            start_vid,
-            end_vid,
 #if 0
     /*
      *  handling arrays example
@@ -208,8 +196,6 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
-                PG_GETARG_INT64(2),
 #if 0
                 /*
                  *  handling arrays example
@@ -272,11 +258,10 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].component);
-        values[3] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);                     // --seq
+        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].start_id); // --component
+        values[3] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);      // --n_seq
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);     // --node
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

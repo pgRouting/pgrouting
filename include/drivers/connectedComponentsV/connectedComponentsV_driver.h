@@ -49,8 +49,6 @@ extern "C" {
         do_pgr_connectedComponentsV(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                int64_t start_vid,
-                int64_t end_vid,
                 General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
