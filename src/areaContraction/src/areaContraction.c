@@ -69,8 +69,6 @@ process(
         char* edges_sql,
         ArrayType *border_verticesArr,
         bool directed,
-        ArrayType *starts,
-        ArrayType *ends,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     /*
