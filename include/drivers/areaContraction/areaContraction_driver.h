@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -49,11 +49,10 @@ extern "C" {
     void
         do_pgr_areaContraction(
                 pgr_edge_t  *data_edges,
-                size_t total_edges,
-                int64_t start_vid,
-                int64_t end_vid,
+                size_t data_edges_size,
+                int64_t border_vertices,
+                size_t border_vertices_size,
                 bool directed,
-                bool only_cost,
                 General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
