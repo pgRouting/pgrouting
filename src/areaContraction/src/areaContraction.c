@@ -70,9 +70,7 @@ process(
         ArrayType *border_verticesArr,
         bool directed,
 #if 1
-        /*
-         * handling arrays example
-         */
+
         ArrayType *starts,
         ArrayType *ends,
 #endif
@@ -92,11 +90,14 @@ process(
         pgr_get_bigIntArray(&size_start_borderverticesArr, starts);
     PGR_DBG("start_borderverticesArr size %ld ", size_start_borderverticesArr);
 
+
+
 #endif
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
+#if
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
@@ -153,6 +154,7 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
+
 #if 1
     /*
      *  handling arrays example
@@ -199,12 +201,7 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_BOOL(2),
 #if 0
-                /*
-                 *  handling arrays example
-                 */
 
-                PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_ARRAYTYPE_P(2),
 #endif
                 &result_tuples,
                 &result_count);
