@@ -55,7 +55,7 @@ pgr_connectedComponentsV(
         G &graph) {
     Path path;
     Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph);
+    return fn_dijkstra.dijkstra(graph, 0, 0);
 }
 
 
