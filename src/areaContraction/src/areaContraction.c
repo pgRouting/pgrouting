@@ -79,11 +79,11 @@ process(
 #if 1
 
     PGR_DBG("Initializing arrays");
-    int64_t* start_borderverticesArr = NULL;
-    size_t size_start_borderverticesArr = 0;
-    start_borderverticesArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_borderverticesArr, starts);
-    PGR_DBG("start_borderverticesArr size %ld ", size_start_borderverticesArr);
+    int64_t* border_vertices = NULL;
+    size_t border_vertices_size = 0;
+    border_vertices = (int64_t*)
+        pgr_get_bigIntArray(&border_vertices_size, border_verticesArr);
+    PGR_DBG("border_vertices size %ld ", border_vertices_size);
 
 
 
