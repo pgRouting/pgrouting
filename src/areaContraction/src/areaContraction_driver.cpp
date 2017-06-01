@@ -54,8 +54,7 @@ static
 Path
 pgr_areaContraction(
         G &graph,
-        int64_t source,
-        int64_t target) {
+        int64_t borderVertice) {
     Path path;
     return path()
 }

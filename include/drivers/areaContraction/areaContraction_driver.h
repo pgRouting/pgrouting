@@ -50,7 +50,7 @@ extern "C" {
         do_pgr_areaContraction(
                 pgr_edge_t  *data_edges,
                 size_t data_edges_size,
-                int64_t border_vertices,
+                int64_t* border_vertices,
                 size_t border_vertices_size,
                 bool directed,
                 General_path_element_t **return_tuples,
