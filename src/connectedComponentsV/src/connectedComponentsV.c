@@ -279,3 +279,4 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
+

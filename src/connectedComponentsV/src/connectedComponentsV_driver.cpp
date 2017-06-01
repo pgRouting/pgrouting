@@ -131,3 +131,4 @@ do_pgr_connectedComponentsV(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
+
