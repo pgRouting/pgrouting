@@ -101,7 +101,8 @@ do_pgr_connectedComponentsV(
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         size_t sequence = 0;
-        path.generate_postgres_data(return_tuples, sequence);
+		// TODO(mg) write a new function that counts the return_tuples
+        //path.generate_postgres_data(return_tuples, sequence);
         (*return_count) = sequence;
 
         pgassert(*err_msg == NULL);
