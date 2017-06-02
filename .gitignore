@@ -4,9 +4,7 @@ fix_typos
 code_linter
 
 tools/template/mycreate.sh
-push.sh
-tests.sh
-run.sh
+*.sh
 .DS_Store
 .vagrant
 tools/vagrant/packaging.sh
