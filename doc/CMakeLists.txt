@@ -20,19 +20,19 @@ option(LATEX
     "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
 option(SINGLEHTML
-    "Set ON|OFF (default=ON) to build Documentation library tree as SINGLE HTML" OFF)
+    "Set ON|OFF (default=OFF) to build Documentation library tree as SINGLE HTML" OFF)
 
 option(HTML
-    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" OFF)
+    "Set ON|OFF (default=OFF) to build Documentation library tree as HTML" OFF)
 
 #option(MAN
-#    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
+#    "Set ON|OFF (default=OFF) to build Documentation library tree as MAN page" OFF)
 
 option(EPUB
-    "Set ON|OFF (default=ON) to build Documentation library tree as EPUB page" OFF)
+    "Set ON|OFF (default=OFF) to build Documentation library tree as EPUB page" OFF)
 
 option(DUMMY
-    "Set ON|OFF (default=ON) for debugging purposes" OFF)
+    "Set ON|OFF (default=OFF) for debugging purposes" OFF)
 
 foreach(opt HTML LATEX SINGLEHTML EPUB DUMMY)
     if (${${opt}} OR WITH_ALL_DOC)
@@ -42,11 +42,60 @@ foreach(opt HTML LATEX SINGLEHTML EPUB DUMMY)
     endif()
 endforeach()
 
+
+message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
+
+
+#---------------------------------------------
+# Language options
+# English is allways built
+#---------------------------------------------
+# Languages to be used
+set(PgRouting_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
+#set(PgRouting_SUPPORTED_LANGUAGES "es")
+set(PgRouting_ENGLISH "en")
+
+option(WITH_ALL_LANG
+    "Set ON|OFF (default=OFF) to build all the supported languages: 
+    Main Language will always be built:
+    ${PgRouting_ENGLISH}
+    Optional languages:
+    ${PgRouting_SUPPORTED_LANGUAGES} 
+
+    When OFF and want to build specific optional language, use the language code in capital letters:
+    -D ES=ON
+    "
+    OFF
+    )
+
+foreach(lang ${PgRouting_SUPPORTED_LANGUAGES})
+    string(TOUPPER ${lang} val)
+    option(${val}
+        "Set ON|OFF (default=OFF) build ${lang} Documentation" OFF)
+endforeach()
+
+foreach(lang ${PgRouting_SUPPORTED_LANGUAGES})
+    string(TOUPPER ${lang} opt)
+    if (${opt} OR WITH_ALL_LANG)
+        list(APPEND PgRouting_BUILD_LANGUAGES ${lang})
+    endif()
+endforeach()
+
+set (SPHINXINTL_LANGUAGE  ${PgRouting_ENGLISH})
+foreach(lang ${PgRouting_BUILD_LANGUAGES})
+    set(SPHINXINTL_LANGUAGE "${SPHINXINTL_LANGUAGE},${lang}")
+endforeach()
+
+
+list(APPEND PgRouting_BUILD_LANGUAGES  ${PgRouting_ENGLISH})
+message(STATUS "PgRouting_BUILD_LANGUAGES = ${PgRouting_BUILD_LANGUAGES}")
+message(STATUS "SPHINXINTL_LANGUAGE = ${SPHINXINTL_LANGUAGE}")
+
+
 if(NOT WITH_DOC)
     return()
 endif()
 
-message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
 
 #---------------------------------------------
 # Checking for prerwquisites
@@ -87,11 +136,6 @@ else()
     set(SPHINX_THEME_DIR "['']")
     set(SPHINX_THEME_OPTIONS "")
 endif()
-
-
-
-#TODO make variables for the languages
-set(PGR_DOCUMENTATION_LANGUAGES "en" "es")
 
 
 
@@ -141,23 +185,21 @@ if (FALSE)
     endif()
 endif()
 
+set(ENV{SPHINXINTL_LANGUAGE} ${SPHINXINTL_LANGUAGE})
 
-if (TRUE)
-    add_custom_target(locale
+add_custom_target(locale
 
-        COMMAND ${SPHINX_EXECUTABLE} 
-        -b gettext
-        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${CMAKE_SOURCE_DIR}/locale/pot" 
+    COMMAND ${SPHINX_EXECUTABLE} 
+    -b gettext
+    -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+    "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+    "${CMAKE_SOURCE_DIR}/locale/pot" 
 
-        COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale  -l es -l en
+    COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale --language=${SPHINXINTL_LANGUAGE}
 
-        COMMENT "Generating POT files ..."
-        SOURCES ${PgRouting_DOC_FILES}
-        )
-    #add_dependencies(doc locale)
-endif()
+    COMMENT "Generating POT files ..."
+    SOURCES ${PgRouting_DOC_FILES}
+    )
 
 
 # The doc target will build all documentation targets.
@@ -167,13 +209,13 @@ add_custom_target(doc
 
 foreach (target ${PgRouting_DOC_TARGETS})
     add_custom_target("${target}"
-            COMMENT "Building ${target} documentation with Sphinx")
+        COMMENT "Building ${target} documentation with Sphinx")
 
     configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
         "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/index.html")
 
-    foreach (lang ${PGR_DOCUMENTATION_LANGUAGES})
+    foreach (lang ${PgRouting_BUILD_LANGUAGES})
         add_custom_target(
             "${target}-${lang}"
             COMMAND ${SPHINX_EXECUTABLE} 
