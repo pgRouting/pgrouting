@@ -13,8 +13,8 @@
 option(WITH_ALL_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
-option(PDF
-    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
+#option(PDF
+#    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
 option(LATEX
     "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
@@ -34,23 +34,13 @@ option(EPUB
 option(DUMMY
     "Set ON|OFF (default=ON) for debugging purposes" OFF)
 
-option(LOCALE
-    "Set ON|OFF (default=OFF) to build the locale files of all languages.
-    All other options are ignored
-    All supported languages are considered" OFF
-    )
-
-if (NOT LOCALE)
-    foreach(opt HTML LATEX PDF SINGLEHTML EPUB DUMMY)
-        if (${${opt}} OR WITH_ALL_DOC)
-            string(TOLOWER ${opt} val)
-            list(APPEND PgRouting_DOC_TARGETS ${val})
-            set(WITH_DOC ON)
-        endif()
-    endforeach()
-else()
-    set(WITH_DOC ON)
-endif()
+foreach(opt HTML LATEX SINGLEHTML EPUB DUMMY)
+    if (${${opt}} OR WITH_ALL_DOC)
+        string(TOLOWER ${opt} val)
+        list(APPEND PgRouting_DOC_TARGETS ${val})
+        set(WITH_DOC ON)
+    endif()
+endforeach()
 
 if(NOT WITH_DOC)
     return()
@@ -116,13 +106,12 @@ message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
 #---------------------------------------------
 # Adding documentation directories
 #---------------------------------------------
-add_subdirectory("src")
-add_subdirectory("images")
-add_subdirectory("queries")
-
-foreach (subdir ${PgRouting_DOC_DIRECTORIES})
+foreach (subdir ${PgRouting_DOC_DIRECTORIES} "src" "queries")
     add_subdirectory(${subdir})
 endforeach()
+
+add_subdirectory("images")
+
 
 configure_file("../tools/testers/sampledata.sql" "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/sampledata.sql")
 
@@ -142,7 +131,8 @@ configure_file(
 # Add documentation to targets
 
 
-if (LATEX)
+#if (LATEX)
+if (FALSE)
     find_package(LATEX)
     if (NOT LATEX_COMPILER)
         message("Couldn't find Latex, can't build latex docs using Sphinx")
@@ -150,6 +140,25 @@ if (LATEX)
         message(STATUS "LATEX_COMPILER = ${LATEX_COMPILER}")
     endif()
 endif()
+
+
+if (TRUE)
+    add_custom_target(locale
+
+        COMMAND ${SPHINX_EXECUTABLE} 
+        -b gettext
+        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+        "${CMAKE_SOURCE_DIR}/locale/pot" 
+
+        COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale  -l es -l en
+
+        COMMENT "Generating POT files ..."
+        SOURCES ${PgRouting_DOC_FILES}
+        )
+    #add_dependencies(doc locale)
+endif()
+
 
 # The doc target will build all documentation targets.
 add_custom_target(doc 
@@ -165,11 +174,8 @@ foreach (target ${PgRouting_DOC_TARGETS})
         "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/index.html")
 
     foreach (lang ${PGR_DOCUMENTATION_LANGUAGES})
-        add_custom_target("${target}-${lang}"
-            COMMENT "Building ${target}/${lang} documentation with Sphinx")
-
-        add_custom_command(
-            TARGET "${target}-${lang}" POST_BUILD
+        add_custom_target(
+            "${target}-${lang}"
             COMMAND ${SPHINX_EXECUTABLE} 
             #-q  # Enable for quiet mode 
             #-Q  # Enable for even more quiet mode
@@ -181,35 +187,15 @@ foreach (target ${PgRouting_DOC_TARGETS})
             -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
             "${PGR_DOCUMENTATION_SOURCE_DIR}" 
             "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/${lang}"
-            COMMENT "Generating ${target}/${lang} documentation ...")
+            DEPENDS locale
+            COMMENT "Generating ${target}/${lang} documentation ..."
+            SOURCES ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES} 
+            )
         add_dependencies(${target} "${target}-${lang}")
 
     endforeach()
     add_dependencies(doc "${target}")
 endforeach()
-
-
-if (LOCALE)
-    add_custom_target(locale 
-        COMMENT "Building documentation with Sphinx")
-    add_custom_command(
-        TARGET locale POST_BUILD
-
-        COMMAND ${SPHINX_EXECUTABLE} 
-        -b gettext
-        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${CMAKE_SOURCE_DIR}/locale/pot" 
-
-        COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale  -l es -l en
-
-        # COMMAND tx pull -r pgrouting.pgr_createVerticesTable -f -l es
-
-
-        COMMENT "Generating POT files ...")
-    add_dependencies(doc locale)
-endif()
-
 
 
 

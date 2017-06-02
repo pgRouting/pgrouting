@@ -11,5 +11,5 @@ endforeach()
 
 add_subdirectory("images")
 set(PgRouting_DOC_FILES ${PgRouting_DOC_FILES} ${LOCAL_DOC_FILES} PARENT_SCOPE)
-set(PgRouting_DOC_FILES ${PgRouting_IMG_FILES} PARENT_SCOPE)
+set(PgRouting_IMG_FILES ${PgRouting_IMG_FILES} PARENT_SCOPE)
 
