@@ -2,8 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- testing from an existing starting vertex to an non-existing destination in directed graph
--- expecting results: empty set
+
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions',
@@ -13,8 +12,6 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- testing from an existing starting vertex to an non-existing destination in undirected graph
--- expecting results: empty set
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions',
@@ -25,8 +22,6 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- testing from an existing starting vertex to an non-existing destination in directed graph
--- expecting results: empty set
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
@@ -36,8 +31,6 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- testing from an existing starting vertex to an non-existing destination in undirected graph
--- expecting results: empty set
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
@@ -48,8 +41,6 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- testing from an non-existing starting vertex to an existing destination in directed graph
--- expecting results: empty set
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions',
@@ -59,8 +50,6 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- testing from an non-existing starting vertex to an existing destination in undirected graph
--- expecting results: empty set
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions',
@@ -71,8 +60,6 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- testing from an non-existing starting vertex to an existing destination in directed graph
--- expecting results: empty set
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
@@ -82,8 +69,6 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- testing from an non-existing starting vertex to an existing destination in undirected graph
--- expecting results: empty set
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
@@ -94,6 +79,5 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- q3
 ROLLBACK;
 ROLLBACK
