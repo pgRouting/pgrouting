@@ -64,7 +64,7 @@ BEGIN
 END
 $BODY$
 language plpgsql;
-
+SELECT has_function('pgr_dijkstratrsp');
 --SELECT * from dijkstratrsp_compare_dijkstra();
 
 SELECT * FROM finish();
