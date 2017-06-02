@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: general_path_element_t.h
+File: pgr_component_t.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
