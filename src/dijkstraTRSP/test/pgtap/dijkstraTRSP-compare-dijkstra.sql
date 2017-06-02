@@ -1,10 +1,12 @@
 \i setup.sql
 
-SELECT plan(0);
+SELECT plan(1);
 
 SET client_min_messages TO ERROR;
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+
+SELECT has_function('pgr_dijkstratrsp');
 
 CREATE or REPLACE FUNCTION dijkstratrsp_compare_dijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
@@ -64,7 +66,6 @@ BEGIN
 END
 $BODY$
 language plpgsql;
-SELECT has_function('pgr_dijkstratrsp');
 --SELECT * from dijkstratrsp_compare_dijkstra();
 
 SELECT * FROM finish();
