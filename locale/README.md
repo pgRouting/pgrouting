@@ -2,118 +2,131 @@
 
 # Locale
 
-To get latest pot files
+Currently the setup is for  `es` `ru` `ja` `it` `de` `fr` 
+
+## Building the LOCALE:
+
+Use this when the English documentation changed.
+
 ```
 cd build
-cmake  -DWITH_DOC=ON -DBUILD_LOCALE=ON ..
+rm -rf *
+cmake -D LOCALE=ON ..
 make locale
 ```
 
-list pot files
-```
-ls doc/_build/gettext
-```
+commit changes and push
 
-build the locale files
-```
-sphinx-intl update -p doc/_build/gettext -d doc/_build/locale -l es,en 
-```
-
-Currently the setup is for `en` and `es`
-
-## Change only what is needed
-
-* Copy the pot files that changed and all the corresponding po files in other languages
-
-```
-cp doc/_build/gettext/pgr_createVerticesTable.pot ../locale/pot
-cp doc/_build/locale/en/LC_MESSAGES/pgr_createVerticesTable.po ../locale/en/LC_MESSAGES
-cp doc/_build/locale/es/LC_MESSAGES/pgr_createVerticesTable.po ../locale/es/LC_MESSAGES
-```
-
+## MANAGERS: Interaction with transifex:
 
 ### Push the resource to transifex
 
+Push a New or changed resource:
+
+* New resource
+
+Add the resource to the `.tx/config` located at the root of the repository
+(Use as example the other resources)
+
 ```
-tx push --source -r pgrouting.pgr_createVerticesTable
+vim ../.tx/config
 ```
 
-### Pull transtlated strings
+* Push the resource
+```
+tx push --source -r pgrouting.pgr_createVerticesTable
+
+```
+
+### Push all the resources to transifex
+
+Use before the documentation frezze to make sure all the documents that
+need translation are translated and are up to date.
+
+```
+tx push --source
+```
+
+NOTE: INFORM: A documentation frezze to let translators translate
+
+### Pull the resources from transifex
+
+Be patient takes time (I like the `-d` flag just to know what is being downloaded)
+
+* this pulls all the translations
+```
+tx -d pull -f
+```
+
+* this pulls the Spanish translations
+```
+tx -d pull -f -l es
+```
+
+
+
+## TRANSLATORS
+
+For this example the translator is translating `pgr_createVerticesTable` to `Spanish`
+
+* Step 1: Build a local documentation
+
+```
+cd build
+rm -rf *
+cmake -D HTML=ON -D ES=ON ..
+make html-es
+```
+
+* Step 2: Navigate to the page you are translating:
+
+On the Browser go to:
+```
+file:///path/to/build/doc/_build/html/es/pgr_createVerticesTable.html
+```
+
+* Step 3: Pull the translation & build the documentation & refresh browser
 
 ```
 tx pull -r pgrouting.pgr_createVerticesTable -l es
+make html-es
+```
+`Refresh browser`
+
+## Building the documentation:
+
+NOTE: in any case English is always build
+
+* Building all languages
+
+```
+cmake -D HTML=ON -D WITH_ALL_LANG=ON ..
+make doc
 ```
 
-Note: if the file is skip `-f` forces the pull but basically it means:
+* Building a a particular language
 
-* locally the po file changed and no push of the resource was done.
-* A translation has being downloaded and no further translations on the transifex file have being done 
-
-### clean the build & build the documentation:
+This example shows Spanish:
 
 ```
-rm -rf *
-cmake  -DWITH_DOC=ON -DBUILD_HTML=ON ..
+cmake -D HTML=ON -D ES=ON ..
+make html
 ```
 
-## Which resources need change:
+* Building a particular language
 
-The translation strings are in the po files.
-The Engish transtlations should not change unless the documentation changed
+This example shows Spanish:
 
-### English
-
-Check the English differences with the commited files
 ```
-diff -r doc/_build/locale/en ../locale/en
-```
-
-Sample output on a file:
-```
-diff -r doc/_build/locale/en/LC_MESSAGES/withPoints-family.po ../locale/en/LC_MESSAGES/withPoints-family.po
-11c11
-< "POT-Creation-Date: 2017-05-30 08:52-0500\n"
----
-> "POT-Creation-Date: 2017-05-30 08:27-0500\n"
+make -D HTML=ON -D SINGLEHTML=OM -D ES=ON ..
+make html
+make singlehtml
+# OR to build both:
+make doc
 ```
 
-### Other languages
-
-Check the English differences with the commited files
-```
-diff -r doc/_build/locale/es ../locale/es
-```
-
-* there are no differences when the file has no translation
-
-Sample output on a translated file:
-```
-36c39
-< msgstr ""
----
-> msgstr "Sinopsis"
-```
-
-## The pot files
-
-Check the differences with the commited files
-```
-diff doc/_build/gettext ../locale/pot
-```
-
-Sample output on a file:
-```
-diff doc/_build/gettext/VRP-category.pot ../locale/pot/VRP-category.pot
-11c11
-< "POT-Creation-Date: 2017-05-30 08:52-0500\n"
----
-> "POT-Creation-Date: 2017-05-30 08:03-0500\n"
-```
-
-# Push to transifex only what is needed
-
-
-References:
+# References
 
 * https://pypi.python.org/pypi/sphinx-intl
-
+* https://docs.transifex.com/client/introduction
+* http://www.sphinx-doc.org/en/stable/intl.html

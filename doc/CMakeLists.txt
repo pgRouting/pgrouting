@@ -10,6 +10,9 @@
 # Kind of sphinx output
 #---------------------------------------------
 
+option(LOCALE
+    "Set ON|OFF (default=OFF) to build ithe latest pot/po files" OFF)
+
 option(WITH_ALL_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
@@ -52,7 +55,6 @@ message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
 #---------------------------------------------
 # Languages to be used
 set(PgRouting_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
-#set(PgRouting_SUPPORTED_LANGUAGES "es")
 set(PgRouting_ENGLISH "en")
 
 option(WITH_ALL_LANG
@@ -187,19 +189,20 @@ endif()
 
 set(ENV{SPHINXINTL_LANGUAGE} ${SPHINXINTL_LANGUAGE})
 
-add_custom_target(locale
-
-    COMMAND ${SPHINX_EXECUTABLE} 
-    -b gettext
-    -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-    "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-    "${CMAKE_SOURCE_DIR}/locale/pot" 
+if (LOCALE)
+    add_custom_target(locale
+        COMMAND ${SPHINX_EXECUTABLE} 
+        -b gettext
+        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+        "${CMAKE_SOURCE_DIR}/locale/pot" 
 
     COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale --language=${SPHINXINTL_LANGUAGE}
 
     COMMENT "Generating POT files ..."
     SOURCES ${PgRouting_DOC_FILES}
     )
+endif()
 
 
 # The doc target will build all documentation targets.
@@ -229,7 +232,7 @@ foreach (target ${PgRouting_DOC_TARGETS})
             -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
             "${PGR_DOCUMENTATION_SOURCE_DIR}" 
             "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/${lang}"
-            DEPENDS locale
+
             COMMENT "Generating ${target}/${lang} documentation ..."
             SOURCES ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES} 
             )

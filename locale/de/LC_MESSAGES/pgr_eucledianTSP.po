@@ -1,186 +1,185 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2017\n"
+"Language-Team: German (https://www.transifex.com/pgrouting/teams/1219/de/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:13
+#: ../../pgr_eucledianTSP.rst:13
 msgid "pgr_eucledianTSP"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:16
+#: ../../pgr_eucledianTSP.rst:16
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:18
+#: ../../pgr_eucledianTSP.rst:18
 msgid ""
-"``pgr_eucledianTSP`` - Returns a route that visits all the coordinates "
-"pairs exactly once."
+"``pgr_eucledianTSP`` - Returns a route that visits all the coordinates pairs"
+" exactly once."
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:22
+#: ../../pgr_eucledianTSP.rst:22
 msgid "Availability: 2.3.0"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:24
+#: ../../pgr_eucledianTSP.rst:24
 msgid "Synopsis"
-msgstr ""
+msgstr "Übersicht"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:26
+#: ../../pgr_eucledianTSP.rst:26
 msgid ""
-"The travelling salesman problem (TSP) or travelling salesperson problem "
-"asks the following question:"
+"The travelling salesman problem (TSP) or travelling salesperson problem asks"
+" the following question:"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:28
+#: ../../pgr_eucledianTSP.rst:28
 msgid ""
-"Given a list of cities and the distances between each pair of cities, "
-"what is the shortest possible route that visits each city exactly once "
-"and returns to the origin city?"
+"Given a list of cities and the distances between each pair of cities, what "
+"is the shortest possible route that visits each city exactly once and "
+"returns to the origin city?"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:30
+#: ../../pgr_eucledianTSP.rst:30
 msgid ""
 "This implementation uses simulated annealing to return the approximate "
 "solution when the input is given in the form of coordinates."
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:33
+#: ../../pgr_eucledianTSP.rst:33
 msgid "Signature Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:48
+#: ../../pgr_eucledianTSP.rst:48
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:54
+#: ../../pgr_eucledianTSP.rst:54
 msgid "Minimal Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst
+#: ../../pgr_eucledianTSP.rst:0 ../../pgr_eucledianTSP.rst:0
 msgid "Example"
-msgstr ""
+msgstr "Beispiel"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:63
+#: ../../pgr_eucledianTSP.rst:63
 msgid ""
 "Because the documentation examples are auto generated and tested for non "
-"changing results, and the default is to have random execution, the "
-"example is wrapping the actual call."
+"changing results, and the default is to have random execution, the example "
+"is wrapping the actual call."
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:75
+#: ../../pgr_eucledianTSP.rst:75
 msgid "Complete Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:90
+#: ../../pgr_eucledianTSP.rst:90
 msgid "Example:"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:96
+#: ../../pgr_eucledianTSP.rst:96
 msgid "Description of the Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:99
+#: ../../pgr_eucledianTSP.rst:99
 msgid "Description of the coordinates SQL query"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:102
+#: ../../pgr_eucledianTSP.rst:102
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:102
+#: ../../pgr_eucledianTSP.rst:102
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:102
+#: ../../pgr_eucledianTSP.rst:102
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:104
+#: ../../pgr_eucledianTSP.rst:104
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:104
+#: ../../pgr_eucledianTSP.rst:104
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:104
+#: ../../pgr_eucledianTSP.rst:104
 msgid "Identifier of the coordinate. (optional)"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:105
+#: ../../pgr_eucledianTSP.rst:105
 msgid "**x**"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:105
-#: ../../build/doc/pgr_eucledianTSP.rst:106
+#: ../../pgr_eucledianTSP.rst:105 ../../pgr_eucledianTSP.rst:106
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:105
+#: ../../pgr_eucledianTSP.rst:105
 msgid "X value of the coordinate."
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:106
+#: ../../pgr_eucledianTSP.rst:106
 msgid "**y**"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:106
+#: ../../pgr_eucledianTSP.rst:106
 msgid "Y value of the coordinate."
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:110
+#: ../../pgr_eucledianTSP.rst:110
 msgid ""
-"When the value of **id** is not given then the coordinates will receive "
-"an **id** starting from 1, in the order given."
+"When the value of **id** is not given then the coordinates will receive an "
+"**id** starting from 1, in the order given."
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:125
+#: ../../pgr_eucledianTSP.rst:125
 msgid "Examples"
-msgstr ""
+msgstr "Beispiele"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:127
+#: ../../pgr_eucledianTSP.rst:127
 msgid "Skipping the Simulated Annealing & showing some process information"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:135
+#: ../../pgr_eucledianTSP.rst:135
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:139
+#: ../../pgr_eucledianTSP.rst:139
 msgid "History"
-msgstr ""
+msgstr "Geschichte"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:140
+#: ../../pgr_eucledianTSP.rst:140
 msgid "New in version 2.3.0"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:145
+#: ../../pgr_eucledianTSP.rst:145
 msgid "See Also"
-msgstr ""
+msgstr "Siehe auch"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:147
+#: ../../pgr_eucledianTSP.rst:147
 msgid ":ref:`tsp`"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst:148
+#: ../../pgr_eucledianTSP.rst:148
 msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
-msgstr ""
+msgstr "http://de.wikipedia.org/wiki/Problem_des_Handlungsreisenden"
 
-#: ../../build/doc/pgr_eucledianTSP.rst:149
+#: ../../pgr_eucledianTSP.rst:149
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
 msgstr ""
-
