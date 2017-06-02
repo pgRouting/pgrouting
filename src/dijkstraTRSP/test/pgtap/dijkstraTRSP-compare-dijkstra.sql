@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(1156);
+SELECT plan(0);
 
 SET client_min_messages TO ERROR;
 
@@ -65,7 +65,7 @@ END
 $BODY$
 language plpgsql;
 
-SELECT * from dijkstratrsp_compare_dijkstra();
+--SELECT * from dijkstratrsp_compare_dijkstra();
 
 SELECT * FROM finish();
 ROLLBACK;
