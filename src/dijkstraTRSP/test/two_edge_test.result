@@ -4,8 +4,8 @@ SET client_min_messages TO NOTICE;
 SET
 -- q1
 SELECT * FROM pgr_dijkstraTRSP(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT * FROM restrictions_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions',
     2, 3
 );
 seq | path_seq | node | edge | cost | agg_cost
@@ -14,8 +14,8 @@ seq | path_seq | node | edge | cost | agg_cost
 
 -- q2
 SELECT * FROM pgr_dijkstraTRSP(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT * FROM restrictions_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions',
     2, 3,
     FALSE
 );
