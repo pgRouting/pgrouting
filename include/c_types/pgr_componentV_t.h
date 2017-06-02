@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_component_t.h
+File: pgr_componentV_t.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_COMPONENT_T_H_
-#define INCLUDE_C_TYPES_PGR_COMPONENT_T_H_
+#ifndef INCLUDE_C_TYPES_PGR_COMPONENTV_T_H_
+#define INCLUDE_C_TYPES_PGR_COMPONENTV_T_H_
 #pragma once
 
 
@@ -56,14 +56,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 typedef struct {
-	int64_t component;     // connected component
-	int64_t scc;           // strongly connected component
-	int64_t bcc;           // biconnected component
+	int64_t component;
 	int n_seq;
 	int64_t node;
-	int64_t edge;
-    int64_t start_id;
-    int64_t end_id;
-} pgr_component_t;
+} pgr_componentV_t;
 
-#endif // INCLUDE_C_TYPES_PGR_COMPONENT_T_H_
+#endif // INCLUDE_C_TYPES_PGR_COMPONENTV_T_H_

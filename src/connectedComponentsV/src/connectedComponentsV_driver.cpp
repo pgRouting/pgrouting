@@ -63,7 +63,7 @@ void
 do_pgr_connectedComponentsV(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        General_path_element_t **return_tuples,
+        pgr_componentV_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
