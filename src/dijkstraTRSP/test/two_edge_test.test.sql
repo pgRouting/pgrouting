@@ -67,5 +67,4 @@ SELECT * FROM pgr_dijkstraTRSP(
     6, 8,
     FALSE
 );
-
 \echo -- q3
