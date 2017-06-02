@@ -6,23 +6,28 @@ SET
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM restrictions_table',
-    2, 3
+    2, 8
 );
-seq | path_seq | node | edge | cost | agg_cost
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-(0 rows)
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    7 |    1 |        1
+   3 |        3 |    8 |   -1 |    0 |        2
+(3 rows)
 
 -- q2
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM restrictions_table',
-    2, 3,
+    2, 8,
     FALSE
 );
-seq | path_seq | node | edge | cost | agg_cost
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-(0 rows)
-
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    7 |    1 |        1
+   3 |        3 |    8 |   -1 |    0 |        2
+(3 rows)
 
 -- q3
 ROLLBACK;
