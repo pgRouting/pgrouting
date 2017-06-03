@@ -74,7 +74,7 @@ process(
         ArrayType *starts,
         ArrayType *ends,
 #endif
-        General_path_element_t **result_tuples,
+        pgr_componentV_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -173,7 +173,7 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_path_element_t  *result_tuples = NULL;
+    pgr_componentV_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -231,7 +231,7 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (pgr_componentV_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -258,11 +258,10 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-	// TODO(mg) Create a structure with the names & types needed
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);                     // --seq
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id); // --component
-        values[3] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);      // --n_seq
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);     // --node
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);                     // seq
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].component); // component
+        values[3] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);      // n_seq
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);     // node
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
