@@ -65,6 +65,7 @@ do_pgr_areaContraction(
         pgr_edge_t  *data_edges,
         size_t data_edges_size,
         int64_t* borderVertices,
+        size_t borderVertices_size,
         bool directed,
         General_path_element_t **return_tuples,
         size_t *return_count,
