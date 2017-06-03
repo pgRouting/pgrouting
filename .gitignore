@@ -6,6 +6,7 @@ code_linter
 .DS_Store
 .vagrant
 tools/vagrant/packaging.sh
+run_new.sh
 *.mo
 .directory
 notUsed
