@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-template < class G > class Pgr_dijkstra;
+template < class G > class Pgr_components;
 // user's functions
 // for development
 
@@ -55,7 +55,7 @@ pgr_drivingDistance(
         std::vector< int64_t > start_vids,
         double distance,
         bool equicost) {
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_components< G > fn_dijkstra;
     return fn_dijkstra.drivingDistance(graph, start_vids, distance, equicost);
 }
 
@@ -66,7 +66,7 @@ pgr_drivingDistance(
         G &graph,
         int64_t  source,
         double distance) {
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_components< G > fn_dijkstra;
     return fn_dijkstra.drivingDistance(graph, source, distance);
 }
 
@@ -74,19 +74,19 @@ pgr_drivingDistance(
 /* 1 to 1*/
 template < class G >
 Path
-pgr_dijkstra(
+Pgr_components(
         G &graph,
         int64_t source,
         int64_t target,
         bool only_cost = false) {
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_components< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, source, target, only_cost);
 }
 
 /* 1 to many*/
 template < class G >
 std::deque<Path>
-pgr_dijkstra(
+Pgr_components(
         G &graph,
         int64_t  source,
         std::vector< int64_t > targets,
@@ -95,14 +95,14 @@ pgr_dijkstra(
     targets.erase(
             std::unique(targets.begin(), targets.end()),
             targets.end());
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_components< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, source, targets, only_cost);
 }
 
 /* many to 1*/
 template < class G >
 std::deque<Path>
-pgr_dijkstra(
+Pgr_components(
         G &graph,
         std::vector< int64_t > sources,
         int64_t  target,
@@ -112,14 +112,14 @@ pgr_dijkstra(
             std::unique(sources.begin(), sources.end()),
             sources.end());
 
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_components< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, sources, target, only_cost);
 }
 
 /* Many to Many */
 template < class G >
 std::deque<Path>
-pgr_dijkstra(
+Pgr_components(
         G &graph,
         std::vector< int64_t > sources,
         std::vector< int64_t > targets,
@@ -134,7 +134,7 @@ pgr_dijkstra(
             std::unique(targets.begin(), targets.end()),
             targets.end());
 
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_components< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, sources, targets, only_cost);
 }
 
@@ -143,7 +143,7 @@ pgr_dijkstra(
 //******************************************
 
 template < class G >
-class Pgr_dijkstra {
+class Pgr_components {
  public:
      typedef typename G::V V;
 
@@ -332,7 +332,7 @@ class Pgr_dijkstra {
 // preparation for many to distance
 template < class G >
 std::deque< Path >
-Pgr_dijkstra< G >::drivingDistance(
+Pgr_components< G >::drivingDistance(
         G &graph,
         std::vector< int64_t > start_vertex,
         double distance,
@@ -357,7 +357,7 @@ Pgr_dijkstra< G >::drivingDistance(
 
 template < class G >
 Path
-Pgr_dijkstra< G >::drivingDistance(
+Pgr_components< G >::drivingDistance(
         G &graph,
         int64_t start_vertex,
         double distance) {
@@ -391,7 +391,7 @@ Pgr_dijkstra< G >::drivingDistance(
 //! Dijkstra 1 to 1
 template < class G >
 Path
-Pgr_dijkstra< G >::dijkstra(
+Pgr_components< G >::dijkstra(
         G &graph,
         int64_t start_vertex,
         int64_t end_vertex,
@@ -426,7 +426,7 @@ Pgr_dijkstra< G >::dijkstra(
 //! Dijkstra 1 to many
 template < class G >
 std::deque<Path>
-Pgr_dijkstra< G >::dijkstra(
+Pgr_components< G >::dijkstra(
         G &graph,
         int64_t start_vertex,
         const std::vector< int64_t > &end_vertex,
@@ -468,7 +468,7 @@ Pgr_dijkstra< G >::dijkstra(
 // preparation for many to 1
 template < class G >
 std::deque<Path>
-Pgr_dijkstra< G >::dijkstra(
+Pgr_components< G >::dijkstra(
         G &graph,
         const std::vector < int64_t > &start_vertex,
         int64_t end_vertex,
@@ -491,7 +491,7 @@ Pgr_dijkstra< G >::dijkstra(
 // preparation for many to many
 template < class G >
 std::deque<Path>
-Pgr_dijkstra< G >::dijkstra(
+Pgr_components< G >::dijkstra(
         G &graph,
         const std::vector< int64_t > &start_vertex,
         const std::vector< int64_t > &end_vertex,
@@ -518,7 +518,7 @@ Pgr_dijkstra< G >::dijkstra(
 //! Call to Dijkstra  1 source to 1 target
 template < class G >
 bool
-Pgr_dijkstra< G >::dijkstra_1_to_1(
+Pgr_components< G >::dijkstra_1_to_1(
         G &graph,
         V source,
         V target) {
@@ -541,7 +541,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_1(
 //! Call to Dijkstra  1 source to distance
 template < class G >
 bool
-Pgr_dijkstra< G >::dijkstra_1_to_distance(G &graph, V source, double distance) {
+Pgr_components< G >::dijkstra_1_to_distance(G &graph, V source, double distance) {
     bool found = false;
     try {
         boost::dijkstra_shortest_paths(graph.graph, source,
@@ -563,7 +563,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_distance(G &graph, V source, double distance) {
 //! Call to Dijkstra  1 source to many targets
 template <class G>
 bool
-Pgr_dijkstra< G >::dijkstra_1_to_many(
+Pgr_components< G >::dijkstra_1_to_many(
         G &graph,
         V source,
         const std::vector< V > &targets) {

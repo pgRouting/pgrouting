@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "components/pgr_components.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -54,7 +54,7 @@ Path
 pgr_connectedComponentsV(
         G &graph) {
     Path path;
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_components< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, 0, 0);
 }
 
