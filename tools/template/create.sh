@@ -129,6 +129,10 @@ mv $MY_FUNCTION_NAME/pgtap/function1-innerQuery.sql        $MY_FUNCTION_NAME/pgt
 
 
 
+if [[ ! ( -d ../../doc/$MY_FUNCTION_NAME ) ]] ; then
+    mkdir ../../sql/$MY_FUNCTION_NAME
+fi
+
 if [[ ! ( -d ../../sql/$MY_FUNCTION_NAME ) ]] ; then
     mkdir ../../sql/$MY_FUNCTION_NAME
 fi
@@ -138,16 +142,21 @@ if [[  "$1" == "clean"  ]] ; then
     echo "deleting old directories"
     rm -rf ../../sql/$MY_FUNCTION_NAME
     rm -rf ../../src/$MY_FUNCTION_NAME
+    rm -rf ../../doc/$MY_FUNCTION_NAME
     mkdir -p ../../sql/$MY_FUNCTION_NAME
+    mkdir -p ../../doc/$MY_FUNCTION_NAME
     mkdir -p ../../include/drivers/$MY_FUNCTION_NAME
+
+    #moving the whole structure to its final location
+    mv $MY_FUNCTION_NAME/pgtap              $MY_FUNCTION_NAME/test
+    mv $MY_FUNCTION_NAME/src/*driver.h      ../../include/drivers/$MY_FUNCTION_NAME
+
+    mv $MY_FUNCTION_NAME/doc/*              ../../doc/$MY_FUNCTION_NAME
+    mv $MY_FUNCTION_NAME/sql/*              ../../sql/$MY_FUNCTION_NAME
+    rm -rf  $MY_FUNCTION_NAME/doc
+    rm -rf  $MY_FUNCTION_NAME/sql
+    mv $MY_FUNCTION_NAME                    ../../src
 fi
-
-#moving the whole structure to its final location
-mv $MY_FUNCTION_NAME/pgtap              $MY_FUNCTION_NAME/test
-mv $MY_FUNCTION_NAME/src/*driver.h      ../../include/drivers/$MY_FUNCTION_NAME
-
-mv $MY_FUNCTION_NAME/sql/*              ../../sql/$MY_FUNCTION_NAME
-mv $MY_FUNCTION_NAME                    ../../src
 
 exit 0;
 

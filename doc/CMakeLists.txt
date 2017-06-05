@@ -6,174 +6,275 @@
 # Daniel Kastl 03/2013
 #
 
-option(WITH_DOC
-     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+#---------------------------------------------
+# Kind of sphinx output
+#---------------------------------------------
 
-option(BUILD_LATEX
+option(LOCALE
+    "Set ON|OFF (default=OFF) to build ithe latest pot/po files" OFF)
+
+option(WITH_ALL_DOC
+    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+
+#option(PDF
+#    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
+
+option(LATEX
     "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
-option(BUILD_HTML
-    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
+option(SINGLEHTML
+    "Set ON|OFF (default=OFF) to build Documentation library tree as SINGLE HTML" OFF)
 
-option(BUILD_MAN
-    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
+option(HTML
+    "Set ON|OFF (default=OFF) to build Documentation library tree as HTML" OFF)
 
+#option(MAN
+#    "Set ON|OFF (default=OFF) to build Documentation library tree as MAN page" OFF)
+
+option(EPUB
+    "Set ON|OFF (default=OFF) to build Documentation library tree as EPUB page" OFF)
+
+option(DUMMY
+    "Set ON|OFF (default=OFF) for debugging purposes" OFF)
+
+foreach(opt HTML LATEX SINGLEHTML EPUB DUMMY)
+    if (${${opt}} OR WITH_ALL_DOC)
+        string(TOLOWER ${opt} val)
+        list(APPEND PgRouting_DOC_TARGETS ${val})
+        set(WITH_DOC ON)
+    endif()
+endforeach()
+
+
+message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
+
+#---------------------------------------------
+#---------------------------------------------
+#---------------------------------------------
+
+# LANGUAGES SETINGS
+
+#---------------------------------------------
+#---------------------------------------------
+#---------------------------------------------
+
+#---------------------------------------------
+# Avaliable Languages
+# English is allways built
+#---------------------------------------------
+set(PgRouting_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
+set(PgRouting_ENGLISH "en")
+
+#---------------------------------------------
+# Language options
+#---------------------------------------------
+option(WITH_ALL_LANG
+    "Set ON|OFF (default=OFF) to build all the supported languages: 
+    Main Language will always be built:
+    ${PgRouting_ENGLISH}
+    Optional languages:
+    ${PgRouting_SUPPORTED_LANGUAGES} 
+
+    When OFF and want to build specific optional language, use the language code in capital letters:
+    -D ES=ON
+    "
+    OFF
+    )
+
+foreach(lang ${PgRouting_SUPPORTED_LANGUAGES})
+    string(TOUPPER ${lang} val)
+    option(${val}
+        "Set ON|OFF (default=OFF) build ${lang} Documentation" OFF)
+endforeach()
+
+#---------------------------------------------
+# Catching the language options to be build
+#---------------------------------------------
+foreach(lang ${PgRouting_SUPPORTED_LANGUAGES})
+    string(TOUPPER ${lang} opt)
+    if (${opt} OR WITH_ALL_LANG)
+        list(APPEND PgRouting_BUILD_LANGUAGES ${lang})
+    endif()
+endforeach()
+
+#---------------------------------------------
+# All languages po files are to be generated
+#---------------------------------------------
+
+set (SPHINXINTL_LANGUAGE  ${PgRouting_ENGLISH})
+foreach(lang ${PgRouting_BUILD_LANGUAGES})
+    set(SPHINXINTL_LANGUAGE "${SPHINXINTL_LANGUAGE},${lang}")
+endforeach()
+
+
+list(APPEND PgRouting_BUILD_LANGUAGES  ${PgRouting_ENGLISH})
+message(STATUS "PgRouting_BUILD_LANGUAGES = ${PgRouting_BUILD_LANGUAGES}")
+message(STATUS "SPHINXINTL_LANGUAGE = ${SPHINXINTL_LANGUAGE}")
+
+
+if(NOT WITH_DOC)
+    return()
+endif()
+
+
+#---------------------------------------------
+# Checking for prerequisites
+#---------------------------------------------
+find_package(Sphinx ${SPHINX_MINIMUM_VERSION} REQUIRED)
+
+if (NOT SPHINX_FOUND)
+    message(FATAL_ERROR "Sphinx not found.
+    Cannot generate documentation!
+    Install Sphinx or build without documentation")
+endif()
+
+if (SPHINX_VERSION VERSION_LESS 1.0)
+    message(WARNING "Your Sphinx version is too old!
+    This project requires Sphinx v${SPHINX_MINIMUM_VERSION} or above to produce
+    proper documentation (you have v${SPHINX_VERSION}).
+    You will get output but it will have errors.")
+endif()
+
+#pip install rst2pdf
+
+
+
+#---------------------------------------------
+# Kind of "looks"
+#---------------------------------------------
 option(DOC_USE_BOOTSTRAP
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
+if (DOC_USE_BOOTSTRAP)
+    set(SPHINX_INCLUDE "import sphinx_bootstrap_theme")
+    set(SPHINX_THEME "bootstrap")
+    set(SPHINX_THEME_DIR "sphinx_bootstrap_theme.get_html_theme_path()")
+    set(SPHINX_THEME_OPTIONS "'source_link_position': \"none\",")
+else()
+    set(SPHINX_INCLUDE "")
+    set(SPHINX_THEME "haiku")
+    set(SPHINX_THEME_DIR "['']")
+    set(SPHINX_THEME_OPTIONS "")
+endif()
 
-if(WITH_DOC)
-    #message("PROCESSING DOCUMENTATION------------")
 
-    find_package(Sphinx REQUIRED)
 
-    if (DOC_USE_BOOTSTRAP)
-        set(SPHINX_INCLUDE "import sphinx_bootstrap_theme")
-        set(SPHINX_THEME "bootstrap")
-        set(SPHINX_THEME_DIR "sphinx_bootstrap_theme.get_html_theme_path()")
-        set(SPHINX_THEME_OPTIONS "'source_link_position': \"none\",")
+
+# configured documentation tools and intermediate build results
+set(PGR_DOCUMENTATION_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/_build")
+set(PGR_DOCUMENTATION_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+
+message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
+
+
+#---------------------------------------------
+# Adding documentation directories
+#---------------------------------------------
+foreach (subdir ${PgRouting_DOC_DIRECTORIES} "src" "queries")
+    add_subdirectory(${subdir})
+endforeach()
+
+add_subdirectory("images")
+
+
+configure_file("../tools/testers/sampledata.sql" "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/sampledata.sql")
+
+
+#TODO ???
+#add_subdirectory("static")
+#add_subdirectory("themes")
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${PGR_DOCUMENTATION_BUILD_DIR}")
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${PGR_DOCUMENTATION_BUILD_DIR}")
+
+
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
+    "${PGR_DOCUMENTATION_BUILD_DIR}/conf.py"
+    @ONLY)
+
+# Add documentation to targets
+
+
+#if (LATEX)
+if (FALSE)
+    find_package(LATEX)
+    if (NOT LATEX_COMPILER)
+        message("Couldn't find Latex, can't build latex docs using Sphinx")
     else()
-        set(SPHINX_INCLUDE "")
-        set(SPHINX_THEME "haiku")
-        set(SPHINX_THEME_DIR "['']")
-        set(SPHINX_THEME_OPTIONS "")
+        message(STATUS "LATEX_COMPILER = ${LATEX_COMPILER}")
     endif()
+endif()
+
+set(ENV{SPHINXINTL_LANGUAGE} ${SPHINXINTL_LANGUAGE})
+
+if (LOCALE)
+    add_custom_target(locale
+        COMMAND ${SPHINX_EXECUTABLE} 
+        -b gettext
+        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+        "${CMAKE_SOURCE_DIR}/locale/pot" 
+
+    COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale --language=${SPHINXINTL_LANGUAGE}
+
+    COMMENT "Generating POT & PO files ..."
+    SOURCES ${PgRouting_DOC_FILES}
+    )
+endif()
+
+
+# The doc target will build all documentation targets.
+add_custom_target(doc 
+    COMMENT "Building documentation with Sphinx")
+
+
+foreach (target ${PgRouting_DOC_TARGETS})
+    add_custom_target("${target}"
+        COMMENT "Building ${target} documentation with Sphinx")
+
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
+        "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/index.html")
+
+    foreach (lang ${PgRouting_BUILD_LANGUAGES})
+        add_custom_target(
+            "${target}-${lang}"
+            COMMAND ${SPHINX_EXECUTABLE} 
+            #-q  # Enable for quiet mode 
+            #-Q  # Enable for even more quiet mode
+            #-v  # increase verbosity
+            #-E  # don't use a saved environment, always read all file
+            #-a  # write all files; default is to only write new and changed files
+            -b ${target}
+            -D language='${lang}'
+            -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+            "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+            "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/${lang}"
+
+            COMMENT "Generating ${target}/${lang} documentation ..."
+            SOURCES ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES} 
+            )
+        add_dependencies(${target} "${target}-${lang}")
+
+    endforeach()
+    add_dependencies(doc "${target}")
+endforeach()
 
 
 
-    if (NOT SPHINX_FOUND)
-        message(WARNING "Sphinx not found. Cannot generate documentation!")
-    else()
-        if (SPHINX_VERSION VERSION_LESS 1.0)
-            message(WARNING "Your Sphinx version is too old!
-            This project requires Sphinx v1.0 or above to produce
-            proper documentation (you have v${SPHINX_VERSION}).
-            You will get output but it will have errors.")
-        endif()
+if(FALSE)
+    # AND ${target} MATCHES "latex" AND LATEX_COMPILER)
+    add_custom_target(pdf-${lang}
+        COMMENT "Building documentation with Sphinx")
 
-        if(NOT DEFINED SPHINX_THEME)
-            set(SPHINX_THEME default)
-        endif()
+    add_custom_command(
+        TARGET pdf-${lang} POST_BUILD
+        #fixes: Underfull \hbox (badness 10000) in paragraph
+        #perl -pi -e 's/warning/warning /' pgRoutingDocumentation.tex
+        COMMAND pdflatex -interaction=nonstopmode "pgRoutingDocumentation.tex" > /dev/null 2>&1
+        WORKING_DIRECTORY "${PGR_DOCUMENTATION_BUILD_DIR}/pdf/${lang}"
+        DEPENDS ${target}-${lang}
+        COMMENT "Converting Latex to PDF format")
 
-        if(NOT DEFINED SPHINX_THEME_DIR)
-            set(SPHINX_THEME_DIR)
-        endif()
+endif()
 
-        # configured documentation tools and intermediate build results
-        set(PGR_DOCUMENTATION_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
-        set(PGR_DOCUMENTATION_SOURCE_DIR "${PGROUTING_BINARY_DIR}/doc")
-
-        message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
-
-        # ---------- TO FLATTEN THE DOCUMENTATION ---------
-
-        file(GLOB PGR_DOCUMENTATION_SOURCES "src/*")
-        foreach (file ${PGR_DOCUMENTATION_SOURCES})
-            #message("${file}")
-            file(COPY "${file}" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
-        endforeach()
-
-        file(GLOB  PGR_DOCUMENTATION_SOURCES "../src/*/doc/*")
-        foreach (file ${PGR_DOCUMENTATION_SOURCES})
-            #message("${file}")
-            file(COPY "${file}" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
-        endforeach()
-
-        file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.rst" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
-        file(COPY "../tools/testers/sampledata.sql" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/")
-
-
-        #message(STATUS "PGROUTING_BINARY_DIR = ${PGROUTING_BINARY_DIR}")
-
-        # Sphinx cache with pickled ReST documents
-        set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
-
-        file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${PGR_DOCUMENTATION_BUILD_DIR}")
-        file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${PGR_DOCUMENTATION_BUILD_DIR}")
-        file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/CNAME" DESTINATION "${PGROUTING_BINARY_DIR}")
-
-        #configure_file(
-        #    "${CMAKE_CURRENT_SOURCE_DIR}/index.html.in"
-        #    "${PGROUTING_BINARY_DIR}/doc/html/index.html")
-
-        configure_file(
-            "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
-            "${PGROUTING_BINARY_DIR}/doc/html/en/index.html")
-
-        # Add documentation to targets
-        set(DOC_TARGETS html)
-
-        #option(BUILD_MAN "Create a target for building man pages." ON)
-
-        if (BUILD_MAN)
-            if (SPHINX_VERSION VERSION_LESS 1.0)
-                message(WARNING "Sphinx version 1.0 > is required to build man pages. You have v${SPHINX_VERSION}.")
-            else()
-                list(APPEND DOC_TARGETS man)
-            endif()
-        endif()
-
-        #option(BUILD_LATEX "Create a target for building latex docs (to create PDF)." ON)
-
-        if (BUILD_LATEX)
-            find_package(LATEX)
-
-            if (NOT LATEX_COMPILER)
-                message("Couldn't find Latex, can't build latex docs using Sphinx")
-            else()
-                message(STATUS "LATEX_COMPILER = ${LATEX_COMPILER}")
-                list(APPEND DOC_TARGETS latex)
-            endif()
-        endif()
-
-        # The doc target will build all documentation targets.
-        add_custom_target(doc #ALL
-            COMMENT "Building documentation with Sphinx")
-        # add_custom_target(doc)
-
-        # Localization output directory
-        #set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
-
-        configure_file(
-            "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
-            "${PGR_DOCUMENTATION_BUILD_DIR}/conf.py"
-            @ONLY)
-
-        foreach (DOC_TARGET ${DOC_TARGETS})
-            add_custom_command(
-                TARGET doc POST_BUILD
-                COMMAND ${SPHINX_EXECUTABLE} 
-                # -q  # Enable for quiet mode 
-                # -Q  # Enable for even more quiet mode
-                # -v  # increase verbosity
-                -b ${DOC_TARGET}
-                -E  # don't use a saved environment, always read all file
-                -a  # write all files; default is to only write new and changed files
-                -d "${SPHINX_CACHE_DIR}" 
-                -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
-                "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-                "${PGROUTING_BINARY_DIR}/doc/${DOC_TARGET}/en"
-                COMMENT "Generating ${DOC_TARGET} documentation ...")
-        endforeach()
-
-        if(BUILD_LATEX)
-            if(LATEX_COMPILER)
-                add_custom_command(
-                    TARGET doc POST_BUILD
-                    #fixes: Underfull \hbox (badness 10000) in paragraph
-                    #perl -pi -e 's/warning/warning /' pgRoutingDocumentation.tex
-                    COMMAND pdflatex 
-                    -interaction=nonstopmode 
-                    "pgRoutingDocumentation.tex" > /dev/null 2>&1
-                    WORKING_DIRECTORY "${PGROUTING_BINARY_DIR}/doc/latex/en"
-                    COMMENT "Converting Latex to PDF format")
-
-                list(APPEND DOC_TARGETS pdf)
-            endif()
-        endif()
-
-        message("-- Building documentation enabled for: ${DOC_TARGETS}")
-    endif()
-
-    #message("END PROCESSING DOCUMENTATION------------")
-endif(WITH_DOC)
