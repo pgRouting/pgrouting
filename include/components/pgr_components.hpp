@@ -3,8 +3,8 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2015 Maoguang Wang 
+xjtumg1007@gmail.com
 
 ------
 
@@ -148,6 +148,7 @@ class Pgr_components {
  public:
      typedef typename G::V V;
 
+#if 0
      //! @name drivingDistance
      //@{
      //! 1 to distance
@@ -157,7 +158,6 @@ class Pgr_components {
                  int64_t start_vertex,
                  double distance);
 
-
      //! many to distance
      std::deque<Path> drivingDistance(
              G &graph,
@@ -165,6 +165,7 @@ class Pgr_components {
              double distance,
              bool equiCostFlag);
      //@}
+#endif // 0
 
      //! @name Dijkstra
      //@{
@@ -175,6 +176,7 @@ class Pgr_components {
              int64_t end_vertex,
              bool only_cost = false);
 
+#if 0
      //! Many to one
      std::deque<Path> dijkstra(
              G &graph,
@@ -196,6 +198,7 @@ class Pgr_components {
              const std::vector< int64_t > &end_vertex,
              bool only_cost = false);
      //@}
+#endif // 0
 
  private:
      //! Call to Dijkstra  1 source to 1 target
@@ -203,7 +206,7 @@ class Pgr_components {
              G &graph,
              V source,
              V target);
-
+#if 0
      //! Call to Dijkstra  1 source to distance
      bool dijkstra_1_to_distance(
              G &graph,
@@ -215,6 +218,7 @@ class Pgr_components {
              G &graph,
              V source,
              const std::vector< V > &targets);
+#endif // 0
 
      void clear() {
          predecessors.clear();
@@ -225,6 +229,7 @@ class Pgr_components {
 
 
 
+#if 0
      // used when multiple goals
      std::deque<Path> get_paths(
              const G &graph,
@@ -241,6 +246,7 @@ class Pgr_components {
          }
          return paths;
      }
+#endif // 0
 
 
 
@@ -271,6 +277,7 @@ class Pgr_components {
           V m_goal;
      };
 
+#if 0
      //! class for stopping when all targets are found
      class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
       public:
@@ -320,6 +327,7 @@ class Pgr_components {
           std::deque< V > &m_nodes;
           std::vector< double > &m_dist;
      };
+#endif // 0
 
 
      //@}
@@ -330,6 +338,7 @@ class Pgr_components {
 
 
 
+#if 0
 // preparation for many to distance
 template < class G >
 std::deque< Path >
@@ -388,6 +397,7 @@ Pgr_components< G >::drivingDistance(
             {return l.agg_cost < r.agg_cost;});
     return path;
 }
+#endif // 0
 
 //! Dijkstra 1 to 1
 template < class G >
@@ -424,6 +434,7 @@ Pgr_components< G >::dijkstra(
             only_cost, true);
 }
 
+#if 0
 //! Dijkstra 1 to many
 template < class G >
 std::deque<Path>
@@ -514,6 +525,7 @@ Pgr_components< G >::dijkstra(
             });
     return paths;
 }
+#endif // 0
 
 
 //! Call to Dijkstra  1 source to 1 target
@@ -539,6 +551,7 @@ Pgr_components< G >::dijkstra_1_to_1(
 }
 
 
+#if 0
 //! Call to Dijkstra  1 source to distance
 template < class G >
 bool
@@ -582,5 +595,6 @@ Pgr_components< G >::dijkstra_1_to_many(
     }
     return found;
 }
+#endif // 0
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
