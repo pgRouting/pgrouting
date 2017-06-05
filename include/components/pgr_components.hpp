@@ -55,14 +55,11 @@ class Pgr_components {
  public:
      typedef typename G::V V;
 
-     //! @name Dijkstra
+     //! @name Components 
      //@{
      //! one to one
-     Path dijkstra(
-             G &graph,
-             int64_t start_vertex,
-             int64_t end_vertex,
-             bool only_cost = false);
+     Path components(
+             G &graph);
 
  private:
      //! Call to Dijkstra  1 source to 1 target
@@ -111,14 +108,14 @@ class Pgr_components {
 /******************** IMPLEMENTTION ******************/
 
 
-//! Dijkstra 1 to 1
+//! Components
 template < class G >
 Path
-Pgr_components< G >::dijkstra(
-        G &graph,
-        int64_t start_vertex,
-        int64_t end_vertex,
-        bool only_cost) {
+Pgr_components< G >::components(
+        G &graph) {
+    int64_t end_vertex = 0;
+    int64_t start_vertex = 0;
+    bool only_cost = false;
     clear();
 
     // adjust predecessors and distances vectors
