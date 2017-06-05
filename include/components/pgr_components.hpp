@@ -48,6 +48,7 @@ template < class G > class Pgr_components;
 // user's functions
 // for development
 
+#if 0
 template < class G >
 std::deque<Path>
 pgr_drivingDistance(
@@ -137,7 +138,7 @@ pgr_dijkstra(
     Pgr_components< G > fn_components;
     return fn_components.dijkstra(graph, sources, targets, only_cost);
 }
-
+#endif // 0
 
 
 //******************************************
