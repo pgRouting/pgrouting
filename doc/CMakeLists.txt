@@ -48,15 +48,26 @@ endforeach()
 
 message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
 
+#---------------------------------------------
+#---------------------------------------------
+#---------------------------------------------
+
+# LANGUAGES SETINGS
 
 #---------------------------------------------
-# Language options
+#---------------------------------------------
+#---------------------------------------------
+
+#---------------------------------------------
+# Avaliable Languages
 # English is allways built
 #---------------------------------------------
-# Languages to be used
 set(PgRouting_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
 set(PgRouting_ENGLISH "en")
 
+#---------------------------------------------
+# Language options
+#---------------------------------------------
 option(WITH_ALL_LANG
     "Set ON|OFF (default=OFF) to build all the supported languages: 
     Main Language will always be built:
@@ -76,12 +87,19 @@ foreach(lang ${PgRouting_SUPPORTED_LANGUAGES})
         "Set ON|OFF (default=OFF) build ${lang} Documentation" OFF)
 endforeach()
 
+#---------------------------------------------
+# Catching the language options to be build
+#---------------------------------------------
 foreach(lang ${PgRouting_SUPPORTED_LANGUAGES})
     string(TOUPPER ${lang} opt)
     if (${opt} OR WITH_ALL_LANG)
         list(APPEND PgRouting_BUILD_LANGUAGES ${lang})
     endif()
 endforeach()
+
+#---------------------------------------------
+# All languages po files are to be generated
+#---------------------------------------------
 
 set (SPHINXINTL_LANGUAGE  ${PgRouting_ENGLISH})
 foreach(lang ${PgRouting_BUILD_LANGUAGES})
@@ -100,7 +118,7 @@ endif()
 
 
 #---------------------------------------------
-# Checking for prerwquisites
+# Checking for prerequisites
 #---------------------------------------------
 find_package(Sphinx ${SPHINX_MINIMUM_VERSION} REQUIRED)
 
@@ -199,7 +217,7 @@ if (LOCALE)
 
     COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale --language=${SPHINXINTL_LANGUAGE}
 
-    COMMENT "Generating POT files ..."
+    COMMENT "Generating POT & PO files ..."
     SOURCES ${PgRouting_DOC_FILES}
     )
 endif()
