@@ -220,6 +220,7 @@ SELECT * FROM pgr_dijkstra(
     ARRAY[2], ARRAY[3]
 );
 
+\echo -- q16
 
 
 -- Equivalences for :ref:`fig2-undirect-Cost-Reverse` 

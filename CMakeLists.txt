@@ -66,7 +66,43 @@ endif()
 #  - <directory>/src/CMakelists.txt must exist
 #  - <directory>/sql/CMakeLists.txt  must exist
 #----------------------
+configure_file("configuration.conf" "configuration.conf")
+file(STRINGS configuration.conf PgRouting_CONFIGURATION_FILE)
 
+set(PgRouting_SOURCE_NAMES "")
+set(PgRouting_SQL_DIRECTORIES "") 
+set(PgRouting_DOC_DIRECTORIES "") 
+foreach(line ${PgRouting_CONFIGURATION_FILE})
+    string(REGEX REPLACE "^(#).*" "\\1" comment ${line}) 
+    if("${comment}" MATCHES "#")
+        continue()
+    endif()
+    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\1" directory ${line})
+    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\2" has_code ${line})
+    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\3" has_sql ${line})
+    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\4" has_doc ${line})
+
+    string(STRIP ${directory} directory)
+    string(STRIP ${has_code} has_code)
+    string(STRIP ${has_sql} has_sql)
+    string(STRIP ${has_doc} has_doc)
+
+
+    if( ${has_code} MATCHES "Y")
+        list(APPEND PgRouting_SOURCE_NAMES "${directory}")
+    endif()
+    if( ${has_sql} MATCHES "Y")
+        list(APPEND PgRouting_SQL_DIRECTORIES "${directory}")
+    endif()
+    if( ${has_doc} MATCHES "Y")
+        list(APPEND PgRouting_DOC_DIRECTORIES "${directory}")
+    endif()
+endforeach()
+message(STATUS "${PgRouting_SOURCE_NAMES}")
+message(STATUS "${PgRouting_SQL_DIRECTORIES}")
+message(STATUS "${PgRouting_DOC_DIRECTORIES}")
+
+if(false)
 set(PgRouting_SOURCE_NAMES
 
     #----------------------
@@ -135,6 +171,10 @@ set(PgRouting_SQL_DIRECTORIES
     "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
     "deprecated"
     )
+endif()
+
+
+
 
 #---------------------------------------------
 # minimum versions
