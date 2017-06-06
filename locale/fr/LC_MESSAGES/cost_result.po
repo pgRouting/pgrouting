@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Erika <inactive+erikap@transifex.com>, 2017\n"
+"Language-Team: French (https://www.transifex.com/pgrouting/teams/1219/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../cost_result.rst:13
+msgid "pgr_costResult[]"
+msgstr ""
+
+#: ../../cost_result.rst:19 ../../cost_result.rst:52
+msgid "Name"
+msgstr "Nom"
+
+#: ../../cost_result.rst:21
+msgid ""
+"``pgr_costResult[]`` — A set of records to describe a path result with cost "
+"attribute."
+msgstr ""
+"``pgr_costResult[]`` — Un ensemble objets pour décrire un résultat de chemin"
+" avec un attribut coût."
+
+#: ../../cost_result.rst:25 ../../cost_result.rst:58
+msgid "Description"
+msgstr "Description"
+
+#: ../../cost_result.rst:0 ../../cost_result.rst:0
+msgid "seq"
+msgstr ""
+
+#: ../../cost_result.rst:37 ../../cost_result.rst:71
+msgid "sequential ID indicating the path order"
+msgstr "séquence ID indiquant l'ordre du chemin"
+
+#: ../../cost_result.rst:0 ../../cost_result.rst:0
+msgid "id1"
+msgstr ""
+
+#: ../../cost_result.rst:38 ../../cost_result.rst:73
+msgid "generic name, to be specified by the function, typically the node id"
+msgstr ""
+"nom générique, à être spécifié par la fonction, typiquement l'id du noeud"
+
+#: ../../cost_result.rst:0 ../../cost_result.rst:0
+msgid "id2"
+msgstr ""
+
+#: ../../cost_result.rst:39 ../../cost_result.rst:74
+msgid "generic name, to be specified by the function, typically the edge id"
+msgstr ""
+"nom générique, à être spécifié par la fonction, typiquement l'id de l'arête"
+
+#: ../../cost_result.rst:0 ../../cost_result.rst:0
+msgid "cost"
+msgstr ""
+
+#: ../../cost_result.rst:40 ../../cost_result.rst:75
+msgid "cost attribute"
+msgstr "attribut coût"
+
+#: ../../cost_result.rst:46
+msgid "pgr_costResult3[] - Multiple Path Results with Cost"
+msgstr "pgr_costResult3[] - Résultats du chemin multiple avec coût"
+
+#: ../../cost_result.rst:54
+msgid ""
+"``pgr_costResult3[]`` — A set of records to describe a path result with cost"
+" attribute."
+msgstr ""
+"``pgr_costResult3[]`` — Un ensemble d'objets pour décrire un résultat de "
+"chemin avec un attribut coût."
+
+#: ../../cost_result.rst:72
+msgid "generic name, to be specified by the function, typically the path id"
+msgstr ""
+"nom générique, à être spécifié par la fonction, typiquement l'id du chemin"
+
+#: ../../cost_result.rst:0
+msgid "id3"
+msgstr ""
+
+#: ../../cost_result.rst:79
+msgid "History"
+msgstr "Histoire"
+
+#: ../../cost_result.rst:80
+msgid "New in version 2.0.0"
+msgstr "Nouveau depuis la version 2.0.0"
+
+#: ../../cost_result.rst:81
+msgid "Replaces ``path_result``"
+msgstr "Remplace ``path_result``"
+
+#: ../../cost_result.rst:85
+msgid "See Also"
+msgstr "Voir aussi"
+
+#: ../../cost_result.rst:87
+msgid ":ref:`introduction`"
+msgstr ""
