@@ -2,9 +2,9 @@
 
 SELECT plan(12);
 
--------------
+--------------------------------------------------------------------------------
 -- testing from an existing starting vertex to a non-existing destination
--------------
+--------------------------------------------------------------------------------
 
 -- in directed graph
 -- with restrictions
@@ -44,9 +44,9 @@ SELECT * FROM pgr_dijkstraTRSP(
     FALSE
 );
 
--------------
+--------------------------------------------------------------------------------
 -- testing from an non-existing starting vertex to an existing destination
--------------
+--------------------------------------------------------------------------------
 
 -- in directed graph
 -- with restrictions
@@ -86,9 +86,9 @@ SELECT * FROM pgr_dijkstraTRSP(
     FALSE
 );
 
--------------
+--------------------------------------------------------------------------------
 -- testing from a non-existing starting vertex to a non-existing destination
--------------
+--------------------------------------------------------------------------------
 
 -- in directed graph
 -- with restrictions
@@ -127,6 +127,8 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 17,
     FALSE
 );
+
+--------------------------------------------------------------------------------
 
 SELECT is_empty('q1');
 SELECT is_empty('q2');
