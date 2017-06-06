@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_areaContraction(
-    edges_sql TEXT, --edges_sql
-    border_verticesArr ANYARRAY, --border_nodes
+    TEXT, --edges_sql
+    ANYARRAY, --border_nodes
     directed BOOLEAN DEFAULT true,
     OUT seq integer,
     OUT type TEXT,
