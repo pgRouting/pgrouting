@@ -86,84 +86,84 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions where id > 10',
     1, 3
 );
-
+-- expecting results: empty set
 PREPARE q10 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 4
 );
-
+-- expecting results: empty set
 PREPARE q11 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 6
 );
-
+-- expecting results: empty set
 PREPARE q12 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 7
 );
-
+-- expecting results: empty set
 PREPARE q13 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 9
 );
-
+-- expecting results: empty set
 PREPARE q14 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 10
 );
-
+-- expecting results: empty set
 PREPARE q15 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 11
 );
-
+-- expecting results: empty set
 PREPARE q16 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 12
 );
-
+-- expecting results: empty set
 PREPARE q17 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 13
 );
-
+-- expecting results: empty set
 PREPARE q18 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 14
 );
-
+-- expecting results: empty set
 PREPARE q19 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 15
 );
-
+-- expecting results: empty set
 PREPARE q20 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 16
 );
-
+-- expecting results: empty set
 PREPARE q21 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -180,7 +180,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 3,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q23 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -188,7 +188,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 4,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q24 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -196,7 +196,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 6,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q25 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -204,7 +204,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 7,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q26 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -212,7 +212,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 9,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q27 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -220,7 +220,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 10,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q28 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -228,7 +228,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 11,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q29 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -236,7 +236,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 12,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q30 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -244,7 +244,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 13,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q31 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -252,7 +252,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 14,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q32 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -260,7 +260,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 15,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q33 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
@@ -268,7 +268,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     1, 16,
     FALSE
 );
-
+-- expecting results: empty set
 PREPARE q34 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
