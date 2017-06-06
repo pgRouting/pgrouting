@@ -264,13 +264,16 @@ Column              Type           Description
 **vehicle_seq**      INTEGER      Sequential value starting from **1** for current vehicles. The :math:`n_{th}` vehicle in the solution.
 **vehicle_id**       BIGINT       Current vehicle identifier.
 **stop_seq**         INTEGER      Sequential value starting frin **1** for the stops made by the current vechile. The :math:`m_{th}` stop of the current vehicle.
-**order_id**         BIGINT       Order identifier.
-**stop_type**        INTEGER      Kind of vehicle stop:
+**stop_type**        INTEGER      Kind of stop location the vehicle is at:
 
                                   - ``1``: Starting location 
                                   - ``2``: Pickup location 
                                   - ``3``: Delivery location 
                                   - ``6``: Ending location 
+
+**order_id**         BIGINT       Pickup-Delivery order pair identifier.
+
+                                  - ``-1``: When no order is involved on the current stop location. 
 
 **cargo**            FLOAT        Cargo units of the vehicle when leaving the stop.
 
@@ -292,17 +295,17 @@ Column              Type           Description
 Column              Type           Description
 =================== ============= =================================================
 **seq**              INTEGER      Continues the Sequential value
-**vehicle_number**   INTEGER      ``-2`` to indicate is a summary row
+**vehicle_seq**      INTEGER      ``-2`` to indicate is a summary row
 **vehicle_id**       BIGINT       `Total Capacity Violations` in the solution.
-**vehicle_seq**      INTEGER      `Total Time Window Violations` in the solution.
-**order_id**         BIGINT       ``-1``
+**stop_seq**         INTEGER      `Total Time Window Violations` in the solution.
 **stop_type**        INTEGER      ``-1``
+**order_id**         BIGINT       ``-1``
 **cargo**            FLOAT        ``-1``
 **travel_time**      FLOAT        `total_travel_time` The sum of all the `travel_time`
 **arrival_time**     FLOAT        ``-1``
 **wait_time**        FLOAT        `total_waiting_time` The sum of all the `wait_time`
 **service_time**     FLOAT        `total_service_time` The sum of all the `service_time`
-**departure_time**   FLOAT        :math:`total\_travel\_time + total\_wait\_time + total\_service\_time`.
+**departure_time**   FLOAT        `total_solution_time` = :math:`total\_travel\_time + total\_wait\_time + total\_service\_time`.
 =================== ============= =================================================
 
 
@@ -310,19 +313,6 @@ Column              Type           Description
 .. return_vrp_euclidean_end
 
 
-..
-    OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
-    OUT vehicle_seq INTEGER,
-    OUT order_id BIGINT,
-    OUT stop_type INT,
-    OUT cargo FLOAT,
-    OUT travel_time FLOAT,
-    OUT arrival_time FLOAT,
-    OUT wait_time FLOAT,
-    OUT service_time FLOAT,
-    OUT departure_time FLOAT
 
 .. return_vrp_matrix_start
 
