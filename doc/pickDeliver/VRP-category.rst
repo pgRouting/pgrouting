@@ -96,6 +96,20 @@ orders and vehicles are with time windows.
 
 
 
+Units handling
+-------------------------------------------------------------------------------
+
+.. TODO:: Explain how to handle units between vehicle capacity, order demand, cargo results
+
+
+Time handling
+-------------------------------------------------------------------------------
+
+.. TODO:: Explain how time is handled internaly and some steps the user might need to make it work
+
+
+
+
 Inner Queries
 -------------------------------------------------------------------------------
 
@@ -238,6 +252,8 @@ Results
 Description of the result
 .........................................................................................
 
+.. TODO: fix when everything bellow is fixed
+
 :RETURNS SET OF: (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)
            UNION (summary row)
 
@@ -256,7 +272,7 @@ Column              Type           Description
                                   - ``3``: Delivery location 
                                   - ``6``: Ending location 
 
-**cargo**            FLOAT        Load of the vehicle when leaving the stop.
+**cargo**            FLOAT        Cargo units of the vehicle when leaving the stop.
 
 **travel_time**      FLOAT        Travel time from previous ``vehicle_seq`` to current ``vehicle_seq``.
 
