@@ -222,12 +222,13 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Int32GetDatum(result_tuples[funcctx->call_cntr].overlap);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = CStringGetTextDatum(result_tuples[call_cntr].type);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].id);
+        values[3] = PointerGetDatum(arrayType);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

@@ -31,12 +31,13 @@ CREATE OR REPLACE FUNCTION pgr_areaContraction(
     edges_sql TEXT, --edges_sql
     border_verticesArr ANYARRAY, --border_nodes
     directed BOOLEAN DEFAULT true,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT overlap INTEGER)
+    OUT seq integer,
+    OUT type TEXT,
+    OUT id BIGINT,
+    OUT contracted_vertices BIGINT[],
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT cost float)
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'areaContraction'
