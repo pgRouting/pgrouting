@@ -1,0 +1,220 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Thomas Corre <gksugamur8ol@z.vuegate.net>, 2017\n"
+"Language-Team: French (https://www.transifex.com/pgrouting/teams/1219/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../support.rst:13
+msgid "Support"
+msgstr "Support"
+
+#: ../../support.rst:15
+msgid ""
+"pgRouting community support is available through the `pgRouting website "
+"<http://pgrouting.org/support.html>`_, `documentation "
+"<http://docs.pgrouting.org>`_, tutorials, mailing lists and others. If "
+"you’re looking for :ref:`commercial support <support_commercial>`, find "
+"below a list of companies providing pgRouting development and consulting "
+"services."
+msgstr ""
+
+#: ../../support.rst:19
+msgid "Reporting Problems"
+msgstr "Reporter un problème"
+
+#: ../../support.rst:21
+msgid ""
+"Bugs are reported and managed in an `issue tracker "
+"<https://github.com/pgrouting/pgrouting/issues>`_. Please follow these "
+"steps:"
+msgstr ""
+"Les bugs sont reportés et gérés dans un `système de gestion d'incidents "
+"<https://github.com/pgrouting/pgrouting/issues>`_. Merci de suivre ces "
+"étapes :"
+
+#: ../../support.rst:23
+msgid ""
+"Search the tickets to see if your problem has already been reported. If so, "
+"add any extra context you might have found, or at least indicate that you "
+"too are having the problem. This will help us prioritize common issues."
+msgstr ""
+"Cherchez les tickets pour voir si votre problème a déjà été reporté. Si oui,"
+" ajoutez tout contexte supplémentaire que vous pourriez avoir trouvé, ou "
+"vous pouvez simplement ajouter que vous avez également le même problème. "
+"Cela nous aidera à établir la priorité des incidents en commun. "
+
+#: ../../support.rst:24
+msgid ""
+"If your problem is unreported, create a `new issue "
+"<https://github.com/pgRouting/pgrouting/issues/new>`_ for it."
+msgstr ""
+"Si votre problème n'est pas reporté, créer un `nouvel incident "
+"<https://github.com/pgRouting/pgrouting/issues/new>`_ pour ça."
+
+#: ../../support.rst:25
+msgid ""
+"In your report include explicit instructions to replicate your issue. The "
+"best tickets include the exact SQL necessary to replicate a problem."
+msgstr ""
+"Dans votre rapport, incluez explicitement les instructions pour reproduire "
+"votre problème. Les meilleurs tickets incluent le SQL exact nécessaire pour "
+"reproduire un problème."
+
+#: ../../support.rst:26
+msgid ""
+"If you can test older versions of PostGIS for your problem, please do. On "
+"your ticket, note the earliest version the problem appears."
+msgstr ""
+"Si vous pouvez tester les versions anciennes de PostGIS pour votre problème,"
+" merci de le faire. Dans votre ticket, mentionnez la plus récente version où"
+" le problème apparaît."
+
+#: ../../support.rst:27
+msgid ""
+"For the versions where you can replicate the problem, note the operating "
+"system and version of pgRouting, PostGIS and PostgreSQL."
+msgstr ""
+"Pour les versions où vous pouvez reproduire le problème, notez le système "
+"d'exploitation et la version de  pgRouting, PostGIS et PostgreSQL."
+
+#: ../../support.rst:28
+msgid ""
+"It is recommended to use the following wrapper on the problem to pin point "
+"the step that is causing the problem."
+msgstr ""
+"Il est recommandé d'utiliser l'encapsuleur suivant à l'étape du problème du "
+"point exact qui peut causer l'erreur"
+
+#: ../../support.rst:39
+msgid "Mailing List and GIS StackExchange"
+msgstr "Liste d'emails et StackExchange SIG"
+
+#: ../../support.rst:41
+msgid ""
+"There are two mailing lists for pgRouting hosted on OSGeo mailing list "
+"server:"
+msgstr ""
+"Il y a deux listes emails pour pgRouting hébergé sur le serveur de mailing "
+"list OSGeo."
+
+#: ../../support.rst:43
+msgid ""
+"User mailing list: http://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+msgstr ""
+"Listes d'emails utilisateurs : http://lists.osgeo.org/mailman/listinfo"
+"/pgrouting-users"
+
+#: ../../support.rst:44
+msgid ""
+"Developer mailing list: http://lists.osgeo.org/mailman/listinfo/pgrouting-"
+"dev"
+msgstr ""
+"Liste des emails développeurs : http://lists.osgeo.org/mailman/listinfo"
+"/pgrouting-dev"
+
+#: ../../support.rst:46
+msgid ""
+"For general questions and topics about how to use pgRouting, please write to"
+" the user mailing list."
+msgstr ""
+"Pour les questions générales et les sujets sur comment utiliser pgRouting, "
+"veuillez écrire à la liste des emails utilisateurs."
+
+#: ../../support.rst:48
+msgid ""
+"You can also ask at `GIS StackExchange <http://gis.stackexchange.com/>`_ and"
+" tag the question with ``pgrouting``. Find all questions tagged with "
+"``pgrouting`` under http://gis.stackexchange.com/questions/tagged/pgrouting "
+"or subscribe to the `pgRouting questions feed "
+"<http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
+msgstr ""
+"Vous pouvez aussi demander à `GIS StackExchange "
+"<http://gis.stackexchange.com/>`_ et étiquetter la question avec "
+"``pgrouting``. Trouvez toutes les questions étiquetées avec ``pgrouting`` "
+"ici http://gis.stackexchange.com/questions/tagged/pgrouting ou abonnez-vous"
+"  à `pgRouting questions feed "
+"<http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
+
+#: ../../support.rst:54
+msgid "Commercial Support"
+msgstr "Support Commercial"
+
+#: ../../support.rst:56
+msgid ""
+"For users who require professional support, development and consulting "
+"services, consider contacting any of the following organizations, which have"
+" significantly contributed to the development of pgRouting:"
+msgstr ""
+"Pour les utilisateurs qui demandent un support professionnel et des services"
+" de conseil, veuillez contacter l'une des organisations suivantes, qui ont "
+"contribué de façon significative au développement de pgRouting :"
+
+#: ../../support.rst:61
+msgid "**Company**"
+msgstr "**Société**"
+
+#: ../../support.rst:62
+msgid "**Offices in**"
+msgstr "**Bureaux à**"
+
+#: ../../support.rst:63
+msgid "**Website**"
+msgstr "**Site web**"
+
+#: ../../support.rst:64
+msgid "Georepublic"
+msgstr "Georepublic"
+
+#: ../../support.rst:65
+msgid "Germany, Japan"
+msgstr "Allemagne, Japon"
+
+#: ../../support.rst:66
+msgid "https://georepublic.info"
+msgstr ""
+
+#: ../../support.rst:67
+msgid "iMaptools"
+msgstr "iMaptools"
+
+#: ../../support.rst:68 ../../support.rst:71
+msgid "United States"
+msgstr "États-Unis"
+
+#: ../../support.rst:69
+msgid "http://imaptools.com"
+msgstr "http://imaptools.com"
+
+#: ../../support.rst:70
+msgid "Paragon Corporation"
+msgstr ""
+
+#: ../../support.rst:72
+msgid "http://www.paragoncorporation.com"
+msgstr ""
+
+#: ../../support.rst:73
+msgid "Camptocamp"
+msgstr "Camptocamp"
+
+#: ../../support.rst:74
+msgid "Switzerland, France"
+msgstr "Suisse, France"
+
+#: ../../support.rst:75
+msgid "http://www.camptocamp.com"
+msgstr "http://www.camptocamp.com"

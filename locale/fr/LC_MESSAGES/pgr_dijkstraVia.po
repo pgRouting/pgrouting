@@ -1,0 +1,499 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Daniel Kastl <daniel@georepublic.de>, 2017\n"
+"Language-Team: French (https://www.transifex.com/pgrouting/teams/1219/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../pgr_dijkstraVia.rst:13
+msgid "pgr_dijkstraVia - Proposed"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:17
+msgid "Name"
+msgstr "Nom"
+
+#: ../../pgr_dijkstraVia.rst:19
+msgid ""
+"``pgr_dijkstraVia`` — Using dijkstra algorithm, it finds the route that goes"
+" through a list of vertices."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:26
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:30
+msgid "Availability: 2.2.0"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:32
+msgid "Synopsis"
+msgstr "Synopsis"
+
+#: ../../pgr_dijkstraVia.rst:34
+msgid ""
+"Given a list of vertices and a graph, this function is equivalent to finding"
+" the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all"
+" :math:`i < size\\_of(vertex_via)`."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:37
+msgid "The paths represents the sections of the route."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:39
+msgid "This is a proposed function"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:42
+msgid "Signatrue Summary"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:53
+msgid "Signatures"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:59
+msgid "Minimal Signature"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:0 ../../pgr_dijkstraVia.rst:0
+msgid "Example"
+msgstr "Exemple"
+
+#: ../../pgr_dijkstraVia.rst:67
+msgid "Find the route that visits the vertices 1 3 9  in that order"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:77
+msgid "Complete Signature"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:86
+msgid ""
+"Find the route that visits the vertices 1 3 9  in that order on an "
+"undirected graph, avoiding U-turns when possible"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:94
+msgid "Description of the Signature"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:4
+msgid "Description of the edges_sql query for dijkstra like functions"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:0
+msgid "edges_sql"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:6
+msgid ""
+"an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:9 ../../pgr_dijkstraVia.rst:124
+msgid "Column"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:9 ../../pgRouting-concepts.rst:7
+#: ../../pgr_dijkstraVia.rst:108 ../../pgr_dijkstraVia.rst:124
+msgid "Type"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:9 ../../pgRouting-concepts.rst:7
+msgid "Default"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:9 ../../pgRouting-concepts.rst:7
+#: ../../pgr_dijkstraVia.rst:108 ../../pgr_dijkstraVia.rst:124
+msgid "Description"
+msgstr "Description"
+
+#: ../../pgRouting-concepts.rst:11
+msgid "**id**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:11 ../../pgRouting-concepts.rst:12
+#: ../../pgRouting-concepts.rst:13
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:11
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:12
+msgid "**source**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:12
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:13
+msgid "**target**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:13
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:14 ../../pgr_dijkstraVia.rst:133
+msgid "**cost**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:14 ../../pgRouting-concepts.rst:18
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:14
+msgid "Weight of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:16
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:18
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:18
+msgid "-1"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:18
+msgid "Weight of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:20
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:24
+msgid "Where:"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:26
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:0
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:27
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:4 ../../pgr_dijkstraVia.rst:105
+msgid "Description of the parameters of the signatures"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:7 ../../pgr_dijkstraVia.rst:108
+msgid "Parameter"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:9 ../../pgr_dijkstraVia.rst:110
+msgid "**edges_sql**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:9 ../../pgr_dijkstraVia.rst:110
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:9 ../../pgr_dijkstraVia.rst:110
+msgid "SQL query as described above."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:10 ../../pgr_dijkstraVia.rst:111
+msgid "**via_vertices**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:10 ../../pgr_dijkstraVia.rst:111
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:10
+msgid "Array of ordered vertices identifiers that are going to be visited."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:11 ../../pgr_dijkstraVia.rst:112
+msgid "**directed**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:11 ../../pgRouting-concepts.rst:13
+#: ../../pgRouting-concepts.rst:15 ../../pgr_dijkstraVia.rst:112
+#: ../../pgr_dijkstraVia.rst:113 ../../pgr_dijkstraVia.rst:114
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:11 ../../pgRouting-concepts.rst:15
+msgid "``true``"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:11
+msgid "When ``true`` Graph is considered `Directed`"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:12
+msgid "When ``false`` the graph is considered as Undirected."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:13 ../../pgr_dijkstraVia.rst:113
+msgid "**strict**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:13
+msgid "``false``"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:13
+msgid "When ``false`` ignores missing paths returning all paths found"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:14
+msgid "When ``true`` if a path is missing stops and returns `EMPTY SET`"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:15 ../../pgr_dijkstraVia.rst:114
+msgid "**U_turn_on_edge**"
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:15
+msgid ""
+"When ``true`` departing from a visited vertex will not try to avoid using "
+"the edge used to reach it.  In other words, U turn using the edge with same "
+"`id` is allowed."
+msgstr ""
+
+#: ../../pgRouting-concepts.rst:16
+msgid ""
+"When ``false`` when a departing from a visited vertex tries to avoid using "
+"the edge used to reach it.  In other words, U turn using the edge with same "
+"`id` is used when no other path is found."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:111
+msgid "Array of vertices identifiers"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:112 ../../pgr_dijkstraVia.rst:114
+msgid ""
+"(optional) Default is true (is directed). When set to false the graph is "
+"considered as Undirected"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:113
+msgid ""
+"(optional) ignores if a subsection of the route is missing and returns "
+"everything it found Default is true (is directed). When set to false the "
+"graph is considered as Undirected"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:119
+msgid "Description of the return values"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:121
+msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:126
+msgid "**seq**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:126 ../../pgr_dijkstraVia.rst:127
+#: ../../pgr_dijkstraVia.rst:128 ../../pgr_dijkstraVia.rst:129
+#: ../../pgr_dijkstraVia.rst:130 ../../pgr_dijkstraVia.rst:131
+#: ../../pgr_dijkstraVia.rst:132
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:126
+msgid "Sequential value starting from 1."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:127
+msgid "**path_pid**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:127
+msgid "Identifier of the path."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:128
+msgid "**path_seq**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:128
+msgid "Sequential value starting from 1 for the path."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:129
+msgid "**start_vid**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:129
+msgid "Identifier of the starting vertex of the path."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:130
+msgid "**end_vid**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:130
+msgid "Identifier of the ending vertex of the path."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:131
+msgid "**node**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:131
+msgid "Identifier of the node in the path from start_vid to end_vid."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:132
+msgid "**edge**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:132
+msgid ""
+"Identifier of the edge used to go from node to the next node in the path "
+"sequence. -1 for the last node of the path. -2 for the last node of the "
+"route."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:133 ../../pgr_dijkstraVia.rst:134
+#: ../../pgr_dijkstraVia.rst:135
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:133
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the route "
+"sequence."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:134
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:134
+msgid "Total cost from ``start_vid`` to ``end_vid`` of the path."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:135
+msgid "**route_agg_cost**"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:135
+msgid ""
+"Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the "
+"current ``path_pid`` ."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:140
+msgid "Examples"
+msgstr "Exemples"
+
+#: ../../pgr_dijkstraVia.rst:0
+msgid "Example 1"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:142
+msgid "Find the route that visits the vertices 1 5 3 9 4 in that order"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:0
+msgid "Example 2"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:148
+msgid "What's the aggregate cost of the third path?"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:0
+msgid "Example 3"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:154
+msgid ""
+"What's the route's aggregate cost of the route at the end of the third path?"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:0
+msgid "Example 4"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:160
+msgid "How are the nodes visited in the route?"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:0
+msgid "Example 5"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:166
+msgid ""
+"What are the aggregate costs of the route when the visited vertices are "
+"reached?"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:0
+msgid "Example 6"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:172
+msgid ""
+"show the route's seq and aggregate cost and a status of \"passes in front\" "
+"or \"visits\" node 9"
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:179
+msgid "See Also"
+msgstr "Voir aussi"
+
+#: ../../pgr_dijkstraVia.rst:181
+msgid "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+msgstr "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+
+#: ../../pgr_dijkstraVia.rst:182
+msgid ":ref:`sampledata` network."
+msgstr ""
+
+#: ../../pgr_dijkstraVia.rst:185
+msgid "Indices and tables"
+msgstr "Index et tableaux"
+
+#: ../../pgr_dijkstraVia.rst:186
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../pgr_dijkstraVia.rst:187
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

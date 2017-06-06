@@ -12,8 +12,7 @@ set -e
 # build pgRouting
 mkdir build
 cd build
-cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Debug ..
+cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DHTML=ON -DCMAKE_BUILD_TYPE=Debug ..
 make
 sudo make install
 make doc
-make doxy

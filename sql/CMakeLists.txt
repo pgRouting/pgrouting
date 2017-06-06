@@ -22,10 +22,6 @@ add_subdirectory(sigs)
 # configuring the PgRouting_SQL_FILES variable
 #-------------------
 
-set(PgRouting_SQL_DIRECTORIES
-    ${PgRouting_SOURCE_NAMES}
-    ${PgRouting_SQL_DIRECTORIES})
-
 
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory(${subdir})
