@@ -221,9 +221,9 @@ Results
 
 ..
     OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
     OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
     OUT order_id BIGINT,
     OUT stop_type INT,
     OUT cargo FLOAT,
@@ -245,9 +245,9 @@ Description of the result
 Column              Type           Description
 =================== ============= =================================================
 **seq**              INTEGER      Sequential value starting from **1**.
-**vehicle_number**   INTEGER      Sequential value starting from **1** for the current vehicle. The :math:`n_{th}` vehicle in the solution.
+**vehicle_seq**      INTEGER      Sequential value starting from **1** for current vehicles. The :math:`n_{th}` vehicle in the solution.
 **vehicle_id**       BIGINT       Current vehicle identifier.
-**vehicle_seq**      INTEGER      Current vehicle identifier. The :math:`m_{th}` row in the current vehicle.
+**stop_seq**         INTEGER      Sequential value starting frin **1** for the stops made by the current vechile. The :math:`m_{th}` stop of the current vehicle.
 **order_id**         BIGINT       Order identifier.
 **stop_type**        INTEGER      Kind of vehicle stop:
 
