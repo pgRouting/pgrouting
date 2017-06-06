@@ -8,6 +8,5 @@ tools/template/mycreate.sh
 .DS_Store
 .vagrant
 tools/vagrant/packaging.sh
-*.mo
 .directory
 notUsed

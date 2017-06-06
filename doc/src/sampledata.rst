@@ -88,7 +88,7 @@ When working with city networks, this is recommended for point of view of vehicl
 
 .. _fig1:
 
-.. figure:: images/Fig1-originalData.png
+.. figure:: /images/Fig1-originalData.png
 
    **Graph 1: Directed, with cost and reverse cost**
 
@@ -99,7 +99,7 @@ When working with city networks, this is recommended for point of view of pedest
 
 .. _fig2:
 
-.. figure:: images/Fig6-undirected.png
+.. figure:: /images/Fig6-undirected.png
    :scale: 50%
 
    **Graph 2: Undirected, with cost and reverse cost**
@@ -110,7 +110,7 @@ When working with city networks, this is recommended for point of view of pedest
 .. _fig3:
 
 
-.. figure:: images/Fig2-cost.png
+.. figure:: /images/Fig2-cost.png
    :scale: 20%
 
    **Graph 3: Directed, with cost**
@@ -120,7 +120,7 @@ When working with city networks, this is recommended for point of view of pedest
 
 .. _fig4:
 
-.. figure:: images/Fig4-costUndirected.png
+.. figure:: /images/Fig4-costUndirected.png
    :scale: 20%
 
    **Graph 4: Undirected, with cost**
