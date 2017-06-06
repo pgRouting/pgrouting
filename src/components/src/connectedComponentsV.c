@@ -55,7 +55,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get edges informtion */
 #include "c_common/edges_input.h"
 
-#include "drivers/connectedComponentsV/connectedComponentsV_driver.h"  // the link to the C++ code of the function
+#include "drivers/components/connectedComponentsV_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(connectedComponentsV);
