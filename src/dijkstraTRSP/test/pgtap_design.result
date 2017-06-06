@@ -78,5 +78,43 @@ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions',
+    1, 17
+);
+seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions',
+    1, 17,
+    FALSE
+);
+seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions where id > 10',
+    1, 17
+);
+seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions where id > 10',
+    1, 17,
+    FALSE
+);
+seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
 ROLLBACK;
 ROLLBACK

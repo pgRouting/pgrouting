@@ -49,3 +49,29 @@ SELECT * FROM pgr_dijkstraTRSP(
     6, 8,
     FALSE
 );
+
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions',
+    1, 17
+);
+
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions',
+    1, 17,
+    FALSE
+);
+
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions where id > 10',
+    1, 17
+);
+
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions where id > 10',
+    1, 17,
+    FALSE
+);
