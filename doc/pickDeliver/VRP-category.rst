@@ -42,54 +42,73 @@ Vehicle Routing Functions Category:
 Introduction
 -------------------------------------------------------------------------------
 
+Vehicle routing problems (VRP) are **NP-hard** optimization problem, it generalises the travelling salesman problem (TSP).
+Most of the literature use euclidean calculation.
 
-.. note:: TODO
-
-.. rubric:: The following is a sketch
-
-Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles.
-
-- Optimization problem is NP-hard.
-- Pickup and Delivery:
-
-  - capacitated
-  - with time windows.
-
-- The vehicles
-
-  - have (x, y) start and ending locations.
-  - have a start and ending service times.
-  - have opening and closing times for the start and ending locations.
-
-- An order is for doing a pickup and a a deliver.
-
-  - has (x, y) pickup and delivery locations.
-  - has opening and closing times for the pickup and delivery locations.
-  - has a pickup and deliver service times.
-
-- There is a customer where to deliver a pickup.
-
-  - travel time between customers is distance / speed
-  - pickup and delivery pair is done with the same vehicle.
-  - A pickup is done before the delivery.
+- The objective of the VRP is to minimize the total route cost.
+- There are several variants of the VRP problem,
+- pgRouting does not try to implement all variants.
 
 
-
-Characteristics:
-----------------
+Characteristics
+...............................................................................
 
 - No multiple time windows for a location.
 - Less vehicle used is considered better.
 - Less total duration is better.
 - Less wait time is better.
-- Six different optional different initial solutions
+
+
+Pick & Delivery
+-------------------------------------------------------------------------------
+
+
+Problem: Distribute and optimize the pickup-delivery orders into a fleet of capacitated vehicles and
+orders and vehicles are with time windows.
+
+- Times are relative to `0` and can represent:
+
+  - The beginning of the day
+  - The beginning of the month
+  - 9 am
+
+- The vehicles
+
+  - have start and ending service duration times.
+  - have opening and closing times for the start and ending locations.
+
+- The orders
+
+  - Have pick up and delivery locations.
+  - Have opening and closing times for the pickup and delivery locations.
+  - Have pickup and delivery duration service times.
+
+- Time based calculations:
+
+  - Travel time between customers is :math:`distance / speed`
+  - Pickup and delivery order pair is done by the same vehicle.
+  - A pickup is done before the delivery.
+
+- In case of Euclidean signatures:
+
+  - The vehicles have :math:`(x, y)` start and ending locations.
+  - The orders Have :math:`(x, y)` pickup and delivery locations.
 
 
 
 Inner Queries
--------------
+-------------------------------------------------------------------------------
+
+
+.. rubric:: Pick & Delivery
+
+Here is a summary of the Inner queries used in 
+
+- :ref:`pgr_pickDeliver`
+- :ref:`pgr_pickDeliverEuclidean`
 
 .. pd_matrix_sql_start
+
 
 .. warning:: TODO: FIX becuase the following is outdated
 
@@ -198,60 +217,102 @@ Column            Type                Default    Description
 
 
 Results
----------
+-------------------------------------------------------------------------------
+
+..
+    OUT seq INTEGER,
+    OUT vehicle_number INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT vehicle_seq INTEGER,
+    OUT order_id BIGINT,
+    OUT stop_type INT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
 
 .. return_vrp_euclidean_start
-
-.. warning:: TODO: FIX becuase the following is outdated
 
 Description of the result
 .........................................................................................
 
 :RETURNS SET OF: (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)
+           UNION (summary row)
 
 =================== ============= =================================================
 Column              Type           Description
 =================== ============= =================================================
 **seq**              INTEGER      Sequential value starting from **1**.
-**vehicle_id**       INTEGER      Current vehicle identifier.
-**vehicle_seq**      INTEGER      Sequential value starting from **1** for the current vehicle.
-**stop_id**          BIGINT       Visited customer identifier.
-**travel_time**      FLOAT        Travel time from previous ``stop_id`` to current ``stop_id``.
+**vehicle_number**   INTEGER      Sequential value starting from **1** for the current vehicle. The :math:`n_{th}` vehicle in the solution.
+**vehicle_id**       BIGINT       Current vehicle identifier.
+**vehicle_seq**      INTEGER      Current vehicle identifier. The :math:`m_{th}` row in the current vehicle.
+**order_id**         BIGINT       Order identifier.
+**stop_type**        INTEGER      Kind of vehicle stop:
+
+                                  - ``1``: Starting location 
+                                  - ``2``: Pickup location 
+                                  - ``3``: Delivery location 
+                                  - ``6``: Ending location 
+
+**cargo**            FLOAT        Load of the vehicle when leaving the stop.
+
+**travel_time**      FLOAT        Travel time from previous ``vehicle_seq`` to current ``vehicle_seq``.
+
+                                  - ``0`` When ``stop_type = 1``
+
 **arrival_time**     FLOAT        Previous ``departure_time`` plus current ``travel_time``.
-**wait_time**        FLOAT        Time spent waiting for ``stop_id`` to open.
-**service_time**     FLOAT        Service time at current stop_id.
-**departure_time**   FLOAT        Previous :math:`departure\_time + travel\_time + wait\_time + service\_time`.
-                                    - When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehicle_id``.
-                                    - When ``vehicle_id = -1`` has the aggregate total time
+**wait_time**        FLOAT        Time spent waiting for current `location` to open.
+**service_time**     FLOAT        Service time at current `location`.
+**departure_time**   FLOAT        :math:`arrival\_time + wait\_time + service\_time`.
+
+                                  - When ``stop_type = 6`` has the `total_time` used for the current vehicle.
 =================== ============= =================================================
+
+.. rubric:: Summry Row
+
+=================== ============= =================================================
+Column              Type           Description
+=================== ============= =================================================
+**seq**              INTEGER      Continues the Sequential value
+**vehicle_number**   INTEGER      ``-2`` to indicate is a summary row
+**vehicle_id**       BIGINT       `Total Capacity Violations` in the solution.
+**vehicle_seq**      INTEGER      `Total Time Window Violations` in the solution.
+**order_id**         BIGINT       ``-1``
+**stop_type**        INTEGER      ``-1``
+**cargo**            FLOAT        ``-1``
+**travel_time**      FLOAT        `total_travel_time` The sum of all the `travel_time`
+**arrival_time**     FLOAT        ``-1``
+**wait_time**        FLOAT        `total_waiting_time` The sum of all the `wait_time`
+**service_time**     FLOAT        `total_service_time` The sum of all the `service_time`
+**departure_time**   FLOAT        :math:`total\_travel\_time + total\_wait\_time + total\_service\_time`.
+=================== ============= =================================================
+
 
 
 .. return_vrp_euclidean_end
 
+
+..
+    OUT seq INTEGER,
+    OUT vehicle_number INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT vehicle_seq INTEGER,
+    OUT order_id BIGINT,
+    OUT stop_type INT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+
 .. return_vrp_matrix_start
 
-.. warning:: TODO: FIX becuase the following is outdated
-
-Description of the result
-.........................................................................................
-
-:RETURNS SET OF: (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)
-
-=================== ============= =================================================
-Column              Type           Description
-=================== ============= =================================================
-**seq**              INTEGER      Sequential value starting from **1**.
-**vehicle_id**       INTEGER      Current vehicle identifier.
-**vehicle_seq**      INTEGER      Sequential value starting from **1** for the current vehicle.
-**stop_id**          BIGINT       Visited customer identifier.
-**travel_time**      FLOAT        Travel time from previous ``stop_id`` to current ``stop_id``.
-**arrival_time**     FLOAT        Previous ``departure_time`` plus current ``travel_time``.
-**wait_time**        FLOAT        Time spent waiting for ``stop_id`` to open.
-**service_time**     FLOAT        Service time at current stop_id.
-**departure_time**   FLOAT        Previous :math:`departure\_time + travel\_time + wait\_time + service\_time`.
-                                    - When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehicle_id``.
-                                    - When ``vehicle_id = -1`` has the aggregate total time
-=================== ============= =================================================
+.. include:: VRP-category.rst
+    :start-after: return_vrp_euclidean_start
+    :end-before: return_vrp_euclidean_end
 
 .. return_vrp_matrix_end
 
