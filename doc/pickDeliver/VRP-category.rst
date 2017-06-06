@@ -270,7 +270,7 @@ Column              Type           Description
                                   - When ``stop_type = 6`` has the `total_time` used for the current vehicle.
 =================== ============= =================================================
 
-.. rubric:: Summry Row
+.. rubric:: Summary Row
 
 =================== ============= =================================================
 Column              Type           Description
