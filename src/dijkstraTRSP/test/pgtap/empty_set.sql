@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(12);
+SELECT plan(16);
 
 --------------------------------------------------------------------------------
 -- testing from an existing starting vertex to a non-existing destination
@@ -129,6 +129,48 @@ SELECT * FROM pgr_dijkstraTRSP(
 );
 
 --------------------------------------------------------------------------------
+-- testing from an existing starting vertex to an existing destination
+--------------------------------------------------------------------------------
+
+-- in directed graph
+-- with restrictions
+PREPARE q13 AS
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions',
+    2, 2
+);
+
+-- in undirected graph
+-- with restrictions
+PREPARE q14 AS
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions',
+    2, 2,
+    FALSE
+);
+
+-- in directed graph
+-- without restrictions
+PREPARE q15 AS
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions where id > 10',
+    2, 2
+);
+
+-- in undirected graph
+-- without restrictions
+PREPARE q16 AS
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrictions where id > 10',
+    2, 2,
+    FALSE
+);
+
+--------------------------------------------------------------------------------
 
 SELECT is_empty('q1');
 SELECT is_empty('q2');
@@ -142,7 +184,10 @@ SELECT is_empty('q9');
 SELECT is_empty('q10');
 SELECT is_empty('q11');
 SELECT is_empty('q12');
+SELECT is_empty('q13');
+SELECT is_empty('q14');
+SELECT is_empty('q15');
+SELECT is_empty('q16');
 
--- q3
 SELECT * FROM finish();
 ROLLBACK;
