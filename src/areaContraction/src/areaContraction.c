@@ -227,7 +227,7 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[5] = Int32GetDatum(result_tuples[funcctx->call_cntr].overlap);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
