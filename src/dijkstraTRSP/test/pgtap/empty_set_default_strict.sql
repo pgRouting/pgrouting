@@ -129,7 +129,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 );
 
 ----------------------------------------------------------------------------------------------------------------
--- testing from an existing starting vertex to an existing destination
+-- testing from an existing starting vertex to the same destination
 ----------------------------------------------------------------------------------------------------------------
 
 -- in directed graph
