@@ -200,6 +200,8 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        int16 typlen;
+        size_t      call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
@@ -212,8 +214,9 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
     OUT agg_cost FLOAT
          ***********************************************************************/
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+         size_t numb = 7;
+         values =(Datum *)palloc(numb * sizeof(Datum));
+         nulls = palloc(numb * sizeof(bool));
 
 
         size_t i;
