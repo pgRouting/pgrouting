@@ -224,6 +224,28 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
+        size_t contracted_vertices_size =
+            (size_t)result_tuples[call_cntr].contracted_vertices_size;
+
+        Datum* contracted_vertices_array;
+        contracted_vertices_array = (Datum*) palloc(sizeof(Datum) *
+                (size_t)contracted_vertices_size);
+
+        for (i = 0; i < contracted_vertices_size; ++i) {
+            PGR_DBG("Storing contracted vertex %ld",
+                    result_tuples[call_cntr].contracted_vertices[i]);
+            contracted_vertices_array[i] =
+                Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
+        }
+
+        bool typbyval;
+        char typalign;
+        get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
+        ArrayType* arrayType;
+
+        TupleDescInitEntry(tuple_desc, (AttrNumber) 4, "contracted_vertices",
+                INT8ARRAYOID, -1, 0);
+
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = CStringGetTextDatum(result_tuples[call_cntr].type);
@@ -236,15 +258,14 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
+        /*
+         *  cleaning up the contracted vertices array
+         */
+        if (result_tuples[funcctx->call_cntr].contracted_vertices) {
+            pfree(result_tuples[funcctx->call_cntr].contracted_vertices);
+        }
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-
-        PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }
