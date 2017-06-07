@@ -1,10 +1,10 @@
 \i setup.sql
 
-SELECT plan(16);
+SELECT plan(20);
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 -- testing from an existing starting vertex to a non-existing destination
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 
 -- in directed graph
 -- with restrictions
@@ -44,9 +44,9 @@ SELECT * FROM pgr_dijkstraTRSP(
     FALSE
 );
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 -- testing from an non-existing starting vertex to an existing destination
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 
 -- in directed graph
 -- with restrictions
@@ -86,9 +86,9 @@ SELECT * FROM pgr_dijkstraTRSP(
     FALSE
 );
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 -- testing from a non-existing starting vertex to a non-existing destination
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 
 -- in directed graph
 -- with restrictions
@@ -128,9 +128,9 @@ SELECT * FROM pgr_dijkstraTRSP(
     FALSE
 );
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 -- testing from an existing starting vertex to an existing destination
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 
 -- in directed graph
 -- with restrictions
@@ -170,7 +170,48 @@ SELECT * FROM pgr_dijkstraTRSP(
     FALSE
 );
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+-- testing from an existing starting vertex in one component to an existing destination in another component
+----------------------------------------------------------------------------------------------------------------
+-- in directed graph
+-- with restrictions
+PREPARE q17 AS
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
+    'SELECT * FROM restrictions',
+    2, 14
+);
+
+-- in undirected graph
+-- with restrictions
+PREPARE q18 AS
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
+    'SELECT * FROM restrictions',
+    2, 14,
+    FALSE
+);
+
+-- in directed graph
+-- without restrictions
+PREPARE q19 AS
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
+    'SELECT * FROM restrictions where id > 10',
+    2, 14
+);
+
+-- in undirected graph
+-- without restrictions
+PREPARE q20 AS
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
+    'SELECT * FROM restrictions where id > 10',
+    2, 14,
+    FALSE
+);
+
+----------------------------------------------------------------------------------------------------------------
 
 SELECT is_empty('q1');
 SELECT is_empty('q2');
@@ -188,6 +229,10 @@ SELECT is_empty('q13');
 SELECT is_empty('q14');
 SELECT is_empty('q15');
 SELECT is_empty('q16');
+SELECT is_empty('q17');
+SELECT is_empty('q18');
+SELECT is_empty('q19');
+SELECT is_empty('q20');
 
 SELECT * FROM finish();
 ROLLBACK;

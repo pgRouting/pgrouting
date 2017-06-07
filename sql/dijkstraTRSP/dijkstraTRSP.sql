@@ -34,7 +34,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraTRSP(
     BIGINT,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
-    strict BOOLEAN DEFAULT true, 
+    strict BOOLEAN DEFAULT false, 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,

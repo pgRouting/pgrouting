@@ -49,6 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     BIGINT,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
+    strict BOOLEAN DEFAULT false
  ***********************************************************/
 
 template < class G >
@@ -58,7 +59,8 @@ pgr_dijkstraTRSP(
         G &graph,
         int64_t source,
         int64_t target,
-        bool only_cost = false) {
+        bool only_cost = false,
+        bool strict = false) {
     Path path;
     Pgr_dijkstra< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, source, target, only_cost);
@@ -73,7 +75,7 @@ do_pgr_dijkstraTRSP(
         int64_t end_vid,
         bool directed,
         bool only_cost,
-        //bool strict,
+        bool strict,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,

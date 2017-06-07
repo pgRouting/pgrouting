@@ -141,17 +141,9 @@ process(
             total_edges,
             start_vid,
             end_vid,
-#if 0
-    /*
-     *  handling arrays example
-     */
-
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
-#endif
-
             directed,
             only_cost,
+            strict,
             result_tuples,
             result_count,
             &log_msg,
@@ -211,6 +203,7 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
     BIGINT,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
+    strict BOOLEAN DEFAULT false
          **********************************************************************/
 
 
