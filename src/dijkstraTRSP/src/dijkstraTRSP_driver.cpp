@@ -73,7 +73,7 @@ do_pgr_dijkstraTRSP(
         int64_t end_vid,
         bool directed,
         bool only_cost,
-        bool strict,
+        //bool strict,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
