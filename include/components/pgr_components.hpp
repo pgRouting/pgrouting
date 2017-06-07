@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <boost/graph/connected_components.hpp>
 
 #include <deque>
 #include <set>
@@ -72,19 +73,16 @@ class Pgr_components {
      //! @name Components 
      //@{
      //! one to one
-     Path components(
+     int components(
              G &graph);
 
  private:
      //! Call to Dijkstra  1 source to 1 target
-     bool dijkstra_1_to_1(
-             G &graph,
-             V source,
-             V target);
+     int dijkstra_1_to_1(
+             G &graph);
 
      void clear() {
          predecessors.clear();
-         distances.clear();
          nodesInDistance.clear();
      }
 
@@ -92,29 +90,12 @@ class Pgr_components {
      //@{
      struct found_goals{};  //!< exception for termination
      std::vector< V > predecessors;
-     std::vector< double > distances;
      std::deque< V > nodesInDistance;
      //@}
 
      //! @name Stopping classes
      //@{
      //! class for stopping when 1 target is found
-     class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
-      public:
-          explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
-          template <class B_G>
-              void examine_vertex(V &u, B_G &g) {
-#if 0
-                  REG_SIGINT;
-                  THROW_ON_SIGINT;
-#endif
-                  if (u == m_goal) throw found_goals();
-                  num_edges(g);
-              }
-      private:
-          V m_goal;
-     };
-
      //@}
 };
 
@@ -124,59 +105,28 @@ class Pgr_components {
 
 //! Components
 template < class G >
-Path
+int
 Pgr_components< G >::components(
         G &graph) {
-    int64_t end_vertex = 0;
-    int64_t start_vertex = 0;
-    bool only_cost = false;
     clear();
 
     // adjust predecessors and distances vectors
     predecessors.resize(graph.num_vertices());
-    distances.resize(graph.num_vertices());
-
-
-    if (!graph.has_vertex(start_vertex)
-            || !graph.has_vertex(end_vertex)) {
-        return Path(start_vertex, end_vertex);
-    }
-
-    // get the graphs source and target
-    auto v_source(graph.get_V(start_vertex));
-    auto v_target(graph.get_V(end_vertex));
 
     // perform the algorithm
-    dijkstra_1_to_1(graph, v_source, v_target);
+    int numm = dijkstra_1_to_1(graph);
 
     // get the results
-    return Path(
-            graph,
-            v_source, v_target,
-            predecessors, distances,
-            only_cost, true);
+	return numm;
 }
 
 //! Call to Dijkstra  1 source to 1 target
 template < class G >
-bool
+int
 Pgr_components< G >::dijkstra_1_to_1(
-        G &graph,
-        V source,
-        V target) {
-    bool found = false;
-    try {
-        boost::dijkstra_shortest_paths(graph.graph, source,
-                boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&G::G_T_E::cost, graph.graph))
-                .distance_map(&distances[0])
-                .visitor(dijkstra_one_goal_visitor(target)));
-    }
-    catch(found_goals &) {
-        found = true;  // Target vertex found
-    } catch (...) {
-    }
-    return found;
+        G &graph) {
+	int numm = boost::connected_components(graph.graph, &predecessors[0]);
+    return numm;
 }
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
