@@ -67,39 +67,12 @@ static
 void
 process(
         char* edges_sql,
-#if 0
-        /*
-         * handling arrays example
-         */
-        ArrayType *starts,
-        ArrayType *ends,
-#endif
         pgr_componentV_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
     pgr_SPI_connect();
-
-
-#if 0
-    /*
-     *  handling arrays example
-     */
-
-    PGR_DBG("Initializing arrays");
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-    start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-    end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
-#endif
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -206,7 +179,6 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
 #endif
                 &result_tuples,
                 &result_count);
-
 
         /*                                                                    */
         /**********************************************************************/

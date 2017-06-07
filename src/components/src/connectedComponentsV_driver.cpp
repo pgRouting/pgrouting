@@ -50,10 +50,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-Path
+int
 pgr_connectedComponentsV(
         G &graph) {
-    Path path;
+    int numm; 
     Pgr_components< G > fn_components;
     return fn_components.components(graph);
 }
@@ -81,15 +81,15 @@ do_pgr_connectedComponentsV(
 
         graphType gType = UNDIRECTED;
 
-        Path path;
+		int numm;
 
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        path = pgr_connectedComponentsV(
+        numm = pgr_connectedComponentsV(
                 undigraph);
 
-        auto count = path.size();
+        auto count = numm;
 
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -100,7 +100,7 @@ do_pgr_connectedComponentsV(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        size_t sequence = 0;
+        size_t sequence = numm;
 		// TODO(mg) write a new function that counts the return_tuples
         //path.generate_postgres_data(return_tuples, sequence);
         (*return_count) = sequence;
