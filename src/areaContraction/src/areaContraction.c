@@ -220,7 +220,7 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
 
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
