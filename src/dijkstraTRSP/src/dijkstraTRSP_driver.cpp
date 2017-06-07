@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2017 Vidhan Jain
 Mail: vidhanj1307.com
 
@@ -73,6 +73,7 @@ do_pgr_dijkstraTRSP(
         int64_t end_vid,
         bool directed,
         bool only_cost,
+        bool strict,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,

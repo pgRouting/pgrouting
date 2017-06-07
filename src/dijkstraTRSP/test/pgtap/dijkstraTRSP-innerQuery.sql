@@ -5,10 +5,10 @@ SET client_min_messages TO ERROR;
 
 
 SELECT has_function('pgr_dijkstratrsp',
-    ARRAY['text', 'text', 'bigint', 'bigint', 'boolean','boolean']);
+    ARRAY['text', 'text', 'bigint', 'bigint', 'boolean','boolean','boolean']);
 
 SELECT function_returns('pgr_dijkstratrsp',
-    ARRAY['text', 'text', 'bigint', 'bigint', 'boolean','boolean'],
+    ARRAY['text', 'text', 'bigint', 'bigint', 'boolean','boolean','boolean'],
     'setof record');
 
 SELECT todo_start();

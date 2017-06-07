@@ -79,6 +79,7 @@ process(
 #endif
         bool directed,
         bool only_cost,
+        bool strict,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     /*
@@ -229,6 +230,7 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
 #endif
                 PG_GETARG_BOOL(4),
                 PG_GETARG_BOOL(5),
+                PG_GETARG_BOOL(6),
                 &result_tuples,
                 &result_count);
 
