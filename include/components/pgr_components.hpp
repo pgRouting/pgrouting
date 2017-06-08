@@ -73,25 +73,16 @@ class Pgr_components {
      //! @name Components 
      //@{
      //! one to one
-     int components(
+	 std::vector<pgr_componentV_t> components(
              G &graph);
 
  private:
+	 std::map< V, int64_t > V_to_id;
      //! Call to Dijkstra  1 source to 1 target
-     int dijkstra_1_to_1(
+	 std::vector<pgr_componentV_t> dijkstra_1_to_1(
              G &graph);
-
-     void clear() {
-         predecessors.clear();
-         nodesInDistance.clear();
-     }
-
-     //! @name members;
-     //@{
-     struct found_goals{};  //!< exception for termination
-     std::vector< V > predecessors;
-     std::deque< V > nodesInDistance;
-     //@}
+	 void generate_map(
+			 std::map< int64_t, V > id_to_V);
 
      //! @name Stopping classes
      //@{
@@ -102,31 +93,82 @@ class Pgr_components {
 
 /******************** IMPLEMENTTION ******************/
 
+bool
+sort_cmp(
+		pgr_componentV_t a, 
+		pgr_componentV_t b) {
+	if (a.component == b.component)
+		return a.node < b.node;
+	return a.component < b.component;
+}
+
+//! Generate map V_to_id
+template < class G >
+void
+Pgr_components< G >::generate_map(
+		std::map< int64_t, V > id_to_V) {
+	V_to_id.clear();
+	for (auto iter : id_to_V) {
+		V_to_id.insert(std::make_pair(iter.second, iter.first));
+	}
+}
 
 //! Components
 template < class G >
-int
+std::vector<pgr_componentV_t>
 Pgr_components< G >::components(
         G &graph) {
-    clear();
-
-    // adjust predecessors and distances vectors
-    predecessors.resize(graph.num_vertices());
-
     // perform the algorithm
-    int numm = dijkstra_1_to_1(graph);
+	std::vector<pgr_componentV_t> results = dijkstra_1_to_1(graph);
 
     // get the results
-	return numm;
+	return results;
 }
 
 //! Call to Dijkstra  1 source to 1 target
 template < class G >
-int
+std::vector<pgr_componentV_t>
 Pgr_components< G >::dijkstra_1_to_1(
         G &graph) {
-	int numm = boost::connected_components(graph.graph, &predecessors[0]);
-    return numm;
+	// call to boost
+	std::vector< V > components(num_vertices(graph.graph));
+	boost::connected_components(graph.graph, &components[0]);
+
+	// generate V_to_id
+	generate_map(graph.vertices_map);
+
+	// generate results
+	int totalNodes = num_vertices(graph.graph);
+
+	std::vector< pgr_componentV_t > results;
+	results.resize(totalNodes);
+
+	std::vector< int64_t > result_comp;
+	result_comp.resize(0);
+	size_t temp_size = 0;
+	for (int i = 0; i < totalNodes; i++) {
+		results[i].node = V_to_id.find(i)->second; 
+		if (components[i] >= temp_size) {
+			result_comp.push_back(results[i].node);
+			temp_size++;
+		} else {
+			result_comp[components[i]] = 
+				std::min(results[i].node, result_comp[components[i]]);
+		}
+		results[i].n_seq = -100;
+	}
+	for (int i = 0; i < totalNodes; i++) { 
+		results[i].component = result_comp[components[i]];
+	}
+	std::sort(results.begin(), results.end(), sort_cmp);
+	for (int i = 0; i < totalNodes; i++) { 
+		if (i == 0 || results[i].component != results[i - 1].component) {
+			results[i].n_seq = 1;
+		} else {
+			results[i].n_seq = results[i - 1].n_seq + 1;
+		}
+	}
+    return results;
 }
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
