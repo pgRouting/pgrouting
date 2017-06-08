@@ -55,7 +55,7 @@ pgr_connectedComponentsV(
         G &graph) {
 	std::vector<pgr_componentV_t> results;
     Pgr_components< G > fn_components;
-    return fn_components.components(graph);
+    return fn_components.connectedComponentsV(graph);
 }
 
 

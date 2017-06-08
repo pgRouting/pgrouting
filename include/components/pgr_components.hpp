@@ -70,29 +70,27 @@ class Pgr_components {
  public:
      typedef typename G::V V;
 
-     //! @name Components 
-     //@{
-     //! one to one
-	 std::vector<pgr_componentV_t> components(
+     //! Connected Components Vertex Version
+	 std::vector<pgr_componentV_t> connectedComponentsV(
              G &graph);
 
  private:
-	 std::map< V, int64_t > V_to_id;
-     //! Call to Dijkstra  1 source to 1 target
-	 std::vector<pgr_componentV_t> dijkstra_1_to_1(
+
+     //! Call to Connected Components Vertex Version
+	 std::vector<pgr_componentV_t> do_connectedComponentsV(
              G &graph);
+
+	 //! Generate Map V_to_id
+	 std::map< V, int64_t > V_to_id;
 	 void generate_map(
 			 std::map< int64_t, V > id_to_V);
 
-     //! @name Stopping classes
-     //@{
-     //! class for stopping when 1 target is found
-     //@}
 };
 
 
 /******************** IMPLEMENTTION ******************/
 
+//! Compare two pgr_componentV_t structs
 bool
 sort_cmp(
 		pgr_componentV_t a, 
@@ -113,22 +111,22 @@ Pgr_components< G >::generate_map(
 	}
 }
 
-//! Components
+//! Connected Components Vertex Version
 template < class G >
 std::vector<pgr_componentV_t>
-Pgr_components< G >::components(
+Pgr_components< G >::connectedComponentsV(
         G &graph) {
     // perform the algorithm
-	std::vector<pgr_componentV_t> results = dijkstra_1_to_1(graph);
+	std::vector<pgr_componentV_t> results = do_connectedComponentsV(graph);
 
     // get the results
 	return results;
 }
 
-//! Call to Dijkstra  1 source to 1 target
+//! Call Componnets Vertex Version and Generate Results
 template < class G >
 std::vector<pgr_componentV_t>
-Pgr_components< G >::dijkstra_1_to_1(
+Pgr_components< G >::do_connectedComponentsV(
         G &graph) {
 	// call to boost
 	std::vector< V > components(num_vertices(graph.graph));
@@ -143,7 +141,7 @@ Pgr_components< G >::dijkstra_1_to_1(
 	std::vector< pgr_componentV_t > results;
 	results.resize(totalNodes);
 
-	std::vector< int64_t > result_comp;
+	std::vector< int64_t > result_comp; 
 	result_comp.resize(0);
 	size_t temp_size = 0;
 	for (int i = 0; i < totalNodes; i++) {
@@ -157,9 +155,13 @@ Pgr_components< G >::dijkstra_1_to_1(
 		}
 		results[i].n_seq = -100;
 	}
+
+	// generate component number
 	for (int i = 0; i < totalNodes; i++) { 
 		results[i].component = result_comp[components[i]];
 	}
+
+	// sort results and generate n_seq
 	std::sort(results.begin(), results.end(), sort_cmp);
 	for (int i = 0; i < totalNodes; i++) { 
 		if (i == 0 || results[i].component != results[i - 1].component) {
@@ -171,4 +173,4 @@ Pgr_components< G >::dijkstra_1_to_1(
     return results;
 }
 
-#endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
