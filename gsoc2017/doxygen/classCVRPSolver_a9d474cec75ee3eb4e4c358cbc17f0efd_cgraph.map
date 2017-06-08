@@ -1,0 +1,12 @@
+<map id="CVRPSolver::getCostForInsert" name="CVRPSolver::getCostForInsert">
+<area shape="rect" id="node2" href="$classCTourInfo.html#ad4a04aa9fee7710c4e0d612a2bfa5912" title="CTourInfo::getCost" alt="" coords="306,5,441,32"/>
+<area shape="rect" id="node3" href="$classCVRPSolver.html#a578925d6ca537852aac741d943a19161" title="CVRPSolver::getDepotToOrderCost" alt="" coords="257,56,490,83"/>
+<area shape="rect" id="node4" href="$classCTourInfo.html#a94375b17ea41ebaa2520f6084dac3d54" title="CTourInfo::getDistance" alt="" coords="294,107,453,133"/>
+<area shape="rect" id="node5" href="$classCTourInfo.html#a07109bda93132a10a902c748829bc64e" title="CTourInfo::getEndDepot" alt="" coords="291,157,455,184"/>
+<area shape="rect" id="node6" href="$classCOrderInfo.html#ae8b16b39afa7ed2c5a2095391913368a" title="COrderInfo::getOrderId" alt="" coords="296,208,451,235"/>
+<area shape="rect" id="node7" href="$classCVRPSolver.html#ade0aae91964c2e2d58a127dedd97b3ff" title="CVRPSolver::getOrderToDepotCost" alt="" coords="257,259,490,285"/>
+<area shape="rect" id="node8" href="$classCVRPSolver.html#a323176f6eb23fbb3c7ce1101b4cc400a" title="CVRPSolver::getOrderToOrderCost" alt="" coords="258,309,489,336"/>
+<area shape="rect" id="node9" href="$classCTourInfo.html#a88edb80bf3bda693a25d11c1344ae97e" title="CTourInfo::getOrderVector" alt="" coords="285,360,461,387"/>
+<area shape="rect" id="node10" href="$classCTourInfo.html#afbb2a06f880213c22a23a556e684d70b" title="CTourInfo::getStartDepot" alt="" coords="289,411,458,437"/>
+<area shape="rect" id="node11" href="$classCTourInfo.html#afba603f47cfe77fe124436b57299c637" title="CTourInfo::getTravelTime" alt="" coords="288,461,459,488"/>
+</map>

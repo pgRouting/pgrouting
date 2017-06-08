@@ -1,0 +1,8 @@
+<map id="pgrouting::bidirectional::Pgr_bidirectional::bidirectional" name="pgrouting::bidirectional::Pgr_bidirectional::bidirectional">
+<area shape="rect" id="node2" href="$classPath.html#a81dda9b296131350ee5be51a13e095b7" title="Path: 2 &#45;&gt; 9 seq node edge cost agg_cost 0 2 4 1 0 1 5 8 1 1 2 6 9 1 2 3 9 &#45;1 0 3 Path: 9 &#45;&gt; 3 seq no..." alt="" coords="297,5,396,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#addaa7de211d943304475aa4c38f50978" title="pgrouting::bidirectional\l::Pgr_bidirectional::explore\l_backward" alt="" coords="259,56,435,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a6c4b2976e7ee0e9c301f1071fdc5903f" title="pgrouting::bidirectional\l::Pgr_bidirectional::explore\l_forward" alt="" coords="259,136,435,192"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a13542537894b7e6e0a00937a4cfcaac8" title="pgrouting::bidirectional\l::Pgr_bidirectional::found" alt="" coords="263,215,430,257"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adcd46d9c2709a597a33379aa3541bde0" title="pgrouting::bidirectional\l::Pgr_bidirectional::initialize" alt="" coords="256,281,437,322"/>
+<area shape="rect" id="node7" href="$classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e" title="Path::reverse" alt="" coords="297,347,397,373"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="CSolutionInfo::addTour" name="CSolutionInfo::addTour">
+<area shape="rect" id="node2" href="$classCTourInfo.html#ad4a04aa9fee7710c4e0d612a2bfa5912" title="CTourInfo::getCost" alt="" coords="231,5,366,32"/>
+<area shape="rect" id="node3" href="$classCTourInfo.html#a94375b17ea41ebaa2520f6084dac3d54" title="CTourInfo::getDistance" alt="" coords="219,56,378,83"/>
+<area shape="rect" id="node4" href="$classCTourInfo.html#a88edb80bf3bda693a25d11c1344ae97e" title="CTourInfo::getOrderVector" alt="" coords="211,107,387,133"/>
+<area shape="rect" id="node5" href="$classCTourInfo.html#afba603f47cfe77fe124436b57299c637" title="CTourInfo::getTravelTime" alt="" coords="213,157,384,184"/>
+<area shape="rect" id="node6" href="$classCTourInfo.html#aa293f37c8f79cff6c234077b0679fac1" title="CTourInfo::getVehicleId" alt="" coords="219,208,379,235"/>
+</map>
