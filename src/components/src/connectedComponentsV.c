@@ -67,39 +67,12 @@ static
 void
 process(
         char* edges_sql,
-#if 0
-        /*
-         * handling arrays example
-         */
-        ArrayType *starts,
-        ArrayType *ends,
-#endif
         pgr_componentV_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
     pgr_SPI_connect();
-
-
-#if 0
-    /*
-     *  handling arrays example
-     */
-
-    PGR_DBG("Initializing arrays");
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-    start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-    end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
-#endif
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -207,7 +180,6 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-
         /*                                                                    */
         /**********************************************************************/
 
@@ -258,10 +230,10 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);                     // seq
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].component); // component
-        values[3] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);      // n_seq
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);     // node
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
+        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

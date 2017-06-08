@@ -30,11 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <boost/graph/connected_components.hpp>
 
-#include <deque>
-#include <set>
 #include <vector>
+#include <map>
+#include <utility>
 #include <algorithm>
 
 #include "cpp_common/basePath_SSEC.hpp"
@@ -55,114 +55,105 @@ class Pgr_components {
  public:
      typedef typename G::V V;
 
-     //! @name Components 
-     //@{
-     //! one to one
-     Path components(
+     //! Connected Components Vertex Version
+     std::vector<pgr_componentV_t> connectedComponentsV(
              G &graph);
 
  private:
-     //! Call to Dijkstra  1 source to 1 target
-     bool dijkstra_1_to_1(
-             G &graph,
-             V source,
-             V target);
+     //! Call to Connected Components Vertex Version
+     std::vector<pgr_componentV_t> do_connectedComponentsV(
+             G &graph);
 
-     void clear() {
-         predecessors.clear();
-         distances.clear();
-         nodesInDistance.clear();
-     }
-
-     //! @name members;
-     //@{
-     struct found_goals{};  //!< exception for termination
-     std::vector< V > predecessors;
-     std::vector< double > distances;
-     std::deque< V > nodesInDistance;
-     //@}
-
-     //! @name Stopping classes
-     //@{
-     //! class for stopping when 1 target is found
-     class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
-      public:
-          explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
-          template <class B_G>
-              void examine_vertex(V &u, B_G &g) {
-#if 0
-                  REG_SIGINT;
-                  THROW_ON_SIGINT;
-#endif
-                  if (u == m_goal) throw found_goals();
-                  num_edges(g);
-              }
-      private:
-          V m_goal;
-     };
-
-     //@}
+     //! Generate Map V_to_id
+     std::map< V, int64_t > V_to_id;
+     void generate_map(
+             std::map< int64_t, V > id_to_V);
 };
 
 
 /******************** IMPLEMENTTION ******************/
 
+//! Compare two pgr_componentV_t structs
+bool
+sort_cmp(
+        pgr_componentV_t a,
+        pgr_componentV_t b) {
+    if (a.component == b.component)
+        return a.node < b.node;
+    return a.component < b.component;
+}
 
-//! Components
+//! Generate map V_to_id
 template < class G >
-Path
-Pgr_components< G >::components(
-        G &graph) {
-    int64_t end_vertex = 0;
-    int64_t start_vertex = 0;
-    bool only_cost = false;
-    clear();
-
-    // adjust predecessors and distances vectors
-    predecessors.resize(graph.num_vertices());
-    distances.resize(graph.num_vertices());
-
-
-    if (!graph.has_vertex(start_vertex)
-            || !graph.has_vertex(end_vertex)) {
-        return Path(start_vertex, end_vertex);
+void
+Pgr_components< G >::generate_map(
+        std::map< int64_t, V > id_to_V) {
+    V_to_id.clear();
+    for (auto iter : id_to_V) {
+        V_to_id.insert(std::make_pair(iter.second, iter.first));
     }
+}
 
-    // get the graphs source and target
-    auto v_source(graph.get_V(start_vertex));
-    auto v_target(graph.get_V(end_vertex));
-
+//! Connected Components Vertex Version
+template < class G >
+std::vector<pgr_componentV_t>
+Pgr_components< G >::connectedComponentsV(
+        G &graph) {
     // perform the algorithm
-    dijkstra_1_to_1(graph, v_source, v_target);
+    std::vector<pgr_componentV_t> results = do_connectedComponentsV(graph);
 
     // get the results
-    return Path(
-            graph,
-            v_source, v_target,
-            predecessors, distances,
-            only_cost, true);
+    return results;
 }
 
-//! Call to Dijkstra  1 source to 1 target
+//! Call Componnets Vertex Version and Generate Results
 template < class G >
-bool
-Pgr_components< G >::dijkstra_1_to_1(
-        G &graph,
-        V source,
-        V target) {
-    bool found = false;
-    try {
-        boost::dijkstra_shortest_paths(graph.graph, source,
-                boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&G::G_T_E::cost, graph.graph))
-                .distance_map(&distances[0])
-                .visitor(dijkstra_one_goal_visitor(target)));
+std::vector<pgr_componentV_t>
+Pgr_components< G >::do_connectedComponentsV(
+        G &graph) {
+    // call to boost
+    std::vector< V > components(num_vertices(graph.graph));
+    boost::connected_components(graph.graph, &components[0]);
+
+    // generate V_to_id
+    generate_map(graph.vertices_map);
+
+    // generate results
+    int totalNodes = num_vertices(graph.graph);
+
+    std::vector< pgr_componentV_t > results;
+    results.resize(totalNodes);
+
+    std::vector< int64_t > result_comp;
+    result_comp.resize(0);
+    size_t temp_size = 0;
+    for (int i = 0; i < totalNodes; i++) {
+        results[i].node = V_to_id.find(i)->second;
+        if (components[i] >= temp_size) {
+            result_comp.push_back(results[i].node);
+            temp_size++;
+        } else {
+            result_comp[components[i]] =
+                std::min(results[i].node, result_comp[components[i]]);
+        }
+        results[i].n_seq = -100;
     }
-    catch(found_goals &) {
-        found = true;  // Target vertex found
-    } catch (...) {
+
+    // generate component number
+    for (int i = 0; i < totalNodes; i++) {
+        results[i].component = result_comp[components[i]];
     }
-    return found;
+
+    // sort results and generate n_seq
+    std::sort(results.begin(), results.end(), sort_cmp);
+    for (int i = 0; i < totalNodes; i++) {
+        if (i == 0 || results[i].component != results[i - 1].component) {
+            results[i].n_seq = 1;
+        } else {
+            results[i].n_seq = results[i - 1].n_seq + 1;
+        }
+    }
+    return results;
 }
 
-#endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
