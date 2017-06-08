@@ -53,7 +53,7 @@ static
 std::vector<pgr_componentV_t>
 pgr_connectedComponentsV(
         G &graph) {
-	std::vector<pgr_componentV_t> results;
+    std::vector<pgr_componentV_t> results;
     Pgr_components< G > fn_components;
     return fn_components.connectedComponentsV(graph);
 }
@@ -81,7 +81,7 @@ do_pgr_connectedComponentsV(
 
         graphType gType = UNDIRECTED;
 
-		std::vector<pgr_componentV_t> results;
+        std::vector<pgr_componentV_t> results;
 
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
@@ -100,14 +100,10 @@ do_pgr_connectedComponentsV(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-		for (size_t i = 0; i < count; i++) {
-			(*((*return_tuples) + i)).component = results[i].component;
-			(*((*return_tuples) + i)).n_seq = results[i].n_seq;
-			(*((*return_tuples) + i)).node = results[i].node;
-		}
+        for (size_t i = 0; i < count; i++) {
+            *((*return_tuples) + i) = results[i];
+        }
         size_t sequence = count;
-		// TODO(mg) write a new function that counts the return_tuples
-        //path.generate_postgres_data(return_tuples, sequence);
         (*return_count) = sequence;
 
         pgassert(*err_msg == NULL);
