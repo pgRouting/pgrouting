@@ -50,10 +50,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-int
+std::vector<pgr_componentV_t>
 pgr_connectedComponentsV(
         G &graph) {
-    int numm; 
+	std::vector<pgr_componentV_t> results;
     Pgr_components< G > fn_components;
     return fn_components.components(graph);
 }
@@ -81,15 +81,15 @@ do_pgr_connectedComponentsV(
 
         graphType gType = UNDIRECTED;
 
-		int numm;
+		std::vector<pgr_componentV_t> results;
 
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        numm = pgr_connectedComponentsV(
+        results = pgr_connectedComponentsV(
                 undigraph);
 
-        auto count = numm;
+        auto count = results.size();
 
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -100,7 +100,12 @@ do_pgr_connectedComponentsV(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        size_t sequence = numm;
+		for (size_t i = 0; i < count; i++) {
+			(*((*return_tuples) + i)).component = results[i].component;
+			(*((*return_tuples) + i)).n_seq = results[i].n_seq;
+			(*((*return_tuples) + i)).node = results[i].node;
+		}
+        size_t sequence = count;
 		// TODO(mg) write a new function that counts the return_tuples
         //path.generate_postgres_data(return_tuples, sequence);
         (*return_count) = sequence;
