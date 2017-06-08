@@ -13,7 +13,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions',
     2, 3,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -24,7 +24,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions',
     2, 3,
     FALSE,
-    strict := true
+    strict := false
 );
 
 -- in directed graph
@@ -34,7 +34,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     2, 3,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -45,7 +45,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions where id > 10',
     2, 3,
     FALSE,
-    strict := true
+    strict := false
 );
 
 ----------------------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions',
     6, 8,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -70,7 +70,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions',
     6, 8,
     FALSE,
-    strict := true
+    strict := false
 );
 
 -- in directed graph
@@ -80,7 +80,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     6, 8,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -91,7 +91,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions where id > 10',
     6, 8,
     FALSE,
-    strict := true
+    strict := false
 );
 
 ----------------------------------------------------------------------------------------------------------------
@@ -105,7 +105,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions',
     1, 17,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -116,7 +116,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions',
     1, 17,
     FALSE,
-    strict := true
+    strict := false
 );
 
 -- in directed graph
@@ -126,7 +126,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     1, 17,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -137,7 +137,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions where id > 10',
     1, 17,
     FALSE,
-    strict := true
+    strict := false
 );
 
 ----------------------------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions',
     2, 2,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -162,7 +162,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions',
     2, 2,
     FALSE,
-    strict := true
+    strict := false
 );
 
 -- in directed graph
@@ -172,7 +172,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     2, 2,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -183,7 +183,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions where id > 10',
     2, 2,
     FALSE,
-    strict := true
+    strict := false
 );
 
 ----------------------------------------------------------------------------------------------------------------
@@ -196,7 +196,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM restrictions',
     2, 14,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -207,7 +207,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions',
     2, 14,
     FALSE,
-    strict := true
+    strict := false
 );
 
 -- in directed graph
@@ -217,7 +217,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM restrictions where id > 10',
     2, 14,
-    strict := true
+    strict := false
 );
 
 -- in undirected graph
@@ -228,7 +228,7 @@ SELECT * FROM pgr_dijkstraTRSP(
     'SELECT * FROM restrictions where id > 10',
     2, 14,
     FALSE,
-    strict := true
+    strict := false
 );
 
 ----------------------------------------------------------------------------------------------------------------
