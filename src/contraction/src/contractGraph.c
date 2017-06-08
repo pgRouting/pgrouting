@@ -185,7 +185,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         HeapTuple   tuple;
         Datum       result;
         Datum       *values;
-        char        *nulls;
+        bool        *nulls;
         int16 typlen;
         size_t      call_cntr = funcctx->call_cntr;
 
