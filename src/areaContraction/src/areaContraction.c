@@ -44,7 +44,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *  - should allways be first in the C code
  */
 #include "c_common/postgres_connection.h"
+#include "utils/array.h"
+#include "catalog/pg_type.h"
+#include "utils/lsyscache.h"
 
+#ifndef INT8ARRAYOID
+#define INT8ARRAYOID    1016
+#endif
 
 /* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
@@ -55,7 +61,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get edges informtion */
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-
+#include "c_types/contracted_rt.h"
 #include "drivers/areaContraction/areaContraction_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS);
@@ -70,7 +76,7 @@ process(
         char* edges_sql,
         ArrayType *border_verticesArr,
         bool directed,
-        General_path_element_t **result_tuples,
+        contracted_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -85,8 +91,8 @@ process(
         pgr_get_bigIntArray(&border_vertices_size, border_verticesArr);
     PGR_DBG("border_vertices size %ld ", border_vertices_size);
 
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
+    // (*result_tuples) = NULL;
+    // (*result_count) = 0;
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
@@ -120,16 +126,18 @@ process(
     time_msg(" processing pgr_areaContraction", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
-    if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
+
     pgr_global_report(log_msg, notice_msg, err_msg);
 
     if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-
     if (border_vertices) pfree(border_vertices);
 
     pgr_SPI_finish();
@@ -144,7 +152,7 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_path_element_t  *result_tuples = NULL;
+    contracted_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -193,7 +201,7 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (contracted_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -214,11 +222,9 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
     OUT agg_cost FLOAT
          ***********************************************************************/
 
-         size_t numb = 7;
-         values =(Datum *)palloc(numb * sizeof(Datum));
-         nulls = palloc(numb * sizeof(bool));
-
-
+        size_t numb = 7;
+        values =(Datum *)palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
         size_t i;
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
@@ -242,6 +248,11 @@ PGDLLEXPORT Datum areaContraction(PG_FUNCTION_ARGS) {
         char typalign;
         get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
         ArrayType* arrayType;
+
+        arrayType =  construct_array(
+                contracted_vertices_array,
+                (int)contracted_vertices_size,
+                INT8OID,  typlen, typbyval, typalign);
 
         TupleDescInitEntry(tuple_desc, (AttrNumber) 4, "contracted_vertices",
                 INT8ARRAYOID, -1, 0);

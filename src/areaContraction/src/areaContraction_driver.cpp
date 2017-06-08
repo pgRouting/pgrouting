@@ -29,11 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/areaContraction/areaContraction_driver.h"
 
+#include <string.h>
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -67,7 +68,7 @@ do_pgr_areaContraction(
         int64_t* borderVertices,
         size_t borderVertices_size,
         bool directed,
-        General_path_element_t **return_tuples,
+        contracted_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
