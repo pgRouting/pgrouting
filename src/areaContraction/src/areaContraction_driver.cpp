@@ -69,7 +69,10 @@ do_pgr_areaContraction(
         pgassert(data_edges_size != 0);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
+/*****************put my code here****************/
 
+
+/************************************************/
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
