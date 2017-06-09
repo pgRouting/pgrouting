@@ -68,15 +68,17 @@ do_pgr_areaContraction(
         pgassert(*return_count == 0);
         pgassert(data_edges_size != 0);
 
-/*****************put my code here****************/
-
         graphType gType = directed? DIRECTED: UNDIRECTED;
+        
+        /*
+        *Converting to C++ Structures
+        */
+
         std::vector<pgr_edge_t> edges(data_edges, data_edges + data_edges_size);
         std::vector<int64_t> border(
                 borderVertices,
                 borderVertices + borderVertices_size);
 
-/************************************************/
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
