@@ -39,12 +39,115 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+
+template <typename G>
+static void process_areaContraction(
+        G &graph,
+        const std::vector< pgr_edge_t > &edges,
+        const std::vector< int64_t > borderVertices,
+        Identifiers<int64_t> &remaining_vertices,
+        std::vector< pgrouting::CH_edge > &shortcut_edges,
+        std::ostringstream &log,
+        std::ostringstream &err) {
+    graph.insert_edges(edges);
+
+    /*
+     * this check does not ignore vertices ids that do not belong to the graph
+     */
+    log << "Checking for valid border vertices\n";
+    for (const auto vertex : borderVertices) {
+        if (!graph.has_vertex(vertex)) {
+            err << "Invalid border vertex: " << vertex << "\n";
+            return;
+        }
+    }
+
+    Identifiers<typename G::V> borderVertices;
+    for (const auto &vertex : borderVertices) {
+        if (graph.has_vertex(vertex)) {
+            borderVertices += graph.get_V(vertex);
+        }
+    }
+
+    #ifndef NDEBUG
+    log << "Before contraction\n";
+    graph.print_graph(log);
+    #endif
+
+    /*
+     * Function call to get the contracted graph.
+     */
+    pgrouting::areaContraction::Pgr_contract<G> result(graph,
+            borderVertices, remaining_vertices,
+            shortcut_edges, log);
+
+    #ifndef NDEBUG
+    log << "After contraction\n";
+    log << graph;
+    log << "Remaining Vertices:" << "\n";
+    for (const auto vertex : remaining_vertices) {
+        log << vertex << "\n";
+    }
+    log << "Added Edges:" << "\n";
+    for (const auto edge : shortcut_edges) {
+        log << edge << "\n";
+    }
+    #endif
+    }
+
+    template <typename G>
+    static
+    void get_postgres_result(
+            G &graph,
+            const Identifiers<int64_t> remaining_vertices,
+            const std::vector< pgrouting::CH_edge > shortcut_edges,
+            contracted_rt **return_tuples) {
+        (*return_tuples) = pgr_alloc(
+                remaining_vertices.size() + shortcut_edges.size(),
+                (*return_tuples));
+
+        size_t sequence = 0;
+
+        for (auto id : remaining_vertices) {
+            int64_t* contracted_vertices = NULL;
+            auto ids = graph.get_contracted_vertices(id);
+            contracted_vertices = pgr_alloc(
+                       ids.size(), contracted_vertices);
+            int count = 0;
+            for (const auto id : ids) {
+                contracted_vertices[count++] = id;
+            }
+            (*return_tuples)[sequence] = {id, const_cast<char*>("v"), -1, -1, -1.00,
+                contracted_vertices, count};
+
+            ++sequence;
+        }
+
+        for (auto edge : shortcut_edges) {
+            int64_t* contracted_vertices = NULL;
+            auto ids = graph.get_ids(edge.contracted_vertices());
+
+            contracted_vertices = pgr_alloc(
+                       ids.size(), contracted_vertices);
+            int count = 0;
+            for (const auto id : ids) {
+                contracted_vertices[count++] = id;
+            }
+            (*return_tuples)[sequence] = {edge.id, const_cast<char*>("e"),
+                edge.source, edge.target, edge.cost,
+                contracted_vertices, count};
+
+            ++sequence;
+        }
+    }
+
+
+
 /************************************************************
 TEXT, --edges_sql
 ANYARRAY, --border_nodes
 directed BOOLEAN DEFAULT true,
  ***********************************************************/
-
 void
 do_pgr_areaContraction(
         pgr_edge_t  *data_edges,
@@ -119,7 +222,7 @@ do_pgr_areaContraction(
             log << "Working with Undirected Graph\n";
 
             pgrouting::CHUndirectedGraph undigraph(gType);
-            process_areaContraction(undigraph, edges, border
+            process_areaContraction(undigraph, edges, border,
                     remaining_vertices, shortcut_edges,
                     log, err);
 
