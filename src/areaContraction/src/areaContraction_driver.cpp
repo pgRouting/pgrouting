@@ -39,6 +39,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+template <typename G>
+static void process_contraction(
+        G &graph,
+        const std::vector< pgr_edge_t > &edges,
+        const std::vector< int64_t > borderVertices,
+        std::vector< pgrouting::CH_edge > &shortcut_edges,
+        std::ostringstream &log,
+        std::ostringstream &err) {
+        }
+
 
 /************************************************************
 TEXT, --edges_sql
@@ -69,7 +79,7 @@ do_pgr_areaContraction(
         pgassert(data_edges_size != 0);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        
+
         /*
         *Converting to C++ Structures
         */
@@ -78,6 +88,36 @@ do_pgr_areaContraction(
         std::vector<int64_t> border(
                 borderVertices,
                 borderVertices + borderVertices_size);
+
+        /*
+        *Creating new containers
+        */
+        std::vector< pgrouting::CH_edge > shortcut_edges;
+        pgassert(shortcut_edges.empty());
+
+        /*
+        *Working with directed and undirected graph
+        */
+        graphType gType = directed? DIRECTED: UNDIRECTED;
+        if (directed) {
+          log << "Working with directed Graph\n";
+          pgrouting::CHDirectedGraph digraph(gType);
+
+          process_contraction(digraph, edges, border, shortcut_edges,
+                  log, err);
+
+
+
+        } else {
+          log << "Working with Undirected Graph\n";
+
+          pgrouting::CHUndirectedGraph undigraph(gType);
+
+          process_contraction(undigraph, edges, border, shortcut_edges,
+                  log, err);
+
+
+        }
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
