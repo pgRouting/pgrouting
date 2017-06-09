@@ -50,7 +50,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     only_cost BOOLEAN DEFAULT false,
  ***********************************************************/
 
-
+template < class G >
+static
+Path
+pgr_areaContraction(
+        G &graph,
+        int64_t* borderVertices) {
+    Path path;
+    return path;
+}
 
 
 void
@@ -77,6 +85,37 @@ do_pgr_areaContraction(
         pgassert(data_edges_size != 0);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
+
+        Path path;
+
+        if (directed) {
+            log << "Working with directed Graph\n";
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, data_edges_size);
+            path = pgr_areaContraction(digraph,
+                  borderVertices);
+        } else {
+            log << "Working with Undirected Graph\n";
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, data_edges_size);
+            path = pgr_areaContraction(undigraph,
+                    borderVertices);
+        }
+
+        auto count = path.size();
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice <<
+                "No paths found between start_vid and end_vid vertices";
+            return;
+        }
+
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        size_t sequence = 0;
+        path.generate_postgres_data(return_tuples, sequence);
+        (*return_count) = sequence;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
