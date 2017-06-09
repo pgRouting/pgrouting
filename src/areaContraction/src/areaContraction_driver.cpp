@@ -68,8 +68,70 @@ do_pgr_areaContraction(
         pgassert(*return_count == 0);
         pgassert(data_edges_size != 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
 /*****************put my code here****************/
+        std::vector<pgr_edge_t> edges(data_edges, data_edges + data_edges_size);
+        std::vector<int64_t> border(
+                borderVertices,
+                borderVertices + borderVertices_size);
+
+        /*
+         * Extracting vertices of the graph
+         */
+        Identifiers<int64_t> remaining_vertices;
+        std::vector< pgrouting::CH_edge > shortcut_edges;
+
+#ifndef NDEBUG
+        log << "Original Graph: \n" <<
+            std::setprecision(32);
+        for (const auto edge : edges) {
+            log << "id = " << edge.id
+                << "\tsource = " << edge.source
+                << "\ttarget = " << edge.target
+                << "\tcost = " << edge.cost
+                << "\treverse_cost = " << edge.reverse_cost
+                << ")\n";
+        }
+        log << " }\n";
+        log << "borderVertices_size " << border.size() << "\n";
+        log << "borderVertices" << "{ ";
+        for (const auto vertex : border) {
+            log << vertex << ", ";
+        }
+        log << " }\n";
+        log << "directed " << directed << "\n";
+#endif
+
+        graphType gType = directed? DIRECTED: UNDIRECTED;
+        if (directed) {
+            log << "Working with directed Graph\n";
+            pgrouting::CHDirectedGraph digraph(gType);
+
+            process_areaContraction(digraph, edges, border,
+                    remaining_vertices, shortcut_edges,
+                    log, err);
+
+            get_postgres_result(
+                    digraph,
+                    remaining_vertices,
+                    shortcut_edges,
+                   return_tuples);
+        } else {
+            log << "Working with Undirected Graph\n";
+
+            pgrouting::CHUndirectedGraph undigraph(gType);
+            process_areaContraction(undigraph, edges, border
+                    remaining_vertices, shortcut_edges,
+                    log, err);
+
+            get_postgres_result(
+                    undigraph,
+                    remaining_vertices,
+                    shortcut_edges,
+                    return_tuples);
+        }
+
+        (*return_count) = remaining_vertices.size()+shortcut_edges.size();
+
 
 
 /************************************************/
