@@ -11,7 +11,7 @@ SELECT plan(20);
 PREPARE q1 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     2, 3,
     strict := false
 );
@@ -21,7 +21,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q2 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     2, 3,
     FALSE,
     strict := false
@@ -32,7 +32,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q3 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     2, 3,
     strict := false
 );
@@ -42,7 +42,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q4 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     2, 3,
     FALSE,
     strict := false
@@ -57,7 +57,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q5 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     6, 8,
     strict := false
 );
@@ -67,7 +67,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q6 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     6, 8,
     FALSE,
     strict := false
@@ -78,7 +78,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q7 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     6, 8,
     strict := false
 );
@@ -88,7 +88,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q8 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     6, 8,
     FALSE,
     strict := false
@@ -103,7 +103,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q9 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     1, 17,
     strict := false
 );
@@ -113,7 +113,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q10 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     1, 17,
     FALSE,
     strict := false
@@ -124,7 +124,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q11 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     1, 17,
     strict := false
 );
@@ -134,7 +134,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q12 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     1, 17,
     FALSE,
     strict := false
@@ -149,7 +149,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q13 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     2, 2,
     strict := false
 );
@@ -159,7 +159,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q14 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     2, 2,
     FALSE,
     strict := false
@@ -170,7 +170,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q15 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     2, 2,
     strict := false
 );
@@ -180,7 +180,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q16 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     2, 2,
     FALSE,
     strict := false
@@ -194,7 +194,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q17 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     2, 14,
     strict := false
 );
@@ -204,7 +204,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q18 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
-    'SELECT * FROM restrictions',
+    'SELECT * FROM restrict',
     2, 14,
     FALSE,
     strict := false
@@ -215,7 +215,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q19 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     2, 14,
     strict := false
 );
@@ -225,7 +225,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 PREPARE q20 AS
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
-    'SELECT * FROM restrictions where id > 10',
+    'SELECT * FROM restrict where id > 10',
     2, 14,
     FALSE,
     strict := false
