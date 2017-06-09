@@ -69,16 +69,9 @@ do_pgr_areaContraction(
         pgassert(data_edges_size != 0);
 
 /*****************put my code here****************/
-        std::vector<pgr_edge_t> edges(data_edges, data_edges + data_edges_size);
-        std::vector<int64_t> border(borderVertices,
-                borderVertices + borderVertices_size);
-        /*
-         * Extracting vertices of the graph
-         */
-        Identifiers<int64_t> remaining_vertices;
-        std::vector< pgrouting::CH_edge > shortcut_edges;
-
+        
         graphType gType = directed? DIRECTED: UNDIRECTED;
+        std::vector<pgr_edge_t> edges(data_edges, data_edges + data_edges_size);
 /************************************************/
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
