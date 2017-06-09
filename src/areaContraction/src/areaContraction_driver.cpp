@@ -70,10 +70,8 @@ do_pgr_areaContraction(
 
 /*****************put my code here****************/
         std::vector<pgr_edge_t> edges(data_edges, data_edges + data_edges_size);
-        std::vector<int64_t> border(
-                borderVertices,
+        std::vector<int64_t> border(borderVertices,
                 borderVertices + borderVertices_size);
-
         /*
          * Extracting vertices of the graph
          */
