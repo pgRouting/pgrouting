@@ -28,7 +28,6 @@ SET(LOCAL_FILES
     doc-contraction.queries
     doc-pgr_bdAstarCost.queries
     doc-pgr_dijkstra.queries
-    doc-pgr_dijkstraTRSP.queries
     doc-pgr_labelGraph.queries
     doc-pgr_withPointsCost.queries
     doc-trsp.queries
