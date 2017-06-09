@@ -97,8 +97,8 @@ UPDATE pointsOfInterest
 
 --RESTRICTIONS CREATE
 CREATE TABLE restrict (
-    id SERIAL,
-    restricted BIGINT[],
+    id BIGSERIAL,
+    restricted BIGINT[] ,
     cost FLOAT
 );
 
