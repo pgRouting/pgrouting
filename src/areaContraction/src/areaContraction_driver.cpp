@@ -39,20 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-
-
-
-
-/************************************************************
-  TEXT,
-    ANYARRAY,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
- ***********************************************************/
-
-
-
-
 void
 do_pgr_areaContraction(
         pgr_edge_t  *data_edges,
