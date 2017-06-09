@@ -41,7 +41,8 @@ SET(LOCAL_FILES
     doc-pgr_drivingDistance.queries
     doc-pgr_maxFlow.queries
     doc-pgr_withPointsKSP.queries
-    doc-pgr_areaContraction.queries
+	  doc-pgr_connectedComponentsV.queries
+	  doc-pgr_areaContraction.queries
     )
 
 foreach (f ${LOCAL_FILES})
