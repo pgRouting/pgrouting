@@ -1,12 +1,14 @@
 <map id="solve_vrp" name="solve_vrp">
-<area shape="rect" id="node2" href="$VRP_8c.html#a34cf4a89d85450fb66ae0556917b764b" title="conn" alt="" coords="189,5,240,32"/>
-<area shape="rect" id="node3" href="$VRP_8c.html#a061bc3cf09b8243bc29dbc162b826930" title="fetch_distance" alt="" coords="161,56,268,83"/>
-<area shape="rect" id="node4" href="$VRP_8c.html#a10e669980dbb80b9c047a8894c43612b" title="fetch_distance_columns" alt="" coords="133,107,296,133"/>
-<area shape="rect" id="node5" href="$VRP_8c.html#a8ee15ecf95934223e5b424a18f1fd13d" title="fetch_order" alt="" coords="171,157,258,184"/>
-<area shape="rect" id="node6" href="$VRP_8c.html#aadc1f40eb5fa0812b014efad10c62379" title="fetch_order_columns" alt="" coords="143,208,286,235"/>
-<area shape="rect" id="node7" href="$VRP_8c.html#a66f2dee6ce07fbb2159f8d86c0b62b08" title="fetch_vehicle" alt="" coords="165,259,264,285"/>
-<area shape="rect" id="node8" href="$VRP_8c.html#a0f32b6d4644d64dd25799db562364643" title="fetch_vehicle_columns" alt="" coords="137,309,292,336"/>
-<area shape="rect" id="node9" href="$VRP_8h.html#aba4308faaa83828151c954997cb39308" title="find_vrp_solution" alt="" coords="155,360,275,387"/>
-<area shape="rect" id="node10" href="$VRP_8c.html#a89545889dc88e835f385f06d011380c5" title="finish" alt="" coords="188,411,241,437"/>
-<area shape="rect" id="node11" href="$VRP_8c.html#aef732231f4ceb255e09db67b08eca8df" title="prepare_query" alt="" coords="163,461,267,488"/>
+<area shape="rect" id="node2" href="$VRP_8c.html#a34cf4a89d85450fb66ae0556917b764b" title="conn" alt="" coords="197,5,247,32"/>
+<area shape="rect" id="node3" href="$VRP_8c.html#a061bc3cf09b8243bc29dbc162b826930" title="fetch_distance" alt="" coords="169,56,275,83"/>
+<area shape="rect" id="node4" href="$VRP_8c.html#a10e669980dbb80b9c047a8894c43612b" title="fetch_distance_columns" alt="" coords="141,107,303,133"/>
+<area shape="rect" id="node5" href="$VRP_8c.html#a8ee15ecf95934223e5b424a18f1fd13d" title="fetch_order" alt="" coords="179,157,265,184"/>
+<area shape="rect" id="node6" href="$VRP_8c.html#aadc1f40eb5fa0812b014efad10c62379" title="fetch_order_columns" alt="" coords="151,208,293,235"/>
+<area shape="rect" id="node7" href="$VRP_8c.html#a66f2dee6ce07fbb2159f8d86c0b62b08" title="fetch_vehicle" alt="" coords="173,259,271,285"/>
+<area shape="rect" id="node8" href="$VRP_8c.html#a0f32b6d4644d64dd25799db562364643" title="fetch_vehicle_columns" alt="" coords="145,309,299,336"/>
+<area shape="rect" id="node9" href="$VRP_8h.html#aba4308faaa83828151c954997cb39308" title="find_vrp_solution" alt="" coords="162,360,282,387"/>
+<area shape="rect" id="node10" href="$VRP_8c.html#a89545889dc88e835f385f06d011380c5" title="finish" alt="" coords="195,411,249,437"/>
+<area shape="rect" id="node11" href="$VRP_8c.html#afa53f98a5857d42494887fcc296c4bfe" title="PG_FUNCTION_INFO_V1" alt="" coords="132,461,312,488"/>
+<area shape="rect" id="node12" href="$VRP_8c.html#aef732231f4ceb255e09db67b08eca8df" title="prepare_query" alt="" coords="170,512,274,539"/>
+<area shape="rect" id="node13" href="$VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393" title="vrp" alt="" coords="202,563,242,589"/>
 </map>

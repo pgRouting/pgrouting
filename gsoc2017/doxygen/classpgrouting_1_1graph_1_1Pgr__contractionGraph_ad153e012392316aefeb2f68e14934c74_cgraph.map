@@ -1,7 +1,0 @@
-<map id="pgrouting::graph::Pgr_contractionGraph::out_degree_to_vertex" name="pgrouting::graph::Pgr_contractionGraph::out_degree_to_vertex">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a21e3a6f0004402ad03d14351b2732243" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, T_V,\l T_E \&gt;::adjacent" alt="" coords="208,34,363,90"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#aa36f93dbcd678e3efb82f6cbe13fc080" title="pgrouting::graph::Pgr\l_base_graph::is_source" alt="" coords="411,9,571,50"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a54302370649f7d01b527ac20e9d0ac50" title="pgrouting::graph::Pgr\l_base_graph::is_target" alt="" coords="413,90,568,132"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a59860060fbba20a7a86ebc0f0fb1b2c8" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, T_V,\l T_E \&gt;::is_directed" alt="" coords="208,164,363,220"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a3b491eb93efec868932b07631298e5ce" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, T_V,\l T_E \&gt;::is_undirected" alt="" coords="208,244,363,300"/>
-</map>

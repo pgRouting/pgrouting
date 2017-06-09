@@ -1,10 +1,10 @@
 <map id="pgrouting::vrp::Initial_solution::do_while_foo" name="pgrouting::vrp::Initial_solution::do_while_foo">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="215,5,369,61"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html#a0a1293343a6e3215a27676c74678866e" title="Identifiers::empty" alt="" coords="231,85,353,112"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html#ac85cf83ff216a673caa44eeebf4078ef" title="Identifiers::front" alt="" coords="419,165,533,192"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="223,187,361,229"/>
-<area shape="rect" id="node6" href="$classIdentifiers.html#a8478c7e81c288e05c0eb7988869d5997" title="true ids() has element " alt="" coords="238,253,346,280"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889" title="pgrouting::vrp::Initial\l_solution::invariant" alt="" coords="222,305,362,346"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Solution.html#a371eb25be74472610011a18ac21c62fc" title="pgrouting::vrp::Solution\l::is_feasable" alt="" coords="214,370,370,411"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7" title="pgrouting::vrp::Fleet\l::release_truck" alt="" coords="223,435,361,477"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="213,5,367,61"/>
+<area shape="rect" id="node3" href="$classIdentifiers.html#a0a1293343a6e3215a27676c74678866e" title="Identifiers::empty" alt="" coords="229,85,351,112"/>
+<area shape="rect" id="node4" href="$classIdentifiers.html#ac85cf83ff216a673caa44eeebf4078ef" title="Identifiers::front" alt="" coords="416,165,529,192"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="221,187,359,229"/>
+<area shape="rect" id="node6" href="$classIdentifiers.html#a8478c7e81c288e05c0eb7988869d5997" title="true ids() has element " alt="" coords="236,253,344,280"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889" title="pgrouting::vrp::Initial\l_solution::invariant" alt="" coords="220,305,360,346"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Solution.html#a371eb25be74472610011a18ac21c62fc" title="pgrouting::vrp::Solution\l::is_feasable" alt="" coords="212,370,368,411"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7" title="pgrouting::vrp::Fleet\l::release_truck" alt="" coords="221,435,359,477"/>
 </map>

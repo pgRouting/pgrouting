@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Flow - Family of functions &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>Flow - Family of functions &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Stable proposed Functions" href="proposed.html" />
     <link rel="next" title="pgr_maxFlow - Proposed" href="pgr_maxFlow.html" />
     <link rel="prev" title="pgr_contractGraph - Proposed" href="pgr_contractGraph.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -161,13 +158,13 @@
   <div class="section" id="flow-family-of-functions">
 <span id="maxflow"></span><h1>Flow - Family of functions<a class="headerlink" href="#flow-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><span class="std std-ref">pgr_maxFlow - Proposed</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
-<li><a class="reference internal" href="pgr_boykovKolmogorov.html#pgr-boykovkolmogorov"><span class="std std-ref">pgr_boykovKolmogorov - Proposed</span></a> - Boykov and Kolmogorov with details of flow on edges.</li>
-<li><a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><span class="std std-ref">pgr_edmondsKarp - Proposed</span></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
-<li><a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span class="std std-ref">pgr_pushRelabel - Proposed</span></a> - Push and relabel algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><span>pgr_maxFlow - Proposed</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
+<li><a class="reference internal" href="pgr_boykovKolmogorov.html#pgr-boykovkolmogorov"><span>pgr_boykovKolmogorov - Proposed</span></a> - Boykov and Kolmogorov with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><span>pgr_edmondsKarp - Proposed</span></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span>pgr_pushRelabel - Proposed</span></a> - Push and relabel algorithm with details of flow on edges.</li>
 <li>Applications<ul>
-<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><span class="std std-ref">pgr_edgeDisjointPaths - Proposed</span></a> - Calculates edge disjoint paths between two groups of vertices.</li>
-<li><a class="reference internal" href="pgr_maxCardinalityMatch.html#pgr-maxcardinalitymatch"><span class="std std-ref">pgr_maxCardinalityMatch - Proposed</span></a> - Calculates a maximum cardinality matching in a graph.</li>
+<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><span>pgr_edgeDisjointPaths - Proposed</span></a> - Calculates edge disjoint paths between two groups of vertices.</li>
+<li><a class="reference internal" href="pgr_maxCardinalityMatch.html#pgr-maxcardinalitymatch"><span>pgr_maxCardinalityMatch - Proposed</span></a> - Calculates a maximum cardinality matching in a graph.</li>
 </ul>
 </li>
 </ul>
@@ -211,13 +208,13 @@
 </ul>
 </li>
 <li>Creates a <strong>super source</strong> and edges to all the source(s), and a <strong>super target</strong> and the edges from all the targets(s).</li>
-<li>The maximum flow through the graph is guaranteed to be the value returned by <a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><span class="std std-ref">pgr_maxFlow</span></a> when executed with the same parameters and can be calculated:<ul>
+<li>The maximum flow through the graph is guaranteed to be the value returned by <a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><span>pgr_maxFlow</span></a> when executed with the same parameters and can be calculated:<ul>
 <li>By aggregation of the outgoing flow from the sources</li>
 <li>By aggregation of the incoming flow to the targets</li>
 </ul>
 </li>
 </ul>
-<p><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><span class="std std-ref">pgr_maxFlow</span></a>  is the  maximum Flow and that maximum is guaranteed to be the same on the functions <a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span class="std std-ref">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><span class="std std-ref">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html#pgr-boykovkolmogorov"><span class="std std-ref">pgr_boykovKolmogorov</span></a>, but the actual flow through each edge may vary.</p>
+<p><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><span>pgr_maxFlow</span></a>  is the  maximum Flow and that maximum is guaranteed to be the same on the functions <a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span>pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><span>pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html#pgr-boykovkolmogorov"><span>pgr_boykovKolmogorov</span></a>, but the actual flow through each edge may vary.</p>
 </div>
 <div class="section" id="problem-definition">
 <h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
@@ -287,8 +284,8 @@ Given the following query:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

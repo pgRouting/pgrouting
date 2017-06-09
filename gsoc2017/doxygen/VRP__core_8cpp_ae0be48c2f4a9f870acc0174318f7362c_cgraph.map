@@ -1,6 +1,6 @@
 <map id="loadVehicles" name="loadVehicles">
-<area shape="rect" id="node2" href="$classCVRPSolver.html#a572e5a68c5455f32909149d1bbc4ef0c" title="CVRPSolver::addVehicle" alt="" coords="161,5,330,32"/>
-<area shape="rect" id="node3" href="$classCVehicleInfo.html#a5ecefb8b9bc7ccb502933b2c0b8f8b7b" title="CVehicleInfo::setCapacity" alt="" coords="158,56,333,83"/>
-<area shape="rect" id="node4" href="$classCVehicleInfo.html#aef8aeb472e2cd2ce0647c590fc458c2c" title="CVehicleInfo::setCostPerKM" alt="" coords="150,107,341,133"/>
-<area shape="rect" id="node5" href="$classCVehicleInfo.html#a31c0079ef21b7db8333a0b3944183e58" title="CVehicleInfo::setId" alt="" coords="178,157,313,184"/>
+<area shape="rect" id="node2" href="$classCVRPSolver.html#a572e5a68c5455f32909149d1bbc4ef0c" title="CVRPSolver::addVehicle" alt="" coords="160,5,329,32"/>
+<area shape="rect" id="node3" href="$classCVehicleInfo.html#a5ecefb8b9bc7ccb502933b2c0b8f8b7b" title="CVehicleInfo::setCapacity" alt="" coords="157,56,332,83"/>
+<area shape="rect" id="node4" href="$classCVehicleInfo.html#aef8aeb472e2cd2ce0647c590fc458c2c" title="CVehicleInfo::setCostPerKM" alt="" coords="149,107,340,133"/>
+<area shape="rect" id="node5" href="$classCVehicleInfo.html#a31c0079ef21b7db8333a0b3944183e58" title="CVehicleInfo::setId" alt="" coords="177,157,312,184"/>
 </map>

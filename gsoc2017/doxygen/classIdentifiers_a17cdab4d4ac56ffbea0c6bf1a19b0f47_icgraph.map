@@ -1,16 +1,16 @@
 <map id="Identifiers::size" name="Identifiers::size">
-<area shape="rect" id="node2" href="$contractGraph__driver_8h.html#a20a03b3811bd108cfc729e9e22a92591" title="do_pgr_contractGraph" alt="" coords="435,88,586,114"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#aef91793bf9d9b4e12b2b648268f64545" title="pgrouting::contraction\l::Pgr_linear::doContraction" alt="" coords="187,47,365,88"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#af6627aabaefbb684f499a2a400cf3639" title="pgrouting::graph::Pgr\l_contractionGraph::get_ids" alt="" coords="187,112,365,154"/>
-<area shape="rect" id="node5" href="$contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44" title="get_postgres_result" alt="" coords="208,178,344,205"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="207,230,345,271"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1CH__vertex.html#a5b4ea7e85837a910dbaac111b454eddc" title="pgrouting::CH_vertex\l::has_contracted_vertices" alt="" coords="190,295,362,336"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ad86d555801d7bcdc29209f75dae1d83f" title="true when v is a dead end " alt="" coords="183,360,369,402"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a593081fe63e6d9e62a7368ae6ed0c1d1" title="pgrouting::contraction\l::Pgr_linear::is_linear" alt="" coords="203,426,349,467"/>
-<area shape="rect" id="node10" href="$namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="190,492,362,518"/>
-<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a29fa1db0481ca446927ff0cbb8356c04" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size" alt="" coords="191,543,361,584"/>
-<area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__pickDeliver.html#a8d961a1e70a883f0cd6a07a6a205e265" title="pgrouting::vrp::pickdeliver\l::Vehicle_pickDeliver::orders_size" alt="" coords="166,608,386,650"/>
-<area shape="rect" id="node13" href="$classpgrouting_1_1vrp_1_1Optimize.html#a7f9bae1385b3d627c3d2ef9b9873f217" title="pgrouting::vrp::Optimize\l::sort_by_id" alt="" coords="195,674,357,715"/>
-<area shape="rect" id="node14" href="$classpgrouting_1_1vrp_1_1Optimize.html#a29de55e95d9d5b588e4691ed9dde085b" title="pgrouting::vrp::Optimize\l::sort_by_size" alt="" coords="195,739,357,780"/>
-<area shape="rect" id="node15" href="$classpgrouting_1_1vrp_1_1Optimize.html#a39173d526079577d40c59371bcfcc680" title="pgrouting::vrp::Optimize\l::swap_worse" alt="" coords="195,804,357,846"/>
+<area shape="rect" id="node2" href="$contractGraph__driver_8h.html#a20a03b3811bd108cfc729e9e22a92591" title="do_pgr_contractGraph" alt="" coords="445,35,596,62"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#aef91793bf9d9b4e12b2b648268f64545" title="pgrouting::contraction\l::Pgr_linear::doContraction" alt="" coords="432,305,609,346"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#af6627aabaefbb684f499a2a400cf3639" title="pgrouting::graph::Pgr\l_contractionGraph::get_ids" alt="" coords="185,112,363,153"/>
+<area shape="rect" id="node5" href="$contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44" title="get_postgres_result" alt="" coords="206,60,342,87"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="205,242,343,284"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1CH__vertex.html#a5b4ea7e85837a910dbaac111b454eddc" title="pgrouting::CH_vertex\l::has_contracted_vertices" alt="" coords="188,308,360,349"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ad86d555801d7bcdc29209f75dae1d83f" title="true when v is a dead end " alt="" coords="181,373,367,414"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a593081fe63e6d9e62a7368ae6ed0c1d1" title="pgrouting::contraction\l::Pgr_linear::is_linear" alt="" coords="201,177,347,218"/>
+<area shape="rect" id="node10" href="$namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="188,490,360,516"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a29fa1db0481ca446927ff0cbb8356c04" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size" alt="" coords="189,541,359,582"/>
+<area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__pickDeliver.html#a8d961a1e70a883f0cd6a07a6a205e265" title="pgrouting::vrp::pickdeliver\l::Vehicle_pickDeliver::orders_size" alt="" coords="164,606,384,648"/>
+<area shape="rect" id="node13" href="$classpgrouting_1_1vrp_1_1Optimize.html#a7f9bae1385b3d627c3d2ef9b9873f217" title="pgrouting::vrp::Optimize\l::sort_by_id" alt="" coords="193,672,355,713"/>
+<area shape="rect" id="node14" href="$classpgrouting_1_1vrp_1_1Optimize.html#a29de55e95d9d5b588e4691ed9dde085b" title="pgrouting::vrp::Optimize\l::sort_by_size" alt="" coords="193,737,355,778"/>
+<area shape="rect" id="node15" href="$classpgrouting_1_1vrp_1_1Optimize.html#a39173d526079577d40c59371bcfcc680" title="pgrouting::vrp::Optimize\l::swap_worse" alt="" coords="193,802,355,844"/>
 </map>

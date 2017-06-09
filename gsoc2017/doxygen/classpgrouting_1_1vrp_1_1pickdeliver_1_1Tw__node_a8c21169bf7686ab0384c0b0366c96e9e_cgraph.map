@@ -1,4 +1,11 @@
 <map id="pgrouting::vrp::pickdeliver::Tw_node::is_on_time" name="pgrouting::vrp::pickdeliver::Tw_node::is_on_time">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a91fcc0cfd29baa4cb082f0d7c048dd72" title="True when arrivalTime is before it opens. " alt="" coords="224,5,403,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a6d6a76cdf4a0278ea93113c6aaf316f6" title="True when arrivalTime is after it closes. " alt="" coords="228,70,399,111"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#ace042d562b0ae639a4f9c3e136ec4a13" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="253,5,444,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a4949864e804cd257687a20a3fbbe708a" title="@ { " alt="" coords="255,71,443,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#af0be004dd2ac4b956051b2794de18ffa" title="pgrouting::vrp::pickdeliver\l::Tw_node::is_compatible_IJ" alt="" coords="254,136,443,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a91fcc0cfd29baa4cb082f0d7c048dd72" title="True when arrivalTime is before it opens. " alt="" coords="259,201,438,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a6d6a76cdf4a0278ea93113c6aaf316f6" title="True when arrivalTime is after it closes. " alt="" coords="263,267,434,308"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a21730d17f4a963b384fd2b0419379794" title="pgrouting::vrp::pickdeliver\l::Tw_node::is_partially\l_compatible_IJ" alt="" coords="263,331,434,387"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a9e6b24ae59d37c6a2f954914f31cc45a" title="pgrouting::vrp::pickdeliver\l::Tw_node::is_partially\l_waitTime_compatible_IJ" alt="" coords="263,411,434,467"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a5086f58256bbc3fb064d44025d4855ab" title="pgrouting::vrp::pickdeliver\l::Tw_node::is_tight_compatible_IJ" alt="" coords="238,491,459,532"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a9b10947d8b3852c6ac326a4ef0e7e14f" title="pgrouting::vrp::pickdeliver\l::Tw_node::is_waitTime_compatible_IJ" alt="" coords="224,556,473,597"/>
 </map>

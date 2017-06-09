@@ -1,8 +1,8 @@
 <map id="pgrouting::vrp::pickdeliver::PD_problem" name="pgrouting::vrp::pickdeliver::PD_problem">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Fleet.html" title="pgrouting::vrp::pickdeliver\l::Fleet" alt="" coords="224,5,395,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html" title="pgrouting::vrp::pickdeliver\l::Order" alt="" coords="224,70,395,111"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__Orders.html" title="pgrouting::vrp::pickdeliver\l::PD_Orders" alt="" coords="224,135,395,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Pgr__pickDeliver.html" title="pgrouting::vrp::pickdeliver\l::Pgr_pickDeliver" alt="" coords="224,201,395,242"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html" title="pgrouting::vrp::pickdeliver\l::Solution" alt="" coords="224,266,395,307"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html" title="Vehicle with time windows. " alt="" coords="224,331,395,373"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Fleet.html" title="pgrouting::vrp::pickdeliver\l::Fleet" alt="" coords="224,5,395,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html" title="pgrouting::vrp::pickdeliver\l::Order" alt="" coords="224,71,395,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__Orders.html" title="pgrouting::vrp::pickdeliver\l::PD_Orders" alt="" coords="224,136,395,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Pgr__pickDeliver.html" title="pgrouting::vrp::pickdeliver\l::Pgr_pickDeliver" alt="" coords="224,201,395,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html" title="pgrouting::vrp::pickdeliver\l::Solution" alt="" coords="224,267,395,308"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html" title="Vehicle with time windows. " alt="" coords="224,332,395,373"/>
 </map>

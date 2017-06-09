@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Vehicle Routing Functions Category: &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>Vehicle Routing Functions Category: &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Stable proposed Functions" href="proposed.html" />
     <link rel="next" title="__pgr_pickDeliver" href="pgr_pickDeliver.html" />
     <link rel="prev" title="pgr_labelGraph - Proposed" href="pgr_labelGraph.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -151,7 +148,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_pickDeliver.html" title="Next Chapter: __pgr_pickDeliver"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">__pgr_pickDeliver &raquo;</span>
+    <a href="pgr_pickDeliver.html" title="Next Chapter: __pgr_pickDeliver"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">__pgr_pickDel... &raquo;</span>
     </a>
   </li>
               
@@ -205,8 +202,8 @@
 </div>
 <p class="rubric">Pickup and delivery problem</p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_pickDeliver.html#pgr-pickdeliver"><span class="std std-ref">__pgr_pickDeliver</span></a> - Pickup &amp; Delivery using a Cost Matrix</li>
-<li><a class="reference internal" href="pgr_pickDeliverEuclidean.html#pgr-pickdelivereuclidean"><span class="std std-ref">__pgr_pickDeliverEuclidean:</span></a> - Pickup &amp; Delivery with Euclidean distances</li>
+<li><a class="reference internal" href="pgr_pickDeliver.html#pgr-pickdeliver"><span>__pgr_pickDeliver</span></a> - Pickup &amp; Delivery using a Cost Matrix</li>
+<li><a class="reference internal" href="pgr_pickDeliverEuclidean.html#pgr-pickdelivereuclidean"><span>__pgr_pickDeliverEuclidean:</span></a> - Pickup &amp; Delivery with Euclidean distances</li>
 </ul>
 <p class="rubric">Experimental functions</p>
 <div class="admonition warning">
@@ -232,8 +229,8 @@
 </ul>
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_gsoc_vrppdtw.html#pgr-gsocvrppdtw"><span class="std std-ref">pgr_gsoc_vrppdtw - Proposed</span></a> - VRP Pickup &amp; Delivery (Euclidean)</li>
-<li><a class="reference internal" href="pgr_vrpOneDepot.html#pgr-vrp-basic"><span class="std std-ref">pgr_vrpOneDepot - Proposed</span></a> - VRP One Depot</li>
+<li><a class="reference internal" href="pgr_gsoc_vrppdtw.html#pgr-gsocvrppdtw"><span>pgr_gsoc_vrppdtw - Proposed</span></a> - VRP Pickup &amp; Delivery (Euclidean)</li>
+<li><a class="reference internal" href="pgr_vrpOneDepot.html#pgr-vrp-basic"><span>pgr_vrpOneDepot - Proposed</span></a> - VRP One Depot</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -306,7 +303,7 @@
 <div class="section" id="time-handling">
 <h2>Time handling<a class="headerlink" href="#time-handling" title="Permalink to this headline">¶</a></h2>
 <p><strong>The times are relative to 0</strong></p>
-<p>Suppose that a vehicle’s driver starts the shift at 9:00 am and ends the shift at 4:30 pm
+<p>Suppose that a vehicle&#8217;s driver starts the shift at 9:00 am and ends the shift at 4:30 pm
 and the service time duration is 10 minutes with 30 seconds.</p>
 <p>All time units have to be converted</p>
 <table border="1" class="docutils">
@@ -397,18 +394,18 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 <h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">orders_sql</p>
 <ul class="simple">
-<li><a class="reference internal" href="#pd-matrix-sql-start"><span class="std std-ref">Description of the orders_sql query</span></a></li>
-<li><a class="reference internal" href="#pd-euclidean-sql-start"><span class="std std-ref">Description of the orders_sql query for Euclidean version</span></a></li>
+<li><a class="reference internal" href="#pd-matrix-sql-start"><span>Description of the orders_sql query</span></a></li>
+<li><a class="reference internal" href="#pd-euclidean-sql-start"><span>Description of the orders_sql query for Euclidean version</span></a></li>
 </ul>
 <p class="rubric">vehicles_sql</p>
 <ul class="simple">
-<li><a class="reference internal" href="#pd-vehicle-sql-start"><span class="std std-ref">Description of the vehicles_sql query</span></a></li>
-<li><a class="reference internal" href="#pd-vehicle-sql-euclidean-start"><span class="std std-ref">Description of the vehicles_sql query for Euclidean version</span></a></li>
+<li><a class="reference internal" href="#pd-vehicle-sql-start"><span>Description of the vehicles_sql query</span></a></li>
+<li><a class="reference internal" href="#pd-vehicle-sql-euclidean-start"><span>Description of the vehicles_sql query for Euclidean version</span></a></li>
 </ul>
 <p class="rubric">return columns</p>
 <ul class="simple">
-<li><a class="reference internal" href="#return-vrp-matrix-start"><span class="std std-ref">Description of return columns</span></a></li>
-<li><a class="reference internal" href="#return-vrp-euclidean-start"><span class="std std-ref">Description of the return columns for Euclidean version</span></a></li>
+<li><a class="reference internal" href="#return-vrp-matrix-start"><span>Description of return columns</span></a></li>
+<li><a class="reference internal" href="#return-vrp-euclidean-start"><span>Description of the return columns for Euclidean version</span></a></li>
 </ul>
 <div class="section" id="description-of-the-orders-sql-query">
 <span id="pd-matrix-sql-start"></span><h3>Description of the orders_sql query<a class="headerlink" href="#description-of-the-orders-sql-query" title="Permalink to this headline">¶</a></h3>
@@ -429,27 +426,27 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the pick-delivery order pair.</td>
 </tr>
 <tr class="row-odd"><td><strong>demand</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Number of units in the order</td>
 </tr>
 <tr class="row-even"><td><strong>p_node_id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The node identifier of the pickup location, must match a node in the matrix table.</td>
 </tr>
 <tr class="row-odd"><td><strong>p_open</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The time, relative to 0, when the pickup location opens.</td>
 </tr>
 <tr class="row-even"><td><strong>p_close</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The time, relative to 0, when the pickup location closes.</td>
 </tr>
 <tr class="row-odd"><td><strong>d_service</strong></td>
@@ -459,17 +456,17 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 </tr>
 <tr class="row-even"><td><strong>d_node_id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Node identifier of the pickup location, must match a node in the matrix table.</td>
 </tr>
 <tr class="row-odd"><td><strong>d_open</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The time, relative to 0, when the delivery location opens.</td>
 </tr>
 <tr class="row-even"><td><strong>d_close</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The time, relative to 0, when the delivery location closes.</td>
 </tr>
 <tr class="row-odd"><td><strong>d_service</strong></td>
@@ -510,32 +507,32 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the pick-delivery order pair.</td>
 </tr>
 <tr class="row-odd"><td><strong>demand</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Number of units in the order</td>
 </tr>
 <tr class="row-even"><td><strong>p_x</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td><span class="math">\(x\)</span> value of the pick up location</td>
 </tr>
 <tr class="row-odd"><td><strong>p_y</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td><span class="math">\(y\)</span> value of the pick up location</td>
 </tr>
 <tr class="row-even"><td><strong>p_open</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The time, relative to 0, when the pickup location opens.</td>
 </tr>
 <tr class="row-odd"><td><strong>p_close</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The time, relative to 0, when the pickup location closes.</td>
 </tr>
 <tr class="row-even"><td><strong>d_service</strong></td>
@@ -545,22 +542,22 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 </tr>
 <tr class="row-odd"><td><strong>d_x</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td><span class="math">\(x\)</span> value of the delivery location</td>
 </tr>
 <tr class="row-even"><td><strong>d_y</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td><span class="math">\(y\)</span> value of the delivery location</td>
 </tr>
 <tr class="row-odd"><td><strong>d_open</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The time, relative to 0, when the delivery location opens.</td>
 </tr>
 <tr class="row-even"><td><strong>d_close</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The time, relative to 0, when the delivery location closes.</td>
 </tr>
 <tr class="row-odd"><td><strong>d_service</strong></td>
@@ -619,12 +616,12 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 <tbody valign="top">
 <tr class="row-even"><td><strong>orders_sql</strong></td>
 <td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Orders SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>vehicles_sql</strong></td>
 <td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Vehciles SQL query as described above.</td>
 </tr>
 <tr class="row-even"><td><strong>factor</strong></td>
@@ -659,7 +656,7 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-result-todo-disussion-euclidean-matrix">
 <span id="return-vrp-matrix-start"></span><h3>Description of the result (TODO Disussion: Euclidean &amp; Matrix)<a class="headerlink" href="#description-of-the-result-todo-disussion-euclidean-matrix" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>RETURNS SET OF
+<div class="highlight-none"><div class="highlight"><pre>RETURNS SET OF
     (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
         travel_time, arrival_time, wait_time, service_time,  departure_time)
     UNION
@@ -819,7 +816,7 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 </div>
 <div class="section" id="return-vrp-euclidean-start">
 <span id="id1"></span><h3>Description of the result (TODO Disussion: Euclidean &amp; Matrix)<a class="headerlink" href="#return-vrp-euclidean-start" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>RETURNS SET OF
+<div class="highlight-none"><div class="highlight"><pre>RETURNS SET OF
     (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
         travel_time, arrival_time, wait_time, service_time,  departure_time)
     UNION
@@ -992,12 +989,12 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
-<li>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
+<li>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span>Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -1015,8 +1012,8 @@ and the service time duration is 10 minutes with 30 seconds.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

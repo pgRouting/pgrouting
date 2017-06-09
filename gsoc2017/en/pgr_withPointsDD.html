@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_withPointsDD - Proposed &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_withPointsDD - Proposed &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="withPoints - Family of functions" href="withPoints-family.html" />
     <link rel="next" title="Cost - Category" href="cost-category.html" />
     <link rel="prev" title="pgr_withPointsKSP - Proposed" href="pgr_withPointsKSP.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -209,7 +206,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
 pgr_withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details)
 pgr_withPointsDD(edges_sql, points_sql, start_vids, distance, directed, driving_side, details, equicost)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
@@ -229,7 +226,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
@@ -242,24 +239,24 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">0.4</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">0.6</span>
-   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">1.6</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">3.6</span>
-   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsDD(
+    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+    &#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;,
+    -1, 3.8);
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |   -1 |   -1 |    0 |        0
+   2 |    1 |    1 |  0.4 |      0.4
+   3 |    2 |    1 |  0.6 |      0.6
+   4 |    5 |    4 |  0.3 |      1.6
+   5 |    6 |    8 |    1 |      2.6
+   6 |    8 |    7 |    1 |      2.6
+   7 |   10 |   10 |    1 |      2.6
+   8 |    7 |    6 |  0.3 |      3.6
+   9 |    9 |    9 |    1 |      3.6
+  10 |   11 |   11 |    1 |      3.6
+  11 |   13 |   14 |    1 |      3.6
+(11 rows)
 
 </pre></div>
 </div>
@@ -267,7 +264,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <div class="section" id="driving-distance-from-a-single-point">
 <span id="index-1"></span><h3>Driving distance from a single point<a class="headerlink" href="#driving-distance-from-a-single-point" title="Permalink to this headline">¶</a></h3>
 <p>Finds the driving distance depending on the optional parameters setup.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
@@ -280,23 +277,23 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span>
-    <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
-    <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">0.4</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.4</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">2.1</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">2.4</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.4</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.4</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.4</span>
-<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsDD(
+    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+    &#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;,
+    -1, 3.8,
+    driving_side := &#39;r&#39;,
+    details := true);
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |   -1 |   -1 |    0 |        0
+   2 |    1 |    1 |  0.4 |      0.4
+   3 |    2 |    1 |    1 |      1.4
+   4 |   -6 |    4 |  0.7 |      2.1
+   5 |    5 |    4 |  0.3 |      2.4
+   6 |    6 |    8 |    1 |      3.4
+   7 |    8 |    7 |    1 |      3.4
+   8 |   10 |   10 |    1 |      3.4
+(8 rows)
 
 </pre></div>
 </div>
@@ -304,7 +301,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <div class="section" id="driving-distance-from-many-starting-points">
 <span id="index-2"></span><h3>Driving distance from many starting points<a class="headerlink" href="#driving-distance-from-many-starting-points" title="Permalink to this headline">¶</a></h3>
 <p>Finds the driving distance depending on the optional parameters setup.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
     directed:=true, driving_side:=&#39;b&#39;, details:=false, equicost:=false)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
@@ -340,25 +337,25 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -367,7 +364,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -419,7 +416,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </tr>
 <tr class="row-odd"><td><strong>edge_id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>Identifier of the “closest” edge to the point.</td>
+<td>Identifier of the &#8220;closest&#8221; edge to the point.</td>
 </tr>
 <tr class="row-even"><td><strong>fraction</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
@@ -427,11 +424,11 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </tr>
 <tr class="row-odd"><td><strong>side</strong></td>
 <td><code class="docutils literal"><span class="pre">CHAR</span></code></td>
-<td><p class="first">(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the point is:</p>
+<td><p class="first">(optional) Value in [&#8216;b&#8217;, &#8216;r&#8217;, &#8216;l&#8217;, NULL] indicating if the point is:</p>
 <ul class="last simple">
 <li>In the right, left of the edge or</li>
-<li>If it doesn’t matter with ‘b’ or NULL.</li>
-<li>If column not present ‘b’ is considered.</li>
+<li>If it doesn&#8217;t matter with &#8216;b&#8217; or NULL.</li>
+<li>If column not present &#8216;b&#8217; is considered.</li>
 </ul>
 </td>
 </tr>
@@ -487,11 +484,11 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <tr class="row-odd"><td><strong>driving_side</strong></td>
 <td><code class="docutils literal"><span class="pre">CHAR</span></code></td>
 <td><dl class="first last docutils">
-<dt>(optional). Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the driving side is:</dt>
+<dt>(optional). Value in [&#8216;b&#8217;, &#8216;r&#8217;, &#8216;l&#8217;, NULL] indicating if the driving side is:</dt>
 <dd><ul class="first last simple">
 <li>In the right or left or</li>
-<li>If it doesn’t matter with ‘b’ or NULL.</li>
-<li>If column not present ‘b’ is considered.</li>
+<li>If it doesn&#8217;t matter with &#8216;b&#8217; or NULL.</li>
+<li>If column not present &#8216;b&#8217; is considered.</li>
 </ul>
 </dd>
 </dl>
@@ -572,7 +569,7 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
 <h2>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Graph 1: Directed, with cost and reverse cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span>Graph 1: Directed, with cost and reverse cost</span></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -581,29 +578,29 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span>
-    <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
-    <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">0.6</span>
-   <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">1.3</span>
-   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">1.6</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">3.2</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">3.3</span>
-  <span class="mi">11</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">3.6</span>
-  <span class="mi">12</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-  <span class="mi">13</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-  <span class="mi">14</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-<span class="p">(</span><span class="mi">14</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsDD(
+    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+    &#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;,
+    -1, 3.8,
+    driving_side := &#39;l&#39;,
+    details := true);
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |   -1 |   -1 |    0 |        0
+   2 |    2 |    1 |  0.6 |      0.6
+   3 |   -6 |    4 |  0.7 |      1.3
+   4 |    5 |    4 |  0.3 |      1.6
+   5 |    1 |    1 |    1 |      1.6
+   6 |    6 |    8 |    1 |      2.6
+   7 |    8 |    7 |    1 |      2.6
+   8 |   10 |   10 |    1 |      2.6
+   9 |   -3 |   12 |  0.6 |      3.2
+  10 |   -4 |    6 |  0.7 |      3.3
+  11 |    7 |    6 |  0.3 |      3.6
+  12 |    9 |    9 |    1 |      3.6
+  13 |   11 |   11 |    1 |      3.6
+  14 |   13 |   14 |    1 |      3.6
+(14 rows)
 
 </pre></div>
 </div>
@@ -615,33 +612,33 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span>
-    <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span>
-    <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">0.4</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">0.6</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">1.3</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">1.6</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">3.2</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">3.3</span>
-  <span class="mi">11</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">3.6</span>
-  <span class="mi">12</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-  <span class="mi">13</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-  <span class="mi">14</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
-<span class="p">(</span><span class="mi">14</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsDD(
+    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+    &#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;,
+    -1, 3.8,
+    driving_side := &#39;b&#39;,
+    details := true);
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |   -1 |   -1 |    0 |        0
+   2 |    1 |    1 |  0.4 |      0.4
+   3 |    2 |    1 |  0.6 |      0.6
+   4 |   -6 |    4 |  0.7 |      1.3
+   5 |    5 |    4 |  0.3 |      1.6
+   6 |    6 |    8 |    1 |      2.6
+   7 |    8 |    7 |    1 |      2.6
+   8 |   10 |   10 |    1 |      2.6
+   9 |   -3 |   12 |  0.6 |      3.2
+  10 |   -4 |    6 |  0.7 |      3.3
+  11 |    7 |    6 |  0.3 |      3.6
+  12 |    9 |    9 |    1 |      3.6
+  13 |   11 |   11 |    1 |      3.6
+  14 |   13 |   14 |    1 |      3.6
+(14 rows)
 
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</p>
+<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>Proposed in version 2.2</li>
@@ -650,14 +647,14 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><span class="std std-ref">pgr_drivingDistance</span></a> - Driving distance using dijkstra.</li>
-<li><a class="reference internal" href="pgr_alphaShape.html#pgr-alphashape"><span class="std std-ref">pgr_alphaShape</span></a> - Alpha shape computation.</li>
-<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><span class="std std-ref">pgr_pointsAsPolygon</span></a> - Polygon around set of points.</li>
+<li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><span>pgr_drivingDistance</span></a> - Driving distance using dijkstra.</li>
+<li><a class="reference internal" href="pgr_alphaShape.html#pgr-alphashape"><span>pgr_alphaShape</span></a> - Alpha shape computation.</li>
+<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><span>pgr_pointsAsPolygon</span></a> - Polygon around set of points.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -675,8 +672,8 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

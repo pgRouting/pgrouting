@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_eucledianTSP &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_eucledianTSP &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Traveling Sales Person - Family of functions" href="TSP-family.html" />
     <link rel="next" title="Driving Distance - Category" href="drivingDistance-category.html" />
     <link rel="prev" title="pgr_TSP" href="pgr_TSP.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -188,7 +185,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql)
+<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
 pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
     max_processing_time,
@@ -203,7 +200,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql)
+<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
@@ -217,7 +214,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </table>
 <p>Because the documentation examples are auto generated and tested for non changing results,
 and the default is to have random execution, the example is wrapping the actual call.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>WITH
+<div class="highlight-python"><div class="highlight"><pre>WITH
 query AS (
     SELECT * FROM pgr_eucledianTSP(
         $$
@@ -236,7 +233,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 18;
 </div>
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql,
+<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
     max_processing_time,
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
@@ -246,7 +243,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <p class="rubric">Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT* from pgr_eucledianTSP(
+<div class="highlight-python"><div class="highlight"><pre>SELECT* from pgr_eucledianTSP(
     $$
     SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
     $$,
@@ -312,7 +309,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tbody>
 </table>
 <p>When the value of <strong>id</strong> is not given then the coordinates will receive an <strong>id</strong> starting from 1, in the order given.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-python"><div class="highlight"><pre>
 Description Of the Control parameters
 .....................................................................
 
@@ -340,7 +337,7 @@ Parameter                       Type         Default       Description
 
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-python"><div class="highlight"><pre>
 Description of the return columns
 ...............................................................................
 
@@ -373,7 +370,7 @@ Column           Type              Description
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SET client_min_messages TO DEBUG1;
+<div class="highlight-python"><div class="highlight"><pre>SET client_min_messages TO DEBUG1;
 SET
 SELECT* from pgr_eucledianTSP(
     $$
@@ -415,7 +412,7 @@ Best cost reached = 18.7796
 
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</p>
+<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>New in version 2.3.0</li>
@@ -424,7 +421,7 @@ Best cost reached = 18.7796
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="TSP-family.html#tsp"><span class="std std-ref">Traveling Sales Person - Family of functions</span></a></li>
+<li><a class="reference internal" href="TSP-family.html#tsp"><span>Traveling Sales Person - Family of functions</span></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">http://en.wikipedia.org/wiki/Traveling_salesman_problem</a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a></li>
 </ul>
@@ -444,8 +441,8 @@ Best cost reached = 18.7796
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

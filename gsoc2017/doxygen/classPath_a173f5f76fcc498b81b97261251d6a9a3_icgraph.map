@@ -1,6 +1,8 @@
 <map id="Path::size" name="Path::size">
-<area shape="rect" id="node2" href="$classPath.html#adf67930d9eaea5c23c9a5262fc846a73" title="Path::isEqual" alt="" coords="159,5,259,32"/>
-<area shape="rect" id="node3" href="$classPgr__ksp_1_1compPaths.html#a027c9680017de3c89b3c530f15a5be1a" title="Pgr_ksp::compPaths\l::operator()" alt="" coords="137,57,281,98"/>
-<area shape="rect" id="node4" href="$dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9" title="pgr_dijkstraViaVertex" alt="" coords="136,123,283,149"/>
-<area shape="rect" id="node5" href="$classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac" title="Pgr_ksp::Yen" alt="" coords="159,173,260,200"/>
+<area shape="rect" id="node2" href="$areaContraction__driver_8h.html#a9e297b457ae4f2fd14accbe6e42c0be0" title="do_pgr_areaContraction" alt="" coords="135,5,295,32"/>
+<area shape="rect" id="node3" href="$classPgr__ksp.html#a1e5476d1b0d125fef8f3e5aa634b5782" title="Performs the next cycle of the algorithm. " alt="" coords="137,56,292,83"/>
+<area shape="rect" id="node4" href="$classPgr__ksp_1_1compPaths.html#a027c9680017de3c89b3c530f15a5be1a" title="Pgr_ksp::compPaths\l::operator()" alt="" coords="343,74,487,115"/>
+<area shape="rect" id="node5" href="$classPath.html#adf67930d9eaea5c23c9a5262fc846a73" title="Path::isEqual" alt="" coords="165,157,265,184"/>
+<area shape="rect" id="node6" href="$dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9" title="pgr_dijkstraViaVertex" alt="" coords="141,208,288,235"/>
+<area shape="rect" id="node7" href="$classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac" title="Pgr_ksp::Yen" alt="" coords="164,259,265,285"/>
 </map>

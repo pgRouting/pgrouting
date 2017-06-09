@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Stable proposed Functions &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>Stable proposed Functions &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,19 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
     <link rel="next" title="aStar - Family of functions" href="aStar-family.html" />
     <link rel="prev" title="pgr_pointsAsPolygon" href="pgr_pointsAsPolygon.html" />
 <meta charset='utf-8'>
@@ -41,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -93,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Stable proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Stable proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
 </ul>
 <ul>
@@ -122,7 +118,7 @@
               
                 
   <li>
-    <a href="pgr_pointsAsPolygon.html" title="Previous Chapter: pgr_pointsAsPolygon"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pointsAsPolygon</span>
+    <a href="pgr_pointsAsPolygon.html" title="Previous Chapter: pgr_pointsAsPolygon"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pointsAsP...</span>
     </a>
   </li>
   <li>
@@ -172,71 +168,71 @@
 </li>
 </ul>
 </div>
-<p>As part of the <a class="reference internal" href="dijkstra-family.html#dijkstra"><span class="std std-ref">Dijkstra - Family of functions</span></a></p>
+<p>As part of the <a class="reference internal" href="dijkstra-family.html#dijkstra"><span>Dijkstra - Family of functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><span class="std std-ref">pgr_dijkstraCostMatrix - proposed</span></a> Use pgr_dijkstra to calculate a cost matrix.</li>
-<li><a class="reference internal" href="pgr_dijkstraVia.html#pgr-dijkstravia"><span class="std std-ref">pgr_dijkstraVia - Proposed</span></a> - Use pgr_dijkstra to make a route via vertices.</li>
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><span>pgr_dijkstraCostMatrix - proposed</span></a> Use pgr_dijkstra to calculate a cost matrix.</li>
+<li><a class="reference internal" href="pgr_dijkstraVia.html#pgr-dijkstravia"><span>pgr_dijkstraVia - Proposed</span></a> - Use pgr_dijkstra to make a route via vertices.</li>
 </ul>
 <p class="rubric">Families</p>
-<p><a class="reference internal" href="aStar-family.html#astar"><span class="std std-ref">aStar - Family of functions</span></a></p>
+<p><a class="reference internal" href="aStar-family.html#astar"><span>aStar - Family of functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_aStar.html#pgr-astar"><span class="std std-ref">pgr_aStar</span></a> - A* algorithm for the shortest path.</li>
-<li><a class="reference internal" href="pgr_aStarCost.html#pgr-astarcost"><span class="std std-ref">pgr_aStarCost – proposed</span></a> - Get the aggregate cost of the shortest paths.</li>
-<li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><span class="std std-ref">pgr_aStarCostMatrix - proposed</span></a> - Get the cost matrix of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_aStar.html#pgr-astar"><span>pgr_aStar</span></a> - A* algorithm for the shortest path.</li>
+<li><a class="reference internal" href="pgr_aStarCost.html#pgr-astarcost"><span>pgr_aStarCost &#8211; proposed</span></a> - Get the aggregate cost of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><span>pgr_aStarCostMatrix - proposed</span></a> - Get the cost matrix of the shortest paths.</li>
 </ul>
-<p><a class="reference internal" href="bdAstar-family.html#bdastar"><span class="std std-ref">Bidirectional A* - Family of functions</span></a></p>
+<p><a class="reference internal" href="bdAstar-family.html#bdastar"><span>Bidirectional A* - Family of functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_bdAstar.html#pgr-bdastar"><span class="std std-ref">pgr_bdAstar</span></a> - Bidirectional A* algorithm for obtaining paths.</li>
-<li><a class="reference internal" href="pgr_bdAstarCost.html#pgr-bdastarcost"><span class="std std-ref">pgr_bdAstarCost - Proposed</span></a> - Bidirectional A* algorithm to calculate the cost of the paths.</li>
-<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html#pgr-bdastarcostmatrix"><span class="std std-ref">pgr_bdAstarCostMatrix - proposed</span></a> - Bidirectional A* algorithm to calculate a cost matrix of paths.</li>
+<li><a class="reference internal" href="pgr_bdAstar.html#pgr-bdastar"><span>pgr_bdAstar</span></a> - Bidirectional A* algorithm for obtaining paths.</li>
+<li><a class="reference internal" href="pgr_bdAstarCost.html#pgr-bdastarcost"><span>pgr_bdAstarCost - Proposed</span></a> - Bidirectional A* algorithm to calculate the cost of the paths.</li>
+<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html#pgr-bdastarcostmatrix"><span>pgr_bdAstarCostMatrix - proposed</span></a> - Bidirectional A* algorithm to calculate a cost matrix of paths.</li>
 </ul>
-<p><a class="reference internal" href="bdDijkstra-family.html#bddijkstra"><span class="std std-ref">Bidirectional Dijkstra - Family of functions</span></a></p>
+<p><a class="reference internal" href="bdDijkstra-family.html#bddijkstra"><span>Bidirectional Dijkstra - Family of functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_bdDijkstra.html#pgr-bddijkstra"><span class="std std-ref">pgr_bdDijkstra</span></a> - Bidirectional Dijkstra algorithm for the shortest paths.</li>
-<li><a class="reference internal" href="pgr_bdDijkstraCost.html#pgr-bddijkstracost"><span class="std std-ref">pgr_bdDijkstraCost - Proposed</span></a> - Bidirectional Dijkstra to calculate the cost of the shortest paths</li>
-<li><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html#pgr-bddijkstracostmatrix"><span class="std std-ref">pgr_bdDijkstraCostMatrix - proposed</span></a> - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_bdDijkstra.html#pgr-bddijkstra"><span>pgr_bdDijkstra</span></a> - Bidirectional Dijkstra algorithm for the shortest paths.</li>
+<li><a class="reference internal" href="pgr_bdDijkstraCost.html#pgr-bddijkstracost"><span>pgr_bdDijkstraCost - Proposed</span></a> - Bidirectional Dijkstra to calculate the cost of the shortest paths</li>
+<li><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html#pgr-bddijkstracostmatrix"><span>pgr_bdDijkstraCostMatrix - proposed</span></a> - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths.</li>
 </ul>
-<p><a class="reference internal" href="flow-family.html#maxflow"><span class="std std-ref">Flow - Family of functions</span></a></p>
+<p><a class="reference internal" href="flow-family.html#maxflow"><span>Flow - Family of functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><span class="std std-ref">pgr_maxFlow - Proposed</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
-<li><a class="reference internal" href="pgr_boykovKolmogorov.html#pgr-boykovkolmogorov"><span class="std std-ref">pgr_boykovKolmogorov - Proposed</span></a> - Boykov and Kolmogorov with details of flow on edges.</li>
-<li><a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><span class="std std-ref">pgr_edmondsKarp - Proposed</span></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
-<li><a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span class="std std-ref">pgr_pushRelabel - Proposed</span></a> - Push and relabel algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><span>pgr_maxFlow - Proposed</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
+<li><a class="reference internal" href="pgr_boykovKolmogorov.html#pgr-boykovkolmogorov"><span>pgr_boykovKolmogorov - Proposed</span></a> - Boykov and Kolmogorov with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><span>pgr_edmondsKarp - Proposed</span></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span>pgr_pushRelabel - Proposed</span></a> - Push and relabel algorithm with details of flow on edges.</li>
 <li>Applications<ul>
-<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><span class="std std-ref">pgr_edgeDisjointPaths - Proposed</span></a> - Calculates edge disjoint paths between two groups of vertices.</li>
-<li><a class="reference internal" href="pgr_maxCardinalityMatch.html#pgr-maxcardinalitymatch"><span class="std std-ref">pgr_maxCardinalityMatch - Proposed</span></a> - Calculates a maximum cardinality matching in a graph.</li>
+<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><span>pgr_edgeDisjointPaths - Proposed</span></a> - Calculates edge disjoint paths between two groups of vertices.</li>
+<li><a class="reference internal" href="pgr_maxCardinalityMatch.html#pgr-maxcardinalitymatch"><span>pgr_maxCardinalityMatch - Proposed</span></a> - Calculates a maximum cardinality matching in a graph.</li>
 </ul>
 </li>
 </ul>
-<p><a class="reference internal" href="withPoints-family.html#withpoints"><span class="std std-ref">withPoints - Family of functions</span></a></p>
+<p><a class="reference internal" href="withPoints-family.html#withpoints"><span>withPoints - Family of functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_withPoints.html#pgr-withpoints"><span class="std std-ref">pgr_withPoints - Proposed</span></a> - Route from/to points anywhere on the graph.</li>
-<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><span class="std std-ref">pgr_withPointsCost - Proposed</span></a> - Costs of the shortest paths.</li>
-<li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><span class="std std-ref">pgr_withPointsCostMatrix - proposed</span></a> - Costs of the shortest paths.</li>
-<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><span class="std std-ref">pgr_withPointsKSP - Proposed</span></a> - K shortest paths.</li>
-<li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><span class="std std-ref">pgr_withPointsDD - Proposed</span></a> - Driving distance.</li>
+<li><a class="reference internal" href="pgr_withPoints.html#pgr-withpoints"><span>pgr_withPoints - Proposed</span></a> - Route from/to points anywhere on the graph.</li>
+<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><span>pgr_withPointsCost - Proposed</span></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><span>pgr_withPointsCostMatrix - proposed</span></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><span>pgr_withPointsKSP - Proposed</span></a> - K shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><span>pgr_withPointsDD - Proposed</span></a> - Driving distance.</li>
 </ul>
 <p class="rubric">categories</p>
-<p><a class="reference internal" href="cost-category.html#cost"><span class="std std-ref">Cost - Category</span></a></p>
+<p><a class="reference internal" href="cost-category.html#cost"><span>Cost - Category</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_aStarCost.html#pgr-astarcost"><span class="std std-ref">pgr_aStarCost – proposed</span></a></li>
-<li><a class="reference internal" href="pgr_bdAstarCost.html#pgr-bdastarcost"><span class="std std-ref">pgr_bdAstarCost - Proposed</span></a></li>
-<li><a class="reference internal" href="pgr_bdDijkstraCost.html#pgr-bddijkstracost"><span class="std std-ref">pgr_bdDijkstraCost - Proposed</span></a></li>
-<li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><span class="std std-ref">pgr_dijkstraCost</span></a></li>
-<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><span class="std std-ref">pgr_withPointsCost - Proposed</span></a></li>
+<li><a class="reference internal" href="pgr_aStarCost.html#pgr-astarcost"><span>pgr_aStarCost &#8211; proposed</span></a></li>
+<li><a class="reference internal" href="pgr_bdAstarCost.html#pgr-bdastarcost"><span>pgr_bdAstarCost - Proposed</span></a></li>
+<li><a class="reference internal" href="pgr_bdDijkstraCost.html#pgr-bddijkstracost"><span>pgr_bdDijkstraCost - Proposed</span></a></li>
+<li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><span>pgr_dijkstraCost</span></a></li>
+<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><span>pgr_withPointsCost - Proposed</span></a></li>
 </ul>
-<p><a class="reference internal" href="costMatrix-category.html#costmatrix"><span class="std std-ref">Cost Matrix - Category</span></a></p>
+<p><a class="reference internal" href="costMatrix-category.html#costmatrix"><span>Cost Matrix - Category</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><span class="std std-ref">pgr_aStarCostMatrix - proposed</span></a></li>
-<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html#pgr-bdastarcostmatrix"><span class="std std-ref">pgr_bdAstarCostMatrix - proposed</span></a></li>
-<li><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html#pgr-bddijkstracostmatrix"><span class="std std-ref">pgr_bdDijkstraCostMatrix - proposed</span></a></li>
-<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><span class="std std-ref">pgr_dijkstraCostMatrix - proposed</span></a></li>
-<li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><span class="std std-ref">pgr_withPointsCostMatrix - proposed</span></a></li>
+<li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><span>pgr_aStarCostMatrix - proposed</span></a></li>
+<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html#pgr-bdastarcostmatrix"><span>pgr_bdAstarCostMatrix - proposed</span></a></li>
+<li><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html#pgr-bddijkstracostmatrix"><span>pgr_bdDijkstraCostMatrix - proposed</span></a></li>
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><span>pgr_dijkstraCostMatrix - proposed</span></a></li>
+<li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><span>pgr_withPointsCostMatrix - proposed</span></a></li>
 </ul>
-<p><a class="reference internal" href="KSP-category.html#ksp"><span class="std std-ref">KSP Category</span></a></p>
+<p><a class="reference internal" href="KSP-category.html#ksp"><span>KSP Category</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_KSP.html#pgr-ksp"><span class="std std-ref">pgr_KSP</span></a> - Driving Distance based on pgr_dijkstra</li>
-<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><span class="std std-ref">pgr_withPointsKSP - Proposed</span></a> - Driving Distance based on pgr_dijkstra</li>
+<li><a class="reference internal" href="pgr_KSP.html#pgr-ksp"><span>pgr_KSP</span></a> - Driving Distance based on pgr_dijkstra</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><span>pgr_withPointsKSP - Proposed</span></a> - Driving Distance based on pgr_dijkstra</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -265,19 +261,19 @@
 </li>
 </ul>
 </div>
-<p><a class="reference internal" href="contraction-family.html#contraction"><span class="std std-ref">Contraction - Family of functions</span></a> - Reduce network size using contraction techniques</p>
+<p><a class="reference internal" href="contraction-family.html#contraction"><span>Contraction - Family of functions</span></a> - Reduce network size using contraction techniques</p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_contractGraph.html#pgr-contractgraph"><span class="std std-ref">pgr_contractGraph - Proposed</span></a> - Reduce network size using contraction techniques</li>
+<li><a class="reference internal" href="pgr_contractGraph.html#pgr-contractgraph"><span>pgr_contractGraph - Proposed</span></a> - Reduce network size using contraction techniques</li>
 </ul>
 <p class="rubric">Graph Analysis</p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_labelGraph.html#pgr-labelgraph"><span class="std std-ref">pgr_labelGraph - Proposed</span></a> - Analyze / label  subgraphs within a network</li>
+<li><a class="reference internal" href="pgr_labelGraph.html#pgr-labelgraph"><span>pgr_labelGraph - Proposed</span></a> - Analyze / label  subgraphs within a network</li>
 </ul>
-<p><a class="reference internal" href="VRP-category.html#vrp"><span class="std std-ref">Vehicle Routing Functions Category:</span></a></p>
+<p><a class="reference internal" href="VRP-category.html#vrp"><span>Vehicle Routing Functions Category:</span></a></p>
 <p class="rubric">Pickup and delivery problem</p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_pickDeliver.html#pgr-pickdeliver"><span class="std std-ref">__pgr_pickDeliver</span></a> - Pickup &amp; Delivery using a Cost Matrix</li>
-<li><a class="reference internal" href="pgr_pickDeliverEuclidean.html#pgr-pickdelivereuclidean"><span class="std std-ref">__pgr_pickDeliverEuclidean:</span></a> - Pickup &amp; Delivery with Euclidean distances</li>
+<li><a class="reference internal" href="pgr_pickDeliver.html#pgr-pickdeliver"><span>__pgr_pickDeliver</span></a> - Pickup &amp; Delivery using a Cost Matrix</li>
+<li><a class="reference internal" href="pgr_pickDeliverEuclidean.html#pgr-pickdelivereuclidean"><span>__pgr_pickDeliverEuclidean:</span></a> - Pickup &amp; Delivery with Euclidean distances</li>
 </ul>
 <p class="rubric">Experimental functions</p>
 <div class="admonition warning">
@@ -303,8 +299,8 @@
 </ul>
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_gsoc_vrppdtw.html#pgr-gsocvrppdtw"><span class="std std-ref">pgr_gsoc_vrppdtw - Proposed</span></a> - VRP Pickup &amp; Delivery (Euclidean)</li>
-<li><a class="reference internal" href="pgr_vrpOneDepot.html#pgr-vrp-basic"><span class="std std-ref">pgr_vrpOneDepot - Proposed</span></a> - VRP One Depot</li>
+<li><a class="reference internal" href="pgr_gsoc_vrppdtw.html#pgr-gsocvrppdtw"><span>pgr_gsoc_vrppdtw - Proposed</span></a> - VRP Pickup &amp; Delivery (Euclidean)</li>
+<li><a class="reference internal" href="pgr_vrpOneDepot.html#pgr-vrp-basic"><span>pgr_vrpOneDepot - Proposed</span></a> - VRP One Depot</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -323,8 +319,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

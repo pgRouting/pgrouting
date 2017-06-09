@@ -1,3 +1,5 @@
 <map id="pgrouting::tsp::Dmatrix::tourCost" name="pgrouting::tsp::Dmatrix::tourCost">
-<area shape="rect" id="node2" href="$newTSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="209,12,295,39"/>
+<area shape="rect" id="node2" href="$newTSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="411,38,497,65"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1Tour.html#a516b586ca67bea52ea04206ae65c3a76" title="pgrouting::tsp::Tour\l::size" alt="" coords="218,27,353,68"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a992da03de5b678835c2599adf73048ad" title="|idx| " alt="" coords="208,92,363,133"/>
 </map>

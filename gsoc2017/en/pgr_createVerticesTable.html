@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_createVerticesTable &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_createVerticesTable &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Topology - Family of Functions" href="topology-functions.html" />
     <link rel="next" title="pgr_analyzeGraph" href="pgr_analyzeGraph.html" />
     <link rel="prev" title="pgr_createTopology" href="pgr_createTopology.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -115,8 +112,8 @@
 <li><a class="reference internal" href="#name">Name</a></li>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-match-the-default-values">Usage when the edge table’s columns MATCH the default values:</a></li>
-<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Usage when the edge table’s columns DO NOT MATCH the default values:</a></li>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-match-the-default-values">Usage when the edge table&#8217;s columns MATCH the default values:</a></li>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Usage when the edge table&#8217;s columns DO NOT MATCH the default values:</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -130,7 +127,7 @@
               
                 
   <li>
-    <a href="pgr_createTopology.html" title="Previous Chapter: pgr_createTopology"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_createTopology</span>
+    <a href="pgr_createTopology.html" title="Previous Chapter: pgr_createTopology"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_createTop...</span>
     </a>
   </li>
   <li>
@@ -177,7 +174,7 @@
 <li><code class="docutils literal"><span class="pre">FAIL</span></code> when the vertices table was not reconstructed due to an error.</li>
 </ul>
 </div></blockquote>
-<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span></span>    <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">)</span>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre>    <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="nb">VARCHAR</span>
 </pre></div>
 </div>
@@ -207,7 +204,7 @@
 <p>The <code class="docutils literal"><span class="pre">edge_table</span></code> will be affected</p>
 <blockquote class="last">
 <div><ul>
-<li><p class="first">An index will be created, if it doesn’t exists, to speed up the process to the following columns:</p>
+<li><p class="first">An index will be created, if it doesn&#8217;t exists, to speed up the process to the following columns:</p>
 <blockquote>
 <div><ul class="simple">
 <li><code class="docutils literal"><span class="pre">the_geom</span></code></li>
@@ -237,7 +234,7 @@
 </ul>
 </div></blockquote>
 <p class="rubric">The Vertices Table</p>
-<p>The vertices table is a requierment of the <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a> functions.</p>
+<p>The vertices table is a requierment of the <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span>pgr_analyzeGraph</span></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a> functions.</p>
 <p>The structure of the vertices table is:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -245,13 +242,13 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">bigint</span></code> Identifier of the vertex.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a>.</td>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span>pgr_analyzeGraph</span></a>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a>.</td>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span>pgr_analyzeGraph</span></a>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a>.</td>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a>.</td>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a>.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal"><span class="pre">geometry</span></code> Point geometry of the vertex.</td>
 </tr>
@@ -263,13 +260,13 @@
 </ul>
 </div>
 <div class="section" id="usage-when-the-edge-table-s-columns-match-the-default-values">
-<h2>Usage when the edge table’s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h2>
+<h2>Usage when the edge table&#8217;s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">The simplest way to use pgr_createVerticesTable is:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p class="rubric">When the arguments are given in the order described in the parameters:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>We get the same result as the simplest way to use the function.</p>
@@ -277,97 +274,97 @@
 <p class="first admonition-title">Warning</p>
 <div class="last line-block">
 <div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column source column <code class="docutils literal"><span class="pre">source</span></code> of the table <code class="docutils literal"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal"><span class="pre">the_geom</span></code> is passed to the function as the source column.</div>
-<div class="line"><code class="docutils literal"><span class="pre">SELECT</span>&#160; <span class="pre">pgr_createVerticesTable('edge_table','source','the_geom','target');</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">SELECT</span>&nbsp; <span class="pre">pgr_createVerticesTable('edge_table','source','the_geom','target');</span></code></div>
 </div>
 </div>
 <p class="rubric">When using the named notation</p>
 <p>The order of the parameters do not matter:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Parameters defined with a default value can be omitted, as long as the value matches the default:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p class="rubric">Selecting rows using rows_where parameter</p>
 <p>Selecting rows based on the id.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Selecting the rows where the geometry is near the geometry of row with <code class="docutils literal"><span class="pre">id</span></code> =5 .</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Selecting the rows where the geometry is near the geometry of the row with <code class="docutils literal"><span class="pre">gid</span></code> =100 of the table <code class="docutils literal"><span class="pre">othertable</span></code>.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">otherTable</span> <span class="k">AS</span>  <span class="p">(</span><span class="k">SELECT</span> <span class="mi">100</span> <span class="k">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">)</span> <span class="k">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
 <span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
-<h2>Usage when the edge table’s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h2>
+<h2>Usage when the edge table&#8217;s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h2>
 <p>For the following table</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">mytable</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">mytable</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">mytable</span> <span class="k">AS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">the_geom</span> <span class="k">AS</span> <span class="n">mygeom</span><span class="p">,</span><span class="k">source</span> <span class="k">AS</span> <span class="n">src</span> <span class="p">,</span><span class="n">target</span> <span class="k">AS</span> <span class="n">tgt</span> <span class="k">FROM</span> <span class="n">edge_table</span><span class="p">)</span> <span class="p">;</span>
 </pre></div>
 </div>
 <p class="rubric">Using positional notation:</p>
 <p>The arguments need to be given in the order described in the parameters:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <div class="last line-block">
 <div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal"><span class="pre">src</span></code> of the table <code class="docutils literal"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal"><span class="pre">mygeom</span></code> is passed to the function as the source column.</div>
-<div class="line"><code class="docutils literal"><span class="pre">SELECT</span>&#160; <span class="pre">pgr_createVerticesTable('mytable','src','mygeom','tgt');</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">SELECT</span>&nbsp; <span class="pre">pgr_createVerticesTable('mytable','src','mygeom','tgt');</span></code></div>
 </div>
 </div>
 <p class="rubric">When using the named notation</p>
 <p>The order of the parameters do not matter:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.</p>
 <p class="rubric">Selecting rows using rows_where parameter</p>
 <p>Selecting rows based on the gid.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Selecting the rows where the geometry is near the geometry of row with <code class="docutils literal"><span class="pre">gid</span></code> =5 .</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
                            <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
                            <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Selecting the rows where the geometry is near the geometry of the row with <code class="docutils literal"><span class="pre">gid</span></code> =100 of the table <code class="docutils literal"><span class="pre">othertable</span></code>.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">otherTable</span> <span class="k">AS</span>  <span class="p">(</span><span class="k">SELECT</span> <span class="mi">100</span> <span class="k">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">)</span> <span class="k">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
 <span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
                             <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
                             <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span></span>    <span class="k">SELECT</span> <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre>    <span class="k">SELECT</span> <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
     <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span> <span class="p">.....</span>
@@ -385,15 +382,15 @@
     <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The example uses the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</p>
+<p>The example uses the <a class="reference internal" href="sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgRouting-concepts.html#topology"><span class="std std-ref">Routing Topology</span></a>  for an overview of a topology for routing algorithms.</li>
-<li><a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a> to create a topology based on the geometry.</li>
-<li><a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</li>
-<li><a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a> to analyze directionality of the edges.</li>
+<li><a class="reference internal" href="pgRouting-concepts.html#topology"><span>Routing Topology</span></a>  for an overview of a topology for routing algorithms.</li>
+<li><a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span>pgr_createTopology</span></a> to create a topology based on the geometry.</li>
+<li><a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span>pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</li>
+<li><a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a> to analyze directionality of the edges.</li>
 </ul>
 </div>
 </div>
@@ -411,8 +408,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

@@ -8,6 +8,7 @@ var searchData=
   ['colnumber',['colNumber',['../structColumn__info__t.html#a64816c9aa1e9203df8ed391fb9c6e849',1,'Column_info_t']]],
   ['column',['column',['../classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a57e0c7fea649dd3a378546adab7d3601',1,'pgrouting::tsp::eucledianDmatrix']]],
   ['coming',['coming',['../structpgr__basic__edge__t.html#aac033f7d46b798538aec74ed896a027a',1,'pgr_basic_edge_t']]],
+  ['component',['component',['../structpgr__componentV__t.html#aa89d2fdbc0a4c44bdf8ab1d424c3ce5c',1,'pgr_componentV_t']]],
   ['contracted_5fvertices',['contracted_vertices',['../structcontracted__rt.html#a6d3a1543d80e6c70b7fc861f5db557dc',1,'contracted_rt']]],
   ['contracted_5fvertices_5fsize',['contracted_vertices_size',['../structcontracted__rt.html#a797f252b3a4c6026b7748857c5a21d8c',1,'contracted_rt']]],
   ['coordinates',['coordinates',['../classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a99405de17966007fc66f3963848ba99c',1,'pgrouting::tsp::eucledianDmatrix']]],

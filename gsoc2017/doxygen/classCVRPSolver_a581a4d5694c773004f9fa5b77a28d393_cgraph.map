@@ -1,17 +1,16 @@
 <map id="CVRPSolver::attemptVehicleExchange" name="CVRPSolver::attemptVehicleExchange">
-<area shape="rect" id="node2" href="$classCVehicleInfo.html#a3c3150763111607a262107b73eb8518c" title="CVehicleInfo::getCapacity" alt="" coords="267,5,442,32"/>
-<area shape="rect" id="node3" href="$classCVehicleInfo.html#a1701a3c9bd431d63d7ace1f303eeaa80" title="CVehicleInfo::getCurrentLoad" alt="" coords="257,56,452,83"/>
-<area shape="rect" id="node4" href="$classCMoveInfo.html#a0df5e45ed8d5cf39afe438056300d0f0" title="CMoveInfo::getInitialTour" alt="" coords="270,107,439,133"/>
-<area shape="rect" id="node5" href="$classCMoveInfo.html#a17d1d76d7e5a8f76961239e88051ce3a" title="CMoveInfo::getModifiedTourAt" alt="" coords="255,157,455,184"/>
-<area shape="rect" id="node6" href="$classCSolutionInfo.html#a273ab85f464b6063e4e186aaca2842b1" title="CSolutionInfo::getTour" alt="" coords="278,208,431,235"/>
-<area shape="rect" id="node7" href="$classCSolutionInfo.html#a01c5e7962d62ecf419fcbc56cf9995f2" title="CSolutionInfo::getTourCount" alt="" coords="261,259,449,285"/>
-<area shape="rect" id="node8" href="$classCTourInfo.html#aa293f37c8f79cff6c234077b0679fac1" title="CTourInfo::getVehicleId" alt="" coords="275,309,435,336"/>
-<area shape="rect" id="node9" href="$classCTourInfo.html#a472803511c17a75f750bcdcf8df72136" title="CTourInfo::getVehicleInfo" alt="" coords="269,360,440,387"/>
-<area shape="rect" id="node10" href="$classCVRPSolver.html#a33c8852cdb507ade8adfc5d292911e20" title="CVRPSolver::isTabuMove" alt="" coords="267,411,443,437"/>
-<area shape="rect" id="node11" href="$classCSolutionInfo.html#ad46af485c9ac9e5c9afe1eae94e896e3" title="CSolutionInfo::replaceTourAt" alt="" coords="259,461,450,488"/>
-<area shape="rect" id="node12" href="$classCMoveInfo.html#a49a99d470f83163d1c3a2acab6d8c198" title="CMoveInfo::setInitialTour" alt="" coords="270,512,439,539"/>
-<area shape="rect" id="node13" href="$classCMoveInfo.html#ad3aa8e7b7fb24a5ab5d0e4a28e0846d2" title="CMoveInfo::setModifiedTour" alt="" coords="261,563,448,589"/>
-<area shape="rect" id="node14" href="$classCTourInfo.html#a7b2c7e9d818a467f994ad7c571a4bc96" title="CTourInfo::setVehicleInfo" alt="" coords="269,613,440,640"/>
-<area shape="rect" id="node15" href="$classCVRPSolver.html#acf1e18f7006566b357c932d215188e14" title="CVRPSolver::updateFinalSolution" alt="" coords="245,664,464,691"/>
-<area shape="rect" id="node16" href="$classCVRPSolver.html#a37bf4faec4a3a457d78a3a3d8d5414b1" title="CVRPSolver::updateTabuCount" alt="" coords="251,715,459,741"/>
+<area shape="rect" id="node2" href="$classCVehicleInfo.html#a3c3150763111607a262107b73eb8518c" title="CVehicleInfo::getCapacity" alt="" coords="258,5,433,32"/>
+<area shape="rect" id="node3" href="$classCVehicleInfo.html#a1701a3c9bd431d63d7ace1f303eeaa80" title="CVehicleInfo::getCurrentLoad" alt="" coords="248,56,443,83"/>
+<area shape="rect" id="node4" href="$classCMoveInfo.html#a0df5e45ed8d5cf39afe438056300d0f0" title="CMoveInfo::getInitialTour" alt="" coords="261,107,430,133"/>
+<area shape="rect" id="node5" href="$classCMoveInfo.html#a17d1d76d7e5a8f76961239e88051ce3a" title="CMoveInfo::getModifiedTourAt" alt="" coords="245,157,445,184"/>
+<area shape="rect" id="node6" href="$classCTourInfo.html#a88edb80bf3bda693a25d11c1344ae97e" title="CTourInfo::getOrderVector" alt="" coords="257,208,433,235"/>
+<area shape="rect" id="node7" href="$classCTourInfo.html#afb41915c324048c47a4bdf64a70eec08" title="CTourInfo::getServedOrder\lCount" alt="" coords="256,259,435,301"/>
+<area shape="rect" id="node8" href="$classCSolutionInfo.html#a273ab85f464b6063e4e186aaca2842b1" title="CSolutionInfo::getTour" alt="" coords="269,325,422,352"/>
+<area shape="rect" id="node9" href="$classCSolutionInfo.html#a01c5e7962d62ecf419fcbc56cf9995f2" title="CSolutionInfo::getTourCount" alt="" coords="251,376,439,403"/>
+<area shape="rect" id="node10" href="$classCTourInfo.html#aa293f37c8f79cff6c234077b0679fac1" title="CTourInfo::getVehicleId" alt="" coords="265,427,425,453"/>
+<area shape="rect" id="node11" href="$classCTourInfo.html#a472803511c17a75f750bcdcf8df72136" title="CTourInfo::getVehicleInfo" alt="" coords="260,477,431,504"/>
+<area shape="rect" id="node12" href="$classCSolutionInfo.html#ad46af485c9ac9e5c9afe1eae94e896e3" title="CSolutionInfo::replaceTourAt" alt="" coords="250,528,441,555"/>
+<area shape="rect" id="node13" href="$classCMoveInfo.html#a49a99d470f83163d1c3a2acab6d8c198" title="CMoveInfo::setInitialTour" alt="" coords="261,579,430,605"/>
+<area shape="rect" id="node14" href="$classCMoveInfo.html#ad3aa8e7b7fb24a5ab5d0e4a28e0846d2" title="CMoveInfo::setModifiedTour" alt="" coords="252,629,439,656"/>
+<area shape="rect" id="node15" href="$classCTourInfo.html#a7b2c7e9d818a467f994ad7c571a4bc96" title="CTourInfo::setVehicleInfo" alt="" coords="260,680,431,707"/>
 </map>

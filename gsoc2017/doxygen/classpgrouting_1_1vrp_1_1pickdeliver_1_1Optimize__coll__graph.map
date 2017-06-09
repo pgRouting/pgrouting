@@ -1,4 +1,4 @@
 <map id="pgrouting::vrp::pickdeliver::Optimize" name="pgrouting::vrp::pickdeliver::Optimize">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html" title="pgrouting::vrp::pickdeliver\l::Solution" alt="" coords="5,6,176,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__bk.html" title="pgrouting::vrp::pickdeliver\l::Swap_bk" alt="" coords="200,6,371,47"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html" title="pgrouting::vrp::pickdeliver\l::Solution" alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__bk.html" title="pgrouting::vrp::pickdeliver\l::Swap_bk" alt="" coords="200,5,371,47"/>
 </map>

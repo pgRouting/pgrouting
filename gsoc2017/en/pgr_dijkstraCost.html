@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_dijkstraCost &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_dijkstraCost &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
     <link rel="next" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" />
     <link rel="prev" title="pgr_dijkstra" href="pgr_dijkstra.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -191,7 +188,7 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 </ul>
 <p>The <code class="docutils literal"><span class="pre">pgr_dijkstraCost</span></code> algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for a subset of pairs of nodes of the graph.
-We make use of the Boost’s implementation of dijkstra which runs in
+We make use of the Boost&#8217;s implementation of dijkstra which runs in
 <span class="math">\(O(V \log V + E)\)</span> time.</p>
 </div>
 <div class="section" id="characteristics">
@@ -233,7 +230,7 @@ We make use of the Boost’s implementation of dijkstra which runs in
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstraCost(edges_sql, start_vid, end_vid);
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(edges_sql, start_vid, end_vid);
 pgr_dijkstraCost(edges_sql, start_vid, end_vid, directed);
 pgr_dijkstraCost(edges_sql, start_vids, end_vid, directed);
 pgr_dijkstraCost(edges_sql, start_vid, end_vids, directed);
@@ -248,18 +245,18 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
 <p>The minimal signature is for a <strong>directed</strong> graph from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 </pre></div>
 </div>
 <p class="rubric">Example</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
+    &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
+    2, 3);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        5
+(1 row)
 
 </pre></div>
 </div>
@@ -274,7 +271,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
                      BOOLEAN directed:=true);
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 </pre></div>
@@ -287,20 +284,20 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
+    &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
+    2, 3, false);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        1
+(1 row)
 
 </pre></div>
 </div>
 </div>
 <div class="section" id="pgr-dijkstracost-one-to-many">
 <span id="index-2"></span><h3>pgr_dijkstraCost One to Many<a class="headerlink" href="#pgr-dijkstracost-one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 </pre></div>
@@ -321,21 +318,21 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
+    &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
+    2, ARRAY[3, 11]);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        5
+         2 |      11 |        3
+(2 rows)
 
 </pre></div>
 </div>
 </div>
 <div class="section" id="pgr-dijkstracost-many-to-one">
 <span id="index-3"></span><h3>pgr_dijkstraCost Many to One<a class="headerlink" href="#pgr-dijkstracost-many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
                      BOOLEAN directed:=true);
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 </pre></div>
@@ -356,21 +353,21 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">3</span><span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
-<span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
+    &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
+    ARRAY[2, 7], 3);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        5
+         7 |       3 |        6
+(2 rows)
 
 </pre></div>
 </div>
 </div>
 <div class="section" id="pgr-dijkstracost-many-to-many">
 <span id="index-4"></span><h3>pgr_dijkstraCost Many to Many<a class="headerlink" href="#pgr-dijkstracost-many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 </pre></div>
@@ -391,16 +388,16 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
-         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">4</span>
-<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
+    &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
+    ARRAY[2, 7], ARRAY[3, 11]);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        5
+         2 |      11 |        3
+         7 |       3 |        6
+         7 |      11 |        4
+(4 rows)
 
 </pre></div>
 </div>
@@ -435,25 +432,25 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -462,7 +459,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -499,27 +496,27 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <tbody valign="top">
 <tr class="row-even"><td><strong>sql</strong></td>
 <td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>start_vid</strong></td>
 <td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the starting vertex of the path.</td>
 </tr>
 <tr class="row-even"><td><strong>start_vids</strong></td>
 <td><code class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Array of identifiers of starting vertices.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
 <td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the ending vertex of the path.</td>
 </tr>
 <tr class="row-even"><td><strong>end_vids</strong></td>
 <td><code class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Array of identifiers of ending vertices.</td>
 </tr>
 <tr class="row-odd"><td><strong>directed</strong></td>
@@ -576,18 +573,18 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-        <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-            <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
-         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
+        &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
+            ARRAY[5, 3, 4, 3, 3, 4], ARRAY[3, 5, 3, 4]);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         3 |       4 |        3
+         3 |       5 |        2
+         4 |       3 |        1
+         4 |       5 |        3
+         5 |       3 |        4
+         5 |       4 |        3
+(6 rows)
 
 </pre></div>
 </div>
@@ -599,18 +596,18 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-        <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-            <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
-         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
+        &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
+            ARRAY[5, 3, 4], ARRAY[5, 3, 4]);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         3 |       4 |        3
+         3 |       5 |        2
+         4 |       3 |        1
+         4 |       5 |        3
+         5 |       3 |        4
+         5 |       4 |        3
+(6 rows)
 
 </pre></div>
 </div>
@@ -619,12 +616,12 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></li>
-<li><a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
+<li><a class="reference internal" href="sampledata.html#sampledata"><span>Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -642,8 +639,8 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

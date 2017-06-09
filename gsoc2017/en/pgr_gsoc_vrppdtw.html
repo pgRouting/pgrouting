@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_gsoc_vrppdtw - Proposed &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_gsoc_vrppdtw - Proposed &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Vehicle Routing Functions Category:" href="VRP-category.html" />
     <link rel="next" title="pgr_vrpOneDepot - Proposed" href="pgr_vrpOneDepot.html" />
     <link rel="prev" title="__pgr_pickDeliverEuclidean:" href="pgr_pickDeliverEuclidean.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -199,7 +196,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+<div class="highlight-none"><div class="highlight"><pre>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
 RETURNS SET OF pgr_costResult[]:
 </pre></div>
 </div>
@@ -208,27 +205,27 @@ RETURNS SET OF pgr_costResult[]:
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="complete-signature">
 <span id="index-0"></span><h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+<div class="highlight-none"><div class="highlight"><pre>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
 Returns set of pgr_costResult[]:
 </pre></div>
 </div>
 <p class="rubric">Example: Show the id1</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">id1</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">id1</span><span class="p">;</span>
- <span class="n">id1</span> 
-<span class="o">-----</span>
-   <span class="mi">1</span>
-   <span class="mi">2</span>
-   <span class="mi">3</span>
-   <span class="mi">4</span>
-   <span class="mi">5</span>
-   <span class="mi">6</span>
-   <span class="mi">7</span>
-   <span class="mi">8</span>
-   <span class="mi">9</span>
-  <span class="mi">10</span>
-<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT DISTINCT(id1) FROM pgr_gsoc_vrppdtw(
+    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200)
+ORDER BY id1;
+ id1 
+-----
+   1
+   2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+  10
+(10 rows)
 
 </pre></div>
 </div>
@@ -375,62 +372,62 @@ Returns set of pgr_costResult[]:
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Example: Total number of rows returned</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
- <span class="n">count</span> 
-<span class="o">-------</span>
-   <span class="mi">126</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT count(*) FROM pgr_gsoc_vrppdtw(
+    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200);
+ count 
+-------
+   126
+(1 row)
 
 </pre></div>
 </div>
 <p class="rubric">Example: Results for only id1 values: 1, 5, and 9</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-    <span class="n">WHERE</span> <span class="n">id1</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span>       <span class="n">cost</span>       
-<span class="o">-----+-----+-----+------------------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="mf">105.132745950422</span>
-   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mf">196.132745950422</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span> <span class="mf">288.132745950422</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="mf">380.961173075168</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="mf">474.566724350632</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="mf">567.566724350632</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mf">660.7290020108</span>
-   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mf">752.9650699883</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mf">845.2011379658</span>
-  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mf">938.806689241264</span>
-  <span class="mi">12</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mf">1030.80668924126</span>
-  <span class="mi">13</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">75</span> <span class="o">|</span> <span class="mf">1123.80668924126</span>
-  <span class="mi">14</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">1139.61807754211</span>
-  <span class="mi">55</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
-  <span class="mi">56</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">43</span> <span class="o">|</span> <span class="mf">106.552945357247</span>
-  <span class="mi">57</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">42</span> <span class="o">|</span> <span class="mf">199.552945357247</span>
-  <span class="mi">58</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">41</span> <span class="o">|</span> <span class="mf">291.552945357247</span>
-  <span class="mi">59</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">40</span> <span class="o">|</span> <span class="mf">383.552945357247</span>
-  <span class="mi">60</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">44</span> <span class="o">|</span> <span class="mf">476.552945357247</span>
-  <span class="mi">61</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">46</span> <span class="o">|</span> <span class="mf">569.381372481993</span>
-  <span class="mi">62</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">45</span> <span class="o">|</span> <span class="mf">661.381372481993</span>
-  <span class="mi">63</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">48</span> <span class="o">|</span> <span class="mf">753.381372481993</span>
-  <span class="mi">64</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">51</span> <span class="o">|</span> <span class="mf">756.381372481993</span>
-  <span class="mi">65</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="mi">101</span> <span class="o">|</span> <span class="mf">846.381372481993</span>
-  <span class="mi">66</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">66</span> <span class="o">|</span>  <span class="mf">958.94240082735</span>
-  <span class="mi">67</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">69</span> <span class="o">|</span> <span class="mf">1050.94240082735</span>
-  <span class="mi">68</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">1066.75378912819</span>
- <span class="mi">103</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
- <span class="mi">104</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">90</span> <span class="o">|</span> <span class="mf">110.615528128088</span>
- <span class="mi">105</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">87</span> <span class="o">|</span> <span class="mf">205.615528128088</span>
- <span class="mi">106</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">86</span> <span class="o">|</span> <span class="mf">296.615528128088</span>
- <span class="mi">107</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">83</span> <span class="o">|</span> <span class="mf">392.615528128088</span>
- <span class="mi">108</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">82</span> <span class="o">|</span> <span class="mf">485.615528128088</span>
- <span class="mi">109</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">84</span> <span class="o">|</span> <span class="mf">581.446480022934</span>
- <span class="mi">110</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">85</span> <span class="o">|</span>  <span class="mf">674.27490714768</span>
- <span class="mi">111</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">88</span> <span class="o">|</span>  <span class="mf">767.27490714768</span>
- <span class="mi">112</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">89</span> <span class="o">|</span> <span class="mf">860.103334272426</span>
- <span class="mi">113</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">91</span> <span class="o">|</span>  <span class="mf">953.70888554789</span>
- <span class="mi">114</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">976.069565322888</span>
-<span class="p">(</span><span class="mi">40</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_gsoc_vrppdtw(
+    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200)
+    WHERE id1 in (1, 5, 9);
+ seq | id1 | id2 |       cost       
+-----+-----+-----+------------------
+   1 |   1 |   0 |                0
+   2 |   1 |   5 | 105.132745950422
+   3 |   1 |   3 | 196.132745950422
+   4 |   1 |   7 | 288.132745950422
+   5 |   1 |   8 | 380.961173075168
+   6 |   1 |  10 | 474.566724350632
+   7 |   1 |  11 | 567.566724350632
+   8 |   1 |   9 |   660.7290020108
+   9 |   1 |   6 |   752.9650699883
+  10 |   1 |   4 |   845.2011379658
+  11 |   1 |   2 | 938.806689241264
+  12 |   1 |   1 | 1030.80668924126
+  13 |   1 |  75 | 1123.80668924126
+  14 |   1 |   0 | 1139.61807754211
+  55 |   5 |   0 |                0
+  56 |   5 |  43 | 106.552945357247
+  57 |   5 |  42 | 199.552945357247
+  58 |   5 |  41 | 291.552945357247
+  59 |   5 |  40 | 383.552945357247
+  60 |   5 |  44 | 476.552945357247
+  61 |   5 |  46 | 569.381372481993
+  62 |   5 |  45 | 661.381372481993
+  63 |   5 |  48 | 753.381372481993
+  64 |   5 |  51 | 756.381372481993
+  65 |   5 | 101 | 846.381372481993
+  66 |   5 |  66 |  958.94240082735
+  67 |   5 |  69 | 1050.94240082735
+  68 |   5 |   0 | 1066.75378912819
+ 103 |   9 |   0 |                0
+ 104 |   9 |  90 | 110.615528128088
+ 105 |   9 |  87 | 205.615528128088
+ 106 |   9 |  86 | 296.615528128088
+ 107 |   9 |  83 | 392.615528128088
+ 108 |   9 |  82 | 485.615528128088
+ 109 |   9 |  84 | 581.446480022934
+ 110 |   9 |  85 |  674.27490714768
+ 111 |   9 |  88 |  767.27490714768
+ 112 |   9 |  89 | 860.103334272426
+ 113 |   9 |  91 |  953.70888554789
+ 114 |   9 |   0 | 976.069565322888
+(40 rows)
 
 </pre></div>
 </div>
@@ -438,7 +435,7 @@ Returns set of pgr_costResult[]:
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The examples use <a class="reference internal" href="sampledata.html#pickdeliverdata"><span class="std std-ref">pgr_gsoc_vrppdtw data</span></a></li>
+<li>The examples use <a class="reference internal" href="sampledata.html#pickdeliverdata"><span>pgr_gsoc_vrppdtw data</span></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
 </ul>
 </div>
@@ -457,8 +454,8 @@ Returns set of pgr_costResult[]:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

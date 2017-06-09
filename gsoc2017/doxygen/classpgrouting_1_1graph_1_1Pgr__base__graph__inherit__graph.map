@@ -1,3 +1,3 @@
-<map id="pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;" name="pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, T_V, T_E \&gt;" alt="" coords="5,126,200,167"/>
+<map id="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;" name="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;">
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html" title="pgrouting::graph::Pgr\l_contractionGraph\&lt; G,\l T_V, T_E \&gt;" alt="" coords="25,95,180,151"/>
 </map>

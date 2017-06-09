@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_drivingDistance &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
     <link rel="next" title="pgr_KSP" href="pgr_KSP.html" />
     <link rel="prev" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -200,7 +197,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
 <span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
 <span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
 
@@ -212,21 +209,21 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-use">
 <span id="index-0"></span><h3>Minimal Use<a class="headerlink" href="#minimal-use" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="driving-distance-from-a-single-starting-vertex">
 <span id="index-1"></span><h3>Driving Distance From A Single Starting Vertex<a class="headerlink" href="#driving-distance-from-a-single-starting-vertex" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="driving-distance-from-multiple-starting-vertices">
 <span id="index-2"></span><h3>Driving Distance From Multiple Starting Vertices<a class="headerlink" href="#driving-distance-from-multiple-starting-vertices" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -261,25 +258,25 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -288,7 +285,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -396,325 +393,325 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Graph 1: Directed, with cost and reverse cost</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span>Graph 1: Directed, with cost and reverse cost</span></a></p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        2, 3
+      );
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |    2 |   -1 |    0 |        0
+   2 |    1 |    1 |    1 |        1
+   3 |    5 |    4 |    1 |        1
+   4 |    6 |    8 |    1 |        2
+   5 |    8 |    7 |    1 |        2
+   6 |   10 |   10 |    1 |        2
+   7 |    7 |    6 |    1 |        3
+   8 |    9 |    9 |    1 |        3
+   9 |   11 |   12 |    1 |        3
+  10 |   13 |   14 |    1 |        3
+(10 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">13</span><span class="p">,</span> <span class="mi">3</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        13, 3
+      );
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |   13 |   -1 |    0 |        0
+   2 |   10 |   14 |    1 |        1
+   3 |    5 |   10 |    1 |        2
+   4 |   11 |   12 |    1 |        2
+   5 |    2 |    4 |    1 |        3
+   6 |    6 |    8 |    1 |        3
+   7 |    8 |    7 |    1 |        3
+   8 |   12 |   13 |    1 |        3
+(8 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+--------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">9</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">10</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">11</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-  <span class="mi">12</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-  <span class="mi">13</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">14</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">15</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">16</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">17</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        array[2,13], 3
+      );
+ seq | from_v | node | edge | cost | agg_cost 
+-----+--------+------+------+------+----------
+   1 |      2 |    2 |   -1 |    0 |        0
+   2 |      2 |    1 |    1 |    1 |        1
+   3 |      2 |    5 |    4 |    1 |        1
+   4 |      2 |    6 |    8 |    1 |        2
+   5 |      2 |    8 |    7 |    1 |        2
+   6 |      2 |   10 |   10 |    1 |        2
+   7 |      2 |    7 |    6 |    1 |        3
+   8 |      2 |    9 |    9 |    1 |        3
+   9 |      2 |   11 |   12 |    1 |        3
+  10 |      2 |   13 |   14 |    1 |        3
+  11 |     13 |   13 |   -1 |    0 |        0
+  12 |     13 |   10 |   14 |    1 |        1
+  13 |     13 |    5 |   10 |    1 |        2
+  14 |     13 |   11 |   12 |    1 |        2
+  15 |     13 |    2 |    4 |    1 |        3
+  16 |     13 |    6 |    8 |    1 |        3
+  17 |     13 |    8 |    7 |    1 |        3
+  18 |     13 |   12 |   13 |    1 |        3
+(18 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+--------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">9</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-  <span class="mi">10</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">11</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        array[2,13], 3, equicost:=true
+      );
+ seq | from_v | node | edge | cost | agg_cost 
+-----+--------+------+------+------+----------
+   1 |      2 |    2 |   -1 |    0 |        0
+   2 |      2 |    1 |    1 |    1 |        1
+   3 |      2 |    5 |    4 |    1 |        1
+   4 |      2 |    6 |    8 |    1 |        2
+   5 |      2 |    8 |    7 |    1 |        2
+   6 |      2 |    7 |    6 |    1 |        3
+   7 |      2 |    9 |    9 |    1 |        3
+   8 |     13 |   13 |   -1 |    0 |        0
+   9 |     13 |   10 |   14 |    1 |        1
+  10 |     13 |   11 |   12 |    1 |        2
+  11 |     13 |   12 |   13 |    1 |        3
+(11 rows)
 
 </pre></div>
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Graph 2: Undirected, with cost and reverse cost</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">10</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span>Graph 2: Undirected, with cost and reverse cost</span></a></p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        2, 3, false
+      );
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |    2 |   -1 |    0 |        0
+   2 |    1 |    1 |    1 |        1
+   3 |    3 |    2 |    1 |        1
+   4 |    5 |    4 |    1 |        1
+   5 |    4 |    3 |    1 |        2
+   6 |    6 |    8 |    1 |        2
+   7 |    8 |    7 |    1 |        2
+   8 |   10 |   10 |    1 |        2
+   9 |    7 |    6 |    1 |        3
+  10 |    9 |   16 |    1 |        3
+  11 |   11 |   12 |    1 |        3
+  12 |   13 |   14 |    1 |        3
+(12 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        13, 3, false
+      );
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |   13 |   -1 |    0 |        0
+   2 |   10 |   14 |    1 |        1
+   3 |    5 |   10 |    1 |        2
+   4 |   11 |   12 |    1 |        2
+   5 |    2 |    4 |    1 |        3
+   6 |    6 |    8 |    1 |        3
+   7 |    8 |    7 |    1 |        3
+   8 |   12 |   13 |    1 |        3
+(8 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+--------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">9</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">10</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">11</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">12</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">13</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-  <span class="mi">14</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-  <span class="mi">15</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">16</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">17</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">19</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">20</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">20</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        array[2,13], 3, false
+      );
+ seq | from_v | node | edge | cost | agg_cost 
+-----+--------+------+------+------+----------
+   1 |      2 |    2 |   -1 |    0 |        0
+   2 |      2 |    1 |    1 |    1 |        1
+   3 |      2 |    3 |    2 |    1 |        1
+   4 |      2 |    5 |    4 |    1 |        1
+   5 |      2 |    4 |    3 |    1 |        2
+   6 |      2 |    6 |    8 |    1 |        2
+   7 |      2 |    8 |    7 |    1 |        2
+   8 |      2 |   10 |   10 |    1 |        2
+   9 |      2 |    7 |    6 |    1 |        3
+  10 |      2 |    9 |   16 |    1 |        3
+  11 |      2 |   11 |   12 |    1 |        3
+  12 |      2 |   13 |   14 |    1 |        3
+  13 |     13 |   13 |   -1 |    0 |        0
+  14 |     13 |   10 |   14 |    1 |        1
+  15 |     13 |    5 |   10 |    1 |        2
+  16 |     13 |   11 |   12 |    1 |        2
+  17 |     13 |    2 |    4 |    1 |        3
+  18 |     13 |    6 |    8 |    1 |        3
+  19 |     13 |    8 |    7 |    1 |        3
+  20 |     13 |   12 |   13 |    1 |        3
+(20 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+--------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">9</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">10</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-  <span class="mi">11</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-  <span class="mi">12</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">13</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">13</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        array[2,13], 3, false, equicost:=true
+      );
+ seq | from_v | node | edge | cost | agg_cost 
+-----+--------+------+------+------+----------
+   1 |      2 |    2 |   -1 |    0 |        0
+   2 |      2 |    1 |    1 |    1 |        1
+   3 |      2 |    3 |    2 |    1 |        1
+   4 |      2 |    5 |    4 |    1 |        1
+   5 |      2 |    4 |    3 |    1 |        2
+   6 |      2 |    6 |    8 |    1 |        2
+   7 |      2 |    8 |    7 |    1 |        2
+   8 |      2 |    7 |    6 |    1 |        3
+   9 |      2 |    9 |   16 |    1 |        3
+  10 |     13 |   13 |   -1 |    0 |        0
+  11 |     13 |   10 |   14 |    1 |        1
+  12 |     13 |   11 |   12 |    1 |        2
+  13 |     13 |   12 |   13 |    1 |        3
+(13 rows)
 
 </pre></div>
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Graph 3: Directed, with cost</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span>Graph 3: Directed, with cost</span></a></p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        2, 3
+      );
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |    2 |   -1 |    0 |        0
+   2 |    5 |    4 |    1 |        1
+   3 |    6 |    8 |    1 |        2
+   4 |   10 |   10 |    1 |        2
+   5 |    9 |    9 |    1 |        3
+   6 |   11 |   11 |    1 |        3
+   7 |   13 |   14 |    1 |        3
+(7 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">13</span><span class="p">,</span> <span class="mi">3</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        13, 3
+      );
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |   13 |   -1 |    0 |        0
+(1 row)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+--------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        array[2,13], 3
+      );
+ seq | from_v | node | edge | cost | agg_cost 
+-----+--------+------+------+------+----------
+   1 |      2 |    2 |   -1 |    0 |        0
+   2 |      2 |    5 |    4 |    1 |        1
+   3 |      2 |    6 |    8 |    1 |        2
+   4 |      2 |   10 |   10 |    1 |        2
+   5 |      2 |    9 |    9 |    1 |        3
+   6 |      2 |   11 |   11 |    1 |        3
+   7 |      2 |   13 |   14 |    1 |        3
+   8 |     13 |   13 |   -1 |    0 |        0
+(8 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+--------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        array[2,13], 3, equicost:=true
+      );
+ seq | from_v | node | edge | cost | agg_cost 
+-----+--------+------+------+------+----------
+   1 |      2 |    2 |   -1 |    0 |        0
+   2 |      2 |    5 |    4 |    1 |        1
+   3 |      2 |    6 |    8 |    1 |        2
+   4 |      2 |   10 |   10 |    1 |        2
+   5 |      2 |    9 |    9 |    1 |        3
+   6 |      2 |   11 |   11 |    1 |        3
+   7 |     13 |   13 |   -1 |    0 |        0
+(7 rows)
 
 </pre></div>
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Graph 4: Undirected, with cost</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span>Graph 4: Undirected, with cost</span></a></p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        2, 3, false
+      );
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |    2 |   -1 |    0 |        0
+   2 |    1 |    1 |    1 |        1
+   3 |    5 |    4 |    1 |        1
+   4 |    6 |    8 |    1 |        2
+   5 |    8 |    7 |    1 |        2
+   6 |   10 |   10 |    1 |        2
+   7 |    3 |    5 |    1 |        3
+   8 |    7 |    6 |    1 |        3
+   9 |    9 |    9 |    1 |        3
+  10 |   11 |   12 |    1 |        3
+  11 |   13 |   14 |    1 |        3
+(11 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        13, 3, false
+      );
+ seq | node | edge | cost | agg_cost 
+-----+------+------+------+----------
+   1 |   13 |   -1 |    0 |        0
+   2 |   10 |   14 |    1 |        1
+   3 |    5 |   10 |    1 |        2
+   4 |   11 |   12 |    1 |        2
+   5 |    2 |    4 |    1 |        3
+   6 |    6 |    8 |    1 |        3
+   7 |    8 |    7 |    1 |        3
+   8 |   12 |   13 |    1 |        3
+(8 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+--------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">9</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">10</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">11</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">12</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-  <span class="mi">13</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-  <span class="mi">14</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">15</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">16</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">17</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">19</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">19</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        array[2,13], 3, false
+      );
+ seq | from_v | node | edge | cost | agg_cost 
+-----+--------+------+------+------+----------
+   1 |      2 |    2 |   -1 |    0 |        0
+   2 |      2 |    1 |    1 |    1 |        1
+   3 |      2 |    5 |    4 |    1 |        1
+   4 |      2 |    6 |    8 |    1 |        2
+   5 |      2 |    8 |    7 |    1 |        2
+   6 |      2 |   10 |   10 |    1 |        2
+   7 |      2 |    3 |    5 |    1 |        3
+   8 |      2 |    7 |    6 |    1 |        3
+   9 |      2 |    9 |    9 |    1 |        3
+  10 |      2 |   11 |   12 |    1 |        3
+  11 |      2 |   13 |   14 |    1 |        3
+  12 |     13 |   13 |   -1 |    0 |        0
+  13 |     13 |   10 |   14 |    1 |        1
+  14 |     13 |    5 |   10 |    1 |        2
+  15 |     13 |   11 |   12 |    1 |        2
+  16 |     13 |    2 |    4 |    1 |        3
+  17 |     13 |    6 |    8 |    1 |        3
+  18 |     13 |    8 |    7 |    1 |        3
+  19 |     13 |   12 |   13 |    1 |        3
+(19 rows)
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
-      <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
-<span class="o">-----+--------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">9</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span>
-  <span class="mi">10</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-  <span class="mi">11</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">12</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
+SELECT * FROM pgr_drivingDistance(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        array[2,13], 3, false, equicost:=true
+      );
+ seq | from_v | node | edge | cost | agg_cost 
+-----+--------+------+------+------+----------
+   1 |      2 |    2 |   -1 |    0 |        0
+   2 |      2 |    1 |    1 |    1 |        1
+   3 |      2 |    5 |    4 |    1 |        1
+   4 |      2 |    6 |    8 |    1 |        2
+   5 |      2 |    8 |    7 |    1 |        2
+   6 |      2 |    3 |    5 |    1 |        3
+   7 |      2 |    7 |    6 |    1 |        3
+   8 |      2 |    9 |    9 |    1 |        3
+   9 |     13 |   13 |   -1 |    0 |        0
+  10 |     13 |   10 |   14 |    1 |        1
+  11 |     13 |   11 |   12 |    1 |        2
+  12 |     13 |   12 |   13 |    1 |        3
+(12 rows)
 
 </pre></div>
 </div>
@@ -723,14 +720,14 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_alphaShape.html#pgr-alphashape"><span class="std std-ref">pgr_alphaShape</span></a> - Alpha shape computation</li>
-<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><span class="std std-ref">pgr_pointsAsPolygon</span></a> - Polygon around set of points</li>
-<li><a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
+<li><a class="reference internal" href="pgr_alphaShape.html#pgr-alphashape"><span>pgr_alphaShape</span></a> - Alpha shape computation</li>
+<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><span>pgr_pointsAsPolygon</span></a> - Polygon around set of points</li>
+<li><a class="reference internal" href="sampledata.html#sampledata"><span>Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -748,8 +745,8 @@ The edges extracted will conform the corresponding spanning tree.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

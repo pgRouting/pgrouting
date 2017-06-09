@@ -1,5 +1,5 @@
 <map id="COrderInfo::getOrderId" name="COrderInfo::getOrderId">
 <area shape="rect" id="node2" href="$classCVRPSolver.html#a7d8e9dae87d5ce38c4b4e1aaba87db9d" title="CVRPSolver::addOrder" alt="" coords="230,5,389,32"/>
 <area shape="rect" id="node3" href="$classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="208,56,411,83"/>
-<area shape="rect" id="node4" href="$classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="459,74,634,115"/>
+<area shape="rect" id="node4" href="$classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="222,107,397,149"/>
 </map>

@@ -1,0 +1,13 @@
+<map id="pgrouting::vrp::pickdeliver::Solution::operator=" name="pgrouting::vrp::pickdeliver::Solution::operator=">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#a4ad7f87082adccd1bd69b3959f634596" title="pgrouting::vrp::pickdeliver\l::Solution::cost_str" alt="" coords="234,5,405,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#aaa80af4b2b209da7c41f7befe31fe40d" title="pgrouting::vrp::pickdeliver\l::Solution::cvTot" alt="" coords="234,71,405,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#a44c26dcfbfcee0ea4a8f2741facb2ec2" title="pgrouting::vrp::pickdeliver\l::Solution::duration" alt="" coords="234,136,405,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#aac1d38d1b85c748203ff21ef531d117c" title="pgrouting::vrp::pickdeliver\l::Solution::is_feasable" alt="" coords="234,201,405,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#af3b519006256e439841004c9e00dc106" title="pgrouting::vrp::pickdeliver\l::Solution::operator\&lt;" alt="" coords="234,267,405,308"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#a10cd290c6e217de5cc00d116f134af7a" title="pgrouting::vrp::pickdeliver\l::Solution::sort_by_id" alt="" coords="234,332,405,373"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#a5ca2ddff8e528ac00fae0b8eb91ae1ee" title="pgrouting::vrp::pickdeliver\l::Solution::tau" alt="" coords="234,397,405,439"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#a37a7c0a87301c6fb20834254114e6f0b" title="pgrouting::vrp::pickdeliver\l::Solution::total_service_time" alt="" coords="224,463,415,504"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#aec3febf3e5272d25e56e9348d4901e70" title="pgrouting::vrp::pickdeliver\l::Solution::total_travel_time" alt="" coords="229,528,410,569"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#a6ffea08069ac67004c4ab993e38f84a8" title="pgrouting::vrp::pickdeliver\l::Solution::twvTot" alt="" coords="234,593,405,635"/>
+<area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#a4e0b16bdce84b7d6e4dc815358fbcf78" title="pgrouting::vrp::pickdeliver\l::Solution::wait_time" alt="" coords="234,659,405,700"/>
+</map>

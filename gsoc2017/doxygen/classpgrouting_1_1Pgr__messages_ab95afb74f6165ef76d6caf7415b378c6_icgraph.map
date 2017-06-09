@@ -1,6 +1,7 @@
 <map id="pgrouting::Pgr_messages::get_log" name="pgrouting::Pgr_messages::get_log">
-<area shape="rect" id="node2" href="$pickDeliver__driver_8h.html#a06ef15d03d851e390ca5c6572fc92091" title="do_pgr_pickDeliver" alt="" coords="253,5,387,32"/>
-<area shape="rect" id="node3" href="$pickDeliverEuclidean__driver_8h.html#a53635cc50e8e7d8107be4bbee505b3f7" title="do_pgr_pickDeliverEuclidean" alt="" coords="225,56,415,83"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Fleet.html#aa83573a954baa1fdd349b557b664571e" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="251,107,389,149"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ad26d3f2cc122835364eb1ee97d090415" title="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK" alt="" coords="242,173,398,214"/>
+<area shape="rect" id="node2" href="$pickDeliver__driver_8h.html#a06ef15d03d851e390ca5c6572fc92091" title="do_pgr_pickDeliver" alt="" coords="253,5,386,32"/>
+<area shape="rect" id="node3" href="$pickDeliverEuclidean__driver_8h.html#a53635cc50e8e7d8107be4bbee505b3f7" title="do_pgr_pickDeliverEuclidean" alt="" coords="224,56,415,83"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Fleet.html#aa83573a954baa1fdd349b557b664571e" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="250,107,389,149"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ad26d3f2cc122835364eb1ee97d090415" title="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK" alt="" coords="241,173,397,214"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1Pgr__messages.html#aeef4a61000c045a6fe05a39abf673393" title="pgrouting::Pgr_messages\l::operator=" alt="" coords="234,238,405,279"/>
 </map>

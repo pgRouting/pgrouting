@@ -1,5 +1,4 @@
 <map id="CVRPSolver::solveVRP" name="CVRPSolver::solveVRP">
-<area shape="rect" id="node2" href="$VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="437,5,557,32"/>
-<area shape="rect" id="node3" href="$classCVRPSolver.html#af5f2ba2a8378f7ca85e404c5f28f27d1" title="CVRPSolver::getSolution" alt="" coords="219,31,389,57"/>
-<area shape="rect" id="node4" href="$Tester_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="279,81,329,108"/>
+<area shape="rect" id="node2" href="$VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="217,5,337,32"/>
+<area shape="rect" id="node3" href="$Tester_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="252,56,303,83"/>
 </map>

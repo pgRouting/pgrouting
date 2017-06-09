@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::pickdeliver::Vehicle::position_limits" name="pgrouting::vrp::pickdeliver::Vehicle::position_limits">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html#a1fcb331084f4cc2181ceb7fda54167ae" title="pgrouting::vrp::pickdeliver\l::Vehicle::capacity" alt="" coords="224,5,395,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html#a096d1a6ee1e6fc6620808982410bc2f4" title="pgrouting::vrp::pickdeliver\l::Vehicle::is_phony" alt="" coords="224,71,395,112"/>
+</map>

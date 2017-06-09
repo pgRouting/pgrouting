@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b_5fg',['B_G',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#a7428d73c9fae0c55c6e001b31c03df5a',1,'pgrouting::algorithms::Pgr_astar::B_G()'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad55bde42faa545efad97f8fe3dee9576',1,'pgrouting::graph::Pgr_base_graph::B_G()']]],
+  ['b_5fg',['B_G',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#a7428d73c9fae0c55c6e001b31c03df5a',1,'pgrouting::algorithms::Pgr_astar::B_G()'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a51d3dae600843a57ab20c42accfb5db1',1,'pgrouting::graph::Pgr_base_graph::B_G()']]],
   ['back',['back',['../classPath.html#a9d7914dd43375d1c534e92ba64331c56',1,'Path::back() const '],['../classPath.html#a7cec8cc626f16ea03c5b9d004b2c6105',1,'Path::back()']]],
   ['backward_5fcost',['backward_cost',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
   ['backward_5fedge',['backward_edge',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4d8eb8fd150e8963800fd84d9bd5d524',1,'pgrouting::bidirectional::Pgr_bidirectional']]],

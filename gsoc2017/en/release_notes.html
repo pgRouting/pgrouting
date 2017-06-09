@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release Notes &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>Release Notes &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,19 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
     <link rel="prev" title="pgr_vrpOneDepot - Proposed" href="pgr_vrpOneDepot.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -40,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -96,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Release Notes</a></li>
 </ul>
 </ul>
 </li>
@@ -181,21 +177,21 @@
 <p>To see the full list of changes check the list of <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> on Github.</p>
 <p class="rubric">Table of contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#changelog-2-5-0"><span class="std std-ref">pgRouting 2.5.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-4-1"><span class="std std-ref">pgRouting 2.4.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-4-0"><span class="std std-ref">pgRouting 2.4.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-3-2"><span class="std std-ref">pgRouting 2.3.2 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-3-1"><span class="std std-ref">pgRouting 2.3.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-3-0"><span class="std std-ref">pgRouting 2.3.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-4"><span class="std std-ref">pgRouting 2.2.4 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-3"><span class="std std-ref">pgRouting 2.2.3 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-2"><span class="std std-ref">pgRouting 2.2.2 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-1"><span class="std std-ref">pgRouting 2.2.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-0"><span class="std std-ref">pgRouting 2.2.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-1-0"><span class="std std-ref">pgRouting 2.1.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-0-1"><span class="std std-ref">pgRouting 2.0.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-0-0"><span class="std std-ref">pgRouting 2.0.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-5-0"><span>pgRouting 2.5.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-4-1"><span>pgRouting 2.4.1 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-4-0"><span>pgRouting 2.4.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-3-2"><span>pgRouting 2.3.2 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-3-1"><span>pgRouting 2.3.1 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-3-0"><span>pgRouting 2.3.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-4"><span>pgRouting 2.2.4 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-3"><span>pgRouting 2.2.3 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-2"><span>pgRouting 2.2.2 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-1"><span>pgRouting 2.2.1 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-0"><span>pgRouting 2.2.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-1-0"><span>pgRouting 2.1.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-0-1"><span>pgRouting 2.0.1 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-0-0"><span>pgRouting 2.0.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-1-x"><span>pgRouting 1.x Release Notes</span></a></li>
 </ul>
 <div class="section" id="pgrouting-2-5-0-release-notes">
 <span id="changelog-2-5-0"></span><h2>pgRouting 2.5.0 Release Notes<a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Permalink to this headline">¶</a></h2>
@@ -372,7 +368,7 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed">Git closed issues for 2.2.4</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Bogus uses of extern “C”</li>
+<li>Bogus uses of extern &#8220;C&#8221;</li>
 <li>Build error on Fedora 24 + GCC 6.0</li>
 <li>Regression error pgr_nodeNetwork</li>
 </ul>
@@ -412,7 +408,7 @@
 </ul>
 </li>
 <li>Signature fix<ul>
-<li>pgr_dijkstra  – to match what is documented</li>
+<li>pgr_dijkstra  &#8211; to match what is documented</li>
 </ul>
 </li>
 </ul>
@@ -477,7 +473,7 @@
 <li>Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)<ul>
 <li>pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.</li>
 <li>pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.</li>
-<li>pgr_textToPoints - convert a string of x,y;x,y;… locations into point geometries.</li>
+<li>pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.</li>
 <li>pgr_pointsToVids - convert an array of point geometries into vertex ids.</li>
 <li>pgr_pointsToDMatrix - Create a distance matrix from an array of points.</li>
 <li>pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.</li>
@@ -519,7 +515,7 @@
 <li>Undirected Boost.graph.</li>
 </ul>
 </li>
-<li>allow any-integer in the id’s</li>
+<li>allow any-integer in the id&#8217;s</li>
 <li>allow any-numerical on the cost/reverse_cost columns</li>
 </ul>
 </li>
@@ -539,7 +535,7 @@
 <div class="section" id="pgrouting-2-0-0-release-notes">
 <span id="changelog-2-0-0"></span><h2>pgRouting 2.0.0 Release Notes<a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed">Git closed issues for 2.0.0</a> on Github.</p>
-<p>With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to <a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x</span></a> releases.
+<p>With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to <a class="reference internal" href="#changelog-1-x"><span>pgRouting 1.x</span></a> releases.
 The main Goals for this release are:</p>
 <ul class="simple">
 <li>Major restructuring of pgRouting.</li>
@@ -562,7 +558,7 @@ The main Goals for this release are:</p>
 <li>Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)</li>
 <li>One to many nodes search (pgr_kDijkstra)</li>
 <li>K alternate paths shortest path (pgr_ksp)</li>
-<li>New TSP solver that simplifies the code and the build process (pgr_tsp), dropped “Gaul Library” dependency</li>
+<li>New TSP solver that simplifies the code and the build process (pgr_tsp), dropped &#8220;Gaul Library&#8221; dependency</li>
 <li>Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star</li>
 <li>Dropped support for Shooting Star</li>
 <li>Built a test infrastructure that is run before major code changes are checked in</li>
@@ -664,8 +660,8 @@ The following release notes have been copied from the previous <code class="docu
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

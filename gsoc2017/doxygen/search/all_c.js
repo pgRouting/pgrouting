@@ -1,7 +1,7 @@
 var searchData=
 [
   ['last_5fedge_5fid',['last_edge_id',['../classpgrouting_1_1contraction_1_1Pgr__linear.html#a8b6d6520b8f55c307a70f8bff22b8816',1,'pgrouting::contraction::Pgr_linear']]],
-  ['li',['LI',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab3b24225e6812641d81bfeb65dbbd453',1,'pgrouting::graph::Pgr_base_graph']]],
+  ['li',['LI',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a1659fce509fe43c16b853238f0f55075',1,'pgrouting::graph::Pgr_base_graph']]],
   ['linearvertices',['linearVertices',['../classpgrouting_1_1contraction_1_1Pgr__linear.html#ad072f3b9846a9b1c0ab43790c8d9d47c',1,'pgrouting::contraction::Pgr_linear']]],
   ['loaddistancematrix',['loadDistanceMatrix',['../Tester_8cpp.html#a6893792a8a1794d2729c1e037b318b24',1,'loadDistanceMatrix():&#160;Tester.cpp'],['../VRP__core_8cpp.html#a2a98afececbfeec7062d62817b8b88df',1,'loadDistanceMatrix(vrp_cost_element_t *costmatrix, int cost_count, int depotId):&#160;VRP_core.cpp']]],
   ['loadorders',['loadOrders',['../Tester_8cpp.html#a46898c6ff488694bc03249faf2ff2bd4',1,'loadOrders():&#160;Tester.cpp'],['../VRP__core_8cpp.html#afc4838c3b585bbfff512f30744d9a332',1,'loadOrders(vrp_orders_t *orders, int order_count, int depotId):&#160;VRP_core.cpp']]],

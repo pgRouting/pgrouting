@@ -25,6 +25,7 @@ var searchData=
   ['compute_5falpha_5fshape',['compute_alpha_shape',['../alpha_8c.html#a4f47c3e26aa156219529477b79343691',1,'alpha.c']]],
   ['compute_5ftrsp',['compute_trsp',['../trsp_8c.html#af22a27dfd9329f65ede022007d5d2413',1,'trsp.c']]],
   ['conn',['conn',['../VRP_8c.html#a34cf4a89d85450fb66ae0556917b764b',1,'VRP.c']]],
+  ['connectedcomponentsv',['connectedComponentsV',['../classPgr__components.html#a8b64cb29340cf325ff774d92a988ea8a',1,'Pgr_components::connectedComponentsV()'],['../connectedComponentsV_8c.html#a08d4e4522e818774b0927305dec8208b',1,'connectedComponentsV():&#160;connectedComponentsV.c']]],
   ['connectedge',['connectEdge',['../classGraphDefinition.html#a03e605a7da63297b459419b8cfc17845',1,'GraphDefinition']]],
   ['construct_5fgraph',['construct_graph',['../classGraphDefinition.html#a1aa3daf43141bf0ad05ed930b3442e50',1,'GraphDefinition']]],
   ['construct_5fpath',['construct_path',['../classGraphDefinition.html#aae25250b66a74072f49b3d9dd5ff32f4',1,'GraphDefinition']]],

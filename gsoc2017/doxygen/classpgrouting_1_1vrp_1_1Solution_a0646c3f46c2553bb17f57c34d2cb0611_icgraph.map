@@ -1,6 +1,8 @@
 <map id="pgrouting::vrp::Solution::tau" name="pgrouting::vrp::Solution::tau">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Optimize.html#a8c70bf0623e2f035e5a17c44f65a182a" title="pgrouting::vrp::Optimize\l::inter_swap" alt="" coords="243,5,405,46"/>
-<area shape="rect" id="node3" href="$namespacepgrouting_1_1vrp.html#a769f6fd705d9e0b9637268e653373a3a" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="238,71,410,97"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a84d90033d899d7377497cb3d42cb5d05" title="pgrouting::vrp::Pgr\l_pickDeliver::optimize" alt="" coords="249,122,399,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f" title="pgrouting::vrp::Optimize\l::save_if_best" alt="" coords="243,187,405,229"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Optimize.html#a4dcb408130c2ed4164b8d754d11ad44b" title="pgrouting::vrp::Optimize\l::delete_empty_truck" alt="" coords="456,134,617,175"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a8c70bf0623e2f035e5a17c44f65a182a" title="pgrouting::vrp::Optimize\l::inter_swap" alt="" coords="241,39,403,81"/>
+<area shape="rect" id="node4" href="$namespacepgrouting_1_1vrp.html#a769f6fd705d9e0b9637268e653373a3a" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="236,105,408,132"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Solution.html#ab21af677ebe47f2fcfee71e93ab30ed3" title="pgrouting::vrp::Solution\l::operator=" alt="" coords="244,157,400,198"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a84d90033d899d7377497cb3d42cb5d05" title="pgrouting::vrp::Pgr\l_pickDeliver::optimize" alt="" coords="247,222,397,263"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f" title="pgrouting::vrp::Optimize\l::save_if_best" alt="" coords="241,287,403,329"/>
 </map>

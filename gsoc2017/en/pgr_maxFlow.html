@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_maxFlow - Proposed &#8212; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_maxFlow - Proposed &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -18,21 +16,20 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="up" title="Flow - Family of functions" href="flow-family.html" />
     <link rel="next" title="pgr_pushRelabel - Proposed" href="pgr_pushRelabel.html" />
     <link rel="prev" title="Flow - Family of functions" href="flow-family.html" />
 <meta charset='utf-8'>
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -210,7 +207,7 @@
 </ul>
 </li>
 <li>Any duplicated value in the source(s) or target(s) are ignored.</li>
-<li>Uses the <a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span class="std std-ref">pgr_pushRelabel</span></a> algorithm.</li>
+<li>Uses the <a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span>pgr_pushRelabel</span></a> algorithm.</li>
 </ul>
 <ul class="simple">
 <li>Running time: <span class="math">\(O( V ^ 3)\)</span></li>
@@ -218,7 +215,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source,  target)
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, source,  target)
 pgr_maxFlow(edges_sql, sources,  target)
 pgr_maxFlow(edges_sql, source,  targets)
 pgr_maxFlow(edges_sql, sources,  targets)
@@ -228,7 +225,7 @@ RETURNS BIGINT
 <div class="section" id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from the <cite>source</cite> to the <cite>target</cite>.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source,  target)
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, source,  target)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -240,19 +237,19 @@ RETURNS BIGINT
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id,</span>
-            <span class="n">source</span><span class="p">,</span>
-            <span class="n">target</span><span class="p">,</span>
-            <span class="n">capacity</span><span class="p">,</span>
-            <span class="n">reverse_capacity</span>
-    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;</span>
-    <span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span>
-<span class="p">);</span>
- <span class="n">pgr_maxflow</span> 
-<span class="o">-------------</span>
-         <span class="mi">230</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlow(
+    &#39;SELECT id,
+            source,
+            target,
+            capacity,
+            reverse_capacity
+    FROM edge_table&#39;
+    , 6, 11
+);
+ pgr_maxflow 
+-------------
+         230
+(1 row)
 
 </pre></div>
 </div>
@@ -260,7 +257,7 @@ RETURNS BIGINT
 <div class="section" id="one-to-many">
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from the <cite>source</cite> to all of the <cite>targets</cite>.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source,  targets)
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, source,  targets)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -272,19 +269,19 @@ RETURNS BIGINT
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id,</span>
-            <span class="n">source</span><span class="p">,</span>
-            <span class="n">target</span><span class="p">,</span>
-            <span class="n">capacity</span><span class="p">,</span>
-            <span class="n">reverse_capacity</span>
-    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;</span>
-    <span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
-<span class="p">);</span>
- <span class="n">pgr_maxflow</span> 
-<span class="o">-------------</span>
-         <span class="mi">340</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlow(
+    &#39;SELECT id,
+            source,
+            target,
+            capacity,
+            reverse_capacity
+    FROM edge_table&#39;
+    , 6, ARRAY[11, 1, 13]
+);
+ pgr_maxflow 
+-------------
+         340
+(1 row)
 
 </pre></div>
 </div>
@@ -292,7 +289,7 @@ RETURNS BIGINT
 <div class="section" id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from all the <cite>sources</cite> to the <cite>target</cite>.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, sources,  target)
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, sources,  target)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -304,19 +301,19 @@ RETURNS BIGINT
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id,</span>
-            <span class="n">source</span><span class="p">,</span>
-            <span class="n">target</span><span class="p">,</span>
-            <span class="n">capacity</span><span class="p">,</span>
-            <span class="n">reverse_capacity</span>
-    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;</span>
-    <span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="mi">11</span>
-<span class="p">);</span>
- <span class="n">pgr_maxflow</span> 
-<span class="o">-------------</span>
-         <span class="mi">230</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlow(
+    &#39;SELECT id,
+            source,
+            target,
+            capacity,
+            reverse_capacity
+    FROM edge_table&#39;
+    , ARRAY[6, 8, 12], 11
+);
+ pgr_maxflow 
+-------------
+         230
+(1 row)
 
 </pre></div>
 </div>
@@ -324,7 +321,7 @@ RETURNS BIGINT
 <div class="section" id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from all of the <cite>sources</cite> to all of the <cite>targets</cite>.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, sources,  targets)
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, sources,  targets)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -336,19 +333,19 @@ RETURNS BIGINT
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id,</span>
-            <span class="n">source</span><span class="p">,</span>
-            <span class="n">target</span><span class="p">,</span>
-            <span class="n">capacity</span><span class="p">,</span>
-            <span class="n">reverse_capacity</span>
-    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;</span>
-    <span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
-<span class="p">);</span>
- <span class="n">pgr_maxflow</span> 
-<span class="o">-------------</span>
-         <span class="mi">360</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlow(
+    &#39;SELECT id,
+            source,
+            target,
+            capacity,
+            reverse_capacity
+    FROM edge_table&#39;
+    , ARRAY[6, 8, 12], ARRAY[1, 3, 11]
+);
+ pgr_maxflow 
+-------------
+         360
+(1 row)
 
 </pre></div>
 </div>
@@ -383,25 +380,25 @@ RETURNS BIGINT
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>capacity</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -410,7 +407,7 @@ RETURNS BIGINT
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -445,27 +442,27 @@ RETURNS BIGINT
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The edges SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the starting vertex of the flow.</td>
 </tr>
 <tr class="row-even"><td><strong>sources</strong></td>
 <td><code class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Array of identifiers of the starting vertices of the flow.</td>
 </tr>
 <tr class="row-odd"><td><strong>target</strong></td>
 <td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Identifier of the ending vertex of the flow.</td>
 </tr>
 <tr class="row-even"><td><strong>targets</strong></td>
 <td><code class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Array of identifiers of the ending vertices of the flow.</td>
 </tr>
 </tbody>
@@ -494,14 +491,14 @@ RETURNS BIGINT
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="flow-family.html#maxflow"><span class="std std-ref">Flow - Family of functions</span></a></li>
+<li><a class="reference internal" href="flow-family.html#maxflow"><span>Flow - Family of functions</span></a></li>
 <li><a class="reference external" href="http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html">http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html</a></li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm">https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm</a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -519,8 +516,8 @@ RETURNS BIGINT
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 07, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2+.<br/>
+      Last updated on Jun 10, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

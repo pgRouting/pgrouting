@@ -1,7 +1,5 @@
 <map id="CVRPSolver::applyBestMoveInCurrentSolution" name="CVRPSolver::applyBestMoveInCurrentSolution">
-<area shape="rect" id="node2" href="$classCMoveInfo.html#a17d1d76d7e5a8f76961239e88051ce3a" title="CMoveInfo::getModifiedTourAt" alt="" coords="257,5,457,32"/>
-<area shape="rect" id="node3" href="$classCMoveInfo.html#a3b6432dbc449cb014609a735c568edd2" title="CMoveInfo::getModifiedTour\lCount" alt="" coords="264,57,451,98"/>
-<area shape="rect" id="node4" href="$classCSolutionInfo.html#a18c0d607d4c5c3119858bc8ea6590580" title="CSolutionInfo::replaceTour" alt="" coords="269,123,446,149"/>
-<area shape="rect" id="node5" href="$classCVRPSolver.html#acf1e18f7006566b357c932d215188e14" title="CVRPSolver::updateFinalSolution" alt="" coords="248,173,467,200"/>
-<area shape="rect" id="node6" href="$classCVRPSolver.html#a37bf4faec4a3a457d78a3a3d8d5414b1" title="CVRPSolver::updateTabuCount" alt="" coords="253,224,461,251"/>
+<area shape="rect" id="node2" href="$classCMoveInfo.html#a17d1d76d7e5a8f76961239e88051ce3a" title="CMoveInfo::getModifiedTourAt" alt="" coords="248,5,448,32"/>
+<area shape="rect" id="node3" href="$classCMoveInfo.html#a3b6432dbc449cb014609a735c568edd2" title="CMoveInfo::getModifiedTour\lCount" alt="" coords="255,57,441,98"/>
+<area shape="rect" id="node4" href="$classCSolutionInfo.html#a18c0d607d4c5c3119858bc8ea6590580" title="CSolutionInfo::replaceTour" alt="" coords="259,123,437,149"/>
 </map>

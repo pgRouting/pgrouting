@@ -6,7 +6,7 @@ var searchData=
   ['reg_5fsigquit',['REG_SIGQUIT',['../signalhandler_8h.html#a69353e989759136081dcd8cd58c267ef',1,'signalhandler.h']]],
   ['registerhandler',['registerHandler',['../classSignalHandler.html#af11376ff56c905f739de1700e6891476',1,'SignalHandler']]],
   ['release_5ftruck',['release_truck',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Fleet.html#a8f62b2347d2e8f64b32bf28c5f954e66',1,'pgrouting::vrp::pickdeliver::Fleet::release_truck()'],['../classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7',1,'pgrouting::vrp::Fleet::release_truck()']]],
-  ['removed_5fedges',['removed_edges',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad4e950b076a12de9d576d571254fe744',1,'pgrouting::graph::Pgr_base_graph']]],
+  ['removed_5fedges',['removed_edges',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad81c913d7ab75b8fef2c10efe6c208eb',1,'pgrouting::graph::Pgr_base_graph']]],
   ['removed_5fvertices',['removed_vertices',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a7226271b2387e65e8f59375098ec2207',1,'pgrouting::graph::Pgr_contractionGraph']]],
   ['removehandler',['removeHandler',['../classSignalHandler.html#ade885c58ad79e979187db6eb77e456b4',1,'SignalHandler']]],
   ['removeorder',['removeOrder',['../classCTourInfo.html#aecafef8fae1a628beca2739bcfb6d583',1,'CTourInfo::removeOrder()'],['../classCSolutionInfo.html#ac48f757381aa6d4124a31bcd59fe3f1d',1,'CSolutionInfo::removeOrder()'],['../classCVRPSolver.html#a180c471f978b491c87946be52f4a561d',1,'CVRPSolver::removeOrder()']]],
