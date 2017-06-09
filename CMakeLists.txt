@@ -70,10 +70,10 @@ configure_file("configuration.conf" "configuration.conf")
 file(STRINGS configuration.conf PgRouting_CONFIGURATION_FILE)
 
 set(PgRouting_SOURCE_NAMES "")
-set(PgRouting_SQL_DIRECTORIES "") 
-set(PgRouting_DOC_DIRECTORIES "") 
+set(PgRouting_SQL_DIRECTORIES "")
+set(PgRouting_DOC_DIRECTORIES "")
 foreach(line ${PgRouting_CONFIGURATION_FILE})
-    string(REGEX REPLACE "^(#).*" "\\1" comment ${line}) 
+    string(REGEX REPLACE "^(#).*" "\\1" comment ${line})
     if("${comment}" MATCHES "#")
         continue()
     endif()
@@ -143,11 +143,12 @@ set(PgRouting_SOURCE_NAMES
     "pickDeliver" # 2.3
     "vrp_basic"   # 2.0
     "withPoints"  # 2.2
-
     "dijkstraTRSP"
+    "components" # 2.5
 
     # template generated name
     #"funnyDijkstra"
+    "areaContraction"
 
     )
 
