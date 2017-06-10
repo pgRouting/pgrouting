@@ -95,6 +95,11 @@ UPDATE pointsOfInterest
     FROM edge_table AS e WHERE edge_id = id;
 
 --RESTRICTIONS CREATE
+CREATE TABLE restrict (
+    id BIGSERIAL,
+    restricted BIGINT[] ,
+    cost FLOAT
+);
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
