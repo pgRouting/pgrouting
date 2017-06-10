@@ -5,7 +5,7 @@ SET client_min_messages = WARNING;
 
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
---              SAMPLE DATA
+--              SAMPLE DATA                
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 
@@ -13,7 +13,6 @@ DROP TABLE IF EXISTS edge_table;
 DROP TABLE IF EXISTS edge_table_vertices_pgr;
 DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS restrictions;
-DROP TABLE IF EXISTS retrict;
 DROP TABLE IF EXISTS vertex_table;
 DROP TABLE IF EXISTS categories;
 
@@ -41,7 +40,7 @@ INSERT INTO edge_table (
     cost, reverse_cost,
     capacity, reverse_capacity,
     x1, y1,
-    x2, y2) VALUES
+    x2, y2) VALUES 
 (3, 1,    1,  1,  80, 130,   2,   0,    2, 1),
 (3, 2,   -1,  1,  -1, 100,   2,   1,    3, 1),
 (2, 1,   -1,  1,  -1, 130,   3,   1,    4, 1),
@@ -101,7 +100,6 @@ CREATE TABLE restrict (
     restricted BIGINT[] ,
     cost FLOAT
 );
-
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
@@ -144,3 +142,4 @@ INSERT INTO vertex_table VALUES
 (8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
 
 --VERTEX TABLE END
+

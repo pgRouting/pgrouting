@@ -28,7 +28,6 @@ SET(LOCAL_FILES
     doc-contraction.queries
     doc-pgr_bdAstarCost.queries
     doc-pgr_dijkstra.queries
-    doc-pgr_dijkstraTRSP.queries
     doc-pgr_labelGraph.queries
     doc-pgr_withPointsCost.queries
     doc-trsp.queries
@@ -42,6 +41,8 @@ SET(LOCAL_FILES
     doc-pgr_drivingDistance.queries
     doc-pgr_maxFlow.queries
     doc-pgr_withPointsKSP.queries
+	  doc-pgr_connectedComponentsV.queries
+	  doc-pgr_areaContraction.queries
     )
 
 foreach (f ${LOCAL_FILES})
@@ -50,4 +51,3 @@ foreach (f ${LOCAL_FILES})
 endforeach()
 
 set(PgRouting_DOC_FILES ${PgRouting_DOC_FILES} ${LOCAL_DOC_FILES} PARENT_SCOPE)
-

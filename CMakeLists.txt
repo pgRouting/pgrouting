@@ -144,10 +144,11 @@ set(PgRouting_SOURCE_NAMES
     "vrp_basic"   # 2.0
     "withPoints"  # 2.2
 
-    "dijkstraTRSP"
+    "components" # 2.5
 
     # template generated name
     #"funnyDijkstra"
+    "areaContraction"
 
     )
 

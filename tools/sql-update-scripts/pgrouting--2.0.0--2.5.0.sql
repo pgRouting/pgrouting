@@ -3217,19 +3217,19 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
 
 
 CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
-    orders_sql TEXT,
-    vehicles_sql TEXT,
-    matrix_cell_sql TEXT,
+    TEXT, -- orders_sql
+    TEXT, -- vehicles_sql
+    TEXT, -- matrix_cell_sql
     factor FLOAT DEFAULT 1,
     max_cycles INTEGER DEFAULT 10,
     initial_sol INTEGER DEFAULT 4,
 
     OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
     OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
     OUT order_id BIGINT,
-    OUT stop_type INT,
     OUT cargo FLOAT,
     OUT travel_time FLOAT,
     OUT arrival_time FLOAT,
@@ -3246,18 +3246,18 @@ LANGUAGE c VOLATILE;
 
 
 CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
-    orders_sql TEXT,
-    vehicles_sql TEXT,
+    TEXT, -- orders_sql
+    TEXT, -- vehicles_sql
     factor FLOAT DEFAULT 1,
     max_cycles INTEGER DEFAULT 10,
     initial_sol INTEGER DEFAULT 4,
 
     OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
     OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
     OUT order_id BIGINT,
-    OUT stop_type INT,
     OUT cargo FLOAT,
     OUT travel_time FLOAT,
     OUT arrival_time FLOAT,
@@ -3327,7 +3327,7 @@ BEGIN
         depots AS (SELECT p_deliver.*, 0 as pindex, 0 as dindex, 0 AS the_id FROM p_deliver WHERE (stop_type IN (-1,1,6))),
         the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
 
-        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
+        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_seq, a.stop_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
         FROM (SELECT * FROM the_union) AS a ORDER BY a.seq
         $$;
     RETURN QUERY EXECUTE final_sql;
