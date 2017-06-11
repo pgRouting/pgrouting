@@ -6,8 +6,8 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2017 Ankur Shukla
-Mail: work.ankurshukla@gmail.com
+Copyright (c) 2017 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -34,27 +34,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "../../contraction/src/pgr_contractionGraph.hpp"
+
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-template <typename G>
-static void process_contraction(
-        G &graph,
-        const std::vector< pgr_edge_t > &edges,
-        const std::vector< int64_t > borderVertices,
-        std::vector< pgrouting::CH_edge > &shortcut_edges,
-        std::ostringstream &log,
-        std::ostringstream &err) {
-        }
+
+
 
 
 /************************************************************
-TEXT, --edges_sql
-ANYARRAY, --border_nodes
-directed BOOLEAN DEFAULT true,
+  TEXT,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
  ***********************************************************/
+
+template < class G >
+static
+Path
+pgr_areaContraction(
+        G &graph,
+        int64_t* borderVertices) {
+    Path path;
+    return path;
+}
+
+
 void
 do_pgr_areaContraction(
         pgr_edge_t  *data_edges,
@@ -80,44 +86,36 @@ do_pgr_areaContraction(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        /*
-        *Converting to C++ Structures
-        */
+        Path path;
 
-        std::vector<pgr_edge_t> edges(data_edges, data_edges + data_edges_size);
-        std::vector<int64_t> border(
-                borderVertices,
-                borderVertices + borderVertices_size);
-
-        /*
-        *Creating new containers
-        */
-        std::vector< pgrouting::CH_edge > shortcut_edges;
-        pgassert(shortcut_edges.empty());
-
-        /*
-        *Working with directed and undirected graph
-        */
-        graphType gType = directed? DIRECTED: UNDIRECTED;
         if (directed) {
-          log << "Working with directed Graph\n";
-          pgrouting::CHDirectedGraph digraph(gType);
-
-          process_contraction(digraph, edges, border, shortcut_edges,
-                  log, err);
-
-
-
+            log << "Working with directed Graph\n";
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, data_edges_size);
+            path = pgr_areaContraction(digraph,
+                  borderVertices);
         } else {
-          log << "Working with Undirected Graph\n";
-
-          pgrouting::CHUndirectedGraph undigraph(gType);
-
-          process_contraction(undigraph, edges, border, shortcut_edges,
-                  log, err);
-
-
+            log << "Working with Undirected Graph\n";
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, data_edges_size);
+            path = pgr_areaContraction(undigraph,
+                    borderVertices);
         }
+
+        auto count = path.size();
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice <<
+                "No paths found between start_vid and end_vid vertices";
+            return;
+        }
+
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        size_t sequence = 0;
+        path.generate_postgres_data(return_tuples, sequence);
+        (*return_count) = sequence;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
