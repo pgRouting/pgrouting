@@ -13,7 +13,6 @@ DROP TABLE IF EXISTS edge_table;
 DROP TABLE IF EXISTS edge_table_vertices_pgr;
 DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS restrictions;
-DROP TABLE IF EXISTS retrict;
 DROP TABLE IF EXISTS vertex_table;
 DROP TABLE IF EXISTS categories;
 
@@ -104,6 +103,7 @@ CREATE TABLE restrict (
 
 INSERT INTO restrict(restricted, cost) VALUES
 ('{4, 7}', -1);
+
 
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
