@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(561);
+SELECT plan(579);
 
 SET client_min_messages TO ERROR;
 
@@ -20,7 +20,6 @@ BEGIN
 
     FOR i IN 1.. cant LOOP
         FOR j IN 1.. cant LOOP
-            CONTINUE WHEN (j = 2 OR j = 5 OR j = 8) AND (i = 2 OR i = 5 OR i = 8);
 
             -- DIRECTED
             inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7';

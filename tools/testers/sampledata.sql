@@ -97,10 +97,13 @@ UPDATE pointsOfInterest
 
 --RESTRICTIONS CREATE
 CREATE TABLE restrict (
-    id SERIAL,
-    restricted BIGINT[],
+    id BIGSERIAL,
+    restricted BIGINT[] ,
     cost FLOAT
 );
+
+INSERT INTO restrict(restricted, cost) VALUES
+('{4, 7}', -1);
 
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
