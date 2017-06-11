@@ -102,6 +102,9 @@ CREATE TABLE restrict (
     cost FLOAT
 );
 
+INSERT INTO restrict(restricted, cost) VALUES
+('{4, 7}', -1);
+
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
