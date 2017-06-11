@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -56,6 +56,7 @@ extern "C" {
                 int64_t end_vid,
                 bool directed,
                 bool only_cost,
+                bool strict,
                 General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,

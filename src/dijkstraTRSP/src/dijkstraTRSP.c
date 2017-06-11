@@ -79,6 +79,7 @@ process(
 #endif
         bool directed,
         bool only_cost,
+        bool strict,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     /*
@@ -140,17 +141,9 @@ process(
             total_edges,
             start_vid,
             end_vid,
-#if 0
-    /*
-     *  handling arrays example
-     */
-
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
-#endif
-
             directed,
             only_cost,
+            strict,
             result_tuples,
             result_count,
             &log_msg,
@@ -210,6 +203,7 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
     BIGINT,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
+    strict BOOLEAN DEFAULT false
          **********************************************************************/
 
 
@@ -229,6 +223,7 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
 #endif
                 PG_GETARG_BOOL(4),
                 PG_GETARG_BOOL(5),
+                PG_GETARG_BOOL(6),
                 &result_tuples,
                 &result_count);
 

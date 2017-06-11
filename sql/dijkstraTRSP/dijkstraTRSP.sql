@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2017 Vidhan Jain
 Mail: vidhanj1307.com
 
@@ -34,7 +34,8 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraTRSP(
     BIGINT,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
-        OUT seq INTEGER,
+    strict BOOLEAN DEFAULT true, 
+    OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -44,4 +45,3 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraTRSP(
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'dijkstraTRSP'
 LANGUAGE c IMMUTABLE STRICT;
-
