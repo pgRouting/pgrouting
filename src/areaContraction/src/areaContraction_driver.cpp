@@ -40,14 +40,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 template <typename G>
-static void process_contraction(
+static void process_areaContraction(
         G &graph,
         const std::vector< pgr_edge_t > &edges,
         const std::vector< int64_t > borderVertices,
         std::vector< pgrouting::CH_edge > &shortcut_edges,
         std::ostringstream &log,
         std::ostringstream &err) {
-        }
+    graph.insert_edges(edges);
+
+    log << "Checking for valid border vertices\n";
+    for (const auto vertex : borderVertices) {
+        if (!graph.has_vertex(vertex)) {
+            err << "Invalid border vertex: " << vertex << "\n";
+            return;
+       }
+    }
+
+#ifndef NDEBUG
+    log << "Before contraction\n";
+    graph.print_graph(log);
+#endif
+
+    /*
+    * Calling function to do areaContraction
+    */
+
+
+ }
 
 
 /************************************************************
@@ -98,12 +118,11 @@ do_pgr_areaContraction(
         /*
         *Working with directed and undirected graph
         */
-        graphType gType = directed? DIRECTED: UNDIRECTED;
         if (directed) {
           log << "Working with directed Graph\n";
           pgrouting::CHDirectedGraph digraph(gType);
 
-          process_contraction(digraph, edges, border, shortcut_edges,
+          process_areaContraction(digraph, edges, border, shortcut_edges,
                   log, err);
 
 
@@ -113,7 +132,7 @@ do_pgr_areaContraction(
 
           pgrouting::CHUndirectedGraph undigraph(gType);
 
-          process_contraction(undigraph, edges, border, shortcut_edges,
+          process_areaContraction(undigraph, edges, border, shortcut_edges,
                   log, err);
 
 
