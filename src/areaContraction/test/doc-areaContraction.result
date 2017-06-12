@@ -24,9 +24,3 @@ seq | type | id | contracted_vertices | source | target | cost
 -- q3
 ROLLBACK;
 ROLLBACK'
-                                                     }
-                                                   ],
-           'z_crash' => 0,
-           'z_fail' => 1,
-           'z_pass' => 0
-         };
