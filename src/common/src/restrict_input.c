@@ -95,6 +95,8 @@ pgr_get_restriction_data(
 
     // experiment starts
 
+    size_t total_tuples = (*total_restrictions) ;
+    
     (*restrictions) = (Restrict_t *)palloc0(sizeof(Restrict_t));
 
     (*restrictions)[0].id = 1;
