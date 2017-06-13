@@ -28,18 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
-    orders_sql TEXT,
-    vehicles_sql TEXT,
+    TEXT, -- orders_sql
+    TEXT, -- vehicles_sql
     factor FLOAT DEFAULT 1,
     max_cycles INTEGER DEFAULT 10,
     initial_sol INTEGER DEFAULT 4,
 
     OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
     OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
     OUT order_id BIGINT,
-    OUT stop_type INT,
     OUT cargo FLOAT,
     OUT travel_time FLOAT,
     OUT arrival_time FLOAT,

@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-     pgr_gsoc_vrppdtw.rst
+    #pgr_gsoc_vrppdtw.rst
     )
 
 foreach (f ${LOCAL_FILES})
