@@ -1,7 +1,0 @@
-<map id="pgrouting::tsp::eucledianDmatrix::size" name="pgrouting::tsp::eucledianDmatrix::size">
-<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a303896714de1d58dc3f185d2fa2b864a" title="pgrouting::tsp::eucledian\lDmatrix::comparable_distance" alt="" coords="641,5,840,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a2c3783bc16e5e6a24acb479221dcb843" title="pgrouting::tsp::eucledian\lDmatrix::distance" alt="" coords="429,60,593,101"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1eucledianDmatrix.html#ab9115bcf8cefc96b6505be78a4664373" title="returns a row of distances " alt="" coords="217,85,381,127"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a7e3d5af321e5555f0b2880d2f59b67b9" title="pgrouting::tsp::eucledian\lDmatrix::set_ids" alt="" coords="217,151,381,192"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1tsp_1_1eucledianDmatrix.html#aa00baeab9840ee756bbc3662ff52a669" title="tour evaluation " alt="" coords="217,216,381,257"/>
-</map>

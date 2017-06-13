@@ -1,7 +1,0 @@
-<map id="CVRPSolver::insertOrder" name="CVRPSolver::insertOrder">
-<area shape="rect" id="node2" href="$classCTourInfo.html#a88edb80bf3bda693a25d11c1344ae97e" title="CTourInfo::getOrderVector" alt="" coords="223,5,399,32"/>
-<area shape="rect" id="node3" href="$classCTourInfo.html#a472803511c17a75f750bcdcf8df72136" title="CTourInfo::getVehicleInfo" alt="" coords="225,56,396,83"/>
-<area shape="rect" id="node4" href="$classCTourInfo.html#ac7a8b3ea9abf1f12b7872159dc62f0b1" title="CTourInfo::insertOrder" alt="" coords="235,107,387,133"/>
-<area shape="rect" id="node5" href="$classCVehicleInfo.html#aef29040feb75b114df9b3ba4d5659bb9" title="CVehicleInfo::loadUnit" alt="" coords="234,157,387,184"/>
-<area shape="rect" id="node6" href="$classCTourInfo.html#aecafef8fae1a628beca2739bcfb6d583" title="CTourInfo::removeOrder" alt="" coords="229,208,392,235"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="CSolutionInfo::getTour" name="CSolutionInfo::getTour">
-<area shape="rect" id="node2" href="$classCVRPSolver.html#a4ff503950e6977c8f6d5260619cbb503" title="CVRPSolver::addOrderAtTour" alt="" coords="207,5,404,32"/>
-<area shape="rect" id="node3" href="$classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393" title="CVRPSolver::attemptVehicle\lExchange" alt="" coords="209,57,401,98"/>
-<area shape="rect" id="node4" href="$VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="245,123,365,149"/>
-<area shape="rect" id="node5" href="$classCVRPSolver.html#a46471aa397eebe84b6ae9b950f296ce3" title="CVRPSolver::insertUnserved\lOrders" alt="" coords="209,174,402,215"/>
-<area shape="rect" id="node6" href="$Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2" title="print_solution" alt="" coords="256,240,355,267"/>
-</map>

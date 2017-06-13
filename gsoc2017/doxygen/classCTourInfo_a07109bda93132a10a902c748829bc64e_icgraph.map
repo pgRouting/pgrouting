@@ -1,7 +1,0 @@
-<map id="CTourInfo::getEndDepot" name="CTourInfo::getEndDepot">
-<area shape="rect" id="node2" href="$VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="260,5,380,32"/>
-<area shape="rect" id="node3" href="$classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="219,56,421,83"/>
-<area shape="rect" id="node4" href="$classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="233,107,407,149"/>
-<area shape="rect" id="node5" href="$Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2" title="print_solution" alt="" coords="271,173,369,200"/>
-<area shape="rect" id="node6" href="$classCVRPSolver.html#a454e4158281f70f3f450ecf08319546e" title="CVRPSolver::updateTourCosts" alt="" coords="217,224,423,251"/>
-</map>

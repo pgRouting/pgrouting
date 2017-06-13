@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::pickdeliver::Vehicle::free_time" name="pgrouting::vrp::pickdeliver::Vehicle::free_time">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html#a415b22d3b88bcc08660c179a606b3a1c" title="pgrouting::vrp::pickdeliver\l::Vehicle::duration" alt="" coords="224,5,395,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html#a0934b2dd944194a97ab83a2c01f13f65" title="pgrouting::vrp::pickdeliver\l::Vehicle::total_wait_time" alt="" coords="224,71,395,112"/>
-</map>

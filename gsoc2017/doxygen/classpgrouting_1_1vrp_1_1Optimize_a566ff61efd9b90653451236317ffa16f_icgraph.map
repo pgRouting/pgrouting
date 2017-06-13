@@ -1,6 +1,0 @@
-<map id="pgrouting::vrp::Optimize::save_if_best" name="pgrouting::vrp::Optimize::save_if_best">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Optimize.html#aa287600aa1843dbaeec1b67934b102ef" title="pgrouting::vrp::Optimize\l::decrease_truck" alt="" coords="633,5,795,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a4dcb408130c2ed4164b8d754d11ad44b" title="pgrouting::vrp::Optimize\l::delete_empty_truck" alt="" coords="424,35,585,76"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Optimize.html#a18e362ade6f898d3b1cbba0505e5abcf" title="pgrouting::vrp::Optimize\l::move_reduce_cost" alt="" coords="215,85,376,127"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Optimize.html#a59e81988357151065d6dd02c742a3d84" title="pgrouting::vrp::Optimize\l::swap_order" alt="" coords="215,151,376,192"/>
-</map>

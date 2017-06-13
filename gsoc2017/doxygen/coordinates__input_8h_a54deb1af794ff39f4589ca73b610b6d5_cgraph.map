@@ -1,7 +1,0 @@
-<map id="pgr_get_coordinates" name="pgr_get_coordinates">
-<area shape="rect" id="node2" href="$get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46" title="pgr_fetch_column_info" alt="" coords="192,5,345,32"/>
-<area shape="rect" id="node3" href="$coordinates__input_8c.html#ac4c790b0cafc486a0e9adaaa08dfdb43" title="pgr_fetch_row" alt="" coords="217,56,321,83"/>
-<area shape="rect" id="node4" href="$postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d" title="pgr_SPI_cursor_open" alt="" coords="195,107,342,133"/>
-<area shape="rect" id="node5" href="$postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12" title="pgr_SPI_prepare" alt="" coords="209,157,328,184"/>
-<area shape="rect" id="node6" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="229,208,308,235"/>
-</map>

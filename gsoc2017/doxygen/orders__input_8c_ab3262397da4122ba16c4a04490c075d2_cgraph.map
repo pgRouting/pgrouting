@@ -1,7 +1,0 @@
-<map id="pgr_get_pd_orders_general" name="pgr_get_pd_orders_general">
-<area shape="rect" id="node2" href="$orders__input_8c.html#a94ba2b2c12bd206b9fbc82482e957902" title="fetch_pd_orders" alt="" coords="251,5,366,32"/>
-<area shape="rect" id="node3" href="$get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46" title="pgr_fetch_column_info" alt="" coords="232,56,385,83"/>
-<area shape="rect" id="node4" href="$postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d" title="pgr_SPI_cursor_open" alt="" coords="235,107,382,133"/>
-<area shape="rect" id="node5" href="$postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12" title="pgr_SPI_prepare" alt="" coords="249,157,368,184"/>
-<area shape="rect" id="node6" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="269,208,348,235"/>
-</map>

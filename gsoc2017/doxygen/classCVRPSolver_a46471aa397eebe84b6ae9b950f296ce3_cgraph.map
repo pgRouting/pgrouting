@@ -1,9 +1,0 @@
-<map id="CVRPSolver::insertUnservedOrders" name="CVRPSolver::insertUnservedOrders">
-<area shape="rect" id="node2" href="$classCMoveInfo.html#a0df5e45ed8d5cf39afe438056300d0f0" title="CMoveInfo::getInitialTour" alt="" coords="262,5,431,32"/>
-<area shape="rect" id="node3" href="$classCSolutionInfo.html#a48fb57c5c2469bc4391a640dd1a45c21" title="CSolutionInfo::getOrderServed" alt="" coords="247,56,447,83"/>
-<area shape="rect" id="node4" href="$classCSolutionInfo.html#a273ab85f464b6063e4e186aaca2842b1" title="CSolutionInfo::getTour" alt="" coords="270,107,423,133"/>
-<area shape="rect" id="node5" href="$classCSolutionInfo.html#a86867aa45fbed5fd85c42df0a6b3daf0" title="CSolutionInfo::getTourInfo\lVector" alt="" coords="259,158,434,199"/>
-<area shape="rect" id="node6" href="$classCSolutionInfo.html#acf5e04083c8e041676c0e02680b22178" title="CSolutionInfo::getUnserved\lOrderAt" alt="" coords="255,223,438,265"/>
-<area shape="rect" id="node7" href="$classCMoveInfo.html#a49a99d470f83163d1c3a2acab6d8c198" title="CMoveInfo::setInitialTour" alt="" coords="262,289,431,316"/>
-<area shape="rect" id="node8" href="$classCMoveInfo.html#ad3aa8e7b7fb24a5ab5d0e4a28e0846d2" title="CMoveInfo::setModifiedTour" alt="" coords="253,340,440,367"/>
-</map>

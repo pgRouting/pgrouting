@@ -1,5 +1,0 @@
-<map id="pred" name="pred">
-<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1TSP.html#a61ead4bc9e32b32929eff6325afc3989" title="pgrouting::tsp::TSP\l::getDeltaSwap" alt="" coords="118,5,253,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a1bf6691edaa8813f83a9b6bf6e1f517d" title="True when not violation. " alt="" coords="109,71,261,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#ae6e501589a7b939397efaa4b962a987d" title="True when not violation. " alt="" coords="100,136,271,177"/>
-</map>

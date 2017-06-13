@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::pickdeliver::Vehicle_node::feasible" name="pgrouting::vrp::pickdeliver::Vehicle_node::feasible">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a82200e88f108ac22f0077db951f4d91d" title="@ { " alt="" coords="224,5,395,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#ae6e501589a7b939397efaa4b962a987d" title="True when not violation. " alt="" coords="224,71,395,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a5fe883a16def8e154e75d8917135003f" title="True when at this node does not violate time windows. " alt="" coords="224,136,395,177"/>
-</map>

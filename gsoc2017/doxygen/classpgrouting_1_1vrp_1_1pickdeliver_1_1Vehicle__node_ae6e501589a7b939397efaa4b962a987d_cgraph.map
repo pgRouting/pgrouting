@@ -1,7 +1,0 @@
-<map id="pgrouting::vrp::pickdeliver::Vehicle_node::has_cv" name="pgrouting::vrp::pickdeliver::Vehicle_node::has_cv">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a29299954f8eabf568ffc3c08c3b856cf" title="@ { " alt="" coords="224,5,395,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#ae6a2d691670f2e6e2fd2e3a2c55e22ef" title="@ { " alt="" coords="224,85,395,126"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#af20c2193715f78367ecbd26e6bf2cb7e" title="is_end " alt="" coords="224,150,395,191"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a710e76c84b603597e5974bc29b51f660" title="@ { " alt="" coords="224,215,395,257"/>
-<area shape="rect" id="node6" href="$pgr__tsp_8cpp.html#ae0eace0f5ad927638e3f80c3efb3411e" title="pred" alt="" coords="286,281,333,308"/>
-</map>

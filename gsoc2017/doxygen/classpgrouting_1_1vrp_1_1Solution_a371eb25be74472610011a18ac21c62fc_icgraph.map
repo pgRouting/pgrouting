@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Solution::is_feasable" name="pgrouting::vrp::Solution::is_feasable">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Optimize.html#a6e9c8e6bdb73ac829a14847ac3b5dd0e" title="pgrouting::vrp::Optimize\l::decrease_truck" alt="" coords="209,5,371,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="211,71,369,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Solution.html#ab21af677ebe47f2fcfee71e93ab30ed3" title="pgrouting::vrp::Solution\l::operator=" alt="" coords="212,136,368,177"/>
-</map>

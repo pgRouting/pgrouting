@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::PgrFlowGraph::get_flow_edges" name="pgrouting::graph::PgrFlowGraph::get_flow_edges">
-<area shape="rect" id="node2" href="$max__flow__driver_8h.html#a1fe35eb229126a6c0299c02d245a6401" title="do_pgr_max_flow" alt="" coords="252,5,376,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a205922056671c5480f3fbe2d5458ade2" title="pgrouting::graph::PgrFlow\lGraph::edge_disjoint_paths" alt="" coords="224,57,404,98"/>
-</map>

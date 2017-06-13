@@ -1,5 +1,0 @@
-<map id="CVRPSolver::applyBestMoveInCurrentSolution" name="CVRPSolver::applyBestMoveInCurrentSolution">
-<area shape="rect" id="node2" href="$classCMoveInfo.html#a17d1d76d7e5a8f76961239e88051ce3a" title="CMoveInfo::getModifiedTourAt" alt="" coords="248,5,448,32"/>
-<area shape="rect" id="node3" href="$classCMoveInfo.html#a3b6432dbc449cb014609a735c568edd2" title="CMoveInfo::getModifiedTour\lCount" alt="" coords="255,57,441,98"/>
-<area shape="rect" id="node4" href="$classCSolutionInfo.html#a18c0d607d4c5c3119858bc8ea6590580" title="CSolutionInfo::replaceTour" alt="" coords="259,123,437,149"/>
-</map>

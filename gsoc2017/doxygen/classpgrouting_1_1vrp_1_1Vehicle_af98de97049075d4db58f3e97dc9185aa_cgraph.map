@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::insert" name="pgrouting::vrp::Vehicle::insert">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aeec21aba283e23f4bf2a355f4f7c2764" title="@ { " alt="" coords="209,5,361,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8" title="Invariant The path must: " alt="" coords="412,35,564,76"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="205,122,364,149"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::is_partially_waitTime_compatible_IJ" name="pgrouting::vrp::Tw_node::is_partially_waitTime_compatible_IJ">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#af574cbe6f96703feea5311d9482b2bf8" title="@ { " alt="" coords="435,5,597,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ab5e20b48da4b3dfc53b6aa945d7e92e7" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="224,35,387,76"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a4049eacb07b80235585854b225bfa285" title="True when arrivalTime is before it opens. " alt="" coords="229,100,381,141"/>
-</map>

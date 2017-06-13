@@ -1,8 +1,0 @@
-<map id="pgrouting::Pgr_messages::operator=" name="pgrouting::Pgr_messages::operator=">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html#a99a9dde300a4a8e5ce8abc8b0560b9f8" title="clear " alt="" coords="224,5,395,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__messages.html#a8b2569b45f85c3ac2686934160e9ae6a" title="get_error " alt="" coords="224,71,395,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Pgr__messages.html#a8619f0b2a947f14ef8e5528712f4c0fb" title="get_error " alt="" coords="224,136,395,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1Pgr__messages.html#ab95afb74f6165ef76d6caf7415b378c6" title="get_log " alt="" coords="224,201,395,243"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1Pgr__messages.html#aa68fcadee819648aacb16201ec6fcb5f" title="get_notice " alt="" coords="224,267,395,308"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1Pgr__messages.html#a6645d774cbe015af7efffb814dbf81e5" title="get_error " alt="" coords="224,332,395,373"/>
-</map>

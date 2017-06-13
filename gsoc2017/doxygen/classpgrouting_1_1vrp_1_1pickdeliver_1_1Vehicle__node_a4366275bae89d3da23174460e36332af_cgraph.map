@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::pickdeliver::Vehicle_node::total_service_time" name="pgrouting::vrp::pickdeliver::Vehicle_node::total_service_time">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a2ea6f755481cda1464434286428eaa42" title="delta_time = departure_time(this) &#45; departure_time(previous) " alt="" coords="305,5,481,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a60f0a4cc0ff9cac8c20108a8cdf1e7d5" title="True when arrival_time + delta_time generates TWV. " alt="" coords="276,71,511,112"/>
-</map>

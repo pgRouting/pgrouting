@@ -1,7 +1,0 @@
-<map id="do_pgr_bdDijkstra" name="do_pgr_bdDijkstra">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="180,5,359,47"/>
-<area shape="rect" id="node3" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="407,122,481,149"/>
-<area shape="rect" id="node4" href="$bdDijkstra__driver_8cpp.html#af14a40e180f0590800e7cbdb03c90595" title="pgr_bdDijkstra" alt="" coords="216,122,323,149"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="233,173,305,199"/>
-<area shape="rect" id="node6" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="193,224,346,265"/>
-</map>

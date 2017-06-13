@@ -1,7 +1,0 @@
-<map id="CVRPSolver::updateTourCosts" name="CVRPSolver::updateTourCosts">
-<area shape="rect" id="node2" href="$classCTourInfo.html#a07109bda93132a10a902c748829bc64e" title="CTourInfo::getEndDepot" alt="" coords="265,5,429,32"/>
-<area shape="rect" id="node3" href="$classCTourInfo.html#a88edb80bf3bda693a25d11c1344ae97e" title="CTourInfo::getOrderVector" alt="" coords="259,56,435,83"/>
-<area shape="rect" id="node4" href="$classCTourInfo.html#afbb2a06f880213c22a23a556e684d70b" title="CTourInfo::getStartDepot" alt="" coords="262,107,431,133"/>
-<area shape="rect" id="node5" href="$classCTourInfo.html#adc67bee772f3d746eb7ab883fff00d7c" title="CTourInfo::setStartTime" alt="" coords="265,157,428,184"/>
-<area shape="rect" id="node6" href="$classCTourInfo.html#ac5a226925fe44ba1e5aed566bf479908" title="CTourInfo::updateCost" alt="" coords="269,208,424,235"/>
-</map>

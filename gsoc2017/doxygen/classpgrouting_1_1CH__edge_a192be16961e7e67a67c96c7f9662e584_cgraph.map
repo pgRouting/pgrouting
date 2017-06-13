@@ -1,6 +1,0 @@
-<map id="pgrouting::CH_edge::CH_edge" name="pgrouting::CH_edge::CH_edge">
-<area shape="rect" id="node2" href="$classpgrouting_1_1CH__edge.html#a2bff292b91e87794f3454a7666611b6d" title="pgrouting::CH_edge\l::add_contracted_edge\l_vertices" alt="" coords="201,5,355,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1CH__edge.html#a2239815ed827bcd3d70f1fba769bbf11" title="pgrouting::CH_edge\l::add_contracted_vertex" alt="" coords="197,85,359,126"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1CH__edge.html#a22dc23aab2ffd1dedfb4b8e3b0a1175b" title="pgrouting::CH_edge\l::cp_members" alt="" coords="209,150,347,191"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1CH__edge.html#ad0efe680f834db102ca451a4e6e33ac6" title="pgrouting::CH_edge\l::has_contracted_vertices" alt="" coords="192,215,364,257"/>
-</map>

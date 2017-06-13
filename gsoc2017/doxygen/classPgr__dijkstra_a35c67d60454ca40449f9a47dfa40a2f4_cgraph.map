@@ -1,5 +1,0 @@
-<map id="Pgr_dijkstra::drivingDistance" name="Pgr_dijkstra::drivingDistance">
-<area shape="rect" id="node2" href="$classPgr__dijkstra.html#a2f5d0a4536457dd08f4d541ea5e5ffca" title="Pgr_dijkstra::clear" alt="" coords="250,5,377,32"/>
-<area shape="rect" id="node3" href="$classPgr__dijkstra.html#a9000bca304955c3feb4f9d249c511295" title="Call to Dijkstra 1 source to distance. " alt="" coords="243,57,384,98"/>
-<area shape="rect" id="node4" href="$classPath.html#a5b5d58e304f85ef96637a260917c30ac" title="Path::push_back" alt="" coords="253,123,373,149"/>
-</map>

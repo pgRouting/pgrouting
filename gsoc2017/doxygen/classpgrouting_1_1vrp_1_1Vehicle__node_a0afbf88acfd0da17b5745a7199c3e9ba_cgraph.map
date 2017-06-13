@@ -1,8 +1,0 @@
-<map id="pgrouting::vrp::Vehicle_node::evaluate" name="pgrouting::vrp::Vehicle_node::evaluate">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a1471454a7717cc13ec4e18250348ae9d" title="Truck&#39;s arrival_time to this node. " alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a561022bf17ce680711eea5a7b2146dd1" title="Returns the demand associated with this node. " alt="" coords="586,92,713,133"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a1bf6691edaa8813f83a9b6bf6e1f517d" title="True when not violation. " alt="" coords="205,173,357,215"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8849b4f343980675cde9e63d686590d0" title="@ { " alt="" coords="405,173,532,215"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a143adbc3116b92e89358dce21910a7eb" title="Returns the opening time. " alt="" coords="586,185,713,227"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a5d4391a08d6d4f59bf282ea12735224e" title="Returns the service time for this node. " alt="" coords="580,261,719,303"/>
-</map>

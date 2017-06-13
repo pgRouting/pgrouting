@@ -1,8 +1,0 @@
-<map id="Path::empty" name="Path::empty">
-<area shape="rect" id="node2" href="$pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0" title="adjust_pids" alt="" coords="187,5,275,32"/>
-<area shape="rect" id="node3" href="$pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f" title="eliminate_details" alt="" coords="172,56,291,83"/>
-<area shape="rect" id="node4" href="$pgr__withPoints_8hpp.html#a78454780d695ee33ad171a220e3e9f38" title="eliminate_details_dd" alt="" coords="161,107,301,133"/>
-<area shape="rect" id="node5" href="$classPgr__ksp.html#a11eac853ca869c5b829f13a7c199255c" title="Performs the first Dijkstra of the algorithm. " alt="" coords="147,157,316,184"/>
-<area shape="rect" id="node6" href="$classPath.html#adf67930d9eaea5c23c9a5262fc846a73" title="Path::isEqual" alt="" coords="181,208,281,235"/>
-<area shape="rect" id="node7" href="$dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9" title="pgr_dijkstraViaVertex" alt="" coords="158,259,305,285"/>
-</map>

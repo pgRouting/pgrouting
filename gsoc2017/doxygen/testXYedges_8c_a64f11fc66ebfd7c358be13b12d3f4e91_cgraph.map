@@ -1,8 +1,0 @@
-<map id="process" name="process">
-<area shape="rect" id="node2" href="$testXYedges__driver_8cpp.html#a321e9e233aaef7ffb5f581dd5060461d" title="do_pgr_testXYedges" alt="" coords="140,5,283,32"/>
-<area shape="rect" id="node3" href="$testXYedges_8c.html#ad5ed59bfda17de279f0d969c921ca831" title="PG_FUNCTION_INFO_V1" alt="" coords="121,56,301,83"/>
-<area shape="rect" id="node4" href="$edges__input_8c.html#a68e9476cc43d0bcc87a9f60734f76b38" title="Edges with x, y vertices values. " alt="" coords="147,107,275,133"/>
-<area shape="rect" id="node5" href="$postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64" title="pgr_SPI_connect" alt="" coords="150,157,273,184"/>
-<area shape="rect" id="node6" href="$postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f" title="pgr_SPI_finish" alt="" coords="158,208,265,235"/>
-<area shape="rect" id="node7" href="$testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7" title="testXYedges" alt="" coords="163,259,260,285"/>
-</map>
