@@ -7,7 +7,7 @@ SELECT * FROM pgr_areaContraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1,4,7,13]
 );
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
 (0 rows)
 
@@ -17,7 +17,7 @@ SELECT * FROM pgr_areaContraction(
     ARRAY[1,4,7,13],
     FALSE
 );
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
 (0 rows)
 
