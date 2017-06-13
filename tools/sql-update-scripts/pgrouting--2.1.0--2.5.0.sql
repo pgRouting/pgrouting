@@ -329,7 +329,7 @@ $BODY$
         'v2.5.0-dev'::varchar AS tag,
         ''::varchar AS hash,
         ''::varchar AS branch,
-        '1.54.0'::varchar AS boost;
+        '1.58.0'::varchar AS boost;
 $BODY$
 LANGUAGE sql IMMUTABLE;
 
@@ -3820,6 +3820,23 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
   ROWS 1000;
 
 
+
+
+CREATE OR REPLACE FUNCTION pgr_areaContraction(
+    TEXT, --edges_sql
+    ANYARRAY, --border_nodes
+    directed BOOLEAN DEFAULT true,
+    OUT seq integer,
+    OUT type TEXT,
+    OUT id BIGINT,
+    OUT contracted_vertices BIGINT[],
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT cost float)
+
+RETURNS SETOF RECORD AS
+'$libdir/libpgrouting-2.5', 'areaContraction'
+LANGUAGE c IMMUTABLE STRICT;
 
 
 
