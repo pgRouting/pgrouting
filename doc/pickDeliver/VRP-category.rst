@@ -25,12 +25,6 @@ Vehicle Routing Functions Category:
 
 .. rubric:: Experimental functions
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
-
-- :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
 - :ref:`pgr_vrp_basic` - VRP One Depot
 
 .. index to here
@@ -40,7 +34,6 @@ Vehicle Routing Functions Category:
 
   pgr_pickDeliver
   pgr_pickDeliverEuclidean
-  pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
 
