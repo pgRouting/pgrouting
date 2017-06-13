@@ -111,7 +111,7 @@ set(PgRouting_SOURCE_NAMES
     "common"
 
     #----------------------
-    # "dijkstra" can not be removed
+    # "dijkstra" can not be removed 
     #   Has the command needed to link with prostgresl
     #----------------------
     "dijkstra" #2.1
@@ -141,14 +141,13 @@ set(PgRouting_SOURCE_NAMES
     "max_flow"    # 2.3
     "contraction" # 2.3
     "pickDeliver" # 2.3
-    "vrp_basic"   # 2.0
+    "vrp_basic"   # 2.0 
     "withPoints"  # 2.2
 
     "components" # 2.5
 
     # template generated name
     #"funnyDijkstra"
-    "areaContraction"
 
     )
 
@@ -157,7 +156,7 @@ set(PgRouting_SOURCE_NAMES
 #
 #  - <directory>/sql/CMakeLists.txt  must exist
 #-----------------------------------------------------------------------------
-set(PgRouting_SQL_DIRECTORIES
+set(PgRouting_SQL_DIRECTORIES 
 
     "topology"     # needs to be revised
 
@@ -169,7 +168,7 @@ set(PgRouting_SQL_DIRECTORIES
     "costMatrix"   # proposed on 2.3
 
     #----------------------
-    # Wrappers for backwards compatibility
+    # Wrappers for backwards compatibility 
     #----------------------
     "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
     "deprecated"
@@ -222,7 +221,7 @@ CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS GNU_CXX_MINIMUM_VERSION)
-        message(FATAL_ERROR "GCC version must be at least ${GNU_CXX_MINIMUM_VERSION}!
+        message(FATAL_ERROR "GCC version must be at least ${GNU_CXX_MINIMUM_VERSION}! 
         Found version ${CMAKE_CXX_COMPILER_VERSION}")
     endif()
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
@@ -363,7 +362,7 @@ endif(NOT PERL_EXECUTABLE)
 #---------------------------------------------
 find_package(PostgreSQL)
 if(NOT POSTGRESQL_FOUND)
-    message(FATAL_ERROR " Please check your PostgreSQL installation.")
+    message(FATAL_ERROR " Please check your PostgreSQL installation.") 
 endif(NOT POSTGRESQL_FOUND)
 
 if(NOT POSTGRESQL_VERSION_STRING)
@@ -375,7 +374,7 @@ string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
 # for XbetaY XalphaY XrcY -> X.Y
 string(REGEX REPLACE "^([0-9]+)[beta|alpha|rc].*" "\\1.0" POSTGRESQL_VERSION ${POSTGRESQL_VERSION})
 
-#for X.Y.Z -> XY  Y<10
+#for X.Y.Z -> XY  Y<10 
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
@@ -405,7 +404,7 @@ find_package(Boost ${BOOST_MINIMUM_VERSION})
 if(Boost_INCLUDE_DIRS)
     message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIRS}")
 else(Boost_INCLUDE_DIRS)
-    message(FATAL_ERROR " Please check your Boost installation ")
+    message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
 
 include_directories(${Boost_INCLUDE_DIRS})
@@ -588,7 +587,7 @@ if(WITH_INTERNAL_TESTS)
 endif()
 
 #-------------------
-# add the subdirectories that have the C/C++ code
+# add the subdirectories that have the C/C++ code 
 #-------------------
 
 foreach (subdir ${PgRouting_SOURCE_NAMES})
@@ -686,3 +685,4 @@ if (PGROUTING_DEBUG)
         message(STATUS ${f})
     endforeach()
 endif()
+
