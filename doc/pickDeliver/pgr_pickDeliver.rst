@@ -139,12 +139,12 @@ Description of the Signatures
 
 
 .. include:: VRP-category.rst
-    :start-after: pd_matrix_sql_start:
+    :start-after: pd_matrix_sql_start
     :end-before: pd_matrix_sql_end
 
 
 .. include:: VRP-category.rst
-    :start-after: pd_vehicle_sql_start:
+    :start-after: pd_vehicle_sql_start
     :end-before: pd_vehicle_sql_end
 
 
@@ -153,7 +153,7 @@ Description of the Signatures
     :end-before: pd_parameters_end
 
 .. include:: VRP-category.rst
-    :start-after: return_vrp_matrix_start:
+    :start-after: return_vrp_matrix_start
     :end-before: return_vrp_matrix_end
 
 

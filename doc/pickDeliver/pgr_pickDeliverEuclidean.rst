@@ -101,12 +101,12 @@ Description of the Signatures
 -------------------------------------------------------------------------------
 
 .. include:: VRP-category.rst
-    :start-after: pd_euclidean_sql_start:
+    :start-after: pd_euclidean_sql_start
     :end-before: pd_euclidean_sql_end
 
 
 .. include:: VRP-category.rst
-    :start-after: pd_vehicle_sql_start:
+    :start-after: pd_vehicle_sql_start
     :end-before: pd_vehicle_sql_end
 
 
@@ -115,7 +115,7 @@ Description of the Signatures
     :end-before: pd_parameters_end
 
 .. include:: VRP-category.rst
-    :start-after: return_vrp_euclidean_start:
+    :start-after: return_vrp_euclidean_start
     :end-before: return_vrp_euclidean_end
 
 
