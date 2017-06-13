@@ -119,7 +119,7 @@ Pgr_components< G >::do_connectedComponentsV(
     generate_map(graph.vertices_map);
 
     // generate results
-    int totalNodes = num_vertices(graph.graph);
+    auto totalNodes = num_vertices(graph.graph);
 
     std::vector< pgr_componentV_t > results;
     results.resize(totalNodes);
@@ -127,7 +127,7 @@ Pgr_components< G >::do_connectedComponentsV(
     std::vector< int64_t > result_comp;
     result_comp.resize(0);
     size_t temp_size = 0;
-    for (int i = 0; i < totalNodes; i++) {
+    for (auto i = 0; i < totalNodes; i++) {
         results[i].node = V_to_id.find(i)->second;
         if (components[i] >= temp_size) {
             result_comp.push_back(results[i].node);
