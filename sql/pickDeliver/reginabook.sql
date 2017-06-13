@@ -82,7 +82,7 @@ BEGIN
         depots AS (SELECT p_deliver.*, 0 as pindex, 0 as dindex, 0 AS the_id FROM p_deliver WHERE (stop_type IN (-1,1,6))),
         the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
 
-        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
+        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_seq, a.stop_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
         FROM (SELECT * FROM the_union) AS a ORDER BY a.seq
         $$;
     RETURN QUERY EXECUTE final_sql;

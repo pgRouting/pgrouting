@@ -9,10 +9,10 @@
 
 .. _pgr_pickDeliverEuclidean:
 
-__pgr_pickDeliverEuclidean:
+pgr_pickDeliverEuclidean:
 ===============================================================================
 
-.. warning:: Under development: Changes in code/documentation are without notice
+.. warning:: Documentation is being updated
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
@@ -51,7 +51,7 @@ Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehic
 
 
 Characteristics:
-----------------
+-------------------------------------------------------------------------------
 
 - No multiple time windows for a location.
 - Less vehicle used is considered better.
@@ -63,13 +63,36 @@ Characteristics:
 
 
 Signature Summary
------------------
+-------------------------------------------------------------------------------
+
+..  
+    TEXT, -- orders_sql
+    TEXT, -- vehicles_sql
+    factor FLOAT DEFAULT 1,
+    max_cycles INTEGER DEFAULT 10,
+    initial_sol INTEGER DEFAULT 4,
+
+
+..
+    OUT seq INTEGER,
+    OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
+    OUT order_id BIGINT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+
 
 .. code-block:: none
 
-    _pgr_pickDeliverEuclidean(orders_sql, vehicles_sql, [,factor, max_cycles, initial_sol])
-    RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
-                    travel_time, arrival_time, wait_time, service_time, departure_time)
+    pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor, max_cycles, initial_sol])
+    RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
+        cargo, travel_time, arrival_time, wait_time, service_time, departure_time)
 
 
 
@@ -79,16 +102,16 @@ Signatures
 
 
 .. index::
-    single: _pgr_pickDeliverEuclidean(Complete Signature)
+    single: pgr_pickDeliverEuclidean(Complete Signature)
 
 pgr_pickDeliverEuclidean(Complete Signature)
-................................................
+-------------------------------................................................
 
 .. code-block:: none
 
-    _pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor , max_cycles, initial_sol])
-    RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
-                    travel_time, arrival_time, wait_time, service_time, departure_time)
+    pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor, max_cycles, initial_sol])
+    RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
+        cargo, travel_time, arrival_time, wait_time, service_time, departure_time)
 
 :Example:
 
@@ -101,12 +124,12 @@ Description of the Signatures
 -------------------------------------------------------------------------------
 
 .. include:: VRP-category.rst
-    :start-after: pd_euclidean_sql_start
+    :start-after: pd_euclidean_sql_start:
     :end-before: pd_euclidean_sql_end
 
 
 .. include:: VRP-category.rst
-    :start-after: pd_vehicle_sql_start
+    :start-after: pd_vehicle_sql_start:
     :end-before: pd_vehicle_sql_end
 
 
@@ -115,7 +138,7 @@ Description of the Signatures
     :end-before: pd_parameters_end
 
 .. include:: VRP-category.rst
-    :start-after: return_vrp_euclidean_start
+    :start-after: return_vrp_euclidean_start:
     :end-before: return_vrp_euclidean_end
 
 

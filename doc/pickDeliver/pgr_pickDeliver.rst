@@ -14,12 +14,10 @@
 
 .. _pgr_pickDeliver:
 
-__pgr_pickDeliver
+pgr_pickDeliver
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
+.. warning:: Documentation is being updated
 
 ``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
@@ -57,7 +55,7 @@ Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehic
 
 
 Characteristics:
-----------------
+-------------------------------------------------------------------------------
 
 - All trucks depart at time 0.
 - No multiple time windows for a location.
@@ -76,10 +74,33 @@ Characteristics:
 Signature Summary
 -----------------
 
+..
+    TEXT, -- orders_sql
+    TEXT, -- vehicles_sql
+    TEXT, -- matrix_cell_sql
+    factor FLOAT DEFAULT 1,
+    max_cycles INTEGER DEFAULT 10,
+    initial_sol INTEGER DEFAULT 4,
+
+..
+    OUT seq INTEGER,
+    OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
+    OUT order_id BIGINT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+
+
 .. code-block:: none
 
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity, [factor, max_cycles, initial_sol])
+    pgr_pickDeliver(customers_sql, max_vehicles, capacity)
+    pgr_pickDeliver(customers_sql, max_vehicles, capacity, [factor, max_cycles, initial_sol])
     RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
                     travel_time, arrival_time, wait_time, service_time, departure_time)
 
@@ -103,7 +124,7 @@ The minimal signature is for `speed = 1`, for a `max_cycles = 30`
 
 .. code-block:: none
 
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
+    pgr_pickDeliver(customers_sql, max_vehicles, capacity)
     RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
          travel_time, arrival_time, wait_time, service_time,  departure_time)
 
@@ -129,7 +150,7 @@ This signature performs the optimization based on the optional parameters
 
 .. code-block:: none
 
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
+    pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
     RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
          travel_time, arrival_time, wait_time, service_time,  departure_time)
 
@@ -139,12 +160,12 @@ Description of the Signatures
 
 
 .. include:: VRP-category.rst
-    :start-after: pd_matrix_sql_start
+    :start-after: pd_matrix_sql_start:
     :end-before: pd_matrix_sql_end
 
 
 .. include:: VRP-category.rst
-    :start-after: pd_vehicle_sql_start
+    :start-after: pd_vehicle_sql_start:
     :end-before: pd_vehicle_sql_end
 
 
@@ -153,7 +174,7 @@ Description of the Signatures
     :end-before: pd_parameters_end
 
 .. include:: VRP-category.rst
-    :start-after: return_vrp_matrix_start
+    :start-after: return_vrp_matrix_start:
     :end-before: return_vrp_matrix_end
 
 
