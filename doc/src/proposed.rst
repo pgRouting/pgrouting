@@ -150,8 +150,8 @@ Experimental and Proposed functions
   :hidden:
 
   contraction-family
-  pgr_areaContraction.rst
-  areaContraction-family.rst
+  pgr_areaContraction
+  areaContraction-family
   flow-family
   pgr_labelGraph
   VRP-category
