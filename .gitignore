@@ -8,6 +8,7 @@ travis.yml
 update-tester.sh
 _sources/
 *.mo
+.doctrees
 
 .DS_Store
 .vagrant
