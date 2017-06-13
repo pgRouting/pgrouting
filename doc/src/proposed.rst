@@ -137,6 +137,7 @@ Experimental and Proposed functions
 .. rubric:: Graph Analysis
 
 -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
+-  :ref:`pgr_connectedComponentsV` - Compute the connected components of an undirected graph (Vertex version)
 
 
 :ref:`VRP`
@@ -151,6 +152,7 @@ Experimental and Proposed functions
   contraction-family
   flow-family
   pgr_labelGraph
+  pgr_connectedComponentsV
   VRP-category
 
 
