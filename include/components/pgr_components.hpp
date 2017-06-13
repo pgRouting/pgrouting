@@ -50,6 +50,20 @@ template < class G > class Pgr_components;
 
 //******************************************
 
+/*******************************************
+ * reference: http://www.boost.org/doc/libs/1_46_0/libs/graph/doc/connected_components.html
+ * IN: const Graph& g
+
+    An undirected graph. The graph type must be a model of Vertex List Graph and Incidence Graph.
+    Python: The parameter is named graph. 
+
+ * OUT: ComponentMap c
+
+    The algorithm computes how many connected components are in the graph, and assigning each component an integer label. The algorithm then records which component each vertex in the graph belongs to by recording the component number in the component property map. The ComponentMap type must be a model of Writable Property Map. The value type shouch be an integer type, preferably the same as the vertices_size_type of the graph. The key type must be the graph's vertex descriptor type.
+    Python: Must be an vertex_int_map for the graph.
+    Python default: graph.get_vertex_int_map("component") 
+*******************************************/
+
 template < class G >
 class Pgr_components {
  public:
