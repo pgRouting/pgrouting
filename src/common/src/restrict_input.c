@@ -30,8 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/get_check_data.h"
 
+#if 0
 
-/*static
+static
 void fetch_restriction(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
@@ -60,7 +61,9 @@ void fetch_restriction(
             token = (char *)strtok(NULL, " ,");
         }
     }
-}*/
+}
+
+#endif
 
 
 void
@@ -102,7 +105,8 @@ pgr_get_restriction_data(
     pfree(*restrictions);
     // experiment ends
 
-    /*size_t ntuples;
+#if 0
+    size_t ntuples;
     size_t total_tuples;
 
     void *SPIplan;
@@ -163,5 +167,6 @@ pgr_get_restriction_data(
             total_tuples,
             (*total_restrictions));
     clock_t end_t = clock();
-    time_msg(" reading Restrictions", start_t, end_t);*/
+    time_msg(" reading Restrictions", start_t, end_t);
+#endif
 }
