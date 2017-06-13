@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: restrict_t.h
+File: restrict_input.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
 ------
@@ -23,47 +23,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_RESTRICT_T_H_
-#define INCLUDE_C_TYPES_RESTRICT_T_H_
+
+#ifndef INCLUDE_C_COMMON_RESTRICT_INPUT_H_
+#define INCLUDE_C_COMMON_RESTRICT_INPUT_H_
 #pragma once
 
+#include "c_types/restrict_t.h"
 
-#ifdef __cplusplus
+void pgr_get_restriction_data(
+        char *restrictions_sql,
+        Restrict_t **restrictions,
+        size_t *total_restrictions);
 
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
-#endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
-#define  MAX_RULE_LENGTH 5
-
-typedef struct {
-    int64_t id;
-    double cost;
-    int64_t restricted_edges[MAX_RULE_LENGTH];
-}
-Restrict_t;
-
-
-
-#endif  // INCLUDE_C_TYPES_RESTRICT_T_H_
+#endif  // INCLUDE_C_COMMON_RESTRICT_INPUT_H_
