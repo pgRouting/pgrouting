@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/get_check_data.h"
 
 
-static
+/*static
 void fetch_restriction(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
@@ -60,7 +60,7 @@ void fetch_restriction(
             token = (char *)strtok(NULL, " ,");
         }
     }
-}
+}*/
 
 
 void
@@ -90,8 +90,19 @@ pgr_get_restriction_data(
     info[1].eType = ANY_NUMERICAL;
     info[2].eType = TEXT;
 
+    // experiment starts
 
-    size_t ntuples;
+    (*restrictions) = (Restrict_t *)palloc0(sizeof(Restrict_t));
+
+    (*restrictions)[0].id = 1;
+    (*restrictions)[0].cost = -1;
+    (*restrictions)[0].restricted_edges[0] = 4;
+    (*restrictions)[0].restricted_edges[1] = 7;
+
+    pfree(*restrictions);
+    // experiment ends
+
+    /*size_t ntuples;
     size_t total_tuples;
 
     void *SPIplan;
@@ -102,7 +113,6 @@ pgr_get_restriction_data(
     bool moredata = TRUE;
     (*total_restrictions) = total_tuples = 0;
 
-    /*  on the first tuple get the column numbers */
 
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
@@ -153,5 +163,5 @@ pgr_get_restriction_data(
             total_tuples,
             (*total_restrictions));
     clock_t end_t = clock();
-    time_msg(" reading Restrictions", start_t, end_t);
+    time_msg(" reading Restrictions", start_t, end_t);*/
 }
