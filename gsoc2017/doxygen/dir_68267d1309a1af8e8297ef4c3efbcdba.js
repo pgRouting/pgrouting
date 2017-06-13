@@ -2,6 +2,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
 [
     [ "allpairs", "dir_b225a6681fb098ede5646da9389b6da5.html", "dir_b225a6681fb098ede5646da9389b6da5" ],
     [ "alpha_shape", "dir_2bac365cc0c9272c53aba84dab0c0e45.html", "dir_2bac365cc0c9272c53aba84dab0c0e45" ],
+    [ "areaContraction", "dir_3ba4ded79cf341e644a9eb0ae43c274f.html", "dir_3ba4ded79cf341e644a9eb0ae43c274f" ],
     [ "astar", "dir_c6e37fc9835c6783ca7f74105e7ae7b1.html", "dir_c6e37fc9835c6783ca7f74105e7ae7b1" ],
     [ "bdAstar", "dir_670914a4d05ce4716f4a817a734998a2.html", "dir_670914a4d05ce4716f4a817a734998a2" ],
     [ "bdDijkstra", "dir_fb860c483e5de16651d984d600936b39.html", "dir_fb860c483e5de16651d984d600936b39" ],

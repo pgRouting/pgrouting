@@ -31,6 +31,7 @@ var searchData=
   ['append',['append',['../classPath.html#a81dda9b296131350ee5be51a13e095b7',1,'Path']]],
   ['appendpath',['appendPath',['../classPath.html#a9cb45e3a413a03f1c4224b840af1fe83',1,'Path']]],
   ['applybestmoveincurrentsolution',['applyBestMoveInCurrentSolution',['../classCVRPSolver.html#ad67d3350e6f6731388906a4309d2fdb3',1,'CVRPSolver']]],
+  ['areacontraction',['areaContraction',['../areaContraction_8c.html#ae7977ea35c045ea9cb1d21e28844d85c',1,'areaContraction.c']]],
   ['arrival_5fi_5farrives_5fj',['arrival_i_arrives_j',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a29299954f8eabf568ffc3c08c3b856cf',1,'pgrouting::vrp::pickdeliver::Vehicle_node::arrival_i_arrives_j()'],['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a844f5255b91e2d804e152d42a199648a',1,'pgrouting::vrp::Vehicle_node::arrival_i_arrives_j()']]],
   ['arrival_5fj_5fcloses_5fi',['arrival_j_closes_i',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#ace042d562b0ae639a4f9c3e136ec4a13',1,'pgrouting::vrp::pickdeliver::Tw_node::arrival_j_closes_i()'],['../classpgrouting_1_1vrp_1_1Tw__node.html#ac2ba2bee420b2f8df1e09828d968e4e6',1,'pgrouting::vrp::Tw_node::arrival_j_closes_i()']]],
   ['arrival_5fj_5fopens_5fi',['arrival_j_opens_i',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html#a4949864e804cd257687a20a3fbbe708a',1,'pgrouting::vrp::pickdeliver::Tw_node::arrival_j_opens_i()'],['../classpgrouting_1_1vrp_1_1Tw__node.html#af574cbe6f96703feea5311d9482b2bf8',1,'pgrouting::vrp::Tw_node::arrival_j_opens_i()']]],

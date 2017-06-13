@@ -1,6 +1,7 @@
 var dir_4fe5cf12322eb0f9892753dc20f1484c =
 [
     [ "allpairs", "dir_cfd3f4636c1f563097ad0d507f5ae8c9.html", "dir_cfd3f4636c1f563097ad0d507f5ae8c9" ],
+    [ "areaContraction", "dir_86c0dee88a9df70b6fef354636216819.html", "dir_86c0dee88a9df70b6fef354636216819" ],
     [ "astar", "dir_bb2175a28760c39921da31df4587a45f.html", "dir_bb2175a28760c39921da31df4587a45f" ],
     [ "bdAstar", "dir_875b184fb110fdb2556185dfb40fe32e.html", "dir_875b184fb110fdb2556185dfb40fe32e" ],
     [ "bdDijkstra", "dir_9dcc1046b71bb0b5267f9068df298246.html", "dir_9dcc1046b71bb0b5267f9068df298246" ],
