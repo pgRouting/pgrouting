@@ -31,9 +31,9 @@ SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
 
 PREPARE real_types AS
 SELECT pg_typeof(seq)::text AS t1,
-pg_typeof(vehicle_seq)::text AS t2,
+pg_typeof(vehicle_number)::text AS t2,
 pg_typeof(vehicle_id)::text AS t3,
-pg_typeof(stop_seq)::text AS t4,
+pg_typeof(vehicle_seq)::text AS t4,
 pg_typeof(order_id)::text AS t5,
 pg_typeof(stop_type)::text AS t6,
 pg_typeof(cargo)::text AS t7,

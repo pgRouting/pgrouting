@@ -36,7 +36,7 @@ void fetch_pd_orders(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[14],
-        bool matrix_version,
+        bool with_id,
         PickDeliveryOrders_t *pd_order) {
     pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
@@ -44,9 +44,9 @@ void fetch_pd_orders(
     /*
      * the pickups
      */
-    pd_order->pick_x = matrix_version ? 
+    pd_order->pick_x = with_id ? 
         0 : pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
-    pd_order->pick_y =  matrix_version ? 
+    pd_order->pick_y =  with_id ? 
         0 : pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
     pd_order->pick_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
     pd_order->pick_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
@@ -56,18 +56,18 @@ void fetch_pd_orders(
     /*
      * the deliveries
      */
-    pd_order->deliver_x =  matrix_version ?
+    pd_order->deliver_x =  with_id ?
         0 : pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
-    pd_order->deliver_y =  matrix_version ?
+    pd_order->deliver_y =  with_id ?
         0 : pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
     pd_order->deliver_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[9]);
     pd_order->deliver_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[10]);
     pd_order->deliver_service_t = column_found(info[11].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[11]) : 0;
 
-    pd_order->pick_node_id = matrix_version ? 
+    pd_order->pick_node_id = with_id ? 
         pgr_SPI_getBigInt(tuple, tupdesc, info[12]) : 0;
-    pd_order->deliver_node_id = matrix_version ? 
+    pd_order->deliver_node_id = with_id ? 
         pgr_SPI_getBigInt(tuple, tupdesc, info[13]) : 0;
 }
 
