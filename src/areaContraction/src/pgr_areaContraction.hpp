@@ -1,12 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: areaContraction.sql
+File: pgr_linear.c
 
 Generated with Template by:
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2017 Ankur Shukla
+Copyright (c) 2016 Ankur Shukla
 Mail: work.ankurshukla@gmail.com
 
 ------
@@ -25,20 +25,26 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_areaContraction(
-    TEXT, --edges_sql
-    ANYARRAY, --border_nodes
-    directed BOOLEAN DEFAULT true,
-    OUT seq integer,
-    OUT type TEXT,
-    OUT id BIGINT,
-    OUT contracted_vertices BIGINT[],
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT cost float)
+ #ifndef SRC_AREACONTRACTION_SRC_PGR_AREACONTRACTION_HPP_
+ #define SRC_AREACONTRACTION_SRC_PGR_AREACONTRACTION_HPP_
+ #pragma once
 
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'areaContraction'
-LANGUAGE c IMMUTABLE STRICT;
+
+ #include <queue>
+ #include <functional>
+ #include <vector>
+
+/*
+*namespace
+*/
+namespace pgrouting {
+namespace areacontraction {
+
+  template < class G >
+  class Pgr_areaContraction {
+
+
+}
+}
