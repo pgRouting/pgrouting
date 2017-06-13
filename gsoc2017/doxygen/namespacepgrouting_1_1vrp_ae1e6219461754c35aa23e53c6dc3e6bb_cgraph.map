@@ -1,0 +1,11 @@
+<map id="pgrouting::vrp::operator&lt;&lt;" name="pgrouting::vrp::operator&lt;&lt;">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a1471454a7717cc13ec4e18250348ae9d" title="Truck&#39;s arrival_time to this node. " alt="" coords="227,5,379,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a96ef92d0217372452550dd61b9cc355f" title="Truck&#39;s total cargo after the node was served. " alt="" coords="227,70,379,111"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a8f980c43c354eaf38e224c15cc65a165" title="Truck&#39;s total times it has violated cargo limits. " alt="" coords="227,135,379,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a6a66bc3f248849e06bd4cbdc2864d87a" title="Truck&#39;s departure_time from this node. " alt="" coords="227,201,379,242"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a2d3598803ab92c22cefe9e05cacda906" title="True when at this node does not violate time windows. " alt="" coords="227,266,379,307"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a5d4391a08d6d4f59bf282ea12735224e" title="Returns the service time for this node. " alt="" coords="233,331,372,373"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#ad5dfe3bbc719de1cab5746eeeb9990ca" title="@ { " alt="" coords="227,397,379,438"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a8c3a8f84472adb631033bdf901868a50" title="@ { " alt="" coords="227,462,379,503"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a1c3999e6240e507918db6ea8a91fffbb" title="Truck&#39;s wait_time at this node. " alt="" coords="227,527,379,569"/>
+</map>

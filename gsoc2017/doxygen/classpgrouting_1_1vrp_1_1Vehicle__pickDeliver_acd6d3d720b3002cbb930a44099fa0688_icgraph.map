@@ -1,0 +1,6 @@
+<map id="pgrouting::vrp::Vehicle_pickDeliver::insert" name="pgrouting::vrp::Vehicle_pickDeliver::insert">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="210,5,363,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a4f8e527bcd5a3ffc23dff8c3951dc337" title="pgrouting::vrp::Optimize\l::move_order" alt="" coords="206,85,367,126"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a7d3ae3ec3e657685315341a8d8395b7e" title="pgrouting::vrp::Initial\l_solution::one_truck_all\l_orders" alt="" coords="207,149,366,205"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Optimize.html#a3d0a917f2993449c45ce0febbff2e13f" title="pgrouting::vrp::Optimize\l::swap_order" alt="" coords="206,229,367,270"/>
+</map>

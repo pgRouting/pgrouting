@@ -1,0 +1,7 @@
+<map id="CTourInfo::getVehicleId" name="CTourInfo::getVehicleId">
+<area shape="rect" id="node2" href="$classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045" title="CSolutionInfo::addTour" alt="" coords="231,5,387,32"/>
+<area shape="rect" id="node3" href="$classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393" title="CVRPSolver::attemptVehicle\lExchange" alt="" coords="213,57,405,98"/>
+<area shape="rect" id="node4" href="$VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="249,123,369,149"/>
+<area shape="rect" id="node5" href="$Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2" title="print_solution" alt="" coords="260,173,359,200"/>
+<area shape="rect" id="node6" href="$classCSolutionInfo.html#a18c0d607d4c5c3119858bc8ea6590580" title="CSolutionInfo::replaceTour" alt="" coords="221,224,398,251"/>
+</map>

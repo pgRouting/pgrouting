@@ -1,0 +1,4 @@
+<map id="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::target" name="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::target">
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a3e10445a914f711c5777bd4b9e9dedf3" title="get the edge with minimum cost between two vertices " alt="" coords="231,5,385,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#aaf48f450c4d8a6e92004f93b4077cb3a" title="print the graph with contracted vertices of all vertices and edges " alt="" coords="208,85,408,126"/>
+</map>

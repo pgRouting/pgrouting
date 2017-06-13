@@ -1,0 +1,10 @@
+<map id="do_pgr_withPointsKsp" name="do_pgr_withPointsKsp">
+<area shape="rect" id="node2" href="$pgr__withPoints_8cpp.html#aafd53873fa63967f96fc3bfcd6481d6c" title="check_points" alt="" coords="245,5,344,32"/>
+<area shape="rect" id="node3" href="$pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529" title="create_new_edges" alt="" coords="229,80,360,107"/>
+<area shape="rect" id="node4" href="$pgr__withPoints_8cpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f" title="eliminate_details" alt="" coords="235,131,354,157"/>
+<area shape="rect" id="node5" href="$namespacepgrouting.html#a7f6c592f35e628f82429127580ed29fb" title="pgrouting::extract\l_vertices" alt="" coords="233,182,356,223"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="205,247,384,289"/>
+<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="257,313,332,340"/>
+<area shape="rect" id="node8" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="218,365,371,406"/>
+<area shape="rect" id="node9" href="$classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac" title="Pgr_ksp::Yen" alt="" coords="244,431,345,457"/>
+</map>

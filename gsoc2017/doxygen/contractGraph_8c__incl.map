@@ -1,0 +1,10 @@
+<map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/contraction/src/contractGraph.c" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/contraction/src/contractGraph.c">
+<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,200,227,227"/>
+<area shape="rect" id="node6" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="91,125,269,152"/>
+<area shape="rect" id="node7" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="638,125,785,152"/>
+<area shape="rect" id="node8" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="810,125,968,152"/>
+<area shape="rect" id="node9" href="$contracted__rt_8h.html" title="c_types/contracted_rt.h" alt="" coords="1445,200,1603,227"/>
+<area shape="rect" id="node10" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="1189,125,1360,152"/>
+<area shape="rect" id="node11" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="993,125,1164,152"/>
+<area shape="rect" id="node12" href="$contractGraph__driver_8h.html" title="./contractGraph_driver.h" alt="" coords="1384,125,1547,152"/>
+</map>

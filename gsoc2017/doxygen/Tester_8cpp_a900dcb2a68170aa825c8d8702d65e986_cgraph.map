@@ -1,0 +1,8 @@
+<map id="loadVehicles" name="loadVehicles">
+<area shape="rect" id="node2" href="$classCVRPSolver.html#a572e5a68c5455f32909149d1bbc4ef0c" title="CVRPSolver::addVehicle" alt="" coords="161,5,330,32"/>
+<area shape="rect" id="node3" href="$classStringTokenizer.html#a6590795686da6dc7953b602c4624baa2" title="StringTokenizer::getTokens" alt="" coords="154,56,337,83"/>
+<area shape="rect" id="node4" href="$classStringTokenizer.html#ac95470d4a7fbb7a5af9640d427c9f0d4" title="StringTokenizer::parse" alt="" coords="169,107,322,133"/>
+<area shape="rect" id="node5" href="$classCVehicleInfo.html#a5ecefb8b9bc7ccb502933b2c0b8f8b7b" title="CVehicleInfo::setCapacity" alt="" coords="158,157,333,184"/>
+<area shape="rect" id="node6" href="$classCVehicleInfo.html#aef8aeb472e2cd2ce0647c590fc458c2c" title="CVehicleInfo::setCostPerKM" alt="" coords="150,208,341,235"/>
+<area shape="rect" id="node7" href="$classCVehicleInfo.html#a31c0079ef21b7db8333a0b3944183e58" title="CVehicleInfo::setId" alt="" coords="178,259,313,285"/>
+</map>

@@ -1,0 +1,22 @@
+<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_common/e_report.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_common/e_report.h">
+<area shape="rect" id="node2" href="$astar_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/astar/src/astar.c" alt="" coords="5,124,155,180"/>
+<area shape="rect" id="node3" href="$bdAstar_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/bdAstar/src/bdAstar.c" alt="" coords="179,124,353,180"/>
+<area shape="rect" id="node4" href="$bdDijkstra_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/bdDijkstra/src/bdDijkstra.c" alt="" coords="379,124,581,180"/>
+<area shape="rect" id="node5" href="$e__report_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/src/e_report.c" alt="" coords="606,124,788,180"/>
+<area shape="rect" id="node6" href="$connectedComponentsV_8c.html" title="Conecting code with postgres. " alt="" coords="813,117,1019,187"/>
+<area shape="rect" id="node7" href="$contractGraph_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph.c" alt="" coords="1043,117,1228,187"/>
+<area shape="rect" id="node8" href="$dijkstra_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstra.c" alt="" coords="1253,124,1421,180"/>
+<area shape="rect" id="node9" href="$dijkstraVia_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstraVia.c" alt="" coords="1446,124,1633,180"/>
+<area shape="rect" id="node10" href="$many__to__dist__driving__distance_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/driving_distance\l/src/many_to_dist_driving\l_distance.c" alt="" coords="1659,109,1829,195"/>
+<area shape="rect" id="node11" href="$many__to__dist__withPointsDD_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/driving_distance\l/src/many_to_dist_withPointsDD.c" alt="" coords="1854,117,2079,187"/>
+<area shape="rect" id="node12" href="$ksp_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/src/ksp.c" alt="" coords="2103,124,2253,180"/>
+<area shape="rect" id="node13" href="$withPoints__ksp_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/src/withPoints_ksp.c" alt="" coords="2279,124,2473,180"/>
+<area shape="rect" id="node14" href="$edge__disjoint__paths_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/edge\l_disjoint_paths.c" alt="" coords="2498,117,2656,187"/>
+<area shape="rect" id="node15" href="$max__flow_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/max\l_flow.c" alt="" coords="2681,117,2835,187"/>
+<area shape="rect" id="node16" href="$maximum__cardinality__matching_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/maximum\l_cardinality_matching.c" alt="" coords="2860,117,3047,187"/>
+<area shape="rect" id="node17" href="$pickDeliver_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/src/pickDeliver.c" alt="" coords="3071,124,3285,180"/>
+<area shape="rect" id="node18" href="$pickDeliverEuclidean_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/src/pickDeliver\lEuclidean.c" alt="" coords="3310,117,3513,187"/>
+<area shape="rect" id="node19" href="$eucledianTSP_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/tsp/src/eucledianTSP.c" alt="" coords="3539,124,3723,180"/>
+<area shape="rect" id="node20" href="$newTSP_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/tsp/src/newTSP.c" alt="" coords="3747,124,3900,180"/>
+<area shape="rect" id="node21" href="$withPoints_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/withPoints/src/withPoints.c" alt="" coords="3925,124,4131,180"/>
+</map>

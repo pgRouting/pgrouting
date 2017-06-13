@@ -1,0 +1,8 @@
+<map id="pgrouting::vrp::Vehicle_pickDeliver::has_order" name="pgrouting::vrp::Vehicle_pickDeliver::has_order">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="427,25,579,66"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a4f8e527bcd5a3ffc23dff8c3951dc337" title="pgrouting::vrp::Optimize\l::move_order" alt="" coords="627,25,789,66"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Optimize.html#a3d0a917f2993449c45ce0febbff2e13f" title="pgrouting::vrp::Optimize\l::swap_order" alt="" coords="627,90,789,132"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="427,90,579,132"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="213,126,379,168"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="215,244,377,285"/>
+</map>
