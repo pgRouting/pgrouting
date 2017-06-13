@@ -162,7 +162,6 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
