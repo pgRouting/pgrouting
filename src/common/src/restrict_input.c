@@ -102,7 +102,6 @@ pgr_get_restriction_data(
     (*restrictions)[0].restricted_edges[0] = 4;
     (*restrictions)[0].restricted_edges[1] = 7;
 
-    pfree(*restrictions);
     // experiment ends
 
 #if 0
