@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver.sql
+File: connectedComponentsV.sql
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Function's developer: 
+Copyright (c) 2017 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -27,28 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
-    TEXT, -- orders_sql
-    TEXT, -- vehicles_sql
-    factor FLOAT DEFAULT 1,
-    max_cycles INTEGER DEFAULT 10,
-    initial_sol INTEGER DEFAULT 4,
+CREATE OR REPLACE FUNCTION pgr_connectedComponentsV(
+    TEXT,                       -- edges_sql
+        OUT seq INTEGER,        -- seq
+    OUT component BIGINT,       -- the lowest number of the node in the component
+    OUT n_seq INTEGER,          -- nth_seq of the node in the component
+    OUT node BIGINT)            -- the number of the node
 
-    OUT seq INTEGER,
-    OUT vehicle_seq INTEGER,
-    OUT vehicle_id BIGINT,
-    OUT stop_seq INTEGER,
-    OUT stop_type INTEGER,
-    OUT order_id BIGINT,
-    OUT cargo FLOAT,
-    OUT travel_time FLOAT,
-    OUT arrival_time FLOAT,
-    OUT wait_time FLOAT,
-    OUT service_time FLOAT,
-    OUT departure_time FLOAT
-)
-
-  RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'pickDeliverEuclidean'
-    LANGUAGE c VOLATILE;
+RETURNS SETOF RECORD AS
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'connectedComponentsV'
+LANGUAGE c IMMUTABLE STRICT;
 

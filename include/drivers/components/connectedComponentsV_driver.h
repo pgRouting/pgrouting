@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver.sql
+File: connectedComponentsV_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
+Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -27,28 +27,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
-    TEXT, -- orders_sql
-    TEXT, -- vehicles_sql
-    factor FLOAT DEFAULT 1,
-    max_cycles INTEGER DEFAULT 10,
-    initial_sol INTEGER DEFAULT 4,
+#ifndef INCLUDE_DRIVERS_COMPONENTS_CONNECTEDCOMPONENTSV_DRIVER_H_
+#define INCLUDE_DRIVERS_COMPONENTS_CONNECTEDCOMPONENTSV_DRIVER_H_
+#pragma once
 
-    OUT seq INTEGER,
-    OUT vehicle_seq INTEGER,
-    OUT vehicle_id BIGINT,
-    OUT stop_seq INTEGER,
-    OUT stop_type INTEGER,
-    OUT order_id BIGINT,
-    OUT cargo FLOAT,
-    OUT travel_time FLOAT,
-    OUT arrival_time FLOAT,
-    OUT wait_time FLOAT,
-    OUT service_time FLOAT,
-    OUT departure_time FLOAT
-)
+#include "c_types/pgr_edge_t.h"
+#include "c_types/pgr_componentV_t.h"
 
-  RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'pickDeliverEuclidean'
-    LANGUAGE c VOLATILE;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
+    /*********************************************************
+      TEXT,
+    BIGINT,
+    BIGINT,
+     ********************************************************/
+
+
+    void
+        do_pgr_connectedComponentsV(
+                pgr_edge_t  *data_edges,
+                size_t total_edges,
+                pgr_componentV_t **return_tuples,
+                size_t *return_count,
+                char ** log_msg,
+                char ** notice_msg,
+                char ** err_msg);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_DRIVERS_COMPONENTS_CONNECTEDCOMPONENTSV_DRIVER_H_
