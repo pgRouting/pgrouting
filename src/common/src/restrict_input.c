@@ -162,10 +162,10 @@ pgr_get_restriction_data(
     }
 
     (*total_restrictions) = total_tuples;
+#endif
     PGR_DBG("Finish reading %ld data, %ld",
             total_tuples,
             (*total_restrictions));
     clock_t end_t = clock();
     time_msg(" reading Restrictions", start_t, end_t);
-#endif
 }
