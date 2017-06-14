@@ -8,7 +8,7 @@
    ****************************************************************************
 
 
-.. _contraction:
+.. _areaContraction:
 
 Area Contraction
 ===============================================================================
@@ -45,9 +45,8 @@ contracted graph is as follows:
    the resultant subpath
  - Output the contracted graph
 
-
- Contracting Sample Data
- -------------------------------------------------------------
+Contracting Sample Data
+-------------------------------------------------------------
 
  In this section, building and using a contracted graph will be shown by example.
 
@@ -63,4 +62,3 @@ contracted graph is as follows:
 
  The original image shows the sample data graph. The set of border vertices taken here is [1,4,7,13].
  The border vertices have been shown in red in the figure.
- 

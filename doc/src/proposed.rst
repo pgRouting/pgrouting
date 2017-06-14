@@ -38,19 +38,19 @@ As part of the :ref:`dijkstra`
 .. rubric:: Families
 
 :ref:`astar`
- 
+
 .. include:: aStar-family.rst
    :start-after: index from here
    :end-before: index to here
 
 :ref:`bdAstar`
- 
+
 .. include:: bdAstar-family.rst
    :start-after: index from here
    :end-before: index to here
 
 :ref:`bdDijkstra`
- 
+
 .. include:: bdDijkstra-family.rst
    :start-after: index from here
    :end-before: index to here
@@ -132,6 +132,7 @@ Experimental and Proposed functions
 :ref:`contraction` - Reduce network size using contraction techniques
 
 - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
+- :ref:`pgr_areaContraction` - Reduce network size contracting by area
 
 
 .. rubric:: Graph Analysis
@@ -150,6 +151,8 @@ Experimental and Proposed functions
   :hidden:
 
   contraction-family
+  pgr_areaContraction
+  areaContraction-family
   flow-family
   pgr_labelGraph
   pgr_connectedComponentsV
@@ -165,4 +168,3 @@ Experimental and Proposed functions
     :hidden:
     ..
      ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
-
