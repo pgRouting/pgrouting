@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -72,8 +72,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:47
 msgid ""
-"Use :ref:`pgr_createTopology <pgr_create_topology>` to create the "
-"topology and the vertices table."
+"Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology "
+"and the vertices table."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:50
@@ -84,24 +84,13 @@ msgstr ""
 msgid "The analyze graph function accepts the following parameters:"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "edge_table"
-msgstr ""
-
 #: ../../build/doc/pgr_analyzeGraph.rst:53
 msgid "``text`` Network table name. (may contain the schema name as well)"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "tolerance"
-msgstr ""
-
 #: ../../build/doc/pgr_analyzeGraph.rst:54
-msgid "``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
-msgstr ""
-
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "the_geom"
+msgid ""
+"``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:55
@@ -110,18 +99,10 @@ msgid ""
 "``the_geom``."
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "id"
-msgstr ""
-
 #: ../../build/doc/pgr_analyzeGraph.rst:56
 msgid ""
 "``text``  Primary key column name of the network table. Default value is "
 "``id``."
-msgstr ""
-
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "source"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:57
@@ -130,24 +111,16 @@ msgid ""
 "``source``."
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "target"
-msgstr ""
-
 #: ../../build/doc/pgr_analyzeGraph.rst:58
 msgid ""
 "``text``  Target column name of the network table.  Default value is "
 "``target``."
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "rows_where"
-msgstr ""
-
 #: ../../build/doc/pgr_analyzeGraph.rst:59
 msgid ""
-"``text``   Condition to select  a subset or rows.  Default value is "
-"``true`` to indicate all rows."
+"``text``   Condition to select  a subset or rows.  Default value is ``true``"
+" to indicate all rows."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:65
@@ -155,7 +128,8 @@ msgid "Uses the vertices table: <edge_table>_vertices_pgr."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:66
-msgid "Fills completely the ``cnt`` and ``chk`` columns of the vertices table."
+msgid ""
+"Fills completely the ``cnt`` and ``chk`` columns of the vertices table."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:67
@@ -193,8 +167,7 @@ msgstr ""
 #: ../../build/doc/pgr_analyzeGraph.rst:80
 msgid ""
 "The vertices table can be created with :ref:`pgr_createVerticesTable "
-"<pgr_create_vert_table>` or :ref:`pgr_createTopology "
-"<pgr_create_topology>`"
+"<pgr_create_vert_table>` or :ref:`pgr_createTopology <pgr_create_topology>`"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:82
@@ -205,42 +178,25 @@ msgstr ""
 msgid "``bigint`` Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "cnt"
-msgstr ""
-
 #: ../../build/doc/pgr_analyzeGraph.rst:85
 msgid ""
-"``integer`` Number of vertices in the edge_table that reference this "
-"vertex."
-msgstr ""
-
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "chk"
+"``integer`` Number of vertices in the edge_table that reference this vertex."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:86
 msgid "``integer``  Indicator that the vertex might have a problem."
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "ein"
-msgstr ""
-
 #: ../../build/doc/pgr_analyzeGraph.rst:87
 msgid ""
-"``integer`` Number of vertices in the edge_table that reference this "
-"vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
-msgstr ""
-
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "eout"
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:88
 msgid ""
-"``integer`` Number of vertices in the edge_table that reference this "
-"vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:89
@@ -271,21 +227,21 @@ msgstr ""
 msgid "We get the same result as the simplest way to use the function."
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
+#: ../../build/doc/pgr_analyzeGraph.rst:0
 msgid ""
 "An error would occur when the arguments are not given in the appropriate "
-"order: In this example, the column ``id`` of the table ``mytable`` is "
-"passed to the function as the geometry column, and the geometry column "
+"order: In this example, the column ``id`` of the table ``mytable`` is passed"
+" to the function as the geometry column, and the geometry column "
 "``the_geom`` is passed to the function as the id column."
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
+#: ../../build/doc/pgr_analyzeGraph.rst:0
 msgid ""
 "``SELECT  "
 "pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');``"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
+#: ../../build/doc/pgr_analyzeGraph.rst:0
 msgid ""
 "ERROR: Can not determine the srid of the geometry \"id\" in table "
 "public.edge_table"
@@ -303,8 +259,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:129
 msgid ""
-"Parameters defined with a default value can be omitted, as long as the "
-"value matches the default:"
+"Parameters defined with a default value can be omitted, as long as the value"
+" matches the default:"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:136
@@ -314,8 +270,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:137
 msgid ""
-"Selecting rows based on the id. Displays the analysis a the section of "
-"the network."
+"Selecting rows based on the id. Displays the analysis a the section of the "
+"network."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:143
@@ -326,8 +282,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:149
 msgid ""
-"Selecting the rows where the geometry is near the geometry of the row "
-"with ``gid`` =100 of the table ``othertable``."
+"Selecting the rows where the geometry is near the geometry of the row with "
+"``gid`` =100 of the table ``othertable``."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:160
@@ -343,10 +299,11 @@ msgid "Using positional notation:"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:172
-msgid "The arguments need to be given in the order described in the parameters:"
+msgid ""
+"The arguments need to be given in the order described in the parameters:"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
+#: ../../build/doc/pgr_analyzeGraph.rst:0
 msgid ""
 "An error would occur when the arguments are not given in the appropriate "
 "order: In this example, the column ``gid`` of the table ``mytable`` is "
@@ -354,11 +311,12 @@ msgid ""
 "``mygeom`` is passed to the function as the id column."
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
-msgid "``SELECT  pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');``"
+#: ../../build/doc/pgr_analyzeGraph.rst:0
+msgid ""
+"``SELECT  pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');``"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeGraph.rst
+#: ../../build/doc/pgr_analyzeGraph.rst:0
 msgid ""
 "ERROR: Can not determine the srid of the geometry \"gid\" in table "
 "public.mytable"
@@ -409,8 +367,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:374
 msgid ""
-":ref:`pgr_createVerticesTable <pgr_create_vert_table>` to reconstruct the"
-" vertices table based on the source and target information."
+":ref:`pgr_createVerticesTable <pgr_create_vert_table>` to reconstruct the "
+"vertices table based on the source and target information."
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:375
@@ -419,3 +377,35 @@ msgid ""
 "edge table."
 msgstr ""
 
+#~ msgid "edge_table"
+#~ msgstr ""
+
+#~ msgid "tolerance"
+#~ msgstr ""
+
+#~ msgid "the_geom"
+#~ msgstr ""
+
+#~ msgid "id"
+#~ msgstr ""
+
+#~ msgid "source"
+#~ msgstr ""
+
+#~ msgid "target"
+#~ msgstr ""
+
+#~ msgid "rows_where"
+#~ msgstr ""
+
+#~ msgid "cnt"
+#~ msgstr ""
+
+#~ msgid "chk"
+#~ msgstr ""
+
+#~ msgid "ein"
+#~ msgstr ""
+
+#~ msgid "eout"
+#~ msgstr ""

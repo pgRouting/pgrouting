@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -27,8 +27,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:19
 msgid ""
-"``pgr_dijkstraVia`` — Using dijkstra algorithm, it finds the route that "
-"goes through a list of vertices."
+"``pgr_dijkstraVia`` — Using dijkstra algorithm, it finds the route that goes"
+" through a list of vertices."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:26
@@ -45,9 +45,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:34
 msgid ""
-"Given a list of vertices and a graph, this function is equivalent to "
-"finding the shortest path between :math:`vertex_i` and "
-":math:`vertex_{i+1}` for all :math:`i < size\\_of(vertex_via)`."
+"Given a list of vertices and a graph, this function is equivalent to finding"
+" the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all"
+" :math:`i < size\\_of(vertex_via)`."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:37
@@ -68,10 +68,6 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:59
 msgid "Minimal Signature"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst
-msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:67
@@ -96,14 +92,9 @@ msgstr ""
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "edges_sql"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -111,20 +102,20 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgr_dijkstraVia.rst:108
 #: ../../build/doc/pgr_dijkstraVia.rst:124
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgr_dijkstraVia.rst:108
 #: ../../build/doc/pgr_dijkstraVia.rst:124
 msgid "Description"
@@ -176,8 +167,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -194,24 +185,16 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -308,16 +291,16 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When ``true`` departing from a visited vertex will not try to avoid using"
-" the edge used to reach it.  In other words, U turn using the edge with "
-"same `id` is allowed."
+"When ``true`` departing from a visited vertex will not try to avoid using "
+"the edge used to reach it.  In other words, U turn using the edge with same "
+"`id` is allowed."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"When ``false`` when a departing from a visited vertex tries to avoid "
-"using the edge used to reach it.  In other words, U turn using the edge "
-"with same `id` is used when no other path is found."
+"When ``false`` when a departing from a visited vertex tries to avoid using "
+"the edge used to reach it.  In other words, U turn using the edge with same "
+"`id` is used when no other path is found."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:111
@@ -423,8 +406,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:133
 msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next node in the "
-"route sequence."
+"Cost to traverse from ``node`` using ``edge`` to the next node in the route "
+"sequence."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:134
@@ -449,42 +432,21 @@ msgstr ""
 msgid "Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst
-msgid "Example 1"
-msgstr ""
-
 #: ../../build/doc/pgr_dijkstraVia.rst:142
 msgid "Find the route that visits the vertices 1 5 3 9 4 in that order"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst
-msgid "Example 2"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:148
 msgid "What's the aggregate cost of the third path?"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst
-msgid "Example 3"
-msgstr ""
-
 #: ../../build/doc/pgr_dijkstraVia.rst:154
 msgid ""
-"What's the route's aggregate cost of the route at the end of the third "
-"path?"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst
-msgid "Example 4"
+"What's the route's aggregate cost of the route at the end of the third path?"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:160
 msgid "How are the nodes visited in the route?"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst
-msgid "Example 5"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:166
@@ -493,14 +455,10 @@ msgid ""
 "reached?"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst
-msgid "Example 6"
-msgstr ""
-
 #: ../../build/doc/pgr_dijkstraVia.rst:172
 msgid ""
-"show the route's seq and aggregate cost and a status of \"passes in "
-"front\" or \"visits\" node 9"
+"show the route's seq and aggregate cost and a status of \"passes in front\" "
+"or \"visits\" node 9"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:179
@@ -508,7 +466,6 @@ msgid "See Also"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:181
-#, python-format
 msgid "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
@@ -528,3 +485,32 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "Example"
+#~ msgstr ""
+
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr ""
+
+#~ msgid "Example 1"
+#~ msgstr ""
+
+#~ msgid "Example 2"
+#~ msgstr ""
+
+#~ msgid "Example 3"
+#~ msgstr ""
+
+#~ msgid "Example 4"
+#~ msgstr ""
+
+#~ msgid "Example 5"
+#~ msgstr ""
+
+#~ msgid "Example 6"
+#~ msgstr ""

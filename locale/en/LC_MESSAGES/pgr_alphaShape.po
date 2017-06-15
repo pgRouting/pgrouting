@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -43,49 +43,29 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst
-msgid "sql"
-msgstr ""
-
 #: ../../build/doc/pgr_alphaShape.rst:37
 msgid ""
-"``text`` a SQL query, which should return a set of rows with the "
-"following columns:"
-msgstr ""
-
-#: ../../build/doc/pgr_alphaShape.rst
-msgid "id"
+"``text`` a SQL query, which should return a set of rows with the following "
+"columns:"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:43
 msgid "``int4`` identifier of the vertex"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst
-msgid "x"
-msgstr ""
-
 #: ../../build/doc/pgr_alphaShape.rst:44
 msgid "``float8`` x-coordinate"
-msgstr ""
-
-#: ../../build/doc/pgr_alphaShape.rst
-msgid "y"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:45
 msgid "``float8`` y-coordinate"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst
-msgid "alpha"
-msgstr ""
-
 #: ../../build/doc/pgr_alphaShape.rst:47
 msgid ""
 "(optional) ``float8`` alpha value. If specified alpha value equals 0 "
-"(default), then optimal alpha value is used. For more information, see "
-"`CGAL - 2D Alpha Shapes "
+"(default), then optimal alpha value is used. For more information, see `CGAL"
+" - 2D Alpha Shapes "
 "<http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html>`_."
 msgstr ""
 
@@ -103,8 +83,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:55
 msgid ""
-"If a result includes multiple outer/inner rings, return those with "
-"separator row (x=NULL and y=NULL)."
+"If a result includes multiple outer/inner rings, return those with separator"
+" row (x=NULL and y=NULL)."
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:58
@@ -116,13 +96,14 @@ msgid "Renamed in version 2.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:60
-msgid "Added alpha argument with default 0 (use optimal value) in version 2.1.0"
+msgid ""
+"Added alpha argument with default 0 (use optimal value) in version 2.1.0"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:61
 msgid ""
-"Supported to return multiple outer/inner ring coordinates with separator "
-"row (x=NULL and y=NULL) in version 2.1.0"
+"Supported to return multiple outer/inner ring coordinates with separator row"
+" (x=NULL and y=NULL) in version 2.1.0"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:64
@@ -131,10 +112,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:65
 msgid ""
-"PgRouting's alpha shape implementation has no way to control the order of"
-" the output points, so the actual output might different for the same "
-"input data. The first query, has the output ordered, he second query "
-"shows an example usage:"
+"PgRouting's alpha shape implementation has no way to control the order of "
+"the output points, so the actual output might different for the same input "
+"data. The first query, has the output ordered, he second query shows an "
+"example usage:"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:70
@@ -177,3 +158,17 @@ msgstr ""
 msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
 msgstr ""
 
+#~ msgid "sql"
+#~ msgstr ""
+
+#~ msgid "id"
+#~ msgstr ""
+
+#~ msgid "x"
+#~ msgstr ""
+
+#~ msgid "y"
+#~ msgstr ""
+
+#~ msgid "alpha"
+#~ msgstr ""

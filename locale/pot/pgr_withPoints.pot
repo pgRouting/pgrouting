@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,17 +172,6 @@ msgstr ""
 msgid "No **details** are given about distance of other points of points_sql query."
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:0
-#: ../../build/doc/pgr_withPoints.rst:0
-#: ../../build/doc/pgr_withPoints.rst:0
-#: ../../build/doc/pgr_withPoints.rst:0
-#: ../../build/doc/pgr_withPoints.rst:0
-#: ../../build/doc/pgr_withPoints.rst:0
-#: ../../build/doc/pgr_withPoints.rst:0
-#: ../../build/doc/pgr_withPoints.rst:0
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_withPoints.rst:103
 msgid "From point 1 to point 3"
 msgstr ""
@@ -225,10 +214,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the edges_sql query for dijkstra like functions"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "edges_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -334,18 +319,8 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -354,10 +329,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the Points SQL query"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "points_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11

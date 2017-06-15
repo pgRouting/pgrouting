@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,40 +40,20 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_pointsAsPolygon.rst:0
-msgid "sql"
-msgstr ""
-
 #: ../../build/doc/pgr_pointsAsPolygon.rst:37
 msgid "``text`` a SQL query, which should return a set of rows with the following columns:"
-msgstr ""
-
-#: ../../build/doc/pgr_pointsAsPolygon.rst:0
-msgid "id"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:43
 msgid "``int4`` identifier of the vertex"
 msgstr ""
 
-#: ../../build/doc/pgr_pointsAsPolygon.rst:0
-msgid "x"
-msgstr ""
-
 #: ../../build/doc/pgr_pointsAsPolygon.rst:44
 msgid "``float8`` x-coordinate"
 msgstr ""
 
-#: ../../build/doc/pgr_pointsAsPolygon.rst:0
-msgid "y"
-msgstr ""
-
 #: ../../build/doc/pgr_pointsAsPolygon.rst:45
 msgid "``float8`` y-coordinate"
-msgstr ""
-
-#: ../../build/doc/pgr_pointsAsPolygon.rst:0
-msgid "alpha"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:47

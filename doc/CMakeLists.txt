@@ -45,6 +45,10 @@ foreach(opt HTML LATEX SINGLEHTML EPUB DUMMY)
     endif()
 endforeach()
 
+if (LOCALE) 
+    set(WITH_DOC ON)
+endif()
+
 
 message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
 
@@ -211,7 +215,7 @@ if (LOCALE)
     add_custom_target(locale
         COMMAND ${SPHINX_EXECUTABLE} 
         -b gettext
-        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+        -c "${PGR_DOCUMENTATION_SOURCE_DIR}" 
         "${PGR_DOCUMENTATION_SOURCE_DIR}" 
         "${CMAKE_SOURCE_DIR}/locale/pot" 
 
