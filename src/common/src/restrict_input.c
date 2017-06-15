@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/get_check_data.h"
 
-#if 0
+#if 1
 
 static
 void fetch_restriction(
@@ -76,7 +76,6 @@ pgr_get_restriction_data(
 
     PGR_DBG("pgr_get_restriction_data");
     PGR_DBG("%s", restrictions_sql);
-
     Column_info_t info[3];
 
     int i;
@@ -91,12 +90,13 @@ pgr_get_restriction_data(
     info[2].name = strdup("restricted_edges");
 
     info[1].eType = ANY_NUMERICAL;
-    info[2].eType = TEXT;
+    info[2].eType = ANY_INTEGER_ARRAY;
 
+#if 0
     // experiment starts
 
     size_t total_tuples = (*total_restrictions) ;
-    
+
     (*restrictions) = (Restrict_t *)palloc0(sizeof(Restrict_t));
 
     (*restrictions)[0].id = 1;
@@ -105,8 +105,9 @@ pgr_get_restriction_data(
     (*restrictions)[0].restricted_edges[1] = 7;
 
     // experiment ends
+#endif
 
-#if 0
+#if 1
     size_t ntuples;
     size_t total_tuples;
 
@@ -120,6 +121,7 @@ pgr_get_restriction_data(
 
 
     while (moredata == TRUE) {
+        PGR_DBG("!!!!!!!!!!!!!!!!!!!!!!");
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
             pgr_fetch_column_info(info, 3);
