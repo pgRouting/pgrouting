@@ -578,8 +578,8 @@ With :ref:`pgr_analyze_graph` the graph can be checked for errors. For example f
 
 In the vertices table "mytab_vertices_pgr":
 
-  - Deadends are identified by ``cnt=1``
-  - Potencial gap problems are identified with ``chk=1``.
+- Deadends are identified by ``cnt=1``
+- Potencial gap problems are identified with ``chk=1``.
 
 .. code-block:: sql
 
@@ -625,11 +625,11 @@ Example
 
 Lets assume we have a table "st" of edges and a column "one_way" that might have values like:
 
-   * 'FT'    - oneway from the source to the target node.
-   * 'TF'    - oneway from the target to the source node.
-   * 'B'     - two way street.
-   * ''      - empty field, assume twoway.
-   * <NULL>  - NULL field, use two_way_if_null flag.
+* 'FT'    - oneway from the source to the target node.
+* 'TF'    - oneway from the target to the source node.
+* 'B'     - two way street.
+* ''      - empty field, assume twoway.
+* <NULL>  - NULL field, use two_way_if_null flag.
 
 Then we could form the following query to analyze the oneway streets for errors.
 
