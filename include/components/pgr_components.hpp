@@ -59,10 +59,14 @@ class Pgr_components {
      std::vector<pgr_componentV_t> connectedComponentsV(
              G &graph);
 
- private:
-     //! Call to Connected Components Vertex Version
-     std::vector<pgr_componentV_t> do_connectedComponentsV(
+     //! Strongly Connected Components Vertex Version
+     std::vector<pgr_componentV_t> strongComponentsV(
              G &graph);
+
+ private:
+     //! Generate Results, Vertex Version
+     std::vector<pgr_componentV_t> generate_resultsV(
+             std::vector< V >);
 
      //! Generate Map V_to_id
      std::map< V, int64_t > V_to_id;
@@ -94,27 +98,11 @@ Pgr_components< G >::generate_map(
     }
 }
 
-//! Connected Components Vertex Version
+//! Generate Results, Vertex Version
 template < class G >
 std::vector<pgr_componentV_t>
-Pgr_components< G >::connectedComponentsV(
-        G &graph) {
-    // perform the algorithm
-    std::vector<pgr_componentV_t> results = do_connectedComponentsV(graph);
-
-    // get the results
-    return results;
-}
-
-//! Call Componnets Vertex Version and Generate Results
-template < class G >
-std::vector<pgr_componentV_t>
-Pgr_components< G >::do_connectedComponentsV(
-        G &graph) {
-    // call to boost
-    std::vector< V > components(num_vertices(graph.graph));
-    boost::connected_components(graph.graph, &components[0]);
-
+Pgr_components< G >::generate_resultsV(
+        std::vector< V >) {
     // generate V_to_id
     generate_map(graph.vertices_map);
 
@@ -136,7 +124,6 @@ Pgr_components< G >::do_connectedComponentsV(
             result_comp[components[i]] =
                 std::min(results[i].node, result_comp[components[i]]);
         }
-        results[i].n_seq = -100;
     }
 
     // generate component number
@@ -153,6 +140,37 @@ Pgr_components< G >::do_connectedComponentsV(
             results[i].n_seq = results[i - 1].n_seq + 1;
         }
     }
+    return results;
+}
+
+//! Connected Components Vertex Version
+template < class G >
+std::vector<pgr_componentV_t>
+Pgr_components< G >::connectedComponentsV(
+        G &graph) {
+    // perform the algorithm
+    std::vector< V > components(num_vertices(graph.graph));
+    boost::connected_components(graph.graph, &components[0]);
+
+	//get the results
+    std::vector<pgr_componentV_t> results = generate_resultsV(components);
+
+    // get the results
+    return results;
+}
+
+//! Strongly Connected Components Vertex Version
+template < class G >
+std::vector<pgr_componentV_t>
+Pgr_components< G >::strongComponentsV(
+        G &graph) {
+    // perform the algorithm
+    std::vector< V > components(num_vertices(graph.graph));
+    boost::connected_components(graph.graph, &components[0]);
+
+    // get the results
+    std::vector<pgr_componentV_t> results = generate_resultsV(components);
+
     return results;
 }
 
