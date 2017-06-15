@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     pickDeliver.sql
     pickDeliverEuclidean.sql
+    regina_book.sql
     )
 
 foreach (f ${LOCAL_FILES})
