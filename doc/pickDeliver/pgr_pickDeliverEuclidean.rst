@@ -123,24 +123,67 @@ pgr_pickDeliverEuclidean(Complete Signature)
 Description of the Signatures
 -------------------------------------------------------------------------------
 
+Description of the orders_sql query (Euclidean)
+.........................................................................................
+
+A `SELECT` statement that returns the following columns:
+
+.. code-block:: none
+
+    id, demand
+    p_x, p_y, p_open, p_close, [p_service, ]
+    d_x, d_y, d_open, d_close, [d_service, ]
+
+Where:
+
 .. include:: VRP-category.rst
-    :start-after: pd_euclidean_sql_start:
-    :end-before: pd_euclidean_sql_end
+    :start-after: pd_orders_sql_general_start
+    :end-before: pd_orders_sql_general_end
 
 
 .. include:: VRP-category.rst
-    :start-after: pd_vehicle_sql_start:
-    :end-before: pd_vehicle_sql_end
+    :start-after: pd_orders_euclidean_sql_start
+    :end-before: pd_orders_euclidean_sql_end
+
+
+
+Description of the vehicles_sql query
+.........................................................................................
+
+A `SELECT` statement that returns the following columns:
+
+.. code-block:: none
+
+    id, capacity
+    start_x, start_y, start_open, start_close [, start_service, ]
+    [ end_x, end_y, end_open, end_close, end_service ]
+
+where:
+
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_general_start
+    :end-before: pd_vehicle_sql_general_end
+
+
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_euclidean_start
+    :end-before: pd_vehicle_sql_euclidean_end
 
 
 .. include:: VRP-category.rst
     :start-after: pd_parameters_start
     :end-before: pd_parameters_end
 
+
 .. include:: VRP-category.rst
     :start-after: return_vrp_euclidean_start:
     :end-before: return_vrp_euclidean_end
 
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 
 See Also

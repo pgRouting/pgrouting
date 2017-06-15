@@ -7,11 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-   INSTRUCTIONS
-   - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropriate values
-   - one file / function,  may signatures of the same function go in the same file
-
 .. _pgr_pickDeliver:
 
 pgr_pickDeliver
@@ -20,6 +15,10 @@ pgr_pickDeliver
 .. warning:: Documentation is being updated
 
 ``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
+
+.. rubric:: Availability
+
+* New as proposed in 2.5.0
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
@@ -72,7 +71,7 @@ Characteristics:
 
 
 Signature Summary
------------------
+-------------------------------------------------------------------------------
 
 ..
     TEXT, -- orders_sql
@@ -99,15 +98,14 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_pickDeliver(customers_sql, max_vehicles, capacity)
-    pgr_pickDeliver(customers_sql, max_vehicles, capacity, [factor, max_cycles, initial_sol])
+    pgr_pickDeliver(orders_sql, vehicles_sql, matrix_sql [, factor, max_cycles, initial_sol])
     RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
                     travel_time, arrival_time, wait_time, service_time, departure_time)
 
 
 
 Signatures
------------
+-------------------------------------------------------------------------------
 
 ..
     Minimal signature
@@ -115,7 +113,7 @@ Signatures
     single: _pgr_pickDeliver(Minimal Signature) - developing
 
 Minimal signature
-...................
+................................................................................
 
 ..
    Small description, example:
@@ -143,7 +141,7 @@ This example use the following data: TODO put link
 
 
 Complete signature
-....................
+................................................................................
 
 This signature performs the optimization based on the optional parameters
 
@@ -156,17 +154,54 @@ This signature performs the optimization based on the optional parameters
 
 
 Description of the Signatures
--------------------------------
+--------------------------------------------------------------------------------
 
+
+orders_sql
+................................................................................
+
+A `SELECT` statement that returns the following columns:
+
+.. code-block:: none
+
+    id, demand
+    p_node_id, p_open, p_close, [p_service, ]
+    d_node_id, d_open, d_close, [d_service, ]
+
+where:
 
 .. include:: VRP-category.rst
-    :start-after: pd_matrix_sql_start:
-    :end-before: pd_matrix_sql_end
-
+    :start-after: pd_orders_sql_general_start
+    :end-before: pd_orders_sql_general_end
 
 .. include:: VRP-category.rst
-    :start-after: pd_vehicle_sql_start:
-    :end-before: pd_vehicle_sql_end
+    :start-after: pd_orders_sql_matrix_start
+    :end-before: pd_orders_sql_matrix_end
+
+
+vehicles_sql
+.........................................................................................
+
+A `SELECT` statement that returns the following columns:
+
+.. code-block:: none
+
+    id, capacity
+    start_node_id, start_open, start_close [, start_service, ]
+    [ end_node_id, end_open, end_close, end_service ]
+
+where:
+
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_general_start
+    :end-before: pd_vehicle_sql_general_end
+
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_matrix_start
+    :end-before: pd_vehicle_sql_matrix_end
+
+
+.. end of vehicles_sql
 
 
 .. include:: VRP-category.rst

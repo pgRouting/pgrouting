@@ -156,20 +156,16 @@ kg              :math:`10 * a\_weight`       5
 
 
 
-
-
 Inner Queries
 -------------------------------------------------------------------------------
 
 .. rubric:: orders_sql
 
-- :ref:`Description of the orders_sql query <pd_matrix_sql_start>`
-- :ref:`Description of the orders_sql query for Euclidean version <pd_euclidean_sql_start>`
+- :ref:`Description of the orders_sql query <pd_orders_matrix_sql_start>`
 
 .. rubric:: vehicles_sql
 
-- :ref:`Description of the vehicles_sql query <pd_vehicle_sql_start>`
-- :ref:`Description of the vehicles_sql query for Euclidean version <pd_vehicle_sql_euclidean_start>`
+- :ref:`Description of the vehicles_sql query <pd_vehicle_sql>`
 
 .. rubric:: return columns
 
@@ -193,87 +189,137 @@ Inner Queries
     info[12].name = strdup("p_node_id");
     info[13].name = strdup("d_node_id")
 
-.. _pd_matrix_sql_start:
+.. _pd_orders_matrix_sql_start:
 
 Description of the orders_sql query
 .........................................................................................
 
-================  ===================   =========== ================================================
-Column            Type                  Default     Description
-================  ===================   =========== ================================================
-**id**            ``ANY-INTEGER``                   Identifier of the pick-delivery order pair.
-**demand**        ``ANY-NUMERICAL``                 Number of units in the order
-**p_node_id**     ``ANY-INTEGER``                   The node identifier of the pickup location, must match a node in the matrix table.
-**p_open**        ``ANY-NUMERICAL``                 The time, relative to 0, when the pickup location opens.
-**p_close**       ``ANY-NUMERICAL``                 The time, relative to 0, when the pickup location closes.
-**d_service**     ``ANY-NUMERICAL``     0           The duration of the loading at the pickup location.
-**d_node_id**     ``ANY-INTEGER``                   Node identifier of the pickup location, must match a node in the matrix table.
-**d_open**        ``ANY-NUMERICAL``                 The time, relative to 0, when the delivery location opens.
-**d_close**       ``ANY-NUMERICAL``                 The time, relative to 0, when the delivery location closes.
-**d_service**     ``ANY-NUMERICAL``     0           The duration of the loading at the delivery location.
-================  ===================   =========== ================================================
+In general, the columns for the vehicles_sql is the same in both implementation of pick and delivery:
 
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
-
-.. pd_matrix_sql_end
-
-
-
-.. _pd_euclidean_sql_start:
-
-
-Description of the orders_sql query (Euclidean)
-.........................................................................................
+.. pd_orders_sql_general_start
 
 ================  ===================   =========== ================================================
 Column            Type                  Default     Description
 ================  ===================   =========== ================================================
-**id**            ``ANY-INTEGER``                   Identifier of the pick-delivery order pair.
-**demand**        ``ANY-NUMERICAL``                 Number of units in the order
-**p_x**           ``ANY-NUMERICAL``                 :math:`x` value of the pick up location
-**p_y**           ``ANY-NUMERICAL``                 :math:`y` value of the pick up location
-**p_open**        ``ANY-NUMERICAL``                 The time, relative to 0, when the pickup location opens.
-**p_close**       ``ANY-NUMERICAL``                 The time, relative to 0, when the pickup location closes.
-**d_service**     ``ANY-NUMERICAL``     0           The duration of the loading at the pickup location.
-**d_x**           ``ANY-NUMERICAL``                 :math:`x` value of the delivery location
-**d_y**           ``ANY-NUMERICAL``                 :math:`y` value of the delivery location
-**d_open**        ``ANY-NUMERICAL``                 The time, relative to 0, when the delivery location opens.
-**d_close**       ``ANY-NUMERICAL``                 The time, relative to 0, when the delivery location closes.
-**d_service**     ``ANY-NUMERICAL``     0           The duration of the loading at the delivery location.
+**id**            |ANY-INTEGER|                     Identifier of the pick-delivery order pair.
+**demand**        |ANY-NUMERICAL|                   Number of units in the order
+**p_open**        |ANY-NUMERICAL|                   The time, relative to 0, when the pickup location opens.
+**p_close**       |ANY-NUMERICAL|                   The time, relative to 0, when the pickup location closes.
+**d_service**     |ANY-NUMERICAL|       0           The duration of the loading at the pickup location.
+**d_open**        |ANY-NUMERICAL|                   The time, relative to 0, when the delivery location opens.
+**d_close**       |ANY-NUMERICAL|                   The time, relative to 0, when the delivery location closes.
+**d_service**     |ANY-NUMERICAL|       0           The duration of the loading at the delivery location.
 ================  ===================   =========== ================================================
 
-Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. pd_orders_sql_general_end
 
 
-.. pd_euclidean_sql_end
+.. pd_orders_sql_matrix_start
+
+For the non euclidean implementation, the starting and ending identifiers are needed:
+
+==================  ===================  ================================================
+Column              Type                  Description
+==================  ===================  ================================================
+**p_node_id**       |ANY-INTEGER|          The node identifier of the pickup, must match a node identifier in the matrix table.
+**d_node_id**       |ANY-INTEGER|          The node identifier of the delivery, must match a node identifier in the matrix table.
+==================  ===================  ================================================
+
+.. pd_orders_sql_matrix_end
 
 
-.. _pd_vehicle_sql_start:
+.. pd_orders_euclidean_sql_start
 
-Description of the vehicles_sql query
+For the euclidean implementation, pick up and delivery  :math:`(x,y)` locations are needed:
+
+================  ===================    ================================================
+Column            Type                       Description
+================  ===================    ================================================
+**p_x**           |ANY-NUMERICAL|         :math:`x` value of the pick up location
+**p_y**           |ANY-NUMERICAL|         :math:`y` value of the pick up location
+**d_x**           |ANY-NUMERICAL|         :math:`x` value of the delivery location
+**d_y**           |ANY-NUMERICAL|         :math:`y` value of the delivery location
+================  ===================    ================================================
+
+
+.. pd_orders_euclidean_sql_end
+
+
+
+..
+   info[0].name = strdup("id");
+   info[1].name = strdup("capacity");
+   info[2].name = strdup("start_x");
+   info[3].name = strdup("start_y");
+   info[4].name = strdup("number");
+   info[5].name = strdup("start_open");
+   info[6].name = strdup("start_close");
+   info[7].name = strdup("start_service");
+   info[8].name = strdup("end_x");
+   info[9].name = strdup("end_y");
+   info[10].name = strdup("end_open");
+   info[11].name = strdup("end_close");
+   info[12].name = strdup("end_service");
+   info[13].name = strdup("speed");
+   info[14].name = strdup("start_node_id");
+   info[15].name = strdup("end_node_id");
+
+
+.. _pd_vehicle_sql:
+
+Pick & Deliver vehicles_sql
 .........................................................................................
 
-.. warning:: TODO: Write
+In general, the columns for the vehicles_sql is the same in both implementation of pick and delivery:
 
-.. pd_vehicle_sql_end
+.. pd_vehicle_sql_general_start
 
-.. _pd_vehicle_sql_euclidean_start:
+==================  =================== ================ ================================================
+Column              Type                  Default           Description
+==================  =================== ================ ================================================
+**id**              |ANY-INTEGER|                         Identifier of the pick-delivery order pair.
+**capacity**        |ANY-NUMERICAL|                       Number of units in the order
 
+**start_open**      |ANY-NUMERICAL|                       The time, relative to 0, when the starting location opens.
+**start_close**     |ANY-NUMERICAL|                       The time, relative to 0, when the starting location closes.
+**start_service**   |ANY-NUMERICAL|      `0`              The duration of the loading at the starting location.
 
+**end_open**        |ANY-NUMERICAL|      `start_open`     The time, relative to 0, when the ending location opens.
+**end_close**       |ANY-NUMERICAL|      `start_close`    The time, relative to 0, when the ending location closes.
+**end_service**     |ANY-NUMERICAL|      `start_service`  The duration of the loading at the ending location.
+==================  =================== ================ ================================================
 
-Description of the vehicles_sql query (Euclidean)
-.........................................................................................
+.. pd_vehicle_sql_general_end
 
-.. warning:: TODO: Write
+.. pd_vehicle_sql_matrix_start
+
+For the non euclidean implementation, the starting and ending identifiers are needed:
+
+==================  =================== ================ ================================================
+Column              Type                  Default           Description
+==================  =================== ================ ================================================
+**start_node_id**   |ANY-INTEGER|                         The node identifier of the starting location, must match a node identifier in the matrix table.
+**end_node_id**     |ANY-INTEGER|        `start_node_id`  The node identifier of the ending location, must match a node identifier in the matrix table.
+==================  =================== ================ ================================================
+
+.. pd_vehicle_sql_matrix_end
+
+.. pd_vehicle_sql_euclidean_start
+
+For the euclidean implementation, starting and ending :math:`(x,y)` locations are needed:
+
+==================  =================== ================ ================================================
+Column              Type                  Default           Description
+==================  =================== ================ ================================================
+**start_x**         |ANY-NUMERICAL|                         :math:`x` value of the coordinate of the starting location.
+**start_y**         |ANY-NUMERICAL|                         :math:`y` value of the coordinate of the starting location.
+**end_x**           |ANY-NUMERICAL|          `start_x`      :math:`x` value of the coordinate of the ending location.
+**end_y**           |ANY-NUMERICAL|          `start_y`      :math:`y` value of the coordinate of the ending location.
+==================  =================== ================ ================================================
 
 .. pd_vehicle_sql_euclidean_end
+
 
 
 .. pd_parameters_start
@@ -393,8 +439,6 @@ Column              Type           Description
 .. return_vrp_matrix_end
 
 
-
-
 .. _return_vrp_euclidean_start:
 
 .. include:: VRP-category.rst
@@ -402,6 +446,12 @@ Column              Type           Description
     :end-before: return_vrp_matrix_end
 
 .. return_vrp_euclidean_end
+
+
+
+.. include:: pgRouting-concepts.rst
+    :start-after: where_definition_starts
+    :end-before: where_definition_ends
 
 
 .. glossary::
