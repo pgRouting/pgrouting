@@ -184,7 +184,7 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
         /**********************************************************************/
 
 #if PGSQL_VERSION > 94
-        funcctx->max_calls = result_count;
+        funcctx->max_calls = (uint32_t)result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
