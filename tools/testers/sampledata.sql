@@ -102,7 +102,7 @@ CREATE TABLE restrict (
     cost FLOAT
 );
 
-INSERT INTO restrict(restricted, cost) VALUES
+INSERT INTO restrict(restricted_edges, cost) VALUES
 ('{4, 7}', -1);
 
 CREATE TABLE restrictions (
