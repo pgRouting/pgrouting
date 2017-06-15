@@ -48,44 +48,48 @@ COMMENT ON FUNCTION pgr_drivingDistance(text,  BIGINT,  FLOAT8,  BOOLEAN,  BOOLE
 -- Renamed /deprecated
 -----------------------
 COMMENT ON FUNCTION pgr_apspJohnson(TEXT)
-    IS 'pgr_apspJohnson(Renamed function) use pgr_Johnson insteaad';
+    IS 'pgr_apspJohnson(Renamed function) use pgr_Johnson instead';
 
 COMMENT ON FUNCTION pgr_apspWarshall(text, boolean, boolean)
-    IS 'pgr_apspWarshall(Renamed function) use pgr_floydWarshall insteaad';
+    IS 'pgr_apspWarshall(Renamed function) use pgr_floydWarshall instead';
 
 COMMENT ON FUNCTION pgr_kdijkstraPath( text, INTEGER, INTEGER ARRAY, BOOLEAN, BOOLEAN)
-    IS 'pgr_kdijkstraPath(Renamed function) use pgr_dijkstra insteaad';
+    IS 'pgr_kdijkstraPath(Renamed function) use pgr_dijkstra instead';
 
 COMMENT ON FUNCTION pgr_kdijkstracost( text, INTEGER, INTEGER array, BOOLEAN, BOOLEAN)
-    IS 'pgr_kDijkstraCost(Renamed function) use pgr_dijkstraCost insteaad';
+    IS 'pgr_kDijkstraCost(Renamed function) use pgr_dijkstraCost instead';
 
 COMMENT ON FUNCTION  pgr_maxFlowPushRelabel(TEXT, BIGINT, BIGINT)
-    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel insteaad';
+    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel instead';
 COMMENT ON FUNCTION  pgr_maxFlowPushRelabel(TEXT, BIGINT, ANYARRAY)
-    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel insteaad';
+    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel instead';
 COMMENT ON FUNCTION  pgr_maxFlowPushRelabel(TEXT, ANYARRAY, BIGINT)
-    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel insteaad';
+    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel instead';
 COMMENT ON FUNCTION  pgr_maxFlowPushRelabel(TEXT, ANYARRAY, ANYARRAY)
-    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel insteaad';
+    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel instead';
 
 
 COMMENT ON FUNCTION  pgr_maxFlowEdmondsKarp(TEXT, BIGINT, BIGINT)
-    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp insteaad';
+    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp instead';
 COMMENT ON FUNCTION  pgr_maxFlowEdmondsKarp(TEXT, BIGINT, ANYARRAY)
-    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp insteaad';
+    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp instead';
 COMMENT ON FUNCTION  pgr_maxFlowEdmondsKarp(TEXT, ANYARRAY, BIGINT)
-    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp insteaad';
+    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp instead';
 COMMENT ON FUNCTION  pgr_maxFlowEdmondsKarp(TEXT, ANYARRAY, ANYARRAY)
-    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp insteaad';
+    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp instead';
 
 COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, BIGINT, BIGINT)
-    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov insteaad';
+    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
 COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, BIGINT, ANYARRAY)
-    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov insteaad';
+    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
 COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, ANYARRAY, BIGINT)
-    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov insteaad';
+    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
 COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, ANYARRAY, ANYARRAY)
-    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov insteaad';
+    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
+
+
+COMMENT ON FUNCTION pgr_gsoc_vrppdtw( text, INTEGER)
+    IS 'pgr_gsoc_vrppdtw(Renamed function) use pgr_pickDeliverEuclidean instead';
 
 ------------------------
 -- Deprecated functions
