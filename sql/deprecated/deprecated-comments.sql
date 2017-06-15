@@ -88,7 +88,7 @@ COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, ANYARRAY, ANYARRAY)
     IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
 
 
-COMMENT ON FUNCTION pgr_gsoc_vrppdtw( text, INTEGER)
+COMMENT ON FUNCTION pgr_gsoc_vrppdtw( text, INTEGER, INTEGER)
     IS 'pgr_gsoc_vrppdtw(Renamed function) use pgr_pickDeliverEuclidean instead';
 
 ------------------------
