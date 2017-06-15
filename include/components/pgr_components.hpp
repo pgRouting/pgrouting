@@ -66,6 +66,7 @@ class Pgr_components {
  private:
      //! Generate Results, Vertex Version
      std::vector<pgr_componentV_t> generate_resultsV(
+             G &graph,
              std::vector< V >);
 
      //! Generate Map V_to_id
@@ -102,7 +103,8 @@ Pgr_components< G >::generate_map(
 template < class G >
 std::vector<pgr_componentV_t>
 Pgr_components< G >::generate_resultsV(
-        std::vector< V >) {
+        G &graph,
+        std::vector< V > components) {
     // generate V_to_id
     generate_map(graph.vertices_map);
 
@@ -127,13 +129,13 @@ Pgr_components< G >::generate_resultsV(
     }
 
     // generate component number
-    for (int i = 0; i < totalNodes; i++) {
+    for (auto i = 0; i < totalNodes; i++) {
         results[i].component = result_comp[components[i]];
     }
 
     // sort results and generate n_seq
     std::sort(results.begin(), results.end(), sort_cmp);
-    for (int i = 0; i < totalNodes; i++) {
+    for (auto i = 0; i < totalNodes; i++) {
         if (i == 0 || results[i].component != results[i - 1].component) {
             results[i].n_seq = 1;
         } else {
@@ -153,7 +155,7 @@ Pgr_components< G >::connectedComponentsV(
     boost::connected_components(graph.graph, &components[0]);
 
 	//get the results
-    std::vector<pgr_componentV_t> results = generate_resultsV(components);
+    std::vector<pgr_componentV_t> results = generate_resultsV(graph, components);
 
     // get the results
     return results;
@@ -169,7 +171,7 @@ Pgr_components< G >::strongComponentsV(
     boost::connected_components(graph.graph, &components[0]);
 
     // get the results
-    std::vector<pgr_componentV_t> results = generate_resultsV(components);
+    std::vector<pgr_componentV_t> results = generate_resultsV(graph, components);
 
     return results;
 }
