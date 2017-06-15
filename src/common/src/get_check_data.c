@@ -87,7 +87,7 @@ void pgr_fetch_column_info(
                     pgr_check_char_type(info[i]);
                     break;
                 case ANY_INTEGER_ARRAY:
-                    pgr_check_any_integer_array_type(info[i]);
+                    pgr_check_any_integertoarray_type(info[i]);
                     break;
                 default:
                     elog(ERROR, "Unknown type of column %s", info[i].name);
@@ -123,7 +123,7 @@ pgr_check_any_integer_type(Column_info_t info) {
 }
 
 void
-pgr_check_any_integer_array_type(Column_info_t info) {
+pgr_check_any_integertoarray_type(Column_info_t info) {
     if (!(info.type == INT2ARRAYOID
                 || info.type == INT4ARRAYOID
                 || info.type == 1016)) {
