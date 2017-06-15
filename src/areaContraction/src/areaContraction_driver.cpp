@@ -65,6 +65,9 @@ static void process_areaContraction(
     /*
     * Calling function to do areaContraction
     */
+    pgrouting::contraction::Pgr_areaContract<G> result(graph,
+            borderVertices,
+            shortcut_edges, log);
 
 
  }

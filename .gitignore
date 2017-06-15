@@ -5,6 +5,8 @@ code_linter
 
 .DS_Store
 .vagrant
+documentation.sh
+run_new.sh
 tools/vagrant/packaging.sh
 *.mo
 =======
