@@ -52,6 +52,7 @@ DECLARE
     vehicles_sql TEXT;
     final_sql TEXT;
 BEGIN
+    RAISE NOTICE 'Deprecated function pgr_gsoc_vrppdtw: Use pgr_pickDeliverEuclidean instead';
     orders_sql = $$WITH
         customer_data AS ($$ || customers_sql || $$ ),
         pickups AS (
