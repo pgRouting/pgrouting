@@ -84,10 +84,10 @@ do_pgr_strongComponentsV(
         std::vector<pgr_componentV_t> results;
 
         log << "Working with Undirected Graph\n";
-        pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
+        pgrouting::DirectedGraph digraph(gType);
+        digraph.insert_edges(data_edges, total_edges);
         results = pgr_strongComponentsV(
-                undigraph);
+                digraph);
 
         auto count = results.size();
 
