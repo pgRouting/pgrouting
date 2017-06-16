@@ -146,6 +146,7 @@ process(
         i++;
     }
 #endif
+
     if (total_edges == 0) {
         PGR_DBG("No edges found");
         pgr_SPI_finish();
