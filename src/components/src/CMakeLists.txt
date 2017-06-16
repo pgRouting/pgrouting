@@ -1,6 +1,6 @@
 ADD_LIBRARY(components OBJECT
     connectedComponentsV.c
-    connectedComponentsV_driver.cpp
 	strongComponentsV.c
-    strongComponentsV_driver.cpp
-    )
+
+    connectedComponentsV_driver.cpp
+    strongComponentsV_driver.cpp)

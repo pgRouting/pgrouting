@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/connected_components.hpp>
+#include <boost/graph/strong_components.hpp>
 
 #include <vector>
 #include <map>
@@ -168,7 +169,7 @@ Pgr_components< G >::strongComponentsV(
         G &graph) {
     // perform the algorithm
     std::vector< V > components(num_vertices(graph.graph));
-    boost::connected_components(graph.graph, &components[0]);
+    boost::strong_components(graph.graph, &components[0]);
 
     // get the results
     std::vector<pgr_componentV_t> results = generate_resultsV(graph, components);
