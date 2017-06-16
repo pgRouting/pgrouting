@@ -103,8 +103,7 @@ do_pgr_strongComponentsV(
         for (size_t i = 0; i < count; i++) {
             *((*return_tuples) + i) = results[i];
         }
-        size_t sequence = count;
-        (*return_count) = sequence;
+        (*return_count) = count;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
