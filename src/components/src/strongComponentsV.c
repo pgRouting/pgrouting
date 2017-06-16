@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: connectedComponentsV.c
+File: strongComponentsV.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/** @file connectedComponentsV.c
+/** @file strongComponentsV.c
  * @brief Conecting code with postgres.
  *
  * This file is fully documented for understanding
@@ -57,8 +57,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/components/strongComponentsV_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(connectedComponentsV);
+PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(strongComponentsV);
 
 
 /******************************************************************************/
@@ -139,7 +139,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
