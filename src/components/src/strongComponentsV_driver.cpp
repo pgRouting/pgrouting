@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/components/connectedComponentsV_driver.h"
+#include "drivers/components/strongComponentsV_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -51,16 +51,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 template < class G >
 static
 std::vector<pgr_componentV_t>
-pgr_connectedComponentsV(
+pgr_strongComponentsV(
         G &graph) {
     std::vector<pgr_componentV_t> results;
     Pgr_components< G > fn_components;
-    return fn_components.connectedComponentsV(graph);
+    return fn_components.strongComponentsV(graph);
 }
 
 
 void
-do_pgr_connectedComponentsV(
+do_pgr_strongComponentsV(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         pgr_componentV_t **return_tuples,
@@ -86,7 +86,7 @@ do_pgr_connectedComponentsV(
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_connectedComponentsV(
+        results = pgr_strongComponentsV(
                 undigraph);
 
         auto count = results.size();
