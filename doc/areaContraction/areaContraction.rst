@@ -48,17 +48,53 @@ contracted graph is as follows:
 Contracting Sample Data
 -------------------------------------------------------------
 
- In this section, building and using a contracted graph will be shown by example.
+In this section, building and using a contracted graph will be shown by example.
 
- - The :ref:`sampledata` for a directed graph is used
+- The :ref:`sampledata` for a directed graph is used
 
- The original graph:
+The original graph:
 
- .. image:: images/directed_sampledata.png
+.. image:: images/directed_sampledata.png
 
- After doing a area contraction operation:
+After doing a area contraction operation:
 
- .. image:: images/contracted_resultGraph.png
+.. image:: images/contracted_resultGraph.png
 
- The original image shows the sample data graph. The set of border vertices taken here is [1,4,7,13].
- The border vertices have been shown in red in the figure.
+The original image shows the sample data graph. The set of border vertices taken here is [1,4,7,13].
+The border vertices have been shown in red in the figure.
+
+According to the size of the border vertices array we need to calculate one to many shortest paths
+from each border vertex to every other border vertex. In our exaple data the border vertices array is
+[1,4,7,13]. Thus the following cases for one to many shortest path calculation occur.
+
+- **Case 1**: Shortest paths from 1 to [4,7,13]
+- **Case 2**: Shortest paths from 4 to [1,7,13]
+- **Case 3**: Shortest paths from 7 to [1,4,13]
+- **Case 4**: Shortest paths from 13 to [1,4,7]
+
+Queries and images for One to Many Shortest path calculations
+-------------------------------------------------------------
+
+- **Case 1**:
+
+//include dijkstra queries for 1 -> 4,7,13
+
+.. image:: images/onetomany_a.png
+
+- **Case 2**:
+
+//include dijkstra queries for 4 -> 1,7,13
+
+.. image:: images/onetomany_b.png
+
+- **Case 3**:
+
+//include dijkstra queries for 7 -> 1,4,13
+
+.. image:: images/onetomany_c.png
+
+- **Case 4**:
+
+//include dijkstra queries for 13 -> 1,4,7
+
+.. image:: images/onetomany_d.png
