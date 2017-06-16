@@ -120,7 +120,6 @@ pgr_get_restriction_data(
 
 
     while (moredata == TRUE) {
-        PGR_DBG("!!!!!!!!!!!!!!!!!!!!!!");
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
             pgr_fetch_column_info(info, 3);

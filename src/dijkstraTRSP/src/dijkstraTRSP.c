@@ -130,8 +130,22 @@ process(
     Restrict_t *restrictions = NULL;
     size_t total_restrictions = 0;
 
-    pgr_get_restriction_data(restrictions_sql, &restrictions, &total_restrictions);
+    pgr_get_restriction_data(restrictions_sql, &restrictions,
+        &total_restrictions);
 
+#if 0
+    size_t i = 0;
+    while(i < total_restrictions) {
+        PGR_DBG("id: %ld cost: %lf", restrictions[i].id, restrictions[i].cost);
+        int j = 0;
+        while(restrictions[i].restricted_edges[j] != -1) {
+            PGR_DBG("%ld ", restrictions[i].restricted_edges[j]);
+            j++;
+        }
+        PGR_DBG("\n");
+        i++;
+    }
+#endif
     if (total_edges == 0) {
         PGR_DBG("No edges found");
         pgr_SPI_finish();
