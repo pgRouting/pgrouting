@@ -45,10 +45,9 @@ void fetch_restriction(
 
 // TODO(someone) because its text, no guarantee the text read is correct
 // move this code to c++ to tokenize the integers.
-
     int i = 0;
     for (i = 0; i < MAX_RULE_LENGTH; ++i) restriction->restricted_edges[i] = -1;
-
+    str[0] = ',';
     if (str != NULL) {
         char *token = NULL;
         int i = 0;
