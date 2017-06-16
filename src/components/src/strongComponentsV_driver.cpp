@@ -79,11 +79,11 @@ do_pgr_strongComponentsV(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = UNDIRECTED;
+        graphType gType = DIRECTED;
 
         std::vector<pgr_componentV_t> results;
 
-        log << "Working with Undirected Graph\n";
+        log << "Working with Directed Graph\n";
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
         results = pgr_strongComponentsV(

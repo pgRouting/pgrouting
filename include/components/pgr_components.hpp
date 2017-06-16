@@ -80,10 +80,9 @@ class Pgr_components {
 /******************** IMPLEMENTTION ******************/
 
 //! Compare two pgr_componentV_t structs
-bool
-sort_cmp(
-        pgr_componentV_t a,
-        pgr_componentV_t b) {
+bool operator < (
+        const pgr_componentV_t &a,
+        const pgr_componentV_t &b) {
     if (a.component == b.component)
         return a.node < b.node;
     return a.component < b.component;
@@ -135,7 +134,7 @@ Pgr_components< G >::generate_resultsV(
     }
 
     // sort results and generate n_seq
-    std::sort(results.begin(), results.end(), sort_cmp);
+    std::sort(results.begin(), results.end());
     for (auto i = 0; i < totalNodes; i++) {
         if (i == 0 || results[i].component != results[i - 1].component) {
             results[i].n_seq = 1;
