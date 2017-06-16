@@ -95,7 +95,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_connectedComponentsV(
+    do_pgr_strongComponentsV(
             edges,
             total_edges,
 #if 0
@@ -113,7 +113,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_connectedComponentsV", start_t, clock());
+    time_msg(" processing pgr_strongComponentsV", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
