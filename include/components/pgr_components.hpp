@@ -65,6 +65,11 @@ class Pgr_components {
              G &graph);
 
  private:
+     //! Compare two pgr_componentV_t structs
+     static bool sort_cmp(
+             const pgr_componentV_t &a,
+             const pgr_componentV_t &b);
+
      //! Generate Results, Vertex Version
      std::vector<pgr_componentV_t> generate_resultsV(
              G &graph,
@@ -80,7 +85,9 @@ class Pgr_components {
 /******************** IMPLEMENTTION ******************/
 
 //! Compare two pgr_componentV_t structs
-bool operator < (
+template < class G >
+bool 
+Pgr_components< G >::sort_cmp(
         const pgr_componentV_t &a,
         const pgr_componentV_t &b) {
     if (a.component == b.component)
@@ -134,7 +141,7 @@ Pgr_components< G >::generate_resultsV(
     }
 
     // sort results and generate n_seq
-    std::sort(results.begin(), results.end());
+    std::sort(results.begin(), results.end(), sort_cmp);
     for (auto i = 0; i < totalNodes; i++) {
         if (i == 0 || results[i].component != results[i - 1].component) {
             results[i].n_seq = 1;
