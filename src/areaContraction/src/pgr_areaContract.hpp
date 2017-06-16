@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include "cpp_common/pgr_assert.h"
-
+#include "./pgr_areaContraction.hpp"
 
 namespace pgrouting {
 namespace areacontraction {
@@ -44,14 +44,49 @@ template < class G >
 class Pgr_contract {
     typedef typename G::V V;
 
+
+    void perform_areaContraction(G &graph,
+            Identifiers<V> borderVertices,
+            std::ostringstream& debug) {
+        Pgr_areaContraction<G> areaContractor;
+        debug << "Setting borderVertices";
+        areaContractor.setBorderVertices(borderVertices);
+
+        try {
+            areaContractor.doContraction(graph);
+        }
+        catch ( ... ) {
+            debug << "Caught unknown exception!\n";
+        }
+    }
+
 public:
   Pgr_contract(
     G &graph,
     Identifiers<V> borderVertices,
     std::vector<pgrouting::CH_edge> &shortcut_edges,
     std::ostringstream& debug) {
-
-    }
+#ifndef NDEBUG
+    debug << "Graph before area contraction"
+        << std::endl;
+    graph.print_graph(debug);
+    debug << "Performing area contraction"
+        << std::endl;
+#endif
+    perform_areaContraction(graph, borderVertices, debug);
+#ifndef NDEBUG
+    debug << "Graph after area contraction"
+        << std::endl;
+    graph.print_graph(debug);
+#endif
+    debug << "Printing shortcuts\n";
+    for (auto shortcut : graph.shortcuts) {
+        debug << shortcut;
+    shortcut_edges.push_back(shortcut);
   }
 }
-}
+};
+}  // namespace areacontraction
+}  // namespace pgrouting
+
+#endif  // SRC_AREACONTRACTION_SRC_PGR_AREACONTRACT_HPP_
