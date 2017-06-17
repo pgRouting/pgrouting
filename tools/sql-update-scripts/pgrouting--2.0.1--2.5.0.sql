@@ -3216,7 +3216,7 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
 
 
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
+CREATE OR REPLACE FUNCTION pgr_pickDeliver(
     TEXT, -- orders_sql
     TEXT, -- vehicles_sql
     TEXT, -- matrix_cell_sql
@@ -3246,7 +3246,7 @@ LANGUAGE c VOLATILE;
 
 
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
+CREATE OR REPLACE FUNCTION pgr_pickDeliverEuclidean (
     TEXT, -- orders_sql
     TEXT, -- vehicles_sql
     factor FLOAT DEFAULT 1,
@@ -6259,7 +6259,7 @@ BEGIN
 --  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
-        p_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  1, $$ || max_cycles || $$ )),
+        p_deliver AS (SELECT * FROM pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  1, $$ || max_cycles || $$ )),
         picks AS (SELECT p_deliver.*, pindex, dindex, id AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
         delivers AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 3)),
         depots AS (SELECT p_deliver.*, 0 as pindex, 0 as dindex, 0 AS the_id FROM p_deliver WHERE (stop_type IN (-1,1,6))),
