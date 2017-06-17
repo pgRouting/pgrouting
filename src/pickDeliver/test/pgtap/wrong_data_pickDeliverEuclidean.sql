@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(15);
+SELECT plan(23);
 
 PREPARE q1 AS
 SELECT * FROM pgr_pickDeliverEuclidean(
@@ -216,10 +216,27 @@ SELECT * FROM pgr_pickDeliverEuclidean(
 
 SELECT throws_ok('vehicles9',
     'XX000',
-    'Vehicle not feasible was found',
+    'Illegal values found on vehicle',
     'vehicles9, Should throw: start_open > start_close');
 
 UPDATE vehicles SET start_open = 0, start_close = 50 WHERE id = 1;
+
+---------------------
+--  end_open > end_close
+---------------------
+PREPARE vehicles10 AS
+SELECT * FROM pgr_pickDeliverEuclidean(
+    $$SELECT * FROM orders$$,
+    $$SELECT *, 5 AS end_open, 4 AS end_close FROM vehicles$$);
+
+SELECT throws_ok('vehicles10',
+    'XX000',
+    'Illegal values found on vehicle',
+    'vehicles10, Should throw: end_open > end_close');
+
+--------------------------------------
+-- testing wrong data on orders 
+--------------------------------------
 
 ---------------------
 --  d_open > d_close
@@ -237,6 +254,7 @@ SELECT throws_ok('orders1',
     'orders1, Should throw: d_open > d_close');
 
 UPDATE orders SET d_close = 15 WHERE id = 1;
+
 ---------------------
 --  p_open > p_close
 ---------------------
@@ -249,40 +267,18 @@ SELECT throws_ok('orders1',
 
 UPDATE orders SET p_close = 10 WHERE id = 1;
 
+---------------------
+--  demand <= 0
+---------------------
 
+UPDATE orders SET demand= -20 WHERE id =1;
 
-/*
- id | demand | pick_x | pick_y | pick_open_t | pick_close_t | pick_service_t | deliver_x | deliver_y | deliver_open_t | deliver_open_t | deliver_close_t | deliver_service_t
- 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
-*/
---------------------------------------
--- testing wrong data on pickup 
---------------------------------------
-UPDATE orders SET p_open = 600 WHERE id =11;
-
-SELECT throws_ok('q5',
+SELECT throws_ok('orders1',
     'XX000',
-    'The order 11 is not feasible on any truck',
-    'Should fail: Opens(PICKUP) > closes(PICKUP)');
-
-UPDATE orders SET p_open = 448, demand= -20 WHERE id =11;
-
-SELECT throws_ok('q5',
-    'XX000',
-    'The order 11 is not feasible on any truck',
-    'Should fail: demand(PICKUP) < 0');
+    'Order not feasible on any truck was found',
+    'Should throw: demand(PICKUP) < 0');
 
 UPDATE orders SET demand= 10 WHERE id =11;
-
---------------------------------------
--- testing wrong data on delivery 
---------------------------------------
-UPDATE orders SET d_open = 1000 WHERE id =11;
-
-SELECT throws_ok('q5',
-    'XX000',
-    'The order 11 is not feasible on any truck',
-    'Should fail: Opens(DELIVERY) > closes(DELIVERY)');
 
 SELECT finish();
 ROLLBACK;

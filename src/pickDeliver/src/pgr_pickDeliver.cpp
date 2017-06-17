@@ -176,6 +176,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
 
+        pgassert(m_trucks.msg.get_error().empty());
         pgassert(msg.get_error().empty());
 
         msg.log << "\n Checking fleet ...";
@@ -269,12 +270,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         pgassert(m_cost_matrix.empty());
         pgassert(factor > 0);
         pgassert(m_initial_id > 0 && m_initial_id < 7);
-        pgassert(m_trucks.msg.get_error().empty());
 
         if (!msg.get_error().empty()) {
             return;
         }
 
+        pgassert(m_trucks.msg.get_error().empty());
         pgassert(msg.get_error().empty());
 
         msg.log << "\n Checking fleet";
