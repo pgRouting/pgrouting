@@ -126,6 +126,7 @@ Pgr_pickDeliver::get_postgres_result() const {
             solutions.back().twvTot(),  // on vehicle_id
             solutions.back().cvTot(),   // on vehicle_seq
             -1,  // on order_id
+            -1,  // on stop_id
             -2,  // on stop_type (gets increased later by one so it gets -1)
             -1,  // not accounting total loads
             solutions.back().total_travel_time(),

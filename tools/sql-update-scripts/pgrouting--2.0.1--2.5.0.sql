@@ -3229,6 +3229,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     OUT vehicle_id BIGINT,
     OUT stop_seq INTEGER,
     OUT stop_type INTEGER,
+    OUT stop_id BIGINT,
     OUT order_id BIGINT,
     OUT cargo FLOAT,
     OUT travel_time FLOAT,

@@ -68,10 +68,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    */
 
 typedef struct  {
-    int vehicle_number;
-    int64_t vehicle_id;
     int vehicle_seq;
+    int64_t vehicle_id;
+    int stop_seq;
     int64_t order_id;
+    int64_t stop_id;
     int stop_type;
     double cargo;
     double travelTime;
