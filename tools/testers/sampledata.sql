@@ -15,6 +15,8 @@ DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS restrictions;
 DROP TABLE IF EXISTS vertex_table;
 DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS vehicles;
+DROP TABLE IF EXISTS orders;
 
 --EDGE TABLE CREATE
 CREATE TABLE edge_table (
@@ -138,3 +140,62 @@ INSERT INTO vertex_table VALUES
 
 --VERTEX TABLE END
 
+
+--VEHICLES TABLE START
+
+CREATE TABLE vehicles (
+      id BIGSERIAL PRIMARY KEY,
+      start_node_id BIGINT,
+      start_x FLOAT,
+      start_y FLOAT,
+      start_open FLOAT,
+      start_close FLOAT,
+      number integer,
+      capacity FLOAT
+);
+
+INSERT INTO vehicles
+(start_node_id, start_x,  start_y,  start_open,  start_close,  number,  capacity) VALUES
+(            6,       3,        2,           0,           50,       2,        50);
+
+--VEHICLES TABLE END
+
+
+
+--ORDERS TABLE START
+CREATE TABLE orders (
+    id BIGSERIAL PRIMARY KEY,
+    demand FLOAT,
+    -- the pickups
+    p_node_id BIGINT,
+    p_x FLOAT,
+    p_y FLOAT,
+    p_open FLOAT,
+    p_close FLOAT,
+    p_service FLOAT,
+    -- the deliveries
+    d_node_id BIGINT,
+    d_x FLOAT,
+    d_y FLOAT,
+    d_open FLOAT,
+    d_close FLOAT,
+    d_service FLOAT
+);
+
+
+INSERT INTO orders
+(demand,
+    p_node_id,  p_x, p_y,  p_open,  p_close,  p_service,
+    d_node_id,  d_x, d_y,  d_open,  d_close,  d_service) VALUES
+(10, 
+            3,    3,   1,      2,         10,          3,
+            8,    1,   2,      6,         15,          3),
+(20, 
+            9,    4,   2,      4,         15,          2,
+            4,    4,   1,      6,         20,          3),
+(30, 
+            5,    2,   2,      2,         10,          3,
+           11,    3,   3,      3,         20,          3);
+
+
+--ORDERS TABLE END
