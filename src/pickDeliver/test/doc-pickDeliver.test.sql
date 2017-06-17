@@ -1,5 +1,4 @@
 \echo --q1
--- using the default values
 SELECT * FROM pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
@@ -17,3 +16,13 @@ SELECT * FROM pgr_pickDeliver(
     );
 
 \echo --q2
+
+SELECT * FROM pgr_pickDeliver(
+    $$ SELECT * FROM orders ORDER BY id $$,
+    $$ SELECT * FROM vehicles $$,
+    $$ SELECT * from pgr_dijkstraCostMatrix(
+        ' SELECT * FROM edge_table ', ARRAY[3, 4, 5, 8, 9, 11]) 
+    $$
+);
+
+\echo --q3
