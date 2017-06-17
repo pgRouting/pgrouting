@@ -1,6 +1,6 @@
 \echo --q1
 -- using the default values
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
     -- matrix query
