@@ -256,6 +256,8 @@ class Vehicle : public Identifier, public PD_problem {
          return !(has_twv() ||  has_cv());
      }
 
+     bool is_ok() const;
+
      Vehicle_node start_site() const {
          return m_path.front();
      }

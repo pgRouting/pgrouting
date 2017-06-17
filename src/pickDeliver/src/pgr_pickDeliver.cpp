@@ -203,10 +203,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         msg.log << "\n Checking orders";
         for (const auto &o : m_orders) {
             if (!m_trucks.is_order_ok(o)) {
-                msg.error << "The order "
+                msg.error << "Order not feasible on any truck was found";
+                msg.log << "The order "
                     << o.id()
                     << " is not feasible on any truck";
                 msg.log << "\n" << o;
+#if 0
                 double old_speed(0);
                 for (auto t : m_trucks) {
                     if (old_speed == t.speed()) continue;
@@ -226,6 +228,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                         << "\n";
                     t.push_back(o);
                 }
+#endif
                 return;
             }
         }
@@ -266,6 +269,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         pgassert(m_cost_matrix.empty());
         pgassert(factor > 0);
         pgassert(m_initial_id > 0 && m_initial_id < 7);
+        pgassert(m_trucks.msg.get_error().empty());
 
         if (!msg.get_error().empty()) {
             return;
@@ -275,12 +279,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         msg.log << "\n Checking fleet";
         if (!m_trucks.is_fleet_ok()) {
-            pgassert(msg.get_error().empty());
-            pgassert(!m_trucks.msg.get_error().empty());
             msg.error << m_trucks.msg.get_error();
+            pgassert(!m_trucks.msg.get_error().empty());
             return;
         }
 
+        pgassert(m_trucks.msg.get_error().empty());
 
 
 #ifndef NDEBUG
@@ -299,7 +303,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         msg.log << "\n Checking orders";
         for (const auto &o : m_orders) {
             if (!m_trucks.is_order_ok(o)) {
-                msg.error << "The order "
+                msg.error << "Order not feasible on any truck was found";
+                msg.log << "The order "
                     << o.pickup().order()
                     << " is not feasible on any truck";
                 msg.log << "\n" << o;

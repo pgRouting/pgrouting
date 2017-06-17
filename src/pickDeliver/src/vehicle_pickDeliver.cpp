@@ -89,7 +89,6 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
     cost((std::numeric_limits<double>::max)()) {
         ENTERING();
         m_orders_in_vehicle.clear();
-
         invariant();
         EXITING();
     }

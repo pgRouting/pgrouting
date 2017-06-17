@@ -175,7 +175,6 @@ Vehicle::insert(POS at, Vehicle_node node) {
     pgassert(at <= m_path.size());
 
     m_path.insert(m_path.begin() + at, node);
-    /*! @todo TODO evaluate with matrix also*/
     evaluate(at);
 
     pgassert(at < m_path.size());
@@ -320,7 +319,6 @@ Vehicle::erase(POS at) {
     pgassert(!m_path[at].is_end());
 
     m_path.erase(m_path.begin() + at);
-    /*! @todo TODO evaluate with matrix also*/
     evaluate(at);
 
     invariant();
@@ -336,7 +334,6 @@ Vehicle::swap(POS i, POS j) {
     pgassert(!m_path[j].is_end());
 
     std::swap(m_path[i], m_path[j]);
-    /*! @todo TODO evaluate with matrix also*/
     i < j ? evaluate(i) : evaluate(j);
 
     invariant();
@@ -347,7 +344,6 @@ void
 Vehicle::evaluate() {
     invariant();
 
-    /*! @todo TODO evaluate with matrix also*/
     evaluate(0);
 
     invariant();
@@ -370,10 +366,8 @@ Vehicle::evaluate(POS from) {
 
     while (node != m_path.end()) {
         if (node == m_path.begin()) {
-            /*! @todo TODO evaluate with matrix also*/
             node->evaluate(m_capacity);
         } else {
-            /*! @todo TODO evaluate with matrix also*/
             node->evaluate(*(node - 1), m_capacity, speed());
         }
 
@@ -461,7 +455,15 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
     return high_limit;
 }
 
-
+bool
+Vehicle::is_ok() const {
+    pgassert((m_path.front().opens() <= m_path.front().closes())
+        && (m_path.back().opens() <= m_path.back().closes())
+        && (m_capacity > 0));
+    return (start_site().opens() <= start_site().closes())
+        && (end_site().opens() <= end_site().closes())
+        && (m_capacity > 0);
+}
 
 Vehicle::Vehicle(
         size_t p_idx,
@@ -477,9 +479,13 @@ Vehicle::Vehicle(
     m_speed(p_speed) {
         ENTERING();
         m_path.clear();
+        pgassert(starting_site.opens() <= starting_site.closes());
+        pgassert(ending_site.opens() <= ending_site.closes());
+        pgassert(capacity() > 0);
+
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
-        /*! @todo TODO(vicky) evaluate with matrix also*/
+
         msg.log << "before calling evaluate\n";
         evaluate(0);
         msg.log << "after calling evaluate\n";

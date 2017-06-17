@@ -74,7 +74,7 @@ process(
     }
 
     if (initial_solution_id <= 0 || initial_solution_id > 6) {
-        elog(ERROR, "Illegal value in parameter: initial");
+        elog(ERROR, "Illegal value in parameter: initial_sol");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         return;
