@@ -73,7 +73,7 @@ For Postgresql 9.2 and later versions
 	psql mydatabase -c "create extension postgis"
 	psql mydatabase -c "create extension pgrouting"
 
-.. _load_data:    
+.. _load_data:
 
 Load Data
 ...............................................................................
@@ -724,4 +724,3 @@ Consult the `developer's documentation <http://docs.pgrouting.org/doxy/2.4/index
 
 * :ref:`genindex`
 * :ref:`search`
-
