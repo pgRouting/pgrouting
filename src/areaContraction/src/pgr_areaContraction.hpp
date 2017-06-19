@@ -49,13 +49,27 @@ class Pgr_areaContraction {
 public:
   void setBorderVertices(Identifier<V> borderVertices);
   //To make target array for one to many dijkstra
-  std::vector<int64_t> makeTarget(V v);
   std::deque<Path> callDijkstra(G &graph, V v);
   void doContraction(G &graph);
 
 
 
 private:
-     Identifiers<V> borderVertices;
+     Identifiers<V> border;
+     Identifiers<V> target;
      std::ostringstream debug;
 };
+
+/******* IMPLEMENTATION ************/
+template< class G >
+void
+Pgr_areaContraction< G >::setBorderVertices(
+  Identifier<V> borderVertices){
+#ifndef NDEBUG
+  debug << "Setting forbidden vertices\n";
+#endif
+  border = borderVertices;
+}
+
+}
+}
