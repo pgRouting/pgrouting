@@ -9,7 +9,7 @@
 
 .. _VRP:
 
-Vehicle Routing Functions Category:
+Vehicle Routing Functions Category
 ===============================================================================
 
 
@@ -20,12 +20,12 @@ Vehicle Routing Functions Category:
 .. index from here
 .. rubric:: Pickup and delivery problem
 
-- :ref:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix
-- :ref:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances
+- :doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix
+- :doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances
 
 .. rubric:: Experimental functions
 
-- :ref:`pgr_vrp_basic` - VRP One Depot
+- :doc:`pgr_vrpOneDepot` - VRP One Depot
 
 .. index to here
 
@@ -52,7 +52,7 @@ Characteristics
 ...............................................................................
 
 - Capacitated Vehicle Routing Problem `CVRP` where The vehicles have limited carrying capacity of the goods.
-- Vehicle Routing Problem with Time Windows `VRPTW` where the locations have time windows within which the vheicles visits must be made.
+- Vehicle Routing Problem with Time Windows `VRPTW` where the locations have time windows within which the vehicle's visits must be made.
 - Vehicle Routing Problem with Pickup and Delivery `VRPPD` where a number of goods need to be moved from certain pickup locations to other delivery locations.
 
 
@@ -67,7 +67,7 @@ Characteristics
 Pick & Delivery
 -------------------------------------------------------------------------------
 
-Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehichle Routing problem with Time Windows
+Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehicle Routing problem with Time Windows
 
 - Times are relative to `0`
 - The vehicles
@@ -81,7 +81,7 @@ Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehichle Routing problem with 
   - Have pick up and delivery locations.
   - Have opening and closing times for the pickup and delivery locations.
   - Have pickup and delivery duration service times.
-  - have a demand resquest for moving goods from the pickup location to the delivery location.
+  - have a demand request for moving goods from the pickup location to the delivery location.
 
 - Time based calculations:
 
@@ -89,87 +89,55 @@ Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehichle Routing problem with 
   - Pickup and delivery order pair is done by the same vehicle.
   - A pickup is done before the delivery.
 
-Locations
+
+
+
+
+Parameters
+-------------------------------------------------------------------------------
+
+
+Pick & deliver
 ...............................................................................
 
-- When using the Euclidean signatures:
+Both implementations use the following same parameters: 
 
-  - The vehicles have :math:`(x, y)` pairs for start and ending locations.
-  - The orders Have :math:`(x, y)` pairs for pickup and delivery locations.
+.. pd_parameters_start
 
-- When using a matrix:
+================= ================== ========= =================================================
+Column            Type                Default    Description
+================= ================== ========= =================================================
+**orders_sql**    ``TEXT``                     `Pick & Deliver Orders SQL`_ query containing the orders to be processed.
+**vehicles_sql**  ``TEXT``                     `Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used.
+**factor**        ``NUMERIC``          1       (Optional) Travel time multiplier. See :ref:`pd_factor`
+**max_cycles**    ``INTEGER``          10      (Optional) Maximum number of cycles to perform on the optimization.
+**initial_sol**   ``INTEGER``          4       (Optional) Initial solution to be used.
 
-  - The vehicles have identifiers for the start and ending locations.
-  - The orders have identifiers for the pickup and delivery locations.
-  - All the identifiers are indices to the given matix.
+                                               - ``1`` One order per truck
+                                               - ``2`` Push front order.
+                                               - ``3`` Push back order.
+                                               - ``4`` Optimize insert.
+                                               - ``5`` Push back order that allows more orders to be inserted at the back
+                                               - ``6`` Push front order that allows more orders to be inserted at the front
+================= ================== ========= =================================================
 
+.. pd_parameters_end
 
+The non euclidean implementation, additionally has:
 
-Time handling
--------------------------------------------------------------------------------
-
-**The times are relative to 0**
-
-Suppose that a vehicle's driver starts the shift at 9:00 am and ends the shift at 4:30 pm
-and the service time duration is 10 minutes with 30 seconds.
-
-All time units have to be converted
-
-============ ================= ==================== ===================== =========
-Meaning of 0   time units       9:00 am              4:30 pm               10 mins 30 secs
-============ ================= ==================== ===================== =========
-0:00 am         hours            9                  16.5                   :math:`10.5 / 60  = 0.175`
-9:00 am         hours            0                  7.5                    :math:`10.5 / 60  = 0.175`
-0:00 am         minutes          :math:`9*60 = 54`  :math:`16.5*60 = 990`  10.5 
-9:00 am         minutes          0                  :math:`7.5*60 = 540`   10.5
-============ ================= ==================== ===================== =========
-
-
-Capacity and Demand Units Handling
--------------------------------------------------------------------------------
-
-The capacity of the truck, can be measured in
-
-- volumne units like m^3
-- Number of boxes that fit in it
-- Number weight unit like kg
-- Surface of the floor when no stacking is allowed
-- Number of people that can transport, etc
-
-The demand resquest of the pickyp-delivery orders must use the same units as the units used in the trucks capacity.
-
-To handle problems like:  10 boxes of apples and 5 kg of feathers that are to be transported.
-
-- boxes that would be used for `1` kg of fethers:  `f_boxes`
-- weight of a `1` box of apple:  `a_weight`
-
-=============== ====================== ==================
-Capacity Units  apples                  feathers
-=============== ====================== ==================
-boxes            10                     :math:`5 * f\_boxes`
-kg              :math:`10 * a\_weight`       5
-=============== ====================== ==================
-
-
-
-
-
-
-
+================= ================== =================================================
+Column            Type                Description
+================= ================== =================================================
+**matrix_sql**    ``TEXT``             `Pick & Deliver Matrix SQL`_ query containing the distance or travel times.
+================= ================== =================================================
 
 
 Inner Queries
 -------------------------------------------------------------------------------
 
-.. rubric:: orders_sql
-
-- :ref:`Description of the orders_sql query <pd_matrix_sql_start>`
-- :ref:`Description of the orders_sql query for Euclidean version <pd_euclidean_sql_start>`
-
-.. rubric:: vehicles_sql
-
-- :ref:`Description of the vehicles_sql query <pd_vehicle_sql_start>`
-- :ref:`Description of the vehicles_sql query for Euclidean version <pd_vehicle_sql_euclidean_start>`
+- `Pick & Deliver Orders SQL`_
+- `Pick & Deliver Vehicles SQL`_
+- `Pick & Deliver Matrix SQL`_
 
 .. rubric:: return columns
 
@@ -193,114 +161,145 @@ Inner Queries
     info[12].name = strdup("p_node_id");
     info[13].name = strdup("d_node_id")
 
-.. _pd_matrix_sql_start:
-
-Description of the orders_sql query
+Pick & Deliver Orders SQL
 .........................................................................................
+
+In general, the columns for the orders SQL is the same in both implementation of pick and delivery:
+
+.. pd_orders_sql_general_start
 
 ================  ===================   =========== ================================================
 Column            Type                  Default     Description
 ================  ===================   =========== ================================================
-**id**            ``ANY-INTEGER``                   Identifier of the pick-delivery order pair.
-**demand**        ``ANY-NUMERICAL``                 Number of units in the order
-**p_node_id**     ``ANY-INTEGER``                   The node identifier of the pickup location, must match a node in the matrix table.
-**p_open**        ``ANY-NUMERICAL``                 The time, relative to 0, when the pickup location opens.
-**p_close**       ``ANY-NUMERICAL``                 The time, relative to 0, when the pickup location closes.
-**d_service**     ``ANY-NUMERICAL``     0           The duration of the loading at the pickup location.
-**d_node_id**     ``ANY-INTEGER``                   Node identifier of the pickup location, must match a node in the matrix table.
-**d_open**        ``ANY-NUMERICAL``                 The time, relative to 0, when the delivery location opens.
-**d_close**       ``ANY-NUMERICAL``                 The time, relative to 0, when the delivery location closes.
-**d_service**     ``ANY-NUMERICAL``     0           The duration of the loading at the delivery location.
+**id**            |ANY-INTEGER|                     Identifier of the pick-delivery order pair.
+**demand**        |ANY-NUMERICAL|                   Number of units in the order
+**p_open**        |ANY-NUMERICAL|                   The time, relative to 0, when the pickup location opens.
+**p_close**       |ANY-NUMERICAL|                   The time, relative to 0, when the pickup location closes.
+**d_service**     |ANY-NUMERICAL|       0           The duration of the loading at the pickup location.
+**d_open**        |ANY-NUMERICAL|                   The time, relative to 0, when the delivery location opens.
+**d_close**       |ANY-NUMERICAL|                   The time, relative to 0, when the delivery location closes.
+**d_service**     |ANY-NUMERICAL|       0           The duration of the loading at the delivery location.
 ================  ===================   =========== ================================================
 
-Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. pd_orders_sql_general_end
 
 
-.. pd_matrix_sql_end
+.. pd_orders_sql_matrix_start
+
+For the non euclidean implementation, the starting and ending identifiers are needed:
+
+==================  ===================  ================================================
+Column              Type                  Description
+==================  ===================  ================================================
+**p_node_id**       |ANY-INTEGER|          The node identifier of the pickup, must match a node identifier in the matrix table.
+**d_node_id**       |ANY-INTEGER|          The node identifier of the delivery, must match a node identifier in the matrix table.
+==================  ===================  ================================================
+
+.. pd_orders_sql_matrix_end
+
+
+.. pd_orders_euclidean_sql_start
+
+For the euclidean implementation, pick up and delivery  :math:`(x,y)` locations are needed:
+
+================  ===================    ================================================
+Column            Type                       Description
+================  ===================    ================================================
+**p_x**           |ANY-NUMERICAL|         :math:`x` value of the pick up location
+**p_y**           |ANY-NUMERICAL|         :math:`y` value of the pick up location
+**d_x**           |ANY-NUMERICAL|         :math:`x` value of the delivery location
+**d_y**           |ANY-NUMERICAL|         :math:`y` value of the delivery location
+================  ===================    ================================================
+
+
+.. pd_orders_euclidean_sql_end
 
 
 
-.. _pd_euclidean_sql_start:
+..
+   info[0].name = strdup("id");
+   info[1].name = strdup("capacity");
+   info[2].name = strdup("start_x");
+   info[3].name = strdup("start_y");
+   info[4].name = strdup("number");
+   info[5].name = strdup("start_open");
+   info[6].name = strdup("start_close");
+   info[7].name = strdup("start_service");
+   info[8].name = strdup("end_x");
+   info[9].name = strdup("end_y");
+   info[10].name = strdup("end_open");
+   info[11].name = strdup("end_close");
+   info[12].name = strdup("end_service");
+   info[13].name = strdup("speed");
+   info[14].name = strdup("start_node_id");
+   info[15].name = strdup("end_node_id");
 
 
-Description of the orders_sql query (Euclidean)
+.. _pd_vehicle_sql:
+
+Pick & Deliver Vehicles SQL
 .........................................................................................
 
-================  ===================   =========== ================================================
-Column            Type                  Default     Description
-================  ===================   =========== ================================================
-**id**            ``ANY-INTEGER``                   Identifier of the pick-delivery order pair.
-**demand**        ``ANY-NUMERICAL``                 Number of units in the order
-**p_x**           ``ANY-NUMERICAL``                 :math:`x` value of the pick up location
-**p_y**           ``ANY-NUMERICAL``                 :math:`y` value of the pick up location
-**p_open**        ``ANY-NUMERICAL``                 The time, relative to 0, when the pickup location opens.
-**p_close**       ``ANY-NUMERICAL``                 The time, relative to 0, when the pickup location closes.
-**d_service**     ``ANY-NUMERICAL``     0           The duration of the loading at the pickup location.
-**d_x**           ``ANY-NUMERICAL``                 :math:`x` value of the delivery location
-**d_y**           ``ANY-NUMERICAL``                 :math:`y` value of the delivery location
-**d_open**        ``ANY-NUMERICAL``                 The time, relative to 0, when the delivery location opens.
-**d_close**       ``ANY-NUMERICAL``                 The time, relative to 0, when the delivery location closes.
-**d_service**     ``ANY-NUMERICAL``     0           The duration of the loading at the delivery location.
-================  ===================   =========== ================================================
+In general, the columns for the vehicles_sql is the same in both implementation of pick and delivery:
 
-Where:
+.. pd_vehicle_sql_general_start
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+==================  =================== ================ ================================================
+Column              Type                  Default           Description
+==================  =================== ================ ================================================
+**id**              |ANY-INTEGER|                         Identifier of the pick-delivery order pair.
+**capacity**        |ANY-NUMERICAL|                       Number of units in the order
+**speed**           |ANY-NUMERICAL|      `1`              Average speed of the vehicle.
 
+**start_open**      |ANY-NUMERICAL|                       The time, relative to 0, when the starting location opens.
+**start_close**     |ANY-NUMERICAL|                       The time, relative to 0, when the starting location closes.
+**start_service**   |ANY-NUMERICAL|      `0`              The duration of the loading at the starting location.
 
-.. pd_euclidean_sql_end
+**end_open**        |ANY-NUMERICAL|      `start_open`     The time, relative to 0, when the ending location opens.
+**end_close**       |ANY-NUMERICAL|      `start_close`    The time, relative to 0, when the ending location closes.
+**end_service**     |ANY-NUMERICAL|      `start_service`  The duration of the loading at the ending location.
+==================  =================== ================ ================================================
 
+.. pd_vehicle_sql_general_end
 
-.. _pd_vehicle_sql_start:
+.. pd_vehicle_sql_matrix_start
 
-Description of the vehicles_sql query
-.........................................................................................
+For the non euclidean implementation, the starting and ending identifiers are needed:
 
-.. warning:: TODO: Write
+==================  =================== ================ ================================================
+Column              Type                  Default           Description
+==================  =================== ================ ================================================
+**start_node_id**   |ANY-INTEGER|                         The node identifier of the starting location, must match a node identifier in the matrix table.
+**end_node_id**     |ANY-INTEGER|        `start_node_id`  The node identifier of the ending location, must match a node identifier in the matrix table.
+==================  =================== ================ ================================================
 
-.. pd_vehicle_sql_end
+.. pd_vehicle_sql_matrix_end
 
-.. _pd_vehicle_sql_euclidean_start:
+.. pd_vehicle_sql_euclidean_start
 
+For the euclidean implementation, starting and ending :math:`(x,y)` locations are needed:
 
-
-Description of the vehicles_sql query (Euclidean)
-.........................................................................................
-
-.. warning:: TODO: Write
+==================  =================== ================ ================================================
+Column              Type                  Default           Description
+==================  =================== ================ ================================================
+**start_x**         |ANY-NUMERICAL|                         :math:`x` value of the coordinate of the starting location.
+**start_y**         |ANY-NUMERICAL|                         :math:`y` value of the coordinate of the starting location.
+**end_x**           |ANY-NUMERICAL|          `start_x`      :math:`x` value of the coordinate of the ending location.
+**end_y**           |ANY-NUMERICAL|          `start_y`      :math:`y` value of the coordinate of the ending location.
+==================  =================== ================ ================================================
 
 .. pd_vehicle_sql_euclidean_end
 
 
-.. pd_parameters_start
+Pick & Deliver Matrix SQL
+.........................................................................................
 
-.. warning:: TODO: FIX becuase the following is outdated
+.. TODO
 
-Description of the parameters of the signatures
-...............................................................................
+.. warning:: TODO
 
-================= ================== ========= =================================================
-Column            Type                Default    Description
-================= ================== ========= =================================================
-**orders_sql**    ``TEXT``                     Orders SQL query as described above.
-**vehicles_sql**  ``TEXT``                     Vehciles SQL query as described above.
-**factor**        ``NUMERIC``          1       $multiplier for the travel time
-**max_cycles**    ``INTEGER``          10      Array of identifiers of starting vertices.
-**initial**       ``INTEGER``          4       Identifier of the ending vertex of the path.
 
-                                               - ``1`` One order per truck
-                                               - ``2`` push front
-                                               - ``3`` push back
-                                               - ``4`` best insert
-                                               - ``5`` order that allows more orders to be inserted at the back
-                                               - ``6`` order that allows more orders to be inserted at the front
-================= ================== ========= =================================================
-
-.. pd_parameters_end
 
 
 Results
@@ -342,7 +341,7 @@ Column              Type           Description
 **seq**              INTEGER      Sequential value starting from **1**.
 **vehicle_seq**      INTEGER      Sequential value starting from **1** for current vehicles. The :math:`n_{th}` vehicle in the solution.
 **vehicle_id**       BIGINT       Current vehicle identifier.
-**stop_seq**         INTEGER      Sequential value starting frin **1** for the stops made by the current vechile. The :math:`m_{th}` stop of the current vehicle.
+**stop_seq**         INTEGER      Sequential value starting from **1** for the stops made by the current vehicle. The :math:`m_{th}` stop of the current vehicle.
 **stop_type**        INTEGER      Kind of stop location the vehicle is at:
 
                                   - ``1``: Starting location 
@@ -393,8 +392,6 @@ Column              Type           Description
 .. return_vrp_matrix_end
 
 
-
-
 .. _return_vrp_euclidean_start:
 
 .. include:: VRP-category.rst
@@ -404,19 +401,99 @@ Column              Type           Description
 .. return_vrp_euclidean_end
 
 
-.. glossary::
 
-   CVRP
-      Capacitated Vehicle Routing Problem:  The vehicles have limited carrying capacity of the goods that must be delivered.
+.. include:: pgRouting-concepts.rst
+    :start-after: where_definition_starts
+    :end-before: where_definition_ends
 
-   seq
-      Sequential value starting from **1**.
 
-   order
-      Order to be served on a VRP problem
+Handling Parameters
+-------------------------------------------------------------------------------
 
-   VRP
-      Vehicle Routing Problem
+To define a problem, several considerations have to be done, to get consistent results.
+This section gives an insight of how parameters are to be considered. 
+
+- `Capacity and Demand Units Handling`_
+- `Locations`_
+- `Time Handling`_
+- `Factor Handling`_
+
+
+Capacity and Demand Units Handling
+...............................................................................
+
+The `capacity` of a vehicle, can be measured in:
+
+- Volume units like :math:`m^3`.
+- Area units like :math:`m^2` (when no stacking is allowed).
+- Weight units like :math:`kg`.
+- Number of boxes that fit in the vehicle.
+- Number of seats in the vehicle
+
+The `demand` request of the pickup-deliver orders must use the same units as the units used in the vehicle's `capacity`.
+
+To handle problems like:  10 (equal dimension) boxes of apples and 5 kg of feathers that are to be transported (not packed in boxes).
+
+If the vehicle's `capacity` is measured by `boxes`, a conversion of `kg of feathers` to `equivalent number of boxes` is needed.
+If the vehicle's `capacity` is measured by `kg`, a conversion of `box of apples` to `equivalent number of kg` is needed.
+
+Showing how the 2 possible conversions can be done
+
+Let:
+- :math:`f_boxes`: number of boxes that would be used for `1` kg of feathers.
+- :math:`a_weight`: weight of `1` box of apples.
+
+=============== ====================== ==================
+Capacity Units  apples                  feathers
+=============== ====================== ==================
+boxes            10                     :math:`5 * f\_boxes`
+kg              :math:`10 * a\_weight`       5
+=============== ====================== ==================
+
+
+
+Locations
+...............................................................................
+
+- When using the Euclidean signatures:
+
+  - The vehicles have :math:`(x, y)` pairs for start and ending locations.
+  - The orders Have :math:`(x, y)` pairs for pickup and delivery locations.
+
+- When using a matrix:
+
+  - The vehicles have identifiers for the start and ending locations.
+  - The orders have identifiers for the pickup and delivery locations.
+  - All the identifiers are indices to the given matrix.
+
+
+Time Handling
+...............................................................................
+
+The times are relative to 0
+
+Suppose that a vehicle's driver starts the shift at 9:00 am and ends the shift at 4:30 pm
+and the service time duration is 10 minutes with 30 seconds.
+
+All time units have to be converted
+
+============ ================= ==================== ===================== =========
+Meaning of 0   time units       9:00 am              4:30 pm               10 min 30 secs
+============ ================= ==================== ===================== =========
+0:00 am         hours            9                  16.5                   :math:`10.5 / 60  = 0.175`
+9:00 am         hours            0                  7.5                    :math:`10.5 / 60  = 0.175`
+0:00 am         minutes          :math:`9*60 = 54`  :math:`16.5*60 = 990`  10.5 
+9:00 am         minutes          0                  :math:`7.5*60 = 540`   10.5
+============ ================= ==================== ===================== =========
+
+
+.. _pd_factor:
+
+Factor Handling
+...............................................................................
+
+.. TODO
+.. warning:: TODO
 
 
 See Also

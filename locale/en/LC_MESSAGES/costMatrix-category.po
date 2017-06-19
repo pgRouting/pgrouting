@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -87,12 +87,13 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:45
 msgid ""
-":ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` "
-"must value :math:`\\infty`."
+":ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` must "
+"value :math:`\\infty`."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:47
-msgid "This collection of functions will return a cost matrix in form of a table."
+msgid ""
+"This collection of functions will return a cost matrix in form of a table."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:51
@@ -105,10 +106,6 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:55
 msgid "Can be used as input to :ref:`pgr_tsp`."
-msgstr ""
-
-#: ../../build/doc/costMatrix-category.rst
-msgid "directly"
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:57
@@ -131,14 +128,12 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:62
 msgid ""
-"By setting the upper triangle to be the mirror image of the lower "
-"triangle."
+"By setting the upper triangle to be the mirror image of the lower triangle."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:63
 msgid ""
-"By setting the lower triangle to be the mirror image of the upper "
-"triangle."
+"By setting the lower triangle to be the mirror image of the upper triangle."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:65
@@ -155,8 +150,8 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:69
 msgid ""
-"Returns the sum of the costs of the shortest path for pair combination of"
-" nodes in the graph."
+"Returns the sum of the costs of the shortest path for pair combination of "
+"nodes in the graph."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:70
@@ -174,7 +169,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:75
-msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:77
@@ -183,8 +179,8 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:79
 msgid ""
-"When the starting vertex and ending vertex are the different and there is"
-" no path."
+"When the starting vertex and ending vertex are the different and there is no"
+" path."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:81
@@ -199,8 +195,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:85
 msgid ""
-"Depending on the function and its parameters, the results can be "
-"symmetric."
+"Depending on the function and its parameters, the results can be symmetric."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:87
@@ -247,3 +242,5 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "directly"
+#~ msgstr ""

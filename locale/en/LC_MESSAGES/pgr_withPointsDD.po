@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -26,7 +26,8 @@ msgid "Name"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:19
-msgid "``pgr_withPointsDD`` - Returns the driving distance from a starting point."
+msgid ""
+"``pgr_withPointsDD`` - Returns the driving distance from a starting point."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -79,10 +80,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:37
 msgid ""
-"Modify the graph to include points and using Dijkstra algorithm, extracts"
-" all the nodes and points that have costs less than or equal to the value"
-" ``distance`` from the starting point. The edges extracted will conform "
-"the corresponding spanning tree."
+"Modify the graph to include points and using Dijkstra algorithm, extracts "
+"all the nodes and points that have costs less than or equal to the value "
+"``distance`` from the starting point. The edges extracted will conform the "
+"corresponding spanning tree."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:44
@@ -115,10 +116,6 @@ msgstr ""
 msgid "No **details** are given about distance of other points of the query."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_withPointsDD.rst:84
 msgid "Driving distance from a single point"
 msgstr ""
@@ -144,21 +141,19 @@ msgstr ""
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "edges_sql"
-msgstr ""
-
+#: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_withPointsDD.rst:162
 msgid "Column"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_withPointsDD.rst:138
 #: ../../build/doc/pgr_withPointsDD.rst:162
@@ -169,6 +164,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_withPointsDD.rst:138
 #: ../../build/doc/pgr_withPointsDD.rst:162
@@ -182,6 +178,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgr_withPointsDD.rst:142
 msgid "``ANY-INTEGER``"
@@ -213,8 +210,8 @@ msgid "**cost**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
-#: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgr_withPointsDD.rst:143
 msgid "``ANY-NUMERICAL``"
 msgstr ""
@@ -225,8 +222,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -243,8 +240,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
@@ -252,16 +249,8 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -270,10 +259,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the Points SQL query"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "points_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
@@ -290,8 +275,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid ""
-"If column not present, a sequential identifier will be given "
-"automatically."
+"If column not present, a sequential identifier will be given automatically."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
@@ -404,8 +388,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:144
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default"
-" is ``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default is"
+" ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:145
@@ -414,8 +398,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:148
 msgid ""
-"(optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side"
-" is:"
+"(optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side "
+"is:"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:146
@@ -428,9 +412,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:150
 msgid ""
-"(optional). When ``true`` the results will include the driving distance "
-"to the points with in the ``distance``. Default is ``false`` which "
-"ignores other points of the points_sql."
+"(optional). When ``true`` the results will include the driving distance to "
+"the points with in the ``distance``. Default is ``false`` which ignores "
+"other points of the points_sql."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:152
@@ -439,9 +423,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:152
 msgid ""
-"(optional). When ``true`` the nodes will only appear in the closest "
-"start_v list. Default is ``false`` which resembles several calls using "
-"the single starting point signatures. Tie brakes are arbitrary."
+"(optional). When ``true`` the nodes will only appear in the closest start_v "
+"list. Default is ``false`` which resembles several calls using the single "
+"starting point signatures. Tie brakes are arbitrary."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:157
@@ -475,8 +459,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:165
 msgid ""
-"Identifier of the node within the Distance from ``start_pid``. If "
-"``details =: true`` a negative value is the identifier of a point."
+"Identifier of the node within the Distance from ``start_pid``. If ``details "
+"=: true`` a negative value is the identifier of a point."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:166
@@ -485,8 +469,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:167
 msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the "
-"path sequence."
+"Identifier of the edge used to go from ``node`` to the next node in the path"
+" sequence."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:167
@@ -573,3 +557,17 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "Example"
+#~ msgstr ""
+
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr ""
+
+#~ msgid "points_sql"
+#~ msgstr ""

@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -27,8 +27,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:19
 msgid ""
-"``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching "
-"in a graph."
+"``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a"
+" graph."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -119,8 +119,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:40
 msgid ""
-"A maximum matching is a matching that contains the largest possible "
-"number of edges."
+"A maximum matching is a matching that contains the largest possible number "
+"of edges."
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:42
@@ -153,12 +153,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:78
 msgid ""
-"The minimal use calculates one possible maximum cardinality matching on a"
-" **directed** graph."
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst
-msgid "Example"
+"The minimal use calculates one possible maximum cardinality matching on a "
+"**directed** graph."
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:90
@@ -167,8 +163,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:98
 msgid ""
-"The complete signature calculates one possible maximum cardinality "
-"matching."
+"The complete signature calculates one possible maximum cardinality matching."
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:109
@@ -179,14 +174,9 @@ msgstr ""
 msgid "Description of the SQL query"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst
-msgid "edges_sql"
-msgstr ""
-
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:115
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:118
@@ -249,7 +239,8 @@ msgid "``ANY-NUMERIC``"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:123
-msgid "A positive value represents the existence of the edge (source, target)."
+msgid ""
+"A positive value represents the existence of the edge (source, target)."
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:124
@@ -257,23 +248,16 @@ msgid "**coming**"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:124
-msgid "A positive value represents the existence of the edge (target, source)."
+msgid ""
+"A positive value represents the existence of the edge (target, source)."
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:127
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:129
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst
-msgid "ANY-NUMERIC"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:130
@@ -359,7 +343,6 @@ msgid "http://www.boost.org/libs/graph/doc/maximum_matching.html"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:159
-#, python-format
 msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
 msgstr ""
 
@@ -379,3 +362,14 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "Example"
+#~ msgstr ""
+
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERIC"
+#~ msgstr ""

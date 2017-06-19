@@ -43,35 +43,43 @@ Optimize::Optimize(
         const Solution &old_solution) :
     Solution(old_solution),
     best_solution(old_solution)  {
+        pgassert(false);
         decrease_truck();
         inter_swap(fleet.size());
     }
+
 Optimize::Optimize(
         const Solution &old_solution,
         size_t times) :
     Solution(old_solution),
     best_solution(old_solution)  {
-        decrease_truck();
         inter_swap(times);
+
+        this->fleet = best_solution.fleet;
+        msg.log << tau("bestSol before sort by size");
+        sort_by_size();
+        msg.log << tau("bestSol after sort by size");
+        msg.log <<  tau();
     }
 
 
 void
 Optimize::inter_swap(size_t times) {
-    msg.log << tau("before sort");
+    msg.log << tau("before sort by size");
     sort_by_size();
-    msg.log << tau("after sort");
+    msg.log << tau("before decrease");
+    decrease_truck();
+    msg.log << tau("after decrease");
+    sort_by_size();
+    msg.log << tau("after sort by size");
 
     size_t i = 0;
-    while (inter_swap() && (++i < times)) {
+    while ((i++ < times) && inter_swap()) {
+        msg.log << tau("after inter swap");
         msg.log << "\n***************************" << i;
         std::rotate(fleet.begin(), fleet.begin() + 1, fleet.end());
+        msg.log << tau("before next cycle");
     }
-    msg.log << tau("before sort");
-    best_solution.sort_by_id();
-    this->fleet = best_solution.fleet;
-    msg.log << tau("after sort");
-    msg.log <<  best_solution.tau();
 }
 
 /*
@@ -85,7 +93,7 @@ Optimize::inter_swap(size_t times) {
 bool
 Optimize::inter_swap() {
     msg.log
-        << "\n" <<tau("before");
+        << "\n" <<tau("before inter swap");
     delete_empty_truck();
     auto swapped_f = false;
     /*
@@ -189,7 +197,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
                  *   - only swap when the total duration is reduced
                  *   - or from_truck duration is reduced
                  */
-#if 1
+#if 0
                 msg.log << "\n Can swap";
                 msg.log << "\n Curr_from_duration " << curr_from_duration;
                 msg.log << " Curr_to_duration " << curr_to_duration;
@@ -331,7 +339,8 @@ Optimize::sort_by_id() {
 
 void
 Optimize::sort_by_size() {
-    std::sort(fleet.begin(), fleet.end(), []
+    sort_by_duration();
+    std::stable_sort(fleet.begin(), fleet.end(), []
             (const Vehicle_pickDeliver &lhs, const Vehicle_pickDeliver &rhs)
             -> bool {
             return lhs.orders_in_vehicle().size()
@@ -566,15 +575,13 @@ Optimize::sort_for_move() {
  * Optimize decreasing truck
  *
  * - Objective: try to remove truck with less duration
+ * - Secundary objective, acts like a shake operation
  *
- * Step 1: Sort the fleet, duration DESC
- * Step 2: grab an order from the back of the the fleet
- * Step 3: cycle the fleet & insert in best truck possible
  */
 void
 Optimize::decrease_truck() {
     bool decreased(false);
-    for (auto i = fleet.size(); i > 1; --i) {
+    for (size_t i = 1; i < fleet.size(); ++i) {
         decreased = decrease_truck(i) || decreased;
     }
     if (decreased) {
@@ -587,11 +594,8 @@ Optimize::decrease_truck() {
 
 bool
 Optimize::decrease_truck(size_t cycle) {
-    /* end recursion */
-    if (cycle < 2) return false;
 
-
-    auto position = cycle - 1;
+    auto position = cycle;
     for (auto orders = fleet[position].orders_in_vehicle();
             !orders.empty();
             orders.pop_front()) {
@@ -600,20 +604,21 @@ Optimize::decrease_truck(size_t cycle) {
         pgassert(order.idx() == orders.front());
 
 
-        /* Step 3: cycle the fleet (in reverse order)
-         * & insert in first truck possible */
+        /* Step 3:
+         * cycle the fleet
+         * insert in first truck possible
+         */
 
-        // auto best_truck = fleet[position -1];
         for (size_t i = 0; i < position; ++i) {
             fleet[i].insert(order);
-            if (!fleet[i].is_feasable()) {
-                fleet[i].erase(order);
-            } else {
+            if (fleet[i].is_feasable()) {
                 /*
                  * delete the order from the current truck
                  */
                 fleet[position].erase(order);
                 break;
+            } else {
+                fleet[i].erase(order);
             }
         }
     }

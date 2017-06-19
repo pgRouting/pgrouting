@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -101,10 +101,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:32
 msgid ""
-"Contraction reduces the size of the graph by removing some of the "
-"vertices and edges and, for example, might add edges that represent a "
-"sequence of original edges decreasing the total time and space used in "
-"graph algorithms."
+"Contraction reduces the size of the graph by removing some of the vertices "
+"and edges and, for example, might add edges that represent a sequence of "
+"original edges decreasing the total time and space used in graph algorithms."
 msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:35
@@ -163,10 +162,6 @@ msgstr ""
 msgid "Minimal signature"
 msgstr ""
 
-#: ../../build/doc/pgr_contractGraph.rst
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_contractGraph.rst:80
 msgid "Making a dead end contraction and a linear contraction."
 msgstr ""
@@ -185,14 +180,9 @@ msgstr ""
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "edges_sql"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -266,8 +256,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -284,24 +274,16 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -352,8 +334,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:115
 msgid ""
-"(optional). Identifiers of vertices forbidden from contraction. Default "
-"is an empty array."
+"(optional). Identifiers of vertices forbidden from contraction. Default is "
+"an empty array."
 msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:116
@@ -392,7 +374,8 @@ msgid "Description of the return values"
 msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:125
-msgid "RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)"
+msgid ""
+"RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)"
 msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:127
@@ -467,14 +450,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:146
 msgid ""
-"Identifier of the source vertex of the current edge `id`. Valid values "
-"when `type = 'e'`."
+"Identifier of the source vertex of the current edge `id`. Valid values when "
+"`type = 'e'`."
 msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:147
 msgid ""
-"Identifier of the target vertex of the current edge `id`. Valid values "
-"when `type = 'e'`."
+"Identifier of the target vertex of the current edge `id`. Valid values when "
+"`type = 'e'`."
 msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:148
@@ -482,7 +465,8 @@ msgid "``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:148
-msgid "Weight of the edge (`source`, `target`). Valid values when `type = 'e'`."
+msgid ""
+"Weight of the edge (`source`, `target`). Valid values when `type = 'e'`."
 msgstr ""
 
 #: ../../build/doc/pgr_contractGraph.rst:152
@@ -509,3 +493,14 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "Example"
+#~ msgstr ""
+
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr ""
