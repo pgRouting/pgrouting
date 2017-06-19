@@ -175,7 +175,7 @@ Column            Type                  Default     Description
 **demand**        |ANY-NUMERICAL|                   Number of units in the order
 **p_open**        |ANY-NUMERICAL|                   The time, relative to 0, when the pickup location opens.
 **p_close**       |ANY-NUMERICAL|                   The time, relative to 0, when the pickup location closes.
-**d_service**     |ANY-NUMERICAL|       0           The duration of the loading at the pickup location.
+**p_service**     |ANY-NUMERICAL|       0           The duration of the loading at the pickup location.
 **d_open**        |ANY-NUMERICAL|                   The time, relative to 0, when the delivery location opens.
 **d_close**       |ANY-NUMERICAL|                   The time, relative to 0, when the delivery location closes.
 **d_service**     |ANY-NUMERICAL|       0           The duration of the loading at the delivery location.
