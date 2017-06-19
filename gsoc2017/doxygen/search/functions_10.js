@@ -2,7 +2,7 @@ var searchData=
 [
   ['rand',['rand',['../pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805',1,'rand(size_t n):&#160;pgr_tsp.cpp'],['../pgr__tsp_8hpp.html#a851f0faa2543b196d155da9180531805',1,'rand(size_t n):&#160;pgr_tsp.hpp']]],
   ['registerhandler',['registerHandler',['../classSignalHandler.html#af11376ff56c905f739de1700e6891476',1,'SignalHandler']]],
-  ['release_5ftruck',['release_truck',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Fleet.html#a8f62b2347d2e8f64b32bf28c5f954e66',1,'pgrouting::vrp::pickdeliver::Fleet::release_truck()'],['../classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7',1,'pgrouting::vrp::Fleet::release_truck()']]],
+  ['release_5ftruck',['release_truck',['../classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7',1,'pgrouting::vrp::Fleet']]],
   ['removehandler',['removeHandler',['../classSignalHandler.html#ade885c58ad79e979187db6eb77e456b4',1,'SignalHandler']]],
   ['removeorder',['removeOrder',['../classCTourInfo.html#aecafef8fae1a628beca2739bcfb6d583',1,'CTourInfo::removeOrder()'],['../classCSolutionInfo.html#ac48f757381aa6d4124a31bcd59fe3f1d',1,'CSolutionInfo::removeOrder()'],['../classCVRPSolver.html#a180c471f978b491c87946be52f4a561d',1,'CVRPSolver::removeOrder()']]],
   ['removevehicle',['removeVehicle',['../classCSolutionInfo.html#a304c8679bba83a118edfb78810a540a6',1,'CSolutionInfo::removeVehicle()'],['../classCVRPSolver.html#a5ec0a4c4f7b00282b2dea1845d7d2737',1,'CVRPSolver::removeVehicle()']]],

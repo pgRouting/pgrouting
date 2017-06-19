@@ -189,8 +189,8 @@ var NAVTREEINDEX0 =
 "base__node_8cpp.html":[6,0,1,15,0,0],
 "base__node_8cpp.html#a34e62536f9d15659b446f9be3e48c68f":[6,0,1,15,0,0,0],
 "base__node_8cpp_source.html":[6,0,1,15,0,0],
-"base__node_8h.html":[6,0,0,12,0],
-"base__node_8h_source.html":[6,0,0,12,0],
+"base__node_8h.html":[6,0,0,11,0],
+"base__node_8h_source.html":[6,0,0,11,0],
 "basic__edge_8cpp.html":[6,0,1,6,0,2],
 "basic__edge_8cpp_source.html":[6,0,1,6,0,2],
 "basic__edge_8h.html":[6,0,0,7,1],
@@ -238,6 +238,8 @@ var NAVTREEINDEX0 =
 "book__keeping_8cpp.html#a0411d7092b8f18ee599a8ed55bae2d87":[6,0,1,15,0,1,0],
 "book__keeping_8cpp.html#a89ed38bee2b917966f6a654420f62d50":[6,0,1,15,0,1,1],
 "book__keeping_8cpp_source.html":[6,0,1,15,0,1],
+"book__keeping_8h.html":[6,0,0,11,1],
+"book__keeping_8h_source.html":[6,0,0,11,1],
 "ch__edge_8cpp.html":[6,0,1,6,0,4],
 "ch__edge_8cpp.html#a6745e8ab189ff8de72b34539da11dbe1":[6,0,1,6,0,4,0],
 "ch__edge_8cpp_source.html":[6,0,1,6,0,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "ch__vertex_8cpp.html#a8688f1ce3e691bcbaf7f2e2299c561a6":[6,0,1,6,0,6,0],
 "ch__vertex_8cpp_source.html":[6,0,1,6,0,6],
 "ch__vertex_8h.html":[6,0,1,6,0,7],
-"ch__vertex_8h.html#abb617ede2869445be0faa5ed6047a08f":[6,0,1,6,0,7,1],
-"ch__vertex_8h_source.html":[6,0,1,6,0,7],
-"classAssertFailedException.html":[5,0,1]
+"ch__vertex_8h.html#abb617ede2869445be0faa5ed6047a08f":[6,0,1,6,0,7,1]
 };

@@ -2,6 +2,7 @@ var classpgrouting_1_1vrp_1_1Vehicle =
 [
     [ "Cost", "classpgrouting_1_1vrp_1_1Vehicle.html#a2c972904c3b3a8cdb6de53ae3c657fca", null ],
     [ "POS", "classpgrouting_1_1vrp_1_1Vehicle.html#a16c474efc955b9bab7f01a2b3551957d", null ],
+    [ "Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html#afca1955f5b54ce5b2d55809efd8d0158", null ],
     [ "Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784", null ],
     [ "capacity", "classpgrouting_1_1vrp_1_1Vehicle.html#a6dfe1539c3277ae6568309e8e5e4d374", null ],
     [ "cost", "classpgrouting_1_1vrp_1_1Vehicle.html#a121239d471cfeefc7c40b23bf787a837", null ],
@@ -28,6 +29,7 @@ var classpgrouting_1_1vrp_1_1Vehicle =
     [ "insert_less_travel_time", "classpgrouting_1_1vrp_1_1Vehicle.html#a43b1afad2e0d74af5b5d79dbd6829446", null ],
     [ "invariant", "classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8", null ],
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Vehicle.html#a0ff5f16ae974de8e47b34dd92cd84570", null ],
+    [ "is_ok", "classpgrouting_1_1vrp_1_1Vehicle.html#aa996853fc75d4ba9bbb6181d22f4dc02", null ],
     [ "is_phony", "classpgrouting_1_1vrp_1_1Vehicle.html#a6b87e5fcd837821ae04884a9d767efb7", null ],
     [ "path", "classpgrouting_1_1vrp_1_1Vehicle.html#a80a01b40f29f6c46466f5c89bdc2c136", null ],
     [ "pop_back", "classpgrouting_1_1vrp_1_1Vehicle.html#aac46d18126e93540a1d7321281a1fc02", null ],

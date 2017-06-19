@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"ch__vertex_8h_source.html":[6,0,1,6,0,7],
+"classAssertFailedException.html":[5,0,1],
 "classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f":[5,0,1,0],
 "classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2":[5,0,1,2],
 "classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887":[5,0,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "classIdentifiers.html#a2a9dce802595ea25e18f4a2c7ac834fe":[5,0,22,6],
 "classIdentifiers.html#a31d4c7fad9f5507ba26ff13515dc1d68":[5,0,22,11],
 "classIdentifiers.html#a3a7ad466683cb1aeaa3be0743c7bc6cf":[5,0,22,1],
-"classIdentifiers.html#a458d516f984c0144451bcfb89e75233c":[5,0,22,4],
-"classIdentifiers.html#a51a76e2a577f256f4e9a1a27a7bcfc35":[5,0,22,24],
-"classIdentifiers.html#a536ba1546a29d4ee542eae0bde6f15e8":[5,0,22,18]
+"classIdentifiers.html#a458d516f984c0144451bcfb89e75233c":[5,0,22,4]
 };

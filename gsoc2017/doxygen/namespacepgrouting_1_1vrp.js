@@ -1,6 +1,5 @@
 var namespacepgrouting_1_1vrp =
 [
-    [ "pickdeliver", "namespacepgrouting_1_1vrp_1_1pickdeliver.html", "namespacepgrouting_1_1vrp_1_1pickdeliver" ],
     [ "Base_node", "classpgrouting_1_1vrp_1_1Base__node.html", "classpgrouting_1_1vrp_1_1Base__node" ],
     [ "Dnode", "classpgrouting_1_1vrp_1_1Dnode.html", "classpgrouting_1_1vrp_1_1Dnode" ],
     [ "Fleet", "classpgrouting_1_1vrp_1_1Fleet.html", "classpgrouting_1_1vrp_1_1Fleet" ],

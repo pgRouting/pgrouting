@@ -5,7 +5,6 @@ var searchData=
   ['ch_5fvertex',['CH_vertex',['../classpgrouting_1_1CH__vertex.html',1,'pgrouting']]],
   ['cmoveinfo',['CMoveInfo',['../classCMoveInfo.html',1,'']]],
   ['column_5finfo_5ft',['Column_info_t',['../structColumn__info__t.html',1,'']]],
-  ['compare',['Compare',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__bk_1_1Compare.html',1,'pgrouting::vrp::pickdeliver::Swap_bk']]],
   ['compare',['Compare',['../classpgrouting_1_1vrp_1_1Swap__bk_1_1Compare.html',1,'pgrouting::vrp::Swap_bk']]],
   ['comppaths',['compPaths',['../classPgr__ksp_1_1compPaths.html',1,'Pgr_ksp']]],
   ['contracted_5frt',['contracted_rt',['../structcontracted__rt.html',1,'']]],

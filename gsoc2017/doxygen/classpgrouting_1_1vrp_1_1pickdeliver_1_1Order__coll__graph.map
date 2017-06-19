@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::pickdeliver::Order" name="pgrouting::vrp::pickdeliver::Order">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="24,5,157,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__problem.html" title="pgrouting::vrp::pickdeliver\l::PD_problem" alt="" coords="5,57,176,98"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html" title="Identifiers\&lt; size_t \&gt;" alt="" coords="21,123,160,149"/>
-</map>

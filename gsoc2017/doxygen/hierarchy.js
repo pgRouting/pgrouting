@@ -37,7 +37,6 @@ var hierarchy =
     [ "GraphEdgeInfo", "classGraphEdgeInfo.html", null ],
     [ "Identifiers< T >", "classIdentifiers.html", null ],
     [ "Identifiers< int64_t >", "classIdentifiers.html", null ],
-    [ "Identifiers< pgrouting::vrp::pickdeliver::PD_Orders::OID >", "classIdentifiers.html", null ],
     [ "Identifiers< size_t >", "classIdentifiers.html", null ],
     [ "Identifiers< V >", "classIdentifiers.html", null ],
     [ "MATRIX", null, [
@@ -82,18 +81,10 @@ var hierarchy =
     [ "pgrouting::graph::PgrFlowGraph", "classpgrouting_1_1graph_1_1PgrFlowGraph.html", null ],
     [ "pgrouting::Identifier", "classpgrouting_1_1Identifier.html", [
       [ "pgrouting::vrp::Base_node", "classpgrouting_1_1vrp_1_1Base__node.html", [
-        [ "pgrouting::vrp::Dnode", "classpgrouting_1_1vrp_1_1Dnode.html", [
-          [ "pgrouting::vrp::pickdeliver::Tw_node", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html", [
-            [ "pgrouting::vrp::pickdeliver::Vehicle_node", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html", null ]
-          ] ]
-        ] ],
+        [ "pgrouting::vrp::Dnode", "classpgrouting_1_1vrp_1_1Dnode.html", null ],
         [ "pgrouting::vrp::Node", "classpgrouting_1_1vrp_1_1Node.html", null ]
       ] ],
       [ "pgrouting::vrp::Order", "classpgrouting_1_1vrp_1_1Order.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Order", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Vehicle", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html", [
-        [ "pgrouting::vrp::pickdeliver::Vehicle_pickDeliver", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__pickDeliver.html", null ]
-      ] ],
       [ "pgrouting::vrp::Tw_node", "classpgrouting_1_1vrp_1_1Tw__node.html", [
         [ "pgrouting::vrp::Vehicle_node", "classpgrouting_1_1vrp_1_1Vehicle__node.html", null ]
       ] ],
@@ -117,20 +108,6 @@ var hierarchy =
       [ "pgrouting::vrp::Tw_node", "classpgrouting_1_1vrp_1_1Tw__node.html", null ],
       [ "pgrouting::vrp::Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html", null ]
     ] ],
-    [ "pgrouting::vrp::pickdeliver::PD_problem", "classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__problem.html", [
-      [ "pgrouting::vrp::pickdeliver::Fleet", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Fleet.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Order", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html", null ],
-      [ "pgrouting::vrp::pickdeliver::PD_Orders", "classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__Orders.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Pgr_pickDeliver", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Pgr__pickDeliver.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Solution", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html", [
-        [ "pgrouting::vrp::pickdeliver::Initial_solution", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Initial__solution.html", null ],
-        [ "pgrouting::vrp::pickdeliver::Optimize", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Optimize.html", null ]
-      ] ],
-      [ "pgrouting::vrp::pickdeliver::Vehicle", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html", null ]
-    ] ],
-    [ "pgrouting::vrp::pickdeliver::Swap_bk", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__bk.html", null ],
-    [ "pgrouting::vrp::pickdeliver::Swap_bk::Compare", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__bk_1_1Compare.html", null ],
-    [ "pgrouting::vrp::pickdeliver::Swap_info", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__info.html", null ],
     [ "pgrouting::vrp::Swap_bk", "classpgrouting_1_1vrp_1_1Swap__bk.html", null ],
     [ "pgrouting::vrp::Swap_bk::Compare", "classpgrouting_1_1vrp_1_1Swap__bk_1_1Compare.html", null ],
     [ "pgrouting::vrp::Swap_info", "classpgrouting_1_1vrp_1_1Swap__info.html", null ],

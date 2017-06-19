@@ -76,19 +76,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Contraction.html",
-"classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f",
-"classIdentifiers.html#a577c266fec689637dea4caef857e6b8c",
-"classpgrouting_1_1algorithms_1_1Pgr__astar.html#a22cd0da84b9ae7e326a595bdc941d11f",
-"classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab6b2a4bcbb103d1a1a1e06e91ce12ba6",
-"classpgrouting_1_1vrp_1_1Node.html#ae40d4e5c40ea96725851c53a0f2738d8",
-"classpgrouting_1_1vrp_1_1Vehicle.html#a841d722916e69f459fd5a40cbc13d732",
-"classpgrouting_1_1vrp_1_1pickdeliver_1_1Optimize.html#af3b519006256e439841004c9e00dc106",
-"classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a142e2e901a00e7662ef7cf33508ef8cdafe18b49388474a2dde9216dac0e6deb2",
-"dir_330b2fb77ec4b18692766894438b09ce.html",
-"get__check__data_8h.html#a186311e0ed2aa6513ae5257d17395132",
-"pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3",
-"structCostPack.html#adb46c4c245eeec3fcaa6b20b2b5d5635",
-"test__matrixRows_8c_source.html"
+"ch__vertex_8h_source.html",
+"classIdentifiers.html#a51a76e2a577f256f4e9a1a27a7bcfc35",
+"classpgrouting_1_1algorithms_1_1Pgr__astar.html",
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab13f36eb0578e04260de70dcde6850ab",
+"classpgrouting_1_1vrp_1_1Node.html#aa5855a2127dbb9e2634720fff3a851b7",
+"classpgrouting_1_1vrp_1_1Vehicle.html#a82b70004991a14051dfcfea449d3705f",
+"dijkstra__driver_8h.html#af572deb404f5e6d9e905c248294eac3b",
+"general__path__element__t_8h_source.html",
+"orders__input_8c_source.html",
+"structCoordinate__t.html#a5c5120506820750c415333c52ed30958",
+"test__c__edges__driver_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

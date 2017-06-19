@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"classpgrouting_1_1algorithms_1_1Pgr__astar.html":[5,0,0,0,0],
+"classpgrouting_1_1algorithms_1_1Pgr__astar.html#a187eb488ab36784f3d5e36b30b3cfe0f":[5,0,0,0,0,7],
 "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a22cd0da84b9ae7e326a595bdc941d11f":[5,0,0,0,0,14],
 "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a4ffd46234f5f3924c0b31f22cfe9fb73":[5,0,0,0,0,5],
 "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a540dad9278b2222a4e8d0b0f173353b4":[5,0,0,0,0,8],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#a9cb5e3604988abaedf467f7a40dd4a9b":[5,0,0,4,0,14],
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#aa36f93dbcd678e3efb82f6cbe13fc080":[5,0,0,4,0,32],
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#aa931b50cbcb1219603bc26871f43194e":[5,0,0,4,0,8],
-"classpgrouting_1_1graph_1_1Pgr__base__graph.html#aab63730561c08ef229661b31b6bcba43":[5,0,0,4,0,6],
-"classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab13f36eb0578e04260de70dcde6850ab":[5,0,0,4,0,15],
-"classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab3b24225e6812641d81bfeb65dbbd453":[5,0,0,4,0,9]
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#aab63730561c08ef229661b31b6bcba43":[5,0,0,4,0,6]
 };

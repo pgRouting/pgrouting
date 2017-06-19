@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['p_5fswaps',['p_swaps',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Optimize.html#a5b48562e0ea8bc2fae10d303c191d83b',1,'pgrouting::vrp::pickdeliver::Optimize::p_swaps()'],['../classpgrouting_1_1vrp_1_1Optimize.html#a8ed0d9488b3249d16a70d53210e20ac0',1,'pgrouting::vrp::Optimize::p_swaps()']]],
+  ['p_5fswaps',['p_swaps',['../classpgrouting_1_1vrp_1_1Optimize.html#a8ed0d9488b3249d16a70d53210e20ac0',1,'pgrouting::vrp::Optimize']]],
   ['parent',['parent',['../classGraphDefinition.html#a85330e17959239c9e1c0d597a9a6acce',1,'GraphDefinition']]],
   ['path',['path',['../classPath.html#a0078a9d54940355ab4e63f7d90c9b911',1,'Path']]],
   ['path_5fid',['path_id',['../structRoutes__t.html#ae9d26e92b596aff25c77b1b751758633',1,'Routes_t']]],
@@ -12,12 +12,11 @@ var searchData=
   ['pick_5fservice_5ft',['pick_service_t',['../structPickDeliveryOrders__t.html#aab503bfa38a761c32f34de528d2b8cb3',1,'PickDeliveryOrders_t']]],
   ['pick_5fx',['pick_x',['../structPickDeliveryOrders__t.html#ac87aa232a209e11ef41e030ab1232661',1,'PickDeliveryOrders_t']]],
   ['pick_5fy',['pick_y',['../structPickDeliveryOrders__t.html#a1118f6bc6fe785d64145485e0eb857db',1,'PickDeliveryOrders_t']]],
-  ['pickup_5fid',['pickup_id',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html#a8dba10f80566e25a192ec83ae1be4599',1,'pgrouting::vrp::pickdeliver::Order']]],
   ['pid',['pid',['../structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9',1,'Point_on_edge_t']]],
   ['point',['point',['../classpgrouting_1_1XY__vertex.html#adcaa8dc8d7d6b6c7ff0b9d25e45ce332',1,'pgrouting::XY_vertex']]],
   ['pos',['pos',['../classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d',1,'tokenizer']]],
   ['precedencelist',['precedencelist',['../structRule.html#a797ae14eced5681ba837833ac15c97e7',1,'Rule']]],
   ['predecessors',['predecessors',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#adb34490a0056ac03f31ad34996542082',1,'pgrouting::algorithms::Pgr_astar::predecessors()'],['../classPgr__dijkstra.html#a9ef39b953a6e26c217548bd480a639b1',1,'Pgr_dijkstra::predecessors()']]],
   ['prev_5fsize',['prev_size',['../alpha__driver_8cpp.html#a7118ea995babe95c18fc3899f93d697a',1,'alpha_driver.cpp']]],
-  ['problem',['problem',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__problem.html#ad4b2d3432988f5cfb8a085ef313082b1',1,'pgrouting::vrp::pickdeliver::PD_problem::problem()'],['../classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621',1,'pgrouting::vrp::PD_problem::problem()']]]
+  ['problem',['problem',['../classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621',1,'pgrouting::vrp::PD_problem']]]
 ];

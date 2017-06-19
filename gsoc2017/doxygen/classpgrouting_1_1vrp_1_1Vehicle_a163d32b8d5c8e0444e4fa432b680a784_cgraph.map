@@ -1,4 +1,10 @@
 <map id="pgrouting::vrp::Vehicle::Vehicle" name="pgrouting::vrp::Vehicle::Vehicle">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aeec21aba283e23f4bf2a355f4f7c2764" title="@ { " alt="" coords="205,5,357,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8" title="Invariant The path must: " alt="" coords="405,34,557,75"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a6dfe1539c3277ae6568309e8e5e4d374" title="pgrouting::vrp::Vehicle\l::capacity" alt="" coords="219,5,371,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ac9349481baefcf809b0bf31ad6e65719" title="Returns the closing time. " alt="" coords="231,70,358,111"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aeec21aba283e23f4bf2a355f4f7c2764" title="@ { " alt="" coords="219,135,371,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8" title="Invariant The path must: " alt="" coords="436,165,588,206"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1Identifier.html#a04eb2b760246fbcc2f6dc0a011c3d340" title="pgrouting::Identifier::id" alt="" coords="437,277,587,304"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="433,361,591,388"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a143adbc3116b92e89358dce21910a7eb" title="Returns the opening time. " alt="" coords="231,354,358,395"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a8c27c36d047770d21cbd575ca4e2057d" title="pgrouting::vrp::Vehicle::tau" alt="" coords="205,303,384,329"/>
 </map>

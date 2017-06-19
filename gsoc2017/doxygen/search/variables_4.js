@@ -14,8 +14,8 @@ var searchData=
   ['end_5fx',['end_x',['../structVehicle__t.html#aabe3e829f64856896af1c0fa01ba84ba',1,'Vehicle_t']]],
   ['end_5fy',['end_y',['../structVehicle__t.html#a26acb2d98f3afaef6fd83178c9b07570',1,'Vehicle_t']]],
   ['endcost',['endCost',['../structCostHolder.html#a8d0f2e6e2d5762fb01149d3db92f3770',1,'CostHolder']]],
-  ['epsilon',['EPSILON',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html#adbff03e712c5ddb1658b319a89f88beb',1,'pgrouting::vrp::pickdeliver::Solution::EPSILON()'],['../classpgrouting_1_1vrp_1_1Solution.html#a6f585163bbc3f99d5f7252275701021d',1,'pgrouting::vrp::Solution::EPSILON()'],['../classpgrouting_1_1tsp_1_1TSP.html#a7628d006d4b62b638b85a7be047cab3a',1,'pgrouting::tsp::TSP::epsilon()']]],
+  ['epsilon',['epsilon',['../classpgrouting_1_1tsp_1_1TSP.html#a7628d006d4b62b638b85a7be047cab3a',1,'pgrouting::tsp::TSP::epsilon()'],['../classpgrouting_1_1vrp_1_1Solution.html#a6f585163bbc3f99d5f7252275701021d',1,'pgrouting::vrp::Solution::EPSILON()']]],
   ['error',['error',['../classpgrouting_1_1Pgr__messages.html#a4a12f6059130ebe354b184b78086b2c9',1,'pgrouting::Pgr_messages']]],
-  ['estimated_5fdelta',['estimated_delta',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__info.html#a0bf158494eeb54f293b439fc0a21455c',1,'pgrouting::vrp::pickdeliver::Swap_info::estimated_delta()'],['../classpgrouting_1_1vrp_1_1Swap__info.html#a0ef71a6015d53983f7ef50ddc4f2e93f',1,'pgrouting::vrp::Swap_info::estimated_delta()']]],
+  ['estimated_5fdelta',['estimated_delta',['../classpgrouting_1_1vrp_1_1Swap__info.html#a0ef71a6015d53983f7ef50ddc4f2e93f',1,'pgrouting::vrp::Swap_info']]],
   ['etype',['eType',['../structColumn__info__t.html#a80df9b5f6ef4c51effc2da146bb0d477',1,'Column_info_t']]]
 ];

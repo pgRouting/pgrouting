@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -335,8 +336,20 @@ to get more information about each step in the path.</p>
 </div>
 <div class="section" id="inner-queries">
 <span id="id4"></span><h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
-<p>There are several kinds of valid inner queries and also the columns returned are depending of the function..
-Which kind of <strong>edges_sql</strong> will depend on the function(s) requirements.</p>
+<p>There are several kinds of valid inner queries and also the columns returned are depending of the function.
+Which kind of inner query will depend on the function(s) requirements.
+To simplify variety of types, <code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> and <code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> is used.</p>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="description-of-the-edges-sql-query-for-dijkstra-like-functions">
 <h3>Description of the edges_sql query for dijkstra like functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1010,12 +1023,10 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 </pre></div>
 </div>
 <p>In the vertices table &#8220;mytab_vertices_pgr&#8221;:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Deadends are identified by <code class="docutils literal"><span class="pre">cnt=1</span></code></li>
 <li>Potencial gap problems are identified with <code class="docutils literal"><span class="pre">chk=1</span></code>.</li>
 </ul>
-</div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">deadends</span>  <span class="k">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="k">WHERE</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">deadends</span>
 <span class="c1">----------</span>
@@ -1046,15 +1057,13 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p>Lets assume we have a table &#8220;st&#8221; of edges and a column &#8220;one_way&#8221; that might have values like:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>&#8216;FT&#8217;    - oneway from the source to the target node.</li>
 <li>&#8216;TF&#8217;    - oneway from the target to the source node.</li>
 <li>&#8216;B&#8217;     - two way street.</li>
 <li>&#8216;&#8217;      - empty field, assume twoway.</li>
 <li>&lt;NULL&gt;  - NULL field, use two_way_if_null flag.</li>
 </ul>
-</div></blockquote>
 <p>Then we could form the following query to analyze the oneway streets for errors.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span>
             <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
@@ -1145,7 +1154,7 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jun 13, 2017.<br/>
+      Last updated on Jun 19, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

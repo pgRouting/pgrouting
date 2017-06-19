@@ -10,7 +10,6 @@ var searchData=
   ['deliver_5fservice_5ft',['deliver_service_t',['../structPickDeliveryOrders__t.html#af8c3366b6a7c4fa93c0c63af3ea7d544',1,'PickDeliveryOrders_t']]],
   ['deliver_5fx',['deliver_x',['../structPickDeliveryOrders__t.html#ad618370b0b9e6cb8152b659889056cb1',1,'PickDeliveryOrders_t']]],
   ['deliver_5fy',['deliver_y',['../structPickDeliveryOrders__t.html#af564444415ffabe4cbb2ffb5c9f3000b',1,'PickDeliveryOrders_t']]],
-  ['delivery_5fid',['delivery_id',['../classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html#a43fe9ed7931b6469d8257fbbb5547e8b',1,'pgrouting::vrp::pickdeliver::Order']]],
   ['demand',['demand',['../structPickDeliveryOrders__t.html#aec56228fc0edd5812b5cf9ad882902de',1,'PickDeliveryOrders_t']]],
   ['depart_5ftime',['depart_time',['../structvrp__result__element.html#a0cea7b693286dfc6ce0b3fbdf24ebaa5',1,'vrp_result_element']]],
   ['departuretime',['departureTime',['../structGeneral__vehicle__orders__t.html#ac44ca989c1127b3483936bd2ed3b62be',1,'General_vehicle_orders_t']]],
