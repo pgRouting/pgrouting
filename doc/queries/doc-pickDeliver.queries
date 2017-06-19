@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
     
@@ -34,5 +34,28 @@ SELECT * FROM _pgr_pickDeliver(
 (11 rows)
 
 --q2
+SELECT * FROM pgr_pickDeliver(
+    $$ SELECT * FROM orders ORDER BY id $$,
+    $$ SELECT * FROM vehicles $$,
+    $$ SELECT * from pgr_dijkstraCostMatrix(
+        ' SELECT * FROM edge_table ', ARRAY[3, 4, 5, 8, 9, 11]) 
+    $$
+);
+ seq | vehicle_seq | vehicle_id | stop_seq | stop_type | stop_id | order_id | cargo | travel_time | arrival_time | wait_time | service_time | departure_time 
+-----+-------------+------------+----------+-----------+---------+----------+-------+-------------+--------------+-----------+--------------+----------------
+   1 |           1 |          1 |        1 |         1 |       6 |       -1 |     0 |           0 |            0 |         0 |            0 |              0
+   2 |           1 |          1 |        2 |         2 |       3 |        1 |    10 |           5 |            5 |         0 |            3 |              8
+   3 |           1 |          1 |        3 |         2 |       5 |        3 |    40 |           2 |           10 |         0 |            3 |             13
+   4 |           1 |          1 |        4 |         3 |       8 |        1 |    30 |           1 |           14 |         0 |            3 |             17
+   5 |           1 |          1 |        5 |         3 |      11 |        3 |     0 |           3 |           20 |         0 |            3 |             23
+   6 |           1 |          1 |        6 |         6 |       6 |       -1 |     0 |           5 |           28 |         0 |            0 |             28
+   7 |           2 |          1 |        1 |         1 |       6 |       -1 |     0 |           0 |            0 |         0 |            0 |              0
+   8 |           2 |          1 |        2 |         2 |       9 |        2 |    20 |           3 |            3 |         1 |            2 |              6
+   9 |           2 |          1 |        3 |         3 |       4 |        2 |     0 |           1 |            7 |         0 |            3 |             10
+  10 |           2 |          1 |        4 |         6 |       6 |       -1 |     0 |           4 |           14 |         0 |            0 |             14
+  11 |          -2 |          0 |        0 |        -1 |      -1 |       -1 |    -1 |          24 |           -1 |         1 |           17 |             42
+(11 rows)
+
+--q3
 ROLLBACK;
 ROLLBACK
