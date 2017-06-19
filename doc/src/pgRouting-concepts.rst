@@ -168,8 +168,18 @@ to get more information about each step in the path.
 Inner Queries
 -------------------------------------------------------------------------------
 
-There are several kinds of valid inner queries and also the columns returned are depending of the function..
-Which kind of **edges_sql** will depend on the function(s) requirements.
+There are several kinds of valid inner queries and also the columns returned are depending of the function.
+Which kind of inner query will depend on the function(s) requirements.
+To simplify variety of types, ``ANY-INTEGER`` and ``ANY-NUMERICAL`` is used.
+
+.. where_definition_starts
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+.. where_definition_ends
 
 .. basic_edges_sql_start
 
@@ -568,8 +578,8 @@ With :ref:`pgr_analyze_graph` the graph can be checked for errors. For example f
 
 In the vertices table "mytab_vertices_pgr":
 
-  - Deadends are identified by ``cnt=1``
-  - Potencial gap problems are identified with ``chk=1``.
+- Deadends are identified by ``cnt=1``
+- Potencial gap problems are identified with ``chk=1``.
 
 .. code-block:: sql
 
@@ -615,11 +625,11 @@ Example
 
 Lets assume we have a table "st" of edges and a column "one_way" that might have values like:
 
-   * 'FT'    - oneway from the source to the target node.
-   * 'TF'    - oneway from the target to the source node.
-   * 'B'     - two way street.
-   * ''      - empty field, assume twoway.
-   * <NULL>  - NULL field, use two_way_if_null flag.
+* 'FT'    - oneway from the source to the target node.
+* 'TF'    - oneway from the target to the source node.
+* 'B'     - two way street.
+* ''      - empty field, assume twoway.
+* <NULL>  - NULL field, use two_way_if_null flag.
 
 Then we could form the following query to analyze the oneway streets for errors.
 

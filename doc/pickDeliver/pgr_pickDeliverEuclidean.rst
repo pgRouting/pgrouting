@@ -9,14 +9,21 @@
 
 .. _pgr_pickDeliverEuclidean:
 
-pgr_pickDeliverEuclidean:
+pgr_pickDeliverEuclidean - Proposed
 ===============================================================================
 
 .. warning:: Documentation is being updated
 
+``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem
+
+.. rubric:: Availability
+
+* New as proposed in 2.5.0
+
+
 .. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 
 Synopsis
@@ -50,7 +57,7 @@ Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehic
 
 
 
-Characteristics:
+Characteristics
 -------------------------------------------------------------------------------
 
 - No multiple time windows for a location.
@@ -62,7 +69,11 @@ Characteristics:
   - the best solution found will be result
 
 
-Signature Summary
+.. index::
+    single: pgr_pickDeliverEuclidean - Proposed
+
+
+Signature
 -------------------------------------------------------------------------------
 
 ..  
@@ -95,53 +106,90 @@ Signature Summary
         cargo, travel_time, arrival_time, wait_time, service_time, departure_time)
 
 
+Parameters
+...............................................................................
 
-
-Signatures
--------------------------------------------------------------------------------
-
-
-.. index::
-    single: pgr_pickDeliverEuclidean(Complete Signature)
-
-pgr_pickDeliverEuclidean(Complete Signature)
--------------------------------................................................
+The parameters are:
 
 .. code-block:: none
 
-    pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor, max_cycles, initial_sol])
-    RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
-        cargo, travel_time, arrival_time, wait_time, service_time, departure_time)
+    orders_sql, vehicles_sql [,factor, max_cycles, initial_sol]
 
-:Example:
-
-.. literalinclude:: ./doc-pickDeliverEuclidean.queries
-   :start-after: --q1
-   :end-before: --q2
-
-
-Description of the Signatures
--------------------------------------------------------------------------------
-
-.. include:: VRP-category.rst
-    :start-after: pd_euclidean_sql_start:
-    :end-before: pd_euclidean_sql_end
-
-
-.. include:: VRP-category.rst
-    :start-after: pd_vehicle_sql_start:
-    :end-before: pd_vehicle_sql_end
-
+Where:
 
 .. include:: VRP-category.rst
     :start-after: pd_parameters_start
     :end-before: pd_parameters_end
+
+
+Pick & Deliver Orders SQL
+...............................................................................
+
+A `SELECT` statement that returns the following columns:
+
+.. code-block:: none
+
+    id, demand
+    p_x, p_y, p_open, p_close, [p_service, ]
+    d_x, d_y, d_open, d_close, [d_service, ]
+
+Where:
+
+.. include:: VRP-category.rst
+    :start-after: pd_orders_sql_general_start
+    :end-before: pd_orders_sql_general_end
+
+
+.. include:: VRP-category.rst
+    :start-after: pd_orders_euclidean_sql_start
+    :end-before: pd_orders_euclidean_sql_end
+
+
+
+Pick & Deliver Vehicles SQL
+.........................................................................................
+
+A `SELECT` statement that returns the following columns:
+
+.. code-block:: none
+
+    id, capacity
+    start_x, start_y, start_open, start_close [, start_service, ]
+    [ end_x, end_y, end_open, end_close, end_service ]
+
+where:
+
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_general_start
+    :end-before: pd_vehicle_sql_general_end
+
+
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_euclidean_start
+    :end-before: pd_vehicle_sql_euclidean_end
+
 
 .. include:: VRP-category.rst
     :start-after: return_vrp_euclidean_start:
     :end-before: return_vrp_euclidean_end
 
 
+.. include:: pgRouting-concepts.rst
+    :start-after: where_definition_starts
+    :end-before: where_definition_ends
+
+
+Example
+-------------------------------------------------------------------------------
+
+.. TODO
+
+This example use the following data: TODO put link
+
+
+.. literalinclude:: ./doc-pickDeliverEuclidean.queries
+   :start-after: --q1
+   :end-before: --q2
 
 See Also
 -------------------------------------------------------------------------------

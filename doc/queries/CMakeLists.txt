@@ -36,7 +36,6 @@ SET(LOCAL_FILES
     doc-pgr_dijkstraVia.queries
     doc-pgr_maxCardinalityMatch.queries
     doc-pgr_withPointsDD.queries
-    doc-gsoc_vrppdtw.queries
     doc-pgr_bdDijkstraCost.queries
     doc-pgr_drivingDistance.queries
     doc-pgr_maxFlow.queries

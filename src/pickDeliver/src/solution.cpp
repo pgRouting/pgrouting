@@ -234,7 +234,13 @@ Solution::operator<(const Solution &s_rhs) const {
 Solution::Solution() :
     EPSILON(0.0001),
     trucks(problem->trucks())
-{}
+{
+    ENTERING();
+    for (const auto &t : trucks) {
+        msg.log << t.tau() << "\n";
+    }
+    EXITING();
+}
 
 }  //  namespace vrp
 }  //  namespace pgrouting
