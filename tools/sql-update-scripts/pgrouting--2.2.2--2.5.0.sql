@@ -3249,6 +3249,62 @@ LANGUAGE c VOLATILE STRICT;
 
 
 
+
+CREATE OR REPLACE FUNCTION _pgr_vrpOneDepot(
+    customers_sql TEXT,
+    vehicles_sql TEXT,
+    cost_sql TEXT,
+    depot_id INTEGER,
+
+    OUT oid integer,
+    OUT opos integer,
+    OUT vid integer,
+    OUT tarrival integer,
+    OUT tdepart integer
+)
+RETURNS SETOF RECORD AS
+$BODY$
+DECLARE
+    orders_sql TEXT;
+    trucks_sql TEXT;
+    final_sql TEXT;
+BEGIN
+    
+    
+
+    orders_sql = $$WITH
+        vrp_orders AS ($$ || customers_sql || $$ ),
+        pickups AS (
+            SELECT id, x AS p_x, y AS p_y, open_time AS p_open, close_time AS p_close, service_time AS p_service
+            FROM vrp_orders
+            WHERE id = 1
+        )
+        SELECT vrp_orders.id AS id, order_unit AS demand, pickups.id AS p_node_id, p_x, p_y, p_open, p_close, p_service,
+        vrp_orders.id AS d_node_id, x AS d_x, y AS d_y, open_time AS d_open, close_time AS d_close, service_time AS d_service
+        FROM vrp_orders, pickups
+        WHERE vrp_orders.id != 1;
+        $$;
+
+
+    trucks_sql = $$ WITH
+        vrp_orders AS ($$ || customers_sql || $$ ),
+        vrp_vehicles AS ($$ || vehicles_sql || $$ ),
+        starts AS (
+            SELECT id, x AS start_x, y AS start_y, open_time AS start_open, close_time AS start_close, service_time AS start_service
+            FROM vrp_orders
+            WHERE id = 1
+        )
+        SELECT * FROM vrp_vehicles, starts;
+        $$;
+
+    RAISE EXCEPTION '%s', trucks_sql;
+    
+    RETURN QUERY EXECUTE final_sql;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+
+
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
