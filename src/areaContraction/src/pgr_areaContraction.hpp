@@ -35,7 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <queue>
 #include <functional>
 #include <vector>
+
 #include "cpp_common/identifiers.hpp"
+#include "dijkstra/pgr_dijkstra.hpp"
 
 namespace pgrouting {
 namespace areacontraction {
@@ -49,7 +51,8 @@ class Pgr_areaContraction {
 public:
   void setBorderVertices(Identifier<V> borderVertices);
   //To make target array for one to many dijkstra
-  std::deque<Path> callDijkstra(G &graph, V v);
+  void makeTarget(V v);
+  void callDijkstra(G &graph, V v);
   void doContraction(G &graph);
 
 
@@ -57,6 +60,7 @@ public:
 private:
      Identifiers<V> border;
      Identifiers<V> target;
+     std::deque<Path> paths;
      std::ostringstream debug;
 };
 
@@ -70,6 +74,39 @@ Pgr_areaContraction< G >::setBorderVertices(
 #endif
   border = borderVertices;
 }
+
+template< class G >
+void
+Pgr_areaContraction< G >::makeTarget(
+  V v){
+    #ifndef NDEBUG
+      debug << "Creating target vector by removing vertex from border vertices\n";
+    #endif
+    target=border.erase(v)
+  }
+
+template< class G >
+void
+Pgr_areaContraction< G >::callDijkstra(
+  G &graph, int64_t source, std::vector<int64_t> targets){
+    Pgr_dijkstra< G > fn_dijkstra;
+    auto paths = fn_dijkstra.dijkstra(graph, source, targets);
+  }
+
+  template< class G >
+  void
+  Pgr_areaContraction< G >::doContraction(G &graph){
+    #ifndef NDEBUG
+        debug << "Performing contraction\n";
+    #endif
+
+    for (V vertex: border){
+
+    }
+
+  }
+
+
 
 }
 }
