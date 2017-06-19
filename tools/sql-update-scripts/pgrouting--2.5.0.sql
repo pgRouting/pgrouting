@@ -3122,6 +3122,79 @@ CREATE OR REPLACE FUNCTION pgr_pickDeliverEuclidean (
     LANGUAGE c VOLATILE;
 
 
+
+
+CREATE OR REPLACE FUNCTION _pgr_vrpOneDepot(
+    customers_sql TEXT,
+    vehicles_sql TEXT,
+    TEXT, -- matrix_sql
+    depot_id INTEGER,
+
+    OUT seq INTEGER,
+    OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
+    OUT stop_id BIGINT,
+    OUT order_id BIGINT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+)
+RETURNS SETOF RECORD AS
+$BODY$
+DECLARE
+orders_sql TEXT;
+trucks_sql TEXT;
+matrix_sql TEXT;
+final_sql TEXT;
+BEGIN
+
+    orders_sql = $$WITH
+    vrp_orders AS ($$ || customers_sql || $$ ),
+    pickups AS (
+        SELECT id, x AS p_x, y AS p_y, open_time AS p_open, close_time AS p_close, service_time AS p_service
+        FROM vrp_orders
+        WHERE id = $$ || depot_id || $$
+    )
+    SELECT vrp_orders.id AS id, order_unit AS demand, pickups.id AS p_node_id, p_x, p_y, p_open, p_close, p_service,
+    vrp_orders.id AS d_node_id, x AS d_x, y AS d_y, open_time AS d_open, close_time AS d_close, service_time AS d_service
+    FROM vrp_orders, pickups
+    WHERE vrp_orders.id != $$ || depot_id;
+
+
+    trucks_sql = $$ WITH
+    vrp_orders AS ($$ || customers_sql || $$ ),
+    vrp_vehicles AS ($$ || vehicles_sql || $$ ),
+    starts AS (
+        SELECT id AS start_node_id, x AS start_x, y AS start_y, open_time AS start_open, close_time AS start_close, service_time AS start_service
+        FROM vrp_orders
+        WHERE id = $$ || depot_id || $$
+    )
+    SELECT vehicle_id AS id, capacity, starts.* FROM vrp_vehicles, starts;
+    $$;
+
+    final_sql = '
+    SELECT * FROM pgr_pickDeliver(
+            $$' || orders_sql || '$$,
+            $$' || trucks_sql || '$$,
+            $$' || $3 || '$$,
+            max_cycles := 2,
+            initial_sol := 4 ); ';
+
+    RAISE DEBUG '%', orders_sql;
+    RAISE DEBUG '%', trucks_sql;
+    RAISE DEBUG '%', $3;
+    RAISE DEBUG '%', final_sql;
+
+    RETURN QUERY EXECUTE final_sql;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+
 -----------------------------------------------------------------------
 -- Core function for vrp with sigle depot computation
 -- See README for description
@@ -3140,67 +3213,22 @@ create or replace function pgr_vrpOneDepot(
 	OUT vid integer,
 	OUT tarrival integer,
 	OUT tdepart integer)
-returns setof record as
-'MODULE_PATHNAME', 'vrp'
-LANGUAGE c VOLATILE STRICT;
-
-
-
-
-
-CREATE OR REPLACE FUNCTION _pgr_vrpOneDepot(
-    customers_sql TEXT,
-    vehicles_sql TEXT,
-    cost_sql TEXT,
-    depot_id INTEGER,
-
-    OUT oid integer,
-    OUT opos integer,
-    OUT vid integer,
-    OUT tarrival integer,
-    OUT tdepart integer
-)
 RETURNS SETOF RECORD AS
 $BODY$
-DECLARE
-    orders_sql TEXT;
-    trucks_sql TEXT;
-    final_sql TEXT;
 BEGIN
-    
-    
-
-    orders_sql = $$WITH
-        vrp_orders AS ($$ || customers_sql || $$ ),
-        pickups AS (
-            SELECT id, x AS p_x, y AS p_y, open_time AS p_open, close_time AS p_close, service_time AS p_service
-            FROM vrp_orders
-            WHERE id = 1
-        )
-        SELECT vrp_orders.id AS id, order_unit AS demand, pickups.id AS p_node_id, p_x, p_y, p_open, p_close, p_service,
-        vrp_orders.id AS d_node_id, x AS d_x, y AS d_y, open_time AS d_open, close_time AS d_close, service_time AS d_service
-        FROM vrp_orders, pickups
-        WHERE vrp_orders.id != 1;
-        $$;
-
-
-    trucks_sql = $$ WITH
-        vrp_orders AS ($$ || customers_sql || $$ ),
-        vrp_vehicles AS ($$ || vehicles_sql || $$ ),
-        starts AS (
-            SELECT id, x AS start_x, y AS start_y, open_time AS start_open, close_time AS start_close, service_time AS start_service
-            FROM vrp_orders
-            WHERE id = 1
-        )
-        SELECT * FROM vrp_vehicles, starts;
-        $$;
-
-    RAISE EXCEPTION '%s', trucks_sql;
-    
-    RETURN QUERY EXECUTE final_sql;
-END;
+    RETURN query SELECT order_id::INTEGER, stop_seq::INTEGER, vehicle_id::INTEGER, arrival_time::INTEGER, departure_time::INTEGER
+    FROM _pgr_vrpOneDepot($1, $2,
+       '
+            SELECT src_id AS start_vid, dest_id AS end_vid, traveltime AS agg_cost FROM ('||$3||') AS a
+       ',
+        $4
+    ) a;
+END
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
 
 
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
