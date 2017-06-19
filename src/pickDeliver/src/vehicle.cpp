@@ -137,6 +137,7 @@ Vehicle::get_postgres_result(
     std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
     int stop_seq(1);
+    msg.log << "geting solution: " << tau() << "\n";
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data = {
             vid,
@@ -482,24 +483,41 @@ Vehicle::Vehicle(
         pgassert(starting_site.opens() <= starting_site.closes());
         pgassert(ending_site.opens() <= ending_site.closes());
         pgassert(capacity() > 0);
-
+        msg.log << "p_idx: " << p_idx << "\t idx(): " << idx() << "\n";
+        msg.log << "p_id: " << p_id << "\tid(): " << id() << "\n" ;
+        
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
 
-        msg.log << "before calling evaluate\n";
         evaluate(0);
-        msg.log << "after calling evaluate\n";
+        msg.log << tau() << "\n";
         invariant();
         EXITING();
     }
 
+Vehicle::Vehicle(const Vehicle &v) :
+    Identifier(v.idx(), v.id()),
+    PD_problem(),
+    m_path(v.m_path),
+    m_capacity(v.m_capacity),
+    m_factor(v.m_factor),
+    m_speed(v.m_speed) {
+#if 0
+        ENTERING();
+        msg.log << v.tau() << "\n";
+        msg.log << tau() << "\n";
+        EXITING();
+#endif
+}
 
 
 
 std::string
 Vehicle::tau() const {
+    pgassert(m_path.size() > 1);
     std::ostringstream log;
-    log << "Truck " << idx() << " (";
+    log << "Truck " << id() << "(" << idx() << ")"
+        << " (";
     for (const auto p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";

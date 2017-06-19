@@ -259,9 +259,16 @@ Vehicle_pickDeliver::do_while_feasable(
         Identifiers<size_t> &unassigned,
         Identifiers<size_t> &assigned) {
     pgassert(is_feasable());
+#if 0
+    msg.log << "unasigned" << unassigned << "\n";
+    msg.log << "m_feasable_orders" << m_feasable_orders << "\n";
+#endif
     auto current_feasable = m_feasable_orders * unassigned;
 
     while (!current_feasable.empty()) {
+#if 0
+        msg.log << "current_feasable" << current_feasable << "\n";
+#endif
         auto order = m_orders[current_feasable.front()];
 
         switch (kind) {

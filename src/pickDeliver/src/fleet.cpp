@@ -57,13 +57,16 @@ Fleet::Fleet(
 
 Vehicle_pickDeliver
 Fleet::get_truck() {
-    auto id = un_used.front();
-    msg.log << "id" << id
-        << "size" << m_trucks.size();
-    pgassertwm(id < m_trucks.size(), msg.log.str());
-    used += id;
-    if (un_used.size() > 1) un_used -= id;
-    return m_trucks[id];
+    ENTERING();
+    auto idx = un_used.front();
+    msg.log << "Available vehicles: " << un_used << "\n";
+    msg.log << "NOT Available vehicles: " << used << "\n";
+    msg.log << "getting idx" << idx << "\n";
+    pgassertwm(idx < m_trucks.size(), msg.log.str());
+    used += idx;
+    if (un_used.size() > 1) un_used -= idx;
+    EXITING();
+    return m_trucks[idx];
 }
 
 void
@@ -74,19 +77,37 @@ Fleet::release_truck(size_t id) {
 
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
-    auto id = m_trucks.front().idx();
+    msg.log << "Available vehicles: " << un_used << "\n";
+    msg.log << "NOT Available vehicles: " << used << "\n";
+    auto idx = un_used.front();
+
+    for (const auto i : un_used) {
+        if (m_trucks[i].feasable_orders().has(order)) {
+            idx = i;
+            msg.log << "getting idx" << idx << "\n";
+            used += idx;
+            if (un_used.size() > 1) un_used -= idx;
+            return m_trucks[idx];
+        }
+    }
+
+    /*
+     * using phoney truck
+     */
+    pgassert(false);
+    return m_trucks.back();
+
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order)) {
-            id = truck.idx();
-            msg.log << "id" << id
-                << "size" << m_trucks.size();
-            pgassertwm(id < m_trucks.size(), msg.get_log());
-            used += id;
-            if (un_used.size() > 1) un_used -= id;
+            idx = truck.idx();
+            msg.log << "idx" << idx << "size" << m_trucks.size();
+            pgassertwm(idx < m_trucks.size(), msg.get_log());
+            used += idx;
+            if (un_used.size() > 1) un_used -= idx;
             break;
         }
     }
-    return m_trucks[id];
+    return m_trucks[idx];
 }
 
 
@@ -134,7 +155,7 @@ Fleet::add_vehicle(
                     vehicle.capacity,
                     vehicle.speed,
                     factor));
-        msg.log << "inserting vehicle: " << m_trucks.back().idx() << "\n";
+        msg.log << "inserting vehicle: " << m_trucks.back().tau() << "\n";
         pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
         pgassert(m_trucks.back().is_ok());
     }
