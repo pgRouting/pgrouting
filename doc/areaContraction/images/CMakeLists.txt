@@ -2,6 +2,10 @@
 SET(LOCAL_FILES
     directed_sampledata.png
     contracted_resultGraph.png
+    onetomany_a.png
+    onetomany_b.png
+    onetomany_c.png
+    onetomany_d.png
     )
 
 foreach (f ${LOCAL_FILES})
