@@ -206,8 +206,8 @@ Example
 This example use the following data: TODO put link
 
 .. literalinclude:: doc-pickDeliver.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: --q2
+   :end-before: --q3
 
 
 See Also
