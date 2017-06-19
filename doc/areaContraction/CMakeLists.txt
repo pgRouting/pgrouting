@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
     pgr_areaContraction.rst
-    areaContraction-family.rst
+    areaContraction.rst
     )
 
 foreach (f ${LOCAL_FILES})
