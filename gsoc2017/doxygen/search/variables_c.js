@@ -5,6 +5,7 @@ var searchData=
   ['path',['path',['../classPath.html#a0078a9d54940355ab4e63f7d90c9b911',1,'Path']]],
   ['path_5fid',['path_id',['../structRoutes__t.html#ae9d26e92b596aff25c77b1b751758633',1,'Routes_t']]],
   ['path_5fseq',['path_seq',['../structRoutes__t.html#acb143a564da1fb8a5ba85f809bf021c9',1,'Routes_t']]],
+  ['paths',['paths',['../classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html#a420c732e77c8136682b9aa16b1a03352',1,'pgrouting::areacontraction::Pgr_areaContraction']]],
   ['pg_5fmodule_5fmagic',['PG_MODULE_MAGIC',['../dijkstra_8c.html#a509119277abe280e6db17c34f79e01cf',1,'PG_MODULE_MAGIC():&#160;dijkstra.c'],['../VRP_8c.html#a509119277abe280e6db17c34f79e01cf',1,'PG_MODULE_MAGIC():&#160;VRP.c']]],
   ['pick_5fclose_5ft',['pick_close_t',['../structPickDeliveryOrders__t.html#a207146edd7b53729eafec494550113a7',1,'PickDeliveryOrders_t']]],
   ['pick_5fnode_5fid',['pick_node_id',['../structPickDeliveryOrders__t.html#a1a921f0db33908a6cd835088291760fb',1,'PickDeliveryOrders_t']]],

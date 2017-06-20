@@ -8,6 +8,7 @@ var searchData=
   ['set_5fids',['set_ids',['../classpgrouting_1_1tsp_1_1Dmatrix.html#a7f5f415372021300072d1c85a63e1239',1,'pgrouting::tsp::Dmatrix::set_ids()'],['../classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a7e3d5af321e5555f0b2880d2f59b67b9',1,'pgrouting::tsp::eucledianDmatrix::set_ids()']]],
   ['set_5fsupersink',['set_supersink',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a6d9fcc65f99c73ac788f61ea0219e9f2',1,'pgrouting::graph::PgrFlowGraph']]],
   ['set_5fsupersource',['set_supersource',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#af8575d1d61fb2bbbd0f1b9255e20309c',1,'pgrouting::graph::PgrFlowGraph']]],
+  ['setbordervertices',['setBorderVertices',['../classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html#aeabb40b94cb82398b2f79282af07352f',1,'pgrouting::areacontraction::Pgr_areaContraction']]],
   ['setcapacity',['setCapacity',['../classCVehicleInfo.html#a5ecefb8b9bc7ccb502933b2c0b8f8b7b',1,'CVehicleInfo']]],
   ['setclosetime',['setCloseTime',['../classCOrderInfo.html#ab9b2a0b7003fd27972bf59cdef755cb8',1,'COrderInfo::setCloseTime()'],['../classCDepotInfo.html#ac55b4384a35167456088b360712cc5b3',1,'CDepotInfo::setCloseTime()']]],
   ['setcostperkm',['setCostPerKM',['../classCVehicleInfo.html#aef8aeb472e2cd2ce0647c590fc458c2c',1,'CVehicleInfo']]],

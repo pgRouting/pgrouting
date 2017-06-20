@@ -39,6 +39,7 @@ var searchData=
   ['book_5fkeeping_2ecpp',['book_keeping.cpp',['../book__keeping_8cpp.html',1,'']]],
   ['book_5fkeeping_2eh',['book_keeping.h',['../book__keeping_8h.html',1,'']]],
   ['boost_5fgraph',['boost_graph',['../classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#af740b57d54f4b1678fda2e89254b5f2a',1,'pgrouting::flow::PgrCardinalityGraph']]],
+  ['border',['border',['../classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html#a26298835c8be29d2d0abe461680253dc',1,'pgrouting::areacontraction::Pgr_areaContraction']]],
   ['boykov_5fkolmogorov',['boykov_kolmogorov',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5928ee304759464fa5da7706115d4f1e',1,'pgrouting::graph::PgrFlowGraph']]],
   ['buff',['buff',['../Tester_8cpp.html#a42c1ba0cab5bc73236253f2ab7c522c2',1,'Tester.cpp']]],
   ['build_5ffleet',['build_fleet',['../classpgrouting_1_1vrp_1_1Fleet.html#a84505248f08d5fee3859ebc953a3952e',1,'pgrouting::vrp::Fleet']]],

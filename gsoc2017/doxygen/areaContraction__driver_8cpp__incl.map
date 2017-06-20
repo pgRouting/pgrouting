@@ -1,6 +1,7 @@
 <map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/areaContraction/src/areaContraction_driver.cpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/areaContraction/src/areaContraction_driver.cpp">
 <area shape="rect" id="node2" href="$areaContraction__driver_8h.html" title="drivers/areaContraction\l/areaContraction_driver.h" alt="" coords="5,126,173,167"/>
-<area shape="rect" id="node7" href="$pgr__contractionGraph_8hpp.html" title="../../contraction/src\l/pgr_contractionGraph.hpp" alt="" coords="515,126,689,167"/>
-<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="715,133,896,160"/>
-<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="920,133,1096,160"/>
+<area shape="rect" id="node7" href="$pgr__contractionGraph_8hpp.html" title="../../contraction/src\l/pgr_contractionGraph.hpp" alt="" coords="662,126,836,167"/>
+<area shape="rect" id="node8" href="$pgr__areaContract_8hpp.html" title="./pgr_areaContract.hpp" alt="" coords="432,133,585,160"/>
+<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="732,216,908,243"/>
+<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="912,133,1093,160"/>
 </map>

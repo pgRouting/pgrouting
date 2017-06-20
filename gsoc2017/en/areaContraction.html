@@ -112,6 +112,7 @@
 <li><a class="reference internal" href="#">Area Contraction</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#contracting-sample-data">Contracting Sample Data</a></li>
+<li><a class="reference internal" href="#queries-and-images-for-one-to-many-shortest-path-calculations">Queries and images for One to Many Shortest path calculations</a></li>
 </ul>
 </li>
 </ul>
@@ -205,8 +206,7 @@ the resultant subpath</li>
 </div>
 <div class="section" id="contracting-sample-data">
 <h2>Contracting Sample Data<a class="headerlink" href="#contracting-sample-data" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>In this section, building and using a contracted graph will be shown by example.</p>
+<p>In this section, building and using a contracted graph will be shown by example.</p>
 <ul class="simple">
 <li>The <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> for a directed graph is used</li>
 </ul>
@@ -216,7 +216,38 @@ the resultant subpath</li>
 <img alt="_images/contracted_resultGraph.png" src="_images/contracted_resultGraph.png" />
 <p>The original image shows the sample data graph. The set of border vertices taken here is [1,4,7,13].
 The border vertices have been shown in red in the figure.</p>
-</div></blockquote>
+<p>According to the size of the border vertices array we need to calculate one to many shortest paths
+from each border vertex to every other border vertex. In our exaple data the border vertices array is
+[1,4,7,13]. Thus the following cases for one to many shortest path calculation occur.</p>
+<ul class="simple">
+<li><strong>Case 1</strong>: Shortest paths from 1 to [4,7,13]</li>
+<li><strong>Case 2</strong>: Shortest paths from 4 to [1,7,13]</li>
+<li><strong>Case 3</strong>: Shortest paths from 7 to [1,4,13]</li>
+<li><strong>Case 4</strong>: Shortest paths from 13 to [1,4,7]</li>
+</ul>
+</div>
+<div class="section" id="queries-and-images-for-one-to-many-shortest-path-calculations">
+<h2>Queries and images for One to Many Shortest path calculations<a class="headerlink" href="#queries-and-images-for-one-to-many-shortest-path-calculations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Case 1</strong>:</li>
+</ul>
+<p>//include dijkstra queries for 1 -&gt; 4,7,13</p>
+<img alt="_images/onetomany_a.png" src="_images/onetomany_a.png" />
+<ul class="simple">
+<li><strong>Case 2</strong>:</li>
+</ul>
+<p>//include dijkstra queries for 4 -&gt; 1,7,13</p>
+<img alt="_images/onetomany_b.png" src="_images/onetomany_b.png" />
+<ul class="simple">
+<li><strong>Case 3</strong>:</li>
+</ul>
+<p>//include dijkstra queries for 7 -&gt; 1,4,13</p>
+<img alt="_images/onetomany_c.png" src="_images/onetomany_c.png" />
+<ul class="simple">
+<li><strong>Case 4</strong>:</li>
+</ul>
+<p>//include dijkstra queries for 13 -&gt; 1,4,7</p>
+<img alt="_images/onetomany_d.png" src="_images/onetomany_d.png" />
 </div>
 </div>
 

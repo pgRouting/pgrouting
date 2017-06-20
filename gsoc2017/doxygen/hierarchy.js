@@ -65,6 +65,8 @@ var hierarchy =
     [ "Pgr_ksp< G >::compPaths", "classPgr__ksp_1_1compPaths.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >", "classpgrouting_1_1algorithms_1_1Pgr__astar.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >::found_goals", "structpgrouting_1_1algorithms_1_1Pgr__astar_1_1found__goals.html", null ],
+    [ "pgrouting::areacontraction::Pgr_areaContraction< G >", "classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html", null ],
+    [ "pgrouting::areacontraction::Pgr_contract< G >", "classpgrouting_1_1areacontraction_1_1Pgr__contract.html", null ],
     [ "pgrouting::Basic_edge", "classpgrouting_1_1Basic__edge.html", null ],
     [ "pgrouting::Basic_vertex", "classpgrouting_1_1Basic__vertex.html", null ],
     [ "pgrouting::bidirectional::Pgr_bidirectional< G >", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html", [

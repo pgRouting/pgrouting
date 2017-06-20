@@ -2,7 +2,7 @@ var searchData=
 [
   ['dbg_5flog',['dbg_log',['../classpgrouting_1_1Pgr__messages.html#a421c5233d8bb92914197836950abf360',1,'pgrouting::Pgr_messages']]],
   ['deadendvertices',['deadendVertices',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#a999531a34bb650c8419b31ed004f8f57',1,'pgrouting::contraction::Pgr_deadend']]],
-  ['debug',['debug',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#ab197512559204c8a442c17161c8f814e',1,'pgrouting::contraction::Pgr_deadend::debug()'],['../classpgrouting_1_1contraction_1_1Pgr__linear.html#a2b576bc1193106e299e17548fd723fa6',1,'pgrouting::contraction::Pgr_linear::debug()']]],
+  ['debug',['debug',['../classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html#a5b1629f2f8134b3cc156f92047b11bfb',1,'pgrouting::areacontraction::Pgr_areaContraction::debug()'],['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#ab197512559204c8a442c17161c8f814e',1,'pgrouting::contraction::Pgr_deadend::debug()'],['../classpgrouting_1_1contraction_1_1Pgr__linear.html#a2b576bc1193106e299e17548fd723fa6',1,'pgrouting::contraction::Pgr_linear::debug()']]],
   ['delim',['delim',['../classtokenizer.html#ac72caaa0185fd6b418dfc2efd8d9f489',1,'tokenizer']]],
   ['deliver_5fclose_5ft',['deliver_close_t',['../structPickDeliveryOrders__t.html#a353af6b268cf3e4c4c47a0b244fd7928',1,'PickDeliveryOrders_t']]],
   ['deliver_5fnode_5fid',['deliver_node_id',['../structPickDeliveryOrders__t.html#ae1c604516b9f8439bdd3f15a2442d67f',1,'PickDeliveryOrders_t']]],

@@ -1,6 +1,7 @@
 var searchData=
 [
   ['calculatevertices',['calculateVertices',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#aed46c6193e522fa638e46d87d0174ebb',1,'pgrouting::contraction::Pgr_deadend::calculateVertices()'],['../classpgrouting_1_1contraction_1_1Pgr__linear.html#a1bae6a3ec231a3048e243ff087997853',1,'pgrouting::contraction::Pgr_linear::calculateVertices()']]],
+  ['calldijkstra',['callDijkstra',['../classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html#a2826a99603c7b413c45e0fbed50e4e47',1,'pgrouting::areacontraction::Pgr_areaContraction']]],
   ['capacity',['capacity',['../classpgrouting_1_1vrp_1_1Vehicle.html#a6dfe1539c3277ae6568309e8e5e4d374',1,'pgrouting::vrp::Vehicle']]],
   ['cargo',['cargo',['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a96ef92d0217372452550dd61b9cc355f',1,'pgrouting::vrp::Vehicle_node']]],
   ['cdepotinfo',['CDepotInfo',['../classCDepotInfo.html#a609c63c1c08b9da7fa06a205078c342a',1,'CDepotInfo']]],

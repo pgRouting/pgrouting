@@ -1,6 +1,7 @@
 var namespacepgrouting =
 [
     [ "algorithms", "namespacepgrouting_1_1algorithms.html", "namespacepgrouting_1_1algorithms" ],
+    [ "areacontraction", "namespacepgrouting_1_1areacontraction.html", "namespacepgrouting_1_1areacontraction" ],
     [ "bidirectional", "namespacepgrouting_1_1bidirectional.html", "namespacepgrouting_1_1bidirectional" ],
     [ "contraction", "namespacepgrouting_1_1contraction.html", "namespacepgrouting_1_1contraction" ],
     [ "flow", "namespacepgrouting_1_1flow.html", "namespacepgrouting_1_1flow" ],

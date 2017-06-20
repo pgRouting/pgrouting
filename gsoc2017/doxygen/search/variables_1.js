@@ -10,5 +10,6 @@ var searchData=
   ['best_5ftour',['best_tour',['../classpgrouting_1_1tsp_1_1TSP.html#a95eb535f7d43e466ef554fa18bd37dcf',1,'pgrouting::tsp::TSP']]],
   ['bestcost',['bestCost',['../classpgrouting_1_1tsp_1_1TSP.html#a16f905cb0f6392a601d1e375d2a9312b',1,'pgrouting::tsp::TSP']]],
   ['boost_5fgraph',['boost_graph',['../classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#af740b57d54f4b1678fda2e89254b5f2a',1,'pgrouting::flow::PgrCardinalityGraph']]],
+  ['border',['border',['../classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html#a26298835c8be29d2d0abe461680253dc',1,'pgrouting::areacontraction::Pgr_areaContraction']]],
   ['buff',['buff',['../Tester_8cpp.html#a42c1ba0cab5bc73236253f2ab7c522c2',1,'Tester.cpp']]]
 ];

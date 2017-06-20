@@ -131,6 +131,7 @@ var searchData=
   ['mainpage_2edox',['mainpage.dox',['../mainpage_8dox.html',1,'']]],
   ['make_5fmatrix',['make_matrix',['../classPgr__allpairs.html#a0b54e6286cca3290ac107dbf76cce130',1,'Pgr_allpairs']]],
   ['make_5fresult',['make_result',['../classPgr__allpairs.html#a51687b103791fd97b3743e8f05d72aa2',1,'Pgr_allpairs::make_result(const G &amp;graph, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix, size_t &amp;result_tuple_count, Matrix_cell_t **postgres_rows) const '],['../classPgr__allpairs.html#a3978f56a3f11ee235fea38b2408ef8ac',1,'Pgr_allpairs::make_result(G &amp;graph, std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix, std::vector&lt; Matrix_cell_t &gt; &amp;rows)']]],
+  ['maketarget',['makeTarget',['../classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html#a0795ada911599ab01c08a43f81d35072',1,'pgrouting::areacontraction::Pgr_areaContraction']]],
   ['many_5fto_5fdist_5fdriving_5fdistance_2ec',['many_to_dist_driving_distance.c',['../many__to__dist__driving__distance_8c.html',1,'']]],
   ['many_5fto_5fdist_5fwithpointsdd_2ec',['many_to_dist_withPointsDD.c',['../many__to__dist__withPointsDD_8c.html',1,'']]],
   ['many_5fto_5fmany_5fdijkstra',['many_to_many_dijkstra',['../dijkstra_8c.html#a1bb7c1d86b852022aeb2f209c3528417',1,'dijkstra.c']]],

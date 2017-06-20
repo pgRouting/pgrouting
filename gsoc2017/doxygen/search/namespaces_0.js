@@ -1,6 +1,7 @@
 var searchData=
 [
   ['algorithms',['algorithms',['../namespacepgrouting_1_1algorithms.html',1,'pgrouting']]],
+  ['areacontraction',['areacontraction',['../namespacepgrouting_1_1areacontraction.html',1,'pgrouting']]],
   ['bidirectional',['bidirectional',['../namespacepgrouting_1_1bidirectional.html',1,'pgrouting']]],
   ['contraction',['contraction',['../namespacepgrouting_1_1contraction.html',1,'pgrouting']]],
   ['flow',['flow',['../namespacepgrouting_1_1flow.html',1,'pgrouting']]],
