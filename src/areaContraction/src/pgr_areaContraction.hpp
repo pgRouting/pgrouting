@@ -80,7 +80,7 @@ void
 Pgr_areaContraction< G >::dijkstra_many_many(
   G &graph, std::vector<int64_t> border_vertices){
     Pgr_dijkstra< G > fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(graph, border_vertices, border_vertices);
+    paths = fn_dijkstra.dijkstra(graph, border_vertices, border_vertices);
   }
 
 template< class G >
