@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_deadend.hpp
+File: pgr_areaContraction.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -44,18 +44,17 @@ namespace areacontraction {
 
 template < class G >
 class Pgr_areaContraction {
- private:
-     typedef typename G::V V;
-     typedef typename G::E E;
+private:
+  typedef typename G::V V;
+  typedef typename G::E E;
 
 public:
   void setBorderVertices(Identifier<V> borderVertices);
   //To make target array for one to many dijkstra
-  void makeTarget(V v);
-  void callDijkstra(G &graph, V v);
   void doContraction(G &graph);
 
-
+private:
+  void dijkstra_many_many(G &graph, std::vector<int64_t> sources,std::vector<int64_t> targets);
 
 private:
      Identifiers<V> border;
@@ -75,38 +74,26 @@ Pgr_areaContraction< G >::setBorderVertices(
   border = borderVertices;
 }
 
-template< class G >
-void
-Pgr_areaContraction< G >::makeTarget(
-  V v){
-    #ifndef NDEBUG
-      debug << "Creating target vector by removing vertex from border vertices\n";
-    #endif
-    target=border.erase(v)
-  }
 
 template< class G >
 void
-Pgr_areaContraction< G >::callDijkstra(
-  G &graph, int64_t source, std::vector<int64_t> targets){
+Pgr_areaContraction< G >::dijkstra_many_many(
+  G &graph, std::vector<int64_t> sources, std::vector<int64_t> targets){
     Pgr_dijkstra< G > fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(graph, source, targets);
+    auto paths = fn_dijkstra.dijkstra(graph, sources, targets);
   }
 
-  template< class G >
-  void
-  Pgr_areaContraction< G >::doContraction(G &graph){
-    #ifndef NDEBUG
-        debug << "Performing contraction\n";
-    #endif
+template< class G >
+void
+Pgr_areaContraction< G >::doContraction(G &graph){
+#ifndef NDEBUG
+    debug << "Performing contraction\n";
+#endif
 
-    for (V vertex: border){
-
-    }
-
-  }
-
-
-
+dijkstra_many_many(graph,border,border)
 }
-}
+
+}  // namespace areacontraction
+}  // namespace pgrouting
+
+#endif  // SRC_AREACONTRACTION_SRC_PGR_AREACONTRACTION_HPP_

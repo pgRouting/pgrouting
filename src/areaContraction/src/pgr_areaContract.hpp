@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_contract.hpp
+File: pgr_areaContract.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
