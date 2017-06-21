@@ -41,16 +41,11 @@ General
 
    sampledata
 
-:ref:`Pgrouting Concepts <pgrouting_concepts>`
+Pgrouting Concepts
 ===============================================================================
 
-.. include:: pgRouting-concepts.rst
-   :start-after: concepts_start
-   :end-before: concepts_end
-
-
 .. toctree::
-   :hidden:
+   :maxdepth: 2
 
    pgRouting-concepts
    

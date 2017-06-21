@@ -12,33 +12,7 @@
 pgRouting Concepts
 ===============================================================================
 
-.. rubric:: Table of Contents
-
-.. concepts_start
-
-* :ref:`Getting_started`
-
-  * :ref:`create_database`
-  * :ref:`load_data`
-  * :ref:`build_topology`
-  * :ref:`check_graph`
-  * :ref:`compute_path`
-  * `pgRouting Workshop <http://workshop.pgrouting.org>`_
-
-* :ref:`inner_queries`
-* :ref:`return_values`
-* :ref:`Advanced_Topics`
-
-  * :ref:`topology`
-  * :ref:`analytics`
-  * :ref:`performance`
-
-* :ref:`how_contribute`
-
-
-
-
-.. concepts_end
+.. contents::
 
 .. _Getting_started:
 
@@ -48,10 +22,8 @@ Getting Started
 This is a simple guide to walk you through the steps of getting started
 with pgRouting. In this guide we will cover:
 
-* :ref:`create_database`
-* :ref:`load_data`
-* :ref:`build_topology`
-* :ref:`check_graph`
+.. contents::
+    :local:
 
 
 .. _create_database:
@@ -167,6 +139,9 @@ to get more information about each step in the path.
 
 Inner Queries
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
 
 There are several kinds of valid inner queries and also the columns returned are depending of the function.
 Which kind of inner query will depend on the function(s) requirements.
@@ -369,6 +344,9 @@ Where:
 Return columns & values
 --------------------------------------------------------------------------------
 
+.. contents::
+    :local:
+
 There are several kinds of columns returned are depending of the function.
 
 .. return_path_start
@@ -435,6 +413,9 @@ Column                 Type                  Description
 
 Advanced Topics
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
 
 .. _topology:
 
@@ -540,7 +521,7 @@ Now your database should be ready to use any (most?) of the pgRouting algorithms
 .. _analytics:
 
 Graph Analytics
--------------------------------------------------------------------------------
+...............................................................................
 
 
 .. rubric:: Overview
@@ -621,7 +602,7 @@ The rules are defined as an array of text strings that if match the ``col`` valu
 
 
 Example
-...............................................................................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Lets assume we have a table "st" of edges and a column "one_way" that might have values like:
 
@@ -661,6 +642,10 @@ The above tools do not detect all network issues, but they will identify some co
 
 Performance Tips
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
+
 
 For the Routing functions
 ...............................................................................

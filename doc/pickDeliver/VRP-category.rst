@@ -12,6 +12,7 @@
 Vehicle Routing Functions Category
 ===============================================================================
 
+.. contents::
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
