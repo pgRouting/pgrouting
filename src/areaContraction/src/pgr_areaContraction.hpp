@@ -50,7 +50,6 @@ private:
 
 public:
   void setBorderVertices(Identifiers<V> borderVertices);
-  //To make target array for one to many dijkstra
   void doContraction(G &graph);
 
 private:
@@ -90,6 +89,8 @@ Pgr_areaContraction< G >::doContraction(G &graph){
 #endif
 
 dijkstra_many_many(graph,border,border);
+
+
 
 
 }
