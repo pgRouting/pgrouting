@@ -44,7 +44,7 @@ template <typename G>
 static void process_areaContraction(
         G &graph,
         const std::vector< pgr_edge_t > &edges,
-        const std::vector< int64_t > borderVertices,
+        std::vector< int64_t > borderVertices,
         std::vector< pgrouting::CH_edge > &shortcut_edges,
         std::ostringstream &log,
         std::ostringstream &err) {

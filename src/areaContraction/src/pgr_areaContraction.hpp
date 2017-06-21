@@ -49,12 +49,12 @@ private:
   typedef typename G::E E;
 
 public:
-  void setBorderVertices(Identifier<V> borderVertices);
+  void setBorderVertices(Identifiers<V> borderVertices);
   //To make target array for one to many dijkstra
   void doContraction(G &graph);
 
 private:
-  void dijkstra_many_many(G &graph, std::vector<int64_t> sources,std::vector<int64_t> targets);
+  void dijkstra_many_many(G &graph, std::vector<int64_t> border_vertices);
 
 private:
      Identifiers<V> border;
@@ -66,8 +66,7 @@ private:
 /******* IMPLEMENTATION ************/
 template< class G >
 void
-Pgr_areaContraction< G >::setBorderVertices(
-  Identifier<V> borderVertices){
+Pgr_areaContraction< G >::setBorderVertices(Identifiers<V> borderVertices){
 #ifndef NDEBUG
   debug << "Setting forbidden vertices\n";
 #endif
@@ -90,7 +89,7 @@ Pgr_areaContraction< G >::doContraction(G &graph){
     debug << "Performing contraction\n";
 #endif
 
-dijkstra_many_many(graph,border,border)
+dijkstra_many_many(graph,border,border);
 
 
 }
