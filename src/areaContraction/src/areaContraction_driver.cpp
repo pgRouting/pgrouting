@@ -50,6 +50,11 @@ static void process_areaContraction(
         std::ostringstream &err) {
     graph.insert_edges(edges);
 
+    std::sort(borderVertices.begin(), borderVertices.end());
+    borderVertices.erase(
+            std::unique(borderVertices.begin(), borderVertices.end()),
+            borderVertices.end());
+
     log << "Checking for valid border vertices\n";
     for (const auto vertex : borderVertices) {
         if (!graph.has_vertex(vertex)) {

@@ -44,6 +44,8 @@ The main Characteristics are:
 
   - The returned edges are categorized based on the number of overlapping edges.
 
+  - For optimization purposes, any duplicated value in the border vertices are ignored.
+
 
 Signature Summary
 -----------------
