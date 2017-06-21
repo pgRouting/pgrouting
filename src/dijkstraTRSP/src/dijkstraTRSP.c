@@ -54,6 +54,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 /* for functions to get edges informtion */
 #include "c_common/edges_input.h"
+#include "c_common/restrict_input.h"
 
 #include "drivers/dijkstraTRSP/dijkstraTRSP_driver.h"  // the link to the C++ code of the function
 
@@ -125,6 +126,27 @@ process(
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
+    PGR_DBG("Load restrictions");
+    Restrict_t *restrictions = NULL;
+    size_t total_restrictions = 0;
+
+    pgr_get_restriction_data(restrictions_sql, &restrictions,
+        &total_restrictions);
+
+#if 0
+    size_t i = 0;
+    while(i < total_restrictions) {
+        PGR_DBG("id: %ld cost: %lf", restrictions[i].id, restrictions[i].cost);
+        int j = 0;
+        while(restrictions[i].restricted_edges[j] != -1) {
+            PGR_DBG("%ld ", restrictions[i].restricted_edges[j]);
+            j++;
+        }
+        PGR_DBG("\n");
+        i++;
+    }
+#endif
+
     if (total_edges == 0) {
         PGR_DBG("No edges found");
         pgr_SPI_finish();
@@ -162,6 +184,7 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
+    if (restrictions) pfree(restrictions);
 #if 0
     /*
      *  handling arrays example
