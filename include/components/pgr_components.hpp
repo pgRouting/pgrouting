@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/strong_components.hpp>
 
 #include <vector>
-#include <map>
 #include <utility>
 #include <algorithm>
 
