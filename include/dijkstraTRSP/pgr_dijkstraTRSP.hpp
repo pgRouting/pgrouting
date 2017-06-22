@@ -41,65 +41,15 @@ class Pgr_dijkstraTRSP {
              bool heap_paths);
      void clear();
  private:
-     #if 0
-     class compPaths {
-      public:
-          bool operator()(const Path &p1, const Path &p2) const {
-              /*
-               * less cost is best
-               */
-              if (p1.tot_cost() > p2.tot_cost())
-                  return  false;
-              if (p1.tot_cost() < p2.tot_cost())
-                return  true;
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-
-              // paths costs are equal now check by length
-              if (p1.size() > p2.size())
-                  return false;
-              if (p1.size() < p2.size())
-                  return true;
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-              pgassert(p1.size() == p2.size());
-
-              // paths weights & lengths are equal now check by node ID
-              unsigned int i;
-              for (i = 0; i < p1.size(); i++) {
-                  if (p1[i].node >  p2[i].node)
-                      return false;
-                  if (p1[i].node <  p2[i].node)
-                      return true;
-              }
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-              pgassert(p1.size() == p2.size());
-#ifdef NDEBUG
-              for (i = 0; i < p1.size(); i++) {
-                  pgassert(p1[i].node == p2[i].node);
-              }
-#endif
-
-              // we got here and everything is equal
-              return false;
-          }
-     };
-     #endif
      //! the actual algorithm
      void executeDijkstraTRSP(G &graph, int top_k);
 
      /** @name Auxiliary function for yen's algorithm */
      ///@{
-     #if 0
      //! Performs the first Dijkstra of the algorithm
      void getFirstSolution(G &graph);
      //! Performs the next cycle of the algorithm
      void doNextCycle(G &graph);
-     //! stores in subPath the first i elements of path
-     void removeVertices(G &graph, const Path &path);
-     ///@}
-     #endif
  private:
      /** @name members */
      ///@{
@@ -176,8 +126,6 @@ Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph,
     return l_ResultList;
 }
 
-#if 0
-
 template < class G >
 void Pgr_dijkstraTRSP< G >::getFirstSolution(G &graph) {
      Path path;
@@ -188,12 +136,6 @@ void Pgr_dijkstraTRSP< G >::getFirstSolution(G &graph) {
      if (path.empty()) return;
      curr_result_path = path;
      m_ResultSet.insert(curr_result_path);
-}
-
-template < class G >
-void Pgr_dijkstraTRSP< G >::removeVertices(G &graph, const Path &subpath) {
-    for (const auto &e : subpath)
-        graph.disconnect_vertex(e.node);
 }
 
 template < class G >
@@ -228,7 +170,6 @@ void Pgr_dijkstraTRSP< G >::doNextCycle(G &graph) {
         graph.restore_graph();
     }
 }
-#endif
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph, int K) {
@@ -253,6 +194,5 @@ void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph, int K) {
 #endif
     }
 }
-#endif
 
 #endif  // INCLUDE_DIJKSTRATRSP_PGR_DIJKSTRATRSP_HPP_
