@@ -70,25 +70,10 @@ class Pgr_components {
              G &graph,
              std::vector< V >);
 
-     //! Generate Map V_to_id
-     std::map< V, int64_t > V_to_id;
-     void generate_map(
-             std::map< int64_t, V > id_to_V);
 };
 
 
 /******************** IMPLEMENTTION ******************/
-
-//! Generate map V_to_id
-template < class G >
-void
-Pgr_components< G >::generate_map(
-        std::map< int64_t, V > id_to_V) {
-    V_to_id.clear();
-    for (auto iter : id_to_V) {
-        V_to_id.insert(std::make_pair(iter.second, iter.first));
-    }
-}
 
 //! Generate Results, Vertex Version
 template < class G >
@@ -96,8 +81,6 @@ std::vector<pgr_componentsV_rt>
 Pgr_components< G >::generate_resultsV(
         G &graph,
         std::vector< V > components) {
-    // generate V_to_id
-    generate_map(graph.vertices_map);
 
     // generate results
     auto totalNodes = num_vertices(graph.graph);
@@ -108,8 +91,8 @@ Pgr_components< G >::generate_resultsV(
     std::vector< int64_t > result_comp;
     result_comp.resize(0);
     size_t temp_size = 0;
-    for (auto i = 0; i < totalNodes; i++) {
-        results[i].node = V_to_id.find(i)->second;
+    for (V i = 0; i < totalNodes; i++) {
+		results[i].node = graph[i].id;
         if (components[i] >= temp_size) {
             result_comp.push_back(results[i].node);
             temp_size++;
@@ -120,7 +103,7 @@ Pgr_components< G >::generate_resultsV(
     }
 
     // generate component number
-    for (auto i = 0; i < totalNodes; i++) {
+    for (V i = 0; i < totalNodes; i++) {
         results[i].component = result_comp[components[i]];
     }
 
@@ -133,7 +116,7 @@ Pgr_components< G >::generate_resultsV(
 			return a.component < b.component;
 			});
 
-    for (auto i = 0; i < totalNodes; i++) {
+    for (V i = 0; i < totalNodes; i++) {
         if (i == 0 || results[i].component != results[i - 1].component) {
             results[i].n_seq = 1;
         } else {
@@ -155,7 +138,6 @@ Pgr_components< G >::connectedComponentsV(
 	//get the results
     std::vector<pgr_componentsV_rt> results = generate_resultsV(graph, components);
 
-    // get the results
     return results;
 }
 
