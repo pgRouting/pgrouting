@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-template < class G > class Pgr_dijkstra;
+template < class G > class Pgr_dijkstraTRSP;
 // user's functions
 // for development
 
@@ -570,4 +570,5 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
     }
     return found;
 }
+
 #endif  // INCLUDE_DIJKSTRATRSP_PGR_DIJKSTRATRSP_HPP_
