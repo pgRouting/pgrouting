@@ -135,9 +135,7 @@ Pgr_components< G >::connectedComponentsV(
     boost::connected_components(graph.graph, &components[0]);
 
 	//get the results
-    std::vector<pgr_componentsV_rt> results = generate_resultsV(graph, components);
-
-    return results;
+    return generate_resultsV(graph, components);
 }
 
 //! Strongly Connected Components Vertex Version
@@ -147,12 +145,11 @@ Pgr_components< G >::strongComponentsV(
         G &graph) {
     // perform the algorithm
     std::vector< V > components(num_vertices(graph.graph));
-    boost::strong_components(graph.graph, &components[0]);
+    boost::strong_components(graph.graph, 
+			boost::make_iterator_property_map(components.begin(), get(boost::vertex_index, graph.graph)));
 
     // get the results
-    std::vector<pgr_componentsV_rt> results = generate_resultsV(graph, components);
-
-    return results;
+    return generate_resultsV(graph, components);
 }
 
 #endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
