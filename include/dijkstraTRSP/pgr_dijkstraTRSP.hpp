@@ -33,14 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 template < class G >
 class Pgr_dijkstraTRSP {
  public:
-     std::deque<Path> Yen(
+     std::deque<Path> TRSP(
              G &graph,
              int64_t source,
              int64_t target,
              int K,
              bool heap_paths);
      void clear();
-
+#if 0
  private:
      class compPaths {
       public:
@@ -116,14 +116,15 @@ class Pgr_dijkstraTRSP {
      pSet m_Heap;  //!< the heap
 
      std::ostringstream log;
+#endif
 };
 
-#if 0
 template < class G >
 void Pgr_ksp< G >::clear() {
         m_Heap.clear();
 }
 
+#if 0
 template < class G >
 void Pgr_ksp< G >::getFirstSolution(G &graph) {
      Path path;
@@ -135,10 +136,11 @@ void Pgr_ksp< G >::getFirstSolution(G &graph) {
      curr_result_path = path;
      m_ResultSet.insert(curr_result_path);
 }
+#endif
 
 template < class G>
 std::deque<Path>
-Pgr_ksp< G >::Yen(G &graph,
+Pgr_ksp< G >::TRSP(G &graph,
   int64_t  start_vertex, int64_t end_vertex, int K, bool heap_paths) {
     /*
      * No path: already in destination
@@ -189,6 +191,7 @@ Pgr_ksp< G >::Yen(G &graph,
     return l_ResultList;
 }
 
+#if 0
 
 template < class G >
 void Pgr_ksp< G >::removeVertices(G &graph, const Path &subpath) {
