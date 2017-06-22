@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: strongComponentsV_driver.cpp
+File: biconnectedComponents_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/components/strongComponentsV_driver.h"
+#include "drivers/components/biconnectedComponents_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -50,20 +50,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-std::vector<pgr_componentsV_rt>
-pgr_strongComponentsV(
+std::vector<pgr_componentsE_rt>
+pgr_biconnectedComponents(
         G &graph) {
-    std::vector<pgr_componentsV_rt> results;
+    std::vector<pgr_componentsE_rt> results;
     Pgr_components< G > fn_components;
-    return fn_components.strongComponentsV(graph);
+    return fn_components.biconnectedComponents(graph);
 }
 
 
 void
-do_pgr_strongComponentsV(
+do_pgr_biconnectedComponents(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        pgr_componentsV_rt **return_tuples,
+        pgr_componentsE_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -81,13 +81,13 @@ do_pgr_strongComponentsV(
 
         graphType gType = DIRECTED;
 
-        std::vector<pgr_componentsV_rt> results;
+        std::vector<pgr_componentsE_rt> results;
 
-        log << "Working with Directed Graph\n";
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
-        results = pgr_strongComponentsV(
-                digraph);
+        log << "Working with Undirected Graph\n";
+        pgrouting::UndirectedGraph undigraph(gType);
+        undigraph.insert_edges(data_edges, total_edges);
+        results = pgr_biconnectedComponents(
+                undigraph);
 
         auto count = results.size();
 
