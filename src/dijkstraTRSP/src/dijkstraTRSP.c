@@ -71,43 +71,15 @@ process(
         char *restrictions_sql,
         int64_t start_vid,
         int64_t end_vid,
-#if 0
-        /*
-         * handling arrays example
-         */
-        ArrayType *starts,
-        ArrayType *ends,
-#endif
         bool directed,
         bool only_cost,
         bool strict,
         General_path_element_t **result_tuples,
         size_t *result_count) {
+    pgr_SPI_connect();
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
-    pgr_SPI_connect();
-
-
-#if 0
-    /*
-     *  handling arrays example
-     */
-
-    PGR_DBG("Initializing arrays");
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-    start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-    end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
-#endif
-
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
@@ -133,7 +105,7 @@ process(
     pgr_get_restriction_data(restrictions_sql, &restrictions,
         &total_restrictions);
 
-#if 0
+#if 1
     size_t i = 0;
     while(i < total_restrictions) {
         PGR_DBG("id: %ld cost: %lf", restrictions[i].id, restrictions[i].cost);
@@ -161,6 +133,8 @@ process(
     do_pgr_dijkstraTRSP(
             edges,
             total_edges,
+            restrictions,
+            total_restrictions,
             start_vid,
             end_vid,
             directed,
@@ -185,15 +159,6 @@ process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
     if (restrictions) pfree(restrictions);
-#if 0
-    /*
-     *  handling arrays example
-     */
-
-    if (end_vidsArr) pfree(end_vidsArr);
-    if (start_vidsArr) pfree(start_vidsArr);
-#endif
-
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -236,14 +201,6 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
-#if 0
-                /*
-                 *  handling arrays example
-                 */
-
-                PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_ARRAYTYPE_P(2),
-#endif
                 PG_GETARG_BOOL(4),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),

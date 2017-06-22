@@ -69,8 +69,10 @@ pgr_dijkstraTRSP(
 
 void
 do_pgr_dijkstraTRSP(
-        pgr_edge_t  *data_edges,
+        pgr_edge_t *data_edges,
         size_t total_edges,
+        Restrict_t *restrictions,
+        size_t total_restrictions,
         int64_t start_vid,
         int64_t end_vid,
         bool directed,

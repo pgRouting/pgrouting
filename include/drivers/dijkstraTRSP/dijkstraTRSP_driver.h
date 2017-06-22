@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/pgr_edge_t.h"
 #include "c_types/general_path_element_t.h"
+#include "c_types/restrict_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,6 +53,8 @@ extern "C" {
         do_pgr_dijkstraTRSP(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
+                Restrict_t *restrictions,
+                size_t total_restrictions,
                 int64_t start_vid,
                 int64_t end_vid,
                 bool directed,
