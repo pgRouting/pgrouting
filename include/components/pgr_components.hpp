@@ -108,21 +108,21 @@ Pgr_components< G >::generate_resultsV(
     }
 
     // sort results and generate n_seq
-    std::sort(results.begin(), results.end(),
-            [](const pgr_componentsV_rt &a,
-               const pgr_componentsV_rt &b) -> bool {
-			if (a.component == b.component)
-			    return a.node < b.node;
-			return a.component < b.component;
-			});
+	std::sort(results.begin(), results.end(),
+            [](const pgr_componentsV_rt &left, const pgr_componentsV_rt &right) {
+			return left.node < right.node; });
 
-    for (V i = 0; i < totalNodes; i++) {
-        if (i == 0 || results[i].component != results[i - 1].component) {
-            results[i].n_seq = 1;
-        } else {
-            results[i].n_seq = results[i - 1].n_seq + 1;
-        }
-    }
+	std::stable_sort(results.begin(), results.end(),
+            [](const pgr_componentsV_rt &left, const pgr_componentsV_rt &right) {
+			return left.component < right.component; });
+
+	auto current = results[0].component;
+	int seq(0);
+	for (auto &result: results) {
+		result.n_seq = result.component == current ? ++seq : seq = 1;
+		current = result.component;
+	}
+
     return results;
 }
 
