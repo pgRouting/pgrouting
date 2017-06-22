@@ -106,7 +106,6 @@ do_pgr_dijkstraTRSP(
             path = fn_TRSP.dijkstraTRSP(digraph,
                     start_vid,
                     end_vid,
-                    1,
                     only_cost);
         } else {
             log << "Working with Undirected Graph\n";
@@ -117,7 +116,6 @@ do_pgr_dijkstraTRSP(
                     undigraph,
                     start_vid,
                     end_vid,
-                    1,
                     only_cost);
         }
 
