@@ -61,16 +61,15 @@ class Pgr_dijkstraTRSP {
 
      Path curr_result_path;  //!< storage for the current result
 
-     typedef std::set<Path, compPaths> pSet;
-     pSet m_ResultSet;  //!< ordered set of shortest paths
-     pSet m_Heap;  //!< the heap
+     //pSet m_ResultSet;  //!< ordered set of shortest paths
+     //pSet m_Heap;  //!< the heap
 
      std::ostringstream log;
 };
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::clear() {
-        m_Heap.clear();
+        //m_Heap.clear();
 }
 
 template < class G>
@@ -90,13 +89,14 @@ Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph,
                 || !graph.has_vertex(end_vertex)) {
         return std::deque<Path>();
     }
-    m_ResultSet.clear();
-    m_Heap.clear();
 
     v_source = graph.get_V(start_vertex);
     v_target = graph.get_V(end_vertex);
     m_start = start_vertex;
     m_end = end_vertex;
+    std::deque<Path> l_ResultList;
+
+#if 0
     executeYen(graph, K);
 
     while (!m_ResultSet.empty()) {
@@ -122,7 +122,7 @@ Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph,
 
     if (!heap_paths && l_ResultList.size() > (size_t) K)
         l_ResultList.resize(K);
-
+#endif
     return l_ResultList;
 }
 
@@ -135,7 +135,7 @@ void Pgr_dijkstraTRSP< G >::getFirstSolution(G &graph) {
 
      if (path.empty()) return;
      curr_result_path = path;
-     m_ResultSet.insert(curr_result_path);
+     //m_ResultSet.insert(curr_result_path);
 }
 
 template < class G >
@@ -147,7 +147,7 @@ void Pgr_dijkstraTRSP< G >::doNextCycle(G &graph) {
         spurNodeId = curr_result_path[i].node;
 
         auto rootPath = curr_result_path.getSubpath(i);
-
+#if 0
         for (const auto &path : m_ResultSet) {
             if (path.isEqual(rootPath)) {
                 if (path.size() > i + 1) {
@@ -158,13 +158,13 @@ void Pgr_dijkstraTRSP< G >::doNextCycle(G &graph) {
         }
 
         removeVertices(graph, rootPath);
-
+#endif
         Pgr_dijkstra< G > fn_dijkstra;
         auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
 
         if (spurPath.size() > 0) {
             rootPath.appendPath(spurPath);
-            m_Heap.insert(rootPath);
+            //m_Heap.insert(rootPath);
         }
 
         graph.restore_graph();
@@ -176,6 +176,7 @@ void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph, int K) {
     clear();
     getFirstSolution(graph);
 
+#if 0
     if (m_ResultSet.size() == 0) return;  // no path found
 
     while (m_ResultSet.size() < (unsigned int) K) {
@@ -193,6 +194,7 @@ void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph, int K) {
         log << "end of while heap size" << m_Heap.size();
 #endif
     }
+#endif
 }
 
 #endif  // INCLUDE_DIJKSTRATRSP_PGR_DIJKSTRATRSP_HPP_
