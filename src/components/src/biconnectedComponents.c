@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: strongComponentsV.c
+File: biconnectedComponents.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/** @file strongComponentsV.c
+/** @file biconnectedComponents.c
  * @brief Conecting code with postgres.
  *
  * This file is fully documented for understanding
@@ -55,10 +55,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get edges informtion */
 #include "c_common/edges_input.h"
 
-#include "drivers/components/strongComponentsV_driver.h"  // the link to the C++ code of the function
+#include "drivers/components/biconnectedComponents_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(strongComponentsV);
+PGDLLEXPORT Datum biconnectedComponents(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(biconnectedComponents);
 
 
 /******************************************************************************/
@@ -67,7 +67,7 @@ static
 void
 process(
         char* edges_sql,
-        pgr_componentsV_rt **result_tuples,
+        pgr_componentsE_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -95,7 +95,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_strongComponentsV(
+    do_pgr_biconnectedComponents(
             edges,
             total_edges,
 #if 0
@@ -113,7 +113,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_strongComponentsV", start_t, clock());
+    time_msg(" processing pgr_biconnectedComponents", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
@@ -139,14 +139,14 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum biconnectedComponents(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_componentsV_rt *result_tuples = NULL;
+    pgr_componentsE_rt *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -203,7 +203,7 @@ PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_componentsV_rt*) funcctx->user_fctx;
+    result_tuples = (pgr_componentsE_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -233,7 +233,7 @@ PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
         values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
