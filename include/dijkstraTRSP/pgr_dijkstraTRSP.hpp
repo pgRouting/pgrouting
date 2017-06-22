@@ -33,14 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 template < class G >
 class Pgr_dijkstraTRSP {
  public:
-     std::deque<Path> TRSP(
+     std::deque<Path> dijkstraTRSP(
              G &graph,
              int64_t source,
              int64_t target,
              int K,
              bool heap_paths);
      void clear();
-#if 0
  private:
      class compPaths {
       public:
@@ -87,7 +86,7 @@ class Pgr_dijkstraTRSP {
      };
 
      //! the actual algorithm
-     void executeYen(G &graph, int top_k);
+     void executeDijkstraTRSP(G &graph, int top_k);
 
      /** @name Auxiliary function for yen's algorithm */
      ///@{
@@ -116,17 +115,15 @@ class Pgr_dijkstraTRSP {
      pSet m_Heap;  //!< the heap
 
      std::ostringstream log;
-#endif
 };
 
 template < class G >
-void Pgr_ksp< G >::clear() {
+void Pgr_dijkstraTRSP< G >::clear() {
         m_Heap.clear();
 }
 
-#if 0
 template < class G >
-void Pgr_ksp< G >::getFirstSolution(G &graph) {
+void Pgr_dijkstraTRSP< G >::getFirstSolution(G &graph) {
      Path path;
 
      Pgr_dijkstra< G > fn_dijkstra;
@@ -136,11 +133,10 @@ void Pgr_ksp< G >::getFirstSolution(G &graph) {
      curr_result_path = path;
      m_ResultSet.insert(curr_result_path);
 }
-#endif
 
 template < class G>
 std::deque<Path>
-Pgr_ksp< G >::TRSP(G &graph,
+Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph,
   int64_t  start_vertex, int64_t end_vertex, int K, bool heap_paths) {
     /*
      * No path: already in destination
@@ -191,16 +187,14 @@ Pgr_ksp< G >::TRSP(G &graph,
     return l_ResultList;
 }
 
-#if 0
-
 template < class G >
-void Pgr_ksp< G >::removeVertices(G &graph, const Path &subpath) {
+void Pgr_dijkstraTRSP< G >::removeVertices(G &graph, const Path &subpath) {
     for (const auto &e : subpath)
         graph.disconnect_vertex(e.node);
 }
 
 template < class G >
-void Pgr_ksp< G >::doNextCycle(G &graph) {
+void Pgr_dijkstraTRSP< G >::doNextCycle(G &graph) {
     int64_t spurNodeId;
 
 
@@ -233,7 +227,7 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
 }
 
 template < class G >
-void Pgr_ksp< G >::executeYen(G &graph, int K) {
+void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph, int K) {
     clear();
     getFirstSolution(graph);
 
