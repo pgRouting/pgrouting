@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstraTRSP/pgr_dijkstraTRSP.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -101,19 +101,23 @@ do_pgr_dijkstraTRSP(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
+            Pgr_dijkstraTRSP < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(data_edges, total_edges);
-            path = pgr_dijkstraTRSP(digraph,
+            path = fn_TRSP.dijkstraTRSP(digraph,
                     start_vid,
                     end_vid,
+                    1,
                     only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
+            Pgr_dijkstraTRSP < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_dijkstraTRSP(
+            path = fn_TRSP.dijkstraTRSP(
                     undigraph,
                     start_vid,
                     end_vid,
+                    1,
                     only_cost);
         }
 
