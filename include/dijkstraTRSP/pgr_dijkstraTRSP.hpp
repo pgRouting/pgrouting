@@ -118,7 +118,7 @@ class Pgr_dijkstraTRSP {
      std::ostringstream log;
 };
 
-
+#if 0
 template < class G >
 void Pgr_ksp< G >::clear() {
         m_Heap.clear();
@@ -252,5 +252,6 @@ void Pgr_ksp< G >::executeYen(G &graph, int K) {
 #endif
     }
 }
+#endif
 
 #endif  // INCLUDE_DIJKSTRATRSP_PGR_DIJKSTRATRSP_HPP_
