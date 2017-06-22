@@ -33,16 +33,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 template < class G >
 class Pgr_dijkstraTRSP {
  public:
-     std::deque<Path> dijkstraTRSP(
+     Path dijkstraTRSP(
              G &graph,
              int64_t source,
              int64_t target,
-             int K,
              bool heap_paths);
      void clear();
  private:
      //! the actual algorithm
-     void executeDijkstraTRSP(G &graph, int top_k);
+     void executeDijkstraTRSP(G &graph);
 
      /** @name Auxiliary function for yen's algorithm */
      ///@{
@@ -73,32 +72,33 @@ void Pgr_dijkstraTRSP< G >::clear() {
 }
 
 template < class G>
-std::deque<Path>
+Path
 Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph,
-  int64_t  start_vertex, int64_t end_vertex, int K, bool heap_paths) {
+  int64_t  start_vertex, int64_t end_vertex, bool heap_paths) {
     /*
      * No path: already in destination
      */
-    if ((start_vertex == end_vertex) || (K == 0)) {
-        return std::deque<Path>();
+    if (start_vertex == end_vertex) {
+        return Path();
+        //return std::deque<Path>();
     }
     /*
      * no path: disconnected vertices
      */
     if (!graph.has_vertex(start_vertex)
                 || !graph.has_vertex(end_vertex)) {
-        return std::deque<Path>();
+        return Path();
+        //return std::deque<Path>();
     }
 
     v_source = graph.get_V(start_vertex);
     v_target = graph.get_V(end_vertex);
     m_start = start_vertex;
     m_end = end_vertex;
-    std::deque<Path> l_ResultList;
+    Path l_ResultList;
 
+    executeDijkstraTRSP(graph);
 #if 0
-    executeYen(graph, K);
-
     while (!m_ResultSet.empty()) {
         m_Heap.insert(*m_ResultSet.begin());
         m_ResultSet.erase(m_ResultSet.begin());
@@ -172,7 +172,7 @@ void Pgr_dijkstraTRSP< G >::doNextCycle(G &graph) {
 }
 
 template < class G >
-void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph, int K) {
+void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph) {
     clear();
     getFirstSolution(graph);
 
