@@ -67,7 +67,7 @@ static
 void
 process(
         char* edges_sql,
-        pgr_componentV_t **result_tuples,
+        pgr_componentsV_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -146,7 +146,7 @@ PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_componentV_t *result_tuples = NULL;
+    pgr_componentsV_rt *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -203,7 +203,7 @@ PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_componentV_t*) funcctx->user_fctx;
+    result_tuples = (pgr_componentsV_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
