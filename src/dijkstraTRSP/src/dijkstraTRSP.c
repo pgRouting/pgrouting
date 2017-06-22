@@ -161,6 +161,8 @@ process(
     do_pgr_dijkstraTRSP(
             edges,
             total_edges,
+            restrictions,
+            total_restrictions,
             start_vid,
             end_vid,
             directed,
