@@ -41,6 +41,7 @@ class Pgr_dijkstraTRSP {
              bool heap_paths);
      void clear();
  private:
+     #if 0
      class compPaths {
       public:
           bool operator()(const Path &p1, const Path &p2) const {
@@ -84,13 +85,13 @@ class Pgr_dijkstraTRSP {
               return false;
           }
      };
-
+     #endif
      //! the actual algorithm
      void executeDijkstraTRSP(G &graph, int top_k);
 
      /** @name Auxiliary function for yen's algorithm */
      ///@{
-
+     #if 0
      //! Performs the first Dijkstra of the algorithm
      void getFirstSolution(G &graph);
      //! Performs the next cycle of the algorithm
@@ -98,7 +99,7 @@ class Pgr_dijkstraTRSP {
      //! stores in subPath the first i elements of path
      void removeVertices(G &graph, const Path &path);
      ///@}
-
+     #endif
  private:
      /** @name members */
      ///@{
@@ -120,18 +121,6 @@ class Pgr_dijkstraTRSP {
 template < class G >
 void Pgr_dijkstraTRSP< G >::clear() {
         m_Heap.clear();
-}
-
-template < class G >
-void Pgr_dijkstraTRSP< G >::getFirstSolution(G &graph) {
-     Path path;
-
-     Pgr_dijkstra< G > fn_dijkstra;
-     path = fn_dijkstra.dijkstra(graph, m_start, m_end);
-
-     if (path.empty()) return;
-     curr_result_path = path;
-     m_ResultSet.insert(curr_result_path);
 }
 
 template < class G>
@@ -187,6 +176,20 @@ Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph,
     return l_ResultList;
 }
 
+#if 0
+
+template < class G >
+void Pgr_dijkstraTRSP< G >::getFirstSolution(G &graph) {
+     Path path;
+
+     Pgr_dijkstra< G > fn_dijkstra;
+     path = fn_dijkstra.dijkstra(graph, m_start, m_end);
+
+     if (path.empty()) return;
+     curr_result_path = path;
+     m_ResultSet.insert(curr_result_path);
+}
+
 template < class G >
 void Pgr_dijkstraTRSP< G >::removeVertices(G &graph, const Path &subpath) {
     for (const auto &e : subpath)
@@ -225,6 +228,7 @@ void Pgr_dijkstraTRSP< G >::doNextCycle(G &graph) {
         graph.restore_graph();
     }
 }
+#endif
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph, int K) {
