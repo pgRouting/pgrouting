@@ -46,7 +46,6 @@ class Pgr_dijkstraTRSP {
  private:
      void executeDijkstraTRSP(G &graph);
      void getFirstSolution(G &graph);
-     void doNextCycle(G &graph);
  private:
      typedef typename G::V V;
      V v_source;
@@ -78,10 +77,8 @@ int64_t start_vertex, int64_t end_vertex, bool only_cost, bool strict) {
     v_target = graph.get_V(end_vertex);
     m_start = start_vertex;
     m_end = end_vertex;
-    Path l_ResultList;
-
     executeDijkstraTRSP(graph);
-    return l_ResultList;
+    return curr_result_path;
 }
 
 template < class G >
@@ -93,28 +90,6 @@ void Pgr_dijkstraTRSP< G >::getFirstSolution(G &graph) {
 
      if (path.empty()) return;
      curr_result_path = path;
-}
-
-template < class G >
-void Pgr_dijkstraTRSP< G >::doNextCycle(G &graph) {
-    int64_t spurNodeId;
-
-
-    for (unsigned int i = 0; i < curr_result_path.size(); ++i) {
-        spurNodeId = curr_result_path[i].node;
-
-        auto rootPath = curr_result_path.getSubpath(i);
-
-        Pgr_dijkstra< G > fn_dijkstra;
-        auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
-
-        if (spurPath.size() > 0) {
-            rootPath.appendPath(spurPath);
-
-        }
-
-        graph.restore_graph();
-    }
 }
 
 template < class G >
