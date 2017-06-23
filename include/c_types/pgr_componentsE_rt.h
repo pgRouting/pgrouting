@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_componentsV_rt.h
+File: pgr_componentsE_rt.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_COMPONENTSV_RT_H_
-#define INCLUDE_C_TYPES_PGR_COMPONENTSV_RT_H_
+#ifndef INCLUDE_C_TYPES_PGR_COMPONENTSE_RT_H_
+#define INCLUDE_C_TYPES_PGR_COMPONENTSE_RT_H_
 #pragma once
 
 
@@ -58,7 +58,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 typedef struct {
 	int64_t component;
 	int n_seq;
-	int64_t node;
+	int64_t edge;
 } pgr_componentsV_rt;
 
 #endif // INCLUDE_C_TYPES_PGR_COMPONENTSV_RT_H_
