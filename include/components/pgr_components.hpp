@@ -53,6 +53,8 @@ template < class G >
 class Pgr_components {
  public:
      typedef typename G::V V;
+	 typedef typename G::E E;
+	 typedef typename G::E_i E_i;
 
      //! Connected Components Vertex Version
      std::vector<pgr_components_rt> connectedComponentsV(
@@ -161,14 +163,28 @@ std::vector<pgr_components_rt>
 Pgr_components< G >::biconnectedComponents(
         G &graph) {
     // perform the algorithm
-    std::vector< V > components(num_edges(graph.graph));
-#if 0
-    boost::strong_components(graph.graph, 
-			boost::make_iterator_property_map(components.begin(), get(boost::vertex_index, graph.graph)));
+	struct order_edges {
+		bool operator() (const E &left, const E &right) const {
+			return left.get_property() < right.get_property();
+		}
+	};
+	typedef std::map< E, int > edge_map;
+	edge_map bicmp_map;
+	
+	boost::associative_property_map< edge_map > bimap(bicmp_map);
+	auto num_comps = biconnected_components(graph.graph, bimap);
 
-#endif
+	// convert associative_property_map to vector
+	//TODO(mg) change to vector< vector< V or E > >
+#if 0
+	E_i ei, ei_end;
+	std::vector< E > components(num_edges(graph.graph));
+	for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ei++)
+		components[graph[*ei].id] = bimap[*ei];
+#endif 
+
     // get the results
-    return generate_resultsE(graph, components);
+//    return generate_results(graph, components);
 }
 
 #endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_

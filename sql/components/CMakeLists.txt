@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     connectedComponentsV.sql
     strongComponentsV.sql
+    biconnectedComponents.sql
     )
 
 # Do not modify bellow this line
