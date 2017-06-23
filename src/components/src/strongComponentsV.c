@@ -67,7 +67,7 @@ static
 void
 process(
         char* edges_sql,
-        pgr_componentsV_rt **result_tuples,
+        pgr_components_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -146,7 +146,7 @@ PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_componentsV_rt *result_tuples = NULL;
+    pgr_components_rt *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -203,7 +203,7 @@ PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_componentsV_rt*) funcctx->user_fctx;
+    result_tuples = (pgr_components_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -233,7 +233,7 @@ PGDLLEXPORT Datum strongComponentsV(PG_FUNCTION_ARGS) {
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
         values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].identifier);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

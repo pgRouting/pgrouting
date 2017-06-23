@@ -38,7 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <algorithm>
 
+#if 0
 #include "cpp_common/basePath_SSEC.hpp"
+#endif
 #include "cpp_common/pgr_base_graph.hpp"
 
 template < class G > class Pgr_components;
@@ -53,27 +55,22 @@ class Pgr_components {
      typedef typename G::V V;
 
      //! Connected Components Vertex Version
-     std::vector<pgr_componentsV_rt> connectedComponentsV(
+     std::vector<pgr_components_rt> connectedComponentsV(
              G &graph);
 
      //! Strongly Connected Components Vertex Version
-     std::vector<pgr_componentsV_rt> strongComponentsV(
+     std::vector<pgr_components_rt> strongComponentsV(
              G &graph);
 
      //! Biconnected Components
-     std::vector<pgr_componentsE_rt> biconnectedComponents(
+     std::vector<pgr_components_rt> biconnectedComponents(
              G &graph);
 
  private:
      //! Generate Results, Vertex Version
-     std::vector<pgr_componentsV_rt> generate_resultsV(
+     std::vector<pgr_components_rt> generate_results(
              G &graph,
              std::vector< V >);
-
-     //! Generate Results, Edge Version
-     std::vector<pgr_componentsE_rt> generate_resultsE(
-             G &graph,
-             std::vector< E >);
 
 };
 
@@ -82,28 +79,28 @@ class Pgr_components {
 
 //! Generate Results, Vertex Version
 template < class G >
-std::vector<pgr_componentsV_rt>
-Pgr_components< G >::generate_resultsV(
+std::vector<pgr_components_rt>
+Pgr_components< G >::generate_results(
         G &graph,
         std::vector< V > components) {
 
     // generate results
     auto totalNodes = num_vertices(graph.graph);
 
-    std::vector< pgr_componentsV_rt > results;
+    std::vector< pgr_components_rt > results;
     results.resize(totalNodes);
 
     std::vector< int64_t > result_comp;
     result_comp.resize(0);
     size_t temp_size = 0;
     for (V i = 0; i < totalNodes; i++) {
-		results[i].node = graph[i].id;
+		results[i].identifier = graph[i].id;
         if (components[i] >= temp_size) {
-            result_comp.push_back(results[i].node);
+            result_comp.push_back(results[i].identifier);
             temp_size++;
         } else {
             result_comp[components[i]] =
-                std::min(results[i].node, result_comp[components[i]]);
+                std::min(results[i].identifier, result_comp[components[i]]);
         }
     }
 
@@ -114,62 +111,11 @@ Pgr_components< G >::generate_resultsV(
 
     // sort results and generate n_seq
 	std::sort(results.begin(), results.end(),
-            [](const pgr_componentsV_rt &left, const pgr_componentsV_rt &right) {
-			return left.node < right.node; });
+            [](const pgr_components_rt &left, const pgr_components_rt &right) {
+			return left.identifier < right.identifier; });
 
 	std::stable_sort(results.begin(), results.end(),
-            [](const pgr_componentsV_rt &left, const pgr_componentsV_rt &right) {
-			return left.component < right.component; });
-
-	auto current = results[0].component;
-	int seq(0);
-	for (auto &result: results) {
-		result.n_seq = result.component == current ? ++seq : seq = 1;
-		current = result.component;
-	}
-
-    return results;
-}
-
-//! Generate Results, Edge Version
-template < class G >
-std::vector<pgr_componentsE_rt>
-Pgr_components< G >::generate_resultsE(
-        G &graph,
-        std::vector< E > components) {
-
-    // generate results
-    auto totalEdges = num_edges(graph.graph);
-
-    std::vector< pgr_componentsE_rt > results;
-    results.resize(totalEdges);
-
-    std::vector< int64_t > result_comp;
-    result_comp.resize(0);
-    size_t temp_size = 0;
-    for (E i = 0; i < totalEdges; i++) {
-		results[i].edge = graph[i].id;
-        if (components[i] >= temp_size) {
-            result_comp.push_back(results[i].edge);
-            temp_size++;
-        } else {
-            result_comp[components[i]] =
-                std::min(results[i].edge, result_comp[components[i]]);
-        }
-    }
-
-    // generate component number
-    for (E i = 0; i < totalNodes; i++) {
-        results[i].component = result_comp[components[i]];
-    }
-
-    // sort results and generate n_seq
-	std::sort(results.begin(), results.end(),
-            [](const pgr_componentsE_rt &left, const pgr_componentsE_rt &right) {
-			return left.edge < right.edge; });
-
-	std::stable_sort(results.begin(), results.end(),
-            [](const pgr_componentsE_rt &left, const pgr_componentsE_rt &right) {
+            [](const pgr_components_rt &left, const pgr_components_rt &right) {
 			return left.component < right.component; });
 
 	auto current = results[0].component;
@@ -184,7 +130,7 @@ Pgr_components< G >::generate_resultsE(
 
 //! Connected Components Vertex Version
 template < class G >
-std::vector<pgr_componentsV_rt>
+std::vector<pgr_components_rt>
 Pgr_components< G >::connectedComponentsV(
         G &graph) {
     // perform the algorithm
@@ -192,12 +138,12 @@ Pgr_components< G >::connectedComponentsV(
     boost::connected_components(graph.graph, &components[0]);
 
 	//get the results
-    return generate_resultsV(graph, components);
+    return generate_results(graph, components);
 }
 
 //! Strongly Connected Components Vertex Version
 template < class G >
-std::vector<pgr_componentsV_rt>
+std::vector<pgr_components_rt>
 Pgr_components< G >::strongComponentsV(
         G &graph) {
     // perform the algorithm
@@ -206,16 +152,16 @@ Pgr_components< G >::strongComponentsV(
 			boost::make_iterator_property_map(components.begin(), get(boost::vertex_index, graph.graph)));
 
     // get the results
-    return generate_resultsV(graph, components);
+    return generate_results(graph, components);
 }
 
 //! Biconnected Components
 template < class G >
-std::vector<pgr_componentsE_rt>
+std::vector<pgr_components_rt>
 Pgr_components< G >::biconnectedComponents(
         G &graph) {
     // perform the algorithm
-    std::vector< E > components(num_edges(graph.graph));
+    std::vector< V > components(num_edges(graph.graph));
 #if 0
     boost::strong_components(graph.graph, 
 			boost::make_iterator_property_map(components.begin(), get(boost::vertex_index, graph.graph)));

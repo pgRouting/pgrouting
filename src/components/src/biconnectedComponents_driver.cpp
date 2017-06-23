@@ -50,10 +50,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-std::vector<pgr_componentsE_rt>
+std::vector<pgr_components_rt>
 pgr_biconnectedComponents(
         G &graph) {
-    std::vector<pgr_componentsE_rt> results;
+    std::vector<pgr_components_rt> results;
     Pgr_components< G > fn_components;
     return fn_components.biconnectedComponents(graph);
 }
@@ -63,7 +63,7 @@ void
 do_pgr_biconnectedComponents(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        pgr_componentsE_rt **return_tuples,
+        pgr_components_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -81,7 +81,7 @@ do_pgr_biconnectedComponents(
 
         graphType gType = DIRECTED;
 
-        std::vector<pgr_componentsE_rt> results;
+        std::vector<pgr_components_rt> results;
 
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
