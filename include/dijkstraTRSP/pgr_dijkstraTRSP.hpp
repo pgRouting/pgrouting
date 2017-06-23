@@ -37,7 +37,8 @@ class Pgr_dijkstraTRSP {
              G &graph,
              int64_t source,
              int64_t target,
-             bool heap_paths);
+             bool heap_paths,
+             bool strict);
      void clear();
  private:
      //! the actual algorithm
@@ -74,7 +75,7 @@ void Pgr_dijkstraTRSP< G >::clear() {
 template < class G>
 Path
 Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph,
-  int64_t  start_vertex, int64_t end_vertex, bool heap_paths) {
+  int64_t  start_vertex, int64_t end_vertex, bool heap_paths, bool strict) {
     /*
      * No path: already in destination
      */
