@@ -40,61 +40,40 @@ class Pgr_dijkstraTRSP {
              std::vector<Restrict_t>& restrictions,
              int64_t source,
              int64_t target,
-             bool m_only_cost,
+             bool only_cost,
              bool strict);
      void clear();
  private:
-     //! the actual algorithm
      void executeDijkstraTRSP(G &graph);
-
-     /** @name Auxiliary function for yen's algorithm */
-     ///@{
-     //! Performs the first Dijkstra of the algorithm
      void getFirstSolution(G &graph);
-     //! Performs the next cycle of the algorithm
      void doNextCycle(G &graph);
  private:
-     /** @name members */
-     ///@{
      typedef typename G::V V;
-     V v_source;  //!< source descriptor
-     V v_target;  //!< target descriptor
-     int64_t m_start;  //!< source id
-     int64_t m_end;   //!< target id
+     V v_source;
+     V v_target;
+     int64_t m_start;
+     int64_t m_end;
 
-     Path curr_result_path;  //!< storage for the current result
+     bool m_only_cost;
 
-     //pSet m_ResultSet;  //!< ordered set of shortest paths
-     //pSet m_Heap;  //!< the heap
-
+     Path curr_result_path;
      std::ostringstream log;
 };
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::clear() {
-        //m_Heap.clear();
 }
 
 template < class G>
 Path
 Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph, std::vector<Restrict_t>& restrictions,
-int64_t start_vertex, int64_t end_vertex, bool m_only_cost, bool strict) {
-    /*
-     * No path: already in destination
-     */
-    if (start_vertex == end_vertex) {
+int64_t start_vertex, int64_t end_vertex, bool only_cost, bool strict) {
+    if (start_vertex == end_vertex)
         return Path();
-        //return std::deque<Path>();
-    }
-    /*
-     * no path: disconnected vertices
-     */
-    if (!graph.has_vertex(start_vertex)
-                || !graph.has_vertex(end_vertex)) {
+    if (!graph.has_vertex(start_vertex) || !graph.has_vertex(end_vertex))
         return Path();
-        //return std::deque<Path>();
-    }
 
+    m_only_cost = only_cost;
     v_source = graph.get_V(start_vertex);
     v_target = graph.get_V(end_vertex);
     m_start = start_vertex;
@@ -102,31 +81,6 @@ int64_t start_vertex, int64_t end_vertex, bool m_only_cost, bool strict) {
     Path l_ResultList;
 
     executeDijkstraTRSP(graph);
-#if 0
-    while (!m_ResultSet.empty()) {
-        m_Heap.insert(*m_ResultSet.begin());
-        m_ResultSet.erase(m_ResultSet.begin());
-    }
-    std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
-
-    std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
-            [](const Path &left, const Path &right) -> bool {
-            for (size_t i = 0;
-                i < (std::min)(left.size(), right.size());
-                ++i) {
-            if (left[i].node < right[i].node) return true;
-            if (left[i].node > right[i].node) return false;
-            }
-            return false;
-            });
-
-    std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
-            [](const Path &left, const Path &right) {
-            return left.size() < right.size();});
-
-    if (!heap_paths && l_ResultList.size() > (size_t) K)
-        l_ResultList.resize(K);
-#endif
     return l_ResultList;
 }
 
@@ -139,7 +93,6 @@ void Pgr_dijkstraTRSP< G >::getFirstSolution(G &graph) {
 
      if (path.empty()) return;
      curr_result_path = path;
-     //m_ResultSet.insert(curr_result_path);
 }
 
 template < class G >
@@ -151,24 +104,13 @@ void Pgr_dijkstraTRSP< G >::doNextCycle(G &graph) {
         spurNodeId = curr_result_path[i].node;
 
         auto rootPath = curr_result_path.getSubpath(i);
-#if 0
-        for (const auto &path : m_ResultSet) {
-            if (path.isEqual(rootPath)) {
-                if (path.size() > i + 1) {
-                    graph.disconnect_edge(path[i].node,     // from
-                            path[i + 1].node);  // to
-                }
-            }
-        }
 
-        removeVertices(graph, rootPath);
-#endif
         Pgr_dijkstra< G > fn_dijkstra;
         auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
 
         if (spurPath.size() > 0) {
             rootPath.appendPath(spurPath);
-            //m_Heap.insert(rootPath);
+
         }
 
         graph.restore_graph();
@@ -179,26 +121,6 @@ template < class G >
 void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G &graph) {
     clear();
     getFirstSolution(graph);
-
-#if 0
-    if (m_ResultSet.size() == 0) return;  // no path found
-
-    while (m_ResultSet.size() < (unsigned int) K) {
-        doNextCycle(graph);
-        if (m_Heap.empty()) break;
-        curr_result_path = *m_Heap.begin();
-        m_ResultSet.insert(curr_result_path);
-        m_Heap.erase(m_Heap.begin());
-        /*
-         * without the next line withpointsKSP hungs with:
-         *  c++ 4.6
-         *  Debug mode
-         */
-#ifndef NDEBUG
-        log << "end of while heap size" << m_Heap.size();
-#endif
-    }
-#endif
 }
 
 #endif  // INCLUDE_DIJKSTRATRSP_PGR_DIJKSTRATRSP_HPP_
