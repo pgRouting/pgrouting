@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/strong_components.hpp>
+#include <boost/graph/biconnected_components.hpp>
 
 #include <vector>
 #include <utility>
@@ -39,10 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-#if 0
-#include "./../../common/src/signalhandler.h"
-#endif
-
 
 template < class G > class Pgr_components;
 // user's functions
@@ -63,11 +60,20 @@ class Pgr_components {
      std::vector<pgr_componentsV_rt> strongComponentsV(
              G &graph);
 
+     //! Biconnected Components
+     std::vector<pgr_componentsE_rt> biconnectedComponents(
+             G &graph);
+
  private:
      //! Generate Results, Vertex Version
      std::vector<pgr_componentsV_rt> generate_resultsV(
              G &graph,
              std::vector< V >);
+
+     //! Generate Results, Edge Version
+     std::vector<pgr_componentsE_rt> generate_resultsE(
+             G &graph,
+             std::vector< E >);
 
 };
 
@@ -125,6 +131,57 @@ Pgr_components< G >::generate_resultsV(
     return results;
 }
 
+//! Generate Results, Edge Version
+template < class G >
+std::vector<pgr_componentsE_rt>
+Pgr_components< G >::generate_resultsE(
+        G &graph,
+        std::vector< E > components) {
+
+    // generate results
+    auto totalEdges = num_edges(graph.graph);
+
+    std::vector< pgr_componentsE_rt > results;
+    results.resize(totalEdges);
+
+    std::vector< int64_t > result_comp;
+    result_comp.resize(0);
+    size_t temp_size = 0;
+    for (E i = 0; i < totalEdges; i++) {
+		results[i].edge = graph[i].id;
+        if (components[i] >= temp_size) {
+            result_comp.push_back(results[i].edge);
+            temp_size++;
+        } else {
+            result_comp[components[i]] =
+                std::min(results[i].edge, result_comp[components[i]]);
+        }
+    }
+
+    // generate component number
+    for (E i = 0; i < totalNodes; i++) {
+        results[i].component = result_comp[components[i]];
+    }
+
+    // sort results and generate n_seq
+	std::sort(results.begin(), results.end(),
+            [](const pgr_componentsE_rt &left, const pgr_componentsE_rt &right) {
+			return left.edge < right.edge; });
+
+	std::stable_sort(results.begin(), results.end(),
+            [](const pgr_componentsE_rt &left, const pgr_componentsE_rt &right) {
+			return left.component < right.component; });
+
+	auto current = results[0].component;
+	int seq(0);
+	for (auto &result: results) {
+		result.n_seq = result.component == current ? ++seq : seq = 1;
+		current = result.component;
+	}
+
+    return results;
+}
+
 //! Connected Components Vertex Version
 template < class G >
 std::vector<pgr_componentsV_rt>
@@ -150,6 +207,22 @@ Pgr_components< G >::strongComponentsV(
 
     // get the results
     return generate_resultsV(graph, components);
+}
+
+//! Biconnected Components
+template < class G >
+std::vector<pgr_componentsE_rt>
+Pgr_components< G >::biconnectedComponents(
+        G &graph) {
+    // perform the algorithm
+    std::vector< E > components(num_edges(graph.graph));
+#if 0
+    boost::strong_components(graph.graph, 
+			boost::make_iterator_property_map(components.begin(), get(boost::vertex_index, graph.graph)));
+
+#endif
+    // get the results
+    return generate_resultsE(graph, components);
 }
 
 #endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
