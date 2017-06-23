@@ -30,11 +30,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/basePath_SSEC.hpp"
 
+#include "c_types/restrict_t.h"
+
 template < class G >
 class Pgr_dijkstraTRSP {
  public:
      Path dijkstraTRSP(
              G &graph,
+             Restrict_t *restrictions,
+             size_t total_restrictions,
              int64_t source,
              int64_t target,
              bool heap_paths,
@@ -74,8 +78,9 @@ void Pgr_dijkstraTRSP< G >::clear() {
 
 template < class G>
 Path
-Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph,
-  int64_t  start_vertex, int64_t end_vertex, bool heap_paths, bool strict) {
+Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph, Restrict_t *restrictions,
+size_t total_restrictions, int64_t  start_vertex, int64_t end_vertex,
+ bool heap_paths, bool strict) {
     /*
      * No path: already in destination
      */

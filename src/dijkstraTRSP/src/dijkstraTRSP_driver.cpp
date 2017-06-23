@@ -104,6 +104,8 @@ do_pgr_dijkstraTRSP(
             Pgr_dijkstraTRSP < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(data_edges, total_edges);
             path = fn_TRSP.dijkstraTRSP(digraph,
+                    restrictions,
+                    total_restrictions,
                     start_vid,
                     end_vid,
                     only_cost,
@@ -115,6 +117,8 @@ do_pgr_dijkstraTRSP(
             undigraph.insert_edges(data_edges, total_edges);
             path = fn_TRSP.dijkstraTRSP(
                     undigraph,
+                    restrictions,
+                    total_restrictions,
                     start_vid,
                     end_vid,
                     only_cost,
