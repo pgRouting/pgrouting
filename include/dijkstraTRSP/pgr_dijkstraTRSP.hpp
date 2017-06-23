@@ -36,8 +36,8 @@ template < class G >
 class Pgr_dijkstraTRSP {
  public:
      Path dijkstraTRSP(
-             G &graph,
-             std::vector<Restrict_t>& restrictions,
+             G& graph,
+             const std::vector<Restrict_t>& restrictions,
              int64_t source,
              int64_t target,
              bool only_cost,
@@ -52,8 +52,9 @@ class Pgr_dijkstraTRSP {
      V v_target;
      int64_t m_start;
      int64_t m_end;
-
+     std::vector<Restrict_t> m_restrictions;
      bool m_only_cost;
+     bool m_strict;
 
      Path curr_result_path;
      std::ostringstream log;
@@ -65,7 +66,7 @@ void Pgr_dijkstraTRSP< G >::clear() {
 
 template < class G>
 Path
-Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph, std::vector<Restrict_t>& restrictions,
+Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph, const std::vector<Restrict_t>& restrictions,
 int64_t start_vertex, int64_t end_vertex, bool only_cost, bool strict) {
     if (start_vertex == end_vertex)
         return Path();
@@ -77,6 +78,9 @@ int64_t start_vertex, int64_t end_vertex, bool only_cost, bool strict) {
     v_target = graph.get_V(end_vertex);
     m_start = start_vertex;
     m_end = end_vertex;
+    for(auto &restriction: restrictions)
+        m_restrictions.push_back(restriction);
+    m_strict = strict;
     executeDijkstraTRSP(graph);
     return curr_result_path;
 }
