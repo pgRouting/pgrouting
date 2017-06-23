@@ -94,6 +94,10 @@ do_pgr_dijkstraTRSP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
+        std::vector<Restrict_t> restrictions_array;
+        for(size_t i = 0;i < total_restrictions;i++)
+            restrictions_array.push_back(restrictions[i]);
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         Path path;
@@ -104,8 +108,7 @@ do_pgr_dijkstraTRSP(
             Pgr_dijkstraTRSP < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(data_edges, total_edges);
             path = fn_TRSP.dijkstraTRSP(digraph,
-                    restrictions,
-                    total_restrictions,
+                    restrictions_array,
                     start_vid,
                     end_vid,
                     only_cost,
@@ -115,10 +118,8 @@ do_pgr_dijkstraTRSP(
             pgrouting::UndirectedGraph undigraph(gType);
             Pgr_dijkstraTRSP < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
-            path = fn_TRSP.dijkstraTRSP(
-                    undigraph,
-                    restrictions,
-                    total_restrictions,
+            path = fn_TRSP.dijkstraTRSP(undigraph,
+                    restrictions_array,
                     start_vid,
                     end_vid,
                     only_cost,

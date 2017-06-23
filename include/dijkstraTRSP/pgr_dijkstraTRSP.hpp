@@ -37,11 +37,10 @@ class Pgr_dijkstraTRSP {
  public:
      Path dijkstraTRSP(
              G &graph,
-             Restrict_t *restrictions,
-             size_t total_restrictions,
+             std::vector<Restrict_t>& restrictions,
              int64_t source,
              int64_t target,
-             bool heap_paths,
+             bool m_only_cost,
              bool strict);
      void clear();
  private:
@@ -78,9 +77,8 @@ void Pgr_dijkstraTRSP< G >::clear() {
 
 template < class G>
 Path
-Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph, Restrict_t *restrictions,
-size_t total_restrictions, int64_t  start_vertex, int64_t end_vertex,
- bool heap_paths, bool strict) {
+Pgr_dijkstraTRSP< G >::dijkstraTRSP(G &graph, std::vector<Restrict_t>& restrictions,
+int64_t start_vertex, int64_t end_vertex, bool m_only_cost, bool strict) {
     /*
      * No path: already in destination
      */
