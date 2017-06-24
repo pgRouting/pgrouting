@@ -94,16 +94,15 @@ Pgr_components< G >::generate_results(
 
     // generate results
     std::vector< pgr_components_rt > results;
-    results.resize(num_vertices(graph.graph));
-    int nextRes = 0;
     for (auto i = 0; i < num_comps; i++) {
         int64_t tempComp = components[i][0];
         auto sizeCompi = components[i].size();
         for (auto j = 0; j < sizeCompi; j++) {
-            results[nextRes].identifier = components[i][j];
-            results[nextRes].n_seq = j + 1;
-            results[nextRes].component = tempComp;
-            nextRes++;
+            pgr_components_rt tmp;
+            tmp.identifier = components[i][j];
+            tmp.n_seq = j + 1;
+            tmp.component = tempComp;
+            results.push_back(tmp);
         }
     }
     
@@ -168,14 +167,12 @@ Pgr_components< G >::biconnectedComponents(
 	boost::associative_property_map< edge_map > bimap(bicmp_map);
 	int num_comps = biconnected_components(graph.graph, bimap);
 
-	// convert associative_property_map to vector
-	//TODO(mg) change to vector< vector< V or E > >
+    // get the results
 	E_i ei, ei_end;
 	std::vector< std::vector< int64_t > > components(num_comps);
 	for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ei++)
 		components[bimap[*ei]].push_back(graph[*ei].id);
 
-    // get the results
     return generate_results(graph, components);
 }
 
