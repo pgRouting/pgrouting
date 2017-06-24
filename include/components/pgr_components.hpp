@@ -70,9 +70,10 @@ class Pgr_components {
 
  private:
      //! Generate Results, Vertex Version
-     std::vector<pgr_components_rt> generate_results(
+     std::vector<pgr_components_rt> generate_resultsV(
              G &graph,
-             std::vector< V >);
+             int num_comps,
+             std::vector< int >);
 
 };
 
@@ -82,51 +83,41 @@ class Pgr_components {
 //! Generate Results, Vertex Version
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::generate_results(
+Pgr_components< G >::generate_resultsV(
         G &graph,
-        std::vector< V > components) {
+        int num_comps,
+        std::vector< int > components) {
+    int totalNodes = num_vertices(graph.graph);
+
+    // generate identifier
+    std::vector< std::vector< int64_t > > tempId;
+    tempId.resize(num_comps);
+    for (int i = 0; i < totalNodes; i++) {
+        tempId[components[i]].push_back(graph[i].id);
+    }
+
+    // sort identifier
+    for (int i = 0; i < num_comps; i++) {
+        std::sort(tempId[i].begin(), tempId[i].end());
+    }
+    sort(tempId.begin(), tempId.end());
 
     // generate results
-    auto totalNodes = num_vertices(graph.graph);
-
     std::vector< pgr_components_rt > results;
-    results.resize(totalNodes);
-
-    std::vector< int64_t > result_comp;
-    result_comp.resize(0);
-    size_t temp_size = 0;
-    for (V i = 0; i < totalNodes; i++) {
-		results[i].identifier = graph[i].id;
-        if (components[i] >= temp_size) {
-            result_comp.push_back(results[i].identifier);
-            temp_size++;
-        } else {
-            result_comp[components[i]] =
-                std::min(results[i].identifier, result_comp[components[i]]);
+    results.resize(num_vertices(graph.graph));
+    auto sizeId = tempId.size();
+    int nextRes = 0;
+    for (auto i = 0; i < sizeId; i++) {
+        int64_t tempComp = tempId[i][0];
+        auto sizeIdI = tempId[i].size();
+        for (auto j = 0; j < sizeIdI; j++) {
+            results[nextRes].identifier = tempId[i][j];
+            results[nextRes].n_seq = j + 1;
+            results[nextRes].component = tempComp;
+            nextRes++;
         }
     }
-
-    // generate component number
-    for (V i = 0; i < totalNodes; i++) {
-        results[i].component = result_comp[components[i]];
-    }
-
-    // sort results and generate n_seq
-	std::sort(results.begin(), results.end(),
-            [](const pgr_components_rt &left, const pgr_components_rt &right) {
-			return left.identifier < right.identifier; });
-
-	std::stable_sort(results.begin(), results.end(),
-            [](const pgr_components_rt &left, const pgr_components_rt &right) {
-			return left.component < right.component; });
-
-	auto current = results[0].component;
-	int seq(0);
-	for (auto &result: results) {
-		result.n_seq = result.component == current ? ++seq : seq = 1;
-		current = result.component;
-	}
-
+    
     return results;
 }
 
@@ -135,12 +126,13 @@ template < class G >
 std::vector<pgr_components_rt>
 Pgr_components< G >::connectedComponentsV(
         G &graph) {
-    // perform the algorithm
-    std::vector< V > components(num_vertices(graph.graph));
-    boost::connected_components(graph.graph, &components[0]);
+    int totalNodes = num_vertices(graph.graph);
 
-	//get the results
-    return generate_results(graph, components);
+    // perform the algorithm
+    std::vector< int > components(totalNodes);
+    int num_comps = boost::connected_components(graph.graph, &components[0]);
+
+    return generate_resultsV(graph, num_comps, components);
 }
 
 //! Strongly Connected Components Vertex Version
@@ -149,12 +141,12 @@ std::vector<pgr_components_rt>
 Pgr_components< G >::strongComponentsV(
         G &graph) {
     // perform the algorithm
-    std::vector< V > components(num_vertices(graph.graph));
-    boost::strong_components(graph.graph, 
+    std::vector< int > components(num_vertices(graph.graph));
+    int num_comps = boost::strong_components(graph.graph, 
 			boost::make_iterator_property_map(components.begin(), get(boost::vertex_index, graph.graph)));
 
     // get the results
-    return generate_results(graph, components);
+    return generate_resultsV(graph, num_comps, components);
 }
 
 //! Biconnected Components
