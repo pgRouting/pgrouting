@@ -70,10 +70,9 @@ class Pgr_components {
 
  private:
      //! Generate Results, Vertex Version
-     std::vector<pgr_components_rt> generate_resultsV(
+     std::vector<pgr_components_rt> generate_results(
              G &graph,
-             int num_comps,
-             std::vector< int >);
+             std::vector< std::vector< int64_t > >);
 
 };
 
@@ -83,35 +82,25 @@ class Pgr_components {
 //! Generate Results, Vertex Version
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::generate_resultsV(
+Pgr_components< G >::generate_results(
         G &graph,
-        int num_comps,
-        std::vector< int > components) {
-    int totalNodes = num_vertices(graph.graph);
-
-    // generate identifier
-    std::vector< std::vector< int64_t > > tempId;
-    tempId.resize(num_comps);
-    for (int i = 0; i < totalNodes; i++) {
-        tempId[components[i]].push_back(graph[i].id);
-    }
-
+        std::vector< std::vector< int64_t > > components) {
     // sort identifier
+    auto num_comps = components.size();
     for (int i = 0; i < num_comps; i++) {
-        std::sort(tempId[i].begin(), tempId[i].end());
+        std::sort(components[i].begin(), components[i].end());
     }
-    sort(tempId.begin(), tempId.end());
+    sort(components.begin(), components.end());
 
     // generate results
     std::vector< pgr_components_rt > results;
     results.resize(num_vertices(graph.graph));
-    auto sizeId = tempId.size();
     int nextRes = 0;
-    for (auto i = 0; i < sizeId; i++) {
-        int64_t tempComp = tempId[i][0];
-        auto sizeIdI = tempId[i].size();
-        for (auto j = 0; j < sizeIdI; j++) {
-            results[nextRes].identifier = tempId[i][j];
+    for (auto i = 0; i < num_comps; i++) {
+        int64_t tempComp = components[i][0];
+        auto sizeCompi = components[i].size();
+        for (auto j = 0; j < sizeCompi; j++) {
+            results[nextRes].identifier = components[i][j];
             results[nextRes].n_seq = j + 1;
             results[nextRes].component = tempComp;
             nextRes++;
@@ -132,7 +121,13 @@ Pgr_components< G >::connectedComponentsV(
     std::vector< int > components(totalNodes);
     int num_comps = boost::connected_components(graph.graph, &components[0]);
 
-    return generate_resultsV(graph, num_comps, components);
+    //get the results
+    std::vector< std::vector< int64_t > > results;
+    results.resize(num_comps);
+    for (int i = 0; i < totalNodes; i++)
+        results[components[i]].push_back(graph[i].id);
+
+    return generate_results(graph, results);
 }
 
 //! Strongly Connected Components Vertex Version
@@ -140,13 +135,20 @@ template < class G >
 std::vector<pgr_components_rt>
 Pgr_components< G >::strongComponentsV(
         G &graph) {
+    int totalNodes = num_vertices(graph.graph);
+
     // perform the algorithm
-    std::vector< int > components(num_vertices(graph.graph));
+    std::vector< int > components(totalNodes);
     int num_comps = boost::strong_components(graph.graph, 
 			boost::make_iterator_property_map(components.begin(), get(boost::vertex_index, graph.graph)));
 
     // get the results
-    return generate_resultsV(graph, num_comps, components);
+    std::vector< std::vector< int64_t > > results;
+    results.resize(num_comps);
+    for (int i = 0; i < totalNodes; i++)
+        results[components[i]].push_back(graph[i].id);
+
+    return generate_results(graph, results);
 }
 
 //! Biconnected Components
@@ -164,19 +166,17 @@ Pgr_components< G >::biconnectedComponents(
 	edge_map bicmp_map;
 	
 	boost::associative_property_map< edge_map > bimap(bicmp_map);
-	auto num_comps = biconnected_components(graph.graph, bimap);
+	int num_comps = biconnected_components(graph.graph, bimap);
 
 	// convert associative_property_map to vector
 	//TODO(mg) change to vector< vector< V or E > >
-#if 0
 	E_i ei, ei_end;
-	std::vector< E > components(num_edges(graph.graph));
+	std::vector< std::vector< int64_t > > components(num_comps);
 	for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ei++)
-		components[graph[*ei].id] = bimap[*ei];
-#endif 
+		components[bimap[*ei]].push_back(graph[*ei].id);
 
     // get the results
-//    return generate_results(graph, components);
+    return generate_results(graph, components);
 }
 
 #endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
