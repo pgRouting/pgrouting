@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     only_cost BOOLEAN DEFAULT false,
     strict BOOLEAN DEFAULT false
  ***********************************************************/
-#if 1
+#if 0
 template < class G >
 static
 Path
@@ -120,7 +120,7 @@ do_pgr_dijkstraTRSP(
                     end_vid,
                     only_cost,
                     strict);
-            log << fn_TRSP.log.str();
+            log << fn_TRSP.log.str().c_str();
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
@@ -132,7 +132,7 @@ do_pgr_dijkstraTRSP(
                     end_vid,
                     only_cost,
                     strict);
-            log << fn_TRSP.log.str();
+            log << fn_TRSP.log.str().c_str();
         }
 
         auto count = path.size();
