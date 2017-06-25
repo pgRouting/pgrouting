@@ -104,10 +104,12 @@ void Pgr_dijkstraTRSP< G >::getFirstSolution(G& graph) {
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::checkFirstSolution(G& graph) {
-    //auto totalPaths = curr_result_path.size();
-    //for(auto &path: curr_result_path)
-    //    PGR_DBG("node = %lu | edge = %lu | cost = %lf | agg_cost = %lf",
-    //        path.node, path.edge, path.cost, path.agg_cost);
+#if 0
+    auto totalPaths = curr_result_path.size();
+    for(auto &path: curr_result_path)
+        PGR_DBG("node = %lu | edge = %lu | cost = %lf | agg_cost = %lf",
+            path.node, path.edge, path.cost, path.agg_cost);
+#endif
 }
 
 template < class G >
