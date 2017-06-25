@@ -91,8 +91,6 @@ Pgr_areaContraction< G >::doContraction(G &graph){
 dijkstra_many_many(graph,border,border);
 
 
-
-
 }
 
 }  // namespace areacontraction
