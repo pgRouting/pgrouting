@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     only_cost BOOLEAN DEFAULT false,
     strict BOOLEAN DEFAULT false
  ***********************************************************/
-#if 0
+#if 1
 template < class G >
 static
 Path
@@ -61,9 +61,13 @@ pgr_dijkstraTRSP(
         int64_t target,
         bool only_cost = false,
         bool strict = false) {
-    Path path;
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
+    Path path = fn_TRSP.dijkstraTRSP(digraph,
+                    restrictions_array,
+                    start_vid,
+                    end_vid,
+                    only_cost,
+                    strict);
+    log << fn_TRSP.log.str();
 }
 #endif
 
