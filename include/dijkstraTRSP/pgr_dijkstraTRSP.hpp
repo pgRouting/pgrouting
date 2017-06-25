@@ -19,10 +19,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DIJKSTRATRSP_PGR_DIJKSTRATRSP_HPP_
 #pragma once
 
-#ifdef __linux__
-#include <execinfo.h>
-#endif
-
 #include "dijkstra/pgr_dijkstra.hpp"
 
 #include <sstream>
@@ -35,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 
 #include "c_types/restrict_t.h"
-#include "c_common/debug_macro.h"
 
 template < class G >
 class Pgr_dijkstraTRSP {
@@ -104,12 +99,11 @@ void Pgr_dijkstraTRSP< G >::getFirstSolution(G& graph) {
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::checkFirstSolution(G& graph) {
-#if 0
     auto totalPaths = curr_result_path.size();
-    for(auto &path: curr_result_path)
-        PGR_DBG("node = %lu | edge = %lu | cost = %lf | agg_cost = %lf",
-            path.node, path.edge, path.cost, path.agg_cost);
-#endif
+    #if 0
+        for(auto &path: curr_result_path)
+            smallcode(path);
+    #endif
 }
 
 template < class G >
