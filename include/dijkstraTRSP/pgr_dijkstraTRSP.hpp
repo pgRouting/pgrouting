@@ -58,6 +58,8 @@ class Pgr_dijkstraTRSP {
      bool m_strict;
 
      Path curr_result_path;
+
+ public:
      std::ostringstream log;
 };
 
@@ -101,7 +103,7 @@ template < class G >
 void Pgr_dijkstraTRSP< G >::checkFirstSolution(G& graph) {
     auto totalPaths = curr_result_path.size();
     for(auto &path: curr_result_path) {
-
+        log << path.node<<" "<<path.edge;
     }
 }
 
