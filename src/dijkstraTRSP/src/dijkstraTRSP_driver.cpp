@@ -57,17 +57,20 @@ static
 Path
 pgr_dijkstraTRSP(
         G &graph,
+        const std::vector<Restrict_t>& restrictions_array,
         int64_t source,
         int64_t target,
         bool only_cost = false,
         bool strict = false) {
-    Path path = fn_TRSP.dijkstraTRSP(digraph,
+    Pgr_dijkstraTRSP< G > fn_TRSP;
+    Path path = fn_TRSP.dijkstraTRSP(graph,
                     restrictions_array,
-                    start_vid,
-                    end_vid,
+                    source,
+                    target,
                     only_cost,
                     strict);
     log << fn_TRSP.log.str();
+    return path;
 }
 #endif
 
