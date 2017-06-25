@@ -100,10 +100,9 @@ void Pgr_dijkstraTRSP< G >::getFirstSolution(G& graph) {
 template < class G >
 void Pgr_dijkstraTRSP< G >::checkFirstSolution(G& graph) {
     auto totalPaths = curr_result_path.size();
-    #if 0
-        for(auto &path: curr_result_path)
-            smallcode(path);
-    #endif
+    for(auto &path: curr_result_path) {
+
+    }
 }
 
 template < class G >
