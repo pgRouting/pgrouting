@@ -1,0 +1,2064 @@
+RUNNING: algorithm-tester.pl -alg pickDeliver -debug1
+Operative system found: linux
+CREATE EXTENSION
+CREATE EXTENSION
+                                                   version                                                   
+-------------------------------------------------------------------------------------------------------------
+ PostgreSQL 9.4.9 on x86_64-redhat-linux-gnu, compiled by gcc (GCC) 5.3.1 20160406 (Red Hat 5.3.1-6), 64-bit
+(1 row)
+
+
+                                                                postgis_full_version                                                                
+----------------------------------------------------------------------------------------------------------------------------------------------------
+ POSTGIS="2.1.8 r13780" GEOS="3.4.2-CAPI-1.8.2 r3921" PROJ="Rel. 4.9.1, 04 March 2015" GDAL="GDAL 2.0.2, released 2016/01/26" LIBXML="2.9.2" RASTER
+(1 row)
+
+
+           pgr_version           
+---------------------------------
+ (2.5.0,v2.5.0-dev,"","",1.58.0)
+(1 row)
+
+
+Processing test: src/pickDeliver/test/doc-pickDeliver	 FAIL
+    test run time: 2.665154
+Processing test: src/pickDeliver/test/doc-pickDeliverEuclidean	 FAIL
+    test run time: 2.693281
+Processing test: src/pickDeliver/test/doc-pickDeliver	 FAIL
+    test run time: 2.683174
+Processing test: src/pickDeliver/test/doc-pickDeliverEuclidean	 FAIL
+    test run time: 2.374771
+$stats = {
+           'src/pickDeliver/test/test.conf' => [
+                                                 {
+                                                   'comment' => 'Function test for any versions.',
+                                                   'src/pickDeliver/test/doc-pickDeliver.test.sql' => 'FAILED: 3c3,4
+< SET client_min_messages TO NOTICE;
+---
+> SET client_min_messages TO DEBUG3;
+> DEBUG:  CommitTransactionCommand
+20a22,647
+> DEBUG:  StartTransactionCommand
+> DEBUG:  Load orders
+> DEBUG:  pgr_get_pd_orders_data
+> DEBUG:  SELECT * FROM orders ORDER BY id
+> DEBUG:  SPI_processed 53
+> DEBUG:  processing 53
+> DEBUG:  SPI_processed 0
+> DEBUG:  Finish reading 53 orders for matrix
+> DEBUG:  Elapsed time for reading edges:
+>  0.001670 sec = (33533.000000 - 31863.000000) / CLOCKS_PER_SEC 
+> DEBUG:  Load vehicles
+> DEBUG:  pgr_get_vehicles
+> DEBUG:  SELECT * from vehicles
+> DEBUG:  Column start_service not found
+> DEBUG:  Column end_x not found
+> DEBUG:  Column end_y not found
+> DEBUG:  Column end_open not found
+> DEBUG:  Column end_close not found
+> DEBUG:  Column end_service not found
+> DEBUG:  Column speed not found
+> DEBUG:  Column end_node_id not found
+> DEBUG:  SPI_processed 1
+> DEBUG:  processing 1
+> DEBUG:  SPI_processed 0
+> DEBUG:  Finish reading 1 vehicles for matrix
+> DEBUG:  Elapsed time for reading edges:
+>  0.000769 sec = (34342.000000 - 33573.000000) / CLOCKS_PER_SEC 
+> DEBUG:  total vehicles 1
+> DEBUG:  3 10.000000 pick 0.000000 0.000000 6 - 65.000000 146.000000 90.000000 deliver 0.000000 0.000000 66 - 997.000000 1068.000000 90.000000 
+> DEBUG:  5 10.000000 pick 0.000000 0.000000 22 - 15.000000 67.000000 90.000000 deliver 0.000000 0.000000 93 - 170.000000 225.000000 90.000000 
+> DEBUG:  6 20.000000 pick 0.000000 0.000000 51 - 621.000000 702.000000 90.000000 deliver 0.000000 0.000000 48 - 825.000000 870.000000 90.000000 
+> DEBUG:  8 20.000000 pick 0.000000 0.000000 65 - 255.000000 324.000000 90.000000 deliver 0.000000 0.000000 45 - 357.000000 410.000000 90.000000 
+> DEBUG:  9 10.000000 pick 0.000000 0.000000 20 - 534.000000 605.000000 90.000000 deliver 0.000000 0.000000 42 - 727.000000 782.000000 90.000000 
+> DEBUG:  11 10.000000 pick 0.000000 0.000000 99 - 448.000000 505.000000 90.000000 deliver 0.000000 0.000000 97 - 912.000000 967.000000 90.000000 
+> DEBUG:  13 30.000000 pick 0.000000 0.000000 47 - 30.000000 92.000000 90.000000 deliver 0.000000 0.000000 63 - 99.000000 148.000000 90.000000 
+> DEBUG:  16 40.000000 pick 0.000000 0.000000 60 - 475.000000 528.000000 90.000000 deliver 0.000000 0.000000 50 - 567.000000 620.000000 90.000000 
+> DEBUG:  18 20.000000 pick 0.000000 0.000000 17 - 179.000000 254.000000 90.000000 deliver 0.000000 0.000000 59 - 652.000000 721.000000 90.000000 
+> DEBUG:  19 10.000000 pick 0.000000 0.000000 64 - 278.000000 345.000000 90.000000 deliver 0.000000 0.000000 1 - 384.000000 429.000000 90.000000 
+> DEBUG:  20 10.000000 pick 0.000000 0.000000 14 - 10.000000 73.000000 90.000000 deliver 0.000000 0.000000 16 - 65.000000 144.000000 90.000000 
+> DEBUG:  23 10.000000 pick 0.000000 0.000000 87 - 732.000000 777.000000 0.000000 deliver 0.000000 0.000000 87 - 732.000000 777.000000 90.000000 
+> DEBUG:  25 40.000000 pick 0.000000 0.000000 56 - 169.000000 224.000000 90.000000 deliver 0.000000 0.000000 40 - 261.000000 316.000000 90.000000 
+> DEBUG:  28 20.000000 pick 0.000000 0.000000 15 - 546.000000 593.000000 90.000000 deliver 0.000000 0.000000 69 - 812.000000 883.000000 90.000000 
+> DEBUG:  29 10.000000 pick 0.000000 0.000000 28 - 358.000000 405.000000 90.000000 deliver 0.000000 0.000000 3 - 622.000000 701.000000 90.000000 
+> DEBUG:  30 10.000000 pick 0.000000 0.000000 12 - 449.000000 504.000000 90.000000 deliver 0.000000 0.000000 30 - 914.000000 965.000000 90.000000 
+> DEBUG:  32 30.000000 pick 0.000000 0.000000 74 - 31.000000 100.000000 90.000000 deliver 0.000000 0.000000 96 - 200.000000 237.000000 90.000000 
+> DEBUG:  33 40.000000 pick 0.000000 0.000000 76 - 87.000000 158.000000 90.000000 deliver 0.000000 0.000000 13 - 383.000000 434.000000 90.000000 
+> DEBUG:  35 10.000000 pick 0.000000 0.000000 26 - 283.000000 344.000000 90.000000 deliver 0.000000 0.000000 94 - 567.000000 624.000000 90.000000 
+> DEBUG:  36 10.000000 pick 0.000000 0.000000 84 - 665.000000 716.000000 0.000000 deliver 0.000000 0.000000 84 - 665.000000 716.000000 90.000000 
+> DEBUG:  38 30.000000 pick 0.000000 0.000000 36 - 479.000000 522.000000 90.000000 deliver 0.000000 0.000000 2 - 751.000000 816.000000 90.000000 
+> DEBUG:  42 20.000000 pick 0.000000 0.000000 57 - 68.000000 149.000000 90.000000 deliver 0.000000 0.000000 7 - 264.000000 321.000000 90.000000 
+> DEBUG:  43 10.000000 pick 0.000000 0.000000 55 - 16.000000 80.000000 90.000000 deliver 0.000000 0.000000 24 - 166.000000 235.000000 90.000000 
+> DEBUG:  44 10.000000 pick 0.000000 0.000000 9 - 359.000000 412.000000 90.000000 deliver 0.000000 0.000000 49 - 448.000000 509.000000 90.000000 
+> DEBUG:  45 10.000000 pick 0.000000 0.000000 33 - 541.000000 600.000000 90.000000 deliver 0.000000 0.000000 75 - 632.000000 693.000000 90.000000 
+> DEBUG:  49 10.000000 pick 0.000000 0.000000 61 - 1001.000000 1066.000000 90.000000 deliver 0.000000 0.000000 52 - 1054.000000 1127.000000 90.000000 
+> DEBUG:  50 10.000000 pick 0.000000 0.000000 83 - 815.000000 880.000000 90.000000 deliver 0.000000 0.000000 31 - 912.000000 969.000000 90.000000 
+> DEBUG:  51 10.000000 pick 0.000000 0.000000 44 - 725.000000 786.000000 0.000000 deliver 0.000000 0.000000 44 - 725.000000 786.000000 90.000000 
+> DEBUG:  53 20.000000 pick 0.000000 0.000000 90 - 286.000000 347.000000 90.000000 deliver 0.000000 0.000000 62 - 471.000000 534.000000 90.000000 
+> DEBUG:  54 40.000000 pick 0.000000 0.000000 71 - 186.000000 257.000000 90.000000 deliver 0.000000 0.000000 23 - 562.000000 629.000000 90.000000 
+> DEBUG:  56 30.000000 pick 0.000000 0.000000 77 - 385.000000 436.000000 90.000000 deliver 0.000000 0.000000 98 - 651.000000 740.000000 90.000000 
+> DEBUG:  57 40.000000 pick 0.000000 0.000000 89 - 35.000000 87.000000 90.000000 deliver 0.000000 0.000000 25 - 95.000000 158.000000 90.000000 
+> DEBUG:  62 20.000000 pick 0.000000 0.000000 95 - 262.000000 317.000000 90.000000 deliver 0.000000 0.000000 91 - 734.000000 777.000000 90.000000 
+> DEBUG:  63 50.000000 pick 0.000000 0.000000 68 - 171.000000 218.000000 90.000000 deliver 0.000000 0.000000 5 - 353.000000 412.000000 90.000000 
+> DEBUG:  64 10.000000 pick 0.000000 0.000000 21 - 632.000000 693.000000 0.000000 deliver 0.000000 0.000000 21 - 632.000000 693.000000 90.000000 
+> DEBUG:  65 10.000000 pick 0.000000 0.000000 35 - 76.000000 129.000000 90.000000 deliver 0.000000 0.000000 18 - 450.000000 505.000000 90.000000 
+> DEBUG:  66 10.000000 pick 0.000000 0.000000 34 - 826.000000 875.000000 90.000000 deliver 0.000000 0.000000 79 - 916.000000 969.000000 90.000000 
+> DEBUG:  67 10.000000 pick 0.000000 0.000000 8 - 12.000000 77.000000 90.000000 deliver 0.000000 0.000000 81 - 531.000000 610.000000 90.000000 
+> DEBUG:  71 20.000000 pick 0.000000 0.000000 39 - 293.000000 360.000000 90.000000 deliver 0.000000 0.000000 53 - 574.000000 643.000000 90.000000 
+> DEBUG:  76 10.000000 pick 0.000000 0.000000 92 - 203.000000 260.000000 90.000000 deliver 0.000000 0.000000 41 - 478.000000 551.000000 90.000000 
+> DEBUG:  78 20.000000 pick 0.000000 0.000000 37 - 109.000000 170.000000 0.000000 deliver 0.000000 0.000000 37 - 109.000000 170.000000 90.000000 
+> DEBUG:  79 10.000000 pick 0.000000 0.000000 32 - 668.000000 731.000000 90.000000 deliver 0.000000 0.000000 4 - 769.000000 820.000000 90.000000 
+> DEBUG:  81 30.000000 pick 0.000000 0.000000 70 - 47.000000 124.000000 90.000000 deliver 0.000000 0.000000 54 - 387.000000 456.000000 90.000000 
+> DEBUG:  82 20.000000 pick 0.000000 0.000000 80 - 369.000000 420.000000 90.000000 deliver 0.000000 0.000000 88 - 555.000000 612.000000 90.000000 
+> DEBUG:  84 20.000000 pick 0.000000 0.000000 67 - 458.000000 523.000000 90.000000 deliver 0.000000 0.000000 78 - 737.000000 802.000000 90.000000 
+> DEBUG:  86 10.000000 pick 0.000000 0.000000 82 - 173.000000 238.000000 90.000000 deliver 0.000000 0.000000 58 - 836.000000 889.000000 90.000000 
+> DEBUG:  87 20.000000 pick 0.000000 0.000000 72 - 85.000000 144.000000 90.000000 deliver 0.000000 0.000000 19 - 265.000000 338.000000 90.000000 
+> DEBUG:  90 10.000000 pick 0.000000 0.000000 38 - 20.000000 84.000000 90.000000 deliver 0.000000 0.000000 43 - 645.000000 708.000000 90.000000 
+> DEBUG:  92 20.000000 pick 0.000000 0.000000 73 - 368.000000 441.000000 90.000000 deliver 0.000000 0.000000 27 - 475.000000 518.000000 90.000000 
+> DEBUG:  96 10.000000 pick 0.000000 0.000000 29 - 95.000000 156.000000 90.000000 deliver 0.000000 0.000000 85 - 285.000000 336.000000 90.000000 
+> DEBUG:  97 30.000000 pick 0.000000 0.000000 86 - 561.000000 622.000000 0.000000 deliver 0.000000 0.000000 86 - 561.000000 622.000000 90.000000 
+> DEBUG:  98 20.000000 pick 0.000000 0.000000 10 - 30.000000 84.000000 90.000000 deliver 0.000000 0.000000 11 - 196.000000 239.000000 90.000000 
+> DEBUG:  100 20.000000 pick 0.000000 0.000000 46 - 647.000000 726.000000 90.000000 deliver 0.000000 0.000000 100 - 743.000000 820.000000 90.000000 
+> DEBUG:  1 200.000000 1.000000 / 101 0.000000 0.000000 0.000000 1236.000000 0.000000 / 101 0.000000 0.000000 0.000000 1236.000000 0.000000 / 25 
+> DEBUG:  load matrix
+> DEBUG:  processing 10100 matrix cell tupĺes
+> DEBUG:  Elapsed time for  reading matrix cells:
+>  0.016638 sec = (51931.000000 - 35293.000000) / CLOCKS_PER_SEC 
+> DEBUG:  Total 53 orders in query:
+> DEBUG:  Total 1 vehicles in query:
+> DEBUG:  Total 10100 matrix cells in query:
+> DEBUG:  Starting processing
+> DEBUG:  Elapsed time for pgr_pickDeliver:
+>  2.529637 sec = (2581650.000000 - 52013.000000) / CLOCKS_PER_SEC 
+> DEBUG:  do_pgr_pickDeliver
+> Initialize problem
+> --> void pgrouting::vrp::PD_Orders::build_orders(const std::vector<PickDeliveryOrders_t>&)
+> pickup 
+> pick_node_id: 6
+> pickup 
+> deliver_node_id: 66
+> pickup 
+> pick_node_id: 22
+> pickup 
+> deliver_node_id: 93
+> pickup 
+> pick_node_id: 51
+> pickup 
+> deliver_node_id: 48
+> pickup 
+> pick_node_id: 65
+> pickup 
+> deliver_node_id: 45
+> pickup 
+> pick_node_id: 20
+> pickup 
+> deliver_node_id: 42
+> pickup 
+> pick_node_id: 99
+> pickup 
+> deliver_node_id: 97
+> pickup 
+> pick_node_id: 47
+> pickup 
+> deliver_node_id: 63
+> pickup 
+> pick_node_id: 60
+> pickup 
+> deliver_node_id: 50
+> pickup 
+> pick_node_id: 17
+> pickup 
+> deliver_node_id: 59
+> pickup 
+> pick_node_id: 64
+> pickup 
+> deliver_node_id: 1
+> pickup 
+> pick_node_id: 14
+> pickup 
+> deliver_node_id: 16
+> pickup 
+> pick_node_id: 87
+> pickup 
+> deliver_node_id: 87
+> pickup 
+> pick_node_id: 56
+> pickup 
+> deliver_node_id: 40
+> pickup 
+> pick_node_id: 15
+> pickup 
+> deliver_node_id: 69
+> pickup 
+> pick_node_id: 28
+> pickup 
+> deliver_node_id: 3
+> pickup 
+> pick_node_id: 12
+> pickup 
+> deliver_node_id: 30
+> pickup 
+> pick_node_id: 74
+> pickup 
+> deliver_node_id: 96
+> pickup 
+> pick_node_id: 76
+> pickup 
+> deliver_node_id: 13
+> pickup 
+> pick_node_id: 26
+> pickup 
+> deliver_node_id: 94
+> pickup 
+> pick_node_id: 84
+> pickup 
+> deliver_node_id: 84
+> pickup 
+> pick_node_id: 36
+> pickup 
+> deliver_node_id: 2
+> pickup 
+> pick_node_id: 57
+> pickup 
+> deliver_node_id: 7
+> pickup 
+> pick_node_id: 55
+> pickup 
+> deliver_node_id: 24
+> pickup 
+> pick_node_id: 9
+> pickup 
+> deliver_node_id: 49
+> pickup 
+> pick_node_id: 33
+> pickup 
+> deliver_node_id: 75
+> pickup 
+> pick_node_id: 61
+> pickup 
+> deliver_node_id: 52
+> pickup 
+> pick_node_id: 83
+> pickup 
+> deliver_node_id: 31
+> pickup 
+> pick_node_id: 44
+> pickup 
+> deliver_node_id: 44
+> pickup 
+> pick_node_id: 90
+> pickup 
+> deliver_node_id: 62
+> pickup 
+> pick_node_id: 71
+> pickup 
+> deliver_node_id: 23
+> pickup 
+> pick_node_id: 77
+> pickup 
+> deliver_node_id: 98
+> pickup 
+> pick_node_id: 89
+> pickup 
+> deliver_node_id: 25
+> pickup 
+> pick_node_id: 95
+> pickup 
+> deliver_node_id: 91
+> pickup 
+> pick_node_id: 68
+> pickup 
+> deliver_node_id: 5
+> pickup 
+> pick_node_id: 21
+> pickup 
+> deliver_node_id: 21
+> pickup 
+> pick_node_id: 35
+> pickup 
+> deliver_node_id: 18
+> pickup 
+> pick_node_id: 34
+> pickup 
+> deliver_node_id: 79
+> pickup 
+> pick_node_id: 8
+> pickup 
+> deliver_node_id: 81
+> pickup 
+> pick_node_id: 39
+> pickup 
+> deliver_node_id: 53
+> pickup 
+> pick_node_id: 92
+> pickup 
+> deliver_node_id: 41
+> pickup 
+> pick_node_id: 37
+> pickup 
+> deliver_node_id: 37
+> pickup 
+> pick_node_id: 32
+> pickup 
+> deliver_node_id: 4
+> pickup 
+> pick_node_id: 70
+> pickup 
+> deliver_node_id: 54
+> pickup 
+> pick_node_id: 80
+> pickup 
+> deliver_node_id: 88
+> pickup 
+> pick_node_id: 67
+> pickup 
+> deliver_node_id: 78
+> pickup 
+> pick_node_id: 82
+> pickup 
+> deliver_node_id: 58
+> pickup 
+> pick_node_id: 72
+> pickup 
+> deliver_node_id: 19
+> pickup 
+> pick_node_id: 38
+> pickup 
+> deliver_node_id: 43
+> pickup 
+> pick_node_id: 73
+> pickup 
+> deliver_node_id: 27
+> pickup 
+> pick_node_id: 29
+> pickup 
+> deliver_node_id: 85
+> pickup 
+> pick_node_id: 86
+> pickup 
+> deliver_node_id: 86
+> pickup 
+> pick_node_id: 10
+> pickup 
+> deliver_node_id: 11
+> pickup 
+> pick_node_id: 46
+> pickup 
+> deliver_node_id: 100
+> <-- void pgrouting::vrp::PD_Orders::build_orders(const std::vector<PickDeliveryOrders_t>&)
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 0
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 1
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 2
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 3
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 4
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 5
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 6
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 7
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 8
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 9
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 10
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 11
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 12
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 13
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 14
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 15
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 16
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 17
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 18
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 19
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 20
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 21
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 22
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 23
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 24
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 25
+> --> pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver(const std::vector<PickDeliveryOrders_t>&, const std::vector<Vehicle_t>&, const pgrouting::tsp::Dmatrix&, double, size_t, int)
+> --> bool pgrouting::vrp::Pgr_pickDeliver::nodesOK() const
+> <-- bool pgrouting::vrp::Pgr_pickDeliver::nodesOK() const
+> 
+>  Checking fleet ...--> bool pgrouting::vrp::Fleet::is_fleet_ok() const
+> <-- bool pgrouting::vrp::Fleet::is_fleet_ok() const
+> fleet OK 
+> 
+>  Checking ordersorders OK 
+> <-- pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver(const std::vector<PickDeliveryOrders_t>&, const std::vector<Vehicle_t>&, const pgrouting::tsp::Dmatrix&, double, size_t, int)
+> Finish Reading data
+> only trying 4
+> 
+> Initial_solution::do_while_foo
+> id0size26id0size26id0size26id0size26id0size26id0size26id0size26id0size26id0size26id0size26Initial solution 4 duration: 9879.42
+> before sort: 
+> 
+> Truck 0 (101, 22, 6, 93, 65, 45, 99, 20, 51, 42, 48, 97, 66, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (101, 47, 63, 17, 64, 1, 60, 50, 59, 83, 31, 61, 52, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (101, 14, 16, 56, 40, 28, 12, 15, 3, 87, 87, 69, 30, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (101, 74, 76, 96, 26, 13, 36, 94, 84, 84, 2, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (101, 55, 57, 24, 7, 9, 49, 33, 75, 44, 44, 34, 79, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (101, 89, 25, 71, 90, 77, 62, 23, 98, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> Truck 0 (101, 8, 35, 68, 95, 5, 18, 81, 21, 21, 91, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (101, 70, 37, 37, 92, 39, 54, 41, 53, 32, 4, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (101, 38, 72, 82, 19, 80, 67, 88, 43, 78, 58, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (101, 10, 29, 11, 85, 73, 27, 86, 86, 46, 100, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> after sort: 
+> 
+> Truck 0 (101, 22, 6, 93, 65, 45, 99, 20, 51, 42, 48, 97, 66, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (101, 47, 63, 17, 64, 1, 60, 50, 59, 83, 31, 61, 52, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (101, 14, 16, 56, 40, 28, 12, 15, 3, 87, 87, 69, 30, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (101, 55, 57, 24, 7, 9, 49, 33, 75, 44, 44, 34, 79, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (101, 74, 76, 96, 26, 13, 36, 94, 84, 84, 2, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (101, 8, 35, 68, 95, 5, 18, 81, 21, 21, 91, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (101, 70, 37, 37, 92, 39, 54, 41, 53, 32, 4, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (101, 38, 72, 82, 19, 80, 67, 88, 43, 78, 58, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (101, 10, 29, 11, 85, 73, 27, 86, 86, 46, 100, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> Truck 0 (101, 89, 25, 71, 90, 77, 62, 23, 98, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> 
+> before: 
+> 
+> Truck 0 (101, 22, 6, 93, 65, 45, 99, 20, 51, 42, 48, 97, 66, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (101, 47, 63, 17, 64, 1, 60, 50, 59, 83, 31, 61, 52, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (101, 14, 16, 56, 40, 28, 12, 15, 3, 87, 87, 69, 30, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (101, 55, 57, 24, 7, 9, 49, 33, 75, 44, 44, 34, 79, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (101, 74, 76, 96, 26, 13, 36, 94, 84, 84, 2, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (101, 8, 35, 68, 95, 5, 18, 81, 21, 21, 91, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (101, 70, 37, 37, 92, 39, 54, 41, 53, 32, 4, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (101, 38, 72, 82, 19, 80, 67, 88, 43, 78, 58, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (101, 10, 29, 11, 85, 73, 27, 86, 86, 46, 100, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> Truck 0 (101, 89, 25, 71, 90, 77, 62, 23, 98, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+>  Can swap
+>  Curr_from_duration 1066.75 Curr_to_duration 1217.01
+>   new_from_duration 1052.99  new_to_duration 1231.46
+>  Found Swap order 34 from truck 0 with order 83 of truck 0
+> 
+> after: 
+> 
+> Truck 0 (101, 22, 6, 93, 65, 45, 99, 20, 51, 42, 48, 97, 66, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (101, 47, 63, 17, 64, 1, 60, 50, 59, 83, 31, 61, 52, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (101, 14, 16, 56, 40, 28, 12, 15, 3, 87, 87, 69, 30, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (101, 55, 57, 24, 7, 9, 49, 33, 75, 44, 44, 34, 79, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (101, 74, 76, 96, 26, 13, 36, 94, 84, 84, 2, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (101, 8, 35, 68, 95, 5, 18, 81, 21, 21, 91, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (101, 70, 37, 37, 92, 39, 54, 41, 53, 32, 4, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (101, 38, 72, 82, 19, 80, 67, 88, 43, 78, 58, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (101, 10, 29, 11, 85, 73, 27, 86, 86, 46, 100, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> Truck 0 (101, 89, 25, 71, 90, 77, 62, 23, 98, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> before sort: 
+> 
+> Truck 0 (101, 22, 6, 93, 65, 45, 99, 20, 51, 42, 48, 97, 66, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (101, 47, 63, 17, 64, 1, 60, 50, 59, 83, 31, 61, 52, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (101, 14, 16, 56, 40, 28, 12, 15, 3, 87, 87, 69, 30, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (101, 55, 57, 24, 7, 9, 49, 33, 75, 44, 44, 34, 79, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (101, 74, 76, 96, 26, 13, 36, 94, 84, 84, 2, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (101, 8, 35, 68, 95, 5, 18, 81, 21, 21, 91, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (101, 70, 37, 37, 92, 39, 54, 41, 53, 32, 4, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (101, 38, 72, 82, 19, 80, 67, 88, 43, 78, 58, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (101, 10, 29, 11, 85, 73, 27, 86, 86, 46, 100, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> Truck 0 (101, 89, 25, 71, 90, 77, 62, 23, 98, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> after sort: 
+> 
+> Truck 0 (101, 22, 6, 93, 65, 45, 99, 20, 51, 42, 48, 97, 66, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (101, 47, 63, 17, 64, 1, 60, 50, 59, 83, 31, 61, 52, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (101, 14, 16, 56, 40, 28, 12, 15, 3, 87, 87, 69, 30, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (101, 74, 76, 96, 26, 13, 36, 94, 84, 84, 2, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (101, 55, 57, 24, 7, 9, 49, 33, 75, 44, 44, 34, 79, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (101, 89, 25, 71, 90, 77, 62, 23, 98, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> Truck 0 (101, 8, 35, 68, 95, 5, 18, 81, 21, 21, 91, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (101, 70, 37, 37, 92, 39, 54, 41, 53, 32, 4, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (101, 38, 72, 82, 19, 80, 67, 88, 43, 78, 58, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (101, 10, 29, 11, 85, 73, 27, 86, 86, 46, 100, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> Tau: 
+> 
+> Truck 0 (101, 22, 6, 93, 65, 45, 99, 20, 51, 42, 48, 97, 66, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (101, 47, 63, 17, 64, 1, 60, 50, 59, 83, 31, 61, 52, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (101, 14, 16, 56, 40, 28, 12, 15, 3, 87, 87, 69, 30, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (101, 74, 76, 96, 26, 13, 36, 94, 84, 84, 2, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (101, 55, 57, 24, 7, 9, 49, 33, 75, 44, 44, 34, 79, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (101, 89, 25, 71, 90, 77, 62, 23, 98, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> Truck 0 (101, 8, 35, 68, 95, 5, 18, 81, 21, 21, 91, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (101, 70, 37, 37, 92, 39, 54, 41, 53, 32, 4, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (101, 38, 72, 82, 19, 80, 67, 88, 43, 78, 58, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (101, 10, 29, 11, 85, 73, 27, 86, 86, 46, 100, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> best solution duration = 9879.42Finish solve
+> 
+> Tau: 
+> 
+> Truck 0 (101, 22, 6, 93, 65, 45, 99, 20, 51, 42, 48, 97, 66, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (101, 47, 63, 17, 64, 1, 60, 50, 59, 83, 31, 61, 52, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (101, 14, 16, 56, 40, 28, 12, 15, 3, 87, 87, 69, 30, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (101, 74, 76, 96, 26, 13, 36, 94, 84, 84, 2, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (101, 55, 57, 24, 7, 9, 49, 33, 75, 44, 44, 34, 79, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (101, 89, 25, 71, 90, 77, 62, 23, 98, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> Truck 0 (101, 8, 35, 68, 95, 5, 18, 81, 21, 21, 91, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (101, 70, 37, 37, 92, 39, 54, 41, 53, 32, 4, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (101, 38, 72, 82, 19, 80, 67, 88, 43, 78, 58, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (101, 10, 29, 11, 85, 73, 27, 86, 86, 46, 100, 101) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> solution size: 127
+> 
+> DEBUG:  CommitTransactionCommand
+153a781,783
+> DEBUG:  StartTransactionCommand
+> DEBUG:  ProcessUtility
+> DEBUG:  CommitTransactionCommand',
+                                                   'src/pickDeliver/test/doc-pickDeliverEuclidean.test.sql' => 'FAILED: 3c3,4
+< SET client_min_messages TO NOTICE;
+---
+> SET client_min_messages TO DEBUG3;
+> DEBUG:  CommitTransactionCommand
+9a11,1388
+> DEBUG:  StartTransactionCommand
+> DEBUG:  Calling process
+> DEBUG:  Load orders
+> DEBUG:  pgr_get_pd_orders_data
+> DEBUG:  SELECT * FROM orders ORDER BY id
+> DEBUG:  SPI_processed 53
+> DEBUG:  processing 53
+> DEBUG:  SPI_processed 0
+> DEBUG:  Finish reading 53 orders for eucledian
+> DEBUG:  Elapsed time for reading edges:
+>  0.001061 sec = (31148.000000 - 30087.000000) / CLOCKS_PER_SEC 
+> DEBUG:  Load vehicles
+> DEBUG:  pgr_get_vehicles
+> DEBUG:  SELECT * from vehicles
+> DEBUG:  Column start_service not found
+> DEBUG:  Column end_x not found
+> DEBUG:  Column end_y not found
+> DEBUG:  Column end_open not found
+> DEBUG:  Column end_close not found
+> DEBUG:  Column end_service not found
+> DEBUG:  Column speed not found
+> DEBUG:  Column end_node_id not found
+> DEBUG:  SPI_processed 1
+> DEBUG:  processing 1
+> DEBUG:  SPI_processed 0
+> DEBUG:  Finish reading 1 vehicles for eucledian
+> DEBUG:  Elapsed time for reading edges:
+>  0.000464 sec = (31635.000000 - 31171.000000) / CLOCKS_PER_SEC 
+> DEBUG:  total vehicles 1
+> DEBUG:  3 10.000000 pick 42.000000 66.000000 0 - 65.000000 146.000000 90.000000 deliver 45.000000 65.000000 0 - 997.000000 1068.000000 90.000000 
+> DEBUG:  5 10.000000 pick 42.000000 65.000000 0 - 15.000000 67.000000 90.000000 deliver 40.000000 66.000000 0 - 170.000000 225.000000 90.000000 
+> DEBUG:  6 20.000000 pick 40.000000 69.000000 0 - 621.000000 702.000000 90.000000 deliver 45.000000 70.000000 0 - 825.000000 870.000000 90.000000 
+> DEBUG:  8 20.000000 pick 38.000000 68.000000 0 - 255.000000 324.000000 90.000000 deliver 35.000000 66.000000 0 - 357.000000 410.000000 90.000000 
+> DEBUG:  9 10.000000 pick 38.000000 70.000000 0 - 534.000000 605.000000 90.000000 deliver 42.000000 68.000000 0 - 727.000000 782.000000 90.000000 
+> DEBUG:  11 10.000000 pick 35.000000 69.000000 0 - 448.000000 505.000000 90.000000 deliver 45.000000 68.000000 0 - 912.000000 967.000000 90.000000 
+> DEBUG:  13 30.000000 pick 22.000000 75.000000 0 - 30.000000 92.000000 90.000000 deliver 18.000000 75.000000 0 - 99.000000 148.000000 90.000000 
+> DEBUG:  16 40.000000 pick 20.000000 85.000000 0 - 475.000000 528.000000 90.000000 deliver 22.000000 85.000000 0 - 567.000000 620.000000 90.000000 
+> DEBUG:  18 20.000000 pick 15.000000 75.000000 0 - 179.000000 254.000000 90.000000 deliver 25.000000 85.000000 0 - 652.000000 721.000000 90.000000 
+> DEBUG:  19 10.000000 pick 15.000000 80.000000 0 - 278.000000 345.000000 90.000000 deliver 20.000000 80.000000 0 - 384.000000 429.000000 90.000000 
+> DEBUG:  20 10.000000 pick 30.000000 50.000000 0 - 10.000000 73.000000 90.000000 deliver 25.000000 50.000000 0 - 65.000000 144.000000 90.000000 
+> DEBUG:  23 10.000000 pick 28.000000 55.000000 0 - 732.000000 777.000000 0.000000 deliver 28.000000 55.000000 0 - 732.000000 777.000000 90.000000 
+> DEBUG:  25 40.000000 pick 25.000000 52.000000 0 - 169.000000 224.000000 90.000000 deliver 23.000000 52.000000 0 - 261.000000 316.000000 90.000000 
+> DEBUG:  28 20.000000 pick 23.000000 55.000000 0 - 546.000000 593.000000 90.000000 deliver 28.000000 52.000000 0 - 812.000000 883.000000 90.000000 
+> DEBUG:  29 10.000000 pick 20.000000 50.000000 0 - 358.000000 405.000000 90.000000 deliver 25.000000 55.000000 0 - 622.000000 701.000000 90.000000 
+> DEBUG:  30 10.000000 pick 20.000000 55.000000 0 - 449.000000 504.000000 90.000000 deliver 30.000000 52.000000 0 - 914.000000 965.000000 90.000000 
+> DEBUG:  32 30.000000 pick 10.000000 40.000000 0 - 31.000000 100.000000 90.000000 deliver 10.000000 35.000000 0 - 200.000000 237.000000 90.000000 
+> DEBUG:  33 40.000000 pick 8.000000 40.000000 0 - 87.000000 158.000000 90.000000 deliver 2.000000 40.000000 0 - 383.000000 434.000000 90.000000 
+> DEBUG:  35 10.000000 pick 5.000000 35.000000 0 - 283.000000 344.000000 90.000000 deliver 0.000000 45.000000 0 - 567.000000 624.000000 90.000000 
+> DEBUG:  36 10.000000 pick 5.000000 45.000000 0 - 665.000000 716.000000 0.000000 deliver 5.000000 45.000000 0 - 665.000000 716.000000 90.000000 
+> DEBUG:  38 30.000000 pick 0.000000 40.000000 0 - 479.000000 522.000000 90.000000 deliver 8.000000 45.000000 0 - 751.000000 816.000000 90.000000 
+> DEBUG:  42 20.000000 pick 33.000000 32.000000 0 - 68.000000 149.000000 90.000000 deliver 35.000000 30.000000 0 - 264.000000 321.000000 90.000000 
+> DEBUG:  43 10.000000 pick 33.000000 35.000000 0 - 16.000000 80.000000 90.000000 deliver 35.000000 32.000000 0 - 166.000000 235.000000 90.000000 
+> DEBUG:  44 10.000000 pick 32.000000 30.000000 0 - 359.000000 412.000000 90.000000 deliver 30.000000 32.000000 0 - 448.000000 509.000000 90.000000 
+> DEBUG:  45 10.000000 pick 30.000000 30.000000 0 - 541.000000 600.000000 90.000000 deliver 28.000000 30.000000 0 - 632.000000 693.000000 90.000000 
+> DEBUG:  49 10.000000 pick 28.000000 35.000000 0 - 1001.000000 1066.000000 90.000000 deliver 30.000000 35.000000 0 - 1054.000000 1127.000000 90.000000 
+> DEBUG:  50 10.000000 pick 26.000000 32.000000 0 - 815.000000 880.000000 90.000000 deliver 25.000000 35.000000 0 - 912.000000 969.000000 90.000000 
+> DEBUG:  51 10.000000 pick 25.000000 30.000000 0 - 725.000000 786.000000 0.000000 deliver 25.000000 30.000000 0 - 725.000000 786.000000 90.000000 
+> DEBUG:  53 20.000000 pick 44.000000 5.000000 0 - 286.000000 347.000000 90.000000 deliver 38.000000 5.000000 0 - 471.000000 534.000000 90.000000 
+> DEBUG:  54 40.000000 pick 42.000000 10.000000 0 - 186.000000 257.000000 90.000000 deliver 35.000000 5.000000 0 - 562.000000 629.000000 90.000000 
+> DEBUG:  56 30.000000 pick 40.000000 5.000000 0 - 385.000000 436.000000 90.000000 deliver 38.000000 15.000000 0 - 651.000000 740.000000 90.000000 
+> DEBUG:  57 40.000000 pick 40.000000 15.000000 0 - 35.000000 87.000000 90.000000 deliver 42.000000 15.000000 0 - 95.000000 158.000000 90.000000 
+> DEBUG:  62 20.000000 pick 50.000000 35.000000 0 - 262.000000 317.000000 90.000000 deliver 45.000000 30.000000 0 - 734.000000 777.000000 90.000000 
+> DEBUG:  63 50.000000 pick 50.000000 40.000000 0 - 171.000000 218.000000 90.000000 deliver 53.000000 35.000000 0 - 353.000000 412.000000 90.000000 
+> DEBUG:  64 10.000000 pick 48.000000 30.000000 0 - 632.000000 693.000000 0.000000 deliver 48.000000 30.000000 0 - 632.000000 693.000000 90.000000 
+> DEBUG:  65 10.000000 pick 48.000000 40.000000 0 - 76.000000 129.000000 90.000000 deliver 53.000000 30.000000 0 - 450.000000 505.000000 90.000000 
+> DEBUG:  66 10.000000 pick 47.000000 35.000000 0 - 826.000000 875.000000 90.000000 deliver 45.000000 35.000000 0 - 916.000000 969.000000 90.000000 
+> DEBUG:  67 10.000000 pick 47.000000 40.000000 0 - 12.000000 77.000000 90.000000 deliver 50.000000 30.000000 0 - 531.000000 610.000000 90.000000 
+> DEBUG:  71 20.000000 pick 95.000000 35.000000 0 - 293.000000 360.000000 90.000000 deliver 88.000000 30.000000 0 - 574.000000 643.000000 90.000000 
+> DEBUG:  76 10.000000 pick 90.000000 35.000000 0 - 203.000000 260.000000 90.000000 deliver 92.000000 30.000000 0 - 478.000000 551.000000 90.000000 
+> DEBUG:  78 20.000000 pick 88.000000 35.000000 0 - 109.000000 170.000000 0.000000 deliver 88.000000 35.000000 0 - 109.000000 170.000000 90.000000 
+> DEBUG:  79 10.000000 pick 87.000000 30.000000 0 - 668.000000 731.000000 90.000000 deliver 85.000000 25.000000 0 - 769.000000 820.000000 90.000000 
+> DEBUG:  81 30.000000 pick 85.000000 35.000000 0 - 47.000000 124.000000 90.000000 deliver 95.000000 30.000000 0 - 387.000000 456.000000 90.000000 
+> DEBUG:  82 20.000000 pick 75.000000 55.000000 0 - 369.000000 420.000000 90.000000 deliver 68.000000 60.000000 0 - 555.000000 612.000000 90.000000 
+> DEBUG:  84 20.000000 pick 70.000000 58.000000 0 - 458.000000 523.000000 90.000000 deliver 63.000000 58.000000 0 - 737.000000 802.000000 90.000000 
+> DEBUG:  86 10.000000 pick 66.000000 55.000000 0 - 173.000000 238.000000 90.000000 deliver 60.000000 60.000000 0 - 836.000000 889.000000 90.000000 
+> DEBUG:  87 20.000000 pick 65.000000 55.000000 0 - 85.000000 144.000000 90.000000 deliver 72.000000 55.000000 0 - 265.000000 338.000000 90.000000 
+> DEBUG:  90 10.000000 pick 60.000000 55.000000 0 - 20.000000 84.000000 90.000000 deliver 65.000000 60.000000 0 - 645.000000 708.000000 90.000000 
+> DEBUG:  92 20.000000 pick 67.000000 85.000000 0 - 368.000000 441.000000 90.000000 deliver 65.000000 85.000000 0 - 475.000000 518.000000 90.000000 
+> DEBUG:  96 10.000000 pick 60.000000 80.000000 0 - 95.000000 156.000000 90.000000 deliver 65.000000 82.000000 0 - 285.000000 336.000000 90.000000 
+> DEBUG:  97 30.000000 pick 60.000000 85.000000 0 - 561.000000 622.000000 0.000000 deliver 60.000000 85.000000 0 - 561.000000 622.000000 90.000000 
+> DEBUG:  98 20.000000 pick 58.000000 75.000000 0 - 30.000000 84.000000 90.000000 deliver 62.000000 80.000000 0 - 196.000000 239.000000 90.000000 
+> DEBUG:  100 20.000000 pick 55.000000 85.000000 0 - 647.000000 726.000000 90.000000 deliver 55.000000 80.000000 0 - 743.000000 820.000000 90.000000 
+> DEBUG:  1 200.000000 1.000000 , start 40.000000 50.000000 0.000000 1236.000000 0.000000 end 40.000000 50.000000 0.000000 1236.000000 0.000000 number 25 
+> DEBUG:  Total 53 orders in query:
+> DEBUG:  Starting processing
+> DEBUG:  Elapsed time for _pgr_pickDeliverEuclidean:
+>  2.250525 sec = (2282670.000000 - 32145.000000) / CLOCKS_PER_SEC 
+> DEBUG:  Initialize problem
+> --> void pgrouting::vrp::PD_Orders::build_orders(const std::vector<PickDeliveryOrders_t>&)
+> <-- void pgrouting::vrp::PD_Orders::build_orders(const std::vector<PickDeliveryOrders_t>&)
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 0
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 1
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 2
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 3
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 4
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 5
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 6
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 7
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 8
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 9
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 10
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 11
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 12
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 13
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 14
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 15
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 16
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 17
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 18
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 19
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 20
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 21
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 22
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 23
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 24
+> --> pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> before calling evaluate
+> after calling evaluate
+> <-- pgrouting::vrp::Vehicle::Vehicle(size_t, int64_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> --> pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> <-- pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(size_t, size_t, const pgrouting::vrp::Vehicle_node&, const pgrouting::vrp::Vehicle_node&, double, double, double)
+> inserting vehicle: 25
+> --> pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver(const std::vector<PickDeliveryOrders_t>&, const std::vector<Vehicle_t>&, double, size_t, int)
+> 
+>  Checking fleet--> bool pgrouting::vrp::Fleet::is_fleet_ok() const
+> <-- bool pgrouting::vrp::Fleet::is_fleet_ok() const
+> 
+> 
+> ****************** 0th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 1th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 2th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 3th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 4th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 5th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 6th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 7th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 8th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 9th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 10th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 11th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 12th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 13th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 14th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 15th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 16th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 17th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 18th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 19th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 20th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 21th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 22th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 23th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 24th VEHICLE*************
+> id = 1	capacity = 200	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(106) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(107) (x,y) = (40, 50)[opens = 0	closes = 1236	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> ****************** 25th VEHICLE*************
+> id = -1	capacity = inf	factor = 1
+> 	speed = 1
+> 	new speed = 1
+> Path_stop1
+> 0(108) (x,y) = (40, 50)[opens = 0	closes = inf	service = 0	demand = 0	type = START]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> Path_stop2
+> 0(109) (x,y) = (40, 50)[opens = 0	closes = inf	service = 0	demand = 0	type = END]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 
+> 
+> 
+> Order id(idx) = 3(0): 
+> 	Pickup: 0(0) (x,y) = (42, 66)[opens = 65	closes = 146	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(1) (x,y) = (45, 65)[opens = 997	closes = 1068	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 3.16228
+> There are | {I}| = 0 -> order(0) -> | {J}| = 0
+> 
+>  {} -> 0 -> {}
+> 
+> 
+> Order id(idx) = 5(1): 
+> 	Pickup: 0(2) (x,y) = (42, 65)[opens = 15	closes = 67	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(3) (x,y) = (40, 66)[opens = 170	closes = 225	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2.23607
+> There are | {I}| = 0 -> order(1) -> | {J}| = 0
+> 
+>  {} -> 1 -> {}
+> 
+> 
+> Order id(idx) = 6(2): 
+> 	Pickup: 0(4) (x,y) = (40, 69)[opens = 621	closes = 702	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(5) (x,y) = (45, 70)[opens = 825	closes = 870	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5.09902
+> There are | {I}| = 0 -> order(2) -> | {J}| = 0
+> 
+>  {} -> 2 -> {}
+> 
+> 
+> Order id(idx) = 8(3): 
+> 	Pickup: 0(6) (x,y) = (38, 68)[opens = 255	closes = 324	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(7) (x,y) = (35, 66)[opens = 357	closes = 410	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 3.60555
+> There are | {I}| = 0 -> order(3) -> | {J}| = 0
+> 
+>  {} -> 3 -> {}
+> 
+> 
+> Order id(idx) = 9(4): 
+> 	Pickup: 0(8) (x,y) = (38, 70)[opens = 534	closes = 605	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(9) (x,y) = (42, 68)[opens = 727	closes = 782	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 4.47214
+> There are | {I}| = 0 -> order(4) -> | {J}| = 0
+> 
+>  {} -> 4 -> {}
+> 
+> 
+> Order id(idx) = 11(5): 
+> 	Pickup: 0(10) (x,y) = (35, 69)[opens = 448	closes = 505	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(11) (x,y) = (45, 68)[opens = 912	closes = 967	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 10.0499
+> There are | {I}| = 0 -> order(5) -> | {J}| = 0
+> 
+>  {} -> 5 -> {}
+> 
+> 
+> Order id(idx) = 13(6): 
+> 	Pickup: 0(12) (x,y) = (22, 75)[opens = 30	closes = 92	service = 90	demand = 30	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(13) (x,y) = (18, 75)[opens = 99	closes = 148	service = 90	demand = -30	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 4
+> There are | {I}| = 0 -> order(6) -> | {J}| = 0
+> 
+>  {} -> 6 -> {}
+> 
+> 
+> Order id(idx) = 16(7): 
+> 	Pickup: 0(14) (x,y) = (20, 85)[opens = 475	closes = 528	service = 90	demand = 40	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(15) (x,y) = (22, 85)[opens = 567	closes = 620	service = 90	demand = -40	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2
+> There are | {I}| = 0 -> order(7) -> | {J}| = 0
+> 
+>  {} -> 7 -> {}
+> 
+> 
+> Order id(idx) = 18(8): 
+> 	Pickup: 0(16) (x,y) = (15, 75)[opens = 179	closes = 254	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(17) (x,y) = (25, 85)[opens = 652	closes = 721	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 14.1421
+> There are | {I}| = 0 -> order(8) -> | {J}| = 0
+> 
+>  {} -> 8 -> {}
+> 
+> 
+> Order id(idx) = 19(9): 
+> 	Pickup: 0(18) (x,y) = (15, 80)[opens = 278	closes = 345	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(19) (x,y) = (20, 80)[opens = 384	closes = 429	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5
+> There are | {I}| = 0 -> order(9) -> | {J}| = 0
+> 
+>  {} -> 9 -> {}
+> 
+> 
+> Order id(idx) = 20(10): 
+> 	Pickup: 0(20) (x,y) = (30, 50)[opens = 10	closes = 73	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(21) (x,y) = (25, 50)[opens = 65	closes = 144	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5
+> There are | {I}| = 0 -> order(10) -> | {J}| = 0
+> 
+>  {} -> 10 -> {}
+> 
+> 
+> Order id(idx) = 23(11): 
+> 	Pickup: 0(22) (x,y) = (28, 55)[opens = 732	closes = 777	service = 0	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 	Delivery: 0(23) (x,y) = (28, 55)[opens = 732	closes = 777	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 0
+> There are | {I}| = 0 -> order(11) -> | {J}| = 0
+> 
+>  {} -> 11 -> {}
+> 
+> 
+> Order id(idx) = 25(12): 
+> 	Pickup: 0(24) (x,y) = (25, 52)[opens = 169	closes = 224	service = 90	demand = 40	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(25) (x,y) = (23, 52)[opens = 261	closes = 316	service = 90	demand = -40	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2
+> There are | {I}| = 0 -> order(12) -> | {J}| = 0
+> 
+>  {} -> 12 -> {}
+> 
+> 
+> Order id(idx) = 28(13): 
+> 	Pickup: 0(26) (x,y) = (23, 55)[opens = 546	closes = 593	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(27) (x,y) = (28, 52)[opens = 812	closes = 883	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5.83095
+> There are | {I}| = 0 -> order(13) -> | {J}| = 0
+> 
+>  {} -> 13 -> {}
+> 
+> 
+> Order id(idx) = 29(14): 
+> 	Pickup: 0(28) (x,y) = (20, 50)[opens = 358	closes = 405	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(29) (x,y) = (25, 55)[opens = 622	closes = 701	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 7.07107
+> There are | {I}| = 0 -> order(14) -> | {J}| = 0
+> 
+>  {} -> 14 -> {}
+> 
+> 
+> Order id(idx) = 30(15): 
+> 	Pickup: 0(30) (x,y) = (20, 55)[opens = 449	closes = 504	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(31) (x,y) = (30, 52)[opens = 914	closes = 965	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 10.4403
+> There are | {I}| = 0 -> order(15) -> | {J}| = 0
+> 
+>  {} -> 15 -> {}
+> 
+> 
+> Order id(idx) = 32(16): 
+> 	Pickup: 0(32) (x,y) = (10, 40)[opens = 31	closes = 100	service = 90	demand = 30	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(33) (x,y) = (10, 35)[opens = 200	closes = 237	service = 90	demand = -30	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5
+> There are | {I}| = 0 -> order(16) -> | {J}| = 0
+> 
+>  {} -> 16 -> {}
+> 
+> 
+> Order id(idx) = 33(17): 
+> 	Pickup: 0(34) (x,y) = (8, 40)[opens = 87	closes = 158	service = 90	demand = 40	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(35) (x,y) = (2, 40)[opens = 383	closes = 434	service = 90	demand = -40	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 6
+> There are | {I}| = 0 -> order(17) -> | {J}| = 0
+> 
+>  {} -> 17 -> {}
+> 
+> 
+> Order id(idx) = 35(18): 
+> 	Pickup: 0(36) (x,y) = (5, 35)[opens = 283	closes = 344	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(37) (x,y) = (0, 45)[opens = 567	closes = 624	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 11.1803
+> There are | {I}| = 0 -> order(18) -> | {J}| = 0
+> 
+>  {} -> 18 -> {}
+> 
+> 
+> Order id(idx) = 36(19): 
+> 	Pickup: 0(38) (x,y) = (5, 45)[opens = 665	closes = 716	service = 0	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 	Delivery: 0(39) (x,y) = (5, 45)[opens = 665	closes = 716	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 0
+> There are | {I}| = 0 -> order(19) -> | {J}| = 0
+> 
+>  {} -> 19 -> {}
+> 
+> 
+> Order id(idx) = 38(20): 
+> 	Pickup: 0(40) (x,y) = (0, 40)[opens = 479	closes = 522	service = 90	demand = 30	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(41) (x,y) = (8, 45)[opens = 751	closes = 816	service = 90	demand = -30	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 9.43398
+> There are | {I}| = 0 -> order(20) -> | {J}| = 0
+> 
+>  {} -> 20 -> {}
+> 
+> 
+> Order id(idx) = 42(21): 
+> 	Pickup: 0(42) (x,y) = (33, 32)[opens = 68	closes = 149	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(43) (x,y) = (35, 30)[opens = 264	closes = 321	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2.82843
+> There are | {I}| = 0 -> order(21) -> | {J}| = 0
+> 
+>  {} -> 21 -> {}
+> 
+> 
+> Order id(idx) = 43(22): 
+> 	Pickup: 0(44) (x,y) = (33, 35)[opens = 16	closes = 80	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(45) (x,y) = (35, 32)[opens = 166	closes = 235	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 3.60555
+> There are | {I}| = 0 -> order(22) -> | {J}| = 0
+> 
+>  {} -> 22 -> {}
+> 
+> 
+> Order id(idx) = 44(23): 
+> 	Pickup: 0(46) (x,y) = (32, 30)[opens = 359	closes = 412	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(47) (x,y) = (30, 32)[opens = 448	closes = 509	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2.82843
+> There are | {I}| = 0 -> order(23) -> | {J}| = 0
+> 
+>  {} -> 23 -> {}
+> 
+> 
+> Order id(idx) = 45(24): 
+> 	Pickup: 0(48) (x,y) = (30, 30)[opens = 541	closes = 600	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(49) (x,y) = (28, 30)[opens = 632	closes = 693	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2
+> There are | {I}| = 0 -> order(24) -> | {J}| = 0
+> 
+>  {} -> 24 -> {}
+> 
+> 
+> Order id(idx) = 49(25): 
+> 	Pickup: 0(50) (x,y) = (28, 35)[opens = 1001	closes = 1066	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(51) (x,y) = (30, 35)[opens = 1054	closes = 1127	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2
+> There are | {I}| = 0 -> order(25) -> | {J}| = 0
+> 
+>  {} -> 25 -> {}
+> 
+> 
+> Order id(idx) = 50(26): 
+> 	Pickup: 0(52) (x,y) = (26, 32)[opens = 815	closes = 880	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(53) (x,y) = (25, 35)[opens = 912	closes = 969	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 3.16228
+> There are | {I}| = 0 -> order(26) -> | {J}| = 0
+> 
+>  {} -> 26 -> {}
+> 
+> 
+> Order id(idx) = 51(27): 
+> 	Pickup: 0(54) (x,y) = (25, 30)[opens = 725	closes = 786	service = 0	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 	Delivery: 0(55) (x,y) = (25, 30)[opens = 725	closes = 786	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 0
+> There are | {I}| = 0 -> order(27) -> | {J}| = 0
+> 
+>  {} -> 27 -> {}
+> 
+> 
+> Order id(idx) = 53(28): 
+> 	Pickup: 0(56) (x,y) = (44, 5)[opens = 286	closes = 347	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(57) (x,y) = (38, 5)[opens = 471	closes = 534	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 6
+> There are | {I}| = 0 -> order(28) -> | {J}| = 0
+> 
+>  {} -> 28 -> {}
+> 
+> 
+> Order id(idx) = 54(29): 
+> 	Pickup: 0(58) (x,y) = (42, 10)[opens = 186	closes = 257	service = 90	demand = 40	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(59) (x,y) = (35, 5)[opens = 562	closes = 629	service = 90	demand = -40	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 8.60233
+> There are | {I}| = 0 -> order(29) -> | {J}| = 0
+> 
+>  {} -> 29 -> {}
+> 
+> 
+> Order id(idx) = 56(30): 
+> 	Pickup: 0(60) (x,y) = (40, 5)[opens = 385	closes = 436	service = 90	demand = 30	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(61) (x,y) = (38, 15)[opens = 651	closes = 740	service = 90	demand = -30	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 10.198
+> There are | {I}| = 0 -> order(30) -> | {J}| = 0
+> 
+>  {} -> 30 -> {}
+> 
+> 
+> Order id(idx) = 57(31): 
+> 	Pickup: 0(62) (x,y) = (40, 15)[opens = 35	closes = 87	service = 90	demand = 40	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(63) (x,y) = (42, 15)[opens = 95	closes = 158	service = 90	demand = -40	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2
+> There are | {I}| = 0 -> order(31) -> | {J}| = 0
+> 
+>  {} -> 31 -> {}
+> 
+> 
+> Order id(idx) = 62(32): 
+> 	Pickup: 0(64) (x,y) = (50, 35)[opens = 262	closes = 317	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(65) (x,y) = (45, 30)[opens = 734	closes = 777	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 7.07107
+> There are | {I}| = 0 -> order(32) -> | {J}| = 0
+> 
+>  {} -> 32 -> {}
+> 
+> 
+> Order id(idx) = 63(33): 
+> 	Pickup: 0(66) (x,y) = (50, 40)[opens = 171	closes = 218	service = 90	demand = 50	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(67) (x,y) = (53, 35)[opens = 353	closes = 412	service = 90	demand = -50	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5.83095
+> There are | {I}| = 0 -> order(33) -> | {J}| = 0
+> 
+>  {} -> 33 -> {}
+> 
+> 
+> Order id(idx) = 64(34): 
+> 	Pickup: 0(68) (x,y) = (48, 30)[opens = 632	closes = 693	service = 0	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 	Delivery: 0(69) (x,y) = (48, 30)[opens = 632	closes = 693	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 0
+> There are | {I}| = 0 -> order(34) -> | {J}| = 0
+> 
+>  {} -> 34 -> {}
+> 
+> 
+> Order id(idx) = 65(35): 
+> 	Pickup: 0(70) (x,y) = (48, 40)[opens = 76	closes = 129	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(71) (x,y) = (53, 30)[opens = 450	closes = 505	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 11.1803
+> There are | {I}| = 0 -> order(35) -> | {J}| = 0
+> 
+>  {} -> 35 -> {}
+> 
+> 
+> Order id(idx) = 66(36): 
+> 	Pickup: 0(72) (x,y) = (47, 35)[opens = 826	closes = 875	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(73) (x,y) = (45, 35)[opens = 916	closes = 969	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2
+> There are | {I}| = 0 -> order(36) -> | {J}| = 0
+> 
+>  {} -> 36 -> {}
+> 
+> 
+> Order id(idx) = 67(37): 
+> 	Pickup: 0(74) (x,y) = (47, 40)[opens = 12	closes = 77	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(75) (x,y) = (50, 30)[opens = 531	closes = 610	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 10.4403
+> There are | {I}| = 0 -> order(37) -> | {J}| = 0
+> 
+>  {} -> 37 -> {}
+> 
+> 
+> Order id(idx) = 71(38): 
+> 	Pickup: 0(76) (x,y) = (95, 35)[opens = 293	closes = 360	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(77) (x,y) = (88, 30)[opens = 574	closes = 643	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 8.60233
+> There are | {I}| = 0 -> order(38) -> | {J}| = 0
+> 
+>  {} -> 38 -> {}
+> 
+> 
+> Order id(idx) = 76(39): 
+> 	Pickup: 0(78) (x,y) = (90, 35)[opens = 203	closes = 260	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(79) (x,y) = (92, 30)[opens = 478	closes = 551	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5.38516
+> There are | {I}| = 0 -> order(39) -> | {J}| = 0
+> 
+>  {} -> 39 -> {}
+> 
+> 
+> Order id(idx) = 78(40): 
+> 	Pickup: 0(80) (x,y) = (88, 35)[opens = 109	closes = 170	service = 0	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 	Delivery: 0(81) (x,y) = (88, 35)[opens = 109	closes = 170	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 0
+> There are | {I}| = 0 -> order(40) -> | {J}| = 0
+> 
+>  {} -> 40 -> {}
+> 
+> 
+> Order id(idx) = 79(41): 
+> 	Pickup: 0(82) (x,y) = (87, 30)[opens = 668	closes = 731	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(83) (x,y) = (85, 25)[opens = 769	closes = 820	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5.38516
+> There are | {I}| = 0 -> order(41) -> | {J}| = 0
+> 
+>  {} -> 41 -> {}
+> 
+> 
+> Order id(idx) = 81(42): 
+> 	Pickup: 0(84) (x,y) = (85, 35)[opens = 47	closes = 124	service = 90	demand = 30	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(85) (x,y) = (95, 30)[opens = 387	closes = 456	service = 90	demand = -30	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 11.1803
+> There are | {I}| = 0 -> order(42) -> | {J}| = 0
+> 
+>  {} -> 42 -> {}
+> 
+> 
+> Order id(idx) = 82(43): 
+> 	Pickup: 0(86) (x,y) = (75, 55)[opens = 369	closes = 420	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(87) (x,y) = (68, 60)[opens = 555	closes = 612	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 8.60233
+> There are | {I}| = 0 -> order(43) -> | {J}| = 0
+> 
+>  {} -> 43 -> {}
+> 
+> 
+> Order id(idx) = 84(44): 
+> 	Pickup: 0(88) (x,y) = (70, 58)[opens = 458	closes = 523	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(89) (x,y) = (63, 58)[opens = 737	closes = 802	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 7
+> There are | {I}| = 0 -> order(44) -> | {J}| = 0
+> 
+>  {} -> 44 -> {}
+> 
+> 
+> Order id(idx) = 86(45): 
+> 	Pickup: 0(90) (x,y) = (66, 55)[opens = 173	closes = 238	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(91) (x,y) = (60, 60)[opens = 836	closes = 889	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 7.81025
+> There are | {I}| = 0 -> order(45) -> | {J}| = 0
+> 
+>  {} -> 45 -> {}
+> 
+> 
+> Order id(idx) = 87(46): 
+> 	Pickup: 0(92) (x,y) = (65, 55)[opens = 85	closes = 144	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(93) (x,y) = (72, 55)[opens = 265	closes = 338	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 7
+> There are | {I}| = 0 -> order(46) -> | {J}| = 0
+> 
+>  {} -> 46 -> {}
+> 
+> 
+> Order id(idx) = 90(47): 
+> 	Pickup: 0(94) (x,y) = (60, 55)[opens = 20	closes = 84	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(95) (x,y) = (65, 60)[opens = 645	closes = 708	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 7.07107
+> There are | {I}| = 0 -> order(47) -> | {J}| = 0
+> 
+>  {} -> 47 -> {}
+> 
+> 
+> Order id(idx) = 92(48): 
+> 	Pickup: 0(96) (x,y) = (67, 85)[opens = 368	closes = 441	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(97) (x,y) = (65, 85)[opens = 475	closes = 518	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 2
+> There are | {I}| = 0 -> order(48) -> | {J}| = 0
+> 
+>  {} -> 48 -> {}
+> 
+> 
+> Order id(idx) = 96(49): 
+> 	Pickup: 0(98) (x,y) = (60, 80)[opens = 95	closes = 156	service = 90	demand = 10	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(99) (x,y) = (65, 82)[opens = 285	closes = 336	service = 90	demand = -10	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5.38516
+> There are | {I}| = 0 -> order(49) -> | {J}| = 0
+> 
+>  {} -> 49 -> {}
+> 
+> 
+> Order id(idx) = 97(50): 
+> 	Pickup: 0(100) (x,y) = (60, 85)[opens = 561	closes = 622	service = 0	demand = 30	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 0, departure_time = 0
+> 	Delivery: 0(101) (x,y) = (60, 85)[opens = 561	closes = 622	service = 90	demand = -30	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 0
+> There are | {I}| = 0 -> order(50) -> | {J}| = 0
+> 
+>  {} -> 50 -> {}
+> 
+> 
+> Order id(idx) = 98(51): 
+> 	Pickup: 0(102) (x,y) = (58, 75)[opens = 30	closes = 84	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(103) (x,y) = (62, 80)[opens = 196	closes = 239	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 6.40312
+> There are | {I}| = 0 -> order(51) -> | {J}| = 0
+> 
+>  {} -> 51 -> {}
+> 
+> 
+> Order id(idx) = 100(52): 
+> 	Pickup: 0(104) (x,y) = (55, 85)[opens = 647	closes = 726	service = 90	demand = 20	type = PICKUP]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 	Delivery: 0(105) (x,y) = (55, 80)[opens = 743	closes = 820	service = 90	demand = -20	type = DELIVERY]
+>  twv = 0, twvTot = 0, cvTot = 0, cargo = 0, travel_time = 0, arrival_time = 0, wait_time = 0, service_time = 90, departure_time = 0
+> 
+> 	Travel time: 5
+> There are | {I}| = 0 -> order(52) -> | {J}| = 0
+> 
+>  {} -> 52 -> {}
+> 
+>  Checking orders<-- pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver(const std::vector<PickDeliveryOrders_t>&, const std::vector<Vehicle_t>&, double, size_t, int)
+> Finish Reading data
+> only trying 4
+> 
+> Initial_solution::do_while_foo
+> id0size26id0size26id0size26id0size26id0size26id0size26id0size26id0size26id0size26id0size26Initial solution 4 duration: 9879.42
+> before sort: 
+> 
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> after sort: 
+> 
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> 
+> before: 
+> 
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+>  Can swap
+>  Curr_from_duration 1066.75 Curr_to_duration 1217.01
+>   new_from_duration 1052.99  new_to_duration 1231.46
+>  Found Swap order 0 from truck 0 with order 0 of truck 0
+> 
+> after: 
+> 
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> before sort: 
+> 
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> after sort: 
+> 
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> 
+> Tau: 
+> 
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> best solution duration = 9879.42Finish solve
+> 
+> Tau: 
+> 
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1139.62)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1217.01)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1040.8)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 907.227)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 1066.75)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 821.883)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 866.822)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 937.297)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 976.07)
+> Truck 0 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) 	(cv, twv, wait_time, duration) = (0, 0, 0, 905.943)
+> (twv, cv, fleet, wait, duration) = (0, 0, 10, 0, 9879.42)
+> solution size: 127
+> 
+> DEBUG:  CommitTransactionCommand
+142a1522,1524
+> DEBUG:  StartTransactionCommand
+> DEBUG:  ProcessUtility
+> DEBUG:  CommitTransactionCommand'
+                                                 }
+                                               ],
+           'z_crash' => 0,
+           'z_fail' => 0,
+           'z_pass' => 0
+         };

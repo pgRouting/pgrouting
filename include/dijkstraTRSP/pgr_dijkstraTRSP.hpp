@@ -101,6 +101,7 @@ void Pgr_dijkstraTRSP< G >::getFirstSolution(G& graph) {
 
 template < class G >
 bool Pgr_dijkstraTRSP< G >::checkFirstSolution() {
+#if 0
     auto sort_cmp = [](const std::pair<int64_t, Restrict_t>& left,
        const std::pair<int64_t, Restrict_t>& right) -> bool {
            return left.first <= right.first;
@@ -113,6 +114,7 @@ bool Pgr_dijkstraTRSP< G >::checkFirstSolution() {
         sort_cmp);
     std::vector< int64_t > edges_in_path;
     for (auto &path: curr_result_path) edges_in_path.push_back(path.edge);
+    if (edges_in_path.size() and edges_in_path[0] == -1) reverse(edges_in_path.begin(), edges_in_path.end());
     while (edges_in_path.size() and edges_in_path.back() == -1) edges_in_path.pop_back();
     size_t index = 0;
     for (auto &edge: edges_in_path) {
@@ -127,21 +129,25 @@ bool Pgr_dijkstraTRSP< G >::checkFirstSolution() {
                 if(edges_in_path[temp_edge_index] != edge_id) okay = false;
                 temp_edge_index++;
             }
-            if(okay)
+            if (okay) {
+                log << "Restriction is not applicable to this case.";
                 return false;
+            }
             edge_index++;
         }
         index++;
     }
-    return true;
+#endif
+    log << "Restriction is applicable to this case.";
+    return false;
 }
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G& graph) {
     clear();
     getFirstSolution(graph);
+    log << curr_result_path;
     bool sol = checkFirstSolution();
-    std::cout<<sol<<"\n";
     if (sol)
         curr_result_path = Path();
 }

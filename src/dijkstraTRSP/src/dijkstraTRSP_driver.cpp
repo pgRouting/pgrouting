@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     only_cost BOOLEAN DEFAULT false,
     strict BOOLEAN DEFAULT false
  ***********************************************************/
-#if 0
+#if 1
 template < class G >
 static
 Path
@@ -69,7 +69,7 @@ pgr_dijkstraTRSP(
                     target,
                     only_cost,
                     strict);
-    log << fn_TRSP.log.str();
+    log << fn_TRSP.log.str().c_str();
     return path;
 }
 #endif
@@ -134,7 +134,6 @@ do_pgr_dijkstraTRSP(
                     strict);
             log << fn_TRSP.log.str().c_str();
         }
-
         auto count = path.size();
         if (count == 0) {
             (*return_tuples) = NULL;
