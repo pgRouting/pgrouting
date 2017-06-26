@@ -74,9 +74,9 @@ script:
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   # tests as part of script so if a test fails the build fails
   - ./tools/testers/pg_prove_tests.sh $PG_USER DEBUG
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER
 
-after_script: 
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER -ignorenotice
+#after_script: 
 
 #after_success:
   # blank
