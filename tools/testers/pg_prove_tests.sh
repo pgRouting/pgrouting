@@ -30,9 +30,6 @@ echo "cd ./tools/testers/"
 cd ./tools/testers/
 echo "psql -f setup_db.sql"
 run_psql -f setup_db.sql
-#pg_prove ../../src/funnyDijkstra/test/pgtap/* -d $PGDATABASE
-
-#TODO comment out peformance test before merging to MASTER
 
 
 if [ $RELEASE_TYPE = "bDebug" ]
@@ -41,38 +38,8 @@ then
     pg_prove ../../src/tsp/test/performance/* -d $PGDATABASE  -U $PGUSER
     echo "MADE TEST **********************"
 fi
-pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
-pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/alpha_shape/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/bdAstar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/bdDijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/common/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/contraction/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/costMatrix/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/driving_distance/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/ksp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/max_flow/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-#pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/topology/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/tsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/withPoints/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-#deprecated for 3.0
-pg_prove ../../src/deprecated/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove -d $PGDATABASE  -U $PGUSER ../../pgtap/*/*
 
 if [ "$?" -ne 0 ]
 then
