@@ -153,7 +153,6 @@ process(
         if (*result_tuples) pfree(*result_tuples);
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
-
     if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
