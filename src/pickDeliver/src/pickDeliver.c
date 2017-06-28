@@ -289,7 +289,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
          *********************************************************************/
 
 
-        size_t numb = 12;
+        size_t numb = 13;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
@@ -300,17 +300,18 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_number);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
-        values[3] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[5] = Int32GetDatum(result_tuples[call_cntr].stop_type + 1);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].cargo);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].travelTime);
-        values[8] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
-        values[9] = Float8GetDatum(result_tuples[call_cntr].waitTime);
-        values[10] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
-        values[11] = Float8GetDatum(result_tuples[call_cntr].departureTime);
+        values[3] = Int32GetDatum(result_tuples[call_cntr].stop_seq);
+        values[4] = Int32GetDatum(result_tuples[call_cntr].stop_type + 1);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].stop_id);
+        values[6] = Int64GetDatum(result_tuples[call_cntr].order_id);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].cargo);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].travelTime);
+        values[9] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
+        values[10] = Float8GetDatum(result_tuples[call_cntr].waitTime);
+        values[11] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
+        values[12] = Float8GetDatum(result_tuples[call_cntr].departureTime);
 
         /*********************************************************************/
 

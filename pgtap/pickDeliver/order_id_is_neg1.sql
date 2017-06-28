@@ -4,10 +4,9 @@
 SELECT plan(2);
 
 SELECT * INTO results
-FROM _pgr_pickDeliverEuclidean(
+FROM pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
-    $$SELECT * FROM vehicles$$,
-    max_cycles := 30);
+    $$SELECT * FROM vehicles$$);
 
 DECLARE q1 CURSOR FOR
 SELECT DISTINCT order_id

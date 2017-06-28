@@ -98,81 +98,11 @@ foreach(line ${PgRouting_CONFIGURATION_FILE})
         list(APPEND PgRouting_DOC_DIRECTORIES "${directory}")
     endif()
 endforeach()
-message(STATUS "${PgRouting_SOURCE_NAMES}")
-message(STATUS "${PgRouting_SQL_DIRECTORIES}")
-message(STATUS "${PgRouting_DOC_DIRECTORIES}")
-
-if(false)
-set(PgRouting_SOURCE_NAMES
-
-    #----------------------
-    # "common" must be first can not be removed
-    #----------------------
-    "common"
-
-    #----------------------
-    # "dijkstra" can not be removed 
-    #   Has the command needed to link with prostgresl
-    #----------------------
-    "dijkstra" #2.1
-
-    #----------------------
-    # Directories that have being rewritten
-    #----------------------
-    "allpairs" # 2.2
-    "astar"    # 2.4
-    "driving_distance" # 2.1
-    "ksp" # 2.1
-    "tsp" # 2.3
-
-    #----------------------
-    # Code needs to be rewritten
-    #----------------------
-    "alpha_shape"
-    "bdAstar"    # 2.5
-    "bdDijkstra" # 2.4
-    "trsp"
-
-    #----------------------
-    # Proposed
-    #  - Not officially on the release
-    #  - number indicates version when was propsosed with code
-    #----------------------
-    "max_flow"    # 2.3
-    "contraction" # 2.3
-    "pickDeliver" # 2.3
-    "vrp_basic"   # 2.0 
-    "withPoints"  # 2.2
-
-    # template generated name
-    #"funnyDijkstra"
-
-    )
-
-#-----------------------------------------------------------------------------
-# Name of the directories containing only SQL files
-#
-#  - <directory>/sql/CMakeLists.txt  must exist
-#-----------------------------------------------------------------------------
-set(PgRouting_SQL_DIRECTORIES 
-
-    "topology"     # needs to be revised
-
-    #----------------------
-    # Proposed
-    #  Not officially on the release
-    #----------------------
-    "label_graph"  # needs to be rewritten using Boost
-    "costMatrix"   # proposed on 2.3
-
-    #----------------------
-    # Wrappers for backwards compatibility 
-    #----------------------
-    "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
-    "deprecated"
-    )
+if (PGROUTING_DEBUG)
+    message(STATUS "${PgRouting_SOURCE_NAMES}")
+    message(STATUS "${PgRouting_SQL_DIRECTORIES}")
+    message(STATUS "${PgRouting_DOC_DIRECTORIES}")
 endif()
-
 
 
 

@@ -3314,20 +3314,21 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
 
 
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
-    orders_sql TEXT,
-    vehicles_sql TEXT,
-    matrix_cell_sql TEXT,
+CREATE OR REPLACE FUNCTION pgr_pickDeliver(
+    TEXT, -- orders_sql
+    TEXT, -- vehicles_sql
+    TEXT, -- matrix_cell_sql
     factor FLOAT DEFAULT 1,
     max_cycles INTEGER DEFAULT 10,
     initial_sol INTEGER DEFAULT 4,
 
     OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
     OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
+    OUT stop_id BIGINT,
     OUT order_id BIGINT,
-    OUT stop_type INT,
     OUT cargo FLOAT,
     OUT travel_time FLOAT,
     OUT arrival_time FLOAT,
@@ -3343,19 +3344,19 @@ LANGUAGE c VOLATILE;
 
 
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
-    orders_sql TEXT,
-    vehicles_sql TEXT,
+CREATE OR REPLACE FUNCTION pgr_pickDeliverEuclidean (
+    TEXT, -- orders_sql
+    TEXT, -- vehicles_sql
     factor FLOAT DEFAULT 1,
     max_cycles INTEGER DEFAULT 10,
     initial_sol INTEGER DEFAULT 4,
 
     OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
     OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
     OUT order_id BIGINT,
-    OUT stop_type INT,
     OUT cargo FLOAT,
     OUT travel_time FLOAT,
     OUT arrival_time FLOAT,
@@ -3370,19 +3371,21 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
 
 
 
--- for the sake of Reginas book I am keeping this signature
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
+CREATE OR REPLACE FUNCTION _pgr_vrpOneDepot(
     customers_sql TEXT,
-    max_vehicles INTEGER,
-    capacity FLOAT,
-    speed FLOAT DEFAULT 1,
-    max_cycles INTEGER DEFAULT 10,
+    vehicles_sql TEXT,
+    TEXT, -- matrix_sql
+    depot_id INTEGER,
 
     OUT seq INTEGER,
-    OUT vehicle_id INTEGER,
     OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
     OUT stop_id BIGINT,
+    OUT order_id BIGINT,
+    OUT cargo FLOAT,
     OUT travel_time FLOAT,
     OUT arrival_time FLOAT,
     OUT wait_time FLOAT,
@@ -3392,42 +3395,49 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
 RETURNS SETOF RECORD AS
 $BODY$
 DECLARE
-    orders_sql TEXT;
-    vehicles_sql TEXT;
-    final_sql TEXT;
+orders_sql TEXT;
+trucks_sql TEXT;
+matrix_sql TEXT;
+final_sql TEXT;
 BEGIN
+
     orders_sql = $$WITH
-        customer_data AS ($$ || customers_sql || $$ ),
-        pickups AS (
-            SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
-            FROM  customer_data WHERE pindex = 0 AND id != 0
-        ),
-        deliveries AS (
-            SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
-            FROM  customer_data WHERE dindex = 0 AND id != 0
-        )
-        SELECT * FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id
+    vrp_orders AS ($$ || customers_sql || $$ ),
+    pickups AS (
+        SELECT id, x AS p_x, y AS p_y, open_time AS p_open, close_time AS p_close, service_time AS p_service
+        FROM vrp_orders
+        WHERE id = $$ || depot_id || $$
+    )
+    SELECT vrp_orders.id AS id, order_unit AS demand, pickups.id AS p_node_id, p_x, p_y, p_open, p_close, p_service,
+    vrp_orders.id AS d_node_id, x AS d_x, y AS d_y, open_time AS d_open, close_time AS d_close, service_time AS d_service
+    FROM vrp_orders, pickups
+    WHERE vrp_orders.id != $$ || depot_id;
+
+
+    trucks_sql = $$ WITH
+    vrp_orders AS ($$ || customers_sql || $$ ),
+    vrp_vehicles AS ($$ || vehicles_sql || $$ ),
+    starts AS (
+        SELECT id AS start_node_id, x AS start_x, y AS start_y, open_time AS start_open, close_time AS start_close, service_time AS start_service
+        FROM vrp_orders
+        WHERE id = $$ || depot_id || $$
+    )
+    SELECT vehicle_id AS id, capacity, starts.* FROM vrp_vehicles, starts;
     $$;
 
-    vehicles_sql = $$WITH
-        customer_data AS ($$ || customers_sql || $$ )
-        SELECT id, x AS start_x, y AS start_y,
-            opentime AS start_open, closetime AS start_close, $$ ||
-            capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number, $$ || speed || $$ AS speed
-            FROM customer_data WHERE id = 0 LIMIT 1
-        $$;
---  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time
-    final_sql = $$ WITH
-        customer_data AS ($$ || customers_sql || $$ ),
-        p_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  1, $$ || max_cycles || $$ )),
-        picks AS (SELECT p_deliver.*, pindex, dindex, id AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
-        delivers AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 3)),
-        depots AS (SELECT p_deliver.*, 0 as pindex, 0 as dindex, 0 AS the_id FROM p_deliver WHERE (stop_type IN (-1,1,6))),
-        the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
+    final_sql = '
+    SELECT * FROM pgr_pickDeliver(
+            $$' || orders_sql || '$$,
+            $$' || trucks_sql || '$$,
+            $$' || $3 || '$$,
+            max_cycles := 2,
+            initial_sol := 4 ); ';
 
-        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
-        FROM (SELECT * FROM the_union) AS a ORDER BY a.seq
-        $$;
+    RAISE DEBUG '%', orders_sql;
+    RAISE DEBUG '%', trucks_sql;
+    RAISE DEBUG '%', $3;
+    RAISE DEBUG '%', final_sql;
+
     RETURN QUERY EXECUTE final_sql;
 END;
 $BODY$
@@ -3451,10 +3461,21 @@ create or replace function pgr_vrpOneDepot(
 	OUT vid integer,
 	OUT tarrival integer,
 	OUT tdepart integer)
-returns setof record as
-'MODULE_PATHNAME', 'vrp'
-LANGUAGE c VOLATILE STRICT;
-
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RETURN query SELECT order_id::INTEGER, stop_seq::INTEGER, vehicle_id::INTEGER, arrival_time::INTEGER, departure_time::INTEGER
+    FROM _pgr_vrpOneDepot($1, $2,
+       '
+            SELECT src_id AS start_vid, dest_id AS end_vid, traveltime AS agg_cost FROM ('||$3||') AS a
+       ',
+        $4
+    ) a;
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
 
 
 
@@ -5301,25 +5322,6 @@ COMMENT ON FUNCTION pgr_bdAstarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, NUME
 
 
 
-CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(
-    sql text,
-    vehicle_num INTEGER,
-    capacity INTEGER
-)
-RETURNS SETOF pgr_costresult AS
-$BODY$
-DECLARE
-has_reverse BOOLEAN;
-customers_sql TEXT;
-BEGIN
-    RETURN query
-         SELECT a.seq, vehicle_id::INTEGER AS id1, stop_id::INTEGER AS id2, departure_time AS cost
-        FROM _pgr_pickDeliver($1, $2, $3, 1, 30) AS a WHERE vehicle_id NOT IN (-2);
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE
-COST 100
-ROWS 1000;
 
 
 
@@ -6391,6 +6393,89 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
 
 
 
+CREATE OR REPLACE FUNCTION _pgr_gsoc_vrppdtw(
+    customers_sql TEXT,
+    max_vehicles INTEGER,
+    capacity FLOAT,
+    speed FLOAT DEFAULT 1,
+    max_cycles INTEGER DEFAULT 10,
+
+    OUT seq INTEGER,
+    OUT vehicle_id INTEGER,
+    OUT vehicle_seq INTEGER,
+    OUT stop_id BIGINT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+)
+RETURNS SETOF RECORD AS
+$BODY$
+DECLARE
+    orders_sql TEXT;
+    vehicles_sql TEXT;
+    final_sql TEXT;
+BEGIN
+    RAISE NOTICE 'Deprecated function pgr_gsoc_vrppdtw: Use pgr_pickDeliverEuclidean instead';
+    orders_sql = $$WITH
+        customer_data AS ($$ || customers_sql || $$ ),
+        pickups AS (
+            SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
+            FROM  customer_data WHERE pindex = 0 AND id != 0
+        ),
+        deliveries AS (
+            SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
+            FROM  customer_data WHERE dindex = 0 AND id != 0
+        )
+        SELECT * FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id
+    $$;
+
+    vehicles_sql = $$WITH
+        customer_data AS ($$ || customers_sql || $$ )
+        SELECT id, x AS start_x, y AS start_y,
+            opentime AS start_open, closetime AS start_close, $$ ||
+            capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number, $$ || speed || $$ AS speed
+            FROM customer_data WHERE id = 0 LIMIT 1
+        $$;
+--  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time
+    final_sql = $$ WITH
+        customer_data AS ($$ || customers_sql || $$ ),
+        p_deliver AS (SELECT * FROM pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  1, $$ || max_cycles || $$ )),
+        picks AS (SELECT p_deliver.*, pindex, dindex, id AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
+        delivers AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 3)),
+        depots AS (SELECT p_deliver.*, 0 as pindex, 0 as dindex, 0 AS the_id FROM p_deliver WHERE (stop_type IN (-1,1,6))),
+        the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
+
+        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_seq, a.stop_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
+        FROM (SELECT * FROM the_union) AS a ORDER BY a.seq
+        $$;
+    RETURN QUERY EXECUTE final_sql;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(
+    sql text,
+    vehicle_num INTEGER,
+    capacity INTEGER
+)
+RETURNS SETOF pgr_costresult AS
+$BODY$
+DECLARE
+has_reverse BOOLEAN;
+customers_sql TEXT;
+BEGIN
+    RETURN query
+         SELECT a.seq, vehicle_id::INTEGER AS id1, stop_id::INTEGER AS id2, departure_time AS cost
+        FROM _pgr_gsoc_vrppdtw($1, $2, $3, 1, 30) AS a WHERE vehicle_id NOT IN (-2);
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
+
+
 ------------------------
 -- deprecated signatures
 -----------------------
@@ -6414,44 +6499,48 @@ COMMENT ON FUNCTION pgr_drivingDistance(text,  BIGINT,  FLOAT8,  BOOLEAN,  BOOLE
 -- Renamed /deprecated
 -----------------------
 COMMENT ON FUNCTION pgr_apspJohnson(TEXT)
-    IS 'pgr_apspJohnson(Renamed function) use pgr_Johnson insteaad';
+    IS 'pgr_apspJohnson(Renamed function) use pgr_Johnson instead';
 
 COMMENT ON FUNCTION pgr_apspWarshall(text, boolean, boolean)
-    IS 'pgr_apspWarshall(Renamed function) use pgr_floydWarshall insteaad';
+    IS 'pgr_apspWarshall(Renamed function) use pgr_floydWarshall instead';
 
 COMMENT ON FUNCTION pgr_kdijkstraPath( text, INTEGER, INTEGER ARRAY, BOOLEAN, BOOLEAN)
-    IS 'pgr_kdijkstraPath(Renamed function) use pgr_dijkstra insteaad';
+    IS 'pgr_kdijkstraPath(Renamed function) use pgr_dijkstra instead';
 
 COMMENT ON FUNCTION pgr_kdijkstracost( text, INTEGER, INTEGER array, BOOLEAN, BOOLEAN)
-    IS 'pgr_kDijkstraCost(Renamed function) use pgr_dijkstraCost insteaad';
+    IS 'pgr_kDijkstraCost(Renamed function) use pgr_dijkstraCost instead';
 
 COMMENT ON FUNCTION  pgr_maxFlowPushRelabel(TEXT, BIGINT, BIGINT)
-    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel insteaad';
+    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel instead';
 COMMENT ON FUNCTION  pgr_maxFlowPushRelabel(TEXT, BIGINT, ANYARRAY)
-    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel insteaad';
+    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel instead';
 COMMENT ON FUNCTION  pgr_maxFlowPushRelabel(TEXT, ANYARRAY, BIGINT)
-    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel insteaad';
+    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel instead';
 COMMENT ON FUNCTION  pgr_maxFlowPushRelabel(TEXT, ANYARRAY, ANYARRAY)
-    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel insteaad';
+    IS 'pgr_maxFlowPushRelabel(Renamed function) use pgr_pushRelabel instead';
 
 
 COMMENT ON FUNCTION  pgr_maxFlowEdmondsKarp(TEXT, BIGINT, BIGINT)
-    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp insteaad';
+    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp instead';
 COMMENT ON FUNCTION  pgr_maxFlowEdmondsKarp(TEXT, BIGINT, ANYARRAY)
-    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp insteaad';
+    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp instead';
 COMMENT ON FUNCTION  pgr_maxFlowEdmondsKarp(TEXT, ANYARRAY, BIGINT)
-    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp insteaad';
+    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp instead';
 COMMENT ON FUNCTION  pgr_maxFlowEdmondsKarp(TEXT, ANYARRAY, ANYARRAY)
-    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp insteaad';
+    IS 'pgr_maxFlowEdmondsKarp(Renamed function) use pgr_edmondsKarp instead';
 
 COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, BIGINT, BIGINT)
-    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov insteaad';
+    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
 COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, BIGINT, ANYARRAY)
-    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov insteaad';
+    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
 COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, ANYARRAY, BIGINT)
-    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov insteaad';
+    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
 COMMENT ON FUNCTION  pgr_maxFlowBoykovKolmogorov(TEXT, ANYARRAY, ANYARRAY)
-    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov insteaad';
+    IS 'pgr_maxFlowBoykovKolmogorov(Renamed function) use pgr_boykovKolmogorov instead';
+
+
+COMMENT ON FUNCTION pgr_gsoc_vrppdtw( text, INTEGER, INTEGER)
+    IS 'pgr_gsoc_vrppdtw(Renamed function) use pgr_pickDeliverEuclidean instead';
 
 ------------------------
 -- Deprecated functions

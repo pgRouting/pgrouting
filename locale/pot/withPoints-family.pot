@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -244,32 +244,16 @@ msgstr ""
 msgid "A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:0
-msgid "ped"
-msgstr ""
-
 #: ../../build/doc/withPoints-family.rst:137
 msgid "is the point identifier"
-msgstr ""
-
-#: ../../build/doc/withPoints-family.rst:0
-msgid "eid"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:138
 msgid "is an edge id of the `edges_sql`"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:0
-msgid "fraction"
-msgstr ""
-
 #: ../../build/doc/withPoints-family.rst:139
 msgid "represents where the edge `eid` will be cut."
-msgstr ""
-
-#: ../../build/doc/withPoints-family.rst:0
-msgid "side"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:140
@@ -348,10 +332,6 @@ msgstr ""
 #: ../../build/doc/withPoints-family.rst:170
 #: ../../build/doc/withPoints-family.rst:185
 msgid "(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6"
-msgstr ""
-
-#: ../../build/doc/withPoints-family.rst:0
-msgid "Remember"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:172

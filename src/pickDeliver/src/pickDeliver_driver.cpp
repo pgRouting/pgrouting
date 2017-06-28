@@ -118,12 +118,14 @@ do_pgr_pickDeliver(
         }
         log << pd_problem.msg.get_log();
         log << "Finish Reading data\n";
+        pd_problem.msg.clear();
 
 
         try {
             pd_problem.solve();
         } catch (AssertFailedException &except) {
             log << pd_problem.msg.get_log();
+            pd_problem.msg.clear();
             throw except;
         } catch(...) {
             log << "Caught unknown exception!";
@@ -133,9 +135,11 @@ do_pgr_pickDeliver(
 
         log << pd_problem.msg.get_log();
         log << "Finish solve\n";
+        pd_problem.msg.clear();
 
         auto solution = pd_problem.get_postgres_result();
         log << pd_problem.msg.get_log();
+        pd_problem.msg.clear();
         log << "solution size: " << solution.size() << "\n";
 
 

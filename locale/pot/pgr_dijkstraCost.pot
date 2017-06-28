@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,10 +141,6 @@ msgid "The minimal signature is for a **directed** graph from one ``start_vid`` 
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:106
-#: ../../build/doc/pgr_dijkstraCost.rst:0
-#: ../../build/doc/pgr_dijkstraCost.rst:0
-#: ../../build/doc/pgr_dijkstraCost.rst:0
-#: ../../build/doc/pgr_dijkstraCost.rst:0
 msgid "Example"
 msgstr ""
 
@@ -200,10 +196,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the edges_sql query for dijkstra like functions"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "edges_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -300,16 +292,8 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -430,16 +414,8 @@ msgstr ""
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:0
-msgid "Example 1"
-msgstr ""
-
 #: ../../build/doc/pgr_dijkstraCost.rst:231
 msgid "Demonstration of repeated values are ignored, and result is sorted."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:0
-msgid "Example 2"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:237

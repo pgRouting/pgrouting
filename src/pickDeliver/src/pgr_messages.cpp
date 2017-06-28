@@ -35,16 +35,12 @@ namespace pgrouting {
 std::string
 Pgr_messages::get_log() const {
     auto str = log.str();
-    log.str("");
-    log.clear();
     return str;
 }
 
 std::string
 Pgr_messages::get_notice() const {
     auto str = notice.str();
-    notice.str("");
-    notice.clear();
     return str;
 }
 
@@ -56,8 +52,6 @@ Pgr_messages::has_error() const {
 std::string
 Pgr_messages::get_error() const {
     auto str = error.str();
-    error.str("");
-    error.clear();
     return str;
 }
 

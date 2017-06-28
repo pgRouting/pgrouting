@@ -27,9 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
--- for the sake of Reginas book I am keeping this signature
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
+CREATE OR REPLACE FUNCTION _pgr_gsoc_vrppdtw(
     customers_sql TEXT,
     max_vehicles INTEGER,
     capacity FLOAT,
@@ -53,6 +52,7 @@ DECLARE
     vehicles_sql TEXT;
     final_sql TEXT;
 BEGIN
+    RAISE NOTICE 'Deprecated function pgr_gsoc_vrppdtw: Use pgr_pickDeliverEuclidean instead';
     orders_sql = $$WITH
         customer_data AS ($$ || customers_sql || $$ ),
         pickups AS (
@@ -76,13 +76,13 @@ BEGIN
 --  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
-        p_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  1, $$ || max_cycles || $$ )),
+        p_deliver AS (SELECT * FROM pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  1, $$ || max_cycles || $$ )),
         picks AS (SELECT p_deliver.*, pindex, dindex, id AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
         delivers AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 3)),
         depots AS (SELECT p_deliver.*, 0 as pindex, 0 as dindex, 0 AS the_id FROM p_deliver WHERE (stop_type IN (-1,1,6))),
         the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
 
-        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
+        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_seq, a.stop_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
         FROM (SELECT * FROM the_union) AS a ORDER BY a.seq
         $$;
     RETURN QUERY EXECUTE final_sql;

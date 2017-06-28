@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky_vergara@hotmail.com>, 2017\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,18 +71,9 @@ msgstr ""
 "La función para la reconstrucción de la tabla mesa vértices acepta los "
 "siguientes parámetros:"
 
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "edge_table"
-msgstr "edge_table"
-
 #: ../../build/doc/pgr_createVerticesTable.rst:46
 msgid "``text`` Network table name. (may contain the schema name as well)"
 msgstr "``text`` La tabla de la red. (puede contener el nombre del esquema)"
-
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "the_geom"
-msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:47
 msgid ""
@@ -92,10 +83,6 @@ msgstr ""
 "``text``  nombre de la columna de la geometría en la tabla de la red. El "
 "valor por defecto es ``the_geom``"
 
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "source"
-msgstr ""
-
 #: ../../build/doc/pgr_createVerticesTable.rst:48
 msgid ""
 "``text`` Source column name of the network table. Default value is "
@@ -104,10 +91,6 @@ msgstr ""
 "``id``Nombre de columna de origen de la tabla de red. El valor "
 "predeterminado es``source``."
 
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "target"
-msgstr ""
-
 #: ../../build/doc/pgr_createVerticesTable.rst:49
 msgid ""
 "``text``  Target column name of the network table.  Default value is "
@@ -115,10 +98,6 @@ msgid ""
 msgstr ""
 "``text``  El nombre de la columna del nodo de llegada del segmento.  El "
 "valor por defecto es ``target``."
-
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "rows_where"
-msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:50
 msgid ""
@@ -202,17 +181,9 @@ msgstr ""
 msgid "The structure of the vertices table is:"
 msgstr "La estructura de la tabla de los vértices es:"
 
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "id"
-msgstr ""
-
 #: ../../build/doc/pgr_createVerticesTable.rst:82
 msgid "``bigint`` Identifier of the vertex."
 msgstr "``bigint`` identificador del vértice."
-
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "cnt"
-msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:83
 msgid ""
@@ -222,10 +193,6 @@ msgstr ""
 "``integer`` número de vértices en la edge_table que hacen referencia a este "
 "vértice. Ver :ref:`pgr_analyzeGgraph <pgr_analyze_graph>`."
 
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "chk"
-msgstr ""
-
 #: ../../build/doc/pgr_createVerticesTable.rst:84
 msgid ""
 "``integer``  Indicator that the vertex might have a problem. See "
@@ -234,10 +201,6 @@ msgstr ""
 "``integer`` indicador que el vértice podría tener un problema. Ver "
 ":ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
 
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "ein"
-msgstr ""
-
 #: ../../build/doc/pgr_createVerticesTable.rst:85
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
@@ -245,10 +208,6 @@ msgid ""
 msgstr ""
 "``integer`` número de vértices en la edge_table que hacen referencia a este "
 "vértice como entrante. Ver :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
-
-#: ../../build/doc/pgr_createVerticesTable.rst:0
-msgid "eout"
-msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:86
 msgid ""
