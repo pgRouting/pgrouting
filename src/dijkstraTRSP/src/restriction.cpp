@@ -23,33 +23,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <limits>
 
-Restriction::Restriction(int64_t _id, double _cost) :
-    m_id(_id),
-    //m_restriction_edges(get_restrictionvector_from_array(r.restricted_edges)),
-    m_cost(_cost)
-    {}
-
-#if 0
-std::vector < int64_t >
-Restriction::get_restrictionvector_from_array(int64_t *r_edge_array) {
-    std::vector < int64_t > temp_vector;
-    for (auto &edge: r_edge_array) {
-        if (edge == -1) break;
-        temp_vector.push_back(edge);
+Restriction::Restriction(const Restrict_t &r) :
+    m_id(r.id),
+    m_cost(r.cost) {
+        for(auto &it: r.restricted_edges) {
+            if (it == -1) break;
+            m_restricted_edges.push_back(it);
+        }
     }
-    return temp_vector;
-}
-
 
 std::ostream&
 operator << (std::ostream &log, const Restriction& r) {
     log << "Restriction---------------\n";
     log << "ID: " << r.id() << "\n Restricion edge sequence: ";
-    for (const auto v : r.m_restriction_edges()) {
+    for (const auto v : r.m_restricted_edges) {
         log << v <<"\t";
     }
     log << "\n";
     log << "Cost: " << r.cost() << "\n";
     return log;
 }
-#endif

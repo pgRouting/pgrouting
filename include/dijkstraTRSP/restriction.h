@@ -31,29 +31,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 class Restriction {
     private:
         int64_t m_id;
-        std::vector< int64_t > m_restriction_edges;
+        std::vector< int64_t > m_restricted_edges;
         double m_cost;
 
     public:
         Restriction() = default;
-        Restriction(int64_t _id, double _cost);
-#if 0
+        Restriction(const Restrict_t &r);
+
         int64_t id() const {return m_id;}
         void id(int64_t value) {m_id = value;}
 
         double cost() const {return m_cost;}
         void cost(double value) {m_cost = value;}
 
-
-        Restriction(const Restriction&) = default;
-
-        std::vector< int64_t > restricted_edges() const {return m_restriction_edges;}
-        void restricted_edges(std::vector< int64_t >& value) {m_restriction_edges=value;
-
-        std::vector < int64_t > get_restrictionvector_from_array(int64_t *);
+        std::vector< int64_t > restricted_edges() const {return m_restricted_edges;}
+        void restricted_edges(std::vector< int64_t >& value) {m_restricted_edges=value;}
 
         friend std::ostream& operator << (std::ostream &log, const Restriction &r);
-#endif
 };
 
 #endif // INCLUDE_DIJKSTRATRSP_RESTRICTION_H

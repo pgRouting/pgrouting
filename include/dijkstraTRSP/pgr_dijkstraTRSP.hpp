@@ -41,19 +41,20 @@ class Pgr_dijkstraTRSP {
              int64_t target,
              bool only_cost,
              bool strict);
-     void clear();
+     void init();
  private:
      void executeDijkstraTRSP(G& graph);
      void getDijkstraSolution(G& graph);
      bool has_restriction();
-     bool has_a_restriction();
+     bool has_a_restriction(int64_t edge, int64_t index);
  private:
      typedef typename G::V V;
      V v_source;
      V v_target;
      int64_t m_start;
      int64_t m_end;
-     //std::vector< std::pair<int64_t, Restrict_t> > m_restrictions;
+     std::vector< Restriction > m_restrictions;
+     std::vector< int64_t > m_edges_in_path;
      bool m_only_cost;
      bool m_strict;
 
@@ -64,7 +65,7 @@ class Pgr_dijkstraTRSP {
 };
 
 template < class G >
-void Pgr_dijkstraTRSP< G >::clear() {
+void Pgr_dijkstraTRSP< G >::init() {
 }
 
 template < class G>
@@ -81,8 +82,7 @@ int64_t start_vertex, int64_t end_vertex, bool only_cost, bool strict) {
     v_target = graph.get_V(end_vertex);
     m_start = start_vertex;
     m_end = end_vertex;
-    //for(auto &restriction: restrictions)
-    //    m_restrictions.push_back( {restriction.restricted_edges[0], restriction} );
+    m_restrictions = restrictions;
     m_strict = strict;
     executeDijkstraTRSP(graph);
     return curr_result_path;
@@ -100,72 +100,65 @@ void Pgr_dijkstraTRSP< G >::getDijkstraSolution(G& graph) {
 }
 
 template < class G >
-bool Pgr_dijkstraTRSP< G >::has_a_restriction() {
-    auto lower_bound_cmp = [](const std::pair<int64_t, Restrict_t>& p,
-        int64_t target) -> bool {
-        return p.first < target;
+bool Pgr_dijkstraTRSP< G >::has_a_restriction(int64_t edge, int64_t index) {
+    auto lower_bound_cmp = [](const Restriction& r, const int64_t& target) -> bool {
+        return r.restricted_edges()[0] < target;
     };
-    return false;
+    auto edge_index = std::lower_bound(m_restrictions.begin(),
+        m_restrictions.end(), edge, lower_bound_cmp) - m_restrictions.begin();
+    while (edge_index < m_restrictions.size()) {
+        auto r_edges = m_restrictions[edge_index].restricted_edges();
+        if (r_edges[0] != edge) break;
+
+        bool okay = true;
+        size_t temp_edge_index = index;
+
+        for (auto &edge_id: r_edges) {
+            if (temp_edge_index >= m_edges_in_path.size() or
+                m_edges_in_path[temp_edge_index] != edge_id) {
+                okay = false;
+                break;
+            }
+            temp_edge_index++;
+        }
+        if (okay) return true;
+        edge_index++;
+    }
 }
 
 template < class G >
 bool Pgr_dijkstraTRSP< G >::has_restriction() {
-#if 0
-    auto sort_cmp = [](const std::pair<int64_t, Restrict_t>& left,
-       const std::pair<int64_t, Restrict_t>& right) -> bool {
-           return left.first <= right.first;
+    auto sort_cmp = [](const Restriction& left,
+         const Restriction& right) -> bool {
+           return left.restricted_edges()[0] <= right.restricted_edges()[0];
        };
     std::stable_sort(m_restrictions.begin(), m_restrictions.end(),
         sort_cmp);
 
-    std::vector< int64_t > edges_in_path;
-    for (auto &path: curr_result_path) {
-        edges_in_path.push_back(path.edge);
-    }
-    while (edges_in_path.size() and edges_in_path.back() == -1) {
-        edges_in_path.pop_back();
-    }
-
     size_t index = 0;
-    for (auto &edge: edges_in_path) {
-        auto edge_index = std::lower_bound(m_restrictions.begin(),
-            m_restrictions.end(), edge, lower_bound_cmp) - m_restrictions.begin();
-
-        while (edge_index < m_restrictions.size() and
-            m_restrictions[edge_index].first == edge) {
-            size_t temp_edge_index = index;
-            bool okay = true;
-            for (auto &edge_id: m_restrictions[edge_index].second.restricted_edges) {
-                if (edge_id == -1) {
-                    break;
-                }
-                if (temp_edge_index >= edges_in_path.size() or
-                    edges_in_path[temp_edge_index] != edge_id) {
-                    okay = false;
-                    break;
-                }
-                temp_edge_index++;
-            }
-            if (okay) {
-                log << "Restriction is not applicable to this case.";
-                return true;
-            }
-            edge_index++;
-        }
+    for (auto &edge: m_edges_in_path) {
+        if (has_a_restriction(edge, index))
+            return true;
         index++;
     }
-
-    log << "Restriction is applicable to this case.";
-#endif
     return false;
 }
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G& graph) {
-    clear();
+    init();
     getDijkstraSolution(graph);
     log << curr_result_path;
+
+    for (auto &path: curr_result_path) {
+        m_edges_in_path.push_back(path.edge);
+    }
+    while (m_edges_in_path.size() and m_edges_in_path.back() == -1) {
+        m_edges_in_path.pop_back();
+    }
+
     bool sol = has_restriction();
+    log << "Result of valid solution" << sol << "\n";
     if (sol)
         curr_result_path = Path();
 }
