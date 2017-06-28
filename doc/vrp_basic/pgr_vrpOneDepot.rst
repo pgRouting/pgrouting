@@ -29,6 +29,11 @@ Example:
 
 .. literalinclude:: doc-pgr_vrpOneDepot.queries
 
+.. rubric:: Current Result
+
+.. literalinclude:: oneDepotWrapper.queries
+
+
 .. rubric:: Data
 
 .. literalinclude:: ../../tools/testers/vrpOneDepot.data
