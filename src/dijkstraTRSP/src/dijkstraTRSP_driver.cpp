@@ -103,7 +103,7 @@ do_pgr_dijkstraTRSP(
 
         std::vector< Restriction > restrictions_array;
         for(size_t i = 0;i < total_restrictions;i++) {
-            Restriction r(2, 5.0);
+            Restriction r();
             #if 0
             restrictions_array.push_back(restrictions[i]);
             log << r;
