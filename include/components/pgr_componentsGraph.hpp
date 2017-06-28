@@ -41,32 +41,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-namespace componentsGraph {
+namespace graph {
 
 template <class G, typename T_V, typename T_E>
 class Pgr_componentsGraph;
 
-}
+} // namespace graph
 
-namespace componentsGraph {
+namespace graph {
 
 template <class G, typename T_V, typename T_E>
 class Pgr_componentsGraph : public Pgr_base_graph<G, T_V, T_E> {
  public:
-     typedef typename boost::graph_traits < G >::vertex_descriptor V;
-     typedef typename boost::graph_traits < G >::edge_descriptor E;
-     typedef typename boost::graph_traits < G >::vertex_iterator V_i;
-     typedef typename boost::graph_traits < G >::edge_iterator E_i;
-     typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
-     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
-     typedef typename boost::graph_traits < G >::degree_size_type
-         degree_size_type;
+     G graph;
+
+     explicit Pgr_componentsGraph< G, T_V, T_E >(graphType gtype)
+         : Pgr_base_graph< G, T_V, T_E >(gtype) {
+         }
+
+     template < typename T >
+         void insert_edges(const T *edges, int64_t count) {
+             insert_edges(std::vector < T >(edges, edges + count));
+         }
+
+     template <typename T >
+         void insert_edges(const std::vector < T > &edges) {
+             for (const auto edge : edges) {
+                 graph_add_edge(edge);
+             }
+         }
 
  private:
-    template < class G, typename T_V, typename T_E >
     template < typename T >
     void
-    Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
+    graph_add_edge(const T &edge) {
         bool inserted;
         typename Pgr_base_graph< G, T_V, T_E >::E e;
         if ((edge.cost < 0) && (edge.reverse_cost < 0))
@@ -79,8 +87,9 @@ class Pgr_componentsGraph : public Pgr_base_graph<G, T_V, T_E> {
         auto vm_s = get_V(T_V(edge, true));
         auto vm_t = get_V(T_V(edge, false));
 
-        pgassert(vertices_map.find(edge.source) != vertices_map.end());
-        pgassert(vertices_map.find(edge.target) != vertices_map.end());
+        typename Pgr_base_graph< G, T_V, T_E >::vertices_map vMap;
+        pgassert(vMap.find(edge.source) != vMap.end());
+        pgassert(vMap.find(edge.target) != vMap.end());
         if (edge.cost >= 0) {
             boost::tie(e, inserted) =
                 boost::add_edge(vm_s, vm_t, graph);
@@ -95,7 +104,7 @@ class Pgr_componentsGraph : public Pgr_base_graph<G, T_V, T_E> {
     }
 };
 
-}  // namespace componentsGraph
+}  // namespace graph
 }  // namespace pgrouting
 
 #endif // INCLUDE_COMPONENTS_PGR_COMPONENTSGRAPH_HPP_
