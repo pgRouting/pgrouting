@@ -23,14 +23,15 @@ pgr_vrpOneDepot - experimental
 Example:
 -------------------------------------------------------------------------------
 
-.. rubric:: Data
-
-.. include:: ../src/vrp_basic/test/VRP-any-00.data
+**Under discussion**
 
 .. rubric:: Current Result
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_vrpOneDepot.queries
+
+.. rubric:: Data
+
+.. literalinclude:: ../../tools/testers/vrpOneDepot.data
 
 
-* :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem
