@@ -101,9 +101,13 @@ do_pgr_dijkstraTRSP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector<Restrict_t> restrictions_array;
-        for(size_t i = 0;i < total_restrictions;i++)
-            restrictions_array.push_back(restrictions[i]);
+        std::vector< Restriction > restrictions_array;
+        for(size_t i = 0;i < total_restrictions;i++) {
+            //restrictions_array.push_back(restrictions[i]);
+            Restriction r(2, 5.0);
+            //log << r;
+            //restrictions_array.push_back(r);
+        }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
