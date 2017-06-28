@@ -18,7 +18,19 @@ pgr_vrpOneDepot - experimental
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-No documentation available from the original developer
+**No documentation available**
+
+Example:
+-------------------------------------------------------------------------------
+
+.. rubric:: Data
+
+.. include:: ../src/vrp_basic/test/VRP-any-00.data
+
+.. rubric:: Current Result
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+
 
 * :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem
