@@ -32,8 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#include <limits>
-#include <algorithm>
 #include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
@@ -47,6 +45,12 @@ template <class G, typename T_V, typename T_E>
 class Pgr_componentsGraph;
 
 } // namespace graph
+
+typedef graph::Pgr_componentsGraph <
+boost::adjacency_list < boost::vecS, boost::vecS,
+    boost::undirectedS,
+    Basic_vertex, Basic_edge >,
+    Basic_vertex, Basic_edge > ComponentsUndiGraph;
 
 namespace graph {
 
@@ -84,12 +88,13 @@ class Pgr_componentsGraph : public Pgr_base_graph<G, T_V, T_E> {
          * true: for source
          * false: for target
          */
-        auto vm_s = get_V(T_V(edge, true));
-        auto vm_t = get_V(T_V(edge, false));
+        auto vm_s = Pgr_base_graph< G, T_V, T_E >::get_V(T_V(edge, true));
+        auto vm_t = Pgr_base_graph< G, T_V, T_E >::get_V(T_V(edge, false));
 
-        typename Pgr_base_graph< G, T_V, T_E >::vertices_map vMap;
-        pgassert(vMap.find(edge.source) != vMap.end());
-        pgassert(vMap.find(edge.target) != vMap.end());
+        pgassert((Pgr_base_graph< G, T_V, T_E >::vertices_map).find(edge.source) != 
+                 (Pgr_base_graph< G, T_V, T_E >::vertices_map).end());
+        pgassert((Pgr_base_graph< G, T_V, T_E >::vertices_map).find(edge.target) != 
+                 (Pgr_base_graph< G, T_V, T_E >::vertices_map).end());
         if (edge.cost >= 0) {
             boost::tie(e, inserted) =
                 boost::add_edge(vm_s, vm_t, graph);
