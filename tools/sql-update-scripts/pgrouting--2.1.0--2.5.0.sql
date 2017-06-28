@@ -3373,10 +3373,10 @@ CREATE OR REPLACE FUNCTION pgr_pickDeliverEuclidean (
 
 
 CREATE OR REPLACE FUNCTION _pgr_vrpOneDepot(
-    customers_sql TEXT,
-    vehicles_sql TEXT,
+    TEXT, -- customers_sql
+    TEXT, -- vehicles_sql
     TEXT, -- matrix_sql
-    depot_id INTEGER,
+    INTEGER, -- depot_id
 
     OUT seq INTEGER,
     OUT vehicle_seq INTEGER,
@@ -3402,25 +3402,25 @@ final_sql TEXT;
 BEGIN
 
     orders_sql = $$WITH
-    vrp_orders AS ($$ || customers_sql || $$ ),
+    vrp_orders AS ($$ || $1 || $$ ),
     pickups AS (
         SELECT id, x AS p_x, y AS p_y, open_time AS p_open, close_time AS p_close, service_time AS p_service
         FROM vrp_orders
-        WHERE id = $$ || depot_id || $$
+        WHERE id = $$ || $4 || $$
     )
     SELECT vrp_orders.id AS id, order_unit AS demand, pickups.id AS p_node_id, p_x, p_y, p_open, p_close, p_service,
     vrp_orders.id AS d_node_id, x AS d_x, y AS d_y, open_time AS d_open, close_time AS d_close, service_time AS d_service
     FROM vrp_orders, pickups
-    WHERE vrp_orders.id != $$ || depot_id;
+    WHERE vrp_orders.id != $$ || $4;
 
 
     trucks_sql = $$ WITH
-    vrp_orders AS ($$ || customers_sql || $$ ),
-    vrp_vehicles AS ($$ || vehicles_sql || $$ ),
+    vrp_orders AS ($$ || $1 || $$ ),
+    vrp_vehicles AS ($$ || $2 || $$ ),
     starts AS (
         SELECT id AS start_node_id, x AS start_x, y AS start_y, open_time AS start_open, close_time AS start_close, service_time AS start_service
         FROM vrp_orders
-        WHERE id = $$ || depot_id || $$
+        WHERE id = $$ || $4 || $$
     )
     SELECT vehicle_id AS id, capacity, starts.* FROM vrp_vehicles, starts;
     $$;
@@ -3442,6 +3442,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
 
 -----------------------------------------------------------------------
 -- Core function for vrp with sigle depot computation
