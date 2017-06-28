@@ -105,6 +105,7 @@ bool Pgr_dijkstraTRSP< G >::has_a_restriction() {
         int64_t target) -> bool {
         return p.first < target;
     };
+    return false;
 }
 
 template < class G >

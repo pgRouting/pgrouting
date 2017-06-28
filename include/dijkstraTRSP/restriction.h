@@ -35,8 +35,8 @@ class Restriction {
         double m_cost;
 
     public:
-        Restriction() {}
-        Restriction(int64_t, double);
+        Restriction() = default;
+        Restriction(int64_t _id, double _cost);
 #if 0
         int64_t id() const {return m_id;}
         void id(int64_t value) {m_id = value;}

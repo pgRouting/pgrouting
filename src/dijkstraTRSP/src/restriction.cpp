@@ -23,17 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <limits>
 
-Restriction::Restriction(int64_t _id, double _cost) {
-    m_id = _id;
-    m_cost = _cost;
-}
-#if 0
-Restriction::Restriction(int64_t _id) :
+Restriction::Restriction(int64_t _id, double _cost) :
     m_id(_id),
-    m_restriction_edges(get_restrictionvector_from_array(r.restricted_edges)),
+    //m_restriction_edges(get_restrictionvector_from_array(r.restricted_edges)),
     m_cost(_cost)
     {}
 
+#if 0
 std::vector < int64_t >
 Restriction::get_restrictionvector_from_array(int64_t *r_edge_array) {
     std::vector < int64_t > temp_vector;
