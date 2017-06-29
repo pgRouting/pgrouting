@@ -104,10 +104,10 @@ do_pgr_dijkstraTRSP(
         log << "\n----------------------------------------\nRestrictions data\n";
         std::vector< Restriction > restrict_array;
         for(size_t i = 0;i < total_restrictions;i++) {
-            #if 1
+            #if 0
             log << Restriction(restrictions[i]);
             #endif
-            //restrict_array.push_back( Restriction(restrictions[i]) );
+            restrict_array.push_back( Restriction(restrictions[i]) );
         }
 
         log << "\n-------------------------------------------------------------\nStart from here\n";
