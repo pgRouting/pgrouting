@@ -2,7 +2,7 @@
 File: dijkstraTRSP_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -60,6 +60,7 @@ pgr_dijkstraTRSP(
         const std::vector< Restriction >& restrictions_array,
         int64_t source,
         int64_t target,
+        std::string& log,
         bool only_cost = false,
         bool strict = false) {
     Pgr_dijkstraTRSP< G > fn_TRSP;
@@ -69,7 +70,8 @@ pgr_dijkstraTRSP(
                     target,
                     only_cost,
                     strict);
-    log << fn_TRSP.log.str().c_str();
+    pgassert(!fn_TRSP.log.str().empty());
+    log += fn_TRSP.log.str().c_str();
     return path;
 }
 #endif
@@ -104,59 +106,59 @@ do_pgr_dijkstraTRSP(
         log << "\n----------------------------------------\nRestrictions data\n";
         std::vector< Restriction > restrict_array;
         for(size_t i = 0;i < total_restrictions;i++) {
-            #if 0
-            log << Restriction(restrictions[i]);
-            #endif
             restrict_array.push_back( Restriction(restrictions[i]) );
         }
-
         log << "\n-------------------------------------------------------------\nStart from here\n";
-        for (const auto &it: restrict_array)
+        for (const auto &it: restrict_array) {
             log << it << "\n";
+        }
         log <<"-----------------------------------------------------------------\n";
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         Path path;
-
+        std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             Pgr_dijkstraTRSP < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(data_edges, total_edges);
-            path = fn_TRSP.dijkstraTRSP(digraph,
+            path = pgr_dijkstraTRSP(digraph,
                     restrict_array,
                     start_vid,
                     end_vid,
+                    logstr,
                     only_cost,
                     strict);
-            log << fn_TRSP.log.str().c_str();
+            log << logstr;
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             Pgr_dijkstraTRSP < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
-            path = fn_TRSP.dijkstraTRSP(undigraph,
+            path = pgr_dijkstraTRSP(undigraph,
                     restrict_array,
                     start_vid,
                     end_vid,
+                    logstr,
                     only_cost,
                     strict);
-            log << fn_TRSP.log.str().c_str();
+            log << logstr;
         }
         auto count = path.size();
+        log << "\nCount = " << count;
+
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
                 "No paths found between start_vid and end_vid vertices";
-            return;
+        } else {
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            size_t sequence = 0;
+            path.generate_postgres_data(return_tuples, sequence);
+            (*return_count) = sequence;
         }
-
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        size_t sequence = 0;
-        path.generate_postgres_data(return_tuples, sequence);
-        (*return_count) = sequence;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
@@ -165,6 +167,7 @@ do_pgr_dijkstraTRSP(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
+        pgassert(!log.str().empty());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
