@@ -28,7 +28,7 @@ Restriction::Restriction(const Restrict_t &r) :
     m_cost(r.cost) {
         for(auto &it: r.restricted_edges) {
             if (it == -1) break;
-            restricted_edges(it);
+            restrict_edges(it);
         }
     }
 
@@ -36,7 +36,7 @@ std::ostream&
 operator << (std::ostream &log, const Restriction& r) {
     log << "\n--------------------------------\nRestriction\n";
     log << "ID: " << r.id() << "\nRestricion edge sequence: ";
-    for (const auto &v : r.restricted_edges()) {
+    for (const auto &v : r.restrict_edges()) {
         log << v <<" ";
     }
     log << "\n";

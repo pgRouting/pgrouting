@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 class Restriction {
     private:
         int64_t m_id;
-        std::vector< int64_t > m_restricted_edges;
+        std::vector< int64_t > m_restrict_edges;
         double m_cost;
 
     public:
@@ -44,8 +44,8 @@ class Restriction {
         double cost() const {return m_cost;}
         void cost(const double& value) {m_cost = value;}
 
-        std::vector< int64_t > restricted_edges() const {return m_restricted_edges;}
-        void restricted_edges(const int64_t& value) {m_restricted_edges.push_back(value);}
+        std::vector< int64_t > restrict_edges() const {return m_restrict_edges;}
+        void restrict_edges(const int64_t& value) {m_restrict_edges.push_back(value);}
 
         friend std::ostream& operator << (std::ostream &log, const Restriction &r);
 };

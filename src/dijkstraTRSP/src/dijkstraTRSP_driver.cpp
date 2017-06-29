@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "dijkstraTRSP/pgr_dijkstraTRSP.hpp"
-#include "dijkstraTRSP/restriction.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -102,12 +101,13 @@ do_pgr_dijkstraTRSP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
+        log << "\n----------------------------------------\nRestrictions data\n";
         std::vector< Restriction > restrict_array;
         for(size_t i = 0;i < total_restrictions;i++) {
-            #if 0
+            #if 1
             log << Restriction(restrictions[i]);
             #endif
-            restrict_array.push_back( Restriction(restrictions[i]) );
+            //restrict_array.push_back( Restriction(restrictions[i]) );
         }
 
         log << "\n-------------------------------------------------------------\nStart from here\n";

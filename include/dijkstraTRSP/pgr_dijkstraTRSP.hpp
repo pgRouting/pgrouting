@@ -106,12 +106,12 @@ void Pgr_dijkstraTRSP< G >::getDijkstraSolution(G& graph) {
 template < class G >
 bool Pgr_dijkstraTRSP< G >::has_a_restriction(int64_t edge, int64_t index) {
     auto lower_bound_cmp = [](const Restriction& r, const int64_t& target) -> bool {
-        return r.restricted_edges()[0] < target;
+        return r.restrict_edges()[0] < target;
     };
     auto edge_index = std::lower_bound(m_restrictions.begin(),
         m_restrictions.end(), edge, lower_bound_cmp) - m_restrictions.begin();
     while (edge_index < m_restrictions.size()) {
-        auto r_edges = m_restrictions[edge_index].restricted_edges();
+        auto r_edges = m_restrictions[edge_index].restrict_edges();
         if (r_edges[0] != edge) break;
 
         bool okay = true;
@@ -134,7 +134,7 @@ template < class G >
 bool Pgr_dijkstraTRSP< G >::has_restriction() {
     auto sort_cmp = [](const Restriction& left,
          const Restriction& right) -> bool {
-           return left.restricted_edges()[0] <= right.restricted_edges()[0];
+           return left.restrict_edges()[0] <= right.restrict_edges()[0];
        };
     std::stable_sort(m_restrictions.begin(), m_restrictions.end(),
         sort_cmp);
