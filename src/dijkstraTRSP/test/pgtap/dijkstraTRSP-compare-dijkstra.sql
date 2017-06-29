@@ -20,6 +20,7 @@ BEGIN
 
     FOR i IN 1.. cant LOOP
         FOR j IN 1.. cant LOOP
+        
             -- DIRECTED
             inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7';
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j

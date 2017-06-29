@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "dijkstraTRSP/pgr_dijkstraTRSP.hpp"
+#include "dijkstraTRSP/restriction.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -57,7 +58,7 @@ static
 Path
 pgr_dijkstraTRSP(
         G &graph,
-        const std::vector<Restrict_t>& restrictions_array,
+        const std::vector< Restriction >& restrictions_array,
         int64_t source,
         int64_t target,
         bool only_cost = false,
@@ -101,13 +102,18 @@ do_pgr_dijkstraTRSP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector< Restriction > restrictions_array;
+        std::vector< Restriction > restrict_array;
         for(size_t i = 0;i < total_restrictions;i++) {
-            //restrictions_array.push_back(restrictions[i]);
-            Restriction r(restrictions[i]);
-            log << r;
-            //restrictions_array.push_back(r);
+            #if 0
+            log << Restriction(restrictions[i]);
+            #endif
+            restrict_array.push_back( Restriction(restrictions[i]) );
         }
+
+        log << "\n-------------------------------------------------------------\nStart from here\n";
+        for (const auto &it: restrict_array)
+            log << it << "\n";
+        log <<"-----------------------------------------------------------------\n";
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -119,7 +125,7 @@ do_pgr_dijkstraTRSP(
             Pgr_dijkstraTRSP < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(data_edges, total_edges);
             path = fn_TRSP.dijkstraTRSP(digraph,
-                    restrictions_array,
+                    restrict_array,
                     start_vid,
                     end_vid,
                     only_cost,
@@ -131,7 +137,7 @@ do_pgr_dijkstraTRSP(
             Pgr_dijkstraTRSP < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
             path = fn_TRSP.dijkstraTRSP(undigraph,
-                    restrictions_array,
+                    restrict_array,
                     start_vid,
                     end_vid,
                     only_cost,

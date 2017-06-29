@@ -41,7 +41,7 @@ class Pgr_dijkstraTRSP {
              int64_t target,
              bool only_cost,
              bool strict);
-     void init();
+     void clear();
  private:
      void executeDijkstraTRSP(G& graph);
      void getDijkstraSolution(G& graph);
@@ -65,7 +65,7 @@ class Pgr_dijkstraTRSP {
 };
 
 template < class G >
-void Pgr_dijkstraTRSP< G >::init() {
+void Pgr_dijkstraTRSP< G >::clear() {
 }
 
 template < class G>
@@ -83,6 +83,10 @@ int64_t start_vertex, int64_t end_vertex, bool only_cost, bool strict) {
     m_start = start_vertex;
     m_end = end_vertex;
     m_restrictions = restrictions;
+    log << "\n-------------------------------------------------------------\nStart from here\n";
+    for (auto it: restrictions)
+        log << it << "\n";
+    log <<"-----------------------------------------------------------------\n";
     m_strict = strict;
     executeDijkstraTRSP(graph);
     return curr_result_path;
@@ -134,7 +138,10 @@ bool Pgr_dijkstraTRSP< G >::has_restriction() {
        };
     std::stable_sort(m_restrictions.begin(), m_restrictions.end(),
         sort_cmp);
-
+    log << "\n-----------------------------------------------------------\n";
+    for (auto &it: m_restrictions)
+        log << it <<"\n";
+    log << "Printing of restrictions table done\n";
     size_t index = 0;
     for (auto &edge: m_edges_in_path) {
         if (has_a_restriction(edge, index))
@@ -146,7 +153,7 @@ bool Pgr_dijkstraTRSP< G >::has_restriction() {
 
 template < class G >
 void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G& graph) {
-    init();
+    clear();
     getDijkstraSolution(graph);
     log << curr_result_path;
 
@@ -157,6 +164,10 @@ void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G& graph) {
         m_edges_in_path.pop_back();
     }
 
+    log << "Edges in m_edges_in_path:-------------------\n";
+    for(auto &it: m_edges_in_path)
+        log << it << "\n";
+    log << "---------------------------------------------\n";
     bool sol = has_restriction();
     log << "Result of valid solution" << sol << "\n";
     if (sol)

@@ -39,13 +39,13 @@ class Restriction {
         Restriction(const Restrict_t &r);
 
         int64_t id() const {return m_id;}
-        void id(int64_t value) {m_id = value;}
+        void id(const int64_t& value) {m_id = value;}
 
         double cost() const {return m_cost;}
-        void cost(double value) {m_cost = value;}
+        void cost(const double& value) {m_cost = value;}
 
         std::vector< int64_t > restricted_edges() const {return m_restricted_edges;}
-        void restricted_edges(std::vector< int64_t >& value) {m_restricted_edges=value;}
+        void restricted_edges(const int64_t& value) {m_restricted_edges.push_back(value);}
 
         friend std::ostream& operator << (std::ostream &log, const Restriction &r);
 };
