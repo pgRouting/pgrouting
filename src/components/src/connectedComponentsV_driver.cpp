@@ -84,7 +84,7 @@ do_pgr_connectedComponentsV(
         std::vector<pgr_components_rt> results;
 
         log << "Working with Undirected Graph\n";
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::ComponentsUndiGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_connectedComponentsV(
                 undigraph);

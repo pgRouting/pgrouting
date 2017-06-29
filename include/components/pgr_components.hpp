@@ -3,8 +3,8 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2015 Maoguang Wang 
-xjtumg1007@gmail.com
+Copyright (c) 2017 Maoguang Wang 
+Mail: xjtumg1007@gmail.com
 
 ------
 
@@ -38,10 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <algorithm>
 
-#if 0
-#include "cpp_common/basePath_SSEC.hpp"
-#endif
-#include "cpp_common/pgr_base_graph.hpp"
+#include "pgr_componentsGraph.hpp"
 
 template < class G > class Pgr_components;
 // user's functions
