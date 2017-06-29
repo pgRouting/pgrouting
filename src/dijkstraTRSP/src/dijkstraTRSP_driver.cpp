@@ -163,9 +163,11 @@ do_pgr_dijkstraTRSP(
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
+        #if 0
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
+        #endif
         pgassert(!log.str().empty());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
