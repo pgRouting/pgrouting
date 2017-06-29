@@ -106,10 +106,11 @@ bool Pgr_dijkstraTRSP< G >::has_a_restriction(int64_t edge, int64_t index) {
     };
     auto edge_index = std::lower_bound(m_restrictions.begin(),
         m_restrictions.end(), edge, lower_bound_cmp) - m_restrictions.begin();
+    log << "\nResult generated from lower_bound\n";
     while (edge_index < m_restrictions.size()) {
         auto r_edges = m_restrictions[edge_index].restrict_edges();
         if (r_edges[0] != edge) break;
-
+        log << m_restrictions[edge_index] << "\n";
         bool okay = true;
         size_t temp_edge_index = index;
 
@@ -121,9 +122,12 @@ bool Pgr_dijkstraTRSP< G >::has_a_restriction(int64_t edge, int64_t index) {
             }
             temp_edge_index++;
         }
+        log << "\nokay value = " << okay <<"\n";
         if (okay) return true;
         edge_index++;
     }
+    log << "Ends Here\n";
+    return false;
 }
 
 template < class G >
@@ -134,7 +138,9 @@ bool Pgr_dijkstraTRSP< G >::has_restriction() {
        };
     std::stable_sort(m_restrictions.begin(), m_restrictions.end(),
         sort_cmp);
-
+    log << "\nRestriction array after sorting.\n";
+    for (auto &it: m_restrictions) log << it << "\n";
+    log << "\nEnd\n";
     size_t index = 0;
     for (auto &edge: m_edges_in_path) {
         if (has_a_restriction(edge, index))
@@ -161,7 +167,7 @@ void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G& graph) {
     for(auto &it: m_edges_in_path) log << it << "\n";
     log << "---------------------------------------------\n";
     bool sol = has_restriction();
-    log << "Result of valid solution" << sol << "\n";
+    log << "Result of valid solution: " << sol << "\n";
     if (sol) curr_result_path = Path();
 }
 

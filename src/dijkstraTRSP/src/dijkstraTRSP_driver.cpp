@@ -129,7 +129,6 @@ do_pgr_dijkstraTRSP(
                     logstr,
                     only_cost,
                     strict);
-            log << logstr;
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
@@ -142,8 +141,8 @@ do_pgr_dijkstraTRSP(
                     logstr,
                     only_cost,
                     strict);
-            log << logstr;
         }
+        log << logstr;
         auto count = path.size();
         log << "\nCount = " << count;
 

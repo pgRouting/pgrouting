@@ -11,5 +11,15 @@ SELECT * FROM pgr_dijkstraTRSP(
 -----+----------+------+------+------+----------
 (0 rows)
 
+SELECT * FROM pgr_dijkstraTRSP(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT * FROM restrict',
+    2, 8,
+    FALSE
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
 ROLLBACK;
 ROLLBACK
