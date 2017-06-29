@@ -70,7 +70,6 @@ pgr_dijkstraTRSP(
                     target,
                     only_cost,
                     strict);
-    pgassert(!fn_TRSP.log.str().empty());
     log += fn_TRSP.log.str().c_str();
     return path;
 }
