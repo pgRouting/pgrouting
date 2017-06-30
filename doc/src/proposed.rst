@@ -138,6 +138,8 @@ Experimental and Proposed functions
 
 -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 -  :ref:`pgr_connectedComponentsV` - Compute the connected components of an undirected graph (Vertex version)
+-  :ref:`pgr_strongComponentsV` - Compute the strongly connected components of a directed graph (Vertex version)
+-  :ref:`pgr_biconnectedComponents` - Compute the biconnected components of an undirected graph
 
 
 :ref:`VRP`
