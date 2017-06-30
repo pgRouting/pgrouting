@@ -12,11 +12,11 @@
 pgr_connectedComponentsV
 ===============================================================================
 
-``pgr_connectedComponentsV`` — Returns the shortest path(s) using Dijkstra algorithm.
-In particular, the Dijkstra algorithm implemented by Boost.Graph.
+``pgr_connectedComponentsV`` — Compute the connected components of an undirected graph using a DFS-based approach.
+In particular, the algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
+   :target: http://www.boost.org/libs/graph/doc/connected_components.html
 
    Boost Graph Inside
 
@@ -24,93 +24,41 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 Synopsis
 -------------------------------------------------------------------------------
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
-It is a graph search algorithm that solves the shortest path problem for
-a graph with non-negative edge path costs, producing a shortest path from
-a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
-This implementation can be used with a directed graph and an undirected graph.
+A connected component of an undirected graph is a set of vertices that are all reachable
+from each other.
+This implementation can only be used with an undirected graph.
 
 Characteristics
 -------------------------------------------------------------------------------
 
 The main Characteristics are:
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
 
-    - When the starting vertex and ending vertex are the same, there is no path.
-
-      - The `agg_cost` the non included values `(v, v)` is `0`
-
-    - When the starting vertex and ending vertex are the different and there is no path:
-
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
+  - Components are described by vertices
 
   - The returned values are ordered:
 
-    - `start_vid` ascending
-    - `end_vid` ascending
+    - `component` ascending
+    - `node` ascending
 
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
-
-
-Signature Summary
------------------
-
-.. code-block:: none
-
-    pgr_dijkstra(edges_sql, start_vid,  end_vid)
-
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-        OR EMPTY SET
-
+  - Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
 
-.. index::
-    single: connectedComponentsV(Minimal Use)
-
-Minimal signature
-.......................................
-
 .. code-block:: none
 
-    pgr_connectedComponentsV(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_connectedComponentsV(edges_sql)
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+    RETURNS SET OF (seq, component, n_seq, node)
+        OR EMPTY SET
+
+The signature is for a **undirected** graph. 
 
 :Example:
 
 .. literalinclude:: doc-pgr_connectedComponentsV.queries
    :start-after: -- q1
    :end-before: -- q2
-
-
-.. index::
-    single: connectedComponentsV(Complete signature)
-
-Complete Signature
-.......................................
-
-.. code-block:: none
-
-    pgr_connectedComponentsV(edges_sql, start_vid, end_vid, directed);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
-
-This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
-
-.. literalinclude:: doc-pgr_connectedComponentsV.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-
 
 Description of the Signatures
 -------------------------------------------------------------------------------
@@ -131,7 +79,7 @@ Description of the Signatures
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* http://en.wikipedia.org/wiki/Connected_component_(graph_theory)
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
