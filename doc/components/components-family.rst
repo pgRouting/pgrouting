@@ -37,7 +37,7 @@ The problem definition
 A connected component of an undirected graph is a set of vertices that are all reachable
 from each other.
 
-Notice: This problem defines on an undirected graph.
+**Notice**: This problem defines on an undirected graph.
 
 Given the following query:
 
@@ -73,17 +73,18 @@ Then:
 
 .. math:: \text{pgr_connectedComponentsV}(sql) =
   \begin{cases}
-  \text{all connected components } \boldsymbol{\pi} \text{ in } G(V,E) \text{if } \exists  \boldsymbol{\pi}  \\
+  \text{all connected components } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
   \end{cases}
 
 :math:`\boldsymbol{\pi} = \{(component_i, n\_seq_i, node_i)\}`
 
 where:
-  - :math:`component_i = \min {node_j | node_j \in component_i}`
-  - It is :math:`n\_seq_i` th node in this component.
+  - :math:`component_i = \min \{node_j | node_j \in component_i\}`
+  - :math:`n\_seq_i` is a sequential value starting from **1** in a component.
   - :math:`node_i \in component_i`
   - The returned values are ordered:
+
     - `component` ascending
     - `node` ascending
 
@@ -92,7 +93,7 @@ where:
 A strongly connected component of a directed graph is a set of vertices that are all reachable
 from each other.
 
-Notice: This problem defines on a directed graph.
+**Notice**: This problem defines on a directed graph.
 
 Given the following query:
 
@@ -127,7 +128,7 @@ Then:
 
 .. math:: \text{pgr_strongComponentsV}(sql) =
   \begin{cases}
-  \text{all strongly connected components } \boldsymbol{\pi} \text{ in } G(V,E) \text{if } \exists  \boldsymbol{\pi}  \\
+  \text{all strongly connected components } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
   \end{cases}
 
@@ -135,9 +136,10 @@ Then:
 
 where:
   - :math:`component_i = \min {node_j | node_j \in component_i}`
-  - It is :math:`n\_seq_i` th node in this component.
+  - :math:`n\_seq_i` is a sequential value starting from **1** in a component.
   - :math:`node_i \in component_i`
   - The returned values are ordered:
+
     - `component` ascending
     - `node` ascending
 
@@ -148,7 +150,7 @@ particular component will not disconnect the component. Unlike connected compone
 components. Vertices can be present in multiple biconnected components, but each edge can only be contained in a single biconnected
 component. So, the output only has edge version.
 
-Notice: This problem defines on an undirected graph.
+**Notice**: This problem defines on an undirected graph.
 
 Given the following query:
 
@@ -184,7 +186,7 @@ Then:
 
 .. math:: \text{pgr_biconnectedComponents}(sql) =
   \begin{cases}
-  \text{all biconnected components } \boldsymbol{\pi} \text{ in } G(V,E) \text{if } \exists  \boldsymbol{\pi}  \\
+  \text{all biconnected components } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
   \end{cases}
 
@@ -192,9 +194,10 @@ Then:
 
 where:
   - :math:`component_i = \min {node_j | node_j \in component_i}`
-  - It is :math:`n\_seq_i` th edge in this component.
+  - :math:`n\_seq_i` is a sequential value starting from **1** in a component.
   - :math:`edge_i \in component_i`
   - The returned values are ordered:
+
     - `component` ascending
     - `edge` ascending
 
