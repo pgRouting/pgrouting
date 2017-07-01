@@ -63,17 +63,17 @@ The signature is for a **undirected** graph.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+.. include:: components-family.rst
+    :start-after: components_edges_sql_start
+    :end-before: components_edges_sql_end
 
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+.. include:: components-family.rst
+    :start-after: components_parameters_start
+    :end-before: components_parameters_end
 
-.. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+.. include:: components-family.rst
+    :start-after: return_componentsV_start
+    :end-before: return_componentsV_end
 
 
 See Also
