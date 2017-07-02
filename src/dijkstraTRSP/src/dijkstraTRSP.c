@@ -82,6 +82,9 @@ process(
      */
     (*result_tuples) = NULL;
     (*result_count) = 0;
+    PGR_DBG("\n\n\n\n\n\nEdge query: %s\n", edges_sql);
+    PGR_DBG("Restrictions query: %s\n", restrictions_sql);
+    PGR_DBG("source: %lu | destination: %lu\n\n", start_vid, end_vid);
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;

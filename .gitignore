@@ -8,5 +8,6 @@ tools/template/mycreate.sh
 .DS_Store
 .vagrant
 tools/vagrant/packaging.sh
+tools/testers/pg_prove_dijkstraTRSP_tests.sh
 .directory
 notUsed
