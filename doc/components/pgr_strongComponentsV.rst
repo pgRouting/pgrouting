@@ -7,16 +7,16 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_connectedComponentsV:
+.. _pgr_strongComponentsV:
 
-pgr_connectedComponentsV
+pgr_strongComponentsV
 ===============================================================================
 
-``pgr_connectedComponentsV`` — Return the connected components of an undirected graph using a DFS-based approach.
+``pgr_strongComponentsV`` — Return the strongly connected components of a directed graph using Tarjan's algorithm based on DFS.
 In particular, the algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/connected_components.html
+   :target: http://www.boost.org/libs/graph/doc/strong_components.html
 
    Boost Graph Inside
 
@@ -24,9 +24,9 @@ In particular, the algorithm implemented by Boost.Graph.
 Synopsis
 -------------------------------------------------------------------------------
 
-A connected component of an undirected graph is a set of vertices that are all reachable
+A strongly connected component of a directed graph is a set of vertices that are all reachable
 from each other.
-This implementation can only be used with an undirected graph.
+This implementation can only be used with a directed graph.
 
 Characteristics
 -------------------------------------------------------------------------------
@@ -47,16 +47,16 @@ Signatures
 
 .. code-block:: none
 
-    pgr_connectedComponentsV(edges_sql)
+    pgr_strongComponentsV(edges_sql)
 
     RETURNS SET OF (seq, component, n_seq, node)
         OR EMPTY SET
 
-The signature is for a **undirected** graph. 
+The signature is for a **directed** graph. 
 
 :Example:
 
-.. literalinclude:: doc-pgr_connectedComponentsV.queries
+.. literalinclude:: doc-pgr_strongComponentsV.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -79,7 +79,7 @@ Description of the Signatures
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Connected_component_(graph_theory)
+* http://en.wikipedia.org/wiki/Strongly_connected_component
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables

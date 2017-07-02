@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    components-family.rst
 	pgr_connectedComponentsV.rst
     )
 
