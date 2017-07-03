@@ -55,7 +55,7 @@ export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
 export PATH="${PATHOLD}:/usr/bin:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
 export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
 
-
+cmake --version
 if [ $JENKINS_DEBUG -eq 1 ]
 then
     echo "PGUSER ${PGUSER}"
