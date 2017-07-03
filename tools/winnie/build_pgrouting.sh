@@ -52,7 +52,7 @@ export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
 export PATHOLD=$PATH
 #export PATHOLD="/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows"
 export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
-export PATH="${PATHOLD}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
+export PATH="${PATHOLD}:/usr/bin:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
 export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
 
 
