@@ -106,7 +106,7 @@ CGAL_PATH="${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}"
 PATH="${PATH}:${CGAL_PATH}/include:${CGAL_PATH}/lib"
 
 #cmake
-#export PATH="${PATH}:/cmake/bin"
+export PATH="${PATH}:/cmake/bin"
 export PATH="${PATH}:.:/bin:/include"
 
 echo "PATH ${PATH}"
@@ -157,6 +157,7 @@ echo "***************************"
 #---------------
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
+cmake --version
 
 cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
  -DBOOST_ROOT:PATH=${BOOSTROOT_PATH} \
