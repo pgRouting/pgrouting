@@ -55,7 +55,6 @@ export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
 export PATH="${PATHOLD}:/usr/bin:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
 export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
 
-cmake --version
 if [ $JENKINS_DEBUG -eq 1 ]
 then
     echo "PGUSER ${PGUSER}"
@@ -108,6 +107,8 @@ PATH="${PATH}:${CGAL_PATH}/include:${CGAL_PATH}/lib"
 #cmake
 export PATH="${PATH}:/cmake/bin"
 export PATH="${PATH}:.:/bin:/include"
+
+cmake --version
 
 echo "PATH ${PATH}"
 
@@ -231,7 +232,7 @@ cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 psql -c "CREATE DATABASE ___pgr___test___"
-sh testers/pg_prove_tests.sh ${PGUSER}
+sh tools/testers/pg_prove_tests.sh ${PGUSER}
 psql -c "DROP DATABASE ___pgr___test___"
 
 
