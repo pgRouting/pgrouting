@@ -106,7 +106,7 @@ CGAL_PATH="${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}"
 PATH="${PATH}:${CGAL_PATH}/include:${CGAL_PATH}/lib"
 
 #cmake
-export PATH="${PATH}:/cmake/bin"
+#export PATH="${PATH}:/cmake/bin"
 export PATH="${PATH}:.:/bin:/include"
 
 echo "PATH ${PATH}"
@@ -226,7 +226,12 @@ cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg common -clean -v
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg dijkstra -clean -v
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg contraction
-perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+
+#perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+
+psql -c "CREATE DATABASE ___pgr___test___"
+sh testers/pg_prove_tests.sh ${PGUSER}
+psql -c "DROP DATABASE ___pgr___test___"
 
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
