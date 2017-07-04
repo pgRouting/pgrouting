@@ -250,7 +250,7 @@ Parameter           Type                   Default   Description
 .. return_componentsV_start
 
 Description of the return values for connected components (vertex version) and strongly connected components (vertex version)
-...............................................................................
+.............................................................................................................................
 
 Returns set of ``(seq, component, n_seq, node)``
 
@@ -269,7 +269,7 @@ Column         Type       Description
 .. return_componentsE_start
 
 Description of the return values for biconnected components, connected components (edge version) and strongly connected components (edge version)
-...............................................................................
+.................................................................................................................................................
 
 Returns set of ``(seq, component, n_seq, edge)``
 
