@@ -231,10 +231,18 @@ cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
-psql -c "CREATE DATABASE ___pgr___test___"
-sh tools/testers/pg_prove_tests.sh ${PGUSER}
-psql -c "DROP DATABASE ___pgr___test___"
+if [ OS_BUILD -eq 32 ] 
+then
 
+    perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+
+else
+
+    psql -c "CREATE DATABASE ___pgr___test___"
+    sh tools/testers/pg_prove_tests.sh ${PGUSER}
+    psql -c "DROP DATABASE ___pgr___test___"
+
+fi
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
 strip *.dll
