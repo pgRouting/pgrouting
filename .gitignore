@@ -8,3 +8,6 @@ code_linter
 tools/vagrant/packaging.sh
 .directory
 notUsed
+
+run.sh
+documentation.sh
