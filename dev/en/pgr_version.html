@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>pgr_version &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -40,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -80,7 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">pgr_version</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pgr_version</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="types_index.html">pgRouting Data Types</a></li>
@@ -162,12 +160,12 @@
 <span id="id1"></span><h1>pgr_version<a class="headerlink" href="#pgr-version" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_version</span></tt> — Query for pgRouting version information.</p>
+<p><code class="docutils literal"><span class="pre">pgr_version</span></code> — Query for pgRouting version information.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Returns a table with pgRouting version information.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">table</span><span class="p">()</span> <span class="n">pgr_version</span><span class="p">();</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">table</span><span class="p">()</span> <span class="n">pgr_version</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -188,23 +186,23 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>version</strong></td>
-<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
 <td>pgRouting version</td>
 </tr>
 <tr class="row-odd"><td><strong>tag</strong></td>
-<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
 <td>Git tag of pgRouting build</td>
 </tr>
 <tr class="row-even"><td><strong>hash</strong></td>
-<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
 <td>Git hash of pgRouting build</td>
 </tr>
 <tr class="row-odd"><td><strong>branch</strong></td>
-<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
 <td>Git branch of pgRouting build</td>
 </tr>
 <tr class="row-even"><td><strong>boost</strong></td>
-<td><tt class="docutils literal"><span class="pre">varchar</span></tt></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
 <td>Boost version</td>
 </tr>
 </tbody>
@@ -219,17 +217,18 @@
 <ul class="simple">
 <li>Query for full version string</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre>SELECT version FROM pgr_version();
- version 
----------
- 2.5.0
-(1 row)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">version</span> <span class="n">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
+ <span class="n">version</span> 
+<span class="o">---------</span>
+ <span class="mf">2.5</span><span class="o">.</span><span class="mi">0</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
 </pre></div>
 </div>
 <ul class="simple">
-<li>Query for <tt class="docutils literal"><span class="pre">version</span></tt> and <tt class="docutils literal"><span class="pre">boost</span></tt> attribute</li>
+<li>Query for <code class="docutils literal"><span class="pre">version</span></code> and <code class="docutils literal"><span class="pre">boost</span></code> attribute</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">version</span><span class="p">,</span> <span class="n">boost</span> <span class="k">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">version</span><span class="p">,</span> <span class="n">boost</span> <span class="k">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
 
   <span class="k">version</span>  <span class="o">|</span> <span class="n">boost</span>
 <span class="c1">-----------+--------</span>
@@ -253,8 +252,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on May 17, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Last updated on Jul 05, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

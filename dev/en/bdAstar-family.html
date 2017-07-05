@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Bidirectional A* - Family of functions &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -33,7 +31,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
     <link rel="up" title="Stable proposed Functions" href="proposed.html" />
-    <link rel="next" title="pgr_bdAstar" href="pgr_bdAstar.html" />
+    <link rel="next" title="pgr_bdAstarCost - Proposed" href="pgr_bdAstarCost.html" />
     <link rel="prev" title="pgr_aStarCostMatrix - proposed" href="pgr_aStarCostMatrix.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -41,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -134,7 +132,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_bdAstar.html" title="Next Chapter: pgr_bdAstar"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bdAstar &raquo;</span>
+    <a href="pgr_bdAstarCost.html" title="Next Chapter: pgr_bdAstarCost - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bdAstarCost ... &raquo;</span>
     </a>
   </li>
               
@@ -165,17 +163,17 @@
   <div class="section" id="bidirectional-a-family-of-functions">
 <span id="bdastar"></span><h1>Bidirectional A* - Family of functions<a class="headerlink" href="#bidirectional-a-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_bdAstar.html#pgr-bdastar"><em>pgr_bdAstar</em></a> - Bidirectional A* algorithm for obtaining paths.</li>
-<li><a class="reference internal" href="pgr_bdAstarCost.html#pgr-bdastarcost"><em>pgr_bdAstarCost - Proposed</em></a> - Bidirectional A* algorithm to calculate the cost of the paths.</li>
-<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html#pgr-bdastarcostmatrix"><em>pgr_bdAstarCostMatrix - proposed</em></a> - Bidirectional A* algorithm to calculate a cost matrix of paths.</li>
+<li><a class="reference internal" href="pgr_bdAstar.html#pgr-bdastar"><span class="std std-ref">pgr_bdAstar</span></a> - Bidirectional A* algorithm for obtaining paths.</li>
+<li><a class="reference internal" href="pgr_bdAstarCost.html#pgr-bdastarcost"><span class="std std-ref">pgr_bdAstarCost - Proposed</span></a> - Bidirectional A* algorithm to calculate the cost of the paths.</li>
+<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html#pgr-bdastarcostmatrix"><span class="std std-ref">pgr_bdAstarCostMatrix - proposed</span></a> - Bidirectional A* algorithm to calculate a cost matrix of paths.</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Based on A* algorithm, the bidirectional search finds a shortest path from
-a starting vertex (<tt class="docutils literal"><span class="pre">start_vid</span></tt>) to an ending vertex (<tt class="docutils literal"><span class="pre">end_vid</span></tt>).
-It runs two simultaneous searches: one forward from the <tt class="docutils literal"><span class="pre">start_vid</span></tt>, and one backward from the <tt class="docutils literal"><span class="pre">end_vid</span></tt>,
+a starting vertex (<code class="docutils literal"><span class="pre">start_vid</span></code>) to an ending vertex (<code class="docutils literal"><span class="pre">end_vid</span></code>).
+It runs two simultaneous searches: one forward from the <code class="docutils literal"><span class="pre">start_vid</span></code>, and one backward from the <code class="docutils literal"><span class="pre">end_vid</span></code>,
 stopping when the two meet in the middle.
 This implementation can be used with a directed graph and an undirected graph.</p>
 </div>
@@ -228,22 +226,22 @@ This implementation can be used with a directed graph and an undirected graph.</
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&nbsp;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&nbsp;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
@@ -252,7 +250,7 @@ This implementation can be used with a directed graph and an undirected graph.</
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
@@ -261,22 +259,22 @@ This implementation can be used with a directed graph and an undirected graph.</
 </td>
 </tr>
 <tr class="row-odd"><td><strong>x1</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&nbsp;</td>
 <td>X coordinate of <cite>source</cite> vertex.</td>
 </tr>
 <tr class="row-even"><td><strong>y1</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&nbsp;</td>
 <td>Y coordinate of <cite>source</cite> vertex.</td>
 </tr>
 <tr class="row-odd"><td><strong>x2</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&nbsp;</td>
 <td>X coordinate of <cite>target</cite> vertex.</td>
 </tr>
 <tr class="row-even"><td><strong>y2</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&nbsp;</td>
 <td>Y coordinate of <cite>target</cite> vertex.</td>
 </tr>
@@ -310,39 +308,39 @@ This implementation can be used with a directed graph and an undirected graph.</
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
 <td>Edges SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>start_vid</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Starting vertex identifier.</td>
 </tr>
 <tr class="row-even"><td><strong>start_vids</strong></td>
-<td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
 <td>Starting vertices identifierers.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Ending vertex identifier.</td>
 </tr>
 <tr class="row-even"><td><strong>end_vids</strong></td>
-<td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
 <td>Ending vertices identifiers.</td>
 </tr>
 <tr class="row-odd"><td><strong>directed</strong></td>
-<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
 <td><ul class="first last simple">
 <li>Optional.<ul>
-<li>When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as Undirected.</li>
-<li>Default is <tt class="docutils literal"><span class="pre">true</span></tt> which considers the graph as Directed.</li>
+<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
+<li>Default is <code class="docutils literal"><span class="pre">true</span></code> which considers the graph as Directed.</li>
 </ul>
 </li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><strong>heuristic</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
-<td><p class="first">(optional). Heuristic number. Current valid values 0~5. Default <tt class="docutils literal"><span class="pre">5</span></tt></p>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><p class="first">(optional). Heuristic number. Current valid values 0~5. Default <code class="docutils literal"><span class="pre">5</span></code></p>
 <blockquote class="last">
 <div><ul class="simple">
 <li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
@@ -356,12 +354,12 @@ This implementation can be used with a directed graph and an undirected graph.</
 </td>
 </tr>
 <tr class="row-odd"><td><strong>factor</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>(optional). For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  Default <tt class="docutils literal"><span class="pre">1</span></tt>. see <a class="reference internal" href="aStar-family.html#astar-factor"><em>Factor</em></a></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td>(optional). For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  Default <code class="docutils literal"><span class="pre">1</span></code>. see <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></td>
 </tr>
 <tr class="row-even"><td><strong>epsilon</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>(optional). For less restricted results. <span class="math">\(epsilon &gt;= 1\)</span>.  Default <tt class="docutils literal"><span class="pre">1</span></tt>.</td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td>(optional). For less restricted results. <span class="math">\(epsilon &gt;= 1\)</span>.  Default <code class="docutils literal"><span class="pre">1</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -382,8 +380,8 @@ This implementation can be used with a directed graph and an undirected graph.</
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on May 17, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Last updated on Jul 05, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>All Pairs - Family of Functions &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -41,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -182,12 +180,12 @@
 <div class="section" id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>The following data was used</p>
-<div class="highlight-none"><div class="highlight"><pre>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
-wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;http://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]&quot;
+<div class="highlight-none"><div class="highlight"><pre><span></span>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
+wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;http://www.overpass-api.de/api/xapi?*[bbox=][@meta]&quot;
 </pre></div>
 </div>
 <p>Data processing was done with osm2pgrouting-alpha</p>
-<div class="highlight-none"><div class="highlight"><pre>createdb portland
+<div class="highlight-none"><div class="highlight"><pre><span></span>createdb portland
 psql -c &quot;create extension postgis&quot; portland
 psql -c &quot;create extension pgrouting&quot; portland
 osm2pgrouting -f sampledata.osm -d portland -s 0
@@ -208,7 +206,7 @@ osm2pgrouting -f sampledata.osm -d portland -s 0
 The density of the passed graph is extremely low.
 For each &lt;SIZE&gt; 30 tests were executed to get the average
 The tested query is:</p>
-<div class="highlight-none"><div class="highlight"><pre>SELECT count(*) FROM pgr_floydWarshall(
+<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT count(*) FROM pgr_floydWarshall(
    &#39;SELECT gid as id, source, target, cost, reverse_cost FROM ways where id &lt;=  &lt;SIZE&gt;&#39;);
 
 SELECT count(*) FROM pgr_johnson(
@@ -407,14 +405,14 @@ SELECT count(*) FROM pgr_johnson(
 The density of the passed graph higher than of the Test One.
 For each &lt;SIZE&gt; 30 tests were executed to get the average
 The tested edge query is:</p>
-<div class="highlight-none"><div class="highlight"><pre>WITH
+<div class="highlight-none"><div class="highlight"><pre><span></span>WITH
     buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom FROM ways),
     bbox AS (SELECT ST_Envelope(ST_Extent(geom)) as box from buffer)
 SELECT gid as id, source, target, cost, reverse_cost FROM ways where the_geom &amp;&amp; (SELECT box from bbox);
 </pre></div>
 </div>
 <p>The tested queries</p>
-<div class="highlight-none"><div class="highlight"><pre>SELECT count(*) FROM pgr_floydWarshall(&lt;edge query&gt;)
+<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT count(*) FROM pgr_floydWarshall(&lt;edge query&gt;)
 SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 </pre></div>
 </div>
@@ -581,14 +579,14 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 <div class="section" id="see-also">
 <h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a></li>
-<li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a></li>
+<li><a class="reference internal" href="pgr_johnson.html#pgr-johnson"><span class="std std-ref">pgr_johnson</span></a></li>
+<li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><span class="std std-ref">pgr_floydWarshall</span></a></li>
 <li><a class="reference external" href="http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Boost floyd-Warshall</a> algorithm</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -607,8 +605,8 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on May 17, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Last updated on Jul 05, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

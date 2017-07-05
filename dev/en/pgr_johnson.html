@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>pgr_johnson &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -41,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -174,11 +172,11 @@
 <span id="id1"></span><h1>pgr_johnson<a class="headerlink" href="#pgr-johnson" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_johnson</span></tt> - Returns the sum of the costs of the shortest path for each
+<p><code class="docutils literal"><span class="pre">pgr_johnson</span></code> - Returns the sum of the costs of the shortest path for each
 pair of nodes in the graph using Floyd-Warshall algorithm.</p>
-<div class="figure">
+<div class="figure" id="id2">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption">Boost Graph Inside</p>
+<p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 <p class="rubric">Availability: 2.0.0</p>
 <ul class="simple">
@@ -214,7 +212,7 @@ Represent the distance between vertices for which there is no path.<ul>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_johnson(edges_sql)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql)
 pgr johnson(edges_sql, directed)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
@@ -224,7 +222,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_johnson(edges_sql)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
 </div>
@@ -236,22 +234,23 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_johnson(
-    &#39;SELECT source, target, cost FROM edge_table WHERE id &lt; 5
-         ORDER BY id&#39;
-);
- start_vid | end_vid | agg_cost 
------------+---------+----------
-         1 |       2 |        1
-         1 |       5 |        2
-         2 |       5 |        1
-(3 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT source, target, cost FROM edge_table WHERE id &lt; 5</span>
+         <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
+<span class="p">);</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
+<span class="o">-----------+---------+----------</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_johnson(edges_sql, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql, directed)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
 </div>
@@ -263,20 +262,21 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_johnson(
-    &#39;SELECT source, target, cost FROM edge_table WHERE id &lt; 5
-         ORDER BY id&#39;,
-    false
-);
- start_vid | end_vid | agg_cost 
------------+---------+----------
-         1 |       2 |        1
-         1 |       5 |        2
-         2 |       1 |        1
-         2 |       5 |        1
-         5 |       1 |        2
-         5 |       2 |        1
-(6 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT source, target, cost FROM edge_table WHERE id &lt; 5</span>
+         <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;,</span>
+    <span class="n">false</span>
+<span class="p">);</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
+<span class="o">-----------+---------+----------</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -309,17 +309,17 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>source</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>target</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&nbsp;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
@@ -328,7 +328,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </td>
 </tr>
 <tr class="row-odd"><td><strong>reverse_cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
@@ -352,7 +352,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
 <h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<p>Receives  <tt class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">directed)</span></tt></p>
+<p>Receives  <code class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">directed)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -367,11 +367,11 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
 <td>SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>directed</strong></td>
-<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
 <td>(optional) Default is true (is directed). When set to false the graph is considered as Undirected</td>
 </tr>
 </tbody>
@@ -379,7 +379,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </div>
 <div class="section" id="description-of-the-return-values">
 <h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <tt class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></tt></p>
+<p>Returns set of <code class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -394,16 +394,16 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>start_vid</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the starting vertex.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the ending vertex.</td>
 </tr>
 <tr class="row-even"><td><strong>agg_cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>Total cost from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">end_vid</span></tt>.</td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td>Total cost from <code class="docutils literal"><span class="pre">start_vid</span></code> to <code class="docutils literal"><span class="pre">end_vid</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -416,14 +416,14 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a></li>
+<li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><span class="std std-ref">pgr_floydWarshall</span></a></li>
 <li><a class="reference external" href="http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html">Boost Johnson</a> algorithm implementation.</li>
-<li>Queries uses the <a class="reference internal" href="sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
+<li>Queries uses the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -441,8 +441,8 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on May 17, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Last updated on Jul 05, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

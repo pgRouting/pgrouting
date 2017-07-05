@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Support &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -40,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -71,7 +69,7 @@
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Support</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
@@ -159,7 +157,7 @@
       
   <div class="section" id="support">
 <span id="id1"></span><h1>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h1>
-<p>pgRouting community support is available through the <a class="reference external" href="http://pgrouting.org/support.html">pgRouting website</a>, <a class="reference external" href="http://docs.pgrouting.org">documentation</a>, tutorials, mailing lists and others. If you’re looking for <a class="reference internal" href="#support-commercial"><em>commercial support</em></a>, find below a list of companies providing pgRouting development and consulting services.</p>
+<p>pgRouting community support is available through the <a class="reference external" href="http://pgrouting.org/support.html">pgRouting website</a>, <a class="reference external" href="http://docs.pgrouting.org">documentation</a>, tutorials, mailing lists and others. If you’re looking for <a class="reference internal" href="#support-commercial"><span class="std std-ref">commercial support</span></a>, find below a list of companies providing pgRouting development and consulting services.</p>
 <div class="section" id="reporting-problems">
 <h2>Reporting Problems<a class="headerlink" href="#reporting-problems" title="Permalink to this headline">¶</a></h2>
 <p>Bugs are reported and managed in an <a class="reference external" href="https://github.com/pgrouting/pgrouting/issues">issue tracker</a>. Please follow these steps:</p>
@@ -171,7 +169,7 @@
 <li>For the versions where you can replicate the problem, note the operating system and version of pgRouting, PostGIS and PostgreSQL.</li>
 <li>It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem.</li>
 </ol>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SET</span> <span class="n">client_min_messages</span> <span class="k">TO</span> <span class="n">debug</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">client_min_messages</span> <span class="k">TO</span> <span class="n">debug</span><span class="p">;</span>
   <span class="o">&lt;</span><span class="n">your</span> <span class="n">code</span><span class="o">&gt;</span>
 <span class="k">SET</span> <span class="n">client_min_messages</span> <span class="k">TO</span> <span class="n">notice</span><span class="p">;</span>
 </pre></div>
@@ -185,7 +183,7 @@
 <li>Developer mailing list: <a class="reference external" href="http://lists.osgeo.org/mailman/listinfo/pgrouting-dev">http://lists.osgeo.org/mailman/listinfo/pgrouting-dev</a></li>
 </ul>
 <p>For general questions and topics about how to use pgRouting, please write to the user mailing list.</p>
-<p>You can also ask at <a class="reference external" href="http://gis.stackexchange.com/">GIS StackExchange</a> and tag the question with <tt class="docutils literal"><span class="pre">pgrouting</span></tt>. Find all questions tagged with <tt class="docutils literal"><span class="pre">pgrouting</span></tt> under <a class="reference external" href="http://gis.stackexchange.com/questions/tagged/pgrouting">http://gis.stackexchange.com/questions/tagged/pgrouting</a> or subscribe to the <a class="reference external" href="http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&amp;sort=newest">pgRouting questions feed</a>.</p>
+<p>You can also ask at <a class="reference external" href="http://gis.stackexchange.com/">GIS StackExchange</a> and tag the question with <code class="docutils literal"><span class="pre">pgrouting</span></code>. Find all questions tagged with <code class="docutils literal"><span class="pre">pgrouting</span></code> under <a class="reference external" href="http://gis.stackexchange.com/questions/tagged/pgrouting">http://gis.stackexchange.com/questions/tagged/pgrouting</a> or subscribe to the <a class="reference external" href="http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&amp;sort=newest">pgRouting questions feed</a>.</p>
 </div>
 <div class="section" id="commercial-support">
 <span id="support-commercial"></span><h2>Commercial Support<a class="headerlink" href="#commercial-support" title="Permalink to this headline">¶</a></h2>
@@ -235,8 +233,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on May 17, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Last updated on Jul 05, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

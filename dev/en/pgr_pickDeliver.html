@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>__pgr_pickDeliver &mdash; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_pickDeliver - Proposed &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -32,16 +30,16 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
-    <link rel="up" title="Vehicle Routing Functions Category:" href="VRP-category.html" />
-    <link rel="next" title="__pgr_pickDeliverEuclidean:" href="pgr_pickDeliverEuclidean.html" />
-    <link rel="prev" title="Vehicle Routing Functions Category:" href="VRP-category.html" />
+    <link rel="up" title="Vehicle Routing Functions Category" href="VRP-category.html" />
+    <link rel="next" title="pgr_pickDeliverEuclidean - Proposed" href="pgr_pickDeliverEuclidean.html" />
+    <link rel="prev" title="Vehicle Routing Functions Category" href="VRP-category.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -111,23 +109,17 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">__pgr_pickDeliver</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
+<li><a class="reference internal" href="#">pgr_pickDeliver - Proposed</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics:</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#minimal-signature">Minimal signature</a></li>
-<li><a class="reference internal" href="#complete-signature">Complete signature</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#signature">Signature</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a></li>
+<li><a class="reference internal" href="#pick-deliver-vehicles-sql">Pick &amp; Deliver Vehicles SQL</a></li>
+<li><a class="reference internal" href="#pick-deliver-matrix-sql">Pick &amp; Deliver Matrix SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-orders-sql-query">Description of the orders_sql query</a></li>
-<li><a class="reference internal" href="#description-of-the-vehicles-sql-query">Description of the vehicles_sql query</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-result">Description of the result</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#example">Example</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -140,11 +132,11 @@
               
                 
   <li>
-    <a href="VRP-category.html" title="Previous Chapter: Vehicle Routing Functions Category:"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Vehicle Routing ...</span>
+    <a href="VRP-category.html" title="Previous Chapter: Vehicle Routing Functions Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Vehicle Routing ...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_pickDeliverEuclidean.html" title="Next Chapter: __pgr_pickDeliverEuclidean:"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">__pgr_pickDelive... &raquo;</span>
+    <a href="pgr_pickDeliverEuclidean.html" title="Next Chapter: pgr_pickDeliverEuclidean - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pickDeliverE... &raquo;</span>
     </a>
   </li>
               
@@ -172,33 +164,32 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-pickdeliver">
-<span id="id1"></span><h1>__pgr_pickDeliver<a class="headerlink" href="#pgr-pickdeliver" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_pickDeliver</span></tt> - Pickup and delivery Vehicle Routing Problem</p>
+  <div class="section" id="pgr-pickdeliver-proposed">
+<span id="pgr-pickdeliver"></span><h1>pgr_pickDeliver - Proposed<a class="headerlink" href="#pgr-pickdeliver-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>Experimental functions</p>
+<p class="last">Documentation is being updated</p>
+</div>
+<p><code class="docutils literal"><span class="pre">pgr_pickDeliver</span></code> - Pickup and delivery Vehicle Routing Problem</p>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>New as proposed in 2.5.0</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Proposed functions for next mayor release.</p>
 <ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
 </ul>
 </li>
 </ul>
-</div>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -228,7 +219,7 @@
 </ul>
 </div>
 <div class="section" id="characteristics">
-<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>All trucks depart at time 0.</li>
 <li>No multiple time windows for a location.</li>
@@ -244,217 +235,147 @@
 - the best solution found will be result</li>
 </ul>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>_pgr_pickDeliver(customers_sql, max_vehicles, capacity)
-_pgr_pickDeliver(customers_sql, max_vehicles, capacity, [factor, max_cycles, initial_sol])
+<div class="section" id="signature">
+<span id="index-0"></span><h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_pickDeliver(orders_sql, vehicles_sql, matrix_sql [, factor, max_cycles, initial_sol])
 RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
                 travel_time, arrival_time, wait_time, service_time, departure_time)
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="minimal-signature">
-<h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<p>The minimal signature is for <cite>speed = 1</cite>, for a <cite>max_cycles = 30</cite></p>
-<div class="highlight-none"><div class="highlight"><pre>_pgr_pickDeliver(customers_sql, max_vehicles, capacity)
-RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
-     travel_time, arrival_time, wait_time, service_time,  departure_time)
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<p>The parameters are:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>orders_sql, vehicles_sql, matrix_sql [, factor, max_cycles, initial_sol]
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<p>This example use the following data: TODO put link</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM _pgr_pickDeliver(
-    &#39;SELECT * FROM orders ORDER BY id&#39;,
-    &#39;SELECT * from vehicles&#39;,
-    
-    &#39;WITH
-    A AS (
-        SELECT p_node_id AS id, p_x AS x, p_y AS y FROM orders
-        UNION
-        SELECT d_node_id AS id, d_x, d_y FROM orders
-        UNION
-        SELECT start_node_id, start_x, start_y FROM vehicles
-    )
-    SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
-    FROM A, A AS B WHERE A.id != B.id&#39;
-    );
- seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time  
------+----------------+------------+-------------+----------+-----------+-------+------------------+------------------+-----------+--------------+------------------
-   1 |              1 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
-   2 |              1 |          1 |           2 |        5 |         2 |    10 | 15.1327459504216 | 15.1327459504216 |         0 |           90 | 105.132745950422
-   3 |              1 |          1 |           3 |        3 |         2 |    20 |                1 | 106.132745950422 |         0 |           90 | 196.132745950422
-   4 |              1 |          1 |           4 |        5 |         3 |    10 |                2 | 198.132745950422 |         0 |           90 | 288.132745950422
-   5 |              1 |          1 |           5 |        8 |         2 |    30 | 2.82842712474619 | 290.961173075168 |         0 |           90 | 380.961173075168
-   6 |              1 |          1 |           6 |        8 |         3 |    10 | 3.60555127546399 | 384.566724350632 |         0 |           90 | 474.566724350632
-   7 |              1 |          1 |           7 |       11 |         2 |    20 |                3 | 477.566724350632 |         0 |           90 | 567.566724350632
-   8 |              1 |          1 |           8 |        9 |         2 |    30 | 3.16227766016838 |   570.7290020108 |         0 |           90 |   660.7290020108
-   9 |              1 |          1 |           9 |        6 |         2 |    50 | 2.23606797749979 |   662.9650699883 |         0 |           90 |   752.9650699883
-  10 |              1 |          1 |          10 |        9 |         3 |    40 | 2.23606797749979 |   755.2011379658 |         0 |           90 |   845.2011379658
-  11 |              1 |          1 |          11 |        6 |         3 |    20 | 3.60555127546399 | 848.806689241264 |         0 |           90 | 938.806689241264
-  12 |              1 |          1 |          12 |       11 |         3 |    10 |                2 | 940.806689241264 |         0 |           90 | 1030.80668924126
-  13 |              1 |          1 |          13 |        3 |         3 |     0 |                3 | 1033.80668924126 |         0 |           90 | 1123.80668924126
-  14 |              1 |          1 |          14 |       -1 |         6 |     0 | 15.8113883008419 | 1139.61807754211 |         0 |            0 | 1139.61807754211
-  15 |              2 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
-  16 |              2 |          1 |           2 |       13 |         2 |    30 | 30.8058436014987 | 30.8058436014987 |         0 |           90 | 120.805843601499
-  17 |              2 |          1 |           3 |       13 |         3 |     0 |                4 | 124.805843601499 |         0 |           90 | 214.805843601499
-  18 |              2 |          1 |           4 |       18 |         2 |    20 |                3 | 217.805843601499 |         0 |           90 | 307.805843601499
-  19 |              2 |          1 |           5 |       19 |         2 |    30 |                5 | 312.805843601499 |         0 |           90 | 402.805843601499
-  20 |              2 |          1 |           6 |       19 |         3 |    20 |                5 | 407.805843601499 |         0 |           90 | 497.805843601499
-  21 |              2 |          1 |           7 |       16 |         2 |    60 |                5 | 502.805843601499 |         0 |           90 | 592.805843601499
-  22 |              2 |          1 |           8 |       16 |         3 |    20 |                2 | 594.805843601499 |         0 |           90 | 684.805843601499
-  23 |              2 |          1 |           9 |       18 |         3 |     0 |                3 | 687.805843601499 |         0 |           90 | 777.805843601499
-  24 |              2 |          1 |          10 |       50 |         2 |    10 | 53.0094331227943 | 830.815276724293 |         0 |           90 | 920.815276724293
-  25 |              2 |          1 |          11 |       50 |         3 |     0 | 3.16227766016838 | 923.977554384461 |         0 |           90 | 1013.97755438446
-  26 |              2 |          1 |          12 |       49 |         2 |    10 |                3 | 1016.97755438446 |         0 |           90 | 1106.97755438446
-  27 |              2 |          1 |          13 |       49 |         3 |     0 |                2 | 1108.97755438446 |         0 |           90 | 1198.97755438446
-  28 |              2 |          1 |          14 |       -1 |         6 |     0 | 18.0277563773199 | 1217.00531076178 |         0 |            0 | 1217.00531076178
-  29 |              3 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
-  30 |              3 |          1 |           2 |       20 |         2 |    10 |               10 |               10 |         0 |           90 |              100
-  31 |              3 |          1 |           3 |       20 |         3 |     0 |                5 |              105 |         0 |           90 |              195
-  32 |              3 |          1 |           4 |       25 |         2 |    40 |                2 |              197 |         0 |           90 |              287
-  33 |              3 |          1 |           5 |       25 |         3 |     0 |                2 |              289 |         0 |           90 |              379
-  34 |              3 |          1 |           6 |       29 |         2 |    10 | 3.60555127546399 | 382.605551275464 |         0 |           90 | 472.605551275464
-  35 |              3 |          1 |           7 |       30 |         2 |    20 |                5 | 477.605551275464 |         0 |           90 | 567.605551275464
-  36 |              3 |          1 |           8 |       28 |         2 |    40 |                3 | 570.605551275464 |         0 |           90 | 660.605551275464
-  37 |              3 |          1 |           9 |       29 |         3 |    30 |                2 | 662.605551275464 |         0 |           90 | 752.605551275464
-  38 |              3 |          1 |          10 |       23 |         2 |    40 |                3 | 755.605551275464 |         0 |            0 | 755.605551275464
-  39 |              3 |          1 |          11 |       23 |         3 |    30 |                0 | 755.605551275464 |         0 |           90 | 845.605551275464
-  40 |              3 |          1 |          12 |       28 |         3 |    10 |                3 | 848.605551275464 |         0 |           90 | 938.605551275464
-  41 |              3 |          1 |          13 |       30 |         3 |     0 |                2 | 940.605551275464 |         0 |           90 | 1030.60555127546
-  42 |              3 |          1 |          14 |       -1 |         6 |     0 | 10.1980390271856 | 1040.80359030265 |         0 |            0 | 1040.80359030265
-  43 |              4 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
-  44 |              4 |          1 |           2 |       32 |         2 |    30 | 31.6227766016838 | 31.6227766016838 |         0 |           90 | 121.622776601684
-  45 |              4 |          1 |           3 |       33 |         2 |    70 |                2 | 123.622776601684 |         0 |           90 | 213.622776601684
-  46 |              4 |          1 |           4 |       32 |         3 |    40 |  5.3851648071345 | 219.007941408818 |         0 |           90 | 309.007941408818
-  47 |              4 |          1 |           5 |       35 |         2 |    50 |                5 | 314.007941408818 |         0 |           90 | 404.007941408818
-  48 |              4 |          1 |           6 |       33 |         3 |    10 |  5.8309518948453 | 409.838893303664 |         0 |           90 | 499.838893303664
-  49 |              4 |          1 |           7 |       38 |         2 |    40 |                2 | 501.838893303664 |         0 |           90 | 591.838893303664
-  50 |              4 |          1 |           8 |       35 |         3 |    30 |                5 | 596.838893303664 |         0 |           90 | 686.838893303664
-  51 |              4 |          1 |           9 |       36 |         2 |    40 |                5 | 691.838893303664 |         0 |            0 | 691.838893303664
-  52 |              4 |          1 |          10 |       36 |         3 |    30 |                0 | 691.838893303664 |         0 |           90 | 781.838893303664
-  53 |              4 |          1 |          11 |       38 |         3 |     0 |                3 | 784.838893303664 |         0 |           90 | 874.838893303664
-  54 |              4 |          1 |          12 |       -1 |         6 |     0 | 32.3882694814033 | 907.227162785067 |         0 |            0 | 907.227162785067
-  55 |              5 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
-  56 |              5 |          1 |           2 |       43 |         2 |    10 | 16.5529453572468 | 16.5529453572468 |         0 |           90 | 106.552945357247
-  57 |              5 |          1 |           3 |       42 |         2 |    30 |                3 | 109.552945357247 |         0 |           90 | 199.552945357247
-  58 |              5 |          1 |           4 |       43 |         3 |    20 |                2 | 201.552945357247 |         0 |           90 | 291.552945357247
-  59 |              5 |          1 |           5 |       42 |         3 |     0 |                2 | 293.552945357247 |         0 |           90 | 383.552945357247
-  60 |              5 |          1 |           6 |       44 |         2 |    10 |                3 | 386.552945357247 |         0 |           90 | 476.552945357247
-  61 |              5 |          1 |           7 |       44 |         3 |     0 | 2.82842712474619 | 479.381372481993 |         0 |           90 | 569.381372481993
-  62 |              5 |          1 |           8 |       45 |         2 |    10 |                2 | 571.381372481993 |         0 |           90 | 661.381372481993
-  63 |              5 |          1 |           9 |       45 |         3 |     0 |                2 | 663.381372481993 |         0 |           90 | 753.381372481993
-  64 |              5 |          1 |          10 |       51 |         2 |    10 |                3 | 756.381372481993 |         0 |            0 | 756.381372481993
-  65 |              5 |          1 |          11 |       51 |         3 |     0 |                0 | 756.381372481993 |         0 |           90 | 846.381372481993
-  66 |              5 |          1 |          12 |       66 |         2 |    10 |  22.561028345357 |  868.94240082735 |         0 |           90 |  958.94240082735
-  67 |              5 |          1 |          13 |       66 |         3 |     0 |                2 |  960.94240082735 |         0 |           90 | 1050.94240082735
-  68 |              5 |          1 |          14 |       -1 |         6 |     0 | 15.8113883008419 | 1066.75378912819 |         0 |            0 | 1066.75378912819
-  69 |              6 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
-  70 |              6 |          1 |           2 |       57 |         2 |    40 |               35 |               35 |         0 |           90 |              125
-  71 |              6 |          1 |           3 |       57 |         3 |     0 |                2 |              127 |         0 |           90 |              217
-  72 |              6 |          1 |           4 |       54 |         2 |    40 |                5 |              222 |         0 |           90 |              312
-  73 |              6 |          1 |           5 |       53 |         2 |    60 |  5.3851648071345 | 317.385164807135 |         0 |           90 | 407.385164807135
-  74 |              6 |          1 |           6 |       56 |         2 |    90 |                4 | 411.385164807135 |         0 |           90 | 501.385164807135
-  75 |              6 |          1 |           7 |       53 |         3 |    70 |                2 | 503.385164807135 |         0 |           90 | 593.385164807135
-  76 |              6 |          1 |           8 |       54 |         3 |    30 |                3 | 596.385164807135 |         0 |           90 | 686.385164807135
-  77 |              6 |          1 |           9 |       56 |         3 |     0 | 10.4403065089106 | 696.825471316045 |         0 |           90 | 786.825471316045
-  78 |              6 |          1 |          10 |       -1 |         6 |     0 | 35.0570962859162 | 821.882567601961 |         0 |            0 | 821.882567601961
-  79 |              7 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
-  80 |              7 |          1 |           2 |       67 |         2 |    10 | 12.2065556157337 | 12.2065556157337 |         0 |           90 | 102.206555615734
-  81 |              7 |          1 |           3 |       65 |         2 |    20 |                1 | 103.206555615734 |         0 |           90 | 193.206555615734
-  82 |              7 |          1 |           4 |       63 |         2 |    70 |                2 | 195.206555615734 |         0 |           90 | 285.206555615734
-  83 |              7 |          1 |           5 |       62 |         2 |    90 |                5 | 290.206555615734 |         0 |           90 | 380.206555615734
-  84 |              7 |          1 |           6 |       63 |         3 |    40 |                3 | 383.206555615734 |         0 |           90 | 473.206555615734
-  85 |              7 |          1 |           7 |       65 |         3 |    30 |                5 | 478.206555615734 |         0 |           90 | 568.206555615734
-  86 |              7 |          1 |           8 |       67 |         3 |    20 |                3 | 571.206555615734 |         0 |           90 | 661.206555615734
-  87 |              7 |          1 |           9 |       64 |         2 |    30 |                2 | 663.206555615734 |         0 |            0 | 663.206555615734
-  88 |              7 |          1 |          10 |       64 |         3 |    20 |                0 | 663.206555615734 |         0 |           90 | 753.206555615734
-  89 |              7 |          1 |          11 |       62 |         3 |     0 |                3 | 756.206555615734 |         0 |           90 | 846.206555615734
-  90 |              7 |          1 |          12 |       -1 |         6 |     0 | 20.6155281280883 | 866.822083743822 |         0 |            0 | 866.822083743822
-  91 |              8 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
-  92 |              8 |          1 |           2 |       81 |         2 |    30 | 47.4341649025257 | 47.4341649025257 |         0 |           90 | 137.434164902526
-  93 |              8 |          1 |           3 |       78 |         2 |    50 |                3 | 140.434164902526 |         0 |            0 | 140.434164902526
-  94 |              8 |          1 |           4 |       78 |         3 |    30 |                0 | 140.434164902526 |         0 |           90 | 230.434164902526
-  95 |              8 |          1 |           5 |       76 |         2 |    40 |                2 | 232.434164902526 |         0 |           90 | 322.434164902526
-  96 |              8 |          1 |           6 |       71 |         2 |    60 |                5 | 327.434164902526 |         0 |           90 | 417.434164902526
-  97 |              8 |          1 |           7 |       81 |         3 |    30 |                5 | 422.434164902526 |         0 |           90 | 512.434164902526
-  98 |              8 |          1 |           8 |       76 |         3 |    20 |                3 | 515.434164902526 |         0 |           90 | 605.434164902526
-  99 |              8 |          1 |           9 |       71 |         3 |     0 |                4 | 609.434164902526 |         0 |           90 | 699.434164902526
- 100 |              8 |          1 |          10 |       79 |         2 |    10 |                1 | 700.434164902526 |         0 |           90 | 790.434164902526
- 101 |              8 |          1 |          11 |       79 |         3 |     0 |  5.3851648071345 |  795.81932970966 |         0 |           90 |  885.81932970966
- 102 |              8 |          1 |          12 |       -1 |         6 |     0 |  51.478150704935 | 937.297480414595 |         0 |            0 | 937.297480414595
- 103 |              9 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
- 104 |              9 |          1 |           2 |       90 |         2 |    10 | 20.6155281280883 | 20.6155281280883 |         0 |           90 | 110.615528128088
- 105 |              9 |          1 |           3 |       87 |         2 |    30 |                5 | 115.615528128088 |         0 |           90 | 205.615528128088
- 106 |              9 |          1 |           4 |       86 |         2 |    40 |                1 | 206.615528128088 |         0 |           90 | 296.615528128088
- 107 |              9 |          1 |           5 |       87 |         3 |    20 |                6 | 302.615528128088 |         0 |           90 | 392.615528128088
- 108 |              9 |          1 |           6 |       82 |         2 |    40 |                3 | 395.615528128088 |         0 |           90 | 485.615528128088
- 109 |              9 |          1 |           7 |       84 |         2 |    60 |  5.8309518948453 | 491.446480022934 |         0 |           90 | 581.446480022934
- 110 |              9 |          1 |           8 |       82 |         3 |    40 | 2.82842712474619 |  584.27490714768 |         0 |           90 |  674.27490714768
- 111 |              9 |          1 |           9 |       90 |         3 |    30 |                3 |  677.27490714768 |         0 |           90 |  767.27490714768
- 112 |              9 |          1 |          10 |       84 |         3 |    10 | 2.82842712474619 | 770.103334272426 |         0 |           90 | 860.103334272426
- 113 |              9 |          1 |          11 |       86 |         3 |     0 | 3.60555127546399 |  863.70888554789 |         0 |           90 |  953.70888554789
- 114 |              9 |          1 |          12 |       -1 |         6 |     0 | 22.3606797749979 | 976.069565322888 |         0 |            0 | 976.069565322888
- 115 |             10 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
- 116 |             10 |          1 |           2 |       98 |         2 |    20 | 30.8058436014987 | 30.8058436014987 |         0 |           90 | 120.805843601499
- 117 |             10 |          1 |           3 |       96 |         2 |    30 |  5.3851648071345 | 126.191008408633 |         0 |           90 | 216.191008408633
- 118 |             10 |          1 |           4 |       98 |         3 |    10 |                2 | 218.191008408633 |         0 |           90 | 308.191008408633
- 119 |             10 |          1 |           5 |       96 |         3 |     0 | 3.60555127546399 | 311.796559684097 |         0 |           90 | 401.796559684097
- 120 |             10 |          1 |           6 |       92 |         2 |    20 | 3.60555127546399 | 405.402110959561 |         0 |           90 | 495.402110959561
- 121 |             10 |          1 |           7 |       92 |         3 |     0 |                2 | 497.402110959561 |         0 |           90 | 587.402110959561
- 122 |             10 |          1 |           8 |       97 |         2 |    30 |                5 | 592.402110959561 |         0 |            0 | 592.402110959561
- 123 |             10 |          1 |           9 |       97 |         3 |     0 |                0 | 592.402110959561 |         0 |           90 | 682.402110959561
- 124 |             10 |          1 |          10 |      100 |         2 |    20 |                5 | 687.402110959561 |         0 |           90 | 777.402110959561
- 125 |             10 |          1 |          11 |      100 |         3 |     0 |                5 | 782.402110959561 |         0 |           90 | 872.402110959561
- 126 |             10 |          1 |          12 |       -1 |         6 |     0 | 33.5410196624968 | 905.943130622058 |         0 |            0 | 905.943130622058
- 127 |             -2 |          0 |           0 |       -1 |        -1 |    -1 |  879.42275822512 |               -1 |         0 |         9000 | 9879.42275822512
-(127 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="complete-signature">
-<h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<p>This signature performs the optimization based on the optional parameters</p>
-<div class="highlight-none"><div class="highlight"><pre>_pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
-RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
-     travel_time, arrival_time, wait_time, service_time,  departure_time)
-</pre></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<p>This example use the following data: TODO put link</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">ROLLBACK</span><span class="p">;</span>
-<span class="n">ROLLBACK</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">TODO: FIX becuase the following is outdated</p>
-</div>
-<div class="section" id="description-of-the-orders-sql-query">
-<h3>Description of the orders_sql query<a class="headerlink" href="#description-of-the-orders-sql-query" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
-<col width="16%" />
+<col width="15%" />
+<col width="8%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>orders_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&nbsp;</td>
+<td><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a> query contianing the orders to be processed.</td>
+</tr>
+<tr class="row-odd"><td><strong>vehicles_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&nbsp;</td>
+<td><a class="reference internal" href="#pick-deliver-vehicles-sql">Pick &amp; Deliver Vehicles SQL</a> query containing the vehicles to be used.</td>
+</tr>
+<tr class="row-even"><td><strong>matrix_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&nbsp;</td>
+<td><a class="reference internal" href="#pick-deliver-matrix-sql">Pick &amp; Deliver Matrix SQL</a> query contaning the distance or travel times.</td>
+</tr>
+<tr class="row-odd"><td><strong>factor</strong></td>
+<td><code class="docutils literal"><span class="pre">NUMERIC</span></code></td>
+<td>1</td>
+<td>Travel time multiplier. See <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Factor Handling</span></a></td>
+</tr>
+<tr class="row-even"><td><strong>max_cycles</strong></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td>10</td>
+<td>Maximum number of cycles to perform on the optimization.</td>
+</tr>
+<tr class="row-odd"><td><strong>initial_sol</strong></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td>4</td>
+<td><p class="first">Initial solution to be used.</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">1</span></code> One order per truck</li>
+<li><code class="docutils literal"><span class="pre">2</span></code> Push front order.</li>
+<li><code class="docutils literal"><span class="pre">3</span></code> Push back order.</li>
+<li><code class="docutils literal"><span class="pre">4</span></code> Optimize insert.</li>
+<li><code class="docutils literal"><span class="pre">5</span></code> Push back order that allows more orders to be inserted at the back</li>
+<li><code class="docutils literal"><span class="pre">6</span></code> Push front order that allows more orders to be inserted at the front</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pick-deliver-orders-sql">
+<h3>Pick &amp; Deliver Orders SQL<a class="headerlink" href="#pick-deliver-orders-sql" title="Permalink to this headline">¶</a></h3>
+<p>A <cite>SELECT</cite> statement that returns the following columns:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>id, demand
+p_node_id, p_open, p_close, [p_service, ]
+d_node_id, d_open, d_close, [d_service, ]
+</pre></div>
+</div>
+<p>where:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="18%" />
+<col width="10%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
+<td>&nbsp;</td>
+<td>Identifier of the pick-delivery order pair.</td>
+</tr>
+<tr class="row-odd"><td><strong>demand</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>&nbsp;</td>
+<td>Number of units in the order</td>
+</tr>
+<tr class="row-even"><td><strong>p_open</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>&nbsp;</td>
+<td>The time, relative to 0, when the pickup location opens.</td>
+</tr>
+<tr class="row-odd"><td><strong>p_close</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>&nbsp;</td>
+<td>The time, relative to 0, when the pickup location closes.</td>
+</tr>
+<tr class="row-even"><td><strong>d_service</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>0</td>
+<td>The duration of the loading at the pickup location.</td>
+</tr>
+<tr class="row-odd"><td><strong>d_open</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>&nbsp;</td>
+<td>The time, relative to 0, when the delivery location opens.</td>
+</tr>
+<tr class="row-even"><td><strong>d_close</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>&nbsp;</td>
+<td>The time, relative to 0, when the delivery location closes.</td>
+</tr>
+<tr class="row-odd"><td><strong>d_service</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>0</td>
+<td>The duration of the loading at the delivery location.</td>
+</tr>
+</tbody>
+</table>
+<p>For the non euclidean implementation, the starting and ending identifiers are needed:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="15%" />
 <col width="70%" />
 </colgroup>
 <thead valign="bottom">
@@ -464,45 +385,124 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
-<td><p class="first">Identifier of the customer.</p>
-<ul class="last simple">
-<li>A value of <tt class="docutils literal"><span class="pre">0</span></tt> identifies the starting location</li>
-</ul>
-</td>
+<tr class="row-even"><td><strong>p_node_id</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
+<td>The node identifier of the pickup, must match a node identifier in the matrix table.</td>
 </tr>
-<tr class="row-odd"><td><strong>demand</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td><p class="first">How much is added / removed from the vehicle.</p>
-<ul class="last simple">
-<li>Negative value is a delivery,</li>
-<li>Positive value is a pickup,</li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><strong>openTime</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>The time relative to 0, when the customer opens.</td>
-</tr>
-<tr class="row-odd"><td><strong>closeTime</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>The time relative to 0, when the customer closes.</td>
-</tr>
-<tr class="row-even"><td><strong>serviceTime</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>The duration of the loading / unloading.</td>
-</tr>
-<tr class="row-odd"><td><strong>pickup_id</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
-<td>Value used when the current customer is a Delivery to find the corresponding Pickup</td>
-</tr>
-<tr class="row-even"><td><strong>deliver_id</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
-<td>Value used when the current customer is a Pickup to find the corresponding Delivery</td>
+<tr class="row-odd"><td><strong>d_node_id</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
+<td>The node identifier of the delivery, must match a node identifier in the matrix table.</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="pick-deliver-vehicles-sql">
+<h3>Pick &amp; Deliver Vehicles SQL<a class="headerlink" href="#pick-deliver-vehicles-sql" title="Permalink to this headline">¶</a></h3>
+<p>A <cite>SELECT</cite> statement that returns the following columns:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>id, capacity
+start_node_id, start_open, start_close [, start_service, ]
+[ end_node_id, end_open, end_close, end_service ]
+</pre></div>
+</div>
+<p>where:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="17%" />
+<col width="14%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
+<td>&nbsp;</td>
+<td>Identifier of the pick-delivery order pair.</td>
+</tr>
+<tr class="row-odd"><td><strong>capacity</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>&nbsp;</td>
+<td>Number of units in the order</td>
+</tr>
+<tr class="row-even"><td><strong>speed</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td><cite>1</cite></td>
+<td>Average speed of the vehicle.</td>
+</tr>
+<tr class="row-odd"><td><strong>start_open</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>&nbsp;</td>
+<td>The time, relative to 0, when the starting location opens.</td>
+</tr>
+<tr class="row-even"><td><strong>start_close</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td>&nbsp;</td>
+<td>The time, relative to 0, when the starting location closes.</td>
+</tr>
+<tr class="row-odd"><td><strong>start_service</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td><cite>0</cite></td>
+<td>The duration of the loading at the starting location.</td>
+</tr>
+<tr class="row-even"><td><strong>end_open</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td><cite>start_open</cite></td>
+<td>The time, relative to 0, when the ending location opens.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_close</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td><cite>start_close</cite></td>
+<td>The time, relative to 0, when the ending location closes.</td>
+</tr>
+<tr class="row-even"><td><strong>end_service</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
+<td><cite>start_service</cite></td>
+<td>The duration of the loading at the ending location.</td>
+</tr>
+</tbody>
+</table>
+<p>For the non euclidean implementation, the starting and ending identifiers are needed:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="13%" />
+<col width="11%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>start_node_id</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
+<td>&nbsp;</td>
+<td>The node identifier of the starting location, must match a node identifier in the matrix table.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_node_id</strong></td>
+<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
+<td><cite>start_node_id</cite></td>
+<td>The node identifier of the ending location, must match a node identifier in the matrix table.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pick-deliver-matrix-sql">
+<h3>Pick &amp; Deliver Matrix SQL<a class="headerlink" href="#pick-deliver-matrix-sql" title="Permalink to this headline">¶</a></h3>
+<p>A <cite>SELECT</cite> statement that returns the following columns:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TODO</p>
+</div>
 <p>Where:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -514,159 +514,46 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">TODO: Write</p>
 </div>
 </div>
-<div class="section" id="description-of-the-vehicles-sql-query">
-<h3>Description of the vehicles_sql query<a class="headerlink" href="#description-of-the-vehicles-sql-query" title="Permalink to this headline">¶</a></h3>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">TODO: FIX becuase the following is outdated</p>
-</div>
-</div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="15%" />
-<col width="16%" />
-<col width="8%" />
-<col width="61%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>orders_sql</strong></td>
-<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>&nbsp;</td>
-<td>Orders SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>vehicles_sql</strong></td>
-<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>&nbsp;</td>
-<td>Vehciles SQL query as described above.</td>
-</tr>
-<tr class="row-even"><td><strong>factor</strong></td>
-<td><tt class="docutils literal"><span class="pre">NUMERIC</span></tt></td>
-<td>1</td>
-<td>$multiplier for the travel time</td>
-</tr>
-<tr class="row-odd"><td><strong>max_cycles</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
-<td>10</td>
-<td>Array of identifiers of starting vertices.</td>
-</tr>
-<tr class="row-even"><td><strong>initial</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
-<td>4</td>
-<td><p class="first">Identifier of the ending vertex of the path.</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">1</span></tt> One order per truck</li>
-<li><tt class="docutils literal"><span class="pre">2</span></tt> push front</li>
-<li><tt class="docutils literal"><span class="pre">3</span></tt> push back</li>
-<li><tt class="docutils literal"><span class="pre">4</span></tt> best insert</li>
-<li><tt class="docutils literal"><span class="pre">5</span></tt> order that allows more orders to be inserted at the back</li>
-<li><tt class="docutils literal"><span class="pre">6</span></tt> order that allows more orders to be inserted at the front</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">TODO: FIX becuase the following is outdated</p>
-</div>
-</div>
-<div class="section" id="description-of-the-result">
-<h3>Description of the result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">RETURNS SET OF:</th><td class="field-body">(seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="14%" />
-<col width="10%" />
-<col width="76%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td>INTEGER</td>
-<td>Sequential value starting from <strong>1</strong>.</td>
-</tr>
-<tr class="row-odd"><td><strong>vehicle_id</strong></td>
-<td>INTEGER</td>
-<td>Current vehicle identifier.</td>
-</tr>
-<tr class="row-even"><td><strong>vehicle_seq</strong></td>
-<td>INTEGER</td>
-<td>Sequential value starting from <strong>1</strong> for the current vehicle.</td>
-</tr>
-<tr class="row-odd"><td><strong>stop_id</strong></td>
-<td>BIGINT</td>
-<td>Visited customer identifier.</td>
-</tr>
-<tr class="row-even"><td><strong>travel_time</strong></td>
-<td>FLOAT</td>
-<td>Travel time from previous <tt class="docutils literal"><span class="pre">stop_id</span></tt> to current <tt class="docutils literal"><span class="pre">stop_id</span></tt>.</td>
-</tr>
-<tr class="row-odd"><td><strong>arrival_time</strong></td>
-<td>FLOAT</td>
-<td>Previous <tt class="docutils literal"><span class="pre">departure_time</span></tt> plus current <tt class="docutils literal"><span class="pre">travel_time</span></tt>.</td>
-</tr>
-<tr class="row-even"><td><strong>wait_time</strong></td>
-<td>FLOAT</td>
-<td>Time spent waiting for <tt class="docutils literal"><span class="pre">stop_id</span></tt> to open.</td>
-</tr>
-<tr class="row-odd"><td><strong>service_time</strong></td>
-<td>FLOAT</td>
-<td>Service time at current stop_id.</td>
-</tr>
-<tr class="row-even"><td><strong>departure_time</strong></td>
-<td>FLOAT</td>
-<td><dl class="first last docutils">
-<dt>Previous <span class="math">\(departure\_time + travel\_time + wait\_time + service\_time\)</span>.</dt>
-<dd><ul class="first last simple">
-<li>When <tt class="docutils literal"><span class="pre">stop_id</span> <span class="pre">=</span> <span class="pre">0</span></tt> and <tt class="docutils literal"><span class="pre">vehicle_seq</span> <span class="pre">!=</span> <span class="pre">1</span></tt> has the total time for the current <tt class="docutils literal"><span class="pre">vehicle_id</span></tt>.</li>
-<li>When <tt class="docutils literal"><span class="pre">vehicle_id</span> <span class="pre">=</span> <span class="pre">-1</span></tt> has the aggregate total time</li>
-</ul>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>This example use the following data: TODO put link</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_pickDeliver(
+    $$ SELECT * FROM orders ORDER BY id $$,
+    $$ SELECT * FROM vehicles $$,
+    $$ SELECT * from pgr_dijkstraCostMatrix(
+        &#39; SELECT * FROM edge_table &#39;, ARRAY[3, 4, 5, 8, 9, 11]) 
+    $$
+);
+ seq | vehicle_seq | vehicle_id | stop_seq | stop_type | stop_id | order_id | cargo | travel_time | arrival_time | wait_time | service_time | departure_time 
+-----+-------------+------------+----------+-----------+---------+----------+-------+-------------+--------------+-----------+--------------+----------------
+   1 |           1 |          1 |        1 |         1 |       6 |       -1 |     0 |           0 |            0 |         0 |            0 |              0
+   2 |           1 |          1 |        2 |         2 |       5 |        3 |    30 |           1 |            1 |         1 |            3 |              5
+   3 |           1 |          1 |        3 |         3 |      11 |        3 |     0 |           2 |            7 |         0 |            3 |             10
+   4 |           1 |          1 |        4 |         2 |       9 |        2 |    20 |           2 |           12 |         0 |            2 |             14
+   5 |           1 |          1 |        5 |         3 |       4 |        2 |     0 |           1 |           15 |         0 |            3 |             18
+   6 |           1 |          1 |        6 |         6 |       6 |       -1 |     0 |           4 |           22 |         0 |            0 |             22
+   7 |           2 |          1 |        1 |         1 |       6 |       -1 |     0 |           0 |            0 |         0 |            0 |              0
+   8 |           2 |          1 |        2 |         2 |       3 |        1 |    10 |           5 |            5 |         0 |            3 |              8
+   9 |           2 |          1 |        3 |         3 |       8 |        1 |     0 |           3 |           11 |         0 |            3 |             14
+  10 |           2 |          1 |        4 |         6 |       6 |       -1 |     0 |           0 |           14 |         0 |            0 |             14
+  11 |          -2 |          0 |        0 |        -1 |      -1 |       -1 |    -1 |          18 |           -1 |         1 |           17 |             36
+(11 rows)
+
+</pre></div>
 </div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="VRP-category.html#vrp"><em>Vehicle Routing Functions Category:</em></a></li>
-<li>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
+<li><a class="reference internal" href="VRP-category.html#vrp"><span class="std std-ref">Vehicle Routing Functions Category</span></a></li>
+<li>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -684,8 +571,8 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on May 17, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Last updated on Jul 05, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>pgr_alphaShape &mdash; pgRouting Manual (2.5-dev)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -41,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -164,12 +162,12 @@
 <span id="id1"></span><h1>pgr_alphaShape<a class="headerlink" href="#pgr-alphashape" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_alphaShape</span></tt> — Core function for alpha shape computation.</p>
+<p><code class="docutils literal"><span class="pre">pgr_alphaShape</span></code> — Core function for alpha shape computation.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Returns a table with (x, y) rows that describe the vertices of an alpha shape.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">table</span><span class="p">()</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span> <span class="p">[,</span> <span class="n">float8</span> <span class="n">alpha</span><span class="p">]);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">table</span><span class="p">()</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span> <span class="p">[,</span> <span class="n">float8</span> <span class="n">alpha</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
@@ -179,25 +177,25 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">text</span></tt> a SQL query, which should return a set of rows with the following columns:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_table</span>
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">text</span></code> a SQL query, which should return a set of rows with the following columns:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_table</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the vertex</td>
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">int4</span></code> identifier of the vertex</td>
 </tr>
-<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> x-coordinate</td>
+<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> x-coordinate</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> y-coordinate</td>
+<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> y-coordinate</td>
 </tr>
 </tbody>
 </table>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">alpha:</th><td class="field-body"><p class="first last">(optional) <tt class="docutils literal"><span class="pre">float8</span></tt> alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used.
+<tr class="field-even field"><th class="field-name">alpha:</th><td class="field-body"><p class="first last">(optional) <code class="docutils literal"><span class="pre">float8</span></code> alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used.
 For more information, see <a class="reference external" href="http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html">CGAL - 2D Alpha Shapes</a>.</p>
 </td>
 </tr>
@@ -227,20 +225,21 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
 <p>PgRouting&#8217;s alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
 The first query, has the output ordered, he second query shows an example usage:</p>
 <p class="rubric">Example: the (ordered) results</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_alphaShape(
-    &#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-    FROM edge_table_vertices_pgr&#39;) ORDER BY x, y;
-  x  |  y  
------+-----
-   0 |   2
- 0.5 | 3.5
-   2 |   0
-   2 |   4
- 3.5 |   4
-   4 |   1
-   4 |   2
-   4 |   3
-(8 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
+    <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;) ORDER BY x, y;</span>
+  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>  
+<span class="o">-----+-----</span>
+   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span>
+   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
+ <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 <p class="rubric">Example: calculating the area</p>
@@ -248,34 +247,35 @@ The first query, has the output ordered, he second query shows an example usage:
 <blockquote>
 <div><ul class="simple">
 <li>Calculates the alpha shape
-- the <tt class="code docutils literal"><span class="pre">ORDER</span> <span class="pre">BY</span></tt> clause is not used.</li>
+- the <code class="code docutils literal"><span class="pre">ORDER</span> <span class="pre">BY</span></code> clause is not used.</li>
 <li>constructs a polygon</li>
 <li>and computes the area</li>
 </ul>
 </div></blockquote>
-<div class="highlight-python"><div class="highlight"><pre>SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
-FROM (
-    SELECT ST_MakeLine(points ORDER BY id) AS openline
-    FROM (
-        SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
-        FROM pgr_alphaShape(
-            &#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-            FROM edge_table_vertices_pgr&#39;)
-        ) AS a
-   ) AS foo;
- st_area 
----------
-   11.75
-(1 row)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_MakePolygon</span><span class="p">(</span><span class="n">ST_AddPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">,</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">))))::</span><span class="n">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">st_area</span>
+<span class="n">FROM</span> <span class="p">(</span>
+    <span class="n">SELECT</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">points</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">openline</span>
+    <span class="n">FROM</span> <span class="p">(</span>
+        <span class="n">SELECT</span> <span class="n">ST_MakePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">AS</span> <span class="n">points</span><span class="p">,</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="n">AS</span> <span class="nb">id</span>
+        <span class="n">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span>
+            <span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
+            <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;)</span>
+        <span class="p">)</span> <span class="n">AS</span> <span class="n">a</span>
+   <span class="p">)</span> <span class="n">AS</span> <span class="n">foo</span><span class="p">;</span>
+ <span class="n">st_area</span> 
+<span class="o">---------</span>
+   <span class="mf">11.75</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><em>pgr_drivingDistance</em></a> - Driving Distance</li>
-<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
+<li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><span class="std std-ref">pgr_drivingDistance</span></a> - Driving Distance</li>
+<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><span class="std std-ref">pgr_pointsAsPolygon</span></a> - Polygon around set of points</li>
 </ul>
 </div>
 </div>
@@ -293,8 +293,8 @@ FROM (
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on May 17, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Last updated on Jul 05, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>
