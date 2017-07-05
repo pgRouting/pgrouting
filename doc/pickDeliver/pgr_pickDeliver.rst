@@ -7,25 +7,22 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-   INSTRUCTIONS
-   - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropriate values
-   - one file / function,  may signatures of the same function go in the same file
-
 .. _pgr_pickDeliver:
 
-__pgr_pickDeliver
+pgr_pickDeliver - Proposed
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
+.. warning:: Documentation is being updated
 
 ``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
+.. rubric:: Availability
+
+* New as proposed in 2.5.0
+
 .. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 
 
@@ -56,8 +53,8 @@ Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehic
   - A pickup is done before the delivery.
 
 
-Characteristics:
-----------------
+Characteristics
+-------------------------------------------------------------------------------
 
 - All trucks depart at time 0.
 - No multiple time windows for a location.
@@ -72,89 +69,145 @@ Characteristics:
 - Six different initial will be optimized
   - the best solution found will be result
 
+.. index::
+    single: pgr_pickDeliverEuclidean - Proposed
 
-Signature Summary
------------------
+Signature
+-------------------------------------------------------------------------------
+
+..
+    TEXT, -- orders_sql
+    TEXT, -- vehicles_sql
+    TEXT, -- matrix_cell_sql
+    factor FLOAT DEFAULT 1,
+    max_cycles INTEGER DEFAULT 10,
+    initial_sol INTEGER DEFAULT 4,
+
+..
+    OUT seq INTEGER,
+    OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
+    OUT order_id BIGINT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+
 
 .. code-block:: none
 
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity, [factor, max_cycles, initial_sol])
+    pgr_pickDeliver(orders_sql, vehicles_sql, matrix_sql [, factor, max_cycles, initial_sol])
     RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
                     travel_time, arrival_time, wait_time, service_time, departure_time)
 
 
-
-Signatures
------------
-
-..
-    Minimal signature
-    .. index::
-    single: _pgr_pickDeliver(Minimal Signature) - developing
-
-Minimal signature
-...................
-
-..
-   Small description, example:
-
-The minimal signature is for `speed = 1`, for a `max_cycles = 30`
+Parameters
+...............................................................................
+                                                                                                                                                                                                                                 
+The parameters are:
 
 .. code-block:: none
 
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
-    RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
-         travel_time, arrival_time, wait_time, service_time,  departure_time)
+    orders_sql, vehicles_sql, matrix_sql [, factor, max_cycles, initial_sol]
 
-:Example:
+
+================= ================== ========= =================================================
+Column            Type                Default    Description
+================= ================== ========= =================================================
+**orders_sql**    ``TEXT``                     `Pick & Deliver Orders SQL`_ query contianing the orders to be processed.
+**vehicles_sql**  ``TEXT``                     `Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used.
+**matrix_sql**    ``TEXT``                     `Pick & Deliver Matrix SQL`_ query contaning the distance or travel times.
+**factor**        ``NUMERIC``          1       Travel time multiplier. See :ref:`pd_factor`
+**max_cycles**    ``INTEGER``          10      Maximum number of cycles to perform on the optimization.
+**initial_sol**   ``INTEGER``          4       Initial solution to be used.
+
+                                               - ``1`` One order per truck
+                                               - ``2`` Push front order.
+                                               - ``3`` Push back order.
+                                               - ``4`` Optimize insert.
+                                               - ``5`` Push back order that allows more orders to be inserted at the back
+                                               - ``6`` Push front order that allows more orders to be inserted at the front
+================= ================== ========= =================================================
+
+
+
+Pick & Deliver Orders SQL
+................................................................................
+
+A `SELECT` statement that returns the following columns:
+
+.. code-block:: none
+
+    id, demand
+    p_node_id, p_open, p_close, [p_service, ]
+    d_node_id, d_open, d_close, [d_service, ]
+
+where:
+
+.. include:: VRP-category.rst
+    :start-after: pd_orders_sql_general_start
+    :end-before: pd_orders_sql_general_end
+
+.. include:: VRP-category.rst
+    :start-after: pd_orders_sql_matrix_start
+    :end-before: pd_orders_sql_matrix_end
+
+
+Pick & Deliver Vehicles SQL
+.........................................................................................
+
+A `SELECT` statement that returns the following columns:
+
+.. code-block:: none
+
+    id, capacity
+    start_node_id, start_open, start_close [, start_service, ]
+    [ end_node_id, end_open, end_close, end_service ]
+
+where:
+
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_general_start
+    :end-before: pd_vehicle_sql_general_end
+
+.. include:: VRP-category.rst
+    :start-after: pd_vehicle_sql_matrix_start
+    :end-before: pd_vehicle_sql_matrix_end
+
+
+.. end of vehicles_sql
+
+Pick & Deliver Matrix SQL
+.........................................................................................
+
+A `SELECT` statement that returns the following columns:
+
+
+.. TODO
+.. warning:: TODO
+
+
+
+.. include:: pgRouting-concepts.rst
+    :start-after: where_definition_starts
+    :end-before: where_definition_ends
+
+
+
+Example
+-------------------------------------------------------------------------------
+
+.. TODO
 
 This example use the following data: TODO put link
 
 .. literalinclude:: doc-pickDeliver.queries
-   :start-after: --q1
-   :end-before: --q2
-
-..
-    Complete signature
-    .. index::
-    single: _pgr_pickDeliver(Cmplete Signature) - developing
-
-
-Complete signature
-....................
-
-This signature performs the optimization based on the optional parameters
-
-
-.. code-block:: none
-
-    _pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
-    RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
-         travel_time, arrival_time, wait_time, service_time,  departure_time)
-
-
-Description of the Signatures
--------------------------------
-
-
-.. include:: VRP-category.rst
-    :start-after: pd_matrix_sql_start
-    :end-before: pd_matrix_sql_end
-
-
-.. include:: VRP-category.rst
-    :start-after: pd_vehicle_sql_start
-    :end-before: pd_vehicle_sql_end
-
-
-.. include:: VRP-category.rst
-    :start-after: pd_parameters_start
-    :end-before: pd_parameters_end
-
-.. include:: VRP-category.rst
-    :start-after: return_vrp_matrix_start
-    :end-before: return_vrp_matrix_end
+   :start-after: --q2
+   :end-before: --q3
 
 
 See Also

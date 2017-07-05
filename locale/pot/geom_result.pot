@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,29 +32,13 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/geom_result.rst:0
-msgid "seq"
-msgstr ""
-
 #: ../../build/doc/geom_result.rst:37
 msgid "sequential ID indicating the path order"
-msgstr ""
-
-#: ../../build/doc/geom_result.rst:0
-msgid "id1"
 msgstr ""
 
 #: ../../build/doc/geom_result.rst:38
 #: ../../build/doc/geom_result.rst:39
 msgid "generic name, to be specified by the function"
-msgstr ""
-
-#: ../../build/doc/geom_result.rst:0
-msgid "id2"
-msgstr ""
-
-#: ../../build/doc/geom_result.rst:0
-msgid "geom"
 msgstr ""
 
 #: ../../build/doc/geom_result.rst:40

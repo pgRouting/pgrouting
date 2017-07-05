@@ -17,11 +17,11 @@ CREATE EXTENSION postgis;
 CREATE EXTENSION pgtap;
 CREATE EXTENSION pgrouting;
 
+--    i vrppdtw_data.sql
+--    i pickDeliver_pgtap_data.sql
 BEGIN;
 
     \i sampledata.sql
-    \i vrppdtw_data.sql
-    \i pickDeliver_pgtap_data.sql
     \i innerQuery.sql
     \i innerQuery_old.sql
     \i inner_styles.sql

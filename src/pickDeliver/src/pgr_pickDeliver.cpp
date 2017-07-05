@@ -65,10 +65,16 @@ Pgr_pickDeliver::nodesOK() const {
 
 Solution
 Pgr_pickDeliver::optimize(const Solution solution) {
+    pgassert(false);
     /*
      * Optimize a solution
      */
+#if 1
+    msg.log << "max_cycles: " << m_max_cycles << "\n";
     Optimize opt_solution(solution, m_max_cycles);
+#else
+    Optimize opt_solution(solution, 1);
+#endif
     msg.log << opt_solution.best_solution.tau("optimized");
     return opt_solution.best_solution;
 }
@@ -104,7 +110,11 @@ Pgr_pickDeliver::solve() {
             return rhs < lhs;
             });
 
-    solutions.push_back(Optimize(initial_sols.back()));
+#if 1
+    solutions.push_back(Optimize(initial_sols.back(), m_max_cycles));
+#else
+    solutions.push_back(initial_sols.back());
+#endif
     pgassert(!solutions.empty());
 
     msg.log << "best solution duration = " << solutions.back().duration();
@@ -126,6 +136,7 @@ Pgr_pickDeliver::get_postgres_result() const {
             solutions.back().twvTot(),  // on vehicle_id
             solutions.back().cvTot(),   // on vehicle_seq
             -1,  // on order_id
+            -1,  // on stop_id
             -2,  // on stop_type (gets increased later by one so it gets -1)
             -1,  // not accounting total loads
             solutions.back().total_travel_time(),
@@ -175,6 +186,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
 
+        pgassert(m_trucks.msg.get_error().empty());
         pgassert(msg.get_error().empty());
 
         msg.log << "\n Checking fleet ...";
@@ -202,10 +214,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         msg.log << "\n Checking orders";
         for (const auto &o : m_orders) {
             if (!m_trucks.is_order_ok(o)) {
-                msg.error << "The order "
+                msg.error << "Order not feasible on any truck was found";
+                msg.log << "The order "
                     << o.id()
                     << " is not feasible on any truck";
                 msg.log << "\n" << o;
+#if 0
                 double old_speed(0);
                 for (auto t : m_trucks) {
                     if (old_speed == t.speed()) continue;
@@ -225,6 +239,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                         << "\n";
                     t.push_back(o);
                 }
+#endif
                 return;
             }
         }
@@ -270,16 +285,17 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
 
+        pgassert(m_trucks.msg.get_error().empty());
         pgassert(msg.get_error().empty());
 
         msg.log << "\n Checking fleet";
         if (!m_trucks.is_fleet_ok()) {
-            pgassert(msg.get_error().empty());
-            pgassert(!m_trucks.msg.get_error().empty());
             msg.error << m_trucks.msg.get_error();
+            pgassert(!m_trucks.msg.get_error().empty());
             return;
         }
 
+        pgassert(m_trucks.msg.get_error().empty());
 
 
 #ifndef NDEBUG
@@ -298,7 +314,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         msg.log << "\n Checking orders";
         for (const auto &o : m_orders) {
             if (!m_trucks.is_order_ok(o)) {
-                msg.error << "The order "
+                msg.error << "Order not feasible on any truck was found";
+                msg.log << "The order "
                     << o.pickup().order()
                     << " is not feasible on any truck";
                 msg.log << "\n" << o;

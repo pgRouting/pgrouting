@@ -128,9 +128,22 @@ When working with city networks, this is recommended for point of view of pedest
 
 .. _pickdeliverdata:
 
-pgr_gsoc_vrppdtw data
-.........................
 
-.. literalinclude:: ../../tools/testers/vrppdtw_data.sql
+
+pickup & delivery Data
+...............................................................................
+
+.. rubric:: Vehicles table
+
+.. literalinclude:: ../../tools/testers/sampledata.sql
+   :start-after: --VEHICLES TABLE START
+   :end-before: --VEHICLES TABLE END
+
+
+.. rubric:: Orders table
+
+.. literalinclude:: ../../tools/testers/sampledata.sql
+   :start-after: --ORDERS TABLE START
+   :end-before: --ORDERS TABLE END
 
 

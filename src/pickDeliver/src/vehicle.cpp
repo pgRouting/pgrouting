@@ -136,23 +136,27 @@ Vehicle::get_postgres_result(
         int vid) const {
     std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
-    int vehicle_seq(1);
+    int stop_seq(1);
+    msg.log << "geting solution: " << tau() << "\n";
     for (const auto p_stop : m_path) {
-        General_vehicle_orders_t data =
-                {vid, id(), vehicle_seq,
-                /*
-                 * The original_id is invalid for stops type 0 and 5
-                 */
-                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.order(),
-                p_stop.type(),
-                p_stop.cargo(),
-                p_stop.travel_time(),
-                p_stop.arrival_time(),
-                p_stop.wait_time(),
-                p_stop.service_time(),
-                p_stop.departure_time()};
+        General_vehicle_orders_t data = {
+            vid,
+            id(),
+            stop_seq,
+            /* order_id
+             * The order_id is invalid for stops type 0 and 5
+             */
+            (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.order(),
+            p_stop.id(),
+            p_stop.type(),
+            p_stop.cargo(),
+            p_stop.travel_time(),
+            p_stop.arrival_time(),
+            p_stop.wait_time(),
+            p_stop.service_time(),
+            p_stop.departure_time()};
         result.push_back(data);
-        ++vehicle_seq;
+        ++stop_seq;
     }
     return result;
 }
@@ -172,7 +176,6 @@ Vehicle::insert(POS at, Vehicle_node node) {
     pgassert(at <= m_path.size());
 
     m_path.insert(m_path.begin() + at, node);
-        /*! @todo TODO evaluate with matrix also*/
     evaluate(at);
 
     pgassert(at < m_path.size());
@@ -242,7 +245,7 @@ Vehicle::erase(const Vehicle_node &node) {
     }
 
     erase(pos);
-        /*! @todo TODO evaluate with matrix also*/
+    /*! @todo TODO evaluate with matrix also*/
     evaluate(pos);
 
     invariant();
@@ -317,7 +320,6 @@ Vehicle::erase(POS at) {
     pgassert(!m_path[at].is_end());
 
     m_path.erase(m_path.begin() + at);
-        /*! @todo TODO evaluate with matrix also*/
     evaluate(at);
 
     invariant();
@@ -333,7 +335,6 @@ Vehicle::swap(POS i, POS j) {
     pgassert(!m_path[j].is_end());
 
     std::swap(m_path[i], m_path[j]);
-        /*! @todo TODO evaluate with matrix also*/
     i < j ? evaluate(i) : evaluate(j);
 
     invariant();
@@ -344,7 +345,6 @@ void
 Vehicle::evaluate() {
     invariant();
 
-        /*! @todo TODO evaluate with matrix also*/
     evaluate(0);
 
     invariant();
@@ -367,10 +367,8 @@ Vehicle::evaluate(POS from) {
 
     while (node != m_path.end()) {
         if (node == m_path.begin()) {
-        /*! @todo TODO evaluate with matrix also*/
             node->evaluate(m_capacity);
         } else {
-        /*! @todo TODO evaluate with matrix also*/
             node->evaluate(*(node - 1), m_capacity, speed());
         }
 
@@ -418,7 +416,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const {
 
     /* J == m_path[low_limit - 1] */
     while (low_limit > low
-             && m_path[low_limit - 1].is_compatible_IJ(nodeI, speed())) {
+            && m_path[low_limit - 1].is_compatible_IJ(nodeI, speed())) {
         --low_limit;
     }
 
@@ -450,7 +448,7 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
     /* I == m_path[high_limit] */
     while (high_limit < high
-             && nodeJ.is_compatible_IJ(m_path[high_limit], speed())) {
+            && nodeJ.is_compatible_IJ(m_path[high_limit], speed())) {
         ++high_limit;
     }
 
@@ -458,7 +456,15 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
     return high_limit;
 }
 
-
+bool
+Vehicle::is_ok() const {
+    pgassert((m_path.front().opens() <= m_path.front().closes())
+        && (m_path.back().opens() <= m_path.back().closes())
+        && (m_capacity > 0));
+    return (start_site().opens() <= start_site().closes())
+        && (end_site().opens() <= end_site().closes())
+        && (m_capacity > 0);
+}
 
 Vehicle::Vehicle(
         size_t p_idx,
@@ -474,23 +480,44 @@ Vehicle::Vehicle(
     m_speed(p_speed) {
         ENTERING();
         m_path.clear();
+        pgassert(starting_site.opens() <= starting_site.closes());
+        pgassert(ending_site.opens() <= ending_site.closes());
+        pgassert(capacity() > 0);
+        msg.log << "p_idx: " << p_idx << "\t idx(): " << idx() << "\n";
+        msg.log << "p_id: " << p_id << "\tid(): " << id() << "\n" ;
+        
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
-        /*! @todo TODO(vicky) evaluate with matrix also*/
-        msg.log << "before calling evaluate\n";
+
         evaluate(0);
-        msg.log << "after calling evaluate\n";
+        msg.log << tau() << "\n";
         invariant();
         EXITING();
     }
 
+Vehicle::Vehicle(const Vehicle &v) :
+    Identifier(v.idx(), v.id()),
+    PD_problem(),
+    m_path(v.m_path),
+    m_capacity(v.m_capacity),
+    m_factor(v.m_factor),
+    m_speed(v.m_speed) {
+#if 0
+        ENTERING();
+        msg.log << v.tau() << "\n";
+        msg.log << tau() << "\n";
+        EXITING();
+#endif
+}
 
 
 
 std::string
 Vehicle::tau() const {
+    pgassert(m_path.size() > 1);
     std::ostringstream log;
-    log << "Truck " << idx() << " (";
+    log << "Truck " << id() << "(" << idx() << ")"
+        << " (";
     for (const auto p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";
