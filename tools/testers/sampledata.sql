@@ -103,7 +103,13 @@ CREATE TABLE restrict (
 );
 
 INSERT INTO restrict(restricted_edges, cost) VALUES
-('{4, 7}', -1);
+('{4, 7}', -1),
+('{7, 8, 11}', -1),
+('{7, 8, 5}', -1),
+('{7, 4}', -1),
+('{7, 8}', -1),
+('{9, 11}', -1),
+('{9, 8}', -1);
 
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
