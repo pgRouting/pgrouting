@@ -1,7 +1,0 @@
-<map id="CVRPSolver::updateFinalSolution" name="CVRPSolver::updateFinalSolution">
-<area shape="rect" id="node2" href="$classCVRPSolver.html#ad67d3350e6f6731388906a4309d2fdb3" title="CVRPSolver::applyBestMove\lInCurrentSolution" alt="" coords="272,5,467,46"/>
-<area shape="rect" id="node3" href="$classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393" title="CVRPSolver::attemptVehicle\lExchange" alt="" coords="273,70,465,111"/>
-<area shape="rect" id="node4" href="$classCVRPSolver.html#ac7cdba95ff415f2c07f9b5862c34b4b2" title="CVRPSolver::tabuSearch" alt="" coords="515,165,685,192"/>
-<area shape="rect" id="node5" href="$classCVRPSolver.html#a214e4e301145037a8dcbc66dd6633193" title="CVRPSolver::solveVRP" alt="" coords="734,209,898,236"/>
-<area shape="rect" id="node6" href="$classCVRPSolver.html#a46471aa397eebe84b6ae9b950f296ce3" title="CVRPSolver::insertUnserved\lOrders" alt="" coords="273,187,466,229"/>
-</map>

@@ -5,13 +5,8 @@ var searchData=
   ['v_5fit',['V_it',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5d0de2f248a7ffacc9f8461d45f17c2f',1,'pgrouting::graph::PgrFlowGraph::V_it()'],['../classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#acb82fb84e7fe9167eb4745ebfedb64b0',1,'pgrouting::flow::PgrCardinalityGraph::V_it()']]],
   ['vector',['Vector',['../alpha__driver_8cpp.html#a5a03458ba9ac60d8f4d97b4c121df7e0',1,'alpha_driver.cpp']]],
   ['vectoroflongvector',['VectorOfLongVector',['../GraphDefinition_8h.html#a7d8175843356b1f39f675496e6bb9510',1,'GraphDefinition.h']]],
-  ['vehicle_5fcolumns_5ft',['vehicle_columns_t',['../VRP_8c.html#a718455f6c4fe794c0c4bb9b72394e38c',1,'VRP.c']]],
   ['vertex_5fcirculator',['Vertex_circulator',['../alpha__driver_8cpp.html#adad078e09171776a159f465e96252de1',1,'alpha_driver.cpp']]],
   ['vertex_5fcolumns_5ft',['vertex_columns_t',['../alpha_8c.html#a800c891e5d5eb186fddf615d946e4d60',1,'alpha.c']]],
   ['vertex_5ft',['vertex_t',['../alpha__driver_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1',1,'alpha_driver.h']]],
-  ['vertices_5fsize_5ftype',['vertices_size_type',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a1f172b8114334cb9cb42e6d29198a0cc',1,'pgrouting::graph::Pgr_base_graph']]],
-  ['vrp_5fcost_5felement_5ft',['vrp_cost_element_t',['../VRP_8h.html#aae470533865a28e2a4488284d1a2bea2',1,'VRP.h']]],
-  ['vrp_5forders_5ft',['vrp_orders_t',['../VRP_8h.html#ad58474d47424dd1395246e54f684f20c',1,'VRP.h']]],
-  ['vrp_5fresult_5felement_5ft',['vrp_result_element_t',['../VRP_8h.html#a00962394345c20d1d0995a20bf591367',1,'VRP.h']]],
-  ['vrp_5fvehicles_5ft',['vrp_vehicles_t',['../VRP_8h.html#a2dc0dc8ce32d357f839ad8f692b880ca',1,'VRP.h']]]
+  ['vertices_5fsize_5ftype',['vertices_size_type',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a1f172b8114334cb9cb42e6d29198a0cc',1,'pgrouting::graph::Pgr_base_graph']]]
 ];

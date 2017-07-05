@@ -16,6 +16,5 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "pickDeliver", "dir_e1e5aebfba040cfbae1d1213d15e41c3.html", "dir_e1e5aebfba040cfbae1d1213d15e41c3" ],
     [ "trsp", "dir_3ff9a90ff40b28e0f207f5cd80dcba32.html", "dir_3ff9a90ff40b28e0f207f5cd80dcba32" ],
     [ "tsp", "dir_9e339a970107aba9bd240d749e3cb49d.html", "dir_9e339a970107aba9bd240d749e3cb49d" ],
-    [ "vrp_basic", "dir_e28fcb41c27d94935e6e1bded8372f10.html", "dir_e28fcb41c27d94935e6e1bded8372f10" ],
     [ "withPoints", "dir_db4188eb592e899b4ab759c326d3f65f.html", "dir_db4188eb592e899b4ab759c326d3f65f" ]
 ];

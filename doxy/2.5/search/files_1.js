@@ -15,6 +15,5 @@ var searchData=
   ['bddijkstra_5fdriver_2ecpp',['bdDijkstra_driver.cpp',['../bdDijkstra__driver_8cpp.html',1,'']]],
   ['bddijkstra_5fdriver_2eh',['bdDijkstra_driver.h',['../bdDijkstra__driver_8h.html',1,'']]],
   ['book_5fkeeping_2ecpp',['book_keeping.cpp',['../book__keeping_8cpp.html',1,'']]],
-  ['book_5fkeeping_2eh',['book_keeping.h',['../vrp_2book__keeping_8h.html',1,'']]],
-  ['book_5fkeeping_2eh',['book_keeping.h',['../pickDeliver_2book__keeping_8h.html',1,'']]]
+  ['book_5fkeeping_2eh',['book_keeping.h',['../book__keeping_8h.html',1,'']]]
 ];

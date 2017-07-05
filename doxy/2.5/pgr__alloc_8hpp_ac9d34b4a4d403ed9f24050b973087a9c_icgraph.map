@@ -17,8 +17,7 @@
 <area shape="rect" id="node17" href="$newTSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="381,772,467,799"/>
 <area shape="rect" id="node18" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="359,823,489,849"/>
 <area shape="rect" id="node19" href="$withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae" title="do_pgr_withPointsKsp" alt="" coords="128,917,280,944"/>
-<area shape="rect" id="node20" href="$VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="144,968,264,995"/>
-<area shape="rect" id="node21" href="$contractGraph__driver_8cpp.html#a9f5d39aa0173b34d9ccb246b899cfa72" title="get_postgres_result" alt="" coords="136,1019,272,1045"/>
-<area shape="rect" id="node22" href="$classPgr__allpairs.html#a51687b103791fd97b3743e8f05d72aa2" title="Pgr_allpairs::make\l_result" alt="" coords="139,1070,269,1111"/>
-<area shape="rect" id="node23" href="$pgr__alloc_8hpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="168,411,240,437"/>
+<area shape="rect" id="node20" href="$contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44" title="get_postgres_result" alt="" coords="136,968,272,995"/>
+<area shape="rect" id="node21" href="$classPgr__allpairs.html#a51687b103791fd97b3743e8f05d72aa2" title="Pgr_allpairs::make\l_result" alt="" coords="139,1019,269,1061"/>
+<area shape="rect" id="node22" href="$pgr__alloc_8hpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="168,461,240,488"/>
 </map>

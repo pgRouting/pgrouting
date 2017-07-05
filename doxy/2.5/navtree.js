@@ -76,19 +76,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Contraction.html",
-"classCDepotInfo.html#a85ba66bcc1f9b63ab945abbba414f2a1",
-"classIdentifiers.html#ab0f7f082956caca90aa3686e8c904ef8",
-"classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html",
-"classpgrouting_1_1graph_1_1Pgr__contractionGraph.html",
-"classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f",
-"classpgrouting_1_1vrp_1_1Vehicle__node.html",
-"classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html#aa782470c6f64f8a6f3e4346905973615",
-"classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html#a598d96e72fecbb43cb8dcbbe904f56b7",
-"dir_c6e37fc9835c6783ca7f74105e7ae7b1.html",
-"globals_func_l.html",
-"pgr__bdDijkstra_8hpp.html",
-"structPickDeliveryOrders__t.html#a353af6b268cf3e4c4c47a0b244fd7928",
-"trsp_8h.html#aff905ba824de026b4ae434817a5b923c"
+"classIdentifiers.html#aa79fd722f6a21ae8083effc0ff02e043",
+"classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html#af31baa4ce7a42e8d7da49d589c0574d9",
+"classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a1f414b01d08f39b1b8670ce8ee4cfd94",
+"classpgrouting_1_1vrp_1_1Optimize.html#a6f585163bbc3f99d5f7252275701021d",
+"classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba",
+"dir_baac00f32e7554534959129813a74147.html",
+"globals_func_e.html",
+"pgr__astar_8hpp.html",
+"structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9",
+"withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

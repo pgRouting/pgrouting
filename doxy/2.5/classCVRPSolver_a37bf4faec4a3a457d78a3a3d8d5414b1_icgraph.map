@@ -1,5 +1,0 @@
-<map id="CVRPSolver::updateTabuCount" name="CVRPSolver::updateTabuCount">
-<area shape="rect" id="node2" href="$classCVRPSolver.html#ad67d3350e6f6731388906a4309d2fdb3" title="CVRPSolver::applyBestMove\lInCurrentSolution" alt="" coords="261,5,456,46"/>
-<area shape="rect" id="node3" href="$classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393" title="CVRPSolver::attemptVehicle\lExchange" alt="" coords="263,70,455,111"/>
-<area shape="rect" id="node4" href="$classCVRPSolver.html#a46471aa397eebe84b6ae9b950f296ce3" title="CVRPSolver::insertUnserved\lOrders" alt="" coords="262,135,455,177"/>
-</map>

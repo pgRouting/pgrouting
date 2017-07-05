@@ -1,7 +1,0 @@
-<map id="pgrouting::vrp::Fleet::add_vehicle" name="pgrouting::vrp::Fleet::add_vehicle">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a87ba9f138cb87373726d87a88a3f264b" title="pgrouting::vrp::Pgr\l_pickDeliver::add_base_node" alt="" coords="193,5,386,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a29ac4c9f908dc5a106f360e97660b6d1" title="pgrouting::vrp::Pgr\l_pickDeliver::add_node" alt="" coords="210,70,369,111"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Pgr__messages.html#a8619f0b2a947f14ef8e5528712f4c0fb" title="get_error " alt="" coords="204,135,375,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aec14d55e21b2be5f18d2f29d3cdf78de" title="is_end " alt="" coords="226,201,353,242"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8849b4f343980675cde9e63d686590d0" title="@ { " alt="" coords="226,266,353,307"/>
-</map>

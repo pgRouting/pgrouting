@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['inf',['INF',['../VRP__Solver_8h.html#a12c2040f25d8e3a7b9e1c2024c618cb6',1,'VRP_Solver.h']]],
-  ['int8arrayoid',['INT8ARRAYOID',['../contractGraph_8c.html#acaf704d7b041882edfbce47b53c1090f',1,'contractGraph.c']]]
+  ['max_5frule_5flength',['MAX_RULE_LENGTH',['../trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f',1,'MAX_RULE_LENGTH():&#160;trsp.h'],['../trsp__driver_8h.html#a2b2d1b8288abf80b6781151bdde6101f',1,'MAX_RULE_LENGTH():&#160;trsp_driver.h'],['../restrict__t_8h.html#a2b2d1b8288abf80b6781151bdde6101f',1,'MAX_RULE_LENGTH():&#160;restrict_t.h']]]
 ];

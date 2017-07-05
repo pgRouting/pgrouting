@@ -4,7 +4,7 @@ var classpgrouting_1_1vrp_1_1Fleet =
     [ "Fleet", "classpgrouting_1_1vrp_1_1Fleet.html#a59bc82f526ef19fe0fd430c73b8efb81", null ],
     [ "Fleet", "classpgrouting_1_1vrp_1_1Fleet.html#a3d422cfced45f8bce77ad2f1b86f7bd0", null ],
     [ "Fleet", "classpgrouting_1_1vrp_1_1Fleet.html#a17445d48c797f339f2480f8d4047893b", null ],
-    [ "add_vehicle", "classpgrouting_1_1vrp_1_1Fleet.html#aa071530cfdcd61e1afe70b87d507ecc5", null ],
+    [ "add_vehicle", "classpgrouting_1_1vrp_1_1Fleet.html#ac6175454144f3417e7fd582b87eabc52", null ],
     [ "begin", "classpgrouting_1_1vrp_1_1Fleet.html#aba34b88e102410b6aea23fbf9f2d7d54", null ],
     [ "build_fleet", "classpgrouting_1_1vrp_1_1Fleet.html#a84505248f08d5fee3859ebc953a3952e", null ],
     [ "create_b_end", "classpgrouting_1_1vrp_1_1Fleet.html#a0d86344b337e347f0e306df9d9905d24", null ],

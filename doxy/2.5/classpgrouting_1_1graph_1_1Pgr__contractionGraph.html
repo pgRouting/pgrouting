@@ -28,7 +28,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -920,14 +919,12 @@ template&lt;class G , typename T_V , typename T_E &gt; </div>
 <li>All parallel edges are disconnected (automatically by boost)</li>
 </ul>
 <div class="image">
-<img src="disconnectEdgeUndirected.png" alt="disconnectEdgeUndirected.png"/>
-<div class="caption">
-disconnect_edge(2,3) on an UNDIRECTED graph</div></div>
-<div class="image">
-<img src="disconnectEdgeDirected.png" alt="disconnectEdgeDirected.png"/>
-<div class="caption">
-disconnect_edge(2,3) on a DIRECTED graph</div></div>
- <dl class="params"><dt>Parameters</dt><dd>
+<img src="disconnectEdgeUndirected.png"  alt="disconnect_edge(2,3) on an UNDIRECTED graph"/>
+</div>
+ <div class="image">
+<img src="disconnectEdgeDirected.png"  alt="disconnect_edge(2,3) on a DIRECTED graph"/>
+</div>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">p_from</td><td>original vertex id of the starting point of the edge </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">p_to</td><td>original vertex id of the ending point of the edge </td></tr>
@@ -1015,14 +1012,12 @@ disconnect_edge(2,3) on a DIRECTED graph</div></div>
 <li>All parallel edges are disconnected (automatically by boost)</li>
 </ul>
 <div class="image">
-<img src="disconnectVertexUndirected.png" alt="disconnectVertexUndirected.png"/>
-<div class="caption">
-disconnect_vertex(2) on an UNDIRECTED graph</div></div>
-<div class="image">
-<img src="disconnectVertexDirected.png" alt="disconnectVertexDirected.png"/>
-<div class="caption">
-disconnect_vertex(2) on a DIRECTED graph</div></div>
- <dl class="params"><dt>Parameters</dt><dd>
+<img src="disconnectVertexUndirected.png"  alt="disconnect_vertex(2) on an UNDIRECTED graph"/>
+</div>
+ <div class="image">
+<img src="disconnectVertexDirected.png"  alt="disconnect_vertex(2) on a DIRECTED graph"/>
+</div>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">p_vertex</td><td>original vertex id of the starting point of the edge </td></tr>
   </table>
@@ -1456,7 +1451,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;         }</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;         <span class="keywordflow">return</span> vm_s-&gt;second;</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;     }</div>
-<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00033">alpha_driver.h:33</a></div></div>
+<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00031">alpha_driver.h:31</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_a352928e1ec9bc2d398745575f5b19676"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a352928e1ec9bc2d398745575f5b19676">pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::graph</a></div><div class="ttdeci">G graph</div><div class="ttdoc">The graph. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00306">pgr_base_graph.hpp:306</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_ab6b2a4bcbb103d1a1a1e06e91ce12ba6"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab6b2a4bcbb103d1a1a1e06e91ce12ba6">pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::vertices_map</a></div><div class="ttdeci">id_to_V vertices_map</div><div class="ttdoc">id -&gt; graph id </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00314">pgr_base_graph.hpp:314</a></div></div>
 </div><!-- fragment -->
@@ -1766,7 +1761,7 @@ template&lt;class G , typename T_V , typename T_E &gt; </div>
 <div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                                                  {</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;         <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ad153e012392316aefeb2f68e14934c74">out_degree_to_vertex</a>(neighbor, <a class="code" href="structvertex.html">vertex</a>);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;     }</div>
-<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00033">alpha_driver.h:33</a></div></div>
+<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00031">alpha_driver.h:31</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__contractionGraph_html_ad153e012392316aefeb2f68e14934c74"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ad153e012392316aefeb2f68e14934c74">pgrouting::graph::Pgr_contractionGraph::out_degree_to_vertex</a></div><div class="ttdeci">degree_size_type out_degree_to_vertex(V vertex, V neighbor)</div><div class="ttdoc">The number of edges from vertex to neighbor. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__contractionGraph_8hpp_source.html#l00183">pgr_contractionGraph.hpp:183</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -2428,7 +2423,7 @@ template&lt;class G , typename T_V , typename T_E &gt; </div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;         }</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;         <span class="keywordflow">return</span> degree;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;     }</div>
-<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00033">alpha_driver.h:33</a></div></div>
+<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00031">alpha_driver.h:31</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_a3b491eb93efec868932b07631298e5ce"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a3b491eb93efec868932b07631298e5ce">pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::is_undirected</a></div><div class="ttdeci">bool is_undirected() const</div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00499">pgr_base_graph.hpp:499</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_a21e3a6f0004402ad03d14351b2732243"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a21e3a6f0004402ad03d14351b2732243">pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::adjacent</a></div><div class="ttdeci">V adjacent(V v_idx, E e_idx) const</div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00517">pgr_base_graph.hpp:517</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__contractionGraph_html_acc93f4b2e2b71df5fb34ea1a1efb44cd"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#acc93f4b2e2b71df5fb34ea1a1efb44cd">pgrouting::graph::Pgr_contractionGraph::degree_size_type</a></div><div class="ttdeci">boost::graph_traits&lt; G &gt;::degree_size_type degree_size_type</div><div class="ttdef"><b>Definition:</b> <a href="pgr__contractionGraph_8hpp_source.html#l00075">pgr_contractionGraph.hpp:75</a></div></div>
@@ -2802,7 +2797,7 @@ template&lt;class G , typename T_V , typename T_E &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1graph.html">graph</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html">Pgr_contractionGraph</a></li>
-    <li class="footer">Generated on Wed May 17 2017 19:12:31 for PGROUTING by
+    <li class="footer">Generated on Wed Jul 5 2017 09:59:40 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

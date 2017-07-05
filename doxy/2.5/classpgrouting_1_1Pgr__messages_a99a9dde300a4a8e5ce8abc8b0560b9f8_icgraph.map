@@ -1,3 +1,5 @@
 <map id="pgrouting::Pgr_messages::clear" name="pgrouting::Pgr_messages::clear">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1PD__problem.html#a9fa38c58394905fee3985bfef36a219b" title="pgrouting::vrp::PD\l_problem::PD_problem" alt="" coords="224,5,379,46"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#a84505248f08d5fee3859ebc953a3952e" title="build the fleet " alt="" coords="232,5,371,46"/>
+<area shape="rect" id="node3" href="$pickDeliver__driver_8h.html#a06ef15d03d851e390ca5c6572fc92091" title="do_pgr_pickDeliver" alt="" coords="235,71,368,97"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1PD__problem.html#a9fa38c58394905fee3985bfef36a219b" title="pgrouting::vrp::PD\l_problem::PD_problem" alt="" coords="224,122,379,163"/>
 </map>

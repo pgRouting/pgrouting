@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['double_5fmax',['DOUBLE_MAX',['../VRP__Solver_8cpp.html#a4a7fa8631f9ee0ad0dbf5b680dbdb707',1,'VRP_Solver.cpp']]]
+  ['entering',['ENTERING',['../pgr__messages_8h.html#a08a51dadded6f22312848c4eec4484c4',1,'pgr_messages.h']]],
+  ['exiting',['EXITING',['../pgr__messages_8h.html#a65dad9e98c3e268141dc89f9da5aeec8',1,'pgr_messages.h']]]
 ];

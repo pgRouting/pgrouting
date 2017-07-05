@@ -2,6 +2,9 @@ var dir_d5995d5871f728649bd47ea0d6428e03 =
 [
     [ "pickDeliver", "dir_be21e1794458515d32b002eb585b0ffd.html", "dir_be21e1794458515d32b002eb585b0ffd" ],
     [ "column_info_t.h", "column__info__t_8h.html", "column__info__t_8h" ],
+    [ "contracted_rt.h", "contracted__rt_8h.html", [
+      [ "contracted_rt", "structcontracted__rt.html", "structcontracted__rt" ]
+    ] ],
     [ "coordinate_t.h", "coordinate__t_8h.html", [
       [ "Coordinate_t", "structCoordinate__t.html", "structCoordinate__t" ]
     ] ],
@@ -21,11 +24,6 @@ var dir_d5995d5871f728649bd47ea0d6428e03 =
     ] ],
     [ "pgr_flow_t.h", "pgr__flow__t_8h.html", [
       [ "pgr_flow_t", "structpgr__flow__t.html", "structpgr__flow__t" ]
-    ] ],
-    [ "pgr_types.h", "pgr__types_8h.html", [
-      [ "path_element_t", "structpath__element__t.html", "structpath__element__t" ],
-      [ "pgr_contracted_blob", "structpgr__contracted__blob.html", "structpgr__contracted__blob" ],
-      [ "pgr_path_t", "structpgr__path__t.html", "structpgr__path__t" ]
     ] ],
     [ "point_on_edge_t.h", "point__on__edge__t_8h.html", [
       [ "Point_on_edge_t", "structPoint__on__edge__t.html", "structPoint__on__edge__t" ]

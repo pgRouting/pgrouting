@@ -1,5 +1,0 @@
-<map id="loadDistanceMatrix" name="loadDistanceMatrix">
-<area shape="rect" id="node2" href="$classCVRPSolver.html#aaf3424d07d07840dfa578630069f2a1a" title="CVRPSolver::addDepotToOrderCost" alt="" coords="190,5,426,32"/>
-<area shape="rect" id="node3" href="$classCVRPSolver.html#a10f95df2201e5e2c349ccb1fa6032792" title="CVRPSolver::addOrderToDepotCost" alt="" coords="190,56,426,83"/>
-<area shape="rect" id="node4" href="$classCVRPSolver.html#a535946efd8c32afc53e6dd0c0588d3c7" title="CVRPSolver::addOrderToOrderCost" alt="" coords="191,107,425,133"/>
-</map>

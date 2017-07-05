@@ -12,18 +12,10 @@ var hierarchy =
       [ "Pgr_dijkstra< G >::dijkstra_many_goal_visitor", "classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html", null ],
       [ "Pgr_dijkstra< G >::dijkstra_one_goal_visitor", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html", null ]
     ] ],
-    [ "CDepotInfo", "classCDepotInfo.html", null ],
-    [ "CMoveInfo", "classCMoveInfo.html", null ],
     [ "Column_info_t", "structColumn__info__t.html", null ],
+    [ "contracted_rt", "structcontracted__rt.html", null ],
     [ "Coordinate_t", "structCoordinate__t.html", null ],
-    [ "COrderInfo", "classCOrderInfo.html", null ],
     [ "CostHolder", "structCostHolder.html", null ],
-    [ "CostPack", "structCostPack.html", null ],
-    [ "CSolutionInfo", "classCSolutionInfo.html", null ],
-    [ "CTourInfo", "classCTourInfo.html", null ],
-    [ "CVehicleInfo", "classCVehicleInfo.html", null ],
-    [ "CVRPSolver", "classCVRPSolver.html", null ],
-    [ "distance_columns", "structdistance__columns.html", null ],
     [ "edge", "structedge.html", null ],
     [ "edge_columns", "structedge__columns.html", null ],
     [ "EventHandler", "classEventHandler.html", [
@@ -36,18 +28,15 @@ var hierarchy =
     [ "GraphEdgeInfo", "classGraphEdgeInfo.html", null ],
     [ "Identifiers< T >", "classIdentifiers.html", null ],
     [ "Identifiers< int64_t >", "classIdentifiers.html", null ],
-    [ "Identifiers< pgrouting::vrp::pickdeliver::PD_Orders::OID >", "classIdentifiers.html", null ],
     [ "Identifiers< size_t >", "classIdentifiers.html", null ],
     [ "Identifiers< V >", "classIdentifiers.html", null ],
     [ "MATRIX", null, [
       [ "pgrouting::tsp::TSP< MATRIX >", "classpgrouting_1_1tsp_1_1TSP.html", null ]
     ] ],
     [ "matrix_cell", "structmatrix__cell.html", null ],
-    [ "order_columns", "structorder__columns.html", null ],
     [ "PARENT_PATH", "structPARENT__PATH.html", null ],
     [ "Path", "classPath.html", null ],
     [ "path_element", "structpath__element.html", null ],
-    [ "path_element_t", "structpath__element__t.html", null ],
     [ "Path_t", "structPath__t.html", null ],
     [ "Pgr_allpairs< G >", "classPgr__allpairs.html", null ],
     [ "Pgr_allpairs< G >::inf_plus< T >", "structPgr__allpairs_1_1inf__plus.html", null ],
@@ -55,7 +44,6 @@ var hierarchy =
       [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ]
     ] ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", null ],
-    [ "pgr_contracted_blob", "structpgr__contracted__blob.html", null ],
     [ "Pgr_dijkstra< G >", "classPgr__dijkstra.html", null ],
     [ "Pgr_dijkstra< G >::found_goals", "structPgr__dijkstra_1_1found__goals.html", null ],
     [ "pgr_edge_t", "structpgr__edge__t.html", null ],
@@ -63,7 +51,6 @@ var hierarchy =
     [ "pgr_flow_t", "structpgr__flow__t.html", null ],
     [ "Pgr_ksp< G >", "classPgr__ksp.html", null ],
     [ "Pgr_ksp< G >::compPaths", "classPgr__ksp_1_1compPaths.html", null ],
-    [ "pgr_path_t", "structpgr__path__t.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >", "classpgrouting_1_1algorithms_1_1Pgr__astar.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >::found_goals", "structpgrouting_1_1algorithms_1_1Pgr__astar_1_1found__goals.html", null ],
     [ "pgrouting::Basic_edge", "classpgrouting_1_1Basic__edge.html", null ],
@@ -82,18 +69,10 @@ var hierarchy =
     [ "pgrouting::graph::PgrFlowGraph", "classpgrouting_1_1graph_1_1PgrFlowGraph.html", null ],
     [ "pgrouting::Identifier", "classpgrouting_1_1Identifier.html", [
       [ "pgrouting::vrp::Base_node", "classpgrouting_1_1vrp_1_1Base__node.html", [
-        [ "pgrouting::vrp::Dnode", "classpgrouting_1_1vrp_1_1Dnode.html", [
-          [ "pgrouting::vrp::pickdeliver::Tw_node", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Tw__node.html", [
-            [ "pgrouting::vrp::pickdeliver::Vehicle_node", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__node.html", null ]
-          ] ]
-        ] ],
+        [ "pgrouting::vrp::Dnode", "classpgrouting_1_1vrp_1_1Dnode.html", null ],
         [ "pgrouting::vrp::Node", "classpgrouting_1_1vrp_1_1Node.html", null ]
       ] ],
       [ "pgrouting::vrp::Order", "classpgrouting_1_1vrp_1_1Order.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Order", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Vehicle", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html", [
-        [ "pgrouting::vrp::pickdeliver::Vehicle_pickDeliver", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle__pickDeliver.html", null ]
-      ] ],
       [ "pgrouting::vrp::Tw_node", "classpgrouting_1_1vrp_1_1Tw__node.html", [
         [ "pgrouting::vrp::Vehicle_node", "classpgrouting_1_1vrp_1_1Vehicle__node.html", null ]
       ] ],
@@ -117,26 +96,11 @@ var hierarchy =
       [ "pgrouting::vrp::Tw_node", "classpgrouting_1_1vrp_1_1Tw__node.html", null ],
       [ "pgrouting::vrp::Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html", null ]
     ] ],
-    [ "pgrouting::vrp::pickdeliver::PD_problem", "classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__problem.html", [
-      [ "pgrouting::vrp::pickdeliver::Fleet", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Fleet.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Order", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Order.html", null ],
-      [ "pgrouting::vrp::pickdeliver::PD_Orders", "classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__Orders.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Pgr_pickDeliver", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Pgr__pickDeliver.html", null ],
-      [ "pgrouting::vrp::pickdeliver::Solution", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Solution.html", [
-        [ "pgrouting::vrp::pickdeliver::Initial_solution", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Initial__solution.html", null ],
-        [ "pgrouting::vrp::pickdeliver::Optimize", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Optimize.html", null ]
-      ] ],
-      [ "pgrouting::vrp::pickdeliver::Vehicle", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html", null ]
-    ] ],
-    [ "pgrouting::vrp::pickdeliver::Swap_bk", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__bk.html", null ],
-    [ "pgrouting::vrp::pickdeliver::Swap_bk::Compare", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__bk_1_1Compare.html", null ],
-    [ "pgrouting::vrp::pickdeliver::Swap_info", "classpgrouting_1_1vrp_1_1pickdeliver_1_1Swap__info.html", null ],
     [ "pgrouting::vrp::Swap_bk", "classpgrouting_1_1vrp_1_1Swap__bk.html", null ],
     [ "pgrouting::vrp::Swap_bk::Compare", "classpgrouting_1_1vrp_1_1Swap__bk_1_1Compare.html", null ],
     [ "pgrouting::vrp::Swap_info", "classpgrouting_1_1vrp_1_1Swap__info.html", null ],
     [ "pgrouting::XY_vertex", "classpgrouting_1_1XY__vertex.html", null ],
     [ "PickDeliveryOrders_t", "structPickDeliveryOrders__t.html", null ],
-    [ "Point", "structPoint.html", null ],
     [ "Point_on_edge_t", "structPoint__on__edge__t.html", null ],
     [ "pointCompare", "structpointCompare.html", null ],
     [ "restrict_columns", "structrestrict__columns.html", null ],
@@ -151,13 +115,7 @@ var hierarchy =
     ] ],
     [ "StringOperation", "classStringOperation.html", null ],
     [ "StringTokenizer", "classStringTokenizer.html", null ],
-    [ "tokenizer", "classtokenizer.html", null ],
-    [ "vehicle_columns", "structvehicle__columns.html", null ],
     [ "Vehicle_t", "structVehicle__t.html", null ],
     [ "vertex", "structvertex.html", null ],
-    [ "vertex_columns", "structvertex__columns.html", null ],
-    [ "vrp_cost_element", "structvrp__cost__element.html", null ],
-    [ "vrp_orders", "structvrp__orders.html", null ],
-    [ "vrp_result_element", "structvrp__result__element.html", null ],
-    [ "vrp_vehicles", "structvrp__vehicles.html", null ]
+    [ "vertex_columns", "structvertex__columns.html", null ]
 ];

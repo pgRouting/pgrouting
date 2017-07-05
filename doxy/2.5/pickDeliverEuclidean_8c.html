@@ -28,7 +28,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -264,11 +263,11 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="comment">// postgres starts counting from 1</span></div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        values[0] = Int32GetDatum(funcctx-&gt;call_cntr + 1);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_number);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        values[3] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        values[4] = Int64GetDatum(result_tuples[call_cntr].order_id);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        values[5] = Int64GetDatum(result_tuples[call_cntr].stop_type + 1);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        values[3] = Int32GetDatum(result_tuples[call_cntr].stop_seq);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        values[4] = Int32GetDatum(result_tuples[call_cntr].stop_type + 1);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        values[5] = Int64GetDatum(result_tuples[call_cntr].order_id);</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        values[6] = Float8GetDatum(result_tuples[call_cntr].cargo);</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        values[7] = Float8GetDatum(result_tuples[call_cntr].travelTime);</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        values[8] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);</div>
@@ -364,7 +363,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pickDeliverEuclidean_8c_source.html#l00048">48</a> of file <a class="el" href="pickDeliverEuclidean_8c_source.html">pickDeliverEuclidean.c</a>.</p>
 
-<p>References <a class="el" href="pickDeliverEuclidean__driver_8cpp_source.html#l00052">do_pgr_pickDeliverEuclidean()</a>, <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>, <a class="el" href="orders__input_8c_source.html#l00206">pgr_get_pd_orders()</a>, <a class="el" href="vehicles__input_8c_source.html#l00229">pgr_get_vehicles()</a>, <a class="el" href="e__report_8c_source.html#l00093">pgr_global_report()</a>, <a class="el" href="postgres__connection_8c_source.html#l00083">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00032">time_msg()</a>.</p>
+<p>References <a class="el" href="pickDeliverEuclidean__driver_8cpp_source.html#l00052">do_pgr_pickDeliverEuclidean()</a>, <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>, <a class="el" href="orders__input_8c_source.html#l00206">pgr_get_pd_orders()</a>, <a class="el" href="vehicles__input_8c_source.html#l00261">pgr_get_vehicles()</a>, <a class="el" href="e__report_8c_source.html#l00093">pgr_global_report()</a>, <a class="el" href="postgres__connection_8c_source.html#l00083">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00032">time_msg()</a>.</p>
 
 <p>Referenced by <a class="el" href="pickDeliverEuclidean_8c_source.html#l00194">pickDeliverEuclidean()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                              {</div>
@@ -389,7 +388,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span> (initial_solution_id &lt;= 0 || initial_solution_id &gt; 6) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        elog(ERROR, <span class="stringliteral">&quot;Illegal value in parameter: initial&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        elog(ERROR, <span class="stringliteral">&quot;Illegal value in parameter: initial_sol&quot;</span>);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        (*result_count) = 0;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        (*result_tuples) = NULL;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span>;</div>
@@ -511,7 +510,7 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="structVehicle__t_html"><div class="ttname"><a href="structVehicle__t.html">Vehicle_t</a></div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00060">vehicle_t.h:60</a></div></div>
 <div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00083">postgres_connection.c:83</a></div></div>
 <div class="ttc" id="pickDeliverEuclidean__driver_8cpp_html_ab554288fb12abe3aff1adced4d164178"><div class="ttname"><a href="pickDeliverEuclidean__driver_8cpp.html#ab554288fb12abe3aff1adced4d164178">do_pgr_pickDeliverEuclidean</a></div><div class="ttdeci">void do_pgr_pickDeliverEuclidean(PickDeliveryOrders_t *customers_arr, size_t total_customers, Vehicle_t *vehicles_arr, size_t total_vehicles, double factor, int max_cycles, int initial_solution_id, General_vehicle_orders_t **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliverEuclidean__driver_8cpp_source.html#l00052">pickDeliverEuclidean_driver.cpp:52</a></div></div>
-<div class="ttc" id="vehicles__input_8c_html_a7e8b7a1a200a9d6118438700f8cddcab"><div class="ttname"><a href="vehicles__input_8c.html#a7e8b7a1a200a9d6118438700f8cddcab">pgr_get_vehicles</a></div><div class="ttdeci">void pgr_get_vehicles(char *vehicles_sql, Vehicle_t **vehicles, size_t *total_vehicles)</div><div class="ttdoc">Reads the vehicles orders. </div><div class="ttdef"><b>Definition:</b> <a href="vehicles__input_8c_source.html#l00229">vehicles_input.c:229</a></div></div>
+<div class="ttc" id="vehicles__input_8c_html_a7e8b7a1a200a9d6118438700f8cddcab"><div class="ttname"><a href="vehicles__input_8c.html#a7e8b7a1a200a9d6118438700f8cddcab">pgr_get_vehicles</a></div><div class="ttdeci">void pgr_get_vehicles(char *vehicles_sql, Vehicle_t **vehicles, size_t *total_vehicles)</div><div class="ttdoc">Reads the vehicles orders. </div><div class="ttdef"><b>Definition:</b> <a href="vehicles__input_8c_source.html#l00261">vehicles_input.c:261</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -539,7 +538,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><a class="el" href="pickDeliverEuclidean_8c.html">pickDeliverEuclidean.c</a></li>
-    <li class="footer">Generated on Wed May 17 2017 19:12:30 for PGROUTING by
+    <li class="footer">Generated on Wed Jul 5 2017 09:59:39 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

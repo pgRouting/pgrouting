@@ -1,5 +1,5 @@
 <map id="pgrouting::vrp::Tw_node::is_end" name="pgrouting::vrp::Tw_node::is_end">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#aa071530cfdcd61e1afe70b87d507ecc5" title="pgrouting::vrp::Fleet\l::add_vehicle" alt="" coords="188,5,327,46"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#ac6175454144f3417e7fd582b87eabc52" title="pgrouting::vrp::Fleet\l::add_vehicle" alt="" coords="188,5,327,46"/>
 <area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a1bf6691edaa8813f83a9b6bf6e1f517d" title="True when not violation. " alt="" coords="181,70,333,111"/>
 <area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8d99ae2ed01e632538a5eb57acc896c3" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="194,135,321,177"/>
 </map>

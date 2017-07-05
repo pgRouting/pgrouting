@@ -1,6 +1,0 @@
-<map id="pgrouting::vrp::pickdeliver::Vehicle_pickDeliver" name="pgrouting::vrp::pickdeliver::Vehicle_pickDeliver">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1Vehicle.html" title="Vehicle with time windows. " alt="" coords="5,5,176,46"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html" title="Identifiers\&lt; pgrouting\l::vrp::pickdeliver::PD\l_Orders::OID \&gt;" alt="" coords="18,69,163,125"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1pickdeliver_1_1PD__Orders.html" title="pgrouting::vrp::pickdeliver\l::PD_Orders" alt="" coords="5,149,176,190"/>
-<area shape="rect" id="node5" href="$classIdentifiers.html" title="Identifiers\&lt; size_t \&gt;" alt="" coords="21,215,160,241"/>
-</map>

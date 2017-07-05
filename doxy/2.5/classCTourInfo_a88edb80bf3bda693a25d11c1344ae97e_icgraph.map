@@ -1,9 +1,0 @@
-<map id="CTourInfo::getOrderVector" name="CTourInfo::getOrderVector">
-<area shape="rect" id="node2" href="$classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045" title="CSolutionInfo::addTour" alt="" coords="254,5,410,32"/>
-<area shape="rect" id="node3" href="$VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302" title="find_vrp_solution" alt="" coords="272,56,392,83"/>
-<area shape="rect" id="node4" href="$classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd" title="CVRPSolver::getCostForInsert" alt="" coords="231,107,433,133"/>
-<area shape="rect" id="node5" href="$classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03" title="CVRPSolver::getPotential\lInsert" alt="" coords="483,125,658,166"/>
-<area shape="rect" id="node6" href="$classCVRPSolver.html#afe08f85c746f5cec359e2ee8fb2ee1d0" title="CVRPSolver::insertOrder" alt="" coords="486,237,655,264"/>
-<area shape="rect" id="node7" href="$Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2" title="print_solution" alt="" coords="283,259,381,285"/>
-<area shape="rect" id="node8" href="$classCVRPSolver.html#a454e4158281f70f3f450ecf08319546e" title="CVRPSolver::updateTourCosts" alt="" coords="229,309,435,336"/>
-</map>

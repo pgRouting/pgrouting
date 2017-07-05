@@ -28,7 +28,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -212,7 +211,7 @@ Functions</h2></td></tr>
 <tr class="separator:a64fca5dabc4ad9db224e524a154bbff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09d6d4bec3c410ef9b9ae6cbd0559bdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a> (<a class="el" href="alpha__driver_8cpp.html#a054d7b9fbb0af44fd39709a19a178fce">Segment</a> s, std::vector&lt; <a class="el" href="alpha__driver_8cpp.html#a054d7b9fbb0af44fd39709a19a178fce">Segment</a> &gt; &amp;segments, std::set&lt; int &gt; &amp;unusedIndexes, std::vector&lt; <a class="el" href="alpha__driver_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a> &gt; &amp;rings)</td></tr>
 <tr class="separator:a09d6d4bec3c410ef9b9ae6cbd0559bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a798521f1cfd1cdd3fe093e4197da7990"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990">get_angle</a> (<a class="el" href="structPoint.html">Point</a> p, <a class="el" href="structPoint.html">Point</a> q, <a class="el" href="structPoint.html">Point</a> r)</td></tr>
+<tr class="memitem:a798521f1cfd1cdd3fe093e4197da7990"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990">get_angle</a> (<a class="el" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> p, <a class="el" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> q, <a class="el" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> r)</td></tr>
 <tr class="separator:a798521f1cfd1cdd3fe093e4197da7990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -380,7 +379,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef K::Point_2 <a class="el" href="structPoint.html">Point</a></td>
+          <td class="memname">typedef K::Point_2 <a class="el" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -589,7 +588,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="alpha__driver_8cpp_source.html#l00161">alpha_edges()</a>, <a class="el" href="alpha__driver_8cpp_source.html#l00106">find_next_edge()</a>, and <a class="el" href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc()</a>.</p>
 
-<p>Referenced by <a class="el" href="alpha_8c_source.html#l00112">compute_alpha_shape()</a>.</p>
+<p>Referenced by <a class="el" href="alpha_8c_source.html#l00116">compute_alpha_shape()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                                           {</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        std::list&lt;Point&gt; points;</div>
@@ -597,16 +596,16 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            std::vector&lt;Point&gt; pv;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">for</span> (std::size_t j = 0; j &lt; count; ++j) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <a class="code" href="structPoint.html">Point</a> p(vertices[j].x, vertices[j].y);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> p(vertices[j].x, vertices[j].y);</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                pv.push_back(p);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            }</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            std::sort(pv.begin(), pv.end(),</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                    [](<span class="keyword">const</span> <a class="code" href="structPoint.html">Point</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="structPoint.html">Point</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                    [](<span class="keyword">const</span> <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    <span class="keywordflow">return</span> e2.y() &lt; e1.y();</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                    });</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            std::stable_sort(pv.begin(), pv.end(),</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    [](<span class="keyword">const</span> <a class="code" href="structPoint.html">Point</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="structPoint.html">Point</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    [](<span class="keyword">const</span> <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                    <span class="keywordflow">return</span> e2.x() &lt; e1.x();</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    });</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            pv.erase(std::unique(pv.begin(), pv.end()), pv.end());</div>
@@ -674,7 +673,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                }</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <a class="code" href="alpha__driver_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a> ring = rings.at(i);</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; ring.size(); j++) {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    <a class="code" href="structPoint.html">Point</a> point = ring.vertex(j);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> point = ring.vertex(j);</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    (*res)[idx].x = point.x();</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    (*res)[idx].y = point.y();</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    idx++;</div>
@@ -689,12 +688,12 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
+<div class="ttc" id="alpha__driver_8cpp_html_aa097b1c3f5429739d7234ac0c50976d9"><div class="ttname"><a href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a></div><div class="ttdeci">K::Point_2 Point</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00068">alpha_driver.cpp:68</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_a269b1986c0b1002e29ca46fbd69d10c6"><div class="ttname"><a href="alpha__driver_8cpp.html#a269b1986c0b1002e29ca46fbd69d10c6">alpha_edges</a></div><div class="ttdeci">void alpha_edges(const Alpha_shape_2 &amp;A, OutputIterator out)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00161">alpha_driver.cpp:161</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_a249648072c5d3aa789bb22e9662adf84"><div class="ttname"><a href="alpha__driver_8cpp.html#a249648072c5d3aa789bb22e9662adf84">Alpha_shape_2</a></div><div class="ttdeci">CGAL::Alpha_shape_2&lt; Ht &gt; Alpha_shape_2</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00082">alpha_driver.cpp:82</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_acf1a2afd1df69ffc5b3757e8ee8ad416"><div class="ttname"><a href="alpha__driver_8cpp.html#acf1a2afd1df69ffc5b3757e8ee8ad416">coord_type</a></div><div class="ttdeci">double coord_type</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00064">alpha_driver.cpp:64</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_a8c493b4407f1eab1fc792fe406d0db86"><div class="ttname"><a href="alpha__driver_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a></div><div class="ttdeci">CGAL::Polygon_2&lt; K &gt; Polygon_2</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00071">alpha_driver.cpp:71</a></div></div>
 <div class="ttc" id="pgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory </div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc.hpp:64</a></div></div>
-<div class="ttc" id="structPoint_html"><div class="ttname"><a href="structPoint.html">Point</a></div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00045">VRP_Solver.h:45</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_a09d6d4bec3c410ef9b9ae6cbd0559bdf"><div class="ttname"><a href="alpha__driver_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a></div><div class="ttdeci">void find_next_edge(Segment s, std::vector&lt; Segment &gt; &amp;segments, std::set&lt; int &gt; &amp;unusedIndexes, std::vector&lt; Polygon_2 &gt; &amp;rings)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00106">alpha_driver.cpp:106</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -766,14 +765,14 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="alpha__driver_8cpp.html#a7118ea995babe95c18fc3899f93d697a">prev_size</a> = unusedIndexes.size();</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="structPoint.html">Point</a> start = s.source();</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="structPoint.html">Point</a> end = s.target();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> start = s.source();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> end = s.target();</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    rings.back().push_back(end);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    std::vector&lt;int&gt; nextIndexes;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; segments.size(); i++) {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">if</span> (unusedIndexes.find(i) != unusedIndexes.end()) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <a class="code" href="structPoint.html">Point</a> source = segments.at(i).source();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> source = segments.at(i).source();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">if</span> (source == end) {</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                nextIndexes.push_back(i);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            }</div>
@@ -787,7 +786,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        std::vector&lt; std::pair&lt;double, int&gt; &gt; nextAngles;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; nextIndexes.size(); i++) {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordtype">int</span> j = nextIndexes.at(i);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="structPoint.html">Point</a> target = segments.at(j).target();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a> target = segments.at(j).target();</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordtype">double</span> angle = <a class="code" href="alpha__driver_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990">get_angle</a>(start, end, target);</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            nextAngles.push_back(std::pair&lt;double, int&gt;(angle, j));</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
@@ -810,9 +809,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
 <div class="ttc" id="alpha__driver_8cpp_html_a7118ea995babe95c18fc3899f93d697a"><div class="ttname"><a href="alpha__driver_8cpp.html#a7118ea995babe95c18fc3899f93d697a">prev_size</a></div><div class="ttdeci">size_t prev_size</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00105">alpha_driver.cpp:105</a></div></div>
+<div class="ttc" id="alpha__driver_8cpp_html_aa097b1c3f5429739d7234ac0c50976d9"><div class="ttname"><a href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a></div><div class="ttdeci">K::Point_2 Point</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00068">alpha_driver.cpp:68</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_a798521f1cfd1cdd3fe093e4197da7990"><div class="ttname"><a href="alpha__driver_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990">get_angle</a></div><div class="ttdeci">double get_angle(Point p, Point q, Point r)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00092">alpha_driver.cpp:92</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_a8c493b4407f1eab1fc792fe406d0db86"><div class="ttname"><a href="alpha__driver_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a></div><div class="ttdeci">CGAL::Polygon_2&lt; K &gt; Polygon_2</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00071">alpha_driver.cpp:71</a></div></div>
-<div class="ttc" id="structPoint_html"><div class="ttname"><a href="structPoint.html">Point</a></div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00045">VRP_Solver.h:45</a></div></div>
 <div class="ttc" id="alpha__driver_8cpp_html_a09d6d4bec3c410ef9b9ae6cbd0559bdf"><div class="ttname"><a href="alpha__driver_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a></div><div class="ttdeci">void find_next_edge(Segment s, std::vector&lt; Segment &gt; &amp;segments, std::set&lt; int &gt; &amp;unusedIndexes, std::vector&lt; Polygon_2 &gt; &amp;rings)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00106">alpha_driver.cpp:106</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -842,19 +841,19 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">double get_angle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structPoint.html">Point</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a>&#160;</td>
           <td class="paramname"><em>p</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structPoint.html">Point</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a>&#160;</td>
           <td class="paramname"><em>q</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structPoint.html">Point</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a>&#160;</td>
           <td class="paramname"><em>r</em>&#160;</td>
         </tr>
         <tr>
@@ -916,7 +915,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha__driver_8cpp.html">alpha_driver.cpp</a></li>
-    <li class="footer">Generated on Wed May 17 2017 19:12:29 for PGROUTING by
+    <li class="footer">Generated on Wed Jul 5 2017 09:59:39 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

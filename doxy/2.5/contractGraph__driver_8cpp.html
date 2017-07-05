@@ -28,7 +28,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -130,11 +129,11 @@ Include dependency graph for contractGraph_driver.cpp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af222caa2d0b56f20dd7489b82f1fecdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="contractGraph__driver_8cpp.html#af222caa2d0b56f20dd7489b82f1fecdc">do_pgr_contractGraph</a> (<a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> *data_edges, size_t total_edges, int64_t *forbidden_vertices, size_t size_forbidden_vertices, int64_t *contraction_order, size_t size_contraction_order, int64_t max_cycles, bool directed, <a class="el" href="structpgr__contracted__blob.html">pgr_contracted_blob</a> **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</td></tr>
-<tr class="separator:af222caa2d0b56f20dd7489b82f1fecdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f5d39aa0173b34d9ccb246b899cfa72"><td class="memTemplParams" colspan="2">template&lt;typename G &gt; </td></tr>
-<tr class="memitem:a9f5d39aa0173b34d9ccb246b899cfa72"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="contractGraph__driver_8cpp.html#a9f5d39aa0173b34d9ccb246b899cfa72">get_postgres_result</a> (G &amp;graph, const <a class="el" href="classIdentifiers.html">Identifiers</a>&lt; int64_t &gt; remaining_vertices, const std::vector&lt; <a class="el" href="classpgrouting_1_1CH__edge.html">pgrouting::CH_edge</a> &gt; shortcut_edges, <a class="el" href="structpgr__contracted__blob.html">pgr_contracted_blob</a> **return_tuples)</td></tr>
-<tr class="separator:a9f5d39aa0173b34d9ccb246b899cfa72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f3817ccb656fe839cc6168b51c1a57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="contractGraph__driver_8cpp.html#a75f3817ccb656fe839cc6168b51c1a57">do_pgr_contractGraph</a> (<a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> *data_edges, size_t total_edges, int64_t *forbidden_vertices, size_t size_forbidden_vertices, int64_t *contraction_order, size_t size_contraction_order, int64_t max_cycles, bool directed, <a class="el" href="structcontracted__rt.html">contracted_rt</a> **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</td></tr>
+<tr class="separator:a75f3817ccb656fe839cc6168b51c1a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34fd3ca93dfcaff0cd2ce06f773c1e44"><td class="memTemplParams" colspan="2">template&lt;typename G &gt; </td></tr>
+<tr class="memitem:a34fd3ca93dfcaff0cd2ce06f773c1e44"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44">get_postgres_result</a> (G &amp;graph, const <a class="el" href="classIdentifiers.html">Identifiers</a>&lt; int64_t &gt; remaining_vertices, const std::vector&lt; <a class="el" href="classpgrouting_1_1CH__edge.html">pgrouting::CH_edge</a> &gt; shortcut_edges, <a class="el" href="structcontracted__rt.html">contracted_rt</a> **return_tuples)</td></tr>
+<tr class="separator:a34fd3ca93dfcaff0cd2ce06f773c1e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5760443ab98e9225e5d3c544e0bb6d38"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="contractGraph__driver_8cpp.html#a5760443ab98e9225e5d3c544e0bb6d38">is_valid_contraction</a> (int64_t number)</td></tr>
 <tr class="separator:a5760443ab98e9225e5d3c544e0bb6d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dba83e4fb58774c95f9cc353a9c0305"><td class="memTemplParams" colspan="2">template&lt;typename G &gt; </td></tr>
@@ -142,7 +141,7 @@ Functions</h2></td></tr>
 <tr class="separator:a1dba83e4fb58774c95f9cc353a9c0305"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="af222caa2d0b56f20dd7489b82f1fecdc"></a>
+<a class="anchor" id="a75f3817ccb656fe839cc6168b51c1a57"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -197,7 +196,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structpgr__contracted__blob.html">pgr_contracted_blob</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="structcontracted__rt.html">contracted_rt</a> **&#160;</td>
           <td class="paramname"><em>return_tuples</em>, </td>
         </tr>
         <tr>
@@ -317,7 +316,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    remaining_vertices, shortcut_edges,</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                    log, err);</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <a class="code" href="contractGraph__driver_8cpp.html#a9f5d39aa0173b34d9ccb246b899cfa72">get_postgres_result</a>(</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <a class="code" href="contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44">get_postgres_result</a>(</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    digraph,</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    remaining_vertices,</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    shortcut_edges,</div>
@@ -331,7 +330,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                    remaining_vertices, shortcut_edges,</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    log, err);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <a class="code" href="contractGraph__driver_8cpp.html#a9f5d39aa0173b34d9ccb246b899cfa72">get_postgres_result</a>(</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <a class="code" href="contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44">get_postgres_result</a>(</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    undigraph,</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    remaining_vertices,</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    shortcut_edges,</div>
@@ -370,14 +369,14 @@ Functions</h2></td></tr>
 <div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
 <div class="ttc" id="contractGraph__driver_8cpp_html_a1dba83e4fb58774c95f9cc353a9c0305"><div class="ttname"><a href="contractGraph__driver_8cpp.html#a1dba83e4fb58774c95f9cc353a9c0305">process_contraction</a></div><div class="ttdeci">static void process_contraction(G &amp;graph, const std::vector&lt; pgr_edge_t &gt; &amp;edges, const std::vector&lt; int64_t &gt; forbidden_vertices, const std::vector&lt; int64_t &gt; contraction_order, int64_t max_cycles, Identifiers&lt; int64_t &gt; &amp;remaining_vertices, std::vector&lt; pgrouting::CH_edge &gt; &amp;shortcut_edges, std::ostringstream &amp;log, std::ostringstream &amp;err)</div><div class="ttdef"><b>Definition:</b> <a href="contractGraph__driver_8cpp_source.html#l00058">contractGraph_driver.cpp:58</a></div></div>
 <div class="ttc" id="structedge_html_a004cd70e32ea3f6ce31d5318b46158bd"><div class="ttname"><a href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">edge::cost</a></div><div class="ttdeci">float8 cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00035">trsp.h:35</a></div></div>
-<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00033">alpha_driver.h:33</a></div></div>
+<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00031">alpha_driver.h:31</a></div></div>
 <div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00126">pgr_assert.h:126</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00031">trsp.h:31</a></div></div>
+<div class="ttc" id="contractGraph__driver_8cpp_html_a34fd3ca93dfcaff0cd2ce06f773c1e44"><div class="ttname"><a href="contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44">get_postgres_result</a></div><div class="ttdeci">static void get_postgres_result(G &amp;graph, const Identifiers&lt; int64_t &gt; remaining_vertices, const std::vector&lt; pgrouting::CH_edge &gt; shortcut_edges, contracted_rt **return_tuples)</div><div class="ttdef"><b>Definition:</b> <a href="contractGraph__driver_8cpp_source.html#l00117">contractGraph_driver.cpp:117</a></div></div>
 <div class="ttc" id="graph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
 <div class="ttc" id="structedge_html_aa79feba436d2671157588192521e9842"><div class="ttname"><a href="structedge.html#aa79feba436d2671157588192521e9842">edge::id</a></div><div class="ttdeci">long id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00032">trsp.h:32</a></div></div>
 <div class="ttc" id="graph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
 <div class="ttc" id="pgr__alloc_8hpp_html_aae87e343d8516ca2c6a60dcfbbf7fde6"><div class="ttname"><a href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a></div><div class="ttdeci">T * pgr_free(T *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00075">pgr_alloc.hpp:75</a></div></div>
-<div class="ttc" id="contractGraph__driver_8cpp_html_a9f5d39aa0173b34d9ccb246b899cfa72"><div class="ttname"><a href="contractGraph__driver_8cpp.html#a9f5d39aa0173b34d9ccb246b899cfa72">get_postgres_result</a></div><div class="ttdeci">static void get_postgres_result(G &amp;graph, const Identifiers&lt; int64_t &gt; remaining_vertices, const std::vector&lt; pgrouting::CH_edge &gt; shortcut_edges, pgr_contracted_blob **return_tuples)</div><div class="ttdef"><b>Definition:</b> <a href="contractGraph__driver_8cpp_source.html#l00117">contractGraph_driver.cpp:117</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00081">pgr_assert.h:81</a></div></div>
 <div class="ttc" id="classIdentifiers_html"><div class="ttname"><a href="classIdentifiers.html">Identifiers&lt; int64_t &gt;</a></div></div>
 <div class="ttc" id="classIdentifiers_html_a17cdab4d4ac56ffbea0c6bf1a19b0f47"><div class="ttname"><a href="classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47">Identifiers::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="identifiers_8hpp_source.html#l00077">identifiers.hpp:77</a></div></div>
@@ -393,24 +392,24 @@ Functions</h2></td></tr>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="contractGraph__driver_8cpp_af222caa2d0b56f20dd7489b82f1fecdc_cgraph.png" border="0" usemap="#contractGraph__driver_8cpp_af222caa2d0b56f20dd7489b82f1fecdc_cgraph" alt=""/></div>
-<map name="contractGraph__driver_8cpp_af222caa2d0b56f20dd7489b82f1fecdc_cgraph" id="contractGraph__driver_8cpp_af222caa2d0b56f20dd7489b82f1fecdc_cgraph">
-<area shape="rect" id="node2" href="contractGraph__driver_8cpp.html#a9f5d39aa0173b34d9ccb246b899cfa72" title="get_postgres_result" alt="" coords="215,5,351,32"/><area shape="rect" id="node3" href="classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47" title="Identifiers::size" alt="" coords="409,31,519,57"/><area shape="rect" id="node4" href="contractGraph__driver_8cpp.html#a5760443ab98e9225e5d3c544e0bb6d38" title="is_valid_contraction" alt="" coords="214,107,351,133"/><area shape="rect" id="node5" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="248,157,317,184"/><area shape="rect" id="node6" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="247,208,319,235"/><area shape="rect" id="node7" href="contractGraph__driver_8cpp.html#a1dba83e4fb58774c95f9cc353a9c0305" title="process_contraction" alt="" coords="213,259,352,285"/><area shape="rect" id="node8" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="206,310,359,351"/></map>
+<div class="center"><img src="contractGraph__driver_8cpp_a75f3817ccb656fe839cc6168b51c1a57_cgraph.png" border="0" usemap="#contractGraph__driver_8cpp_a75f3817ccb656fe839cc6168b51c1a57_cgraph" alt=""/></div>
+<map name="contractGraph__driver_8cpp_a75f3817ccb656fe839cc6168b51c1a57_cgraph" id="contractGraph__driver_8cpp_a75f3817ccb656fe839cc6168b51c1a57_cgraph">
+<area shape="rect" id="node2" href="contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44" title="get_postgres_result" alt="" coords="215,5,351,32"/><area shape="rect" id="node3" href="classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47" title="Identifiers::size" alt="" coords="409,31,519,57"/><area shape="rect" id="node4" href="contractGraph__driver_8cpp.html#a5760443ab98e9225e5d3c544e0bb6d38" title="is_valid_contraction" alt="" coords="214,107,351,133"/><area shape="rect" id="node5" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="248,157,317,184"/><area shape="rect" id="node6" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="247,208,319,235"/><area shape="rect" id="node7" href="contractGraph__driver_8cpp.html#a1dba83e4fb58774c95f9cc353a9c0305" title="process_contraction" alt="" coords="213,259,352,285"/><area shape="rect" id="node8" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="206,310,359,351"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="contractGraph__driver_8cpp_af222caa2d0b56f20dd7489b82f1fecdc_icgraph.png" border="0" usemap="#contractGraph__driver_8cpp_af222caa2d0b56f20dd7489b82f1fecdc_icgraph" alt=""/></div>
-<map name="contractGraph__driver_8cpp_af222caa2d0b56f20dd7489b82f1fecdc_icgraph" id="contractGraph__driver_8cpp_af222caa2d0b56f20dd7489b82f1fecdc_icgraph">
-<area shape="rect" id="node2" href="contractGraph_8c.html#a8c740c72b9023a3dee528c69fcb340af" title="process" alt="" coords="206,5,274,32"/></map>
+<div class="center"><img src="contractGraph__driver_8cpp_a75f3817ccb656fe839cc6168b51c1a57_icgraph.png" border="0" usemap="#contractGraph__driver_8cpp_a75f3817ccb656fe839cc6168b51c1a57_icgraph" alt=""/></div>
+<map name="contractGraph__driver_8cpp_a75f3817ccb656fe839cc6168b51c1a57_icgraph" id="contractGraph__driver_8cpp_a75f3817ccb656fe839cc6168b51c1a57_icgraph">
+<area shape="rect" id="node2" href="contractGraph_8c.html#abb0f7f79b6ab50f8bd3676bde49a0a50" title="process" alt="" coords="206,5,274,32"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a9f5d39aa0173b34d9ccb246b899cfa72"></a>
+<a class="anchor" id="a34fd3ca93dfcaff0cd2ce06f773c1e44"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -440,7 +439,7 @@ template&lt;typename G &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structpgr__contracted__blob.html">pgr_contracted_blob</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="structcontracted__rt.html">contracted_rt</a> **&#160;</td>
           <td class="paramname"><em>return_tuples</em>&#160;</td>
         </tr>
         <tr>
@@ -461,7 +460,7 @@ template&lt;typename G &gt; </div>
 <p>References <a class="el" href="trsp_8h_source.html#l00035">edge::cost</a>, <a class="el" href="trsp_8h_source.html#l00032">edge::id</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc()</a>, <a class="el" href="identifiers_8hpp_source.html#l00077">Identifiers&lt; T &gt;::size()</a>, <a class="el" href="trsp_8h_source.html#l00033">edge::source</a>, and <a class="el" href="trsp_8h_source.html#l00034">edge::target</a>.</p>
 
 <p>Referenced by <a class="el" href="contractGraph__driver_8cpp_source.html#l00172">do_pgr_contractGraph()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                             {</div>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                       {</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            remaining_vertices.<a class="code" href="classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47">size</a>() + shortcut_edges.size(),</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            (*return_tuples));</div>
@@ -511,8 +510,8 @@ template&lt;typename G &gt; </div>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="contractGraph__driver_8cpp_a9f5d39aa0173b34d9ccb246b899cfa72_cgraph.png" border="0" usemap="#contractGraph__driver_8cpp_a9f5d39aa0173b34d9ccb246b899cfa72_cgraph" alt=""/></div>
-<map name="contractGraph__driver_8cpp_a9f5d39aa0173b34d9ccb246b899cfa72_cgraph" id="contractGraph__driver_8cpp_a9f5d39aa0173b34d9ccb246b899cfa72_cgraph">
+<div class="center"><img src="contractGraph__driver_8cpp_a34fd3ca93dfcaff0cd2ce06f773c1e44_cgraph.png" border="0" usemap="#contractGraph__driver_8cpp_a34fd3ca93dfcaff0cd2ce06f773c1e44_cgraph" alt=""/></div>
+<map name="contractGraph__driver_8cpp_a34fd3ca93dfcaff0cd2ce06f773c1e44_cgraph" id="contractGraph__driver_8cpp_a34fd3ca93dfcaff0cd2ce06f773c1e44_cgraph">
 <area shape="rect" id="node2" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="208,5,283,32"/><area shape="rect" id="node3" href="classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47" title="Identifiers::size" alt="" coords="190,56,301,83"/></map>
 </div>
 </p>
@@ -520,9 +519,9 @@ Here is the call graph for this function:</div>
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="contractGraph__driver_8cpp_a9f5d39aa0173b34d9ccb246b899cfa72_icgraph.png" border="0" usemap="#contractGraph__driver_8cpp_a9f5d39aa0173b34d9ccb246b899cfa72_icgraph" alt=""/></div>
-<map name="contractGraph__driver_8cpp_a9f5d39aa0173b34d9ccb246b899cfa72_icgraph" id="contractGraph__driver_8cpp_a9f5d39aa0173b34d9ccb246b899cfa72_icgraph">
-<area shape="rect" id="node2" href="contractGraph__driver_8h.html#a71bf307ab5c96751da3291a502b703f4" title="do_pgr_contractGraph" alt="" coords="190,5,341,32"/></map>
+<div class="center"><img src="contractGraph__driver_8cpp_a34fd3ca93dfcaff0cd2ce06f773c1e44_icgraph.png" border="0" usemap="#contractGraph__driver_8cpp_a34fd3ca93dfcaff0cd2ce06f773c1e44_icgraph" alt=""/></div>
+<map name="contractGraph__driver_8cpp_a34fd3ca93dfcaff0cd2ce06f773c1e44_icgraph" id="contractGraph__driver_8cpp_a34fd3ca93dfcaff0cd2ce06f773c1e44_icgraph">
+<area shape="rect" id="node2" href="contractGraph__driver_8h.html#a20a03b3811bd108cfc729e9e22a92591" title="do_pgr_contractGraph" alt="" coords="190,5,341,32"/></map>
 </div>
 </p>
 
@@ -570,7 +569,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="contractGraph__driver_8cpp_a5760443ab98e9225e5d3c544e0bb6d38_icgraph.png" border="0" usemap="#contractGraph__driver_8cpp_a5760443ab98e9225e5d3c544e0bb6d38_icgraph" alt=""/></div>
 <map name="contractGraph__driver_8cpp_a5760443ab98e9225e5d3c544e0bb6d38_icgraph" id="contractGraph__driver_8cpp_a5760443ab98e9225e5d3c544e0bb6d38_icgraph">
-<area shape="rect" id="node2" href="contractGraph__driver_8h.html#a71bf307ab5c96751da3291a502b703f4" title="do_pgr_contractGraph" alt="" coords="193,5,343,32"/></map>
+<area shape="rect" id="node2" href="contractGraph__driver_8h.html#a20a03b3811bd108cfc729e9e22a92591" title="do_pgr_contractGraph" alt="" coords="193,5,343,32"/></map>
 </div>
 </p>
 
@@ -702,7 +701,7 @@ template&lt;typename G &gt; </div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00033">alpha_driver.h:33</a></div></div>
+<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00031">alpha_driver.h:31</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00031">trsp.h:31</a></div></div>
 <div class="ttc" id="classIdentifiers_html"><div class="ttname"><a href="classIdentifiers.html">Identifiers</a></div><div class="ttdef"><b>Definition:</b> <a href="identifiers_8hpp_source.html#l00048">identifiers.hpp:48</a></div></div>
 <div class="ttc" id="classpgrouting_1_1contraction_1_1Pgr__contract_html"><div class="ttname"><a href="classpgrouting_1_1contraction_1_1Pgr__contract.html">pgrouting::contraction::Pgr_contract</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__contract_8hpp_source.html#l00047">pgr_contract.hpp:47</a></div></div>
@@ -712,7 +711,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="contractGraph__driver_8cpp_a1dba83e4fb58774c95f9cc353a9c0305_icgraph.png" border="0" usemap="#contractGraph__driver_8cpp_a1dba83e4fb58774c95f9cc353a9c0305_icgraph" alt=""/></div>
 <map name="contractGraph__driver_8cpp_a1dba83e4fb58774c95f9cc353a9c0305_icgraph" id="contractGraph__driver_8cpp_a1dba83e4fb58774c95f9cc353a9c0305_icgraph">
-<area shape="rect" id="node2" href="contractGraph__driver_8h.html#a71bf307ab5c96751da3291a502b703f4" title="do_pgr_contractGraph" alt="" coords="193,5,343,32"/></map>
+<area shape="rect" id="node2" href="contractGraph__driver_8h.html#a20a03b3811bd108cfc729e9e22a92591" title="do_pgr_contractGraph" alt="" coords="193,5,343,32"/></map>
 </div>
 </p>
 
@@ -724,7 +723,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_62afd65db23a7b9f0a3e266dd1f617f8.html">contraction</a></li><li class="navelem"><a class="el" href="dir_1cdbf5d4419419d68ff74d045b4943c0.html">src</a></li><li class="navelem"><a class="el" href="contractGraph__driver_8cpp.html">contractGraph_driver.cpp</a></li>
-    <li class="footer">Generated on Wed May 17 2017 19:12:30 for PGROUTING by
+    <li class="footer">Generated on Wed Jul 5 2017 09:59:39 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
