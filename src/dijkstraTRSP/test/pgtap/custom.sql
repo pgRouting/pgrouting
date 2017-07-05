@@ -6,6 +6,7 @@ SET client_min_messages TO WARNING;
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
+SELECT todo_start();
 
 
 PREPARE q1 AS
@@ -156,6 +157,7 @@ AS t(seq, edge);
 SELECT set_eq('q13', 'q14', 'Testing from source 12 to target 7 with restriction on edges as follows 9 -> 11 and 9 -> 8'); 
 
 
+SELECT todo_end();
 
 SELECT finish();
 ROLLBACK;
