@@ -39,7 +39,7 @@ PREPARE q4 AS
 SELECT seq, edge FROM ( VALUES
 	(1, 7),
 	(2, 10),
-	(3, 12)
+	(3, 12),
 	(4, -1) )
 AS t(seq, edge);
 
@@ -57,7 +57,7 @@ PREPARE q6 AS
 SELECT seq, edge FROM ( VALUES
 	(1, 6),
 	(2, 7),
-	(3, 8)
+	(3, 8),
 	(4, 9),
 	(5, 16),
 	(6, 3),
@@ -78,7 +78,7 @@ PREPARE q8 AS
 SELECT seq, edge FROM ( VALUES
 	(1, 6),
 	(2, 7),
-	(3, 8)
+	(3, 8),
 	(4, 5),
 	(5, 2),
 	(6, 1),
@@ -99,7 +99,7 @@ PREPARE q10 AS
 SELECT seq, edge FROM ( VALUES
 	(1, 7),
 	(2, 10),
-	(3, 12)
+	(3, 12),
 	(4, 13),
 	(5, 15),
 	(6, 16),
@@ -120,7 +120,7 @@ PREPARE q12 AS
 SELECT seq, edge FROM ( VALUES
 	(1, 6),
 	(2, 7),
-	(3, 10)
+	(3, 10),
 	(4, 12),
 	(5, 13),
 	(6, 15),
@@ -145,7 +145,7 @@ PREPARE q14 AS
 SELECT seq, edge FROM ( VALUES
 	(1, 15),
 	(2, 9),
-	(3, 5)
+	(3, 5),
 	(4, 2),
 	(5, 4),
 	(6, 7),
