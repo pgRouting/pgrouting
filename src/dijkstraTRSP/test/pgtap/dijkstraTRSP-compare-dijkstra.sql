@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(1158);
+SELECT plan(1157);
 
 SET client_min_messages TO ERROR;
 
@@ -42,7 +42,7 @@ BEGIN
             RETURN query SELECT set_eq(dijkstratrsp_sql, dijkstra_sql, dijkstratrsp_sql);
 
 	    -- ALL RESTRICTIONS DIRECTED
-            inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7';
+            inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
@@ -52,7 +52,7 @@ BEGIN
             RETURN query SELECT set_eq(dijkstratrsp_sql, dijkstra_sql, dijkstratrsp_sql);
 
             -- ALL RESTRICTIONS UNDIRECTED
-            inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7';
+            inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
