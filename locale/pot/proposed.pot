@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,6 +245,7 @@ msgid "Experimental and Proposed functions"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:111
+#: ../../build/doc/VRP-category.rst:8
 msgid "Experimental functions"
 msgstr ""
 
@@ -329,22 +330,14 @@ msgid "Pickup and delivery problem"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:4
-msgid ":ref:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
+msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:5
-msgid ":ref:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:6
-msgid ":ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)"
+msgid ":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:9
-msgid "Delivery prolem"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:10
-msgid ":ref:`pgr_vrp_basic` - VRP One Depot"
+msgid ":doc:`pgr_vrpOneDepot` - VRP One Depot"
 msgstr ""
 

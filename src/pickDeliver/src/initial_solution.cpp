@@ -80,17 +80,32 @@ Initial_solution::do_while_foo(int kind) {
 
     msg.log << "\nInitial_solution::do_while_foo\n";
     Identifiers<size_t> notused;
+#if 0
     bool out_of_trucks(true);
+#endif
 
     while (!unassigned.empty()) {
+        msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
+        msg.log << assigned.size() << " assigned:" << assigned << "\n";
+        auto current = unassigned.size();
+#if 0
         auto truck = out_of_trucks?
             trucks.get_truck(unassigned.front()) :
             trucks.get_truck();
+#else
+        auto truck = trucks.get_truck(unassigned.front());
+#endif
+        msg.log << "got truck:" << truck.tau() << "\n";
         /*
          * kind 1 to 7 work with the same code structure
          */
         truck.do_while_feasable(kind, unassigned, assigned);
+        msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
+        msg.log << assigned.size() << " assigned:" << assigned << "\n";
+        msg.log << "current" << current << " unassigned: " << unassigned.size();
+        pgassertwm(current > unassigned.size(), msg.get_log().c_str());
 
+#if 0
         if (truck.orders_in_vehicle().empty()) {
             out_of_trucks = notused.has(truck.idx());
             if (out_of_trucks) {
@@ -101,10 +116,12 @@ Initial_solution::do_while_foo(int kind) {
             notused += truck.idx();
             continue;
         }
+#endif
         fleet.push_back(truck);
         invariant();
     }
 
+    pgassertwm(true, msg.get_log().c_str());
     pgassert(is_feasable());
     invariant();
 }

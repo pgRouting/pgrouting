@@ -87,6 +87,7 @@ class Vehicle : public Identifier, public PD_problem {
      std::vector<General_vehicle_orders_t>
            get_postgres_result(int vid) const;
 
+     Vehicle(const Vehicle &);
      Vehicle(
              size_t idx,
              int64_t kind,
@@ -255,6 +256,8 @@ class Vehicle : public Identifier, public PD_problem {
      bool is_feasable() const {
          return !(has_twv() ||  has_cv());
      }
+
+     bool is_ok() const;
 
      Vehicle_node start_site() const {
          return m_path.front();

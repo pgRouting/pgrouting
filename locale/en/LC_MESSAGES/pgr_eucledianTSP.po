@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -27,8 +27,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_eucledianTSP.rst:18
 msgid ""
-"``pgr_eucledianTSP`` - Returns a route that visits all the coordinates "
-"pairs exactly once."
+"``pgr_eucledianTSP`` - Returns a route that visits all the coordinates pairs"
+" exactly once."
 msgstr ""
 
 #: ../../build/doc/pgr_eucledianTSP.rst:22
@@ -41,15 +41,15 @@ msgstr ""
 
 #: ../../build/doc/pgr_eucledianTSP.rst:26
 msgid ""
-"The travelling salesman problem (TSP) or travelling salesperson problem "
-"asks the following question:"
+"The travelling salesman problem (TSP) or travelling salesperson problem asks"
+" the following question:"
 msgstr ""
 
 #: ../../build/doc/pgr_eucledianTSP.rst:28
 msgid ""
-"Given a list of cities and the distances between each pair of cities, "
-"what is the shortest possible route that visits each city exactly once "
-"and returns to the origin city?"
+"Given a list of cities and the distances between each pair of cities, what "
+"is the shortest possible route that visits each city exactly once and "
+"returns to the origin city?"
 msgstr ""
 
 #: ../../build/doc/pgr_eucledianTSP.rst:30
@@ -70,15 +70,11 @@ msgstr ""
 msgid "Minimal Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_eucledianTSP.rst
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_eucledianTSP.rst:63
 msgid ""
 "Because the documentation examples are auto generated and tested for non "
-"changing results, and the default is to have random execution, the "
-"example is wrapping the actual call."
+"changing results, and the default is to have random execution, the example "
+"is wrapping the actual call."
 msgstr ""
 
 #: ../../build/doc/pgr_eucledianTSP.rst:75
@@ -144,8 +140,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_eucledianTSP.rst:110
 msgid ""
-"When the value of **id** is not given then the coordinates will receive "
-"an **id** starting from 1, in the order given."
+"When the value of **id** is not given then the coordinates will receive an "
+"**id** starting from 1, in the order given."
 msgstr ""
 
 #: ../../build/doc/pgr_eucledianTSP.rst:125
@@ -184,3 +180,5 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
 msgstr ""
 
+#~ msgid "Example"
+#~ msgstr ""
