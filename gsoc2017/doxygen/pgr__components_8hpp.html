@@ -104,8 +104,7 @@ $(document).ready(function(){initNavTree('pgr__components_8hpp.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">pgr_components.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -113,25 +112,26 @@ $(document).ready(function(){initNavTree('pgr__components_8hpp.html','');});
 <div class="textblock"><code>#include &lt;boost/config.hpp&gt;</code><br/>
 <code>#include &lt;boost/graph/adjacency_list.hpp&gt;</code><br/>
 <code>#include &lt;boost/graph/connected_components.hpp&gt;</code><br/>
+<code>#include &lt;boost/graph/strong_components.hpp&gt;</code><br/>
+<code>#include &lt;boost/graph/biconnected_components.hpp&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
 <code>#include &lt;map&gt;</code><br/>
 <code>#include &lt;utility&gt;</code><br/>
 <code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &quot;<a class="el" href="basePath__SSEC_8hpp_source.html">cpp_common/basePath_SSEC.hpp</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="pgr__base__graph_8hpp_source.html">cpp_common/pgr_base_graph.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__componentsGraph_8hpp_source.html">pgr_componentsGraph.hpp</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pgr_components.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="pgr__components_8hpp__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2components_2pgr__components_8hpp" alt=""/></div>
 <map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2components_2pgr__components_8hpp" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2components_2pgr__components_8hpp">
-<area shape="rect" id="node9" href="basePath__SSEC_8hpp.html" title="cpp_common/basePath\l_SSEC.hpp" alt="" coords="194,126,352,167"/><area shape="rect" id="node10" href="pgr__base__graph_8hpp.html" title="cpp_common/pgr_base\l_graph.hpp" alt="" coords="289,217,447,258"/></map>
+<area shape="rect" id="node11" href="pgr__componentsGraph_8hpp.html" title="pgr_componentsGraph.hpp" alt="" coords="1147,133,1325,160"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="pgr__components_8hpp__dep__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2components_2pgr__components_8hppdep" alt=""/></div>
 <map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2components_2pgr__components_8hppdep" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2components_2pgr__components_8hppdep">
-<area shape="rect" id="node2" href="connectedComponentsV__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/connected\lComponentsV_driver.cpp" alt="" coords="5,126,211,197"/></map>
+<area shape="rect" id="node2" href="biconnectedComponents__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/biconnected\lComponents_driver.cpp" alt="" coords="5,126,219,197"/><area shape="rect" id="node3" href="connectedComponentsV__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/connected\lComponentsV_driver.cpp" alt="" coords="244,126,449,197"/><area shape="rect" id="node4" href="strongComponentsV__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/strongComponents\lV_driver.cpp" alt="" coords="474,126,728,197"/></map>
 </div>
 </div>
 <p><a href="pgr__components_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -142,71 +142,14 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html">Pgr_components&lt; G &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a91a54564cb18fb03fa0818cca5216c52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pgr__components_8hpp.html#a91a54564cb18fb03fa0818cca5216c52">sort_cmp</a> (<a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a> a, <a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a> b)</td></tr>
-<tr class="memdesc:a91a54564cb18fb03fa0818cca5216c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two <a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a> structs.  <a href="#a91a54564cb18fb03fa0818cca5216c52">More...</a><br/></td></tr>
-<tr class="separator:a91a54564cb18fb03fa0818cca5216c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a91a54564cb18fb03fa0818cca5216c52"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sort_cmp </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a>&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a>&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Compare two <a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a> structs. </p>
-
-<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00078">78</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
-
-<p>References <a class="el" href="pgr__componentV__t_8h_source.html#l00059">pgr_componentV_t::component</a>, and <a class="el" href="pgr__componentV__t_8h_source.html#l00061">pgr_componentV_t::node</a>.</p>
-
-<p>Referenced by <a class="el" href="pgr__components_8hpp_source.html#l00112">Pgr_components&lt; G &gt;::do_connectedComponentsV()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                            {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (a.<a class="code" href="structpgr__componentV__t.html#aa89d2fdbc0a4c44bdf8ab1d424c3ce5c">component</a> == b.<a class="code" href="structpgr__componentV__t.html#aa89d2fdbc0a4c44bdf8ab1d424c3ce5c">component</a>)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> a.<a class="code" href="structpgr__componentV__t.html#a27c31fa0b38a0af7ea987d2ccd9a59ad">node</a> &lt; b.<a class="code" href="structpgr__componentV__t.html#a27c31fa0b38a0af7ea987d2ccd9a59ad">node</a>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> a.<a class="code" href="structpgr__componentV__t.html#aa89d2fdbc0a4c44bdf8ab1d424c3ce5c">component</a> &lt; b.<a class="code" href="structpgr__componentV__t.html#aa89d2fdbc0a4c44bdf8ab1d424c3ce5c">component</a>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
-<div class="ttc" id="structpgr__componentV__t_html_aa89d2fdbc0a4c44bdf8ab1d424c3ce5c"><div class="ttname"><a href="structpgr__componentV__t.html#aa89d2fdbc0a4c44bdf8ab1d424c3ce5c">pgr_componentV_t::component</a></div><div class="ttdeci">int64_t component</div><div class="ttdef"><b>Definition:</b> <a href="pgr__componentV__t_8h_source.html#l00059">pgr_componentV_t.h:59</a></div></div>
-<div class="ttc" id="structpgr__componentV__t_html_a27c31fa0b38a0af7ea987d2ccd9a59ad"><div class="ttname"><a href="structpgr__componentV__t.html#a27c31fa0b38a0af7ea987d2ccd9a59ad">pgr_componentV_t::node</a></div><div class="ttdeci">int64_t node</div><div class="ttdef"><b>Definition:</b> <a href="pgr__componentV__t_8h_source.html#l00061">pgr_componentV_t.h:61</a></div></div>
-</div><!-- fragment -->
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="pgr__components_8hpp_a91a54564cb18fb03fa0818cca5216c52_icgraph.png" border="0" usemap="#pgr__components_8hpp_a91a54564cb18fb03fa0818cca5216c52_icgraph" alt=""/></div>
-<map name="pgr__components_8hpp_a91a54564cb18fb03fa0818cca5216c52_icgraph" id="pgr__components_8hpp_a91a54564cb18fb03fa0818cca5216c52_icgraph">
-<area shape="rect" id="node2" href="classPgr__components.html#a723c33d10f015eeea3471c75b8a25c58" title="Call to Connected Components Vertex Version. " alt="" coords="131,5,303,46"/></map>
-</div>
-</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_d66e8d5a7776834ccee339fd5fd3e729.html">components</a></li><li class="navelem"><a class="el" href="pgr__components_8hpp.html">pgr_components.hpp</a></li>
-    <li class="footer">Generated on Mon Jun 19 2017 19:02:18 for PGROUTING by
+    <li class="footer">Generated on Tue Jul 4 2017 21:37:30 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

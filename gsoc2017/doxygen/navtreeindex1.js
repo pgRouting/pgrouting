@@ -1,5 +1,17 @@
 var NAVTREEINDEX1 =
 {
+"book__keeping_8h.html":[6,0,0,11,1],
+"book__keeping_8h_source.html":[6,0,0,11,1],
+"ch__edge_8cpp.html":[6,0,1,6,0,4],
+"ch__edge_8cpp.html#a6745e8ab189ff8de72b34539da11dbe1":[6,0,1,6,0,4,0],
+"ch__edge_8cpp_source.html":[6,0,1,6,0,4],
+"ch__edge_8h.html":[6,0,1,6,0,5],
+"ch__edge_8h_source.html":[6,0,1,6,0,5],
+"ch__vertex_8cpp.html":[6,0,1,6,0,6],
+"ch__vertex_8cpp.html#a8688f1ce3e691bcbaf7f2e2299c561a6":[6,0,1,6,0,6,0],
+"ch__vertex_8cpp_source.html":[6,0,1,6,0,6],
+"ch__vertex_8h.html":[6,0,1,6,0,7],
+"ch__vertex_8h.html#abb617ede2869445be0faa5ed6047a08f":[6,0,1,6,0,7,1],
 "ch__vertex_8h_source.html":[6,0,1,6,0,7],
 "classAssertFailedException.html":[5,0,1],
 "classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f":[5,0,1,0],
@@ -237,17 +249,5 @@ var NAVTREEINDEX1 =
 "classGraphEdgeInfo.html#a642fa153a91ffec89e7a53526a65eb5f":[5,0,21,0],
 "classGraphEdgeInfo.html#a9f765e030a896f1a645ebe373e54a3d2":[5,0,21,1],
 "classGraphEdgeInfo.html#ab19130ebc5b432f5486aabc9fde6c6d5":[5,0,21,6],
-"classGraphEdgeInfo.html#ab824810dbcbb9707ec3c3b946e2434b0":[5,0,21,8],
-"classGraphEdgeInfo.html#ac83e90fce829a149f311bc953369aa21":[5,0,21,7],
-"classIdentifiers.html":[5,0,22],
-"classIdentifiers.html#a0993e01acc16e0f8efe5d2b783bd441c":[5,0,22,20],
-"classIdentifiers.html#a0a1293343a6e3215a27676c74678866e":[5,0,22,9],
-"classIdentifiers.html#a0e2e051ccfa2ac747a72faa417ca267a":[5,0,22,26],
-"classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47":[5,0,22,22],
-"classIdentifiers.html#a215e031fe598cdb9d75d407db30f0555":[5,0,22,15],
-"classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736":[5,0,22,8],
-"classIdentifiers.html#a2a9dce802595ea25e18f4a2c7ac834fe":[5,0,22,6],
-"classIdentifiers.html#a31d4c7fad9f5507ba26ff13515dc1d68":[5,0,22,11],
-"classIdentifiers.html#a3a7ad466683cb1aeaa3be0743c7bc6cf":[5,0,22,1],
-"classIdentifiers.html#a458d516f984c0144451bcfb89e75233c":[5,0,22,4]
+"classGraphEdgeInfo.html#ab824810dbcbb9707ec3c3b946e2434b0":[5,0,21,8]
 };

@@ -1,8 +1,0 @@
-<map id="do_pgr_connectedComponentsV" name="do_pgr_connectedComponentsV">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="271,5,449,46"/>
-<area shape="rect" id="node3" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="504,147,579,173"/>
-<area shape="rect" id="node4" href="$connectedComponentsV__driver_8cpp.html#a73f4175dd68296b7aee4316a73be035c" title="pgr_connectedComponentsV" alt="" coords="265,121,455,148"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="325,172,395,199"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="324,223,396,249"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="283,274,437,315"/>
-</map>

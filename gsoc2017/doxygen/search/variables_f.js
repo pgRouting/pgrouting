@@ -6,7 +6,7 @@ var searchData=
   ['to_5forder',['to_order',['../classpgrouting_1_1vrp_1_1Swap__info.html#a50967480023bfeef9759538d3538a0fc',1,'pgrouting::vrp::Swap_info']]],
   ['to_5ftruck',['to_truck',['../classpgrouting_1_1vrp_1_1Swap__info.html#a37d7351288e3cdca6642ab198c317ad5',1,'pgrouting::vrp::Swap_info']]],
   ['to_5fvid',['to_vid',['../structmatrix__cell.html#af970a7b211030451819a6397501e685d',1,'matrix_cell']]],
-  ['traveltime',['traveltime',['../structdistance__columns.html#a85f7b9f302f81d5f781b87a60fd13972',1,'distance_columns::traveltime()'],['../structvrp__cost__element.html#aced5ee8f96906b1134f8e3ef9276d943',1,'vrp_cost_element::traveltime()'],['../structCostPack.html#adb46c4c245eeec3fcaa6b20b2b5d5635',1,'CostPack::traveltime()'],['../structGeneral__vehicle__orders__t.html#abb9a47ee3b44b9753cbffd940a76014d',1,'General_vehicle_orders_t::travelTime()']]],
+  ['traveltime',['travelTime',['../structGeneral__vehicle__orders__t.html#abb9a47ee3b44b9753cbffd940a76014d',1,'General_vehicle_orders_t::travelTime()'],['../structdistance__columns.html#a85f7b9f302f81d5f781b87a60fd13972',1,'distance_columns::traveltime()'],['../structvrp__cost__element.html#aced5ee8f96906b1134f8e3ef9276d943',1,'vrp_cost_element::traveltime()'],['../structCostPack.html#adb46c4c245eeec3fcaa6b20b2b5d5635',1,'CostPack::traveltime()']]],
   ['trucks',['trucks',['../classpgrouting_1_1vrp_1_1Solution.html#ad1a5c383405030e3dbf3247a7f9c7673',1,'pgrouting::vrp::Solution']]],
   ['type',['type',['../structColumn__info__t.html#aabe9ce1c2584f121ef9886ae81bfb748',1,'Column_info_t::type()'],['../structcontracted__rt.html#ae3f6f8631dafb7049b9c6b49275b69a6',1,'contracted_rt::type()']]]
 ];

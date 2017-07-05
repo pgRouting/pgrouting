@@ -51,11 +51,12 @@ var hierarchy =
     [ "Pgr_allpairs< G >", "classPgr__allpairs.html", null ],
     [ "Pgr_allpairs< G >::inf_plus< T >", "structPgr__allpairs_1_1inf__plus.html", null ],
     [ "pgrouting::graph::Pgr_base_graph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", [
+      [ "pgrouting::graph::Pgr_componentsGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html", null ],
       [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ]
     ] ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", null ],
     [ "Pgr_components< G >", "classPgr__components.html", null ],
-    [ "pgr_componentV_t", "structpgr__componentV__t.html", null ],
+    [ "pgr_components_rt", "structpgr__components__rt.html", null ],
     [ "Pgr_dijkstra< G >", "classPgr__dijkstra.html", null ],
     [ "Pgr_dijkstra< G >::found_goals", "structPgr__dijkstra_1_1found__goals.html", null ],
     [ "pgr_edge_t", "structpgr__edge__t.html", null ],

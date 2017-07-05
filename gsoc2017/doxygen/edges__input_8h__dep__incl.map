@@ -6,18 +6,20 @@
 <area shape="rect" id="node6" href="$bdAstar_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/bdAstar/src/bdAstar.c" alt="" coords="791,140,965,196"/>
 <area shape="rect" id="node7" href="$bdDijkstra_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/bdDijkstra/src/bdDijkstra.c" alt="" coords="991,140,1193,196"/>
 <area shape="rect" id="node8" href="$edges__input_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/src/edges\l_input.c" alt="" coords="1218,133,1376,203"/>
-<area shape="rect" id="node9" href="$connectedComponentsV_8c.html" title="Conecting code with postgres. " alt="" coords="1401,133,1607,203"/>
-<area shape="rect" id="node10" href="$contractGraph_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph.c" alt="" coords="1631,133,1816,203"/>
-<area shape="rect" id="node11" href="$dijkstra_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstra.c" alt="" coords="1841,140,2009,196"/>
-<area shape="rect" id="node12" href="$dijkstraVia_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstraVia.c" alt="" coords="2034,140,2221,196"/>
-<area shape="rect" id="node13" href="$many__to__dist__driving__distance_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/driving_distance\l/src/many_to_dist_driving\l_distance.c" alt="" coords="2247,125,2417,211"/>
-<area shape="rect" id="node14" href="$many__to__dist__withPointsDD_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/driving_distance\l/src/many_to_dist_withPointsDD.c" alt="" coords="2442,133,2667,203"/>
-<area shape="rect" id="node15" href="$test__c__edges_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/internalQueryTests\l/src/test_c_edges.c" alt="" coords="2691,133,2849,203"/>
-<area shape="rect" id="node16" href="$testXYedges_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/internalQueryTests\l/src/testXYedges.c" alt="" coords="2874,133,3032,203"/>
-<area shape="rect" id="node17" href="$ksp_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/src/ksp.c" alt="" coords="3057,140,3207,196"/>
-<area shape="rect" id="node18" href="$withPoints__ksp_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/src/withPoints_ksp.c" alt="" coords="3232,140,3427,196"/>
-<area shape="rect" id="node19" href="$edge__disjoint__paths_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/edge\l_disjoint_paths.c" alt="" coords="3451,133,3609,203"/>
-<area shape="rect" id="node20" href="$max__flow_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/max\l_flow.c" alt="" coords="3635,133,3788,203"/>
-<area shape="rect" id="node21" href="$maximum__cardinality__matching_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/maximum\l_cardinality_matching.c" alt="" coords="3813,133,4000,203"/>
-<area shape="rect" id="node22" href="$withPoints_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/withPoints/src/withPoints.c" alt="" coords="4025,140,4231,196"/>
+<area shape="rect" id="node9" href="$biconnectedComponents_8c.html" title="Conecting code with postgres. " alt="" coords="1401,133,1615,203"/>
+<area shape="rect" id="node10" href="$connectedComponentsV_8c.html" title="Conecting code with postgres. " alt="" coords="1640,133,1845,203"/>
+<area shape="rect" id="node11" href="$strongComponentsV_8c.html" title="Conecting code with postgres. " alt="" coords="1869,140,2144,196"/>
+<area shape="rect" id="node12" href="$contractGraph_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph.c" alt="" coords="2169,133,2353,203"/>
+<area shape="rect" id="node13" href="$dijkstra_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstra.c" alt="" coords="2378,140,2547,196"/>
+<area shape="rect" id="node14" href="$dijkstraVia_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstraVia.c" alt="" coords="2571,140,2759,196"/>
+<area shape="rect" id="node15" href="$many__to__dist__driving__distance_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/driving_distance\l/src/many_to_dist_driving\l_distance.c" alt="" coords="2784,125,2955,211"/>
+<area shape="rect" id="node16" href="$many__to__dist__withPointsDD_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/driving_distance\l/src/many_to_dist_withPointsDD.c" alt="" coords="2979,133,3204,203"/>
+<area shape="rect" id="node17" href="$test__c__edges_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/internalQueryTests\l/src/test_c_edges.c" alt="" coords="3229,133,3387,203"/>
+<area shape="rect" id="node18" href="$testXYedges_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/internalQueryTests\l/src/testXYedges.c" alt="" coords="3411,133,3569,203"/>
+<area shape="rect" id="node19" href="$ksp_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/src/ksp.c" alt="" coords="3594,140,3744,196"/>
+<area shape="rect" id="node20" href="$withPoints__ksp_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/src/withPoints_ksp.c" alt="" coords="3769,140,3964,196"/>
+<area shape="rect" id="node21" href="$edge__disjoint__paths_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/edge\l_disjoint_paths.c" alt="" coords="3989,133,4147,203"/>
+<area shape="rect" id="node22" href="$max__flow_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/max\l_flow.c" alt="" coords="4172,133,4325,203"/>
+<area shape="rect" id="node23" href="$maximum__cardinality__matching_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/maximum\l_cardinality_matching.c" alt="" coords="4351,133,4537,203"/>
+<area shape="rect" id="node24" href="$withPoints_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/withPoints/src/withPoints.c" alt="" coords="4562,140,4768,196"/>
 </map>

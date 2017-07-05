@@ -2,6 +2,7 @@ var searchData=
 [
   ['chdirectedgraph',['CHDirectedGraph',['../namespacepgrouting.html#aa79e84cb76e3ae1e3cebfa7691387acf',1,'pgrouting']]],
   ['chundirectedgraph',['CHUndirectedGraph',['../namespacepgrouting.html#ad0884fbeed827097f05468dcaae72924',1,'pgrouting']]],
+  ['componentsundigraph',['ComponentsUndiGraph',['../namespacepgrouting.html#a67f45381783695738a73f12e35839ed8',1,'pgrouting']]],
   ['const_5fiterator',['const_iterator',['../classIdentifiers.html#a71511a42f9131120a4276aba22084a97',1,'Identifiers']]],
   ['constpthit',['ConstpthIt',['../classPath.html#a170e524b86767313c6fc5df8b9e59ee7',1,'Path']]],
   ['coord_5ftype',['coord_type',['../alpha__driver_8cpp.html#acf1a2afd1df69ffc5b3757e8ee8ad416',1,'alpha_driver.cpp']]],

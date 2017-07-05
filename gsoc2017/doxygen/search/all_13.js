@@ -48,7 +48,7 @@ var searchData=
   ['traits',['Traits',['../namespacepgrouting.html#aa1f0608ec7fd21be6477df70e76a3bb5',1,'pgrouting']]],
   ['travel_5ftime',['travel_time',['../classpgrouting_1_1vrp_1_1Vehicle__node.html#ad5dfe3bbc719de1cab5746eeeb9990ca',1,'pgrouting::vrp::Vehicle_node']]],
   ['travel_5ftime_5fto',['travel_time_to',['../classpgrouting_1_1vrp_1_1Tw__node.html#a5c38c9da463ed2d27d21d18fb99efcd2',1,'pgrouting::vrp::Tw_node']]],
-  ['traveltime',['traveltime',['../structdistance__columns.html#a85f7b9f302f81d5f781b87a60fd13972',1,'distance_columns::traveltime()'],['../structvrp__cost__element.html#aced5ee8f96906b1134f8e3ef9276d943',1,'vrp_cost_element::traveltime()'],['../structCostPack.html#adb46c4c245eeec3fcaa6b20b2b5d5635',1,'CostPack::traveltime()'],['../structGeneral__vehicle__orders__t.html#abb9a47ee3b44b9753cbffd940a76014d',1,'General_vehicle_orders_t::travelTime()']]],
+  ['traveltime',['travelTime',['../structGeneral__vehicle__orders__t.html#abb9a47ee3b44b9753cbffd940a76014d',1,'General_vehicle_orders_t::travelTime()'],['../structdistance__columns.html#a85f7b9f302f81d5f781b87a60fd13972',1,'distance_columns::traveltime()'],['../structvrp__cost__element.html#aced5ee8f96906b1134f8e3ef9276d943',1,'vrp_cost_element::traveltime()'],['../structCostPack.html#adb46c4c245eeec3fcaa6b20b2b5d5635',1,'CostPack::traveltime()']]],
   ['trimwhitespace',['TRIMWHITESPACE',['../classStringOperation.html#a0edd6e1e858752772b652e79c356f277',1,'StringOperation::TRIMWHITESPACE(std::string strInput)'],['../classStringOperation.html#a0edd6e1e858752772b652e79c356f277',1,'StringOperation::TRIMWHITESPACE(std::string strInput)']]],
   ['trsp_2ec',['trsp.c',['../trsp_8c.html',1,'']]],
   ['trsp_2eh',['trsp.h',['../trsp_8h.html',1,'']]],

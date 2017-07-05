@@ -16,8 +16,8 @@ var dir_d5995d5871f728649bd47ea0d6428e03 =
     [ "pgr_basic_edge_t.h", "pgr__basic__edge__t_8h.html", [
       [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", "structpgr__basic__edge__t" ]
     ] ],
-    [ "pgr_componentV_t.h", "pgr__componentV__t_8h.html", [
-      [ "pgr_componentV_t", "structpgr__componentV__t.html", "structpgr__componentV__t" ]
+    [ "pgr_components_rt.h", "pgr__components__rt_8h.html", [
+      [ "pgr_components_rt", "structpgr__components__rt.html", "structpgr__components__rt" ]
     ] ],
     [ "pgr_edge_t.h", "pgr__edge__t_8h.html", [
       [ "pgr_edge_t", "structpgr__edge__t.html", "structpgr__edge__t" ]

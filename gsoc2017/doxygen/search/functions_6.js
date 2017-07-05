@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['generate_5fmap',['generate_map',['../classPgr__components.html#adb9fc7f87bc571905631f30d271edadf',1,'Pgr_components']]],
   ['generate_5fpostgres_5fdata',['generate_postgres_data',['../classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba',1,'Path']]],
+  ['generate_5fresults',['generate_results',['../classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723',1,'Pgr_components']]],
   ['generateinitialsolution',['generateInitialSolution',['../classCVRPSolver.html#a98e957d6621f536a52dbd9a98e3b7347',1,'CVRPSolver']]],
   ['get_5fangle',['get_angle',['../alpha__driver_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990',1,'alpha_driver.cpp']]],
   ['get_5fbacktrace',['get_backtrace',['../pgr__assert_8cpp.html#a42375175231f734b4a0db0d8754be7b4',1,'get_backtrace():&#160;pgr_assert.cpp'],['../pgr__assert_8cpp.html#a8c19c382afb114ecff014a001c9b4254',1,'get_backtrace(const std::string &amp;msg):&#160;pgr_assert.cpp'],['../pgr__assert_8h.html#a42375175231f734b4a0db0d8754be7b4',1,'get_backtrace():&#160;pgr_assert.cpp'],['../pgr__assert_8h.html#a4a34ad0dea9553cb88518f9aa5584435',1,'get_backtrace(const std::string &amp;):&#160;pgr_assert.cpp']]],
@@ -99,7 +99,7 @@ var searchData=
   ['getvehicleinfo',['getVehicleInfo',['../classCTourInfo.html#a472803511c17a75f750bcdcf8df72136',1,'CTourInfo']]],
   ['getvehicleused',['getVehicleUsed',['../classCSolutionInfo.html#adc2d268c140973cacb116ba15f1984eb',1,'CSolutionInfo']]],
   ['gracefulquit',['gracefulQuit',['../classSIGINT__Handler.html#a47e1443308e4a4675f2828980c49126c',1,'SIGINT_Handler']]],
-  ['graph_5fadd_5fedge',['graph_add_edge',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a623893fcb5124ca29b06513aefbce70c',1,'pgrouting::graph::Pgr_base_graph::graph_add_edge(const T_E &amp;edge)'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad976deb2bba97315f398ecb19b7e8b5b',1,'pgrouting::graph::Pgr_base_graph::graph_add_edge(const T &amp;edge)']]],
+  ['graph_5fadd_5fedge',['graph_add_edge',['../classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#af1e2b6ab2603241de54be6b06d1bd341',1,'pgrouting::graph::Pgr_componentsGraph::graph_add_edge()'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a623893fcb5124ca29b06513aefbce70c',1,'pgrouting::graph::Pgr_base_graph::graph_add_edge(const T_E &amp;edge)'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad976deb2bba97315f398ecb19b7e8b5b',1,'pgrouting::graph::Pgr_base_graph::graph_add_edge(const T &amp;edge)']]],
   ['graphdefinition',['GraphDefinition',['../classGraphDefinition.html#add9cdec7ad3dfce686757d4b000c245f',1,'GraphDefinition']]],
   ['greedyinitial',['greedyInitial',['../classpgrouting_1_1tsp_1_1TSP.html#ae1f22193e9338b09afc90700d5a1a27e',1,'pgrouting::tsp::TSP']]]
 ];

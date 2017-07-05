@@ -32,7 +32,7 @@ var annotated =
     [ "Pgr_allpairs", "classPgr__allpairs.html", "classPgr__allpairs" ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", "structpgr__basic__edge__t" ],
     [ "Pgr_components", "classPgr__components.html", "classPgr__components" ],
-    [ "pgr_componentV_t", "structpgr__componentV__t.html", "structpgr__componentV__t" ],
+    [ "pgr_components_rt", "structpgr__components__rt.html", "structpgr__components__rt" ],
     [ "Pgr_dijkstra", "classPgr__dijkstra.html", "classPgr__dijkstra" ],
     [ "pgr_edge_t", "structpgr__edge__t.html", "structpgr__edge__t" ],
     [ "Pgr_edge_xy_t", "structPgr__edge__xy__t.html", "structPgr__edge__xy__t" ],

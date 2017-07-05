@@ -11,12 +11,14 @@
 <area shape="rect" id="node11" href="$johnson__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/allpairs\l/johnson_driver.h" alt="" coords="1756,117,1909,187"/>
 <area shape="rect" id="node12" href="$areaContraction__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/areaContraction\l/areaContraction_driver.h" alt="" coords="1935,117,2141,187"/>
 <area shape="rect" id="node13" href="$bdDijkstra__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/bdDijkstra\l/bdDijkstra_driver.h" alt="" coords="2167,117,2340,187"/>
-<area shape="rect" id="node14" href="$connectedComponentsV__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/connectedComponentsV_driver.h" alt="" coords="2364,117,2583,187"/>
-<area shape="rect" id="node15" href="$dijkstra__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/dijkstra\l/dijkstra_driver.h" alt="" coords="2607,117,2763,187"/>
-<area shape="rect" id="node16" href="$dijkstraVia__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/dijkstra\l/dijkstraVia_driver.h" alt="" coords="2787,117,2943,187"/>
-<area shape="rect" id="node17" href="$drivedist__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/driving\l_distance/drivedist_driver.h" alt="" coords="2968,117,3149,187"/>
-<area shape="rect" id="node18" href="$withPoints__dd__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/driving\l_distance/withPoints_dd\l_driver.h" alt="" coords="3174,109,3337,195"/>
-<area shape="rect" id="node19" href="$withPoints__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/withPoints\l/withPoints_driver.h" alt="" coords="3362,117,3536,187"/>
-<area shape="rect" id="node20" href="$ksp__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/yen/ksp\l_driver.h" alt="" coords="3561,117,3720,187"/>
-<area shape="rect" id="node21" href="$withPoints__ksp__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/yen/withPoints\l_ksp_driver.h" alt="" coords="3745,117,3944,187"/>
+<area shape="rect" id="node14" href="$biconnectedComponents__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/biconnectedComponents_driver.h" alt="" coords="2365,117,2584,187"/>
+<area shape="rect" id="node15" href="$connectedComponentsV__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/connectedComponentsV_driver.h" alt="" coords="2609,117,2828,187"/>
+<area shape="rect" id="node16" href="$strongComponentsV__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/strongComponentsV_driver.h" alt="" coords="2852,117,3047,187"/>
+<area shape="rect" id="node17" href="$dijkstra__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/dijkstra\l/dijkstra_driver.h" alt="" coords="3071,117,3227,187"/>
+<area shape="rect" id="node18" href="$dijkstraVia__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/dijkstra\l/dijkstraVia_driver.h" alt="" coords="3251,117,3407,187"/>
+<area shape="rect" id="node19" href="$drivedist__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/driving\l_distance/drivedist_driver.h" alt="" coords="3432,117,3613,187"/>
+<area shape="rect" id="node20" href="$withPoints__dd__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/driving\l_distance/withPoints_dd\l_driver.h" alt="" coords="3638,109,3801,195"/>
+<area shape="rect" id="node21" href="$withPoints__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/withPoints\l/withPoints_driver.h" alt="" coords="3826,117,4000,187"/>
+<area shape="rect" id="node22" href="$ksp__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/yen/ksp\l_driver.h" alt="" coords="4025,117,4184,187"/>
+<area shape="rect" id="node23" href="$withPoints__ksp__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/yen/withPoints\l_ksp_driver.h" alt="" coords="4209,117,4408,187"/>
 </map>

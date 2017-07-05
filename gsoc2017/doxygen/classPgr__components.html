@@ -109,7 +109,6 @@ $(document).ready(function(){initNavTree('classPgr__components.html','');});
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPgr__components-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgr_components&lt; G &gt; Class Template Reference</div>  </div>
@@ -117,47 +116,73 @@ $(document).ready(function(){initNavTree('classPgr__components.html','');});
 <div class="contents">
 
 <p><code>#include &quot;<a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>&quot;</code></p>
-<div class="dynheader">
-Collaboration diagram for Pgr_components&lt; G &gt;:</div>
-<div class="dyncontent">
-<div class="center"><img src="classPgr__components__coll__graph.png" border="0" usemap="#Pgr__components_3_01G_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="Pgr__components_3_01G_01_4_coll__map" id="Pgr__components_3_01G_01_4_coll__map">
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:aa9e74e089f49fd3dee33dac50a94bdc9"><td class="memItemLeft" align="right" valign="top">typedef G::E&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#aa9e74e089f49fd3dee33dac50a94bdc9">E</a></td></tr>
+<tr class="separator:aa9e74e089f49fd3dee33dac50a94bdc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa796353eee3b3b811f865ace37a5493b"><td class="memItemLeft" align="right" valign="top">typedef G::E_i&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#aa796353eee3b3b811f865ace37a5493b">E_i</a></td></tr>
+<tr class="separator:aa796353eee3b3b811f865ace37a5493b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93bdb37b11b9ecc57d7090f79469ef6f"><td class="memItemLeft" align="right" valign="top">typedef G::V&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#a93bdb37b11b9ecc57d7090f79469ef6f">V</a></td></tr>
 <tr class="separator:a93bdb37b11b9ecc57d7090f79469ef6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8b64cb29340cf325ff774d92a988ea8a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#a8b64cb29340cf325ff774d92a988ea8a">connectedComponentsV</a> (G &amp;graph)</td></tr>
-<tr class="memdesc:a8b64cb29340cf325ff774d92a988ea8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected Components Vertex Version.  <a href="#a8b64cb29340cf325ff774d92a988ea8a">More...</a><br/></td></tr>
-<tr class="separator:a8b64cb29340cf325ff774d92a988ea8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cc0eaa02c9ea5143a3e4542508f647f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structpgr__components__rt.html">pgr_components_rt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#a6cc0eaa02c9ea5143a3e4542508f647f">biconnectedComponents</a> (G &amp;graph)</td></tr>
+<tr class="memdesc:a6cc0eaa02c9ea5143a3e4542508f647f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Biconnected Components.  <a href="#a6cc0eaa02c9ea5143a3e4542508f647f">More...</a><br/></td></tr>
+<tr class="separator:a6cc0eaa02c9ea5143a3e4542508f647f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0ab0e2b004312be43b9bf6433e9afbb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structpgr__components__rt.html">pgr_components_rt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#ab0ab0e2b004312be43b9bf6433e9afbb">connectedComponentsV</a> (G &amp;graph)</td></tr>
+<tr class="memdesc:ab0ab0e2b004312be43b9bf6433e9afbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected Components Vertex Version.  <a href="#ab0ab0e2b004312be43b9bf6433e9afbb">More...</a><br/></td></tr>
+<tr class="separator:ab0ab0e2b004312be43b9bf6433e9afbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41c02ff763bf39ee94ccb1dc59519a82"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structpgr__components__rt.html">pgr_components_rt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#a41c02ff763bf39ee94ccb1dc59519a82">strongComponentsV</a> (G &amp;graph)</td></tr>
+<tr class="memdesc:a41c02ff763bf39ee94ccb1dc59519a82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strongly Connected Components Vertex Version.  <a href="#a41c02ff763bf39ee94ccb1dc59519a82">More...</a><br/></td></tr>
+<tr class="separator:a41c02ff763bf39ee94ccb1dc59519a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a723c33d10f015eeea3471c75b8a25c58"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#a723c33d10f015eeea3471c75b8a25c58">do_connectedComponentsV</a> (G &amp;graph)</td></tr>
-<tr class="memdesc:a723c33d10f015eeea3471c75b8a25c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call to Connected Components Vertex Version.  <a href="#a723c33d10f015eeea3471c75b8a25c58">More...</a><br/></td></tr>
-<tr class="separator:a723c33d10f015eeea3471c75b8a25c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb9fc7f87bc571905631f30d271edadf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#adb9fc7f87bc571905631f30d271edadf">generate_map</a> (std::map&lt; int64_t, <a class="el" href="classPgr__components.html#a93bdb37b11b9ecc57d7090f79469ef6f">V</a> &gt; id_to_V)</td></tr>
-<tr class="memdesc:adb9fc7f87bc571905631f30d271edadf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate map V_to_id.  <a href="#adb9fc7f87bc571905631f30d271edadf">More...</a><br/></td></tr>
-<tr class="separator:adb9fc7f87bc571905631f30d271edadf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:abdff5c015ad9c4b8dc8312c63104e12e"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classPgr__components.html#a93bdb37b11b9ecc57d7090f79469ef6f">V</a>, int64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#abdff5c015ad9c4b8dc8312c63104e12e">V_to_id</a></td></tr>
-<tr class="memdesc:abdff5c015ad9c4b8dc8312c63104e12e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate Map V_to_id.  <a href="#abdff5c015ad9c4b8dc8312c63104e12e">More...</a><br/></td></tr>
-<tr class="separator:abdff5c015ad9c4b8dc8312c63104e12e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2fd2f6b4c08ef17f3b3df713874723"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structpgr__components__rt.html">pgr_components_rt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723">generate_results</a> (std::vector&lt; std::vector&lt; int64_t &gt; &gt;)</td></tr>
+<tr class="memdesc:a5f2fd2f6b4c08ef17f3b3df713874723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate Results, Vertex Version.  <a href="#a5f2fd2f6b4c08ef17f3b3df713874723">More...</a><br/></td></tr>
+<tr class="separator:a5f2fd2f6b4c08ef17f3b3df713874723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class G&gt;<br/>
 class Pgr_components&lt; G &gt;</h3>
 
 
-<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00047">47</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00044">44</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="aa9e74e089f49fd3dee33dac50a94bdc9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef G::E <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::<a class="el" href="classPgr__components.html#aa9e74e089f49fd3dee33dac50a94bdc9">E</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00054">54</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa796353eee3b3b811f865ace37a5493b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef G::E_i <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::<a class="el" href="classPgr__components.html#aa796353eee3b3b811f865ace37a5493b">E_i</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00055">55</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a93bdb37b11b9ecc57d7090f79469ef6f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -170,19 +195,79 @@ template&lt;class G&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00056">56</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00053">53</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a8b64cb29340cf325ff774d92a988ea8a"></a>
+<a class="anchor" id="a6cc0eaa02c9ea5143a3e4542508f647f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class G &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a> &gt; <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::connectedComponentsV </td>
+          <td class="memname">std::vector&lt; <a class="el" href="structpgr__components__rt.html">pgr_components_rt</a> &gt; <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::biconnectedComponents </td>
+          <td>(</td>
+          <td class="paramtype">G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Biconnected Components. </p>
+
+<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00152">152</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
+
+<p>References <a class="el" href="issue191-bad-m1_8h_source.html#l00025">edges</a>.</p>
+
+<p>Referenced by <a class="el" href="biconnectedComponents__driver_8cpp_source.html#l00054">pgr_biconnectedComponents()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                  {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// perform the algorithm</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">struct </span>order_edges {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordtype">bool</span> operator() (<span class="keyword">const</span> <a class="code" href="classPgr__components.html#aa9e74e089f49fd3dee33dac50a94bdc9">E</a> &amp;left, <span class="keyword">const</span> <a class="code" href="classPgr__components.html#aa9e74e089f49fd3dee33dac50a94bdc9">E</a> &amp;right)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">return</span> left.get_property() &lt; right.get_property();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    };</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keyword">typedef</span> std::map&lt; E, int &gt; edge_map;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    edge_map bicmp_map;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    boost::associative_property_map&lt; edge_map &gt; bimap(bicmp_map);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">size_t</span> num_comps = biconnected_components(graph.graph, bimap);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment">// get the results</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="classPgr__components.html#aa796353eee3b3b811f865ace37a5493b">E_i</a> ei, ei_end;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    std::vector&lt; std::vector&lt; int64_t &gt; &gt; components(num_comps);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">for</span> (boost::tie(ei, ei_end) = <a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>(graph.graph); ei != ei_end; ei++)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        components[bimap[*ei]].push_back(graph[*ei].<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723">generate_results</a>(components);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
+<div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
+<div class="ttc" id="classPgr__components_html_aa9e74e089f49fd3dee33dac50a94bdc9"><div class="ttname"><a href="classPgr__components.html#aa9e74e089f49fd3dee33dac50a94bdc9">Pgr_components::E</a></div><div class="ttdeci">G::E E</div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00054">pgr_components.hpp:54</a></div></div>
+<div class="ttc" id="classPgr__components_html_a5f2fd2f6b4c08ef17f3b3df713874723"><div class="ttname"><a href="classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723">Pgr_components::generate_results</a></div><div class="ttdeci">std::vector&lt; pgr_components_rt &gt; generate_results(std::vector&lt; std::vector&lt; int64_t &gt; &gt;)</div><div class="ttdoc">Generate Results, Vertex Version. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00081">pgr_components.hpp:81</a></div></div>
+<div class="ttc" id="classPgr__components_html_aa796353eee3b3b811f865ace37a5493b"><div class="ttname"><a href="classPgr__components.html#aa796353eee3b3b811f865ace37a5493b">Pgr_components::E_i</a></div><div class="ttdeci">G::E_i E_i</div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00055">pgr_components.hpp:55</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPgr__components_a6cc0eaa02c9ea5143a3e4542508f647f_icgraph.png" border="0" usemap="#classPgr__components_a6cc0eaa02c9ea5143a3e4542508f647f_icgraph" alt=""/></div>
+<map name="classPgr__components_a6cc0eaa02c9ea5143a3e4542508f647f_icgraph" id="classPgr__components_a6cc0eaa02c9ea5143a3e4542508f647f_icgraph">
+<area shape="rect" id="node2" href="biconnectedComponents__driver_8cpp.html#a86b476d582584c5835ccbc88bf58e6e1" title="pgr_biconnectedComponents" alt="" coords="254,12,445,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab0ab0e2b004312be43b9bf6433e9afbb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structpgr__components__rt.html">pgr_components_rt</a> &gt; <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::connectedComponentsV </td>
           <td>(</td>
           <td class="paramtype">G &amp;&#160;</td>
           <td class="paramname"><em>graph</em></td><td>)</td>
@@ -193,30 +278,38 @@ template&lt;class G &gt; </div>
 
 <p>Connected Components Vertex Version. </p>
 
-<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00100">100</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00109">109</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
 
 <p>Referenced by <a class="el" href="connectedComponentsV__driver_8cpp_source.html#l00054">pgr_connectedComponentsV()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                  {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// perform the algorithm</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::vector&lt;pgr_componentV_t&gt; results = <a class="code" href="classPgr__components.html#a723c33d10f015eeea3471c75b8a25c58">do_connectedComponentsV</a>(graph);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// get the results</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> results;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-<div class="ttc" id="classPgr__components_html_a723c33d10f015eeea3471c75b8a25c58"><div class="ttname"><a href="classPgr__components.html#a723c33d10f015eeea3471c75b8a25c58">Pgr_components::do_connectedComponentsV</a></div><div class="ttdeci">std::vector&lt; pgr_componentV_t &gt; do_connectedComponentsV(G &amp;graph)</div><div class="ttdoc">Call to Connected Components Vertex Version. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00112">pgr_components.hpp:112</a></div></div>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                  {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">size_t</span> totalNodes = num_vertices(graph.graph);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// perform the algorithm</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    std::vector&lt; int &gt; components(totalNodes);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">int</span> num_comps = boost::connected_components(graph.graph, &amp;components[0]);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="comment">// get the results</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    std::vector&lt; std::vector&lt; int64_t &gt; &gt; results;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    results.resize(num_comps);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; totalNodes; i++)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        results[components[i]].push_back(graph[i].<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723">generate_results</a>(results);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="ttc" id="classPgr__components_html_a5f2fd2f6b4c08ef17f3b3df713874723"><div class="ttname"><a href="classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723">Pgr_components::generate_results</a></div><div class="ttdeci">std::vector&lt; pgr_components_rt &gt; generate_results(std::vector&lt; std::vector&lt; int64_t &gt; &gt;)</div><div class="ttdoc">Generate Results, Vertex Version. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00081">pgr_components.hpp:81</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classPgr__components_a8b64cb29340cf325ff774d92a988ea8a_icgraph.png" border="0" usemap="#classPgr__components_a8b64cb29340cf325ff774d92a988ea8a_icgraph" alt=""/></div>
-<map name="classPgr__components_a8b64cb29340cf325ff774d92a988ea8a_icgraph" id="classPgr__components_a8b64cb29340cf325ff774d92a988ea8a_icgraph">
-<area shape="rect" id="node2" href="connectedComponentsV__driver_8cpp.html#a73f4175dd68296b7aee4316a73be035c" title="pgr_connectedComponentsV" alt="" coords="243,12,434,39"/></map>
+<div class="center"><img src="classPgr__components_ab0ab0e2b004312be43b9bf6433e9afbb_icgraph.png" border="0" usemap="#classPgr__components_ab0ab0e2b004312be43b9bf6433e9afbb_icgraph" alt=""/></div>
+<map name="classPgr__components_ab0ab0e2b004312be43b9bf6433e9afbb_icgraph" id="classPgr__components_ab0ab0e2b004312be43b9bf6433e9afbb_icgraph">
+<area shape="rect" id="node2" href="connectedComponentsV__driver_8cpp.html#a6603b778152940360c6e28ab17d85d2f" title="pgr_connectedComponentsV" alt="" coords="243,12,434,39"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a723c33d10f015eeea3471c75b8a25c58"></a>
+<a class="anchor" id="a5f2fd2f6b4c08ef17f3b3df713874723"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -226,147 +319,104 @@ template&lt;class G &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="structpgr__componentV__t.html">pgr_componentV_t</a> &gt; <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::do_connectedComponentsV </td>
+          <td class="memname">std::vector&lt; <a class="el" href="structpgr__components__rt.html">pgr_components_rt</a> &gt; <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::generate_results </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; int64_t &gt; &gt;&#160;</td>
+          <td class="paramname"><em>components</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generate Results, Vertex Version. </p>
+
+<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00081">81</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
+
+<p>References <a class="el" href="pgr__components__rt_8h_source.html#l00059">pgr_components_rt::component</a>, <a class="el" href="pgr__components__rt_8h_source.html#l00061">pgr_components_rt::identifier</a>, and <a class="el" href="pgr__components__rt_8h_source.html#l00060">pgr_components_rt::n_seq</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                                      {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// sort identifier</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">size_t</span> num_comps = components.size();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; num_comps; i++) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::sort(components[i].begin(), components[i].end());</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    sort(components.begin(), components.end());</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">// generate results</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    std::vector&lt; pgr_components_rt &gt; results;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; num_comps; i++) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        int64_t tempComp = components[i][0];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">size_t</span> sizeCompi = components[i].size();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; sizeCompi; j++) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <a class="code" href="structpgr__components__rt.html">pgr_components_rt</a> tmp;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            tmp.<a class="code" href="structpgr__components__rt.html#a2fbe38d0f7547830135d2bc578bbd1d5">identifier</a> = components[i][j];</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            tmp.<a class="code" href="structpgr__components__rt.html#abfe0176117ac7d139ca83e6826cced1f">n_seq</a> = <span class="keyword">static_cast&lt;</span> <span class="keywordtype">int</span> <span class="keyword">&gt;</span> (j + 1);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            tmp.<a class="code" href="structpgr__components__rt.html#af480844e7a4472dff857deb3a65f233b">component</a> = tempComp;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            results.push_back(tmp);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> results;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="ttc" id="structpgr__components__rt_html_abfe0176117ac7d139ca83e6826cced1f"><div class="ttname"><a href="structpgr__components__rt.html#abfe0176117ac7d139ca83e6826cced1f">pgr_components_rt::n_seq</a></div><div class="ttdeci">int n_seq</div><div class="ttdef"><b>Definition:</b> <a href="pgr__components__rt_8h_source.html#l00060">pgr_components_rt.h:60</a></div></div>
+<div class="ttc" id="structpgr__components__rt_html_af480844e7a4472dff857deb3a65f233b"><div class="ttname"><a href="structpgr__components__rt.html#af480844e7a4472dff857deb3a65f233b">pgr_components_rt::component</a></div><div class="ttdeci">int64_t component</div><div class="ttdef"><b>Definition:</b> <a href="pgr__components__rt_8h_source.html#l00059">pgr_components_rt.h:59</a></div></div>
+<div class="ttc" id="structpgr__components__rt_html_a2fbe38d0f7547830135d2bc578bbd1d5"><div class="ttname"><a href="structpgr__components__rt.html#a2fbe38d0f7547830135d2bc578bbd1d5">pgr_components_rt::identifier</a></div><div class="ttdeci">int64_t identifier</div><div class="ttdef"><b>Definition:</b> <a href="pgr__components__rt_8h_source.html#l00061">pgr_components_rt.h:61</a></div></div>
+<div class="ttc" id="structpgr__components__rt_html"><div class="ttname"><a href="structpgr__components__rt.html">pgr_components_rt</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__components__rt_8h_source.html#l00058">pgr_components_rt.h:58</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a41c02ff763bf39ee94ccb1dc59519a82"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structpgr__components__rt.html">pgr_components_rt</a> &gt; <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::strongComponentsV </td>
           <td>(</td>
           <td class="paramtype">G &amp;&#160;</td>
           <td class="paramname"><em>graph</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Call to Connected Components Vertex Version. </p>
-<p>Call Componnets Vertex Version and Generate Results. </p>
+<p>Strongly Connected Components Vertex Version. </p>
 
-<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00112">112</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00129">129</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
 
-<p>References <a class="el" href="pgr__components_8hpp_source.html#l00078">sort_cmp()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                  {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">// call to boost</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::vector&lt; V &gt; components(num_vertices(graph.graph));</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    boost::connected_components(graph.graph, &amp;components[0]);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">// generate V_to_id</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="classPgr__components.html#adb9fc7f87bc571905631f30d271edadf">generate_map</a>(graph.vertices_map);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">// generate results</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">auto</span> totalNodes = num_vertices(graph.graph);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    std::vector&lt; pgr_componentV_t &gt; results;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    results.resize(totalNodes);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::vector&lt; int64_t &gt; result_comp;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    result_comp.resize(0);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">size_t</span> temp_size = 0;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; totalNodes; i++) {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        results[i].node = <a class="code" href="classPgr__components.html#abdff5c015ad9c4b8dc8312c63104e12e">V_to_id</a>.find(i)-&gt;second;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span> (components[i] &gt;= temp_size) {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            result_comp.push_back(results[i].node);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            temp_size++;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            result_comp[components[i]] =</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                std::min(results[i].node, result_comp[components[i]]);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        results[i].n_seq = -100;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// generate component number</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; totalNodes; i++) {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        results[i].component = result_comp[components[i]];</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">// sort results and generate n_seq</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    std::sort(results.begin(), results.end(), <a class="code" href="pgr__components_8hpp.html#a91a54564cb18fb03fa0818cca5216c52">sort_cmp</a>);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; totalNodes; i++) {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> (i == 0 || results[i].component != results[i - 1].component) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            results[i].n_seq = 1;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            results[i].n_seq = results[i - 1].n_seq + 1;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span> results;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
-<div class="ttc" id="classPgr__components_html_abdff5c015ad9c4b8dc8312c63104e12e"><div class="ttname"><a href="classPgr__components.html#abdff5c015ad9c4b8dc8312c63104e12e">Pgr_components::V_to_id</a></div><div class="ttdeci">std::map&lt; V, int64_t &gt; V_to_id</div><div class="ttdoc">Generate Map V_to_id. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00068">pgr_components.hpp:68</a></div></div>
-<div class="ttc" id="classPgr__components_html_adb9fc7f87bc571905631f30d271edadf"><div class="ttname"><a href="classPgr__components.html#adb9fc7f87bc571905631f30d271edadf">Pgr_components::generate_map</a></div><div class="ttdeci">void generate_map(std::map&lt; int64_t, V &gt; id_to_V)</div><div class="ttdoc">Generate map V_to_id. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00089">pgr_components.hpp:89</a></div></div>
-<div class="ttc" id="pgr__components_8hpp_html_a91a54564cb18fb03fa0818cca5216c52"><div class="ttname"><a href="pgr__components_8hpp.html#a91a54564cb18fb03fa0818cca5216c52">sort_cmp</a></div><div class="ttdeci">bool sort_cmp(pgr_componentV_t a, pgr_componentV_t b)</div><div class="ttdoc">Compare two pgr_componentV_t structs. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00078">pgr_components.hpp:78</a></div></div>
+<p>Referenced by <a class="el" href="strongComponentsV__driver_8cpp_source.html#l00054">pgr_strongComponentsV()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                  {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">size_t</span> totalNodes = num_vertices(graph.graph);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">// perform the algorithm</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    std::vector&lt; int &gt; components(totalNodes);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">int</span> num_comps = boost::strong_components(graph.graph,</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            boost::make_iterator_property_map(components.begin(),</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                              <span class="keyword">get</span>(boost::vertex_index,</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                                  graph.graph)));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">// get the results</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    std::vector&lt; std::vector&lt; int64_t &gt; &gt; results;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    results.resize(num_comps);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; totalNodes; i++)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        results[components[i]].push_back(graph[i].<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723">generate_results</a>(results);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="ttc" id="classPgr__components_html_a5f2fd2f6b4c08ef17f3b3df713874723"><div class="ttname"><a href="classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723">Pgr_components::generate_results</a></div><div class="ttdeci">std::vector&lt; pgr_components_rt &gt; generate_results(std::vector&lt; std::vector&lt; int64_t &gt; &gt;)</div><div class="ttdoc">Generate Results, Vertex Version. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00081">pgr_components.hpp:81</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
-Here is the call graph for this function:</div>
+Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classPgr__components_a723c33d10f015eeea3471c75b8a25c58_cgraph.png" border="0" usemap="#classPgr__components_a723c33d10f015eeea3471c75b8a25c58_cgraph" alt=""/></div>
-<map name="classPgr__components_a723c33d10f015eeea3471c75b8a25c58_cgraph" id="classPgr__components_a723c33d10f015eeea3471c75b8a25c58_cgraph">
-<area shape="rect" id="node2" href="pgr__components_8hpp.html#a91a54564cb18fb03fa0818cca5216c52" title="Compare two pgr_componentV_t structs. " alt="" coords="227,12,303,39"/></map>
+<div class="center"><img src="classPgr__components_a41c02ff763bf39ee94ccb1dc59519a82_icgraph.png" border="0" usemap="#classPgr__components_a41c02ff763bf39ee94ccb1dc59519a82_icgraph" alt=""/></div>
+<map name="classPgr__components_a41c02ff763bf39ee94ccb1dc59519a82_icgraph" id="classPgr__components_a41c02ff763bf39ee94ccb1dc59519a82_icgraph">
+<area shape="rect" id="node2" href="strongComponentsV__driver_8cpp.html#a812ea78ad1086374d33e6bcf3909011e" title="pgr_strongComponentsV" alt="" coords="302,5,469,32"/></map>
 </div>
 </p>
-
-</div>
-</div>
-<a class="anchor" id="adb9fc7f87bc571905631f30d271edadf"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class G &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::generate_map </td>
-          <td>(</td>
-          <td class="paramtype">std::map&lt; int64_t, <a class="el" href="classPgr__components.html#a93bdb37b11b9ecc57d7090f79469ef6f">V</a> &gt;&#160;</td>
-          <td class="paramname"><em>id_to_V</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Generate map V_to_id. </p>
-
-<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00089">89</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                      {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classPgr__components.html#abdff5c015ad9c4b8dc8312c63104e12e">V_to_id</a>.clear();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter : id_to_V) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="classPgr__components.html#abdff5c015ad9c4b8dc8312c63104e12e">V_to_id</a>.insert(std::make_pair(iter.second, iter.first));</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
-<div class="ttc" id="classPgr__components_html_abdff5c015ad9c4b8dc8312c63104e12e"><div class="ttname"><a href="classPgr__components.html#abdff5c015ad9c4b8dc8312c63104e12e">Pgr_components::V_to_id</a></div><div class="ttdeci">std::map&lt; V, int64_t &gt; V_to_id</div><div class="ttdoc">Generate Map V_to_id. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__components_8hpp_source.html#l00068">pgr_components.hpp:68</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="abdff5c015ad9c4b8dc8312c63104e12e"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class G&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt; <a class="el" href="classPgr__components.html#a93bdb37b11b9ecc57d7090f79469ef6f">V</a>, int64_t &gt; <a class="el" href="classPgr__components.html">Pgr_components</a>&lt; G &gt;::V_to_id</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Generate Map V_to_id. </p>
-
-<p>Definition at line <a class="el" href="pgr__components_8hpp_source.html#l00068">68</a> of file <a class="el" href="pgr__components_8hpp_source.html">pgr_components.hpp</a>.</p>
 
 </div>
 </div>
@@ -379,7 +429,7 @@ template&lt;class G&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPgr__components.html">Pgr_components</a></li>
-    <li class="footer">Generated on Mon Jun 19 2017 19:02:19 for PGROUTING by
+    <li class="footer">Generated on Tue Jul 4 2017 21:37:31 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
