@@ -5,7 +5,7 @@ SET
 -- q1
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT * FROM restrict',
+    'SELECT * FROM restrict WHERE id IN (1)',
     2, 3
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -21,7 +21,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 -- q2
 SELECT * FROM pgr_dijkstraTRSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT * FROM restrict',
+    'SELECT * FROM restrict WHERE id IN (1)',
     2, 3,
     FALSE
 );
