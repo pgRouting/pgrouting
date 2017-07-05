@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <limits>
 
-#include "pickDeliver/dnode.h"
+#include "vrp/dnode.h"
 #include "vrp/pgr_pickDeliver.h"
 
 namespace pgrouting {
@@ -57,13 +57,16 @@ Fleet::Fleet(
 
 Vehicle_pickDeliver
 Fleet::get_truck() {
-    auto id = un_used.front();
-    msg.log << "id" << id
-        << "size" << m_trucks.size();
-    pgassertwm(id < m_trucks.size(), msg.log.str());
-    used += id;
-    if (un_used.size() > 1) un_used -= id;
-    return m_trucks[id];
+    ENTERING();
+    auto idx = un_used.front();
+    msg.log << "Available vehicles: " << un_used << "\n";
+    msg.log << "NOT Available vehicles: " << used << "\n";
+    msg.log << "getting idx" << idx << "\n";
+    pgassertwm(idx < m_trucks.size(), msg.log.str());
+    used += idx;
+    if (un_used.size() > 1) un_used -= idx;
+    EXITING();
+    return m_trucks[idx];
 }
 
 void
@@ -74,19 +77,37 @@ Fleet::release_truck(size_t id) {
 
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
-    auto id = m_trucks.front().idx();
+    msg.log << "Available vehicles: " << un_used << "\n";
+    msg.log << "NOT Available vehicles: " << used << "\n";
+    auto idx = un_used.front();
+
+    for (const auto i : un_used) {
+        if (m_trucks[i].feasable_orders().has(order)) {
+            idx = i;
+            msg.log << "getting idx" << idx << "\n";
+            used += idx;
+            if (un_used.size() > 1) un_used -= idx;
+            return m_trucks[idx];
+        }
+    }
+
+    /*
+     * using phoney truck
+     */
+    pgassert(false);
+    return m_trucks.back();
+
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order)) {
-            id = truck.idx();
-            msg.log << "id" << id
-                << "size" << m_trucks.size();
-            pgassertwm(id < m_trucks.size(), msg.get_log());
-            used += id;
-            if (un_used.size() > 1) un_used -= id;
+            idx = truck.idx();
+            msg.log << "idx" << idx << "size" << m_trucks.size();
+            pgassertwm(idx < m_trucks.size(), msg.get_log());
+            used += idx;
+            if (un_used.size() > 1) un_used -= idx;
             break;
         }
     }
-    return m_trucks[id];
+    return m_trucks[idx];
 }
 
 
@@ -117,6 +138,8 @@ Fleet::add_vehicle(
         std::unique_ptr<Base_node> b_end,
         const Vehicle_node &ending_site) {
     pgassert(starting_site.is_start() && ending_site.is_end());
+    pgassert(starting_site.opens() <= starting_site.closes());
+    pgassert(ending_site.opens() <= ending_site.closes());
 
     problem->add_base_node(std::move(b_start));
     problem->add_base_node(std::move(b_end));
@@ -132,8 +155,9 @@ Fleet::add_vehicle(
                     vehicle.capacity,
                     vehicle.speed,
                     factor));
-        msg.log << "inserting vehicle: " << m_trucks.back().idx() << "\n";
+        msg.log << "inserting vehicle: " << m_trucks.back().tau() << "\n";
         pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
+        pgassert(m_trucks.back().is_ok());
     }
 }
 
@@ -205,15 +229,21 @@ Fleet::build_fleet(
             auto ending_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
-            if (!(starting_site.is_start()
-                        && ending_site.is_end())) {
+            if (!(starting_site.is_start() && ending_site.is_end()
+                    && starting_site.opens() <= starting_site.closes()
+                    && ending_site.opens() <= ending_site.closes())) {
                 msg.clear();
                 msg.error << "Illegal values found on vehicle";
-                msg.log << "id: " << vehicle.id;
+                msg.log << "On vehicle " << vehicle.id << " a condition is not met, verify that:\n"
+                    << "-  start_open <= start_close\n"
+                    << "-  end_open <= end_close\n"
+                    << "-  capacity > 0\n";
                 pgassert(!msg.get_error().empty());
                 return false;
             }
 
+            pgassert(starting_site.opens() <= starting_site.closes());
+            pgassert(ending_site.opens() <= ending_site.closes());
             pgassertwm(starting_site.is_start() && ending_site.is_end(), msg.get_error().c_str());
             add_vehicle(vehicle, factor,
                     std::move(b_start), starting_site,
@@ -230,14 +260,21 @@ Fleet::build_fleet(
             auto ending_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
-            if (!(starting_site.is_start()
-                        && ending_site.is_end())) {
+            if (!(starting_site.is_start() && ending_site.is_end()
+                    && starting_site.opens() <= starting_site.closes()
+                    && ending_site.opens() <= ending_site.closes())) {
                 msg.clear();
                 msg.error << "Illegal values found on vehicle";
-                msg.log << "id: " << vehicle.id;
+                msg.log << "On vehicle " << vehicle.id << " a condition is not met, verify that:\n"
+                    << "-  start_open <= start_close\n"
+                    << "-  end_open <= end_close\n"
+                    << "-  capacity > 0\n";
                 pgassert(!msg.get_error().empty());
                 return false;
             }
+
+            pgassert(starting_site.opens() <= starting_site.closes());
+            pgassert(ending_site.opens() <= ending_site.closes());
             pgassert(starting_site.is_start() && ending_site.is_end());
             add_vehicle(vehicle, factor,
                     std::move(b_start), starting_site,
@@ -255,6 +292,15 @@ Fleet::is_fleet_ok() const {
     ENTERING();
     if (!msg.get_error().empty()) return false;
     for (auto truck : m_trucks) {
+        if (!truck.is_ok()) {
+            msg.error << "Illegal values found on vehicle";
+            msg.log << "On vehicle " << truck.id() << " a condition is not met, verify that:\n"
+                << "-  start_open <= start_close\n"
+                << "-  end_open <= end_close\n"
+                << "-  capacity > 0\n";
+            return false;
+        }
+
         if (!(truck.start_site().is_start()
                     && truck.end_site().is_end())) {
             pgassertwm(false, "should never pass through here");

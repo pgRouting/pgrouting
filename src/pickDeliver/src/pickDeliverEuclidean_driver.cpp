@@ -92,6 +92,9 @@ do_pgr_pickDeliverEuclidean(
 
         err << pd_problem.msg.get_error();
         if (!err.str().empty()) {
+            log.str("");
+            log.clear();
+            log << pd_problem.msg.get_error();
             log << pd_problem.msg.get_log();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());

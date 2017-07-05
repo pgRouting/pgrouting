@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -62,11 +62,13 @@ msgid "As part of the :ref:`dijkstra`"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:35
-msgid ":ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix."
+msgid ""
+":ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:36
-msgid ":ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices."
+msgid ""
+":ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:39
@@ -86,7 +88,8 @@ msgid ":ref:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/aStar-family.rst:5
-msgid ":ref:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
+msgid ""
+":ref:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:46
@@ -99,8 +102,8 @@ msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:4
 msgid ""
-":ref:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost"
-" of the paths."
+":ref:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of"
+" the paths."
 msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:5
@@ -115,14 +118,14 @@ msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:3
 msgid ""
-":ref:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest"
-" paths."
+":ref:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest "
+"paths."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:4
 msgid ""
-":ref:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost "
-"of the shortest paths"
+":ref:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of "
+"the shortest paths"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:5
@@ -137,26 +140,26 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:3
 msgid ""
-":ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel"
-" algorithm."
+":ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel "
+"algorithm."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4
 msgid ""
-":ref:`pgr_BoykovKolmogorov` - Boykov and Kolmogorov with details of flow "
-"on edges."
+":ref:`pgr_BoykovKolmogorov` - Boykov and Kolmogorov with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:5
 msgid ""
-":ref:`pgr_EdmondsKarp` - Edmonds and Karp algorithm with details of flow "
-"on edges."
+":ref:`pgr_EdmondsKarp` - Edmonds and Karp algorithm with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:6
 msgid ""
-":ref:`pgr_PushRelabel` - Push and relabel algorithm with details of flow "
-"on edges."
+":ref:`pgr_PushRelabel` - Push and relabel algorithm with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:7
@@ -165,14 +168,14 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:9
 msgid ""
-":ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two"
-" groups of vertices."
+":ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two "
+"groups of vertices."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:10
 msgid ""
-":ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality "
-"matching in a graph."
+":ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching "
+"in a graph."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:64
@@ -267,7 +270,7 @@ msgstr ""
 msgid "Experimental and Proposed functions"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:111
+#: ../../build/doc/proposed.rst:111 ../../build/doc/VRP-category.rst:8
 msgid "Experimental functions"
 msgstr ""
 
@@ -333,8 +336,7 @@ msgstr ""
 
 #: ../../build/doc/proposed.rst:134
 msgid ""
-":ref:`pgr_contractgraph` - Reduce network size using contraction "
-"techniques"
+":ref:`pgr_contractgraph` - Reduce network size using contraction techniques"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:138
@@ -354,24 +356,30 @@ msgid "Pickup and delivery problem"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:4
-msgid ":ref:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
+msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:5
 msgid ""
-":ref:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean "
-"distances"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:6
-msgid ":ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)"
+":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:9
-msgid "Delivery prolem"
+msgid ":doc:`pgr_vrpOneDepot` - VRP One Depot"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:10
-msgid ":ref:`pgr_vrp_basic` - VRP One Depot"
-msgstr ""
+#~ msgid ":ref:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
+#~ msgstr ""
 
+#~ msgid ""
+#~ ":ref:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
+#~ msgstr ""
+
+#~ msgid ":ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)"
+#~ msgstr ""
+
+#~ msgid "Delivery prolem"
+#~ msgstr ""
+
+#~ msgid ":ref:`pgr_vrp_basic` - VRP One Depot"
+#~ msgstr ""

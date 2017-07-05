@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -26,7 +26,8 @@ msgid "Name"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:19
-msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
+msgid ""
+"``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:25
@@ -51,9 +52,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:35
 msgid ""
-"Using Dijkstra algorithm, extracts all the nodes that have costs less "
-"than or equal to the value ``distance``. The edges extracted will conform"
-" the corresponding spanning tree."
+"Using Dijkstra algorithm, extracts all the nodes that have costs less than "
+"or equal to the value ``distance``. The edges extracted will conform the "
+"corresponding spanning tree."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:39
@@ -84,14 +85,9 @@ msgstr ""
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "edges_sql"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -162,8 +158,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -180,24 +176,16 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -273,8 +261,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:107
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default"
-" is ``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default is"
+" ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:108
@@ -314,7 +302,8 @@ msgid "**node**"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:123
-msgid "Identifier of the node in the path within the limits from ``start_vid``."
+msgid ""
+"Identifier of the node in the path within the limits from ``start_vid``."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:124
@@ -323,8 +312,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:124
 msgid ""
-"Identifier of the edge used to arrive to ``node``. ``0`` when the "
-"``node`` is the ``start_vid``."
+"Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` "
+"is the ``start_vid``."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:125
@@ -407,3 +396,11 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr ""

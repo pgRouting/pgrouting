@@ -73,16 +73,18 @@ This library contains following features:
 * Shortest Path Dijkstra Cost Family of functions
 * Driving Distance
 * K-Shortest Path, Multiple Alternative Paths (Yen's algorithm)
-* Traveling Sales Person
+* Traveling Sales Person (TSP)
 * Turn Restriction Shortest Path (TRSP)
 
-Additionally, ready for testing and to be part of 2.3 official version:
+Additionally, ready for testing and to be part of 2.5 official version:
 
 * Shortest Path Dijkstra With Points Family of functions
 * Shortest Path Dijkstra Cost With Points Family of functions
 * Driving Distance With Points
 * K-Shortest Path With Points, Multiple Alternative Paths (Yen's algorithm)
-* Dijkstra Via vertices
+* Dijkstra Via (Vertices)
+
+and many more.
 
 Family of functions include:
 
@@ -147,7 +149,7 @@ Postgresql 9.2+
 
 ## USAGE
 
-See online documentation: http://docs.pgrouting.org/2.3/en/doc/index.html
+See online documentation: http://docs.pgrouting.org/dev/en/index.html
 
 ## LICENSE
 

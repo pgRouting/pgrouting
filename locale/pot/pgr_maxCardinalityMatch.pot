@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,11 +148,6 @@ msgstr ""
 msgid "The minimal use calculates one possible maximum cardinality matching on a **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:0
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:0
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:90
 msgid "Complete signature"
 msgstr ""
@@ -167,10 +162,6 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:113
 msgid "Description of the SQL query"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:0
-msgid "edges_sql"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:115
@@ -252,16 +243,8 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:0
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:129
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:0
-msgid "ANY-NUMERIC"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:130
