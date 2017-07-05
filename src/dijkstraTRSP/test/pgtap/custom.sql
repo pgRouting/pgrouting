@@ -5,11 +5,11 @@ SELECT plan(1);
 SET client_min_messages TO WARNING;
 
 PREPARE q1 AS
-SELECT seq, edge
-FROM pgr_dijkstraTRSP(
-	'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT * from restrict',
-    2, 8);
+SELECT seq,
+       edge
+FROM pgr_dijkstraTRSP('SELECT id, source, target, cost, reverse_cost
+FROM edge_table', 'SELECT * FROM restrict WHERE id in (1)', 2, 8);
+
 
 PREPARE q2 AS
 SELECT seq, edge FROM ( VALUES
@@ -21,7 +21,7 @@ SELECT seq, edge FROM ( VALUES
 	(6, 7) )
 AS t(seq, edge);
 
-SELECT set_eq('q1', 'q2');
+SELECT set_eq('q1', 'q2', 'Testing from source 2 to target 8 with restriction on edges as follows 4->7');
 
 SELECT finish();
 ROLLBACK;
