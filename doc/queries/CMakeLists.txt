@@ -42,6 +42,8 @@ SET(LOCAL_FILES
     doc-pgr_maxFlow.queries
     doc-pgr_withPointsKSP.queries
 	doc-pgr_connectedComponentsV.queries
+    doc-pgr_strongComponentsV.queries
+	doc-pgr_biconnectedComponents.queries
     )
 
 foreach (f ${LOCAL_FILES})

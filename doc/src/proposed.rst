@@ -159,7 +159,7 @@ Experimental and Proposed functions
   contraction-family
   flow-family
   pgr_labelGraph
-  pgr_connectedComponentsV
+  components-family
   VRP-category
 
 

@@ -44,7 +44,7 @@ namespace graph {
 template <class G, typename T_V, typename T_E>
 class Pgr_componentsGraph;
 
-} // namespace graph
+}  // namespace graph
 
 typedef graph::Pgr_componentsGraph <
 boost::adjacency_list < boost::vecS, boost::vecS,
@@ -91,9 +91,11 @@ class Pgr_componentsGraph : public Pgr_base_graph<G, T_V, T_E> {
         auto vm_s = Pgr_base_graph< G, T_V, T_E >::get_V(T_V(edge, true));
         auto vm_t = Pgr_base_graph< G, T_V, T_E >::get_V(T_V(edge, false));
 
-        pgassert((Pgr_base_graph< G, T_V, T_E >::vertices_map).find(edge.source) != 
+        pgassert((Pgr_base_graph< G, T_V, T_E >::vertices_map).find(edge.source)
+                 !=
                  (Pgr_base_graph< G, T_V, T_E >::vertices_map).end());
-        pgassert((Pgr_base_graph< G, T_V, T_E >::vertices_map).find(edge.target) != 
+        pgassert((Pgr_base_graph< G, T_V, T_E >::vertices_map).find(edge.target)
+                 !=
                  (Pgr_base_graph< G, T_V, T_E >::vertices_map).end());
         if (edge.cost >= 0) {
             boost::tie(e, inserted) =
@@ -112,4 +114,4 @@ class Pgr_componentsGraph : public Pgr_base_graph<G, T_V, T_E> {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif // INCLUDE_COMPONENTS_PGR_COMPONENTSGRAPH_HPP_
+#endif  // INCLUDE_COMPONENTS_PGR_COMPONENTSGRAPH_HPP_
