@@ -3,6 +3,10 @@ SET(LOCAL_FILES
     connected_components.jpeg
     strong_components.jpeg
     biconnected_components.jpeg
+
+    cc_sampledata.png
+    scc_sampledata.png
+    bcc_sampledata.png
     )
 
 foreach (f ${LOCAL_FILES})
