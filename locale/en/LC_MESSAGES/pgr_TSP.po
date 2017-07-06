@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -43,22 +43,22 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:28
 msgid ""
-"The travelling salesman problem (TSP) or travelling salesperson problem "
-"asks the following question:"
+"The travelling salesman problem (TSP) or travelling salesperson problem asks"
+" the following question:"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:30
 msgid ""
-"Given a list of cities and the distances between each pair of cities, "
-"what is the shortest possible route that visits each city exactly once "
-"and returns to the origin city?"
+"Given a list of cities and the distances between each pair of cities, what "
+"is the shortest possible route that visits each city exactly once and "
+"returns to the origin city?"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:32
 msgid ""
 "This implementation uses simulated annealing to return the approximate "
-"solution when the input is given in the form of matrix cell contents. The"
-" matrix information must be symmetrical."
+"solution when the input is given in the form of matrix cell contents. The "
+"matrix information must be symmetrical."
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:37
@@ -73,15 +73,11 @@ msgstr ""
 msgid "Basic Use"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_TSP.rst:67
 msgid ""
 "Because the documentation examples are auto generated and tested for non "
-"changing results, and the default is to have random execution, the "
-"example is wrapping the actual call."
+"changing results, and the default is to have random execution, the example "
+"is wrapping the actual call."
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:81
@@ -175,8 +171,8 @@ msgstr ""
 #: ../../build/doc/pgr_TSP.rst:127
 msgid ""
 "If using directed := true, the resulting non symmetric matrix must be "
-"converted to symmetric by fixing the non symmetric values according to "
-"your application needs."
+"converted to symmetric by fixing the non symmetric values according to your "
+"application needs."
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:145
@@ -193,8 +189,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:151
 msgid ""
-"the **side** information of pointsOfInterset is ignored by not including "
-"it in the query"
+"the **side** information of pointsOfInterset is ignored by not including it "
+"in the query"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:152
@@ -221,3 +217,5 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
 msgstr ""
 
+#~ msgid "Example"
+#~ msgstr ""

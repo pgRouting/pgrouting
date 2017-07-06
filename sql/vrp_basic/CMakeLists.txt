@@ -1,6 +1,8 @@
 
 SET(LOCAL_FILES
-    routing_vrp.sql
+    #routing_vrp.sql
+    _pgr_vrpOneDepot.sql
+    pgr_vrpOneDepot.sql
     )
 
 foreach (f ${LOCAL_FILES})

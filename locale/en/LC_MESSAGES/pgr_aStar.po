@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -70,7 +70,8 @@ msgid "Values are returned when there is a path."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:44
-msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:46
@@ -79,8 +80,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:48
 msgid ""
-"When the starting vertex and ending vertex are the different and there is"
-" no path:"
+"When the starting vertex and ending vertex are the different and there is no"
+" path:"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:50
@@ -147,10 +148,6 @@ msgstr ""
 msgid "Minimal Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_aStar.rst:99
 msgid "Using the defaults"
 msgstr ""
@@ -200,8 +197,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:145
 msgid ""
-"The extra ``end_vid`` in the result is used to distinguish to which path "
-"it belongs."
+"The extra ``end_vid`` in the result is used to distinguish to which path it "
+"belongs."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:157
@@ -216,8 +213,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:168
 msgid ""
-"Using this signature, will load once the graph and perform several one to"
-" one `pgr_aStar` where the ending vertex is fixed."
+"Using this signature, will load once the graph and perform several one to "
+"one `pgr_aStar` where the ending vertex is fixed."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:171
@@ -226,8 +223,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:172 ../../build/doc/pgr_aStar.rst:201
 msgid ""
-"The extra ``start_vid`` in the result is used to distinguish to which "
-"path it belongs."
+"The extra ``start_vid`` in the result is used to distinguish to which path "
+"it belongs."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:186
@@ -242,18 +239,19 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:197
 msgid ""
-"Using this signature, will load once the graph and perform several one to"
-" Many `pgr_dijkstra` for all ``start_vids``."
+"Using this signature, will load once the graph and perform several one to "
+"Many `pgr_dijkstra` for all ``start_vids``."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:200
-msgid "The result is the union of the results of the one to one `pgr_dijkstra`."
+msgid ""
+"The result is the union of the results of the one to one `pgr_dijkstra`."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:203
 msgid ""
-"The extra ``start_vid`` and ``end_vid`` in the result is used to "
-"distinguish to which path it belongs."
+"The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish"
+" to which path it belongs."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:217
@@ -264,21 +262,18 @@ msgstr ""
 msgid "Description of the edges_sql query for astar like functions"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "edges_sql"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_aStar.rst:231
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
@@ -287,6 +282,7 @@ msgid "Default"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_aStar.rst:231
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Description"
 msgstr ""
 
@@ -341,8 +337,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -359,8 +355,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:22
@@ -399,16 +395,8 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:31
@@ -435,7 +423,7 @@ msgstr ""
 msgid "Edges SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14 ../../build/doc/pgr_aStar.rst:234
+#: ../../build/doc/pgr_aStar.rst:234 ../../build/doc/pgRouting-concepts.rst:14
 msgid "**start_vid**"
 msgstr ""
 
@@ -443,7 +431,7 @@ msgstr ""
 msgid "Starting vertex identifier."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:15 ../../build/doc/pgr_aStar.rst:235
+#: ../../build/doc/pgr_aStar.rst:235 ../../build/doc/pgRouting-concepts.rst:15
 msgid "**end_vid**"
 msgstr ""
 
@@ -511,16 +499,16 @@ msgstr ""
 msgid "**factor**"
 msgstr ""
 
+#: ../../build/doc/pgr_aStar.rst:250 ../../build/doc/pgr_aStar.rst:251
 #: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:19 ../../build/doc/pgr_aStar.rst:250
-#: ../../build/doc/pgr_aStar.rst:251
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:250
 msgid ""
-"(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. "
-"see :ref:`astar_factor`"
+"(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see "
+":ref:`astar_factor`"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:251
@@ -539,8 +527,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid ""
-"Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, "
-"cost, agg_cost)``"
+"Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost,"
+" agg_cost)``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
@@ -563,9 +551,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid ""
-"Path identifier. Has value **1** for the first of a path. Used when there"
-" are multiple paths for the same ``start_vid`` to ``end_vid`` "
-"combination."
+"Path identifier. Has value **1** for the first of a path. Used when there "
+"are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -574,8 +561,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
-"Relative position in the path. Has value **1** for the beginning of a "
-"path."
+"Relative position in the path. Has value **1** for the beginning of a path."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
@@ -587,14 +573,14 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid ""
-"Identifier of the starting vertex. Used when multiple starting vetrices "
-"are in the query."
+"Identifier of the starting vertex. Used when multiple starting vetrices are "
+"in the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"Identifier of the ending vertex. Used when multiple ending vertices are "
-"in the query."
+"Identifier of the ending vertex. Used when multiple ending vertices are in "
+"the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
@@ -611,14 +597,14 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the "
-"path sequence. ``-1`` for the last node of the path."
+"Identifier of the edge used to go from ``node`` to the next node in the path"
+" sequence. ``-1`` for the last node of the path."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next node in the "
-"path sequence."
+"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
+"sequence."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -661,3 +647,14 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "Example"
+#~ msgstr ""
+
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr ""
