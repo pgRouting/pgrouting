@@ -12,6 +12,7 @@
 pgr_connectedComponentsV
 ===============================================================================
 
+
 ``pgr_connectedComponentsV`` — Return the connected components of an undirected graph using a DFS-based approach.
 In particular, the algorithm implemented by Boost.Graph.
 
