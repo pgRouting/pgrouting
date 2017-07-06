@@ -17,14 +17,12 @@ SET(LOCAL_FILES
     doc-pgr_eucledianTSP.queries
     doc-pgr_TSP.queries
     doc-pickDeliverEuclidean.queries
-    proof_of_concept.queries
     doc-contractGraph.queries
     doc-pgr_analyzeGraph.queries
     doc-pgr_dijkstraCost.queries
     doc-pgr_fooDmatrix.queries
     doc-pgr_version.queries
     doc-pickDeliver.queries
-    trsp_notes_v2.5.0.queries
     doc-contraction.queries
     doc-pgr_bdAstarCost.queries
     doc-pgr_dijkstra.queries
@@ -36,7 +34,6 @@ SET(LOCAL_FILES
     doc-pgr_dijkstraVia.queries
     doc-pgr_maxCardinalityMatch.queries
     doc-pgr_withPointsDD.queries
-    doc-gsoc_vrppdtw.queries
     doc-pgr_bdDijkstraCost.queries
     doc-pgr_drivingDistance.queries
     doc-pgr_maxFlow.queries
@@ -44,6 +41,10 @@ SET(LOCAL_FILES
 	doc-pgr_connectedComponentsV.queries
     doc-pgr_strongComponentsV.queries
 	doc-pgr_biconnectedComponents.queries
+    doc-pgr_vrpOneDepot.queries
+    proof_of_concept.queries
+    trsp_notes_v2.5.0.queries
+    oneDepotWrapper.queries
     )
 
 foreach (f ${LOCAL_FILES})

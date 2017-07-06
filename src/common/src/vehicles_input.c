@@ -75,12 +75,36 @@ void fetch_vehicles(
         pgr_SPI_getFloat8(tuple, tupdesc, info[7]) :
         0;
 
+
+    if (!(column_found(info[8].colNumber)) && column_found(info[9].colNumber)) {
+        ereport(ERROR,
+                (errmsg("Column \'%s\' not Found", info[8].name),
+                 errhint("%s was found, also column is expected %s ", info[9].name, info[8].name)));
+    }
+    if (column_found(info[8].colNumber) && !(column_found(info[9].colNumber))) {
+        ereport(ERROR,
+                (errmsg("Column \'%s\' not Found", info[9].name),
+                 errhint("%s was found, also column is expected %s ", info[8].name, info[9].name)));
+    }
+
     vehicle->end_x = column_found(info[8].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[8]) :
         vehicle->start_x;
     vehicle->end_y = column_found(info[9].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[9]) :
         vehicle->start_y;
+
+    if (!(column_found(info[10].colNumber)) && column_found(info[11].colNumber)) {
+        ereport(ERROR,
+                (errmsg("Column \'%s\' not Found", info[10].name),
+                 errhint("%s was found, also column is expected %s ", info[10].name, info[11].name)));
+    }
+
+    if (column_found(info[10].colNumber) && !(column_found(info[11].colNumber))) {
+        ereport(ERROR,
+                (errmsg("Column \'%s\' not Found", info[11].name),
+                 errhint("%s was found, also column is expected %s ", info[11].name, info[10].name)));
+    }
     vehicle->end_open_t = column_found(info[10].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[10]) :
         vehicle->start_open_t;

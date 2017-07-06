@@ -81,10 +81,13 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_connectedComponentsV
 * pgr_strongComponentsV
 * pgr_biconnectedComponents
+* pgr_pgr_pickDeliver
+* pgr_pgr_pickDeliverEuclidean
 
 .. rubric:: Deprecated Signatures
 
 * pgr_bdastar - use pgr_bdAstar instead
+* pgr_gsoc_vrppdtw - use pgr_pickDeliverEuclidean instead
 
 .. rubric:: Renamed Functions
 

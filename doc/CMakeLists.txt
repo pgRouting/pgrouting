@@ -45,6 +45,10 @@ foreach(opt HTML LATEX SINGLEHTML EPUB DUMMY)
     endif()
 endforeach()
 
+if (LOCALE) 
+    set(WITH_DOC ON)
+endif()
+
 
 message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
 
@@ -183,13 +187,13 @@ configure_file("../tools/testers/sampledata.sql" "${PGR_DOCUMENTATION_SOURCE_DIR
 #TODO ???
 #add_subdirectory("static")
 #add_subdirectory("themes")
-file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${PGR_DOCUMENTATION_BUILD_DIR}")
-file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${PGR_DOCUMENTATION_BUILD_DIR}")
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/_static" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/_themes" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
 
 
 configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
-    "${PGR_DOCUMENTATION_BUILD_DIR}/conf.py"
+    "${PGR_DOCUMENTATION_SOURCE_DIR}/conf.py"
     @ONLY)
 
 # Add documentation to targets
@@ -211,7 +215,7 @@ if (LOCALE)
     add_custom_target(locale
         COMMAND ${SPHINX_EXECUTABLE} 
         -b gettext
-        -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+        -c "${PGR_DOCUMENTATION_SOURCE_DIR}" 
         "${PGR_DOCUMENTATION_SOURCE_DIR}" 
         "${CMAKE_SOURCE_DIR}/locale/pot" 
 
@@ -247,7 +251,7 @@ foreach (target ${PgRouting_DOC_TARGETS})
             #-a  # write all files; default is to only write new and changed files
             -b ${target}
             -D language='${lang}'
-            -c "${PGR_DOCUMENTATION_BUILD_DIR}" 
+            -c "${PGR_DOCUMENTATION_SOURCE_DIR}" 
             "${PGR_DOCUMENTATION_SOURCE_DIR}" 
             "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/${lang}"
 

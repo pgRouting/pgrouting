@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -31,8 +31,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:21
 msgid ""
-"Using Dijkstra algorithm implemented by Boost.Graph, and extract only the"
-" aggregate cost of the shortest path(s) found, for the combination of "
+"Using Dijkstra algorithm implemented by Boost.Graph, and extract only the "
+"aggregate cost of the shortest path(s) found, for the combination of "
 "vertices given."
 msgstr ""
 
@@ -50,10 +50,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:33
 msgid ""
-"The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum"
-" of the costs of the shortest path for a subset of pairs of nodes of the "
-"graph. We make use of the Boost's implementation of dijkstra which runs "
-"in :math:`O(V \\log V + E)` time."
+"The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum of"
+" the costs of the shortest path for a subset of pairs of nodes of the graph."
+" We make use of the Boost's implementation of dijkstra which runs in "
+":math:`O(V \\log V + E)` time."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:39
@@ -70,8 +70,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:43
 msgid ""
-"Returns the sum of the costs of the shortest path for pair combination of"
-" nodes in the graph."
+"Returns the sum of the costs of the shortest path for pair combination of "
+"nodes in the graph."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:44
@@ -89,7 +89,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:49
-msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:51
@@ -98,8 +99,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:53
 msgid ""
-"When the starting vertex and ending vertex are the different and there is"
-" no path."
+"When the starting vertex and ending vertex are the different and there is no"
+" path."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:55
@@ -154,11 +155,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:97
 msgid ""
-"The minimal signature is for a **directed** graph from one ``start_vid`` "
-"to one ``end_vid``:"
+"The minimal signature is for a **directed** graph from one ``start_vid`` to "
+"one ``end_vid``:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst
 #: ../../build/doc/pgr_dijkstraCost.rst:106
 msgid "Example"
 msgstr ""
@@ -227,21 +227,18 @@ msgstr ""
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "edges_sql"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
@@ -250,6 +247,7 @@ msgid "Default"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Description"
 msgstr ""
 
@@ -298,8 +296,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -316,24 +314,16 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -356,14 +346,14 @@ msgstr ""
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgr_dijkstra.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**start_vid**"
 msgstr ""
 
+#: ../../build/doc/pgr_dijkstra.rst:10 ../../build/doc/pgr_dijkstra.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgr_dijkstra.rst:10 ../../build/doc/pgr_dijkstra.rst:12
 msgid "``BIGINT``"
 msgstr ""
 
@@ -383,8 +373,8 @@ msgstr ""
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgr_dijkstra.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "**end_vid**"
 msgstr ""
 
@@ -430,14 +420,14 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"Identifier of the starting vertex. Used when multiple starting vetrices "
-"are in the query."
+"Identifier of the starting vertex. Used when multiple starting vetrices are "
+"in the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid ""
-"Identifier of the ending vertex. Used when multiple ending vertices are "
-"in the query."
+"Identifier of the ending vertex. Used when multiple ending vertices are in "
+"the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -456,16 +446,8 @@ msgstr ""
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst
-msgid "Example 1"
-msgstr ""
-
 #: ../../build/doc/pgr_dijkstraCost.rst:231
 msgid "Demonstration of repeated values are ignored, and result is sorted."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst
-msgid "Example 2"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:237
@@ -477,7 +459,6 @@ msgid "See Also"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:248
-#, python-format
 msgid "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
@@ -497,3 +478,17 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr ""
+
+#~ msgid "Example 1"
+#~ msgstr ""
+
+#~ msgid "Example 2"
+#~ msgstr ""

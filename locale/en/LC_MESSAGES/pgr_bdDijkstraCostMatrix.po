@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -127,10 +127,6 @@ msgstr ""
 msgid "Is for a **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:66
 msgid "Cost matrix for vertices 1, 2, 3, and 4."
 msgstr ""
@@ -155,22 +151,19 @@ msgstr ""
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "edges_sql"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:108
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
@@ -180,6 +173,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:108
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Description"
 msgstr ""
 
@@ -228,8 +222,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -246,24 +240,16 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -312,8 +298,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:112
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default"
-" is ``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default is"
+" ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -335,8 +321,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"Identifier of the starting vertex. Used when multiple starting vetrices "
-"are in the query."
+"Identifier of the starting vertex. Used when multiple starting vetrices are "
+"in the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -345,8 +331,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid ""
-"Identifier of the ending vertex. Used when multiple ending vertices are "
-"in the query."
+"Identifier of the ending vertex. Used when multiple ending vertices are in "
+"the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -401,3 +387,14 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
+#~ msgid "Example"
+#~ msgstr ""
+
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr ""
