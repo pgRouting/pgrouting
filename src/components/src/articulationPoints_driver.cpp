@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/components/connectedComponentsV_driver.h"
+#include "drivers/components/articulationPoints.h"
 
 #include <sstream>
 #include <deque>
@@ -51,16 +51,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 template < class G >
 static
 std::vector<pgr_components_rt>
-pgr_connectedComponentsV(
+pgr_articulationPoints(
         G &graph) {
     std::vector<pgr_components_rt> results;
     Pgr_components< G > fn_components;
-    return fn_components.connectedComponentsV(graph);
+    return fn_components.articulationPoints(graph);
 }
 
 
 void
-do_pgr_connectedComponentsV(
+do_pgr_articulationPoints(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         pgr_components_rt **return_tuples,
@@ -86,7 +86,7 @@ do_pgr_connectedComponentsV(
         log << "Working with Undirected Graph\n";
         pgrouting::ComponentsUndiGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_connectedComponentsV(
+        results = pgr_articulationPoints(
                 undigraph);
 
         auto count = results.size();

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: connectedComponentsV.c
+File: articulationPoints.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/** @file connectedComponentsV.c
+/** @file articulationPoints.c
  * @brief Conecting code with postgres.
  *
  * This file is fully documented for understanding
@@ -55,10 +55,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get edges informtion */
 #include "c_common/edges_input.h"
 
-#include "drivers/components/connectedComponentsV_driver.h"  // the link to the C++ code of the function
+#include "drivers/components/articulationPoints_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(connectedComponentsV);
+PGDLLEXPORT Datum articulationPoints(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(articulationPoints);
 
 
 /******************************************************************************/
@@ -95,7 +95,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_connectedComponentsV(
+    do_pgr_articulationPoints(
             edges,
             total_edges,
 #if 0
@@ -113,7 +113,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_connectedComponentsV", start_t, clock());
+    time_msg(" processing pgr_articulationPoints", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
@@ -139,7 +139,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum articulationPoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
@@ -220,20 +220,18 @@ PGDLLEXPORT Datum connectedComponentsV(PG_FUNCTION_ARGS) {
                OUT node BIGINT
          ***********************************************************************/
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+        values = palloc(2 * sizeof(Datum));
+        nulls = palloc(2 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < 2; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].identifier);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].identifier);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
