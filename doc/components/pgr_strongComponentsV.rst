@@ -60,6 +60,10 @@ The signature is for a **directed** graph.
    :start-after: -- q1
    :end-before: -- q2
 
+.. image:: images/scc_sampledata.png
+   :width: 707px
+   :height: 355px
+
 Description of the Signatures
 -------------------------------------------------------------------------------
 

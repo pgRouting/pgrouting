@@ -88,6 +88,16 @@ where:
     - `component` ascending
     - `node` ascending
 
+Example:
+  - The first component is composed of nodes ``0``, ``1`` and ``4``.
+  - The second component is composed of node ``3``.
+  - The third component is composed of nodes ``2`` and ``5``.
+
+.. image:: images/connected_components.jpeg
+   :width: 280px
+   :height: 323px
+
+
 .. rubric:: Strongly connected components
 
 A strongly connected component of a directed graph is a set of vertices that are all reachable
@@ -142,6 +152,17 @@ where:
 
     - `component` ascending
     - `node` ascending
+
+Example:
+  - The first component is composed of nodes ``1``, ``2`` and ``4``.
+  - The second component is composed of node ``0``.
+  - The third component is composed of node ``3``.
+  - The fourth component is composed of node ``5``.
+  - The fifth component is composed of node ``6``.
+
+.. image:: images/strong_components.jpeg
+   :width: 270px
+   :height: 323px
 
 .. rubric:: Biconnected components
 
@@ -200,6 +221,17 @@ where:
 
     - `component` ascending
     - `edge` ascending
+
+Example:
+  - The first component is composed of edges ``1 - 2``, ``0 - 1`` and ``0 - 2``.
+  - The second component is composed of edges ``2 - 4``, ``2 - 3`` and ``3 - 4``.
+  - The third component is composed of edge ``5 - 6``.
+  - The fourth component is composed of edge ``6 - 7``.
+  - The fifth component is composed of edges ``8 - 9``, ``9 - 10`` and ``8 - 10``.
+
+.. image:: images/biconnected_components.jpeg
+   :width: 210px
+   :height: 325px
 
 .. components_edges_sql_start
 

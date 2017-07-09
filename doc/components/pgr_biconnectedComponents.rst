@@ -63,6 +63,10 @@ The signature is for a **undirected** graph.
    :start-after: -- q1
    :end-before: -- q2
 
+.. image:: images/bcc_sampledata.png
+   :width: 705px
+   :height: 373px
+
 Description of the Signatures
 -------------------------------------------------------------------------------
 
