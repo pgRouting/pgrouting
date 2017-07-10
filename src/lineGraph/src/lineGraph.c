@@ -75,40 +75,12 @@ process(
      */
     pgr_SPI_connect();
 
-
-#if 0
-    /*
-     *  handling arrays example
-     */
-
-    PGR_DBG("Initializing arrays");
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-    start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-    end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
-#endif
-
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-
-    if (start_vid == end_vid) {
-        /*
-         * https://www.postgresql.org/docs/current/static/spi-spi-finish.html
-         */
-        pgr_SPI_finish();
-        return;
-    }
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
@@ -239,10 +211,10 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

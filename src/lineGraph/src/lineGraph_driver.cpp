@@ -52,8 +52,11 @@ static
 Path
 pgr_lineGraph(G &graph) {
     Path path;
+#if 0
     Pgr_dijkstra< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, source, target, only_cost);
+#endif
+    return path;
 }
 
 
@@ -86,19 +89,12 @@ do_pgr_lineGraph(
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            path = pgr_lineGraph(digraph,
-                    start_vid,
-                    end_vid,
-                    only_cost);
+            path = pgr_lineGraph(digraph);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_lineGraph(
-                    undigraph,
-                    start_vid,
-                    end_vid,
-                    only_cost);
+            path = pgr_lineGraph(undigraph);
         }
 
         auto count = path.size();
