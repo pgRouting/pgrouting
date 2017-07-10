@@ -194,7 +194,7 @@ Pgr_components< G >::articulationPoints(
     // sort identifier
     std::sort(results.begin(), results.end(),
             [](const pgr_components_rt &left, const pgr_components_rt &right) {
-            return left.identifier, right.identifier; });
+            return left.identifier < right.identifier; });
 
     return results; 
 }
