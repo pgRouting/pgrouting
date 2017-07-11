@@ -5,16 +5,15 @@ SET client_min_messages TO ERROR;
 
 
 SELECT has_function('pgr_linegraph',
-    ARRAY['text', 'bigint', 'bigint', 'boolean','boolean']);
+    ARRAY['text', 'boolean']);
 
 SELECT function_returns('pgr_linegraph',
-    ARRAY['text', 'bigint', 'bigint', 'boolean','boolean'],
+    ARRAY['text', 'boolean'],
     'setof record');
 
-SELECT style_dijkstra('pgr_linegraph', ', 2, 3)');
-SELECT style_dijkstra('pgr_linegraph', ', 2, 3, true)');
-SELECT style_dijkstra('pgr_linegraph', ', 2, 3, false)');
-
+SELECT style_lineGraph('pgr_linegraph', ')');
+SELECT style_lineGraph('pgr_linegraph', ', true)');
+SELECT style_lineGraph('pgr_linegraph', ', false)');
 
 
 SELECT finish();
