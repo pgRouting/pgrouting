@@ -291,13 +291,11 @@ where:
     - `node` ascending
 
 Example:
-  - The first component is composed of nodes ``0``, ``1`` and ``4``.
-  - The second component is composed of node ``3``.
-  - The third component is composed of nodes ``2`` and ``5``.
+  - Articulation points are nodes ``2`` and ``6``.
 
-.. image:: images/connected_components.jpeg
-   :width: 280px
-   :height: 323px
+.. image:: images/biconnected_components.jpeg
+   :width: 210px
+   :height: 325px
 
 .. components_edges_sql_start
 
