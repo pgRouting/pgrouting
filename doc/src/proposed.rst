@@ -146,6 +146,7 @@ Experimental and Proposed functions
 
 -  :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph
 
+-  :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph
 
 :ref:`VRP`
 
