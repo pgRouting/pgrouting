@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2017 Vidhan Jain
 Mail: vidhanj1307.com
 
@@ -28,9 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_lineGraph(
-    TEXT,
+    TEXT, -- edges_sql
     directed BOOLEAN DEFAULT true,
-        OUT seq INTEGER,
+    OUT seq INTEGER,
     OUT source BIGINT,
     OUT target BIGINT,
     OUT cost FLOAT,
@@ -39,4 +39,3 @@ CREATE OR REPLACE FUNCTION pgr_lineGraph(
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'lineGraph'
 LANGUAGE c IMMUTABLE STRICT;
-

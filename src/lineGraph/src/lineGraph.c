@@ -68,7 +68,7 @@ void
 process(
         char* edges_sql,
         bool directed,
-        Line_graph_element_t **result_tuples,
+        Line_graph_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -131,7 +131,7 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    Line_graph_element_t  *result_tuples = NULL;
+    Line_graph_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -181,7 +181,7 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Line_graph_element_t*) funcctx->user_fctx;
+    result_tuples = (Line_graph_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
