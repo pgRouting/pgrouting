@@ -47,34 +47,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     directed BOOLEAN DEFAULT true,
  ***********************************************************/
 
-template < class G >
-static
-Path
-pgr_lineGraph(G &graph) {
-    Path path;
-#if 0
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
-#endif
-    return path;
-}
-
-void convertToBidirectional(
-        pgr_edge_t *data_edges,
-        int64_t total_edges,
-        bool directed,
-        pgrouting::DirectedGraph& digraph) {
-    std::vector < pgr_edge_t > edges;
-    for (auto i = 0; i < total_edges;i++) {
-        edges.push_back( data_edges[i] );
-        if (!directed) {
-            std::swap(data_edges[i].source, data_edges[i].target);
-            edges.push_back( data_edges[i] );
-        }
-    }
-    digraph.insert_edges(edges);
-}
-
 void
 do_pgr_lineGraph(
         pgr_edge_t  *data_edges,
@@ -99,13 +71,17 @@ do_pgr_lineGraph(
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
 
-        convertToBidirectional(data_edges, total_edges, directed, digraph);
-        if (directed) {
-            log << "Working with directed Graph\n";
-        } else {
-            log << "Working with Undirected Graph\n";
+        std::vector < pgr_edge_t > edges;
+        for (auto i = 0; i < total_edges;i++) {
+            edges.push_back( data_edges[i] );
+            if (!directed) {
+                std::swap(data_edges[i].source, data_edges[i].target);
+                edges.push_back( data_edges[i] );
+            }
         }
-        log << digraph;
+        digraph.insert_edges(edges);
+
+        log << "\nDirected Graph :\n" << digraph;
 
 #if 0
         if (count == 0) {
