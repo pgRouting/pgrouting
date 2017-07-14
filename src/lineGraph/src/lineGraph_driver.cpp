@@ -72,10 +72,10 @@ do_pgr_lineGraph(
         pgrouting::DirectedGraph digraph(gType);
 
         std::vector < pgr_edge_t > edges;
-        for (auto i = 0; i < total_edges;i++) {
+        for (auto i = 0; i < (int64_t)total_edges;i++) {
             edges.push_back( data_edges[i] );
             if (!directed) {
-                if (reverse_cost >= 0) {
+                if (data_edges[i].reverse_cost >= 0) {
                     std::swap(data_edges[i].cost, data_edges[i].reverse_cost);
                 }
                 std::swap(data_edges[i].source, data_edges[i].target);
