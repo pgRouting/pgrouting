@@ -71,10 +71,14 @@ do_pgr_lineGraph(
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
 
-        std::vector < pgr_edge_t > edges;
-        for (auto i = 0; i < (int64_t)total_edges;i++) {
-            edges.push_back( data_edges[i] );
-            if (!directed) {
+        if (directed) {
+            digraph.insert_edges(data_edges, total_edges);
+            log << "\nDirected Graph :\n" << digraph;
+        }
+#if 0
+        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+        if (!directed) {
+            for (int64_t i = 0; i < total_edges;i++) {
                 if (data_edges[i].reverse_cost >= 0) {
                     std::swap(data_edges[i].cost, data_edges[i].reverse_cost);
                 }
@@ -86,7 +90,6 @@ do_pgr_lineGraph(
 
         log << "\nDirected Graph :\n" << digraph;
 
-#if 0
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
