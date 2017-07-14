@@ -30,11 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 namespace pgrouting {
-
+#if 0
 namespace graph {
 
 template <class G, typename T_V, typename T_E>
-class pgr_lineGraph;
+class Pgr_lineGraph;
 
 }  // namespace graph
 
@@ -43,6 +43,7 @@ boost::adjacency_list < boost::vecS, boost::vecS,
     boost::undirectedS,
     Basic_vertex, Basic_edge >,
     Basic_vertex, Basic_edge > LineUndiGraph;
+#endif
 
 namespace graph {
 

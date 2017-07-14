@@ -59,6 +59,21 @@ pgr_lineGraph(G &graph) {
     return path;
 }
 
+void convertToBidirectional(
+        pgr_edge_t *data_edges,
+        int64_t total_edges,
+        bool directed,
+        pgrouting::DirectedGraph& digraph) {
+    std::vector < pgr_edge_t > edges;
+    for (auto i = 0; i < total_edges;i++) {
+        edges.push_back( data_edges[i] );
+        if (!directed) {
+            std::swap(data_edges[i].source, data_edges[i].target);
+            edges.push_back( data_edges[i] );
+        }
+    }
+    digraph.insert_edges(edges);
+}
 
 void
 do_pgr_lineGraph(
@@ -81,24 +96,18 @@ do_pgr_lineGraph(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+        graphType gType = DIRECTED;
+        pgrouting::DirectedGraph digraph(gType);
 
-        Path path;
-
+        convertToBidirectional(data_edges, total_edges, directed, digraph);
         if (directed) {
             log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            path = pgr_lineGraph(digraph);
         } else {
             log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_lineGraph(undigraph);
         }
+        log << digraph;
 
-        auto count = path.size();
-
+#if 0
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
@@ -106,12 +115,11 @@ do_pgr_lineGraph(
                 "No paths found between start_vid and end_vid vertices";
             return;
         }
-
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         size_t sequence = 0;
         path.generate_postgres_data(return_tuples, sequence);
         (*return_count) = sequence;
-
+#endif
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
