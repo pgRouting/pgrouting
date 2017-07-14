@@ -75,6 +75,9 @@ do_pgr_lineGraph(
         for (auto i = 0; i < total_edges;i++) {
             edges.push_back( data_edges[i] );
             if (!directed) {
+                if (reverse_cost >= 0) {
+                    std::swap(data_edges[i].cost, data_edges[i].reverse_cost);
+                }
                 std::swap(data_edges[i].source, data_edges[i].target);
                 edges.push_back( data_edges[i] );
             }
