@@ -10,5 +10,5 @@ SELECT function_returns('pgr_linegraph', ARRAY[ 'text', 'boolean' ], 'setof reco
 -- testing column names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_linegraph'$$,
-    $$SELECT  '{"","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"","directed","seq","source","target","cost","reverse_cost"}'::TEXT[] $$
 );
