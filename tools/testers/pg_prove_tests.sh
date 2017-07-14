@@ -39,7 +39,9 @@ then
     echo "MADE TEST **********************"
 fi
 
-pg_prove ../../src/dijkstraTRSP/test/pgtap/* -d $PGDATABASE -U $PGUSER
+#pg_prove ../../src/dijkstraTRSP/test/pgtap/* -d $PGDATABASE -U $PGUSER
+
+pg_prove ../../src/lineGraph/test/pgtap/* -d $PGDATABASE -U $PGUSER
 
 pg_prove -d $PGDATABASE  -U $PGUSER ../../pgtap/*/*
 
