@@ -17,6 +17,7 @@ Components - Family of functions
 * :ref:`pgr_connectedComponentsV` - Return the connected components of an undirected graph (Vertex version).
 * :ref:`pgr_strongComponentsV` - Return the strongly connected components of a directed graph (Vertex version).
 * :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph.
+* :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph.
 
 .. index to here
 
@@ -27,6 +28,7 @@ Components - Family of functions
     pgr_connectedComponentsV
     pgr_strongComponentsV
     pgr_biconnectedComponents
+    pgr_articulationPoints
 
 
 The problem definition
@@ -233,6 +235,68 @@ Example:
    :width: 210px
    :height: 325px
 
+.. rubric:: Articulation Points
+
+Those vertices that belong to more than one biconnected component are called 
+articulation points or, equivalently, cut vertices. Articulation points are 
+vertices whose removal would increase the number of connected components in 
+the graph.
+
+**Notice**: This problem defines on an undirected graph.
+
+Given the following query:
+
+
+pgr_articulationPoints(:math:`sql`)
+
+where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
+
+and
+
+  - :math:`source = \bigcup source_i`,
+  - :math:`target = \bigcup target_i`,
+
+The graphs are defined as follows:
+
+The weighted undirected graph, :math:`G(V,E)`, is definied by:
+
+* the set of vertices  :math:`V`
+
+  - :math:`V = source \cup target`
+
+
+* the set of edges :math:`E`
+
+  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} \\ \cup &\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
+
+
+Given:
+
+  - :math:`G(V,E)`
+
+Then:
+
+.. math:: \text{pgr_articulationPoints}(sql) =
+  \begin{cases}
+  \text{all articulation points } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
+  \varnothing &\quad \text{otherwise} \\
+  \end{cases}
+
+:math:`\boldsymbol{\pi} = \{node_i\}`
+
+where:
+  - :math:`node_i` is an articulation point.
+  - The returned values are ordered:
+
+    - `node` ascending
+
+Example:
+  - Articulation points are nodes ``2`` and ``6``.
+
+.. image:: images/biconnected_components.jpeg
+   :width: 210px
+   :height: 325px
+
 .. components_edges_sql_start
 
 Description of the edges_sql query for components functions
@@ -316,6 +380,19 @@ Column         Type       Description
 
 .. return_componentsE_end
 
+.. return_cutvertices_start
 
+Description of the return values for articulation points
+..............................................................
 
+Returns set of ``(seq, node)``
+
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**seq**        ``INT``    Sequential value starting from **1**.
+**node**       ``BIGINT`` Identifier of the vertex.
+============== ========== =================================================
+
+.. return_cutvertices_end
 
