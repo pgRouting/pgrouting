@@ -73,6 +73,9 @@ process(
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
+    PGR_DBG("\nSQL QUERY: %s\n", edges_sql);
+    if (directed) PGR_DBG("\nDirectedGraph\n");
+    else PGR_DBG("\nUndirectedGraph\n");
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;

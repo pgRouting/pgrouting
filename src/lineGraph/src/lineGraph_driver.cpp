@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-
+#include "lineGraph/pgr_lineGraph.hpp"
 
 
 
@@ -46,6 +46,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   TEXT,
     directed BOOLEAN DEFAULT true,
  ***********************************************************/
+
+template < typename T >
+static
+std::vector< Line_graph_rt >
+pgr_lineGraph(
+        const std::vector < T >& edges) {
+    pgrouting::LinearDirectedGraph line();
+    line.insert_edges(edges);
+    line.transform();
+    return line.Linegraph();
+}
 
 void
 do_pgr_lineGraph(
@@ -68,14 +79,34 @@ do_pgr_lineGraph(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = DIRECTED;
-        pgrouting::DirectedGraph digraph(gType);
+        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+
+        graphType gType = directed?DIRECTED:UNDIRECTED;
+        std::vector< Line_graph_rt > results;
+
+        results = pgr_lineGraph(
+            edges
+        );
+    #if 0
 
         if (directed) {
-            digraph.insert_edges(data_edges, total_edges);
-            log << "\nDirected Graph :\n" << digraph;
+            //log << "\nNum of vertices: " << digraph.num_vertices() << "\n";
+            log << "\nDirected Graph: \n" << digraph;
+            line.process(digraph, log);
+            /*log << "\nNum of vertices: " << digraph.num_vertices() << "\n";
+            //log << "\nDirected Graph :\n" << digraph;
+            for (auto it: digraph.vertices_map) {
+                log << (it.first) << " " << (it.second) << "\n";
+            }
+            int64_t c = 0;
+            log << "\nNum vertices = " << digraph.m_num_vertices << "\n";
+            for (auto vi = boost::vertices(digraph.graph).first;
+                    vi != boost::vertices(digraph.graph).second; ++vi) {
+                log << (*vi) << ": " << " out_edges_of(" << digraph.graph[(*vi)] << "):\n";
+                c++;
+            }
+            log << "\n" << c;*/
         }
-#if 0
         std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
         if (!directed) {
             for (int64_t i = 0; i < total_edges;i++) {
