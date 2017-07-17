@@ -52,9 +52,11 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     std::vector< Line_graph_rt > m_lineGraph_edges;
     int64_t m_num_edges;
 
+    void add_vertices(std::vector< T_V > vertices);
+
  public:
-     Pgr_lineGraph< G, T_V, T_E >()
-         : Pgr_base_graph< G, T_V, T_E >(DIRECTED),
+     Pgr_lineGraph< G, T_V, T_E >(graphType gtype)
+         : Pgr_base_graph< G, T_V, T_E >(gtype),
          m_num_edges(0) {
          }
 
@@ -67,13 +69,13 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
     template < typename T >
          void insert_edges(const std::vector < T > &edges) {
-             if (this.num_vertices() == 0) {
+             if (this->num_vertices() == 0) {
                  auto vertices = pgrouting::extract_vertices(edges);
                  pgassert(pgrouting::check_vertices(vertices) == 0);
-                 this.add_vertices(vertices);
+                 add_vertices(vertices);
              }
              for (const auto edge : edges) {
-                 this.graph_add_edge(edge);
+                 this->graph_add_edge(edge);
              }
          }
 
@@ -90,6 +92,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     int64_t num_edges() const { return m_num_edges; }
 
  private:
+
    template < typename V >
    void create_vertex(V vertex) {
        EO_i outIt, outEnd;
@@ -99,18 +102,38 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
             for (boost::tie(inIt, inEnd) = out_edges(*vertex, this->graph);
                 inIt != inEnd; inIt++) {
                 ++m_num_edges;
-                Line_graph_rt lr = {
-                    m_num_edges,
-                    (*inIt).id,
-                    (*outIt).id,
-                    -1,
-                    -1
-                };
+                Line_graph_rt lr;
+                lr.seq = (int)m_num_edges;
+                auto incoming_edge = boost::edge(boost::source(*inIt, this->graph),
+                                                 boost::target(*inIt, this->graph),
+                                                 this->graph);
+                if (incoming_edge.second)
+                    lr.source = incoming_edge.first.id;
+                lr.target = this->graph[*outIt].id;
+                lr.cost = -1;
+                lr.reverse_cost = -1;
                 m_lineGraph_edges.push_back(lr);
             }
        }
    }
 };
+
+template < class G, typename T_V, typename T_E >
+ void
+ Pgr_lineGraph< G, T_V, T_E >::add_vertices(
+         std::vector< T_V > vertices) {
+     pgassert(this->m_num_vertices == 0);
+     for (const auto vertex : vertices) {
+         pgassert(this->vertices_map.find(vertex.id) == this->vertices_map.end());
+
+         auto v =  add_vertex(this->graph);
+         this->vertices_map[vertex.id] =  this->m_num_vertices++;
+         this->graph[v].cp_members(vertex);
+
+         pgassert(boost::num_vertices(this->graph) == this->num_vertices());
+     }
+     return;
+ }
 
 }  // namespace graph
 }  // namespace pgrouting

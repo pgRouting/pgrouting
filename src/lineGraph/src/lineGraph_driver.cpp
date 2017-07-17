@@ -40,29 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "lineGraph/pgr_lineGraph.hpp"
 
-
-
-/************************************************************
-  TEXT,
-    directed BOOLEAN DEFAULT true,
- ***********************************************************/
-
-static
-std::vector< Line_graph_rt >
-pgr_lineGraph(
-        const std::vector < pgr_edge_t >& edges) {
-    pgrouting::LinearDirectedGraph line();
-    line.insert_edges(edges);
-#if 0
-    line.transform();
-    return line.Linegraph();
-#endif
-    std::ostringstream log;
-    log << line;
-    pgassertwm(false, log.str().c_str());
-    return std::vector< Line_graph_rt >();
-}
-
 void
 do_pgr_lineGraph(
         pgr_edge_t  *data_edges,
@@ -89,11 +66,13 @@ do_pgr_lineGraph(
         graphType gType = directed?DIRECTED:UNDIRECTED;
         std::vector< Line_graph_rt > results;
 
-        results = pgr_lineGraph(
-            edges
-        );
-    #if 0
+        pgrouting::LinearDirectedGraph line(gType);
+        line.insert_edges(edges);
+        log << line;
+        line.transform();
 
+
+    #if 0
         if (directed) {
             //log << "\nNum of vertices: " << digraph.num_vertices() << "\n";
             log << "\nDirected Graph: \n" << digraph;
