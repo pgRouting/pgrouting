@@ -47,15 +47,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     directed BOOLEAN DEFAULT true,
  ***********************************************************/
 
-template < typename T >
 static
 std::vector< Line_graph_rt >
 pgr_lineGraph(
-        const std::vector < T >& edges) {
+        const std::vector < pgr_edge_t >& edges) {
     pgrouting::LinearDirectedGraph line();
     line.insert_edges(edges);
+#if 0
     line.transform();
     return line.Linegraph();
+#endif
+    std::ostringstream log;
+    log << line;
+    pgassertwm(false, log.str().c_str());
+    return std::vector< Line_graph_rt >();
 }
 
 void
@@ -79,7 +84,7 @@ do_pgr_lineGraph(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+        std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
 
         graphType gType = directed?DIRECTED:UNDIRECTED;
         std::vector< Line_graph_rt > results;

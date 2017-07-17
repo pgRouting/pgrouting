@@ -53,7 +53,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     int64_t m_num_edges;
 
  public:
-     explicit Pgr_lineGraph< G, T_V, T_E >()
+     Pgr_lineGraph< G, T_V, T_E >()
          : Pgr_base_graph< G, T_V, T_E >(DIRECTED),
          m_num_edges(0) {
          }
@@ -64,6 +64,18 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     typedef typename boost::graph_traits < G >::edge_iterator E_i;
     typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
+
+    template < typename T >
+         void insert_edges(const std::vector < T > &edges) {
+             if (this.num_vertices() == 0) {
+                 auto vertices = pgrouting::extract_vertices(edges);
+                 pgassert(pgrouting::check_vertices(vertices) == 0);
+                 this.add_vertices(vertices);
+             }
+             for (const auto edge : edges) {
+                 this.graph_add_edge(edge);
+             }
+         }
 
     void transform() {
         V_i vertexIt, vertexEnd;
@@ -89,8 +101,8 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                 ++m_num_edges;
                 Line_graph_rt lr = {
                     m_num_edges,
-                    *inIt,
-                    *outIt,
+                    (*inIt).id,
+                    (*outIt).id,
                     -1,
                     -1
                 };
