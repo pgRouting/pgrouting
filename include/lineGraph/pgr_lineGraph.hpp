@@ -104,7 +104,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                 ++m_num_edges;
                 Line_graph_rt lr;
                 lr.seq = (int)m_num_edges;
-                lr.source = (*inIt).id;
+                lr.source = this->graph[*inIt].id;
 #if 0
                 auto incoming_edge = boost::edge(boost::source(*inIt, this->graph),
                                                  boost::target(*inIt, this->graph),
