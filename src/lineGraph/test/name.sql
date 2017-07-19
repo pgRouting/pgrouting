@@ -1,4 +1,4 @@
-Create Table vertex_table(
+Create Table edge_table25(
     id BIGINT,
     source BIGINT,
     target BIGINT,
@@ -6,7 +6,7 @@ Create Table vertex_table(
     reverse_cost FLOAT
 );
 
-INSERT INTO line_edge_table(id, source, target, cost, reverse_cost) VALUES
+INSERT INTO edge_table25(id, source, target, cost, reverse_cost) VALUES
 (1, 1, 2, 1.0, 1.0),
 (2, 3, 2, 1.0, -1.0),
 (3, 4, 3, 1.0, -1.0),

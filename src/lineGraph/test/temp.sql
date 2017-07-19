@@ -1,11 +1,11 @@
-Create Table line_vertex_table(
+Create Table edge_table20(
     id BIGINT,
     source BIGINT,
     target BIGINT,
     cost FLOAT
 );
 
-INSERT INTO line_vertex_table (id, source, target, cost) VALUES
+INSERT INTO edge_table20(id, source, target, cost) VALUES
 (1, 1, 2, 1.0),
 (2, 2, 1, 1.0),
 (3, 3, 2, 1.0),
