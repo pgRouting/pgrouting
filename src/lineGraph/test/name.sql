@@ -33,7 +33,7 @@ CREATE TABLE line_edge_table(
     reverse BOOLEAN
 );
 
-INSERT INTO line_edge_table(id, source, target) VALUES
+INSERT INTO line_edge_table(id, source, target, reverse) VALUES
 (1, 1, 4, true),
 (2, 4, 7, true),
 (3, 4, 8, true),
