@@ -26,8 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <vector>
-#include "cpp_common/pgr_base_graph.hpp"
 
+#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/line_vertex.h"
 
 namespace pgrouting {
 
@@ -41,8 +42,8 @@ class Pgr_lineGraph;
 typedef graph::Pgr_lineGraph <
 boost::adjacency_list < boost::vecS, boost::vecS,
     boost::bidirectionalS,
-    Basic_vertex, Basic_edge >,
-    Basic_vertex, Basic_edge > LinearDirectedGraph;
+    Line_vertex, Basic_edge >,
+    Line_vertex, Basic_edge > LinearDirectedGraph;
 
 namespace graph {
 
@@ -51,15 +52,11 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
  private:
     std::vector< Line_graph_rt > m_lineGraph_edges;
     int64_t m_num_edges;
+    pgrouting::DirectedGraph m_original_graph;
 
     void add_vertices(std::vector< T_V > vertices);
 
  public:
-     Pgr_lineGraph< G, T_V, T_E >(graphType gtype)
-         : Pgr_base_graph< G, T_V, T_E >(gtype),
-         m_num_edges(0) {
-         }
-
     typedef typename boost::graph_traits < G >::vertex_descriptor V;
     typedef typename boost::graph_traits < G >::edge_descriptor E;
     typedef typename boost::graph_traits < G >::vertex_iterator V_i;
@@ -67,17 +64,20 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
+    explicit Pgr_lineGraph< G, T_V, T_E >(graphType gtype) :
+        Pgr_base_graph< G, T_V, T_E >(gtype),
+        m_num_edges(0) {}
+
     template < typename T >
-         void insert_edges(const std::vector < T > &edges) {
-             if (this->num_vertices() == 0) {
-                 auto vertices = pgrouting::extract_vertices(edges);
-                 pgassert(pgrouting::check_vertices(vertices) == 0);
-                 add_vertices(vertices);
-             }
-             for (const auto edge : edges) {
-                 this->graph_add_edge(edge);
-             }
-         }
+        void insert_vertices(const T* edges, int64_t count) {
+            insert_vertices(std::vector < T >(edges, edges + count));
+        }
+
+    template < typename T >
+        void insert_edges(const std::vector < T > &edges) {
+            auto vertices = pgrouting::extract_vertices_from_edges(edges);
+            add_vertices(vertices);
+        }
 
     void transform() {
         V_i vertexIt, vertexEnd;
@@ -91,6 +91,8 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     std::vector< Line_graph_rt > Linegraph() const { return m_lineGraph_edges;}
     int64_t num_edges() const { return m_num_edges; }
 
+    void add_graph(const pgrouting::DirectedGraph& _graph) { m_original_graph = _graph; }
+
  private:
 
    template < typename V >
@@ -99,20 +101,13 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
        EI_i inIt, inEnd;
        for (boost::tie(outIt, outEnd) = out_edges(*vertex, this->graph);
             outIt != outEnd; outIt++) {
-            for (boost::tie(inIt, inEnd) = out_edges(*vertex, this->graph);
+            for (boost::tie(inIt, inEnd) = in_edges(*vertex, this->graph);
                 inIt != inEnd; inIt++) {
                 ++m_num_edges;
                 Line_graph_rt lr;
                 lr.seq = (int)m_num_edges;
-                lr.source = this->graph[*inIt].id;
-#if 0
-                auto incoming_edge = boost::edge(boost::source(*inIt, this->graph),
-                                                 boost::target(*inIt, this->graph),
-                                                 this->graph);
-                if (incoming_edge.second)
-                    lr.source = incoming_edge.first.id;
-#endif
-                lr.target = this->graph[*outIt].id;
+                lr.source = (this->graph[*inIt]).id;
+                lr.target = (this->graph[*outIt]).id;
                 lr.cost = -1;
                 lr.reverse_cost = -1;
                 m_lineGraph_edges.push_back(lr);

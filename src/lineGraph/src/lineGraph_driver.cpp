@@ -61,16 +61,16 @@ do_pgr_lineGraph(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
-
-        graphType gType = directed?DIRECTED:UNDIRECTED;
         std::vector< Line_graph_rt > results;
+        graphType gType = directed?DIRECTED:UNDIRECTED;
+        if (directed) {
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, total_edges);
 
-        pgrouting::LinearDirectedGraph line(gType);
-        line.insert_edges(edges);
-        log << line;
-        line.transform();
-
+            pgrouting::LinearDirectedGraph line(gType);
+            line.add_graph(digraph);
+            line.insert_vertices(data_edges, total_edges);
+        }
 
     #if 0
         if (directed) {
