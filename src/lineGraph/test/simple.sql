@@ -18,9 +18,9 @@ INSERT INTO edge_table11(id, source, target, cost, reverse_cost) VALUES
 (8, 4, 5, 6, 6),
 (9, 5, 6, 9, 9);
 
-WITH the_unique_vertices_of_the_graph AS
+WITH the_unique_vertices_of_the_graph AS (
 (SELECT DISTINCT source AS id from edge_table11)
 UNION
-(SELECT DISTINCT source from edge_table11)
-SELECT * INTO edge_table_vertices_pgr
+(SELECT DISTINCT source from edge_table11))
+SELECT * INTO edge_table11_vertices_pgr
 FROM the_unique_vertices_of_the_graph;
