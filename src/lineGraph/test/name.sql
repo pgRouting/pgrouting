@@ -1,4 +1,4 @@
-Create Table line_edge_table_vertices_pgr(
+Create Table vertex_table(
     id BIGINT,
     source BIGINT,
     target BIGINT,
@@ -6,7 +6,7 @@ Create Table line_edge_table_vertices_pgr(
     reverse_cost FLOAT
 );
 
-INSERT INTO line_edge_table_vertices_pgr(id, source, target, cost, reverse_cost) VALUES
+INSERT INTO line_edge_table(id, source, target, cost, reverse_cost) VALUES
 (1, 1, 2, 1.0, 1.0),
 (2, 3, 2, 1.0, -1.0),
 (3, 4, 3, 1.0, -1.0),
