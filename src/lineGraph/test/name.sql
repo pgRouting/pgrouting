@@ -26,14 +26,14 @@ INSERT INTO line_edge_table(id, source, target, cost, reverse_cost) VALUES
 (17, 14, 15, 1.0, 1.0),
 (18, 16, 17, 1.0, 1.0),
 
-CREATE TABLE line_edge_table(
+CREATE TABLE edge_table15(
     id BIGINT,
     source BIGINT,
     target BIGINT,
     reverse BOOLEAN
 );
 
-INSERT INTO line_edge_table(id, source, target, reverse) VALUES
+INSERT INTO edge_table15(id, source, target, reverse) VALUES
 (1, 1, 4, true),
 (2, 4, 7, true),
 (3, 4, 8, true),
