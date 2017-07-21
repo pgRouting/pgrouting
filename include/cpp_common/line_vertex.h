@@ -46,12 +46,6 @@ class Line_vertex {
      Line_vertex() :
          id(0) {}
 
-     Line_vertex(int64_t _id, int64_t _source, int64_t _target, double _cost) :
-         id(_id),
-         source(_source),
-         target(_target),
-         cost(_cost) {}
-
      Line_vertex(const pgr_edge_t& edge) :
          id(edge.id),
          source(edge.source),
@@ -82,11 +76,11 @@ class Line_vertex {
 
 size_t check_vertices(std::vector < Line_vertex > vertices);
 
-std::vector < Line_vertex > extract_vertices(
+std::vector < Line_vertex > extract_vertices_from_edges(
         std::vector < Line_vertex > vertices,
         const pgr_edge_t *data_edges, int64_t count);
 
-std::vector < Line_vertex > extract_vertices(
+std::vector < Line_vertex > extract_vertices_from_edges(
         std::vector < Line_vertex > vertices,
         const std::vector < pgr_edge_t > data_edges);
 

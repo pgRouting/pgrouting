@@ -40,6 +40,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "lineGraph/pgr_lineGraph.hpp"
 
+void get_postgres_result(
+        std::vector< Line_graph_rt > edge_result,
+        Line_graph_rt **return_tuples) {
+    (*return_tuples) = pgr_alloc(
+            edge_result.size(),
+            (*return_tuples));
+
+    size_t seq = 0;
+    for (auto edge: edge_result) {
+        (*return_tuples)[seq] = edge;
+        ++seq;
+    }
+}
+
 void
 do_pgr_lineGraph(
         pgr_edge_t  *data_edges,
@@ -66,10 +80,22 @@ do_pgr_lineGraph(
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
+            digraph.m_num_vertices = 1000;
+            log << digraph << "\n";
 
             pgrouting::LinearDirectedGraph line(gType);
-            line.add_graph(digraph);
             line.insert_vertices(data_edges, total_edges);
+            line.transform(digraph);
+            /*line.insert_edges();
+            auto edge_result = line.Linegraph();
+
+
+            get_postgres_result(
+                edge_result,
+                return_tuples
+            );
+            (*return_count) = edge_result.size();*/
+            log << line.log.str().c_str();
         }
 
     #if 0

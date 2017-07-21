@@ -40,9 +40,9 @@ namespace pgrouting {
 
     std::ostream& operator<<(std::ostream& log, const Line_vertex &v) {
         log << "\nid = " << v.id;
-        log << "\nsource = " << v.source;
-        log << "\ntarget = " << v.target;
-        log << "\ncost = " << v.cost;
+        log << " | source = " << v.source;
+        log << " | target = " << v.target;
+        log << " | cost = " << v.cost;
         return log;
     }
 
@@ -88,8 +88,9 @@ namespace pgrouting {
 
             if (edge.reverse_cost > 0) {
                 ++max_id;
-                vertices.id  = max_id;
-                vertices.cost = edge.reverse_cost;
+                vertex.id  = max_id;
+                vertex.cost = edge.reverse_cost;
+                std::swap(vertex.source, vertex.target);
                 vertices.push_back(vertex);
             }
         }
@@ -135,8 +136,9 @@ namespace pgrouting {
 
             if (edge.reverse_cost > 0) {
                 ++max_id;
-                vertices.id  = max_id;
-                vertices.cost = edge.reverse_cost;
+                vertex.id  = max_id;
+                vertex.cost = edge.reverse_cost;
+                std::swap(vertex.source, vertex.target);
                 vertices.push_back(vertex);
             }
         }
@@ -156,14 +158,14 @@ namespace pgrouting {
         return vertices;
     }
 
-    std::vector < Line_vertex > extract_vertices(
+    std::vector < Line_vertex > extract_vertices_from_edges(
             const pgr_edge_t *data_edges, int64_t count) {
         return extract_vertices_from_edges(
                 std::vector < pgr_edge_t >(
                     data_edges, data_edges + count));
     }
 
-    std::vector < Line_vertex > extract_vertices(
+    std::vector < Line_vertex > extract_vertices_from_edges(
             std::vector < Line_vertex > vertices,
             const pgr_edge_t *data_edges, int64_t count) {
         return extract_vertices_from_edges(
