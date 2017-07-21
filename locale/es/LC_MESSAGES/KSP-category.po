@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -17,14 +17,14 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../KSP-category.rst:14
+#: ../../build/doc/KSP-category.rst:14
 msgid "KSP Category"
 msgstr ""
 
-#: ../../KSP-category.rst:18
+#: ../../build/doc/KSP-category.rst:18
 msgid ":ref:`pgr_KSP` - Driving Distance based on pgr_dijkstra"
 msgstr ""
 
-#: ../../KSP-category.rst:19
+#: ../../build/doc/KSP-category.rst:19
 msgid ":ref:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra"
 msgstr ""

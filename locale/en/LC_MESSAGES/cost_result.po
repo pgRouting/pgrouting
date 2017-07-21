@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -27,40 +27,24 @@ msgstr ""
 
 #: ../../build/doc/cost_result.rst:21
 msgid ""
-"``pgr_costResult[]`` — A set of records to describe a path result with "
-"cost attribute."
+"``pgr_costResult[]`` — A set of records to describe a path result with cost "
+"attribute."
 msgstr ""
 
 #: ../../build/doc/cost_result.rst:25 ../../build/doc/cost_result.rst:58
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/cost_result.rst
-msgid "seq"
-msgstr ""
-
 #: ../../build/doc/cost_result.rst:37 ../../build/doc/cost_result.rst:71
 msgid "sequential ID indicating the path order"
-msgstr ""
-
-#: ../../build/doc/cost_result.rst
-msgid "id1"
 msgstr ""
 
 #: ../../build/doc/cost_result.rst:38 ../../build/doc/cost_result.rst:73
 msgid "generic name, to be specified by the function, typically the node id"
 msgstr ""
 
-#: ../../build/doc/cost_result.rst
-msgid "id2"
-msgstr ""
-
 #: ../../build/doc/cost_result.rst:39 ../../build/doc/cost_result.rst:74
 msgid "generic name, to be specified by the function, typically the edge id"
-msgstr ""
-
-#: ../../build/doc/cost_result.rst
-msgid "cost"
 msgstr ""
 
 #: ../../build/doc/cost_result.rst:40 ../../build/doc/cost_result.rst:75
@@ -73,16 +57,12 @@ msgstr ""
 
 #: ../../build/doc/cost_result.rst:54
 msgid ""
-"``pgr_costResult3[]`` — A set of records to describe a path result with "
-"cost attribute."
+"``pgr_costResult3[]`` — A set of records to describe a path result with cost"
+" attribute."
 msgstr ""
 
 #: ../../build/doc/cost_result.rst:72
 msgid "generic name, to be specified by the function, typically the path id"
-msgstr ""
-
-#: ../../build/doc/cost_result.rst
-msgid "id3"
 msgstr ""
 
 #: ../../build/doc/cost_result.rst:79
@@ -105,3 +85,17 @@ msgstr ""
 msgid ":ref:`introduction`"
 msgstr ""
 
+#~ msgid "seq"
+#~ msgstr ""
+
+#~ msgid "id1"
+#~ msgstr ""
+
+#~ msgid "id2"
+#~ msgstr ""
+
+#~ msgid "cost"
+#~ msgstr ""
+
+#~ msgid "id3"
+#~ msgstr ""

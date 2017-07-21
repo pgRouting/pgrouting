@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,13 +168,6 @@ msgstr ""
 msgid "Calculates the flow on the graph edges that maximizes the flow from the `source` to the `target`."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:0
-#: ../../build/doc/pgr_pushRelabel.rst:0
-#: ../../build/doc/pgr_pushRelabel.rst:0
-#: ../../build/doc/pgr_pushRelabel.rst:0
-msgid "Example"
-msgstr ""
-
 #: ../../build/doc/pgr_pushRelabel.rst:81
 msgid "One to Many"
 msgstr ""
@@ -205,10 +198,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the edges_sql query for Max-flow like functions"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "edges_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -306,10 +295,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Where:"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:26

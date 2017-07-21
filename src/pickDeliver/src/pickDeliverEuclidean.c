@@ -74,7 +74,7 @@ process(
     }
 
     if (initial_solution_id <= 0 || initial_solution_id > 6) {
-        elog(ERROR, "Illegal value in parameter: initial");
+        elog(ERROR, "Illegal value in parameter: initial_sol");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         return;
@@ -284,11 +284,11 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_number);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
-        values[3] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[5] = Int32GetDatum(result_tuples[call_cntr].stop_type + 1);
+        values[3] = Int32GetDatum(result_tuples[call_cntr].stop_seq);
+        values[4] = Int32GetDatum(result_tuples[call_cntr].stop_type + 1);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].order_id);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cargo);
         values[7] = Float8GetDatum(result_tuples[call_cntr].travelTime);
         values[8] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);

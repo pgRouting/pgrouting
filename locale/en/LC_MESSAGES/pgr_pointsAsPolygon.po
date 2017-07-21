@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -26,7 +26,8 @@ msgid "Name"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:21
-msgid "``pgr_pointsAsPolygon`` — Draws an alpha shape around given set of points."
+msgid ""
+"``pgr_pointsAsPolygon`` — Draws an alpha shape around given set of points."
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:25
@@ -41,49 +42,29 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_pointsAsPolygon.rst
-msgid "sql"
-msgstr ""
-
 #: ../../build/doc/pgr_pointsAsPolygon.rst:37
 msgid ""
-"``text`` a SQL query, which should return a set of rows with the "
-"following columns:"
-msgstr ""
-
-#: ../../build/doc/pgr_pointsAsPolygon.rst
-msgid "id"
+"``text`` a SQL query, which should return a set of rows with the following "
+"columns:"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:43
 msgid "``int4`` identifier of the vertex"
 msgstr ""
 
-#: ../../build/doc/pgr_pointsAsPolygon.rst
-msgid "x"
-msgstr ""
-
 #: ../../build/doc/pgr_pointsAsPolygon.rst:44
 msgid "``float8`` x-coordinate"
-msgstr ""
-
-#: ../../build/doc/pgr_pointsAsPolygon.rst
-msgid "y"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:45
 msgid "``float8`` y-coordinate"
 msgstr ""
 
-#: ../../build/doc/pgr_pointsAsPolygon.rst
-msgid "alpha"
-msgstr ""
-
 #: ../../build/doc/pgr_pointsAsPolygon.rst:47
 msgid ""
 "(optional) ``float8`` alpha value. If specified alpha value equals 0 "
-"(default), then optimal alpha value is used. For more information, see "
-"`CGAL - 2D Alpha Shapes "
+"(default), then optimal alpha value is used. For more information, see `CGAL"
+" - 2D Alpha Shapes "
 "<http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html>`_."
 msgstr ""
 
@@ -100,13 +81,13 @@ msgid "Renamed in version 2.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:56
-msgid "Added alpha argument with default 0 (use optimal value) in version 2.1.0"
+msgid ""
+"Added alpha argument with default 0 (use optimal value) in version 2.1.0"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:57
 msgid ""
-"Supported to return a (multi)polygon geometry (with holes) in version "
-"2.1.0"
+"Supported to return a (multi)polygon geometry (with holes) in version 2.1.0"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:61
@@ -115,9 +96,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:62
 msgid ""
-"In the following query there is no way to control which point in the "
-"polygon is the first in the list, so you may get similar but different "
-"results than the following which are also correct."
+"In the following query there is no way to control which point in the polygon"
+" is the first in the list, so you may get similar but different results than"
+" the following which are also correct."
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:69
@@ -136,3 +117,17 @@ msgstr ""
 msgid ":ref:`pgr_alphashape` - Alpha shape computation"
 msgstr ""
 
+#~ msgid "sql"
+#~ msgstr ""
+
+#~ msgid "id"
+#~ msgstr ""
+
+#~ msgid "x"
+#~ msgstr ""
+
+#~ msgid "y"
+#~ msgstr ""
+
+#~ msgid "alpha"
+#~ msgstr ""

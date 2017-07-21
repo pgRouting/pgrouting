@@ -50,11 +50,10 @@ export PROJECTS=/projects
 export PGPATHEDB=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}edb  #this is so winnie know's where to copy the dlls for vc++ edb compiled postgresql testing
 export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
 export PATHOLD=$PATH
-export PATHOLD="/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows"
+#export PATHOLD="/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows"
 export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
-export PATH="${PATHOLD}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
+export PATH="${PATHOLD}:/usr/bin:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
 export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
-
 
 if [ $JENKINS_DEBUG -eq 1 ]
 then
@@ -109,6 +108,8 @@ PATH="${PATH}:${CGAL_PATH}/include:${CGAL_PATH}/lib"
 export PATH="${PATH}:/cmake/bin"
 export PATH="${PATH}:.:/bin:/include"
 
+cmake --version
+
 echo "PATH ${PATH}"
 
 cd ${PROJECTS}/pgrouting
@@ -157,6 +158,7 @@ echo "***************************"
 #---------------
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
+cmake --version
 
 cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
  -DBOOST_ROOT:PATH=${BOOSTROOT_PATH} \
@@ -226,8 +228,21 @@ cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg common -clean -v
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg dijkstra -clean -v
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg contraction
-perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
+#perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+
+if [ $OS_BUILD -eq 32 ] 
+then
+
+    perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+
+else
+
+    psql -c "CREATE DATABASE ___pgr___test___"
+    sh tools/testers/pg_prove_tests.sh ${PGUSER}
+    psql -c "DROP DATABASE ___pgr___test___"
+
+fi
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
 strip *.dll

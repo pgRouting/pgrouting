@@ -17,7 +17,7 @@ pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgr
 
 This is the manual for pgRouting |release|.
 
-.. image:: _build/static/images/ccbysa.png
+.. image:: _static/images/ccbysa.png
     :align: left
     :alt: Creative Commons Attribution-Share Alike 3.0 License
 
@@ -41,16 +41,11 @@ General
 
    sampledata
 
-:ref:`Pgrouting Concepts <pgrouting_concepts>`
+Pgrouting Concepts
 ===============================================================================
 
-.. include:: pgRouting-concepts.rst
-   :start-after: concepts_start
-   :end-before: concepts_end
-
-
 .. toctree::
-   :hidden:
+   :maxdepth: 2
 
    pgRouting-concepts
    

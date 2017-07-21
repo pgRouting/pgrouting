@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v2.5.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -17,586 +17,860 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.4.0\n"
 
-#: ../../build/doc/pgr_pickDeliver.rst:18
-msgid "__pgr_pickDeliver"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:22
-msgid "Name"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:24
+#: ../../build/doc/pgr_pickDeliver.rst:17
 msgid "``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:3
-msgid "Experimental functions"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:5
-msgid "They are not officially of the current release."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:6
-msgid "They likely will not be officially be part of the next release:"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:8
-msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:9
-msgid "Name might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:10
-msgid "Signature might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:11
-msgid "Functionality might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:12
-msgid "pgTap tests might be missing."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:13
-msgid "Might need c/c++ coding."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:14
-msgid "May lack documentation."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:15
-msgid "Documentation if any might need to be rewritten."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:16
-msgid "Documentation examples might need to be automatically generated."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:17
-msgid "Might need a lot of feedback from the comunity."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:18
-msgid "Might depend on a proposed function of pgRouting"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:19
-msgid "Might depend on a deprecated function of pgRouting"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:33
+#: ../../build/doc/pgr_pickDeliver.rst:30
 msgid "Synopsis"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:35
+#: ../../build/doc/pgr_pickDeliver.rst:32
 msgid ""
-"Problem: Distribute and optimize the pickup-delivery pairs into a fleet "
-"of vehicles."
+"Problem: Distribute and optimize the pickup-delivery pairs into a fleet of "
+"vehicles."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:37
+#: ../../build/doc/pgr_pickDeliver.rst:34
 msgid "Optimization problem is NP-hard."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:38
+#: ../../build/doc/pgr_pickDeliver.rst:35
 msgid "pickup and Delivery with time windows."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:39
+#: ../../build/doc/pgr_pickDeliver.rst:36
 msgid "All vehicles are equal."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:41
+#: ../../build/doc/pgr_pickDeliver.rst:38
 msgid "Same Starting location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:42
+#: ../../build/doc/pgr_pickDeliver.rst:39
 msgid "Same Ending location which is the same as Starting location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:43
+#: ../../build/doc/pgr_pickDeliver.rst:40
 msgid "All vehicles travel at the same speed."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:45
+#: ../../build/doc/pgr_pickDeliver.rst:42
 msgid "A customer is for doing a pickup or doing a deliver."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:47
+#: ../../build/doc/pgr_pickDeliver.rst:44
 msgid "has an open time."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:48
+#: ../../build/doc/pgr_pickDeliver.rst:45
 msgid "has a closing time."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:49
+#: ../../build/doc/pgr_pickDeliver.rst:46
 msgid "has a service time."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:50
+#: ../../build/doc/pgr_pickDeliver.rst:47
 msgid "has an (x, y) location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:52
+#: ../../build/doc/pgr_pickDeliver.rst:49
 msgid "There is a customer where to deliver a pickup."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:54
+#: ../../build/doc/pgr_pickDeliver.rst:51
 msgid "travel time between customers is distance / speed"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:55
+#: ../../build/doc/pgr_pickDeliver.rst:52
 msgid "pickup and delivery pair is done with the same vehicle."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:56
+#: ../../build/doc/pgr_pickDeliver.rst:53
 msgid "A pickup is done before the delivery."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:60
-msgid "Characteristics:"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:62
+#: ../../build/doc/pgr_pickDeliver.rst:59
 msgid "All trucks depart at time 0."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:63
+#: ../../build/doc/pgr_pickDeliver.rst:60
 msgid "No multiple time windows for a location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:64
+#: ../../build/doc/pgr_pickDeliver.rst:61
 msgid "Less vehicle used is considered better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:65
+#: ../../build/doc/pgr_pickDeliver.rst:62
 msgid "Less total duration is better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:66
+#: ../../build/doc/pgr_pickDeliver.rst:63
 msgid "Less wait time is better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:67
+#: ../../build/doc/pgr_pickDeliver.rst:64
 msgid "the algorithm will raise an exception when"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:69
+#: ../../build/doc/pgr_pickDeliver.rst:66
 msgid "If there is a pickup-deliver pair than violates time window"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:70
+#: ../../build/doc/pgr_pickDeliver.rst:67
 msgid "The speed, max_cycles, ma_capacity have illegal values"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:72
+#: ../../build/doc/pgr_pickDeliver.rst:69
 msgid ""
-"Six different initial will be optimized - the best solution found will be"
-" result"
+"Six different initial will be optimized - the best solution found will be "
+"result"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:77
-msgid "Signature Summary"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:89
-msgid "Signatures"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:97
-msgid "Minimal signature"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:102
-msgid "The minimal signature is for `speed = 1`, for a `max_cycles = 30`"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst
+#: ../../build/doc/pgr_pickDeliver.rst:202
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:112
+#: ../../build/doc/pgr_pickDeliver.rst:206
 msgid "This example use the following data: TODO put link"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:125
-msgid "Complete signature"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:127
-msgid "This signature performs the optimization based on the optional parameters"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:138
-msgid "Description of the Signatures"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:3
-msgid "TODO: FIX becuase the following is outdated"
-msgstr ""
-
+#: ../../build/doc/pgr_pickDeliver.rst:119 ../../build/doc/VRP-category.rst:4
+#: ../../build/doc/VRP-category.rst:6 ../../build/doc/VRP-category.rst:4
 #: ../../build/doc/VRP-category.rst:6
-msgid "Description of the orders_sql query"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:11
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/pgr_pickDeliver.rst:119 ../../build/doc/VRP-category.rst:4
+#: ../../build/doc/VRP-category.rst:6 ../../build/doc/VRP-category.rst:4
+#: ../../build/doc/VRP-category.rst:6
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/pgr_pickDeliver.rst:119 ../../build/doc/VRP-category.rst:4
+#: ../../build/doc/VRP-category.rst:6 ../../build/doc/VRP-category.rst:4
+#: ../../build/doc/VRP-category.rst:6
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/VRP-category.rst:6 ../../build/doc/VRP-category.rst:6
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:11 ../../build/doc/VRP-category.rst:23
-#: ../../build/doc/VRP-category.rst:24
-msgid "``ANY-INTEGER``"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:11
-msgid "Identifier of the customer."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:13
-msgid "A value of ``0`` identifies the starting location"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/VRP-category.rst:7
 msgid "**demand**"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:15 ../../build/doc/VRP-category.rst:20
-#: ../../build/doc/VRP-category.rst:21 ../../build/doc/VRP-category.rst:22
-msgid "``ANY-NUMERICAL``"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:15
-msgid "How much is added / removed from the vehicle."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:17
-msgid "Negative value is a delivery,"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:18
-msgid "Positive value is a pickup,"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:20
-msgid "**openTime**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:20
-msgid "The time relative to 0, when the customer opens."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:21
-msgid "**closeTime**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:21
-msgid "The time relative to 0, when the customer closes."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:22
-msgid "**serviceTime**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:22
-msgid "The duration of the loading / unloading."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:23
-msgid "**pickup_id**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:23
-msgid ""
-"Value used when the current customer is a Delivery to find the "
-"corresponding Pickup"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:24
-msgid "**deliver_id**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:24
-msgid ""
-"Value used when the current customer is a Pickup to find the "
-"corresponding Delivery"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:27
+#: ../../build/doc/pgRouting-concepts.rst:3
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:5
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst
-msgid "ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:6
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:3
-msgid "TODO: Write"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:7
-msgid "Description of the vehicles_sql query"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:6
-msgid "Description of the parameters of the signatures"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:9
+#: ../../build/doc/pgr_pickDeliver.rst:119 ../../build/doc/VRP-category.rst:4
+#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/pgr_pickDeliver.rst:121
 msgid "**orders_sql**"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:11 ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/pgr_pickDeliver.rst:121
+#: ../../build/doc/pgr_pickDeliver.rst:122
+#: ../../build/doc/pgr_pickDeliver.rst:123
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:11
-msgid "Orders SQL query as described above."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/pgr_pickDeliver.rst:122
 msgid "**vehicles_sql**"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:12
-msgid "Vehciles SQL query as described above."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:13
+#: ../../build/doc/pgr_pickDeliver.rst:124
 msgid "**factor**"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:13
+#: ../../build/doc/pgr_pickDeliver.rst:124
 msgid "``NUMERIC``"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:13
+#: ../../build/doc/pgr_pickDeliver.rst:124
 msgid "1"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:13
-msgid "$multiplier for the travel time"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:14
+#: ../../build/doc/pgr_pickDeliver.rst:125
 msgid "**max_cycles**"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:14 ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/pgr_pickDeliver.rst:125
+#: ../../build/doc/pgr_pickDeliver.rst:126
 msgid "``INTEGER``"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:14
+#: ../../build/doc/pgr_pickDeliver.rst:125
 msgid "10"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:14
-msgid "Array of identifiers of starting vertices."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:15
-msgid "**initial**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/pgr_pickDeliver.rst:126
 msgid "4"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:15
-msgid "Identifier of the ending vertex of the path."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:17
+#: ../../build/doc/pgr_pickDeliver.rst:128
 msgid "``1`` One order per truck"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:18
-msgid "``2`` push front"
+#: ../../build/doc/pgr_pickDeliver.rst:214
+msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:19
-msgid "``3`` push back"
+#: ../../build/doc/pgr_pickDeliver.rst:216
+msgid ":ref:`VRP`"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:20
-msgid "``4`` best insert"
+#: ../../build/doc/pgr_pickDeliver.rst:217
+msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:21
-msgid "``5`` order that allows more orders to be inserted at the back"
+#: ../../build/doc/pgr_pickDeliver.rst:220
+msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:22
-msgid "``6`` order that allows more orders to be inserted at the front"
+#: ../../build/doc/pgr_pickDeliver.rst:221
+msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:6
-msgid "Description of the result"
+#: ../../build/doc/pgr_pickDeliver.rst:222
+msgid ":ref:`search`"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst
-msgid "RETURNS SET OF"
+#: ../../build/doc/pgr_pickDeliver.rst:13
+msgid "pgr_pickDeliver - Proposed"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:15
+msgid "Documentation is being updated"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:20
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:21
+msgid "New as proposed in 2.5.0"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:57
+msgid "Characteristics"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:76
+msgid "Signature"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:109
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:111
+msgid "The parameters are:"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:121
+msgid ""
+"`Pick & Deliver Orders SQL`_ query contianing the orders to be processed."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:122
+msgid ""
+"`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:123
+msgid "**matrix_sql**"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:123
+msgid ""
+"`Pick & Deliver Matrix SQL`_ query contaning the distance or travel times."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:124
+msgid "Travel time multiplier. See :ref:`pd_factor`"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:125
+msgid "Maximum number of cycles to perform on the optimization."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:126
+msgid "**initial_sol**"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:126
+msgid "Initial solution to be used."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:129
+msgid "``2`` Push front order."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:130
+msgid "``3`` Push back order."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:131
+msgid "``4`` Optimize insert."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:132
+msgid ""
+"``5`` Push back order that allows more orders to be inserted at the back"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:133
+msgid ""
+"``6`` Push front order that allows more orders to be inserted at the front"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:139
+msgid "Pick & Deliver Orders SQL"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:141
+#: ../../build/doc/pgr_pickDeliver.rst:163
+#: ../../build/doc/pgr_pickDeliver.rst:187
+msgid "A `SELECT` statement that returns the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:149
+#: ../../build/doc/pgr_pickDeliver.rst:171
+msgid "where:"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:6 ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:6
+#: ../../build/doc/VRP-category.rst:8 ../../build/doc/VRP-category.rst:9
+msgid "|ANY-INTEGER|"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:6 ../../build/doc/VRP-category.rst:6
+msgid "Identifier of the pick-delivery order pair."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:7 ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:11 ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/VRP-category.rst:13 ../../build/doc/VRP-category.rst:7
+#: ../../build/doc/VRP-category.rst:8 ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:11 ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/VRP-category.rst:14 ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/VRP-category.rst:16
+msgid "|ANY-NUMERICAL|"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:7 ../../build/doc/VRP-category.rst:7
+msgid "Number of units in the order"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "**p_open**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "The time, relative to 0, when the pickup location opens."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "**p_close**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "The time, relative to 0, when the pickup location closes."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:10 ../../build/doc/VRP-category.rst:13
+msgid "**d_service**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:10 ../../build/doc/VRP-category.rst:13
+msgid "0"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:10
+msgid "The duration of the loading at the pickup location."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "**d_open**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "The time, relative to 0, when the delivery location opens."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "**d_close**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "The time, relative to 0, when the delivery location closes."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:13
+msgid "The duration of the loading at the delivery location."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:3 ../../build/doc/VRP-category.rst:3
+msgid ""
+"For the non euclidean implementation, the starting and ending identifiers "
+"are needed:"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "**p_node_id**"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:8
 msgid ""
-"(seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, "
-"wait_time, service_time,  departure_time)"
+"The node identifier of the pickup, must match a node identifier in the "
+"matrix table."
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:13
-msgid "**seq**"
+#: ../../build/doc/VRP-category.rst:9
+msgid "**d_node_id**"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:13 ../../build/doc/VRP-category.rst:14
-#: ../../build/doc/VRP-category.rst:15
-msgid "INTEGER"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:13
-msgid "Sequential value starting from **1**."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:14
-msgid "**vehicle_id**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:14
-msgid "Current vehicle identifier."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:15
-msgid "**vehicle_seq**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:15
-msgid "Sequential value starting from **1** for the current vehicle."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:16
-msgid "**stop_id**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:16
-msgid "BIGINT"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:16
-msgid "Visited customer identifier."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:17
-msgid "**travel_time**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:17 ../../build/doc/VRP-category.rst:18
-#: ../../build/doc/VRP-category.rst:19 ../../build/doc/VRP-category.rst:20
-#: ../../build/doc/VRP-category.rst:21
-msgid "FLOAT"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:17
-msgid "Travel time from previous ``stop_id`` to current ``stop_id``."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:18
-msgid "**arrival_time**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:18
-msgid "Previous ``departure_time`` plus current ``travel_time``."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:19
-msgid "**wait_time**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:19
-msgid "Time spent waiting for ``stop_id`` to open."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:20
-msgid "**service_time**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:20
-msgid "Service time at current stop_id."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:21
-msgid "**departure_time**"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:22
+#: ../../build/doc/VRP-category.rst:9
 msgid ""
-"Previous :math:`departure\\_time + travel\\_time + wait\\_time + "
-"service\\_time`."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:22
-msgid ""
-"When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the "
-"current ``vehicle_id``."
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:23
-msgid "When ``vehicle_id = -1`` has the aggregate total time"
+"The node identifier of the delivery, must match a node identifier in the "
+"matrix table."
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:161
-msgid "See Also"
+msgid "Pick & Deliver Vehicles SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:163
-msgid ":ref:`VRP`"
+#: ../../build/doc/VRP-category.rst:7
+msgid "**capacity**"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:164
-msgid "The queries use the :ref:`sampledata` network."
+#: ../../build/doc/VRP-category.rst:8
+msgid "**speed**"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:167
-msgid "Indices and tables"
+#: ../../build/doc/VRP-category.rst:8
+msgid "`1`"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:168
-msgid ":ref:`genindex`"
+#: ../../build/doc/VRP-category.rst:8
+msgid "Average speed of the vehicle."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:169
-msgid ":ref:`search`"
+#: ../../build/doc/VRP-category.rst:10
+msgid "**start_open**"
 msgstr ""
 
+#: ../../build/doc/VRP-category.rst:10
+msgid "The time, relative to 0, when the starting location opens."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "**start_close**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "The time, relative to 0, when the starting location closes."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "**start_service**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "`0`"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "The duration of the loading at the starting location."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:14
+msgid "**end_open**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:14
+msgid "`start_open`"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:14
+msgid "The time, relative to 0, when the ending location opens."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:15
+msgid "**end_close**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:15
+msgid "`start_close`"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:15
+msgid "The time, relative to 0, when the ending location closes."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:16
+msgid "**end_service**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:16
+msgid "`start_service`"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:16
+msgid "The duration of the loading at the ending location."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "**start_node_id**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:8
+msgid ""
+"The node identifier of the starting location, must match a node identifier "
+"in the matrix table."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "**end_node_id**"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "`start_node_id`"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:9
+msgid ""
+"The node identifier of the ending location, must match a node identifier in "
+"the matrix table."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:185
+msgid "Pick & Deliver Matrix SQL"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:191
+msgid "TODO"
+msgstr ""
+
+#~ msgid "__pgr_pickDeliver"
+#~ msgstr ""
+
+#~ msgid "Name"
+#~ msgstr ""
+
+#~ msgid "Experimental functions"
+#~ msgstr ""
+
+#~ msgid "They are not officially of the current release."
+#~ msgstr ""
+
+#~ msgid "They likely will not be officially be part of the next release:"
+#~ msgstr ""
+
+#~ msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+#~ msgstr ""
+
+#~ msgid "Name might change."
+#~ msgstr ""
+
+#~ msgid "Signature might change."
+#~ msgstr ""
+
+#~ msgid "Functionality might change."
+#~ msgstr ""
+
+#~ msgid "pgTap tests might be missing."
+#~ msgstr ""
+
+#~ msgid "Might need c/c++ coding."
+#~ msgstr ""
+
+#~ msgid "May lack documentation."
+#~ msgstr ""
+
+#~ msgid "Documentation if any might need to be rewritten."
+#~ msgstr ""
+
+#~ msgid "Documentation examples might need to be automatically generated."
+#~ msgstr ""
+
+#~ msgid "Might need a lot of feedback from the comunity."
+#~ msgstr ""
+
+#~ msgid "Might depend on a proposed function of pgRouting"
+#~ msgstr ""
+
+#~ msgid "Might depend on a deprecated function of pgRouting"
+#~ msgstr ""
+
+#~ msgid "Characteristics:"
+#~ msgstr ""
+
+#~ msgid "Signature Summary"
+#~ msgstr ""
+
+#~ msgid "Signatures"
+#~ msgstr ""
+
+#~ msgid "Minimal signature"
+#~ msgstr ""
+
+#~ msgid "The minimal signature is for `speed = 1`, for a `max_cycles = 30`"
+#~ msgstr ""
+
+#~ msgid "Complete signature"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This signature performs the optimization based on the optional parameters"
+#~ msgstr ""
+
+#~ msgid "Description of the Signatures"
+#~ msgstr ""
+
+#~ msgid "TODO: FIX becuase the following is outdated"
+#~ msgstr ""
+
+#~ msgid "Description of the orders_sql query"
+#~ msgstr ""
+
+#~ msgid "``ANY-INTEGER``"
+#~ msgstr ""
+
+#~ msgid "Identifier of the customer."
+#~ msgstr ""
+
+#~ msgid "A value of ``0`` identifies the starting location"
+#~ msgstr ""
+
+#~ msgid "``ANY-NUMERICAL``"
+#~ msgstr ""
+
+#~ msgid "How much is added / removed from the vehicle."
+#~ msgstr ""
+
+#~ msgid "Negative value is a delivery,"
+#~ msgstr ""
+
+#~ msgid "Positive value is a pickup,"
+#~ msgstr ""
+
+#~ msgid "**openTime**"
+#~ msgstr ""
+
+#~ msgid "The time relative to 0, when the customer opens."
+#~ msgstr ""
+
+#~ msgid "**closeTime**"
+#~ msgstr ""
+
+#~ msgid "The time relative to 0, when the customer closes."
+#~ msgstr ""
+
+#~ msgid "**serviceTime**"
+#~ msgstr ""
+
+#~ msgid "The duration of the loading / unloading."
+#~ msgstr ""
+
+#~ msgid "**pickup_id**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Value used when the current customer is a Delivery to find the corresponding"
+#~ " Pickup"
+#~ msgstr ""
+
+#~ msgid "**deliver_id**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Value used when the current customer is a Pickup to find the corresponding "
+#~ "Delivery"
+#~ msgstr ""
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr ""
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr ""
+
+#~ msgid "TODO: Write"
+#~ msgstr ""
+
+#~ msgid "Description of the vehicles_sql query"
+#~ msgstr ""
+
+#~ msgid "Description of the parameters of the signatures"
+#~ msgstr ""
+
+#~ msgid "Orders SQL query as described above."
+#~ msgstr ""
+
+#~ msgid "Vehciles SQL query as described above."
+#~ msgstr ""
+
+#~ msgid "$multiplier for the travel time"
+#~ msgstr ""
+
+#~ msgid "Array of identifiers of starting vertices."
+#~ msgstr ""
+
+#~ msgid "**initial**"
+#~ msgstr ""
+
+#~ msgid "Identifier of the ending vertex of the path."
+#~ msgstr ""
+
+#~ msgid "``2`` push front"
+#~ msgstr ""
+
+#~ msgid "``3`` push back"
+#~ msgstr ""
+
+#~ msgid "``4`` best insert"
+#~ msgstr ""
+
+#~ msgid "``5`` order that allows more orders to be inserted at the back"
+#~ msgstr ""
+
+#~ msgid "``6`` order that allows more orders to be inserted at the front"
+#~ msgstr ""
+
+#~ msgid "Description of the result"
+#~ msgstr ""
+
+#~ msgid "RETURNS SET OF"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "(seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, "
+#~ "wait_time, service_time,  departure_time)"
+#~ msgstr ""
+
+#~ msgid "**seq**"
+#~ msgstr ""
+
+#~ msgid "INTEGER"
+#~ msgstr ""
+
+#~ msgid "Sequential value starting from **1**."
+#~ msgstr ""
+
+#~ msgid "**vehicle_id**"
+#~ msgstr ""
+
+#~ msgid "Current vehicle identifier."
+#~ msgstr ""
+
+#~ msgid "**vehicle_seq**"
+#~ msgstr ""
+
+#~ msgid "Sequential value starting from **1** for the current vehicle."
+#~ msgstr ""
+
+#~ msgid "**stop_id**"
+#~ msgstr ""
+
+#~ msgid "BIGINT"
+#~ msgstr ""
+
+#~ msgid "Visited customer identifier."
+#~ msgstr ""
+
+#~ msgid "**travel_time**"
+#~ msgstr ""
+
+#~ msgid "FLOAT"
+#~ msgstr ""
+
+#~ msgid "Travel time from previous ``stop_id`` to current ``stop_id``."
+#~ msgstr ""
+
+#~ msgid "**arrival_time**"
+#~ msgstr ""
+
+#~ msgid "Previous ``departure_time`` plus current ``travel_time``."
+#~ msgstr ""
+
+#~ msgid "**wait_time**"
+#~ msgstr ""
+
+#~ msgid "Time spent waiting for ``stop_id`` to open."
+#~ msgstr ""
+
+#~ msgid "**service_time**"
+#~ msgstr ""
+
+#~ msgid "Service time at current stop_id."
+#~ msgstr ""
+
+#~ msgid "**departure_time**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Previous :math:`departure\\_time + travel\\_time + wait\\_time + "
+#~ "service\\_time`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the "
+#~ "current ``vehicle_id``."
+#~ msgstr ""
+
+#~ msgid "When ``vehicle_id = -1`` has the aggregate total time"
+#~ msgstr ""
