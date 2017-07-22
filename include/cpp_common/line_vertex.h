@@ -65,8 +65,14 @@ class Line_vertex {
          this->target = other.target;
      }
 
+     friend std::ostream& operator<<(std::ostream& log, const Line_vertex &v) {
+         log << "\nid = " << v.id;
+         log << " | source = " << v.source;
+         log << " | target = " << v.target;
+         log << " | cost = " << v.cost;
+         return log;
+     }
 
-     friend std::ostream& operator<<(std::ostream& log, const Line_vertex &v);
  public:
      int64_t id;
      int64_t source;

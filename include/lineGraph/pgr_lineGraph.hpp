@@ -50,7 +50,6 @@ namespace graph {
 template <class G, typename T_V, typename T_E>
 class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
  private:
-    std::vector< Line_graph_rt > m_lineGraph_edges;
     int64_t m_num_edges;
 
     std::vector < int64_t > m_vertex_map;
@@ -58,7 +57,8 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     void add_vertices(std::vector< T_V > vertices);
 
     template < typename T >
-    void create_edges(const pgrouting::DirectedGraph& digraph, const T vertex);
+    void create_edges(const pgrouting::DirectedGraph& digraph,
+            const T vertex, std::vector< Line_graph_rt >& line_graph_edges);
 
     template < typename T >
         void graph_add_edge(const T &edge);
@@ -98,20 +98,28 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         std::vector < Line_vertex > extract_vertices(
             const std::vector < T > data_edges);
 
-    void transform(pgrouting::DirectedGraph& digraph) {
+    std::vector< Line_graph_rt > transform(pgrouting::DirectedGraph& digraph) {
         V_i vertexIt, vertexEnd;
+        std::vector< Line_graph_rt > line_graph_edges;
 
         for(boost::tie(vertexIt, vertexEnd) = boost::vertices(digraph.graph);
             vertexIt != vertexEnd; vertexIt++) {
-            create_edges(digraph, *vertexIt);
+            create_edges(digraph, *vertexIt, line_graph_edges);
         }
+        log << "\nEdges: \n";
+        for (auto it: line_graph_edges) {
+            log << "id = " << it.id;
+            log << " | source = " << it.source;
+            log << " | target = " << it.target;
+            log << " | reverse = " << it.reverse << "\n";
+        }
+        return line_graph_edges;
     }
 
-    std::vector< Line_graph_rt > Linegraph() const { return m_lineGraph_edges;}
     int64_t num_edges() const { return m_num_edges; }
 
-    void insert_edges() {
-        for (auto edge: m_lineGraph_edges) {
+    void insert_edges(const std::vector< Line_graph_rt >& line_graph_edges) {
+        for (auto edge: line_graph_edges) {
             graph_add_edge(edge);
         }
     }
@@ -154,11 +162,11 @@ Pgr_lineGraph< G, T_V, T_E >::graph_add_edge(const T &edge) {
     bool inserted;
     typename Pgr_base_graph< G, T_V, T_E >::E e;
 
-    auto vm_s = this->get_V(edge.source);
-    auto vm_t = this->get_V(edge.target);
+    auto vm_s = this->get_V(edge.id);
+    auto vm_t = this->get_V(edge.id);
 
-    pgassert(this->vertices_map.find(edge.source) != this->vertices_map.end());
-    pgassert(this->vertices_map.find(edge.target) != this->vertices_map.end());
+    pgassert(this->vertices_map.find(edge.id) != this->vertices_map.end());
+    pgassert(this->vertices_map.find(edge.id) != this->vertices_map.end());
 
     boost::tie(e, inserted) =
         boost::add_edge(vm_s, vm_t, this->graph);
@@ -175,19 +183,20 @@ Pgr_lineGraph< G, T_V, T_E >::graph_add_edge(const T &edge) {
 
 template < class G, typename T_V, typename T_E >
 template < typename T >
-void Pgr_lineGraph< G, T_V, T_E >::create_edges(
+void
+Pgr_lineGraph< G, T_V, T_E >::create_edges(
         const pgrouting::DirectedGraph& digraph,
-        const T vertex) {
+        const T vertex,
+        std::vector< Line_graph_rt >& line_graph_edges) {
     log << digraph.graph[vertex] << "\n";
     EO_i outIt, outEnd;
     EI_i inIt, inEnd;
     std::set < std::pair< T, std::pair < T, T > > > unique;
+
     for (boost::tie(outIt, outEnd) = boost::out_edges(vertex, digraph.graph);
         outIt != outEnd; outIt++) {
         for (boost::tie(inIt, inEnd) = boost::in_edges(vertex, digraph.graph);
             inIt != inEnd; inIt++) {
-            ++m_num_edges;
-
             log << "\n";
             log << digraph.graph[*inIt].id << " | " << digraph[digraph.source(*inIt)].id << " | " << digraph[digraph.target(*inIt)].id << " | " << digraph.graph[*inIt].cost << "\n";
             log << digraph.graph[*outIt].id << " | " << digraph[digraph.source(*outIt)].id << " | " << digraph[digraph.target(*outIt)].id << " | " << digraph.graph[*outIt].cost << "\n\n";
@@ -195,9 +204,9 @@ void Pgr_lineGraph< G, T_V, T_E >::create_edges(
             auto source_in_edge = digraph.source(*inIt);
             auto target_out_edge = digraph.target(*outIt);
 
-            log << "source = " << digraph[source_in_edge].id << " | target = " << digraph[target_out_edge].id << "\n\n\n";
+            log << "source = " << digraph[source_in_edge] << " | mid = " << digraph[vertex] << " | target = " << digraph[target_out_edge] << "\n\n\n";
 
-            if (unique.count( {vertex, {target_out_edge,  source_in_edge} }))
+            if (source_in_edge == target_out_edge or unique.count( {vertex, {target_out_edge,  source_in_edge} }))
                 continue;
 
             bool is_reverse = false;
@@ -206,18 +215,14 @@ void Pgr_lineGraph< G, T_V, T_E >::create_edges(
                 is_reverse = true;
 
             unique.insert( {vertex, {source_in_edge, target_out_edge} });
+            ++m_num_edges;
 
-            m_lineGraph_edges.push_back({
+            line_graph_edges.push_back({
                 m_num_edges,
                 (digraph.graph[*inIt]).id,
                 (digraph.graph[*outIt]).id,
                 is_reverse
             });
-            log << "\nEdge: ";
-            log << "id = " << m_lineGraph_edges.back().id;
-            log << " | source = " << m_lineGraph_edges.back().source;
-            log << " | target = " << m_lineGraph_edges.back().target;
-            log << " | reverse = " << m_lineGraph_edges.back().reverse << "\n";
         }
     }
 }
@@ -228,7 +233,10 @@ template < class G, typename T_V, typename T_E >
          std::vector< T_V > vertices) {
 
      for (const auto vertex : vertices) {
+         pgassert(this->vertices_map.find(vertex.id) == this->vertices_map.end());
+
          auto v =  add_vertex(this->graph);
+         this->vertices_map[vertex.id] = v;
          this->graph[v].cp_members(vertex);
 
          pgassert(boost::num_vertices(this->graph) == this->num_vertices());

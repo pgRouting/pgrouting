@@ -85,16 +85,15 @@ do_pgr_lineGraph(
 
             pgrouting::LinearDirectedGraph line(gType);
             line.insert_vertices(data_edges, total_edges);
-            line.transform(digraph);
-            /*line.insert_edges();
-            auto edge_result = line.Linegraph();
+            auto line_graph_edges = line.transform(digraph);
+            /*line.insert_edges(line_graph_edges);
 
 
             get_postgres_result(
-                edge_result,
+                line_graph_edges,
                 return_tuples
             );
-            (*return_count) = edge_result.size();*/
+            (*return_count) = line_graph_edges.size();*/
             log << line.log.str().c_str();
         }
 
