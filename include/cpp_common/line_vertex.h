@@ -80,22 +80,6 @@ class Line_vertex {
      double cost;
 };
 
-size_t check_vertices(std::vector < Line_vertex > vertices);
-
-std::vector < Line_vertex > extract_vertices_from_edges(
-        std::vector < Line_vertex > vertices,
-        const pgr_edge_t *data_edges, int64_t count);
-
-std::vector < Line_vertex > extract_vertices_from_edges(
-        std::vector < Line_vertex > vertices,
-        const std::vector < pgr_edge_t > data_edges);
-
-std::vector < Basic_vertex > extract_vertices_from_edges(
-        const pgr_edge_t *data_edges, int64_t count);
-
-std::vector < Basic_vertex > extract_vertices_from_edges(
-        const std::vector < pgr_edge_t > data_edges);
-
 }  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_LINE_VERTEX_H_
