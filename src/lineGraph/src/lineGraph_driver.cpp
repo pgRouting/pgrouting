@@ -48,7 +48,7 @@ void get_postgres_result(
             (*return_tuples));
 
     size_t seq = 0;
-    for (auto edge: edge_result) {
+    for (const auto edge: edge_result) {
         (*return_tuples)[seq] = edge;
         ++seq;
     }
@@ -86,15 +86,14 @@ do_pgr_lineGraph(
             pgrouting::LinearDirectedGraph line(gType);
             line.insert_vertices(data_edges, total_edges);
             auto line_graph_edges = line.transform(digraph);
-            /*line.insert_edges(line_graph_edges);
-
 
             get_postgres_result(
                 line_graph_edges,
                 return_tuples
             );
-            (*return_count) = line_graph_edges.size();*/
-            log << line.log.str().c_str();
+            (*return_count) = line_graph_edges.size();
+            log << line.log.str().c_str() << "\n\n\n";
+            log << line << "\n";
         }
 
     #if 0
