@@ -49,8 +49,7 @@ void get_postgres_result(
 
     size_t seq = 0;
     for (const auto edge: edge_result) {
-        (*return_tuples)[seq] = edge;
-        ++seq;
+        (*return_tuples)[seq++] = edge;
     }
 }
 

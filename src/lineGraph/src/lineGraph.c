@@ -192,16 +192,6 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-               OUT seq INTEGER,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT cost FLOAT,
-    OUT reverse_cost FLOAT
-         ***********************************************************************/
-
         values = palloc(5 * sizeof(Datum));
         nulls = palloc(5 * sizeof(bool));
 
@@ -219,6 +209,9 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
         values[4] = BoolGetDatum(result_tuples[funcctx->call_cntr].reverse);
         //values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
         /**********************************************************************/
+
+        PGR_DBG("0: %lu | 1: %lu | 2: %lu | 3: %lu | 4: %lu\n", values[0],
+                values[1], values[2], values[3], values[4]);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

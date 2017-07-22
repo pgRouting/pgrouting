@@ -210,7 +210,6 @@ Pgr_lineGraph< G, T_V, T_E >::graph_add_edge(
     this->graph[e].id = edge.id;
 }
 
-
 template < class G, typename T_V, typename T_E >
 template < typename T >
 void
