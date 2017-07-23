@@ -85,6 +85,7 @@ do_pgr_lineGraph(
             pgrouting::LinearDirectedGraph line(gType);
             line.insert_vertices(data_edges, total_edges);
             auto line_graph_edges = line.transform(digraph);
+            line.create_virtual_vertices();
 
             get_postgres_result(
                 line_graph_edges,

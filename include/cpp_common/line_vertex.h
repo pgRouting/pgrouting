@@ -48,25 +48,37 @@ class Line_vertex {
 
      Line_vertex(const pgr_edge_t& edge) :
          id(edge.id),
+         vertex_id(edge.id),
          source(edge.source),
          target(edge.target),
          cost(edge.cost) {}
 
      Line_vertex(const Line_vertex &v) :
          id(v.id),
+         vertex_id(v.vertex_id),
          source(v.source),
          target(v.target),
          cost(v.cost) {}
 
      void cp_members(const Line_vertex &other) {
          this->id = other.id;
+         this->vertex_id = other.vertex_id;
          this->cost = other.cost;
          this->source = other.source;
          this->target = other.target;
      }
 
+     void cp_members(int64_t _id, int64_t _source) {
+         this->id = _id;
+         this->vertex_id = -1;
+         this->cost = 0;
+         this->source = _source;
+         this->target = -1;
+     }
+
      friend std::ostream& operator<<(std::ostream& log, const Line_vertex &v) {
          log << "\nid = " << v.id;
+         log << " | vertex_id = " << v.vertex_id;
          log << " | source = " << v.source;
          log << " | target = " << v.target;
          log << " | cost = " << v.cost;
@@ -75,6 +87,7 @@ class Line_vertex {
 
  public:
      int64_t id;
+     int64_t vertex_id;
      int64_t source;
      int64_t target;
      double cost;
