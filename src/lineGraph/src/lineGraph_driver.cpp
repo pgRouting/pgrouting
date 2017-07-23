@@ -42,14 +42,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void get_postgres_result(
         std::vector< Line_graph_rt > edge_result,
-        Line_graph_rt **return_tuples) {
+        Line_graph_rt **return_tuples,
+        size_t &sequence) {
     (*return_tuples) = pgr_alloc(
-            edge_result.size(),
+            (int)edge_result.size(),
             (*return_tuples));
 
-    size_t seq = 0;
-    for (const auto edge: edge_result) {
-        (*return_tuples)[seq++] = edge;
+    for (const auto &edge: edge_result) {
+        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target, edge.cost, edge.reverse_cost};
+        sequence++;
     }
 }
 
@@ -87,9 +88,12 @@ do_pgr_lineGraph(
             auto line_graph_edges = line.transform(digraph);
             line.create_virtual_vertices();
 
+            size_t sequence = 0;
+
             get_postgres_result(
                 line_graph_edges,
-                return_tuples
+                return_tuples,
+                sequence
             );
             (*return_count) = line_graph_edges.size();
             log << line.log.str().c_str() << "\n\n\n";

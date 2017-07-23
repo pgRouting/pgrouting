@@ -192,12 +192,12 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        values = palloc(6 * sizeof(Datum));
+        nulls = palloc(6 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < 6; ++i) {
             nulls[i] = false;
         }
 
@@ -206,12 +206,12 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-        values[4] = BoolGetDatum(result_tuples[funcctx->call_cntr].reverse);
-        //values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
         /**********************************************************************/
 
-        PGR_DBG("0: %lu | 1: %lu | 2: %lu | 3: %lu | 4: %lu\n", values[0],
-                values[1], values[2], values[3], values[4]);
+        PGR_DBG("0: %ld | 1: %ld | 2: %ld | 3: %ld | 4: %f | 5: %f\n", values[0],
+                values[1], values[2], values[3], values[4], values[5]);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

@@ -210,7 +210,8 @@ Pgr_lineGraph< G, T_V, T_E >::transform(pgrouting::DirectedGraph& digraph) {
         log << "id = " << it.id;
         log << " | source = " << it.source;
         log << " | target = " << it.target;
-        log << " | reverse = " << it.reverse << "\n";
+        log << " | cost = " << it.cost;
+        log << " | reverse_cost = " << it.reverse_cost << "\n";
     }
     return line_graph_edges;
 }
@@ -319,7 +320,8 @@ Pgr_lineGraph< G, T_V, T_E >::create_edges(
                 -1,
                 (digraph.graph[*inIt]).id,
                 (digraph.graph[*outIt]).id,
-                false
+                0.0,
+                -1.0
             };
 
             if (unique.find( {vertex, {target_out_edge,  source_in_edge} }) !=
@@ -342,7 +344,7 @@ Pgr_lineGraph< G, T_V, T_E >::create_edges(
             unique[{vertex, {source_in_edge, target_out_edge} }] = m_num_edges;
 
             edge.id = m_num_edges;
-            edge.reverse = is_reverse;
+            edge.reverse_cost = is_reverse?0.0:-1.0 ;
 
             line_graph_edges.push_back(edge);
 
