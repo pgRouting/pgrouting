@@ -63,7 +63,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     template < typename T >
         void graph_add_edge(const T &edge, int64_t, int64_t);
 
-    void create_vertex(int64_t id);
+    void create_virtual_vertex(int64_t id);
     void create_virtual_edge(
             int64_t source_id,
             int64_t source_vertex,
@@ -134,7 +134,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_lineGraph< G, T_V, T_E >::create_vertex(int64_t id) {
+Pgr_lineGraph< G, T_V, T_E >::create_virtual_vertex(int64_t id) {
     ++(this->m_num_vertices);
     auto v = add_vertex(this->graph);
     this->vertices_map[this->m_num_vertices] = v;
@@ -179,10 +179,10 @@ Pgr_lineGraph< G, T_V, T_E >::create_virtual_vertices() {
     for (;vertexIt != vertexEnd; vertexIt++) {
         auto vertex = this->graph[*vertexIt];
         if (!m_vertex_map.count( {vertex.source, -1} )) {
-            create_vertex(vertex.source);
+            create_virtual_vertex(vertex.source);
         }
         if(!m_vertex_map.count( {vertex.target, -1} )) {
-            create_vertex(vertex.target);
+            create_virtual_vertex(vertex.target);
         }
 
         pgassert(m_vertex_map.find( {vertex.source, -1} ) !=
