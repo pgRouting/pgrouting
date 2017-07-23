@@ -38,14 +38,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "lineGraph/pgr_lineGraph.hpp"
 
+void get_postgres_result(
+        std::vector< Line_graph_rt > edge_result,
+        Line_graph_rt **return_tuples) {
+    (*return_tuples) = pgr_alloc(
+            edge_result.size(),
+            (*return_tuples));
 
-
-
-/************************************************************
-  TEXT,
-    directed BOOLEAN DEFAULT true,
- ***********************************************************/
+    size_t seq = 0;
+    for (const auto edge: edge_result) {
+        (*return_tuples)[seq++] = edge;
+    }
+}
 
 void
 do_pgr_lineGraph(
@@ -68,14 +74,47 @@ do_pgr_lineGraph(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = DIRECTED;
-        pgrouting::DirectedGraph digraph(gType);
-
+        std::vector< Line_graph_rt > results;
+        graphType gType = directed?DIRECTED:UNDIRECTED;
         if (directed) {
+            pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            log << "\nDirected Graph :\n" << digraph;
+            digraph.m_num_vertices = 1000;
+            log << digraph << "\n";
+
+            pgrouting::LinearDirectedGraph line(gType);
+            line.insert_vertices(data_edges, total_edges);
+            auto line_graph_edges = line.transform(digraph);
+            line.create_virtual_vertices();
+
+            get_postgres_result(
+                line_graph_edges,
+                return_tuples
+            );
+            (*return_count) = line_graph_edges.size();
+            log << line.log.str().c_str() << "\n\n\n";
+            log << line << "\n";
         }
-#if 0
+
+    #if 0
+        if (directed) {
+            //log << "\nNum of vertices: " << digraph.num_vertices() << "\n";
+            log << "\nDirected Graph: \n" << digraph;
+            line.process(digraph, log);
+            /*log << "\nNum of vertices: " << digraph.num_vertices() << "\n";
+            //log << "\nDirected Graph :\n" << digraph;
+            for (auto it: digraph.vertices_map) {
+                log << (it.first) << " " << (it.second) << "\n";
+            }
+            int64_t c = 0;
+            log << "\nNum vertices = " << digraph.m_num_vertices << "\n";
+            for (auto vi = boost::vertices(digraph.graph).first;
+                    vi != boost::vertices(digraph.graph).second; ++vi) {
+                log << (*vi) << ": " << " out_edges_of(" << digraph.graph[(*vi)] << "):\n";
+                c++;
+            }
+            log << "\n" << c;*/
+        }
         std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
         if (!directed) {
             for (int64_t i = 0; i < total_edges;i++) {

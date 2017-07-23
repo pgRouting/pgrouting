@@ -59,11 +59,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 typedef struct {
-    int seq;
+    int64_t id;
     int64_t source;
     int64_t target;
-    double cost;
-    double reverse_cost;
+    bool reverse;
 } Line_graph_rt;
 
 #endif  // INCLUDE_C_TYPES_LINE_GRAPH_RT_H_
