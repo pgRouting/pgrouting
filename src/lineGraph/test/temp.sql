@@ -36,3 +36,15 @@ INSERT INTO edge_table20(id, source, target, cost) VALUES
 (28, 15, 14, 1.0),
 (29, 16, 17, 1.0),
 (30, 17, 16, 1.0);
+
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost FROM edge_table20',
+    2, 3
+);
+
+UPDATE edge_table20 SET cost = cost + 0.001*id*id;
+
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost FROM edge_table20',
+    2, 3
+);

@@ -24,3 +24,15 @@ UNION
 (SELECT DISTINCT source from edge_table11))
 SELECT * INTO edge_table11_vertices_pgr
 FROM the_unique_vertices_of_the_graph;
+
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table11',
+    2, 3
+);
+
+UPDATE edge_table11 SET cost = cost + 0.001*id*id, reverse_cost = reverse_cost + 0.001*id*id;
+
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table11',
+    2, 3
+);

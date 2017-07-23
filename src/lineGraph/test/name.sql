@@ -37,3 +37,10 @@ SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table25',
     2, 3
 );
+
+UPDATE edge_table25 SET cost = cost + 0.001*id*id, reverse_cost = reverse_cost + 0.001*id*id;
+
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table25',
+    2, 3
+);
