@@ -4,7 +4,7 @@
 SELECT plan(23);
 
 PREPARE q1 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     max_cycles := 30);
@@ -16,13 +16,13 @@ SELECT lives_ok('q1', 'Original query should not fail');
 -- testing wrong data on max_cycles 
 --------------------------------------
 PREPARE q6 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     max_cycles := -1);
 
 PREPARE q61 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     max_cycles := 0);
@@ -40,19 +40,19 @@ SELECT lives_ok('q61',
 -- testing wrong data on initial_sol 
 --------------------------------------
 PREPARE initsol1 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     initial_sol := -1);
 
 PREPARE initsol2 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     initial_sol := 7);
 
 PREPARE initsol3 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     initial_sol := 0);
@@ -78,19 +78,19 @@ SELECT throws_ok('initsol3',
 -- testing wrong data on factor 
 --------------------------------------
 PREPARE factor1 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     factor := -1);
 
 PREPARE factor2 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     factor := 0);
 
 PREPARE factor3 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     factor := 1);
@@ -113,27 +113,27 @@ SELECT lives_ok('factor3',
 
 
 PREPARE vehiles0 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT id AS vid FROM vehicles$$);
 
 PREPARE vehiles1 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT id FROM vehicles$$);
 
 PREPARE vehiles2 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT id, capacity FROM vehicles$$);
 
 PREPARE vehiles3 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT id, capacity, start_x FROM vehicles$$);
 
 PREPARE vehiles4 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT id, capacity, start_x, start_y FROM vehicles$$);
 
@@ -163,24 +163,24 @@ SELECT lives_ok('vehiles4',
 -- end_open and end_close should exist together or not at all
 
 PREPARE vehiles5 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT *, 10 AS end_close FROM vehicles$$);
 
 PREPARE vehiles6 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT *, 10 AS end_open FROM vehicles$$);
 
 -- end_x and end_y should exist together or not at all
 
 PREPARE vehiles7 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT *, 10 AS end_x FROM vehicles$$);
 
 PREPARE vehiles8 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT *, 10 AS end_open FROM vehicles$$);
 
@@ -210,7 +210,7 @@ SELECT throws_ok('vehiles8',
 UPDATE vehicles SET start_open = 5, start_close = 4 WHERE id = 1;
 
 PREPARE vehicles9 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$);
 
@@ -225,7 +225,7 @@ UPDATE vehicles SET start_open = 0, start_close = 50 WHERE id = 1;
 --  end_open > end_close
 ---------------------
 PREPARE vehicles10 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT *, 5 AS end_open, 4 AS end_close FROM vehicles$$);
 
@@ -244,7 +244,7 @@ SELECT throws_ok('vehicles10',
 UPDATE orders SET d_close = 5 WHERE id = 1;
 
 PREPARE orders1 AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$);
 

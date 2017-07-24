@@ -8,7 +8,7 @@ PREPARE pd AS
 SELECT seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
     order_id, cargo,
     travel_time, arrival_time, wait_time, service_time, departure_time
-FROM pgr_pickDeliver(
+FROM _pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
     -- matrix query
@@ -25,7 +25,7 @@ FROM pgr_pickDeliver(
     );
 
 PREPARE pd_e AS
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles');
 
