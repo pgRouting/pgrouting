@@ -14,8 +14,6 @@ SET(LOCAL_FILES
     routing_dd.sql
     maximum_cardinality_matching.sql
     max_flow-deprecated.sql
-    _gsoc_vrppdtw.sql
-    gsoc_vrppdtw.sql
     deprecated-comments.sql
     )
 
