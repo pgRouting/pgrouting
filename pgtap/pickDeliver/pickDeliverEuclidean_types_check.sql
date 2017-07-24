@@ -35,7 +35,7 @@ SELECT
 'double precision'::text AS t11,
 'double precision'::text AS t12;
 
-SELECT * INTO pickDeliverResults FROM pgr_pickdeliverEuclidean(
+SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
     $$SELECT * FROM orders $$,
     $$SELECT * FROM vehicles $$
     );
@@ -59,7 +59,7 @@ SELECT
     pg_typeof(departure_time)::TEXT AS t12
 FROM  pickdeliverResults LIMIT 1;
 
-SELECT set_eq('expected_types', 'real_types','pgr_pickdeliverEuclidean: SHOULD RETURN expected columns names & types');
+SELECT set_eq('expected_types', 'real_types','_pgr_pickdeliverEuclidean: SHOULD RETURN expected columns names & types');
 
 SELECT finish();
 ROLLBACK;
