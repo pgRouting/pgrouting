@@ -140,8 +140,8 @@ Experimental and Proposed functions
 
 .. rubric:: VRP
 
-:ref:`pgr_gsoc_vrppdtw`
-:ref:`pgr_vrpOneDepot`
+:ref:`pgr_gsocvrppdtw`
+:ref:`pgr_vrp_basic`
 
 
 .. toctree::
