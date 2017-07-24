@@ -138,12 +138,11 @@ Experimental and Proposed functions
 
 -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 
+.. rubric:: VRP
 
-:ref:`VRP`
+:ref:`pgr_gsoc_vrppdtw`
+:ref:`pgr_vrpOneDepot`
 
-.. include:: VRP-category.rst
-   :start-after: index from here
-   :end-before: index to here
 
 .. toctree::
   :hidden:
@@ -151,7 +150,8 @@ Experimental and Proposed functions
   contraction-family
   flow-family
   pgr_labelGraph
-  VRP-category
+  pgr_gsoc_vrppdtw
+  pgr_vrpOneDepot
 
 
 
