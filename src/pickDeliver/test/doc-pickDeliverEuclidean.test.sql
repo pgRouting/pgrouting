@@ -1,5 +1,5 @@
 \echo --q1
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles'
 );

@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles'
 );

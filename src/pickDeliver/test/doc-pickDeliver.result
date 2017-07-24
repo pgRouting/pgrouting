@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
-SELECT * FROM pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
     
@@ -34,7 +34,7 @@ SELECT * FROM pgr_pickDeliver(
 (11 rows)
 
 --q2
-SELECT * FROM pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliver(
     $$ SELECT * FROM orders ORDER BY id $$,
     $$ SELECT * FROM vehicles $$,
     $$ SELECT * from pgr_dijkstraCostMatrix(
