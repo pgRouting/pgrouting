@@ -64,10 +64,10 @@ The weighted directed graph, :math:`G_d(V,E)`, is definied by:
 * the set of edges :math:`E`
 
   - :math:`E = \begin{cases}
-    \text{ } & \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \quad \text{if1 } reverse\_cost = \varnothing \\
-    \text{ } &  \text{ }  & \quad \text{ } \\
-    \text{ } & \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} &  \quad \text{ } \\
-    \cup     & \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i>=0 \} & \quad \text{if2 } reverse\_cost \neq \varnothing
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \quad \text{if } reverse\_cost = \varnothing \\
+    \text{ }  \text{ }  & \quad \text{ } \\
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} &  \quad \text{ } \\
+    \cup      \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i>=0 \} & \quad \text{if } reverse\_cost \neq \varnothing \\
     \end{cases}`
 
 
@@ -84,13 +84,13 @@ The weighted undirected graph, :math:`G_u(V,E)`, is definied by:
 * the set of edges :math:`E`
 
   - :math:`E = \begin{cases}
-    \text{ } & \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ } \\
-    \cup     & \{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if3 } reverse\_cost = \varnothing \\
-    \text{ } & \text{ }  & \text{ } \\
-    \text{ } & \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
-    \cup & \{(target_i, source_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
-    \cup & \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \text{ } \\
-    \cup & \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if4 } reverse\_cost \neq \varnothing \\
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ } \\
+    \cup      \{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if } reverse\_cost = \varnothing \\
+    \text{ }  \text{ }  & \text{ } \\
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \text{ } \\
+    \cup  \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if } reverse\_cost \neq \varnothing \\
     \end{cases}`
 
 
@@ -99,19 +99,23 @@ The weighted undirected graph, :math:`G_u(V,E)`, is definied by:
 
 Given:
 
-  - :math:`start_{vid} \in V` a starting vertex
-  - :math:`end_{vid} \in V` an ending vertex
-  - :math:`G(V,E) = \begin{cases}  G_d(V,E) &\quad \text{ if6 } directed = true \\ G_u(V,E) &\quad \text{ if5 } directed = false \\ \end{cases}`
+- :math:`start_{vid} \in V` a starting vertex
+- :math:`end_{vid} \in V` an ending vertex
+- :math:`G(V,E) = \begin{cases}
+  G_d(V,E) & \quad \text{ if6 } directed = true \\
+  G_u(V,E) & \quad \text{ if5 } directed = false \\
+  \end{cases}`
 
 Then:
 
-.. math:: \text{pgr_dijkstra}(sql, start_{vid}, end_{vid}, directed) =
+.. math::`pgr_dijkstra(sql, start_{vid}, end_{vid}, directed) =
   \begin{cases}
-  \text{shortest path } \boldsymbol{\pi} \text{ between } start_{vid} \text{and } end_{vid} &\quad \text{if7 } \exists  \boldsymbol{\pi}  \\
-  \varnothing &\quad \text{otherwise} \\
-  \end{cases}
+  \text{shortest path } \boldsymbol{\pi} \text{ between } start_{vid} \text{and } end_{vid} & \quad \text{if7 } \exists  \boldsymbol{\pi}  \\
+  \varnothing & \quad \text{otherwise} \\
+  \end{cases}`
 
-:math:`\boldsymbol{\pi} = \{(path\_seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}`
+
+- :math:`\boldsymbol{\pi} = \{(path\_seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}`
 
 where:
   - :math:`path\_seq_i = i`
