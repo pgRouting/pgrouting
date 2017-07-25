@@ -254,7 +254,7 @@ Examples
 	(1 row)
 
 
-The example uses the :ref:`sampledata` network.
+The example uses the :doc:`sampledata` network.
 
 
 See Also

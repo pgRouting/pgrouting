@@ -247,7 +247,7 @@ Column         Type               Default     Description
 Additional Examples
 --------------------------------------------------------------------------------------
 
-The examples of this section are based on the :ref:`sampledata` network.
+The examples of this section are based on the :doc:`sampledata` network.
 
 The examples include combinations from starting vertices 2 and 11 to ending vertices 3 and 5 in a directed and
 undirected graph with and with out reverse_cost.
@@ -324,7 +324,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

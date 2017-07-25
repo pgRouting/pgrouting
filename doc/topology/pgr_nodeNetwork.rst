@@ -69,7 +69,7 @@ The output table will have for  ``edge_table_noded``
 Example
 -------------------------------------------------------------------------------
 
-Let's create the topology for the data in :ref:`sampledata`
+Let's create the topology for the data in :doc:`sampledata`
 
 .. code-block:: sql
 

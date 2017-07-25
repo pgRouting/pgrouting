@@ -196,7 +196,7 @@ The examples in this section use the following :ref:`fig1`
 
 
 
-The queries use the :ref:`sampledata` network.
+The queries use the :doc:`sampledata` network.
 
 
 

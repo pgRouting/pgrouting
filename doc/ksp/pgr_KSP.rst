@@ -173,7 +173,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/K_shortest_path_routing
-* :ref:`sampledata` network.
+* :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
