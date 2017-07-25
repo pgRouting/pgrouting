@@ -223,6 +223,27 @@ class Path {
 
     template <typename G , typename V> Path(
             G &graph,
+            int64_t source,
+            double distance,
+            const std::vector<V> &predecessors,
+            const std::vector<double> &distances) :
+        m_start_id(source),
+        m_end_id(source) {
+            for (V i = 0; i < distances.size(); ++i) {
+                if (distances[i] <= distance) {
+                    auto cost = distances[i] - distances[predecessors[i]];
+                    auto edge_id = graph.get_edge_id(predecessors[i], i, cost);
+                    push_back(
+                            {graph[i].id,
+                            edge_id, cost,
+                            distances[i]});
+                }
+            }
+        }
+
+
+    template <typename G , typename V> Path(
+            G &graph,
             V v_source,
             double distance,
             const std::vector<V> &predecessors,
