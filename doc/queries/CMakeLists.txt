@@ -42,6 +42,7 @@ SET(LOCAL_FILES
     proof_of_concept.queries
     trsp_notes_v2.5.0.queries
     oneDepotWrapper.queries
+    doc-gsoc_vrppdtw.queries
     )
 
 foreach (f ${LOCAL_FILES})

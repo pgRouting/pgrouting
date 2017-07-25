@@ -363,7 +363,7 @@ Examples
 	(1 row)
 
 
-The examples use the :ref:`sampledata` network.
+The examples use the :doc:`sampledata` network.
 
 
 See Also

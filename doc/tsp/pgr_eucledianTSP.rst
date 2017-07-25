@@ -132,7 +132,7 @@ Examples
 
 
 
-The queries use the :ref:`sampledata` network.
+The queries use the :doc:`sampledata` network.
 
 
 .. rubric:: History

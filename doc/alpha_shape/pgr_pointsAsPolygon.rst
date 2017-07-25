@@ -66,7 +66,7 @@ In the following query there is no way to control which point in the polygon is 
    :end-before: --q2
 
 
-The query use the :ref:`sampledata` network.
+The query use the :doc:`sampledata` network.
 
 
 See Also
