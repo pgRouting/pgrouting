@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "cpp_common/pgr_messages.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #if 0
@@ -60,17 +61,6 @@ pgr_drivingDistance(
 }
 
 
-template < class G >
-Path
-pgr_drivingDistance(
-        G &graph,
-        int64_t  source,
-        double distance) {
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.drivingDistance(graph, source, distance);
-}
-
-
 /* 1 to 1*/
 template < class G >
 Path
@@ -83,67 +73,13 @@ pgr_dijkstra(
     return fn_dijkstra.dijkstra(graph, source, target, only_cost);
 }
 
-/* 1 to many*/
-template < class G >
-std::deque<Path>
-pgr_dijkstra(
-        G &graph,
-        int64_t  source,
-        std::vector< int64_t > targets,
-        bool only_cost = false) {
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, targets, only_cost);
-}
-
-/* many to 1*/
-template < class G >
-std::deque<Path>
-pgr_dijkstra(
-        G &graph,
-        std::vector< int64_t > sources,
-        int64_t  target,
-        bool only_cost = false) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, sources, target, only_cost);
-}
-
-/* Many to Many */
-template < class G >
-std::deque<Path>
-pgr_dijkstra(
-        G &graph,
-        std::vector< int64_t > sources,
-        std::vector< int64_t > targets,
-        bool only_cost = false) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, sources, targets, only_cost);
-}
 
 
 
 //******************************************
 
 template < class G >
-class Pgr_dijkstra {
+class Pgr_dijkstra : public pgrouting::Pgr_messages {
  public:
      typedef typename G::V V;
 
@@ -377,6 +313,7 @@ Pgr_dijkstra< G >::drivingDistance(
     auto v_source(graph.get_V(start_vertex));;
     dijkstra_1_to_distance(graph, v_source, distance);
 
+    // TODO this is the last thing
     auto path = Path(graph, v_source, distance, predecessors, distances);
 
     std::sort(path.begin(), path.end(),
