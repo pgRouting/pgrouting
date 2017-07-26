@@ -37,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "cpp_common/pgr_messages.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #if 0
@@ -79,7 +78,7 @@ pgr_dijkstra(
 //******************************************
 
 template < class G >
-class Pgr_dijkstra : public pgrouting::Pgr_messages {
+class Pgr_dijkstra {
  public:
      typedef typename G::V V;
 
@@ -111,50 +110,28 @@ class Pgr_dijkstra : public pgrouting::Pgr_messages {
         return p;
      }
 
-
      // preparation for many to distance
      std::deque< Path > drivingDistance(
              G &graph,
              const std::vector< int64_t > start_vertex,
              double distance,
              bool equicost) {
-         std::deque< std::vector< V > > pred;
-         std::deque< std::vector< double > > dist;
-
-         // perform the algorithm
-         for (const auto &vertex : start_vertex) {
-             if (execute_drivingDistance(graph, vertex, distance)) {
-                 pred.push_back(predecessors);
-                 dist.push_back(distances);
-             } else {
-                 pred.push_back(std::vector< V >());
-                 dist.push_back(std::vector< double >());
-             }
-         }
-         std::deque<Path> paths;
-         for (const auto source : start_vertex) {
-             if (pred.front().empty()) {
-                 Path p(source, source);
-                 p.push_back({source, -1, 0, 0});
-                 paths.push_back(p);
-             } else {
-                 auto path = Path(graph, source, distance, pred.front(), dist.front());
-                 std::sort(path.begin(), path.end(),
-                         [](const Path_t &l, const  Path_t &r)
-                         {return l.node < r.node;});
-                 std::stable_sort(path.begin(), path.end(),
-                         [](const Path_t &l, const  Path_t &r)
-                         {return l.agg_cost < r.agg_cost;});
-                 paths.push_back(path);
-             }
-             pred.pop_front();
-             dist.pop_front();
-         }
-         if (equicost) {
-             equi_cost(paths);
-         }
-         return paths;
+         return equicost?
+             drivingDistance_with_equicost(
+                     graph,
+                     start_vertex,
+                     distance)
+             :
+             drivingDistance_no_equicost(
+                     graph,
+                     start_vertex,
+                     distance);
      }
+
+
+
+
+
 
      //@}
 
@@ -210,7 +187,13 @@ class Pgr_dijkstra : public pgrouting::Pgr_messages {
          return found;
      }
 
-     //! Call to Dijkstra  1 source to distance
+     /** Call to Dijkstra  1 to distance
+      *
+      * Used on:
+      *   1 to distance
+      *   many to distance
+      *   On the first call of many to distance with equi_cost
+      */
      bool dijkstra_1_to_distance(
              G &graph,
              V source,
@@ -231,6 +214,33 @@ class Pgr_dijkstra : public pgrouting::Pgr_messages {
          }
          return found;
      }
+
+     /** Call to Dijkstra  1 to distance no init
+      *
+      * Used on:
+      *   On the subsequent calls of many to distance with equi_cost
+      */
+     bool dijkstra_1_to_distance_no_init(
+             G &graph,
+             V source,
+             double distance) {
+         bool found = false;
+         try {
+             boost::dijkstra_shortest_paths_no_init(graph.graph, source,
+                     boost::predecessor_map(&predecessors[0])
+                     .weight_map(get(&G::G_T_E::cost, graph.graph))
+                     .distance_map(&distances[0])
+                     .visitor(dijkstra_distance_visitor(
+                             distance,
+                             nodesInDistance,
+                             distances)));
+         } catch(found_goals &) {
+             found = true;
+         } catch (...) {
+         }
+         return found;
+     }
+
 
      /** @brief to use with driving distance
       *
@@ -263,6 +273,77 @@ class Pgr_dijkstra : public pgrouting::Pgr_messages {
                  graph.get_V(start_vertex),
                  distance);
      }
+
+     // preparation for many to distance with equicost
+     std::deque< Path > drivingDistance_with_equicost(
+             G &graph,
+             const std::vector< int64_t > start_vertex,
+             double distance) {
+         std::deque< std::vector< V > > pred;
+         std::deque< std::vector< double > > dist;
+
+         // perform the algorithm
+         for (const auto &vertex : start_vertex) {
+             if (execute_drivingDistance(graph, vertex, distance)) {
+                 pred.push_back(predecessors);
+                 dist.push_back(distances);
+             } else {
+                 pred.push_back(std::vector< V >());
+                 dist.push_back(std::vector< double >());
+             }
+         }
+         std::deque<Path> paths;
+         for (const auto source : start_vertex) {
+             if (pred.front().empty()) {
+                 Path p(source, source);
+                 p.push_back({source, -1, 0, 0});
+                 paths.push_back(p);
+             } else {
+                 auto path = Path(graph, source, distance, pred.front(), dist.front());
+                 std::sort(path.begin(), path.end(),
+                         [](const Path_t &l, const  Path_t &r)
+                         {return l.node < r.node;});
+                 std::stable_sort(path.begin(), path.end(),
+                         [](const Path_t &l, const  Path_t &r)
+                         {return l.agg_cost < r.agg_cost;});
+                 paths.push_back(path);
+             }
+             pred.pop_front();
+             dist.pop_front();
+         }
+         equi_cost(paths);
+         return paths;
+     }
+
+     // preparation for many to distance No equicost
+     std::deque< Path > drivingDistance_no_equicost(
+             G &graph,
+             const std::vector< int64_t > start_vertex,
+             double distance) {
+         std::deque< std::vector< V > > pred;
+         std::deque< std::vector< double > > dist;
+
+         // perform the algorithm
+         std::deque<Path> paths;
+         for (const auto &vertex : start_vertex) {
+             if (execute_drivingDistance(graph, vertex, distance)) {
+                 auto path = Path(graph, vertex, distance, predecessors, distances);
+                 std::sort(path.begin(), path.end(),
+                         [](const Path_t &l, const  Path_t &r)
+                         {return l.node < r.node;});
+                 std::stable_sort(path.begin(), path.end(),
+                         [](const Path_t &l, const  Path_t &r)
+                         {return l.agg_cost < r.agg_cost;});
+                 paths.push_back(path);
+             } else {
+                 Path p(vertex, vertex);
+                 p.push_back({vertex, -1, 0, 0});
+                 paths.push_back(p);
+             }
+         }
+         return paths;
+     }
+
 
      //! Call to Dijkstra  1 source to many targets
      bool dijkstra_1_to_many(
