@@ -272,6 +272,7 @@ class Pgr_base_graph {
      //@{
      typedef G B_G;
      typedef T_E G_T_E;
+     typedef T_V G_T_V;
      typedef typename boost::graph_traits < G >::vertex_descriptor V;
      typedef typename boost::graph_traits < G >::edge_descriptor E;
      typedef typename boost::graph_traits < G >::vertex_iterator V_i;
