@@ -117,16 +117,26 @@ class Pgr_dijkstra {
              const std::vector< int64_t > start_vertex,
              double distance,
              bool equicost) {
-         return equicost?
-             drivingDistance_with_equicost(
-                     graph,
-                     start_vertex,
-                     distance)
-             :
-             drivingDistance_no_equicost(
+         if (equicost) {
+#if 1
+             auto paths = drivingDistance_with_equicost(
                      graph,
                      start_vertex,
                      distance);
+#else
+             auto paths = drivingDistance_no_equicost(
+                     graph,
+                     start_vertex,
+                     distance);
+             equi_cost(paths);
+#endif
+             return paths;
+         } else {
+             return drivingDistance_no_equicost(
+                     graph,
+                     start_vertex,
+                     distance);
+         }
      }
 
 
@@ -226,50 +236,20 @@ class Pgr_dijkstra {
              V source,
              double distance) {
          bool found = false;
+         distances[source] = 0; //std::numeric_limits<double>::max();
          try {
-             /*
-              *   void dijkstra_shortest_paths_no_color_map_no_init
-              *       (const Graph& graph,
-              *            typename graph_traits<Graph>::vertex_descriptor start_vertex,
-              *                 PredecessorMap predecessor_map,
-              *                      DistanceMap distance_map,
-              *                           WeightMap weight_map,
-              *                                VertexIndexMap index_map,
-              *                                     DistanceCompare distance_compare,
-              *                                          DistanceWeightCombine distance_weight_combine,
-              *                                               DistanceInfinity distance_infinity,
-              *                                                    DistanceZero distance_zero,
-              *                                                         DijkstraVisitor visitor)
-              
-              The solution is just to: 1) Say the vertex descriptor is defined as typedef Graph::vertex_descriptor G::G_T_V;i
-              then you need to define an associative property map as following:
-
-
-
-
-             std::vector<V> indexMap(graph.m_num_vertices) ; // vector with 100 ints.
-             std::iota(std::begin(indexMap), std::end(indexMap), 0); 
-             std::vector<V> predecessors(num_vertices(graph.graph));
-              */
-
-             typedef typename boost::property_map < typename G::B_G, size_t >::type IndexMap;
-             IndexMap indexMap = boost::get(&G::G_T_E::id, graph.graph);
-#if 1
-             boost::dijkstra_shortest_paths_no_init(
-                     graph.graph,
-                     source,
-                     boost::predecessor_map(&predecessors[0]),
-                     boost::distance_map(&distances[0]),
-                     weight_map(get(&G::G_T_E::cost, graph.graph)),
-                     get(boost::vertex_index, graph.graph),
-                     std::less<double>(),
-                     boost::closed_plus<double>(), 
-                     double(0),  //DistZero
-                     visitor(dijkstra_distance_visitor(
+             boost::dijkstra_shortest_paths_no_init(graph.graph, source,
+                      &predecessors[0]
+                     ,&distances[0]
+                     ,get(&G::G_T_E::cost, graph.graph)
+                     ,get(boost::vertex_index, graph.graph)
+                     ,std::less<double>()
+                     ,boost::closed_plus<double>()
+                     ,double(0)
+                     ,dijkstra_distance_visitor(
                              distance,
                              nodesInDistance,
-                             distances)));
-#endif
+                             distances));
          } catch(found_goals &) {
              found = true;
          } catch (...) {
@@ -327,15 +307,27 @@ class Pgr_dijkstra {
              G &graph,
              int64_t start_vertex,
              double distance) {
-#if 0
-        predecessors.clear();
-        predecessors.resize(graph.num_vertices());
-#endif
-         // get source;
+        pgassert(predecessors.size() == graph.num_vertices());
+        pgassert(distances.size() == graph.num_vertices());
+
+        /*
+         * get source
+         */
+
          if (!graph.has_vertex(start_vertex)) {
              return false;
          }
 
+         std::iota(predecessors.begin(), predecessors.end(), 0);
+
+#if DEBUG
+         /*
+          * Expensive assertion
+          */
+         for (V i = 0 ; i < predecessors.size(); ++i) {
+             pgassert(i == predecessors[i]);
+         }
+#endif
          return dijkstra_1_to_distance_no_init(
                  graph,
                  graph.get_V(start_vertex),
@@ -361,82 +353,96 @@ class Pgr_dijkstra {
              G &graph,
              const std::vector< int64_t > start_vertex,
              double distance) {
-#if 1
          clear();
 
          predecessors.resize(graph.num_vertices());
-         distances.resize(graph.num_vertices());
+         distances.resize(graph.num_vertices(), std::numeric_limits<double>::max());
 
+         /*
+          * Vector to store the different predessesors
+          * each is of size = graph.num_vertices()
+          *
+          * TODO
+          * - figure out less storage if possible
+          */
          std::deque< std::vector< V > > pred;
-         std::deque< std::vector< double > > dist;
 
-         bool first = true;
          // perform the algorithm
          for (const auto &vertex : start_vertex) {
-             if (first) { 
-                 if (execute_drivingDistance(graph, vertex, distance)) {
-                     pred.push_back(predecessors);
-                     dist.push_back(distances);
-                     first = false;
-                 } else {
-                     pred.push_back(std::vector< V >());
-                     dist.push_back(std::vector< double >());
-                 }
-             } else {
-                 if (execute_drivingDistance_no_init(graph, vertex, distance)) {
-                     pred.push_back(predecessors);
-                     dist.push_back(distances);
-                 } else {
-                     pred.push_back(std::vector< V >());
-                     dist.push_back(std::vector< double >());
-                 }
+             nodesInDistance.clear();
+             for (auto &p : pred) {
+                 if (!p.empty() & graph.has_vertex(vertex))
+                     p[graph.get_V(vertex)] = graph.get_V(vertex);
              }
-         }
-         auto path = Path(graph, 1, distance, predecessors, distances);
-         std::sort(path.begin(), path.end(),
-                 [](const Path_t &l, const  Path_t &r)
-                 {return l.node < r.node;});
-         std::stable_sort(path.begin(), path.end(),
-                 [](const Path_t &l, const  Path_t &r)
-                 {return l.agg_cost < r.agg_cost;});
-         std::deque<Path> paths;
-         paths.push_back(path);
-
-#else
-         std::deque< std::vector< V > > pred;
-         std::deque< std::vector< double > > dist;
-
-         // perform the algorithm
-         for (const auto &vertex : start_vertex) {
-             if (execute_drivingDistance(graph, vertex, distance)) {
+             if (execute_drivingDistance_no_init(graph, vertex, distance)) {
                  pred.push_back(predecessors);
-                 dist.push_back(distances);
              } else {
                  pred.push_back(std::vector< V >());
-                 dist.push_back(std::vector< double >());
              }
          }
          std::deque<Path> paths;
-         for (const auto source : start_vertex) {
-             if (pred.front().empty()) {
-                 Path p(source, source);
-                 p.push_back({source, -1, 0, 0});
-                 paths.push_back(p);
-             } else {
-                 auto path = Path(graph, source, distance, pred.front(), dist.front());
-                 std::sort(path.begin(), path.end(),
-                         [](const Path_t &l, const  Path_t &r)
-                         {return l.node < r.node;});
-                 std::stable_sort(path.begin(), path.end(),
-                         [](const Path_t &l, const  Path_t &r)
-                         {return l.agg_cost < r.agg_cost;});
-                 paths.push_back(path);
-             }
-             pred.pop_front();
-             dist.pop_front();
+
+         /*
+          * Creating all the result "paths"
+          */
+         for (const auto vertex : start_vertex) {
+             paths.push_back(Path(vertex, vertex));
+             paths.back().push_back({vertex, -1, 0, 0});
          }
-         equi_cost(paths);
-#endif
+
+         for (auto i = start_vertex.size(); i > 0; --i) {
+             if (start_vertex[i - 1] == 13) {
+                 pgassert(!pred[i - 1].empty());
+                 size_t count(0);
+                 for (V i = 0 ; i < pred[i - 1]; ++i) {
+                     count += i != predecessors[i]? 1 : 0;
+                 }
+                 pgassert(count > 0);
+             }
+         }
+
+         /*
+          *  Ciclying the distances:
+          *  To which vertex do they belong to?
+          */
+         for (V d = 0; d < distances.size(); ++d) {
+             /*
+              * Sikiping distances greater than the one asked for
+              */
+             if (!(distances[d] <= distance)) continue;
+
+             for (auto i = start_vertex.size(); i > 0; --i) {
+                 /*
+                  * The vertex does not exist on the graph
+                  */
+                 if (pred[i - 1].empty()) continue;
+
+
+                 /*
+                  * The predecessor = current then
+                  *  its unreachable to this vertex
+                  */
+                 if (pred[i - 1][d] == d) continue; 
+
+                 auto cost = distances[d] - distances[pred[i - 1][d]];
+                 auto edge_id = graph.get_edge_id(pred[i - 1][d], d, cost);
+                 pgassert(edge_id != -1);
+                 paths[i - 1].push_back(
+                         {graph[d].id,
+                         edge_id, cost,
+                         distances[d]});
+                 break;
+             }
+         }
+
+         for (auto &path : paths) {
+             std::sort(path.begin(), path.end(),
+                     [](const Path_t &l, const  Path_t &r)
+                     {return l.node < r.node;});
+             std::stable_sort(path.begin(), path.end(),
+                     [](const Path_t &l, const  Path_t &r)
+                     {return l.agg_cost < r.agg_cost;});
+         }
          return paths;
      }
 
@@ -570,11 +576,12 @@ class Pgr_dijkstra {
               m_distance_goal(distance_goal),
               m_nodes(nodesInDistance),
               m_dist(distances) {
+                  pgassert(m_nodes.empty());
               }
           template <class B_G>
               void examine_vertex(V u, B_G &g) {
+                  if (m_dist[u] > m_distance_goal) throw found_goals();
                   m_nodes.push_back(u);
-                  if (m_dist[u] >= m_distance_goal) throw found_goals();
                   num_edges(g);
               }
       private:
