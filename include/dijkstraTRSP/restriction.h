@@ -46,6 +46,11 @@ class Restriction {
 
         std::vector< int64_t > restrict_edges() const {return m_restrict_edges;}
         void restrict_edges(const int64_t& value) {m_restrict_edges.push_back(value);}
+        void clear() {
+            m_restrict_edges.clear();
+        }
+
+        int64_t restriction_size() const {return m_restrict_edges.size();}
 
         friend std::ostream& operator << (std::ostream &log, const Restriction &r);
 };

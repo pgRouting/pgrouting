@@ -127,14 +127,16 @@ do_pgr_dijkstraTRSP(
             pgrouting::UndirectedGraph undigraph(gType);
             Pgr_dijkstraTRSP < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
-            /*path = pgr_dijkstraTRSP(undigraph,
+        #if 0
+            path = pgr_dijkstraTRSP(undigraph,
                     restrict_array,
                     edges,
                     start_vid,
                     end_vid,
                     logstr,
                     only_cost,
-                    strict);*/
+                    strict);
+        #endif
         }
         log << logstr;
         auto count = path.size();

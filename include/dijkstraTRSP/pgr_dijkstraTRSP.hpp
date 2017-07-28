@@ -20,7 +20,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "dijkstra/pgr_dijkstra.hpp"
-#include "dijkstraTRSP/restriction.h"
 #include "c_types/line_graph_rt.h"
 
 #include "lineGraph/pgr_lineGraph.hpp"
@@ -102,7 +101,14 @@ Pgr_dijkstraTRSP< G >::dijkstraTRSP(
     pgrouting::LinearDirectedGraph line(DIRECTED);
     line.insert_vertices(edges);
     auto line_graph_edges = line.transform(graph);
+    log << "\nGraph before removing restrictions\n" << line << "\n";
+    auto remaining_restrictions = line.remove_restricted_edges(m_restrictions);
+    log << "\n Graph after removing restrictions\n" << line << "\n";
+
+    log << line.log.str().c_str() << "\n\n\n";
+
     line.create_virtual_vertices();
+    log << line << "\n";
     return curr_result_path;
 }
 

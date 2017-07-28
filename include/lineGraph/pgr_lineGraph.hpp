@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/line_vertex.h"
+#include "dijkstraTRSP/restriction.h"
 
 namespace pgrouting {
 
@@ -52,6 +53,7 @@ template <class G, typename T_V, typename T_E>
 class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
  private:
     int64_t m_num_edges;
+    std::map < int64_t, pgr_edge_t > m_edges;
     std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;
 
     void add_vertices(std::vector< T_V > vertices);
@@ -62,6 +64,12 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
     template < typename T >
         void graph_add_edge(const T &edge, int64_t, int64_t);
+
+    template < typename T >
+    void disconnect_edge(const T& from, const T& to);
+
+    template < typename T >
+    void get_ids(std::vector< T >& restrictions);
 
     void create_virtual_vertex(int64_t id);
     void create_virtual_edge(
@@ -93,7 +101,9 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
     template < typename T >
         void insert_vertices(const std::vector < T > &edges) {
-            std::vector < Line_vertex > vertices = extract_vertices(edges);
+            for (auto &it: edges)
+                m_edges[it.id] = it;
+            std::vector < Line_vertex > vertices = extract_vertices();
             log << "\nVertices of line graph: \n";
             for (auto vertex: vertices) {
                 log << vertex.id << "(" << vertex.source << " - > ";
@@ -101,10 +111,21 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
             }
             add_vertices(vertices);
         }
-
     template < typename T >
-        std::vector < Line_vertex > extract_vertices(
-            const std::vector < T > data_edges);
+        std::vector< Restriction > remove_restricted_edges(std::vector< T >& restrictions) {
+            get_ids(restrictions);
+            std::vector< T > remaining;
+            for (const auto &r: restrictions) {
+                if (r.restriction_size() > 2) {
+                    remaining.push_back(r);
+                    continue;
+                }
+                disconnect_edge(r.restrict_edges()[0], r.restrict_edges()[1]);
+            }
+            return remaining;
+        }
+
+    std::vector < Line_vertex > extract_vertices();
 
     std::vector< Line_graph_rt > transform(pgrouting::DirectedGraph& digraph);
     void create_virtual_vertices();
@@ -131,6 +152,67 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         return log;
     }
 };
+
+template < class G, typename T_V, typename T_E >
+template < typename T >
+void
+Pgr_lineGraph< G, T_V, T_E >::get_ids(std::vector< T >& restrictions) {
+    for (auto &r: restrictions) {
+        auto restrict_edges = r.restrict_edges();
+        std::vector < int64_t > temp;
+
+        pgassert(m_edges.find(restrict_edges[0]) != m_edges.end());
+        auto prev = m_edges[restrict_edges[0]];
+
+        for (auto i = 1; i < (int64_t)restrict_edges.size(); i++) {
+            pgassert(m_edges.find(restrict_edges[i]) != m_edges.end());
+            auto cur = m_edges[restrict_edges[i]];
+
+            if (prev.target == cur.target) {
+                std::swap(cur.source, cur.target);
+                std::swap(cur.cost, cur.reverse_cost);
+            }
+
+            if(prev.source == cur.source) {
+                std::swap(prev.source, prev.target);
+                std::swap(prev.cost, prev.reverse_cost);
+            }
+
+            if(prev.source == cur.target) {
+                std::swap(prev.source, prev.target);
+                std::swap(prev.cost, prev.reverse_cost);
+                std::swap(cur.source, cur.target);
+                std::swap(cur.cost, cur.reverse_cost);
+            }
+
+            pgassert(m_vertex_map.find( {prev.id, prev.source} ) != m_vertex_map.end());
+            pgassert(m_vertex_map.find( {cur.id, cur.source} ) != m_vertex_map.end());
+
+            if (temp.empty()) {
+                temp.push_back( m_vertex_map[ {prev.id, prev.source} ] );
+            }
+
+            temp.push_back( m_vertex_map[ {cur.id, cur.source} ] );
+            prev = cur;
+        }
+        r.clear();
+        for (const auto &it: temp) r.restrict_edges(it);
+    }
+}
+
+template < class G, typename T_V, typename T_E >
+template < typename T >
+void
+Pgr_lineGraph< G, T_V, T_E >::disconnect_edge(const T& from, const T& to) {
+
+    pgassert(this->vertices_map.find(from) != this->vertices_map.end());
+    pgassert(this->vertices_map.find(to) != this->vertices_map.end());
+
+    auto vm_s = this->get_V(from);
+    auto vm_t = this->get_V(to);
+
+    boost::remove_edge(vm_s, vm_t, this->graph);
+}
 
 template < class G, typename T_V, typename T_E >
 void
@@ -217,15 +299,14 @@ Pgr_lineGraph< G, T_V, T_E >::transform(pgrouting::DirectedGraph& digraph) {
 }
 
 template < class G, typename T_V, typename T_E >
-template < typename T>
 std::vector < Line_vertex >
-Pgr_lineGraph< G, T_V, T_E >::extract_vertices(
-        const std::vector < T > data_edges) {
-    if (data_edges.empty()) return std::vector< Line_vertex >();
+Pgr_lineGraph< G, T_V, T_E >::extract_vertices() {
+    if (m_edges.empty()) return std::vector< Line_vertex >();
 
     std::vector< Line_vertex > vertices;
 
-    for (const auto edge : data_edges) {
+    for (const auto &it : m_edges) {
+        auto edge = it.second;
         Line_vertex vertex(edge);
 
         if (edge.cost > 0) {
