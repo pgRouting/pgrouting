@@ -658,6 +658,13 @@ class Pgr_dijkstra {
                   pgassert(m_distance_goal > 0);
               }
 
+          /*
+           * TODO 
+           * When examine_vertex, and predecessor[u] == u;
+           * Remove @b u from the Queue
+           * Because anything after that was captured by a previous vertex
+           */
+
           template <class B_G>
           void examine_vertex(V u, B_G &g) {
               if (m_nodes.empty()) first = u;
