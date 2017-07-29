@@ -4,6 +4,7 @@ SET(LOCAL_FILES
     strongComponentsV.sql
     biconnectedComponents.sql
     articulationPoints.sql
+    bridges.sql
     )
 
 # Do not modify bellow this line

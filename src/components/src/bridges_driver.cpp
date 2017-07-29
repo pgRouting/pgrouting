@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: articulationPoints_driver.cpp
+File: bridges_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/components/articulationPoints_driver.h"
+#include "drivers/components/bridges_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -51,16 +51,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 template < class G >
 static
 std::vector<pgr_components_rt>
-pgr_articulationPoints(
+pgr_bridges(
         G &graph) {
     std::vector<pgr_components_rt> results;
     Pgr_components< G > fn_components;
-    return fn_components.articulationPoints(graph);
+    return fn_components.bridges(graph);
 }
 
 
 void
-do_pgr_articulationPoints(
+do_pgr_bridges(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         pgr_components_rt **return_tuples,
@@ -86,7 +86,7 @@ do_pgr_articulationPoints(
         log << "Working with Undirected Graph\n";
         pgrouting::ComponentsUndiGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_articulationPoints(
+        results = pgr_bridges(
                 undigraph);
 
         auto count = results.size();
