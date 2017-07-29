@@ -69,6 +69,10 @@ class Pgr_components {
      //! Articulation Points
      std::vector<pgr_components_rt> articulationPoints(
              G &graph);
+
+     //! Bridges
+     std::vector<pgr_components_rt> bridges(
+             G &graph);
  private:
      //! Generate Results, Vertex Version
      std::vector<pgr_components_rt> generate_results(
@@ -179,6 +183,30 @@ Pgr_components< G >::biconnectedComponents(
 template < class G >
 std::vector<pgr_components_rt>
 Pgr_components< G >::articulationPoints(
+        G &graph) {
+    // perform the algorithm
+    std::vector <int> art_points;
+    boost::articulation_points(graph.graph, std::back_inserter(art_points));
+
+    // get the results
+    std::vector <pgr_components_rt> results;
+    size_t totalArtp = art_points.size();
+    results.resize(totalArtp);
+    for (size_t i = 0; i < totalArtp; i++)
+        results[i].identifier = graph[art_points[i]].id;
+    
+    // sort identifier
+    std::sort(results.begin(), results.end(),
+            [](const pgr_components_rt &left, const pgr_components_rt &right) {
+            return left.identifier < right.identifier; });
+
+    return results; 
+}
+
+//! Bridges 
+template < class G >
+std::vector<pgr_components_rt>
+Pgr_components< G >::bridges(
         G &graph) {
     // perform the algorithm
     std::vector <int> art_points;
