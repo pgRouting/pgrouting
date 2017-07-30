@@ -281,7 +281,7 @@ class Pgr_dijkstra {
              throw;
          }
 
-#if DEBUG
+#if 0
          /*
           * Expensive assertion
           */
@@ -348,7 +348,7 @@ class Pgr_dijkstra {
 
          std::iota(predecessors.begin(), predecessors.end(), 0);
 
-#if 1
+#if 0
          /*
           * Expensive assertion
           */
@@ -692,16 +692,17 @@ class Pgr_dijkstra {
                       }
                       pgassertwm(m_nodes.size() > 4, log.str().c_str());
                   }
-#endif
                   log << "THROWING\n";
+#endif
                   throw found_goals();
               }
-#if 1
+#if 0
               log << "\nEXAMINE VERTEX u" << u << "****************";
               log << "\ng[u].id= " << g[u].id ;
               log << "\nm_color[u]" << m_color[u];
               log << "\nm_predecessors[u]" << m_predecessors[u];
               log << "\nm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
+#endif
               if (u != first && m_predecessors[u] == u ){
                    m_color[u]=boost::black_color;
               }
@@ -717,14 +718,13 @@ class Pgr_dijkstra {
               log << "\ng[first].id= " << g[first].id ;
 #endif
 
-#endif
               m_nodes.push_back(u);
               num_edges(g);
           }
 
-#if 1
           template <class B_G>
           void examine_edge(E e, B_G &g) {
+#if 0
               log << "\nEXAMINE EDGE " << e;
               log << "\n\tg[e].target= " << target(e, g);
               log << "\n\tm_color[target(e, g)]" << m_color[target(e, g)];
@@ -732,12 +732,14 @@ class Pgr_dijkstra {
               log << "\n\tm_color[source(e, g)]" << m_color[source(e, g)];
               log << "\n\tsource(e, g)" << source(e, g);
               log << "\n\tfirst" << first;
+#endif
               if (source(e, g) != first && m_predecessors[source(e,g)] == source(e,g)) {
                    m_color[target(e,g)]=boost::black_color;
               }
+              num_edges(g);
+#if 0
               log << "\n\tg[e].target= " << g[target(e, g)].id;
               log << "\n\tm_color[target(e, g)]" << m_color[target(e, g)];
-#if 0
               log << "e= " << e ;
               log << "\ng[e].id= " << g[e].id ;
               log << "\ng[e].source= " << g[source(e ,g)];
@@ -747,39 +749,39 @@ class Pgr_dijkstra {
               }
 #endif
           }
-#endif
 
           
 
-#if 1
+#if 0
           template <class B_G>
           void edge_relaxed(E e, B_G &g) {
               log << "\n\t\tRELAXED " << e;
               log << "\n\t\tg[e].target= " << g[target(e, g)].id;
               log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
-#if 0
               log << "e= " << e ;
               log << "\ng[e].id= " << g[e].id ;
               log << "\nPredecesors\n";
               for (auto p : m_predecessors) {
                   log << "(" << p << "," << g[p].id << "),";
               }
-#endif
           }
 #endif
 
           
 
-#if 1
           template <class B_G>
           void edge_not_relaxed(E e, B_G &g) {
+#if 0
               log << "\n\t\tNOT RELAXED " << e;
               log << "\n\t\tg[e].target= " << g[target(e, g)].id;
               log << "\n\t\texamined vertex" << g[v_examined];
               log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
-              if (source(e, g) != first && m_predecessors[source(e,g)] == source(e,g)) m_color[target(e,g)]=boost::black_color;
-              log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
+#endif
+              if (source(e, g) != first && m_predecessors[source(e,g)] == source(e,g)) {
+                  m_color[target(e,g)]=boost::black_color;
+              }
 #if 0
+              log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
               log << "e= " << e ;
               log << "\ng[e].id= " << g[e].id ;
               log << "\nPredecesors\n";
@@ -790,10 +792,10 @@ class Pgr_dijkstra {
               //if (first != u) pgassertwm(m_predecessors[u] != u, log.str().c_str());
 #endif
           }
-#endif
 
           
 
+#if 0
           template <class B_G>
           void finish_vertex(V u, B_G &g) {
               if (m_nodes.empty()) first = u;
@@ -801,18 +803,25 @@ class Pgr_dijkstra {
               log << "\ng[u].id= " << g[u].id ;
               log << "\nm_color[u]" << m_color[u];
           }
-#if 1
+#endif
+
+
           template <class B_G>
           void discover_vertex(V u, B_G &g) {
               if (m_nodes.empty()) first = u;
+#if 0
               log << "\n\t\t\tDISCOVER u" << u;
               log << "\n\t\t\tg[u].id= " << g[u].id ;
               log << "\n\t\t\tm_color[u]" << m_color[u];
               log << "\n\t\t\tm_predecessors[u]" << m_predecessors[u];
               log << "\n\t\t\tm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
+#endif
               if (u  != first && m_predecessors[u] == u) {
                    m_color[u]=boost::black_color;
+                   num_edges(g);
+#if 0
                    log << "\n\t\t\tm_color[u]" << m_color[u];
+#endif
               }
 #if 0
               log << "u= " << u ;
@@ -825,7 +834,6 @@ class Pgr_dijkstra {
               log << "\nm_color[u]" << m_color[u];
 #endif
           }
-#endif
 
       private:
           std::ostringstream &log;
