@@ -125,6 +125,7 @@ class Pgr_dijkstra {
                      graph,
                      start_vertex,
                      distance);
+              // pgassertwm(false, log.str().c_str());
              return paths;
          } else {
              return drivingDistance_no_equicost(
@@ -240,6 +241,16 @@ class Pgr_dijkstra {
          pgassert(predecessors.size() == graph.num_vertices());
          pgassert(distances.size() == graph.num_vertices());
          distances[source] = 0;
+#if 0
+         auto IndexMap = get(boost::vertex_index, graph.graph);
+         typedef
+             boost::detail::default_color_map_generator<G,  typeid(IndexMap)>
+             ColorMapHelper;
+         typedef typename ColorMapHelper::type ColorMap;
+         ColorMap color =
+             ColorMapHelper::build(g, index_map);
+#endif
+         std::vector<boost::default_color_type> color_map(graph.num_vertices());
          try {
              boost::dijkstra_shortest_paths_no_init(graph.graph, source,
                      &predecessors[0]
@@ -256,7 +267,10 @@ class Pgr_dijkstra {
                          distance,
                          nodesInDistance,
                          predecessors,
-                         distances));
+                         distances,
+                         color_map)
+                     ,boost::make_iterator_property_map(color_map.begin(), boost::get(boost::vertex_index, graph.graph), color_map[0])
+                     );
          } catch(found_goals &) {
              return true;
          } catch (boost::exception const& ex) {
@@ -646,13 +660,15 @@ class Pgr_dijkstra {
                   double distance_goal,
                   std::deque< V > &nodesInDistance,
                   std::vector< V > &predecessors,
-                  std::vector< double > &distances) :
+                  std::vector< double > &distances,
+                  std::vector<boost::default_color_type> &color_map) :
               log(p_log),
               first(source),
               m_distance_goal(distance_goal),
               m_nodes(nodesInDistance),
               m_predecessors(predecessors),
-              m_dist(distances) {
+              m_dist(distances),
+              m_color(color_map) {
                   undirected = undi;
                   pgassert(m_nodes.empty());
                   pgassert(m_distance_goal > 0);
@@ -680,51 +696,134 @@ class Pgr_dijkstra {
                   log << "THROWING\n";
                   throw found_goals();
               }
-#if 0
-              log << "\nEXAMINE\n";
-              log << "u= " << u ;
+#if 1
+              log << "\nEXAMINE VERTEX u" << u << "****************";
               log << "\ng[u].id= " << g[u].id ;
+              log << "\nm_color[u]" << m_color[u];
+              log << "\nm_predecessors[u]" << m_predecessors[u];
+              log << "\nm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
+              if (u != first && m_predecessors[u] == u ){
+                   m_color[u]=boost::black_color;
+              }
+              log << "\nm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
+              v_examined = u;
+#if 0
+              log << "u= " << u ;
               log << "\nPredecesors\n";
               for (auto p : m_predecessors) {
                   log << g[p].id << ",";
               }
-              log <<"\n";
-              log << "first= " << first ;
+              log << "\nfirst= " << first ;
               log << "\ng[first].id= " << g[first].id ;
+#endif
 
 #endif
               m_nodes.push_back(u);
               num_edges(g);
           }
 
-#if 0
+#if 1
           template <class B_G>
-          void edge_not_relaxed(E e, B_G &g) {
-              log << "\nNOT RELAXED\n";
+          void examine_edge(E e, B_G &g) {
+              log << "\nEXAMINE EDGE " << e;
+              log << "\n\tg[e].target= " << target(e, g);
+              log << "\n\tm_color[target(e, g)]" << m_color[target(e, g)];
+              log << "\n\tm_predecessors[" << source(e, g) << "]" << m_predecessors[source(e, g)];
+              log << "\n\tm_color[source(e, g)]" << m_color[source(e, g)];
+              log << "\n\tsource(e, g)" << source(e, g);
+              log << "\n\tfirst" << first;
+              if (source(e, g) != first && m_predecessors[source(e,g)] == source(e,g)) {
+                   m_color[target(e,g)]=boost::black_color;
+              }
+              log << "\n\tg[e].target= " << g[target(e, g)].id;
+              log << "\n\tm_color[target(e, g)]" << m_color[target(e, g)];
+#if 0
               log << "e= " << e ;
               log << "\ng[e].id= " << g[e].id ;
+              log << "\ng[e].source= " << g[source(e ,g)];
               log << "\nPredecesors\n";
               for (auto p : m_predecessors) {
-                  log << g[p].id << ",";
+                  log << "(" << p << "," << g[p].id << "),";
               }
-              log <<"\n";
+#endif
           }
 #endif
 
           
 
+#if 1
+          template <class B_G>
+          void edge_relaxed(E e, B_G &g) {
+              log << "\n\t\tRELAXED " << e;
+              log << "\n\t\tg[e].target= " << g[target(e, g)].id;
+              log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
 #if 0
+              log << "e= " << e ;
+              log << "\ng[e].id= " << g[e].id ;
+              log << "\nPredecesors\n";
+              for (auto p : m_predecessors) {
+                  log << "(" << p << "," << g[p].id << "),";
+              }
+#endif
+          }
+#endif
+
+          
+
+#if 1
+          template <class B_G>
+          void edge_not_relaxed(E e, B_G &g) {
+              log << "\n\t\tNOT RELAXED " << e;
+              log << "\n\t\tg[e].target= " << g[target(e, g)].id;
+              log << "\n\t\texamined vertex" << g[v_examined];
+              log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
+              if (source(e, g) != first && m_predecessors[source(e,g)] == source(e,g)) m_color[target(e,g)]=boost::black_color;
+              log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
+#if 0
+              log << "e= " << e ;
+              log << "\ng[e].id= " << g[e].id ;
+              log << "\nPredecesors\n";
+              for (auto p : m_predecessors) {
+                  log << "(" << p << "," << g[p].id << "),";
+              }
+              if (m_predecessors[target(e,g)] == target(e,g)) m_color[target(e,g)]=boost::gray_color;
+              //if (first != u) pgassertwm(m_predecessors[u] != u, log.str().c_str());
+#endif
+          }
+#endif
+
+          
+
+          template <class B_G>
+          void finish_vertex(V u, B_G &g) {
+              if (m_nodes.empty()) first = u;
+              log << "\nFINISH";
+              log << "\ng[u].id= " << g[u].id ;
+              log << "\nm_color[u]" << m_color[u];
+          }
+#if 1
           template <class B_G>
           void discover_vertex(V u, B_G &g) {
-              log << "\nDISCOVER\n";
+              if (m_nodes.empty()) first = u;
+              log << "\n\t\t\tDISCOVER u" << u;
+              log << "\n\t\t\tg[u].id= " << g[u].id ;
+              log << "\n\t\t\tm_color[u]" << m_color[u];
+              log << "\n\t\t\tm_predecessors[u]" << m_predecessors[u];
+              log << "\n\t\t\tm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
+              if (u  != first && m_predecessors[u] == u) {
+                   m_color[u]=boost::black_color;
+                   log << "\n\t\t\tm_color[u]" << m_color[u];
+              }
+#if 0
               log << "u= " << u ;
               log << "\ng[u].id= " << g[u].id ;
               log << "\nPredecesors\n";
               for (auto p : m_predecessors) {
-                  log << g[p].id << ",";
+                  log << "(" << p << "," << g[p].id << "),";
               }
-              log <<"\n";
               log << "\ng[first].id= " << g[first].id ;
+              log << "\nm_color[u]" << m_color[u];
+#endif
           }
 #endif
 
@@ -736,6 +835,8 @@ class Pgr_dijkstra {
           std::vector< V > &m_predecessors;
           std::vector< double > &m_dist;
           bool undirected;
+          std::vector<boost::default_color_type> &m_color;
+          V v_examined;
      };
 
 
