@@ -211,20 +211,23 @@ Pgr_components< G >::bridges(
     size_t totalNodes = num_vertices(graph.graph);
     std::vector< int > tmp_comp(totalNodes);
     std::vector< E > res_bridges;
+    res_bridges.resize(0);
     int ini_comps = boost::connected_components(graph.graph, &tmp_comp[0]);
 
     // perform the algorithm
     E_i ei, ei_end;
     for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei) {
-        boost::remove_edge(*ei, graph.graph);
+        E stored_edge = (*ei);
+        
+        boost::remove_edge(stored_edge, graph.graph);
 
         int now_comps = boost::connected_components(graph.graph, &tmp_comp[0]);
         if (now_comps > ini_comps) {
-            res_bridges.push_back(*ei);
+            res_bridges.push_back(stored_edge);
         }
 
-        boost::add_edge(boost::source(*ei, graph.graph), 
-                        boost::target(*ei, graph.graph),
+        boost::add_edge(boost::source(stored_edge, graph.graph), 
+                        boost::target(stored_edge, graph.graph),
                         graph.graph);
     }
 
