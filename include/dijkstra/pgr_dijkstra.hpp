@@ -250,7 +250,12 @@ class Pgr_dijkstra {
                      &predecessors[0]
                      ,&distances[0]
                      ,get(&G::G_T_E::cost, graph.graph)
+#if 0
+                     ,boost::associative_property_map<typename G::IndexMap>(graph.mapIndex)
+                     ,get(boost::vertex_index, graph.graph)
+#else
                      ,graph.vertIndex
+#endif
                      ,std::less<double>()
                      ,boost::closed_plus<double>()
                      ,double(0)
@@ -259,6 +264,7 @@ class Pgr_dijkstra {
                          source,
                          graph.is_undirected(),
                          distance,
+                         nodesInDistance,
                          predecessors,
                          distances,
                          color_map)
@@ -651,18 +657,19 @@ class Pgr_dijkstra {
                   V source,
                   bool undi,
                   double distance_goal,
+                  std::deque< V > &nodesInDistance,
                   std::vector< V > &predecessors,
                   std::vector< double > &distances,
                   std::vector<boost::default_color_type> &color_map) :
               log(p_log),
               first(source),
               m_distance_goal(distance_goal),
-              m_nodes(true),
+              m_nodes(nodesInDistance),
               m_predecessors(predecessors),
               m_dist(distances),
               m_color(color_map) {
                   undirected = undi;
-                  pgassert(m_nodes);
+                  pgassert(m_nodes.empty());
                   pgassert(m_distance_goal > 0);
               }
 
@@ -675,14 +682,20 @@ class Pgr_dijkstra {
 
           template <class B_G>
           void examine_vertex(V u, B_G &g) {
-              if (m_nodes) {
-                  first = u;
-                  m_nodes = false;
-              }
+              if (m_nodes.empty()) first = u;
               if (m_dist[u] > m_distance_goal) {
+#ifdef DEBUG
+                  if (undirected && g[first].id == 13 && g[u].id != 13)   {
+                      for (const auto n : m_nodes) {
+                          log << n << ",";
+                      }
+                      pgassertwm(m_nodes.size() > 4, log.str().c_str());
+                  }
+                  log << "THROWING\n";
+#endif
                   throw found_goals();
               }
-#if 0
+#ifdef DEBUG
               log << "\nEXAMINE VERTEX u" << u << "****************";
               log << "\ng[u].id= " << g[u].id ;
               log << "\nm_color[u]" << m_color[u];
@@ -691,11 +704,11 @@ class Pgr_dijkstra {
 #endif
               if (u != first && m_predecessors[u] == u ){
                    m_color[u]=boost::black_color;
-#if 0
+#ifdef DEBUG
                    log << "\nNEW m_color[u]" << m_color[u];
 #endif
               }
-#if 0
+#ifdef DEBUG
               log << "\nm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
               v_examined = u;
               log << "u= " << u ;
@@ -703,6 +716,7 @@ class Pgr_dijkstra {
               log << "\ng[first].id= " << g[first].id ;
 #endif
 
+              m_nodes.push_back(u);
               num_edges(g);
           }
 
@@ -792,10 +806,7 @@ class Pgr_dijkstra {
 
           template <class B_G>
           void discover_vertex(V u, B_G &g) {
-              if (m_nodes) {
-                  first = u;
-                  m_nodes = false;
-              }
+              if (m_nodes.empty()) first = u;
 #if 0
               log << "\n\t\t\tDISCOVER u" << u;
               log << "\n\t\t\tg[u].id= " << g[u].id ;
@@ -826,7 +837,7 @@ class Pgr_dijkstra {
           std::ostringstream &log;
           V first;
           double m_distance_goal;
-          bool m_nodes;
+          std::deque< V > &m_nodes;
           std::vector< V > &m_predecessors;
           std::vector< double > &m_dist;
           bool undirected;
