@@ -18,6 +18,7 @@ Components - Family of functions
 * :ref:`pgr_strongComponentsV` - Return the strongly connected components of a directed graph (Vertex version).
 * :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph.
 * :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph.
+* :ref:`pgr_bridges` - Return the bridges of an undirected graph.
 
 .. index to here
 
@@ -29,6 +30,7 @@ Components - Family of functions
     pgr_strongComponentsV
     pgr_biconnectedComponents
     pgr_articulationPoints
+    pgr_bridges
 
 
 The problem definition
@@ -297,6 +299,66 @@ Example:
    :width: 210px
    :height: 325px
 
+.. rubric:: Bridges 
+
+A bridge is an edge of an undirected graph whose deletion increases its number
+of connected components.
+
+**Notice**: This problem defines on an undirected graph.
+
+Given the following query:
+
+
+pgr_bridges(:math:`sql`)
+
+where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
+
+and
+
+  - :math:`source = \bigcup source_i`,
+  - :math:`target = \bigcup target_i`,
+
+The graphs are defined as follows:
+
+The weighted undirected graph, :math:`G(V,E)`, is definied by:
+
+* the set of vertices  :math:`V`
+
+  - :math:`V = source \cup target`
+
+
+* the set of edges :math:`E`
+
+  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} \\ \cup &\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
+
+
+Given:
+
+  - :math:`G(V,E)`
+
+Then:
+
+.. math:: \text{pgr_bridges}(sql) =
+  \begin{cases}
+  \text{all bridges } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
+  \varnothing &\quad \text{otherwise} \\
+  \end{cases}
+
+:math:`\boldsymbol{\pi} = \{edge_i\}`
+
+where:
+  - :math:`edge_i` is an edge.
+  - The returned values are ordered:
+
+    - `edge` ascending
+
+Example:
+  - Bridges are nodes ``2`` and ``6``.
+
+.. image:: images/biconnected_components.jpeg
+   :width: 210px
+   :height: 325px
+
 .. components_edges_sql_start
 
 Description of the edges_sql query for components functions
@@ -395,4 +457,20 @@ Column         Type       Description
 ============== ========== =================================================
 
 .. return_cutvertices_end
+
+.. return_bridges_start
+
+Description of the return values for bridges
+..............................................................
+
+Returns set of ``(seq, node)``
+
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**seq**        ``INT``    Sequential value starting from **1**.
+**edge**       ``BIGINT`` Identifier of the edge.
+============== ========== =================================================
+
+.. return_bridges_end
 
