@@ -148,6 +148,8 @@ Experimental and Proposed functions
 
 -  :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph
 
+-  :ref:`pgr_bridges` - Return the bridges of an undirected graph
+
 :ref:`VRP`
 
 .. include:: VRP-category.rst
