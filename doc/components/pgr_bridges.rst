@@ -57,9 +57,9 @@ The signature is for a **undirected** graph.
    :start-after: -- q1
    :end-before: -- q2
 
-.. image:: images/ap_sampledata.png
+.. image:: images/bridge_sampledata.png
    :width: 560px
-   :height: 362px
+   :height: 381px
 
 Description of the Signatures
 -------------------------------------------------------------------------------

@@ -353,7 +353,7 @@ where:
     - `edge` ascending
 
 Example:
-  - Bridges are nodes ``2`` and ``6``.
+  - Bridges are edges ``5 <--> 6`` and ``6 <--> 7``.
 
 .. image:: images/biconnected_components.jpeg
    :width: 210px

@@ -8,6 +8,7 @@ SET(LOCAL_FILES
     scc_sampledata.png
     bcc_sampledata.png
     ap_sampledata.png
+    bridge_sampledata.png
     )
 
 foreach (f ${LOCAL_FILES})
