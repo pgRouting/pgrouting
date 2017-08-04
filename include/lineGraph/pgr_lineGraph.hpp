@@ -235,6 +235,9 @@ Pgr_lineGraph< G, T_V, T_E >::create_virtual_edge(
     bool inserted;
     typename Pgr_base_graph< G, T_V, T_E >::E e;
 
+    if (source_id < 0) source_id *= -1;
+    if (target_id < 0) target_id *= -1;
+
     pgassert(m_vertex_map.find( {source_id, source_vertex} ) !=
         m_vertex_map.end());
     pgassert(m_vertex_map.find( {target_id, target_vertex} ) !=
@@ -305,9 +308,16 @@ Pgr_lineGraph< G, T_V, T_E >::extract_vertices() {
 
     std::vector< Line_vertex > vertices;
 
+    log << "\nEdges of original graph\n";
     for (const auto &it : m_edges) {
         auto edge = it.second;
         Line_vertex vertex(edge);
+
+        log << "ID: " << edge.id;
+        log << "| source: " << edge.source;
+        log << "| target: " << edge.target;
+        log << "| cost: " << edge.cost;
+        log << "| reverse_cost: " << edge.reverse_cost << "\n\n";
 
         if (edge.cost > 0) {
             vertex.id = (++(this->m_num_vertices));
@@ -318,6 +328,7 @@ Pgr_lineGraph< G, T_V, T_E >::extract_vertices() {
         if (edge.reverse_cost > 0) {
             vertex.id = (++(this->m_num_vertices));
             vertex.cost = edge.reverse_cost;
+            vertex.vertex_id *= -1;
             std::swap(vertex.source, vertex.target);
             vertices.push_back(vertex);
             m_vertex_map[ {edge.id, edge.target} ] = this->m_num_vertices;
@@ -401,7 +412,7 @@ Pgr_lineGraph< G, T_V, T_E >::create_edges(
                 -1,
                 (digraph.graph[*inIt]).id,
                 (digraph.graph[*outIt]).id,
-                0.0,
+                1.0,
                 -1.0
             };
 
@@ -425,15 +436,26 @@ Pgr_lineGraph< G, T_V, T_E >::create_edges(
             unique[{vertex, {source_in_edge, target_out_edge} }] = m_num_edges;
 
             edge.id = m_num_edges;
-            edge.reverse_cost = is_reverse?0.0:-1.0 ;
-
-            line_graph_edges.push_back(edge);
+            if (is_reverse) edge.reverse_cost = 1.0;
 
             graph_add_edge(
                 edge,
                 digraph[source_in_edge].id,
                 digraph[vertex].id
             );
+
+            pgassert(m_edges.find(edge.source) != m_edges.end());
+            pgassert(m_edges.find(edge.target) != m_edges.end());
+            auto orig_edge1 = m_edges[edge.source];
+            auto orig_edge2 = m_edges[edge.target];
+            if (orig_edge1.target == orig_edge2.target) edge.target *= -1;
+            if (orig_edge1.source == orig_edge2.source) edge.source *= -1;
+            if (orig_edge1.source == orig_edge2.target) {
+                edge.source *= -1;
+                edge.target *= -1;
+            }
+
+            line_graph_edges.push_back(edge);
         }
     }
 }
