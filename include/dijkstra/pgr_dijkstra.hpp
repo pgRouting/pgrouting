@@ -587,9 +587,8 @@ class Pgr_dijkstra {
       public:
           explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
           template <class B_G>
-              void examine_vertex(V &u, B_G &g) {
+              void examine_vertex(V &u, B_G &) {
                   if (u == m_goal) throw found_goals();
-                  num_edges(g);
               }
       private:
           V m_goal;
@@ -601,13 +600,12 @@ class Pgr_dijkstra {
           explicit dijkstra_many_goal_visitor(std::vector< V > goals)
               :m_goals(goals.begin(), goals.end()) {}
           template <class B_G>
-              void examine_vertex(V u, B_G &g) {
+              void examine_vertex(V u, B_G &) {
                   auto s_it = m_goals.find(u);
                   if (s_it == m_goals.end()) return;
                   // we found one more goal
                   m_goals.erase(s_it);
                   if (m_goals.size() == 0) throw found_goals();
-                  num_edges(g);
               }
       private:
           std::set< V > m_goals;
@@ -628,12 +626,11 @@ class Pgr_dijkstra {
                   pgassert(m_distance_goal > 0);
               }
           template <class B_G>
-              void examine_vertex(V u, B_G &g) {
+              void examine_vertex(V u, B_G &) {
                   if (m_dist[u] > m_distance_goal) {
                       throw found_goals();
                   }
                   m_nodes.push_back(u);
-                  num_edges(g);
               }
 
       private:
