@@ -6,7 +6,6 @@ SET
 SELECT DISTINCT(id1) FROM pgr_gsoc_vrppdtw(
     'SELECT * FROM customer ORDER BY id', 25, 200)
 ORDER BY id1;
-NOTICE:  Deprecated function pgr_gsoc_vrppdtw: Use pgr_pickDeliverEuclidean instead
  id1 
 -----
    1
@@ -24,7 +23,6 @@ NOTICE:  Deprecated function pgr_gsoc_vrppdtw: Use pgr_pickDeliverEuclidean inst
 --q2
 SELECT count(*) FROM pgr_gsoc_vrppdtw(
     'SELECT * FROM customer ORDER BY id', 25, 200);
-NOTICE:  Deprecated function pgr_gsoc_vrppdtw: Use pgr_pickDeliverEuclidean instead
  count 
 -------
    126
@@ -34,7 +32,6 @@ NOTICE:  Deprecated function pgr_gsoc_vrppdtw: Use pgr_pickDeliverEuclidean inst
 SELECT * FROM pgr_gsoc_vrppdtw(
     'SELECT * FROM customer ORDER BY id', 25, 200)
     WHERE id1 in (1, 5, 9);
-NOTICE:  Deprecated function pgr_gsoc_vrppdtw: Use pgr_pickDeliverEuclidean instead
  seq | id1 | id2 |       cost       
 -----+-----+-----+------------------
    1 |   1 |   0 |                0

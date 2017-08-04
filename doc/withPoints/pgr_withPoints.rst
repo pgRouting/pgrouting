@@ -64,7 +64,7 @@ The main Characteristics are:
     - start_vid ascending
     - end_vid ascending
 
-  - Running time: :math:`O(|start\_vids|∗(V \log V + E))`
+  - Running time: :math:`O(|start\_vids|\times(V \log V + E))`
 
 
 Signature Summary
@@ -281,7 +281,7 @@ Examples
    :end-before: --q5
 
 
-The queries use the :ref:`sampledata` network.
+The queries use the :doc:`sampledata` network.
 
 
 

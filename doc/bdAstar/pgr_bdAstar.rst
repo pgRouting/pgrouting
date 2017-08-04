@@ -213,7 +213,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`bdAstar`
-* :ref:`sampledata` network.
+* :doc:`sampledata` network.
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
 
