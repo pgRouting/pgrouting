@@ -247,28 +247,21 @@ class Pgr_dijkstra {
          std::vector<boost::default_color_type> color_map(graph.num_vertices());
          try {
              boost::dijkstra_shortest_paths_no_init(graph.graph, source,
-                     &predecessors[0]
-                     ,&distances[0]
+                     make_iterator_property_map(predecessors.begin(), graph.vertIndex)
+                     ,make_iterator_property_map(distances.begin(), graph.vertIndex)
                      ,get(&G::G_T_E::cost, graph.graph)
-#if 0
-                     ,boost::associative_property_map<typename G::IndexMap>(graph.mapIndex)
-                     ,get(boost::vertex_index, graph.graph)
-#else
                      ,graph.vertIndex
-#endif
                      ,std::less<double>()
                      ,boost::closed_plus<double>()
                      ,double(0)
                      ,dijkstra_distance_visitor_no_init(
                          log,
                          source,
-                         graph.is_undirected(),
                          distance,
-                         nodesInDistance,
                          predecessors,
                          distances,
                          color_map)
-                     ,boost::make_iterator_property_map(color_map.begin(), boost::get(boost::vertex_index, graph.graph), color_map[0])
+                     ,boost::make_iterator_property_map(color_map.begin(), graph.vertIndex, color_map[0])
                      );
          } catch(found_goals &) {
              return true;
@@ -655,98 +648,44 @@ class Pgr_dijkstra {
           explicit dijkstra_distance_visitor_no_init(
                   std::ostringstream &p_log,
                   V source,
-                  bool undi,
                   double distance_goal,
-                  std::deque< V > &nodesInDistance,
                   std::vector< V > &predecessors,
                   std::vector< double > &distances,
                   std::vector<boost::default_color_type> &color_map) :
               log(p_log),
               first(source),
               m_distance_goal(distance_goal),
-              m_nodes(nodesInDistance),
+              m_num_examined(0),
+              m_num_discovered(0),
               m_predecessors(predecessors),
               m_dist(distances),
               m_color(color_map) {
-                  undirected = undi;
-                  pgassert(m_nodes.empty());
+                  pgassert(m_num_examined == 0);
                   pgassert(m_distance_goal > 0);
               }
 
-          /*
-           * TODO 
-           * When examine_vertex, and predecessor[u] == u;
-           * Remove @b u from the Queue
-           * Because anything after that was captured by a previous vertex
-           */
-
           template <class B_G>
-          void examine_vertex(V u, B_G &g) {
-              if (m_nodes.empty()) first = u;
+          void examine_vertex(V u, B_G &) {
+              if ( 0 == m_num_examined++) first = u;
               if (m_dist[u] > m_distance_goal) {
-#ifdef DEBUG
-                  if (undirected && g[first].id == 13 && g[u].id != 13)   {
-                      for (const auto n : m_nodes) {
-                          log << n << ",";
-                      }
-                      pgassertwm(m_nodes.size() > 4, log.str().c_str());
-                  }
-                  log << "THROWING\n";
-#endif
+                  log << "THROWING:\n"
+                      << "num_finished" << m_num_examined << "\n"
+                      << "num_examined" << m_num_examined << "\n"
+                      << "num_discovered" << m_num_discovered << "\n";
                   throw found_goals();
               }
-#ifdef DEBUG
-              log << "\nEXAMINE VERTEX u" << u << "****************";
-              log << "\ng[u].id= " << g[u].id ;
-              log << "\nm_color[u]" << m_color[u];
-              log << "\nm_predecessors[u]" << m_predecessors[u];
-              log << "\nm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
-#endif
               if (u != first && m_predecessors[u] == u ){
                    m_color[u]=boost::black_color;
-#ifdef DEBUG
-                   log << "\nNEW m_color[u]" << m_color[u];
-#endif
               }
-#ifdef DEBUG
-              log << "\nm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
-              v_examined = u;
-              log << "u= " << u ;
-              log << "\nfirst= " << first ;
-              log << "\ng[first].id= " << g[first].id ;
-#endif
-
-              m_nodes.push_back(u);
-              num_edges(g);
           }
 
           template <class B_G>
           void examine_edge(E e, B_G &g) {
-#if 0
-              log << "\nEXAMINE EDGE " << e;
-              log << "\n\tg[e].target= " << target(e, g);
-              log << "\n\tm_color[target(e, g)]" << m_color[target(e, g)];
-              log << "\n\tm_predecessors[" << source(e, g) << "]" << m_predecessors[source(e, g)];
-              log << "\n\tm_color[source(e, g)]" << m_color[source(e, g)];
-              log << "\n\tsource(e, g)" << source(e, g);
-              log << "\n\tfirst" << first;
-#endif
               if (source(e, g) != first && m_predecessors[source(e,g)] == source(e,g)) {
                    m_color[target(e,g)]=boost::black_color;
               }
-              num_edges(g);
-#if 0
-              log << "\n\tg[e].target= " << g[target(e, g)].id;
-              log << "\n\tm_color[target(e, g)]" << m_color[target(e, g)];
-              log << "e= " << e ;
-              log << "\ng[e].id= " << g[e].id ;
-              log << "\ng[e].source= " << g[source(e ,g)];
-              log << "\nPredecesors\n";
-              for (auto p : m_predecessors) {
-                  log << "(" << p << "," << g[p].id << "),";
-              }
-#endif
           }
+
 
           
 
@@ -793,30 +732,25 @@ class Pgr_dijkstra {
 
           
 
-#if 0
           template <class B_G>
           void finish_vertex(V u, B_G &g) {
-              if (m_nodes.empty()) first = u;
-              log << "\nFINISH";
-              log << "\ng[u].id= " << g[u].id ;
-              log << "\nm_color[u]" << m_color[u];
+              ++m_num_finished;
           }
-#endif
 
 
           template <class B_G>
-          void discover_vertex(V u, B_G &g) {
-              if (m_nodes.empty()) first = u;
+          void discover_vertex(V u, B_G &) {
 #if 0
+              if (m_nodes.empty()) first = u;
               log << "\n\t\t\tDISCOVER u" << u;
               log << "\n\t\t\tg[u].id= " << g[u].id ;
               log << "\n\t\t\tm_color[u]" << m_color[u];
               log << "\n\t\t\tm_predecessors[u]" << m_predecessors[u];
               log << "\n\t\t\tm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
 #endif
+              ++m_num_discovered;
               if (u  != first && m_predecessors[u] == u) {
                    m_color[u]=boost::black_color;
-                   num_edges(g);
 #if 0
                    log << "\n\t\t\tm_color[u]" << m_color[u];
 #endif
@@ -837,7 +771,9 @@ class Pgr_dijkstra {
           std::ostringstream &log;
           V first;
           double m_distance_goal;
-          std::deque< V > &m_nodes;
+          size_t m_num_examined;
+          size_t m_num_discovered;
+          size_t m_num_finished;
           std::vector< V > &m_predecessors;
           std::vector< double > &m_dist;
           bool undirected;
