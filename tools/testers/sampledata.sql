@@ -113,6 +113,19 @@ INSERT INTO restrict(restricted_edges, cost) VALUES
 ('{9, 11}', -1),
 ('{9, 8}', -1);
 
+Create Table edge_table255(
+    id BIGINT,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+
+INSERT INTO edge_table255(id, source, target, cost, reverse_cost) VALUES
+(1, 1, 2, 10.0, -1),
+(2, 2, 1, 25.0, -1),
+(3, 2, 3, 20.0, 25.0);
+
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
@@ -203,13 +216,13 @@ INSERT INTO orders
 (demand,
     p_node_id,  p_x, p_y,  p_open,  p_close,  p_service,
     d_node_id,  d_x, d_y,  d_open,  d_close,  d_service) VALUES
-(10, 
+(10,
             3,    3,   1,      2,         10,          3,
             8,    1,   2,      6,         15,          3),
-(20, 
+(20,
             9,    4,   2,      4,         15,          2,
             4,    4,   1,      6,         20,          3),
-(30, 
+(30,
             5,    2,   2,      2,         10,          3,
            11,    3,   3,      3,         20,          3);
 
