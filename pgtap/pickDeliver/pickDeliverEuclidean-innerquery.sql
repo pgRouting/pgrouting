@@ -11,10 +11,10 @@ SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
     30);
 */
 
-SELECT has_function('pgr_pickdelivereuclidean',
+SELECT has_function('_pgr_pickdelivereuclidean',
     ARRAY['text', 'text', 'double precision', 'integer', 'integer']);
 
-SELECT function_returns('pgr_pickdelivereuclidean',
+SELECT function_returns('_pgr_pickdelivereuclidean',
     ARRAY['text', 'text', 'double precision', 'integer', 'integer'],
     'setof record');
 
@@ -163,65 +163,65 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-SELECT test_anyInteger_orders('pgr_pickdelivereuclidean',
+SELECT test_anyInteger_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'id');
 
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'demand');
 
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'p_x');
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'p_y');
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'p_open');
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'p_close');
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'p_service');
 
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'd_x');
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'd_y');
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'd_open');
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'd_close');
-SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
+SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
     'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
     'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
@@ -232,27 +232,27 @@ SELECT test_anynumerical_orders('pgr_pickdelivereuclidean',
     'speed' is optional defaults to 1
     'start_service' is optional defaults to 0
 */
-SELECT test_anyInteger_vehicles('pgr_pickdelivereuclidean',
+SELECT test_anyInteger_vehicles('_pgr_pickdelivereuclidean',
     ARRAY['id', 'capacity', 
     'start_x', 'start_y', 'start_open', 'start_close'],
     'id');
-SELECT test_anyNumerical_vehicles('pgr_pickdelivereuclidean',
+SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
     ARRAY['id', 'capacity', 
     'start_x', 'start_y', 'start_open', 'start_close'],
     'capacity');
-SELECT test_anyNumerical_vehicles('pgr_pickdelivereuclidean',
+SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
     ARRAY['id', 'capacity', 
     'start_x', 'start_y', 'start_open', 'start_close'],
     'start_x');
-SELECT test_anyNumerical_vehicles('pgr_pickdelivereuclidean',
+SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
     ARRAY['id', 'capacity', 
     'start_x', 'start_y', 'start_open', 'start_close'],
     'start_y');
-SELECT test_anyNumerical_vehicles('pgr_pickdelivereuclidean',
+SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
     ARRAY['id', 'capacity', 
     'start_x', 'start_y', 'start_open', 'start_close'],
     'start_open');
-SELECT test_anyNumerical_vehicles('pgr_pickdelivereuclidean',
+SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
     ARRAY['id', 'capacity', 
     'start_x', 'start_y', 'start_open', 'start_close'],
     'start_close');

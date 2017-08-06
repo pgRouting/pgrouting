@@ -62,7 +62,8 @@ typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
-    bool reverse;
+    float cost;
+    float reverse_cost;
 } Line_graph_rt;
 
 #endif  // INCLUDE_C_TYPES_LINE_GRAPH_RT_H_

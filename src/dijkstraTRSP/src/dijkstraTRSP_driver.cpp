@@ -38,19 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-
-
-
-
-/************************************************************
-  TEXT,
-    TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-    strict BOOLEAN DEFAULT false
- ***********************************************************/
 #if 1
 template < class G >
 static
@@ -58,14 +45,17 @@ Path
 pgr_dijkstraTRSP(
         G &graph,
         const std::vector< Restriction >& restrictions_array,
+        const std::vector< pgr_edge_t > edges,
         int64_t source,
         int64_t target,
         std::string& log,
         bool only_cost = false,
         bool strict = false) {
+
     Pgr_dijkstraTRSP< G > fn_TRSP;
     Path path = fn_TRSP.dijkstraTRSP(graph,
                     restrictions_array,
+                    edges,
                     source,
                     target,
                     only_cost,
@@ -115,15 +105,18 @@ do_pgr_dijkstraTRSP(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
+        std::vector < pgr_edge_t > edges(data_edges, data_edges + total_edges);
+
         Path path;
         std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             Pgr_dijkstraTRSP < pgrouting::DirectedGraph > fn_TRSP;
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges(edges);
             path = pgr_dijkstraTRSP(digraph,
                     restrict_array,
+                    edges,
                     start_vid,
                     end_vid,
                     logstr,
@@ -134,13 +127,16 @@ do_pgr_dijkstraTRSP(
             pgrouting::UndirectedGraph undigraph(gType);
             Pgr_dijkstraTRSP < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
+        #if 0
             path = pgr_dijkstraTRSP(undigraph,
                     restrict_array,
+                    edges,
                     start_vid,
                     end_vid,
                     logstr,
                     only_cost,
                     strict);
+        #endif
         }
         log << logstr;
         auto count = path.size();

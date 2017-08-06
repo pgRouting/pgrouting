@@ -1,7 +1,7 @@
 
 UPDATE vehicles SET start_open = 5, start_close = 4 WHERE id = 1;
 
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$);
 

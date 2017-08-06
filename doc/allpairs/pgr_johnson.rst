@@ -152,7 +152,7 @@ See Also
 
 * :ref:`pgr_floydWarshall`
 * `Boost Johnson <http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_ algorithm implementation.
-* Queries uses the :ref:`sampledata` network.
+* Queries uses the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

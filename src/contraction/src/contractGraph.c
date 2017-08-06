@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/contracted_rt.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "./contractGraph_driver.h"
+#include "drivers/contraction/contractGraph_driver.h"
 
 PGDLLEXPORT Datum contractGraph(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(contractGraph);

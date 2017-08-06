@@ -82,7 +82,7 @@ BEGIN
     $$;
 
     final_sql = '
-    SELECT * FROM pgr_pickDeliver(
+    SELECT * FROM _pgr_pickDeliver(
             $$' || orders_sql || '$$,
             $$' || trucks_sql || '$$,
             $$' || $3 || '$$,

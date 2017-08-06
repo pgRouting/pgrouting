@@ -203,15 +203,10 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-        values[4] = BoolGetDatum(result_tuples[funcctx->call_cntr].reverse);
-        //values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
-        /**********************************************************************/
-
-        PGR_DBG("0: %lu | 1: %lu | 2: %lu | 3: %lu | 4: %lu\n", values[0],
-                values[1], values[2], values[3], values[4]);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

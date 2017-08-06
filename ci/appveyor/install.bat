@@ -99,7 +99,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
         echo Downloading PostGIS %PG_VERSION%
         pushd %DOWNLOADS_DIR%
-        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/archive/postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
         popd
         if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
             echo something went wrong on PostGIS %PG_VERSION% download !!!!!!!!!

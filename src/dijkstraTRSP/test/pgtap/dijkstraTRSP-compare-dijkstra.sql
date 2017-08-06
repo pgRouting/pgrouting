@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(1158);
+SELECT plan(1157);
 
 SET client_min_messages TO ERROR;
 
@@ -20,7 +20,7 @@ BEGIN
 
     FOR i IN 1.. cant LOOP
         FOR j IN 1.. cant LOOP
-        
+
             -- DIRECTED
             inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7';
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
@@ -60,7 +60,7 @@ BEGIN
             dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratrsp($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
                 || ', false)';
             RETURN query SELECT set_eq(dijkstratrsp_sql, dijkstra_sql, dijkstratrsp_sql);
-	
+
 
         END LOOP;
     END LOOP;

@@ -42,14 +42,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void get_postgres_result(
         std::vector< Line_graph_rt > edge_result,
-        Line_graph_rt **return_tuples) {
+        Line_graph_rt **return_tuples,
+        size_t &sequence) {
     (*return_tuples) = pgr_alloc(
-            edge_result.size(),
+            (int)edge_result.size(),
             (*return_tuples));
 
-    size_t seq = 0;
-    for (const auto edge: edge_result) {
-        (*return_tuples)[seq++] = edge;
+    for (const auto &edge: edge_result) {
+        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target, edge.cost, edge.reverse_cost};
+        sequence++;
     }
 }
 
@@ -87,60 +88,28 @@ do_pgr_lineGraph(
             auto line_graph_edges = line.transform(digraph);
             line.create_virtual_vertices();
 
+            auto count = line_graph_edges.size();
+
+            if (count == 0) {
+                (*return_tuples) = NULL;
+                (*return_count) = 0;
+                notice <<
+                    "No paths found between start_vid and end_vid vertices";
+                return;
+            }
+
+            size_t sequence = 0;
+
             get_postgres_result(
                 line_graph_edges,
-                return_tuples
+                return_tuples,
+                sequence
             );
-            (*return_count) = line_graph_edges.size();
+            (*return_count) = sequence;
             log << line.log.str().c_str() << "\n\n\n";
             log << line << "\n";
         }
 
-    #if 0
-        if (directed) {
-            //log << "\nNum of vertices: " << digraph.num_vertices() << "\n";
-            log << "\nDirected Graph: \n" << digraph;
-            line.process(digraph, log);
-            /*log << "\nNum of vertices: " << digraph.num_vertices() << "\n";
-            //log << "\nDirected Graph :\n" << digraph;
-            for (auto it: digraph.vertices_map) {
-                log << (it.first) << " " << (it.second) << "\n";
-            }
-            int64_t c = 0;
-            log << "\nNum vertices = " << digraph.m_num_vertices << "\n";
-            for (auto vi = boost::vertices(digraph.graph).first;
-                    vi != boost::vertices(digraph.graph).second; ++vi) {
-                log << (*vi) << ": " << " out_edges_of(" << digraph.graph[(*vi)] << "):\n";
-                c++;
-            }
-            log << "\n" << c;*/
-        }
-        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
-        if (!directed) {
-            for (int64_t i = 0; i < total_edges;i++) {
-                if (data_edges[i].reverse_cost >= 0) {
-                    std::swap(data_edges[i].cost, data_edges[i].reverse_cost);
-                }
-                std::swap(data_edges[i].source, data_edges[i].target);
-                edges.push_back( data_edges[i] );
-            }
-        }
-        digraph.insert_edges(edges);
-
-        log << "\nDirected Graph :\n" << digraph;
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice <<
-                "No paths found between start_vid and end_vid vertices";
-            return;
-        }
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        size_t sequence = 0;
-        path.generate_postgres_data(return_tuples, sequence);
-        (*return_count) = sequence;
-#endif
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :

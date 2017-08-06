@@ -176,7 +176,7 @@ See Also
 
 * :ref:`pgr_alphashape` - Alpha shape computation
 * :ref:`pgr_points_as_polygon` - Polygon around set of points
-* :ref:`sampledata` network.
+* :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

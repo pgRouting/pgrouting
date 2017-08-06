@@ -20,7 +20,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "dijkstra/pgr_dijkstra.hpp"
-#include "dijkstraTRSP/restriction.h"
+#include "c_types/line_graph_rt.h"
+
+#include "lineGraph/pgr_lineGraph.hpp"
 
 #include <sstream>
 #include <deque>
@@ -31,12 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/basePath_SSEC.hpp"
 
+
 template < class G >
 class Pgr_dijkstraTRSP {
  public:
      Path dijkstraTRSP(
              G& graph,
              const std::vector< Restriction >& restrictions,
+             const std::vector< pgr_edge_t >& edges,
              int64_t source,
              int64_t target,
              bool only_cost,
@@ -68,10 +72,16 @@ template < class G >
 void Pgr_dijkstraTRSP< G >::clear() {
 }
 
-template < class G>
+template < class G >
 Path
-Pgr_dijkstraTRSP< G >::dijkstraTRSP(G& graph, const std::vector< Restriction >& restrictions,
-int64_t start_vertex, int64_t end_vertex, bool only_cost, bool strict) {
+Pgr_dijkstraTRSP< G >::dijkstraTRSP(
+        G& graph,
+        const std::vector< Restriction >& restrictions,
+        const std::vector< pgr_edge_t >& edges,
+        int64_t start_vertex,
+        int64_t end_vertex,
+        bool only_cost,
+        bool strict) {
     if (start_vertex == end_vertex)
         return Path();
     if (!graph.has_vertex(start_vertex) || !graph.has_vertex(end_vertex))
@@ -85,6 +95,20 @@ int64_t start_vertex, int64_t end_vertex, bool only_cost, bool strict) {
     m_restrictions = restrictions;
     m_strict = strict;
     executeDijkstraTRSP(graph);
+    if (curr_result_path.size() or graph.m_gType == UNDIRECTED)
+        return curr_result_path;
+
+    pgrouting::LinearDirectedGraph line(DIRECTED);
+    line.insert_vertices(edges);
+    auto line_graph_edges = line.transform(graph);
+    log << "\nGraph before removing restrictions\n" << line << "\n";
+    auto remaining_restrictions = line.remove_restricted_edges(m_restrictions);
+    log << "\n Graph after removing restrictions\n" << line << "\n";
+
+    log << line.log.str().c_str() << "\n\n\n";
+
+    line.create_virtual_vertices();
+    log << line << "\n";
     return curr_result_path;
 }
 
@@ -101,13 +125,13 @@ void Pgr_dijkstraTRSP< G >::getDijkstraSolution(G& graph) {
 
 template < class G >
 bool Pgr_dijkstraTRSP< G >::has_a_restriction(int64_t edge, int64_t index) {
-    auto lower_bound_cmp = [](const Restriction& r, const int64_t& target) -> bool {
+    auto lower_bound_cmp = [](const Restriction& r, const int64_t& target) {
         return r.restrict_edges()[0] < target;
     };
     auto edge_index = std::lower_bound(m_restrictions.begin(),
         m_restrictions.end(), edge, lower_bound_cmp) - m_restrictions.begin();
     log << "\nResult generated from lower_bound\n";
-    while (edge_index < m_restrictions.size()) {
+    while (edge_index < (int64_t)m_restrictions.size()) {
         auto r_edges = m_restrictions[edge_index].restrict_edges();
         if (r_edges[0] != edge) break;
         log << m_restrictions[edge_index] << "\n";

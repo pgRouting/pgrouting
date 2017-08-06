@@ -12,8 +12,7 @@
 pgr_lineGraph
 ===============================================================================
 
-``pgr_lineGraph`` — Returns the shortest path(s) using Dijkstra algorithm.
-In particular, the Dijkstra algorithm implemented by Boost.Graph.
+``pgr_lineGraph`` — Transforms a given graph into its corresponding edge-based graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
@@ -24,45 +23,82 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 Synopsis
 -------------------------------------------------------------------------------
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
-It is a graph search algorithm that solves the shortest path problem for
-a graph with non-negative edge path costs, producing a shortest path from
-a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
-This implementation can be used with a directed graph and an undirected graph.
+Given a graph G, its line graph L(G) is a graph such that:-
 
-Characteristics
+   - each vertex of L(G) represents an edge of G
+
+   - two vertices of L(G) are adjacent if and only if their corresponding edges
+     share a common endpoint in G.
+
+The current implementation only works for the `directed graph`.
+
+
+The following figures show a graph (left, with blue vertices) and its
+Line Graph (right, with green vertices).
+
+.. footer::
+
+    .. class:: tablapie
+
+    +-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
+| |first|       |second|               |third|  |fourth|
+
+.. |first| image:: images/135px-Line_graph_construction_1.svg.png
+   :align: middle
+
+.. |second| image:: images/135px-Line_graph_construction_2.svg.png
+   :align: middle
+
+.. |third| image:: images/135px-Line_graph_construction_3.svg.png
+   :align: middle
+
+.. |fourth| image:: images/128px-Line_graph_construction_4.svg.png
+   :align: middle
+
+Handling of Costs
 -------------------------------------------------------------------------------
 
-The main Characteristics are:
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
+.. - **Cost associated with the nodes.**
+..    + Consider the following graph with nodes having costs:-
+..
+..    .. image:: images/Graph1.png
+..
+..    The transformed **Line Graph**:-
+..
+..    .. image:: images/Line-graph-with-edge-cost.png
 
-    - When the starting vertex and ending vertex are the same, there is no path.
+..    Each node of the transformed graph is an edge from the original graph.
+..    Here `[1,2]` denotes the node in the transformed graph which was an edge
+..    from node `1` to node `2` in the original graph.
 
-      - The `agg_cost` the non included values `(v, v)` is `0`
+..    Each edge of the transformed graph is a tuple of nodes `(n1, n2, n3)` where
+..    `n1`, `n2` and `n3` are nodes from the original graph such that there was
+..    an edge from `n1 -> n2` and another edge from `n2 -> n3`.
 
-    - When the starting vertex and ending vertex are the different and there is no path:
+..    Thus, the connection `[1,4] -> [3, 4]` goes through the vertex `4` as it is
+..    made up of `(1, 4, 3)` tuple which has an associated cost of `6` therefore
+..    the corresponding edge in the above graph gets a cost of `6`.
 
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
+- **Cost associated with the edges**
+    + Consider the following graph with edges having costs:-
 
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
+    .. image:: images/Graph2.png
 
-  - The returned values are ordered:
+    The transformed **Line Graph**:-
 
-    - `start_vid` ascending
-    - `end_vid` ascending
+    .. image:: images/Line-graph-with-node-cost.png
 
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
-
+    Here, the cost associated with an edge in the original graph moves to the
+    corresponding nodes in the transformed Line Graph.
 
 Signature Summary
 -----------------
 
 .. code-block:: none
 
-    pgr_dijkstra(edges_sql, start_vid,  end_vid)
+    pgr_lineGraph(edges_sql, directed)
 
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, source, target, cost, reverse_cost)
         OR EMPTY SET
 
 
@@ -77,10 +113,10 @@ Minimal signature
 
 .. code-block:: none
 
-    pgr_lineGraph(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_lineGraph(edges_sql)
+    RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+The minimal signature is for a **directed** graph:
 
 :Example:
 
@@ -97,10 +133,10 @@ Complete Signature
 
 .. code-block:: none
 
-    pgr_lineGraph(edges_sql, start_vid, end_vid, directed);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_lineGraph(edges_sql, directed);
+    RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 
-This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
+This signature returns the Line Graph of the current graph:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
@@ -119,23 +155,59 @@ Description of the Signatures
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
 
-.. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+Description of the parameters of the signatures
+-------------------------------------------------------------------------------
 
+======================= ====================== =================================================
+Column                  Type                   Description
+======================= ====================== =================================================
+**edges_sql**           ``TEXT``               SQL query as described above.
+**directed**            ``BOOLEAN``            * When ``true`` the graph is considered as `Directed`.
+                                               * When ``false`` the graph is considered as `Undirected`.
+======================= ====================== =================================================
+
+Description of the return values
+-------------------------------------------------------------------------------
+
+RETURNS SETOF  (seq, source, target, cost, reverse_cost)
+
+============================ =================   ===================================================================
+Column                       Type                Description
+============================ =================   ===================================================================
+**seq**                      ``INTEGER``         Sequential value starting from **1**.
+
+**source**                   ``BIGINT``          Identifier of the source vertex of the current edge `id`.
+
+                                                 * When `negative`: the source is the reverse edge in the original graph.
+
+**target**                   ``BIGINT``          Identifier of the target vertex of the current edge `id`.
+
+                                                 * When `negative`: the target is the reverse edge in the original graph.
+
+**cost**                     ``FLOAT``           Weight of the edge (`source`, `target`).
+
+                                                 * When `negative`: edge (`source`, `target`) does not exist, therefore it’s not part of the graph.
+
+**reverse_cost**             ``FLOAT``           Weight of the edge (`target`, `source`).
+
+                                                 * When `negative`: edge (`target`, `source`) does not exist, therefore it’s not part of the graph.
+============================ =================   ===================================================================
+
+Examples
+-------------------------------------------------------------------------------
+
+.. literalinclude:: doc-pgr_lineGraph.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* https://en.wikipedia.org/wiki/Line_graph
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
