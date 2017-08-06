@@ -4,6 +4,7 @@ var dir_4fe5cf12322eb0f9892753dc20f1484c =
     [ "astar", "dir_bb2175a28760c39921da31df4587a45f.html", "dir_bb2175a28760c39921da31df4587a45f" ],
     [ "bdAstar", "dir_875b184fb110fdb2556185dfb40fe32e.html", "dir_875b184fb110fdb2556185dfb40fe32e" ],
     [ "bdDijkstra", "dir_9dcc1046b71bb0b5267f9068df298246.html", "dir_9dcc1046b71bb0b5267f9068df298246" ],
+    [ "contraction", "dir_bdbdff42c386179f864caab135e18a0b.html", "dir_bdbdff42c386179f864caab135e18a0b" ],
     [ "dijkstra", "dir_0ae605f4efbf704357ccbf6a364e49b2.html", "dir_0ae605f4efbf704357ccbf6a364e49b2" ],
     [ "driving_distance", "dir_77068d28bd694a89d92f3e64a8393ae0.html", "dir_77068d28bd694a89d92f3e64a8393ae0" ],
     [ "pickDeliver", "dir_593591bc9028524ce7ceba84b7c648ef.html", "dir_593591bc9028524ce7ceba84b7c648ef" ],

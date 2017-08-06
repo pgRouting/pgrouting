@@ -26,7 +26,7 @@ var searchData=
   ['order_2ecpp',['order.cpp',['../order_8cpp.html',1,'']]],
   ['order_2eh',['order.h',['../order_8h.html',1,'']]],
   ['order_5fid',['order_id',['../structGeneral__vehicle__orders__t.html#aed05b671682ceb7173687d1092fa40cb',1,'General_vehicle_orders_t']]],
-  ['orders',['Orders',['../classpgrouting_1_1vrp_1_1PD__Orders.html#a4835e9035ab0a31d011f223606802d91',1,'pgrouting::vrp::PD_Orders::Orders()'],['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a00be9b14d548b9bb959baf395fec7e62',1,'pgrouting::vrp::Vehicle_pickDeliver::orders()']]],
+  ['orders',['orders',['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a00be9b14d548b9bb959baf395fec7e62',1,'pgrouting::vrp::Vehicle_pickDeliver::orders()'],['../classpgrouting_1_1vrp_1_1PD__Orders.html#a4835e9035ab0a31d011f223606802d91',1,'pgrouting::vrp::PD_Orders::Orders()']]],
   ['orders_5fin_5fvehicle',['orders_in_vehicle',['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae87fb8e4e4c97f347190916044877f06',1,'pgrouting::vrp::Vehicle_pickDeliver']]],
   ['orders_5finput_2ec',['orders_input.c',['../orders__input_8c.html',1,'']]],
   ['orders_5finput_2eh',['orders_input.h',['../orders__input_8h.html',1,'']]],
