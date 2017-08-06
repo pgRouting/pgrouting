@@ -32,6 +32,20 @@ Given a graph G, its line graph L(G) is a graph such that:-
 
 The current implementation only works for the `directed graph`.
 
+
+The following figures show a graph (left, with blue vertices) and its
+Line Graph (right, with green vertices).
+
+| | first | | | second | | | third | | | fourth | |
+
+.. |first| image:: images/135px-Line_graph_construction_1.svg.png
+
+.. |second| image:: images/135px-Line_graph_construction_2.svg.png
+
+.. |third| image:: images/135px-Line_graph_construction_3.svg.png
+
+.. |fourth| image:: images/128px-Line_graph_construction_4.svg.png
+
 Handling of Costs
 -------------------------------------------------------------------------------
 
@@ -67,20 +81,6 @@ Handling of Costs
 
     Here, the cost associated with an edge in the original graph moves to the
     corresponding nodes in the transformed Line Graph.
-
-Example
--------------------------------------------------------------------------------
-
-The following figures show a graph (left, with blue vertices) and its
-Line Graph (right, with green vertices).
-
-.. image:: images/135px-Line_graph_construction_1.svg.png
-
-.. image:: images/135px-Line_graph_construction_2.svg.png
-
-.. image:: images/135px-Line_graph_construction_3.svg.png
-
-.. image:: images/128px-Line_graph_construction_4.svg.png
 
 Signature Summary
 -----------------
@@ -168,16 +168,16 @@ Column                       Type                Description
 ============================ =================   ===================================================================
 **seq**                      ``INTEGER``         Sequential value starting from **1**.
 **source**                   ``BIGINT``          Identifier of the source vertex of the current edge `id`.
-                                                 - When negative: the source is the reverse edge in the original graph.
+                                                 * When `negative`: the source is the reverse edge in the original graph.
 **target**                   ``BIGINT``          Identifier of the target vertex of the current edge `id`.
-                                                 - When negative: the target is the reverse edge in the original graph.
+                                                 * When `negative`: the target is the reverse edge in the original graph.
 **cost**                     ``FLOAT``           Weight of the edge (`source`, `target`).
-                                                 - When negative: edge (`source`, `target`) does not exist, therefore it’s not part of the graph.
+                                                 * When `negative`: edge (`source`, `target`) does not exist, therefore it’s not part of the graph.
 **reverse_cost**             ``FLOAT``           Weight of the edge (`target`, `source`).
-                                                 - When negative: edge (`target`, `source`) does not exist, therefore it’s not part of the graph.
+                                                 * When `negative`: edge (`target`, `source`) does not exist, therefore it’s not part of the graph.
 ============================ =================   ===================================================================
 
-More Examples
+Examples
 -------------------------------------------------------------------------------
 
 .. literalinclude:: doc-pgr_lineGraph.queries
