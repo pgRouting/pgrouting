@@ -41,7 +41,7 @@ Line Graph (right, with green vertices).
     .. class:: tablapie
 
     +-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
-| |first| :small:`2009 Roberto Alsina <ralsina@netmanagers.com.ar>  /  Creative Commons Attribution-Noncommercial-Share Alike 2.5 Argentina License`     | |second| :small:`Based on quickref.txt from docutils`               | |third| :small:`Non-Commercial`| |fourth| :small:`Share Alike` |
+| |first|      | |second|              | |third| | |fourth|  |
     +-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
 
 .. |first| image:: images/135px-Line_graph_construction_1.svg.png
