@@ -89,7 +89,6 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 .. rubric:: Deprecated Signatures
 
 * pgr_bdastar - use pgr_bdAstar instead
-* pgr_gsoc_vrppdtw - use pgr_pickDeliverEuclidean instead
 
 .. rubric:: Renamed Functions
 

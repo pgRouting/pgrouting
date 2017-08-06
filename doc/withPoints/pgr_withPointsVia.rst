@@ -191,7 +191,7 @@ See Also
 * :ref:`pgr_drivingDistance` - Driving distance using dijkstra.
 * :ref:`pgr_alphashape` - Alpha shape computation.
 * :ref:`pgr_points_as_polygon` - Polygon around set of points.
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

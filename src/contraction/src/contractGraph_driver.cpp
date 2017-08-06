@@ -27,15 +27,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./contractGraph_driver.h"
+#include "drivers/contraction/contractGraph_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "./pgr_contractionGraph.hpp"
-#include "./pgr_contract.hpp"
+#include "contraction/pgr_contractionGraph.hpp"
+#include "contraction/pgr_contract.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 

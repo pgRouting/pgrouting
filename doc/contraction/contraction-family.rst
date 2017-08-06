@@ -316,7 +316,7 @@ Contracting Sample Data
 
 In this section, building and using a contracted graph will be shown by example.
 
-- The :ref:`sampledata` for an undirected graph is used
+- The :doc:`sampledata` for an undirected graph is used
 - a dead end operation first followed by a linear operation.
 
 The original graph:
@@ -518,7 +518,7 @@ See Also
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
-* The queries use :ref:`pgr_contractGraph` function and the :ref:`sampledata` network.
+* The queries use :ref:`pgr_contractGraph` function and the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

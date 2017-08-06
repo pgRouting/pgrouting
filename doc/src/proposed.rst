@@ -150,11 +150,11 @@ Experimental and Proposed functions
 
 -  :ref:`pgr_bridges` - Return the bridges of an undirected graph
 
-:ref:`VRP`
+.. rubric:: VRP
 
-.. include:: VRP-category.rst
-   :start-after: index from here
-   :end-before: index to here
+- :ref:`pgr_gsocvrppdtw`
+- :ref:`pgr_vrp_basic`
+
 
 .. toctree::
   :hidden:
@@ -164,6 +164,8 @@ Experimental and Proposed functions
   pgr_labelGraph
   components-family
   VRP-category
+  pgr_gsoc_vrppdtw
+  pgr_vrpOneDepot
 
 
 

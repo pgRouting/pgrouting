@@ -127,7 +127,7 @@ SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.
 INTO dist_matrix
 FROM A, A AS B WHERE A.id != B.id;
 */
-SELECT * FROM pgr_pickDeliverEuclidean(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles'
 );

@@ -126,7 +126,7 @@ Examples
 	OK
 	(1 row)
 
-The queries use the :ref:`sampledata` network.
+The queries use the :doc:`sampledata` network.
 
 
 See Also
