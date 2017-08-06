@@ -66,6 +66,13 @@ class Pgr_components {
      std::vector<pgr_components_rt> biconnectedComponents(
              G &graph);
 
+     //! Articulation Points
+     std::vector<pgr_components_rt> articulationPoints(
+             G &graph);
+
+     //! Bridges
+     std::vector<pgr_components_rt> bridges(
+             G &graph);
  private:
      //! Generate Results, Vertex Version
      std::vector<pgr_components_rt> generate_results(
@@ -170,6 +177,72 @@ Pgr_components< G >::biconnectedComponents(
         components[bimap[*ei]].push_back(graph[*ei].id);
 
     return generate_results(components);
+}
+
+//! Articulation Points
+template < class G >
+std::vector<pgr_components_rt>
+Pgr_components< G >::articulationPoints(
+        G &graph) {
+    // perform the algorithm
+    std::vector <int> art_points;
+    boost::articulation_points(graph.graph, std::back_inserter(art_points));
+
+    // get the results
+    std::vector <pgr_components_rt> results;
+    size_t totalArtp = art_points.size();
+    results.resize(totalArtp);
+    for (size_t i = 0; i < totalArtp; i++)
+        results[i].identifier = graph[art_points[i]].id;
+    
+    // sort identifier
+    std::sort(results.begin(), results.end(),
+            [](const pgr_components_rt &left, const pgr_components_rt &right) {
+            return left.identifier < right.identifier; });
+
+    return results; 
+}
+
+//! Bridges 
+template < class G >
+std::vector<pgr_components_rt>
+Pgr_components< G >::bridges(
+        G &graph) {
+    size_t totalNodes = num_vertices(graph.graph);
+    std::vector< int > tmp_comp(totalNodes);
+    std::vector <pgr_components_rt> results;
+    int ini_comps = boost::connected_components(graph.graph, &tmp_comp[0]);
+
+    // perform the algorithm
+    E_i ei, ei_end;
+    std::vector< std::pair<E, int64_t> > stored_edges;
+    for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei) {
+        stored_edges.push_back(std::make_pair(*ei, graph[*ei].id));
+    }
+
+    for (const auto pair_edge : stored_edges) {
+        E edge = pair_edge.first;
+        
+        boost::remove_edge(edge, graph.graph);
+
+        int now_comps = boost::connected_components(graph.graph, &tmp_comp[0]);
+        if (now_comps > ini_comps) {
+            pgr_components_rt temp;
+            temp.identifier = pair_edge.second;
+            results.push_back(temp);
+        }
+
+        boost::add_edge(boost::source(edge, graph.graph), 
+                        boost::target(edge, graph.graph),
+                        graph.graph);
+    }
+
+    // sort identifier
+    std::sort(results.begin(), results.end(),
+            [](const pgr_components_rt &left, const pgr_components_rt &right) {
+            return left.identifier < right.identifier; });
+
+    return results; 
 }
 
 #endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_

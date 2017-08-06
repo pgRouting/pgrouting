@@ -41,10 +41,13 @@ SET(LOCAL_FILES
 	doc-pgr_connectedComponentsV.queries
     doc-pgr_strongComponentsV.queries
 	doc-pgr_biconnectedComponents.queries
+	doc-pgr_articulationPoints.queries
+	doc-pgr_bridges.queries
     doc-pgr_vrpOneDepot.queries
     proof_of_concept.queries
     trsp_notes_v2.5.0.queries
     oneDepotWrapper.queries
+    doc-gsoc_vrppdtw.queries
     )
 
 foreach (f ${LOCAL_FILES})

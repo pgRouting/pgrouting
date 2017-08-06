@@ -153,7 +153,7 @@ See Also
 
 * :ref:`pgr_johnson`
 * `Boost floyd-Warshall <http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
-* Queries uses the :ref:`sampledata` network.
+* Queries uses the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

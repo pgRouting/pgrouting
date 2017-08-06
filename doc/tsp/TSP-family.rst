@@ -96,18 +96,18 @@ Once the desired temperature is reached, the best solution found is returned
 
 .. code-block:: none
 
-    Solution ← initial_solution;
+    Solution = initial_solution;
 
-    temperature ← initial_temperature;
+    temperature = initial_temperature;
     while (temperature > final_temperature) {
 
         do tries_per_temperature times {
-            snew ← neighbour(solution);
-            If P(E(solution), E(snew), T) ≥ random(0, 1)
-                solution ← snew;
+            snew = neighbour(solution);
+            If P(E(solution), E(snew), T) >= random(0, 1)
+                solution = snew;
         }
 
-        temperature ← temperature * cooling factor;
+        temperature = temperature * cooling factor;
     }
 
     Output: the best solution
@@ -125,7 +125,7 @@ To cool down faster to the next temperature:
 - max_changes_per_temperature: limits the number of changes in the solution per temperature
 - max_consecutive_non_changes: limits the number of consecutive non changes per temperature
 
-This is done by doing some book keeping on the times **solution ← snew;** is executed.
+This is done by doing some book keeping on the times **solution = snew;** is executed.
 
 - max_changes_per_temperature: Increases by one when **solution** changes
 - max_consecutive_non_changes: Reset to 0 when **solution** changes, and increased each **try**
@@ -140,22 +140,22 @@ simulated annealing will stop.
 
 .. code-block:: none
 
-    Solution ← initial_solution;
+    Solution = initial_solution;
 
-    temperature ← initial_temperature;
+    temperature = initial_temperature;
     while (temperature > final_temperature) {
 
         do tries_per_temperature times {
-            snew ← neighbour(solution);
-            If P(E(solution), E(snew), T) ≥ random(0, 1)
-                solution ← snew;
+            snew = neighbour(solution);
+            If P(E(solution), E(snew), T) >= random(0, 1)
+                solution = snew;
 
             when max_changes_per_temperature is reached
                 or max_consecutive_non_changes is reached
                 BREAK;
         }
 
-        temperature ← temperature * cooling factor;
+        temperature = temperature * cooling factor;
         when no changes were done in the current temperature
             or max_processing_time has being reached
             BREAK;

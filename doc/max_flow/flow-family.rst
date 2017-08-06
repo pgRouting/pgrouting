@@ -100,7 +100,11 @@ The weighted directed graph, :math:`G(V,E)`, is defined as:
 
 * the set of edges :math:`E`
 
-  - :math:`E = \begin{cases} &\{(source_i, target_i, capacity_i) \text{ when } capacity > 0 \} &\quad  \text{ if } reverse\_capacity = \varnothing \\ \\ &\{(source_i, target_i, capacity_i) \text{ when } capacity > 0 \} \\ \cup &\{(target_i, source_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i > 0)\} &\quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}`
+  - :math:`E = \begin{cases}
+    \text{ } \{(source_i, target_i, capacity_i) \text{ when } capacity > 0 \} & \quad  \text{ if } reverse\_capacity = \varnothing \\
+    \text{ } & \quad \text{ } \\
+    \{(source_i, target_i, capacity_i) \text{ when } capacity > 0 \} & \text{ } \\
+    \cup \{(target_i, source_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i > 0)\} & \quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}`
 
 
 .. rubric:: Maximum flow problem
@@ -108,9 +112,9 @@ The weighted directed graph, :math:`G(V,E)`, is defined as:
 Given:
 
 
-  - :math:`G(V,E)`
-  - :math:`source\_vertex \in V` the source vertex
-  - :math:`sink\_vertex \in V` the sink vertex
+- :math:`G(V,E)`
+- :math:`source\_vertex \in V` the source vertex
+- :math:`sink\_vertex \in V` the sink vertex
 
 Then:
 
@@ -120,11 +124,11 @@ Then:
 
 Where:
 
-  :math:`\boldsymbol{\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
+:math:`\boldsymbol{\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
 
-  - :math:`id_i = i`
-  - :math:`edge\_id = id_i   \text{ in edges_sql}`
-  - :math:`residual\_capacity_i = capacity_i - flow_i`
+- :math:`id_i = i`
+- :math:`edge\_id = id_i` in edges_sql
+- :math:`residual\_capacity_i = capacity_i - flow_i`
 
 
 See Also

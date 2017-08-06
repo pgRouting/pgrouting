@@ -3,6 +3,8 @@ SET(LOCAL_FILES
     connectedComponentsV.sql
     strongComponentsV.sql
     biconnectedComponents.sql
+    articulationPoints.sql
+    bridges.sql
     )
 
 # Do not modify bellow this line
