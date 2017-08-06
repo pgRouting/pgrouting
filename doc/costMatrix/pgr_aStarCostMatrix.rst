@@ -152,7 +152,7 @@ See Also
 * :ref:`astar`
 * :ref:`costMatrix`
 * :ref:`tsp`
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

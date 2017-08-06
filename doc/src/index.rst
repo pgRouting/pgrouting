@@ -34,7 +34,7 @@ General
     support
 
 
-- :ref:`sampledata` that is used in the examples of this manual.
+- :doc:`sampledata` that is used in the examples of this manual.
 
 .. toctree::
    :hidden:

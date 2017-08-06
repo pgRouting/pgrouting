@@ -239,7 +239,7 @@ This example start a clean topology, with 5 edges, and then its incremented to t
    :start-after: --q17
    :end-before: --q17.1
 
-The example uses the :ref:`sampledata` network.
+The example uses the :doc:`sampledata` network.
 
 
 See Also

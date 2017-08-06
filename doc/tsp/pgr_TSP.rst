@@ -155,7 +155,7 @@ To generate a symmetric matrix:
    :start-after: -- q3
    :end-before: -- q4
 
-The queries use the :ref:`sampledata` network.
+The queries use the :doc:`sampledata` network.
 
 
 

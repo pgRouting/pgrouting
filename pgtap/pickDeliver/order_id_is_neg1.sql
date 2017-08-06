@@ -4,7 +4,7 @@
 SELECT plan(2);
 
 SELECT * INTO results
-FROM pgr_pickDeliverEuclidean(
+FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$);
 

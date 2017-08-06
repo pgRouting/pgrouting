@@ -179,7 +179,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-* :ref:`sampledata` network.
+* :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

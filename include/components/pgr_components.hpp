@@ -210,31 +210,33 @@ Pgr_components< G >::bridges(
         G &graph) {
     size_t totalNodes = num_vertices(graph.graph);
     std::vector< int > tmp_comp(totalNodes);
-    std::vector< E > res_bridges;
+    std::vector <pgr_components_rt> results;
     int ini_comps = boost::connected_components(graph.graph, &tmp_comp[0]);
 
     // perform the algorithm
     E_i ei, ei_end;
+    std::vector< std::pair<E, int64_t> > stored_edges;
     for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei) {
-        boost::remove_edge(*ei, graph.graph);
+        stored_edges.push_back(std::make_pair(*ei, graph[*ei].id));
+    }
+
+    for (const auto pair_edge : stored_edges) {
+        E edge = pair_edge.first;
+        
+        boost::remove_edge(edge, graph.graph);
 
         int now_comps = boost::connected_components(graph.graph, &tmp_comp[0]);
         if (now_comps > ini_comps) {
-            res_bridges.push_back(*ei);
+            pgr_components_rt temp;
+            temp.identifier = pair_edge.second;
+            results.push_back(temp);
         }
 
-        boost::add_edge(boost::source(*ei, graph.graph), 
-                        boost::target(*ei, graph.graph),
+        boost::add_edge(boost::source(edge, graph.graph), 
+                        boost::target(edge, graph.graph),
                         graph.graph);
     }
 
-    // get the results
-    std::vector <pgr_components_rt> results;
-    size_t totalBridges = res_bridges.size();
-    results.resize(totalBridges);
-    for (size_t i = 0; i < totalBridges; i++)
-        results[i].identifier = graph[res_bridges[i]].id;
-    
     // sort identifier
     std::sort(results.begin(), results.end(),
             [](const pgr_components_rt &left, const pgr_components_rt &right) {
