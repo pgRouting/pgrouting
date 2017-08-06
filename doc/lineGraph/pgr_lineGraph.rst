@@ -44,19 +44,15 @@ Line Graph (right, with green vertices).
 | |first|       |second|               |third|  |fourth|
 
 .. |first| image:: images/135px-Line_graph_construction_1.svg.png
-   :width: 8pt
    :align: middle
 
 .. |second| image:: images/135px-Line_graph_construction_2.svg.png
-   :width: 8pt
    :align: middle
 
 .. |third| image:: images/135px-Line_graph_construction_3.svg.png
-   :width: 8pt
    :align: middle
 
 .. |fourth| image:: images/128px-Line_graph_construction_4.svg.png
-   :width: 8pt
    :align: middle
 
 Handling of Costs
