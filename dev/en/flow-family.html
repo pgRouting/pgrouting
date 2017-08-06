@@ -17,7 +17,7 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -236,33 +236,33 @@ Given the following query:</p>
 </ul>
 </li>
 <li>the set of edges <span class="math">\(E\)</span><ul>
-<li><span class="math">\(E = \begin{cases} &amp;\{(source_i, target_i, capacity_i) \text{ when } capacity &gt; 0 \} &amp;\quad  \text{ if } reverse\_capacity = \varnothing \\ \\ &amp;\{(source_i, target_i, capacity_i) \text{ when } capacity &gt; 0 \} \\ \cup &amp;\{(target_i, source_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i &gt; 0)\} &amp;\quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}\)</span></li>
+<li><span class="math">\(E = \begin{cases}
+\text{ } \{(source_i, target_i, capacity_i) \text{ when } capacity &gt; 0 \} &amp; \quad  \text{ if } reverse\_capacity = \varnothing \\
+\text{ } &amp; \quad \text{ } \\
+\{(source_i, target_i, capacity_i) \text{ when } capacity &gt; 0 \} &amp; \text{ } \\
+\cup \{(target_i, source_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i &gt; 0)\} &amp; \quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}\)</span></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Maximum flow problem</p>
 <p>Given:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><span class="math">\(G(V,E)\)</span></li>
 <li><span class="math">\(source\_vertex \in V\)</span> the source vertex</li>
 <li><span class="math">\(sink\_vertex \in V\)</span> the sink vertex</li>
 </ul>
-</div></blockquote>
 <p>Then:</p>
 <blockquote>
 <div><p><span class="math">\(pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}\)</span></p>
 <p><span class="math">\(\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}\)</span></p>
 </div></blockquote>
 <p>Where:</p>
-<blockquote>
-<div><p><span class="math">\(\boldsymbol{\Phi}\)</span> is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:</p>
+<p><span class="math">\(\boldsymbol{\Phi}\)</span> is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:</p>
 <ul class="simple">
 <li><span class="math">\(id_i = i\)</span></li>
-<li><span class="math">\(edge\_id = id_i   \text{ in edges_sql}\)</span></li>
+<li><span class="math">\(edge\_id = id_i\)</span> in edges_sql</li>
 <li><span class="math">\(residual\_capacity_i = capacity_i - flow_i\)</span></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -285,7 +285,7 @@ Given the following query:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jul 05, 2017.<br/>
+      Last updated on Aug 06, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
