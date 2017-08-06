@@ -36,23 +36,25 @@ The current implementation only works for the `directed graph`.
 The following figures show a graph (left, with blue vertices) and its
 Line Graph (right, with green vertices).
 
-.. footer::
+.. class:: tablapie
 
-    .. class:: tablapie
-
-    +-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
-| |first|       |second|               |third|  |fourth|  
++-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
+| |first|       |second|               |third|  |fourth|
 
 .. |first| image:: images/135px-Line_graph_construction_1.svg.png
+   :width: 8pt
    :align: middle
 
 .. |second| image:: images/135px-Line_graph_construction_2.svg.png
+   :width: 8pt
    :align: middle
 
 .. |third| image:: images/135px-Line_graph_construction_3.svg.png
+   :width: 8pt
    :align: middle
 
 .. |fourth| image:: images/128px-Line_graph_construction_4.svg.png
+   :width: 8pt
    :align: middle
 
 Handling of Costs
