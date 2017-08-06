@@ -36,7 +36,9 @@ The current implementation only works for the `directed graph`.
 The following figures show a graph (left, with blue vertices) and its
 Line Graph (right, with green vertices).
 
-| | first | | | second | | | third | | | fourth | |
++-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
+| |first| :small:`2009 Roberto Alsina <ralsina@netmanagers.com.ar>  /  Creative Commons Attribution-Noncommercial-Share Alike 2.5 Argentina License`     | |second| :small:`Based on quickref.txt from docutils`               | |third| :small:`Non-Commercial`| |fourth| :small:`Share Alike` |
++-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
 
 .. |first| image:: images/135px-Line_graph_construction_1.svg.png
 
@@ -167,13 +169,21 @@ RETURNS SETOF  (seq, source, target, cost, reverse_cost)
 Column                       Type                Description
 ============================ =================   ===================================================================
 **seq**                      ``INTEGER``         Sequential value starting from **1**.
+
 **source**                   ``BIGINT``          Identifier of the source vertex of the current edge `id`.
+
                                                  * When `negative`: the source is the reverse edge in the original graph.
+
 **target**                   ``BIGINT``          Identifier of the target vertex of the current edge `id`.
+
                                                  * When `negative`: the target is the reverse edge in the original graph.
+
 **cost**                     ``FLOAT``           Weight of the edge (`source`, `target`).
+
                                                  * When `negative`: edge (`source`, `target`) does not exist, therefore it’s not part of the graph.
+
 **reverse_cost**             ``FLOAT``           Weight of the edge (`target`, `source`).
+
                                                  * When `negative`: edge (`target`, `source`) does not exist, therefore it’s not part of the graph.
 ============================ =================   ===================================================================
 
