@@ -1,4 +1,4 @@
-Contributors to pgRotuing are expected to act respectfully toward others in accordance with the http://www.osgeo.org/code_of_conduct.
+Contributors to pgRouting are expected to act respectfully toward others in accordance with the http://www.osgeo.org/code_of_conduct.
 
 Full transcription:
 
