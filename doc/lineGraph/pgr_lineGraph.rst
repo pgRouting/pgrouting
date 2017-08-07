@@ -36,11 +36,6 @@ The current implementation only works for the `directed graph`.
 The following figures show a graph (left, with blue vertices) and its
 Line Graph (right, with green vertices).
 
-.. footer::
-
-    .. class:: tablapie
-
-    +-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
 | |first|       |second|               |third|  |fourth|
 
 .. |first| image:: images/135px-Line_graph_construction_1.svg.png
@@ -54,42 +49,6 @@ Line Graph (right, with green vertices).
 
 .. |fourth| image:: images/128px-Line_graph_construction_4.svg.png
    :align: middle
-
-Handling of Costs
--------------------------------------------------------------------------------
-
-.. - **Cost associated with the nodes.**
-..    + Consider the following graph with nodes having costs:-
-..
-..    .. image:: images/Graph1.png
-..
-..    The transformed **Line Graph**:-
-..
-..    .. image:: images/Line-graph-with-edge-cost.png
-
-..    Each node of the transformed graph is an edge from the original graph.
-..    Here `[1,2]` denotes the node in the transformed graph which was an edge
-..    from node `1` to node `2` in the original graph.
-
-..    Each edge of the transformed graph is a tuple of nodes `(n1, n2, n3)` where
-..    `n1`, `n2` and `n3` are nodes from the original graph such that there was
-..    an edge from `n1 -> n2` and another edge from `n2 -> n3`.
-
-..    Thus, the connection `[1,4] -> [3, 4]` goes through the vertex `4` as it is
-..    made up of `(1, 4, 3)` tuple which has an associated cost of `6` therefore
-..    the corresponding edge in the above graph gets a cost of `6`.
-
-- **Cost associated with the edges**
-    + Consider the following graph with edges having costs:-
-
-    .. image:: images/Graph2.png
-
-    The transformed **Line Graph**:-
-
-    .. image:: images/Line-graph-with-node-cost.png
-
-    Here, the cost associated with an edge in the original graph moves to the
-    corresponding nodes in the transformed Line Graph.
 
 Signature Summary
 -----------------
@@ -205,7 +164,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * https://en.wikipedia.org/wiki/Line_graph
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
