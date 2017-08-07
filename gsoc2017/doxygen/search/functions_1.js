@@ -9,6 +9,7 @@ var searchData=
   ['biconnectedcomponents',['biconnectedComponents',['../classPgr__components.html#a6cc0eaa02c9ea5143a3e4542508f647f',1,'Pgr_components::biconnectedComponents()'],['../biconnectedComponents_8c.html#abd0e2f6f4006b9bef24305df23ee66db',1,'biconnectedComponents():&#160;biconnectedComponents.c']]],
   ['bidirectional',['bidirectional',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a0a1519de1a666bdfff7584037388e5f9',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
   ['boykov_5fkolmogorov',['boykov_kolmogorov',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5928ee304759464fa5da7706115d4f1e',1,'pgrouting::graph::PgrFlowGraph']]],
+  ['bridges',['bridges',['../classPgr__components.html#a12ca6cf1992976e6ccbfd7a940db01ec',1,'Pgr_components::bridges()'],['../bridges_8c.html#a5dbe44d5a42d734213825965d978b2b9',1,'bridges():&#160;bridges.c']]],
   ['build_5ffleet',['build_fleet',['../classpgrouting_1_1vrp_1_1Fleet.html#a84505248f08d5fee3859ebc953a3952e',1,'pgrouting::vrp::Fleet']]],
   ['build_5forders',['build_orders',['../classpgrouting_1_1vrp_1_1PD__Orders.html#aba7df29ae94dea36e793989ba84fd42d',1,'pgrouting::vrp::PD_Orders']]]
 ];

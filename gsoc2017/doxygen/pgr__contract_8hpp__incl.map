@@ -1,4 +1,4 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/contraction/src/pgr_contract.hpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/contraction/src/pgr_contract.hpp">
+<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/contraction/pgr_contract.hpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/contraction/pgr_contract.hpp">
 <area shape="rect" id="node4" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="137,125,313,152"/>
 <area shape="rect" id="node5" href="$pgr__contractionGraph_8hpp.html" title="./pgr_contractionGraph.hpp" alt="" coords="337,125,516,152"/>
 <area shape="rect" id="node6" href="$pgr__linearContraction_8hpp.html" title="./pgr_linearContraction.hpp" alt="" coords="540,125,719,152"/>

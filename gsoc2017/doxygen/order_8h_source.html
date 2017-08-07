@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -143,7 +144,7 @@ $(document).ready(function(){initNavTree('order_8h_source.html','');});
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vehicle__node_8h.html">vrp/vehicle_node.h</a>&quot;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span>pgrouting {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>vrp {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classpgrouting_1_1vrp_1_1Order.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classpgrouting_1_1vrp_1_1Order.html">Order</a> : <span class="keyword">public</span> <a class="code" href="classpgrouting_1_1Identifier.html">Identifier</a> {</div>
@@ -190,7 +191,6 @@ $(document).ready(function(){initNavTree('order_8h_source.html','');});
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Order_html_a6881a6c6a44d927f24c57d7eefe07b6f"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Order.html#a6881a6c6a44d927f24c57d7eefe07b6f">pgrouting::vrp::Order::isCompatibleIJ</a></div><div class="ttdeci">bool isCompatibleIJ(const Order &amp;I, double speed) const </div><div class="ttdoc">Can order I be placed before this order? </div><div class="ttdef"><b>Definition:</b> <a href="order_8cpp_source.html#l00135">order.cpp:135</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Order_html_a55f9df9e8695ad727381ceeeddd63ad8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Order.html#a55f9df9e8695ad727381ceeeddd63ad8">pgrouting::vrp::Order::set_compatibles</a></div><div class="ttdeci">void set_compatibles(const Order order, double speed)</div><div class="ttdef"><b>Definition:</b> <a href="order_8cpp_source.html#l00111">order.cpp:111</a></div></div>
 <div class="ttc" id="vehicle__node_8h_html"><div class="ttname"><a href="vehicle__node_8h.html">vehicle_node.h</a></div></div>
-<div class="ttc" id="VRP_8c_html_af8a0ad5c2c0e6189829af74aa05be393"><div class="ttname"><a href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a></div><div class="ttdeci">PGDLLEXPORT Datum vrp(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8c_source.html#l00727">VRP.c:727</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Order_html_aa87eb6f0477ec5a6ab34ab0422c99994"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Order.html#aa87eb6f0477ec5a6ab34ab0422c99994">pgrouting::vrp::Order::subsetJ</a></div><div class="ttdeci">Identifiers&lt; size_t &gt; subsetJ(const Identifiers&lt; size_t &gt; &amp;J) const </div><div class="ttdoc">Get a subset of the orders that can be placed after this order. </div><div class="ttdef"><b>Definition:</b> <a href="order_8cpp_source.html#l00040">order.cpp:40</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Order_html_a3f3b10a29ba63bf20e00383bcc0af81d"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Order.html#a3f3b10a29ba63bf20e00383bcc0af81d">pgrouting::vrp::Order::subsetI</a></div><div class="ttdeci">Identifiers&lt; size_t &gt; subsetI(const Identifiers&lt; size_t &gt; &amp;I) const </div><div class="ttdef"><b>Definition:</b> <a href="order_8cpp_source.html#l00035">order.cpp:35</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Order_html"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Order.html">pgrouting::vrp::Order</a></div><div class="ttdef"><b>Definition:</b> <a href="order_8h_source.html#l00042">order.h:42</a></div></div>
@@ -206,7 +206,7 @@ $(document).ready(function(){initNavTree('order_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_651e52dddefd92e6e6d00bb3f78dc931.html">vrp</a></li><li class="navelem"><a class="el" href="order_8h.html">order.h</a></li>
-    <li class="footer">Generated on Tue Jul 4 2017 21:37:30 for PGROUTING by
+    <li class="footer">Generated on Sun Aug 6 2017 20:39:04 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

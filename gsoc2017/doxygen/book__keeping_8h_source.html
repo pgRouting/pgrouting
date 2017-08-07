@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -141,7 +142,7 @@ $(document).ready(function(){initNavTree('book__keeping_8h_source.html','');});
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vehicle__pickDeliver_8h.html">vrp/vehicle_pickDeliver.h</a>&quot;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">namespace </span>pgrouting {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">namespace </span><a class="code" href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">namespace </span>vrp {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">class </span>Swap_bk;</div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classpgrouting_1_1vrp_1_1Swap__info.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="classpgrouting_1_1vrp_1_1Swap__info.html">Swap_info</a> {</div>
@@ -245,7 +246,6 @@ $(document).ready(function(){initNavTree('book__keeping_8h_source.html','');});
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Swap__bk_html_a88ace9e98fd750245de318deb762011a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Swap__bk.html#a88ace9e98fd750245de318deb762011a">pgrouting::vrp::Swap_bk::empty</a></div><div class="ttdeci">bool empty()</div><div class="ttdef"><b>Definition:</b> <a href="book__keeping_8h_source.html#l00128">book_keeping.h:128</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Swap__info_html_a50967480023bfeef9759538d3538a0fc"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Swap__info.html#a50967480023bfeef9759538d3538a0fc">pgrouting::vrp::Swap_info::to_order</a></div><div class="ttdeci">size_t to_order</div><div class="ttdef"><b>Definition:</b> <a href="book__keeping_8h_source.html#l00086">book_keeping.h:86</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Swap__bk_html_aa14fd0b1e4db6195dffa59d09441c874"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Swap__bk.html#aa14fd0b1e4db6195dffa59d09441c874">pgrouting::vrp::Swap_bk::possible_swaps</a></div><div class="ttdeci">Swaps_queue &amp; possible_swaps()</div><div class="ttdef"><b>Definition:</b> <a href="book__keeping_8h_source.html#l00124">book_keeping.h:124</a></div></div>
-<div class="ttc" id="VRP_8c_html_af8a0ad5c2c0e6189829af74aa05be393"><div class="ttname"><a href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a></div><div class="ttdeci">PGDLLEXPORT Datum vrp(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8c_source.html#l00727">VRP.c:727</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Swap__info_html"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Swap__info.html">pgrouting::vrp::Swap_info</a></div><div class="ttdef"><b>Definition:</b> <a href="book__keeping_8h_source.html#l00044">book_keeping.h:44</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Swap__info_html_a0ef71a6015d53983f7ef50ddc4f2e93f"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Swap__info.html#a0ef71a6015d53983f7ef50ddc4f2e93f">pgrouting::vrp::Swap_info::estimated_delta</a></div><div class="ttdeci">double estimated_delta</div><div class="ttdef"><b>Definition:</b> <a href="book__keeping_8h_source.html#l00087">book_keeping.h:87</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Swap__info_html_a4d2d61f55c37d30ac6c7df414786a33b"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Swap__info.html#a4d2d61f55c37d30ac6c7df414786a33b">pgrouting::vrp::Swap_info::from_order</a></div><div class="ttdeci">size_t from_order</div><div class="ttdef"><b>Definition:</b> <a href="book__keeping_8h_source.html#l00085">book_keeping.h:85</a></div></div>
@@ -264,7 +264,7 @@ $(document).ready(function(){initNavTree('book__keeping_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_651e52dddefd92e6e6d00bb3f78dc931.html">vrp</a></li><li class="navelem"><a class="el" href="book__keeping_8h.html">book_keeping.h</a></li>
-    <li class="footer">Generated on Tue Jul 4 2017 21:37:30 for PGROUTING by
+    <li class="footer">Generated on Sun Aug 6 2017 20:39:04 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

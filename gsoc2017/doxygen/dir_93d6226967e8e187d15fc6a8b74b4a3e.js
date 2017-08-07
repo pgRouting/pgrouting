@@ -22,6 +22,7 @@ var dir_93d6226967e8e187d15fc6a8b74b4a3e =
     [ "pgr_logger.h", "pgr__logger_8h.html", "pgr__logger_8h" ],
     [ "points_input.c", "points__input_8c.html", "points__input_8c" ],
     [ "postgres_connection.c", "postgres__connection_8c.html", "postgres__connection_8c" ],
+    [ "restrict_input.c", "restrict__input_8c.html", "restrict__input_8c" ],
     [ "restrictions_input.c", "restrictions__input_8c.html", "restrictions__input_8c" ],
     [ "signalhandler.cpp", "signalhandler_8cpp.html", null ],
     [ "signalhandler.h", "signalhandler_8h.html", "signalhandler_8h" ],

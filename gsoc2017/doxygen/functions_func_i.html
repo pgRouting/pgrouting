@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -149,12 +150,13 @@ $(document).ready(function(){initNavTree('functions_func_i.html','');});
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>id()
 : <a class="el" href="classpgrouting_1_1Identifier.html#a04eb2b760246fbcc2f6dc0a011c3d340">pgrouting::Identifier</a>
+, <a class="el" href="classRestriction.html#ae3300d12b775a2d855a0e9e0f8509334">Restriction</a>
 </li>
 <li>Identifier()
 : <a class="el" href="classpgrouting_1_1Identifier.html#a1a6b53e85b2454fb4c3f7bed36a5e385">pgrouting::Identifier</a>
 </li>
 <li>Identifiers()
-: <a class="el" href="classIdentifiers.html#aec0b735bdbb707a91b12d4659aef534e">Identifiers&lt; T &gt;</a>
+: <a class="el" href="classIdentifiers.html#a74517f7f7f7af7303512cc5ad9228861">Identifiers&lt; T &gt;</a>
 </li>
 <li>idx()
 : <a class="el" href="classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6">pgrouting::Identifier</a>
@@ -166,11 +168,7 @@ $(document).ready(function(){initNavTree('functions_func_i.html','');});
 : <a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a50eafbebc9b5e056cd81033251eddb0b">pgrouting::graph::Pgr_contractionGraph&lt; G, T_V, T_E &gt;</a>
 </li>
 <li>init()
-: <a class="el" href="classCSolutionInfo.html#af2337c9616ffc6b2d82ca79b7702e8c5">CSolutionInfo</a>
-, <a class="el" href="classCTourInfo.html#a69c0275b03b0464fcba506c1612dac38">CTourInfo</a>
-, <a class="el" href="classCVehicleInfo.html#a500cec23028909bbea37db935fb6d778">CVehicleInfo</a>
-, <a class="el" href="classCVRPSolver.html#a9ea8122d128557860036bd5e4aa85491">CVRPSolver</a>
-, <a class="el" href="classGraphDefinition.html#a7318fb4906c06f0cb4417ea1c09f665a">GraphDefinition</a>
+: <a class="el" href="classGraphDefinition.html#a7318fb4906c06f0cb4417ea1c09f665a">GraphDefinition</a>
 </li>
 <li>Initial_solution()
 : <a class="el" href="classpgrouting_1_1vrp_1_1Initial__solution.html#a0ed2750a07c6de761d7ca0b659a287ec">pgrouting::vrp::Initial_solution</a>
@@ -196,12 +194,8 @@ $(document).ready(function(){initNavTree('functions_func_i.html','');});
 <li>insert_less_travel_time()
 : <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#a43b1afad2e0d74af5b5d79dbd6829446">pgrouting::vrp::Vehicle</a>
 </li>
-<li>insertOrder()
-: <a class="el" href="classCTourInfo.html#ac7a8b3ea9abf1f12b7872159dc62f0b1">CTourInfo</a>
-, <a class="el" href="classCVRPSolver.html#afe08f85c746f5cec359e2ee8fb2ee1d0">CVRPSolver</a>
-</li>
-<li>insertUnservedOrders()
-: <a class="el" href="classCVRPSolver.html#a46471aa397eebe84b6ae9b950f296ce3">CVRPSolver</a>
+<li>insert_vertices()
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ad3c671cf7edd4bec040526a3ee1cede4">pgrouting::graph::Pgr_lineGraph&lt; G, T_V, T_E &gt;</a>
 </li>
 <li>instance()
 : <a class="el" href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">SignalHandler</a>
@@ -302,17 +296,11 @@ $(document).ready(function(){initNavTree('functions_func_i.html','');});
 <li>is_waitTime_compatible_IJ()
 : <a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#aaf8d97b788b38d5294a611e8f8192980">pgrouting::vrp::Tw_node</a>
 </li>
-<li>isBetter()
-: <a class="el" href="classCMoveInfo.html#a5dfa4238d9569757cd90fb351f9754a9">CMoveInfo</a>
-</li>
 <li>isCompatibleIJ()
 : <a class="el" href="classpgrouting_1_1vrp_1_1Order.html#a6881a6c6a44d927f24c57d7eefe07b6f">pgrouting::vrp::Order</a>
 </li>
 <li>isEqual()
 : <a class="el" href="classPath.html#adf67930d9eaea5c23c9a5262fc846a73">Path</a>
-</li>
-<li>isTabuMove()
-: <a class="el" href="classCVRPSolver.html#a33c8852cdb507ade8adfc5d292911e20">CVRPSolver</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -320,7 +308,7 @@ $(document).ready(function(){initNavTree('functions_func_i.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 4 2017 21:37:33 for PGROUTING by
+    <li class="footer">Generated on Sun Aug 6 2017 20:39:08 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

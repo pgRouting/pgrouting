@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -154,20 +155,11 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_base_nodes
 : <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">pgrouting::vrp::Pgr_pickDeliver</a>
 </li>
-<li>m_bFoundOptimal
-: <a class="el" href="classCVRPSolver.html#a0fc517773fa033c996e23e7217a0e9df">CVRPSolver</a>
-</li>
 <li>m_bIsGraphConstructed
 : <a class="el" href="classGraphDefinition.html#ad186b27a88749d527a67caa37486c673">GraphDefinition</a>
 </li>
 <li>m_bIsLeadingRestrictedEdge
 : <a class="el" href="classGraphEdgeInfo.html#a642fa153a91ffec89e7a53526a65eb5f">GraphEdgeInfo</a>
-</li>
-<li>m_bIsReadyToSolve
-: <a class="el" href="classCVRPSolver.html#a093e2dd12826c15e9220b00a4014a5f6">CVRPSolver</a>
-</li>
-<li>m_bIsSolutionReady
-: <a class="el" href="classCVRPSolver.html#ab55533a065e473677aa9e6406f7293c8">CVRPSolver</a>
 </li>
 <li>m_bIsturnRestrictOn
 : <a class="el" href="classGraphDefinition.html#af6ee01a277cab98e970b09e6f48103ce">GraphDefinition</a>
@@ -191,6 +183,9 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 : <a class="el" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">pgrouting::CH_edge</a>
 , <a class="el" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex</a>
 </li>
+<li>m_cost
+: <a class="el" href="classRestriction.html#a290b54f80f1b601078f5d4e04257dcb4">Restriction</a>
+</li>
 <li>m_cost_matrix
 : <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ab32ec47a05aefed478feab2c5bf18b0f">pgrouting::vrp::Pgr_pickDeliver</a>
 </li>
@@ -200,9 +195,6 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_dCost
 : <a class="el" href="classGraphDefinition.html#ab56c6968ede83841d384ab159ebf1f86">GraphDefinition</a>
 , <a class="el" href="classGraphEdgeInfo.html#a9f765e030a896f1a645ebe373e54a3d2">GraphEdgeInfo</a>
-</li>
-<li>m_dCostPerKM
-: <a class="el" href="classCVehicleInfo.html#ac441bbc6ff1d51b6a6597f31324c3430">CVehicleInfo</a>
 </li>
 <li>m_delivery
 : <a class="el" href="classpgrouting_1_1vrp_1_1Order.html#a9bdb982340168ecebe3be10b043a501c">pgrouting::vrp::Order</a>
@@ -231,22 +223,15 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_dStartpart
 : <a class="el" href="classGraphDefinition.html#affbe23205587706c4d1145d543a99903">GraphDefinition</a>
 </li>
-<li>m_dTotalCost
-: <a class="el" href="classCSolutionInfo.html#ad59750f992158ab047d52399c9afb914">CSolutionInfo</a>
-, <a class="el" href="classCTourInfo.html#a05106e978f61000fb66df503f58f4049">CTourInfo</a>
+<li>m_edges
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a9727fe6978e207f58656cc39f0a9bb3c">pgrouting::graph::Pgr_lineGraph&lt; G, T_V, T_E &gt;</a>
 </li>
-<li>m_dTotalDistance
-: <a class="el" href="classCSolutionInfo.html#a9cb09719734b9aac2d839512f5fa4bb0">CSolutionInfo</a>
-, <a class="el" href="classCTourInfo.html#aa4bef0ee6af6197837e4a2c1dd06855a">CTourInfo</a>
-</li>
-<li>m_dTotalTravelTime
-: <a class="el" href="classCSolutionInfo.html#ad3ff3b862804ad288fa1d96ff5f2fde7">CSolutionInfo</a>
-</li>
-<li>m_dTotalTraveltime
-: <a class="el" href="classCTourInfo.html#a7afb1eb931d433602de77211ed59163d">CTourInfo</a>
+<li>m_edges_in_path
+: <a class="el" href="classPgr__dijkstraTRSP.html#a7003438ec5ccdbe0d0f14bc448ee4214">Pgr_dijkstraTRSP&lt; G &gt;</a>
 </li>
 <li>m_end
-: <a class="el" href="classPgr__ksp.html#a3fc94e730d74d65c3fc2c64c2d4bd1ff">Pgr_ksp&lt; G &gt;</a>
+: <a class="el" href="classPgr__dijkstraTRSP.html#aaf26d2db0dfb99e60639b756ba8ee475">Pgr_dijkstraTRSP&lt; G &gt;</a>
+, <a class="el" href="classPgr__ksp.html#a3fc94e730d74d65c3fc2c64c2d4bd1ff">Pgr_ksp&lt; G &gt;</a>
 </li>
 <li>m_end_id
 : <a class="el" href="classPath.html#a8c5819a5378819252ee3e99a5104c43d">Path</a>
@@ -281,23 +266,9 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 : <a class="el" href="classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html#ace88323875fec8de4dbf230458a66ed9">pgrouting::algorithms::Pgr_astar&lt; G &gt;::distance_heuristic</a>
 , <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ae2069163338e472c466c389f016642f7">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;</a>
 </li>
-<li>m_iCapacity
-: <a class="el" href="classCVehicleInfo.html#a972d7db4ead3382c1195d18aa2528c68">CVehicleInfo</a>
-</li>
-<li>m_iCurrentLoad
-: <a class="el" href="classCVehicleInfo.html#ae7d4af0e708e650dcf621db5ade6edc8">CVehicleInfo</a>
-</li>
 <li>m_id
 : <a class="el" href="classpgrouting_1_1Identifier.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1">pgrouting::Identifier</a>
-</li>
-<li>m_iDepotCloseTime
-: <a class="el" href="classCDepotInfo.html#a53cf9af90e6e8207307f8be8d94114cf">CDepotInfo</a>
-</li>
-<li>m_iDepotId
-: <a class="el" href="classCDepotInfo.html#a6c26af812d77e27de5ea7a33d05e9ff8">CDepotInfo</a>
-</li>
-<li>m_iDepotOpenTime
-: <a class="el" href="classCDepotInfo.html#a7bd258743562d1abae6021400011d46f">CDepotInfo</a>
+, <a class="el" href="classRestriction.html#a74bb81e612fa2a8f90b36c19364a716e">Restriction</a>
 </li>
 <li>m_ids
 : <a class="el" href="classIdentifiers.html#a6238bad59a02e88c9f417acef042c0f2">Identifiers&lt; T &gt;</a>
@@ -305,48 +276,8 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_idx
 : <a class="el" href="classpgrouting_1_1Identifier.html#ae4187b538a8f40969e11943f2d3ddfc5">pgrouting::Identifier</a>
 </li>
-<li>m_iEndDepotId
-: <a class="el" href="classCTourInfo.html#a2f39d2ebd99f40e412fb2a70b72f7661">CTourInfo</a>
-</li>
-<li>m_iGeneratedSolutionCount
-: <a class="el" href="classCVRPSolver.html#abd79a5e95bc0c27f5ef9f8608834ea0b">CVRPSolver</a>
-</li>
 <li>m_initial_id
 : <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ae4300fc6bb229c2b5ac157974a7365aa">pgrouting::vrp::Pgr_pickDeliver</a>
-</li>
-<li>m_iOrderCloseTime
-: <a class="el" href="classCOrderInfo.html#ac91b1f9b46036eb246c5fd103cefb62c">COrderInfo</a>
-</li>
-<li>m_iOrderId
-: <a class="el" href="classCOrderInfo.html#a5cb5705ef4aba49e3c760755b4bb11ed">COrderInfo</a>
-</li>
-<li>m_iOrderOpenTime
-: <a class="el" href="classCOrderInfo.html#a3842d748db65f236f0b6ede6f6a096bf">COrderInfo</a>
-</li>
-<li>m_iOrderServiceTime
-: <a class="el" href="classCOrderInfo.html#ab2d73db981597a5f206715624b488afb">COrderInfo</a>
-</li>
-<li>m_iOrdersServed
-: <a class="el" href="classCSolutionInfo.html#a2ebb99c282948f3837db5c715a3ded79">CSolutionInfo</a>
-, <a class="el" href="classCTourInfo.html#ac7679a36d54805de64c8ca2016557529">CTourInfo</a>
-</li>
-<li>m_iOrderUnitCount
-: <a class="el" href="classCOrderInfo.html#a24a7c1c67058859564d32ff73f7dc6cc">COrderInfo</a>
-</li>
-<li>m_iStartDepotId
-: <a class="el" href="classCTourInfo.html#a9db9cb1027bfec2e4e9b171843ae797a">CTourInfo</a>
-</li>
-<li>m_iStepsSinceLastSolution
-: <a class="el" href="classCVRPSolver.html#a1c447be2cde44a33fb93cfe02657f2ef">CVRPSolver</a>
-</li>
-<li>m_iTotalOrders
-: <a class="el" href="classCSolutionInfo.html#a0bf66f7a944c6cf6bfc3c00b9e9e4cb1">CSolutionInfo</a>
-</li>
-<li>m_iVehicleId
-: <a class="el" href="classCVehicleInfo.html#a5ab3de3fb56355077e149b2cf01cbb03">CVehicleInfo</a>
-</li>
-<li>m_iVehicleUsed
-: <a class="el" href="classCSolutionInfo.html#a4bb9ed6ef35649bb9288c42499c38951">CSolutionInfo</a>
 </li>
 <li>m_lEdgeID
 : <a class="el" href="classGraphEdgeInfo.html#a1985a2d445649403f8e08844b9f8ad12">GraphEdgeInfo</a>
@@ -369,29 +300,11 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_lStartNode
 : <a class="el" href="classGraphEdgeInfo.html#ab19130ebc5b432f5486aabc9fde6c6d5">GraphEdgeInfo</a>
 </li>
-<li>m_mapDepotIdToIndex
-: <a class="el" href="classCVRPSolver.html#a411bbf10c3d5d64f33546fdad0582261">CVRPSolver</a>
-</li>
-<li>m_mapDepotToOrderrCost
-: <a class="el" href="classCVRPSolver.html#aba6779af35596c0432b1cd301ed23f2a">CVRPSolver</a>
-</li>
 <li>m_mapEdgeId2Index
 : <a class="el" href="classGraphDefinition.html#afd68cddce627e1079ed9971a89fa5bff">GraphDefinition</a>
 </li>
 <li>m_mapNodeId2Edge
 : <a class="el" href="classGraphDefinition.html#a798cc10e3593a4dfe84b0f3c644203c4">GraphDefinition</a>
-</li>
-<li>m_mapOrderIdToIndex
-: <a class="el" href="classCVRPSolver.html#a203b202ff0f3e82c58145d2987ac8042">CVRPSolver</a>
-</li>
-<li>m_mapOrderToDepotCost
-: <a class="el" href="classCVRPSolver.html#ac0fc29381a887cbc49703029e52bfad1">CVRPSolver</a>
-</li>
-<li>m_mapOrderToOrderCost
-: <a class="el" href="classCVRPSolver.html#acb9fdc3111d6a831951963a1fdae1129">CVRPSolver</a>
-</li>
-<li>m_mapVehicleIdToIndex
-: <a class="el" href="classCVRPSolver.html#aa0aefa2b3d2de391756041447c2333b0">CVRPSolver</a>
 </li>
 <li>m_max_cycles
 : <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a042934806ea9ec5c0fdcd1b7cbc844b0">pgrouting::vrp::Pgr_pickDeliver</a>
@@ -403,8 +316,14 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 : <a class="el" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a646d3ba58e8a9ca81c9b4fa036e06fc7">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abc260ee9de756f8e09bfb198b92a7274">pgrouting::vrp::Pgr_pickDeliver</a>
 </li>
+<li>m_num_edges
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a11cf7bdab6eadf38fa8ecd95eb2b19bc">pgrouting::graph::Pgr_lineGraph&lt; G, T_V, T_E &gt;</a>
+</li>
 <li>m_num_vertices
 : <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a3e524dc03c057d6bf9a3d31c91660f17">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+</li>
+<li>m_only_cost
+: <a class="el" href="classPgr__dijkstraTRSP.html#a4ae1bde6cd24bd5897093dde69d150cb">Pgr_dijkstraTRSP&lt; G &gt;</a>
 </li>
 <li>m_opens
 : <a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">pgrouting::vrp::Tw_node</a>
@@ -429,11 +348,11 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_point
 : <a class="el" href="classpgrouting_1_1vrp_1_1Node.html#a82603315d330a306bb2f8894e64cbbf4">pgrouting::vrp::Node</a>
 </li>
-<li>m_ptDepotLocation
-: <a class="el" href="classCDepotInfo.html#aaf80c7a3d5f981825826f448e06d53e3">CDepotInfo</a>
+<li>m_restrict_edges
+: <a class="el" href="classRestriction.html#a45e841dcbca42ed83e5811c9f0e6722c">Restriction</a>
 </li>
-<li>m_ptOrderLocation
-: <a class="el" href="classCOrderInfo.html#a6ac6bc00796972a2972405cbf3fcafb4">COrderInfo</a>
+<li>m_restrictions
+: <a class="el" href="classPgr__dijkstraTRSP.html#a7566d88c78d91383c82463286d457e89">Pgr_dijkstraTRSP&lt; G &gt;</a>
 </li>
 <li>m_ResultSet
 : <a class="el" href="classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34">Pgr_ksp&lt; G &gt;</a>
@@ -447,17 +366,18 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_service_time
 : <a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">pgrouting::vrp::Tw_node</a>
 </li>
-<li>m_solutionFinal
-: <a class="el" href="classCVRPSolver.html#a1896c623465c1692751d6ea2402a849f">CVRPSolver</a>
-</li>
 <li>m_speed
 : <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#a0824ea9c5194ac5774863fb045b83002">pgrouting::vrp::Vehicle</a>
 </li>
 <li>m_start
-: <a class="el" href="classPgr__ksp.html#abae118da08007fc1c69ff04b442ca5cf">Pgr_ksp&lt; G &gt;</a>
+: <a class="el" href="classPgr__dijkstraTRSP.html#ac6c8c8cf40b1b1a3799c1cd351fd8c0a">Pgr_dijkstraTRSP&lt; G &gt;</a>
+, <a class="el" href="classPgr__ksp.html#abae118da08007fc1c69ff04b442ca5cf">Pgr_ksp&lt; G &gt;</a>
 </li>
 <li>m_start_id
 : <a class="el" href="classPath.html#ac83e28d421e342efe8f03428036f4bf7">Path</a>
+</li>
+<li>m_strict
+: <a class="el" href="classPgr__dijkstraTRSP.html#ab573dd82b21027ec1b70b1ce4b69f85e">Pgr_dijkstraTRSP&lt; G &gt;</a>
 </li>
 <li>m_swaps
 : <a class="el" href="classpgrouting_1_1vrp_1_1Swap__bk.html#a6b38f263a02bb226ae2943273ae13fef">pgrouting::vrp::Swap_bk</a>
@@ -487,9 +407,6 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_type
 : <a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node</a>
 </li>
-<li>m_vDepotInfos
-: <a class="el" href="classCVRPSolver.html#a302c3b47f98c136c7aa0d3910b067696">CVRPSolver</a>
-</li>
 <li>m_vecEdgeVector
 : <a class="el" href="classGraphDefinition.html#ae31503f45fab4233ccceb4988bd42f40">GraphDefinition</a>
 </li>
@@ -505,44 +422,8 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <li>m_vecStartConnectedEdge
 : <a class="el" href="classGraphEdgeInfo.html#a2033c0d80937455aab7de67c45a2fc78">GraphEdgeInfo</a>
 </li>
-<li>m_vehicleInfo
-: <a class="el" href="classCTourInfo.html#aa565d21d7cd50eaaf55fc5b6fe63c5ac">CTourInfo</a>
-</li>
-<li>m_veMoves
-: <a class="el" href="classCVRPSolver.html#a5601603dfe1b1413e01c2f8455e1bef6">CVRPSolver</a>
-</li>
-<li>m_vInitialTour
-: <a class="el" href="classCMoveInfo.html#a45a74179f8ebed6f9ae6e8e850ebfb43">CMoveInfo</a>
-</li>
-<li>m_viOrderIds
-: <a class="el" href="classCTourInfo.html#a6dbb9aa6da8b431959a71da2e4bbb5b0">CTourInfo</a>
-</li>
-<li>m_viStartTime
-: <a class="el" href="classCTourInfo.html#ae1c929cf63b34f594e8cb4430fa657db">CTourInfo</a>
-</li>
-<li>m_viUnservedOrderIndex
-: <a class="el" href="classCVRPSolver.html#a7a7d67e4fc03220dbaf0444cc81a1115">CVRPSolver</a>
-</li>
-<li>m_viUnusedVehicleIndex
-: <a class="el" href="classCVRPSolver.html#acb5bde5938029ca008e0c4c9e14216e7">CVRPSolver</a>
-</li>
-<li>m_vModifiedTour
-: <a class="el" href="classCMoveInfo.html#ad5657e94911f46968af4b0ead46e4c20">CMoveInfo</a>
-</li>
-<li>m_vOrderInfos
-: <a class="el" href="classCVRPSolver.html#af7925bc615b5ba0135077bb7f2f1f309">CVRPSolver</a>
-</li>
-<li>m_vtourAll
-: <a class="el" href="classCSolutionInfo.html#a154d5b2d797296081d4683beeaa53838">CSolutionInfo</a>
-</li>
-<li>m_vUnservedOrderId
-: <a class="el" href="classCSolutionInfo.html#a58c4559c667e0ee157c86f59cd35fd3e">CSolutionInfo</a>
-</li>
-<li>m_vUnusedVehicles
-: <a class="el" href="classCSolutionInfo.html#aa0b0feeb39b420fff3e38a84834c1895">CSolutionInfo</a>
-</li>
-<li>m_vVehicleInfos
-: <a class="el" href="classCVRPSolver.html#a199f4f61f6f4210d8896538b2d64810f">CVRPSolver</a>
+<li>m_vertex_map
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__lineGraph.html#af0e7296f2e8fdf95973b07c58ed8f707">pgrouting::graph::Pgr_lineGraph&lt; G, T_V, T_E &gt;</a>
 </li>
 <li>m_wait_time
 : <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#acf38aa5cd9a368f40d80c66b2e6a5095">pgrouting::vrp::Vehicle_node</a>
@@ -552,9 +433,6 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 </li>
 <li>make_result()
 : <a class="el" href="classPgr__allpairs.html#a51687b103791fd97b3743e8f05d72aa2">Pgr_allpairs&lt; G &gt;</a>
-</li>
-<li>makeTarget()
-: <a class="el" href="classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html#a0795ada911599ab01c08a43f81d35072">pgrouting::areacontraction::Pgr_areaContraction&lt; G &gt;</a>
 </li>
 <li>max_cycles()
 : <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a258460907dbf4aeea16ce5dfff7478db">pgrouting::vrp::Pgr_pickDeliver</a>
@@ -587,7 +465,7 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 : <a class="el" href="classGraphDefinition.html#aed93f8948d2700b9d5c9b79ee4a742bb">GraphDefinition</a>
 </li>
 <li>my_dijkstra()
-: <a class="el" href="classGraphDefinition.html#a301460dfe429302d7273e437db823b08">GraphDefinition</a>
+: <a class="el" href="classGraphDefinition.html#a0914268cc36a22cc87484a82b93670a4">GraphDefinition</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -595,7 +473,7 @@ $(document).ready(function(){initNavTree('functions_m.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 4 2017 21:37:33 for PGROUTING by
+    <li class="footer">Generated on Sun Aug 6 2017 20:39:08 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

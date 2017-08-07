@@ -1,13 +1,12 @@
 <map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/identifiers.hpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/identifiers.hpp">
 <area shape="rect" id="node2" href="$ch__vertex_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/src/ch_vertex.h" alt="" coords="5,117,197,173"/>
-<area shape="rect" id="node3" href="$pgr__areaContraction_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/areaContraction/src\l/pgr_areaContraction.hpp" alt="" coords="221,110,389,181"/>
-<area shape="rect" id="node4" href="$pgr__linearContraction_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/pgr\l_linearContraction.hpp" alt="" coords="414,110,569,181"/>
-<area shape="rect" id="node5" href="$pgr__deadEndContraction_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/pgr\l_deadEndContraction.hpp" alt="" coords="594,110,765,181"/>
-<area shape="rect" id="node6" href="$edge__disjoint__paths__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/edge\l_disjoint_paths_driver.cpp" alt="" coords="791,110,964,181"/>
-<area shape="rect" id="node7" href="$fleet_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/fleet.h" alt="" coords="1083,333,1233,389"/>
-<area shape="rect" id="node8" href="$pgr__pickDeliver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pgr_pickDeliver.h" alt="" coords="1061,437,1256,493"/>
-<area shape="rect" id="node9" href="$initial__solution_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/initial_solution.h" alt="" coords="1416,229,1603,285"/>
-<area shape="rect" id="node10" href="$order_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/order.h" alt="" coords="1141,117,1291,173"/>
-<area shape="rect" id="node11" href="$vehicle__pickDeliver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/vehicle_pickDeliver.h" alt="" coords="1095,229,1312,285"/>
-<area shape="rect" id="node12" href="$pd__orders_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pd_orders.h" alt="" coords="1315,117,1476,173"/>
+<area shape="rect" id="node3" href="$edge__disjoint__paths__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/edge\l_disjoint_paths_driver.cpp" alt="" coords="221,110,395,181"/>
+<area shape="rect" id="node4" href="$pgr__linearContraction_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/contraction/pgr\l_linearContraction.hpp" alt="" coords="419,110,576,181"/>
+<area shape="rect" id="node5" href="$pgr__deadEndContraction_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/contraction/pgr\l_deadEndContraction.hpp" alt="" coords="601,110,772,181"/>
+<area shape="rect" id="node6" href="$fleet_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/fleet.h" alt="" coords="893,333,1043,389"/>
+<area shape="rect" id="node7" href="$pgr__pickDeliver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pgr_pickDeliver.h" alt="" coords="871,437,1065,493"/>
+<area shape="rect" id="node8" href="$initial__solution_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/initial_solution.h" alt="" coords="1225,229,1412,285"/>
+<area shape="rect" id="node9" href="$order_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/order.h" alt="" coords="950,117,1100,173"/>
+<area shape="rect" id="node10" href="$vehicle__pickDeliver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/vehicle_pickDeliver.h" alt="" coords="905,229,1121,285"/>
+<area shape="rect" id="node11" href="$pd__orders_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pd_orders.h" alt="" coords="1125,117,1285,173"/>
 </map>

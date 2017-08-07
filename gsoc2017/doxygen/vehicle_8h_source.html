@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -150,7 +151,7 @@ $(document).ready(function(){initNavTree('vehicle_8h_source.html','');});
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="general__vehicle__orders__t_8h.html">c_types/pickDeliver/general_vehicle_orders_t.h</a>&quot;</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span>pgrouting {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span><a class="code" href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a> {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>vrp {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classpgrouting_1_1vrp_1_1Vehicle.html">   72</a></span>&#160;<span class="keyword">class </span><a class="code" href="classpgrouting_1_1vrp_1_1Vehicle.html">Vehicle</a> : <span class="keyword">public</span> <a class="code" href="classpgrouting_1_1Identifier.html">Identifier</a>, <span class="keyword">public</span> <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html">PD_problem</a> {</div>
@@ -335,7 +336,6 @@ $(document).ready(function(){initNavTree('vehicle_8h_source.html','');});
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle_html_aa996853fc75d4ba9bbb6181d22f4dc02"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle.html#aa996853fc75d4ba9bbb6181d22f4dc02">pgrouting::vrp::Vehicle::is_ok</a></div><div class="ttdeci">bool is_ok() const </div><div class="ttdef"><b>Definition:</b> <a href="vehicle_8cpp_source.html#l00460">vehicle.cpp:460</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle_html_a121239d471cfeefc7c40b23bf787a837"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle.html#a121239d471cfeefc7c40b23bf787a837">pgrouting::vrp::Vehicle::cost</a></div><div class="ttdeci">Cost cost() const </div><div class="ttdef"><b>Definition:</b> <a href="vehicle_8cpp_source.html#l00166">vehicle.cpp:166</a></div></div>
 <div class="ttc" id="vehicle__node_8h_html"><div class="ttname"><a href="vehicle__node_8h.html">vehicle_node.h</a></div></div>
-<div class="ttc" id="VRP_8c_html_af8a0ad5c2c0e6189829af74aa05be393"><div class="ttname"><a href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a></div><div class="ttdeci">PGDLLEXPORT Datum vrp(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8c_source.html#l00727">VRP.c:727</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle_html_a6dfe1539c3277ae6568309e8e5e4d374"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle.html#a6dfe1539c3277ae6568309e8e5e4d374">pgrouting::vrp::Vehicle::capacity</a></div><div class="ttdeci">double capacity() const </div><div class="ttdef"><b>Definition:</b> <a href="vehicle_8h_source.html#l00271">vehicle.h:271</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle_html_a3b213b81a4e0e4a797c0bd0cb1718306"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle.html#a3b213b81a4e0e4a797c0bd0cb1718306">pgrouting::vrp::Vehicle::total_travel_time</a></div><div class="ttdeci">double total_travel_time() const </div><div class="ttdef"><b>Definition:</b> <a href="vehicle_8h_source.html#l00234">vehicle.h:234</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle_html_af98de97049075d4db58f3e97dc9185aa"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle.html#af98de97049075d4db58f3e97dc9185aa">pgrouting::vrp::Vehicle::insert</a></div><div class="ttdeci">void insert(POS pos, Vehicle_node node)</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="vehicle_8cpp_source.html#l00174">vehicle.cpp:174</a></div></div>
@@ -367,7 +367,7 @@ $(document).ready(function(){initNavTree('vehicle_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_651e52dddefd92e6e6d00bb3f78dc931.html">vrp</a></li><li class="navelem"><a class="el" href="vehicle_8h.html">vehicle.h</a></li>
-    <li class="footer">Generated on Tue Jul 4 2017 21:37:30 for PGROUTING by
+    <li class="footer">Generated on Sun Aug 6 2017 20:39:04 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

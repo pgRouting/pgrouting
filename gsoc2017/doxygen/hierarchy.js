@@ -12,19 +12,10 @@ var hierarchy =
       [ "Pgr_dijkstra< G >::dijkstra_many_goal_visitor", "classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html", null ],
       [ "Pgr_dijkstra< G >::dijkstra_one_goal_visitor", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html", null ]
     ] ],
-    [ "CDepotInfo", "classCDepotInfo.html", null ],
-    [ "CMoveInfo", "classCMoveInfo.html", null ],
     [ "Column_info_t", "structColumn__info__t.html", null ],
     [ "contracted_rt", "structcontracted__rt.html", null ],
     [ "Coordinate_t", "structCoordinate__t.html", null ],
-    [ "COrderInfo", "classCOrderInfo.html", null ],
     [ "CostHolder", "structCostHolder.html", null ],
-    [ "CostPack", "structCostPack.html", null ],
-    [ "CSolutionInfo", "classCSolutionInfo.html", null ],
-    [ "CTourInfo", "classCTourInfo.html", null ],
-    [ "CVehicleInfo", "classCVehicleInfo.html", null ],
-    [ "CVRPSolver", "classCVRPSolver.html", null ],
-    [ "distance_columns", "structdistance__columns.html", null ],
     [ "edge", "structedge.html", null ],
     [ "edge_columns", "structedge__columns.html", null ],
     [ "EventHandler", "classEventHandler.html", [
@@ -39,11 +30,11 @@ var hierarchy =
     [ "Identifiers< int64_t >", "classIdentifiers.html", null ],
     [ "Identifiers< size_t >", "classIdentifiers.html", null ],
     [ "Identifiers< V >", "classIdentifiers.html", null ],
+    [ "Line_graph_rt", "structLine__graph__rt.html", null ],
     [ "MATRIX", null, [
       [ "pgrouting::tsp::TSP< MATRIX >", "classpgrouting_1_1tsp_1_1TSP.html", null ]
     ] ],
     [ "matrix_cell", "structmatrix__cell.html", null ],
-    [ "order_columns", "structorder__columns.html", null ],
     [ "PARENT_PATH", "structPARENT__PATH.html", null ],
     [ "Path", "classPath.html", null ],
     [ "path_element", "structpath__element.html", null ],
@@ -52,13 +43,15 @@ var hierarchy =
     [ "Pgr_allpairs< G >::inf_plus< T >", "structPgr__allpairs_1_1inf__plus.html", null ],
     [ "pgrouting::graph::Pgr_base_graph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", [
       [ "pgrouting::graph::Pgr_componentsGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html", null ],
-      [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ]
+      [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ],
+      [ "pgrouting::graph::Pgr_lineGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html", null ]
     ] ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", null ],
     [ "Pgr_components< G >", "classPgr__components.html", null ],
     [ "pgr_components_rt", "structpgr__components__rt.html", null ],
     [ "Pgr_dijkstra< G >", "classPgr__dijkstra.html", null ],
     [ "Pgr_dijkstra< G >::found_goals", "structPgr__dijkstra_1_1found__goals.html", null ],
+    [ "Pgr_dijkstraTRSP< G >", "classPgr__dijkstraTRSP.html", null ],
     [ "pgr_edge_t", "structpgr__edge__t.html", null ],
     [ "Pgr_edge_xy_t", "structPgr__edge__xy__t.html", null ],
     [ "pgr_flow_t", "structpgr__flow__t.html", null ],
@@ -66,8 +59,6 @@ var hierarchy =
     [ "Pgr_ksp< G >::compPaths", "classPgr__ksp_1_1compPaths.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >", "classpgrouting_1_1algorithms_1_1Pgr__astar.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >::found_goals", "structpgrouting_1_1algorithms_1_1Pgr__astar_1_1found__goals.html", null ],
-    [ "pgrouting::areacontraction::Pgr_areaContraction< G >", "classpgrouting_1_1areacontraction_1_1Pgr__areaContraction.html", null ],
-    [ "pgrouting::areacontraction::Pgr_contract< G >", "classpgrouting_1_1areacontraction_1_1Pgr__contract.html", null ],
     [ "pgrouting::Basic_edge", "classpgrouting_1_1Basic__edge.html", null ],
     [ "pgrouting::Basic_vertex", "classpgrouting_1_1Basic__vertex.html", null ],
     [ "pgrouting::bidirectional::Pgr_bidirectional< G >", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html", [
@@ -95,6 +86,7 @@ var hierarchy =
         [ "pgrouting::vrp::Vehicle_pickDeliver", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html", null ]
       ] ]
     ] ],
+    [ "pgrouting::Line_vertex", "classpgrouting_1_1Line__vertex.html", null ],
     [ "pgrouting::Pgr_messages", "classpgrouting_1_1Pgr__messages.html", null ],
     [ "pgrouting::tsp::Dmatrix", "classpgrouting_1_1tsp_1_1Dmatrix.html", null ],
     [ "pgrouting::tsp::eucledianDmatrix", "classpgrouting_1_1tsp_1_1eucledianDmatrix.html", null ],
@@ -116,12 +108,12 @@ var hierarchy =
     [ "pgrouting::vrp::Swap_info", "classpgrouting_1_1vrp_1_1Swap__info.html", null ],
     [ "pgrouting::XY_vertex", "classpgrouting_1_1XY__vertex.html", null ],
     [ "PickDeliveryOrders_t", "structPickDeliveryOrders__t.html", null ],
-    [ "Point", "structPoint.html", null ],
     [ "Point_on_edge_t", "structPoint__on__edge__t.html", null ],
     [ "pointCompare", "structpointCompare.html", null ],
     [ "restrict_columns", "structrestrict__columns.html", null ],
     [ "restrict_struct", "structrestrict__struct.html", null ],
     [ "Restrict_t", "structRestrict__t.html", null ],
+    [ "Restriction", "classRestriction.html", null ],
     [ "Routes_t", "structRoutes__t.html", null ],
     [ "Rule", "structRule.html", null ],
     [ "SignalHandler", "classSignalHandler.html", null ],
@@ -131,13 +123,7 @@ var hierarchy =
     ] ],
     [ "StringOperation", "classStringOperation.html", null ],
     [ "StringTokenizer", "classStringTokenizer.html", null ],
-    [ "tokenizer", "classtokenizer.html", null ],
-    [ "vehicle_columns", "structvehicle__columns.html", null ],
     [ "Vehicle_t", "structVehicle__t.html", null ],
     [ "vertex", "structvertex.html", null ],
-    [ "vertex_columns", "structvertex__columns.html", null ],
-    [ "vrp_cost_element", "structvrp__cost__element.html", null ],
-    [ "vrp_orders", "structvrp__orders.html", null ],
-    [ "vrp_result_element", "structvrp__result__element.html", null ],
-    [ "vrp_vehicles", "structvrp__vehicles.html", null ]
+    [ "vertex_columns", "structvertex__columns.html", null ]
 ];

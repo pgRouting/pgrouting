@@ -1,0 +1,10 @@
+<map id="do_pgr_lineGraph" name="do_pgr_lineGraph">
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a917930945c4f73be04f1907daf46e909" title="pgrouting::graph::Pgr\l_lineGraph::create_virtual\l_vertices" alt="" coords="180,5,351,61"/>
+<area shape="rect" id="node3" href="$lineGraph__driver_8cpp.html#a6f7c6b35f9831bd5250675dbabf08921" title="get_postgres_result" alt="" coords="197,85,333,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="176,137,355,178"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ad3c671cf7edd4bec040526a3ee1cede4" title="pgrouting::graph::Pgr\l_lineGraph::insert_vertices" alt="" coords="177,202,354,243"/>
+<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="231,268,300,295"/>
+<area shape="rect" id="node7" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="229,319,301,345"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a4fc005c42f751cda7e2c6d92db21b834" title="pgrouting::graph::Pgr\l_lineGraph::transform" alt="" coords="192,370,339,411"/>
+<area shape="rect" id="node9" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="189,435,342,477"/>
+</map>

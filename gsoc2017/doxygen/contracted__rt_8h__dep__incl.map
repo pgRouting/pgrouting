@@ -1,6 +1,4 @@
 <map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/contracted_rt.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/contracted_rt.h">
-<area shape="rect" id="node2" href="$areaContraction_8c.html" title="Conecting code with postgres. " alt="" coords="5,230,168,301"/>
-<area shape="rect" id="node3" href="$contractGraph_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph.c" alt="" coords="301,230,485,301"/>
-<area shape="rect" id="node4" href="$contractGraph__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph_driver.h" alt="" coords="366,110,551,181"/>
-<area shape="rect" id="node5" href="$areaContraction__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/areaContraction\l/areaContraction_driver.h" alt="" coords="83,110,289,181"/>
+<area shape="rect" id="node2" href="$contractGraph_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph.c" alt="" coords="17,230,201,301"/>
+<area shape="rect" id="node3" href="$contractGraph__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/contraction\l/contractGraph_driver.h" alt="" coords="84,110,263,181"/>
 </map>

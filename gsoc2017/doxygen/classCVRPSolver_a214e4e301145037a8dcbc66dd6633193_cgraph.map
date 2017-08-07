@@ -1,6 +1,0 @@
-<map id="CVRPSolver::solveVRP" name="CVRPSolver::solveVRP">
-<area shape="rect" id="node2" href="$classCVRPSolver.html#a98e957d6621f536a52dbd9a98e3b7347" title="CVRPSolver::generateInitial\lSolution" alt="" coords="219,5,405,46"/>
-<area shape="rect" id="node3" href="$classCSolutionInfo.html#af2337c9616ffc6b2d82ca79b7702e8c5" title="CSolutionInfo::init" alt="" coords="499,59,626,85"/>
-<area shape="rect" id="node4" href="$classCVRPSolver.html#ac7cdba95ff415f2c07f9b5862c34b4b2" title="CVRPSolver::tabuSearch" alt="" coords="227,121,397,148"/>
-<area shape="rect" id="node5" href="$classCVRPSolver.html#acf1e18f7006566b357c932d215188e14" title="CVRPSolver::updateFinalSolution" alt="" coords="453,135,672,161"/>
-</map>

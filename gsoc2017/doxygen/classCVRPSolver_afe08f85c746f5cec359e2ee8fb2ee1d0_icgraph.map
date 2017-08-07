@@ -1,5 +1,0 @@
-<map id="CVRPSolver::insertOrder" name="CVRPSolver::insertOrder">
-<area shape="rect" id="node2" href="$classCVRPSolver.html#a4ff503950e6977c8f6d5260619cbb503" title="CVRPSolver::addOrderAtTour" alt="" coords="224,5,421,32"/>
-<area shape="rect" id="node3" href="$classCVRPSolver.html#a46471aa397eebe84b6ae9b950f296ce3" title="CVRPSolver::insertUnserved\lOrders" alt="" coords="470,23,663,65"/>
-<area shape="rect" id="node4" href="$classCVRPSolver.html#a98e957d6621f536a52dbd9a98e3b7347" title="CVRPSolver::generateInitial\lSolution" alt="" coords="229,107,416,149"/>
-</map>

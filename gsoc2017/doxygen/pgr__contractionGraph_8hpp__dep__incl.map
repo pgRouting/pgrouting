@@ -1,6 +1,4 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/contraction/src/pgr_contractionGraph.hpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/contraction/src/pgr_contractionGraph.hpp">
-<area shape="rect" id="node2" href="$areaContraction__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/areaContraction/src\l/areaContraction_driver.cpp" alt="" coords="5,126,187,197"/>
-<area shape="rect" id="node3" href="$contractGraph__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph_driver.cpp" alt="" coords="190,246,375,317"/>
-<area shape="rect" id="node4" href="$pgr__contract_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/pgr\l_contract.hpp" alt="" coords="263,126,419,197"/>
-<area shape="rect" id="node5" href="$test__c__edges__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/internalQueryTests\l/src/test_c_edges_driver.cpp" alt="" coords="443,126,633,197"/>
+<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/contraction/pgr_contractionGraph.hpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/contraction/pgr_contractionGraph.hpp">
+<area shape="rect" id="node2" href="$contractGraph__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph_driver.cpp" alt="" coords="5,246,189,317"/>
+<area shape="rect" id="node3" href="$pgr__contract_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/contraction/pgr\l_contract.hpp" alt="" coords="77,126,235,197"/>
 </map>

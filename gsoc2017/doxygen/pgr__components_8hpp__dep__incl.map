@@ -1,5 +1,7 @@
 <map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/components/pgr_components.hpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/components/pgr_components.hpp">
-<area shape="rect" id="node2" href="$biconnectedComponents__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/biconnected\lComponents_driver.cpp" alt="" coords="5,126,219,197"/>
-<area shape="rect" id="node3" href="$connectedComponentsV__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/connected\lComponentsV_driver.cpp" alt="" coords="244,126,449,197"/>
-<area shape="rect" id="node4" href="$strongComponentsV__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/strongComponents\lV_driver.cpp" alt="" coords="474,126,728,197"/>
+<area shape="rect" id="node2" href="$articulationPoints__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/articulation\lPoints_driver.cpp" alt="" coords="5,126,213,197"/>
+<area shape="rect" id="node3" href="$biconnectedComponents__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/biconnected\lComponents_driver.cpp" alt="" coords="238,126,452,197"/>
+<area shape="rect" id="node4" href="$bridges__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/bridges\l_driver.cpp" alt="" coords="477,126,664,197"/>
+<area shape="rect" id="node5" href="$connectedComponentsV__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/connected\lComponentsV_driver.cpp" alt="" coords="688,126,893,197"/>
+<area shape="rect" id="node6" href="$strongComponentsV__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/components/src/strongComponents\lV_driver.cpp" alt="" coords="918,126,1172,197"/>
 </map>

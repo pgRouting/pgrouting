@@ -233,18 +233,18 @@ and gradually cool down until the desired temperature is reached.</p>
 <p>For each temperature, a neighbouring new solution <strong>snew</strong> is calculated. The higher the temperature
 the higher the probability of accepting the new solution as a possible bester solution.</p>
 <p>Once the desired temperature is reached, the best solution found is returned</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Solution ← initial_solution;
+<div class="highlight-none"><div class="highlight"><pre><span></span>Solution = initial_solution;
 
-temperature ← initial_temperature;
+temperature = initial_temperature;
 while (temperature &gt; final_temperature) {
 
     do tries_per_temperature times {
-        snew ← neighbour(solution);
-        If P(E(solution), E(snew), T) ≥ random(0, 1)
-            solution ← snew;
+        snew = neighbour(solution);
+        If P(E(solution), E(snew), T) &gt;= random(0, 1)
+            solution = snew;
     }
 
-    temperature ← temperature * cooling factor;
+    temperature = temperature * cooling factor;
 }
 
 Output: the best solution
@@ -260,7 +260,7 @@ simulated annealing process.</p>
 <li>max_changes_per_temperature: limits the number of changes in the solution per temperature</li>
 <li>max_consecutive_non_changes: limits the number of consecutive non changes per temperature</li>
 </ul>
-<p>This is done by doing some book keeping on the times <strong>solution ← snew;</strong> is executed.</p>
+<p>This is done by doing some book keeping on the times <strong>solution = snew;</strong> is executed.</p>
 <ul class="simple">
 <li>max_changes_per_temperature: Increases by one when <strong>solution</strong> changes</li>
 <li>max_consecutive_non_changes: Reset to 0 when <strong>solution</strong> changes, and increased each <strong>try</strong></li>
@@ -272,22 +272,22 @@ simulated annealing process.</p>
 </ul>
 <p>Note that, if no change was found in the first <strong>max_consecutive_non_changes</strong> tries, then the
 simulated annealing will stop.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Solution ← initial_solution;
+<div class="highlight-none"><div class="highlight"><pre><span></span>Solution = initial_solution;
 
-temperature ← initial_temperature;
+temperature = initial_temperature;
 while (temperature &gt; final_temperature) {
 
     do tries_per_temperature times {
-        snew ← neighbour(solution);
-        If P(E(solution), E(snew), T) ≥ random(0, 1)
-            solution ← snew;
+        snew = neighbour(solution);
+        If P(E(solution), E(snew), T) &gt;= random(0, 1)
+            solution = snew;
 
         when max_changes_per_temperature is reached
             or max_consecutive_non_changes is reached
             BREAK;
     }
 
-    temperature ← temperature * cooling factor;
+    temperature = temperature * cooling factor;
     when no changes were done in the current temperature
         or max_processing_time has being reached
         BREAK;
@@ -481,7 +481,7 @@ and set to a higher number for a slower decrease.</li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jul 04, 2017.<br/>
+      Last updated on Aug 06, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

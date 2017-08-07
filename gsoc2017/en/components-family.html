@@ -115,6 +115,8 @@
 <li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
 <li><a class="reference internal" href="#description-of-the-return-values-for-connected-components-vertex-version-and-strongly-connected-components-vertex-version">Description of the return values for connected components (vertex version) and strongly connected components (vertex version)</a></li>
 <li><a class="reference internal" href="#description-of-the-return-values-for-biconnected-components-connected-components-edge-version-and-strongly-connected-components-edge-version">Description of the return values for biconnected components, connected components (edge version) and strongly connected components (edge version)</a></li>
+<li><a class="reference internal" href="#description-of-the-return-values-for-articulation-points">Description of the return values for articulation points</a></li>
+<li><a class="reference internal" href="#description-of-the-return-values-for-bridges">Description of the return values for bridges</a></li>
 </ul>
 </li>
 </ul>
@@ -166,6 +168,8 @@
 <li><a class="reference internal" href="pgr_connectedComponentsV.html#pgr-connectedcomponentsv"><span class="std std-ref">pgr_connectedComponentsV</span></a> - Return the connected components of an undirected graph (Vertex version).</li>
 <li><a class="reference internal" href="pgr_strongComponentsV.html#pgr-strongcomponentsv"><span class="std std-ref">pgr_strongComponentsV</span></a> - Return the strongly connected components of a directed graph (Vertex version).</li>
 <li><a class="reference internal" href="pgr_biconnectedComponents.html#pgr-biconnectedcomponents"><span class="std std-ref">pgr_biconnectedComponents</span></a> - Return the biconnected components of an undirected graph.</li>
+<li><a class="reference internal" href="pgr_articulationPoints.html#pgr-articulationpoints"><span class="std std-ref">pgr_articulationPoints</span></a> - Return the articulation points of an undirected graph.</li>
+<li><a class="reference internal" href="pgr_bridges.html#pgr-bridges"><span class="std std-ref">pgr_bridges</span></a> - Return the bridges of an undirected graph.</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -224,7 +228,15 @@ from each other.</p>
 </li>
 </ul>
 </dd>
+<dt>Example:</dt>
+<dd><ul class="first last simple">
+<li>The first component is composed of nodes <code class="docutils literal"><span class="pre">0</span></code>, <code class="docutils literal"><span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">4</span></code>.</li>
+<li>The second component is composed of node <code class="docutils literal"><span class="pre">3</span></code>.</li>
+<li>The third component is composed of nodes <code class="docutils literal"><span class="pre">2</span></code> and <code class="docutils literal"><span class="pre">5</span></code>.</li>
+</ul>
+</dd>
 </dl>
+<a class="reference internal image-reference" href="_images/connected_components.jpeg"><img alt="_images/connected_components.jpeg" src="_images/connected_components.jpeg" style="width: 280px; height: 323px;" /></a>
 <p class="rubric">Strongly connected components</p>
 <p>A strongly connected component of a directed graph is a set of vertices that are all reachable
 from each other.</p>
@@ -278,7 +290,17 @@ from each other.</p>
 </li>
 </ul>
 </dd>
+<dt>Example:</dt>
+<dd><ul class="first last simple">
+<li>The first component is composed of nodes <code class="docutils literal"><span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">2</span></code> and <code class="docutils literal"><span class="pre">4</span></code>.</li>
+<li>The second component is composed of node <code class="docutils literal"><span class="pre">0</span></code>.</li>
+<li>The third component is composed of node <code class="docutils literal"><span class="pre">3</span></code>.</li>
+<li>The fourth component is composed of node <code class="docutils literal"><span class="pre">5</span></code>.</li>
+<li>The fifth component is composed of node <code class="docutils literal"><span class="pre">6</span></code>.</li>
+</ul>
+</dd>
 </dl>
+<a class="reference internal image-reference" href="_images/strong_components.jpeg"><img alt="_images/strong_components.jpeg" src="_images/strong_components.jpeg" style="width: 270px; height: 323px;" /></a>
 <p class="rubric">Biconnected components</p>
 <p>The biconnected components of an undirected graph are the maximal subsets of vertices such that the removal of a vertex from
 particular component will not disconnect the component. Unlike connected components, vertices may belong to multiple biconnected
@@ -334,7 +356,133 @@ component. So, the output only has edge version.</p>
 </li>
 </ul>
 </dd>
+<dt>Example:</dt>
+<dd><ul class="first last simple">
+<li>The first component is composed of edges <code class="docutils literal"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">2</span></code>, <code class="docutils literal"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">2</span></code>.</li>
+<li>The second component is composed of edges <code class="docutils literal"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">4</span></code>, <code class="docutils literal"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">3</span></code> and <code class="docutils literal"><span class="pre">3</span> <span class="pre">-</span> <span class="pre">4</span></code>.</li>
+<li>The third component is composed of edge <code class="docutils literal"><span class="pre">5</span> <span class="pre">-</span> <span class="pre">6</span></code>.</li>
+<li>The fourth component is composed of edge <code class="docutils literal"><span class="pre">6</span> <span class="pre">-</span> <span class="pre">7</span></code>.</li>
+<li>The fifth component is composed of edges <code class="docutils literal"><span class="pre">8</span> <span class="pre">-</span> <span class="pre">9</span></code>, <code class="docutils literal"><span class="pre">9</span> <span class="pre">-</span> <span class="pre">10</span></code> and <code class="docutils literal"><span class="pre">8</span> <span class="pre">-</span> <span class="pre">10</span></code>.</li>
+</ul>
+</dd>
 </dl>
+<a class="reference internal image-reference" href="_images/biconnected_components.jpeg"><img alt="_images/biconnected_components.jpeg" src="_images/biconnected_components.jpeg" style="width: 210px; height: 325px;" /></a>
+<p class="rubric">Articulation Points</p>
+<p>Those vertices that belong to more than one biconnected component are called
+articulation points or, equivalently, cut vertices. Articulation points are
+vertices whose removal would increase the number of connected components in
+the graph.</p>
+<p><strong>Notice</strong>: This problem defines on an undirected graph.</p>
+<p>Given the following query:</p>
+<p>pgr_articulationPoints(<span class="math">\(sql\)</span>)</p>
+<p>where  <span class="math">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
+<p>and</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(source = \bigcup source_i\)</span>,</li>
+<li><span class="math">\(target = \bigcup target_i\)</span>,</li>
+</ul>
+</div></blockquote>
+<p>The graphs are defined as follows:</p>
+<p>The weighted undirected graph, <span class="math">\(G(V,E)\)</span>, is definied by:</p>
+<ul class="simple">
+<li>the set of vertices  <span class="math">\(V\)</span><ul>
+<li><span class="math">\(V = source \cup target\)</span></li>
+</ul>
+</li>
+<li>the set of edges <span class="math">\(E\)</span><ul>
+<li><span class="math">\(E = \begin{cases} &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp;\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} \\ \cup &amp;\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp;\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></li>
+</ul>
+</li>
+</ul>
+<p>Given:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(G(V,E)\)</span></li>
+</ul>
+</div></blockquote>
+<p>Then:</p>
+<div class="math">
+\[\begin{split}\text{pgr_articulationPoints}(sql) =
+\begin{cases}
+\text{all articulation points } \boldsymbol{\pi} \text{ in } G(V,E) &amp;\quad \text{if } \exists  \boldsymbol{\pi}  \\
+\varnothing &amp;\quad \text{otherwise} \\
+\end{cases}\end{split}\]</div>
+<p><span class="math">\(\boldsymbol{\pi} = \{node_i\}\)</span></p>
+<dl class="docutils">
+<dt>where:</dt>
+<dd><ul class="first last simple">
+<li><span class="math">\(node_i\)</span> is an articulation point.</li>
+<li>The returned values are ordered:<ul>
+<li><cite>node</cite> ascending</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt>Example:</dt>
+<dd><ul class="first last simple">
+<li>Articulation points are nodes <code class="docutils literal"><span class="pre">2</span></code> and <code class="docutils literal"><span class="pre">6</span></code>.</li>
+</ul>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/biconnected_components.jpeg"><img alt="_images/biconnected_components.jpeg" src="_images/biconnected_components.jpeg" style="width: 210px; height: 325px;" /></a>
+<p class="rubric">Bridges</p>
+<p>A bridge is an edge of an undirected graph whose deletion increases its number
+of connected components.</p>
+<p><strong>Notice</strong>: This problem defines on an undirected graph.</p>
+<p>Given the following query:</p>
+<p>pgr_bridges(<span class="math">\(sql\)</span>)</p>
+<p>where  <span class="math">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
+<p>and</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(source = \bigcup source_i\)</span>,</li>
+<li><span class="math">\(target = \bigcup target_i\)</span>,</li>
+</ul>
+</div></blockquote>
+<p>The graphs are defined as follows:</p>
+<p>The weighted undirected graph, <span class="math">\(G(V,E)\)</span>, is definied by:</p>
+<ul class="simple">
+<li>the set of vertices  <span class="math">\(V\)</span><ul>
+<li><span class="math">\(V = source \cup target\)</span></li>
+</ul>
+</li>
+<li>the set of edges <span class="math">\(E\)</span><ul>
+<li><span class="math">\(E = \begin{cases} &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp;\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} \\ \cup &amp;\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp;\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></li>
+</ul>
+</li>
+</ul>
+<p>Given:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(G(V,E)\)</span></li>
+</ul>
+</div></blockquote>
+<p>Then:</p>
+<div class="math">
+\[\begin{split}\text{pgr_bridges}(sql) =
+\begin{cases}
+\text{all bridges } \boldsymbol{\pi} \text{ in } G(V,E) &amp;\quad \text{if } \exists  \boldsymbol{\pi}  \\
+\varnothing &amp;\quad \text{otherwise} \\
+\end{cases}\end{split}\]</div>
+<p><span class="math">\(\boldsymbol{\pi} = \{edge_i\}\)</span></p>
+<dl class="docutils">
+<dt>where:</dt>
+<dd><ul class="first last simple">
+<li><span class="math">\(edge_i\)</span> is an edge.</li>
+<li>The returned values are ordered:<ul>
+<li><cite>edge</cite> ascending</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt>Example:</dt>
+<dd><ul class="first last simple">
+<li>Bridges are edges <code class="docutils literal"><span class="pre">5</span> <span class="pre">&lt;--&gt;</span> <span class="pre">6</span></code> and <code class="docutils literal"><span class="pre">6</span> <span class="pre">&lt;--&gt;</span> <span class="pre">7</span></code>.</li>
+</ul>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/biconnected_components.jpeg"><img alt="_images/biconnected_components.jpeg" src="_images/biconnected_components.jpeg" style="width: 210px; height: 325px;" /></a>
 <div class="section" id="description-of-the-edges-sql-query-for-components-functions">
 <h3>Description of the edges_sql query for components functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-components-functions" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
@@ -502,6 +650,60 @@ component. So, the output only has edge version.</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="description-of-the-return-values-for-articulation-points">
+<h3>Description of the return values for articulation points<a class="headerlink" href="#description-of-the-return-values-for-articulation-points" title="Permalink to this headline">¶</a></h3>
+<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="14%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><code class="docutils literal"><span class="pre">INT</span></code></td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>node</strong></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td>Identifier of the vertex.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values-for-bridges">
+<h3>Description of the return values for bridges<a class="headerlink" href="#description-of-the-return-values-for-bridges" title="Permalink to this headline">¶</a></h3>
+<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="14%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><code class="docutils literal"><span class="pre">INT</span></code></td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>edge</strong></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td>Identifier of the edge.</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 
@@ -518,7 +720,7 @@ component. So, the output only has edge version.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Jul 04, 2017.<br/>
+      Last updated on Aug 06, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

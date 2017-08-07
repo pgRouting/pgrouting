@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -736,12 +737,14 @@ Here is the caller graph for this function:</div>
 <li>All parallel edges are disconnected (automatically by boost)</li>
 </ul>
 <div class="image">
-<img src="disconnectEdgeUndirected.png"  alt="disconnect_edge(2,3) on an UNDIRECTED graph"/>
-</div>
- <div class="image">
-<img src="disconnectEdgeDirected.png"  alt="disconnect_edge(2,3) on a DIRECTED graph"/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
+<img src="disconnectEdgeUndirected.png" alt="disconnectEdgeUndirected.png"/>
+<div class="caption">
+disconnect_edge(2,3) on an UNDIRECTED graph</div></div>
+<div class="image">
+<img src="disconnectEdgeDirected.png" alt="disconnectEdgeDirected.png"/>
+<div class="caption">
+disconnect_edge(2,3) on a DIRECTED graph</div></div>
+ <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">p_from</td><td>original vertex id of the starting point of the edge </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">p_to</td><td>original vertex id of the ending point of the edge </td></tr>
@@ -829,12 +832,14 @@ Here is the caller graph for this function:</div>
 <li>All parallel edges are disconnected (automatically by boost)</li>
 </ul>
 <div class="image">
-<img src="disconnectVertexUndirected.png"  alt="disconnect_vertex(2) on an UNDIRECTED graph"/>
-</div>
- <div class="image">
-<img src="disconnectVertexDirected.png"  alt="disconnect_vertex(2) on a DIRECTED graph"/>
-</div>
-<dl class="params"><dt>Parameters</dt><dd>
+<img src="disconnectVertexUndirected.png" alt="disconnectVertexUndirected.png"/>
+<div class="caption">
+disconnect_vertex(2) on an UNDIRECTED graph</div></div>
+<div class="image">
+<img src="disconnectVertexDirected.png" alt="disconnectVertexDirected.png"/>
+<div class="caption">
+disconnect_vertex(2) on a DIRECTED graph</div></div>
+ <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">p_vertex</td><td>original vertex id of the starting point of the edge </td></tr>
   </table>
@@ -1319,7 +1324,7 @@ template&lt;typename T &gt; </div>
 
 <p>Definition at line <a class="el" href="pgr__componentsGraph_8hpp_source.html#l00067">67</a> of file <a class="el" href="pgr__componentsGraph_8hpp_source.html">pgr_componentsGraph.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="biconnectedComponents__driver_8cpp_source.html#l00063">do_pgr_biconnectedComponents()</a>, and <a class="el" href="connectedComponentsV__driver_8cpp_source.html#l00063">do_pgr_connectedComponentsV()</a>.</p>
+<p>Referenced by <a class="el" href="articulationPoints__driver_8cpp_source.html#l00063">do_pgr_articulationPoints()</a>, <a class="el" href="biconnectedComponents__driver_8cpp_source.html#l00063">do_pgr_biconnectedComponents()</a>, <a class="el" href="bridges__driver_8cpp_source.html#l00063">do_pgr_bridges()</a>, and <a class="el" href="connectedComponentsV__driver_8cpp_source.html#l00063">do_pgr_connectedComponentsV()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                          {</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;             <a class="code" href="classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a1341eb7877973d52efe280c0f55f2a0e">insert_edges</a>(std::vector &lt; T &gt;(<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>, <a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a> + count));</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;         }</div>
@@ -1331,7 +1336,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpgrouting_1_1graph_1_1Pgr__componentsGraph_a1341eb7877973d52efe280c0f55f2a0e_icgraph.png" border="0" usemap="#classpgrouting_1_1graph_1_1Pgr__componentsGraph_a1341eb7877973d52efe280c0f55f2a0e_icgraph" alt=""/></div>
 <map name="classpgrouting_1_1graph_1_1Pgr__componentsGraph_a1341eb7877973d52efe280c0f55f2a0e_icgraph" id="classpgrouting_1_1graph_1_1Pgr__componentsGraph_a1341eb7877973d52efe280c0f55f2a0e_icgraph">
-<area shape="rect" id="node2" href="biconnectedComponents__driver_8h.html#a5a3919fa760c4bc29bead7d2c62a38ae" title="do_pgr_biconnectedComponents" alt="" coords="273,5,485,32"/><area shape="rect" id="node3" href="connectedComponentsV__driver_8h.html#ac3a9af1a4225d6f313850878af0fb132" title="do_pgr_connectedComponentsV" alt="" coords="273,56,484,83"/></map>
+<area shape="rect" id="node2" href="articulationPoints__driver_8h.html#a5044a6a446563f721c2e07a2e890d666" title="do_pgr_articulationPoints" alt="" coords="295,5,463,32"/><area shape="rect" id="node3" href="biconnectedComponents__driver_8h.html#a5a3919fa760c4bc29bead7d2c62a38ae" title="do_pgr_biconnectedComponents" alt="" coords="273,56,485,83"/><area shape="rect" id="node4" href="bridges__driver_8h.html#a54edc68b39cf4ff4c4bb2f33caa041e6" title="do_pgr_bridges" alt="" coords="323,107,434,133"/><area shape="rect" id="node5" href="connectedComponentsV__driver_8h.html#ac3a9af1a4225d6f313850878af0fb132" title="do_pgr_connectedComponentsV" alt="" coords="273,157,484,184"/></map>
 </div>
 </p>
 
@@ -2064,7 +2069,7 @@ template&lt;class G , typename T_V , typename T_E &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1graph.html">graph</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1graph_1_1Pgr__componentsGraph.html">Pgr_componentsGraph</a></li>
-    <li class="footer">Generated on Tue Jul 4 2017 21:37:32 for PGROUTING by
+    <li class="footer">Generated on Sun Aug 6 2017 20:39:07 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

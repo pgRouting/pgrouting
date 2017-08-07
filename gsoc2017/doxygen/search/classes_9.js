@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['node',['Node',['../classpgrouting_1_1vrp_1_1Node.html',1,'pgrouting::vrp']]]
+  ['matrix_5fcell',['matrix_cell',['../structmatrix__cell.html',1,'']]]
 ];
