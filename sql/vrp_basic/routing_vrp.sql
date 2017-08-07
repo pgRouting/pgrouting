@@ -39,7 +39,7 @@ create or replace function pgr_vrpOneDepot(
 	OUT tarrival integer,
 	OUT tdepart integer)
 returns setof record as
-'MODULE_PATHNAME', 'vrp'
+'${MODULE_PATHNAME}', 'vrp'
 LANGUAGE c VOLATILE STRICT;
 
 

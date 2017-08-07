@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     OUT agg_cost FLOAT
     )
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
+ '${MODULE_PATHNAME}', 'edge_disjoint_paths_many_to_many'
     LANGUAGE c VOLATILE;
 
 /***********************************
