@@ -440,10 +440,7 @@ Pgr_lineGraph< G, T_V, T_E >::create_edges(
                 for(const auto &it: unique)
                     log << it.first.first << " || " << it.first.second << "\n";
 
-                if (unique.find( {temp_target, temp_source} ) ==
-                        unique.end() and
-                        unique.find( {temp_target*-1, temp_source*-1}) ==
-                        unique.end()) {
+                if (unique.find( {temp_target, temp_source} ) == unique.end() and unique.find( {temp_target*-1, temp_source*-1} ) == unique.end()) {
                     log << "\nUnique\n";
                     edge.id = ++m_num_edges;
                     graph_add_edge(
@@ -457,8 +454,7 @@ Pgr_lineGraph< G, T_V, T_E >::create_edges(
                     unique[ {edge.source, edge.target} ] = edge;
                     continue;
                 }
-                if (unique.find( {temp_target*-1, temp_source*-1}) !=
-                        unique.end()) {
+                if (unique.find( {temp_target*-1, temp_source*-1}) != unique.end()) {
                     temp_source *= -1;
                     temp_target *= -1;
                 }
