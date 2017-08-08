@@ -50,6 +50,8 @@ Line Graph (right, with green vertices).
 .. |fourth| image:: images/128px-Line_graph_construction_4.svg.png
    :align: middle
 
+.. The images are taken from https://en.wikipedia.org/wiki/Line_graph.
+
 Signature Summary
 -----------------
 
