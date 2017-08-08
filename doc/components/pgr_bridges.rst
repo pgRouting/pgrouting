@@ -37,7 +37,7 @@ The main Characteristics are:
 
     - `edge` ascending
 
-  - Running time: :math:`O(V + E)`
+  - Running time: :math:`O(E * (V + E))`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ Description of the Signatures
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Bridge_(graph_theory)
+* http://en.wikipedia.org/wiki/Bridge_%28graph_theory%29
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
