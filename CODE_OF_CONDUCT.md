@@ -1,46 +1,72 @@
-# Contributor Covenant Code of Conduct
+Contributors to pgRouting are expected to act respectfully toward others in accordance with the http://www.osgeo.org/code_of_conduct.
 
-## Our Pledge
+Full transcription:
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
-## Our Standards
+# OSGeo Code of Conduct
 
-Examples of behavior that contributes to creating a positive environment include:
+Version: 1.0
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+Date: May 2015
 
-Examples of unacceptable behavior by participants include:
+## Introduction
 
-* The use of sexualized language or imagery and unwelcome sexual attention or advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a professional setting
+This code of conduct governs how we behave in any OSGeo forum or event and whenever we will be judged by our actions. We expect it to be honored by everyone who participates in the OSGeo community formally or informally, or claims any affiliation with the OSGeo Foundation.
 
-## Our Responsibilities
+It applies to in-person events (such as conferences and related social events), IRC, public and private mailing lists, the issue tracker, the wiki, blogs, Twitter, and any other forums which the community uses for communication and interactions.
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+This code is not exhaustive or complete. It serves to distill our common understanding of a collaborative, shared environment and goals. We expect it to be followed in spirit as much as in the letter, so that it can enrich all of us and the technical communities in which we participate.
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+## Diversity Statement
 
-## Scope
+OSGeo welcomes and encourages participation by everyone. We are committed to being a community that everyone feels good about joining, and we will always work to treat everyone well. No matter how you identify yourself or how others perceive you: we welcome you.
+Specific Guidelines
 
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+We strive to:
 
-## Enforcement
+- Be open.
+    We invite anyone to participate in our community. We preferably use public methods of communication for project-related messages, unless discussing something sensitive. This applies to messages for help or project-related support, too; not only is a public support request much more likely to result in an answer to a question, it also makes sure that any inadvertent mistakes made by people answering will be more easily detected and corrected.
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at project@pgrouting.org. The project team will review and investigate all complaints, and will respond in a way that it deems appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+- Be empathetic, welcoming, friendly, and patient.
+    We work together to resolve conflict, assume good intentions, and do our best to act in an empathetic fashion. We may all experience some frustration from time to time, but we do not allow frustration to turn into a personal attack. A community where people feel uncomfortable or threatened is not a productive one. Note that we have a multi-cultural, multi-lingual community and some of us are non-native speakers. We should be respectful when dealing with other community members as well as with people outside our community.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+- Be collaborative.
+    Our work will be used by other people, and in turn we will depend on the work of others. When we make something for the benefit of OSGeo, we are willing to explain to others how it works, so that they can build on the work to make it even better. Any decision we make will affect users and colleagues, and we take those consequences seriously when making decisions.
 
-## Attribution
+- Be inquisitive.
+    Nobody knows everything! Asking questions early avoids many problems later, so questions are encouraged, though they may be directed to the appropriate forum. Those who are asked should be responsive and helpful, within the context of our shared goal of improving OSGeo.
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at [http://contributor-covenant.org/version/1/4][version]
+- Be careful in the words that we choose.
+    Whether we are participating as professionals or volunteers, we value professionalism in all interactions, and take responsibility for our own speech. Be kind to others. Do not insult or put down other participants.
 
-[homepage]: http://contributor-covenant.org
-[version]: http://contributor-covenant.org/version/1/4/
+- Be concise
+    Keep in mind that what you write once will be read by hundreds of persons. Writing a short email means people can understand the conversation as efficiently as possible. Short emails should always strive to be empathetic, welcoming, friendly and patient. When a long explanation is necessary, consider adding a summary.
+
+    Try to bring new ideas to a conversation so that each mail adds something unique to the thread, keeping in mind that the rest of the thread still contains the other messages with arguments that have already been made.
+
+    Try to stay on topic, especially in discussions that are already fairly large.
+
+- Step down considerately.
+    Members of every project come and go. When somebody leaves or disengages from the project they should tell people they are leaving and take the proper steps to ensure that others can pick up where they left off. In doing so, they should remain respectful of those who continue to participate in the project and should not misrepresent the project's goals or achievements. Likewise, community members should respect any individual's choice to leave the project.
+
+## Anti-Harassment
+
+Harassment and other exclusionary behaviour are not acceptable. This includes, but is not limited to:
+
+-    Personal insults or discriminatory jokes and language, especially those using racist or sexist terms.
+-    Offensive comments, excessive or unnecessary profanity.
+-    Intimidation, violent threats or demands.
+-    Sustained disruption of sessions or events.
+-    Stalking, harassing photography or recording.
+-    Unwelcome physical contact or sexual attention.
+-    Repeated harassment of others. In general, if someone asks you to stop, then stop.
+-    Posting (or threatening to post) other people's personally identifying information ("doxing").
+-    Sharing private content, such as emails sent privately or non-publicly, or unlogged forums such as IRC channel history.
+-    Advocating for, or encouraging, any of the above behaviour.
+
+## Reporting Guidelines
+
+If you believe someone is breaking this code of conduct, you may reply to them, and point to this code of conduct. Such messages may be in public or in private, whatever is most appropriate. Assume good faith; it is more likely that participants are unaware of their bad behaviour than that they intentionally try to degrade the quality of the discussion. Should there be difficulties in dealing with the situation, you may report your concerns to event staff, a forum leader or the OSGeo Board. Serious or persistent offenders may be expelled from the event or forum by event organizers or forum leaders.
+
+
+
