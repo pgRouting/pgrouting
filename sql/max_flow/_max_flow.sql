@@ -44,7 +44,7 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     OUT residual_capacity BIGINT
     )
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'max_flow_many_to_many'
+ '${MODULE_PATHNAME}', 'max_flow_many_to_many'
     LANGUAGE c VOLATILE;
 
 

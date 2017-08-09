@@ -40,6 +40,6 @@ CREATE OR REPLACE FUNCTION _pgr_bdDijkstra(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'bdDijkstra'
+'${MODULE_PATHNAME}', 'bdDijkstra'
 LANGUAGE c VOLATILE;
 

@@ -971,7 +971,7 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(
     OUT cost float,
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'many_to_many_dijkstra'
+'$libdir/libpgrouting-2.5', 'many_to_many_dijkstra'
 LANGUAGE c VOLATILE;
 
 
@@ -1207,7 +1207,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     OUT route_agg_cost FLOAT)
 
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'dijkstraVia'
+ '$libdir/libpgrouting-2.5', 'dijkstraVia'
     LANGUAGE c VOLATILE;
 
 
@@ -1216,7 +1216,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
 CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE,
   OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'johnson'
+ '$libdir/libpgrouting-2.5', 'johnson'
     LANGUAGE c VOLATILE;
 
 
@@ -1224,7 +1224,7 @@ CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN DEFAULT 
 CREATE OR REPLACE FUNCTION pgr_floydWarshall(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE,
   OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'floydWarshall'
+ '$libdir/libpgrouting-2.5', 'floydWarshall'
     LANGUAGE c VOLATILE;
 
 
@@ -1249,7 +1249,7 @@ CREATE OR REPLACE FUNCTION _pgr_astar(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'astarManyToMany'
+'$libdir/libpgrouting-2.5', 'astarManyToMany'
 LANGUAGE c VOLATILE;
 
 
@@ -1480,7 +1480,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-     'MODULE_PATHNAME', 'many_withPointsDD'
+     '$libdir/libpgrouting-2.5', 'many_withPointsDD'
  LANGUAGE c VOLATILE STRICT;
 
 
@@ -1524,7 +1524,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-     'MODULE_PATHNAME', 'driving_many_to_dist'
+     '$libdir/libpgrouting-2.5', 'driving_many_to_dist'
  LANGUAGE c VOLATILE STRICT;
 
 
@@ -1555,7 +1555,7 @@ ROWS 1000;
 CREATE OR REPLACE FUNCTION _pgr_ksp(edges_sql text, start_vid bigint, end_vid bigint, k integer, directed boolean, heap_paths boolean,
   OUT seq integer, OUT path_id integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
-    'MODULE_PATHNAME', 'kshortest_path'
+    '$libdir/libpgrouting-2.5', 'kshortest_path'
     LANGUAGE c STABLE STRICT;
 
 -- V2 the graph is directed and there are no heap paths
@@ -1624,7 +1624,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
     OUT node BIGINT, OUT edge BIGINT,
     OUT cost FLOAT, OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-    'MODULE_PATHNAME', 'withPoints_ksp'
+    '$libdir/libpgrouting-2.5', 'withPoints_ksp'
     LANGUAGE c STABLE STRICT;
 
 
@@ -1814,7 +1814,7 @@ CREATE OR REPLACE FUNCTION pgr_TSP(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF record
-AS 'MODULE_PATHNAME', 'newTSP'
+AS '$libdir/libpgrouting-2.5', 'newTSP'
 LANGUAGE c VOLATILE STRICT;
 
 
@@ -1840,7 +1840,7 @@ CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF record
-AS 'MODULE_PATHNAME', 'eucledianTSP'
+AS '$libdir/libpgrouting-2.5', 'eucledianTSP'
 LANGUAGE c VOLATILE STRICT;
 
 
@@ -1849,7 +1849,7 @@ LANGUAGE c VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
     RETURNS SETOF record
-    AS 'MODULE_PATHNAME', 'alphashape'
+    AS '$libdir/libpgrouting-2.5', 'alphashape'
     LANGUAGE c VOLATILE;
 
 
@@ -1931,7 +1931,7 @@ CREATE OR REPLACE FUNCTION _pgr_bdAstar(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-    'MODULE_PATHNAME', 'bd_astar'
+    '$libdir/libpgrouting-2.5', 'bd_astar'
 LANGUAGE C VOLATILE;
 
 
@@ -2179,7 +2179,7 @@ CREATE OR REPLACE FUNCTION _pgr_bdDijkstra(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'bdDijkstra'
+'$libdir/libpgrouting-2.5', 'bdDijkstra'
 LANGUAGE c VOLATILE;
 
 
@@ -2381,7 +2381,7 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     has_reverse_cost boolean,
     turn_restrict_sql text DEFAULT null)
 RETURNS SETOF pgr_costResult
-AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_vertex'
+AS '$libdir/libpgrouting-2.5', 'turn_restrict_shortest_path_vertex'
 LANGUAGE 'c' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
@@ -2394,7 +2394,7 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     has_reverse_cost boolean,
     turn_restrict_sql text DEFAULT null)
 RETURNS SETOF pgr_costResult
-AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_edge'
+AS '$libdir/libpgrouting-2.5', 'turn_restrict_shortest_path_edge'
 LANGUAGE 'c' IMMUTABLE;
 
 
@@ -2720,7 +2720,7 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     OUT residual_capacity BIGINT
     )
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'max_flow_many_to_many'
+ '$libdir/libpgrouting-2.5', 'max_flow_many_to_many'
     LANGUAGE c VOLATILE;
 
 
@@ -3047,7 +3047,7 @@ CREATE OR REPLACE FUNCTION pgr_maxCardinalityMatch(
     OUT target BIGINT
     )
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'maximum_cardinality_matching'
+ '$libdir/libpgrouting-2.5', 'maximum_cardinality_matching'
     LANGUAGE c VOLATILE;
 
 
@@ -3071,7 +3071,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     OUT agg_cost FLOAT
     )
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
+ '$libdir/libpgrouting-2.5', 'edge_disjoint_paths_many_to_many'
     LANGUAGE c VOLATILE;
 
 
@@ -3158,7 +3158,7 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT cost float)
 
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'contractGraph'
+ '$libdir/libpgrouting-2.5', 'contractGraph'
     LANGUAGE c VOLATILE;
 
 
@@ -3187,7 +3187,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
 )
 
 RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'pickDeliver'
+ '$libdir/libpgrouting-2.5', 'pickDeliver'
 LANGUAGE c VOLATILE;
 
 
@@ -3215,7 +3215,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
 )
 
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'pickDeliverEuclidean'
+ '$libdir/libpgrouting-2.5', 'pickDeliverEuclidean'
     LANGUAGE c VOLATILE;
 
 
@@ -3433,7 +3433,7 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'withPoints'
+'$libdir/libpgrouting-2.5', 'withPoints'
 LANGUAGE c VOLATILE;
 
 
@@ -6060,7 +6060,7 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     OUT target BIGINT
     )
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'maximum_cardinality_matching'
+ '$libdir/libpgrouting-2.5', 'maximum_cardinality_matching'
     LANGUAGE c VOLATILE;
 
 

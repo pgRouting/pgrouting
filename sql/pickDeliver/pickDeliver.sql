@@ -51,7 +51,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
 )
 
 RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'pickDeliver'
+ '${MODULE_PATHNAME}', 'pickDeliver'
 LANGUAGE c VOLATILE;
 
 

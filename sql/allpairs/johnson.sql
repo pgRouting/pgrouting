@@ -31,6 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE,
   OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'johnson'
+ '${MODULE_PATHNAME}', 'johnson'
     LANGUAGE c VOLATILE;
 

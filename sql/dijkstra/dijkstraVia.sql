@@ -45,7 +45,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     OUT route_agg_cost FLOAT)
 
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'dijkstraVia'
+ '${MODULE_PATHNAME}', 'dijkstraVia'
     LANGUAGE c VOLATILE;
 
 

@@ -40,7 +40,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-     'MODULE_PATHNAME', 'many_withPointsDD'
+     '${MODULE_PATHNAME}', 'many_withPointsDD'
  LANGUAGE c VOLATILE STRICT;
 
 
