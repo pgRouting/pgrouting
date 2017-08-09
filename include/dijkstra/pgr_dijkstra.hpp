@@ -654,10 +654,10 @@ class Pgr_dijkstra {
              return true;
          } catch (boost::exception const& ex) {
              (void)ex;
-             throw ex;
+             throw;
          } catch (std::exception &e) {
              (void)e;
-             throw e;
+             throw;
          } catch (...) {
              throw;
          }
