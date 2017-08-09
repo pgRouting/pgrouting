@@ -167,9 +167,9 @@ Experimental and Proposed functions
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
-.. rubric:: Grpah Transformation
+.. rubric:: Graph Transformation
 
-- :ref:`pgr_lineGraph` 
+- :ref:`pgr_lineGraph`
 
 
 ..

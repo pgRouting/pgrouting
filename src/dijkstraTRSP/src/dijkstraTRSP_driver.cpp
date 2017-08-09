@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <string>
 
 #include "dijkstraTRSP/pgr_dijkstraTRSP.hpp"
 
@@ -51,7 +52,6 @@ pgr_dijkstraTRSP(
         std::string& log,
         bool only_cost = false,
         bool strict = false) {
-
     Pgr_dijkstraTRSP< G > fn_TRSP;
     Path path = fn_TRSP.dijkstraTRSP(graph,
                     restrictions_array,
@@ -92,16 +92,16 @@ do_pgr_dijkstraTRSP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        log << "\n----------------------------------------\nRestrictions data\n";
+        log << "\n---------------------------------------\nRestrictions data\n";
         std::vector< Restriction > restrict_array;
-        for(size_t i = 0;i < total_restrictions;i++) {
-            restrict_array.push_back( Restriction(restrictions[i]) );
+        for (size_t i = 0; i < total_restrictions; i++) {
+            restrict_array.push_back(Restriction(restrictions[i]));
         }
-        log << "\n-------------------------------------------------------------\nStart from here\n";
-        for (const auto &it: restrict_array) {
+        log << "\n-----------------------------------------\nStart from here\n";
+        for (const auto &it : restrict_array) {
             log << it << "\n";
         }
-        log <<"-----------------------------------------------------------------\n";
+        log <<"-------------------------------------------------------------\n";
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 

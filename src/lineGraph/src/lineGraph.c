@@ -75,7 +75,8 @@ process(
      */
     PGR_DBG("\nSQL QUERY: %s\n", edges_sql);
     if (directed) PGR_DBG("\nDirectedGraph\n");
-    else PGR_DBG("\nUndirectedGraph\n");
+    else
+        PGR_DBG("\nUndirectedGraph\n");
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;
@@ -206,7 +207,8 @@ PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
+        values[4] = Float8GetDatum(
+            result_tuples[funcctx->call_cntr].reverse_cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

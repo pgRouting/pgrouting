@@ -41,8 +41,9 @@ void get_postgres_result(
             (int)edge_result.size(),
             (*return_tuples));
 
-    for (const auto &edge: edge_result) {
-        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target, edge.cost, edge.reverse_cost};
+    for (const auto &edge : edge_result) {
+        (*return_tuples)[sequence] = {edge.id, edge.source,
+            edge.target, edge.cost, edge.reverse_cost};
         sequence++;
     }
 }
@@ -78,7 +79,7 @@ do_pgr_lineGraph(
 
             pgrouting::LinearDirectedGraph line(gType);
             line.insert_vertices(data_edges, total_edges);
-            line.transform(digraph);
+            line.transformation(digraph);
             auto line_graph_edges = line.get_postgres_results();
 
             auto count = line_graph_edges.size();
@@ -94,8 +95,7 @@ do_pgr_lineGraph(
                 get_postgres_result(
                     line_graph_edges,
                     return_tuples,
-                    sequence
-                );
+                    sequence);
                 (*return_count) = sequence;
             }
             log << line.log.str().c_str() << "\n\n\n";
