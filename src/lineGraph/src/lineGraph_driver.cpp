@@ -85,8 +85,8 @@ do_pgr_lineGraph(
 
             pgrouting::LinearDirectedGraph line(gType);
             line.insert_vertices(data_edges, total_edges);
-            auto line_graph_edges = line.transform(digraph);
-            line.create_virtual_vertices();
+            line.transform(digraph);
+            auto line_graph_edges = line.get_postgres_results();
 
             auto count = line_graph_edges.size();
 
@@ -95,17 +95,16 @@ do_pgr_lineGraph(
                 (*return_count) = 0;
                 notice <<
                     "No paths found between start_vid and end_vid vertices";
-                return;
+            } else {
+                size_t sequence = 0;
+
+                get_postgres_result(
+                    line_graph_edges,
+                    return_tuples,
+                    sequence
+                );
+                (*return_count) = sequence;
             }
-
-            size_t sequence = 0;
-
-            get_postgres_result(
-                line_graph_edges,
-                return_tuples,
-                sequence
-            );
-            (*return_count) = sequence;
             log << line.log.str().c_str() << "\n\n\n";
             log << line << "\n";
         }
