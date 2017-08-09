@@ -97,7 +97,7 @@ Pgr_dijkstraTRSP< G >::dijkstraTRSP(
     executeDijkstraTRSP(graph);
     if (curr_result_path.size() or graph.m_gType == UNDIRECTED)
         return curr_result_path;
-
+#if 0
     pgrouting::LinearDirectedGraph line(DIRECTED);
     line.insert_vertices(edges);
     auto line_graph_edges = line.transform(graph);
@@ -109,6 +109,7 @@ Pgr_dijkstraTRSP< G >::dijkstraTRSP(
 
     line.create_virtual_vertices();
     log << line << "\n";
+#endif
     return curr_result_path;
 }
 
