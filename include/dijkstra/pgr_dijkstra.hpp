@@ -31,8 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
-// #include <boost/exception/diagnostic_information.hpp> 
-// #include <boost/exception_ptr.hpp> 
 
 #include <deque>
 #include <set>
@@ -128,7 +126,6 @@ class Pgr_dijkstra {
                      start_vertex,
                      distance);
              the_log << log.str();
-//#define DEBUG
              return paths;
          } else {
              return drivingDistance_no_equicost(
@@ -147,33 +144,129 @@ class Pgr_dijkstra {
 
      //! @name Dijkstra
      //@{
-     //! one to one
+     //! Dijkstra 1 to 1
      Path dijkstra(
              G &graph,
              int64_t start_vertex,
              int64_t end_vertex,
-             bool only_cost = false);
+             bool only_cost = false) {
+         clear();
 
-     //! Many to one
-     std::deque<Path> dijkstra(
-             G &graph,
-             const std::vector < int64_t > &start_vertex,
-             int64_t end_vertex,
-             bool only_cost = false);
+         // adjust predecessors and distances vectors
+         predecessors.resize(graph.num_vertices());
+         distances.resize(graph.num_vertices());
 
-     //! Many to Many
-     std::deque<Path> dijkstra(
-             G &graph,
-             const std::vector< int64_t > &start_vertex,
-             const std::vector< int64_t > &end_vertex,
-             bool only_cost = false);
 
-     //! one to Many
+         if (!graph.has_vertex(start_vertex)
+                 || !graph.has_vertex(end_vertex)) {
+             return Path(start_vertex, end_vertex);
+         }
+
+         // get the graphs source and target
+         auto v_source(graph.get_V(start_vertex));
+         auto v_target(graph.get_V(end_vertex));
+
+         // perform the algorithm
+         dijkstra_1_to_1(graph, v_source, v_target);
+
+         // get the results
+         return Path(
+                 graph,
+                 v_source, v_target,
+                 predecessors, distances,
+                 only_cost, true);
+     }
+
+
+
+
+
+
+     //! Dijkstra 1 to many
      std::deque<Path> dijkstra(
              G &graph,
              int64_t start_vertex,
              const std::vector< int64_t > &end_vertex,
-             bool only_cost = false);
+             bool only_cost) {
+         // adjust predecessors and distances vectors
+         clear();
+
+         predecessors.resize(graph.num_vertices());
+         distances.resize(graph.num_vertices());
+
+         // get the graphs source and target
+         if (!graph.has_vertex(start_vertex))
+             return std::deque<Path>();
+         auto v_source(graph.get_V(start_vertex));
+
+         std::set< V > s_v_targets;
+         for (const auto &vertex : end_vertex) {
+             if (graph.has_vertex(vertex)) {
+                 s_v_targets.insert(graph.get_V(vertex));
+             }
+         }
+
+         std::vector< V > v_targets(s_v_targets.begin(), s_v_targets.end());
+         // perform the algorithm
+         dijkstra_1_to_many(graph, v_source, v_targets);
+
+         std::deque< Path > paths;
+         // get the results // route id are the targets
+         paths = get_paths(graph, v_source, v_targets, only_cost);
+
+         std::stable_sort(paths.begin(), paths.end(),
+                 [](const Path &e1, const Path &e2)->bool {
+                 return e1.end_id() < e2.end_id();
+                 });
+
+         return paths;
+     }
+
+     // preparation for many to 1
+     std::deque<Path> dijkstra(
+             G &graph,
+             const std::vector < int64_t > &start_vertex,
+             int64_t end_vertex,
+             bool only_cost) {
+         std::deque<Path> paths;
+
+         for (const auto &start : start_vertex) {
+             paths.push_back(
+                     dijkstra(graph, start, end_vertex, only_cost));
+         }
+
+         std::stable_sort(paths.begin(), paths.end(),
+                 [](const Path &e1, const Path &e2)->bool {
+                 return e1.start_id() < e2.start_id();
+                 });
+         return paths;
+     }
+
+
+     // preparation for many to many
+     std::deque<Path> dijkstra(
+             G &graph,
+             const std::vector< int64_t > &start_vertex,
+             const std::vector< int64_t > &end_vertex,
+             bool only_cost) {
+         // a call to 1 to many is faster for each of the sources
+         std::deque<Path> paths;
+         for (const auto &start : start_vertex) {
+             auto r_paths = dijkstra(graph, start, end_vertex, only_cost);
+             paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
+         }
+
+         std::sort(paths.begin(), paths.end(),
+                 [](const Path &e1, const Path &e2)->bool {
+                 return e1.end_id() < e2.end_id();
+                 });
+         std::stable_sort(paths.begin(), paths.end(),
+                 [](const Path &e1, const Path &e2)->bool {
+                 return e1.start_id() < e2.start_id();
+                 });
+         return paths;
+     }
+
      //@}
 
  private:
@@ -398,8 +491,6 @@ class Pgr_dijkstra {
               *   Nothing to do
               */
              if (graph.has_vertex(vertex)) {
-                 log << "\nthe verification:" << vertex << "==" << graph[graph.get_V(vertex)].id << "\n";
-
                  if (execute_drivingDistance_no_init(graph, graph.get_V(vertex), distance)) {
                      pred[i] = predecessors;
                  }
@@ -407,18 +498,6 @@ class Pgr_dijkstra {
              ++i;
          }
 
-#if 0
-         for (size_t i = 0; i < start_vertex.size(); ++i) {
-             if (start_vertex[i] == 13) {
-                 pgassert(!pred[i].empty());
-                 size_t count(0);
-                 for (V v = 0 ; v < pred[i].size(); ++v) {
-                     count += v != predecessors[v]? 1 : 0;
-                 }
-                 pgassert(count > 0);
-             }
-         }
-#endif
 
          /*
           * predecessors of vertices in the set are themselfs
@@ -430,24 +509,36 @@ class Pgr_dijkstra {
              }
          }
 
-#if 0
-         for (size_t i = 0; i < start_vertex.size(); ++i) {
-             if (start_vertex[i] == 13) {
-                 pgassert(!pred[i].empty());
-                 size_t count(0);
-                 for (V v = 0 ; v < pred[i].size(); ++v) {
-                     count += v != predecessors[v]? 1 : 0;
-                 }
-                 pgassert(count > 0);
-             }
-         }
-#endif
 
-         std::deque<Path> paths;
+        return get_drivingDistance_with_equicost_paths(
+                graph,
+                start_vertex,
+                pred,
+                distance);
+     }
+
+     /** @brief gets results in form of a container of paths
+      *
+      * @param [in] graph The graph that is being worked
+      * @param [in] start_vertex An array of vertices @b id
+      * @param [in] pred an array of predecessors
+      * @param [in] distance the max distance
+      */
+     std::deque< Path > get_drivingDistance_with_equicost_paths(
+             G &graph,
+             const std::vector< int64_t > &start_vertex,
+             std::deque< std::vector< V > > &pred,
+             double distance) {
+         /*
+          * precondition
+          */
+         pgassert(start_vertex.size()==pred.size());
+
 
          /*
           * Creating all the result "paths"
           */
+         std::deque<Path> paths;
          for (const auto vertex : start_vertex) {
              paths.push_back(Path(vertex, vertex));
              paths.back().push_back({vertex, -1, 0, 0});
@@ -653,7 +744,6 @@ class Pgr_dijkstra {
               first(source),
               m_distance_goal(distance_goal),
               m_num_examined(0),
-              m_num_discovered(0),
               m_predecessors(predecessors),
               m_dist(distances),
               m_color(color_map) {
@@ -665,10 +755,6 @@ class Pgr_dijkstra {
           void examine_vertex(V u, B_G &) {
               if ( 0 == m_num_examined++) first = u;
               if (m_dist[u] > m_distance_goal) {
-                  log << "THROWING:\n"
-                      << "num_finished" << m_num_examined << "\n"
-                      << "num_examined" << m_num_examined << "\n"
-                      << "num_discovered" << m_num_discovered << "\n";
                   throw found_goals();
               }
               if (u != first && m_predecessors[u] == u ){
@@ -682,86 +768,32 @@ class Pgr_dijkstra {
                    m_color[target(e,g)]=boost::black_color;
               }
           }
-
-
           
 
-#if 0
           template <class B_G>
-          void edge_relaxed(E e, B_G &g) {
-              log << "\n\t\tRELAXED " << e;
-              log << "\n\t\tg[e].target= " << g[target(e, g)].id;
-              log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
-              log << "e= " << e ;
-              log << "\ng[e].id= " << g[e].id ;
-              log << "\nPredecesors\n";
-              for (auto p : m_predecessors) {
-                  log << "(" << p << "," << g[p].id << "),";
-              }
+          void edge_relaxed(E, B_G &) {
           }
-#endif
 
           
 
           template <class B_G>
           void edge_not_relaxed(E e, B_G &g) {
-#if 0
-              log << "\n\t\tNOT RELAXED " << e;
-              log << "\n\t\tg[e].target= " << g[target(e, g)].id;
-              log << "\n\t\texamined vertex" << g[v_examined];
-              log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
-#endif
               if (source(e, g) != first && m_predecessors[source(e,g)] == source(e,g)) {
                   m_color[target(e,g)]=boost::black_color;
               }
-#if 0
-              log << "\n\t\tm_color[target(e, g)]" << m_color[target(e, g)];
-              log << "e= " << e ;
-              log << "\ng[e].id= " << g[e].id ;
-              log << "\nPredecesors\n";
-              for (auto p : m_predecessors) {
-                  log << "(" << p << "," << g[p].id << "),";
-              }
-              if (m_predecessors[target(e,g)] == target(e,g)) m_color[target(e,g)]=boost::gray_color;
-              //if (first != u) pgassertwm(m_predecessors[u] != u, log.str().c_str());
-#endif
           }
 
-          
 
           template <class B_G>
           void finish_vertex(V u, B_G &g) {
-              ++m_num_finished;
           }
 
 
           template <class B_G>
           void discover_vertex(V u, B_G &) {
-#if 0
-              if (m_nodes.empty()) first = u;
-              log << "\n\t\t\tDISCOVER u" << u;
-              log << "\n\t\t\tg[u].id= " << g[u].id ;
-              log << "\n\t\t\tm_color[u]" << m_color[u];
-              log << "\n\t\t\tm_predecessors[u]" << m_predecessors[u];
-              log << "\n\t\t\tm_color[m_predecessors[u]]" << m_color[m_predecessors[u]];
-#endif
-              ++m_num_discovered;
               if (u  != first && m_predecessors[u] == u) {
                    m_color[u]=boost::black_color;
-#if 0
-                   log << "\n\t\t\tm_color[u]" << m_color[u];
-#endif
               }
-#if 0
-              log << "u= " << u ;
-              log << "\ng[u].id= " << g[u].id ;
-              log << "\nPredecesors\n";
-              for (auto p : m_predecessors) {
-                  log << "(" << p << "," << g[p].id << "),";
-              }
-              log << "\ng[first].id= " << g[first].id ;
-              log << "\nm_color[u]" << m_color[u];
-#endif
           }
 
       private:
@@ -769,153 +801,14 @@ class Pgr_dijkstra {
           V first;
           double m_distance_goal;
           size_t m_num_examined;
-          size_t m_num_discovered;
-          size_t m_num_finished;
           std::vector< V > &m_predecessors;
           std::vector< double > &m_dist;
-          bool undirected;
           std::vector<boost::default_color_type> &m_color;
-          V v_examined;
      };
 
 
      //@}
 };
-
-
-/******************** IMPLEMENTTION ******************/
-
-
-
-
-
-//! Dijkstra 1 to 1
-template < class G >
-Path
-Pgr_dijkstra< G >::dijkstra(
-        G &graph,
-        int64_t start_vertex,
-        int64_t end_vertex,
-        bool only_cost) {
-    clear();
-
-    // adjust predecessors and distances vectors
-    predecessors.resize(graph.num_vertices());
-    distances.resize(graph.num_vertices());
-
-
-    if (!graph.has_vertex(start_vertex)
-            || !graph.has_vertex(end_vertex)) {
-        return Path(start_vertex, end_vertex);
-    }
-
-    // get the graphs source and target
-    auto v_source(graph.get_V(start_vertex));
-    auto v_target(graph.get_V(end_vertex));
-
-    // perform the algorithm
-    dijkstra_1_to_1(graph, v_source, v_target);
-
-    // get the results
-    return Path(
-            graph,
-            v_source, v_target,
-            predecessors, distances,
-            only_cost, true);
-}
-
-//! Dijkstra 1 to many
-template < class G >
-std::deque<Path>
-Pgr_dijkstra< G >::dijkstra(
-        G &graph,
-        int64_t start_vertex,
-        const std::vector< int64_t > &end_vertex,
-        bool only_cost) {
-    // adjust predecessors and distances vectors
-    clear();
-
-    predecessors.resize(graph.num_vertices());
-    distances.resize(graph.num_vertices());
-
-    // get the graphs source and target
-    if (!graph.has_vertex(start_vertex))
-        return std::deque<Path>();
-    auto v_source(graph.get_V(start_vertex));
-
-    std::set< V > s_v_targets;
-    for (const auto &vertex : end_vertex) {
-        if (graph.has_vertex(vertex)) {
-            s_v_targets.insert(graph.get_V(vertex));
-        }
-    }
-
-    std::vector< V > v_targets(s_v_targets.begin(), s_v_targets.end());
-    // perform the algorithm
-    dijkstra_1_to_many(graph, v_source, v_targets);
-
-    std::deque< Path > paths;
-    // get the results // route id are the targets
-    paths = get_paths(graph, v_source, v_targets, only_cost);
-
-    std::stable_sort(paths.begin(), paths.end(),
-            [](const Path &e1, const Path &e2)->bool {
-            return e1.end_id() < e2.end_id();
-            });
-
-    return paths;
-}
-
-// preparation for many to 1
-template < class G >
-std::deque<Path>
-Pgr_dijkstra< G >::dijkstra(
-        G &graph,
-        const std::vector < int64_t > &start_vertex,
-        int64_t end_vertex,
-        bool only_cost) {
-    std::deque<Path> paths;
-
-    for (const auto &start : start_vertex) {
-        paths.push_back(
-                dijkstra(graph, start, end_vertex, only_cost));
-    }
-
-    std::stable_sort(paths.begin(), paths.end(),
-            [](const Path &e1, const Path &e2)->bool {
-            return e1.start_id() < e2.start_id();
-            });
-    return paths;
-}
-
-
-// preparation for many to many
-template < class G >
-std::deque<Path>
-Pgr_dijkstra< G >::dijkstra(
-        G &graph,
-        const std::vector< int64_t > &start_vertex,
-        const std::vector< int64_t > &end_vertex,
-        bool only_cost) {
-    // a call to 1 to many is faster for each of the sources
-    std::deque<Path> paths;
-    for (const auto &start : start_vertex) {
-        auto r_paths = dijkstra(graph, start, end_vertex, only_cost);
-        paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
-    }
-
-    std::sort(paths.begin(), paths.end(),
-            [](const Path &e1, const Path &e2)->bool {
-            return e1.end_id() < e2.end_id();
-            });
-    std::stable_sort(paths.begin(), paths.end(),
-            [](const Path &e1, const Path &e2)->bool {
-            return e1.start_id() < e2.start_id();
-            });
-    return paths;
-}
-
-
 
 
 
