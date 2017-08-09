@@ -653,9 +653,11 @@ class Pgr_dijkstra {
          } catch(found_goals &) {
              return true;
          } catch (boost::exception const& ex) {
-             throw;
+             (void)ex;
+             throw ex;
          } catch (std::exception &e) {
-             throw;
+             (void)e;
+             throw e;
          } catch (...) {
              throw;
          }
