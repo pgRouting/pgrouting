@@ -73,6 +73,7 @@ class Pgr_components {
      //! Bridges
      std::vector<pgr_components_rt> bridges(
              G &graph);
+
  private:
      //! Generate Results, Vertex Version
      std::vector<pgr_components_rt> generate_results(
@@ -194,16 +195,16 @@ Pgr_components< G >::articulationPoints(
     results.resize(totalArtp);
     for (size_t i = 0; i < totalArtp; i++)
         results[i].identifier = graph[art_points[i]].id;
-    
+
     // sort identifier
     std::sort(results.begin(), results.end(),
             [](const pgr_components_rt &left, const pgr_components_rt &right) {
             return left.identifier < right.identifier; });
 
-    return results; 
+    return results;
 }
 
-//! Bridges 
+//! Bridges
 template < class G >
 std::vector<pgr_components_rt>
 Pgr_components< G >::bridges(
@@ -222,7 +223,7 @@ Pgr_components< G >::bridges(
 
     for (const auto pair_edge : stored_edges) {
         E edge = pair_edge.first;
-        
+
         boost::remove_edge(edge, graph.graph);
 
         int now_comps = boost::connected_components(graph.graph, &tmp_comp[0]);
@@ -232,7 +233,7 @@ Pgr_components< G >::bridges(
             results.push_back(temp);
         }
 
-        boost::add_edge(boost::source(edge, graph.graph), 
+        boost::add_edge(boost::source(edge, graph.graph),
                         boost::target(edge, graph.graph),
                         graph.graph);
     }
@@ -242,7 +243,7 @@ Pgr_components< G >::bridges(
             [](const pgr_components_rt &left, const pgr_components_rt &right) {
             return left.identifier < right.identifier; });
 
-    return results; 
+    return results;
 }
 
 #endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
