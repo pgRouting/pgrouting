@@ -110,10 +110,10 @@ process(
 
 #if 1
     size_t i = 0;
-    while(i < total_restrictions) {
+    while (i < total_restrictions) {
         PGR_DBG("id: %ld cost: %lf", restrictions[i].id, restrictions[i].cost);
         int j = 0;
-        while(restrictions[i].restricted_edges[j] != -1) {
+        while (restrictions[i].restricted_edges[j] != -1) {
             PGR_DBG("%ld ", restrictions[i].restricted_edges[j]);
             j++;
         }
@@ -233,7 +233,7 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (General_path_element_t*)funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

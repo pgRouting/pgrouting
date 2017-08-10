@@ -1,30 +1,23 @@
 /*PGR-GNU*****************************************************************
 File: lineGraph_driver.cpp
-
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
-
 Function's developer:
 Copyright (c) 2017 Vidhan Jain
 Mail: vidhanj1307.com
-
 ------
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 ********************************************************************PGR-GNU*/
 
 #include "drivers/lineGraph/lineGraph_driver.h"
@@ -48,8 +41,9 @@ void get_postgres_result(
             (int)edge_result.size(),
             (*return_tuples));
 
-    for (const auto &edge: edge_result) {
-        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target, edge.cost, edge.reverse_cost};
+    for (const auto &edge : edge_result) {
+        (*return_tuples)[sequence] = {edge.id, edge.source,
+            edge.target, edge.cost, edge.reverse_cost};
         sequence++;
     }
 }
@@ -85,8 +79,8 @@ do_pgr_lineGraph(
 
             pgrouting::LinearDirectedGraph line(gType);
             line.insert_vertices(data_edges, total_edges);
-            auto line_graph_edges = line.transform(digraph);
-            line.create_virtual_vertices();
+            line.transformation(digraph);
+            auto line_graph_edges = line.get_postgres_results();
 
             auto count = line_graph_edges.size();
 
@@ -95,17 +89,15 @@ do_pgr_lineGraph(
                 (*return_count) = 0;
                 notice <<
                     "No paths found between start_vid and end_vid vertices";
-                return;
+            } else {
+                size_t sequence = 0;
+
+                get_postgres_result(
+                    line_graph_edges,
+                    return_tuples,
+                    sequence);
+                (*return_count) = sequence;
             }
-
-            size_t sequence = 0;
-
-            get_postgres_result(
-                line_graph_edges,
-                return_tuples,
-                sequence
-            );
-            (*return_count) = sequence;
             log << line.log.str().c_str() << "\n\n\n";
             log << line << "\n";
         }
