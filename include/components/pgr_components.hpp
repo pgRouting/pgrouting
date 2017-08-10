@@ -165,7 +165,7 @@ Pgr_components< G >::biconnectedComponents(
             return left.get_property() < right.get_property();
         }
     };
-    typedef std::map< E, int > edge_map;
+    typedef std::map< E, size_t > edge_map;
     edge_map bicmp_map;
 
     boost::associative_property_map< edge_map > bimap(bicmp_map);
@@ -186,7 +186,7 @@ std::vector<pgr_components_rt>
 Pgr_components< G >::articulationPoints(
         G &graph) {
     // perform the algorithm
-    std::vector <int> art_points;
+    std::vector <size_t> art_points;
     boost::articulation_points(graph.graph, std::back_inserter(art_points));
 
     // get the results
