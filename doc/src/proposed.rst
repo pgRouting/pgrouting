@@ -171,8 +171,8 @@ Experimental and Proposed functions
 
 .. toctree::
   :hidden:
-  
-- :ref:`pgr_lineGraph`
+
+  pgr_lineGraph
 
 
 ..
