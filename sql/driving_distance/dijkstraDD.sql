@@ -34,7 +34,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-     'MODULE_PATHNAME', 'driving_many_to_dist'
+     '${MODULE_PATHNAME}', 'driving_many_to_dist'
  LANGUAGE c VOLATILE STRICT;
 
 

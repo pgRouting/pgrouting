@@ -42,6 +42,6 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT cost float)
 
   RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'contractGraph'
+ '${MODULE_PATHNAME}', 'contractGraph'
     LANGUAGE c VOLATILE;
 
