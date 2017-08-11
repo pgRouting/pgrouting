@@ -38,8 +38,8 @@ SET(LOCAL_FILES
     doc-pgr_drivingDistance.queries
     doc-pgr_maxFlow.queries
     doc-pgr_withPointsKSP.queries
-	doc-pgr_connectedComponentsV.queries
-    doc-pgr_strongComponentsV.queries
+	doc-pgr_connectedComponents.queries
+    doc-pgr_strongComponents.queries
 	doc-pgr_biconnectedComponents.queries
 	doc-pgr_articulationPoints.queries
 	doc-pgr_bridges.queries

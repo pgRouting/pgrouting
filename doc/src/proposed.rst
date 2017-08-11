@@ -140,9 +140,9 @@ Experimental and Proposed functions
 
 :ref:`components` - Analyze components within a graph
 
--  :ref:`pgr_connectedComponentsV` - Return the connected components of an undirected graph (Vertex version)
+-  :ref:`pgr_connectedComponents` - Return the connected components of an undirected graph
 
--  :ref:`pgr_strongComponentsV` - Return the strongly connected components of a directed graph (Vertex version)
+-  :ref:`pgr_strongComponents` - Return the strongly connected components of a directed graph
 
 -  :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph
 
@@ -163,7 +163,6 @@ Experimental and Proposed functions
   flow-family
   pgr_labelGraph
   components-family
-  VRP-category
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 

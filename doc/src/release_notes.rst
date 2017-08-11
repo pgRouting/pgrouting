@@ -78,8 +78,8 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_bdDijkstraCost(many to one)
 * pgr_bdDijkstraCost(many to many)
 * pgr_bdDijkstraCostMatrix
-* pgr_connectedComponentsV
-* pgr_strongComponentsV
+* pgr_connectedComponents
+* pgr_strongComponents
 * pgr_biconnectedComponents
 * pgr_articulationPoints
 * pgr_bridges

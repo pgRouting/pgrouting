@@ -7,13 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_connectedComponentsV:
+.. _pgr_connectedComponents:
 
-pgr_connectedComponentsV
+pgr_connectedComponents
 ===============================================================================
 
 
-``pgr_connectedComponentsV`` — Return the connected components of an undirected graph using a DFS-based approach.
+``pgr_connectedComponents`` — Return the connected components of an undirected graph using a DFS-based approach.
 In particular, the algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
@@ -48,7 +48,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_connectedComponentsV(edges_sql)
+    pgr_connectedComponents(edges_sql)
 
     RETURNS SET OF (seq, component, n_seq, node)
         OR EMPTY SET
@@ -57,7 +57,7 @@ The signature is for a **undirected** graph.
 
 :Example:
 
-.. literalinclude:: doc-pgr_connectedComponentsV.queries
+.. literalinclude:: doc-pgr_connectedComponents.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -85,7 +85,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Connected_component_%28graph_theory%29
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

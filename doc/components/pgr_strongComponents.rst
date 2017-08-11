@@ -7,12 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_strongComponentsV:
+.. _pgr_strongComponents:
 
-pgr_strongComponentsV
+pgr_strongComponents
 ===============================================================================
 
-``pgr_strongComponentsV`` — Return the strongly connected components of a directed graph using Tarjan's algorithm based on DFS.
+``pgr_strongComponents`` — Return the strongly connected components of a directed graph using Tarjan's algorithm based on DFS.
 In particular, the algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
@@ -47,7 +47,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_strongComponentsV(edges_sql)
+    pgr_strongComponents(edges_sql)
 
     RETURNS SET OF (seq, component, n_seq, node)
         OR EMPTY SET
@@ -56,7 +56,7 @@ The signature is for a **directed** graph.
 
 :Example:
 
-.. literalinclude:: doc-pgr_strongComponentsV.queries
+.. literalinclude:: doc-pgr_strongComponents.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -84,7 +84,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Strongly_connected_component
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

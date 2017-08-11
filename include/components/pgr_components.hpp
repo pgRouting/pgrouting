@@ -55,11 +55,11 @@ class Pgr_components {
      typedef typename G::E_i E_i;
 
      //! Connected Components Vertex Version
-     std::vector<pgr_components_rt> connectedComponentsV(
+     std::vector<pgr_components_rt> connectedComponents(
              G &graph);
 
      //! Strongly Connected Components Vertex Version
-     std::vector<pgr_components_rt> strongComponentsV(
+     std::vector<pgr_components_rt> strongComponents(
              G &graph);
 
      //! Biconnected Components
@@ -114,7 +114,7 @@ Pgr_components< G >::generate_results(
 //! Connected Components Vertex Version
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::connectedComponentsV(
+Pgr_components< G >::connectedComponents(
         G &graph) {
     size_t totalNodes = num_vertices(graph.graph);
 
@@ -134,7 +134,7 @@ Pgr_components< G >::connectedComponentsV(
 //! Strongly Connected Components Vertex Version
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::strongComponentsV(
+Pgr_components< G >::strongComponents(
         G &graph) {
     size_t totalNodes = num_vertices(graph.graph);
 

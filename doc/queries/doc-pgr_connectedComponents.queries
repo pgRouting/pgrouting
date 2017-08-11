@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_connectedComponentsV(
+SELECT * FROM pgr_connectedComponents(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
  seq | component | n_seq | node 
@@ -28,7 +28,7 @@ SELECT * FROM pgr_connectedComponentsV(
 (17 rows)
 
 -- q2
-SELECT * FROM pgr_connectedComponentsV(
+SELECT * FROM pgr_connectedComponents(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
  seq | component | n_seq | node 

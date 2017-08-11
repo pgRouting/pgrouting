@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: connectedComponentsV_driver.h
+File: strongComponents_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_COMPONENTS_CONNECTEDCOMPONENTSV_DRIVER_H_
-#define INCLUDE_DRIVERS_COMPONENTS_CONNECTEDCOMPONENTSV_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_COMPONENTS_STRONGCOMPONENTS_DRIVER_H_
+#define INCLUDE_DRIVERS_COMPONENTS_STRONGCOMPONENTS_DRIVER_H_
 #pragma once
 
 #include "c_types/pgr_edge_t.h"
@@ -46,7 +46,7 @@ extern "C" {
 
 
     void
-        do_pgr_connectedComponentsV(
+        do_pgr_strongComponents(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
                 pgr_components_rt **return_tuples,
@@ -60,4 +60,4 @@ extern "C" {
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_COMPONENTS_CONNECTEDCOMPONENTSV_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_COMPONENTS_STRONGCOMPONENTS_DRIVER_H_

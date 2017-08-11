@@ -14,8 +14,8 @@ Components - Family of functions
 
 .. index from here
 
-* :ref:`pgr_connectedComponentsV` - Return the connected components of an undirected graph (Vertex version).
-* :ref:`pgr_strongComponentsV` - Return the strongly connected components of a directed graph (Vertex version).
+* :ref:`pgr_connectedComponents` - Return the connected components of an undirected graph.
+* :ref:`pgr_strongComponents` - Return the strongly connected components of a directed graph.
 * :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph.
 * :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph.
 * :ref:`pgr_bridges` - Return the bridges of an undirected graph.
@@ -26,8 +26,8 @@ Components - Family of functions
 .. toctree::
     :hidden:
 
-    pgr_connectedComponentsV
-    pgr_strongComponentsV
+    pgr_connectedComponents
+    pgr_strongComponents
     pgr_biconnectedComponents
     pgr_articulationPoints
     pgr_bridges
@@ -407,7 +407,7 @@ Parameter           Type                   Default   Description
 
 .. return_componentsV_start
 
-Description of the return values for connected components (vertex version) and strongly connected components (vertex version)
+Description of the return values for connected components and strongly connected components
 .............................................................................................................................
 
 Returns set of ``(seq, component, n_seq, node)``
@@ -426,7 +426,7 @@ Column         Type       Description
 
 .. return_componentsE_start
 
-Description of the return values for biconnected components, connected components (edge version) and strongly connected components (edge version)
+Description of the return values for biconnected components, connected components (edge version) and strongly connected components
 .................................................................................................................................................
 
 Returns set of ``(seq, component, n_seq, edge)``

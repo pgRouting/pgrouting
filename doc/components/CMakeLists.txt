@@ -1,8 +1,8 @@
 
 SET(LOCAL_FILES
     components-family.rst
-	pgr_connectedComponentsV.rst
-	pgr_strongComponentsV.rst
+	pgr_connectedComponents.rst
+	pgr_strongComponents.rst
 	pgr_biconnectedComponents.rst
 	pgr_articulationPoints.rst
 	pgr_bridges.rst
