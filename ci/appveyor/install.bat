@@ -20,7 +20,7 @@ if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\
 
 :: for cmake its the min version
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
-if not defined PG_VERSION set PG_VERSION=2.3.1
+if not defined PG_VERSION set PG_VERSION=2.3.3
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 if not defined CGAL_VERSION set CGAL_VERSION=4.8.1
 
@@ -99,7 +99,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
         echo Downloading PostGIS %PG_VERSION%
         pushd %DOWNLOADS_DIR%
-        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/archive/postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
         popd
         if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
             echo something went wrong on PostGIS %PG_VERSION% download !!!!!!!!!
