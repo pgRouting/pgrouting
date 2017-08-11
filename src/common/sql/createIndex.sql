@@ -82,7 +82,7 @@ BEGIN
         execute query;
         EXCEPTION WHEN others THEN
           perform _pgr_onError( true, reportErrs, fnName,
-            'Could not create index on:' || cname, SQLERRM);
+            'Could not create index on:' || colname, SQLERRM);
       END;
       execute 'set client_min_messages  to '|| debuglevel;
       perform _pgr_msg(msgKind, fnName);
