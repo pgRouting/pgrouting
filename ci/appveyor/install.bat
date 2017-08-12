@@ -98,7 +98,7 @@ echo ====================================
 ::
 
 echo ==================================== POSTGIS
-if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
+if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\makepostgisdb_using_extensions.bat" (
     cd %APPVEYOR_BUILD_FOLDER%
     if not exist %DOWNLOADS_DIR%\postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip (
         echo Downloading PostGIS %PGIS_VERSION%
@@ -118,12 +118,12 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     popd
 
     echo **** Installing postGIS %PGIS_VERSION%
-    xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%w%arch%gcc%GCC% C:\Progra~1\PostgreSQL\9.4
+    xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%w%arch%gcc%GCC% C:\Progra~1\PostgreSQL\%PG_VER%
 
-    if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
+    if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\makepostgisdb_using_extensions.bat" (
         echo something went wrong on PostGIS %PGIS_VERSION% installation !!!!!!!!!
         if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
-        if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\9.4\
+        if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\%PG_VER%\
         Exit \B 1
     ) else (
         echo **** PostGIS %PGIS_VERSION% %arch% installed
