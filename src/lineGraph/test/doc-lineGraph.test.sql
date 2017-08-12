@@ -13,3 +13,9 @@ SELECT * FROM pgr_lineGraph(
 SELECT * FROM pgr_lineGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table255'
 );
+
+\echo -- q4
+SELECT * FROM pgr_lineGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table255',
+    FALSE
+);
