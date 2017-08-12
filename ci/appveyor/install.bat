@@ -33,6 +33,9 @@ if "%platform%"=="x64" (
 :: Determine if arch is 32/64 bits
 if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 
+:: Determine compiler used to build postgis
+if "%arch%"==64 (set GCC=48) else (set GCC=481)
+
 ::
 :: =========================================================
 
@@ -96,12 +99,12 @@ echo ====================================
 echo ==================================== POSTGIS
 if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     cd %APPVEYOR_BUILD_FOLDER%
-    if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48.zip (
+    if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip (
         echo Downloading PostGIS %PGIS_VERSION%
         pushd %DOWNLOADS_DIR%
-        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48.zip
+        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip
         popd
-        if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48.zip (
+        if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip (
             echo something went wrong on PostGIS %PGIS_VERSION% download !!!!!!!!!
             if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
             Exit \B 1
@@ -110,11 +113,11 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
 
     echo Extracting PostGIS %PGIS_VERSION%
     pushd %DOWNLOADS_DIR%
-    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48.zip
+    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip
     popd
 
     echo **** Installing postGIS %PGIS_VERSION%
-    xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
+    xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc%GCC% C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         echo something went wrong on PostGIS %PGIS_VERSION% installation !!!!!!!!!
