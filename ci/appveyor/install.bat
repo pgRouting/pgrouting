@@ -35,7 +35,7 @@ if "%platform%"=="x64" (
 if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 
 :: Determine compiler used to build postgis
-if "%arch%"==64 (set GCC=48) else (set GCC=481)
+if "%arch%"=="64" (set GCC=48) else (set GCC=481)
 
 ::
 :: =========================================================
