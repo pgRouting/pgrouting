@@ -20,7 +20,7 @@ if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\
 
 :: for cmake its the min version
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
-if not defined PG_VERSION set PG_VERSION=2.3.3
+if not defined PGIS_VERSION set PGIS_VERSION=2.3.3
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 if not defined CGAL_VERSION set CGAL_VERSION=4.8.1
 
@@ -96,36 +96,36 @@ echo ====================================
 echo ==================================== POSTGIS
 if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     cd %APPVEYOR_BUILD_FOLDER%
-    if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
-        echo Downloading PostGIS %PG_VERSION%
+    if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48.zip (
+        echo Downloading PostGIS %PGIS_VERSION%
         pushd %DOWNLOADS_DIR%
-        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48.zip
         popd
-        if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
-            echo something went wrong on PostGIS %PG_VERSION% download !!!!!!!!!
+        if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48.zip (
+            echo something went wrong on PostGIS %PGIS_VERSION% download !!!!!!!!!
             if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
             Exit \B 1
         )
     )
 
-    echo Extracting PostGIS %PG_VERSION%
+    echo Extracting PostGIS %PGIS_VERSION%
     pushd %DOWNLOADS_DIR%
-    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48.zip
     popd
 
-    echo **** Installing postGIS %PG_VERSION%
-    xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
+    echo **** Installing postGIS %PGIS_VERSION%
+    xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-pg94-binaries-%PGIS_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
-        echo something went wrong on PostGIS %PG_VERSION% installation !!!!!!!!!
+        echo something went wrong on PostGIS %PGIS_VERSION% installation !!!!!!!!!
         if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
         if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\9.4\
         Exit \B 1
     ) else (
-        echo **** PostGIS %PG_VERSION% %arch% installed
+        echo **** PostGIS %PGIS_VERSION% %arch% installed
     )
 ) else (
-    echo PostGIS %PG_VERSION% %arch% already installed
+    echo PostGIS %PGIS_VERSION% %arch% already installed
 )
 echo ====================================
 
