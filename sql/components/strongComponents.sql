@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: strongComponentsV.sql
+File: strongComponents.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_strongComponentsV(
+CREATE OR REPLACE FUNCTION pgr_strongComponents(
     TEXT,                       -- edges_sql
         OUT seq INTEGER,        -- seq
     OUT component BIGINT,       -- the lowest number of the node in the component
@@ -35,6 +35,6 @@ CREATE OR REPLACE FUNCTION pgr_strongComponentsV(
     OUT node BIGINT)            -- the number of the node
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'strongComponentsV'
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'strongComponents'
 LANGUAGE c IMMUTABLE STRICT;
 

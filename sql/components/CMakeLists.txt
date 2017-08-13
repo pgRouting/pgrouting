@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
-    connectedComponentsV.sql
-    strongComponentsV.sql
+    connectedComponents.sql
+    strongComponents.sql
     biconnectedComponents.sql
     articulationPoints.sql
     bridges.sql
