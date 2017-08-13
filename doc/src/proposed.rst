@@ -153,15 +153,14 @@ Experimental and Proposed functions
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
+.. rubric:: Graph Transformation
 
-.. rubric:: rewrite of pgr_TRSP
-
-- :ref:`pgr_dijkstraTRSP`
+:doc:`pgr_lineGraph`
 
 .. toctree::
   :hidden:
 
-  pgr_dijkstraTRSP
+  pgr_lineGraph
 
 
 ..
