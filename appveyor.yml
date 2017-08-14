@@ -25,6 +25,8 @@ environment:
   CONFIGURATION: Release
   MSVC_VER: 12.0
   BUILD_ROOT_DIR: c:\build
+  PGIS_VERSION: 2.3.3
+  PG_VER: 9.4
 
 init:
   - git config --global core.autocrlf false
@@ -39,17 +41,17 @@ install:
 
 build_script:
   - cd c:\build\pgrouting\ci\appveyor
-  - msbuild_pgrouting.bat 9.4 
+  - msbuild_pgrouting.bat %PG_VER% 
   - cd %PGROUTING_BUILD_DIR%
   - msbuild PGROUTING.sln /target:Build /property:Configuration=%CONFIGURATION%
   - msbuild INSTALL.vcxproj /target:Build /property:Configuration=%CONFIGURATION%
-  - copy c:\build\gmp\x64\lib\*.dll C:\Progra~1\PostgreSQL\9.4\bin\
+  - copy c:\build\gmp\x64\lib\*.dll C:\Progra~1\PostgreSQL\%PG_VER%\bin\
 
 test_script:
   - set PGUSER=postgres
   - set PGPASSWORD=Password12!
-  - set PGHOME=C:\Progra~1\PostgreSQL\9.4
+  - set PGHOME=C:\Progra~1\PostgreSQL\%PG_VER%
   - set PGPORT=5432
   - set PATH=%PATH%;%PGHOME%\bin
   # Execute algorithm test by Cygwin
-  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/9.4/bin/psql\""
+  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/%PG_VER%/bin/psql\""
