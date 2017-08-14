@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_4_2`
 * :ref:`changelog_2_4_1`
 * :ref:`changelog_2_4_0`
 * :ref:`changelog_2_3_2`
@@ -35,12 +36,33 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog end
 
+
+.. _changelog_2_4_2:
+
+pgRouting 2.4.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github.
+
+.. rubric:: Improvement
+
+* Works for postgreSQL 10
+
+.. rubric:: Bug fixes
+
+* Fixed: Unexpected error column "cname"
+* Replace __linux__ with __GLIBC__ for glibc-specific headers and functions
+
+
+
 .. _changelog_2_4_1:
 
 pgRouting 2.4.1 Release Notes
 -------------------------------------------------------------------------------
 
-.. rubric:: Bug fix
+To see the issues closed by this release see the `Git closed milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
 
 * Fixed compiling error on macOS
 * Condition error on pgr_withPoints
@@ -77,7 +99,7 @@ To see the issues closed by this release see the `Git closed issues for 2.4.0 <h
 
 * pgr_pointsToVids
 
-.. rubric:: Bug fix
+.. rubric:: Bug fixes
 
 * Bug fixes on proposed functions
 
@@ -353,7 +375,7 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 
 - Instead of generating many libraries:
   - All functions are encapsulated in one library
-  - The library has a the prefix 2-1-0
+  - The library has the prefix 2-1-0
 
 
 
@@ -380,8 +402,8 @@ With the release of pgRouting 2.0.0 the library has abandoned backwards compatib
 The main Goals for this release are:
 
 * Major restructuring of pgRouting.
-* Standardiziation of the function naming
-* Prepararation of the project for future development.
+* Standardization of the function naming
+* Preparation of the project for future development.
 
 As a result of this effort:
 
@@ -411,7 +433,7 @@ As a result of this effort:
 * Compatibility with PostgreSQL 9.1 or newer
 * Compatibility with PostGIS 2.0 or newer
 * Installs as PostgreSQL EXTENSION
-* Return types refactored and unified
+* Return types re factored and unified
 * Support for table SCHEMA in function parameters
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
@@ -432,27 +454,27 @@ The following release notes have been copied from the previous ``RELEASE_NOTES``
 Changes for release 1.05
 ...............................................................................
 
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.03
 ...............................................................................
 
 * Much faster topology creation
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.02
 ...............................................................................
 
-* Shooting* bugfixes
+* Shooting* bug fixes
 * Compilation problems solved
 
 
 Changes for release 1.01
 ...............................................................................
 
-* Shooting* bugfixes
+* Shooting* bug fixes
 
 
 Changes for release 1.0
@@ -460,14 +482,14 @@ Changes for release 1.0
 
 * Core and extra functions are separated
 * Cmake build process
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.0.0b
 ...............................................................................
 
 * Additional SQL file with more simple names for wrapper functions
-* Bugfixes
+* Bug fixes
 
 
 Changes for release 1.0.0a
@@ -481,7 +503,7 @@ Changes for release 0.9.9
 ...............................................................................
 
 * PostgreSQL 8.2 support
-* Shortest path functions return empty result if they couldn’t find any path
+* Shortest path functions return empty result if they could not find any path
 
 
 Changes for release 0.9.8
