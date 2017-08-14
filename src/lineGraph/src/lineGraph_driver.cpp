@@ -77,27 +77,45 @@ do_pgr_lineGraph(
 
         std::vector< Line_graph_rt > results;
         graphType gType = directed?DIRECTED:UNDIRECTED;
-        if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            digraph.m_num_vertices = 1000;
-            log << digraph << "\n";
 
-            pgrouting::LinearDirectedGraph line(gType);
-            line.insert_vertices(data_edges, total_edges);
-            auto line_graph_edges = line.transform(digraph);
-            line.create_virtual_vertices();
-
-            auto count = line_graph_edges.size();
-
-            if (count == 0) {
-                (*return_tuples) = NULL;
-                (*return_count) = 0;
-                notice <<
-                    "No paths found between start_vid and end_vid vertices";
-                return;
+        pgrouting::DirectedGraph digraph(gType);
+        digraph.insert_edges(data_edges, total_edges);
+        if (!directed) {
+            for (size_t ind = 0; ind < total_edges; ind++) {
+                std::swap(data_edges[ind].source, data_edges[ind].target);
+                data_edges[ind].id *= -1;
             }
 
+            digraph.insert_edges(data_edges, total_edges);
+
+            for (size_t ind = 0;ind < total_edges; ind++) {
+                std::swap(data_edges[ind].source, data_edges[ind].target);
+                data_edges[ind].id *= -1;
+            }
+        }
+
+        digraph.m_num_vertices = 1000;
+        log << digraph << "\n";
+
+        pgrouting::LinearDirectedGraph line(gType);
+        line.insert_vertices(data_edges, total_edges);
+        line.transform(digraph);
+
+        std::vector< Line_graph_rt > line_graph_edges;
+        if (directed) {
+            line_graph_edges = line.get_postgres_results_directed();
+        } else {
+            line_graph_edges = line.get_postgres_results_undirected();
+        }
+
+        auto count = line_graph_edges.size();
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice <<
+                "No paths found between start_vid and end_vid vertices";
+        } else {
             size_t sequence = 0;
 
             get_postgres_result(
@@ -106,9 +124,9 @@ do_pgr_lineGraph(
                 sequence
             );
             (*return_count) = sequence;
-            log << line.log.str().c_str() << "\n\n\n";
-            log << line << "\n";
         }
+        log << line.log.str().c_str() << "\n\n\n";
+        log << line << "\n";
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
