@@ -29,6 +29,10 @@ matrix:
       env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
 
 
+    - os: linux
+      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres
+
+
 
 
 # executed. So things have to be tested oe by one.
