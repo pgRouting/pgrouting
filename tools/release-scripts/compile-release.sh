@@ -43,7 +43,7 @@ if [[ "$1" == "4.8" ]]; then
     cd build
     make doc >> tmp_make.txt 
     echo "  - [x] Build Users documentation OK"
-    make doxy >> tmp_make.txty
+    make doxy >> tmp_make.txt
     echo "  - [x] Build developers documentation OK"
     cd ..
 fi

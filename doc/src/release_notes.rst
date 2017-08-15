@@ -60,7 +60,7 @@ To see the issues closed by this release see the `Git closed milestone for 2.4.2
 pgRouting 2.4.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github.
 
 .. rubric:: Bug fixes
 
