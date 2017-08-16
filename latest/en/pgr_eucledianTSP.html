@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>pgr_eucledianTSP &mdash; pgRouting Manual (2.4)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.1',
+        VERSION:     'v2.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -54,7 +51,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -175,7 +172,7 @@
 <span id="id1"></span><h1>pgr_eucledianTSP<a class="headerlink" href="#pgr-euclediantsp" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_eucledianTSP</span></tt> - Returns a route that visits all the coordinates pairs exactly once.</p>
+<p><code class="docutils literal"><span class="pre">pgr_eucledianTSP</span></code> - Returns a route that visits all the coordinates pairs exactly once.</p>
 <p class="rubric">Availability: 2.3.0</p>
 </div>
 <div class="section" id="synopsis">
@@ -190,7 +187,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql)
 pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
     max_processing_time,
@@ -205,7 +202,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql)
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
@@ -219,7 +216,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </table>
 <p>Because the documentation examples are auto generated and tested for non changing results,
 and the default is to have random execution, the example is wrapping the actual call.</p>
-<div class="highlight-python"><div class="highlight"><pre>WITH
+<div class="highlight-default"><div class="highlight"><pre><span></span>WITH
 query AS (
     SELECT * FROM pgr_eucledianTSP(
         $$
@@ -232,12 +229,13 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 18;
 ----------
  t
 (1 row)
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql,
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
     max_processing_time,
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
@@ -247,7 +245,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <p class="rubric">Example:</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT* from pgr_eucledianTSP(
+<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT* from pgr_eucledianTSP(
     $$
     SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
     $$,
@@ -276,6 +274,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
   17 |    2 |                1 | 17.7795767601752
   18 |    1 |                0 | 18.7795767601752
 (18 rows)
+
 </pre></div>
 </div>
 </div>
@@ -298,15 +297,15 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the coordinate. (optional)</td>
 </tr>
 <tr class="row-odd"><td><strong>x</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td>X value of the coordinate.</td>
 </tr>
 <tr class="row-even"><td><strong>y</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td>Y value of the coordinate.</td>
 </tr>
 </tbody>
@@ -332,52 +331,52 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>start_vid</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td><cite>0</cite></td>
 <td>The greedy part of the implementation will use this identifier.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td><cite>0</cite></td>
 <td>Last visiting vertex before returning to start_vid.</td>
 </tr>
 <tr class="row-even"><td><strong>max_processing_time</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td><cite>+infinity</cite></td>
 <td>Stop the annealing processing when the value is reached.</td>
 </tr>
 <tr class="row-odd"><td><strong>tries_per_temperature</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td><cite>500</cite></td>
 <td>Maximum number of times a neighbor(s) is searched in each temperature.</td>
 </tr>
 <tr class="row-even"><td><strong>max_changes_per_temperature</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td><cite>60</cite></td>
 <td>Maximum number of times the solution is changed in each temperature.</td>
 </tr>
 <tr class="row-odd"><td><strong>max_consecutive_non_changes</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td><cite>100</cite></td>
 <td>Maximum number of consecutive times the solution is not changed in each temperature.</td>
 </tr>
 <tr class="row-even"><td><strong>initial_temperature</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td><cite>100</cite></td>
 <td>Starting temperature.</td>
 </tr>
 <tr class="row-odd"><td><strong>final_temperature</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td><cite>0.1</cite></td>
 <td>Ending temperature.</td>
 </tr>
 <tr class="row-even"><td><strong>cooling_factor</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td><cite>0.9</cite></td>
 <td>Value between between 0 and 1 (not including) used to calculate the next temperature.</td>
 </tr>
 <tr class="row-odd"><td><strong>randomize</strong></td>
-<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
 <td><cite>true</cite></td>
 <td><p class="first">Choose the random seed</p>
 <ul class="last simple">
@@ -391,7 +390,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </div>
 <div class="section" id="description-of-the-return-values">
 <h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
+<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -406,30 +405,30 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td>Row sequence.</td>
 </tr>
 <tr class="row-odd"><td><strong>node</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the node/coordinate/point.</td>
 </tr>
 <tr class="row-even"><td><strong>cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Cost to traverse from the current <tt class="docutils literal"><span class="pre">node</span></tt> ito the next <tt class="docutils literal"><span class="pre">node</span></tt> in the path sequence.</dt>
+<dt>Cost to traverse from the current <code class="docutils literal"><span class="pre">node</span></code> ito the next <code class="docutils literal"><span class="pre">node</span></code> in the path sequence.</dt>
 <dd><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">0</span></tt> for the last row in the path sequence.</li>
+<li><code class="docutils literal"><span class="pre">0</span></code> for the last row in the path sequence.</li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>agg_cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Aggregate cost from the <tt class="docutils literal"><span class="pre">node</span></tt> at <tt class="docutils literal"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></tt> to the current node.</dt>
+<dt>Aggregate cost from the <code class="docutils literal"><span class="pre">node</span></code> at <code class="docutils literal"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to the current node.</dt>
 <dd><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">0</span></tt> for the first row in the path sequence.</li>
+<li><code class="docutils literal"><span class="pre">0</span></code> for the first row in the path sequence.</li>
 </ul>
 </dd>
 </dl>
@@ -449,7 +448,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SET client_min_messages TO DEBUG1;
+<div class="highlight-default"><div class="highlight"><pre><span></span>SET client_min_messages TO DEBUG1;
 SET
 SELECT* from pgr_eucledianTSP(
     $$
@@ -488,9 +487,10 @@ Best cost reached = 18.7796
   17 |    2 |                1 | 17.7795767601752
   18 |    1 |                0 | 18.7795767601752
 (18 rows)
+
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>New in version 2.3.0</li>
@@ -499,7 +499,7 @@ Best cost reached = 18.7796
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="TSP-family.html#tsp"><em>Traveling Sales Person - Family of functions</em></a></li>
+<li><a class="reference internal" href="TSP-family.html#tsp"><span class="std std-ref">Traveling Sales Person - Family of functions</span></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">http://en.wikipedia.org/wiki/Traveling_salesman_problem</a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a></li>
 </ul>
@@ -518,9 +518,9 @@ Best cost reached = 18.7796
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.1.<br/>
-      Last updated on Mar 24, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
+      Last updated on Aug 15, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

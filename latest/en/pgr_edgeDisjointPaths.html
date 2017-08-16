@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>pgr_edgeDisjointPaths - Proposed &mdash; pgRouting Manual (2.4)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.1',
+        VERSION:     'v2.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -54,7 +51,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -177,7 +174,7 @@
 <span id="pgr-edgedisjointpaths"></span><h1>pgr_edgeDisjointPaths - Proposed<a class="headerlink" href="#pgr-edgedisjointpaths-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_edgeDisjointPaths</span></tt> — Calculates edge disjoint paths between two groups of vertices.</p>
+<p><code class="docutils literal"><span class="pre">pgr_edgeDisjointPaths</span></code> — Calculates edge disjoint paths between two groups of vertices.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>These are proposed functions</p>
@@ -200,9 +197,9 @@
 </li>
 </ul>
 </div>
-<div class="figure">
+<div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption">Boost Graph Inside</p>
+<p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 </div>
 <div class="section" id="synopsis">
@@ -219,7 +216,7 @@ Utilizes underlying maximum flow algorithms to calculate the paths.</p>
 <li>Returns EMPTY SET when source and destination are the same, or cannot be reached.</li>
 <li>The graph can be directed or undirected.</li>
 <li>One to many, many to one, many to many versions are also supported.</li>
-<li>Uses <a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> to calculate the paths.</li>
+<li>Uses <a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><span class="std std-ref">pgr_maxFlowBoykovKolmogorov - Proposed</span></a> to calculate the paths.</li>
 <li>No <cite>cost</cite> or <cite>aggregate cost</cite> of the paths are returned. (Under discussion)</li>
 </ul>
 </dd>
@@ -227,7 +224,7 @@ Utilizes underlying maximum flow algorithms to calculate the paths.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
 pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
 pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex, directed)
 pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
@@ -241,7 +238,7 @@ RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge) OR EMPTY SET
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
 RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
 </pre></div>
 </div>
@@ -254,19 +251,20 @@ RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
-    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
-    3, 5
-);
- seq | path_seq | node | edge 
------+----------+------+------
-   1 |        1 |    3 |    2
-   2 |        2 |    2 |    4
-   3 |        3 |    5 |   -1
-   4 |        1 |    3 |    5
-   5 |        2 |    6 |    8
-   6 |        3 |    5 |   -1
-(6 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> 
+<span class="o">-----+----------+------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -274,7 +272,7 @@ RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
 <span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <p>The available signature calculates edge disjoint paths from one source vertex to one destination vertex.
 The graph can be directed or undirected.</p>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
 RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
 </pre></div>
 </div>
@@ -286,34 +284,35 @@ RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
-    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
-    3, 5,
-    directed := false
-);
- seq | path_seq | node | edge 
------+----------+------+------
-   1 |        1 |    3 |    2
-   2 |        2 |    2 |    4
-   3 |        3 |    5 |   -1
-   4 |        1 |    3 |    3
-   5 |        2 |    4 |   16
-   6 |        3 |    9 |    9
-   7 |        4 |    6 |    8
-   8 |        5 |    5 |   -1
-   9 |        1 |    3 |    5
-  10 |        2 |    6 |   11
-  11 |        3 |   11 |   12
-  12 |        4 |   10 |   10
-  13 |        5 |    5 |   -1
-(13 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> 
+<span class="o">-----+----------+------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">16</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span>
+  <span class="mi">13</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">13</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="one-to-many">
 <span id="index-2"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <p>The available signature calculates the maximum flow from one source vertex to many sink vertices.</p>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
 RETURNS SET OF (seq, path_seq, end_vid, node, edge) OR EMPTY SET
 </pre></div>
 </div>
@@ -325,26 +324,27 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge) OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
-    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
-    3, ARRAY[4, 5, 10]
-);
- seq | path_seq | end_vid | node | edge 
------+----------+---------+------+------
-   1 |        1 |       5 |    3 |    2
-   2 |        2 |       5 |    2 |    4
-   3 |        3 |       5 |    5 |   -1
-   4 |        1 |       5 |    3 |    5
-   5 |        2 |       5 |    6 |    8
-   6 |        3 |       5 |    5 |   -1
-(6 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> 
+<span class="o">-----+----------+---------+------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="many-to-one">
 <span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <p>The available signature calculates the maximum flow from many source vertices to one sink vertex.</p>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex)
 RETURNS SET OF (seq, path_seq, start_vid, node, edge)
   OR EMPTY SET
 </pre></div>
@@ -357,25 +357,26 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge)
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
-    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
-    ARRAY[3, 6], 5
-);
- seq | path_seq | start_vid | node | edge 
------+----------+-----------+------+------
-   1 |        1 |         3 |    3 |    2
-   2 |        2 |         3 |    2 |    4
-   3 |        3 |         3 |    5 |   -1
-   4 |        1 |         6 |    6 |    8
-   5 |        2 |         6 |    5 |   -1
-(5 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="mi">5</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> 
+<span class="o">-----+----------+-----------+------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="many-to-many">
 <span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <p>The available signature calculates the maximum flow from many sources to many sinks.</p>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertices, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertices, directed)
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
 </pre></div>
 </div>
@@ -387,21 +388,22 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
-    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
-    ARRAY[3, 6], ARRAY[4, 5, 10]
-);
- seq | path_seq | start_vid | end_vid | node | edge 
------+----------+-----------+---------+------+------
-   1 |        1 |         3 |       5 |    3 |    2
-   2 |        2 |         3 |       5 |    2 |    4
-   3 |        3 |         3 |       5 |    5 |   -1
-   4 |        1 |         6 |       5 |    6 |    8
-   5 |        2 |         6 |       5 |    5 |   -1
-   6 |        1 |         6 |       4 |    6 |    9
-   7 |        2 |         6 |       4 |    9 |   16
-   8 |        3 |         6 |       4 |    4 |   -1
-(8 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> 
+<span class="o">-----+----------+-----------+---------+------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -432,23 +434,23 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>going</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERIC</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERIC</span></code></td>
 <td>A positive value represents the existence of the edge (source, target).</td>
 </tr>
 <tr class="row-even"><td><strong>coming</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERIC</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERIC</span></code></td>
 <td>A positive value represents the existence of the edge (target, source).</td>
 </tr>
 </tbody>
@@ -494,19 +496,19 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
 <td>SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>source_vertex</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier(s) of the source vertex(vertices).</td>
 </tr>
 <tr class="row-even"><td><strong>sink_vertex</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier(s) of the destination vertex(vertices).</td>
 </tr>
 <tr class="row-odd"><td><strong>directed</strong></td>
-<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
 <td>(optional) Determines the type of the graph. Default TRUE.</td>
 </tr>
 </tbody>
@@ -528,35 +530,35 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><tt class="docutils literal"><span class="pre">INT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INT</span></code></td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
 <tr class="row-odd"><td><strong>path_seq</strong></td>
-<td><tt class="docutils literal"><span class="pre">INT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INT</span></code></td>
 <td>Relative position in the path. Has value <strong>1</strong> for the beginning of a path.</td>
 </tr>
 <tr class="row-even"><td><strong>start_vid</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the starting vertex. Used when multiple starting vertices are in the query.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the ending vertex. Used when multiple ending vertices are in the query.</td>
 </tr>
 <tr class="row-even"><td><strong>node</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
-<td>Identifier of the node in the path from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">end_vid</span></tt>.</td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td>Identifier of the node in the path from <code class="docutils literal"><span class="pre">start_vid</span></code> to <code class="docutils literal"><span class="pre">end_vid</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><strong>edge</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
-<td>Identifier of the edge used to go from <tt class="docutils literal"><span class="pre">node</span></tt> to the next node in the path sequence. <tt class="docutils literal"><span class="pre">-1</span></tt> for the last node of the path.</td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td>Identifier of the edge used to go from <code class="docutils literal"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal"><span class="pre">-1</span></code> for the last node of the path.</td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -574,9 +576,9 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.1.<br/>
-      Last updated on Mar 24, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
+      Last updated on Aug 15, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

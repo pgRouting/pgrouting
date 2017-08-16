@@ -5,6 +5,25 @@
  * Sphinx stylesheet -- Bootstrap theme.
  */
 
+/*
+ * Imports to aggregate everything together.
+ */
+
+@import url("./basic.css");
+
+
+  
+
+
+
+    @import url("./bootstrap-3.3.6/css/bootstrap.min.css");
+    @import url("./bootstrap-3.3.6/css/bootstrap-theme.min.css");
+
+
+/*
+ * Styles
+ */
+
 .navbar-inverse .brand {
   color: #FFF;
 }
@@ -78,6 +97,7 @@ a.footnote-reference {
 }
 
 table.footnote td.label {
+  color: inherit;
   font-size: 100%;
   display: block;
   line-height: normal;

@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>pgr_gsoc_vrppdtw - Proposed &mdash; pgRouting Manual (2.4)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.1',
+        VERSION:     'v2.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -54,7 +51,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -173,7 +170,7 @@
 <span id="pgr-gsocvrppdtw"></span><h1>pgr_gsoc_vrppdtw - Proposed<a class="headerlink" href="#pgr-gsoc-vrppdtw-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></tt> — Returns a solution for <cite>Pick and Delivery</cite> with <cite>time windows</cite> Vehicle Routing Problem</p>
+<p><code class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></code> — Returns a solution for <cite>Pick and Delivery</cite> with <cite>time windows</cite> Vehicle Routing Problem</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>These are proposed functions</p>
@@ -199,7 +196,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
 RETURNS SET OF pgr_costResult[]:
 </pre></div>
 </div>
@@ -208,27 +205,28 @@ RETURNS SET OF pgr_costResult[]:
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="complete-signature">
 <span id="index-0"></span><h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
 Returns set of pgr_costResult[]:
 </pre></div>
 </div>
 <p class="rubric">Example: Show the id1</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT DISTINCT(id1) FROM pgr_gsoc_vrppdtw(
-    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200)
-ORDER BY id1;
- id1 
------
-   1
-   2
-   3
-   4
-   5
-   6
-   7
-   8
-   9
-  10
-(10 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">id1</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">id1</span><span class="p">;</span>
+ <span class="n">id1</span> 
+<span class="o">-----</span>
+   <span class="mi">1</span>
+   <span class="mi">2</span>
+   <span class="mi">3</span>
+   <span class="mi">4</span>
+   <span class="mi">5</span>
+   <span class="mi">6</span>
+   <span class="mi">7</span>
+   <span class="mi">8</span>
+   <span class="mi">9</span>
+  <span class="mi">10</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -251,23 +249,23 @@ ORDER BY id1;
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td><p class="first">Identifier of the customer.</p>
 <ul class="last simple">
-<li>A value of <tt class="docutils literal"><span class="pre">0</span></tt> identifies the starting location</li>
+<li>A value of <code class="docutils literal"><span class="pre">0</span></code> identifies the starting location</li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>x</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">X</span></tt> coordinate of the location.</td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal"><span class="pre">X</span></code> coordinate of the location.</td>
 </tr>
 <tr class="row-even"><td><strong>y</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">Y</span></tt> coordinate of the location.</td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal"><span class="pre">Y</span></code> coordinate of the location.</td>
 </tr>
 <tr class="row-odd"><td><strong>demand</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td><p class="first">How much is added / removed from the vehicle.</p>
 <ul class="last simple">
 <li>Negative value is a delivery,</li>
@@ -276,23 +274,23 @@ ORDER BY id1;
 </td>
 </tr>
 <tr class="row-even"><td><strong>openTime</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>The time relative to 0, when the customer opens.</td>
 </tr>
 <tr class="row-odd"><td><strong>closeTime</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>The time relative to 0, when the customer closes.</td>
 </tr>
 <tr class="row-even"><td><strong>serviceTime</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>The duration of the loading / unloading.</td>
 </tr>
 <tr class="row-odd"><td><strong>pIndex</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Value used when the current customer is a Delivery to find the corresponding Pickup</td>
 </tr>
 <tr class="row-even"><td><strong>dIndex</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Value used when the current customer is a Pickup to find the corresponding Delivery</td>
 </tr>
 </tbody>
@@ -314,15 +312,15 @@ ORDER BY id1;
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>sql</strong></td>
-<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
 <td>SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>vehicle_num</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td>Maximum number of vehicles in the result. (currently is ignored)</td>
 </tr>
 <tr class="row-even"><td><strong>capacity</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td>Capacity of the vehicle.</td>
 </tr>
 </tbody>
@@ -345,23 +343,23 @@ ORDER BY id1;
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
 <tr class="row-odd"><td><strong>id1</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td>Current vehicle identifier.</td>
 </tr>
 <tr class="row-even"><td><strong>id2</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
 <td>Customer identifier.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Previous <tt class="docutils literal"><span class="pre">cost</span></tt> plus <cite>travel time</cite> plus <cite>wait time</cite> plus <cite>service time</cite>.</dt>
+<dt>Previous <code class="docutils literal"><span class="pre">cost</span></code> plus <cite>travel time</cite> plus <cite>wait time</cite> plus <cite>service time</cite>.</dt>
 <dd><ul class="first last simple">
-<li>when <tt class="docutils literal"><span class="pre">id2</span> <span class="pre">=</span> <span class="pre">0</span></tt> for the second time for the same <tt class="docutils literal"><span class="pre">id1</span></tt>, then has the total time for the current <tt class="docutils literal"><span class="pre">id1</span></tt></li>
+<li>when <code class="docutils literal"><span class="pre">id2</span> <span class="pre">=</span> <span class="pre">0</span></code> for the second time for the same <code class="docutils literal"><span class="pre">id1</span></code>, then has the total time for the current <code class="docutils literal"><span class="pre">id1</span></code></li>
 </ul>
 </dd>
 </dl>
@@ -374,70 +372,72 @@ ORDER BY id1;
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Example: Total number of rows returned</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT count(*) FROM pgr_gsoc_vrppdtw(
-    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200);
- count 
--------
-   126
-(1 row)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+ <span class="n">count</span> 
+<span class="o">-------</span>
+   <span class="mi">126</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
 </pre></div>
 </div>
 <p class="rubric">Example: Results for only id1 values: 1, 5, and 9</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_gsoc_vrppdtw(
-    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200)
-    WHERE id1 in (1, 5, 9);
- seq | id1 | id2 |       cost       
------+-----+-----+------------------
-   1 |   1 |   0 |                0
-   2 |   1 |   5 | 105.132745950422
-   3 |   1 |   3 | 196.132745950422
-   4 |   1 |   7 | 288.132745950422
-   5 |   1 |   8 | 380.961173075168
-   6 |   1 |  10 | 474.566724350632
-   7 |   1 |  11 | 567.566724350632
-   8 |   1 |   9 |   660.7290020108
-   9 |   1 |   6 |   752.9650699883
-  10 |   1 |   4 |   845.2011379658
-  11 |   1 |   2 | 938.806689241264
-  12 |   1 |   1 | 1030.80668924126
-  13 |   1 |  75 | 1123.80668924126
-  14 |   1 |   0 | 1139.61807754211
-  51 |   5 |   0 |                0
-  52 |   5 |  43 | 106.552945357247
-  53 |   5 |  42 | 199.552945357247
-  54 |   5 |  41 | 291.552945357247
-  55 |   5 |  40 | 383.552945357247
-  56 |   5 |  44 | 476.552945357247
-  57 |   5 |  46 | 569.381372481993
-  58 |   5 |  45 | 661.381372481993
-  59 |   5 |  48 | 753.381372481993
-  60 |   5 |  51 | 756.381372481993
-  61 |   5 | 101 | 846.381372481993
-  62 |   5 |  50 | 938.617440459493
-  63 |   5 |  52 | 1031.77971811966
-  64 |   5 |  49 | 1124.77971811966
-  65 |   5 |  47 | 1216.77971811966
-  66 |   5 |   0 | 1234.80747449698
- 103 |   9 |   0 |                0
- 104 |   9 |  90 | 110.615528128088
- 105 |   9 |  87 | 205.615528128088
- 106 |   9 |  86 | 296.615528128088
- 107 |   9 |  83 | 392.615528128088
- 108 |   9 |  82 | 485.615528128088
- 109 |   9 |  84 | 581.446480022934
- 110 |   9 |  85 |  674.27490714768
- 111 |   9 |  88 |  767.27490714768
- 112 |   9 |  89 | 860.103334272426
- 113 |   9 |  91 |  953.70888554789
- 114 |   9 |   0 | 976.069565322888
-(42 rows)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">WHERE</span> <span class="n">id1</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span>       <span class="n">cost</span>       
+<span class="o">-----+-----+-----+------------------</span>
+   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="mf">105.132745950422</span>
+   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mf">196.132745950422</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span> <span class="mf">288.132745950422</span>
+   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="mf">380.961173075168</span>
+   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="mf">474.566724350632</span>
+   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="mf">567.566724350632</span>
+   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mf">660.7290020108</span>
+   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mf">752.9650699883</span>
+  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mf">845.2011379658</span>
+  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mf">938.806689241264</span>
+  <span class="mi">12</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mf">1030.80668924126</span>
+  <span class="mi">13</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">75</span> <span class="o">|</span> <span class="mf">1123.80668924126</span>
+  <span class="mi">14</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">1139.61807754211</span>
+  <span class="mi">51</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
+  <span class="mi">52</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">43</span> <span class="o">|</span> <span class="mf">106.552945357247</span>
+  <span class="mi">53</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">42</span> <span class="o">|</span> <span class="mf">199.552945357247</span>
+  <span class="mi">54</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">41</span> <span class="o">|</span> <span class="mf">291.552945357247</span>
+  <span class="mi">55</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">40</span> <span class="o">|</span> <span class="mf">383.552945357247</span>
+  <span class="mi">56</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">44</span> <span class="o">|</span> <span class="mf">476.552945357247</span>
+  <span class="mi">57</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">46</span> <span class="o">|</span> <span class="mf">569.381372481993</span>
+  <span class="mi">58</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">45</span> <span class="o">|</span> <span class="mf">661.381372481993</span>
+  <span class="mi">59</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">48</span> <span class="o">|</span> <span class="mf">753.381372481993</span>
+  <span class="mi">60</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">51</span> <span class="o">|</span> <span class="mf">756.381372481993</span>
+  <span class="mi">61</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="mi">101</span> <span class="o">|</span> <span class="mf">846.381372481993</span>
+  <span class="mi">62</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">50</span> <span class="o">|</span> <span class="mf">938.617440459493</span>
+  <span class="mi">63</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">52</span> <span class="o">|</span> <span class="mf">1031.77971811966</span>
+  <span class="mi">64</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">49</span> <span class="o">|</span> <span class="mf">1124.77971811966</span>
+  <span class="mi">65</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">47</span> <span class="o">|</span> <span class="mf">1216.77971811966</span>
+  <span class="mi">66</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">1234.80747449698</span>
+ <span class="mi">103</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
+ <span class="mi">104</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">90</span> <span class="o">|</span> <span class="mf">110.615528128088</span>
+ <span class="mi">105</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">87</span> <span class="o">|</span> <span class="mf">205.615528128088</span>
+ <span class="mi">106</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">86</span> <span class="o">|</span> <span class="mf">296.615528128088</span>
+ <span class="mi">107</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">83</span> <span class="o">|</span> <span class="mf">392.615528128088</span>
+ <span class="mi">108</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">82</span> <span class="o">|</span> <span class="mf">485.615528128088</span>
+ <span class="mi">109</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">84</span> <span class="o">|</span> <span class="mf">581.446480022934</span>
+ <span class="mi">110</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">85</span> <span class="o">|</span>  <span class="mf">674.27490714768</span>
+ <span class="mi">111</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">88</span> <span class="o">|</span>  <span class="mf">767.27490714768</span>
+ <span class="mi">112</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">89</span> <span class="o">|</span> <span class="mf">860.103334272426</span>
+ <span class="mi">113</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">91</span> <span class="o">|</span>  <span class="mf">953.70888554789</span>
+ <span class="mi">114</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">976.069565322888</span>
+<span class="p">(</span><span class="mi">42</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The examples use <a class="reference internal" href="sampledata.html#pickdeliverdata"><em>Pick &amp; Deliver Data</em></a></li>
+<li>The examples use <a class="reference internal" href="sampledata.html#pickdeliverdata"><span class="std std-ref">Pick &amp; Deliver Data</span></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
 </ul>
 </div>
@@ -455,9 +455,9 @@ ORDER BY id1;
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.1.<br/>
-      Last updated on Mar 24, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
+      Last updated on Aug 15, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>
