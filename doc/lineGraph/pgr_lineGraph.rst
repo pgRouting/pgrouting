@@ -30,9 +30,6 @@ Given a graph G, its line graph L(G) is a graph such that:-
    - two vertices of L(G) are adjacent if and only if their corresponding edges
      share a common endpoint in G.
 
-The current implementation only works for the `directed graph`.
-
-
 The following figures show a graph (left, with blue vertices) and its
 Line Graph (right, with green vertices).
 
