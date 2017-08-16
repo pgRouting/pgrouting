@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
     RETURNS SETOF record
-    AS 'MODULE_PATHNAME', 'alphashape'
+    AS '${MODULE_PATHNAME}', 'alphashape'
     LANGUAGE c VOLATILE;
 
 /*

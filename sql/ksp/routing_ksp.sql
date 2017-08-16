@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_ksp(edges_sql text, start_vid bigint, end_vid bigint, k integer, directed boolean, heap_paths boolean,
   OUT seq integer, OUT path_id integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
-    'MODULE_PATHNAME', 'kshortest_path'
+    '${MODULE_PATHNAME}', 'kshortest_path'
     LANGUAGE c STABLE STRICT;
 
 -- V2 the graph is directed and there are no heap paths
