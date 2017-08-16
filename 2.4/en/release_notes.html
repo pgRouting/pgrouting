@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Release Notes &mdash; pgRouting Manual (2.4)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.1',
+        VERSION:     'v2.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -39,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -52,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -95,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Release Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a></li>
 </ul>
 </ul>
 </li>
@@ -110,6 +107,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Release Notes</a><ul>
+<li><a class="reference internal" href="#pgrouting-2-4-2-release-notes">pgRouting 2.4.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-4-1-release-notes">pgRouting 2.4.1 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-4-0-release-notes">pgRouting 2.4.0 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-3-2-release-notes">pgRouting 2.3.2 Release Notes</a></li>
@@ -179,24 +177,39 @@
 <p>To see the full list of changes check the list of <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> on Github.</p>
 <p class="rubric">Table of contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#changelog-2-4-1"><em>pgRouting 2.4.1 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-4-0"><em>pgRouting 2.4.0 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-3-2"><em>pgRouting 2.3.2 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-3-1"><em>pgRouting 2.3.1 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-3-0"><em>pgRouting 2.3.0 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-2-4"><em>pgRouting 2.2.4 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-2-3"><em>pgRouting 2.2.3 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-2-2"><em>pgRouting 2.2.2 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-2-1"><em>pgRouting 2.2.1 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-2-0"><em>pgRouting 2.2.0 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-1-0"><em>pgRouting 2.1.0 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-0-1"><em>pgRouting 2.0.1 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-2-0-0"><em>pgRouting 2.0.0 Release Notes</em></a></li>
-<li><a class="reference internal" href="#changelog-1-x"><em>pgRouting 1.x Release Notes</em></a></li>
+<li><a class="reference internal" href="#changelog-2-4-2"><span class="std std-ref">pgRouting 2.4.2 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-4-1"><span class="std std-ref">pgRouting 2.4.1 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-4-0"><span class="std std-ref">pgRouting 2.4.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-3-2"><span class="std std-ref">pgRouting 2.3.2 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-3-1"><span class="std std-ref">pgRouting 2.3.1 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-3-0"><span class="std std-ref">pgRouting 2.3.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-4"><span class="std std-ref">pgRouting 2.2.4 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-3"><span class="std std-ref">pgRouting 2.2.3 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-2"><span class="std std-ref">pgRouting 2.2.2 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-1"><span class="std std-ref">pgRouting 2.2.1 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-2-0"><span class="std std-ref">pgRouting 2.2.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-1-0"><span class="std std-ref">pgRouting 2.1.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-0-1"><span class="std std-ref">pgRouting 2.0.1 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-0-0"><span class="std std-ref">pgRouting 2.0.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x Release Notes</span></a></li>
 </ul>
+<div class="section" id="pgrouting-2-4-2-release-notes">
+<span id="changelog-2-4-2"></span><h2>pgRouting 2.4.2 Release Notes<a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.2%22%20">Git closed milestone for 2.4.2</a> on Github.</p>
+<p class="rubric">Improvement</p>
+<ul class="simple">
+<li>Works for postgreSQL 10</li>
+</ul>
+<p class="rubric">Bug fixes</p>
+<ul class="simple">
+<li>Fixed: Unexpected error column &#8220;cname&#8221;</li>
+<li>Replace __linux__ with __GLIBC__ for glibc-specific headers and functions</li>
+</ul>
+</div>
 <div class="section" id="pgrouting-2-4-1-release-notes">
 <span id="changelog-2-4-1"></span><h2>pgRouting 2.4.1 Release Notes<a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Bug fix</p>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.1%22%20">Git closed milestone for 2.4.1</a> on Github.</p>
+<p class="rubric">Bug fixes</p>
 <ul class="simple">
 <li>Fixed compiling error on macOS</li>
 <li>Condition error on pgr_withPoints</li>
@@ -229,7 +242,7 @@
 <ul class="simple">
 <li>pgr_pointsToVids</li>
 </ul>
-<p class="rubric">Bug fix</p>
+<p class="rubric">Bug fixes</p>
 <ul class="simple">
 <li>Bug fixes on proposed functions<ul>
 <li>pgr_withPointsKSP: fixed ordering</li>
@@ -467,7 +480,7 @@
 </li>
 <li>Instead of generating many libraries:
 - All functions are encapsulated in one library
-- The library has a the prefix 2-1-0</li>
+- The library has the prefix 2-1-0</li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-0-1-release-notes">
@@ -481,12 +494,12 @@
 <div class="section" id="pgrouting-2-0-0-release-notes">
 <span id="changelog-2-0-0"></span><h2>pgRouting 2.0.0 Release Notes<a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed">Git closed issues for 2.0.0</a> on Github.</p>
-<p>With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to <a class="reference internal" href="#changelog-1-x"><em>pgRouting 1.x</em></a> releases.
+<p>With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to <a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x</span></a> releases.
 The main Goals for this release are:</p>
 <ul class="simple">
 <li>Major restructuring of pgRouting.</li>
-<li>Standardiziation of the function naming</li>
-<li>Prepararation of the project for future development.</li>
+<li>Standardization of the function naming</li>
+<li>Preparation of the project for future development.</li>
 </ul>
 <p>As a result of this effort:</p>
 <ul class="simple">
@@ -515,10 +528,10 @@ The main Goals for this release are:</p>
 <li>Compatibility with PostgreSQL 9.1 or newer</li>
 <li>Compatibility with PostGIS 2.0 or newer</li>
 <li>Installs as PostgreSQL EXTENSION</li>
-<li>Return types refactored and unified</li>
+<li>Return types re factored and unified</li>
 <li>Support for table SCHEMA in function parameters</li>
-<li>Support for <tt class="docutils literal"><span class="pre">st_</span></tt> PostGIS function prefix</li>
-<li>Added <tt class="docutils literal"><span class="pre">pgr_</span></tt> prefix to functions and types</li>
+<li>Support for <code class="docutils literal"><span class="pre">st_</span></code> PostGIS function prefix</li>
+<li>Added <code class="docutils literal"><span class="pre">pgr_</span></code> prefix to functions and types</li>
 <li>Better documentation: <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></li>
 <li>shooting_star is discontinued</li>
 </ul>
@@ -526,31 +539,31 @@ The main Goals for this release are:</p>
 <div class="section" id="pgrouting-1-x-release-notes">
 <span id="changelog-1-x"></span><h2>pgRouting 1.x Release Notes<a class="headerlink" href="#pgrouting-1-x-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed">Git closed issues for 1.x</a> on Github.
-The following release notes have been copied from the previous <tt class="docutils literal"><span class="pre">RELEASE_NOTES</span></tt> file and are kept as a reference.</p>
+The following release notes have been copied from the previous <code class="docutils literal"><span class="pre">RELEASE_NOTES</span></code> file and are kept as a reference.</p>
 <div class="section" id="changes-for-release-1-05">
 <h3>Changes for release 1.05<a class="headerlink" href="#changes-for-release-1-05" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Bugfixes</li>
+<li>Bug fixes</li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-03">
 <h3>Changes for release 1.03<a class="headerlink" href="#changes-for-release-1-03" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Much faster topology creation</li>
-<li>Bugfixes</li>
+<li>Bug fixes</li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-02">
 <h3>Changes for release 1.02<a class="headerlink" href="#changes-for-release-1-02" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Shooting* bugfixes</li>
+<li>Shooting* bug fixes</li>
 <li>Compilation problems solved</li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-01">
 <h3>Changes for release 1.01<a class="headerlink" href="#changes-for-release-1-01" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Shooting* bugfixes</li>
+<li>Shooting* bug fixes</li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0">
@@ -558,14 +571,14 @@ The following release notes have been copied from the previous <tt class="docuti
 <ul class="simple">
 <li>Core and extra functions are separated</li>
 <li>Cmake build process</li>
-<li>Bugfixes</li>
+<li>Bug fixes</li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0-0b">
 <h3>Changes for release 1.0.0b<a class="headerlink" href="#changes-for-release-1-0-0b" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Additional SQL file with more simple names for wrapper functions</li>
-<li>Bugfixes</li>
+<li>Bug fixes</li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0-0a">
@@ -579,7 +592,7 @@ The following release notes have been copied from the previous <tt class="docuti
 <h3>Changes for release 0.9.9<a class="headerlink" href="#changes-for-release-0-9-9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>PostgreSQL 8.2 support</li>
-<li>Shortest path functions return empty result if they couldn’t find any path</li>
+<li>Shortest path functions return empty result if they could not find any path</li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-0-9-8">
@@ -605,9 +618,9 @@ The following release notes have been copied from the previous <tt class="docuti
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.1.<br/>
-      Last updated on Mar 24, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
+      Last updated on Aug 15, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>

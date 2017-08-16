@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>pgr_maxFlow Proposed &mdash; pgRouting Manual (2.4)</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.1',
+        VERSION:     'v2.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -41,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -54,7 +51,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -176,7 +173,7 @@
 <span id="pgr-maxflow"></span><h1>pgr_maxFlow Proposed<a class="headerlink" href="#pgr-maxflow-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_maxFlow</span></tt> — Calculates the maximum flow in a directed graph given source(s) and sink(s).</p>
+<p><code class="docutils literal"><span class="pre">pgr_maxFlow</span></code> — Calculates the maximum flow in a directed graph given source(s) and sink(s).</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>These are proposed functions</p>
@@ -199,9 +196,9 @@
 </li>
 </ul>
 </div>
-<div class="figure">
+<div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption">Boost Graph Inside</p>
+<p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 </div>
 <div class="section" id="synopsis">
@@ -225,7 +222,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, source_vertex,  sink_vertex)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source_vertex,  sink_vertex)
 pgr_maxFlow(edges_sql, source_vertices,  sink_vertex)
 pgr_maxFlow(edges_sql, source_vertex,  sink_vertices)
 pgr_maxFlow(edges_sql, source_vertices,  sink_vertices)
@@ -238,7 +235,7 @@ RETURNS BIGINT
 <div class="section" id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from one source vertex to one sink vertex in a directed graph.</p>
-<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, source_vertex,  sink_vertex)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source_vertex,  sink_vertex)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -250,28 +247,29 @@ RETURNS BIGINT
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlow(
-    &#39;SELECT id,
-            source,
-            target,
-            c1.capacity as capacity,
-            c2.capacity as reverse_capacity
-    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
-    WHERE edge_table.reverse_category_id = c2.category_id
-    ORDER BY id&#39;
-    , 6, 11
-);
- pgr_maxflow 
--------------
-         280
-(1 row)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id,</span>
+            <span class="n">source</span><span class="p">,</span>
+            <span class="n">target</span><span class="p">,</span>
+            <span class="n">c1</span><span class="o">.</span><span class="n">capacity</span> <span class="k">as</span> <span class="n">capacity</span><span class="p">,</span>
+            <span class="n">c2</span><span class="o">.</span><span class="n">capacity</span> <span class="k">as</span> <span class="n">reverse_capacity</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">JOIN</span> <span class="n">categories</span> <span class="n">AS</span> <span class="n">c1</span> <span class="n">USING</span><span class="p">(</span><span class="n">category_id</span><span class="p">),</span> <span class="n">categories</span> <span class="n">AS</span> <span class="n">c2</span>
+    <span class="n">WHERE</span> <span class="n">edge_table</span><span class="o">.</span><span class="n">reverse_category_id</span> <span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">category_id</span>
+    <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
+    <span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span>
+<span class="p">);</span>
+ <span class="n">pgr_maxflow</span> 
+<span class="o">-------------</span>
+         <span class="mi">280</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="one-to-many">
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <p>Ccalculates the maximum flow from one source vertex to many sink vertices in a directed graph.</p>
-<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, source_vertex,  sink_vertices)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source_vertex,  sink_vertices)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -283,28 +281,29 @@ RETURNS BIGINT
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlow(
-    &#39;SELECT id,
-            source,
-            target,
-            c1.capacity as capacity,
-            c2.capacity as reverse_capacity
-    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
-    WHERE edge_table.reverse_category_id = c2.category_id
-    ORDER BY id&#39;
-    , 6, ARRAY[11, 1, 13]
-);
- pgr_maxflow 
--------------
-         410
-(1 row)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id,</span>
+            <span class="n">source</span><span class="p">,</span>
+            <span class="n">target</span><span class="p">,</span>
+            <span class="n">c1</span><span class="o">.</span><span class="n">capacity</span> <span class="k">as</span> <span class="n">capacity</span><span class="p">,</span>
+            <span class="n">c2</span><span class="o">.</span><span class="n">capacity</span> <span class="k">as</span> <span class="n">reverse_capacity</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">JOIN</span> <span class="n">categories</span> <span class="n">AS</span> <span class="n">c1</span> <span class="n">USING</span><span class="p">(</span><span class="n">category_id</span><span class="p">),</span> <span class="n">categories</span> <span class="n">AS</span> <span class="n">c2</span>
+    <span class="n">WHERE</span> <span class="n">edge_table</span><span class="o">.</span><span class="n">reverse_category_id</span> <span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">category_id</span>
+    <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
+    <span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="p">);</span>
+ <span class="n">pgr_maxflow</span> 
+<span class="o">-------------</span>
+         <span class="mi">410</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from many source vertices to one sink vertex in a directed graph.</p>
-<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, source_vertices,  sink_vertex)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source_vertices,  sink_vertex)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -316,28 +315,29 @@ RETURNS BIGINT
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlow(
-    &#39;SELECT id,
-            source,
-            target,
-            c1.capacity as capacity,
-            c2.capacity as reverse_capacity
-    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
-    WHERE edge_table.reverse_category_id = c2.category_id
-    ORDER BY id&#39;
-    , ARRAY[6, 8, 12], 11
-);
- pgr_maxflow 
--------------
-         280
-(1 row)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id,</span>
+            <span class="n">source</span><span class="p">,</span>
+            <span class="n">target</span><span class="p">,</span>
+            <span class="n">c1</span><span class="o">.</span><span class="n">capacity</span> <span class="k">as</span> <span class="n">capacity</span><span class="p">,</span>
+            <span class="n">c2</span><span class="o">.</span><span class="n">capacity</span> <span class="k">as</span> <span class="n">reverse_capacity</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">JOIN</span> <span class="n">categories</span> <span class="n">AS</span> <span class="n">c1</span> <span class="n">USING</span><span class="p">(</span><span class="n">category_id</span><span class="p">),</span> <span class="n">categories</span> <span class="n">AS</span> <span class="n">c2</span>
+    <span class="n">WHERE</span> <span class="n">edge_table</span><span class="o">.</span><span class="n">reverse_category_id</span> <span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">category_id</span>
+    <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
+    <span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="mi">11</span>
+<span class="p">);</span>
+ <span class="n">pgr_maxflow</span> 
+<span class="o">-------------</span>
+         <span class="mi">280</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from many sources to many sinks in a directed graph.</p>
-<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlow(edges_sql, source_vertices,  sink_vertices)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source_vertices,  sink_vertices)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -349,21 +349,22 @@ RETURNS BIGINT
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlow(
-    &#39;SELECT id,
-            source,
-            target,
-            c1.capacity as capacity,
-            c2.capacity as reverse_capacity
-    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
-    WHERE edge_table.reverse_category_id = c2.category_id
-    ORDER BY id&#39;
-    , ARRAY[6, 8, 12], ARRAY[1, 3, 11]
-);
- pgr_maxflow 
--------------
-         460
-(1 row)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id,</span>
+            <span class="n">source</span><span class="p">,</span>
+            <span class="n">target</span><span class="p">,</span>
+            <span class="n">c1</span><span class="o">.</span><span class="n">capacity</span> <span class="k">as</span> <span class="n">capacity</span><span class="p">,</span>
+            <span class="n">c2</span><span class="o">.</span><span class="n">capacity</span> <span class="k">as</span> <span class="n">reverse_capacity</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">JOIN</span> <span class="n">categories</span> <span class="n">AS</span> <span class="n">c1</span> <span class="n">USING</span><span class="p">(</span><span class="n">category_id</span><span class="p">),</span> <span class="n">categories</span> <span class="n">AS</span> <span class="n">c2</span>
+    <span class="n">WHERE</span> <span class="n">edge_table</span><span class="o">.</span><span class="n">reverse_category_id</span> <span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">category_id</span>
+    <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
+    <span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+<span class="p">);</span>
+ <span class="n">pgr_maxflow</span> 
+<span class="o">-------------</span>
+         <span class="mi">460</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -394,23 +395,23 @@ RETURNS BIGINT
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>capacity</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Capacity of the edge <cite>(source, target)</cite>. Must be positive.</td>
 </tr>
 <tr class="row-even"><td><strong>reverse_capacity</strong></td>
-<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
 <td>(optional) Weight of the edge <cite>(target, source)</cite>. Must be positive or null.</td>
 </tr>
 </tbody>
@@ -441,15 +442,15 @@ RETURNS BIGINT
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
 <td>SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>source_vertex</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the source vertex(or vertices).</td>
 </tr>
 <tr class="row-even"><td><strong>sink_vertex</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the sink vertex(or vertices).</td>
 </tr>
 </tbody>
@@ -459,14 +460,14 @@ RETURNS BIGINT
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="flow-family.html#maxflow"><em>Flow - Family of functions</em></a></li>
+<li><a class="reference internal" href="flow-family.html#maxflow"><span class="std std-ref">Flow - Family of functions</span></a></li>
 <li><a class="reference external" href="http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html">http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html</a></li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm">https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm</a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -483,9 +484,9 @@ RETURNS BIGINT
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.1.<br/>
-      Last updated on Mar 24, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
+      Last updated on Aug 15, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
 </footer>
