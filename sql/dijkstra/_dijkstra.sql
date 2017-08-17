@@ -41,5 +41,5 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(
     OUT cost float,
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'many_to_many_dijkstra'
+'${MODULE_PATHNAME}', 'many_to_many_dijkstra'
 LANGUAGE c VOLATILE;

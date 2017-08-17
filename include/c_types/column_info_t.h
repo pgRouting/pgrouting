@@ -62,7 +62,8 @@ enum {
     ANY_INTEGER,
     ANY_NUMERICAL,
     TEXT,
-    CHAR1
+    CHAR1,
+    ANY_INTEGER_ARRAY
 } expectType;
 
 
@@ -77,4 +78,3 @@ struct {
 
 
 #endif  // INCLUDE_C_TYPES_COLUMN_INFO_T_H_
-

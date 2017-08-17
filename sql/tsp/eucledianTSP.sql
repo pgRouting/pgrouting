@@ -45,7 +45,7 @@ CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF record
-AS 'MODULE_PATHNAME', 'eucledianTSP'
+AS '${MODULE_PATHNAME}', 'eucledianTSP'
 LANGUAGE c VOLATILE STRICT;
 
 

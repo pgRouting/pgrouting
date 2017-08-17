@@ -38,19 +38,19 @@ As part of the :ref:`dijkstra`
 .. rubric:: Families
 
 :ref:`astar`
- 
+
 .. include:: aStar-family.rst
    :start-after: index from here
    :end-before: index to here
 
 :ref:`bdAstar`
- 
+
 .. include:: bdAstar-family.rst
    :start-after: index from here
    :end-before: index to here
 
 :ref:`bdDijkstra`
- 
+
 .. include:: bdDijkstra-family.rst
    :start-after: index from here
    :end-before: index to here
@@ -166,6 +166,14 @@ Experimental and Proposed functions
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
+.. rubric:: Graph Transformation
+
+:doc:`pgr_lineGraph`
+
+.. toctree::
+  :hidden:
+
+  pgr_lineGraph
 
 
 ..
@@ -176,4 +184,3 @@ Experimental and Proposed functions
     :hidden:
     ..
      ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
-

@@ -63,11 +63,13 @@ mkdir -p $outdir/share/extension
 mkdir $outdir/bin
 mkdir $outdir/lib
 
+cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/sql
+cp *.sql $outdir/share/extension
+cp ${PostgreSQL_ROOT}/share/extension/pgrouting.control $outdir/share/extension
+
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
 strip *.dll
 
-cp -r *.sql $outdir/share/extension
-cp -r *.control $outdir/share/extension
 cp -r *.dll $outdir/lib
 #newer gcc for some reason CGAL is not statically linked
 # so need to distribute

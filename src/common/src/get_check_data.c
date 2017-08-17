@@ -86,6 +86,9 @@ void pgr_fetch_column_info(
                 case CHAR1:
                     pgr_check_char_type(info[i]);
                     break;
+                case ANY_INTEGER_ARRAY:
+                    pgr_check_any_integerarray_type(info[i]);
+                    break;
                 default:
                     elog(ERROR, "Unknown type of column %s", info[i].name);
             }
@@ -115,6 +118,17 @@ pgr_check_any_integer_type(Column_info_t info) {
                 || info.type == INT8OID)) {
         elog(ERROR,
                 "Unexpected Column '%s' type. Expected ANY-INTEGER",
+                info.name);
+    }
+}
+
+void
+pgr_check_any_integerarray_type(Column_info_t info) {
+    if (!(info.type == INT2ARRAYOID
+                || info.type == INT4ARRAYOID
+                || info.type == 1016)) {
+        elog(ERROR,
+                "Unexpected Column '%s' type. Expected ANY-INTEGER-ARRAY",
                 info.name);
     }
 }
