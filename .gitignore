@@ -3,8 +3,11 @@ build
 fix_typos
 code_linter
 
+tools/template/mycreate.sh
+*.sh
 .DS_Store
 .vagrant
 tools/vagrant/packaging.sh
+tools/testers/pg_prove_dijkstraTRSP_tests.sh
 .directory
 notUsed

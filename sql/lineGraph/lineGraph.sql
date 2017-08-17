@@ -1,8 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: restrict_t.h
+File: lineGraph.sql
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2017 Vidhan Jain
+Mail: vidhanj1307.com
 
 ------
 
@@ -21,49 +26,16 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_RESTRICT_T_H_
-#define INCLUDE_C_TYPES_RESTRICT_T_H_
-#pragma once
+CREATE OR REPLACE FUNCTION pgr_lineGraph(
+    TEXT, -- edges_sql
+    directed BOOLEAN DEFAULT true,
+    OUT seq INTEGER,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT cost FLOAT,
+    OUT reverse_cost FLOAT)
 
-
-#ifdef __cplusplus
-
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
-#endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
-#define  MAX_RULE_LENGTH 5
-
-typedef struct {
-    int64_t id;
-    double cost;
-    int64_t restricted_edges[MAX_RULE_LENGTH];
-}
-Restrict_t;
-
-
-
-#endif  // INCLUDE_C_TYPES_RESTRICT_T_H_
+RETURNS SETOF RECORD AS
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'lineGraph'
+LANGUAGE c IMMUTABLE STRICT;
