@@ -63,8 +63,8 @@ message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
 #---------------------------------------------
 
 #---------------------------------------------
-# Avaliable Languages
-# English is allways built
+# Available Languages
+# English is always built
 #---------------------------------------------
 set(PgRouting_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
 set(PgRouting_ENGLISH "en")

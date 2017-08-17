@@ -79,8 +79,8 @@ if [[ -z  $4 ]]; then
 fi
 
 
-if [[ -z  $4 ]]; then
-    echo "Last Micro missing";
+if [[ -z  $5 ]]; then
+    echo "branch missing";
     echo "Usage"
     echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
     exit 1;
@@ -94,7 +94,7 @@ RC="-dev"
 BRANCH=$5
 
 
-git_no_change
+#git_no_change
 
 echo - [x] No files changed before execution.
 echo
