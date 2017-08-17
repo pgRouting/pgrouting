@@ -9,7 +9,7 @@
 
 .. _pgr_gsocvrppdtw:
 
-pgr_gsoc_vrppdtw - Proposed
+pgr_gsoc_vrppdtw - Experimental
 ===============================================================================
 
 
