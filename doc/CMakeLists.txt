@@ -11,7 +11,7 @@
 #---------------------------------------------
 
 option(WITH_DOC
-    "Set ON|OFF (default=OFF) to build Documentation library tree" ON)
+    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
 option(LOCALE
     "Set ON|OFF (default=OFF) to build ithe latest pot/po files" OFF)
