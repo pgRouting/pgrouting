@@ -9,7 +9,7 @@
 
 .. _pgr_lineGraph:
 
-pgr_lineGraph
+pgr_lineGraph - Experimental
 ===============================================================================
 
 ``pgr_lineGraph`` — Transforms a given graph into its corresponding edge-based graph.
