@@ -137,7 +137,7 @@ Vehicle::get_postgres_result(
     std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
     int stop_seq(1);
-    msg.log << "geting solution: " << tau() << "\n";
+    msg.log << "getting solution: " << tau() << "\n";
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data = {
             vid,

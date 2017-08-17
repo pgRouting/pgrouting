@@ -86,6 +86,7 @@ class Path {
     Path_t& back() {return path.back();}
     const Path_t& front() const {return path.front();}
     Path_t& front() {return path.front();}
+    void sort_by_node_agg_cost();
 
 
     Path_t set_data(
@@ -130,95 +131,36 @@ class Path {
 
     friend size_t collapse_paths(
             General_path_element_t **ret_path,
-            const std::deque< Path > &paths) {
-        size_t sequence = 0;
-        for (const Path &path : paths) {
-            if (path.path.size() > 0)
-                path.generate_postgres_data(ret_path, sequence);
-        }
-        return sequence;
-    }
+            const std::deque< Path > &paths);
 
 
+    /** @brief discards common vertices with greater agg_cost */
+    friend void equi_cost(std::deque< Path > &paths);
+    /** @brief counts the tuples to be returned*/
+    friend size_t count_tuples(const std::deque< Path > &paths);
 
     /*
-     * sort the paths by size from greater to smaller
-     *        and sort each path by node
-     * all the nodes on p2 are going to be compared
-     * with the nodes of p1
-     *
-     * When both paths reach the node and p1.agg_cost > p2.agg_cost
-     *    erase the node of p1
-     *    (can't erase from p2 because we loose the iterators
-     *     so in a future cycle it will be deleted)
-     *
-     * sort the paths by start_id,
+     *  TEMPLATES
      */
-
-    friend void equi_cost(std::deque< Path > &paths) {
-        /* sort paths by size: largest first */
-        std::sort(paths.begin(), paths.end(),
-                [](const Path &e1, const Path &e2)->bool {
-                return e2.size() < e1.size();
-                });
-
-        /* sort each path by node: smaller id first */
-        for (auto &p : paths) {
-            if (p.size() < 2) continue;
-            std::sort(p.begin(), p.end(),
-                    [](const Path_t &e1, const Path_t &e2)->bool {
-                    return e1.node < e2.node;
-                    });
-        }
-
-        for (auto &p1 : paths) {
-            for (const auto &p2 : paths) {
-                if (p1.start_id() == p2.start_id()) continue;
-                for (const auto &stop : p2.path) {
-                    /* find the node of p2 in p1 */
-                    auto pos = lower_bound(p1.begin(), p1.end(), stop,
-                            [](const Path_t &l, const Path_t &r)->bool {
-                            return l.node < r.node;
-                            });
-
-                    if (pos != p1.end()
-                            && (stop.node == pos->node)
-                            && (stop.agg_cost < pos->agg_cost)) {
-                        /* both share the same node &
-                         * the second path has the smallest
-                         *  So erasing from the first path */
-                        p1.erase(pos);
-                    }
+    template <typename G , typename V> Path(
+            G &graph,
+            int64_t source,
+            double distance,
+            const std::vector<V> &predecessors,
+            const std::vector<double> &distances) :
+        m_start_id(source),
+        m_end_id(source) {
+            for (V i = 0; i < distances.size(); ++i) {
+                if (distances[i] <= distance) {
+                    auto cost = distances[i] - distances[predecessors[i]];
+                    auto edge_id = graph.get_edge_id(predecessors[i], i, cost);
+                    push_back(
+                            {graph[i].id,
+                            edge_id, cost,
+                            distances[i]});
                 }
             }
         }
-
-        /* sort paths by start_id */
-        std::sort(paths.begin(), paths.end(),
-                [](const Path &e1, const Path &e2)->bool {
-                return e1.start_id() < e2.start_id();
-                });
-
-        /* sort each path by agg_cost, node */
-        for (auto &path : paths) {
-            /* least influential data first */
-            std::sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    { return l.node < r.node;});
-            /* preserve the order of what we did before */
-            std::stable_sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    { return l.agg_cost < r.agg_cost;});
-        }
-    }
-
-    friend size_t count_tuples(const std::deque< Path > &paths) {
-        size_t count(0);
-        for (const Path &e : paths) {
-            count += e.path.size();
-        }
-        return count;
-    }
 
 
     template <typename G , typename V> Path(

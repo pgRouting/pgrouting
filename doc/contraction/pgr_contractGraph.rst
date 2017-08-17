@@ -9,7 +9,7 @@
 
 .. _pgr_contractGraph:
 
-pgr_contractGraph - Proposed
+pgr_contractGraph - Experimental
 ===============================================================================
 
 ``pgr_contractGraph`` — Performs graph contraction and returns the contracted vertices and edges.

@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-#ifdef __linux__
+#ifdef __GLIBC__
 #include <execinfo.h>
 #endif
 
@@ -24,7 +24,7 @@
 
 
 std::string get_backtrace() {
-#ifdef __linux__
+#ifdef __GLIBC__
         void *trace[16];
         int i, trace_size = 0;
 

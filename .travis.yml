@@ -62,6 +62,7 @@ install:
 before_script:
 
   # Add our chosen PG version to the path
+  - psql -U postgres -c "create extension postgis"
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
   # initialize databases

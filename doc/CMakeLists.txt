@@ -10,6 +10,9 @@
 # Kind of sphinx output
 #---------------------------------------------
 
+option(WITH_DOC
+    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+
 option(LOCALE
     "Set ON|OFF (default=OFF) to build ithe latest pot/po files" OFF)
 
@@ -26,7 +29,7 @@ option(SINGLEHTML
     "Set ON|OFF (default=OFF) to build Documentation library tree as SINGLE HTML" OFF)
 
 option(HTML
-    "Set ON|OFF (default=OFF) to build Documentation library tree as HTML" OFF)
+    "Set ON|OFF (default=OFF) to build Documentation library tree as HTML" ON)
 
 #option(MAN
 #    "Set ON|OFF (default=OFF) to build Documentation library tree as MAN page" OFF)
@@ -36,6 +39,10 @@ option(EPUB
 
 option(DUMMY
     "Set ON|OFF (default=OFF) for debugging purposes" OFF)
+
+if (NOT WITH_DOC)
+    return()
+endif()
 
 foreach(opt HTML LATEX SINGLEHTML EPUB DUMMY)
     if (${${opt}} OR WITH_ALL_DOC)
@@ -63,8 +70,8 @@ message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
 #---------------------------------------------
 
 #---------------------------------------------
-# Avaliable Languages
-# English is allways built
+# Available Languages
+# English is always built
 #---------------------------------------------
 set(PgRouting_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
 set(PgRouting_ENGLISH "en")

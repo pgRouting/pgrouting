@@ -44,7 +44,17 @@ dropdb --if-exists ___pgr___test___
 createdb  ___pgr___test___
 sh ./tools/testers/pg_prove_tests.sh vicky >> build/tmp_make.txt
 dropdb  ___pgr___test___
-echo '  - [x] Pgtap tests'
+echo '  - [x] Pgtap tests OK'
+
+if [[ "$1" == "4.8" ]]; then
+    cd build
+    make doc >> tmp_make.txt 
+    echo "  - [x] Build Users documentation OK"
+    make doxy >> tmp_make.txt
+    echo "  - [x] Build developers documentation OK"
+    cd ..
+fi
+
 }
 
 sudo rm -f /usr/lib/postgresql/9.3/lib/libpgrouting-$MINOR.so
