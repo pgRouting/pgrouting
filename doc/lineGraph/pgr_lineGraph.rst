@@ -35,19 +35,17 @@ Line Graph (right, with green vertices).
 
 | |first|       |second|               |third|  |fourth|
 
-.. |first| image:: images/135px-Line_graph_construction_1.svg.png
+.. |first| image:: images/Line-graph1.png
    :align: middle
 
-.. |second| image:: images/135px-Line_graph_construction_2.svg.png
+.. |second| image:: images/Line-graph2.png
    :align: middle
 
-.. |third| image:: images/135px-Line_graph_construction_3.svg.png
+.. |third| image:: images/Line-graph3.png
    :align: middle
 
-.. |fourth| image:: images/128px-Line_graph_construction_4.svg.png
+.. |fourth| image:: images/Line-graph4.png
    :align: middle
-
-.. The images are taken from https://en.wikipedia.org/wiki/Line_graph.
 
 Signature Summary
 -----------------
