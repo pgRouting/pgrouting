@@ -19,6 +19,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 .. changelog start
 
 * :ref:`changelog_2_5_0`
+* :ref:`changelog_2_4_2`
 * :ref:`changelog_2_4_1`
 * :ref:`changelog_2_4_0`
 * :ref:`changelog_2_3_2`
@@ -78,6 +79,7 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_bdDijkstraCost(many to one)
 * pgr_bdDijkstraCost(many to many)
 * pgr_bdDijkstraCostMatrix
+* pgr_lineGraph
 
 .. rubric:: Deprecated Signatures
 
@@ -94,12 +96,33 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 
 * pgr_pointToEdgeNode
 
+
+.. _changelog_2_4_2:
+
+pgRouting 2.4.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github.
+
+.. rubric:: Improvement
+
+* Works for postgreSQL 10
+
+.. rubric:: Bug fixes
+
+* Fixed: Unexpected error column "cname"
+* Replace __linux__ with __GLIBC__ for glibc-specific headers and functions
+
+
+
 .. _changelog_2_4_1:
 
 pgRouting 2.4.1 Release Notes
 -------------------------------------------------------------------------------
 
-.. rubric:: Bug fix
+To see the issues closed by this release see the `Git closed milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
 
 * Fixed compiling error on macOS
 * Condition error on pgr_withPoints
@@ -136,7 +159,7 @@ To see the issues closed by this release see the `Git closed issues for 2.4.0 <h
 
 * pgr_pointsToVids
 
-.. rubric:: Bug fix
+.. rubric:: Bug fixes
 
 * Bug fixes on proposed functions
 

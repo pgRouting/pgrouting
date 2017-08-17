@@ -124,7 +124,7 @@ update_test 2.4.0 $CURRENT
 ### updates from 2.3.0
 #------------------------------------
 
-update_test 2.3.2 $CURRENT
+#update_test 2.3.2 $CURRENT
 update_test 2.3.1 $CURRENT
 update_test 2.3.0 $CURRENT
 

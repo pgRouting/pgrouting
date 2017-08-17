@@ -270,6 +270,7 @@ echo "### Checking signature files"
 echo
 #---------------------------------------------------------------------
 test_file $PREV_REL
+test_file 2.4.1
 test_file 2.4.0
 test_file 2.3.2
 test_file 2.3.1
@@ -312,6 +313,8 @@ echo - [x] completed local builds
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
+sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ curr-sig >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.4.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.4.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
@@ -360,6 +363,7 @@ fi
 
 if [[ $(git status | grep 'Changes not staged for commit:') ]]; then
     echo "FATAL: at least one result file changed"
+    git status
     exit 1
 fi
 
