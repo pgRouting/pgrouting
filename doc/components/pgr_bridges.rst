@@ -42,6 +42,9 @@ The main Characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
+.. index::
+    single: bridges(Minimal Use)
+
 .. code-block:: none
 
     pgr_bridges(edges_sql)

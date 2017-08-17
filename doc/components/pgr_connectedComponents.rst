@@ -46,6 +46,9 @@ The main Characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
+.. index::
+    single: connectedComponents(Minimal Use)
+
 .. code-block:: none
 
     pgr_connectedComponents(edges_sql)
