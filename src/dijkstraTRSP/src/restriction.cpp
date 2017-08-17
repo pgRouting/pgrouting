@@ -1,80 +1,45 @@
 /*PGR-GNU*****************************************************************
-File: pgr_types.h
-
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+File: restriction.cpp
+Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
-
 ------
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_COLUMN_INFO_T_H_
-#define INCLUDE_C_TYPES_COLUMN_INFO_T_H_
-#pragma once
+#include "dijkstraTRSP/restriction.h"
 
+#include <vector>
+#include <memory>
+#include <utility>
+#include <limits>
 
-#ifdef __cplusplus
+Restriction::Restriction(const Restrict_t &r) :
+    m_id(r.id),
+    m_cost(r.cost) {
+        for(auto &it: r.restricted_edges) {
+            if (it == -1) break;
+            restrict_edges(it);
+        }
+    }
 
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
-#endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
-
-// used for getting the data
-typedef
-enum {
-    ANY_INTEGER,
-    ANY_NUMERICAL,
-    TEXT,
-    CHAR1,
-    ANY_INTEGER_ARRAY
-} expectType;
-
-
-typedef
-struct {
-    int colNumber;
-    uint64_t type;
-    bool strict;
-    char *name;
-    expectType eType;
-} Column_info_t;
-
-
-#endif  // INCLUDE_C_TYPES_COLUMN_INFO_T_H_
+std::ostream&
+operator << (std::ostream &log, const Restriction& r) {
+    log << "\n--------------------------------\nRestriction\n";
+    log << "ID: " << r.id() << "\nRestricion edge sequence: ";
+    for (const auto &v : r.restrict_edges()) {
+        log << v <<" ";
+    }
+    log << "\n";
+    log << "Cost: " << r.cost() << "\n";
+    return log;
+}

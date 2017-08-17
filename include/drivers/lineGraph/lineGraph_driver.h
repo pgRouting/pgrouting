@@ -1,6 +1,11 @@
 /*PGR-GNU*****************************************************************
-File: pgr_types.h
+File: lineGraph_driver.h
 
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -21,60 +26,38 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_COLUMN_INFO_T_H_
-#define INCLUDE_C_TYPES_COLUMN_INFO_T_H_
+#ifndef INCLUDE_DRIVERS_LINEGRAPH_LINEGRAPH_DRIVER_H_
+#define INCLUDE_DRIVERS_LINEGRAPH_LINEGRAPH_DRIVER_H_
 #pragma once
+
+#include "c_types/pgr_edge_t.h"
+#include "c_types/line_graph_rt.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    /*********************************************************
+      TEXT,
+    directed BOOLEAN DEFAULT true,
+     ********************************************************/
+
+
+    void
+        do_pgr_lineGraph(
+                pgr_edge_t  *data_edges,
+                size_t total_edges,
+                bool directed,
+                Line_graph_rt **return_tuples,
+                size_t *return_count,
+                char ** log_msg,
+                char ** notice_msg,
+                char ** err_msg);
 
 
 #ifdef __cplusplus
-
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
+}
 #endif
 
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
-
-// used for getting the data
-typedef
-enum {
-    ANY_INTEGER,
-    ANY_NUMERICAL,
-    TEXT,
-    CHAR1,
-    ANY_INTEGER_ARRAY
-} expectType;
-
-
-typedef
-struct {
-    int colNumber;
-    uint64_t type;
-    bool strict;
-    char *name;
-    expectType eType;
-} Column_info_t;
-
-
-#endif  // INCLUDE_C_TYPES_COLUMN_INFO_T_H_
+#endif  // INCLUDE_DRIVERS_LINEGRAPH_LINEGRAPH_DRIVER_H_

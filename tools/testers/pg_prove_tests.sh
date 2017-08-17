@@ -1,12 +1,12 @@
 #!/bin/bash
 # ------------------------------------------------------------------------------
-# Travis CI scripts 
+# Travis CI scripts
 # Copyright(c) pgRouting Contributors
 #
 # Test pgRouting
 # ------------------------------------------------------------------------------
 
-set -e 
+set -e
 
 PGUSER=$1
 RELEASE_TYPE="b$2"
@@ -18,10 +18,10 @@ PGDATABASE="___pgr___test___"
 run_psql () {
     PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -d $PGDATABASE -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
     if [ "$?" -ne 0 ]
-    then 
+    then
         echo "Test query failed: $@"
         ERROR=1
-    fi 
+    fi
 }
 
 
@@ -38,6 +38,10 @@ then
     pg_prove ../../src/tsp/test/performance/* -d $PGDATABASE  -U $PGUSER
     echo "MADE TEST **********************"
 fi
+
+#pg_prove ../../src/dijkstraTRSP/test/pgtap/* -d $PGDATABASE -U $PGUSER
+
+pg_prove ../../src/lineGraph/test/pgtap/* -d $PGDATABASE -U $PGUSER
 
 pg_prove -d $PGDATABASE  -U $PGUSER ../../pgtap/*/*
 
