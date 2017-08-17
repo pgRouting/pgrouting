@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -116,6 +117,8 @@ $(document).ready(function(){initNavTree('driving_8cpp.html','');});
 Include dependency graph for driving.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="driving_8cpp__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2linecommand_2src_2driving_8cpp" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2linecommand_2src_2driving_8cpp" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2linecommand_2src_2driving_8cpp">
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -159,7 +162,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="driving_8cpp_source.html#l00028">28</a> of file <a class="el" href="driving_8cpp_source.html">driving.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00053">pgr_drivingDistance()</a>.</p>
+<p>References <a class="el" href="basePath__SSEC_8cpp_source.html#l00264">equi_cost()</a>, and <a class="el" href="pgr__dijkstra_8hpp_source.html#l00056">pgr_drivingDistance()</a>.</p>
 
 <p>Referenced by <a class="el" href="pgRouting_8cpp_source.html#l00165">process()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                                                           {</div>
@@ -217,13 +220,13 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">if</span> (sources.size() == 1) {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Performing pgr_DrivingDistance for single source\n&quot;</span>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="classPath.html">Path</a> path;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="pgr__dijkstra_8hpp.html#aa4524c319c5b91a9a02adef9d9c498cb">pgr_drivingDistance</a>(graph, path, sources[0], distance);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="pgr__dijkstra_8hpp.html#adcab15bb56211bdd3f0832afa1c275a5">pgr_drivingDistance</a>(graph, path, sources[0], distance);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\t\t\tTHE OPUTPUT\n&quot;</span>;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;seq\tfrom\tnode\tedge\tcost\n&quot;</span>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        path.print_path();</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        std::deque&lt; Path &gt;  paths;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="pgr__dijkstra_8hpp.html#aa4524c319c5b91a9a02adef9d9c498cb">pgr_drivingDistance</a>(graph, paths, sources, distance);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="pgr__dijkstra_8hpp.html#adcab15bb56211bdd3f0832afa1c275a5">pgr_drivingDistance</a>(graph, paths, sources, distance);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (equiCost == <span class="keyword">false</span>) {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;Performing pgr_DrivingDistance for multiple sources\n&quot;</span>;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;\t\t\tTHE OPUTPUT\n&quot;</span>;</div>
@@ -234,23 +237,24 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;          }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;Performing pgr_DrivingDistance for multiple sources with equi-cost\n&quot;</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;          <a class="code" href="classPath.html">Path</a> path = equi_cost(paths);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;          <a class="code" href="classPath.html">Path</a> path = <a class="code" href="basePath__SSEC_8cpp.html#a5ec42f9cedce93c209092bc259b9c56c">equi_cost</a>(paths);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;\t\t\tTHE EquiCost OPUTPUT\n&quot;</span>;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;seq\tfrom\tnode\tedge\tcost\n&quot;</span>;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;          path.print_path();</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      }</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
-<div class="ttc" id="pgr__dijkstra_8hpp_html_aa4524c319c5b91a9a02adef9d9c498cb"><div class="ttname"><a href="pgr__dijkstra_8hpp.html#aa4524c319c5b91a9a02adef9d9c498cb">pgr_drivingDistance</a></div><div class="ttdeci">std::deque&lt; Path &gt; pgr_drivingDistance(G &amp;graph, std::vector&lt; int64_t &gt; start_vids, double distance, bool equicost)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00053">pgr_dijkstra.hpp:53</a></div></div>
-<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="basePath__SSEC_8cpp_html_a5ec42f9cedce93c209092bc259b9c56c"><div class="ttname"><a href="basePath__SSEC_8cpp.html#a5ec42f9cedce93c209092bc259b9c56c">equi_cost</a></div><div class="ttdeci">void equi_cost(std::deque&lt; Path &gt; &amp;paths)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00264">basePath_SSEC.cpp:264</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00050">pgr_dijkstra.hpp:50</a></div></div>
 <div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
+<div class="ttc" id="pgr__dijkstra_8hpp_html_adcab15bb56211bdd3f0832afa1c275a5"><div class="ttname"><a href="pgr__dijkstra_8hpp.html#adcab15bb56211bdd3f0832afa1c275a5">pgr_drivingDistance</a></div><div class="ttdeci">std::deque&lt; Path &gt; pgr_drivingDistance(G &amp;graph, std::vector&lt; int64_t &gt; start_vids, double distance, bool equicost, std::ostringstream &amp;log)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00056">pgr_dijkstra.hpp:56</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="driving_8cpp_a54752be3f5a512499a6ec47446cc44a2_cgraph.png" border="0" usemap="#driving_8cpp_a54752be3f5a512499a6ec47446cc44a2_cgraph" alt=""/></div>
 <map name="driving_8cpp_a54752be3f5a512499a6ec47446cc44a2_cgraph" id="driving_8cpp_a54752be3f5a512499a6ec47446cc44a2_cgraph">
-<area shape="rect" id="node2" href="pgr__dijkstra_8hpp.html#aa4524c319c5b91a9a02adef9d9c498cb" title="pgr_drivingDistance" alt="" coords="219,5,357,32"/></map>
+<area shape="rect" id="node2" href="basePath__SSEC_8cpp.html#a5ec42f9cedce93c209092bc259b9c56c" title="equi_cost" alt="" coords="249,5,327,32"/><area shape="rect" id="node3" href="pgr__dijkstra_8hpp.html#adcab15bb56211bdd3f0832afa1c275a5" title="pgr_drivingDistance" alt="" coords="219,56,357,83"/></map>
 </div>
 </p>
 
@@ -271,7 +275,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d00ce88a1fe87f5e8ffa8e1a7be5e0a5.html">linecommand</a></li><li class="navelem"><a class="el" href="dir_6f513041d2f60412f8dae41f44763875.html">src</a></li><li class="navelem"><a class="el" href="driving_8cpp.html">driving.cpp</a></li>
-    <li class="footer">Generated on Sun Aug 6 2017 13:02:17 for PGROUTING by
+    <li class="footer">Generated on Thu Aug 17 2017 08:51:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

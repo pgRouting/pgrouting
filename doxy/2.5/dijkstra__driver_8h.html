@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -232,7 +233,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="dijkstra__driver_8cpp_source.html#l00079">79</a> of file <a class="el" href="dijkstra__driver_8cpp_source.html">dijkstra_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="graph__enum_8h_source.html#l00030">DIRECTED</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00376">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::insert_edges()</a>, <a class="el" href="pgr__assert_8h_source.html#l00081">pgassert</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00044">pgr_dijkstra()</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00075">pgr_free()</a>, <a class="el" href="pgr__alloc_8cpp_source.html#l00029">pgr_msg()</a>, <a class="el" href="graph__enum_8h_source.html#l00030">UNDIRECTED</a>, and <a class="el" href="pgr__assert_8cpp_source.html#l00053">AssertFailedException::what()</a>.</p>
+<p>References <a class="el" href="basePath__SSEC_8cpp_source.html#l00238">collapse_paths()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00315">count_tuples()</a>, <a class="el" href="graph__enum_8h_source.html#l00030">DIRECTED</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00398">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::insert_edges()</a>, <a class="el" href="pgr__assert_8h_source.html#l00081">pgassert</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00044">pgr_dijkstra()</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00075">pgr_free()</a>, <a class="el" href="pgr__alloc_8cpp_source.html#l00029">pgr_msg()</a>, <a class="el" href="graph__enum_8h_source.html#l00030">UNDIRECTED</a>, and <a class="el" href="pgr__assert_8cpp_source.html#l00053">AssertFailedException::what()</a>.</p>
 
 <p>Referenced by <a class="el" href="dijkstra_8c_source.html#l00048">process()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                         {</div>
@@ -276,7 +277,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordtype">size_t</span> count(0);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        count = count_tuples(paths);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        count = <a class="code" href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1">count_tuples</a>(paths);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            (*return_tuples) = NULL;</div>
@@ -289,7 +290,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(count, (*return_tuples));</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;\nConverting a set of paths into the tuples&quot;</span>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        (*return_count) = (collapse_paths(return_tuples, paths));</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        (*return_count) = (<a class="code" href="basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0">collapse_paths</a>(return_tuples, paths));</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        *log_msg = log.str().empty()?</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            *log_msg :</div>
@@ -319,11 +320,13 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
 <div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00126">pgr_assert.h:126</a></div></div>
 <div class="ttc" id="graph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
+<div class="ttc" id="basePath__SSEC_8cpp_html_a19c6d298dcf1b394bb1d0269055f45f0"><div class="ttname"><a href="basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0">collapse_paths</a></div><div class="ttdeci">size_t collapse_paths(General_path_element_t **ret_path, const std::deque&lt; Path &gt; &amp;paths)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00238">basePath_SSEC.cpp:238</a></div></div>
 <div class="ttc" id="dijkstra__driver_8cpp_html_afeb05fe552d2db0ce4bcfd0501a38efa"><div class="ttname"><a href="dijkstra__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa">pgr_dijkstra</a></div><div class="ttdeci">std::deque&lt; Path &gt; pgr_dijkstra(G &amp;graph, std::vector&lt; int64_t &gt; sources, std::vector&lt; int64_t &gt; targets, bool only_cost, bool normal)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra__driver_8cpp_source.html#l00044">dijkstra_driver.cpp:44</a></div></div>
 <div class="ttc" id="graph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
 <div class="ttc" id="pgr__alloc_8hpp_html_aae87e343d8516ca2c6a60dcfbbf7fde6"><div class="ttname"><a href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a></div><div class="ttdeci">T * pgr_free(T *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00075">pgr_alloc.hpp:75</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00081">pgr_assert.h:81</a></div></div>
 <div class="ttc" id="pgr__alloc_8cpp_html_a03fe028457780ee3a4d223cd7fe9d53e"><div class="ttname"><a href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a></div><div class="ttdeci">char * pgr_msg(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8cpp_source.html#l00029">pgr_alloc.cpp:29</a></div></div>
+<div class="ttc" id="basePath__SSEC_8cpp_html_a704d92207109d41b1df3e14e14579ba1"><div class="ttname"><a href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1">count_tuples</a></div><div class="ttdeci">size_t count_tuples(const std::deque&lt; Path &gt; &amp;paths)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00315">basePath_SSEC.cpp:315</a></div></div>
 <div class="ttc" id="pgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory </div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc.hpp:64</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::graph::Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00215">pgr_base_graph.hpp:215</a></div></div>
 <div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00053">pgr_assert.cpp:53</a></div></div>
@@ -334,7 +337,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="dijkstra__driver_8h_af572deb404f5e6d9e905c248294eac3b_cgraph.png" border="0" usemap="#dijkstra__driver_8h_af572deb404f5e6d9e905c248294eac3b_cgraph" alt=""/></div>
 <map name="dijkstra__driver_8h_af572deb404f5e6d9e905c248294eac3b_cgraph" id="dijkstra__driver_8h_af572deb404f5e6d9e905c248294eac3b_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="211,5,389,46"/><area shape="rect" id="node3" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="437,147,512,173"/><area shape="rect" id="node4" href="dijkstra__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa" title="pgr_dijkstra" alt="" coords="255,121,345,148"/><area shape="rect" id="node5" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="265,172,335,199"/><area shape="rect" id="node6" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="264,223,336,249"/><area shape="rect" id="node7" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="223,274,377,315"/></map>
+<area shape="rect" id="node2" href="basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0" title="collapse_paths" alt="" coords="245,5,355,32"/><area shape="rect" id="node3" href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="252,56,348,83"/><area shape="rect" id="node4" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="211,107,389,149"/><area shape="rect" id="node5" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="437,249,512,276"/><area shape="rect" id="node6" href="dijkstra__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa" title="pgr_dijkstra" alt="" coords="255,224,345,251"/><area shape="rect" id="node7" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="265,275,335,301"/><area shape="rect" id="node8" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="264,325,336,352"/><area shape="rect" id="node9" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="223,377,377,418"/></map>
 </div>
 </p>
 
@@ -355,7 +358,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_4fe5cf12322eb0f9892753dc20f1484c.html">drivers</a></li><li class="navelem"><a class="el" href="dir_0ae605f4efbf704357ccbf6a364e49b2.html">dijkstra</a></li><li class="navelem"><a class="el" href="dijkstra__driver_8h.html">dijkstra_driver.h</a></li>
-    <li class="footer">Generated on Sun Aug 6 2017 13:02:17 for PGROUTING by
+    <li class="footer">Generated on Thu Aug 17 2017 08:51:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

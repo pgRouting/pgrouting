@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -340,7 +341,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00042">42</a> of file <a class="el" href="many__to__dist__driving__distance_8c_source.html">many_to_dist_driving_distance.c</a>.</p>
 
-<p>References <a class="el" href="drivedist__driver_8cpp_source.html#l00040">do_pgr_driving_many_to_dist()</a>, <a class="el" href="issue191-bad-m1_8h_source.html#l00025">edges</a>, <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>, <a class="el" href="arrays__input_8c_source.html#l00124">pgr_get_bigIntArray()</a>, <a class="el" href="edges__input_8c_source.html#l00540">pgr_get_edges()</a>, <a class="el" href="e__report_8c_source.html#l00093">pgr_global_report()</a>, <a class="el" href="postgres__connection_8c_source.html#l00083">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00032">time_msg()</a>.</p>
+<p>References <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="issue191-bad-m1_8h_source.html#l00025">edges</a>, <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>, <a class="el" href="arrays__input_8c_source.html#l00124">pgr_get_bigIntArray()</a>, <a class="el" href="edges__input_8c_source.html#l00540">pgr_get_edges()</a>, <a class="el" href="e__report_8c_source.html#l00093">pgr_global_report()</a>, <a class="el" href="postgres__connection_8c_source.html#l00083">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00032">time_msg()</a>.</p>
 
 <p>Referenced by <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00101">driving_many_to_dist()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                              {</div>
@@ -396,7 +397,7 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00058">pgr_edge_t.h:58</a></div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
 <div class="ttc" id="edges__input_8c_html_af663e291b6bdfe777789be38b6bfcf76"><div class="ttname"><a href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76">pgr_get_edges</a></div><div class="ttdeci">void pgr_get_edges(char *edges_sql, pgr_edge_t **edges, size_t *total_edges)</div><div class="ttdoc">basic edge_sql </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00540">edges_input.c:540</a></div></div>
-<div class="ttc" id="drivedist__driver_8cpp_html_ae29905e51e981c9cb73245b685d7630a"><div class="ttname"><a href="drivedist__driver_8cpp.html#ae29905e51e981c9cb73245b685d7630a">do_pgr_driving_many_to_dist</a></div><div class="ttdeci">void do_pgr_driving_many_to_dist(pgr_edge_t *data_edges, size_t total_edges, int64_t *start_vertex, size_t s_len, double distance, bool directedFlag, bool equiCostFlag, General_path_element_t **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="drivedist__driver_8cpp_source.html#l00040">drivedist_driver.cpp:40</a></div></div>
+<div class="ttc" id="drivedist__driver_8cpp_html_ae29905e51e981c9cb73245b685d7630a"><div class="ttname"><a href="drivedist__driver_8cpp.html#ae29905e51e981c9cb73245b685d7630a">do_pgr_driving_many_to_dist</a></div><div class="ttdeci">void do_pgr_driving_many_to_dist(pgr_edge_t *data_edges, size_t total_edges, int64_t *start_vertex, size_t s_len, double distance, bool directedFlag, bool equiCostFlag, General_path_element_t **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="drivedist__driver_8cpp_source.html#l00082">drivedist_driver.cpp:82</a></div></div>
 <div class="ttc" id="arrays__input_8c_html_a8b3b624e84ed449440408d11251384c1"><div class="ttname"><a href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a></div><div class="ttdeci">int64_t * pgr_get_bigIntArray(size_t *arrlen, ArrayType *input)</div><div class="ttdoc">enforces the input array to be NOT empty </div><div class="ttdef"><b>Definition:</b> <a href="arrays__input_8c_source.html#l00124">arrays_input.c:124</a></div></div>
 <div class="ttc" id="time__msg_8c_html_a989d9723eb6d9be4cbf1214136286dbe"><div class="ttname"><a href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe">time_msg</a></div><div class="ttdeci">void time_msg(char *msg, clock_t start_t, clock_t end_t)</div><div class="ttdef"><b>Definition:</b> <a href="time__msg_8c_source.html#l00032">time_msg.c:32</a></div></div>
 <div class="ttc" id="e__report_8c_html_aa7833fe4baf65aa901e1129575e7deb2"><div class="ttname"><a href="e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2">pgr_global_report</a></div><div class="ttdeci">void pgr_global_report(char *log, char *notice, char *err)</div><div class="ttdoc">notice &amp; error </div><div class="ttdef"><b>Definition:</b> <a href="e__report_8c_source.html#l00093">e_report.c:93</a></div></div>
@@ -429,7 +430,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><a class="el" href="many__to__dist__driving__distance_8c.html">many_to_dist_driving_distance.c</a></li>
-    <li class="footer">Generated on Sun Aug 6 2017 13:02:17 for PGROUTING by
+    <li class="footer">Generated on Thu Aug 17 2017 08:51:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

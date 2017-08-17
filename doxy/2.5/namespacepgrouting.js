@@ -12,6 +12,7 @@ var namespacepgrouting =
     [ "CH_edge", "classpgrouting_1_1CH__edge.html", "classpgrouting_1_1CH__edge" ],
     [ "CH_vertex", "classpgrouting_1_1CH__vertex.html", "classpgrouting_1_1CH__vertex" ],
     [ "Identifier", "classpgrouting_1_1Identifier.html", "classpgrouting_1_1Identifier" ],
+    [ "Line_vertex", "classpgrouting_1_1Line__vertex.html", "classpgrouting_1_1Line__vertex" ],
     [ "Pgr_messages", "classpgrouting_1_1Pgr__messages.html", "classpgrouting_1_1Pgr__messages" ],
     [ "XY_vertex", "classpgrouting_1_1XY__vertex.html", "classpgrouting_1_1XY__vertex" ]
 ];

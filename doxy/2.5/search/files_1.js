@@ -14,6 +14,12 @@ var searchData=
   ['bddijkstra_2ec',['bdDijkstra.c',['../bdDijkstra_8c.html',1,'']]],
   ['bddijkstra_5fdriver_2ecpp',['bdDijkstra_driver.cpp',['../bdDijkstra__driver_8cpp.html',1,'']]],
   ['bddijkstra_5fdriver_2eh',['bdDijkstra_driver.h',['../bdDijkstra__driver_8h.html',1,'']]],
+  ['biconnectedcomponents_2ec',['biconnectedComponents.c',['../biconnectedComponents_8c.html',1,'']]],
+  ['biconnectedcomponents_5fdriver_2ecpp',['biconnectedComponents_driver.cpp',['../biconnectedComponents__driver_8cpp.html',1,'']]],
+  ['biconnectedcomponents_5fdriver_2eh',['biconnectedComponents_driver.h',['../biconnectedComponents__driver_8h.html',1,'']]],
   ['book_5fkeeping_2ecpp',['book_keeping.cpp',['../book__keeping_8cpp.html',1,'']]],
-  ['book_5fkeeping_2eh',['book_keeping.h',['../book__keeping_8h.html',1,'']]]
+  ['book_5fkeeping_2eh',['book_keeping.h',['../book__keeping_8h.html',1,'']]],
+  ['bridges_2ec',['bridges.c',['../bridges_8c.html',1,'']]],
+  ['bridges_5fdriver_2ecpp',['bridges_driver.cpp',['../bridges__driver_8cpp.html',1,'']]],
+  ['bridges_5fdriver_2eh',['bridges_driver.h',['../bridges__driver_8h.html',1,'']]]
 ];

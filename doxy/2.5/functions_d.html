@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -221,17 +222,26 @@ $(document).ready(function(){initNavTree('functions_d.html','');});
 <li>dijkstra_1_to_distance()
 : <a class="el" href="classPgr__dijkstra.html#a9000bca304955c3feb4f9d249c511295">Pgr_dijkstra&lt; G &gt;</a>
 </li>
+<li>dijkstra_1_to_distance_no_init()
+: <a class="el" href="classPgr__dijkstra.html#a054f4e1867b7dfb0b9ac6d0572697841">Pgr_dijkstra&lt; G &gt;</a>
+</li>
 <li>dijkstra_1_to_many()
 : <a class="el" href="classPgr__dijkstra.html#a86b8c09f9cbbf58f2e92475de14766d8">Pgr_dijkstra&lt; G &gt;</a>
 </li>
 <li>dijkstra_distance_visitor()
 : <a class="el" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a96d686d46e8eea9f4bf07b428cd24c7c">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor</a>
 </li>
+<li>dijkstra_distance_visitor_no_init()
+: <a class="el" href="classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a697ed4b3367c0edde7e261b3068d0262">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor_no_init</a>
+</li>
 <li>dijkstra_many_goal_visitor()
 : <a class="el" href="classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html#a6815e8b16314312f0fa82906227ab71f">Pgr_dijkstra&lt; G &gt;::dijkstra_many_goal_visitor</a>
 </li>
 <li>dijkstra_one_goal_visitor()
 : <a class="el" href="classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html#ac976227fb0c3195161e4c97429ef7a84">Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor</a>
+</li>
+<li>dijkstraTRSP()
+: <a class="el" href="classPgr__dijkstraTRSP.html#a9858d004d5240c7b2869e34ae9d6dcf9">Pgr_dijkstraTRSP&lt; G &gt;</a>
 </li>
 <li>disconnect_edge()
 : <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#aef06d12469a32d16dd7825bae9dc541d">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
@@ -240,7 +250,10 @@ $(document).ready(function(){initNavTree('functions_d.html','');});
 : <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab837f9e86a8c3a7eb1ed70831a57a964">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
 <li>disconnect_vertex()
-: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#af843e29278991d63fc0dd64101223121">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a5a3eb1dbcdd63014d793456f82ad784f">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+</li>
+<li>discover_vertex()
+: <a class="el" href="classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#adc1d76f78f805e09106dc9799d51cae1">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor_no_init</a>
 </li>
 <li>dispatcher()
 : <a class="el" href="classSignalHandler.html#a6fda8c0c9ed5c64411ffa35d26b238d1">SignalHandler</a>
@@ -250,10 +263,10 @@ $(document).ready(function(){initNavTree('functions_d.html','');});
 , <a class="el" href="classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a2c3783bc16e5e6a24acb479221dcb843">pgrouting::tsp::eucledianDmatrix</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Base__node.html#a043d5d4c8f47cd545f3aac5caf742098">pgrouting::vrp::Base_node</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html#ad84e5cf02cc247f4fbbea1873ea36dbf">pgrouting::vrp::Dnode</a>
-, <a class="el" href="classpgrouting_1_1vrp_1_1Node.html#aa5855a2127dbb9e2634720fff3a851b7">pgrouting::vrp::Node</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1Node.html#af6b18989748250c9e00d7ca7c6f8d670">pgrouting::vrp::Node</a>
 </li>
 <li>distance_heuristic()
-: <a class="el" href="classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html#a661efbaf80f2de62790ed0e69b65a487">pgrouting::algorithms::Pgr_astar&lt; G &gt;::distance_heuristic</a>
+: <a class="el" href="classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html#a8713785466213580e94ead2e1b4ee4f8">pgrouting::algorithms::Pgr_astar&lt; G &gt;::distance_heuristic</a>
 </li>
 <li>distances
 : <a class="el" href="classPgr__dijkstra.html#abb45493b234950e9f4466412169b3905">Pgr_dijkstra&lt; G &gt;</a>
@@ -266,7 +279,7 @@ $(document).ready(function(){initNavTree('functions_d.html','');});
 : <a class="el" href="classpgrouting_1_1tsp_1_1Tour.html#a6bd396e474e70a9b2eedbf7dcfe5c918">pgrouting::tsp::Tour</a>
 </li>
 <li>Dnode()
-: <a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html#ae5a756e0477bc4422715c64e14d1e45e">pgrouting::vrp::Dnode</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html#a83ecb8036c0bf27646771fed68874612">pgrouting::vrp::Dnode</a>
 </li>
 <li>do_while_feasable()
 : <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2">pgrouting::vrp::Vehicle_pickDeliver</a>
@@ -284,6 +297,12 @@ $(document).ready(function(){initNavTree('functions_d.html','');});
 <li>drivingDistance()
 : <a class="el" href="classPgr__dijkstra.html#a35c67d60454ca40449f9a47dfa40a2f4">Pgr_dijkstra&lt; G &gt;</a>
 </li>
+<li>drivingDistance_no_equicost()
+: <a class="el" href="classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a">Pgr_dijkstra&lt; G &gt;</a>
+</li>
+<li>drivingDistance_with_equicost()
+: <a class="el" href="classPgr__dijkstra.html#a54fad15282423f73f5b528ea51202607">Pgr_dijkstra&lt; G &gt;</a>
+</li>
 <li>duration()
 : <a class="el" href="classpgrouting_1_1vrp_1_1Solution.html#a2bda1f2451fe1c361b76d1ee9a1ba732">pgrouting::vrp::Solution</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#a990ae125d07ee6bed08a31730f7e5faa">pgrouting::vrp::Vehicle</a>
@@ -294,7 +313,7 @@ $(document).ready(function(){initNavTree('functions_d.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 6 2017 13:02:19 for PGROUTING by
+    <li class="footer">Generated on Thu Aug 17 2017 08:51:12 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

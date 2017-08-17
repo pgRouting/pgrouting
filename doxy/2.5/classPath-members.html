@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -144,19 +145,21 @@ $(document).ready(function(){initNavTree('classPath.html','');});
   <tr><td class="entry"><a class="el" href="classPath.html#ac6ec5039de3fbdc106eff0222a7c8ffe">operator&lt;&lt;</a>(std::ostream &amp;log, const Path &amp;p)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classPath.html#a88118f86efd61d7e3325da3eef26fb32">operator[]</a>(size_t i) const </td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="classPath.html#a3c9553ffd9565ac58facdf8777c5e7e3">operator[]</a>(size_t i)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a></td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classPath.html#af26cfab021ddf49af73da3b2beca85ac">Path</a>()</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPath.html#af35ad991c5b32a5f03d07ad5831956d0">Path</a>(int64_t s_id, int64_t e_id)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classPath.html#a696a40baf258e343cef8c5db005d522b">Path</a>(const Path &amp;)=default</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPath.html#af26cfab021ddf49af73da3b2beca85ac">Path</a>()</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPath.html#af35ad991c5b32a5f03d07ad5831956d0">Path</a>(int64_t s_id, int64_t e_id)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a696a40baf258e343cef8c5db005d522b">Path</a>(const Path &amp;)=default</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPath.html#aa756b9e7d3f6da13211097788882378a">Path</a>(G &amp;graph, int64_t source, double distance, const std::vector&lt; V &gt; &amp;predecessors, const std::vector&lt; double &gt; &amp;distances)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classPath.html#aae76e0360f69e4389a25dc724204bb53">Path</a>(G &amp;graph, V v_source, double distance, const std::vector&lt; V &gt; &amp;predecessors, const std::vector&lt; double &gt; &amp;distances)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="classPath.html#aefd4e6782925f499fd2ea0c683ab0ab0">Path</a>(const G &amp;graph, const V v_source, const V v_target, const std::vector&lt; V &gt; &amp;predecessors, const std::vector&lt; double &gt; &amp;distances, bool only_cost, bool normal=true)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a> typedef</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">push_back</a>(Path_t data)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a46140ad11410c4c8ddb3c0c1feeee895">push_front</a>(Path_t data)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classPath.html#a2f8de8a38a6b7cc0d8a6faff8bf42c5a">push_front</a>(int64_t d_vertex, int64_t d_edge, double d_cost, double d_tot_cost)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e">reverse</a>()</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classPath.html#a961437d87838dd6dc86027a80fd9b59b">set_data</a>(int64_t d_from, int64_t d_to, int64_t d_vertex, int64_t d_edge, double d_cost, double d_tot_cost)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>() const </td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a></td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a> typedef</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">push_back</a>(Path_t data)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPath.html#a46140ad11410c4c8ddb3c0c1feeee895">push_front</a>(Path_t data)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a2f8de8a38a6b7cc0d8a6faff8bf42c5a">push_front</a>(int64_t d_vertex, int64_t d_edge, double d_cost, double d_tot_cost)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e">reverse</a>()</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a961437d87838dd6dc86027a80fd9b59b">set_data</a>(int64_t d_from, int64_t d_to, int64_t d_vertex, int64_t d_edge, double d_cost, double d_tot_cost)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>() const </td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPath.html#a63b45e711a11db27b4e736128d3d7225">sort_by_node_agg_cost</a>()</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>() const </td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classPath.html#a4316efe698e74adf1e0a119da1db2469">start_id</a>(int64_t value)</td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="classPath.html#a52970ece6b99b8001595b1989120ce84">tot_cost</a>() const </td><td class="entry"><a class="el" href="classPath.html">Path</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
@@ -165,7 +168,7 @@ $(document).ready(function(){initNavTree('classPath.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 6 2017 13:02:18 for PGROUTING by
+    <li class="footer">Generated on Thu Aug 17 2017 08:51:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -289,7 +290,7 @@ template&lt;class G &gt; </div>
 
 <p>Definition at line <a class="el" href="pgr__ksp_8hpp_source.html#l00207">207</a> of file <a class="el" href="pgr__ksp_8hpp_source.html">pgr_ksp.hpp</a>.</p>
 
-<p>References <a class="el" href="basePath__SSEC_8cpp_source.html#l00111">Path::appendPath()</a>, and <a class="el" href="pgr__dijkstra_8hpp_source.html#l00394">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
+<p>References <a class="el" href="basePath__SSEC_8cpp_source.html#l00112">Path::appendPath()</a>, and <a class="el" href="pgr__dijkstra_8hpp_source.html#l00159">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                       {</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    int64_t spurNodeId;</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
@@ -323,13 +324,13 @@ template&lt;class G &gt; </div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
 <div class="ttc" id="classPgr__ksp_html_afd9e2136d3e354ec074773d8f3d533aa"><div class="ttname"><a href="classPgr__ksp.html#afd9e2136d3e354ec074773d8f3d533aa">Pgr_ksp::curr_result_path</a></div><div class="ttdeci">Path curr_result_path</div><div class="ttdoc">storage for the current result </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00119">pgr_ksp.hpp:119</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_ac29356ebe96bd910808af028e0e508b6"><div class="ttname"><a href="classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6">Pgr_ksp::m_Heap</a></div><div class="ttdeci">pSet m_Heap</div><div class="ttdoc">the heap </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00123">pgr_ksp.hpp:123</a></div></div>
-<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00050">pgr_dijkstra.hpp:50</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_a3fc94e730d74d65c3fc2c64c2d4bd1ff"><div class="ttname"><a href="classPgr__ksp.html#a3fc94e730d74d65c3fc2c64c2d4bd1ff">Pgr_ksp::m_end</a></div><div class="ttdeci">int64_t m_end</div><div class="ttdoc">target id </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00117">pgr_ksp.hpp:117</a></div></div>
-<div class="ttc" id="classPgr__dijkstra_html_a78d6855cf47cb741d8baff32e7cdfe54"><div class="ttname"><a href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">Path dijkstra(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">one to one </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00394">pgr_dijkstra.hpp:394</a></div></div>
-<div class="ttc" id="classPath_html_ac9db12aac6bf4f045a25c3fd1e70fd20"><div class="ttname"><a href="classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20">Path::getSubpath</a></div><div class="ttdeci">Path getSubpath(unsigned int j) const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00088">basePath_SSEC.cpp:88</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html_a78d6855cf47cb741d8baff32e7cdfe54"><div class="ttname"><a href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">Path dijkstra(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">Dijkstra 1 to 1. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00159">pgr_dijkstra.hpp:159</a></div></div>
+<div class="ttc" id="classPath_html_ac9db12aac6bf4f045a25c3fd1e70fd20"><div class="ttname"><a href="classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20">Path::getSubpath</a></div><div class="ttdeci">Path getSubpath(unsigned int j) const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00089">basePath_SSEC.cpp:89</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_a68c881a727ecb17f5e4db3b5d7f5fa34"><div class="ttname"><a href="classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34">Pgr_ksp::m_ResultSet</a></div><div class="ttdeci">pSet m_ResultSet</div><div class="ttdoc">ordered set of shortest paths </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00122">pgr_ksp.hpp:122</a></div></div>
 <div class="ttc" id="classPath_html_a173f5f76fcc498b81b97261251d6a9a3"><div class="ttname"><a href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">Path::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00070">basePath_SSEC.hpp:70</a></div></div>
-<div class="ttc" id="classPath_html_a9cb45e3a413a03f1c4224b840af1fe83"><div class="ttname"><a href="classPath.html#a9cb45e3a413a03f1c4224b840af1fe83">Path::appendPath</a></div><div class="ttdeci">void appendPath(const Path &amp;o_path)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00111">basePath_SSEC.cpp:111</a></div></div>
+<div class="ttc" id="classPath_html_a9cb45e3a413a03f1c4224b840af1fe83"><div class="ttname"><a href="classPath.html#a9cb45e3a413a03f1c4224b840af1fe83">Path::appendPath</a></div><div class="ttdeci">void appendPath(const Path &amp;o_path)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00112">basePath_SSEC.cpp:112</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_abc9f355a52aee675dfe5df77fd6bae71"><div class="ttname"><a href="classPgr__ksp.html#abc9f355a52aee675dfe5df77fd6bae71">Pgr_ksp::removeVertices</a></div><div class="ttdeci">void removeVertices(G &amp;graph, const Path &amp;path)</div><div class="ttdoc">stores in subPath the first i elements of path </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00201">pgr_ksp.hpp:201</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -337,7 +338,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPgr__ksp_a1e5476d1b0d125fef8f3e5aa634b5782_cgraph.png" border="0" usemap="#classPgr__ksp_a1e5476d1b0d125fef8f3e5aa634b5782_cgraph" alt=""/></div>
 <map name="classPgr__ksp_a1e5476d1b0d125fef8f3e5aa634b5782_cgraph" id="classPgr__ksp_a1e5476d1b0d125fef8f3e5aa634b5782_cgraph">
-<area shape="rect" id="node2" href="classPath.html#a9cb45e3a413a03f1c4224b840af1fe83" title="Path::appendPath" alt="" coords="215,5,342,32"/><area shape="rect" id="node3" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="one to one " alt="" coords="208,56,349,83"/></map>
+<area shape="rect" id="node2" href="classPath.html#a9cb45e3a413a03f1c4224b840af1fe83" title="Path::appendPath" alt="" coords="215,5,342,32"/><area shape="rect" id="node3" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="Dijkstra 1 to 1. " alt="" coords="208,56,349,83"/></map>
 </div>
 </p>
 
@@ -441,7 +442,7 @@ template&lt;class G &gt; </div>
 
 <p>Definition at line <a class="el" href="pgr__ksp_8hpp_source.html#l00135">135</a> of file <a class="el" href="pgr__ksp_8hpp_source.html">pgr_ksp.hpp</a>.</p>
 
-<p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00394">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00071">Path::empty()</a>.</p>
+<p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00159">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00071">Path::empty()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                            {</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;     <a class="code" href="classPath.html">Path</a> path;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
@@ -454,10 +455,10 @@ template&lt;class G &gt; </div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
 <div class="ttc" id="classPgr__ksp_html_afd9e2136d3e354ec074773d8f3d533aa"><div class="ttname"><a href="classPgr__ksp.html#afd9e2136d3e354ec074773d8f3d533aa">Pgr_ksp::curr_result_path</a></div><div class="ttdeci">Path curr_result_path</div><div class="ttdoc">storage for the current result </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00119">pgr_ksp.hpp:119</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_abae118da08007fc1c69ff04b442ca5cf"><div class="ttname"><a href="classPgr__ksp.html#abae118da08007fc1c69ff04b442ca5cf">Pgr_ksp::m_start</a></div><div class="ttdeci">int64_t m_start</div><div class="ttdoc">source id </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00116">pgr_ksp.hpp:116</a></div></div>
-<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00047">pgr_dijkstra.hpp:47</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00050">pgr_dijkstra.hpp:50</a></div></div>
 <div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_a3fc94e730d74d65c3fc2c64c2d4bd1ff"><div class="ttname"><a href="classPgr__ksp.html#a3fc94e730d74d65c3fc2c64c2d4bd1ff">Pgr_ksp::m_end</a></div><div class="ttdeci">int64_t m_end</div><div class="ttdoc">target id </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00117">pgr_ksp.hpp:117</a></div></div>
-<div class="ttc" id="classPgr__dijkstra_html_a78d6855cf47cb741d8baff32e7cdfe54"><div class="ttname"><a href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">Path dijkstra(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">one to one </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00394">pgr_dijkstra.hpp:394</a></div></div>
+<div class="ttc" id="classPgr__dijkstra_html_a78d6855cf47cb741d8baff32e7cdfe54"><div class="ttname"><a href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">Path dijkstra(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">Dijkstra 1 to 1. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00159">pgr_dijkstra.hpp:159</a></div></div>
 <div class="ttc" id="classPath_html_ad413fcb7c6c703e711d4be9b8cf91bf4"><div class="ttname"><a href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">Path::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00071">basePath_SSEC.hpp:71</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_a68c881a727ecb17f5e4db3b5d7f5fa34"><div class="ttname"><a href="classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34">Pgr_ksp::m_ResultSet</a></div><div class="ttdeci">pSet m_ResultSet</div><div class="ttdoc">ordered set of shortest paths </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00122">pgr_ksp.hpp:122</a></div></div>
 </div><!-- fragment -->
@@ -466,7 +467,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPgr__ksp_a11eac853ca869c5b829f13a7c199255c_cgraph.png" border="0" usemap="#classPgr__ksp_a11eac853ca869c5b829f13a7c199255c_cgraph" alt=""/></div>
 <map name="classPgr__ksp_a11eac853ca869c5b829f13a7c199255c_cgraph" id="classPgr__ksp_a11eac853ca869c5b829f13a7c199255c_cgraph">
-<area shape="rect" id="node2" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="one to one " alt="" coords="224,5,365,32"/><area shape="rect" id="node3" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4" title="Path::empty" alt="" coords="248,56,341,83"/></map>
+<area shape="rect" id="node2" href="classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="Dijkstra 1 to 1. " alt="" coords="224,5,365,32"/><area shape="rect" id="node3" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4" title="Path::empty" alt="" coords="248,56,341,83"/></map>
 </div>
 </p>
 
@@ -861,7 +862,7 @@ template&lt;class G&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPgr__ksp.html">Pgr_ksp</a></li>
-    <li class="footer">Generated on Sun Aug 6 2017 13:02:18 for PGROUTING by
+    <li class="footer">Generated on Thu Aug 17 2017 08:51:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -3,9 +3,10 @@
 <area shape="rect" id="node3" href="$pgr__withPoints_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/withPoints/src/pgr\l_withPoints.hpp" alt="" coords="209,126,361,197"/>
 <area shape="rect" id="node4" href="$pgr__allpairs_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/allpairs/pgr\l_allpairs.hpp" alt="" coords="386,126,536,197"/>
 <area shape="rect" id="node5" href="$pgr__astar_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/astar/pgr_astar.hpp" alt="" coords="561,133,743,189"/>
-<area shape="rect" id="node6" href="$pgr__bdAstar_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/bdAstar/pgr_bdAstar.hpp" alt="" coords="683,253,897,309"/>
-<area shape="rect" id="node7" href="$pgr__bdDijkstra_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/bdDijkstra/pgr\l_bdDijkstra.hpp" alt="" coords="941,246,1093,317"/>
+<area shape="rect" id="node6" href="$pgr__bdAstar_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/bdAstar/pgr_bdAstar.hpp" alt="" coords="662,253,876,309"/>
+<area shape="rect" id="node7" href="$pgr__bdDijkstra_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/bdDijkstra/pgr\l_bdDijkstra.hpp" alt="" coords="901,246,1053,317"/>
 <area shape="rect" id="node8" href="$pgr__bidirectional_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/cpp_common/pgr\l_bidirectional.hpp" alt="" coords="819,126,989,197"/>
-<area shape="rect" id="node9" href="$pgr__dijkstra_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/dijkstra/pgr\l_dijkstra.hpp" alt="" coords="1065,126,1215,197"/>
-<area shape="rect" id="node10" href="$pgr__ksp_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_ksp.hpp" alt="" coords="1158,253,1324,309"/>
+<area shape="rect" id="node9" href="$pgr__dijkstra_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/dijkstra/pgr\l_dijkstra.hpp" alt="" coords="1115,126,1265,197"/>
+<area shape="rect" id="node10" href="$pgr__dijkstraTRSP_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/dijkstraTRSP\l/pgr_dijkstraTRSP.hpp" alt="" coords="1077,246,1231,317"/>
+<area shape="rect" id="node11" href="$pgr__ksp_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_ksp.hpp" alt="" coords="1257,253,1423,309"/>
 </map>

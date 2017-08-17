@@ -76,16 +76,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Contraction.html",
-"classIdentifiers.html#aa79fd722f6a21ae8083effc0ff02e043",
-"classpgrouting_1_1algorithms_1_1Pgr__astar_1_1distance__heuristic.html#af31baa4ce7a42e8d7da49d589c0574d9",
-"classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a1f414b01d08f39b1b8670ce8ee4cfd94",
-"classpgrouting_1_1vrp_1_1Optimize.html#a6f585163bbc3f99d5f7252275701021d",
-"classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba",
-"dir_ba2be047686aaa8bd602dca826a8a1f3.html",
-"globals_func_c.html",
-"pgr__assert_8h.html#ad0b8692b21986a9d86dcf801b7433791",
-"structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4",
-"withPoints__dd__driver_8cpp_source.html"
+"classGraphDefinition.html#afe8e91e384c9d2015ac1af93f542a473",
+"classUserQuitException.html#a7d99e13cc7eaa7615416188da49c2cbb",
+"classpgrouting_1_1contraction_1_1Pgr__linear.html#a8b6d6520b8f55c307a70f8bff22b8816",
+"classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a11cf7bdab6eadf38fa8ecd95eb2b19bc",
+"classpgrouting_1_1vrp_1_1Optimize.html#a3d0a917f2993449c45ce0febbff2e13f",
+"classpgrouting_1_1vrp_1_1Vehicle.html#ac447a0a784cb863f908f3375e2ca9d1c",
+"dir_1cdbf5d4419419d68ff74d045b4943c0.html",
+"general__vehicle__orders__t_8h_source.html",
+"optimize_8h_source.html",
+"restrictions__input_8c_source.html",
+"test__c__edges__driver_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

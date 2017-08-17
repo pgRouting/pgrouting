@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['sigint_5fhandler',['SIGINT_Handler',['../classSIGINT__Handler.html',1,'']]],
-  ['signalhandler',['SignalHandler',['../classSignalHandler.html',1,'']]],
-  ['sigquit_5fhandler',['SIGQUIT_Handler',['../classSIGQUIT__Handler.html',1,'']]],
-  ['solution',['Solution',['../classpgrouting_1_1vrp_1_1Solution.html',1,'pgrouting::vrp']]],
-  ['stringoperation',['StringOperation',['../classStringOperation.html',1,'']]],
-  ['stringtokenizer',['StringTokenizer',['../classStringTokenizer.html',1,'']]],
-  ['swap_5fbk',['Swap_bk',['../classpgrouting_1_1vrp_1_1Swap__bk.html',1,'pgrouting::vrp']]],
-  ['swap_5finfo',['Swap_info',['../classpgrouting_1_1vrp_1_1Swap__info.html',1,'pgrouting::vrp']]]
+  ['restrict_5fcolumns',['restrict_columns',['../structrestrict__columns.html',1,'']]],
+  ['restrict_5fstruct',['restrict_struct',['../structrestrict__struct.html',1,'']]],
+  ['restrict_5ft',['Restrict_t',['../structRestrict__t.html',1,'']]],
+  ['restriction',['Restriction',['../classRestriction.html',1,'']]],
+  ['routes_5ft',['Routes_t',['../structRoutes__t.html',1,'']]],
+  ['rule',['Rule',['../structRule.html',1,'']]]
 ];

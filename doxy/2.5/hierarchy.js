@@ -9,6 +9,7 @@ var hierarchy =
     ] ],
     [ "default_dijkstra_visitor", null, [
       [ "Pgr_dijkstra< G >::dijkstra_distance_visitor", "classPgr__dijkstra_1_1dijkstra__distance__visitor.html", null ],
+      [ "Pgr_dijkstra< G >::dijkstra_distance_visitor_no_init", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html", null ],
       [ "Pgr_dijkstra< G >::dijkstra_many_goal_visitor", "classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html", null ],
       [ "Pgr_dijkstra< G >::dijkstra_one_goal_visitor", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html", null ]
     ] ],
@@ -30,6 +31,7 @@ var hierarchy =
     [ "Identifiers< int64_t >", "classIdentifiers.html", null ],
     [ "Identifiers< size_t >", "classIdentifiers.html", null ],
     [ "Identifiers< V >", "classIdentifiers.html", null ],
+    [ "Line_graph_rt", "structLine__graph__rt.html", null ],
     [ "MATRIX", null, [
       [ "pgrouting::tsp::TSP< MATRIX >", "classpgrouting_1_1tsp_1_1TSP.html", null ]
     ] ],
@@ -41,11 +43,16 @@ var hierarchy =
     [ "Pgr_allpairs< G >", "classPgr__allpairs.html", null ],
     [ "Pgr_allpairs< G >::inf_plus< T >", "structPgr__allpairs_1_1inf__plus.html", null ],
     [ "pgrouting::graph::Pgr_base_graph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", [
-      [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ]
+      [ "pgrouting::graph::Pgr_componentsGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html", null ],
+      [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ],
+      [ "pgrouting::graph::Pgr_lineGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html", null ]
     ] ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", null ],
+    [ "Pgr_components< G >", "classPgr__components.html", null ],
+    [ "pgr_components_rt", "structpgr__components__rt.html", null ],
     [ "Pgr_dijkstra< G >", "classPgr__dijkstra.html", null ],
     [ "Pgr_dijkstra< G >::found_goals", "structPgr__dijkstra_1_1found__goals.html", null ],
+    [ "Pgr_dijkstraTRSP< G >", "classPgr__dijkstraTRSP.html", null ],
     [ "pgr_edge_t", "structpgr__edge__t.html", null ],
     [ "Pgr_edge_xy_t", "structPgr__edge__xy__t.html", null ],
     [ "pgr_flow_t", "structpgr__flow__t.html", null ],
@@ -80,6 +87,7 @@ var hierarchy =
         [ "pgrouting::vrp::Vehicle_pickDeliver", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html", null ]
       ] ]
     ] ],
+    [ "pgrouting::Line_vertex", "classpgrouting_1_1Line__vertex.html", null ],
     [ "pgrouting::Pgr_messages", "classpgrouting_1_1Pgr__messages.html", null ],
     [ "pgrouting::tsp::Dmatrix", "classpgrouting_1_1tsp_1_1Dmatrix.html", null ],
     [ "pgrouting::tsp::eucledianDmatrix", "classpgrouting_1_1tsp_1_1eucledianDmatrix.html", null ],
@@ -106,6 +114,7 @@ var hierarchy =
     [ "restrict_columns", "structrestrict__columns.html", null ],
     [ "restrict_struct", "structrestrict__struct.html", null ],
     [ "Restrict_t", "structRestrict__t.html", null ],
+    [ "Restriction", "classRestriction.html", null ],
     [ "Routes_t", "structRoutes__t.html", null ],
     [ "Rule", "structRule.html", null ],
     [ "SignalHandler", "classSignalHandler.html", null ],

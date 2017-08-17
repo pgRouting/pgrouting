@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -180,10 +181,12 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 : <a class="el" href="classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736">Identifiers&lt; T &gt;</a>
 , <a class="el" href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">Path</a>
 , <a class="el" href="classPgr__dijkstra.html#a2f5d0a4536457dd08f4d541ea5e5ffca">Pgr_dijkstra&lt; G &gt;</a>
+, <a class="el" href="classPgr__dijkstraTRSP.html#a46e5b514335090fb6cd399dbb7dc77d9">Pgr_dijkstraTRSP&lt; G &gt;</a>
 , <a class="el" href="classPgr__ksp.html#a8c4a810ebc0c9d3b5b24c0353075fc96">Pgr_ksp&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1algorithms_1_1Pgr__astar.html#afbf710a4c295a0befdd7c505303a713a">pgrouting::algorithms::Pgr_astar&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ac170db6074beff0055040e570fdb725d">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1Pgr__messages.html#a99a9dde300a4a8e5ce8abc8b0560b9f8">pgrouting::Pgr_messages</a>
+, <a class="el" href="classRestriction.html#af004912a5ed3b30b741af8b5da46cfee">Restriction</a>
 </li>
 <li>clear_contracted_vertices()
 : <a class="el" href="classpgrouting_1_1CH__edge.html#a85a95ffdce7847255759af3e2d2c1637">pgrouting::CH_edge</a>
@@ -213,6 +216,12 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 </li>
 <li>complete_path()
 : <a class="el" href="classPath.html#a23333ad174f0b6a6714b950103ef9ce6">Path</a>
+</li>
+<li>component
+: <a class="el" href="structpgr__components__rt.html#af480844e7a4472dff857deb3a65f233b">pgr_components_rt</a>
+</li>
+<li>connectedComponents()
+: <a class="el" href="classPgr__components.html#a0bfdc1bb66c003d69b4dc8dc039b0563">Pgr_components&lt; G &gt;</a>
 </li>
 <li>connectEdge()
 : <a class="el" href="classGraphDefinition.html#a03e605a7da63297b459419b8cfc17845">GraphDefinition</a>
@@ -245,6 +254,7 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 , <a class="el" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">edge</a>
 , <a class="el" href="structedge__columns.html#ae543a17157037d95212232b9688d29aa">edge_columns</a>
 , <a class="el" href="structGeneral__path__element__t.html#aedb5d4d2a81599b30d22a8d505015cb6">General_path_element_t</a>
+, <a class="el" href="structLine__graph__rt.html#a743e2c61022c971544c7cf44e4376b0a">Line_graph_rt</a>
 , <a class="el" href="structmatrix__cell.html#a938fb9d685bbcd6ca9f1e85e525fdefe">matrix_cell</a>
 , <a class="el" href="structpath__element.html#a3613c151128d4d69e5e511a1e57b7abe">path_element</a>
 , <a class="el" href="structPath__t.html#aa697b26f0c67891955386c40337e1aa0">Path_t</a>
@@ -252,6 +262,7 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 , <a class="el" href="structPgr__edge__xy__t.html#a105be754bb6b16688d2fb6496516b7bb">Pgr_edge_xy_t</a>
 , <a class="el" href="classpgrouting_1_1Basic__edge.html#afd3f18d010e1d07e8e1a9d153258dd52">pgrouting::Basic_edge</a>
 , <a class="el" href="classpgrouting_1_1CH__edge.html#ac191fab511ca34d41e77dba5dfd44710">pgrouting::CH_edge</a>
+, <a class="el" href="classpgrouting_1_1Line__vertex.html#a33f1b159f8189b2f771b0cc416af60a4">pgrouting::Line_vertex</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Solution.html#a674433d019be75504877c559e3a8c276">pgrouting::vrp::Solution</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#a121239d471cfeefc7c40b23bf787a837">pgrouting::vrp::Vehicle</a>
 </li>
@@ -260,6 +271,8 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 </li>
 <li>cost
 : <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a976c43e59901630a840b467a2bdf5bc2">pgrouting::vrp::Vehicle_pickDeliver</a>
+, <a class="el" href="structRestrict__t.html#a860e2fd3167e197b012a55feb481b4f9">Restrict_t</a>
+, <a class="el" href="classRestriction.html#a62ff62e511e1e25c861ec87f7df874b2">Restriction</a>
 , <a class="el" href="structRoutes__t.html#a2219a78a0e110f9a9e46f34b4ad43a72">Routes_t</a>
 , <a class="el" href="structRule.html#ae8442475c726d8bed6d069d0536dd696">Rule</a>
 </li>
@@ -277,11 +290,11 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 , <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a3ef3052e2483b53309f9a9b99552b17e">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a46fd5c70452e6aca2609b83f213ff6bc">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;</a>
 </li>
-<li>costs
-: <a class="el" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a967f03ff9965975d33e2f0be77fa9d71">pgrouting::tsp::Dmatrix</a>
-</li>
 <li>Costs
 : <a class="el" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a60112b4b2eb4c139ae35f58ba3e1128f">pgrouting::tsp::Dmatrix</a>
+</li>
+<li>costs
+: <a class="el" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a967f03ff9965975d33e2f0be77fa9d71">pgrouting::tsp::Dmatrix</a>
 </li>
 <li>count_rows()
 : <a class="el" href="classPgr__allpairs.html#a6c65d764e29dffee18451019c4da0865">Pgr_allpairs&lt; G &gt;</a>
@@ -294,6 +307,7 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 , <a class="el" href="classpgrouting_1_1Basic__vertex.html#a566f5755c422a1e1bae8888816511c9d">pgrouting::Basic_vertex</a>
 , <a class="el" href="classpgrouting_1_1CH__edge.html#a22dc23aab2ffd1dedfb4b8e3b0a1175b">pgrouting::CH_edge</a>
 , <a class="el" href="classpgrouting_1_1CH__vertex.html#a08fd2adc15e6789453cdbe39a8b2f218">pgrouting::CH_vertex</a>
+, <a class="el" href="classpgrouting_1_1Line__vertex.html#a8524380229d35020c540f49da3326c70">pgrouting::Line_vertex</a>
 , <a class="el" href="classpgrouting_1_1XY__vertex.html#aca0f046077596390252d4f93a4299405">pgrouting::XY_vertex</a>
 </li>
 <li>create_b_deliver()
@@ -308,11 +322,15 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 <li>create_b_start()
 : <a class="el" href="classpgrouting_1_1vrp_1_1Fleet.html#abfd6e75af91b9ddb9eec42fb845300a8">pgrouting::vrp::Fleet</a>
 </li>
+<li>create_edges()
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ab9a64f36e52212504aceaf3fa50dc66a">pgrouting::graph::Pgr_lineGraph&lt; G, T_V, T_E &gt;</a>
+</li>
 <li>create_max_cardinality_graph()
 : <a class="el" href="classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#a76b9509bd0685760f1c0c7974820e41b">pgrouting::flow::PgrCardinalityGraph&lt; G &gt;</a>
 </li>
 <li>curr_result_path
-: <a class="el" href="classPgr__ksp.html#afd9e2136d3e354ec074773d8f3d533aa">Pgr_ksp&lt; G &gt;</a>
+: <a class="el" href="classPgr__dijkstraTRSP.html#ae447afe472bb0563a3cd3aadfc3bf828">Pgr_dijkstraTRSP&lt; G &gt;</a>
+, <a class="el" href="classPgr__ksp.html#afd9e2136d3e354ec074773d8f3d533aa">Pgr_ksp&lt; G &gt;</a>
 </li>
 <li>current_cost
 : <a class="el" href="classpgrouting_1_1tsp_1_1TSP.html#abe136978c9e9d6ab208c9efb3de6c01c">pgrouting::tsp::TSP&lt; MATRIX &gt;</a>
@@ -331,7 +349,7 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 6 2017 13:02:19 for PGROUTING by
+    <li class="footer">Generated on Thu Aug 17 2017 08:51:12 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

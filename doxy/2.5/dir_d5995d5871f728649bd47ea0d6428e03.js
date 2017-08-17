@@ -12,9 +12,15 @@ var dir_d5995d5871f728649bd47ea0d6428e03 =
       [ "General_path_element_t", "structGeneral__path__element__t.html", "structGeneral__path__element__t" ]
     ] ],
     [ "graph_enum.h", "graph__enum_8h.html", "graph__enum_8h" ],
+    [ "line_graph_rt.h", "line__graph__rt_8h.html", [
+      [ "Line_graph_rt", "structLine__graph__rt.html", "structLine__graph__rt" ]
+    ] ],
     [ "matrix_cell_t.h", "matrix__cell__t_8h.html", "matrix__cell__t_8h" ],
     [ "pgr_basic_edge_t.h", "pgr__basic__edge__t_8h.html", [
       [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", "structpgr__basic__edge__t" ]
+    ] ],
+    [ "pgr_components_rt.h", "pgr__components__rt_8h.html", [
+      [ "pgr_components_rt", "structpgr__components__rt.html", "structpgr__components__rt" ]
     ] ],
     [ "pgr_edge_t.h", "pgr__edge__t_8h.html", [
       [ "pgr_edge_t", "structpgr__edge__t.html", "structpgr__edge__t" ]

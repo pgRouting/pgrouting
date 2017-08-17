@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
    &#160;<span id="projectnumber">2.5-dev</span>
@@ -151,8 +152,14 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 <li>G_T_E
 : <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#af403c5f2fa90d9be39d0f71a289673c2">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
+<li>G_T_V
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a4d715ed5577a0cca492961678db2a8e7">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+</li>
 <li>generate_postgres_data()
 : <a class="el" href="classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba">Path</a>
+</li>
+<li>generate_results()
+: <a class="el" href="classPgr__components.html#a5f2fd2f6b4c08ef17f3b3df713874723">Pgr_components&lt; G &gt;</a>
 </li>
 <li>get_boost_vertex()
 : <a class="el" href="classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#aae2435f3fac02164a9d5f43b88d1f317">pgrouting::flow::PgrCardinalityGraph&lt; G &gt;</a>
@@ -166,6 +173,9 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 </li>
 <li>get_dbglog()
 : <a class="el" href="classpgrouting_1_1Pgr__messages.html#a8b2569b45f85c3ac2686934160e9ae6a">pgrouting::Pgr_messages</a>
+</li>
+<li>get_drivingDistance_with_equicost_paths()
+: <a class="el" href="classPgr__dijkstra.html#a1ad615c70bc2db48c8a057a1184c9f60">Pgr_dijkstra&lt; G &gt;</a>
 </li>
 <li>get_edge_disjoint_paths()
 : <a class="el" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a71db8d3b386fc612bfa9b1e28fb399fb">pgrouting::graph::PgrFlowGraph</a>
@@ -226,6 +236,12 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 , <a class="el" href="classpgrouting_1_1vrp_1_1Solution.html#a7e5df00b1fea4bcfb6c83ab356ca64d3">pgrouting::vrp::Solution</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#a735015a1c30c5a1680d2ab303f1aa4c9">pgrouting::vrp::Vehicle</a>
 </li>
+<li>get_postgres_results_directed()
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a32640e84c6abe522dcbeef889481a21b">pgrouting::graph::Pgr_lineGraph&lt; G, T_V, T_E &gt;</a>
+</li>
+<li>get_postgres_results_undirected()
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__lineGraph.html#afcb16f0c7fea50b08e05c6840f45d41e">pgrouting::graph::Pgr_lineGraph&lt; G, T_V, T_E &gt;</a>
+</li>
 <li>get_row()
 : <a class="el" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a0d4ae711e9263b80c7299bd99f56e627">pgrouting::tsp::Dmatrix</a>
 , <a class="el" href="classpgrouting_1_1tsp_1_1eucledianDmatrix.html#ab9115bcf8cefc96b6505be78a4664373">pgrouting::tsp::eucledianDmatrix</a>
@@ -260,6 +276,9 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 </li>
 <li>getDeltaSwap()
 : <a class="el" href="classpgrouting_1_1tsp_1_1TSP.html#a61ead4bc9e32b32929eff6325afc3989">pgrouting::tsp::TSP&lt; MATRIX &gt;</a>
+</li>
+<li>getDijkstraSolution()
+: <a class="el" href="classPgr__dijkstraTRSP.html#aa0d9c2c04238b6c1524468bf14a18497">Pgr_dijkstraTRSP&lt; G &gt;</a>
 </li>
 <li>getFirstSolution()
 : <a class="el" href="classPgr__ksp.html#a11eac853ca869c5b829f13a7c199255c">Pgr_ksp&lt; G &gt;</a>
@@ -297,10 +316,16 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 <li>graph
 : <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a352928e1ec9bc2d398745575f5b19676">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+, <a class="el" href="classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a9a45799593424ea94724cc25c649dc30">pgrouting::graph::Pgr_componentsGraph&lt; G, T_V, T_E &gt;</a>
 , <a class="el" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a818edf6e9599d3b9cbd1b7268d9b5da6">pgrouting::graph::PgrFlowGraph</a>
 </li>
 <li>graph_add_edge()
-: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a623893fcb5124ca29b06513aefbce70c">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad976deb2bba97315f398ecb19b7e8b5b">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+, <a class="el" href="classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#af1e2b6ab2603241de54be6b06d1bd341">pgrouting::graph::Pgr_componentsGraph&lt; G, T_V, T_E &gt;</a>
+, <a class="el" href="classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a8e83e9e49b198201604559efdef9f62e">pgrouting::graph::Pgr_lineGraph&lt; G, T_V, T_E &gt;</a>
+</li>
+<li>graph_add_edge_no_create_vertex()
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7e459dc83a1ffc6429500d848e762a77">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
 <li>GraphDefinition()
 : <a class="el" href="classGraphDefinition.html#add9cdec7ad3dfce686757d4b000c245f">GraphDefinition</a>
@@ -314,7 +339,7 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 6 2017 13:02:19 for PGROUTING by
+    <li class="footer">Generated on Thu Aug 17 2017 08:51:12 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
