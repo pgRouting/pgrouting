@@ -23,8 +23,8 @@ Synopsis
 
 The function returns:
 
-  - ``OK`` after the vertices table has been reconstructed.
-  - ``FAIL`` when the vertices table was not reconstructed due to an error.
+- ``OK`` after the vertices table has been reconstructed.
+- ``FAIL`` when the vertices table was not reconstructed due to an error.
 
 .. index::
 	single: createVerticesTable(Complete Signature)
@@ -53,25 +53,25 @@ The reconstruction of the vertices table  function accepts the following paramet
 
     The ``edge_table`` will be affected
 
-        - An index will be created, if it doesn't exists, to speed up the process to the following columns:
+    - An index will be created, if it doesn't exists, to speed up the process to the following columns:
 
-           * ``the_geom``
-           * ``source``
-           * ``target``
+      * ``the_geom``
+      * ``source``
+      * ``target``
 
 The function returns:
 
-  - ``OK`` after the vertices table has been reconstructed.
+- ``OK`` after the vertices table has been reconstructed.
 
-    * Creates a vertices table: <edge_table>_vertices_pgr.
-    * Fills ``id`` and ``the_geom`` columns of the vertices table based on the source and target columns of the edge table.
+  * Creates a vertices table: <edge_table>_vertices_pgr.
+  * Fills ``id`` and ``the_geom`` columns of the vertices table based on the source and target columns of the edge table.
 
-  - ``FAIL`` when the vertices table was not reconstructed due to an error.
+- ``FAIL`` when the vertices table was not reconstructed due to an error.
 
-    * A required column of the Network table is not found or is not of the appropriate type.
-    * The condition is not well formed.
-    * The names of source, target are the same.
-    * The SRID of the geometry could not be determined.
+  * A required column of the Network table is not found or is not of the appropriate type.
+  * The condition is not well formed.
+  * The names of source, target are the same.
+  * The SRID of the geometry could not be determined.
 
 .. rubric:: The Vertices Table
 
@@ -108,8 +108,20 @@ Usage when the edge table's columns MATCH the default values:
 
 We get the same result as the simplest way to use the function.
 
-.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column.
- | ``SELECT  pgr_createVerticesTable('edge_table','source','the_geom','target');``
+.. warning::  An error would occur when the arguments are not given in the appropriate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column.
+
+   .. code-block:: sql
+
+       SELECT  pgr_createVerticesTable('edge_table','source','the_geom','target');
+       NOTICE:  pgr_createVerticesTable('edge_table','source','the_geom','target','true')
+       NOTICE:  Performing checks, please wait .....
+       NOTICE:  ----> PGR ERROR in pgr_createVerticesTable: Wrong type of Column source: the_geom
+       HINT:    ----> Expected type of the_geom is integer,smallint or bigint but USER-DEFINED was found
+       NOTICE:  Unexpected error raise_exception
+       pgr_createverticestable 
+       -------------------------
+         FAIL
+      (1 row)
 
 
 .. rubric:: When using the named notation
@@ -173,7 +185,20 @@ The arguments need to be given in the order described in the parameters:
 	 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt');
 
 .. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``src`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the source column.
- | ``SELECT  pgr_createVerticesTable('mytable','src','mygeom','tgt');``
+
+    .. code-block:: sql
+
+        SELECT  pgr_createVerticesTable('mytable','src','mygeom','tgt');
+        NOTICE:  PROCESSING:
+        NOTICE:  pgr_createVerticesTable('mytable','src','mygeom','tgt','true')
+        NOTICE:  Performing checks, please wait .....
+        NOTICE:  ----> PGR ERROR in pgr_createVerticesTable: Table mytable not found
+        HINT:    ----> Check your table name
+        NOTICE:  Unexpected error raise_exception
+        pgr_createverticestable 
+        -------------------------
+          FAIL
+        (1 row)
 
 
 .. rubric:: When using the named notation

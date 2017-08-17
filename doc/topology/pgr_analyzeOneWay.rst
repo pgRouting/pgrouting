@@ -49,8 +49,8 @@ So by counting the number of edges entering and exiting each node we can identif
 
 The  edge table to be analyzed must contain a source column and a target column filled with id's of the vertices of the segments and the corresponding vertices table <edge_table>_vertices_pgr that stores the vertices information.
 
-  - Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
-  - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
+- Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
+- Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
 
 .. rubric:: Parameters
 
@@ -69,16 +69,16 @@ The  edge table to be analyzed must contain a source column and a target column 
 
 The function returns:
 
-  - ``OK`` after the analysis has finished.
+- ``OK`` after the analysis has finished.
 
-    * Uses the vertices table: <edge_table>_vertices_pgr.
-    * Fills completely the ``ein`` and ``eout`` columns of the vertices table.
+  * Uses the vertices table: <edge_table>_vertices_pgr.
+  * Fills completely the ``ein`` and ``eout`` columns of the vertices table.
 
-  - ``FAIL`` when the analysis was not completed due to an error.
+- ``FAIL`` when the analysis was not completed due to an error.
 
-    * The vertices table is not found.
-    * A required column of the Network table is not found or is not of the appropriate type.
-    * The names of source , target or oneway are the same.
+  * The vertices table is not found.
+  * A required column of the Network table is not found or is not of the appropriate type.
+  * The names of source , target or oneway are the same.
 
 The rules are defined as an array of text strings that if match the ``oneway`` value would be counted as ``true`` for the source or target **in** or **out** condition.
 

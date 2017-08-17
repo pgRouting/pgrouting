@@ -273,8 +273,8 @@ Comparing with the Analysis in the original edge_table, we see that.
 
 Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 into our edge-table, copying the data for dir,cost,and reverse cost with tho following steps:
 
-   - Add a column old_id into edge_table, this column is going to keep track the id of the original edge
-   - Insert only the segmented edges, that is, the ones whose max(sub_id) >1
+- Add a column old_id into edge_table, this column is going to keep track the id of the original edge
+- Insert only the segmented edges, that is, the ones whose max(sub_id) >1
 
 .. code-block:: sql
 

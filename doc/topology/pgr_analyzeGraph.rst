@@ -24,8 +24,8 @@ Synopsis
 
 The function returns:
 
-  - ``OK`` after the analysis has finished.
-  - ``FAIL`` when the analysis was not completed due to an error.
+- ``OK`` after the analysis has finished.
+- ``FAIL`` when the analysis was not completed due to an error.
 
 .. index::
 	single: analyzeGraph(Complete Signature)
@@ -43,8 +43,8 @@ Description
 
 The  edge table to be analyzed must contain a source column and a target column filled with id's of the vertices of the segments and the corresponding vertices table <edge_table>_vertices_pgr that stores the vertices information.
 
-  - Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
-  - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
+- Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
+- Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
 
 .. rubric:: Parameters
 
@@ -60,19 +60,19 @@ The analyze graph function accepts the following parameters:
 
 The function returns:
 
-  - ``OK`` after the analysis has finished.
+- ``OK`` after the analysis has finished.
 
-    * Uses the vertices table: <edge_table>_vertices_pgr.
-    * Fills completely the ``cnt`` and ``chk`` columns of the vertices table.
-    * Returns the analysis of the section of the network defined by  ``rows_where``
+  * Uses the vertices table: <edge_table>_vertices_pgr.
+  * Fills completely the ``cnt`` and ``chk`` columns of the vertices table.
+  * Returns the analysis of the section of the network defined by  ``rows_where``
 
-  - ``FAIL`` when the analysis was not completed due to an error.
+- ``FAIL`` when the analysis was not completed due to an error.
 
-    * The vertices table is not found.
-    * A required column of the Network table is not found or is not of the appropriate type.
-    * The condition is not well formed.
-    * The names of source , target or id are the same.
-    * The SRID of the geometry could not be determined.
+  * The vertices table is not found.
+  * A required column of the Network table is not found or is not of the appropriate type.
+  * The condition is not well formed.
+  * The names of source , target or id are the same.
+  * The SRID of the geometry could not be determined.
 
 
 .. rubric:: The Vertices Table
@@ -111,8 +111,19 @@ Usage when the edge table's columns MATCH the default values:
 We get the same result as the simplest way to use the function.
 
 .. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column.
- | ``SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');``
- | ERROR: Can not determine the srid of the geometry "id" in table public.edge_table
+
+.. code-block:: sql
+    SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');
+    NOTICE:  PROCESSING:
+    NOTICE:  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target','true')
+    NOTICE:  Performing checks, please wait ...
+    NOTICE:  Got function st_srid(bigint) does not exist
+    NOTICE:  ERROR: something went wrong when checking for SRID of id in table public.edge_table
+    pgr_analyzegraph 
+    ------------------
+      FAIL
+    (1 row)
+
 
 .. rubric:: When using the named notation
 
@@ -176,8 +187,20 @@ The arguments need to be given in the order described in the parameters:
 	 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt');
 
 .. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the id column.
- | ``SELECT  pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');``
- | ERROR: Can not determine the srid of the geometry "gid" in table public.mytable
+
+.. code-block:: sql
+
+    SELECT  pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');
+    NOTICE:  PROCESSING:
+    NOTICE:  pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt','true')
+    NOTICE:  Performing checks, please wait ...
+    NOTICE:  Got function st_srid(bigint) does not exist
+    NOTICE:  ERROR: something went wrong when checking for SRID of gid in table public.mytable
+    pgr_analyzegraph 
+    ------------------
+      FAIL
+    (1 row)
+
 
 
 .. rubric:: When using the named notation
