@@ -94,3 +94,8 @@ See Also
 
 * :ref:`pgr_drivingDistance` - Driving Distance
 * :ref:`pgr_points_as_polygon` - Polygon around set of points
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

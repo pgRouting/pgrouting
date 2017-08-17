@@ -165,3 +165,8 @@ See Also
 * :ref:`tsp`
 * http://en.wikipedia.org/wiki/Traveling_salesman_problem
 * http://en.wikipedia.org/wiki/Simulated_annealing
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

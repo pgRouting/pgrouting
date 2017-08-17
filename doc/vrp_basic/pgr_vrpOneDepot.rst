@@ -23,20 +23,26 @@ pgr_vrpOneDepot - Experimental
 Example:
 -------------------------------------------------------------------------------
 
-**Under discussion**
 
-.. rubric:: Current Result
+Current Result
+...............................................................................
 
 .. literalinclude:: doc-pgr_vrpOneDepot.queries
 
-.. rubric:: Current Result
 
-.. literalinclude:: oneDepotWrapper.queries
-
-
-.. rubric:: Data
+Data
+-------------------------------------------------------------------------------
 
 .. literalinclude:: ../../tools/testers/vrpOneDepot.data
 
 
+
+See Also
+-------------------------------------------------------------------------------
+
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

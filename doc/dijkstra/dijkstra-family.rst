@@ -139,6 +139,13 @@ In other words: The algorithm returns a the shortest path between :math:`start_{
 If there is no path, the resulting set is empty.
 
 
+See Also
+-------------------------------------------------------------------------------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
 
 
 

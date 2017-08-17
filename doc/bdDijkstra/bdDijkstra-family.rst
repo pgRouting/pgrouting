@@ -59,3 +59,10 @@ The main Characteristics are:
 
   - It is expected to terminate faster than pgr_dijkstra 
 
+See Also
+-------------------------------------------------------------------------------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

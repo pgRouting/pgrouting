@@ -264,3 +264,8 @@ See Also
 * :ref:`pgr_createTopology <pgr_create_topology>` to create a topology based on the geometry.
 * :ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge table.
 * :ref:`pgr_analyze_oneway` to analyze directionality of the edges.
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

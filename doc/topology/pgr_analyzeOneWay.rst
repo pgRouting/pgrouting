@@ -137,3 +137,7 @@ See Also
 * :ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge table.
 * :ref:`pgr_create_vert_table` to reconstruct the vertices table based on the source and target information.
 
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

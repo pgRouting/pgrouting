@@ -374,3 +374,7 @@ See Also
 * :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to reconstruct the vertices table based on the source and target information.
 * :ref:`pgr_nodeNetwork <pgr_node_network>` to create nodes to a not noded edge table.
 
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

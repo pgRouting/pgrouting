@@ -31,3 +31,10 @@ We also provide a function to node an unoded network.
   pgr_analyzeOneWay
   pgr_nodeNetwork
 
+See Also
+-------------------------------------------------------------------------------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

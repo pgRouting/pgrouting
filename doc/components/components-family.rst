@@ -474,3 +474,10 @@ Column         Type       Description
 
 .. return_bridges_end
 
+See Also
+-------------------------------------------------------------------------------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

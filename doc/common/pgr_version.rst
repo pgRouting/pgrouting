@@ -74,4 +74,10 @@ Examples
      2.2.0-dev | 1.49.0
     (1 row)
 
+See Also
+-------------------------------------------------------------------------------
 
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
