@@ -17,7 +17,7 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
-    <link rel="prev" title="pgr_vrpOneDepot - experimental" href="pgr_vrpOneDepot.html" />
+    <link rel="prev" title="pgr_lineGraph" href="pgr_lineGraph.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -109,6 +109,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Release Notes</a><ul>
 <li><a class="reference internal" href="#pgrouting-2-5-0-release-notes">pgRouting 2.5.0 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-2-4-2-release-notes">pgRouting 2.4.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-4-1-release-notes">pgRouting 2.4.1 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-4-0-release-notes">pgRouting 2.4.0 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-3-2-release-notes">pgRouting 2.3.2 Release Notes</a></li>
@@ -145,7 +146,7 @@
               
                 
   <li>
-    <a href="pgr_vrpOneDepot.html" title="Previous Chapter: pgr_vrpOneDepot - experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_vrpOneDepot ...</span>
+    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph</span>
     </a>
   </li>
               
@@ -179,6 +180,7 @@
 <p class="rubric">Table of contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#changelog-2-5-0"><span class="std std-ref">pgRouting 2.5.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-4-2"><span class="std std-ref">pgRouting 2.4.2 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-4-1"><span class="std std-ref">pgRouting 2.4.1 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-4-0"><span class="std std-ref">pgRouting 2.4.0 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-3-2"><span class="std std-ref">pgRouting 2.3.2 Release Notes</span></a></li>
@@ -232,6 +234,12 @@
 <li>pgr_bdDijkstraCost(many to one)</li>
 <li>pgr_bdDijkstraCost(many to many)</li>
 <li>pgr_bdDijkstraCostMatrix</li>
+<li>pgr_lineGraph</li>
+<li>pgr_connectedComponents</li>
+<li>pgr_strongComponents</li>
+<li>pgr_biconnectedComponents</li>
+<li>pgr_articulationPoints</li>
+<li>pgr_bridges</li>
 </ul>
 <p class="rubric">Deprecated Signatures</p>
 <ul class="simple">
@@ -249,9 +257,23 @@
 <li>pgr_pointToEdgeNode</li>
 </ul>
 </div>
+<div class="section" id="pgrouting-2-4-2-release-notes">
+<span id="changelog-2-4-2"></span><h2>pgRouting 2.4.2 Release Notes<a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.2%22%20">Git closed milestone for 2.4.2</a> on Github.</p>
+<p class="rubric">Improvement</p>
+<ul class="simple">
+<li>Works for postgreSQL 10</li>
+</ul>
+<p class="rubric">Bug fixes</p>
+<ul class="simple">
+<li>Fixed: Unexpected error column &#8220;cname&#8221;</li>
+<li>Replace __linux__ with __GLIBC__ for glibc-specific headers and functions</li>
+</ul>
+</div>
 <div class="section" id="pgrouting-2-4-1-release-notes">
 <span id="changelog-2-4-1"></span><h2>pgRouting 2.4.1 Release Notes<a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Bug fix</p>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.1%22%20">Git closed milestone for 2.4.1</a> on Github.</p>
+<p class="rubric">Bug fixes</p>
 <ul class="simple">
 <li>Fixed compiling error on macOS</li>
 <li>Condition error on pgr_withPoints</li>
@@ -284,7 +306,7 @@
 <ul class="simple">
 <li>pgr_pointsToVids</li>
 </ul>
-<p class="rubric">Bug fix</p>
+<p class="rubric">Bug fixes</p>
 <ul class="simple">
 <li>Bug fixes on proposed functions<ul>
 <li>pgr_withPointsKSP: fixed ordering</li>
@@ -661,7 +683,7 @@ The following release notes have been copied from the previous <code class="docu
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Aug 06, 2017.<br/>
+      Last updated on Aug 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

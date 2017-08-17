@@ -17,7 +17,7 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -186,7 +186,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
     <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span>
     <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span>
     <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span>
-    <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="n">VALUES</span> 
+    <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="mi">2</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>    <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>   <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>   <span class="mi">2</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>   <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="mi">3</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>    <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -257,7 +257,35 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <ul class="simple">
 <li>Used with the <a class="reference internal" href="pgr_trsp.html#trsp"><span class="std std-ref">pgr_trsp - Turn Restriction Shortest Path (TRSP)</span></a> functions.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrict</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="n">BIGSERIAL</span><span class="p">,</span>
+    <span class="n">restricted_edges</span> <span class="n">BIGINT</span><span class="p">[]</span> <span class="p">,</span>
+    <span class="n">cost</span> <span class="n">FLOAT</span>
+<span class="p">);</span>
+
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">restrict</span><span class="p">(</span><span class="n">restricted_edges</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;{4, 7}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;{7, 8, 11}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;{7, 8, 5}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;{7, 4}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;{7, 8}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;{9, 11}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;{9, 8}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">Create</span> <span class="n">Table</span> <span class="n">edge_table255</span><span class="p">(</span>
+    <span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">source</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">target</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">cost</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">reverse_cost</span> <span class="n">FLOAT</span>
+<span class="p">);</span>
+
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edge_table255</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">);</span>
+
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
     <span class="n">rid</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
     <span class="n">to_cost</span> <span class="n">FLOAT</span><span class="p">,</span>
     <span class="n">target_id</span> <span class="n">BIGINT</span><span class="p">,</span>
@@ -489,7 +517,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Aug 06, 2017.<br/>
+      Last updated on Aug 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

@@ -17,7 +17,7 @@
         VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -109,7 +109,9 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Stable proposed Functions</a></li>
-<li><a class="reference internal" href="#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li><a class="reference internal" href="#experimental-and-proposed-functions">Experimental and Proposed functions</a><ul>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -270,11 +272,23 @@
 <ul class="simple">
 <li><a class="reference internal" href="pgr_labelGraph.html#pgr-labelgraph"><span class="std std-ref">pgr_labelGraph - Proposed</span></a> - Analyze / label  subgraphs within a network</li>
 </ul>
+<p><a class="reference internal" href="components-family.html#components"><span class="std std-ref">Components - Family of functions</span></a> - Analyze components within a graph</p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_connectedComponents.html#pgr-connectedcomponents"><span class="std std-ref">pgr_connectedComponents</span></a> - Return the connected components of an undirected graph</li>
+<li><a class="reference internal" href="pgr_strongComponents.html#pgr-strongcomponents"><span class="std std-ref">pgr_strongComponents</span></a> - Return the strongly connected components of a directed graph</li>
+<li><a class="reference internal" href="pgr_biconnectedComponents.html#pgr-biconnectedcomponents"><span class="std std-ref">pgr_biconnectedComponents</span></a> - Return the biconnected components of an undirected graph</li>
+<li><a class="reference internal" href="pgr_articulationPoints.html#pgr-articulationpoints"><span class="std std-ref">pgr_articulationPoints</span></a> - Return the articulation points of an undirected graph</li>
+<li><a class="reference internal" href="pgr_bridges.html#pgr-bridges"><span class="std std-ref">pgr_bridges</span></a> - Return the bridges of an undirected graph</li>
+</ul>
 <p class="rubric">VRP</p>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_gsoc_vrppdtw.html#pgr-gsocvrppdtw"><span class="std std-ref">pgr_gsoc_vrppdtw - Proposed</span></a></li>
 <li><a class="reference internal" href="pgr_vrpOneDepot.html#pgr-vrp-basic"><span class="std std-ref">pgr_vrpOneDepot - experimental</span></a></li>
 </ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">Graph Transformation</p>
+<p><a class="reference internal" href="pgr_lineGraph.html"><span class="doc">pgr_lineGraph</span></a></p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -292,7 +306,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Aug 06, 2017.<br/>
+      Last updated on Aug 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
