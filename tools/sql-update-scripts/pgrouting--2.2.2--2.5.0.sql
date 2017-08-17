@@ -883,7 +883,7 @@ BEGIN
         execute query;
         EXCEPTION WHEN others THEN
           perform _pgr_onError( true, reportErrs, fnName,
-            'Could not create index on:' || cname, SQLERRM);
+            'Could not create index on:' || colname, SQLERRM);
       END;
       execute 'set client_min_messages  to '|| debuglevel;
       perform _pgr_msg(msgKind, fnName);
@@ -3778,6 +3778,20 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
   ROWS 1000;
 
 
+
+
+CREATE OR REPLACE FUNCTION pgr_lineGraph(
+    TEXT, -- edges_sql
+    directed BOOLEAN DEFAULT true,
+    OUT seq INTEGER,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT cost FLOAT,
+    OUT reverse_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+'$libdir/libpgrouting-2.5', 'lineGraph'
+LANGUAGE c IMMUTABLE STRICT;
 
 
 

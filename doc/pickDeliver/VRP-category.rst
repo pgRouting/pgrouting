@@ -325,7 +325,7 @@ Results
 Description of the result (TODO Disussion: Euclidean & Matrix)
 .........................................................................................
 
-.. todo:: fix when everything bellow is fixed
+.. todo:: fix when everything below is fixed
 
 
 .. code-block:: none

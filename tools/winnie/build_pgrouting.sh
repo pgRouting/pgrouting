@@ -209,9 +209,9 @@ ls ${PGPATHEDB}/share/extension/pgrouting*
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
 #cp *.dll ${PGPATHEDB}/lib/  #TODO remove this once we fix so the .dlls are created in lib folder
-cp lib/*.dll ${PGPATHEDB}/lib/
-cp sql/pgrouting*.sql ${PGPATHEDB}/share/extension/
-cp sql/common/*.control ${PGPATHEDB}/share/extension/
+cp ${PGPATH}/lib/*.dll ${PGPATHEDB}/lib/
+cp ${PGPATH}/share/extension/pgrouting*.sql ${PGPATHEDB}/share/extension/
+cp ${PGPATH}/share/extension/*.control ${PGPATHEDB}/share/extension/
 
 #---------------
 echo

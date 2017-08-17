@@ -79,8 +79,8 @@ if [[ -z  $4 ]]; then
 fi
 
 
-if [[ -z  $4 ]]; then
-    echo "Last Micro missing";
+if [[ -z  $5 ]]; then
+    echo "branch missing";
     echo "Usage"
     echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
     exit 1;
@@ -92,9 +92,12 @@ MICRO=$3
 PREV_REL=$4
 RC="-dev"
 BRANCH=$5
+DEBUG=1
 
 
-git_no_change
+if [[ -z  "$DEBUG" ]]; then
+    git_no_change
+fi
 
 echo - [x] No files changed before execution.
 echo
@@ -130,7 +133,9 @@ fi
 
 sh tools/scripts/fix_typos.sh
 
-git_no_change
+if [[ -z  "$DEBUG" ]]; then
+    git_no_change
+fi
 
 echo "- [x] No typos found by script"
 
@@ -171,7 +176,9 @@ fi
 
 tools/release-scripts/notes2news.pl
 
-git_no_change
+if [[ -z  "$DEBUG" ]]; then
+    git_no_change
+fi
 
 echo "- [x] NEWS is up to date"
 
@@ -270,6 +277,7 @@ echo "### Checking signature files"
 echo
 #---------------------------------------------------------------------
 test_file $PREV_REL
+test_file 2.4.1
 test_file 2.4.0
 test_file 2.3.2
 test_file 2.3.1
@@ -299,10 +307,12 @@ if [[ -n $DEBUG ]]; then
 fi
 
 
-if [[ "$BRANGH" == "develop" || $BRANCH == "master" ]]; then
-    bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
-    bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
-bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
+if [[ "$BRANCH" == "develop" || $BRANCH == "master" || $BRANCH == "release/$MAYOR.$MINOR" ]]; then
+    if [[ -z  "$DEBUG" ]]; then
+        bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
+        bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
+        bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
+    fi
 fi
 bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO
 
@@ -312,6 +322,8 @@ echo - [x] completed local builds
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
+sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.4.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.4.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
@@ -360,6 +372,7 @@ fi
 
 if [[ $(git status | grep 'Changes not staged for commit:') ]]; then
     echo "FATAL: at least one result file changed"
+    git status
     exit 1
 fi
 

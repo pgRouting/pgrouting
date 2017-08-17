@@ -40,7 +40,7 @@ double
 Tw_node::travel_time_to(const Tw_node &to, double speed) const {
     /** TODO(vicky)
      * shall call Node or Dnode
-     * static cast wont work I think
+     * static cast won't work I think
      *
      */
     auto from =  problem->m_base_nodes[idx()].get();

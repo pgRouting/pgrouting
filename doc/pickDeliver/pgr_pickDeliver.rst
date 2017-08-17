@@ -120,7 +120,7 @@ Column            Type                Default    Description
 ================= ================== ========= =================================================
 **orders_sql**    ``TEXT``                     `Pick & Deliver Orders SQL`_ query contianing the orders to be processed.
 **vehicles_sql**  ``TEXT``                     `Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used.
-**matrix_sql**    ``TEXT``                     `Pick & Deliver Matrix SQL`_ query contaning the distance or travel times.
+**matrix_sql**    ``TEXT``                     `Pick & Deliver Matrix SQL`_ query containing the distance or travel times.
 **factor**        ``NUMERIC``          1       Travel time multiplier. See :ref:`pd_factor`
 **max_cycles**    ``INTEGER``          10      Maximum number of cycles to perform on the optimization.
 **initial_sol**   ``INTEGER``          4       Initial solution to be used.

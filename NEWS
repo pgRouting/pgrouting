@@ -39,6 +39,12 @@ To see the issues closed by this release see the [Git closed issues for 2.5.0 ](
 * pgr_bdDijkstraCost(many to one)
 * pgr_bdDijkstraCost(many to many)
 * pgr_bdDijkstraCostMatrix
+* pgr_lineGraph
+* pgr_connectedComponents
+* pgr_strongComponents
+* pgr_biconnectedComponents
+* pgr_articulationPoints
+* pgr_bridges
 
 *Deprecated Signatures*
 
@@ -56,10 +62,30 @@ To see the issues closed by this release see the [Git closed issues for 2.5.0 ](
 * pgr_pointToEdgeNode
 
 
+
+pgRouting 2.4.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the [Git closed milestone for 2.4.2 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20) on Github.
+
+*Improvement*
+
+* Works for postgreSQL 10
+
+*Bug fixes*
+
+* Fixed: Unexpected error column "cname"
+* Replace __linux__ with __GLIBC__ for glibc-specific headers and functions
+
+
+
+
 pgRouting 2.4.1 Release Notes
 -------------------------------------------------------------------------------
 
-*Bug fix*
+To see the issues closed by this release see the [Git closed milestone for 2.4.1 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20) on Github.
+
+*Bug fixes*
 
 * Fixed compiling error on macOS
 * Condition error on pgr_withPoints
@@ -95,7 +121,7 @@ To see the issues closed by this release see the [Git closed issues for 2.4.0 ](
 
 * pgr_pointsToVids
 
-*Bug fix*
+*Bug fixes*
 
 * Bug fixes on proposed functions
 

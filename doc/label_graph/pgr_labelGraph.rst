@@ -11,7 +11,7 @@
 .. _pgr_labelGraph:
 
 
-pgr_labelGraph - Proposed
+pgr_labelGraph - Experimental
 ===============================================================================
 
 Name

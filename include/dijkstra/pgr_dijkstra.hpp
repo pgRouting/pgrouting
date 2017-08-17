@@ -408,9 +408,9 @@ class Pgr_dijkstra {
       *
       * Prepares the execution for a driving distance:
       *
-      * @params graph
-      * @params start_vertex
-      * @params distance
+      * @param graph
+      * @param start_vertex
+      * @param distance
       *
       * Results are kept on predecessor & distances
       *
@@ -441,9 +441,9 @@ class Pgr_dijkstra {
       *
       * Prepares the execution for a driving distance:
       *
-      * @params graph
-      * @params start_vertex
-      * @params distance
+      * @param graph
+      * @param start_vertex
+      * @param distance
       *
       * Results are kept on predecessor & distances
       *

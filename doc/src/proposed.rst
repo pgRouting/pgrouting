@@ -9,7 +9,7 @@
 
 .. _Stable:
 
-Stable proposed Functions
+Stable Proposed Functions
 ==================================
 
 ..  stable-begin-warning
@@ -102,7 +102,7 @@ As part of the :ref:`dijkstra`
 
 .. _proposed:
 
-Experimental and Proposed functions
+Experimental Functions
 ===============================================================================
 
 
@@ -141,13 +141,9 @@ Experimental and Proposed functions
 :ref:`components` - Analyze components within a graph
 
 -  :ref:`pgr_connectedComponents` - Return the connected components of an undirected graph
-
 -  :ref:`pgr_strongComponents` - Return the strongly connected components of a directed graph
-
 -  :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph
-
 -  :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph
-
 -  :ref:`pgr_bridges` - Return the bridges of an undirected graph
 
 .. rubric:: VRP
