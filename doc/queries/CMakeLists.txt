@@ -39,6 +39,11 @@ SET(LOCAL_FILES
     doc-pgr_drivingDistance.queries
     doc-pgr_maxFlow.queries
     doc-pgr_withPointsKSP.queries
+	doc-pgr_connectedComponents.queries
+    doc-pgr_strongComponents.queries
+	doc-pgr_biconnectedComponents.queries
+	doc-pgr_articulationPoints.queries
+	doc-pgr_bridges.queries
     doc-pgr_vrpOneDepot.queries
     proof_of_concept.queries
     trsp_notes_v2.5.0.queries

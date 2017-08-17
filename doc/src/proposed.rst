@@ -138,6 +138,18 @@ Experimental and Proposed functions
 
 -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 
+:ref:`components` - Analyze components within a graph
+
+-  :ref:`pgr_connectedComponents` - Return the connected components of an undirected graph
+
+-  :ref:`pgr_strongComponents` - Return the strongly connected components of a directed graph
+
+-  :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph
+
+-  :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph
+
+-  :ref:`pgr_bridges` - Return the bridges of an undirected graph
+
 .. rubric:: VRP
 
 - :ref:`pgr_gsocvrppdtw`
@@ -150,6 +162,7 @@ Experimental and Proposed functions
   contraction-family
   flow-family
   pgr_labelGraph
+  components-family
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
