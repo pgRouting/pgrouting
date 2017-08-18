@@ -45,6 +45,9 @@ The main Characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
+.. index::
+    single: articulationPoints
+
 .. code-block:: none
 
     pgr_articulationPoints(edges_sql)

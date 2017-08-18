@@ -48,6 +48,9 @@ The main Characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
+.. index::
+    single: biconnectedComponents
+
 .. code-block:: none
 
     pgr_biconnectedComponents(edges_sql)
