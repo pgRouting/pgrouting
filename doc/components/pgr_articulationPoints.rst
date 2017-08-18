@@ -46,7 +46,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: articulationPoints(Minimal Use)
+    single: articulationPoints
 
 .. code-block:: none
 

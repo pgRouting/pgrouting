@@ -43,7 +43,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: bridges(Minimal Use)
+    single: bridges
 
 .. code-block:: none
 

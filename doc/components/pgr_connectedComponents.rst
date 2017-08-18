@@ -47,7 +47,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: connectedComponents(Minimal Use)
+    single: connectedComponents
 
 .. code-block:: none
 

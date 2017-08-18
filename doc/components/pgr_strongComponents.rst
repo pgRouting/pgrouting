@@ -46,7 +46,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: strongComponents(Minimal Use)
+    single: strongComponents
 
 .. code-block:: none
 

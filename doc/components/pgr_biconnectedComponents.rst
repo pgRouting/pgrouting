@@ -49,7 +49,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: biconnectedComponents(Minimal Use)
+    single: biconnectedComponents
 
 .. code-block:: none
 
