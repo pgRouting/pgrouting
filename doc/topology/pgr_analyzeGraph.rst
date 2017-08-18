@@ -113,6 +113,7 @@ We get the same result as the simplest way to use the function.
 .. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column.
 
 .. code-block:: sql
+
     SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');
     NOTICE:  PROCESSING:
     NOTICE:  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target','true')
