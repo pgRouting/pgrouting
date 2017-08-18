@@ -1,8 +1,8 @@
 SET(LOCAL_FILES
-    Line-graph1.png
-    Line-graph2.png
-    Line-graph3.png
-    Line-graph4.png
+    lineGraph1.png
+    lineGraph2.png
+    lineGraph3.png
+    lineGraph4.png
     )
 
 foreach (f ${LOCAL_FILES})
