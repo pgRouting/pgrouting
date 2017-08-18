@@ -33,18 +33,9 @@ Given a graph G, its line graph L(G) is a graph such that:-
 The following figures show a graph (left, with blue vertices) and its
 Line Graph (right, with green vertices).
 
-| |first|       |second|               |third|  |fourth|
+| |first|
 
 .. |first| image:: images/lineGraph1.jpg
-   :align: middle
-
-.. |second| image:: images/lineGraph2.jpg
-   :align: middle
-
-.. |third| image:: images/lineGraph3.jpg
-   :align: middle
-
-.. |fourth| image:: images/lineGraph4.jpg
    :align: middle
 
 Signature Summary
