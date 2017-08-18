@@ -9,7 +9,7 @@
 
 .. _pgr_lineGraph:
 
-pgr_lineGraph
+pgr_lineGraph - Experimental
 ===============================================================================
 
 ``pgr_lineGraph`` — Transforms a given graph into its corresponding edge-based graph.
@@ -33,21 +33,10 @@ Given a graph G, its line graph L(G) is a graph such that:-
 The following figures show a graph (left, with blue vertices) and its
 Line Graph (right, with green vertices).
 
-| |first|       |second|               |third|  |fourth|
+| |first|
 
-.. |first| image:: images/135px-Line_graph_construction_1.svg.png
+.. |first| image:: images/lineGraph.png
    :align: middle
-
-.. |second| image:: images/135px-Line_graph_construction_2.svg.png
-   :align: middle
-
-.. |third| image:: images/135px-Line_graph_construction_3.svg.png
-   :align: middle
-
-.. |fourth| image:: images/128px-Line_graph_construction_4.svg.png
-   :align: middle
-
-.. The images are taken from https://en.wikipedia.org/wiki/Line_graph.
 
 Signature Summary
 -----------------
