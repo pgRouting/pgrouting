@@ -35,20 +35,16 @@ Line Graph (right, with green vertices).
 
 | |first|       |second|               |third|  |fourth|
 
-.. |first| image:: images/lineGraph1.png
-   :width: 8pt
+.. |first| image:: images/lineGraph1.jpg
    :align: middle
 
-.. |second| image:: images/lineGraph2.png
-   :width: 8pt
+.. |second| image:: images/lineGraph2.jpg
    :align: middle
 
-.. |third| image:: images/lineGraph3.png
-   :width: 8pt
+.. |third| image:: images/lineGraph3.jpg
    :align: middle
 
-.. |fourth| image:: images/lineGraph4.png
-   :width: 8pt
+.. |fourth| image:: images/lineGraph4.jpg
    :align: middle
 
 Signature Summary
