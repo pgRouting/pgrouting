@@ -3828,6 +3828,67 @@ RETURNS SETOF RECORD AS
 LANGUAGE c IMMUTABLE STRICT;
 
 
+CREATE OR REPLACE FUNCTION pgr_connectedComponents(
+    TEXT,                       -- edges_sql
+        OUT seq INTEGER,        -- seq
+    OUT component BIGINT,       -- the lowest number of the node in the component
+    OUT n_seq INTEGER,          -- nth_seq of the node in the component
+    OUT node BIGINT)            -- the number of the node
+
+RETURNS SETOF RECORD AS
+'$libdir/libpgrouting-2.5', 'connectedComponents'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+
+CREATE OR REPLACE FUNCTION pgr_strongComponents(
+    TEXT,                       -- edges_sql
+        OUT seq INTEGER,        -- seq
+    OUT component BIGINT,       -- the lowest number of the node in the component
+    OUT n_seq INTEGER,          -- nth_seq of the node in the component
+    OUT node BIGINT)            -- the number of the node
+
+RETURNS SETOF RECORD AS
+'$libdir/libpgrouting-2.5', 'strongComponents'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+
+CREATE OR REPLACE FUNCTION pgr_biconnectedComponents(
+    TEXT,                       -- edges_sql
+        OUT seq INTEGER,        -- seq
+    OUT component BIGINT,       -- the lowest number of the edge in the component
+    OUT n_seq INTEGER,          -- nth_seq of the edge in the component
+    OUT edge BIGINT)            -- the number of the edge
+
+RETURNS SETOF RECORD AS
+'$libdir/libpgrouting-2.5', 'biconnectedComponents'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+
+CREATE OR REPLACE FUNCTION pgr_articulationPoints(
+    TEXT,                       -- edges_sql
+        OUT seq INTEGER,        -- seq
+    OUT node BIGINT)            -- the number of the node
+
+RETURNS SETOF RECORD AS
+'$libdir/libpgrouting-2.5', 'articulationPoints'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+
+CREATE OR REPLACE FUNCTION pgr_bridges(
+    TEXT,                       -- edges_sql
+        OUT seq INTEGER,        -- seq
+    OUT edge BIGINT)            -- the number of the edge 
+
+RETURNS SETOF RECORD AS
+'$libdir/libpgrouting-2.5', 'bridges'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+
 
 
 CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision,
