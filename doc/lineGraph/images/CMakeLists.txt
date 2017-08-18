@@ -1,14 +1,5 @@
 SET(LOCAL_FILES
-    128px-Line_graph_construction_4.svg.png
-    135px-Line_graph_construction_1.svg.png
-    135px-Line_graph_construction_2.svg.png
-    135px-Line_graph_construction_3.svg.png
-
-    Graph1.png
-    Graph2.png
-
-    Line-graph-with-edge-cost.png
-    Line-graph-with-node-cost.png
+    lineGraph.png
     )
 
 foreach (f ${LOCAL_FILES})
