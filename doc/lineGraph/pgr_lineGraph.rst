@@ -35,7 +35,7 @@ Line Graph (right, with green vertices).
 
 | |first|
 
-.. |first| image:: images/lineGraph1.jpg
+.. |first| image:: images/lineGraph.png
    :align: middle
 
 Signature Summary
