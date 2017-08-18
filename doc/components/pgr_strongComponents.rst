@@ -45,6 +45,9 @@ The main Characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
+.. index::
+    single: strongComponents
+
 .. code-block:: none
 
     pgr_strongComponents(edges_sql)
