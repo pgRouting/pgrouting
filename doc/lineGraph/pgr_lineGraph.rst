@@ -35,16 +35,16 @@ Line Graph (right, with green vertices).
 
 | |first|       |second|               |third|  |fourth|
 
-.. |first| image:: images/Line-graph1.png
+.. |first| image:: images/lineGraph1.png
    :align: middle
 
-.. |second| image:: images/Line-graph2.png
+.. |second| image:: images/lineGraph12.png
    :align: middle
 
-.. |third| image:: images/Line-graph3.png
+.. |third| image:: images/lineGraph13.png
    :align: middle
 
-.. |fourth| image:: images/Line-graph4.png
+.. |fourth| image:: images/lineGraph14.png
    :align: middle
 
 Signature Summary
