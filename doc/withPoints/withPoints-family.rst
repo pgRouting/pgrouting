@@ -186,3 +186,10 @@ From third image above:
     - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
     - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
 
+See Also
+-------------------------------------------------------------------------------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

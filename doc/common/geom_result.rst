@@ -51,3 +51,8 @@ See Also
 
 * :ref:`introduction`
 
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

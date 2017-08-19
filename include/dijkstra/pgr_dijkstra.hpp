@@ -825,7 +825,7 @@ class Pgr_dijkstra {
 
 
           template <class B_G>
-          void finish_vertex(V u, B_G &g) {
+          void finish_vertex(V, B_G &) {
           }
 
 

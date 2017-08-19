@@ -131,3 +131,8 @@ See Also
 
 * The examples use :ref:`pickDeliverData`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

@@ -21,3 +21,8 @@ KSP Category
 .. index to here
 
 
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

@@ -135,3 +135,8 @@ See Also
 --------
 
 * https://en.wikipedia.org/wiki/Maximum_flow_problem
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

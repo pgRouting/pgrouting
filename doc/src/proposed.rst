@@ -171,12 +171,10 @@ Experimental Functions
 
   pgr_lineGraph
 
+See Also
+-------------------------------------------------------------------------------
 
-..
-  The template
-   ------------
-    - :ref:`pgr_funnyDijkstra`
-    .. toctree::
-    :hidden:
-    ..
-     ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

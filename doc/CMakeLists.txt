@@ -22,17 +22,17 @@ option(WITH_ALL_DOC
 #option(PDF
 #    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
-option(LATEX
+option(BUILD_LATEX
     "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
 option(SINGLEHTML
     "Set ON|OFF (default=OFF) to build Documentation library tree as SINGLE HTML" OFF)
 
-option(HTML
+option(BUILD_HTML
     "Set ON|OFF (default=OFF) to build Documentation library tree as HTML" ON)
 
-#option(MAN
-#    "Set ON|OFF (default=OFF) to build Documentation library tree as MAN page" OFF)
+option(BUILD_MAN
+    "Set ON|OFF (default=OFF) to build Documentation library tree as MAN page" OFF)
 
 option(EPUB
     "Set ON|OFF (default=OFF) to build Documentation library tree as EPUB page" OFF)
@@ -44,9 +44,10 @@ if (NOT WITH_DOC)
     return()
 endif()
 
-foreach(opt HTML LATEX SINGLEHTML EPUB DUMMY)
+foreach(opt BUILD_HTML BUILD_LATEX BUILD_MAN SINGLEHTML EPUB DUMMY)
     if (${${opt}} OR WITH_ALL_DOC)
         string(TOLOWER ${opt} val)
+        string(REPLACE "build_" "" val ${val})
         list(APPEND PgRouting_DOC_TARGETS ${val})
         set(WITH_DOC ON)
     endif()
@@ -266,6 +267,7 @@ foreach (target ${PgRouting_DOC_TARGETS})
 
             COMMENT "Generating ${target}/${lang} documentation ..."
             SOURCES ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES} 
+            DEPENDS ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES} 
             )
         add_dependencies(${target} "${target}-${lang}")
 

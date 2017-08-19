@@ -400,8 +400,7 @@ class Pgr_base_graph {
          }
 
      template < typename T>
-         void insert_edges(T *edges, int64_t count, bool no_create) {
-             no_create;
+         void insert_edges(T *edges, int64_t count, bool) {
              for (int64_t i = 0; i < count; ++i) {
                  pgassert(has_vertex(edges[i].source));
                  pgassert(has_vertex(edges[i].target));

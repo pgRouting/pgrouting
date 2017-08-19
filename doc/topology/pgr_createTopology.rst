@@ -23,15 +23,15 @@ Synopsis
 
 The function returns:
 
-  - ``OK`` after the network topology has been built and the vertices table created.
-  - ``FAIL`` when the network topology was not built due to an error.
+- ``OK`` after the network topology has been built and the vertices table created.
+- ``FAIL`` when the network topology was not built due to an error.
 
 .. index::
-	single: createTopology(Complete Signature)
+    single: createTopology(Complete Signature)
 
 .. code-block:: none
 
-	varchar pgr_createTopology(text edge_table, double precision tolerance,
+    varchar pgr_createTopology(text edge_table, double precision tolerance,
                            text the_geom:='the_geom', text id:='id',
                            text source:='source',text target:='target',
                            text rows_where:='true', boolean clean:=false)
@@ -59,30 +59,31 @@ The topology creation function accepts the following parameters:
 
     The ``edge_table`` will be affected
 
-	- The ``source`` column values will change.
-	- The ``target`` column values will change.
-        - An index will be created, if it doesn't exists, to speed up the process to the following columns:
+    - The ``source`` column values will change.
+    - The ``target`` column values will change.
 
-	   * ``id``
-	   * ``the_geom``
-	   * ``source``
-	   * ``target``
+      - An index will be created, if it doesn't exists, to speed up the process to the following columns:
+
+        * ``id``
+        * ``the_geom``
+        * ``source``
+        * ``target``
 
 The function returns:
 
-  - ``OK`` after the network topology has been built.
+- ``OK`` after the network topology has been built.
 
-    * Creates a vertices table: <edge_table>_vertices_pgr.
-    * Fills ``id`` and ``the_geom`` columns of the vertices table.
-    * Fills the source and target columns of the edge table referencing the ``id`` of the vertices table.
+  * Creates a vertices table: <edge_table>_vertices_pgr.
+  * Fills ``id`` and ``the_geom`` columns of the vertices table.
+  * Fills the source and target columns of the edge table referencing the ``id`` of the vertices table.
 
 
-  - ``FAIL`` when the network topology was not built due to an error:
+- ``FAIL`` when the network topology was not built due to an error:
 
-    * A required column of the Network table is not found or is not of the appropriate type.
-    * The condition is not well formed.
-    * The names of source , target or id are the same.
-    * The SRID of the geometry could not be determined.
+  * A required column of the Network table is not found or is not of the appropriate type.
+  * The condition is not well formed.
+  * The names of source , target or id are the same.
+  * The SRID of the geometry could not be determined.
 
 
 .. rubric:: The Vertices Table
