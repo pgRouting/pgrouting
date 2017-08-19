@@ -2,12 +2,12 @@
 File: dijkstraTRSP.sql
 
 Generated with Template by:
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307.com
+Mail: vidhanj1307@gmail.com
 
 ------
 
@@ -34,7 +34,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraTRSP(
     BIGINT,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
-    strict BOOLEAN DEFAULT true, 
+    strict BOOLEAN DEFAULT true,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,

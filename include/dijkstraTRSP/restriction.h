@@ -1,7 +1,14 @@
 /*PGR-GNU*****************************************************************
 File: restriction.h
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2017 Vidhan Jain
+Mail: vidhanj1307@gmail.com
+
 ------
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
