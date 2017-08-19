@@ -1,10 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: line_graph_rt.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
 
-Developed by: Vidhan Jain
+Function's developer:
+Copyright (c) 2017 Vidhan Jain
 Mail: vidhanj1307@gmail.com
 
 ------
