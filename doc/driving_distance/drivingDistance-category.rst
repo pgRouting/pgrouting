@@ -20,7 +20,7 @@ Driving Distance - Category
 * Post pocessing
 
   * :ref:`pgr_alphaShape` - Alpha shape computation
-  * :ref:`pgr_points_as_polygon` - Polygon around set of points
+  * :ref:`pgr_points_as_polygon` - Polygon around a set of points
 
 .. index to here
 
