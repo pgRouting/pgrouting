@@ -2,7 +2,6 @@ var NAVTREEINDEX4 =
 {
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a11cf7bdab6eadf38fa8ecd95eb2b19bc":[5,0,0,4,3,62],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a127ff0590a6e8ab2968d3f3e0214ce39":[5,0,0,4,3,48],
-"classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a17c5dc2a067a085fb420c2fbae8f07fe":[5,0,0,4,3,37],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a1e037169368cb5e55b38bcab62abad87":[5,0,0,4,3,40],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a1f172b8114334cb9cb42e6d29198a0cc":[5,0,0,4,3,14],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a2158ddd226cfc780e4d41b6a098e9a06":[5,0,0,4,3,56],
@@ -26,6 +25,7 @@ var NAVTREEINDEX4 =
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a620afb6a1b4be1a20a90fe6e58063ad7":[5,0,0,4,3,36],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a623893fcb5124ca29b06513aefbce70c":[5,0,0,4,3,30],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a6521776c2d7f70c0dbd6e49b11f3e3a0":[5,0,0,4,3,24],
+"classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a67337dff9e8c87b5fec7c60a912ddcc6":[5,0,0,4,3,37],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a7e459dc83a1ffc6429500d848e762a77":[5,0,0,4,3,32],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a835b74aaf5d4599248c2caa1753c37bf":[5,0,0,4,3,52],
 "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a857902ea9ec4f163f6785115e0c3087a":[5,0,0,4,3,50],

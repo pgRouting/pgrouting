@@ -40,7 +40,7 @@ var classpgrouting_1_1graph_1_1Pgr__contractionGraph =
     [ "in_degree", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a4e12d0776531d64bed28e5619b47c2fd", null ],
     [ "in_degree_from_vertex", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a50eafbebc9b5e056cd81033251eddb0b", null ],
     [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a620afb6a1b4be1a20a90fe6e58063ad7", null ],
-    [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a17c5dc2a067a085fb420c2fbae8f07fe", null ],
+    [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a67337dff9e8c87b5fec7c60a912ddcc6", null ],
     [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#adf97e69a48e3d65856b77fdc19d741eb", null ],
     [ "is_directed", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a59860060fbba20a7a86ebc0f0fb1b2c8", null ],
     [ "is_source", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#aa36f93dbcd678e3efb82f6cbe13fc080", null ],

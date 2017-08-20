@@ -155,22 +155,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="restriction_8cpp_source.html#l00036">36</a> of file <a class="el" href="restriction_8cpp_source.html">restriction.cpp</a>.</p>
+<p>Definition at line <a class="el" href="restriction_8cpp_source.html#l00043">43</a> of file <a class="el" href="restriction_8cpp_source.html">restriction.cpp</a>.</p>
 
-<p>References <a class="el" href="restriction_8h_source.html#l00044">Restriction::cost()</a>, <a class="el" href="restriction_8h_source.html#l00041">Restriction::id()</a>, and <a class="el" href="restriction_8h_source.html#l00047">Restriction::restrict_edges()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                    {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n--------------------------------\nRestriction\n&quot;</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;ID: &quot;</span> &lt;&lt; r.<a class="code" href="classRestriction.html#ae3300d12b775a2d855a0e9e0f8509334">id</a>() &lt;&lt; <span class="stringliteral">&quot;\nRestricion edge sequence: &quot;</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;v : r.<a class="code" href="classRestriction.html#a2a8b87ded880d58624c0f28a12152a0a">restrict_edges</a>()) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        log &lt;&lt; v &lt;&lt;<span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;Cost: &quot;</span> &lt;&lt; r.<a class="code" href="classRestriction.html#a62ff62e511e1e25c861ec87f7df874b2">cost</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> log;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="ttc" id="classRestriction_html_a62ff62e511e1e25c861ec87f7df874b2"><div class="ttname"><a href="classRestriction.html#a62ff62e511e1e25c861ec87f7df874b2">Restriction::cost</a></div><div class="ttdeci">double cost() const </div><div class="ttdef"><b>Definition:</b> <a href="restriction_8h_source.html#l00044">restriction.h:44</a></div></div>
-<div class="ttc" id="classRestriction_html_ae3300d12b775a2d855a0e9e0f8509334"><div class="ttname"><a href="classRestriction.html#ae3300d12b775a2d855a0e9e0f8509334">Restriction::id</a></div><div class="ttdeci">int64_t id() const </div><div class="ttdef"><b>Definition:</b> <a href="restriction_8h_source.html#l00041">restriction.h:41</a></div></div>
-<div class="ttc" id="classRestriction_html_a2a8b87ded880d58624c0f28a12152a0a"><div class="ttname"><a href="classRestriction.html#a2a8b87ded880d58624c0f28a12152a0a">Restriction::restrict_edges</a></div><div class="ttdeci">std::vector&lt; int64_t &gt; restrict_edges() const </div><div class="ttdef"><b>Definition:</b> <a href="restriction_8h_source.html#l00047">restriction.h:47</a></div></div>
+<p>References <a class="el" href="restriction_8h_source.html#l00051">Restriction::cost()</a>, <a class="el" href="restriction_8h_source.html#l00048">Restriction::id()</a>, and <a class="el" href="restriction_8h_source.html#l00054">Restriction::restrict_edges()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                                    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n--------------------------------\nRestriction\n&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;ID: &quot;</span> &lt;&lt; r.<a class="code" href="classRestriction.html#ae3300d12b775a2d855a0e9e0f8509334">id</a>() &lt;&lt; <span class="stringliteral">&quot;\nRestricion edge sequence: &quot;</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;v : r.<a class="code" href="classRestriction.html#a2a8b87ded880d58624c0f28a12152a0a">restrict_edges</a>()) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        log &lt;&lt; v &lt;&lt;<span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;Cost: &quot;</span> &lt;&lt; r.<a class="code" href="classRestriction.html#a62ff62e511e1e25c861ec87f7df874b2">cost</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="ttc" id="classRestriction_html_a62ff62e511e1e25c861ec87f7df874b2"><div class="ttname"><a href="classRestriction.html#a62ff62e511e1e25c861ec87f7df874b2">Restriction::cost</a></div><div class="ttdeci">double cost() const </div><div class="ttdef"><b>Definition:</b> <a href="restriction_8h_source.html#l00051">restriction.h:51</a></div></div>
+<div class="ttc" id="classRestriction_html_ae3300d12b775a2d855a0e9e0f8509334"><div class="ttname"><a href="classRestriction.html#ae3300d12b775a2d855a0e9e0f8509334">Restriction::id</a></div><div class="ttdeci">int64_t id() const </div><div class="ttdef"><b>Definition:</b> <a href="restriction_8h_source.html#l00048">restriction.h:48</a></div></div>
+<div class="ttc" id="classRestriction_html_a2a8b87ded880d58624c0f28a12152a0a"><div class="ttname"><a href="classRestriction.html#a2a8b87ded880d58624c0f28a12152a0a">Restriction::restrict_edges</a></div><div class="ttdeci">std::vector&lt; int64_t &gt; restrict_edges() const </div><div class="ttdef"><b>Definition:</b> <a href="restriction_8h_source.html#l00054">restriction.h:54</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -189,7 +189,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6d52892230f406acf536b76cd747a045.html">dijkstraTRSP</a></li><li class="navelem"><a class="el" href="dir_a580a254cae11fbc0ba7dc2b6c07a1c8.html">src</a></li><li class="navelem"><a class="el" href="restriction_8cpp.html">restriction.cpp</a></li>
-    <li class="footer">Generated on Thu Aug 17 2017 09:03:26 for PGROUTING by
+    <li class="footer">Generated on Sat Aug 19 2017 19:36:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

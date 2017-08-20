@@ -163,7 +163,7 @@ var NAVTREEINDEX1 =
 "classPgr__dijkstra_1_1dijkstra__distance__visitor.html#a96d686d46e8eea9f4bf07b428cd24c7c":[5,0,24,0,0],
 "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html":[5,0,24,1],
 "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a0f24c9e722575b04b68d3e69c0a4200c":[5,0,24,1,11],
-"classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a2f890649f4448acec302581d40849fb0":[5,0,24,1,6],
+"classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a25e189fc8eb20dc76ea7daf827ad3b35":[5,0,24,1,6],
 "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a38d75664b2a5c2a242524f3817f361b8":[5,0,24,1,7],
 "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a3b765bcd47bdaa71f27aa6c25bf57f6c":[5,0,24,1,10],
 "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a527bbb65669095cd5fe93e1a7eabb6a4":[5,0,24,1,13],

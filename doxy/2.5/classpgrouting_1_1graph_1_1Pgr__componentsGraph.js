@@ -32,7 +32,7 @@ var classpgrouting_1_1graph_1_1Pgr__componentsGraph =
     [ "in_degree", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a4e12d0776531d64bed28e5619b47c2fd", null ],
     [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a1341eb7877973d52efe280c0f55f2a0e", null ],
     [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a7bce72dad9cfae60adea88977de5bf2e", null ],
-    [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a17c5dc2a067a085fb420c2fbae8f07fe", null ],
+    [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a67337dff9e8c87b5fec7c60a912ddcc6", null ],
     [ "is_directed", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a59860060fbba20a7a86ebc0f0fb1b2c8", null ],
     [ "is_source", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#aa36f93dbcd678e3efb82f6cbe13fc080", null ],
     [ "is_target", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a54302370649f7d01b527ac20e9d0ac50", null ],

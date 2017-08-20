@@ -6,7 +6,7 @@ var classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init =
     [ "edge_relaxed", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a8be9f775f2971567d0d533f15bc8debf", null ],
     [ "examine_edge", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#ad960f9a52692a486f8c890f532c0011d", null ],
     [ "examine_vertex", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a6101d35245c6a7fb9b9b4df9cf075034", null ],
-    [ "finish_vertex", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a2f890649f4448acec302581d40849fb0", null ],
+    [ "finish_vertex", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a25e189fc8eb20dc76ea7daf827ad3b35", null ],
     [ "first", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a38d75664b2a5c2a242524f3817f361b8", null ],
     [ "log", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#acd0cc189751cd53410dcfb3ee16c767f", null ],
     [ "m_color", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#ae796063928e640661d03cd501f08c89d", null ],

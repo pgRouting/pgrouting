@@ -37,7 +37,7 @@ var classpgrouting_1_1graph_1_1Pgr__lineGraph =
     [ "in_degree", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a4ec55b04efa97c9f75a3e78e5e2875ed", null ],
     [ "in_degree", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a4e12d0776531d64bed28e5619b47c2fd", null ],
     [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a620afb6a1b4be1a20a90fe6e58063ad7", null ],
-    [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a17c5dc2a067a085fb420c2fbae8f07fe", null ],
+    [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a67337dff9e8c87b5fec7c60a912ddcc6", null ],
     [ "insert_edges", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#adf97e69a48e3d65856b77fdc19d741eb", null ],
     [ "insert_vertices", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ad3c671cf7edd4bec040526a3ee1cede4", null ],
     [ "insert_vertices", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a1e037169368cb5e55b38bcab62abad87", null ],
