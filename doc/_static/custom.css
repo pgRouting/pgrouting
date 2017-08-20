@@ -10,3 +10,6 @@ div.content-wrapper {
     padding-bottom: 20px;
 }
 
+div.topic {
+        border: none;
+}

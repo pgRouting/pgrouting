@@ -25,3 +25,11 @@ The following are commonly used data types for some of the pgRouting functions.
 
 	pgr_costResult[] - Path Result with Cost <cost_result>
 	pgr_geomResult[] - Path Result with Geometry  <geom_result>
+
+See Also
+-------------------------------------------------------------------------------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

@@ -202,3 +202,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

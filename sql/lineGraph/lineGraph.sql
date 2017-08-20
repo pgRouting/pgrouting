@@ -2,12 +2,12 @@
 File: lineGraph.sql
 
 Generated with Template by:
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307.com
+Mail: vidhanj1307@gmail.com
 
 ------
 

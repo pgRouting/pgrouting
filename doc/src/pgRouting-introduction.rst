@@ -50,7 +50,7 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Virginia Vergara
+Maoguang Wang, Vidhan Jain, Virginia Vergara
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
 
@@ -59,10 +59,10 @@ Corporate Sponsors (in alphabetical order)
 
 These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:
 
- - `Georepublic <https://georepublic.info/en/>`__
- - `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
- - `iMaptools <http://imaptools.com>`__
- - `Paragon Corporation <http://www.paragoncorporation.com/>`_
+- `Georepublic <https://georepublic.info/en/>`__
+- `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
+- `iMaptools <http://imaptools.com>`__
+- `Paragon Corporation <http://www.paragoncorporation.com/>`_
 
 Contributors Past & Present:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -70,20 +70,20 @@ Contributors Past & Present:
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Akio Takubo, Andrea Nardelli, Anton Patrushev, Ashraf Hossain, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Virginia Vergara
+Akio Takubo, Andrea Nardelli, Anton Patrushev, Ashraf Hossain, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara
 
 Corporate Sponsors (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:
 
- - Camptocamp
- - CSIS (University of Tokyo)
- - Georepublic
- - Google Summer of Code
- - iMaptools
- - Orkney
- - Paragon Corporation
+- Camptocamp
+- CSIS (University of Tokyo)
+- Georepublic
+- Google Summer of Code
+- iMaptools
+- Orkney
+- Paragon Corporation
 
 
 More Information
