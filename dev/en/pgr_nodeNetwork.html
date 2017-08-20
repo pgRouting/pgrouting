@@ -440,12 +440,10 @@ point there is a node and the following edges share it:
 </tbody>
 </table>
 <p>Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 into our edge-table, copying the data for dir,cost,and reverse cost with tho following steps:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Add a column old_id into edge_table, this column is going to keep track the id of the original edge</li>
 <li>Insert only the segmented edges, that is, the ones whose max(sub_id) &gt;1</li>
 </ul>
-</div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">alter</span> <span class="k">table</span> <span class="n">edge_table</span> <span class="k">drop</span> <span class="k">column</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">old_id</span><span class="p">;</span>
 <span class="k">alter</span> <span class="k">table</span> <span class="n">edge_table</span> <span class="k">add</span> <span class="k">column</span> <span class="n">old_id</span> <span class="nb">integer</span><span class="p">;</span>
 <span class="k">insert</span> <span class="k">into</span> <span class="n">edge_table</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span><span class="n">dir</span><span class="p">,</span><span class="n">cost</span><span class="p">,</span><span class="n">reverse_cost</span><span class="p">,</span><span class="n">the_geom</span><span class="p">)</span>
@@ -550,6 +548,11 @@ point there is a node and the following edges share it:
 <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a> to analyze directionality of the edges.
 <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a> to create a topology based on the geometry.
 <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</p>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
 </div>
 </div>
 
@@ -566,7 +569,7 @@ point there is a node and the following edges share it:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Aug 17, 2017.<br/>
+      Last updated on Aug 19, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

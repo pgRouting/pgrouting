@@ -169,16 +169,14 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The function returns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">OK</span></code> after the network topology has been built and the vertices table created.</li>
 <li><code class="docutils literal"><span class="pre">FAIL</span></code> when the network topology was not built due to an error.</li>
 </ul>
-</div></blockquote>
 <div class="highlight-none" id="index-0"><div class="highlight"><pre><span></span>varchar pgr_createTopology(text edge_table, double precision tolerance,
-                   text the_geom:=&#39;the_geom&#39;, text id:=&#39;id&#39;,
-                   text source:=&#39;source&#39;,text target:=&#39;target&#39;,
-                   text rows_where:=&#39;true&#39;, boolean clean:=false)
+                       text the_geom:=&#39;the_geom&#39;, text id:=&#39;id&#39;,
+                       text source:=&#39;source&#39;,text target:=&#39;target&#39;,
+                       text rows_where:=&#39;true&#39;, boolean clean:=false)
 </pre></div>
 </div>
 </div>
@@ -212,28 +210,22 @@ all rows that where <code class="docutils literal"><span class="pre">source</spa
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>The <code class="docutils literal"><span class="pre">edge_table</span></code> will be affected</p>
-<blockquote class="last">
-<div><ul>
-<li><p class="first">The <code class="docutils literal"><span class="pre">source</span></code> column values will change.</p>
-</li>
-<li><p class="first">The <code class="docutils literal"><span class="pre">target</span></code> column values will change.</p>
-</li>
-<li><p class="first">An index will be created, if it doesn&#8217;t exists, to speed up the process to the following columns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="last simple">
+<li>The <code class="docutils literal"><span class="pre">source</span></code> column values will change.</li>
+<li>The <code class="docutils literal"><span class="pre">target</span></code> column values will change.<ul>
+<li>An index will be created, if it doesn&#8217;t exists, to speed up the process to the following columns:<ul>
 <li><code class="docutils literal"><span class="pre">id</span></code></li>
 <li><code class="docutils literal"><span class="pre">the_geom</span></code></li>
 <li><code class="docutils literal"><span class="pre">source</span></code></li>
 <li><code class="docutils literal"><span class="pre">target</span></code></li>
 </ul>
-</div></blockquote>
 </li>
 </ul>
-</div></blockquote>
+</li>
+</ul>
 </div>
 <p>The function returns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">OK</span></code> after the network topology has been built.<ul>
 <li>Creates a vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
 <li>Fills <code class="docutils literal"><span class="pre">id</span></code> and <code class="docutils literal"><span class="pre">the_geom</span></code> columns of the vertices table.</li>
@@ -248,7 +240,6 @@ all rows that where <code class="docutils literal"><span class="pre">source</spa
 </ul>
 </li>
 </ul>
-</div></blockquote>
 <p class="rubric">The Vertices Table</p>
 <p>The vertices table is a requirement of the <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a> functions.</p>
 <p>The structure of the vertices table is:</p>
@@ -566,7 +557,7 @@ The order of the parameters do not matter:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Aug 17, 2017.<br/>
+      Last updated on Aug 19, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

@@ -169,12 +169,10 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The function returns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">OK</span></code> after the analysis has finished.</li>
 <li><code class="docutils literal"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.</li>
 </ul>
-</div></blockquote>
 <div class="highlight-sql" id="index-0"><div class="highlight"><pre><span></span><span class="nb">varchar</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="nb">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">tolerance</span><span class="p">,</span>
                    <span class="nb">text</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
                    <span class="nb">text</span> <span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
@@ -185,12 +183,10 @@
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Prerequisites</p>
 <p>The  edge table to be analyzed must contain a source column and a target column filled with id&#8217;s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Use <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> to create the vertices table.</li>
 <li>Use <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a> to create the topology and the vertices table.</li>
 </ul>
-</div></blockquote>
 <p class="rubric">Parameters</p>
 <p>The analyze graph function accepts the following parameters:</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -214,8 +210,7 @@
 </tbody>
 </table>
 <p>The function returns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">OK</span></code> after the analysis has finished.<ul>
 <li>Uses the vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
 <li>Fills completely the <code class="docutils literal"><span class="pre">cnt</span></code> and <code class="docutils literal"><span class="pre">chk</span></code> columns of the vertices table.</li>
@@ -231,7 +226,6 @@
 </ul>
 </li>
 </ul>
-</div></blockquote>
 <p class="rubric">The Vertices Table</p>
 <p>The vertices table can be created with <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> or <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a></p>
 <p>The structure of the vertices table is:</p>
@@ -274,9 +268,19 @@
 <p class="first admonition-title">Warning</p>
 <div class="last line-block">
 <div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal"><span class="pre">id</span></code> of the table <code class="docutils literal"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal"><span class="pre">the_geom</span></code> is passed to the function as the id column.</div>
-<div class="line"><code class="docutils literal"><span class="pre">SELECT</span>&nbsp; <span class="pre">pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');</span></code></div>
-<div class="line">ERROR: Can not determine the srid of the geometry &#8220;id&#8221; in table public.edge_table</div>
 </div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Got</span> <span class="k">function</span> <span class="n">st_srid</span><span class="p">(</span><span class="nb">bigint</span><span class="p">)</span> <span class="n">does</span> <span class="k">not</span> <span class="n">exist</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">something</span> <span class="n">went</span> <span class="n">wrong</span> <span class="k">when</span> <span class="n">checking</span> <span class="k">for</span> <span class="n">SRID</span> <span class="k">of</span> <span class="n">id</span> <span class="k">in</span> <span class="k">table</span> <span class="k">public</span><span class="p">.</span><span class="n">edge_table</span>
+<span class="n">pgr_analyzegraph</span>
+<span class="c1">------------------</span>
+  <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
 </div>
 <p class="rubric">When using the named notation</p>
 <p>The order of the parameters do not matter:</p>
@@ -323,9 +327,19 @@
 <p class="first admonition-title">Warning</p>
 <div class="last line-block">
 <div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal"><span class="pre">gid</span></code> of the table <code class="docutils literal"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal"><span class="pre">mygeom</span></code> is passed to the function as the id column.</div>
-<div class="line"><code class="docutils literal"><span class="pre">SELECT</span>&nbsp; <span class="pre">pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');</span></code></div>
-<div class="line">ERROR: Can not determine the srid of the geometry &#8220;gid&#8221; in table public.mytable</div>
 </div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Got</span> <span class="k">function</span> <span class="n">st_srid</span><span class="p">(</span><span class="nb">bigint</span><span class="p">)</span> <span class="n">does</span> <span class="k">not</span> <span class="n">exist</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">something</span> <span class="n">went</span> <span class="n">wrong</span> <span class="k">when</span> <span class="n">checking</span> <span class="k">for</span> <span class="n">SRID</span> <span class="k">of</span> <span class="n">gid</span> <span class="k">in</span> <span class="k">table</span> <span class="k">public</span><span class="p">.</span><span class="n">mytable</span>
+<span class="n">pgr_analyzegraph</span>
+<span class="c1">------------------</span>
+  <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
 </div>
 <p class="rubric">When using the named notation</p>
 <p>The order of the parameters do not matter:</p>
@@ -500,6 +514,11 @@
 <li><a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</li>
 <li><a class="reference internal" href="pgr_nodeNetwork.html#pgr-node-network"><span class="std std-ref">pgr_nodeNetwork</span></a> to create nodes to a not noded edge table.</li>
 </ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
 </div>
 </div>
 
@@ -516,7 +535,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Aug 17, 2017.<br/>
+      Last updated on Aug 19, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

@@ -182,12 +182,10 @@
 <p>So by counting the number of edges entering and exiting each node we can identify both <cite>source</cite> and <cite>sink</cite> nodes so that you can look at those areas of your network to make repairs and/or report the problem back to your data vendor.</p>
 <p class="rubric">Prerequisites</p>
 <p>The  edge table to be analyzed must contain a source column and a target column filled with id&#8217;s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Use <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> to create the vertices table.</li>
 <li>Use <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a> to create the topology and the vertices table.</li>
 </ul>
-</div></blockquote>
 <p class="rubric">Parameters</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -219,8 +217,7 @@
 <p class="last">It is strongly recommended to use the named notation. See <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> or <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a> for examples.</p>
 </div>
 <p>The function returns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">OK</span></code> after the analysis has finished.<ul>
 <li>Uses the vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
 <li>Fills completely the <code class="docutils literal"><span class="pre">ein</span></code> and <code class="docutils literal"><span class="pre">eout</span></code> columns of the vertices table.</li>
@@ -233,7 +230,6 @@
 </ul>
 </li>
 </ul>
-</div></blockquote>
 <p>The rules are defined as an array of text strings that if match the <code class="docutils literal"><span class="pre">oneway</span></code> value would be counted as <code class="docutils literal"><span class="pre">true</span></code> for the source or target <strong>in</strong> or <strong>out</strong> condition.</p>
 <p class="rubric">The Vertices Table</p>
 <p>The vertices table can be created with <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> or <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a></p>
@@ -294,6 +290,11 @@
 <li><a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</li>
 <li><a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</li>
 </ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
 </div>
 </div>
 
@@ -310,7 +311,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Aug 17, 2017.<br/>
+      Last updated on Aug 19, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
