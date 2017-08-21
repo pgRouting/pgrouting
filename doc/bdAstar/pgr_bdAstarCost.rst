@@ -45,8 +45,8 @@ Signature Summary
 
 Using these signatures, will load once the graph and perform several one to one `pgr_bdAstarCost`
 
-  - The result is the union of the results of the one to one `pgr_bdAstarCost`.
-  - The extra ``start_vid`` and/or ``end_vid`` in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_bdAstarCost`.
+- The extra ``start_vid`` and/or ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 
 
