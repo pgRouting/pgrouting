@@ -13,11 +13,11 @@
 <area shape="rect" id="node13" href="$restrictions__input_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/src/restrictions\l_input.c" alt="" coords="2205,117,2392,187"/>
 <area shape="rect" id="node14" href="$time__msg_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/src/time_msg.c" alt="" coords="2417,124,2609,180"/>
 <area shape="rect" id="node15" href="$vehicles__input_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/src/vehicles\l_input.c" alt="" coords="2634,117,2805,187"/>
-<area shape="rect" id="node16" href="$articulationPoints_8c.html" title="Conecting code with postgres. " alt="" coords="2831,117,3039,187"/>
-<area shape="rect" id="node17" href="$biconnectedComponents_8c.html" title="Conecting code with postgres. " alt="" coords="3063,117,3277,187"/>
-<area shape="rect" id="node18" href="$bridges_8c.html" title="Conecting code with postgres. " alt="" coords="3302,124,3500,180"/>
-<area shape="rect" id="node19" href="$connectedComponents_8c.html" title="Conecting code with postgres. " alt="" coords="3525,117,3731,187"/>
-<area shape="rect" id="node20" href="$strongComponents_8c.html" title="Conecting code with postgres. " alt="" coords="3755,124,4021,180"/>
+<area shape="rect" id="node16" href="$articulationPoints_8c.html" title="Connecting code with postgres. " alt="" coords="2831,117,3039,187"/>
+<area shape="rect" id="node17" href="$biconnectedComponents_8c.html" title="Connecting code with postgres. " alt="" coords="3063,117,3277,187"/>
+<area shape="rect" id="node18" href="$bridges_8c.html" title="Connecting code with postgres. " alt="" coords="3302,124,3500,180"/>
+<area shape="rect" id="node19" href="$connectedComponents_8c.html" title="Connecting code with postgres. " alt="" coords="3525,117,3731,187"/>
+<area shape="rect" id="node20" href="$strongComponents_8c.html" title="Connecting code with postgres. " alt="" coords="3755,124,4021,180"/>
 <area shape="rect" id="node21" href="$contractGraph_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/contraction/src/contract\lGraph.c" alt="" coords="4046,117,4231,187"/>
 <area shape="rect" id="node22" href="$dijkstra_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstra.c" alt="" coords="4255,124,4424,180"/>
 <area shape="rect" id="node23" href="$dijkstraVia_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/dijkstra/src/dijkstraVia.c" alt="" coords="4449,124,4636,180"/>
