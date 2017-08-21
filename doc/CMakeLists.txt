@@ -256,7 +256,7 @@ foreach (target ${PgRouting_DOC_TARGETS})
             COMMAND ${SPHINX_EXECUTABLE} 
             #-q  # Enable for quiet mode 
             #-Q  # Enable for even more quiet mode
-            #-v  # increase verbosity
+            -v   # increase verbosity
             #-E  # don't use a saved environment, always read all file
             #-a  # write all files; default is to only write new and changed files
             -b ${target}
