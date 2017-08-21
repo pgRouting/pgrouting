@@ -486,7 +486,7 @@ class Pgr_dijkstra {
       *   Subsequent @b valid executions
       *       - will not change the:
       *         - values < distance
-      *   Dont know yet what happens to predecessors
+      *   Don't know yet what happens to predecessors
       */
      std::deque< Path > drivingDistance_with_equicost(
              G &graph,
@@ -530,7 +530,7 @@ class Pgr_dijkstra {
 
 
          /*
-          * predecessors of vertices in the set are themselfs
+          * predecessors of vertices in the set are themselves
           */
          for (const auto &vertex : start_vertex) {
              for (auto &p : pred) {
