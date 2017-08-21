@@ -68,8 +68,8 @@ The minimal signature is for a **directed** graph:
 :Example:
 
 .. literalinclude:: doc-pgr_lineGraph.queries
-   :start-after: -- q1
-   :end-before: -- q2
+   :start-after: --q1
+   :end-before: --q2
 
 
 .. index::
@@ -90,8 +90,8 @@ This signature returns the Line Graph of the current graph:
 :Example:
 
 .. literalinclude:: doc-pgr_lineGraph.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: --q2
+   :end-before: --q3
 
 
 
@@ -145,8 +145,8 @@ Examples
 -------------------------------------------------------------------------------
 
 .. literalinclude:: doc-pgr_lineGraph.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: --q3
+   :end-before: --q4
 
 See Also
 -------------------------------------------------------------------------------
