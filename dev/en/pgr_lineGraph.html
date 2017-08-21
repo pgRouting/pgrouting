@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_lineGraph - Experimental &mdash; pgRouting Manual (2.5-dev)</title>
+    <title>pgr_lineGraph - Experimental &mdash; pgRouting Manual (2.5-alpha)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,10 +14,10 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.0-dev',
+        VERSION:     'v2.5.0-alpha',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -29,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5-alpha)" href="index.html" />
     <link rel="up" title="Stable Proposed Functions" href="proposed.html" />
     <link rel="next" title="Release Notes" href="release_notes.html" />
     <link rel="prev" title="pgr_vrpOneDepot - Experimental" href="pgr_vrpOneDepot.html" />
@@ -52,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-alpha</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -217,7 +217,26 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
+ <span class="n">ID</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">-----+--------+--------+------+--------------</span>
+   <span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -243,7 +262,28 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
+ <span class="n">ID</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+     <span class="n">FALSE</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+ <span class="o">----+--------+--------+------+--------------</span>
+   <span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -410,7 +450,24 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
+ <span class="n">ID</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>            <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>   <span class="mi">25</span> <span class="o">|</span>            <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>            <span class="mi">25</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">-----+--------+--------+------+--------------</span>
+   <span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -440,8 +497,8 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
-      Last updated on Aug 19, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0-alpha.<br/>
+      Last updated on Aug 21, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
