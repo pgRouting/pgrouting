@@ -117,6 +117,7 @@ dropdb ___test_update
 ### updates from 2.4
 #------------------------------------
 
+update_test 2.4.2 $CURRENT
 update_test 2.4.1 $CURRENT
 update_test 2.4.0 $CURRENT
 

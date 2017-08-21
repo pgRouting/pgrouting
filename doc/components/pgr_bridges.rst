@@ -9,7 +9,7 @@
 
 .. _pgr_Bridges:
 
-pgr_bridges
+pgr_bridges - Experimental
 ===============================================================================
 
 
@@ -19,6 +19,10 @@ pgr_bridges
    :target: http://www.boost.org/libs/graph/doc/connected_components.html
 
    Boost Graph Inside
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 Synopsis

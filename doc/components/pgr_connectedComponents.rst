@@ -9,7 +9,7 @@
 
 .. _pgr_connectedComponents:
 
-pgr_connectedComponents
+pgr_connectedComponents - Experimental
 ===============================================================================
 
 
@@ -20,6 +20,10 @@ In particular, the algorithm implemented by Boost.Graph.
    :target: http://www.boost.org/libs/graph/doc/connected_components.html
 
    Boost Graph Inside
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 Synopsis

@@ -9,7 +9,7 @@
 
 .. _pgr_strongComponents:
 
-pgr_strongComponents
+pgr_strongComponents - Experimental
 ===============================================================================
 
 ``pgr_strongComponents`` — Return the strongly connected components of a directed graph using Tarjan's algorithm based on DFS.
@@ -19,6 +19,10 @@ In particular, the algorithm implemented by Boost.Graph.
    :target: http://www.boost.org/libs/graph/doc/strong_components.html
 
    Boost Graph Inside
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 Synopsis

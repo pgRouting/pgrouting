@@ -447,7 +447,7 @@ class Pgr_base_graph {
      /*! @brief adds the vertices into the graph
       *
       * PRECONDITIONS:
-      * - The graph has not being initilized before
+      * - The graph has not being initialized before
       * - There are no dupicated vertices
       *
       * ~~~~~{.c}

@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 /** @file bridges.c
- * @brief Conecting code with postgres.
+ * @brief Connecting code with postgres.
  *
  * This file is fully documented for understanding
  *  how the postgres connectinon works
@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /**
  *  postgres_connection.h 
  *
- *  - should allways be first in the C code
+ *  - should always be first in the C code
  */
 #include "c_common/postgres_connection.h"
 
@@ -52,7 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 /* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges informtion */
+/* for functions to get edges information */
 #include "c_common/edges_input.h"
 
 #include "drivers/components/bridges_driver.h"  // the link to the C++ code of the function
