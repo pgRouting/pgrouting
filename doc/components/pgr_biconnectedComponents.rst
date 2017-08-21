@@ -9,7 +9,7 @@
 
 .. _pgr_biconnectedComponents:
 
-pgr_biconnectedComponents
+pgr_biconnectedComponents - Experimental
 ===============================================================================
 
 ``pgr_biconnectedComponents`` — Return the biconnected components of an undirected graph.
@@ -19,6 +19,10 @@ In particular, the algorithm implemented by Boost.Graph.
    :target: http://www.boost.org/libs/graph/doc/biconnected_components.html
 
    Boost Graph Inside
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 Synopsis

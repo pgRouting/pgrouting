@@ -12,6 +12,11 @@
 Components - Family of functions
 ===============================================================================
 
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 .. index from here
 
 * :ref:`pgr_connectedComponents` - Return the connected components of an undirected graph.
