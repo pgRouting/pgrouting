@@ -76,10 +76,10 @@ The first query, has the output ordered, he second query shows an example usage:
 
 Steps:
 
-  - Calculates the alpha shape
+- Calculates the alpha shape
     - the :code:`ORDER BY` clause is not used.
-  - constructs a polygon
-  - and computes the area
+- constructs a polygon
+- and computes the area
 
 .. literalinclude:: doc-pgr_alphashape.queries
    :start-after: -- q2
