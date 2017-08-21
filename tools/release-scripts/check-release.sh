@@ -54,27 +54,27 @@ fi
 if [[ -z  $1 ]]; then
     echo "Mayor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
     exit 1;
 fi
 if [[ -z  $2 ]]; then
     echo "Minor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
     exit 1;
 fi
 
 if [[ -z  $3 ]]; then
     echo "Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
     exit 1;
 fi
 
 if [[ -z  $4 ]]; then
     echo "Last Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
     exit 1;
 fi
 
@@ -82,7 +82,7 @@ fi
 if [[ -z  $5 ]]; then
     echo "branch missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
     exit 1;
 fi
 
@@ -90,8 +90,8 @@ MAYOR=$1
 MINOR=$2
 MICRO=$3
 PREV_REL=$4
-RC="-dev"
 BRANCH=$5
+RC=$6
 DEBUG=1
 
 
@@ -204,7 +204,7 @@ if [[ -n $DEBUG ]]; then
 fi
 
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MAJOR' | grep $MAYOR) != "set(PGROUTING_VERSION_MAJOR \"$MAYOR\")" ]]; then
-    echo "FATAL: PGROUTING_VERSION_MAJOR is not $MAYOR"
+    error_msg "FATAL: PGROUTING_VERSION_MAJOR is not '$MAYOR' ... Verify CMakeLists.txt"
     exit 1
 else
     echo "  - [x] mayor information is OK"
@@ -212,21 +212,21 @@ fi
 
 
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MINOR' | grep $MINOR) !=  "set(PGROUTING_VERSION_MINOR \"$MINOR\")" ]]; then
-    echo "FATAL: PGROUTING_VERSION_MINOR is not $MINOR"
+    error_msg "FATAL: PGROUTING_VERSION_MINOR is not '$MINOR' ... Verify CMakeLists.txt"
     exit 1
 else
     echo "  - [x] Check minor information is OK"
 fi
 
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH' | grep $MICRO) !=  "set(PGROUTING_VERSION_PATCH \"$MICRO\")" ]]; then
-    echo "FATAL: PGROUTING_VERSION_PATCH is not $MICRO"
+    error_msg "FATAL: PGROUTING_VERSION_PATCH is not '$MICRO' ... Verify CMakeLists.txt"
     exit 1
 else
     echo "  - [x] Check patch information is OK"
 fi
 
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_DEV' ) !=  "set(PGROUTING_VERSION_DEV \"$RC\")" ]]; then
-    echo "FATAL: PGROUTING_VERSION_DEV is not $RC"
+    error_msg "FATAL: PGROUTING_VERSION_DEV is not '$RC' ... Verify CMakeLists.txt"
     exit 1
 else
     echo "  - [x] Check dev information is OK"
