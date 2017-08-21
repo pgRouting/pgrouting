@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_biconnectedComponents &mdash; pgRouting Manual (2.5-alpha)</title>
+    <title>pgr_biconnectedComponents - Experimental &mdash; pgRouting Manual (2.5-alpha)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -31,8 +31,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.5-alpha)" href="index.html" />
     <link rel="up" title="Components - Family of functions" href="components-family.html" />
-    <link rel="next" title="pgr_articulationPoints" href="pgr_articulationPoints.html" />
-    <link rel="prev" title="pgr_strongComponents" href="pgr_strongComponents.html" />
+    <link rel="next" title="pgr_articulationPoints - Experimental" href="pgr_articulationPoints.html" />
+    <link rel="prev" title="pgr_strongComponents - Experimental" href="pgr_strongComponents.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -109,7 +109,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_biconnectedComponents</a><ul>
+<li><a class="reference internal" href="#">pgr_biconnectedComponents - Experimental</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
@@ -131,11 +131,11 @@
               
                 
   <li>
-    <a href="pgr_strongComponents.html" title="Previous Chapter: pgr_strongComponents"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_strongCompon...</span>
+    <a href="pgr_strongComponents.html" title="Previous Chapter: pgr_strongComponents - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_strongCompon...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_articulationPoints.html" title="Next Chapter: pgr_articulationPoints"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_articulation... &raquo;</span>
+    <a href="pgr_articulationPoints.html" title="Next Chapter: pgr_articulationPoints - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_articulation... &raquo;</span>
     </a>
   </li>
               
@@ -163,13 +163,35 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-biconnectedcomponents">
-<span id="id1"></span><h1>pgr_biconnectedComponents<a class="headerlink" href="#pgr-biconnectedcomponents" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-biconnectedcomponents-experimental">
+<span id="pgr-biconnectedcomponents"></span><h1>pgr_biconnectedComponents - Experimental<a class="headerlink" href="#pgr-biconnectedcomponents-experimental" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_biconnectedComponents</span></code> — Return the biconnected components of an undirected graph.
 In particular, the algorithm implemented by Boost.Graph.</p>
-<div class="figure" id="id2">
+<div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/biconnected_components.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Experimental functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
