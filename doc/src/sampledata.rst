@@ -71,20 +71,19 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 
 Images
-------
+----------------
 
 * Red arrows correspond when ``cost`` > 0 in the edge table.
 * Blue arrows correspond when ``reverse_cost`` > 0 in the edge table.
 * Points are outside the graph.
 * Click on the graph to enlarge.
 
-.. note:: On all graphs,
+.. _fig1:
 
 .. rubric:: Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used:
 
 When working with city networks, this is recommended for point of view of vehicles.
 
-.. _fig1:
 
 .. figure:: /images/Fig1-originalData.png
 
