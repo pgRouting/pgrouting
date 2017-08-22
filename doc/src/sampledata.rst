@@ -80,7 +80,8 @@ Images
 
 .. _fig1:
 
-.. rubric:: Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used:
+Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used
+......................................................................................................
 
 When working with city networks, this is recommended for point of view of vehicles.
 
@@ -89,22 +90,24 @@ When working with city networks, this is recommended for point of view of vehicl
 
    **Graph 1: Directed, with cost and reverse cost**
 
+.. _fig2:
 
-.. rubric:: Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used:
+Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used
+......................................................................................................
 
 When working with city networks, this is recommended for point of view of pedestrians.
 
-.. _fig2:
 
 .. figure:: /images/Fig6-undirected.png
    :scale: 50%
 
    **Graph 2: Undirected, with cost and reverse cost**
 
-
-.. rubric:: Network for queries marked as ``directed`` and only ``cost`` column is used:
-
 .. _fig3:
+
+Network for queries marked as ``directed`` and only ``cost`` column is used
+......................................................................................................
+
 
 
 .. figure:: /images/Fig2-cost.png
@@ -112,10 +115,11 @@ When working with city networks, this is recommended for point of view of pedest
 
    **Graph 3: Directed, with cost**
 
-
-.. rubric:: Network for queries marked as ``undirected`` and only ``cost`` column is used:
-
 .. _fig4:
+
+Network for queries marked as ``undirected`` and only ``cost`` column is used
+......................................................................................................
+
 
 .. figure:: /images/Fig4-costUndirected.png
    :scale: 20%
