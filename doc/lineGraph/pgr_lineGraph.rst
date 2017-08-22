@@ -30,9 +30,9 @@ Synopsis
 
 Given a graph G, its line graph L(G) is a graph such that:-
 
-   - each vertex of L(G) represents an edge of G
+- each vertex of L(G) represents an edge of G
 
-   - two vertices of L(G) are adjacent if and only if their corresponding edges
+- two vertices of L(G) are adjacent if and only if their corresponding edges
      share a common endpoint in G.
 
 The following figures show a graph (left, with blue vertices) and its
