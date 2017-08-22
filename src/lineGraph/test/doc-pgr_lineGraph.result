@@ -218,5 +218,6 @@ SELECT * FROM pgr_lineGraph(
  158 |     13 |     15 |    1 |           -1
 (158 rows)
 
+-- q3
 ROLLBACK;
 ROLLBACK
