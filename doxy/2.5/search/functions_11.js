@@ -26,7 +26,6 @@ var searchData=
   ['speed',['speed',['../classpgrouting_1_1vrp_1_1Vehicle.html#abf9aa7c148625b9f7a4a29d7e8640ef3',1,'pgrouting::vrp::Vehicle']]],
   ['start_5fid',['start_id',['../classPath.html#ac7035439d26c9e76a20ca1a06541923e',1,'Path::start_id() const '],['../classPath.html#a4316efe698e74adf1e0a119da1db2469',1,'Path::start_id(int64_t value)']]],
   ['start_5fsite',['start_site',['../classpgrouting_1_1vrp_1_1Vehicle.html#a1b6c4eff910d26a5d49ea0cfa3a566a4',1,'pgrouting::vrp::Vehicle']]],
-  ['start_5ftiming',['start_timing',['../drivedist__driver_8cpp.html#aadaddd2d37cf9feb281d2a1723483fa5',1,'drivedist_driver.cpp']]],
   ['stringtokenizer',['StringTokenizer',['../classStringTokenizer.html#abee9392f74f78f6232e090a78a669b8d',1,'StringTokenizer']]],
   ['strongcomponents',['strongComponents',['../classPgr__components.html#a2306e311b0967606547481a568084178',1,'Pgr_components::strongComponents()'],['../strongComponents_8c.html#afe480bc4995e169ffeb9d3a798ab0d44',1,'strongComponents():&#160;strongComponents.c']]],
   ['subseti',['subsetI',['../classpgrouting_1_1vrp_1_1Order.html#a3f3b10a29ba63bf20e00383bcc0af81d',1,'pgrouting::vrp::Order']]],

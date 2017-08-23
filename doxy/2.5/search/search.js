@@ -17,7 +17,7 @@ var indexSectionsWithContent =
   7: "egn",
   8: "acdktu",
   9: "cdeios",
-  10: "_eimnprtw",
+  10: "_eimnprt",
   11: "dpt"
 };
 

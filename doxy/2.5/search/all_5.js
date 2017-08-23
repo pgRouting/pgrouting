@@ -36,7 +36,6 @@ var searchData=
   ['end_5fopen_5ft',['end_open_t',['../structVehicle__t.html#a1a3639fc0ca516901ffb06251a7838e1',1,'Vehicle_t']]],
   ['end_5fservice_5ft',['end_service_t',['../structVehicle__t.html#af096bb6d7bb70b80126934de22546d4e',1,'Vehicle_t']]],
   ['end_5fsite',['end_site',['../classpgrouting_1_1vrp_1_1Vehicle.html#a045c3a9a58b87092413c650be2529d13',1,'pgrouting::vrp::Vehicle']]],
-  ['end_5ftiming',['end_timing',['../drivedist__driver_8cpp.html#aa4f67e7bb183ae182e584bf3c8d37bd8',1,'drivedist_driver.cpp']]],
   ['end_5fvid',['end_vid',['../structRoutes__t.html#aa6c10a0d33fe8700ea0ad3d66a373fc7',1,'Routes_t']]],
   ['end_5fx',['end_x',['../structVehicle__t.html#aabe3e829f64856896af1c0fa01ba84ba',1,'Vehicle_t']]],
   ['end_5fy',['end_y',['../structVehicle__t.html#a26acb2d98f3afaef6fd83178c9b07570',1,'Vehicle_t']]],

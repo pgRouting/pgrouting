@@ -20,8 +20,4 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/src/driving_distance/src/driv
   Node7 [label="cpp_common/pgr_alloc.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html"];
   Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="cpp_common/pgr_assert.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__assert_8h.html",tooltip="Assertions Handling. "];
-  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="ctime",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="chrono",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }

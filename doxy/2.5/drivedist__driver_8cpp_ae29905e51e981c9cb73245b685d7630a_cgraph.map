@@ -1,13 +1,11 @@
 <map id="do_pgr_driving_many_to_dist" name="do_pgr_driving_many_to_dist">
 <area shape="rect" id="node2" href="$basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0" title="collapse_paths" alt="" coords="235,5,344,32"/>
 <area shape="rect" id="node3" href="$basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="241,56,337,83"/>
-<area shape="rect" id="node4" href="$drivedist__driver_8cpp.html#aa4f67e7bb183ae182e584bf3c8d37bd8" title="end_timing" alt="" coords="247,107,332,133"/>
-<area shape="rect" id="node5" href="$namespacepgrouting.html#a7f6c592f35e628f82429127580ed29fb" title="pgrouting::extract\l_vertices" alt="" coords="228,158,351,199"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="200,223,379,265"/>
-<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="427,365,501,392"/>
-<area shape="rect" id="node8" href="$pgr__dijkstra_8hpp.html#adcab15bb56211bdd3f0832afa1c275a5" title="pgr_drivingDistance" alt="" coords="221,340,358,367"/>
-<area shape="rect" id="node9" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="255,391,324,417"/>
-<area shape="rect" id="node10" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="253,441,325,468"/>
-<area shape="rect" id="node11" href="$drivedist__driver_8cpp.html#aadaddd2d37cf9feb281d2a1723483fa5" title="start_timing" alt="" coords="244,492,335,519"/>
-<area shape="rect" id="node12" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="213,543,366,585"/>
+<area shape="rect" id="node4" href="$namespacepgrouting.html#a7f6c592f35e628f82429127580ed29fb" title="pgrouting::extract\l_vertices" alt="" coords="228,107,351,149"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="200,173,379,214"/>
+<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="427,315,501,341"/>
+<area shape="rect" id="node7" href="$pgr__dijkstra_8hpp.html#adcab15bb56211bdd3f0832afa1c275a5" title="pgr_drivingDistance" alt="" coords="221,289,358,316"/>
+<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="255,340,324,367"/>
+<area shape="rect" id="node9" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="253,391,325,417"/>
+<area shape="rect" id="node10" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="213,442,366,483"/>
 </map>
