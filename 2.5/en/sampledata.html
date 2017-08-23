@@ -110,6 +110,10 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Sample Data</a><ul>
 <li><a class="reference internal" href="#images">Images</a><ul>
+<li><a class="reference internal" href="#network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used">Network for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> and <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns are used</a></li>
+<li><a class="reference internal" href="#network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used">Network for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> and <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns are used</a></li>
+<li><a class="reference internal" href="#network-for-queries-marked-as-directed-and-only-cost-column-is-used">Network for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> and only <code class="docutils literal"><span class="pre">cost</span></code> column is used</a></li>
+<li><a class="reference internal" href="#network-for-queries-marked-as-undirected-and-only-cost-column-is-used">Network for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> and only <code class="docutils literal"><span class="pre">cost</span></code> column is used</a></li>
 <li><a class="reference internal" href="#pick-deliver-data">Pick &amp; Deliver Data</a></li>
 </ul>
 </li>
@@ -257,35 +261,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <ul class="simple">
 <li>Used with the <a class="reference internal" href="pgr_trsp.html#trsp"><span class="std std-ref">pgr_trsp - Turn Restriction Shortest Path (TRSP)</span></a> functions.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrict</span> <span class="p">(</span>
-    <span class="nb">id</span> <span class="n">BIGSERIAL</span><span class="p">,</span>
-    <span class="n">restricted_edges</span> <span class="n">BIGINT</span><span class="p">[]</span> <span class="p">,</span>
-    <span class="n">cost</span> <span class="n">FLOAT</span>
-<span class="p">);</span>
-
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">restrict</span><span class="p">(</span><span class="n">restricted_edges</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
-<span class="p">(</span><span class="s1">&#39;{4, 7}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;{7, 8, 11}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;{7, 8, 5}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;{7, 4}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;{7, 8}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;{9, 11}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;{9, 8}&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-
-<span class="n">Create</span> <span class="n">Table</span> <span class="n">edge_table255</span><span class="p">(</span>
-    <span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span>
-    <span class="n">source</span> <span class="n">BIGINT</span><span class="p">,</span>
-    <span class="n">target</span> <span class="n">BIGINT</span><span class="p">,</span>
-    <span class="n">cost</span> <span class="n">FLOAT</span><span class="p">,</span>
-    <span class="n">reverse_cost</span> <span class="n">FLOAT</span>
-<span class="p">);</span>
-
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edge_table255</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="n">VALUES</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">);</span>
-
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
     <span class="n">rid</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
     <span class="n">to_cost</span> <span class="n">FLOAT</span><span class="p">,</span>
     <span class="n">target_id</span> <span class="n">BIGINT</span><span class="p">,</span>
@@ -346,31 +322,35 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <li>Points are outside the graph.</li>
 <li>Click on the graph to enlarge.</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">On all graphs,</p>
-</div>
-<p class="rubric">Network for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> and <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns are used:</p>
+<div class="section" id="network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used">
+<span id="fig1"></span><h3>Network for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> and <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns are used<a class="headerlink" href="#network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used" title="Permalink to this headline">¶</a></h3>
 <p>When working with city networks, this is recommended for point of view of vehicles.</p>
 <div class="figure" id="id1">
-<span id="fig1"></span><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" />
+<img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" />
 <p class="caption"><span class="caption-text"><strong>Graph 1: Directed, with cost and reverse cost</strong></span></p>
 </div>
-<p class="rubric">Network for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> and <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns are used:</p>
+</div>
+<div class="section" id="network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used">
+<span id="fig2"></span><h3>Network for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> and <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns are used<a class="headerlink" href="#network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used" title="Permalink to this headline">¶</a></h3>
 <p>When working with city networks, this is recommended for point of view of pedestrians.</p>
 <div class="figure" id="id2">
-<span id="fig2"></span><a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 310.5px; height: 312.0px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 310.5px; height: 312.0px;" /></a>
 <p class="caption"><span class="caption-text"><strong>Graph 2: Undirected, with cost and reverse cost</strong></span></p>
 </div>
-<p class="rubric">Network for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> and only <code class="docutils literal"><span class="pre">cost</span></code> column is used:</p>
+</div>
+<div class="section" id="network-for-queries-marked-as-directed-and-only-cost-column-is-used">
+<span id="fig3"></span><h3>Network for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> and only <code class="docutils literal"><span class="pre">cost</span></code> column is used<a class="headerlink" href="#network-for-queries-marked-as-directed-and-only-cost-column-is-used" title="Permalink to this headline">¶</a></h3>
 <div class="figure" id="id3">
-<span id="fig3"></span><a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 130.8px; height: 126.6px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 130.8px; height: 126.6px;" /></a>
 <p class="caption"><span class="caption-text"><strong>Graph 3: Directed, with cost</strong></span></p>
 </div>
-<p class="rubric">Network for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> and only <code class="docutils literal"><span class="pre">cost</span></code> column is used:</p>
+</div>
+<div class="section" id="network-for-queries-marked-as-undirected-and-only-cost-column-is-used">
+<span id="fig4"></span><h3>Network for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> and only <code class="docutils literal"><span class="pre">cost</span></code> column is used<a class="headerlink" href="#network-for-queries-marked-as-undirected-and-only-cost-column-is-used" title="Permalink to this headline">¶</a></h3>
 <div class="figure" id="id4">
-<span id="fig4"></span><a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 131.2px; height: 127.2px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 131.2px; height: 127.2px;" /></a>
 <p class="caption"><span class="caption-text"><strong>Graph 4: Undirected, with cost</strong></span></p>
+</div>
 </div>
 <div class="section" id="pick-deliver-data">
 <span id="pickdeliverdata"></span><h3>Pick &amp; Deliver Data<a class="headerlink" href="#pick-deliver-data" title="Permalink to this headline">¶</a></h3>
@@ -517,7 +497,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-alpha.<br/>
-      Last updated on Aug 21, 2017.<br/>
+      Last updated on Aug 23, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

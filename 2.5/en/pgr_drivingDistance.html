@@ -394,7 +394,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Graph 1: Directed, with cost and reverse cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Network for queries marked as directed and cost and reverse_cost columns are used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
@@ -479,7 +479,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Graph 2: Undirected, with cost and reverse cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Network for queries marked as undirected and cost and reverse_cost columns are used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
@@ -570,7 +570,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Graph 3: Directed, with cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Network for queries marked as directed and only cost column is used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
@@ -631,7 +631,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Graph 4: Undirected, with cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Network for queries marked as undirected and only cost column is used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
@@ -746,7 +746,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.5.0-alpha.<br/>
-      Last updated on Aug 21, 2017.<br/>
+      Last updated on Aug 23, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
