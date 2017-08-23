@@ -31,9 +31,7 @@ Synopsis
 Given a graph G, its line graph L(G) is a graph such that:-
 
 - each vertex of L(G) represents an edge of G
-
-- two vertices of L(G) are adjacent if and only if their corresponding edges
-     share a common endpoint in G.
+- two vertices of L(G) are adjacent if and only if their corresponding edges share a common endpoint in G.
 
 The following figures show a graph (left, with blue vertices) and its
 Line Graph (right, with green vertices).
@@ -49,7 +47,6 @@ Signature Summary
 .. code-block:: none
 
     pgr_lineGraph(edges_sql, directed)
-
     RETURNS SET OF (seq, source, target, cost, reverse_cost)
         OR EMPTY SET
 
