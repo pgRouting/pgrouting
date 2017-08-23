@@ -1,0 +1,166 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Thomas Corre <gksugamur8ol@z.vuegate.net>, 2017\n"
+"Language-Team: French (https://www.transifex.com/pgrouting/teams/1219/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../sampledata.rst:13
+msgid "Sample Data"
+msgstr "Données d'échantillon"
+
+#: ../../sampledata.rst:15
+msgid ""
+"The documentation provides very simple example queries based on a small "
+"sample network. To be able to execute the sample queries, run the following "
+"SQL commands to create a table with a small network data set."
+msgstr ""
+"La documentation vous présente un exemple très simple de requêtes basées sur"
+" quelques données. Pour pouvoir exécuter les requêtes d'exemples, lancez les"
+" commandes SQL suivantes afin de créer une table avec quelques données."
+
+#: ../../sampledata.rst:20
+msgid "Create table"
+msgstr "Créer une table"
+
+#: ../../sampledata.rst:27
+msgid "Insert data"
+msgstr ""
+
+#: ../../sampledata.rst:34
+msgid "Topology"
+msgstr ""
+
+#: ../../sampledata.rst:35
+msgid ""
+"Before you test a routing function use this query to create a topology "
+"(fills the ``source`` and ``target`` columns)."
+msgstr ""
+
+#: ../../sampledata.rst:42
+msgid "Points of interest"
+msgstr ""
+
+#: ../../sampledata.rst:43
+msgid "When points outside of the graph."
+msgstr ""
+
+#: ../../sampledata.rst:44
+msgid "Used with the :ref:`withPoints` functions."
+msgstr ""
+
+#: ../../sampledata.rst:51
+msgid "Restrictions"
+msgstr ""
+
+#: ../../sampledata.rst:52
+msgid "Used with the :ref:`trsp` functions."
+msgstr ""
+
+#: ../../sampledata.rst:59
+msgid "Categories"
+msgstr ""
+
+#: ../../sampledata.rst:60
+msgid "Used with the :ref:`maxFlow` functions."
+msgstr ""
+
+#: ../../sampledata.rst:67
+msgid "Vertex table"
+msgstr ""
+
+#: ../../sampledata.rst:68
+msgid "Used in some deprecated signatures or deprecated functions."
+msgstr ""
+
+#: ../../sampledata.rst:76
+msgid "Images"
+msgstr ""
+
+#: ../../sampledata.rst:78
+msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
+msgstr ""
+
+#: ../../sampledata.rst:79
+msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
+msgstr ""
+
+#: ../../sampledata.rst:80
+msgid "Points are outside the graph."
+msgstr ""
+
+#: ../../sampledata.rst:81
+msgid "Click on the graph to enlarge."
+msgstr ""
+
+#: ../../sampledata.rst:83
+msgid "On all graphs,"
+msgstr ""
+
+#: ../../sampledata.rst:86
+msgid ""
+"Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost``"
+" columns are used:"
+msgstr ""
+
+#: ../../sampledata.rst:87
+msgid ""
+"When working with city networks, this is recommended for point of view of "
+"vehicles."
+msgstr ""
+
+#: ../../sampledata.rst:93
+msgid "**Graph 1: Directed, with cost and reverse cost**"
+msgstr ""
+
+#: ../../sampledata.rst:97
+msgid ""
+"Network for queries marked as ``undirected`` and ``cost`` and "
+"``reverse_cost`` columns are used:"
+msgstr ""
+
+#: ../../sampledata.rst:98
+msgid ""
+"When working with city networks, this is recommended for point of view of "
+"pedestrians."
+msgstr ""
+
+#: ../../sampledata.rst:105
+msgid "**Graph 2: Undirected, with cost and reverse cost**"
+msgstr ""
+
+#: ../../sampledata.rst:109
+msgid ""
+"Network for queries marked as ``directed`` and only ``cost`` column is used:"
+msgstr ""
+
+#: ../../sampledata.rst:116
+msgid "**Graph 3: Directed, with cost**"
+msgstr ""
+
+#: ../../sampledata.rst:120
+msgid ""
+"Network for queries marked as ``undirected`` and only ``cost`` column is "
+"used:"
+msgstr ""
+
+#: ../../sampledata.rst:126
+msgid "**Graph 4: Undirected, with cost**"
+msgstr ""
+
+#: ../../sampledata.rst:132
+msgid "pgr_gsoc_vrppdtw data"
+msgstr ""

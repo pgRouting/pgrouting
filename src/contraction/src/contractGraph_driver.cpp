@@ -27,18 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./contractGraph_driver.h"
+#include "drivers/contraction/contractGraph_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "./pgr_contractionGraph.hpp"
-#include "./pgr_contract.hpp"
+#include "contraction/pgr_contractionGraph.hpp"
+#include "contraction/pgr_contract.hpp"
 
-#include "./../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_types.h"
+#include "cpp_common/pgr_alloc.hpp"
 
 static
 bool
@@ -81,7 +80,7 @@ static void process_contraction(
     Identifiers<typename G::V> forbid_vertices;
     for (const auto &vertex : forbidden_vertices) {
         if (graph.has_vertex(vertex)) {
-            forbid_vertices.insert(graph.get_V(vertex));
+            forbid_vertices += graph.get_V(vertex);
         }
     }
 
@@ -119,7 +118,7 @@ void get_postgres_result(
         G &graph,
         const Identifiers<int64_t> remaining_vertices,
         const std::vector< pgrouting::CH_edge > shortcut_edges,
-        pgr_contracted_blob **return_tuples) {
+        contracted_rt **return_tuples) {
     (*return_tuples) = pgr_alloc(
             remaining_vertices.size() + shortcut_edges.size(),
             (*return_tuples));
@@ -179,7 +178,7 @@ do_pgr_contractGraph(
         size_t size_contraction_order,
         int64_t max_cycles,
         bool directed,
-        pgr_contracted_blob **return_tuples,
+        contracted_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,

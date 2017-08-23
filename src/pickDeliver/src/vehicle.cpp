@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./vehicle.h"
+#include "vrp/vehicle.h"
 
 #include <deque>
 #include <iostream>
@@ -34,9 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <vector>
 
-#include "../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
-#include "./pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 
 
 namespace pgrouting {
@@ -77,7 +77,7 @@ Vehicle::insert(std::pair<POS, POS> position_limits, const Vehicle_node &node) {
     return best;
 
     pgassert(best < m_path.size());
-    pgassert(m_path[best].id() == node.id());
+    pgassert(m_path[best].idx() == node.idx());
     invariant();
 }
 
@@ -131,24 +131,34 @@ Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
 
 
 
-void
+std::vector<General_vehicle_orders_t>
 Vehicle::get_postgres_result(
-        int vid,
-        std::vector< General_vehicle_orders_t > &result) const {
+        int vid) const {
+    std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
-    int i(1);
+    int stop_seq(1);
+    msg.log << "getting solution: " << tau() << "\n";
     for (const auto p_stop : m_path) {
-        General_vehicle_orders_t data =
-                {vid, i,
-                p_stop.original_id(),
-                p_stop.travel_time(),
-                p_stop.arrival_time(),
-                p_stop.wait_time(),
-                p_stop.service_time(),
-                p_stop.departure_time()};
+        General_vehicle_orders_t data = {
+            vid,
+            id(),
+            stop_seq,
+            /* order_id
+             * The order_id is invalid for stops type 0 and 5
+             */
+            (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.order(),
+            p_stop.id(),
+            p_stop.type(),
+            p_stop.cargo(),
+            p_stop.travel_time(),
+            p_stop.arrival_time(),
+            p_stop.wait_time(),
+            p_stop.service_time(),
+            p_stop.departure_time()};
         result.push_back(data);
-        ++i;
+        ++stop_seq;
     }
+    return result;
 }
 
 
@@ -169,7 +179,7 @@ Vehicle::insert(POS at, Vehicle_node node) {
     evaluate(at);
 
     pgassert(at < m_path.size());
-    pgassert(m_path[at].id() == node.id());
+    pgassert(m_path[at].idx() == node.idx());
     invariant();
 }
 
@@ -184,12 +194,12 @@ Vehicle::deltaTime(const Vehicle_node &node, POS pos) const {
     auto prev = m_path[pos-1];
     auto next = m_path[pos];
     auto original_time = next.travel_time();
-    auto tt_p_n = prev.travel_time_to(node);
+    auto tt_p_n = prev.travel_time_to(node, speed());
     tt_p_n = node.is_early_arrival(prev.departure_time() + tt_p_n) ?
         node.closes() - prev.departure_time()
         : tt_p_n;
 
-    auto tt_n_x = node.travel_time_to(next);
+    auto tt_n_x = node.travel_time_to(next, speed());
     tt_p_n = next.is_early_arrival(
             prev.departure_time() + tt_p_n + node.service_time() + tt_n_x) ?
         next.closes() - (prev.departure_time() + tt_p_n + node.service_time())
@@ -230,11 +240,12 @@ Vehicle::erase(const Vehicle_node &node) {
 
     POS pos = 0;
     for ( ; pos < m_path.size() ; ++pos) {
-        if (node.id() == m_path[pos].id())
+        if (node.idx() == m_path[pos].idx())
             break;
     }
 
     erase(pos);
+    /*! @todo TODO evaluate with matrix also*/
     evaluate(pos);
 
     invariant();
@@ -356,9 +367,9 @@ Vehicle::evaluate(POS from) {
 
     while (node != m_path.end()) {
         if (node == m_path.begin()) {
-            node->evaluate(max_capacity);
+            node->evaluate(m_capacity);
         } else {
-            node->evaluate(*(node - 1), max_capacity);
+            node->evaluate(*(node - 1), m_capacity, speed());
         }
 
         ++node;
@@ -405,7 +416,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const {
 
     /* J == m_path[low_limit - 1] */
     while (low_limit > low
-             && m_path[low_limit - 1].is_compatible_IJ(nodeI)) {
+            && m_path[low_limit - 1].is_compatible_IJ(nodeI, speed())) {
         --low_limit;
     }
 
@@ -437,7 +448,7 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
     /* I == m_path[high_limit] */
     while (high_limit < high
-             && nodeJ.is_compatible_IJ(m_path[high_limit])) {
+            && nodeJ.is_compatible_IJ(m_path[high_limit], speed())) {
         ++high_limit;
     }
 
@@ -445,33 +456,72 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
     return high_limit;
 }
 
-
+bool
+Vehicle::is_ok() const {
+    pgassert((m_path.front().opens() <= m_path.front().closes())
+        && (m_path.back().opens() <= m_path.back().closes())
+        && (m_capacity > 0));
+    return (start_site().opens() <= start_site().closes())
+        && (end_site().opens() <= end_site().closes())
+        && (m_capacity > 0);
+}
 
 Vehicle::Vehicle(
-        ID p_id,
+        size_t p_idx,
+        int64_t p_id,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
-        double p_max_capacity) :
-    m_id(p_id),
-    max_capacity(p_max_capacity) {
+        double p_m_capacity,
+        double p_speed,
+        double p_factor) :
+    Identifier(p_idx, p_id),
+    m_capacity(p_m_capacity),
+    m_factor(p_factor),
+    m_speed(p_speed) {
+        ENTERING();
         m_path.clear();
+        pgassert(starting_site.opens() <= starting_site.closes());
+        pgassert(ending_site.opens() <= ending_site.closes());
+        pgassert(capacity() > 0);
+        msg.log << "p_idx: " << p_idx << "\t idx(): " << idx() << "\n";
+        msg.log << "p_id: " << p_id << "\tid(): " << id() << "\n" ;
+        
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
+
         evaluate(0);
+        msg.log << tau() << "\n";
         invariant();
+        EXITING();
     }
 
+Vehicle::Vehicle(const Vehicle &v) :
+    Identifier(v.idx(), v.id()),
+    PD_problem(),
+    m_path(v.m_path),
+    m_capacity(v.m_capacity),
+    m_factor(v.m_factor),
+    m_speed(v.m_speed) {
+#if 0
+        ENTERING();
+        msg.log << v.tau() << "\n";
+        msg.log << tau() << "\n";
+        EXITING();
+#endif
+}
 
 
 
 std::string
 Vehicle::tau() const {
+    pgassert(m_path.size() > 1);
     std::ostringstream log;
-    log << "Truck " << id() << " (";
+    log << "Truck " << id() << "(" << idx() << ")"
+        << " (";
     for (const auto p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";
-        log << p_stop.original_id();
+        log << p_stop.id();
     }
     log << ")" << " \t(cv, twv, wait_time, duration) = ("
         << cvTot() << ", "
@@ -482,16 +532,27 @@ Vehicle::tau() const {
     return log.str();
 }
 
+double
+Vehicle::speed() const {
+    return m_speed/m_factor;
+}
+
 /****** FRIENDS *******/
 
 std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** TRUCK " << v.id() << "***************";
+    log << "\n\n****************** " << v.idx() << "th VEHICLE*************\n";
+    log << "id = " << v.id()
+        << "\tcapacity = " << v.m_capacity
+        << "\tfactor = " << v.m_factor << "\n"
+        << "\tspeed = " << v.m_speed << "\n"
+        << "\tnew speed = " << v.speed() << "\n";
+
     for (const auto &path_stop : v.path()) {
-        log << "\nPath_stop" << ++i << "\n";
-        log << path_stop;
+        log << "Path_stop" << ++i << "\n";
+        log << path_stop << "\n";
     }
     return log;
 }

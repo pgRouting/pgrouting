@@ -20,17 +20,24 @@ cd build/
 touch tmp_make.txt
 touch tmp_make_err.txt
 cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release .. >> tmp_make.txt
+
+if [[ "$1" == "4.8" ]]; then
+    make doc >> tmp_make.txt 
+    echo "  - [x] Build Users documentation"
+    make doxy >> tmp_make.txt
+    echo "  - [x] Build developers documentation"
+fi
+
 make >> tmp_make.txt 2>>tmp_make_err.txt
 
 sudo make install >> tmp_make.txt
 
-cp lib/pgrouting--$FULL_VER.sig  ../tools/curr-sig/
 cd ..
 
-echo "  - [x] Compilation OK"
+echo "  - [x] Compilation"
 
 tools/testers/algorithm-tester.pl >> build/tmp_make.txt
-echo "  - [x] Documentation tests OK"
+echo "  - [x] Documentation tests"
 
 
 dropdb --if-exists ___pgr___test___

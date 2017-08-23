@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_version.rst:13
+msgid "pgr_version"
+msgstr "pgr_version"
+
+#: ../../build/doc/pgr_version.rst:19
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../build/doc/pgr_version.rst:21
+msgid "``pgr_version`` — Query for pgRouting version information."
+msgstr ""
+"``pgr_version`` — consulta de información sobre la versión de pgRouting."
+
+#: ../../build/doc/pgr_version.rst:25
+msgid "Synopsis"
+msgstr "Sinopsis"
+
+#: ../../build/doc/pgr_version.rst:27
+msgid "Returns a table with pgRouting version information."
+msgstr "Devuelve una tabla con la información sobre la versión de pgRouting."
+
+#: ../../build/doc/pgr_version.rst:35 ../../build/doc/pgr_version.rst:40
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_version.rst:37
+msgid "Returns a table with:"
+msgstr "Devuelve una tabla con:"
+
+#: ../../build/doc/pgr_version.rst:40
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgr_version.rst:40
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgr_version.rst:42
+msgid "**version**"
+msgstr "**version**"
+
+#: ../../build/doc/pgr_version.rst:42 ../../build/doc/pgr_version.rst:43
+#: ../../build/doc/pgr_version.rst:44 ../../build/doc/pgr_version.rst:45
+#: ../../build/doc/pgr_version.rst:46
+msgid "``varchar``"
+msgstr "``varchar``"
+
+#: ../../build/doc/pgr_version.rst:42
+msgid "pgRouting version"
+msgstr "Versión de pgRouting"
+
+#: ../../build/doc/pgr_version.rst:43
+msgid "**tag**"
+msgstr "**tag**"
+
+#: ../../build/doc/pgr_version.rst:43
+msgid "Git tag of pgRouting build"
+msgstr "Etiqueta de Git de pgRouting"
+
+#: ../../build/doc/pgr_version.rst:44
+msgid "**hash**"
+msgstr "**hash**"
+
+#: ../../build/doc/pgr_version.rst:44
+msgid "Git hash of pgRouting build"
+msgstr "Hash de Git de pgRouting"
+
+#: ../../build/doc/pgr_version.rst:45
+msgid "**branch**"
+msgstr "**branch**"
+
+#: ../../build/doc/pgr_version.rst:45
+msgid "Git branch of pgRouting build"
+msgstr "Rama de Git de pgRouting"
+
+#: ../../build/doc/pgr_version.rst:46
+msgid "**boost**"
+msgstr "**boost**"
+
+#: ../../build/doc/pgr_version.rst:46
+msgid "Boost version"
+msgstr "Versión de Boost"
+
+#: ../../build/doc/pgr_version.rst:51
+msgid "History"
+msgstr "Historia"
+
+#: ../../build/doc/pgr_version.rst:52
+msgid "New in version 2.0.0"
+msgstr "Nuevo en la versión 2.0.0"
+
+#: ../../build/doc/pgr_version.rst:56
+msgid "Examples"
+msgstr "Ejemplos"
+
+#: ../../build/doc/pgr_version.rst:58
+msgid "Query for full version string"
+msgstr "Consulta para la cadena con la información completa de la versión."
+
+#: ../../build/doc/pgr_version.rst:66
+msgid "Query for ``version`` and ``boost`` attribute"
+msgstr "Consulta para los atributos ``version`` y ``boost``"

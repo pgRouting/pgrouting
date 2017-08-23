@@ -75,13 +75,27 @@ BKW	1644	-614	-81.124200000000002	37.787300000000002
 BGE	1466	-1424	-84.636927799999995	30.971598100000001
 \.
 
+WITH
+pickups AS (
+    SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
+    FROM  jet_customers WHERE pindex = 0 AND id != 0
+),
+deliveries AS (
+    SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
+    FROM  jet_customers WHERE dindex = 0 AND id != 0
+)
+SELECT * INTO jet_orders
+FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
 
-SELECT seq, vehicle_id, vehicle_seq, stop_id, travel_time,
-    to_char(arrival_time, 'FM9990.99') AS arrival_time,
-    wait_time,  service_time,
-    to_char(departure_time, 'FM9990.99') AS departure_time
-FROM _pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliver(
     'SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex
-    FROM jet_customers
-    ORDER BY id',
-    max_vehicles := 20, capacity:= 100, speed := 1000);
+     FROM jet_customers ORDER BY id', max_vehicles := 20, capacity:= 100, speed := 1000);
+
+
+SELECT * FROM _pgr_pickDeliverEuclidean(
+    'SELECT * FROM jet_orders ORDER BY id',
+    'SELECT 0 AS id,
+    2138 AS start_x, -119 AS start_y,
+    0 AS start_open, 60000 AS start_close,
+    100 AS capacity, 20 AS number, 1000 as speed',
+    30);

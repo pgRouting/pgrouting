@@ -12,33 +12,7 @@
 pgRouting Concepts
 ===============================================================================
 
-.. rubric:: Table of Contents
-
-.. concepts_start
-
-* :ref:`Getting_started`
-
-  * :ref:`create_database`
-  * :ref:`load_data`
-  * :ref:`build_topology`
-  * :ref:`check_graph`
-  * :ref:`compute_path`
-  * `pgRouting Workshop <http://workshop.pgrouting.org>`_
-
-* :ref:`inner_queries`
-* :ref:`return_values`
-* :ref:`Advanced_Topics`
-
-  * :ref:`topology`
-  * :ref:`analytics`
-  * :ref:`performance`
-
-* :ref:`how_contribute`
-
-
-
-
-.. concepts_end
+.. contents::
 
 .. _Getting_started:
 
@@ -48,10 +22,8 @@ Getting Started
 This is a simple guide to walk you through the steps of getting started
 with pgRouting. In this guide we will cover:
 
-* :ref:`create_database`
-* :ref:`load_data`
-* :ref:`build_topology`
-* :ref:`check_graph`
+.. contents::
+    :local:
 
 
 .. _create_database:
@@ -148,7 +120,7 @@ Once you have all the preparation work done above, computing a route is fairly e
 We have a lot of different algorithms that can work with your prepared road
 network. The general form of a route query is:
 
-.. code-block:: sql
+.. code-block:: none
 
     select pgr_dijkstra(`SELECT * FROM myroads', 1, 2)
 
@@ -168,8 +140,21 @@ to get more information about each step in the path.
 Inner Queries
 -------------------------------------------------------------------------------
 
-There are several kinds of valid inner queries and also the columns returned are depending of the function..
-Which kind of **edges_sql** will depend on the function(s) requirements.
+.. contents::
+    :local:
+
+There are several kinds of valid inner queries and also the columns returned are depending of the function.
+Which kind of inner query will depend on the function(s) requirements.
+To simplify variety of types, ``ANY-INTEGER`` and ``ANY-NUMERICAL`` is used.
+
+.. where_definition_starts
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+.. where_definition_ends
 
 .. basic_edges_sql_start
 
@@ -230,6 +215,28 @@ Where:
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 .. no_id_edges_sql_end
+
+
+
+.. pgr_dijkstra_via_parameters_start
+
+Description of the parameters of the signatures
+...............................................................................
+
+=================== ====================== ========= =========================================
+Parameter           Type                   Default   Description
+=================== ====================== ========= =========================================
+**edges_sql**       ``TEXT``                         SQL query as described above.
+**via_vertices**    ``ARRAY[ANY-INTEGER]``           Array of ordered vertices identifiers that are going to be visited.
+**directed**        ``BOOLEAN``            ``true``  - When ``true`` Graph is considered `Directed`
+                                                     - When ``false`` the graph is considered as Undirected.
+**strict**          ``BOOLEAN``            ``false`` - When ``false`` ignores missing paths returning all paths found
+                                                     - When ``true`` if a path is missing stops and returns `EMPTY SET`
+**U_turn_on_edge**  ``BOOLEAN``            ``true``  - When ``true`` departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is allowed.
+                                                     - When ``false`` when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is used when no other path is found.
+=================== ====================== ========= =========================================
+
+.. pgr_dijkstra_via_parameters_end
 
 
 .. xy_edges_sql_start
@@ -331,10 +338,14 @@ Where:
 
 .. points_sql_end
 
+
 .. _return_values:
 
 Return columns & values
 --------------------------------------------------------------------------------
+
+.. contents::
+    :local:
 
 There are several kinds of columns returned are depending of the function.
 
@@ -398,11 +409,13 @@ Column                 Type                  Description
 
 .. result_flow_end
 
-
 .. _advanced_topics:
 
 Advanced Topics
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
 
 .. _topology:
 
@@ -508,7 +521,7 @@ Now your database should be ready to use any (most?) of the pgRouting algorithms
 .. _analytics:
 
 Graph Analytics
--------------------------------------------------------------------------------
+...............................................................................
 
 
 .. rubric:: Overview
@@ -546,8 +559,8 @@ With :ref:`pgr_analyze_graph` the graph can be checked for errors. For example f
 
 In the vertices table "mytab_vertices_pgr":
 
-  - Deadends are identified by ``cnt=1``
-  - Potencial gap problems are identified with ``chk=1``.
+- Deadends are identified by ``cnt=1``
+- Potencial gap problems are identified with ``chk=1``.
 
 .. code-block:: sql
 
@@ -589,15 +602,15 @@ The rules are defined as an array of text strings that if match the ``col`` valu
 
 
 Example
-...............................................................................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Lets assume we have a table "st" of edges and a column "one_way" that might have values like:
 
-   * 'FT'    - oneway from the source to the target node.
-   * 'TF'    - oneway from the target to the source node.
-   * 'B'     - two way street.
-   * ''      - empty field, assume twoway.
-   * <NULL>  - NULL field, use two_way_if_null flag.
+* 'FT'    - oneway from the source to the target node.
+* 'TF'    - oneway from the target to the source node.
+* 'B'     - two way street.
+* ''      - empty field, assume twoway.
+* <NULL>  - NULL field, use two_way_if_null flag.
 
 Then we could form the following query to analyze the oneway streets for errors.
 
@@ -629,6 +642,10 @@ The above tools do not detect all network issues, but they will identify some co
 
 Performance Tips
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
+
 
 For the Routing functions
 ...............................................................................

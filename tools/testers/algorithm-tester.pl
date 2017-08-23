@@ -15,12 +15,14 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
+my $POSGRESQL_MIN_VERSION = '9.2';
 my $DOCUMENTATION = 0;
 my $INTERNAL_TESTS = 0;
 my $VERBOSE = 0;
 my $DRYRUN = 0;
 my $DEBUG = 0;
 my $DEBUG1 = 0;
+my $FORCE = 0;
 
 my $DBNAME = "pgr_test__db__test";
 my $DBUSER;
@@ -44,6 +46,7 @@ sub Usage {
     "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
     "       -alg 'dir'          - directory to select which algorithm subdirs to test\n" .
     "       -documentation      - ONLY generate documentation examples\n" .
+    "       -force              - Force tests for unsupported versions >= 9.1 of postgreSQL \n" .
     "       -h                  - help\n";
 }
 
@@ -51,7 +54,8 @@ print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $postgis_ver, $vpgr, $psql);
 my $alg = '';
-my @testpath = ("doc/", "src/");
+my @testpath = ("src/");
+my @test_direcotry = ();
 my $clean;
 my $ignore;
 
@@ -79,13 +83,7 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
-        if ($alg eq 'doc') {
-            @testpath = ('doc');
-        } elsif ($alg eq 'recipes') {
-            @testpath = ("doc/src/recipes");
-        } else {
-            @testpath = ("src/$alg");
-        }
+        @testpath = ("src/$alg");
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
@@ -110,6 +108,9 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a =~ /^-v/i) {
         $VERBOSE = 1;
+    }
+    elsif ($a =~ /^-force/i) {
+        $FORCE = 1;
     }
     elsif ($a =~ /^-doc(umentation)?/i) {
         $DOCUMENTATION = 1;
@@ -149,7 +150,7 @@ if (length($psql)) {
         $psql = "\"$psql\"";
     }
 }
-print "Operative system found: $OS";
+print "Operative system found: $OS\n";
 
 
 # Traverse desired filesystems
@@ -244,7 +245,7 @@ sub run_test {
         for my $x (@{$t->{tests}}) {
             process_single_test($x, $dir,, $DBNAME, \%res)
         }
-        if ($OS =~ /msys/ || $OS=~/MSW/ || $OS =~ /cygwin/) {
+        if ($OS =~/msys/ || $OS=~/MSW/ || $OS =~/cygwin/) {
             for my $x (@{$t->{windows}}) {
                 process_single_test($x, $dir,, $DBNAME, \%res)
             }
@@ -269,7 +270,7 @@ sub process_single_test{
     my $res = shift;
     #each tests will use clean data
 
-    print "Processing test: $dir/$x\n";
+    print "Processing test: $dir/$x";
     my $t0 = [gettimeofday];
     #TIN = test_input_file
     open(TIN, "$dir/$x.test.sql") || do {
@@ -280,19 +281,25 @@ sub process_single_test{
 
     my $level = "NOTICE";
     $level = "WARNING" if $ignore;
-    $level = "DEBUG1" if $DEBUG1;
+    $level = "DEBUG3" if $DEBUG1;
 
 
     if ($DOCUMENTATION) {
-        mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
-        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
+        mysystem("mkdir -p '$dir/../../../doc/queries' "); # make sure the directory exists
+        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../../../doc/queries/$x.queries 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             $stats{z_fail}++;
             next;
         };
     }
     else {
-        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
+        #open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/$x.result 2>\&1 ") || do {
+        #    $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
+        #    $stats{z_fail}++;
+        #    next;
+        #};
+
+        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -e $database > $TMP 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             if (!$INTERNAL_TESTS) {
                $stats{z_fail}++;
@@ -316,6 +323,7 @@ sub process_single_test{
     #closes the input file  /TIN = test input
     close(TIN);
 
+    print "\n" if $DOCUMENTATION;
     return if $DOCUMENTATION;
 
     my $dfile;
@@ -360,10 +368,12 @@ sub process_single_test{
     elsif (length($r)) {
         $res->{"$dir/$x.test.sql"} = "FAILED: $r";
         $stats{z_fail}++ unless $DEBUG1;
+        print "\t FAIL\n";
     }
     else {
         $res->{"$dir/$x.test.sql"} = "Passed";
         $stats{z_pass}++;
+        print "\t PASS\n";
     }
     print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
 }
@@ -382,76 +392,42 @@ sub createTestDB {
         print "-- DBSHARE: $dbshare\n";
     }
 
-    # first create a database with postgis installed in it
-    if (version_greater_eq($dbver, '9.1') &&
-        -f "$dbshare/extension/postgis.control") {
-        mysystem("createdb $connopts $databaseName");
-        die "ERROR: Failed to create database '$databaseName'!\n"
-        unless dbExists($databaseName);
-        my $encoding = '';
-        if ($OS =~ /msys/
-            || $OS =~ /MSWin/) {
-            $encoding = "SET client_encoding TO 'UTF8';";
-        }
-        print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
-        mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
-#        print "-- Trying to install pgTap extension \n" if $DEBUG;
-#        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
-#        if ($? != 0) {
-#            print "Failed: create extension pgtap\n" if $VERBOSE || $DRYRUN;
-#            die;
-#        }
-    }
-    #
-#    else {
-#            $template = "template_postgis_$vpgis";
-#        }
-#        elsif (dbExists('template_postgis')) {
-#            $template = "template_postgis";
-#        }
-#        else {
-#            die "ERROR: Could not find an appropriate template_postgis database!\n";
-#        }
-#        print "-- Trying to install postgis from $template\n" if $DEBUG;
-#        mysystem("createdb $connopts -T $template $databaseName");
-#        sleep(2);
-#        die "ERROR: Failed to create database '$databaseName'!\n"
-#            if ! dbExists($databaseName);
-#    }
+    die "
+    Unsupported postgreSQL version $dbver
+    Minimum requierment is $POSGRESQL_MIN_VERSION version
+    Use -force to force the tests\n"
+    unless version_greater_eq($dbver, $POSGRESQL_MIN_VERSION) or ($FORCE and version_greater_eq($dbver, '9.1'));
 
-    # next we install pgrouting into the new database
-    if (version_greater_eq($dbver, '9.1') &&
-        -f "$dbshare/extension/postgis.control") {
-        my $myver = '';
-        if ($vpgr) {
-            $myver = " VERSION '$vpgr'";
-        }
-        print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
-        mysystem("$psql $connopts -c \"create extension pgrouting $myver\" $databaseName");
-    }
-    elsif ($vpgr && -f "$dbshare/extension/pgrouting--$vpgr.sql") {
-        print "-- Trying to install pgrouting from '$dbshare/extension/pgrouting--$vpgr.sql'\n" if $DEBUG;
-        mysystem("$psql $connopts -f '$dbshare/extension/pgrouting--$vpgr.sql' $databaseName");
-    }
-    else {
-        my $find = `find "$dbshare/contrib" -name pgrouting.sql | sort -r -n `;
-        my @found = split(/\n/, $find);
-        my $file = shift @found;
-        if ($file && length($file)) {
-            print "-- Trying to install pgrouting from '$file'\n" if $DEBUG;
-            mysystem("$psql $connopts -f '$file' $databaseName");
-        }
-        else {
-            mysystem("ls -alR $dbshare") if $DEBUG;
-            die "ERROR: failed to install pgrouting into the database!\n";
-        }
-    }
+    die "postGIS extension $postgis_ver not found\n" 
+    unless -f "$dbshare/extension/postgis.control";
 
-    # now verify that we have pgrouting installed
+
+    # Create a database with postgis installed in it
+    mysystem("createdb $connopts $databaseName");
+    die "ERROR: Failed to create database '$databaseName'!\n"
+    unless dbExists($databaseName);
+    my $encoding = '';
+    if ($OS =~ /msys/
+        || $OS =~ /MSWin/) {
+        $encoding = "SET client_encoding TO 'UTF8';";
+    }
+    print "-- Installing postgis extension $postgis_ver\n" if $DEBUG;
+    mysystem("$psql $connopts -c \"$encoding CREATE EXTENSION postgis $postgis_ver \" $databaseName");
+
+    # Install pgrouting into the database
+    my $myver = '';
+    if ($vpgr) {
+        $myver = " VERSION '$vpgr'";
+    }
+    print "Installing pgrouting extension $myver\n" if $DEBUG;
+    mysystem("$psql $connopts -c \"CREATE EXTENSION pgrouting $myver\" $databaseName");
+
+    # Verify pgrouting was installed
 
     my $pgrv = `$psql $connopts -c "select pgr_version()" $databaseName`;
     die "ERROR: failed to install pgrouting into the database!\n"
     unless $pgrv;
+
     print `$psql $connopts -c "select version();" postgres `, "\n";
     print `$psql $connopts -c "select postgis_full_version();" $databaseName `, "\n";
     print `$psql $connopts -c "select pgr_version();" $databaseName `, "\n";

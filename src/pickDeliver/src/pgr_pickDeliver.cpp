@@ -23,91 +23,124 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
 
 #include <sstream>
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <utility>
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_assert.h"
 
-#include "./vehicle_node.h"
-#include "./vehicle_pickDeliver.h"
-#include "./order.h"
-#include "./solution.h"
-#include "./initial_solution.h"
-#include "./optimize.h"
+#include "vrp/vehicle_node.h"
+#include "vrp/vehicle_pickDeliver.h"
+#include "vrp/order.h"
+#include "vrp/pd_orders.h"
+#include "vrp/fleet.h"
+#include "vrp/solution.h"
+#include "vrp/initial_solution.h"
+#include "vrp/optimize.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
+// TODO(vicky) delete this function
+bool
+Pgr_pickDeliver::nodesOK() const {
+    ENTERING();
+    if (m_nodes.empty() && m_base_nodes.empty()) return true;
+
+    pgassertwm(m_nodes.size() == m_base_nodes.size(), msg.get_log().c_str());
+    for (size_t i = 0; i < m_nodes.size() ; ++i) {
+        pgassertwm(m_nodes[i].id() ==  m_base_nodes[i]->id(),
+                msg.get_log().c_str());
+        pgassertwm(m_nodes[i].idx() ==  m_base_nodes[i]->idx(),
+                msg.get_log().c_str());
+    }
+    EXITING();
+    return true;
+}
 
 Solution
-Pgr_pickDeliver::solve(const Solution init_solution) {
-    Optimize solution(0, init_solution);
-    solution.decrease_truck();
-    solution.move_duration_based();
-    solution.move_wait_time_based();
-    solution.inter_swap();
-    return solution.best_solution;
+Pgr_pickDeliver::optimize(const Solution solution) {
+    pgassert(false);
+    /*
+     * Optimize a solution
+     */
+#if 1
+    msg.log << "max_cycles: " << m_max_cycles << "\n";
+    Optimize opt_solution(solution, m_max_cycles);
+#else
+    Optimize opt_solution(solution, 1);
+#endif
+    msg.log << opt_solution.best_solution.tau("optimized");
+    return opt_solution.best_solution;
 }
 
 void
 Pgr_pickDeliver::solve() {
-#if 0
-    solutions.push_back(Initial_solution(0, this));
-    solutions.push_back(Initial_solution(1, this));
+    auto initial_sols = solutions;
 
-    solutions.push_back(solve(solutions.back()));
-#endif
+    if (m_initial_id == 0) {
+        msg.log << "trying all \n";
+        for (int i = 1; i < 7; ++i) {
+            initial_sols.push_back(Initial_solution(i, m_orders.size()));
+            msg.log << "solution " << i << "\n" << initial_sols.back().tau();
+            // TODO(vicky) calculate the time it takes
+            msg.log << "Initial solution " << i
+                << " duration: " << initial_sols.back().duration();
+        }
+    } else {
+        msg.log << "only trying " << m_initial_id << "\n";
+        initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
+        // TODO(vicky) calculate the time it takes
+        msg.log << "Initial solution " << m_initial_id
+            << " duration: " << initial_sols[0].duration();
+    }
 
-#if 0
-    solutions.push_back(Initial_solution(2, this));
-    solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(3, this));
-    solutions.push_back(solve(solutions.back()));
-#endif
-    solutions.push_back(Initial_solution(4, this));
-    solutions.push_back(solve(solutions.back()));
-#if 0
-    solutions.push_back(Initial_solution(5, this));
-    solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(6, this));
-    solutions.push_back(solve(solutions.back()));
-#endif
 
-#if 1
     /*
      * Sorting solutions: the best is at the back
      */
-    std::sort(solutions.begin(), solutions.end(), []
+    pgassert(!initial_sols.empty());
+    std::sort(initial_sols.begin(), initial_sols.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
             });
+
+#if 1
+    solutions.push_back(Optimize(initial_sols.back(), m_max_cycles));
+#else
+    solutions.push_back(initial_sols.back());
 #endif
+    pgassert(!solutions.empty());
+
+    msg.log << "best solution duration = " << solutions.back().duration();
 }
 
 
 
-void
-Pgr_pickDeliver::get_postgres_result(
-        std::vector< General_vehicle_orders_t > &result) const {
-    solutions.back().get_postgres_result(result);
+std::vector< General_vehicle_orders_t >
+Pgr_pickDeliver::get_postgres_result() const {
+    auto result = solutions.back().get_postgres_result();
 
     General_vehicle_orders_t aggregates = {
             /*
-             * Vehicle id = -1 indicates its an aggregate row
+             * Vehicle id = -2 indicates its an aggregate row
              *
              * (twv, cv, fleet, wait, duration)
              */
-            -1,
-            solutions.back().twvTot(),
-            solutions.back().cvTot(),
+            -2,  // summary row on vehicle_number
+            solutions.back().twvTot(),  // on vehicle_id
+            solutions.back().cvTot(),   // on vehicle_seq
+            -1,  // on order_id
+            -1,  // on stop_id
+            -2,  // on stop_type (gets increased later by one so it gets -1)
+            -1,  // not accounting total loads
             solutions.back().total_travel_time(),
-            0,  // not accounting arrival_travel_time
+            -1,  // not accounting arrival_travel_time
             solutions.back().wait_time(),
             solutions.back().total_service_time(),
             solutions.back().duration(),
@@ -115,238 +148,184 @@ Pgr_pickDeliver::get_postgres_result(
     result.push_back(aggregates);
 
 
+#ifndef NDEBUG
     for (const auto sol : solutions) {
-        log << sol.tau();
+        msg.log << sol.tau();
     }
+#endif
+    return result;
 }
 
-
-
-/***** Constructor *******/
-
+/** Constructor  for the matrix version
+ *
+ */
 Pgr_pickDeliver::Pgr_pickDeliver(
-        const Customer_t *customers_data, size_t total_customers,
-        int p_max_vehicles,
-        double p_capacity,
-        double p_speed,
+        const std::vector<PickDeliveryOrders_t> &pd_orders,
+        const std::vector<Vehicle_t> &vehicles,
+        const pgrouting::tsp::Dmatrix &cost_matrix,
+        double factor,
         size_t p_max_cycles,
-        std::string &error) :
-    /* Set the depot to be the first ddata found */
-    max_capacity(p_capacity),
-    m_speed(p_speed),
+        int initial) :
+    PD_problem(this),
+    m_initial_id(initial),
     m_max_cycles(p_max_cycles),
-    max_vehicles(p_max_vehicles),
-    m_starting_site({0, customers_data[0], Tw_node::NodeType::kStart, this}),
-    m_ending_site({0, customers_data[0], Tw_node::NodeType::kEnd, this}),
-    m_original_data(customers_data, customers_data + total_customers) {
-        pgassert(m_speed > 0);
-        pgassert(m_max_cycles > 0);
-        pgassert(max_vehicles > 0);
-        std::ostringstream tmplog;
-        error = "";
+    m_node_id(0),
+    m_nodes(),
+    m_base_nodes(),
+    m_cost_matrix(cost_matrix),
+    m_orders(pd_orders),
+    m_trucks(vehicles, factor) {
+        ENTERING();
+        pgassert(!pd_orders.empty());
+        pgassert(!vehicles.empty());
+        pgassert(!m_cost_matrix.empty());
+        pgassert(m_initial_id > 0 && m_initial_id < 7);
+        pgassert(nodesOK());
 
-        log << "\n *** Constructor of problem ***\n";
+        if (!msg.get_error().empty()) {
+            return;
+        }
 
-        /* sort data by id */
-        std::sort(m_original_data.begin(), m_original_data.end(),
-                [] (const Customer_t &c1, const Customer_t &c2)
-                {return c1.id < c2.id;});
+        pgassert(m_trucks.msg.get_error().empty());
+        pgassert(msg.get_error().empty());
+
+        msg.log << "\n Checking fleet ...";
+        if (!m_trucks.is_fleet_ok()) {
+            pgassert(msg.get_error().empty());
+            pgassert(!m_trucks.msg.get_error().empty());
+            msg.error << m_trucks.msg.get_error();
+            return;
+        }
+        msg.log << "fleet OK \n";
+
+#if 0
+        for (const auto t : m_trucks) {
+            msg.log << t << "\n";
+        }
+        for (const auto &o : m_orders) {
+            msg.log << o << "\n";
+        }
+#endif
 
         /*
-         * starting node:
-         * id must be 0
+         * check the (S, P, D, E) order on all vehicles
+         * stop when a feasible truck is found
          */
-        if (m_original_data[0].id != 0) {
-            error = "Depot node not found";
-            return;
-        }
+        msg.log << "\n Checking orders";
+        for (const auto &o : m_orders) {
+            if (!m_trucks.is_order_ok(o)) {
+                msg.error << "Order not feasible on any truck was found";
+                msg.log << "The order "
+                    << o.id()
+                    << " is not feasible on any truck";
+                msg.log << "\n" << o;
+#if 0
+                double old_speed(0);
+                for (auto t : m_trucks) {
+                    if (old_speed == t.speed()) continue;
+                    old_speed = t.speed();
+                    msg.log << "****** With speed: " << t.speed() << "\n";
+                    msg.log << t.start_site() << "\n";
+                    msg.log << o.pickup() << "\n";
+                    msg.log << "travel time to "
+                        << t.start_site().travel_time_to(
+                                o.pickup(), t.speed()) << "\n";
 
-        m_starting_site = Vehicle_node(
-                {0, customers_data[0], Tw_node::NodeType::kStart, this});
-        m_ending_site = Vehicle_node(
-                {1, customers_data[0], Tw_node::NodeType::kEnd, this});
-        if (!m_starting_site.is_start()) {
-            log << "DEPOT" << m_starting_site;
-            error = "Illegal values found on the starting site";
-            return;
-        }
-        pgassert(m_starting_site.is_start());
-        pgassert(m_ending_site.is_end());
-
-        m_nodes.push_back(m_starting_site);
-        m_nodes.push_back(m_ending_site);
-
-
-        ID order_id(0);
-        ID node_id(2);
-        for (const auto p : m_original_data) {
-            /*
-             * skip Starting site
-             */
-            if (p.id == 0) continue;
-
-            /*
-             * SAMPLE CORRECT INFORMATION
-             *
-             * The Pickup is 11 (pindex == 0)
-             * The Deliver is 1 (dindex == 0)
-             *
-             * id | x | y | demand | etime | Ltime | Stime | pindex | dindex
-             * 1 | 45 | 68 |    -10 |   912 |   967 |    90 |     11 |      0
-             * 11 | 35 | 69 |     10 |   448 |   505 |    90 |      0 |      1
-             *
-             */
-
-            /*
-             * skip deliveries
-             */
-            if (p.Dindex == 0) continue;
-
-            /*
-             * pickup is found
-             */
-            Tw_node pickup({node_id++, p, Tw_node::NodeType::kPickup, this});
-            if (!pickup.is_pickup()) {
-                log << "PICKUP" << pickup;
-                tmplog << "Illegal values found on Pickup " << p.id;
-                error = tmplog.str();
-                return;
-            }
-            pgassert(pickup.is_pickup());
-
-
-            /*
-             * look for corresponding the delivery of the pickup
-             */
-            auto deliver_ptr = std::lower_bound(
-                    m_original_data.begin(),
-                    m_original_data.end(),
-                    p,
-                    [] (const Customer_t &delivery, const Customer_t &pick)
-                    -> bool
-                    {return delivery.id < pick.Dindex;});
-
-            if (deliver_ptr == m_original_data.end()
-                     || deliver_ptr->id != p.Dindex) {
-                tmplog << "For Pickup "
-                    << p.id
-                    << " the corresponding Delivery was not found";
-                error = tmplog.str();
-                return;
-            }
-
-
-            /*
-             * delivery is found
-             */
-            Tw_node delivery(
-                    node_id++,
-                    (*deliver_ptr),
-                    Tw_node::NodeType::kDelivery,
-                    this);
-            if (!delivery.is_delivery()) {
-                log << "DELIVERY" << delivery;
-                tmplog << "Illegal values found on Delivery "
-                    << deliver_ptr->id;
-                error = tmplog.str();
-                return;
-            }
-            pgassert(delivery.is_delivery());
-
-
-            /*
-             * add into an order & check the order
-             */
-            pickup.set_Did(delivery.id());
-            delivery.set_Pid(pickup.id());
-            m_nodes.push_back(pickup);
-            m_nodes.push_back(delivery);
-
-            m_orders.push_back(
-                    Order(order_id, node(node_id - 2),
-                        node(node_id - 1),
-                        this));
-            pgassert(m_orders.back().pickup().is_pickup());
-            pgassert(m_orders.back().delivery().is_delivery());
-            pgassert(static_cast<Tw_node> (m_orders.back().pickup()) == pickup);
-
-            /*
-             * check the (S, P, D, E) order
-             */
-            {
-                Vehicle_pickDeliver truck(
-                        order_id,
-                        m_starting_site,
-                        m_ending_site,
-                        max_capacity,
-                        this);
-                truck.push_back(m_orders.back());
-
-                if (!truck.is_feasable()) {
-                    log << truck << "\n";
-                    tmplog << "The (pickup, delivery) = ("
-                        << m_orders.back().pickup().original_id() << ", "
-                        << m_orders.back().delivery().original_id()
-                        << ") is not feasible";
-                    error = tmplog.str();
-                    return;
+                    msg.log << o.delivery() << "\n";
+                    msg.log << t.end_site() << "\n";
+                    msg.log << "travel time to "
+                        << t.start_site().travel_time_to(
+                                o.delivery(), t.speed())
+                        << "\n";
+                    t.push_back(o);
                 }
-                pgassert(truck.is_feasable());
-            }  //  check
-
-            ++order_id;
-        }  //  for
-
-        /*
-         * double check we found all orders
-         */
-        if (((m_orders.size() * 2 + 1) - m_original_data.size()) != 0) {
-            error = "A pickup was not found";
-            return;
+#endif
+                return;
+            }
         }
+        msg.log << "orders OK \n";
 
-        for (auto &o : m_orders) {
-            o.setCompatibles();
+        m_trucks.set_compatibles(m_orders);
+#if 0
+        msg.error << "foo";
+        for (const auto t : m_trucks) {
+            msg.log << t << "\n";
         }
-
-        for (auto o : m_orders) {
-            log << o;
-        }
+#endif
+        EXITING();
     }  //  constructor
 
 
-const Order
-Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
-    pgassert(node.is_pickup() ||  node.is_delivery());
-    if (node.is_pickup()) {
-        for (const auto o : m_orders) {
-            if (o.pickup().id() == node.id()) {
-                return o;
+
+/***** Constructor for the eculedian version *******/
+
+Pgr_pickDeliver::Pgr_pickDeliver(
+        const std::vector<PickDeliveryOrders_t> &pd_orders,
+        const std::vector<Vehicle_t> &vehicles,
+        double factor,
+        size_t p_max_cycles,
+        int initial) :
+    PD_problem(this),
+    m_initial_id(initial),
+    m_max_cycles(p_max_cycles),
+    m_node_id(0),
+    m_nodes(),
+    m_base_nodes(),
+    m_cost_matrix(),
+    m_orders(pd_orders),
+    m_trucks(vehicles, factor) {
+        ENTERING();
+        pgassert(!pd_orders.empty());
+        pgassert(!vehicles.empty());
+        pgassert(m_cost_matrix.empty());
+        pgassert(factor > 0);
+        pgassert(m_initial_id > 0 && m_initial_id < 7);
+
+        if (!msg.get_error().empty()) {
+            return;
+        }
+
+        pgassert(m_trucks.msg.get_error().empty());
+        pgassert(msg.get_error().empty());
+
+        msg.log << "\n Checking fleet";
+        if (!m_trucks.is_fleet_ok()) {
+            msg.error << m_trucks.msg.get_error();
+            pgassert(!m_trucks.msg.get_error().empty());
+            return;
+        }
+
+        pgassert(m_trucks.msg.get_error().empty());
+
+
+#ifndef NDEBUG
+        for (const auto t : m_trucks) {
+            msg.log << t << "\n";
+        }
+        for (const auto &o : m_orders) {
+            msg.log << o << "\n";
+        }
+#endif
+
+        /*
+         * check the (S, P, D, E) order on all vehicles
+         * stop when a feasible truck is found
+         */
+        msg.log << "\n Checking orders";
+        for (const auto &o : m_orders) {
+            if (!m_trucks.is_order_ok(o)) {
+                msg.error << "Order not feasible on any truck was found";
+                msg.log << "The order "
+                    << o.pickup().order()
+                    << " is not feasible on any truck";
+                msg.log << "\n" << o;
+                return;
             }
         }
-    }
-    pgassert(node.is_delivery());
 
-    for (const auto o : m_orders) {
-        if (o.delivery().id() == node.id()) {
-            return o;
-        }
-    }
-#ifndef NDEBUG
-    std::ostringstream err_log;
-    err_log << "Order of" << node << " not found";
-#endif
-    pgassertwm(false, err_log.str());
-    return m_orders[0];
-}
-
-
-const Vehicle_node&
-Pgr_pickDeliver::node(ID id) const {
-    pgassert(id < m_nodes.size());
-    pgassert(id == m_nodes[id].id());
-    return m_nodes[id];
-}
+        m_trucks.set_compatibles(m_orders);
+        EXITING();
+    }  //  constructor
 
 
 }  //  namespace vrp

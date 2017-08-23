@@ -43,39 +43,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *  - should allways be first in the C code
  */
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 
-/**
- *  funcapi.h
- *
- *  - While developing to not show postgres header files warnings:
- *    - wrap the file(s) with the appropiate dignostic to be ignored
- */
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
 
-#include "funcapi.h"
+/* for macro PGR_DBG */
+#include "c_common/debug_macro.h"
+/* for pgr_global_report */
+#include "c_common/e_report.h"
+/* for time_msg & clock */
+#include "c_common/time_msg.h"
+/* for functions to get edges informtion */
+#include "c_common/edges_input.h"
 
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
+#include "drivers/MY_FUNCTION_NAME/MY_FUNCTION_NAME_driver.h"  // the link to the C++ code of the function
 
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
-
-#include "./../../common/src/debug_macro.h" // for macro PGR_DBG
-#include "./../../common/src/e_report.h"  // for pgr_global_report
-#include "./../../common/src/time_msg.h"  // for time_msg & clock
-#include "./../../common/src/pgr_types.h"  // for the current accepted types
-#include "./../../common/src/edges_input.h" // for functions to get edges informtion
-
-#include "./MY_FUNCTION_NAME_driver.h"  // the C++ code of the function
-
-PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);
 PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);
 
 
 /******************************************************************************/
@@ -97,8 +80,9 @@ process(
         bool only_cost,
         MY_RETURN_VALUE_TYPE **result_tuples,
         size_t *result_count) {
-
-    /* https://www.postgresql.org/docs/current/static/spi-spi-connect.html */
+    /*
+     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
+     */
     pgr_SPI_connect();
 
 
@@ -129,7 +113,9 @@ process(
     size_t total_edges = 0;
 
     if (start_vid == end_vid) {
-        /* https://www.postgresql.org/docs/current/static/spi-spi-finish.html */
+        /*
+         * https://www.postgresql.org/docs/current/static/spi-spi-finish.html
+         */
         pgr_SPI_finish();
         return;
     }
@@ -174,11 +160,14 @@ process(
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
-        if (*result_tuples) free(*result_tuples);
+        if (*result_tuples) pfree(*result_tuples);
     }
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
+    pgr_global_report(log_msg, notice_msg, err_msg);
 
     if (edges) pfree(edges);
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
 #if 0
     /*
      *  handling arrays example

@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./vehicle_node.h"
+#include "vrp/vehicle_node.h"
 
 
 namespace pgrouting {
@@ -58,14 +58,19 @@ Vehicle_node::evaluate(double cargoLimit) {
     }
 }
 
+
 /*!
-  \param[in] pred The node preceding this node (in the path).
-  \param[in] cargoLimit The cargo limit of the vehicle.
+  \param[in] pred The node preceding this node in the path.
+  \param[in] cargoLimit of the vehicle.
+  \param[in] speed of the vehicle.
   */
 void
-Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit) {
+Vehicle_node::evaluate(
+        const Vehicle_node &pred,
+        double cargoLimit,
+        double speed) {
     /* time */
-    m_travel_time    = pred.travel_time_to(*this);
+    m_travel_time    = pred.travel_time_to(*this, speed);
     m_arrival_time   = pred.departure_time() + travel_time();
     m_wait_time      = is_early_arrival(arrival_time()) ?
         opens() - m_arrival_time :
@@ -79,11 +84,11 @@ Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit) {
 
     /* cargo aggregates */
     if (is_dump() &&  pred.cargo() >= 0) {
-        m_demand = -pred.cargo();
+        demand(-pred.cargo());
     }
     m_cargo = pred.cargo() + demand();
 
-    /* cargo aggregates */
+    /* violations aggregates */
 
     m_twvTot = has_twv() ? pred.twvTot() + 1 : pred.twvTot();
     m_cvTot = has_cv(cargoLimit) ? pred.cvTot() + 1 : pred.cvTot();
@@ -94,16 +99,16 @@ Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit) {
 
 std::ostream&
 operator << (std::ostream &log, const Vehicle_node &v) {
-    log << static_cast<Tw_node>(v)
+    log << static_cast<const Tw_node&>(v)
         << " twv = " << v.has_twv()
         << ", twvTot = " << v.twvTot()
         << ", cvTot = " << v.cvTot()
         << ", cargo = " << v.cargo()
-        << ", travel _time = " << v.travel_time()
-        << ", arrival _time = " << v.arrival_time()
-        << ", wait _time = " << v.wait_time()
-        << ", service _time = " << v.service_time()
-        << ", departure _time = " << v.departure_time();
+        << ", travel_time = " << v.travel_time()
+        << ", arrival_time = " << v.arrival_time()
+        << ", wait_time = " << v.wait_time()
+        << ", service_time = " << v.service_time()
+        << ", departure_time = " << v.departure_time();
     return log;
 }
 
@@ -143,10 +148,12 @@ Vehicle_node::deltaGeneratesTWV(double delta_time) const {
   and that the actual arrival time at \b other node was arrival(other)
   */
 double
-Vehicle_node::arrival_i_arrives_j(const Vehicle_node &other) const {
+Vehicle_node::arrival_i_arrives_j(
+        const Vehicle_node &other,
+        double speed) const {
     return other.arrival_time()
         + other.service_time()
-        + other.travel_time_to(*this);
+        + other.travel_time_to(*this, speed);
 }
 
 }  //  namespace vrp

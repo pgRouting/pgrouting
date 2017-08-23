@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_DRIVER_H_
 #define SRC_MAX_FLOW_SRC_MAX_FLOW_DRIVER_H_
 
-#include "./../../common/src/pgr_types.h"
+#include "c_types/pgr_flow_t.h"
+#include "c_types/pgr_edge_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -44,7 +45,7 @@ extern "C" {
             size_t size_source_verticesArr,
             int64_t* sink_vertices,
             size_t size_sink_verticesArr,
-            char* algorithm,
+            int algorithm,
             bool only_flow,
             pgr_flow_t **return_tuples,
             size_t *return_count,

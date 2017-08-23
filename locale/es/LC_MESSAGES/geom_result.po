@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/geom_result.rst:13
+msgid "pgr_geomResult[]"
+msgstr "pgr_geomResult[]"
+
+#: ../../build/doc/geom_result.rst:19
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../build/doc/geom_result.rst:21
+msgid ""
+"``pgr_geomResult[]`` — A set of records to describe a path result with "
+"geometry attribute."
+msgstr ""
+"``pgr_geomResult[]`` — un conjunto de registros para describir un recorrido "
+"que incluye el atributo de la geometría."
+
+#: ../../build/doc/geom_result.rst:25
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/geom_result.rst:37
+msgid "sequential ID indicating the path order"
+msgstr "identificador secuencial, indicando el orden del recorrido"
+
+#: ../../build/doc/geom_result.rst:38 ../../build/doc/geom_result.rst:39
+msgid "generic name, to be specified by the function"
+msgstr "nombre genérico, a ser especificado por la función"
+
+#: ../../build/doc/geom_result.rst:40
+msgid "geometry attribute"
+msgstr "atributo de geometría"
+
+#: ../../build/doc/geom_result.rst:44
+msgid "History"
+msgstr "Historia"
+
+#: ../../build/doc/geom_result.rst:45
+msgid "New in version 2.0.0"
+msgstr "Nuevo en la versión 2.0.0"
+
+#: ../../build/doc/geom_result.rst:46
+msgid "Replaces ``geoms``"
+msgstr "Sustituye a ``geoms``"
+
+#: ../../build/doc/geom_result.rst:50
+msgid "See Also"
+msgstr "Véase también"
+
+#: ../../build/doc/geom_result.rst:52
+msgid ":ref:`introduction`"
+msgstr ":ref:`Introducción <introduction>`"

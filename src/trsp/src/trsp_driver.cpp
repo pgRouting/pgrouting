@@ -34,8 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 int trsp_node_wrapper(
     edge_t *edges,         size_t edge_count,
     restrict_t *restricts, size_t restrict_count,
-    int start_vertex,
-    int end_vertex,
+    int64_t start_vertex,
+    int64_t end_vertex,
     bool directed,
     bool has_reverse_cost,
     path_element_t **path, size_t *path_count,
@@ -43,25 +43,25 @@ int trsp_node_wrapper(
 
     std::ostringstream log;
     try {
-
         std::vector<PDVI> ruleTable;
 
         int j;
         ruleTable.clear();
-        for (size_t i=0; i<restrict_count; i++) {
+        for (size_t i = 0; i < restrict_count; i++) {
             std::vector<int64_t> seq;
             seq.clear();
             seq.push_back(restricts[i].target_id);
-            for(j = 0; j<MAX_RULE_LENGTH && restricts[i].via[j]>-1; j++)
-            {
+            for (j = 0; j < MAX_RULE_LENGTH && restricts[i].via[j] > -1; j++) {
                 seq.push_back(restricts[i].via[j]);
             }
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef(edges, static_cast<unsigned int>(edge_count), directed, has_reverse_cost);
+        GraphDefinition gdef(edges, static_cast<unsigned int>(edge_count),
+        directed, has_reverse_cost);
         gdef.set_restrictions(start_vertex, end_vertex, ruleTable);
-        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, log);
+        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count,
+            log);
 
 
         if (res < 0)
@@ -84,9 +84,9 @@ int trsp_node_wrapper(
 int trsp_edge_wrapper(
     edge_t *edges,          size_t edge_count,
     restrict_t *restricts,  size_t restrict_count,
-    int start_edge,
+    int64_t start_edge,
     double start_pos,
-    int end_edge,
+    int64_t end_edge,
     double end_pos,
     bool directed,
     bool has_reverse_cost,
@@ -94,23 +94,22 @@ int trsp_edge_wrapper(
     char **err_msg) {
     std::ostringstream log;
     try {
-
         std::vector<PDVI> ruleTable;
 
         int j;
         ruleTable.clear();
-        for (size_t i=0; i<restrict_count; i++) {
+        for (size_t i = 0; i < restrict_count; i++) {
             std::vector<int64_t> seq;
             seq.clear();
             seq.push_back(restricts[i].target_id);
-            for(j = 0; j<MAX_RULE_LENGTH && restricts[i].via[j]>-1; j++)
-            {
+            for (j = 0; j < MAX_RULE_LENGTH && restricts[i].via[j] >- 1; j++) {
                 seq.push_back(restricts[i].via[j]);
             }
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef(edges, static_cast<unsigned int>(edge_count), directed, has_reverse_cost);
+        GraphDefinition gdef(edges, static_cast<unsigned int>(edge_count),
+        directed, has_reverse_cost);
 
         int64_t start_vertex = 0;
         int64_t end_vertex = 0;
@@ -120,7 +119,8 @@ int trsp_edge_wrapper(
                 start_vertex, end_vertex);
 
         gdef.set_restrictions(start_vertex, end_vertex, ruleTable);
-        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, log);
+        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count,
+            log);
 
 
         if (res < 0)

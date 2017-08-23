@@ -23,26 +23,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./node.h"
+#include "vrp/node.h"
+
+#include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {
 namespace vrp {
 
-bool Node::isSamePos(const Node &other) const {
-    return comparable_distance(other) == 0;
-}
-
-#if 0
-double Node::travel_time_to(const Node &other) const {
-    return distance(other);
-}
-#endif
-
 std::ostream& operator << (std::ostream &log, const Node &node) {
-    log << node.m_original_id
-        << "(" << node.m_id << ")"
-       << "(" << node.m_point.x() << ", " << node.m_point.y() << ")";
+    node.print(log);
     return log;
+}
+
+void
+Node::print(std::ostream& os) const {
+    os << id()
+#ifndef NDEBUG
+        << "(" << idx() << ")"
+#endif
+       << " (x,y) = (" << m_point.x() << ", " << m_point.y() << ")";
 }
 
 double
@@ -52,30 +51,33 @@ Node::distance(const Node &other) const {
     return sqrt(dx * dx + dy * dy);
 }
 
+/**
+ * para[in] n bas node to be casted as Node
+ */
 double
-Node::comparable_distance(const Node &other) const {
-    auto dx = m_point.x() - other.m_point.x();
-    auto dy = m_point.y() - other.m_point.y();
-    return dx * dx + dy * dy;
+Node::distance(const Base_node *n) const {
+    return distance(*dynamic_cast<const Node*>(n));
 }
 
-
-Node::Node(size_t id, int64_t original_id, double _x, double _y)
-    : m_point(_x, _y),
-    m_id(id),
-    m_original_id(original_id) {
+/**
+ * @param[in] _idx index to a container
+ * @param[in] _id  original identifier
+ * @param[in] _x   coordinate value
+ * @param[in] _y   coordinate value
+ */
+Node::Node(size_t _idx, int64_t _id, double _x, double _y)
+    : Base_node(_idx, _id),
+        m_point(_x, _y) {
     }
 
 bool
 Node::operator ==(const Node &rhs) const {
     if (&rhs == this) return true;
     return
-        (id() == rhs.id())
-         && (original_id() == rhs.original_id())
+        (idx() == rhs.idx())
+         && (id() == rhs.id())
          && (m_point == rhs.m_point);
 }
 
 }  //  namespace vrp
 }  //  namespace pgrouting
-
-

@@ -4,9 +4,9 @@
 #
 
 option(BUILD_DOXY
-    "Set ON|OFF (default=OFF) to build Developers Documentation" OFF)
+    "Set ON|OFF (default=OFF) to build Developers Documentation" ON)
 
-if (BUILD_DOXY)
+if (BUILD_DOXY AND WITH_DOC)
     message(STATUS "Developers documentation.")
     find_package(Doxygen ${DOXYGEN_MINIMUM_VERSION})
 

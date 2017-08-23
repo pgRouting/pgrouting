@@ -22,13 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./postgres_connection.h"
+#include "c_common/matrixRows_input.h"
 
-#include "./debug_macro.h"
-#include "./pgr_types.h"
-#include "./get_check_data.h"
-#include "./time_msg.h"
-#include "./matrixRows_input.h"
+#include "c_types/column_info_t.h"
+
+#include "c_common/debug_macro.h"
+#include "c_common/get_check_data.h"
+#include "c_common/time_msg.h"
 
 
 
@@ -107,7 +107,7 @@ void pgr_get_matrixRows(
 
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %ld edge tupĺes", ntuples);
+            PGR_DBG("processing %ld matrix cell tupĺes", ntuples);
 
             size_t t;
             for (t = 0; t < ntuples; t++) {
@@ -131,5 +131,5 @@ void pgr_get_matrixRows(
     }
 
     (*total_rows) = total_tuples;
-    time_msg(" reading Edges", start_t, clock());
+    time_msg(" reading matrix cells", start_t, clock());
 }

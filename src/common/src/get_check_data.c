@@ -22,14 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/get_check_data.h"
 
 #include "catalog/pg_type.h"
 
-
-#include "./pgr_types.h"
-#include "./debug_macro.h"
-#include "./get_check_data.h"
+#include "c_common/debug_macro.h"
 
 char*
 pgr_stradd(const char* a, const char* b) {
@@ -89,6 +86,9 @@ void pgr_fetch_column_info(
                 case CHAR1:
                     pgr_check_char_type(info[i]);
                     break;
+                case ANY_INTEGER_ARRAY:
+                    pgr_check_any_integerarray_type(info[i]);
+                    break;
                 default:
                     elog(ERROR, "Unknown type of column %s", info[i].name);
             }
@@ -118,6 +118,17 @@ pgr_check_any_integer_type(Column_info_t info) {
                 || info.type == INT8OID)) {
         elog(ERROR,
                 "Unexpected Column '%s' type. Expected ANY-INTEGER",
+                info.name);
+    }
+}
+
+void
+pgr_check_any_integerarray_type(Column_info_t info) {
+    if (!(info.type == INT2ARRAYOID
+                || info.type == INT4ARRAYOID
+                || info.type == 1016)) {
+        elog(ERROR,
+                "Unexpected Column '%s' type. Expected ANY-INTEGER-ARRAY",
                 info.name);
     }
 }
@@ -193,7 +204,7 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
 double
 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
-    bool isnull;
+    bool isnull = false;
     double value = 0.0;
     binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
     if (isnull)

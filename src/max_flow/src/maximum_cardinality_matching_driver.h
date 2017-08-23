@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_MAX_FLOW_SRC_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
 #define SRC_MAX_FLOW_SRC_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
 
-#include "./../../common/src/pgr_types.h"
+#include "c_types/pgr_basic_edge_t.h"
 
 #ifdef __cplusplus
 extern "C" {

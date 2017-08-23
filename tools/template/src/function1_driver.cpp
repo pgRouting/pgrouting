@@ -27,23 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
+#include "drivers/MY_FUNCTION_NAME/MY_FUNCTION_NAME_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "./MY_FUNCTION_NAME_driver.h"
+#include "dijkstra/pgr_dijkstra.hpp"
 
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
-#include "../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_types.h"
-
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 
 
@@ -130,28 +124,28 @@ do_pgr_MY_FUNCTION_NAME(
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
-            nullptr :
-            strdup(log.str().c_str());
+            *log_msg :
+            pgr_msg(log.str().c_str());
         *notice_msg = notice.str().empty()?
-            nullptr :
-            strdup(notice.str().c_str());
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }

@@ -27,11 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_MY_FUNCTION_NAME_UPPER_SRC_MY_FUNCTION_NAME_UPPER_DRIVER_H_
-#define SRC_MY_FUNCTION_NAME_UPPER_SRC_MY_FUNCTION_NAME_UPPER_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_MY_FUNCTION_NAME_UPPER_MY_FUNCTION_NAME_UPPER_DRIVER_H_
+#define INCLUDE_DRIVERS_MY_FUNCTION_NAME_UPPER_MY_FUNCTION_NAME_UPPER_DRIVER_H_
 #pragma once
 
-#include "./../../common/src/pgr_types.h"
+#include "c_types/MY_EDGE_FILE.h"
+#include "c_types/MY_RETURN_VALUE_FILE.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -61,4 +62,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_MY_FUNCTION_NAME_UPPER_SRC_MY_FUNCTION_NAME_UPPER_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_MY_FUNCTION_NAME_UPPER_MY_FUNCTION_NAME_UPPER_DRIVER_H_

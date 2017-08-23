@@ -23,29 +23,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#include "vrp/solution.h"
 
-#include <string>
 #include <vector>
+#include <string>
+#include <algorithm>
 
-#include "./solution.h"
-#include "./pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.h"
+#include "c_types/pickDeliver/general_vehicle_orders_t.h"
 
 namespace pgrouting {
 namespace vrp {
 
-
-void
-Solution::get_postgres_result(
-        std::vector< General_vehicle_orders_t > &result) const {
+std::vector<General_vehicle_orders_t>
+Solution::get_postgres_result() const {
+    std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
     int i(1);
     for (const auto truck : fleet) {
-        std::vector< General_vehicle_orders_t > data;
-        truck.get_postgres_result(i, data);
+        std::vector<General_vehicle_orders_t> data =
+            truck.get_postgres_result(i);
         result.insert(result.end(), data.begin(), data.end());
 
         ++i;
     }
+    return result;
 }
 
 
@@ -160,6 +162,15 @@ Solution::tau(const std::string &title) const {
     return log.str();
 }
 
+void
+Solution::sort_by_id() {
+    std::sort(fleet.begin(), fleet.end(), []
+            (const Vehicle_pickDeliver &lhs, const Vehicle_pickDeliver &rhs)
+            -> bool {
+            return lhs.idx() < rhs.idx();
+            });
+}
+
 std::ostream&
 operator << (std::ostream &log, const Solution &solution) {
     for (const auto vehicle : solution.fleet) {
@@ -218,6 +229,17 @@ Solution::operator<(const Solution &s_rhs) const {
         return false;
 
     return false;
+}
+
+Solution::Solution() :
+    EPSILON(0.0001),
+    trucks(problem->trucks())
+{
+    ENTERING();
+    for (const auto &t : trucks) {
+        msg.log << t.tau() << "\n";
+    }
+    EXITING();
 }
 
 }  //  namespace vrp

@@ -9,12 +9,12 @@
 
 .. _Stable:
 
-Stable proposed Functions
+Stable Proposed Functions
 ==================================
 
 ..  stable-begin-warning
 
-.. warning:: These are proposed functions for next mayor release.
+.. warning:: Proposed functions for next mayor release.
 
   - They are not officially in the current release.
   - They will likely officially be part of the next mayor release:
@@ -38,11 +38,28 @@ As part of the :ref:`dijkstra`
 .. rubric:: Families
 
 :ref:`astar`
- 
+
 .. include:: aStar-family.rst
    :start-after: index from here
    :end-before: index to here
 
+:ref:`bdAstar`
+
+.. include:: bdAstar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`bdDijkstra`
+
+.. include:: bdDijkstra-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`maxFlow`
+
+.. include:: flow-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
 :ref:`withPoints`
 
@@ -74,6 +91,8 @@ As part of the :ref:`dijkstra`
     :hidden:
 
     aStar-family
+    bdAstar-family
+    bdDijkstra-family
     withPoints-family
 
     cost-category
@@ -83,13 +102,13 @@ As part of the :ref:`dijkstra`
 
 .. _proposed:
 
-Experimental and Proposed functions
+Experimental Functions
 ===============================================================================
 
 
 ..  begin-warn-expr
 
-.. warning:: These are proposed functions
+.. warning:: Experimental functions
 
   - They are not officially of the current release.
   - They likely will not be officially be part of the next release:
@@ -114,25 +133,23 @@ Experimental and Proposed functions
 
 - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
-:ref:`maxFlow`
-
-.. include:: flow-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
-
-.. rubric:: Convenience
-
--  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
 
 .. rubric:: Graph Analysis
 
 -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 
-.. rubric:: Vehicle Routing Problems
+:ref:`components` - Analyze components within a graph
 
--  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
--  :ref:`pgr_vrp_basic` - VRP One Depot
+-  :ref:`pgr_connectedComponents` - Return the connected components of an undirected graph
+-  :ref:`pgr_strongComponents` - Return the strongly connected components of a directed graph
+-  :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph
+-  :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph
+-  :ref:`pgr_bridges` - Return the bridges of an undirected graph
+
+.. rubric:: VRP
+
+- :ref:`pgr_gsocvrppdtw`
+- :ref:`pgr_vrp_basic`
 
 
 .. toctree::
@@ -140,24 +157,24 @@ Experimental and Proposed functions
 
   contraction-family
   flow-family
-  pgr_pointToEdgeNode
   pgr_labelGraph
+  components-family
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
+.. rubric:: Graph Transformation
 
+:doc:`pgr_lineGraph`
 
+.. toctree::
+  :hidden:
 
+  pgr_lineGraph
 
+See Also
+-------------------------------------------------------------------------------
 
+.. rubric:: Indices and tables
 
-
-..
-  The template
-   ------------
-    - :ref:`pgr_funnyDijkstra`
-    .. toctree::
-    :hidden:
-    ..
-     ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
-
+* :ref:`genindex`
+* :ref:`search`

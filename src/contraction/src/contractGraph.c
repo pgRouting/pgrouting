@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "c_common/postgres_connection.h"
 #include "utils/array.h"
 #include "catalog/pg_type.h"
 #include "utils/lsyscache.h"
@@ -36,13 +36,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INT8ARRAYOID    1016
 #endif
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/e_report.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/edges_input.h"
-#include "./../../common/src/arrays_input.h"
-#include "./contractGraph_driver.h"
+#include "c_common/debug_macro.h"
+#include "c_common/e_report.h"
+#include "c_common/time_msg.h"
+#include "c_types/contracted_rt.h"
+#include "c_common/edges_input.h"
+#include "c_common/arrays_input.h"
+#include "drivers/contraction/contractGraph_driver.h"
 
 PGDLLEXPORT Datum contractGraph(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(contractGraph);
@@ -56,7 +56,7 @@ process(char* edges_sql,
         ArrayType* forbidden,
 
         bool directed,
-        pgr_contracted_blob **result_tuples,
+        contracted_rt **result_tuples,
         size_t *result_count) {
     /*
      * nothing to do
@@ -132,7 +132,7 @@ contractGraph(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    pgr_contracted_blob  *result_tuples = NULL;
+    contracted_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -179,13 +179,13 @@ contractGraph(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_contracted_blob*) funcctx->user_fctx;
+    result_tuples = (contracted_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple   tuple;
         Datum       result;
         Datum       *values;
-        char        *nulls;
+        bool        *nulls;
         int16 typlen;
         size_t      call_cntr = funcctx->call_cntr;
 

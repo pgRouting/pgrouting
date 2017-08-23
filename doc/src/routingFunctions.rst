@@ -25,7 +25,7 @@ Routing Functions
 
 :ref:`pgr_astar` - Shortest Path A*
 
-:ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
+:ref:`pgr_bdAstar` - Bi-directional A* Shortest Path
 
 :ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 
@@ -65,3 +65,11 @@ Routing Functions
     pgr_trsp
     TSP-family
     drivingDistance-category
+
+See Also
+-------------------------------------------------------------------------------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

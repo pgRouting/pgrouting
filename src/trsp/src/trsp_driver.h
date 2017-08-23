@@ -19,46 +19,46 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
- 
-#ifndef _TRSP_H
-#define _TRSP_H
+
+#ifndef SRC_TRSP_SRC_TRSP_DRIVER_H_
+#define SRC_TRSP_SRC_TRSP_DRIVER_H_
 
 #define MAX_RULE_LENGTH 5
 
-#include "../../common/src/pgr_types.h"
+#include "c_types/pgr_types.h"
+
 typedef pgr_edge_t edge_t;
 typedef Restrict_t restrict_t;
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+  #endif
+  int trsp_node_wrapper (
+    edge_t *edges, size_t edge_count,
+    restrict_t *restricts, size_t restrict_count,
+    int64_t start_vertex,
+    int64_t end_vertex,
+    bool directed,
+    bool has_reverse_cost,
+    path_element_t **path, size_t *path_count,
+    char **err_msg
+  );
 
-int trsp_node_wrapper(
-			edge_t *edges,         size_t edge_count, 
-			restrict_t *restricts, size_t restrict_count,
-			int start_vertex, 
-			int end_vertex,
-		    bool directed, 
-		    bool has_reverse_cost,
-            path_element_t **path, size_t *path_count, 
-            char **err_msg
-            );
+  int trsp_edge_wrapper (
+    edge_t *edges, size_t edge_count,
+    restrict_t *restricts, size_t restrict_count,
+    int64_t start_edge,
+    double start_pos,
+    int64_t end_edge,
+    double end_pos,
+    bool directed,
+    bool has_reverse_cost,
+    path_element_t **path, size_t *path_count,
+    char **err_msg
+  );
 
-
-int trsp_edge_wrapper(
-			edge_t *edges, size_t edge_count, 
-			restrict_t *restricts, size_t restrict_count,
-			int start_edge, 
-            double start_pos,
-			int end_edge,
-            double end_pos,
-		    bool directed, 
-		    bool has_reverse_cost,
-            path_element_t **path, size_t *path_count, 
-            char **err_msg
-            );
 #ifdef __cplusplus
 }
 #endif
 
-#endif
+#endif // SRC_TRSP_SRC_TRSP_DRIVER_H_

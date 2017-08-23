@@ -1,0 +1,15 @@
+
+abbr {
+    font-size: 80%;
+}
+
+/* Content */
+div.content-wrapper {
+    background-color: blue;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+div.topic {
+        border: none;
+}

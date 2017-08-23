@@ -28,19 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#include "./withPoints_dd_driver.h"
+#include "drivers/driving_distance/withPoints_dd_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <algorithm>
 
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#include "dijkstra/pgr_dijkstra.hpp"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
 
 
-#include "./../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_types.h"
+#include "cpp_common/pgr_alloc.hpp"
 
 
 /**********************************************************************/
@@ -131,13 +130,13 @@ do_pgr_many_withPointsDD(
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(new_edges);
             paths = pgr_drivingDistance(
-                    digraph, start_vids, distance, equiCost);
+                    digraph, start_vids, distance, equiCost, log);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(new_edges);
             paths = pgr_drivingDistance(
-                    undigraph, start_vids, distance, equiCost);
+                    undigraph, start_vids, distance, equiCost, log);
         }
 
         for (auto &path : paths) {

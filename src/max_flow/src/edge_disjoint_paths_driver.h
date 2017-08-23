@@ -30,7 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_DRIVER_H_
 #define SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_DRIVER_H_
 
-#include "./../../common/src/pgr_types.h"
+#include "c_types/pgr_edge_t.h"
+#include "c_types/general_path_element_t.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,7 +40,7 @@ extern "C" {
 
     void
         do_pgr_edge_disjoint_paths(
-            pgr_basic_edge_t *data_edges,
+            pgr_edge_t *data_edges,
             size_t total_tuples,
             int64_t *source_vertices,
             size_t size_source_verticesArr,

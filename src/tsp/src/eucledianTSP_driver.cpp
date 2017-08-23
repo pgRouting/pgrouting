@@ -28,18 +28,18 @@
  *  ******************************************************************** PGR-GNU*/
 
 
-#include "./eucledianTSP_driver.h"
+#include "drivers/tsp/eucledianTSP_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <vector>
 #include <algorithm>
 
-#include "./pgr_tsp.hpp"
-#include "./eucledianDmatrix.h"
+#include "tsp/pgr_tsp.hpp"
+#include "tsp/eucledianDmatrix.h"
 
-#include "./../../common/src/pgr_alloc.hpp"
-#include "./../../common/src/pgr_assert.h"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
 void
 do_pgr_eucledianTSP(
@@ -90,7 +90,7 @@ do_pgr_eucledianTSP(
              */
             real_cost = costs.distance(idx_start, idx_end);
             /*
-             * Temporarly setting the cost between the start_vid and end_vid to 0
+             * Temporarily setting the cost between the start_vid and end_vid to 0
              */
             costs.set(idx_start, idx_end, 0);
         }
