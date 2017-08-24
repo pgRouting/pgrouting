@@ -219,13 +219,13 @@ Pgr_lineGraph< G, T_V, T_E >::get_postgres_results_directed() {
         log << "e_source = " << e_source << " | e_target = " << e_target << "\n";
 
         if(unique.find( {e_target, e_source} ) != unique.end()) {
-            unique[ {e_target, e_source} ].reverse_cost = 1.0;
+            unique[ std::pair<int64_t,int64_t>(e_target, e_source) ].reverse_cost = 1.0;
             continue;
         }
         e_source *= -1;
         e_target *= -1;
         if(unique.find( {e_target, e_source} ) != unique.end()) {
-            unique[ {e_target, e_source} ].reverse_cost = 1.0;
+            unique[ std::pair<int64_t,int64_t>(e_target, e_source) ].reverse_cost = 1.0;
             continue;
         }
         e_source *= -1;
@@ -238,7 +238,7 @@ Pgr_lineGraph< G, T_V, T_E >::get_postgres_results_directed() {
             1.0,
             -1.0
         };
-        unique[ {e_source, e_target} ] = edge;
+        unique[ std::pair<int64_t,int64_t>(e_target, e_source)] = edge;
     }
     for (const auto &edge: unique) {
         results.push_back(edge.second);
@@ -432,14 +432,13 @@ Pgr_lineGraph< G, T_V, T_E >::extract_vertices() {
         if (edge.cost > 0) {
             vertex.id = (++(this->m_num_vertices));
             vertices.push_back(vertex);
-            m_vertex_map[ {edge.id, edge.source} ] = this->m_num_vertices;
+            m_vertex_map[ std::pair<int64_t,int64_t>(edge.id, edge.source) ] = this->m_num_vertices;
 
             if (this->m_gType == UNDIRECTED) {
                 vertex.id = (++(this->m_num_vertices));
                 std::swap(vertex.source, vertex.target);
                 vertices.push_back(vertex);
-                m_vertex_map[{-1*edge.id, edge.target}] = this->m_num_vertices;
-
+                m_vertex_map[std::pair<int64_t,int64_t>(-1*edge.id, edge.target)] = this->m_num_vertices;
                 std::swap(vertex.source, vertex.target);
             }
         }
@@ -450,13 +449,13 @@ Pgr_lineGraph< G, T_V, T_E >::extract_vertices() {
             vertex.vertex_id *= -1;
             std::swap(vertex.source, vertex.target);
             vertices.push_back(vertex);
-            m_vertex_map[ {edge.id, edge.target} ] = this->m_num_vertices;
+            m_vertex_map[ std::pair<int64_t,int64_t>(edge.id, edge.target) ] = this->m_num_vertices;
 
             if (this->m_gType == UNDIRECTED) {
                 vertex.id = (++(this->m_num_vertices));
                 std::swap(vertex.source, vertex.target);
                 vertices.push_back(vertex);
-                m_vertex_map[{-1*edge.id, edge.source}] = this->m_num_vertices;
+                m_vertex_map[std::pair<int64_t,int64_t>(-1*edge.id, edge.source)] = this->m_num_vertices;
             }
         }
     }
@@ -486,8 +485,8 @@ Pgr_lineGraph< G, T_V, T_E >::graph_add_edge(
     pgassert(m_vertex_map.find( {target, source_out_edge} ) !=
             m_vertex_map.end());
 
-    auto index_source_edge = m_vertex_map[ {source, source_in_edge} ];
-    auto index_target_edge = m_vertex_map[ {target, source_out_edge} ];
+    auto index_source_edge = m_vertex_map[ std::pair<int64_t,int64_t>(source, source_in_edge) ];
+    auto index_target_edge = m_vertex_map[ std::pair<int64_t,int64_t>(target, source_out_edge) ];
 
 #if 0
     log << "\nsource_in_edge = " << source_in_edge << " | "

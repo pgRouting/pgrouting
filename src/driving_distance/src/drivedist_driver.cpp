@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#define WITH_TIME
+#undef WITH_TIME
 #ifdef WITH_TIME
 #include <ctime>
 #include <chrono>
@@ -109,9 +109,11 @@ do_pgr_driving_many_to_dist(
 
         auto vertices(pgrouting::extract_vertices(data_edges, total_edges));
 
+#ifdef WITH_TIME
         clock_t begin;
         std::time_t start_t;
         std::chrono::steady_clock::time_point begin_elapsed;
+#endif
 
         if (directedFlag) {
 #ifdef WITH_TIME
