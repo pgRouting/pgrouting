@@ -31,9 +31,9 @@ Must be run after ``pgr_createTopology()``. No use of ``geometry`` column. Only 
 
 The function returns:
 
-  - ``OK`` when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of ``rows_where`` condition, non participating rows will have -1 integer values.
-  - ``FAIL`` when the processing cannot be finished due to some error. Notice will be thrown accordingly.
-  - ``rows_where condition generated 0 rows`` when passed SQL condition has not been fulfilled by any row.
+- ``OK`` when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of ``rows_where`` condition, non participating rows will have -1 integer values.
+- ``FAIL`` when the processing cannot be finished due to some error. Notice will be thrown accordingly.
+- ``rows_where condition generated 0 rows`` when passed SQL condition has not been fulfilled by any row.
 
 .. index::
 	single: labelGraph(Complete Signature) - Proposed

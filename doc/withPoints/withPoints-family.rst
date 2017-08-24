@@ -90,18 +90,18 @@ In all this functions we have to take care of as many aspects as possible:
 
 - Must work for routing:
 
-    - Cars (directed graph)
-    - Pedestrians (undirected graph)
+  - Cars (directed graph)
+  - Pedestrians (undirected graph)
 
 - Arriving at the point:
 
-    - In either side of the street.
-    - Compulsory arrival on the side of the street where the point is located.
+  - In either side of the street.
+  - Compulsory arrival on the side of the street where the point is located.
 
 - Countries with:
 
-    - Right side driving
-    - Left side driving
+  - Right side driving
+  - Left side driving
 
 - Some points are:
 
@@ -134,10 +134,10 @@ Point Definition
 
 - A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`
 
-  - :ped: is the point identifier
-  - :eid: is an edge id of the `edges_sql`
-  - :fraction: represents where the edge `eid` will be cut.
-  - :side: Indicates the side of the edge where the point is located.
+  - **pid** is the point identifier
+  - **eid** is an edge id of the `edges_sql`
+  - **fraction** represents where the edge `eid` will be cut.
+  - **side** Indicates the side of the edge where the point is located.
 
 
 Creating Temporary Vertices in the Graph
@@ -149,25 +149,25 @@ For edge (15,  9,12  10, 20), & lets insert point (2, 12, 0.3, r)
 
 From first image above:
 
-  - We can arrive to the point only via vertex 9.
-  - It only afects the edge (15, 9,12, 10) so that edge is removed.
-  - Edge (15, 12,9, 20) is kept.
-  - Create new edges:
+- We can arrive to the point only via vertex 9.
+- It only afects the edge (15, 9,12, 10) so that edge is removed.
+- Edge (15, 12,9, 20) is kept.
+- Create new edges:
 
-    - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
-    - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
+  - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
+  - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
 
 .. rubric:: On a left hand side driving network
 
 From second image above:
 
-  - We can arrive to the point only via vertex 12.
-  - It only afects the edge (15, 12,9 20) so that edge is removed.
-  - Edge (15, 9,12, 10) is kept.
-  - Create new edges:
+- We can arrive to the point only via vertex 12.
+- It only afects the edge (15, 12,9 20) so that edge is removed.
+- Edge (15, 9,12, 10) is kept.
+- Create new edges:
 
-    - (15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14
-    - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
+  - (15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14
+  - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
 
 :Remember: that fraction is from vertex 9 to vertex 12
 
@@ -176,15 +176,15 @@ From second image above:
 
 From third image above:
 
-  - We can arrive to the point either via vertex 12 or via vertex 9
-  - Edge (15, 12,9 20) is removed.
-  - Edge (15, 9,12, 10) is removed.
-  - Create new edges:
+- We can arrive to the point either via vertex 12 or via vertex 9
+- Edge (15, 12,9 20) is removed.
+- Edge (15, 9,12, 10) is removed.
+- Create new edges:
 
-    - (15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14
-    - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
-    - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
-    - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
+  - (15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14
+  - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
+  - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
+  - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
 
 See Also
 -------------------------------------------------------------------------------
