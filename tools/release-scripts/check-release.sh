@@ -92,7 +92,7 @@ MICRO=$3
 PREV_REL=$4
 BRANCH=$5
 RC=$6
-DEBUG=1
+DEBUG=
 
 
 if [[ -z  "$DEBUG" ]]; then

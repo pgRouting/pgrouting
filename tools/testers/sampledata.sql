@@ -98,34 +98,6 @@ UPDATE pointsOfInterest
     FROM edge_table AS e WHERE edge_id = id;
 
 --RESTRICTIONS CREATE
-CREATE TABLE restrict (
-    id BIGSERIAL,
-    restricted_edges BIGINT[] ,
-    cost FLOAT
-);
-
-INSERT INTO restrict(restricted_edges, cost) VALUES
-('{4, 7}', -1),
-('{7, 8, 11}', -1),
-('{7, 8, 5}', -1),
-('{7, 4}', -1),
-('{7, 8}', -1),
-('{9, 11}', -1),
-('{9, 8}', -1);
-
-Create Table edge_table255(
-    id BIGINT,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO edge_table255(id, source, target, cost, reverse_cost) VALUES
-(1, 1, 2, 10.0, -1),
-(2, 2, 1, 25.0, -1),
-(3, 2, 3, 20.0, 25.0);
-
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
