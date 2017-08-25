@@ -143,6 +143,12 @@ Column                       Type                Description
                                                  * When `negative`: edge (`target`, `source`) does not exist, therefore it’s not part of the graph.
 ============================ =================   ===================================================================
 
+Examples
+-------------------------------------------------------------------------------
+
+.. literalinclude:: doc-pgr_lineGraph.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------
