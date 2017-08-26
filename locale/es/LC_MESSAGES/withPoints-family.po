@@ -1,22 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/withPoints-family.rst:14
 msgid "withPoints - Family of functions"
@@ -84,7 +77,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:47
 msgid "Images"
-msgstr "Imágenes"
+msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:49
 msgid ""
@@ -107,7 +100,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:68
 msgid "Introduction"
-msgstr "Introducción"
+msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:70
 msgid ""
@@ -272,19 +265,19 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:137
-msgid "is the point identifier"
+msgid "**pid** is the point identifier"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:138
-msgid "is an edge id of the `edges_sql`"
+msgid "**eid** is an edge id of the `edges_sql`"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:139
-msgid "represents where the edge `eid` will be cut."
+msgid "**fraction** represents where the edge `eid` will be cut."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:140
-msgid "Indicates the side of the edge where the point is located."
+msgid "**side** Indicates the side of the edge where the point is located."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:144
@@ -383,4 +376,20 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:181
 msgid "Edge (15, 9,12, 10) is removed."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:190
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:193
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:194
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:195
+msgid ":ref:`search`"
 msgstr ""

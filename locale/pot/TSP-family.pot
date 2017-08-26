@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,7 +165,7 @@ msgid "max_consecutive_non_changes: limits the number of consecutive non changes
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:128
-msgid "This is done by doing some book keeping on the times **solution ← snew;** is executed."
+msgid "This is done by doing some book keeping on the times **solution = snew;** is executed."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:130

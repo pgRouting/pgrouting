@@ -20,7 +20,7 @@ sphinx-intl update -d locale
 review
 ```
 for f in locale/pot/*; do echo $f; grep $f .tx/config; done
-for f in `grep '.pot' .tx/config | sed 's/^.*pot\/\(.*\)$/\1/' | grep '.pot'` ; do  echo $f; ls locale/pot/* | grep $f  ; done 
+for f in `grep '\.pot' .tx/config | sed 's/^.*pot\/\(.*\)$/\1/' | grep '\.pot'` ; do  echo $f; ls locale/pot/* | grep $f  ; done 
 ```
 
 commit changes and push

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,66 +209,78 @@ msgid "the set of edges :math:`E`"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:103
-msgid ":math:`E = \\begin{cases} &\\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} &\\quad  \\text{ if } reverse\\_capacity = \\varnothing \\\\ \\\\ &\\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} \\\\ \\cup &\\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } reverse\\_capacity_i > 0)\\} &\\quad \\text{ if } reverse\\_capacity \\neq \\varnothing \\\\ \\end{cases}`"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:107
-msgid "Maximum flow problem"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:108
-msgid "Given:"
+msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity = \\varnothing \\\\ \\text{ } & \\quad \\text{ } \\\\ \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:111
-msgid ":math:`G(V,E)`"
+msgid "Maximum flow problem"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:112
-msgid ":math:`source\\_vertex \\in V` the source vertex"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:113
-msgid ":math:`sink\\_vertex \\in V` the sink vertex"
+msgid "Given:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:115
-msgid "Then:"
+msgid ":math:`G(V,E)`"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:116
+msgid ":math:`source\\_vertex \\in V` the source vertex"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:117
-msgid ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
+msgid ":math:`sink\\_vertex \\in V` the sink vertex"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:119
-msgid ":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, flow_i, residual\\_capacity_i)}`"
+msgid "Then:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:121
-msgid "Where:"
+msgid ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:123
-msgid ":math:`\\boldsymbol{\\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:"
+msgid ":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, flow_i, residual\\_capacity_i)}`"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:125
-msgid ":math:`id_i = i`"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:126
-msgid ":math:`edge\\_id = id_i   \\text{ in edges_sql}`"
+msgid "Where:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:127
-msgid ":math:`residual\\_capacity_i = capacity_i - flow_i`"
+msgid ":math:`\\boldsymbol{\\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:129
+msgid ":math:`id_i = i`"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:130
+msgid ":math:`edge\\_id = id_i` in edges_sql"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:131
+msgid ":math:`residual\\_capacity_i = capacity_i - flow_i`"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:135
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:133
+#: ../../build/doc/flow-family.rst:137
 msgid "https://en.wikipedia.org/wiki/Maximum_flow_problem"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:140
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:141
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:142
+msgid ":ref:`search`"
 msgstr ""
 

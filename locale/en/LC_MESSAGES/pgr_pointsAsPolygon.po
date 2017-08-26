@@ -1,21 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:13
 msgid "pgr_pointsAsPolygon"
@@ -102,7 +96,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:69
-msgid "The query use the :ref:`sampledata` network."
+msgid "The query use the :doc:`sampledata` network."
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:73
@@ -117,17 +111,14 @@ msgstr ""
 msgid ":ref:`pgr_alphashape` - Alpha shape computation"
 msgstr ""
 
-#~ msgid "sql"
-#~ msgstr ""
+#: ../../build/doc/pgr_pointsAsPolygon.rst:79
+msgid "Indices and tables"
+msgstr ""
 
-#~ msgid "id"
-#~ msgstr ""
+#: ../../build/doc/pgr_pointsAsPolygon.rst:80
+msgid ":ref:`genindex`"
+msgstr ""
 
-#~ msgid "x"
-#~ msgstr ""
-
-#~ msgid "y"
-#~ msgstr ""
-
-#~ msgid "alpha"
-#~ msgstr ""
+#: ../../build/doc/pgr_pointsAsPolygon.rst:81
+msgid ":ref:`search`"
+msgstr ""

@@ -1,30 +1,23 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgRouting-installation.rst:13
 msgid "Installation"
-msgstr "Instalación"
+msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:16
 msgid "Table of Contents"
-msgstr "Contenido"
+msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:17
 msgid ":ref:`install-short`"
@@ -173,7 +166,7 @@ msgid "C and C++0x compilers * g++ version >= 4.8"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:136
-msgid "Postgresql version >= 9.1"
+msgid "Postgresql version >= 9.2"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:137
@@ -186,7 +179,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:139
 msgid "CMake >= 2.8.8"
-msgstr "CMake >= 2.8.8"
+msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:140
 msgid "CGAL >=  4.2"
@@ -280,7 +273,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:218
 msgid "Default"
-msgstr "Por defecto"
+msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:218
 msgid "Comment"
@@ -410,16 +403,16 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:305
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:308
 msgid "Indices and tables"
-msgstr "Índices y tablas"
+msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:309
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:310
 msgid ":ref:`search`"
-msgstr ":ref:`Búsqueda <search>`"
+msgstr ""

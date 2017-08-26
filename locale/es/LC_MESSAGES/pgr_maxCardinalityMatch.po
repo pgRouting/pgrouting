@@ -1,22 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:13
 msgid "pgr_maxCardinalityMatch - Proposed"
@@ -24,7 +17,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:17
 msgid "Synopsis"
-msgstr "Sinopsis"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:19
 msgid ""
@@ -94,7 +87,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:29
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:32
 msgid "Availability:"
@@ -110,7 +103,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:38
 msgid "Characteristics"
-msgstr "Características"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:39
 msgid ""
@@ -184,38 +177,38 @@ msgstr ""
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:136
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:146
 msgid "Column"
-msgstr "Columna"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:118
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:136
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:146
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:118
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:136
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:146
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:120
 msgid "**id**"
-msgstr "**id**"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:120
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:121
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:122
 msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:120
 msgid "Identifier of the edge."
-msgstr "Identificador de la arísta."
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:121
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:150
 msgid "**source**"
-msgstr "**source**"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:121
 msgid "Identifier of the first end point vertex of the edge."
@@ -224,7 +217,7 @@ msgstr ""
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:122
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:151
 msgid "**target**"
-msgstr "**target**"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:122
 msgid "Identifier of the second end point vertex of the edge."
@@ -255,11 +248,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:127
 msgid "Where:"
-msgstr "Donde:"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:129
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:130
 msgid "SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION"
@@ -275,7 +268,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:138
 msgid "``TEXT``"
-msgstr "``TEXT``"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:138
 msgid "SQL query as described above."
@@ -283,11 +276,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:139
 msgid "**directed**"
-msgstr "**directed**"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:139
 msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:139
 msgid "(optional) Determines the type of the graph. Default TRUE."
@@ -299,11 +292,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:148
 msgid "**seq**"
-msgstr "**seq**"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:148
 msgid "``INT``"
-msgstr "``INT``"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:148
 msgid "Sequential value starting from **1**."
@@ -311,13 +304,13 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:149
 msgid "**edge**"
-msgstr "**edge**"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:149
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:150
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:151
 msgid "``BIGINT``"
-msgstr "``BIGINT``"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:149
 msgid "Identifier of the edge in the original query(edges_sql)."
@@ -333,7 +326,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:155
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:157
 msgid ":ref:`maxFlow`"
@@ -353,12 +346,12 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:163
 msgid "Indices and tables"
-msgstr "Índices y tablas"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:164
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:165
 msgid ":ref:`search`"
-msgstr ":ref:`Búsqueda <search>`"
+msgstr ""

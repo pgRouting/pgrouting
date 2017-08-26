@@ -1,21 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
 
 #: ../../build/doc/pgr_trsp.rst:13
 msgid "pgr_trsp - Turn Restriction Shortest Path (TRSP)"
@@ -263,7 +257,7 @@ msgid "An example query using edge ids and vias:"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:198
-msgid "The queries use the :ref:`sampledata` network."
+msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:202
@@ -274,71 +268,14 @@ msgstr ""
 msgid ":ref:`type_cost_result`"
 msgstr ""
 
-#~ msgid "sql"
-#~ msgstr ""
+#: ../../build/doc/pgr_trsp.rst:207
+msgid "Indices and tables"
+msgstr ""
 
-#~ msgid "id"
-#~ msgstr ""
+#: ../../build/doc/pgr_trsp.rst:208
+msgid ":ref:`genindex`"
+msgstr ""
 
-#~ msgid "source"
-#~ msgstr ""
-
-#~ msgid "target"
-#~ msgstr ""
-
-#~ msgid "cost"
-#~ msgstr ""
-
-#~ msgid "reverse_cost"
-#~ msgstr ""
-
-#~ msgid "directed"
-#~ msgstr ""
-
-#~ msgid "has_rcost"
-#~ msgstr ""
-
-#~ msgid "restrict_sql"
-#~ msgstr ""
-
-#~ msgid "to_cost"
-#~ msgstr ""
-
-#~ msgid "target_id"
-#~ msgstr ""
-
-#~ msgid "via_path"
-#~ msgstr ""
-
-#~ msgid "source_edge"
-#~ msgstr ""
-
-#~ msgid "source_pos"
-#~ msgstr ""
-
-#~ msgid "target_edge"
-#~ msgstr ""
-
-#~ msgid "target_pos"
-#~ msgstr ""
-
-#~ msgid "seq"
-#~ msgstr ""
-
-#~ msgid "id1"
-#~ msgstr ""
-
-#~ msgid "id2"
-#~ msgstr ""
-
-#~ msgid "vids"
-#~ msgstr ""
-
-#~ msgid "eids"
-#~ msgstr ""
-
-#~ msgid "pcts"
-#~ msgstr ""
-
-#~ msgid "id3"
-#~ msgstr ""
+#: ../../build/doc/pgr_trsp.rst:209
+msgid ":ref:`search`"
+msgstr ""

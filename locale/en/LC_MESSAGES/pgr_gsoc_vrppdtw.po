@@ -1,24 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:13
-msgid "pgr_gsoc_vrppdtw - Proposed"
+msgid "pgr_gsoc_vrppdtw - Experimental"
 msgstr ""
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:17
@@ -27,8 +21,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:19
 msgid ""
-"``pgr_gsoc_vrppdtw`` — Returns a solution for `Pick and Delivery` with "
-"`time windows` Vehicle Routing Problem"
+"``pgr_gsoc_vrppdtw`` — Returns a solution for `Pick and Delivery` with `time"
+" windows` Vehicle Routing Problem"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -222,8 +216,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:81
 msgid ""
-"Value used when the current customer is a Delivery to find the "
-"corresponding Pickup"
+"Value used when the current customer is a Delivery to find the corresponding"
+" Pickup"
 msgstr ""
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:82
@@ -232,8 +226,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:82
 msgid ""
-"Value used when the current customer is a Pickup to find the "
-"corresponding Delivery"
+"Value used when the current customer is a Pickup to find the corresponding "
+"Delivery"
 msgstr ""
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:86
@@ -317,7 +311,8 @@ msgid "``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:107
-msgid "Previous ``cost`` plus `travel time` plus `wait time` plus `service time`."
+msgid ""
+"Previous ``cost`` plus `travel time` plus `wait time` plus `service time`."
 msgstr ""
 
 #: ../../build/doc/pgr_gsoc_vrppdtw.rst:108
@@ -350,3 +345,14 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/Vehicle_routing_problem"
 msgstr ""
 
+#: ../../build/doc/pgr_gsoc_vrppdtw.rst:136
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_gsoc_vrppdtw.rst:137
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_gsoc_vrppdtw.rst:138
+msgid ":ref:`search`"
+msgstr ""

@@ -1,30 +1,23 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_alphaShape.rst:13
 msgid "pgr_alphaShape"
-msgstr "pgr_alphaShape"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:19
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:21
 msgid "``pgr_alphaShape`` — Core function for alpha shape computation."
@@ -32,39 +25,35 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:25
 msgid "Synopsis"
-msgstr "Sinopsis"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:27
 msgid ""
 "Returns a table with (x, y) rows that describe the vertices of an alpha "
 "shape."
 msgstr ""
-"Devuelve una tabla con registros (x, y)  que describen los vértices de una "
-"figura de alfa."
 
 #: ../../build/doc/pgr_alphaShape.rst:35
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:37
 msgid ""
 "``text`` a SQL query, which should return a set of rows with the following "
 "columns:"
 msgstr ""
-"``text`` una consulta SQL la cual debe proporcionar un conjunto de registros"
-" con los siguientes campos:"
 
 #: ../../build/doc/pgr_alphaShape.rst:43
 msgid "``int4`` identifier of the vertex"
-msgstr "``int4`` Identificador del vértice"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:44
 msgid "``float8`` x-coordinate"
-msgstr "``float8`` Coordenada x"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:45
 msgid "``float8`` y-coordinate"
-msgstr "``float8`` Coordenada y"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:47
 msgid ""
@@ -80,11 +69,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:52
 msgid "x-coordinate"
-msgstr "Coordenada x"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:53
 msgid "y-coordinate"
-msgstr "Coordenada y"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:55
 msgid ""
@@ -94,11 +83,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:58
 msgid "History"
-msgstr "Historia"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:59
 msgid "Renamed in version 2.0.0"
-msgstr "Renombrado en la versión 2.0.0"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:60
 msgid ""
@@ -113,7 +102,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:64
 msgid "Examples"
-msgstr "Ejemplos"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:65
 msgid ""
@@ -136,7 +125,11 @@ msgid "Steps:"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:79
-msgid "Calculates the alpha shape - the :code:`ORDER BY` clause is not used."
+msgid "Calculates the alpha shape"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:80
+msgid "the :code:`ORDER BY` clause is not used."
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:81
@@ -148,12 +141,12 @@ msgid "and computes the area"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:90
-msgid "The queries use the :ref:`sampledata` network."
-msgstr "La consulta usa la red de ejemplo  :ref:`sampledata`"
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:93
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:95
 msgid ":ref:`pgr_drivingDistance` - Driving Distance"
@@ -162,4 +155,15 @@ msgstr ""
 #: ../../build/doc/pgr_alphaShape.rst:96
 msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
 msgstr ""
-":ref:`pgr_points_as_polygon` - Polígono alrededor del conjunto de puntos"
+
+#: ../../build/doc/pgr_alphaShape.rst:99
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:100
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:101
+msgid ":ref:`search`"
+msgstr ""

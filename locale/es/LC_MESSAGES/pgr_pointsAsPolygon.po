@@ -1,41 +1,32 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:13
 msgid "pgr_pointsAsPolygon"
-msgstr "pgr_pointsAsPolygon"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:19
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:21
 msgid ""
 "``pgr_pointsAsPolygon`` — Draws an alpha shape around given set of points."
 msgstr ""
-"``pgr_pointsAsPolygon`` — Dibuja un figura Alfa  alrededor de un conjunto de"
-" puntos dado."
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:25
 msgid "Synopsis"
-msgstr "Sinopsis"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:27
 msgid "Returns the alpha shape as (multi)polygon geometry."
@@ -43,27 +34,25 @@ msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:35
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:37
 msgid ""
 "``text`` a SQL query, which should return a set of rows with the following "
 "columns:"
 msgstr ""
-"``text`` una consulta SQL la cual debe proporcionar un conjunto de registros"
-" con los siguientes campos:"
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:43
 msgid "``int4`` identifier of the vertex"
-msgstr "``int4`` Identificador del vértice"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:44
 msgid "``float8`` x-coordinate"
-msgstr "``float8`` Coordenada x"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:45
 msgid "``float8`` y-coordinate"
-msgstr "``float8`` Coordenada y"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:47
 msgid ""
@@ -79,11 +68,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:54
 msgid "History"
-msgstr "Historia"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:55
 msgid "Renamed in version 2.0.0"
-msgstr "Renombrado en la versión 2.0.0"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:56
 msgid ""
@@ -97,7 +86,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:61
 msgid "Examples"
-msgstr "Ejemplos"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:62
 msgid ""
@@ -107,12 +96,12 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:69
-msgid "The query use the :ref:`sampledata` network."
+msgid "The query use the :doc:`sampledata` network."
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:73
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:75
 msgid ":ref:`pgr_drivingDistance` - Driving Distance"
@@ -120,4 +109,16 @@ msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:76
 msgid ":ref:`pgr_alphashape` - Alpha shape computation"
-msgstr ":ref:`pgr_alphashape` - cómputo de forma alfa"
+msgstr ""
+
+#: ../../build/doc/pgr_pointsAsPolygon.rst:79
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_pointsAsPolygon.rst:80
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_pointsAsPolygon.rst:81
+msgid ":ref:`search`"
+msgstr ""
