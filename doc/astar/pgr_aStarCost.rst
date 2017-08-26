@@ -101,8 +101,8 @@ This signature finds a path from one ``start_vid`` to each ``end_vid`` in ``end_
 Using this signature, will load once the graph and perform a one to one `pgr_astar`
 where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
-  - The result is equivalent to the union of the results of the one to one `pgr_astar`.
-  - The extra ``end_vid`` column in the result is used to distinguish to which path it belongs.
+- The result is equivalent to the union of the results of the one to one `pgr_astar`.
+- The extra ``end_vid`` column in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -128,8 +128,8 @@ This signature finds the shortest path from each ``start_vid`` in  ``start_vids`
 Using this signature, will load once the graph and perform several one to one `pgr_aStar`
 where the ending vertex is fixed.
 
-  - The result is the union of the results of the one to one `pgr_aStar`.
-  - The extra ``start_vid`` column  in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_aStar`.
+- The extra ``start_vid`` column  in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -157,8 +157,8 @@ This signature finds the shortest path from each ``start_vid`` in  ``start_vids`
 Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
 for all ``start_vids``.
 
-  - The result is the union of the results of the one to one `pgr_dijkstra`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_dijkstra`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
