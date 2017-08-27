@@ -58,7 +58,7 @@ cd ..
 
 echo "  - [x] Compilation"
 
-tools/testers/algorithm-tester.pl --documentation >> build/tmp_make.txt
+tools/testers/algorithm-tester.pl -documentation >> build/tmp_make.txt
 tools/testers/algorithm-tester.pl >> build/tmp_make.txt
 echo "  - [x] Documentation tests"
 
