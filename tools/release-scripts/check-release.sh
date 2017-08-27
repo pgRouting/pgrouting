@@ -311,10 +311,10 @@ if [[ "$BRANCH" == "develop" || $BRANCH == "master" || $BRANCH == "release/$MAYO
     if [[ -z  "$DEBUG" ]]; then
         bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
         bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
-        bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
+        bash tools/release-scripts/compile-release.sh 5 $MAYOR.$MINOR $MICRO
     fi
 fi
-bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO
+bash tools/release-scripts/compile-release.sh 4.8   $MAYOR.$MINOR $MICRO
 
 echo - [x] completed local builds
 
