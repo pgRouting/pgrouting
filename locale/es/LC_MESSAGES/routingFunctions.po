@@ -1,34 +1,27 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/routingFunctions.rst:15
 msgid "Routing Functions"
-msgstr "Funciones para Enrrutamiento"
+msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:21
 msgid ":ref:`all_pairs`"
-msgstr ":ref:`all_pairs`"
+msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:23
 msgid ":ref:`pgr_floydWarshall` - Floyd-Warshall's Algorithm"
-msgstr ":ref:`pgr_floydWarshall` - Algoritmo Floyd-Warshall "
+msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:24
 msgid ":ref:`pgr_johnson`- Johnson’s Algorithm"
@@ -48,7 +41,7 @@ msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:33
 msgid ":ref:`dijkstra`"
-msgstr ":ref:`dijkstra`"
+msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:3
 msgid ":ref:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
@@ -87,11 +80,10 @@ msgstr ""
 #: ../../build/doc/routingFunctions.rst:41
 msgid ":ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)"
 msgstr ""
-":ref:`pgr_trsp<trsp>` - Camino más corto con giros restringidos (TRSP)"
 
 #: ../../build/doc/routingFunctions.rst:43
 msgid ":ref:`tsp`"
-msgstr ":ref:`tsp`"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:3
 msgid ":ref:`pgr_TSP` - When input is given as matrix cell information."
@@ -103,7 +95,7 @@ msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:49
 msgid ":ref:`drivingDistance`"
-msgstr ":ref:`drivingDistance`"
+msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:3
 msgid ":ref:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra"
@@ -119,9 +111,24 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:7
 msgid ":ref:`pgr_alphaShape` - Alpha shape computation"
-msgstr ":ref:`pgr_alphashape` - Cómputo de forma alfa"
+msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:8
-msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
+msgid ":ref:`pgr_points_as_polygon` - Polygon around a set of points"
 msgstr ""
-":ref:`pgr_points_as_polygon` - Polígono alrededor del conjunto de puntos"
+
+#: ../../build/doc/routingFunctions.rst:70
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:73
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:74
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:75
+msgid ":ref:`search`"
+msgstr ""

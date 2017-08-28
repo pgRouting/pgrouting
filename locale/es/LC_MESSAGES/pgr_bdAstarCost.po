@@ -1,22 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:13
 msgid "pgr_bdAstarCost - Proposed"
@@ -24,7 +17,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:16
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:18
 msgid "``pgr_bdAstarCost`` — Returns the shortest path using A* algorithm."
@@ -32,7 +25,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:23
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:26
 msgid "Availability: 2.5.0"
@@ -256,42 +249,42 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Column"
-msgstr "Columna"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/bdAstar-family.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Default"
-msgstr "Por defecto"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/bdAstar-family.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**id**"
-msgstr "**id**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/bdAstar-family.rst:10 ../../build/doc/bdAstar-family.rst:12
 msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Identifier of the edge."
-msgstr "Identificador de la arísta."
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "**source**"
-msgstr "**source**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Identifier of the first end point vertex of the edge."
@@ -299,7 +292,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**target**"
-msgstr "**target**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the second end point vertex of the edge."
@@ -307,7 +300,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "**cost**"
-msgstr "**cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -316,7 +309,7 @@ msgstr "**cost**"
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid "``ANY-NUMERICAL``"
-msgstr "``ANY-NUMERICAL``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "Weight of the edge  `(source, target)`"
@@ -330,11 +323,11 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "-1"
-msgstr "-1"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Weight of the edge `(target, source)`,"
@@ -380,15 +373,15 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "Where:"
-msgstr "Donde:"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:4
 msgid "Description of the parameters of the signatures"
@@ -404,7 +397,7 @@ msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:9
 msgid "``TEXT``"
-msgstr "``TEXT``"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:9
 msgid "Edges SQL query as described above."
@@ -413,7 +406,7 @@ msgstr ""
 #: ../../build/doc/bdAstar-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:10
 msgid "Starting vertex identifier."
@@ -421,7 +414,7 @@ msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:11
 msgid "**start_vids**"
-msgstr "**start_vids**"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:11 ../../build/doc/bdAstar-family.rst:13
 msgid "``ARRAY[ANY-INTEGER]``"
@@ -434,7 +427,7 @@ msgstr ""
 #: ../../build/doc/bdAstar-family.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:12
 msgid "Ending vertex identifier."
@@ -442,7 +435,7 @@ msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:13
 msgid "**end_vids**"
-msgstr "**end_vids**"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:13
 msgid "Ending vertices identifiers."
@@ -450,11 +443,11 @@ msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:14
 msgid "**directed**"
-msgstr "**directed**"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:14
 msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:14
 msgid "Optional."
@@ -511,7 +504,7 @@ msgstr ""
 #: ../../build/doc/bdAstar-family.rst:28 ../../build/doc/bdAstar-family.rst:29
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "``FLOAT``"
-msgstr "``FLOAT``"
+msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:28
 msgid ""
@@ -540,7 +533,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``BIGINT``"
-msgstr "``BIGINT``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
@@ -556,7 +549,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
@@ -564,14 +557,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:202
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:204
 msgid ":ref:`bdAstar`"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:205
-msgid ":ref:`sampledata` network."
+msgid ":doc:`sampledata` network."
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:206
@@ -586,16 +579,16 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:208
 msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
-msgstr "http://en.wikipedia.org/wiki/A*_search_algorithm"
+msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:211
 msgid "Indices and tables"
-msgstr "Índices y tablas"
+msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:212
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:213
 msgid ":ref:`search`"
-msgstr ":ref:`Búsqueda <search>`"
+msgstr ""

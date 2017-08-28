@@ -1,22 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/TSP-family.rst:13
 msgid "Traveling Sales Person - Family of functions"
@@ -85,7 +78,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:56
 msgid "Characteristics"
-msgstr "Características"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:58
 msgid "The travel costs are symmetric:"
@@ -205,7 +198,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:128
 msgid ""
-"This is done by doing some book keeping on the times **solution ← snew;** is"
+"This is done by doing some book keeping on the times **solution = snew;** is"
 " executed."
 msgstr ""
 
@@ -318,24 +311,24 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:201 ../../build/doc/TSP-family.rst:230
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:201
 msgid "Default"
-msgstr "Por defecto"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:201 ../../build/doc/TSP-family.rst:230
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:203
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:203 ../../build/doc/TSP-family.rst:204
 #: ../../build/doc/TSP-family.rst:233
 msgid "``BIGINT``"
-msgstr "``BIGINT``"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:203 ../../build/doc/TSP-family.rst:204
 msgid "`0`"
@@ -347,7 +340,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:204
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:204
 msgid "Last visiting vertex before returning to start_vid."
@@ -361,7 +354,7 @@ msgstr ""
 #: ../../build/doc/TSP-family.rst:210 ../../build/doc/TSP-family.rst:211
 #: ../../build/doc/TSP-family.rst:234 ../../build/doc/TSP-family.rst:237
 msgid "``FLOAT``"
-msgstr "``FLOAT``"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:205
 msgid "`+infinity`"
@@ -454,7 +447,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:212
 msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:212
 msgid "`true`"
@@ -484,11 +477,11 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:230
 msgid "Column"
-msgstr "Columna"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:232
 msgid "**seq**"
-msgstr "**seq**"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:232
 msgid "Row sequence."
@@ -496,7 +489,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:233
 msgid "**node**"
-msgstr "**node**"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:233
 msgid "Identifier of the node/coordinate/point."
@@ -504,7 +497,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:234
 msgid "**cost**"
-msgstr "**cost**"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:235
 msgid ""
@@ -518,7 +511,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:237
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:238
 msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
@@ -530,7 +523,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:245
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:248
 msgid "References"
@@ -544,20 +537,20 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:251
 msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
-msgstr "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:252
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
-msgstr "http://en.wikipedia.org/wiki/Simulated_annealing"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:255
 msgid "Indices and tables"
-msgstr "Índices y tablas"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:256
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ""
 
 #: ../../build/doc/TSP-family.rst:257
 msgid ":ref:`search`"
-msgstr ":ref:`Búsqueda <search>`"
+msgstr ""

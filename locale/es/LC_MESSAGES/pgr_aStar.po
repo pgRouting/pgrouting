@@ -1,22 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_aStar.rst:13
 msgid "pgr_aStar"
@@ -24,7 +17,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:16
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:18
 msgid "``pgr_aStar`` — Returns the shortest path using A* algorithm."
@@ -32,7 +25,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:23
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:26
 msgid "Availability:"
@@ -48,15 +41,15 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:33
 msgid "Characteristics"
-msgstr "Características"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:35
 msgid "The main Characteristics are:"
-msgstr "Las características principales son:"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:37
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las arístas con costos positivos."
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:38
 msgid "Vertices of the graph are:"
@@ -271,40 +264,40 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Column"
-msgstr "Columna"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_aStar.rst:231
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Default"
-msgstr "Por defecto"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_aStar.rst:231
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**id**"
-msgstr "**id**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13 ../../build/doc/pgr_aStar.rst:234
 #: ../../build/doc/pgr_aStar.rst:235
 msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Identifier of the edge."
-msgstr "Identificador de la arísta."
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "**source**"
-msgstr "**source**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Identifier of the first end point vertex of the edge."
@@ -312,7 +305,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**target**"
-msgstr "**target**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the second end point vertex of the edge."
@@ -321,7 +314,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**cost**"
-msgstr "**cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -330,7 +323,7 @@ msgstr "**cost**"
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid "``ANY-NUMERICAL``"
-msgstr "``ANY-NUMERICAL``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "Weight of the edge  `(source, target)`"
@@ -344,11 +337,11 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "-1"
-msgstr "-1"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Weight of the edge `(target, source)`,"
@@ -394,15 +387,15 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "Where:"
-msgstr "Donde:"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:228
 msgid "Description of the parameters of the signatures"
@@ -418,7 +411,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:233
 msgid "``TEXT``"
-msgstr "``TEXT``"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:233
 msgid "Edges SQL query as described above."
@@ -426,7 +419,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:234 ../../build/doc/pgRouting-concepts.rst:14
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:234
 msgid "Starting vertex identifier."
@@ -434,7 +427,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:235 ../../build/doc/pgRouting-concepts.rst:15
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:235
 msgid "Ending vertex identifier."
@@ -442,11 +435,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:236
 msgid "**directed**"
-msgstr "**directed**"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:236
 msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:236
 msgid "Optional."
@@ -504,7 +497,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``FLOAT``"
-msgstr "``FLOAT``"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:250
 msgid ""
@@ -534,13 +527,13 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**seq**"
-msgstr "**seq**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "``INT``"
-msgstr "``INT``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Sequential value starting from **1**."
@@ -548,7 +541,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "**path_id**"
-msgstr "**path_id**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid ""
@@ -558,7 +551,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**path_seq**"
-msgstr "**path_seq**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
@@ -570,7 +563,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``BIGINT``"
-msgstr "``BIGINT``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid ""
@@ -586,7 +579,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "**node**"
-msgstr "**node**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
@@ -594,7 +587,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "**edge**"
-msgstr "**edge**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid ""
@@ -610,7 +603,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Aggregate cost from ``start_v`` to ``node``."
@@ -618,14 +611,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:260
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:262
 msgid ":ref:`astar`"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:263
-msgid ":ref:`sampledata`"
+msgid ":doc:`sampledata`"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:264
@@ -634,16 +627,16 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:265
 msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
-msgstr "http://en.wikipedia.org/wiki/A*_search_algorithm"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:268
 msgid "Indices and tables"
-msgstr "Índices y tablas"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:269
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:270
 msgid ":ref:`search`"
-msgstr ":ref:`Búsqueda <search>`"
+msgstr ""

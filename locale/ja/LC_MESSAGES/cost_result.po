@@ -1,107 +1,92 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Ko Nagase <nagase@georepublic.co.jp>, 2017\n"
-"Language-Team: Japanese (https://www.transifex.com/pgrouting/teams/1219/ja/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../../cost_result.rst:13
+#: ../../build/doc/cost_result.rst:13
 msgid "pgr_costResult[]"
 msgstr ""
 
-#: ../../cost_result.rst:19 ../../cost_result.rst:52
+#: ../../build/doc/cost_result.rst:19 ../../build/doc/cost_result.rst:52
 msgid "Name"
-msgstr "名前"
+msgstr ""
 
-#: ../../cost_result.rst:21
+#: ../../build/doc/cost_result.rst:21
 msgid ""
 "``pgr_costResult[]`` — A set of records to describe a path result with cost "
 "attribute."
 msgstr ""
 
-#: ../../cost_result.rst:25 ../../cost_result.rst:58
+#: ../../build/doc/cost_result.rst:25 ../../build/doc/cost_result.rst:58
 msgid "Description"
-msgstr "説明"
-
-#: ../../cost_result.rst:0 ../../cost_result.rst:0
-msgid "seq"
 msgstr ""
 
-#: ../../cost_result.rst:37 ../../cost_result.rst:71
+#: ../../build/doc/cost_result.rst:37 ../../build/doc/cost_result.rst:71
 msgid "sequential ID indicating the path order"
 msgstr ""
 
-#: ../../cost_result.rst:0 ../../cost_result.rst:0
-msgid "id1"
-msgstr ""
-
-#: ../../cost_result.rst:38 ../../cost_result.rst:73
+#: ../../build/doc/cost_result.rst:38 ../../build/doc/cost_result.rst:73
 msgid "generic name, to be specified by the function, typically the node id"
 msgstr ""
 
-#: ../../cost_result.rst:0 ../../cost_result.rst:0
-msgid "id2"
-msgstr ""
-
-#: ../../cost_result.rst:39 ../../cost_result.rst:74
+#: ../../build/doc/cost_result.rst:39 ../../build/doc/cost_result.rst:74
 msgid "generic name, to be specified by the function, typically the edge id"
 msgstr ""
 
-#: ../../cost_result.rst:0 ../../cost_result.rst:0
-msgid "cost"
-msgstr ""
-
-#: ../../cost_result.rst:40 ../../cost_result.rst:75
+#: ../../build/doc/cost_result.rst:40 ../../build/doc/cost_result.rst:75
 msgid "cost attribute"
 msgstr ""
 
-#: ../../cost_result.rst:46
+#: ../../build/doc/cost_result.rst:46
 msgid "pgr_costResult3[] - Multiple Path Results with Cost"
 msgstr ""
 
-#: ../../cost_result.rst:54
+#: ../../build/doc/cost_result.rst:54
 msgid ""
 "``pgr_costResult3[]`` — A set of records to describe a path result with cost"
 " attribute."
 msgstr ""
 
-#: ../../cost_result.rst:72
+#: ../../build/doc/cost_result.rst:72
 msgid "generic name, to be specified by the function, typically the path id"
 msgstr ""
 
-#: ../../cost_result.rst:0
-msgid "id3"
+#: ../../build/doc/cost_result.rst:79
+msgid "History"
 msgstr ""
 
-#: ../../cost_result.rst:79
-msgid "History"
-msgstr "履歴"
-
-#: ../../cost_result.rst:80
+#: ../../build/doc/cost_result.rst:80
 msgid "New in version 2.0.0"
 msgstr ""
 
-#: ../../cost_result.rst:81
+#: ../../build/doc/cost_result.rst:81
 msgid "Replaces ``path_result``"
 msgstr ""
 
-#: ../../cost_result.rst:85
+#: ../../build/doc/cost_result.rst:85
 msgid "See Also"
-msgstr "参照"
+msgstr ""
 
-#: ../../cost_result.rst:87
+#: ../../build/doc/cost_result.rst:87
 msgid ":ref:`introduction`"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:90
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:91
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:92
+msgid ":ref:`search`"
 msgstr ""

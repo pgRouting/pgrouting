@@ -40,6 +40,10 @@ option(EPUB
 option(DUMMY
     "Set ON|OFF (default=OFF) for debugging purposes" OFF)
 
+if (LOCALE) 
+    set(WITH_DOC ON)
+endif()
+
 if (NOT WITH_DOC)
     return()
 endif()
@@ -53,9 +57,6 @@ foreach(opt BUILD_HTML BUILD_LATEX BUILD_MAN SINGLEHTML EPUB DUMMY)
     endif()
 endforeach()
 
-if (LOCALE) 
-    set(WITH_DOC ON)
-endif()
 
 
 message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")

@@ -1,41 +1,32 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Minerva Durán Martínez <mine_tod@yahoo.com.mx>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_trsp.rst:13
 msgid "pgr_trsp - Turn Restriction Shortest Path (TRSP)"
-msgstr "pgr_trsp - Camino más corto con giros restringidos (TRSP)"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:22
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:24
 msgid ""
 "``pgr_trsp`` — Returns the shortest path with support for turn restrictions."
 msgstr ""
-"``pgr_trsp`` — Devuelve el camino más corto con soporte para restricciones "
-"de giros"
 
 #: ../../build/doc/pgr_trsp.rst:28
 msgid "Synopsis"
-msgstr "Sinopsis"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:30
 msgid ""
@@ -50,7 +41,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:57
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:59
 msgid ""
@@ -70,28 +61,24 @@ msgstr ""
 msgid ""
 "a SQL query, which should return a set of rows with the following columns:"
 msgstr ""
-"una consulta SQL que debe proporcionar un conjunto de registros con los "
-"siguientes campos:"
 
 #: ../../build/doc/pgr_trsp.rst:71 ../../build/doc/pgr_trsp.rst:127
 msgid "``int4`` identifier of the edge"
-msgstr "``int4`` Identificador del borde"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:72 ../../build/doc/pgr_trsp.rst:128
 msgid "``int4`` identifier of the source vertex"
-msgstr "``int4`` Identificador del vértice inicial del borde"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:73 ../../build/doc/pgr_trsp.rst:129
 msgid "``int4`` identifier of the target vertex"
-msgstr "``int4`` Identificador del vértice final del borde"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:74 ../../build/doc/pgr_trsp.rst:130
 msgid ""
 "``float8`` value, of the edge traversal cost. A negative cost will prevent "
 "the edge from being inserted in the graph."
 msgstr ""
-"``float8``  Costo del recorrido sobre el borde. Un costo negativo evitará "
-"que el borde sea insertado en el gráfico."
 
 #: ../../build/doc/pgr_trsp.rst:75 ../../build/doc/pgr_trsp.rst:131
 msgid ""
@@ -99,21 +86,18 @@ msgid ""
 " when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the "
 "above remark about negative costs)."
 msgstr ""
-"(opcional) El costo para el recorrido inverso del borde. Esto sólo se "
-"utiliza cuando los parámetros ``directed`` y ``has_rcost``  son ``True`` "
-"(ver el comentario anterior sobre los costos negativos)."
 
 #: ../../build/doc/pgr_trsp.rst:77
 msgid "``int4`` **NODE id** of the start point"
-msgstr "``int4`` **identificador** del nodo de partida"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:78
 msgid "``int4`` **NODE id** of the end point"
-msgstr "``int4`` **identificador** del nodo de llegada"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:79 ../../build/doc/pgr_trsp.rst:134
 msgid "``true`` if the graph is directed"
-msgstr "``true`` Si la gráfica es direccionada"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:80 ../../build/doc/pgr_trsp.rst:135
 msgid ""
@@ -121,25 +105,20 @@ msgid ""
 "will be used for the cost of the traversal of the edge in the opposite "
 "direction."
 msgstr ""
-"Si  es ``True``, el campo ``reverse_cost``  del conjunto de registros "
-"generados se utilizan para el calcular el costo de la travesía del borde en "
-"la dirección opuesta."
 
 #: ../../build/doc/pgr_trsp.rst:82 ../../build/doc/pgr_trsp.rst:137
 msgid ""
 "(optional) a SQL query, which should return a set of rows with the following"
 " columns:"
 msgstr ""
-"(opcional) una consulta SQL, que debe proporcionar un conjunto de registros "
-"con los siguientes campos:"
 
 #: ../../build/doc/pgr_trsp.rst:88 ../../build/doc/pgr_trsp.rst:143
 msgid "``float8`` turn restriction cost"
-msgstr "``float8`` restricción del costo de giro"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:89 ../../build/doc/pgr_trsp.rst:144
 msgid "``int4`` target id"
-msgstr "``int4`` identificador del borde donde se aplica la restricción"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:90
 msgid ""
@@ -151,58 +130,50 @@ msgid ""
 "Another variant of TRSP allows to specify **EDGE id** of source and target "
 "together with a fraction to interpolate the position:"
 msgstr ""
-"Otra variante de TRSP que permite especificar el **Identificador del borde**"
-" de partida y de llegada junto con una fracción para interpolar la posición:"
 
 #: ../../build/doc/pgr_trsp.rst:94
 msgid "``int4`` **EDGE id** of the start edge"
-msgstr "``int4`` **identificador del borde** de partida"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:95
 msgid "``float8`` fraction of 1 defines the position on the start edge"
 msgstr ""
-"``float8`` fracción de 1 que define la posición del sobre el borde de "
-"partida."
 
 #: ../../build/doc/pgr_trsp.rst:96
 msgid "``int4`` **EDGE id** of the end edge"
-msgstr "``int4`` **Identificador del borde** de llegada"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:97
 msgid "``float8`` fraction of 1 defines the position on the end edge"
 msgstr ""
-"``float8`` fracción de 1 que define la posición del sobre el borde de "
-"llegada."
 
 #: ../../build/doc/pgr_trsp.rst:99 ../../build/doc/pgr_trsp.rst:152
 msgid "Returns set of :ref:`type_cost_result`:"
-msgstr "Devuelve un conjunto del tipo de datos :ref:`type_cost_result`:"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:101 ../../build/doc/pgr_trsp.rst:154
 msgid "row sequence"
-msgstr "Secuencia de registros"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:102 ../../build/doc/pgr_trsp.rst:156
 msgid "node ID"
-msgstr "Identificador del nodo visitado"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:103 ../../build/doc/pgr_trsp.rst:157
 msgid "edge ID (``-1`` for the last row)"
-msgstr "Identificador del borde (``-1`` para el ultimo registro)"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:104
 msgid "cost to traverse from ``id1`` using ``id2``"
 msgstr ""
-"costo para atravesar desde el nodo ``id1``  usando el borde``id2`` hasta su "
-"otro extremo"
 
 #: ../../build/doc/pgr_trsp.rst:107 ../../build/doc/pgr_trsp.rst:162
 msgid "History"
-msgstr "Historia"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:108
 msgid "New in version 2.0.0"
-msgstr "Nuevo en la versión 2.0.0"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:111
 msgid "Support for Vias"
@@ -251,13 +222,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:155
 msgid "route ID"
-msgstr "Identificador de la ruta"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:158
 msgid "cost to traverse from ``id2`` using ``id3``"
 msgstr ""
-"costo para atravesar desde el nodo ``id2``  usando el borde ``id3`` hasta su"
-" otro extremo"
 
 #: ../../build/doc/pgr_trsp.rst:163
 msgid "Via Support prototypes new in version 2.1.0"
@@ -265,7 +234,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:166
 msgid "Examples"
-msgstr "Ejemplos"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:168
 msgid "**Without turn restrictions**"
@@ -278,8 +247,6 @@ msgstr ""
 #: ../../build/doc/pgr_trsp.rst:177
 msgid "Then a query with turn restrictions is created as:"
 msgstr ""
-"Entonces una consulta con restricciones de giro es creada de la siguiente "
-"forma:"
 
 #: ../../build/doc/pgr_trsp.rst:184
 msgid "An example query using vertex ids and via points:"
@@ -290,13 +257,25 @@ msgid "An example query using edge ids and vias:"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:198
-msgid "The queries use the :ref:`sampledata` network."
-msgstr "La consulta usa la red de ejemplo  :ref:`sampledata`"
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:202
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:204
 msgid ":ref:`type_cost_result`"
-msgstr ":ref:`type_cost_result`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:207
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:208
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:209
+msgid ":ref:`search`"
+msgstr ""

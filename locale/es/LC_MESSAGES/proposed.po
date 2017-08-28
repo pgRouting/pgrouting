@@ -1,24 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/proposed.rst:13
-msgid "Stable proposed Functions"
+msgid "Stable Proposed Functions"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:17
@@ -267,10 +261,10 @@ msgid ":ref:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:106
-msgid "Experimental and Proposed functions"
+msgid "Experimental Functions"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:111 ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/proposed.rst:111
 msgid "Experimental functions"
 msgstr ""
 
@@ -347,23 +341,70 @@ msgstr ""
 msgid ":ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:142
-msgid ":ref:`VRP`"
+#: ../../build/doc/proposed.rst:141
+msgid ":ref:`components` - Analyze components within a graph"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:3
-msgid "Pickup and delivery problem"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:4
-msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:5
+#: ../../build/doc/proposed.rst:143
 msgid ""
-":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
+":ref:`pgr_connectedComponents` - Return the connected components of an "
+"undirected graph"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:9
-msgid ":doc:`pgr_vrpOneDepot` - VRP One Depot"
+#: ../../build/doc/proposed.rst:144
+msgid ""
+":ref:`pgr_strongComponents` - Return the strongly connected components of a "
+"directed graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:145
+msgid ""
+":ref:`pgr_biconnectedComponents` - Return the biconnected components of an "
+"undirected graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:146
+msgid ""
+":ref:`pgr_articulationPoints` - Return the articulation points of an "
+"undirected graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:147
+msgid ":ref:`pgr_bridges` - Return the bridges of an undirected graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:150
+msgid "VRP"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:151
+msgid ":ref:`pgr_gsocvrppdtw`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:152
+msgid ":ref:`pgr_vrp_basic`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:166
+msgid "Graph Transformation"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:167
+msgid ":doc:`pgr_lineGraph`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:175
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:178
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:179
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:180
+msgid ":ref:`search`"
 msgstr ""

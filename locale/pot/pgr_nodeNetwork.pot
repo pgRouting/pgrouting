@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,7 +125,7 @@ msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:72
-msgid "Let's create the topology for the data in :ref:`sampledata`"
+msgid "Let's create the topology for the data in :doc:`sampledata`"
 msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:90
@@ -290,5 +290,17 @@ msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:391
 msgid ":ref:`topology` for an overview of a topology for routing algorithms. :ref:`pgr_analyze_oneway` to analyze directionality of the edges. :ref:`pgr_create_topology` to create a topology based on the geometry. :ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge table."
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:397
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:398
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:399
+msgid ":ref:`search`"
 msgstr ""
 

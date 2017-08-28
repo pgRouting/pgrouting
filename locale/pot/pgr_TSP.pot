@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -182,7 +182,7 @@ msgid "and **directed := false**"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:158
-msgid "The queries use the :ref:`sampledata` network."
+msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:163
@@ -199,5 +199,17 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:167
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:170
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:171
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:172
+msgid ":ref:`search`"
 msgstr ""
 
