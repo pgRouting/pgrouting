@@ -54,27 +54,27 @@ fi
 if [[ -z  $1 ]]; then
     echo "Mayor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
     exit 1;
 fi
 if [[ -z  $2 ]]; then
     echo "Minor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
     exit 1;
 fi
 
 if [[ -z  $3 ]]; then
     echo "Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
     exit 1;
 fi
 
 if [[ -z  $4 ]]; then
     echo "Last Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
     exit 1;
 fi
 
@@ -82,7 +82,7 @@ fi
 if [[ -z  $5 ]]; then
     echo "branch missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
     exit 1;
 fi
 
@@ -92,7 +92,7 @@ MICRO=$3
 PREV_REL=$4
 BRANCH=$5
 RC=$6
-DEBUG=
+DEBUG=$7
 
 
 if [[ -z  "$DEBUG" ]]; then
@@ -311,10 +311,10 @@ if [[ "$BRANCH" == "develop" || $BRANCH == "master" || $BRANCH == "release/$MAYO
     if [[ -z  "$DEBUG" ]]; then
         bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
         bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
-        bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
+        bash tools/release-scripts/compile-release.sh 5 $MAYOR.$MINOR $MICRO
     fi
 fi
-bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO
+bash tools/release-scripts/compile-release.sh 4.8   $MAYOR.$MINOR $MICRO
 
 echo - [x] completed local builds
 
