@@ -6,8 +6,8 @@
 
 ### Branches
 
-* The *master* branch has the pre-release  2.5.0-alpha
-* The *develop* branch has the next pre-release. 2.5.0-beta
+* The *master* branch has the pre-release  2.5.0-beta
+* The *develop* branch has the next pre-release. 2.5.0-rc
 
 For the complete list of releases go to:
 https://github.com/pgRouting/pgrouting/releases
