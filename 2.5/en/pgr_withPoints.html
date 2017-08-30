@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_withPoints - Proposed &mdash; pgRouting Manual (2.5-alpha)</title>
+    <title>pgr_withPoints - Proposed &mdash; pgRouting Manual (2.5-beta)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.0-alpha',
+        VERSION:     'v2.5.0-beta',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -29,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.5-alpha)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5-beta)" href="index.html" />
     <link rel="up" title="withPoints - Family of functions" href="withPoints-family.html" />
     <link rel="next" title="pgr_withPointsCost - Proposed" href="pgr_withPointsCost.html" />
     <link rel="prev" title="withPoints - Family of functions" href="withPoints-family.html" />
@@ -52,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-alpha</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-beta</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -209,44 +209,26 @@ Using Dijkstra algorithm, find the shortest path(s)</p>
 <div class="section" id="characteristics">
 <h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <p>The main Characteristics are:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Process is done only on edges with positive costs.</li>
 <li>Vertices of the graph are:<ul>
 <li><strong>positive</strong> when it belongs to the edges_sql</li>
 <li><strong>negative</strong> when it belongs to the points_sql</li>
 </ul>
 </li>
-<li>Values are returned when there is a path.</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>When the starting vertex and ending vertex are the same, there is no path.</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>The agg_cost the non included values (v, v) is 0</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li>When the starting vertex and ending vertex are the different and there is no path:</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>The agg_cost the non included values (u, v) is ∞</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
-<ul class="simple">
-<li>For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.</li>
-<li>The returned values are ordered:<ul>
-<li>start_vid ascending</li>
-<li>end_vid ascending</li>
+<li>Values are returned when there is a path.<ul>
+<li>When the starting vertex and ending vertex are the same, there is no path.
+- The agg_cost the non included values (v, v) is 0</li>
+<li>When the starting vertex and ending vertex are the different and there is no path:
+- The agg_cost the non included values (u, v) is ∞</li>
 </ul>
 </li>
+<li>For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.</li>
+<li>The returned values are ordered:
+- start_vid ascending
+- end_vid ascending</li>
 <li>Running time: <span class="math">\(O(|start\_vids|\times(V \log V + E))\)</span></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
@@ -899,8 +881,8 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.0-alpha.<br/>
-      Last updated on Aug 23, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0-beta.<br/>
+      Last updated on Aug 30, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

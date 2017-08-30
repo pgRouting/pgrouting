@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_aStar &mdash; pgRouting Manual (2.5-alpha)</title>
+    <title>pgr_aStar &mdash; pgRouting Manual (2.5-beta)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.0-alpha',
+        VERSION:     'v2.5.0-beta',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -29,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.5-alpha)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5-beta)" href="index.html" />
     <link rel="up" title="aStar - Family of functions" href="aStar-family.html" />
     <link rel="next" title="pgr_aStarCost – proposed" href="pgr_aStarCost.html" />
     <link rel="prev" title="aStar - Family of functions" href="aStar-family.html" />
@@ -52,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-alpha</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-beta</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -189,8 +189,7 @@
 <div class="section" id="characteristics">
 <h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <p>The main Characteristics are:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Process is done only on edges with positive costs.</li>
 <li>Vertices of the graph are:<ul>
 <li><strong>positive</strong> when it belongs to the edges_sql</li>
@@ -213,7 +212,6 @@
 </li>
 <li>Running time: <span class="math">\(O((E + V) * \log V)\)</span></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
@@ -322,12 +320,10 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 </dl>
 <p>Using this signature, will load once the graph and perform a one to one <cite>pgr_astar</cite>
 where the starting vertex is fixed, and stop when all <code class="docutils literal"><span class="pre">end_vids</span></code> are reached.</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>The result is equivalent to the union of the results of the one to one <cite>pgr_astar</cite>.</li>
 <li>The extra <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
 </ul>
-</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -373,12 +369,10 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY S
 </dl>
 <p>Using this signature, will load once the graph and perform several one to one <cite>pgr_aStar</cite>
 where the ending vertex is fixed.</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>The result is the union of the results of the one to one <cite>pgr_aStar</cite>.</li>
 <li>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
 </ul>
-</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -424,12 +418,10 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) o
 </dl>
 <p>Using this signature, will load once the graph and perform several one to Many <cite>pgr_dijkstra</cite>
 for all <code class="docutils literal"><span class="pre">start_vids</span></code>.</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>The result is the union of the results of the one to one <cite>pgr_dijkstra</cite>.</li>
 <li>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
 </ul>
-</div></blockquote>
 <p>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> and <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -716,8 +708,8 @@ for all <code class="docutils literal"><span class="pre">start_vids</span></code
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.0-alpha.<br/>
-      Last updated on Aug 23, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0-beta.<br/>
+      Last updated on Aug 30, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

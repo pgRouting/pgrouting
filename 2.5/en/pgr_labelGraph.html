@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_labelGraph - Experimental &mdash; pgRouting Manual (2.5-alpha)</title>
+    <title>pgr_labelGraph - Experimental &mdash; pgRouting Manual (2.5-beta)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.0-alpha',
+        VERSION:     'v2.5.0-beta',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -29,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.5-alpha)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5-beta)" href="index.html" />
     <link rel="up" title="Stable Proposed Functions" href="proposed.html" />
     <link rel="next" title="Components - Family of functions" href="components-family.html" />
     <link rel="prev" title="pgr_edgeDisjointPaths - Proposed" href="pgr_edgeDisjointPaths.html" />
@@ -52,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-alpha</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-beta</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -190,13 +190,11 @@
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Must be run after <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code>. No use of <code class="docutils literal"><span class="pre">geometry</span></code> column. Only <code class="docutils literal"><span class="pre">id</span></code>, <code class="docutils literal"><span class="pre">source</span></code> and  <code class="docutils literal"><span class="pre">target</span></code> columns are required.</p>
 <p>The function returns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">OK</span></code> when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of <code class="docutils literal"><span class="pre">rows_where</span></code> condition, non participating rows will have -1 integer values.</li>
 <li><code class="docutils literal"><span class="pre">FAIL</span></code> when the processing cannot be finished due to some error. Notice will be thrown accordingly.</li>
 <li><code class="docutils literal"><span class="pre">rows_where</span> <span class="pre">condition</span> <span class="pre">generated</span> <span class="pre">0</span> <span class="pre">rows</span></code> when passed SQL condition has not been fulfilled by any row.</li>
 </ul>
-</div></blockquote>
 <div class="highlight-sql" id="index-0"><div class="highlight"><pre><span></span><span class="nb">varchar</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -280,8 +278,8 @@ Must run <code class="docutils literal"><span class="pre">pgr_createTopology()</
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.0-alpha.<br/>
-      Last updated on Aug 23, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0-beta.<br/>
+      Last updated on Aug 30, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
