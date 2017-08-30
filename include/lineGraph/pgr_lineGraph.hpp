@@ -238,7 +238,7 @@ Pgr_lineGraph< G, T_V, T_E >::get_postgres_results_directed() {
             1.0,
             -1.0
         };
-        unique[ std::pair<int64_t,int64_t>(e_target, e_source)] = edge;
+        unique[ std::pair<int64_t,int64_t>(e_source, e_target)] = edge;
     }
     for (const auto &edge: unique) {
         results.push_back(edge.second);

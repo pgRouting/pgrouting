@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,5 +63,17 @@ msgstr ""
 
 #: ../../build/doc/geom_result.rst:52
 msgid ":ref:`introduction`"
+msgstr ""
+
+#: ../../build/doc/geom_result.rst:56
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/geom_result.rst:57
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/geom_result.rst:58
+msgid ":ref:`search`"
 msgstr ""
 

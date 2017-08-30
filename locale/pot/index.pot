@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,118 +37,62 @@ msgid "General"
 msgstr ""
 
 #: ../../build/doc/index.rst:37
-msgid ":ref:`sampledata` that is used in the examples of this manual."
+msgid ":doc:`sampledata` that is used in the examples of this manual."
 msgstr ""
 
 #: ../../build/doc/index.rst:45
-msgid ":ref:`Pgrouting Concepts <pgrouting_concepts>`"
+msgid "Pgrouting Concepts"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:3
-msgid ":ref:`Getting_started`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:5
-msgid ":ref:`create_database`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid ":ref:`load_data`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid ":ref:`build_topology`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid ":ref:`check_graph`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid ":ref:`compute_path`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:10
-msgid "`pgRouting Workshop <http://workshop.pgrouting.org>`_"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:12
-msgid ":ref:`inner_queries`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid ":ref:`return_values`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:14
-msgid ":ref:`Advanced_Topics`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:16
-msgid ":ref:`topology`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:17
-msgid ":ref:`analytics`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:18
-msgid ":ref:`performance`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:20
-msgid ":ref:`how_contribute`"
-msgstr ""
-
-#: ../../build/doc/index.rst:59
+#: ../../build/doc/index.rst:54
 msgid "Reference"
 msgstr ""
 
-#: ../../build/doc/index.rst:60
+#: ../../build/doc/index.rst:55
 msgid ":ref:`pgr_version` - to get pgRouting's version information."
 msgstr ""
 
-#: ../../build/doc/index.rst:69
+#: ../../build/doc/index.rst:64
 msgid ":ref:`Data Types <data_types>`"
 msgstr ""
 
-#: ../../build/doc/index.rst:72
+#: ../../build/doc/index.rst:67
 msgid ":ref:`type_cost_result` -  A set of records to describe a path result with cost attribute."
 msgstr ""
 
-#: ../../build/doc/index.rst:73
+#: ../../build/doc/index.rst:68
 msgid ":ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a path result with cost attribute."
 msgstr ""
 
-#: ../../build/doc/index.rst:74
+#: ../../build/doc/index.rst:69
 msgid ":ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute."
 msgstr ""
 
-#: ../../build/doc/index.rst:83
+#: ../../build/doc/index.rst:78
 msgid ":ref:`Topology Functions <topology_functions>`"
 msgstr ""
 
-#: ../../build/doc/index.rst:85
+#: ../../build/doc/index.rst:80
 msgid ":ref:`pgr_create_topology` -  to create a topology based on the geometry."
 msgstr ""
 
-#: ../../build/doc/index.rst:86
+#: ../../build/doc/index.rst:81
 msgid ":ref:`pgr_create_vert_table` - to reconstruct the vertices table based on the source and target information."
 msgstr ""
 
-#: ../../build/doc/index.rst:87
+#: ../../build/doc/index.rst:82
 msgid ":ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge table."
 msgstr ""
 
-#: ../../build/doc/index.rst:88
+#: ../../build/doc/index.rst:83
 msgid ":ref:`pgr_analyze_oneway` - to analyze directionality of the edges."
 msgstr ""
 
-#: ../../build/doc/index.rst:89
+#: ../../build/doc/index.rst:84
 msgid ":ref:`pgr_node_network`  -to create nodes to a not noded edge table."
 msgstr ""
 
-#: ../../build/doc/index.rst:98
+#: ../../build/doc/index.rst:93
 msgid ":ref:`Routing functions <routing_functions>`"
 msgstr ""
 
@@ -245,22 +189,22 @@ msgid ":ref:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:8
-msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
+msgid ":ref:`pgr_points_as_polygon` - Polygon around a set of points"
 msgstr ""
 
-#: ../../build/doc/index.rst:113
+#: ../../build/doc/index.rst:108
 msgid "Available Functions but not official pgRouting functions"
 msgstr ""
 
-#: ../../build/doc/index.rst:115
+#: ../../build/doc/index.rst:110
 msgid ":ref:`Stable`"
 msgstr ""
 
-#: ../../build/doc/index.rst:116
+#: ../../build/doc/index.rst:111
 msgid ":ref:`proposed`"
 msgstr ""
 
-#: ../../build/doc/index.rst:126
+#: ../../build/doc/index.rst:121
 msgid ":ref:`Change Log <change_log>`"
 msgstr ""
 
@@ -269,70 +213,74 @@ msgid ":ref:`changelog_2_5_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:4
-msgid ":ref:`changelog_2_4_1`"
+msgid ":ref:`changelog_2_4_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:5
-msgid ":ref:`changelog_2_4_0`"
+msgid ":ref:`changelog_2_4_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:6
-msgid ":ref:`changelog_2_3_2`"
+msgid ":ref:`changelog_2_4_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:7
-msgid ":ref:`changelog_2_3_1`"
+msgid ":ref:`changelog_2_3_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:8
-msgid ":ref:`changelog_2_3_0`"
+msgid ":ref:`changelog_2_3_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:9
-msgid ":ref:`changelog_2_2_4`"
+msgid ":ref:`changelog_2_3_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:10
-msgid ":ref:`changelog_2_2_3`"
+msgid ":ref:`changelog_2_2_4`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:11
-msgid ":ref:`changelog_2_2_2`"
+msgid ":ref:`changelog_2_2_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:12
-msgid ":ref:`changelog_2_2_1`"
+msgid ":ref:`changelog_2_2_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:13
-msgid ":ref:`changelog_2_2_0`"
+msgid ":ref:`changelog_2_2_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:14
-msgid ":ref:`changelog_2_1_0`"
+msgid ":ref:`changelog_2_2_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:15
-msgid ":ref:`changelog_2_0_1`"
+msgid ":ref:`changelog_2_1_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:16
-msgid ":ref:`changelog_2_0_0`"
+msgid ":ref:`changelog_2_0_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:17
+msgid ":ref:`changelog_2_0_0`"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:18
 msgid ":ref:`changelog_1_x`"
 msgstr ""
 
-#: ../../build/doc/index.rst:140
+#: ../../build/doc/index.rst:135
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/index.rst:141
+#: ../../build/doc/index.rst:136
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/index.rst:142
+#: ../../build/doc/index.rst:137
 msgid ":ref:`search`"
 msgstr ""
 

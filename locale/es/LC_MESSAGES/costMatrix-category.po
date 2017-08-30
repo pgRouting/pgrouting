@@ -1,22 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/costMatrix-category.rst:13
 msgid "Cost Matrix - Category"
@@ -84,7 +77,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:43
 msgid "Synopsis"
-msgstr "Sinopsis"
+msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:45
 msgid ""
@@ -99,11 +92,11 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:51
 msgid "Characteristics"
-msgstr "Características"
+msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:53
 msgid "The main Characteristics are:"
-msgstr "Las características principales son:"
+msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:55
 msgid "Can be used as input to :ref:`pgr_tsp`."
@@ -157,7 +150,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:70
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las arístas con costos positivos."
+msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:71
 msgid "Values are returned when there is a path."
@@ -209,7 +202,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:91
 msgid "The returned values are ordered:"
-msgstr "Los valores devueltos se ordenan:"
+msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:93
 msgid "`start_vid` ascending"
@@ -225,7 +218,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:101
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:103
 msgid ":ref:`pgr_tsp`"
@@ -233,12 +226,12 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:106
 msgid "Indices and tables"
-msgstr "Índices y tablas"
+msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:107
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:108
 msgid ":ref:`search`"
-msgstr ":ref:`Búsqueda <search>`"
+msgstr ""

@@ -1,22 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/contraction-family.rst:14
 msgid "Contraction - Family of functions"
@@ -88,7 +81,7 @@ msgstr ""
 
 #: ../../build/doc/contraction-family.rst:29
 msgid "Introduction"
-msgstr "Introducción"
+msgstr ""
 
 #: ../../build/doc/contraction-family.rst:31
 msgid ""
@@ -170,7 +163,7 @@ msgstr ""
 #: ../../build/doc/contraction-family.rst:64
 #: ../../build/doc/contraction-family.rst:178
 msgid "Examples"
-msgstr "Ejemplos"
+msgstr ""
 
 #: ../../build/doc/contraction-family.rst:65
 msgid "The green node ``B`` represents a dead end node"
@@ -363,7 +356,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/contraction-family.rst:319
-msgid "The :ref:`sampledata` for an undirected graph is used"
+msgid "The :doc:`sampledata` for an undirected graph is used"
 msgstr ""
 
 #: ../../build/doc/contraction-family.rst:320
@@ -454,11 +447,11 @@ msgstr ""
 
 #: ../../build/doc/contraction-family.rst:368
 msgid "Column"
-msgstr "Columna"
+msgstr ""
 
 #: ../../build/doc/contraction-family.rst:368
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/contraction-family.rst:370
 msgid "**contracted_vertices**"
@@ -722,7 +715,7 @@ msgstr ""
 
 #: ../../build/doc/contraction-family.rst:517
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/contraction-family.rst:519
 msgid ""
@@ -735,18 +728,18 @@ msgstr ""
 
 #: ../../build/doc/contraction-family.rst:521
 msgid ""
-"The queries use :ref:`pgr_contractGraph` function and the :ref:`sampledata` "
+"The queries use :ref:`pgr_contractGraph` function and the :doc:`sampledata` "
 "network."
 msgstr ""
 
 #: ../../build/doc/contraction-family.rst:524
 msgid "Indices and tables"
-msgstr "Índices y tablas"
+msgstr ""
 
 #: ../../build/doc/contraction-family.rst:525
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ""
 
 #: ../../build/doc/contraction-family.rst:526
 msgid ":ref:`search`"
-msgstr ":ref:`Búsqueda <search>`"
+msgstr ""

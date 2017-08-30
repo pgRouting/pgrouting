@@ -10,12 +10,21 @@ Use this when the English documentation changed.
 
 ```
 cd build
-rm -rf *
+#rm -rf *   #BE VERY CAREFULL
 cmake -D LOCALE=ON ..
 make locale
+cd ..
+sphinx-intl update -d locale
+```
+
+review
+```
+for f in locale/pot/*; do echo $f; grep $f .tx/config; done
+for f in `grep '\.pot' .tx/config | sed 's/^.*pot\/\(.*\)$/\1/' | grep '\.pot'` ; do  echo $f; ls locale/pot/* | grep $f  ; done 
 ```
 
 commit changes and push
+
 
 ## MANAGERS: Interaction with transifex:
 
@@ -32,20 +41,12 @@ Add the resource to the `.tx/config` located at the root of the repository
 vim ../.tx/config
 ```
 
-* Push the resource
+* Push the new resource
 ```
 tx push --source -r pgrouting.pgr_createVerticesTable
 
 ```
-
-### Push all the resources to transifex
-
-Use before the documentation frezze to make sure all the documents that
-need translation are translated and are up to date.
-
-```
-tx push --source
-```
+Note: Do not put the file extension
 
 NOTE: INFORM: A documentation frezze to let translators translate
 

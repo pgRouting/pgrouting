@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgid "Synopsis"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:35
-msgid "Using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``. The edges extracted will conform the corresponding spanning tree."
+msgid "Using the Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``. The edges extracted will conform to the corresponding spanning tree."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:39
@@ -223,7 +223,7 @@ msgid "``ARRAY[ANY-INTEGER]``"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:105
-msgid "Array of identifiers of starting vertices."
+msgid "Array of identifiers of the starting vertices."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:106
@@ -258,7 +258,7 @@ msgid "**equicost**"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:108
-msgid "(optional). When ``true`` the node will only appear in the closest ``start_vid`` list.  Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely."
+msgid "(optional). When ``true`` the node will only appear in the closest ``start_vid`` list.  Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:114
@@ -359,7 +359,7 @@ msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:179
-msgid ":ref:`sampledata` network."
+msgid ":doc:`sampledata` network."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:182

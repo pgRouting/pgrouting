@@ -1,24 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 13:15-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
 
 #: ../../build/doc/pgr_labelGraph.rst:15
-msgid "pgr_labelGraph - Proposed"
+msgid "pgr_labelGraph - Experimental"
 msgstr ""
 
 #: ../../build/doc/pgr_labelGraph.rst:18
@@ -226,20 +220,14 @@ msgid ""
 "value."
 msgstr ""
 
-#~ msgid "edge_table"
-#~ msgstr ""
+#: ../../build/doc/pgr_labelGraph.rst:90
+msgid "Indices and tables"
+msgstr ""
 
-#~ msgid "id"
-#~ msgstr ""
+#: ../../build/doc/pgr_labelGraph.rst:91
+msgid ":ref:`genindex`"
+msgstr ""
 
-#~ msgid "source"
-#~ msgstr ""
-
-#~ msgid "target"
-#~ msgstr ""
-
-#~ msgid "subgraph"
-#~ msgstr ""
-
-#~ msgid "rows_where"
-#~ msgstr ""
+#: ../../build/doc/pgr_labelGraph.rst:92
+msgid ":ref:`search`"
+msgstr ""

@@ -1,22 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:56-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2017\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:14
 msgid "pgr_edgeDisjointPaths - Proposed"
@@ -24,7 +17,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:17
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:19
 msgid ""
@@ -34,7 +27,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:25
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:28
 msgid "Availability: 2.3.0"
@@ -102,7 +95,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:36
 msgid "Synopsis"
-msgstr "Sinopsis"
+msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:38
 msgid ""
@@ -257,39 +250,39 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Column"
-msgstr "Columna"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
 msgid "Default"
-msgstr "Por defecto"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**id**"
-msgstr "**id**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Identifier of the edge."
-msgstr "Identificador de la arísta."
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "**source**"
-msgstr "**source**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Identifier of the first end point vertex of the edge."
@@ -297,7 +290,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**target**"
-msgstr "**target**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the second end point vertex of the edge."
@@ -306,12 +299,12 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**cost**"
-msgstr "**cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "``ANY-NUMERICAL``"
-msgstr "``ANY-NUMERICAL``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "Weight of the edge  `(source, target)`"
@@ -325,11 +318,11 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "-1"
-msgstr "-1"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Weight of the edge `(target, source)`,"
@@ -343,15 +336,15 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Where:"
-msgstr "Donde:"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:4
 msgid "Description of the parameters of the signatures"
@@ -359,11 +352,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:9
 msgid "**sql**"
-msgstr "**sql**"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:9
 msgid "``TEXT``"
-msgstr "``TEXT``"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:9
 msgid "SQL query as described above."
@@ -372,7 +365,7 @@ msgstr ""
 #: ../../build/doc/pgr_dijkstra.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:10 ../../build/doc/pgr_dijkstra.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:14
@@ -380,7 +373,7 @@ msgstr "**start_vid**"
 #: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``BIGINT``"
-msgstr "``BIGINT``"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:10
 msgid "Identifier of the starting vertex of the path."
@@ -388,11 +381,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:11
 msgid "**start_vids**"
-msgstr "**start_vids**"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:11 ../../build/doc/pgr_dijkstra.rst:13
 msgid "``ARRAY[BIGINT]``"
-msgstr "``ARRAY[BIGINT]``"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:11
 msgid "Array of identifiers of starting vertices."
@@ -401,7 +394,7 @@ msgstr ""
 #: ../../build/doc/pgr_dijkstra.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:12
 msgid "Identifier of the ending vertex of the path."
@@ -409,7 +402,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:13
 msgid "**end_vids**"
-msgstr "**end_vids**"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:13
 msgid "Array of identifiers of ending vertices."
@@ -417,23 +410,23 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:14
 msgid "**directed**"
-msgstr "**directed**"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:14
 msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:14
 msgid "``true``"
-msgstr "``true``"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:14
 msgid "When ``true`` Graph is considered `Directed`"
-msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:15
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the return values for a path"
@@ -447,13 +440,13 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**seq**"
-msgstr "**seq**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "``INT``"
-msgstr "``INT``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Sequential value starting from **1**."
@@ -461,7 +454,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "**path_id**"
-msgstr "**path_id**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid ""
@@ -471,7 +464,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**path_seq**"
-msgstr "**path_seq**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
@@ -492,7 +485,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "**node**"
-msgstr "**node**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
@@ -500,7 +493,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "**edge**"
-msgstr "**edge**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid ""
@@ -511,7 +504,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``FLOAT``"
-msgstr "``FLOAT``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid ""
@@ -521,7 +514,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Aggregate cost from ``start_v`` to ``node``."
@@ -529,7 +522,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:212
 msgid "See Also"
-msgstr "Véase también"
+msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:214
 msgid ":ref:`maxFlow`"
@@ -537,12 +530,12 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:217
 msgid "Indices and tables"
-msgstr "Índices y tablas"
+msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:218
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:219
 msgid ":ref:`search`"
-msgstr ":ref:`Búsqueda <search>`"
+msgstr ""

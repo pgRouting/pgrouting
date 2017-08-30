@@ -1,94 +1,112 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-dev
-# This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-dev\n"
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 08:03-0500\n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Language-Team: Russian (https://www.transifex.com/pgrouting/teams/1219/ru/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../../pgr_vrpOneDepot.rst:14
-msgid "pgr_vrpOneDepot - Proposed"
+#: ../../build/doc/pgr_vrpOneDepot.rst:14
+msgid "pgr_vrpOneDepot - Experimental"
 msgstr ""
 
-#: ../../proposed.rst:3
+#: ../../build/doc/proposed.rst:3
 msgid "Experimental functions"
 msgstr ""
 
-#: ../../proposed.rst:5
+#: ../../build/doc/proposed.rst:5
 msgid "They are not officially of the current release."
 msgstr ""
 
-#: ../../proposed.rst:6
+#: ../../build/doc/proposed.rst:6
 msgid "They likely will not be officially be part of the next release:"
 msgstr ""
 
-#: ../../proposed.rst:8
+#: ../../build/doc/proposed.rst:8
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
-#: ../../proposed.rst:9
+#: ../../build/doc/proposed.rst:9
 msgid "Name might change."
 msgstr ""
 
-#: ../../proposed.rst:10
+#: ../../build/doc/proposed.rst:10
 msgid "Signature might change."
 msgstr ""
 
-#: ../../proposed.rst:11
+#: ../../build/doc/proposed.rst:11
 msgid "Functionality might change."
 msgstr ""
 
-#: ../../proposed.rst:12
+#: ../../build/doc/proposed.rst:12
 msgid "pgTap tests might be missing."
 msgstr ""
 
-#: ../../proposed.rst:13
+#: ../../build/doc/proposed.rst:13
 msgid "Might need c/c++ coding."
 msgstr ""
 
-#: ../../proposed.rst:14
+#: ../../build/doc/proposed.rst:14
 msgid "May lack documentation."
 msgstr ""
 
-#: ../../proposed.rst:15
+#: ../../build/doc/proposed.rst:15
 msgid "Documentation if any might need to be rewritten."
 msgstr ""
 
-#: ../../proposed.rst:16
+#: ../../build/doc/proposed.rst:16
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
 
-#: ../../proposed.rst:17
+#: ../../build/doc/proposed.rst:17
 msgid "Might need a lot of feedback from the comunity."
 msgstr ""
 
-#: ../../proposed.rst:18
+#: ../../build/doc/proposed.rst:18
 msgid "Might depend on a proposed function of pgRouting"
 msgstr ""
 
-#: ../../proposed.rst:19
+#: ../../build/doc/proposed.rst:19
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../pgr_vrpOneDepot.rst:21
-msgid "No documentation available from the original developer"
+#: ../../build/doc/pgr_vrpOneDepot.rst:21
+msgid "**No documentation available**"
 msgstr ""
 
-#: ../../pgr_vrpOneDepot.rst:23
-msgid ":ref:`type_cost_result`"
+#: ../../build/doc/pgr_vrpOneDepot.rst:24
+msgid "Example:"
 msgstr ""
 
-#: ../../pgr_vrpOneDepot.rst:24
+#: ../../build/doc/pgr_vrpOneDepot.rst:28
+msgid "Current Result"
+msgstr ""
+
+#: ../../build/doc/pgr_vrpOneDepot.rst:34
+msgid "Data"
+msgstr ""
+
+#: ../../build/doc/pgr_vrpOneDepot.rst:41
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_vrpOneDepot.rst:43
 msgid "http://en.wikipedia.org/wiki/Vehicle_routing_problem"
+msgstr ""
+
+#: ../../build/doc/pgr_vrpOneDepot.rst:46
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_vrpOneDepot.rst:47
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_vrpOneDepot.rst:48
+msgid ":ref:`search`"
 msgstr ""

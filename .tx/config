@@ -162,11 +162,6 @@ file_filter = locale/<lang>/LC_MESSAGES/sampledata.po
 source_file = locale/pot/sampledata.pot
 source_lang = en
 
-[pgrouting.VRP-category]
-file_filter = locale/<lang>/LC_MESSAGES/VRP-category.po
-source_file = locale/pot/VRP-category.pot
-source_lang = en
-
 [pgrouting.pgr_pushRelabel]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_pushRelabel.po
 source_file = locale/pot/pgr_pushRelabel.pot
@@ -230,11 +225,6 @@ source_lang = en
 [pgrouting.pgr_version]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_version.po
 source_file = locale/pot/pgr_version.pot
-source_lang = en
-
-[pgrouting.pgr_pickDeliver]
-file_filter = locale/<lang>/LC_MESSAGES/pgr_pickDeliver.po
-source_file = locale/pot/pgr_pickDeliver.pot
 source_lang = en
 
 [pgrouting.pgRouting-introduction]
@@ -302,11 +292,6 @@ file_filter = locale/<lang>/LC_MESSAGES/pgr_KSP.po
 source_file = locale/pot/pgr_KSP.pot
 source_lang = en
 
-[pgrouting.pgr_pickDeliverEuclidean]
-file_filter = locale/<lang>/LC_MESSAGES/pgr_pickDeliverEuclidean.po
-source_file = locale/pot/pgr_pickDeliverEuclidean.pot
-source_lang = en
-
 [pgrouting.pgr_analyzeOneWay]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_analyzeOneWay.po
 source_file = locale/pot/pgr_analyzeOneWay.pot
@@ -360,5 +345,40 @@ source_lang = en
 [pgrouting.KSP-category]
 file_filter = locale/<lang>/LC_MESSAGES/KSP-category.po
 source_file = locale/pot/KSP-category.pot
+source_lang = en
+
+[pgrouting.components-family]
+file_filter = locale/<lang>/LC_MESSAGES/components-family.po
+source_file = locale/pot/components-family.pot
+source_lang = en
+
+[pgrouting.pgr_articulationPoints]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_articulationPoints.po
+source_file = locale/pot/pgr_articulationPoints.pot
+source_lang = en
+
+[pgrouting.pgr_biconnectedComponents]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_biconnectedComponents.po
+source_file = locale/pot/pgr_biconnectedComponents.pot
+source_lang = en
+
+[pgrouting.pgr_bridges]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_bridges.po
+source_file = locale/pot/pgr_bridges.pot
+source_lang = en
+
+[pgrouting.pgr_connectedComponents]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_connectedComponents.po
+source_file = locale/pot/pgr_connectedComponents.pot
+source_lang = en
+
+[pgrouting.pgr_lineGraph]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_lineGraph.po
+source_file = locale/pot/pgr_lineGraph.pot
+source_lang = en
+
+[pgrouting.pgr_strongComponents]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_strongComponents.po
+source_file = locale/pot/pgr_strongComponents.pot
 source_lang = en
 

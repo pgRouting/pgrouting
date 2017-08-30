@@ -2,6 +2,27 @@
 
 set -e
 
+if [[ -z  $1 ]]; then
+    echo "Cpp version missing";
+    echo "Usage:"
+    echo "tools/release-scripts/compile-release.sh Cpp Minor Micro";
+    exit 1;
+fi
+
+if [[ -z  $1 ]]; then
+    echo "Minor missing";
+    echo "Usage:"
+    echo "tools/release-scripts/compile-release.sh Cpp Minor Micro";
+    exit 1;
+fi
+
+if [[ -z  $1 ]]; then
+    echo "Micro missing";
+    echo "Usage:"
+    echo "tools/release-scripts/compile-release.sh Cpp Minor Micro";
+    exit 1;
+fi
+
 CPPVERSION=$1
 MINOR=$2
 MICRO=$3
@@ -9,10 +30,11 @@ FULL_VER="$MINOR.$MICRO"
 
 function test_compile {                                                                                                                                                                                                          
 
-echo ------------------------------------
-echo ------------------------------------
+echo
+echo
 echo Compiling with $1
 echo ------------------------------------
+echo
 
 sudo update-alternatives --set gcc /usr/bin/gcc-$1
 
@@ -47,6 +69,8 @@ dropdb  ___pgr___test___
 echo '  - [x] Pgtap tests OK'
 
 if [[ "$1" == "4.8" ]]; then
+    tools/testers/algorithm-tester.pl -documentation >> build/tmp_make.txt
+    echo "  - [x] Regenerating Users documentation queries OK"
     cd build
     make doc >> tmp_make.txt 
     echo "  - [x] Build Users documentation OK"

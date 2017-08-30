@@ -34,26 +34,26 @@ Characteristics
 
 The main Characteristics are:
 
-  - Process is done only on edges with positive costs.
-  - Vertices of the graph are:
+- Process is done only on edges with positive costs.
+- Vertices of the graph are:
 
-    - **positive** when it belongs to the edges_sql
+  - **positive** when it belongs to the edges_sql
 
-  - Values are returned when there is a path.
+- Values are returned when there is a path.
 
-    - When the starting vertex and ending vertex are the same, there is no path.
+  - When the starting vertex and ending vertex are the same, there is no path.
 
-      - The agg_cost the non included values (v, v) is 0
+    - The agg_cost the non included values (v, v) is 0
 
-    - When the starting vertex and ending vertex are the different and there is no path:
+  - When the starting vertex and ending vertex are the different and there is no path:
 
-      - The agg_cost the non included values (u, v) is ∞
+    - The agg_cost the non included values (u, v) is ∞
 
-  - When (x,y) coordinates for the same vertex identifier differ:
+- When (x,y) coordinates for the same vertex identifier differ:
 
-    - A random selection of the vertex's (x,y) coordinates is used.
+  - A random selection of the vertex's (x,y) coordinates is used.
 
-  - Running time: :math:`O((E + V) * \log V)`
+- Running time: :math:`O((E + V) * \log V)`
 
 
 
@@ -141,8 +141,8 @@ This signature finds the shortest path from one ``start_vid`` to each ``end_vid`
 Using this signature, will load once the graph and perform a one to one `pgr_astar`
 where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
-  - The result is equivalent to the union of the results of the one to one `pgr_astar`.
-  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+- The result is equivalent to the union of the results of the one to one `pgr_astar`.
+- The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -168,8 +168,8 @@ This signature finds the shortest path from each ``start_vid`` in  ``start_vids`
 Using this signature, will load once the graph and perform several one to one `pgr_aStar`
 where the ending vertex is fixed.
 
-  - The result is the union of the results of the one to one `pgr_aStar`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_aStar`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -197,8 +197,8 @@ This signature finds the shortest path from each ``start_vid`` in  ``start_vids`
 Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
 for all ``start_vids``.
 
-  - The result is the union of the results of the one to one `pgr_dijkstra`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_dijkstra`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
