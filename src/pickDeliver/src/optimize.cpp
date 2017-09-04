@@ -594,7 +594,6 @@ Optimize::decrease_truck() {
 
 bool
 Optimize::decrease_truck(size_t cycle) {
-
     auto position = cycle;
     for (auto orders = fleet[position].orders_in_vehicle();
             !orders.empty();

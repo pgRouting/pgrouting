@@ -484,8 +484,8 @@ Vehicle::Vehicle(
         pgassert(ending_site.opens() <= ending_site.closes());
         pgassert(capacity() > 0);
         msg.log << "p_idx: " << p_idx << "\t idx(): " << idx() << "\n";
-        msg.log << "p_id: " << p_id << "\tid(): " << id() << "\n" ;
-        
+        msg.log << "p_id: " << p_id << "\tid(): " << id() << "\n";
+
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
 
