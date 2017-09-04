@@ -66,7 +66,6 @@ do_pgr_withPointsKsp(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
-
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -88,13 +87,15 @@ do_pgr_withPointsKsp(
         auto errcode = check_points(points, log);
         if (errcode) {
             *log_msg = strdup(log.str().c_str());
-            err << "Unexpected point(s) with same pid but different edge/fraction/side combination found.";
+            err << "Unexpected point(s) with same pid but different"
+                " edge/fraction/side combination found.";
             *err_msg = strdup(err.str().c_str());
             return -1;
         }
 
         std::vector< pgr_edge_t >
-            edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
+            edges_to_modify(edges_of_points,
+                    edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
 

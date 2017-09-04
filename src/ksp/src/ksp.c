@@ -107,7 +107,6 @@ kshortest_path(PG_FUNCTION_ARGS) {
     General_path_element_t      *path = NULL;
     size_t result_count = 0;
 
-    /* stuff done only on the first call of the function */
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
@@ -125,18 +124,16 @@ kshortest_path(PG_FUNCTION_ARGS) {
            */
         PGR_DBG("Calling process");
         compute(
-                text_to_cstring(PG_GETARG_TEXT_P(0)), /* SQL  */
-                PG_GETARG_INT64(1),   /* start_vid */
-                PG_GETARG_INT64(2),   /* end_vid */
-                PG_GETARG_INT32(3),   /* k */
-                PG_GETARG_BOOL(4),    /* directed */
-                PG_GETARG_BOOL(5),    /* heap_paths */
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_INT64(1),
+                PG_GETARG_INT64(2),
+                PG_GETARG_INT32(3),
+                PG_GETARG_BOOL(4),
+                PG_GETARG_BOOL(5),
                 &path,
                 &result_count);
         PGR_DBG("Total number of tuples to be returned %ld \n", result_count);
 
-        /*                                                                    */
-        /**********************************************************************/
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -144,7 +141,8 @@ kshortest_path(PG_FUNCTION_ARGS) {
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = path;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -161,7 +159,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
     tuple_desc = funcctx->tuple_desc;
     path = (General_path_element_t*) funcctx->user_fctx;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {   /* do when there is more left to send */
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
