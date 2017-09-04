@@ -25,13 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/vehicles_input.h"
 
 #include <limits.h>
-#if PGSQL_VERSION > 96
 #include <float.h>
-#endif
-
-#if PGSQL_VERSION == 100
-#include <float.h>
-#endif
 
 
 #include "c_types/column_info_t.h"
@@ -48,7 +42,6 @@ void fetch_vehicles(
         Column_info_t info[16],
         Vehicle_t *vehicle,
         bool with_id) {
-
     vehicle->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     vehicle->capacity = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
 
@@ -76,15 +69,19 @@ void fetch_vehicles(
         0;
 
 
-    if (!(column_found(info[8].colNumber)) && column_found(info[9].colNumber)) {
+    if (!(column_found(info[8].colNumber))
+            && column_found(info[9].colNumber)) {
         ereport(ERROR,
                 (errmsg("Column \'%s\' not Found", info[8].name),
-                 errhint("%s was found, also column is expected %s ", info[9].name, info[8].name)));
+                 errhint("%s was found, also column is expected %s ",
+                     info[9].name, info[8].name)));
     }
-    if (column_found(info[8].colNumber) && !(column_found(info[9].colNumber))) {
+    if (column_found(info[8].colNumber)
+            && !(column_found(info[9].colNumber))) {
         ereport(ERROR,
                 (errmsg("Column \'%s\' not Found", info[9].name),
-                 errhint("%s was found, also column is expected %s ", info[8].name, info[9].name)));
+                 errhint("%s was found, also column is expected %s ",
+                     info[8].name, info[9].name)));
     }
 
     vehicle->end_x = column_found(info[8].colNumber) ?
@@ -94,16 +91,20 @@ void fetch_vehicles(
         pgr_SPI_getFloat8(tuple, tupdesc, info[9]) :
         vehicle->start_y;
 
-    if (!(column_found(info[10].colNumber)) && column_found(info[11].colNumber)) {
+    if (!(column_found(info[10].colNumber))
+            && column_found(info[11].colNumber)) {
         ereport(ERROR,
                 (errmsg("Column \'%s\' not Found", info[10].name),
-                 errhint("%s was found, also column is expected %s ", info[10].name, info[11].name)));
+                 errhint("%s was found, also column is expected %s ",
+                     info[10].name, info[11].name)));
     }
 
-    if (column_found(info[10].colNumber) && !(column_found(info[11].colNumber))) {
+    if (column_found(info[10].colNumber)
+            && !(column_found(info[11].colNumber))) {
         ereport(ERROR,
                 (errmsg("Column \'%s\' not Found", info[11].name),
-                 errhint("%s was found, also column is expected %s ", info[11].name, info[10].name)));
+                 errhint("%s was found, also column is expected %s ",
+                     info[11].name, info[10].name)));
     }
     vehicle->end_open_t = column_found(info[10].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[10]) :
@@ -187,7 +188,6 @@ void pgr_get_vehicles_general(
         info[2].strict = false;
         info[3].strict = false;
         info[14].strict = true;
-
     }
 
     size_t ntuples;
@@ -254,7 +254,6 @@ void pgr_get_vehicles_general(
         PGR_DBG("Finish reading %ld vehicles for eucledian", (*total_vehicles));
     }
     time_msg("reading edges", start_t, clock());
-
 }
 
 void
@@ -262,7 +261,7 @@ pgr_get_vehicles(
         char *vehicles_sql,
         Vehicle_t **vehicles,
         size_t *total_vehicles) {
-    pgr_get_vehicles_general( vehicles_sql, vehicles, total_vehicles, false);
+    pgr_get_vehicles_general(vehicles_sql, vehicles, total_vehicles, false);
 }
 
 void

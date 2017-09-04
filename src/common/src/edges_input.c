@@ -47,8 +47,11 @@ void fetch_basic_edge(
 
     edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
-    edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[3]) > 0 ? true : false;
-    edge->coming = (column_found(info[4].colNumber) && pgr_SPI_getFloat8(tuple, tupdesc, info[4]) > 0) ? true : false;
+    edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[3]) > 0 ?
+        true : false;
+    edge->coming = (column_found(info[4].colNumber)
+            && pgr_SPI_getFloat8(tuple, tupdesc, info[4]) > 0) ?
+        true : false;
 
     (*valid_edges)++;
 }
@@ -391,9 +394,11 @@ get_edges_flow(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_edge_t *)palloc0(total_tuples * sizeof(pgr_flow_t));
+                (*edges) = (pgr_edge_t *)
+                    palloc0(total_tuples * sizeof(pgr_flow_t));
             else
-                (*edges) = (pgr_edge_t *)repalloc((*edges), total_tuples * sizeof(pgr_flow_t));
+                (*edges) = (pgr_edge_t *)
+                    repalloc((*edges), total_tuples * sizeof(pgr_flow_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");

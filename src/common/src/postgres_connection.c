@@ -23,11 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "c_common/postgres_connection.h"
+
+#include <string.h>
 #include "utils/builtins.h"
 
 #include "catalog/pg_type.h"
 
-#include <string.h>
 
 #include "c_common/debug_macro.h"
 
@@ -50,8 +51,7 @@ pgr_send_error(int errcode) {
 
 char*
 pgr_cstring2char(const char *inStr) {
-
-    if(!inStr) return NULL;
+    if (!inStr) return NULL;
 
     char *outStr;
     outStr = palloc(strlen(inStr));

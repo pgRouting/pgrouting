@@ -65,6 +65,5 @@ char* pgr_SPI_getText(
         TupleDesc *tupdesc,
         Column_info_t info);
 
-char* pgr_stradd(const char *a, const char *b);
 
 #endif  // INCLUDE_C_COMMON_GET_CHECK_DATA_H_
