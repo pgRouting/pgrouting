@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_PGR_ALLOC_HPP_
 #pragma once
 
+#include <string>
 
 extern "C" {
 #if PGSQL_VERSION < 94
@@ -41,7 +42,6 @@ extern "C" {
 #include "utils/palloc.h"
 }
 
-#include <string>
 
 /*! \fn pgr_alloc(std::size_t size, T *ptr)
 

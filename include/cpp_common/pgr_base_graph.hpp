@@ -347,7 +347,7 @@ class Pgr_base_graph {
          m_gType(gtype),
          vertIndex(boost::get(boost::vertex_index, graph)),
          propmapIndex(mapIndex) {
-             //add_vertices(vertices);
+             // add_vertices(vertices);
              // This code does not work with contraction
 #if 0
              pgassert(pgrouting::check_vertices(vertices) == 0);
@@ -357,19 +357,22 @@ class Pgr_base_graph {
                      vi != boost::vertices(graph).second; ++vi) {
                  vertices_map[vertices[i].id] = (*vi);
                  graph[(*vi)].cp_members(vertices[i]);
-                 //put(propmapIndex, *vi, num_vertices());
+                 // put(propmapIndex, *vi, num_vertices());
                  pgassert(vertIndex[*vi] == i);
                  ++i;
              }
 
              std::ostringstream log;
-             for (auto iter = vertices_map.begin(); iter != vertices_map.end(); iter++) {
-                 log << "Key: " << iter->first <<"\tValue:" << iter->second << "\n";
+             for (auto iter = vertices_map.begin();
+                     iter != vertices_map.end();
+                     iter++) {
+                 log << "Key: "
+                     << iter->first <<"\tValue:" << iter->second << "\n";
              }
              for (const auto vertex : vertices) {
                  pgassert(has_vertex(vertex.id));
              }
-             //pgassert(mapIndex.size() == vertices.size());
+             // pgassert(mapIndex.size() == vertices.size());
          }
 
      /*!
@@ -482,11 +485,11 @@ class Pgr_base_graph {
              auto v =  add_vertex(graph);
              vertices_map[vertex.id] =  v;
              graph[v].cp_members(vertex);
-             //put(propmapIndex, v, num_vertices());
+             // put(propmapIndex, v, num_vertices());
 
              pgassert(has_vertex(vertex.id));
          }
-         //pgassert(mapIndex.size() == vertices.size());
+         // pgassert(mapIndex.size() == vertices.size());
          pgassert(num_vertices() == vertices.size());
      }
 
@@ -702,7 +705,9 @@ class Pgr_base_graph {
          void graph_add_edge(const T &edge);
 
 
-     /** Use this function when the vertices are already inserted in the graph */
+     /**
+      *  Use this function when the vertices are already inserted in the graph
+      */
      template < typename T>
      void graph_add_edge_no_create_vertex(const T &edge) {
          bool inserted;
@@ -712,7 +717,9 @@ class Pgr_base_graph {
 
 #if 0
          std::ostringstream log;
-         for (auto iter = vertices_map.begin(); iter != vertices_map.end(); iter++) {
+         for (auto iter = vertices_map.begin();
+                 iter != vertices_map.end();
+                 iter++) {
              log << "Key: " << iter->first <<"\tValue:" << iter->second << "\n";
          }
          pgassertwm(has_vertex(edge.source), log.str().c_str());
@@ -730,8 +737,8 @@ class Pgr_base_graph {
              graph[e].id = edge.id;
          }
 
-         if (edge.reverse_cost >= 0
-                 && (is_directed() || (is_undirected() && edge.cost != edge.reverse_cost))) {
+         if (edge.reverse_cost >= 0 && (is_directed()
+                     || (is_undirected() && edge.cost != edge.reverse_cost))) {
              boost::tie(e, inserted) =
                  boost::add_edge(vm_t, vm_s, graph);
              graph[e].cost = edge.reverse_cost;
