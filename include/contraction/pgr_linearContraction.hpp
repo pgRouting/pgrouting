@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_CONTRACTION_SRC_PGR_LINEARCONTRACTION_HPP_
-#define SRC_CONTRACTION_SRC_PGR_LINEARCONTRACTION_HPP_
+#ifndef INCLUDE_CONTRACTION_PGR_LINEARCONTRACTION_HPP_
+#define INCLUDE_CONTRACTION_PGR_LINEARCONTRACTION_HPP_
 #pragma once
 
 
@@ -279,4 +279,4 @@ void Pgr_linear<G>::add_shortcut(G &graph,
 }  // namespace contraction
 }  // namespace pgrouting
 
-#endif  // SRC_CONTRACTION_SRC_PGR_LINEARCONTRACTION_HPP_
+#endif  // INCLUDE_CONTRACTION_PGR_LINEARCONTRACTION_HPP_
