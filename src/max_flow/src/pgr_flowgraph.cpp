@@ -24,4 +24,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "pgr_flowgraph.hpp"
+#include "max_flow/pgr_flowgraph.hpp"

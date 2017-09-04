@@ -1,8 +1,11 @@
 /*PGR-GNU*****************************************************************
+File: edge_disjoint_paths_many_to_one_driver.h
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Function's developer:
 Copyright (c) 2016 Andrea Nardelli
 Mail: nrd.nardelli@gmail.com
 
@@ -24,31 +27,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_MAX_FLOW_SRC_PGR_FLOWGRAPH_HPP_
-#define SRC_MAX_FLOW_SRC_PGR_FLOWGRAPH_HPP_
+#ifndef INCLUDE_DRIVERS_MAX_FLOW_EDGE_DISJOINT_PATHS_DRIVER_H_
+#define INCLUDE_DRIVERS_MAX_FLOW_EDGE_DISJOINT_PATHS_DRIVER_H_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
+#include "c_types/pgr_edge_t.h"
+#include "c_types/general_path_element_t.h"
 
 
-namespace pgrouting {
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS>
-    Traits;
-typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
-        // Vertex properties
-        boost::property<boost::vertex_index_t, int64_t,
-        boost::property<boost::vertex_color_t, boost::default_color_type,
-        boost::property<boost::vertex_distance_t, int64_t,
-        boost::property<boost::vertex_predecessor_t, Traits::edge_descriptor>
-        > > >,
-        // Edge properties
-        boost::property<boost::edge_capacity_t, int64_t,
-        boost::property<boost::edge_residual_capacity_t, int64_t,
-        boost::property<boost::edge_reverse_t, Traits::edge_descriptor> > > >
-    FlowGraph;
+    void
+        do_pgr_edge_disjoint_paths(
+            pgr_edge_t *data_edges,
+            size_t total_tuples,
+            int64_t *source_vertices,
+            size_t size_source_verticesArr,
+            int64_t *sink_vertices,
+            size_t size_sink_verticesArr,
+            bool directed,
+            General_path_element_t **return_tuples,
+            size_t *return_count,
+            char** log_msg,
+            char** notice_msg,
+            char** err_msg);
 
-}  // namespace pgrouting
 
-#endif  // SRC_MAX_FLOW_SRC_PGR_FLOWGRAPH_HPP_
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_DRIVERS_MAX_FLOW_EDGE_DISJOINT_PATHS_DRIVER_H_
