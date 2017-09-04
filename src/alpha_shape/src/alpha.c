@@ -22,16 +22,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "c_common/postgres_connection.h"
-#if PGSQL_VERSION == 100
 #include <float.h>
-#endif
+#include <stdint.h>
+
+#include "c_common/postgres_connection.h"
 
 
 #include "catalog/pg_type.h"
 
-#include <stdint.h>
-#include "alpha_driver.h"
+#include "drivers/alpha_shape/alpha_driver.h"
 
 
 
@@ -72,7 +71,7 @@ typedef struct vertex_columns {
 static int
 fetch_vertices_columns(SPITupleTable *tuptable,
                        vertex_columns_t *vertex_columns) {
-    if (tuptable) {}; // TODO this is unused parameter
+    if (tuptable) {}  // TODO(vicky) this is unused parameter
   vertex_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   vertex_columns->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
   vertex_columns->y = SPI_fnumber(SPI_tuptable->tupdesc, "y");
@@ -89,7 +88,8 @@ fetch_vertices_columns(SPITupleTable *tuptable,
       SPI_gettypeid(SPI_tuptable->tupdesc, vertex_columns->x) != FLOAT8OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, vertex_columns->y) != FLOAT8OID) {
       elog(ERROR,
-           "Error, column 'id' must be of type int4, 'x' and 'y' must be of type float8");
+           "Error, column 'id' must be of type int4,"
+           "'x' and 'y' must be of type float8");
       return -1;
     }
 
@@ -113,7 +113,10 @@ fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc,
   target_vertex->y = DatumGetFloat8(binval);
 }
 
-static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *res_count) {
+static int compute_alpha_shape(
+        char* sql, float8 alpha,
+        vertex_t **res,
+        size_t *res_count) {
   int SPIcode;
   void *SPIplan;
   Portal SPIportal;
@@ -187,17 +190,23 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
 
   // if (total_tuples < 2) //this was the buggy code of the pgrouting project.
   // TODO(someone): report this as a bug to the pgrouting project
-  // the CGAL alpha-shape function crashes if called with less than three points!!!
+  // the CGAL alpha-shape function crashes
+  //    if called with less than three points!!!
 
   if (total_tuples < 3) {
-      elog(ERROR, "Less than 3 vertices. Alpha shape calculation needs at least 3 vertices.");
+      elog(ERROR, "Less than 3 vertices."
+              " Alpha shape calculation needs at least 3 vertices.");
       return finish(SPIcode, ret);
   }
   if (total_tuples == 1) {
-      elog(ERROR, "Distance is too short. only 1 vertex for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
+      elog(ERROR, "Distance is too short."
+              " only 1 vertex for alpha shape calculation."
+              " alpha shape calculation needs at least 3 vertices.");
   }
   if (total_tuples == 2) {
-      elog(ERROR, "Distance is too short. only 2 vertices for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
+      elog(ERROR, "Distance is too short."
+              " only 2 vertices for alpha shape calculation."
+              " alpha shape calculation needs at least 3 vertices.");
   }
   if (total_tuples < 3) {
     // elog(ERROR, "Distance is too short ....");
@@ -210,7 +219,10 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
 
   if (ret < 0) {
       // elog(ERROR, "Error computing shape: %s", err_msg);
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), errmsg("%s", err_msg)));
+      ereport(ERROR,
+              (errcode
+               (ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
+               errmsg("%s", err_msg)));
     }
 
   return finish(SPIcode, ret);

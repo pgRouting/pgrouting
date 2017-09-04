@@ -35,7 +35,7 @@ Takes a list of points and returns a list of segments
 corresponding to the Alpha shape.
 ************************************************************************/
 
-#include "./alpha_driver.h"
+#include "drivers/alpha_shape/alpha_driver.h"
 
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Filtered_kernel.h>
