@@ -93,7 +93,9 @@ process(
     PGR_DBG("normal = %d", normal);
     if (normal) {
         pgr_get_edges(
-                edges_of_points_query, &edges_of_points, &total_edges_of_points);
+                edges_of_points_query,
+                &edges_of_points,
+                &total_edges_of_points);
         pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
         start_pidsArr = (int64_t*)
@@ -101,9 +103,10 @@ process(
         end_pidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_pidsArr, ends);
     } else {
-
         pgr_get_edges_reversed(
-                edges_of_points_query, &edges_of_points, &total_edges_of_points);
+                edges_of_points_query,
+                &edges_of_points,
+                &total_edges_of_points);
         pgr_get_edges_reversed(edges_no_points_query, &edges, &total_edges);
 
         end_pidsArr = (int64_t*)
