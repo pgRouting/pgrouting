@@ -2,7 +2,6 @@
 
 File: GraphDefinition.cpp
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
@@ -31,6 +30,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <queue>
 #include <vector>
 
+
+// -------------------------------------------------------------------------
+GraphDefinition::GraphDefinition(
+        const edge_t *edges,
+        size_t edge_count) :
+    m_edges(edges, edges + edge_count)  {
+        m_lStartEdgeId = -1;
+        m_lEndEdgeId = 0;
+        m_dStartpart = 0.0;
+        m_dEndPart = 0.0;
+        m_dCost = NULL;
+        m_bIsturnRestrictOn = false;
+        m_bIsGraphConstructed = false;
+        parent = NULL;
+        init();
+    }
 
 // -------------------------------------------------------------------------
 GraphDefinition::GraphDefinition(void) {
@@ -202,6 +217,7 @@ void GraphDefinition::explore(
 }
 
 
+#if 0
 // -------------------------------------------------------------------------
 int GraphDefinition::multi_dijkstra(
     edge_t *edges,
@@ -280,7 +296,7 @@ int GraphDefinition::multi_dijkstra(
     deleteall();
     return 0;
 }
-
+#endif
 
 // -------------------------------------------------------------------------
 int GraphDefinition::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
@@ -465,6 +481,10 @@ int GraphDefinition::my_dijkstra4(edge_t *edges, size_t edge_count,
 
 
 // -------------------------------------------------------------------------
+/** my_dijkstra3
+ *
+ * Acts as initializer of the restriction rules
+ */
 int GraphDefinition:: my_dijkstra3(edge_t *edges, size_t edge_count,
     int64_t start_vertex, int64_t end_vertex, bool directed, bool has_reverse_cost,
     path_element_tt **path, size_t *path_count, char **err_msg,

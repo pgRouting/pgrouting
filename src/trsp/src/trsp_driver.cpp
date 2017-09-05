@@ -60,7 +60,7 @@ int trsp_node_wrapper(
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef;
+        GraphDefinition gdef(edges, edge_count);
         int res = gdef.my_dijkstra3(edges, edge_count, start_vertex, end_vertex,
             directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
 
@@ -110,7 +110,7 @@ int trsp_edge_wrapper(
             ruleTable.push_back(std::make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef;
+        GraphDefinition gdef(edges, edge_count);
         auto res = gdef.my_dijkstra4(edges, edge_count, start_edge, start_pos,
                 end_edge, end_pos, directed, has_reverse_cost, path, path_count,
                 err_msg, ruleTable);

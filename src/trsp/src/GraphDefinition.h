@@ -95,6 +95,7 @@ typedef std::map<int64_t, int64_t> Long2LongMap;
 
 class GraphDefinition {
  public:
+    GraphDefinition(const edge_t *edges, size_t edge_count);
     GraphDefinition(void);
     ~GraphDefinition(void);
 
@@ -122,13 +123,14 @@ class GraphDefinition {
                     char **err_msg,
                     const std::vector<PDVI> &ruleList);
 
+#if 0
     int multi_dijkstra(edge_t *edges, size_t edge_count,
                        std::vector<int> vertices,
                        bool directed, bool has_reverse_cost,
                        path_element_tt **path, size_t *path_count,
                        char **err_msg,
                        const std::vector<PDVI> &ruleList);
-
+#endif
     bool construct_graph(const edge_t *edges, size_t edge_count,
                          bool has_reverse_cost, bool directed);
 
@@ -167,6 +169,7 @@ class GraphDefinition {
     RuleTable m_ruleTable;
     bool m_bIsturnRestrictOn;
     bool m_bIsGraphConstructed;
+    std::vector<edge_t> m_edges;
 };
 
 #endif  // SRC_TRSP_SRC_GRAPHDEFINITION_H_
