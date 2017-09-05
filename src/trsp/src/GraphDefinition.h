@@ -135,7 +135,7 @@ class GraphDefinition {
 
  private:
     double construct_path(int64_t ed_id, int64_t v_pos);
-    void explore(int64_t cur_node, const GraphEdgeInfo& cur_edge, bool isStart,
+    void explore(int64_t cur_node, const GraphEdgeInfo cur_edge, bool isStart,
                  const LongVector &vecIndex, std::priority_queue<PDP,
                  std::vector<PDP>, std::greater<PDP> > &que);
     double getRestrictionCost(int64_t cur_node, const GraphEdgeInfo& new_edge,

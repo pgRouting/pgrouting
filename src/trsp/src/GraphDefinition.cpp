@@ -148,7 +148,7 @@ double GraphDefinition::getRestrictionCost(
 // -------------------------------------------------------------------------
 void GraphDefinition::explore(
     int64_t cur_node,
-    const GraphEdgeInfo& cur_edge,
+    const GraphEdgeInfo cur_edge,
     bool isStart,
     const LongVector &vecIndex,
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que) {
