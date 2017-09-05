@@ -111,7 +111,7 @@ int trsp_edge_wrapper(
         }
 
         GraphDefinition gdef;
-        auto res = gdef.my_dijkstra(edges, edge_count, start_edge, start_pos,
+        auto res = gdef.my_dijkstra4(edges, edge_count, start_edge, start_pos,
                 end_edge, end_pos, directed, has_reverse_cost, path, path_count,
                 err_msg, ruleTable);
 

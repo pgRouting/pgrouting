@@ -380,7 +380,7 @@ int GraphDefinition::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition::my_dijkstra(edge_t *edges, size_t edge_count,
+int GraphDefinition::my_dijkstra4(edge_t *edges, size_t edge_count,
     int64_t start_edge_id, double start_part, int64_t end_edge_id, double end_part,
     bool directed, bool has_reverse_cost, path_element_tt **path,
     size_t *path_count, char **err_msg, const std::vector<PDVI> &ruleList) {

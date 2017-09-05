@@ -114,7 +114,7 @@ class GraphDefinition {
                     char **err_msg,
                     const std::vector<PDVI> &ruleList);
 
-    int my_dijkstra(edge_t *edges, size_t edge_count,
+    int my_dijkstra4(edge_t *edges, size_t edge_count,
                     int64_t start_edge, double start_part,
                     int64_t end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
