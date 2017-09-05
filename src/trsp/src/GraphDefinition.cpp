@@ -514,13 +514,13 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, size_t edge_count,
         }
     }
     m_bIsturnRestrictOn = true;
-    return(my_dijkstra(edges, edge_count, start_vertex, end_vertex, directed,
+    return(my_dijkstra2(edges, edge_count, start_vertex, end_vertex, directed,
         has_reverse_cost, path, path_count, err_msg));
 }
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, size_t edge_count,
+int GraphDefinition:: my_dijkstra2(edge_t *edges, size_t edge_count,
     int64_t start_vertex, int64_t end_vertex, bool directed, bool has_reverse_cost,
     path_element_tt **path, size_t *path_count, char **err_msg) {
     if (!m_bIsGraphConstructed) {
