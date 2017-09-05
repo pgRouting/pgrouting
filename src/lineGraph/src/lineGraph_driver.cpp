@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <utility>
 
 #include "dijkstra/pgr_dijkstra.hpp"
 
@@ -45,11 +46,12 @@ void get_postgres_result(
         Line_graph_rt **return_tuples,
         size_t &sequence) {
     (*return_tuples) = pgr_alloc(
-            (int)edge_result.size(),
+            static_cast<int>(edge_result.size()),
             (*return_tuples));
 
-    for (const auto &edge: edge_result) {
-        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target, edge.cost, edge.reverse_cost};
+    for (const auto &edge : edge_result) {
+        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target,
+             edge.cost, edge.reverse_cost};
         sequence++;
     }
 }
@@ -88,7 +90,7 @@ do_pgr_lineGraph(
 
             digraph.insert_edges(data_edges, total_edges);
 
-            for (size_t ind = 0;ind < total_edges; ind++) {
+            for (size_t ind = 0; ind < total_edges; ind++) {
                 std::swap(data_edges[ind].source, data_edges[ind].target);
                 data_edges[ind].id *= -1;
             }
@@ -121,8 +123,7 @@ do_pgr_lineGraph(
             get_postgres_result(
                 line_graph_edges,
                 return_tuples,
-                sequence
-            );
+                sequence);
             (*return_count) = sequence;
         }
         log << line.log.str().c_str() << "\n\n\n";
