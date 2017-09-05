@@ -61,7 +61,7 @@ int trsp_node_wrapper(
         }
 
         GraphDefinition gdef;
-        int res = gdef.my_dijkstra(edges, edge_count, start_vertex, end_vertex,
+        int res = gdef.my_dijkstra3(edges, edge_count, start_vertex, end_vertex,
             directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
 
 

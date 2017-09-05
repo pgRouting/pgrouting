@@ -107,7 +107,7 @@ class GraphDefinition {
                     path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
-    int my_dijkstra(edge_t *edges, size_t edge_count,
+    int my_dijkstra3(edge_t *edges, size_t edge_count,
                     int64_t start_vertex, int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,

@@ -459,13 +459,13 @@ int GraphDefinition::my_dijkstra(edge_t *edges, size_t edge_count,
         }
     }
 
-    return(my_dijkstra(edges, edge_count, start_vertex, end_vertex, directed,
+    return(my_dijkstra3(edges, edge_count, start_vertex, end_vertex, directed,
         has_reverse_cost, path, path_count, err_msg, ruleList));
 }
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, size_t edge_count,
+int GraphDefinition:: my_dijkstra3(edge_t *edges, size_t edge_count,
     int64_t start_vertex, int64_t end_vertex, bool directed, bool has_reverse_cost,
     path_element_tt **path, size_t *path_count, char **err_msg,
     const std::vector<PDVI> &ruleList) {
