@@ -27,9 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "dijkstra/pgr_dijkstra.hpp"
-#include "c_types/line_graph_rt.h"
-
-#include "lineGraph/pgr_lineGraph.hpp"
 
 #include <sstream>
 #include <deque>
@@ -37,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
+#include "c_types/line_graph_rt.h"
+#include "lineGraph/pgr_lineGraph.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/basePath_SSEC.hpp"
 
