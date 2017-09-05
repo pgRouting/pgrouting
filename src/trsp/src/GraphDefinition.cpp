@@ -239,6 +239,23 @@ int GraphDefinition::multi_dijkstra(
     parent = new PARENT_PATH[edge_count + 1];
     m_dCost = new CostHolder[edge_count + 1];
     m_vecPath.clear();
+#if 0
+
+    /*
+     * TODO(vicky) test alternate range loop
+     */
+    auto prev_v = vertices[0];
+    for (const auto curr_v : vertices) {
+        if (prev_v == curr_v) continue;
+        if (my_dijkstra(prev_v, curr_v, edge_count, err_msg) < 0) {
+            deleteall();
+            return -1;
+        }
+        prev_v = curr_v;
+    }
+
+#else
+
     size_t i;
     size_t total_vertices = vertices.size();
     for (i = 0; i < total_vertices - 1; i++) {
@@ -249,6 +266,7 @@ int GraphDefinition::multi_dijkstra(
             return -1;
         }
     }
+#endif
 
     *path = (path_element_tt *) malloc(sizeof(path_element_tt) *
     (m_vecPath.size() + 1));
