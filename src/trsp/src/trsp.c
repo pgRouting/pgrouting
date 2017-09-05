@@ -30,44 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 
 
-#if 0
-#include "utils/array.h"
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-
-#include "fmgr.h"
-#endif
-
 #include "drivers/trsp/trsp_driver.h"
 #include "c_types/trsp_types.h"
 
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
-#if 0
-#undef DEBUG
-// #define DEBUG 1
-
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, ...) do { ; } while (0)
-#endif
-#endif
-
-#if 0
-// The number of tuples to fetch from the SPI cursor at each iteration
-#define TUPLIMIT 1000
-
-// #ifdef PG_MODULE_MAGIC
-// PG_MODULE_MAGIC;
-// #endif
-#endif
 
 typedef struct edge_columns {
   int id;
@@ -85,16 +53,6 @@ typedef struct restrict_columns {
 
 
 
-#if 0
-static char *
-text2char(text *in) {
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
-#endif
 
 static int
 finish(int code, int ret) {
@@ -593,10 +551,6 @@ PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
 PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-#if 0
-  uint32_t             call_cntr;
-  int                  max_calls;
-#endif
   TupleDesc            tuple_desc;
   path_element_tt      *path;
   char *               sql;
@@ -682,10 +636,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
   // stuff done on every call of the function
   funcctx = SRF_PERCALL_SETUP();
 
-#if 0
-  call_cntr = funcctx->call_cntr;
-  max_calls = funcctx->max_calls;
-#endif
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_tt*) funcctx->user_fctx;
 
@@ -729,10 +679,6 @@ PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
 PGDLLEXPORT Datum
 turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-#if 0
-  uint32_t             call_cntr;
-  uint32_t             max_calls;
-#endif
   TupleDesc            tuple_desc;
   path_element_tt      *path;
   char *               sql;
@@ -838,10 +784,6 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
   // stuff done on every call of the function
   funcctx = SRF_PERCALL_SETUP();
 
-#if 0
-  call_cntr = funcctx->call_cntr;
-  max_calls = funcctx->max_calls;
-#endif
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_tt*) funcctx->user_fctx;
 

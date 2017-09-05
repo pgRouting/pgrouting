@@ -24,12 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include "GraphDefinition.h"
+
 #include <functional>
 #include <utility>
 #include <queue>
 #include <vector>
 
-#include "GraphDefinition.h"
 
 // -------------------------------------------------------------------------
 GraphDefinition::GraphDefinition(void) {
