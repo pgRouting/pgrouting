@@ -18,7 +18,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
+aint64_t with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
@@ -39,56 +39,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/trsp_types.h"
 
-// using namespace std;
 
-typedef std::vector<long> LongVector;
+typedef std::vector<int64_t> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
-typedef std::pair<long, bool> PIB;
+typedef std::pair<int64_t, bool> PIB;
 typedef std::pair<double, PIB> PDP;
-typedef std::pair<double, std::vector<long> > PDVI;
+typedef std::pair<double, std::vector<int64_t> > PDVI;
 
-/*
-typedef struct edge 
-{
-    int id;
-    int source;
-    int target;
-    double cost;
-    double reverse_cost;
-} edge_t;
-
-typedef struct path_element 
-{
-    int vertex_id;
-    int edge_id;
-    double cost;
-}path_element_tt;
-*/
 
 typedef struct {
-    long ed_ind[2];
-    long v_pos[2];
+    int64_t ed_ind[2];
+    int64_t v_pos[2];
 } PARENT_PATH;
 
 typedef struct Rule {
     double cost;
-    std::vector<long> precedencelist;
-    Rule(double c, std::vector<long> p) : cost(c), precedencelist(p) { }
+    std::vector<int64_t> precedencelist;
+    Rule(double c, std::vector<int64_t> p) : cost(c), precedencelist(p) { }
 }Rule;
 
 typedef struct {
     double startCost, endCost;
 } CostHolder;
 
-typedef std::map<long, std::vector<Rule> > RuleTable;
+typedef std::map<int64_t, std::vector<Rule> > RuleTable;
 
 
 
 class GraphEdgeInfo {
  public:
-    long m_lEdgeID;
-    long m_lEdgeIndex;
-    short m_sDirection;
+    int64_t m_lEdgeID;
+    int64_t m_lEdgeIndex;
+    int m_sDirection;
     double m_dCost;
     double m_dReverseCost;
     LongVector m_vecStartConnectedEdge;
@@ -97,16 +79,16 @@ class GraphEdgeInfo {
     bool m_bIsLeadingRestrictedEdge;
     VectorOfLongVector m_vecRestrictedEdge;
 
-    long m_lStartNode;
-    long m_lEndNode;
+    int64_t m_lStartNode;
+    int64_t m_lEndNode;
 };
 
 
 
 
 typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
-typedef std::map<long, LongVector> Long2LongVectorMap;
-typedef std::map<long, long> Long2LongMap;
+typedef std::map<int64_t, LongVector> Long2LongVectorMap;
+typedef std::map<int64_t, int64_t> Long2LongMap;
 
 
 
@@ -116,49 +98,49 @@ class GraphDefinition {
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra(long start_vertex, long end_vertex,
+    int my_dijkstra(int64_t start_vertex, int64_t end_vertex,
                     size_t edge_count, char** err_msg);
 
     int my_dijkstra(edge_t *edges, size_t edge_count,
-                    long start_vertex, long end_vertex,
+                    int64_t start_vertex, int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
     int my_dijkstra(edge_t *edges, size_t edge_count,
-                    long start_vertex, long end_vertex,
+                    int64_t start_vertex, int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
-                    std::vector<PDVI> &ruleList);
+                    const std::vector<PDVI> &ruleList);
 
     int my_dijkstra(edge_t *edges, size_t edge_count,
-                    long start_edge, double start_part,
-                    long end_edge, double end_part,
+                    int64_t start_edge, double start_part,
+                    int64_t end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
-                    std::vector<PDVI> &ruleList);
+                    const std::vector<PDVI> &ruleList);
 
     int multi_dijkstra(edge_t *edges, size_t edge_count,
                        std::vector<int> vertices,
                        bool directed, bool has_reverse_cost,
                        path_element_tt **path, size_t *path_count,
                        char **err_msg,
-                       std::vector<PDVI> &ruleList);
+                       const std::vector<PDVI> &ruleList);
 
-    bool construct_graph(edge_t *edges, size_t edge_count,
+    bool construct_graph(const edge_t *edges, size_t edge_count,
                          bool has_reverse_cost, bool directed);
 
 
  private:
-    double construct_path(long ed_id, long v_pos);
-    void explore(long cur_node, GraphEdgeInfo& cur_edge, bool isStart,
-                 LongVector &vecIndex, std::priority_queue<PDP,
+    double construct_path(int64_t ed_id, int64_t v_pos);
+    void explore(int64_t cur_node, const GraphEdgeInfo& cur_edge, bool isStart,
+                 const LongVector &vecIndex, std::priority_queue<PDP,
                  std::vector<PDP>, std::greater<PDP> > &que);
-    double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge,
+    double getRestrictionCost(int64_t cur_node, const GraphEdgeInfo& new_edge,
                               bool isStart);
-    bool addEdge(edge_t edgeIn);
+    bool addEdge(const edge_t edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge,
                      bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_tt **path,
@@ -170,10 +152,10 @@ class GraphDefinition {
     GraphEdgeVector m_vecEdgeVector;
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
-    long max_node_id;
-    long max_edge_id;
-    long m_lStartEdgeId;
-    long m_lEndEdgeId;
+    int64_t max_node_id;
+    int64_t max_edge_id;
+    int64_t m_lStartEdgeId;
+    int64_t m_lEndEdgeId;
     double m_dStartpart;
     double m_dEndPart;
     bool isStartVirtual;
