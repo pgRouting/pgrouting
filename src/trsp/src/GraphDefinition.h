@@ -133,7 +133,7 @@ class GraphDefinition {
                  std::vector<PDP>, std::greater<PDP> > &que);
     double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge,
                               bool isStart);
-    bool addEdge(edge edgeIn);
+    bool addEdge(edge_t edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge,
                      bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_tt **path,
