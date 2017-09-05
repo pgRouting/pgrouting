@@ -53,11 +53,13 @@ class Pgr_dijkstraTRSP {
              bool only_cost,
              bool strict);
      void clear();
+
  private:
      void executeDijkstraTRSP(G& graph);
      void getDijkstraSolution(G& graph);
      bool has_restriction();
      bool has_a_restriction(int64_t edge, int64_t index);
+
  private:
      typedef typename G::V V;
      V v_source;
@@ -102,7 +104,7 @@ Pgr_dijkstraTRSP< G >::dijkstraTRSP(
     m_restrictions = restrictions;
     m_strict = strict;
     executeDijkstraTRSP(graph);
-    if (curr_result_path.size() or graph.m_gType == UNDIRECTED)
+    if (curr_result_path.size() || graph.m_gType == UNDIRECTED)
         return curr_result_path;
 
 #if 0
@@ -148,8 +150,8 @@ bool Pgr_dijkstraTRSP< G >::has_a_restriction(int64_t edge, int64_t index) {
         bool okay = true;
         size_t temp_edge_index = index;
 
-        for (auto &edge_id: r_edges) {
-            if (temp_edge_index >= m_edges_in_path.size() or
+        for (auto &edge_id : r_edges) {
+            if (temp_edge_index >= m_edges_in_path.size() ||
                 m_edges_in_path[temp_edge_index] != edge_id) {
                 okay = false;
                 break;
@@ -173,10 +175,10 @@ bool Pgr_dijkstraTRSP< G >::has_restriction() {
     std::stable_sort(m_restrictions.begin(), m_restrictions.end(),
         sort_cmp);
     log << "\nRestriction array after sorting.\n";
-    for (auto &it: m_restrictions) log << it << "\n";
+    for (auto &it : m_restrictions) log << it << "\n";
     log << "\nEnd\n";
     size_t index = 0;
-    for (auto &edge: m_edges_in_path) {
+    for (auto &edge : m_edges_in_path) {
         if (has_a_restriction(edge, index))
             return true;
         index++;
@@ -190,15 +192,15 @@ void Pgr_dijkstraTRSP< G >::executeDijkstraTRSP(G& graph) {
     getDijkstraSolution(graph);
     log << curr_result_path;
 
-    for (auto &path: curr_result_path) {
+    for (auto &path : curr_result_path) {
         m_edges_in_path.push_back(path.edge);
     }
-    while (m_edges_in_path.size() and m_edges_in_path.back() == -1) {
+    while (m_edges_in_path.size() && m_edges_in_path.back() == -1) {
         m_edges_in_path.pop_back();
     }
 
     log << "Edges in m_edges_in_path:-------------------\n";
-    for(auto &it: m_edges_in_path) log << it << "\n";
+    for (auto &it : m_edges_in_path) log << it << "\n";
     log << "---------------------------------------------\n";
     bool sol = has_restriction();
     log << "Result of valid solution: " << sol << "\n";
