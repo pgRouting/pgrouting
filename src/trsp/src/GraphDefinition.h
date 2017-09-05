@@ -86,7 +86,7 @@ class GraphEdgeInfo {
 
 
 
-typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
+typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
 typedef std::map<int64_t, LongVector> Long2LongVectorMap;
 typedef std::map<int64_t, int64_t> Long2LongMap;
 
@@ -140,7 +140,7 @@ class GraphDefinition {
     void explore(int64_t cur_node, const GraphEdgeInfo cur_edge, bool isStart,
                  const LongVector &vecIndex, std::priority_queue<PDP,
                  std::vector<PDP>, std::greater<PDP> > &que);
-    double getRestrictionCost(int64_t cur_node, const GraphEdgeInfo& new_edge,
+    double getRestrictionCost(int64_t cur_node, const GraphEdgeInfo &new_edge,
                               bool isStart);
     bool addEdge(const edge_t edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge,
