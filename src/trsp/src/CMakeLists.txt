@@ -1,4 +1,4 @@
 add_library(trsp OBJECT
     trsp.c
-    trsp_core.cpp
+    trsp_driver.cpp
     GraphDefinition.cpp)
