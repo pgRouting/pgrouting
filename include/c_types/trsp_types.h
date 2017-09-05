@@ -22,7 +22,6 @@
 #ifndef SRC_TRSP_SRC_TRSP_H_
 #define SRC_TRSP_SRC_TRSP_H_
 
-#define MAX_RULE_LENGTH 5
 
 #ifdef __cplusplus
 
@@ -63,7 +62,7 @@ typedef struct  {
 typedef struct restrict_struct {
     int target_id;
     double to_cost;
-    int via[MAX_RULE_LENGTH];
+    int via[5];
 }
 restrict_t;
 

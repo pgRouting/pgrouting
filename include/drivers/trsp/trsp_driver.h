@@ -27,7 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
 #define INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
 
-#define MAX_RULE_LENGTH 5
 
 #include "c_types/trsp_types.h"
 

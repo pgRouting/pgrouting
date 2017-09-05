@@ -46,6 +46,7 @@ int trsp_node_wrapper(
     ) {
     try {
         std::vector<PDVI> ruleTable;
+        size_t MAX_RULE_LENGTH = 5;
 
         size_t i, j;
         ruleTable.clear();
@@ -92,9 +93,9 @@ int trsp_edge_wrapper(
     bool has_reverse_cost,
     path_element_tt **path,
     size_t *path_count,
-    char **err_msg
-    ) {
+    char **err_msg) {
     try {
+        size_t MAX_RULE_LENGTH = 5;
         std::vector<PDVI> ruleTable;
 
         size_t i, j;
@@ -111,8 +112,8 @@ int trsp_edge_wrapper(
 
         GraphDefinition gdef;
         auto res = gdef.my_dijkstra(edges, edge_count, start_edge, start_pos,
-            end_edge, end_pos, directed, has_reverse_cost, path, path_count,
-            err_msg, ruleTable);
+                end_edge, end_pos, directed, has_reverse_cost, path, path_count,
+                err_msg, ruleTable);
 
 
         if (res < 0)

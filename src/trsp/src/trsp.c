@@ -206,6 +206,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
   Datum binval;
   bool isnull;
   int t;
+  int MAX_RULE_LENGTH = 5;
 
   for (t = 0; t < MAX_RULE_LENGTH; ++t)
     rest->via[t] = -1;
