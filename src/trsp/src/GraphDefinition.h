@@ -98,7 +98,7 @@ class GraphDefinition {
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra(int64_t start_vertex, int64_t end_vertex,
+    int my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
                     size_t edge_count, char** err_msg);
 
     int my_dijkstra(edge_t *edges, size_t edge_count,

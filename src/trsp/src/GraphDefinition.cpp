@@ -247,7 +247,7 @@ int GraphDefinition::multi_dijkstra(
     auto prev_v = vertices[0];
     for (const auto curr_v : vertices) {
         if (prev_v == curr_v) continue;
-        if (my_dijkstra(prev_v, curr_v, edge_count, err_msg) < 0) {
+        if (my_dijkstra1(prev_v, curr_v, edge_count, err_msg) < 0) {
             deleteall();
             return -1;
         }
@@ -259,7 +259,7 @@ int GraphDefinition::multi_dijkstra(
     size_t i;
     size_t total_vertices = vertices.size();
     for (i = 0; i < total_vertices - 1; i++) {
-        int ret = my_dijkstra(vertices[i], vertices[i + 1], edge_count,
+        int ret = my_dijkstra1(vertices[i], vertices[i + 1], edge_count,
                 err_msg);
         if (ret < 0) {
             deleteall();
@@ -283,7 +283,7 @@ int GraphDefinition::multi_dijkstra(
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition::my_dijkstra(int64_t start_vertex, int64_t end_vertex,
+int GraphDefinition::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
     size_t edge_count, char **err_msg) {
     if (!m_bIsGraphConstructed) {
         *err_msg = (char *)"Graph not Ready!";
