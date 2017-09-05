@@ -52,7 +52,7 @@ int trsp_node_wrapper(
         size_t i, j;
         ruleTable.clear();
         for (i = 0; i < restrict_count; i++) {
-            std::vector<long> seq;
+            std::vector<int64_t> seq;
             seq.clear();
             seq.push_back(restricts[i].target_id);
             for (j = 0; j < MAX_RULE_LENGTH && restricts[i].via[j] > -1; j++) {
