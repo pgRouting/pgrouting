@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #define MAX_RULE_LENGTH 5
 
-#include "./trsp_types.h"
+#include "c_types/trsp_types.h"
 
 #ifdef __cplusplus
 extern "C" {

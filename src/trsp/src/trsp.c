@@ -42,8 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "fmgr.h"
 #endif
 
-#include "trsp_driver.h"
-#include "trsp_types.h"
+#include "drivers/trsp/trsp_driver.h"
+#include "c_types/trsp_types.h"
 
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
