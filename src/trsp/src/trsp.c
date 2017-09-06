@@ -498,6 +498,7 @@ static int compute_trsp(
 
   PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
 
+  *path = NULL;
   if (dovertex) {
       PGR_DBG("Calling trsp_node_wrapper\n");
       /** hack always returns 0 -1 when

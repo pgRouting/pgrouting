@@ -95,7 +95,15 @@ typedef std::map<int64_t, int64_t> Long2LongMap;
 
 class GraphDefinition {
  public:
-    GraphDefinition(const edge_t *edges, size_t edge_count);
+    GraphDefinition(
+            edge_t *edges,
+            const size_t edge_count,
+            const int64_t start_vertex,
+            const int64_t end_vertex,
+            const bool directed,
+            const bool has_reverse_cost,
+            const std::vector<PDVI> &ruleList);
+
     GraphDefinition(void);
     ~GraphDefinition(void);
 
@@ -109,7 +117,7 @@ class GraphDefinition {
                     char **err_msg);
 
     int my_dijkstra3(edge_t *edges, size_t edge_count,
-                    int64_t start_vertex, int64_t end_vertex,
+                    const int64_t start_vertex, const int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
@@ -131,11 +139,15 @@ class GraphDefinition {
                        char **err_msg,
                        const std::vector<PDVI> &ruleList);
 #endif
-    bool construct_graph(const edge_t *edges, size_t edge_count,
-                         bool has_reverse_cost, bool directed);
+    bool construct_graph(edge_t *edges, const size_t edge_count,
+                         const bool has_reverse_cost, const bool directed);
 
 
  private:
+#if 1
+    int initialize_restrictions(
+                    const std::vector<PDVI> &ruleList);
+#endif
     double construct_path(int64_t ed_id, int64_t v_pos);
     void explore(int64_t cur_node, const GraphEdgeInfo cur_edge, bool isStart,
                  const LongVector &vecIndex, std::priority_queue<PDP,
@@ -162,14 +174,15 @@ class GraphDefinition {
     double m_dEndPart;
     bool isStartVirtual;
     bool isEndVirtual;
+    int64_t m_start_vertex;
+    int64_t m_end_vertex;
 
     std::vector <path_element_tt> m_vecPath;
-    PARENT_PATH *parent;
-    CostHolder *m_dCost;
+    std::vector<PARENT_PATH> parent;
+    std::vector<CostHolder> m_dCost;
     RuleTable m_ruleTable;
     bool m_bIsturnRestrictOn;
     bool m_bIsGraphConstructed;
-    std::vector<edge_t> m_edges;
 };
 
 #endif  // SRC_TRSP_SRC_GRAPHDEFINITION_H_

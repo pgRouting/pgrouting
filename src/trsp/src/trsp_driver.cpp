@@ -25,10 +25,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
+#include "drivers/trsp/trsp_driver.h"
 #include <utility>
 #include <vector>
-#include "drivers/trsp/trsp_driver.h"
 #include "GraphDefinition.h"
+#include "cpp_common/pgr_assert.h"
+
 
 
 int trsp_node_wrapper(
@@ -45,6 +47,9 @@ int trsp_node_wrapper(
     char **err_msg
     ) {
     try {
+        pgassert(*path == NULL);
+        pgassert(*path_count == 0);
+
         std::vector<PDVI> ruleTable;
         size_t MAX_RULE_LENGTH = 5;
 
@@ -60,9 +65,22 @@ int trsp_node_wrapper(
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef(edges, edge_count);
+#if 0
+        GraphDefinition gdef(edges, edge_count,
+                start_vertex, end_vertex,
+                directed, has_reverse_cost,
+                ruleTable);
+        auto res =  gdef.my_dijkstra3(
+                edges, edge_count,
+                start_vertex, end_vertex,
+                directed, has_reverse_cost,
+                path, path_count, err_msg, ruleTable);
+
+#else
+        GraphDefinition gdef;
         int res = gdef.my_dijkstra3(edges, edge_count, start_vertex, end_vertex,
             directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
+#endif
 
 
         if (res < 0)
@@ -95,6 +113,8 @@ int trsp_edge_wrapper(
     size_t *path_count,
     char **err_msg) {
     try {
+        pgassert(*path == NULL);
+        pgassert(*path_count == 0);
         size_t MAX_RULE_LENGTH = 5;
         std::vector<PDVI> ruleTable;
 
@@ -110,7 +130,11 @@ int trsp_edge_wrapper(
             ruleTable.push_back(std::make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef(edges, edge_count);
+#if 0
+        GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
+#else
+        GraphDefinition gdef;
+#endif
         auto res = gdef.my_dijkstra4(edges, edge_count, start_edge, start_pos,
                 end_edge, end_pos, directed, has_reverse_cost, path, path_count,
                 err_msg, ruleTable);
