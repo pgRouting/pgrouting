@@ -19,7 +19,7 @@ pgRouting is an `OSGeo Labs <http://wiki.osgeo.org/wiki/OSGeo_Labs>`_ project of
 
 .. _license:
 
-License
+Licensing
 -------------------------------------------------------------------------------
 
 The following licenses can be found in pgRouting:
