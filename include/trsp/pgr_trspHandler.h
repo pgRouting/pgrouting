@@ -160,12 +160,15 @@ class Pgr_trspHandler {
                     size_t *path_count,
                     char **err_msg);
 
-    int dijkstra_exploration();
+    GraphEdgeInfo* dijkstra_exploration(
+            GraphEdgeInfo* cur_edge,
+            int64_t &cur_node);
 
-    double construct_path(int64_t ed_id, int64_t v_pos);
+
+
     void explore(int64_t cur_node, const GraphEdgeInfo cur_edge, bool isStart,
-                 const LongVector &vecIndex, std::priority_queue<PDP,
-                 std::vector<PDP>, std::greater<PDP> > &que);
+                 const LongVector &vecIndex);
+
     double getRestrictionCost(int64_t cur_node, const GraphEdgeInfo &new_edge,
                               bool isStart);
     bool addEdge(const edge_t edgeIn);
@@ -173,6 +176,7 @@ class Pgr_trspHandler {
                      bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_tt **path,
                          size_t *path_count);
+    double construct_path(int64_t ed_id, int64_t v_pos);
     void init();
     void deleteall();
 

@@ -179,8 +179,7 @@ void Pgr_trspHandler::explore(
     int64_t cur_node,
     const GraphEdgeInfo cur_edge,
     bool isStart,
-    const LongVector &vecIndex,
-    std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que) {
+    const LongVector &vecIndex) {
     double extCost = 0.0;
     double totalCost;
     for (const auto &index : vecIndex) {
@@ -296,7 +295,7 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
                 if (cur_node == end_vertex)
                     break;
                 explore(cur_node, *cur_edge, true,
-                    cur_edge->m_vecEndConnedtedEdge, que);
+                    cur_edge->m_vecEndConnedtedEdge);
             } else {  // explore edges connected to start node
                 cur_node = cur_edge->m_lStartNode;
                 if (cur_edge->m_dReverseCost < 0.0)
@@ -304,7 +303,7 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
                 if (cur_node == end_vertex)
                     break;
                 explore(cur_node, *cur_edge, false,
-                    cur_edge->m_vecStartConnectedEdge, que);
+                    cur_edge->m_vecStartConnectedEdge);
             }
         }
         if (cur_node != end_vertex) {
@@ -573,34 +572,35 @@ void  Pgr_trspHandler::initialize_que() {
     }
 }
 
-int Pgr_trspHandler::dijkstra_exploration() {
-    GraphEdgeInfo* cur_edge = NULL;
-    int64_t cur_node = -1;
-
+GraphEdgeInfo* Pgr_trspHandler::dijkstra_exploration(
+        GraphEdgeInfo* cur_edge,
+        int64_t  &cur_node) {
     while (!que.empty()) {
-        PDP cur_pos = que.top();
+        auto cur_pos = que.top();
         que.pop();
-        int64_t cured_index = cur_pos.second.first;
+
+        auto cured_index = cur_pos.second.first;
         cur_edge = &m_vecEdgeVector[cured_index];
 
-        if (cur_pos.second.second) {  // explore edges connected to end node
+        if (cur_pos.second.second) {
+            /*
+             * explore edges connected to end node
+             */
             cur_node = cur_edge->m_lEndNode;
-            if (cur_edge->m_dCost < 0.0)
-                continue;
-            if (cur_node == m_end_vertex)
-                break;
-            explore(cur_node, *cur_edge, true, cur_edge->m_vecEndConnedtedEdge,
-                    que);
-        } else {  // explore edges connected to start node
+            if (cur_edge->m_dCost < 0.0) continue;
+            if (cur_node == m_end_vertex) break;
+            explore(cur_node, *cur_edge, true, cur_edge->m_vecEndConnedtedEdge);
+        } else {
+            /*
+             *  explore edges connected to start node
+             */
             cur_node = cur_edge->m_lStartNode;
-            if (cur_edge->m_dReverseCost < 0.0)
-                continue;
-            if (cur_node == m_end_vertex)
-                break;
-            explore(cur_node, *cur_edge, false,
-                    cur_edge->m_vecStartConnectedEdge, que);
+            if (cur_edge->m_dReverseCost < 0.0) continue;
+            if (cur_node == m_end_vertex) break;
+            explore(cur_node, *cur_edge, false, cur_edge->m_vecStartConnectedEdge);
         }
     }
+    return cur_edge;
 }
 
 
@@ -626,30 +626,7 @@ int Pgr_trspHandler::process_trsp(
     GraphEdgeInfo* cur_edge = NULL;
     int64_t cur_node = -1;
 
-    while (!que.empty()) {
-        PDP cur_pos = que.top();
-        que.pop();
-        int64_t cured_index = cur_pos.second.first;
-        cur_edge = &m_vecEdgeVector[cured_index];
-
-        if (cur_pos.second.second) {  // explore edges connected to end node
-            cur_node = cur_edge->m_lEndNode;
-            if (cur_edge->m_dCost < 0.0)
-                continue;
-            if (cur_node == end_vertex)
-                break;
-            explore(cur_node, *cur_edge, true, cur_edge->m_vecEndConnedtedEdge,
-                    que);
-        } else {  // explore edges connected to start node
-            cur_node = cur_edge->m_lStartNode;
-            if (cur_edge->m_dReverseCost < 0.0)
-                continue;
-            if (cur_node == end_vertex)
-                break;
-            explore(cur_node, *cur_edge, false,
-                    cur_edge->m_vecStartConnectedEdge, que);
-        }
-    }
+    cur_edge = dijkstra_exploration(cur_edge, cur_node);
 
     if (cur_node != end_vertex) {
         if (m_lStartEdgeId == m_lEndEdgeId) {
