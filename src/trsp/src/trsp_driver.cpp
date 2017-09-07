@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/trsp/trsp_driver.h"
 #include <utility>
 #include <vector>
-#include "GraphDefinition.h"
+#include "trsp/pgr_trspHandler.h"
 #include "cpp_common/pgr_assert.h"
 
 
@@ -66,7 +66,7 @@ int trsp_node_wrapper(
         }
 
 #if 0
-        GraphDefinition gdef(edges, edge_count,
+        Pgr_trspHandler gdef(edges, edge_count,
                 start_vertex, end_vertex,
                 directed, has_reverse_cost,
                 ruleTable);
@@ -77,9 +77,13 @@ int trsp_node_wrapper(
                 path, path_count, err_msg, ruleTable);
 
 #else
-        GraphDefinition gdef;
-        int res = gdef.my_dijkstra3(edges, edge_count, start_vertex, end_vertex,
-            directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
+        Pgr_trspHandler gdef;
+        int res = gdef.initializeAndProcess(
+                edges, edge_count,
+                ruleTable,
+                start_vertex, end_vertex,
+                directed, has_reverse_cost,
+                path, path_count, err_msg);
 #endif
 
 
@@ -131,9 +135,9 @@ int trsp_edge_wrapper(
         }
 
 #if 0
-        GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
+        Pgr_trspHandler gdef(edges, edge_count, directed, has_reverse_cost);
 #else
-        GraphDefinition gdef;
+        Pgr_trspHandler gdef;
 #endif
         auto res = gdef.my_dijkstra4(edges, edge_count, start_edge, start_pos,
                 end_edge, end_pos, directed, has_reverse_cost, path, path_count,
