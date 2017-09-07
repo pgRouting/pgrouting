@@ -77,15 +77,34 @@ typedef std::map<int64_t, std::vector<Rule> > RuleTable;
 
 class GraphEdgeInfo {
  public:
+     GraphEdgeInfo(
+             edge_t edgeIn,
+             size_t edgeIndex) :
+         m_lEdgeID(edgeIn.id),
+         m_lEdgeIndex(edgeIndex),
+         m_dCost(edgeIn.cost),
+         m_dReverseCost(edgeIn.reverse_cost),
+
+         m_vecStartConnectedEdge(),
+         m_vecEndConnedtedEdge(),
+         m_vecRestrictedEdge(),
+
+         m_lStartNode(edgeIn.source),
+         m_lEndNode(edgeIn.target) {}
+
+
+ public:
     int64_t m_lEdgeID;
-    int64_t m_lEdgeIndex;
+    size_t m_lEdgeIndex;
     int m_sDirection;
     double m_dCost;
     double m_dReverseCost;
+
     LongVector m_vecStartConnectedEdge;
     LongVector m_vecEndConnedtedEdge;
-    bool m_bIsLeadingRestrictedEdge;
     VectorOfLongVector m_vecRestrictedEdge;
+
+    bool m_bIsLeadingRestrictedEdge;
 
     int64_t m_lStartNode;
     int64_t m_lEndNode;
@@ -113,7 +132,7 @@ class Pgr_trspHandler {
             const std::vector<PDVI> &ruleList);
 
     Pgr_trspHandler(void);
-    ~Pgr_trspHandler(void);
+    ~Pgr_trspHandler(void) = default;
 
     int my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
                     size_t edge_count, char** err_msg);
@@ -147,6 +166,7 @@ class Pgr_trspHandler {
     bool construct_graph(edge_t *edges, const size_t edge_count,
                          const bool has_reverse_cost, const bool directed);
 
+    void clear();
 
  private:
     int initialize_restrictions(
@@ -155,7 +175,6 @@ class Pgr_trspHandler {
     void initialize_que();
 
     int process_trsp(size_t edge_count,
-                    int64_t end_vertex,
                     path_element_tt **path,
                     size_t *path_count,
                     char **err_msg);
@@ -178,7 +197,6 @@ class Pgr_trspHandler {
                          size_t *path_count);
     double construct_path(int64_t ed_id, int64_t v_pos);
     void init();
-    void deleteall();
 
  private:
     GraphEdgeVector m_vecEdgeVector;

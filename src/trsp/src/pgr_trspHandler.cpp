@@ -76,10 +76,6 @@ Pgr_trspHandler::Pgr_trspHandler(void) {
     init();
 }
 
-// -------------------------------------------------------------------------
-Pgr_trspHandler::~Pgr_trspHandler(void) {
-}
-
 
 // -------------------------------------------------------------------------
 void Pgr_trspHandler::init() {
@@ -91,10 +87,8 @@ void Pgr_trspHandler::init() {
 
 
 // -------------------------------------------------------------------------
-void Pgr_trspHandler::deleteall() {
-    std::vector<GraphEdgeInfo*>::iterator it;
+void Pgr_trspHandler::clear() {
     m_vecEdgeVector.clear();
-
     parent.clear();
     m_dCost.clear();
 }
@@ -244,13 +238,13 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
 
     if (m_mapNodeId2Edge.find(start_vertex) == m_mapNodeId2Edge.end()) {
         *err_msg = (char *)"Source Not Found";
-        deleteall();
+        clear();
         return -1;
     }
 
     if (m_mapNodeId2Edge.find(end_vertex) == m_mapNodeId2Edge.end()) {
         *err_msg = (char *)"Destination Not Found";
-        deleteall();
+        clear();
         return -1;
     }
 
@@ -308,7 +302,7 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
         }
         if (cur_node != end_vertex) {
             *err_msg = (char *)"Path Not Found";
-            deleteall();
+            clear();
             return -1;
         } else {
             if (cur_node == cur_edge->m_lStartNode) {
@@ -512,13 +506,13 @@ int Pgr_trspHandler::initializeAndProcess(
 
     if (m_mapNodeId2Edge.find(m_start_vertex) == m_mapNodeId2Edge.end()) {
         *err_msg = (char *)"Source Not Found";
-        deleteall();
+        clear();
         return -1;
     }
 
     if (m_mapNodeId2Edge.find(m_end_vertex) == m_mapNodeId2Edge.end()) {
         *err_msg = (char *)"Destination Not Found";
-        deleteall();
+        clear();
         return -1;
     }
 
@@ -530,7 +524,6 @@ int Pgr_trspHandler::initializeAndProcess(
 
     return process_trsp(
             edge_count,
-            m_end_vertex,
             path,
             path_count,
             err_msg);
@@ -608,7 +601,6 @@ GraphEdgeInfo* Pgr_trspHandler::dijkstra_exploration(
 
 int Pgr_trspHandler::process_trsp(
         size_t edge_count,
-        int64_t end_vertex,
         path_element_tt **path,
         size_t *path_count,
         char **err_msg) {
@@ -628,55 +620,57 @@ int Pgr_trspHandler::process_trsp(
 
     cur_edge = dijkstra_exploration(cur_edge, cur_node);
 
-    if (cur_node != end_vertex) {
+    if (cur_node != m_end_vertex) {
         if (m_lStartEdgeId == m_lEndEdgeId) {
             if (get_single_cost(1000.0, path, path_count)) {
                 return 0;
             }
         }
         *err_msg = (char *)"Path Not Found";
-        deleteall();
+        clear();
         return -1;
+    } 
+    
+    double total_cost;
+    if (cur_node == cur_edge->m_lStartNode) {
+        total_cost = m_dCost[cur_edge->m_lEdgeIndex].startCost;
+        construct_path(cur_edge->m_lEdgeIndex, 1);
     } else {
-        double total_cost;
-        if (cur_node == cur_edge->m_lStartNode) {
-            total_cost = m_dCost[cur_edge->m_lEdgeIndex].startCost;
-            construct_path(cur_edge->m_lEdgeIndex, 1);
-        } else {
-            total_cost = m_dCost[cur_edge->m_lEdgeIndex].endCost;
-            construct_path(cur_edge->m_lEdgeIndex, 0);
-        }
-        path_element_tt pelement;
-        pelement.vertex_id = end_vertex;
-        pelement.edge_id = -1;
-        pelement.cost = 0.0;
-        m_vecPath.push_back(pelement);
+        total_cost = m_dCost[cur_edge->m_lEdgeIndex].endCost;
+        construct_path(cur_edge->m_lEdgeIndex, 0);
+    }
 
-        if (m_lStartEdgeId == m_lEndEdgeId) {
-            if (get_single_cost(total_cost, path, path_count)) {
-                return 0;
-            }
-        }
+    path_element_tt pelement;
+    pelement.vertex_id = m_end_vertex;
+    pelement.edge_id = -1;
+    pelement.cost = 0.0;
+    m_vecPath.push_back(pelement);
 
-        *path = (path_element_tt *) malloc(sizeof(path_element_tt) *
-                (m_vecPath.size() + 1));
-        *path_count = static_cast<int>(m_vecPath.size());
-
-        for (size_t i = 0; i < *path_count; i++) {
-            (*path)[i].vertex_id = m_vecPath[i].vertex_id;
-            (*path)[i].edge_id = m_vecPath[i].edge_id;
-            (*path)[i].cost = m_vecPath[i].cost;
-        }
-        if (isStartVirtual) {
-            (*path)[0].vertex_id = -1;
-            (*path)[0].edge_id = m_lStartEdgeId;
-        }
-        if (isEndVirtual) {
-            *path_count = *path_count - 1;
-            (*path)[*path_count - 1].edge_id = m_lEndEdgeId;
+    if (m_lStartEdgeId == m_lEndEdgeId) {
+        if (get_single_cost(total_cost, path, path_count)) {
+            return 0;
         }
     }
-    deleteall();
+
+    *path = (path_element_tt *) malloc(sizeof(path_element_tt) *
+            (m_vecPath.size() + 1));
+    *path_count = m_vecPath.size();
+
+    for (size_t i = 0; i < *path_count; i++) {
+        (*path)[i].vertex_id = m_vecPath[i].vertex_id;
+        (*path)[i].edge_id = m_vecPath[i].edge_id;
+        (*path)[i].cost = m_vecPath[i].cost;
+    }
+    if (isStartVirtual) {
+        (*path)[0].vertex_id = -1;
+        (*path)[0].edge_id = m_lStartEdgeId;
+    }
+    if (isEndVirtual) {
+        *path_count = *path_count - 1;
+        (*path)[*path_count - 1].edge_id = m_lEndEdgeId;
+    }
+
+    clear();
     return 0;
 }
 
@@ -813,21 +807,12 @@ bool Pgr_trspHandler::connectEdge(GraphEdgeInfo& firstEdge,
 // -------------------------------------------------------------------------
 bool Pgr_trspHandler::addEdge(const edge_t edgeIn) {
     // int64_t lTest;
-    Long2LongMap::iterator itMap = m_mapEdgeId2Index.find(edgeIn.id);
+    auto itMap = m_mapEdgeId2Index.find(edgeIn.id);
     if (itMap != m_mapEdgeId2Index.end())
         return false;
 
 
-    GraphEdgeInfo newEdge;
-    newEdge.m_vecStartConnectedEdge.clear();
-    newEdge.m_vecEndConnedtedEdge.clear();
-    newEdge.m_vecRestrictedEdge.clear();
-    newEdge.m_lEdgeID = edgeIn.id;
-    newEdge.m_lEdgeIndex = m_vecEdgeVector.size();
-    newEdge.m_lStartNode = edgeIn.source;
-    newEdge.m_lEndNode = edgeIn.target;
-    newEdge.m_dCost = edgeIn.cost;
-    newEdge.m_dReverseCost = edgeIn.reverse_cost;
+    GraphEdgeInfo newEdge(edgeIn, m_vecEdgeVector.size());
 
     if (edgeIn.id > max_edge_id) {
         max_edge_id = edgeIn.id;
