@@ -277,7 +277,6 @@ echo "### Checking signature files"
 echo
 #---------------------------------------------------------------------
 test_file $PREV_REL
-test_file 2.5.0
 test_file 2.4.1
 test_file 2.4.0
 test_file 2.3.2

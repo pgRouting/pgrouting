@@ -39,10 +39,10 @@ echo -
 #  bash tools/testers/update-tester.sh
 #
 
-CURRENT=2.5.0
+CURRENT=2.6.0
 
 if [ ! -f build/sql/pgrouting--$CURRENT.sql ]; then
-   echo "File not found:  build/lib/pgrouting--$CURRENT.sql "
+   echo "Not testing the current version, file not found:  build/lib/pgrouting--$CURRENT.sql "
    exit 1
 fi
 
@@ -117,6 +117,12 @@ dropdb ___test_update
 ### updates from 2.4
 #------------------------------------
 
+update_test 2.5.0 $CURRENT
+
+#------------------------------------
+### updates from 2.4
+#------------------------------------
+
 update_test 2.4.2 $CURRENT
 update_test 2.4.1 $CURRENT
 update_test 2.4.0 $CURRENT
@@ -125,7 +131,7 @@ update_test 2.4.0 $CURRENT
 ### updates from 2.3.0
 #------------------------------------
 
-#update_test 2.3.2 $CURRENT
+update_test 2.3.2 $CURRENT
 update_test 2.3.1 $CURRENT
 update_test 2.3.0 $CURRENT
 
