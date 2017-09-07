@@ -21,6 +21,8 @@ my $version_2_4 = qr/(2.4.[\d+])/;
 my $version_2_5 = qr/(2.5.[\d+])/;
 my $version_2 = qr/(2.[\d+].[\d+])/;
 
+my $current = $version_2_5;
+
 
 sub Usage {
     die "Usage:\nFrom the cmake:
@@ -47,7 +49,7 @@ die "ERROR: 'build-extension-update-files1.pl' expected old version: 2.0.x ~~ 2.
     unless $old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3|$version_2_4|$version_2_5/;
 
 die "ERROR: 'build-extension-update-files1.pl' expected version: 2.5.x\nHINT: ERROR on PGROUTING_VERSION variable\nor File sql/scripts/build-extension-update-files1.pl needs to be reviewed"
-    unless $version =~ /$version_2_5/;
+    unless $version =~ /$current/;
 
 die "ERROR: 'build-extension-update-files1.pl' can not upgrade from $old_version to $version\nHINT: Please check:\n  file: sql/CMakeLists.txt\n  Section: 'TARGET: update_files'" unless $version !~ $old_version;
 
