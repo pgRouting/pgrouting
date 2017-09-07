@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iostream>
 #include <utility>
 #include <functional>
+#include <limits>
 
 
 #include "c_types/trsp_types.h"
@@ -58,9 +59,17 @@ typedef struct Rule {
     Rule(double c, std::vector<int64_t> p) : cost(c), precedencelist(p) { }
 }Rule;
 
-typedef struct {
-    double startCost, endCost;
-} CostHolder;
+class CostHolder {
+ public:
+    CostHolder() {
+       endCost =  startCost = (std::numeric_limits<double>::max)();
+    }
+
+ public:
+    double startCost;
+    double endCost;
+
+};
 
 typedef std::map<int64_t, std::vector<Rule> > RuleTable;
 
@@ -110,11 +119,18 @@ class GraphDefinition {
     int my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
                     size_t edge_count, char** err_msg);
 
+#if 0
     int my_dijkstra2(edge_t *edges, size_t edge_count,
                     int64_t start_vertex, int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg);
+#else
+    int my_dijkstra2(size_t edge_count,
+                    int64_t end_vertex,
+                    path_element_tt **path, size_t *path_count,
+                    char **err_msg);
+#endif
 
     int my_dijkstra3(edge_t *edges, size_t edge_count,
                     const int64_t start_vertex, const int64_t end_vertex,
@@ -148,6 +164,8 @@ class GraphDefinition {
     int initialize_restrictions(
                     const std::vector<PDVI> &ruleList);
 #endif
+    void initialize_que();
+
     double construct_path(int64_t ed_id, int64_t v_pos);
     void explore(int64_t cur_node, const GraphEdgeInfo cur_edge, bool isStart,
                  const LongVector &vecIndex, std::priority_queue<PDP,
@@ -166,6 +184,7 @@ class GraphDefinition {
     GraphEdgeVector m_vecEdgeVector;
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
+
     int64_t max_node_id;
     int64_t max_edge_id;
     int64_t m_lStartEdgeId;
@@ -183,6 +202,7 @@ class GraphDefinition {
     RuleTable m_ruleTable;
     bool m_bIsturnRestrictOn;
     bool m_bIsGraphConstructed;
+    std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
 };
 
 #endif  // SRC_TRSP_SRC_GRAPHDEFINITION_H_
