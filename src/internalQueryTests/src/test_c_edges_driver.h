@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_TESTCEDGES_SRC_TEST_C_EDGES_DRIVER_H_
-#define SRC_TESTCEDGES_SRC_TEST_C_EDGES_DRIVER_H_
+#ifndef SRC_INTERNALQUERYTESTS_SRC_TEST_C_EDGES_DRIVER_H_
+#define SRC_INTERNALQUERYTESTS_SRC_TEST_C_EDGES_DRIVER_H_
 
 #include "c_types/pgr_edge_t.h"
 
@@ -49,4 +49,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_TESTCEDGES_SRC_TEST_C_EDGES_DRIVER_H_
+#endif  // SRC_INTERNALQUERYTESTS_SRC_TEST_C_EDGES_DRIVER_H_
