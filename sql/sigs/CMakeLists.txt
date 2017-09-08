@@ -13,6 +13,7 @@ SET(OLD_SIGNATURES
     2.4.0
     2.4.1
     2.4.2
+    2.5.0
     )
 
 foreach (f ${OLD_SIGNATURES})

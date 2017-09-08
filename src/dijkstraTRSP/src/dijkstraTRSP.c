@@ -109,10 +109,10 @@ process(
 
 #if 1
     size_t i = 0;
-    while(i < total_restrictions) {
+    while (i < total_restrictions) {
         PGR_DBG("id: %ld cost: %lf", restrictions[i].id, restrictions[i].cost);
         int j = 0;
-        while(restrictions[i].restricted_edges[j] != -1) {
+        while (restrictions[i].restricted_edges[j] != -1) {
             PGR_DBG("%ld ", restrictions[i].restricted_edges[j]);
             j++;
         }

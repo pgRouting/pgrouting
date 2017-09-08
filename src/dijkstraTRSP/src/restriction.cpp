@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 Restriction::Restriction(const Restrict_t &r) :
     m_id(r.id),
     m_cost(r.cost) {
-        for(auto &it: r.restricted_edges) {
+        for (auto &it : r.restricted_edges) {
             if (it == -1) break;
             restrict_edges(it);
         }
