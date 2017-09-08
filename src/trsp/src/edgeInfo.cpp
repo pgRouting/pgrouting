@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace trsp {
 
-GraphEdgeInfo::GraphEdgeInfo(
+EdgeInfo::EdgeInfo(
             edge_t edgeIn,
             size_t edgeIndex) :
         m_edge(edgeIn),

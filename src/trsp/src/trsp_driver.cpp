@@ -50,7 +50,7 @@ int trsp_node_wrapper(
         pgassert(*path == NULL);
         pgassert(*path_count == 0);
 
-        std::vector<PDVI> ruleTable;
+        std::vector<pgrouting::trsp::PDVI> ruleTable;
         size_t MAX_RULE_LENGTH = 5;
 
         size_t i, j;
@@ -77,7 +77,7 @@ int trsp_node_wrapper(
                 path, path_count, err_msg, ruleTable);
 
 #else
-        Pgr_trspHandler gdef;
+        pgrouting::trsp::Pgr_trspHandler gdef;
         int res = gdef.initializeAndProcess(
                 edges, edge_count,
                 ruleTable,
@@ -120,7 +120,7 @@ int trsp_edge_wrapper(
         pgassert(*path == NULL);
         pgassert(*path_count == 0);
         size_t MAX_RULE_LENGTH = 5;
-        std::vector<PDVI> ruleTable;
+        std::vector<pgrouting::trsp::PDVI> ruleTable;
 
         size_t i, j;
         ruleTable.clear();
@@ -137,7 +137,7 @@ int trsp_edge_wrapper(
 #if 0
         Pgr_trspHandler gdef(edges, edge_count, directed, has_reverse_cost);
 #else
-        Pgr_trspHandler gdef;
+        pgrouting::trsp::Pgr_trspHandler gdef;
 #endif
         auto res = gdef.my_dijkstra4(edges, edge_count, start_edge, start_pos,
                 end_edge, end_pos, directed, has_reverse_cost, path, path_count,

@@ -2,7 +2,7 @@
 
 FILE: pgr_trspHandler.h
 
-Copyright (c) 2011-2017 pgRouting developers
+Copyright (c) 2011 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -39,10 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_types/trsp_types.h"
+#include "trsp/edgeInfo.h"
+
+namespace pgrouting {
+namespace trsp {
 
 
-typedef std::vector<int64_t> LongVector;
-typedef std::vector<LongVector> VectorOfLongVector;
+
 typedef std::pair<int64_t, bool> PIB;
 typedef std::pair<double, PIB> PDP;
 typedef std::pair<double, std::vector<int64_t> > PDVI;
@@ -75,45 +78,8 @@ typedef std::map<int64_t, std::vector<Rule> > RuleTable;
 
 
 
-class GraphEdgeInfo {
- public:
-     GraphEdgeInfo(
-             edge_t edgeIn,
-             size_t edgeIndex) :
-         m_lEdgeID(edgeIn.id),
-         m_lEdgeIndex(edgeIndex),
-         m_dCost(edgeIn.cost),
-         m_dReverseCost(edgeIn.reverse_cost),
 
-         m_vecStartConnectedEdge(),
-         m_vecEndConnedtedEdge(),
-         m_vecRestrictedEdge(),
-
-         m_lStartNode(edgeIn.source),
-         m_lEndNode(edgeIn.target) {}
-
-
- public:
-    int64_t m_lEdgeID;
-    size_t m_lEdgeIndex;
-    int m_sDirection;
-    double m_dCost;
-    double m_dReverseCost;
-
-    LongVector m_vecStartConnectedEdge;
-    LongVector m_vecEndConnedtedEdge;
-    VectorOfLongVector m_vecRestrictedEdge;
-
-    bool m_bIsLeadingRestrictedEdge;
-
-    int64_t m_lStartNode;
-    int64_t m_lEndNode;
-};
-
-
-
-
-typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
+typedef std::vector<EdgeInfo> GraphEdgeVector;
 typedef std::map<int64_t, LongVector> Long2LongVectorMap;
 typedef std::map<int64_t, int64_t> Long2LongMap;
 
@@ -179,19 +145,19 @@ class Pgr_trspHandler {
                     size_t *path_count,
                     char **err_msg);
 
-    GraphEdgeInfo* dijkstra_exploration(
-            GraphEdgeInfo* cur_edge,
-            int64_t &cur_node);
+    EdgeInfo* dijkstra_exploration(
+            EdgeInfo* cur_edge,
+            size_t &cur_node);
 
 
 
-    void explore(int64_t cur_node, const GraphEdgeInfo cur_edge, bool isStart,
+    void explore(size_t cur_node, const EdgeInfo cur_edge, bool isStart,
                  const LongVector &vecIndex);
 
-    double getRestrictionCost(int64_t cur_node, const GraphEdgeInfo &new_edge,
+    double getRestrictionCost(int64_t cur_node, const EdgeInfo &new_edge,
                               bool isStart);
     bool addEdge(const edge_t edgeIn);
-    bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge,
+    bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,
                      bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_tt **path,
                          size_t *path_count);
@@ -203,16 +169,16 @@ class Pgr_trspHandler {
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
 
-    int64_t max_node_id;
-    int64_t max_edge_id;
+    size_t max_node_id;
+    size_t max_edge_id;
     int64_t m_lStartEdgeId;
     int64_t m_lEndEdgeId;
     double m_dStartpart;
     double m_dEndPart;
     bool isStartVirtual;
     bool isEndVirtual;
-    int64_t m_start_vertex;
-    int64_t m_end_vertex;
+    size_t m_start_vertex;
+    size_t m_end_vertex;
 
     std::vector <path_element_tt> m_vecPath;
     std::vector<PARENT_PATH> parent;
@@ -222,5 +188,9 @@ class Pgr_trspHandler {
     bool m_bIsGraphConstructed;
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
 };
+
+
+}  // namespace trsp  
+}  // namespace pgrouting
 
 #endif  // SRC_TRSP_SRC_GRAPHDEFINITION_H_

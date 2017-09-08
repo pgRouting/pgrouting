@@ -39,9 +39,9 @@ typedef std::vector<int64_t> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 
 
-class GraphEdgeInfo {
+class EdgeInfo {
  public:
-     GraphEdgeInfo(
+     EdgeInfo(
              edge_t edgeIn,
              size_t edgeIndex);
      
