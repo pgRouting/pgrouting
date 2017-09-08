@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>withPoints - Family of functions &mdash; pgRouting Manual (2.5-alpha)</title>
+    <title>withPoints - Family of functions &mdash; pgRouting Manual (2.6-dev)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.0-alpha',
+        VERSION:     'v2.6.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -29,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.5-alpha)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.6-dev)" href="index.html" />
     <link rel="up" title="Stable Proposed Functions" href="proposed.html" />
     <link rel="next" title="pgr_withPoints - Proposed" href="pgr_withPoints.html" />
     <link rel="prev" title="pgr_bdDijkstraCostMatrix - proposed" href="pgr_bdDijkstraCostMatrix.html" />
@@ -52,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-alpha</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -220,39 +220,28 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </dd>
 </dl>
 <p>In all this functions we have to take care of as many aspects as possible:</p>
-<ul>
-<li><p class="first">Must work for routing:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
+<li>Must work for routing:<ul>
 <li>Cars (directed graph)</li>
 <li>Pedestrians (undirected graph)</li>
 </ul>
-</div></blockquote>
 </li>
-<li><p class="first">Arriving at the point:</p>
-<blockquote>
-<div><ul class="simple">
+<li>Arriving at the point:<ul>
 <li>In either side of the street.</li>
 <li>Compulsory arrival on the side of the street where the point is located.</li>
 </ul>
-</div></blockquote>
 </li>
-<li><p class="first">Countries with:</p>
-<blockquote>
-<div><ul class="simple">
+<li>Countries with:<ul>
 <li>Right side driving</li>
 <li>Left side driving</li>
 </ul>
-</div></blockquote>
 </li>
-<li><p class="first">Some points are:</p>
-<ul class="simple">
+<li>Some points are:<ul>
 <li>Permanent, for example the set of points of clients stored in a table in the data base</li>
 <li>Temporal, for example points given through a web application</li>
 </ul>
 </li>
-<li><p class="first">The numbering of the points are handled with negative sign.</p>
-<ul class="simple">
+<li>The numbering of the points are handled with negative sign.<ul>
 <li>Original point identifiers are to be positive.</li>
 <li>Transformation to negative is done internally.</li>
 <li>For results for involving vertices identifiers<ul>
@@ -280,45 +269,12 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </div>
 <div class="section" id="point-definition">
 <h2>Point Definition<a class="headerlink" href="#point-definition" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">A point is defined by the quadruplet: <span class="math">\((pid, eid, fraction, side)\)</span></p>
-<ul>
-<li><table class="first docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ped:</th><td class="field-body">is the point identifier</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><table class="first docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">eid:</th><td class="field-body">is an edge id of the <cite>edges_sql</cite></td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><table class="first docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">fraction:</th><td class="field-body">represents where the edge <cite>eid</cite> will be cut.</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><table class="first docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">side:</th><td class="field-body">Indicates the side of the edge where the point is located.</td>
-</tr>
-</tbody>
-</table>
-</li>
+<ul class="simple">
+<li>A point is defined by the quadruplet: <span class="math">\((pid, eid, fraction, side)\)</span><ul>
+<li><strong>pid</strong> is the point identifier</li>
+<li><strong>eid</strong> is an edge id of the <cite>edges_sql</cite></li>
+<li><strong>fraction</strong> represents where the edge <cite>eid</cite> will be cut.</li>
+<li><strong>side</strong> Indicates the side of the edge where the point is located.</li>
 </ul>
 </li>
 </ul>
@@ -328,8 +284,7 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 <p>For edge (15,  9,12  10, 20), &amp; lets insert point (2, 12, 0.3, r)</p>
 <p class="rubric">On a right hand side driving network</p>
 <p>From first image above:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>We can arrive to the point only via vertex 9.</li>
 <li>It only afects the edge (15, 9,12, 10) so that edge is removed.</li>
 <li>Edge (15, 12,9, 20) is kept.</li>
@@ -339,11 +294,9 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </ul>
 </li>
 </ul>
-</div></blockquote>
 <p class="rubric">On a left hand side driving network</p>
 <p>From second image above:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>We can arrive to the point only via vertex 12.</li>
 <li>It only afects the edge (15, 12,9 20) so that edge is removed.</li>
 <li>Edge (15, 9,12, 10) is kept.</li>
@@ -353,7 +306,6 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </ul>
 </li>
 </ul>
-</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -364,8 +316,7 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </table>
 <p class="rubric">When driving side does not matter</p>
 <p>From third image above:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>We can arrive to the point either via vertex 12 or via vertex 9</li>
 <li>Edge (15, 12,9 20) is removed.</li>
 <li>Edge (15, 9,12, 10) is removed.</li>
@@ -377,7 +328,6 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </ul>
 </li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -401,8 +351,8 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.0-alpha.<br/>
-      Last updated on Aug 21, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
+      Last updated on Sep 07, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
