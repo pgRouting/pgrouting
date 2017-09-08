@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_WITHPOINTS_SRC_PGR_WITHPOINTS_HPP_
-#define SRC_WITHPOINTS_SRC_PGR_WITHPOINTS_HPP_
+#ifndef INCLUDE_WITHPOINTS_PGR_WITHPOINTS_HPP_
+#define INCLUDE_WITHPOINTS_PGR_WITHPOINTS_HPP_
 #pragma once
 #include <vector>
 
@@ -69,4 +69,4 @@ create_new_edges(
         std::vector< pgr_edge_t > &new_edges,
         std::ostringstream &log);
 
-#endif  // SRC_WITHPOINTS_SRC_PGR_WITHPOINTS_HPP_
+#endif  // INCLUDE_WITHPOINTS_PGR_WITHPOINTS_HPP_
