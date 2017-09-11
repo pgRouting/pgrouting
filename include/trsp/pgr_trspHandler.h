@@ -2,7 +2,7 @@
 
 FILE: pgr_trspHandler.h
 
-Copyright (c) 2011 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_TRSP_SRC_GRAPHDEFINITION_H_
-#define SRC_TRSP_SRC_GRAPHDEFINITION_H_
+#ifndef INCLUDE_TRSP_PGR_TRSPHANDLER_H_
+#define INCLUDE_TRSP_PGR_TRSPHANDLER_H_
 
 #include <stdlib.h>
 
@@ -71,7 +71,6 @@ class CostHolder {
  public:
     double startCost;
     double endCost;
-
 };
 
 typedef std::map<int64_t, std::vector<Rule> > RuleTable;
@@ -190,7 +189,7 @@ class Pgr_trspHandler {
 };
 
 
-}  // namespace trsp  
+}  // namespace trsp
 }  // namespace pgrouting
 
-#endif  // SRC_TRSP_SRC_GRAPHDEFINITION_H_
+#endif  // INCLUDE_TRSP_PGR_TRSPHANDLER_H_

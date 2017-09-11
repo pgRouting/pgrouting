@@ -1,7 +1,8 @@
 /*
  * Shortest path with turn restrictions algorithm for PostgreSQL
  *
- * Copyright (c) 2011 Stephen Woodbridge
+ * Copyright (c) 2017 pgRouting developers
+ * Mail: project@pgrouting.org
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +20,8 @@
  *
  */
 
-#ifndef SRC_TRSP_SRC_TRSP_H_
-#define SRC_TRSP_SRC_TRSP_H_
+#ifndef INCLUDE_C_TYPES_TRSP_TYPES_H_
+#define INCLUDE_C_TYPES_TRSP_TYPES_H_
 
 
 #ifdef __cplusplus
@@ -73,4 +74,4 @@ typedef struct path_element {
 } path_element_tt;
 
 
-#endif  // SRC_TRSP_SRC_TRSP_H_
+#endif  // INCLUDE_C_TYPES_TRSP_TYPES_H_

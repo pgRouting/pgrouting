@@ -576,7 +576,8 @@ Pgr_lineGraph< G, T_V, T_E >::create_edges(
                 /*
                 Prevent self-edges from being created in the Line Graph
                 */
-                if (labs(static_cast<long>(digraph.graph[*e_inIt].id)) == labs(static_cast<long>(digraph.graph[*e_outIt].id)))
+                if (labs(static_cast<long>(digraph.graph[*e_inIt].id))
+                        == labs(static_cast<long>(digraph.graph[*e_outIt].id)))
                     continue;
 
                 auto source_in_edge = digraph.source(*e_inIt);
