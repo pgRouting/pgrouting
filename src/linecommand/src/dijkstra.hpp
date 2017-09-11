@@ -20,6 +20,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+#ifndef SRC_LINECOMMAND_SRC_DIJKSTRA_HPP_
+#define SRC_LINECOMMAND_SRC_DIJKSTRA_HPP_
 
 #include <deque>
 #include <string>
@@ -82,7 +84,8 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         // one to many
         pgr_dijkstra(graph, paths, sources[0], targets);
 
-        std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
+        std::cout << "THE OPUTPUTS ---->  total outputs: " <<
+            paths.size() << "\n";
         for (unsigned int i = 0; i < paths.size(); ++i) {
             if (sizeof(paths[i]) == 0) continue;  // no solution found
             std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
@@ -94,7 +97,8 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         pgr_dijkstra(graph, paths, sources, targets[0]);
 
 
-        std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
+        std::cout << "THE OPUTPUTS ---->  total outputs: "
+            << paths.size() << "\n";
         for (unsigned int i = 0; i < paths.size(); ++i) {
             if (sizeof(paths[i]) == 0) continue;  // no solution found
             std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
@@ -105,7 +109,8 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         std::deque<Path> paths;
         pgr_dijkstra(graph, paths, sources, targets);
 
-        std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
+        std::cout << "THE OPUTPUTS ---->  total outputs: "
+            << paths.size() << "\n";
         for (unsigned int i = 0; i < paths.size(); ++i) {
             if (sizeof(paths[i]) == 0) continue;  // no solution found
             std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
@@ -113,3 +118,5 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         }
     }
 }
+
+#endif  // SRC_LINECOMMAND_SRC_DIJKSTRA_HPP_
