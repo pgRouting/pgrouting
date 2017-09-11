@@ -1,13 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_many_to_many_driver.h
+FILE: alpha.h
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
 Mail: project@pgrouting.org
-
-Function's developer:
-Copyright (c) 2016 Andrea Nardelli
-Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -27,35 +22,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_DRIVER_H_
-#define SRC_MAX_FLOW_SRC_MAX_FLOW_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
+#define INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
+#pragma once
 
-#include "c_types/pgr_flow_t.h"
-#include "c_types/pgr_edge_t.h"
+#include <stddef.h>
+
+typedef struct vertex {
+  double x;
+  double y;
+} vertex_t;
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void
-        do_pgr_max_flow(
-            pgr_edge_t *data_edges,
-            size_t total_tuples,
-            int64_t* source_vertices,
-            size_t size_source_verticesArr,
-            int64_t* sink_vertices,
-            size_t size_sink_verticesArr,
-            int algorithm,
-            bool only_flow,
-            pgr_flow_t **return_tuples,
-            size_t *return_count,
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
-
+  int alpha_shape(vertex_t *vertices, size_t count, double alpha,
+                  vertex_t **res, size_t *res_count, char **err_msg);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // SRC_MAX_FLOW_SRC_MAX_FLOW_DRIVER_H_
+
+#endif  // INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_

@@ -118,7 +118,8 @@ do_pgr_driving_many_to_dist(
         if (directedFlag) {
 #ifdef WITH_TIME
             start_timing(start_t, begin_elapsed, begin);
-            log << "*********Creating graph at time: " << std::ctime(&start_t) << "\n";
+            log << "*********Creating graph at time: " << std::ctime(&start_t)
+                << "\n";
 #endif
             pgrouting::DirectedGraph digraph(vertices, gType);
 #ifdef WITH_TIME
@@ -127,7 +128,8 @@ do_pgr_driving_many_to_dist(
 
 #ifdef WITH_TIME
             start_timing(start_t, begin_elapsed, begin);
-            log << "********Inserting edges at time: " << std::ctime(&start_t) << "\n";
+            log << "********Inserting edges at time: " << std::ctime(&start_t)
+                << "\n";
 #endif
             digraph.insert_edges(data_edges, total_edges, true);
 #ifdef WITH_TIME
@@ -136,7 +138,8 @@ do_pgr_driving_many_to_dist(
 
 #ifdef WITH_TIME
             start_timing(start_t, begin_elapsed, begin);
-            log << "*******Calling the C++ call to pgr_drivingDistance: " << std::ctime(&start_t) << "\n";
+            log << "*******Calling the C++ call to pgr_drivingDistance: "
+                << std::ctime(&start_t) << "\n";
 #endif
             paths = pgr_drivingDistance(
                     digraph, start_vertices, distance, equiCostFlag, log);
@@ -146,7 +149,8 @@ do_pgr_driving_many_to_dist(
         } else {
 #ifdef WITH_TIME
             start_timing(start_t, begin_elapsed, begin);
-            log << "******Creating graph at time: " << std::ctime(&start_t) << "\n";
+            log << "******Creating graph at time: " << std::ctime(&start_t)
+                << "\n";
 #endif
             pgrouting::UndirectedGraph undigraph(vertices, gType);
 #ifdef WITH_TIME
@@ -155,7 +159,8 @@ do_pgr_driving_many_to_dist(
 
 #ifdef WITH_TIME
             start_timing(start_t, begin_elapsed, begin);
-            log << "*******Inserting edges at time: " << std::ctime(&start_t) << "\n";
+            log << "*******Inserting edges at time: " << std::ctime(&start_t)
+                << "\n";
 #endif
             undigraph.insert_edges(data_edges, total_edges, true);
 #ifdef WITH_TIME
@@ -164,7 +169,8 @@ do_pgr_driving_many_to_dist(
 
 #ifdef WITH_TIME
             start_timing(start_t, begin_elapsed, begin);
-            log << "*******Calling the C++ call to pgr_drivingDistance: " << std::ctime(&start_t) << "\n";
+            log << "*******Calling the C++ call to pgr_drivingDistance: "
+                << std::ctime(&start_t) << "\n";
 #endif
             paths = pgr_drivingDistance(
                     undigraph, start_vertices, distance, equiCostFlag, log);

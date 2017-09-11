@@ -27,13 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./edge_disjoint_paths_driver.h"
+#include "drivers/max_flow/edge_disjoint_paths_driver.h"
 
 #include <sstream>
 #include <vector>
 #include <set>
 
-#include "./pgr_maxflow.hpp"
+#include "max_flow/pgr_maxflow.hpp"
 
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
@@ -47,7 +47,6 @@ single_execution(
         int64_t source,
         int64_t target,
         bool directed) {
-
     std::set<int64_t> set_source_vertices;
     std::set<int64_t> set_sink_vertices;
     set_source_vertices.insert(source);

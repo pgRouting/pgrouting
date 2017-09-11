@@ -94,7 +94,7 @@ pgr_get_restriction_data(
 #if 0
     // experiment starts
 
-    size_t total_tuples = (*total_restrictions) ;
+    size_t total_tuples = (*total_restrictions);
 
     (*restrictions) = (Restrict_t *)palloc0(sizeof(Restrict_t));
 

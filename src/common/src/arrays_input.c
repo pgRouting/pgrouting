@@ -24,13 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/arrays_input.h"
 
+#include <assert.h>
 #include "utils/lsyscache.h"
 #include "catalog/pg_type.h"
 
 
 #include "c_common/time_msg.h"
 #include "c_common/debug_macro.h"
-#include <assert.h>
 
 static
 int64_t*

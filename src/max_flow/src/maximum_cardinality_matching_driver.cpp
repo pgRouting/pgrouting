@@ -27,12 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./maximum_cardinality_matching_driver.h"
+#include "drivers/max_flow/maximum_cardinality_matching_driver.h"
 
 #include <sstream>
 #include <vector>
 
-#include "./pgr_maximumcardinalitymatching.hpp"
+#include "max_flow/pgr_maximumcardinalitymatching.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"

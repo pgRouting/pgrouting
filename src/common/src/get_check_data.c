@@ -28,13 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/debug_macro.h"
 
-char*
-pgr_stradd(const char* a, const char* b) {
-    size_t len = strlen(a) + strlen(b);
-    char *ret = (char*)malloc(len * sizeof(char) + 1);
-    *ret = '\0';
-    return strcat(strcat(ret, a), b);
-}
 
 bool
 column_found(int colNumber) {

@@ -234,7 +234,8 @@ Fleet::build_fleet(
                     && ending_site.opens() <= ending_site.closes())) {
                 msg.clear();
                 msg.error << "Illegal values found on vehicle";
-                msg.log << "On vehicle " << vehicle.id << " a condition is not met, verify that:\n"
+                msg.log << "On vehicle " << vehicle.id
+                    << " a condition is not met, verify that:\n"
                     << "-  start_open <= start_close\n"
                     << "-  end_open <= end_close\n"
                     << "-  capacity > 0\n";
@@ -244,7 +245,9 @@ Fleet::build_fleet(
 
             pgassert(starting_site.opens() <= starting_site.closes());
             pgassert(ending_site.opens() <= ending_site.closes());
-            pgassertwm(starting_site.is_start() && ending_site.is_end(), msg.get_error().c_str());
+            pgassertwm(
+                    starting_site.is_start() && ending_site.is_end(),
+                    msg.get_error().c_str());
             add_vehicle(vehicle, factor,
                     std::move(b_start), starting_site,
                     std::move(b_end), ending_site);
@@ -265,7 +268,8 @@ Fleet::build_fleet(
                     && ending_site.opens() <= ending_site.closes())) {
                 msg.clear();
                 msg.error << "Illegal values found on vehicle";
-                msg.log << "On vehicle " << vehicle.id << " a condition is not met, verify that:\n"
+                msg.log << "On vehicle " << vehicle.id
+                    << " a condition is not met, verify that:\n"
                     << "-  start_open <= start_close\n"
                     << "-  end_open <= end_close\n"
                     << "-  capacity > 0\n";
@@ -294,7 +298,8 @@ Fleet::is_fleet_ok() const {
     for (auto truck : m_trucks) {
         if (!truck.is_ok()) {
             msg.error << "Illegal values found on vehicle";
-            msg.log << "On vehicle " << truck.id() << " a condition is not met, verify that:\n"
+            msg.log << "On vehicle " << truck.id()
+                << " a condition is not met, verify that:\n"
                 << "-  start_open <= start_close\n"
                 << "-  end_open <= end_close\n"
                 << "-  capacity > 0\n";

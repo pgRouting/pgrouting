@@ -189,8 +189,12 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
                 << "," << matrix.get_index(matrix.ids[j]) << ")"
                 << "\t = " << matrix.costs[i][j]
                 << "\t = " << matrix.costs[j][i]
-                << "=inf:" <<  (matrix.costs[i][j] == (std::numeric_limits<double>::infinity)())
-                << "=inf:" <<  (matrix.costs[j][i] == (std::numeric_limits<double>::infinity)())
+                << "=inf:"
+                <<  (matrix.costs[i][j] ==
+                        (std::numeric_limits<double>::infinity)())
+                << "=inf:"
+                <<  (matrix.costs[j][i] ==
+                        (std::numeric_limits<double>::infinity)())
 #endif
                 << "\n";
             ++j;

@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_CONTRACTION_SRC_PGR_CONTRACTIONGRAPH_HPP_
-#define SRC_CONTRACTION_SRC_PGR_CONTRACTIONGRAPH_HPP_
+#ifndef INCLUDE_CONTRACTION_PGR_CONTRACTIONGRAPH_HPP_
+#define INCLUDE_CONTRACTION_PGR_CONTRACTIONGRAPH_HPP_
 #pragma once
 
 
@@ -37,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
-#include "../../common/src/ch_vertex.h"
-#include "../../common/src/ch_edge.h"
+#include "cpp_common/ch_vertex.h"
+#include "cpp_common/ch_edge.h"
 
 
 namespace pgrouting {
@@ -299,4 +299,4 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // SRC_CONTRACTION_SRC_PGR_CONTRACTIONGRAPH_HPP_
+#endif  // INCLUDE_CONTRACTION_PGR_CONTRACTIONGRAPH_HPP_

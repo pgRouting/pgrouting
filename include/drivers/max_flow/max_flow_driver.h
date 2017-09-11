@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: edge_disjoint_paths_many_to_one_driver.h
+File: max_flow_many_to_many_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,27 +27,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_DRIVER_H_
-#define SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_MAX_FLOW_MAX_FLOW_DRIVER_H_
+#define INCLUDE_DRIVERS_MAX_FLOW_MAX_FLOW_DRIVER_H_
+#pragma once
 
+#include "c_types/pgr_flow_t.h"
 #include "c_types/pgr_edge_t.h"
-#include "c_types/general_path_element_t.h"
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
     void
-        do_pgr_edge_disjoint_paths(
+        do_pgr_max_flow(
             pgr_edge_t *data_edges,
             size_t total_tuples,
-            int64_t *source_vertices,
+            int64_t* source_vertices,
             size_t size_source_verticesArr,
-            int64_t *sink_vertices,
+            int64_t* sink_vertices,
             size_t size_sink_verticesArr,
-            bool directed,
-            General_path_element_t **return_tuples,
+            int algorithm,
+            bool only_flow,
+            pgr_flow_t **return_tuples,
             size_t *return_count,
             char** log_msg,
             char** notice_msg,
@@ -58,4 +59,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_MAX_FLOW_MAX_FLOW_DRIVER_H_

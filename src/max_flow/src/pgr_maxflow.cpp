@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "pgr_maxflow.hpp"
+#include "max_flow/pgr_maxflow.hpp"
 
 #include <limits>
 #include <utility>

@@ -44,8 +44,6 @@ PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(withPoints_ksp);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
 static
 void
 process(
@@ -62,12 +60,11 @@ process(
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
-
     driving_side[0] = (char) tolower(driving_side[0]);
-    PGR_DBG("driving side:%c",driving_side[0]);
-    if (! ((driving_side[0] == 'r')
+    PGR_DBG("driving side:%c", driving_side[0]);
+    if (!((driving_side[0] == 'r')
                 || (driving_side[0] == 'l'))) {
-        driving_side[0] = 'b'; 
+        driving_side[0] = 'b';
     }
 
     pgr_SPI_connect();
@@ -86,7 +83,9 @@ process(
 
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query,
+            &edges_of_points,
+            &total_edges_of_points);
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
@@ -146,11 +145,8 @@ process(
     pfree(points);
 
     pgr_SPI_finish();
-
 }
 
-/*                                                                             */
-/*******************************************************************************/
 
 
 
@@ -158,13 +154,8 @@ PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /*******************************************************************************/
-    /*                          MODIFY AS NEEDED                                   */
-    /*                                                                             */
     General_path_element_t  *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                             */
-    /*******************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -172,22 +163,23 @@ PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   */
-        // CREATE OR REPLACE FUNCTION pgr_withPoint(
-        // edges_sql TEXT,
-        // points_sql TEXT,
-        // start_pid INTEGER,
-        // end_pid BIGINT,
-        // k BIGINT,
-        //
-        // directed BOOLEAN -- DEFAULT true,
-        // heap_paths BOOLEAN -- DEFAULT false,
-        // driving_side CHAR -- DEFAULT 'b',
-        // details BOOLEAN -- DEFAULT false,
+        /*
+           CREATE OR REPLACE FUNCTION pgr_withPoint(
+           edges_sql TEXT,
+           points_sql TEXT,
+           start_pid INTEGER,
+           end_pid BIGINT,
+           k BIGINT,
+
+           directed BOOLEAN -- DEFAULT true,
+           heap_paths BOOLEAN -- DEFAULT false,
+           driving_side CHAR -- DEFAULT 'b',
+           details BOOLEAN -- DEFAULT false
+        */
 
         PGR_DBG("Calling process");
-        PGR_DBG("initial driving side:%s", text_to_cstring(PG_GETARG_TEXT_P(7)));
+        PGR_DBG("initial driving side:%s",
+                text_to_cstring(PG_GETARG_TEXT_P(7)));
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
@@ -201,8 +193,6 @@ PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                             */
-        /*******************************************************************************/
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -210,7 +200,8 @@ PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS) {
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -230,13 +221,11 @@ PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   */
         values = palloc(7 * sizeof(Datum));
         nulls = palloc(7 * sizeof(bool));
 
         size_t i;
-        for(i = 0; i < 7; ++i) {
+        for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
 
@@ -249,15 +238,15 @@ PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum((int)(result_tuples[funcctx->call_cntr].start_id + 1));
+        values[1] = Int32GetDatum((int)
+                (result_tuples[funcctx->call_cntr].start_id + 1));
         values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /*******************************************************************************/
 
-        tuple =heap_form_tuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

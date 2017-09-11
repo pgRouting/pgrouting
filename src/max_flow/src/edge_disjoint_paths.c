@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "./edge_disjoint_paths_driver.h"
+#include "drivers/max_flow/edge_disjoint_paths_driver.h"
 
 PGDLLEXPORT Datum
 edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS);
@@ -118,10 +118,8 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;
 
-    /**************************************************************************/
     General_path_element_t *result_tuples = NULL;
     size_t result_count = 0;
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext oldcontext;
@@ -129,7 +127,6 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -139,7 +136,6 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /**********************************************************************/
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -169,8 +165,6 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
         Datum *values;
         bool *nulls;
 
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
         values = palloc(9 * sizeof(Datum));
         nulls = palloc(9 * sizeof(bool));
@@ -181,7 +175,8 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].start_id + 1);
+        values[1] = Int32GetDatum(
+                result_tuples[funcctx->call_cntr].start_id + 1);
         values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
@@ -189,7 +184,6 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
         values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

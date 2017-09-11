@@ -1,8 +1,13 @@
 /*PGR-GNU*****************************************************************
-FILE: alpha.h
+File: maximum_cardinality_matching_driver.h
 
-Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -22,28 +27,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_ALPHA_SHAPE_SRC_ALPHA_DRIVER_H_
-#define SRC_ALPHA_SHAPE_SRC_ALPHA_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
+#define INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
 #pragma once
 
-#include <stddef.h>
-
-typedef struct vertex {
-  double x;
-  double y;
-} vertex_t;
-
+#include "c_types/pgr_basic_edge_t.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-  int alpha_shape(vertex_t *vertices, size_t count, double alpha,
-                  vertex_t **res, size_t *res_count, char **err_msg);
+    void
+        do_pgr_maximum_cardinality_matching(
+            pgr_basic_edge_t *data_edges,
+            size_t total_edges,
+            bool directed,
+
+            pgr_basic_edge_t **return_tuples,
+            size_t *return_count,
+
+            char** log_msg,
+            char** notice_msg,
+            char **err_msg);
+
 
 #ifdef __cplusplus
 }
 #endif
 
-
-#endif  // SRC_ALPHA_SHAPE_SRC_ALPHA_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_

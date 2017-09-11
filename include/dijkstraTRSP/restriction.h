@@ -23,8 +23,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DIJKSTRATRSP_RESTRICTION_H
-#define INCLUDE_DIJKSTRATRSP_RESTRICTION_H
+#ifndef INCLUDE_DIJKSTRATRSP_RESTRICTION_H_
+#define INCLUDE_DIJKSTRATRSP_RESTRICTION_H_
 #pragma once
 
 #include <sstream>
@@ -67,4 +67,4 @@ class Restriction {
              const Restriction &r);
 };
 
-#endif  // INCLUDE_DIJKSTRATRSP_RESTRICTION_H
+#endif  // INCLUDE_DIJKSTRATRSP_RESTRICTION_H_

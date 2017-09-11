@@ -19,6 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
+#ifndef SRC_LINECOMMAND_SRC_WARSHALL_HPP_
+#define SRC_LINECOMMAND_SRC_WARSHALL_HPP_
+
 #include <string>
 #include <vector>
 #include "./../../warshall/src/pgr_warshall.hpp"
@@ -38,7 +41,10 @@ void process_warshall(G &graph, const std::vector<std::string> &tokens) {
         std::cout << "seq\tfrom\tto\tcost\n";
         size_t seq = 0;
         for (size_t i = 0; i < matrix_rows.size(); i++) {
-            std::cout << seq++ << "\t" << matrix_rows[i].from_vid << "\t" <<  matrix_rows[i].to_vid << "\t" << matrix_rows[i].cost << "\n";
+            std::cout << seq++
+                << "\t" << matrix_rows[i].from_vid
+                << "\t" <<  matrix_rows[i].to_vid
+                << "\t" << matrix_rows[i].cost << "\n";
         }
 #ifdef TEST_POSTGRES
         size_t result_tuple_count;
@@ -48,7 +54,10 @@ void process_warshall(G &graph, const std::vector<std::string> &tokens) {
         std::cout << "seq\tfrom\tto\tcost\n";
         seq = 0;
         for (size_t i = 0; i < result_tuple_count; i++) {
-            std::cout << seq++ << "\t" << postgres_rows[i].from_vid << "\t" <<  postgres_rows[i].to_vid << "\t" << postgres_rows[i].cost << "\n";
+            std::cout << seq++
+                << "\t" << postgres_rows[i].from_vid
+                << "\t" <<  postgres_rows[i].to_vid
+                << "\t" << postgres_rows[i].cost << "\n";
         }
 #endif  // TEST_POSTGRES
       } else {
@@ -56,3 +65,4 @@ void process_warshall(G &graph, const std::vector<std::string> &tokens) {
       }
 }
 
+#endif  // SRC_LINECOMMAND_SRC_WARSHALL_HPP_
