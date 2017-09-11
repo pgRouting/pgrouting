@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/trsp_types.h"
 #include "trsp/edgeInfo.h"
+#include "trsp/rule.h"
 
 namespace pgrouting {
 namespace trsp {
@@ -56,12 +57,13 @@ typedef struct {
     int64_t v_pos[2];
 } PARENT_PATH;
 
+#if 0
 typedef struct Rule {
     double cost;
     std::vector<int64_t> precedencelist;
     Rule(double c, std::vector<int64_t> p) : cost(c), precedencelist(p) { }
 }Rule;
-
+#endif
 class CostHolder {
  public:
     CostHolder() {

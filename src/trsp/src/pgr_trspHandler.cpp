@@ -145,17 +145,15 @@ double Pgr_trspHandler::getRestrictionCost(
     if (m_ruleTable.find(edge_id) == m_ruleTable.end()) {
         return(0.0);
     }
-    std::vector<Rule> vecRules = m_ruleTable[edge_id];
+    auto vecRules = m_ruleTable[edge_id];
     int64_t st_edge_ind = edge_ind;
     for (const auto &rule : vecRules) {
         bool flag = true;
-        int64_t v_pos = (isStart?0:1);
+        int64_t v_pos = (isStart? 0 : 1);
         edge_ind = st_edge_ind;
-        for (auto const &precedence : rule.precedencelist) {
-            if (edge_ind == -1) {
-                flag = false;
-                break;
-            }
+
+        pgassert(!(edge_ind == -1));
+        for (auto const &precedence : rule.precedencelist()) {
             if (precedence != m_vecEdgeVector[edge_ind].edgeID()) {
                 flag = false;
                 break;
@@ -165,7 +163,7 @@ double Pgr_trspHandler::getRestrictionCost(
             edge_ind = parent_ind;
         }
         if (flag)
-            cost += rule.cost;
+            cost += rule.cost();
     }
     return cost;
 }

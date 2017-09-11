@@ -54,7 +54,7 @@ class EdgeInfo {
      inline size_t endNode() const {
          pgassert(m_edge.target >= 0);
          return m_edge.target;}
-     inline size_t edgeID() const {return m_edge.id;}
+     inline int64_t edgeID() const {return m_edge.id;}
      inline double cost() const {return m_edge.cost;}
      inline double r_cost() const {return m_edge.reverse_cost;}
      LongVector& endConnedtedEdge() {return m_vecEndConnedtedEdge;}
