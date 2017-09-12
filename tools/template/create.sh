@@ -130,7 +130,7 @@ mv $MY_FUNCTION_NAME/pgtap/function1-innerQuery.sql        $MY_FUNCTION_NAME/pgt
 
 
 if [[ ! ( -d ../../doc/$MY_FUNCTION_NAME ) ]] ; then
-    mkdir ../../sql/$MY_FUNCTION_NAME
+    mkdir ../../doc/$MY_FUNCTION_NAME
 fi
 
 if [[ ! ( -d ../../sql/$MY_FUNCTION_NAME ) ]] ; then
@@ -143,18 +143,30 @@ if [[  "$1" == "clean"  ]] ; then
     rm -rf ../../sql/$MY_FUNCTION_NAME
     rm -rf ../../src/$MY_FUNCTION_NAME
     rm -rf ../../doc/$MY_FUNCTION_NAME
+    rm -rf ../../include/drivers/$MY_FUNCTION_NAME
+    rm -rf ../../test/$MY_FUNCTION_NAME
+    rm -rf ../../pgtap/$MY_FUNCTION_NAME
+
     mkdir -p ../../sql/$MY_FUNCTION_NAME
     mkdir -p ../../doc/$MY_FUNCTION_NAME
     mkdir -p ../../include/drivers/$MY_FUNCTION_NAME
+    mkdir -p ../../test/$MY_FUNCTION_NAME
+    mkdir -p ../../pgtap/$MY_FUNCTION_NAME
+
 
     #moving the whole structure to its final location
-    mv $MY_FUNCTION_NAME/pgtap              $MY_FUNCTION_NAME/test
+    mv $MY_FUNCTION_NAME/pgtap/*              ../../pgtap/$MY_FUNCTION_NAME
     mv $MY_FUNCTION_NAME/src/*driver.h      ../../include/drivers/$MY_FUNCTION_NAME
 
     mv $MY_FUNCTION_NAME/doc/*              ../../doc/$MY_FUNCTION_NAME
     mv $MY_FUNCTION_NAME/sql/*              ../../sql/$MY_FUNCTION_NAME
+    mv $MY_FUNCTION_NAME/test/*             ../../test/$MY_FUNCTION_NAME
+
     rm -rf  $MY_FUNCTION_NAME/doc
     rm -rf  $MY_FUNCTION_NAME/sql
+    rm -rf  $MY_FUNCTION_NAME/test
+    rm -rf  $MY_FUNCTION_NAME/pgtap
+
     mv $MY_FUNCTION_NAME                    ../../src
 fi
 
