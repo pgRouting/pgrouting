@@ -228,7 +228,7 @@ RETURNS TABLE(
     ) AS
 $BODY$
     SELECT '2.5.0'::varchar AS version,
-        'v2.5.0-rc'::varchar AS tag,
+        'v2.5.0'::varchar AS tag,
         ''::varchar AS hash,
         ''::varchar AS branch,
         '1.54.0'::varchar AS boost;
