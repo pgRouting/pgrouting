@@ -54,7 +54,7 @@ print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $postgis_ver, $vpgr, $psql);
 my $alg = '';
-my @testpath = ("src/");
+my @testpath = ("test/");
 my @test_direcotry = ();
 my $clean;
 my $ignore;
@@ -83,7 +83,7 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
-        @testpath = ("src/$alg");
+        @testpath = ("test/$alg");
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
