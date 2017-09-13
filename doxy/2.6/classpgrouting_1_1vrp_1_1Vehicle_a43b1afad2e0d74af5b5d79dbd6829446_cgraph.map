@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Vehicle::insert_less_travel_time" name="pgrouting::vrp::Vehicle::insert_less_travel_time">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a37934771b6c2ed2644eec4e61a7cfe5a" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="219,5,371,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af98de97049075d4db58f3e97dc9185aa" title="@ { " alt="" coords="219,70,371,111"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8" title="Invariant The path must: " alt="" coords="419,99,571,141"/>
+</map>

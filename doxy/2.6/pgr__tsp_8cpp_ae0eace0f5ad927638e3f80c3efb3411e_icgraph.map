@@ -1,0 +1,6 @@
+<map id="pred" name="pred">
+<area shape="rect" id="node2" href="$classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a" title="Pgr_dijkstra::drivingDistance\l_no_equicost" alt="" coords="107,5,296,46"/>
+<area shape="rect" id="node3" href="$classPgr__dijkstra.html#a54fad15282423f73f5b528ea51202607" title="Pgr_dijkstra::drivingDistance\l_with_equicost" alt="" coords="349,93,539,134"/>
+<area shape="rect" id="node4" href="$classPgr__dijkstra.html#a1ad615c70bc2db48c8a057a1184c9f60" title="gets results in form of a container of paths " alt="" coords="101,122,301,163"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1tsp_1_1TSP.html#a61ead4bc9e32b32929eff6325afc3989" title="pgrouting::tsp::TSP\l::getDeltaSwap" alt="" coords="134,187,269,229"/>
+</map>

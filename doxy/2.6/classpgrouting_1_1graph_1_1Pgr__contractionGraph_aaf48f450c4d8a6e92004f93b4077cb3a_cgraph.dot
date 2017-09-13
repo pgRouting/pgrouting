@@ -1,0 +1,11 @@
+digraph "pgrouting::graph::Pgr_contractionGraph::print_graph"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pgrouting::graph::Pgr\l_contractionGraph::print_graph",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pgrouting::graph::Pgr\l_base_graph\< G, T_V,\l T_E \>::source",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a06a3b797df2a4d1065c6438c3cc988fc"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::graph::Pgr\l_base_graph\< G, T_V,\l T_E \>::target",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a8ed07aa3679226223d1259aff5fd424b"];
+}

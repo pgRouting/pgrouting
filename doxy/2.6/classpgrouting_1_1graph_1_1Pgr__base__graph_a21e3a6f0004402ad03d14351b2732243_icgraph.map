@@ -1,0 +1,4 @@
+<map id="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::adjacent" name="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::adjacent">
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a3cc6b3faf651b6acd1d78cc6c6af1cfb" title="get the vertex descriptors of adjacent vertices of v " alt="" coords="208,5,365,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ad153e012392316aefeb2f68e14934c74" title="The number of edges from vertex to neighbor. " alt="" coords="209,85,364,141"/>
+</map>

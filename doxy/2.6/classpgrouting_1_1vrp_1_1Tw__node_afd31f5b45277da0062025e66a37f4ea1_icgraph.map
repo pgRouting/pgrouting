@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Tw_node::is_delivery" name="pgrouting::vrp::Tw_node::is_delivery">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#a6952f655243e030be6d5db4b1aebfe57" title="validate a pickup/delivery order " alt="" coords="181,5,323,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8d99ae2ed01e632538a5eb57acc896c3" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="189,70,315,111"/>
+</map>

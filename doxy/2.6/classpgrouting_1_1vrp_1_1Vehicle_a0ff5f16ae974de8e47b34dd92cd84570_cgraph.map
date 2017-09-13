@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Vehicle::is_feasable" name="pgrouting::vrp::Vehicle::is_feasable">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a9cb6b091de8c2761330eeefb864cae83" title="pgrouting::vrp::Vehicle\l::has_cv" alt="" coords="205,5,357,46"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#abd3797dabefe02f778bb100bbafab566" title="pgrouting::vrp::Vehicle\l::has_twv" alt="" coords="205,70,357,111"/>
+</map>
