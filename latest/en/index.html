@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Table of Contents &mdash; pgRouting Manual (2.4)</title>
+    <title>Table of Contents &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="#" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="#" />
     <link rel="next" title="Introduction" href="pgRouting-introduction.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -49,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="#"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -88,8 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -110,7 +111,7 @@
 <li><a class="reference internal" href="#general">General</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#pgrouting-concepts"><code class="docutils literal"><span class="pre">Pgrouting</span> <span class="pre">Concepts</span></code></a><ul>
+<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting Concepts</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#data-types"><code class="docutils literal"><span class="pre">Data</span> <span class="pre">Types</span></code></a></li>
@@ -160,15 +161,15 @@
   <div class="section" id="table-of-contents">
 <span id="index"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
 <p>pgRouting extends the <a class="reference external" href="http://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database to provide geospatial routing and other network analysis functionality.</p>
-<p>This is the manual for pgRouting v2.4.2.</p>
+<p>This is the manual for pgRouting v2.5.0.</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="_images/ccbysa.png" />
-<p>The pgRouting Manual is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. For other licenses used in pgRouting see the <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">License</span></a> page.</p>
+<p>The pgRouting Manual is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. For other licenses used in pgRouting see the <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licensing</span></a> page.</p>
 <div class="section" id="general">
 <h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#licensing">Licensing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#contributors">Contributors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#more-information">More Information</a></li>
 </ul>
@@ -193,34 +194,25 @@
 </ul>
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> that is used in the examples of this manual.</li>
+<li><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> that is used in the examples of this manual.</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 </div>
 <div class="section" id="pgrouting-concepts">
-<h2><a class="reference internal" href="pgRouting-concepts.html#pgrouting-concepts"><span class="std std-ref">Pgrouting Concepts</span></a><a class="headerlink" href="#pgrouting-concepts" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference internal" href="pgRouting-concepts.html#getting-started"><span class="std std-ref">Getting Started</span></a><ul>
-<li><a class="reference internal" href="pgRouting-concepts.html#create-database"><span class="std std-ref">Create a routing Database</span></a></li>
-<li><a class="reference internal" href="pgRouting-concepts.html#load-data"><span class="std std-ref">Load Data</span></a></li>
-<li><a class="reference internal" href="pgRouting-concepts.html#build-topology"><span class="std std-ref">Build a Routing Topology</span></a></li>
-<li><a class="reference internal" href="pgRouting-concepts.html#check-graph"><span class="std std-ref">Check the Routing Topology</span></a></li>
-<li><a class="reference internal" href="pgRouting-concepts.html#compute-path"><span class="std std-ref">Compute a Path</span></a></li>
-<li><a class="reference external" href="http://workshop.pgrouting.org">pgRouting Workshop</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="pgRouting-concepts.html#inner-queries"><span class="std std-ref">Inner Queries</span></a></li>
-<li><a class="reference internal" href="pgRouting-concepts.html#return-values"><span class="std std-ref">Return columns &amp; values</span></a></li>
-<li><a class="reference internal" href="pgRouting-concepts.html#advanced-topics"><span class="std std-ref">Advanced Topics</span></a><ul>
-<li><a class="reference internal" href="pgRouting-concepts.html#topology"><span class="std std-ref">Routing Topology</span></a></li>
-<li><a class="reference internal" href="pgRouting-concepts.html#analytics"><span class="std std-ref">Graph Analytics</span></a></li>
-<li><a class="reference internal" href="pgRouting-concepts.html#performance"><span class="std std-ref">Performance Tips</span></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="pgRouting-concepts.html#how-contribute"><span class="std std-ref">How to contribute</span></a></li>
-</ul>
+<h2>Pgrouting Concepts<a class="headerlink" href="#pgrouting-concepts" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#inner-queries">Inner Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#return-columns-values">Return columns &amp; values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#advanced-topics">Advanced Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">How to contribute</a></li>
+</ul>
+</li>
+</ul>
 </div>
 <p class="rubric">Reference</p>
 <p><a class="reference internal" href="pgr_version.html#pgr-version"><span class="std std-ref">pgr_version</span></a> - to get pgRouting&#8217;s version information.</p>
@@ -259,7 +251,7 @@
 <li><a class="reference internal" href="pgr_johnson.html#pgr-johnson"><span class="std std-ref">pgr_johnson</span></a>- Johnson’s Algorithm</li>
 </ul>
 <p><a class="reference internal" href="pgr_aStar.html#pgr-astar"><span class="std std-ref">pgr_aStar</span></a> - Shortest Path A*</p>
-<p><a class="reference internal" href="pgr_bdAstar.html#bd-astar"><span class="std std-ref">pgr_bdAstar</span></a> - Bi-directional A* Shortest Path</p>
+<p><a class="reference internal" href="pgr_bdAstar.html#pgr-bdastar"><span class="std std-ref">pgr_bdAstar</span></a> - Bi-directional A* Shortest Path</p>
 <p><a class="reference internal" href="pgr_bdDijkstra.html#pgr-bddijkstra"><span class="std std-ref">pgr_bdDijkstra</span></a> - Bi-directional Dijkstra Shortest Path</p>
 <p><a class="reference internal" href="dijkstra-family.html#dijkstra"><span class="std std-ref">Dijkstra - Family of functions</span></a></p>
 <ul class="simple">
@@ -283,7 +275,7 @@
 <li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><span class="std std-ref">pgr_withPointsDD - Proposed</span></a> - Driving Distance based on pgr_withPoints</li>
 <li>Post pocessing<ul>
 <li><a class="reference internal" href="pgr_alphaShape.html#pgr-alphashape"><span class="std std-ref">pgr_alphaShape</span></a> - Alpha shape computation</li>
-<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><span class="std std-ref">pgr_pointsAsPolygon</span></a> - Polygon around set of points</li>
+<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><span class="std std-ref">pgr_pointsAsPolygon</span></a> - Polygon around a set of points</li>
 </ul>
 </li>
 </ul>
@@ -291,8 +283,8 @@
 <div class="section" id="available-functions-but-not-official-pgrouting-functions">
 <h2>Available Functions but not official pgRouting functions<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="proposed.html#stable"><span class="std std-ref">Stable proposed Functions</span></a></li>
-<li><a class="reference internal" href="proposed.html#proposed"><span class="std std-ref">Experimental and Proposed functions</span></a></li>
+<li><a class="reference internal" href="proposed.html#stable"><span class="std std-ref">Stable Proposed Functions</span></a></li>
+<li><a class="reference internal" href="proposed.html#proposed"><span class="std std-ref">Experimental Functions</span></a></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -300,6 +292,7 @@
 <div class="section" id="change-log">
 <h2><a class="reference internal" href="release_notes.html#change-log"><span class="std std-ref">Change Log</span></a><a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><a class="reference internal" href="release_notes.html#changelog-2-5-0"><span class="std std-ref">pgRouting 2.5.0 Release Notes</span></a></li>
 <li><a class="reference internal" href="release_notes.html#changelog-2-4-2"><span class="std std-ref">pgRouting 2.4.2 Release Notes</span></a></li>
 <li><a class="reference internal" href="release_notes.html#changelog-2-4-1"><span class="std std-ref">pgRouting 2.4.1 Release Notes</span></a></li>
 <li><a class="reference internal" href="release_notes.html#changelog-2-4-0"><span class="std std-ref">pgRouting 2.4.0 Release Notes</span></a></li>
@@ -338,8 +331,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

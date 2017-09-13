@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_labelGraph - Proposed &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_labelGraph - Experimental &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,10 +29,10 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
-    <link rel="up" title="Stable proposed Functions" href="proposed.html" />
-    <link rel="next" title="pgr_gsoc_vrppdtw - Proposed" href="pgr_gsoc_vrppdtw.html" />
-    <link rel="prev" title="pgr_pointToEdgeNode - Proposed" href="pgr_pointToEdgeNode.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
+    <link rel="up" title="Stable Proposed Functions" href="proposed.html" />
+    <link rel="next" title="Components - Family of functions" href="components-family.html" />
+    <link rel="prev" title="pgr_edgeDisjointPaths - Proposed" href="pgr_edgeDisjointPaths.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -108,7 +109,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_labelGraph - Proposed</a><ul>
+<li><a class="reference internal" href="#">pgr_labelGraph - Experimental</a><ul>
 <li><a class="reference internal" href="#name">Name</a></li>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
@@ -125,11 +126,11 @@
               
                 
   <li>
-    <a href="pgr_pointToEdgeNode.html" title="Previous Chapter: pgr_pointToEdgeNode - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pointToEdgeN...</span>
+    <a href="pgr_edgeDisjointPaths.html" title="Previous Chapter: pgr_edgeDisjointPaths - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edgeDisjoint...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_gsoc_vrppdtw.html" title="Next Chapter: pgr_gsoc_vrppdtw - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_gsoc_vrppdtw... &raquo;</span>
+    <a href="components-family.html" title="Next Chapter: Components - Family of functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Components - Fam... &raquo;</span>
     </a>
   </li>
               
@@ -157,14 +158,14 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-labelgraph-proposed">
-<span id="pgr-labelgraph"></span><h1>pgr_labelGraph - Proposed<a class="headerlink" href="#pgr-labelgraph-proposed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-labelgraph-experimental">
+<span id="pgr-labelgraph"></span><h1>pgr_labelGraph - Experimental<a class="headerlink" href="#pgr-labelgraph-experimental" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_labelGraph</span></code> — Locates and labels sub-networks within a network which are not topologically connected.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>These are proposed functions</p>
+<p>Experimental functions</p>
 <ul class="last simple">
 <li>They are not officially of the current release.</li>
 <li>They likely will not be officially be part of the next release:<ul>
@@ -189,13 +190,11 @@
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Must be run after <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code>. No use of <code class="docutils literal"><span class="pre">geometry</span></code> column. Only <code class="docutils literal"><span class="pre">id</span></code>, <code class="docutils literal"><span class="pre">source</span></code> and  <code class="docutils literal"><span class="pre">target</span></code> columns are required.</p>
 <p>The function returns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">OK</span></code> when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of <code class="docutils literal"><span class="pre">rows_where</span></code> condition, non participating rows will have -1 integer values.</li>
 <li><code class="docutils literal"><span class="pre">FAIL</span></code> when the processing cannot be finished due to some error. Notice will be thrown accordingly.</li>
 <li><code class="docutils literal"><span class="pre">rows_where</span> <span class="pre">condition</span> <span class="pre">generated</span> <span class="pre">0</span> <span class="pre">rows</span></code> when passed SQL condition has not been fulfilled by any row.</li>
 </ul>
-</div></blockquote>
 <div class="highlight-sql" id="index-0"><div class="highlight"><pre><span></span><span class="nb">varchar</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -243,12 +242,12 @@ Must run <code class="docutils literal"><span class="pre">pgr_createTopology()</
  <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
-<span class="n">SELECT</span> <span class="n">subgraph</span><span class="p">,</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">group</span> <span class="n">by</span> <span class="n">subgraph</span><span class="p">;</span>
- <span class="n">subgraph</span> <span class="o">|</span> <span class="n">count</span> 
-<span class="o">----------+-------</span>
-        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">16</span>
-        <span class="mi">3</span> <span class="o">|</span>     <span class="mi">1</span>
-        <span class="mi">2</span> <span class="o">|</span>     <span class="mi">1</span>
+<span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">subgraph</span> <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">subgraph</span><span class="p">;</span>
+ <span class="n">subgraph</span> 
+<span class="o">----------</span>
+        <span class="mi">1</span>
+        <span class="mi">2</span>
+        <span class="mi">3</span>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -258,6 +257,11 @@ Must run <code class="docutils literal"><span class="pre">pgr_createTopology()</
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/Zia-/pgrouting/blob/develop/src/common/sql/pgrouting_topology.sql">pgr_createTopology</a> to create the topology of a table based on its geometry and tolerance value.</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -274,8 +278,8 @@ Must run <code class="docutils literal"><span class="pre">pgr_createTopology()</
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

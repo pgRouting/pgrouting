@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; pgRouting Manual (2.4)</title>
+    <title>Introduction &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="next" title="Installation" href="pgRouting-installation.html" />
     <link rel="prev" title="Table of Contents" href="index.html" />
 <meta charset='utf-8'>
@@ -50,7 +51,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -89,8 +90,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -108,7 +109,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
-<li><a class="reference internal" href="#license">License</a></li>
+<li><a class="reference internal" href="#licensing">Licensing</a></li>
 <li><a class="reference internal" href="#contributors">Contributors</a><ul>
 <li><a class="reference internal" href="#this-release-contributors">This Release Contributors</a><ul>
 <li><a class="reference internal" href="#individuals-in-alphabetical-order">Individuals (in alphabetical order)</a></li>
@@ -116,8 +117,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#contributors-past-present">Contributors Past &amp; Present:</a><ul>
-<li><a class="reference internal" href="#id3">Individuals (in alphabetical order)</a></li>
-<li><a class="reference internal" href="#id4">Corporate Sponsors (in alphabetical order)</a></li>
+<li><a class="reference internal" href="#id2">Individuals (in alphabetical order)</a></li>
+<li><a class="reference internal" href="#id3">Corporate Sponsors (in alphabetical order)</a></li>
 </ul>
 </li>
 </ul>
@@ -169,9 +170,9 @@
   <div class="section" id="introduction">
 <span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>pgRouting is an extension of <a class="reference external" href="http://postgis.net">PostGIS</a> and <a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from <a class="reference external" href="http://camptocamp.com">Camptocamp</a>, was later extended by <a class="reference external" href="http://www.orkney.co.jp">Orkney</a> and renamed to pgRouting. The project is now supported and maintained by <a class="reference external" href="http://georepublic.info">Georepublic</a>, <a class="reference external" href="http://imaptools.com/">iMaptools</a> and a broad user community.</p>
-<p>pgRouting is an <a class="reference external" href="http://wiki.osgeo.org/wiki/OSGeo_Labs">OSGeo Labs</a> project of the <a class="reference external" href="http://osgeo.org">OSGeo Foundation</a> and included on <a class="reference external" href="http://live.osgeo.org/">OSGeo Live</a>.</p>
-<div class="section" id="license">
-<span id="id2"></span><h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>pgRouting is part of <a class="reference external" href="http://wiki.osgeo.org/wiki/OSGeo_Community_Projects">OSGeo Community Projects</a> from the <a class="reference external" href="http://osgeo.org">OSGeo Foundation</a> and included on <a class="reference external" href="http://live.osgeo.org/">OSGeo Live</a>.</p>
+<div class="section" id="licensing">
+<span id="license"></span><h2>Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h2>
 <p>The following licenses can be found in pgRouting:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -204,33 +205,30 @@
 <h3>This Release Contributors<a class="headerlink" href="#this-release-contributors" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="individuals-in-alphabetical-order">
 <h4>Individuals (in alphabetical order)<a class="headerlink" href="#individuals-in-alphabetical-order" title="Permalink to this headline">¶</a></h4>
-<p>Virginia Vergara</p>
+<p>Maoguang Wang, Vidhan Jain, Virginia Vergara</p>
 <p>And all the people that give us a little of their time making comments, finding issues, making pull requests etc.</p>
 </div>
 <div class="section" id="corporate-sponsors-in-alphabetical-order">
 <h4>Corporate Sponsors (in alphabetical order)<a class="headerlink" href="#corporate-sponsors-in-alphabetical-order" title="Permalink to this headline">¶</a></h4>
 <p>These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><a class="reference external" href="https://georepublic.info/en/">Georepublic</a></li>
 <li><a class="reference external" href="https://developers.google.com/open-source/gsoc/">Google Summer of Code</a></li>
 <li><a class="reference external" href="http://imaptools.com">iMaptools</a></li>
 <li><a class="reference external" href="http://www.paragoncorporation.com/">Paragon Corporation</a></li>
 </ul>
-</div></blockquote>
 </div>
 </div>
 <div class="section" id="contributors-past-present">
 <h3>Contributors Past &amp; Present:<a class="headerlink" href="#contributors-past-present" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id3">
-<h4>Individuals (in alphabetical order)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>Akio Takubo, Andrea Nardelli, Anton Patrushev, Ashraf Hossain, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Virginia Vergara</p>
+<div class="section" id="id2">
+<h4>Individuals (in alphabetical order)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Akio Takubo, Andrea Nardelli, Anton Patrushev, Ashraf Hossain, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara</p>
 </div>
-<div class="section" id="id4">
-<h4>Corporate Sponsors (in alphabetical order)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id3">
+<h4>Corporate Sponsors (in alphabetical order)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Camptocamp</li>
 <li>CSIS (University of Tokyo)</li>
 <li>Georepublic</li>
@@ -239,7 +237,6 @@
 <li>Orkney</li>
 <li>Paragon Corporation</li>
 </ul>
-</div></blockquote>
 </div>
 </div>
 </div>
@@ -268,8 +265,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

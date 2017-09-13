@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cost Matrix - Category &mdash; pgRouting Manual (2.4)</title>
+    <title>Cost Matrix - Category &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,8 +29,8 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
-    <link rel="up" title="Stable proposed Functions" href="proposed.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
+    <link rel="up" title="Stable Proposed Functions" href="proposed.html" />
     <link rel="next" title="KSP Category" href="KSP-category.html" />
     <link rel="prev" title="Cost - Category" href="cost-category.html" />
 <meta charset='utf-8'>
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -162,12 +163,14 @@
 <span id="costmatrix"></span><h1>Cost Matrix - Category<a class="headerlink" href="#cost-matrix-category" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><span class="std std-ref">pgr_aStarCostMatrix - proposed</span></a></li>
+<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html#pgr-bdastarcostmatrix"><span class="std std-ref">pgr_bdAstarCostMatrix - proposed</span></a></li>
+<li><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html#pgr-bddijkstracostmatrix"><span class="std std-ref">pgr_bdDijkstraCostMatrix - proposed</span></a></li>
 <li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><span class="std std-ref">pgr_dijkstraCostMatrix - proposed</span></a></li>
 <li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><span class="std std-ref">pgr_withPointsCostMatrix - proposed</span></a></li>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>These are proposed functions for next mayor release.</p>
+<p>Proposed functions for next mayor release.</p>
 <ul class="last simple">
 <li>They are not officially in the current release.</li>
 <li>They will likely officially be part of the next mayor release:<ul>
@@ -283,8 +286,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

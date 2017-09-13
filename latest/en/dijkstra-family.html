@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dijkstra - Family of functions &mdash; pgRouting Manual (2.4)</title>
+    <title>Dijkstra - Family of functions &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="up" title="Routing Functions" href="routingFunctions.html" />
     <link rel="next" title="pgr_dijkstra" href="pgr_dijkstra.html" />
     <link rel="prev" title="pgr_bdDijkstra" href="pgr_bdDijkstra.html" />
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -110,6 +111,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Dijkstra - Family of functions</a><ul>
 <li><a class="reference internal" href="#the-problem-definition-advanced-documentation">The problem definition (Advanced documentation)</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
@@ -171,12 +173,10 @@
 <p>pgr_dijkstra(<span class="math">\(sql, start_{vid}, end_{vid}, directed\)</span>)</p>
 <p>where  <span class="math">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
 <p>and</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><span class="math">\(source = \bigcup source_i\)</span>,</li>
 <li><span class="math">\(target = \bigcup target_i\)</span>,</li>
 </ul>
-</div></blockquote>
 <p>The graphs are defined as follows:</p>
 <p class="rubric">Directed graph</p>
 <p>The weighted directed graph, <span class="math">\(G_d(V,E)\)</span>, is definied by:</p>
@@ -186,7 +186,12 @@
 </ul>
 </li>
 <li>the set of edges <span class="math">\(E\)</span><ul>
-<li><span class="math">\(E = \begin{cases} &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp;\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp;\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></li>
+<li><span class="math">\(E = \begin{cases}
+\text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\
+\text{ }  \text{ }  &amp; \quad \text{ } \\
+\text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp;  \quad \text{ } \\
+\cup      \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\
+\end{cases}\)</span></li>
 </ul>
 </li>
 </ul>
@@ -198,27 +203,32 @@
 </ul>
 </li>
 <li>the set of edges <span class="math">\(E\)</span><ul>
-<li><span class="math">\(E = \begin{cases} &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp;\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} \\ \cup &amp;\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp;\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></li>
+<li><span class="math">\(E = \begin{cases}
+\text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ } \\
+\cup      \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ if } reverse\_cost = \varnothing \\
+\text{ }  \text{ }  &amp; \text{ } \\
+\text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
+\cup  \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
+\cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\
+\cup  \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\
+\end{cases}\)</span></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">The problem</p>
 <p>Given:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><span class="math">\(start_{vid} \in V\)</span> a starting vertex</li>
 <li><span class="math">\(end_{vid} \in V\)</span> an ending vertex</li>
-<li><span class="math">\(G(V,E) = \begin{cases}  G_d(V,E) &amp;\quad \text{ if } directed = true \\ G_u(V,E) &amp;\quad \text{ if } directed = false \\ \end{cases}\)</span></li>
+<li><span class="math">\(G(V,E) = \begin{cases}
+G_d(V,E) &amp; \quad \text{ if6 } directed = true \\
+G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
+\end{cases}\)</span></li>
 </ul>
-</div></blockquote>
 <p>Then:</p>
-<div class="math">
-\[\begin{split}\text{pgr_dijkstra}(sql, start_{vid}, end_{vid}, directed) =
-\begin{cases}
-\text{shortest path } \boldsymbol{\pi} \text{ between } start_{vid} \text{and } end_{vid} &amp;\quad \text{if } \exists  \boldsymbol{\pi}  \\
-\varnothing &amp;\quad \text{otherwise} \\
-\end{cases}\end{split}\]</div>
-<p><span class="math">\(\boldsymbol{\pi} = \{(path\_seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}\)</span></p>
+<ul class="simple">
+<li><span class="math">\(\boldsymbol{\pi} = \{(path\_seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}\)</span></li>
+</ul>
 <dl class="docutils">
 <dt>where:</dt>
 <dd><ul class="first last simple">
@@ -243,6 +253,14 @@
 </dl>
 <p>If there is no path, the resulting set is empty.</p>
 </div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
 </div>
 
 
@@ -257,8 +275,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

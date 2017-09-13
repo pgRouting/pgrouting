@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_gsoc_vrppdtw - Proposed &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_gsoc_vrppdtw - Experimental &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,10 +29,10 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
-    <link rel="up" title="Stable proposed Functions" href="proposed.html" />
-    <link rel="next" title="pgr_vrpOneDepot - Proposed" href="pgr_vrpOneDepot.html" />
-    <link rel="prev" title="pgr_labelGraph - Proposed" href="pgr_labelGraph.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
+    <link rel="up" title="Stable Proposed Functions" href="proposed.html" />
+    <link rel="next" title="pgr_vrpOneDepot - Experimental" href="pgr_vrpOneDepot.html" />
+    <link rel="prev" title="pgr_bridges - Experimental" href="pgr_bridges.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -108,7 +109,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_gsoc_vrppdtw - Proposed</a><ul>
+<li><a class="reference internal" href="#">pgr_gsoc_vrppdtw - Experimental</a><ul>
 <li><a class="reference internal" href="#name">Name</a></li>
 <li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
@@ -134,11 +135,11 @@
               
                 
   <li>
-    <a href="pgr_labelGraph.html" title="Previous Chapter: pgr_labelGraph - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_labelGraph -...</span>
+    <a href="pgr_bridges.html" title="Previous Chapter: pgr_bridges - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bridges - Ex...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDepot ... &raquo;</span>
+    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDepot ... &raquo;</span>
     </a>
   </li>
               
@@ -166,14 +167,14 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-gsoc-vrppdtw-proposed">
-<span id="pgr-gsocvrppdtw"></span><h1>pgr_gsoc_vrppdtw - Proposed<a class="headerlink" href="#pgr-gsoc-vrppdtw-proposed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-gsoc-vrppdtw-experimental">
+<span id="pgr-gsocvrppdtw"></span><h1>pgr_gsoc_vrppdtw - Experimental<a class="headerlink" href="#pgr-gsoc-vrppdtw-experimental" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></code> — Returns a solution for <cite>Pick and Delivery</cite> with <cite>time windows</cite> Vehicle Routing Problem</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>These are proposed functions</p>
+<p>Experimental functions</p>
 <ul class="last simple">
 <li>They are not officially of the current release.</li>
 <li>They likely will not be officially be part of the next release:<ul>
@@ -388,48 +389,44 @@ Returns set of pgr_costResult[]:
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span>       <span class="n">cost</span>       
 <span class="o">-----+-----+-----+------------------</span>
    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="mf">105.132745950422</span>
-   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mf">196.132745950422</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span> <span class="mf">288.132745950422</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="mf">380.961173075168</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="mf">474.566724350632</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="mf">567.566724350632</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mf">660.7290020108</span>
-   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mf">752.9650699883</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mf">845.2011379658</span>
-  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mf">938.806689241264</span>
-  <span class="mi">12</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mf">1030.80668924126</span>
-  <span class="mi">13</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">75</span> <span class="o">|</span> <span class="mf">1123.80668924126</span>
-  <span class="mi">14</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">1139.61807754211</span>
-  <span class="mi">51</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
-  <span class="mi">52</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">43</span> <span class="o">|</span> <span class="mf">106.552945357247</span>
-  <span class="mi">53</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">42</span> <span class="o">|</span> <span class="mf">199.552945357247</span>
-  <span class="mi">54</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">41</span> <span class="o">|</span> <span class="mf">291.552945357247</span>
-  <span class="mi">55</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">40</span> <span class="o">|</span> <span class="mf">383.552945357247</span>
-  <span class="mi">56</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">44</span> <span class="o">|</span> <span class="mf">476.552945357247</span>
-  <span class="mi">57</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">46</span> <span class="o">|</span> <span class="mf">569.381372481993</span>
-  <span class="mi">58</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">45</span> <span class="o">|</span> <span class="mf">661.381372481993</span>
-  <span class="mi">59</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">48</span> <span class="o">|</span> <span class="mf">753.381372481993</span>
-  <span class="mi">60</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">51</span> <span class="o">|</span> <span class="mf">756.381372481993</span>
-  <span class="mi">61</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="mi">101</span> <span class="o">|</span> <span class="mf">846.381372481993</span>
-  <span class="mi">62</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">50</span> <span class="o">|</span> <span class="mf">938.617440459493</span>
-  <span class="mi">63</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">52</span> <span class="o">|</span> <span class="mf">1031.77971811966</span>
-  <span class="mi">64</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">49</span> <span class="o">|</span> <span class="mf">1124.77971811966</span>
-  <span class="mi">65</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">47</span> <span class="o">|</span> <span class="mf">1216.77971811966</span>
-  <span class="mi">66</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">1234.80747449698</span>
- <span class="mi">103</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
- <span class="mi">104</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">90</span> <span class="o">|</span> <span class="mf">110.615528128088</span>
- <span class="mi">105</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">87</span> <span class="o">|</span> <span class="mf">205.615528128088</span>
- <span class="mi">106</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">86</span> <span class="o">|</span> <span class="mf">296.615528128088</span>
- <span class="mi">107</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">83</span> <span class="o">|</span> <span class="mf">392.615528128088</span>
- <span class="mi">108</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">82</span> <span class="o">|</span> <span class="mf">485.615528128088</span>
- <span class="mi">109</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">84</span> <span class="o">|</span> <span class="mf">581.446480022934</span>
- <span class="mi">110</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">85</span> <span class="o">|</span>  <span class="mf">674.27490714768</span>
- <span class="mi">111</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">88</span> <span class="o">|</span>  <span class="mf">767.27490714768</span>
- <span class="mi">112</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">89</span> <span class="o">|</span> <span class="mf">860.103334272426</span>
- <span class="mi">113</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">91</span> <span class="o">|</span>  <span class="mf">953.70888554789</span>
- <span class="mi">114</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">976.069565322888</span>
-<span class="p">(</span><span class="mi">42</span> <span class="n">rows</span><span class="p">)</span>
+   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span> <span class="mf">120.805843601499</span>
+   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">17</span> <span class="o">|</span> <span class="mf">214.805843601499</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">18</span> <span class="o">|</span> <span class="mf">307.805843601499</span>
+   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">19</span> <span class="o">|</span> <span class="mf">402.805843601499</span>
+   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span> <span class="mf">497.805843601499</span>
+   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span> <span class="mf">592.805843601499</span>
+   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">14</span> <span class="o">|</span> <span class="mf">684.805843601499</span>
+   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span> <span class="mf">777.805843601499</span>
+  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">50</span> <span class="o">|</span> <span class="mf">920.815276724293</span>
+  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">52</span> <span class="o">|</span> <span class="mf">1013.97755438446</span>
+  <span class="mi">12</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">49</span> <span class="o">|</span> <span class="mf">1106.97755438446</span>
+  <span class="mi">13</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">47</span> <span class="o">|</span> <span class="mf">1198.97755438446</span>
+  <span class="mi">14</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">1217.00531076178</span>
+  <span class="mi">57</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
+  <span class="mi">58</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">90</span> <span class="o">|</span> <span class="mf">110.615528128088</span>
+  <span class="mi">59</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">87</span> <span class="o">|</span> <span class="mf">205.615528128088</span>
+  <span class="mi">60</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">86</span> <span class="o">|</span> <span class="mf">296.615528128088</span>
+  <span class="mi">61</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">83</span> <span class="o">|</span> <span class="mf">392.615528128088</span>
+  <span class="mi">62</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">82</span> <span class="o">|</span> <span class="mf">485.615528128088</span>
+  <span class="mi">63</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">84</span> <span class="o">|</span> <span class="mf">581.446480022934</span>
+  <span class="mi">64</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">85</span> <span class="o">|</span>  <span class="mf">674.27490714768</span>
+  <span class="mi">65</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">88</span> <span class="o">|</span>  <span class="mf">767.27490714768</span>
+  <span class="mi">66</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">89</span> <span class="o">|</span> <span class="mf">860.103334272426</span>
+  <span class="mi">67</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">91</span> <span class="o">|</span>  <span class="mf">953.70888554789</span>
+  <span class="mi">68</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">976.069565322888</span>
+ <span class="mi">105</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
+ <span class="mi">106</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">67</span> <span class="o">|</span> <span class="mf">102.206555615734</span>
+ <span class="mi">107</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">65</span> <span class="o">|</span> <span class="mf">193.206555615734</span>
+ <span class="mi">108</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">63</span> <span class="o">|</span> <span class="mf">285.206555615734</span>
+ <span class="mi">109</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">62</span> <span class="o">|</span> <span class="mf">380.206555615734</span>
+ <span class="mi">110</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">74</span> <span class="o">|</span> <span class="mf">473.206555615734</span>
+ <span class="mi">111</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">72</span> <span class="o">|</span> <span class="mf">568.206555615734</span>
+ <span class="mi">112</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">61</span> <span class="o">|</span> <span class="mf">661.206555615734</span>
+ <span class="mi">113</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">64</span> <span class="o">|</span> <span class="mf">663.206555615734</span>
+ <span class="mi">114</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span> <span class="mi">102</span> <span class="o">|</span> <span class="mf">753.206555615734</span>
+ <span class="mi">115</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">68</span> <span class="o">|</span> <span class="mf">846.206555615734</span>
+ <span class="mi">116</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mf">866.822083743822</span>
+<span class="p">(</span><span class="mi">38</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -439,6 +436,11 @@ Returns set of pgr_costResult[]:
 <ul class="simple">
 <li>The examples use <a class="reference internal" href="sampledata.html#pickdeliverdata"><span class="std std-ref">Pick &amp; Deliver Data</span></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -455,8 +457,8 @@ Returns set of pgr_costResult[]:
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

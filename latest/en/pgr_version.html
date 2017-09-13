@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_version &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_version &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="next" title="pgRouting Data Types" href="types_index.html" />
     <link rel="prev" title="pgRouting Concepts" href="pgRouting-concepts.html" />
 <meta charset='utf-8'>
@@ -50,7 +51,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -89,8 +90,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -112,6 +113,7 @@
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
@@ -171,19 +173,38 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Returns a table with:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">version:</th><td class="field-body"><code class="docutils literal"><span class="pre">varchar</span></code> pgRouting version</td>
+<tr class="row-even"><td><strong>version</strong></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td>pgRouting version</td>
 </tr>
-<tr class="field-even field"><th class="field-name">tag:</th><td class="field-body"><code class="docutils literal"><span class="pre">varchar</span></code> Git tag of pgRouting build</td>
+<tr class="row-odd"><td><strong>tag</strong></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td>Git tag of pgRouting build</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">hash:</th><td class="field-body"><code class="docutils literal"><span class="pre">varchar</span></code> Git hash of pgRouting build</td>
+<tr class="row-even"><td><strong>hash</strong></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td>Git hash of pgRouting build</td>
 </tr>
-<tr class="field-even field"><th class="field-name">branch:</th><td class="field-body"><code class="docutils literal"><span class="pre">varchar</span></code> Git branch of pgRouting build</td>
+<tr class="row-odd"><td><strong>branch</strong></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td>Git branch of pgRouting build</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">boost:</th><td class="field-body"><code class="docutils literal"><span class="pre">varchar</span></code> Boost version</td>
+<tr class="row-even"><td><strong>boost</strong></td>
+<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td>Boost version</td>
 </tr>
 </tbody>
 </table>
@@ -197,12 +218,12 @@
 <ul class="simple">
 <li>Query for full version string</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_version</span><span class="p">();</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">version</span> <span class="n">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
+ <span class="n">version</span> 
+<span class="o">---------</span>
+ <span class="mf">2.5</span><span class="o">.</span><span class="mi">0</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
-                  <span class="n">pgr_version</span>
-<span class="c1">-----------------------------------------------</span>
- <span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="n">pgrouting</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="n">fd33c5</span><span class="p">,</span><span class="n">master</span><span class="p">,</span><span class="mi">1</span><span class="p">.</span><span class="mi">54</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -216,6 +237,14 @@
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
 </div>
 </div>
 
@@ -231,8 +260,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

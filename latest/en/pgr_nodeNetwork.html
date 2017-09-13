@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_nodeNetwork &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_nodeNetwork &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="up" title="Topology - Family of Functions" href="topology-functions.html" />
     <link rel="next" title="Routing Functions" href="routingFunctions.html" />
     <link rel="prev" title="pgr_analyzeOneway" href="pgr_analyzeOneWay.html" />
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -231,7 +232,7 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s create the topology for the data in <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a></p>
+<p>Let&#8217;s create the topology for the data in <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
@@ -439,12 +440,10 @@ point there is a node and the following edges share it:
 </tbody>
 </table>
 <p>Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 into our edge-table, copying the data for dir,cost,and reverse cost with tho following steps:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Add a column old_id into edge_table, this column is going to keep track the id of the original edge</li>
 <li>Insert only the segmented edges, that is, the ones whose max(sub_id) &gt;1</li>
 </ul>
-</div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">alter</span> <span class="k">table</span> <span class="n">edge_table</span> <span class="k">drop</span> <span class="k">column</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">old_id</span><span class="p">;</span>
 <span class="k">alter</span> <span class="k">table</span> <span class="n">edge_table</span> <span class="k">add</span> <span class="k">column</span> <span class="n">old_id</span> <span class="nb">integer</span><span class="p">;</span>
 <span class="k">insert</span> <span class="k">into</span> <span class="n">edge_table</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span><span class="n">dir</span><span class="p">,</span><span class="n">cost</span><span class="p">,</span><span class="n">reverse_cost</span><span class="p">,</span><span class="n">the_geom</span><span class="p">)</span>
@@ -549,6 +548,11 @@ point there is a node and the following edges share it:
 <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a> to analyze directionality of the edges.
 <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a> to create a topology based on the geometry.
 <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</p>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
 </div>
 </div>
 
@@ -564,8 +568,8 @@ point there is a node and the following edges share it:
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

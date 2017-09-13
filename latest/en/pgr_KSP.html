@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_KSP &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_KSP &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="up" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
     <link rel="next" title="pgr_dijkstraVia - Proposed" href="pgr_dijkstraVia.html" />
     <link rel="prev" title="pgr_drivingDistance" href="pgr_drivingDistance.html" />
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -391,28 +392,8 @@
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="examples-to-handle-the-one-flag-to-choose-signatures">
 <h3>Examples to handle the one flag to choose signatures<a class="headerlink" href="#examples-to-handle-the-one-flag-to-choose-signatures" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Graph 1: Directed, with cost and reverse cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Network for queries marked as directed and cost and reverse_cost columns are used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
-     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> 
-      <span class="n">true</span>   
-   <span class="p">);</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Deprecated</span> <span class="n">function</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">id3</span> <span class="o">|</span> <span class="n">cost</span> 
-<span class="o">-----+-----+-----+-----+------</span>
-   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
-<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
-
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
       <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>   
@@ -454,7 +435,7 @@
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Graph 1: Directed, with cost and reverse cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Network for queries marked as directed and cost and reverse_cost columns are used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span>
@@ -524,7 +505,7 @@
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Graph 2: Undirected, with cost and reverse cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Network for queries marked as undirected and cost and reverse_cost columns are used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">false</span>
@@ -578,7 +559,7 @@
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Graph 3: Directed, with cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Network for queries marked as directed and only cost column is used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span>
@@ -656,7 +637,7 @@
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Graph 4: Undirected, with cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Network for queries marked as undirected and only cost column is used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">false</span>
@@ -706,7 +687,7 @@
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/K_shortest_path_routing">http://en.wikipedia.org/wiki/K_shortest_path_routing</a></li>
-<li><a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
+<li><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -728,8 +709,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

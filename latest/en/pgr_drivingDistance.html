@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="up" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
     <link rel="next" title="pgr_KSP" href="pgr_KSP.html" />
     <link rel="prev" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" />
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -192,8 +193,8 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value <code class="docutils literal"><span class="pre">distance</span></code>.
-The edges extracted will conform the corresponding spanning tree.</p>
+<p>Using the Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value <code class="docutils literal"><span class="pre">distance</span></code>.
+The edges extracted will conform to the corresponding spanning tree.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
@@ -328,7 +329,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </tr>
 <tr class="row-even"><td><strong>start_vids</strong></td>
 <td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td>Array of identifiers of starting vertices.</td>
+<td>Array of identifiers of the starting vertices.</td>
 </tr>
 <tr class="row-odd"><td><strong>distance</strong></td>
 <td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
@@ -340,7 +341,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </tr>
 <tr class="row-odd"><td><strong>equicost</strong></td>
 <td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional). When <code class="docutils literal"><span class="pre">true</span></code> the node will only appear in the closest <code class="docutils literal"><span class="pre">start_vid</span></code> list.  Default is <code class="docutils literal"><span class="pre">false</span></code> which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.</td>
+<td>(optional). When <code class="docutils literal"><span class="pre">true</span></code> the node will only appear in the closest <code class="docutils literal"><span class="pre">start_vid</span></code> list.  Default is <code class="docutils literal"><span class="pre">false</span></code> which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.</td>
 </tr>
 </tbody>
 </table>
@@ -393,35 +394,8 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Graph 1: Directed, with cost and reverse cost</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">PGR</span><span class="o">-</span><span class="n">GNU</span><span class="o">*****************************************************************</span>
-
-<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2015</span> <span class="n">pgRouting</span> <span class="n">developers</span>
-<span class="n">Mail</span><span class="p">:</span> <span class="n">project</span><span class="nd">@pgrouting</span><span class="o">.</span><span class="n">org</span>
-
-<span class="o">------</span>
-
-<span class="n">This</span> <span class="n">program</span> <span class="ow">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">;</span> <span class="n">you</span> <span class="n">can</span> <span class="n">redistribute</span> <span class="n">it</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">modify</span>
-<span class="n">it</span> <span class="n">under</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="k">as</span> <span class="n">published</span> <span class="n">by</span>
-<span class="n">the</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">;</span> <span class="n">either</span> <span class="n">version</span> <span class="mi">2</span> <span class="n">of</span> <span class="n">the</span> <span class="n">License</span><span class="p">,</span> <span class="ow">or</span>
-<span class="p">(</span><span class="n">at</span> <span class="n">your</span> <span class="n">option</span><span class="p">)</span> <span class="nb">any</span> <span class="n">later</span> <span class="n">version</span><span class="o">.</span>
-
-<span class="n">This</span> <span class="n">program</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">hope</span> <span class="n">that</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">useful</span><span class="p">,</span>
-<span class="n">but</span> <span class="n">WITHOUT</span> <span class="n">ANY</span> <span class="n">WARRANTY</span><span class="p">;</span> <span class="n">without</span> <span class="n">even</span> <span class="n">the</span> <span class="n">implied</span> <span class="n">warranty</span> <span class="n">of</span>
-<span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span> <span class="n">See</span> <span class="n">the</span>
-<span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="k">for</span> <span class="n">more</span> <span class="n">details</span><span class="o">.</span>
-
-<span class="n">You</span> <span class="n">should</span> <span class="n">have</span> <span class="n">received</span> <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span>
-<span class="n">along</span> <span class="k">with</span> <span class="n">this</span> <span class="n">program</span><span class="p">;</span> <span class="k">if</span> <span class="ow">not</span><span class="p">,</span> <span class="n">write</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Free</span> <span class="n">Software</span>
-<span class="n">Foundation</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span><span class="p">,</span> <span class="mi">51</span> <span class="n">Franklin</span> <span class="n">Street</span><span class="p">,</span> <span class="n">Fifth</span> <span class="n">Floor</span><span class="p">,</span> <span class="n">Boston</span><span class="p">,</span> <span class="n">MA</span> <span class="mi">02110</span><span class="o">-</span><span class="mi">1301</span> <span class="n">USA</span><span class="o">.</span>
-
-<span class="o">********************************************************************</span><span class="n">PGR</span><span class="o">-</span><span class="n">GNU</span><span class="o">*/</span>
-
-
-
-
-
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Network for queries marked as directed and cost and reverse_cost columns are used</span></a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
       <span class="p">);</span>
@@ -505,7 +479,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Graph 2: Undirected, with cost and reverse cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Network for queries marked as undirected and cost and reverse_cost columns are used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
@@ -596,7 +570,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Graph 3: Directed, with cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Network for queries marked as directed and only cost column is used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
@@ -657,7 +631,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h3>
-<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Graph 4: Undirected, with cost</span></a></p>
+<p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Network for queries marked as undirected and only cost column is used</span></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span>
@@ -749,7 +723,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_alphaShape.html#pgr-alphashape"><span class="std std-ref">pgr_alphaShape</span></a> - Alpha shape computation</li>
 <li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><span class="std std-ref">pgr_pointsAsPolygon</span></a> - Polygon around set of points</li>
-<li><a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
+<li><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -771,8 +745,8 @@ The edges extracted will conform the corresponding spanning tree.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

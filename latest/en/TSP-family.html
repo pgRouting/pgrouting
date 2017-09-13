@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Traveling Sales Person - Family of functions &mdash; pgRouting Manual (2.4)</title>
+    <title>Traveling Sales Person - Family of functions &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="up" title="Routing Functions" href="routingFunctions.html" />
     <link rel="next" title="pgr_TSP" href="pgr_TSP.html" />
     <link rel="prev" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="pgr_trsp.html" />
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -117,6 +118,7 @@
 <li><a class="reference internal" href="#pgrouting-implementation">pgRouting Implementation</a></li>
 <li><a class="reference internal" href="#choosing-parameters">Choosing parameters</a></li>
 <li><a class="reference internal" href="#description-of-the-control-parameters">Description Of the Control parameters</a></li>
+<li><a class="reference internal" href="#description-of-the-return-columns">Description of the return columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -231,18 +233,18 @@ and gradually cool down until the desired temperature is reached.</p>
 <p>For each temperature, a neighbouring new solution <strong>snew</strong> is calculated. The higher the temperature
 the higher the probability of accepting the new solution as a possible bester solution.</p>
 <p>Once the desired temperature is reached, the best solution found is returned</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Solution ← initial_solution;
+<div class="highlight-none"><div class="highlight"><pre><span></span>Solution = initial_solution;
 
-temperature ← initial_temperature;
+temperature = initial_temperature;
 while (temperature &gt; final_temperature) {
 
     do tries_per_temperature times {
-        snew ← neighbour(solution);
-        If P(E(solution), E(snew), T) ≥ random(0, 1)
-            solution ← snew;
+        snew = neighbour(solution);
+        If P(E(solution), E(snew), T) &gt;= random(0, 1)
+            solution = snew;
     }
 
-    temperature ← temperature * cooling factor;
+    temperature = temperature * cooling factor;
 }
 
 Output: the best solution
@@ -258,7 +260,7 @@ simulated annealing process.</p>
 <li>max_changes_per_temperature: limits the number of changes in the solution per temperature</li>
 <li>max_consecutive_non_changes: limits the number of consecutive non changes per temperature</li>
 </ul>
-<p>This is done by doing some book keeping on the times <strong>solution ← snew;</strong> is executed.</p>
+<p>This is done by doing some book keeping on the times <strong>solution = snew;</strong> is executed.</p>
 <ul class="simple">
 <li>max_changes_per_temperature: Increases by one when <strong>solution</strong> changes</li>
 <li>max_consecutive_non_changes: Reset to 0 when <strong>solution</strong> changes, and increased each <strong>try</strong></li>
@@ -270,22 +272,22 @@ simulated annealing process.</p>
 </ul>
 <p>Note that, if no change was found in the first <strong>max_consecutive_non_changes</strong> tries, then the
 simulated annealing will stop.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Solution ← initial_solution;
+<div class="highlight-none"><div class="highlight"><pre><span></span>Solution = initial_solution;
 
-temperature ← initial_temperature;
+temperature = initial_temperature;
 while (temperature &gt; final_temperature) {
 
     do tries_per_temperature times {
-        snew ← neighbour(solution);
-        If P(E(solution), E(snew), T) ≥ random(0, 1)
-            solution ← snew;
+        snew = neighbour(solution);
+        If P(E(solution), E(snew), T) &gt;= random(0, 1)
+            solution = snew;
 
         when max_changes_per_temperature is reached
             or max_consecutive_non_changes is reached
             BREAK;
     }
 
-    temperature ← temperature * cooling factor;
+    temperature = temperature * cooling factor;
     when no changes were done in the current temperature
         or max_processing_time has being reached
         BREAK;
@@ -395,6 +397,55 @@ and set to a higher number for a slower decrease.</li>
 </tbody>
 </table>
 </div>
+<div class="section" id="description-of-the-return-columns">
+<h3>Description of the return columns<a class="headerlink" href="#description-of-the-return-columns" title="Permalink to this headline">¶</a></h3>
+<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="10%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td>Row sequence.</td>
+</tr>
+<tr class="row-odd"><td><strong>node</strong></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td>Identifier of the node/coordinate/point.</td>
+</tr>
+<tr class="row-even"><td><strong>cost</strong></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><dl class="first last docutils">
+<dt>Cost to traverse from the current <code class="docutils literal"><span class="pre">node</span></code> ito the next <code class="docutils literal"><span class="pre">node</span></code> in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">0</span></code> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>agg_cost</strong></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><dl class="first last docutils">
+<dt>Aggregate cost from the <code class="docutils literal"><span class="pre">node</span></code> at <code class="docutils literal"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to the current node.</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">0</span></code> for the first row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="see-also">
 <h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">References</p>
@@ -429,8 +480,8 @@ and set to a higher number for a slower decrease.</li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

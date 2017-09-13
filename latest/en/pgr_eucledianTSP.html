@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_eucledianTSP &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_eucledianTSP &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="up" title="Traveling Sales Person - Family of functions" href="TSP-family.html" />
     <link rel="next" title="Driving Distance - Category" href="drivingDistance-category.html" />
     <link rel="prev" title="pgr_TSP" href="pgr_TSP.html" />
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -119,8 +120,6 @@
 </li>
 <li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
 <li><a class="reference internal" href="#description-of-the-coordinates-sql-query">Description of the coordinates SQL query</a></li>
-<li><a class="reference internal" href="#description-of-the-control-parameters">Description Of the Control parameters</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values">Description of the return values</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
@@ -311,131 +310,55 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tbody>
 </table>
 <p>When the value of <strong>id</strong> is not given then the coordinates will receive an <strong>id</strong> starting from 1, in the order given.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+Description Of the Control parameters
+.....................................................................
+
+The control parameters are optional, and have a default value.
+
+=============================== ===========  ============  =================================================
+Parameter                       Type         Default       Description
+=============================== ===========  ============  =================================================
+**start_vid**                   ``BIGINT``    `0`          The greedy part of the implementation will use this identifier.
+**end_vid**                     ``BIGINT``    `0`          Last visiting vertex before returning to start_vid.
+**max_processing_time**         ``FLOAT``    `+infinity`   Stop the annealing processing when the value is reached.
+**tries_per_temperature**       ``INTEGER``  `500`         Maximum number of times a neighbor(s) is searched in each temperature.
+**max_changes_per_temperature** ``INTEGER``  `60`          Maximum number of times the solution is changed in each temperature.
+**max_consecutive_non_changes** ``INTEGER``  `100`         Maximum number of consecutive times the solution is not changed in each temperature.
+**initial_temperature**         ``FLOAT``    `100`         Starting temperature.
+**final_temperature**           ``FLOAT``    `0.1`         Ending temperature.
+**cooling_factor**              ``FLOAT``    `0.9`         Value between between 0 and 1 (not including) used to calculate the next temperature.
+**randomize**                   ``BOOLEAN``  `true`        Choose the random seed
+
+                                                           - true: Use current time as seed
+                                                           - false: Use `1` as seed. Using this value will get the same results with the same data in each execution.
+
+=============================== ===========  ============  =================================================
+
+
+</pre></div>
 </div>
-<div class="section" id="description-of-the-control-parameters">
-<h3>Description Of the Control parameters<a class="headerlink" href="#description-of-the-control-parameters" title="Permalink to this headline">¶</a></h3>
-<p>The control parameters are optional, and have a default value.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="19%" />
-<col width="7%" />
-<col width="8%" />
-<col width="66%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td><cite>0</cite></td>
-<td>The greedy part of the implementation will use this identifier.</td>
-</tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td><cite>0</cite></td>
-<td>Last visiting vertex before returning to start_vid.</td>
-</tr>
-<tr class="row-even"><td><strong>max_processing_time</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><cite>+infinity</cite></td>
-<td>Stop the annealing processing when the value is reached.</td>
-</tr>
-<tr class="row-odd"><td><strong>tries_per_temperature</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td><cite>500</cite></td>
-<td>Maximum number of times a neighbor(s) is searched in each temperature.</td>
-</tr>
-<tr class="row-even"><td><strong>max_changes_per_temperature</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td><cite>60</cite></td>
-<td>Maximum number of times the solution is changed in each temperature.</td>
-</tr>
-<tr class="row-odd"><td><strong>max_consecutive_non_changes</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td><cite>100</cite></td>
-<td>Maximum number of consecutive times the solution is not changed in each temperature.</td>
-</tr>
-<tr class="row-even"><td><strong>initial_temperature</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><cite>100</cite></td>
-<td>Starting temperature.</td>
-</tr>
-<tr class="row-odd"><td><strong>final_temperature</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><cite>0.1</cite></td>
-<td>Ending temperature.</td>
-</tr>
-<tr class="row-even"><td><strong>cooling_factor</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><cite>0.9</cite></td>
-<td>Value between between 0 and 1 (not including) used to calculate the next temperature.</td>
-</tr>
-<tr class="row-odd"><td><strong>randomize</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td><cite>true</cite></td>
-<td><p class="first">Choose the random seed</p>
-<ul class="last simple">
-<li>true: Use current time as seed</li>
-<li>false: Use <cite>1</cite> as seed. Using this value will get the same results with the same data in each execution.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+Description of the return columns
+...............................................................................
+
+Returns set of ``(seq, node, cost, agg_cost)``
+
+============= =========== =================================================
+Column           Type              Description
+============= =========== =================================================
+**seq**       ``INTEGER`` Row sequence.
+**node**      ``BIGINT``  Identifier of the node/coordinate/point.
+**cost**      ``FLOAT``   Cost to traverse from the current ``node`` ito the next ``node`` in the path sequence.
+                            - ``0`` for the last row in the path sequence.
+
+**agg_cost**  ``FLOAT``   Aggregate cost from the ``node`` at ``seq = 1`` to the current node.
+                            - ``0`` for the first row in the path sequence.
+
+============= =========== =================================================
+
+</pre></div>
 </div>
-<div class="section" id="description-of-the-return-values">
-<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="12%" />
-<col width="10%" />
-<col width="78%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td>Row sequence.</td>
-</tr>
-<tr class="row-odd"><td><strong>node</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the node/coordinate/point.</td>
-</tr>
-<tr class="row-even"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><dl class="first last docutils">
-<dt>Cost to traverse from the current <code class="docutils literal"><span class="pre">node</span></code> ito the next <code class="docutils literal"><span class="pre">node</span></code> in the path sequence.</dt>
-<dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">0</span></code> for the last row in the path sequence.</li>
-</ul>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><dl class="first last docutils">
-<dt>Aggregate cost from the <code class="docutils literal"><span class="pre">node</span></code> at <code class="docutils literal"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to the current node.</dt>
-<dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">0</span></code> for the first row in the path sequence.</li>
-</ul>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="examples">
@@ -490,7 +413,7 @@ Best cost reached = 18.7796
 
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</p>
+<p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>New in version 2.3.0</li>
@@ -502,6 +425,11 @@ Best cost reached = 18.7796
 <li><a class="reference internal" href="TSP-family.html#tsp"><span class="std std-ref">Traveling Sales Person - Family of functions</span></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">http://en.wikipedia.org/wiki/Traveling_salesman_problem</a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 </div>
@@ -518,8 +446,8 @@ Best cost reached = 18.7796
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

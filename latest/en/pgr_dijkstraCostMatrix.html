@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_dijkstraCostMatrix - proposed &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_dijkstraCostMatrix - proposed &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="up" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
     <link rel="next" title="pgr_drivingDistance" href="pgr_drivingDistance.html" />
     <link rel="prev" title="pgr_dijkstraCost" href="pgr_dijkstraCost.html" />
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,8 +91,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -175,7 +176,7 @@
 <p><code class="docutils literal"><span class="pre">pgr_dijkstraCostMatrix</span></code> - Calculates the a cost matrix using pgr_dijktras.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>These are proposed functions for next mayor release.</p>
+<p>Proposed functions for next mayor release.</p>
 <ul class="last simple">
 <li>They are not officially in the current release.</li>
 <li>They will likely officially be part of the next mayor release:<ul>
@@ -467,7 +468,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <li><a class="reference internal" href="dijkstra-family.html#dijkstra"><span class="std std-ref">Dijkstra - Family of functions</span></a></li>
 <li><a class="reference internal" href="costMatrix-category.html#costmatrix"><span class="std std-ref">Cost Matrix - Category</span></a></li>
 <li><a class="reference internal" href="TSP-family.html#tsp"><span class="std std-ref">Traveling Sales Person - Family of functions</span></a></li>
-<li>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
+<li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -489,8 +490,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>

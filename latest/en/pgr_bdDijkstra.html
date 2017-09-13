@@ -5,18 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_bdDijkstra &mdash; pgRouting Manual (2.4)</title>
+    <title>pgr_bdDijkstra &mdash; pgRouting Manual (2.5)</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.2',
+        VERSION:     'v2.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  false
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,10 +29,10 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
     <link rel="up" title="Routing Functions" href="routingFunctions.html" />
     <link rel="next" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
-    <link rel="prev" title="pgr_bdAstar - Bi-directional A* Shortest Path" href="pgr_bdAstar.html" />
+    <link rel="prev" title="pgr_bdAstar" href="pgr_bdAstar.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -89,9 +90,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -113,6 +114,9 @@
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#minimal-signature">Minimal signature</a></li>
 <li><a class="reference internal" href="#pgr-bddijkstra-one-to-one">pgr_bdDijkstra One to One</a></li>
+<li><a class="reference internal" href="#pgr-bddijkstra-one-to-many">pgr_bdDijkstra One to many</a></li>
+<li><a class="reference internal" href="#pgr-bddijkstra-many-to-one">pgr_bdDijkstra Many to One</a></li>
+<li><a class="reference internal" href="#pgr-bddijkstra-many-to-many">pgr_bdDijkstra Many to Many</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
@@ -133,7 +137,7 @@
               
                 
   <li>
-    <a href="pgr_bdAstar.html" title="Previous Chapter: pgr_bdAstar - Bi-directional A* Shortest Path"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bdAstar - Bi...</span>
+    <a href="pgr_bdAstar.html" title="Previous Chapter: pgr_bdAstar"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bdAstar</span>
     </a>
   </li>
   <li>
@@ -175,12 +179,43 @@
 <p class="rubric">Availability:</p>
 <ul class="simple">
 <li>pgr_bdDijkstra(one to one) 2.0.0, Signature changed 2.4.0</li>
+<li>pgr_bdDijkstra(other signatures) 2.5.0</li>
 </ul>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(edges_sql, start_vid,  end_vid)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid,  end_vid)
 pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+OR EMPTY SET
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Experimental functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
+pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
+pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
+
+RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
@@ -225,14 +260,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>This signature finds the shortest path from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</dt>
-<dd><ul class="first last simple">
+<p>This signature finds the shortest path from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
+<ul class="simple">
 <li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
 <li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
 </ul>
-</dd>
-</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -251,6 +283,157 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="pgr-bddijkstra-one-to-many">
+<span id="index-2"></span><h3>pgr_bdDijkstra One to many<a class="headerlink" href="#pgr-bddijkstra-one-to-many" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
+RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+</pre></div>
+</div>
+<p>This signature finds the shortest path from one <code class="docutils literal"><span class="pre">start_vid</span></code> to each <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</p>
+<ul class="simple">
+<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
+<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+</ul>
+<p>Using this signature, will load once the graph and perform a one to one <cite>pgr_dijkstra</cite>
+where the starting vertex is fixed, and stop when all <code class="docutils literal"><span class="pre">end_vids</span></code> are reached.</p>
+<ul class="simple">
+<li>The result is equivalent to the union of the results of the one to one <cite>pgr_dijkstra</cite>.</li>
+<li>The extra <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
+<span class="o">-----+----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">3</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="pgr-bddijkstra-many-to-one">
+<span id="index-3"></span><h3>pgr_bdDijkstra Many to One<a class="headerlink" href="#pgr-bddijkstra-many-to-one" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
+RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+</pre></div>
+</div>
+<p>This signature finds the shortest path from each <code class="docutils literal"><span class="pre">start_vid</span></code> in  <code class="docutils literal"><span class="pre">start_vids</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
+<ul class="simple">
+<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
+<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+</ul>
+<p>Using this signature, will load once the graph and perform several one to one <cite>pgr_dijkstra</cite>
+where the ending vertex is fixed.</p>
+<ul class="simple">
+<li>The result is the union of the results of the one to one <cite>pgr_dijkstra</cite>.</li>
+<li>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">3</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
+<span class="o">-----+----------+-----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+  <span class="mi">12</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span>
+  <span class="mi">13</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">6</span>
+<span class="p">(</span><span class="mi">13</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="pgr-bddijkstra-many-to-many">
+<span id="index-4"></span><h3>pgr_bdDijkstra Many to Many<a class="headerlink" href="#pgr-bddijkstra-many-to-many" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
+RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+</pre></div>
+</div>
+<p>This signature finds the shortest path from each <code class="docutils literal"><span class="pre">start_vid</span></code> in  <code class="docutils literal"><span class="pre">start_vids</span></code> to each <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</p>
+<ul class="simple">
+<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
+<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+</ul>
+<p>Using this signature, will load once the graph and perform several one to Many <cite>pgr_dijkstra</cite>
+for all <code class="docutils literal"><span class="pre">start_vids</span></code>.</p>
+<ul class="simple">
+<li>The result is the union of the results of the one to one <cite>pgr_dijkstra</cite>.</li>
+<li>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
+</ul>
+<p>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> and <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+  <span class="mi">12</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+  <span class="mi">13</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">14</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">15</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+  <span class="mi">16</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span>
+  <span class="mi">17</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">6</span>
+  <span class="mi">18</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+  <span class="mi">19</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+  <span class="mi">20</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">21</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">22</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="p">(</span><span class="mi">22</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -443,7 +626,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><span class="std std-ref">Sample Data</span></a> network.</li>
+<li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
+<li><a class="reference internal" href="bdDijkstra-family.html#bddijkstra"><span class="std std-ref">Bidirectional Dijkstra - Family of functions</span></a></li>
 <li><a class="reference external" href="http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf">http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf</a></li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Bidirectional_search">https://en.wikipedia.org/wiki/Bidirectional_search</a></li>
 </ul>
@@ -467,8 +651,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.2.<br/>
-      Last updated on Aug 15, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
+      Last updated on Sep 13, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
     </p>
   </div>
