@@ -41,15 +41,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "turnPenaltyGraph/pgr_turnPenaltyGraph.hpp"
 
 void get_turn_penalty_postgres_result(
-        std::vector< Line_graph_rt > edge_result,
-        Line_graph_rt **return_tuples,
+        std::vector< Turn_penalty_graph_rt > edge_result,
+        Turn_penalty_graph_rt **return_tuples,
         size_t &sequence) {
     (*return_tuples) = pgr_alloc(
             (int)edge_result.size(),
             (*return_tuples));
 
     for (const auto &edge: edge_result) {
-        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target, edge.cost, edge.reverse_cost};
+        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target, edge.cost, edge.original_source_edge, edge.original_source_vertex, edge.original_target_edge, edge.original_target_vertex};
         sequence++;
     }
 }
@@ -58,8 +58,7 @@ void
 do_pgr_turnPenaltyGraph(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        bool directed,
-        Line_graph_rt **return_tuples,
+        Turn_penalty_graph_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -75,38 +74,21 @@ do_pgr_turnPenaltyGraph(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector< Line_graph_rt > results;
-        graphType gType = directed?DIRECTED:UNDIRECTED;
+        std::vector< Turn_penalty_graph_rt > results;
+        graphType gType = DIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
-        if (!directed) {
-            for (size_t ind = 0; ind < total_edges; ind++) {
-                std::swap(data_edges[ind].source, data_edges[ind].target);
-                data_edges[ind].id *= -1;
-            }
-
-            digraph.insert_edges(data_edges, total_edges);
-
-            for (size_t ind = 0;ind < total_edges; ind++) {
-                std::swap(data_edges[ind].source, data_edges[ind].target);
-                data_edges[ind].id *= -1;
-            }
-        }
 
         digraph.m_num_vertices = 1000;
         log << digraph << "\n";
 
         pgrouting::LinearDirectedGraph line(gType);
-        line.insert_vertices(data_edges, total_edges);
+        line.insert_edges(data_edges, total_edges);
         line.transform(digraph);
 
-        std::vector< Line_graph_rt > line_graph_edges;
-        if (directed) {
-            line_graph_edges = line.get_postgres_results_directed();
-        } else {
-          // TODO:  line_graph_edges = line.get_postgres_results_undirected();
-        }
+        std::vector< Turn_penalty_graph_rt > line_graph_edges;
+        line_graph_edges = line.get_postgres_results_directed();
 
         auto count = line_graph_edges.size();
 

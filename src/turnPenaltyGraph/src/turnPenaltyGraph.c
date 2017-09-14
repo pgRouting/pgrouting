@@ -56,15 +56,13 @@ static
 void
 process(
         char* edges_sql,
-        bool directed,
-        Line_graph_rt **result_tuples,
+        Turn_penalty_graph_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
     PGR_DBG("\nSQL QUERY: %s\n", edges_sql);
-    if (directed) PGR_DBG("\nDirectedGraph\n");
-    else PGR_DBG("\nUndirectedGraph\n");
+    PGR_DBG("\nDirectedGraph\n");
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;
@@ -91,7 +89,6 @@ process(
     do_pgr_turnPenaltyGraph(
             edges,
             total_edges,
-            directed,
             result_tuples,
             result_count,
             &log_msg,
@@ -104,6 +101,7 @@ process(
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
     }
+
     pgr_global_report(log_msg, notice_msg, err_msg);
 
     if (edges) pfree(edges);
@@ -123,7 +121,7 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    Line_graph_rt  *result_tuples = NULL;
+    Turn_penalty_graph_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -137,15 +135,12 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
-           TEXT,
-    directed BOOLEAN DEFAULT true,
+           TEXT
          **********************************************************************/
 
 
         PGR_DBG("Calling process");
-        process(
-                text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_BOOL(1),
+        process(text_to_cstring(PG_GETARG_TEXT_P(0)),
                 &result_tuples,
                 &result_count);
 
@@ -173,7 +168,7 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Line_graph_rt*) funcctx->user_fctx;
+    result_tuples = (Turn_penalty_graph_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -181,12 +176,12 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        values = palloc(8 * sizeof(Datum));
+        nulls = palloc(8 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < 8; ++i) {
             nulls[i] = false;
         }
 
@@ -195,7 +190,10 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].original_source_edge);
+        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].original_source_vertex);
+        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].original_target_edge);
+        values[7] = Int64GetDatum(result_tuples[funcctx->call_cntr].original_target_vertex);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
