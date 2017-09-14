@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: lineGraph.sql
+File: turn_penalty_graph_rt.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,18 +26,49 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/*! @file */
 
-CREATE OR REPLACE FUNCTION pgr_turnPenaltyGraph(
-    TEXT, -- edges_sql
-    OUT seq INTEGER,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT cost FLOAT,
-    OUT original_source_vertex BIGINT,
-    OUT original_source_edge BIGINT,
-    OUT original_target_vertex BIGINT,
-    OUT original_target_edge BIGINT)
+#ifndef INCLUDE_C_TYPES_TURN_PENALTY_GRAPH_RT_H_
+#define INCLUDE_C_TYPES_TURN_PENALTY_GRAPH_RT_H_
+#pragma once
 
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'turnPenaltyGraph'
-LANGUAGE c IMMUTABLE STRICT;
+
+#ifdef __cplusplus
+
+#include <cstddef>
+
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
+
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
+
+typedef struct {
+    int64_t id;
+    int64_t source;
+    int64_t target;
+    float cost;
+    int64_t original_source_edge;
+    int64_t original_source_vertex;
+    int64_t original_target_edge;
+    int64_t original_target_vertex;
+} Turn_penalty_graph_rt;
+
+#endif  // INCLUDE_C_TYPES_TURN_PENALTY_GRAPH_RT_H_

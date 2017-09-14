@@ -57,11 +57,10 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
  private:
     int64_t m_num_edges;
     std::map < int64_t, pgr_edge_t > m_edges;
+    std::map < int64_t, std::pair< int64_t, int64_t > > m_transformation_map;
     std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;
 
-    void add_vertices(std::vector< T_V > vertices);
-
-    void create_edges(const pgrouting::DirectedGraph& digraph);
+    void apply_transformation(const pgrouting::DirectedGraph& digraph);
 
     template < typename T >
         void graph_add_edge(int64_t, const T &source, const T&target, int64_t, int64_t);
@@ -81,34 +80,24 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
 
     template < typename T >
-        void insert_vertices(const T* edges, int64_t count) {
-            insert_vertices(std::vector < T >(edges, edges + count));
+        void insert_edges(const T* edges, int64_t count) {
+            insert_edges(std::vector < T >(edges, edges + count));
         }
-
-    template < typename T >
-        void insert_vertices(const std::vector < T > &edges) {
-
-            for (auto &it: edges)
-                m_edges[it.id] = it;
-            std::vector < Line_vertex > vertices = extract_vertices();
-
-            log << "\nVertices of transformed graph: \n";
-            for (auto vertex: vertices) {
-                log << vertex.id << "(" << vertex.source << " - > ";
-                log << vertex.target << ")" << vertex.cost << "\n";
-            }
-
-            add_vertices(vertices);
-        }
-
-    std::vector < Line_vertex > extract_vertices();
 
     void transform(pgrouting::DirectedGraph& digraph) {
-        create_edges(digraph);
+        apply_transformation(digraph);
+    }
+
+    template < typename T >
+        void insert_edges(const std::vector < T > &edges){
+
+        for (auto &it: edges)
+            m_edges[it.id] = it;
+
     }
 
     int64_t num_edges() const { return m_num_edges; }
-    std::vector< Line_graph_rt > get_postgres_results_directed();
+    std::vector< Turn_penalty_graph_rt > get_postgres_results_directed();
 
     friend std::ostream& operator<<(
             std::ostream &log, const Pgr_turnPenaltyGraph< G, T_V, T_E > &g) {
@@ -132,72 +121,45 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
 };
 
 template < class G, typename T_V, typename T_E >
-std::vector< Line_graph_rt >
+std::vector< Turn_penalty_graph_rt >
 Pgr_turnPenaltyGraph< G, T_V, T_E >::get_postgres_results_directed() {
-    std::vector< Line_graph_rt > results;
+    std::vector< Turn_penalty_graph_rt > results;
 
     typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
-    std::map < std::pair<int64_t,int64_t >, Line_graph_rt > unique;
+    std::map < std::pair<int64_t,int64_t >, Turn_penalty_graph_rt > unique;
     int64_t count = 0;
 
     log << "\nPostgres results\n";
     for (boost::tie(edgeIt, edgeEnd) = boost::edges(this->graph);
             edgeIt != edgeEnd; edgeIt++) {
+
         E e = *edgeIt;
         auto e_source = this->graph[this->source(e)].vertex_id;
         auto e_target = this->graph[this->target(e)].vertex_id;
+        
+        auto target_vertex_edge_pair = m_transformation_map[e_target];
+        auto target_vertex_id = target_vertex_edge_pair.first;
+        auto target_edge_id = target_vertex_edge_pair.second;
+        auto source_vertex_edge_pair = m_transformation_map[e_source];
+        auto source_vertex_id = source_vertex_edge_pair.first;
+        auto source_edge_id = source_vertex_edge_pair.second;
 
-        // This section extracts the original vertex and edge ids from the vertex id in the original graph
-        int64_t t_hldr = e_target;
-        int digits = 0;
-        while(t_hldr >= 10){
-          t_hldr /= 10;
-          digits++;
-        }
-
-        int mod = 1;
-        digits = digits - (t_hldr);
-        while(digits > 0){
-          mod *= 10;
-          digits--;
-        }
- 
-        int64_t e_id = e_target % mod;
-
-        int digits2 = 0;
-        int64_t s_hldr = e_source;
-        while(s_hldr >= 10){
-          s_hldr /= 10;
-          digits2++;
-        }
-
-        mod = 1;
-        digits2 = digits2 - (s_hldr);
-        while(digits2 > 0){
-          mod *= 10;
-          digits2--;
-        }
- 
-        int64_t e_id2 = e_source % mod;
         float e_cost = 0; 
-        if(e_id == e_id2){
-          for (const auto &it : m_edges) {
-            auto edge2 = it.second;
-            if(e_id == edge2.id){
-              e_cost = edge2.cost;
-              break; 
-            }
-          }
+        if(source_edge_id == target_edge_id){
+            e_cost = m_edges[source_edge_id].cost;
         }
 
         log << "e_source = " << e_source << " | e_target = " << e_target << "\n";
 
-        Line_graph_rt edge = {
+        Turn_penalty_graph_rt edge = {
             ++count,
             e_source,
             e_target,
             e_cost,
-            -1.0
+            source_vertex_id,
+            source_edge_id,
+            target_vertex_id,
+            target_edge_id
         };
 
         unique[ std::pair<int64_t,int64_t>(e_source, e_target)] = edge;
@@ -206,52 +168,6 @@ Pgr_turnPenaltyGraph< G, T_V, T_E >::get_postgres_results_directed() {
         results.push_back(edge.second);
     }
     return results;
-}
-
-template < class G, typename T_V, typename T_E >
-std::vector < Line_vertex >
-Pgr_turnPenaltyGraph< G, T_V, T_E >::extract_vertices() {
-    if (m_edges.empty()) return std::vector< Line_vertex >();
-
-    std::vector< Line_vertex > vertices;
-
-#if 1
-    log << "\nEdges of original graph\n";
-#endif
-
-    for (const auto &it : m_edges) {
-        auto edge = it.second;
-        Line_vertex vertex(edge);
-
-#if 1
-        log << "ID: " << edge.id;
-        log << "| source: " << edge.source;
-        log << "| target: " << edge.target;
-        log << "| cost: " << edge.cost;
-        log << "| reverse_cost: " << edge.reverse_cost << "\n\n";
-#endif
-
-        if (edge.cost > 0) {
-            vertex.id = (++(this->m_num_vertices));
-            vertices.push_back(vertex);
-            m_vertex_map[ std::pair<int64_t,int64_t>(edge.id, edge.source) ] = this->m_num_vertices;
-        }
-
-        if (edge.reverse_cost > 0) {
-            vertex.id = (++(this->m_num_vertices));
-            vertex.cost = edge.reverse_cost;
-            vertex.vertex_id *= -1;
-            std::swap(vertex.source, vertex.target);
-            vertices.push_back(vertex);
-            m_vertex_map[ std::pair<int64_t,int64_t>(edge.id, edge.target) ] = this->m_num_vertices;
-        }
-    }
-#if 1
-    for (auto it: m_vertex_map) {
-        log << it.first.first << " | " << it.first.second << " | " << it.second << "\n";
-    }
-#endif
-    return vertices;
 }
 
 template < class G, typename T_V, typename T_E >
@@ -275,7 +191,7 @@ Pgr_turnPenaltyGraph< G, T_V, T_E >::graph_add_edge(
     auto index_source_edge = m_vertex_map[ std::pair<int64_t,int64_t>(source, source_in_edge) ];
     auto index_target_edge = m_vertex_map[ std::pair<int64_t,int64_t>(target, source_out_edge) ];
 
-#if 1
+#if 0
     log << "\nsource_in_edge = " << source_in_edge << " | "
         << "source_out_edge = " << source_out_edge << " | "
         << "index_source_edge = " << index_source_edge << " | "
@@ -298,172 +214,95 @@ Pgr_turnPenaltyGraph< G, T_V, T_E >::graph_add_edge(
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_turnPenaltyGraph< G, T_V, T_E >::create_edges(
+Pgr_turnPenaltyGraph< G, T_V, T_E >::apply_transformation(
         const pgrouting::DirectedGraph& digraph) {
 
     V_i vertexIt, vertexEnd;
     EO_i e_outIt, e_outEnd;
     EI_i e_inIt, e_inEnd;
 
+    // For every incoming and outgoing edge of every vertex in the original graph,
+    // create a vertex in the new graph and link incoming edge vertices to the outgoing
+    // edge vertices
     for(boost::tie(vertexIt, vertexEnd) = boost::vertices(digraph.graph);
             vertexIt != vertexEnd; vertexIt++) {
+
         V vertex = *vertexIt;
-
-        // Generate the first half of the vertex id of each vertex in the new graph created
-        // by spliting up this vertex in the original graph apart.
-        int64_t vid = digraph[vertex].id;
-        int64_t digits = 0;
-        while (vid) {
-            vid /= 10;
-            digits++;
-        }
-        
-        vid = digraph[vertex].id;
-        int64_t times = 1;
-        while (times <= vid)
-           times *= 10;
-        vid = (digits*times) + vid;
-
+        int64_t vertex_id = digraph[vertex].id;
         for (boost::tie(e_outIt, e_outEnd) = boost::out_edges(vertex, digraph.graph);
-                e_outIt != e_outEnd; e_outIt++) {
+                    e_outIt != e_outEnd; e_outIt++) {
+               
+                ++(this->m_num_vertices);
+                int64_t out_edge_id = digraph.graph[*e_outIt].id;
+                int64_t out_edge_vertex_id = this->m_num_vertices;
 
-            // Generate the vertex id of the vertex created in the new graph that represents this
-            // outgoing edge of the corresponding vertex in the original graph
-            int64_t curid1 = vid;
-            int64_t times1 = 1;
-            while (times1 <= digraph.graph[*e_outIt].id)
-                times1 *= 10;
-            curid1 = curid1*times1 + digraph.graph[*e_outIt].id;
-
-            // Add a vertex to the new graph for this incoming edge of this vertex in the original graph
-            ++(this->m_num_vertices);
-            m_vertex_map[ std::pair<int64_t,int64_t>(curid1, curid1) ] = this->m_num_vertices;
-            auto v =  add_vertex(this->graph);
-            this->graph[v].cp_members(this->m_num_vertices, curid1);
-            this->graph[v].vertex_id = curid1;
-            this->vertices_map[this->m_num_vertices] = v;
+                m_transformation_map[this->m_num_vertices] = std::pair<int64_t,int64_t>(vertex_id, out_edge_id);
+                m_vertex_map[ std::pair<int64_t,int64_t>(vertex_id, out_edge_id) ] = out_edge_vertex_id;
+                auto v =  add_vertex(this->graph);
+                this->graph[v].cp_members(vertex_id, out_edge_id);
+                this->graph[v].vertex_id = this->m_num_vertices;
+                this->vertices_map[this->m_num_vertices] = v;
         }
 
         for (boost::tie(e_inIt, e_inEnd) = boost::in_edges(vertex, digraph.graph);
                 e_inIt != e_inEnd; e_inIt++) {
  
-            // Generate the vertex id of the vertex created in the new graph that represents this
-            // incoming edge of the corresponding vertex in the original graph
-            int64_t curid2 = vid;
-            int64_t times3 = 1;
-            while (times3 <= digraph.graph[*e_inIt].id)
-                times3 *= 10;
-            curid2 = curid2*times3 + digraph.graph[*e_inIt].id;
-
-            // Add a vertex to the new graph for this outgoing edge of this vertex in the original graph
             ++(this->m_num_vertices);
-            m_vertex_map[ std::pair<int64_t,int64_t>(curid2, curid2) ] = this->m_num_vertices;
-            auto v2 =  add_vertex(this->graph);
-            this->graph[v2].cp_members(this->m_num_vertices, curid2);
-            this->graph[v2].vertex_id = curid2;
-            this->vertices_map[this->m_num_vertices] = v2;
+            int64_t in_edge_id = digraph.graph[*e_inIt].id;
+            int64_t in_edge_vertex_id = this->m_num_vertices;
+
+            m_transformation_map[this->m_num_vertices] = std::pair<int64_t,int64_t>(vertex_id, in_edge_id);
+            m_vertex_map[ std::pair<int64_t,int64_t>(vertex_id, in_edge_id) ] = in_edge_vertex_id;
+            auto v =  add_vertex(this->graph);
+            this->graph[v].cp_members(vertex_id, in_edge_id);
+            this->graph[v].vertex_id = this->m_num_vertices;
+            this->vertices_map[this->m_num_vertices] = v;
 
             for (boost::tie(e_outIt, e_outEnd) = boost::out_edges(vertex, digraph.graph);
                     e_outIt != e_outEnd; e_outIt++) {
-               
-                // This part creates an edge between this incoming edge's new vertex and all outgoing edge's new
-                // vertices 
-                auto source_out_edge = digraph.graph[*e_outIt].id;
-                int64_t curid = vid;
-                int64_t times2 = 1;
 
-                while (times2 <= source_out_edge)
-                    times2 *= 10;
-                curid = curid*times2 + source_out_edge;
+                int64_t out_edge_id = digraph.graph[*e_outIt].id;
 
                 ++m_num_edges;
 
                 graph_add_edge(
                     m_num_edges,
-                    curid2,
-                    curid,
-                    curid2,
-                    curid
+                    vertex_id,
+                    vertex_id,
+                    in_edge_id,
+                    out_edge_id
                 );
             }
         }
     }
-    // This part links all of these new clusters of vertices that represent individual
-    // vertices in the original graph together with the edges from the original graph
+
+    // Add the edges from the original graph to link every cluster 
+    // of vertices in the new graph that were created from single vertices
+    // in the original graph
     for(boost::tie(vertexIt, vertexEnd) = boost::vertices(digraph.graph);
         vertexIt != vertexEnd; vertexIt++) {
 
         V vertex = *vertexIt;
-        int64_t vid = digraph[vertex].id;
-        int64_t digits = 0;
-        while (vid) {
-            vid /= 10;
-            digits++;
-        }
-        
-        vid = digraph[vertex].id;
-        int64_t times = 1;
-        while (times <= vid)
-           times *= 10;
-        vid = (digits*times) + vid;
+        int64_t vertex_id = digraph[vertex].id;
 
         for (boost::tie(e_inIt, e_inEnd) = boost::in_edges(vertex, digraph.graph);
                 e_inIt != e_inEnd; e_inIt++) {
-            int64_t curid2 = vid;
-            int64_t times3 = 1;
-            while (times3 <= digraph.graph[*e_inIt].id)
-                times3 *= 10;
-            curid2 = curid2*times3 + digraph.graph[*e_inIt].id;
 
-            int64_t sourceid = digraph[digraph.source(*e_inIt)].id;
-            int64_t curid5 = sourceid;
-            int64_t digits2 = 0;
-            while (curid5) {
-                curid5 /= 10;
-                digits2++;
-            }
-            curid5 = sourceid;
-
-            int64_t times = 1;
-            while (times <= curid5)
-                times *= 10;
-            curid5 = (digits2*times) + curid5;
-
-            times3 = 1;
-            while (times3 <= digraph.graph[*e_inIt].id)
-                times3 *= 10;
-            curid5 = curid5*times3 + digraph.graph[*e_inIt].id;
+            int64_t source_vertex_id = digraph[digraph.source(*e_inIt)].id;
+            int64_t in_edge_id = digraph.graph[*e_inIt].id;
 
             ++m_num_edges;
 
             graph_add_edge(
                m_num_edges,
-               curid5,
-               curid2,
-               curid5,
-               curid2
+               source_vertex_id,
+               vertex_id,
+               in_edge_id,
+               in_edge_id
             );
         }
-    } 
+    }
 }
-
-template < class G, typename T_V, typename T_E >
- void
- Pgr_turnPenaltyGraph< G, T_V, T_E >::add_vertices(
-         std::vector< T_V > vertices) {
-
-     for (const auto vertex : vertices) {
-         pgassert(this->vertices_map.find(vertex.id) == this->vertices_map.end());
-
-         auto v =  add_vertex(this->graph);
-         this->vertices_map[vertex.id] = v;
-         this->graph[v].cp_members(vertex);
-
-         pgassert(boost::num_vertices(this->graph) == this->num_vertices());
-     }
-     return;
- }
-
 }  // namespace graph
 }  // namespace pgrouting
 
