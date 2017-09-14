@@ -47,11 +47,9 @@ if ! test -d fix_typos; then
 fi
 
 EXCLUDED_FILES="*/doc/i18n/*"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/src/*/test/pgtap/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/pgtap/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/fix_typos/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/build/*"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/src/trsp/tester/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/code_linter/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/.git/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/tools/*"
@@ -59,7 +57,7 @@ EXCLUDED_FILES="$EXCLUDED_FILES,*/locale/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/doc/*.queries"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/test/*.result"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/test/*.data"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/src/tsp/test/development/*"
+EXCLUDED_FILES="$EXCLUDED_FILES,*/test/tsp/development/*"
 
 
 #WORDS_WHITE_LIST="poSession,FIDN,TRAFIC,HTINK,repID,oCurr,INTREST,oPosition"
