@@ -29,8 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "GraphDefinition.h"
-#include "utils.h"
+#include "trsp/GraphDefinition.h"
 
 
 int trsp_node_wrapper(

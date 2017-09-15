@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <functional>
-#include "GraphDefinition.h"
+#include "trsp/GraphDefinition.h"
 
 // -------------------------------------------------------------------------
 GraphDefinition::GraphDefinition(void) {

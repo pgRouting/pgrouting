@@ -19,8 +19,8 @@
  *
  */
 
-#ifndef SRC_TRSP_SRC_TRSP_H_
-#define SRC_TRSP_SRC_TRSP_H_
+#ifndef INCLUDE_C_TYPES_TRSP_TRSP_H_
+#define INCLUDE_C_TYPES_TRSP_TRSP_H_
 
 #define MAX_RULE_LENGTH 5
 
@@ -88,4 +88,4 @@ int trsp_edge_wrapper(
 }
 #endif
 
-#endif  // SRC_TRSP_SRC_TRSP_H_
+#endif  // INCLUDE_C_TYPES_TRSP_TRSP_H_
