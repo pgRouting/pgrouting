@@ -25,8 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 SELECT plan(144);
 
-UPDATE edge_table SET cost = cost * -1 WHERE cost < 0;
-
 DROP TABLE IF EXISTS turn_penalty_table;
 CREATE TABLE turn_penalty_table(
   seq integer,
