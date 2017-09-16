@@ -44,7 +44,7 @@ if test -z "$DIRECTORY"; then
     echo --------------------
     echo ------   *.c  ------
     echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=c src/*/src/*.c
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/*/src/*.c
     echo --------------------
     echo ------ *.cpp  ------
     echo --------------------
@@ -53,18 +53,11 @@ if test -z "$DIRECTORY"; then
     echo ------ HEADERS  ------
     echo --------------------
     python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h --filter=-runtime/references \
-        src/*/src/*.h \
-        src/*/src/*.hpp \
         include/*/*.h* \
         include/*/*/*.h*
 
 else
     if [ "$DIRECTORY" = "h" ]; then
-    echo --------------------
-    echo ------ OUT OF PLACE HEADERS  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h --filter=-runtime/references \
-        src/*/src/*.h* 
 
     echo --------------------
     echo ------ IN PLACE HEADERS  ------

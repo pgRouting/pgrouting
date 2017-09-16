@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_6_0`
 * :ref:`changelog_2_5_0`
 * :ref:`changelog_2_4_2`
 * :ref:`changelog_2_4_1`
@@ -36,6 +37,14 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_2_6_0:
+
+pgRouting 2.6.0 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed issues for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
+
 
 .. _changelog_2_5_0:
 

@@ -5,7 +5,7 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-version: 2.5.{build}
+version: 2.6.{build}
 
 image: Visual Studio 2013
 configuration: Release

@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_CONTRACTION_SRC_PGR_DEADENDCONTRACTION_HPP_
-#define SRC_CONTRACTION_SRC_PGR_DEADENDCONTRACTION_HPP_
+#ifndef INCLUDE_CONTRACTION_PGR_DEADENDCONTRACTION_HPP_
+#define INCLUDE_CONTRACTION_PGR_DEADENDCONTRACTION_HPP_
 #pragma once
 
 
@@ -405,4 +405,4 @@ Pgr_deadend<G>::doContraction(G &graph) {
 }  // namespace contraction
 }  // namespace pgrouting
 
-#endif  // SRC_CONTRACTION_SRC_PGR_DEADENDCONTRACTION_HPP_
+#endif  // INCLUDE_CONTRACTION_PGR_DEADENDCONTRACTION_HPP_

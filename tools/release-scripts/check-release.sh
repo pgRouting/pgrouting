@@ -241,12 +241,12 @@ echo "- src/common/test/doc-pgr_version.result"
 
 if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
-    echo "cat src/common/test/doc-pgr_version.result | grep \"$MAYOR.$MINOR.$MICRO\""
+    echo "cat test/common/doc-pgr_version.result | grep \"$MAYOR.$MINOR.$MICRO\""
     echo "\`\`\`"
 fi
 
-if [[ $(cat src/common/test/doc-pgr_version.result | grep "$MAYOR.$MINOR.$MICRO") != " $MAYOR.$MINOR.$MICRO" ]]; then
-    error_msg "src/common/test/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO"
+if [[ $(cat test/common/doc-pgr_version.result | grep "$MAYOR.$MINOR.$MICRO") != " $MAYOR.$MINOR.$MICRO" ]]; then
+    error_msg "test/common/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO"
     exit 1
 else
     echo "  - [x]  src/common/test/doc-pgr_version.result"
@@ -322,6 +322,7 @@ echo - [x] completed local builds
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
+sh tools/release-scripts/get_signatures.sh 2.6.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.4.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.4.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt

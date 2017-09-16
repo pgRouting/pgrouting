@@ -181,9 +181,9 @@ endif()
 #-----------------------------------------------------------------------------
 
 set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "5")
+set(PGROUTING_VERSION_MINOR "6")
 set(PGROUTING_VERSION_PATCH "0")
-set(PGROUTING_VERSION_DEV "")
+set(PGROUTING_VERSION_DEV "-dev")
 
 set(PGROUTING_SHORT_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
 set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
@@ -360,8 +360,6 @@ include_directories(${CGAL_INCLUDE_DIR})
 #---------------------------------------------
 
 set(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/src/common/src
-    ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/include
     )
 
@@ -521,7 +519,7 @@ endif()
 #-------------------
 
 foreach (subdir ${PgRouting_SOURCE_NAMES})
-    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
+    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}")
 endforeach()
 
 
