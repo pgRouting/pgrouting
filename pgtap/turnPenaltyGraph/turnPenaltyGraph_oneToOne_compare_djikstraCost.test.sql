@@ -46,8 +46,6 @@ inner_sql TEXT;
 dijkstra_sql TEXT;
 turn_penalty_graph_sql TEXT;
 source_arr TEXT;
-incoming TEXT;
-outgoing TEXT;
 target_arr TEXT;
 BEGIN
 
@@ -63,27 +61,20 @@ BEGIN
             source_arr := array_to_string(array(select source from turn_penalty_table where original_source_vertex = i), ',');
             -- If the source_arr is empty that means there are no outgoing edges from vertex i in the original graph
             IF source_arr = '' THEN
-              inner_sql := 'SELECT source FROM edge_table WHERE source = ' || i;
-              outgoing := 'SELECT source FROM turn_penalty_table WHERE original_source_vertex = ' || i;
-              RETURN query SELECT set_eq(outgoing, inner_sql, outgoing);
-              CONTINUE WHEN TRUE;
+              source_arr := array_to_string(array(select target from turn_penalty_table where original_target_vertex = i), ',');
             END IF;
 
             target_arr := array_to_string(array(select target from turn_penalty_table where original_target_vertex = j),',');
-            -- If the target_arr is empty that means there are no incoming edges to vertex j in the original graph
+            -- If the target_arr is empty that means there are no incoming edges to vertex j in the original graph.
             IF target_arr = '' THEN
-              inner_sql := 'SELECT target FROM edge_table WHERE target = ' || j;
-              incoming := 'SELECT target FROM turn_penalty_table WHERE original_target_vertex = ' || j;
-              RETURN query SELECT set_eq(incoming, inner_sql, incoming);
-              CONTINUE WHEN TRUE;
+              target_arr := array_to_string(array(select source from turn_penalty_table where original_source_vertex = j),',');
             END IF;
 
             inner_sql := 'SELECT seq as id, source, target, cost FROM turn_penalty_table';
 
-            turn_penalty_graph_sql := 'SELECT agg_cost FROM pgr_dijkstraCost($$' || inner_sql || '$$, ARRAY[' 
-                || source_arr || '], ARRAY[' 
-                || target_arr
-                || ']) ORDER BY agg_cost DESC LIMIT 1';
+            turn_penalty_graph_sql := 'SELECT agg_cost FROM pgr_dijkstraCost($$' || inner_sql  || '$$, 
+                                                                          ARRAY['|| source_arr || '], 
+                                                                          ARRAY['|| target_arr || ']) ORDER BY agg_cost DESC LIMIT 1';
 
             inner_sql := 'SELECT id, source, target, cost FROM edge_table';
 
