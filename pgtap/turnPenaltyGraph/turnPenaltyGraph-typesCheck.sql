@@ -1,5 +1,5 @@
 
-SELECT plan(4);
+SELECT plan(3);
 
 SELECT has_function('pgr_turnpenaltygraph');
 
