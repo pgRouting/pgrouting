@@ -9,62 +9,37 @@
 
 .. _pgr_turnPenaltyGraph:
 
-pgr_turnPenaltyGraph
+pgr_turnPenaltyGraph - 
 ===============================================================================
 
-``pgr_turnPenaltyGraph`` — Returns the shortest path(s) using Dijkstra algorithm.
-In particular, the Dijkstra algorithm implemented by Boost.Graph.
-
-.. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
-
-   Boost Graph Inside
+``pgr_turnPenaltyGraph`` — Returns a transformed version of a given graph where each vertex is split up into multiple vertices in order to add a new edge to the graph for every possible turn that can be made. This makes a shortest path search with turn penalties and restrictions possible.
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
-It is a graph search algorithm that solves the shortest path problem for
-a graph with non-negative edge path costs, producing a shortest path from
-a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
-This implementation can be used with a directed graph and an undirected graph.
+This graph transformation algorithm generates a new graph that has an edge for every edge in the original graph, and an additional edge for each possible turn that can be made by a path through the graph. Because of this, these new edges can then be removed from the graph in order to apply turn restrictions, or the cost of these edges can be modified to apply turn penalties.
+
+| |first|
+
+.. |first| image:: images/turnPenaltyGraph.png
+   :align: middle
 
 Characteristics
 -------------------------------------------------------------------------------
 
 The main Characteristics are:
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
 
-    - When the starting vertex and ending vertex are the same, there is no path.
-
-      - The `agg_cost` the non included values `(v, v)` is `0`
-
-    - When the starting vertex and ending vertex are the different and there is no path:
-
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
-
-  - The returned values are ordered:
-
-    - `start_vid` ascending
-    - `end_vid` ascending
-
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
-
+  - This only works on directed graphs and does not use reverse edge costs.
 
 Signature Summary
 -----------------
 
-.. code-block:: none
+.. code-block:: guess 
 
-    pgr_dijkstra(edges_sql, start_vid,  end_vid)
+    pgr_turnPenaltyGraph(edges_sql)
 
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-        OR EMPTY SET
-
+    RETURNS SET OF (seq, source, vertex, cost, original_source_vertex, original_source_edge, original_target_vertex, original_target_edge) OR EMPTY SET
 
 Signatures
 -------------------------------------------------------------------------------
@@ -72,15 +47,13 @@ Signatures
 .. index::
     single: turnPenaltyGraph(Minimal Use)
 
-Minimal signature
+Complete Signature
 .......................................
 
-.. code-block:: none
+.. code-block:: guess
 
-    pgr_turnPenaltyGraph(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
-
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+    pgr_turnPenaltyGraph(edges_sql)
+    RETURNS SET OF (seq, source, vertex, cost, original_source_vertex, original_source_edge, original_target_vertex, original_target_edge) OR EMPTY SET
 
 :Example:
 
@@ -91,48 +64,6 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 .. index::
     single: turnPenaltyGraph(Complete signature)
-
-Complete Signature
-.......................................
-
-.. code-block:: none
-
-    pgr_turnPenaltyGraph(edges_sql, start_vid, end_vid, directed);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
-
-This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
-
-.. literalinclude:: doc-pgr_turnPenaltyGraph.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-
-
-Description of the Signatures
--------------------------------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
-
-.. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
-
-
-See Also
--------------------------------------------------------------------------------
-
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-* The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

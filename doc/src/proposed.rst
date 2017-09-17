@@ -164,12 +164,14 @@ Experimental Functions
 
 .. rubric:: Graph Transformation
 
-:doc:`pgr_lineGraph`
+:ref:`pgr_lineGraph`
+:ref:`pgr_turnPenaltyGraph`
 
 .. toctree::
   :hidden:
 
   pgr_lineGraph
+  pgr_turnPenaltyGraph
 
 See Also
 -------------------------------------------------------------------------------
