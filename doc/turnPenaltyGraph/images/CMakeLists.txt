@@ -1,6 +1,10 @@
 
 SET(LOCAL_FILES
-    turnPenaltyGraph.png
+    original.png
+    restrictions.png
+    penalties.png
+    dijkstra.png
+    transformation.png
     )
 
 foreach (f ${LOCAL_FILES})
