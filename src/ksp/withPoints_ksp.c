@@ -133,12 +133,17 @@ process(
             &err_msg);
     time_msg(" processing withPointsKSP", start_t, clock());
 
-    PGR_DBG("Returned message = %s\n", err_msg);
-
-    if (err_msg) {
-        if (*result_tuples) free(*result_tuples);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
+
     pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
 
     pfree(edges);
     pfree(edges_of_points);
