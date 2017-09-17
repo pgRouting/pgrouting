@@ -44,13 +44,13 @@ do_pgr_floydWarshall(
         size_t total_tuples,
         bool directedFlag,
 
-        // return values
         Matrix_cell_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** err_msg) {
-    // function starts
     std::ostringstream log;
+    std::ostringstream err;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*err_msg));
@@ -76,29 +76,35 @@ do_pgr_floydWarshall(
 
 
         if (*return_count == 0) {
-            log <<  "NOTICE: No Vertices found??? wiered error\n";
-            *err_msg = strdup(log.str().c_str());
+            err <<  "NOTICE: No Vertices found??? wiered error\n";
+            *err_msg = pgr_msg(err.str().c_str());
+
             *return_tuples = NULL;
             *return_count = 0;
             return;
         }
 
-        *log_msg = strdup(log.str().c_str());
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
         return;
     } catch (AssertFailedException &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
-    } catch (std::exception& except) {
-        if (*return_tuples) free(*return_tuples);
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
