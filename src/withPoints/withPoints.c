@@ -116,8 +116,8 @@ process(
     }
 
 
-    free(edges_of_points_query);
-    free(edges_no_points_query);
+    pfree(edges_of_points_query);
+    pfree(edges_no_points_query);
 
     if ((total_edges + total_edges_of_points) == 0) {
         pgr_SPI_finish();

@@ -85,8 +85,8 @@ void process(
     pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("freeing allocated memory not used anymore");
-    free(edges_of_points_query);
-    free(edges_no_points_query);
+    pfree(edges_of_points_query);
+    pfree(edges_no_points_query);
 
     if ((total_edges + total_edges_of_points) == 0) {
         if (edges) pfree(edges);
