@@ -34,11 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "allpairs/pgr_allpairs.hpp"
+
 #include "cpp_common/pgr_assert.h"
 
 
-
-// CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN,
 void
 do_pgr_johnson(
         pgr_edge_t  *data_edges,
@@ -62,12 +61,12 @@ do_pgr_johnson(
         std::deque< Path >paths;
 
         if (directed) {
-            log << "Working with directed Graph\n";
+            log << "Processing Directed graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_tuples);
             pgr_johnson(digraph, *return_count, return_tuples);
         } else {
-            log << "Working with Undirected Graph\n";
+            log << "Processing Undirected graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_tuples);
             pgr_johnson(undigraph, *return_count, return_tuples);
@@ -75,8 +74,8 @@ do_pgr_johnson(
 
 
         if (*return_count == 0) {
-            err <<  "NOTICE: No Vertices found??? wiered error\n";
-            *err_msg = pgr_msg(err.str().c_str());
+            log <<  "No result generated, report this error\n";
+            *log_msg = pgr_msg(err.str().c_str());
             *return_tuples = NULL;
             *return_count = 0;
             return;
@@ -86,8 +85,6 @@ do_pgr_johnson(
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
-        return;
-
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

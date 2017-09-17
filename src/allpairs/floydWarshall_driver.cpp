@@ -74,9 +74,8 @@ do_pgr_floydWarshall(
 
 
         if (*return_count == 0) {
-            err <<  "NOTICE: No Vertices found??? wiered error\n";
+            err <<  "No result generated, report this error\n";
             *err_msg = pgr_msg(err.str().c_str());
-
             *return_tuples = NULL;
             *return_count = 0;
             return;
@@ -85,7 +84,6 @@ do_pgr_floydWarshall(
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
-        return;
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
