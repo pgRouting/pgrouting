@@ -30,7 +30,7 @@ Example
 
 .. code-block:: none 
 
-    INSER INTO turn_table SELECT * FROM pgr_turnPenaltyGraph('SELECT id, source, target, cost FROM original_graph);
+    INSERT INTO turn_table SELECT * FROM pgr_turnPenaltyGraph('SELECT id, source, target, cost FROM original_graph);
 
 | |second|
 
