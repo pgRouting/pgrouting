@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "catalog/pg_type.h"
+#include "c_common/e_report.h"
 
 #include "drivers/alpha_shape/alpha_driver.h"
 
@@ -49,6 +50,7 @@ PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS);
 #define TUPLIMIT 1000
 
 
+#if 0
 static int
 finish(int code, int ret) {
   code = SPI_finish();
@@ -58,7 +60,7 @@ finish(int code, int ret) {
   }
   return ret;
 }
-
+#endif
 
 typedef struct vertex_columns {
   int id;
@@ -113,7 +115,7 @@ fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc,
   target_vertex->y = DatumGetFloat8(binval);
 }
 
-static int compute_alpha_shape(
+static void compute_alpha_shape(
         char* sql, float8 alpha,
         vertex_t **res,
         size_t *res_count) {
@@ -129,26 +131,26 @@ static int compute_alpha_shape(
 #else   // _MSC_VER
   vertex_columns_t vertex_columns = {-1, -1, -1};
 #endif  // _MSC_VER
-  char *err_msg;
+#if 0
   int ret = -1;
-
+#endif
   PGR_DBG("start alpha_shape\n");
 
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT) {
       elog(ERROR, "alpha_shape: couldn't open a connection to SPI");
-      return -1;
+      return;
     }
 
   SPIplan = SPI_prepare(sql, 0, NULL);
   if (SPIplan  == NULL) {
       elog(ERROR, "alpha_shape: couldn't create query plan via SPI");
-      return -1;
+      return;
     }
 
   if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
       elog(ERROR, "alpha_shape: SPI_cursor_open('%s') returns NULL", sql);
-      return -1;
+      return;
     }
 
   while (moredata == TRUE) {
@@ -156,7 +158,7 @@ static int compute_alpha_shape(
 
       if (vertex_columns.id == -1) {
           if (fetch_vertices_columns(SPI_tuptable, &vertex_columns) == -1)
-        return finish(SPIcode, ret);
+        return;
         }
 
       ntuples = SPI_processed;
@@ -168,7 +170,7 @@ static int compute_alpha_shape(
 
       if (vertices == NULL) {
           elog(ERROR, "Out of memory");
-          return finish(SPIcode, ret);
+          return;
         }
 
       if (ntuples > 0) {
@@ -194,38 +196,56 @@ static int compute_alpha_shape(
   //    if called with less than three points!!!
 
   if (total_tuples < 3) {
+      if (vertices) pfree(vertices);
+      pgr_SPI_finish();
       elog(ERROR, "Less than 3 vertices."
               " Alpha shape calculation needs at least 3 vertices.");
-      return finish(SPIcode, ret);
+      return;
   }
   if (total_tuples == 1) {
+      if (vertices) pfree(vertices);
+      pgr_SPI_finish();
       elog(ERROR, "Distance is too short."
               " only 1 vertex for alpha shape calculation."
               " alpha shape calculation needs at least 3 vertices.");
+      return;
   }
   if (total_tuples == 2) {
+      if (vertices) pfree(vertices);
+      pgr_SPI_finish();
       elog(ERROR, "Distance is too short."
               " only 2 vertices for alpha shape calculation."
               " alpha shape calculation needs at least 3 vertices.");
+      return;
   }
   if (total_tuples < 3) {
-    // elog(ERROR, "Distance is too short ....");
-    return finish(SPIcode, ret);
+      // elog(ERROR, "Distance is too short ....");
+      if (vertices) pfree(vertices);
+      pgr_SPI_finish();
+      return;
   }
 
   PGR_DBG("Calling CGAL alpha-shape\n");
 
-  ret = alpha_shape(vertices, total_tuples, alpha, res, res_count, &err_msg);
+  char *err_msg = NULL;
+  char* log_msg = NULL;
+  char* notice_msg = NULL;
 
-  if (ret < 0) {
-      // elog(ERROR, "Error computing shape: %s", err_msg);
-      ereport(ERROR,
-              (errcode
-               (ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-               errmsg("%s", err_msg)));
-    }
+  alpha_shape(vertices, total_tuples, alpha, res, res_count, &err_msg);
 
-  return finish(SPIcode, ret);
+  if (err_msg && (*res)) {
+      pfree(*res);
+      (*res) = NULL;
+      (*res_count) = 0;
+  }
+
+  pgr_global_report(log_msg, notice_msg, err_msg);
+
+  if (log_msg) pfree(log_msg);
+  if (notice_msg) pfree(notice_msg);
+  if (err_msg) pfree(err_msg);
+  if (vertices) pfree(vertices);
+  pgr_SPI_finish();
 }
 
 PG_FUNCTION_INFO_V1(alphashape);

@@ -57,15 +57,6 @@ do_pgr_johnson(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-#if 0
-        if (total_tuples == 1) {
-            log << "Required: more than one tuple\n";
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            *err_msg = strdup(log.str().c_str());
-            return;
-        }
-#endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque< Path >paths;
