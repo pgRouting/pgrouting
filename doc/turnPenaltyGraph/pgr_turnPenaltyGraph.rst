@@ -57,9 +57,9 @@ Here is an example that goes through the steps of using this function to transfo
 .. |first| image:: images/original.png
    :align: middle
 
-.. code-block:: none 
-
 1. Transform the graph and store the results in a new table:
+
+.. code-block:: none 
 
     CREATE TABLE turn_table AS SELECT * FROM pgr_turnPenaltyGraph('SELECT id, source, target, cost FROM original_graph);
 
