@@ -80,7 +80,7 @@ Here is an example that goes through the steps of using this function to transfo
 .. |third| image:: images/restrictions.png
    :align: middle
 
-3. Apply turn penalties by modifying the cost of the edges in the turn_table that represent turns you want to apply penatlies to.
+3. Apply turn penalties by modifying the cost of the edges in the turn_table that represent turns you want to apply penalties to.
 
 .. code-block:: none 
 
@@ -92,15 +92,26 @@ Here is an example that goes through the steps of using this function to transfo
 .. |fourth| image:: images/penalties.png
    :align: middle
 
-4. Run dijkstra on the turn_table by setting the source vertices to each of the vertices in the turn_table that represent outgoing edges of the vertex in the original graph that you want to start the search from. Then set the target vertices so each of the vertices in the turn_table that represent incoming edges of the vertex in the original graph that you want to end the search on. The returned result that has the lowest cost contain the shortest path, taking into account the turn penalties and restrictions that you applied:
+4. Run a one to one dijkstra on the turn_table by first setting the source of the search to the set of all vertices in the turn_table that represent outgoing edges of the starting vertex in the original graph. Second, set the target of the search to the set of all vertices in the turn_table that represent incoming edges of the target vertex in the original graph. The returned path that has the lowest cost will be the shortest path taking into account the turn penalties and restrictions that you applied:
 
 .. code-block:: none 
 
-   source_arr := array_to_string(array(select source from turn_penalty_table where original_source_vertex = 3), ',');
-   target_arr := array_to_string(array(select target from turn_penalty_table where original_target_vertex = 7),',');
+   source_arr := array_to_string(
+                   array(
+                     select source from turn_penalty_table where original_source_vertex = 3
+                   ), ','
+                 );
+   target_arr := array_to_string(
+                   array(
+                     select target from turn_penalty_table where original_target_vertex = 7
+                   ),','
+                 );
 
-   SELECT * FROM pgr_dijkstraCost('SELECT seq as id, source, target, cost from turn_table', ARRAY[source_arr], ARRAY[target_arr])
-     ORDER BY cost DESC LIMIT 1;
+   SELECT * FROM pgr_dijkstraCost(
+                   'SELECT seq as id, source, target, cost from turn_table', 
+                   ARRAY[source_arr], 
+                   ARRAY[target_arr]
+                 ) ORDER BY cost DESC LIMIT 1;
 
 | |fifth|
 
