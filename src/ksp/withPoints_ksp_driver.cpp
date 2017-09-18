@@ -86,10 +86,10 @@ do_pgr_withPointsKsp(
 
         auto errcode = check_points(points, log);
         if (errcode) {
-            *log_msg = strdup(log.str().c_str());
             err << "Unexpected point(s) with same pid but different"
                 " edge/fraction/side combination found.";
-            *err_msg = strdup(err.str().c_str());
+            *err_msg = pgr_msg(err.str().c_str());
+            *log_msg = pgr_msg(log.str().c_str());
             return -1;
         }
 
@@ -182,27 +182,31 @@ do_pgr_withPointsKsp(
         }
         (*return_count) = sequence;
 
-
-        *log_msg = strdup(log.str().c_str());
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
         return 0;
     } catch (AssertFailedException &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
     return 1000;
 }

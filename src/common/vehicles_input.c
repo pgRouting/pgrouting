@@ -154,22 +154,22 @@ void pgr_get_vehicles_general(
         info[i].eType = ANY_NUMERICAL;
     }
 
-    info[0].name = strdup("id");
-    info[1].name = strdup("capacity");
-    info[2].name = strdup("start_x");
-    info[3].name = strdup("start_y");
-    info[4].name = strdup("number");
-    info[5].name = strdup("start_open");
-    info[6].name = strdup("start_close");
-    info[7].name = strdup("start_service");
-    info[8].name = strdup("end_x");
-    info[9].name = strdup("end_y");
-    info[10].name = strdup("end_open");
-    info[11].name = strdup("end_close");
-    info[12].name = strdup("end_service");
-    info[13].name = strdup("speed");
-    info[14].name = strdup("start_node_id");
-    info[15].name = strdup("end_node_id");
+    info[0].name = "id";
+    info[1].name = "capacity";
+    info[2].name = "start_x";
+    info[3].name = "start_y";
+    info[4].name = "number";
+    info[5].name = "start_open";
+    info[6].name = "start_close";
+    info[7].name = "start_service";
+    info[8].name = "end_x";
+    info[9].name = "end_y";
+    info[10].name = "end_open";
+    info[11].name = "end_close";
+    info[12].name = "end_service";
+    info[13].name = "speed";
+    info[14].name = "start_node_id";
+    info[15].name = "end_node_id";
 
     info[0].eType = ANY_INTEGER;
     info[4].eType = ANY_INTEGER;

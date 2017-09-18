@@ -147,20 +147,7 @@ Inner Queries
 
 
 ..
-    info[0].name = strdup("id");
-    info[1].name = strdup("demand");
-    info[2].name = strdup("p_x");
-    info[3].name = strdup("p_y");
-    info[4].name = strdup("p_open");
-    info[5].name = strdup("p_close");
-    info[6].name = strdup("p_service");
-    info[7].name = strdup("d_x");
-    info[8].name = strdup("d_y");
-    info[9].name = strdup("d_open");
-    info[10].name = strdup("d_close");
-    info[11].name = strdup("d_service");
-    info[12].name = strdup("p_node_id");
-    info[13].name = strdup("d_node_id")
+    see include/c_types/pickDeliver/pickDeliveryOrders_t.h documenation
 
 Pick & Deliver Orders SQL
 .........................................................................................
@@ -219,22 +206,7 @@ Column            Type                       Description
 
 
 ..
-   info[0].name = strdup("id");
-   info[1].name = strdup("capacity");
-   info[2].name = strdup("start_x");
-   info[3].name = strdup("start_y");
-   info[4].name = strdup("number");
-   info[5].name = strdup("start_open");
-   info[6].name = strdup("start_close");
-   info[7].name = strdup("start_service");
-   info[8].name = strdup("end_x");
-   info[9].name = strdup("end_y");
-   info[10].name = strdup("end_open");
-   info[11].name = strdup("end_close");
-   info[12].name = strdup("end_service");
-   info[13].name = strdup("speed");
-   info[14].name = strdup("start_node_id");
-   info[15].name = strdup("end_node_id");
+    see include/c_types/pickDeliver/vehicle_t.h documentation
 
 
 .. _pd_vehicle_sql:

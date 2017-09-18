@@ -151,15 +151,15 @@ get_edges_9_columns(
 
     Column_info_t info[9];
 
-    info[0].name = strdup("id");
-    info[1].name = strdup("source");
-    info[2].name = strdup("target");
-    info[3].name = strdup("cost");
-    info[4].name = strdup("reverse_cost");
-    info[5].name = strdup("x1");
-    info[6].name = strdup("y1");
-    info[7].name = strdup("x2");
-    info[8].name = strdup("y2");
+    info[0].name = "id";
+    info[1].name = "source";
+    info[2].name = "target";
+    info[3].name = "cost";
+    info[4].name = "reverse_cost";
+    info[5].name = "x1";
+    info[6].name = "y1";
+    info[7].name = "x2";
+    info[8].name = "y2";
 
     int i;
     for (i = 0; i < 3; ++i) {
@@ -266,11 +266,11 @@ get_edges_5_columns(
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
-    info[0].name = strdup("id");
-    info[1].name = strdup("source");
-    info[2].name = strdup("target");
-    info[3].name = strdup("cost");
-    info[4].name = strdup("reverse_cost");
+    info[0].name = "id";
+    info[1].name = "source";
+    info[2].name = "target";
+    info[3].name = "cost";
+    info[4].name = "reverse_cost";
 
     info[0].strict = !ignore_id;
     info[4].strict = false;
@@ -363,11 +363,11 @@ get_edges_flow(
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
-    info[0].name = strdup("id");
-    info[1].name = strdup("source");
-    info[2].name = strdup("target");
-    info[3].name = strdup("capacity");
-    info[4].name = strdup("reverse_capacity");
+    info[0].name = "id";
+    info[1].name = "source";
+    info[2].name = "target";
+    info[3].name = "capacity";
+    info[4].name = "reverse_capacity";
 
     info[0].strict = !ignore_id;
     info[4].strict = false;
@@ -457,11 +457,11 @@ get_edges_basic(
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
-    info[0].name = strdup("id");
-    info[1].name = strdup("source");
-    info[2].name = strdup("target");
-    info[3].name = strdup("going");
-    info[4].name = strdup("coming");
+    info[0].name = "id";
+    info[1].name = "source";
+    info[2].name = "target";
+    info[3].name = "going";
+    info[4].name = "coming";
 
     info[0].strict = !ignore_id;
     info[4].strict = false;
