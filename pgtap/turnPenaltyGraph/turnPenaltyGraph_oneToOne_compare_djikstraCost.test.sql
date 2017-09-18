@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 \i setup.sql
 
-SELECT plan(144);
+SELECT plan(63);
 
 DROP TABLE IF EXISTS turn_penalty_table;
 CREATE TABLE turn_penalty_table(
@@ -55,21 +55,30 @@ BEGIN
 
             CONTINUE WHEN i = j;
        
-            source_arr := array_to_string(array(select source from turn_penalty_table where original_source_vertex = i), ',');
-            IF source_arr = '' THEN
-              source_arr := array_to_string(array(select target from turn_penalty_table where original_target_vertex = i), ',');
-            END IF;
+            source_arr := array_to_string(
+                            array(
+                              select source from turn_penalty_table where original_source_vertex = i
+                            ), ',');
 
-            target_arr := array_to_string(array(select target from turn_penalty_table where original_target_vertex = j),',');
-            IF target_arr = '' THEN
-              target_arr := array_to_string(array(select source from turn_penalty_table where original_source_vertex = j),',');
-            END IF;
+            CONTINUE WHEN source_arr = '';
+
+            target_arr := array_to_string(
+                            array(
+                              select target from turn_penalty_table where original_target_vertex = j
+                            ),',');
+  
+            CONTINUE WHEN target_arr = '';
 
             inner_sql := 'SELECT seq as id, source, target, cost FROM turn_penalty_table';
-            turn_penalty_graph_sql := 'SELECT agg_cost FROM pgr_dijkstraCost($$' || inner_sql  || '$$, ARRAY['|| source_arr || '], ARRAY['|| target_arr || ']) ORDER BY agg_cost DESC LIMIT 1';
+            turn_penalty_graph_sql := 'SELECT agg_cost FROM pgr_dijkstraCost($$' || inner_sql  || '$$, 
+                                                                          ARRAY['|| source_arr || '], 
+                                                                          ARRAY['|| target_arr || '])
+                                                                        ORDER BY agg_cost DESC LIMIT 1';
 
             inner_sql := 'SELECT id, source, target, cost FROM edge_table';
-            dijkstra_sql := 'SELECT agg_cost FROM pgr_dijkstraCost($$' || inner_sql || '$$, ' || i || ', ' || j || ')';
+            dijkstra_sql := 'SELECT agg_cost FROM pgr_dijkstraCost($$' || inner_sql || '$$, 
+                                                                     ' || i || ', ' 
+                                                                       || j || ')';
 
             RETURN query SELECT set_eq(turn_penalty_graph_sql, dijkstra_sql, turn_penalty_graph_sql);
 
