@@ -40,7 +40,7 @@ Signature Summary
 
     RETURNS SET OF (seq, 
                     source, 
-                    vertex, 
+                    target, 
                     cost, 
                     original_source_vertex, 
                     original_source_edge, 
