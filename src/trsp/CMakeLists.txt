@@ -10,5 +10,6 @@ add_library(trsp OBJECT
     pgr_trspHandler.cpp
     rule.cpp
     trsp_driver.cpp
+    trsp_driver_edges.cpp
 
     )
