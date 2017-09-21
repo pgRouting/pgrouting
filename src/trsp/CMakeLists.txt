@@ -5,6 +5,7 @@ add_library(trsp OBJECT
     
     
     new_trsp.c
+    new_trsp_edges.c
     edgeInfo.cpp
     pgr_trspHandler.cpp
     rule.cpp

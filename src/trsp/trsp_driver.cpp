@@ -28,27 +28,90 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/trsp/trsp_driver.h"
 #include <utility>
 #include <vector>
+#include <cstdint>
+#include <sstream>
 #include "trsp/pgr_trspHandler.h"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_alloc.hpp"
 
 
 
 int trsp_node_wrapper(
-    pgr_edge_t *edges,
-    size_t edge_count,
-    restrict_t *restricts,
-    size_t restrict_count,
-    int64_t start_vertex,
-    int64_t end_vertex,
-    bool directed,
-    bool has_reverse_cost,
-    path_element_tt **path,
-    size_t *path_count,
-    char **err_msg
-    ) {
+        pgr_edge_t *edges,
+        size_t total_edges,
+
+        restrict_t *restricts,
+        size_t restrict_count,
+
+        int64_t start_vertex,
+        int64_t end_vertex,
+
+        bool directed,
+        bool has_reverse_cost,
+
+        path_element_tt **path,
+        size_t *path_count,
+        char **err_msg) {
+    std::ostringstream err;
     try {
         pgassert(*path == NULL);
         pgassert(*path_count == 0);
+
+
+#if 1
+        // defining min and max vertex id
+
+        int64_t v_max_id = 0;
+        int64_t v_min_id = INT64_MAX;
+        size_t z;
+        for (z = 0; z < total_edges; z++) {
+            if (edges[z].source < v_min_id)
+                v_min_id = edges[z].source;
+
+            if (edges[z].source > v_max_id)
+                v_max_id = edges[z].source;
+
+            if (edges[z].target < v_min_id)
+                v_min_id = edges[z].target;
+
+            if (edges[z].target > v_max_id)
+                v_max_id = edges[z].target;
+        }
+
+        // ::::::::::::::::::::::::::::::::::::
+        // :: reducing vertex id (renumbering)
+        // ::::::::::::::::::::::::::::::::::::
+        size_t s_count = 0;
+        size_t t_count = 0;
+        auto start_id = start_vertex;
+        auto end_id = end_vertex;
+        for (z = 0; z < total_edges; z++) {
+            if (edges[z].source == start_id || edges[z].target == start_vertex)
+                ++s_count;
+            if (edges[z].source == end_id || edges[z].target == end_vertex)
+                ++t_count;
+            edges[z].source -= v_min_id;
+            edges[z].target -= v_min_id;
+            edges[z].cost = edges[z].cost;
+        }
+
+
+        if (s_count == 0) {
+            err << "Start id was not found.";
+            *err_msg = pgr_msg(err.str().c_str());
+            return -1;
+        }
+
+        if (t_count == 0) {
+            err << "Start id was not found.";
+            *err_msg = pgr_msg(err.str().c_str());
+            return -1;
+        }
+
+        start_id -= v_min_id;
+        end_id   -= v_min_id;
+#endif
+
 
         std::vector<pgrouting::trsp::PDVI> ruleTable;
         size_t MAX_RULE_LENGTH = 5;
@@ -65,27 +128,23 @@ int trsp_node_wrapper(
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-#if 0
-        Pgr_trspHandler gdef(edges, edge_count,
-                start_vertex, end_vertex,
-                directed, has_reverse_cost,
-                ruleTable);
-        auto res =  gdef.my_dijkstra3(
-                edges, edge_count,
-                start_vertex, end_vertex,
-                directed, has_reverse_cost,
-                path, path_count, err_msg, ruleTable);
-
-#else
         pgrouting::trsp::Pgr_trspHandler gdef;
         int res = gdef.initializeAndProcess(
-                edges, edge_count,
+                edges, total_edges,
                 ruleTable,
-                start_vertex, end_vertex,
+                start_id, end_id,
                 directed, has_reverse_cost,
                 path, path_count, err_msg);
-#endif
 
+#if 1
+        // ::::::::::::::::::::::::::::::::
+        // :: restoring original vertex id
+        // ::::::::::::::::::::::::::::::::
+        for (z = 0; z < *path_count; z++) {
+            if (z || (*path)[z].vertex_id != -1)
+                (*path)[z].vertex_id += v_min_id;
+        }
+#endif
 
         if (res < 0)
             return res;
@@ -103,19 +162,19 @@ int trsp_node_wrapper(
 }
 
 int trsp_edge_wrapper(
-    pgr_edge_t *edges,
-    size_t edge_count,
-    restrict_t *restricts,
-    size_t restrict_count,
-    int64_t start_edge,
-    double start_pos,
-    int64_t end_edge,
-    double end_pos,
-    bool directed,
-    bool has_reverse_cost,
-    path_element_tt **path,
-    size_t *path_count,
-    char **err_msg) {
+        pgr_edge_t *edges,
+        size_t total_edges,
+        restrict_t *restricts,
+        size_t restrict_count,
+        int64_t start_edge,
+        double start_pos,
+        int64_t end_edge,
+        double end_pos,
+        bool directed,
+        bool has_reverse_cost,
+        path_element_tt **path,
+        size_t *path_count,
+        char **err_msg) {
     try {
         pgassert(*path == NULL);
         pgassert(*path_count == 0);
@@ -135,11 +194,11 @@ int trsp_edge_wrapper(
         }
 
 #if 0
-        Pgr_trspHandler gdef(edges, edge_count, directed, has_reverse_cost);
+        Pgr_trspHandler gdef(edges, total_edges, directed, has_reverse_cost);
 #else
         pgrouting::trsp::Pgr_trspHandler gdef;
 #endif
-        auto res = gdef.my_dijkstra4(edges, edge_count, start_edge, start_pos,
+        auto res = gdef.my_dijkstra4(edges, total_edges, start_edge, start_pos,
                 end_edge, end_pos, directed, has_reverse_cost, path, path_count,
                 err_msg, ruleTable);
 

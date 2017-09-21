@@ -422,7 +422,7 @@ int Pgr_trspHandler::initialize_restrictions(
         size_t seq_cnt = rule.second.size();
         std::vector<int64_t> temp_precedencelist;
         temp_precedencelist.clear();
-#if 0
+#if 1
         /*
          * TODO(vicky) test the range loop
          */
@@ -747,13 +747,13 @@ bool Pgr_trspHandler::construct_graph(
                  * is undirected and has reverse_cost
                  */
                 if (current_edge->cost < 0) {
-                    current_edge->cost = current_edge.reverse_cost;
+                    current_edge->cost = current_edge->reverse_cost;
                 }
             } else {
                 /*
                  * is undirected and does not have reverse_cost
                  */
-                current_edge->reverse_cost = current_edge.cost;
+                current_edge->reverse_cost = current_edge->cost;
             }
         }
 #else

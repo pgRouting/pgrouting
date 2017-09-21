@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 
 
-PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 
 typedef struct edge_columns {
@@ -138,8 +138,11 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 static
 void compute_trsp(
         char* edges_sql,
+        int dovertex,
         int64_t start_id,
+        double start_pos,
         int64_t end_id,
+        double end_pos,
         bool directed,
         bool has_reverse_cost,
         char* restrict_sql,
@@ -153,63 +156,73 @@ void compute_trsp(
 
 
 
-#if 0
     // defining min and max vertex id
 
     // DBG("Total %i edge tuples", total_tuples);
 
     int64_t v_max_id = 0;
-    int64_t v_min_id = INT64_MAX;
-    size_t z;
-    for (z = 0; z < total_edges; z++) {
-        if (edges[z].source < v_min_id)
-            v_min_id = edges[z].source;
+    int64_t v_min_id = INT_MAX;
+    uint32_t z;
+    if (!dovertex  || dovertex) {
+        for (z = 0; z < total_edges; z++) {
+            if (edges[z].source < v_min_id)
+                v_min_id = edges[z].source;
 
-        if (edges[z].source > v_max_id)
-            v_max_id = edges[z].source;
+            if (edges[z].source > v_max_id)
+                v_max_id = edges[z].source;
 
-        if (edges[z].target < v_min_id)
-            v_min_id = edges[z].target;
+            if (edges[z].target < v_min_id)
+                v_min_id = edges[z].target;
 
-        if (edges[z].target > v_max_id)
-            v_max_id = edges[z].target;
+            if (edges[z].target > v_max_id)
+                v_max_id = edges[z].target;
+        }
+
+        // ::::::::::::::::::::::::::::::::::::
+        // :: reducing vertex id (renumbering)
+        // ::::::::::::::::::::::::::::::::::::
+        int s_count = 0;
+        int t_count = 0;
+        for (z = 0; z < total_edges; z++) {
+            // check if edges[] contains source and target
+            if (dovertex) {
+                if (edges[z].source == start_id || edges[z].target == start_id)
+                    ++s_count;
+                if (edges[z].source == end_id || edges[z].target == end_id)
+                    ++t_count;
+            } else {
+                if (edges[z].id == start_id)
+                    ++s_count;
+                if (edges[z].id == end_id)
+                    ++t_count;
+            }
+
+            edges[z].source -= v_min_id;
+            edges[z].target -= v_min_id;
+            edges[z].cost = edges[z].cost;
+            // PGR_DBG("edgeID: %i SRc:%i - %i, cost: %f",
+            // edges[z].id,edges[z].source, edges[z].target,edges[z].cost);
+        }
+
+        PGR_DBG("Min vertex id: %ld , Max vid: %ld", v_min_id, v_max_id);
+        PGR_DBG("Total %ld edge tuples", total_edges);
+
+        if (s_count == 0) {
+            elog(ERROR, "Start id was not found.");
+            return;
+        }
+
+        if (t_count == 0) {
+            elog(ERROR, "Target id was not found.");
+            return;
+        }
+
+        if (dovertex) {
+            start_id -= v_min_id;
+            end_id   -= v_min_id;
+        }
     }
 
-    // ::::::::::::::::::::::::::::::::::::
-    // :: reducing vertex id (renumbering)
-    // ::::::::::::::::::::::::::::::::::::
-    int s_count = 0;
-    int t_count = 0;
-    for (z = 0; z < total_edges; z++) {
-        // check if edges[] contains source and target
-        if (edges[z].source == start_id || edges[z].target == start_id)
-            ++s_count;
-        if (edges[z].source == end_id || edges[z].target == end_id)
-            ++t_count;
-
-        edges[z].source -= v_min_id;
-        edges[z].target -= v_min_id;
-        edges[z].cost = edges[z].cost;
-        // PGR_DBG("edgeID: %i SRc:%i - %i, cost: %f",
-        // edges[z].id,edges[z].source, edges[z].target,edges[z].cost);
-    }
-
-    PGR_DBG("Min vertex id: %ld , Max vid: %ld", v_min_id, v_max_id);
-    PGR_DBG("Total %ld edge tuples", total_edges);
-
-    if (s_count == 0) {
-        elog(ERROR, "Start id was not found.");
-        return;
-    }
-
-    if (t_count == 0) {
-        elog(ERROR, "Target id was not found.");
-        return;
-    }
-
-    start_id -= v_min_id;
-    end_id   -= v_min_id;
-#endif
     PGR_DBG("Fetching restriction tuples\n");
 
     SPIPlanPtr SPIplan;
@@ -299,29 +312,43 @@ void compute_trsp(
     PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
 
     *path = NULL;
-    PGR_DBG("Calling trsp_node_wrapper\n");
-
-    ret = trsp_node_wrapper(edges, total_edges,
-            restricts, total_restrict_tuples,
-            start_id, end_id,
-            directed, has_reverse_cost,
-            path, path_count, &err_msg);
+    if (dovertex) {
+        PGR_DBG("Calling trsp_node_wrapper\n");
+        /** hack always returns 0 -1 when
+          installed on EDB VC++ 64-bit without this **/
+#if defined(__MINGW64__)
+        // elog(NOTICE,"Calling trsp_node_wrapper\n");
+#endif
+        ret = trsp_node_wrapper(edges, total_edges,
+                restricts, total_restrict_tuples,
+                start_id, end_id,
+                directed, has_reverse_cost,
+                path, path_count, &err_msg);
+    } else {
+        PGR_DBG("Calling trsp_edge_wrapper\n");
+        ret = trsp_edge_wrapper(edges, total_edges,
+                restricts, total_restrict_tuples,
+                start_id, start_pos, end_id, end_pos,
+                directed, has_reverse_cost,
+                path, path_count, &err_msg);
+    }
 
     PGR_DBG("Message received from inside:");
     PGR_DBG("%s", err_msg);
 
-#if 0
-    // DBG("SIZE %i\n",*path_count);
+    if (!dovertex || dovertex) {
+        // DBG("SIZE %i\n",*path_count);
 
-    // ::::::::::::::::::::::::::::::::
-    // :: restoring original vertex id
-    // ::::::::::::::::::::::::::::::::
-    for (z = 0; z < *path_count; z++) {
-        // PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
-        if (z || (*path)[z].vertex_id != -1)
-            (*path)[z].vertex_id += v_min_id;
+        // ::::::::::::::::::::::::::::::::
+        // :: restoring original vertex id
+        // ::::::::::::::::::::::::::::::::
+        for (z = 0; z < *path_count; z++) {
+            // PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
+            if (z || (*path)[z].vertex_id != -1)
+                (*path)[z].vertex_id += v_min_id;
+        }
     }
-#endif
+
     PGR_DBG("ret = %i\n", ret);
 
     PGR_DBG("*path_count = %ld\n", *path_count);
@@ -337,24 +364,24 @@ void compute_trsp(
 
 
 
-PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
+PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
 PGDLLEXPORT Datum
-turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
+turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
     path_element_tt      *path;
     char *               sql;
 
-
     // stuff done only on the first call of the function
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         size_t path_count = 0;
-
+#ifdef DEBUG
         int ret = -1;
-        if (ret == -1) {}  // to avoid warning set but not used
-
+#endif
         int i;
+        double s_pos;
+        double e_pos;
 
         // create a function context for cross-call persistence
         funcctx = SRF_FIRSTCALL_INIT();
@@ -363,40 +390,63 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
         // verify that the first 5 args are not NULL
-        for (i = 0; i < 5; i++)
+        for (i = 0; i < 7; i++) {
+            if (i == 2 || i == 4) continue;
             if (PG_ARGISNULL(i)) {
                 elog(ERROR, "turn_restrict_shortest_path(): "
                         "Argument %i may not be NULL", i+1);
             }
+        }
 
-        if (PG_ARGISNULL(5)) {
+        if (PG_ARGISNULL(2)) {
+            s_pos = 0.5;
+        } else {
+            s_pos = PG_GETARG_FLOAT8(2);
+            if (s_pos < 0.0) s_pos = 0.5;
+            if (s_pos > 1.0) s_pos = 0.5;
+        }
+
+        if (PG_ARGISNULL(4)) {
+            e_pos = 0.5;
+        } else {
+            e_pos = PG_GETARG_FLOAT8(4);
+            if (e_pos < 0.0) e_pos = 0.5;
+            if (e_pos > 1.0) e_pos = 0.5;
+        }
+
+        if (PG_ARGISNULL(7)) {
             sql = NULL;
         } else {
-            sql = text_to_cstring(PG_GETARG_TEXT_P(5));
+            sql = text_to_cstring(PG_GETARG_TEXT_P(7));
             if (strlen(sql) == 0)
                 sql = NULL;
         }
 
         PGR_DBG("Calling compute_trsp");
 
-
-        compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT32(1),
-                PG_GETARG_INT32(2),
-                PG_GETARG_BOOL(3),
-                PG_GETARG_BOOL(4),
-                sql,
-                &path, &path_count);
+#ifdef DEBUG
+        ret =
+#endif
+            compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    0,  // sdo edge
+                    PG_GETARG_INT32(1),
+                    s_pos,
+                    PG_GETARG_INT32(3),
+                    e_pos,
+                    PG_GETARG_BOOL(5),
+                    PG_GETARG_BOOL(6),
+                    sql,
+                    &path, &path_count);
 #ifdef DEBUG
         double total_cost = 0;
         PGR_DBG("Ret is %i", ret);
         if (ret >= 0) {
             int i;
             for (i = 0; i < path_count; i++) {
-                // PGR_DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-                // PGR_DBG("        edge_id    %i ", path[i].edge_id);
+                //     PGR_DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
+                //   PGR_DBG("        edge_id    %i ", path[i].edge_id);
                 // PGR_DBG("        cost       %f ", path[i].cost);
-                total_cost += path[i].cost;
+                total_cost+=path[i].cost;
             }
         }
         PGR_DBG("Total cost is: %f", total_cost);
@@ -461,4 +511,3 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
