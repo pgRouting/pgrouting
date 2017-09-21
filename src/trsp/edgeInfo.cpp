@@ -30,7 +30,7 @@ namespace pgrouting {
 namespace trsp {
 
 EdgeInfo::EdgeInfo(
-            edge_t edgeIn,
+            pgr_edge_t edgeIn,
             size_t edgeIndex) :
         m_edge(edgeIn),
         m_lEdgeIndex(edgeIndex),

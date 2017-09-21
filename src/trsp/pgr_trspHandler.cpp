@@ -38,7 +38,7 @@ namespace trsp {
 
 // -------------------------------------------------------------------------
 Pgr_trspHandler::Pgr_trspHandler(
-        edge_t *edges,
+        pgr_edge_t *edges,
         const size_t edge_count,
         const int64_t start_vertex, 
         const int64_t end_vertex,
@@ -322,7 +322,7 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
 
 
 // -------------------------------------------------------------------------
-int Pgr_trspHandler::my_dijkstra4(edge_t *edges, size_t edge_count,
+int Pgr_trspHandler::my_dijkstra4(pgr_edge_t *edges, size_t edge_count,
     int64_t start_edge_id, double start_part, int64_t end_edge_id, double end_part,
     bool directed, bool has_reverse_cost, path_element_tt **path,
     size_t *path_count, char **err_msg, const std::vector<PDVI> &ruleList) {
@@ -336,7 +336,7 @@ int Pgr_trspHandler::my_dijkstra4(edge_t *edges, size_t edge_count,
     pgassert(m_bIsGraphConstructed);
         auto start_edge_info =
          &m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
-        edge_t start_edge;
+        pgr_edge_t start_edge;
         int64_t start_vertex, end_vertex;
         m_dStartpart = start_part;
         m_dEndPart = end_part;
@@ -374,7 +374,7 @@ int Pgr_trspHandler::my_dijkstra4(edge_t *edges, size_t edge_count,
 
     auto end_edge_info =
     &m_vecEdgeVector[m_mapEdgeId2Index[end_edge_id]];
-    edge_t end_edge;
+    pgr_edge_t end_edge;
 
     if (end_part == 0.0) {
         end_vertex = end_edge_info->startNode();
@@ -478,7 +478,7 @@ int Pgr_trspHandler::initialize_restrictions(
  *
  */
 int Pgr_trspHandler::initializeAndProcess(
-        edge_t *edges,
+        pgr_edge_t *edges,
         size_t edge_count,
 
         const std::vector<PDVI> &ruleList,
@@ -724,7 +724,7 @@ bool Pgr_trspHandler::get_single_cost(double total_cost, path_element_tt **path,
 
 // -------------------------------------------------------------------------
 bool Pgr_trspHandler::construct_graph(
-        edge_t* edges,
+        pgr_edge_t* edges,
         const size_t edge_count,
         const bool has_reverse_cost,
         const bool directed) {
@@ -806,7 +806,7 @@ bool Pgr_trspHandler::connectEdge(EdgeInfo& firstEdge,
 
 
 // -------------------------------------------------------------------------
-bool Pgr_trspHandler::addEdge(const edge_t edgeIn) {
+bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
     // int64_t lTest;
     auto itMap = m_mapEdgeId2Index.find(edgeIn.id);
     if (itMap != m_mapEdgeId2Index.end())

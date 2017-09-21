@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 
-#include "c_types/trsp_types.h"
+#include "c_types/pgr_edge_t.h"
 #include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {
@@ -42,7 +42,7 @@ typedef std::vector<LongVector> VectorOfLongVector;
 class EdgeInfo {
  public:
      EdgeInfo(
-             edge_t edgeIn,
+             pgr_edge_t edgeIn,
              size_t edgeIndex);
 
      inline size_t edgeIndex() const {return m_lEdgeIndex;}
@@ -57,12 +57,13 @@ class EdgeInfo {
      inline int64_t edgeID() const {return m_edge.id;}
      inline double cost() const {return m_edge.cost;}
      inline double r_cost() const {return m_edge.reverse_cost;}
+
      LongVector& endConnedtedEdge() {return m_vecEndConnedtedEdge;}
      LongVector& startConnectedEdge() {return m_vecStartConnectedEdge;}
 
 
  private:
-     edge_t m_edge;
+     pgr_edge_t m_edge;
      size_t m_lEdgeIndex;
      LongVector m_vecStartConnectedEdge;
      LongVector m_vecEndConnedtedEdge;

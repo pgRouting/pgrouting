@@ -83,7 +83,7 @@ typedef std::map<int64_t, int64_t> Long2LongMap;
 class Pgr_trspHandler {
  public:
     Pgr_trspHandler(
-            edge_t *edges,
+            pgr_edge_t *edges,
             const size_t edge_count,
             const int64_t start_vertex,
             const int64_t end_vertex,
@@ -99,7 +99,7 @@ class Pgr_trspHandler {
 
 
     int initializeAndProcess(
-            edge_t *edges,
+            pgr_edge_t *edges,
             size_t edge_count,
 
             const std::vector<PDVI> &ruleList,
@@ -115,7 +115,7 @@ class Pgr_trspHandler {
             char **err_msg);
 
 
-    int my_dijkstra4(edge_t *edges, size_t edge_count,
+    int my_dijkstra4(pgr_edge_t *edges, size_t edge_count,
                     int64_t start_edge, double start_part,
                     int64_t end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
@@ -123,7 +123,7 @@ class Pgr_trspHandler {
                     char **err_msg,
                     const std::vector<PDVI> &ruleList);
 
-    bool construct_graph(edge_t *edges, const size_t edge_count,
+    bool construct_graph(pgr_edge_t *edges, const size_t edge_count,
                          const bool has_reverse_cost, const bool directed);
 
     void clear();
@@ -150,7 +150,7 @@ class Pgr_trspHandler {
 
     double getRestrictionCost(int64_t cur_node, const EdgeInfo &new_edge,
                               bool isStart);
-    bool addEdge(const edge_t edgeIn);
+    bool addEdge(const pgr_edge_t edgeIn);
     bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,
                      bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_tt **path,
