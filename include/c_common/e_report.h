@@ -40,19 +40,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * on C++ side, the message to be returned;
  * ~~~~{.c}
  * std::ostringstream log;
- * log << "the messaage";
- * log_msg = strdup(log.str().c_str());
+ * log << "the message";
+ * *log_msg = pgr_msg(log.str().c_str());
  * ~~~~
  *
  *
- *  The char* messages are cleared.
- *  New messages are made with palloc
  *
  *  when there is ERROR then postgreSQL takes over control
+ *    The char* messages are cleared automaticalyy with pfree.
  *
  *  @warning When error: Free all data not created with palloc before calling
  *
  */
+
 ///@{
 /*! @brief notice & error
  *
