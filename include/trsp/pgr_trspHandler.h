@@ -57,13 +57,6 @@ typedef struct {
     int64_t v_pos[2];
 } PARENT_PATH;
 
-#if 0
-typedef struct Rule {
-    double cost;
-    std::vector<int64_t> precedencelist;
-    Rule(double c, std::vector<int64_t> p) : cost(c), precedencelist(p) { }
-}Rule;
-#endif
 class CostHolder {
  public:
     CostHolder() {
