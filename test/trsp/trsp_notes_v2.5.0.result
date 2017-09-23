@@ -63,10 +63,7 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-(0 rows)
-
+ERROR:  Error computing path: No paths found
 ```
 dijkstra returns EMPTY SET to represent no path found
 ```
@@ -99,7 +96,8 @@ SELECT * FROM pgr_trsp(
      1, 15, true, true,
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
-ERROR:  Error computing path: Path Not Found
+ERROR:  Error computing path: No paths found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
 ```
 ## routing from/to same location
 using dijkstra to verify (1 to 1)
@@ -133,17 +131,17 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1,  true, true
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   1 |   1 |    1
-   1 |   2 |   4 |    1
-   2 |   5 |   8 |    1
-   3 |   6 |   9 |    1
-   4 |   9 |  16 |    1
-   5 |   4 |   3 |    1
-   6 |   3 |   2 |    1
-   7 |   2 |   1 |    1
-   8 |   1 |  -1 |    0
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |       1 |    1 |    1 |    1 |        0
+   2 |        2 |         1 |       1 |    2 |    4 |    1 |        1
+   3 |        3 |         1 |       1 |    5 |    8 |    1 |        2
+   4 |        4 |         1 |       1 |    6 |    9 |    1 |        3
+   5 |        5 |         1 |       1 |    9 |   16 |    1 |        4
+   6 |        6 |         1 |       1 |    4 |    3 |    1 |        5
+   7 |        7 |         1 |       1 |    3 |    2 |    1 |        6
+   8 |        8 |         1 |       1 |    2 |    1 |    1 |        7
+   9 |        9 |         1 |       1 |    1 |   -1 |    0 |        8
 (9 rows)
 
 ```
@@ -182,17 +180,17 @@ SELECT * FROM _pgr_trsp(
     true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   1 |   1 |    1
-   1 |   2 |   4 |    1
-   2 |   5 |   8 |    1
-   3 |   6 |   9 |    1
-   4 |   9 |  16 |    1
-   5 |   4 |   3 |    1
-   6 |   3 |   2 |    1
-   7 |   2 |   1 |    1
-   8 |   1 |  -1 |    0
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |       1 |    1 |    1 |    1 |        0
+   2 |        2 |         1 |       1 |    2 |    4 |    1 |        1
+   3 |        3 |         1 |       1 |    5 |    8 |    1 |        2
+   4 |        4 |         1 |       1 |    6 |    9 |    1 |        3
+   5 |        5 |         1 |       1 |    9 |   16 |    1 |        4
+   6 |        6 |         1 |       1 |    4 |    3 |    1 |        5
+   7 |        7 |         1 |       1 |    3 |    2 |    1 |        6
+   8 |        8 |         1 |       1 |    2 |    1 |    1 |        7
+   9 |        9 |         1 |       1 |    1 |   -1 |    0 |        8
 (9 rows)
 
 ```
@@ -234,10 +232,10 @@ SELECT * FROM _pgr_trsp(
     2, 3,
     false, true
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   2 |   2 |    1
-   1 |   3 |  -1 |    0
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         2 |       3 |    2 |    2 |    1 |        0
+   2 |        2 |         2 |       3 |    3 |   -1 |    0 |        1
 (2 rows)
 
 ```
@@ -267,10 +265,10 @@ SELECT * FROM _pgr_trsp(
     true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   2 |   2 |    1
-   1 |   3 |  -1 |    0
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         2 |       3 |    2 |    2 |    1 |        0
+   2 |        2 |         2 |       3 |    3 |   -1 |    0 |        1
 (2 rows)
 
 ```
@@ -701,21 +699,15 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 15, 2],
     false, true
 );
- seq | id1 | id2 | id3 | cost 
------+-----+-----+-----+------
-(0 rows)
-
+ERROR:  Error computing path: No paths found
+CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 16 at FOR over SELECT rows
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2, 1],
     false, true
 );
- seq | id1 | id2 | id3 | cost 
------+-----+-----+-----+------
-   1 |   3 |   2 |   1 |    1
-   2 |   3 |   1 |  -1 |    0
-(2 rows)
-
+ERROR:  Error computing path: No paths found
+CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 16 at FOR over SELECT rows
 ```
 **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
 this case none is found
