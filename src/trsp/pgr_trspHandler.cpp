@@ -321,6 +321,7 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
 }
 
 
+#if 0
 // -------------------------------------------------------------------------
 int Pgr_trspHandler::my_dijkstra4(pgr_edge_t *edges, size_t edge_count,
     int64_t start_edge_id, double start_part, int64_t end_edge_id, double end_part,
@@ -411,7 +412,7 @@ int Pgr_trspHandler::my_dijkstra4(pgr_edge_t *edges, size_t edge_count,
             directed, has_reverse_cost,
             path, path_count, err_msg);
 }
-
+#endif
 
 // -------------------------------------------------------------------------
 int Pgr_trspHandler::initialize_restrictions(

@@ -115,6 +115,7 @@ class Pgr_trspHandler {
             char **err_msg);
 
 
+#if 0
     int my_dijkstra4(pgr_edge_t *edges, size_t edge_count,
                     int64_t start_edge, double start_part,
                     int64_t end_edge, double end_part,
@@ -122,6 +123,7 @@ class Pgr_trspHandler {
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     const std::vector<PDVI> &ruleList);
+#endif
 
     bool construct_graph(pgr_edge_t *edges, const size_t edge_count,
                          const bool has_reverse_cost, const bool directed);
