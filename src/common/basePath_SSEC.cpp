@@ -71,6 +71,15 @@ void Path::reverse() {
     path = newpath;
 }
 
+void Path::recalculate_agg_cost() {
+    m_tot_cost = 0;
+    for (auto &p : path) {
+        p.agg_cost = m_tot_cost;
+        m_tot_cost += p.cost;
+    }
+}
+
+
 
 void Path::clear() {
     path.clear();
@@ -184,7 +193,7 @@ void Path::generate_postgres_data(
     double total_cost = 0;
     for (const auto e : path) {
         (*postgres_data)[sequence] =
-        {i, start_id(), end_id(), e.node, e.edge, e.cost, total_cost};
+        {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
         total_cost += e.cost;
         ++i;
         ++sequence;

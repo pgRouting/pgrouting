@@ -88,6 +88,8 @@ class Path {
     Path_t& front() {return path.front();}
     void sort_by_node_agg_cost();
 
+    void recalculate_agg_cost();
+
 
     Path_t set_data(
             int64_t d_from,

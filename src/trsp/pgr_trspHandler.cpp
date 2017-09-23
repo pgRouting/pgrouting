@@ -587,6 +587,7 @@ Pgr_trspHandler::process_trsp(
     }
 
     clear();
+    m_vecPath.Path::recalculate_agg_cost();
     return m_vecPath.renumber_vertices(m_min_id);
 }
 
