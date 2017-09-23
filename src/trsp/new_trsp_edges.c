@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 
 
-#include "drivers/trsp/trsp_driver.h"
+#include "drivers/trsp/trsp_driver_edges.h"
 #include "c_types/trsp_types.h"
 #include "c_types/pgr_edge_t.h"
 #include "c_common/edges_input.h"
@@ -313,6 +313,7 @@ void compute_trsp(
 
     *path = NULL;
     if (dovertex) {
+#if 0
         PGR_DBG("Calling trsp_node_wrapper\n");
         /** hack always returns 0 -1 when
           installed on EDB VC++ 64-bit without this **/
@@ -324,6 +325,7 @@ void compute_trsp(
                 start_id, end_id,
                 directed, has_reverse_cost,
                 path, path_count, &err_msg);
+#endif
     } else {
         PGR_DBG("Calling trsp_edge_wrapper\n");
         ret = trsp_edge_wrapper(edges, total_edges,

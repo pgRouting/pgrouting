@@ -152,64 +152,6 @@ void compute_trsp(
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
 
-
-#if 0
-    // defining min and max vertex id
-
-    // DBG("Total %i edge tuples", total_tuples);
-
-    int64_t v_max_id = 0;
-    int64_t v_min_id = INT64_MAX;
-    size_t z;
-    for (z = 0; z < total_edges; z++) {
-        if (edges[z].source < v_min_id)
-            v_min_id = edges[z].source;
-
-        if (edges[z].source > v_max_id)
-            v_max_id = edges[z].source;
-
-        if (edges[z].target < v_min_id)
-            v_min_id = edges[z].target;
-
-        if (edges[z].target > v_max_id)
-            v_max_id = edges[z].target;
-    }
-
-    // ::::::::::::::::::::::::::::::::::::
-    // :: reducing vertex id (renumbering)
-    // ::::::::::::::::::::::::::::::::::::
-    int s_count = 0;
-    int t_count = 0;
-    for (z = 0; z < total_edges; z++) {
-        // check if edges[] contains source and target
-        if (edges[z].source == start_id || edges[z].target == start_id)
-            ++s_count;
-        if (edges[z].source == end_id || edges[z].target == end_id)
-            ++t_count;
-
-        edges[z].source -= v_min_id;
-        edges[z].target -= v_min_id;
-        edges[z].cost = edges[z].cost;
-        // PGR_DBG("edgeID: %i SRc:%i - %i, cost: %f",
-        // edges[z].id,edges[z].source, edges[z].target,edges[z].cost);
-    }
-
-    PGR_DBG("Min vertex id: %ld , Max vid: %ld", v_min_id, v_max_id);
-    PGR_DBG("Total %ld edge tuples", total_edges);
-
-    if (s_count == 0) {
-        elog(ERROR, "Start id was not found.");
-        return;
-    }
-
-    if (t_count == 0) {
-        elog(ERROR, "Target id was not found.");
-        return;
-    }
-
-    start_id -= v_min_id;
-    end_id   -= v_min_id;
-#endif
     PGR_DBG("Fetching restriction tuples\n");
 
     SPIPlanPtr SPIplan;
@@ -310,18 +252,6 @@ void compute_trsp(
     PGR_DBG("Message received from inside:");
     PGR_DBG("%s", err_msg);
 
-#if 0
-    // DBG("SIZE %i\n",*path_count);
-
-    // ::::::::::::::::::::::::::::::::
-    // :: restoring original vertex id
-    // ::::::::::::::::::::::::::::::::
-    for (z = 0; z < *path_count; z++) {
-        // PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
-        if (z || (*path)[z].vertex_id != -1)
-            (*path)[z].vertex_id += v_min_id;
-    }
-#endif
     PGR_DBG("ret = %i\n", ret);
 
     PGR_DBG("*path_count = %ld\n", *path_count);
