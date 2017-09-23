@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 ROLLBACK;
 ROLLBACK
-# Notes on pgr_trsp for version 2.5.0
+# Notes on pgr_trsp for version 2.6.0
 Table of contents
 * [Introduction](#introduction)
   * [The restriction](#the-restriction)
@@ -63,7 +63,10 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
 );
-ERROR:  Error computing path: Path Not Found
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+(0 rows)
+
 ```
 dijkstra returns EMPTY SET to represent no path found
 ```
@@ -97,7 +100,6 @@ SELECT * FROM pgr_trsp(
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
 ```
 ## routing from/to same location
 using dijkstra to verify (1 to 1)
@@ -711,15 +713,21 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 15, 2],
     false, true
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 16 at FOR over SELECT rows
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+(0 rows)
+
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2, 1],
     false, true
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 16 at FOR over SELECT rows
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   3 |   2 |   1 |    1
+   2 |   3 |   1 |  -1 |    0
+(2 rows)
+
 ```
 **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
 this case none is found

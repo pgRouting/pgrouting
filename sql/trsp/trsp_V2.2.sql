@@ -102,7 +102,10 @@ BEGIN
     END IF;
 
     RETURN query SELECT * FROM _pgr_trsp(new_sql, start_vid, end_vid, directed, has_rcost, restrictions_sql);
-    RETURN;
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Error computing path: Path Not Found';
+    END IF;
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -155,6 +158,9 @@ BEGIN
 
     -- make the call without contradiction from part of the user
     RETURN query SELECT * FROM _pgr_trspViaVertices(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql);
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Error computing path: Path Not Found';
+    END IF;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
