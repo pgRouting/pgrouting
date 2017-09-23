@@ -98,7 +98,7 @@ class Pgr_trspHandler {
                     size_t edge_count, char** err_msg);
 
 
-    int initializeAndProcess(
+    std::vector<path_element_tt> initializeAndProcess(
             pgr_edge_t *edges,
             size_t edge_count,
 
@@ -115,31 +115,22 @@ class Pgr_trspHandler {
             char **err_msg);
 
 
-#if 0
-    int my_dijkstra4(pgr_edge_t *edges, size_t edge_count,
-                    int64_t start_edge, double start_part,
-                    int64_t end_edge, double end_part,
-                    bool directed, bool has_reverse_cost,
-                    path_element_tt **path, size_t *path_count,
-                    char **err_msg,
-                    const std::vector<PDVI> &ruleList);
-#endif
-
-    bool construct_graph(pgr_edge_t *edges, const size_t edge_count,
-                         const bool has_reverse_cost, const bool directed);
-
     void clear();
 
  private:
+    bool construct_graph(pgr_edge_t *edges, const size_t edge_count,
+                         const bool has_reverse_cost, const bool directed);
+
     int initialize_restrictions(
                     const std::vector<PDVI> &ruleList);
 
     void initialize_que();
 
-    int process_trsp(size_t edge_count,
-                    path_element_tt **path,
-                    size_t *path_count,
-                    char **err_msg);
+    std::vector<path_element_tt> process_trsp(
+            size_t edge_count,
+            path_element_tt **path,
+            size_t *path_count,
+            char **err_msg);
 
     EdgeInfo* dijkstra_exploration(
             EdgeInfo* cur_edge,
@@ -148,17 +139,26 @@ class Pgr_trspHandler {
 
 
     void explore(size_t cur_node, const EdgeInfo cur_edge, bool isStart,
-                 const LongVector &vecIndex);
+            const LongVector &vecIndex);
 
     double getRestrictionCost(int64_t cur_node, const EdgeInfo &new_edge,
-                              bool isStart);
+            bool isStart);
     bool addEdge(const pgr_edge_t edgeIn);
     bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,
-                     bool bIsStartNodeSame);
-    bool get_single_cost(double total_cost, path_element_tt **path,
-                         size_t *path_count);
+            bool bIsStartNodeSame);
+    std::vector<path_element_tt> get_single_cost(
+            double total_cost,
+            path_element_tt **path,
+            size_t *path_count);
+
     double construct_path(int64_t ed_id, int64_t v_pos);
     void init();
+    int64_t renumber_edges(pgr_edge_t *edges, const size_t edge_count) const;
+    std::vector<path_element_tt> renumber_result(
+            path_element_tt **path,
+            size_t *path_count,
+            std::vector<path_element_tt> result) const;
+
 
  private:
     GraphEdgeVector m_vecEdgeVector;
@@ -175,8 +175,9 @@ class Pgr_trspHandler {
     bool isEndVirtual;
     size_t m_start_vertex;
     size_t m_end_vertex;
+    int64_t m_min_id;
 
-    std::vector <path_element_tt> m_vecPath;
+    std::vector<path_element_tt> m_vecPath;
     std::vector<PARENT_PATH> parent;
     std::vector<CostHolder> m_dCost;
     RuleTable m_ruleTable;

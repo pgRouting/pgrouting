@@ -58,61 +58,6 @@ int do_trsp(
         pgassert(*path_count == 0);
 
 
-#if 1
-        // defining min and max vertex id
-
-        int64_t v_max_id = 0;
-        int64_t v_min_id = INT64_MAX;
-        size_t z;
-        for (z = 0; z < total_edges; z++) {
-            if (edges[z].source < v_min_id)
-                v_min_id = edges[z].source;
-
-            if (edges[z].source > v_max_id)
-                v_max_id = edges[z].source;
-
-            if (edges[z].target < v_min_id)
-                v_min_id = edges[z].target;
-
-            if (edges[z].target > v_max_id)
-                v_max_id = edges[z].target;
-        }
-
-        // ::::::::::::::::::::::::::::::::::::
-        // :: reducing vertex id (renumbering)
-        // ::::::::::::::::::::::::::::::::::::
-        size_t s_count = 0;
-        size_t t_count = 0;
-        auto start_id = start_vertex;
-        auto end_id = end_vertex;
-        for (z = 0; z < total_edges; z++) {
-            if (edges[z].source == start_id || edges[z].target == start_vertex)
-                ++s_count;
-            if (edges[z].source == end_id || edges[z].target == end_vertex)
-                ++t_count;
-            edges[z].source -= v_min_id;
-            edges[z].target -= v_min_id;
-            edges[z].cost = edges[z].cost;
-        }
-
-
-        if (s_count == 0) {
-            err << "Start id was not found.";
-            *err_msg = pgr_msg(err.str().c_str());
-            return -1;
-        }
-
-        if (t_count == 0) {
-            err << "Start id was not found.";
-            *err_msg = pgr_msg(err.str().c_str());
-            return -1;
-        }
-
-        start_id -= v_min_id;
-        end_id   -= v_min_id;
-#endif
-
-
         std::vector<pgrouting::trsp::PDVI> ruleTable;
         size_t MAX_RULE_LENGTH = 5;
 
@@ -129,27 +74,24 @@ int do_trsp(
         }
 
         pgrouting::trsp::Pgr_trspHandler gdef;
-        int res = gdef.initializeAndProcess(
+        auto res = gdef.initializeAndProcess(
                 edges, total_edges,
                 ruleTable,
-                start_id, end_id,
+                start_vertex, end_vertex,
                 directed, has_reverse_cost,
                 path, path_count, err_msg);
 
-#if 1
-        // ::::::::::::::::::::::::::::::::
-        // :: restoring original vertex id
-        // ::::::::::::::::::::::::::::::::
-        for (z = 0; z < *path_count; z++) {
-            if (z || (*path)[z].vertex_id != -1)
-                (*path)[z].vertex_id += v_min_id;
+        free(*path);
+        path_element_tt *return_tuples = nullptr;
+        return_tuples = pgr_alloc(res.size(), (return_tuples));
+        i = 0;
+        for (const auto r : res) {
+            return_tuples[i] = r;
+            ++i;
         }
-#endif
+        *path = return_tuples;
 
-        if (res < 0)
-            return res;
-        else
-            return EXIT_SUCCESS;
+        return EXIT_SUCCESS;
     }
     catch(std::exception& e) {
         *err_msg = (char *) e.what();

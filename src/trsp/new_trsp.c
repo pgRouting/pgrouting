@@ -387,7 +387,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
         SRF_RETURN_NEXT(funcctx, result);
     } else {  // do when there is no more left
         PGR_DBG("Going to free path");
-        if (path) free(path);
+        if (path) pfree(path);
         SRF_RETURN_DONE(funcctx);
     }
 }

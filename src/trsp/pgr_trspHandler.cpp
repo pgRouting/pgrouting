@@ -68,6 +68,7 @@ Pgr_trspHandler::Pgr_trspHandler(
     pgassert(m_bIsGraphConstructed);
 }
 
+
 // -------------------------------------------------------------------------
 Pgr_trspHandler::Pgr_trspHandler(void) {
     m_lStartEdgeId = -1;
@@ -78,6 +79,48 @@ Pgr_trspHandler::Pgr_trspHandler(void) {
     m_bIsGraphConstructed = false;
     init();
 }
+
+
+// -------------------------------------------------------------------------
+/*! \brief restoring original vertex id */
+std::vector<path_element_tt>
+Pgr_trspHandler::renumber_result(
+        path_element_tt **path,
+        size_t *path_count,
+        std::vector<path_element_tt> result) const {
+    for (size_t z = 0; z < *path_count; z++) {
+        if (z || (*path)[z].vertex_id != -1)
+            (*path)[z].vertex_id += m_min_id;
+    }
+    for (auto &r : result) {
+        r.vertex_id += m_min_id;
+    }
+    return result;
+}
+
+// -------------------------------------------------------------------------
+int64_t Pgr_trspHandler::renumber_edges(
+        pgr_edge_t *edges,
+        size_t total_edges) const {
+
+        int64_t v_min_id = UINT64_MAX;
+        size_t z;
+        for (z = 0; z < total_edges; z++) {
+            if (edges[z].source < v_min_id)
+                v_min_id = edges[z].source;
+
+            if (edges[z].target < v_min_id)
+                v_min_id = edges[z].target;
+        }
+
+        for (z = 0; z < total_edges; z++) {
+            edges[z].source -= v_min_id;
+            edges[z].target -= v_min_id;
+        }
+
+        return v_min_id;
+}
+
 
 
 // -------------------------------------------------------------------------
@@ -321,99 +364,6 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
 }
 
 
-#if 0
-// -------------------------------------------------------------------------
-int Pgr_trspHandler::my_dijkstra4(pgr_edge_t *edges, size_t edge_count,
-    int64_t start_edge_id, double start_part, int64_t end_edge_id, double end_part,
-    bool directed, bool has_reverse_cost, path_element_tt **path,
-    size_t *path_count, char **err_msg, const std::vector<PDVI> &ruleList) {
-#if 1
-    if (!m_bIsGraphConstructed) {
-            init();
-            construct_graph(edges, edge_count, has_reverse_cost, directed);
-            m_bIsGraphConstructed = true;
-        }
-#endif
-    pgassert(m_bIsGraphConstructed);
-        auto start_edge_info =
-         &m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
-        pgr_edge_t start_edge;
-        int64_t start_vertex, end_vertex;
-        m_dStartpart = start_part;
-        m_dEndPart = end_part;
-        m_lStartEdgeId = start_edge_id;
-        m_lEndEdgeId = end_edge_id;
-
-        if (start_part == 0.0) {
-            start_vertex = start_edge_info->startNode();
-        } else if (start_part == 1.0) {
-            start_vertex = start_edge_info->endNode();
-        } else {
-            isStartVirtual = true;
-            m_lStartEdgeId = start_edge_id;
-            start_vertex = max_node_id + 1;
-            max_node_id++;
-            start_edge.id = max_edge_id + 1;
-            max_edge_id++;
-            start_edge.source = start_vertex;
-            start_edge.reverse_cost = -1.0;
-            if (start_edge_info->cost() >= 0.0) {
-                start_edge.target = start_edge_info->endNode();
-                start_edge.cost = (1.0 - start_part) * start_edge_info->cost();
-                addEdge(start_edge);
-                edge_count++;
-            }
-            if (start_edge_info->r_cost() >= 0.0) {
-                start_edge.id = max_edge_id + 1;
-                max_edge_id++;
-                start_edge.target = start_edge_info->startNode();
-                start_edge.cost = start_part * start_edge_info->r_cost();
-                addEdge(start_edge);
-                edge_count++;
-            }
-        }
-
-    auto end_edge_info =
-    &m_vecEdgeVector[m_mapEdgeId2Index[end_edge_id]];
-    pgr_edge_t end_edge;
-
-    if (end_part == 0.0) {
-        end_vertex = end_edge_info->startNode();
-    } else if (end_part == 1.0) {
-        end_vertex = end_edge_info->endNode();
-    } else {
-        isEndVirtual = true;
-        m_lEndEdgeId = end_edge_id;
-        end_vertex = max_node_id + 1;
-        max_node_id++;
-        end_edge.id = max_edge_id + 1;
-        max_edge_id++;
-        end_edge.target = end_vertex;
-        end_edge.reverse_cost = -1.0;
-        if (end_edge_info->cost() >= 0.0) {
-            end_edge.source = end_edge_info->startNode();
-            end_edge.cost = end_part * end_edge_info->cost();
-            addEdge(end_edge);
-            edge_count++;
-        }
-        if (end_edge_info->r_cost() >= 0.0) {
-            end_edge.source = end_edge_info->endNode();
-            end_edge.id = max_edge_id + 1;
-            end_edge.cost = (1.0 - end_part) * end_edge_info->r_cost();
-            addEdge(end_edge);
-            edge_count++;
-        }
-    }
-
-    return initializeAndProcess(
-            edges, edge_count,
-            ruleList,
-            start_vertex, end_vertex,
-            directed, has_reverse_cost,
-            path, path_count, err_msg);
-}
-#endif
-
 // -------------------------------------------------------------------------
 int Pgr_trspHandler::initialize_restrictions(
         const std::vector<PDVI> &ruleList) {
@@ -423,19 +373,11 @@ int Pgr_trspHandler::initialize_restrictions(
         size_t seq_cnt = rule.second.size();
         std::vector<int64_t> temp_precedencelist;
         temp_precedencelist.clear();
-#if 1
-        /*
-         * TODO(vicky) test the range loop
-         */
         for (const auto r : rule.second) {
             if (r ==  rule.second.front()) continue;
             temp_precedencelist.push_back(r);
         }
-#else
-        for (size_t j = 1; j < seq_cnt; j++) {
-            temp_precedencelist.push_back(rule.second[j]);
-        }
-#endif
+
         auto dest_edge_id = rule.second[0];
         if (m_ruleTable.find(dest_edge_id) != m_ruleTable.end()) {
             m_ruleTable[dest_edge_id].push_back(
@@ -478,7 +420,8 @@ int Pgr_trspHandler::initialize_restrictions(
  * Acts as initializer and processing
  *
  */
-int Pgr_trspHandler::initializeAndProcess(
+std::vector<path_element_tt>
+Pgr_trspHandler::initializeAndProcess(
         pgr_edge_t *edges,
         size_t edge_count,
 
@@ -504,18 +447,23 @@ int Pgr_trspHandler::initializeAndProcess(
 
     initialize_restrictions(ruleList);
 
+    m_min_id = renumber_edges(edges, edge_count);
+    m_start_vertex -= m_min_id;
+    m_end_vertex -= m_min_id;
+    
+
     construct_graph(edges, edge_count, has_reverse_cost, directed);
 
     if (m_mapNodeId2Edge.find(m_start_vertex) == m_mapNodeId2Edge.end()) {
         *err_msg = (char *)"Source Not Found";
         clear();
-        return -1;
+        return std::vector<path_element_tt>();
     }
 
     if (m_mapNodeId2Edge.find(m_end_vertex) == m_mapNodeId2Edge.end()) {
         *err_msg = (char *)"Destination Not Found";
         clear();
-        return -1;
+        return std::vector<path_element_tt>();
     }
 
     /*
@@ -601,7 +549,8 @@ EdgeInfo* Pgr_trspHandler::dijkstra_exploration(
 
 
 
-int Pgr_trspHandler::process_trsp(
+std::vector<path_element_tt>
+Pgr_trspHandler::process_trsp(
         size_t edge_count,
         path_element_tt **path,
         size_t *path_count,
@@ -623,14 +572,14 @@ int Pgr_trspHandler::process_trsp(
     cur_edge = dijkstra_exploration(cur_edge, cur_node);
 
     if (cur_node != m_end_vertex) {
+        std::vector<path_element_tt> result;
         if (m_lStartEdgeId == m_lEndEdgeId) {
-            if (get_single_cost(1000.0, path, path_count)) {
-                return 0;
-            }
+            result = get_single_cost(1000.0, path, path_count);
+            result = renumber_result(path, path_count, result);
         }
         *err_msg = (char *)"Path Not Found";
         clear();
-        return -1;
+        return result;
     } 
     
     double total_cost;
@@ -649,9 +598,9 @@ int Pgr_trspHandler::process_trsp(
     m_vecPath.push_back(pelement);
 
     if (m_lStartEdgeId == m_lEndEdgeId) {
-        if (get_single_cost(total_cost, path, path_count)) {
-            return 0;
-        }
+        auto result = get_single_cost(total_cost, path, path_count);
+        result = renumber_result(path, path_count, result);
+        return result;
     }
 
     *path = (path_element_tt *) malloc(sizeof(path_element_tt) *
@@ -673,23 +622,17 @@ int Pgr_trspHandler::process_trsp(
     }
 
     clear();
-    return 0;
+    return renumber_result(path, path_count, m_vecPath);
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
 // -------------------------------------------------------------------------
-bool Pgr_trspHandler::get_single_cost(double total_cost, path_element_tt **path,
+std::vector<path_element_tt>
+Pgr_trspHandler::get_single_cost(
+        double total_cost,
+        path_element_tt **path,
         size_t *path_count) {
     auto start_edge_info =
         &m_vecEdgeVector[m_mapEdgeId2Index[m_lStartEdgeId]];
@@ -702,8 +645,7 @@ bool Pgr_trspHandler::get_single_cost(double total_cost, path_element_tt **path,
             (*path)[0].edge_id = m_lStartEdgeId;
             (*path)[0].cost = start_edge_info->cost() *
                 (m_dEndPart - m_dStartpart);
-
-            return true;
+            return std::vector<path_element_tt>();
         }
     } else {
         if (start_edge_info->r_cost() >= 0.0 &&
@@ -715,11 +657,10 @@ bool Pgr_trspHandler::get_single_cost(double total_cost, path_element_tt **path,
             (*path)[0].edge_id = m_lStartEdgeId;
             (*path)[0].cost = start_edge_info->r_cost() *
                 (m_dStartpart - m_dEndPart);
-
-            return true;
+            return std::vector<path_element_tt>();
         }
     }
-    return false;
+    return std::vector<path_element_tt>();
 }
 
 
@@ -729,7 +670,7 @@ bool Pgr_trspHandler::construct_graph(
         const size_t edge_count,
         const bool has_reverse_cost,
         const bool directed) {
-    if (m_bIsGraphConstructed) return true;
+    pgassert(!m_bIsGraphConstructed);
 
     init();
     for (size_t i = 0; i < edge_count; i++) {
