@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/trsp_types.h"
 #include "c_types/pgr_edge_t.h"
+#include "c_types/general_path_element_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -44,8 +45,8 @@ int do_trsp(
     int64_t end_vertex,
     bool directed,
     bool has_reverse_cost,
-    path_element_tt **path,
-    size_t *path_count,
+    General_path_element_t **return_tuples,
+    size_t *return_count,
     char **err_msg
 );
 

@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 
+#include "cpp_common/basePath_SSEC.hpp"
 #include "c_types/trsp_types.h"
 #include "trsp/edgeInfo.h"
 #include "trsp/rule.h"
@@ -98,7 +99,7 @@ class Pgr_trspHandler {
                     size_t edge_count, char** err_msg);
 
 
-    std::vector<path_element_tt> initializeAndProcess(
+    Path initializeAndProcess(
             pgr_edge_t *edges,
             size_t edge_count,
 
@@ -124,17 +125,17 @@ class Pgr_trspHandler {
 
     void initialize_que();
 
-    std::vector<path_element_tt> process_trsp(
+    Path process_trsp(
             size_t edge_count,
             char **err_msg);
 
     EdgeInfo* dijkstra_exploration(
             EdgeInfo* cur_edge,
-            size_t &cur_node);
+            int64_t &cur_node);
 
 
 
-    void explore(size_t cur_node, const EdgeInfo cur_edge, bool isStart,
+    void explore(int64_t cur_node, const EdgeInfo cur_edge, bool isStart,
             const LongVector &vecIndex);
 
     double getRestrictionCost(int64_t cur_node, const EdgeInfo &new_edge,
@@ -142,7 +143,7 @@ class Pgr_trspHandler {
     bool addEdge(const pgr_edge_t edgeIn);
     bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,
             bool bIsStartNodeSame);
-    std::vector<path_element_tt> get_single_cost(
+    Path get_single_cost(
             double total_cost);
 
     double construct_path(int64_t ed_id, int64_t v_pos);
@@ -150,8 +151,6 @@ class Pgr_trspHandler {
     int64_t renumber_edges(
             pgr_edge_t *edges,
             const size_t edge_count) const;
-    std::vector<path_element_tt> renumber_result(
-            std::vector<path_element_tt> result) const;
 
 
  private:
@@ -159,19 +158,19 @@ class Pgr_trspHandler {
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
 
-    size_t max_node_id;
-    size_t max_edge_id;
+    int64_t max_node_id;
+    int64_t max_edge_id;
     int64_t m_lStartEdgeId;
     int64_t m_lEndEdgeId;
     double m_dStartpart;
     double m_dEndPart;
     bool isStartVirtual;
     bool isEndVirtual;
-    size_t m_start_vertex;
-    size_t m_end_vertex;
+    int64_t m_start_vertex;
+    int64_t m_end_vertex;
     int64_t m_min_id;
 
-    std::vector<path_element_tt> m_vecPath;
+    Path m_vecPath;
     std::vector<PARENT_PATH> parent;
     std::vector<CostHolder> m_dCost;
     RuleTable m_ruleTable;

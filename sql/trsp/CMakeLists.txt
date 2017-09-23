@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    _trsp.sql
     trsp_V2.2.sql
     vias_trsp_V2.2.sql
     )

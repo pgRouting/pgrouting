@@ -29,16 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --     - For now just checking with static data, so the query is similar to shortest_paths.
 */
 
-CREATE OR REPLACE FUNCTION _pgr_trsp(
-    sql text,
-    source_vid integer,
-    target_vid integer,
-    directed boolean,
-    has_reverse_cost boolean,
-    turn_restrict_sql text DEFAULT null)
-RETURNS SETOF pgr_costResult
-AS '${MODULE_PATHNAME}', 'turn_restrict_shortest_path_vertex'
-LANGUAGE 'c' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,
@@ -101,7 +91,9 @@ BEGIN
         RETURN;
     END IF;
 
-    RETURN query SELECT * FROM _pgr_trsp(new_sql, start_vid, end_vid, directed, has_rcost, restrictions_sql);
+    RETURN query
+        SELECT (seq - 1)::INTEGER, a.node::INTEGER, a.edge::INTEGER, a.cost
+        FROM _pgr_trsp(new_sql, start_vid, end_vid, directed, has_rcost, restrictions_sql) AS a;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
     END IF;

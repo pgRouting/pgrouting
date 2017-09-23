@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/trsp/trsp_driver.h"
 #include "c_types/trsp_types.h"
 #include "c_types/pgr_edge_t.h"
+#include "c_types/general_path_element_t.h"
 #include "c_common/edges_input.h"
 
 
@@ -143,7 +144,7 @@ void compute_trsp(
         bool directed,
         bool has_reverse_cost,
         char* restrict_sql,
-        path_element_tt **path,
+        General_path_element_t **path,
         size_t *path_count) {
     pgr_SPI_connect();
 
@@ -272,14 +273,14 @@ PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
-    path_element_tt      *path;
     char *               sql;
 
+    size_t result_count             = 0;
+    General_path_element_t  *result_tuples   = NULL;
 
     // stuff done only on the first call of the function
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-        size_t path_count = 0;
 
         int ret = -1;
         if (ret == -1) {}  // to avoid warning set but not used
@@ -311,50 +312,38 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
 
 
         compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT32(1),
-                PG_GETARG_INT32(2),
+                PG_GETARG_INT64(1),
+                PG_GETARG_INT64(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 sql,
-                &path, &path_count);
-#ifdef DEBUG
-        double total_cost = 0;
-        PGR_DBG("Ret is %i", ret);
-        if (ret >= 0) {
-            int i;
-            for (i = 0; i < path_count; i++) {
-                // PGR_DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-                // PGR_DBG("        edge_id    %i ", path[i].edge_id);
-                // PGR_DBG("        cost       %f ", path[i].cost);
-                total_cost += path[i].cost;
-            }
-        }
-        PGR_DBG("Total cost is: %f", total_cost);
-#endif
+                &result_tuples, &result_count);
 
-        // total number of tuples to be returned
-#if 1
+        //-----------------------------------------------
+
 #if PGSQL_VERSION > 95
-        funcctx->max_calls = path_count;
+        funcctx->max_calls = result_count;
 #else
-        funcctx->max_calls = (uint32_t)path_count;
+        funcctx->max_calls = (uint32_t)result_count;
 #endif
-#else
-        funcctx->max_calls = path_count;
-#endif
-        funcctx->user_fctx = path;
 
-        funcctx->tuple_desc =
-            BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
+        funcctx->user_fctx = result_tuples;
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE) {
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
+        }
 
+        funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
 
-    // stuff done on every call of the function
     funcctx = SRF_PERCALL_SETUP();
 
     tuple_desc = funcctx->tuple_desc;
-    path = (path_element_tt*) funcctx->user_fctx;
+    result_tuples = (General_path_element_t *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         // do when there is more left to send
@@ -362,18 +351,33 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum *values;
         bool* nulls;
+        size_t call_cntr = funcctx->call_cntr;
 
-        values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(char));
 
+        size_t numb = 8;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
+
+        size_t i;
+        for (i = 0; i < numb; ++i) {
+            nulls[i] = false;
+        }
+
+#if 1
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+#else
         values[0] = Int32GetDatum(funcctx->call_cntr);
-        nulls[0] = false;
-        values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
-        nulls[1] = false;
-        values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
-        nulls[2] = false;
+        values[1] = Int32GetDatum(path[funcctx->call_cntr].node);
+        values[2] = Int32GetDatum(path[funcctx->call_cntr].edge);
         values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
-        nulls[3] = false;
+#endif
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
 
@@ -386,8 +390,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
 
         SRF_RETURN_NEXT(funcctx, result);
     } else {  // do when there is no more left
-        PGR_DBG("Going to free path");
-        if (path) pfree(path);
         SRF_RETURN_DONE(funcctx);
     }
 }

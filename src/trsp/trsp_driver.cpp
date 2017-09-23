@@ -49,13 +49,13 @@ int do_trsp(
         bool directed,
         bool has_reverse_cost,
 
-        path_element_tt **path,
-        size_t *path_count,
+        General_path_element_t **return_tuples,
+        size_t *return_count,
         char **err_msg) {
     std::ostringstream err;
     try {
-        pgassert(*path == NULL);
-        pgassert(*path_count == 0);
+        pgassert(*return_tuples == NULL);
+        pgassert(*return_count == 0);
 
 
         std::vector<pgrouting::trsp::PDVI> ruleTable;
@@ -74,22 +74,30 @@ int do_trsp(
         }
 
         pgrouting::trsp::Pgr_trspHandler gdef;
-        auto res = gdef.initializeAndProcess(
+        std::deque<Path> paths;
+
+        paths.push_back(gdef.initializeAndProcess(
                 edges, total_edges,
                 ruleTable,
                 start_vertex, end_vertex,
                 directed, has_reverse_cost,
-                err_msg);
+                err_msg));
 
-        path_element_tt *return_tuples = nullptr;
-        return_tuples = pgr_alloc(res.size(), (return_tuples));
-        i = 0;
-        for (const auto r : res) {
-            return_tuples[i] = r;
-            ++i;
+
+        size_t count(0);
+        count = count_tuples(paths);
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            err << "No paths found";
+            *err_msg = pgr_msg(err.str().c_str());
+            return -1;
         }
-        *path = return_tuples;
-        *path_count = res.size();
+
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        (*return_count) = collapse_paths(return_tuples, paths);
+
 
         return EXIT_SUCCESS;
     }
