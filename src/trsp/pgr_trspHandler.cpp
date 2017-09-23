@@ -641,7 +641,7 @@ bool Pgr_trspHandler::construct_graph(
     init();
     for (size_t i = 0; i < edge_count; i++) {
         auto current_edge = &edges[i];
-#if 0
+#if 1
         /*
          * TODO(vicky)
          * test this code to fix how the graph is build
