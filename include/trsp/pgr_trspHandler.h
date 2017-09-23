@@ -110,8 +110,6 @@ class Pgr_trspHandler {
             bool directed,
             bool has_reverse_cost,
 
-            path_element_tt **path,
-            size_t *path_count,
             char **err_msg);
 
 
@@ -128,8 +126,6 @@ class Pgr_trspHandler {
 
     std::vector<path_element_tt> process_trsp(
             size_t edge_count,
-            path_element_tt **path,
-            size_t *path_count,
             char **err_msg);
 
     EdgeInfo* dijkstra_exploration(
@@ -147,16 +143,14 @@ class Pgr_trspHandler {
     bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,
             bool bIsStartNodeSame);
     std::vector<path_element_tt> get_single_cost(
-            double total_cost,
-            path_element_tt **path,
-            size_t *path_count);
+            double total_cost);
 
     double construct_path(int64_t ed_id, int64_t v_pos);
     void init();
-    int64_t renumber_edges(pgr_edge_t *edges, const size_t edge_count) const;
+    int64_t renumber_edges(
+            pgr_edge_t *edges,
+            const size_t edge_count) const;
     std::vector<path_element_tt> renumber_result(
-            path_element_tt **path,
-            size_t *path_count,
             std::vector<path_element_tt> result) const;
 
 

@@ -85,13 +85,7 @@ Pgr_trspHandler::Pgr_trspHandler(void) {
 /*! \brief restoring original vertex id */
 std::vector<path_element_tt>
 Pgr_trspHandler::renumber_result(
-        path_element_tt **path,
-        size_t *path_count,
         std::vector<path_element_tt> result) const {
-    for (size_t z = 0; z < *path_count; z++) {
-        if (z || (*path)[z].vertex_id != -1)
-            (*path)[z].vertex_id += m_min_id;
-    }
     for (auto &r : result) {
         r.vertex_id += m_min_id;
     }
@@ -432,15 +426,11 @@ Pgr_trspHandler::initializeAndProcess(
 
         bool directed,
         bool has_reverse_cost,
-        path_element_tt **path,
-        size_t *path_count,
         char **err_msg) {
     /*
      * Preconditions
      */
     pgassert(!m_bIsturnRestrictOn);
-    pgassert(*path == NULL);
-    pgassert(*path_count == 0);
 
     m_start_vertex = start_vertex;
     m_end_vertex = end_vertex;
@@ -474,8 +464,6 @@ Pgr_trspHandler::initializeAndProcess(
 
     return process_trsp(
             edge_count,
-            path,
-            path_count,
             err_msg);
 }
 
@@ -552,12 +540,8 @@ EdgeInfo* Pgr_trspHandler::dijkstra_exploration(
 std::vector<path_element_tt>
 Pgr_trspHandler::process_trsp(
         size_t edge_count,
-        path_element_tt **path,
-        size_t *path_count,
         char **err_msg) {
     pgassert(m_bIsturnRestrictOn);
-    pgassert(*path == NULL);
-    pgassert(*path_count == 0);
     pgassert(m_bIsGraphConstructed);
 
     parent.resize(edge_count +1);
@@ -574,8 +558,7 @@ Pgr_trspHandler::process_trsp(
     if (cur_node != m_end_vertex) {
         std::vector<path_element_tt> result;
         if (m_lStartEdgeId == m_lEndEdgeId) {
-            result = get_single_cost(1000.0, path, path_count);
-            result = renumber_result(path, path_count, result);
+            result = renumber_result(get_single_cost(1000.0));
         }
         *err_msg = (char *)"Path Not Found";
         clear();
@@ -598,31 +581,11 @@ Pgr_trspHandler::process_trsp(
     m_vecPath.push_back(pelement);
 
     if (m_lStartEdgeId == m_lEndEdgeId) {
-        auto result = get_single_cost(total_cost, path, path_count);
-        result = renumber_result(path, path_count, result);
-        return result;
-    }
-
-    *path = (path_element_tt *) malloc(sizeof(path_element_tt) *
-            (m_vecPath.size() + 1));
-    *path_count = m_vecPath.size();
-
-    for (size_t i = 0; i < *path_count; i++) {
-        (*path)[i].vertex_id = m_vecPath[i].vertex_id;
-        (*path)[i].edge_id = m_vecPath[i].edge_id;
-        (*path)[i].cost = m_vecPath[i].cost;
-    }
-    if (isStartVirtual) {
-        (*path)[0].vertex_id = -1;
-        (*path)[0].edge_id = m_lStartEdgeId;
-    }
-    if (isEndVirtual) {
-        *path_count = *path_count - 1;
-        (*path)[*path_count - 1].edge_id = m_lEndEdgeId;
+        return renumber_result (get_single_cost(total_cost));
     }
 
     clear();
-    return renumber_result(path, path_count, m_vecPath);
+    return renumber_result(m_vecPath);
 }
 
 
@@ -631,32 +594,34 @@ Pgr_trspHandler::process_trsp(
 // -------------------------------------------------------------------------
 std::vector<path_element_tt>
 Pgr_trspHandler::get_single_cost(
-        double total_cost,
-        path_element_tt **path,
-        size_t *path_count) {
+        double total_cost) {
     auto start_edge_info =
         &m_vecEdgeVector[m_mapEdgeId2Index[m_lStartEdgeId]];
     if (m_dEndPart >= m_dStartpart) {
         if (start_edge_info->cost() >= 0.0 && start_edge_info->cost() *
                 (m_dEndPart - m_dStartpart) <= total_cost) {
+#if 0
             *path = (path_element_tt *) malloc(sizeof(path_element_tt) * (1));
             *path_count = 1;
             (*path)[0].vertex_id = -1;
             (*path)[0].edge_id = m_lStartEdgeId;
             (*path)[0].cost = start_edge_info->cost() *
                 (m_dEndPart - m_dStartpart);
+#endif
             return std::vector<path_element_tt>();
         }
     } else {
         if (start_edge_info->r_cost() >= 0.0 &&
                 start_edge_info->r_cost() * (m_dStartpart - m_dEndPart) <=
                 total_cost) {
+#if 0
             *path = (path_element_tt *) malloc(sizeof(path_element_tt) * (1));
             *path_count = 1;
             (*path)[0].vertex_id = -1;
             (*path)[0].edge_id = m_lStartEdgeId;
             (*path)[0].cost = start_edge_info->r_cost() *
                 (m_dStartpart - m_dEndPart);
+#endif
             return std::vector<path_element_tt>();
         }
     }

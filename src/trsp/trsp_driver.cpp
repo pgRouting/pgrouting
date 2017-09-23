@@ -79,9 +79,8 @@ int do_trsp(
                 ruleTable,
                 start_vertex, end_vertex,
                 directed, has_reverse_cost,
-                path, path_count, err_msg);
+                err_msg);
 
-        free(*path);
         path_element_tt *return_tuples = nullptr;
         return_tuples = pgr_alloc(res.size(), (return_tuples));
         i = 0;
@@ -90,6 +89,7 @@ int do_trsp(
             ++i;
         }
         *path = return_tuples;
+        *path_count = res.size();
 
         return EXIT_SUCCESS;
     }
