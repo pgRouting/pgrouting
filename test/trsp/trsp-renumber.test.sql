@@ -15,7 +15,19 @@ SELECT * FROM pgr_trsp(
 );
 
 
-select 1 AS id, array[4,7] AS path , 0 AS cost INTO new_restrictions;
+-- select string_to_array(reverse(array_to_string(array_prepend(target_id, ('{'||(via_path)||'}')::integer[]),',')),',') as via, to_cost as cost from old_restriction;
+CREATE TABLE new_restrictions (
+    id SERIAL PRIMARY KEY,
+    path BIGINT[],
+    cost float);
+
+INSERT INTO new_restrictions (path, cost) VALUES 
+ (ARRAY[4,7],   100),
+ (ARRAY[8,11],  100),
+ (ARRAY[7,01],  100),
+ (ARRAY[3,8],     4),
+ (ARRAY[61,9],  100),
+ (ARRAY[3,5,8],   4);
 
 SELECT * FROM _pgr_trsp(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
