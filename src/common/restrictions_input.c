@@ -36,7 +36,7 @@ void fetch_restriction(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[4],
-        Restrict_t *restriction) {
+        Restriction_t *restriction) {
     restriction->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
 
 
@@ -72,9 +72,9 @@ void fetch_restriction(
 
 
 void
-pgr_get_restriction_data(
+pgr_get_restrictions(
         char *restrictions_sql,
-        Restrict_t **restrictions,
+        Restriction_t **restrictions,
         size_t *total_restrictions) {
     const int tuple_limit = 1000000;
     clock_t start_t = clock();
@@ -126,12 +126,12 @@ pgr_get_restriction_data(
         PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {
             if ((*restrictions) == NULL)
-                (*restrictions) = (Restrict_t *)palloc0(
-                        total_tuples * sizeof(Restrict_t));
+                (*restrictions) = (Restriction_t *)palloc0(
+                        total_tuples * sizeof(Restriction_t));
             else
-                (*restrictions) = (Restrict_t *)repalloc(
+                (*restrictions) = (Restriction_t *)repalloc(
                         (*restrictions),
-                        total_tuples * sizeof(Restrict_t));
+                        total_tuples * sizeof(Restriction_t));
 
             if ((*restrictions) == NULL) {
                 elog(ERROR, "Out of memory");

@@ -154,7 +154,7 @@ void compute_trsp(
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
-    Restrict_t * restrictions;
+    Restriction_t * restrictions;
     size_t total_restrictions = 0;
     if (!(restrictions_sql == NULL) ) {
         pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
