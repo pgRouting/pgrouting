@@ -45,6 +45,7 @@ fetch_column_info(
     if (info->strict && !column_found(info->colNumber)) {
         elog(ERROR, "Column '%s' not Found", info->name);
     }
+
     if (column_found(info->colNumber)) {
         (info->type) = SPI_gettypeid(SPI_tuptable->tupdesc, (info->colNumber));
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
@@ -88,6 +89,7 @@ void pgr_fetch_column_info(
         }
     }
 }
+
 
 
 void

@@ -27,7 +27,8 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     target_vid BIGINT,
     directed boolean,
     has_reverse_cost boolean,
-    turn_restrict_sql text DEFAULT null,
+    turn_restrict_sql TEXT DEFAULT null,
+    restrictions_sql TEXT DEFAULT null,
 
     OUT seq integer,
     OUT path_seq integer,

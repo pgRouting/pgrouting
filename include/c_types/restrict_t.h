@@ -55,12 +55,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdint.h>
 
 
-#define  MAX_RULE_LENGTH 5
 
 typedef struct {
     int64_t id;
     double cost;
-    int64_t restricted_edges[MAX_RULE_LENGTH];
+    int64_t * via;
 }
 Restrict_t;
 

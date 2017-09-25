@@ -37,14 +37,22 @@ void fetch_restriction(
         TupleDesc *tupdesc,
         Column_info_t info[4],
         Restrict_t *restriction) {
-    restriction->target_id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    restriction->to_cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
+    restriction->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+
+
     char *str = DatumGetCString(
             SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
 
-// TODO(someone) because its text, no guarantee the text read is correct
-// move this code to c++ to tokenize the integers.
+    if (column_found(info[2].colNumber)) {
+        restriction->cost = 0;
+    } else {
+        restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[2]);
+    }
 
+    // TODO(someone) because its text, no guarantee the text read is correct
+    // move this code to c++ to tokenize the integers.
+
+    int MAX_RULE_LENGTH = 5;
     int i = 0;
     for (i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
 
@@ -81,15 +89,19 @@ pgr_get_restriction_data(
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
-        info[i].eType = ANY_INTEGER;
     }
-    info[0].name = "target_id";
-    info[1].name = "to_cost";
-    info[2].name = "via_path";
 
-    info[1].eType = ANY_NUMERICAL;
-    info[2].eType = TEXT;
+    /* restriction id */
+    info[0].name = "id";
+    /* array of edges */
+    info[1].name = "path";
+    info[2].name = "cost";
 
+    info[0].eType = ANY_INTEGER;
+    info[1].eType = ANY_INTEGER_ARRAY;
+    info[2].eType = ANY_NUMERICAL;
+
+    info[2].strict = false;
 
     size_t ntuples;
     size_t total_tuples;

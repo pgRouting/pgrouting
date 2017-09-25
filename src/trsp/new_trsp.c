@@ -144,6 +144,9 @@ void compute_trsp(
         bool directed,
         bool has_reverse_cost,
         char* restrict_sql,
+#if 1
+        char* restrictions_sql,
+#endif
         General_path_element_t **path,
         size_t *path_count) {
     pgr_SPI_connect();
@@ -273,7 +276,6 @@ PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
-    char *               sql;
 
     size_t result_count             = 0;
     General_path_element_t  *result_tuples   = NULL;
@@ -282,24 +284,28 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
 
+#if 0
         int ret = -1;
         if (ret == -1) {}  // to avoid warning set but not used
 
-        int i;
-
+#endif
         // create a function context for cross-call persistence
         funcctx = SRF_FIRSTCALL_INIT();
 
         // switch to memory context appropriate for multiple function calls
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+#if 0
         // verify that the first 5 args are not NULL
+        int i;
         for (i = 0; i < 5; i++)
             if (PG_ARGISNULL(i)) {
                 elog(ERROR, "turn_restrict_shortest_path(): "
                         "Argument %i may not be NULL", i+1);
             }
+#endif
 
+        char * sql = NULL;
         if (PG_ARGISNULL(5)) {
             sql = NULL;
         } else {
@@ -307,6 +313,17 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
             if (strlen(sql) == 0)
                 sql = NULL;
         }
+
+#if 1
+        char *  restrictions_sql = NULL;
+        if (PG_ARGISNULL(6)) {
+            restrictions_sql = NULL;
+        } else {
+            sql = text_to_cstring(PG_GETARG_TEXT_P(5));
+            if (strlen(restrictions_sql) == 0)
+                restrictions_sql = NULL;
+        }
+#endif
 
         PGR_DBG("Calling compute_trsp");
 
@@ -317,6 +334,9 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 sql,
+#if 1
+                restrictions_sql,
+#endif
                 &result_tuples, &result_count);
 
         //-----------------------------------------------
@@ -363,7 +383,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-#if 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
@@ -372,12 +391,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
         values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-#else
-        values[0] = Int32GetDatum(funcctx->call_cntr);
-        values[1] = Int32GetDatum(path[funcctx->call_cntr].node);
-        values[2] = Int32GetDatum(path[funcctx->call_cntr].edge);
-        values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
-#endif
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
 
