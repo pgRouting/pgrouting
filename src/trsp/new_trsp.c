@@ -141,12 +141,13 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 static
 void compute_trsp(
         char* edges_sql,
+        char* restrictions_sql,
+
         int64_t start_id,
         int64_t end_id,
         bool directed,
         bool has_reverse_cost,
         char* restrict_sql,
-        char* restrictions_sql,
         General_path_element_t **path,
         size_t *path_count) {
     pgr_SPI_connect();
@@ -314,7 +315,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
         // switch to memory context appropriate for multiple function calls
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-#if 1
+#if 0
         char *  restrictions_sql = NULL;
         if (PG_ARGISNULL(6)) {
             restrictions_sql = NULL;
@@ -328,15 +329,14 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling compute_trsp");
 
 
-        compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
+        compute_trsp(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
-                PG_GETARG_BOOL(3),
+                PG_GETARG_INT64(3),
                 PG_GETARG_BOOL(4),
-                text_to_cstring(PG_GETARG_TEXT_P(5)),
-#if 1
-                restrictions_sql,
-#endif
+                PG_GETARG_BOOL(5),
+                text_to_cstring(PG_GETARG_TEXT_P(6)),
                 &result_tuples, &result_count);
 
         //-----------------------------------------------

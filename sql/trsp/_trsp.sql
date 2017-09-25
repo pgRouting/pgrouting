@@ -23,12 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,
+    TEXT, -- restrictions_sql
     source_vid BIGINT,
     target_vid BIGINT,
     directed boolean,
     has_reverse_cost boolean,
     turn_restrict_sql TEXT,
-    restrictions_sql TEXT DEFAULT null,
 
     OUT seq integer,
     OUT path_seq integer,
