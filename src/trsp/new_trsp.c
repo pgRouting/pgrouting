@@ -303,7 +303,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
                 elog(ERROR, "turn_restrict_shortest_path(): "
                         "Argument %i may not be NULL", i+1);
             }
-#endif
 
         char * sql = NULL;
         if (PG_ARGISNULL(5)) {
@@ -313,13 +312,14 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
             if (strlen(sql) == 0)
                 sql = NULL;
         }
+#endif
 
 #if 1
         char *  restrictions_sql = NULL;
         if (PG_ARGISNULL(6)) {
             restrictions_sql = NULL;
         } else {
-            sql = text_to_cstring(PG_GETARG_TEXT_P(5));
+            restrictions_sql = text_to_cstring(PG_GETARG_TEXT_P(6));
             if (strlen(restrictions_sql) == 0)
                 restrictions_sql = NULL;
         }
@@ -333,7 +333,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
-                sql,
+                text_to_cstring(PG_GETARG_TEXT_P(5)),
 #if 1
                 restrictions_sql,
 #endif
