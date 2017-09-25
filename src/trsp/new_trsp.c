@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_common/postgres_connection.h"
+
 #include "catalog/pg_type.h"
 #include "c_common/debug_macro.h"
 
@@ -154,11 +155,24 @@ void compute_trsp(
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
-    Restriction_t * restrictions;
+    Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
     if (!(restrictions_sql == NULL) ) {
+
+        PGR_DBG("GOT THE NEW RESTRICTION QUERY");
         pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+        PGR_DBG("total restrictions read %d", total_restrictions);
+
+        for (uint64_t i = 0; i < total_restrictions; ++i) {
+            PGR_DBG("%d: restriction[%d], %d", i, restrictions[i].id, restrictions[i].cost);
+            PGR_DBG("    edges %d", restrictions[i].via_size);
+
+            for (uint64_t j = 0; j < restrictions[i].via_size; ++j) {
+                PGR_DBG("edge %d", restrictions[i].via[j]);
+            }
+        }
     }
+
 
 
     PGR_DBG("Fetching restriction tuples\n");

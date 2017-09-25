@@ -60,6 +60,8 @@ typedef struct {
     int64_t id;
     double cost;
     int64_t * via;
+    uint64_t via_size;
+
 }
 Restriction_t;
 

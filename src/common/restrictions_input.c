@@ -35,39 +35,31 @@ static
 void fetch_restriction(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
-        Column_info_t info[4],
+        Column_info_t info[3],
         Restriction_t *restriction) {
+    /*
+     * reading the restriction id
+     */
     restriction->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
 
+    /*
+     * reading the cost
+     */
+    restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
 
-    char *str = DatumGetCString(
-            SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
+#if 1
+    restriction->via = NULL;
+    restriction->via_size = 0;
 
-    if (column_found(info[2].colNumber)) {
-        restriction->cost = 0;
-    } else {
-        restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[2]);
+    restriction->via = pgr_SPI_getBigIntArr(tuple, tupdesc, info[2], &restriction->via_size);
+#endif
+
+    PGR_DBG("restriction[%d], %f", restriction->id, restriction->cost);
+#if 1
+    for (uint64_t j = 0; j < restriction->via_size; ++j) {
+        PGR_DBG("edge %d", restriction->via[j]);
     }
-
-    // TODO(someone) because its text, no guarantee the text read is correct
-    // move this code to c++ to tokenize the integers.
-
-    int MAX_RULE_LENGTH = 5;
-    int i = 0;
-    for (i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
-
-    if (str != NULL) {
-        char *token = NULL;
-        int i = 0;
-
-        token = (char *)strtok(str, " ,");
-
-        while (token != NULL && i < MAX_RULE_LENGTH) {
-            restriction->via[i] = atoi(token);
-            i++;
-            token = (char *)strtok(NULL, " ,");
-        }
-    }
+#endif
 }
 
 
@@ -79,7 +71,7 @@ pgr_get_restrictions(
     const int tuple_limit = 1000000;
     clock_t start_t = clock();
 
-    PGR_DBG("pgr_get_restriction_data");
+    PGR_DBG("pgr_get_restrictions");
     PGR_DBG("%s", restrictions_sql);
 
     Column_info_t info[3];
@@ -93,15 +85,14 @@ pgr_get_restrictions(
 
     /* restriction id */
     info[0].name = "id";
+    info[1].name = "cost";
     /* array of edges */
-    info[1].name = "path";
-    info[2].name = "cost";
+    info[2].name = "path";
 
     info[0].eType = ANY_INTEGER;
-    info[1].eType = ANY_INTEGER_ARRAY;
-    info[2].eType = ANY_NUMERICAL;
+    info[1].eType = ANY_NUMERICAL;
+    info[2].eType = ANY_INTEGER_ARRAY;
 
-    info[2].strict = false;
 
     size_t ntuples;
     size_t total_tuples;
@@ -114,6 +105,7 @@ pgr_get_restrictions(
     bool moredata = TRUE;
     (*total_restrictions) = total_tuples = 0;
 
+
     /*  on the first tuple get the column numbers */
 
     while (moredata == TRUE) {
@@ -123,15 +115,17 @@ pgr_get_restrictions(
         }
         ntuples = SPI_processed;
         total_tuples += ntuples;
-        PGR_DBG("SPI_processed %ld", ntuples);
+        PGR_DBG("Restrictions to be processed %ld", ntuples);
+        PGR_DBG("size of structure %ld",  sizeof(Restriction_t));
         if (ntuples > 0) {
-            if ((*restrictions) == NULL)
-                (*restrictions) = (Restriction_t *)palloc0(
+            if ((*restrictions) == NULL) {
+                (*restrictions) = (Restriction_t *)palloc(
                         total_tuples * sizeof(Restriction_t));
-            else
+            } else {
                 (*restrictions) = (Restriction_t *)repalloc(
                         (*restrictions),
                         total_tuples * sizeof(Restriction_t));
+            }
 
             if ((*restrictions) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -145,6 +139,14 @@ pgr_get_restrictions(
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_restriction(&tuple, &tupdesc, info,
                         &(*restrictions)[total_tuples - ntuples + t]);
+                PGR_DBG("restriction[%d], %f",
+                        (*restrictions)[total_tuples - ntuples + t].id,
+                        (*restrictions)[total_tuples - ntuples + t].cost);
+#if 1
+                for (uint64_t j = 0; j < (*restrictions)[total_tuples - ntuples + t].via_size; ++j) {
+                    PGR_DBG("edge %d", (*restrictions)[total_tuples - ntuples + t].via[j]);
+                }
+#endif
             }
             SPI_freetuptable(tuptable);
         } else {

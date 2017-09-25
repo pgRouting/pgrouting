@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "c_common/get_check_data.h"
+#include "c_common/arrays_input.h"
 
 #include "catalog/pg_type.h"
 
@@ -166,6 +167,21 @@ pgr_SPI_getChar(
     }
     return value;
 }
+
+
+
+
+int64_t*
+pgr_SPI_getBigIntArr(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info, uint64_t *the_size) {
+    bool is_null = false;
+
+    Datum raw_array = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &is_null);
+    ArrayType *pg_array = DatumGetArrayTypeP(raw_array);
+
+    return (int64_t*) pgr_get_bigIntArray(the_size, pg_array);
+}
+
+
 
 int64_t
 pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
