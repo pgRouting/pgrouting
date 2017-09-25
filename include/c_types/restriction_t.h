@@ -61,7 +61,7 @@ typedef struct {
     double cost;
     int64_t * via;
 }
-Restrict_t;
+Restriction_t;
 
 
 

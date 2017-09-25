@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_edge_t.h"
 #include "c_types/general_path_element_t.h"
 #include "c_common/edges_input.h"
+#include "c_common/restrictions_input.h"
 
 
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
@@ -144,9 +145,7 @@ void compute_trsp(
         bool directed,
         bool has_reverse_cost,
         char* restrict_sql,
-#if 1
         char* restrictions_sql,
-#endif
         General_path_element_t **path,
         size_t *path_count) {
     pgr_SPI_connect();
@@ -154,6 +153,12 @@ void compute_trsp(
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
+
+    Restrict_t * restrictions;
+    size_t total_restrictions = 0;
+    if (!(restrictions_sql == NULL) ) {
+        pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+    }
 
 
     PGR_DBG("Fetching restriction tuples\n");
@@ -294,25 +299,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
 
         // switch to memory context appropriate for multiple function calls
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-#if 0
-        // verify that the first 5 args are not NULL
-        int i;
-        for (i = 0; i < 5; i++)
-            if (PG_ARGISNULL(i)) {
-                elog(ERROR, "turn_restrict_shortest_path(): "
-                        "Argument %i may not be NULL", i+1);
-            }
-
-        char * sql = NULL;
-        if (PG_ARGISNULL(5)) {
-            sql = NULL;
-        } else {
-            sql = text_to_cstring(PG_GETARG_TEXT_P(5));
-            if (strlen(sql) == 0)
-                sql = NULL;
-        }
-#endif
 
 #if 1
         char *  restrictions_sql = NULL;
