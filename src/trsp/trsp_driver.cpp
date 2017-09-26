@@ -43,9 +43,10 @@ int do_trsp(
         Restriction_t *restrictions,
         size_t restrictions_size,
 
+#if 0
         restrict_t *restricts,
         size_t restrict_count,
-
+#endif
         int64_t start_vertex,
         int64_t end_vertex,
 

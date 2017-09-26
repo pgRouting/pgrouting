@@ -147,7 +147,9 @@ void compute_trsp(
         int64_t end_id,
         bool directed,
         bool has_reverse_cost,
+#if 1
         char* restrict_sql,
+#endif
         General_path_element_t **path,
         size_t *path_count) {
     pgr_SPI_connect();
@@ -158,31 +160,28 @@ void compute_trsp(
 
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
-    if (!(restrictions_sql == NULL) ) {
-
         PGR_DBG("GOT THE NEW RESTRICTION QUERY");
         pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
-        PGR_DBG("total restrictions read %d", total_restrictions);
+        PGR_DBG("total restrictions read %ld", total_restrictions);
 
         for (uint64_t i = 0; i < total_restrictions; ++i) {
-            PGR_DBG("%d: restriction[%d], %d", i, restrictions[i].id, restrictions[i].cost);
+            PGR_DBG("%ld: restriction[%ld], %ld", i, restrictions[i].id, restrictions[i].cost);
             PGR_DBG("    edges %d", restrictions[i].via_size);
 
             for (uint64_t j = 0; j < restrictions[i].via_size; ++j) {
                 PGR_DBG("edge %d", restrictions[i].via[j]);
             }
         }
-    }
 
 
 
+#if 0
     PGR_DBG("Fetching restriction tuples\n");
 
     SPIPlanPtr SPIplan;
     Portal SPIportal;
     bool moredata = TRUE;
     uint32_t TUPLIMIT = 1000;
-    char *err_msg;
     int ret = -1;
     uint32_t ntuples;
     uint32_t total_restrict_tuples = 0;
@@ -263,15 +262,19 @@ void compute_trsp(
 #endif
 
     PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
+#endif
 
     *path = NULL;
     PGR_DBG("Calling trsp_node_wrapper\n");
 
-    ret = do_trsp(
+    char *err_msg;
+    int ret = do_trsp(
             edges, total_edges,
             restrictions, total_restrictions,
 
+#if 0
             restricts, total_restrict_tuples,
+#endif
             start_id, end_id,
             directed, has_reverse_cost,
             path, path_count, &err_msg);
@@ -339,7 +342,9 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(3),
                 PG_GETARG_BOOL(4),
                 PG_GETARG_BOOL(5),
+#if 1
                 text_to_cstring(PG_GETARG_TEXT_P(6)),
+#endif
                 &result_tuples, &result_count);
 
         //-----------------------------------------------

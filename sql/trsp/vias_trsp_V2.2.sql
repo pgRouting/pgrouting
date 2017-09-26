@@ -38,14 +38,26 @@ declare
     lrra boolean := false;
     seq integer := 0;
     seq2 integer := 0;
+    restrictions_query TEXT;
 
 begin
+
+    restrictions_query = $$
+    WITH old_restrictions AS ( $$ ||
+        $5 || $$
+    )
+    SELECT ROW_NUMBER() OVER() AS id,
+    _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path, ',')::INTEGER[])) AS path,
+    to_cost AS cost
+    FROM old_restrictions;
+    $$;
+
 
     -- loop through each pair of vids and compute the path
     for i in 1 .. array_length(vids, 1)-1 loop
         seq2 := seq2 + 1;
         for rr in select a.seq, seq2 as id1, a.node::INTEGER as id2, a.edge::INTEGER as id3, a.cost
-                    from _pgr_trsp(sql, vids[i], vids[i+1], directed, has_rcost, turn_restrict_sql) as a loop
+                    from _pgr_trsp(sql, restrictions_query, vids[i], vids[i+1], directed, has_rcost, turn_restrict_sql) as a loop
             -- filter out the individual path ends except the last one
             -- we might not want to do this so we can know where the via points are in the path result
             -- but this needs more thought
