@@ -40,6 +40,9 @@ int do_trsp(
         pgr_edge_t *edges,
         size_t total_edges,
 
+        Restriction_t *restrictions,
+        size_t restrictions_size,
+
         restrict_t *restricts,
         size_t restrict_count,
 
@@ -57,6 +60,7 @@ int do_trsp(
         pgassert(*return_tuples == NULL);
         pgassert(*return_count == 0);
 
+        // typedef std::pair<double, std::vector<int64_t> > PDVI;
 
         std::vector<pgrouting::trsp::PDVI> ruleTable;
         size_t MAX_RULE_LENGTH = 5;

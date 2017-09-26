@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/trsp_types.h"
 #include "c_types/pgr_edge_t.h"
+#include "c_types/restriction_t.h"
 #include "c_types/general_path_element_t.h"
 
 #ifdef __cplusplus
@@ -39,6 +40,10 @@ extern "C" {
 int do_trsp(
     pgr_edge_t *edges,
     size_t edge_count,
+
+    Restriction_t *restrictions,
+    size_t restrictions_size,
+
     restrict_t *restricts,
     size_t restrict_count,
     int64_t start_vertex,

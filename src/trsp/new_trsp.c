@@ -267,7 +267,10 @@ void compute_trsp(
     *path = NULL;
     PGR_DBG("Calling trsp_node_wrapper\n");
 
-    ret = do_trsp(edges, total_edges,
+    ret = do_trsp(
+            edges, total_edges,
+            restrictions, total_restrictions,
+
             restricts, total_restrict_tuples,
             start_id, end_id,
             directed, has_reverse_cost,
