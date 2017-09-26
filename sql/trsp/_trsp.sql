@@ -27,7 +27,6 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     source_vid BIGINT,
     target_vid BIGINT,
     directed boolean,
-    has_reverse_cost boolean,
 
     OUT seq integer,
     OUT path_seq integer,

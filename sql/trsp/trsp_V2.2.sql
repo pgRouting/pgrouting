@@ -114,7 +114,7 @@ BEGIN
 
     RETURN query
         SELECT (seq - 1)::INTEGER, a.node::INTEGER, a.edge::INTEGER, a.cost
-        FROM _pgr_trsp(new_sql, restrictions_query, start_vid, end_vid, directed, has_rcost) AS a;
+        FROM _pgr_trsp(new_sql, restrictions_query, start_vid, end_vid, directed) AS a;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
     END IF;

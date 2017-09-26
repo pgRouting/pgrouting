@@ -23,13 +23,13 @@ INSERT INTO new_restrictions (path, cost) VALUES
 SELECT * FROM _pgr_trsp(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
     $$ SELECT 1 AS id, ARRAY[4,7] AS path, 100 AS cost $$,
-    2, 7, false, false
+    2, 7, false
 );
 
 SELECT * FROM _pgr_trsp(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
     $$ SELECT * FROM new_restrictions $$,
-    2, 7, false, false
+    2, 7, false
 );
 
 

@@ -44,15 +44,10 @@ int do_trsp(
     Restriction_t *restrictions,
     size_t restrictions_size,
 
-#if 0
-    restrict_t *restricts,
-    size_t restrict_count,
-#endif
-
     int64_t start_vertex,
     int64_t end_vertex,
     bool directed,
-    bool has_reverse_cost,
+
     General_path_element_t **return_tuples,
     size_t *return_count,
     char **err_msg

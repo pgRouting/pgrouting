@@ -44,7 +44,6 @@ Pgr_trspHandler::Pgr_trspHandler(
         const int64_t start_vertex, 
         const int64_t end_vertex,
         const bool directed,
-        const bool has_reverse_cost,
         const std::vector<PDVI> &ruleList) :
     m_lStartEdgeId(-1),
     m_lEndEdgeId(0),
@@ -63,8 +62,8 @@ Pgr_trspHandler::Pgr_trspHandler(
             ruleList);
     construct_graph(edges,
             edge_count,
-            directed,
-            has_reverse_cost);
+            directed);
+
     pgassert(m_bIsturnRestrictOn);
     pgassert(m_bIsGraphConstructed);
 }
@@ -418,7 +417,6 @@ Pgr_trspHandler::initializeAndProcess(
         const int64_t end_vertex,
 
         bool directed,
-        bool has_reverse_cost,
         char **err_msg) {
     /*
      * Preconditions
@@ -437,7 +435,7 @@ Pgr_trspHandler::initializeAndProcess(
     Path tmp(m_start_vertex, m_end_vertex);
     m_vecPath = tmp;
 
-    construct_graph(edges, edge_count, has_reverse_cost, directed);
+    construct_graph(edges, edge_count, directed);
 
     if (m_mapNodeId2Edge.find(m_start_vertex) == m_mapNodeId2Edge.end()) {
         *err_msg = (char *)"Source Not Found";
@@ -636,45 +634,26 @@ Pgr_trspHandler::get_single_cost(
 bool Pgr_trspHandler::construct_graph(
         pgr_edge_t* edges,
         const size_t edge_count,
-        const bool has_reverse_cost,
         const bool directed) {
     pgassert(!m_bIsGraphConstructed);
 
     init();
     for (size_t i = 0; i < edge_count; i++) {
         auto current_edge = &edges[i];
-#if 1
+
         /*
-         * TODO(vicky)
-         * test this code to fix how the graph is build
+         * making all costs > 0
          */
-        if (!has_reverse_cost) {
-            current_edge->reverse_cost = -1.0;
+        if (current_edge->cost < 0 && current_edge->reverse_cost > 0) {
+            std::swap(current_edge->cost, current_edge->reverse_cost);
+            std::swap(current_edge->source, current_edge->target);
         }
+
         if (!directed) {
-            if (has_reverse_cost) {
-                /*
-                 * is undirected and has reverse_cost
-                 */
-                if (current_edge->cost < 0) {
-                    current_edge->cost = current_edge->reverse_cost;
-                }
-            } else {
-                /*
-                 * is undirected and does not have reverse_cost
-                 */
+            if (current_edge->reverse_cost < 0) {
                 current_edge->reverse_cost = current_edge->cost;
             }
         }
-#else
-        if (!has_reverse_cost) {
-            if (directed) {
-                current_edge->reverse_cost = -1.0;
-            } else {
-                current_edge->reverse_cost = current_edge->cost;
-            }
-        }
-#endif
         addEdge(*current_edge);
     }
     m_bIsGraphConstructed = true;

@@ -52,7 +52,6 @@ void compute_trsp(
         int64_t start_id,
         int64_t end_id,
         bool directed,
-        bool has_reverse_cost,
 
         General_path_element_t **path,
         size_t *path_count) {
@@ -96,7 +95,6 @@ void compute_trsp(
             start_id,
             end_id,
             directed,
-            has_reverse_cost,
             path,
             path_count,
             &err_msg);
@@ -142,7 +140,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
                 PG_GETARG_BOOL(4),
-                PG_GETARG_BOOL(5),
                 &result_tuples, &result_count);
 
         //-----------------------------------------------

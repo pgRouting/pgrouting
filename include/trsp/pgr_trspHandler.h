@@ -89,7 +89,6 @@ class Pgr_trspHandler {
             const int64_t start_vertex,
             const int64_t end_vertex,
             const bool directed,
-            const bool has_reverse_cost,
             const std::vector<PDVI> &ruleList);
 
     Pgr_trspHandler(void);
@@ -109,7 +108,6 @@ class Pgr_trspHandler {
             const int64_t end_vertex,
 
             bool directed,
-            bool has_reverse_cost,
 
             char **err_msg);
 
@@ -118,7 +116,7 @@ class Pgr_trspHandler {
 
  private:
     bool construct_graph(pgr_edge_t *edges, const size_t edge_count,
-                         const bool has_reverse_cost, const bool directed);
+                         const bool directed);
 
     int initialize_restrictions(
                     const std::vector<PDVI> &ruleList);

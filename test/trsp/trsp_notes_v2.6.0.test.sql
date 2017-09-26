@@ -157,7 +157,6 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     1, 1,  
-    true, 
     true
 );
 \echo '\`\`\`'
@@ -213,8 +212,7 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     2, 3,
-    false, 
-    true
+    false
 );
 \echo '\`\`\`'
 

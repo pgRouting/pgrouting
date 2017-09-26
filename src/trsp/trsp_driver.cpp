@@ -43,15 +43,10 @@ int do_trsp(
         Restriction_t *restrictions,
         size_t restrictions_size,
 
-#if 0
-        restrict_t *restricts,
-        size_t restrict_count,
-#endif
         int64_t start_vertex,
         int64_t end_vertex,
 
         bool directed,
-        bool has_reverse_cost,
 
         General_path_element_t **return_tuples,
         size_t *return_count,
@@ -72,46 +67,17 @@ int do_trsp(
             ruleTable.push_back(rule);
         }
 
-#if 0
-        std::vector<pgrouting::trsp::PDVI> ruleTable;
-        size_t MAX_RULE_LENGTH = 5;
-
-        size_t i, j;
-        ruleTable.clear();
-        for (i = 0; i < restrict_count; i++) {
-            std::vector<int64_t> seq;
-            seq.clear();
-            seq.push_back(restricts[i].target_id);
-            for (j = 0; j < MAX_RULE_LENGTH && restricts[i].via[j] > -1; j++) {
-                seq.push_back(restricts[i].via[j]);
-            }
-            ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
-        }
-        {
-            auto rule = ruleTable[0];
-            auto newrule = ruleTable2[0];
-            for (const auto r : rule.second) {
-                err << r << ",";
-            }
-            err << "\n";
-            for (const auto r : newrule.second) {
-                err << r << ",";
-            }
-            err << "\n";
-            pgassertwm(rule.first == newrule.first, err.str().c_str());
-            pgassertwm(rule.second == newrule.second, err.str().c_str());
-        }
-#endif
-
 
         pgrouting::trsp::Pgr_trspHandler gdef;
         std::deque<Path> paths;
 
         paths.push_back(gdef.initializeAndProcess(
-                edges, total_edges,
+                edges,
+                total_edges,
                 ruleTable,
-                start_vertex, end_vertex,
-                directed, has_reverse_cost,
+                start_vertex,
+                end_vertex,
+                directed,
                 err_msg));
 
 
