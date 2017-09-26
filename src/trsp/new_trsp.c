@@ -40,103 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-
-
-typedef struct edge_columns {
-  int id;
-  int source;
-  int target;
-  int cost;
-  int reverse_cost;
-} edge_columns_t;
-
-typedef struct restrict_columns {
-  int target_id;
-  int via_path;
-  int to_cost;
-} restrict_columns_t;
-
-
-
-
-
-#if 0
-/*
- * This function fetches the resturction columns from an SPITupleTable..
- *
-*/
-static int
-fetch_restrict_columns(SPITupleTable *tuptable,
-                       restrict_columns_t *restrict_columns) {
-  restrict_columns->target_id = SPI_fnumber(tuptable->tupdesc, "target_id");
-  restrict_columns->via_path = SPI_fnumber(tuptable->tupdesc, "via_path");
-  restrict_columns->to_cost =  SPI_fnumber(tuptable->tupdesc, "to_cost");
-  if (restrict_columns->target_id == SPI_ERROR_NOATTRIBUTE ||
-      restrict_columns->via_path == SPI_ERROR_NOATTRIBUTE ||
-      restrict_columns->to_cost == SPI_ERROR_NOATTRIBUTE) {
-    elog(ERROR, "Error, restriction query must return columns "
-        "'target_id', 'via_path' and 'to_cost'");
-    return -1;
-  }
-
-  if (SPI_gettypeid(tuptable->tupdesc,
-       restrict_columns->target_id) != INT4OID ||
-     SPI_gettypeid(tuptable->tupdesc, restrict_columns->via_path) != TEXTOID ||
-     SPI_gettypeid(tuptable->tupdesc, restrict_columns->to_cost) != FLOAT8OID) {
-    elog(ERROR, "Error, restriction columns 'target_id' must be of type int4,"
-     "'via_path' must be of type text, 'to_cost' must be of type float8");
-    return -1;
-  }
-
-  return 0;
-}
-
-/*
- * To fetch a edge from Tuple.
- *
- */
-
-static void
-fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
-           restrict_columns_t *restrict_columns, restrict_t *rest) {
-  Datum binval;
-  bool isnull;
-  int t;
-  int MAX_RULE_LENGTH = 5;
-
-  for (t = 0; t < MAX_RULE_LENGTH; ++t)
-    rest->via[t] = -1;
-
-  binval = SPI_getbinval(*tuple, *tupdesc, restrict_columns->target_id,
-       &isnull);
-  if (isnull)
-    elog(ERROR, "target_id contains a null value");
-  rest->target_id = DatumGetInt32(binval);
-
-  binval = SPI_getbinval(*tuple, *tupdesc, restrict_columns->to_cost, &isnull);
-  if (isnull)
-    elog(ERROR, "to_cost contains a null value");
-  rest->to_cost = DatumGetFloat8(binval);
-  char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc,
-       restrict_columns->via_path));
-
-  // PGR_DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
-
-  if (str != NULL) {
-    char* pch = NULL;
-    int ci = 0;
-
-    pch = (char *)strtok(str, " ,");
-
-    while (pch != NULL && ci < MAX_RULE_LENGTH) {
-      rest->via[ci] = atoi(pch);
-      // PGR_DBG("    rest->via[%i]=%i", ci, rest->via[ci]);
-      ci++;
-      pch = (char *)strtok(NULL, " ,");
-    }
-  }
-}
-#endif
+PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
 
 
 
@@ -149,9 +53,7 @@ void compute_trsp(
         int64_t end_id,
         bool directed,
         bool has_reverse_cost,
-#if 0
-        char* restrict_sql,
-#endif
+
         General_path_element_t **path,
         size_t *path_count) {
     pgr_SPI_connect();
@@ -177,94 +79,6 @@ void compute_trsp(
 
 
 
-#if 0
-    PGR_DBG("Fetching restriction tuples\n");
-
-    SPIPlanPtr SPIplan;
-    Portal SPIportal;
-    bool moredata = TRUE;
-    uint32_t TUPLIMIT = 1000;
-    int ret = -1;
-    uint32_t ntuples;
-    uint32_t total_restrict_tuples = 0;
-    restrict_t *restricts = NULL;
-    restrict_columns_t restrict_columns = {.target_id = -1, .via_path = -1,
-        .to_cost = -1};
-    if (restrict_sql == NULL) {
-        PGR_DBG("Sql for restrictions is null.");
-    } else {
-        SPIplan = SPI_prepare(restrict_sql, 0, NULL);
-        if (SPIplan  == NULL) {
-            elog(ERROR, "turn_restrict_shortest_path: "
-                    "couldn't create query plan via SPI");
-            return;
-        }
-
-        if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) \
-                == NULL) {
-            elog(ERROR, "turn_restrict_shortest_path:"
-                    " SPI_cursor_open('%s') returns NULL", restrict_sql);
-            return;
-        }
-
-        moredata = TRUE;
-        while (moredata == TRUE) {
-            SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
-
-            if (restrict_columns.target_id == -1) {
-                if (fetch_restrict_columns(SPI_tuptable, &restrict_columns) \
-                        == -1) {
-                    PGR_DBG("fetch_restrict_columns failed!");
-                    pgr_SPI_finish();
-                }
-            }
-
-            ntuples = SPI_processed;
-            total_restrict_tuples += ntuples;
-
-            // DBG("Reading Restrictions: %i", total_restrict_tuples);
-
-            if (ntuples > 0) {
-                if (!restricts)
-                    restricts = palloc(total_restrict_tuples * sizeof(restrict_t));
-                else
-                    restricts = repalloc(restricts,
-                            total_restrict_tuples * sizeof(restrict_t));
-
-                if (restricts == NULL) {
-                    elog(ERROR, "Out of memory");
-                    pgr_SPI_finish();
-                }
-
-                uint32_t t;
-                SPITupleTable *tuptable = SPI_tuptable;
-                TupleDesc tupdesc = SPI_tuptable->tupdesc;
-
-                for (t = 0; t < ntuples; t++) {
-                    HeapTuple tuple = tuptable->vals[t];
-                    fetch_restrict(&tuple, &tupdesc, &restrict_columns,
-                            &restricts[total_restrict_tuples - ntuples + t]);
-                }
-                SPI_freetuptable(tuptable);
-            } else {
-                moredata = FALSE;
-            }
-        }
-        SPI_cursor_close(SPIportal);
-    }
-
-#ifdef DEBUG_OFF
-    int t;
-    for (t=0; t < total_restrict_tuples; t++) {
-        PGR_DBG("restricts: %.2f, %i, %i, %i, %i, %i, %i",
-                restricts[t].to_cost, restricts[t].target_id, restricts[t].via[0],
-                restricts[t].via[1], restricts[t].via[2], restricts[t].via[3],
-                restricts[t].via[4]);
-    }
-#endif
-
-    PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
-#endif
 
     *path = NULL;
     PGR_DBG("Calling trsp_node_wrapper\n");
@@ -274,9 +88,6 @@ void compute_trsp(
             edges, total_edges,
             restrictions, total_restrictions,
 
-#if 0
-            restricts, total_restrict_tuples,
-#endif
             start_id, end_id,
             directed, has_reverse_cost,
             path, path_count, &err_msg);
@@ -299,7 +110,6 @@ void compute_trsp(
 
 
 
-PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
 PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -311,32 +121,10 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
     // stuff done only on the first call of the function
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-
-#if 0
-        int ret = -1;
-        if (ret == -1) {}  // to avoid warning set but not used
-
-#endif
-        // create a function context for cross-call persistence
         funcctx = SRF_FIRSTCALL_INIT();
-
-        // switch to memory context appropriate for multiple function calls
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-#if 0
-        char *  restrictions_sql = NULL;
-        if (PG_ARGISNULL(6)) {
-            restrictions_sql = NULL;
-        } else {
-            restrictions_sql = text_to_cstring(PG_GETARG_TEXT_P(6));
-            if (strlen(restrictions_sql) == 0)
-                restrictions_sql = NULL;
-        }
-#endif
-
         PGR_DBG("Calling compute_trsp");
-
-
         compute_trsp(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
@@ -344,9 +132,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(3),
                 PG_GETARG_BOOL(4),
                 PG_GETARG_BOOL(5),
-#if 0
-                text_to_cstring(PG_GETARG_TEXT_P(6)),
-#endif
                 &result_tuples, &result_count);
 
         //-----------------------------------------------
@@ -404,15 +189,13 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
 
-        // make the tuple into a datum
         result = HeapTupleGetDatum(tuple);
 
-        // clean up (this is not really necessary)
         pfree(values);
         pfree(nulls);
 
         SRF_RETURN_NEXT(funcctx, result);
-    } else {  // do when there is no more left
+    } else {
         SRF_RETURN_DONE(funcctx);
     }
 }
