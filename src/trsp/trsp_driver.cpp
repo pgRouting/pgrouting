@@ -60,8 +60,18 @@ int do_trsp(
         pgassert(*return_tuples == NULL);
         pgassert(*return_count == 0);
 
-        // typedef std::pair<double, std::vector<int64_t> > PDVI;
+        typedef std::pair<double, std::vector<int64_t> > PDVI;
 
+
+        std::vector<pgrouting::trsp::PDVI> ruleTable;
+        for (size_t i = 0; i < restrictions_size; ++ i) {
+            std::vector<int64_t> vias(restrictions[i].via, restrictions[i].via + restrictions[i].via_size);
+            std::rotate(vias.begin(), vias.begin() + 1, vias.end()); 
+            PDVI rule = std::make_pair(restrictions[i].cost, vias);
+            ruleTable.push_back(rule);
+        }
+
+#if 0
         std::vector<pgrouting::trsp::PDVI> ruleTable;
         size_t MAX_RULE_LENGTH = 5;
 
@@ -76,6 +86,22 @@ int do_trsp(
             }
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
+        {
+            auto rule = ruleTable[0];
+            auto newrule = ruleTable2[0];
+            for (const auto r : rule.second) {
+                err << r << ",";
+            }
+            err << "\n";
+            for (const auto r : newrule.second) {
+                err << r << ",";
+            }
+            err << "\n";
+            pgassertwm(rule.first == newrule.first, err.str().c_str());
+            pgassertwm(rule.second == newrule.second, err.str().c_str());
+        }
+#endif
+
 
         pgrouting::trsp::Pgr_trspHandler gdef;
         std::deque<Path> paths;
