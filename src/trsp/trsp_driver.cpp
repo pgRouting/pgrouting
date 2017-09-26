@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstdint>
 #include <sstream>
 #include "trsp/pgr_trspHandler.h"
+#include "trsp/rule.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 
@@ -58,6 +59,11 @@ int do_trsp(
 
         typedef std::pair<double, std::vector<int64_t> > PDVI;
 
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < restrictions_size; ++ i) {
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        }
+
 
         std::vector<pgrouting::trsp::PDVI> ruleTable;
         for (size_t i = 0; i < restrictions_size; ++ i) {
@@ -75,6 +81,7 @@ int do_trsp(
                 edges,
                 total_edges,
                 ruleTable,
+                ruleList,
                 start_vertex,
                 end_vertex,
                 directed,

@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <vector>
+#include <sstream>
+#include "c_types/restriction_t.h"
 
 namespace pgrouting {
 namespace trsp {
@@ -36,6 +38,12 @@ namespace trsp {
 
 class Rule {
  public:
+    Rule(Restriction_t r) :
+        m_cost(r.cost),
+        m_precedencelist(r.via, r.via + r.via_size) {
+
+        }
+
     Rule(double p_cost, std::vector<int64_t> p) :
         m_cost(p_cost),
         m_precedencelist(p) { }
@@ -43,7 +51,16 @@ class Rule {
     std::vector<int64_t> precedencelist() const {
         return m_precedencelist;
     }
+    int64_t dest_id() const {return m_precedencelist.back();};
 
+
+    friend std::ostream& operator<<(std::ostream& log, const Rule &r) {
+        log << r.m_cost << ", (";
+        for (const auto e : r.m_precedencelist) {
+        log << e << ",";
+        }
+        return log;
+    }
  private:
     double m_cost;
     std::vector<int64_t> m_precedencelist;

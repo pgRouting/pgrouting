@@ -57,13 +57,14 @@ Pgr_trspHandler::Pgr_trspHandler(
     m_bIsturnRestrictOn(false),
     m_bIsGraphConstructed(false)
 {
+#if 0
     init();
     initialize_restrictions(
             ruleList);
     construct_graph(edges,
             edge_count,
             directed);
-
+#endif
     pgassert(m_bIsturnRestrictOn);
     pgassert(m_bIsGraphConstructed);
 }
@@ -352,7 +353,8 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
 
 // -------------------------------------------------------------------------
 int Pgr_trspHandler::initialize_restrictions(
-        const std::vector<PDVI> &ruleList) {
+        const std::vector<PDVI> &ruleList,
+        const std::vector<Rule> &ruleList1) {
     m_ruleTable.clear();
     LongVector vecsource;
     for (const auto &rule : ruleList) {
@@ -373,30 +375,17 @@ int Pgr_trspHandler::initialize_restrictions(
             temprules.push_back(Rule(rule.first, temp_precedencelist));
             m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
         }
+    }
+    std::ostringstream log;
+    for (const auto &rule : m_ruleTable) {
+        //log << rule.second;
+    } 
+    log << "\n";
+    for (const auto &rule : ruleList1) {
+        log << rule;
+    } 
+    pgassertwm(false, log.str().c_str());
 
-        if (isStartVirtual) {
-            if (seq_cnt == 2 && rule.second[1] == m_lStartEdgeId) {
-                vecsource = m_mapNodeId2Edge[m_start_vertex];
-                for (const auto &source : vecsource) {
-                    temp_precedencelist.clear();
-                    temp_precedencelist.push_back(
-                            m_vecEdgeVector[source].edgeID());
-                    m_ruleTable[dest_edge_id].push_back(Rule(rule.first,
-                                temp_precedencelist));
-                }
-            }
-        }
-    }
-    if (isEndVirtual) {
-        if (m_ruleTable.find(m_lEndEdgeId) != m_ruleTable.end()) {
-            std::vector<Rule> tmpRules = m_ruleTable[m_lEndEdgeId];
-            vecsource = m_mapNodeId2Edge[m_end_vertex];
-            for (const auto &source : vecsource) {
-                m_ruleTable.insert(std::make_pair(
-                            m_vecEdgeVector[source].edgeID(), tmpRules));
-            }
-        }
-    }
     m_bIsturnRestrictOn = true;
     return true;
 }
@@ -411,7 +400,8 @@ Pgr_trspHandler::initializeAndProcess(
         pgr_edge_t *edges,
         size_t edge_count,
 
-        const std::vector<PDVI> &ruleList,
+        const std::vector<PDVI> &ruleList1,
+        const std::vector<Rule> &ruleList,
 
         const int64_t start_vertex,
         const int64_t end_vertex,
@@ -426,7 +416,7 @@ Pgr_trspHandler::initializeAndProcess(
     m_start_vertex = start_vertex;
     m_end_vertex = end_vertex;
 
-    initialize_restrictions(ruleList);
+    initialize_restrictions(ruleList1, ruleList);
 
     m_min_id = renumber_edges(edges, edge_count);
     m_start_vertex -= m_min_id;

@@ -102,7 +102,8 @@ class Pgr_trspHandler {
             pgr_edge_t *edges,
             size_t edge_count,
 
-            const std::vector<PDVI> &ruleList,
+            const std::vector<PDVI> &ruleList1,
+            const std::vector<Rule> &ruleList,
 
             const int64_t start_vertex,
             const int64_t end_vertex,
@@ -119,7 +120,8 @@ class Pgr_trspHandler {
                          const bool directed);
 
     int initialize_restrictions(
-                    const std::vector<PDVI> &ruleList);
+                    const std::vector<PDVI> &ruleList1,
+                    const std::vector<Rule> &ruleList);
 
     void initialize_que();
 
