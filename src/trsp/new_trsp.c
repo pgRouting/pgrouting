@@ -1,9 +1,9 @@
 /*PGR-GNU*****************************************************************
 
-File: trsp.c
+File: new_trsp.c
 
 Generated with Template by:
-Copyright (c) 2013 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -27,21 +27,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/postgres_connection.h"
 
-#include "catalog/pg_type.h"
-#include "c_common/debug_macro.h"
-
 
 #include "drivers/trsp/trsp_driver.h"
-#include "c_types/trsp_types.h"
+
+#include "c_common/debug_macro.h"
+#include "c_common/time_msg.h"
+
 #include "c_types/pgr_edge_t.h"
+#include "c_types/restriction_t.h"
 #include "c_types/general_path_element_t.h"
+
 #include "c_common/edges_input.h"
 #include "c_common/restrictions_input.h"
 
-
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-
 
 
 static
@@ -64,33 +64,44 @@ void compute_trsp(
 
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
-        PGR_DBG("GOT THE NEW RESTRICTION QUERY");
-        pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
-        PGR_DBG("total restrictions read %ld", total_restrictions);
+    PGR_DBG("GOT THE NEW RESTRICTION QUERY");
+    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+    PGR_DBG("total restrictions read %ld", total_restrictions);
 
-        for (uint64_t i = 0; i < total_restrictions; ++i) {
-            PGR_DBG("%ld: restriction[%ld], %ld", i, restrictions[i].id, restrictions[i].cost);
-            PGR_DBG("    edges %d", restrictions[i].via_size);
+    for (uint64_t i = 0; i < total_restrictions; ++i) {
+        PGR_DBG("%ld: restriction[%ld], %ld", i, restrictions[i].id, restrictions[i].cost);
+        PGR_DBG("    edges %d", restrictions[i].via_size);
 
-            for (uint64_t j = 0; j < restrictions[i].via_size; ++j) {
-                PGR_DBG("edge %d", restrictions[i].via[j]);
-            }
+        for (uint64_t j = 0; j < restrictions[i].via_size; ++j) {
+            PGR_DBG("edge %d", restrictions[i].via[j]);
         }
+    }
 
 
 
 
-    *path = NULL;
-    PGR_DBG("Calling trsp_node_wrapper\n");
+    PGR_DBG("Starting timer");
+    clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
-    char *err_msg;
     int ret = do_trsp(
-            edges, total_edges,
-            restrictions, total_restrictions,
+            edges,
+            total_edges,
+           
+            restrictions,
+            total_restrictions,
 
-            start_id, end_id,
-            directed, has_reverse_cost,
-            path, path_count, &err_msg);
+            start_id,
+            end_id,
+            directed,
+            has_reverse_cost,
+            path,
+            path_count,
+            &err_msg);
+    time_msg("processing _pgr_trsp", start_t, clock());
+
 
     PGR_DBG("Message received from inside:");
     PGR_DBG("%s", err_msg);
