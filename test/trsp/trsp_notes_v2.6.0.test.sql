@@ -49,7 +49,11 @@ ROLLBACK;
 \echo * No vertex has id: 25, 32 or 33
 \echo * No edge has id: 25, 32 or 33
 \echo '\`\`\`'
-\echo $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
+\echo '\`\`\`'
+\echo The new back end code has the restrictions as follows
+\echo '\`\`\`'
+SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path;
 \echo '\`\`\`'
 
 \echo therefore the shortest path expected are as if there was no restriction involved
@@ -151,10 +155,10 @@ SELECT * FROM pgr_trsp(
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     1, 1,  
     true, 
-    true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    true
 );
 \echo '\`\`\`'
 
@@ -207,10 +211,10 @@ SELECT * FROM pgr_trsp(
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     2, 3,
     false, 
-    true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    true
 );
 \echo '\`\`\`'
 

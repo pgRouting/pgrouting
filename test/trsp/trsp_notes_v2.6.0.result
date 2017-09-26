@@ -47,7 +47,21 @@ The restriction used in the examples does not have to do anything with the graph
 * No vertex has id: 25, 32 or 33
 * No edge has id: 25, 32 or 33
 ```
-$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, 32, 33::TEXT AS via_path$$
+SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
+ to_cost | target_id | via_path 
+---------+-----------+----------
+     100 |        25 | 32, 33
+(1 row)
+
+```
+The new back end code has the restrictions as follows
+```
+SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path;
+ id | cost | target_id |    path    
+----+------+-----------+------------
+  1 |  100 |        25 | {33,32,25}
+(1 row)
+
 ```
 therefore the shortest path expected are as if there was no restriction involved
 # The Vertices signature version
@@ -100,7 +114,7 @@ SELECT * FROM pgr_trsp(
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: No paths found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 43 at RETURN QUERY
 ```
 ## routing from/to same location
 using dijkstra to verify (1 to 1)
@@ -169,10 +183,10 @@ but "finds" a path when there should be no path.
 ```
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     1, 1,  
     true, 
-    true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    true
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
 -----+----------+-----------+---------+------+------+------+----------
@@ -252,10 +266,10 @@ does not find the shortest path
 ```
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     2, 3,
     false, 
-    true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    true
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
 -----+----------+-----------+---------+------+------+------+----------

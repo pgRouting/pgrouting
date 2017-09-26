@@ -60,6 +60,7 @@ typedef struct restrict_columns {
 
 
 
+#if 0
 /*
  * This function fetches the resturction columns from an SPITupleTable..
  *
@@ -135,6 +136,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
     }
   }
 }
+#endif
 
 
 
@@ -147,7 +149,7 @@ void compute_trsp(
         int64_t end_id,
         bool directed,
         bool has_reverse_cost,
-#if 1
+#if 0
         char* restrict_sql,
 #endif
         General_path_element_t **path,
@@ -342,7 +344,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(3),
                 PG_GETARG_BOOL(4),
                 PG_GETARG_BOOL(5),
-#if 1
+#if 0
                 text_to_cstring(PG_GETARG_TEXT_P(6)),
 #endif
                 &result_tuples, &result_count);
