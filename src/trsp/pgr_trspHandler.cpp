@@ -44,7 +44,7 @@ Pgr_trspHandler::Pgr_trspHandler(
         const int64_t start_vertex, 
         const int64_t end_vertex,
         const bool directed,
-        const std::vector<PDVI> &ruleList) :
+        const std::vector<Rule> &ruleList) :
     m_lStartEdgeId(-1),
     m_lEndEdgeId(0),
     m_dStartpart(0.0),
@@ -204,7 +204,7 @@ void Pgr_trspHandler::explore(
     int64_t cur_node,
     const EdgeInfo cur_edge,
     bool isStart,
-    const LongVector &vecIndex) {
+    const std::vector<int64_t> &vecIndex) {
     double extCost = 0.0;
     double totalCost;
     for (const auto &index : vecIndex) {
@@ -280,7 +280,7 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
     }
 
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
-    LongVector vecsource = m_mapNodeId2Edge[start_vertex];
+    auto vecsource = m_mapNodeId2Edge[start_vertex];
     EdgeInfo* cur_edge = NULL;
 
     for (const auto &source : vecsource) {
@@ -353,55 +353,9 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
 
 // -------------------------------------------------------------------------
 int Pgr_trspHandler::initialize_restrictions(
-        const std::vector<PDVI> &ruleList,
-        const std::vector<Rule> &ruleList1) {
+        const std::vector<Rule> &ruleList) {
 
-#if 0
-    m_ruleTable.clear();
-    LongVector vecsource;
-    for (const auto &rule : ruleList) {
-        size_t seq_cnt = rule.second.size();
-        std::vector<int64_t> temp_precedencelist;
-        temp_precedencelist.clear();
-        for (const auto r : rule.second) {
-            if (r ==  rule.second.front()) continue;
-            temp_precedencelist.push_back(r);
-        }
-
-        auto dest_edge_id = rule.second[0];
-        if (m_ruleTable.find(dest_edge_id) != m_ruleTable.end()) {
-            m_ruleTable[dest_edge_id].push_back(
-                    Rule(rule.first, temp_precedencelist));
-        } else {
-            std::vector<Rule> temprules;
-            temprules.push_back(Rule(rule.first, temp_precedencelist));
-            m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
-        }
-    }
-    std::ostringstream log;
-    log << "m_ruleTable\n";
-    for (const auto &rules : m_ruleTable) {
-        log << rules.first; 
-        for (const auto &rule : rules.second) {
-            log << rule;
-        } 
-    }
-    log << "\n";
-    log << "m_ruleList\n";
-    for (const auto &rule : ruleList) {
-        for (const auto &e : rule.second) {
-            log << e << ",";
-        } 
-    } 
-    log << "\n";
-    log << "m_ruleList1\n";
-    for (const auto &rule : ruleList1) {
-        log << rule;
-    } 
-    log << "\n";
-    RuleTable temp;
-#else
-    for (const auto rule : ruleList1) {
+    for (const auto rule : ruleList) {
         auto dest_edge_id = rule.dest_id();
         if (m_ruleTable.find(dest_edge_id) != m_ruleTable.end()) {
             m_ruleTable[dest_edge_id].push_back(rule);
@@ -411,9 +365,6 @@ int Pgr_trspHandler::initialize_restrictions(
             m_ruleTable.insert(std::make_pair(dest_edge_id, r));
         }
     }
-#endif
-
-
 
     m_bIsturnRestrictOn = true;
     return true;
@@ -429,7 +380,6 @@ Pgr_trspHandler::initializeAndProcess(
         pgr_edge_t *edges,
         size_t edge_count,
 
-        const std::vector<PDVI> &ruleList1,
         const std::vector<Rule> &ruleList,
 
         const int64_t start_vertex,
@@ -445,7 +395,7 @@ Pgr_trspHandler::initializeAndProcess(
     m_start_vertex = start_vertex;
     m_end_vertex = end_vertex;
 
-    initialize_restrictions(ruleList1, ruleList);
+    initialize_restrictions(ruleList);
 
     m_min_id = renumber_edges(edges, edge_count);
     m_start_vertex -= m_min_id;
@@ -735,7 +685,7 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
     }
 
     // Searching the start node for connectivity
-    Long2LongVectorMap::iterator itNodeMap = m_mapNodeId2Edge.find(
+    auto itNodeMap = m_mapNodeId2Edge.find(
             edgeIn.source);
     if (itNodeMap != m_mapNodeId2Edge.end()) {
         // Connect current edge with existing edge with start node

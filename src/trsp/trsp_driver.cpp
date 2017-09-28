@@ -60,21 +60,14 @@ int do_trsp(
     try {
         pgassert(*return_tuples == NULL);
         pgassert(*return_count == 0);
+        pgassert(*log_msg == NULL);
+        pgassert(*notice_msg == NULL);
+        pgassert(*err_msg == NULL);
 
-        typedef std::pair<double, std::vector<int64_t> > PDVI;
 
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < restrictions_size; ++ i) {
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
-        }
-
-
-        std::vector<pgrouting::trsp::PDVI> ruleTable;
-        for (size_t i = 0; i < restrictions_size; ++ i) {
-            std::vector<int64_t> vias(restrictions[i].via, restrictions[i].via + restrictions[i].via_size);
-            std::reverse(vias.begin(), vias.end()); 
-            PDVI rule = std::make_pair(restrictions[i].cost, vias);
-            ruleTable.push_back(rule);
         }
 
 
@@ -84,7 +77,6 @@ int do_trsp(
         paths.push_back(gdef.initializeAndProcess(
                     edges,
                     total_edges,
-                    ruleTable,
                     ruleList,
                     start_vertex,
                     end_vertex,
