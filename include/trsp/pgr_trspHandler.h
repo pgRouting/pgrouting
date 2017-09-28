@@ -111,7 +111,7 @@ class Pgr_trspHandler {
 
 
     void explore(int64_t cur_node, const EdgeInfo cur_edge, bool isStart,
-            const std::vector<int64_t> &vecIndex);
+            const std::vector<size_t> &vecIndex);
 
     double getRestrictionCost(
             int64_t cur_node,
@@ -120,12 +120,12 @@ class Pgr_trspHandler {
     bool addEdge(const pgr_edge_t edgeIn);
 
     void connectStartEdge(
-            int64_t firstEdge_idx,
-            int64_t secondEdge_idx);
+            size_t firstEdge_idx,
+            size_t secondEdge_idx);
 
     void connectEndEdge(
-            int64_t firstEdge_idx,
-            int64_t secondEdge_idx);
+            size_t firstEdge_idx,
+            size_t secondEdge_idx);
 
     double construct_path(int64_t ed_id, int64_t v_pos);
 
@@ -133,6 +133,11 @@ class Pgr_trspHandler {
     int64_t renumber_edges(
             pgr_edge_t *edges,
             const size_t edge_count) const;
+
+    void  add_to_que(
+            double cost,
+            size_t e_idx,
+            bool isStart);
 
 
  private:
@@ -148,7 +153,7 @@ class Pgr_trspHandler {
     /**
      * m_adjacency[vertex] = {edges}
      */
-    std::map<int64_t, std::vector<int64_t>> m_adjacency;
+    std::map<int64_t, std::vector<size_t>> m_adjacency;
 
     int64_t m_startEdgeId;
     int64_t m_endEdgeId;

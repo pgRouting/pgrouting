@@ -44,7 +44,7 @@ class EdgeInfo {
              pgr_edge_t edgeIn,
              size_t edgeIndex);
 
-     inline size_t edgeIndex() const {return m_edgeIndex;}
+     inline size_t idx() const {return m_edgeIndex;}
 
      inline int64_t startNode() const {
          pgassert(m_edge.source >= 0);
@@ -64,21 +64,22 @@ class EdgeInfo {
              r_cost();
      }
 
-     void connect_endEdge(int64_t edge_id) {
-         m_endConnectedEdge.push_back(edge_id);
+     void connect_endEdge(size_t edge_idx) {
+         m_endConnectedEdge.push_back(edge_idx);
      }
-     void connect_startEdge(int64_t edge_id) {
-         m_startConnectedEdge.push_back(edge_id);
+     void connect_startEdge(size_t edge_idx) {
+         m_startConnectedEdge.push_back(edge_idx);
      }
-     std::vector<int64_t>& endConnedtedEdge() {return m_endConnectedEdge;}
-     std::vector<int64_t>& startConnectedEdge() {return m_startConnectedEdge;}
+
+     std::vector<size_t>& endConnedtedEdge() {return m_endConnectedEdge;}
+     std::vector<size_t>& startConnectedEdge() {return m_startConnectedEdge;}
 
 
  private:
      pgr_edge_t m_edge;
      size_t m_edgeIndex;
-     std::vector<int64_t> m_startConnectedEdge;
-     std::vector<int64_t> m_endConnectedEdge;
+     std::vector<size_t> m_startConnectedEdge;
+     std::vector<size_t> m_endConnectedEdge;
 };
 
 }  // namespace trsp
