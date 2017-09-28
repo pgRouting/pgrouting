@@ -93,8 +93,10 @@ class Pgr_trspHandler {
     void clear();
 
  private:
-    bool construct_graph(pgr_edge_t *edges, const size_t edge_count,
-                         const bool directed);
+    void construct_graph(
+            pgr_edge_t *edges,
+            const size_t edge_count,
+            const bool directed);
 
     int initialize_restrictions(
             const std::vector<Rule> &ruleList);
@@ -118,9 +120,10 @@ class Pgr_trspHandler {
     bool addEdge(const pgr_edge_t edgeIn);
     bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,
             bool bIsStartNodeSame);
+#if 0
     Path get_single_cost(
             double total_cost);
-
+#endif
     double construct_path(int64_t ed_id, int64_t v_pos);
 
     int64_t renumber_edges(
@@ -134,8 +137,10 @@ class Pgr_trspHandler {
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
     std::map<int64_t, std::vector<int64_t>> m_mapNodeId2Edge;
 
+#if 0
     int64_t m_max_node_id;
     int64_t m_max_edge_id;
+#endif
     int64_t m_startEdgeId;
     int64_t m_endEdgeId;
     double m_startpart;
