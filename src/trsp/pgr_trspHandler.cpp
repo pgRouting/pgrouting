@@ -68,18 +68,6 @@ Pgr_trspHandler::Pgr_trspHandler(
 }
 
 
-// -------------------------------------------------------------------------
-// -------------------------------------------------------------------------
-Pgr_trspHandler::Pgr_trspHandler(void) {
-    m_startEdgeId = -1;
-    m_endEdgeId = 0;
-    m_startpart = 0.0;
-    m_endPart = 0.0;
-    m_bIsturnRestrictOn = false;
-    m_bIsGraphConstructed = false;
-}
-
-
 
 // -------------------------------------------------------------------------
 int64_t Pgr_trspHandler::renumber_edges(
@@ -109,18 +97,20 @@ int64_t Pgr_trspHandler::renumber_edges(
 
 // -------------------------------------------------------------------------
 void Pgr_trspHandler::clear() {
-    parent.clear();
+    m_parent.clear();
     m_dCost.clear();
     m_path.clear();
 }
 
 
 // -------------------------------------------------------------------------
-double Pgr_trspHandler::construct_path(int64_t ed_id, int64_t v_pos) {
-    if (parent[ed_id].ed_ind[v_pos] == -1) {
+double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
+    pgassert(pos != ILLEGAL);
+
+    if (m_parent[ed_id].isIllegal(pos)) {
         Path_t pelement;
         auto cur_edge = &m_edges[ed_id];
-        if (v_pos == 0) {
+        if (pos == TARGET) {
             pelement.node = cur_edge->startNode();
             pelement.cost = cur_edge->cost();
         } else {
@@ -134,13 +124,13 @@ double Pgr_trspHandler::construct_path(int64_t ed_id, int64_t v_pos) {
         return pelement.cost;
     }
 
-    double ret = construct_path(parent[ed_id].ed_ind[v_pos],
-        parent[ed_id].v_pos[v_pos]);
+    double ret = construct_path(m_parent[ed_id].e_idx[pos],
+        m_parent[ed_id].v_pos[pos]);
     Path_t pelement;
     auto cur_edge = &m_edges[ed_id];
-    if (v_pos == 0) {
+    if (pos == TARGET) {
         pelement.node = cur_edge->startNode();
-        pelement.cost = m_dCost[ed_id].endCost - ret;  // cur_edge.m_dCost;
+        pelement.cost = m_dCost[ed_id].endCost - ret;
         ret = m_dCost[ed_id].endCost;
     } else {
         pelement.node = cur_edge->endNode();
@@ -169,7 +159,7 @@ double Pgr_trspHandler::getRestrictionCost(
     int64_t st_edge_ind = edge_ind;
     for (const auto &rule : vecRules) {
         bool flag = true;
-        int64_t v_pos = (isStart? 0 : 1);
+        int64_t v_pos = (isStart? SOURCE : TARGET);
         edge_ind = st_edge_ind;
 
         pgassert(!(edge_ind == -1));
@@ -178,9 +168,9 @@ double Pgr_trspHandler::getRestrictionCost(
                 flag = false;
                 break;
             }
-            auto parent_ind = parent[edge_ind].ed_ind[v_pos];
-            v_pos = parent[edge_ind].v_pos[v_pos];
-            edge_ind = parent_ind;
+            auto m_parent_ind = m_parent[edge_ind].e_idx[v_pos];
+            v_pos = m_parent[edge_ind].v_pos[v_pos];
+            edge_ind = m_parent_ind;
         }
         if (flag)
             cost += rule.cost();
@@ -219,48 +209,30 @@ void Pgr_trspHandler::explore(
 
         extra_cost = getRestrictionCost(
                 cur_edge.idx(),
-                edge, !isStart);
+                edge, isStart);
 
         if ((edge.startNode() == cur_node) && (edge.cost() >= 0.0)) {
-#if 1
             totalCost = get_tot_cost(edge.cost() + extra_cost, cur_edge.idx(), isStart);
-#else
-            if (!isStart) {
-                totalCost = m_dCost[cur_edge.idx()].endCost +
-                    edge.cost() + extra_cost;
-            } else {
-                totalCost = m_dCost[cur_edge.idx()].startCost +
-                    edge.cost() + extra_cost;
-            }
-#endif
+
             if (totalCost < m_dCost[index].endCost) {
                 m_dCost[index].endCost = totalCost;
-                parent[edge.idx()].v_pos[0] = (isStart? 1 : 0);
-                parent[edge.idx()].ed_ind[0] =
+                m_parent[edge.idx()].v_pos[TARGET] = (isStart? SOURCE : TARGET);
+                m_parent[edge.idx()].e_idx[TARGET] =
                     cur_edge.idx();
-                que.push(std::make_pair(totalCost,
-                            std::make_pair(edge.idx(), true)));
+
+                add_to_que(totalCost, edge.idx(), true);
             }
-        } else if ((edge.endNode() == cur_node) && (edge.r_cost() >= 0.0)) {
-#if 1
+        }
+
+       if ((edge.endNode() == cur_node) && (edge.r_cost() >= 0.0)) {
             totalCost = get_tot_cost(edge.r_cost() + extra_cost, cur_edge.idx(), isStart);
-#else
-            if (!isStart) {
-                totalCost = m_dCost[cur_edge.idx()].endCost +
-                    edge.r_cost() + extra_cost;
-            } else {
-                totalCost = m_dCost[cur_edge.idx()].startCost +
-                    edge.r_cost() + extra_cost;
-            }
-#endif
 
             if (totalCost < m_dCost[index].startCost) {
                 m_dCost[index].startCost = totalCost;
-                parent[edge.idx()].v_pos[1] = (isStart? 1 : 0);
-                parent[edge.idx()].ed_ind[1] =
-                    cur_edge.idx();
-                que.push(std::make_pair(totalCost,
-                            std::make_pair(edge.idx(), false)));
+                m_parent[edge.idx()].v_pos[SOURCE] = (isStart? SOURCE : TARGET);
+                m_parent[edge.idx()].e_idx[SOURCE] = cur_edge.idx();
+
+                add_to_que(totalCost, edge.idx(), false);
             }
         }
     }  // for
@@ -348,8 +320,7 @@ void  Pgr_trspHandler::initialize_que() {
         if (cur_edge.startNode() == m_start_vertex
                 && cur_edge.cost() >= 0.0) {
             m_dCost[cur_edge.idx()].endCost = cur_edge.cost();
-            parent[cur_edge.idx()].v_pos[0] = -1;
-            parent[cur_edge.idx()].ed_ind[0] = -1;
+            m_parent[cur_edge.idx()].v_pos[0] = ILLEGAL;
             add_to_que(cur_edge.cost(), cur_edge.idx(), true);
         }
 
@@ -357,8 +328,7 @@ void  Pgr_trspHandler::initialize_que() {
                 && cur_edge.r_cost() >= 0.0) {
             m_dCost[cur_edge.idx()].startCost =
                 cur_edge.r_cost();
-            parent[cur_edge.idx()].v_pos[1] = -1;
-            parent[cur_edge.idx()].ed_ind[1] = -1;
+            m_parent[cur_edge.idx()].v_pos[1] = ILLEGAL;
             add_to_que(cur_edge.r_cost(), cur_edge.idx(), false);
         }
     }
@@ -372,8 +342,8 @@ EdgeInfo Pgr_trspHandler::dijkstra_exploration() {
         auto cur_pos = que.top();
         que.pop();
 
-        auto cured_index = cur_pos.second.first;
-        cur_edge = m_edges[cured_index];
+        auto cure_idxex = cur_pos.second.first;
+        cur_edge = m_edges[cure_idxex];
 
         if (cur_pos.second.second) {
             /*
@@ -406,8 +376,9 @@ Pgr_trspHandler::process_trsp(
     pgassert(m_bIsGraphConstructed);
     pgassert(m_path.start_id() == m_start_vertex);
     pgassert(m_path.end_id() == m_end_vertex);
+    pgassert(m_parent.empty());
 
-    parent.resize(edge_count +1);
+    m_parent.resize(edge_count + 1);
     m_dCost.resize(edge_count + 1);
 
     initialize_que();
@@ -427,9 +398,9 @@ Pgr_trspHandler::process_trsp(
     pgassert(m_path.start_id() == m_start_vertex);
 
     if (current_node == cur_edge.startNode()) {
-        construct_path(cur_edge.idx(), 1);
+        construct_path(cur_edge.idx(), SOURCE);
     } else {
-        construct_path(cur_edge.idx(), 0);
+        construct_path(cur_edge.idx(), TARGET);
     }
 
     Path_t pelement;
@@ -588,25 +559,6 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
     return true;
 }
 
-#if 0
-bool Pgr_trspHandler::addAdjacenyList(
-        int64_t node_id,
-        int64_t edge_id,
-        bool isSource) {
-    // Searching the end node for connectivity
-    auto itNodeMap = m_adjacency.find(node_id);
-
-    if (itNodeMap != m_adjacency.end()) {
-        auto lEdgeCount = itNodeMap->second.size();
-        int64_t lEdgeIndex;
-        for (lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++) {
-            int64_t lEdge = itNodeMap->second.at(lEdgeIndex);
-            connectEdge(newEdge, m_edges[lEdge], false);
-        }
-    }
-    m_adjacency[edgeIn.source].push_back(newEdge.idx());
-}
-#endif
 
 
 }  // namespace trsp  

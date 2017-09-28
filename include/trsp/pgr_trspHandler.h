@@ -56,10 +56,26 @@ class Pgr_trspHandler {
      */
     typedef std::pair<double, std::pair<int64_t, bool>> PDP;
 
-    typedef struct {
-        int64_t ed_ind[2];
-        int64_t v_pos[2];
-    } Predecessor;
+    enum Position {ILLEGAL = -1, TARGET = 0, SOURCE = 1};
+    class Predecessor {
+     public:
+
+         Predecessor() :
+             e_idx(2),
+             v_pos(2) {
+             for (auto &p : v_pos) p = ILLEGAL;  
+         }
+
+         bool isIllegal(size_t i) {return v_pos[i] == ILLEGAL;}
+         bool isIllegal(Position i) {
+             pgassert(i != ILLEGAL);
+             return v_pos[static_cast<size_t>(i)] == ILLEGAL;}
+
+
+         std::vector<size_t> e_idx;
+         std::vector<Position> v_pos;
+
+    };
 
     typedef std::map<int64_t, std::vector<Rule> > RuleTable;
     class CostHolder {
@@ -81,7 +97,7 @@ class Pgr_trspHandler {
             const bool directed,
             const std::vector<Rule> &ruleList);
 
-    Pgr_trspHandler(void);
+    Pgr_trspHandler(void) = delete;
     ~Pgr_trspHandler(void) = default;
 
 
@@ -129,7 +145,7 @@ class Pgr_trspHandler {
             size_t firstEdge_idx,
             size_t secondEdge_idx);
 
-    double construct_path(int64_t ed_id, int64_t v_pos);
+    double construct_path(int64_t ed_id, Position pos);
 
 
     int64_t renumber_edges(
@@ -178,7 +194,7 @@ class Pgr_trspHandler {
 
     Path m_path;
 
-    std::vector<Predecessor> parent;
+    std::vector<Predecessor> m_parent;
     std::vector<CostHolder> m_dCost;
 
     RuleTable m_ruleTable;
