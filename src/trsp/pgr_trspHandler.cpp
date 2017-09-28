@@ -157,11 +157,11 @@ double Pgr_trspHandler::construct_path(int64_t ed_id, int64_t v_pos) {
 
 // -------------------------------------------------------------------------
 double Pgr_trspHandler::getRestrictionCost(
-    int64_t edge_ind,
-    const EdgeInfo& new_edge,
-    bool isStart) {
+        int64_t edge_ind,
+        const EdgeInfo &edge,
+        bool isStart) {
     double cost = 0.0;
-    int64_t edge_id = new_edge.edgeID();
+    int64_t edge_id = edge.edgeID();
     if (m_ruleTable.find(edge_id) == m_ruleTable.end()) {
         return(0.0);
     }
@@ -195,47 +195,50 @@ void Pgr_trspHandler::explore(
     const EdgeInfo cur_edge,
     bool isStart,
     const std::vector<int64_t> &vecIndex) {
-    double extCost = 0.0;
+    double extra_cost = 0.0;
     double totalCost;
+    pgassert(m_bIsturnRestrictOn);
+    pgassert(m_bIsGraphConstructed);
+
     for (const auto &index : vecIndex) {
-        auto new_edge = &m_edges[index];
-        extCost = 0.0;
-        if (m_bIsturnRestrictOn) {
-            extCost = getRestrictionCost(cur_edge.edgeIndex(),
-                 *new_edge, isStart);
-        }
-        if (new_edge->startNode() == cur_node) {
-            if (new_edge->cost() >= 0.0) {
+        auto edge = &m_edges[index];
+
+        extra_cost = getRestrictionCost(
+                cur_edge.edgeIndex(),
+                *edge, isStart);
+
+        if (edge->startNode() == cur_node) {
+            if (edge->cost() >= 0.0) {
                 if (isStart)
                     totalCost = m_dCost[cur_edge.edgeIndex()].endCost +
-                    new_edge->cost() + extCost;
+                        edge->cost() + extra_cost;
                 else
                     totalCost = m_dCost[cur_edge.edgeIndex()].startCost +
-                    new_edge->cost() + extCost;
+                        edge->cost() + extra_cost;
                 if (totalCost < m_dCost[index].endCost) {
                     m_dCost[index].endCost = totalCost;
-                    parent[new_edge->edgeIndex()].v_pos[0] = (isStart?0:1);
-                    parent[new_edge->edgeIndex()].ed_ind[0] =
-                     cur_edge.edgeIndex();
+                    parent[edge->edgeIndex()].v_pos[0] = (isStart?0:1);
+                    parent[edge->edgeIndex()].ed_ind[0] =
+                        cur_edge.edgeIndex();
                     que.push(std::make_pair(totalCost,
-                        std::make_pair(new_edge->edgeIndex(), true)));
+                                std::make_pair(edge->edgeIndex(), true)));
                 }
             }
         } else {
-            if (new_edge->r_cost() >= 0.0) {
+            if (edge->r_cost() >= 0.0) {
                 if (isStart)
                     totalCost = m_dCost[cur_edge.edgeIndex()].endCost +
-                    new_edge->r_cost() + extCost;
+                        edge->r_cost() + extra_cost;
                 else
                     totalCost = m_dCost[cur_edge.edgeIndex()].startCost +
-                    new_edge->r_cost() + extCost;
+                        edge->r_cost() + extra_cost;
                 if (totalCost < m_dCost[index].startCost) {
                     m_dCost[index].startCost = totalCost;
-                    parent[new_edge->edgeIndex()].v_pos[1] = (isStart?0:1);
-                    parent[new_edge->edgeIndex()].ed_ind[1] =
-                    cur_edge.edgeIndex();
+                    parent[edge->edgeIndex()].v_pos[1] = (isStart?0:1);
+                    parent[edge->edgeIndex()].ed_ind[1] =
+                        cur_edge.edgeIndex();
                     que.push(std::make_pair(totalCost,
-                        std::make_pair(new_edge->edgeIndex(), false)));
+                                std::make_pair(edge->edgeIndex(), false)));
                 }
             }
         }
