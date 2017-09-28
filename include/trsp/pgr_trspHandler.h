@@ -115,7 +115,9 @@ class Pgr_trspHandler {
     void explore(int64_t cur_node, const EdgeInfo cur_edge, bool isStart,
             const std::vector<int64_t> &vecIndex);
 
-    double getRestrictionCost(int64_t cur_node, const EdgeInfo &new_edge,
+    double getRestrictionCost(
+            int64_t cur_node,
+            const EdgeInfo &new_edge,
             bool isStart);
     bool addEdge(const pgr_edge_t edgeIn);
     bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,

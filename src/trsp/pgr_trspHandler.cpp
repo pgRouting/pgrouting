@@ -191,58 +191,58 @@ double Pgr_trspHandler::getRestrictionCost(
 
 // -------------------------------------------------------------------------
 void Pgr_trspHandler::explore(
-    int64_t cur_node,
-    const EdgeInfo cur_edge,
-    bool isStart,
-    const std::vector<int64_t> &vecIndex) {
+        int64_t cur_node,
+        const EdgeInfo cur_edge,
+        bool isStart,
+        const std::vector<int64_t> &vecIndex) {
     double extra_cost = 0.0;
     double totalCost;
     pgassert(m_bIsturnRestrictOn);
     pgassert(m_bIsGraphConstructed);
 
     for (const auto &index : vecIndex) {
-        auto edge = &m_edges[index];
+        auto edge = m_edges[index];
 
         extra_cost = getRestrictionCost(
                 cur_edge.edgeIndex(),
-                *edge, isStart);
+                edge, isStart);
 
-        if (edge->startNode() == cur_node) {
-            if (edge->cost() >= 0.0) {
-                if (isStart)
-                    totalCost = m_dCost[cur_edge.edgeIndex()].endCost +
-                        edge->cost() + extra_cost;
-                else
-                    totalCost = m_dCost[cur_edge.edgeIndex()].startCost +
-                        edge->cost() + extra_cost;
-                if (totalCost < m_dCost[index].endCost) {
-                    m_dCost[index].endCost = totalCost;
-                    parent[edge->edgeIndex()].v_pos[0] = (isStart?0:1);
-                    parent[edge->edgeIndex()].ed_ind[0] =
-                        cur_edge.edgeIndex();
-                    que.push(std::make_pair(totalCost,
-                                std::make_pair(edge->edgeIndex(), true)));
-                }
+        if ((edge.startNode() == cur_node) && (edge.cost() >= 0.0)) {
+            if (isStart) {
+                totalCost = m_dCost[cur_edge.edgeIndex()].endCost +
+                    edge.cost() + extra_cost;
+            } else {
+                totalCost = m_dCost[cur_edge.edgeIndex()].startCost +
+                    edge.cost() + extra_cost;
             }
-        } else {
-            if (edge->r_cost() >= 0.0) {
-                if (isStart)
-                    totalCost = m_dCost[cur_edge.edgeIndex()].endCost +
-                        edge->r_cost() + extra_cost;
-                else
-                    totalCost = m_dCost[cur_edge.edgeIndex()].startCost +
-                        edge->r_cost() + extra_cost;
-                if (totalCost < m_dCost[index].startCost) {
-                    m_dCost[index].startCost = totalCost;
-                    parent[edge->edgeIndex()].v_pos[1] = (isStart?0:1);
-                    parent[edge->edgeIndex()].ed_ind[1] =
-                        cur_edge.edgeIndex();
-                    que.push(std::make_pair(totalCost,
-                                std::make_pair(edge->edgeIndex(), false)));
-                }
+
+            if (totalCost < m_dCost[index].endCost) {
+                m_dCost[index].endCost = totalCost;
+                parent[edge.edgeIndex()].v_pos[0] = (isStart? 0 : 1);
+                parent[edge.edgeIndex()].ed_ind[0] =
+                    cur_edge.edgeIndex();
+                que.push(std::make_pair(totalCost,
+                            std::make_pair(edge.edgeIndex(), true)));
+            }
+        } else if ((edge.endNode() == cur_node) && (edge.r_cost() >= 0.0)) {
+            if (isStart) {
+                totalCost = m_dCost[cur_edge.edgeIndex()].endCost +
+                    edge.r_cost() + extra_cost;
+            } else {
+                totalCost = m_dCost[cur_edge.edgeIndex()].startCost +
+                    edge.r_cost() + extra_cost;
+            }
+
+            if (totalCost < m_dCost[index].startCost) {
+                m_dCost[index].startCost = totalCost;
+                parent[edge.edgeIndex()].v_pos[1] = (isStart? 0 : 1);
+                parent[edge.edgeIndex()].ed_ind[1] =
+                    cur_edge.edgeIndex();
+                que.push(std::make_pair(totalCost,
+                            std::make_pair(edge.edgeIndex(), false)));
             }
         }
-    }
+    }  // for
 }
 
 
@@ -393,7 +393,7 @@ Pgr_trspHandler::process_trsp(
         Path result(m_start_vertex, m_end_vertex);
         return result.renumber_vertices(m_min_id);;
     } 
-    
+
     pgassert(m_path.start_id() == m_start_vertex);
 
     if (cur_node == cur_edge->startNode()) {
