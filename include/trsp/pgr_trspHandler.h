@@ -119,10 +119,14 @@ class Pgr_trspHandler {
             bool isStart);
     bool addEdge(const pgr_edge_t edgeIn);
 
-    bool connectEdge(
-            int64_t firstEdge,
-            int64_t secondEdge_idx,
-            bool bIsStartNodeSame);
+    void connectStartEdge(
+            int64_t firstEdge_idx,
+            int64_t secondEdge_idx);
+
+    void connectEndEdge(
+            int64_t firstEdge_idx,
+            int64_t secondEdge_idx);
+
     double construct_path(int64_t ed_id, int64_t v_pos);
 
 
@@ -134,8 +138,14 @@ class Pgr_trspHandler {
  private:
     
     std::vector<EdgeInfo> m_edges;
+
+    /**
+     * Used only to veryfy that there are no reppetitions inserted
+     * the way it orks, repeating edges id is not allowed
+     */
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
-    /*
+
+    /**
      * m_adjacency[vertex] = {edges}
      */
     std::map<int64_t, std::vector<int64_t>> m_adjacency;

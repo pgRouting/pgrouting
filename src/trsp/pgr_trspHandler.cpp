@@ -441,70 +441,54 @@ void Pgr_trspHandler::construct_graph(
         }
         addEdge(*current_edge);
     }
+    m_mapEdgeId2Index.clear();
     m_bIsGraphConstructed = true;
 }
 
 
 // -------------------------------------------------------------------------
-bool Pgr_trspHandler::connectEdge(
+void Pgr_trspHandler::connectStartEdge(
         int64_t firstEdge_idx,
-        int64_t secondEdge_idx,
-        bool bIsStartNodeSame) {
+        int64_t secondEdge_idx) {
     EdgeInfo &firstEdge = m_edges[firstEdge_idx];
     EdgeInfo &secondEdge = m_edges[secondEdge_idx];
 
-    if (bIsStartNodeSame) {
-        if (firstEdge.r_cost() >= 0.0) {
-            firstEdge.connect_startEdge(secondEdge.edgeIndex());
-#if 0
-            firstEdge.startConnectedEdge().push_back(
-                    secondEdge.edgeIndex());
-#endif
-        }
-
-        if (firstEdge.startNode() == secondEdge.startNode()) {
-            if (secondEdge.r_cost() >= 0.0)
-                secondEdge.connect_startEdge(firstEdge.edgeIndex());
-#if 0
-                secondEdge.startConnectedEdge().push_back(
-                        firstEdge.edgeIndex());
-#endif
-        } else {
-            pgassert(firstEdge.startNode() == secondEdge.endNode());
-            if (secondEdge.cost() >= 0.0) {
-                secondEdge.connect_endEdge(firstEdge.edgeIndex());
-#if 0
-                secondEdge.endConnedtedEdge().push_back(
-                        firstEdge.edgeIndex());
-#endif
-            }
-        }
-    } else {
-        if (firstEdge.cost() >= 0.0) {
-            firstEdge.connect_endEdge(secondEdge.edgeIndex());
-#if 0
-            firstEdge.endConnedtedEdge().push_back(secondEdge.edgeIndex());
-#endif
-        }
-        if (firstEdge.endNode() == secondEdge.startNode()) {
-            if (secondEdge.r_cost() >= 0.0) {
-                secondEdge.connect_startEdge(firstEdge.edgeIndex());
-#if 0
-                secondEdge.startConnectedEdge().push_back(
-                        firstEdge.edgeIndex());
-#endif
-            }
-        } else {
-            if (secondEdge.cost() >= 0.0) {
-                secondEdge.connect_endEdge(firstEdge.edgeIndex());
-#if 0
-                secondEdge.endConnedtedEdge().push_back(
-                        firstEdge.edgeIndex());
-#endif
-            }
-        }
+    if (firstEdge.r_cost() >= 0.0) {
+        firstEdge.connect_startEdge(secondEdge_idx);
     }
-    return true;
+
+    if (firstEdge.startNode() == secondEdge.startNode()
+            && secondEdge.r_cost() >= 0.0) {
+            secondEdge.connect_startEdge(firstEdge_idx);
+    }
+
+    if (firstEdge.startNode() == secondEdge.endNode()
+            &&secondEdge.cost() >= 0.0) {
+        secondEdge.connect_endEdge(firstEdge_idx);
+    }
+}
+
+
+// -------------------------------------------------------------------------
+void Pgr_trspHandler::connectEndEdge(
+        int64_t firstEdge_idx,
+        int64_t secondEdge_idx) {
+    EdgeInfo &firstEdge = m_edges[firstEdge_idx];
+    EdgeInfo &secondEdge = m_edges[secondEdge_idx];
+
+    if (firstEdge.cost() >= 0.0) {
+        firstEdge.connect_endEdge(secondEdge_idx);
+    }
+
+    if (firstEdge.endNode() == secondEdge.startNode()
+            && secondEdge.r_cost() >= 0.0) {
+        secondEdge.connect_startEdge(firstEdge_idx);
+    }
+
+    if (firstEdge.endNode() == secondEdge.endNode()
+            && secondEdge.cost() >= 0.0) {
+        secondEdge.connect_endEdge(firstEdge_idx);
+    }
 }
 
 
@@ -512,6 +496,10 @@ bool Pgr_trspHandler::connectEdge(
 bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
     /*
      * The edge was already inserted
+     *
+     * If the user has rows with repeated edge id, the subsequent edges will be ignored
+     *
+     * When changing to boost graph, the additional edges are to be added
      */
     if (m_mapEdgeId2Index.find(edgeIn.id) != m_mapEdgeId2Index.end()) {
         return false;
@@ -519,14 +507,17 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
 
 
     /*
-     * the index of this edge in the edges container is
-     *  - m_edges.size()
+     * the index of this new edge in the edges container is
+     *  m_edges.size()
      */
     EdgeInfo edge(edgeIn, m_edges.size());
 
     // Adding edge to the list
-    m_mapEdgeId2Index.insert(std::make_pair(edge.edgeID(),
+    m_mapEdgeId2Index.insert(
+            std::make_pair(
+                edge.edgeID(),
                 m_edges.size()));
+
     m_edges.push_back(edge);
 
     EdgeInfo &newEdge = m_edges[m_edges.size()-1];
@@ -543,10 +534,16 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
         // connectEdge(
         int64_t lEdgeCount = itNodeMap->second.size();
         int64_t lEdgeIndex;
+#if 0
         for (lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++) {
             auto lEdge = itNodeMap->second.at(lEdgeIndex);
-            connectEdge(edge.edgeIndex(), lEdge, true);
+            connectStartEdge(edge.edgeIndex(), lEdge);
         }
+#else
+        for (const auto e_idx : itNodeMap->second) {
+            connectStartEdge(edge.edgeIndex(), e_idx);
+        }
+#endif
     }
 
 
@@ -557,10 +554,16 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
         // connectEdge(
         int64_t lEdgeCount = itNodeMap->second.size();
         int64_t lEdgeIndex;
+#if 0
         for (lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++) {
             auto lEdge = itNodeMap->second.at(lEdgeIndex);
-            connectEdge(edge.edgeIndex(), lEdge, false);
+            connectEndEdge(edge.edgeIndex(), lEdge);
         }
+#else
+        for (const auto e_idx : itNodeMap->second) {
+            connectEndEdge(edge.edgeIndex(), e_idx);
+        }
+#endif
     }
 
 
@@ -568,15 +571,6 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
     // Add this node and edge into the data structure
     m_adjacency[edgeIn.source].push_back(newEdge.edgeIndex());
     m_adjacency[edgeIn.target].push_back(newEdge.edgeIndex());
-
-
-#if 0
-    // Adding edge to the list
-    m_mapEdgeId2Index.insert(std::make_pair(newEdge.edgeID(),
-                m_edges.size()));
-    m_edges.push_back(newEdge);
-#endif
-    //
 
 
     return true;
