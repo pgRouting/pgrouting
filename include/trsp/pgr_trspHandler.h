@@ -90,19 +90,6 @@ class Pgr_trspHandler {
             const int64_t end_vertex);
 
 
-#if 0
-    Path initializeAndProcess(
-            pgr_edge_t *edges,
-            size_t edge_count,
-
-            const std::vector<Rule> &ruleList,
-
-            const int64_t start_vertex,
-            const int64_t end_vertex,
-
-            bool directed);
-#endif
-
     void clear();
 
  private:

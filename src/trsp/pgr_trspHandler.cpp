@@ -299,69 +299,6 @@ Pgr_trspHandler::process(
     return process_trsp(m_edges.size());
 }
 
-#if 0
-
-/** initializeAndProcess
- *
- * Acts as initializer and processing
- *
- */
-Path
-Pgr_trspHandler::initializeAndProcess(
-        pgr_edge_t *edges,
-        size_t edge_count,
-
-        const std::vector<Rule> &ruleList,
-
-        const int64_t start_vertex,
-        const int64_t end_vertex,
-
-        bool directed) {
-    /*
-     * Preconditions
-     */
-    pgassert(!m_bIsturnRestrictOn);
-
-    m_start_vertex = start_vertex;
-    m_end_vertex = end_vertex;
-
-    initialize_restrictions(ruleList);
-
-    m_min_id = renumber_edges(edges, edge_count);
-    m_start_vertex -= m_min_id;
-    m_end_vertex -= m_min_id;
-    
-    Path tmp(m_start_vertex, m_end_vertex);
-    m_path = tmp;
-
-    construct_graph(edges, edge_count, directed);
-
-    if (m_mapNodeId2Edge.find(m_start_vertex) == m_mapNodeId2Edge.end()) {
-#if 0
-        *err_msg = (char *)"Source Not Found";
-        clear();
-#endif
-        return Path();
-    }
-
-    if (m_mapNodeId2Edge.find(m_end_vertex) == m_mapNodeId2Edge.end()) {
-#if 0
-        *err_msg = (char *)"Destination Not Found";
-        clear();
-#endif
-        return Path();
-    }
-
-    /*
-     * Post-conditions
-     */
-    pgassert(m_bIsGraphConstructed);
-    pgassert(m_bIsturnRestrictOn);
-
-    return process_trsp(edge_count);
-}
-#endif
-
 
 
 
