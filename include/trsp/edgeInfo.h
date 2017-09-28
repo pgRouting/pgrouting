@@ -71,8 +71,14 @@ class EdgeInfo {
          m_startConnectedEdge.push_back(edge_idx);
      }
 
-     std::vector<size_t>& endConnedtedEdge() {return m_endConnectedEdge;}
-     std::vector<size_t>& startConnectedEdge() {return m_startConnectedEdge;}
+     std::vector<size_t> endConnectedEdge() const {return m_endConnectedEdge;}
+     std::vector<size_t> startConnectedEdge() const {return m_startConnectedEdge;}
+
+     std::vector<size_t> get_idx(bool isStart) const {
+         return isStart ?
+             startConnectedEdge() :
+             endConnectedEdge();
+     }
 
 
  private:

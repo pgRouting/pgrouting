@@ -110,8 +110,10 @@ class Pgr_trspHandler {
 
 
 
-    void explore(int64_t cur_node, const EdgeInfo cur_edge, bool isStart,
-            const std::vector<size_t> &vecIndex);
+    void explore(
+            int64_t cur_node,
+            const EdgeInfo cur_edge,
+            bool isStart);
 
     double getRestrictionCost(
             int64_t cur_node,
@@ -139,6 +141,10 @@ class Pgr_trspHandler {
             size_t e_idx,
             bool isStart);
 
+    double get_tot_cost(
+            double cost,
+            size_t edge_idx,
+            bool isStart);
 
  private:
     
