@@ -86,10 +86,6 @@ class Pgr_trspHandler {
     Pgr_trspHandler(void);
     ~Pgr_trspHandler(void) = default;
 
-#if 0
-    int my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
-                    size_t edge_count);
-#endif
 
     Path initializeAndProcess(
             pgr_edge_t *edges,
