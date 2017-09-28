@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "cpp_common/basePath_SSEC.hpp"
-//#include "c_types/trsp_types.h"
 #include "trsp/edgeInfo.h"
 #include "trsp/rule.h"
 
@@ -51,9 +50,11 @@ namespace trsp {
 
 class Pgr_trspHandler {
 
-    typedef std::pair<int64_t, bool> PIB;
-    typedef std::pair<double, PIB> PDP;
-    typedef std::vector<EdgeInfo> GraphEdgeVector;
+
+    /*
+     * Used in the priority queue
+     */
+    typedef std::pair<double, std::pair<int64_t, bool>> PDP;
 
     typedef struct {
         int64_t ed_ind[2];
@@ -143,7 +144,7 @@ class Pgr_trspHandler {
 
 
  private:
-    GraphEdgeVector m_vecEdgeVector;
+    std::vector<EdgeInfo> m_vecEdgeVector;
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
     std::map<int64_t, std::vector<int64_t>> m_mapNodeId2Edge;
 
@@ -167,6 +168,10 @@ class Pgr_trspHandler {
     RuleTable m_ruleTable;
     bool m_bIsturnRestrictOn;
     bool m_bIsGraphConstructed;
+
+    /*
+     * priority queue
+     */
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
 };
 
