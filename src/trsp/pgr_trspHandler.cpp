@@ -447,9 +447,12 @@ void Pgr_trspHandler::construct_graph(
 
 // -------------------------------------------------------------------------
 bool Pgr_trspHandler::connectEdge(
-        EdgeInfo& firstEdge,
-        EdgeInfo& secondEdge,
+        int64_t firstEdge_idx,
+        int64_t secondEdge_idx,
         bool bIsStartNodeSame) {
+    EdgeInfo &firstEdge = m_edges[firstEdge_idx];
+    EdgeInfo &secondEdge = m_edges[secondEdge_idx];
+
     if (bIsStartNodeSame) {
         if (firstEdge.r_cost() >= 0.0) {
             firstEdge.connect_startEdge(secondEdge.edgeIndex());
@@ -519,7 +522,15 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
      * the index of this edge in the edges container is
      *  - m_edges.size()
      */
-    EdgeInfo newEdge(edgeIn, m_edges.size());
+    EdgeInfo edge(edgeIn, m_edges.size());
+
+    // Adding edge to the list
+    m_mapEdgeId2Index.insert(std::make_pair(edge.edgeID(),
+                m_edges.size()));
+    m_edges.push_back(edge);
+
+    EdgeInfo &newEdge = m_edges[m_edges.size()-1];
+
 
 
     /*
@@ -533,8 +544,8 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
         int64_t lEdgeCount = itNodeMap->second.size();
         int64_t lEdgeIndex;
         for (lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++) {
-            int64_t lEdge = itNodeMap->second.at(lEdgeIndex);
-            connectEdge(newEdge, m_edges[lEdge], true);
+            auto lEdge = itNodeMap->second.at(lEdgeIndex);
+            connectEdge(edge.edgeIndex(), lEdge, true);
         }
     }
 
@@ -547,8 +558,8 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
         int64_t lEdgeCount = itNodeMap->second.size();
         int64_t lEdgeIndex;
         for (lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++) {
-            int64_t lEdge = itNodeMap->second.at(lEdgeIndex);
-            connectEdge(newEdge, m_edges[lEdge], false);
+            auto lEdge = itNodeMap->second.at(lEdgeIndex);
+            connectEdge(edge.edgeIndex(), lEdge, false);
         }
     }
 
@@ -559,11 +570,12 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
     m_adjacency[edgeIn.target].push_back(newEdge.edgeIndex());
 
 
+#if 0
     // Adding edge to the list
     m_mapEdgeId2Index.insert(std::make_pair(newEdge.edgeID(),
                 m_edges.size()));
     m_edges.push_back(newEdge);
-
+#endif
     //
 
 
