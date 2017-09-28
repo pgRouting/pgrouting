@@ -137,7 +137,7 @@ class Pgr_trspHandler {
             double total_cost);
 
     double construct_path(int64_t ed_id, int64_t v_pos);
-    void init();
+
     int64_t renumber_edges(
             pgr_edge_t *edges,
             const size_t edge_count) const;
@@ -148,19 +148,19 @@ class Pgr_trspHandler {
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
     std::map<int64_t, std::vector<int64_t>> m_mapNodeId2Edge;
 
-    int64_t max_node_id;
-    int64_t max_edge_id;
-    int64_t m_lStartEdgeId;
-    int64_t m_lEndEdgeId;
-    double m_dStartpart;
-    double m_dEndPart;
-    bool isStartVirtual;
-    bool isEndVirtual;
+    int64_t m_max_node_id;
+    int64_t m_max_edge_id;
+    int64_t m_startEdgeId;
+    int64_t m_endEdgeId;
+    double m_startpart;
+    double m_endPart;
+
     int64_t m_start_vertex;
     int64_t m_end_vertex;
+
     int64_t m_min_id;
 
-    Path m_vecPath;
+    Path m_path;
 
     std::vector<Predecessor> parent;
     std::vector<CostHolder> m_dCost;
