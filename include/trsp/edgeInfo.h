@@ -38,6 +38,8 @@ namespace trsp {
 
 class EdgeInfo {
  public:
+     EdgeInfo() = default;
+
      EdgeInfo(
              pgr_edge_t edgeIn,
              size_t edgeIndex);

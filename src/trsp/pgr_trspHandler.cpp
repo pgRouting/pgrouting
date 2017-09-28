@@ -334,32 +334,33 @@ void  Pgr_trspHandler::initialize_que() {
     }
 }
 
-EdgeInfo* Pgr_trspHandler::dijkstra_exploration(
-        EdgeInfo* cur_edge,
-        int64_t  &cur_node) {
+EdgeInfo Pgr_trspHandler::dijkstra_exploration() {
+    EdgeInfo cur_edge;
+    pgassert(current_node == m_start_vertex);
+
     while (!que.empty()) {
         auto cur_pos = que.top();
         que.pop();
 
         auto cured_index = cur_pos.second.first;
-        cur_edge = &m_edges[cured_index];
+        cur_edge = m_edges[cured_index];
 
         if (cur_pos.second.second) {
             /*
              * explore edges connected to end node
              */
-            cur_node = cur_edge->endNode();
-            if (cur_edge->cost() < 0.0) continue;
-            if (cur_node == m_end_vertex) break;
-            explore(cur_node, *cur_edge, true, cur_edge->endConnedtedEdge());
+            current_node = cur_edge.endNode();
+            if (cur_edge.cost() < 0.0) continue;
+            if (current_node == m_end_vertex) break;
+            explore(current_node, cur_edge, true, cur_edge.endConnedtedEdge());
         } else {
             /*
              *  explore edges connected to start node
              */
-            cur_node = cur_edge->startNode();
-            if (cur_edge->r_cost() < 0.0) continue;
-            if (cur_node == m_end_vertex) break;
-            explore(cur_node, *cur_edge, false, cur_edge->startConnectedEdge());
+            current_node = cur_edge.startNode();
+            if (cur_edge.r_cost() < 0.0) continue;
+            if (current_node == m_end_vertex) break;
+            explore(current_node, cur_edge, false, cur_edge.startConnectedEdge());
         }
     }
     return cur_edge;
@@ -381,25 +382,24 @@ Pgr_trspHandler::process_trsp(
 
     initialize_que();
 
-    EdgeInfo* cur_edge = NULL;
-    int64_t cur_node;
+    current_node = m_start_vertex;
 
     pgassert(m_path.start_id() == m_start_vertex);
 
-    cur_edge = dijkstra_exploration(cur_edge, cur_node);
+    auto cur_edge = dijkstra_exploration();
 
     pgassert(m_path.start_id() == m_start_vertex);
-    if (cur_node != m_end_vertex) {
+    if (current_node != m_end_vertex) {
         Path result(m_start_vertex, m_end_vertex);
         return result.renumber_vertices(m_min_id);;
     } 
 
     pgassert(m_path.start_id() == m_start_vertex);
 
-    if (cur_node == cur_edge->startNode()) {
-        construct_path(cur_edge->edgeIndex(), 1);
+    if (current_node == cur_edge.startNode()) {
+        construct_path(cur_edge.edgeIndex(), 1);
     } else {
-        construct_path(cur_edge->edgeIndex(), 0);
+        construct_path(cur_edge.edgeIndex(), 0);
     }
 
     Path_t pelement;

@@ -106,9 +106,7 @@ class Pgr_trspHandler {
     Path process_trsp(
             size_t edge_count);
 
-    EdgeInfo* dijkstra_exploration(
-            EdgeInfo* cur_edge,
-            int64_t &cur_node);
+    EdgeInfo dijkstra_exploration();
 
 
 
@@ -120,6 +118,7 @@ class Pgr_trspHandler {
             const EdgeInfo &new_edge,
             bool isStart);
     bool addEdge(const pgr_edge_t edgeIn);
+
     bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,
             bool bIsStartNodeSame);
     double construct_path(int64_t ed_id, int64_t v_pos);
@@ -136,10 +135,6 @@ class Pgr_trspHandler {
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
     std::map<int64_t, std::vector<int64_t>> m_mapNodeId2Edge;
 
-#if 0
-    int64_t m_max_node_id;
-    int64_t m_max_edge_id;
-#endif
     int64_t m_startEdgeId;
     int64_t m_endEdgeId;
     double m_startpart;
@@ -147,6 +142,11 @@ class Pgr_trspHandler {
 
     int64_t m_start_vertex;
     int64_t m_end_vertex;
+
+    /*
+     * Used in dijkstra_exploration
+     */
+    int64_t current_node;
 
     int64_t m_min_id;
 
