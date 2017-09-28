@@ -51,8 +51,12 @@ int do_trsp(
 
         General_path_element_t **return_tuples,
         size_t *return_count,
+        char **log_msg,
+        char **notice_msg,
         char **err_msg) {
+    std::ostringstream log;
     std::ostringstream err;
+    std::ostringstream notice;
     try {
         pgassert(*return_tuples == NULL);
         pgassert(*return_count == 0);
@@ -68,7 +72,7 @@ int do_trsp(
         std::vector<pgrouting::trsp::PDVI> ruleTable;
         for (size_t i = 0; i < restrictions_size; ++ i) {
             std::vector<int64_t> vias(restrictions[i].via, restrictions[i].via + restrictions[i].via_size);
-            std::rotate(vias.begin(), vias.begin() + 1, vias.end()); 
+            std::reverse(vias.begin(), vias.end()); 
             PDVI rule = std::make_pair(restrictions[i].cost, vias);
             ruleTable.push_back(rule);
         }
@@ -78,14 +82,14 @@ int do_trsp(
         std::deque<Path> paths;
 
         paths.push_back(gdef.initializeAndProcess(
-                edges,
-                total_edges,
-                ruleTable,
-                ruleList,
-                start_vertex,
-                end_vertex,
-                directed,
-                err_msg));
+                    edges,
+                    total_edges,
+                    ruleTable,
+                    ruleList,
+                    start_vertex,
+                    end_vertex,
+                    directed,
+                    err_msg));
 
 
         size_t count(0);
@@ -104,14 +108,25 @@ int do_trsp(
 
 
         return EXIT_SUCCESS;
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch(...) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
-    catch(std::exception& e) {
-        *err_msg = (char *) e.what();
-        return -1;
-    }
-    catch(...) {
-        *err_msg = (char *) "Caught unknown exception!";
-        return -1;
-    }
+    return -1;
 }
 

@@ -50,8 +50,11 @@ int do_trsp(
 
     General_path_element_t **return_tuples,
     size_t *return_count,
+
+    char **log_msg,
+    char **notice_msg,
     char **err_msg
-);
+    );
 
 
 #ifdef __cplusplus

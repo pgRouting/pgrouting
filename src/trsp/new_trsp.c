@@ -68,7 +68,7 @@ void compute_trsp(
     PGR_DBG("total restrictions read %ld", total_restrictions);
 
     for (uint64_t i = 0; i < total_restrictions; ++i) {
-        PGR_DBG("%ld: restriction[%ld], %ld", i, restrictions[i].id, restrictions[i].cost);
+        PGR_DBG("%ld: restriction[%ld], %f", i, restrictions[i].id, restrictions[i].cost);
         PGR_DBG("    edges %d", restrictions[i].via_size);
 
         for (uint64_t j = 0; j < restrictions[i].via_size; ++j) {
@@ -97,6 +97,8 @@ void compute_trsp(
             directed,
             path,
             path_count,
+            &log_msg,
+            &notice_msg,
             &err_msg);
     time_msg("processing _pgr_trsp", start_t, clock());
 

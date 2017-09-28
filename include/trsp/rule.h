@@ -41,7 +41,9 @@ class Rule {
     Rule(Restriction_t r) :
         m_cost(r.cost),
         m_precedencelist(r.via, r.via + r.via_size) {
-
+            m_dest_id = m_precedencelist.back();
+            m_precedencelist.pop_back();
+            std::reverse(m_precedencelist.begin(), m_precedencelist.end());
         }
 
     Rule(double p_cost, std::vector<int64_t> p) :
@@ -51,17 +53,19 @@ class Rule {
     std::vector<int64_t> precedencelist() const {
         return m_precedencelist;
     }
-    int64_t dest_id() const {return m_precedencelist.back();};
+    int64_t dest_id() const {return m_dest_id;};
 
 
     friend std::ostream& operator<<(std::ostream& log, const Rule &r) {
         log << r.m_cost << ", (";
         for (const auto e : r.m_precedencelist) {
-        log << e << ",";
+            log << e << ",";
         }
+        log << ")";
         return log;
     }
  private:
+    int64_t m_dest_id;
     double m_cost;
     std::vector<int64_t> m_precedencelist;
 };

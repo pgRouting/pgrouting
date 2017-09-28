@@ -355,6 +355,8 @@ int Pgr_trspHandler::my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
 int Pgr_trspHandler::initialize_restrictions(
         const std::vector<PDVI> &ruleList,
         const std::vector<Rule> &ruleList1) {
+
+#if 0
     m_ruleTable.clear();
     LongVector vecsource;
     for (const auto &rule : ruleList) {
@@ -377,14 +379,41 @@ int Pgr_trspHandler::initialize_restrictions(
         }
     }
     std::ostringstream log;
-    for (const auto &rule : m_ruleTable) {
-        //log << rule.second;
+    log << "m_ruleTable\n";
+    for (const auto &rules : m_ruleTable) {
+        log << rules.first; 
+        for (const auto &rule : rules.second) {
+            log << rule;
+        } 
+    }
+    log << "\n";
+    log << "m_ruleList\n";
+    for (const auto &rule : ruleList) {
+        for (const auto &e : rule.second) {
+            log << e << ",";
+        } 
     } 
     log << "\n";
+    log << "m_ruleList1\n";
     for (const auto &rule : ruleList1) {
         log << rule;
     } 
-    pgassertwm(false, log.str().c_str());
+    log << "\n";
+    RuleTable temp;
+#else
+    for (const auto rule : ruleList1) {
+        auto dest_edge_id = rule.dest_id();
+        if (m_ruleTable.find(dest_edge_id) != m_ruleTable.end()) {
+            m_ruleTable[dest_edge_id].push_back(rule);
+        } else {
+            std::vector<Rule> r;
+            r.push_back(rule);
+            m_ruleTable.insert(std::make_pair(dest_edge_id, r));
+        }
+    }
+#endif
+
+
 
     m_bIsturnRestrictOn = true;
     return true;
