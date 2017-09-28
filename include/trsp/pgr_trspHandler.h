@@ -120,11 +120,8 @@ class Pgr_trspHandler {
     bool addEdge(const pgr_edge_t edgeIn);
     bool connectEdge(EdgeInfo& firstEdge, EdgeInfo& secondEdge,
             bool bIsStartNodeSame);
-#if 0
-    Path get_single_cost(
-            double total_cost);
-#endif
     double construct_path(int64_t ed_id, int64_t v_pos);
+
 
     int64_t renumber_edges(
             pgr_edge_t *edges,
