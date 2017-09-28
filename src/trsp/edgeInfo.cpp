@@ -33,9 +33,9 @@ EdgeInfo::EdgeInfo(
             pgr_edge_t edgeIn,
             size_t edgeIndex) :
         m_edge(edgeIn),
-        m_lEdgeIndex(edgeIndex),
-        m_vecStartConnectedEdge(),
-        m_vecEndConnedtedEdge()
+        m_edgeIndex(edgeIndex),
+        m_startConnectedEdge(),
+        m_endConnectedEdge()
 
         {}
 

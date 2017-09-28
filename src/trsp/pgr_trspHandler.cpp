@@ -288,11 +288,11 @@ Pgr_trspHandler::process(
     Path tmp(m_start_vertex, m_end_vertex);
     m_path = tmp;
 
-    if (m_mapNodeId2Edge.find(m_start_vertex) == m_mapNodeId2Edge.end()) {
+    if (m_adjacency.find(m_start_vertex) == m_adjacency.end()) {
         return Path();
     }
 
-    if (m_mapNodeId2Edge.find(m_end_vertex) == m_mapNodeId2Edge.end()) {
+    if (m_adjacency.find(m_end_vertex) == m_adjacency.end()) {
         return Path();
     }
 
@@ -311,7 +311,7 @@ void  Pgr_trspHandler::initialize_que() {
     /*
      * For each adjacent edge to the start_vertex
      */
-    for (const auto &source : m_mapNodeId2Edge[m_start_vertex]) {
+    for (const auto &source : m_adjacency[m_start_vertex]) {
         auto cur_edge = &m_edges[source];
         if (cur_edge->startNode() == m_start_vertex) {
             if (cur_edge->cost() >= 0.0) {
@@ -446,32 +446,59 @@ void Pgr_trspHandler::construct_graph(
 
 
 // -------------------------------------------------------------------------
-bool Pgr_trspHandler::connectEdge(EdgeInfo& firstEdge,
-        EdgeInfo& secondEdge, bool bIsStartNodeSame) {
+bool Pgr_trspHandler::connectEdge(
+        EdgeInfo& firstEdge,
+        EdgeInfo& secondEdge,
+        bool bIsStartNodeSame) {
     if (bIsStartNodeSame) {
-        if (firstEdge.r_cost() >= 0.0)
+        if (firstEdge.r_cost() >= 0.0) {
+            firstEdge.connect_startEdge(secondEdge.edgeIndex());
+#if 0
             firstEdge.startConnectedEdge().push_back(
                     secondEdge.edgeIndex());
+#endif
+        }
+
         if (firstEdge.startNode() == secondEdge.startNode()) {
             if (secondEdge.r_cost() >= 0.0)
+                secondEdge.connect_startEdge(firstEdge.edgeIndex());
+#if 0
                 secondEdge.startConnectedEdge().push_back(
                         firstEdge.edgeIndex());
+#endif
         } else {
-            if (secondEdge.cost() >= 0.0)
+            pgassert(firstEdge.startNode() == secondEdge.endNode());
+            if (secondEdge.cost() >= 0.0) {
+                secondEdge.connect_endEdge(firstEdge.edgeIndex());
+#if 0
                 secondEdge.endConnedtedEdge().push_back(
                         firstEdge.edgeIndex());
+#endif
+            }
         }
     } else {
-        if (firstEdge.cost() >= 0.0)
+        if (firstEdge.cost() >= 0.0) {
+            firstEdge.connect_endEdge(secondEdge.edgeIndex());
+#if 0
             firstEdge.endConnedtedEdge().push_back(secondEdge.edgeIndex());
+#endif
+        }
         if (firstEdge.endNode() == secondEdge.startNode()) {
-            if (secondEdge.r_cost() >= 0.0)
+            if (secondEdge.r_cost() >= 0.0) {
+                secondEdge.connect_startEdge(firstEdge.edgeIndex());
+#if 0
                 secondEdge.startConnectedEdge().push_back(
                         firstEdge.edgeIndex());
+#endif
+            }
         } else {
-            if (secondEdge.cost() >= 0.0)
+            if (secondEdge.cost() >= 0.0) {
+                secondEdge.connect_endEdge(firstEdge.edgeIndex());
+#if 0
                 secondEdge.endConnedtedEdge().push_back(
                         firstEdge.edgeIndex());
+#endif
+            }
         }
     }
     return true;
@@ -480,18 +507,27 @@ bool Pgr_trspHandler::connectEdge(EdgeInfo& firstEdge,
 
 // -------------------------------------------------------------------------
 bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
+    /*
+     * The edge was already inserted
+     */
     if (m_mapEdgeId2Index.find(edgeIn.id) != m_mapEdgeId2Index.end()) {
         return false;
     }
 
 
+    /*
+     * the index of this edge in the edges container is
+     *  - m_edges.size()
+     */
     EdgeInfo newEdge(edgeIn, m_edges.size());
 
 
-    // Searching the start node for connectivity
-    auto itNodeMap = m_mapNodeId2Edge.find(
-            edgeIn.source);
-    if (itNodeMap != m_mapNodeId2Edge.end()) {
+    /*
+     *  Searching the start node for connectivity
+     */
+    auto itNodeMap = m_adjacency.find(edgeIn.source);
+
+    if (itNodeMap != m_adjacency.end()) {
         // Connect current edge with existing edge with start node
         // connectEdge(
         int64_t lEdgeCount = itNodeMap->second.size();
@@ -504,8 +540,8 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
 
 
     // Searching the end node for connectivity
-    itNodeMap = m_mapNodeId2Edge.find(edgeIn.target);
-    if (itNodeMap != m_mapNodeId2Edge.end()) {
+    itNodeMap = m_adjacency.find(edgeIn.target);
+    if (itNodeMap != m_adjacency.end()) {
         // Connect current edge with existing edge with end node
         // connectEdge(
         int64_t lEdgeCount = itNodeMap->second.size();
@@ -519,8 +555,8 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
 
 
     // Add this node and edge into the data structure
-    m_mapNodeId2Edge[edgeIn.source].push_back(newEdge.edgeIndex());
-    m_mapNodeId2Edge[edgeIn.target].push_back(newEdge.edgeIndex());
+    m_adjacency[edgeIn.source].push_back(newEdge.edgeIndex());
+    m_adjacency[edgeIn.target].push_back(newEdge.edgeIndex());
 
 
     // Adding edge to the list
@@ -534,6 +570,25 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
     return true;
 }
 
+#if 0
+bool Pgr_trspHandler::addAdjacenyList(
+        int64_t node_id,
+        int64_t edge_id,
+        bool isSource) {
+    // Searching the end node for connectivity
+    auto itNodeMap = m_adjacency.find(node_id);
+
+    if (itNodeMap != m_adjacency.end()) {
+        auto lEdgeCount = itNodeMap->second.size();
+        int64_t lEdgeIndex;
+        for (lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++) {
+            int64_t lEdge = itNodeMap->second.at(lEdgeIndex);
+            connectEdge(newEdge, m_edges[lEdge], false);
+        }
+    }
+    m_adjacency[edgeIn.source].push_back(newEdge.edgeIndex());
+}
+#endif
 
 
 }  // namespace trsp  

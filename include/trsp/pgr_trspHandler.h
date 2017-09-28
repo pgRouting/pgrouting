@@ -133,7 +133,10 @@ class Pgr_trspHandler {
     
     std::vector<EdgeInfo> m_edges;
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
-    std::map<int64_t, std::vector<int64_t>> m_mapNodeId2Edge;
+    /*
+     * m_adjacency[vertex] = {edges}
+     */
+    std::map<int64_t, std::vector<int64_t>> m_adjacency;
 
     int64_t m_startEdgeId;
     int64_t m_endEdgeId;
