@@ -78,13 +78,16 @@ class Pgr_trspHandler {
     Pgr_trspHandler(
             pgr_edge_t *edges,
             const size_t edge_count,
-            const int64_t start_vertex,
-            const int64_t end_vertex,
             const bool directed,
             const std::vector<Rule> &ruleList);
 
     Pgr_trspHandler(void);
     ~Pgr_trspHandler(void) = default;
+
+
+    Path process(
+            const int64_t start_vertex,
+            const int64_t end_vertex);
 
 
     Path initializeAndProcess(

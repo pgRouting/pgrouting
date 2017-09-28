@@ -53,8 +53,8 @@ void compute_trsp(
         int64_t end_id,
         bool directed,
 
-        General_path_element_t **path,
-        size_t *path_count) {
+        General_path_element_t **result_tuples,
+        size_t *result_count) {
     pgr_SPI_connect();
 
     pgr_edge_t *edges = NULL;
@@ -85,7 +85,7 @@ void compute_trsp(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    int ret = do_trsp(
+    do_trsp(
             edges,
             total_edges,
            
@@ -95,26 +95,20 @@ void compute_trsp(
             start_id,
             end_id,
             directed,
-            path,
-            path_count,
+            result_tuples,
+            result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
     time_msg("processing _pgr_trsp", start_t, clock());
 
-
-    PGR_DBG("Message received from inside:");
-    PGR_DBG("%s", err_msg);
-
-    PGR_DBG("ret = %i\n", ret);
-
-    PGR_DBG("*path_count = %ld\n", *path_count);
-
-    if (ret < 0) {
-        // elog(ERROR, "Error computing path: %s", err_msg);
-        ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-                    errmsg("Error computing path: %s", err_msg)));
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
 
     pgr_SPI_finish();
 }

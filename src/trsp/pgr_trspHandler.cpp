@@ -41,8 +41,6 @@ namespace trsp {
 Pgr_trspHandler::Pgr_trspHandler(
         pgr_edge_t *edges,
         const size_t edge_count,
-        const int64_t start_vertex, 
-        const int64_t end_vertex,
         const bool directed,
         const std::vector<Rule> &ruleList) :
     m_max_node_id(0),
@@ -51,22 +49,28 @@ Pgr_trspHandler::Pgr_trspHandler(
     m_endEdgeId(0),
     m_startpart(0.0),
     m_endPart(0.0),
-    m_start_vertex(start_vertex),
-    m_end_vertex(end_vertex),
     m_ruleTable(),
     m_bIsturnRestrictOn(false),
     m_bIsGraphConstructed(false)
 {
-    initialize_restrictions(
-            ruleList);
-    construct_graph(edges,
+    pgassert(!m_bIsturnRestrictOn);
+    pgassert(!m_bIsGraphConstructed);
+
+    initialize_restrictions( ruleList);
+
+    m_min_id = renumber_edges(edges, edge_count);
+
+    construct_graph(
+            edges,
             edge_count,
             directed);
+
     pgassert(m_bIsturnRestrictOn);
     pgassert(m_bIsGraphConstructed);
 }
 
 
+// -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 Pgr_trspHandler::Pgr_trspHandler(void) {
     m_startEdgeId = -1;
@@ -109,7 +113,6 @@ int64_t Pgr_trspHandler::renumber_edges(
 
 // -------------------------------------------------------------------------
 void Pgr_trspHandler::clear() {
-    m_edges.clear();
     parent.clear();
     m_dCost.clear();
 }
@@ -263,6 +266,40 @@ int Pgr_trspHandler::initialize_restrictions(
     return true;
 }
 
+/** process
+ *
+ * does the processisng
+ *
+ */
+Path
+Pgr_trspHandler::process(
+        const int64_t start_vertex,
+        const int64_t end_vertex) {
+    /*
+     * Preconditions
+     */
+    pgassert(m_bIsturnRestrictOn);
+    pgassert(m_bIsGraphConstructed);
+
+    m_start_vertex = start_vertex - m_min_id;
+    m_end_vertex = end_vertex - m_min_id ;
+
+    Path tmp(m_start_vertex, m_end_vertex);
+    m_path = tmp;
+
+    if (m_mapNodeId2Edge.find(m_start_vertex) == m_mapNodeId2Edge.end()) {
+        return Path();
+    }
+
+    if (m_mapNodeId2Edge.find(m_end_vertex) == m_mapNodeId2Edge.end()) {
+        return Path();
+    }
+
+    clear();
+    return process_trsp(m_edges.size());
+}
+
+
 /** initializeAndProcess
  *
  * Acts as initializer and processing
@@ -320,8 +357,7 @@ Pgr_trspHandler::initializeAndProcess(
     pgassert(m_bIsGraphConstructed);
     pgassert(m_bIsturnRestrictOn);
 
-    return process_trsp(
-            edge_count);
+    return process_trsp(edge_count);
 }
 
 

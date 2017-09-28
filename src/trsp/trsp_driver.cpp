@@ -37,7 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-int do_trsp(
+void
+do_trsp(
         pgr_edge_t *edges,
         size_t total_edges,
 
@@ -71,16 +72,18 @@ int do_trsp(
         }
 
 
-        pgrouting::trsp::Pgr_trspHandler gdef;
+
         std::deque<Path> paths;
 
-        paths.push_back(gdef.initializeAndProcess(
-                    edges,
-                    total_edges,
-                    ruleList,
+        pgrouting::trsp::Pgr_trspHandler gdef(
+                edges,
+                total_edges,
+                directed,
+                ruleList);
+
+        paths.push_back(gdef.process(
                     start_vertex,
-                    end_vertex,
-                    directed));
+                    end_vertex));
 
 
         size_t count(0);
@@ -89,16 +92,16 @@ int do_trsp(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            err << "No paths found";
-            *err_msg = pgr_msg(err.str().c_str());
-            return -1;
+            notice << "No paths found";
+            *notice_msg = pgr_msg(notice.str().c_str());
+            return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         (*return_count) = collapse_paths(return_tuples, paths);
 
 
-        return EXIT_SUCCESS;
+        return;
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -118,6 +121,5 @@ int do_trsp(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-    return -1;
 }
 
