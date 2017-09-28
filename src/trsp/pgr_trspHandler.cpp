@@ -312,23 +312,23 @@ void  Pgr_trspHandler::initialize_que() {
      * For each adjacent edge to the start_vertex
      */
     for (const auto &source : m_adjacency[m_start_vertex]) {
-        auto cur_edge = &m_edges[source];
-        if (cur_edge->startNode() == m_start_vertex) {
-            if (cur_edge->cost() >= 0.0) {
-                m_dCost[cur_edge->edgeIndex()].endCost = cur_edge->cost();
-                parent[cur_edge->edgeIndex()].v_pos[0] = -1;
-                parent[cur_edge->edgeIndex()].ed_ind[0] = -1;
-                que.push(std::make_pair(cur_edge->cost(),
-                            std::make_pair(cur_edge->edgeIndex(), true)));
+        EdgeInfo &cur_edge = m_edges[source];
+        if (cur_edge.startNode() == m_start_vertex) {
+            if (cur_edge.cost() >= 0.0) {
+                m_dCost[cur_edge.edgeIndex()].endCost = cur_edge.cost();
+                parent[cur_edge.edgeIndex()].v_pos[0] = -1;
+                parent[cur_edge.edgeIndex()].ed_ind[0] = -1;
+                que.push(std::make_pair(cur_edge.cost(),
+                            std::make_pair(cur_edge.edgeIndex(), true)));
             }
         } else {
-            if (cur_edge->r_cost() >= 0.0) {
-                m_dCost[cur_edge->edgeIndex()].startCost =
-                    cur_edge->r_cost();
-                parent[cur_edge->edgeIndex()].v_pos[1] = -1;
-                parent[cur_edge->edgeIndex()].ed_ind[1] = -1;
-                que.push(std::make_pair(cur_edge->r_cost(),
-                            std::make_pair(cur_edge->edgeIndex(), false)));
+            if (cur_edge.r_cost() >= 0.0) {
+                m_dCost[cur_edge.edgeIndex()].startCost =
+                    cur_edge.r_cost();
+                parent[cur_edge.edgeIndex()].v_pos[1] = -1;
+                parent[cur_edge.edgeIndex()].ed_ind[1] = -1;
+                que.push(std::make_pair(cur_edge.r_cost(),
+                            std::make_pair(cur_edge.edgeIndex(), false)));
             }
         }
     }
@@ -530,47 +530,29 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
     auto itNodeMap = m_adjacency.find(edgeIn.source);
 
     if (itNodeMap != m_adjacency.end()) {
-        // Connect current edge with existing edge with start node
-        // connectEdge(
-        int64_t lEdgeCount = itNodeMap->second.size();
-        int64_t lEdgeIndex;
-#if 0
-        for (lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++) {
-            auto lEdge = itNodeMap->second.at(lEdgeIndex);
-            connectStartEdge(edge.edgeIndex(), lEdge);
-        }
-#else
         for (const auto e_idx : itNodeMap->second) {
             connectStartEdge(edge.edgeIndex(), e_idx);
         }
-#endif
     }
 
 
-    // Searching the end node for connectivity
+    /*
+     *  Searching the end node for connectivity
+     */
     itNodeMap = m_adjacency.find(edgeIn.target);
     if (itNodeMap != m_adjacency.end()) {
-        // Connect current edge with existing edge with end node
-        // connectEdge(
-        int64_t lEdgeCount = itNodeMap->second.size();
-        int64_t lEdgeIndex;
-#if 0
-        for (lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++) {
-            auto lEdge = itNodeMap->second.at(lEdgeIndex);
-            connectEndEdge(edge.edgeIndex(), lEdge);
-        }
-#else
         for (const auto e_idx : itNodeMap->second) {
             connectEndEdge(edge.edgeIndex(), e_idx);
         }
-#endif
     }
 
 
-
-    // Add this node and edge into the data structure
+    /*
+     * Add the edges to the adjacency list
+     */
     m_adjacency[edgeIn.source].push_back(newEdge.edgeIndex());
     m_adjacency[edgeIn.target].push_back(newEdge.edgeIndex());
+
 
 
     return true;
