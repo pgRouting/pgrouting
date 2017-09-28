@@ -86,9 +86,10 @@ class Pgr_trspHandler {
     Pgr_trspHandler(void);
     ~Pgr_trspHandler(void) = default;
 
+#if 0
     int my_dijkstra1(int64_t start_vertex, int64_t end_vertex,
-                    size_t edge_count, char** err_msg);
-
+                    size_t edge_count);
+#endif
 
     Path initializeAndProcess(
             pgr_edge_t *edges,
@@ -99,9 +100,7 @@ class Pgr_trspHandler {
             const int64_t start_vertex,
             const int64_t end_vertex,
 
-            bool directed,
-
-            char **err_msg);
+            bool directed);
 
 
     void clear();
@@ -116,8 +115,7 @@ class Pgr_trspHandler {
     void initialize_que();
 
     Path process_trsp(
-            size_t edge_count,
-            char **err_msg);
+            size_t edge_count);
 
     EdgeInfo* dijkstra_exploration(
             EdgeInfo* cur_edge,
@@ -144,7 +142,8 @@ class Pgr_trspHandler {
 
 
  private:
-    std::vector<EdgeInfo> m_vecEdgeVector;
+    
+    std::vector<EdgeInfo> m_edges;
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
     std::map<int64_t, std::vector<int64_t>> m_mapNodeId2Edge;
 

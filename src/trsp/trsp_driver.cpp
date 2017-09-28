@@ -80,8 +80,7 @@ int do_trsp(
                     ruleList,
                     start_vertex,
                     end_vertex,
-                    directed,
-                    err_msg));
+                    directed));
 
 
         size_t count(0);
