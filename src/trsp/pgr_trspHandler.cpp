@@ -299,6 +299,7 @@ Pgr_trspHandler::process(
     return process_trsp(m_edges.size());
 }
 
+#if 0
 
 /** initializeAndProcess
  *
@@ -359,7 +360,7 @@ Pgr_trspHandler::initializeAndProcess(
 
     return process_trsp(edge_count);
 }
-
+#endif
 
 
 
