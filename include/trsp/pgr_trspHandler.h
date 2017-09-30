@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdlib.h>
 
 #include <vector>
+#include <deque>
 #include <map>
 #include <queue>
 #include <string>
@@ -69,7 +70,7 @@ class Pgr_trspHandler {
          bool isIllegal(size_t i) {return v_pos[i] == ILLEGAL;}
          bool isIllegal(Position i) {
              pgassert(i != ILLEGAL);
-             return v_pos[static_cast<size_t>(i)] == ILLEGAL;}
+             return v_pos[i] == ILLEGAL;}
 
 
          std::vector<size_t> e_idx;
@@ -104,6 +105,10 @@ class Pgr_trspHandler {
     Path process(
             const int64_t start_vertex,
             const int64_t end_vertex);
+
+    std::deque<Path> process(
+            const std::vector<int64_t> sources,
+            const std::vector<int64_t> targets);
 
 
     void clear();

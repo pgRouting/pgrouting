@@ -45,8 +45,12 @@ do_trsp(
     Restriction_t *restrictions,
     size_t restrictions_size,
 
-    int64_t start_vertex,
-    int64_t end_vertex,
+    int64_t  *start_vidsArr,
+    size_t size_start_vidsArr,
+
+    int64_t  *end_vidsArr,
+    size_t size_end_vidsArr,
+
     bool directed,
 
     General_path_element_t **return_tuples,

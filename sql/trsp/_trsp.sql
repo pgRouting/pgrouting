@@ -21,22 +21,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_trsp(
-    sql text,
+CREATE OR REPLACE FUNCTION _trsp(
+    TEXT, -- edges_sql
     TEXT, -- restrictions_sql
-    source_vid BIGINT,
-    target_vid BIGINT,
-    directed boolean,
+    ANYARRAY,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'turn_restrict_shortest_path_vertex'
+'${MODULE_PATHNAME}', 'turn_restriction'
 LANGUAGE 'c' VOLATILE;
 

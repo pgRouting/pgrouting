@@ -296,6 +296,44 @@ Pgr_trspHandler::process(
 
 
 
+
+/** process
+ *
+ * does many to many processisng
+ *
+ */
+std::deque<Path>
+Pgr_trspHandler::process(
+        const std::vector<int64_t> sources,
+        const std::vector<int64_t> targets) {
+    /*
+     * Preconditions
+     */
+    pgassert(m_bIsturnRestrictOn);
+    pgassert(m_bIsGraphConstructed);
+
+    std::deque<Path> paths;
+    for (const auto &s : sources) {
+        for (const auto &t : targets) {
+            paths.push_back(process(s, t));
+        }
+    }
+
+    std::sort(paths.begin(), paths.end(),
+            [](const Path &e1, const Path &e2)->bool {
+            return e1.end_id() < e2.end_id();
+            });
+    std::stable_sort(paths.begin(), paths.end(),
+            [](const Path &e1, const Path &e2)->bool {
+            return e1.start_id() < e2.start_id();
+            });
+    return paths;
+}
+
+
+
+
+
 void  Pgr_trspHandler::add_to_que(
         double cost,
         size_t e_idx,

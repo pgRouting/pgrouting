@@ -26,11 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_common/postgres_connection.h"
+#include "utils/array.h"
 
 
 #include "drivers/trsp/trsp_driver.h"
 
 #include "c_common/debug_macro.h"
+#include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
 #include "c_types/pgr_edge_t.h"
@@ -39,9 +41,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 #include "c_common/restrictions_input.h"
+#include "c_common/arrays_input.h"
 
-PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
+PGDLLEXPORT Datum turn_restriction(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(turn_restriction);
 
 
 static
@@ -49,8 +52,9 @@ void compute_trsp(
         char* edges_sql,
         char* restrictions_sql,
 
-        int64_t start_id,
-        int64_t end_id,
+        ArrayType *starts,
+        ArrayType *ends,
+
         bool directed,
 
         General_path_element_t **result_tuples,
@@ -63,9 +67,17 @@ void compute_trsp(
 
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
-
     pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
 
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
@@ -80,9 +92,11 @@ void compute_trsp(
             restrictions,
             total_restrictions,
 
-            start_id,
-            end_id,
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
+
             directed,
+
             result_tuples,
             result_count,
             &log_msg,
@@ -104,7 +118,7 @@ void compute_trsp(
 
 
 PGDLLEXPORT Datum
-turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
+turn_restriction(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -121,8 +135,8 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
         compute_trsp(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                PG_GETARG_INT64(2),
-                PG_GETARG_INT64(3),
+                PG_GETARG_ARRAYTYPE_P(2),
+                PG_GETARG_ARRAYTYPE_P(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples, &result_count);
 

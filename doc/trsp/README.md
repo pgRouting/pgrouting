@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 ROLLBACK;
 ROLLBACK
-# Notes on pgr_trsp for version 2.5.0
+# Notes on pgr_trsp for version 2.6.0
 Table of contents
 * [Introduction](#introduction)
   * [The restriction](#the-restriction)
@@ -47,7 +47,21 @@ The restriction used in the examples does not have to do anything with the graph
 * No vertex has id: 25, 32 or 33
 * No edge has id: 25, 32 or 33
 ```
-$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, 32, 33::TEXT AS via_path$$
+SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
+ to_cost | target_id | via_path 
+---------+-----------+----------
+     100 |        25 | 32, 33
+(1 row)
+
+```
+The new back end code has the restrictions as follows
+```
+SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path;
+ id | cost | target_id |    path    
+----+------+-----------+------------
+  1 |  100 |        25 | {33,32,25}
+(1 row)
+
 ```
 therefore the shortest path expected are as if there was no restriction involved
 # The Vertices signature version
@@ -63,7 +77,10 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
 );
-ERROR:  Error computing path: Path Not Found
+ERROR:  function _pgr_trsp(unknown, integer, integer, boolean, boolean) does not exist
+LINE 1: SELECT * FROM _pgr_trsp(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 ```
 dijkstra returns EMPTY SET to represent no path found
 ```
@@ -96,8 +113,8 @@ SELECT * FROM pgr_trsp(
      1, 15, true, true,
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+NOTICE:  No paths found
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
 ```
 ## routing from/to same location
 using dijkstra to verify (1 to 1)
@@ -131,19 +148,10 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1,  true, true
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   1 |   1 |    1
-   1 |   2 |   4 |    1
-   2 |   5 |   8 |    1
-   3 |   6 |   9 |    1
-   4 |   9 |  16 |    1
-   5 |   4 |   3 |    1
-   6 |   3 |   2 |    1
-   7 |   2 |   1 |    1
-   8 |   1 |  -1 |    0
-(9 rows)
-
+ERROR:  function _pgr_trsp(unknown, integer, integer, boolean, boolean) does not exist
+LINE 1: SELECT * FROM _pgr_trsp(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 ```
 trsp with restrictions (1 to 1) use the original code
 is expected to return Error to represent no path found
@@ -175,22 +183,21 @@ but "finds" a path when there should be no path.
 ```
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     1, 1,  
-    true, 
-    true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    true
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   1 |   1 |    1
-   1 |   2 |   4 |    1
-   2 |   5 |   8 |    1
-   3 |   6 |   9 |    1
-   4 |   9 |  16 |    1
-   5 |   4 |   3 |    1
-   6 |   3 |   2 |    1
-   7 |   2 |   1 |    1
-   8 |   1 |  -1 |    0
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    1 |    1 |    1 |        0
+   2 |        2 |    2 |    4 |    1 |        1
+   3 |        3 |    5 |    8 |    1 |        2
+   4 |        4 |    6 |    9 |    1 |        3
+   5 |        5 |    9 |   16 |    1 |        4
+   6 |        6 |    4 |    3 |    1 |        5
+   7 |        7 |    3 |    2 |    1 |        6
+   8 |        8 |    2 |    1 |    1 |        7
+   9 |        9 |    1 |   -1 |    0 |        8
 (9 rows)
 
 ```
@@ -232,16 +239,10 @@ SELECT * FROM _pgr_trsp(
     2, 3,
     false, true
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   2 |   4 |    1
-   1 |   5 |   8 |    1
-   2 |   6 |   9 |    1
-   3 |   9 |  16 |    1
-   4 |   4 |   3 |    1
-   5 |   3 |  -1 |    0
-(6 rows)
-
+ERROR:  function _pgr_trsp(unknown, integer, integer, boolean, boolean) does not exist
+LINE 1: SELECT * FROM _pgr_trsp(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 ```
 trsp with restrictions (2 to 3)
 does not find the shortest path
@@ -254,13 +255,9 @@ SELECT * FROM pgr_trsp(
 );
  seq | id1 | id2 | cost 
 -----+-----+-----+------
-   0 |   2 |   4 |    1
-   1 |   5 |   8 |    1
-   2 |   6 |   9 |    1
-   3 |   9 |  16 |    1
-   4 |   4 |   3 |    1
-   5 |   3 |  -1 |    0
-(6 rows)
+   0 |   2 |   2 |    1
+   1 |   3 |  -1 |    0
+(2 rows)
 
 ```
 calling the original code with restrictions (2 to 3)
@@ -268,20 +265,15 @@ does not find the shortest path
 ```
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     2, 3,
-    false, 
-    true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    false
 );
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   2 |   4 |    1
-   1 |   5 |   8 |    1
-   2 |   6 |   9 |    1
-   3 |   9 |  16 |    1
-   4 |   4 |   3 |    1
-   5 |   3 |  -1 |    0
-(6 rows)
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    2 |    1 |        0
+   2 |        2 |    3 |   -1 |    0 |        1
+(2 rows)
 
 ```
 # The Edges signature version
@@ -711,15 +703,19 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 15, 2],
     false, true
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
+ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
+LINE 1: SELECT * FROM _pgr_trspViaVertices(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2, 1],
     false, true
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
+ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
+LINE 1: SELECT * FROM _pgr_trspViaVertices(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 ```
 **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
 this case none is found
@@ -784,20 +780,10 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 1, 2],
     false, true
 );
- seq | id1 | id2 | id3 | cost 
------+-----+-----+-----+------
-   1 |   1 |   1 |   1 |    1
-   2 |   1 |   2 |   4 |    1
-   3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |   9 |    1
-   5 |   1 |   9 |  16 |    1
-   6 |   1 |   4 |   3 |    1
-   7 |   1 |   3 |   2 |    1
-   8 |   1 |   2 |   1 |    1
-   9 |   2 |   1 |   1 |    1
-  10 |   2 |   2 |  -1 |    0
-(10 rows)
-
+ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
+LINE 1: SELECT * FROM _pgr_trspViaVertices(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 ```
 with restrictions the original code is used
 ```
@@ -812,14 +798,12 @@ SELECT * FROM pgr_trspViaVertices(
    1 |   1 |   1 |   1 |    1
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |   9 |    1
-   5 |   1 |   9 |  16 |    1
-   6 |   1 |   4 |   3 |    1
-   7 |   1 |   3 |   2 |    1
-   8 |   1 |   2 |   1 |    1
-   9 |   2 |   1 |   1 |    1
-  10 |   2 |   2 |  -1 |    0
-(10 rows)
+   4 |   1 |   6 |   5 |    1
+   5 |   1 |   3 |   2 |    1
+   6 |   1 |   2 |   1 |    1
+   7 |   2 |   1 |   1 |    1
+   8 |   2 |   2 |  -1 |    0
+(8 rows)
 
 ```
 Using explicitly the original code
@@ -835,14 +819,12 @@ SELECT * FROM _pgr_trspViaVertices(
    1 |   1 |   1 |   1 |    1
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |   9 |    1
-   5 |   1 |   9 |  16 |    1
-   6 |   1 |   4 |   3 |    1
-   7 |   1 |   3 |   2 |    1
-   8 |   1 |   2 |   1 |    1
-   9 |   2 |   1 |   1 |    1
-  10 |   2 |   2 |  -1 |    0
-(10 rows)
+   4 |   1 |   6 |   5 |    1
+   5 |   1 |   3 |   2 |    1
+   6 |   1 |   2 |   1 |    1
+   7 |   2 |   1 |   1 |    1
+   8 |   2 |   2 |  -1 |    0
+(8 rows)
 
 ```
 ## from 2 to 3 to 2
@@ -886,17 +868,10 @@ SELECT * FROM _pgr_trspViaVertices(
     false, 
     true
 );
- seq | id1 | id2 | id3 | cost 
------+-----+-----+-----+------
-   1 |   1 |   2 |   4 |    1
-   2 |   1 |   5 |   8 |    1
-   3 |   1 |   6 |   9 |    1
-   4 |   1 |   9 |  16 |    1
-   5 |   1 |   4 |   3 |    1
-   6 |   2 |   3 |   2 |    1
-   7 |   2 |   2 |  -1 |    0
-(7 rows)
-
+ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
+LINE 1: SELECT * FROM _pgr_trspViaVertices(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 ```
 # pgr_trspViaEdges
 *pgr_trspViaEdges* will use the original code when
