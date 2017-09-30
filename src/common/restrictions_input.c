@@ -50,7 +50,8 @@ void fetch_restriction(
     restriction->via = NULL;
     restriction->via_size = 0;
 
-    restriction->via = pgr_SPI_getBigIntArr(tuple, tupdesc, info[2], &restriction->via_size);
+    restriction->via = pgr_SPI_getBigIntArr(
+            tuple, tupdesc, info[2], &restriction->via_size);
 }
 
 

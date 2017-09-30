@@ -172,7 +172,11 @@ pgr_SPI_getChar(
 
 
 int64_t*
-pgr_SPI_getBigIntArr(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info, uint64_t *the_size) {
+pgr_SPI_getBigIntArr(
+        HeapTuple *tuple,
+        TupleDesc *tupdesc,
+        Column_info_t info,
+        uint64_t *the_size) {
     bool is_null = false;
 
     Datum raw_array = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &is_null);

@@ -88,7 +88,7 @@ void compute_trsp(
     do_trsp(
             edges,
             total_edges,
-           
+
             restrictions,
             total_restrictions,
 

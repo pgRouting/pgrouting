@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <queue>
 #include <vector>
 #include <limits>
+#include <algorithm>
+#include <deque>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -49,12 +51,11 @@ Pgr_trspHandler::Pgr_trspHandler(
     m_endPart(0.0),
     m_ruleTable(),
     m_bIsturnRestrictOn(false),
-    m_bIsGraphConstructed(false)
-{
+    m_bIsGraphConstructed(false) {
     pgassert(!m_bIsturnRestrictOn);
     pgassert(!m_bIsGraphConstructed);
 
-    initialize_restrictions( ruleList);
+    initialize_restrictions(ruleList);
 
     m_min_id = renumber_edges(edges, edge_count);
 
@@ -73,7 +74,6 @@ Pgr_trspHandler::Pgr_trspHandler(
 int64_t Pgr_trspHandler::renumber_edges(
         pgr_edge_t *edges,
         size_t total_edges) const {
-
         int64_t v_min_id = UINT64_MAX;
         size_t z;
         for (z = 0; z < total_edges; z++) {
@@ -212,7 +212,10 @@ void Pgr_trspHandler::explore(
                 edge, isStart);
 
         if ((edge.startNode() == cur_node) && (edge.cost() >= 0.0)) {
-            totalCost = get_tot_cost(edge.cost() + extra_cost, cur_edge.idx(), isStart);
+            totalCost = get_tot_cost(
+                    edge.cost() + extra_cost,
+                    cur_edge.idx(),
+                    isStart);
 
             if (totalCost < m_dCost[index].endCost) {
                 m_dCost[index].endCost = totalCost;
@@ -225,7 +228,10 @@ void Pgr_trspHandler::explore(
         }
 
        if ((edge.endNode() == cur_node) && (edge.r_cost() >= 0.0)) {
-            totalCost = get_tot_cost(edge.r_cost() + extra_cost, cur_edge.idx(), isStart);
+            totalCost = get_tot_cost(
+                    edge.r_cost() + extra_cost,
+                    cur_edge.idx(),
+                    isStart);
 
             if (totalCost < m_dCost[index].startCost) {
                 m_dCost[index].startCost = totalCost;
@@ -243,7 +249,6 @@ void Pgr_trspHandler::explore(
 // -------------------------------------------------------------------------
 int Pgr_trspHandler::initialize_restrictions(
         const std::vector<Rule> &ruleList) {
-
     for (const auto rule : ruleList) {
         auto dest_edge_id = rule.dest_id();
         if (m_ruleTable.find(dest_edge_id) != m_ruleTable.end()) {
@@ -276,7 +281,7 @@ Pgr_trspHandler::process(
     clear();
 
     m_start_vertex = start_vertex - m_min_id;
-    m_end_vertex = end_vertex - m_min_id ;
+    m_end_vertex = end_vertex - m_min_id;
 
     Path tmp(m_start_vertex, m_end_vertex);
     m_path = tmp;
@@ -337,9 +342,8 @@ Pgr_trspHandler::process(
 void  Pgr_trspHandler::add_to_que(
         double cost,
         size_t e_idx,
-        bool isStart) {       
-
-    que.push(std::make_pair(cost, 
+        bool isStart) {
+    que.push(std::make_pair(cost,
                 std::make_pair(e_idx, isStart)));
 }
 
@@ -348,7 +352,6 @@ void  Pgr_trspHandler::add_to_que(
 // -------------------------------------------------------------------------
 
 void  Pgr_trspHandler::initialize_que() {
-
     /*
      * For each adjacent edge to the start_vertex
      */
@@ -431,7 +434,7 @@ Pgr_trspHandler::process_trsp(
     if (current_node != m_end_vertex) {
         Path result(m_start_vertex, m_end_vertex);
         return result.renumber_vertices(m_min_id);;
-    } 
+    }
 
     pgassert(m_path.start_id() == m_start_vertex);
 
@@ -599,5 +602,5 @@ bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
 
 
 
-}  // namespace trsp  
+}  // namespace trsp
 }  // namespace pgrouting
