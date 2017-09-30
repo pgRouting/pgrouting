@@ -47,19 +47,10 @@ void fetch_restriction(
      */
     restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
 
-#if 1
     restriction->via = NULL;
     restriction->via_size = 0;
 
     restriction->via = pgr_SPI_getBigIntArr(tuple, tupdesc, info[2], &restriction->via_size);
-#endif
-
-    PGR_DBG("restriction[%d], %f", restriction->id, restriction->cost);
-#if 1
-    for (uint64_t j = 0; j < restriction->via_size; ++j) {
-        PGR_DBG("edge %d", restriction->via[j]);
-    }
-#endif
 }
 
 
@@ -139,14 +130,6 @@ pgr_get_restrictions(
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_restriction(&tuple, &tupdesc, info,
                         &(*restrictions)[total_tuples - ntuples + t]);
-                PGR_DBG("restriction[%d], %f",
-                        (*restrictions)[total_tuples - ntuples + t].id,
-                        (*restrictions)[total_tuples - ntuples + t].cost);
-#if 1
-                for (uint64_t j = 0; j < (*restrictions)[total_tuples - ntuples + t].via_size; ++j) {
-                    PGR_DBG("edge %d", (*restrictions)[total_tuples - ntuples + t].via[j]);
-                }
-#endif
             }
             SPI_freetuptable(tuptable);
         } else {
@@ -163,7 +146,7 @@ pgr_get_restrictions(
     }
 
     (*total_restrictions) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld",
+    PGR_DBG("Finish reading %ld restrictions, %ld",
             total_tuples,
             (*total_restrictions));
     clock_t end_t = clock();
