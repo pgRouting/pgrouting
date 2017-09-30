@@ -115,8 +115,6 @@ do_trsp(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice << "No paths found";
-            *notice_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
