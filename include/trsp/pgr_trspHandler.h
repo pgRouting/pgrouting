@@ -50,8 +50,6 @@ namespace trsp {
 
 
 class Pgr_trspHandler {
-
-
     /*
      * Used in the priority queue
      */
@@ -60,11 +58,10 @@ class Pgr_trspHandler {
     enum Position {ILLEGAL = -1, TARGET = 0, SOURCE = 1};
     class Predecessor {
      public:
-
          Predecessor() :
              e_idx(2),
              v_pos(2) {
-             for (auto &p : v_pos) p = ILLEGAL;  
+             for (auto &p : v_pos) p = ILLEGAL;
          }
 
          bool isIllegal(size_t i) {return v_pos[i] == ILLEGAL;}
@@ -72,18 +69,16 @@ class Pgr_trspHandler {
              pgassert(i != ILLEGAL);
              return v_pos[i] == ILLEGAL;}
 
-
          std::vector<size_t> e_idx;
          std::vector<Position> v_pos;
-
     };
 
     typedef std::map<int64_t, std::vector<Rule> > RuleTable;
     class CostHolder {
-        public:
-            CostHolder() {
-                endCost =  startCost = (std::numeric_limits<double>::max)();
-            }
+     public:
+         CostHolder() {
+             endCost =  startCost = (std::numeric_limits<double>::max)();
+         }
 
      public:
          double startCost;
@@ -168,7 +163,6 @@ class Pgr_trspHandler {
             bool isStart);
 
  private:
-    
     std::vector<EdgeInfo> m_edges;
 
     /**

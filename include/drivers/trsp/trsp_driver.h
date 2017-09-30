@@ -37,29 +37,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-void
-do_trsp(
-    pgr_edge_t *edges,
-    size_t edge_count,
+    void do_trsp(
+            pgr_edge_t *edges,
+            size_t edge_count,
 
-    Restriction_t *restrictions,
-    size_t restrictions_size,
+            Restriction_t *restrictions,
+            size_t restrictions_size,
 
-    int64_t  *start_vidsArr,
-    size_t size_start_vidsArr,
+            int64_t  *start_vidsArr,
+            size_t size_start_vidsArr,
 
-    int64_t  *end_vidsArr,
-    size_t size_end_vidsArr,
+            int64_t  *end_vidsArr,
+            size_t size_end_vidsArr,
 
-    bool directed,
+            bool directed,
 
-    General_path_element_t **return_tuples,
-    size_t *return_count,
+            General_path_element_t **return_tuples,
+            size_t *return_count,
 
-    char **log_msg,
-    char **notice_msg,
-    char **err_msg
-    );
+            char **log_msg,
+            char **notice_msg,
+            char **err_msg);
 
 
 #ifdef __cplusplus

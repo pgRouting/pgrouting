@@ -38,7 +38,7 @@ namespace trsp {
 
 class Rule {
  public:
-    Rule(Restriction_t r) :
+    explicit Rule(Restriction_t r) :
         m_cost(r.cost),
         m_precedencelist(r.via, r.via + r.via_size) {
             m_dest_id = m_precedencelist.back();
@@ -53,7 +53,8 @@ class Rule {
     std::vector<int64_t> precedencelist() const {
         return m_precedencelist;
     }
-    int64_t dest_id() const {return m_dest_id;};
+
+    int64_t dest_id() const {return m_dest_id;}
 
 
     friend std::ostream& operator<<(std::ostream& log, const Rule &r) {
@@ -64,6 +65,7 @@ class Rule {
         log << ")";
         return log;
     }
+
  private:
     int64_t m_dest_id;
     double m_cost;

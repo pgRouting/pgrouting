@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_RESTRICT_T_H_
-#define INCLUDE_C_TYPES_RESTRICT_T_H_
+#ifndef INCLUDE_C_TYPES_RESTRICTION_T_H_
+#define INCLUDE_C_TYPES_RESTRICTION_T_H_
 #pragma once
 
 
@@ -61,10 +61,9 @@ typedef struct {
     double cost;
     int64_t * via;
     uint64_t via_size;
-
 }
 Restriction_t;
 
 
 
-#endif  // INCLUDE_C_TYPES_RESTRICT_T_H_
+#endif  // INCLUDE_C_TYPES_RESTRICTION_T_H_
