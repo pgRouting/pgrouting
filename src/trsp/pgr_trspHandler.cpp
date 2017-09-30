@@ -45,15 +45,7 @@ Pgr_trspHandler::Pgr_trspHandler(
         const size_t edge_count,
         const bool directed,
         const std::vector<Rule> &ruleList) :
-    m_startEdgeId(-1),
-    m_endEdgeId(0),
-    m_startpart(0.0),
-    m_endPart(0.0),
-    m_ruleTable(),
-    m_bIsturnRestrictOn(false),
-    m_bIsGraphConstructed(false) {
-    pgassert(!m_bIsturnRestrictOn);
-    pgassert(!m_bIsGraphConstructed);
+    m_ruleTable() {
 
     initialize_restrictions(ruleList);
 
@@ -64,8 +56,6 @@ Pgr_trspHandler::Pgr_trspHandler(
             edge_count,
             directed);
 
-    pgassert(m_bIsturnRestrictOn);
-    pgassert(m_bIsGraphConstructed);
 }
 
 
@@ -199,8 +189,6 @@ void Pgr_trspHandler::explore(
         bool isStart) {
     double extra_cost = 0.0;
     double totalCost;
-    pgassert(m_bIsturnRestrictOn);
-    pgassert(m_bIsGraphConstructed);
 
     auto vecIndex = cur_edge.get_idx(isStart);
 
@@ -260,7 +248,6 @@ int Pgr_trspHandler::initialize_restrictions(
         }
     }
 
-    m_bIsturnRestrictOn = true;
     return true;
 }
 
@@ -273,11 +260,6 @@ Path
 Pgr_trspHandler::process(
         const int64_t start_vertex,
         const int64_t end_vertex) {
-    /*
-     * Preconditions
-     */
-    pgassert(m_bIsturnRestrictOn);
-    pgassert(m_bIsGraphConstructed);
     clear();
 
     m_start_vertex = start_vertex - m_min_id;
@@ -311,12 +293,6 @@ std::deque<Path>
 Pgr_trspHandler::process(
         const std::vector<int64_t> sources,
         const std::vector<int64_t> targets) {
-    /*
-     * Preconditions
-     */
-    pgassert(m_bIsturnRestrictOn);
-    pgassert(m_bIsGraphConstructed);
-
     std::deque<Path> paths;
     for (const auto &s : sources) {
         for (const auto &t : targets) {
@@ -413,8 +389,6 @@ EdgeInfo Pgr_trspHandler::dijkstra_exploration() {
 Path
 Pgr_trspHandler::process_trsp(
         size_t edge_count) {
-    pgassert(m_bIsturnRestrictOn);
-    pgassert(m_bIsGraphConstructed);
     pgassert(m_path.start_id() == m_start_vertex);
     pgassert(m_path.end_id() == m_end_vertex);
     pgassert(m_parent.empty());
@@ -463,7 +437,6 @@ void Pgr_trspHandler::construct_graph(
         pgr_edge_t* edges,
         const size_t edge_count,
         const bool directed) {
-    pgassert(!m_bIsGraphConstructed);
 
     for (size_t i = 0; i < edge_count; i++) {
         auto current_edge = &edges[i];
@@ -484,7 +457,6 @@ void Pgr_trspHandler::construct_graph(
         addEdge(*current_edge);
     }
     m_mapEdgeId2Index.clear();
-    m_bIsGraphConstructed = true;
 }
 
 

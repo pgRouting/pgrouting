@@ -188,10 +188,6 @@ class Pgr_trspHandler {
      */
     std::map<int64_t, std::vector<size_t>> m_adjacency;
 
-    int64_t m_startEdgeId;
-    int64_t m_endEdgeId;
-    double m_startpart;
-    double m_endPart;
 
     int64_t m_start_vertex;
     int64_t m_end_vertex;
@@ -209,8 +205,6 @@ class Pgr_trspHandler {
     std::vector<CostHolder> m_dCost;
 
     std::map<int64_t, std::vector<Rule>> m_ruleTable;
-    bool m_bIsturnRestrictOn;
-    bool m_bIsGraphConstructed;
 
     /*
      * priority queue
