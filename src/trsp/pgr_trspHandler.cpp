@@ -110,7 +110,7 @@ double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
     if (m_parent[ed_id].isIllegal(pos)) {
         Path_t pelement;
         auto cur_edge = &m_edges[ed_id];
-        if (pos == TARGET) {
+        if (pos == RC_EDGE) {
             pelement.node = cur_edge->startNode();
             pelement.cost = cur_edge->cost();
         } else {
@@ -128,7 +128,7 @@ double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
         m_parent[ed_id].v_pos[pos]);
     Path_t pelement;
     auto cur_edge = &m_edges[ed_id];
-    if (pos == TARGET) {
+    if (pos == RC_EDGE) {
         pelement.node = cur_edge->startNode();
         pelement.cost = m_dCost[ed_id].endCost - ret;
         ret = m_dCost[ed_id].endCost;
@@ -159,7 +159,7 @@ double Pgr_trspHandler::getRestrictionCost(
     int64_t st_edge_ind = edge_ind;
     for (const auto &rule : vecRules) {
         bool flag = true;
-        int64_t v_pos = (isStart? SOURCE : TARGET);
+        int64_t v_pos = (isStart? C_EDGE : RC_EDGE);
         edge_ind = st_edge_ind;
 
         pgassert(!(edge_ind == -1));
@@ -219,8 +219,8 @@ void Pgr_trspHandler::explore(
 
             if (totalCost < m_dCost[index].endCost) {
                 m_dCost[index].endCost = totalCost;
-                m_parent[edge.idx()].v_pos[TARGET] = (isStart? SOURCE : TARGET);
-                m_parent[edge.idx()].e_idx[TARGET] =
+                m_parent[edge.idx()].v_pos[RC_EDGE] = (isStart? C_EDGE : RC_EDGE);
+                m_parent[edge.idx()].e_idx[RC_EDGE] =
                     cur_edge.idx();
 
                 add_to_que(totalCost, edge.idx(), true);
@@ -235,8 +235,8 @@ void Pgr_trspHandler::explore(
 
             if (totalCost < m_dCost[index].startCost) {
                 m_dCost[index].startCost = totalCost;
-                m_parent[edge.idx()].v_pos[SOURCE] = (isStart? SOURCE : TARGET);
-                m_parent[edge.idx()].e_idx[SOURCE] = cur_edge.idx();
+                m_parent[edge.idx()].v_pos[C_EDGE] = (isStart? C_EDGE : RC_EDGE);
+                m_parent[edge.idx()].e_idx[C_EDGE] = cur_edge.idx();
 
                 add_to_que(totalCost, edge.idx(), false);
             }
@@ -439,9 +439,9 @@ Pgr_trspHandler::process_trsp(
     pgassert(m_path.start_id() == m_start_vertex);
 
     if (current_node == cur_edge.startNode()) {
-        construct_path(cur_edge.idx(), SOURCE);
+        construct_path(cur_edge.idx(), C_EDGE);
     } else {
-        construct_path(cur_edge.idx(), TARGET);
+        construct_path(cur_edge.idx(), RC_EDGE);
     }
 
     Path_t pelement;

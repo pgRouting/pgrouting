@@ -50,12 +50,24 @@ namespace trsp {
 
 
 class Pgr_trspHandler {
-    /*
+    /**
      * Used in the priority queue
      */
     typedef std::pair<double, std::pair<int64_t, bool>> PDP;
 
-    enum Position {ILLEGAL = -1, TARGET = 0, SOURCE = 1};
+    /** @brief predecesor edge
+     *
+     * because each row represents 2 edges, this enumeration
+     * is needed for the predecessors
+     * - C_EDGE: If the predecessor comes from the "cost" edge
+     * - RC_EDGE: If the predecessor comes from the "reverse_cost" edge
+     * - ILLEGAL: Its not a predecessor of anything
+     *
+     * The "legal" values are indices to vectors
+     */
+    enum Position {ILLEGAL = -1, RC_EDGE = 0, C_EDGE = 1};
+
+
     class Predecessor {
      public:
          Predecessor() :
@@ -73,7 +85,7 @@ class Pgr_trspHandler {
          std::vector<Position> v_pos;
     };
 
-    typedef std::map<int64_t, std::vector<Rule> > RuleTable;
+
     class CostHolder {
      public:
          CostHolder() {
@@ -196,7 +208,7 @@ class Pgr_trspHandler {
     std::vector<Predecessor> m_parent;
     std::vector<CostHolder> m_dCost;
 
-    RuleTable m_ruleTable;
+    std::map<int64_t, std::vector<Rule>> m_ruleTable;
     bool m_bIsturnRestrictOn;
     bool m_bIsGraphConstructed;
 
