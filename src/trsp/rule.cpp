@@ -23,11 +23,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "trsp/edgeInfo.h"
+#include "trsp/rule.h"
+
+#include <algorithm>
+
 
 
 namespace pgrouting {
 namespace trsp {
+
+    Rule::Rule(Restriction_t r) :
+        m_cost(r.cost),
+        m_precedencelist(r.via, r.via + r.via_size) {
+            m_dest_id = m_precedencelist.back();
+            m_precedencelist.pop_back();
+            std::reverse(m_precedencelist.begin(), m_precedencelist.end());
+        }
+
+    const std::vector<int64_t>
+    Rule::precedencelist() const {
+        return m_precedencelist;
+    }
+
+
+    std::ostream& operator<<(std::ostream& log, const Rule &r) {
+        log << r.m_cost << ", (";
+        for (const auto e : r.m_precedencelist) {
+            log << e << ",";
+        }
+        log << ")";
+        return log;
+    }
 
 
 }  // namespace trsp
