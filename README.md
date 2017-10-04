@@ -6,8 +6,8 @@
 
 ### Branches
 
-* The *master* branch has the release  2.5.0
-* The *release/2.5* branch has the next micro-release 2.5.1 (if needed)
+* The *master* branch has the release  2.5.1
+* The *release/2.5* branch has the next micro-release 2.5.2 (if needed)
 * The *develop* branch has the development of the next minor-release 2.6.0-dev
 
 For the complete list of releases go to:
@@ -106,7 +106,7 @@ Building reqirements
   * MSVC >= 18.0
 * Postgresql >= 9.2
 * The Boost Graph Library (BGL) >= 1.46
-* CMake >= 2.8.8
+* CMake >= 3.2
 * CGAL >= 4.4
 * Sphinx >= 1.2
 

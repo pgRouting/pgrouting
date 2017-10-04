@@ -5,7 +5,7 @@
 # (http://www.cmake.org/cmake/help/v2.8.12/cmake.html)
 #
 
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
 if(POLICY CMP0046)
     cmake_policy(SET CMP0046 OLD)
@@ -182,7 +182,7 @@ endif()
 
 set(PGROUTING_VERSION_MAJOR "2")
 set(PGROUTING_VERSION_MINOR "5")
-set(PGROUTING_VERSION_PATCH "0")
+set(PGROUTING_VERSION_PATCH "1")
 set(PGROUTING_VERSION_DEV "")
 
 set(PGROUTING_SHORT_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")

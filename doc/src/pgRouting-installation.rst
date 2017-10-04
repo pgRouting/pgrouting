@@ -136,7 +136,7 @@ To be able to compile pgRouting, make sure that the following dependencies are m
 * Postgresql version >= 9.2
 * PostGIS version >= 2.0
 * The Boost Graph Library (BGL). Version >= 1.46
-* CMake >= 2.8.8
+* CMake >= 3.2
 * CGAL >=  4.2
 
 
