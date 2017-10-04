@@ -199,10 +199,10 @@ set(PGROUTING_GIT_HASH "")
 string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
 
-if ( NOT "${PGROUTING_GIT_BRANCH}" STREQUAL "master")
-    set (PGROUTING_GIT_HASH  "")
-    set (PGROUTING_GIT_BRANCH  "")
-endif()
+#if (NOT "${PGROUTING_GIT_BRANCH}" STREQUAL "master")
+#    set (PGROUTING_GIT_HASH  "")
+#    set (PGROUTING_GIT_BRANCH  "")
+#endif()
 
 
 if (PGROUTING_DEBUG)

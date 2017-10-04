@@ -176,8 +176,8 @@ RETURNS TABLE(
 $BODY$
     SELECT '2.5.1'::varchar AS version,
         'v2.5.1'::varchar AS tag,
-        ''::varchar AS hash,
-        ''::varchar AS branch,
+        '67fc01ed8'::varchar AS hash,
+        'release/2.5'::varchar AS branch,
         '1.54.0'::varchar AS boost;
 $BODY$
 LANGUAGE sql IMMUTABLE;
