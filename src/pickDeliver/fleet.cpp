@@ -224,10 +224,12 @@ Fleet::build_fleet(
             auto b_start = create_b_start<Node>(vehicle, problem->node_id());
             auto starting_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
+            pgassert(starting_site.is_start());
 
             auto b_end = create_b_end<Node>(vehicle, problem->node_id());
             auto ending_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
+            pgassert(ending_site.is_end());
 
             if (!(starting_site.is_start() && ending_site.is_end()
                     && starting_site.opens() <= starting_site.closes()
@@ -236,8 +238,12 @@ Fleet::build_fleet(
                 msg.error << "Illegal values found on vehicle";
                 msg.log << "On vehicle " << vehicle.id
                     << " a condition is not met, verify that:\n"
+                    << "starting_site.is_start()" << starting_site.is_start() << "\n"
+                    << "ending_site.is_start()" << ending_site.is_end() << "\n"
                     << "-  start_open <= start_close\n"
+                    << starting_site.opens() << "<"  << starting_site.closes() << "\n"
                     << "-  end_open <= end_close\n"
+                    << ending_site.opens() << "<"  << ending_site.closes() << "\n"
                     << "-  capacity > 0\n";
                 pgassert(!msg.get_error().empty());
                 return false;
@@ -258,10 +264,12 @@ Fleet::build_fleet(
             auto b_start = create_b_start<Dnode>(vehicle, problem->node_id());
             auto starting_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
+            pgassert(starting_site.is_start());
 
             auto b_end = create_b_end<Dnode>(vehicle, problem->node_id());
             auto ending_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
+            pgassert(ending_site.is_end());
 
             if (!(starting_site.is_start() && ending_site.is_end()
                     && starting_site.opens() <= starting_site.closes()
@@ -270,8 +278,12 @@ Fleet::build_fleet(
                 msg.error << "Illegal values found on vehicle";
                 msg.log << "On vehicle " << vehicle.id
                     << " a condition is not met, verify that:\n"
+                    << "starting_site.is_start()" << starting_site.is_start() << "\n"
+                    << "ending_site.is_start()" << ending_site.is_end() << "\n"
                     << "-  start_open <= start_close\n"
+                    << starting_site.opens() << "<"  << starting_site.closes() << "\n"
                     << "-  end_open <= end_close\n"
+                    << ending_site.opens() << "<"  << ending_site.closes() << "\n"
                     << "-  capacity > 0\n";
                 pgassert(!msg.get_error().empty());
                 return false;
