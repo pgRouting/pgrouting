@@ -1,9 +1,6 @@
 
 SET(LOCAL_FILES
     original.png
-    restrictions.png
-    penalties.png
-    dijkstra.png
     transformation.png
     )
 

@@ -29,7 +29,7 @@ This graph transformation algorithm generates a new graph that has an edge for e
 Characteristics
 -------------------------------------------------------------------------------
 
-  - This only works on directed graphs and does not use reverse edge costs.
+  - This function only works on directed graphs.
 
 Signature Summary
 -----------------
@@ -50,75 +50,27 @@ Signature Summary
 Example Usage
 -------------------------------------------------------------------------------
 
-Here is an example that goes through the steps of using this function to transform a graph, apply turn penalties and restrictions, then run a shortest path search.
+This example displays how this graph transformation works to create additional edges for each possible turn in a graph.
+
+.. code-block:: none 
+
+    SELECT * FROM edge_table WHERE id IN (5, 8, 9, 11);
 
 | |first|
 
 .. |first| image:: images/original.png
    :align: middle
 
-1. Transform the graph and store the results in a new table:
-
 .. code-block:: none 
 
-    CREATE TABLE turn_table AS SELECT * FROM pgr_turnPenaltyGraph('SELECT id, source, target, cost FROM original_graph);
+    SELECT * FROM pgr_turnPenaltyGraph('SELECT id, source, target, cost FROM edge_table WHERE id IN (5, 8, 9, 11)');
 
 | |second|
 
 .. |second| image:: images/transformation.png
    :align: middle
 
-2. Apply turn restrictions by removing the edges in the turn_table that represent the turns you want to restrict. A two edge turn represents a move from one edge to another connected edge. Deleting a turn in the turn_table requires identifing which two edge in the original graph represent that turn, then deleting them:
-
-.. code-block:: none 
-
-   DELETE FROM turn_table WHERE original_source_edge = e6 AND original_target_edge = e7;
-   DELETE FROM turn_table WHERE original_source_edge = e1 AND original_target_edge = e2;
-
-| |third|
-
-.. |third| image:: images/restrictions.png
-   :align: middle
-
-3. Apply turn penalties by modifying the cost of the edges in the turn_table that represent turns you want to apply penalties to.
-
-.. code-block:: none 
-
-   UPDATE turn_table SET cost = 5 WHERE original_source_edge = e3 AND original_target_edge = e4;
-   UPDATE turn_table SET cost = 4 WHERE original_source_edge = e4 AND original_target_edge = e5; 
-
-| |fourth|
-
-.. |fourth| image:: images/penalties.png
-   :align: middle
-
-4. Run a one to one dijkstra on the turn_table by first setting the source of the search to the set of all vertices in the turn_table that represent outgoing edges of the starting vertex in the original graph. Second, set the target of the search to the set of all vertices in the turn_table that represent incoming edges of the target vertex in the original graph. The returned path that has the lowest cost will be the shortest path taking into account the turn penalties and restrictions that you applied:
-
-.. code-block:: none 
-
-   source_arr := array_to_string(
-                   array(
-                     select source from turn_penalty_table where original_source_vertex = 3
-                   ), ','
-                 );
-   target_arr := array_to_string(
-                   array(
-                     select target from turn_penalty_table where original_target_vertex = 7
-                   ),','
-                 );
-
-   SELECT * FROM pgr_dijkstraCost(
-                   'SELECT seq as id, source, target, cost from turn_table', 
-                   ARRAY[source_arr], 
-                   ARRAY[target_arr]
-                 ) ORDER BY cost DESC LIMIT 1;
-
-| |fifth|
-
-.. |fifth| image:: images/dijkstra.png
-   :align: middle
-
-This can also be applied to one to many, many to one, and many to many implementations aswell, but the results will have to be grouped by the source and target vertices.
+In the transformed graph, all of the edges from the original graph are still present, but we now have additional edges for every turn that could be made across vertex 6. This graph can now be used to apply turn penalties and restrictions for routing problems by removing or adding costs to these new edges.
 
 Sample Data Results
 -------------------------------------------------------------------------------
