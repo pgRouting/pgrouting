@@ -68,9 +68,9 @@ void pgr_get_matrixRows(
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
-    info[0].name = strdup("start_vid");
-    info[1].name = strdup("end_vid");
-    info[2].name = strdup("agg_cost");
+    info[0].name = "start_vid";
+    info[1].name = "end_vid";
+    info[2].name = "agg_cost";
 
     info[2].eType = ANY_NUMERICAL;
 

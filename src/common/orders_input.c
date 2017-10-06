@@ -97,20 +97,20 @@ pgr_get_pd_orders_general(
         info[i].eType = ANY_NUMERICAL;
     }
 
-    info[0].name = strdup("id");
-    info[1].name = strdup("demand");
-    info[2].name = strdup("p_x");
-    info[3].name = strdup("p_y");
-    info[4].name = strdup("p_open");
-    info[5].name = strdup("p_close");
-    info[6].name = strdup("p_service");
-    info[7].name = strdup("d_x");
-    info[8].name = strdup("d_y");
-    info[9].name = strdup("d_open");
-    info[10].name = strdup("d_close");
-    info[11].name = strdup("d_service");
-    info[12].name = strdup("p_node_id");
-    info[13].name = strdup("d_node_id");
+    info[0].name = "id";
+    info[1].name = "demand";
+    info[2].name = "p_x";
+    info[3].name = "p_y";
+    info[4].name = "p_open";
+    info[5].name = "p_close";
+    info[6].name = "p_service";
+    info[7].name = "d_x";
+    info[8].name = "d_y";
+    info[9].name = "d_open";
+    info[10].name = "d_close";
+    info[11].name = "d_service";
+    info[12].name = "p_node_id";
+    info[13].name = "d_node_id";
 
     info[0].eType = ANY_INTEGER;
     info[12].eType = ANY_INTEGER;

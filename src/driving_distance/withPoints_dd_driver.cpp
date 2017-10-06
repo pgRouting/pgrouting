@@ -106,9 +106,9 @@ do_pgr_many_withPointsDD(
          */
         int errcode = check_points(points, log);
         if (errcode) {
-            *log_msg = strdup(log.str().c_str());
             err << "Unexpected point(s) with same pid"
                 << " but different edge/fraction/side combination found.";
+            *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
             return;
         }
