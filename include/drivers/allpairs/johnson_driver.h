@@ -46,7 +46,6 @@ do_pgr_johnson(
         bool directed,
         Matrix_cell_t **return_tuples,
         size_t *return_count,
-        char ** log_msg,
         char ** err_msg);
 
 

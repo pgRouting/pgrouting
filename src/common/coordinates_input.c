@@ -74,9 +74,9 @@ void pgr_get_coordinates(
         info[i].strict = true;
         info[i].eType = ANY_NUMERICAL;
     }
-    info[0].name = "id";
-    info[1].name = "x";
-    info[2].name = "y";
+    info[0].name = strdup("id");
+    info[1].name = strdup("x");
+    info[2].name = strdup("y");
 
     info[0].eType = ANY_INTEGER;
     info[0].strict = false;

@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/withPoints/get_new_queries.h"
 #include <string.h>
 #include <sstream>
-#include "cpp_common/pgr_alloc.hpp"
 
 char
 estimate_drivingSide(char driving_side) {
@@ -55,7 +54,7 @@ get_new_queries(
         << " edges AS (" << edges_sql << "), "
         << " points AS (" << points_sql << ")"
         << " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
-    *edges_of_points_query = pgr_msg(edges_of_points_sql.str().c_str());
+    *edges_of_points_query = strdup(edges_of_points_sql.str().c_str());
 
     edges_no_points_sql << "WITH "
         << " edges AS (" << edges_sql << "), "
@@ -63,6 +62,6 @@ get_new_queries(
         << " SELECT edges.*"
         << " FROM edges"
         << " WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
-    *edges_no_points_query = pgr_msg(edges_no_points_sql.str().c_str());
+    *edges_no_points_query = strdup(edges_no_points_sql.str().c_str());
 }
 

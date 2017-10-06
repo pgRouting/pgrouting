@@ -84,9 +84,9 @@ pgr_get_restriction_data(
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
-    info[0].name = "id";
-    info[1].name = "cost";
-    info[2].name = "restricted_edges";
+    info[0].name = strdup("id");
+    info[1].name = strdup("cost");
+    info[2].name = strdup("restricted_edges");
 
     info[1].eType = ANY_NUMERICAL;
     info[2].eType = ANY_INTEGER_ARRAY;

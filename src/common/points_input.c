@@ -78,10 +78,10 @@ pgr_get_points(
         info[i].eType = ANY_INTEGER;
     }
 
-    info[0].name = "pid";
-    info[1].name = "edge_id";
-    info[2].name = "fraction";
-    info[3].name = "side";
+    info[0].name = strdup("pid");
+    info[1].name = strdup("edge_id");
+    info[2].name = strdup("fraction");
+    info[3].name = strdup("side");
 
     info[0].strict = false;
     info[3].strict = false;

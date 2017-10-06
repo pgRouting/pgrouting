@@ -101,21 +101,14 @@ process(
             &err_msg);
 
     time_msg(" processing pgr_bdDijkstra", start_t, clock());
+    PGR_DBG("Returning %ld tuples", *result_count);
 
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
     }
-
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-
+    pfree(edges);
     pgr_SPI_finish();
 }
 /*                                                                            */

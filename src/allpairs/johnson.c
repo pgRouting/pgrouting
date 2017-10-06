@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 #include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 
@@ -63,9 +62,7 @@ void process(
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
+    char *err_msg = (char *)"";
     clock_t start_t = clock();
     do_pgr_johnson(
             edges,
@@ -73,23 +70,12 @@ void process(
             directed,
             result_tuples,
             result_count,
-            &log_msg,
             &err_msg);
     time_msg(" processing Johnson", start_t, clock());
+    PGR_DBG("Returning %ld tuples\n", *result_count);
+    PGR_DBG("Returned message = %s\n", err_msg);
 
-    if (err_msg && (*result_tuples)) {
-        free(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-
+    free(err_msg);
     pfree(edges);
     pgr_SPI_finish();
 }

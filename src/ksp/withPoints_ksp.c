@@ -92,8 +92,8 @@ process(
     pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("freeing allocated memory not used anymore");
-    pfree(edges_of_points_query);
-    pfree(edges_no_points_query);
+    free(edges_of_points_query);
+    free(edges_no_points_query);
 
     if ((total_edges + total_edges_of_points) == 0) {
         PGR_DBG("No edges found");
@@ -133,17 +133,12 @@ process(
             &err_msg);
     time_msg(" processing withPointsKSP", start_t, clock());
 
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
+    PGR_DBG("Returned message = %s\n", err_msg);
+
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
     }
-
     pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
 
     pfree(edges);
     pfree(edges_of_points);

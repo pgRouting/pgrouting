@@ -35,9 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "allpairs/pgr_allpairs.hpp"
 
-#include "cpp_common/pgr_assert.h"
 
-
+// CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN,
 void
 do_pgr_johnson(
         pgr_edge_t  *data_edges,
@@ -45,63 +44,48 @@ do_pgr_johnson(
         bool directed,
         Matrix_cell_t **return_tuples,
         size_t *return_count,
-        char ** log_msg,
-        char ** err_msg) {
+        char **err_msg) {
     std::ostringstream log;
-    std::ostringstream err;
-
     try {
-        pgassert(!(*log_msg));
-        pgassert(!(*err_msg));
-        pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
+        if (total_tuples == 1) {
+            log << "Required: more than one tuple\n";
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            *err_msg = strdup(log.str().c_str());
+            return;
+        }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque< Path >paths;
 
         if (directed) {
-            log << "Processing Directed graph\n";
+            log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_tuples);
             pgr_johnson(digraph, *return_count, return_tuples);
         } else {
-            log << "Processing Undirected graph\n";
+            log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_tuples);
             pgr_johnson(undigraph, *return_count, return_tuples);
         }
 
-
         if (*return_count == 0) {
-            log <<  "No result generated, report this error\n";
-            *log_msg = pgr_msg(err.str().c_str());
-            *return_tuples = NULL;
-            *return_count = 0;
+            log <<  "NOTICE: No Vertices found??? wiered error\n";
+            *err_msg = strdup(log.str().c_str());
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
             return;
         }
 
-
-        *log_msg = log.str().empty()?
-            *log_msg :
-            pgr_msg(log.str().c_str());
-    } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
-        err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
-    } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
-        err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
-    } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
-        err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+#ifndef DEBUG
+        *err_msg = strdup("OK");
+#else
+        *err_msg = strdup(log.str().c_str());
+#endif
+    } catch ( ... ) {
+        log << "Caught unknown exception!\n";
+        *err_msg = strdup(log.str().c_str());
     }
 }

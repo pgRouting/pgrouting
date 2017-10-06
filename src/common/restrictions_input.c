@@ -83,9 +83,9 @@ pgr_get_restriction_data(
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
-    info[0].name = "target_id";
-    info[1].name = "to_cost";
-    info[2].name = "via_path";
+    info[0].name = strdup("target_id");
+    info[1].name = strdup("to_cost");
+    info[2].name = strdup("via_path");
 
     info[1].eType = ANY_NUMERICAL;
     info[2].eType = TEXT;

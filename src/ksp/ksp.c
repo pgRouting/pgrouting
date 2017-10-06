@@ -43,7 +43,7 @@ void compute(
         int k,
         bool directed,
         bool heap_paths,
-        General_path_element_t **result_tuples, size_t *result_count) {
+        General_path_element_t **ksp_path, size_t *path_count) {
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
@@ -82,26 +82,17 @@ void compute(
             k,
             directed,
             heap_paths,
-            result_tuples,
-            result_count,
+            ksp_path,
+            path_count,
             &log_msg,
             &notice_msg,
             &err_msg);
     time_msg(" processing KSP", start_t, clock());
+    PGR_DBG("total tuples found %ld\n", *path_count);
 
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
+    if (err_msg) {
+        if (*ksp_path) free(*ksp_path);
     }
-
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-
-
     pgr_global_report(log_msg, notice_msg, err_msg);
 
     pfree(edges);

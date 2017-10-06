@@ -36,7 +36,6 @@ corresponding to the Alpha shape.
 ************************************************************************/
 
 #include "drivers/alpha_shape/alpha_driver.h"
-#include "cpp_common/pgr_assert.h"
 
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Filtered_kernel.h>
@@ -170,9 +169,7 @@ alpha_edges(const Alpha_shape_2& A,
 
 
 int alpha_shape(vertex_t *vertices, size_t count, double alpha,
-        vertex_t **return_tuples, size_t *res_count, char **err_msg) {
-    std::ostringstream err;
-
+        vertex_t **res, size_t *res_count, char **err_msg) {
     try {
         std::list<Point> points;
         {
@@ -193,8 +190,7 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
                     });
             pv.erase(std::unique(pv.begin(), pv.end()), pv.end());
             if (pv.size() != count &&  pv.size() < 3) {
-                err << "After eliminating duplicated points, less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.";
-                *err_msg = pgr_msg(err.str().c_str());
+                *err_msg = strdup("After eliminating duplicated points, less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.");
                 return -1;
             }
             points.insert(points.begin(), pv.begin(), pv.end());
@@ -224,7 +220,7 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
         //  Segment s = segments.at(0);
         //  find_next_edge(s, segments, result);
         if (segments.empty()) {
-            *return_tuples = NULL;
+            *res = NULL;
             *res_count = 0;
         } else {
             std::set<int> unusedIndexes;
@@ -245,21 +241,21 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
                 result_count += ring.size();
             }
             result_count += rings.size() - 1;
-            *return_tuples = pgr_alloc(result_count, (*return_tuples));
+            *res = pgr_alloc(result_count, (*res));
             *res_count = result_count;
 
             int idx = 0;
             for (unsigned int i = 0; i < rings.size(); i++) {
                 if (i > 0) {
-                    (*return_tuples)[idx].x = DBL_MAX;
-                    (*return_tuples)[idx].y = DBL_MAX;
+                    (*res)[idx].x = DBL_MAX;
+                    (*res)[idx].y = DBL_MAX;
                     idx++;
                 }
                 Polygon_2 ring = rings.at(i);
                 for (unsigned int j = 0; j < ring.size(); j++) {
                     Point point = ring.vertex(j);
-                    (*return_tuples)[idx].x = point.x();
-                    (*return_tuples)[idx].y = point.y();
+                    (*res)[idx].x = point.x();
+                    (*res)[idx].y = point.y();
                     idx++;
                 }
             }
@@ -267,21 +263,8 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
         *err_msg = NULL;
 
         return EXIT_SUCCESS;
-    } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*res_count) = 0;
-        err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-    } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*res_count) = 0;
-        err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-    } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*res_count) = 0;
-        err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
+    } catch ( ... ) {
+        *err_msg = strdup("Caught unknown exception!");
     }
     return -1;
 }

@@ -61,6 +61,7 @@ void  do_pgr_ksp(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
+        log << "buuu";
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -82,6 +83,7 @@ void  do_pgr_ksp(
         auto count(count_tuples(paths));
 
         if (!(count == 0)) {
+            // get the space required to store all the paths
             *return_tuples = NULL;
             *return_tuples = pgr_alloc(count, (*return_tuples));
 
@@ -97,28 +99,28 @@ void  do_pgr_ksp(
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
-            *log_msg :
-            pgr_msg(log.str().c_str());
+            nullptr :
+            strdup(log.str().c_str());
         *notice_msg = notice.str().empty()?
-            *notice_msg :
-            pgr_msg(notice.str().c_str());
+            nullptr :
+            strdup(notice.str().c_str());
     } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
+        if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
-    } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+    } catch (std::exception& except) {
+        if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
+        if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     }
 }

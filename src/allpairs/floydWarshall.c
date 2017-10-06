@@ -31,9 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
 #include "c_common/edges_input.h"
 
 #include "drivers/allpairs/floydWarshall_driver.h"
@@ -67,7 +65,6 @@ process(
     clock_t start_t = clock();
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
-    char *notice_msg = NULL;
     char *log_msg = NULL;
     do_pgr_floydWarshall(
             edges,
@@ -79,18 +76,17 @@ process(
             &err_msg);
     time_msg(" processing FloydWarshall", start_t, clock());
 
-    if (err_msg && (*result_tuples)) {
-        free(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
+    PGR_DBG("Returning %ld tuples\n", *result_count);
+
+    if (log_msg) {
+        PGR_DBG("LOG = %s\n", log_msg);
+        free(log_msg);
     }
 
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
+    if (err_msg) {
+       if (*result_tuples) free(*result_tuples);
+       elog(ERROR, " %s\n", err_msg);
+    }
 
     pfree(edges);
     pgr_SPI_finish();
