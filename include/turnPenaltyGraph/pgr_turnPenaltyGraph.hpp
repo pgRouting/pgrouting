@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/line_vertex.h"
-#include "dijkstraTRSP/restriction.h"
 
 namespace pgrouting {
 
@@ -190,15 +189,6 @@ Pgr_turnPenaltyGraph< G, T_V, T_E >::graph_add_edge(
 
     auto index_source_edge = m_vertex_map[ std::pair<int64_t,int64_t>(source, source_in_edge) ];
     auto index_target_edge = m_vertex_map[ std::pair<int64_t,int64_t>(target, source_out_edge) ];
-
-#if 0
-    log << "\nsource_in_edge = " << source_in_edge << " | "
-        << "source_out_edge = " << source_out_edge << " | "
-        << "index_source_edge = " << index_source_edge << " | "
-        << "index_target_edge = " << index_target_edge << " | "
-        << "edge.source = " << source << " | "
-        << "edge.target = " << target << "\n";
-#endif
 
     auto vm_s = this->get_V(index_source_edge);
     auto vm_t = this->get_V(index_target_edge);
