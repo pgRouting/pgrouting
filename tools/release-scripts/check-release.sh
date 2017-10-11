@@ -258,18 +258,24 @@ echo "- VERSION"
 
 #---------------------------------------------------------------------
 
-if [[ -z $DEBUG ]]; then
+if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
     echo "cat VERSION | grep \"release/$MAYOR.$MINOR\""
     echo "\`\`\`"
 fi
 
-if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
-    error_msg "VERSION should have release/$MAYOR.$MINOR"
-    exit 1
+if [[ "$BRANCH" != "master" ]]; then
+    if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
+        error_msg "VERSION should have release/$MAYOR.$MINOR"
+        exit 1
+    fi
 else
-    echo "  -[x] VERSION file branch: OK"
+    if [[ $(cat VERSION | grep "$BRANCH") != *"master" ]]; then
+        error_msg "VERSION should have master"
+        exit 1
+    fi
 fi
+echo "  -[x] VERSION file branch: OK"
 
 #---------------------------------------------------------------------
 echo

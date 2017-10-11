@@ -327,7 +327,7 @@ RETURNS TABLE(
 $BODY$
     SELECT '2.5.1'::varchar AS version,
         'v2.5.1'::varchar AS tag,
-        '8f04a57bf'::varchar AS hash,
+        'de7557554'::varchar AS hash,
         'master'::varchar AS branch,
         '1.54.0'::varchar AS boost;
 $BODY$
