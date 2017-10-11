@@ -258,7 +258,7 @@ echo "- VERSION"
 
 #---------------------------------------------------------------------
 
-if [[ -n $DEBUG ]]; then
+if [[ -z $DEBUG ]]; then
     echo "\`\`\`"
     echo "cat VERSION | grep \"release/$MAYOR.$MINOR\""
     echo "\`\`\`"
