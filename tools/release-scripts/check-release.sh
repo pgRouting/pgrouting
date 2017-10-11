@@ -91,8 +91,8 @@ MINOR=$2
 MICRO=$3
 PREV_REL=$4
 BRANCH=$5
-RC=$6
-DEBUG=$7
+DEBUG=$6
+RC=$7
 
 
 if [[ -z  "$DEBUG" ]]; then
@@ -273,10 +273,12 @@ fi
 
 #---------------------------------------------------------------------
 echo
-echo "### Checking signature files"
+echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
-test_file $PREV_REL
+test_file 2.5.1
+test_file 2.5.0
+test_file 2.4.2
 test_file 2.4.1
 test_file 2.4.0
 test_file 2.3.2
@@ -322,22 +324,22 @@ echo - [x] completed local builds
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.4.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.4.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.4 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.3 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.1.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-#version 2.0.1 can not be upgraded
-#sh tools/release-scripts/get_signatures.sh 2.0.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.0.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.5.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+test_file 2.5.0
+test_file 2.4.2
+test_file 2.4.1
+test_file 2.4.0
+test_file 2.3.2
+test_file 2.3.1
+test_file 2.3.0
+test_file 2.2.4
+test_file 2.2.3
+test_file 2.2.2
+test_file 2.2.1
+test_file 2.2.0
+test_file 2.1.0
+test_file 2.0.1
+test_file 2.0.0
 
 echo
 echo - [x] completed check: OK
