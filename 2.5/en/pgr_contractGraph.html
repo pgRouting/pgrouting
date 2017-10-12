@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>pgr_contractGraph - Experimental &mdash; pgRouting Manual (2.5)</title>
-    
+    <title>pgr_contractGraph - Experimental &#8212; pgRouting Manual (2.5)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.0',
+        VERSION:     'v2.5.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.5)" href="index.html" />
-    <link rel="up" title="Contraction - Family of functions" href="contraction-family.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Flow - Family of functions" href="flow-family.html" />
     <link rel="prev" title="Contraction - Family of functions" href="contraction-family.html" />
 <meta charset='utf-8'>
@@ -39,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -52,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -319,25 +316,25 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -346,7 +343,7 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
 </ul>
 </td>
 </tr>
@@ -441,8 +438,8 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 <td><dl class="first last docutils">
 <dt>Type of the <cite>id</cite>.</dt>
 <dd><ul class="first last simple">
-<li>&#8216;v&#8217; when <cite>id</cite> is an identifier of a vertex.</li>
-<li>&#8216;e&#8217; when <cite>id</cite> is an identifier of an edge.</li>
+<li>‘v’ when <cite>id</cite> is an identifier of a vertex.</li>
+<li>‘e’ when <cite>id</cite> is an identifier of an edge.</li>
 </ul>
 </dd>
 </dl>
@@ -453,11 +450,11 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 <td><dl class="first last docutils">
 <dt>Identifier of:</dt>
 <dd><ul class="first last simple">
-<li>the  vertex when <cite>type = &#8216;v&#8217;</cite>.<ul>
+<li>the  vertex when <cite>type = ‘v’</cite>.<ul>
 <li>The vertex belongs to the edge_table passed as a parameter.</li>
 </ul>
 </li>
-<li>the edge when <cite>type = &#8216;e&#8217;</cite>.<ul>
+<li>the edge when <cite>type = ‘e’</cite>.<ul>
 <li>The <cite>id</cite> is a decreasing sequence starting from <strong>-1</strong>.</li>
 <li>Representing a pseudo <cite>id</cite> as is not incorporated into the edge_table.</li>
 </ul>
@@ -473,15 +470,15 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 </tr>
 <tr class="row-even"><td><strong>source</strong></td>
 <td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the source vertex of the current edge <cite>id</cite>. Valid values when <cite>type = &#8216;e&#8217;</cite>.</td>
+<td>Identifier of the source vertex of the current edge <cite>id</cite>. Valid values when <cite>type = ‘e’</cite>.</td>
 </tr>
 <tr class="row-odd"><td><strong>target</strong></td>
 <td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the target vertex of the current edge <cite>id</cite>. Valid values when <cite>type = &#8216;e&#8217;</cite>.</td>
+<td>Identifier of the target vertex of the current edge <cite>id</cite>. Valid values when <cite>type = ‘e’</cite>.</td>
 </tr>
 <tr class="row-even"><td><strong>cost</strong></td>
 <td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td>Weight of the edge (<cite>source</cite>, <cite>target</cite>). Valid values when <cite>type = &#8216;e&#8217;</cite>.</td>
+<td>Weight of the edge (<cite>source</cite>, <cite>target</cite>). Valid values when <cite>type = ‘e’</cite>.</td>
 </tr>
 </tbody>
 </table>
@@ -551,9 +548,9 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.0.<br/>
-      Last updated on Sep 13, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.1.<br/>
+      Last updated on Oct 11, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>
