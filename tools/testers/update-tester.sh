@@ -28,11 +28,9 @@ set -e
 
 # ----------------------
 #
-echo ------------------------------------
-echo All pgRouting versions to be updated must be installed before calling
-echo ------------------------------------
-echo -
-echo -
+echo **All pgRouting versions to be updated must be installed before calling**
+echo 
+echo 
 #
 # USAGE
 #
@@ -48,10 +46,6 @@ fi
 
 dropdb --if-exists ___test_update
 
-#make sure the scripts are the latest
-cp build/sql/pgrouting-* tools/sql-update-scripts
-#TODO automatically check  the diff is empty
-#git diff
 
 cd build
 sudo make install
@@ -61,8 +55,8 @@ cd ..
 
 function update_test {
 
-echo ------------------------------------
-echo ------------------------------------
+echo
+echo
 echo Updating from $1 to $2
 echo ------------------------------------
 

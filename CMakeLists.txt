@@ -552,7 +552,6 @@ endforeach()
 # PGROUTING Library names
 #-----------------------------------------------------------------------------
 
-message("Building the library names")
 
 #----------------------
 # PGROUTING installation files names have the following name
