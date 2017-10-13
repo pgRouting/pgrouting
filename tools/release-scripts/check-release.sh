@@ -54,27 +54,27 @@ fi
 if [[ -z  $1 ]]; then
     echo "Mayor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 if [[ -z  $2 ]]; then
     echo "Minor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 
 if [[ -z  $3 ]]; then
     echo "Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 
 if [[ -z  $4 ]]; then
     echo "Last Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 
@@ -82,7 +82,7 @@ fi
 if [[ -z  $5 ]]; then
     echo "branch missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 
@@ -91,8 +91,8 @@ MINOR=$2
 MICRO=$3
 PREV_REL=$4
 BRANCH=$5
-RC=$6
-DEBUG=$7
+DEBUG=$6
+RC=$7
 
 
 if [[ -z  "$DEBUG" ]]; then
@@ -264,19 +264,28 @@ if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
 fi
 
-if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
-    error_msg "VERSION should have release/$MAYOR.$MINOR"
-    exit 1
+if [[ "$BRANCH" != "master" ]]; then
+    if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
+        error_msg "VERSION should have release/$MAYOR.$MINOR"
+        exit 1
+    fi
 else
-    echo "  -[x] VERSION file branch: OK"
+    if [[ $(cat VERSION | grep "$BRANCH") != *"master" ]]; then
+        error_msg "VERSION should have master"
+        exit 1
+    fi
 fi
+echo "  -[x] VERSION file branch: OK"
 
 #---------------------------------------------------------------------
 echo
-echo "### Checking signature files"
+echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
-test_file $PREV_REL
+test_file 2.6.0
+test_file 2.5.1
+test_file 2.5.0
+test_file 2.4.2
 test_file 2.4.1
 test_file 2.4.0
 test_file 2.3.2
@@ -314,7 +323,7 @@ if [[ "$BRANCH" == "develop" || $BRANCH == "master" || $BRANCH == "release/$MAYO
         bash tools/release-scripts/compile-release.sh 5 $MAYOR.$MINOR $MICRO
     fi
 fi
-bash tools/release-scripts/compile-release.sh 4.8   $MAYOR.$MINOR $MICRO
+bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
 
 echo - [x] completed local builds
 
@@ -322,23 +331,11 @@ echo - [x] completed local builds
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh 2.6.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.4.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.4.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.4 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.3 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.1.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-#version 2.0.1 can not be upgraded
-#sh tools/release-scripts/get_signatures.sh 2.0.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.0.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh $MAYOR.$MINOR.$MICRO ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+
+if [[ -z  "$DEBUG" ]]; then
+    git_no_change
+fi
 
 echo
 echo - [x] completed check: OK
@@ -371,8 +368,10 @@ if [[ $? != 0 ]]; then
     exit 1
 fi
 
-if [[ $(git status | grep 'Changes not staged for commit:') ]]; then
-    echo "FATAL: at least one result file changed"
+if [[ -z  "$DEBUG" ]]; then
+    git_no_change
+elif [[ $(git status | grep 'Changes not staged for commit:') ]]; then
+    echo "DEBUG WARNING: at least one file changed"
     git status
     exit 1
 fi
