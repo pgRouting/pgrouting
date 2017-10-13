@@ -91,8 +91,8 @@ MINOR=$2
 MICRO=$3
 PREV_REL=$4
 BRANCH=$5
-RC=$6
-DEBUG=$7
+DEBUG=$6
+RC=$7
 
 
 if [[ -z  "$DEBUG" ]]; then
@@ -264,19 +264,27 @@ if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
 fi
 
-if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
-    error_msg "VERSION should have release/$MAYOR.$MINOR"
-    exit 1
+if [[ "$BRANCH" != "master" ]]; then
+    if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
+        error_msg "VERSION should have release/$MAYOR.$MINOR"
+        exit 1
+    fi
 else
-    echo "  -[x] VERSION file branch: OK"
+    if [[ $(cat VERSION | grep "$BRANCH") != *"master" ]]; then
+        error_msg "VERSION should have master"
+        exit 1
+    fi
 fi
+echo "  -[x] VERSION file branch: OK"
 
 #---------------------------------------------------------------------
 echo
-echo "### Checking signature files"
+echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
-test_file $PREV_REL
+test_file 2.5.1
+test_file 2.5.0
+test_file 2.4.2
 test_file 2.4.1
 test_file 2.4.0
 test_file 2.3.2
@@ -323,6 +331,7 @@ echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
 sh tools/release-scripts/get_signatures.sh 2.6.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.5.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.4.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.4.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
@@ -339,6 +348,21 @@ sh tools/release-scripts/get_signatures.sh 2.1.0 ___sig_generate___ sql/sigs >> 
 #version 2.0.1 can not be upgraded
 #sh tools/release-scripts/get_signatures.sh 2.0.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.0.0 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+test_file 2.5.0
+test_file 2.4.2
+test_file 2.4.1
+test_file 2.4.0
+test_file 2.3.2
+test_file 2.3.1
+test_file 2.3.0
+test_file 2.2.4
+test_file 2.2.3
+test_file 2.2.2
+test_file 2.2.1
+test_file 2.2.0
+test_file 2.1.0
+test_file 2.0.1
+test_file 2.0.0
 
 echo
 echo - [x] completed check: OK
