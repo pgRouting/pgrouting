@@ -46,8 +46,8 @@ When points are also given as input:
 Images
 --------------
 
-The squared vertices are the temporary vertices, The temporary vertices are added acordng to the
-dirving side, The following images visualy show the diferences on how depending on the driving side the data is interpreted.
+The squared vertices are the temporary vertices, The temporary vertices are added according to the
+driving side, The following images visually show the differences on how depending on the driving side the data is interpreted.
 
 .. rubric:: Right driving side
 
@@ -67,7 +67,7 @@ dirving side, The following images visualy show the diferences on how depending 
 Introduction
 --------------
 
-This famly of functions was thought for routing vehicles, but might as well work
+This family of functions was thought for routing vehicles, but might as well work
 for some other application that we can not think of.
 
 The with points family of function give you the ability to route between
@@ -114,7 +114,7 @@ In all this functions we have to take care of as many aspects as possible:
   - Transformation to negative is done internally.
   - For results for involving vertices identifiers
 
-    - positive sign is a vertex of the original grpah
+    - positive sign is a vertex of the original graph
     - negative sign is a point of the temporary points
 
 The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.
@@ -150,7 +150,7 @@ For edge (15,  9,12  10, 20), & lets insert point (2, 12, 0.3, r)
 From first image above:
 
 - We can arrive to the point only via vertex 9.
-- It only afects the edge (15, 9,12, 10) so that edge is removed.
+- It only affects the edge (15, 9,12, 10) so that edge is removed.
 - Edge (15, 12,9, 20) is kept.
 - Create new edges:
 
@@ -162,7 +162,7 @@ From first image above:
 From second image above:
 
 - We can arrive to the point only via vertex 12.
-- It only afects the edge (15, 12,9 20) so that edge is removed.
+- It only affects the edge (15, 12,9 20) so that edge is removed.
 - Edge (15, 9,12, 10) is kept.
 - Create new edges:
 

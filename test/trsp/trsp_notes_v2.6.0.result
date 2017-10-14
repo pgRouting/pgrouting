@@ -702,19 +702,13 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 15, 2],
     false, true
 );
-ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
-LINE 1: SELECT * FROM _pgr_trspViaVertices(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+ERROR:  Restrictions Missing
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2, 1],
     false, true
 );
-ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
-LINE 1: SELECT * FROM _pgr_trspViaVertices(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+ERROR:  Restrictions Missing
 ```
 **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
 this case none is found
@@ -779,10 +773,7 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 1, 2],
     false, true
 );
-ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
-LINE 1: SELECT * FROM _pgr_trspViaVertices(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+ERROR:  Restrictions Missing
 ```
 with restrictions the original code is used
 ```
@@ -867,10 +858,7 @@ SELECT * FROM _pgr_trspViaVertices(
     false, 
     true
 );
-ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
-LINE 1: SELECT * FROM _pgr_trspViaVertices(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+ERROR:  Restrictions Missing
 ```
 # pgr_trspViaEdges
 *pgr_trspViaEdges* will use the original code when

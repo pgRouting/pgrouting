@@ -20,7 +20,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text)
+create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL)
     RETURNS SETOF pgr_costresult3 AS
 $body$
 /*
@@ -41,6 +41,9 @@ declare
     restrictions_query TEXT;
 
 begin
+    IF (turn_restrict_sql IS NULL) THEN
+        RAISE EXCEPTION 'Restrictions Missing';
+    END IF;
 
     restrictions_query = $$
     WITH old_restrictions AS ( $$ ||

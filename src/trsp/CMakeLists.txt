@@ -1,5 +1,5 @@
 add_library(trsp OBJECT 
-    # keeping these for backwards compatability
+    # keeping these for backwards compatibility
     trsp.c
     trsp_core.cpp
     GraphDefinition.cpp
