@@ -2,7 +2,6 @@
 
 File: new_trsp.c
 
-Generated with Template by:
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 

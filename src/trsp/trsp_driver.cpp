@@ -1,9 +1,8 @@
 /*PGR-GNU*****************************************************************
 
-File: trsp_core.cpp
+File: trsp_driver.cpp
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
