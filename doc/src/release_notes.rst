@@ -46,6 +46,15 @@ pgRouting 2.6.0 Release Notes
 
 To see the issues closed by this release see the `Git closed issues for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
 
+
+.. rubric:: Bug fixes
+
+* Cleaned the internal code of trsp(text, integer, integer, boolean, boolean [, text])
+  * Removed the use of pointers
+  * Internal code can accept BIGINT
+
+
+
 .. _changelog_2_5_1:
 
 pgRouting 2.5.1 Release Notes
