@@ -85,7 +85,7 @@ do_pgr_turnPenaltyGraph(
 
         pgrouting::LinearDirectedGraph line(gType);
         line.insert_edges(data_edges, total_edges);
-        line.transform(digraph);
+        line.transform_graph(digraph);
 
         std::vector< Turn_penalty_graph_rt > line_graph_edges;
         line_graph_edges = line.get_postgres_results_directed();
