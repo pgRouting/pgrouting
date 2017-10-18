@@ -558,7 +558,7 @@ SELECT * FROM pgr_trspViaVertices(
 );
 \echo '\`\`\`'
 
-\echo But it uses `pgr_dijkstraVia` that gives more information on the result
+\echo But it uses pgr_dijkstraVia that gives more information on the result
 \echo '\`\`\`'
 SELECT * FROM pgr_dijkstraVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
