@@ -527,10 +527,16 @@ SELECT * FROM pgr_trsp(
 ------------------
 \echo ## pgr_trspViaVertices No path representation differences
 
-\echo pgr_trspViaVertices uses _pgr_trsp which as mentioned before
-\echo  * Sometimes it crasses the server when no path was found
-\echo  * Sometimes represents with Error a no path found
-\echo  * Forcing the user to use the wrapper or the replacement function
+\echo pgr_trspViaVertices uses:
+\echo "* When there are restrictions: `_pgr_trsp(one to one)`"
+\echo "* When there are no restrictions: `pgr_dijkstraVia`"
+\echo
+\echo **PLEASE: Use pgr_dijstraVia when there are no restrictions**
+\echo
+\echo Representation of **no path found**:
+\echo "* Sometimes represents with Error a no path found"
+\echo "* Sometimes represents with EMPTY SET when no path found"
+\echo "* Forcing the user to use the wrapper or the replacement function"
 \echo
 \echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
@@ -539,49 +545,35 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 15, 2],
     false, true
 );
-SELECT * FROM _pgr_trspViaVertices(
+\echo '\`\`\`'
+
+\echo Calls to the wrapper function allowed without restrictions
+\echo '\`\`\`'
+SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2, 1],
+    ARRAY[2, 3, 2],
     false, true
 );
 \echo '\`\`\`'
 
-\echo **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
-\echo this case none is found
+\echo But it uses `pgr_dijkstraVia` that gives more information on the result
 \echo '\`\`\`'
 SELECT * FROM pgr_dijkstraVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2],
+    ARRAY[2, 3, 2],
     false
-);
-\echo '\`\`\`'
-
-
-\echo this case only from 2 to 1 is found
-\echo '\`\`\`'
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2, 1],
-    false
-);
-\echo '\`\`\`'
-
-\echo the **pgr_dijkstraVia** used are for complete routes so its marked as **strict:=true**
-\echo therefore the expected result is EMPTY SET to represent no route was found
-\echo '\`\`\`'
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false,
-    strict := true
 );
 \echo '\`\`\`'
 
 
 \echo ## when a path does not exist on the route
-\echo pgr_TRSPViaVertices using the *pgr_dijkstraVia* when there are no restrictions.
+
+\echo pgr_TRSPViaVertices gives different results even if restrictions are nt involved on the
+\echo shortest path(s) when restrictions are used VS when restrictions are not used:
+\echo
 \echo Because there is no path from 1 to 1 then there is no complete route 1 to 1 to 2
 \echo therefore the expected result is EMPTY SET to represent no route was found
+\echo "* without restrictions"
 \echo '\`\`\`'
 SELECT * FROM pgr_TRSPViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -590,16 +582,8 @@ SELECT * FROM pgr_TRSPViaVertices(
 );
 \echo '\`\`\`'
 
-\echo Calls to the original function of is no longer allowed without restrictions
-\echo '\`\`\`'
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false, true
-);
-\echo '\`\`\`'
-
-\echo with restrictions the original code is used
+\echo "* with restrictions"
+\echo Restrictions on the wrapper function, is the last parameter and its the old style:
 \echo '\`\`\`'
 SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -610,48 +594,6 @@ SELECT * FROM pgr_trspViaVertices(
 \echo '\`\`\`'
 
 
-\echo Using explicitly the original code
-\echo '\`\`\`'
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-);
-\echo '\`\`\`'
-
-
-\echo ## from 2 to 3 to 2
-
-
-\echo dijkstra via shows the shortest route on the two paths
-\echo '\`\`\`'
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false
-);
-\echo '\`\`\`'
-
-\echo the replacement function **pgr_dijkstraVia** is used because there are no restrictions
-\echo '\`\`\`'
-SELECT * FROM pgr_TRSPViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false,
-    true
-);
-\echo '\`\`\`'
-
-\echo Calls to the original function of is no longer allowed without restrictions
-\echo '\`\`\`'
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false,
-    true
-);
-\echo '\`\`\`'
 
 
 
