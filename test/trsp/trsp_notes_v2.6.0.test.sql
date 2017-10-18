@@ -540,11 +540,13 @@ SELECT * FROM pgr_trsp(
 \echo
 \echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
+\set VERBOSITY terse
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2],
     false, true
 );
+\set VERBOSITY default
 \echo '\`\`\`'
 
 \echo Calls to the wrapper function allowed without restrictions

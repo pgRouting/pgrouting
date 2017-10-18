@@ -113,7 +113,6 @@ SELECT * FROM pgr_trsp(
      1, 15, true, true,
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
-NOTICE:  No paths found
 ERROR:  Error computing path: Path Not Found
 ```
 ## routing from/to same location
@@ -691,10 +690,16 @@ SELECT * FROM pgr_trsp(
 ```
 # pgr_trspViaVertices
 ## pgr_trspViaVertices No path representation differences
-pgr_trspViaVertices uses _pgr_trsp which as mentioned before
-* Sometimes it crasses the server when no path was found
-* Sometimes represents with Error a no path found
-* Forcing the user to use the wrapper or the replacement function
+pgr_trspViaVertices uses:
+"* When there are restrictions: `_pgr_trsp(one to one)`"
+"* When there are no restrictions: `pgr_dijkstraVia`"
+
+**PLEASE: Use pgr_dijstraVia when there are no restrictions**
+
+Representation of **no path found**:
+"* Sometimes represents with Error a no path found"
+"* Sometimes represents with EMPTY SET when no path found"
+"* Forcing the user to use the wrapper or the replacement function"
 
 Calls to the original function of is no longer allowed without restrictions
 ```
@@ -703,65 +708,47 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 15, 2],
     false, true
 );
-ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
-LINE 1: SELECT * FROM _pgr_trspViaVertices(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
-SELECT * FROM _pgr_trspViaVertices(
+ERROR:  Restrictions Missing
+```
+Calls to the wrapper function allowed without restrictions
+```
+SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2, 1],
+    ARRAY[2, 3, 2],
     false, true
 );
-ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
-LINE 1: SELECT * FROM _pgr_trspViaVertices(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   2 |    1
+   2 |   2 |   3 |   2 |    1
+   3 |   2 |   2 |  -1 |    0
+(3 rows)
+
 ```
-**pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
-this case none is found
+sh: 1: pgr_dijkstraVia: not found
+But it uses  that gives more information on the result
 ```
 SELECT * FROM pgr_dijkstraVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2],
+    ARRAY[2, 3, 2],
     false
 );
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-(0 rows)
-
-```
-this case only from 2 to 1 is found
-```
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2, 1],
-    false
-);
- seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
------+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       3 |        1 |         2 |       1 |    2 |    1 |    1 |        0 |              0
-   2 |       3 |        2 |         2 |       1 |    1 |   -2 |    0 |        1 |              1
-(2 rows)
-
-```
-the **pgr_dijkstraVia** used are for complete routes so its marked as **strict:=true**
-therefore the expected result is EMPTY SET to represent no route was found
-```
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false,
-    strict := true
-);
- seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
------+---------+----------+-----------+---------+------+------+------+----------+----------------
-(0 rows)
+   1 |       1 |        1 |         2 |       3 |    2 |    2 |    1 |        0 |              0
+   2 |       1 |        2 |         2 |       3 |    3 |   -1 |    0 |        1 |              1
+   3 |       2 |        1 |         3 |       2 |    3 |    2 |    1 |        0 |              1
+   4 |       2 |        2 |         3 |       2 |    2 |   -2 |    0 |        1 |              2
+(4 rows)
 
 ```
 ## when a path does not exist on the route
-pgr_TRSPViaVertices using the *pgr_dijkstraVia* when there are no restrictions.
+pgr_TRSPViaVertices gives different results even if restrictions are nt involved on the
+shortest path(s) when restrictions are used VS when restrictions are not used:
+
 Because there is no path from 1 to 1 then there is no complete route 1 to 1 to 2
 therefore the expected result is EMPTY SET to represent no route was found
+"* without restrictions"
 ```
 SELECT * FROM pgr_TRSPViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -773,19 +760,8 @@ SELECT * FROM pgr_TRSPViaVertices(
 (0 rows)
 
 ```
-Calls to the original function of is no longer allowed without restrictions
-```
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false, true
-);
-ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
-LINE 1: SELECT * FROM _pgr_trspViaVertices(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
-```
-with restrictions the original code is used
+"* with restrictions"
+Restrictions on the wrapper function, is the last parameter and its the old style:
 ```
 SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -805,73 +781,6 @@ SELECT * FROM pgr_trspViaVertices(
    8 |   2 |   2 |  -1 |    0
 (8 rows)
 
-```
-Using explicitly the original code
-```
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-);
- seq | id1 | id2 | id3 | cost 
------+-----+-----+-----+------
-   1 |   1 |   1 |   1 |    1
-   2 |   1 |   2 |   4 |    1
-   3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |   5 |    1
-   5 |   1 |   3 |   2 |    1
-   6 |   1 |   2 |   1 |    1
-   7 |   2 |   1 |   1 |    1
-   8 |   2 |   2 |  -1 |    0
-(8 rows)
-
-```
-## from 2 to 3 to 2
-dijkstra via shows the shortest route on the two paths
-```
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false 
-);
- seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
------+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        1 |         2 |       3 |    2 |    2 |    1 |        0 |              0
-   2 |       1 |        2 |         2 |       3 |    3 |   -1 |    0 |        1 |              1
-   3 |       2 |        1 |         3 |       2 |    3 |    2 |    1 |        0 |              1
-   4 |       2 |        2 |         3 |       2 |    2 |   -2 |    0 |        1 |              2
-(4 rows)
-
-```
-the replacement function **pgr_dijkstraVia** is used because there are no restrictions
-```
-SELECT * FROM pgr_TRSPViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false, 
-    true
-);
- seq | id1 | id2 | id3 | cost 
------+-----+-----+-----+------
-   1 |   1 |   2 |   2 |    1
-   2 |   2 |   3 |   2 |    1
-   3 |   2 |   2 |  -1 |    0
-(3 rows)
-
-```
-Calls to the original function of is no longer allowed without restrictions
-```
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false, 
-    true
-);
-ERROR:  function _pgr_trspviavertices(unknown, integer[], boolean, boolean) does not exist
-LINE 1: SELECT * FROM _pgr_trspViaVertices(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 ```
 # pgr_trspViaEdges
 *pgr_trspViaEdges* will use the original code when
