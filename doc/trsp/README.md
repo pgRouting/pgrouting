@@ -725,7 +725,6 @@ SELECT * FROM pgr_trspViaVertices(
 (3 rows)
 
 ```
-sh: 1: pgr_dijkstraVia: not found
 But it uses  that gives more information on the result
 ```
 SELECT * FROM pgr_dijkstraVia(
