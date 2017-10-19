@@ -109,11 +109,11 @@ echo
 
 GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
-if [[ "$GIT_BRANCH" == "$BRANCH" ]]; then
-    echo "- [x] Already in branch $BRANCH";
+if [[ "${GIT_BRANCH}" == "${BRANCH}" ]]; then
+    echo "- [x] Already in branch $BRANCH"
     echo
 else
-    error_msg "Current Branch is not: $BRANCH"
+    error_msg "Current Branch is not: $BRANCH,  found $GIT_BRANCH"
     exit 1
 fi
 

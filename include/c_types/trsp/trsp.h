@@ -67,7 +67,6 @@ int trsp_node_wrapper(
     char **err_msg
 );
 
-
 int trsp_edge_wrapper(
     edge_t *edges,
     size_t edge_count,
