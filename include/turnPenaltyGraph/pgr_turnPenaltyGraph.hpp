@@ -56,11 +56,12 @@ template <class G, typename T_V, typename T_E>
 class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
  private:
     int64_t m_num_edges;
-    std::map < int64_t, pgr_edge_t > m_edges;
+    std::map < int64_t, float > m_edge_costs;
     std::map < int64_t, std::pair< int64_t, int64_t > > m_transformation_map;
     std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;
 
     void apply_transformation(const pgrouting::DirectedGraph& digraph);
+    void insert_vertex(int64_t, int64_t);
 
     template < typename T >
         void graph_add_edge(int64_t,
@@ -95,7 +96,7 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
     template < typename T >
         void insert_edges(const std::vector < T > &edges) {
         for (auto &it : edges) {
-            m_edges[it.id] = it;
+            m_edge_costs[it.id] = it.cost;
         }
     }
 
@@ -148,7 +149,7 @@ Pgr_turnPenaltyGraph< G, T_V, T_E >::get_postgres_results_directed() {
 
         float e_cost = 0;
         if (source_edge_id == target_edge_id) {
-            e_cost = m_edges[source_edge_id].cost;
+            e_cost = m_edge_costs[source_edge_id];
         }
 
         log << "e_source = " << e_source << " e_target = " << e_target << "\n";
@@ -170,6 +171,23 @@ Pgr_turnPenaltyGraph< G, T_V, T_E >::get_postgres_results_directed() {
         results.push_back(edge.second);
     }
     return results;
+}
+
+template < class G, typename T_V, typename T_E >
+void
+Pgr_turnPenaltyGraph< G, T_V, T_E >::insert_vertex(
+        int64_t original_vertex_id,
+        int64_t original_edge_id) {
+
+    ++(this->m_num_vertices);
+    m_transformation_map[this->m_num_vertices] =
+        std::pair<int64_t, int64_t>(original_vertex_id, original_edge_id);
+    m_vertex_map[std::pair<int64_t, int64_t>(original_vertex_id, original_edge_id)] =
+        this->m_num_vertices;
+    auto v =  add_vertex(this->graph);
+    this->graph[v].cp_members(original_vertex_id, original_edge_id);
+    this->graph[v].vertex_id = this->m_num_vertices;
+    this->vertices_map[this->m_num_vertices] = v;
 }
 
 template < class G, typename T_V, typename T_E >
@@ -226,36 +244,15 @@ Pgr_turnPenaltyGraph< G, T_V, T_E >::apply_transformation(
         for (boost::tie(e_outIt, e_outEnd) =
                 boost::out_edges(vertex, digraph.graph);
                     e_outIt != e_outEnd; e_outIt++) {
-                ++(this->m_num_vertices);
                 auto out_edge_id = digraph.graph[*e_outIt].id;
-                auto out_edge_vertex_id = this->m_num_vertices;
-
-                m_transformation_map[this->m_num_vertices] =
-                    std::pair<int64_t, int64_t>(vertex_id, out_edge_id);
-                m_vertex_map[std::pair<int64_t, int64_t>(vertex_id,
-                                                         out_edge_id)] =
-                    out_edge_vertex_id;
-                auto v =  add_vertex(this->graph);
-                this->graph[v].cp_members(vertex_id, out_edge_id);
-                this->graph[v].vertex_id = this->m_num_vertices;
-                this->vertices_map[this->m_num_vertices] = v;
+                insert_vertex(vertex_id, out_edge_id);
         }
 
         for (boost::tie(e_inIt, e_inEnd) =
                 boost::in_edges(vertex, digraph.graph);
                     e_inIt != e_inEnd; e_inIt++) {
-            ++(this->m_num_vertices);
             auto in_edge_id = digraph.graph[*e_inIt].id;
-            auto in_edge_vertex_id = this->m_num_vertices;
-
-            m_transformation_map[this->m_num_vertices] =
-                std::pair<int64_t, int64_t>(vertex_id, in_edge_id);
-            m_vertex_map[std::pair<int64_t, int64_t>(vertex_id, in_edge_id)] =
-                in_edge_vertex_id;
-            auto v =  add_vertex(this->graph);
-            this->graph[v].cp_members(vertex_id, in_edge_id);
-            this->graph[v].vertex_id = this->m_num_vertices;
-            this->vertices_map[this->m_num_vertices] = v;
+            insert_vertex(vertex_id, in_edge_id);            
 
             for (boost::tie(e_outIt, e_outEnd) =
                     boost::out_edges(vertex, digraph.graph);
