@@ -314,12 +314,9 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                     /*
                        Prevent self-edges from being created in the Line Graph
                        */
-#if 1
+#if 0
                     if (labs(static_cast<long>(digraph.graph[*e_inIt].id))
                             == labs(static_cast<long>(digraph.graph[*e_outIt].id)))
-                        continue;
-#else
-                    if (digraph.graph[*e_inIt].id == digraph.graph[*e_outIt].id)
                         continue;
 #endif
 

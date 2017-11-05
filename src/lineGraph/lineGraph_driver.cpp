@@ -121,7 +121,7 @@ do_pgr_lineGraph(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No paths found between start_vid and end_vid vertices";
+                "Only vertices graph";
         } else {
             size_t sequence = 0;
 
