@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/line_vertex.h"
-#include "dijkstraTRSP/restriction.h"
 
 namespace pgrouting {
 
@@ -56,7 +55,7 @@ template <class G, typename T_V, typename T_E>
 class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
  private:
     int64_t m_num_edges;
-    std::map < int64_t, float > m_edge_costs;
+    std::map < int64_t, double > m_edge_costs;
     std::map < int64_t, std::pair< int64_t, int64_t > > m_transformation_map;
     std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;
 
@@ -147,7 +146,7 @@ Pgr_turnPenaltyGraph< G, T_V, T_E >::get_postgres_results_directed() {
         auto source_vertex_id = source_vertex_edge_pair.first;
         auto source_edge_id = source_vertex_edge_pair.second;
 
-        float e_cost = 0;
+        double e_cost = 0;
         if (source_edge_id == target_edge_id) {
             e_cost = m_edge_costs[source_edge_id];
         }

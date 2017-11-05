@@ -64,7 +64,7 @@ typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
-    float cost;
+    double cost;
     int64_t original_source_edge;
     int64_t original_source_vertex;
     int64_t original_target_edge;
