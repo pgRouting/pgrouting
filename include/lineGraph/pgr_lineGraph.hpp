@@ -40,17 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 
 namespace graph {
-template <class G, typename T_V, typename T_E>
-class Pgr_lineGraph;
-}  // namespace graph
-
-typedef graph::Pgr_lineGraph <
-boost::adjacency_list < boost::vecS, boost::vecS,
-    boost::bidirectionalS,
-    Line_vertex, Basic_edge >,
-    Line_vertex, Basic_edge > LinearDirectedGraph;
-
-namespace graph {
 
 template <class G, typename T_V, typename T_E>
 class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {

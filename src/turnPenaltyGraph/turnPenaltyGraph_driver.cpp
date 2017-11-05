@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 #include "turnPenaltyGraph/pgr_turnPenaltyGraph.hpp"
+#include "cpp_common/linear_directed_graph.h"
 
 void get_turn_penalty_postgres_result(
         std::vector< Turn_penalty_graph_rt > edge_result,
@@ -83,7 +84,7 @@ do_pgr_turnPenaltyGraph(
         digraph.m_num_vertices = 1000;
         log << digraph << "\n";
 
-        pgrouting::LinearDirectedGraph line(gType);
+        pgrouting::graph::Pgr_turnPenaltyGraph<pgrouting::LinearDirectedGraph,  pgrouting::Line_vertex, pgrouting::Basic_edge > line(graphType::DIRECTED);
         line.insert_edges(data_edges, total_edges);
         line.transform_graph(digraph);
 

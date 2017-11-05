@@ -21,38 +21,37 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
 /*! @file */
 
 #ifndef INCLUDE_CPP_COMMON_LINEAR_DIRECTED_GRAPH_
 #define INCLUDE_CPP_COMMON_LINEAR_DIRECTED_GRAPH_
 #pragma once
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include "cpp_common/basic_edge.h"
 #include "cpp_common/line_vertex.h"
 
 namespace pgrouting {
 
-namespace graph {
-
-template <class G, typename T_V, typename T_E>
-class Pgr_turnPenaltyGraph;
-
-template <class G, typename T_V, typename T_E>
-class Pgr_lineGraph;
-
-}  // namespace graph
-
-typedef graph::Pgr_turnPenaltyGraph <
-boost::adjacency_list < boost::vecS, boost::vecS,
+/** @brief Data type to handle graph -> lineGaph transformation
+ *
+ * @details
+ * Usage:
+ * ~~~~{.c}
+ * pgrouting::graph::Pgr_turnPenaltyGraph<
+ *      pgrouting::LinearDirectedGraph,  // using here
+ *      pgrouting::Line_vertex,
+ *      pgrouting::Basic_edge > line(graphType::DIRECTED);
+ *
+ * pgrouting::graph::Pgr_lineGraph<
+ *      pgrouting::LinearDirectedGraph,  // using here
+ *      pgrouting::Line_vertex,
+ *      pgrouting::Basic_edge > line(graphType::DIRECTED);
+ * ~~~~
+ */    
+typedef boost::adjacency_list < boost::vecS, boost::vecS,
     boost::bidirectionalS,
-    Line_vertex, Basic_edge >,
-    Line_vertex, Basic_edge > LinearDirectedGraph;
-
-typedef graph::Pgr_lineGraph <
-boost::adjacency_list < boost::vecS, boost::vecS,
-    boost::bidirectionalS,
-    Line_vertex, Basic_edge >,
     Line_vertex, Basic_edge > LinearDirectedGraph;
 
 }  // namespace pgrouting

@@ -40,6 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 #include "lineGraph/pgr_lineGraph.hpp"
+#include "cpp_common/linear_directed_graph.h"
+
 
 void get_postgres_result(
         std::vector< Line_graph_rt > edge_result,
@@ -99,7 +101,8 @@ do_pgr_lineGraph(
         digraph.m_num_vertices = 1000;
         log << digraph << "\n";
 
-        pgrouting::LinearDirectedGraph line(gType);
+        pgrouting::graph::Pgr_lineGraph<pgrouting::LinearDirectedGraph,  pgrouting::Line_vertex, pgrouting::Basic_edge > line(gType);
+
         line.insert_vertices(data_edges, total_edges);
         line.transform(digraph);
 
