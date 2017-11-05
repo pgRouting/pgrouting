@@ -83,7 +83,7 @@ do_pgr_lineGraph(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
+        digraph.insert_edges_neg(data_edges, total_edges);
 
         if (!directed) {
             for (size_t ind = 0; ind < total_edges; ind++) {
@@ -91,7 +91,7 @@ do_pgr_lineGraph(
                 data_edges[ind].id *= -1;
             }
 
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges_neg(data_edges, total_edges);
 
             for (size_t ind = 0; ind < total_edges; ind++) {
                 std::swap(data_edges[ind].source, data_edges[ind].target);

@@ -406,6 +406,11 @@ class Pgr_base_graph {
              insert_edges(std::vector < T >(edges, edges + count));
          }
 
+     template < typename T >
+         void insert_edges_neg(const T *edges, int64_t count) {
+             insert_edges(std::vector < T >(edges, edges + count), false);
+         }
+
      template < typename T>
          void insert_edges(T *edges, int64_t count, bool) {
              for (int64_t i = 0; i < count; ++i) {
@@ -435,7 +440,7 @@ class Pgr_base_graph {
         @param edges
       */
      template < typename T >
-         void insert_edges(const std::vector < T > &edges) {
+         void insert_edges(const std::vector<T> &edges, bool normal = true) {
 #if 0
              // This code does not work with contraction
              if (num_vertices() == 0) {
@@ -445,7 +450,7 @@ class Pgr_base_graph {
              }
 #endif
              for (const auto edge : edges) {
-                 graph_add_edge(edge);
+                 graph_add_edge(edge, normal);
              }
          }
      //@}
@@ -707,7 +712,7 @@ class Pgr_base_graph {
      void graph_add_edge(const T_E &edge);
 
      template < typename T >
-         void graph_add_edge(const T &edge);
+         void graph_add_edge(const T &edge, bool normal = true);
 
 
      /**
@@ -926,7 +931,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T_E &edge ) {
 template < class G, typename T_V, typename T_E >
 template < typename T>
 void
-Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
+Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge, bool normal) {
     bool inserted;
     typename Pgr_base_graph< G, T_V, T_E >::E e;
     if ((edge.cost < 0) && (edge.reverse_cost < 0))
@@ -953,7 +958,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
             boost::add_edge(vm_t, vm_s, graph);
 
         graph[e].cost = edge.reverse_cost;
-        graph[e].id = edge.id;
+        graph[e].id = normal? edge.id : -edge.id;
     }
 }
 
