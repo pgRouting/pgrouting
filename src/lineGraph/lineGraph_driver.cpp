@@ -80,10 +80,11 @@ do_pgr_lineGraph(
         pgassert(total_edges != 0);
 
         std::vector< Line_graph_rt > results;
-        graphType gType = directed?DIRECTED:UNDIRECTED;
+        graphType gType = directed? DIRECTED: UNDIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
+
         if (!directed) {
             for (size_t ind = 0; ind < total_edges; ind++) {
                 std::swap(data_edges[ind].source, data_edges[ind].target);
@@ -98,12 +99,13 @@ do_pgr_lineGraph(
             }
         }
 
+#if 0
         digraph.m_num_vertices = 1000;
+#endif
         log << digraph << "\n";
-
         pgrouting::graph::Pgr_lineGraph<pgrouting::LinearDirectedGraph,  pgrouting::Line_vertex, pgrouting::Basic_edge > line(gType);
 
-        line.insert_vertices(data_edges, total_edges);
+        line.insert_vertices(std::vector<pgr_edge_t>(data_edges, data_edges + total_edges));
         line.transform(digraph);
 
         std::vector< Line_graph_rt > line_graph_edges;
@@ -129,8 +131,10 @@ do_pgr_lineGraph(
                 sequence);
             (*return_count) = sequence;
         }
+#if 0
         log << line.log.str().c_str() << "\n\n\n";
         log << line << "\n";
+#endif
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?

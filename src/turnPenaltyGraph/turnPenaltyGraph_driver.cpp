@@ -81,7 +81,9 @@ do_pgr_turnPenaltyGraph(
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
 
+#if 0
         digraph.m_num_vertices = 1000;
+#endif
         log << digraph << "\n";
 
         pgrouting::graph::Pgr_turnPenaltyGraph<pgrouting::LinearDirectedGraph,  pgrouting::Line_vertex, pgrouting::Basic_edge > line(graphType::DIRECTED);
@@ -108,9 +110,10 @@ do_pgr_turnPenaltyGraph(
             );
             (*return_count) = sequence;
         }
+#if 1
         log << line.log.str().c_str() << "\n\n\n";
         log << line << "\n";
-
+#endif
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
