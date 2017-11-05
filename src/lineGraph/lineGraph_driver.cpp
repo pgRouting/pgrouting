@@ -85,6 +85,7 @@ do_pgr_lineGraph(
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges_neg(data_edges, total_edges);
 
+#if 0
         if (!directed) {
             for (size_t ind = 0; ind < total_edges; ind++) {
                 std::swap(data_edges[ind].source, data_edges[ind].target);
@@ -98,14 +99,19 @@ do_pgr_lineGraph(
                 data_edges[ind].id *= -1;
             }
         }
+#endif
 
 #if 0
         digraph.m_num_vertices = 1000;
 #endif
         log << digraph << "\n";
         pgrouting::graph::Pgr_lineGraph<pgrouting::LinearDirectedGraph,  pgrouting::Line_vertex, pgrouting::Basic_edge > line(gType);
-
+#if 0
         line.insert_vertices(std::vector<pgr_edge_t>(data_edges, data_edges + total_edges));
+#else
+        line.insert_vertices(digraph);
+#endif
+
         line.transform(digraph);
 
         std::vector< Line_graph_rt > line_graph_edges;

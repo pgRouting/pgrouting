@@ -56,24 +56,15 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         {
         }
 
-#if 0
-    template < typename T >
-        void insert_vertices(const T* edges, int64_t count) {
-            insert_vertices(std::vector < T >(edges, edges + count));
-        }
-#endif
 
-    template < typename T >
-        void insert_vertices(const std::vector < T > &edges) {
-            for (auto &it : edges) {
-                m_edges[it.id] = it;
-            }
-            std::vector<Line_vertex> vertices = extract_vertices();
-
-#if 0
-            add_vertices(vertices);
-#endif
+    template < typename T > void insert_vertices(
+            const std::vector < T > &edges) {
+        for (auto &it : edges) {
+            m_edges[it.id] = it;
         }
+        std::vector<Line_vertex> vertices = extract_vertices();
+    }
+
 
     void transform(pgrouting::DirectedGraph& digraph) {
         create_edges(digraph);
@@ -86,7 +77,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
         for (auto vi = vertices(g.graph).first;
                 vi != vertices(g.graph).second; ++vi) {
-            if ((*vi) >= g.m_num_vertices) break;
+            if ((*vi) >= g.num_vertices()) break;
             log << (*vi) << ": " << " out_edges_of(" << g.graph[(*vi)] << "):";
             for (boost::tie(out, out_end) = out_edges(*vi, g.graph);
                     out != out_end; ++out) {
@@ -252,6 +243,27 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
             return vertices;
         }
 
+    void insert_vertices(
+            const pgrouting::DirectedGraph& digraph) {
+#if 0
+        log << "iterate directly over edges:" << digraph.num_edges() << "\n";
+#endif
+        auto es = boost::edges(digraph.graph);
+        for (auto eit = es.first; eit != es.second; ++eit) {
+            auto edge = *eit;
+            Line_vertex vertex( {
+                    digraph[edge].id,
+                    digraph[boost::source(edge, digraph.graph)].id,
+                    digraph[boost::target(edge, digraph.graph)].id,
+                    digraph[edge].cost,
+                    -1});
+            add_one_vertex(vertex);
+#if 0
+            log << "ADDING:\n" << *this;
+#endif
+        }
+    }
+
  private:
     template < typename T>
         void
@@ -266,6 +278,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 #endif
             E e;
 
+#if 0
             pgassert(m_vertex_map.find({source, source_in_edge}) !=
                     m_vertex_map.end());
             pgassert(m_vertex_map.find({target, source_out_edge}) !=
@@ -275,15 +288,16 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                     source_in_edge) ];
             auto index_target_edge = m_vertex_map[ std::pair<int64_t, int64_t>(target,
                     source_out_edge) ];
+#endif
+            auto vm_s = this->get_V(source);
+            auto vm_t = this->get_V(target);
 
-            auto vm_s = this->get_V(index_source_edge);
-            auto vm_t = this->get_V(index_target_edge);
-
+#if 0
             pgassert(this->vertices_map.find(index_source_edge) !=
                     this->vertices_map.end());
             pgassert(this->vertices_map.find(index_target_edge) !=
                     this->vertices_map.end());
-
+#endif
             boost::tie(e, inserted) =
                 boost::add_edge(vm_s, vm_t, this->graph);
 
@@ -320,13 +334,15 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                         continue;
 #endif
 
-                    auto source_in_edge = digraph.source(*e_inIt);
+                    auto source_in_edge = digraph.adjacent(vertex, *e_inIt);
+                    auto source_out_edge = digraph.adjacent(vertex, *e_outIt);
 
                     graph_add_edge(
                             (digraph.graph[*e_inIt]).id,
                             (digraph.graph[*e_outIt]).id,
-                            digraph[source_in_edge].id,
-                            digraph[vertex].id);
+                            source_in_edge,
+                            source_out_edge);
+                            //digraph[vertex].id);
                 }
             }
         }
