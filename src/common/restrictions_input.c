@@ -35,43 +35,35 @@ static
 void fetch_restriction(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
-        Column_info_t info[4],
-        Restrict_t *restriction) {
-    restriction->target_id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    restriction->to_cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
-    char *str = DatumGetCString(
-            SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
+        Column_info_t info[3],
+        Restriction_t *restriction) {
+    /*
+     * reading the restriction id
+     */
+    restriction->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
 
-// TODO(someone) because its text, no guarantee the text read is correct
-// move this code to c++ to tokenize the integers.
+    /*
+     * reading the cost
+     */
+    restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
 
-    int i = 0;
-    for (i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
+    restriction->via = NULL;
+    restriction->via_size = 0;
 
-    if (str != NULL) {
-        char *token = NULL;
-        int i = 0;
-
-        token = (char *)strtok(str, " ,");
-
-        while (token != NULL && i < MAX_RULE_LENGTH) {
-            restriction->via[i] = atoi(token);
-            i++;
-            token = (char *)strtok(NULL, " ,");
-        }
-    }
+    restriction->via = pgr_SPI_getBigIntArr(
+            tuple, tupdesc, info[2], &restriction->via_size);
 }
 
 
 void
-pgr_get_restriction_data(
+pgr_get_restrictions(
         char *restrictions_sql,
-        Restrict_t **restrictions,
+        Restriction_t **restrictions,
         size_t *total_restrictions) {
     const int tuple_limit = 1000000;
     clock_t start_t = clock();
 
-    PGR_DBG("pgr_get_restriction_data");
+    PGR_DBG("pgr_get_restrictions");
     PGR_DBG("%s", restrictions_sql);
 
     Column_info_t info[3];
@@ -81,14 +73,17 @@ pgr_get_restriction_data(
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
-        info[i].eType = ANY_INTEGER;
     }
-    info[0].name = strdup("target_id");
-    info[1].name = strdup("to_cost");
-    info[2].name = strdup("via_path");
 
+    /* restriction id */
+    info[0].name = "id";
+    info[1].name = "cost";
+    /* array of edges */
+    info[2].name = "path";
+
+    info[0].eType = ANY_INTEGER;
     info[1].eType = ANY_NUMERICAL;
-    info[2].eType = TEXT;
+    info[2].eType = ANY_INTEGER_ARRAY;
 
 
     size_t ntuples;
@@ -102,6 +97,7 @@ pgr_get_restriction_data(
     bool moredata = TRUE;
     (*total_restrictions) = total_tuples = 0;
 
+
     /*  on the first tuple get the column numbers */
 
     while (moredata == TRUE) {
@@ -111,15 +107,17 @@ pgr_get_restriction_data(
         }
         ntuples = SPI_processed;
         total_tuples += ntuples;
-        PGR_DBG("SPI_processed %ld", ntuples);
+        PGR_DBG("Restrictions to be processed %ld", ntuples);
+        PGR_DBG("size of structure %ld",  sizeof(Restriction_t));
         if (ntuples > 0) {
-            if ((*restrictions) == NULL)
-                (*restrictions) = (Restrict_t *)palloc0(
-                        total_tuples * sizeof(Restrict_t));
-            else
-                (*restrictions) = (Restrict_t *)repalloc(
+            if ((*restrictions) == NULL) {
+                (*restrictions) = (Restriction_t *)palloc(
+                        total_tuples * sizeof(Restriction_t));
+            } else {
+                (*restrictions) = (Restriction_t *)repalloc(
                         (*restrictions),
-                        total_tuples * sizeof(Restrict_t));
+                        total_tuples * sizeof(Restriction_t));
+            }
 
             if ((*restrictions) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -149,7 +147,7 @@ pgr_get_restriction_data(
     }
 
     (*total_restrictions) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld",
+    PGR_DBG("Finish reading %ld restrictions, %ld",
             total_tuples,
             (*total_restrictions));
     clock_t end_t = clock();

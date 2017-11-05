@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/line_vertex.h"
-#include "dijkstraTRSP/restriction.h"
 
 namespace pgrouting {
 
@@ -346,8 +345,8 @@ Pgr_lineGraph< G, T_V, T_E >::create_edges(
                 /*
                 Prevent self-edges from being created in the Line Graph
                 */
-                if (labs(digraph.graph[*e_inIt].id) ==
-                        labs(digraph.graph[*e_outIt].id))
+                if (labs(static_cast<long>(digraph.graph[*e_inIt].id))
+                        == labs(static_cast<long>(digraph.graph[*e_outIt].id)))
                     continue;
 
                 auto source_in_edge = digraph.source(*e_inIt);

@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: restrictions_input.h
+File: restrict_t.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -21,16 +21,49 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/*! @file */
 
-#ifndef INCLUDE_C_COMMON_RESTRICTIONS_INPUT_H_
-#define INCLUDE_C_COMMON_RESTRICTIONS_INPUT_H_
+#ifndef INCLUDE_C_TYPES_RESTRICTION_T_H_
+#define INCLUDE_C_TYPES_RESTRICTION_T_H_
 #pragma once
 
-#include "c_types/restriction_t.h"
 
-void pgr_get_restrictions(
-        char *restrictions_sql,
-        Restriction_t **restrictions,
-        size_t *total_restrictions);
+#ifdef __cplusplus
 
-#endif  // INCLUDE_C_COMMON_RESTRICTIONS_INPUT_H_
+#include <cstddef>
+
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
+
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
+
+
+typedef struct {
+    int64_t id;
+    double cost;
+    int64_t * via;
+    uint64_t via_size;
+}
+Restriction_t;
+
+
+
+#endif  // INCLUDE_C_TYPES_RESTRICTION_T_H_

@@ -31,6 +31,16 @@ along with this program; if not, write to the Free Software
 #include "c_types/general_path_element_t.h"
 #include "cpp_common/pgr_assert.h"
 
+
+Path& Path::renumber_vertices(int64_t value) {
+    for (auto &r : path) {
+        r.node += value;
+    }
+    m_start_id += value;
+    m_end_id += value;
+    return *this;
+}
+
 void Path::push_front(Path_t data) {
     path.push_front(data);
     m_tot_cost += data.cost;
@@ -60,6 +70,15 @@ void Path::reverse() {
     }
     path = newpath;
 }
+
+void Path::recalculate_agg_cost() {
+    m_tot_cost = 0;
+    for (auto &p : path) {
+        p.agg_cost = m_tot_cost;
+        m_tot_cost += p.cost;
+    }
+}
+
 
 
 void Path::clear() {
@@ -171,9 +190,11 @@ void Path::generate_postgres_data(
         General_path_element_t **postgres_data,
         size_t &sequence) const {
     int i = 1;
+    double total_cost = 0;
     for (const auto e : path) {
         (*postgres_data)[sequence] =
         {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
+        total_cost += e.cost;
         ++i;
         ++sequence;
     }

@@ -50,6 +50,13 @@ char pgr_SPI_getChar(
         bool strict,
         char default_value);
 
+int64_t*
+pgr_SPI_getBigIntArr(
+        HeapTuple *tuple,
+        TupleDesc *tupdesc,
+        Column_info_t info,
+        uint64_t *the_size);
+
 int64_t pgr_SPI_getBigInt(
         HeapTuple *tuple,
         TupleDesc *tupdesc,

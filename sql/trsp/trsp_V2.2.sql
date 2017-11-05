@@ -29,16 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --     - For now just checking with static data, so the query is similar to shortest_paths.
 */
 
-CREATE OR REPLACE FUNCTION _pgr_trsp(
-    sql text,
-    source_vid integer,
-    target_vid integer,
-    directed boolean,
-    has_reverse_cost boolean,
-    turn_restrict_sql text DEFAULT null)
-RETURNS SETOF pgr_costResult
-AS '${MODULE_PATHNAME}', 'turn_restrict_shortest_path_vertex'
-LANGUAGE 'c' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,
@@ -54,6 +44,13 @@ AS '${MODULE_PATHNAME}', 'turn_restrict_shortest_path_edge'
 LANGUAGE 'c' IMMUTABLE;
 
 
+CREATE OR REPLACE FUNCTION _pgr_array_reverse(anyarray) RETURNS anyarray AS $$
+SELECT ARRAY(
+    SELECT $1[i]
+    FROM generate_subscripts($1,1) AS s(i)
+    ORDER BY i DESC
+);
+$$ LANGUAGE 'sql' STRICT IMMUTABLE;
 
 
 /*  pgr_trsp    VERTEX
@@ -77,6 +74,7 @@ $BODY$
 DECLARE
 has_reverse BOOLEAN;
 new_sql TEXT;
+restrictions_query TEXT;
 trsp_sql TEXT;
 BEGIN
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
@@ -101,8 +99,26 @@ BEGIN
         RETURN;
     END IF;
 
-    RETURN query SELECT * FROM _pgr_trsp(new_sql, start_vid, end_vid, directed, has_rcost, restrictions_sql);
-    RETURN;
+
+    restrictions_query = $$
+        WITH old_restrictions AS ( $$ ||
+            $6 || $$ 
+        )
+        SELECT ROW_NUMBER() OVER() AS id, 
+            _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path, ',')::INTEGER[])) AS path,
+            to_cost AS cost
+        FROM old_restrictions;
+    $$;
+
+
+
+    RETURN query
+        SELECT (seq - 1)::INTEGER, a.node::INTEGER, a.edge::INTEGER, a.cost
+        FROM _pgr_trsp(new_sql, restrictions_query, start_vid, end_vid, directed) AS a;
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Error computing path: Path Not Found';
+    END IF;
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -155,6 +171,9 @@ BEGIN
 
     -- make the call without contradiction from part of the user
     RETURN query SELECT * FROM _pgr_trspViaVertices(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql);
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Error computing path: Path Not Found';
+    END IF;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
