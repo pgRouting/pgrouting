@@ -207,7 +207,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          for (auto vi = vertices(this->graph).first;
                  vi != vertices(this->graph).second;
                  ++vi) {
-             if ((*vi) >= this->m_num_vertices) break;
+             if ((*vi) >= this->num_vertices()) break;
              log << this->graph[*vi].id << "(" << (*vi) << ")"
                  << this->graph[*vi].contracted_vertices() << std::endl;
              log << " out_edges_of(" << this->graph[*vi].id << "):";

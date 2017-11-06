@@ -146,7 +146,9 @@ Inner Queries
 - :ref:`Description of the return columns for Euclidean version <return_vrp_euclidean_start>`
 
 
-.. see include/c_types/pickDeliver/pickDeliveryOrders_t.h documentation
+
+..
+    see include/c_types/pickDeliver/pickDeliveryOrders_t.h documentation
 
 Pick & Deliver Orders SQL
 .........................................................................................
