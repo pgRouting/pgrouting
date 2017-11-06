@@ -953,7 +953,9 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge, bool normal) {
         graph[e].id = edge.id;
     }
 
-    if (edge.reverse_cost >= 0) {
+    if (edge.reverse_cost >= 0
+            && (m_gType == DIRECTED
+              || (m_gType == UNDIRECTED && edge.cost != edge.reverse_cost))) {
         boost::tie(e, inserted) =
             boost::add_edge(vm_t, vm_s, graph);
 
