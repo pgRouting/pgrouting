@@ -146,21 +146,7 @@ Inner Queries
 - :ref:`Description of the return columns for Euclidean version <return_vrp_euclidean_start>`
 
 
-..
-    info[0].name = strdup("id");
-    info[1].name = strdup("demand");
-    info[2].name = strdup("p_x");
-    info[3].name = strdup("p_y");
-    info[4].name = strdup("p_open");
-    info[5].name = strdup("p_close");
-    info[6].name = strdup("p_service");
-    info[7].name = strdup("d_x");
-    info[8].name = strdup("d_y");
-    info[9].name = strdup("d_open");
-    info[10].name = strdup("d_close");
-    info[11].name = strdup("d_service");
-    info[12].name = strdup("p_node_id");
-    info[13].name = strdup("d_node_id")
+.. see include/c_types/pickDeliver/pickDeliveryOrders_t.h documentation
 
 Pick & Deliver Orders SQL
 .........................................................................................

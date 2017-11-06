@@ -44,11 +44,11 @@ if test -z "$DIRECTORY"; then
     echo --------------------
     echo ------   *.c  ------
     echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/*/src/*.c
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/*/*.c
     echo --------------------
     echo ------ *.cpp  ------
     echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/*/src/*.cpp
+    python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/*/*.cpp
     echo --------------------
     echo ------ HEADERS  ------
     echo --------------------
@@ -70,11 +70,11 @@ else
         echo --------------------
         echo ------   *.c  ------
         echo --------------------
-        python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/$DIRECTORY/src/*.c
+        python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/$DIRECTORY/*.c
         echo --------------------
         echo ------ *.cpp  ------
         echo --------------------
-        python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/$DIRECTORY/src/*.cpp
+        python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/$DIRECTORY/*.cpp
         echo --------------------
         echo ------   C HEADER  ------
         echo --------------------

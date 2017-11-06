@@ -1,5 +1,5 @@
 ROLLBACK;
-\echo # Notes on pgr_trsp for version 2.5.0
+\echo # Notes on pgr_trsp for version 2.6.0
 
 \echo Table of contents
 
@@ -21,17 +21,17 @@ ROLLBACK;
 \echo * [pgr_trspViaVertices](#pgr_trspviavertices)
 \echo '  * [pgr_trspViaVertices No path representation differences](#pgr_trspviavertices-no-path-representation-differences)'
 \echo '  * [when a path does not exist on the route](#when-a-path-does-not-exist-on-the-route)'
-\echo '  * [from 2 to 3 to 2](#from-2-to-3-to-2)' 
+\echo '  * [from 2 to 3 to 2](#from-2-to-3-to-2)'
 \echo * [pgr_trspViaEdges](#pgr_trspviaedges)
 \echo '  * [pgr_trspViaEdges No path representation differences](#pgr_trspviaedges-no-path-representation-differences)'
 \echo '  * [Using a points of interest table](#pgr_trspviaedges-using-the-pointsofinterest-table)'
-\echo 
+\echo
 
 
 
 \echo # Introduction
 \echo pgr_trsp code has issues that are not being fixed yet, but as time passes and new functionality is added to pgRouting with wrappers to **hide** the issues, not to fix them.
-\echo 
+\echo
 \echo For clarity on the queries:
 \echo * _pgr_trsp (with underscore) is the original code
 \echo * pgr_trsp (lower case) represents the wrapper calling the original code
@@ -40,7 +40,7 @@ ROLLBACK;
 \echo '  * pgr_dijkstraVia'
 \echo '  * pgr_withPoints'
 \echo '  * _pgr_withPointsVia'
-\echo 
+\echo
 
 \echo This page intentions is to compare the original code with the wrapped version of the trsp group of functions.
 \echo ## The restriction
@@ -49,7 +49,11 @@ ROLLBACK;
 \echo * No vertex has id: 25, 32 or 33
 \echo * No edge has id: 25, 32 or 33
 \echo '\`\`\`'
-\echo $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
+\echo '\`\`\`'
+\echo The new back end code has the restrictions as follows
+\echo '\`\`\`'
+SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path;
 \echo '\`\`\`'
 
 \echo therefore the shortest path expected are as if there was no restriction involved
@@ -63,13 +67,13 @@ ROLLBACK;
 \echo  * Sometimes it crasses the server when no path was found
 \echo  * Sometimes represents with Error a no path found
 \echo  * Forcing the user to use the wrapper or the replacement function
-\echo 
+\echo
 \echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
-);  
+);
 \echo '\`\`\`'
 
 \echo dijkstra returns EMPTY SET to represent no path found
@@ -77,7 +81,7 @@ SELECT * FROM _pgr_trsp(
 SELECT * FROM pgr_dijkstra(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15
-);  
+);
 \echo '\`\`\`'
 
 \echo pgr_trsp use the pgr_dijkstra when there are no restrictions
@@ -86,17 +90,19 @@ SELECT * FROM pgr_dijkstra(
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
-);  
+);
 \echo '\`\`\`'
 
 \echo pgr_trsp use the original code  when there are restrictions
 \echo therefore throws Error to represent no path found
 \echo '\`\`\`'
- SELECT * FROM pgr_trsp(
+\set VERBOSITY terse
+SELECT * FROM pgr_trsp(
      $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
      1, 15, true, true,
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-);  
+);
+\set VERBOSITY default
 \echo '\`\`\`'
 
 
@@ -108,7 +114,7 @@ SELECT * FROM pgr_TRSP(
 SELECT * FROM pgr_dijkstra(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 1
-);  
+);
 \echo '\`\`\`'
 
 
@@ -124,7 +130,7 @@ SELECT * FROM pgr_TRSP(
 
 \echo call forcing the use of the original code (1 to 1)
 \echo * not longer allowed without restrictions
-\echo 
+\echo
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -138,8 +144,8 @@ SELECT * FROM _pgr_trsp(
 \echo '\`\`\`'
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  
-    true, 
+    1, 1,
+    true,
     true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
@@ -151,10 +157,9 @@ SELECT * FROM pgr_trsp(
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  
-    true, 
-    true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
+    1, 1,
+    true
 );
 \echo '\`\`\`'
 
@@ -167,7 +172,7 @@ SELECT * FROM _pgr_trsp(
 SELECT * FROM pgr_dijkstra(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     2, 3, false
-);  
+);
 \echo '\`\`\`'
 
 \echo using the replacement function because there are no restrictions (2 to 3)
@@ -175,14 +180,14 @@ SELECT * FROM pgr_dijkstra(
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     2, 3,
-    false, 
+    false,
     true
 );
 \echo '\`\`\`'
 
 \echo call forcing the use of the original code
 \echo * not longer allowed without restrictions
-\echo 
+\echo
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -207,10 +212,9 @@ SELECT * FROM pgr_trsp(
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     2, 3,
-    false, 
-    true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    false
 );
 \echo '\`\`\`'
 
@@ -223,13 +227,13 @@ SELECT * FROM _pgr_trsp(
 \echo  * Sometimes it crasses the server when no path was found
 \echo  * Sometimes represents with Error a no path found
 \echo  * Forcing the user to use the wrapper or the replacement function
-\echo 
+\echo
 \echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true
-);  
+);
 \echo '\`\`\`'
 \echo pgr_withPoints returns EMPTY SET to represent no path found
 \echo '\`\`\`'
@@ -239,26 +243,26 @@ SELECT * FROM pgr_withPoints(
     UNION
     (SELECT 2, 17, 0.5)$$,
     -1, -2
-);  
+);
 \echo '\`\`\`'
 
 
 ------------------
 \echo ## Definition of a path
 \echo Remember that one characteristic of a path is that for a path of N edges it has N+1 vertices.
-\echo 
+\echo
 \echo For this example, suppose points, where the pid are different even if the edge and fraction are different.
 \echo One point might be on the left side other on the right side, pgr_trsp does not take into account
 \echo the side of the point
 
 \echo calls forcing the use of the original code
 \echo * not longer allowed without restrictions
-\echo 
+\echo
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
-);  
+);
 \echo '\`\`\`'
 \echo * with restrictions
 \echo '\`\`\`'
@@ -266,7 +270,7 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-);  
+);
 \echo '\`\`\`'
 
 \echo Using the *pgr_withPoints* it returns a path of N edge and N+1 vertices
@@ -277,7 +281,7 @@ SELECT * FROM pgr_withPoints(
     UNION
     (SELECT 2, 1, 0.5)$$,
     -1, -2
-);  
+);
 \echo '\`\`\`'
 
 \echo The *pgr_withPoints* is used when there are no restrictions
@@ -285,7 +289,7 @@ SELECT * FROM pgr_withPoints(
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
-);  
+);
 \echo '\`\`\`'
 
 \echo The original *_pgr_trsp* code is used when there are restrictions
@@ -294,7 +298,7 @@ SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-);  
+);
 \echo '\`\`\`'
 
 \echo note that pgr_withPoints returns an EMPTY SET when the point is the same
@@ -317,7 +321,7 @@ SELECT * FROM pgr_withPoints(
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true
-);  
+);
 \echo '\`\`\`'
 
 \echo The original *_pgr_trsp* is used when there are restrictions
@@ -328,7 +332,7 @@ SELECT * FROM pgr_trsp(
     1, 0.5, 1, 0.8, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 
-);  
+);
 \echo '\`\`\`'
 
 ------------------
@@ -345,7 +349,7 @@ SELECT * FROM pgr_withPoints(
 \echo '\`\`\`'
 
 \echo The original *_pgr_trsp* is used when there are restrictions
-\echo 
+\echo
 \echo '\`\`\`'
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
@@ -356,7 +360,7 @@ SELECT * FROM pgr_TRSP(
 \echo when using restrictions the original *_pgr_trsp* is used internally
 \echo * it returns a path of N edges and N vertex instead of N edge and N+1 vertices
 \echo * it does not return the shortest path.
-\echo 
+\echo
 \echo '\`\`\`'
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
@@ -386,7 +390,7 @@ SELECT * FROM pgr_TRSP(
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
     true, true
-);  
+);
 \echo '\`\`\`'
 
 \echo On *pgr_withPoints*, to be able to use the table information:
@@ -399,7 +403,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -6
-);  
+);
 \echo '\`\`\`'
 
 
@@ -413,14 +417,14 @@ SELECT * FROM pgr_withPoints(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -1
-);  
+);
 \echo '\`\`\`'
 
 
 \echo This call uses the replacement function because there are no restrictions
 \echo * Because the pid is not involved the points are considered different
 \echo * it returns a path
-\echo 
+\echo
 \echo '\`\`\`'
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -435,7 +439,7 @@ SELECT * FROM pgr_TRSP(
 
 \echo pgr_trsp with restrictions use the original code
 \echo * it returns a path of N edges and N vertex instead of N edge and N+1 vertices
-\echo 
+\echo
 \echo '\`\`\`'
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -458,7 +462,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -3
-);  
+);
 \echo '\`\`\`'
 
 \echo **pgr_withPoints** can be used to see when the route passes in front of other points
@@ -468,7 +472,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -3, details:=true
-);  
+);
 \echo '\`\`\`'
 
 \echo Can not be used to see if other points are passed in front of.
@@ -493,7 +497,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     6, -1
-);  
+);
 \echo '\`\`\`'
 
 \echo * Vertex 6 is on edge 8 at 1 fraction
@@ -523,61 +527,55 @@ SELECT * FROM pgr_trsp(
 ------------------
 \echo ## pgr_trspViaVertices No path representation differences
 
-\echo pgr_trspViaVertices uses _pgr_trsp which as mentioned before
-\echo  * Sometimes it crasses the server when no path was found
-\echo  * Sometimes represents with Error a no path found
-\echo  * Forcing the user to use the wrapper or the replacement function
-\echo 
+\echo pgr_trspViaVertices uses:
+\echo "* When there are restrictions: `_pgr_trsp(one to one)`"
+\echo "* When there are no restrictions: `pgr_dijkstraVia`"
+\echo
+\echo **PLEASE: Use pgr_dijstraVia when there are no restrictions**
+\echo
+\echo Representation of **no path found**:
+\echo "* Sometimes represents with Error a no path found"
+\echo "* Sometimes represents with EMPTY SET when no path found"
+\echo "* Forcing the user to use the wrapper or the replacement function"
+\echo
 \echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
+\set VERBOSITY terse
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2],
     false, true
 );
-SELECT * FROM _pgr_trspViaVertices(
+\set VERBOSITY default
+\echo '\`\`\`'
+
+\echo Calls to the wrapper function allowed without restrictions
+\echo '\`\`\`'
+SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2, 1],
+    ARRAY[2, 3, 2],
     false, true
 );
 \echo '\`\`\`'
 
-\echo **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
-\echo this case none is found
+\echo But it uses pgr_dijkstraVia that gives more information on the result
 \echo '\`\`\`'
 SELECT * FROM pgr_dijkstraVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2],
+    ARRAY[2, 3, 2],
     false
-);
-\echo '\`\`\`'
-
-
-\echo this case only from 2 to 1 is found
-\echo '\`\`\`'
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2, 1],
-    false
-);
-\echo '\`\`\`'
-
-\echo the **pgr_dijkstraVia** used are for complete routes so its marked as **strict:=true** 
-\echo therefore the expected result is EMPTY SET to represent no route was found
-\echo '\`\`\`'
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false,
-    strict := true
 );
 \echo '\`\`\`'
 
 
 \echo ## when a path does not exist on the route
-\echo pgr_TRSPViaVertices using the *pgr_dijkstraVia* when there are no restrictions.
+
+\echo pgr_TRSPViaVertices gives different results even if restrictions are nt involved on the
+\echo shortest path(s) when restrictions are used VS when restrictions are not used:
+\echo
 \echo Because there is no path from 1 to 1 then there is no complete route 1 to 1 to 2
 \echo therefore the expected result is EMPTY SET to represent no route was found
+\echo "* without restrictions"
 \echo '\`\`\`'
 SELECT * FROM pgr_TRSPViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -586,16 +584,8 @@ SELECT * FROM pgr_TRSPViaVertices(
 );
 \echo '\`\`\`'
 
-\echo Calls to the original function of is no longer allowed without restrictions
-\echo '\`\`\`'
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false, true
-);
-\echo '\`\`\`'
-
-\echo with restrictions the original code is used
+\echo "* with restrictions"
+\echo Restrictions on the wrapper function, is the last parameter and its the old style:
 \echo '\`\`\`'
 SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -606,48 +596,6 @@ SELECT * FROM pgr_trspViaVertices(
 \echo '\`\`\`'
 
 
-\echo Using explicitly the original code
-\echo '\`\`\`'
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 1, 2],
-    false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-);
-\echo '\`\`\`'
-
-
-\echo ## from 2 to 3 to 2
-
-
-\echo dijkstra via shows the shortest route on the two paths
-\echo '\`\`\`'
-SELECT * FROM pgr_dijkstraVia(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false 
-);
-\echo '\`\`\`'
-
-\echo the replacement function **pgr_dijkstraVia** is used because there are no restrictions
-\echo '\`\`\`'
-SELECT * FROM pgr_TRSPViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false, 
-    true
-);
-\echo '\`\`\`'
-
-\echo Calls to the original function of is no longer allowed without restrictions
-\echo '\`\`\`'
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[2, 3, 2],
-    false, 
-    true
-);
-\echo '\`\`\`'
 
 
 
@@ -662,7 +610,7 @@ SELECT * FROM _pgr_trspViaVertices(
 \echo
 \echo What it returns
 \echo * Error to represent no route
-\echo * the points are renumbered to -1, -2 .. -N 
+\echo * the points are renumbered to -1, -2 .. -N
 \echo * if a point is part of a path it will **not** show on the path
 \echo
 
@@ -676,7 +624,7 @@ SELECT * FROM pgr_trspViaEdges(
 );
 
 \echo '\`\`\`'
-\echo A temporay wraper function is used when: 
+\echo A temporay wraper function is used when:
 \echo * There are no restrictions
 \echo * Before: No point is a vertex in disguise (with pcts value of 0)
 \echo * Now: c$Undefined behaviour when a point is a vertex in disguise (with pcts value of 0)
@@ -688,7 +636,7 @@ SELECT * FROM pgr_trspViaEdges(
 \echo * returns EMPTY SET to represent no route
 \echo * edge = -1 in the result to represent the end of a intermediate path
 \echo * edge = -2 in the result to represent the end of the last path & route
-\echo * the points are renumbered to -1, -2 .. -N 
+\echo * the points are renumbered to -1, -2 .. -N
 \echo * if a point is part of a path it will show on the path
 \echo
 \echo Note: I do not mention the wrapper name due to the fact that this is not official documentation
@@ -746,7 +694,7 @@ SELECT * FROM pgr_trspViaEdges(
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 17, 1], ARRAY[0.1,0.5,0.5],
-    false, 
+    false,
     true
 );
 \echo '\`\`\`'
@@ -769,7 +717,7 @@ SELECT * FROM pgr_trspViaEdges(
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 6)],
-    false, 
+    false,
     true
 );
 \echo '\`\`\`'
@@ -807,7 +755,7 @@ SELECT * FROM pgr_trspViaEdges(
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
         0],
-    false, 
+    false,
     true
 );
 \echo '\`\`\`'

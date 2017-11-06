@@ -77,7 +77,7 @@ script:
   - ./tools/testers/pg_prove_tests.sh $PG_USER DEBUG
 
 #after_script:
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER -ignorenotice
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER
 
 #after_success:
   # blank
