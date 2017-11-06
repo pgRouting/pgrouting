@@ -122,7 +122,9 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                 results.push_back(edge);
             }
 
+
             return results;
+
         }
 
     std::vector< Line_graph_rt >
@@ -280,6 +282,8 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 #endif
         }
     }
+
+
 
  private:
     template < typename T>
