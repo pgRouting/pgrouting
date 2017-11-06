@@ -72,11 +72,11 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
         std::vector<Line_vertex> vertices = extract_vertices();
     }
-#endif
 
     void transform(pgrouting::DirectedGraph& digraph) {
         create_edges(digraph);
     }
+#endif
 
 
     friend std::ostream& operator<<(
@@ -99,6 +99,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         return log;
     }
 
+#if 0
     std::vector< Line_graph_rt >
         get_postgres_results_undirected() {
             std::vector< Line_graph_rt > results;
@@ -124,6 +125,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
             return results;
         }
+#endif
 
     std::vector< Line_graph_rt >
         get_postgres_results_directed() {
