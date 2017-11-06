@@ -167,7 +167,6 @@ Pgr_lineGraph< G, T_V, T_E >::get_postgres_results_directed() {
         E e = *edgeIt;
         auto e_source = this->graph[this->source(e)].vertex_id;
         auto e_target = this->graph[this->target(e)].vertex_id;
-
         if (unique.find({e_target, e_source}) != unique.end()) {
             unique[std::pair<int64_t, int64_t>(e_target,
                  e_source)].reverse_cost = 1.0;
