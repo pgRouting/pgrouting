@@ -64,21 +64,6 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
 
 
-#if 0
-    template < typename T > void insert_vertices(
-            const std::vector < T > &edges) {
-        for (auto &it : edges) {
-            m_edges[it.id] = it;
-        }
-        std::vector<Line_vertex> vertices = extract_vertices();
-    }
-
-    void transform(pgrouting::DirectedGraph& digraph) {
-        create_edges(digraph);
-    }
-#endif
-
-
     friend std::ostream& operator<<(
             std::ostream &log, const Pgr_lineGraph< G, T_V, T_E > &g) {
         typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
@@ -99,33 +84,6 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         return log;
     }
 
-#if 0
-    std::vector< Line_graph_rt >
-        get_postgres_results_undirected() {
-            std::vector< Line_graph_rt > results;
-
-            typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
-            int64_t count = 0;
-
-            for (boost::tie(edgeIt, edgeEnd) = boost::edges(this->graph);
-                    edgeIt != edgeEnd; edgeIt++) {
-                E e = *edgeIt;
-                auto e_source = this->graph[this->source(e)].vertex_id;
-                auto e_target = this->graph[this->target(e)].vertex_id;
-
-                Line_graph_rt edge = {
-                    ++count,
-                    e_source,
-                    e_target,
-                    1.0,
-                    -1.0
-                };
-                results.push_back(edge);
-            }
-
-            return results;
-        }
-#endif
 
     std::vector< Line_graph_rt >
         get_postgres_results_directed() {
@@ -171,102 +129,9 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
             return results;
         }
 
-#if 0
-    std::vector<Line_vertex>
-        extract_vertices() {
-            /*
-               m_vertex_map stores a unique id assigned to each vertex of Line Graph.
-
-               In case of a directed edge, either 1 or 2 vertices are to be created in
-               the Line Graph for each of the edges.
-               Consider the following edge in directed graph:-
-               ID = 1 | source = 2 | target = 3 | cost = 10 | reverse_cost = 20
-               This creates 2 vertices in Line Graph:-
-               1. ID = 1 | source = 2 | target = 3 | cost = 10
-               2. ID = 1 | source = 3 | target = 2 | cost = 25
-               So, the values stored in m_vertex_map would be:-
-               1. {1, 2} = 1(Denoting the edge from 2 - > 3 of cost 10).
-               2. {1, 3} = 2(Denoting the edge from 3 - > 2 of cost 25).
-               where {key} = value in m_vertex_map.
-
-               In case of undirected edge, either 2 or 4 vertices are to be created in
-               the Line Graph for each of the edges.
-               Consider the following edge in an undirected graph:-
-               ID = 1 | source = 2 | target = 3 | cost = 10 | reverse_cost = 25
-               This creates the following 4 vertices in Line Graph:-
-               1. ID = 1 | source = 2 | target = 3 | cost = 10
-               2. ID = 1 | source = 3 | target = 2 | cost = 10
-               3. ID = 1 | source = 3 | target = 2 | cost = 25
-               4. ID = 1 | source = 2 | target = 3 | cost = 25
-               so, the values stored in m_vertex_map would be:-
-               1. {1, 2} = 1(Denoting the edge from 2 - > 3 of cost 10).
-               2. {-1, 3} = 2(Denoting the edge from 3 - > 2 of cost 10).
-               3. {1, 3} = 3(Deonting the edge from 3 - > 2 of cost 25).
-               4. {-1, 2} = 4(Denoting the edge from 2 - > 3 of cost 25).
-               where {key} = value in m_vertex_map.
-               */
-            if (m_edges.empty()) return std::vector<Line_vertex>();
-
-            std::vector<Line_vertex> vertices;
-
-            for (const auto &it : m_edges) {
-                auto edge = it.second;
-                Line_vertex vertex(edge);
-
-                if (edge.cost > 0) {
-                    vertex.id = this->num_vertices() + 1;
-#if 0
-                    m_vertex_map[std::pair<int64_t, int64_t>(edge.id, edge.source)] =
-                        vertex.id;
-#endif
-                    vertices.push_back(vertex);
-                    add_one_vertex(vertex);
-
-                    if (this->m_gType == UNDIRECTED) {
-                        vertex.id = this->num_vertices() + 1;
-#if 0
-                        m_vertex_map[std::pair<int64_t, int64_t>(-1*edge.id,
-                                edge.target)] = vertex.id;
-#endif
-                        std::swap(vertex.source, vertex.target);
-                        vertices.push_back(vertex);
-                        add_one_vertex(vertex);
-                        std::swap(vertex.source, vertex.target);
-                    }
-                }
-
-                if (edge.reverse_cost > 0) {
-                    vertex.id = this->num_vertices() + 1;
-#if 0
-                    m_vertex_map[ std::pair<int64_t, int64_t>(edge.id,
-                            edge.target) ] = vertex.id;
-#endif
-                    vertex.cost = edge.reverse_cost;
-                    vertex.vertex_id *= -1;
-                    std::swap(vertex.source, vertex.target);
-                    vertices.push_back(vertex);
-                    add_one_vertex(vertex);
-
-                    if (this->m_gType == UNDIRECTED) {
-                        vertex.id = this->num_vertices() + 1;
-#if 0
-                        m_vertex_map[std::pair<int64_t, int64_t>(-1 * edge.id,
-                                edge.source)] = vertex.id;
-#endif
-                        std::swap(vertex.source, vertex.target);
-                        vertices.push_back(vertex);
-                        add_one_vertex(vertex);
-                    }
-                }
-            }
-            return vertices;
-        }
-#endif
     void insert_vertices(
             const pgrouting::DirectedGraph& digraph) {
-#if 0
-        log << "iterate directly over edges:" << digraph.num_edges() << "\n";
-#endif
+
         auto es = boost::edges(digraph.graph);
         for (auto eit = es.first; eit != es.second; ++eit) {
             auto edge = *eit;
@@ -277,11 +142,10 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                     digraph[edge].cost,
                     -1});
             add_one_vertex(vertex);
-#if 0
-            log << "ADDING:\n" << *this;
-#endif
         }
     }
+
+
 
  private:
     template < typename T>
@@ -289,34 +153,12 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         graph_add_edge(
                 const T &source,
                 const T &target) {
-#if 0            
-                int64_t source_in_edge,
-                int64_t source_out_edge) {
-            typename Pgr_base_graph< G, T_V, T_E >::E e;
-#endif
             bool inserted;
             E e;
 
-#if 0
-            pgassert(m_vertex_map.find({source, source_in_edge}) !=
-                    m_vertex_map.end());
-            pgassert(m_vertex_map.find({target, source_out_edge}) !=
-                    m_vertex_map.end());
-
-            auto index_source_edge = m_vertex_map[std::pair<int64_t, int64_t>(source,
-                    source_in_edge) ];
-            auto index_target_edge = m_vertex_map[ std::pair<int64_t, int64_t>(target,
-                    source_out_edge) ];
-#endif
             auto vm_s = this->get_V(source);
             auto vm_t = this->get_V(target);
 
-#if 0
-            pgassert(this->vertices_map.find(index_source_edge) !=
-                    this->vertices_map.end());
-            pgassert(this->vertices_map.find(index_target_edge) !=
-                    this->vertices_map.end());
-#endif
             boost::tie(e, inserted) =
                 boost::add_edge(vm_s, vm_t, this->graph);
 
@@ -347,24 +189,10 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                     /*
                        Prevent self-edges from being created in the Line Graph
                        */
-#if 0
-                    if (labs(static_cast<long>(digraph.graph[*e_inIt].id))
-                            == labs(static_cast<long>(digraph.graph[*e_outIt].id)))
-                        continue;
-
-                    auto source_in_edge = digraph.adjacent(vertex, *e_inIt);
-                    auto source_out_edge = digraph.adjacent(vertex, *e_outIt);
-#endif
 
                     graph_add_edge(
                             (digraph.graph[*e_inIt]).id,
                             (digraph.graph[*e_outIt]).id);
-#if 0
-                        ,
-                            source_in_edge,
-                            source_out_edge);
-                            //digraph[vertex].id);
-#endif
                 }
             }
         }
@@ -372,10 +200,6 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
     V add_one_vertex(
             T_V vertex) {
-#if 0
-        pgassert(this->vertices_map.find(vertex.id) ==
-                this->vertices_map.end());
-#endif
         auto v =  add_vertex(this->graph);
         this->vertices_map[vertex.id] = v;
         this->graph[v].cp_members(vertex);
@@ -384,21 +208,8 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         return v;
     }
 
-#if 0
-    void add_vertices(
-            std::vector< T_V > vertices) {
-        for (const auto vertex : vertices) {
-            add_one_vertex(vertex);
-        }
-        return;
-    }
-#endif
-
  private:
     std::map < int64_t, pgr_edge_t > m_edges;
-#if 0
-    std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;
-#endif
 
  public:
     std::ostringstream log;

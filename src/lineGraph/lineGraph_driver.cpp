@@ -85,48 +85,13 @@ do_pgr_lineGraph(
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges_neg(data_edges, total_edges);
 
-#if 0
-        if (!directed) {
-            for (size_t ind = 0; ind < total_edges; ind++) {
-                std::swap(data_edges[ind].source, data_edges[ind].target);
-                data_edges[ind].id *= -1;
-            }
-
-            digraph.insert_edges_neg(data_edges, total_edges);
-
-            for (size_t ind = 0; ind < total_edges; ind++) {
-                std::swap(data_edges[ind].source, data_edges[ind].target);
-                data_edges[ind].id *= -1;
-            }
-        }
-#endif
-
-#if 0
-        digraph.m_num_vertices = 1000;
-#endif
         log << digraph << "\n";
         pgrouting::graph::Pgr_lineGraph<
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
             pgrouting::Basic_edge> line(digraph);
-#if 0
-        line.insert_vertices(std::vector<pgr_edge_t>(data_edges, data_edges + total_edges));
-#else
-        line.insert_vertices(digraph);
-#endif
-
-        line.transform(digraph);
-
         std::vector< Line_graph_rt > line_graph_edges;
-#if 0
-        if (directed) {
-            line_graph_edges = line.get_postgres_results_directed();
-        } else {
-            line_graph_edges = line.get_postgres_results_undirected();
-        }
-#else
         line_graph_edges = line.get_postgres_results_directed();
-#endif
         auto count = line_graph_edges.size();
 
         if (count == 0) {
@@ -143,10 +108,6 @@ do_pgr_lineGraph(
                 sequence);
             (*return_count) = sequence;
         }
-#if 0
-        log << line.log.str().c_str() << "\n\n\n";
-        log << line << "\n";
-#endif
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
