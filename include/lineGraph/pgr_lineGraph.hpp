@@ -64,11 +64,6 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
 
 
-    void transform(pgrouting::DirectedGraph& digraph) {
-        create_edges(digraph);
-    }
-
-
     friend std::ostream& operator<<(
             std::ostream &log, const Pgr_lineGraph< G, T_V, T_E > &g) {
         typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
@@ -89,33 +84,6 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         return log;
     }
 
-    std::vector< Line_graph_rt >
-        get_postgres_results_undirected() {
-            std::vector< Line_graph_rt > results;
-
-            typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
-            int64_t count = 0;
-
-            for (boost::tie(edgeIt, edgeEnd) = boost::edges(this->graph);
-                    edgeIt != edgeEnd; edgeIt++) {
-                E e = *edgeIt;
-                auto e_source = this->graph[this->source(e)].vertex_id;
-                auto e_target = this->graph[this->target(e)].vertex_id;
-
-                Line_graph_rt edge = {
-                    ++count,
-                    e_source,
-                    e_target,
-                    1.0,
-                    -1.0
-                };
-                results.push_back(edge);
-            }
-
-
-            return results;
-
-        }
 
     std::vector< Line_graph_rt >
         get_postgres_results_directed() {

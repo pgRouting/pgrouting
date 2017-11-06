@@ -90,10 +90,6 @@ do_pgr_lineGraph(
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
             pgrouting::Basic_edge> line(digraph);
-        line.insert_vertices(digraph);
-
-        line.transform(digraph);
-
         std::vector< Line_graph_rt > line_graph_edges;
         line_graph_edges = line.get_postgres_results_directed();
         auto count = line_graph_edges.size();
