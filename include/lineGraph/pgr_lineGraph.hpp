@@ -56,7 +56,15 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         {
         }
 
+    Pgr_lineGraph< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
+        : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED)
+        {
+            insert_vertices(digraph);
+            create_edges(digraph);
+        }
 
+
+#if 0
     template < typename T > void insert_vertices(
             const std::vector < T > &edges) {
         for (auto &it : edges) {
@@ -64,7 +72,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
         std::vector<Line_vertex> vertices = extract_vertices();
     }
-
+#endif
 
     void transform(pgrouting::DirectedGraph& digraph) {
         create_edges(digraph);
@@ -161,6 +169,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
             return results;
         }
 
+#if 0
     std::vector<Line_vertex>
         extract_vertices() {
             /*
@@ -204,15 +213,19 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
                 if (edge.cost > 0) {
                     vertex.id = this->num_vertices() + 1;
+#if 0
                     m_vertex_map[std::pair<int64_t, int64_t>(edge.id, edge.source)] =
                         vertex.id;
+#endif
                     vertices.push_back(vertex);
                     add_one_vertex(vertex);
 
                     if (this->m_gType == UNDIRECTED) {
                         vertex.id = this->num_vertices() + 1;
+#if 0
                         m_vertex_map[std::pair<int64_t, int64_t>(-1*edge.id,
                                 edge.target)] = vertex.id;
+#endif
                         std::swap(vertex.source, vertex.target);
                         vertices.push_back(vertex);
                         add_one_vertex(vertex);
@@ -222,8 +235,10 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
                 if (edge.reverse_cost > 0) {
                     vertex.id = this->num_vertices() + 1;
+#if 0
                     m_vertex_map[ std::pair<int64_t, int64_t>(edge.id,
                             edge.target) ] = vertex.id;
+#endif
                     vertex.cost = edge.reverse_cost;
                     vertex.vertex_id *= -1;
                     std::swap(vertex.source, vertex.target);
@@ -232,8 +247,10 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
                     if (this->m_gType == UNDIRECTED) {
                         vertex.id = this->num_vertices() + 1;
+#if 0
                         m_vertex_map[std::pair<int64_t, int64_t>(-1 * edge.id,
                                 edge.source)] = vertex.id;
+#endif
                         std::swap(vertex.source, vertex.target);
                         vertices.push_back(vertex);
                         add_one_vertex(vertex);
@@ -242,7 +259,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
             }
             return vertices;
         }
-
+#endif
     void insert_vertices(
             const pgrouting::DirectedGraph& digraph) {
 #if 0
@@ -269,13 +286,13 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         void
         graph_add_edge(
                 const T &source,
-                const T &target,
+                const T &target) {
+#if 0            
                 int64_t source_in_edge,
                 int64_t source_out_edge) {
-            bool inserted;
-#if 0
             typename Pgr_base_graph< G, T_V, T_E >::E e;
 #endif
+            bool inserted;
             E e;
 
 #if 0
@@ -332,17 +349,20 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                     if (labs(static_cast<long>(digraph.graph[*e_inIt].id))
                             == labs(static_cast<long>(digraph.graph[*e_outIt].id)))
                         continue;
-#endif
 
                     auto source_in_edge = digraph.adjacent(vertex, *e_inIt);
                     auto source_out_edge = digraph.adjacent(vertex, *e_outIt);
+#endif
 
                     graph_add_edge(
                             (digraph.graph[*e_inIt]).id,
-                            (digraph.graph[*e_outIt]).id,
+                            (digraph.graph[*e_outIt]).id);
+#if 0
+                        ,
                             source_in_edge,
                             source_out_edge);
                             //digraph[vertex].id);
+#endif
                 }
             }
         }
@@ -350,9 +370,10 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
     V add_one_vertex(
             T_V vertex) {
+#if 0
         pgassert(this->vertices_map.find(vertex.id) ==
                 this->vertices_map.end());
-
+#endif
         auto v =  add_vertex(this->graph);
         this->vertices_map[vertex.id] = v;
         this->graph[v].cp_members(vertex);
@@ -373,7 +394,9 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
  private:
     std::map < int64_t, pgr_edge_t > m_edges;
+#if 0
     std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;
+#endif
 
  public:
     std::ostringstream log;

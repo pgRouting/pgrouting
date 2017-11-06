@@ -105,7 +105,10 @@ do_pgr_lineGraph(
         digraph.m_num_vertices = 1000;
 #endif
         log << digraph << "\n";
-        pgrouting::graph::Pgr_lineGraph<pgrouting::LinearDirectedGraph,  pgrouting::Line_vertex, pgrouting::Basic_edge > line(gType);
+        pgrouting::graph::Pgr_lineGraph<
+            pgrouting::LinearDirectedGraph,
+            pgrouting::Line_vertex,
+            pgrouting::Basic_edge> line(digraph);
 #if 0
         line.insert_vertices(std::vector<pgr_edge_t>(data_edges, data_edges + total_edges));
 #else
@@ -115,12 +118,15 @@ do_pgr_lineGraph(
         line.transform(digraph);
 
         std::vector< Line_graph_rt > line_graph_edges;
+#if 0
         if (directed) {
             line_graph_edges = line.get_postgres_results_directed();
         } else {
             line_graph_edges = line.get_postgres_results_undirected();
         }
-
+#else
+        line_graph_edges = line.get_postgres_results_directed();
+#endif
         auto count = line_graph_edges.size();
 
         if (count == 0) {
