@@ -44,7 +44,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/trsp/trsp.h"
 
+#if 0
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+#endif
 PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 #if 0
@@ -587,7 +589,7 @@ static int compute_trsp(
 }
 
 
-
+#if 0
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
 PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
@@ -723,6 +725,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
       SRF_RETURN_DONE(funcctx);
     }
 }
+#endif
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
 PGDLLEXPORT Datum

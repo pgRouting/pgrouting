@@ -19,6 +19,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 .. changelog start
 
 * :ref:`changelog_2_6_0`
+* :ref:`changelog_2_5_1`
 * :ref:`changelog_2_5_0`
 * :ref:`changelog_2_4_2`
 * :ref:`changelog_2_4_1`
@@ -43,7 +44,27 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 2.6.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github.
+
+
+.. rubric:: Bug fixes
+
+* Cleaned the internal code of trsp(text, integer, integer, boolean, boolean [, text])
+  * Removed the use of pointers
+  * Internal code can accept BIGINT
+
+
+
+.. _changelog_2_5_1:
+
+pgRouting 2.5.1 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* Fixed prerequisite minimum version of: cmake
 
 
 .. _changelog_2_5_0:

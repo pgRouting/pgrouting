@@ -147,7 +147,7 @@ Inner Queries
 
 
 ..
-    see include/c_types/pickDeliver/pickDeliveryOrders_t.h documenation
+    see include/c_types/pickDeliver/pickDeliveryOrders_t.h documentation
 
 Pick & Deliver Orders SQL
 .........................................................................................

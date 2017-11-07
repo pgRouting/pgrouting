@@ -1,8 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: restrict_t.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2017 pgRouting developers
+Mail: project@pgrouting.org
 
 ------
 
@@ -21,49 +20,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_RESTRICT_T_H_
-#define INCLUDE_C_TYPES_RESTRICT_T_H_
-#pragma once
+CREATE OR REPLACE FUNCTION _trsp(
+    TEXT, -- edges_sql
+    TEXT, -- restrictions_sql
+    ANYARRAY,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT true,
 
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'${MODULE_PATHNAME}', 'turn_restriction'
+LANGUAGE 'c' VOLATILE;
 
-#ifdef __cplusplus
-
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
-#endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
-#define  MAX_RULE_LENGTH 5
-
-typedef struct {
-    int64_t id;
-    double cost;
-    int64_t restricted_edges[MAX_RULE_LENGTH];
-}
-Restrict_t;
-
-
-
-#endif  // INCLUDE_C_TYPES_RESTRICT_T_H_

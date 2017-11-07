@@ -1,8 +1,9 @@
 /*PGR-GNU*****************************************************************
-File: restrict_input.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+FILE: edgeInfo.cpp
+
+Copyright (c) 2017 pgRouting developers
+Mail: project@pgrouting.org
 
 ------
 
@@ -17,22 +18,27 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
+aint64_t with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
-/*! @file */
+ ********************************************************************PGR-GNU*/
+
+#include "trsp/edgeInfo.h"
 
 
-#ifndef INCLUDE_C_COMMON_RESTRICT_INPUT_H_
-#define INCLUDE_C_COMMON_RESTRICT_INPUT_H_
-#pragma once
+namespace pgrouting {
+namespace trsp {
 
-#include "c_types/restrict_t.h"
+EdgeInfo::EdgeInfo(
+            pgr_edge_t edgeIn,
+            size_t edgeIndex) :
+        m_edge(edgeIn),
+        m_edgeIndex(edgeIndex),
+        m_startConnectedEdge(),
+        m_endConnectedEdge()
 
-void pgr_get_restriction_data(
-        char *restrictions_sql,
-        Restrict_t **restrictions,
-        size_t *total_restrictions);
+        {}
 
-#endif  // INCLUDE_C_COMMON_RESTRICT_INPUT_H_
+}  // namespace trsp
+}  // namespace pgrouting
+

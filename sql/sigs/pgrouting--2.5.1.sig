@@ -1,4 +1,4 @@
-#VERSION pgrouting 2.6.0
+#VERSION pgrouting 2.5.1
 #TYPES
 pgr_costresult
 pgr_costresult3
@@ -9,7 +9,6 @@ pgr_analyzegraph(text,double precision,text,text,text,text,text)
 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
 pgr_apspjohnson(text)
 pgr_apspwarshall(text,boolean,boolean)
-_pgr_array_reverse(anyarray)
 pgr_articulationpoints(text)
 pgr_astarcostmatrix(text,anyarray,boolean,integer,double precision,double precision)
 pgr_astarcost(text,anyarray,anyarray,boolean,integer,double precision,double precision)
@@ -154,11 +153,8 @@ pgr_strongcomponents(text)
 pgr_texttopoints(text,integer)
 _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
 pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+_pgr_trsp(text,integer,integer,boolean,boolean,text)
 pgr_trsp(text,integer,integer,boolean,boolean,text)
-_pgr_trsp(text,text,anyarray,anyarray,boolean)
-_pgr_trsp(text,text,anyarray,bigint,boolean)
-_pgr_trsp(text,text,bigint,anyarray,boolean)
-_pgr_trsp(text,text,bigint,bigint,boolean)
 pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
 pgr_trspviavertices(text,anyarray,boolean,boolean,text)
 _pgr_trspviavertices(text,integer[],boolean,boolean,text)
@@ -187,4 +183,3 @@ pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)
 pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)
 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
 _pgr_withpointsvia(text,bigint[],double precision[],boolean)
-_trsp(text,text,anyarray,anyarray,boolean)
