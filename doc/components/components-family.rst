@@ -57,8 +57,8 @@ where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
 
 and
 
-  - :math:`source = \bigcup source_i`,
-  - :math:`target = \bigcup target_i`,
+- :math:`source = \bigcup source_i`,
+- :math:`target = \bigcup target_i`,
 
 The graphs are defined as follows:
 
@@ -71,20 +71,28 @@ The weighted undirected graph, :math:`G(V,E)`, is definied by:
 
 * the set of edges :math:`E`
 
-  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} \\ \cup &\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
+  - :math:`E = \begin{cases}
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ } \\
+    \cup      \{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if } reverse\_cost = \varnothing \\
+    \text{ }  \text{ }  & \text{ } \\
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \text{ } \\
+    \cup  \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if } reverse\_cost \neq \varnothing \\
+    \end{cases}`
 
 
 Given:
 
-  - :math:`G(V,E)`
+- :math:`G(V,E)`
 
 Then:
 
-.. math:: \text{pgr_connectedComponentsV}(sql) =
+.. math::`pgr_connectedComponentsV(sql) =
   \begin{cases}
   \text{all connected components } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
-  \end{cases}
+  \end{cases}`
 
 :math:`\boldsymbol{\pi} = \{(component_i, n\_seq_i, node_i)\}`
 
@@ -123,8 +131,8 @@ where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
 
 and
 
-  - :math:`source = \bigcup source_i`,
-  - :math:`target = \bigcup target_i`,
+- :math:`source = \bigcup source_i`,
+- :math:`target = \bigcup target_i`,
 
 The graphs are defined as follows:
 
@@ -136,20 +144,25 @@ The weighted directed graph, :math:`G_d(V,E)`, is definied by:
 
 * the set of edges :math:`E`
 
-  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
+  - :math:`E = \begin{cases}
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if } reverse\_cost = \varnothing \\
+    \text{ }  \text{ }  & \text{ } \\
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if } reverse\_cost \neq \varnothing \\
+    \end{cases}`
 
 
 Given:
 
-  - :math:`G(V,E)`
+- :math:`G(V,E)`
 
 Then:
 
-.. math:: \text{pgr_strongComponentsV}(sql) =
+.. math::`\text{pgr_strongComponentsV}(sql) =
   \begin{cases}
   \text{all strongly connected components } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
-  \end{cases}
+  \end{cases}`
 
 :math:`\boldsymbol{\pi} = \{(component_i, n\_seq_i, node_i)\}`
 
@@ -191,8 +204,8 @@ where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
 
 and
 
-  - :math:`source = \bigcup source_i`,
-  - :math:`target = \bigcup target_i`,
+- :math:`source = \bigcup source_i`,
+- :math:`target = \bigcup target_i`,
 
 The graphs are defined as follows:
 
@@ -205,20 +218,28 @@ The weighted undirected graph, :math:`G(V,E)`, is definied by:
 
 * the set of edges :math:`E`
 
-  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} \\ \cup &\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
+  - :math:`E = \begin{cases}
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ } \\
+    \cup      \{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if } reverse\_cost = \varnothing \\
+    \text{ }  \text{ }  & \text{ } \\
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \text{ } \\
+    \cup  \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if } reverse\_cost \neq \varnothing \\
+    \end{cases}`
 
 
 Given:
 
-  - :math:`G(V,E)`
+- :math:`G(V,E)`
 
 Then:
 
-.. math:: \text{pgr_biconnectedComponents}(sql) =
+.. math::`\text{pgr_biconnectedComponents}(sql) =
   \begin{cases}
   \text{all biconnected components } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
-  \end{cases}
+  \end{cases}`
 
 :math:`\boldsymbol{\pi} = \{(component_i, n\_seq_i, node_i)\}`
 
@@ -260,8 +281,8 @@ where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
 
 and
 
-  - :math:`source = \bigcup source_i`,
-  - :math:`target = \bigcup target_i`,
+- :math:`source = \bigcup source_i`,
+- :math:`target = \bigcup target_i`,
 
 The graphs are defined as follows:
 
@@ -274,20 +295,28 @@ The weighted undirected graph, :math:`G(V,E)`, is definied by:
 
 * the set of edges :math:`E`
 
-  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} \\ \cup &\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
+  - :math:`E = \begin{cases}
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ } \\
+    \cup      \{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if } reverse\_cost = \varnothing \\
+    \text{ }  \text{ }  & \text{ } \\
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \text{ } \\
+    \cup  \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if } reverse\_cost \neq \varnothing \\
+    \end{cases}`
 
 
 Given:
 
-  - :math:`G(V,E)`
+- :math:`G(V,E)`
 
 Then:
 
-.. math:: \text{pgr_articulationPoints}(sql) =
+.. math::`\text{pgr_articulationPoints}(sql) =
   \begin{cases}
   \text{all articulation points } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
-  \end{cases}
+  \end{cases}`
 
 :math:`\boldsymbol{\pi} = \{node_i\}`
 
@@ -320,8 +349,8 @@ where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
 
 and
 
-  - :math:`source = \bigcup source_i`,
-  - :math:`target = \bigcup target_i`,
+- :math:`source = \bigcup source_i`,
+- :math:`target = \bigcup target_i`,
 
 The graphs are defined as follows:
 
@@ -334,20 +363,28 @@ The weighted undirected graph, :math:`G(V,E)`, is definied by:
 
 * the set of edges :math:`E`
 
-  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} \\ \cup &\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
+  - :math:`E = \begin{cases}
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ } \\
+    \cup      \{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if } reverse\_cost = \varnothing \\
+    \text{ }  \text{ }  & \text{ } \\
+    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \text{ } \\
+    \cup  \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if } reverse\_cost \neq \varnothing \\
+    \end{cases}`
 
 
 Given:
 
-  - :math:`G(V,E)`
+- :math:`G(V,E)`
 
 Then:
 
-.. math:: \text{pgr_bridges}(sql) =
+.. math::`\text{pgr_bridges}(sql) =
   \begin{cases}
   \text{all bridges } \boldsymbol{\pi} \text{ in } G(V,E) &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
-  \end{cases}
+  \end{cases}`
 
 :math:`\boldsymbol{\pi} = \{edge_i\}`
 
