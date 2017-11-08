@@ -29,4 +29,7 @@ SELECT * FROM pgr_turnPenaltyGraph(
 SELECT * FROM pgr_turnPenaltyGraph( 
     'SELECT id*100 AS id, source*1000 as source, target*1000 as target , cost FROM edge_table WHERE id in (6,7)'
 );
+SELECT * FROM pgr_turnPenaltyGraph(
+    'SELECT id*100 AS id, source*1000 as source, target*1000 as target , cost FROM edge_table where id in (5,9,11)'
+);
 
