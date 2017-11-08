@@ -1,0 +1,66 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- one edge graph
+SELECT * FROM pgr_turnPenaltyGraph(
+    'SELECT id, source, target, cost FROM edge_table WHERE id = 1'
+);
+ seq | source | target | cost | original_source_vertex | original_source_edge | original_target_vertex | original_target_edge 
+-----+--------+--------+------+------------------------+----------------------+------------------------+----------------------
+   1 |      1 |      2 |    1 |                      1 |                    1 |                      2 |                    1
+(1 row)
+
+-- two edge graphs
+SELECT * FROM pgr_turnPenaltyGraph($$
+    SELECT -id AS id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 1
+    UNION
+    SELECT id, source, target, cost FROM edge_table WHERE id = 1
+    $$
+);
+ seq | source | target | cost | original_source_vertex | original_source_edge | original_target_vertex | original_target_edge 
+-----+--------+--------+------+------------------------+----------------------+------------------------+----------------------
+   1 |      1 |      4 |    1 |                      1 |                   -1 |                      2 |                   -1
+   2 |      2 |      1 |    0 |                      1 |                    1 |                      1 |                   -1
+   3 |      3 |      2 |    1 |                      2 |                    1 |                      1 |                    1
+   4 |      4 |      3 |    0 |                      2 |                   -1 |                      2 |                    1
+(4 rows)
+
+SELECT * FROM pgr_turnPenaltyGraph($$
+    SELECT id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 1
+    UNION
+    SELECT -id AS id, source, target, cost FROM edge_table WHERE id = 1
+    $$
+);
+ seq | source | target | cost | original_source_vertex | original_source_edge | original_target_vertex | original_target_edge 
+-----+--------+--------+------+------------------------+----------------------+------------------------+----------------------
+   1 |      1 |      4 |    1 |                      2 |                   -1 |                      1 |                   -1
+   2 |      2 |      1 |    0 |                      2 |                    1 |                      2 |                   -1
+   3 |      3 |      2 |    1 |                      1 |                    1 |                      2 |                    1
+   4 |      4 |      3 |    0 |                      1 |                   -1 |                      1 |                    1
+(4 rows)
+
+SELECT * FROM pgr_turnPenaltyGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1'
+);
+ seq | source | target | cost | original_source_vertex | original_source_edge | original_target_vertex | original_target_edge 
+-----+--------+--------+------+------------------------+----------------------+------------------------+----------------------
+   1 |      2 |      2 |    1 |                      1 |                    1 |                      1 |                    1
+   2 |      2 |      4 |    1 |                      1 |                    1 |                      2 |                    1
+   3 |      4 |      2 |    1 |                      2 |                    1 |                      1 |                    1
+   4 |      4 |      4 |    1 |                      2 |                    1 |                      2 |                    1
+(4 rows)
+
+SELECT * FROM pgr_turnPenaltyGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 17'
+);
+ seq | source | target | cost | original_source_vertex | original_source_edge | original_target_vertex | original_target_edge 
+-----+--------+--------+------+------------------------+----------------------+------------------------+----------------------
+   1 |      2 |      2 |    1 |                     14 |                   17 |                     14 |                   17
+   2 |      2 |      4 |    1 |                     14 |                   17 |                     15 |                   17
+   3 |      4 |      2 |    1 |                     15 |                   17 |                     14 |                   17
+   4 |      4 |      4 |    1 |                     15 |                   17 |                     15 |                   17
+(4 rows)
+
+ROLLBACK;
+ROLLBACK
