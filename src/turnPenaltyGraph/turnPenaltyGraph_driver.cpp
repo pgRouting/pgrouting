@@ -81,14 +81,12 @@ do_pgr_turnPenaltyGraph(
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
 
-#if 0
-        digraph.m_num_vertices = 1000;
-#endif
         log << digraph << "\n";
 
-        pgrouting::graph::Pgr_turnPenaltyGraph<pgrouting::LinearDirectedGraph,  pgrouting::Line_vertex, pgrouting::Basic_edge > line(graphType::DIRECTED);
-        line.insert_edges(data_edges, total_edges);
-        line.transform_graph(digraph);
+        pgrouting::graph::Pgr_turnPenaltyGraph<
+            pgrouting::LinearDirectedGraph,  
+            pgrouting::Line_vertex, 
+            pgrouting::Basic_edge > line(digraph);
 
         std::vector< Turn_penalty_graph_rt > line_graph_edges;
         line_graph_edges = line.get_postgres_results_directed();

@@ -45,32 +45,22 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
     typedef typename boost::graph_traits < G >::vertex_descriptor V;
     typedef typename boost::graph_traits < G >::edge_descriptor E;
     typedef typename boost::graph_traits < G >::vertex_iterator V_i;
+    typedef typename boost::graph_traits < G >::edge_iterator E_i;
     typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
 
     explicit Pgr_turnPenaltyGraph< G, T_V, T_E >(graphType gtype)
-        : Pgr_base_graph< G, T_V, T_E >(gtype),
-        m_num_edges(0) {
+        : Pgr_base_graph< G, T_V, T_E >(gtype)
+        {
         }
 
-    template < typename T >
-        void insert_edges(const T* edges, int64_t count) {
-            insert_edges(std::vector < T >(edges, edges + count));
+    Pgr_turnPenaltyGraph< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
+        : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED)
+        {
+            apply_transformation(digraph);
+            store_edge_costs(digraph);  
         }
-
-    void transform_graph(pgrouting::DirectedGraph& digraph) {
-        apply_transformation(digraph);
-    }
-
-    template < typename T >
-        void insert_edges(const std::vector < T > &edges) {
-            for (auto &it : edges) {
-                m_edge_costs[it.id] = it.cost;
-            }
-        }
-
-    int64_t num_edges() const { return m_num_edges; }
 
     friend std::ostream& operator<<(
             std::ostream &log, const Pgr_turnPenaltyGraph< G, T_V, T_E > &g) {
@@ -154,6 +144,14 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
         this->vertices_map[this->num_vertices()] = v;
     }
 
+    void store_edge_costs(
+            const pgrouting::DirectedGraph &digraph) {
+        E_i e_It, e_End;
+        for (boost::tie(e_It, e_End) = boost::edges(digraph.graph); e_It != e_End; e_It++) {
+             m_edge_costs[digraph.graph[*e_It].id] = digraph.graph[*e_It].cost;
+        }
+    }
+
     template < typename T>
     void graph_add_edge(
                 int64_t _id,
@@ -162,9 +160,6 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                 int64_t source_in_edge,
                 int64_t source_out_edge) {
             bool inserted;
-#if 0
-            typename Pgr_base_graph< G, T_V, T_E >::E e;
-#endif
             E e;
 
             pgassert(m_vertex_map.find({source, source_in_edge}) !=
@@ -197,9 +192,8 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
         EO_i e_outIt, e_outEnd;
         EI_i e_inIt, e_inEnd;
 
-        // For every incoming and outgoing edge of every vertex in
-        // the original graph, create a vertex in the new graph and
-        // link incoming edge vertices to the outgoing edge vertices
+        // For every vertex in the original graph, create a line graph
+        // using the edges connected to that vertex
         for (boost::tie(vertexIt, vertexEnd) = boost::vertices(digraph.graph);
                 vertexIt != vertexEnd; vertexIt++) {
             V vertex = *vertexIt;
@@ -234,9 +228,8 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
             }
         }
 
-        // Add the edges from the original graph to link every cluster
-        // of vertices in the new graph that were created from single vertices
-        // in the original graph
+        // Connect all of the line graphs that were just created using the
+        // edges from the original graph
         for (boost::tie(vertexIt, vertexEnd) =
                 boost::vertices(digraph.graph);
                 vertexIt != vertexEnd; vertexIt++) {
