@@ -46,5 +46,13 @@ SELECT * FROM pgr_lineGraph(
    1 |     -1 |      1 |    1 |            1
 (1 row)
 
+SELECT * FROM pgr_lineGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 17'
+);
+ seq | source | target | cost | reverse_cost 
+-----+--------+--------+------+--------------
+   1 |    -17 |     17 |    1 |            1
+(1 row)
+
 ROLLBACK;
 ROLLBACK
