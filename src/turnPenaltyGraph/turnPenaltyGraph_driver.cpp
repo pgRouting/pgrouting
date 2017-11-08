@@ -46,11 +46,19 @@ void get_turn_penalty_postgres_result(
         Turn_penalty_graph_rt **return_tuples,
         size_t &sequence) {
     (*return_tuples) = pgr_alloc(
-            (int)edge_result.size(),
+            static_cast<int>(edge_result.size()),
             (*return_tuples));
 
-    for (const auto &edge: edge_result) {
-        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target, edge.cost, edge.original_source_edge, edge.original_source_vertex, edge.original_target_edge, edge.original_target_vertex};
+    for (const auto &edge : edge_result) {
+        (*return_tuples)[sequence] =
+            {edge.id,
+             edge.source,
+             edge.target,
+             edge.cost,
+             edge.original_source_edge,
+             edge.original_source_vertex,
+             edge.original_target_edge,
+             edge.original_target_vertex};
         sequence++;
     }
 }
@@ -84,8 +92,8 @@ do_pgr_turnPenaltyGraph(
         log << digraph << "\n";
 
         pgrouting::graph::Pgr_turnPenaltyGraph<
-            pgrouting::LinearDirectedGraph,  
-            pgrouting::Line_vertex, 
+            pgrouting::LinearDirectedGraph,
+            pgrouting::Line_vertex,
             pgrouting::Basic_edge > line(digraph);
 
         std::vector< Turn_penalty_graph_rt > line_graph_edges;
@@ -104,8 +112,7 @@ do_pgr_turnPenaltyGraph(
             get_turn_penalty_postgres_result(
                 line_graph_edges,
                 return_tuples,
-                sequence
-            );
+                sequence);
             (*return_count) = sequence;
         }
 #if 1

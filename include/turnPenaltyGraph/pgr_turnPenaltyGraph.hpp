@@ -51,15 +51,13 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
 
 
     explicit Pgr_turnPenaltyGraph< G, T_V, T_E >(graphType gtype)
-        : Pgr_base_graph< G, T_V, T_E >(gtype)
-        {
+        : Pgr_base_graph< G, T_V, T_E >(gtype) {
         }
 
     Pgr_turnPenaltyGraph< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
-        : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED)
-        {
+        : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED) {
             apply_transformation(digraph);
-            store_edge_costs(digraph);  
+            store_edge_costs(digraph);
         }
 
     friend std::ostream& operator<<(
@@ -87,7 +85,9 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
             std::vector< Turn_penalty_graph_rt > results;
 
             typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
-            std::map < std::pair<int64_t, int64_t >, Turn_penalty_graph_rt > unique;
+            std::map <
+                std::pair<int64_t, int64_t >,
+                Turn_penalty_graph_rt > unique;
             auto count = 0;
 
             log << "\nPostgres results\n";
@@ -109,7 +109,9 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                     e_cost = m_edge_costs[source_edge_id];
                 }
 
-                log << "e_source = " << e_source << " e_target = " << e_target << "\n";
+                log << "e_source = " << e_source
+                    << " e_target = " << e_target
+                    << "\n";
 
                 Turn_penalty_graph_rt edge = {
                     ++count,
@@ -122,7 +124,8 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                     target_edge_id
                 };
 
-                unique[ std::pair<int64_t, int64_t>(e_source, e_target) ] = edge;
+                unique[ std::pair<int64_t, int64_t>(e_source, e_target) ] =
+                    edge;
             }
             for (const auto &edge : unique) {
                 results.push_back(edge.second);
@@ -136,7 +139,8 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
             int64_t original_edge_id) {
         m_transformation_map[this->num_vertices() + 1] =
             std::pair<int64_t, int64_t>(original_vertex_id, original_edge_id);
-        m_vertex_map[std::pair<int64_t, int64_t>(original_vertex_id, original_edge_id)] =
+        m_vertex_map[std::pair<int64_t, int64_t>(original_vertex_id,
+                                                 original_edge_id)] =
             this->num_vertices() + 1;
         auto v =  add_vertex(this->graph);
         this->graph[v].cp_members(original_vertex_id, original_edge_id);
@@ -147,8 +151,9 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
     void store_edge_costs(
             const pgrouting::DirectedGraph &digraph) {
         E_i e_It, e_End;
-        for (boost::tie(e_It, e_End) = boost::edges(digraph.graph); e_It != e_End; e_It++) {
-             m_edge_costs[digraph.graph[*e_It].id] = digraph.graph[*e_It].cost;
+        for (boost::tie(e_It, e_End) = boost::edges(digraph.graph);
+            e_It != e_End; e_It++) {
+            m_edge_costs[digraph.graph[*e_It].id] = digraph.graph[*e_It].cost;
         }
     }
 
@@ -168,9 +173,11 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                     m_vertex_map.end());
 
             auto index_source_edge =
-                m_vertex_map[ std::pair<int64_t, int64_t>(source, source_in_edge) ];
+                m_vertex_map[ std::pair<int64_t, int64_t>(source,
+                                                          source_in_edge) ];
             auto index_target_edge =
-                m_vertex_map[ std::pair<int64_t, int64_t>(target, source_out_edge) ];
+                m_vertex_map[ std::pair<int64_t, int64_t>(target,
+                                                          source_out_edge) ];
 
             auto vm_s = this->get_V(index_source_edge);
             auto vm_t = this->get_V(index_target_edge);
@@ -209,7 +216,7 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                     boost::in_edges(vertex, digraph.graph);
                     e_inIt != e_inEnd; e_inIt++) {
                 auto in_edge_id = digraph.graph[*e_inIt].id;
-                insert_vertex(vertex_id, in_edge_id);            
+                insert_vertex(vertex_id, in_edge_id);
 
                 for (boost::tie(e_outIt, e_outEnd) =
                         boost::out_edges(vertex, digraph.graph);
