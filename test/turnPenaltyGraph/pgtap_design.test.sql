@@ -23,4 +23,7 @@ SELECT * FROM pgr_turnPenaltyGraph(
 SELECT * FROM pgr_turnPenaltyGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 17'
 );
+SELECT * FROM pgr_turnPenaltyGraph(
+    'SELECT id*100 AS id, source*1000 as source, target*1000 as target , cost FROM edge_table WHERE id = 1'
+);
 

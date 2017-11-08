@@ -62,5 +62,13 @@ SELECT * FROM pgr_turnPenaltyGraph(
    4 |      4 |      4 |    1 |                     15 |                   17 |                     15 |                   17
 (4 rows)
 
+SELECT * FROM pgr_turnPenaltyGraph(
+    'SELECT id*100 AS id, source*1000 as source, target*1000 as target , cost FROM edge_table WHERE id = 1'
+);
+ seq | source | target | cost | original_source_vertex | original_source_edge | original_target_vertex | original_target_edge 
+-----+--------+--------+------+------------------------+----------------------+------------------------+----------------------
+   1 |      1 |      2 |    1 |                   1000 |                  100 |                   2000 |                  100
+(1 row)
+
 ROLLBACK;
 ROLLBACK
