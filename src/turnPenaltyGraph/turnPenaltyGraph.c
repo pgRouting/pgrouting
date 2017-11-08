@@ -186,31 +186,17 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
+        size_t c_cntr = funcctx->call_cntr;
+
         // postgres starts counting from 1
-        values[0] =
-            Int32GetDatum(
-                funcctx->call_cntr + 1);
-        values[1] =
-            Int64GetDatum(
-                result_tuples[funcctx->call_cntr].source);
-        values[2] =
-            Int64GetDatum(
-                result_tuples[funcctx->call_cntr].target);
-        values[3] =
-            Float8GetDatum(
-                result_tuples[funcctx->call_cntr].cost);
-        values[4] =
-            Int64GetDatum(
-                result_tuples[funcctx->call_cntr].original_source_edge);
-        values[5] =
-            Int64GetDatum(
-                result_tuples[funcctx->call_cntr].original_source_vertex);
-        values[6] =
-            Int64GetDatum(
-                result_tuples[funcctx->call_cntr].original_target_edge);
-        values[7] =
-            Int64GetDatum(
-                result_tuples[funcctx->call_cntr].original_target_vertex);
+        values[0] = Int32GetDatum(c_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[c_cntr].source);
+        values[2] = Int64GetDatum(result_tuples[c_cntr].target);
+        values[3] = Float8GetDatum(result_tuples[c_cntr].cost);
+        values[4] = Int64GetDatum(result_tuples[c_cntr].original_source_edge);
+        values[5] = Int64GetDatum(result_tuples[c_cntr].original_source_vertex);
+        values[6] = Int64GetDatum(result_tuples[c_cntr].original_target_edge);
+        values[7] = Int64GetDatum(result_tuples[c_cntr].original_target_vertex);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
