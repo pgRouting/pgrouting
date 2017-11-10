@@ -13,7 +13,7 @@
 All Pairs - Family of Functions
 ===============================================================================
 
-The following functions work an all vertices pair combinations
+The following functions work on all vertices pair combinations
 
 .. index from here
 
