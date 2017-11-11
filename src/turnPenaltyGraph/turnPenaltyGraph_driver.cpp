@@ -87,7 +87,7 @@ do_pgr_turnPenaltyGraph(
         graphType gType = DIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
+        digraph.insert_edges_neg(data_edges, total_edges);
 
         log << digraph << "\n";
 
