@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.1',
+        VERSION:     'v2.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -176,7 +176,7 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The function reads edges from a not “noded” network table and writes the “noded” edges into a new table.</p>
-<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span></span><span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="nb">text</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">table_ending</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">,</span> <span class="n">outall</span><span class="p">)</span>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="nb">text</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">table_ending</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">,</span> <span class="n">outall</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="nb">TEXT</span>
 </pre></div>
 </div>
@@ -230,7 +230,7 @@
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>Let’s create the topology for the data in <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span> <span class="p">.....</span>
@@ -246,7 +246,7 @@
 </pre></div>
 </div>
 <p>Now we can analyze the network.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="p">...</span>
@@ -268,7 +268,7 @@
 </pre></div>
 </div>
 <p>The analysis tell us that the network has a gap and an intersection. We try to fix the problem using:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;noded&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span> <span class="p">.....</span>
@@ -288,7 +288,7 @@
 </pre></div>
 </div>
 <p>Inspecting the generated table, we can see that edges 13,14 and 18 has been segmented</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">old_id</span><span class="p">,</span><span class="n">sub_id</span> <span class="k">FROM</span> <span class="n">edge_table_noded</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">old_id</span><span class="p">,</span><span class="n">sub_id</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">old_id</span><span class="p">,</span><span class="n">sub_id</span> <span class="k">FROM</span> <span class="n">edge_table_noded</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">old_id</span><span class="p">,</span><span class="n">sub_id</span><span class="p">;</span>
  <span class="n">old_id</span> <span class="o">|</span> <span class="n">sub_id</span>
 <span class="c1">--------+--------</span>
  <span class="mi">1</span>      <span class="o">|</span>      <span class="mi">1</span>
@@ -316,7 +316,7 @@
 </pre></div>
 </div>
 <p>We can create the topology of the new network</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span> <span class="p">.....</span>
@@ -332,7 +332,7 @@
 </pre></div>
 </div>
 <p>Now let’s analyze the new topology</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="p">...</span>
@@ -441,7 +441,7 @@ point there is a node and the following edges share it:
 <li>Add a column old_id into edge_table, this column is going to keep track the id of the original edge</li>
 <li>Insert only the segmented edges, that is, the ones whose max(sub_id) &gt;1</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">alter</span> <span class="k">table</span> <span class="n">edge_table</span> <span class="k">drop</span> <span class="k">column</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">old_id</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">alter</span> <span class="k">table</span> <span class="n">edge_table</span> <span class="k">drop</span> <span class="k">column</span> <span class="n">if</span> <span class="k">exists</span> <span class="n">old_id</span><span class="p">;</span>
 <span class="k">alter</span> <span class="k">table</span> <span class="n">edge_table</span> <span class="k">add</span> <span class="k">column</span> <span class="n">old_id</span> <span class="nb">integer</span><span class="p">;</span>
 <span class="k">insert</span> <span class="k">into</span> <span class="n">edge_table</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span><span class="n">dir</span><span class="p">,</span><span class="n">cost</span><span class="p">,</span><span class="n">reverse_cost</span><span class="p">,</span><span class="n">the_geom</span><span class="p">)</span>
         <span class="p">(</span><span class="k">with</span>
@@ -452,7 +452,7 @@ point there is a node and the following edges share it:
 </pre></div>
 </div>
 <p>We recreate the topology:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
@@ -469,7 +469,7 @@ point there is a node and the following edges share it:
 </pre></div>
 </div>
 <p>To get the same analysis results as the topology of edge_table_noded, we do the following query:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id not in (select old_id from edge_table where old_id is not null)&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id not in (select old_id from edge_table where old_id is not null)&#39;</span><span class="p">);</span>
 
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span>
@@ -493,7 +493,7 @@ point there is a node and the following edges share it:
 </pre></div>
 </div>
 <p>To get the same analysis results as the original edge_table, we do the following query:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;old_id is null&#39;</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;old_id is null&#39;</span><span class="p">)</span>
 
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;old_id is null&#39;</span><span class="p">)</span>
@@ -516,7 +516,7 @@ point there is a node and the following edges share it:
 </pre></div>
 </div>
 <p>Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 is an under pass and there is also a street level juction, and the same happens with edges 17 and 13.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
@@ -565,8 +565,8 @@ point there is a node and the following edges share it:
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.1.<br/>
-      Last updated on Oct 11, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
+      Last updated on Nov 12, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>

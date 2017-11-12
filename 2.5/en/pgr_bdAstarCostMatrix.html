@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.1',
+        VERSION:     'v2.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -205,7 +205,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, start_vids)
+<div class="highlight-none"><div class="highlight"><pre>pgr_bdAstarCostMatrix(edges_sql, start_vids)
 pgr_bdAstarCostMatrix(edges_sql, start_vids, [, directed , heuristic, factor, epsilon])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET
@@ -216,7 +216,7 @@ OR EMPTY SET
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, start_vids)
+<div class="highlight-none"><div class="highlight"><pre>pgr_bdAstarCostMatrix(edges_sql, start_vids)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -239,8 +239,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCostMatrix</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCostMatrix</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
 <span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -264,7 +264,7 @@ OR EMPTY SET
 </div>
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, start_vids, [, directed , heuristic, factor, epsilon])
+<div class="highlight-none"><div class="highlight"><pre>pgr_bdAstarCostMatrix(edges_sql, start_vids, [, directed , heuristic, factor, epsilon])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -288,8 +288,8 @@ OR EMPTY SET
 </tbody>
 </table>
 <p>This example returns a symmetric cost matrix.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCostMatrix</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCostMatrix</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
     <span class="n">false</span>
 <span class="p">);</span>
@@ -521,7 +521,7 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
+<div class="highlight-default"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_bdAstarCostMatrix(
         &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
@@ -571,8 +571,8 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.1.<br/>
-      Last updated on Oct 11, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
+      Last updated on Nov 12, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>

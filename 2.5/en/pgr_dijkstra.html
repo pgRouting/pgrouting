@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.1',
+        VERSION:     'v2.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -227,7 +227,7 @@ This implementation can be used with a directed graph and an undirected graph.</
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(edges_sql, start_vid,  end_vid)
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(edges_sql, start_vid,  end_vid)
 pgr_dijkstra(edges_sql, start_vid,  end_vid,  directed:=true)
 pgr_dijkstra(edges_sql, start_vid,  end_vids, directed:=true)
 pgr_dijkstra(edges_sql, start_vids, end_vid,  directed:=true)
@@ -242,7 +242,7 @@ RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_c
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
 </div>
@@ -255,8 +255,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -274,7 +274,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </div>
 <div class="section" id="pgr-dijkstra-one-to-one">
 <span id="index-1"></span><h3>pgr_dijkstra One to One<a class="headerlink" href="#pgr-dijkstra-one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
     BOOLEAN directed:=true);
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -295,8 +295,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -311,7 +311,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </div>
 <div class="section" id="pgr-dijkstra-one-to-many">
 <span id="index-2"></span><h3>pgr_dijkstra One to many<a class="headerlink" href="#pgr-dijkstra-one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -340,8 +340,8 @@ where the starting vertex is fixed, and stop when all <code class="docutils lite
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -360,7 +360,7 @@ where the starting vertex is fixed, and stop when all <code class="docutils lite
 </div>
 <div class="section" id="pgr-dijkstra-many-to-one">
 <span id="index-3"></span><h3>pgr_dijkstra Many to One<a class="headerlink" href="#pgr-dijkstra-many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
     BOOLEAN directed:=true);
 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -389,8 +389,8 @@ where the ending vertex is fixed.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -409,7 +409,7 @@ where the ending vertex is fixed.</p>
 </div>
 <div class="section" id="pgr-dijkstra-many-to-many">
 <span id="index-4"></span><h3>pgr_dijkstra Many to Many<a class="headerlink" href="#pgr-dijkstra-many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -439,8 +439,8 @@ for all <code class="docutils literal"><span class="pre">start_vids</span></code
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -654,8 +654,8 @@ undirected graph with and with out reverse_cost.</p>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Network for queries marked as directed and cost and reverse_cost columns are used</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -669,7 +669,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -679,7 +679,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -695,7 +695,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -708,7 +708,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -721,7 +721,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -736,7 +736,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -767,8 +767,8 @@ undirected graph with and with out reverse_cost.</p>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> and <code class="docutils literal"><span class="pre">reverse_cost</span></code> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Network for queries marked as undirected and cost and reverse_cost columns are used</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -779,7 +779,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -790,7 +790,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -802,7 +802,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -814,7 +814,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -828,7 +828,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -841,7 +841,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -865,8 +865,8 @@ undirected graph with and with out reverse_cost.</p>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">directed</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Network for queries marked as directed and only cost column is used</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -874,7 +874,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -884,7 +884,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -892,7 +892,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -900,7 +900,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -910,7 +910,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -920,7 +920,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -935,8 +935,8 @@ undirected graph with and with out reverse_cost.</p>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column">
 <h3>Examples for queries marked as <code class="docutils literal"><span class="pre">undirected</span></code> with <code class="docutils literal"><span class="pre">cost</span></code> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Network for queries marked as undirected and only cost column is used</span></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -949,7 +949,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -960,7 +960,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -972,7 +972,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -984,7 +984,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -998,7 +998,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -1013,7 +1013,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -1050,8 +1050,8 @@ undirected graph with and with out reverse_cost.</p>
 <ul class="simple">
 <li><a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Network for queries marked as directed and cost and reverse_cost columns are used</span></a></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">TRUE</span>     
 <span class="p">);</span>
@@ -1066,7 +1066,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span><span class="mi">3</span> 
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -1080,7 +1080,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
     <span class="n">TRUE</span>     
 <span class="p">);</span>
@@ -1095,7 +1095,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -1109,7 +1109,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
     <span class="n">TRUE</span>
 <span class="p">);</span>
@@ -1124,7 +1124,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -1151,8 +1151,8 @@ undirected graph with and with out reverse_cost.</p>
 <ul class="simple">
 <li><a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Network for queries marked as undirected and cost and reverse_cost columns are used</span></a></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>     
 <span class="p">);</span>
@@ -1163,7 +1163,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
     <span class="n">FALSE</span>     
 <span class="p">);</span>
@@ -1174,7 +1174,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -1185,7 +1185,7 @@ undirected graph with and with out reverse_cost.</p>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -1225,8 +1225,8 @@ undirected graph with and with out reverse_cost.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.1.<br/>
-      Last updated on Oct 11, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
+      Last updated on Nov 12, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>

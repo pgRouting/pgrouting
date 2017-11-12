@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.1',
+        VERSION:     'v2.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -259,7 +259,7 @@ you have a database to work in, your can load your data and build your
 application in that database. This makes it easy to move your project
 later if you want to to say a production server.</p>
 <p>For Postgresql 9.2 and later versions</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>createdb mydatabase
+<div class="highlight-bash"><div class="highlight"><pre>createdb mydatabase
 psql mydatabase -c <span class="s2">&quot;create extension postgis&quot;</span>
 psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span>
 </pre></div>
@@ -311,7 +311,7 @@ used for routing with pgrouting. We provide a tool that will help with this:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">this step is not needed if data is loaded with <cite>osm2pgrouting</cite></p>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -329,7 +329,7 @@ connected to.</p>
 <p>There can be other errors like the direction of a one-way street being entered
 in the wrong direction. We do not have tools to search for all possible errors
 but we have some basic tools that might help.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
 <span class="k">select</span> <span class="n">pgr_analyzeoneway</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span>  <span class="n">s_in_rules</span><span class="p">,</span> <span class="n">s_out_rules</span><span class="p">,</span>
                                      <span class="n">t_in_rules</span><span class="p">,</span> <span class="n">t_out_rules</span>
                                      <span class="n">direction</span><span class="p">)</span>
@@ -347,7 +347,7 @@ but we have some basic tools that might help.</p>
 <p>Once you have all the preparation work done above, computing a route is fairly easy.
 We have a lot of different algorithms that can work with your prepared road
 network. The general form of a route query is:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>select pgr_dijkstra(`SELECT * FROM myroads&#39;, 1, 2)
+<div class="highlight-none"><div class="highlight"><pre>select pgr_dijkstra(`SELECT * FROM myroads&#39;, 1, 2)
 </pre></div>
 </div>
 <p>As you can see this is fairly straight forward and you can look and the
@@ -969,7 +969,7 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
 <p>You can use the <a class="reference internal" href="#analytics"><span class="std std-ref">graph analysis functions</span></a> to help you see where you might have topology problems in your data. If you need to node your data, we also have a function <a class="reference internal" href="pgr_nodeNetwork.html#pgr-node-network"><span class="std std-ref">pgr_nodeNetwork()</span></a> that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.</p>
 <p>For example, when you have an overpass and underpass intersection, you do not want these noded, but pgr_nodeNetwork does not know that is the case and will node them which is not good because then the router will be able to turn off the overpass onto the underpass like it was a flat 2D intersection. To deal with this problem some data sets use z-levels at these types of intersections and other data might not node these intersection which would be ok.</p>
 <p>For those cases where topology needs to be added the following functions may be useful. One way to prep the data for pgRouting is to add the following columns to your table and then populate them as appropriate. This example makes a lot of assumption like that you original data tables already has certain columns in it like <code class="docutils literal"><span class="pre">one_way</span></code>, <code class="docutils literal"><span class="pre">fcc</span></code>, and possibly others and that they contain specific data values. This is only to give you an idea of what you can do with your data.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">edge_table</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">edge_table</span>
     <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span>
     <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
     <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">cost_len</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
@@ -988,7 +988,7 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
 </pre></div>
 </div>
 <p>The function <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology()</span></a> will create the <code class="docutils literal"><span class="pre">vertices_tmp</span></code> table and populate the <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">target</span></code> columns. The following example populated the remaining columns. In this example, the <code class="docutils literal"><span class="pre">fcc</span></code> column contains feature class code and the <code class="docutils literal"><span class="pre">CASE</span></code> statements converts it to an average speed.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="n">edge_table</span> <span class="k">SET</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">UPDATE</span> <span class="n">edge_table</span> <span class="k">SET</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
                       <span class="n">y1</span> <span class="o">=</span> <span class="n">st_y</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
                       <span class="n">x2</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
                       <span class="n">y2</span> <span class="o">=</span> <span class="n">st_y</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
@@ -1058,7 +1058,7 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
 <div class="section" id="analyze-a-graph">
 <h3><a class="toc-backref" href="#id57">Analyze a Graph</a><a class="headerlink" href="#analyze-a-graph" title="Permalink to this headline">¶</a></h3>
 <p>With <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> the graph can be checked for errors. For example for table “mytab” that has “mytab_vertices_pgr” as the vertices table:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="p">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
@@ -1082,7 +1082,7 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
 <li>Deadends are identified by <code class="docutils literal"><span class="pre">cnt=1</span></code></li>
 <li>Potencial gap problems are identified with <code class="docutils literal"><span class="pre">chk=1</span></code>.</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">deadends</span>  <span class="k">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="k">WHERE</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">deadends</span>  <span class="k">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="k">WHERE</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">deadends</span>
 <span class="c1">----------</span>
     <span class="mi">20028</span>
@@ -1096,7 +1096,7 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
 </pre></div>
 </div>
 <p>For isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span>
     <span class="k">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="k">c</span>
     <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span> <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="k">c</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
@@ -1119,7 +1119,7 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
 <li>&lt;NULL&gt;  - NULL field, use two_way_if_null flag.</li>
 </ul>
 <p>Then we could form the following query to analyze the oneway streets for errors.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span>
             <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
             <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
             <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
@@ -1152,13 +1152,13 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
 <h3><a class="toc-backref" href="#id60">For the Routing functions</a><a class="headerlink" href="#for-the-routing-functions" title="Permalink to this headline">¶</a></h3>
 <p>To get faster results bound your queries to the area of interest of routing to have, for example, no more than one million rows.</p>
 <p>Use an inner query SQL that does not include some edges in the routing function</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span>
         <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="k">and</span>
         <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="k">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="k">FROM</span>  <span class="n">edge_table</span> <span class="k">where</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Integrating the inner query to the pgRouting function:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target from edge_table WHERE</span>
 <span class="s1">            id &lt; 17 and</span>
 <span class="s1">            the_geom  &amp;&amp; (select st_buffer(the_geom,1) as myarea FROM  edge_table where id = 5)&#39;</span><span class="p">,</span>
@@ -1170,11 +1170,11 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
 <h3><a class="toc-backref" href="#id61">For the topology functions:</a><a class="headerlink" href="#for-the-topology-functions" title="Permalink to this headline">¶</a></h3>
 <p>When “you know” that you are going to remove a set of edges from the edges table, and without those edges you are going to use a routing function you can do the following:</p>
 <p>Analize the new topology based on the actual topology:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Or create a new topology if the change is permanent:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1214,8 +1214,8 @@ To simplify variety of types, <code class="docutils literal"><span class="pre">A
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.1.<br/>
-      Last updated on Oct 11, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
+      Last updated on Nov 12, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
