@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.1',
+        VERSION:     'v2.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -189,7 +189,7 @@ The matrix information must be symmetrical.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_TSP(matrix_cell_sql)
+<div class="highlight-none"><div class="highlight"><pre>pgr_TSP(matrix_cell_sql)
 pgr_TSP(matrix_cell_sql,
     start_id, end_id,
     max_processing_time,
@@ -204,7 +204,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="basic-use">
 <span id="index-0"></span><h3>Basic Use<a class="headerlink" href="#basic-use" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_TSP(matrix_cell_sql)
+<div class="highlight-none"><div class="highlight"><pre>pgr_TSP(matrix_cell_sql)
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
@@ -218,7 +218,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </table>
 <p>Because the documentation examples are auto generated and tested for non changing results,
 and the default is to have random execution, the example is wrapping the actual call.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>WITH
+<div class="highlight-default"><div class="highlight"><pre>WITH
 query AS (
     SELECT * FROM pgr_TSP(
         $$
@@ -241,7 +241,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 14;
 </div>
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_TSP(matrix_cell_sql,
+<div class="highlight-none"><div class="highlight"><pre>pgr_TSP(matrix_cell_sql,
     start_id, end_id,
     max_processing_time,
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
@@ -251,7 +251,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <p class="rubric">Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
+<div class="highlight-default"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_dijkstraCostMatrix(
         &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
@@ -328,7 +328,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </ul>
 <p>If using directed := true, the resulting non symmetric matrix must be converted to
 symmetric by fixing the non symmetric values according to your application needs.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default"><div class="highlight"><pre>
 Description Of the Control parameters
 .....................................................................
 
@@ -356,7 +356,7 @@ Parameter                       Type         Default       Description
 
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default"><div class="highlight"><pre>
 Description of the return columns
 ...............................................................................
 
@@ -394,7 +394,7 @@ Column           Type              Description
 <li>the <strong>side</strong> information of pointsOfInterset is ignored by not including it in the query</li>
 <li>and <strong>directed := false</strong></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
+<div class="highlight-default"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_withPointsCostMatrix(
         &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
@@ -445,8 +445,8 @@ Column           Type              Description
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.1.<br/>
-      Last updated on Oct 11, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
+      Last updated on Nov 12, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>

@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.1',
+        VERSION:     'v2.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -185,14 +185,14 @@
 <h2>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="current-result">
 <h3>Current Result<a class="headerlink" href="#current-result" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BEGIN</span><span class="p">;</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">BEGIN</span><span class="p">;</span>
 <span class="n">BEGIN</span>
 <span class="n">SET</span> <span class="n">client_min_messages</span> <span class="n">TO</span> <span class="n">NOTICE</span><span class="p">;</span>
 <span class="n">SET</span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_vrpOneDepot</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT * FROM vrp_orders&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT * FROM vrp_vehicles&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT * FROM vrp_distance&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT * FROM vrp_orders&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT * FROM vrp_vehicles&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SELECT * FROM vrp_distance&#39;</span><span class="p">,</span>
     <span class="mi">1</span><span class="p">);</span>
  <span class="n">oid</span> <span class="o">|</span> <span class="n">opos</span> <span class="o">|</span> <span class="n">vid</span> <span class="o">|</span> <span class="n">tarrival</span> <span class="o">|</span> <span class="n">tdepart</span> 
 <span class="o">-----+------+-----+----------+---------</span>
@@ -447,7 +447,7 @@
 </div>
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default"><div class="highlight"><pre>
 <span class="n">drop</span> <span class="n">table</span> <span class="k">if</span> <span class="n">exists</span> <span class="n">vrp_orders</span> <span class="n">cascade</span><span class="p">;</span>
 <span class="n">create</span> <span class="n">table</span> <span class="n">vrp_orders</span> <span class="p">(</span>
     <span class="nb">id</span> <span class="n">integer</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
@@ -10734,8 +10734,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.1.<br/>
-      Last updated on Oct 11, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
+      Last updated on Nov 12, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
