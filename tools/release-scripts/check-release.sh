@@ -42,7 +42,7 @@ if [ -f sql/sigs/pgrouting--$1.sig ]
 then
     echo "- [x] sql/sigs/pgrouting--$1.sig"
 else
-    error_msg "  FATAL: tools/sigs/pgrouting--$1.sig Not found"
+    error_msg "  FATAL: sql/sigs/pgrouting--$1.sig Not found"
     exit 1
 fi
 }
@@ -264,18 +264,25 @@ if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
 fi
 
-if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
-    error_msg "VERSION should have release/$MAYOR.$MINOR"
-    exit 1
+if [[ "$BRANCH" != "master" &&  "$BRANCH" != "release/$MAYOR.$MINOR" ]]; then
+    if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
+        error_msg "VERSION should have release/$MAYOR.$MINOR"
+        exit 1
+    fi
 else
-    echo "  -[x] VERSION file branch: OK"
+    if [[ $(cat VERSION | grep "master") != *"master" ]]; then
+        error_msg "VERSION should have master"
+        exit 1
+    fi
 fi
+echo "  -[x] VERSION file branch: OK"
 
 #---------------------------------------------------------------------
 echo
 echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
+test_file 2.5.2
 test_file 2.5.1
 test_file 2.5.0
 test_file 2.4.2
@@ -324,7 +331,8 @@ echo - [x] completed local builds
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh 2.5.1 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.5.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+test_file 2.5.1
 test_file 2.5.0
 test_file 2.4.2
 test_file 2.4.1

@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_5_2`
 * :ref:`changelog_2_5_1`
 * :ref:`changelog_2_5_0`
 * :ref:`changelog_2_4_2`
@@ -37,6 +38,18 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_2_5_2:
+
+pgRouting 2.5.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* Fix for postgresql 10.1: Removed a copiler condition
+
 
 .. _changelog_2_5_1:
 
