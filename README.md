@@ -6,8 +6,8 @@
 
 ### Branches
 
-* The *master* branch has the release  2.5.1
-* The *release/2.5* branch has the next micro-release 2.5.2 (if needed)
+* The *master* branch has the release  2.5.2
+* The *release/2.5* branch has the next micro-release 2.5.3 (if needed)
 * The *develop* branch has the development of the next minor-release 2.6.0-dev
 
 For the complete list of releases go to:
