@@ -109,10 +109,11 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                     e_cost = m_edge_costs[source_edge_id];
                 }
 
+#if 0
                 log << "e_source = " << e_source
                     << " e_target = " << e_target
                     << "\n";
-
+#endif
                 Turn_penalty_graph_rt edge = {
                     ++count,
                     e_source,
