@@ -92,26 +92,11 @@ SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
 DROP TABLE IF EXISTS q_result_1;
 SELECT * INTO q_result_1
 FROM pgr_dijkstra($$SELECT seq AS id, * FROM result2$$,
-    (SELECT array_agg(id) FROM result2_vertices_pgr where original = 2000),
-    (SELECT array_agg(id) FROM result2_vertices_pgr where original = 3000)
+    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 2000),
+    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 3000)
 );
 SELECT * FROM q_result_1;
 
--- using the many to many
-DROP TABLE IF EXISTS q_result_2;
-SELECT * INTO q_result_2
-FROM pgr_dijkstra($$SELECT seq AS id, * FROM result2$$,
-    (WITH foo AS (SELECT target::BIGINT from result2 where cost = 0 and source = 2000
-        UNION 
-        SELECT source from result2 where cost = 0 and target = 2000
-        UNION SELECT 2000)
-    SELECT array_agg(target) FROM foo),
-    (WITH foo AS (SELECT target::BIGINT from result2 where cost = 0 and source = 3000
-        UNION 
-        SELECT source from result2 where cost = 0 and target = 3000
-        UNION SELECT 3000)
-    SELECT array_agg(target) FROM foo)
-);
 
 
 -- choosing the best many to many
@@ -134,7 +119,7 @@ SELECT seq, path_seq,
     (SELECT original_id FROM result2_vertices_pgr WHERE start_vid = id) AS start_vid, 
     (SELECT original_id FROM result2_vertices_pgr WHERE end_vid = id) AS end_vid,
     (SELECT original_id FROM result2_vertices_pgr WHERE node = id) AS node,
-    coalesce((SELECT r.edge FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
+    coalesce((SELECT abs(r.edge) FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
 FROM q_result_1 AS q
 WHERE start_vid = 4 AND end_vid = 10;
 
@@ -143,7 +128,7 @@ SELECT seq, path_seq,
     (SELECT original_id FROM result2_vertices_pgr WHERE start_vid = id) AS start_vid, 
     (SELECT original_id FROM result2_vertices_pgr WHERE end_vid = id) AS end_vid,
     (SELECT original_id FROM result2_vertices_pgr WHERE node = id) AS node,
-    coalesce((SELECT r.edge FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
+    coalesce((SELECT abs(r.edge) FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
 FROM q_result_1 AS q
 WHERE start_vid = 4 AND end_vid = 10 AND (
     cost != 0 OR edge = -1 OR path_seq = 1);
@@ -157,7 +142,7 @@ SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
 -- only from 4 to 10 eliminating 0 cost rows
 SELECT seq, path_seq, 
     (SELECT original_id FROM result2_vertices_pgr WHERE node = id) AS node,
-    coalesce((SELECT r.edge FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
+    coalesce((SELECT abs(r.edge) FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
 FROM q_result_1 AS q
 WHERE start_vid = 4 AND end_vid = 10 AND (
     cost != 0 OR edge = -1 OR path_seq = 1);
