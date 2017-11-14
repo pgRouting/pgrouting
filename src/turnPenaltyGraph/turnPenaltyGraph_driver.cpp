@@ -89,8 +89,9 @@ do_pgr_turnPenaltyGraph(
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges_neg(data_edges, total_edges);
 
+#if 0
         log << digraph << "\n";
-
+#endif
         pgrouting::graph::Pgr_turnPenaltyGraph<
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
@@ -104,6 +105,7 @@ do_pgr_turnPenaltyGraph(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
+            /* TODO change the notice message */
             notice <<
                 "No paths found between start_vid and end_vid vertices";
         } else {
