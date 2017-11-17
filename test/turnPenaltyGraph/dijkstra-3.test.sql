@@ -83,6 +83,7 @@ c AS (SELECT * FROM b JOIN result2_vertices_pgr ON(source = id)),
 d AS (SELECT c.source, v.original_id FROM c JOIN result2_vertices_pgr as v ON (target=v.id)),
 e AS (SELECT DISTINCT c.target, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(target = r.id AND r.original_id IS NULL))
 UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.target = id;
+SELECT * from v_table JOIN result2_vertices_pgr USING (id);
 
 
 -- original result
@@ -150,3 +151,71 @@ WHERE start_vid = 4 AND end_vid = 10 AND (
 -- original result
 SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
     2000, 3000);
+
+
+------------------------------------------------------------------------------------------------------
+
+-- updating the original result due to the fact that it needs original vertices numbering vertex
+UPDATE result1
+SET source = result2.source,
+    target = result2.target
+FROM result2
+WHERE result1.seq = result2.seq;
+
+SELECT * FROM result1 JOIN result2 USING (seq, source, target);
+
+-- Objective: generte in result2 the columns that were removed from result1
+-- restrictions: using only data from the following tables
+-- edge_table & edge_table_vertices_pgr
+-- result2 & result2_vertices_pgr tables
+
+ALTER TABLE result2 ADD COLUMN original_source_vertex BIGINT;
+ALTER TABLE result2 ADD COLUMN original_target_vertex BIGINT;
+ALTER TABLE result2 ADD COLUMN original_source_edge BIGINT;
+ALTER TABLE result2 ADD COLUMN original_target_edge BIGINT;
+
+-- restoring the original_foo_vertex 
+UPDATE result2 AS edges SET original_source_vertex = vertices.original_id
+FROM result2_vertices_pgr AS vertices WHERE edges.source = vertices.id;
+
+UPDATE result2 AS edges SET original_target_vertex = vertices.original_id
+FROM result2_vertices_pgr AS vertices WHERE edges.target = vertices.id;
+
+
+-- restoring the original_foo_edges 
+UPDATE result2
+SET original_source_edge = edge,
+    original_target_edge = edge
+WHERE edge != 0;
+
+
+
+UPDATE  result2 AS a
+SET original_source_edge = b.edge
+FROM result2 AS b
+WHERE 
+    a.original_source_edge IS NULL AND
+    b.original_source_edge IS NOT NULL AND
+    a.source = b.target;
+
+UPDATE  result2 AS a
+SET original_target_edge = b.edge
+FROM result2 AS b
+WHERE 
+    a.original_target_edge IS NULL AND
+    b.original_target_edge IS NOT NULL AND
+    a.target = b.source;
+
+-- comparing with original result
+SELECT * FROM result1 JOIN result2
+USING (seq, source, target, cost,
+    original_source_vertex, original_target_vertex,
+    original_source_edge, original_target_edge
+);
+
+
+
+
+
+
+
