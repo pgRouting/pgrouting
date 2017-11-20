@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-class Pg_points_graph {
+class Pg_points_graph : public Pgr_messages {
     struct pointCompare {
         bool operator() (
                 const Point_on_edge_t& lhs,
@@ -51,11 +51,17 @@ class Pg_points_graph {
      Pg_points_graph(const Pg_points_graph &) = default;
      Pg_points_graph(
              std::vector<Point_on_edge_t> p_points,
+             std::vector<pgr_edge_t>      p_edges_to_modify,
              bool p_normal,
              char p_driving_side
              );
 
-     std::vector<Point_on_edge_t> points();
+     std::vector<Point_on_edge_t> points() const;
+     std::vector<pgr_edge_t> edges_of_points() const;
+     std::vector<pgr_edge_t> new_edges() const;
+     inline char driving_side() const {return m_driving_side;}
+
+     int check_points();
 
      int check_points(
              std::vector< Point_on_edge_t > &points,
@@ -72,6 +78,7 @@ class Pg_points_graph {
              const std::vector< Point_on_edge_t > &points,
              Path &path);
 
+     void create_new_edges();
 
      bool create_new_edges(
              std::vector< Point_on_edge_t > &points,
@@ -96,6 +103,8 @@ class Pg_points_graph {
 
  private:
      std::vector<Point_on_edge_t> m_points;
+     std::vector<pgr_edge_t>      m_edges_of_points;
+     std::vector<pgr_edge_t>      m_new_edges;
      bool m_normal;
      char m_driving_side;
 };

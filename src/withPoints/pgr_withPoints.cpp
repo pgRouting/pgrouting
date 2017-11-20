@@ -57,25 +57,33 @@ PGR_LOG_POINTS(
 }
 
 std::vector<Point_on_edge_t>
-Pg_points_graph::points() {
+Pg_points_graph::points() const {
     return m_points;
+}
+
+std::vector<pgr_edge_t>
+Pg_points_graph::edges_of_points() const {
+    return m_edges_of_points;
 }
 
 
 
 Pg_points_graph::Pg_points_graph(
         std::vector<Point_on_edge_t> p_points,
+        std::vector<pgr_edge_t>      p_edges_of_points,
         bool p_normal,
         char p_driving_side
         ) :
     m_points(p_points),
+    m_edges_of_points(p_edges_of_points),
     m_normal(p_normal),
     m_driving_side(p_driving_side)
 {
-        if (!p_normal) {
-            reverse_sides();
-        }
+    if (!p_normal) {
+        reverse_sides();
     }
+    log << "constructor";
+}
 
 void
 Pg_points_graph::reverse_sides() {
@@ -93,6 +101,12 @@ Pg_points_graph::reverse_sides() {
         m_driving_side = 'r';
     }
 }
+
+int
+Pg_points_graph::check_points() {
+    return check_points(m_points, log);
+}
+
 
 /*
  * 0 = success
@@ -269,6 +283,21 @@ Pg_points_graph::create_new_edges(
 }
 
 
+
+std::vector<pgr_edge_t>
+Pg_points_graph::new_edges() const {
+    return m_new_edges;
+}
+
+void
+Pg_points_graph::create_new_edges() {
+    create_new_edges(
+            m_points,
+            m_edges_of_points,
+            m_driving_side,
+            m_new_edges,
+            log); 
+}
 
 bool
 Pg_points_graph::create_new_edges(
