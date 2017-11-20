@@ -7,3 +7,4 @@ code_linter
 .vagrant
 .directory
 notUsed
+*.swp

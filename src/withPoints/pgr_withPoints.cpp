@@ -40,7 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 
-static
+namespace pgrouting {
+
 void
 PGR_LOG_POINTS(
         std::ostringstream &log,
@@ -60,7 +61,7 @@ PGR_LOG_POINTS(
  * non 0 = error code
  */
 
-int check_points(std::vector< Point_on_edge_t > &points,
+int Pg_points_graph::check_points(std::vector< Point_on_edge_t > &points,
         std::ostringstream &log) {
     PGR_LOG_POINTS(log, points, "original points");
     /*
@@ -103,7 +104,7 @@ int check_points(std::vector< Point_on_edge_t > &points,
 
 
 void
-eliminate_details_dd(
+Pg_points_graph::eliminate_details_dd(
         Path &path) {
     /*
      * There is no path nothing to do
@@ -124,7 +125,7 @@ eliminate_details_dd(
 
 
 void
-eliminate_details(
+Pg_points_graph::eliminate_details(
         Path &path,
         const std::vector< pgr_edge_t > &point_edges) {
     /*
@@ -168,8 +169,8 @@ eliminate_details(
 }
 
 
-static void
-adjust_pids(
+void
+Pg_points_graph::adjust_pids(
         const std::vector< Point_on_edge_t > &points,
         const int64_t &start_pid,
         const int64_t &end_pid,
@@ -189,7 +190,7 @@ adjust_pids(
 }
 
 void
-adjust_pids(
+Pg_points_graph::adjust_pids(
         const std::vector< Point_on_edge_t > &points,
         Path &path) {
     /*
@@ -217,15 +218,8 @@ adjust_pids(
 }
 
 
-struct pointCompare {
-    bool operator() (
-            const Point_on_edge_t& lhs,
-            const Point_on_edge_t& rhs) const
-    {return lhs.fraction < rhs.fraction? true : lhs.pid < rhs.pid;}
-};
-
 bool
-create_new_edges(
+Pg_points_graph::create_new_edges(
         std::vector< Point_on_edge_t > &points,
         const std::vector< pgr_edge_t > &edges,
         char driving_side,
@@ -237,7 +231,7 @@ create_new_edges(
 
 
 bool
-create_new_edges(
+Pg_points_graph::create_new_edges(
         std::vector< Point_on_edge_t > &points,
         const std::vector< pgr_edge_t > &edges,
         char driving_side,
@@ -465,3 +459,5 @@ create_new_edges(
     }
     return true;
 }
+
+}  // namespace pgrouting

@@ -112,6 +112,8 @@ do_pgr_withPoints(
         pgassert(start_pidsArr);
         pgassert(end_pidsArr);
 
+        pgrouting::Pg_points_graph pg_graph;
+
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
 
@@ -131,7 +133,7 @@ do_pgr_withPoints(
             }
         }
 
-        int errcode = check_points(points, log);
+        int errcode = pg_graph.check_points(points, log);
         if (errcode) {
             err << "Unexpected point(s) with same pid"
                 << " but different edge/fraction/side combination found.";
@@ -146,7 +148,7 @@ do_pgr_withPoints(
                     edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
-        create_new_edges(
+        pg_graph.create_new_edges(
                 points,
                 edges_to_modify,
                 driving_side,
@@ -188,7 +190,7 @@ do_pgr_withPoints(
 
         if (!details) {
             for (auto &path : paths) {
-                eliminate_details(path, edges_to_modify);
+                pg_graph.eliminate_details(path, edges_to_modify);
             }
         }
 

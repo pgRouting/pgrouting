@@ -77,6 +77,8 @@ do_pgr_withPointsKsp(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
+        pgrouting::Pg_points_graph pg_graph;
+
         log << "entering do_pgr_withPointsKsp\n";
 
         std::vector< Point_on_edge_t >
@@ -84,7 +86,7 @@ do_pgr_withPointsKsp(
 
         log << "total points" << points.size() << "\n";
 
-        auto errcode = check_points(points, log);
+        auto errcode = pg_graph.check_points(points, log);
         if (errcode) {
             err << "Unexpected point(s) with same pid but different"
                 " edge/fraction/side combination found.";
@@ -99,7 +101,7 @@ do_pgr_withPointsKsp(
 
         std::vector< pgr_edge_t > new_edges;
 
-        create_new_edges(
+        pg_graph.create_new_edges(
                 points,
                 edges_to_modify,
                 driving_side,
@@ -155,7 +157,7 @@ do_pgr_withPointsKsp(
 
         if (!details) {
             for (auto &path : paths) {
-                eliminate_details(path, edges_to_modify);
+                pg_graph.eliminate_details(path, edges_to_modify);
             }
         }
 
