@@ -47,6 +47,16 @@ class Pg_points_graph {
 
  public:
 
+     Pg_points_graph() = default;
+     Pg_points_graph(const Pg_points_graph &) = default;
+     Pg_points_graph(
+             std::vector<Point_on_edge_t> p_points,
+             bool p_normal,
+             char p_driving_side
+             );
+
+     std::vector<Point_on_edge_t> points();
+
      int check_points(
              std::vector< Point_on_edge_t > &points,
              std::ostringstream &log);
@@ -82,6 +92,12 @@ class Pg_points_graph {
              const int64_t &end_pid,
              Path &path);
 
+     void reverse_sides();
+
+ private:
+     std::vector<Point_on_edge_t> m_points;
+     bool m_normal;
+     char m_driving_side;
 };
 
 }  // namespace pgrouting

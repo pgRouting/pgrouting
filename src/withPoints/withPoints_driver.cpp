@@ -112,11 +112,13 @@ do_pgr_withPoints(
         pgassert(start_pidsArr);
         pgassert(end_pidsArr);
 
-        pgrouting::Pg_points_graph pg_graph;
+        pgrouting::Pg_points_graph pg_graph(
+                std::vector<Point_on_edge_t>(points_p, points_p + total_points),
+                normal,
+                driving_side);
 
-        std::vector< Point_on_edge_t >
-            points(points_p, points_p + total_points);
 
+#if 0
         if (!normal) {
             for (auto &point : points) {
                 if (point.side == 'r') {
@@ -132,7 +134,8 @@ do_pgr_withPoints(
                 driving_side = 'r';
             }
         }
-
+#endif
+        auto points(pg_graph.points());
         int errcode = pg_graph.check_points(points, log);
         if (errcode) {
             err << "Unexpected point(s) with same pid"

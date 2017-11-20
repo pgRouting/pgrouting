@@ -56,12 +56,52 @@ PGR_LOG_POINTS(
     }
 }
 
+std::vector<Point_on_edge_t>
+Pg_points_graph::points() {
+    return m_points;
+}
+
+
+
+Pg_points_graph::Pg_points_graph(
+        std::vector<Point_on_edge_t> p_points,
+        bool p_normal,
+        char p_driving_side
+        ) :
+    m_points(p_points),
+    m_normal(p_normal),
+    m_driving_side(p_driving_side)
+{
+        if (!p_normal) {
+            reverse_sides();
+        }
+    }
+
+void
+Pg_points_graph::reverse_sides() {
+    for (auto &point : m_points) {
+        if (point.side == 'r') {
+            point.side = 'l';
+        } else if (point.side == 'l') {
+            point.side = 'r';
+        }
+        point.fraction = 1 - point.fraction;
+    }
+    if (m_driving_side == 'r') {
+        m_driving_side = 'l';
+    } else if (m_driving_side == 'l') {
+        m_driving_side = 'r';
+    }
+}
+
 /*
  * 0 = success
  * non 0 = error code
  */
 
-int Pg_points_graph::check_points(std::vector< Point_on_edge_t > &points,
+int
+Pg_points_graph::check_points(
+        std::vector< Point_on_edge_t > &points,
         std::ostringstream &log) {
     PGR_LOG_POINTS(log, points, "original points");
     /*
