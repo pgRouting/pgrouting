@@ -19,7 +19,7 @@ cache:
   - c:\build\local\msvc120\x64 -> appveyor
 
 services:
-  - postgresql94
+  - postgresql96
 
 environment:
   CONFIGURATION: Release
