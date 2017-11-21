@@ -263,17 +263,6 @@ Pg_points_graph::adjust_pids(
 }
 
 
-bool
-Pg_points_graph::create_new_edges(
-        std::vector< Point_on_edge_t > &points,
-        const std::vector< pgr_edge_t > &edges,
-        char driving_side,
-        std::vector< pgr_edge_t > &new_edges) {
-    std::ostringstream log;
-    return create_new_edges( points, edges, driving_side, new_edges, log);
-}
-
-
 
 std::vector<pgr_edge_t>
 Pg_points_graph::new_edges() const {
@@ -282,22 +271,7 @@ Pg_points_graph::new_edges() const {
 
 void
 Pg_points_graph::create_new_edges() {
-    create_new_edges(
-            m_points,
-            m_edges_of_points,
-            m_driving_side,
-            m_new_edges,
-            log); 
-}
-
-bool
-Pg_points_graph::create_new_edges(
-        std::vector< Point_on_edge_t > &points,
-        const std::vector< pgr_edge_t > &edges,
-        char driving_side,
-        std::vector< pgr_edge_t > &new_edges,
-        std::ostringstream &log) {
-    for (const auto &point : points) {
+    for (const auto &point : m_points) {
         log << "point: "
             << point.pid << "\t"
             << point.edge_id << "\t"
@@ -308,9 +282,9 @@ Pg_points_graph::create_new_edges(
 
     int64_t vertex_id = 1;
     std::vector< Point_on_edge_t > new_points;
-    for (const auto edge : edges) {
+    for (const auto edge : m_edges_of_points) {
         std::set< Point_on_edge_t, pointCompare> points_on_edge;
-        for (const auto point : points) {
+        for (const auto point : m_points) {
             if (edge.id == point.edge_id) {
                 points_on_edge.insert(point);
                 log << "working points: "
@@ -322,9 +296,9 @@ Pg_points_graph::create_new_edges(
             }
         }
         if (points_on_edge.empty()) {
-            log << "For some reason didn't find a point belonging to the edge"
+            error << "For some reason didn't find a point belonging to the edge"
                 << ", must be an error\n";
-            return false;
+            return;
         }
 #if 0
         log << "breaking: \n"
@@ -357,9 +331,9 @@ Pg_points_graph::create_new_edges(
                 << "/t" << point.fraction
                 << "\t" << point.side << "\n";
             if (point.fraction <= 0 ||  point.fraction >= 1) {
-                log << "For some reason an invalid fraction was accepted,"
+                error << "For some reason an invalid fraction was accepted,"
                     << " must be an error\n";
-                return false;
+                return;
             }
             if (point.fraction == 0) {
                 log << "Point's vertex_id = source" << edge.source << "\n";
@@ -379,14 +353,14 @@ Pg_points_graph::create_new_edges(
             double deltaFraction = point.fraction - prev_fraction;
             double deltarFraction = point.fraction - prev_rfraction;
             if ((edge.cost < 0 ||  edge.reverse_cost < 0)
-                    || driving_side == 'b'
+                    || m_driving_side == 'b'
                     || point.side == 'b') {
                 log << "Edge is one way "
                     << " or driving side is both or point side is both\n";
                 log << "Edge is one way: "
                     << (edge.cost < 0 || edge.reverse_cost < 0)
                     << "\n";
-                log << "driving side: " << driving_side << "\n";
+                log << "driving side: " << m_driving_side << "\n";
                 log << "point side: " << point.side << "\n";
                 if (point.fraction > 0 &&  point.fraction < 1) {
                     if (edge.cost >= 0) {
@@ -397,7 +371,7 @@ Pg_points_graph::create_new_edges(
                             point.vertex_id,
                             last_cost,
                             -1};
-                        new_edges.push_back(new_edge);
+                        m_new_edges.push_back(new_edge);
                         log << "new_edge("
                             << "id, source, target, cost, reverse_cost) = ("
                             << new_edge.id << "\t"
@@ -414,7 +388,7 @@ Pg_points_graph::create_new_edges(
                             point.vertex_id,
                             -1,
                             last_rcost};
-                        new_edges.push_back(new_edge);
+                        m_new_edges.push_back(new_edge);
                         log << "new_edge("
                             << "id, source, target, cost, reverse_cost) = ("
                             << new_edge.id << "\t"
@@ -437,14 +411,14 @@ Pg_points_graph::create_new_edges(
             pgassert(edge.cost > 0 &&  edge.reverse_cost > 0);
             pgassert(point.side != 'b');
 
-            if (driving_side == point.side) {
+            if (m_driving_side == point.side) {
                 log << "two way and driving side == the side of the point\n";
                 log << "Breaking (source, target) when its not the extreme\n";
                 if (point.fraction > 0 &&  point.fraction < 1) {
                     last_cost = deltaFraction * edge.cost;
                     pgr_edge_t new_edge = {
                         edge.id, prev_target, point.vertex_id, last_cost, -1};
-                    new_edges.push_back(new_edge);
+                    m_new_edges.push_back(new_edge);
                     log << "new_edge("
                         << "id, source, target, cost, reverse_cost) = ("
                         << new_edge.id << "\t"
@@ -468,7 +442,7 @@ Pg_points_graph::create_new_edges(
                     point.vertex_id,
                     -1,
                     last_rcost};
-                new_edges.push_back(new_edge);
+                m_new_edges.push_back(new_edge);
                 log << "\nnew_edge(id, source, target, cost, reverse_cost) = ("
                     << new_edge.id << "\t"
                     << new_edge.source << "\t"
@@ -488,7 +462,7 @@ Pg_points_graph::create_new_edges(
                 edge.target,
                 (edge.cost - agg_cost),
                 -1};
-            new_edges.push_back(new_edge);
+            m_new_edges.push_back(new_edge);
             log << "last edge: (id, source, target, cost, reverse_cost) = ("
                 << new_edge.id << "\t"
                 << new_edge.source << "\t"
@@ -498,7 +472,7 @@ Pg_points_graph::create_new_edges(
 
             new_edge = {edge.id , prev_rtarget, edge.target,
                 -1, (edge.reverse_cost - agg_rcost)};
-            new_edges.push_back(new_edge);
+            m_new_edges.push_back(new_edge);
             log << "last edge: (id, source, target, cost, reverse_cost) = ("
                 << new_edge.id << "\t"
                 << new_edge.source << "\t"
@@ -508,8 +482,8 @@ Pg_points_graph::create_new_edges(
         }
     }
 
-    points = new_points;
-    for (const auto &point : points) {
+    m_points = new_points;
+    for (const auto &point : m_points) {
         log << "point: "
             << point.pid << "\t"
             << point.edge_id << "\t"
@@ -517,7 +491,6 @@ Pg_points_graph::create_new_edges(
             << point.side << "\t"
             << point.vertex_id << "\n";
     }
-    return true;
 }
 
 }  // namespace pgrouting

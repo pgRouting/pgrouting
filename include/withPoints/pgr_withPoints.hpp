@@ -73,18 +73,6 @@ class Pg_points_graph : public Pgr_messages {
              Path &path);
 
 
-     bool create_new_edges(
-             std::vector< Point_on_edge_t > &points,
-             const std::vector< pgr_edge_t > &edges,
-             char driving_side,
-             std::vector< pgr_edge_t > &new_edges);
-
-     bool create_new_edges(
-             std::vector< Point_on_edge_t > &points,
-             const std::vector< pgr_edge_t > &edges,
-             char driving_side,
-             std::vector< pgr_edge_t > &new_edges,
-             std::ostringstream &log);
  private:
      void adjust_pids(
              const std::vector< Point_on_edge_t > &points,
