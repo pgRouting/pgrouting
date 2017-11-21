@@ -68,14 +68,10 @@ class Pg_points_graph : public Pgr_messages {
              std::ostringstream &log);
 
      Path eliminate_details(
-             Path path);
+             Path path) const;
 
      void eliminate_details_dd(
-             Path &path);
-
-     void eliminate_details(
-             Path &path,
-             const std::vector< pgr_edge_t > &point_edges);
+             Path &path) const;
 
      void adjust_pids(
              const std::vector< Point_on_edge_t > &points,

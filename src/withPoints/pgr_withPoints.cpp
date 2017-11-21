@@ -163,7 +163,7 @@ Pg_points_graph::check_points(
 
 void
 Pg_points_graph::eliminate_details_dd(
-        Path &path) {
+        Path &path) const {
     /*
      * There is no path nothing to do
      */
@@ -182,21 +182,14 @@ Pg_points_graph::eliminate_details_dd(
 }
 
 
+
 Path
 Pg_points_graph::eliminate_details(
-        Path path) {
-    eliminate_details(path, m_edges_of_points);
-    return path;
-}
-
-void
-Pg_points_graph::eliminate_details(
-        Path &path,
-        const std::vector< pgr_edge_t > &point_edges) {
+        Path path) const {
     /*
      * There is no path nothing to do
      */
-    if (path.empty()) return;
+    if (path.empty()) return path;
 
     Path newPath(path.start_id(), path.end_id());
     double cost = 0.0;
@@ -219,18 +212,18 @@ Pg_points_graph::eliminate_details(
          * find the edge where the pathstop.edge == edge.id */
 
         int64_t edge_to_find = newPath[i].edge;
-        auto edge_ptr = std::find_if(point_edges.begin(), point_edges.end(),
+        auto edge_ptr = std::find_if(
+                m_edges_of_points.begin(), m_edges_of_points.end(),
                 [&edge_to_find](const pgr_edge_t &edge)
                 {return edge_to_find == edge.id;});
-        if (edge_ptr != point_edges.end()) {
+        if (edge_ptr != m_edges_of_points.end()) {
             newPath[i].cost = edge_ptr->target == newPath[i+1].node ?
                 edge_ptr->cost : edge_ptr->reverse_cost;
         }
     }
     newPath[newPath.size()-2].cost += cost;
 
-
-    path = newPath;
+    return newPath;
 }
 
 
