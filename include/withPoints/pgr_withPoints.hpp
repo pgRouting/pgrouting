@@ -61,11 +61,6 @@ class Pg_points_graph : public Pgr_messages {
      std::vector<pgr_edge_t> new_edges() const;
      inline char driving_side() const {return m_driving_side;}
 
-     int check_points();
-
-     int check_points(
-             std::vector< Point_on_edge_t > &points,
-             std::ostringstream &log);
 
      Path eliminate_details(
              Path path) const;
@@ -77,7 +72,6 @@ class Pg_points_graph : public Pgr_messages {
              const std::vector< Point_on_edge_t > &points,
              Path &path);
 
-     void create_new_edges();
 
      bool create_new_edges(
              std::vector< Point_on_edge_t > &points,
@@ -98,6 +92,8 @@ class Pg_points_graph : public Pgr_messages {
              const int64_t &end_pid,
              Path &path);
 
+     void create_new_edges();
+     void check_points();
      void reverse_sides();
 
  private:

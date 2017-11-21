@@ -105,25 +105,14 @@ Pg_points_graph::reverse_sides() {
     }
 }
 
-int
+
+void
 Pg_points_graph::check_points() {
-    return check_points(m_points, log);
-}
-
-
-/*
- * 0 = success
- * non 0 = error code
- */
-int
-Pg_points_graph::check_points(
-        std::vector< Point_on_edge_t > &points,
-        std::ostringstream &log) {
-    PGR_LOG_POINTS(log, points, "original points");
+    PGR_LOG_POINTS(log, m_points, "original points");
     /*
      * deleting duplicate points
      */
-    std::sort(points.begin(), points.end(),
+    std::sort(m_points.begin(), m_points.end(),
             [](const Point_on_edge_t &a, const Point_on_edge_t &b)
             -> bool {
             if (a.pid != b.pid) return a.pid < b.pid;
@@ -131,33 +120,31 @@ Pg_points_graph::check_points(
             if (a.fraction != b.fraction) return a.fraction < b.fraction;
             return a.side < b.side;
             });
-    PGR_LOG_POINTS(log, points, "after sorting");
-    auto last = std::unique(points.begin(), points.end(),
+    PGR_LOG_POINTS(log, m_points, "after sorting");
+    auto last = std::unique(m_points.begin(), m_points.end(),
             [](const Point_on_edge_t &a, const Point_on_edge_t &b) {
             return a.pid == b.pid &&
             a.edge_id == b.edge_id &&
             a.fraction == b.fraction &&
             a.side == b.side;
             });
-    points.erase(last, points.end());
-    size_t total_points = points.size();
+    m_points.erase(last, m_points.end());
+    size_t total_points = m_points.size();
 
-    PGR_LOG_POINTS(log, points, "after deleting repetitions");
+    PGR_LOG_POINTS(log, m_points, "after deleting repetitions");
     log << "We have " << total_points << " different points";
 
-    last = std::unique(points.begin(), points.end(),
+    last = std::unique(m_points.begin(), m_points.end(),
             [](const Point_on_edge_t &a, const Point_on_edge_t &b) {
             return a.pid == b.pid;
             });
-    points.erase(last, points.end());
-    PGR_LOG_POINTS(log, points, "after deleting points with same id");
+    m_points.erase(last, m_points.end());
+    PGR_LOG_POINTS(log, m_points, "after deleting points with same id");
 
-    if (points.size() != total_points) {
+    if (m_points.size() != total_points) {
         error << "Unexpected point(s) with same pid"
             << " but different edge/fraction/side combination found.";
-        return 1;
     }
-    return 0;
 }
 
 
