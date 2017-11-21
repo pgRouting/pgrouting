@@ -42,19 +42,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-void
-PGR_LOG_POINTS(
-        std::ostringstream &log,
-        const std::vector< Point_on_edge_t > &points,
-        const std::string &title) {
-    log << title << "\n";
-    for (const auto &p : points) {
-        log << p.pid << "\t"
+
+std::ostream& operator<<(
+        std::ostream &os, const Pg_points_graph &g) {
+    for (const auto p : g.m_points) {
+        os << p.pid << "\t"
             << p.edge_id << "\t"
             << p.fraction << "\t"
             << p.side << "\n";
     }
+    return os;
 }
+
+
 
 std::vector<Point_on_edge_t>
 Pg_points_graph::points() const {
@@ -108,7 +108,7 @@ Pg_points_graph::reverse_sides() {
 
 void
 Pg_points_graph::check_points() {
-    PGR_LOG_POINTS(log, m_points, "original points");
+    log << "original points" << *this;
     /*
      * deleting duplicate points
      */
@@ -120,7 +120,7 @@ Pg_points_graph::check_points() {
             if (a.fraction != b.fraction) return a.fraction < b.fraction;
             return a.side < b.side;
             });
-    PGR_LOG_POINTS(log, m_points, "after sorting");
+    log << "after sorting" << *this;
     auto last = std::unique(m_points.begin(), m_points.end(),
             [](const Point_on_edge_t &a, const Point_on_edge_t &b) {
             return a.pid == b.pid &&
@@ -131,7 +131,7 @@ Pg_points_graph::check_points() {
     m_points.erase(last, m_points.end());
     size_t total_points = m_points.size();
 
-    PGR_LOG_POINTS(log, m_points, "after deleting repetitions");
+    log << "after deleting repetitions" << *this;
     log << "We have " << total_points << " different points";
 
     last = std::unique(m_points.begin(), m_points.end(),
@@ -139,7 +139,7 @@ Pg_points_graph::check_points() {
             return a.pid == b.pid;
             });
     m_points.erase(last, m_points.end());
-    PGR_LOG_POINTS(log, m_points, "after deleting points with same id");
+    log << "after deleting points with same id" << *this;
 
     if (m_points.size() != total_points) {
         error << "Unexpected point(s) with same pid"
@@ -331,7 +331,7 @@ Pg_points_graph::create_new_edges() {
                 << "/t" << point.fraction
                 << "\t" << point.side << "\n";
             if (point.fraction <= 0 ||  point.fraction >= 1) {
-                error << "For some reason an invalid fraction was accepted,"
+                log << "For some reason an invalid fraction was accepted,"
                     << " must be an error\n";
                 return;
             }

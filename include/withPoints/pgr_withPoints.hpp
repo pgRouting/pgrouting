@@ -47,8 +47,8 @@ class Pg_points_graph : public Pgr_messages {
 
  public:
 
-     Pg_points_graph() = default;
-     Pg_points_graph(const Pg_points_graph &) = default;
+     Pg_points_graph() = delete;
+     Pg_points_graph(const Pg_points_graph &) = delete;
      Pg_points_graph(
              std::vector<Point_on_edge_t> p_points,
              std::vector<pgr_edge_t>      p_edges_to_modify,
@@ -72,6 +72,8 @@ class Pg_points_graph : public Pgr_messages {
              const std::vector< Point_on_edge_t > &points,
              Path &path);
 
+     friend std::ostream& operator<<(
+             std::ostream &os, const Pg_points_graph &g);
 
  private:
      void adjust_pids(
