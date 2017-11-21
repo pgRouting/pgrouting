@@ -75,6 +75,7 @@ Pg_points_graph::Pg_points_graph(
         char p_driving_side
         ) :
     m_points(p_points),
+    m_o_points(p_points),
     m_edges_of_points(p_edges_of_points),
     m_normal(p_normal),
     m_driving_side(p_driving_side)
@@ -82,6 +83,8 @@ Pg_points_graph::Pg_points_graph(
     if (!p_normal) {
         reverse_sides();
     }
+    check_points();
+    create_new_edges();
     log << "constructor";
 }
 
@@ -112,7 +115,6 @@ Pg_points_graph::check_points() {
  * 0 = success
  * non 0 = error code
  */
-
 int
 Pg_points_graph::check_points(
         std::vector< Point_on_edge_t > &points,
@@ -151,6 +153,8 @@ Pg_points_graph::check_points(
     PGR_LOG_POINTS(log, points, "after deleting points with same id");
 
     if (points.size() != total_points) {
+        error << "Unexpected point(s) with same pid"
+            << " but different edge/fraction/side combination found.";
         return 1;
     }
     return 0;
@@ -177,6 +181,13 @@ Pg_points_graph::eliminate_details_dd(
     path = newPath;
 }
 
+
+Path
+Pg_points_graph::eliminate_details(
+        Path path) {
+    eliminate_details(path, m_edges_of_points);
+    return path;
+}
 
 void
 Pg_points_graph::eliminate_details(

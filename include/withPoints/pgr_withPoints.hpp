@@ -67,6 +67,9 @@ class Pg_points_graph : public Pgr_messages {
              std::vector< Point_on_edge_t > &points,
              std::ostringstream &log);
 
+     Path eliminate_details(
+             Path path);
+
      void eliminate_details_dd(
              Path &path);
 
@@ -103,6 +106,7 @@ class Pg_points_graph : public Pgr_messages {
 
  private:
      std::vector<Point_on_edge_t> m_points;
+     std::vector<Point_on_edge_t> m_o_points;
      std::vector<pgr_edge_t>      m_edges_of_points;
      std::vector<pgr_edge_t>      m_new_edges;
      bool m_normal;

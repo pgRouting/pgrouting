@@ -77,37 +77,23 @@ do_pgr_withPointsKsp(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        pgrouting::Pg_points_graph pg_graph;
+        pgrouting::Pg_points_graph pg_graph(
+                std::vector<Point_on_edge_t>(
+                    points_p,
+                    points_p + total_points),
+                std::vector< pgr_edge_t >(
+                    edges_of_points,
+                    edges_of_points + total_edges_of_points),
+                true,
+                driving_side);
 
-        log << "entering do_pgr_withPointsKsp\n";
-
-        std::vector< Point_on_edge_t >
-            points(points_p, points_p + total_points);
-
-        log << "total points" << points.size() << "\n";
-
-        auto errcode = pg_graph.check_points(points, log);
-        if (errcode) {
-            err << "Unexpected point(s) with same pid but different"
-                " edge/fraction/side combination found.";
-            *err_msg = pgr_msg(err.str().c_str());
+        if (pg_graph.has_error()) {
+            log << pg_graph.get_log();
+            err << pg_graph.get_error();
             *log_msg = pgr_msg(log.str().c_str());
+            *err_msg = pgr_msg(err.str().c_str());
             return -1;
         }
-
-        std::vector< pgr_edge_t >
-            edges_to_modify(edges_of_points,
-                    edges_of_points + total_edges_of_points);
-
-        std::vector< pgr_edge_t > new_edges;
-
-        pg_graph.create_new_edges(
-                points,
-                edges_to_modify,
-                driving_side,
-                new_edges,
-                log);
-
 
 
         int64_t start_vid(start_pid);
@@ -123,7 +109,7 @@ do_pgr_withPointsKsp(
         std::deque< Path > paths;
 
         auto vertices(pgrouting::extract_vertices(edges, total_edges));
-        vertices = pgrouting::extract_vertices(vertices, new_edges);
+        vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
         log << "extracted vertices: ";
         for (const auto v : vertices) {
@@ -138,7 +124,7 @@ do_pgr_withPointsKsp(
             log << "graph after inserting edges\n";
             log << digraph << "\n";
 
-            digraph.insert_edges(new_edges);
+            digraph.insert_edges(pg_graph.new_edges());
             log << "graph after inserting new edges\n";
             log << digraph << "\n";
 
@@ -149,7 +135,8 @@ do_pgr_withPointsKsp(
             log << "Working with undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
-            undigraph.insert_edges(new_edges);
+            undigraph.insert_edges(pg_graph.new_edges());
+
             Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
@@ -157,7 +144,7 @@ do_pgr_withPointsKsp(
 
         if (!details) {
             for (auto &path : paths) {
-                pg_graph.eliminate_details(path, edges_to_modify);
+                path = pg_graph.eliminate_details(path);
             }
         }
 

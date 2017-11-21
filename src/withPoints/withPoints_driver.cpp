@@ -122,18 +122,14 @@ do_pgr_withPoints(
                 normal,
                 driving_side);
 
-        int errcode = pg_graph.check_points();
-
-        if (errcode) {
-            err << "Unexpected point(s) with same pid"
-                << " but different edge/fraction/side combination found.";
+        if (pg_graph.has_error()) {
+            log << pg_graph.get_log();
+            err << pg_graph.get_error();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
             return;
         }
 
-
-        pg_graph.create_new_edges();
 
         std::vector<int64_t>
             start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
@@ -170,7 +166,7 @@ do_pgr_withPoints(
 
         if (!details) {
             for (auto &path : paths) {
-                pg_graph.eliminate_details(path, pg_graph.edges_of_points());
+                path = pg_graph.eliminate_details(path);
             }
         }
 
