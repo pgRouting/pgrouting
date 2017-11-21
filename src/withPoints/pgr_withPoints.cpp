@@ -330,8 +330,8 @@ Pg_points_graph::create_new_edges() {
                 << "\teid" << point.edge_id
                 << "/t" << point.fraction
                 << "\t" << point.side << "\n";
-            if (point.fraction <= 0 ||  point.fraction >= 1) {
-                log << "For some reason an invalid fraction was accepted,"
+            if (point.fraction < 0 ||  point.fraction > 1) {
+                error << "For some reason an invalid fraction was accepted,"
                     << " must be an error\n";
                 return;
             }

@@ -59,3 +59,15 @@ FROM pgr_trsp(
 ) PG ;
 \echo q5
 
+SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
+FROM pgr_trsp(
+    'select * from maptest',
+    582877,     -- edge_id for start
+    0,          -- ini_offset
+    582877,     -- edge_id of route end
+    1,        -- end_offset
+    true,        -- directed graph?
+    true      -- has_reverse_cost?
+);
+\echo q6
+
