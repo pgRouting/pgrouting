@@ -674,7 +674,11 @@ SELECT * FROM pgr_trsp(
 );
  seq | id1 | id2 | cost 
 -----+-----+-----+------
-(0 rows)
+   0 |  -1 |   8 |    1
+   1 |   5 |   4 |    1
+   2 |   2 |   1 |  0.6
+   3 |  -2 |  -1 |    0
+(4 rows)
 
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -685,7 +689,11 @@ SELECT * FROM pgr_trsp(
 );
  seq | id1 | id2 | cost 
 -----+-----+-----+------
-(0 rows)
+   0 |  -1 |   8 |    1
+   1 |   5 |   4 |    1
+   2 |   2 |   1 |  0.6
+   3 |  -2 |  -1 |    0
+(4 rows)
 
 ```
 # pgr_trspViaVertices
@@ -725,7 +733,7 @@ SELECT * FROM pgr_trspViaVertices(
 (3 rows)
 
 ```
-But it uses  that gives more information on the result
+But it uses pgr_dijkstraVia that gives more information on the result
 ```
 SELECT * FROM pgr_dijkstraVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -985,8 +993,10 @@ SELECT * FROM pgr_trspViaEdges(
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |  10 |    1
    4 |   1 |  10 |  12 |  0.6
-   5 |   1 |  -2 |  -1 |    0
-(5 rows)
+   5 |   2 |  -1 |  12 |  0.4
+   6 |   2 |  11 |  11 |    1
+   7 |   2 |  -2 |  -1 |    0
+(7 rows)
 
 ```
 BEGIN;
