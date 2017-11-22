@@ -100,6 +100,8 @@ echo ====================================
 set PGIS_WILD_FILE=postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION*%w%arch%gcc%GCC%.zip
 set PGIS_FILE=postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip
 
+echo %PGIS_WILD_FILE%
+echo %PGIS_FILE%
 
 echo ==================================== POSTGIS
 if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\%PGIS_WILD_FILE%" (
