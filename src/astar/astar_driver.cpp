@@ -40,27 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 
-void
-check_parameters(
-        int heuristic,
-        double factor,
-        double epsilon) {
-    if (heuristic > 5 || heuristic < 0) {
-        ereport(ERROR,
-                (errmsg("Unknown heuristic"),
-                 errhint("Valid values: 0~5")));
-    }
-    if (factor <= 0) {
-        ereport(ERROR,
-                (errmsg("Factor value out of range"),
-                 errhint("Valid values: positive non zero")));
-    }
-    if (epsilon < 1) {
-        ereport(ERROR,
-                (errmsg("Epsilon value out of range"),
-                 errhint("Valid values: 1 or greater than 1")));
-    }
-}
 
 template < class G >
 std::deque<Path>

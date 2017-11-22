@@ -38,11 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-    void check_parameters(
-            int heuristic,
-            double factor,
-            double epsilon);
-
     /*********************************************************
       edges_sql TEXT,
       vertex_table TEXT,

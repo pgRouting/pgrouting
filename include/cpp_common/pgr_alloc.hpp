@@ -28,9 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_PGR_ALLOC_HPP_
 #pragma once
 
+
 #include <string>
 
 extern "C" {
+#if 0
 #if PGSQL_VERSION < 94
 #ifdef __MINGW32__
 #include <winsock2.h>
@@ -95,6 +97,17 @@ extern "C" {
 #endif
 
 
+#endif
+extern void *palloc(size_t size);
+void *
+ SPI_palloc(size_t size);
+
+extern void *
+SPI_repalloc(void *pointer, size_t size);
+
+extern void
+SPI_pfree(void *pointer);
+
 // #include "c_common/postgres_connection.h"
 // #include "utils/palloc.h"
 }
@@ -131,7 +144,7 @@ template <typename T>
 T*
 pgr_free(T* ptr) {
     if (ptr) {
-        pfree(ptr);
+        SPI_pfree(ptr);
     }
     return nullptr;
 }
