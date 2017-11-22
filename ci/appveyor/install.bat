@@ -97,8 +97,12 @@ echo ====================================
 :: Download and install Postgis
 ::
 
+set PGIS_WILD_FILE=postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION*%w%arch%gcc%GCC%.zip
+set PGIS_FILE=postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip
+
+
 echo ==================================== POSTGIS
-if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\makepostgisdb_using_extensions.bat" (
+if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\%PGIS_WILD_FILE%" (
     cd %APPVEYOR_BUILD_FOLDER%
     if not exist %DOWNLOADS_DIR%\postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip (
         echo Downloading PostGIS %PGIS_VERSION%
@@ -126,7 +130,7 @@ if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\makepostgisdb_using_extensions.bat
     dir %BUILD_ROOT_DIR%\postgis*
     dir C:\Progra~1\PostgreSQL\%PG_VER%\postgis*
 
-    if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\makepostgisdb_using_extensions.bat" (
+    if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\%PGIS_WILD_FILE%" (
         echo something went wrong on PostGIS %PGIS_VERSION% installation
         if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
         if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\%PG_VER%\
