@@ -133,8 +133,7 @@ if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\%PGIS_WILD_FILE%" (
     if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\%PGIS_WILD_FILE%" (
         echo something went wrong on PostGIS %PGIS_VERSION% installation
         if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
-        if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\%PG_VER%\
-        ::Exit \B 1
+        if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\%PG_VER%\postgis*
     ) else (
         echo **** PostGIS %PGIS_VERSION% %arch% installed
     )
