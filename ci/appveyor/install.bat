@@ -114,15 +114,20 @@ if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\makepostgisdb_using_extensions.bat
 
     echo Extracting PostGIS %PGIS_VERSION%
     pushd %DOWNLOADS_DIR%
+    dir
     7z x -o%BUILD_ROOT_DIR%\ postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip
+    dir
     popd
 
     echo **** Installing postGIS %PGIS_VERSION%
-    dir %BUILD_ROOT_DIR%
+    dir %BUILD_ROOT_DIR%\postgis*
+    dir C:\Progra~1\PostgreSQL\%PG_VER%\postgis*
     xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%*w%arch%gcc%GCC% C:\Progra~1\PostgreSQL\%PG_VER%
+    dir %BUILD_ROOT_DIR%\postgis*
+    dir C:\Progra~1\PostgreSQL\%PG_VER%\postgis*
 
     if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\makepostgisdb_using_extensions.bat" (
-        echo "something went wrong on PostGIS %PGIS_VERSION% installation !!!!!!!!!"
+        echo "something went wrong on PostGIS %PGIS_VERSION% installation"
         if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
         if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\%PG_VER%\
         Exit \B 1
