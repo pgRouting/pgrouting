@@ -32,75 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 
 extern "C" {
-#if 0
-#if PGSQL_VERSION < 94
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
-#endif
 
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
-#endif
-
-#ifdef __clang__
-#pragma clang diagnostic ignored "-pedantic"
-#endif
-
-#if defined(WIN32) && defined(_MSC_VER)
-/* disable the following warnings 
- * C4200: Non standard extension C zero sized array
- */
-#pragma warning(disable:4200)  
-#endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-
-
-
-
-
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
-#pragma GCC diagnostic ignored "-Wsign-conversion"
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-
-#ifdef __clang__
-#pragma clang diagnostic ignored "-pedantic"
-#pragma clang diagnostic ignored "-Wsign-conversion"
-#pragma clang diagnostic ignored "-Wunused-parameter"
-#endif
-
-#include "executor/spi.h"
-
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#pragma GCC diagnostic pop
-#pragma GCC diagnostic pop
-#endif
-
-#ifdef __clang__
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
-#endif
-
-
-#endif
-extern void *palloc(size_t size);
-void *
- SPI_palloc(size_t size);
+extern
+void* SPI_palloc(size_t size);
 
 extern void *
 SPI_repalloc(void *pointer, size_t size);
@@ -108,8 +42,6 @@ SPI_repalloc(void *pointer, size_t size);
 extern void
 SPI_pfree(void *pointer);
 
-// #include "c_common/postgres_connection.h"
-// #include "utils/palloc.h"
 }
 
 
