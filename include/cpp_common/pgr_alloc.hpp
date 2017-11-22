@@ -96,7 +96,7 @@ extern "C" {
 
 
 // #include "c_common/postgres_connection.h"
-#include "utils/palloc.h"
+// #include "utils/palloc.h"
 }
 
 
