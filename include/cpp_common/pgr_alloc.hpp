@@ -38,7 +38,64 @@ extern "C" {
 #endif
 #endif
 
-#include "c_common/postgres_connection.h"
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
+
+#ifdef __clang__
+#pragma clang diagnostic ignored "-pedantic"
+#endif
+
+#if defined(WIN32) && defined(_MSC_VER)
+/* disable the following warnings 
+ * C4200: Non standard extension C zero sized array
+ */
+#pragma warning(disable:4200)  
+#endif
+
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+
+
+
+
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#ifdef __clang__
+#pragma clang diagnostic ignored "-pedantic"
+#pragma clang diagnostic ignored "-Wsign-conversion"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#endif
+
+#include "executor/spi.h"
+
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
+#endif
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop
+#endif
+
+
+// #include "c_common/postgres_connection.h"
 #include "utils/palloc.h"
 }
 
