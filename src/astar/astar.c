@@ -35,12 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/check_parameters.h"
 
 #include "drivers/astar/astar_driver.h"
 
 PGDLLEXPORT Datum astarManyToMany(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(astarManyToMany);
 
+#if 0
 void
 check_parameters(
         int heuristic,
@@ -62,6 +64,7 @@ check_parameters(
                  errhint("Valid values: 1 or greater than 1")));
     }
 }
+#endif
 
 static
 void
