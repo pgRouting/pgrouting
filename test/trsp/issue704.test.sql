@@ -6,7 +6,6 @@ SELECT  671223, 222698, 36655, 197.16, 197.16 UNION ALL
 SELECT  582877, 408918, 5556, 458.09, 458.09 UNION ALL
 SELECT  582876, 318255, 408918, 3.89, 3.89 UNION ALL
 SELECT  585280, 5556, 454424, 54.84, 54.84;
-\echo q1
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
 FROM pgr_trsp(
     'select * from maptest',
@@ -18,7 +17,6 @@ FROM pgr_trsp(
     true,      -- has_reverse_cost?
     null -- include the turn restrictions
 ) PG ; 
-\echo q2
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
 FROM pgr_trsp(
@@ -31,7 +29,6 @@ FROM pgr_trsp(
     true,      -- has_reverse_cost?
     null -- include the turn restrictions
 ) PG ;
-\echo q3
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
 FROM pgr_trsp(
@@ -44,7 +41,6 @@ FROM pgr_trsp(
     true,      -- has_reverse_cost?
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 ) PG ;
-\echo q4
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
 FROM pgr_trsp(
@@ -57,7 +53,6 @@ FROM pgr_trsp(
     true,      -- has_reverse_cost?
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 ) PG ;
-\echo q5
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
 FROM pgr_trsp(
@@ -69,5 +64,4 @@ FROM pgr_trsp(
     true,        -- directed graph?
     true      -- has_reverse_cost?
 );
-\echo q6
 
