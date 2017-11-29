@@ -32,14 +32,14 @@ https://github.com/pgRouting/pgrouting/releases
 		<td>master</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=master" alt="Build Status"/></td>
 		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=master&svg=true" alt="Appveyor Status"/></td>
-        <td><img src="http://winnie.postgis.net:1500/buildStatus/icon?job=pgRouting_matrix_master" alt="Jenkins Status"/></td>
+        <td><img src="https://winnie.postgis.net:444/buildStatus/icon?job=pgRouting_matrix_master" alt="Jenkins Status"/></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>develop</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
 		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=develop&svg=true" alt="Appveyor Status"/></td>
-        <td><img src="http://winnie.postgis.net:1500/buildStatus/icon?job=pgRouting_matrix_branch_develop" alt="Jenkins Status"/></td>
+        <td><img src="https://winnie.postgis.net:444/buildStatus/icon?job=pgRouting_matrix_branch_develop" alt="Jenkins Status"/></td>
 		<td></td>
 	</tr>
 	<tr>
