@@ -5,7 +5,11 @@ digraph "pgr_SPI_finish"
   rankdir="LR";
   Node1 [label="pgr_SPI_finish",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="compute",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$ksp_8c.html#a52758640112b3890a121f34736385839"];
+  Node2 [label="compute",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$ksp_8c.html#a896f074f30ab89f370432034161aa478"];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4"];
+  Node3 [label="compute_alpha_shape",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$alpha_8c.html#a5146a0f8e47bbe91ce06cd37851193b1"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="compute_trsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$new__trsp_8c.html#a4b6c631c8d12b27e5c230ecdb589d414"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4"];
 }

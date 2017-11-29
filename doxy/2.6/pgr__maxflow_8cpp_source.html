@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/max_flow/src/pgr_maxflow.cpp Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/max_flow/pgr_maxflow.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('pgr__maxflow_8cpp_source.html','');});
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a615920406276925d5b81e1fc2bec32a5">   38</a></span>&#160;<a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a615920406276925d5b81e1fc2bec32a5">PgrFlowGraph::PgrFlowGraph</a>(</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;edges,</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">const</span> std::set&lt;int64_t&gt; &amp;source_vertices,</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">const</span> std::set&lt;int64_t&gt; &amp;sink_vertices,</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">int</span> algorithm) {</div>
@@ -164,7 +164,7 @@ $(document).ready(function(){initNavTree('pgr__maxflow_8cpp_source.html','');});
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a0cb24639eb6f09a8721103dd720370d1">   56</a></span>&#160;<a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a615920406276925d5b81e1fc2bec32a5">PgrFlowGraph::PgrFlowGraph</a>(</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;edges,</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">const</span> std::set&lt;int64_t&gt; &amp;source_vertices,</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">const</span> std::set&lt;int64_t&gt; &amp;sink_vertices,</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">bool</span> directed) {</div>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('pgr__maxflow_8cpp_source.html','');});
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> * Push-relabel requires each edge to be mapped to its reverse with capacity 0.</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a65541cac3e38500f1b052730c513cbfb">   74</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a65541cac3e38500f1b052730c513cbfb">PgrFlowGraph::insert_edges_push_relabel</a>(</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;edges) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">bool</span> added;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structedge.html">edge</a> : edges) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a6102d036d2fcd97ec6bdca57994b1deb">V</a> v1 = <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a6165058c86a3091b77be838ac79de1f7">get_boost_vertex</a>(<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a08f51e987016d17c70ef1a4838196406">source</a>);</div>
@@ -217,7 +217,7 @@ $(document).ready(function(){initNavTree('pgr__maxflow_8cpp_source.html','');});
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * The other pgr_maxflow algorithms have no such requirement. (can have have as many edges)</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a1205cab14888698d33ef2119f9df058a">  109</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a1205cab14888698d33ef2119f9df058a">PgrFlowGraph::insert_edges</a>(</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;edges) {</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">bool</span> added;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structedge.html">edge</a> : edges) {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a6102d036d2fcd97ec6bdca57994b1deb">V</a> v1 = <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a6165058c86a3091b77be838ac79de1f7">get_boost_vertex</a>(<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a08f51e987016d17c70ef1a4838196406">source</a>);</div>
@@ -240,7 +240,7 @@ $(document).ready(function(){initNavTree('pgr__maxflow_8cpp_source.html','');});
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment"> * for the edge_disjoint_paths  algorithms</span></div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a587ea830e32014d17bdb64528010e6e3">  132</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a587ea830e32014d17bdb64528010e6e3">PgrFlowGraph::insert_edges_edge_disjoint</a>(</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>,</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keyword">const</span> std::vector&lt;pgr_edge_t&gt; &amp;edges,</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordtype">bool</span> directed) {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">bool</span> added;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structedge.html">edge</a> : edges) {</div>
@@ -314,7 +314,7 @@ $(document).ready(function(){initNavTree('pgr__maxflow_8cpp_source.html','');});
 <div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#adfef0644e37d5d9e810704b2c8ca3081">  204</a></span>&#160;<a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#adfef0644e37d5d9e810704b2c8ca3081">PgrFlowGraph::get_flow_edges</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    std::vector&lt;pgr_flow_t&gt; flow_edges;</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a22d3a87573b502bdbe90b959db0c291a">E_it</a> e, e_end;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">for</span> (boost::tie(e, e_end) = <a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">boost::edges</a>(<a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a818edf6e9599d3b9cbd1b7268d9b5da6">graph</a>); e != e_end;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">for</span> (boost::tie(e, e_end) = boost::edges(<a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a818edf6e9599d3b9cbd1b7268d9b5da6">graph</a>); e != e_end;</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            ++e) {</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="comment">// A supersource/supersink is used internally</span></div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">if</span> (((<a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#ab4761b50a30c89a8ab06ea6e4e665a2c">capacity</a>[*e] - <a class="code" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#aa5fbb8a13cb84db2d5ae33592eeae16d">residual_capacity</a>[*e]) &gt; 0) &amp;&amp;</div>
@@ -419,7 +419,6 @@ $(document).ready(function(){initNavTree('pgr__maxflow_8cpp_source.html','');});
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;}  <span class="comment">// namespace pgrouting</span></div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
 <div class="ttc" id="structGeneral__path__element__t_html_a5e8df1ca50ef8a2d4f91ab4f61f17922"><div class="ttname"><a href="structGeneral__path__element__t.html#a5e8df1ca50ef8a2d4f91ab4f61f17922">General_path_element_t::end_id</a></div><div class="ttdeci">int64_t end_id</div><div class="ttdef"><b>Definition:</b> <a href="general__path__element__t_8h_source.html#l00061">general_path_element_t.h:61</a></div></div>
-<div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
 <div class="ttc" id="structedge_html_a004cd70e32ea3f6ce31d5318b46158bd"><div class="ttname"><a href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">edge::cost</a></div><div class="ttdeci">float8 cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00035">trsp.h:35</a></div></div>
 <div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00031">alpha_driver.h:31</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1PgrFlowGraph_html_a65541cac3e38500f1b052730c513cbfb"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a65541cac3e38500f1b052730c513cbfb">pgrouting::graph::PgrFlowGraph::insert_edges_push_relabel</a></div><div class="ttdeci">void insert_edges_push_relabel(const std::vector&lt; pgr_edge_t &gt; &amp;edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__maxflow_8cpp_source.html#l00074">pgr_maxflow.cpp:74</a></div></div>
@@ -468,8 +467,8 @@ $(document).ready(function(){initNavTree('pgr__maxflow_8cpp_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e097e56f6842ce96d92168705fe95aef.html">max_flow</a></li><li class="navelem"><a class="el" href="dir_415e23306a94801378357d3b872f960d.html">src</a></li><li class="navelem"><a class="el" href="pgr__maxflow_8cpp.html">pgr_maxflow.cpp</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:29 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e097e56f6842ce96d92168705fe95aef.html">max_flow</a></li><li class="navelem"><a class="el" href="pgr__maxflow_8cpp.html">pgr_maxflow.cpp</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -10,8 +10,6 @@ var trsp_8c =
     [ "fetch_restrict", "trsp_8c.html#a08bb74b6255b8a583fd953d6995723df", null ],
     [ "fetch_restrict_columns", "trsp_8c.html#a7623760f545a367335141630d9e715ac", null ],
     [ "finish", "trsp_8c.html#adbf69d62298e4d47f81c749cebaad544", null ],
-    [ "PG_FUNCTION_INFO_V1", "trsp_8c.html#a6332a572255f484f4a57bc0ecc45463f", null ],
     [ "PG_FUNCTION_INFO_V1", "trsp_8c.html#adec7d5d9673f61fbf743dfec8a6ca581", null ],
-    [ "turn_restrict_shortest_path_edge", "trsp_8c.html#a938bf6c15c229413b975362c1bc510ce", null ],
-    [ "turn_restrict_shortest_path_vertex", "trsp_8c.html#ad9246e2da8aa61f657af867abc2b9d4c", null ]
+    [ "turn_restrict_shortest_path_edge", "trsp_8c.html#a938bf6c15c229413b975362c1bc510ce", null ]
 ];

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/trsp/src/trsp_driver.h File Reference</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/include/drivers/trsp/trsp_driver.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -105,103 +105,46 @@ $(document).ready(function(){initNavTree('trsp__driver_8h.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">trsp_driver.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;c_types/pgr_types.h&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="trsp__types_8h_source.html">c_types/trsp_types.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__edge__t_8h_source.html">c_types/pgr_edge_t.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="restriction__t_8h_source.html">c_types/restriction_t.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="general__path__element__t_8h_source.html">c_types/general_path_element_t.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for trsp_driver.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="trsp__driver_8h__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2trsp_2src_2trsp__driver_8h" alt=""/></div>
-<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2trsp_2src_2trsp__driver_8h" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2trsp_2src_2trsp__driver_8h">
-</map>
+<div class="center"><img src="trsp__driver_8h__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2trsp_2trsp__driver_8h" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2trsp_2trsp__driver_8h" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2trsp_2trsp__driver_8h">
+<area shape="rect" id="node2" href="trsp__types_8h.html" title="c_types/trsp_types.h" alt="" coords="5,133,149,160"/><area shape="rect" id="node3" href="pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="173,133,320,160"/><area shape="rect" id="node4" href="restriction__t_8h.html" title="c_types/restriction_t.h" alt="" coords="345,133,495,160"/><area shape="rect" id="node5" href="general__path__element__t_8h.html" title="c_types/general_path\l_element_t.h" alt="" coords="520,126,667,167"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="trsp__driver_8h__dep__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2trsp_2src_2trsp__driver_8hdep" alt=""/></div>
-<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2trsp_2src_2trsp__driver_8hdep" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2trsp_2src_2trsp__driver_8hdep">
-<area shape="rect" id="node2" href="trsp__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/trsp/src/trsp_driver.cpp" alt="" coords="5,109,187,165"/></map>
+<div class="center"><img src="trsp__driver_8h__dep__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2trsp_2trsp__driver_8hdep" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2trsp_2trsp__driver_8hdep" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2trsp_2trsp__driver_8hdep">
+<area shape="rect" id="node2" href="new__trsp_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/trsp/new_trsp.c" alt="" coords="5,125,155,181"/><area shape="rect" id="node3" href="trsp__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/trsp/trsp_driver.cpp" alt="" coords="180,125,339,181"/></map>
 </div>
 </div>
 <p><a href="trsp__driver_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a2b2d1b8288abf80b6781151bdde6101f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp__driver_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:a2b2d1b8288abf80b6781151bdde6101f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a6f991778d67cbba9985791a787ff0e42"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp__driver_8h.html#a6f991778d67cbba9985791a787ff0e42">edge_t</a></td></tr>
-<tr class="separator:a6f991778d67cbba9985791a787ff0e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b273f39d48283a7533f5e99a79c55ee"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structRestrict__t.html">Restrict_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp__driver_8h.html#a6b273f39d48283a7533f5e99a79c55ee">restrict_t</a></td></tr>
-<tr class="separator:a6b273f39d48283a7533f5e99a79c55ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5d467f92eb10534552a29268427c6450"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp__driver_8h.html#a5d467f92eb10534552a29268427c6450">trsp_edge_wrapper</a> (<a class="el" href="trsp_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a> *<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t edge_count, <a class="el" href="trsp_8h.html#a737b6d7654307647025209d889d79e4c">restrict_t</a> *restricts, size_t restrict_count, int64_t start_edge, double start_pos, int64_t end_edge, double end_pos, bool directed, bool has_reverse_cost, path_element_t **path, size_t *path_count, char **err_msg)</td></tr>
-<tr class="separator:a5d467f92eb10534552a29268427c6450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2b77a72f659aad981556c43f523a13b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp__driver_8h.html#ad2b77a72f659aad981556c43f523a13b">trsp_node_wrapper</a> (<a class="el" href="trsp_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a> *<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t edge_count, <a class="el" href="trsp_8h.html#a737b6d7654307647025209d889d79e4c">restrict_t</a> *restricts, size_t restrict_count, int64_t start_vertex, int64_t end_vertex, bool directed, bool has_reverse_cost, path_element_t **path, size_t *path_count, char **err_msg)</td></tr>
-<tr class="separator:ad2b77a72f659aad981556c43f523a13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add2f6bfeba454f45dc4c47d13723563c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c">do_trsp</a> (<a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> *edges, size_t edge_count, <a class="el" href="structRestriction__t.html">Restriction_t</a> *restrictions, size_t restrictions_size, int64_t *start_vidsArr, size_t size_start_vidsArr, int64_t *end_vidsArr, size_t size_end_vidsArr, bool directed, <a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</td></tr>
+<tr class="separator:add2f6bfeba454f45dc4c47d13723563c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a2b2d1b8288abf80b6781151bdde6101f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_RULE_LENGTH&#160;&#160;&#160;5</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="trsp__driver_8h_source.html#l00026">26</a> of file <a class="el" href="trsp__driver_8h_source.html">trsp_driver.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="a6f991778d67cbba9985791a787ff0e42"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> <a class="el" href="trsp_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="trsp__driver_8h_source.html#l00030">30</a> of file <a class="el" href="trsp__driver_8h_source.html">trsp_driver.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6b273f39d48283a7533f5e99a79c55ee"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="structRestrict__t.html">Restrict_t</a> <a class="el" href="trsp_8h.html#a737b6d7654307647025209d889d79e4c">restrict_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="trsp__driver_8h_source.html#l00031">31</a> of file <a class="el" href="trsp__driver_8h_source.html">trsp_driver.h</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a5d467f92eb10534552a29268427c6450"></a>
+<a class="anchor" id="add2f6bfeba454f45dc4c47d13723563c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int trsp_edge_wrapper </td>
+          <td class="memname">void do_trsp </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="trsp_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> *&#160;</td>
           <td class="paramname"><em>edges</em>, </td>
         </tr>
         <tr>
@@ -213,38 +156,38 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="trsp_8h.html#a737b6d7654307647025209d889d79e4c">restrict_t</a> *&#160;</td>
-          <td class="paramname"><em>restricts</em>, </td>
+          <td class="paramtype"><a class="el" href="structRestriction__t.html">Restriction_t</a> *&#160;</td>
+          <td class="paramname"><em>restrictions</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>restrict_count</em>, </td>
+          <td class="paramname"><em>restrictions_size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>start_edge</em>, </td>
+          <td class="paramtype">int64_t *&#160;</td>
+          <td class="paramname"><em>start_vidsArr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>start_pos</em>, </td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size_start_vidsArr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>end_edge</em>, </td>
+          <td class="paramtype">int64_t *&#160;</td>
+          <td class="paramname"><em>end_vidsArr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>end_pos</em>, </td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size_end_vidsArr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -255,20 +198,26 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>has_reverse_cost</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">path_element_t **&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
+          <td class="paramtype"><a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **&#160;</td>
+          <td class="paramname"><em>return_tuples</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t *&#160;</td>
-          <td class="paramname"><em>path_count</em>, </td>
+          <td class="paramname"><em>return_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>log_msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>notice_msg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -284,204 +233,122 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="trsp__driver_8cpp_source.html#l00084">84</a> of file <a class="el" href="trsp__driver_8cpp_source.html">trsp_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="trsp__driver_8cpp_source.html#l00041">41</a> of file <a class="el" href="trsp__driver_8cpp_source.html">trsp_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="trsp_8h_source.html#l00025">MAX_RULE_LENGTH</a>, <a class="el" href="GraphDefinition_8cpp_source.html#l00270">GraphDefinition::my_dijkstra()</a>, and <a class="el" href="trsp_8h_source.html#l00042">restrict_struct::via</a>.</p>
-<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::ostringstream log;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        std::vector&lt;PDVI&gt; ruleTable;</div>
+<p>References <a class="el" href="basePath__SSEC_8cpp_source.html#l00259">collapse_paths()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00336">count_tuples()</a>, <a class="el" href="pgr__assert_8h_source.html#l00081">pgassert</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00066">pgr_alloc()</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00077">pgr_free()</a>, <a class="el" href="pgr__alloc_8cpp_source.html#l00030">pgr_msg()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00260">pgrouting::trsp::Pgr_trspHandler::process()</a>, and <a class="el" href="pgr__assert_8cpp_source.html#l00053">AssertFailedException::what()</a>.</p>
+
+<p>Referenced by <a class="el" href="new__trsp_8c_source.html#l00050">compute_trsp()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::ostringstream log;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::ostringstream err;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::ostringstream notice;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*return_tuples == NULL);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*return_count == 0);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*log_msg == NULL);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*notice_msg == NULL);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*err_msg == NULL);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        std::vector&lt;pgrouting::trsp::Rule&gt; ruleList;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; restrictions_size; ++i) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            ruleList.push_back(<a class="code" href="classpgrouting_1_1trsp_1_1Rule.html">pgrouting::trsp::Rule</a>(*(restrictions + i)));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">         * Inserting vertices into a c++ vector structure</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        std::vector&lt;int64_t&gt;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            sources(start_vidsArr, start_vidsArr + size_start_vidsArr);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        std::vector&lt; int64_t &gt;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            targets(end_vidsArr, end_vidsArr + size_end_vidsArr);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">         * ordering and removing duplicates</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        std::sort(sources.begin(), sources.end());</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        sources.erase(</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                std::unique(sources.begin(), sources.end()),</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                sources.end());</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        std::sort(targets.begin(), targets.end());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        targets.erase(</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                std::unique(targets.begin(), targets.end()),</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                targets.end());</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">int</span> j;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        ruleTable.clear();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; restrict_count; i++) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            std::vector&lt;int64_t&gt; seq;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            seq.clear();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            seq.push_back(restricts[i].target_id);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">for</span> (j = 0; j &lt; <a class="code" href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a> &amp;&amp; restricts[i].<a class="code" href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">via</a>[j] &gt;- 1; j++) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                seq.push_back(restricts[i].via[j]);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            ruleTable.push_back(make_pair(restricts[i].to_cost, seq));</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html">pgrouting::trsp::Pgr_trspHandler</a> gdef(</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                edges,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                total_edges,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                directed,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                ruleList);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">auto</span> paths = gdef.process(</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                sources,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                targets);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="classGraphDefinition.html">GraphDefinition</a> gdef(edges, static_cast&lt;unsigned int&gt;(edge_count),</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        directed, has_reverse_cost);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordtype">size_t</span> count(0);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        count = <a class="code" href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1">count_tuples</a>(paths);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        int64_t start_vertex = 0;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        int64_t end_vertex = 0;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        gdef.add_virtual_vertices(</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                start_edge, start_pos,</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                end_edge, end_pos,</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                start_vertex, end_vertex);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">int</span> res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count,</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            log);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (res &lt; 0)</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">return</span> res;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">catch</span>(std::exception&amp; e) {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        log &lt;&lt; e.what();</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!&quot;</span>;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;}</div>
-<div class="ttc" id="classGraphDefinition_html"><div class="ttname"><a href="classGraphDefinition.html">GraphDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8h_source.html#l00089">GraphDefinition.h:89</a></div></div>
-<div class="ttc" id="trsp_8h_html_a2b2d1b8288abf80b6781151bdde6101f"><div class="ttname"><a href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a></div><div class="ttdeci">#define MAX_RULE_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00025">trsp.h:25</a></div></div>
-<div class="ttc" id="structrestrict__struct_html_a3d3c0413b11970bcb6178f90c28e0807"><div class="ttname"><a href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">restrict_struct::via</a></div><div class="ttdeci">int via[5]</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00042">trsp.h:42</a></div></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            (*return_tuples) = NULL;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            (*return_count) = 0;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(count, (*return_tuples));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        (*return_count) = <a class="code" href="basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0">collapse_paths</a>(return_tuples, paths);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;except) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        err &lt;&lt; except.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    } <span class="keywordflow">catch</span> (std::exception &amp;except) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        err &lt;&lt; except.what();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        err &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!&quot;</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
+<div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00126">pgr_assert.h:126</a></div></div>
+<div class="ttc" id="basePath__SSEC_8cpp_html_a19c6d298dcf1b394bb1d0269055f45f0"><div class="ttname"><a href="basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0">collapse_paths</a></div><div class="ttdeci">size_t collapse_paths(General_path_element_t **ret_path, const std::deque&lt; Path &gt; &amp;paths)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00259">basePath_SSEC.cpp:259</a></div></div>
+<div class="ttc" id="classpgrouting_1_1trsp_1_1Rule_html"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Rule.html">pgrouting::trsp::Rule</a></div><div class="ttdef"><b>Definition:</b> <a href="rule_8h_source.html#l00039">rule.h:39</a></div></div>
+<div class="ttc" id="pgr__alloc_8hpp_html_aae87e343d8516ca2c6a60dcfbbf7fde6"><div class="ttname"><a href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a></div><div class="ttdeci">T * pgr_free(T *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00077">pgr_alloc.hpp:77</a></div></div>
+<div class="ttc" id="pgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00081">pgr_assert.h:81</a></div></div>
+<div class="ttc" id="pgr__alloc_8cpp_html_a03fe028457780ee3a4d223cd7fe9d53e"><div class="ttname"><a href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a></div><div class="ttdeci">char * pgr_msg(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8cpp_source.html#l00030">pgr_alloc.cpp:30</a></div></div>
+<div class="ttc" id="basePath__SSEC_8cpp_html_a704d92207109d41b1df3e14e14579ba1"><div class="ttname"><a href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1">count_tuples</a></div><div class="ttdeci">size_t count_tuples(const std::deque&lt; Path &gt; &amp;paths)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00336">basePath_SSEC.cpp:336</a></div></div>
+<div class="ttc" id="pgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory </div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00066">pgr_alloc.hpp:66</a></div></div>
+<div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00053">pgr_assert.cpp:53</a></div></div>
+<div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html">pgrouting::trsp::Pgr_trspHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00052">pgr_trspHandler.h:52</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="trsp__driver_8h_a5d467f92eb10534552a29268427c6450_cgraph.png" border="0" usemap="#trsp__driver_8h_a5d467f92eb10534552a29268427c6450_cgraph" alt=""/></div>
-<map name="trsp__driver_8h_a5d467f92eb10534552a29268427c6450_cgraph" id="trsp__driver_8h_a5d467f92eb10534552a29268427c6450_cgraph">
-<area shape="rect" id="node2" href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7" title="GraphDefinition::my\l_dijkstra" alt="" coords="187,5,325,46"/></map>
+<div class="center"><img src="trsp__driver_8h_add2f6bfeba454f45dc4c47d13723563c_cgraph.png" border="0" usemap="#trsp__driver_8h_add2f6bfeba454f45dc4c47d13723563c_cgraph" alt=""/></div>
+<map name="trsp__driver_8h_add2f6bfeba454f45dc4c47d13723563c_cgraph" id="trsp__driver_8h_add2f6bfeba454f45dc4c47d13723563c_cgraph">
+<area shape="rect" id="node2" href="basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0" title="collapse_paths" alt="" coords="143,5,252,32"/><area shape="rect" id="node3" href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="149,56,245,83"/><area shape="rect" id="node4" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="323,157,397,184"/><area shape="rect" id="node5" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="163,157,232,184"/><area shape="rect" id="node6" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="161,208,233,235"/><area shape="rect" id="node7" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a009a1e7a265748859119283365a51d7a" title="process " alt="" coords="122,259,273,301"/><area shape="rect" id="node8" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="121,325,274,366"/></map>
 </div>
 </p>
 
-</div>
-</div>
-<a class="anchor" id="ad2b77a72f659aad981556c43f523a13b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int trsp_node_wrapper </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="trsp_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a> *&#160;</td>
-          <td class="paramname"><em>edges</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>edge_count</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="trsp_8h.html#a737b6d7654307647025209d889d79e4c">restrict_t</a> *&#160;</td>
-          <td class="paramname"><em>restricts</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>restrict_count</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>start_vertex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>end_vertex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>directed</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>has_reverse_cost</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">path_element_t **&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t *&#160;</td>
-          <td class="paramname"><em>path_count</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>err_msg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="trsp__driver_8cpp_source.html#l00034">34</a> of file <a class="el" href="trsp__driver_8cpp_source.html">trsp_driver.cpp</a>.</p>
-
-<p>References <a class="el" href="trsp_8h_source.html#l00025">MAX_RULE_LENGTH</a>, <a class="el" href="GraphDefinition_8cpp_source.html#l00270">GraphDefinition::my_dijkstra()</a>, and <a class="el" href="trsp_8h_source.html#l00042">restrict_struct::via</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::ostringstream log;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        std::vector&lt;PDVI&gt; ruleTable;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">int</span> j;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        ruleTable.clear();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; restrict_count; i++) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            std::vector&lt;int64_t&gt; seq;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            seq.clear();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            seq.push_back(restricts[i].target_id);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">for</span> (j = 0; j &lt; <a class="code" href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a> &amp;&amp; restricts[i].<a class="code" href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">via</a>[j] &gt; -1; j++) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                seq.push_back(restricts[i].via[j]);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            ruleTable.push_back(make_pair(restricts[i].to_cost, seq));</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="classGraphDefinition.html">GraphDefinition</a> gdef(edges, static_cast&lt;unsigned int&gt;(edge_count),</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        directed, has_reverse_cost);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">int</span> res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            log);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (res &lt; 0)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> res;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">catch</span>(std::exception&amp; e) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        log &lt;&lt; e.what();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!&quot;</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="ttc" id="classGraphDefinition_html"><div class="ttname"><a href="classGraphDefinition.html">GraphDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8h_source.html#l00089">GraphDefinition.h:89</a></div></div>
-<div class="ttc" id="trsp_8h_html_a2b2d1b8288abf80b6781151bdde6101f"><div class="ttname"><a href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a></div><div class="ttdeci">#define MAX_RULE_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00025">trsp.h:25</a></div></div>
-<div class="ttc" id="structrestrict__struct_html_a3d3c0413b11970bcb6178f90c28e0807"><div class="ttname"><a href="structrestrict__struct.html#a3d3c0413b11970bcb6178f90c28e0807">restrict_struct::via</a></div><div class="ttdeci">int via[5]</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00042">trsp.h:42</a></div></div>
-</div><!-- fragment -->
 <p><div class="dynheader">
-Here is the call graph for this function:</div>
+Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="trsp__driver_8h_ad2b77a72f659aad981556c43f523a13b_cgraph.png" border="0" usemap="#trsp__driver_8h_ad2b77a72f659aad981556c43f523a13b_cgraph" alt=""/></div>
-<map name="trsp__driver_8h_ad2b77a72f659aad981556c43f523a13b_cgraph" id="trsp__driver_8h_ad2b77a72f659aad981556c43f523a13b_cgraph">
-<area shape="rect" id="node2" href="classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7" title="GraphDefinition::my\l_dijkstra" alt="" coords="187,5,325,46"/></map>
+<div class="center"><img src="trsp__driver_8h_add2f6bfeba454f45dc4c47d13723563c_icgraph.png" border="0" usemap="#trsp__driver_8h_add2f6bfeba454f45dc4c47d13723563c_icgraph" alt=""/></div>
+<map name="trsp__driver_8h_add2f6bfeba454f45dc4c47d13723563c_icgraph" id="trsp__driver_8h_add2f6bfeba454f45dc4c47d13723563c_icgraph">
+<area shape="rect" id="node2" href="new__trsp_8c.html#a4b6c631c8d12b27e5c230ecdb589d414" title="compute_trsp" alt="" coords="120,5,221,32"/></map>
 </div>
 </p>
 
@@ -492,8 +359,8 @@ Here is the call graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ff9a90ff40b28e0f207f5cd80dcba32.html">trsp</a></li><li class="navelem"><a class="el" href="dir_b47eebdcbf6a29b61fc577aaf4f15079.html">src</a></li><li class="navelem"><a class="el" href="trsp__driver_8h.html">trsp_driver.h</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:31 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_4fe5cf12322eb0f9892753dc20f1484c.html">drivers</a></li><li class="navelem"><a class="el" href="dir_692928727b94edc8574293c887cf57d2.html">trsp</a></li><li class="navelem"><a class="el" href="trsp__driver_8h.html">trsp_driver.h</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

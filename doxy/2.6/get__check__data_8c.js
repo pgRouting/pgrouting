@@ -9,6 +9,7 @@ var get__check__data_8c =
     [ "pgr_check_text_type", "get__check__data_8c.html#ad2eb625caa8f72333db1ddd029ae6d15", null ],
     [ "pgr_fetch_column_info", "get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46", null ],
     [ "pgr_SPI_getBigInt", "get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448", null ],
+    [ "pgr_SPI_getBigIntArr", "get__check__data_8c.html#a565f26aa924fff943c074855fea04d59", null ],
     [ "pgr_SPI_getChar", "get__check__data_8c.html#a12adb8df2c301cc252f6c8eb585402d7", null ],
     [ "pgr_SPI_getFloat8", "get__check__data_8c.html#a6d8da632b86bd8f4e0f84f2a4219c887", null ],
     [ "pgr_SPI_getText", "get__check__data_8c.html#a186311e0ed2aa6513ae5257d17395132", null ]

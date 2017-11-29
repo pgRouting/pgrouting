@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['_7eassertfailedexception',['~AssertFailedException',['../classAssertFailedException.html#add60057af23323b1c5bd4220e0c0517e',1,'AssertFailedException']]],
-  ['_7egraphdefinition',['~GraphDefinition',['../classGraphDefinition.html#a1c27f2bd47f8773dd301729f57d6d6a0',1,'GraphDefinition']]],
-  ['_7epgr_5fbdastar',['~Pgr_bdAstar',['../classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#abdeeb861262783f9310f8ad5c693c290',1,'pgrouting::bidirectional::Pgr_bdAstar']]],
-  ['_7epgr_5fbddijkstra',['~Pgr_bdDijkstra',['../classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#aaf1b241885c2dc3e2c0563cfc586fd24',1,'pgrouting::bidirectional::Pgr_bdDijkstra']]],
-  ['_7epgr_5fbidirectional',['~Pgr_bidirectional',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a2a31cf056b1a9d40b01bbb83012c549c',1,'pgrouting::bidirectional::Pgr_bidirectional']]]
+  ['y',['y',['../structvertex__columns.html#af6b920645f2544a029fbe6c1d31498c1',1,'vertex_columns::y()'],['../structCoordinate__t.html#abbc494db10b22a87bede79c5b62be604',1,'Coordinate_t::y()'],['../structvertex.html#a8b9f211498390a67c369fd43f3722a19',1,'vertex::y()'],['../classpgrouting_1_1XY__vertex.html#accd7f6b73eda83892a9998f739d21ea9',1,'pgrouting::XY_vertex::y()']]],
+  ['y1',['y1',['../structPgr__edge__xy__t.html#a2042ed5c17215de537ce94b9ff73fd77',1,'Pgr_edge_xy_t']]],
+  ['y2',['y2',['../structPgr__edge__xy__t.html#a6ee26f23bfc079a5e9583a7edcb683d4',1,'Pgr_edge_xy_t']]],
+  ['yen',['Yen',['../classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac',1,'Pgr_ksp']]]
 ];

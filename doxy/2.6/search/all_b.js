@@ -8,7 +8,6 @@ var searchData=
   ['kpickup',['kPickup',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d',1,'pgrouting::vrp::Tw_node']]],
   ['kshortest_5fpath',['kshortest_path',['../ksp_8c.html#a44f9fbe5816152227d56c4dbaea59e7d',1,'ksp.c']]],
   ['ksp_2ec',['ksp.c',['../ksp_8c.html',1,'']]],
-  ['ksp_2ecpp',['ksp.cpp',['../ksp_8cpp.html',1,'']]],
   ['ksp_5fdriver_2ecpp',['ksp_driver.cpp',['../ksp__driver_8cpp.html',1,'']]],
   ['ksp_5fdriver_2eh',['ksp_driver.h',['../ksp__driver_8h.html',1,'']]],
   ['kstart',['kStart',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025',1,'pgrouting::vrp::Tw_node']]]

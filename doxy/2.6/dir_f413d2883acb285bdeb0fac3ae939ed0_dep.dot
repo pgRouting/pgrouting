@@ -7,8 +7,5 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common" {
   dir_f413d2883acb285bdeb0fac3ae939ed0 [shape=box, label="cpp_common", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_f413d2883acb285bdeb0fac3ae939ed0.html"];
   }
   dir_d5995d5871f728649bd47ea0d6428e03 [shape=box label="c_types" fillcolor="white" style="filled" color="red" URL="dir_d5995d5871f728649bd47ea0d6428e03.html"];
-  dir_9c50192407c36db226c38a2cd2bf7829 [shape=box label="c_common" URL="dir_9c50192407c36db226c38a2cd2bf7829.html"];
-  dir_9c50192407c36db226c38a2cd2bf7829->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="12", labeldistance=1.5 headhref="dir_000005_000006.html"];
-  dir_f413d2883acb285bdeb0fac3ae939ed0->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="7", labeldistance=1.5 headhref="dir_000010_000006.html"];
-  dir_f413d2883acb285bdeb0fac3ae939ed0->dir_9c50192407c36db226c38a2cd2bf7829 [headlabel="1", labeldistance=1.5 headhref="dir_000010_000005.html"];
+  dir_f413d2883acb285bdeb0fac3ae939ed0->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="7", labeldistance=1.5 headhref="dir_000011_000006.html"];
 }

@@ -20,7 +20,7 @@ var alpha__driver_8cpp =
     [ "Vector", "alpha__driver_8cpp.html#a5a03458ba9ac60d8f4d97b4c121df7e0", null ],
     [ "Vertex_circulator", "alpha__driver_8cpp.html#adad078e09171776a159f465e96252de1", null ],
     [ "alpha_edges", "alpha__driver_8cpp.html#a269b1986c0b1002e29ca46fbd69d10c6", null ],
-    [ "alpha_shape", "alpha__driver_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1", null ],
+    [ "alpha_shape", "alpha__driver_8cpp.html#a656e571bf590b5b3f71939592d599690", null ],
     [ "find_next_edge", "alpha__driver_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf", null ],
     [ "get_angle", "alpha__driver_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990", null ],
     [ "prev_size", "alpha__driver_8cpp.html#a7118ea995babe95c18fc3899f93d697a", null ]

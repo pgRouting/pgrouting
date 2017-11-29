@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/common/src/pgr_alloc.cpp Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/common/pgr_alloc.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -133,27 +133,28 @@ $(document).ready(function(){initNavTree('pgr__alloc_8cpp_source.html','');});
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__alloc_8hpp.html">cpp_common/pgr_alloc.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">char</span> *</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="pgr__alloc_8hpp.html#a03fe028457780ee3a4d223cd7fe9d53e">   29</a></span>&#160;<a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(<span class="keyword">const</span> std::string &amp;msg) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">char</span>* duplicate = NULL;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    duplicate = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(msg.size() + 1, duplicate);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    memcpy(duplicate, msg.c_str(), msg.size());</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    duplicate[msg.size()] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> duplicate;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">char</span> *</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="pgr__alloc_8hpp.html#a03fe028457780ee3a4d223cd7fe9d53e">   30</a></span>&#160;<a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(<span class="keyword">const</span> std::string &amp;msg) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">char</span>* duplicate = NULL;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    duplicate = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(msg.size() + 1, duplicate);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    memcpy(duplicate, msg.c_str(), msg.size());</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    duplicate[msg.size()] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> duplicate;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="ttc" id="pgr__alloc_8hpp_html"><div class="ttname"><a href="pgr__alloc_8hpp.html">pgr_alloc.hpp</a></div></div>
-<div class="ttc" id="pgr__alloc_8cpp_html_a03fe028457780ee3a4d223cd7fe9d53e"><div class="ttname"><a href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a></div><div class="ttdeci">char * pgr_msg(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8cpp_source.html#l00029">pgr_alloc.cpp:29</a></div></div>
-<div class="ttc" id="pgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory </div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc.hpp:64</a></div></div>
+<div class="ttc" id="pgr__alloc_8cpp_html_a03fe028457780ee3a4d223cd7fe9d53e"><div class="ttname"><a href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a></div><div class="ttdeci">char * pgr_msg(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8cpp_source.html#l00030">pgr_alloc.cpp:30</a></div></div>
+<div class="ttc" id="pgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory </div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00066">pgr_alloc.hpp:66</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="pgr__alloc_8cpp.html">pgr_alloc.cpp</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:29 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="pgr__alloc_8cpp.html">pgr_alloc.cpp</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

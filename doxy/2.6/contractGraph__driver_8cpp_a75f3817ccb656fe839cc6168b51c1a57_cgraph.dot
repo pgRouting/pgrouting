@@ -11,7 +11,7 @@ digraph "do_pgr_contractGraph"
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="is_valid_contraction",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$contractGraph__driver_8cpp.html#a5760443ab98e9225e5d3c544e0bb6d38"];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="pgr_free",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6"];
+  Node5 [label="pgr_free",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6"];
   Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="pgr_msg",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e"];
   Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

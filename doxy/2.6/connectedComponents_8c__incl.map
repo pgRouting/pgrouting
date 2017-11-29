@@ -1,8 +1,8 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/components/src/connectedComponents.c" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/components/src/connectedComponents.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,229,227,256"/>
-<area shape="rect" id="node3" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="91,140,269,167"/>
-<area shape="rect" id="node4" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="294,140,441,167"/>
-<area shape="rect" id="node5" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="466,140,624,167"/>
-<area shape="rect" id="node6" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="649,140,820,167"/>
-<area shape="rect" id="node7" href="$connectedComponents__driver_8h.html" title="drivers/components\l/connectedComponents\l_driver.h" alt="" coords="844,125,1003,181"/>
+<map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/components/connectedComponents.c" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/components/connectedComponents.c">
+<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,213,227,240"/>
+<area shape="rect" id="node3" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="91,124,269,151"/>
+<area shape="rect" id="node4" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="294,124,441,151"/>
+<area shape="rect" id="node5" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="466,124,624,151"/>
+<area shape="rect" id="node6" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="649,124,820,151"/>
+<area shape="rect" id="node7" href="$connectedComponents__driver_8h.html" title="drivers/components\l/connectedComponents\l_driver.h" alt="" coords="844,109,1003,165"/>
 </map>

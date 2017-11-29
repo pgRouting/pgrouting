@@ -124,7 +124,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="edge__disjoint__paths__driver_8h__dep__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2max__flow_2edge__disjoint__paths__driver_8hdep" alt=""/></div>
 <map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2max__flow_2edge__disjoint__paths__driver_8hdep" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2include_2drivers_2max__flow_2edge__disjoint__paths__driver_8hdep">
-<area shape="rect" id="node2" href="edge__disjoint__paths_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/edge\l_disjoint_paths.c" alt="" coords="5,126,163,197"/><area shape="rect" id="node3" href="edge__disjoint__paths__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/edge\l_disjoint_paths_driver.cpp" alt="" coords="188,126,361,197"/></map>
+<area shape="rect" id="node2" href="edge__disjoint__paths_8c.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/edge_disjoint\l_paths.c" alt="" coords="5,126,189,197"/><area shape="rect" id="node3" href="edge__disjoint__paths__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/edge_disjoint\l_paths_driver.cpp" alt="" coords="213,126,397,197"/></map>
 </div>
 </div>
 <p><a href="edge__disjoint__paths__driver_8h_source.html">Go to the source code of this file.</a></p>
@@ -221,7 +221,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="edge__disjoint__paths__driver_8cpp_source.html#l00066">66</a> of file <a class="el" href="edge__disjoint__paths__driver_8cpp_source.html">edge_disjoint_paths_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="general__path__element__t_8h_source.html#l00065">General_path_element_t::agg_cost</a>, <a class="el" href="issue191-bad-m1_8h_source.html#l00025">edges</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc()</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00075">pgr_free()</a>, <a class="el" href="pgr__alloc_8cpp_source.html#l00029">pgr_msg()</a>, <a class="el" href="edge__disjoint__paths__driver_8cpp_source.html#l00045">single_execution()</a>, and <a class="el" href="pgr__assert_8cpp_source.html#l00053">AssertFailedException::what()</a>.</p>
+<p>References <a class="el" href="general__path__element__t_8h_source.html#l00065">General_path_element_t::agg_cost</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00066">pgr_alloc()</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00077">pgr_free()</a>, <a class="el" href="pgr__alloc_8cpp_source.html#l00030">pgr_msg()</a>, <a class="el" href="edge__disjoint__paths__driver_8cpp_source.html#l00045">single_execution()</a>, and <a class="el" href="pgr__assert_8cpp_source.html#l00053">AssertFailedException::what()</a>.</p>
 
 <p>Referenced by <a class="el" href="edge__disjoint__paths_8c_source.html#l00045">process()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    {</div>
@@ -233,7 +233,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                sources, sources + size_source_verticesArr);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        std::set&lt;int64_t&gt; set_sink_vertices(</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                sinks, sinks + size_sink_verticesArr);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        std::vector&lt;pgr_edge_t&gt; <a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>(</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        std::vector&lt;pgr_edge_t&gt; edges(</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                data_edges, data_edges + total_edges);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
@@ -241,7 +241,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;s : set_source_vertices) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;t : set_sink_vertices) {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keyword">auto</span> path = <a class="code" href="edge__disjoint__paths__driver_8cpp.html#a3ae1820e3682c1381b23bb41ff2fd6d6">single_execution</a>(</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        edges,</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        s,</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        t,</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        directed);</div>
@@ -266,7 +266,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">         * Calculating the cost</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">         */</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">auto</span> found = paths.size();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : <a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a>) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : edges) {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;r : paths) {</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keywordflow">if</span> (r.edge == e.id) {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    r.cost = (r.node == e.source) ?</div>
@@ -333,12 +333,11 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
-<div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
 <div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00126">pgr_assert.h:126</a></div></div>
 <div class="ttc" id="edge__disjoint__paths__driver_8cpp_html_a3ae1820e3682c1381b23bb41ff2fd6d6"><div class="ttname"><a href="edge__disjoint__paths__driver_8cpp.html#a3ae1820e3682c1381b23bb41ff2fd6d6">single_execution</a></div><div class="ttdeci">static std::vector&lt; General_path_element_t &gt; single_execution(std::vector&lt; pgr_edge_t &gt; edges, int64_t source, int64_t target, bool directed)</div><div class="ttdef"><b>Definition:</b> <a href="edge__disjoint__paths__driver_8cpp_source.html#l00045">edge_disjoint_paths_driver.cpp:45</a></div></div>
-<div class="ttc" id="pgr__alloc_8hpp_html_aae87e343d8516ca2c6a60dcfbbf7fde6"><div class="ttname"><a href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a></div><div class="ttdeci">T * pgr_free(T *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00075">pgr_alloc.hpp:75</a></div></div>
-<div class="ttc" id="pgr__alloc_8cpp_html_a03fe028457780ee3a4d223cd7fe9d53e"><div class="ttname"><a href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a></div><div class="ttdeci">char * pgr_msg(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8cpp_source.html#l00029">pgr_alloc.cpp:29</a></div></div>
-<div class="ttc" id="pgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory </div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00064">pgr_alloc.hpp:64</a></div></div>
+<div class="ttc" id="pgr__alloc_8hpp_html_aae87e343d8516ca2c6a60dcfbbf7fde6"><div class="ttname"><a href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a></div><div class="ttdeci">T * pgr_free(T *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00077">pgr_alloc.hpp:77</a></div></div>
+<div class="ttc" id="pgr__alloc_8cpp_html_a03fe028457780ee3a4d223cd7fe9d53e"><div class="ttname"><a href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a></div><div class="ttdeci">char * pgr_msg(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8cpp_source.html#l00030">pgr_alloc.cpp:30</a></div></div>
+<div class="ttc" id="pgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory </div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00066">pgr_alloc.hpp:66</a></div></div>
 <div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00053">pgr_assert.cpp:53</a></div></div>
 <div class="ttc" id="structGeneral__path__element__t_html_ae56bc0763b498b1b5337b04605dbc8c1"><div class="ttname"><a href="structGeneral__path__element__t.html#ae56bc0763b498b1b5337b04605dbc8c1">General_path_element_t::agg_cost</a></div><div class="ttdeci">double agg_cost</div><div class="ttdef"><b>Definition:</b> <a href="general__path__element__t_8h_source.html#l00065">general_path_element_t.h:65</a></div></div>
 </div><!-- fragment -->
@@ -368,7 +367,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_4fe5cf12322eb0f9892753dc20f1484c.html">drivers</a></li><li class="navelem"><a class="el" href="dir_8aeca0a2f543e1fc1460234d68ec3d92.html">max_flow</a></li><li class="navelem"><a class="el" href="edge__disjoint__paths__driver_8h.html">edge_disjoint_paths_driver.h</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:30 for PGROUTING by
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

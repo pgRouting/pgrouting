@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/max_flow/src/edge_disjoint_paths.c File Reference</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/max_flow/edge_disjoint_paths.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -121,8 +121,8 @@ $(document).ready(function(){initNavTree('edge__disjoint__paths_8c.html','');});
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for edge_disjoint_paths.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="edge__disjoint__paths_8c__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2max__flow_2src_2edge__disjoint__paths_8c" alt=""/></div>
-<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2max__flow_2src_2edge__disjoint__paths_8c" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2max__flow_2src_2edge__disjoint__paths_8c">
+<div class="center"><img src="edge__disjoint__paths_8c__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2max__flow_2edge__disjoint__paths_8c" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2max__flow_2edge__disjoint__paths_8c" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2max__flow_2edge__disjoint__paths_8c">
 <area shape="rect" id="node2" href="postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,216,227,243"/><area shape="rect" id="node4" href="debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="117,133,296,160"/><area shape="rect" id="node5" href="e__report_8h.html" title="c_common/e_report.h" alt="" coords="371,133,519,160"/><area shape="rect" id="node6" href="time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="543,133,701,160"/><area shape="rect" id="node7" href="edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="727,133,897,160"/><area shape="rect" id="node8" href="arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="922,133,1093,160"/><area shape="rect" id="node9" href="edge__disjoint__paths__driver_8h.html" title="drivers/max_flow/edge\l_disjoint_paths_driver.h" alt="" coords="1118,126,1276,167"/></map>
 </div>
 </div>
@@ -328,7 +328,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="edge__disjoint__paths_8c_source.html#l00045">45</a> of file <a class="el" href="edge__disjoint__paths_8c_source.html">edge_disjoint_paths.c</a>.</p>
 
-<p>References <a class="el" href="edge__disjoint__paths__driver_8cpp_source.html#l00066">do_pgr_edge_disjoint_paths()</a>, <a class="el" href="issue191-bad-m1_8h_source.html#l00025">edges</a>, <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>, <a class="el" href="arrays__input_8c_source.html#l00124">pgr_get_bigIntArray()</a>, <a class="el" href="edges__input_8c_source.html#l00545">pgr_get_edges()</a>, <a class="el" href="e__report_8c_source.html#l00093">pgr_global_report()</a>, <a class="el" href="postgres__connection_8c_source.html#l00083">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00032">time_msg()</a>.</p>
+<p>References <a class="el" href="edge__disjoint__paths__driver_8cpp_source.html#l00066">do_pgr_edge_disjoint_paths()</a>, <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>, <a class="el" href="arrays__input_8c_source.html#l00124">pgr_get_bigIntArray()</a>, <a class="el" href="edges__input_8c_source.html#l00545">pgr_get_edges()</a>, <a class="el" href="e__report_8c_source.html#l00093">pgr_global_report()</a>, <a class="el" href="postgres__connection_8c_source.html#l00083">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00032">time_msg()</a>.</p>
 
 <p>Referenced by <a class="el" href="edge__disjoint__paths_8c_source.html#l00117">edge_disjoint_paths_many_to_many()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                          {</div>
@@ -343,7 +343,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a>(&amp;size_sink_verticesArr, ends);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a> = NULL;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *edges = NULL;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">size_t</span> total_edges = 0;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76">pgr_get_edges</a>(edges_sql, &amp;edges, &amp;total_edges);</div>
@@ -393,7 +393,6 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span> (err_msg) pfree(err_msg);</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
 <div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00058">pgr_edge_t.h:58</a></div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
 <div class="ttc" id="edges__input_8c_html_af663e291b6bdfe777789be38b6bfcf76"><div class="ttname"><a href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76">pgr_get_edges</a></div><div class="ttdeci">void pgr_get_edges(char *edges_sql, pgr_edge_t **edges, size_t *total_edges)</div><div class="ttdoc">basic edge_sql </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00545">edges_input.c:545</a></div></div>
@@ -429,8 +428,8 @@ Here is the caller graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e097e56f6842ce96d92168705fe95aef.html">max_flow</a></li><li class="navelem"><a class="el" href="dir_415e23306a94801378357d3b872f960d.html">src</a></li><li class="navelem"><a class="el" href="edge__disjoint__paths_8c.html">edge_disjoint_paths.c</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:30 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e097e56f6842ce96d92168705fe95aef.html">max_flow</a></li><li class="navelem"><a class="el" href="edge__disjoint__paths_8c.html">edge_disjoint_paths.c</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

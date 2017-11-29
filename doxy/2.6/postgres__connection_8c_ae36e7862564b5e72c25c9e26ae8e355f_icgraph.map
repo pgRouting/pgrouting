@@ -1,4 +1,6 @@
 <map id="pgr_SPI_finish" name="pgr_SPI_finish">
-<area shape="rect" id="node2" href="$ksp_8c.html#a52758640112b3890a121f34736385839" title="compute" alt="" coords="160,5,232,32"/>
-<area shape="rect" id="node3" href="$floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4" title="process" alt="" coords="162,56,230,83"/>
+<area shape="rect" id="node2" href="$ksp_8c.html#a896f074f30ab89f370432034161aa478" title="compute" alt="" coords="200,5,272,32"/>
+<area shape="rect" id="node3" href="$alpha_8c.html#a5146a0f8e47bbe91ce06cd37851193b1" title="compute_alpha_shape" alt="" coords="160,56,312,83"/>
+<area shape="rect" id="node4" href="$new__trsp_8c.html#a4b6c631c8d12b27e5c230ecdb589d414" title="compute_trsp" alt="" coords="185,107,287,133"/>
+<area shape="rect" id="node5" href="$floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4" title="process" alt="" coords="202,157,270,184"/>
 </map>

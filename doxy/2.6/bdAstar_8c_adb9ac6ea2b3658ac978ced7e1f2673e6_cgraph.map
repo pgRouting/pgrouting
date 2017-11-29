@@ -1,5 +1,5 @@
 <map id="process" name="process">
-<area shape="rect" id="node2" href="$astar__driver_8cpp.html#a9b179d766a96381033bc243068a2b880" title="check_parameters" alt="" coords="126,5,255,32"/>
+<area shape="rect" id="node2" href="$check__parameters_8c.html#a9b179d766a96381033bc243068a2b880" title="check_parameters" alt="" coords="126,5,255,32"/>
 <area shape="rect" id="node3" href="$bdAstar__driver_8cpp.html#af70575109db45df27a9f869374078621" title="do_pgr_bdAstar" alt="" coords="134,56,247,83"/>
 <area shape="rect" id="node4" href="$arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1" title="enforces the input array to be NOT empty " alt="" coords="123,107,258,133"/>
 <area shape="rect" id="node5" href="$edges__input_8c.html#a68e9476cc43d0bcc87a9f60734f76b38" title="Edges with x, y vertices values. " alt="" coords="127,157,255,184"/>

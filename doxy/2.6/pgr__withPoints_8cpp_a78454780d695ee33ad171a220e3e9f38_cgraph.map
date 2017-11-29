@@ -1,6 +1,0 @@
-<map id="eliminate_details_dd" name="eliminate_details_dd">
-<area shape="rect" id="node2" href="$classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4" title="Path::empty" alt="" coords="208,5,301,32"/>
-<area shape="rect" id="node3" href="$classPath.html#af813241de9d44cf689932d9166147cf0" title="Path::end_id" alt="" coords="207,56,302,83"/>
-<area shape="rect" id="node4" href="$classPath.html#a5b5d58e304f85ef96637a260917c30ac" title="Path::push_back" alt="" coords="195,107,315,133"/>
-<area shape="rect" id="node5" href="$classPath.html#ac7035439d26c9e76a20ca1a06541923e" title="Path::start_id" alt="" coords="205,157,305,184"/>
-</map>

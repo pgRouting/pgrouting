@@ -7,13 +7,18 @@ digraph "Path::push_back"
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="Path::append",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPath.html#a81dda9b296131350ee5be51a13e095b7",tooltip="Path: 2 -&gt; 9 seq node edge cost agg_cost 0 2 4 1 0 1 5 8 1 1 2 6 9 1 2 3 9 -1 0 3 Path: 9 -&gt; 3 seq no..."];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="Pgr_dijkstra::drivingDistance\l_no_equicost",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a"];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="eliminate_details",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f"];
+  Node3 [label="pgrouting::trsp::Pgr\l_trspHandler::construct_path",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#afb0d7e7d3049ca1c2a003b0571fcc02d"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::trsp::Pgr\l_trspHandler::process_trsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320"];
   Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="eliminate_details_dd",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__withPoints_8hpp.html#a78454780d695ee33ad171a220e3e9f38"];
+  Node5 [label="Pgr_dijkstra::drivingDistance\l_no_equicost",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a"];
   Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="Path::getSubpath",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20"];
+  Node6 [label="pgrouting::Pg_points\l_graph::eliminate_details",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451"];
   Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="Path::Path",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#aa756b9e7d3f6da13211097788882378a"];
+  Node7 [label="pgrouting::Pg_points\l_graph::eliminate_details_dd",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pg__points__graph.html#a7fa7df5b7e6aa95d4813b06bb5aa435a"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Path::getSubpath",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Path::Path",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#aa756b9e7d3f6da13211097788882378a"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

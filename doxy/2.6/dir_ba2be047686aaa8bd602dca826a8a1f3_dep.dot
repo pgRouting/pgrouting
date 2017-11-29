@@ -8,7 +8,7 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/yen" {
   }
   dir_f413d2883acb285bdeb0fac3ae939ed0 [shape=box label="cpp_common" URL="dir_f413d2883acb285bdeb0fac3ae939ed0.html"];
   dir_1930df11331c7ed9b5d4e307344eb08e [shape=box label="dijkstra" URL="dir_1930df11331c7ed9b5d4e307344eb08e.html"];
-  dir_ba2be047686aaa8bd602dca826a8a1f3->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="2", labeldistance=1.5 headhref="dir_000035_000010.html"];
-  dir_ba2be047686aaa8bd602dca826a8a1f3->dir_1930df11331c7ed9b5d4e307344eb08e [headlabel="1", labeldistance=1.5 headhref="dir_000035_000011.html"];
-  dir_1930df11331c7ed9b5d4e307344eb08e->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="2", labeldistance=1.5 headhref="dir_000011_000010.html"];
+  dir_ba2be047686aaa8bd602dca826a8a1f3->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="2", labeldistance=1.5 headhref="dir_000038_000011.html"];
+  dir_ba2be047686aaa8bd602dca826a8a1f3->dir_1930df11331c7ed9b5d4e307344eb08e [headlabel="1", labeldistance=1.5 headhref="dir_000038_000012.html"];
+  dir_1930df11331c7ed9b5d4e307344eb08e->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="3", labeldistance=1.5 headhref="dir_000012_000011.html"];
 }

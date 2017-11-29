@@ -19,6 +19,7 @@ var hierarchy =
     [ "CostHolder", "structCostHolder.html", null ],
     [ "edge", "structedge.html", null ],
     [ "edge_columns", "structedge__columns.html", null ],
+    [ "edge_t", "structedge__t.html", null ],
     [ "EventHandler", "classEventHandler.html", [
       [ "SIGINT_Handler", "classSIGINT__Handler.html", null ],
       [ "SIGQUIT_Handler", "classSIGQUIT__Handler.html", null ]
@@ -88,7 +89,15 @@ var hierarchy =
       ] ]
     ] ],
     [ "pgrouting::Line_vertex", "classpgrouting_1_1Line__vertex.html", null ],
-    [ "pgrouting::Pgr_messages", "classpgrouting_1_1Pgr__messages.html", null ],
+    [ "pgrouting::Pg_points_graph::pointCompare", "structpgrouting_1_1Pg__points__graph_1_1pointCompare.html", null ],
+    [ "pgrouting::Pgr_messages", "classpgrouting_1_1Pgr__messages.html", [
+      [ "pgrouting::Pg_points_graph", "classpgrouting_1_1Pg__points__graph.html", null ]
+    ] ],
+    [ "pgrouting::trsp::EdgeInfo", "classpgrouting_1_1trsp_1_1EdgeInfo.html", null ],
+    [ "pgrouting::trsp::Pgr_trspHandler", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html", null ],
+    [ "pgrouting::trsp::Pgr_trspHandler::CostHolder", "classpgrouting_1_1trsp_1_1Pgr__trspHandler_1_1CostHolder.html", null ],
+    [ "pgrouting::trsp::Pgr_trspHandler::Predecessor", "classpgrouting_1_1trsp_1_1Pgr__trspHandler_1_1Predecessor.html", null ],
+    [ "pgrouting::trsp::Rule", "classpgrouting_1_1trsp_1_1Rule.html", null ],
     [ "pgrouting::tsp::Dmatrix", "classpgrouting_1_1tsp_1_1Dmatrix.html", null ],
     [ "pgrouting::tsp::eucledianDmatrix", "classpgrouting_1_1tsp_1_1eucledianDmatrix.html", null ],
     [ "pgrouting::tsp::Tour", "classpgrouting_1_1tsp_1_1Tour.html", null ],
@@ -110,11 +119,10 @@ var hierarchy =
     [ "pgrouting::XY_vertex", "classpgrouting_1_1XY__vertex.html", null ],
     [ "PickDeliveryOrders_t", "structPickDeliveryOrders__t.html", null ],
     [ "Point_on_edge_t", "structPoint__on__edge__t.html", null ],
-    [ "pointCompare", "structpointCompare.html", null ],
     [ "restrict_columns", "structrestrict__columns.html", null ],
     [ "restrict_struct", "structrestrict__struct.html", null ],
-    [ "Restrict_t", "structRestrict__t.html", null ],
     [ "Restriction", "classRestriction.html", null ],
+    [ "Restriction_t", "structRestriction__t.html", null ],
     [ "Routes_t", "structRoutes__t.html", null ],
     [ "Rule", "structRule.html", null ],
     [ "SignalHandler", "classSignalHandler.html", null ],
@@ -122,8 +130,6 @@ var hierarchy =
       [ "AssertFailedException", "classAssertFailedException.html", null ],
       [ "UserQuitException", "classUserQuitException.html", null ]
     ] ],
-    [ "StringOperation", "classStringOperation.html", null ],
-    [ "StringTokenizer", "classStringTokenizer.html", null ],
     [ "Vehicle_t", "structVehicle__t.html", null ],
     [ "vertex", "structvertex.html", null ],
     [ "vertex_columns", "structvertex__columns.html", null ]

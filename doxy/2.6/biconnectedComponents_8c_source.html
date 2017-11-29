@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/components/src/biconnectedComponents.c Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/components/biconnectedComponents.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -173,7 +173,7 @@ $(document).ready(function(){initNavTree('biconnectedComponents_8c_source.html',
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    (*result_count) = 0;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Load data&quot;</span>);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a> = NULL;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *edges = NULL;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">size_t</span> total_edges = 0;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76">pgr_get_edges</a>(edges_sql, &amp;edges, &amp;total_edges);</div>
@@ -346,7 +346,6 @@ $(document).ready(function(){initNavTree('biconnectedComponents_8c_source.html',
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    }</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
-<div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
 <div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00058">pgr_edge_t.h:58</a></div></div>
 <div class="ttc" id="biconnectedComponents_8c_html_aea8088be2729b7f76f6fa2affe628168"><div class="ttname"><a href="biconnectedComponents_8c.html#aea8088be2729b7f76f6fa2affe628168">process</a></div><div class="ttdeci">static void process(char *edges_sql, pgr_components_rt **result_tuples, size_t *result_count)</div><div class="ttdef"><b>Definition:</b> <a href="biconnectedComponents_8c_source.html#l00068">biconnectedComponents.c:68</a></div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
@@ -373,8 +372,8 @@ $(document).ready(function(){initNavTree('biconnectedComponents_8c_source.html',
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="dir_6b140303cbcb0ee16377b384bd30388a.html">src</a></li><li class="navelem"><a class="el" href="biconnectedComponents_8c.html">biconnectedComponents.c</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:29 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="biconnectedComponents_8c.html">biconnectedComponents.c</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

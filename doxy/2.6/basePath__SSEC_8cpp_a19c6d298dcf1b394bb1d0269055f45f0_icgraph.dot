@@ -18,4 +18,6 @@ digraph "collapse_paths"
   Node7 [label="do_pgr_many_withPointsDD",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580"];
   Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="do_trsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c"];
 }

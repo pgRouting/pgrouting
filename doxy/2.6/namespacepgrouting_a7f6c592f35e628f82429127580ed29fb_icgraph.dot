@@ -11,15 +11,11 @@ digraph "pgrouting::extract_vertices"
   Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="do_pgr_driving_many\l_to_dist",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f"];
   Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="do_pgr_test_c_edges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$test__c__edges__driver_8h.html#ac49999b29b6bafbb8177d54fbdca83db"];
+  Node5 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
   Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="do_pgr_testXYedges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$testXYedges__driver_8h.html#a04787bf5bd11c62abdd682b0d615b13f"];
+  Node6 [label="do_pgr_withPointsKsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae"];
   Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
+  Node7 [label="pgrouting::extract\l_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting.html#a9a4a650140046a0ff4f6c5922a7040c1"];
   Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="do_pgr_withPointsKsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae"];
-  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="pgrouting::extract\l_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting.html#a9a4a650140046a0ff4f6c5922a7040c1"];
-  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="pgrouting::graph::Pgr\l_base_graph\< G, T_V,\l T_E \>::insert_edges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#adf97e69a48e3d65856b77fdc19d741eb",tooltip="Inserts count edges of type pgr_edge_t into the graph. "];
+  Node8 [label="pgrouting::graph::Pgr\l_base_graph\< G, T_V,\l T_E \>::insert_edges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#adf97e69a48e3d65856b77fdc19d741eb",tooltip="Inserts count edges of type pgr_edge_t into the graph. "];
 }

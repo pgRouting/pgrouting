@@ -2,8 +2,9 @@
 <area shape="rect" id="node2" href="$basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0" title="collapse_paths" alt="" coords="216,5,325,32"/>
 <area shape="rect" id="node3" href="$basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="223,56,319,83"/>
 <area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="181,107,360,149"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="408,224,483,251"/>
+<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="408,249,483,276"/>
 <area shape="rect" id="node6" href="$bdDijkstra__driver_8cpp.html#af14a40e180f0590800e7cbdb03c90595" title="pgr_bdDijkstra" alt="" coords="217,224,324,251"/>
-<area shape="rect" id="node7" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="235,275,307,301"/>
-<area shape="rect" id="node8" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="194,326,347,367"/>
+<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="236,275,305,301"/>
+<area shape="rect" id="node8" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="235,325,307,352"/>
+<area shape="rect" id="node9" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="194,377,347,418"/>
 </map>

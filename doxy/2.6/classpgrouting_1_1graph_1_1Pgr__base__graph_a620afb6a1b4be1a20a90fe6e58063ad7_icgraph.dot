@@ -19,7 +19,7 @@ digraph "pgrouting::graph::Pgr_base_graph::insert_edges"
   Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="do_pgr_floydWarshall",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$floydWarshall__driver_8h.html#ab17ad1485c10f4ae85789cd1ba05abdd"];
   Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="do_pgr_johnson",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$johnson__driver_8h.html#afafc6274933c462d1d877417dcb1d009"];
+  Node9 [label="do_pgr_johnson",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$johnson__driver_8h.html#a4703daa6b2bebc5f8690e6b518ec8466"];
   Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node10 [label="do_pgr_ksp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$ksp__driver_8h.html#a3a6b179e9d899339873dfce89802dd78"];
   Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -31,12 +31,8 @@ digraph "pgrouting::graph::Pgr_base_graph::insert_edges"
   Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 [label="do_pgr_strongComponents",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$strongComponents__driver_8h.html#a7f9041dbe45b9f72d7a42e6ed3a311ac"];
   Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node15 [label="do_pgr_test_c_edges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$test__c__edges__driver_8h.html#ac49999b29b6bafbb8177d54fbdca83db"];
+  Node15 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
   Node1 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 [label="do_pgr_testXYedges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$testXYedges__driver_8h.html#a04787bf5bd11c62abdd682b0d615b13f"];
-  Node1 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node17 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
-  Node1 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node18 [label="do_pgr_withPointsKsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae"];
+  Node16 [label="do_pgr_withPointsKsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae"];
   Node1 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

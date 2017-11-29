@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/driving_distance/src/many_to_dist_driving_distance.c Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/driving_distance/many_to_dist_driving_distance.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -152,7 +152,7 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="many__to__dist__driving__distance_8c.html#a6a7f016973820d0c041c43d2e97edd1a">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="many__to__dist__driving__distance_8c.html#a6a7f016973820d0c041c43d2e97edd1a">process</a>(</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">char</span>* sql,</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        ArrayType *starts,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> distance,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        float8 distance,</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">bool</span> equicost,</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **result_tuples,</div>
@@ -162,7 +162,7 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">size_t</span> size_start_vidsArr = 0;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    int64_t* start_vidsArr = <a class="code" href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a>(&amp;size_start_vidsArr, starts);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *<a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a> = NULL;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *edges = NULL;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">size_t</span> total_tuples = 0;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76">pgr_get_edges</a>(sql, &amp;edges, &amp;total_tuples);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
@@ -295,7 +295,6 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
-<div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
 <div class="ttc" id="structGeneral__path__element__t_html_aedb5d4d2a81599b30d22a8d505015cb6"><div class="ttname"><a href="structGeneral__path__element__t.html#aedb5d4d2a81599b30d22a8d505015cb6">General_path_element_t::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="general__path__element__t_8h_source.html#l00064">general_path_element_t.h:64</a></div></div>
 <div class="ttc" id="drivedist__driver_8h_html"><div class="ttname"><a href="drivedist__driver_8h.html">drivedist_driver.h</a></div></div>
 <div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00058">pgr_edge_t.h:58</a></div></div>
@@ -310,7 +309,6 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="ttc" id="structGeneral__path__element__t_html_a354771fb2151b5b368d4c35b30ce629e"><div class="ttname"><a href="structGeneral__path__element__t.html#a354771fb2151b5b368d4c35b30ce629e">General_path_element_t::edge</a></div><div class="ttdeci">int64_t edge</div><div class="ttdef"><b>Definition:</b> <a href="general__path__element__t_8h_source.html#l00063">general_path_element_t.h:63</a></div></div>
 <div class="ttc" id="e__report_8c_html_aa7833fe4baf65aa901e1129575e7deb2"><div class="ttname"><a href="e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2">pgr_global_report</a></div><div class="ttdeci">void pgr_global_report(char *log, char *notice, char *err)</div><div class="ttdoc">notice &amp; error </div><div class="ttdef"><b>Definition:</b> <a href="e__report_8c_source.html#l00093">e_report.c:93</a></div></div>
 <div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00071">postgres_connection.c:71</a></div></div>
-<div class="ttc" id="postgres_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="postgres_8h_source.html#l00023">postgres.h:23</a></div></div>
 <div class="ttc" id="many__to__dist__driving__distance_8c_html_a58c5ee7d9291207074640cb7044a53cb"><div class="ttname"><a href="many__to__dist__driving__distance_8c.html#a58c5ee7d9291207074640cb7044a53cb">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(driving_many_to_dist)</div></div>
 <div class="ttc" id="structGeneral__path__element__t_html_aa5de730dfe559b320b2bf0b42e079d7a"><div class="ttname"><a href="structGeneral__path__element__t.html#aa5de730dfe559b320b2bf0b42e079d7a">General_path_element_t::node</a></div><div class="ttdeci">int64_t node</div><div class="ttdef"><b>Definition:</b> <a href="general__path__element__t_8h_source.html#l00062">general_path_element_t.h:62</a></div></div>
 <div class="ttc" id="debug__macro_8h_html"><div class="ttname"><a href="debug__macro_8h.html">debug_macro.h</a></div></div>
@@ -327,8 +325,8 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><a class="el" href="many__to__dist__driving__distance_8c.html">many_to_dist_driving_distance.c</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:29 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="many__to__dist__driving__distance_8c.html">many_to_dist_driving_distance.c</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

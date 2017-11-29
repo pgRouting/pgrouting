@@ -8,10 +8,7 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types" {
     graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_d5995d5871f728649bd47ea0d6428e03.html"];
     dir_d5995d5871f728649bd47ea0d6428e03 [shape=plaintext label="c_types"];
     dir_be21e1794458515d32b002eb585b0ffd [shape=box label="pickDeliver" color="black" fillcolor="white" style="filled" URL="dir_be21e1794458515d32b002eb585b0ffd.html"];
+    dir_86211cae12d563da63a5f5d2ed614c21 [shape=box label="trsp" color="black" fillcolor="white" style="filled" URL="dir_86211cae12d563da63a5f5d2ed614c21.html"];
   }
   }
-  dir_68267d1309a1af8e8297ef4c3efbcdba [shape=box label="src" fillcolor="white" style="filled" color="red" URL="dir_68267d1309a1af8e8297ef4c3efbcdba.html"];
-  dir_be21e1794458515d32b002eb585b0ffd->dir_68267d1309a1af8e8297ef4c3efbcdba [headlabel="3", labeldistance=1.5 headhref="dir_000007_000036.html"];
-  dir_68267d1309a1af8e8297ef4c3efbcdba->dir_be21e1794458515d32b002eb585b0ffd [headlabel="1", labeldistance=1.5 headhref="dir_000036_000007.html"];
-  dir_d5995d5871f728649bd47ea0d6428e03->dir_68267d1309a1af8e8297ef4c3efbcdba [headlabel="17", labeldistance=1.5 headhref="dir_000006_000036.html"];
 }

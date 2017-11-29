@@ -35,6 +35,8 @@ var classPath =
     [ "push_back", "classPath.html#a5b5d58e304f85ef96637a260917c30ac", null ],
     [ "push_front", "classPath.html#a46140ad11410c4c8ddb3c0c1feeee895", null ],
     [ "push_front", "classPath.html#a2f8de8a38a6b7cc0d8a6faff8bf42c5a", null ],
+    [ "recalculate_agg_cost", "classPath.html#a410651095c5cf94da65891af5951c707", null ],
+    [ "renumber_vertices", "classPath.html#a2a39623954fa27c2ec079c9ac1ace66d", null ],
     [ "reverse", "classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e", null ],
     [ "set_data", "classPath.html#a961437d87838dd6dc86027a80fd9b59b", null ],
     [ "size", "classPath.html#a173f5f76fcc498b81b97261251d6a9a3", null ],

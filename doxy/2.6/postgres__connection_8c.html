@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/common/src/postgres_connection.c File Reference</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/common/postgres_connection.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -118,9 +118,9 @@ $(document).ready(function(){initNavTree('postgres__connection_8c.html','');});
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for postgres_connection.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="postgres__connection_8c__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2postgres__connection_8c" alt=""/></div>
-<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2postgres__connection_8c" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2postgres__connection_8c">
-<area shape="rect" id="node2" href="postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="20,200,241,227"/><area shape="rect" id="node6" href="debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="311,125,489,152"/></map>
+<div class="center"><img src="postgres__connection_8c__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2postgres__connection_8c" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2postgres__connection_8c" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2postgres__connection_8c">
+<area shape="rect" id="node2" href="postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="37,184,259,211"/><area shape="rect" id="node6" href="debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="328,109,507,136"/></map>
 </div>
 </div>
 <p><a href="postgres__connection_8c_source.html">Go to the source code of this file.</a></p>
@@ -233,7 +233,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="ksp_8c_source.html#l00039">compute()</a>, and <a class="el" href="floydWarshall_8c_source.html#l00044">process()</a>.</p>
+<p>Referenced by <a class="el" href="ksp_8c_source.html#l00039">compute()</a>, <a class="el" href="new__trsp_8c_source.html#l00050">compute_trsp()</a>, and <a class="el" href="floydWarshall_8c_source.html#l00046">process()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                      {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#if 0</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span>    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Connecting to SPI&quot;</span>);</div>
@@ -251,7 +251,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="postgres__connection_8c_aef5deb780b1cf78c56b1794ab826ac64_icgraph.png" border="0" usemap="#postgres__connection_8c_aef5deb780b1cf78c56b1794ab826ac64_icgraph" alt=""/></div>
 <map name="postgres__connection_8c_aef5deb780b1cf78c56b1794ab826ac64_icgraph" id="postgres__connection_8c_aef5deb780b1cf78c56b1794ab826ac64_icgraph">
-<area shape="rect" id="node2" href="ksp_8c.html#a52758640112b3890a121f34736385839" title="compute" alt="" coords="176,5,248,32"/><area shape="rect" id="node3" href="floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4" title="process" alt="" coords="178,56,246,83"/></map>
+<area shape="rect" id="node2" href="ksp_8c.html#a896f074f30ab89f370432034161aa478" title="compute" alt="" coords="191,5,263,32"/><area shape="rect" id="node3" href="new__trsp_8c.html#a4b6c631c8d12b27e5c230ecdb589d414" title="compute_trsp" alt="" coords="176,56,277,83"/><area shape="rect" id="node4" href="floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4" title="process" alt="" coords="193,107,261,133"/></map>
 </div>
 </p>
 
@@ -275,7 +275,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="edges__input_8c_source.html#l00246">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00139">get_edges_9_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00438">get_edges_basic()</a>, <a class="el" href="edges__input_8c_source.html#l00344">get_edges_flow()</a>, <a class="el" href="coordinates__input_8c_source.html#l00057">pgr_get_coordinates()</a>, <a class="el" href="matrixRows__input_8c_source.html#l00051">pgr_get_matrixRows()</a>, <a class="el" href="orders__input_8c_source.html#l00078">pgr_get_pd_orders_general()</a>, <a class="el" href="points__input_8c_source.html#l00063">pgr_get_points()</a>, <a class="el" href="restrict__input_8c_source.html#l00069">pgr_get_restriction_data()</a>, and <a class="el" href="vehicles__input_8c_source.html#l00135">pgr_get_vehicles_general()</a>.</p>
+<p>Referenced by <a class="el" href="edges__input_8c_source.html#l00246">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00139">get_edges_9_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00438">get_edges_basic()</a>, <a class="el" href="edges__input_8c_source.html#l00344">get_edges_flow()</a>, <a class="el" href="coordinates__input_8c_source.html#l00057">pgr_get_coordinates()</a>, <a class="el" href="matrixRows__input_8c_source.html#l00051">pgr_get_matrixRows()</a>, <a class="el" href="orders__input_8c_source.html#l00078">pgr_get_pd_orders_general()</a>, <a class="el" href="points__input_8c_source.html#l00063">pgr_get_points()</a>, <a class="el" href="restrictions__input_8c_source.html#l00059">pgr_get_restrictions()</a>, and <a class="el" href="vehicles__input_8c_source.html#l00135">pgr_get_vehicles_general()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                                        {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#if 0</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span>    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Opening Portal&quot;</span>);</div>
@@ -294,7 +294,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="postgres__connection_8c_a85cec439f5e567ec736a2a77a0533d9d_icgraph.png" border="0" usemap="#postgres__connection_8c_a85cec439f5e567ec736a2a77a0533d9d_icgraph" alt=""/></div>
 <map name="postgres__connection_8c_a85cec439f5e567ec736a2a77a0533d9d_icgraph" id="postgres__connection_8c_a85cec439f5e567ec736a2a77a0533d9d_icgraph">
-<area shape="rect" id="node2" href="edges__input_8c.html#ab0db65aa6de02562c019ab29c2d46db7" title="get_edges_5_columns" alt="" coords="213,5,365,32"/><area shape="rect" id="node3" href="edges__input_8c.html#a7212342c0a0fc0ce4cfce8bfecffc551" title="get_edges_9_columns" alt="" coords="213,56,365,83"/><area shape="rect" id="node4" href="edges__input_8c.html#ac7601ed1a32c26cfadce2793a618214e" title="get_edges_basic" alt="" coords="229,107,349,133"/><area shape="rect" id="node5" href="edges__input_8c.html#ab9561bc873997fb2d1766e3f18c91875" title="get_edges_flow" alt="" coords="233,157,346,184"/><area shape="rect" id="node6" href="coordinates__input_8h.html#a54deb1af794ff39f4589ca73b610b6d5" title="bigint id, float x, float y, " alt="" coords="220,208,359,235"/><area shape="rect" id="node7" href="matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5" title="bigint start_vid, bigint end_vid, float agg_cost, " alt="" coords="218,259,361,285"/><area shape="rect" id="node8" href="orders__input_8c.html#ab3262397da4122ba16c4a04490c075d2" title="pgr_get_pd_orders_general" alt="" coords="200,309,379,336"/><area shape="rect" id="node9" href="points__input_8h.html#ac232d3ed3b477a88ecbb17992c083aa8" title="pgr_get_points " alt="" coords="236,360,343,387"/><area shape="rect" id="node10" href="restrictions__input_8h.html#a4cd7e10c617159a5d830d8a094f8b530" title="pgr_get_restriction_data" alt="" coords="209,411,370,437"/><area shape="rect" id="node11" href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355" title="pgr_get_vehicles_general" alt="" coords="205,461,374,488"/></map>
+<area shape="rect" id="node2" href="edges__input_8c.html#ab0db65aa6de02562c019ab29c2d46db7" title="get_edges_5_columns" alt="" coords="213,5,365,32"/><area shape="rect" id="node3" href="edges__input_8c.html#a7212342c0a0fc0ce4cfce8bfecffc551" title="get_edges_9_columns" alt="" coords="213,56,365,83"/><area shape="rect" id="node4" href="edges__input_8c.html#ac7601ed1a32c26cfadce2793a618214e" title="get_edges_basic" alt="" coords="229,107,349,133"/><area shape="rect" id="node5" href="edges__input_8c.html#ab9561bc873997fb2d1766e3f18c91875" title="get_edges_flow" alt="" coords="233,157,346,184"/><area shape="rect" id="node6" href="coordinates__input_8h.html#a54deb1af794ff39f4589ca73b610b6d5" title="bigint id, float x, float y, " alt="" coords="220,208,359,235"/><area shape="rect" id="node7" href="matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5" title="bigint start_vid, bigint end_vid, float agg_cost, " alt="" coords="218,259,361,285"/><area shape="rect" id="node8" href="orders__input_8c.html#ab3262397da4122ba16c4a04490c075d2" title="pgr_get_pd_orders_general" alt="" coords="200,309,379,336"/><area shape="rect" id="node9" href="points__input_8h.html#ac232d3ed3b477a88ecbb17992c083aa8" title="pgr_get_points " alt="" coords="236,360,343,387"/><area shape="rect" id="node10" href="restrictions__input_8h.html#ad63bede1afc0fe03735388c928c104fd" title="pgr_get_restrictions" alt="" coords="221,411,357,437"/><area shape="rect" id="node11" href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355" title="pgr_get_vehicles_general" alt="" coords="205,461,374,488"/></map>
 </div>
 </p>
 
@@ -318,7 +318,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="ksp_8c_source.html#l00039">compute()</a>, and <a class="el" href="floydWarshall_8c_source.html#l00044">process()</a>.</p>
+<p>Referenced by <a class="el" href="ksp_8c_source.html#l00039">compute()</a>, <a class="el" href="alpha_8c_source.html#l00118">compute_alpha_shape()</a>, <a class="el" href="new__trsp_8c_source.html#l00050">compute_trsp()</a>, and <a class="el" href="floydWarshall_8c_source.html#l00046">process()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                     {</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#if 0</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span>    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Disconnecting SPI&quot;</span>);</div>
@@ -336,7 +336,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="postgres__connection_8c_ae36e7862564b5e72c25c9e26ae8e355f_icgraph.png" border="0" usemap="#postgres__connection_8c_ae36e7862564b5e72c25c9e26ae8e355f_icgraph" alt=""/></div>
 <map name="postgres__connection_8c_ae36e7862564b5e72c25c9e26ae8e355f_icgraph" id="postgres__connection_8c_ae36e7862564b5e72c25c9e26ae8e355f_icgraph">
-<area shape="rect" id="node2" href="ksp_8c.html#a52758640112b3890a121f34736385839" title="compute" alt="" coords="160,5,232,32"/><area shape="rect" id="node3" href="floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4" title="process" alt="" coords="162,56,230,83"/></map>
+<area shape="rect" id="node2" href="ksp_8c.html#a896f074f30ab89f370432034161aa478" title="compute" alt="" coords="200,5,272,32"/><area shape="rect" id="node3" href="alpha_8c.html#a5146a0f8e47bbe91ce06cd37851193b1" title="compute_alpha_shape" alt="" coords="160,56,312,83"/><area shape="rect" id="node4" href="new__trsp_8c.html#a4b6c631c8d12b27e5c230ecdb589d414" title="compute_trsp" alt="" coords="185,107,287,133"/><area shape="rect" id="node5" href="floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4" title="process" alt="" coords="202,157,270,184"/></map>
 </div>
 </p>
 
@@ -360,7 +360,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00034">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="edges__input_8c_source.html#l00246">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00139">get_edges_9_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00438">get_edges_basic()</a>, <a class="el" href="edges__input_8c_source.html#l00344">get_edges_flow()</a>, <a class="el" href="coordinates__input_8c_source.html#l00057">pgr_get_coordinates()</a>, <a class="el" href="matrixRows__input_8c_source.html#l00051">pgr_get_matrixRows()</a>, <a class="el" href="orders__input_8c_source.html#l00078">pgr_get_pd_orders_general()</a>, <a class="el" href="points__input_8c_source.html#l00063">pgr_get_points()</a>, <a class="el" href="restrict__input_8c_source.html#l00069">pgr_get_restriction_data()</a>, and <a class="el" href="vehicles__input_8c_source.html#l00135">pgr_get_vehicles_general()</a>.</p>
+<p>Referenced by <a class="el" href="edges__input_8c_source.html#l00246">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00139">get_edges_9_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00438">get_edges_basic()</a>, <a class="el" href="edges__input_8c_source.html#l00344">get_edges_flow()</a>, <a class="el" href="coordinates__input_8c_source.html#l00057">pgr_get_coordinates()</a>, <a class="el" href="matrixRows__input_8c_source.html#l00051">pgr_get_matrixRows()</a>, <a class="el" href="orders__input_8c_source.html#l00078">pgr_get_pd_orders_general()</a>, <a class="el" href="points__input_8c_source.html#l00063">pgr_get_points()</a>, <a class="el" href="restrictions__input_8c_source.html#l00059">pgr_get_restrictions()</a>, and <a class="el" href="vehicles__input_8c_source.html#l00135">pgr_get_vehicles_general()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                           {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#if 0</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor"></span>    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Preparing Plan&quot;</span>);</div>
@@ -379,7 +379,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="postgres__connection_8c_aeb63bcfc2ca89c02b30317112bae5f12_icgraph.png" border="0" usemap="#postgres__connection_8c_aeb63bcfc2ca89c02b30317112bae5f12_icgraph" alt=""/></div>
 <map name="postgres__connection_8c_aeb63bcfc2ca89c02b30317112bae5f12_icgraph" id="postgres__connection_8c_aeb63bcfc2ca89c02b30317112bae5f12_icgraph">
-<area shape="rect" id="node2" href="edges__input_8c.html#ab0db65aa6de02562c019ab29c2d46db7" title="get_edges_5_columns" alt="" coords="187,5,339,32"/><area shape="rect" id="node3" href="edges__input_8c.html#a7212342c0a0fc0ce4cfce8bfecffc551" title="get_edges_9_columns" alt="" coords="187,56,339,83"/><area shape="rect" id="node4" href="edges__input_8c.html#ac7601ed1a32c26cfadce2793a618214e" title="get_edges_basic" alt="" coords="203,107,323,133"/><area shape="rect" id="node5" href="edges__input_8c.html#ab9561bc873997fb2d1766e3f18c91875" title="get_edges_flow" alt="" coords="206,157,319,184"/><area shape="rect" id="node6" href="coordinates__input_8h.html#a54deb1af794ff39f4589ca73b610b6d5" title="bigint id, float x, float y, " alt="" coords="193,208,332,235"/><area shape="rect" id="node7" href="matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5" title="bigint start_vid, bigint end_vid, float agg_cost, " alt="" coords="191,259,334,285"/><area shape="rect" id="node8" href="orders__input_8c.html#ab3262397da4122ba16c4a04490c075d2" title="pgr_get_pd_orders_general" alt="" coords="173,309,352,336"/><area shape="rect" id="node9" href="points__input_8h.html#ac232d3ed3b477a88ecbb17992c083aa8" title="pgr_get_points " alt="" coords="209,360,316,387"/><area shape="rect" id="node10" href="restrictions__input_8h.html#a4cd7e10c617159a5d830d8a094f8b530" title="pgr_get_restriction_data" alt="" coords="182,411,343,437"/><area shape="rect" id="node11" href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355" title="pgr_get_vehicles_general" alt="" coords="178,461,347,488"/></map>
+<area shape="rect" id="node2" href="edges__input_8c.html#ab0db65aa6de02562c019ab29c2d46db7" title="get_edges_5_columns" alt="" coords="187,5,339,32"/><area shape="rect" id="node3" href="edges__input_8c.html#a7212342c0a0fc0ce4cfce8bfecffc551" title="get_edges_9_columns" alt="" coords="187,56,339,83"/><area shape="rect" id="node4" href="edges__input_8c.html#ac7601ed1a32c26cfadce2793a618214e" title="get_edges_basic" alt="" coords="203,107,323,133"/><area shape="rect" id="node5" href="edges__input_8c.html#ab9561bc873997fb2d1766e3f18c91875" title="get_edges_flow" alt="" coords="206,157,319,184"/><area shape="rect" id="node6" href="coordinates__input_8h.html#a54deb1af794ff39f4589ca73b610b6d5" title="bigint id, float x, float y, " alt="" coords="193,208,332,235"/><area shape="rect" id="node7" href="matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5" title="bigint start_vid, bigint end_vid, float agg_cost, " alt="" coords="191,259,334,285"/><area shape="rect" id="node8" href="orders__input_8c.html#ab3262397da4122ba16c4a04490c075d2" title="pgr_get_pd_orders_general" alt="" coords="173,309,352,336"/><area shape="rect" id="node9" href="points__input_8h.html#ac232d3ed3b477a88ecbb17992c083aa8" title="pgr_get_points " alt="" coords="209,360,316,387"/><area shape="rect" id="node10" href="restrictions__input_8h.html#ad63bede1afc0fe03735388c928c104fd" title="pgr_get_restrictions" alt="" coords="195,411,331,437"/><area shape="rect" id="node11" href="vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355" title="pgr_get_vehicles_general" alt="" coords="178,461,347,488"/></map>
 </div>
 </p>
 
@@ -390,8 +390,8 @@ Here is the caller graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="postgres__connection_8c.html">postgres_connection.c</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:30 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="postgres__connection_8c.html">postgres_connection.c</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

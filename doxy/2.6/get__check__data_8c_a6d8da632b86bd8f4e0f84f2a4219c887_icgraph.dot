@@ -15,7 +15,7 @@ digraph "pgr_SPI_getFloat8"
   Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="fetch_point",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$points__input_8c.html#a2f961047988f038e9e676adc091a551c"];
   Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="fetch_restriction",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$restrict__input_8c.html#a28b4b85eed0156bf648881ea690edf11"];
+  Node7 [label="fetch_restriction",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$restrictions__input_8c.html#ac3cee3d89294cf9d7839cf1e4992db61"];
   Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="fetch_vehicles",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$vehicles__input_8c.html#a8dedcfbf71ecc7f6c789331d5e89e909"];
   Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

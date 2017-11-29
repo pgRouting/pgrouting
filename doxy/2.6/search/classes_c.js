@@ -6,6 +6,7 @@ var searchData=
   ['path_5ft',['Path_t',['../structPath__t.html',1,'']]],
   ['pd_5forders',['PD_Orders',['../classpgrouting_1_1vrp_1_1PD__Orders.html',1,'pgrouting::vrp']]],
   ['pd_5fproblem',['PD_problem',['../classpgrouting_1_1vrp_1_1PD__problem.html',1,'pgrouting::vrp']]],
+  ['pg_5fpoints_5fgraph',['Pg_points_graph',['../classpgrouting_1_1Pg__points__graph.html',1,'pgrouting']]],
   ['pgr_5fallpairs',['Pgr_allpairs',['../classPgr__allpairs.html',1,'']]],
   ['pgr_5fastar',['Pgr_astar',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html',1,'pgrouting::algorithms']]],
   ['pgr_5fbase_5fgraph',['Pgr_base_graph',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html',1,'pgrouting::graph']]],
@@ -30,9 +31,11 @@ var searchData=
   ['pgr_5flinegraph',['Pgr_lineGraph',['../classpgrouting_1_1graph_1_1Pgr__lineGraph.html',1,'pgrouting::graph']]],
   ['pgr_5fmessages',['Pgr_messages',['../classpgrouting_1_1Pgr__messages.html',1,'pgrouting']]],
   ['pgr_5fpickdeliver',['Pgr_pickDeliver',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html',1,'pgrouting::vrp']]],
+  ['pgr_5ftrsphandler',['Pgr_trspHandler',['../classpgrouting_1_1trsp_1_1Pgr__trspHandler.html',1,'pgrouting::trsp']]],
   ['pgrcardinalitygraph',['PgrCardinalityGraph',['../classpgrouting_1_1flow_1_1PgrCardinalityGraph.html',1,'pgrouting::flow']]],
   ['pgrflowgraph',['PgrFlowGraph',['../classpgrouting_1_1graph_1_1PgrFlowGraph.html',1,'pgrouting::graph']]],
   ['pickdeliveryorders_5ft',['PickDeliveryOrders_t',['../structPickDeliveryOrders__t.html',1,'']]],
   ['point_5fon_5fedge_5ft',['Point_on_edge_t',['../structPoint__on__edge__t.html',1,'']]],
-  ['pointcompare',['pointCompare',['../structpointCompare.html',1,'']]]
+  ['pointcompare',['pointCompare',['../structpgrouting_1_1Pg__points__graph_1_1pointCompare.html',1,'pgrouting::Pg_points_graph']]],
+  ['predecessor',['Predecessor',['../classpgrouting_1_1trsp_1_1Pgr__trspHandler_1_1Predecessor.html',1,'pgrouting::trsp::Pgr_trspHandler']]]
 ];

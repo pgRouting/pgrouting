@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['path_5felement_5ftt',['path_element_tt',['../trsp_8h.html#adfa1ab41027fc911470a0328c9c9772a',1,'trsp.h']]],
-  ['pdp',['PDP',['../GraphDefinition_8h.html#a201f29a23ae268300cc7bf8219d62813',1,'GraphDefinition.h']]],
+  ['path_5felement_5ftt',['path_element_tt',['../trsp_8h.html#adfa1ab41027fc911470a0328c9c9772a',1,'path_element_tt():&#160;trsp.h'],['../trsp__types_8h.html#adfa1ab41027fc911470a0328c9c9772a',1,'path_element_tt():&#160;trsp_types.h']]],
+  ['pdp',['PDP',['../classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#acf366be736932c7df73ffad0d6c9a3a3',1,'pgrouting::trsp::Pgr_trspHandler::PDP()'],['../GraphDefinition_8h.html#a201f29a23ae268300cc7bf8219d62813',1,'PDP():&#160;GraphDefinition.h']]],
   ['pdvi',['PDVI',['../GraphDefinition_8h.html#aa4d1f45e5aed3e185fe0e647d416b584',1,'GraphDefinition.h']]],
   ['pib',['PIB',['../GraphDefinition_8h.html#a52a148325e3d4db94fe2f01755168ec5',1,'GraphDefinition.h']]],
   ['point',['Point',['../alpha__driver_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9',1,'Point():&#160;alpha_driver.cpp'],['../namespacepgrouting.html#aead1fc5bb8b586fc6ee92075b56f7559',1,'pgrouting::Point()']]],

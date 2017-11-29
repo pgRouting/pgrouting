@@ -1,12 +1,17 @@
 var searchData=
 [
-  ['x',['x',['../structvertex__columns.html#a0c582ef5b2f2c44c8cbf6b89ebc8d183',1,'vertex_columns::x()'],['../structCoordinate__t.html#a4e83334eabbe707ae5433ff65f60a475',1,'Coordinate_t::x()'],['../structvertex.html#a11f52ec2e920d56500baefe5a2e2bba7',1,'vertex::x()'],['../classpgrouting_1_1XY__vertex.html#a4c54a301254ff64d28e0345d41007b2e',1,'pgrouting::XY_vertex::x()']]],
-  ['x1',['x1',['../structPgr__edge__xy__t.html#a1bec47d220030b3f2c0c3d00aaee7b61',1,'Pgr_edge_xy_t']]],
-  ['x2',['x2',['../structPgr__edge__xy__t.html#abdf9d0604ecf134ffa25174f477bf0c6',1,'Pgr_edge_xy_t']]],
-  ['xy_5fvertex',['XY_vertex',['../classpgrouting_1_1XY__vertex.html',1,'pgrouting']]],
-  ['xy_5fvertex',['XY_vertex',['../classpgrouting_1_1XY__vertex.html#ad64396c8853e83892c605ed75a2e068a',1,'pgrouting::XY_vertex::XY_vertex()=default'],['../classpgrouting_1_1XY__vertex.html#afffc44348c0fe87c790b794d72d6ce6b',1,'pgrouting::XY_vertex::XY_vertex(const XY_vertex &amp;)=default'],['../classpgrouting_1_1XY__vertex.html#a1c91ad4c20dc7fb91bba564f162f8b69',1,'pgrouting::XY_vertex::XY_vertex(const int64_t _id, double _x, double _y)'],['../classpgrouting_1_1XY__vertex.html#afb054705a4739e0fe67b13a68bc41186',1,'pgrouting::XY_vertex::XY_vertex(const Pgr_edge_xy_t &amp;other, bool is_source)']]],
-  ['xy_5fvertex_2ecpp',['xy_vertex.cpp',['../xy__vertex_8cpp.html',1,'']]],
-  ['xy_5fvertex_2eh',['xy_vertex.h',['../xy__vertex_8h.html',1,'']]],
-  ['xydirectedgraph',['xyDirectedGraph',['../namespacepgrouting.html#abb931ed9509bbc7bc3e8185d0e2907b5',1,'pgrouting']]],
-  ['xyundirectedgraph',['xyUndirectedGraph',['../namespacepgrouting.html#a9771a88c2a2947af6403a329491815c1',1,'pgrouting']]]
+  ['wait_5ftime',['wait_time',['../classpgrouting_1_1vrp_1_1Solution.html#ac05b7458daf5673c21ecd5f0ea057ca3',1,'pgrouting::vrp::Solution::wait_time()'],['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a1c3999e6240e507918db6ea8a91fffbb',1,'pgrouting::vrp::Vehicle_node::wait_time()']]],
+  ['waittime',['waitTime',['../structGeneral__vehicle__orders__t.html#ac35c6ff98a900b7637e8b525ba989942',1,'General_vehicle_orders_t']]],
+  ['what',['what',['../classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2',1,'AssertFailedException::what()'],['../classUserQuitException.html#a7d99e13cc7eaa7615416188da49c2cbb',1,'UserQuitException::what()']]],
+  ['window_5flength',['window_length',['../classpgrouting_1_1vrp_1_1Tw__node.html#a04f46372a72f28b3249993f793ecfd95',1,'pgrouting::vrp::Tw_node']]],
+  ['withpoints',['withPoints',['../withPoints_8c.html#aaab3ed3bcdef5263b2ac3bc56dcfe410',1,'withPoints.c']]],
+  ['withpoints_2ec',['withPoints.c',['../withPoints_8c.html',1,'']]],
+  ['withpoints_5fdd_5fdriver_2ecpp',['withPoints_dd_driver.cpp',['../withPoints__dd__driver_8cpp.html',1,'']]],
+  ['withpoints_5fdd_5fdriver_2eh',['withPoints_dd_driver.h',['../withPoints__dd__driver_8h.html',1,'']]],
+  ['withpoints_5fdriver_2ecpp',['withPoints_driver.cpp',['../withPoints__driver_8cpp.html',1,'']]],
+  ['withpoints_5fdriver_2eh',['withPoints_driver.h',['../withPoints__driver_8h.html',1,'']]],
+  ['withpoints_5fksp',['withPoints_ksp',['../withPoints__ksp_8c.html#ab57087c2c4297cb378bb89fae9e3d7fc',1,'withPoints_ksp.c']]],
+  ['withpoints_5fksp_2ec',['withPoints_ksp.c',['../withPoints__ksp_8c.html',1,'']]],
+  ['withpoints_5fksp_5fdriver_2ecpp',['withPoints_ksp_driver.cpp',['../withPoints__ksp__driver_8cpp.html',1,'']]],
+  ['withpoints_5fksp_5fdriver_2eh',['withPoints_ksp_driver.h',['../withPoints__ksp__driver_8h.html',1,'']]]
 ];

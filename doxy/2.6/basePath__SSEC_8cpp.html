@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/common/src/basePath_SSEC.cpp File Reference</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/common/basePath_SSEC.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -120,9 +120,9 @@ $(document).ready(function(){initNavTree('basePath__SSEC_8cpp.html','');});
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for basePath_SSEC.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="basePath__SSEC_8cpp__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2basePath__SSEC_8cpp" alt=""/></div>
-<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2basePath__SSEC_8cpp" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2src_2basePath__SSEC_8cpp">
-<area shape="rect" id="node2" href="basePath__SSEC_8hpp.html" title="cpp_common/basePath\l_SSEC.hpp" alt="" coords="121,126,279,167"/><area shape="rect" id="node6" href="general__path__element__t_8h.html" title="c_types/general_path\l_element_t.h" alt="" coords="293,217,440,258"/><area shape="rect" id="node8" href="pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="483,133,659,160"/></map>
+<div class="center"><img src="basePath__SSEC_8cpp__incl.png" border="0" usemap="#_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2basePath__SSEC_8cpp" alt=""/></div>
+<map name="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2basePath__SSEC_8cpp" id="_2home_2vicky_2pgrouting_2pgrouting_2pgrouting_2src_2common_2basePath__SSEC_8cpp">
+<area shape="rect" id="node2" href="basePath__SSEC_8hpp.html" title="cpp_common/basePath\l_SSEC.hpp" alt="" coords="121,110,279,151"/><area shape="rect" id="node6" href="general__path__element__t_8h.html" title="c_types/general_path\l_element_t.h" alt="" coords="293,201,440,242"/><area shape="rect" id="node8" href="pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="483,117,659,144"/></map>
 </div>
 </div>
 <p><a href="basePath__SSEC_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -163,25 +163,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00238">238</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00259">259</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="astar__driver_8cpp_source.html#l00105">do_pgr_astarManyToMany()</a>, <a class="el" href="bdAstar__driver_8cpp_source.html#l00097">do_pgr_bdAstar()</a>, <a class="el" href="bdDijkstra__driver_8cpp_source.html#l00087">do_pgr_bdDijkstra()</a>, <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00079">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, and <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                       {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordtype">size_t</span> sequence = 0;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;path : paths) {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">if</span> (path.path.size() &gt; 0)</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            path.generate_postgres_data(ret_path, sequence);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    }</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">return</span> sequence;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div>
-<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
+<p>Referenced by <a class="el" href="astar__driver_8cpp_source.html#l00084">do_pgr_astarManyToMany()</a>, <a class="el" href="bdAstar__driver_8cpp_source.html#l00097">do_pgr_bdAstar()</a>, <a class="el" href="bdDijkstra__driver_8cpp_source.html#l00087">do_pgr_bdDijkstra()</a>, <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00079">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, and <a class="el" href="trsp__driver_8cpp_source.html#l00041">do_trsp()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                       {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordtype">size_t</span> sequence = 0;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;path : paths) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">if</span> (path.path.size() &gt; 0)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            path.generate_postgres_data(ret_path, sequence);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">return</span> sequence;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
+<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00046">basePath_SSEC.hpp:46</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="basePath__SSEC_8cpp_a19c6d298dcf1b394bb1d0269055f45f0_icgraph.png" border="0" usemap="#basePath__SSEC_8cpp_a19c6d298dcf1b394bb1d0269055f45f0_icgraph" alt=""/></div>
 <map name="basePath__SSEC_8cpp_a19c6d298dcf1b394bb1d0269055f45f0_icgraph" id="basePath__SSEC_8cpp_a19c6d298dcf1b394bb1d0269055f45f0_icgraph">
-<area shape="rect" id="node2" href="astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb" title="do_pgr_astarManyToMany" alt="" coords="169,5,345,32"/><area shape="rect" id="node3" href="bdAstar__driver_8h.html#aaa83efe9d05a08432a2f0bff6fd8ccd0" title="do_pgr_bdAstar" alt="" coords="201,56,314,83"/><area shape="rect" id="node4" href="bdDijkstra__driver_8h.html#a3130ae6176d30a4071dd3293517df04b" title="do_pgr_bdDijkstra" alt="" coords="194,107,321,133"/><area shape="rect" id="node5" href="drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="185,158,330,199"/><area shape="rect" id="node6" href="dijkstra__driver_8h.html#af572deb404f5e6d9e905c248294eac3b" title="do_pgr_many_to_many\l_dijkstra" alt="" coords="179,223,336,265"/><area shape="rect" id="node7" href="withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="163,289,351,316"/><area shape="rect" id="node8" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="193,340,322,367"/></map>
+<area shape="rect" id="node2" href="astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb" title="do_pgr_astarManyToMany" alt="" coords="169,5,345,32"/><area shape="rect" id="node3" href="bdAstar__driver_8h.html#aaa83efe9d05a08432a2f0bff6fd8ccd0" title="do_pgr_bdAstar" alt="" coords="201,56,314,83"/><area shape="rect" id="node4" href="bdDijkstra__driver_8h.html#a3130ae6176d30a4071dd3293517df04b" title="do_pgr_bdDijkstra" alt="" coords="194,107,321,133"/><area shape="rect" id="node5" href="drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="185,158,330,199"/><area shape="rect" id="node6" href="dijkstra__driver_8h.html#af572deb404f5e6d9e905c248294eac3b" title="do_pgr_many_to_many\l_dijkstra" alt="" coords="179,223,336,265"/><area shape="rect" id="node7" href="withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="163,289,351,316"/><area shape="rect" id="node8" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="193,340,322,367"/><area shape="rect" id="node9" href="trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="225,391,290,417"/></map>
 </div>
 </p>
 
@@ -201,24 +201,24 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00315">315</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00336">336</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="astar__driver_8cpp_source.html#l00105">do_pgr_astarManyToMany()</a>, <a class="el" href="bdAstar__driver_8cpp_source.html#l00097">do_pgr_bdAstar()</a>, <a class="el" href="bdDijkstra__driver_8cpp_source.html#l00087">do_pgr_bdDijkstra()</a>, <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00165">do_pgr_dijkstraVia()</a>, <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="ksp__driver_8cpp_source.html#l00041">do_pgr_ksp()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00079">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00053">do_pgr_withPointsKsp()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                                            {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordtype">size_t</span> count(0);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e : paths) {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        count += e.path.size();</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">return</span> count;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
-<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
+<p>Referenced by <a class="el" href="astar__driver_8cpp_source.html#l00084">do_pgr_astarManyToMany()</a>, <a class="el" href="bdAstar__driver_8cpp_source.html#l00097">do_pgr_bdAstar()</a>, <a class="el" href="bdDijkstra__driver_8cpp_source.html#l00087">do_pgr_bdDijkstra()</a>, <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00087">do_pgr_dijkstraVia()</a>, <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="ksp__driver_8cpp_source.html#l00041">do_pgr_ksp()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00079">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00053">do_pgr_withPointsKsp()</a>, and <a class="el" href="trsp__driver_8cpp_source.html#l00041">do_trsp()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                                            {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordtype">size_t</span> count(0);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e : paths) {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        count += e.path.size();</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">return</span> count;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;}</div>
+<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00046">basePath_SSEC.hpp:46</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="basePath__SSEC_8cpp_a704d92207109d41b1df3e14e14579ba1_icgraph.png" border="0" usemap="#basePath__SSEC_8cpp_a704d92207109d41b1df3e14e14579ba1_icgraph" alt=""/></div>
 <map name="basePath__SSEC_8cpp_a704d92207109d41b1df3e14e14579ba1_icgraph" id="basePath__SSEC_8cpp_a704d92207109d41b1df3e14e14579ba1_icgraph">
-<area shape="rect" id="node2" href="astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb" title="do_pgr_astarManyToMany" alt="" coords="156,5,332,32"/><area shape="rect" id="node3" href="bdAstar__driver_8h.html#aaa83efe9d05a08432a2f0bff6fd8ccd0" title="do_pgr_bdAstar" alt="" coords="187,56,301,83"/><area shape="rect" id="node4" href="bdDijkstra__driver_8h.html#a3130ae6176d30a4071dd3293517df04b" title="do_pgr_bdDijkstra" alt="" coords="181,107,307,133"/><area shape="rect" id="node5" href="dijkstraVia__driver_8h.html#a65bae4bd90fab026ee5f54f17655e776" title="do_pgr_dijkstraVia" alt="" coords="179,157,309,184"/><area shape="rect" id="node6" href="drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="171,209,317,250"/><area shape="rect" id="node7" href="ksp__driver_8h.html#a3a6b179e9d899339873dfce89802dd78" title="do_pgr_ksp" alt="" coords="199,275,289,301"/><area shape="rect" id="node8" href="dijkstra__driver_8h.html#af572deb404f5e6d9e905c248294eac3b" title="do_pgr_many_to_many\l_dijkstra" alt="" coords="165,326,323,367"/><area shape="rect" id="node9" href="withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="150,392,338,419"/><area shape="rect" id="node10" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="179,443,309,469"/><area shape="rect" id="node11" href="withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae" title="do_pgr_withPointsKsp" alt="" coords="168,493,320,520"/></map>
+<area shape="rect" id="node2" href="astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb" title="do_pgr_astarManyToMany" alt="" coords="156,5,332,32"/><area shape="rect" id="node3" href="bdAstar__driver_8h.html#aaa83efe9d05a08432a2f0bff6fd8ccd0" title="do_pgr_bdAstar" alt="" coords="187,56,301,83"/><area shape="rect" id="node4" href="bdDijkstra__driver_8h.html#a3130ae6176d30a4071dd3293517df04b" title="do_pgr_bdDijkstra" alt="" coords="181,107,307,133"/><area shape="rect" id="node5" href="dijkstraVia__driver_8h.html#a65bae4bd90fab026ee5f54f17655e776" title="do_pgr_dijkstraVia" alt="" coords="179,157,309,184"/><area shape="rect" id="node6" href="drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="171,209,317,250"/><area shape="rect" id="node7" href="ksp__driver_8h.html#a3a6b179e9d899339873dfce89802dd78" title="do_pgr_ksp" alt="" coords="199,275,289,301"/><area shape="rect" id="node8" href="dijkstra__driver_8h.html#af572deb404f5e6d9e905c248294eac3b" title="do_pgr_many_to_many\l_dijkstra" alt="" coords="165,326,323,367"/><area shape="rect" id="node9" href="withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="150,392,338,419"/><area shape="rect" id="node10" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="179,443,309,469"/><area shape="rect" id="node11" href="withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae" title="do_pgr_withPointsKsp" alt="" coords="168,493,320,520"/><area shape="rect" id="node12" href="trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="211,544,277,571"/></map>
 </div>
 </p>
 
@@ -238,64 +238,62 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00264">264</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00285">285</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 
-<p>References <a class="el" href="path__t_8h_source.html#l00037">Path_t::node</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00070">Path::size()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00064">Path::start_id()</a>.</p>
-
-<p>Referenced by <a class="el" href="driving_8cpp_source.html#l00028">process_drivingDistance()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                                   {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">/* sort paths by size: largest first */</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    std::sort(paths.begin(), paths.end(),</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">return</span> e2.size() &lt; e1.<a class="code" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>();</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            });</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="comment">/* sort each path by node: smaller id first */</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : paths) {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">if</span> (p.size() &lt; 2) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        std::sort(p.begin(), p.end(),</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                [](<span class="keyword">const</span> <a class="code" href="structPath__t.html">Path_t</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="structPath__t.html">Path_t</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">return</span> e1.<a class="code" href="structPath__t.html#a4446f5f95052373312fd971ff4ee73c7">node</a> &lt; e2.node;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                });</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p1 : paths) {</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p2 : paths) {</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keywordflow">if</span> (p1.start_id() == p2.start_id()) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;stop : p2.path) {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <span class="comment">/* find the node of p2 in p1 */</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                <span class="keyword">auto</span> pos = lower_bound(p1.begin(), p1.end(), stop,</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        [](<span class="keyword">const</span> <a class="code" href="structPath__t.html">Path_t</a> &amp;l, <span class="keyword">const</span> <a class="code" href="structPath__t.html">Path_t</a> &amp;r)-&gt;<span class="keywordtype">bool</span> {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                        <span class="keywordflow">return</span> l.node &lt; r.node;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        });</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <span class="keywordflow">if</span> (pos != p1.end()</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        &amp;&amp; (stop.node == pos-&gt;node)</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                        &amp;&amp; (stop.agg_cost &lt; pos-&gt;agg_cost)) {</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                    <span class="comment">/* both share the same node &amp;</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">                     * the second path has the smallest</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">                     *  So erasing from the first path */</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                    p1.erase(pos);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                }</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="comment">/* sort paths by start_id */</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    std::sort(paths.begin(), paths.end(),</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">return</span> e1.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>() &lt; e2.start_id();</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            });</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="comment">/* sort each path by agg_cost, node */</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;path : paths) {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        path.sort_by_node_agg_cost();</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
-<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
+<p>References <a class="el" href="path__t_8h_source.html#l00037">Path_t::node</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00069">Path::size()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00063">Path::start_id()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                   {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="comment">/* sort paths by size: largest first */</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    std::sort(paths.begin(), paths.end(),</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">return</span> e2.size() &lt; e1.<a class="code" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            });</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">/* sort each path by node: smaller id first */</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : paths) {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keywordflow">if</span> (p.size() &lt; 2) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        std::sort(p.begin(), p.end(),</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                [](<span class="keyword">const</span> <a class="code" href="structPath__t.html">Path_t</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="structPath__t.html">Path_t</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                <span class="keywordflow">return</span> e1.<a class="code" href="structPath__t.html#a4446f5f95052373312fd971ff4ee73c7">node</a> &lt; e2.node;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                });</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p1 : paths) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p2 : paths) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keywordflow">if</span> (p1.start_id() == p2.start_id()) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;stop : p2.path) {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                <span class="comment">/* find the node of p2 in p1 */</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="keyword">auto</span> pos = lower_bound(p1.begin(), p1.end(), stop,</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                        [](<span class="keyword">const</span> <a class="code" href="structPath__t.html">Path_t</a> &amp;l, <span class="keyword">const</span> <a class="code" href="structPath__t.html">Path_t</a> &amp;r)-&gt;<span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                        <span class="keywordflow">return</span> l.node &lt; r.node;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                        });</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                <span class="keywordflow">if</span> (pos != p1.end()</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                        &amp;&amp; (stop.node == pos-&gt;node)</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                        &amp;&amp; (stop.agg_cost &lt; pos-&gt;agg_cost)) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                    <span class="comment">/* both share the same node &amp;</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">                     * the second path has the smallest</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment">                     *  So erasing from the first path */</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    p1.erase(pos);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="comment">/* sort paths by start_id */</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    std::sort(paths.begin(), paths.end(),</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordflow">return</span> e1.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>() &lt; e2.start_id();</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            });</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="comment">/* sort each path by agg_cost, node */</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;path : paths) {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        path.sort_by_node_agg_cost();</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div>
+<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00046">basePath_SSEC.hpp:46</a></div></div>
 <div class="ttc" id="structPath__t_html_a4446f5f95052373312fd971ff4ee73c7"><div class="ttname"><a href="structPath__t.html#a4446f5f95052373312fd971ff4ee73c7">Path_t::node</a></div><div class="ttdeci">int64_t node</div><div class="ttdef"><b>Definition:</b> <a href="path__t_8h_source.html#l00037">path_t.h:37</a></div></div>
 <div class="ttc" id="structPath__t_html"><div class="ttname"><a href="structPath__t.html">Path_t</a></div><div class="ttdef"><b>Definition:</b> <a href="path__t_8h_source.html#l00036">path_t.h:36</a></div></div>
-<div class="ttc" id="classPath_html_ac7035439d26c9e76a20ca1a06541923e"><div class="ttname"><a href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00064">basePath_SSEC.hpp:64</a></div></div>
-<div class="ttc" id="classPath_html_a173f5f76fcc498b81b97261251d6a9a3"><div class="ttname"><a href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">Path::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00070">basePath_SSEC.hpp:70</a></div></div>
+<div class="ttc" id="classPath_html_ac7035439d26c9e76a20ca1a06541923e"><div class="ttname"><a href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00063">basePath_SSEC.hpp:63</a></div></div>
+<div class="ttc" id="classPath_html_a173f5f76fcc498b81b97261251d6a9a3"><div class="ttname"><a href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">Path::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00069">basePath_SSEC.hpp:69</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -303,15 +301,6 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_cgraph.png" border="0" usemap="#basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_cgraph" alt=""/></div>
 <map name="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_cgraph" id="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_cgraph">
 <area shape="rect" id="node2" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3" title="Path::size" alt="" coords="143,5,225,32"/><area shape="rect" id="node3" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e" title="Path::start_id" alt="" coords="134,56,234,83"/></map>
-</div>
-</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_icgraph.png" border="0" usemap="#basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_icgraph" alt=""/></div>
-<map name="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_icgraph" id="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_icgraph">
-<area shape="rect" id="node2" href="driving_8cpp.html#a54752be3f5a512499a6ec47446cc44a2" title="process_drivingDistance" alt="" coords="133,5,299,32"/></map>
 </div>
 </p>
 
@@ -341,25 +330,25 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00072">72</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00091">91</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 
-<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00066">Path::end_id()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00064">Path::start_id()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                          {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;Path: &quot;</span> &lt;&lt; path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>() &lt;&lt; <span class="stringliteral">&quot; -&gt; &quot;</span> &lt;&lt; path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;seq\tnode\tedge\tcost\tagg_cost\n&quot;</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    int64_t i = 0;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : path) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        log &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            &lt;&lt; e.node &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            &lt;&lt; e.edge &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            &lt;&lt; e.cost &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            &lt;&lt; e.agg_cost &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        ++i;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> log;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
-<div class="ttc" id="classPath_html_af813241de9d44cf689932d9166147cf0"><div class="ttname"><a href="classPath.html#af813241de9d44cf689932d9166147cf0">Path::end_id</a></div><div class="ttdeci">int64_t end_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00066">basePath_SSEC.hpp:66</a></div></div>
-<div class="ttc" id="classPath_html_ac7035439d26c9e76a20ca1a06541923e"><div class="ttname"><a href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00064">basePath_SSEC.hpp:64</a></div></div>
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00065">Path::end_id()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00063">Path::start_id()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                          {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;Path: &quot;</span> &lt;&lt; path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>() &lt;&lt; <span class="stringliteral">&quot; -&gt; &quot;</span> &lt;&lt; path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;seq\tnode\tedge\tcost\tagg_cost\n&quot;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    int64_t i = 0;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : path) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        log &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            &lt;&lt; e.node &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            &lt;&lt; e.edge &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            &lt;&lt; e.cost &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            &lt;&lt; e.agg_cost &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        ++i;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="ttc" id="classPath_html_af813241de9d44cf689932d9166147cf0"><div class="ttname"><a href="classPath.html#af813241de9d44cf689932d9166147cf0">Path::end_id</a></div><div class="ttdeci">int64_t end_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00065">basePath_SSEC.hpp:65</a></div></div>
+<div class="ttc" id="classPath_html_ac7035439d26c9e76a20ca1a06541923e"><div class="ttname"><a href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00063">basePath_SSEC.hpp:63</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -377,8 +366,8 @@ Here is the call graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="basePath__SSEC_8cpp.html">basePath_SSEC.cpp</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:30 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="basePath__SSEC_8cpp.html">basePath_SSEC.cpp</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

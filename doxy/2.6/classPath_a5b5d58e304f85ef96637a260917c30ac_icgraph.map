@@ -1,8 +1,10 @@
 <map id="Path::push_back" name="Path::push_back">
-<area shape="rect" id="node2" href="$classPath.html#a81dda9b296131350ee5be51a13e095b7" title="Path: 2 &#45;&gt; 9 seq node edge cost agg_cost 0 2 4 1 0 1 5 8 1 1 2 6 9 1 2 3 9 &#45;1 0 3 Path: 9 &#45;&gt; 3 seq no..." alt="" coords="219,5,317,32"/>
-<area shape="rect" id="node3" href="$classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a" title="Pgr_dijkstra::drivingDistance\l_no_equicost" alt="" coords="173,57,363,98"/>
-<area shape="rect" id="node4" href="$pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f" title="eliminate_details" alt="" coords="209,123,327,149"/>
-<area shape="rect" id="node5" href="$pgr__withPoints_8hpp.html#a78454780d695ee33ad171a220e3e9f38" title="eliminate_details_dd" alt="" coords="198,173,338,200"/>
-<area shape="rect" id="node6" href="$classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20" title="Path::getSubpath" alt="" coords="207,224,329,251"/>
-<area shape="rect" id="node7" href="$classPath.html#aa756b9e7d3f6da13211097788882378a" title="Path::Path" alt="" coords="226,275,310,301"/>
+<area shape="rect" id="node2" href="$classPath.html#a81dda9b296131350ee5be51a13e095b7" title="Path: 2 &#45;&gt; 9 seq node edge cost agg_cost 0 2 4 1 0 1 5 8 1 1 2 6 9 1 2 3 9 &#45;1 0 3 Path: 9 &#45;&gt; 3 seq no..." alt="" coords="220,5,319,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#afb0d7e7d3049ca1c2a003b0571fcc02d" title="pgrouting::trsp::Pgr\l_trspHandler::construct_path" alt="" coords="174,57,365,98"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="413,86,592,127"/>
+<area shape="rect" id="node5" href="$classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a" title="Pgr_dijkstra::drivingDistance\l_no_equicost" alt="" coords="175,174,364,215"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="186,239,353,281"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1Pg__points__graph.html#a7fa7df5b7e6aa95d4813b06bb5aa435a" title="pgrouting::Pg_points\l_graph::eliminate_details_dd" alt="" coords="176,305,363,346"/>
+<area shape="rect" id="node8" href="$classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20" title="Path::getSubpath" alt="" coords="208,371,331,397"/>
+<area shape="rect" id="node9" href="$classPath.html#aa756b9e7d3f6da13211097788882378a" title="Path::Path" alt="" coords="227,421,311,448"/>
 </map>

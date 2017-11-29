@@ -7,11 +7,11 @@ digraph "do_pgr_bridges"
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="pgrouting::graph::Pgr\l_componentsGraph::insert_edges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a1341eb7877973d52efe280c0f55f2a0e"];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="pgr_alloc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c",tooltip="allocates memory "];
+  Node3 [label="pgr_alloc",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c",tooltip="allocates memory "];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="pgr_bridges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$bridges__driver_8cpp.html#a23f23a5a04c9aa88f803baf9e3c6b0fd"];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="pgr_free",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6"];
+  Node5 [label="pgr_free",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6"];
   Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="pgr_msg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e"];
   Node6 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

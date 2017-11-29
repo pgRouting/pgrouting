@@ -1,4 +1,5 @@
 <map id="pgr_get_edges" name="pgr_get_edges">
-<area shape="rect" id="node2" href="$ksp_8c.html#a52758640112b3890a121f34736385839" title="compute" alt="" coords="160,5,232,32"/>
-<area shape="rect" id="node3" href="$bdDijkstra_8c.html#a923047dd6840f3e4e4df5cbd8c5e5d2c" title="process" alt="" coords="162,56,230,83"/>
+<area shape="rect" id="node2" href="$ksp_8c.html#a896f074f30ab89f370432034161aa478" title="compute" alt="" coords="175,5,247,32"/>
+<area shape="rect" id="node3" href="$new__trsp_8c.html#a4b6c631c8d12b27e5c230ecdb589d414" title="compute_trsp" alt="" coords="160,56,261,83"/>
+<area shape="rect" id="node4" href="$bdDijkstra_8c.html#a923047dd6840f3e4e4df5cbd8c5e5d2c" title="process" alt="" coords="177,107,245,133"/>
 </map>

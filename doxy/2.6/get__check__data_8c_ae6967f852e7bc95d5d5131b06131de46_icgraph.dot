@@ -21,7 +21,7 @@ digraph "pgr_fetch_column_info"
   Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node9 [label="pgr_get_points",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$points__input_8h.html#ac232d3ed3b477a88ecbb17992c083aa8",tooltip="pgr_get_points "];
   Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="pgr_get_restriction_data",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$restrictions__input_8h.html#a4cd7e10c617159a5d830d8a094f8b530"];
+  Node10 [label="pgr_get_restrictions",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$restrictions__input_8h.html#ad63bede1afc0fe03735388c928c104fd"];
   Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node11 [label="pgr_get_vehicles_general",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355"];
 }

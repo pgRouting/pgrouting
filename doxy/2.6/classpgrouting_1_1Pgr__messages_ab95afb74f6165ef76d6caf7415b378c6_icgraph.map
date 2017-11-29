@@ -1,7 +1,10 @@
 <map id="pgrouting::Pgr_messages::get_log" name="pgrouting::Pgr_messages::get_log">
-<area shape="rect" id="node2" href="$pickDeliver__driver_8h.html#a06ef15d03d851e390ca5c6572fc92091" title="do_pgr_pickDeliver" alt="" coords="253,5,387,32"/>
-<area shape="rect" id="node3" href="$pickDeliverEuclidean__driver_8h.html#a53635cc50e8e7d8107be4bbee505b3f7" title="do_pgr_pickDeliverEuclidean" alt="" coords="225,56,415,83"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="241,107,399,149"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Fleet.html#aa83573a954baa1fdd349b557b664571e" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="251,173,389,214"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ad26d3f2cc122835364eb1ee97d090415" title="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK" alt="" coords="242,238,398,279"/>
+<area shape="rect" id="node2" href="$withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="226,5,414,32"/>
+<area shape="rect" id="node3" href="$pickDeliver__driver_8h.html#a06ef15d03d851e390ca5c6572fc92091" title="do_pgr_pickDeliver" alt="" coords="253,56,387,83"/>
+<area shape="rect" id="node4" href="$pickDeliverEuclidean__driver_8h.html#a53635cc50e8e7d8107be4bbee505b3f7" title="do_pgr_pickDeliverEuclidean" alt="" coords="225,107,415,133"/>
+<area shape="rect" id="node5" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="255,157,385,184"/>
+<area shape="rect" id="node6" href="$withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae" title="do_pgr_withPointsKsp" alt="" coords="244,208,396,235"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="241,259,399,301"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Fleet.html#aa83573a954baa1fdd349b557b664571e" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="251,325,389,366"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ad26d3f2cc122835364eb1ee97d090415" title="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK" alt="" coords="242,390,398,431"/>
 </map>

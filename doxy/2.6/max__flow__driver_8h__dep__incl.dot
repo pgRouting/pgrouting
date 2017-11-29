@@ -4,7 +4,7 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/drivers/max_flow/max_
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/max_flow\l/max_flow_driver.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/max\l_flow.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$max__flow_8c.html"];
+  Node2 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/max_flow.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$max__flow_8c.html"];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/src/max\l_flow_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$max__flow__driver_8cpp.html"];
+  Node3 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/max_flow/max_flow\l_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$max__flow__driver_8cpp.html"];
 }

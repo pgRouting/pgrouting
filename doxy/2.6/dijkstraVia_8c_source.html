@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/dijkstra/src/dijkstraVia.c Source File</title>
+<title>PGROUTING: /home/vicky/pgrouting/pgrouting/pgrouting/src/dijkstra/dijkstraVia.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('dijkstraVia_8c_source.html','');});
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">size_t</span> size_via_vidsArr = 0;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    via_vidsArr = (int64_t*) <a class="code" href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a>(&amp;size_via_vidsArr, vias);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>* <a class="code" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a> = NULL;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>* edges = NULL;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">size_t</span> total_edges = 0;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76">pgr_get_edges</a>(edges_sql, &amp;edges, &amp;total_edges);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
@@ -314,12 +314,11 @@ $(document).ready(function(){initNavTree('dijkstraVia_8c_source.html','');});
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        SRF_RETURN_DONE(funcctx);</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
-<div class="ttc" id="issue191-bad-m1_8h_html_a6aec1c99b1844b7ec060b9c68a8a65a5"><div class="ttname"><a href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">edges</a></div><div class="ttdeci">static edge_t edges[22573]</div><div class="ttdef"><b>Definition:</b> <a href="issue191-bad-m1_8h_source.html#l00025">issue191-bad-m1.h:25</a></div></div>
 <div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00058">pgr_edge_t.h:58</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00031">trsp.h:31</a></div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
 <div class="ttc" id="edges__input_8c_html_af663e291b6bdfe777789be38b6bfcf76"><div class="ttname"><a href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76">pgr_get_edges</a></div><div class="ttdeci">void pgr_get_edges(char *edges_sql, pgr_edge_t **edges, size_t *total_edges)</div><div class="ttdoc">basic edge_sql </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00545">edges_input.c:545</a></div></div>
-<div class="ttc" id="dijkstraVia__driver_8cpp_html_a65bae4bd90fab026ee5f54f17655e776"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#a65bae4bd90fab026ee5f54f17655e776">do_pgr_dijkstraVia</a></div><div class="ttdeci">void do_pgr_dijkstraVia(pgr_edge_t *data_edges, size_t total_edges, int64_t *via_vidsArr, size_t size_via_vidsArr, bool directed, bool strict, bool U_turn_on_edge, Routes_t **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00165">dijkstraVia_driver.cpp:165</a></div></div>
+<div class="ttc" id="dijkstraVia__driver_8cpp_html_a65bae4bd90fab026ee5f54f17655e776"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#a65bae4bd90fab026ee5f54f17655e776">do_pgr_dijkstraVia</a></div><div class="ttdeci">void do_pgr_dijkstraVia(pgr_edge_t *data_edges, size_t total_edges, int64_t *via_vidsArr, size_t size_via_vidsArr, bool directed, bool strict, bool U_turn_on_edge, Routes_t **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00087">dijkstraVia_driver.cpp:87</a></div></div>
 <div class="ttc" id="arrays__input_8c_html_a8b3b624e84ed449440408d11251384c1"><div class="ttname"><a href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a></div><div class="ttdeci">int64_t * pgr_get_bigIntArray(size_t *arrlen, ArrayType *input)</div><div class="ttdoc">enforces the input array to be NOT empty </div><div class="ttdef"><b>Definition:</b> <a href="arrays__input_8c_source.html#l00124">arrays_input.c:124</a></div></div>
 <div class="ttc" id="time__msg_8c_html_a989d9723eb6d9be4cbf1214136286dbe"><div class="ttname"><a href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe">time_msg</a></div><div class="ttdeci">void time_msg(char *msg, clock_t start_t, clock_t end_t)</div><div class="ttdef"><b>Definition:</b> <a href="time__msg_8c_source.html#l00032">time_msg.c:32</a></div></div>
 <div class="ttc" id="arrays__input_8h_html"><div class="ttname"><a href="arrays__input_8h.html">arrays_input.h</a></div></div>
@@ -341,8 +340,8 @@ $(document).ready(function(){initNavTree('dijkstraVia_8c_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_2a52a6a5123eeb3ef09f6d5b6e1e597e.html">src</a></li><li class="navelem"><a class="el" href="dijkstraVia_8c.html">dijkstraVia.c</a></li>
-    <li class="footer">Generated on Wed Sep 13 2017 11:33:29 for PGROUTING by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dijkstraVia_8c.html">dijkstraVia.c</a></li>
+    <li class="footer">Generated on Tue Nov 28 2017 21:33:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

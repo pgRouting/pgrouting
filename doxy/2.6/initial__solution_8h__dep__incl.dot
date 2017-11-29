@@ -4,7 +4,7 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/vrp/initial_solution.
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/initial_solution.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/src/initial\l_solution.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$initial__solution_8cpp.html"];
+  Node2 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/initial\l_solution.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$initial__solution_8cpp.html"];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/src/pgr\l_pickDeliver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__pickDeliver_8cpp.html"];
+  Node3 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/pgr_pickDeliver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__pickDeliver_8cpp.html"];
 }
