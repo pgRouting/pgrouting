@@ -1,8 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: pgr_palloc.cpp
+File: astarOneToOne.c
 
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Mail: 
 
 ------
 
@@ -22,16 +27,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "cpp_common/pgr_alloc.hpp"
-#include <cstring>
-#include <string>
+#include "c_common/check_parameters.h"
 
-char *
-pgr_msg(const std::string &msg) {
-    char* duplicate = NULL;
-    duplicate = pgr_alloc(msg.size() + 1, duplicate);
-    memcpy(duplicate, msg.c_str(), msg.size());
-    duplicate[msg.size()] = '\0';
-    return duplicate;
+
+void
+check_parameters(
+        int heuristic,
+        double factor,
+        double epsilon) {
+    if (heuristic > 5 || heuristic < 0) {
+        ereport(ERROR,
+                (errmsg("Unknown heuristic"),
+                 errhint("Valid values: 0~5")));
+    }
+    if (factor <= 0) {
+        ereport(ERROR,
+                (errmsg("Factor value out of range"),
+                 errhint("Valid values: positive non zero")));
+    }
+    if (epsilon < 1) {
+        ereport(ERROR,
+                (errmsg("Epsilon value out of range"),
+                 errhint("Valid values: 1 or greater than 1")));
+    }
 }
 

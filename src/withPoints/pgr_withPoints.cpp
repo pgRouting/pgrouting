@@ -40,33 +40,79 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 
-static
-void
-PGR_LOG_POINTS(
-        std::ostringstream &log,
-        const std::vector< Point_on_edge_t > &points,
-        const std::string &title) {
-    log << title << "\n";
-    for (const auto &p : points) {
-        log << p.pid << "\t"
+namespace pgrouting {
+
+
+std::ostream& operator<<(
+        std::ostream &os, const Pg_points_graph &g) {
+    for (const auto p : g.m_points) {
+        os << p.pid << "\t"
             << p.edge_id << "\t"
             << p.fraction << "\t"
             << p.side << "\n";
     }
+    return os;
 }
 
-/*
- * 0 = success
- * non 0 = error code
- */
 
-int check_points(std::vector< Point_on_edge_t > &points,
-        std::ostringstream &log) {
-    PGR_LOG_POINTS(log, points, "original points");
+
+std::vector<Point_on_edge_t>
+Pg_points_graph::points() const {
+    return m_points;
+}
+
+std::vector<pgr_edge_t>
+Pg_points_graph::edges_of_points() const {
+    return m_edges_of_points;
+}
+
+
+
+Pg_points_graph::Pg_points_graph(
+        std::vector<Point_on_edge_t> p_points,
+        std::vector<pgr_edge_t>      p_edges_of_points,
+        bool p_normal,
+        char p_driving_side
+        ) :
+    m_points(p_points),
+    m_o_points(p_points),
+    m_edges_of_points(p_edges_of_points),
+    m_normal(p_normal),
+    m_driving_side(p_driving_side)
+{
+    if (!p_normal) {
+        reverse_sides();
+    }
+    check_points();
+    create_new_edges();
+    log << "constructor";
+}
+
+void
+Pg_points_graph::reverse_sides() {
+    for (auto &point : m_points) {
+        if (point.side == 'r') {
+            point.side = 'l';
+        } else if (point.side == 'l') {
+            point.side = 'r';
+        }
+        point.fraction = 1 - point.fraction;
+    }
+    if (m_driving_side == 'r') {
+        m_driving_side = 'l';
+    } else if (m_driving_side == 'l') {
+        m_driving_side = 'r';
+    }
+}
+
+
+void
+Pg_points_graph::check_points() {
+    log << "original points" << *this;
     /*
      * deleting duplicate points
      */
-    std::sort(points.begin(), points.end(),
+    std::sort(m_points.begin(), m_points.end(),
             [](const Point_on_edge_t &a, const Point_on_edge_t &b)
             -> bool {
             if (a.pid != b.pid) return a.pid < b.pid;
@@ -74,37 +120,37 @@ int check_points(std::vector< Point_on_edge_t > &points,
             if (a.fraction != b.fraction) return a.fraction < b.fraction;
             return a.side < b.side;
             });
-    PGR_LOG_POINTS(log, points, "after sorting");
-    auto last = std::unique(points.begin(), points.end(),
+    log << "after sorting" << *this;
+    auto last = std::unique(m_points.begin(), m_points.end(),
             [](const Point_on_edge_t &a, const Point_on_edge_t &b) {
             return a.pid == b.pid &&
             a.edge_id == b.edge_id &&
             a.fraction == b.fraction &&
             a.side == b.side;
             });
-    points.erase(last, points.end());
-    size_t total_points = points.size();
+    m_points.erase(last, m_points.end());
+    size_t total_points = m_points.size();
 
-    PGR_LOG_POINTS(log, points, "after deleting repetitions");
+    log << "after deleting repetitions" << *this;
     log << "We have " << total_points << " different points";
 
-    last = std::unique(points.begin(), points.end(),
+    last = std::unique(m_points.begin(), m_points.end(),
             [](const Point_on_edge_t &a, const Point_on_edge_t &b) {
             return a.pid == b.pid;
             });
-    points.erase(last, points.end());
-    PGR_LOG_POINTS(log, points, "after deleting points with same id");
+    m_points.erase(last, m_points.end());
+    log << "after deleting points with same id" << *this;
 
-    if (points.size() != total_points) {
-        return 1;
+    if (m_points.size() != total_points) {
+        error << "Unexpected point(s) with same pid"
+            << " but different edge/fraction/side combination found.";
     }
-    return 0;
 }
 
 
 void
-eliminate_details_dd(
-        Path &path) {
+Pg_points_graph::eliminate_details_dd(
+        Path &path) const {
     /*
      * There is no path nothing to do
      */
@@ -123,14 +169,14 @@ eliminate_details_dd(
 }
 
 
-void
-eliminate_details(
-        Path &path,
-        const std::vector< pgr_edge_t > &point_edges) {
+
+Path
+Pg_points_graph::eliminate_details(
+        Path path) const {
     /*
      * There is no path nothing to do
      */
-    if (path.empty()) return;
+    if (path.empty()) return path;
 
     Path newPath(path.start_id(), path.end_id());
     double cost = 0.0;
@@ -153,23 +199,23 @@ eliminate_details(
          * find the edge where the pathstop.edge == edge.id */
 
         int64_t edge_to_find = newPath[i].edge;
-        auto edge_ptr = std::find_if(point_edges.begin(), point_edges.end(),
+        auto edge_ptr = std::find_if(
+                m_edges_of_points.begin(), m_edges_of_points.end(),
                 [&edge_to_find](const pgr_edge_t &edge)
                 {return edge_to_find == edge.id;});
-        if (edge_ptr != point_edges.end()) {
+        if (edge_ptr != m_edges_of_points.end()) {
             newPath[i].cost = edge_ptr->target == newPath[i+1].node ?
                 edge_ptr->cost : edge_ptr->reverse_cost;
         }
     }
     newPath[newPath.size()-2].cost += cost;
 
-
-    path = newPath;
+    return newPath;
 }
 
 
-static void
-adjust_pids(
+void
+Pg_points_graph::adjust_pids(
         const std::vector< Point_on_edge_t > &points,
         const int64_t &start_pid,
         const int64_t &end_pid,
@@ -189,7 +235,7 @@ adjust_pids(
 }
 
 void
-adjust_pids(
+Pg_points_graph::adjust_pids(
         const std::vector< Point_on_edge_t > &points,
         Path &path) {
     /*
@@ -217,33 +263,15 @@ adjust_pids(
 }
 
 
-struct pointCompare {
-    bool operator() (
-            const Point_on_edge_t& lhs,
-            const Point_on_edge_t& rhs) const
-    {return lhs.fraction < rhs.fraction? true : lhs.pid < rhs.pid;}
-};
 
-bool
-create_new_edges(
-        std::vector< Point_on_edge_t > &points,
-        const std::vector< pgr_edge_t > &edges,
-        char driving_side,
-        std::vector< pgr_edge_t > &new_edges) {
-    std::ostringstream log;
-    return create_new_edges( points, edges, driving_side, new_edges, log);
+std::vector<pgr_edge_t>
+Pg_points_graph::new_edges() const {
+    return m_new_edges;
 }
 
-
-
-bool
-create_new_edges(
-        std::vector< Point_on_edge_t > &points,
-        const std::vector< pgr_edge_t > &edges,
-        char driving_side,
-        std::vector< pgr_edge_t > &new_edges,
-        std::ostringstream &log) {
-    for (const auto &point : points) {
+void
+Pg_points_graph::create_new_edges() {
+    for (const auto &point : m_points) {
         log << "point: "
             << point.pid << "\t"
             << point.edge_id << "\t"
@@ -254,9 +282,9 @@ create_new_edges(
 
     int64_t vertex_id = 1;
     std::vector< Point_on_edge_t > new_points;
-    for (const auto edge : edges) {
+    for (const auto edge : m_edges_of_points) {
         std::set< Point_on_edge_t, pointCompare> points_on_edge;
-        for (const auto point : points) {
+        for (const auto point : m_points) {
             if (edge.id == point.edge_id) {
                 points_on_edge.insert(point);
                 log << "working points: "
@@ -268,9 +296,9 @@ create_new_edges(
             }
         }
         if (points_on_edge.empty()) {
-            log << "For some reason didn't find a point belonging to the edge"
+            error << "For some reason didn't find a point belonging to the edge"
                 << ", must be an error\n";
-            return false;
+            return;
         }
 #if 0
         log << "breaking: \n"
@@ -302,10 +330,10 @@ create_new_edges(
                 << "\teid" << point.edge_id
                 << "/t" << point.fraction
                 << "\t" << point.side << "\n";
-            if (point.fraction <= 0 ||  point.fraction >= 1) {
-                log << "For some reason an invalid fraction was accepted,"
+            if (point.fraction < 0 ||  point.fraction > 1) {
+                error << "For some reason an invalid fraction was accepted,"
                     << " must be an error\n";
-                return false;
+                return;
             }
             if (point.fraction == 0) {
                 log << "Point's vertex_id = source" << edge.source << "\n";
@@ -325,14 +353,14 @@ create_new_edges(
             double deltaFraction = point.fraction - prev_fraction;
             double deltarFraction = point.fraction - prev_rfraction;
             if ((edge.cost < 0 ||  edge.reverse_cost < 0)
-                    || driving_side == 'b'
+                    || m_driving_side == 'b'
                     || point.side == 'b') {
                 log << "Edge is one way "
                     << " or driving side is both or point side is both\n";
                 log << "Edge is one way: "
                     << (edge.cost < 0 || edge.reverse_cost < 0)
                     << "\n";
-                log << "driving side: " << driving_side << "\n";
+                log << "driving side: " << m_driving_side << "\n";
                 log << "point side: " << point.side << "\n";
                 if (point.fraction > 0 &&  point.fraction < 1) {
                     if (edge.cost >= 0) {
@@ -343,7 +371,7 @@ create_new_edges(
                             point.vertex_id,
                             last_cost,
                             -1};
-                        new_edges.push_back(new_edge);
+                        m_new_edges.push_back(new_edge);
                         log << "new_edge("
                             << "id, source, target, cost, reverse_cost) = ("
                             << new_edge.id << "\t"
@@ -360,7 +388,7 @@ create_new_edges(
                             point.vertex_id,
                             -1,
                             last_rcost};
-                        new_edges.push_back(new_edge);
+                        m_new_edges.push_back(new_edge);
                         log << "new_edge("
                             << "id, source, target, cost, reverse_cost) = ("
                             << new_edge.id << "\t"
@@ -383,14 +411,14 @@ create_new_edges(
             pgassert(edge.cost > 0 &&  edge.reverse_cost > 0);
             pgassert(point.side != 'b');
 
-            if (driving_side == point.side) {
+            if (m_driving_side == point.side) {
                 log << "two way and driving side == the side of the point\n";
                 log << "Breaking (source, target) when its not the extreme\n";
                 if (point.fraction > 0 &&  point.fraction < 1) {
                     last_cost = deltaFraction * edge.cost;
                     pgr_edge_t new_edge = {
                         edge.id, prev_target, point.vertex_id, last_cost, -1};
-                    new_edges.push_back(new_edge);
+                    m_new_edges.push_back(new_edge);
                     log << "new_edge("
                         << "id, source, target, cost, reverse_cost) = ("
                         << new_edge.id << "\t"
@@ -414,7 +442,7 @@ create_new_edges(
                     point.vertex_id,
                     -1,
                     last_rcost};
-                new_edges.push_back(new_edge);
+                m_new_edges.push_back(new_edge);
                 log << "\nnew_edge(id, source, target, cost, reverse_cost) = ("
                     << new_edge.id << "\t"
                     << new_edge.source << "\t"
@@ -434,7 +462,7 @@ create_new_edges(
                 edge.target,
                 (edge.cost - agg_cost),
                 -1};
-            new_edges.push_back(new_edge);
+            m_new_edges.push_back(new_edge);
             log << "last edge: (id, source, target, cost, reverse_cost) = ("
                 << new_edge.id << "\t"
                 << new_edge.source << "\t"
@@ -444,7 +472,7 @@ create_new_edges(
 
             new_edge = {edge.id , prev_rtarget, edge.target,
                 -1, (edge.reverse_cost - agg_rcost)};
-            new_edges.push_back(new_edge);
+            m_new_edges.push_back(new_edge);
             log << "last edge: (id, source, target, cost, reverse_cost) = ("
                 << new_edge.id << "\t"
                 << new_edge.source << "\t"
@@ -454,8 +482,8 @@ create_new_edges(
         }
     }
 
-    points = new_points;
-    for (const auto &point : points) {
+    m_points = new_points;
+    for (const auto &point : m_points) {
         log << "point: "
             << point.pid << "\t"
             << point.edge_id << "\t"
@@ -463,5 +491,6 @@ create_new_edges(
             << point.side << "\t"
             << point.vertex_id << "\n";
     }
-    return true;
 }
+
+}  // namespace pgrouting

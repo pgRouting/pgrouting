@@ -3,6 +3,7 @@ eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
 if 0; #$running_under_some_shell
 
 use strict;
+use warnings;
 use File::Find ();
 use File::Basename;
 use Data::Dumper;
@@ -168,10 +169,11 @@ $postgis_ver = '' if ! $postgis_ver;
 for my $c (@cfgs) {
     my $found = 0;
 
+    print "test.conf = $c\n" if $VERBOSE;
+
     # load the config file for the tests
     require $c;
 
-    print "test.conf = $c\n" if $VERBOSE;
     print Data::Dumper->Dump([\%main::tests],['test']) if $VERBOSE;
 
     if ($main::tests{any} && !$DOCUMENTATION) {

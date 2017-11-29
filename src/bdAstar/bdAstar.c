@@ -36,6 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/check_parameters.h"
+
 
 
 #include "drivers/astar/astar_driver.h"

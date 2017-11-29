@@ -180,7 +180,15 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
+/*
+    Wrapper change on v2.6
+    - without restrictions
+        - call pgr_dijkstra when both end points have a fraction IN (0,1)
+        - call pgr_withPoints when at least one fraction NOT IN (0,1)
 
+    - with restrictions
+      - calls original trsp code
+*/
 CREATE OR REPLACE FUNCTION pgr_trsp(
     sql text,
     source_eid integer,
@@ -196,6 +204,13 @@ DECLARE
 has_reverse BOOLEAN;
 new_sql TEXT;
 trsp_sql TEXT;
+source_sql TEXT;
+target_sql TEXT;
+union_sql TEXT;
+union_sql1 TEXT;
+union_sql2 TEXT;
+final_sql TEXT;
+
 BEGIN
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
 
@@ -214,17 +229,72 @@ BEGIN
     END IF;
 
     IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
-        -- no restrictions then its a with points
-        RETURN query SELECT a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
-        FROM pgr_withpoints(new_sql,
-            '(SELECT 1 as pid, ' || source_eid || 'as edge_id, ' || source_pos || '::float8 as fraction)'
-            || ' UNION '
-            || '(SELECT 2, ' || target_eid || ', ' || target_pos || ')' ::TEXT,
-            -1, -2, directed) a;
-        -- WHERE node != -2;
+        -- no restrictions then its a withPoints or dijkstra
+        IF source_pos = 0 THEN
+            source_sql = '(SELECT source FROM (' || sql || ') b WHERE id = ' ||  source_eid || ')';
+        ELSE IF source_pos = 1 THEN
+            source_sql = '(SELECT target FROM (' || sql || ') b WHERE id = ' || source_eid || ')';
+        ELSE
+            source_sql = '-1';
+            union_sql1 =  '(SELECT 1 as pid, ' || source_eid || ' as edge_id, ' || source_pos || '::float8 as fraction)';
+        END IF;
+        END IF;
+        -- raise notice 'source_sql %', source_sql;
+        -- raise notice 'union_sql1 %', union_sql1;
+
+
+        IF target_pos = 0 THEN
+            target_sql = '(SELECT source FROM (' || sql || ') c WHERE id = ' ||  target_eid || ')';
+        ELSE IF target_pos = 1 THEN
+            target_sql = '(SELECT target FROM (' || sql || ') c WHERE id = ' ||  target_eid || ')';
+        ELSE
+            target_sql = '-2';
+            union_sql2 =  ' (SELECT 2 as pid, ' || target_eid || ' as edge_id, ' || target_pos || '::float8 as fraction)';
+        END IF;
+        END IF;
+
+        -- raise notice 'target_sql %', target_sql;
+        -- raise notice 'union_sql2 %', union_sql2;
+
+        IF union_sql1 IS NOT NULL AND union_sql2 IS NOT NULL THEN
+            union_sql = union_sql1 || ' UNION ' || union_sql2;
+        ELSE IF union_sql1 IS NOT NULL AND union_sql2 IS NULL THEN
+            union_sql = union_sql1;
+        ELSE IF union_sql1 IS NULL AND union_sql2 IS NOT NULL THEN
+            union_sql = union_sql2;
+        END IF; 
+        END IF; 
+        END IF; 
+
+        IF union_sql IS NULL THEN
+            -- no points then its a dijkstra
+            final_sql = 'WITH final_sql AS (
+                 SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_dijkstra($$' || new_sql || '$$
+                ,' || source_sql || '
+                ,' || target_sql || '
+                , directed := ' || directed || '
+            ) a )
+            SELECT seq, CASE WHEN seq = 0 THEN -1 WHEN id2 = -1 THEN -2 ELSE id1 END, id2, cost  FROM final_sql ORDER BY seq';
+        ELSE
+            -- points then its a withPoints
+            final_sql = 'WITH final_sql AS (
+                SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_withpoints($$' || new_sql || '$$
+                , $$' || union_sql || '$$
+                ,' || source_sql || '
+                ,' || target_sql || '
+                , directed := ' || directed || '
+            ) a )
+            SELECT seq, CASE WHEN seq = 0 THEN -1 WHEN id2 = -1 THEN -2 ELSE id1 END, id2, cost  FROM final_sql ORDER BY seq';
+        END IF;
+
+
+        -- raise notice 'final_sql %', final_sql;
+        RETURN QUERY EXECUTE final_sql;
         RETURN;
+
     END IF;
 
+    -- with restrictions calls the original code
     RETURN query SELECT * FROM _pgr_trsp(new_sql, source_eid, source_pos, target_eid, target_pos, directed, has_reverse_cost, turn_restrict_sql);
     RETURN;
 

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_driver.h
+File: withPoints.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -32,41 +32,69 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "c_types/point_on_edge_t.h"
+#include "cpp_common/pgr_messages.h"
 #include "cpp_common/basePath_SSEC.hpp"
 
-int
-check_points(
-        std::vector< Point_on_edge_t > &points,
-        std::ostringstream &log);
+namespace pgrouting {
 
-void
-eliminate_details_dd(
-        Path &path);
+class Pg_points_graph : public Pgr_messages {
+    struct pointCompare {
+        bool operator() (
+                const Point_on_edge_t& lhs,
+                const Point_on_edge_t& rhs) const
+        {return lhs.fraction < rhs.fraction? true : lhs.pid < rhs.pid;}
+    };
 
-void
-eliminate_details(
-        Path &path,
-        const std::vector< pgr_edge_t > &point_edges);
+ public:
 
-void
-adjust_pids(
-        const std::vector< Point_on_edge_t > &points,
-        Path &path);
+     Pg_points_graph() = delete;
+     Pg_points_graph(const Pg_points_graph &) = delete;
+     Pg_points_graph(
+             std::vector<Point_on_edge_t> p_points,
+             std::vector<pgr_edge_t>      p_edges_to_modify,
+             bool p_normal,
+             char p_driving_side
+             );
+
+     std::vector<Point_on_edge_t> points() const;
+     std::vector<pgr_edge_t> edges_of_points() const;
+     std::vector<pgr_edge_t> new_edges() const;
+     inline char driving_side() const {return m_driving_side;}
 
 
-bool
-create_new_edges(
-        std::vector< Point_on_edge_t > &points,
-        const std::vector< pgr_edge_t > &edges,
-        char driving_side,
-        std::vector< pgr_edge_t > &new_edges);
+     Path eliminate_details(
+             Path path) const;
 
-bool
-create_new_edges(
-        std::vector< Point_on_edge_t > &points,
-        const std::vector< pgr_edge_t > &edges,
-        char driving_side,
-        std::vector< pgr_edge_t > &new_edges,
-        std::ostringstream &log);
+     void eliminate_details_dd(
+             Path &path) const;
+
+     void adjust_pids(
+             const std::vector< Point_on_edge_t > &points,
+             Path &path);
+
+     friend std::ostream& operator<<(
+             std::ostream &os, const Pg_points_graph &g);
+
+ private:
+     void adjust_pids(
+             const std::vector< Point_on_edge_t > &points,
+             const int64_t &start_pid,
+             const int64_t &end_pid,
+             Path &path);
+
+     void create_new_edges();
+     void check_points();
+     void reverse_sides();
+
+ private:
+     std::vector<Point_on_edge_t> m_points;
+     std::vector<Point_on_edge_t> m_o_points;
+     std::vector<pgr_edge_t>      m_edges_of_points;
+     std::vector<pgr_edge_t>      m_new_edges;
+     bool m_normal;
+     char m_driving_side;
+};
+
+}  // namespace pgrouting
 
 #endif  // INCLUDE_WITHPOINTS_PGR_WITHPOINTS_HPP_
