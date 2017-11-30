@@ -98,7 +98,7 @@ pgr_get_points(
     bool moredata = TRUE;
     (*total_points) = total_tuples = 0;
 
-    int64_t default_pid = 0;
+    int64_t default_pid = 1;
     char default_side = 'b';
 
     while (moredata == TRUE) {
