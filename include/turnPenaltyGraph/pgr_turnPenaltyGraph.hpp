@@ -104,6 +104,11 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                 auto source_vertex_id = source_vertex_edge_pair.first;
                 auto source_edge_id = source_vertex_edge_pair.second;
 
+                double edge_id = 0;
+                if (source_edge_id == target_edge_id) {
+                    edge_id = source_edge_id;
+                }
+
                 double e_cost = 0;
                 if (source_edge_id == target_edge_id) {
                     e_cost = m_edge_costs[source_edge_id];
@@ -119,7 +124,7 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                     e_source,
                     e_target,
                     e_cost,
-                    source_vertex_id
+                    edge_id
                 };
 
                 unique[ std::pair<int64_t, int64_t>(e_source, e_target) ] =
@@ -136,7 +141,7 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
             int64_t original_vertex_id,
             int64_t original_edge_id) {
         m_transformation_map[this->num_vertices() + 1] =
-            std::pair<int64_t, int64_t>(original_vertex_id, original_edge_id);
+            std::pair<int64_t, double>(original_vertex_id, original_edge_id);
         m_vertex_map[std::pair<int64_t, int64_t>(original_vertex_id,
                                                  original_edge_id)] =
             this->num_vertices() + 1;
@@ -262,7 +267,7 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
  private:
     int64_t m_num_edges;
     std::map < int64_t, double > m_edge_costs;
-    std::map < int64_t, std::pair< int64_t, int64_t > > m_transformation_map;
+    std::map < int64_t, std::pair< int64_t, double > > m_transformation_map;
     std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;
 
  public:
