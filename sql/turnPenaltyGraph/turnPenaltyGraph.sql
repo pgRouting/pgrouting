@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: lineGraph.sql
+File: turnPenaltyGraph.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_turnPenaltyGraph(
     OUT source BIGINT,
     OUT target BIGINT,
     OUT cost FLOAT,
-    OUT reverse_cost FLOAT)
+    OUT edge FLOAT)
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'turnPenaltyGraph'
