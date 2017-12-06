@@ -89,6 +89,9 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                 std::pair<int64_t, int64_t >,
                 Line_graph_rt > unique;
             auto count = 0;
+            auto vertex_count = 0;
+            std::map < int64_t, int64_t > vertex_id_map;
+            std::map < int64_t, int64_t > vertex_id_reverse_map;
 
             log << "\nPostgres results\n";
             for (boost::tie(edgeIt, edgeEnd) = boost::edges(this->graph);
@@ -105,13 +108,32 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                 auto source_edge_id = source_vertex_edge_pair.second;
 
                 double edge_id = 0;
-                if (source_edge_id == target_edge_id) {
-                    edge_id = source_edge_id;
-                }
-
                 double e_cost = 0;
                 if (source_edge_id == target_edge_id) {
                     e_cost = m_edge_costs[source_edge_id];
+                    edge_id = source_edge_id;
+                }
+
+                if(vertex_id_map.find(e_source) == vertex_id_map.end()) {
+                    if(vertex_id_reverse_map.find(source_vertex_id) == vertex_id_reverse_map.end()) {
+                        vertex_id_map[e_source] = source_vertex_id;
+                        vertex_id_reverse_map[source_vertex_id] = e_source;
+                    } else {
+                        --vertex_count;
+                        vertex_id_map[e_source] = vertex_count;
+                        vertex_id_reverse_map[vertex_count] = e_source;
+                    }
+                }
+
+                if(vertex_id_map.find(e_target) == vertex_id_map.end()) {
+                    if(vertex_id_reverse_map.find(target_vertex_id) == vertex_id_reverse_map.end()) {
+                        vertex_id_map[e_target] = target_vertex_id;
+                        vertex_id_reverse_map[target_vertex_id] = e_target;
+                    } else {
+                        --vertex_count;
+                        vertex_id_map[e_target] = vertex_count;
+                        vertex_id_reverse_map[vertex_count] = e_target;
+                    }
                 }
 
 #if 0
@@ -121,8 +143,8 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
 #endif
                 Line_graph_rt edge = {
                     ++count,
-                    e_source,
-                    e_target,
+                    vertex_id_map[e_source],
+                    vertex_id_map[e_target],
                     e_cost,
                     edge_id
                 };
