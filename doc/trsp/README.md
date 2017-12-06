@@ -725,7 +725,7 @@ SELECT * FROM pgr_trspViaVertices(
 (3 rows)
 
 ```
-But it uses  that gives more information on the result
+But it uses pgr_dijkstraVia that gives more information on the result
 ```
 SELECT * FROM pgr_dijkstraVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
