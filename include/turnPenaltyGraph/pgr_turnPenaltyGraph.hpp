@@ -80,14 +80,14 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
         return log;
     }
 
-    std::vector< Turn_penalty_graph_rt >
+    std::vector< Line_graph_rt >
         get_postgres_results_directed() {
-            std::vector< Turn_penalty_graph_rt > results;
+            std::vector< Line_graph_rt > results;
 
             typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
             std::map <
                 std::pair<int64_t, int64_t >,
-                Turn_penalty_graph_rt > unique;
+                Line_graph_rt > unique;
             auto count = 0;
 
             log << "\nPostgres results\n";
@@ -114,15 +114,12 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
                     << " e_target = " << e_target
                     << "\n";
 #endif
-                Turn_penalty_graph_rt edge = {
+                Line_graph_rt edge = {
                     ++count,
                     e_source,
                     e_target,
                     e_cost,
-                    source_vertex_id,
-                    source_edge_id,
-                    target_vertex_id,
-                    target_edge_id
+                    source_vertex_id
                 };
 
                 unique[ std::pair<int64_t, int64_t>(e_source, e_target) ] =

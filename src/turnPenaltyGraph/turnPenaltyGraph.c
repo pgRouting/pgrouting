@@ -57,7 +57,7 @@ static
 void
 process(
         char* edges_sql,
-        Turn_penalty_graph_rt **result_tuples,
+        Line_graph_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -122,7 +122,7 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    Turn_penalty_graph_rt  *result_tuples = NULL;
+    Line_graph_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -169,7 +169,7 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Turn_penalty_graph_rt*) funcctx->user_fctx;
+    result_tuples = (Line_graph_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -177,12 +177,12 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(bool));
+        values = palloc(5 * sizeof(Datum));
+        nulls = palloc(5 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 8; ++i) {
+        for (i = 0; i < 5; ++i) {
             nulls[i] = false;
         }
 
@@ -193,10 +193,7 @@ PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
         values[1] = Int64GetDatum(result_tuples[c_cntr].source);
         values[2] = Int64GetDatum(result_tuples[c_cntr].target);
         values[3] = Float8GetDatum(result_tuples[c_cntr].cost);
-        values[4] = Int64GetDatum(result_tuples[c_cntr].original_source_edge);
-        values[5] = Int64GetDatum(result_tuples[c_cntr].original_source_vertex);
-        values[6] = Int64GetDatum(result_tuples[c_cntr].original_target_edge);
-        values[7] = Int64GetDatum(result_tuples[c_cntr].original_target_vertex);
+        values[4] = Float8GetDatum(result_tuples[c_cntr].reverse_cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

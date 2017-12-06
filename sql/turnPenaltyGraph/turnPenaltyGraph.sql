@@ -33,10 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_turnPenaltyGraph(
     OUT source BIGINT,
     OUT target BIGINT,
     OUT cost FLOAT,
-    OUT original_source_vertex BIGINT,
-    OUT original_source_edge BIGINT,
-    OUT original_target_vertex BIGINT,
-    OUT original_target_edge BIGINT)
+    OUT reverse_cost FLOAT)
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'turnPenaltyGraph'

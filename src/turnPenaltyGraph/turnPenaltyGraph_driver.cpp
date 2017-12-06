@@ -42,8 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/linear_directed_graph.h"
 
 void get_turn_penalty_postgres_result(
-        std::vector< Turn_penalty_graph_rt > edge_result,
-        Turn_penalty_graph_rt **return_tuples,
+        std::vector< Line_graph_rt > edge_result,
+        Line_graph_rt **return_tuples,
         size_t &sequence) {
     (*return_tuples) = pgr_alloc(
             static_cast<int>(edge_result.size()),
@@ -55,10 +55,7 @@ void get_turn_penalty_postgres_result(
              edge.source,
              edge.target,
              edge.cost,
-             edge.original_source_edge,
-             edge.original_source_vertex,
-             edge.original_target_edge,
-             edge.original_target_vertex};
+             edge.reverse_cost};
         sequence++;
     }
 }
@@ -67,7 +64,7 @@ void
 do_pgr_turnPenaltyGraph(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        Turn_penalty_graph_rt **return_tuples,
+        Line_graph_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -83,7 +80,7 @@ do_pgr_turnPenaltyGraph(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector< Turn_penalty_graph_rt > results;
+        std::vector< Line_graph_rt > results;
         graphType gType = DIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);
@@ -97,7 +94,7 @@ do_pgr_turnPenaltyGraph(
             pgrouting::Line_vertex,
             pgrouting::Basic_edge > line(digraph);
 
-        std::vector< Turn_penalty_graph_rt > line_graph_edges;
+        std::vector< Line_graph_rt > line_graph_edges;
         line_graph_edges = line.get_postgres_results_directed();
 
         auto count = line_graph_edges.size();
