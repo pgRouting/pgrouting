@@ -9,8 +9,6 @@ CREATE TABLE edge_table (
     the_geom geometry(MultiLineString)
 );
 
-WITH a AS ( select source FROM edge_table UNION SELECT target FROM edge_table)
-SELECT source AS id INTO edge_table_vertices_pgr FROM a;
 
 
 COPY edge_table (id, source, target, cost, the_geom) FROM stdin;
@@ -319,6 +317,8 @@ COPY edge_table (id, source, target, cost, the_geom) FROM stdin;
 \.
 
 
+WITH a AS (SELECT source FROM edge_table UNION select target FROM edge_table)
+SELECT source AS id INTO edge_table_vertices_pgr FROM a;
 
 DROP TABLE IF EXISTS result2;
 SELECT  * INTO result2 FROM pgr_turnPenaltyGraph(
@@ -338,10 +338,12 @@ FROM foo
 ORDER BY id;
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
+SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
 
 UPDATE result2_vertices_pgr AS r SET original_id = v.id
 FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
+SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
 
 WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
 b AS (SELECT * FROM result2 WHERE cost = 0 and source IN (SELECT id FROM a)),
@@ -350,6 +352,7 @@ d AS (SELECT c.source, v.original_id FROM c JOIN result2_vertices_pgr as v ON (t
 e AS (SELECT DISTINCT c.target, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(target = r.id AND r.original_id IS NULL))
 UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.target = id;
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
+SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
 
 WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
 b AS (SELECT * FROM result2 WHERE cost = 0 and target IN (SELECT id FROM a)),
@@ -359,3 +362,4 @@ e AS (SELECT DISTINCT c.source, c.original_id FROM c JOIN result2_vertices_pgr A
 UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.source = id;
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
+SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
