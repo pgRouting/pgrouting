@@ -1,13 +1,47 @@
-<HTML>
-  <head>
-  <TITLE>404 Not Found</TITLE>
-  </head>
-  <body>
-    <H1>Not Found</H1>
-    The requested document was not found on this server.
-    <P>
-    <HR>
-    <H1>Go to Main documentation page</H1>
-    <a href='http://docs.pgrouting.org'>documentation index</a>.
-  </body>
-</HTML>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.background {
+  background: url(drawing.png) repeat;
+  border: 2px solid black;
+}
+div.transbox {
+  margin: 120px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.9;
+  filter: alpha(opacity=90); /* For IE8 and earlier */
+}
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
+</style>
+</head>
+<body>
+
+<div class="background">
+  <div class="transbox">
+<ul>
+   <p align ="middle"><img src='logo.png' align="middle"></p>
+<center>
+<h2><span class="error404">404</span> <br> Error, the page was not found :( </h2>
+			</center>
+    <p1>Sorry, but the page you were looking for cannot be found.</p1>
+    <p1>To find the page you were looking for you might want to go:</p1>
+<center>
+    <li><p2><a href="http://pgrouting.org/search.html">Search Page</a></p2></li>
+
+    <li><p2><a href="http://pgrouting.org/index.html#home">pgRouting Home</a></p2></li>
+
+    <li><p2><a href="http://docs.pgrouting.org/">pgRouting Manual</a></p2></li>
+
+    <li><p2><a href="http://workshop.pgrouting.org/">pgRouting Workshop</a></p2></li>
+</center>
+  </div>
+</div>
+
+</body>
+</html>
