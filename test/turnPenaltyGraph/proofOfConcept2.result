@@ -109,5 +109,39 @@ SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
     30
 (1 row)
 
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
+c AS (SELECT id,source FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
+UPDATE 30
+SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
+ count 
+-------
+   589
+(1 row)
+
+SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
+ count 
+-------
+    15
+(1 row)
+
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
+c AS (SELECT id,target FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
+UPDATE 15
+SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
+ count 
+-------
+   604
+(1 row)
+
+SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
+ count 
+-------
+     0
+(1 row)
+
 ROLLBACK;
 ROLLBACK
