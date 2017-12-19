@@ -2,6 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+\echo -- 0 edge graph
 -- 0 edge graph
 UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * target;
 UPDATE 18
@@ -98,6 +99,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    4 |   2000 |     -2 |    0 |    0
 (4 rows)
 
+\echo -- strange results here (because 2 edges have the same id)
 -- strange results here (because 2 edges have the same id)
 SELECT  *  FROM pgr_turnPenaltyGraph($$
     SELECT id AS id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 100
@@ -113,6 +115,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph($$
    4 |   1000 |   1000 |    1 |  100
 (4 rows)
 
+\echo -- good results here (notice the negative on the id on the second SELECT)
 -- good results here (notice the negative on the id on the second SELECT)
 SELECT  *  FROM pgr_turnPenaltyGraph($$
     SELECT id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 100

@@ -30,7 +30,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
     WHERE id = 100$$
 );
 
--- strange results here (because 2 edges have the same id)
+\echo -- strange results here (because 2 edges have the same id)
 SELECT  *  FROM pgr_turnPenaltyGraph($$
     SELECT id AS id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 100
     UNION
@@ -38,7 +38,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph($$
     $$
 );
 
--- good results here (notice the negative on the id on the second SELECT)
+\echo -- good results here (notice the negative on the id on the second SELECT)
 SELECT  *  FROM pgr_turnPenaltyGraph($$
     SELECT id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 100
     UNION
