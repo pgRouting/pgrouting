@@ -2,8 +2,6 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-\echo -- 0 edge graph
--- 0 edge graph
 UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * target;
 UPDATE 18
 UPDATE edge_table_vertices_pgr SET id = id * 1000;
@@ -60,8 +58,6 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
 -----+--------+--------+------+------
 (0 rows)
 
-\echo -- one edge graph
--- one edge graph
 SELECT  *  FROM pgr_turnPenaltyGraph(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table
@@ -72,8 +68,6 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    1 |   3000 |   2000 |    1 | -200
 (1 row)
 
-\echo a many one edge component graph
-a many one edge component graph
 SELECT  *  FROM pgr_turnPenaltyGraph(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table
@@ -84,8 +78,6 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    1 |   6000 |  11000 |    1 | 1100
 (1 row)
 
-\echo -- two edge graph
--- two edge graph
 SELECT  *  FROM pgr_turnPenaltyGraph(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table
@@ -99,8 +91,6 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    4 |   2000 |     -2 |    0 |    0
 (4 rows)
 
-\echo -- strange results here (because 2 edges have the same id)
--- strange results here (because 2 edges have the same id)
 SELECT  *  FROM pgr_turnPenaltyGraph($$
     SELECT id AS id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 100
     UNION
@@ -115,8 +105,6 @@ SELECT  *  FROM pgr_turnPenaltyGraph($$
    4 |   1000 |   1000 |    1 |  100
 (4 rows)
 
-\echo -- good results here (notice the negative on the id on the second SELECT)
--- good results here (notice the negative on the id on the second SELECT)
 SELECT  *  FROM pgr_turnPenaltyGraph($$
     SELECT id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 100
     UNION
@@ -131,8 +119,6 @@ SELECT  *  FROM pgr_turnPenaltyGraph($$
    4 |   1000 |     -2 |    0 |    0
 (4 rows)
 
-\echo -- two edge graph
--- two edge graph
 SELECT  *  FROM pgr_turnPenaltyGraph(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table
@@ -145,8 +131,6 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    3 |   4000 |   3000 |    1 | -300
 (3 rows)
 
-\echo -- 4 edge Graph
--- 4 edge Graph
 SELECT  *  FROM pgr_turnPenaltyGraph( 
     $$SELECT id * 100 AS id, source * 1000 AS source, target * 1000 AS target,
         cost, reverse_cost
@@ -167,8 +151,6 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
   10 | 5000000 |      -5 |    0 |      0
 (10 rows)
 
-\echo -- other 4 edge Graph
--- other 4 edge Graph
 SELECT  *  FROM pgr_turnPenaltyGraph(
     $$SELECT id * 100 AS id, source * 1000 AS source, target * 1000 AS target,
         cost, reverse_cost
