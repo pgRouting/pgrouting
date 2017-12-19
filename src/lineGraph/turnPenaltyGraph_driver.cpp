@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/turnPenaltyGraph/turnPenaltyGraph_driver.h"
+#include "drivers/lineGraph/turnPenaltyGraph_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "turnPenaltyGraph/pgr_turnPenaltyGraph.hpp"
+#include "lineGraph/pgr_turnPenaltyGraph.hpp"
 #include "cpp_common/linear_directed_graph.h"
 
 void get_turn_penalty_postgres_result(

@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get edges information */
 #include "c_common/edges_input.h"
 
-#include "drivers/turnPenaltyGraph/turnPenaltyGraph_driver.h"  // the link to the C++ code of the function
+#include "drivers/lineGraph/turnPenaltyGraph_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(turnPenaltyGraph);

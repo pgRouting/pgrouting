@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+     pgr_turnPenaltyGraph.rst
      pgr_lineGraph.rst
     )
 
