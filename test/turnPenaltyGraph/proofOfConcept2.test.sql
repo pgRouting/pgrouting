@@ -361,5 +361,15 @@ d AS (SELECT c.target, v.original_id FROM c JOIN result2_vertices_pgr as v ON (s
 e AS (SELECT DISTINCT c.source, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(source = r.id AND r.original_id IS NULL))
 UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.source = id;
 
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
+c AS (SELECT id,source FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
+
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
+c AS (SELECT id,target FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
+
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
