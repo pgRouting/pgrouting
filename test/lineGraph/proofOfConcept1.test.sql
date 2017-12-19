@@ -10,7 +10,6 @@ SELECT  * INTO result2 FROM pgr_turnPenaltyGraph(
 );
 SELECT * FROM result2;
 
-
 DROP TABLE IF EXISTS result2_vertices_pgr;
 WITH foo AS (SELECT source AS id FROM result2
     UNION
@@ -39,6 +38,15 @@ d AS (SELECT c.target, v.original_id FROM c JOIN result2_vertices_pgr as v ON (s
 e AS (SELECT DISTINCT c.source, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(source = r.id AND r.original_id IS NULL))
 UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.source = id;
 
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
+c AS (SELECT id,source FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
+
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
+c AS (SELECT id,target FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
 
 SELECT * FROM result2_vertices_pgr;
 
@@ -54,14 +62,11 @@ FROM result2_vertices_pgr AS vertices WHERE edges.source = vertices.id;
 UPDATE result2 AS edges SET original_target_vertex = vertices.original_id
 FROM result2_vertices_pgr AS vertices WHERE edges.target = vertices.id;
 
-
 -- restoring the original_foo_edges 
 UPDATE result2
 SET original_source_edge = edge,
     original_target_edge = edge
 WHERE edge != 0;
-
-
 
 UPDATE  result2 AS a
 SET original_source_edge = b.edge
@@ -78,7 +83,6 @@ WHERE
     a.original_target_edge IS NULL AND
     b.original_target_edge IS NOT NULL AND
     a.target = b.source;
-
 
 -- all the results
 DROP TABLE IF EXISTS q_result_1;
