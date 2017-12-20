@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: turnPenaltyGraph_driver.cpp
+File: lineGraphFull_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/lineGraph/turnPenaltyGraph_driver.h"
+#include "drivers/lineGraph/lineGraphFull_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "lineGraph/pgr_turnPenaltyGraph.hpp"
+#include "lineGraph/pgr_lineGraphFull.hpp"
 #include "cpp_common/linear_directed_graph.h"
 
 void get_turn_penalty_postgres_result(
@@ -61,7 +61,7 @@ void get_turn_penalty_postgres_result(
 }
 
 void
-do_pgr_turnPenaltyGraph(
+do_pgr_lineGraphFull(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         Line_graph_rt **return_tuples,
@@ -89,7 +89,7 @@ do_pgr_turnPenaltyGraph(
 #if 0
         log << digraph << "\n";
 #endif
-        pgrouting::graph::Pgr_turnPenaltyGraph<
+        pgrouting::graph::Pgr_lineGraphFull<
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
             pgrouting::Basic_edge > line(digraph);

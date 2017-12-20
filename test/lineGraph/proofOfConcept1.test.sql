@@ -4,7 +4,7 @@ UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * tar
 UPDATE edge_table_vertices_pgr SET id = id * 1000;
 
 DROP TABLE IF EXISTS result2;
-SELECT  * INTO result2 FROM pgr_turnPenaltyGraph(
+SELECT  * INTO result2 FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table$$
 );

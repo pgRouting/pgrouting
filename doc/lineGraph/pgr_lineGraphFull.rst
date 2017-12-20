@@ -7,18 +7,18 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_turnpenaltygraph:
+.. _pgr_linegraphfull:
 
-pgr_turnPenaltyGraph
+pgr_lineGraphFull
 ===============================================================================
 
 .. index::
-        single: pgr_turnPenaltyGraph(text)
+        single: pgr_lineGraphFull(text)
 
 Name
 ------------------------------------------------------------------------------
 
-''pgr_turnPenaltyGraph'' - Utility function for transforming a given graph into a form that supports shortest path searches with turn penalties and restrictions.
+''pgr_lineGraphFull'' - Utility function for transforming a given graph into a form that supports shortest path searches with turn penalties and restrictions.
 
 
 Synopsis
@@ -36,7 +36,7 @@ Signature Summary
 
 .. code-block:: none 
 
-    pgr_turnPenaltyGraph(edges_sql)
+    pgr_lineGraphFull(edges_sql)
 
     RETURNS SET OF (seq, 
                     source, 
@@ -63,7 +63,7 @@ This example displays how this graph transformation works to create additional e
 
 .. code-block:: none 
 
-    SELECT * FROM pgr_turnPenaltyGraph('SELECT id, source, target, cost FROM edge_table WHERE id IN (5, 8, 9, 11)');
+    SELECT * FROM pgr_lineGraphFull('SELECT id, source, target, cost FROM edge_table WHERE id IN (5, 8, 9, 11)');
 
 | |second|
 
@@ -75,7 +75,7 @@ In the transformed graph, all of the edges from the original graph are still pre
 Sample Data Results
 -------------------------------------------------------------------------------
 
-.. literalinclude:: doc-pgr_turnPenaltyGraph.queries
+.. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q1
    :end-before: -- q2
 

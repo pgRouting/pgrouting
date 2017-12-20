@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    turnPenaltyGraph.sql
+    lineGraphFull.sql
     lineGraph.sql
     )
 

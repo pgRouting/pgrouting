@@ -39,7 +39,7 @@ namespace pgrouting {
  * @details
  * Usage:
  * ~~~~{.c}
- * pgrouting::graph::Pgr_turnPenaltyGraph<
+ * pgrouting::graph::Pgr_lineGraphFull<
  *      pgrouting::LinearDirectedGraph,  // using here
  *      pgrouting::Line_vertex,
  *      pgrouting::Basic_edge > line(graphType::DIRECTED);

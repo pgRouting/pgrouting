@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 SELECT plan(1);
 
-CREATE or REPLACE FUNCTION turnPenaltyGraphOriginalEdgeCheck(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION lineGraphFullOriginalEdgeCheck(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -38,7 +38,7 @@ BEGIN
 
   inner_sql := 'SELECT id AS id, source AS source, target AS target, cost, reverse_cost FROM edge_table';
 
-  turnpenalty_sql := 'SELECT count(*) FROM pgr_turnPenaltyGraph($$'||inner_sql||'$$) where cost = 1';
+  turnpenalty_sql := 'SELECT count(*) FROM pgr_lineGraphFull($$'||inner_sql||'$$) where cost = 1';
 
   RETURN query SELECT set_eq(original_sql, turnpenalty_sql, turnpenalty_sql);
 
@@ -46,7 +46,7 @@ END
 $BODY$
 language plpgsql;
 
-SELECT * from turnPenaltyGraphOriginalEdgeCheck();
+SELECT * from lineGraphFullOriginalEdgeCheck();
 
 
 SELECT * FROM finish();

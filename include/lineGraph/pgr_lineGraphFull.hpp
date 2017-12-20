@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_turnPenaltyGraph.hpp
+File: pgr_lineGraphFull.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -23,8 +23,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TURNPENALTYGRAPH_PGR_TURNPENALTYGRAPH_HPP_
-#define INCLUDE_TURNPENALTYGRAPH_PGR_TURNPENALTYGRAPH_HPP_
+#ifndef INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_
+#define INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_
 #pragma once
 
 
@@ -40,7 +40,7 @@ namespace pgrouting {
 namespace graph {
 
 template <class G, typename T_V, typename T_E>
-class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
+class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
  public:
     typedef typename boost::graph_traits < G >::vertex_descriptor V;
     typedef typename boost::graph_traits < G >::edge_descriptor E;
@@ -50,18 +50,18 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
 
-    explicit Pgr_turnPenaltyGraph< G, T_V, T_E >(graphType gtype)
+    explicit Pgr_lineGraphFull< G, T_V, T_E >(graphType gtype)
         : Pgr_base_graph< G, T_V, T_E >(gtype) {
         }
 
-    Pgr_turnPenaltyGraph< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
+    Pgr_lineGraphFull< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
         : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED) {
             apply_transformation(digraph);
             store_edge_costs(digraph);
         }
 
     friend std::ostream& operator<<(
-            std::ostream &log, const Pgr_turnPenaltyGraph< G, T_V, T_E > &g) {
+            std::ostream &log, const Pgr_lineGraphFull< G, T_V, T_E > &g) {
         typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
 
         for (auto vi = vertices(g.graph).first;
@@ -298,4 +298,4 @@ class Pgr_turnPenaltyGraph : public Pgr_base_graph<G, T_V, T_E> {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_TURNPENALTYGRAPH_PGR_TURNPENALTYGRAPH_HPP_
+#endif  // INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_

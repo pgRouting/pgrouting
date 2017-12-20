@@ -321,7 +321,7 @@ WITH a AS (SELECT source FROM edge_table UNION select target FROM edge_table)
 SELECT source AS id INTO edge_table_vertices_pgr FROM a;
 
 DROP TABLE IF EXISTS result2;
-SELECT  * INTO result2 FROM pgr_turnPenaltyGraph(
+SELECT  * INTO result2 FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost
     FROM edge_table$$
 );

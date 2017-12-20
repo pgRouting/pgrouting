@@ -1,6 +1,6 @@
 ADD_LIBRARY(lineGraph OBJECT
-    turnPenaltyGraph.c
-    turnPenaltyGraph_driver.cpp
+    lineGraphFull.c
+    lineGraphFull_driver.cpp
     lineGraph.c
     lineGraph_driver.cpp
     )

@@ -22,7 +22,7 @@ SELECT 256
 DROP TABLE IF EXISTS result2;
 NOTICE:  table "result2" does not exist, skipping
 DROP TABLE
-SELECT  * INTO result2 FROM pgr_turnPenaltyGraph(
+SELECT  * INTO result2 FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost
     FROM edge_table$$
 );

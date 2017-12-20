@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: turnPenaltyGraph.c
+File: lineGraphFull.c
 
 
 Generated with Template by:
@@ -45,10 +45,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get edges information */
 #include "c_common/edges_input.h"
 
-#include "drivers/lineGraph/turnPenaltyGraph_driver.h"  // the link to the C++ code of the function
+#include "drivers/lineGraph/lineGraphFull_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(turnPenaltyGraph);
+PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(lineGraphFull);
 
 
 /******************************************************************************/
@@ -87,7 +87,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_turnPenaltyGraph(
+    do_pgr_lineGraphFull(
             edges,
             total_edges,
             result_tuples,
@@ -96,7 +96,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_turnPenaltyGraph", start_t, clock());
+    time_msg(" processing pgr_lineGraphFull", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
@@ -115,7 +115,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum turnPenaltyGraph(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

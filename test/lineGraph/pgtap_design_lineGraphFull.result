@@ -51,14 +51,14 @@ SELECT id FROM edge_table_vertices_pgr;
  17000
 (17 rows)
 
-SELECT  *  FROM pgr_turnPenaltyGraph(
+SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost FROM edge_table WHERE id = 1$$
 );
  seq | source | target | cost | edge 
 -----+--------+--------+------+------
 (0 rows)
 
-SELECT  *  FROM pgr_turnPenaltyGraph(
+SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 200$$
@@ -68,7 +68,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    1 |   3000 |   2000 |    1 | -200
 (1 row)
 
-SELECT  *  FROM pgr_turnPenaltyGraph(
+SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 1100$$
@@ -78,7 +78,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    1 |   6000 |  11000 |    1 | 1100
 (1 row)
 
-SELECT  *  FROM pgr_turnPenaltyGraph(
+SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 100$$
@@ -91,7 +91,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    4 |   2000 |     -2 |    0 |    0
 (4 rows)
 
-SELECT  *  FROM pgr_turnPenaltyGraph($$
+SELECT  *  FROM pgr_lineGraphFull($$
     SELECT id AS id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 100
     UNION
     SELECT id, source, target, cost FROM edge_table WHERE id = 100
@@ -105,7 +105,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph($$
    4 |   1000 |   1000 |    1 |  100
 (4 rows)
 
-SELECT  *  FROM pgr_turnPenaltyGraph($$
+SELECT  *  FROM pgr_lineGraphFull($$
     SELECT id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 100
     UNION
     SELECT -id AS id, source, target, cost FROM edge_table WHERE id = 100
@@ -119,7 +119,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph($$
    4 |   1000 |     -2 |    0 |    0
 (4 rows)
 
-SELECT  *  FROM pgr_turnPenaltyGraph(
+SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id IN (200, 300)$$
@@ -131,7 +131,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
    3 |   4000 |   3000 |    1 | -300
 (3 rows)
 
-SELECT  *  FROM pgr_turnPenaltyGraph( 
+SELECT  *  FROM pgr_lineGraphFull( 
     $$SELECT id * 100 AS id, source * 1000 AS source, target * 1000 AS target,
         cost, reverse_cost
     FROM edge_table
@@ -151,7 +151,7 @@ SELECT  *  FROM pgr_turnPenaltyGraph(
   10 | 5000000 |      -5 |    0 |      0
 (10 rows)
 
-SELECT  *  FROM pgr_turnPenaltyGraph(
+SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id * 100 AS id, source * 1000 AS source, target * 1000 AS target,
         cost, reverse_cost
     FROM edge_table

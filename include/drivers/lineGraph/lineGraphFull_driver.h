@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: turnPenaltyGraph.sql
+File: lineGraphFull_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,14 +27,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_turnPenaltyGraph(
-    TEXT, -- edges_sql
-    OUT seq INTEGER,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT cost FLOAT,
-    OUT edge FLOAT)
+#ifndef INCLUDE_DRIVERS_LINEGRAPH_LINEGRAPHFULL_DRIVER_H_
+#define INCLUDE_DRIVERS_LINEGRAPH_LINEGRAPHFULL_DRIVER_H_
+#pragma once
 
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'turnPenaltyGraph'
-LANGUAGE c IMMUTABLE STRICT;
+#include "c_types/pgr_edge_t.h"
+#include "c_types/line_graph_rt.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    /*********************************************************
+      TEXT,
+    directed BOOLEAN DEFAULT true,
+     ********************************************************/
+
+
+    void
+        do_pgr_lineGraphFull(
+                pgr_edge_t  *data_edges,
+                size_t total_edges,
+                Line_graph_rt **return_tuples,
+                size_t *return_count,
+                char ** log_msg,
+                char ** notice_msg,
+                char ** err_msg);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_DRIVERS_LINEGRAPH_LINEGRAPHFULL_DRIVER_H_
