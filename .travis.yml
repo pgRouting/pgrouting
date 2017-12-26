@@ -7,7 +7,6 @@
 
 #choose trusty
 
-group: edge
 dist: trusty
 sudo: required
 
