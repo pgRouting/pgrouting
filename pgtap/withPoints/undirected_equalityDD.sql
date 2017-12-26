@@ -4,9 +4,7 @@
 SELECT PLAN(3);
 
 
-SELECT todo_start('Undirected equality');
--- Background:
--- because the graph is undirected, It will not matter the side of the point?
+-- because the graph is undirected, It will not matter the side of the point
 
 --- UNDIRECTED GRAPH
 ---
@@ -49,6 +47,5 @@ SELECT set_eq('q1', 'q3',
 SELECT set_eq('q2', 'q3',
     'Should be equal: right driving sides with left driving side');
 
-SELECT todo_end();
 SELECT * FROM finish();
 ROLLBACK;

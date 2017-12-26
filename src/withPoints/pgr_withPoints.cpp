@@ -72,16 +72,21 @@ Pg_points_graph::Pg_points_graph(
         std::vector<Point_on_edge_t> p_points,
         std::vector<pgr_edge_t>      p_edges_of_points,
         bool p_normal,
-        char p_driving_side
+        char p_driving_side,
+        bool p_directed
         ) :
     m_points(p_points),
     m_o_points(p_points),
     m_edges_of_points(p_edges_of_points),
     m_normal(p_normal),
-    m_driving_side(p_driving_side)
+    m_driving_side(p_driving_side),
+    m_directed(p_directed)
 {
     if (!p_normal) {
         reverse_sides();
+    }
+    if (!m_directed) {
+        m_driving_side = 'b';
     }
     check_points();
     create_new_edges();

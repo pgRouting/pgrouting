@@ -176,7 +176,6 @@ SELECT set_eq('q7',
 
 
 
-SELECT todo_start('TODO: Aggregate individual costs issue 979');
 
 -------- right driving side
 
@@ -206,7 +205,6 @@ SELECT set_eq('q9',
     $$SELECT node, edge, cost::TEXT, agg_cost::TEXT FROM test3$$,
     '1, 7, driving_side := l, details := true, directed:=false');
 
-SELECT todo_end();
 
 ------------------
 ---- FROM 12 to -1
@@ -240,7 +238,6 @@ SELECT set_eq('q10',
     '12, -1, driving_side := b, details := true, directed:=false');
 
 
-SELECT todo_start('TODO: Aggregate individual costs issue 979');
 
 -------- right driving side
 
@@ -268,7 +265,6 @@ SELECT set_eq('q12',
     $$SELECT  node, edge, cost::TEXT, agg_cost::TEXT FROM test4$$,
     '12, -1, driving_side := l, details := true, directed:=false');
 
-SELECT todo_end();
 
 
 SELECT * FROM finish();
