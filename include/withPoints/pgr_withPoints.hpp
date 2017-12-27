@@ -86,6 +86,8 @@ class Pg_points_graph : public Pgr_messages {
      void create_new_edges();
      void check_points();
      void reverse_sides();
+     int64_t get_edge_id(int64_t pid) const;
+     const pgr_edge_t*  get_edge_data(int64_t eid) const;
 
  private:
      std::vector<Point_on_edge_t> m_points;

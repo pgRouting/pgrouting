@@ -153,6 +153,28 @@ Pg_points_graph::check_points() {
 }
 
 
+int64_t
+Pg_points_graph::get_edge_id(int64_t pid) const {
+    auto point_ptr = std::find_if(
+            m_points.begin(), m_points.end(),
+            [&pid](const Point_on_edge_t &point)
+            {return pid == -point.pid;});
+    return point_ptr != m_points.end() ?
+        point_ptr->edge_id :
+        -1;
+}
+
+const pgr_edge_t*
+Pg_points_graph::get_edge_data(int64_t eid) const {
+    auto e_itr = std::find_if(
+            m_edges_of_points.begin(), m_edges_of_points.end(),
+            [&eid](const pgr_edge_t &edge)
+            {return eid == edge.id;});
+    return e_itr ==  m_edges_of_points.end()?
+       nullptr : &(*e_itr);
+}
+
+
 void
 Pg_points_graph::eliminate_details_dd(
         Path &path) const {
@@ -162,42 +184,43 @@ Pg_points_graph::eliminate_details_dd(
     if (path.empty()) return;
 
     Path newPath(path.start_id(), path.end_id());
-    int64_t edge_id(-1);
-    for (const auto &point : m_points) {
-        if (-point.pid == path.start_id()) {
-            edge_id = point.edge_id;
-            break;
-        }
-    }
+    auto edge_id = path.start_id() < 0?
+        get_edge_id(path.start_id()) :
+        -1 ;
 
     for (auto pathstop : path) {
         /*
-         * No cost change
-         * - if the node is the starting point
+         * skip points (no details)
+         *  except if ithe point its the starting point
          */
-        if ((pathstop.node == path.start_id())
-                || (pathstop.node > 0)) {
-            /*
-             * Change costs only when the node is not:
-             * - start_id
-             * - directly connected to start_id
-             */
-            if (pathstop.node != path.start_id()) {
-                for (const auto e : m_edges_of_points) {
-                    if (e.id == edge_id) continue;
-                    if (e.id == pathstop.edge) {
-                        if (pathstop.node == e.source) {
-                            pathstop.cost = e.cost;
-                            break;
-                        } else {
-                            pathstop.cost = e.reverse_cost;
-                            break;
-                        }
-                    }
-                }
-            }
-            newPath.push_back(pathstop);
+        if (!((pathstop.node == path.start_id())
+                || (pathstop.node > 0))) {
+            continue;
         }
+
+        /*
+         * Change costs only when the node is not:
+         * - start_id
+         * - directly connected to start_id
+         */
+        if (pathstop.node != path.start_id()) {
+            auto edge_ptr = get_edge_data(pathstop.edge);
+            /*
+             * edge found
+             * and its not the edge directly connected to start_id()
+             */
+            if (edge_ptr
+                    && edge_ptr->id != edge_id) {
+                pathstop.cost = pathstop.node == edge_ptr->source?
+                    edge_ptr->cost :
+                        edge_ptr->reverse_cost;
+                }
+        }
+
+        /*
+         * add to the new path
+         */
+        newPath.push_back(pathstop);
     }
 
     path = newPath;
