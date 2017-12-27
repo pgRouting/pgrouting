@@ -162,10 +162,40 @@ Pg_points_graph::eliminate_details_dd(
     if (path.empty()) return;
 
     Path newPath(path.start_id(), path.end_id());
-    for (const auto &pathstop : path) {
+    int64_t edge_id(-1);
+    for (const auto &point : m_points) {
+        if (-point.pid == path.start_id()) {
+            edge_id = point.edge_id;
+            break;
+        }
+    }
+
+    for (auto pathstop : path) {
+        /*
+         * No cost change
+         * - if the node is the starting point
+         */
         if ((pathstop.node == path.start_id())
-                || (pathstop.node == path.end_id())
                 || (pathstop.node > 0)) {
+            /*
+             * Change costs only when the node is not:
+             * - start_id
+             * - directly connected to start_id
+             */
+            if (pathstop.node != path.start_id()) {
+                for (const auto e : m_edges_of_points) {
+                    if (e.id == edge_id) continue;
+                    if (e.id == pathstop.edge) {
+                        if (pathstop.node == e.source) {
+                            pathstop.cost = e.cost;
+                            break;
+                        } else {
+                            pathstop.cost = e.reverse_cost;
+                            break;
+                        }
+                    }
+                }
+            }
             newPath.push_back(pathstop);
         }
     }

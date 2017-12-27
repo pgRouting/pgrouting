@@ -4,8 +4,6 @@
 SELECT PLAN(6);
 
 
-SELECT todo_start('TODO: Aggregate individual costs issue 979');
-
 ---
 --- DIRECTED GRAPH
 ---
@@ -184,6 +182,5 @@ SELECT set_eq('q6',
     $$SELECT node, cost::TEXT, agg_cost::TEXT FROM test4$$,
     'Should be aggregating individual costs: left driving side, UNDI');
 
-SELECT todo_end();
 SELECT * FROM finish();
 ROLLBACK;
