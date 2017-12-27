@@ -51,7 +51,7 @@ This example displays how this graph transformation works to create additional e
 
 .. code-block:: none 
 
-    SELECT id, source, target, cost FROM edge_table WHERE id IN (5, 8, 9, 11);
+    SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5, 8, 9, 11);
 
 | |first|
 
