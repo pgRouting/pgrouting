@@ -120,7 +120,8 @@ do_pgr_withPoints(
                     edges_of_points,
                     edges_of_points + total_edges_of_points),
                 normal,
-                driving_side);
+                driving_side,
+                directed);
 
         if (pg_graph.has_error()) {
             log << pg_graph.get_log();
