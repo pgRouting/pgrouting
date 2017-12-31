@@ -1,0 +1,222 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgRouting-introduction.rst:13
+msgid "Introduction"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:15
+msgid ""
+"pgRouting is an extension of `PostGIS <http://postgis.net>`_ and `PostgreSQL"
+" <http://postgresql.org>`_ geospatial database and adds routing and other "
+"network analysis functionality. A predecessor of pgRouting – pgDijkstra, "
+"written by Sylvain Pasche from `Camptocamp <http://camptocamp.com>`_, was "
+"later extended by `Orkney <http://www.orkney.co.jp>`_ and renamed to "
+"pgRouting. The project is now supported and maintained by `Georepublic "
+"<http://georepublic.info>`_, `iMaptools <http://imaptools.com/>`__ and a "
+"broad user community."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:17
+msgid ""
+"pgRouting is an `OSGeo Labs <http://wiki.osgeo.org/wiki/OSGeo_Labs>`_ "
+"project of the `OSGeo Foundation <http://osgeo.org>`_ and included on `OSGeo"
+" Live <http://live.osgeo.org/>`_."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:23
+msgid "License"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:25
+msgid "The following licenses can be found in pgRouting:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:30
+msgid "**License**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:32
+msgid "GNU General Public License, version 2"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:33
+msgid ""
+"Most features of pgRouting are available under `GNU General Public License, "
+"version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:34
+msgid "Boost Software License - Version 1.0"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:35
+msgid ""
+"Some Boost extensions are available under `Boost Software License - Version "
+"1.0 <http://www.boost.org/LICENSE_1_0.txt>`_."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:36
+msgid "MIT-X License"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:37
+msgid ""
+"Some code contributed by iMaptools.com is available under MIT-X license."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:38
+msgid "Creative Commons Attribution-Share Alike 3.0 License"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:39
+msgid ""
+"The pgRouting Manual is licensed under a `Creative Commons Attribution-Share"
+" Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:41
+msgid ""
+"In general license information should be included in the header of each "
+"source file."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:45
+msgid "Contributors"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:48
+msgid "This Release Contributors"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:51
+#: ../../build/doc/pgRouting-introduction.rst:71
+msgid "Individuals (in alphabetical order)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:53
+msgid "Maoguang Wang, Vidhan Jain, Virginia Vergara"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:55
+msgid ""
+"And all the people that give us a little of their time making comments, "
+"finding issues, making pull requests etc."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:58
+#: ../../build/doc/pgRouting-introduction.rst:76
+msgid "Corporate Sponsors (in alphabetical order)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:60
+#: ../../build/doc/pgRouting-introduction.rst:78
+msgid ""
+"These are corporate entities that have contributed developer time, hosting, "
+"or direct monetary funding to the pgRouting project:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:62
+msgid "`Georepublic <https://georepublic.info/en/>`__"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:63
+msgid ""
+"`Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:64
+msgid "`iMaptools <http://imaptools.com>`__"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:65
+msgid "`Paragon Corporation <http://www.paragoncorporation.com/>`_"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:68
+msgid "Contributors Past & Present:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:73
+msgid ""
+"Akio Takubo, Andrea Nardelli, Anton Patrushev, Ashraf Hossain, Christian "
+"Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki,"
+" Florian Thurkow, Frederic Junod, Gerald Fenoy, Jay Mahadeokar, Jinfu Leng, "
+"Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin "
+"Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya, Razequl"
+" Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Stephen Woodbridge, "
+"Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:80
+msgid "Camptocamp"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:81
+msgid "CSIS (University of Tokyo)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:82
+msgid "Georepublic"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:83
+msgid "Google Summer of Code"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:84
+msgid "iMaptools"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:85
+msgid "Orkney"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:86
+msgid "Paragon Corporation"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:90
+msgid "More Information"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:92
+msgid ""
+"The latest software, documentation and news items are available at the "
+"pgRouting web site http://pgrouting.org."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:93
+msgid ""
+"PostgreSQL database server at the PostgreSQL main site "
+"http://www.postgresql.org."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:94
+msgid "PostGIS extension at the PostGIS project web site http://postgis.net."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:95
+msgid "Boost C++ source libraries at http://www.boost.org."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:96
+msgid ""
+"Computational Geometry Algorithms Library (CGAL) at http://www.cgal.org."
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:97
+msgid ""
+"The Migration guide can be found at "
+"https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
+msgstr ""

@@ -1,0 +1,410 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/proposed.rst:13
+msgid "Stable Proposed Functions"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:17
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:19
+msgid "They are not officially in the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:20
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:22
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:23
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:24
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:25
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:26
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:27
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:33
+msgid "As part of the :ref:`dijkstra`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:35
+msgid ""
+":ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:36
+msgid ""
+":ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:39
+msgid "Families"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:40
+msgid ":ref:`astar`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:3
+msgid ":ref:`pgr_aStar` - A* algorithm for the shortest path."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:4
+msgid ":ref:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:5
+msgid ""
+":ref:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:46
+msgid ":ref:`bdAstar`"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:3
+msgid ":ref:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:4
+msgid ""
+":ref:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of"
+" the paths."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:5
+msgid ""
+":ref:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a "
+"cost matrix of paths."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:52
+msgid ":ref:`bdDijkstra`"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:3
+msgid ""
+":ref:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest "
+"paths."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:4
+msgid ""
+":ref:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of "
+"the shortest paths"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:5
+msgid ""
+":ref:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to "
+"create a matrix of costs of the shortest paths."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:58
+msgid ":ref:`maxFlow`"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:3
+msgid ""
+":ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel "
+"algorithm."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:4
+msgid ""
+":ref:`pgr_BoykovKolmogorov` - Boykov and Kolmogorov with details of flow on "
+"edges."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:5
+msgid ""
+":ref:`pgr_EdmondsKarp` - Edmonds and Karp algorithm with details of flow on "
+"edges."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:6
+msgid ""
+":ref:`pgr_PushRelabel` - Push and relabel algorithm with details of flow on "
+"edges."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:7
+msgid "Applications"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9
+msgid ""
+":ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two "
+"groups of vertices."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:10
+msgid ""
+":ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching "
+"in a graph."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:64
+msgid ":ref:`withPoints`"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:3
+msgid ":ref:`pgr_withPoints` - Route from/to points anywhere on the graph."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:4
+msgid ":ref:`pgr_withPointsCost` - Costs of the shortest paths."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:5
+msgid ":ref:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:6
+msgid ":ref:`pgr_withPointsKSP` - K shortest paths."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:7
+msgid ":ref:`pgr_withPointsDD` - Driving distance."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:71
+msgid "categories"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:72
+msgid ":ref:`Cost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:3
+msgid ":ref:`pgr_aStarCost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:4
+msgid ":ref:`pgr_bdAstarCost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:5
+msgid ":ref:`pgr_bdDijkstraCost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:6
+msgid ":ref:`pgr_dijkstraCost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:7
+msgid ":ref:`pgr_withPointsCost`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:78
+msgid ":ref:`CostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:3
+msgid ":ref:`pgr_aStarCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:4
+msgid ":ref:`pgr_bdAstarCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:5
+msgid ":ref:`pgr_bdDijkstraCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:6
+msgid ":ref:`pgr_dijkstraCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:7
+msgid ":ref:`pgr_withPointsCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:84
+msgid ":ref:`KSP`"
+msgstr ""
+
+#: ../../build/doc/KSP-category.rst:3
+msgid ":ref:`pgr_KSP` - Driving Distance based on pgr_dijkstra"
+msgstr ""
+
+#: ../../build/doc/KSP-category.rst:4
+msgid ":ref:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:106
+msgid "Experimental Functions"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:111
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:113
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:114
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:116
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:117
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:118
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:119
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:120
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:121
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:122
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:123
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:124
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:125
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:126
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:127
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:132
+msgid ":ref:`contraction` - Reduce network size using contraction techniques"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:134
+msgid ""
+":ref:`pgr_contractgraph` - Reduce network size using contraction techniques"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:138
+msgid "Graph Analysis"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:139
+msgid ":ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:141
+msgid ":ref:`components` - Analyze components within a graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:143
+msgid ""
+":ref:`pgr_connectedComponents` - Return the connected components of an "
+"undirected graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:144
+msgid ""
+":ref:`pgr_strongComponents` - Return the strongly connected components of a "
+"directed graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:145
+msgid ""
+":ref:`pgr_biconnectedComponents` - Return the biconnected components of an "
+"undirected graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:146
+msgid ""
+":ref:`pgr_articulationPoints` - Return the articulation points of an "
+"undirected graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:147
+msgid ":ref:`pgr_bridges` - Return the bridges of an undirected graph"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:150
+msgid "VRP"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:151
+msgid ":ref:`pgr_gsocvrppdtw`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:152
+msgid ":ref:`pgr_vrp_basic`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:166
+msgid "Graph Transformation"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:167
+msgid ":doc:`pgr_lineGraph`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:175
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:178
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:179
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:180
+msgid ":ref:`search`"
+msgstr ""

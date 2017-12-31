@@ -22,16 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_types.h"
-#include "postgres.h"
+#include "c_common/get_check_data.h"
 
 #include "catalog/pg_type.h"
-#include "executor/spi.h"
 
-
-// #define DEBUG
-#include "./debug_macro.h"
-#include "./get_check_data.h"
+#include "c_common/debug_macro.h"
 
 char*
 pgr_stradd(const char* a, const char* b) {
@@ -50,7 +45,9 @@ static
 bool
 fetch_column_info(
         Column_info_t *info) {
+#if 0
     PGR_DBG("Fetching column info of %s", info->name);
+#endif
     info->colNumber =  SPI_fnumber(SPI_tuptable->tupdesc, info->name);
     if (info->strict && !column_found(info->colNumber)) {
         elog(ERROR, "Column '%s' not Found", info->name);
@@ -60,7 +57,9 @@ fetch_column_info(
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
             elog(ERROR, "Type of column '%s' not Found", info->name);
         }
-        PGR_DBG("Column %s found: %llu", info->name, info->type);
+#if 0
+        PGR_DBG("Column %s found: %lu", info->name, info->type);
+#endif
         return true;
     }
     PGR_DBG("Column %s not found", info->name);
@@ -86,6 +85,9 @@ void pgr_fetch_column_info(
                     break;
                 case CHAR1:
                     pgr_check_char_type(info[i]);
+                    break;
+                case ANY_INTEGER_ARRAY:
+                    pgr_check_any_integerarray_type(info[i]);
                     break;
                 default:
                     elog(ERROR, "Unknown type of column %s", info[i].name);
@@ -116,6 +118,17 @@ pgr_check_any_integer_type(Column_info_t info) {
                 || info.type == INT8OID)) {
         elog(ERROR,
                 "Unexpected Column '%s' type. Expected ANY-INTEGER",
+                info.name);
+    }
+}
+
+void
+pgr_check_any_integerarray_type(Column_info_t info) {
+    if (!(info.type == INT2ARRAYOID
+                || info.type == INT4ARRAYOID
+                || info.type == 1016)) {
+        elog(ERROR,
+                "Unexpected Column '%s' type. Expected ANY-INTEGER-ARRAY",
                 info.name);
     }
 }
@@ -182,14 +195,16 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-INTEGER",
                     info.name);
     }
-    PGR_DBG("Variable: %s Value: %lld", info.name, value);
+#if 0
+    PGR_DBG("Variable: %s Value: %ld", info.name, value);
+#endif
     return value;
 }
 
 double
 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
-    bool isnull;
+    bool isnull = false;
     double value = 0.0;
     binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
     if (isnull)
@@ -216,16 +231,16 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-NUMERICAL",
                     info.name);
     }
+#if 0
     PGR_DBG("Variable: %s Value: %lf", info.name, value);
+#endif
     return value;
 }
 
+/**
+ * under development
+ */
 char*
 pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {
-    char* value = NULL;
-    char* val = NULL;
-    val = SPI_getvalue(*tuple, *tupdesc, info.colNumber);
-    value = DatumGetCString(&val);
-    pfree(val);
-    return value;
+    return DatumGetCString(SPI_getvalue(*tuple, *tupdesc, info.colNumber));
 }

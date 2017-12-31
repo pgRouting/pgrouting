@@ -1,0 +1,130 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_version.rst:13
+msgid "pgr_version"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:19
+msgid "Name"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:21
+msgid "``pgr_version`` — Query for pgRouting version information."
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:25
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:27
+msgid "Returns a table with pgRouting version information."
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:35 ../../build/doc/pgr_version.rst:40
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:37
+msgid "Returns a table with:"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:40
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:40
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:42
+msgid "**version**"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:42 ../../build/doc/pgr_version.rst:43
+#: ../../build/doc/pgr_version.rst:44 ../../build/doc/pgr_version.rst:45
+#: ../../build/doc/pgr_version.rst:46
+msgid "``varchar``"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:42
+msgid "pgRouting version"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:43
+msgid "**tag**"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:43
+msgid "Git tag of pgRouting build"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:44
+msgid "**hash**"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:44
+msgid "Git hash of pgRouting build"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:45
+msgid "**branch**"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:45
+msgid "Git branch of pgRouting build"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:46
+msgid "**boost**"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:46
+msgid "Boost version"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:51
+msgid "History"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:52
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:56
+msgid "Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:58
+msgid "Query for full version string"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:66
+msgid "Query for ``version`` and ``boost`` attribute"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:78
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:81
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:82
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:83
+msgid ":ref:`search`"
+msgstr ""

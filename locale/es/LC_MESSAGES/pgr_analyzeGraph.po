@@ -1,0 +1,361 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_analyzeGraph.rst:13
+msgid "pgr_analyzeGraph"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:17
+msgid "Name"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:19
+msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:23
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:25
+#: ../../build/doc/pgr_analyzeGraph.rst:61
+msgid "The function returns:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:27
+#: ../../build/doc/pgr_analyzeGraph.rst:63
+msgid "``OK`` after the analysis has finished."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:28
+#: ../../build/doc/pgr_analyzeGraph.rst:69
+msgid "``FAIL`` when the analysis was not completed due to an error."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:40
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:43
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:44
+msgid ""
+"The  edge table to be analyzed must contain a source column and a target "
+"column filled with id's of the vertices of the segments and the "
+"corresponding vertices table <edge_table>_vertices_pgr that stores the "
+"vertices information."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:46
+msgid ""
+"Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the "
+"vertices table."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:47
+msgid ""
+"Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology "
+"and the vertices table."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:50
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:51
+msgid "The analyze graph function accepts the following parameters:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:53
+msgid "``text`` Network table name. (may contain the schema name as well)"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:54
+msgid ""
+"``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:55
+msgid ""
+"``text``  Geometry column name of the network table. Default value is "
+"``the_geom``."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:56
+msgid ""
+"``text``  Primary key column name of the network table. Default value is "
+"``id``."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:57
+msgid ""
+"``text`` Source column name of the network table. Default value is "
+"``source``."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:58
+msgid ""
+"``text``  Target column name of the network table.  Default value is "
+"``target``."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:59
+msgid ""
+"``text``   Condition to select  a subset or rows.  Default value is ``true``"
+" to indicate all rows."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:65
+msgid "Uses the vertices table: <edge_table>_vertices_pgr."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:66
+msgid ""
+"Fills completely the ``cnt`` and ``chk`` columns of the vertices table."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:67
+msgid ""
+"Returns the analysis of the section of the network defined by  "
+"``rows_where``"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:71
+msgid "The vertices table is not found."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:72
+msgid ""
+"A required column of the Network table is not found or is not of the "
+"appropriate type."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:73
+msgid "The condition is not well formed."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:74
+msgid "The names of source , target or id are the same."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:75
+msgid "The SRID of the geometry could not be determined."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:79
+msgid "The Vertices Table"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:80
+msgid ""
+"The vertices table can be created with :ref:`pgr_createVerticesTable "
+"<pgr_create_vert_table>` or :ref:`pgr_createTopology <pgr_create_topology>`"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:82
+msgid "The structure of the vertices table is:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:84
+msgid "``bigint`` Identifier of the vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:85
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:86
+msgid "``integer``  Indicator that the vertex might have a problem."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:87
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:88
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:89
+msgid "``geometry`` Point geometry of the vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:92
+msgid "History"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:93
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:96
+msgid "Usage when the edge table's columns MATCH the default values:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:99
+msgid "The simplest way to use pgr_analyzeGraph is:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:106
+msgid "When the arguments are given in the order described in the parameters:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:111
+msgid "We get the same result as the simplest way to use the function."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:0
+msgid ""
+"An error would occur when the arguments are not given in the appropriate "
+"order: In this example, the column ``id`` of the table ``mytable`` is passed"
+" to the function as the geometry column, and the geometry column "
+"``the_geom`` is passed to the function as the id column."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:130
+#: ../../build/doc/pgr_analyzeGraph.rst:208
+msgid "When using the named notation"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:131
+#: ../../build/doc/pgr_analyzeGraph.rst:209
+msgid "The order of the parameters do not matter:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:141
+msgid ""
+"Parameters defined with a default value can be omitted, as long as the value"
+" matches the default:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:148
+#: ../../build/doc/pgr_analyzeGraph.rst:223
+msgid "Selecting rows using rows_where parameter"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:149
+msgid ""
+"Selecting rows based on the id. Displays the analysis a the section of the "
+"network."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:155
+msgid ""
+"Selecting the rows where the geometry is near the geometry of row with "
+"``id`` =5 ."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:161
+msgid ""
+"Selecting the rows where the geometry is near the geometry of the row with "
+"``gid`` =100 of the table ``othertable``."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:172
+msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:174
+msgid "For the following table"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:183
+msgid "Using positional notation:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:184
+msgid ""
+"The arguments need to be given in the order described in the parameters:"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:0
+msgid ""
+"An error would occur when the arguments are not given in the appropriate "
+"order: In this example, the column ``gid`` of the table ``mytable`` is "
+"passed to the function as the geometry column, and the geometry column "
+"``mygeom`` is passed to the function as the id column."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:219
+msgid ""
+"In this scenario omitting a parameter would create an error because the "
+"default values for the column names do not match the column names of the "
+"table."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:224
+msgid "Selecting rows based on the id."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:234
+msgid ""
+"Selecting the rows WHERE the geometry is near the geometry of row with "
+"``id`` =5 ."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:246
+msgid ""
+"Selecting the rows WHERE the geometry is near the place='myhouse' of the "
+"table ``othertable``. (note the use of quote_literal)"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:263
+msgid "Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:390
+msgid "The examples use the :doc:`sampledata` network."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:394
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:396
+msgid ":ref:`topology`  for an overview of a topology for routing algorithms."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:397
+msgid ":ref:`pgr_analyze_oneway` to analyze directionality of the edges."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:398
+msgid ""
+":ref:`pgr_createVerticesTable <pgr_create_vert_table>` to reconstruct the "
+"vertices table based on the source and target information."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:399
+msgid ""
+":ref:`pgr_nodeNetwork <pgr_node_network>` to create nodes to a not noded "
+"edge table."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:402
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:403
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeGraph.rst:404
+msgid ":ref:`search`"
+msgstr ""

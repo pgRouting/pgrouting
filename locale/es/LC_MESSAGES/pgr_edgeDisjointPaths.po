@@ -1,0 +1,541 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:14
+msgid "pgr_edgeDisjointPaths - Proposed"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:17
+msgid "Name"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:19
+msgid ""
+"``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two "
+"groups of vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:25
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:28
+msgid "Availability: 2.3.0"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:36
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:38
+msgid ""
+"Calculates the edge disjoint paths between two groups of vertices. Utilizes "
+"underlying maximum flow algorithms to calculate the paths."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:42
+msgid "Characteristics:"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:49
+msgid "The main characterics are:"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:45
+msgid "Calculates the edge disjoint paths between any two groups of vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:46
+msgid ""
+"Returns EMPTY SET when source and destination are the same, or cannot be "
+"reached."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:47
+msgid "The graph can be directed or undirected."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:48
+msgid "One to many, many to one, many to many versions are also supported."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:49
+msgid "Uses :ref:`pgr_boykovKolmogorov` to calculate the paths."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:52
+msgid "Signature Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:67
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:73
+msgid "Minimal use"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:81
+msgid ""
+"The minimal use is for a **directed** graph from one ``start_vid`` to one "
+"``end_vid``."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:93
+msgid "One to One"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:98
+msgid ""
+"This signature finds the set of dijoint paths from one ``start_vid`` to one "
+"``end_vid``:"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:96
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:120
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:149
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:175
+msgid ""
+"on a **directed** graph when ``directed`` flag is missing or is set to "
+"``true``."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:97
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:121
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:150
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:176
+msgid "on an **undirected** graph when ``directed`` flag is set to ``false``."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:117
+msgid "One to Many"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:126
+msgid ""
+"This signature finds the sset of disjoint paths  from the ``start_vid`` to "
+"each one of the ``end_vid`` in ``end_vids``:"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:122
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:151
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:177
+msgid ""
+"The result is equivalent to the union of the results of the one to one "
+"`pgr_edgeDisjointPaths`."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:123
+msgid ""
+"The extra ``end_vid`` in the result is used to distinguish to which path it "
+"belongs."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:146
+msgid "Many to One"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:152
+msgid ""
+"This signature finds the set of disjoint paths from each one of the "
+"``start_vid`` in ``start_vids`` to the ``end_vid``:"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:152
+msgid ""
+"The extra ``start_vid`` in the result is used to distinguish to which path "
+"it belongs."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:172
+msgid "Many to Many"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:178
+msgid ""
+"This signature finds the set of disjoint paths from each one of the "
+"``start_vid`` in ``start_vids`` to each one of the ``end_vid`` in "
+"``end_vids``:"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:178
+msgid ""
+"The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish"
+" to which path it belongs."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:195
+msgid "Description of the Signatures"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Description of the edges_sql query for dijkstra like functions"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid ""
+"an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "**source**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "Weight of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "Weight of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:26
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:4
+msgid "Description of the parameters of the signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:9
+msgid "**sql**"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:9
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:9
+msgid "SQL query as described above."
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "**start_vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:10 ../../build/doc/pgr_dijkstra.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:10
+msgid "Identifier of the starting vertex of the path."
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:11
+msgid "**start_vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:11 ../../build/doc/pgr_dijkstra.rst:13
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:11
+msgid "Array of identifiers of starting vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "**end_vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:12
+msgid "Identifier of the ending vertex of the path."
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:13
+msgid "**end_vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:13
+msgid "Array of identifiers of ending vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:14
+msgid "**directed**"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:14
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:14
+msgid "``true``"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:14
+msgid "When ``true`` Graph is considered `Directed`"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstra.rst:15
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Description of the return values for a path"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid ""
+"Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost,"
+" agg_cost)``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "**seq**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``INT``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "**path_id**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid ""
+"Path identifier. Has value **1** for the first of a path. Used when there "
+"are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**path_seq**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a path."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid ""
+"Identifier of the starting vertex. Used when multiple starting vetrices are "
+"in the query."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"Identifier of the ending vertex. Used when multiple ending vertices are in "
+"the query."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "**node**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "**edge**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the path"
+" sequence. ``-1`` for the last node of the path."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
+"sequence."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Aggregate cost from ``start_v`` to ``node``."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:212
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:214
+msgid ":ref:`maxFlow`"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:217
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:218
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:219
+msgid ":ref:`search`"
+msgstr ""

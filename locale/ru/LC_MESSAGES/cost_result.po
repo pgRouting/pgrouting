@@ -1,0 +1,92 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/cost_result.rst:13
+msgid "pgr_costResult[]"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:19 ../../build/doc/cost_result.rst:52
+msgid "Name"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:21
+msgid ""
+"``pgr_costResult[]`` — A set of records to describe a path result with cost "
+"attribute."
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:25 ../../build/doc/cost_result.rst:58
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:37 ../../build/doc/cost_result.rst:71
+msgid "sequential ID indicating the path order"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:38 ../../build/doc/cost_result.rst:73
+msgid "generic name, to be specified by the function, typically the node id"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:39 ../../build/doc/cost_result.rst:74
+msgid "generic name, to be specified by the function, typically the edge id"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:40 ../../build/doc/cost_result.rst:75
+msgid "cost attribute"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:46
+msgid "pgr_costResult3[] - Multiple Path Results with Cost"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:54
+msgid ""
+"``pgr_costResult3[]`` — A set of records to describe a path result with cost"
+" attribute."
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:72
+msgid "generic name, to be specified by the function, typically the path id"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:79
+msgid "History"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:80
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:81
+msgid "Replaces ``path_result``"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:85
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:87
+msgid ":ref:`introduction`"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:90
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:91
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:92
+msgid ":ref:`search`"
+msgstr ""

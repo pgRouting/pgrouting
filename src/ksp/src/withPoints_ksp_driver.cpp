@@ -27,24 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-//#ifdef unlink
-//#undef unlink
-//#endif
-#endif
+#include "drivers/yen/withPoints_ksp_driver.h"
 
 
 #include <sstream>
 #include <deque>
 #include <vector>
-#include "./withPoints_ksp_driver.h"
-#include "./../../withPoints/src/pgr_withPoints.hpp"
-#include "./../../common/src/memory_func.hpp"
-#include "./pgr_ksp.hpp"
 
+#include "yen/pgr_ksp.hpp"
+
+#include "./../../withPoints/src/pgr_withPoints.hpp"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
@@ -60,8 +54,8 @@ do_pgr_withPointsKsp(
         pgr_edge_t  *edges,           size_t total_edges,
         Point_on_edge_t  *points_p,   size_t total_points,
         pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
-        int64_t start_vid,
-        int64_t end_vid,
+        int64_t start_pid,
+        int64_t end_pid,
         int k,
         bool directed,
         bool heap_paths,
@@ -69,29 +63,41 @@ do_pgr_withPointsKsp(
         bool details,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** log_msg,
+        char ** notice_msg,
+        char ** err_msg) {
+
     std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
     try {
-        /*
-         * This is the original state
-         */
-        if (*err_msg) free(err_msg);
-        if (*return_tuples) free(return_tuples);
-        (*return_count) = 0;
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+        pgassert(total_edges != 0);
+
+        log << "entering do_pgr_withPointsKsp\n";
 
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
 
-        int errcode = check_points(points, log);
-        if (errcode) {
-            return errcode;
-        }
+        log << "total points" << points.size() << "\n";
 
+        auto errcode = check_points(points, log);
+        if (errcode) {
+            *log_msg = strdup(log.str().c_str());
+            err << "Unexpected point(s) with same pid but different edge/fraction/side combination found.";
+            *err_msg = strdup(err.str().c_str());
+            return -1;
+        }
 
         std::vector< pgr_edge_t >
             edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
+
         create_new_edges(
                 points,
                 edges_to_modify,
@@ -100,34 +106,51 @@ do_pgr_withPointsKsp(
                 log);
 
 
+
+        int64_t start_vid(start_pid);
+        int64_t end_vid(end_pid);
+
+        log << "start_pid" << start_pid << "\n";
+        log << "end_pid" << end_pid << "\n";
+        log << "driving_side" << driving_side << "\n";
+        log << "start_vid" << start_vid << "\n";
+        log << "end_vid" << end_vid << "\n";
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
+        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        vertices = pgrouting::extract_vertices(vertices, new_edges);
+
+        log << "extracted vertices: ";
+        for (const auto v : vertices) {
+            log << v.id << ", ";
+        }
+        log << "\n";
+
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-            digraph.graph_insert_data(edges, total_edges);
-            digraph.graph_insert_data(new_edges);
-            Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
+            pgrouting::DirectedGraph digraph(vertices, gType);
+            digraph.insert_edges(edges, total_edges);
+            log << "graph after inserting edges\n";
+            log << digraph << "\n";
+
+            digraph.insert_edges(new_edges);
+            log << "graph after inserting new edges\n";
+            log << digraph << "\n";
+
+            Pgr_ksp< pgrouting::DirectedGraph  > fn_yen;
             paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
+            // pgassert(true==false);
         } else {
             log << "Working with undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-            undigraph.graph_insert_data(edges, total_edges);
-            undigraph.graph_insert_data(new_edges);
-            Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(new_edges);
+            Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
-#if 0
-        for (auto &path : paths) {
-            path.print_path(log);
-            adjust_pids(points, path);
-            path.print_path(log);
-        }
-#endif
 
         if (!details) {
             for (auto &path : paths) {
@@ -143,7 +166,7 @@ do_pgr_withPointsKsp(
 
 
         *return_tuples = NULL;
-        *return_tuples = get_memory(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
 
         size_t sequence = 0;
         int route_id = 0;
@@ -159,15 +182,26 @@ do_pgr_withPointsKsp(
         (*return_count) = sequence;
 
 
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
+        *log_msg = strdup(log.str().c_str());
         return 0;
-    } catch ( ... ) {
-        log << "Caught unknown expection!\n";
-        *err_msg = strdup(log.str().c_str());
+    } catch (AssertFailedException &except) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+    } catch (std::exception &except) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+    } catch(...) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     }
     return 1000;
 }

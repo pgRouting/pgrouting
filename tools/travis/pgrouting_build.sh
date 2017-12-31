@@ -10,10 +10,9 @@
 set -e 
 
 # build pgRouting
-cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION
-#cmake
+mkdir build
+cd build
+cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DWITH_DOC=ON -DCMAKE_BUILD_TYPE=Debug ..
 make
 sudo make install
-#cd ..
-
-#./tools/testers/algorithm-tester.pl -pgver $POSTGRESQL_VERSION -ignorenotice
+make doc

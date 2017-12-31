@@ -1,0 +1,205 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/aStar-family.rst:13
+msgid "aStar - Family of functions"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:15
+msgid ""
+"The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm "
+"with a heuristic that allow it to solve most shortest path problems by "
+"evaluation only a sub-set of the overall graph."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:19
+msgid ":ref:`pgr_aStar` - A* algorithm for the shortest path."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:20
+msgid ":ref:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:21
+msgid ""
+":ref:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:34
+msgid "The problem definition (Advanced documentation)"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:36
+msgid ""
+"The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm "
+"with a heuristic, that is an estimation of the remaining cost from the "
+"vertex to the goal, that allows to solve most shortest path problems by "
+"evaluation only a sub-set of the overall graph. Running time: :math:`O((E + "
+"V) * \\log V)`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:46
+msgid "Heuristic"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:48
+msgid "Currently the heuristic functions available are:"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:50
+msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:51
+msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:52
+msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:53
+msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:54
+msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:55
+msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:57
+msgid "where :math:`\\Delta x = x_1 - x_0` and :math:`\\Delta y = y_1 - y_0`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:63 ../../build/doc/aStar-family.rst:76
+#: ../../build/doc/aStar-family.rst:89
+msgid "Factor"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:66
+msgid "Analysis 1"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:67
+msgid ""
+"Working with cost/reverse_cost as length in degrees, x/y in lat/lon: Factor "
+"= 1   (no need to change units)"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:71
+msgid "Analysis 2"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:72
+msgid ""
+"Working with cost/reverse_cost as length in meters, x/y in lat/lon: Factor ="
+"  would depend on the location of the points:"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:76 ../../build/doc/aStar-family.rst:89
+msgid "latitude"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:76 ../../build/doc/aStar-family.rst:89
+msgid "conversion"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:78 ../../build/doc/aStar-family.rst:91
+msgid "45"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:78
+msgid "1 longitude degree is  78846.81 m"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:78
+msgid "78846"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:79 ../../build/doc/aStar-family.rst:92
+msgid "0"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:79
+msgid "1 longitude degree is 111319.46 m"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:79
+msgid "111319"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:83
+msgid "Analysis 3"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:84
+msgid ""
+"Working with cost/reverse_cost as time in seconds, x/y in lat/lon: Factor: "
+"would depend on the location of the points and on the average speed say "
+"25m/s is the speed."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:91
+msgid "1 longitude degree is (78846.81m)/(25m/s)"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:91
+msgid "3153 s"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:92
+msgid "1 longitude degree is (111319.46 m)/(25m/s)"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:92
+msgid "4452 s"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:98
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:100
+msgid ":ref:`pgr_aStar`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:101
+msgid ":ref:`pgr_aStarCost`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:102
+msgid ":ref:`pgr_aStarCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:103
+msgid "http://www.boost.org/libs/graph/doc/astar_search.html"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:104
+msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:107
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:108
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:109
+msgid ":ref:`search`"
+msgstr ""

@@ -27,31 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <unistd.h>
+#include "c_common/postgres_connection.h"
 
-#include "postgres.h"
-#include "funcapi.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
 
-// #define DEBUG
+#include "c_common/debug_macro.h"
+#include "c_common/time_msg.h"
+#include "c_common/edges_input.h"
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
-#include "./../../common/src/edges_input.h"
-#include "./floydWarshall_driver.h"
+#include "drivers/allpairs/floydWarshall_driver.h"
 
+PGDLLEXPORT Datum floydWarshall(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(floydWarshall);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-floydWarshall(PG_FUNCTION_ARGS);
 
 static
 void
@@ -65,7 +51,7 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_4_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -78,38 +64,43 @@ process(
 
     clock_t start_t = clock();
     PGR_DBG("Starting processing");
-    char *err_msg = (char *)"";
+    char *err_msg = NULL;
+    char *log_msg = NULL;
     do_pgr_floydWarshall(
             edges,
             total_tuples,
             directed,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
     time_msg(" processing FloydWarshall", start_t, clock());
 
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+
+    if (log_msg) {
+        PGR_DBG("LOG = %s\n", log_msg);
+        free(log_msg);
+    }
+
+    if (err_msg) {
+       if (*result_tuples) free(*result_tuples);
+       elog(ERROR, " %s\n", err_msg);
+    }
 
     pfree(edges);
     pgr_SPI_finish();
 }
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 floydWarshall(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t              call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
     /*                                                                        */
-    Matrix_cell_t  *result_tuples = 0;
+    Matrix_cell_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -134,7 +125,7 @@ floydWarshall(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);
@@ -142,9 +133,14 @@ floydWarshall(PG_FUNCTION_ARGS) {
         /*                                                                   */
         /*********************************************************************/
 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -155,37 +151,32 @@ floydWarshall(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (Matrix_cell_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*********************************************************************/
         values = palloc(3 * sizeof(Datum));
-        nulls = palloc(3 * sizeof(char));
+        nulls = palloc(3 * sizeof(bool));
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
-        nulls[0] = ' ';
-        values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
-        nulls[1] = ' ';
-        values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
-        nulls[2] = ' ';
+        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
+        nulls[0] = false;
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
+        nulls[1] = false;
+        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        nulls[2] = false;
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
-
         SRF_RETURN_DONE(funcctx);
     }
 }

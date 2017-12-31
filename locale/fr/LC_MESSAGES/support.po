@@ -1,0 +1,177 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/support.rst:13
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/support.rst:15
+msgid ""
+"pgRouting community support is available through the `pgRouting website "
+"<http://pgrouting.org/support.html>`_, `documentation "
+"<http://docs.pgrouting.org>`_, tutorials, mailing lists and others. If "
+"you’re looking for :ref:`commercial support <support_commercial>`, find "
+"below a list of companies providing pgRouting development and consulting "
+"services."
+msgstr ""
+
+#: ../../build/doc/support.rst:19
+msgid "Reporting Problems"
+msgstr ""
+
+#: ../../build/doc/support.rst:21
+msgid ""
+"Bugs are reported and managed in an `issue tracker "
+"<https://github.com/pgrouting/pgrouting/issues>`_. Please follow these "
+"steps:"
+msgstr ""
+
+#: ../../build/doc/support.rst:23
+msgid ""
+"Search the tickets to see if your problem has already been reported. If so, "
+"add any extra context you might have found, or at least indicate that you "
+"too are having the problem. This will help us prioritize common issues."
+msgstr ""
+
+#: ../../build/doc/support.rst:24
+msgid ""
+"If your problem is unreported, create a `new issue "
+"<https://github.com/pgRouting/pgrouting/issues/new>`_ for it."
+msgstr ""
+
+#: ../../build/doc/support.rst:25
+msgid ""
+"In your report include explicit instructions to replicate your issue. The "
+"best tickets include the exact SQL necessary to replicate a problem."
+msgstr ""
+
+#: ../../build/doc/support.rst:26
+msgid ""
+"If you can test older versions of PostGIS for your problem, please do. On "
+"your ticket, note the earliest version the problem appears."
+msgstr ""
+
+#: ../../build/doc/support.rst:27
+msgid ""
+"For the versions where you can replicate the problem, note the operating "
+"system and version of pgRouting, PostGIS and PostgreSQL."
+msgstr ""
+
+#: ../../build/doc/support.rst:28
+msgid ""
+"It is recommended to use the following wrapper on the problem to pin point "
+"the step that is causing the problem."
+msgstr ""
+
+#: ../../build/doc/support.rst:39
+msgid "Mailing List and GIS StackExchange"
+msgstr ""
+
+#: ../../build/doc/support.rst:41
+msgid ""
+"There are two mailing lists for pgRouting hosted on OSGeo mailing list "
+"server:"
+msgstr ""
+
+#: ../../build/doc/support.rst:43
+msgid ""
+"User mailing list: http://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+msgstr ""
+
+#: ../../build/doc/support.rst:44
+msgid ""
+"Developer mailing list: http://lists.osgeo.org/mailman/listinfo/pgrouting-"
+"dev"
+msgstr ""
+
+#: ../../build/doc/support.rst:46
+msgid ""
+"For general questions and topics about how to use pgRouting, please write to"
+" the user mailing list."
+msgstr ""
+
+#: ../../build/doc/support.rst:48
+msgid ""
+"You can also ask at `GIS StackExchange <http://gis.stackexchange.com/>`_ and"
+" tag the question with ``pgrouting``. Find all questions tagged with "
+"``pgrouting`` under http://gis.stackexchange.com/questions/tagged/pgrouting "
+"or subscribe to the `pgRouting questions feed "
+"<http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
+msgstr ""
+
+#: ../../build/doc/support.rst:54
+msgid "Commercial Support"
+msgstr ""
+
+#: ../../build/doc/support.rst:56
+msgid ""
+"For users who require professional support, development and consulting "
+"services, consider contacting any of the following organizations, which have"
+" significantly contributed to the development of pgRouting:"
+msgstr ""
+
+#: ../../build/doc/support.rst:61
+msgid "**Company**"
+msgstr ""
+
+#: ../../build/doc/support.rst:62
+msgid "**Offices in**"
+msgstr ""
+
+#: ../../build/doc/support.rst:63
+msgid "**Website**"
+msgstr ""
+
+#: ../../build/doc/support.rst:64
+msgid "Georepublic"
+msgstr ""
+
+#: ../../build/doc/support.rst:65
+msgid "Germany, Japan"
+msgstr ""
+
+#: ../../build/doc/support.rst:66
+msgid "https://georepublic.info"
+msgstr ""
+
+#: ../../build/doc/support.rst:67
+msgid "iMaptools"
+msgstr ""
+
+#: ../../build/doc/support.rst:68 ../../build/doc/support.rst:71
+msgid "United States"
+msgstr ""
+
+#: ../../build/doc/support.rst:69
+msgid "http://imaptools.com"
+msgstr ""
+
+#: ../../build/doc/support.rst:70
+msgid "Paragon Corporation"
+msgstr ""
+
+#: ../../build/doc/support.rst:72
+msgid "http://www.paragoncorporation.com"
+msgstr ""
+
+#: ../../build/doc/support.rst:73
+msgid "Camptocamp"
+msgstr ""
+
+#: ../../build/doc/support.rst:74
+msgid "Switzerland, France"
+msgstr ""
+
+#: ../../build/doc/support.rst:75
+msgid "http://www.camptocamp.com"
+msgstr ""

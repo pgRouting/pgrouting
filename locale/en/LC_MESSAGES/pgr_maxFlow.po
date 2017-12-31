@@ -1,0 +1,354 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_maxFlow.rst:13
+msgid "pgr_maxFlow - Proposed"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:17
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:19
+msgid ""
+"``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the "
+"source(s) to the targets(s) using the Push Relabel algorithm."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:25
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:28
+msgid "Availability: 2.4.0"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:35
+msgid "Characteristics"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:36
+msgid "The graph is **directed**."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:37
+msgid ""
+"When the maximum flow is 0 then there is no flow and **0** is returned."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:39
+msgid "There is no flow when a **source** is the same as a **target**."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:41
+msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:42
+msgid "Uses the :ref:`pgr_pushRelabel <pgr_pushRelabel>` algorithm."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:44
+msgid "Running time: :math:`O( V ^ 3)`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:47
+msgid "Signature Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:62
+msgid "One to One"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:64
+msgid "Calculates the maximum flow from the `source` to the `target`."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:82
+msgid "One to Many"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:84
+msgid "Calculates the maximum flow from the `source` to all of the `targets`."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:102
+msgid "Many to One"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:104
+msgid "Calculates the maximum flow from all the `sources` to the `target`."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:122
+msgid "Many to Many"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:124
+msgid ""
+"Calculates the maximum flow from all of the `sources` to all of the "
+"`targets`."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:138
+msgid "Description of the Signatures"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Description of the edges_sql query for Max-flow like functions"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid ""
+"an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_maxFlow.rst:152
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_maxFlow.rst:152 ../../build/doc/pgr_maxFlow.rst:169
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_maxFlow.rst:152
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_maxFlow.rst:152 ../../build/doc/pgr_maxFlow.rst:169
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgr_maxFlow.rst:155
+msgid "**source**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgr_maxFlow.rst:157
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "**capacity**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "Weight of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "**reverse_capacity**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "Weight of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:26
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:149
+msgid "Description of the Parameters of the Flow Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:154
+msgid "**edges_sql**"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:154
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:154
+msgid "The edges SQL query as described above."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:155 ../../build/doc/pgr_maxFlow.rst:157
+#: ../../build/doc/pgr_maxFlow.rst:171
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:155
+msgid "Identifier of the starting vertex of the flow."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:156
+msgid "**sources**"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:156 ../../build/doc/pgr_maxFlow.rst:158
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:156
+msgid "Array of identifiers of the starting vertices of the flow."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:157
+msgid "Identifier of the ending vertex of the flow."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:158
+msgid "**targets**"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:158
+msgid "Array of identifiers of the ending vertices of the flow."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:166
+msgid "Description of the return value"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:171
+msgid "Maximum flow possible from the source(s) to the target(s)"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:175
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:177
+msgid ":ref:`maxFlow`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:178
+msgid "http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:179
+msgid ""
+"https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:182
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:183
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:184
+msgid ":ref:`search`"
+msgstr ""

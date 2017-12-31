@@ -1,0 +1,237 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/costMatrix-category.rst:13
+msgid "Cost Matrix - Category"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:17
+msgid ":ref:`pgr_aStarCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:18
+msgid ":ref:`pgr_bdAstarCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:19
+msgid ":ref:`pgr_bdDijkstraCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:20
+msgid ":ref:`pgr_dijkstraCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:21
+msgid ":ref:`pgr_withPointsCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:40
+msgid "General Information"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:43
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:45
+msgid ""
+":ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` must "
+"value :math:`\\infty`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:47
+msgid ""
+"This collection of functions will return a cost matrix in form of a table."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:51
+msgid "Characteristics"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:53
+msgid "The main Characteristics are:"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:55
+msgid "Can be used as input to :ref:`pgr_tsp`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:57
+msgid ""
+"when the resulting matrix is symmetric and there is no :math:`\\infty` "
+"value."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:58
+msgid "It will be the users responsibility to make the matrix symmetric."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:60
+msgid "By using geometric or harmonic average of the non symmetric values."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:61
+msgid "By using max or min the non symmetric values."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:62
+msgid ""
+"By setting the upper triangle to be the mirror image of the lower triangle."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:63
+msgid ""
+"By setting the lower triangle to be the mirror image of the upper triangle."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:65
+msgid "It is also the users responsibility to fix an :math:`\\infty` value."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:67
+msgid "Each function works as part of the family it belongs to."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:68
+msgid "It does not return a path."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:69
+msgid ""
+"Returns the sum of the costs of the shortest path for pair combination of "
+"nodes in the graph."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:70
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:71
+msgid "Values are returned when there is a path."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:73
+msgid ""
+"The returned values are in the form of a set of `(start_vid, end_vid, "
+"agg_cost)`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:75
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:77
+msgid "The `agg_cost` int the non included values `(v, v)` is `0`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:79
+msgid ""
+"When the starting vertex and ending vertex are the different and there is no"
+" path."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:81
+msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:83
+msgid ""
+"Let be the case the values returned are stored in a table, so the unique "
+"index would be the pair: `(start_vid, end_vid)`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:85
+msgid ""
+"Depending on the function and its parameters, the results can be symmetric."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:87
+msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:89
+msgid "Any duplicated value in the `start_vids` are ignored."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:91
+msgid "The returned values are ordered:"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:93
+msgid "`start_vid` ascending"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:94
+msgid "`end_vid` ascending"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:96
+msgid "Running time: approximately :math:`O(| start\\_vids | * (V \\log V + E))`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:101
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:103
+msgid ":ref:`pgr_tsp`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:106
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:107
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:108
+msgid ":ref:`search`"
+msgstr ""

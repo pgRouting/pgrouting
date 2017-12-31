@@ -1,0 +1,382 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:13
+msgid "pgr_bdDijkstraCostMatrix - proposed"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:16
+msgid "Name"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:18
+msgid ""
+"``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using "
+":ref:`pgr_bdDijkstra`."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:24
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:27
+msgid "Availability: 2.5.0"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:33
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:35
+msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:38
+msgid "Signature Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:49
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:55
+msgid "Minimal Signature"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:58
+msgid "The minimal signature:"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:58
+msgid "Is for a **directed** graph."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:66
+msgid "Cost matrix for vertices 1, 2, 3, and 4."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:78
+msgid "Complete Signature"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:86
+msgid "Cost matrix for an undirected graph for vertices 1, 2, 3, and 4."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:88
+msgid "This example returns a symmetric cost matrix."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:96
+msgid "Description of the Signatures"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Description of the edges_sql query for dijkstra like functions"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid ""
+"an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:108
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:108
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "**source**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "Weight of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "Weight of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:26
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:105
+msgid "Description of the parameters of the signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:108
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:110
+msgid "**edges_sql**"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:110
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:110
+msgid "Edges SQL query as described above."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:111
+msgid "**start_vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:111
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:111
+msgid "Array of identifiers of the vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:112
+msgid "**directed**"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:112
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:112
+msgid ""
+"(optional). When ``false`` the graph is considered as Undirected. Default is"
+" ``true`` which considers the graph as Directed."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Description of the return values for a Cost function"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "**start_vid**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"Identifier of the starting vertex. Used when multiple starting vetrices are "
+"in the query."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "**end_vid**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid ""
+"Identifier of the ending vertex. Used when multiple ending vertices are in "
+"the query."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:122
+msgid "Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:124
+msgid "Use with tsp"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:132
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:134
+msgid ":ref:`bdDijkstra`"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:135
+msgid ":ref:`costMatrix`"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:136
+msgid ":ref:`tsp`"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:137
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:140
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:141
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:142
+msgid ":ref:`search`"
+msgstr ""

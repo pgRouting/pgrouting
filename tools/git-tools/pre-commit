@@ -1,0 +1,46 @@
+#!/bin/bash
+# ------------------------------------------------------------------------------
+# Git Tweaks
+# Copyright(c) pgRouting Contributors
+#
+# About:
+# ------
+# This script writes the current Git version into the VERSION file
+# To trigger this together with every commit, run
+#
+#	cp tools/pre-commit .git/hooks/pre-commit
+#
+# Note:
+# -----
+# The VERSION file is always one commit behind HEAD
+# ------------------------------------------------------------------------------
+
+if [[ $BRANCH == "gh-pages" ]]
+then
+    exit 0
+fi
+
+NOTES=`git diff HEAD --name-only doc/src/release_notes.rst`
+NOTES2NEWS=`git diff HEAD --name-only tools/release-scripts/notes2news.pl`
+NEWS=`git diff HEAD --name-only NEWS`
+
+if [[ "b$NOTES" == "bdoc/src/release_notes.rst" || "b$NOTES2NEWS" == "btools/release-scripts/notes2news.pl" || "b$NEWS" == "NEWS" ]]
+then
+    echo "CHANGED: 'doc/src/release_notes.rst' or 'tools/release-scripts/notes2news.pl' or 'NEWS'"
+    echo "Regenerating NEWS"
+    $GIT_DIR/../tools/release-scripts/notes2news.pl
+    git add $GIT_DIR/../doc/src/release_notes.rst
+    git add $GIT_DIR/../tools/release-scripts/notes2news.pl
+    git add $GIT_DIR/../NEWS
+fi
+
+
+
+COMMITS=`git rev-list HEAD --count`
+HASH=`git rev-parse --short HEAD`
+BRANCH=`git branch | grep '*' | awk '{print $2}'`
+if [[ $BRANCH == "develop" ]] 
+then 
+    echo $COMMITS-$HASH $BRANCH > $GIT_DIR/../VERSION
+    git add $GIT_DIR/../VERSION
+fi

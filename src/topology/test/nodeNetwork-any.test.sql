@@ -1,6 +1,6 @@
-BEGIN;
 --                pgr_nodeNetwork
 --------------------------------------------------------------------------------
+
 
 SELECT pgr_createTopology('edge_table', 0.001, clean := TRUE);
 SELECT pgr_analyzegraph('edge_table', 0.001);
@@ -22,4 +22,3 @@ SELECT pgr_analyzegraph('edge_table', 0.001,rows_where:='id not in (select old_i
 SELECT pgr_analyzegraph('edge_table', 0.001,rows_where:='old_id is null');
 SELECT pgr_analyzegraph('edge_table', 0.001);
 
-ROLLBACK;

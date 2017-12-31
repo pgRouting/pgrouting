@@ -1,0 +1,394 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/bdAstar-family.rst:13
+msgid "Bidirectional A* - Family of functions"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:17
+msgid ":ref:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:18
+msgid ""
+":ref:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of"
+" the paths."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:19
+msgid ""
+":ref:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a "
+"cost matrix of paths."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:33
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:35
+msgid ""
+"Based on A* algorithm, the bidirectional search finds a shortest path from a"
+" starting vertex (``start_vid``) to an ending vertex (``end_vid``). It runs "
+"two simultaneous searches: one forward from the ``start_vid``, and one "
+"backward from the ``end_vid``, stopping when the two meet in the middle. "
+"This implementation can be used with a directed graph and an undirected "
+"graph."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:42
+msgid "Characteristics"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:44
+msgid "The main Characteristics are:"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:46
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:47
+msgid "Values are returned when there is a path."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:49
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:51
+msgid "The `agg_cost` the non included values `(v, v)` is `0`"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:53
+msgid ""
+"When the starting vertex and ending vertex are the different and there is no"
+" path:"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:55
+msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:57
+msgid "Running time (worse case scenario): :math:`O((E + V) * \\log V)`"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:58
+msgid ""
+"For large graphs where there is a path bewtween the starting vertex and "
+"ending vertex:"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:60
+msgid "It is expected to terminate faster than pgr_astar"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:63
+msgid "Description of the Signatures"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Description of the edges_sql query for astar like functions"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid ""
+"an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/bdAstar-family.rst:75
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/bdAstar-family.rst:75
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/bdAstar-family.rst:78 ../../build/doc/bdAstar-family.rst:80
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "**source**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:22
+#: ../../build/doc/pgRouting-concepts.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "Weight of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "Weight of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "**x1**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "X coordinate of `source` vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "**y1**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Y coordinate of `source` vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "**x2**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "X coordinate of `target` vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "**y2**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "Y coordinate of `target` vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:30
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:72
+msgid "Description of the parameters of the signatures"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:75
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:77
+msgid "**edges_sql**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:77
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:77
+msgid "Edges SQL query as described above."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:78
+msgid "**start_vid**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:78
+msgid "Starting vertex identifier."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:79
+msgid "**start_vids**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:79 ../../build/doc/bdAstar-family.rst:81
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:79
+msgid "Starting vertices identifierers."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:80
+msgid "**end_vid**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:80
+msgid "Ending vertex identifier."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:81
+msgid "**end_vids**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:81
+msgid "Ending vertices identifiers."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:82
+msgid "**directed**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:82
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:82
+msgid "Optional."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:84
+msgid "When ``false`` the graph is considered as Undirected."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:85
+msgid "Default is ``true`` which considers the graph as Directed."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:87
+msgid "**heuristic**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:87
+msgid "``INTEGER``"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:87
+msgid "(optional). Heuristic number. Current valid values 0~5. Default ``5``"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:89
+msgid "0: h(v) = 0 (Use this value to compare with pgr_dijkstra)"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:90
+msgid "1: h(v) abs(max(dx, dy))"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:91
+msgid "2: h(v) abs(min(dx, dy))"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:92
+msgid "3: h(v) = dx * dx + dy * dy"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:93
+msgid "4: h(v) = sqrt(dx * dx + dy * dy)"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:94
+msgid "5: h(v) = abs(dx) + abs(dy)"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:96
+msgid "**factor**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:96 ../../build/doc/bdAstar-family.rst:97
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:96
+msgid ""
+"(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see "
+":ref:`astar_factor`"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:97
+msgid "**epsilon**"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:97
+msgid ""
+"(optional). For less restricted results. :math:`epsilon >= 1`.  Default "
+"``1``."
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:103
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:106
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:107
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/bdAstar-family.rst:108
+msgid ":ref:`search`"
+msgstr ""

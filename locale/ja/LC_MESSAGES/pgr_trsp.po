@@ -1,0 +1,281 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_trsp.rst:13
+msgid "pgr_trsp - Turn Restriction Shortest Path (TRSP)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:22
+msgid "Name"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:24
+msgid ""
+"``pgr_trsp`` — Returns the shortest path with support for turn restrictions."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:28
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:30
+msgid ""
+"The turn restricted shorthest path (TRSP) is a shortest path algorithm that "
+"can optionally take into account complicated turn restrictions like those "
+"found in real world navigable road networks. Performamnce wise it is nearly "
+"as fast as the A* search but has many additional features like it works with"
+" edges rather than the nodes of the network. Returns a set of "
+":ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that "
+"make up a path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:57
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:59
+msgid ""
+"The Turn Restricted Shortest Path algorithm (TRSP) is similar to the "
+"shooting star in that you can specify turn restrictions."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:61
+msgid ""
+"The TRSP setup is mostly the same as :ref:`Dijkstra shortest path "
+"<pgr_dijkstra>` with the addition of an optional turn restriction table. "
+"This provides an easy way of adding turn restrictions to a road network by "
+"placing them in a separate table."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:64 ../../build/doc/pgr_trsp.rst:120
+msgid ""
+"a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:71 ../../build/doc/pgr_trsp.rst:127
+msgid "``int4`` identifier of the edge"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:72 ../../build/doc/pgr_trsp.rst:128
+msgid "``int4`` identifier of the source vertex"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:73 ../../build/doc/pgr_trsp.rst:129
+msgid "``int4`` identifier of the target vertex"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:74 ../../build/doc/pgr_trsp.rst:130
+msgid ""
+"``float8`` value, of the edge traversal cost. A negative cost will prevent "
+"the edge from being inserted in the graph."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:75 ../../build/doc/pgr_trsp.rst:131
+msgid ""
+"(optional) the cost for the reverse traversal of the edge. This is only used"
+" when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the "
+"above remark about negative costs)."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:77
+msgid "``int4`` **NODE id** of the start point"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:78
+msgid "``int4`` **NODE id** of the end point"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:79 ../../build/doc/pgr_trsp.rst:134
+msgid "``true`` if the graph is directed"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:80 ../../build/doc/pgr_trsp.rst:135
+msgid ""
+"if ``true``, the ``reverse_cost`` column of the SQL generated set of rows "
+"will be used for the cost of the traversal of the edge in the opposite "
+"direction."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:82 ../../build/doc/pgr_trsp.rst:137
+msgid ""
+"(optional) a SQL query, which should return a set of rows with the following"
+" columns:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:88 ../../build/doc/pgr_trsp.rst:143
+msgid "``float8`` turn restriction cost"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:89 ../../build/doc/pgr_trsp.rst:144
+msgid "``int4`` target id"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:90
+msgid ""
+"``text`` comma separated list of edges in the reverse order of ``rule``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:92
+msgid ""
+"Another variant of TRSP allows to specify **EDGE id** of source and target "
+"together with a fraction to interpolate the position:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:94
+msgid "``int4`` **EDGE id** of the start edge"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:95
+msgid "``float8`` fraction of 1 defines the position on the start edge"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:96
+msgid "``int4`` **EDGE id** of the end edge"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:97
+msgid "``float8`` fraction of 1 defines the position on the end edge"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:99 ../../build/doc/pgr_trsp.rst:152
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:101 ../../build/doc/pgr_trsp.rst:154
+msgid "row sequence"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:102 ../../build/doc/pgr_trsp.rst:156
+msgid "node ID"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:103 ../../build/doc/pgr_trsp.rst:157
+msgid "edge ID (``-1`` for the last row)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:104
+msgid "cost to traverse from ``id1`` using ``id2``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:107 ../../build/doc/pgr_trsp.rst:162
+msgid "History"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:108
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:111
+msgid "Support for Vias"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:113
+msgid ""
+"The Support for Vias functions are prototypes. Not all corner cases are "
+"being considered."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:116
+msgid ""
+"We also have support for vias where you can say generate a from A to B to C,"
+" etc. We support both methods above only you pass an array of vertices or "
+"and array of edges and percentage position along the edge in two arrays."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:133
+msgid ""
+"``int4[]`` An ordered array of **NODE id** the path will go through from "
+"start to end."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:145
+msgid ""
+"``text`` commar separated list of edges in the reverse order of ``rule``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:147
+msgid ""
+"Another variant of TRSP allows to specify **EDGE id** together with a "
+"fraction to interpolate the position:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:149
+msgid "``int4`` An ordered array of **EDGE id** that the path has to traverse"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:150
+msgid ""
+"``float8`` An array of fractional positions along the respective edges in "
+"``eids``, where 0.0 is the start of the edge and 1.0 is the end of the "
+"eadge."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:155
+msgid "route ID"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:158
+msgid "cost to traverse from ``id2`` using ``id3``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:163
+msgid "Via Support prototypes new in version 2.1.0"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:166
+msgid "Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:168
+msgid "**Without turn restrictions**"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:175
+msgid "**With turn restrictions**"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:177
+msgid "Then a query with turn restrictions is created as:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:184
+msgid "An example query using vertex ids and via points:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:191
+msgid "An example query using edge ids and vias:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:198
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:202
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:204
+msgid ":ref:`type_cost_result`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:207
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:208
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:209
+msgid ":ref:`search`"
+msgstr ""

@@ -1,0 +1,310 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_bridges.rst:13
+msgid "pgr_bridges - Experimental"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:16
+msgid "``pgr_bridges`` - Return the bridges of an undirected graph."
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:21
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:29
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:31
+msgid ""
+"A bridge is an edge of an undirected graph whose deletion increases its "
+"number of connected components. This implementation can only be used with an"
+" undirected graph."
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:36
+msgid "Characteristics"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:38
+msgid "The main Characteristics are:"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:40
+msgid "The returned values are ordered:"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:42
+msgid "`edge` ascending"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:44
+msgid "Running time: :math:`O(E * (V + E))`"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:47
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:59
+msgid "The signature is for a **undirected** graph."
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:72
+msgid "Description of the Signatures"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:4
+msgid "Description of the edges_sql query for components functions"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:6
+msgid ""
+"an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:9
+#: ../../build/doc/components-family.rst:9
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:9
+#: ../../build/doc/components-family.rst:7
+#: ../../build/doc/components-family.rst:9
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:9
+#: ../../build/doc/components-family.rst:7
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:9
+#: ../../build/doc/components-family.rst:7
+#: ../../build/doc/components-family.rst:9
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:11
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:11
+#: ../../build/doc/components-family.rst:12
+#: ../../build/doc/components-family.rst:13
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:11
+#: ../../build/doc/components-family.rst:12
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:12
+msgid "**source**"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:12
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:13
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:13
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:14
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:14
+#: ../../build/doc/components-family.rst:18
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:14
+msgid "Weight of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:16
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:18
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:18
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:18
+msgid "Weight of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:20
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:24
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:26
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:27
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:4
+msgid "Description of the parameters of the signatures"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:7
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:9
+msgid "**edges_sql**"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:9
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:9
+msgid "SQL query as described above."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:4
+msgid "Description of the return values for bridges"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:6
+msgid "Returns set of ``(seq, node)``"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:11
+msgid "**seq**"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:11
+msgid "``INT``"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:11
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:12
+msgid "**edge**"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:12
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:88
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:90
+msgid "http://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:91
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:94
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:95
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:96
+msgid ":ref:`search`"
+msgstr ""

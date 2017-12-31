@@ -5,4 +5,3 @@ ADD_LIBRARY(ksp OBJECT
     withPoints_ksp_driver.cpp
     ksp_driver.cpp
     )
-

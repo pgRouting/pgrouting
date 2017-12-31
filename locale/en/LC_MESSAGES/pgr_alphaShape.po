@@ -1,0 +1,169 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_alphaShape.rst:13
+msgid "pgr_alphaShape"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:19
+msgid "Name"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:21
+msgid "``pgr_alphaShape`` — Core function for alpha shape computation."
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:25
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:27
+msgid ""
+"Returns a table with (x, y) rows that describe the vertices of an alpha "
+"shape."
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:35
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:37
+msgid ""
+"``text`` a SQL query, which should return a set of rows with the following "
+"columns:"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:43
+msgid "``int4`` identifier of the vertex"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:44
+msgid "``float8`` x-coordinate"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:45
+msgid "``float8`` y-coordinate"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:47
+msgid ""
+"(optional) ``float8`` alpha value. If specified alpha value equals 0 "
+"(default), then optimal alpha value is used. For more information, see `CGAL"
+" - 2D Alpha Shapes "
+"<http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html>`_."
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:50
+msgid "Returns a vertex record for each row:"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:52
+msgid "x-coordinate"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:53
+msgid "y-coordinate"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:55
+msgid ""
+"If a result includes multiple outer/inner rings, return those with separator"
+" row (x=NULL and y=NULL)."
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:58
+msgid "History"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:59
+msgid "Renamed in version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:60
+msgid ""
+"Added alpha argument with default 0 (use optimal value) in version 2.1.0"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:61
+msgid ""
+"Supported to return multiple outer/inner ring coordinates with separator row"
+" (x=NULL and y=NULL) in version 2.1.0"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:64
+msgid "Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:65
+msgid ""
+"PgRouting's alpha shape implementation has no way to control the order of "
+"the output points, so the actual output might different for the same input "
+"data. The first query, has the output ordered, he second query shows an "
+"example usage:"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:70
+msgid "Example: the (ordered) results"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:76
+msgid "Example: calculating the area"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:77
+msgid "Steps:"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:79
+msgid "Calculates the alpha shape"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:80
+msgid "the :code:`ORDER BY` clause is not used."
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:81
+msgid "constructs a polygon"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:82
+msgid "and computes the area"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:90
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:93
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:95
+msgid ":ref:`pgr_drivingDistance` - Driving Distance"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:96
+msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:99
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:100
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:101
+msgid ":ref:`search`"
+msgstr ""

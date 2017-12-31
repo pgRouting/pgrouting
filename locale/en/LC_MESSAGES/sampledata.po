@@ -1,0 +1,152 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/sampledata.rst:11
+msgid "Sample Data"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:13
+msgid ""
+"The documentation provides very simple example queries based on a small "
+"sample network. To be able to execute the sample queries, run the following "
+"SQL commands to create a table with a small network data set."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:18
+msgid "Create table"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:25
+msgid "Insert data"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:32
+msgid "Topology"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:33
+msgid ""
+"Before you test a routing function use this query to create a topology "
+"(fills the ``source`` and ``target`` columns)."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:40
+msgid "Points of interest"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:41
+msgid "When points outside of the graph."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:42
+msgid "Used with the :ref:`withPoints` functions."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:49
+msgid "Restrictions"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:50
+msgid "Used with the :ref:`trsp` functions."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:57
+msgid "Categories"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:58
+msgid "Used with the :ref:`maxFlow` functions."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:65
+msgid "Vertex table"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:66
+msgid "Used in some deprecated signatures or deprecated functions."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:74
+msgid "Images"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:76
+msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:77
+msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:78
+msgid "Points are outside the graph."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:79
+msgid "Click on the graph to enlarge."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:84
+msgid ""
+"Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost``"
+" columns are used"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:86
+msgid ""
+"When working with city networks, this is recommended for point of view of "
+"vehicles."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:91
+msgid "**Graph 1: Directed, with cost and reverse cost**"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:96
+msgid ""
+"Network for queries marked as ``undirected`` and ``cost`` and "
+"``reverse_cost`` columns are used"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:98
+msgid ""
+"When working with city networks, this is recommended for point of view of "
+"pedestrians."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:104
+msgid "**Graph 2: Undirected, with cost and reverse cost**"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:109
+msgid ""
+"Network for queries marked as ``directed`` and only ``cost`` column is used"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:116
+msgid "**Graph 3: Directed, with cost**"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:121
+msgid ""
+"Network for queries marked as ``undirected`` and only ``cost`` column is "
+"used"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:127
+msgid "**Graph 4: Undirected, with cost**"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:134
+msgid "Pick & Deliver Data"
+msgstr ""

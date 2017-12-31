@@ -1,0 +1,224 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_TSP.rst:13
+msgid "pgr_TSP"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:16
+msgid "Name"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:18
+msgid "``pgr_TSP`` - Returns a route that visits all the nodes exactly once."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:21
+msgid "Availability: 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:22
+msgid "Signature changed 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:26
+msgid "Synopsis"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:28
+msgid ""
+"The travelling salesman problem (TSP) or travelling salesperson problem asks"
+" the following question:"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:30
+msgid ""
+"Given a list of cities and the distances between each pair of cities, what "
+"is the shortest possible route that visits each city exactly once and "
+"returns to the origin city?"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:32
+msgid ""
+"This implementation uses simulated annealing to return the approximate "
+"solution when the input is given in the form of matrix cell contents. The "
+"matrix information must be symmetrical."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:37
+msgid "Signature Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:51
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:58
+msgid "Basic Use"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:67
+msgid ""
+"Because the documentation examples are auto generated and tested for non "
+"changing results, and the default is to have random execution, the example "
+"is wrapping the actual call."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:81
+msgid "Complete Signature"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:96
+msgid "Example:"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:103
+msgid "Description of the Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:106
+msgid "Description of the Matrix Cell SQL query"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:109
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:109
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:109
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:111
+msgid "**start_vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:111 ../../build/doc/pgr_TSP.rst:112
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:111
+msgid "Identifier of the starting vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:112
+msgid "**end_vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:112
+msgid "Identifier of the ending vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:113
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:113
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:113
+msgid "Cost for going from start_vid to end_vid"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:116
+msgid "Can be Used with:"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:118
+msgid ":ref:`pgr_dijkstraCostmatrix`"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:119
+msgid ":ref:`pgr_withPointsCostmatrix`"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:120
+msgid ":ref:`pgr_floydWarshall`"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:121
+msgid ":ref:`pgr_johnson`"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:123
+msgid "To generate a symmetric matrix"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:125
+msgid "directed := false."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:127
+msgid ""
+"If using directed := true, the resulting non symmetric matrix must be "
+"converted to symmetric by fixing the non symmetric values according to your "
+"application needs."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:145
+msgid "Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:147
+msgid "Using with points of interest."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:149
+msgid "To generate a symmetric matrix:"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:151
+msgid ""
+"the **side** information of pointsOfInterset is ignored by not including it "
+"in the query"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:152
+msgid "and **directed := false**"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:158
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:163
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:165
+msgid ":ref:`tsp`"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:166
+msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:167
+msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:170
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:171
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:172
+msgid ":ref:`search`"
+msgstr ""
