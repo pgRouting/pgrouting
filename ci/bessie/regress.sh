@@ -9,15 +9,22 @@ export PGROUTING_VER=$BRANCH
 #-------------------------
 # File used in Jenkins setup
 #-------------------------
+export PATH=${PATH}:/usr/local::/usr/local/lib::/usr/local/bin
+echo $PATH
+export PGUSER=postgres
+export PGROUTING_VER=$BRANCH
+
+rm -rf ${WORKSPACE}/build${BRANCH}
+mkdir ${WORKSPACE}/build${BRANCH}
 
 cmake --version
 
-cd ../build${PGROUTING_VER}
-cmake ../${PGROUTING_VER}
+cd ../build${BRANCH}
+cmake ../${BRANCH}
 
 make
 sudo make install
-cd ../${PGROUTING_VER}
+cd ../${BRANCH}
 perl tools/testers/algorithm-tester.pl
 
 psql -c "CREATE DATABASE ___pgr___test___"
