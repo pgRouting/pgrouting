@@ -29,7 +29,9 @@ This graph transformation algorithm generates a new graph that has an edge for e
 Characteristics
 -------------------------------------------------------------------------------
 
-  - This function only works on directed graphs.
+  - This function is intended for directed graphs.
+  - This function will give incorrect results if negative vertex ids are used in the input.
+  - This function will give incorrect results if duplicated edge ids are used in the input.
 
 Signature Summary
 -----------------
