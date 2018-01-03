@@ -20,6 +20,10 @@ Name
 
 ''pgr_lineGraphFull'' - Utility function for transforming a given graph into a form that supports shortest path searches with turn penalties and restrictions.
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 
 Synopsis
 -------------------------------------------------------------------------------
