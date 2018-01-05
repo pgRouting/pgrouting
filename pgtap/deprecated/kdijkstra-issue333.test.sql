@@ -3,7 +3,7 @@ SET client_min_messages= WARNING;
 
 SELECT plan(3);
 
-CREATE TABLE issue333 ( 
+CREATE TABLE issue333 (
     id serial,
     source integer,
     target integer,
@@ -19,17 +19,17 @@ SELECT seq-1, end_vid::integer, node::INTEGER, edge::INTEGER, cost FROM pgr_dijk
     'SELECT id, source, target, cost, reverse_cost FROM issue333',
     1, array[2], false);
 
-SELECT set_eq('q1', 
+SELECT set_eq('q1',
 'SELECT * FROM pgr_kDijkstraPath(
     ''SELECT id, source, target, cost, reverse_cost FROM issue333'',
     1, array[2], false, true)', '1');
 
-SELECT set_eq('q1', 
+SELECT set_eq('q1',
 'SELECT * FROM pgr_kDijkstraPath(
     ''SELECT id, source, target, cost, reverse_cost FROM issue333'',
     1, array[2], false, false)', '2');
 
-SELECT set_eq('q1', 
+SELECT set_eq('q1',
 'SELECT * FROM pgr_kDijkstraPath(
     ''SELECT id, source, target, cost, reverse_cost FROM issue333'',
     1, array[2], true, true)', '3');

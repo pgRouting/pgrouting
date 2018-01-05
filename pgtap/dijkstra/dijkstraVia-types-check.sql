@@ -17,7 +17,7 @@ SELECT pg_typeof(seq)::text AS t1, pg_typeof(path_id)::text AS path_id, pg_typeo
     pg_typeof(node)::text AS t5, pg_typeof(edge)::text AS t6,
     pg_typeof(cost)::text AS t7, pg_typeof(agg_cost)::TEXT AS t8,
     pg_typeof(route_agg_cost)::TEXT AS t9
-    FROM ( 
+    FROM (
         SELECT * FROM pgr_dijkstravia(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
             ARRAY[2,3,11]) ) AS a

@@ -53,7 +53,7 @@ SELECT * FROM pgr_dijkstraCostMatrix(
     directed:= false
 );
 
-CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -87,7 +87,7 @@ end_sql = ' FROM matrixrows $$, randomize := false)';
 END;
 $BODY$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION test_anyNumerical(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyNumerical(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE

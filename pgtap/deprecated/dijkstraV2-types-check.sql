@@ -11,8 +11,8 @@ SELECT can(ARRAY['pgr_dijkstra']);
 SELECT has_function('pgr_dijkstra', ARRAY['text','integer','integer','boolean','boolean']);
 SELECT function_returns('pgr_dijkstra', ARRAY['text','integer','integer','boolean','boolean'],'setof pgr_costresult');
 PREPARE v20q00 AS
-SELECT pg_typeof(seq)::text AS seq_t, pg_typeof(id1)::text AS id1_t, pg_typeof(id2)::text AS id2_1, pg_typeof(cost)::text AS cost_t 
-    FROM ( 
+SELECT pg_typeof(seq)::text AS seq_t, pg_typeof(id1)::text AS id1_t, pg_typeof(id2)::text AS id2_1, pg_typeof(cost)::text AS cost_t
+    FROM (
         SELECT * FROM pgr_dijkstra(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
             2, 3, true, true) ) AS a

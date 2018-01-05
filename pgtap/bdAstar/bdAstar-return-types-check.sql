@@ -18,8 +18,8 @@ SELECT function_returns('pgr_bdastar',
 PREPARE v21q00 AS
 SELECT pg_typeof(seq)::text AS t1, pg_typeof(path_seq)::text AS t2,
     pg_typeof(node)::text AS t5, pg_typeof(edge)::text AS t6,
-    pg_typeof(cost)::text AS t7, pg_typeof(agg_cost)::TEXT AS t8 
-    FROM ( 
+    pg_typeof(cost)::text AS t7, pg_typeof(agg_cost)::TEXT AS t8
+    FROM (
         SELECT * FROM pgr_bdastar(
             'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2 FROM edge_table',
             2, 3, true) ) AS a

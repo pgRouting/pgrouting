@@ -63,7 +63,7 @@ SELECT lives_ok('t4','pgr_pgr_maxflowpushrelabel(many to many)');
 
 -- preparing for testing return types
 PREPARE all_return AS
-SELECT  
+SELECT
     'integer'::text AS t1,
     'bigint'::text AS t2,
     'bigint'::text AS t3,

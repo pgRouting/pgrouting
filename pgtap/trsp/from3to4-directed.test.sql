@@ -30,7 +30,7 @@ SELECT seq, id1, id2, cost::text from pgr_trsp(
     'select 9::INTEGER as target_id, ''5''::TEXT as via_path,  100.2::FLOAT to_cost');
 
 PREPARE q32 AS
-SELECT (row_number() over() -1)::INTEGER, node::INTEGER, 
+SELECT (row_number() over() -1)::INTEGER, node::INTEGER,
 (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
 FROM pgr_dijkstraVia(
     'select id, source, target, cost, reverse_cost from edge_table',

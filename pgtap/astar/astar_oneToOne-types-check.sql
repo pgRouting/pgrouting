@@ -59,7 +59,7 @@ SELECT function_returns('pgr_astar',
         'integer', 'double precision', 'double precision'],
     'setof record');
 
-CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -75,13 +75,13 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM edge_table $$, 2, 3, true)';
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -93,7 +93,7 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION test_anyNumerical(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyNumerical(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -109,13 +109,13 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM edge_table $$, 2, 3, true)';
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -184,7 +184,7 @@ SELECT test_anyNumerical('pgr_astar',
     'y2');
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
         2, 3,
         true, 6, 1, 1)$$,
     'XX000',
@@ -193,7 +193,7 @@ SELECT throws_ok(
 );
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
         2, 3,
         true, -1, 1, 1)$$,
     'XX000',
@@ -202,7 +202,7 @@ SELECT throws_ok(
 );
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
         2, 3,
         true, 0, 0, 1)$$,
     'XX000',
@@ -211,7 +211,7 @@ SELECT throws_ok(
 );
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
         2, 3,
         true, 0, -1.4, 1)$$,
     'XX000',
@@ -220,7 +220,7 @@ SELECT throws_ok(
 );
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
         2, 3,
         true, 0, 1, -3)$$,
     'XX000',
@@ -228,7 +228,7 @@ SELECT throws_ok(
     'SHOULD THROW because epsilon < 0'
 );
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
         2, 3,
         true, 0, 1, 0.9)$$,
     'XX000',

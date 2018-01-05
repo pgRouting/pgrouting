@@ -35,7 +35,7 @@ SELECT set_has(
     'parameters');
 
 
-CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -72,7 +72,7 @@ end_sql = ' FROM edge_table $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)
 END;
 $BODY$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION test_anyNumerical(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyNumerical(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
