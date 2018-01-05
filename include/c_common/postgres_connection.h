@@ -54,6 +54,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "executor/spi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -81,7 +82,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include <funcapi.h>
 #include <fmgr.h>
 
 #ifdef __GNUC__
