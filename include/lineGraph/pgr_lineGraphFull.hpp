@@ -23,8 +23,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_
-#define INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_
+#ifndef INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
+#define INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
 #pragma once
 
 
@@ -114,8 +114,9 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
                     edge_id = source_edge_id;
                 }
 
-                if(vertex_id_map.find(e_source) == vertex_id_map.end()) {
-                    if(vertex_id_reverse_map.find(source_vertex_id) == vertex_id_reverse_map.end()) {
+                if (vertex_id_map.find(e_source) == vertex_id_map.end()) {
+                    if (vertex_id_reverse_map.find(source_vertex_id) ==
+                      vertex_id_reverse_map.end()) {
                         vertex_id_map[e_source] = source_vertex_id;
                         vertex_id_reverse_map[source_vertex_id] = e_source;
                     } else {
@@ -125,8 +126,9 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
                     }
                 }
 
-                if(vertex_id_map.find(e_target) == vertex_id_map.end()) {
-                    if(vertex_id_reverse_map.find(target_vertex_id) == vertex_id_reverse_map.end()) {
+                if (vertex_id_map.find(e_target) == vertex_id_map.end()) {
+                    if (vertex_id_reverse_map.find(target_vertex_id) ==
+                      vertex_id_reverse_map.end()) {
                         vertex_id_map[e_target] = target_vertex_id;
                         vertex_id_reverse_map[target_vertex_id] = e_target;
                     } else {
@@ -298,4 +300,4 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_
+#endif  // INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
