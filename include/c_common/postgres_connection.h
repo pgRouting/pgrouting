@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #ifdef __MSVC__
-#pragma warning(disable : 4200)  
+#pragma warning(disable : 4200)
 #endif
 
 #include <postgres.h>
@@ -53,7 +53,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "executor/spi.h"
+#include <executor/spi.h>
 #include <funcapi.h>
 
 #ifdef __GNUC__
