@@ -193,7 +193,8 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
                     });
             pv.erase(std::unique(pv.begin(), pv.end()), pv.end());
             if (pv.size() != count &&  pv.size() < 3) {
-                err << "After eliminating duplicated points, less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.";
+                err << "After eliminating duplicated points,"
+                   " less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.";
                 *err_msg = pgr_msg(err.str().c_str());
                 return -1;
             }
