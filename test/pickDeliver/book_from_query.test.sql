@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS vrp_solution;
 CREATE TABLE jet_stops (
     id SERIAL,
     iata_faa TEXT,
-    city TEXT, 
+    city TEXT,
     x integer,
     y integer,
     longitude double precision,
@@ -57,7 +57,7 @@ CREATE TABLE jet_orders AS
     num_passengers AS demand,
     (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS p_x,
     (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS p_y,
-    
+
     departureFromTime AS p_open,
     arrivalToTime AS p_close,
 
@@ -71,7 +71,7 @@ CREATE TABLE jet_orders AS
 
     FROM jet_flyers;
 
- 
+
 --
 CREATE TABLE jet_airplane AS
 SELECT
@@ -98,7 +98,7 @@ SELECT * FROM _pgr_pickDeliverEuclidean(
 CREATE TABLE jet_trips AS
 WITH the_results AS (
 SELECT vrp_solution.*,  from_airport, to_airport,
-CASE WHEN stop_type = 1 THEN ST_POINT(p_x, p_y) 
+CASE WHEN stop_type = 1 THEN ST_POINT(p_x, p_y)
         WHEN stop_type = 2 THEN ST_POINT(d_x, d_y)
         WHEN stop_type = 0 THEN  ST_POINT(start_x, start_y)
     END AS geom

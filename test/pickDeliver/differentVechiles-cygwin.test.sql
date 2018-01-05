@@ -17,7 +17,7 @@ FROM _pgr_pickDeliverEuclidean(
 WITH
 orders_id AS (
     SELECT id FROM orders
-), 
+),
 results_id AS (
     SELECT DISTINCT order_id AS id
     FROM results
@@ -28,7 +28,7 @@ SELECT count(*)=53 FROM orders_id LEFT JOIN results_id USING(ID);
 
 WITH
 the_results AS (
-    SELECT * 
+    SELECT *
     FROM results
 )
 SELECT ((SELECT max(vehicle_number) FROM results) * 2 + 53 * 2 + 1) =

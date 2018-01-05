@@ -38,7 +38,7 @@ FROM contraction_results
 WHERE type = 'v' AND edge_table_vertices_pgr.id = contraction_results.id;
 
 \echo -- q7
-SELECT id, contracted_vertices, is_contracted 
+SELECT id, contracted_vertices, is_contracted
 FROM edge_table_vertices_pgr
 ORDER BY id;
 
@@ -49,7 +49,7 @@ FROM contraction_results
 WHERE type = 'e';
 
 \echo -- q9
-SELECT id, source, target, cost, reverse_cost, contracted_vertices, is_contracted 
+SELECT id, source, target, cost, reverse_cost, contracted_vertices, is_contracted
 FROM edge_table
 ORDER BY id;
 
@@ -64,8 +64,8 @@ SELECT * FROM pgr_dijkstra(
     WITH
     vertices_in_graph AS (
         SELECT id  FROM edge_table_vertices_pgr WHERE is_contracted = false)
-    SELECT id, source, target, cost, reverse_cost 
-    FROM edge_table 
+    SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
     WHERE source IN (SELECT * FROM vertices_in_graph)
     AND target IN (SELECT * FROM vertices_in_graph)
     $$,
@@ -163,7 +163,7 @@ SELECT edge, contracted_vertices
     ON (edge = id)
     WHERE is_contracted = true;
 
-\echo -- case5q2 
+\echo -- case5q2
 
 SELECT * FROM pgr_dijkstra($$
     WITH

@@ -232,7 +232,7 @@ SELECT * FROM edges;
 
 WITH
 results AS (
-    SELECT * from pgr_xydtsp($$select * from 
+    SELECT * from pgr_xydtsp($$select * from
         pgr_eucledianDmatrix('SELECT id::integer, st_x(the_geom) as x, st_y(the_geom) as y FROM edge_table_vertices_pgr')$$, 6, 5)
 ),
 geoms AS (

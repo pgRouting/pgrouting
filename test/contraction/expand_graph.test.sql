@@ -34,7 +34,7 @@ SELECT id, source, target, cost, reverse_cost, is_contracted, contracted_vertice
 SELECT id, is_contracted, contracted_vertices FROM edge_table_vertices_pgr;
 
 
--- update the added columns to the above tables 
+-- update the added columns to the above tables
 -- based on the results of contraction query
 CREATE OR REPLACE FUNCTION pgr_update_contraction_columns(
 	edge_table text,
@@ -58,22 +58,22 @@ total := 0;
 query := 'SELECT * FROM pgr_contractGraph('|| quote_literal(edge_table)||', ' || quote_literal(forbidden_vertices)||', ' || quote_literal(contraction_order)||', ' || quote_literal(max_cycles)||', ' || quote_literal(directed) || ')';
     FOR row IN EXECUTE(query)
     LOOP
-        
+
         -- contracted_vertices_array := row.contracted_vertices;
-        -- If it is a vertex we update the two columns of the vertex table 
+        -- If it is a vertex we update the two columns of the vertex table
         IF row.type = 'v' THEN
             total := total + 1;
             -- raise notice 'vertex';
-            update_query := 'UPDATE edge_table_vertices_pgr SET contracted_vertices = array_append(contracted_vertices, ';  
+            update_query := 'UPDATE edge_table_vertices_pgr SET contracted_vertices = array_append(contracted_vertices, ';
             FOREACH contracted_vertex IN ARRAY row.contracted_vertices
             LOOP
-                EXECUTE update_query || quote_literal(contracted_vertex) 
+                EXECUTE update_query || quote_literal(contracted_vertex)
                 || ') WHERE id = ' || quote_literal(row.id);
                 EXECUTE 'UPDATE edge_table_vertices_pgr SET is_contracted = true WHERE id = '
                 || quote_literal(contracted_vertex);
                 -- raise notice 'cv: %', contracted_vertex;
             END LOOP;
-        -- If it is an edge we insert a new entry to the edge table 
+        -- If it is an edge we insert a new entry to the edge table
         ELSEIF row.type = 'e' THEN
             total := total + 1;
             -- raise notice 'edge';
@@ -123,11 +123,11 @@ BEGIN
         FOREACH contracted_vertex IN ARRAY row.contracted_vertices
         LOOP
             EXECUTE 'INSERT INTO ' || quote_ident(contracted_vertex_table) || '(id, is_contracted)' ||' VALUES ('
-            || quote_literal(contracted_vertex) || ', false);';   
+            || quote_literal(contracted_vertex) || ', false);';
         END LOOP;
         -- Adding the edges(id < 0) between these vertices to the edge table
-        EXECUTE 'INSERT INTO ' 
-        || quote_ident(contracted_edge_table) 
+        EXECUTE 'INSERT INTO '
+        || quote_ident(contracted_edge_table)
         || ' SELECT * FROM ' || quote_ident(original_edge_table)
         || ' WHERE source = ANY(' || quote_literal(row.contracted_vertices) || ')'
         || ' OR target = ANY(' || quote_literal(row.contracted_vertices) || ')'
@@ -136,7 +136,7 @@ BEGIN
     END LOOP;
 
     -- Removing all those edges with id < 0
-    EXECUTE 'DELETE FROM ' 
+    EXECUTE 'DELETE FROM '
     || quote_ident(contracted_edge_table)
     || ' WHERE id < 0';
 
@@ -147,18 +147,18 @@ BEGIN
         FOREACH contracted_vertex IN ARRAY row.contracted_vertices
         LOOP
             EXECUTE 'INSERT INTO ' || quote_ident(contracted_vertex_table) || '(id, is_contracted)' ||' VALUES ('
-            || quote_literal(contracted_vertex) || ', false);';    
+            || quote_literal(contracted_vertex) || ', false);';
         END LOOP;
         -- Adding the edges(id < 0) between these vertices to the edge table
-        EXECUTE 'INSERT INTO ' 
-        || quote_ident(contracted_edge_table) 
+        EXECUTE 'INSERT INTO '
+        || quote_ident(contracted_edge_table)
         || ' SELECT * FROM ' || quote_ident(original_edge_table)
         || ' WHERE source = ANY(' || quote_literal(row.contracted_vertices) || ')'
         || ' OR target = ANY(' || quote_literal(row.contracted_vertices) || ')'
         || ' AND id > 0';
     EXECUTE 'UPDATE '
     || quote_ident(contracted_vertex_table)
-    || ' SET contracted_vertices = NULL' 
+    || ' SET contracted_vertices = NULL'
     || ' WHERE array_length(contracted_vertices, 1) > 0 ';
     END LOOP;
 
