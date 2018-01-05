@@ -8,7 +8,7 @@ create table vrp_orders (
     service_time integer,
     x float8,
     y float8
-     
+
 );
 
 copy vrp_orders (id, x, y, order_unit, open_time, close_time, service_time) from stdin;
@@ -119,7 +119,7 @@ drop table if exists vrp_vehicles cascade;
 create table vrp_vehicles (
     vehicle_id integer not null primary key,
     capacity integer,
-    case_no integer   
+    case_no integer
 );
 
 copy vrp_vehicles (vehicle_id, capacity, case_no) from stdin;

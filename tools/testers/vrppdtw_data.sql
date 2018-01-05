@@ -9,7 +9,7 @@ CREATE table customer (
     closetime INTEGER,
     servicetime INTEGER,
     pindex BIGINT,
-    dindex BIGINT 
+    dindex BIGINT
 );
 
 

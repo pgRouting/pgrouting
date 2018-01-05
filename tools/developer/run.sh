@@ -3,7 +3,7 @@
 #
 # base script for developers
 # copy to the root of the repository
-# 
+#
 
 set -e
 
@@ -15,7 +15,7 @@ fi
 VERSION=$1
 
 
-function test_compile {                                                                                                                                                                                                          
+function test_compile {
 
 echo ------------------------------------
 echo ------------------------------------
@@ -65,10 +65,10 @@ tools/testers/algorithm-tester.pl
 
 dropdb --if-exists ___pgr___test___
 createdb  ___pgr___test___
-sh ./tools/testers/pg_prove_tests.sh vicky 
+sh ./tools/testers/pg_prove_tests.sh vicky
 dropdb  ___pgr___test___
 
-#tools/testers/update-tester.sh 
+#tools/testers/update-tester.sh
 
 }
 
@@ -95,6 +95,6 @@ gource --seconds-per-day 0.1 \
     --disable-auto-rotate \
     ----file-idle-time 10 \
     -f -1280x720 \
-    --output-ppm-stream release-2.4.ppm 
+    --output-ppm-stream release-2.4.ppm
 
 ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i release-2.4.ppm -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 release-2.4.mp4

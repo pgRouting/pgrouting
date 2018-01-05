@@ -34,7 +34,7 @@ MINOR=$2
 MICRO=$3
 FULL_VER="$MINOR.$MICRO"
 
-function test_compile {                                                                                                                                                                                                          
+function test_compile {
 
 echo
 echo
@@ -50,7 +50,7 @@ touch tmp_make_err.txt
 cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=$DEBUG .. >> tmp_make.txt
 
 #if [[ "$1" == "4.8" ]]; then
-#    make doc >> tmp_make.txt 
+#    make doc >> tmp_make.txt
 #    echo "  - [x] Build Users documentation"
 #    make doxy >> tmp_make.txt
 #    echo "  - [x] Build developers documentation"
@@ -78,7 +78,7 @@ if [[ "$1" == "4.8" ]]; then
     tools/testers/algorithm-tester.pl -documentation >> build/tmp_make.txt
     echo "  - [x] Regenerating Users documentation queries OK"
     cd build
-    make doc >> tmp_make.txt 
+    make doc >> tmp_make.txt
     echo "  - [x] Build Users documentation OK"
     make doxy >> tmp_make.txt
     echo "  - [x] Build developers documentation OK"

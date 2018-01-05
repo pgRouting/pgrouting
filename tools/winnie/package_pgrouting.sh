@@ -1,6 +1,6 @@
 # CHANGE THESE TO SUIT YOUR PROJECT
 #all these get passed in by jenkins
-#export OS_BUILD=64 
+#export OS_BUILD=64
 #export PG_VER=9.2
 #export PGHOST=localhost
 #export PGPORT=8442
@@ -14,7 +14,7 @@
 export PGUSER=postgres
 
 #this should be setup as a mapping in msys/etc/fstab to where you keep your projects
-export PROJECTS=/projects 
+export PROJECTS=/projects
 export PATHOLD=$PATH
 
 #export PATHOLD=".:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows:/usr/local/bin:/c/ming64/Silksvn/bin:/c/Program Files (x86)/Git/bin"
@@ -30,11 +30,11 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	BOOST_VER=1.59.0
 	BOOST_VER_WU=1_59_0
 	BOOST_VER_WUM=1_59
-else 
+else
   GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=3.9
-	BOOST_VER=1.46.1 
+	BOOST_VER=1.46.1
 fi;
 
 #cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}/build/lib

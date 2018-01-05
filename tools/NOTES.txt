@@ -110,7 +110,7 @@ cd gaul-devel-0.1849-0
 # Edit "util/gaul/gaul_config.h" and "util/gaul/gaul_config_win.h"
 # define FUNCPROTO __declspec (dllimport)
 #        -> # define FUNCPROTO
-                    
+
 make
 #*** If "values.h: No such file or directory" error occurred, execute as follows.
 #*** $ touch /mingw/x86_64-w64-mingw32/include/values.h
@@ -162,4 +162,4 @@ BINDIR=`pg_config --bindir`
 echo "run --single -E -d 3 -D /etc/postgresql/9.2/main/ test_apsp"
 echo "select (r).vertex_id, (r).edge_id, round((r).cost::numeric, 6) from ( select pgr_bd_dijkstra('select * from bdd_ways'::text, 6585, 8247, true, true) as r ) as foo;"
 
-sudo -u postgres gdb $BINDIR/postgres 
+sudo -u postgres gdb $BINDIR/postgres

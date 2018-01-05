@@ -1,13 +1,13 @@
 #!/bin/bash
 # ------------------------------------------------------------------------------
-# Travis CI scripts 
+# Travis CI scripts
 # Copyright(c) pgRouting Contributors
 #
 # Build pgRouting
 # ------------------------------------------------------------------------------
 
 # exit script on error
-set -e 
+set -e
 
 # build pgRouting
 mkdir build
