@@ -13,7 +13,7 @@ SELECT * FROM pgr_contractGraph(
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
    1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
 (1 row)
@@ -22,7 +22,7 @@ SELECT * FROM pgr_contractGraph(
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id < 3',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
    1 | v    |  3 | {1,2}               |     -1 |     -1 |   -1
 (1 row)
@@ -31,7 +31,7 @@ SELECT * FROM pgr_contractGraph(
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
    1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
    2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
@@ -50,10 +50,10 @@ SELECT * FROM pgr_contractGraph(
 -- \echo --q4 -------------------------------------------
 */
 SELECT * FROM pgr_contractGraph(
-	'SELECT id, source, target, cost, reverse_cost FROM edge_table 
+	'SELECT id, source, target, cost, reverse_cost FROM edge_table
 	WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
 	ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
 (0 rows)
 

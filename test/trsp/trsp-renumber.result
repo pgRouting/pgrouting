@@ -6,7 +6,7 @@ SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, (source+10)::INTEGER AS source, (target+10)::INTEGER AS target, cost::FLOAT FROM edge_table',
         17, 22, false, false
     );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   17 |   6 |    1
    1 |   18 |   7 |    1
@@ -21,7 +21,7 @@ CREATE TABLE new_restrictions (
     path BIGINT[],
     cost float);
 CREATE TABLE
-INSERT INTO new_restrictions (path, cost) VALUES 
+INSERT INTO new_restrictions (path, cost) VALUES
  (ARRAY[4,7],   100),
  (ARRAY[8,11],  100),
  (ARRAY[7,01],  100),
@@ -34,7 +34,7 @@ SELECT * FROM _pgr_trsp(
     $$ SELECT 1 AS id, ARRAY[4,7] AS path, 100 AS cost $$,
     2, 7, false
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    2 |    4 |    1 |        0
    2 |        2 |    5 |   10 |    1 |        1
@@ -51,7 +51,7 @@ SELECT * FROM _pgr_trsp(
     $$ SELECT * FROM new_restrictions $$,
     2, 7, false
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    2 |    4 |    1 |        0
    2 |        2 |    5 |   10 |    1 |        1

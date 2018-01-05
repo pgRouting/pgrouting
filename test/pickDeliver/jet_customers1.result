@@ -161,7 +161,7 @@ INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, 
 INSERT 0 1
 INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 0, 2138409.5568088419, -119451.50568778868, 0, 0, 0, 0, 7200000, 0);
 INSERT 0 1
-WITH                      
+WITH
 customer_data AS (SELECT * FROM jet_customers),
 pickups AS (
     SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
@@ -176,7 +176,7 @@ SELECT 36
 WITH
 customer_data AS (select * from jet_customers)
 SELECT id, x AS start_x, y AS start_y,
-    opentime AS start_open, closetime AS start_close, 
+    opentime AS start_open, closetime AS start_close,
     5 AS capacity,  10  AS number INTO jet_vehicles
 FROM customer_data WHERE id = 0 LIMIT 1;
 SELECT 1
@@ -186,7 +186,7 @@ FROM _pgr_pickDeliverEuclidean(
     $$ SELECT * FROM jet_vehicles $$
 )
 ROLLBACK;
- seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time  
+ seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time
 -----+----------------+------------+-------------+----------+-----------+-------+------------------+------------------+-----------+--------------+------------------
    1 |              1 |          0 |           1 |       -1 |         1 |     0 |                0 |                0 |         0 |            0 |                0
    2 |              1 |          0 |           2 |       43 |         2 |     5 |                0 |                0 |      3624 |       450000 |           453624

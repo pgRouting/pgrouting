@@ -28,7 +28,7 @@ SELECT  * INTO result2 FROM pgr_lineGraphFull(
 );
 SELECT 638
 SELECT count(*) FROM result2;
- count 
+ count
 -------
    638
 (1 row)
@@ -45,13 +45,13 @@ FROM foo
 ORDER BY id;
 SELECT 604
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
- count 
+ count
 -------
      0
 (1 row)
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
- count 
+ count
 -------
    604
 (1 row)
@@ -60,13 +60,13 @@ UPDATE result2_vertices_pgr AS r SET original_id = v.id
 FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
 UPDATE 256
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
- count 
+ count
 -------
    256
 (1 row)
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
- count 
+ count
 -------
    348
 (1 row)
@@ -79,13 +79,13 @@ e AS (SELECT DISTINCT c.target, c.original_id FROM c JOIN result2_vertices_pgr A
 UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.target = id;
 UPDATE 240
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
- count 
+ count
 -------
    496
 (1 row)
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
- count 
+ count
 -------
    108
 (1 row)
@@ -98,13 +98,13 @@ e AS (SELECT DISTINCT c.source, c.original_id FROM c JOIN result2_vertices_pgr A
 UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.source = id;
 UPDATE 78
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
- count 
+ count
 -------
    574
 (1 row)
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
- count 
+ count
 -------
     30
 (1 row)
@@ -115,13 +115,13 @@ c AS (SELECT id,source FROM edge_table WHERE id IN (SELECT edge FROM b))
 UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
 UPDATE 30
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
- count 
+ count
 -------
    589
 (1 row)
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
- count 
+ count
 -------
     15
 (1 row)
@@ -132,13 +132,13 @@ c AS (SELECT id,target FROM edge_table WHERE id IN (SELECT edge FROM b))
 UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
 UPDATE 15
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
- count 
+ count
 -------
    604
 (1 row)
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
- count 
+ count
 -------
      0
 (1 row)

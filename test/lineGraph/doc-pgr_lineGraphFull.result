@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_lineGraphFull(
     'SELECT id, source, target, cost FROM edge_table'
 );
- seq | source | target | cost | edge 
+ seq | source | target | cost | edge
 -----+--------+--------+------+------
    1 |      1 |      2 |    1 |    1
    2 |     -1 |      5 |    1 |    4

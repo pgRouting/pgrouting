@@ -6,7 +6,7 @@ SET
 SELECT DISTINCT(id1) FROM pgr_gsoc_vrppdtw(
     'SELECT * FROM customer ORDER BY id', 25, 200)
 ORDER BY id1;
- id1 
+ id1
 -----
    1
    2
@@ -23,7 +23,7 @@ ORDER BY id1;
 --q2
 SELECT count(*) FROM pgr_gsoc_vrppdtw(
     'SELECT * FROM customer ORDER BY id', 25, 200);
- count 
+ count
 -------
    126
 (1 row)
@@ -32,7 +32,7 @@ SELECT count(*) FROM pgr_gsoc_vrppdtw(
 SELECT * FROM pgr_gsoc_vrppdtw(
     'SELECT * FROM customer ORDER BY id', 25, 200)
     WHERE id1 in (1, 5, 9);
- seq | id1 | id2 |       cost       
+ seq | id1 | id2 |       cost
 -----+-----+-----+------------------
    1 |   1 |   0 |                0
    2 |   1 |  13 | 120.805843601499

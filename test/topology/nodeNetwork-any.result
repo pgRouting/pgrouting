@@ -11,7 +11,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -31,7 +31,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -49,13 +49,13 @@ NOTICE:   Untouched Edges: 15
 NOTICE:         Total New segments: 21
 NOTICE:   New Table: public.edge_table_noded
 NOTICE:  ----------------------------------
- pgr_nodenetwork 
+ pgr_nodenetwork
 -----------------
  OK
 (1 row)
 
 SELECT old_id,sub_id FROM edge_table_noded ORDER BY old_id,sub_id;
- old_id | sub_id 
+ old_id | sub_id
 --------+--------
       1 |      1
       2 |      1
@@ -89,7 +89,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  21 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table_noded is: public.edge_table_noded_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -109,7 +109,7 @@ NOTICE:                            Dead ends: 6
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -123,7 +123,7 @@ insert into edge_table (old_id,dir,cost,reverse_cost,the_geom)
    (with
        segmented as (select old_id,count(*) as i from edge_table_noded group by old_id)
    select  segments.old_id,dir,cost,reverse_cost,segments.the_geom
-       from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id) 
+       from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id)
        where edges.id in (select old_id from segmented where i>1) );
 INSERT 0 6
 SELECT pgr_createTopology('edge_table', 0.001);
@@ -135,7 +135,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  6 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -155,7 +155,7 @@ NOTICE:                            Dead ends: 6
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -175,7 +175,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -195,7 +195,7 @@ NOTICE:                            Dead ends: 3
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 5
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
