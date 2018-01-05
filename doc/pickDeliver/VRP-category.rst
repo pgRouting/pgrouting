@@ -146,7 +146,6 @@ Inner Queries
 - :ref:`Description of the return columns for Euclidean version <return_vrp_euclidean_start>`
 
 
-
 ..
     see include/c_types/pickDeliver/pickDeliveryOrders_t.h documentation
 
@@ -207,22 +206,7 @@ Column            Type                       Description
 
 
 ..
-   info[0].name = strdup("id");
-   info[1].name = strdup("capacity");
-   info[2].name = strdup("start_x");
-   info[3].name = strdup("start_y");
-   info[4].name = strdup("number");
-   info[5].name = strdup("start_open");
-   info[6].name = strdup("start_close");
-   info[7].name = strdup("start_service");
-   info[8].name = strdup("end_x");
-   info[9].name = strdup("end_y");
-   info[10].name = strdup("end_open");
-   info[11].name = strdup("end_close");
-   info[12].name = strdup("end_service");
-   info[13].name = strdup("speed");
-   info[14].name = strdup("start_node_id");
-   info[15].name = strdup("end_node_id");
+    see include/c_types/pickDeliver/vehicle_t.h documentation
 
 
 .. _pd_vehicle_sql:

@@ -112,45 +112,24 @@ do_pgr_withPoints(
         pgassert(start_pidsArr);
         pgassert(end_pidsArr);
 
-        std::vector< Point_on_edge_t >
-            points(points_p, points_p + total_points);
+        pgrouting::Pg_points_graph pg_graph(
+                std::vector<Point_on_edge_t>(
+                    points_p,
+                    points_p + total_points),
+                std::vector< pgr_edge_t >(
+                    edges_of_points,
+                    edges_of_points + total_edges_of_points),
+                normal,
+                driving_side,
+                directed);
 
-        if (!normal) {
-            for (auto &point : points) {
-                if (point.side == 'r') {
-                    point.side = 'l';
-                } else if (point.side == 'l') {
-                    point.side = 'r';
-                }
-                point.fraction = 1 - point.fraction;
-            }
-            if (driving_side == 'r') {
-                driving_side = 'l';
-            } else if (driving_side == 'l') {
-                driving_side = 'r';
-            }
-        }
-
-        int errcode = check_points(points, log);
-        if (errcode) {
-            *log_msg = strdup(log.str().c_str());
-            err << "Unexpected point(s) with same pid"
-                << " but different edge/fraction/side combination found.";
+        if (pg_graph.has_error()) {
+            log << pg_graph.get_log();
+            err << pg_graph.get_error();
+            *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
             return;
         }
-
-
-        std::vector< pgr_edge_t >
-            edges_to_modify(
-                    edges_of_points, edges_of_points + total_edges_of_points);
-
-        std::vector< pgr_edge_t > new_edges;
-        create_new_edges(
-                points,
-                edges_to_modify,
-                driving_side,
-                new_edges, log);
 
 
         std::vector<int64_t>
@@ -159,7 +138,7 @@ do_pgr_withPoints(
             end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
 
         auto vertices(pgrouting::extract_vertices(edges, total_edges));
-        vertices = pgrouting::extract_vertices(vertices, new_edges);
+        vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -169,7 +148,7 @@ do_pgr_withPoints(
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(vertices, gType);
             digraph.insert_edges(edges, total_edges);
-            digraph.insert_edges(new_edges);
+            digraph.insert_edges(pg_graph.new_edges());
 
             paths = pgr_dijkstra(
                     digraph,
@@ -179,7 +158,7 @@ do_pgr_withPoints(
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(vertices, gType);
             undigraph.insert_edges(edges, total_edges);
-            undigraph.insert_edges(new_edges);
+            undigraph.insert_edges(pg_graph.new_edges());
             paths = pgr_dijkstra(
                     undigraph,
                     start_vertices, end_vertices,
@@ -188,7 +167,7 @@ do_pgr_withPoints(
 
         if (!details) {
             for (auto &path : paths) {
-                eliminate_details(path, edges_to_modify);
+                path = pg_graph.eliminate_details(path);
             }
         }
 
@@ -211,17 +190,16 @@ do_pgr_withPoints(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-#if 0
-            log <<
-                "No paths found";
-            *err_msg = pgr_msg(log.str().c_str());
-#endif
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
+
+        log << "************************************************";
+        log << pg_graph.get_log();
+        log << "************************************************";
 
         *log_msg = log.str().empty()?
             *log_msg :

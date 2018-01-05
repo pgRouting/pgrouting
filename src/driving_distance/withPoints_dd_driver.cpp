@@ -87,39 +87,34 @@ do_pgr_many_withPointsDD(
         pgassert(edges_of_points);
         pgassert(start_pidsArr);
 
+
+        pgrouting::Pg_points_graph pg_graph(
+                std::vector<Point_on_edge_t>(
+                    points_p,
+                    points_p + total_points),
+                std::vector< pgr_edge_t >(
+                    edges_of_points,
+                    edges_of_points + total_edges_of_points),
+                true,
+                driving_side,
+                directed);
+
+        if (pg_graph.has_error()) {
+            log << pg_graph.get_log();
+            err << pg_graph.get_error();
+            *log_msg = pgr_msg(log.str().c_str());
+            *err_msg = pgr_msg(err.str().c_str());
+            return;
+        }
+
+
+
         /*
          * storing on C++ containers
          */
         std::vector<int64_t> start_vids(
                 start_pidsArr, start_pidsArr + s_len);
 
-        std::vector<Point_on_edge_t>
-            points(points_p, points_p + total_points);
-
-        std::vector<pgr_edge_t> edges_to_modify(
-                edges_of_points, edges_of_points + total_edges_of_points);
-
-        log << "start_vids :";
-        for (const auto v : start_vids) log << v << ", ";
-        /*
-         * checking here is easier than on the C code
-         */
-        int errcode = check_points(points, log);
-        if (errcode) {
-            *log_msg = strdup(log.str().c_str());
-            err << "Unexpected point(s) with same pid"
-                << " but different edge/fraction/side combination found.";
-            *err_msg = pgr_msg(err.str().c_str());
-            return;
-        }
-
-        std::vector< pgr_edge_t > new_edges;
-        create_new_edges(
-                points,
-                edges_to_modify,
-                driving_side,
-                new_edges,
-                log);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -128,13 +123,14 @@ do_pgr_many_withPointsDD(
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
-            digraph.insert_edges(new_edges);
+            digraph.insert_edges(pg_graph.new_edges());
             paths = pgr_drivingDistance(
                     digraph, start_vids, distance, equiCost, log);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
-            undigraph.insert_edges(new_edges);
+            undigraph.insert_edges(pg_graph.new_edges());
+
             paths = pgr_drivingDistance(
                     undigraph, start_vids, distance, equiCost, log);
         }
@@ -143,7 +139,7 @@ do_pgr_many_withPointsDD(
             log << path;
 
             if (!details) {
-                eliminate_details_dd(path);
+                pg_graph.eliminate_details_dd(path);
             }
             log << path;
             std::sort(path.begin(), path.end(),

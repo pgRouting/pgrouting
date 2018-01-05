@@ -7,9 +7,26 @@ To see the issues closed by this release see the [Git closed milestone for 2.6.0
 
 *Bug fixes*
 
-* Cleaned the internal code of trsp(text, integer, integer, boolean, boolean [, text])
+* Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])
+
+  * without restrictions
+
+    * calls pgr_dijkstra when both end points have a fraction IN (0,1)
+    * calls pgr_withPoints when at least one fraction NOT IN (0,1)
+
+  * with restrictions
+
+    * calls original trsp code
+
+*Internal code*
+
+* Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, text])
+
   * Removed the use of pointers
   * Internal code can accept BIGINT
+
+* Cleaned the internal code of withPoints
+  
 
 
 

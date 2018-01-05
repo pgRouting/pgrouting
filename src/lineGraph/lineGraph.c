@@ -72,11 +72,11 @@ process(
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
-    PGR_DBG("SQL QUERY: %s\n", edges_sql);
+    PGR_DBG("\nSQL QUERY: %s\n", edges_sql);
     if (directed) {
-        PGR_DBG("Directed Graph\n");
+        PGR_DBG("\nDirectedGraph\n");
     } else {
-      PGR_DBG("Undirected Graph\n");
+      PGR_DBG("\nUndirectedGraph\n");
     }
     pgr_SPI_connect();
 
@@ -91,7 +91,7 @@ process(
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
-        PGR_DBG("No edges found Nothing to do");
+        PGR_DBG("No edges found");
         pgr_SPI_finish();
         return;
     }

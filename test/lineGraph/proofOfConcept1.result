@@ -207,6 +207,16 @@ d AS (SELECT c.target, v.original_id FROM c JOIN result2_vertices_pgr as v ON (s
 e AS (SELECT DISTINCT c.source, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(source = r.id AND r.original_id IS NULL))
 UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.source = id;
 UPDATE 13
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
+c AS (SELECT id,source FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
+UPDATE 0
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
+c AS (SELECT id,target FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
+UPDATE 0
 SELECT * FROM result2_vertices_pgr;
   id   | original_id 
 -------+-------------
@@ -583,77 +593,5 @@ SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
    6 |        6 |      2000 |    3000 | 3000 |   -1 |    0 |        5
 (6 rows)
 
-/*
--- all the results
-SELECT seq, path_seq, 
-    (SELECT original_id FROM result2_vertices_pgr WHERE start_vid = id) AS start_vid, 
-    (SELECT original_id FROM result2_vertices_pgr WHERE end_vid = id) AS end_vid,
-    (SELECT original_id FROM result2_vertices_pgr WHERE node = id) AS node,
-    coalesce((SELECT r.edge FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
-FROM q_result_1 AS q;
-
--- only from 4 to 10
-SELECT seq, path_seq, 
-    (SELECT original_id FROM result2_vertices_pgr WHERE start_vid = id) AS start_vid, 
-    (SELECT original_id FROM result2_vertices_pgr WHERE end_vid = id) AS end_vid,
-    (SELECT original_id FROM result2_vertices_pgr WHERE node = id) AS node,
-    coalesce((SELECT abs(r.edge) FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
-FROM q_result_1 AS q
-WHERE start_vid = 4 AND end_vid = 10;
-
--- only from 4 to 10 eliminating 0 cost rows
-SELECT seq, path_seq, 
-    (SELECT original_id FROM result2_vertices_pgr WHERE start_vid = id) AS start_vid, 
-    (SELECT original_id FROM result2_vertices_pgr WHERE end_vid = id) AS end_vid,
-    (SELECT original_id FROM result2_vertices_pgr WHERE node = id) AS node,
-    coalesce((SELECT abs(r.edge) FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
-FROM q_result_1 AS q
-WHERE start_vid = 4 AND end_vid = 10 AND (
-    cost != 0 OR edge = -1 OR path_seq = 1);
-
-
-
--- original result
-SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
-    ARRAY[2000]::BIGINT[], ARRAY[3000]::BIGINT[]);
-
--- only from 4 to 10 eliminating 0 cost rows
-SELECT seq, path_seq, 
-    (SELECT original_id FROM result2_vertices_pgr WHERE node = id) AS node,
-    coalesce((SELECT abs(r.edge) FROM result2 AS r WHERE q.edge = r.seq), -1) AS edge, cost, agg_cost
-FROM q_result_1 AS q
-WHERE start_vid = 4 AND end_vid = 10 AND (
-    cost != 0 OR edge = -1 OR path_seq = 1);
-
--- original result
-SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
-    2000, 3000);
-
-
-------------------------------------------------------------------------------------------------------
-
--- updating the original result due to the fact that it needs original vertices numbering vertex
-UPDATE result1
-SET source = result2.source,
-    target = result2.target
-FROM result2
-WHERE result1.seq = result2.seq;
-
-SELECT * FROM result1 JOIN result2 USING (seq, source, target);
-
--- Objective: generte in result2 the columns that were removed from result1
--- restrictions: using only data from the following tables
--- edge_table & edge_table_vertices_pgr
--- result2 & result2_vertices_pgr tables
-
--- comparing with original result
-SELECT * FROM result1 JOIN result2
-USING (seq, source, target, cost,
-    original_source_vertex, original_target_vertex,
-    original_source_edge, original_target_edge
-);
-
-
-*/
 ROLLBACK;
 ROLLBACK
