@@ -73,15 +73,13 @@ Pg_points_graph::Pg_points_graph(
         std::vector<pgr_edge_t>      p_edges_of_points,
         bool p_normal,
         char p_driving_side,
-        bool p_directed
-        ) :
+        bool p_directed) :
     m_points(p_points),
     m_o_points(p_points),
     m_edges_of_points(p_edges_of_points),
     m_normal(p_normal),
     m_driving_side(p_driving_side),
-    m_directed(p_directed)
-{
+    m_directed(p_directed) {
     if (!p_normal) {
         reverse_sides();
     }
@@ -186,7 +184,7 @@ Pg_points_graph::eliminate_details_dd(
     Path newPath(path.start_id(), path.end_id());
     auto edge_id = path.start_id() < 0?
         get_edge_id(path.start_id()) :
-        -1 ;
+        -1;
 
     for (auto pathstop : path) {
         /*
