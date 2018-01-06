@@ -28,40 +28,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/**
- *  postgres_connection.h
- *
- *  - should always be first in the C code
- */
 #include "c_common/postgres_connection.h"
-
-
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges information */
 #include "c_common/edges_input.h"
-
-#include "drivers/lineGraph/lineGraphFull_driver.h"  // the link to the C++ code of the function
+#include "drivers/lineGraph/lineGraphFull_driver.h"  
 
 PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(lineGraphFull);
 
-
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
         char* edges_sql,
         Line_graph_full_rt **result_tuples,
         size_t *result_count) {
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
     PGR_DBG("\nSQL QUERY: %s\n", edges_sql);
     PGR_DBG("\nDirectedGraph\n");
     pgr_SPI_connect();
@@ -119,35 +101,18 @@ PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     Line_graph_full_rt  *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-           TEXT
-         **********************************************************************/
-
-
         PGR_DBG("Calling process");
         process(text_to_cstring(PG_GETARG_TEXT_P(0)),
                 &result_tuples,
                 &result_count);
-
-
-        /*                                                                    */
-        /**********************************************************************/
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -188,7 +153,6 @@ PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS) {
 
         size_t c_cntr = funcctx->call_cntr;
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(c_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[c_cntr].source);
         values[2] = Int64GetDatum(result_tuples[c_cntr].target);
@@ -199,13 +163,7 @@ PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-
         PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }

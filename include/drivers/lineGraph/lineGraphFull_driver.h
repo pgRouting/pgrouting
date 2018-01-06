@@ -38,12 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-    directed BOOLEAN DEFAULT true,
-     ********************************************************/
-
-
     void
         do_pgr_lineGraphFull(
                 pgr_edge_t  *data_edges,
