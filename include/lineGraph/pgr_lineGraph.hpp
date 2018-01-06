@@ -176,8 +176,9 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
            /* for( all incoming edges in to vertex v) */
             for (boost::tie(e_outIt, e_outEnd) =
-                    boost::out_edges(vertex, digraph.graph); e_outIt !=
-                    e_outEnd; e_outIt++) {
+                    boost::out_edges(vertex, digraph.graph);
+                    e_outIt != e_outEnd;
+                    e_outIt++) {
                 /* for( all outgoing edges out from vertex v) */
                 for (boost::tie(e_inIt, e_inEnd) =
                         boost::in_edges(vertex, digraph.graph);
