@@ -57,7 +57,7 @@ static
 void
 process(
         char* edges_sql,
-        Line_graph_rt **result_tuples,
+        Line_graph_full_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -122,7 +122,7 @@ PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    Line_graph_rt  *result_tuples = NULL;
+    Line_graph_full_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -169,7 +169,7 @@ PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Line_graph_rt*) funcctx->user_fctx;
+    result_tuples = (Line_graph_full_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -193,7 +193,7 @@ PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS) {
         values[1] = Int64GetDatum(result_tuples[c_cntr].source);
         values[2] = Int64GetDatum(result_tuples[c_cntr].target);
         values[3] = Float8GetDatum(result_tuples[c_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[c_cntr].reverse_cost);
+        values[4] = Int64GetDatum(result_tuples[c_cntr].edge);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

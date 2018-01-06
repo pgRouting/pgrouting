@@ -80,14 +80,14 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
         return log;
     }
 
-    std::vector< Line_graph_rt >
+    std::vector< Line_graph_full_rt >
         get_postgres_results_directed() {
-            std::vector< Line_graph_rt > results;
+            std::vector< Line_graph_full_rt > results;
 
             typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
             std::map <
                 std::pair<int64_t, int64_t >,
-                Line_graph_rt > unique;
+                Line_graph_full_rt > unique;
             auto count = 0;
             auto vertex_count = 0;
             std::map < int64_t, int64_t > vertex_id_map;
@@ -107,7 +107,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
                 auto source_vertex_id = source_vertex_edge_pair.first;
                 auto source_edge_id = source_vertex_edge_pair.second;
 
-                auto edge_id = 0.0;
+                int64_t edge_id = 0;
                 auto e_cost = 0.0;
                 if (source_edge_id == target_edge_id) {
                     e_cost = m_edge_costs[source_edge_id];
@@ -143,7 +143,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
                     << " e_target = " << e_target
                     << "\n";
 #endif
-                Line_graph_rt edge = {
+                Line_graph_full_rt edge = {
                     ++count,
                     vertex_id_map[e_source],
                     vertex_id_map[e_target],
