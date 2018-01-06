@@ -159,7 +159,7 @@ Visually the graph is
 @image html  twoNodesoneEdge_a.png
 
 @dot
-digraph G { 
+digraph G {
     1 -> 2 [label="id = 1"];
     2 [color = lightblue,style=filled];
 }
