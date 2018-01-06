@@ -57,7 +57,7 @@ The main Characteristics are:
 - Running time (worse case scenario): :math:`O((E + V) * \log V)`
 - For large graphs where there is a path bewtween the starting vertex and ending vertex:
 
-  - It is expected to terminate faster than pgr_astar 
+  - It is expected to terminate faster than pgr_astar
 
 Description of the Signatures
 --------------------------------

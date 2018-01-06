@@ -1,8 +1,8 @@
-# 
+#
 # Find Sphinx
 # Find Sphinx executable to build documentation
 # Source: http://ericscottbarr.com/blog/2012/03/sphinx-and-cmake-beautiful-documentation-for-c-projects/
-# 
+#
 # Daniel Kastl 03/2013
 #
 
@@ -40,7 +40,7 @@ option(EPUB
 option(DUMMY
     "Set ON|OFF (default=OFF) for debugging purposes" OFF)
 
-if (LOCALE) 
+if (LOCALE)
     set(WITH_DOC ON)
 endif()
 
@@ -82,11 +82,11 @@ set(PgRouting_ENGLISH "en")
 # Language options
 #---------------------------------------------
 option(WITH_ALL_LANG
-    "Set ON|OFF (default=OFF) to build all the supported languages: 
+    "Set ON|OFF (default=OFF) to build all the supported languages:
     Main Language will always be built:
     ${PgRouting_ENGLISH}
     Optional languages:
-    ${PgRouting_SUPPORTED_LANGUAGES} 
+    ${PgRouting_SUPPORTED_LANGUAGES}
 
     When OFF and want to build specific optional language, use the language code in capital letters:
     -D ES=ON
@@ -224,11 +224,11 @@ set(ENV{SPHINXINTL_LANGUAGE} ${SPHINXINTL_LANGUAGE})
 
 if (LOCALE)
     add_custom_target(locale
-        COMMAND ${SPHINX_EXECUTABLE} 
+        COMMAND ${SPHINX_EXECUTABLE}
         -b gettext
-        -c "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-        "${CMAKE_SOURCE_DIR}/locale/pot" 
+        -c "${PGR_DOCUMENTATION_SOURCE_DIR}"
+        "${PGR_DOCUMENTATION_SOURCE_DIR}"
+        "${CMAKE_SOURCE_DIR}/locale/pot"
 
     COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale --language=${SPHINXINTL_LANGUAGE}
 
@@ -239,7 +239,7 @@ endif()
 
 
 # The doc target will build all documentation targets.
-add_custom_target(doc 
+add_custom_target(doc
     COMMENT "Building documentation with Sphinx")
 
 
@@ -254,21 +254,21 @@ foreach (target ${PgRouting_DOC_TARGETS})
     foreach (lang ${PgRouting_BUILD_LANGUAGES})
         add_custom_target(
             "${target}-${lang}"
-            COMMAND ${SPHINX_EXECUTABLE} 
-            #-q  # Enable for quiet mode 
+            COMMAND ${SPHINX_EXECUTABLE}
+            #-q  # Enable for quiet mode
             #-Q  # Enable for even more quiet mode
             -v   # increase verbosity
             #-E  # don't use a saved environment, always read all file
             #-a  # write all files; default is to only write new and changed files
             -b ${target}
             -D language='${lang}'
-            -c "${PGR_DOCUMENTATION_SOURCE_DIR}" 
-            "${PGR_DOCUMENTATION_SOURCE_DIR}" 
+            -c "${PGR_DOCUMENTATION_SOURCE_DIR}"
+            "${PGR_DOCUMENTATION_SOURCE_DIR}"
             "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/${lang}"
 
             COMMENT "Generating ${target}/${lang} documentation ..."
-            SOURCES ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES} 
-            DEPENDS ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES} 
+            SOURCES ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES}
+            DEPENDS ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES}
             )
         add_dependencies(${target} "${target}-${lang}")
 

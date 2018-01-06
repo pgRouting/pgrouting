@@ -60,7 +60,7 @@ Signatures
     RETURNS SET OF (seq, component, n_seq, node)
         OR EMPTY SET
 
-The signature is for a **undirected** graph. 
+The signature is for a **undirected** graph.
 
 :Example:
 

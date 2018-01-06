@@ -40,14 +40,14 @@ Characteristics
 Signature Summary
 -----------------
 
-.. code-block:: none 
+.. code-block:: none
 
     pgr_lineGraphFull(edges_sql)
 
-    RETURNS SET OF (seq, 
-                    source, 
-                    target, 
-                    cost, 
+    RETURNS SET OF (seq,
+                    source,
+                    target,
+                    cost,
                     edge) OR EMPTY SET
 
 Example Usage
@@ -55,7 +55,7 @@ Example Usage
 
 This example displays how this graph transformation works to create additional edges for each possible turn in a graph.
 
-.. code-block:: none 
+.. code-block:: none
 
     SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5, 8, 9, 11);
 
@@ -64,7 +64,7 @@ This example displays how this graph transformation works to create additional e
 .. |first| image:: images/original.png
    :align: middle
 
-.. code-block:: none 
+.. code-block:: none
 
     SELECT * FROM pgr_lineGraphFull('SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5, 8, 9, 11)');
 

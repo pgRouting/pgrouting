@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -131,7 +131,7 @@ pgr_bdAstar One to many
     pgr_bdAstar(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in ``end_vids`` allowing the user to choose 
+This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in ``end_vids`` allowing the user to choose
     * if the graph is **directed** or **undirected**
     * and/or **heuristic**,
     * and/or **factor**
@@ -156,7 +156,7 @@ pgr_bdAstar Many to One
     pgr_bdAstar(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to the ``end_vid`` allowing the user to choose 
+This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to the ``end_vid`` allowing the user to choose
     * if the graph is **directed** or **undirected**
     * and/or **heuristic**,
     * and/or **factor**
@@ -180,7 +180,7 @@ pgr_bdAstar Many to Many
     pgr_bdAstar(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to each ``end_vid`` in ``end_vids`` allowing the user to choose 
+This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to each ``end_vid`` in ``end_vids`` allowing the user to choose
     * if the graph is **directed** or **undirected**
     * and/or **heuristic**,
     * and/or **factor**

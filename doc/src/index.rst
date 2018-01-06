@@ -48,7 +48,7 @@ Pgrouting Concepts
    :maxdepth: 2
 
    pgRouting-concepts
-   
+
 
 .. rubric:: Reference
 
@@ -101,7 +101,7 @@ Pgrouting Concepts
 .. include:: routingFunctions.rst
    :start-after: from-here
    :end-before: to-here
-    
+
 
 
 Available Functions but not official pgRouting functions

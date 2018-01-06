@@ -37,7 +37,7 @@ Synopsis
 - When the maximum flow is 0 then there is no flow and **0** is returned.
 
   - There is no flow when a **source** is the same as a **target**.
-      
+
 - Any duplicated value in the source(s) or target(s) are ignored.
 - Uses the :ref:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
 
