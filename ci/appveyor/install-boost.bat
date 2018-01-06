@@ -10,7 +10,7 @@ if not defined MSVC_VER goto _error
 if not defined ARCH goto _error
 if not defined BUILD_ROOT_DIR goto _error
 if not defined CONFIGURATION goto _error
-    
+
 if defined BOOST_LOCAL_DEBUG (
     echo "install-boost.bat"
     echo received environment
