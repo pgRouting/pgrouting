@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_lineGraphFull(
     OUT source BIGINT,
     OUT target BIGINT,
     OUT cost FLOAT,
-    OUT edge FLOAT)
+    OUT edge BIGINT)
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'lineGraphFull'

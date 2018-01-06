@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: line_graph_rt.h
+File: line_graph_full_rt.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307@gmail.com
+Copyright (c) 2018 Anthony Tasca
+Mail: atasca10@gmail.com
 
 ------
 
@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_LINE_GRAPH_RT_H_
-#define INCLUDE_C_TYPES_LINE_GRAPH_RT_H_
+#ifndef INCLUDE_C_TYPES_LINE_GRAPH_FULL_RT_H_
+#define INCLUDE_C_TYPES_LINE_GRAPH_FULL_RT_H_
 #pragma once
 
 
@@ -65,7 +65,7 @@ typedef struct {
     int64_t source;
     int64_t target;
     double cost;
-    double reverse_cost;
-} Line_graph_rt;
+    int64_t edge;
+} Line_graph_full_rt;
 
-#endif  // INCLUDE_C_TYPES_LINE_GRAPH_RT_H_
+#endif  // INCLUDE_C_TYPES_LINE_GRAPH_FULL_RT_H_

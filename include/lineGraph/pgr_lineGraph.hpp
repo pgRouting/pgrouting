@@ -52,13 +52,11 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
 
     explicit Pgr_lineGraph< G, T_V, T_E >(graphType gtype)
-        : Pgr_base_graph< G, T_V, T_E >(gtype)
-        {
+        : Pgr_base_graph< G, T_V, T_E >(gtype) {
         }
 
     Pgr_lineGraph< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
-        : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED)
-        {
+        : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED) {
             insert_vertices(digraph);
             create_edges(digraph);
         }
@@ -131,11 +129,10 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
     void insert_vertices(
             const pgrouting::DirectedGraph& digraph) {
-
         auto es = boost::edges(digraph.graph);
         for (auto eit = es.first; eit != es.second; ++eit) {
             auto edge = *eit;
-            Line_vertex vertex( {
+            Line_vertex vertex({
                     digraph[edge].id,
                     digraph[boost::source(edge, digraph.graph)].id,
                     digraph[boost::target(edge, digraph.graph)].id,
@@ -179,13 +176,12 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
            /* for( all incoming edges in to vertex v) */
             for (boost::tie(e_outIt, e_outEnd) =
-                    boost::out_edges(vertex, digraph.graph); e_outIt != e_outEnd;
-                    e_outIt++) {
+                    boost::out_edges(vertex, digraph.graph); e_outIt !=
+                    e_outEnd; e_outIt++) {
                 /* for( all outgoing edges out from vertex v) */
                 for (boost::tie(e_inIt, e_inEnd) =
                         boost::in_edges(vertex, digraph.graph);
                         e_inIt != e_inEnd; e_inIt++) {
-
                     /*
                        Prevent self-edges from being created in the Line Graph
                        */
@@ -213,9 +209,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
 
  public:
     std::ostringstream log;
-
 };
-
 }  // namespace graph
 }  // namespace pgrouting
 

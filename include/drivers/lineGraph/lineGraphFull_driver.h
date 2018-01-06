@@ -32,23 +32,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "c_types/pgr_edge_t.h"
-#include "c_types/line_graph_rt.h"
+#include "c_types/line_graph_full_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-    directed BOOLEAN DEFAULT true,
-     ********************************************************/
-
-
     void
         do_pgr_lineGraphFull(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                Line_graph_rt **return_tuples,
+                Line_graph_full_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

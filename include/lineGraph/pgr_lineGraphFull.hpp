@@ -23,8 +23,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_
-#define INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_
+#ifndef INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
+#define INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
 #pragma once
 
 
@@ -80,14 +80,14 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
         return log;
     }
 
-    std::vector< Line_graph_rt >
+    std::vector< Line_graph_full_rt >
         get_postgres_results_directed() {
-            std::vector< Line_graph_rt > results;
+            std::vector< Line_graph_full_rt > results;
 
             typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
             std::map <
                 std::pair<int64_t, int64_t >,
-                Line_graph_rt > unique;
+                Line_graph_full_rt > unique;
             auto count = 0;
             auto vertex_count = 0;
             std::map < int64_t, int64_t > vertex_id_map;
@@ -107,15 +107,16 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
                 auto source_vertex_id = source_vertex_edge_pair.first;
                 auto source_edge_id = source_vertex_edge_pair.second;
 
-                double edge_id = 0;
-                double e_cost = 0;
+                int64_t edge_id = 0;
+                auto e_cost = 0.0;
                 if (source_edge_id == target_edge_id) {
                     e_cost = m_edge_costs[source_edge_id];
                     edge_id = source_edge_id;
                 }
 
-                if(vertex_id_map.find(e_source) == vertex_id_map.end()) {
-                    if(vertex_id_reverse_map.find(source_vertex_id) == vertex_id_reverse_map.end()) {
+                if (vertex_id_map.find(e_source) == vertex_id_map.end()) {
+                    if (vertex_id_reverse_map.find(source_vertex_id) ==
+                      vertex_id_reverse_map.end()) {
                         vertex_id_map[e_source] = source_vertex_id;
                         vertex_id_reverse_map[source_vertex_id] = e_source;
                     } else {
@@ -125,8 +126,9 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
                     }
                 }
 
-                if(vertex_id_map.find(e_target) == vertex_id_map.end()) {
-                    if(vertex_id_reverse_map.find(target_vertex_id) == vertex_id_reverse_map.end()) {
+                if (vertex_id_map.find(e_target) == vertex_id_map.end()) {
+                    if (vertex_id_reverse_map.find(target_vertex_id) ==
+                      vertex_id_reverse_map.end()) {
                         vertex_id_map[e_target] = target_vertex_id;
                         vertex_id_reverse_map[target_vertex_id] = e_target;
                     } else {
@@ -141,7 +143,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
                     << " e_target = " << e_target
                     << "\n";
 #endif
-                Line_graph_rt edge = {
+                Line_graph_full_rt edge = {
                     ++count,
                     vertex_id_map[e_source],
                     vertex_id_map[e_target],
@@ -163,7 +165,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
             int64_t original_vertex_id,
             int64_t original_edge_id) {
         m_transformation_map[this->num_vertices() + 1] =
-            std::pair<int64_t, double>(original_vertex_id, original_edge_id);
+            std::pair<int64_t, int64_t>(original_vertex_id, original_edge_id);
         m_vertex_map[std::pair<int64_t, int64_t>(original_vertex_id,
                                                  original_edge_id)] =
             this->num_vertices() + 1;
@@ -289,7 +291,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
  private:
     int64_t m_num_edges;
     std::map < int64_t, double > m_edge_costs;
-    std::map < int64_t, std::pair< int64_t, double > > m_transformation_map;
+    std::map < int64_t, std::pair< int64_t, int64_t > > m_transformation_map;
     std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;
 
  public:
@@ -298,4 +300,4 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_LINEGRAPHFULL_PGR_LINEGRAPHFULL_HPP_
+#endif  // INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
