@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_floydWarshall(
     'SELECT id, source, target, cost FROM edge_table where id < 5'
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |       2 |        1
          1 |       5 |        2
@@ -18,7 +18,7 @@ SELECT * FROM pgr_floydWarshall(
     'SELECT id, source, target, cost FROM edge_table where id < 5',
     false
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |       2 |        1
          1 |       5 |        2

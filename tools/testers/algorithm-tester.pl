@@ -325,8 +325,13 @@ sub process_single_test{
     #closes the input file  /TIN = test input
     close(TIN);
 
-    print "\n" if $DOCUMENTATION;
-    return if $DOCUMENTATION;
+    if ($DOCUMENTATION) {
+        print "\n";
+        my $cmd = q (perl -pi -e 's/[ \t]+$//') .  " doc/queries/$x.queries";
+        print "$cmd\n";
+        mysystem( $cmd );
+        return;
+    }
 
     my $dfile;
     my $dfile2;
