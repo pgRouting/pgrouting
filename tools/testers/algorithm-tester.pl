@@ -328,7 +328,6 @@ sub process_single_test{
     if ($DOCUMENTATION) {
         print "\n";
         my $cmd = q (perl -pi -e 's/[ \t]+$//') .  " doc/queries/$x.queries";
-        print "$cmd\n";
         mysystem( $cmd );
         return;
     }
