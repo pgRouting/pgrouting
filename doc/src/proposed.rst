@@ -162,16 +162,20 @@ Experimental Functions
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
-.. rubric:: Graph Transformation
+.. rubric:: Graph Operations
 
-:ref:`pgr_lineGraph`
-:ref:`pgr_lineGraphFull`
+:ref:`transformation` - Maps a given graph to a new form
+
+.. include:: transformation-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
 .. toctree::
   :hidden:
 
   pgr_lineGraph
   pgr_lineGraphFull
+  transformation-family
 
 See Also
 -------------------------------------------------------------------------------

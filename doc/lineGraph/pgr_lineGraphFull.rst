@@ -9,7 +9,7 @@
 
 .. _pgr_linegraphfull:
 
-pgr_lineGraphFull
+pgr_lineGraphFull - Experimental
 ===============================================================================
 
 .. index::
@@ -18,7 +18,7 @@ pgr_lineGraphFull
 Name
 ------------------------------------------------------------------------------
 
-''pgr_lineGraphFull'' - Utility function for transforming a given graph into a form that supports shortest path searches with turn penalties and restrictions.
+''pgr_lineGraphFull'' - Graph transformation function for creating a new graph where all of the vertices from the original graph are converted to line graphs.
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
@@ -28,14 +28,14 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-This graph transformation algorithm generates a new graph that has an edge for every edge in the original graph, and an additional edge for each possible turn that can be made by a path through the graph. Because of this, these new edges can then be removed from the graph in order to apply turn restrictions, or the cost of these edges can be modified to apply turn penalties.
+This graph transformation algorithm generates a new graph that contains all of the same edges of the original graph except every vertex has been converted to a line graph. One application for this type of graph transformation is to allow for the addition of a cost to turning in shortest path calcuations for routing traffic. This can be done because each of the intersections (vertices) in the original graph are now line graphs that have a new edge for each possible turn across that intersection.
 
 Characteristics
 -------------------------------------------------------------------------------
 
-  - This function is intended for directed graphs.
-  - This function will currently give incorrect results if negative vertex ids are used in the input.
-  - This function will currently give incorrect results if duplicated edge ids are used in the input.
+- This function is intended for directed graphs.
+- This function will currently give incorrect results if negative vertex ids are used in the input.
+- This function will currently give incorrect results if duplicated edge ids are used in the input.
 
 Signature Summary
 -----------------
@@ -73,7 +73,7 @@ This example displays how this graph transformation works to create additional e
 .. |second| image:: images/transformation.png
    :align: middle
 
-In the transformed graph, all of the edges from the original graph are still present, but we now have additional edges for every turn that could be made across vertex 6. This graph can now be used to apply turn penalties and restrictions for routing problems by removing or adding costs to these new edges.
+In the transformed graph, all of the edges from the original graph are still present (yellow), but we now have additional edges for every turn that could be made across vertex 6 (orange).
 
 Sample Data Results
 -------------------------------------------------------------------------------
