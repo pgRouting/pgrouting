@@ -12,13 +12,7 @@
 pgr_lineGraphFull - Experimental
 ===============================================================================
 
-.. index::
-        single: pgr_lineGraphFull(text)
-
-Name
-------------------------------------------------------------------------------
-
-''pgr_lineGraphFull'' - Graph transformation function for creating a new graph where all of the vertices from the original graph are converted to line graphs.
+``pgr_lineGraphFull`` — Transforms a given graph into a new graph where all of the vertices from the original graph are converted to line graphs.
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
@@ -28,7 +22,9 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-This graph transformation algorithm generates a new graph that contains all of the same edges of the original graph except every vertex has been converted to a line graph. One application for this type of graph transformation is to allow for the addition of a cost to turning in shortest path calcuations for routing traffic. This can be done because each of the intersections (vertices) in the original graph are now line graphs that have a new edge for each possible turn across that intersection.
+This graph transformation algorithm generates a new graph that contains all of the same edges of the original graph except every vertex has been converted to a line graph. 
+
+One application for this type of graph transformation is to allow for the addition of a cost to turning in shortest path calcuations for routing traffic. This can be done because each of the intersections (vertices) in the original graph are now line graphs that have a new edge for each possible turn across that intersection.
 
 Characteristics
 -------------------------------------------------------------------------------
