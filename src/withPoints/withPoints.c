@@ -75,7 +75,12 @@ process(
     size_t total_points = 0;
     pgr_get_points(points_sql, &points, &total_points);
 
-
+#ifndef NDEBUG
+    size_t i;
+    for (i = 0; i< total_points; i++) {
+        PGR_DBG("%d ", points[i].pid);
+    }
+#endif
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
     get_new_queries(
