@@ -168,7 +168,7 @@ dropdb  -p $PGPORT ___pgr___test___
 
 }
 
-# modify the gcc version value here
+# Uncomment what you need
 #rm -rf build/*
 #test_compile 4.8
 #rm -rf build/*

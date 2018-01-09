@@ -13,6 +13,11 @@ set -e
 mkdir build
 cd build
 cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DWITH_DOC=ON -DCMAKE_BUILD_TYPE=Debug ..
-make
-sudo make install
-make doc
+
+if [[ "$DOCUMENTATION" == "ON" ]]
+then
+    make doc
+else
+    make
+    sudo make install
+fi

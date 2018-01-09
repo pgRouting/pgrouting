@@ -336,19 +336,21 @@ sub process_single_test{
     my $dfile2;
     if ($ignore) { #decide how to compare results, if ignoring or not ignoring
         $dfile2 = $TMP2;
-        mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
+        mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile2");
         $dfile = $TMP3;
-        mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+        mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile");
     }
     elsif ($DEBUG1) { #to delete CONTEXT lines
         $dfile2 = $TMP2;
-        mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' > $dfile2");
+        mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile2");
         $dfile = $TMP3;
-        mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' > $dfile");
+        mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile");
     }
     else {
-        $dfile = "$dir/$x.result";
-        $dfile2 = $TMP;
+        $dfile2 = $TMP2;
+        mysystem("grep -v '^COPY' '$TMP' | grep -v 'psql:tools' > $dfile2");
+        $dfile = $TMP3;
+        mysystem("grep -v '^COPY' '$dir/$x.result' | grep -v 'psql:tools' > $dfile");
     }
     if (! -f "$dir/$x.result") {
         $res->{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";

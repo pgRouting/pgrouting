@@ -1,10 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
 # Travis CI scripts
 # Copyright(c) pgRouting Contributors
 #
 # Test pgRouting
 # ------------------------------------------------------------------------------
+
+if [[ "$DOCUMENTATION" == "ON" ]]
+then
+    exit 0
+fi
+
 
 PGDATABASE="pgr_test__db__test"
 
