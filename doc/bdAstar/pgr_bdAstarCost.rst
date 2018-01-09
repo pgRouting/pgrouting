@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -93,7 +93,7 @@ pgr_bdAstarCost One to One
     pgr_bdAstarCost(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in ``end_vids`` allowing the user to choose 
+This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in ``end_vids`` allowing the user to choose
     * if the graph is **directed** or **undirected**
     * **heuristic**,
     * and/or **factor**
@@ -120,7 +120,7 @@ pgr_bdAstarCost One to many
     pgr_bdAstarCost(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in ``end_vids`` allowing the user to choose 
+This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in ``end_vids`` allowing the user to choose
     * if the graph is **directed** or **undirected**
     * and/or **heuristic**,
     * and/or **factor**
@@ -145,7 +145,7 @@ pgr_bdAstarCost Many to One
     pgr_bdAstarCost(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to the ``end_vid`` allowing the user to choose 
+This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to the ``end_vid`` allowing the user to choose
     * if the graph is **directed** or **undirected**
     * and/or **heuristic**,
     * and/or **factor**
@@ -169,7 +169,7 @@ pgr_bdAstarCost Many to Many
     pgr_bdAstarCost(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to each ``end_vid`` in ``end_vids`` allowing the user to choose 
+This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to each ``end_vid`` in ``end_vids`` allowing the user to choose
     * if the graph is **directed** or **undirected**
     * and/or **heuristic**,
     * and/or **factor**

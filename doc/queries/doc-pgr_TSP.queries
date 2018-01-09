@@ -16,7 +16,7 @@ query AS (
     )
 )
 SELECT agg_cost < 20 AS under_20 FROM query WHERE seq = 14;
- under_20 
+ under_20
 ----------
  t
 (1 row)
@@ -33,7 +33,7 @@ SELECT * FROM pgr_TSP(
     start_id := 7,
     randomize := false
 );
- seq | node | cost | agg_cost 
+ seq | node | cost | agg_cost
 -----+------+------+----------
    1 |    7 |    1 |        0
    2 |    8 |    1 |        1
@@ -62,7 +62,7 @@ SELECT * FROM pgr_TSP(
     start_id := 5,
     randomize := false
 );
- seq | node | cost | agg_cost 
+ seq | node | cost | agg_cost
 -----+------+------+----------
    1 |    5 |    1 |        0
    2 |    6 |    1 |        1

@@ -18,23 +18,23 @@ BEGIN
     sql_Many := '';
     FOR i IN 1.. cant LOOP
         IF (i > 1) THEN sql_Many := sql_Many ||', '; END IF;
-            sql_Many := sql_Many || i ; 
+            sql_Many := sql_Many || i ;
     END LOOP;
 
     FOR i IN 1.. cant LOOP
         FOR j IN 1..cant LOOP
 
             IF NOT (i = 1 AND j = 1) THEN
-                sql_OneToOne := sql_OneToOne ||' UNION ALL'; 
+                sql_OneToOne := sql_OneToOne ||' UNION ALL';
             END IF;
-            sql_OneToOne := sql_OneToOne || 
+            sql_OneToOne := sql_OneToOne ||
             '( SELECT seq, ' || i || 'as start_vid, ' || j || 'as end_vid, node, edge, cost, agg_cost  FROM pgr_dijkstra(
                     ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
                     || i || ', ' || j ||
                     ') )';
         END LOOP;
     END LOOP;
-    sql_Many := 
+    sql_Many :=
     ' SELECT path_seq,  start_vid,  end_vid, node, edge, cost, agg_cost FROM pgr_dijkstra(
         ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
         || ' ARRAY[' || sql_Many  ||'], ARRAY[' || sql_Many ||

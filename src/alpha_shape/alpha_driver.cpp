@@ -36,22 +36,6 @@ corresponding to the Alpha shape.
 ************************************************************************/
 
 #include "drivers/alpha_shape/alpha_driver.h"
-#include "cpp_common/pgr_assert.h"
-
-#include <CGAL/Simple_cartesian.h>
-#include <CGAL/Filtered_kernel.h>
-#include <CGAL/algorithm.h>
-
-#include <CGAL/Polygon_2.h>
-#include <CGAL/Delaunay_triangulation_2.h>
-#include <CGAL/Triangulation_2.h>
-#include <CGAL/Triangulation_hierarchy_vertex_base_2.h>
-#include <CGAL/Triangulation_hierarchy_2.h>
-#include <CGAL/Triangulation_face_base_2.h>
-#include <CGAL/Triangulation_euclidean_traits_2.h>
-#include <CGAL/Alpha_shape_2.h>
-#include <CGAL/Alpha_shape_face_base_2.h>
-#include <CGAL/Alpha_shape_vertex_base_2.h>
 
 #include <vector>
 #include <list>
@@ -59,6 +43,24 @@ corresponding to the Alpha shape.
 #include <utility>
 #include <algorithm>
 #include <set>
+
+#include "cpp_common/pgr_assert.h"
+
+#include "CGAL/Simple_cartesian.h"
+#include "CGAL/Filtered_kernel.h"
+#include "CGAL/algorithm.h"
+
+#include "CGAL/Polygon_2.h"
+#include "CGAL/Delaunay_triangulation_2.h"
+#include "CGAL/Triangulation_2.h"
+#include "CGAL/Triangulation_hierarchy_vertex_base_2.h"
+#include "CGAL/Triangulation_hierarchy_2.h"
+#include "CGAL/Triangulation_face_base_2.h"
+#include "CGAL/Triangulation_euclidean_traits_2.h"
+#include "CGAL/Alpha_shape_2.h"
+#include "CGAL/Alpha_shape_face_base_2.h"
+#include "CGAL/Alpha_shape_vertex_base_2.h"
+
 
 #include "cpp_common/pgr_alloc.hpp"
 
@@ -193,7 +195,9 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
                     });
             pv.erase(std::unique(pv.begin(), pv.end()), pv.end());
             if (pv.size() != count &&  pv.size() < 3) {
-                err << "After eliminating duplicated points, less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.";
+                err << "After eliminating duplicated points,"
+                   " less than 3 points remain!!."
+                   " Alpha shape calculation needs at least 3 vertices.";
                 *err_msg = pgr_msg(err.str().c_str());
                 return -1;
             }

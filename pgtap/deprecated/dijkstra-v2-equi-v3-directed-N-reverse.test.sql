@@ -28,23 +28,23 @@ SELECT seq, id1, id2, cost FROM pgr_dijkstra(
 
 PREPARE q2 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-    'SELECT  id::INTEGER, source::INTEGER, target::INTEGER, 
-    CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost 
-    FROM edge_table ORDER BY id', 
+    'SELECT  id::INTEGER, source::INTEGER, target::INTEGER,
+    CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost
+    FROM edge_table ORDER BY id',
     7, 11, true);
 
 
 PREPARE q3 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-    'SELECT  id, source, target, 
-    CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost 
-    FROM edge_table ORDER BY id', 
+    'SELECT  id, source, target,
+    CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost
+    FROM edge_table ORDER BY id',
     7, 11);
 
 PREPARE q4 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT id, source, target, cost 
-        FROM edge_table ORDER BY id', 
+        'SELECT id, source, target, cost
+        FROM edge_table ORDER BY id',
         7, 11);
 
 
@@ -52,25 +52,25 @@ PREPARE q5 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
         'SELECT id, source, target, cost,
         -1 as reverse_cost
-        FROM edge_table ORDER BY id', 
+        FROM edge_table ORDER BY id',
         7, 11);
 
 PREPARE q6 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT id, source, target, cost 
-        FROM edge_table ORDER BY id', 
+        'SELECT id, source, target, cost
+        FROM edge_table ORDER BY id',
         ARRAY[7], 11);
 
 PREPARE q7 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT id, source, target, cost 
-        FROM edge_table ORDER BY id', 
+        'SELECT id, source, target, cost
+        FROM edge_table ORDER BY id',
         7, ARRAY[11]);
 
 PREPARE q8 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT id, source, target, cost 
-        FROM edge_table ORDER BY id', 
+        'SELECT id, source, target, cost
+        FROM edge_table ORDER BY id',
         ARRAY[7], ARRAY[11]);
 
 PREPARE q9 AS

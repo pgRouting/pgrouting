@@ -107,7 +107,7 @@ Signature
 
 Parameters
 ...............................................................................
-                                                                                                                                                                                                                                 
+
 The parameters are:
 
 .. code-block:: none

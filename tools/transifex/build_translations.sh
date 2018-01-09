@@ -27,7 +27,7 @@ echo "*************************************************************************"
 echo "Build PO/MO files"
 echo "*************************************************************************"
 for i in ${LANGUAGES}; do
-	sphinx-intl build -l "${i}" -c "${CONFIG}/conf.py" -p "${DOCDIR}/pot" -d "${DOCDIR}" 
+	sphinx-intl build -l "${i}" -c "${CONFIG}/conf.py" -p "${DOCDIR}/pot" -d "${DOCDIR}"
 done
 
 echo "*************************************************************************"
@@ -43,7 +43,7 @@ echo "*************************************************************************"
 for i in ${LANGUAGES}; do
 	DESTINATION="build/doc/latex/${i}"
 	sphinx-build -b html -a -E -D language="${i}" -c "${CONFIG}" ${ROOT} ${DESTINATION}
-	cd "${DESTINATION}" 
+	cd "${DESTINATION}"
 	pdflatex -interaction=nonstopmode pgRoutingDocumentation.tex > /dev/null 2>&1
 	cd "${ROOT}"
 done

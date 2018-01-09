@@ -91,7 +91,7 @@ sub loadLicense {
 # generated license.
 # The generated license has to be added
 # And Manually fixed.
-# 
+#
 # When the first line is equal, then we skip up to find
 # The "-------" line in both files
 # The rest of the license must be equal
@@ -152,12 +152,12 @@ sub get_task{
 
 # task = 0 Do nothing
 # task = 1 Insert complete license
-# task = 2 Update license body 
+# task = 2 Update license body
 sub update_license {
     my $task = shift;
     my $file_name = shift;
 
-    return if $task == 0; 
+    return if $task == 0;
 
     # read the file
     my @file = ();
@@ -176,7 +176,7 @@ sub update_license {
         $license_type = 3;
         @LICENSE = @CCM_LICENSE;
         @LICENSE_BODY = @CCM_BODY;
-    } 
+    }
 
 
 

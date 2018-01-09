@@ -21,7 +21,7 @@ Synopsis
 
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
+   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 
    Boost Graph Inside
 
@@ -158,7 +158,7 @@ See Also
 --------
 
 * :ref:`maxFlow`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :ref:`pgr_edmondsKarp <pgr_edmondsKarp>`
-* http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
+* http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
 .. rubric:: Indices and tables

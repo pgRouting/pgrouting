@@ -13,7 +13,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -29,7 +29,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -45,7 +45,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -61,7 +61,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -77,7 +77,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -93,7 +93,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 10
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -109,7 +109,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 9
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -127,7 +127,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 12
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -145,7 +145,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -161,7 +161,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -177,7 +177,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -193,7 +193,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 10
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -209,7 +209,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 10
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -226,7 +226,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 9
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -243,7 +243,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 9
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -264,7 +264,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 12
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -281,7 +281,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 12
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)
@@ -297,7 +297,7 @@ NOTICE:    Edges with NULL geometry,source or target: 0
 NOTICE:                              Edges processed: 18
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createverticestable 
+ pgr_createverticestable
 -------------------------
  OK
 (1 row)

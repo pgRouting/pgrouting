@@ -21,7 +21,7 @@ if test ! -d build ; then
 fi
 
 # Switch branch
-git checkout gh-pages && rm -Rf "$1" 
+git checkout gh-pages && rm -Rf "$1"
 
 # Copy files and directories
 mkdir "$1"
@@ -31,7 +31,7 @@ cp build/doc/latex/en/pgRoutingDocumentation.pdf "$1"/en/
 gzip -c build/doc/man/en/pgrouting.7 > "$1"/en/pgrouting.7.gz
 
 # Commit changes
-git add "$1" 
+git add "$1"
 git add index.html
 git commit -m "Updated to commit $VERSION" . && git push origin gh-pages
 

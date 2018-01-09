@@ -94,7 +94,7 @@ INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, 
 
 
 -- converting data to use euclidean
-WITH                      
+WITH
 customer_data AS (SELECT * FROM jet_customers),
 pickups AS (
     SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
@@ -109,7 +109,7 @@ SELECT * INTO jet_orders FROM pickups JOIN deliveries USING(id) ORDER BY pickups
 WITH
 customer_data AS (select * from jet_customers)
 SELECT id, x AS start_x, y AS start_y,
-    opentime AS start_open, closetime AS start_close, 
+    opentime AS start_open, closetime AS start_close,
     5 AS capacity,  10  AS number INTO jet_vehicles
 FROM customer_data WHERE id = 0 LIMIT 1;
 

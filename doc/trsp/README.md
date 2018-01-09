@@ -48,7 +48,7 @@ The restriction used in the examples does not have to do anything with the graph
 * No edge has id: 25, 32 or 33
 ```
 SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
- to_cost | target_id | via_path 
+ to_cost | target_id | via_path
 ---------+-----------+----------
      100 |        25 | 32, 33
 (1 row)
@@ -57,7 +57,7 @@ SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_pa
 The new back end code has the restrictions as follows
 ```
 SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path;
- id | cost | target_id |    path    
+ id | cost | target_id |    path
 ----+------+-----------+------------
   1 |  100 |        25 | {33,32,25}
 (1 row)
@@ -88,7 +88,7 @@ SELECT * FROM pgr_dijkstra(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
@@ -100,7 +100,7 @@ SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
 (0 rows)
 
@@ -122,7 +122,7 @@ SELECT * FROM pgr_dijkstra(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 1
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
@@ -134,7 +134,7 @@ SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1,  true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
 (0 rows)
 
@@ -157,12 +157,12 @@ is expected to return Error to represent no path found
 ```
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  
-    true, 
+    1, 1,
+    true,
     true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   1 |   1 |    1
    1 |   2 |   4 |    1
@@ -183,10 +183,10 @@ but "finds" a path when there should be no path.
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
-    1, 1,  
+    1, 1,
     true
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    1 |    1 |    1 |        0
    2 |        2 |    2 |    4 |    1 |        1
@@ -207,7 +207,7 @@ SELECT * FROM pgr_dijkstra(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     2, 3, false
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    2 |    2 |    1 |        0
    2 |        2 |    3 |   -1 |    0 |        1
@@ -219,10 +219,10 @@ using the replacement function because there are no restrictions (2 to 3)
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     2, 3,
-    false, 
+    false,
     true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   2 |   2 |    1
    1 |   3 |  -1 |    0
@@ -252,7 +252,7 @@ SELECT * FROM pgr_trsp(
     false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   2 |   2 |    1
    1 |   3 |  -1 |    0
@@ -268,7 +268,7 @@ SELECT * FROM _pgr_trsp(
     2, 3,
     false
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    2 |    2 |    1 |        0
    2 |        2 |    3 |   -1 |    0 |        1
@@ -299,7 +299,7 @@ SELECT * FROM pgr_withPoints(
     (SELECT 2, 17, 0.5)$$,
     -1, -2
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
@@ -318,7 +318,7 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
 (1 row)
@@ -331,7 +331,7 @@ SELECT * FROM _pgr_trsp(
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
 (1 row)
@@ -346,7 +346,7 @@ SELECT * FROM pgr_withPoints(
     (SELECT 2, 1, 0.5)$$,
     -1, -2
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |    0 |        0
    2 |        2 |   -2 |   -1 |    0 |        0
@@ -359,7 +359,7 @@ SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
    1 |  -2 |  -1 |    0
@@ -373,7 +373,7 @@ SELECT * FROM pgr_trsp(
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
 (1 row)
@@ -388,7 +388,7 @@ SELECT * FROM pgr_withPoints(
     (SELECT 2, 1, 0.5)$$,
     -1, -1
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
@@ -401,7 +401,7 @@ SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
    1 |  -2 |  -1 |    0
@@ -416,7 +416,7 @@ SELECT * FROM pgr_trsp(
     1, 0.5, 1, 0.8, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
 (1 row)
@@ -432,7 +432,7 @@ SELECT * FROM pgr_withPoints(
     (SELECT 2, 2, 0.8)$$,
     -1, -2, directed:=false
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    4 |  0.5 |        0
    2 |        2 |    2 |    2 |  0.8 |      0.5
@@ -447,7 +447,7 @@ SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     4, 0.5, 2, 0.8, false, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   4 |  0.5
    1 |   2 |   2 |  0.8
@@ -465,7 +465,7 @@ SELECT * FROM pgr_trsp(
     4, 0.5, 2, 0.8, false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   4 |  0.5
    1 |   5 |   8 |    1
@@ -480,7 +480,7 @@ SELECT * FROM pgr_trsp(
 The points of interest
 ```
 SELECT * FROM pointsOfInterest;
- pid |  x  |  y  | edge_id | side | fraction |                  the_geom                  |                  newpoint                  
+ pid |  x  |  y  | edge_id | side | fraction |                  the_geom                  |                  newpoint
 -----+-----+-----+---------+------+----------+--------------------------------------------+--------------------------------------------
    1 | 1.8 | 0.4 |       1 | l    |      0.4 | 0101000000CDCCCCCCCCCCFC3F9A9999999999D93F | 010100000000000000000000409A9999999999D93F
    2 | 4.2 | 2.4 |      15 | r    |      0.4 | 0101000000CDCCCCCCCCCC10403333333333330340 | 010100000000000000000010403333333333330340
@@ -505,7 +505,7 @@ SELECT * FROM pgr_TRSP(
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
     true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.6
    1 |   2 |   4 |  0.7
@@ -524,7 +524,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -6
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |  0.6 |        0
    2 |        2 |    2 |    4 |  0.7 |      0.6
@@ -541,7 +541,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -1
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
@@ -559,7 +559,7 @@ SELECT * FROM pgr_TRSP(
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
     true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
    1 |  -2 |  -1 |    0
@@ -579,7 +579,7 @@ SELECT * FROM pgr_trsp(
     true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
 (1 row)
@@ -593,7 +593,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -3
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |  0.6 |        0
    2 |        2 |    2 |    4 |    1 |      0.6
@@ -611,7 +611,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -3, details:=true
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |  0.6 |        0
    2 |        2 |    2 |    4 |  0.7 |      0.6
@@ -633,7 +633,7 @@ SELECT * FROM pgr_TRSP(
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
     true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.6
    1 |   2 |   4 |    1
@@ -651,7 +651,7 @@ SELECT * FROM pgr_withPoints(
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     6, -1
 );
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    6 |    8 |    1 |        0
    2 |        2 |    5 |    4 |    1 |        1
@@ -672,7 +672,7 @@ SELECT * FROM pgr_trsp(
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
     true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   8 |    1
    1 |   5 |   4 |    1
@@ -687,7 +687,7 @@ SELECT * FROM pgr_trsp(
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
     true, true
 );
- seq | id1 | id2 | cost 
+ seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   6 |   8 |    1
    1 |   5 |   4 |    1
@@ -725,7 +725,7 @@ SELECT * FROM pgr_trspViaVertices(
     ARRAY[2, 3, 2],
     false, true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   2 |    1
    2 |   2 |   3 |   2 |    1
@@ -740,7 +740,7 @@ SELECT * FROM pgr_dijkstraVia(
     ARRAY[2, 3, 2],
     false
 );
- seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |         2 |       3 |    2 |    2 |    1 |        0 |              0
    2 |       1 |        2 |         2 |       3 |    3 |   -1 |    0 |        1 |              1
@@ -762,7 +762,7 @@ SELECT * FROM pgr_TRSPViaVertices(
     ARRAY[1, 1, 2],
     false, true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
 (0 rows)
 
@@ -776,7 +776,7 @@ SELECT * FROM pgr_trspViaVertices(
     false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   1 |   1 |    1
    2 |   1 |   2 |   4 |    1
@@ -807,7 +807,7 @@ SELECT * FROM pgr_trspViaEdges(
     false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.9
    2 |   1 |   2 |   4 |    1
@@ -844,7 +844,7 @@ SELECT * FROM _pgr_withPointsVia(
     ARRAY[1, 2, 1], ARRAY[0.1,0.5,0.5],
     directed := false
 );
- seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |        -1 |      -2 |   -1 |    1 |  0.1 |        0 |              0
    2 |       1 |        2 |        -1 |      -2 |    2 |    2 |  0.5 |      0.1 |            0.1
@@ -866,9 +866,9 @@ SELECT * FROM pgr_trspViaEdges(
     ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
     false, true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
-   1 |     |     |     |     
+   1 |     |     |     |
 (1 row)
 
 ```
@@ -897,10 +897,10 @@ This example no path is found (edge 17 is disconnected) from the big graph.
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 17, 1], ARRAY[0.1,0.5,0.5],
-    false, 
+    false,
     true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
 (0 rows)
 
@@ -921,10 +921,10 @@ SELECT * FROM pgr_trspViaEdges(
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 6)],
-    false, 
+    false,
     true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.4
    2 |   1 |   2 |   4 |  0.3
@@ -956,7 +956,7 @@ SELECT * FROM pgr_trspViaEdges(
     false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.6
    2 |   1 |   2 |   4 |    1
@@ -984,10 +984,10 @@ SELECT * FROM pgr_trspViaEdges(
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
         (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
         0],
-    false, 
+    false,
     true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.6
    2 |   1 |   2 |   4 |    1

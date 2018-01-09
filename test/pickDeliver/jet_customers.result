@@ -41,7 +41,7 @@ SELECT 14
 SELECT * FROM _pgr_pickDeliver(
     'SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex
      FROM jet_customers ORDER BY id', max_vehicles := 20, capacity:= 100, speed := 1000);
- seq | vehicle_id | vehicle_seq | stop_id |    travel_time    |   arrival_time    | wait_time | service_time |  departure_time  
+ seq | vehicle_id | vehicle_seq | stop_id |    travel_time    |   arrival_time    | wait_time | service_time |  departure_time
 -----+------------+-------------+---------+-------------------+-------------------+-----------+--------------+------------------
    1 |          1 |           1 |       0 |                 0 |                 0 |         0 |            0 |                0
    2 |          1 |           2 |      27 | 0.617668195716762 | 0.617668195716762 |         0 |           30 | 30.6176681957168
@@ -83,7 +83,7 @@ SELECT * FROM _pgr_pickDeliverEuclidean(
     0 AS start_open, 60000 AS start_close,
     100 AS capacity, 20 AS number, 1000 as speed',
     30);
- seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |    travel_time    |   arrival_time    | wait_time | service_time |  departure_time  
+ seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |    travel_time    |   arrival_time    | wait_time | service_time |  departure_time
 -----+----------------+------------+-------------+----------+-----------+-------+-------------------+-------------------+-----------+--------------+------------------
    1 |              1 |          0 |           1 |       -1 |         1 |     0 |                 0 |                 0 |         0 |            0 |                0
    2 |              1 |          0 |           2 |       27 |         2 |     6 | 0.617668195716762 | 0.617668195716762 |         0 |           30 | 30.6176681957168

@@ -209,7 +209,7 @@ exit 0;      # signal we passed all the tests
 # t  contents of array that has keys comment, data and test
 sub run_test {
     my $c = shift;
-    my $t = shift;  
+    my $t = shift;
     my %res = ();
 
     my $dir = dirname($c);
@@ -312,7 +312,7 @@ sub process_single_test{
 
 
     my @d = ();
-    @d = <TIN>; #reads the whole file into the array @d 
+    @d = <TIN>; #reads the whole file into the array @d
 
     print PSQL "BEGIN;\n";
     print PSQL "SET client_min_messages TO $level;\n";
@@ -325,30 +325,36 @@ sub process_single_test{
     #closes the input file  /TIN = test input
     close(TIN);
 
-    print "\n" if $DOCUMENTATION;
-    return if $DOCUMENTATION;
+    if ($DOCUMENTATION) {
+        print "\n";
+        my $cmd = q (perl -pi -e 's/[ \t]+$//') .  " doc/queries/$x.queries";
+        mysystem( $cmd );
+        return;
+    }
 
     my $dfile;
     my $dfile2;
     if ($ignore) { #decide how to compare results, if ignoring or not ignoring
         $dfile2 = $TMP2;
-        mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
+        mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile2");
         $dfile = $TMP3;
-        mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+        mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile");
     }
     elsif ($DEBUG1) { #to delete CONTEXT lines
         $dfile2 = $TMP2;
-        mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' > $dfile2");
+        mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile2");
         $dfile = $TMP3;
-        mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' > $dfile");
+        mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile");
     }
     else {
-        $dfile = "$dir/$x.result";
-        $dfile2 = $TMP;
+        $dfile2 = $TMP2;
+        mysystem("grep -v '^COPY' '$TMP' | grep -v 'psql:tools' > $dfile2");
+        $dfile = $TMP3;
+        mysystem("grep -v '^COPY' '$dir/$x.result' | grep -v 'psql:tools' > $dfile");
     }
     if (! -f "$dir/$x.result") {
         $res->{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";
-        $stats{z_fail}++;            
+        $stats{z_fail}++;
         next;
     }
 
@@ -400,7 +406,7 @@ sub createTestDB {
     Use -force to force the tests\n"
     unless version_greater_eq($dbver, $POSGRESQL_MIN_VERSION) or ($FORCE and version_greater_eq($dbver, '9.1'));
 
-    die "postGIS extension $postgis_ver not found\n" 
+    die "postGIS extension $postgis_ver not found\n"
     unless -f "$dbshare/extension/postgis.control";
 
 

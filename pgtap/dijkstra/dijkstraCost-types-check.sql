@@ -20,63 +20,63 @@ SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','anyarray','
 -- testing for the 4 signatures that they return the correct names & columns
 -- Preparing
 PREPARE v21q00 AS
-SELECT 
+SELECT
     pg_typeof(start_vid)::text AS t3, pg_typeof(end_vid)::text AS t4,
-    pg_typeof(agg_cost)::TEXT AS t8 
-    FROM ( 
+    pg_typeof(agg_cost)::TEXT AS t8
+    FROM (
         SELECT * FROM pgr_dijkstracost(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
             2, 3, true) ) AS a
     limit 1
 ;
 PREPARE v21q01 AS
-SELECT  
+SELECT
     'bigint'::text AS t3, 'bigint'::text AS t4,
     'double precision'::text AS t8;
 
 PREPARE v21q10 AS
-SELECT 
+SELECT
     pg_typeof(start_vid)::text AS t3, pg_typeof(end_vid)::text AS t4,
-    pg_typeof(agg_cost)::TEXT AS t8 
-    FROM ( 
+    pg_typeof(agg_cost)::TEXT AS t8
+    FROM (
         SELECT * FROM pgr_dijkstracost(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
             2, ARRAY[3], true) ) AS a
     limit 1
 ;
 PREPARE v21q11 AS
-SELECT  
+SELECT
     'bigint'::text AS t3, 'bigint'::text AS t4,
     'double precision'::text AS t8;
 
 
 PREPARE v21q20 AS
-SELECT 
+SELECT
     pg_typeof(start_vid)::text AS t3, pg_typeof(end_vid)::text AS t4,
-    pg_typeof(agg_cost)::TEXT AS t8 
-    FROM ( 
+    pg_typeof(agg_cost)::TEXT AS t8
+    FROM (
         SELECT * FROM pgr_dijkstracost(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
             ARRAY[2], 3, true) ) AS a
     limit 1
 ;
 PREPARE v21q21 AS
-SELECT  
+SELECT
     'bigint'::text AS t3, 'bigint'::text AS t4,
     'double precision'::text AS t8;
 
 PREPARE v21q30 AS
-SELECT 
+SELECT
     pg_typeof(start_vid)::text AS t3, pg_typeof(end_vid)::text AS t4,
-    pg_typeof(agg_cost)::TEXT AS t8 
-    FROM ( 
+    pg_typeof(agg_cost)::TEXT AS t8
+    FROM (
         SELECT * FROM pgr_dijkstracost(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
             ARRAY[2], ARRAY[3], true) ) AS a
     limit 1
 ;
 PREPARE v21q31 AS
-SELECT  
+SELECT
     'bigint'::text AS t3, 'bigint'::text AS t4,
     'double precision'::text AS t8;
 

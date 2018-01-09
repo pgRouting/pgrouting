@@ -17,13 +17,13 @@
 +++ gaul-devel-0.1849-0a/util/gaul/gaul_config_win.h	2013-03-11 13:48:12 -0400
 @@ -39,9 +39,9 @@
   **********************************************************************/
- 
+
  #ifdef BUILDING_DLL
 -#  define FUNCPROTO __declspec (dllexport)
-+#  define FUNCPROTO 
++#  define FUNCPROTO
  #else
 -#  define FUNCPROTO __declspec (dllimport)
-+#  define FUNCPROTO 
++#  define FUNCPROTO
  #endif
- 
+
  #  if defined __CYGWIN32__ && !defined __CYGWIN__

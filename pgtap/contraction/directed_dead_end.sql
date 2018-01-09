@@ -3,23 +3,23 @@
 SELECT plan(39);
 
 SET client_min_messages TO WARNING;
--- TESTING ONE CYCLE OF DEAD END CONTRACTION FOR A DIRECTED GRAPH 
+-- TESTING ONE CYCLE OF DEAD END CONTRACTION FOR A DIRECTED GRAPH
 
 PREPARE qempty AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost  
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM ( VALUES (-1, 'v', -1, ARRAY[]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost )
 WHERE 1 != 1;
 
 -- SINGLE EDGE
 -- no forbidden vertices
 PREPARE v2e1q10 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost 
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
 
 PREPARE v2e1q11 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost  
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM ( VALUES (1, 'v', 2, ARRAY[1]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost ) ;
 
 SELECT set_eq('v2e1q10', 'v2e1q11', 'SINGLE EDGE 1: Directed graph with single edge and no forbidden vertices');
@@ -27,13 +27,13 @@ SELECT set_eq('v2e1q10', 'v2e1q11', 'SINGLE EDGE 1: Directed graph with single e
 -- 1 is forbidden vertex
 
 PREPARE v2e1q20 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost 
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[1]::INTEGER[], true);
 
 PREPARE v2e1q21 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost  
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM ( VALUES (1, 'v', 1, ARRAY[2]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost ) ;
 
 
@@ -43,13 +43,13 @@ SELECT set_eq('v2e1q20', 'v2e1q21', 'SINGLE EDGE 2: Directed graph with single e
 -- TWO EDGES
 -- no forbidden vertices
 PREPARE v3e2q10 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost 
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 OR id = 3',
     ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
 
 PREPARE v3e2q11 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost  
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM ( VALUES (1, 'v', 4, ARRAY[2, 3]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost ) ;
 
 SELECT set_eq('v3e2q10', 'v3e2q11', 'TWO EDGES 1: Directed graph two edges and no forbidden vertices');
@@ -61,7 +61,7 @@ SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source
     ARRAY[1]::INTEGER[], 1, ARRAY[3]::integer[], true);
 
 PREPARE v3e2q21 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost  
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM ( VALUES (1, 'v', 3, ARRAY[2,4]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost ) ;
 
 SELECT set_eq('v3e2q20', 'v3e2q21', 'TWO EDGES 2: Directed graph with two edges and vertex 3 as forbidden vertex');
@@ -73,7 +73,7 @@ SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source
     ARRAY[1]::INTEGER[], 1, ARRAY[2]::integer[], true);
 
 PREPARE v3e2q31 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost  
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM ( VALUES (1, 'v', 2, ARRAY[3,4]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost ) ;
 
 SELECT set_eq('v3e2q30', 'v3e2q31', 'TWO EDGES 3: Directed graph with two edges and vertex 2 as forbidden vertex');
@@ -85,7 +85,7 @@ SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source
     ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
 
 PREPARE v3e2q41 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost  
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM (VALUES (1, 'v', 10, ARRAY[6,11]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost ) ;
 
 SELECT set_eq('v3e2q40', 'v3e2q41', 'TWO EDGES 4: Directed graph with two edges and no forbidden vertices');
@@ -98,7 +98,7 @@ SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source
     ARRAY[1]::INTEGER[], 1, ARRAY[11]::integer[], true);
 
 PREPARE v3e2q51 AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost  
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM (VALUES (1, 'v', 11, ARRAY[6,10]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost ) ;
 
 SELECT set_eq('v3e2q50', 'v3e2q51', 'TWO EDGES 5: Directed graph with two edges and no forbidden vertices');

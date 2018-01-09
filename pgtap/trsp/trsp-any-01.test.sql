@@ -1,4 +1,4 @@
-\i setup.sql 
+\i setup.sql
     SELECT plan(1);
 
     UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
@@ -12,7 +12,7 @@
         true,  -- has_reverse_cost?
         null); -- no turn restrictions
 
-    prepare q2 AS 
+    prepare q2 AS
     SELECT seq-1, node::INTEGER, edge::INTEGER, cost::TEXT FROM pgr_dijkstra(
         'select id, source, target, cost, reverse_cost from edge_table',
         1, 5);

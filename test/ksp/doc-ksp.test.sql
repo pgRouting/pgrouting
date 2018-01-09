@@ -21,7 +21,7 @@
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2
    );
-  
+
 
    SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -77,7 +77,7 @@
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, directed:=false
    );
-  
+
   SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, directed:=false, heap_paths:=true

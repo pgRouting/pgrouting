@@ -34,44 +34,44 @@ SELECT seq, id1, id2, cost FROM pgr_dijkstra(
 
 PREPARE q2 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-    'SELECT id, source, target, 
-    CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost, 
-    CASE WHEN reverse_cost<=0 THEN 999 ELSE reverse_cost END AS reverse_cost 
-    FROM edge_table ORDER BY id', 
+    'SELECT id, source, target,
+    CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost,
+    CASE WHEN reverse_cost<=0 THEN 999 ELSE reverse_cost END AS reverse_cost
+    FROM edge_table ORDER BY id',
     11, 5, false);
 
 
 PREPARE q4 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT id, source, target, 
-        cost, 
-        reverse_cost 
-        FROM edge_table ORDER BY id', 
+        'SELECT id, source, target,
+        cost,
+        reverse_cost
+        FROM edge_table ORDER BY id',
         11, 5, false);
 
 
 PREPARE q5 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT * 
-        FROM edge_table ORDER BY id', 
+        'SELECT *
+        FROM edge_table ORDER BY id',
         11, 5, false);
 
 PREPARE q6 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT * 
-        FROM edge_table ORDER BY id', 
+        'SELECT *
+        FROM edge_table ORDER BY id',
         ARRAY[11], 5, false);
 
 PREPARE q7 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT * 
-        FROM edge_table ORDER BY id', 
+        'SELECT *
+        FROM edge_table ORDER BY id',
         11, ARRAY[5], false);
 
 PREPARE q8 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-        'SELECT * 
-        FROM edge_table ORDER BY id', 
+        'SELECT *
+        FROM edge_table ORDER BY id',
         ARRAY[11], ARRAY[5], false);
 
 PREPARE q9 AS

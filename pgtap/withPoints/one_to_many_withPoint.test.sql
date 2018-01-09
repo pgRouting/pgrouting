@@ -9,7 +9,7 @@ WITH the_union AS (
     (SELECT path_seq, -2 AS end_pid, node, agg_cost FROM pgr_withPoints(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
             'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            -1, ARRAY[-2], 
+            -1, ARRAY[-2],
             driving_side := 'r',
             directed := true,
             details := true))
@@ -17,7 +17,7 @@ WITH the_union AS (
     (SELECT path_seq, -5 AS end_pid, node, agg_cost FROM pgr_withPoints(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
             'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            -1, ARRAY[-5], 
+            -1, ARRAY[-5],
             driving_side := 'r',
             directed := true,
             details := true))
@@ -29,7 +29,7 @@ PREPARE q2 AS
 SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, ARRAY[-2, -5], 
+    -1, ARRAY[-2, -5],
     driving_side := 'r',
     directed := true,
     details := true);
@@ -38,7 +38,7 @@ PREPARE q3 AS
 SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, ARRAY[-5, -2], 
+    -1, ARRAY[-5, -2],
     driving_side := 'r',
     directed := true,
     details := true);
@@ -102,7 +102,7 @@ PREPARE q3 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    3, ARRAY[4], 
+    3, ARRAY[4],
     driving_side := 'r',
     directed := true,
     details := true);
@@ -134,7 +134,7 @@ PREPARE q6 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    3, ARRAY[1], 
+    3, ARRAY[1],
     driving_side := 'l',
     directed := true,
     details := true);

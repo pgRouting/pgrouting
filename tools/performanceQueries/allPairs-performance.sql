@@ -1,4 +1,4 @@
-/* 
+/*
 Performance for pgr_floydWarshall & pgr_Johnson
 
 Using a bounding box
@@ -51,9 +51,9 @@ DECLARE
 BEGIN
     lim := low;
     seq := 1;
-    LOOP 
+    LOOP
         EXIT WHEN lim > max;
-        
+
         sql =
             'WITH  buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)),' || lim || ') as geom FROM ways),
                 bbox AS (SELECT ST_Envelope(ST_Extent(geom)) as box from buffer),
@@ -78,11 +78,11 @@ BEGIN
                 t_vertices AS (SELECT DISTINCT target AS vertex FROM query),
                 vertices AS ( SELECT vertex FROM (
                     (SELECT * FROM s_vertices)
-                    UNION 
+                    UNION
                     (SELECT * FROM t_vertices)) AS a)
             SELECT count(*) AS cnt FROM vertices';
         EXECUTE sql INTO info;
-        density := density / (info.cnt * (info.cnt - 1)); 
+        density := density / (info.cnt * (info.cnt - 1));
 
         sql = 'SELECT count(*) as cnt from ' || fn || '(
             ''WITH  buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)),' || lim || ') as geom FROM ways),
@@ -121,7 +121,7 @@ $body$ language plpgsql volatile strict   cost 100 rows 100;
 
 
 
-/* 
+/*
 Performance for pgr_floydWarshall & pgr_Johnson
 
 Not using a bounding box
@@ -174,7 +174,7 @@ select * from fw_j_statsQuery(100 , 100, 200, 1,
     BEGIN
         lim := low;
         seq := 1;
-        LOOP 
+        LOOP
             EXIT WHEN lim > max;
 
             sql := '
@@ -193,7 +193,7 @@ select * from fw_j_statsQuery(100 , 100, 200, 1,
                 SELECT cnt1 + cnt2 AS cnt FROM edges1 , edges2';
             EXECUTE sql INTO info;
             density := info.cnt;
-                    
+
             sql := '
                 WITH
                     edges AS (' || query_sql || '),
@@ -202,12 +202,12 @@ select * from fw_j_statsQuery(100 , 100, 200, 1,
                     t_vertices AS ( SELECT DISTINCT target AS vertex FROM edges),
                     vertices AS ( SELECT vertex FROM (
                         (SELECT * FROM s_vertices)
-                        UNION 
+                        UNION
                         (SELECT * FROM t_vertices)) AS a)
                 SELECT count(*) AS cnt FROM vertices';
             EXECUTE sql INTO info;
-            density := density / (info.cnt * (info.cnt - 1)); 
-            
+            density := density / (info.cnt * (info.cnt - 1));
+
             sql := '
                 SELECT count(*) as cnt from ' || fn || '(
                     ''WITH

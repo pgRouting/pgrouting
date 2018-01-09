@@ -21,7 +21,7 @@ SELECT * FROM _pgr_pickDeliver(
     $$ SELECT * FROM orders ORDER BY id $$,
     $$ SELECT * FROM vehicles $$,
     $$ SELECT * from pgr_dijkstraCostMatrix(
-        ' SELECT * FROM edge_table ', ARRAY[3, 4, 5, 8, 9, 11]) 
+        ' SELECT * FROM edge_table ', ARRAY[3, 4, 5, 8, 9, 11])
     $$
 );
 

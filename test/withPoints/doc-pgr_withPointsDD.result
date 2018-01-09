@@ -7,7 +7,7 @@ SELECT * FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 3.8);
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
    2 |    1 |    1 |  0.4 |      0.4
@@ -29,7 +29,7 @@ SELECT * FROM pgr_withPointsDD(
     -1, 3.8,
     driving_side := 'r',
     details := true);
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
    2 |    1 |    1 |  0.4 |      0.4
@@ -48,7 +48,7 @@ SELECT * FROM pgr_withPointsDD(
     -1, 3.8,
     driving_side := 'l',
     details := true);
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
    2 |    2 |    1 |  0.6 |      0.6
@@ -73,7 +73,7 @@ SELECT * FROM pgr_withPointsDD(
     -1, 3.8,
     driving_side := 'b',
     details := true);
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
    2 |    1 |    1 |  0.4 |      0.4

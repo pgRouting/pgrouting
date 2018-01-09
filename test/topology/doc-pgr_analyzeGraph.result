@@ -11,7 +11,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -31,7 +31,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -51,7 +51,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -62,7 +62,7 @@ NOTICE:  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target','
 NOTICE:  Performing checks, please wait ...
 NOTICE:  Got function st_srid(bigint) does not exist
 NOTICE:  ERROR: something went wrong when checking for SRID of id in table public.edge_table
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  FAIL
 (1 row)
@@ -82,7 +82,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -102,7 +102,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -122,7 +122,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -142,7 +142,7 @@ NOTICE:                            Dead ends: 4
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -162,7 +162,7 @@ NOTICE:                            Dead ends: 5
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -184,7 +184,7 @@ NOTICE:                            Dead ends: 10
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -200,7 +200,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -220,7 +220,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -231,7 +231,7 @@ NOTICE:  pgr_analyzeGraph('mytable',0.0001,'gid','mygeom','src','tgt','true')
 NOTICE:  Performing checks, please wait ...
 NOTICE:  Got function st_srid(bigint) does not exist
 NOTICE:  ERROR: something went wrong when checking for SRID of gid in table public.mytable
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  FAIL
 (1 row)
@@ -251,7 +251,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -271,7 +271,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -291,7 +291,7 @@ NOTICE:                            Dead ends: 4
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -311,7 +311,7 @@ NOTICE:                            Dead ends: 4
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -332,7 +332,7 @@ NOTICE:                            Dead ends: 5
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -353,7 +353,7 @@ NOTICE:                            Dead ends: 5
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -378,7 +378,7 @@ NOTICE:                            Dead ends: 10
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -399,7 +399,7 @@ NOTICE:                            Dead ends: 10
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -413,7 +413,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -433,7 +433,7 @@ NOTICE:                            Dead ends: 7
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -453,7 +453,7 @@ NOTICE:                            Dead ends: 4
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -473,7 +473,7 @@ NOTICE:                            Dead ends: 8
 NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -493,7 +493,7 @@ NOTICE:                            Dead ends: 3
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)
@@ -507,7 +507,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  16 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -527,7 +527,7 @@ NOTICE:                            Dead ends: 3
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
- pgr_analyzegraph 
+ pgr_analyzegraph
 ------------------
  OK
 (1 row)

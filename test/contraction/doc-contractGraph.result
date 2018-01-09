@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1, 2]);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
    1 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
    2 | v    | 15 | {14}                |     -1 |     -1 |   -1
@@ -21,7 +21,7 @@ SELECT * FROM pgr_contractGraph(
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
    1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
    2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
@@ -36,7 +36,7 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
    1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
    2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
@@ -49,7 +49,7 @@ ARRAY[1]);
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[2]);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
    1 | e    | -1 | {4}                 |      9 |      3 |    2
    2 | e    | -2 | {8}                 |      5 |      7 |    2

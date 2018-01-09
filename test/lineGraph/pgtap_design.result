@@ -1,0 +1,58 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- one edge graph
+SELECT * FROM pgr_lineGraph(
+    'SELECT id, source, target, cost FROM edge_table WHERE id = 1'
+);
+NOTICE:  Only vertices graph
+HINT:  0:  out_edges_of(1): 1=(1, 2) = 1
+1:  out_edges_of(2):
+
+
+ seq | source | target | cost | reverse_cost
+-----+--------+--------+------+--------------
+(0 rows)
+
+-- two edge graphs
+SELECT * FROM pgr_lineGraph($$
+    SELECT -id AS id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 1
+    UNION
+    SELECT id, source, target, cost FROM edge_table WHERE id = 1
+    $$
+);
+ seq | source | target | cost | reverse_cost
+-----+--------+--------+------+--------------
+   1 |      1 |     -1 |    1 |            1
+(1 row)
+
+SELECT * FROM pgr_lineGraph($$
+    SELECT id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 1
+    UNION
+    SELECT -id AS id, source, target, cost FROM edge_table WHERE id = 1
+    $$
+);
+ seq | source | target | cost | reverse_cost
+-----+--------+--------+------+--------------
+   1 |      1 |     -1 |    1 |            1
+(1 row)
+
+SELECT * FROM pgr_lineGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1'
+);
+ seq | source | target | cost | reverse_cost
+-----+--------+--------+------+--------------
+   1 |     -1 |      1 |    1 |            1
+(1 row)
+
+SELECT * FROM pgr_lineGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 17'
+);
+ seq | source | target | cost | reverse_cost
+-----+--------+--------+------+--------------
+   1 |    -17 |     17 |    1 |            1
+(1 row)
+
+ROLLBACK;
+ROLLBACK

@@ -101,7 +101,7 @@ Parameters
 Pick & deliver
 ...............................................................................
 
-Both implementations use the following same parameters: 
+Both implementations use the following same parameters:
 
 .. pd_parameters_start
 
@@ -317,14 +317,14 @@ Column              Type           Description
 **stop_seq**         INTEGER      Sequential value starting from **1** for the stops made by the current vehicle. The :math:`m_{th}` stop of the current vehicle.
 **stop_type**        INTEGER      Kind of stop location the vehicle is at:
 
-                                  - ``1``: Starting location 
-                                  - ``2``: Pickup location 
-                                  - ``3``: Delivery location 
-                                  - ``6``: Ending location 
+                                  - ``1``: Starting location
+                                  - ``2``: Pickup location
+                                  - ``3``: Delivery location
+                                  - ``6``: Ending location
 
 **order_id**         BIGINT       Pickup-Delivery order pair identifier.
 
-                                  - ``-1``: When no order is involved on the current stop location. 
+                                  - ``-1``: When no order is involved on the current stop location.
 
 **cargo**            FLOAT        Cargo units of the vehicle when leaving the stop.
 
@@ -384,7 +384,7 @@ Handling Parameters
 -------------------------------------------------------------------------------
 
 To define a problem, several considerations have to be done, to get consistent results.
-This section gives an insight of how parameters are to be considered. 
+This section gives an insight of how parameters are to be considered.
 
 - `Capacity and Demand Units Handling`_
 - `Locations`_
@@ -455,7 +455,7 @@ Meaning of 0   time units       9:00 am              4:30 pm               10 mi
 ============ ================= ==================== ===================== =========
 0:00 am         hours            9                  16.5                   :math:`10.5 / 60  = 0.175`
 9:00 am         hours            0                  7.5                    :math:`10.5 / 60  = 0.175`
-0:00 am         minutes          :math:`9*60 = 54`  :math:`16.5*60 = 990`  10.5 
+0:00 am         minutes          :math:`9*60 = 54`  :math:`16.5*60 = 990`  10.5
 9:00 am         minutes          0                  :math:`7.5*60 = 540`   10.5
 ============ ================= ==================== ===================== =========
 

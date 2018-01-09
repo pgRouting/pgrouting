@@ -12,7 +12,7 @@ query AS (
     )
 )
 SELECT agg_cost < 20 AS under_20 FROM query WHERE seq = 18;
- under_20 
+ under_20
 ----------
  t
 (1 row)
@@ -26,7 +26,7 @@ SELECT* from pgr_eucledianTSP(
     cooling_factor := 0.5,
     randomize := false
 );
- seq | node |       cost       |     agg_cost     
+ seq | node |       cost       |     agg_cost
 -----+------+------------------+------------------
    1 |    1 |  1.4142135623731 |                0
    2 |    3 |                1 |  1.4142135623731
@@ -67,7 +67,7 @@ Total slides: 0
 Total reverses: 0
 Times best tour changed: 4
 Best cost reached = 18.7796
- seq | node |       cost       |     agg_cost     
+ seq | node |       cost       |     agg_cost
 -----+------+------------------+------------------
    1 |    1 |  1.4142135623731 |                0
    2 |    3 |                1 |  1.4142135623731

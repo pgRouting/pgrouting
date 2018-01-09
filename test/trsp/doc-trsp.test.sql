@@ -50,5 +50,5 @@
         true,
         'SELECT to_cost, target_id::int4, FROM_edge ||
         coalesce('',''||via_path,'''') AS via_path FROM restrictions');
-    
+
 \echo --q6

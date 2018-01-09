@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) YEAR DEVELOPER_NAME
 Mail: DEVELOPER_EMAIL
 
