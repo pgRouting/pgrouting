@@ -274,7 +274,7 @@ BEGIN
                 ,' || target_sql || '
                 , directed := ' || directed || '
             ) a )
-            SELECT seq, CASE WHEN seq = 0 THEN -1 WHEN id2 = -1 THEN -2 ELSE id1 END, id2, cost  FROM final_sql ORDER BY seq';
+            SELECT seq, id1, id2, cost  FROM final_sql ORDER BY seq';
         ELSE
             -- points then its a withPoints
             final_sql = 'WITH final_sql AS (
@@ -284,7 +284,11 @@ BEGIN
                 ,' || target_sql || '
                 , directed := ' || directed || '
             ) a )
-            SELECT seq, CASE WHEN seq = 0 THEN -1 WHEN id2 = -1 THEN -2 ELSE id1 END, id2, cost  FROM final_sql ORDER BY seq';
+            SELECT seq, CASE WHEN seq = 0 AND ' || source_pos || '=0 THEN id1
+                             WHEN seq = 0 AND ' || source_pos || '!=0 THEN -1
+                             WHEN id2 = -1 AND ' || target_pos || '=0 THEN id1
+                             WHEN id2 = -1 AND ' || target_pos || '!=0 THEN id1
+                             ELSE id1 END AS id1, id2, cost  FROM final_sql ORDER BY seq';
         END IF;
 
 
