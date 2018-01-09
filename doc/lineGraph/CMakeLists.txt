@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+     transformation-family.rst
      pgr_lineGraphFull.rst
      pgr_lineGraph.rst
     )
