@@ -49,6 +49,7 @@ SET(LOCAL_FILES
     oneDepotWrapper.queries
     doc-gsoc_vrppdtw.queries
     doc-pgr_lineGraph.queries
+    doc-pgr_lineGraphFull.queries
     )
 
 foreach (f ${LOCAL_FILES})
