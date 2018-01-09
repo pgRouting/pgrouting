@@ -68,7 +68,7 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
   * Internal code can accept BIGINT
 
 * Cleaned the internal code of withPoints
-  
+
 
 
 
@@ -127,6 +127,7 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_bdDijkstraCost(many to many)
 * pgr_bdDijkstraCostMatrix
 * pgr_lineGraph
+* pgr_lineGraphFull
 * pgr_connectedComponents
 * pgr_strongComponents
 * pgr_biconnectedComponents

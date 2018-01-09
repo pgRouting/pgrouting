@@ -1,0 +1,597 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * target;
+UPDATE 18
+UPDATE edge_table_vertices_pgr SET id = id * 1000;
+UPDATE 17
+DROP TABLE IF EXISTS result2;
+NOTICE:  table "result2" does not exist, skipping
+DROP TABLE
+SELECT  * INTO result2 FROM pgr_lineGraphFull(
+    $$SELECT id, source, target, cost, reverse_cost
+    FROM edge_table$$
+);
+SELECT 95
+SELECT * FROM result2;
+ seq | source | target | cost | edge
+-----+--------+--------+------+-------
+   1 |     -1 |   2000 |    1 |   100
+   2 |   1000 |     -1 |    0 |     0
+   3 |     -2 |   1000 |    1 |  -100
+   4 |     -3 |   5000 |    1 |   400
+   5 |   2000 |     -2 |    0 |     0
+   6 |   2000 |     -3 |    0 |     0
+   7 |     -4 |     -2 |    0 |     0
+   8 |     -4 |     -3 |    0 |     0
+   9 |     -5 |     -2 |    0 |     0
+  10 |     -5 |     -3 |    0 |     0
+  11 |     -6 |     -4 |    1 |  -200
+  12 |     -7 |   6000 |    1 |   500
+  13 |   3000 |     -6 |    0 |     0
+  14 |   3000 |     -7 |    0 |     0
+  15 |     -8 |   3000 |    1 |  -300
+  16 |     -9 |    -30 |    1 |  1600
+  17 |   4000 |     -8 |    0 |     0
+  18 |   4000 |     -9 |    0 |     0
+  19 |    -10 |     -5 |    1 |  -400
+  20 |    -11 |    -25 |    1 |  -700
+  21 |    -12 |    -20 |    1 |   800
+  22 |    -13 |  10000 |    1 |  1000
+  23 |   5000 |    -10 |    0 |     0
+  24 |   5000 |    -11 |    0 |     0
+  25 |   5000 |    -12 |    0 |     0
+  26 |   5000 |    -13 |    0 |     0
+  27 |    -14 |    -10 |    0 |     0
+  28 |    -14 |    -11 |    0 |     0
+  29 |    -14 |    -12 |    0 |     0
+  30 |    -14 |    -13 |    0 |     0
+  31 |    -15 |    -10 |    0 |     0
+  32 |    -15 |    -11 |    0 |     0
+  33 |    -15 |    -12 |    0 |     0
+  34 |    -15 |    -13 |    0 |     0
+  35 |    -16 |    -10 |    0 |     0
+  36 |    -16 |    -11 |    0 |     0
+  37 |    -16 |    -12 |    0 |     0
+  38 |    -16 |    -13 |    0 |     0
+  39 |    -17 |    -15 |    1 |  -800
+  40 |    -18 |   9000 |    1 |   900
+  41 |    -19 |  11000 |    1 |  1100
+  42 |   6000 |    -17 |    0 |     0
+  43 |   6000 |    -18 |    0 |     0
+  44 |   6000 |    -19 |    0 |     0
+  45 |    -20 |    -17 |    0 |     0
+  46 |    -20 |    -18 |    0 |     0
+  47 |    -20 |    -19 |    0 |     0
+  48 |    -21 |    -17 |    0 |     0
+  49 |    -21 |    -18 |    0 |     0
+  50 |    -21 |    -19 |    0 |     0
+  51 |    -22 |   8000 |    1 |   600
+  52 |   7000 |    -22 |    0 |     0
+  53 |    -23 |   7000 |    1 |  -600
+  54 |    -24 |    -14 |    1 |   700
+  55 |   8000 |    -23 |    0 |     0
+  56 |   8000 |    -24 |    0 |     0
+  57 |    -25 |    -23 |    0 |     0
+  58 |    -25 |    -24 |    0 |     0
+  59 |    -26 |    -21 |    1 |  -900
+  60 |    -27 |    -38 |    1 |  1500
+  61 |    -28 |   4000 |    1 | -1600
+  62 |   9000 |    -26 |    0 |     0
+  63 |   9000 |    -27 |    0 |     0
+  64 |   9000 |    -28 |    0 |     0
+  65 |    -29 |    -26 |    0 |     0
+  66 |    -29 |    -27 |    0 |     0
+  67 |    -29 |    -28 |    0 |     0
+  68 |    -30 |    -26 |    0 |     0
+  69 |    -30 |    -27 |    0 |     0
+  70 |    -30 |    -28 |    0 |     0
+  71 |    -31 |    -16 |    1 | -1000
+  72 |    -32 |    -36 |    1 |  1200
+  73 |    -33 |  13000 |    1 |  1400
+  74 |  10000 |    -31 |    0 |     0
+  75 |  10000 |    -32 |    0 |     0
+  76 |  10000 |    -33 |    0 |     0
+  77 |    -34 |    -31 |    0 |     0
+  78 |    -34 |    -32 |    0 |     0
+  79 |    -34 |    -33 |    0 |     0
+  80 |    -35 |  12000 |    1 |  1300
+  81 |  11000 |    -35 |    0 |     0
+  82 |    -36 |    -35 |    0 |     0
+  83 |    -37 |    -29 |    1 | -1500
+  84 |  12000 |    -37 |    0 |     0
+  85 |    -38 |    -37 |    0 |     0
+  86 |    -39 |    -34 |    1 | -1400
+  87 |  13000 |    -39 |    0 |     0
+  88 |    -40 |  15000 |    1 |  1700
+  89 |  14000 |    -40 |    0 |     0
+  90 |    -41 |  14000 |    1 | -1700
+  91 |  15000 |    -41 |    0 |     0
+  92 |    -42 |  17000 |    1 |  1800
+  93 |  16000 |    -42 |    0 |     0
+  94 |    -43 |  16000 |    1 | -1800
+  95 |  17000 |    -43 |    0 |     0
+(95 rows)
+
+DROP TABLE IF EXISTS result2_vertices_pgr;
+NOTICE:  table "result2_vertices_pgr" does not exist, skipping
+DROP TABLE
+WITH foo AS (SELECT source AS id FROM result2
+    UNION
+    SELECT target FROM result2)
+SELECT *, NULL::BIGINT AS original_id
+INTO result2_vertices_pgr
+FROM foo
+ORDER BY id;
+SELECT 60
+SELECT * FROM result2_vertices_pgr;
+  id   | original_id
+-------+-------------
+   -43 |
+   -42 |
+   -41 |
+   -40 |
+   -39 |
+   -38 |
+   -37 |
+   -36 |
+   -35 |
+   -34 |
+   -33 |
+   -32 |
+   -31 |
+   -30 |
+   -29 |
+   -28 |
+   -27 |
+   -26 |
+   -25 |
+   -24 |
+   -23 |
+   -22 |
+   -21 |
+   -20 |
+   -19 |
+   -18 |
+   -17 |
+   -16 |
+   -15 |
+   -14 |
+   -13 |
+   -12 |
+   -11 |
+   -10 |
+    -9 |
+    -8 |
+    -7 |
+    -6 |
+    -5 |
+    -4 |
+    -3 |
+    -2 |
+    -1 |
+  1000 |
+  2000 |
+  3000 |
+  4000 |
+  5000 |
+  6000 |
+  7000 |
+  8000 |
+  9000 |
+ 10000 |
+ 11000 |
+ 12000 |
+ 13000 |
+ 14000 |
+ 15000 |
+ 16000 |
+ 17000 |
+(60 rows)
+
+UPDATE result2_vertices_pgr AS r SET original_id = v.id
+FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
+UPDATE 17
+WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
+b AS (SELECT * FROM result2 WHERE cost = 0 and source IN (SELECT id FROM a)),
+c AS (SELECT * FROM b JOIN result2_vertices_pgr ON(source = id)),
+d AS (SELECT c.source, v.original_id FROM c JOIN result2_vertices_pgr as v ON (target=v.id)),
+e AS (SELECT DISTINCT c.target, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(target = r.id AND r.original_id IS NULL))
+UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.target = id;
+UPDATE 30
+WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
+b AS (SELECT * FROM result2 WHERE cost = 0 and target IN (SELECT id FROM a)),
+c AS (SELECT * FROM b JOIN result2_vertices_pgr ON(target = id)),
+d AS (SELECT c.target, v.original_id FROM c JOIN result2_vertices_pgr as v ON (source=v.id)),
+e AS (SELECT DISTINCT c.source, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(source = r.id AND r.original_id IS NULL))
+UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.source = id;
+UPDATE 13
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
+c AS (SELECT id,source FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
+UPDATE 0
+WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
+b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
+c AS (SELECT id,target FROM edge_table WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
+UPDATE 0
+SELECT * FROM result2_vertices_pgr;
+  id   | original_id
+-------+-------------
+  1000 |        1000
+  2000 |        2000
+  3000 |        3000
+  4000 |        4000
+  5000 |        5000
+  6000 |        6000
+  7000 |        7000
+  8000 |        8000
+  9000 |        9000
+ 10000 |       10000
+ 11000 |       11000
+ 12000 |       12000
+ 13000 |       13000
+ 14000 |       14000
+ 15000 |       15000
+ 16000 |       16000
+ 17000 |       17000
+   -43 |       17000
+   -42 |       16000
+   -41 |       15000
+   -40 |       14000
+   -39 |       13000
+   -37 |       12000
+   -35 |       11000
+   -33 |       10000
+   -32 |       10000
+   -31 |       10000
+   -28 |        9000
+   -27 |        9000
+   -26 |        9000
+   -24 |        8000
+   -23 |        8000
+   -22 |        7000
+   -19 |        6000
+   -18 |        6000
+   -17 |        6000
+   -13 |        5000
+   -12 |        5000
+   -11 |        5000
+   -10 |        5000
+    -9 |        4000
+    -8 |        4000
+    -7 |        3000
+    -6 |        3000
+    -3 |        2000
+    -2 |        2000
+    -1 |        1000
+   -38 |       12000
+   -36 |       11000
+   -34 |       10000
+   -30 |        9000
+   -29 |        9000
+   -25 |        8000
+   -21 |        6000
+   -20 |        6000
+   -16 |        5000
+   -15 |        5000
+   -14 |        5000
+    -5 |        2000
+    -4 |        2000
+(60 rows)
+
+ALTER TABLE result2 ADD COLUMN original_source_vertex BIGINT;
+ALTER TABLE
+ALTER TABLE result2 ADD COLUMN original_target_vertex BIGINT;
+ALTER TABLE
+ALTER TABLE result2 ADD COLUMN original_source_edge BIGINT;
+ALTER TABLE
+ALTER TABLE result2 ADD COLUMN original_target_edge BIGINT;
+ALTER TABLE
+UPDATE result2 AS edges SET original_source_vertex = vertices.original_id
+FROM result2_vertices_pgr AS vertices WHERE edges.source = vertices.id;
+UPDATE 95
+UPDATE result2 AS edges SET original_target_vertex = vertices.original_id
+FROM result2_vertices_pgr AS vertices WHERE edges.target = vertices.id;
+UPDATE 95
+UPDATE result2
+SET original_source_edge = edge,
+    original_target_edge = edge
+WHERE edge != 0;
+UPDATE 30
+UPDATE  result2 AS a
+SET original_source_edge = b.edge
+FROM result2 AS b
+WHERE
+    a.original_source_edge IS NULL AND
+    b.original_source_edge IS NOT NULL AND
+    a.source = b.target;
+UPDATE 65
+UPDATE  result2 AS a
+SET original_target_edge = b.edge
+FROM result2 AS b
+WHERE
+    a.original_target_edge IS NULL AND
+    b.original_target_edge IS NOT NULL AND
+    a.target = b.source;
+UPDATE 65
+DROP TABLE IF EXISTS q_result_1;
+NOTICE:  table "q_result_1" does not exist, skipping
+DROP TABLE
+SELECT * INTO q_result_1
+FROM pgr_dijkstra($$SELECT seq AS id, * FROM result2$$,
+    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 2000),
+    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 3000)
+);
+SELECT 181
+SELECT * FROM q_result_1;
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -5 |      -7 |   -5 |   10 |    0 |        0
+   2 |        2 |        -5 |      -7 |   -3 |    4 |    1 |        0
+   3 |        3 |        -5 |      -7 | 5000 |   25 |    0 |        1
+   4 |        4 |        -5 |      -7 |  -12 |   21 |    1 |        1
+   5 |        5 |        -5 |      -7 |  -20 |   46 |    0 |        2
+   6 |        6 |        -5 |      -7 |  -18 |   40 |    1 |        2
+   7 |        7 |        -5 |      -7 | 9000 |   64 |    0 |        3
+   8 |        8 |        -5 |      -7 |  -28 |   61 |    1 |        3
+   9 |        9 |        -5 |      -7 | 4000 |   17 |    0 |        4
+  10 |       10 |        -5 |      -7 |   -8 |   15 |    1 |        4
+  11 |       11 |        -5 |      -7 | 3000 |   14 |    0 |        5
+  12 |       12 |        -5 |      -7 |   -7 |   -1 |    0 |        5
+  13 |        1 |        -5 |      -6 |   -5 |   10 |    0 |        0
+  14 |        2 |        -5 |      -6 |   -3 |    4 |    1 |        0
+  15 |        3 |        -5 |      -6 | 5000 |   25 |    0 |        1
+  16 |        4 |        -5 |      -6 |  -12 |   21 |    1 |        1
+  17 |        5 |        -5 |      -6 |  -20 |   46 |    0 |        2
+  18 |        6 |        -5 |      -6 |  -18 |   40 |    1 |        2
+  19 |        7 |        -5 |      -6 | 9000 |   64 |    0 |        3
+  20 |        8 |        -5 |      -6 |  -28 |   61 |    1 |        3
+  21 |        9 |        -5 |      -6 | 4000 |   17 |    0 |        4
+  22 |       10 |        -5 |      -6 |   -8 |   15 |    1 |        4
+  23 |       11 |        -5 |      -6 | 3000 |   13 |    0 |        5
+  24 |       12 |        -5 |      -6 |   -6 |   -1 |    0 |        5
+  25 |        1 |        -5 |    3000 |   -5 |   10 |    0 |        0
+  26 |        2 |        -5 |    3000 |   -3 |    4 |    1 |        0
+  27 |        3 |        -5 |    3000 | 5000 |   25 |    0 |        1
+  28 |        4 |        -5 |    3000 |  -12 |   21 |    1 |        1
+  29 |        5 |        -5 |    3000 |  -20 |   46 |    0 |        2
+  30 |        6 |        -5 |    3000 |  -18 |   40 |    1 |        2
+  31 |        7 |        -5 |    3000 | 9000 |   64 |    0 |        3
+  32 |        8 |        -5 |    3000 |  -28 |   61 |    1 |        3
+  33 |        9 |        -5 |    3000 | 4000 |   17 |    0 |        4
+  34 |       10 |        -5 |    3000 |   -8 |   15 |    1 |        4
+  35 |       11 |        -5 |    3000 | 3000 |   -1 |    0 |        5
+  36 |        1 |        -4 |      -7 |   -4 |    8 |    0 |        0
+  37 |        2 |        -4 |      -7 |   -3 |    4 |    1 |        0
+  38 |        3 |        -4 |      -7 | 5000 |   25 |    0 |        1
+  39 |        4 |        -4 |      -7 |  -12 |   21 |    1 |        1
+  40 |        5 |        -4 |      -7 |  -20 |   46 |    0 |        2
+  41 |        6 |        -4 |      -7 |  -18 |   40 |    1 |        2
+  42 |        7 |        -4 |      -7 | 9000 |   64 |    0 |        3
+  43 |        8 |        -4 |      -7 |  -28 |   61 |    1 |        3
+  44 |        9 |        -4 |      -7 | 4000 |   17 |    0 |        4
+  45 |       10 |        -4 |      -7 |   -8 |   15 |    1 |        4
+  46 |       11 |        -4 |      -7 | 3000 |   14 |    0 |        5
+  47 |       12 |        -4 |      -7 |   -7 |   -1 |    0 |        5
+  48 |        1 |        -4 |      -6 |   -4 |    8 |    0 |        0
+  49 |        2 |        -4 |      -6 |   -3 |    4 |    1 |        0
+  50 |        3 |        -4 |      -6 | 5000 |   25 |    0 |        1
+  51 |        4 |        -4 |      -6 |  -12 |   21 |    1 |        1
+  52 |        5 |        -4 |      -6 |  -20 |   46 |    0 |        2
+  53 |        6 |        -4 |      -6 |  -18 |   40 |    1 |        2
+  54 |        7 |        -4 |      -6 | 9000 |   64 |    0 |        3
+  55 |        8 |        -4 |      -6 |  -28 |   61 |    1 |        3
+  56 |        9 |        -4 |      -6 | 4000 |   17 |    0 |        4
+  57 |       10 |        -4 |      -6 |   -8 |   15 |    1 |        4
+  58 |       11 |        -4 |      -6 | 3000 |   13 |    0 |        5
+  59 |       12 |        -4 |      -6 |   -6 |   -1 |    0 |        5
+  60 |        1 |        -4 |    3000 |   -4 |    8 |    0 |        0
+  61 |        2 |        -4 |    3000 |   -3 |    4 |    1 |        0
+  62 |        3 |        -4 |    3000 | 5000 |   25 |    0 |        1
+  63 |        4 |        -4 |    3000 |  -12 |   21 |    1 |        1
+  64 |        5 |        -4 |    3000 |  -20 |   46 |    0 |        2
+  65 |        6 |        -4 |    3000 |  -18 |   40 |    1 |        2
+  66 |        7 |        -4 |    3000 | 9000 |   64 |    0 |        3
+  67 |        8 |        -4 |    3000 |  -28 |   61 |    1 |        3
+  68 |        9 |        -4 |    3000 | 4000 |   17 |    0 |        4
+  69 |       10 |        -4 |    3000 |   -8 |   15 |    1 |        4
+  70 |       11 |        -4 |    3000 | 3000 |   -1 |    0 |        5
+  71 |        1 |        -3 |      -7 |   -3 |    4 |    1 |        0
+  72 |        2 |        -3 |      -7 | 5000 |   25 |    0 |        1
+  73 |        3 |        -3 |      -7 |  -12 |   21 |    1 |        1
+  74 |        4 |        -3 |      -7 |  -20 |   46 |    0 |        2
+  75 |        5 |        -3 |      -7 |  -18 |   40 |    1 |        2
+  76 |        6 |        -3 |      -7 | 9000 |   64 |    0 |        3
+  77 |        7 |        -3 |      -7 |  -28 |   61 |    1 |        3
+  78 |        8 |        -3 |      -7 | 4000 |   17 |    0 |        4
+  79 |        9 |        -3 |      -7 |   -8 |   15 |    1 |        4
+  80 |       10 |        -3 |      -7 | 3000 |   14 |    0 |        5
+  81 |       11 |        -3 |      -7 |   -7 |   -1 |    0 |        5
+  82 |        1 |        -3 |      -6 |   -3 |    4 |    1 |        0
+  83 |        2 |        -3 |      -6 | 5000 |   25 |    0 |        1
+  84 |        3 |        -3 |      -6 |  -12 |   21 |    1 |        1
+  85 |        4 |        -3 |      -6 |  -20 |   46 |    0 |        2
+  86 |        5 |        -3 |      -6 |  -18 |   40 |    1 |        2
+  87 |        6 |        -3 |      -6 | 9000 |   64 |    0 |        3
+  88 |        7 |        -3 |      -6 |  -28 |   61 |    1 |        3
+  89 |        8 |        -3 |      -6 | 4000 |   17 |    0 |        4
+  90 |        9 |        -3 |      -6 |   -8 |   15 |    1 |        4
+  91 |       10 |        -3 |      -6 | 3000 |   13 |    0 |        5
+  92 |       11 |        -3 |      -6 |   -6 |   -1 |    0 |        5
+  93 |        1 |        -3 |    3000 |   -3 |    4 |    1 |        0
+  94 |        2 |        -3 |    3000 | 5000 |   25 |    0 |        1
+  95 |        3 |        -3 |    3000 |  -12 |   21 |    1 |        1
+  96 |        4 |        -3 |    3000 |  -20 |   46 |    0 |        2
+  97 |        5 |        -3 |    3000 |  -18 |   40 |    1 |        2
+  98 |        6 |        -3 |    3000 | 9000 |   64 |    0 |        3
+  99 |        7 |        -3 |    3000 |  -28 |   61 |    1 |        3
+ 100 |        8 |        -3 |    3000 | 4000 |   17 |    0 |        4
+ 101 |        9 |        -3 |    3000 |   -8 |   15 |    1 |        4
+ 102 |       10 |        -3 |    3000 | 3000 |   -1 |    0 |        5
+ 103 |        1 |        -2 |      -7 |   -2 |    3 |    1 |        0
+ 104 |        2 |        -2 |      -7 | 1000 |    2 |    0 |        1
+ 105 |        3 |        -2 |      -7 |   -1 |    1 |    1 |        1
+ 106 |        4 |        -2 |      -7 | 2000 |    6 |    0 |        2
+ 107 |        5 |        -2 |      -7 |   -3 |    4 |    1 |        2
+ 108 |        6 |        -2 |      -7 | 5000 |   25 |    0 |        3
+ 109 |        7 |        -2 |      -7 |  -12 |   21 |    1 |        3
+ 110 |        8 |        -2 |      -7 |  -20 |   46 |    0 |        4
+ 111 |        9 |        -2 |      -7 |  -18 |   40 |    1 |        4
+ 112 |       10 |        -2 |      -7 | 9000 |   64 |    0 |        5
+ 113 |       11 |        -2 |      -7 |  -28 |   61 |    1 |        5
+ 114 |       12 |        -2 |      -7 | 4000 |   17 |    0 |        6
+ 115 |       13 |        -2 |      -7 |   -8 |   15 |    1 |        6
+ 116 |       14 |        -2 |      -7 | 3000 |   14 |    0 |        7
+ 117 |       15 |        -2 |      -7 |   -7 |   -1 |    0 |        7
+ 118 |        1 |        -2 |      -6 |   -2 |    3 |    1 |        0
+ 119 |        2 |        -2 |      -6 | 1000 |    2 |    0 |        1
+ 120 |        3 |        -2 |      -6 |   -1 |    1 |    1 |        1
+ 121 |        4 |        -2 |      -6 | 2000 |    6 |    0 |        2
+ 122 |        5 |        -2 |      -6 |   -3 |    4 |    1 |        2
+ 123 |        6 |        -2 |      -6 | 5000 |   25 |    0 |        3
+ 124 |        7 |        -2 |      -6 |  -12 |   21 |    1 |        3
+ 125 |        8 |        -2 |      -6 |  -20 |   46 |    0 |        4
+ 126 |        9 |        -2 |      -6 |  -18 |   40 |    1 |        4
+ 127 |       10 |        -2 |      -6 | 9000 |   64 |    0 |        5
+ 128 |       11 |        -2 |      -6 |  -28 |   61 |    1 |        5
+ 129 |       12 |        -2 |      -6 | 4000 |   17 |    0 |        6
+ 130 |       13 |        -2 |      -6 |   -8 |   15 |    1 |        6
+ 131 |       14 |        -2 |      -6 | 3000 |   13 |    0 |        7
+ 132 |       15 |        -2 |      -6 |   -6 |   -1 |    0 |        7
+ 133 |        1 |        -2 |    3000 |   -2 |    3 |    1 |        0
+ 134 |        2 |        -2 |    3000 | 1000 |    2 |    0 |        1
+ 135 |        3 |        -2 |    3000 |   -1 |    1 |    1 |        1
+ 136 |        4 |        -2 |    3000 | 2000 |    6 |    0 |        2
+ 137 |        5 |        -2 |    3000 |   -3 |    4 |    1 |        2
+ 138 |        6 |        -2 |    3000 | 5000 |   25 |    0 |        3
+ 139 |        7 |        -2 |    3000 |  -12 |   21 |    1 |        3
+ 140 |        8 |        -2 |    3000 |  -20 |   46 |    0 |        4
+ 141 |        9 |        -2 |    3000 |  -18 |   40 |    1 |        4
+ 142 |       10 |        -2 |    3000 | 9000 |   64 |    0 |        5
+ 143 |       11 |        -2 |    3000 |  -28 |   61 |    1 |        5
+ 144 |       12 |        -2 |    3000 | 4000 |   17 |    0 |        6
+ 145 |       13 |        -2 |    3000 |   -8 |   15 |    1 |        6
+ 146 |       14 |        -2 |    3000 | 3000 |   -1 |    0 |        7
+ 147 |        1 |      2000 |      -7 | 2000 |    6 |    0 |        0
+ 148 |        2 |      2000 |      -7 |   -3 |    4 |    1 |        0
+ 149 |        3 |      2000 |      -7 | 5000 |   25 |    0 |        1
+ 150 |        4 |      2000 |      -7 |  -12 |   21 |    1 |        1
+ 151 |        5 |      2000 |      -7 |  -20 |   46 |    0 |        2
+ 152 |        6 |      2000 |      -7 |  -18 |   40 |    1 |        2
+ 153 |        7 |      2000 |      -7 | 9000 |   64 |    0 |        3
+ 154 |        8 |      2000 |      -7 |  -28 |   61 |    1 |        3
+ 155 |        9 |      2000 |      -7 | 4000 |   17 |    0 |        4
+ 156 |       10 |      2000 |      -7 |   -8 |   15 |    1 |        4
+ 157 |       11 |      2000 |      -7 | 3000 |   14 |    0 |        5
+ 158 |       12 |      2000 |      -7 |   -7 |   -1 |    0 |        5
+ 159 |        1 |      2000 |      -6 | 2000 |    6 |    0 |        0
+ 160 |        2 |      2000 |      -6 |   -3 |    4 |    1 |        0
+ 161 |        3 |      2000 |      -6 | 5000 |   25 |    0 |        1
+ 162 |        4 |      2000 |      -6 |  -12 |   21 |    1 |        1
+ 163 |        5 |      2000 |      -6 |  -20 |   46 |    0 |        2
+ 164 |        6 |      2000 |      -6 |  -18 |   40 |    1 |        2
+ 165 |        7 |      2000 |      -6 | 9000 |   64 |    0 |        3
+ 166 |        8 |      2000 |      -6 |  -28 |   61 |    1 |        3
+ 167 |        9 |      2000 |      -6 | 4000 |   17 |    0 |        4
+ 168 |       10 |      2000 |      -6 |   -8 |   15 |    1 |        4
+ 169 |       11 |      2000 |      -6 | 3000 |   13 |    0 |        5
+ 170 |       12 |      2000 |      -6 |   -6 |   -1 |    0 |        5
+ 171 |        1 |      2000 |    3000 | 2000 |    6 |    0 |        0
+ 172 |        2 |      2000 |    3000 |   -3 |    4 |    1 |        0
+ 173 |        3 |      2000 |    3000 | 5000 |   25 |    0 |        1
+ 174 |        4 |      2000 |    3000 |  -12 |   21 |    1 |        1
+ 175 |        5 |      2000 |    3000 |  -20 |   46 |    0 |        2
+ 176 |        6 |      2000 |    3000 |  -18 |   40 |    1 |        2
+ 177 |        7 |      2000 |    3000 | 9000 |   64 |    0 |        3
+ 178 |        8 |      2000 |    3000 |  -28 |   61 |    1 |        3
+ 179 |        9 |      2000 |    3000 | 4000 |   17 |    0 |        4
+ 180 |       10 |      2000 |    3000 |   -8 |   15 |    1 |        4
+ 181 |       11 |      2000 |    3000 | 3000 |   -1 |    0 |        5
+(181 rows)
+
+SELECT min(agg_cost) FROM q_result_1 WHERE edge = -1;
+ min
+-----
+   5
+(1 row)
+
+SELECT path_seq, start_vid, end_vid FROM q_result_1 WHERE edge = -1 and agg_cost = 5;
+ path_seq | start_vid | end_vid
+----------+-----------+---------
+       12 |        -5 |      -7
+       12 |        -5 |      -6
+       11 |        -5 |    3000
+       12 |        -4 |      -7
+       12 |        -4 |      -6
+       11 |        -4 |    3000
+       11 |        -3 |      -7
+       11 |        -3 |      -6
+       10 |        -3 |    3000
+       12 |      2000 |      -7
+       12 |      2000 |      -6
+       11 |      2000 |    3000
+(12 rows)
+
+SELECT * FROM q_result_1 WHERE start_vid = -3 AND end_vid = 3000;
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+  93 |        1 |        -3 |    3000 |   -3 |    4 |    1 |        0
+  94 |        2 |        -3 |    3000 | 5000 |   25 |    0 |        1
+  95 |        3 |        -3 |    3000 |  -12 |   21 |    1 |        1
+  96 |        4 |        -3 |    3000 |  -20 |   46 |    0 |        2
+  97 |        5 |        -3 |    3000 |  -18 |   40 |    1 |        2
+  98 |        6 |        -3 |    3000 | 9000 |   64 |    0 |        3
+  99 |        7 |        -3 |    3000 |  -28 |   61 |    1 |        3
+ 100 |        8 |        -3 |    3000 | 4000 |   17 |    0 |        4
+ 101 |        9 |        -3 |    3000 |   -8 |   15 |    1 |        4
+ 102 |       10 |        -3 |    3000 | 3000 |   -1 |    0 |        5
+(10 rows)
+
+SELECT * FROM q_result_1 WHERE start_vid = -3 AND end_vid = 3000 AND (cost != 0 OR edge = -1);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+  93 |        1 |        -3 |    3000 |   -3 |    4 |    1 |        0
+  95 |        3 |        -3 |    3000 |  -12 |   21 |    1 |        1
+  97 |        5 |        -3 |    3000 |  -18 |   40 |    1 |        2
+  99 |        7 |        -3 |    3000 |  -28 |   61 |    1 |        3
+ 101 |        9 |        -3 |    3000 |   -8 |   15 |    1 |        4
+ 102 |       10 |        -3 |    3000 | 3000 |   -1 |    0 |        5
+(6 rows)
+
+WITH a AS (
+    SELECT * FROM q_result_1
+    WHERE start_vid = -3 AND end_vid = 3000 AND (cost != 0 OR edge = -1))
+SELECT
+    a.seq, a.path_seq,
+    (SELECT original_id FROM result2_vertices_pgr AS b WHERE a.start_vid = b.id) AS start_vid,
+    (SELECT original_id FROM result2_vertices_pgr AS b WHERE a.end_vid = b.id) AS end_vid,
+    (SELECT original_id FROM result2_vertices_pgr AS b WHERE a.node = b.id) AS node,
+    edge, cost, agg_cost
+FROM a;
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+  93 |        1 |      2000 |    3000 | 2000 |    4 |    1 |        0
+  95 |        3 |      2000 |    3000 | 5000 |   21 |    1 |        1
+  97 |        5 |      2000 |    3000 | 6000 |   40 |    1 |        2
+  99 |        7 |      2000 |    3000 | 9000 |   61 |    1 |        3
+ 101 |        9 |      2000 |    3000 | 4000 |   15 |    1 |        4
+ 102 |       10 |      2000 |    3000 | 3000 |   -1 |    0 |        5
+(6 rows)
+
+SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
+    ARRAY[2000], ARRAY[3000]);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |      2000 |    3000 | 2000 |  400 |    1 |        0
+   2 |        2 |      2000 |    3000 | 5000 |  800 |    1 |        1
+   3 |        3 |      2000 |    3000 | 6000 |  900 |    1 |        2
+   4 |        4 |      2000 |    3000 | 9000 | 1600 |    1 |        3
+   5 |        5 |      2000 |    3000 | 4000 |  300 |    1 |        4
+   6 |        6 |      2000 |    3000 | 3000 |   -1 |    0 |        5
+(6 rows)
+
+ROLLBACK;
+ROLLBACK

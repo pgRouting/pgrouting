@@ -12,7 +12,7 @@ CREATE TABLE new_restrictions (
     path BIGINT[],
     cost float);
 
-INSERT INTO new_restrictions (path, cost) VALUES 
+INSERT INTO new_restrictions (path, cost) VALUES
  (ARRAY[4,7],   100),
  (ARRAY[8,11],  100),
  (ARRAY[7,01],  100),

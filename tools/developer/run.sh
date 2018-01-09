@@ -1,48 +1,95 @@
 #!/bin/bash
 
-#
-# base script for developers
-# copy to the root of the repository
-# 
-
 set -e
 
+
+# This run.sh is intended for 2.6.0
 if [ -z $1 ]; then
-    echo "version missing"
-    exit 1;
+    VERSION="2.6.0"
+else
+    VERSION=$1
 fi
 
-VERSION=$1
+# when more than one postgres version is installed on the computer
+PGSQL_VER="9.5"
+PGPORT=5432
 
-
-function test_compile {                                                                                                                                                                                                          
+function test_compile {
 
 echo ------------------------------------
 echo ------------------------------------
 echo Compiling with $1
 echo ------------------------------------
 
-sudo update-alternatives --set gcc /usr/bin/gcc-$1
+#sudo update-alternatives --set gcc /usr/bin/gcc-$1
 
 cd build/
-# Release RelWithDebInfo MinSizeRel Debug
-cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Debug ..
 
+# Using all defaults
+#cmake ..
 
-#cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON ..
-#cmake -DCMAKE_VERBOSE_MAKEFILE=ON ..
-make doxy
-make doc
+# Options Release RelWithDebInfo MinSizeRel Debug
+#cmake  -DCMAKE_BUILD_TYPE=Debug ..
+
+# with documentation
+#cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DPgRouting_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
+
+# when more than one postgres version is installed on the computer
+cmake  -DPOSTGRESQL_BIN=/usr/lib/postgresql/$PGSQL_VER/bin -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..  
+
 make
 sudo make install
 cd ..
 
 
-#tools/testers/algorithm-tester.pl -alg dijkstra
-#tools/testers/algorithm-tester.pl -alg dijkstra -debug1 >result.txt
+echo
+echo --------------------------------------------
+echo  Execute documentation queries for a particular directory
+echo --------------------------------------------
 
-#  Verify with git diff that signatures did not change
-#sh tools/release-scripts/get_signatures.sh $VERSION ____sigs_routing____ sql/sigs
+# - when one postgres version is installed on the computer
+tools/testers/algorithm-tester.pl  -alg withPoints -documentation
+
+# - when more than one postgres version is installed on the computer
+tools/testers/algorithm-tester.pl  -alg withPoints -documentation  -pgport $PGPORT 
+
+
+echo
+echo --------------------------------------------
+echo  Execute pgTap test  particular directory
+echo --------------------------------------------
+
+# - when one postgres version is installed on the computer
+tools/developer/taptest.sh  withPoints/*
+
+# - when more than one postgres version is installed on the computer
+tools/developer/taptest.sh  withPoints/* -p $PGPORT
+
+echo
+echo --------------------------------------------
+echo  Execute pgTap test  particular file
+echo --------------------------------------------
+
+# - when one postgres version is installed on the computer
+tools/developer/taptest.sh  withPoints/undirected_equalityDD.sql
+
+# - when more than one postgres version is installed on the computer
+tools/developer/taptest.sh  withPoints/undirected_equalityDD.sql  -p $PGPORT
+
+
+
+echo
+echo --------------------------------------------
+echo  Verify with signatures did not change
+echo --------------------------------------------
+
+# - when one postgres version is installed on the computer
+sh tools/release-scripts/get_signatures.sh $VERSION ____sigs_routing____ sql/sigs
+
+# when more than one postgres version is installed on the computer
+sh tools/release-scripts/get_signatures.sh $VERSION ____sigs_routing____ sql/sigs -p $PGPORT
+
+# this is for version <2.6.0
 #cp build/sql/pgrouting--*.sql tools/sql-update-scripts
 if [[ $(git status | grep 'pgrouting--') ]]; then
     echo "**************************************************"
@@ -53,48 +100,82 @@ if [[ $(git status | grep 'pgrouting--') ]]; then
     git diff
 fi
 
+exit 0
 
-tools/testers/algorithm-tester.pl -documentation
+################################
+################################
+## checks all the repository
+#
+#  the rest of the script use PGPORT variable
+################################
+################################
+echo
+echo --------------------------------------------
+echo  Verify NEWS
+echo --------------------------------------------
+release-scripts/notes2news.pl
+if [[ $(git status | grep 'NEWS') ]]; then
+    echo "**************************************************"
+    echo "           WARNING"
+    echo "the signatures changed, copying generated files"
+    echo "Plese verify the changes are minimal"
+    echo "**************************************************"
+    git diff NEWS
+fi
+
+########################################################
+#  Execute documentation queries for the whole project
+########################################################
+tools/testers/algorithm-tester.pl  -documentation  -pgport $PGPORT 
+
+# update the trsp README.md file
+mv doc/queries/trsp_notes_v${VERSION}.queries doc/doc/trsp/README.md
+cp test/trsp/trsp_notes_v${VERSION}.result doc/trsp/README.md
+
+if [[ $(git status | grep 'trsp_notes') ]]; then
+    echo "**************************************************"
+    echo "           WARNING"
+    echo "The trsp notes changed"
+    echo "Plese verify the changes are OK"
+    echo "**************************************************"
+    git diff
+fi
+
+
+
+
+tools/testers/algorithm-tester.pl -documentation  -pgport $PGPORT 
+tools/testers/algorithm-tester.pl -pgport $PGPORT
+
 cd build
 rm -rf doc/*
 make doc
+rm -rf doxygen/*
+make doxy
 cd ..
 
+########################################################
+# pgTap testing only a particular directory and on a particular file:
+########################################################
 
-tools/testers/algorithm-tester.pl
-
-dropdb --if-exists ___pgr___test___
-createdb  ___pgr___test___
-sh ./tools/testers/pg_prove_tests.sh vicky 
-dropdb  ___pgr___test___
+dropdb --if-exists -p $PGPORT ___pgr___test___
+createdb  -p $PGPORT ___pgr___test___
+echo $PGPORT
+sh ./tools/testers/pg_prove_tests.sh vicky $PGPORT
+dropdb  -p $PGPORT ___pgr___test___
 
 #tools/testers/update-tester.sh 
 
 }
 
-#test_compile 4.4
+# Uncomment what you need
 #rm -rf build/*
-#test_compile 5
+#test_compile 4.8
 #rm -rf build/*
 #test_compile 4.9
 #rm -rf build/*
-#test_compile 4.6
-#sudo rm -f /usr/lib/postgresql/9.3/lib/libpgrouting-2.5.so
-#sudo rm -f /usr/share/postgresql/9.3/extension/pgrouting*2.5.0*
+test_compile 5
 #rm -rf build/*
-test_compile 4.8
-
-exit 0
-
-gource --seconds-per-day 0.1 \
-    --auto-skip-seconds 0.3 \
-    --max-file-lag 0.1 \
-    --logo doc/static/images/pgrouting-logo.png ---date-format "%B %Y" \
-    --hide filenames,dirnames \
-    --start-position 0.1 \
-    --disable-auto-rotate \
-    ----file-idle-time 10 \
-    -f -1280x720 \
-    --output-ppm-stream release-2.4.ppm 
-
-ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i release-2.4.ppm -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 release-2.4.mp4
+#test_compile 6
+#rm -rf build/*
+#test_compile 7

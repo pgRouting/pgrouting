@@ -23,7 +23,7 @@ UPDATE 17
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type |    id     |  contracted_vertices  | source | target | cost 
+ seq | type |    id     |  contracted_vertices  | source | target | cost
 -----+------+-----------+-----------------------+--------+--------+------
    1 | v    | 100000002 | {100000001}           |     -1 |     -1 |   -1
    2 | v    | 100000005 | {100000007,100000008} |     -1 |     -1 |   -1
@@ -36,7 +36,7 @@ SELECT * FROM pgr_contractGraph(
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type | id | contracted_vertices |  source   |  target   | cost 
+ seq | type | id | contracted_vertices |  source   |  target   | cost
 -----+------+----+---------------------+-----------+-----------+------
    1 | e    | -1 | {100000004}         | 100000009 | 100000003 |    2
    2 | e    | -2 | {100000008}         | 100000005 | 100000007 |    2
@@ -48,7 +48,7 @@ SELECT * FROM pgr_contractGraph(
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1, 2]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type |    id     |  contracted_vertices  |  source   |  target   | cost 
+ seq | type |    id     |  contracted_vertices  |  source   |  target   | cost
 -----+------+-----------+-----------------------+-----------+-----------+------
    1 | v    | 100000005 | {100000007,100000008} |        -1 |        -1 |   -1
    2 | v    | 100000015 | {100000014}           |        -1 |        -1 |   -1
@@ -80,7 +80,7 @@ UPDATE 17
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type |      id       |      contracted_vertices      | source | target | cost 
+ seq | type |      id       |      contracted_vertices      | source | target | cost
 -----+------+---------------+-------------------------------+--------+--------+------
    1 | v    | 1000000000002 | {1000000000001}               |     -1 |     -1 |   -1
    2 | v    | 1000000000005 | {1000000000007,1000000000008} |     -1 |     -1 |   -1
@@ -93,7 +93,7 @@ SELECT * FROM pgr_contractGraph(
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type | id | contracted_vertices |    source     |    target     | cost 
+ seq | type | id | contracted_vertices |    source     |    target     | cost
 -----+------+----+---------------------+---------------+---------------+------
    1 | e    | -1 | {1000000000004}     | 1000000000009 | 1000000000003 |    2
    2 | e    | -2 | {1000000000008}     | 1000000000005 | 1000000000007 |    2
@@ -105,7 +105,7 @@ SELECT * FROM pgr_contractGraph(
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1, 2]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type |      id       |      contracted_vertices      |    source     |    target     | cost 
+ seq | type |      id       |      contracted_vertices      |    source     |    target     | cost
 -----+------+---------------+-------------------------------+---------------+---------------+------
    1 | v    | 1000000000005 | {1000000000007,1000000000008} |            -1 |            -1 |   -1
    2 | v    | 1000000000015 | {1000000000014}               |            -1 |            -1 |   -1

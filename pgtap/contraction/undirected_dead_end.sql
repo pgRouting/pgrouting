@@ -3,10 +3,10 @@
 SELECT plan(26);
 
 SET client_min_messages TO WARNING;
--- TESTING ONE CYCLE OF DEAD END CONTRACTION FOR AN UNDIRECTED GRAPH 
+-- TESTING ONE CYCLE OF DEAD END CONTRACTION FOR AN UNDIRECTED GRAPH
 
 PREPARE qempty AS
-SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost 
+SELECT seq, type, id, unnest(contracted_vertices) AS contracted_vertices, source, target, cost
 FROM ( VALUES (-1, 'v', -1, ARRAY[]::bigint[], -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost)
 WHERE 1 != 1;
 

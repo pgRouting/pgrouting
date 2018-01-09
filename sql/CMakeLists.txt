@@ -41,7 +41,7 @@ endif()
 # TARGET: PgRouting_SQL_FILE
 #
 # Builds:  pgrouting--${PGROUTING_VERSION}.sql
-# 
+#
 # add the scripts subdirectory
 # the variable ${PgRouting_SQL_FILES} should already be set at this point
 #
@@ -86,7 +86,7 @@ foreach (old_s ${OLD_SIGNATURES})
     add_custom_command(
         OUTPUT pgrouting--${old_s}--${PGROUTING_VERSION}.sql
         COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl ${old_s} ${PgRouting_DEBUG}
-        DEPENDS 
+        DEPENDS
         ./scripts/build-extension-update-files1.pl
         ${PgRouting_CURRENT_SQL_FILE}
         PgRouting_SQL_FILE

@@ -29,8 +29,8 @@ set -e
 # ----------------------
 #
 echo **All pgRouting versions to be updated must be installed before calling**
-echo 
-echo 
+echo
+echo
 #
 # USAGE
 #

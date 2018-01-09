@@ -6,7 +6,7 @@ SET
 SELECT * FROM _pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
-    
+
     'WITH
     A AS (
         SELECT p_node_id AS id, p_x AS x, p_y AS y FROM orders
@@ -18,7 +18,7 @@ SELECT * FROM _pgr_pickDeliver(
     SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
     FROM A, A AS B WHERE A.id != B.id'
     );
- seq | vehicle_seq | vehicle_id | stop_seq | stop_type | stop_id | order_id | cargo |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time  
+ seq | vehicle_seq | vehicle_id | stop_seq | stop_type | stop_id | order_id | cargo |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time
 -----+-------------+------------+----------+-----------+---------+----------+-------+------------------+------------------+-----------+--------------+------------------
    1 |           1 |          1 |        1 |         1 |       6 |       -1 |     0 |                0 |                0 |         0 |            0 |                0
    2 |           1 |          1 |        2 |         2 |       5 |        3 |    30 |                1 |                1 |         1 |            3 |                5
@@ -38,10 +38,10 @@ SELECT * FROM _pgr_pickDeliver(
     $$ SELECT * FROM orders ORDER BY id $$,
     $$ SELECT * FROM vehicles $$,
     $$ SELECT * from pgr_dijkstraCostMatrix(
-        ' SELECT * FROM edge_table ', ARRAY[3, 4, 5, 8, 9, 11]) 
+        ' SELECT * FROM edge_table ', ARRAY[3, 4, 5, 8, 9, 11])
     $$
 );
- seq | vehicle_seq | vehicle_id | stop_seq | stop_type | stop_id | order_id | cargo | travel_time | arrival_time | wait_time | service_time | departure_time 
+ seq | vehicle_seq | vehicle_id | stop_seq | stop_type | stop_id | order_id | cargo | travel_time | arrival_time | wait_time | service_time | departure_time
 -----+-------------+------------+----------+-----------+---------+----------+-------+-------------+--------------+-----------+--------------+----------------
    1 |           1 |          1 |        1 |         1 |       6 |       -1 |     0 |           0 |            0 |         0 |            0 |              0
    2 |           1 |          1 |        2 |         2 |       5 |        3 |    30 |           1 |            1 |         1 |            3 |              5

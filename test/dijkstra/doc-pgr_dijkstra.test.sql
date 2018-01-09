@@ -30,7 +30,7 @@ SELECT * FROM pgr_dijkstra(
 \echo -- q6
 
 
--- Examples for :ref:`fig1-direct-Cost-Reverse` 
+-- Examples for :ref:`fig1-direct-Cost-Reverse`
 -------------------------------------------------------------------------------
 
 \echo -- q7
@@ -65,7 +65,7 @@ SELECT * FROM pgr_dijkstra(
 \echo -- q8
 
 
--- Examples for :ref:`fig2-undirect-Cost-Reverse` 
+-- Examples for :ref:`fig2-undirect-Cost-Reverse`
 -------------------------------------------------------------------------------
 
 
@@ -108,7 +108,7 @@ SELECT * FROM pgr_dijkstra(
 \echo -- q10
 
 
--- Examples for :ref:`fig3-direct-Cost` 
+-- Examples for :ref:`fig3-direct-Cost`
 -------------------------------------------------------------------------------
 
 
@@ -144,7 +144,7 @@ SELECT * FROM pgr_dijkstra(
 \echo -- q12
 
 
--- Examples for :ref:`fig4-undirect-Cost` 
+-- Examples for :ref:`fig4-undirect-Cost`
 -------------------------------------------------------------------------------
 
 \echo -- q13
@@ -188,7 +188,7 @@ SELECT * FROM pgr_dijkstra(
 
 
 
--- Equivalences for :ref:`fig1-direct-Cost-Reverse` 
+-- Equivalences for :ref:`fig1-direct-Cost-Reverse`
 -------------------------------------------------------------------------------
 
 \echo -- q15
@@ -199,12 +199,12 @@ SELECT * FROM pgr_dijkstra(
 );
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2,3 
+    2,3
 );
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3],
-    TRUE     
+    TRUE
 );
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -223,7 +223,7 @@ SELECT * FROM pgr_dijkstra(
 \echo -- q16
 
 
--- Equivalences for :ref:`fig2-undirect-Cost-Reverse` 
+-- Equivalences for :ref:`fig2-undirect-Cost-Reverse`
 -------------------------------------------------------------------------------
 
 
@@ -236,7 +236,7 @@ SELECT * FROM pgr_dijkstra(
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3],
-    FALSE     
+    FALSE
 );
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',

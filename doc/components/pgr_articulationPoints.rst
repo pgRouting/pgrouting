@@ -29,9 +29,9 @@ In particular, the algorithm implemented by Boost.Graph.
 Synopsis
 -------------------------------------------------------------------------------
 
-Those vertices that belong to more than one biconnected component are called 
-articulation points or, equivalently, cut vertices. Articulation points are 
-vertices whose removal would increase the number of connected components in 
+Those vertices that belong to more than one biconnected component are called
+articulation points or, equivalently, cut vertices. Articulation points are
+vertices whose removal would increase the number of connected components in
 the graph.
 This implementation can only be used with an undirected graph.
 
@@ -59,7 +59,7 @@ Signatures
     RETURNS SET OF (seq, node)
         OR EMPTY SET
 
-The signature is for a **undirected** graph. 
+The signature is for a **undirected** graph.
 
 :Example:
 

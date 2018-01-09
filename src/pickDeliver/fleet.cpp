@@ -236,13 +236,17 @@ Fleet::build_fleet(
                 msg.error << "Illegal values found on vehicle";
                 msg.log << "On vehicle " << vehicle.id
                     << " a condition is not met:\n"
-                    << "starting_site.is_start: " << (starting_site.is_start()? "YES" : "NO") << "\n"
-                    << "ending_site.is_end: " << (ending_site.is_end()? "YES" : "NO") << "\n"
+                    << "starting_site.is_start: "
+                    << (starting_site.is_start()? "YES" : "NO") << "\n"
+                    << "ending_site.is_end: "
+                    << (ending_site.is_end()? "YES" : "NO") << "\n"
                     << "verify that:\n"
                     << "-  start_open <= start_close: "
-                    << starting_site.opens() << "<"  << starting_site.closes() << "\n"
+                    << starting_site.opens()
+                    << "<"  << starting_site.closes() << "\n"
                     << "-  end_open <= end_close: "
-                    << ending_site.opens() << "<"  << ending_site.closes() << "\n"
+                    << ending_site.opens()
+                    << "<"  << ending_site.closes() << "\n"
                     << "-  capacity > 0\n";
                 pgassert(!msg.get_error().empty());
                 return false;
@@ -277,12 +281,16 @@ Fleet::build_fleet(
                 msg.error << "Illegal values found on vehicle";
                 msg.log << "On vehicle " << vehicle.id
                     << " a condition is not met, verify that:\n"
-                    << "starting_site.is_start()" << starting_site.is_start() << "\n"
-                    << "ending_site.is_start()" << ending_site.is_end() << "\n"
+                    << "starting_site.is_start()"
+                    << starting_site.is_start() << "\n"
+                    << "ending_site.is_start()"
+                    << ending_site.is_end() << "\n"
                     << "-  start_open <= start_close\n"
-                    << starting_site.opens() << "<"  << starting_site.closes() << "\n"
+                    << starting_site.opens() << "<"
+                    << starting_site.closes() << "\n"
                     << "-  end_open <= end_close\n"
-                    << ending_site.opens() << "<"  << ending_site.closes() << "\n"
+                    << ending_site.opens() << "<"
+                    << ending_site.closes() << "\n"
                     << "-  capacity > 0\n";
                 pgassert(!msg.get_error().empty());
                 return false;

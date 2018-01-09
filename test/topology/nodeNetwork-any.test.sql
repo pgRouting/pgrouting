@@ -14,7 +14,7 @@ insert into edge_table (old_id,dir,cost,reverse_cost,the_geom)
    (with
        segmented as (select old_id,count(*) as i from edge_table_noded group by old_id)
    select  segments.old_id,dir,cost,reverse_cost,segments.the_geom
-       from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id) 
+       from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id)
        where edges.id in (select old_id from segmented where i>1) );
 
 SELECT pgr_createTopology('edge_table', 0.001);

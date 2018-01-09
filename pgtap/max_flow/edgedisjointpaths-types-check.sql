@@ -52,7 +52,7 @@ SELECT pg_typeof(seq)::text AS t1,
 --    pgr_edgeDisjointPaths(One to Many)
 --    pgr_edgeDisjointPaths(Many to One)
 PREPARE edp_v_o2m AS
-SELECT  
+SELECT
     'integer'::text AS t1,
     'integer'::text AS t2,
     'bigint'::text AS t3,

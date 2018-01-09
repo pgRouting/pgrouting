@@ -20,7 +20,7 @@ SELECT function_returns('_pgr_pickdeliver',
     'setof record');
 
 /* testing the pick/deliver orders*/
-CREATE OR REPLACE FUNCTION test_anyInteger_orders(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyInteger_orders(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -39,13 +39,13 @@ BEGIN
         $$SELECT * FROM vehicles ORDER BY id$$,
         $$SELECT * FROM dist_matrix$$,
         30)';
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -58,7 +58,7 @@ END;
 $BODY$ LANGUAGE plpgsql;
 
 /* testing the pick/deliver orders*/
-CREATE OR REPLACE FUNCTION test_anyNumerical_orders(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyNumerical_orders(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -77,13 +77,13 @@ BEGIN
         $$SELECT * FROM vehicles ORDER BY id$$,
         $$SELECT * FROM dist_matrix$$,
         30)';
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -322,23 +322,23 @@ SELECT test_anynumerical_orders('_pgr_pickdeliver',
 without optional: number
 */
 SELECT test_anyInteger_vehicles('_pgr_pickdeliver',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_node_id', 'start_open', 'start_close'],
     'id');
 SELECT test_anyNumerical_vehicles('_pgr_pickdeliver',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_node_id', 'start_open', 'start_close'],
     'capacity');
 SELECT test_anyInteger_vehicles('_pgr_pickdeliver',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_node_id', 'start_open', 'start_close'],
     'start_node_id');
 SELECT test_anyNumerical_vehicles('_pgr_pickdeliver',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_node_id', 'start_open', 'start_close'],
     'start_open');
 SELECT test_anyNumerical_vehicles('_pgr_pickdeliver',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_node_id', 'start_open', 'start_close'],
     'start_close');
 

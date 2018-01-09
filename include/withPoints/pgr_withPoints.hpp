@@ -46,7 +46,6 @@ class Pg_points_graph : public Pgr_messages {
     };
 
  public:
-
      Pg_points_graph() = delete;
      Pg_points_graph(const Pg_points_graph &) = delete;
      Pg_points_graph(
@@ -54,8 +53,7 @@ class Pg_points_graph : public Pgr_messages {
              std::vector<pgr_edge_t>      p_edges_to_modify,
              bool p_normal,
              char p_driving_side,
-             bool p_directed
-             );
+             bool p_directed);
 
      std::vector<Point_on_edge_t> points() const;
      std::vector<pgr_edge_t> edges_of_points() const;

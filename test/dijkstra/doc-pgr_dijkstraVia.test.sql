@@ -20,7 +20,7 @@ SELECT * FROM pgr_dijkstraVia(
 SELECT agg_cost FROM  pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
     ARRAY[1, 5, 3, 9, 4]
-) 
+)
 WHERE path_id = 3 AND edge <0;
 
 
@@ -33,11 +33,11 @@ WHERE path_id = 3 AND edge < 0;
 
 
 \echo -- q4
-SELECT row_number() over () as node_seq, node 
+SELECT row_number() over () as node_seq, node
 FROM  pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
     ARRAY[1, 5, 3, 9, 4]
-) 
+)
 WHERE edge <> -1 ORDER BY seq;
 
 
@@ -45,7 +45,7 @@ WHERE edge <> -1 ORDER BY seq;
 SELECT path_id, route_agg_cost FROM  pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
     ARRAY[1, 5, 3, 9, 4]
-) 
+)
 WHERE edge < 0;
 
 

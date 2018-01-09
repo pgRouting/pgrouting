@@ -6,7 +6,7 @@ CREATE TABLE trucks(id integer primary key, truck_name varchar(75), capacity int
 INSERT INTO trucks(id, truck_name, capacity)
 VALUES (1, 'Hardy Truck', 800),
     (2, 'Laurel Truck', 400);
-    
+
 CREATE TABLE restaurants_99(id integer primary key,  loc_name varchar(150), lon float, lat float);
 INSERT INTO restaurants_99(id, loc_name, lon, lat)
 VALUES (1, 'Bristol, CT', -72.8924, 41.66892),
@@ -21,8 +21,8 @@ VALUES (1, 'Bristol, CT', -72.8924, 41.66892),
      (10, 'Torrington, CT',  -73.12131, 41.79984),
      (11, 'Vernon, CT', -72.49305, 41.82647),
      (12, 'Wallingford, CT', -72.8092, 41.4835);
-*/   
-     
+*/
+
 CREATE TABLE jet_customers (
     airport character varying,
     id integer,
@@ -596,7 +596,7 @@ INSERT INTO vrpdtw_beer (rid, id, x, y, opentime, closetime, servicetime, demand
 INSERT INTO vrpdtw_beer (rid, id, x, y, opentime, closetime, servicetime, demand, pindex, dindex) VALUES (10, 20, 2179348.5807632855, 7268.5531586333609, 0, 780, 0, -50, 19, 0);
 INSERT INTO vrpdtw_beer (rid, id, x, y, opentime, closetime, servicetime, demand, pindex, dindex) VALUES (11, 22, 2226924.5635206043, 27207.476487862386, 0, 780, 0, -200, 21, 0);
 INSERT INTO vrpdtw_beer (rid, id, x, y, opentime, closetime, servicetime, demand, pindex, dindex) VALUES (12, 24, 2214670.8347013257, -18087.138344661518, 0, 780, 0, -50, 23, 0);
-*/    
+*/
 
 /*
 SELECT * FROM pgr_gsoc_vrppdtw(

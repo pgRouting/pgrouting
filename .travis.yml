@@ -21,13 +21,22 @@ env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
 matrix:
   include:
     - os: linux
-      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
-
+      env: POSTGRESQL_VERSION=10   PG_USER=postgres DOCUMENTATION=OFF
 
     - os: linux
-      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
+      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres DOCUMENTATION=OFF
 
+    - os: linux
+      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres DOCUMENTATION=OFF
 
+    - os: linux
+      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres DOCUMENTATION=OFF
+
+    - os: linux
+      env: POSTGRESQL_VERSION=9.3   PG_USER=postgres DOCUMENTATION=OFF
+
+    - os: linux
+      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres DOCUMENTATION=ON
 
 
 # executed. So things have to be tested oe by one.
@@ -55,15 +64,14 @@ addons:
 
 install:
   - pip install sphinx
+  - sudo ./tools/travis/install-doxygen.sh
   - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION $PG_USER
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/install-doxygen.sh ; fi
 
 before_script:
 
-  # Add our chosen PG version to the path
   - psql -U postgres -c "create extension postgis"
-  - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
-
+  -  export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
+    
   # initialize databases
   - createdb  -U $PG_USER ___pgr___test___
   - createdb  -U $PG_USER pgr_test__db__test
@@ -73,7 +81,7 @@ before_script:
 script:
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   # tests as part of script so if a test fails the build fails
-  - ./tools/testers/pg_prove_tests.sh $PG_USER 5432 DEBUG
+  - if [ "$DOCUMENTATION" == "OFF" ]; then ./tools/testers/pg_prove_tests.sh $PG_USER 5432 DEBUG ; fi
 
 #after_script:
   - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER

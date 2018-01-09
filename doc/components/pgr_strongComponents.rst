@@ -59,7 +59,7 @@ Signatures
     RETURNS SET OF (seq, component, n_seq, node)
         OR EMPTY SET
 
-The signature is for a **directed** graph. 
+The signature is for a **directed** graph.
 
 :Example:
 

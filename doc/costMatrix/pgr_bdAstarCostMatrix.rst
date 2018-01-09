@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -24,7 +24,7 @@ Name
    Boost Graph Inside
 
 .. rubric:: Availability: 2.5.0
-   
+
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr

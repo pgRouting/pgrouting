@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_bridges(
     TEXT,                       -- edges_sql
         OUT seq INTEGER,        -- seq
-    OUT edge BIGINT)            -- the number of the edge 
+    OUT edge BIGINT)            -- the number of the edge
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'bridges'

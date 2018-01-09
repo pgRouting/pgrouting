@@ -19,7 +19,7 @@ PREPARE q2 AS
 SELECT seq-1, node::INTEGER, edge::INTEGER, cost::TEXT FROM pgr_withPoints(
     $$SELECT id, source, target, cost, reverse_cost from edge_table$$,
     $$(SELECT 1 AS pid, 1 AS edge_id, 0.5::float  AS fraction)
-    UNION 
+    UNION
     (SELECT 2, 6, 0.5)$$,
     -1, -2);
 

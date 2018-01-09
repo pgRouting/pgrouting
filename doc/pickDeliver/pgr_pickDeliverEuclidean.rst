@@ -76,7 +76,7 @@ Characteristics
 Signature
 -------------------------------------------------------------------------------
 
-..  
+..
     TEXT, -- orders_sql
     TEXT, -- vehicles_sql
     factor FLOAT DEFAULT 1,

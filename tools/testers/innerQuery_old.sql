@@ -20,13 +20,13 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM edge_table_old $$' || rest_sql;
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT throws_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT throws_ok(query);
 
@@ -54,13 +54,13 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM edge_table_old $$' || rest_sql;
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT throws_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT throws_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT throws_ok(query);
 

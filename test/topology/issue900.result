@@ -16,7 +16,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
 OK
 (1 row)

@@ -16,15 +16,15 @@ UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost
 UPDATE 18
 select * from pgr_trsp(
     'select id::integer, source::integer, target::integer,cost, reverse_cost from edge_table ORDER BY ID',
-    1,    
-    0.5,  
-    6,    
-    0.5,  
-    true, 
-    true, 
-    
+    1,
+    0.5,
+    6,
+    0.5,
+    true,
+    true,
+
     'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
- seq | id1 | id2 |       cost        
+ seq | id1 | id2 |       cost
 -----+-----+-----+-------------------
    0 |  -1 |   1 |            0.5005
    1 |   2 |   4 |             1.016
