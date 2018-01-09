@@ -26,12 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
     SELECT * FROM pgr_trspViaVertices(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
-        ARRAY[2, 7, 11]::INTEGER[],     
-        true,  
-        true,  
-        
+        ARRAY[2, 7, 11]::INTEGER[],
+        true,
+        true,
+
         'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
    2 |   1 |   5 |   8 |    1
@@ -56,13 +56,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
-        ARRAY[4,6,11]::INTEGER[],           
-        ARRAY[0.5, 0.5, 0.5]::float8[],     
-        true,  
-        true,  
-        
+        ARRAY[4,6,11]::INTEGER[],
+        ARRAY[0.5, 0.5, 0.5]::float8[],
+        true,
+        true,
+
         'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
    2 |   1 |   5 |   8 |    1
@@ -85,13 +85,13 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
-        ARRAY[1,11,6]::INTEGER[],           
-        ARRAY[0.5, 0.5, 0.5]::float8[],     
-        true,  
-        true,  
-        
+        ARRAY[1,11,6]::INTEGER[],
+        ARRAY[0.5, 0.5, 0.5]::float8[],
+        true,
+        true,
+
         'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
@@ -112,13 +112,13 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
-        ARRAY[1,11,6]::INTEGER[],           
-        ARRAY[0.5, 0.5, 0.5]::float8[],     
-        true,  
-        true,  
-        
+        ARRAY[1,11,6]::INTEGER[],
+        ARRAY[0.5, 0.5, 0.5]::float8[],
+        true,
+        true,
+
         'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1

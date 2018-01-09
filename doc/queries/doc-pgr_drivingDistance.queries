@@ -7,7 +7,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3
       );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |    2 |   -1 |    0 |        0
    2 |    1 |    1 |    1 |        1
@@ -25,7 +25,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         13, 3
       );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   13 |   -1 |    0 |        0
    2 |   10 |   14 |    1 |        1
@@ -41,7 +41,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3
       );
- seq | from_v | node | edge | cost | agg_cost 
+ seq | from_v | node | edge | cost | agg_cost
 -----+--------+------+------+------+----------
    1 |      2 |    2 |   -1 |    0 |        0
    2 |      2 |    1 |    1 |    1 |        1
@@ -67,7 +67,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, equicost:=true
       );
- seq | from_v | node | edge | cost | agg_cost 
+ seq | from_v | node | edge | cost | agg_cost
 -----+--------+------+------+------+----------
    1 |      2 |    2 |   -1 |    0 |        0
    2 |      2 |    1 |    1 |    1 |        1
@@ -87,7 +87,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3, false
       );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |    2 |   -1 |    0 |        0
    2 |    1 |    1 |    1 |        1
@@ -107,7 +107,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         13, 3, false
       );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   13 |   -1 |    0 |        0
    2 |   10 |   14 |    1 |        1
@@ -123,7 +123,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false
       );
- seq | from_v | node | edge | cost | agg_cost 
+ seq | from_v | node | edge | cost | agg_cost
 -----+--------+------+------+------+----------
    1 |      2 |    2 |   -1 |    0 |        0
    2 |      2 |    1 |    1 |    1 |        1
@@ -151,7 +151,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false, equicost:=true
       );
- seq | from_v | node | edge | cost | agg_cost 
+ seq | from_v | node | edge | cost | agg_cost
 -----+--------+------+------+------+----------
    1 |      2 |    2 |   -1 |    0 |        0
    2 |      2 |    1 |    1 |    1 |        1
@@ -173,7 +173,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         2, 3
       );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |    2 |   -1 |    0 |        0
    2 |    5 |    4 |    1 |        1
@@ -188,7 +188,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         13, 3
       );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   13 |   -1 |    0 |        0
 (1 row)
@@ -197,7 +197,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3
       );
- seq | from_v | node | edge | cost | agg_cost 
+ seq | from_v | node | edge | cost | agg_cost
 -----+--------+------+------+------+----------
    1 |      2 |    2 |   -1 |    0 |        0
    2 |      2 |    5 |    4 |    1 |        1
@@ -213,7 +213,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, equicost:=true
       );
- seq | from_v | node | edge | cost | agg_cost 
+ seq | from_v | node | edge | cost | agg_cost
 -----+--------+------+------+------+----------
    1 |      2 |    2 |   -1 |    0 |        0
    2 |      2 |    5 |    4 |    1 |        1
@@ -229,7 +229,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         2, 3, false
       );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |    2 |   -1 |    0 |        0
    2 |    1 |    1 |    1 |        1
@@ -248,7 +248,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         13, 3, false
       );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   13 |   -1 |    0 |        0
    2 |   10 |   14 |    1 |        1
@@ -264,7 +264,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, false
       );
- seq | from_v | node | edge | cost | agg_cost 
+ seq | from_v | node | edge | cost | agg_cost
 -----+--------+------+------+------+----------
    1 |      2 |    2 |   -1 |    0 |        0
    2 |      2 |    1 |    1 |    1 |        1
@@ -291,7 +291,7 @@ SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, false, equicost:=true
       );
- seq | from_v | node | edge | cost | agg_cost 
+ seq | from_v | node | edge | cost | agg_cost
 -----+--------+------+------+------+----------
    1 |      2 |    2 |   -1 |    0 |        0
    2 |      2 |    1 |    1 |    1 |        1

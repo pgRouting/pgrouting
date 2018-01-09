@@ -1,6 +1,6 @@
 
 
-CREATE TABLE maptest as 
+CREATE TABLE maptest as
 SELECT  671222::integer as id, 318255::integer as  source, 222698::integer as target, 14.02::float8 as cost, 14.02::float8 as reverse_cost UNION ALL
 SELECT  671223, 222698, 36655, 197.16, 197.16 UNION ALL
 SELECT  582877, 408918, 5556, 458.09, 458.09 UNION ALL
@@ -16,7 +16,7 @@ FROM pgr_trsp(
     true,        -- directed graph?
     true,      -- has_reverse_cost?
     null -- include the turn restrictions
-) PG ; 
+) PG ;
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
 FROM pgr_trsp(

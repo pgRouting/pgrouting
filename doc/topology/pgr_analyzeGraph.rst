@@ -120,7 +120,7 @@ We get the same result as the simplest way to use the function.
     NOTICE:  Performing checks, please wait ...
     NOTICE:  Got function st_srid(bigint) does not exist
     NOTICE:  ERROR: something went wrong when checking for SRID of id in table public.edge_table
-    pgr_analyzegraph 
+    pgr_analyzegraph
     ------------------
       FAIL
     (1 row)
@@ -197,7 +197,7 @@ The arguments need to be given in the order described in the parameters:
     NOTICE:  Performing checks, please wait ...
     NOTICE:  Got function st_srid(bigint) does not exist
     NOTICE:  ERROR: something went wrong when checking for SRID of gid in table public.mytable
-    pgr_analyzegraph 
+    pgr_analyzegraph
     ------------------
       FAIL
     (1 row)

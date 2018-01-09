@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_alphaShape(
     'SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
     FROM edge_table_vertices_pgr') ORDER BY x, y;
-  x  |  y  
+  x  |  y
 -----+-----
    0 |   2
  0.5 | 3.5
@@ -29,7 +29,7 @@ FROM (
             FROM edge_table_vertices_pgr')
         ) AS a
    ) AS foo;
- st_area 
+ st_area
 ---------
    11.75
 (1 row)

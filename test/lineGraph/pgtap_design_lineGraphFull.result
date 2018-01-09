@@ -7,7 +7,7 @@ UPDATE 18
 UPDATE edge_table_vertices_pgr SET id = id * 1000;
 UPDATE 17
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
-  id  | source | target | cost | reverse_cost 
+  id  | source | target | cost | reverse_cost
 ------+--------+--------+------+--------------
   100 |   1000 |   2000 |    1 |            1
   200 |   2000 |   3000 |   -1 |            1
@@ -30,7 +30,7 @@ SELECT id, source, target, cost, reverse_cost FROM edge_table;
 (18 rows)
 
 SELECT id FROM edge_table_vertices_pgr;
-  id   
+  id
 -------
   1000
   2000
@@ -54,7 +54,7 @@ SELECT id FROM edge_table_vertices_pgr;
 SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost FROM edge_table WHERE id = 1$$
 );
- seq | source | target | cost | edge 
+ seq | source | target | cost | edge
 -----+--------+--------+------+------
 (0 rows)
 
@@ -63,7 +63,7 @@ SELECT  *  FROM pgr_lineGraphFull(
     FROM edge_table
     WHERE id = 200$$
 );
- seq | source | target | cost | edge 
+ seq | source | target | cost | edge
 -----+--------+--------+------+------
    1 |   3000 |   2000 |    1 | -200
 (1 row)
@@ -73,7 +73,7 @@ SELECT  *  FROM pgr_lineGraphFull(
     FROM edge_table
     WHERE id = 1100$$
 );
- seq | source | target | cost | edge 
+ seq | source | target | cost | edge
 -----+--------+--------+------+------
    1 |   6000 |  11000 |    1 | 1100
 (1 row)
@@ -83,7 +83,7 @@ SELECT  *  FROM pgr_lineGraphFull(
     FROM edge_table
     WHERE id = 100$$
 );
- seq | source | target | cost | edge 
+ seq | source | target | cost | edge
 -----+--------+--------+------+------
    1 |     -1 |   2000 |    1 |  100
    2 |   1000 |     -1 |    0 |    0
@@ -97,7 +97,7 @@ SELECT  *  FROM pgr_lineGraphFull($$
     SELECT id, source, target, cost FROM edge_table WHERE id = 100
     $$
 );
- seq | source | target | cost | edge 
+ seq | source | target | cost | edge
 -----+--------+--------+------+------
    1 |   2000 |   2000 |    1 |  100
    2 |   2000 |   1000 |    1 |  100
@@ -111,7 +111,7 @@ SELECT  *  FROM pgr_lineGraphFull($$
     SELECT -id AS id, source, target, cost FROM edge_table WHERE id = 100
     $$
 );
- seq | source | target | cost | edge 
+ seq | source | target | cost | edge
 -----+--------+--------+------+------
    1 |     -1 |   1000 |    1 | -100
    2 |   2000 |     -1 |    0 |    0
@@ -124,20 +124,20 @@ SELECT  *  FROM pgr_lineGraphFull(
     FROM edge_table
     WHERE id IN (200, 300)$$
 );
- seq | source | target | cost | edge 
+ seq | source | target | cost | edge
 -----+--------+--------+------+------
    1 |     -1 |   2000 |    1 | -200
    2 |   3000 |     -1 |    0 |    0
    3 |   4000 |   3000 |    1 | -300
 (3 rows)
 
-SELECT  *  FROM pgr_lineGraphFull( 
+SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id * 100 AS id, source * 1000 AS source, target * 1000 AS target,
         cost, reverse_cost
     FROM edge_table
     WHERE id in (600, 700)$$
 );
- seq | source  | target  | cost |  edge  
+ seq | source  | target  | cost |  edge
 -----+---------+---------+------+--------
    1 |      -1 | 8000000 |    1 |  60000
    2 | 7000000 |      -1 |    0 |      0
@@ -157,7 +157,7 @@ SELECT  *  FROM pgr_lineGraphFull(
     FROM edge_table
     where id in (500, 900, 1100)$$
 );
- seq | source  |  target  | cost |  edge  
+ seq | source  |  target  | cost |  edge
 -----+---------+----------+------+--------
    1 | 3000000 |  6000000 |    1 |  50000
    2 |      -1 |  9000000 |    1 |  90000

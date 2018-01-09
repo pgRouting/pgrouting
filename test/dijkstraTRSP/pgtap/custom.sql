@@ -132,7 +132,7 @@ SELECT seq, edge FROM ( VALUES
 	(11, -1) )
 AS t(seq, edge);
 
-SELECT set_eq('q11', 'q12', 'Testing from source 7 to target 1 with restriction on edges as follows 7 -> 8 and 7 -> 4'); 
+SELECT set_eq('q11', 'q12', 'Testing from source 7 to target 1 with restriction on edges as follows 7 -> 8 and 7 -> 4');
 
 
 
@@ -154,7 +154,7 @@ SELECT seq, edge FROM ( VALUES
 	(8, -1) )
 AS t(seq, edge);
 
-SELECT set_eq('q13', 'q14', 'Testing from source 12 to target 7 with restriction on edges as follows 9 -> 11 and 9 -> 8'); 
+SELECT set_eq('q13', 'q14', 'Testing from source 12 to target 7 with restriction on edges as follows 9 -> 11 and 9 -> 8');
 
 
 SELECT todo_end();

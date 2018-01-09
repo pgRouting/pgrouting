@@ -13,7 +13,7 @@ SELECT * FROM result2;
 DROP TABLE IF EXISTS result2_vertices_pgr;
 WITH foo AS (SELECT source AS id FROM result2
     UNION
-    SELECT target FROM result2) 
+    SELECT target FROM result2)
 SELECT *, NULL::BIGINT AS original_id
 INTO result2_vertices_pgr
 FROM foo
@@ -55,14 +55,14 @@ ALTER TABLE result2 ADD COLUMN original_target_vertex BIGINT;
 ALTER TABLE result2 ADD COLUMN original_source_edge BIGINT;
 ALTER TABLE result2 ADD COLUMN original_target_edge BIGINT;
 
--- restoring the original_foo_vertex 
+-- restoring the original_foo_vertex
 UPDATE result2 AS edges SET original_source_vertex = vertices.original_id
 FROM result2_vertices_pgr AS vertices WHERE edges.source = vertices.id;
 
 UPDATE result2 AS edges SET original_target_vertex = vertices.original_id
 FROM result2_vertices_pgr AS vertices WHERE edges.target = vertices.id;
 
--- restoring the original_foo_edges 
+-- restoring the original_foo_edges
 UPDATE result2
 SET original_source_edge = edge,
     original_target_edge = edge
@@ -71,7 +71,7 @@ WHERE edge != 0;
 UPDATE  result2 AS a
 SET original_source_edge = b.edge
 FROM result2 AS b
-WHERE 
+WHERE
     a.original_source_edge IS NULL AND
     b.original_source_edge IS NOT NULL AND
     a.source = b.target;
@@ -79,7 +79,7 @@ WHERE
 UPDATE  result2 AS a
 SET original_target_edge = b.edge
 FROM result2 AS b
-WHERE 
+WHERE
     a.original_target_edge IS NULL AND
     b.original_target_edge IS NOT NULL AND
     a.target = b.source;

@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_lineGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
- seq | source | target | cost | reverse_cost 
+ seq | source | target | cost | reverse_cost
 -----+--------+--------+------+--------------
    1 |    -18 |     18 |    1 |            1
    2 |    -17 |     17 |    1 |            1
@@ -55,7 +55,7 @@ SELECT * FROM pgr_lineGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     FALSE
 );
- seq | source | target | cost | reverse_cost 
+ seq | source | target | cost | reverse_cost
 -----+--------+--------+------+--------------
    1 |     -3 |     -2 |    1 |           -1
    2 |     -3 |      5 |    1 |           -1

@@ -16,7 +16,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -37,7 +37,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -53,7 +53,7 @@ NOTICE:  pgr_createTopology('edge_table', 0.001, 'id', 'the_geom', 'source', 'ta
 NOTICE:  Performing checks, please wait .....
 NOTICE:  ----> PGR ERROR in pgr_createTopology: Wrong type of Column id:the_geom
 NOTICE:  Unexpected error raise_exception
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  FAIL
 (1 row)
@@ -68,7 +68,7 @@ UPDATE 18
 --q4
 SELECT  pgr_createTopology('edge_table', 0.001,
     the_geom:='the_geom', id:='id', source:='source', target:='target');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -81,7 +81,7 @@ UPDATE 18
 --q5
 SELECT  pgr_createTopology('edge_table', 0.001,
     source:='source', id:='id', target:='target', the_geom:='the_geom');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -93,7 +93,7 @@ UPDATE edge_table SET source = NULL,  target = NULL;
 UPDATE 18
 --q6
 SELECT  pgr_createTopology('edge_table', 0.001, source:='source');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -101,7 +101,7 @@ SELECT  pgr_createTopology('edge_table', 0.001, source:='source');
 --q6.1
 --q7
 SELECT  pgr_createTopology('edge_table', 0.001, rows_where:='id < 10');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -110,7 +110,7 @@ SELECT  pgr_createTopology('edge_table', 0.001, rows_where:='id < 10');
 --q8
 SELECT  pgr_createTopology('edge_table', 0.001,
     rows_where:='the_geom && (SELECT st_buffer(the_geom, 0.05) FROM edge_table WHERE id=5)');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -121,7 +121,7 @@ CREATE TABLE otherTable AS  (SELECT 100 AS gid,  st_point(2.5, 2.5) AS other_geo
 SELECT 1
 SELECT  pgr_createTopology('edge_table', 0.001,
     rows_where:='the_geom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -133,7 +133,7 @@ SELECT 18
 --q10.1
 --q11
 SELECT  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', clean := TRUE);
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -152,7 +152,7 @@ NOTICE:  pgr_createTopology('mytable', 0.001, 'gid', 'mygeom', 'src', 'tgt', row
 NOTICE:  Performing checks, please wait .....
 NOTICE:  ----> PGR ERROR in pgr_createTopology: Wrong type of Column id:mygeom
 NOTICE:  Unexpected error raise_exception
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  FAIL
 (1 row)
@@ -162,7 +162,7 @@ SET client_min_messages TO WARNING;
 SET
 --q13
 SELECT  pgr_createTopology('mytable', 0.001, the_geom:='mygeom', id:='gid', source:='src', target:='tgt');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -174,7 +174,7 @@ UPDATE mytable SET src = NULL,  tgt = NULL;
 UPDATE 18
 --q14
 SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='tgt', the_geom:='mygeom');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -182,27 +182,27 @@ SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='
 --q14.1
 --q15
 SELECT  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', rows_where:='gid < 10');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
 
 SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='tgt', the_geom:='mygeom', rows_where:='gid < 10');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
 
 SELECT  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt',
     rows_where:='mygeom && (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
 
 SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='tgt', the_geom:='mygeom',
     rows_where:='mygeom && (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -211,14 +211,14 @@ SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='
 --q16
 SELECT  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt',
     rows_where:='mygeom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
 
 SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='tgt', the_geom:='mygeom',
     rows_where:='mygeom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -236,7 +236,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  5 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)
@@ -250,7 +250,7 @@ NOTICE:  -------------> TOPOLOGY CREATED FOR  13 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
- pgr_createtopology 
+ pgr_createtopology
 --------------------
  OK
 (1 row)

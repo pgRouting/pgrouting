@@ -1,6 +1,6 @@
 
 /*
-This test is for the equivalence of 
+This test is for the equivalence of
 pgr_ kdijstra with pgr_dijkstra one to many
 with
 one to many dijkstra

@@ -1,6 +1,6 @@
 #!/bin/bash
 # ------------------------------------------------------------------------------
-# Travis CI scripts 
+# Travis CI scripts
 # Copyright(c) pgRouting Contributors
 #
 # check pgtap & postgis on travis
@@ -17,7 +17,7 @@ echo "locate pgtap"
 locate pgtap.control
 echo "locate postgis"
 locate postgis.control
-  
+
 
 
 cd ..
@@ -31,11 +31,11 @@ run_psql () {
     fi
 }
 
-run_psql -c "SELECT version()" 
-run_psql -c "CREATE EXTENSION pgtap" 
+run_psql -c "SELECT version()"
+run_psql -c "CREATE EXTENSION pgtap"
 run_psql -c "SELECT pgtap_version()"
-run_psql -c "CREATE EXTENSION postgis" 
+run_psql -c "CREATE EXTENSION postgis"
 run_psql -c "SELECT postgis_full_version()"
-run_psql -c "DROP EXTENSION pgtap" 
-run_psql -c "DROP EXTENSION postgis" 
+run_psql -c "DROP EXTENSION pgtap"
+run_psql -c "DROP EXTENSION postgis"
 

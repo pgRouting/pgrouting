@@ -14,24 +14,24 @@ CREATE TABLE s1."Streets" ("ID" SERIAL PRIMARY KEY, "SOURCE" INTEGER, "Target" I
 
 set client_min_messages  to notice;
 SELECT  results_eq('SELECT _pgr_getColumnType (''streets'', ''id''),  1', 'SELECT ''integer''::TEXT,  1');
-SELECT  results_eq('SELECT _pgr_getColumnType (''streets'', ''source''),  2', 'SELECT ''double precision''::TEXT,  2');  
-SELECT  results_eq('SELECT _pgr_getColumnType (''streets'', ''target''),  3', 'SELECT ''real''::TEXT,  3');  
-SELECT  results_eq('SELECT _pgr_getColumnType (''Streets'', ''GID''),  4', 'SELECT ''bigint''::TEXT,  4');  
-SELECT  results_eq('SELECT _pgr_getColumnType (''Streets'', ''SOURCE''),  5', 'SELECT ''text''::TEXT,  5');  
-SELECT  results_eq('SELECT _pgr_getColumnType (''Streets'', ''TARGET''),  6', 'SELECT ''integer''::TEXT,  6');  
+SELECT  results_eq('SELECT _pgr_getColumnType (''streets'', ''source''),  2', 'SELECT ''double precision''::TEXT,  2');
+SELECT  results_eq('SELECT _pgr_getColumnType (''streets'', ''target''),  3', 'SELECT ''real''::TEXT,  3');
+SELECT  results_eq('SELECT _pgr_getColumnType (''Streets'', ''GID''),  4', 'SELECT ''bigint''::TEXT,  4');
+SELECT  results_eq('SELECT _pgr_getColumnType (''Streets'', ''SOURCE''),  5', 'SELECT ''text''::TEXT,  5');
+SELECT  results_eq('SELECT _pgr_getColumnType (''Streets'', ''TARGET''),  6', 'SELECT ''integer''::TEXT,  6');
 
 SELECT  results_eq('SELECT _pgr_getColumnType (''s1.streets'', ''ID''),  7', 'SELECT ''integer''::TEXT, 7');
-SELECT  results_eq('SELECT _pgr_getColumnType (''s1.streets'', ''sour''),  8',  'SELECT ''double precision''::TEXT,  8');  
-SELECT  results_eq('SELECT _pgr_getColumnType (''s1.streets'', ''targ''),  9',  'SELECT ''real''::TEXT,  9');  
-SELECT  results_eq('SELECT _pgr_getColumnType (''s1.Streets'', ''ID''),  10', 'SELECT ''integer''::TEXT,  10');  
-SELECT  results_eq('SELECT _pgr_getColumnType (''s1.Streets'', ''SOURCE''),  11', 'SELECT ''integer''::TEXT,  11');  
-SELECT  results_eq('SELECT _pgr_getColumnType (''s1.Streets'', ''Target''),  12', 'SELECT ''integer''::TEXT,  12');  
+SELECT  results_eq('SELECT _pgr_getColumnType (''s1.streets'', ''sour''),  8',  'SELECT ''double precision''::TEXT,  8');
+SELECT  results_eq('SELECT _pgr_getColumnType (''s1.streets'', ''targ''),  9',  'SELECT ''real''::TEXT,  9');
+SELECT  results_eq('SELECT _pgr_getColumnType (''s1.Streets'', ''ID''),  10', 'SELECT ''integer''::TEXT,  10');
+SELECT  results_eq('SELECT _pgr_getColumnType (''s1.Streets'', ''SOURCE''),  11', 'SELECT ''integer''::TEXT,  11');
+SELECT  results_eq('SELECT _pgr_getColumnType (''s1.Streets'', ''Target''),  12', 'SELECT ''integer''::TEXT,  12');
 
 SET search_path TO  s1, public;
 SELECT  results_eq('SELECT _pgr_getColumnType (''public.streets'', ''ID''),  13', 'SELECT ''integer''::TEXT, 13');
 SELECT  results_eq('SELECT _pgr_getColumnType (''public.Streets'', ''GID''),  14', 'SELECT ''bigint''::TEXT, 14');
 
-SELECT  results_eq('SELECT _pgr_getColumnType (''streets'', ''ID''),  15',  'SELECT ''integer''::TEXT, 15');  
+SELECT  results_eq('SELECT _pgr_getColumnType (''streets'', ''ID''),  15',  'SELECT ''integer''::TEXT, 15');
 SELECT  results_eq('SELECT _pgr_getColumnType (''Streets'', ''ID''),  16',  'SELECT ''integer''::TEXT, 16');
 
 SET search_path TO "$user",  public;

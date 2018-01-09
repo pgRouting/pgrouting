@@ -28,7 +28,7 @@ In particular, the algorithm implemented by Boost.Graph.
 Synopsis
 -------------------------------------------------------------------------------
 
-The biconnected components of an undirected graph are the maximal subsets of vertices such that the removal of a vertex from 
+The biconnected components of an undirected graph are the maximal subsets of vertices such that the removal of a vertex from
 particular component will not disconnect the component. Unlike connected components, vertices may belong to multiple biconnected
 components. Vertices can be present in multiple biconnected components, but each edge can only be contained in a single biconnected
 component. So, the output only has edge version.
@@ -40,7 +40,7 @@ Characteristics
 
 The main Characteristics are:
 
-  - Components are described by edges 
+  - Components are described by edges
 
   - The returned values are ordered:
 
@@ -62,7 +62,7 @@ Signatures
     RETURNS SET OF (seq, component, n_seq, edge)
         OR EMPTY SET
 
-The signature is for a **undirected** graph. 
+The signature is for a **undirected** graph.
 
 :Example:
 

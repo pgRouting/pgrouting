@@ -102,9 +102,9 @@ BEGIN
 
     restrictions_query = $$
         WITH old_restrictions AS ( $$ ||
-            $6 || $$ 
+            $6 || $$
         )
-        SELECT ROW_NUMBER() OVER() AS id, 
+        SELECT ROW_NUMBER() OVER() AS id,
             _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path, ',')::INTEGER[])) AS path,
             to_cost AS cost
         FROM old_restrictions;
@@ -262,9 +262,9 @@ BEGIN
             union_sql = union_sql1;
         ELSE IF union_sql1 IS NULL AND union_sql2 IS NOT NULL THEN
             union_sql = union_sql2;
-        END IF; 
-        END IF; 
-        END IF; 
+        END IF;
+        END IF;
+        END IF;
 
         IF union_sql IS NULL THEN
             -- no points then its a dijkstra

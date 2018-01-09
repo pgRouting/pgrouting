@@ -36,7 +36,7 @@ fi
 
 }
 
-function test_file {                                                                                                                                                        
+function test_file {
 
 if [ -f sql/sigs/pgrouting--$1.sig ]
 then
@@ -145,7 +145,7 @@ echo
 echo "### Verify release_notes.rst & NEWS"
 echo
 #---------------------------------------------------------------------
- 
+
 if [[ -n $DEBUG ]]; then
     echo
     echo "\`\`\`"
@@ -187,7 +187,7 @@ echo "- [x] NEWS is up to date"
 #---------------------------------------------------------------------
 echo
 echo "## Check version information"
-echo 
+echo
 #---------------------------------------------------------------------
 #---------------------------------------------------------------------
 echo

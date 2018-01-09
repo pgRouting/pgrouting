@@ -30,7 +30,7 @@ BEGIN
 
                 -- test when there is reverse cost and its marked as being used
                 -- VS dijkstraVia autodetected has reverse cost
-                dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER, 
+                dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
                 (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
                 FROM pgr_dijkstraVia( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
                 trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
@@ -47,7 +47,7 @@ BEGIN
 
             -- test when there is reverse cost and its marked NOT being used
             -- VS dijkstraVia autodetected DOES NOT have reverse cost
-            dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER, 
+            dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
             (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
             FROM pgr_dijkstraVia( ' || inner_sql2 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
             trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';

@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
- seq | type | id | contracted_vertices | source | target | cost 
+ seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
    1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
    2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1

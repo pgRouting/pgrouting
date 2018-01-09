@@ -305,7 +305,6 @@ class Pgr_base_graph {
      //! @name The Graph
      //@{
      G graph;                //!< The graph
-     //size_t m_num_vertices;  //!< local count.
      graphType m_gType;      //!< type (DIRECTED or UNDIRECTED)
      //@}
 

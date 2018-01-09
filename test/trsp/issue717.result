@@ -34,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 7, 11]::INTEGER[],     
-    true,  
-    true  
+    ARRAY[2, 7, 11]::INTEGER[],
+    true,
+    true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
    2 |   1 |   5 |   7 |    1
@@ -53,12 +53,12 @@ SELECT * FROM pgr_trspViaVertices(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[4,6,11]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    true,  
-    true  
+    ARRAY[4,6,11]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
    2 |   1 |   5 |   7 |    1
@@ -74,12 +74,12 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    true,  
-    true  
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
@@ -99,12 +99,12 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    true,  
-    true  
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
@@ -125,23 +125,23 @@ SELECT * FROM pgr_trspViaEdges(
 -- directed without reverse_cost
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 7, 11]::INTEGER[],     
-    true,  
-    false  
+    ARRAY[2, 7, 11]::INTEGER[],
+    true,
+    false
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
 (0 rows)
 
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[4,6,11]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    true,  
-    false  
+    ARRAY[4,6,11]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    false
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   2 |  -2 |   6 |  0.5
    2 |   2 |   8 |   7 |    1
@@ -153,12 +153,12 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    true,  
-    false  
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    false
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
@@ -170,12 +170,12 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    true,  
-    false  
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    false
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
@@ -188,11 +188,11 @@ SELECT * FROM pgr_trspViaEdges(
 -- undirected with reverse_cost
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 7, 11]::INTEGER[],     
-    false,  
-    true  
+    ARRAY[2, 7, 11]::INTEGER[],
+    false,
+    true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
    2 |   1 |   5 |   7 |    1
@@ -207,12 +207,12 @@ SELECT * FROM pgr_trspViaVertices(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[4,6,11]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    false,  
-    true  
+    ARRAY[4,6,11]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
    2 |   1 |   5 |   7 |    1
@@ -228,12 +228,12 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    false,  
-    true  
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   2 |    1
@@ -250,12 +250,12 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    false,  
-    true  
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    true
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   2 |    1
@@ -273,11 +273,11 @@ SELECT * FROM pgr_trspViaEdges(
 -- undirected without reverse_cost
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 7, 11]::INTEGER[],     
-    false,  
-    false  
+    ARRAY[2, 7, 11]::INTEGER[],
+    false,
+    false
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
    2 |   1 |   5 |   7 |    1
@@ -292,12 +292,12 @@ SELECT * FROM pgr_trspViaVertices(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[4,6,11]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    false,  
-    false  
+    ARRAY[4,6,11]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    false
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
    2 |   1 |   5 |   7 |    1
@@ -313,12 +313,12 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    false,  
-    false  
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    false
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
@@ -335,12 +335,12 @@ SELECT * FROM pgr_trspViaEdges(
 ---------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],           
-    ARRAY[0.5, 0.5, 0.5]::float8[],     
-    false,  
-    false  
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    false
 );
- seq | id1 | id2 | id3 | cost 
+ seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1

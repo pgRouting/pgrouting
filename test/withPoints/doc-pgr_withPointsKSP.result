@@ -7,7 +7,7 @@ SELECT * FROM pgr_withPointsKSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -2, 2);
- seq | path_id | path_seq | node | edge | cost | agg_cost 
+ seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
    1 |       1 |        1 |   -1 |    1 |  0.6 |        0
    2 |       1 |        2 |    2 |    4 |    1 |      0.6
@@ -29,7 +29,7 @@ SELECT * FROM pgr_withPointsKSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 6, 2, details := true);
- seq | path_id | path_seq | node | edge | cost | agg_cost 
+ seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
    1 |       1 |        1 |   -1 |    1 |  0.6 |        0
    2 |       1 |        2 |    2 |    4 |  0.7 |      0.6
@@ -55,7 +55,7 @@ SELECT * FROM pgr_withPointsKSP(
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -2, 2,
     driving_side := 'l', details := true);
- seq | path_id | path_seq | node | edge | cost | agg_cost 
+ seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
    1 |       1 |        1 |   -1 |    1 |  0.6 |        0
    2 |       1 |        2 |    2 |    4 |  0.7 |      0.6
@@ -81,7 +81,7 @@ SELECT * FROM pgr_withPointsKSP(
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -2, 2,
     heap_paths := true, driving_side := 'r', details := true);
- seq | path_id | path_seq | node | edge | cost | agg_cost 
+ seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
    1 |       1 |        1 |   -1 |    1 |  0.4 |        0
    2 |       1 |        2 |    1 |    1 |    1 |      0.4

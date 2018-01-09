@@ -282,7 +282,7 @@ texinfo_documents = [
 # would mean that specific document would be compressed
 # regardless of the global pdf_compressed setting.
 pdf_documents = [(
-        'index', 
+        'index',
         u'pgr_Documentation',
         'pgRouting Manual',
         u'pgRouting Contributors')]

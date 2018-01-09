@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_bridges(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
- seq | edge 
+ seq | edge
 -----+------
    1 |    1
    2 |    6
@@ -20,7 +20,7 @@ SELECT * FROM pgr_bridges(
 SELECT * FROM pgr_bridges(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
- seq | edge 
+ seq | edge
 -----+------
    1 |    1
    2 |    6

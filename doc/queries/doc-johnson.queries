@@ -7,7 +7,7 @@ SELECT * FROM pgr_johnson(
     'SELECT source, target, cost FROM edge_table WHERE id < 5
          ORDER BY id'
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |       2 |        1
          1 |       5 |        2
@@ -20,7 +20,7 @@ SELECT * FROM pgr_johnson(
          ORDER BY id',
     false
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |       2 |        1
          1 |       5 |        2

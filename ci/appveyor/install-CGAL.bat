@@ -167,7 +167,7 @@ if defined CGAL_LOCAL_DEBUG (
 
     echo GMP_SRC_DIR %GMP_SRC_DIR%
     dir %GMP_SRC_DIR%
-    
+
     dir C:/build/local/msvc120/x64/include/CGAL
 )
 :_ExitCGAL

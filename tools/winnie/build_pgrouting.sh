@@ -177,7 +177,7 @@ echo "***************************"
 echo make
 echo "***************************"
 #---------------
-make 
+make
 
 #---------------
 echo
@@ -231,7 +231,7 @@ cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 
 #perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
-if [ $OS_BUILD -eq 32 ] 
+if [ $OS_BUILD -eq 32 ]
 then
 
     perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"

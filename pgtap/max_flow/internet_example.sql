@@ -13,7 +13,7 @@ CREATE TABLE boost_example(
 );
 
 INSERT INTO boost_example (source, target, capacity)
-VALUES 
+VALUES
 (1, 7,3),
 (1, 2, 20),
 (1, 3, 20),
@@ -95,7 +95,7 @@ CREATE TABLE wiki_example(
 S = 1, O = 2, P = 3, Q = 4, R = 5, T = 6
 */
 INSERT INTO wiki_example(source, target, capacity)
-VALUES 
+VALUES
 (1, 2, 3),
 (1, 3, 3),
 (2, 3, 2),

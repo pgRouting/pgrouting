@@ -46,7 +46,7 @@ drop table if exists "ways";
 	select pgr_labelGraph('e03.calles', rows_where:='gido<100', id:='gido', source:='salida', target:='destino', subgraph:='subgraph');
 
 -- The following should FAIL
-	
+
 	select pgr_labelGraph('id', 'ways');
 	select pgr_labelGraph('ways', 'id', 'sourc', 'target');
 	select pgr_labelGraph('ways', 'id', 'source', 'Target');

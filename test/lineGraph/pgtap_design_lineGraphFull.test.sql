@@ -45,7 +45,7 @@ SELECT  *  FROM pgr_lineGraphFull(
     WHERE id IN (200, 300)$$
 );
 
-SELECT  *  FROM pgr_lineGraphFull( 
+SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id * 100 AS id, source * 1000 AS source, target * 1000 AS target,
         cost, reverse_cost
     FROM edge_table

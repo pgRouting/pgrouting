@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_biconnectedComponents(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
- seq | component | n_seq | edge 
+ seq | component | n_seq | edge
 -----+-----------+-------+------
    1 |         1 |     1 |    1
    2 |         2 |     1 |    2
@@ -32,7 +32,7 @@ SELECT * FROM pgr_biconnectedComponents(
 SELECT * FROM pgr_biconnectedComponents(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
- seq | component | n_seq | edge 
+ seq | component | n_seq | edge
 -----+-----------+-------+------
    1 |         1 |     1 |    1
    2 |         2 |     1 |    2

@@ -42,14 +42,14 @@ SELECT is_empty('q3', '3: No cost can be negative');
 SELECT is_empty('q4', '4: No cost can be negative');
 
 PREPARE q10 AS
-SELECT id1, id2, cost 
+SELECT id1, id2, cost
 FROM pgr_apspWarshall(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table ORDER BY id',
     FALSE, FALSE
 );
 
 PREPARE q11 AS
-SELECT id1, id2, cost 
+SELECT id1, id2, cost
 FROM pgr_apspWarshall(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table ORDER BY id',
     FALSE, TRUE

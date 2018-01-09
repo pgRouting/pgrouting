@@ -119,6 +119,6 @@ pgr_dijkstraVia(
 }
 
 
-}  //namespace pgRouting
+}  // namespace pgRouting
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRAVIA_HPP_

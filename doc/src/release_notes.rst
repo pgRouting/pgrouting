@@ -68,7 +68,7 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
   * Internal code can accept BIGINT
 
 * Cleaned the internal code of withPoints
-  
+
 
 
 
