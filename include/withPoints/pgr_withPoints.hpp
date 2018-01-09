@@ -53,7 +53,8 @@ class Pg_points_graph : public Pgr_messages {
              std::vector<Point_on_edge_t> p_points,
              std::vector<pgr_edge_t>      p_edges_to_modify,
              bool p_normal,
-             char p_driving_side
+             char p_driving_side,
+             bool p_directed
              );
 
      std::vector<Point_on_edge_t> points() const;
@@ -85,6 +86,8 @@ class Pg_points_graph : public Pgr_messages {
      void create_new_edges();
      void check_points();
      void reverse_sides();
+     int64_t get_edge_id(int64_t pid) const;
+     const pgr_edge_t*  get_edge_data(int64_t eid) const;
 
  private:
      std::vector<Point_on_edge_t> m_points;
@@ -93,6 +96,7 @@ class Pg_points_graph : public Pgr_messages {
      std::vector<pgr_edge_t>      m_new_edges;
      bool m_normal;
      char m_driving_side;
+     bool m_directed;
 };
 
 }  // namespace pgrouting
