@@ -9,8 +9,8 @@ var searchData=
   ['vehicle_5fseq',['vehicle_seq',['../structGeneral__vehicle__orders__t.html#a2804978ad81fce1570b216108661bb0a',1,'General_vehicle_orders_t']]],
   ['vertex_5fid',['vertex_id',['../structPoint__on__edge__t.html#a38e2fd8b1770612706fe6a0b337ed54d',1,'Point_on_edge_t::vertex_id()'],['../structpath__element.html#a543a5dc705feaf0914f3c6fd3cf0ba0d',1,'path_element::vertex_id()'],['../structpath__element.html#a5597544a7c91e3086869b36573b1a5e4',1,'path_element::vertex_id()'],['../classpgrouting_1_1Line__vertex.html#a0114f1700a25ec1cab0717ab7225d14a',1,'pgrouting::Line_vertex::vertex_id()']]],
   ['vertex_5findex',['vertex_index',['../classpgrouting_1_1Basic__vertex.html#adde75b117ce2652fdef9e08f2a16d9f2',1,'pgrouting::Basic_vertex']]],
-  ['vertices_5fmap',['vertices_map',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab6b2a4bcbb103d1a1a1e06e91ce12ba6',1,'pgrouting::graph::Pgr_base_graph']]],
-  ['vertindex',['vertIndex',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ace5f87daea6aa54a3f43ce5fcf64738d',1,'pgrouting::graph::Pgr_base_graph']]],
+  ['vertices_5fmap',['vertices_map',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a2e5607c4e4def248b4a1abb719f00670',1,'pgrouting::graph::Pgr_base_graph']]],
+  ['vertindex',['vertIndex',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a27ed789eb2d8b7e317b2955da366d14f',1,'pgrouting::graph::Pgr_base_graph']]],
   ['via',['via',['../structRestriction__t.html#a0bb9a58ce3d4de3f985675ca9e320f62',1,'Restriction_t::via()'],['../structrestrict__struct.html#a801368aaf308b32f87fa12692ad758e2',1,'restrict_struct::via()']]],
   ['via_5fpath',['via_path',['../structrestrict__columns.html#a30a7044878bb8cb05fd5e0bb03edabfc',1,'restrict_columns']]],
   ['via_5fsize',['via_size',['../structRestriction__t.html#a855477d6abce1b84b2e6224edf33007d',1,'Restriction_t']]]

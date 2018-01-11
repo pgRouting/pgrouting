@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>pgr_alphaShape &mdash; pgRouting Manual (2.6-dev)</title>
-    
+    <title>pgr_alphaShape &#8212; pgRouting Manual (2.6-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     'v2.6.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.6-dev)" href="index.html" />
-    <link rel="up" title="Driving Distance - Category" href="drivingDistance-category.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_pointsAsPolygon" href="pgr_pointsAsPolygon.html" />
     <link rel="prev" title="Driving Distance - Category" href="drivingDistance-category.html" />
 <meta charset='utf-8'>
@@ -39,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -126,11 +123,11 @@
               
                 
   <li>
-    <a href="drivingDistance-category.html" title="Previous Chapter: Driving Distance - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Driving Distance...</span>
+    <a href="drivingDistance-category.html" title="Previous Chapter: Driving Distance - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Driving Dista...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_pointsAsPolygon.html" title="Next Chapter: pgr_pointsAsPolygon"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pointsAsPoly... &raquo;</span>
+    <a href="pgr_pointsAsPolygon.html" title="Next Chapter: pgr_pointsAsPolygon"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pointsAsPolygon &raquo;</span>
     </a>
   </li>
               
@@ -222,13 +219,13 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>PgRouting&#8217;s alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
+<p>PgRouting’s alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
 The first query, has the output ordered, he second query shows an example usage:</p>
 <p class="rubric">Example: the (ordered) results</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
     <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;) ORDER BY x, y;</span>
-  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>  
+  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>
 <span class="o">-----+-----</span>
    <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span>
  <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span>
@@ -244,19 +241,17 @@ The first query, has the output ordered, he second query shows an example usage:
 </div>
 <p class="rubric">Example: calculating the area</p>
 <p>Steps:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>Calculates the alpha shape</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>the <code class="code docutils literal"><span class="pre">ORDER</span> <span class="pre">BY</span></code> clause is not used.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">constructs a polygon</p>
-</li>
-<li><p class="first">and computes the area</p>
-</li>
+<li>constructs a polygon</li>
+<li>and computes the area</li>
 </ul>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_MakePolygon</span><span class="p">(</span><span class="n">ST_AddPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">,</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">))))::</span><span class="n">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">st_area</span>
 <span class="n">FROM</span> <span class="p">(</span>
@@ -268,7 +263,7 @@ The first query, has the output ordered, he second query shows an example usage:
             <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;)</span>
         <span class="p">)</span> <span class="n">AS</span> <span class="n">a</span>
    <span class="p">)</span> <span class="n">AS</span> <span class="n">foo</span><span class="p">;</span>
- <span class="n">st_area</span> 
+ <span class="n">st_area</span>
 <span class="o">---------</span>
    <span class="mf">11.75</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -304,8 +299,8 @@ The first query, has the output ordered, he second query shows an example usage:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Sep 13, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
+      Last updated on Jan 10, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

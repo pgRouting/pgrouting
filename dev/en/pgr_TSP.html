@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>pgr_TSP &mdash; pgRouting Manual (2.6-dev)</title>
-    
+    <title>pgr_TSP &#8212; pgRouting Manual (2.6-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     'v2.6.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.6-dev)" href="index.html" />
-    <link rel="up" title="Traveling Sales Person - Family of functions" href="TSP-family.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_eucledianTSP" href="pgr_eucledianTSP.html" />
     <link rel="prev" title="Traveling Sales Person - Family of functions" href="TSP-family.html" />
 <meta charset='utf-8'>
@@ -39,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -135,7 +132,7 @@
               
                 
   <li>
-    <a href="TSP-family.html" title="Previous Chapter: Traveling Sales Person - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Traveling Sales ...</span>
+    <a href="TSP-family.html" title="Previous Chapter: Traveling Sales Person - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Traveling Sal...</span>
     </a>
   </li>
   <li>
@@ -234,7 +231,7 @@ query AS (
     )
 )
 SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 14;
- under_20 
+ under_20
 ----------
  t
 (1 row)
@@ -265,7 +262,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
     start_id := 7,
     randomize := false
 );
- seq | node | cost | agg_cost 
+ seq | node | cost | agg_cost
 -----+------+------+----------
    1 |    7 |    1 |        0
    2 |    8 |    1 |        1
@@ -407,7 +404,7 @@ Column           Type              Description
     start_id := 5,
     randomize := false
 );
- seq | node | cost | agg_cost 
+ seq | node | cost | agg_cost
 -----+------+------+----------
    1 |    5 |    1 |        0
    2 |    6 |    1 |        1
@@ -449,8 +446,8 @@ Column           Type              Description
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Sep 13, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
+      Last updated on Jan 10, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

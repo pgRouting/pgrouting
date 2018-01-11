@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Routing Functions &mdash; pgRouting Manual (2.6-dev)</title>
-    
+    <title>Routing Functions &#8212; pgRouting Manual (2.6-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     'v2.6.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.6-dev)" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="All Pairs - Family of Functions" href="allpairs-family.html" />
     <link rel="prev" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" />
 <meta charset='utf-8'>
@@ -38,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -125,7 +123,7 @@
     </a>
   </li>
   <li>
-    <a href="allpairs-family.html" title="Next Chapter: All Pairs - Family of Functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">All Pairs - Fami... &raquo;</span>
+    <a href="allpairs-family.html" title="Next Chapter: All Pairs - Family of Functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">All Pairs - F... &raquo;</span>
     </a>
   </li>
               
@@ -157,7 +155,7 @@
 <span id="id1"></span><h1>Routing Functions<a class="headerlink" href="#routing-functions" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="allpairs-family.html#all-pairs"><span class="std std-ref">All Pairs - Family of Functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><span class="std std-ref">pgr_floydWarshall</span></a> - Floyd-Warshall&#8217;s Algorithm</li>
+<li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><span class="std std-ref">pgr_floydWarshall</span></a> - Floyd-Warshall’s Algorithm</li>
 <li><a class="reference internal" href="pgr_johnson.html#pgr-johnson"><span class="std std-ref">pgr_johnson</span></a>- Johnson’s Algorithm</li>
 </ul>
 <p><a class="reference internal" href="pgr_aStar.html#pgr-astar"><span class="std std-ref">pgr_aStar</span></a> - Shortest Path A*</p>
@@ -165,7 +163,7 @@
 <p><a class="reference internal" href="pgr_bdDijkstra.html#pgr-bddijkstra"><span class="std std-ref">pgr_bdDijkstra</span></a> - Bi-directional Dijkstra Shortest Path</p>
 <p><a class="reference internal" href="dijkstra-family.html#dijkstra"><span class="std std-ref">Dijkstra - Family of functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_dijkstra.html#pgr-dijkstra"><span class="std std-ref">pgr_dijkstra</span></a> - Dijkstra&#8217;s algorithm for the shortest paths.</li>
+<li><a class="reference internal" href="pgr_dijkstra.html#pgr-dijkstra"><span class="std std-ref">pgr_dijkstra</span></a> - Dijkstra’s algorithm for the shortest paths.</li>
 <li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><span class="std std-ref">pgr_dijkstraCost</span></a> - Get the aggregate cost of the shortest paths.</li>
 <li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><span class="std std-ref">pgr_dijkstraCostMatrix - proposed</span></a> - Use pgr_dijkstra to create a costs matrix.</li>
 <li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><span class="std std-ref">pgr_drivingDistance</span></a> - Use pgr_dijkstra to calculate catchament information.</li>
@@ -214,8 +212,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Sep 13, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
+      Last updated on Jan 10, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

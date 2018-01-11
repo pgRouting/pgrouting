@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (2.6-dev)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v2.6.0-dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Transformation - Family of functions" href="transformation-family.html" />
+    <link rel="prev" title="pgr_lineGraph - Experimental" href="pgr_lineGraph.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types_index.html">pgRouting Data Types</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_lineGraphFull - Experimental</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
+<li><a class="reference internal" href="#example-usage">Example Usage</a></li>
+<li><a class="reference internal" href="#sample-data-results">Sample Data Results</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
+    </a>
+  </li>
+  <li>
+    <a href="transformation-family.html" title="Next Chapter: Transformation - Family of functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Transformatio... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-linegraphfull-experimental">
+<span id="pgr-linegraphfull"></span><h1>pgr_lineGraphFull - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">pgr_lineGraphFull</span></code> — Transforms a given graph into a new graph where all of the vertices from the original graph are converted to line graphs.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Experimental functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>This graph transformation algorithm generates a new graph that contains all of the same edges of the original graph except every vertex has been converted to a line graph.</p>
+<p>One application for this type of graph transformation is to allow for the addition of a cost to turning in shortest path calcuations for routing traffic. This can be done because each of the intersections (vertices) in the original graph are now line graphs that have a new edge for each possible turn across that intersection.</p>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>This function is intended for directed graphs.</li>
+<li>This function will currently give incorrect results if negative vertex ids are used in the input.</li>
+<li>This function will currently give incorrect results if duplicated edge ids are used in the input.</li>
+</ul>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraphFull(edges_sql)
+
+RETURNS SET OF (seq,
+                source,
+                target,
+                cost,
+                edge) OR EMPTY SET
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<p>This example displays how this graph transformation works to create additional edges for each possible turn in a graph.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5, 8, 9, 11);
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="first" class="align-middle" src="_images/original.png" /></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(&#39;SELECT id,
+                                        source,
+                                        target,
+                                        cost,
+                                        reverse_cost
+                                   FROM edge_table
+                                     WHERE id IN (5, 8, 9, 11)&#39;);
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="second" class="align-middle" src="_images/transformation.png" /></div>
+</div>
+<p>In the transformed graph, all of the edges from the original graph are still present (yellow), but we now have additional edges for every turn that could be made across vertex 6 (orange).</p>
+</div>
+<div class="section" id="sample-data-results">
+<h2>Sample Data Results<a class="headerlink" href="#sample-data-results" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraphFull</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">edge</span>
+<span class="o">-----+--------+--------+------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">9</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">10</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+  <span class="mi">11</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+  <span class="mi">12</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">13</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">14</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">15</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">16</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">17</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+  <span class="mi">18</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+  <span class="mi">19</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">20</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">21</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">22</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">23</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">24</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">12</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span>
+  <span class="mi">25</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">26</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">12</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">27</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">28</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">13</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">29</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">14</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">13</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">30</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">31</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">32</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span>
+<span class="p">(</span><span class="mi">32</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
+      Last updated on Jan 10, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

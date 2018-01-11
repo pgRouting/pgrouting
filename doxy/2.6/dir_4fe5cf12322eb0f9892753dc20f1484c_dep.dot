@@ -34,7 +34,7 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/drivers" {
   dir_cfd3f4636c1f563097ad0d507f5ae8c9->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="4", labeldistance=1.5 headhref="dir_000015_000006.html"];
   dir_6b236acb2ecc29facc6fff2180750ad8->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="10", labeldistance=1.5 headhref="dir_000020_000006.html"];
   dir_bdbdff42c386179f864caab135e18a0b->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="2", labeldistance=1.5 headhref="dir_000021_000006.html"];
-  dir_9b21fe291f2e589e37a8796bbc52abcb->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="2", labeldistance=1.5 headhref="dir_000025_000006.html"];
+  dir_9b21fe291f2e589e37a8796bbc52abcb->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="4", labeldistance=1.5 headhref="dir_000025_000006.html"];
   dir_692928727b94edc8574293c887cf57d2->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="4", labeldistance=1.5 headhref="dir_000028_000006.html"];
   dir_0ae605f4efbf704357ccbf6a364e49b2->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="4", labeldistance=1.5 headhref="dir_000022_000006.html"];
   dir_9dcc1046b71bb0b5267f9068df298246->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="2", labeldistance=1.5 headhref="dir_000019_000006.html"];

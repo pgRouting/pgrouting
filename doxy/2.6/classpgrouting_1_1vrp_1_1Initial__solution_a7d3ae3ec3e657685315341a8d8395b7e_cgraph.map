@@ -1,9 +1,9 @@
 <map id="pgrouting::vrp::Initial_solution::one_truck_all_orders" name="pgrouting::vrp::Initial_solution::one_truck_all_orders">
-<area shape="rect" id="node2" href="$classIdentifiers.html#a2a9dce802595ea25e18f4a2c7ac834fe" title="Identifiers::begin" alt="" coords="230,5,349,32"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html#a0a1293343a6e3215a27676c74678866e" title="Identifiers::empty" alt="" coords="228,56,351,83"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html#ac85cf83ff216a673caa44eeebf4078ef" title="Identifiers::front" alt="" coords="414,136,527,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="220,158,359,199"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="213,223,365,265"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889" title="pgrouting::vrp::Initial\l_solution::invariant" alt="" coords="219,289,359,330"/>
-<area shape="rect" id="node8" href="$classIdentifiers.html#a6bfd470840528175732ced70c1b4399c" title="Identifiers::pop_front" alt="" coords="219,355,360,381"/>
+<area shape="rect" id="node2" href="$classIdentifiers.html#a2a9dce802595ea25e18f4a2c7ac834fe" title="Identifiers::begin" alt="" coords="229,5,347,32"/>
+<area shape="rect" id="node3" href="$classIdentifiers.html#a0a1293343a6e3215a27676c74678866e" title="Identifiers::empty" alt="" coords="227,56,349,83"/>
+<area shape="rect" id="node4" href="$classIdentifiers.html#ac85cf83ff216a673caa44eeebf4078ef" title="Identifiers::front" alt="" coords="412,136,525,163"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="219,158,357,199"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="212,223,364,265"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889" title="pgrouting::vrp::Initial\l_solution::invariant" alt="" coords="218,289,358,330"/>
+<area shape="rect" id="node8" href="$classIdentifiers.html#a6bfd470840528175732ced70c1b4399c" title="Identifiers::pop_front" alt="" coords="217,355,359,381"/>
 </map>

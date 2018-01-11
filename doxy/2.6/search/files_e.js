@@ -33,6 +33,7 @@ var searchData=
   ['pgr_5fksp_2ehpp',['pgr_ksp.hpp',['../pgr__ksp_8hpp.html',1,'']]],
   ['pgr_5flinearcontraction_2ehpp',['pgr_linearContraction.hpp',['../pgr__linearContraction_8hpp.html',1,'']]],
   ['pgr_5flinegraph_2ehpp',['pgr_lineGraph.hpp',['../pgr__lineGraph_8hpp.html',1,'']]],
+  ['pgr_5flinegraphfull_2ehpp',['pgr_lineGraphFull.hpp',['../pgr__lineGraphFull_8hpp.html',1,'']]],
   ['pgr_5fmaxflow_2ecpp',['pgr_maxflow.cpp',['../pgr__maxflow_8cpp.html',1,'']]],
   ['pgr_5fmaxflow_2ehpp',['pgr_maxflow.hpp',['../pgr__maxflow_8hpp.html',1,'']]],
   ['pgr_5fmaximumcardinalitymatching_2ehpp',['pgr_maximumcardinalitymatching.hpp',['../pgr__maximumcardinalitymatching_8hpp.html',1,'']]],

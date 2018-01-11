@@ -1,3 +1,4 @@
 <map id="pgrouting::Pg_points_graph::reverse_sides" name="pgrouting::Pg_points_graph::reverse_sides">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pg__points__graph.html#a5c529f560f0af23ce0209425b7440d8c" title="pgrouting::Pg_points\l_graph::Pg_points_graph" alt="" coords="206,5,373,46"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Pg__points__graph.html#a9e125d9c6dd216a1780fa6a0f4b85981" title="pgrouting::Pg_points\l_graph::driving_side" alt="" coords="217,5,358,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Pg__points__graph.html#a90f546e9f659683ffc82cc76e67da38e" title="pgrouting::Pg_points\l_graph::Pg_points_graph" alt="" coords="204,71,371,112"/>
 </map>

@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::Pgr_contractionGraph::get_contracted_vertices" name="pgrouting::graph::Pgr_contractionGraph::get_contracted_vertices">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a48ba617e2737dd31d6bbcff15b46b8f4" title="get the vertex descriptor of the vertex " alt="" coords="208,5,363,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#aced852a5c5116cafdb61af4eaa28dc02" title="True when vid is in the graph. " alt="" coords="208,85,363,141"/>
-</map>

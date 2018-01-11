@@ -3,7 +3,7 @@ digraph "pgrouting::extract_vertices"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="pgrouting::extract\l_vertices",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 [label="pgrouting::extract\l_vertices",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="do_pgr_astarManyToMany",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb"];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -17,5 +17,5 @@ digraph "pgrouting::extract_vertices"
   Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node7 [label="pgrouting::extract\l_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting.html#a9a4a650140046a0ff4f6c5922a7040c1"];
   Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="pgrouting::graph::Pgr\l_base_graph\< G, T_V,\l T_E \>::insert_edges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#adf97e69a48e3d65856b77fdc19d741eb",tooltip="Inserts count edges of type pgr_edge_t into the graph. "];
+  Node8 [label="pgrouting::graph::Pgr\l_base_graph::insert_edges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a61707a2edbad526cf5f5754d61d987c1",tooltip="Inserts count edges of type pgr_edge_t into the graph. "];
 }

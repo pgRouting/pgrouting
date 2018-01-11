@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>pgr_gsoc_vrppdtw - Experimental &mdash; pgRouting Manual (2.6-dev)</title>
-    
+    <title>pgr_gsoc_vrppdtw - Experimental &#8212; pgRouting Manual (2.6-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     'v2.6.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.6-dev)" href="index.html" />
-    <link rel="up" title="Stable Proposed Functions" href="proposed.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_vrpOneDepot - Experimental" href="pgr_vrpOneDepot.html" />
     <link rel="prev" title="pgr_bridges - Experimental" href="pgr_bridges.html" />
 <meta charset='utf-8'>
@@ -39,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -135,11 +132,11 @@
               
                 
   <li>
-    <a href="pgr_bridges.html" title="Previous Chapter: pgr_bridges - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bridges - Ex...</span>
+    <a href="pgr_bridges.html" title="Previous Chapter: pgr_bridges - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bridges -...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDepot ... &raquo;</span>
+    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDep... &raquo;</span>
     </a>
   </li>
               
@@ -214,7 +211,7 @@ Returns set of pgr_costResult[]:
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">id1</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
     <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">id1</span><span class="p">;</span>
- <span class="n">id1</span> 
+ <span class="n">id1</span>
 <span class="o">-----</span>
    <span class="mi">1</span>
    <span class="mi">2</span>
@@ -375,7 +372,7 @@ Returns set of pgr_costResult[]:
 <p class="rubric">Example: Total number of rows returned</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
     <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
- <span class="n">count</span> 
+ <span class="n">count</span>
 <span class="o">-------</span>
    <span class="mi">126</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -386,7 +383,7 @@ Returns set of pgr_costResult[]:
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
     <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
     <span class="n">WHERE</span> <span class="n">id1</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span>       <span class="n">cost</span>       
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span>       <span class="n">cost</span>
 <span class="o">-----+-----+-----+------------------</span>
    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>                <span class="mi">0</span>
    <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span> <span class="mf">120.805843601499</span>
@@ -458,8 +455,8 @@ Returns set of pgr_costResult[]:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Sep 13, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
+      Last updated on Jan 10, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

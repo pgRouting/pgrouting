@@ -23,6 +23,7 @@ var dir_f413d2883acb285bdeb0fac3ae939ed0 =
     [ "line_vertex.h", "line__vertex_8h.html", [
       [ "Line_vertex", "classpgrouting_1_1Line__vertex.html", "classpgrouting_1_1Line__vertex" ]
     ] ],
+    [ "linear_directed_graph.h", "linear__directed__graph_8h.html", "linear__directed__graph_8h" ],
     [ "path_t.h", "path__t_8h.html", [
       [ "Path_t", "structPath__t.html", "structPath__t" ]
     ] ],

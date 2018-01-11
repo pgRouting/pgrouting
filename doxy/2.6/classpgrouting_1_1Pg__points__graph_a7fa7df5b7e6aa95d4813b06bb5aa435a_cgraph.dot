@@ -3,13 +3,15 @@ digraph "pgrouting::Pg_points_graph::eliminate_details_dd"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="pgrouting::Pg_points\l_graph::eliminate_details_dd",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 [label="pgrouting::Pg_points\l_graph::eliminate_details_dd",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="Path::empty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4"];
+  Node2 [label="Path::empty",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4"];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="Path::end_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#af813241de9d44cf689932d9166147cf0"];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="Path::push_back",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#a5b5d58e304f85ef96637a260917c30ac"];
+  Node4 [label="pgrouting::Pg_points\l_graph::get_edge_data",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pg__points__graph.html#a6babd9806152962b7db4a5eac24d6260"];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="Path::start_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#ac7035439d26c9e76a20ca1a06541923e"];
+  Node5 [label="pgrouting::Pg_points\l_graph::get_edge_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pg__points__graph.html#a8c5f48692eec5d0e8f69e6150d1f73dc"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Path::start_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#ac7035439d26c9e76a20ca1a06541923e"];
 }

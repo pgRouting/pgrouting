@@ -3,13 +3,13 @@ digraph "process"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="do_pgr_floydWarshall",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$floydWarshall__driver_8cpp.html#a94d2b6331c68d96389771ec79042e9f5"];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="pgr_get_edges_no_id",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8c.html#a723146f18c61ddd20c6574265e7bbb9e",tooltip="edges_sql without id parameter "];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="pgr_global_report",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2",tooltip="notice &amp; error "];
+  Node4 [label="pgr_global_report",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2",tooltip="notice & error "];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="pgr_SPI_connect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64"];
   Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

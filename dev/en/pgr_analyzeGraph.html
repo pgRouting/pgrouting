@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>pgr_analyzeGraph &mdash; pgRouting Manual (2.6-dev)</title>
-    
+    <title>pgr_analyzeGraph &#8212; pgRouting Manual (2.6-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     'v2.6.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.6-dev)" href="index.html" />
-    <link rel="up" title="Topology - Family of Functions" href="topology-functions.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_analyzeOneway" href="pgr_analyzeOneWay.html" />
     <link rel="prev" title="pgr_createVerticesTable" href="pgr_createVerticesTable.html" />
 <meta charset='utf-8'>
@@ -39,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -113,8 +110,8 @@
 <li><a class="reference internal" href="#name">Name</a></li>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-match-the-default-values">Usage when the edge table&#8217;s columns MATCH the default values:</a></li>
-<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Usage when the edge table&#8217;s columns DO NOT MATCH the default values:</a></li>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-match-the-default-values">Usage when the edge table’s columns MATCH the default values:</a></li>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Usage when the edge table’s columns DO NOT MATCH the default values:</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -128,11 +125,11 @@
               
                 
   <li>
-    <a href="pgr_createVerticesTable.html" title="Previous Chapter: pgr_createVerticesTable"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_createVertic...</span>
+    <a href="pgr_createVerticesTable.html" title="Previous Chapter: pgr_createVerticesTable"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_createVer...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_analyzeOneWay.html" title="Next Chapter: pgr_analyzeOneway"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_analyzeOnewa... &raquo;</span>
+    <a href="pgr_analyzeOneWay.html" title="Next Chapter: pgr_analyzeOneway"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_analyzeOneway &raquo;</span>
     </a>
   </li>
               
@@ -182,7 +179,7 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Prerequisites</p>
-<p>The  edge table to be analyzed must contain a source column and a target column filled with id&#8217;s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
+<p>The  edge table to be analyzed must contain a source column and a target column filled with id’s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <ul class="simple">
 <li>Use <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> to create the vertices table.</li>
 <li>Use <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><span class="std std-ref">pgr_createTopology</span></a> to create the topology and the vertices table.</li>
@@ -253,7 +250,7 @@
 </ul>
 </div>
 <div class="section" id="usage-when-the-edge-table-s-columns-match-the-default-values">
-<h2>Usage when the edge table&#8217;s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h2>
+<h2>Usage when the edge table’s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">The simplest way to use pgr_analyzeGraph is:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
@@ -311,7 +308,7 @@
 </div>
 </div>
 <div class="section" id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
-<h2>Usage when the edge table&#8217;s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h2>
+<h2>Usage when the edge table’s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h2>
 <p>For the following table</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">mytable</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">mytable</span> <span class="k">AS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="k">source</span> <span class="k">AS</span> <span class="n">src</span> <span class="p">,</span><span class="n">target</span> <span class="k">AS</span> <span class="n">tgt</span> <span class="p">,</span> <span class="n">the_geom</span> <span class="k">AS</span> <span class="n">mygeom</span> <span class="k">FROM</span> <span class="n">edge_table</span><span class="p">);</span>
@@ -367,7 +364,7 @@
                            <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Selecting the rows WHERE the geometry is near the place=&#8217;myhouse&#8217; of the table <code class="docutils literal"><span class="pre">othertable</span></code>. (note the use of quote_literal)</p>
+<p>Selecting the rows WHERE the geometry is near the place=’myhouse’ of the table <code class="docutils literal"><span class="pre">othertable</span></code>. (note the use of quote_literal)</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">otherTable</span> <span class="k">AS</span>  <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;myhouse&#39;</span><span class="p">::</span><span class="nb">text</span> <span class="k">AS</span> <span class="n">place</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">)</span> <span class="k">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
 <span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
@@ -535,8 +532,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Sep 13, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
+      Last updated on Jan 10, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

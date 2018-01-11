@@ -1,0 +1,5 @@
+<map id="pgrouting::Pg_points_graph::Pg_points_graph" name="pgrouting::Pg_points_graph::Pg_points_graph">
+<area shape="rect" id="node2" href="$classpgrouting_1_1Pg__points__graph.html#ae96c2f3d7c30c58d49a179f3bc8667ef" title="pgrouting::Pg_points\l_graph::check_points" alt="" coords="236,5,383,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Pg__points__graph.html#a6cfa664e56d95c0d13bbb4c9251b73bf" title="pgrouting::Pg_points\l_graph::create_new_edges" alt="" coords="220,71,399,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Pg__points__graph.html#a2ee852d3c7d0462464c63158402239f9" title="pgrouting::Pg_points\l_graph::reverse_sides" alt="" coords="234,136,385,177"/>
+</map>

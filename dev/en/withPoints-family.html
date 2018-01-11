@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>withPoints - Family of functions &mdash; pgRouting Manual (2.6-dev)</title>
-    
+    <title>withPoints - Family of functions &#8212; pgRouting Manual (2.6-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     'v2.6.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.6-dev)" href="index.html" />
-    <link rel="up" title="Stable Proposed Functions" href="proposed.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_withPoints - Proposed" href="pgr_withPoints.html" />
     <link rel="prev" title="pgr_bdDijkstraCostMatrix - proposed" href="pgr_bdDijkstraCostMatrix.html" />
 <meta charset='utf-8'>
@@ -39,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -127,11 +124,11 @@
               
                 
   <li>
-    <a href="pgr_bdDijkstraCostMatrix.html" title="Previous Chapter: pgr_bdDijkstraCostMatrix - proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bdDijkstraCo...</span>
+    <a href="pgr_bdDijkstraCostMatrix.html" title="Previous Chapter: pgr_bdDijkstraCostMatrix - proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bdDijkstr...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_withPoints.html" title="Next Chapter: pgr_withPoints - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_withPoints -... &raquo;</span>
+    <a href="pgr_withPoints.html" title="Next Chapter: pgr_withPoints - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
     </a>
   </li>
               
@@ -189,18 +186,18 @@
 </div>
 <div class="section" id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
-<p>The squared vertices are the temporary vertices, The temporary vertices are added acordng to the
-dirving side, The following images visualy show the diferences on how depending on the driving side the data is interpreted.</p>
+<p>The squared vertices are the temporary vertices, The temporary vertices are added according to the
+driving side, The following images visually show the differences on how depending on the driving side the data is interpreted.</p>
 <p class="rubric">Right driving side</p>
 <a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 445.5px; height: 427.0px;" /></a>
 <p class="rubric">Left driving side</p>
 <a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 442.0px; height: 421.5px;" /></a>
-<p class="rubric">doesn&#8217;t matter the driving side</p>
+<p class="rubric">doesn’t matter the driving side</p>
 <a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 453.5px; height: 432.0px;" /></a>
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>This famly of functions was thought for routing vehicles, but might as well work
+<p>This family of functions was thought for routing vehicles, but might as well work
 for some other application that we can not think of.</p>
 <p>The with points family of function give you the ability to route between
 arbitrary points located outside the original graph.</p>
@@ -245,7 +242,7 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 <li>Original point identifiers are to be positive.</li>
 <li>Transformation to negative is done internally.</li>
 <li>For results for involving vertices identifiers<ul>
-<li>positive sign is a vertex of the original grpah</li>
+<li>positive sign is a vertex of the original graph</li>
 <li>negative sign is a point of the temporary points</li>
 </ul>
 </li>
@@ -286,7 +283,7 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 <p>From first image above:</p>
 <ul class="simple">
 <li>We can arrive to the point only via vertex 9.</li>
-<li>It only afects the edge (15, 9,12, 10) so that edge is removed.</li>
+<li>It only affects the edge (15, 9,12, 10) so that edge is removed.</li>
 <li>Edge (15, 12,9, 20) is kept.</li>
 <li>Create new edges:<ul>
 <li>(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3</li>
@@ -298,7 +295,7 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 <p>From second image above:</p>
 <ul class="simple">
 <li>We can arrive to the point only via vertex 12.</li>
-<li>It only afects the edge (15, 12,9 20) so that edge is removed.</li>
+<li>It only affects the edge (15, 12,9 20) so that edge is removed.</li>
 <li>Edge (15, 9,12, 10) is kept.</li>
 <li>Create new edges:<ul>
 <li>(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14</li>
@@ -352,8 +349,8 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Sep 13, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.<br/>
+      Last updated on Jan 10, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

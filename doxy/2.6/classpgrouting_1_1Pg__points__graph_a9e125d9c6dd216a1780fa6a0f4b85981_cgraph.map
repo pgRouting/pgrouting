@@ -1,0 +1,10 @@
+<map id="pgrouting::Pg_points_graph::driving_side" name="pgrouting::Pg_points_graph::driving_side">
+<area shape="rect" id="node2" href="$classpgrouting_1_1Pg__points__graph.html#a66a8d1a0fef72e913ec6c2250c695346" title="pgrouting::Pg_points\l_graph::adjust_pids" alt="" coords="217,5,359,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Pg__points__graph.html#ae96c2f3d7c30c58d49a179f3bc8667ef" title="pgrouting::Pg_points\l_graph::check_points" alt="" coords="215,71,361,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Pg__points__graph.html#a6cfa664e56d95c0d13bbb4c9251b73bf" title="pgrouting::Pg_points\l_graph::create_new_edges" alt="" coords="199,136,377,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="205,201,371,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1Pg__points__graph.html#a7fa7df5b7e6aa95d4813b06bb5aa435a" title="pgrouting::Pg_points\l_graph::eliminate_details_dd" alt="" coords="195,319,381,360"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1Pg__points__graph.html#a8c5f48692eec5d0e8f69e6150d1f73dc" title="pgrouting::Pg_points\l_graph::get_edge_id" alt="" coords="436,273,577,315"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1Pg__points__graph.html#a6babd9806152962b7db4a5eac24d6260" title="pgrouting::Pg_points\l_graph::get_edge_data" alt="" coords="429,352,584,393"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1Pg__points__graph.html#a2ee852d3c7d0462464c63158402239f9" title="pgrouting::Pg_points\l_graph::reverse_sides" alt="" coords="213,436,363,477"/>
+</map>

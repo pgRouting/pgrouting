@@ -18,6 +18,6 @@ var searchData=
   ['nodesok',['nodesOK',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ad26d3f2cc122835364eb1ee97d090415',1,'pgrouting::vrp::Pgr_pickDeliver']]],
   ['nodetype',['NodeType',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4',1,'pgrouting::vrp::Tw_node']]],
   ['notice',['notice',['../classpgrouting_1_1Pgr__messages.html#a5e4c820b89d1736b51a441047cb1083f',1,'pgrouting::Pgr_messages']]],
-  ['num_5fedges',['num_edges',['../classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ad5d090fe6bea62ee76d98c7d0ae1ae56',1,'pgrouting::graph::Pgr_lineGraph']]],
-  ['num_5fvertices',['num_vertices',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a4d7890a5a5fc336bbe905c17e74b0877',1,'pgrouting::graph::Pgr_base_graph']]]
+  ['num_5fedges',['num_edges',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a57a154893d0534f034e1dddbc03fe89f',1,'pgrouting::graph::Pgr_base_graph']]],
+  ['num_5fvertices',['num_vertices',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a9672a3cc32e6fcd84f8e6c23116ae664',1,'pgrouting::graph::Pgr_base_graph']]]
 ];

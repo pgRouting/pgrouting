@@ -13,6 +13,9 @@ var dir_d5995d5871f728649bd47ea0d6428e03 =
       [ "General_path_element_t", "structGeneral__path__element__t.html", "structGeneral__path__element__t" ]
     ] ],
     [ "graph_enum.h", "graph__enum_8h.html", "graph__enum_8h" ],
+    [ "line_graph_full_rt.h", "line__graph__full__rt_8h.html", [
+      [ "Line_graph_full_rt", "structLine__graph__full__rt.html", "structLine__graph__full__rt" ]
+    ] ],
     [ "line_graph_rt.h", "line__graph__rt_8h.html", [
       [ "Line_graph_rt", "structLine__graph__rt.html", "structLine__graph__rt" ]
     ] ],

@@ -1,12 +1,13 @@
 <map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/pgr_base_graph.hpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/pgr_base_graph.hpp">
-<area shape="rect" id="node2" href="$bdDijkstra__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/bdDijkstra/bdDijkstra\l_driver.cpp" alt="" coords="5,126,176,197"/>
-<area shape="rect" id="node3" href="$ksp__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/ksp_driver.cpp" alt="" coords="201,133,359,189"/>
-<area shape="rect" id="node4" href="$pgr__allpairs_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/allpairs/pgr\l_allpairs.hpp" alt="" coords="222,246,372,317"/>
-<area shape="rect" id="node5" href="$pgr__astar_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/astar/pgr_astar.hpp" alt="" coords="397,253,579,309"/>
-<area shape="rect" id="node6" href="$pgr__componentsGraph_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/components/pgr\l_componentsGraph.hpp" alt="" coords="819,126,983,197"/>
-<area shape="rect" id="node7" href="$pgr__contractionGraph_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/contraction/pgr\l_contractionGraph.hpp" alt="" coords="1008,126,1165,197"/>
-<area shape="rect" id="node8" href="$basePath__SSEC_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/cpp_common/basePath\l_SSEC.hpp" alt="" coords="485,126,693,197"/>
-<area shape="rect" id="node9" href="$pgr__bidirectional_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/cpp_common/pgr\l_bidirectional.hpp" alt="" coords="604,246,775,317"/>
-<area shape="rect" id="node10" href="$pgr__dijkstra_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/dijkstra/pgr\l_dijkstra.hpp" alt="" coords="799,246,949,317"/>
-<area shape="rect" id="node11" href="$pgr__lineGraph_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/lineGraph/pgr\l_lineGraph.hpp" alt="" coords="1190,126,1340,197"/>
+<area shape="rect" id="node2" href="$bdDijkstra__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/bdDijkstra/bdDijkstra\l_driver.cpp" alt="" coords="5,124,176,195"/>
+<area shape="rect" id="node3" href="$ksp__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/ksp_driver.cpp" alt="" coords="201,131,359,187"/>
+<area shape="rect" id="node4" href="$pgr__allpairs_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/allpairs/pgr\l_allpairs.hpp" alt="" coords="222,243,373,313"/>
+<area shape="rect" id="node5" href="$pgr__astar_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/astar/pgr_astar.hpp" alt="" coords="397,250,579,306"/>
+<area shape="rect" id="node6" href="$pgr__componentsGraph_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/components/pgr\l_componentsGraph.hpp" alt="" coords="819,124,983,195"/>
+<area shape="rect" id="node7" href="$pgr__contractionGraph_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/contraction/pgr\l_contractionGraph.hpp" alt="" coords="1008,124,1165,195"/>
+<area shape="rect" id="node8" href="$basePath__SSEC_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/cpp_common/basePath\l_SSEC.hpp" alt="" coords="485,124,693,195"/>
+<area shape="rect" id="node9" href="$pgr__bidirectional_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/cpp_common/pgr\l_bidirectional.hpp" alt="" coords="604,243,775,313"/>
+<area shape="rect" id="node10" href="$pgr__dijkstra_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/dijkstra/pgr\l_dijkstra.hpp" alt="" coords="799,243,950,313"/>
+<area shape="rect" id="node11" href="$pgr__lineGraph_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/lineGraph/pgr\l_lineGraph.hpp" alt="" coords="1190,124,1341,195"/>
+<area shape="rect" id="node12" href="$pgr__lineGraphFull_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/lineGraph/pgr\l_lineGraphFull.hpp" alt="" coords="1365,124,1515,195"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="pgrouting::trsp::Pgr_trspHandler::dijkstra_exploration" name="pgrouting::trsp::Pgr_trspHandler::dijkstra_exploration">
-<area shape="rect" id="node2" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#ad7fd842963acdd914da270e22e401b4e" title="pgrouting::trsp::EdgeInfo\l::cost" alt="" coords="200,5,365,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a9a20b8f019e4abaab929c847197ba2b2" title="pgrouting::trsp::EdgeInfo\l::endNode" alt="" coords="200,70,365,111"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#ab89370f920c03be06ba6daddb523c16b" title="pgrouting::trsp::Pgr\l_trspHandler::explore" alt="" coords="209,135,356,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a712ced190209eb79b1fa57f5b4d988dc" title="pgrouting::trsp::EdgeInfo\l::r_cost" alt="" coords="200,201,365,242"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a3b31168c37b69ee3659df693194d7791" title="pgrouting::trsp::EdgeInfo\l::startNode" alt="" coords="200,266,365,307"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#ad7fd842963acdd914da270e22e401b4e" title="pgrouting::trsp::EdgeInfo\l::cost" alt="" coords="200,5,365,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a9a20b8f019e4abaab929c847197ba2b2" title="pgrouting::trsp::EdgeInfo\l::endNode" alt="" coords="200,71,365,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#ab89370f920c03be06ba6daddb523c16b" title="pgrouting::trsp::Pgr\l_trspHandler::explore" alt="" coords="209,136,356,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a712ced190209eb79b1fa57f5b4d988dc" title="pgrouting::trsp::EdgeInfo\l::r_cost" alt="" coords="200,201,365,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a3b31168c37b69ee3659df693194d7791" title="pgrouting::trsp::EdgeInfo\l::startNode" alt="" coords="200,267,365,308"/>
 </map>

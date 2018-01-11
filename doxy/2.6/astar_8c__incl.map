@@ -1,10 +1,10 @@
 <map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/astar/astar.c" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/astar/astar.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="216,200,437,227"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="237,117,416,144"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="491,117,639,144"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="663,117,821,144"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="847,117,1017,144"/>
-<area shape="rect" id="node8" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="1042,117,1213,144"/>
-<area shape="rect" id="node9" href="$check__parameters_8h.html" title="c_common/check_parameters.h" alt="" coords="5,117,213,144"/>
-<area shape="rect" id="node10" href="$astar__driver_8h.html" title="drivers/astar/astar\l_driver.h" alt="" coords="1290,110,1416,151"/>
+<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="216,199,437,225"/>
+<area shape="rect" id="node4" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="237,117,416,143"/>
+<area shape="rect" id="node5" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="491,117,639,143"/>
+<area shape="rect" id="node6" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="663,117,822,143"/>
+<area shape="rect" id="node7" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="847,117,1017,143"/>
+<area shape="rect" id="node8" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="1042,117,1214,143"/>
+<area shape="rect" id="node9" href="$check__parameters_8h.html" title="c_common/check_parameters.h" alt="" coords="5,117,213,143"/>
+<area shape="rect" id="node10" href="$astar__driver_8h.html" title="drivers/astar/astar\l_driver.h" alt="" coords="1290,109,1417,151"/>
 </map>

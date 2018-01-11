@@ -1,6 +1,6 @@
 <map id="pgrouting::vrp::Vehicle::is_ok" name="pgrouting::vrp::Vehicle::is_ok">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ac9349481baefcf809b0bf31ad6e65719" title="Returns the closing time. " alt="" coords="218,5,345,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a045c3a9a58b87092413c650be2529d13" title="pgrouting::vrp::Vehicle\l::end_site" alt="" coords="205,70,357,111"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a143adbc3116b92e89358dce21910a7eb" title="Returns the opening time. " alt="" coords="218,135,345,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a1b6c4eff910d26a5d49ea0cfa3a566a4" title="pgrouting::vrp::Vehicle\l::start_site" alt="" coords="205,201,357,242"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ac9349481baefcf809b0bf31ad6e65719" title="Returns the closing time. " alt="" coords="218,5,345,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a045c3a9a58b87092413c650be2529d13" title="pgrouting::vrp::Vehicle\l::end_site" alt="" coords="205,71,357,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a143adbc3116b92e89358dce21910a7eb" title="Returns the opening time. " alt="" coords="218,136,345,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a1b6c4eff910d26a5d49ea0cfa3a566a4" title="pgrouting::vrp::Vehicle\l::start_site" alt="" coords="205,201,357,243"/>
 </map>
