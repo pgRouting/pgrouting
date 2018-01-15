@@ -78,7 +78,7 @@ process(
 #ifndef NDEBUG
     size_t i;
     for (i = 0; i< total_points; i++) {
-        PGR_DBG("%d ", points[i].pid);
+        PGR_DBG("%ld ", points[i].pid);
     }
 #endif
     char *edges_of_points_query = NULL;
@@ -95,7 +95,6 @@ process(
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    PGR_DBG("normal = %d", normal);
     if (normal) {
         pgr_get_edges(
                 edges_of_points_query,

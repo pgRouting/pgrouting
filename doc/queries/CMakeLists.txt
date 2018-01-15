@@ -44,9 +44,6 @@ SET(LOCAL_FILES
 	doc-pgr_articulationPoints.queries
 	doc-pgr_bridges.queries
     doc-pgr_vrpOneDepot.queries
-    proof_of_concept.queries
-    trsp_notes_v2.5.0.queries
-    oneDepotWrapper.queries
     doc-gsoc_vrppdtw.queries
     doc-pgr_lineGraph.queries
     doc-pgr_lineGraphFull.queries
