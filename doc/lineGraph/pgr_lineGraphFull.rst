@@ -21,9 +21,12 @@ pgr_lineGraphFull - Experimental
 
 Synopsis
 -------------------------------------------------------------------------------
-pgr_lineGraphFull, converts original graph to a line graph, by keeping all the original edges and each vertex will be converted to a complete graph between the adjacent original edges.
+pgr_lineGraphFull, converts original directed graph to a directed line graph by converting each vertex to a complete graph and keeping all the original edges. The new connecting edges have a cost 0 and go between the adjacent original edges, respecting the directionality.
 
-One application for this type of graph transformation is to allow for the addition of a cost to turning in shortest path calcuations for routing traffic. This can be done because each of the intersections (vertices) in the original graph are now line graphs that have a new edge for each possible turn across that intersection.
+A possible application of the resulting graph is "routing with two edge restrictions":
+  -Setting a cost of using the vertex when routing between edges on the connecting edge
+  -Forbid the routing between two edges by removing the connecting edge
+This is possible because each of the intersections (vertices) in the original graph are now complete graphs that have a new edge for each possible turn across that intersection.
 
 Characteristics
 -------------------------------------------------------------------------------
