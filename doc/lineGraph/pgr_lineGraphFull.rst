@@ -21,8 +21,7 @@ pgr_lineGraphFull - Experimental
 
 Synopsis
 -------------------------------------------------------------------------------
-
-This graph transformation algorithm generates a new graph that contains all of the same edges of the original graph except every vertex has been converted to a line graph. 
+pgr_lineGraphFull, converts original graph to a line graph, by keeping all the original edges and each vertex will be converted to a complete graph between the adjacent original edges.
 
 One application for this type of graph transformation is to allow for the addition of a cost to turning in shortest path calcuations for routing traffic. This can be done because each of the intersections (vertices) in the original graph are now line graphs that have a new edge for each possible turn across that intersection.
 
@@ -143,6 +142,13 @@ One use case for this graph transformation is to be able to run a shortest path 
 Normally the shortest path from vertex 3 to vertex 5 would have an aggregate cost of 2, but since there is a large penalty from making the turn needed to get this cost, the route goes through vertex 9 to avoid this turn.
 
 If you cross reference the node column in the dijkstra results with the vertex id mapping table, this will show you that the path goes from v3 -> v6 -> v9 -> v5 in the original graph.
+
+
+See Also
+-----------------------------------------------------------------------------
+
+* http://en.wikipedia.org/wiki/Line_graph
+* http://en.wikipedia.org/wiki/Complete_graph
 
 .. rubric:: Indices and tables
 
