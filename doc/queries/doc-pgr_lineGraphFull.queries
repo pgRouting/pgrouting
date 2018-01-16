@@ -76,6 +76,7 @@ UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c
 UPDATE 0
 
 SELECT * FROM result2_vertices_pgr;
+
  id | original_id 
 ----+-------------
   3 |           3
@@ -93,5 +94,26 @@ SELECT * FROM result2_vertices_pgr;
 (12 rows)
 
 -- q3
+UPDATE result2 SET cost = 100 WHERE source IN (SELECT target FROM result2 WHERE edge = 5) AND target IN (SELECT source FROM result2 WHERE edge = -8);
+
+UPDATE 1
+
+SELECT * FROM 
+  (SELECT * FROM (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM result2$$,
+    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 3),
+    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 5)
+    )) as a
+  WHERE start_vid = 3 AND end_vid = 5 AND (cost != 0 OR edge = -1)) as b;
+
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
+-----+----------+-----------+---------+------+------+------+----------
+  10 |        1 |         3 |       5 |    3 |    1 |    1 |        0
+  12 |        3 |         3 |       5 |   -2 |    3 |    1 |        1
+  14 |        5 |         3 |       5 |   -7 |   16 |    1 |        2
+  16 |        7 |         3 |       5 |   -1 |    2 |    1 |        3
+  17 |        8 |         3 |       5 |    5 |   -1 |    0 |        4
+(5 rows)
+
+-- q4
 ROLLBACK;
 ROLLBACK
