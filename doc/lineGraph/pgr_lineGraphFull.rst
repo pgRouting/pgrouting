@@ -32,9 +32,10 @@ Characteristics
 -------------------------------------------------------------------------------
 
 The main characteristics are:
-  - This function is intended for directed graphs.
-  - This function will currently give incorrect results if negative vertex ids are used in the input.
-  - This function will currently give incorrect results if duplicated edge ids are used in the input.
+  - This function is for directed graphs.
+  - Results are undefined when a negative vertex id is used in the input graph.
+  - Results are undefined when a duplicated edge id is used in the input graph.
+  - Running time: TBD
 
 Signature Summary
 -----------------

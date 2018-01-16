@@ -4,7 +4,9 @@ SET client_min_messages TO NOTICE;
 SET
 -- q1
 SELECT * FROM pgr_lineGraphFull(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5,8,9,11)'
+    'SELECT id, source, target, cost, reverse_cost
+      FROM edge_table
+      WHERE id IN (5,8,9,11)'
 );
 
  seq | source | target | cost | edge
