@@ -31,23 +31,25 @@ SELECT * FROM pgr_lineGraphFull(
 (17 rows)
 
 -- q2
+// Generate the Line Graph Full result table
 CREATE TABLE result2 AS SELECT * FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id IN (5,8,9,11)$$
 );
-SELECT 17
 
+// Create a table for mapping the new vertices to the original vertices
 CREATE TABLE result2_vertices_pgr AS
 SELECT *, NULL::BIGINT AS original_id
 FROM (SELECT source AS id FROM result2
     UNION
     SELECT target FROM result2) as foo
 ORDER BY id;
-SELECT 12
 
-UPDATE result2_vertices_pgr AS r SET original_id = v.id
-FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
-UPDATE 5
+// Populate the vertex mapping table
+UPDATE result2_vertices_pgr AS r
+  SET original_id = v.id
+  FROM edge_table_vertices_pgr AS v
+  WHERE v.id = r.id;
 
 WITH
 a AS (SELECT e.id, e.original_id
@@ -152,6 +154,7 @@ SELECT * FROM result2_vertices_pgr;
 (12 rows)
 
 -- q3
+// Set the cost of turning from edge 5 to edge -8 to 100
 UPDATE result2
   SET cost = 100
   WHERE source IN (SELECT target
@@ -160,6 +163,9 @@ UPDATE result2
                                                       FROM result2
                                                       WHERE edge = -8);
 
+// Run a dijkstra's shortest path search using all of the vertices
+// created from vertex 3 in the original graph as the starting point
+// and all of the vertices created from vertex 5 as the ending point
 SELECT * FROM
   (SELECT * FROM
     (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM result2$$,
