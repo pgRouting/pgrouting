@@ -92,7 +92,7 @@ Additional Examples
 
 The examples of this section are based on the :doc:`sampledata` network.
 
-The examples include the subgraph including edges 5, 8, 9 and 11 with reverse_cost.
+The examples include the subgraph including edges 4, 7, 8, and 10 with reverse_cost.
 
 Example for generating the LineGraphFull
 -------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ This example displays how this graph transformation works to create additional e
 
     SELECT id, source, target, cost, reverse_cost
       FROM edge_table
-      WHERE id IN (5, 8, 9, 11);
+      WHERE id IN (4,7,8,10);
 
 | |first|
 
@@ -118,7 +118,7 @@ This example displays how this graph transformation works to create additional e
                                             cost, 
                                             reverse_cost 
                                        FROM edge_table 
-                                         WHERE id IN (5, 8, 9, 11)');
+                                         WHERE id IN (4,7,8,10)');
 
 | |second|
 
@@ -139,15 +139,15 @@ The vertices in the transformed graph are each created by splitting up the verti
 Example for running a dijkstra's shortest path with turn penalties
 -----------------------------------------------------------------------------
 
-One use case for this graph transformation is to be able to run a shortest path search that takes into account the cost or limitation of turning. Below is an example of running a dijkstra's shortest path from vertex 3 to vertex 5 in the original graph, while adding a turn penalty cost of 100 to the turn from edge 5 to edge -8.
+One use case for this graph transformation is to be able to run a shortest path search that takes into account the cost or limitation of turning. Below is an example of running a dijkstra's shortest path from vertex 2 to vertex 8 in the original graph, while adding a turn penalty cost of 100 to the turn from edge 4 to edge -7.
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q3
    :end-before: -- q4
 
-Normally the shortest path from vertex 3 to vertex 5 would have an aggregate cost of 2, but since there is a large penalty from making the turn needed to get this cost, the route goes through vertex 9 to avoid this turn.
+Normally the shortest path from vertex 2 to vertex 8 would have an aggregate cost of 2, but since there is a large penalty for making the turn needed to get this cost, the route goes through vertex 6 to avoid this turn.
 
-If you cross reference the node column in the dijkstra results with the vertex id mapping table, this will show you that the path goes from v3 -> v6 -> v9 -> v5 in the original graph.
+If you cross reference the node column in the dijkstra results with the vertex id mapping table, this will show you that the path goes from v2 -> v5 -> v6 -> v5 -> v8 in the original graph.
 
 
 See Also
