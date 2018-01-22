@@ -4,44 +4,197 @@ SET client_min_messages TO NOTICE;
 SET
 -- q1
 SELECT * FROM pgr_lineGraphFull(
-    'SELECT id, source, target, cost FROM edge_table'
+    'SELECT id, source, target, cost, reverse_cost
+      FROM edge_table
+      WHERE id IN (4,7,8,10)'
 );
- seq | source | target | cost | edge
+ seq | source | target | cost | edge 
 -----+--------+--------+------+------
-   1 |      1 |      2 |    1 |    1
-   2 |     -1 |      5 |    1 |    4
-   3 |      2 |     -1 |    0 |    0
-   4 |     -2 |     -7 |    1 |    8
-   5 |     -3 |     10 |    1 |   10
-   6 |      5 |     -2 |    0 |    0
-   7 |      5 |     -3 |    0 |    0
-   8 |     -4 |     -2 |    0 |    0
-   9 |     -4 |     -3 |    0 |    0
-  10 |      3 |      6 |    1 |    5
-  11 |     -5 |      9 |    1 |    9
-  12 |     -6 |     11 |    1 |   11
-  13 |      6 |     -5 |    0 |    0
-  14 |      6 |     -6 |    0 |    0
-  15 |     -7 |     -5 |    0 |    0
-  16 |     -7 |     -6 |    0 |    0
-  17 |      7 |      8 |    1 |    6
-  18 |     -8 |     -4 |    1 |    7
-  19 |      8 |     -8 |    0 |    0
-  20 |     -9 |    -15 |    1 |   15
-  21 |      9 |     -9 |    0 |    0
-  22 |    -10 |     -9 |    0 |    0
-  23 |    -11 |    -14 |    1 |   12
-  24 |    -12 |     13 |    1 |   14
-  25 |     10 |    -11 |    0 |    0
-  26 |     10 |    -12 |    0 |    0
-  27 |    -13 |     12 |    1 |   13
-  28 |     11 |    -13 |    0 |    0
-  29 |    -14 |    -13 |    0 |    0
-  30 |      4 |    -10 |    1 |   16
-  31 |     14 |     15 |    1 |   17
-  32 |     16 |     17 |    1 |   18
-(32 rows)
+   1 |     -1 |      5 |    1 |    4
+   2 |      2 |     -1 |    0 |    0
+   3 |     -2 |      2 |    1 |   -4
+   4 |     -3 |      8 |    1 |   -7
+   5 |     -4 |      6 |    1 |    8
+   6 |     -5 |     10 |    1 |   10
+   7 |      5 |     -2 |    0 |    0
+   8 |      5 |     -3 |    0 |    0
+   9 |      5 |     -4 |    0 |    0
+  10 |      5 |     -5 |    0 |    0
+  11 |     -6 |     -2 |    0 |    0
+  12 |     -6 |     -3 |    0 |    0
+  13 |     -6 |     -4 |    0 |    0
+  14 |     -6 |     -5 |    0 |    0
+  15 |     -7 |     -2 |    0 |    0
+  16 |     -7 |     -3 |    0 |    0
+  17 |     -7 |     -4 |    0 |    0
+  18 |     -7 |     -5 |    0 |    0
+  19 |     -8 |     -2 |    0 |    0
+  20 |     -8 |     -3 |    0 |    0
+  21 |     -8 |     -4 |    0 |    0
+  22 |     -8 |     -5 |    0 |    0
+  23 |     -9 |     -6 |    1 |    7
+  24 |      8 |     -9 |    0 |    0
+  25 |    -10 |     -7 |    1 |   -8
+  26 |      6 |    -10 |    0 |    0
+  27 |    -11 |     -8 |    1 |  -10
+  28 |     10 |    -11 |    0 |    0
+(28 rows)
 
 -- q2
+// Generate the Line Graph Full result table
+CREATE TABLE result2 AS SELECT * FROM pgr_lineGraphFull(
+    $$SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id IN (4,7,8,10)$$
+);
+
+// Create a table for mapping the new vertices to the original vertices
+CREATE TABLE result2_vertices_pgr AS
+SELECT *, NULL::BIGINT AS original_id
+FROM (SELECT source AS id FROM result2
+    UNION
+    SELECT target FROM result2) as foo
+ORDER BY id;
+
+// Populate the vertex mapping table
+UPDATE result2_vertices_pgr AS r
+  SET original_id = v.id
+  FROM edge_table_vertices_pgr AS v
+  WHERE v.id = r.id;
+
+WITH
+a AS (SELECT e.id, e.original_id
+       FROM result2_vertices_pgr AS e
+       WHERE original_id IS NOT NULL),
+b AS (SELECT *
+        FROM result2
+        WHERE cost = 0 and source IN (SELECT id FROM a)),
+c AS (SELECT *
+        FROM b
+        JOIN result2_vertices_pgr
+        ON(source = id)),
+d AS (SELECT c.source, v.original_id
+        FROM c
+        JOIN result2_vertices_pgr as v
+        ON (target=v.id)),
+e AS (SELECT DISTINCT c.target, c.original_id
+        FROM c
+        JOIN result2_vertices_pgr AS r
+        ON(target = r.id AND r.original_id IS NULL))
+UPDATE result2_vertices_pgr
+  SET original_id = e.original_id
+  FROM e
+  WHERE e.target = id;
+
+WITH
+a AS (SELECT e.id, e.original_id
+        FROM result2_vertices_pgr AS e
+        WHERE original_id IS NOT NULL),
+b AS (SELECT *
+        FROM result2
+        WHERE cost = 0 and target IN (SELECT id FROM a)),
+c AS (SELECT *
+        FROM b
+        JOIN result2_vertices_pgr
+        ON(target = id)),
+d AS (SELECT c.target, v.original_id
+        FROM c
+        JOIN result2_vertices_pgr as v
+        ON (source=v.id)),
+e AS (SELECT DISTINCT c.source, c.original_id
+        FROM c
+        JOIN result2_vertices_pgr AS r
+        ON(source = r.id AND r.original_id IS NULL))
+UPDATE result2_vertices_pgr
+  SET original_id = e.original_id
+  FROM e
+  WHERE e.source = id;
+
+WITH
+a AS (SELECT id
+        FROM result2_vertices_pgr
+        WHERE original_id IS NULL),
+b AS (SELECT source,edge
+        FROM result2
+        WHERE source IN (SELECT id FROM a)),
+c AS (SELECT id,source
+        FROM edge_table
+        WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d
+  SET original_id = (SELECT source
+                       FROM c
+                       WHERE c.id = (SELECT edge
+                                       FROM b
+                                       WHERE b.source = d.id))
+  WHERE id IN (SELECT id FROM a);
+
+WITH
+a AS (SELECT id
+        FROM result2_vertices_pgr
+        WHERE original_id IS NULL),
+b AS (SELECT target,edge
+        FROM result2
+        WHERE target IN (SELECT id FROM a)),
+c AS (SELECT id,target
+        FROM edge_table
+        WHERE id IN (SELECT edge FROM b))
+UPDATE result2_vertices_pgr AS d
+  SET original_id = (SELECT target
+                       FROM c
+                       WHERE c.id = (SELECT edge
+                                       FROM b
+                                       WHERE b.target = d.id))
+  WHERE id IN (SELECT id FROM a);
+
+SELECT * FROM result2_vertices_pgr;
+ id  | original_id 
+-----+-------------
+   2 |           2
+   5 |           5
+   6 |           6
+   8 |           8
+  10 |          10
+ -11 |          10
+ -10 |           6
+  -9 |           8
+  -5 |           5
+  -4 |           5
+  -3 |           5
+  -2 |           5
+  -1 |           2
+  -8 |           5
+  -7 |           5
+  -6 |           5
+(16 rows)
+
+-- q3
+// Set the cost of turning from edge 5 to edge -8 to 100
+UPDATE result2
+  SET cost = 100
+  WHERE source IN (SELECT target
+                     FROM result2
+                     WHERE edge = 4) AND target IN (SELECT source
+                                                      FROM result2
+                                                      WHERE edge = -7);
+
+// Run a dijkstra's shortest path search using all of the vertices
+// created from vertex 3 in the original graph as the starting point
+// and all of the vertices created from vertex 5 as the ending point
+SELECT * FROM
+  (SELECT * FROM
+    (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM result2$$,
+      (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 2),
+      (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 8)
+    )) as a
+  WHERE start_vid = 2 AND end_vid = 8 AND (cost != 0 OR edge = -1)) as b;
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
+-----+----------+-----------+---------+------+------+------+----------
+  29 |        2 |         2 |       8 |   -1 |    1 |    1 |        0
+  31 |        4 |         2 |       8 |   -4 |    5 |    1 |        1
+  33 |        6 |         2 |       8 |  -10 |   25 |    1 |        2
+  35 |        8 |         2 |       8 |   -3 |    4 |    1 |        3
+  36 |        9 |         2 |       8 |    8 |   -1 |    0 |        4
+(5 rows)
+
+-- q4
 ROLLBACK;
 ROLLBACK
