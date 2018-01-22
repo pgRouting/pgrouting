@@ -27,89 +27,99 @@ UPDATE lineGraph_vertices AS r
 
 \echo -- q4
 WITH
-a AS (SELECT e.id, e.original_id
+unassignedVertices
+  AS (SELECT e.id, e.original_id
        FROM lineGraph_vertices AS e
        WHERE original_id IS NOT NULL),
-b AS (SELECT *
+edgesWithUnassignedSource
+  AS (SELECT *
         FROM lineGraph_edges
-        WHERE cost = 0 and source IN (SELECT id FROM a)),
-c AS (SELECT *
-        FROM b
+        WHERE cost = 0 and source IN (SELECT id FROM unassignedVertices)),
+edgesWithUnassignedSourcePlusVertices
+  AS (SELECT *
+        FROM edgesWithUnassignedSource
         JOIN lineGraph_vertices
         ON(source = id)),
-d AS (SELECT c.source, v.original_id
-        FROM c
-        JOIN lineGraph_vertices as v
-        ON (target=v.id)),
-e AS (SELECT DISTINCT c.target, c.original_id
-        FROM c
+verticesFromEdgesWithUnassignedSource
+  AS (SELECT DISTINCT edgesWithUnassignedSourcePlusVertices.target, 
+                      edgesWithUnassignedSourcePlusVertices.original_id
+        FROM edgesWithUnassignedSourcePlusVertices
         JOIN lineGraph_vertices AS r
         ON(target = r.id AND r.original_id IS NULL))
 UPDATE lineGraph_vertices
-  SET original_id = e.original_id
-  FROM e
-  WHERE e.target = id;
+  SET original_id = verticesFromEdgesWithUnassignedSource.original_id
+  FROM verticesFromEdgesWithUnassignedSource
+  WHERE verticesFromEdgesWithUnassignedSource.target = id;
 
 WITH
-a AS (SELECT e.id, e.original_id
+unassignedVertices
+  AS (SELECT e.id, e.original_id
         FROM lineGraph_vertices AS e
         WHERE original_id IS NOT NULL),
-b AS (SELECT *
+edgesWithUnassignedTarget
+  AS (SELECT *
         FROM lineGraph_edges
-        WHERE cost = 0 and target IN (SELECT id FROM a)),
-c AS (SELECT *
-        FROM b
+        WHERE cost = 0 and target IN (SELECT id FROM unassignedVertices)),
+edgesWithUnassignedTargetPlusVertices
+  AS (SELECT *
+        FROM edgesWithUnassignedTarget
         JOIN lineGraph_vertices
         ON(target = id)),
-d AS (SELECT c.target, v.original_id
-        FROM c
-        JOIN lineGraph_vertices as v
-        ON (source=v.id)),
-e AS (SELECT DISTINCT c.source, c.original_id
-        FROM c
+verticesFromEdgesWithUnassignedTarget
+  AS (SELECT DISTINCT edgesWithUnassignedTargetPlusVertices.source, 
+                     edgesWithUnassignedTargetPlusVertices.original_id
+        FROM edgesWithUnassignedTargetPlusVertices
         JOIN lineGraph_vertices AS r
         ON(source = r.id AND r.original_id IS NULL))
 UPDATE lineGraph_vertices
-  SET original_id = e.original_id
-  FROM e
-  WHERE e.source = id;
+  SET original_id = verticesFromEdgesWithUnassignedTarget.original_id
+  FROM verticesFromEdgesWithUnassignedTarget
+  WHERE verticesFromEdgesWithUnassignedTarget.source = id;
 
 \echo -- q5
 WITH
-a AS (SELECT id
+unassignedVertexIds
+  AS (SELECT id
         FROM lineGraph_vertices
         WHERE original_id IS NULL),
-b AS (SELECT source,edge
+edgesWithUnassignedSource
+  AS (SELECT source,edge
         FROM lineGraph_edges
-        WHERE source IN (SELECT id FROM a)),
-c AS (SELECT id,source
+        WHERE source IN (SELECT id FROM unassignedVertexIds)),
+originalEdgesWithUnassignedSource
+  AS (SELECT id,source
         FROM edge_table
-        WHERE id IN (SELECT edge FROM b))
+        WHERE id IN (SELECT edge FROM edgesWithUnassignedSource))
 UPDATE lineGraph_vertices AS d
   SET original_id = (SELECT source
-                       FROM c
-                       WHERE c.id = (SELECT edge
-                                       FROM b
-                                       WHERE b.source = d.id))
-  WHERE id IN (SELECT id FROM a);
+                       FROM originalEdgesWithUnassignedSource
+                       WHERE originalEdgesWithUnassignedSource.id = 
+                         (SELECT edge
+                            FROM edgesWithUnassignedSource
+                            WHERE edgesWithUnassignedSource.source = d.id))
+  WHERE id IN (SELECT id FROM unassignedVertexIds);
 
 WITH
-a AS (SELECT id
+unassignedVertexIds
+  AS (SELECT id
         FROM lineGraph_vertices
         WHERE original_id IS NULL),
-b AS (SELECT target,edge
+edgesWithUnassignedTarget
+  AS (SELECT target,edge
         FROM lineGraph_edges
-        WHERE target IN (SELECT id FROM a)),
-c AS (SELECT id,target
+        WHERE target IN (SELECT id FROM unassignedVertexIds)),
+originalEdgesWithUnassignedTarget
+  AS (SELECT id,target
         FROM edge_table
-        WHERE id IN (SELECT edge FROM b))
+        WHERE id IN (SELECT edge FROM edgesWithUnassignedTarget))
 UPDATE lineGraph_vertices AS d
   SET original_id = (SELECT target
-                       FROM c
-                       WHERE c.id = (SELECT edge
-                                       FROM b
-                                       WHERE b.target = d.id))
-  WHERE id IN (SELECT id FROM a);
+                       FROM originalEdgesWithUnassignedTarget
+                       WHERE originalEdgesWithUnassignedTarget.id = 
+                         (SELECT edge
+                            FROM edgesWithUnassignedTarget
+                            WHERE edgesWithUnassignedTarget.target = d.id))
+  WHERE id IN (SELECT id FROM unassignedVertexIds);
 
 \echo -- q6
 SELECT * FROM lineGraph_vertices;
@@ -129,7 +139,7 @@ SELECT * FROM
     (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM lineGraph_edges$$,
       (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 2),
       (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 8)
-    )) as a
+    )) as shortestPaths
   WHERE start_vid = 2 AND end_vid = 8 AND (cost != 0 OR edge = -1)) as b;
 
 \echo -- q9
