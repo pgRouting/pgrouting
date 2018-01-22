@@ -24,18 +24,19 @@ Synopsis
 pgr_lineGraphFull, converts original directed graph to a directed line graph by converting each vertex to a complete graph and keeping all the original edges. The new connecting edges have a cost 0 and go between the adjacent original edges, respecting the directionality.
 
 A possible application of the resulting graph is "routing with two edge restrictions":
-  - Setting a cost of using the vertex when routing between edges on the connecting edge
-  - Forbid the routing between two edges by removing the connecting edge
+- Setting a cost of using the vertex when routing between edges on the connecting edge
+- Forbid the routing between two edges by removing the connecting edge
+
 This is possible because each of the intersections (vertices) in the original graph are now complete graphs that have a new edge for each possible turn across that intersection.
 
 Characteristics
 -------------------------------------------------------------------------------
 
 The main characteristics are:
-  - This function is for directed graphs.
-  - Results are undefined when a negative vertex id is used in the input graph.
-  - Results are undefined when a duplicated edge id is used in the input graph.
-  - Running time: TBD
+- This function is for directed graphs.
+- Results are undefined when a negative vertex id is used in the input graph.
+- Results are undefined when a duplicated edge id is used in the input graph.
+- Running time: TBD
 
 Signature Summary
 -----------------
@@ -43,7 +44,7 @@ Signature Summary
 .. code-block:: none
 
     pgr_lineGraphFull(edges_sql)
-    RETURNS SET OF (seq, source, target, cost, edge) 
+    RETURNS SET OF (seq, source, target, cost, edge)
         OR EMPTY SET
 
 Signatures
@@ -112,12 +113,12 @@ This example displays how this graph transformation works to create additional e
 
 .. code-block:: none
 
-    SELECT * FROM pgr_lineGraphFull('SELECT id, 
-                                            source, 
-                                            target, 
-                                            cost, 
-                                            reverse_cost 
-                                       FROM edge_table 
+    SELECT * FROM pgr_lineGraphFull('SELECT id,
+                                            source,
+                                            target,
+                                            cost,
+                                            reverse_cost
+                                       FROM edge_table
                                          WHERE id IN (4,7,8,10)');
 
 | |second|
@@ -129,8 +130,13 @@ In the transformed graph, all of the edges from the original graph are still pre
 
 Example for creating table that identifies transformed vertices
 -----------------------------------------------------------------------------
- 
-The vertices in the transformed graph are each created by splitting up the vertices in the original graph. Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph. One of the newly created vertices in the transformed graph will have the same vertex-id as the vertex that it was created from in the original graph, but the rest of the newly created vertices will have negative vertex ids. Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from.
+
+The vertices in the transformed graph are each created by splitting up the vertices in the original graph.
+Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph.
+One of the newly created vertices in the transformed graph will have the same vertex-id as the vertex that it was created from in the original graph,
+but the rest of the newly created vertices will have negative vertex ids.
+
+Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from.
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q2
