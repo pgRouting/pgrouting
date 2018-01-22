@@ -110,8 +110,18 @@
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 <li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#example-usage">Example Usage</a></li>
-<li><a class="reference internal" href="#sample-data-results">Sample Data Results</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#minimal-signature">Minimal signature</a></li>
+<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
+<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions">Description of the edges_sql query for dijkstra like functions</a></li>
+<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#example-for-generating-the-linegraphfull">Example for generating the LineGraphFull</a></li>
+<li><a class="reference internal" href="#example-for-creating-table-that-identifies-transformed-vertices">Example for creating table that identifies transformed vertices</a></li>
+<li><a class="reference internal" href="#example-for-running-a-dijkstra-s-shortest-path-with-turn-penalties">Example for running a dijkstra’s shortest path with turn penalties</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
@@ -182,54 +192,45 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>This graph transformation algorithm generates a new graph that contains all of the same edges of the original graph except every vertex has been converted to a line graph.</p>
-<p>One application for this type of graph transformation is to allow for the addition of a cost to turning in shortest path calcuations for routing traffic. This can be done because each of the intersections (vertices) in the original graph are now line graphs that have a new edge for each possible turn across that intersection.</p>
+<p>pgr_lineGraphFull, converts original directed graph to a directed line graph by converting each vertex to a complete graph and keeping all the original edges. The new connecting edges have a cost 0 and go between the adjacent original edges, respecting the directionality.</p>
+<p>A possible application of the resulting graph is “routing with two edge restrictions”:
+- Setting a cost of using the vertex when routing between edges on the connecting edge
+- Forbid the routing between two edges by removing the connecting edge</p>
+<p>This is possible because each of the intersections (vertices) in the original graph are now complete graphs that have a new edge for each possible turn across that intersection.</p>
 </div>
 <div class="section" id="characteristics">
 <h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>This function is intended for directed graphs.</li>
-<li>This function will currently give incorrect results if negative vertex ids are used in the input.</li>
-<li>This function will currently give incorrect results if duplicated edge ids are used in the input.</li>
-</ul>
+<p>The main characteristics are:
+- This function is for directed graphs.
+- Results are undefined when a negative vertex id is used in the input graph.
+- Results are undefined when a duplicated edge id is used in the input graph.
+- Running time: TBD</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraphFull(edges_sql)
-
-RETURNS SET OF (seq,
-                source,
-                target,
-                cost,
-                edge) OR EMPTY SET
+RETURNS SET OF (seq, source, target, cost, edge)
+    OR EMPTY SET
 </pre></div>
 </div>
 </div>
-<div class="section" id="example-usage">
-<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
-<p>This example displays how this graph transformation works to create additional edges for each possible turn in a graph.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5, 8, 9, 11);
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h2>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraphFull(TEXT edges_sql)
+RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><img alt="first" class="align-middle" src="_images/original.png" /></div>
-</div>
-<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(&#39;SELECT id,
-                                        source,
-                                        target,
-                                        cost,
-                                        reverse_cost
-                                   FROM edge_table
-                                     WHERE id IN (5, 8, 9, 11)&#39;);
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><img alt="second" class="align-middle" src="_images/transformation.png" /></div>
-</div>
-<p>In the transformed graph, all of the edges from the original graph are still present (yellow), but we now have additional edges for every turn that could be made across vertex 6 (orange).</p>
-</div>
-<div class="section" id="sample-data-results">
-<h2>Sample Data Results<a class="headerlink" href="#sample-data-results" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraphFull</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span>
 <span class="p">);</span>
@@ -271,6 +272,157 @@ RETURNS SET OF (seq,
 
 </pre></div>
 </div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-edges-sql-query-for-dijkstra-like-functions">
+<h3>Description of the edges_sql query for dijkstra like functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>&#160;</td>
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>-1</td>
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="20%" />
+<col width="9%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>SQL query as described above.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
+<p>The examples of this section are based on the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
+<p>The examples include the subgraph including edges 4, 7, 8, and 10 with reverse_cost.</p>
+</div>
+<div class="section" id="example-for-generating-the-linegraphfull">
+<h2>Example for generating the LineGraphFull<a class="headerlink" href="#example-for-generating-the-linegraphfull" title="Permalink to this headline">¶</a></h2>
+<p>This example displays how this graph transformation works to create additional edges for each possible turn in a graph.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT id, source, target, cost, reverse_cost
+  FROM edge_table
+  WHERE id IN (4,7,8,10);
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="first" class="align-middle" src="_images/original.png" /></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(&#39;SELECT id,
+                                        source,
+                                        target,
+                                        cost,
+                                        reverse_cost
+                                   FROM edge_table
+                                     WHERE id IN (4,7,8,10)&#39;);
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="second" class="align-middle" src="_images/transformation.png" /></div>
+</div>
+<p>In the transformed graph, all of the edges from the original graph are still present (yellow), but we now have additional edges for every turn that could be made across vertex 6 (orange).</p>
+</div>
+<div class="section" id="example-for-creating-table-that-identifies-transformed-vertices">
+<h2>Example for creating table that identifies transformed vertices<a class="headerlink" href="#example-for-creating-table-that-identifies-transformed-vertices" title="Permalink to this headline">¶</a></h2>
+<p>The vertices in the transformed graph are each created by splitting up the vertices in the original graph.
+Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph.
+One of the newly created vertices in the transformed graph will have the same vertex-id as the vertex that it was created from in the original graph,
+but the rest of the newly created vertices will have negative vertex ids.</p>
+<p>Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from.</p>
+</div>
+<div class="section" id="example-for-running-a-dijkstra-s-shortest-path-with-turn-penalties">
+<h2>Example for running a dijkstra’s shortest path with turn penalties<a class="headerlink" href="#example-for-running-a-dijkstra-s-shortest-path-with-turn-penalties" title="Permalink to this headline">¶</a></h2>
+<p>One use case for this graph transformation is to be able to run a shortest path search that takes into account the cost or limitation of turning. Below is an example of running a dijkstra’s shortest path from vertex 2 to vertex 8 in the original graph, while adding a turn penalty cost of 100 to the turn from edge 4 to edge -7.</p>
+<p>Normally the shortest path from vertex 2 to vertex 8 would have an aggregate cost of 2, but since there is a large penalty for making the turn needed to get this cost, the route goes through vertex 6 to avoid this turn.</p>
+<p>If you cross reference the node column in the dijkstra results with the vertex id mapping table, this will show you that the path goes from v2 -&gt; v5 -&gt; v6 -&gt; v5 -&gt; v8 in the original graph.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Line_graph">http://en.wikipedia.org/wiki/Line_graph</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Complete_graph">http://en.wikipedia.org/wiki/Complete_graph</a></li>
+</ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
@@ -292,7 +444,7 @@ RETURNS SET OF (seq,
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Jan 10, 2018.<br/>
+      Last updated on Jan 22, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
