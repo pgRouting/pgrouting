@@ -29,26 +29,102 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "c_types/column_info_t.h"
 
+/*!
+@brief  Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUTE).
+
+@param[in] colNumber Column number (count starts at 1).
+
+@return @b TRUE when colNumber exist. 
+        @b FALSE when colNumber was not found.
+ 
+ */
 bool column_found(int colNumber);
 
+/*!
+@brief Function tells expected type of each column and then check the correspondence type of each column.
+
+@param[in] info[]     contain one or more column information.
+@param[in] info_size  number of columns.
+  
+@return NULL is always returned.
+ 
+ */
 void pgr_fetch_column_info(
         Column_info_t info[],
         int info_size);
 
+/*!
+@brief The function check whether column type is ANY-INTEGER or not.
+
+@param[in] info contain column information.
+
+ */
 void pgr_check_any_integer_type(Column_info_t info);
+
+/*!
+@brief The function check whether column type is ANY-NUMERICAL.
+
+@param[in] info contain column information.
+
+ */
 void pgr_check_any_numerical_type(Column_info_t info);
+
+/*!
+@brief The function check whether column type is CHAR or not.
+
+@param[in] info contain column information.
+
+ */
 void pgr_check_char_type(Column_info_t info);
+
+/*!
+@brief The function check whether column type is TEXT or not.
+
+@param[in] info contain column information.
+
+ */
 void pgr_check_text_type(Column_info_t info);
 void pgr_check_boolean_type(Column_info_t info);
+
+/*!
+@brief The function check whether column type is ANY-INTEGER-ARRAY or not.
+
+@param[in] info contain column information.
+  
+ */
+
 void pgr_check_any_integerarray_type(Column_info_t info);
 
+/*!
+@brief Function return the value of specified column in char type.
 
+@param[in]  tuple         input row to be examined.
+@param[in]  tupdesc       input row description.
+@param[in]  info          contain column information.
+@param[in]  strict        boolean value of strict.
+@param[in]  default_value returned when column contain NULL value.
+  
+@return Char type of column value is returned.
+
+ */
 char pgr_SPI_getChar(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info,
         bool strict,
         char default_value);
+
+/*!
+@brief Function returns the values of specified columns in array.
+
+@param[in]  tuple    input row to be examined.
+@param[in]  tupdesc  input row description.
+@param[in]  info     contain column information.
+@param[out] the_size number of element in array.
+  
+@return Array of columns value is returned.
+
+ */
 
 int64_t*
 pgr_SPI_getBigIntArr(
@@ -57,15 +133,47 @@ pgr_SPI_getBigIntArr(
         Column_info_t info,
         uint64_t *the_size);
 
+/*!
+@brief Function returns the value of specified column in integer type.
+
+@param[in]  tuple   input row to be examined.
+@param[in]  tupdesc input row description.
+@param[in]  info    contain column information.
+  
+@return Integer type of column value is returned.
+
+ */
+
 int64_t pgr_SPI_getBigInt(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info);
 
+/*!
+@brief Function returns the value of specified column in double type.
+
+@param[in] tuple   input row to be examined.
+@param[in] tupdesc input row description.
+@param[in] info    contain column information.
+
+@return Double type of column value is returned.
+
+ */
+
 double  pgr_SPI_getFloat8(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info);
+/*!
+@brief Function returns the string representation of the value of specified column.
+ 
+@param[in]  tuple   input row to be examined.
+@param[in]  tupdesc input row description.
+@param[in]  info    contain column information.
+  
+@return Pointer of string is returned.
+
+ */
 
 char* pgr_SPI_getText(
         HeapTuple *tuple,
