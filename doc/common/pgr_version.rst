@@ -55,24 +55,12 @@ Column        Type       Description
 Examples
 -------------------------------------------------------------------------------
 
-* Query for full version string
+* Query for the version string
 
 .. literalinclude:: doc-pgr_version.queries
    :start-after: -- q1
    :end-before: -- q2
 
-
-
-* Query for ``version`` and ``boost`` attribute
-
-.. code-block:: sql
-
-    SELECT version, boost FROM pgr_version();
-
-      version  | boost
-    -----------+--------
-     2.2.0-dev | 1.49.0
-    (1 row)
 
 See Also
 -------------------------------------------------------------------------------
