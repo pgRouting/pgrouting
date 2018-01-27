@@ -61,9 +61,14 @@ for /f "tokens=*  delims=" %%a in ('cmake --version') do (
 set CURR_CMAKE=%CURR_CMAKE:~14%
 echo cmake %CURR_CMAKE% found
 
-if "%CURR_CMAKE%" GTR "%CMAKE_VERSION%" (
+CALL ci\appveyor\vercompare.bat "%CURR_CMAKE%" "%CMAKE_VERSION%"
+
+echo "errorlevel %ERRORLEVEL%"
+
+if %ERRORLEVEL% EQU 0 (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
+    CALL SET
     echo Downloading cmake %CMAKE_VERSION%
     pushd %DOWNLOADS_DIR%
     curl -L -O -S -s https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%platform%.msi
