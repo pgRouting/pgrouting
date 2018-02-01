@@ -45,6 +45,8 @@ bool column_found(int colNumber);
 
 @param[in] info[]     contain one or more column information.
 @param[in] info_size  number of columns.
+
+@throw ERROR Unknown type of column.
   
 @return NULL is always returned.
  
@@ -55,32 +57,48 @@ void pgr_fetch_column_info(
 
 /*!
 @brief The function check whether column type is ANY-INTEGER or not.
+       Where ANY-INTEGER is SQL type:
+            SMALLINT, INTEGER, BIGINT
 
 @param[in] info contain column information.
+
+@throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
 
  */
 void pgr_check_any_integer_type(Column_info_t info);
 
 /*!
 @brief The function check whether column type is ANY-NUMERICAL.
+       Where ANY-NUMERICAL is SQL type:
+            SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 @param[in] info contain column information.
+
+@throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
 
  */
 void pgr_check_any_numerical_type(Column_info_t info);
 
 /*!
 @brief The function check whether column type is CHAR or not.
+       Where CHAR is SQL type:
+            CHARACTER
 
 @param[in] info contain column information.
+
+@throw ERROR Unexpected Column type. Expected column type is CHAR.
 
  */
 void pgr_check_char_type(Column_info_t info);
 
 /*!
 @brief The function check whether column type is TEXT or not.
+       Where TEXT is SQL type:
+            TEXT 
 
 @param[in] info contain column information.
+
+@throw ERROR Unexpected Column type. Expected column type is TEXT.
 
  */
 void pgr_check_text_type(Column_info_t info);
@@ -88,8 +106,12 @@ void pgr_check_boolean_type(Column_info_t info);
 
 /*!
 @brief The function check whether column type is ANY-INTEGER-ARRAY or not.
+       Where ANY-INTEGER-ARRAY is SQL type:
+            SMALLINT[], INTEGER[], BIGINT[]
 
 @param[in] info contain column information.
+
+@throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
   
  */
 
@@ -104,6 +126,9 @@ void pgr_check_any_integerarray_type(Column_info_t info);
 @param[in]  strict        boolean value of strict.
 @param[in]  default_value returned when column contain NULL value.
   
+@throw ERROR Unexpected Column type. Expected column type is CHAR.
+@throw ERROR When value of column is NULL.
+
 @return Char type of column value is returned.
 
  */
@@ -121,6 +146,10 @@ char pgr_SPI_getChar(
 @param[in]  tupdesc  input row description.
 @param[in]  info     contain column information.
 @param[out] the_size number of element in array.
+
+@throw ERROR No elements found in ARRAY.
+@throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
+@throw ERROR NULL value found in Array.
   
 @return Array of columns value is returned.
 
@@ -139,6 +168,9 @@ pgr_SPI_getBigIntArr(
 @param[in]  tuple   input row to be examined.
 @param[in]  tupdesc input row description.
 @param[in]  info    contain column information.
+
+@throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
+@throw ERROR When value of column is NULL.
   
 @return Integer type of column value is returned.
 
@@ -155,6 +187,9 @@ int64_t pgr_SPI_getBigInt(
 @param[in] tuple   input row to be examined.
 @param[in] tupdesc input row description.
 @param[in] info    contain column information.
+
+@throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
+@throw ERROR When value of column is NULL.
 
 @return Double type of column value is returned.
 
