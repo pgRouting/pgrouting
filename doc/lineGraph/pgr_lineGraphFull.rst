@@ -24,8 +24,8 @@ Synopsis
 pgr_lineGraphFull, converts original directed graph to a directed line graph by converting each vertex to a complete graph and keeping all the original edges. The new connecting edges have a cost 0 and go between the adjacent original edges, respecting the directionality.
 
 A possible application of the resulting graph is "routing with two edge restrictions":
-- Setting a cost of using the vertex when routing between edges on the connecting edge
-- Forbid the routing between two edges by removing the connecting edge
+  - Setting a cost of using the vertex when routing between edges on the connecting edge
+  - Forbid the routing between two edges by removing the connecting edge
 
 This is possible because each of the intersections (vertices) in the original graph are now complete graphs that have a new edge for each possible turn across that intersection.
 
@@ -33,10 +33,10 @@ Characteristics
 -------------------------------------------------------------------------------
 
 The main characteristics are:
-- This function is for directed graphs.
-- Results are undefined when a negative vertex id is used in the input graph.
-- Results are undefined when a duplicated edge id is used in the input graph.
-- Running time: TBD
+  - This function is for directed graphs.
+  - Results are undefined when a negative vertex id is used in the input graph.
+  - Results are undefined when a duplicated edge id is used in the input graph.
+  - Running time: TBD
 
 Signature Summary
 -----------------
@@ -44,7 +44,7 @@ Signature Summary
 .. code-block:: none
 
     pgr_lineGraphFull(edges_sql)
-    RETURNS SET OF (seq, source, target, cost, edge)
+    RETURNS SET OF (seq, source, target, cost, edge) 
         OR EMPTY SET
 
 Signatures
@@ -113,12 +113,12 @@ This example displays how this graph transformation works to create additional e
 
 .. code-block:: none
 
-    SELECT * FROM pgr_lineGraphFull('SELECT id,
-                                            source,
-                                            target,
-                                            cost,
-                                            reverse_cost
-                                       FROM edge_table
+    SELECT * FROM pgr_lineGraphFull('SELECT id, 
+                                            source, 
+                                            target, 
+                                            cost, 
+                                            reverse_cost 
+                                       FROM edge_table 
                                          WHERE id IN (4,7,8,10)');
 
 | |second|
@@ -130,26 +130,55 @@ In the transformed graph, all of the edges from the original graph are still pre
 
 Example for creating table that identifies transformed vertices
 -----------------------------------------------------------------------------
+ 
+The vertices in the transformed graph are each created by splitting up the vertices in the original graph. Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph. One of the newly created vertices in the transformed graph will be given the same vertex-id as the vertex that it was created from in the original graph, but the rest of the newly created vertices will have negative vertex ids. Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from
 
-The vertices in the transformed graph are each created by splitting up the vertices in the original graph.
-Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph.
-One of the newly created vertices in the transformed graph will have the same vertex-id as the vertex that it was created from in the original graph,
-but the rest of the newly created vertices will have negative vertex ids.
-
-Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from.
+The first step is to store your results graph into a table and then create the vertex mapping table with one row for each distinct vertex id in the results graph.
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q2
    :end-before: -- q3
+
+Next, we set the original_id of all of the vertices in the results graph that were given the same vertex id as the vertex that it was created from in the original graph.
+
+.. literalinclude:: doc-pgr_lineGraphFull.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+Then, we cross reference all of the other newly created vertices that do not have the same original_id and set thier original_id values. 
+
+.. literalinclude:: doc-pgr_lineGraphFull.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+The only vertices left that have not been mapped are a few of the leaf vertices from the original graph. The following sql completes the mapping for these leaf vertices (in the case of this example graph there are no leaf vertices but this is nessessary for larger graphs).
+
+.. literalinclude:: doc-pgr_lineGraphFull.queries
+   :start-after: -- q5
+   :end-before: -- q6
+
+Now our vertex mapping table is complete:
+
+.. literalinclude:: doc-pgr_lineGraphFull.queries
+   :start-after: -- q6
+   :end-before: -- q7
 
 Example for running a dijkstra's shortest path with turn penalties
 -----------------------------------------------------------------------------
 
 One use case for this graph transformation is to be able to run a shortest path search that takes into account the cost or limitation of turning. Below is an example of running a dijkstra's shortest path from vertex 2 to vertex 8 in the original graph, while adding a turn penalty cost of 100 to the turn from edge 4 to edge -7.
 
+First we must increase set the cost of making the turn to 100:
+
 .. literalinclude:: doc-pgr_lineGraphFull.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: -- q7
+   :end-before: -- q8
+
+Then we must run a dijkstra's shortest path search using all of the vertices in the new graph that were created from vertex 2 as the starting point, and all of the vertices in the new graph that were created from vertex 8 as the ending point.
+
+.. literalinclude:: doc-pgr_lineGraphFull.queries
+   :start-after: -- q8
+   :end-before: -- q9
 
 Normally the shortest path from vertex 2 to vertex 8 would have an aggregate cost of 2, but since there is a large penalty for making the turn needed to get this cost, the route goes through vertex 6 to avoid this turn.
 
