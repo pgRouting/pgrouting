@@ -32,6 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 bool
 column_found(int colNumber) {
+    /*
+     * [SPI_ERROR_NOATTRIBUTE](https://doxygen.postgresql.org/spi_8h.html#ac1512d8aaa23c2d57bb0d1eb8f453ee2)
+     */
     return !(colNumber == SPI_ERROR_NOATTRIBUTE);
 }
 
@@ -39,19 +42,27 @@ static
 bool
 fetch_column_info(
         Column_info_t *info) {
+/* TODO(vicky) Remove unused code */
 #if 0
     PGR_DBG("Fetching column info of %s", info->name);
 #endif
+    /*
+     * [SPI_fnumber](https://www.postgresql.org/docs/8.2/static/spi-spi-fnumber.html)
+     */
     info->colNumber =  SPI_fnumber(SPI_tuptable->tupdesc, info->name);
     if (info->strict && !column_found(info->colNumber)) {
         elog(ERROR, "Column '%s' not Found", info->name);
     }
 
     if (column_found(info->colNumber)) {
+        /*
+         * [SPI_gettypeid](https://www.postgresql.org/docs/9.1/static/spi-spi-gettypeid.html)
+         */
         (info->type) = SPI_gettypeid(SPI_tuptable->tupdesc, (info->colNumber));
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
             elog(ERROR, "Type of column '%s' not Found", info->name);
         }
+/* TODO(vicky) Remove unused code */
 #if 0
         PGR_DBG("Column %s found: %lu", info->name, info->type);
 #endif
@@ -91,7 +102,10 @@ void pgr_fetch_column_info(
     }
 }
 
-
+/*
+ * [BPCHAROID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#afa7749dbe36d31874205189d9d6b21d7)  
+ * [INT2ARRAYOID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#ac265fe7b0bb75fead13b16bf072722e9)
+ */
 
 void
 pgr_check_char_type(Column_info_t info) {
@@ -144,7 +158,11 @@ void pgr_check_any_numerical_type(Column_info_t info) {
 
 /*
  * http://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html;
+ * [SPI_getbinval](https://www.postgresql.org/docs/8.1/static/spi-spi-getbinval.html)
+ * [Datum](https://doxygen.postgresql.org/datum_8h.html)
+ * [DatumGetInt16](https://doxygen.postgresql.org/postgres_8h.html#aec991e04209850f29a8a63df0c78ba2d)
  */
+
 char
 pgr_SPI_getChar(
         HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info,
@@ -180,6 +198,10 @@ pgr_SPI_getBigIntArr(
     bool is_null = false;
 
     Datum raw_array = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &is_null);
+    /*
+    * [DatumGetArrayTypeP](https://doxygen.postgresql.org/array_8h.html#aa1b8e77c103863862e06a7b7c07ec532)
+    * [pgr_get_bigIntArray](http://docs.pgrouting.org/doxy/2.2/arrays__input_8c_source.html)
+    */
     ArrayType *pg_array = DatumGetArrayTypeP(raw_array);
 
     return (int64_t*) pgr_get_bigIntArray(the_size, pg_array);
@@ -210,6 +232,7 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-INTEGER",
                     info.name);
     }
+/* TODO(vicky) Remove unused code */
 #if 0
     PGR_DBG("Variable: %s Value: %ld", info.name, value);
 #endif
@@ -246,6 +269,7 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-NUMERICAL",
                     info.name);
     }
+/* TODO(vicky) Remove unused code */
 #if 0
     PGR_DBG("Variable: %s Value: %lf", info.name, value);
 #endif
@@ -254,6 +278,9 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
 
 /**
  * under development
+ */
+/*
+ * [DatumGetCString](https://doxygen.postgresql.org/postgres_8h.html#ae401c8476d1a12b420e3061823a206a7)
  */
 char*
 pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {
