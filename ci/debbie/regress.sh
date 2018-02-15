@@ -22,8 +22,6 @@ export LD_LIBRARY_PATH="${PROJECTS}/gdal/rel-${GDAL_VER}w${OS_BUILD}/lib:${PROJE
 # --
 export PGLOCALEDIR=${PGPATH}/share/locale
 
-
-
 DAEMON=${PGPATH}/bin/postmaster
 PGSTARTLOG=${PGDATA}/start_log.log
 
@@ -72,5 +70,6 @@ echo $state
 if [ "0" != "0$state" ]; then
   ${PGPATH}/bin/pg_ctl stop -D ${PGDATA} -l logfile -m fast
 fi
+echo "done"
 
 
