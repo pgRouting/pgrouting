@@ -16,6 +16,7 @@ export PGDATA=${PGPATH}/data_${PGPORT}
 export PGDATABASE=postgres
 export PGUSER=postgres
 export LD_LIBRARY_PATH="${PROJECTS}/gdal/rel-${GDAL_VER}w${OS_BUILD}/lib:${PROJECTS}/geos/rel-${GEOS_VER}w${OS_BUILD}/lib:${PGPATH}/lib"
+export PATH="${PATH}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
 
 #--- 
 # start the pg sever 
@@ -24,6 +25,10 @@ export PGLOCALEDIR=${PGPATH}/share/locale
 
 DAEMON=${PGPATH}/bin/postmaster
 PGSTARTLOG=${PGDATA}/start_log.log
+
+
+#initialize the database
+${PGPATH}/bin/initdb -U postgres -D ${PGDATA} -A trust
 
 # check to see if pg is already running
 state=`${PGPATH}/bin/pg_ctl status -D ${PGDATA} -l ${PGDATA}/logfile | grep "server is running" `
@@ -69,6 +74,7 @@ echo $state
 
 if [ "0" != "0$state" ]; then
   ${PGPATH}/bin/pg_ctl stop -D ${PGDATA} -l logfile -m fast
+  rm -rf ${PGDATA}
 fi
 echo "done"
 
