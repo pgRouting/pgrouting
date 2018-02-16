@@ -6,7 +6,7 @@
 # export BRANCH=develop
 export PGROUTING_VER=$BRANCH
 export OS_BUILD=64
-export PG_VER=11
+export PG_VER=10
 export PGPORT=5411
 export GEOS_VER=3.7.0dev
 export GDAL_VER=2.2
