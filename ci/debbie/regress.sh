@@ -17,6 +17,7 @@ export PGDATABASE=postgres
 export PGUSER=postgres
 export LD_LIBRARY_PATH="${PROJECTS}/gdal/rel-${GDAL_VER}w${OS_BUILD}/lib:${PROJECTS}/geos/rel-${GEOS_VER}w${OS_BUILD}/lib:${PGPATH}/lib"
 export PATH="${PATH}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
+export POSTGIS_VER=2.5.0dev
 
 #--- 
 # start the pg sever 
@@ -62,11 +63,14 @@ cmake ../${BRANCH}
 make
 sudo make install
 cd ../${BRANCH}
-perl tools/testers/algorithm-tester.pl
+perl tools/testers/algorithm-tester.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
+#pgTap tests disable for now until we have installed
+if false; then
 psql -c "CREATE DATABASE ___pgr___test___"
 sh tools/testers/pg_prove_tests.sh ${PGUSER}
 psql -c "DROP DATABASE ___pgr___test___"
+fi
 
 #stop the postgres server
 state=`${PGPATH}/bin/pg_ctl status -D ${PGDATA} -l ${PGPATH}/data/logfile | grep "server is running"`
