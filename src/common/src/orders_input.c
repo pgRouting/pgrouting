@@ -181,7 +181,7 @@ pgr_get_pd_orders_general(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 

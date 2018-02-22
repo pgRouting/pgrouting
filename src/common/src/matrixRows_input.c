@@ -117,7 +117,7 @@ void pgr_get_matrixRows(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 

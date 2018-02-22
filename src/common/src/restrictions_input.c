@@ -136,7 +136,7 @@ pgr_get_restriction_data(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 

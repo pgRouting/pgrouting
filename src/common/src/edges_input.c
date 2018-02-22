@@ -221,7 +221,7 @@ get_edges_9_columns(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 
@@ -321,7 +321,7 @@ get_edges_5_columns(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 
@@ -413,7 +413,7 @@ get_edges_flow(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 
@@ -510,7 +510,7 @@ get_edges_basic(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 

@@ -128,7 +128,7 @@ void pgr_get_coordinates(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 

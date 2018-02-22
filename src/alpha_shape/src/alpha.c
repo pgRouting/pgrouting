@@ -178,7 +178,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
             }
           SPI_freetuptable(tuptable);
         } else {
-          moredata = FALSE;
+          moredata = false;
         }
     }
 

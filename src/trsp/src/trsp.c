@@ -394,7 +394,7 @@ static int compute_trsp(
           SPI_freetuptable(tuptable);
           // PGR_DBG("back from SPI_freetuptable");
       } else {
-          moredata = FALSE;
+          moredata = false;
       }
   }
   SPI_cursor_close(SPIportal);
@@ -520,7 +520,7 @@ static int compute_trsp(
               }
               SPI_freetuptable(tuptable);
           } else {
-              moredata = FALSE;
+              moredata = false;
           }
       }
       SPI_cursor_close(SPIportal);

@@ -235,7 +235,7 @@ void pgr_get_vehicles_general(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 

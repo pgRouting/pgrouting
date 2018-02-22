@@ -136,7 +136,7 @@ pgr_get_points(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
     SPI_cursor_close(SPIportal);
