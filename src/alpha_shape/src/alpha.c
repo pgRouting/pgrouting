@@ -115,7 +115,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
   int SPIcode;
   void *SPIplan;
   Portal SPIportal;
-  bool moredata = TRUE;
+  bool moredata = true;
   size_t ntuples;
   vertex_t *vertices = NULL;
   size_t total_tuples = 0;
@@ -146,8 +146,8 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
       return -1;
     }
 
-  while (moredata == TRUE) {
-      SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
+  while (moredata == true) {
+      SPI_cursor_fetch(SPIportal, true, TUPLIMIT);
 
       if (vertex_columns.id == -1) {
           if (fetch_vertices_columns(SPI_tuptable, &vertex_columns) == -1)

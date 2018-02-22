@@ -95,14 +95,14 @@ pgr_get_points(
     Portal SPIportal;
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
-    bool moredata = TRUE;
+    bool moredata = true;
     (*total_points) = total_tuples = 0;
 
     int64_t default_pid = 0;
     char default_side = 'b';
 
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+    while (moredata == true) {
+        SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0) {
             /* on the first tuple get the column information */
             pgr_fetch_column_info(info, 4);

@@ -184,13 +184,13 @@ get_edges_9_columns(
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
 
-    bool moredata = TRUE;
+    bool moredata = true;
     (*total_edges) = total_tuples = valid_edges = 0;
 
 
     int64_t default_id = 0;
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+    while (moredata == true) {
+        SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 9);
 
@@ -283,13 +283,13 @@ get_edges_5_columns(
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
 
-    bool moredata = TRUE;
+    bool moredata = true;
     (*totalTuples) = total_tuples = valid_edges = 0;
 
 
     int64_t default_id = 0;
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+    while (moredata == true) {
+        SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 5);
 
@@ -376,13 +376,13 @@ get_edges_flow(
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
 
-    bool moredata = TRUE;
+    bool moredata = true;
     (*totalTuples) = total_tuples = valid_edges = 0;
 
 
     int64_t default_id = 0;
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+    while (moredata == true) {
+        SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 5);
 
@@ -472,13 +472,13 @@ get_edges_basic(
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
 
-    bool moredata = TRUE;
+    bool moredata = true;
     (*totalTuples) = total_tuples = valid_edges = 0;
 
 
     int64_t default_id = 0;
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+    while (moredata == true) {
+        SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 5);
 
