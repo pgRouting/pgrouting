@@ -64,7 +64,7 @@ cmake ../${BRANCH}
 make
 make install
 cd ../${BRANCH}
-pwd
+export PERL5LIB=$(echo pwd)
 perl tools/testers/algorithm-tester.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 #pgTap tests disable for now until we have installed
