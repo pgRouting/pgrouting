@@ -62,7 +62,7 @@ cd ../build${BRANCH}
 cmake ../${BRANCH}
 
 make
-sudo make install
+make install
 cd ../${BRANCH}
 perl tools/testers/algorithm-tester.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
