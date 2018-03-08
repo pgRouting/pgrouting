@@ -82,11 +82,11 @@ void pgr_get_matrixRows(
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
 
-    bool moredata = TRUE;
+    bool moredata = true;
     (*total_rows) = total_tuples;
 
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+    while (moredata == true) {
+        SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 3);
 
@@ -117,7 +117,7 @@ void pgr_get_matrixRows(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 

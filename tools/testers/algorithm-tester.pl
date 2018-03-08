@@ -168,10 +168,11 @@ $postgis_ver = '' if ! $postgis_ver;
 for my $c (@cfgs) {
     my $found = 0;
 
+    print "test.conf = $c\n" if $VERBOSE;
+
     # load the config file for the tests
     require $c;
 
-    print "test.conf = $c\n" if $VERBOSE;
     print Data::Dumper->Dump([\%main::tests],['test']) if $VERBOSE;
 
     if ($main::tests{any} && !$DOCUMENTATION) {
@@ -207,7 +208,7 @@ exit 0;      # signal we passed all the tests
 # t  contents of array that has keys comment, data and test
 sub run_test {
     my $c = shift;
-    my $t = shift;  
+    my $t = shift;
     my %res = ();
 
     my $dir = dirname($c);
@@ -310,7 +311,7 @@ sub process_single_test{
 
 
     my @d = ();
-    @d = <TIN>; #reads the whole file into the array @d 
+    @d = <TIN>; #reads the whole file into the array @d
 
     print PSQL "BEGIN;\n";
     print PSQL "SET client_min_messages TO $level;\n";
@@ -346,7 +347,7 @@ sub process_single_test{
     }
     if (! -f "$dir/$x.result") {
         $res->{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";
-        $stats{z_fail}++;            
+        $stats{z_fail}++;
         next;
     }
 
@@ -398,7 +399,7 @@ sub createTestDB {
     Use -force to force the tests\n"
     unless version_greater_eq($dbver, $POSGRESQL_MIN_VERSION) or ($FORCE and version_greater_eq($dbver, '9.1'));
 
-    die "postGIS extension $postgis_ver not found\n" 
+    die "postGIS extension $postgis_ver not found\n"
     unless -f "$dbshare/extension/postgis.control";
 
 

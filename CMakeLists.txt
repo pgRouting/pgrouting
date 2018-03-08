@@ -70,10 +70,10 @@ configure_file("configuration.conf" "configuration.conf")
 file(STRINGS configuration.conf PgRouting_CONFIGURATION_FILE)
 
 set(PgRouting_SOURCE_NAMES "")
-set(PgRouting_SQL_DIRECTORIES "") 
-set(PgRouting_DOC_DIRECTORIES "") 
+set(PgRouting_SQL_DIRECTORIES "")
+set(PgRouting_DOC_DIRECTORIES "")
 foreach(line ${PgRouting_CONFIGURATION_FILE})
-    string(REGEX REPLACE "^(#).*" "\\1" comment ${line}) 
+    string(REGEX REPLACE "^(#).*" "\\1" comment ${line})
     if("${comment}" MATCHES "#")
         continue()
     endif()
@@ -301,7 +301,7 @@ endif()
 string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
 
 # for XbetaY XalphaY XrcY -> X.Y
-string(REGEX REPLACE "^([0-9]+)[beta|alpha|rc].*" "\\1.0" POSTGRESQL_VERSION ${POSTGRESQL_VERSION})
+string(REGEX REPLACE "^([0-9]+)[beta|alpha|rc|devel].*" "\\1.0" POSTGRESQL_VERSION ${POSTGRESQL_VERSION})
 
 #for X.Y.Z -> XY  Y<10
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
@@ -323,6 +323,7 @@ endif(WIN32)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DPGSQL_VERSION=${PGSQL_VERSION}")
+message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 
 
 #---------------------------------------------

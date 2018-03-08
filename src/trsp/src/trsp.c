@@ -299,7 +299,7 @@ static int compute_trsp(
   int SPIcode;
   SPIPlanPtr SPIplan;
   Portal SPIportal;
-  bool moredata = TRUE;
+  bool moredata = true;
   uint32_t TUPLIMIT = 1000;
   uint32_t ntuples;
 
@@ -348,9 +348,9 @@ static int compute_trsp(
       return -1;
   }
 
-  while (moredata == TRUE) {
+  while (moredata == true) {
       // PGR_DBG("calling SPI_cursor_fetch");
-      SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
+      SPI_cursor_fetch(SPIportal, true, TUPLIMIT);
 
       if (SPI_tuptable == NULL) {
           elog(ERROR, "SPI_tuptable is NULL");
@@ -394,7 +394,7 @@ static int compute_trsp(
           SPI_freetuptable(tuptable);
           // PGR_DBG("back from SPI_freetuptable");
       } else {
-          moredata = FALSE;
+          moredata = false;
       }
   }
   SPI_cursor_close(SPIportal);
@@ -480,9 +480,9 @@ static int compute_trsp(
           return -1;
       }
 
-      moredata = TRUE;
-      while (moredata == TRUE) {
-          SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
+      moredata = true;
+      while (moredata == true) {
+          SPI_cursor_fetch(SPIportal, true, TUPLIMIT);
 
           if (restrict_columns.target_id == -1) {
               if (fetch_restrict_columns(SPI_tuptable, &restrict_columns) \
@@ -520,7 +520,7 @@ static int compute_trsp(
               }
               SPI_freetuptable(tuptable);
           } else {
-              moredata = FALSE;
+              moredata = false;
           }
       }
       SPI_cursor_close(SPIportal);

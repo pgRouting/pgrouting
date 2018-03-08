@@ -7,6 +7,7 @@
 export PGROUTING_VER=$BRANCH
 export OS_BUILD=64
 export PG_VER=11
+export PGSQL_VERSION=110
 export PGPORT=5411
 export GEOS_VER=3.7.0dev
 export GDAL_VER=2.2
@@ -19,8 +20,8 @@ export LD_LIBRARY_PATH="${PROJECTS}/gdal/rel-${GDAL_VER}w${OS_BUILD}/lib:${PROJE
 export PATH="${PATH}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
 export POSTGIS_VER=2.5.0dev
 
-#--- 
-# start the pg sever 
+#---
+# start the pg sever
 # --
 export PGLOCALEDIR=${PGPATH}/share/locale
 
@@ -61,8 +62,9 @@ cd ../build${BRANCH}
 cmake ../${BRANCH}
 
 make
-sudo make install
+make install
 cd ../${BRANCH}
+export PERL5LIB=$(echo pwd)
 perl tools/testers/algorithm-tester.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 #pgTap tests disable for now until we have installed
