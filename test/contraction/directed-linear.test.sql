@@ -1,45 +1,31 @@
+--q0 Checking linear contraction with no linear vertex
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table
+    WHERE id = 1 OR id = 2 OR id = 4',
+    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
+--q0 -------------------------------------------
 
-\echo --q6 Checking for linear vertices case 1
+--q1 Checking linear contraction with one linear vertex
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table
     WHERE id = 3 OR id = 5',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q6 -------------------------------------------
+--q1 -------------------------------------------
 
-
-\echo --q7 Checking for linear vertices case 2
+--q2 Checking linear contraction with two linear vertices
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 8 OR id = 10',
+    WHERE id = 5 OR id = 11 OR id = 13',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q7 -------------------------------------------
+--q2 -------------------------------------------
 
-
-\echo --q8 Checking for linear vertices case 3
+--q3 Checking linear contraction with multiple linear vertices
 SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 2 OR id = 4',
+    'SELECT id, source, target, cost FROM edge_table
+    WHERE id = ANY(ARRAY[8, 9, 11, 13]) AND cost > 0 
+    UNION
+    SELECT id, target, source, reverse_cost FROM edge_table
+    WHERE id = ANY(ARRAY[15, 16]) AND reverse_cost > 0',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q8 -------------------------------------------
-
-\echo --q9 Checking for linear vertices case 4
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 5 OR id = 9',
-    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q9 -------------------------------------------
-
-\echo --q10 Checking linear contraction for sample data
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table' ,
-    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q10 -------------------------------------------
-
-
-\echo --q13 Checking linear contraction for a square like graph
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
-    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q13 -------------------------------------------
+--q3 -------------------------------------------
 
