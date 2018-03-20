@@ -282,6 +282,7 @@ echo
 echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
+test_file 2.5.3
 test_file 2.5.2
 test_file 2.5.1
 test_file 2.5.0
