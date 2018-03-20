@@ -33,17 +33,17 @@ PREPARE q6 AS
 SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
     7, 6) ORDER BY seq DESC LIMIT 1;
 
+-- test for infinity if there is no alternative
 SELECT results_eq('q0', 'SELECT cast(3 as double precision) as agg_cost;');
 SELECT lives_ok('update2infinity', 'updating an edge to ''Infinity'' should be possible');
 SELECT results_eq('q1', 'SELECT cast(1 as double precision) as agg_cost;');
 SELECT todo_start('add support for ''infinity''');
-SELECT results_eq('q2', 'SELECT cast(''Infinity'' as double precision) as agg_cost;', 'Routing through edge seven should be ''Infinity''');
+SELECT results_eq('q2', 'SELECT cast(''Infinity'' as double precision) as agg_cost;', 'Routing through edge 7 should be ''Infinity''');
 SELECT results_eq('q3', 'SELECT cast(1 as double precision) as agg_cost;');
-SELECT results_eq('q4', 'SELECT cast(''Infinity'' as double precision) as agg_cost;', 'Routing through edge seven should be ''Infinity''');
-SELECT results_eq('q5', 'SELECT cast(''Infinity'' as double precision) as agg_cost;', 'Routing through edge seven should be ''Infinity''');
-SELECT results_eq('q6', 'SELECT cast(''Infinity'' as double precision) as agg_cost;', 'Routing through edge seven should be ''Infinity''');
+SELECT results_eq('q4', 'SELECT cast(''Infinity'' as double precision) as agg_cost;', 'Routing through edge 7 should be ''Infinity''');
+SELECT results_eq('q5', 'SELECT cast(''Infinity'' as double precision) as agg_cost;', 'Routing through edge 7 should be ''Infinity''');
+SELECT results_eq('q6', 'SELECT cast(''Infinity'' as double precision) as agg_cost;', 'Routing through edge 7 should be ''Infinity''');
 SELECT todo_end();
-
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();
