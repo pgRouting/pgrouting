@@ -1,4 +1,4 @@
-#VERSION pgrouting 2.5.2
+#VERSION pgrouting 2.5.3
 #TYPES
 pgr_costresult
 pgr_costresult3
