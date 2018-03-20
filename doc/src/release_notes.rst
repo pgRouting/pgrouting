@@ -19,6 +19,8 @@ To see the full list of changes check the list of `Git commits <https://github.c
 .. changelog start
 
 * :ref:`changelog_2_6_0`
+* :ref:`changelog_2_5_3`
+* :ref:`changelog_2_5_2`
 * :ref:`changelog_2_5_1`
 * :ref:`changelog_2_5_0`
 * :ref:`changelog_2_4_2`
@@ -47,6 +49,10 @@ pgRouting 2.6.0 Release Notes
 To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github.
 
 
+.. rubric:: New fexperimental functions
+
+*  pgr_lineGraphFull
+
 .. rubric:: Bug fixes
 
 * Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])
@@ -70,6 +76,27 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
 * Cleaned the internal code of withPoints
 
 
+.. _changelog_2_5_3:
+
+pgRouting 2.5.3 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL
+
+.. _changelog_2_5_2:
+
+pgRouting 2.5.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* Fix for postgresql 10.1: Removed a compiler condition
 
 
 .. _changelog_2_5_1:

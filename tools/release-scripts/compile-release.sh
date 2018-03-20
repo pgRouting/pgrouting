@@ -42,7 +42,7 @@ echo Compiling with $1
 echo ------------------------------------
 echo
 
-sudo update-alternatives --set gcc /usr/bin/gcc-$1
+#sudo update-alternatives --set gcc /usr/bin/gcc-$1
 
 cd build/
 touch tmp_make.txt
@@ -87,8 +87,8 @@ fi
 
 }
 
-sudo rm -f /usr/lib/postgresql/9.3/lib/libpgrouting-$MINOR.so
-sudo rm -f /usr/share/postgresql/9.3/extension/pgrouting*$FULL_VER*
+#sudo rm -f /usr/lib/postgresql/9.3/lib/libpgrouting-$MINOR.so
+#sudo rm -f /usr/share/postgresql/9.3/extension/pgrouting*$FULL_VER*
 rm -rf build/*
 test_compile $CPPVERSION
 

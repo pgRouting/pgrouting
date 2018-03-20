@@ -89,13 +89,13 @@ void pgr_get_coordinates(
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
 
-    bool moredata = TRUE;
+    bool moredata = true;
     (*total_coordinates) = total_tuples;
 
     int64_t default_id = 1;
 
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+    while (moredata == true) {
+        SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 3);
 
@@ -128,7 +128,7 @@ void pgr_get_coordinates(
             }
             SPI_freetuptable(tuptable);
         } else {
-            moredata = FALSE;
+            moredata = false;
         }
     }
 

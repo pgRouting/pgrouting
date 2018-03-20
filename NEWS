@@ -5,6 +5,10 @@ pgRouting 2.6.0 Release Notes
 To see the issues closed by this release see the [Git closed milestone for 2.6.0 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20) on Github.
 
 
+*New fexperimental functions*
+
+*  pgr_lineGraphFull
+
 *Bug fixes*
 
 * Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])
@@ -28,6 +32,25 @@ To see the issues closed by this release see the [Git closed milestone for 2.6.0
 * Cleaned the internal code of withPoints
 
 
+
+pgRouting 2.5.3 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the [Git closed milestone for 2.5.3 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20) on Github.
+
+*Bug fixes*
+
+* Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL
+
+
+pgRouting 2.5.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the [Git closed milestone for 2.5.2 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20) on Github.
+
+*Bug fixes*
+
+* Fix for postgresql 10.1: Removed a compiler condition
 
 
 
