@@ -1,9 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::is_compatible_IJ" name="pgrouting::vrp::Tw_node::is_compatible_IJ">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a25205f348a0a62cdb393d7d8dc5b4a04" title="pgrouting::vrp::Vehicle\l::getPosHighLimit" alt="" coords="252,5,404,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3203e380901c818a47a62a6df113892a" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="265,69,391,125"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a5f5fa98be2d17c9232813cf350f20e74" title="pgrouting::vrp::Tw\l_node::is_partially\l_waitTime_compatible_IJ" alt="" coords="243,149,413,205"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aea8358d87dde8ba8e719e7f96a99850a" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="231,229,425,270"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Order.html#a6952f655243e030be6d5db4b1aebfe57" title="validate a pickup/delivery order " alt="" coords="257,294,399,335"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aaf8d97b788b38d5294a611e8f8192980" title="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ" alt="" coords="217,359,439,401"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Order.html#a6881a6c6a44d927f24c57d7eefe07b6f" title="Can order I be placed before this order? " alt="" coords="257,425,399,466"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="do_pgr_connectedComponentsV" name="do_pgr_connectedComponentsV">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a1341eb7877973d52efe280c0f55f2a0e" title="pgrouting::graph::Pgr\l_componentsGraph::insert_edges" alt="" coords="265,5,482,46"/>
-<area shape="rect" id="node3" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="531,147,605,173"/>
-<area shape="rect" id="node4" href="$connectedComponentsV__driver_8cpp.html#a6603b778152940360c6e28ab17d85d2f" title="pgr_connectedComponentsV" alt="" coords="278,121,469,148"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="339,172,408,199"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="337,223,409,249"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="297,274,450,315"/>
-</map>

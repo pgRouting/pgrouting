@@ -1,9 +1,0 @@
-<map id="do_pgr_dijkstraVia" name="do_pgr_dijkstraVia">
-<area shape="rect" id="node2" href="$dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be" title="get_route" alt="" coords="235,5,311,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="184,57,363,98"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="411,199,485,225"/>
-<area shape="rect" id="node5" href="$dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9" title="pgr_dijkstraViaVertex" alt="" coords="200,173,347,200"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="239,224,308,251"/>
-<area shape="rect" id="node7" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="237,275,309,301"/>
-<area shape="rect" id="node8" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="197,326,350,367"/>
-</map>

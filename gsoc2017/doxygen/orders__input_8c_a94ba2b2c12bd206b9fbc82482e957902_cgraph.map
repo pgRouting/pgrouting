@@ -1,5 +1,0 @@
-<map id="fetch_pd_orders" name="fetch_pd_orders">
-<area shape="rect" id="node2" href="$get__check__data_8c.html#a242b8e2225de6f8c47cf3133c440588e" title="column_found" alt="" coords="182,5,285,32"/>
-<area shape="rect" id="node3" href="$get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448" title="pgr_SPI_getBigInt" alt="" coords="169,56,297,83"/>
-<area shape="rect" id="node4" href="$get__check__data_8c.html#a6d8da632b86bd8f4e0f84f2a4219c887" title="pgr_SPI_getFloat8" alt="" coords="168,107,299,133"/>
-</map>

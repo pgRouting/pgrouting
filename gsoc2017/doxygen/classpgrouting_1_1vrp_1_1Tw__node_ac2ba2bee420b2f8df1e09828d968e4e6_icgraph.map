@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::arrival_j_closes_i" name="pgrouting::vrp::Tw_node::arrival_j_closes_i">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3203e380901c818a47a62a6df113892a" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="253,5,379,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aea8358d87dde8ba8e719e7f96a99850a" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="219,85,413,126"/>
-</map>

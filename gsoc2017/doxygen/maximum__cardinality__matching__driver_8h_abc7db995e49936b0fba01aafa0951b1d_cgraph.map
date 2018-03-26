@@ -1,7 +1,0 @@
-<map id="do_pgr_maximum_cardinality_matching" name="do_pgr_maximum_cardinality_matching">
-<area shape="rect" id="node2" href="$classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#a76b9509bd0685760f1c0c7974820e41b" title="pgrouting::flow::PgrCardinality\lGraph::create_max_cardinality_graph" alt="" coords="246,5,485,46"/>
-<area shape="rect" id="node3" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="533,121,608,148"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="331,121,400,148"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="329,172,401,199"/>
-<area shape="rect" id="node6" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="289,223,442,265"/>
-</map>

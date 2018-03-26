@@ -1,6 +1,0 @@
-<map id="pgrouting::tsp::Dmatrix::distance" name="pgrouting::tsp::Dmatrix::distance">
-<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#acc4b35ef148eeb5f5a63c8e0112f2741" title="pgrouting::tsp::Dmatrix\l::comparable_distance" alt="" coords="208,5,363,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Dnode.html#ad84e5cf02cc247f4fbbea1873ea36dbf" title="pgrouting::vrp::Dnode\l::distance" alt="" coords="212,70,359,111"/>
-<area shape="rect" id="node4" href="$newTSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="411,165,498,192"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a426ca0842a8d7c625d1263cb3b3931c3" title="tour evaluation " alt="" coords="208,187,363,229"/>
-</map>

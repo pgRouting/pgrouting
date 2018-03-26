@@ -1,8 +1,0 @@
-<map id="Identifiers::empty" name="Identifiers::empty">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="197,5,355,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#adba42b168e6b63a40466ed043f40cf21" title="pgrouting::vrp::PD\l_Orders::find_best_I" alt="" coords="206,70,346,111"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#ae625fa7656f8284dfca19f9a0f04dae0" title="pgrouting::vrp::PD\l_Orders::find_best_J" alt="" coords="205,135,347,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a90dda012ef7b314ea06a76dd7611f542" title="pgrouting::vrp::Vehicle\l_pickDeliver::get_worse_order" alt="" coords="177,201,375,242"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1CH__edge.html#ad0efe680f834db102ca451a4e6e33ac6" title="pgrouting::CH_edge\l::has_contracted_vertices" alt="" coords="190,266,362,307"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a7d3ae3ec3e657685315341a8d8395b7e" title="pgrouting::vrp::Initial\l_solution::one_truck_all\l_orders" alt="" coords="197,331,355,387"/>
-</map>

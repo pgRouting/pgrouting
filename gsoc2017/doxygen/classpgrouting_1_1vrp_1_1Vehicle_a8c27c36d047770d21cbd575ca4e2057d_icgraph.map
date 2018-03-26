@@ -1,6 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::tau" name="pgrouting::vrp::Vehicle::tau">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a735015a1c30c5a1680d2ab303f1aa4c9" title="pgrouting::vrp::Vehicle\l::get_postgres_result" alt="" coords="243,5,395,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="243,70,395,111"/>
-<area shape="rect" id="node4" href="$namespacepgrouting_1_1vrp.html#a0411d7092b8f18ee599a8ed55bae2d87" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="233,136,405,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784" title="pgrouting::vrp::Vehicle\l::Vehicle" alt="" coords="243,187,395,229"/>
-</map>

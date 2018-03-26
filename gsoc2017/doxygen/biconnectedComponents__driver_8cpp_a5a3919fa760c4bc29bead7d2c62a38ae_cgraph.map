@@ -1,8 +1,0 @@
-<map id="do_pgr_biconnectedComponents" name="do_pgr_biconnectedComponents">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a1341eb7877973d52efe280c0f55f2a0e" title="pgrouting::graph::Pgr\l_componentsGraph::insert_edges" alt="" coords="267,5,485,46"/>
-<area shape="rect" id="node3" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="533,147,608,173"/>
-<area shape="rect" id="node4" href="$biconnectedComponents__driver_8cpp.html#a86b476d582584c5835ccbc88bf58e6e1" title="pgr_biconnectedComponents" alt="" coords="281,121,471,148"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="341,172,411,199"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="340,223,412,249"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="299,274,453,315"/>
-</map>

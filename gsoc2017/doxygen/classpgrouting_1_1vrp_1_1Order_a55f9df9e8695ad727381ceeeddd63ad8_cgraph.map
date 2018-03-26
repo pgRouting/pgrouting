@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::Order::set_compatibles" name="pgrouting::vrp::Order::set_compatibles">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="195,5,354,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Order.html#a6881a6c6a44d927f24c57d7eefe07b6f" title="Can order I be placed before this order? " alt="" coords="204,57,345,98"/>
-</map>

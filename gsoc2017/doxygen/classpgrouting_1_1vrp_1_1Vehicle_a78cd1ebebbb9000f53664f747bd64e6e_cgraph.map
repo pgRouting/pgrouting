@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::free_time" name="pgrouting::vrp::Vehicle::free_time">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a990ae125d07ee6bed08a31730f7e5faa" title="pgrouting::vrp::Vehicle\l::duration" alt="" coords="205,5,357,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a82b70004991a14051dfcfea449d3705f" title="pgrouting::vrp::Vehicle\l::total_wait_time" alt="" coords="205,70,357,111"/>
-</map>

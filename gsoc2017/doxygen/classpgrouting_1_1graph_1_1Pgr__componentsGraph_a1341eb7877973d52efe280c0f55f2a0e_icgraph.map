@@ -1,6 +1,0 @@
-<map id="pgrouting::graph::Pgr_componentsGraph::insert_edges" name="pgrouting::graph::Pgr_componentsGraph::insert_edges">
-<area shape="rect" id="node2" href="$articulationPoints__driver_8h.html#a5044a6a446563f721c2e07a2e890d666" title="do_pgr_articulationPoints" alt="" coords="295,5,463,32"/>
-<area shape="rect" id="node3" href="$biconnectedComponents__driver_8h.html#a5a3919fa760c4bc29bead7d2c62a38ae" title="do_pgr_biconnectedComponents" alt="" coords="273,56,485,83"/>
-<area shape="rect" id="node4" href="$bridges__driver_8h.html#a54edc68b39cf4ff4c4bb2f33caa041e6" title="do_pgr_bridges" alt="" coords="323,107,434,133"/>
-<area shape="rect" id="node5" href="$connectedComponentsV__driver_8h.html#ac3a9af1a4225d6f313850878af0fb132" title="do_pgr_connectedComponentsV" alt="" coords="273,157,484,184"/>
-</map>
