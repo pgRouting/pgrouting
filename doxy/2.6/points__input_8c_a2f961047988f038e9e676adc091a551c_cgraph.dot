@@ -5,11 +5,11 @@ digraph "fetch_point"
   rankdir="LR";
   Node1 [label="fetch_point",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="column_found",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$get__check__data_8c.html#a242b8e2225de6f8c47cf3133c440588e"];
+  Node2 [label="column_found",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$get__check__data_8c.html#a242b8e2225de6f8c47cf3133c440588e",tooltip="Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUT..."];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="pgr_SPI_getBigInt",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448"];
+  Node3 [label="pgr_SPI_getBigInt",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448",tooltip="Function returns the value of specified column in integer type. "];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="pgr_SPI_getChar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$get__check__data_8c.html#a12adb8df2c301cc252f6c8eb585402d7"];
+  Node4 [label="pgr_SPI_getChar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$get__check__data_8c.html#a12adb8df2c301cc252f6c8eb585402d7",tooltip="Function return the value of specified column in char type. "];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="pgr_SPI_getFloat8",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$get__check__data_8c.html#a6d8da632b86bd8f4e0f84f2a4219c887"];
+  Node5 [label="pgr_SPI_getFloat8",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$get__check__data_8c.html#a6d8da632b86bd8f4e0f84f2a4219c887",tooltip="Function returns the value of specified column in double type. "];
 }

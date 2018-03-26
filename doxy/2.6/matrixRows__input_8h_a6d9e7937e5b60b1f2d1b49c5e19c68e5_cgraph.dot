@@ -5,7 +5,7 @@ digraph "pgr_get_matrixRows"
   rankdir="LR";
   Node1 [label="pgr_get_matrixRows",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pgr_fetch_column_info",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46"];
+  Node2 [label="pgr_fetch_column_info",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46",tooltip="Function tells expected type of each column and then check the correspondence type of each column..."];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="pgr_fetch_row",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$matrixRows__input_8c.html#a7e9d86039e8d0215212dd78cd6a6c203"];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
