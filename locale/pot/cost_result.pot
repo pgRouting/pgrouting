@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,9 +34,19 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: ../../build/doc/cost_result.rst:0
+#: ../../build/doc/cost_result.rst:0
+msgid "seq"
+msgstr ""
+
 #: ../../build/doc/cost_result.rst:37
 #: ../../build/doc/cost_result.rst:71
 msgid "sequential ID indicating the path order"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:0
+#: ../../build/doc/cost_result.rst:0
+msgid "id1"
 msgstr ""
 
 #: ../../build/doc/cost_result.rst:38
@@ -44,9 +54,19 @@ msgstr ""
 msgid "generic name, to be specified by the function, typically the node id"
 msgstr ""
 
+#: ../../build/doc/cost_result.rst:0
+#: ../../build/doc/cost_result.rst:0
+msgid "id2"
+msgstr ""
+
 #: ../../build/doc/cost_result.rst:39
 #: ../../build/doc/cost_result.rst:74
 msgid "generic name, to be specified by the function, typically the edge id"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:0
+#: ../../build/doc/cost_result.rst:0
+msgid "cost"
 msgstr ""
 
 #: ../../build/doc/cost_result.rst:40
@@ -64,6 +84,10 @@ msgstr ""
 
 #: ../../build/doc/cost_result.rst:72
 msgid "generic name, to be specified by the function, typically the path id"
+msgstr ""
+
+#: ../../build/doc/cost_result.rst:0
+msgid "id3"
 msgstr ""
 
 #: ../../build/doc/cost_result.rst:79

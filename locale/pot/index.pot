@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,66 +209,82 @@ msgid ":ref:`Change Log <change_log>`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:3
-msgid ":ref:`changelog_2_5_0`"
+msgid ":ref:`changelog_2_6_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:4
-msgid ":ref:`changelog_2_4_2`"
+msgid ":ref:`changelog_2_5_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:5
-msgid ":ref:`changelog_2_4_1`"
+msgid ":ref:`changelog_2_5_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:6
-msgid ":ref:`changelog_2_4_0`"
+msgid ":ref:`changelog_2_5_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:7
-msgid ":ref:`changelog_2_3_2`"
+msgid ":ref:`changelog_2_5_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:8
-msgid ":ref:`changelog_2_3_1`"
+msgid ":ref:`changelog_2_4_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:9
-msgid ":ref:`changelog_2_3_0`"
+msgid ":ref:`changelog_2_4_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:10
-msgid ":ref:`changelog_2_2_4`"
+msgid ":ref:`changelog_2_4_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:11
-msgid ":ref:`changelog_2_2_3`"
+msgid ":ref:`changelog_2_3_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:12
-msgid ":ref:`changelog_2_2_2`"
+msgid ":ref:`changelog_2_3_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:13
-msgid ":ref:`changelog_2_2_1`"
+msgid ":ref:`changelog_2_3_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:14
-msgid ":ref:`changelog_2_2_0`"
+msgid ":ref:`changelog_2_2_4`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:15
-msgid ":ref:`changelog_2_1_0`"
+msgid ":ref:`changelog_2_2_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:16
-msgid ":ref:`changelog_2_0_1`"
+msgid ":ref:`changelog_2_2_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:17
-msgid ":ref:`changelog_2_0_0`"
+msgid ":ref:`changelog_2_2_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:18
+msgid ":ref:`changelog_2_2_0`"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:19
+msgid ":ref:`changelog_2_1_0`"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:20
+msgid ":ref:`changelog_2_0_1`"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:21
+msgid ":ref:`changelog_2_0_0`"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:22
 msgid ":ref:`changelog_1_x`"
 msgstr ""
 

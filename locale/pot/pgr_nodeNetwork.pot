@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,8 +28,16 @@ msgstr ""
 msgid "``pgr_nodeNetwork`` - Nodes an network edge table."
 msgstr ""
 
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "Author"
+msgstr ""
+
 #: ../../build/doc/pgr_nodeNetwork.rst:20
 msgid "Nicolas Ribot"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "Copyright"
 msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:21
@@ -64,20 +72,42 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst:250
+msgid "edge_table"
+msgstr ""
+
 #: ../../build/doc/pgr_nodeNetwork.rst:49
 msgid "``text`` Network table name. (may contain the schema name as well)"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "tolerance"
 msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:50
 msgid "``float8`` tolerance for coincident points (in projection unit)dd"
 msgstr ""
 
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "id"
+msgstr ""
+
 #: ../../build/doc/pgr_nodeNetwork.rst:51
 msgid "``text`` Primary key column name of the network table. Default value is ``id``."
 msgstr ""
 
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "the_geom"
+msgstr ""
+
 #: ../../build/doc/pgr_nodeNetwork.rst:52
 msgid "``text`` Geometry column name of the network table. Default value is ``the_geom``."
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "table_ending"
 msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:53
@@ -92,20 +122,40 @@ msgstr ""
 msgid "``bigint`` Unique identifier for the table"
 msgstr ""
 
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "old_id"
+msgstr ""
+
 #: ../../build/doc/pgr_nodeNetwork.rst:58
 msgid "``bigint``  Identifier of the edge in original table"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "sub_id"
 msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:59
 msgid "``integer`` Segment number of the original edge"
 msgstr ""
 
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "source"
+msgstr ""
+
 #: ../../build/doc/pgr_nodeNetwork.rst:60
 msgid "``integer`` Empty source column to be used with  :ref:`pgr_create_topology` function"
 msgstr ""
 
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "target"
+msgstr ""
+
 #: ../../build/doc/pgr_nodeNetwork.rst:61
 msgid "``integer`` Empty target column to be used with  :ref:`pgr_create_topology` function"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+msgid "the geom"
 msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:62
@@ -152,6 +202,16 @@ msgstr ""
 msgid "Images"
 msgstr ""
 
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst:227
+msgid "Before Image"
+msgstr ""
+
+#: ../../build/doc/pgr_nodeNetwork.rst:0
+#: ../../build/doc/pgr_nodeNetwork.rst:235
+msgid "After Image"
+msgstr ""
+
 #: ../../build/doc/pgr_nodeNetwork.rst:243
 msgid "Comparing the results"
 msgstr ""
@@ -170,10 +230,6 @@ msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:250
 msgid "Table name"
-msgstr ""
-
-#: ../../build/doc/pgr_nodeNetwork.rst:250
-msgid "edge_table"
 msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:250

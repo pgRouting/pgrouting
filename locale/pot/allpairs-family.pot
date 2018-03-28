@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "All Pairs - Family of Functions"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:16
-msgid "The following functions work an all vertices pair combinations"
+msgid "The following functions work on all vertices pair combinations"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:33
@@ -68,6 +68,11 @@ msgstr ""
 msgid "Results"
 msgstr ""
 
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:0
+msgid "Test"
+msgstr ""
+
 #: ../../build/doc/allpairs-family.rst:68
 msgid "One"
 msgstr ""
@@ -81,8 +86,22 @@ msgstr ""
 msgid "The results of this tests are presented as:"
 msgstr ""
 
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:94
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:151
+msgid "SIZE"
+msgstr ""
+
 #: ../../build/doc/allpairs-family.rst:85
 msgid "is the number of edges given as input."
+msgstr ""
+
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:94
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:151
+msgid "EDGES"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:86
@@ -90,9 +109,23 @@ msgstr ""
 msgid "is the total number of records in the query."
 msgstr ""
 
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:94
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:151
+msgid "DENSITY"
+msgstr ""
+
 #: ../../build/doc/allpairs-family.rst:87
 #: ../../build/doc/allpairs-family.rst:144
 msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
+msgstr ""
+
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:94
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:151
+msgid "OUT ROWS"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:88
@@ -100,44 +133,28 @@ msgstr ""
 msgid "is the number of records returned by the queries."
 msgstr ""
 
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:94
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:151
+msgid "Floyd-Warshall"
+msgstr ""
+
 #: ../../build/doc/allpairs-family.rst:89
 #: ../../build/doc/allpairs-family.rst:146
 msgid "is the average execution time in seconds of pgr_floydWarshall."
 msgstr ""
 
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:94
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:151
+msgid "Johnson"
+msgstr ""
+
 #: ../../build/doc/allpairs-family.rst:90
 #: ../../build/doc/allpairs-family.rst:147
 msgid "is the average execution time in seconds of pgr_johnson."
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:94
-#: ../../build/doc/allpairs-family.rst:151
-msgid "SIZE"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:94
-#: ../../build/doc/allpairs-family.rst:151
-msgid "EDGES"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:94
-#: ../../build/doc/allpairs-family.rst:151
-msgid "DENSITY"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:94
-#: ../../build/doc/allpairs-family.rst:151
-msgid "OUT ROWS"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:94
-#: ../../build/doc/allpairs-family.rst:151
-msgid "Floyd-Warshall"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:94
-#: ../../build/doc/allpairs-family.rst:151
-msgid "Johnson"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:96

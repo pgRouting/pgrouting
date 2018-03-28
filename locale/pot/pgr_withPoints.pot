@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,6 +156,17 @@ msgstr ""
 msgid "No **details** are given about distance of other points of points_sql query."
 msgstr ""
 
+#: ../../build/doc/pgr_withPoints.rst:0
+#: ../../build/doc/pgr_withPoints.rst:0
+#: ../../build/doc/pgr_withPoints.rst:0
+#: ../../build/doc/pgr_withPoints.rst:0
+#: ../../build/doc/pgr_withPoints.rst:0
+#: ../../build/doc/pgr_withPoints.rst:0
+#: ../../build/doc/pgr_withPoints.rst:0
+#: ../../build/doc/pgr_withPoints.rst:0
+msgid "Example"
+msgstr ""
+
 #: ../../build/doc/pgr_withPoints.rst:100
 msgid "From point 1 to point 3"
 msgstr ""
@@ -198,6 +209,10 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the edges_sql query for dijkstra like functions"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "edges_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -303,8 +318,18 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -313,6 +338,10 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the Points SQL query"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "points_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11

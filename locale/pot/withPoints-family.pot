@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,7 +85,7 @@ msgid "Images"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:49
-msgid "The squared vertices are the temporary vertices, The temporary vertices are added acordng to the dirving side, The following images visualy show the diferences on how depending on the driving side the data is interpreted."
+msgid "The squared vertices are the temporary vertices, The temporary vertices are added according to the driving side, The following images visually show the differences on how depending on the driving side the data is interpreted."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:53
@@ -105,7 +105,7 @@ msgid "Introduction"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:70
-msgid "This famly of functions was thought for routing vehicles, but might as well work for some other application that we can not think of."
+msgid "This family of functions was thought for routing vehicles, but might as well work for some other application that we can not think of."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:73
@@ -205,7 +205,7 @@ msgid "For results for involving vertices identifiers"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:117
-msgid "positive sign is a vertex of the original grpah"
+msgid "positive sign is a vertex of the original graph"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:118
@@ -281,7 +281,7 @@ msgid "We can arrive to the point only via vertex 9."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:153
-msgid "It only afects the edge (15, 9,12, 10) so that edge is removed."
+msgid "It only affects the edge (15, 9,12, 10) so that edge is removed."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:154
@@ -317,7 +317,7 @@ msgid "We can arrive to the point only via vertex 12."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:165
-msgid "It only afects the edge (15, 12,9 20) so that edge is removed."
+msgid "It only affects the edge (15, 12,9 20) so that edge is removed."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:166
@@ -332,6 +332,10 @@ msgstr ""
 #: ../../build/doc/withPoints-family.rst:170
 #: ../../build/doc/withPoints-family.rst:185
 msgid "(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:0
+msgid "Remember"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:172
