@@ -1,0 +1,359 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- tests to without restrictions
+-- directed with reverse_cost
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License AS published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
+
+
+
+
+
+
+SELECT * FROM pgr_trspViaVertices(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[2, 7, 11]::INTEGER[],
+    true,
+    true
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   4 |    1
+   2 |   1 |   5 |   7 |    1
+   3 |   1 |   8 |   6 |    1
+   4 |   2 |   7 |   6 |    1
+   5 |   2 |   8 |   7 |    1
+   6 |   2 |   5 |  10 |    1
+   7 |   2 |  10 |  12 |    1
+   8 |   2 |  11 |  -1 |    0
+(8 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[4,6,11]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    true
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   4 |  0.5
+   2 |   1 |   5 |   7 |    1
+   3 |   1 |   8 |   6 |  0.5
+   4 |   1 |  -2 |  -1 |    0
+   5 |   2 |  -2 |   6 |  0.5
+   6 |   2 |   8 |   7 |    1
+   7 |   2 |   5 |   8 |    1
+   8 |   2 |   6 |  11 |  0.5
+   9 |   2 |  -3 |  -2 |    0
+(9 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    true
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |  11 |  0.5
+   5 |   1 |  -2 |  -1 |    0
+   6 |   2 |  -2 |  11 |  0.5
+   7 |   2 |  11 |  13 |    1
+   8 |   2 |  12 |  15 |    1
+   9 |   2 |   9 |   9 |    1
+  10 |   2 |   6 |   8 |    1
+  11 |   2 |   5 |   7 |    1
+  12 |   2 |   8 |   6 |  0.5
+  13 |   2 |  -3 |  -2 |    0
+(13 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    true
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |  11 |  0.5
+   5 |   1 |  -2 |  -1 |    0
+   6 |   2 |  -2 |  11 |  0.5
+   7 |   2 |  11 |  13 |    1
+   8 |   2 |  12 |  15 |    1
+   9 |   2 |   9 |   9 |    1
+  10 |   2 |   6 |   8 |    1
+  11 |   2 |   5 |   7 |    1
+  12 |   2 |   8 |   6 |  0.5
+  13 |   2 |  -3 |  -2 |    0
+(13 rows)
+
+---------------------------
+-- directed without reverse_cost
+SELECT * FROM pgr_trspViaVertices(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[2, 7, 11]::INTEGER[],
+    true,
+    false
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+(0 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[4,6,11]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    false
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   2 |  -2 |   6 |  0.5
+   2 |   2 |   8 |   7 |    1
+   3 |   2 |   5 |   8 |    1
+   4 |   2 |   6 |  11 |  0.5
+   5 |   2 |  -3 |  -2 |    0
+(5 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    false
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |  11 |  0.5
+   5 |   1 |  -2 |  -2 |    0
+(5 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    true,
+    false
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |  11 |  0.5
+   5 |   1 |  -2 |  -2 |    0
+(5 rows)
+
+---------------------------
+-- undirected with reverse_cost
+SELECT * FROM pgr_trspViaVertices(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[2, 7, 11]::INTEGER[],
+    false,
+    true
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   4 |    1
+   2 |   1 |   5 |   7 |    1
+   3 |   1 |   8 |   6 |    1
+   4 |   2 |   7 |   6 |    1
+   5 |   2 |   8 |   7 |    1
+   6 |   2 |   5 |  10 |    1
+   7 |   2 |  10 |  12 |    1
+   8 |   2 |  11 |  -1 |    0
+(8 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[4,6,11]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    true
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   4 |  0.5
+   2 |   1 |   5 |   7 |    1
+   3 |   1 |   8 |   6 |  0.5
+   4 |   1 |  -2 |  -1 |    0
+   5 |   2 |  -2 |   6 |  0.5
+   6 |   2 |   8 |   7 |    1
+   7 |   2 |   5 |   8 |    1
+   8 |   2 |   6 |  11 |  0.5
+   9 |   2 |  -3 |  -2 |    0
+(9 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    true
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   2 |    1
+   3 |   1 |   3 |   5 |    1
+   4 |   1 |   6 |  11 |  0.5
+   5 |   1 |  -2 |  -1 |    0
+   6 |   2 |  -2 |  11 |  0.5
+   7 |   2 |   6 |   8 |    1
+   8 |   2 |   5 |   7 |    1
+   9 |   2 |   8 |   6 |  0.5
+  10 |   2 |  -3 |  -2 |    0
+(10 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    true
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   2 |    1
+   3 |   1 |   3 |   5 |    1
+   4 |   1 |   6 |  11 |  0.5
+   5 |   1 |  -2 |  -1 |    0
+   6 |   2 |  -2 |  11 |  0.5
+   7 |   2 |   6 |   8 |    1
+   8 |   2 |   5 |   7 |    1
+   9 |   2 |   8 |   6 |  0.5
+  10 |   2 |  -3 |  -2 |    0
+(10 rows)
+
+---------------------------
+-- undirected without reverse_cost
+SELECT * FROM pgr_trspViaVertices(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[2, 7, 11]::INTEGER[],
+    false,
+    false
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   4 |    1
+   2 |   1 |   5 |   7 |    1
+   3 |   1 |   8 |   6 |    1
+   4 |   2 |   7 |   6 |    1
+   5 |   2 |   8 |   7 |    1
+   6 |   2 |   5 |  10 |    1
+   7 |   2 |  10 |  12 |    1
+   8 |   2 |  11 |  -1 |    0
+(8 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[4,6,11]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    false
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   4 |  0.5
+   2 |   1 |   5 |   7 |    1
+   3 |   1 |   8 |   6 |  0.5
+   4 |   1 |  -2 |  -1 |    0
+   5 |   2 |  -2 |   6 |  0.5
+   6 |   2 |   8 |   7 |    1
+   7 |   2 |   5 |   8 |    1
+   8 |   2 |   6 |  11 |  0.5
+   9 |   2 |  -3 |  -2 |    0
+(9 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    false
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |  11 |  0.5
+   5 |   1 |  -2 |  -1 |    0
+   6 |   2 |  -2 |  11 |  0.5
+   7 |   2 |   6 |   8 |    1
+   8 |   2 |   5 |   7 |    1
+   9 |   2 |   8 |   6 |  0.5
+  10 |   2 |  -3 |  -2 |    0
+(10 rows)
+
+---------------------------
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[1,11,6]::INTEGER[],
+    ARRAY[0.5, 0.5, 0.5]::float8[],
+    false,
+    false
+);
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |  11 |  0.5
+   5 |   1 |  -2 |  -1 |    0
+   6 |   2 |  -2 |  11 |  0.5
+   7 |   2 |   6 |   8 |    1
+   8 |   2 |   5 |   7 |    1
+   9 |   2 |   8 |   6 |  0.5
+  10 |   2 |  -3 |  -2 |    0
+(10 rows)
+
+---------------------------
+ROLLBACK;
+ROLLBACK

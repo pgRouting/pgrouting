@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    lineGraphFull.sql
     lineGraph.sql
     )
 

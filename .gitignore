@@ -2,7 +2,9 @@
 build
 fix_typos
 code_linter
+
 .DS_Store
 .vagrant
 .directory
 notUsed
+*.swp

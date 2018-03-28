@@ -34,7 +34,7 @@ my $out_file_name = "$working_directory/@PgRouting_CURRENT_SQL_FILE@";
 
 print "Working_directory $working_directory\n"      if $DEBUG;
 print "out_file_name $out_file_name\n"      if $DEBUG;
- 
+
 open(OUT, ">", "$out_file_name")
     || die "@PgRouting_CURRENT_SQL_FILE@ ERROR: failed to create: '$out_file_name' : $!\n";
 

@@ -34,16 +34,16 @@ FROM pgr_apspjohnson(
 SELECT is_empty('q1', '1: All values are positive');
 SELECT is_empty('q2', '2: All values are positive');
 SELECT is_empty('q3', '3: All values are positive');
-SELECT is_empty('q4', '4: All values are positiv: All values are positivee');
+SELECT is_empty('q4', '4: All values are positive: All values are positive');
 
 PREPARE q10 AS
-SELECT id1, id2, cost 
+SELECT id1, id2, cost
 FROM pgr_apspjohnson(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table ORDER BY id'
 );
 
 PREPARE q11 AS
-SELECT id1, id2, cost 
+SELECT id1, id2, cost
 FROM pgr_apspjohnson(
     'SELECT id, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table ORDER BY id'
 );

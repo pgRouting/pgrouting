@@ -1,8 +1,41 @@
 #! /usr/bin/perl -w
+
+=pod
+File: aplgorithm testes
+
+Copyright (c) 2013 pgRouting developers
+
+Function contributors:
+  	Celia Virginia Vergara Castillo
+  	Stephen Woodbridge
+  	Vadim Zhukov
+	Nagase Ko
+
+Mail:
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+=cut
+
+
 eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
 if 0; #$running_under_some_shell
 
 use strict;
+use warnings;
 use File::Find ();
 use File::Basename;
 use Data::Dumper;
@@ -54,7 +87,7 @@ print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $postgis_ver, $vpgr, $psql);
 my $alg = '';
-my @testpath = ("src/");
+my @testpath = ("test/");
 my @test_direcotry = ();
 my $clean;
 my $ignore;
@@ -83,7 +116,7 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
-        @testpath = ("src/$alg");
+        @testpath = ("test/$alg");
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
@@ -168,10 +201,11 @@ $postgis_ver = '' if ! $postgis_ver;
 for my $c (@cfgs) {
     my $found = 0;
 
+    print "test.conf = $c\n" if $VERBOSE;
+
     # load the config file for the tests
     require $c;
 
-    print "test.conf = $c\n" if $VERBOSE;
     print Data::Dumper->Dump([\%main::tests],['test']) if $VERBOSE;
 
     if ($main::tests{any} && !$DOCUMENTATION) {
@@ -207,7 +241,7 @@ exit 0;      # signal we passed all the tests
 # t  contents of array that has keys comment, data and test
 sub run_test {
     my $c = shift;
-    my $t = shift;  
+    my $t = shift;
     my %res = ();
 
     my $dir = dirname($c);
@@ -238,7 +272,10 @@ sub run_test {
     }
     if ($DOCUMENTATION) {
         for my $x (@{$t->{documentation}}) {
-            process_single_test($x, $dir,, $DBNAME, \%res)
+            process_single_test($x, $dir,, $DBNAME, \%res);
+            my $cmd = q(perl -pi -e 's/[ \t]+$//');
+            $cmd .= " doc/queries/$x.queries";
+            mysystem( $cmd );
         }
     }
     else {
@@ -285,10 +322,9 @@ sub process_single_test{
 
 
     if ($DOCUMENTATION) {
-        mysystem("mkdir -p '$dir/../../../doc/queries' "); # make sure the directory exists
-        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../../../doc/queries/$x.queries 2>\&1 ") || do {
+        mysystem("mkdir -p 'doc/queries' "); # make sure the directory exists
+        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > doc/queries/$x.queries 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
-            $stats{z_fail}++;
             next;
         };
     }
@@ -310,7 +346,7 @@ sub process_single_test{
 
 
     my @d = ();
-    @d = <TIN>; #reads the whole file into the array @d 
+    @d = <TIN>; #reads the whole file into the array @d
 
     print PSQL "BEGIN;\n";
     print PSQL "SET client_min_messages TO $level;\n";
@@ -323,30 +359,34 @@ sub process_single_test{
     #closes the input file  /TIN = test input
     close(TIN);
 
-    print "\n" if $DOCUMENTATION;
-    return if $DOCUMENTATION;
+    if ($DOCUMENTATION) {
+        print "\n";
+        return;
+    }
 
     my $dfile;
     my $dfile2;
     if ($ignore) { #decide how to compare results, if ignoring or not ignoring
         $dfile2 = $TMP2;
-        mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
+        mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile2");
         $dfile = $TMP3;
-        mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+        mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile");
     }
     elsif ($DEBUG1) { #to delete CONTEXT lines
         $dfile2 = $TMP2;
-        mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' > $dfile2");
+        mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile2");
         $dfile = $TMP3;
-        mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' > $dfile");
+        mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' | grep -v '^COPY' > $dfile");
     }
     else {
-        $dfile = "$dir/$x.result";
-        $dfile2 = $TMP;
+        $dfile2 = $TMP2;
+        mysystem("grep -v '^COPY' '$TMP' | grep -v 'psql:tools' > $dfile2");
+        $dfile = $TMP3;
+        mysystem("grep -v '^COPY' '$dir/$x.result' | grep -v 'psql:tools' > $dfile");
     }
     if (! -f "$dir/$x.result") {
         $res->{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";
-        $stats{z_fail}++;            
+        $stats{z_fail}++;
         next;
     }
 
@@ -398,7 +438,7 @@ sub createTestDB {
     Use -force to force the tests\n"
     unless version_greater_eq($dbver, $POSGRESQL_MIN_VERSION) or ($FORCE and version_greater_eq($dbver, '9.1'));
 
-    die "postGIS extension $postgis_ver not found\n" 
+    die "postGIS extension $postgis_ver not found\n"
     unless -f "$dbshare/extension/postgis.control";
 
 

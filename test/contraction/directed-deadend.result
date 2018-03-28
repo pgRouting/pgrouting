@@ -1,0 +1,61 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+--q1 Checking dead end contraction for single edge
+/*
+\echo --q0 Checking for valid contraction
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
+    ARRAY[-1]::integer[], 1, ARRAY[]::BIGINT[], true);
+*/
+
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
+    ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+ seq | type | id | contracted_vertices | source | target | cost
+-----+------+----+---------------------+--------+--------+------
+   1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
+(1 row)
+
+--q2 Checking dead end contraction for two edges
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id < 3',
+    ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+ seq | type | id | contracted_vertices | source | target | cost
+-----+------+----+---------------------+--------+--------+------
+   1 | v    |  3 | {1,2}               |     -1 |     -1 |   -1
+(1 row)
+
+--q3 Checking dead end contraction for sample data
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+ seq | type | id | contracted_vertices | source | target | cost
+-----+------+----+---------------------+--------+--------+------
+   1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
+   2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
+   3 | v    | 10 | {13}                |     -1 |     -1 |   -1
+   4 | v    | 15 | {14}                |     -1 |     -1 |   -1
+   5 | v    | 17 | {16}                |     -1 |     -1 |   -1
+(5 rows)
+
+--q5 Checking dead end contraction for a graph with no dead end vertex
+/*
+-- this test fails becuse parameter is wrong
+\echo --q4 Checking that forbidden vertices can only be one dimensional or empty
+SELECT * FROM pgr_contractGraph(
+	'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
+	ARRAY[ [2,3,4,5], [4,5,6,7] ]::BIGINT[][], ARRAY[0]::integer[], 1, true);
+-- \echo --q4 -------------------------------------------
+*/
+SELECT * FROM pgr_contractGraph(
+	'SELECT id, source, target, cost, reverse_cost FROM edge_table
+	WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
+	ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+ seq | type | id | contracted_vertices | source | target | cost
+-----+------+----+---------------------+--------+--------+------
+(0 rows)
+
+ROLLBACK;
+ROLLBACK

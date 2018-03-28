@@ -7,7 +7,7 @@ PREPARE q1 AS
 SELECT  path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[-1], ARRAY[-5], 
+    ARRAY[-1], ARRAY[-5],
     driving_side := 'r',
     directed := true,
     details := true);
@@ -16,7 +16,7 @@ PREPARE q11 AS
 SELECT  path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[-1], ARRAY[-3], 
+    ARRAY[-1], ARRAY[-3],
     driving_side := 'r',
     directed := true,
     details := true);
@@ -25,7 +25,7 @@ PREPARE q2 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, -5, 
+    -1, -5,
     driving_side := 'r',
     directed := true,
     details := true);
@@ -34,7 +34,7 @@ PREPARE q21 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, -3, 
+    -1, -3,
     driving_side := 'r',
     directed := true,
     details := true);
@@ -46,7 +46,7 @@ PREPARE q3 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[-4], ARRAY[-5], 
+    ARRAY[-4], ARRAY[-5],
     driving_side := 'r',
     directed := true,
     details := true);
@@ -55,7 +55,7 @@ PREPARE q31 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[-4], ARRAY[-3], 
+    ARRAY[-4], ARRAY[-3],
     driving_side := 'r',
     directed := true,
     details := true);
@@ -73,7 +73,7 @@ PREPARE q41 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -4, -3, 
+    -4, -3,
     driving_side := 'r',
     directed := true,
     details := true);

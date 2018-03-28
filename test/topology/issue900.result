@@ -1,0 +1,25 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+ALTER TABLE edge_table RENAME TO mbta_arc;
+ALTER TABLE
+CREATE TABLE edge_table AS SELECT * FROM mbta_arc;
+SELECT 18
+;
+SELECT pgr_CreateTopology('edge_table', 0.001, 'the_geom', 'id', clean := true);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology
+--------------------
+OK
+(1 row)
+
+ROLLBACK;
+ROLLBACK

@@ -19,7 +19,7 @@ SELECT function_returns('_pgr_pickdelivereuclidean',
     'setof record');
 
 /* testing the pick/deliver orders*/
-CREATE OR REPLACE FUNCTION test_anyInteger_orders(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyInteger_orders(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -35,13 +35,13 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM orders $$,  $$SELECT * FROM vehicles $$, max_cycles := 30)';
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -54,7 +54,7 @@ END;
 $BODY$ LANGUAGE plpgsql;
 
 /* testing the pick/deliver orders*/
-CREATE OR REPLACE FUNCTION test_anyNumerical_orders(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyNumerical_orders(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -70,13 +70,13 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM orders $$,  $$SELECT * FROM vehicles $$, max_cycles := 30)';
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -91,7 +91,7 @@ $BODY$ LANGUAGE plpgsql;
 /*
 testing the pick/deliver vehicles
 */
-CREATE OR REPLACE FUNCTION test_anyInteger_vehicles(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyInteger_vehicles(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -108,13 +108,13 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM  vehicles $$, max_cycles := 30)';
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -129,7 +129,7 @@ $BODY$ LANGUAGE plpgsql;
 /*
 testing the pick/deliver vehicles
  */
-CREATE OR REPLACE FUNCTION test_anyNumerical_vehicles(fn TEXT, params TEXT[], parameter TEXT) 
+CREATE OR REPLACE FUNCTION test_anyNumerical_vehicles(fn TEXT, params TEXT[], parameter TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -145,13 +145,13 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM vehicles $$, max_cycles := 30)';
-    
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -233,27 +233,27 @@ SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     'start_service' is optional defaults to 0
 */
 SELECT test_anyInteger_vehicles('_pgr_pickdelivereuclidean',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_x', 'start_y', 'start_open', 'start_close'],
     'id');
 SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_x', 'start_y', 'start_open', 'start_close'],
     'capacity');
 SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_x', 'start_y', 'start_open', 'start_close'],
     'start_x');
 SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_x', 'start_y', 'start_open', 'start_close'],
     'start_y');
 SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_x', 'start_y', 'start_open', 'start_close'],
     'start_open');
 SELECT test_anyNumerical_vehicles('_pgr_pickdelivereuclidean',
-    ARRAY['id', 'capacity', 
+    ARRAY['id', 'capacity',
     'start_x', 'start_y', 'start_open', 'start_close'],
     'start_close');
 

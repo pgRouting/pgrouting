@@ -1,0 +1,28 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+CREATE TABLE routing (gid serial, length integer, source integer, target integer, reverse_cost integer);
+CREATE TABLE
+INSERT INTO routing (length, source, target, reverse_cost) VALUES
+     (10000, 1, 2, 10000),
+     (5, 3, 1, 5),
+     (10, 4, 3, 10),
+     (10, 2, 4, 10);
+INSERT 0 4
+SELECT pgr_trsp(
+          'SELECT gid as id, source::int4, target::int4, length::float8 as cost, length::float8 as reverse_cost FROM routing',
+          1, 0.1, 1, 0.9, false, true
+    );
+   pgr_trsp
+---------------
+ (0,-1,1,1000)
+ (1,1,2,5)
+ (2,3,3,10)
+ (3,4,4,10)
+ (4,2,1,1000)
+ (5,-2,-1,0)
+(6 rows)
+
+ROLLBACK;
+ROLLBACK

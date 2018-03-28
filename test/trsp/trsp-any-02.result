@@ -1,0 +1,42 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+CREATE TABLE restrictions2 (
+    rid integer NOT NULL,
+    to_cost double precision,
+    teid integer,
+    feid integer,
+    via text
+);
+CREATE TABLE
+COPY restrictions2 (rid, to_cost, teid, feid, via) FROM stdin WITH NULL '__NULL__' DELIMITER ',';
+COPY 3
+UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+UPDATE 18
+select * from pgr_trsp(
+    'select id::integer, source::integer, target::integer,cost, reverse_cost from edge_table ORDER BY ID',
+    1,
+    0.5,
+    6,
+    0.5,
+    true,
+    true,
+
+    'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
+ seq | id1 | id2 |       cost
+-----+-----+-----+-------------------
+   0 |  -1 |   1 |            0.5005
+   1 |   2 |   4 |             1.016
+   2 |   5 |   8 |             1.064
+   3 |   6 |   9 |             1.081
+   4 |   9 |  16 |             1.256
+   5 |   4 |   3 |             1.009
+   6 |   3 |   5 |             1.025
+   7 |   6 |   8 |             1.064
+   8 |   5 |   7 |             1.049
+   9 |   8 |   6 | 0.518000000000001
+(10 rows)
+
+ROLLBACK;
+ROLLBACK

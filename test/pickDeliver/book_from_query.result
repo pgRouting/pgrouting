@@ -1,0 +1,186 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+DROP TABLE IF EXISTS jet_stops;
+NOTICE:  table "jet_stops" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS jet_flyers;
+NOTICE:  table "jet_flyers" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS jet_orders;
+NOTICE:  table "jet_orders" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS jet_airplane;
+NOTICE:  table "jet_airplane" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS jet_trips;
+NOTICE:  table "jet_trips" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS vrp_solution;
+NOTICE:  table "vrp_solution" does not exist, skipping
+DROP TABLE
+CREATE TABLE jet_stops (
+    id SERIAL,
+    iata_faa TEXT,
+    city TEXT,
+    x integer,
+    y integer,
+    longitude double precision,
+    latitude double precision
+);
+CREATE TABLE
+INSERT INTO jet_stops (iata_faa, city, longitude, latitude) VALUES
+('BOS',  'Boston', -71.005180999999993, 42.364347000000002),
+('BGR',  'Bangor', -68.828138999999993, 44.807443999999997),
+('MIA',  'Miami',  -80.290555999999995, 25.79325),
+('TEB',  'Teterboro NJ', -74.060837000000006, 40.850102999999997),
+('MVY',  'Martha''s Vineyard', -70.615278000000004, 41.391666999999998),
+('ABE',  'Lehigh Valley', -75.440805999999995, 40.652082999999998),
+('BKW',  'Raleigh County Memorial', -81.124200000000002, 37.787300000000002),
+('BGE',  'Decatur County Industrial', -84.636927799999995, 30.971598100000001);
+INSERT 0 8
+UPDATE jet_stops SET
+x = ST_X(ST_Transform(ST_SetSRID(ST_point(longitude, latitude)::geometry,4326),2163)),
+y = ST_Y(ST_Transform(ST_SetSRID(ST_point(longitude, longitude)::geometry,4326),2163));
+UPDATE 8
+CREATE TABLE jet_flyers AS
+    SELECT
+    row_number() over() AS id,
+    s1.iata_faa  AS from_airport,
+    s2.iata_faa  AS to_airport,
+    (1 + mod(s1.id, 5))::integer AS num_passengers,
+
+    mod(s1.id,7)*60 AS departureFromTime,
+
+    (mod(s1.id,7) + 4) * 60 AS arrivalToTime
+    FROM
+
+    (SELECT * FROM jet_stops WHERE id < 4) AS s1,
+
+    (SELECT * FROM jet_stops WHERE id >= 4) AS s2
+    WHERE s1.id <> s2.id;
+SELECT 15
+CREATE TABLE jet_orders AS
+    SELECT
+    id,
+    num_passengers AS demand,
+    (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS p_x,
+    (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS p_y,
+
+    departureFromTime AS p_open,
+    arrivalToTime AS p_close,
+    (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS d_x,
+    (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS d_y,
+    departureFromTime AS d_open,
+    arrivalToTime AS d_close,
+    from_airport, to_airport
+    FROM jet_flyers;
+SELECT 15
+CREATE TABLE jet_airplane AS
+SELECT
+    1 AS id,
+
+    5 AS capacity,
+
+    10000 AS speed,
+    20 as "number",
+    x AS start_x, y AS start_y,
+    0 AS start_open,
+    300 AS start_close,
+    0 AS start_service
+    FROM jet_stops
+    WHERE iata_faa = 'TEB';
+SELECT 1
+CREATE TABLE vrp_solution AS
+SELECT * FROM _pgr_pickDeliverEuclidean(
+    $$ SELECT * FROM jet_orders $$,
+    $$ SELECT * FROM jet_airplane $$
+);
+SELECT 47
+CREATE TABLE jet_trips AS
+WITH the_results AS (
+SELECT vrp_solution.*,  from_airport, to_airport,
+CASE WHEN stop_type = 1 THEN ST_POINT(p_x, p_y)
+        WHEN stop_type = 2 THEN ST_POINT(d_x, d_y)
+        WHEN stop_type = 0 THEN  ST_POINT(start_x, start_y)
+    END AS geom
+FROM vrp_solution LEFT JOIN  jet_orders on (order_id = jet_orders.id)
+LEFT JOIN jet_airplane on (vehicle_id = jet_airplane.id)
+)
+SELECT *, ST_SetSRID(ST_MakeLine(geom, lead(geom) over(order by seq)),2163) AS lines from the_results;
+SELECT 47
+SELECT * FROM jet_orders;
+ id | demand |   p_x   |    p_y    | p_open | p_close |   d_x   |    d_y    | d_open | d_close | from_airport | to_airport
+----+--------+---------+-----------+--------+---------+---------+-----------+--------+---------+--------------+------------
+  1 |      2 | 2320738 | -10738754 |     60 |     300 | 2138410 | -10946747 |     60 |     300 | BOS          | TEB
+  2 |      2 | 2320738 | -10738754 |     60 |     300 | 2387491 | -10710759 |     60 |     300 | BOS          | MVY
+  3 |      2 | 2320738 | -10738754 |     60 |     300 | 2035311 | -11034361 |     60 |     300 | BOS          | ABE
+  4 |      2 | 2320738 | -10738754 |     60 |     300 | 1644577 | -11358423 |     60 |     300 | BOS          | BKW
+  5 |      2 | 2320738 | -10738754 |     60 |     300 | 1466239 | -11533361 |     60 |     300 | BOS          | BGE
+  6 |      3 | 2383186 | -10578021 |    120 |     360 | 2138410 | -10946747 |    120 |     360 | BGR          | TEB
+  7 |      3 | 2383186 | -10578021 |    120 |     360 | 2387491 | -10710759 |    120 |     360 | BGR          | MVY
+  8 |      3 | 2383186 | -10578021 |    120 |     360 | 2035311 | -11034361 |    120 |     360 | BGR          | ABE
+  9 |      3 | 2383186 | -10578021 |    120 |     360 | 1644577 | -11358423 |    120 |     360 | BGR          | BKW
+ 10 |      3 | 2383186 | -10578021 |    120 |     360 | 1466239 | -11533361 |    120 |     360 | BGR          | BGE
+ 11 |      4 | 1981145 | -11314287 |    180 |     420 | 2138410 | -10946747 |    180 |     420 | MIA          | TEB
+ 12 |      4 | 1981145 | -11314287 |    180 |     420 | 2387491 | -10710759 |    180 |     420 | MIA          | MVY
+ 13 |      4 | 1981145 | -11314287 |    180 |     420 | 2035311 | -11034361 |    180 |     420 | MIA          | ABE
+ 14 |      4 | 1981145 | -11314287 |    180 |     420 | 1644577 | -11358423 |    180 |     420 | MIA          | BKW
+ 15 |      4 | 1981145 | -11314287 |    180 |     420 | 1466239 | -11533361 |    180 |     420 | MIA          | BGE
+(15 rows)
+
+SELECT * FROM jet_trips;
+ seq | vehicle_number | vehicle_id | vehicle_seq | order_id | stop_type | cargo |   travel_time    |   arrival_time   |    wait_time     | service_time |  departure_time  | from_airport | to_airport |                    geom                    |                                           lines
+-----+----------------+------------+-------------+----------+-----------+-------+------------------+------------------+------------------+--------------+------------------+--------------+------------+--------------------------------------------+--------------------------------------------------------------------------------------------
+   1 |              1 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |                0 |            0 |                0 |              |            |                                            |
+   2 |              1 |          1 |           2 |        7 |         2 |     3 | 44.2576720187585 | 44.2576720187585 | 75.7423279812415 |            0 |              120 | BGR          | MVY        | 01010000000000008011374241000000E0DC6D64C1 |
+   3 |              1 |          1 |           3 |        7 |         3 |     0 | 13.2807792199855 | 133.280779219986 |                0 |            0 | 133.280779219986 | BGR          | MVY        |                                            |
+   4 |              1 |          1 |           4 |        8 |         2 |     3 | 13.2807792199855 | 146.561558439971 |                0 |            0 | 146.561558439971 | BGR          | ABE        | 0101000000000000006F0E3F4100000020DF0B65C1 | 01020000207308000002000000000000006F0E3F4100000020DF0B65C100000000955040410000006017E164C1
+   5 |              1 |          1 |           5 |        1 |         2 |     5 | 17.2437959837734 | 163.805354423745 |                0 |            0 | 163.805354423745 | BOS          | TEB        | 010100000000000000955040410000006017E164C1 |
+   6 |              1 |          1 |           6 |       12 |         3 |     1 | 7.23856548910072 | 171.043919912845 | 8.95608008715473 |            0 |              180 | MIA          | MVY        |                                            |
+   7 |              1 |          1 |           7 |       12 |         2 |     5 | 72.7573445433518 | 252.757344543352 |                0 |            0 | 252.757344543352 | MIA          | MVY        | 01010000000000008011374241000000E0DC6D64C1 |
+   8 |              1 |          1 |           8 |        8 |         3 |     2 | 28.5118433343058 | 281.269187877658 |                0 |            0 | 281.269187877658 | BGR          | ABE        |                                            |
+   9 |              1 |          1 |           9 |        1 |         3 |     0 | 13.5298251271035 | 294.799013004761 |                0 |            0 | 294.799013004761 | BOS          | TEB        |                                            |
+  10 |              1 |          1 |          10 |       -1 |         6 |     0 |                0 | 294.799013004761 |                0 |            0 | 294.799013004761 |              |            |                                            |
+  11 |              2 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |                0 |            0 |                0 |              |            |                                            |
+  12 |              2 |          1 |           2 |        4 |         2 |     2 | 27.6594626905513 | 27.6594626905513 | 32.3405373094487 |            0 |               60 | BOS          | BKW        | 01010000000000000021183941000000E01AAA65C1 | 010200002073080000020000000000000021183941000000E01AAA65C10000000021183941000000E01AAA65C1
+  13 |              2 |          1 |           3 |        9 |         2 |     5 | 17.2437959837734 | 77.2437959837734 | 42.7562040162266 |            0 |              120 | BGR          | BKW        | 01010000000000000021183941000000E01AAA65C1 |
+  14 |              2 |          1 |           4 |        9 |         3 |     2 | 107.450943992363 | 227.450943992363 |                0 |            0 | 227.450943992363 | BGR          | BKW        |                                            |
+  15 |              2 |          1 |           5 |        4 |         3 |     0 |                0 | 227.450943992363 |                0 |            0 | 227.450943992363 | BOS          | BKW        |                                            |
+  16 |              2 |          1 |           6 |       -1 |         6 |     0 | 64.2921582205015 | 291.743102212865 |                0 |            0 | 291.743102212865 |              |            |                                            |
+  17 |              3 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |                0 |            0 |                0 |              |            |                                            |
+  18 |              3 |          1 |           2 |        3 |         2 |     2 | 27.6594626905513 | 27.6594626905513 | 32.3405373094487 |            0 |               60 | BOS          | ABE        | 0101000000000000006F0E3F4100000020DF0B65C1 | 01020000207308000002000000000000006F0E3F4100000020DF0B65C1000000007F5F36410000002086FF65C1
+  19 |              3 |          1 |           3 |        5 |         2 |     4 |                0 |               60 |                0 |            0 |               60 | BOS          | BGE        | 0101000000000000007F5F36410000002086FF65C1 |
+  20 |              3 |          1 |           4 |        3 |         3 |     2 | 41.0916135942603 |  101.09161359426 |                0 |            0 |  101.09161359426 | BOS          | ABE        |                                            |
+  21 |              3 |          1 |           5 |        5 |         3 |     0 |  75.686454612698 | 176.778068206958 |                0 |            0 | 176.778068206958 | BOS          | BGE        |                                            |
+  22 |              3 |          1 |           6 |       11 |         2 |     4 | 55.9572699755805 | 232.735338182539 |                0 |            0 | 232.735338182539 | MIA          | TEB        | 010100000000000000955040410000006017E164C1 |
+  23 |              3 |          1 |           7 |       11 |         3 |     0 | 39.9772350000597 | 272.712573182599 |                0 |            0 | 272.712573182599 | MIA          | TEB        |                                            |
+  24 |              3 |          1 |           8 |       -1 |         6 |     0 |                0 | 272.712573182599 |                0 |            0 | 272.712573182599 |              |            |                                            |
+  25 |              4 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |                0 |            0 |                0 |              |            |                                            |
+  26 |              4 |          1 |           2 |       13 |         2 |     4 | 39.9772350000597 | 39.9772350000597 |  140.02276499994 |            0 |              180 | MIA          | ABE        | 0101000000000000006F0E3F4100000020DF0B65C1 |
+  27 |              4 |          1 |           3 |       13 |         3 |     0 | 28.5118433343058 | 208.511843334306 |                0 |            0 | 208.511843334306 | MIA          | ABE        |                                            |
+  28 |              4 |          1 |           4 |       -1 |         6 |     0 | 13.5298251271035 | 222.041668461409 |                0 |            0 | 222.041668461409 |              |            |                                            |
+  29 |              5 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |                0 |            0 |                0 |              |            |                                            |
+  30 |              5 |          1 |           2 |       14 |         2 |     4 | 39.9772350000597 | 39.9772350000597 |  140.02276499994 |            0 |              180 | MIA          | BKW        | 01010000000000000021183941000000E01AAA65C1 |
+  31 |              5 |          1 |           3 |       14 |         3 |     0 | 33.9449561967607 | 213.944956196761 |                0 |            0 | 213.944956196761 | MIA          | BKW        |                                            |
+  32 |              5 |          1 |           4 |       -1 |         6 |     0 | 64.2921582205015 | 278.237114417262 |                0 |            0 | 278.237114417262 |              |            |                                            |
+  33 |              6 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |                0 |            0 |                0 |              |            |                                            |
+  34 |              6 |          1 |           2 |        6 |         2 |     3 | 44.2576720187585 | 44.2576720187585 | 75.7423279812415 |            0 |              120 | BGR          | TEB        | 010100000000000000955040410000006017E164C1 |
+  35 |              6 |          1 |           3 |        6 |         3 |     0 | 44.2576720187585 | 164.257672018759 |                0 |            0 | 164.257672018759 | BGR          | TEB        |                                            |
+  36 |              6 |          1 |           4 |       -1 |         6 |     0 |                0 | 164.257672018759 |                0 |            0 | 164.257672018759 |              |            |                                            |
+  37 |              7 |          1 |           1 |       -1 |         1 |     0 |                0 |                0 |                0 |            0 |                0 |              |            |                                            |
+  38 |              7 |          1 |           2 |        2 |         2 |     2 | 27.6594626905513 | 27.6594626905513 | 32.3405373094487 |            0 |               60 | BOS          | MVY        | 01010000000000008011374241000000E0DC6D64C1 |
+  39 |              7 |          1 |           3 |        2 |         3 |     0 | 7.23856548910072 | 67.2385654891007 |                0 |            0 | 67.2385654891007 | BOS          | MVY        |                                            |
+  40 |              7 |          1 |           4 |       -1 |         6 |     0 | 34.3120504640862 | 101.550615953187 |                0 |            0 | 101.550615953187 |              |            |                                            |
+  41 |              8 |         -1 |           1 |       -1 |         1 |     0 |                0 |                0 |                0 |            0 |                0 |              |            |                                            |
+  42 |              8 |         -1 |           2 |       10 |         2 |     3 | 44.2576720187585 | 44.2576720187585 | 75.7423279812415 |            0 |              120 | BGR          | BGE        | 0101000000000000007F5F36410000002086FF65C1 | 01020000207308000002000000000000007F5F36410000002086FF65C1000000007F5F36410000002086FF65C1
+  43 |              8 |         -1 |           3 |       15 |         2 |     7 | 83.8882940842761 | 203.888294084276 |                0 |            0 | 203.888294084276 | MIA          | BGE        | 0101000000000000007F5F36410000002086FF65C1 |
+  44 |              8 |         -1 |           4 |       15 |         3 |     3 | 55.9572699755805 | 259.845564059857 |                0 |            0 | 259.845564059857 | MIA          | BGE        |                                            |
+  45 |              8 |         -1 |           5 |       10 |         3 |     0 |                0 | 259.845564059857 |                0 |            0 | 259.845564059857 | BGR          | BGE        |                                            |
+  46 |              8 |         -1 |           6 |       -1 |         6 |     0 | 89.2149000020176 | 349.060464061874 |                0 |            0 | 349.060464061874 |              |            |                                            |
+  47 |             -2 |          0 |           0 |       -1 |        -1 |    -1 | 1318.39581333738 |               -1 | 656.006409975332 |            0 | 1974.40222331272 |              |            |                                            |
+(47 rows)
+
+ROLLBACK;
+ROLLBACK

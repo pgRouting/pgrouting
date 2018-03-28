@@ -5,7 +5,7 @@
 SELECT plan(18);
 
 set client_min_messages to WARNING;
-SELECT  results_eq('SELECT  1, sname, tname  FROM pgr_getTableName(''EDGe_table'')', 
+SELECT  results_eq('SELECT  1, sname, tname  FROM pgr_getTableName(''EDGe_table'')',
     'SELECT 1, ''public''::TEXT, ''edge_table''::TEXT ');
 SELECT  results_eq('SELECT  2, sname, tname FROM pgr_getTableName(''EDes2'')',
     'SELECT 2, ''public''::TEXT, NULL::TEXT ');
@@ -54,7 +54,7 @@ SELECT  results_eq('SELECT  16, pgr_quote_ident(''idname.text'') ',
 SELECT  results_eq('SELECT  17, pgr_startPoint(the_geom)::TEXT  FROM edge_table where id = 1 ',
     'SELECT 17, ''010100000000000000000000400000000000000000''::TEXT ');
 
-SELECT  results_eq('SELECT  18, pgr_endPoint(the_geom)::TEXT  FROM edge_table where id = 1 ', 
+SELECT  results_eq('SELECT  18, pgr_endPoint(the_geom)::TEXT  FROM edge_table where id = 1 ',
     'SELECT 18, ''01010000000000000000000040000000000000F03F''::TEXT ');
 
 -- Finish the tests and clean up.

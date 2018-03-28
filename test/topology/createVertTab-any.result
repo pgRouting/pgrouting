@@ -1,0 +1,306 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+SELECT  pgr_createVerticesTable('edge_table');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('edge_table','the_geom','source','target');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('edge_table',the_geom:='the_geom',source:='source',target:='target');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('edge_table',source:='source',target:='target',the_geom:='the_geom');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('edge_table',source:='source');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('edge_table',rows_where:='id < 10');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','id < 10')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
+NOTICE:                                         FOR   10  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 10
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
+NOTICE:                                         FOR   9  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 9
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
+SELECT 1
+SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
+NOTICE:                                         FOR   12  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 12
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+CREATE TABLE mytable AS (SELECT id AS gid, the_geom AS mygeom,source AS src ,target AS tgt FROM edge_table) ;
+SELECT 18
+SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('mytable',the_geom:='mygeom',source:='src',target:='tgt');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',rows_where:='gid < 10');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','gid < 10')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
+NOTICE:                                         FOR   10  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 10
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',rows_where:='gid < 10');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','gid < 10')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
+NOTICE:                                         FOR   10  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 10
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
+	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
+NOTICE:                                         FOR   9  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 9
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
+	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
+NOTICE:                                         FOR   9  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 9
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+DROP TABLE IF EXISTS otherTable;
+DROP TABLE
+CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
+SELECT 1
+SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
+	                            rows_where:='mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
+NOTICE:                                         FOR   12  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 12
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
+	                            rows_where:='mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
+NOTICE:                                         FOR   12  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 12
+NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+SELECT pgr_createVerticesTable('edge_table');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+ROLLBACK;
+ROLLBACK

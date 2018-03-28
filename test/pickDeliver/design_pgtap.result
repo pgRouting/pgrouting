@@ -1,0 +1,23 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+UPDATE vehicles SET start_open = 5, start_close = 4 WHERE id = 1;
+UPDATE 1
+SELECT * FROM _pgr_pickDeliverEuclidean(
+    $$SELECT * FROM orders$$,
+    $$SELECT * FROM vehicles$$);
+ERROR:  Illegal values found on vehicle
+HINT:  Illegal values found on vehicleOn vehicle 1 a condition is not met:
+starting_site.is_start: NO
+ending_site.is_end: NO
+verify that:
+-  start_open <= start_close: 5<4
+-  end_open <= end_close: 5<4
+-  capacity > 0
+--> pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver(const std::vector<PickDeliveryOrders_t>&, const std::vector<Vehicle_t>&, double, size_t, int)
+
+UPDATE vehicles SET start_open = 0, start_close = 50 WHERE id = 1;
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+ROLLBACK;
+ROLLBACK

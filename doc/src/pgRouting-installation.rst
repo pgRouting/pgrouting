@@ -32,14 +32,12 @@ Short Version
 -------------------------------------------------------------------------------
 
 
-.. TODO: pumpup release must change this value
-
 Extracting the tar ball
 
 .. code-block:: bash
 
-    tar xvfz pgrouting-2.4.0.tar.gz
-    cd pgrouting-2.4.0
+    tar xvfz pgrouting-${PGROUTING_VERSION}.tar.gz
+    cd pgrouting-${PGROUTING_VERSION}
 
 To compile assuming you have all the dependencies in your search path:
 
@@ -72,11 +70,9 @@ The pgRouting latest release can be found in https://github.com/pgRouting/pgrout
 
 To download this release:
 
-.. TODO: pumpup release must change this value
-
 .. code-block:: bash
 
-    wget -O pgrouting-v2.4.0.tar.gz https://github.com/pgRouting/pgrouting/archive/v2.4.0.tar.gz
+    wget -O pgrouting-${PGROUTING_VERSION}.tar.gz https://github.com/pgRouting/pgrouting/archive/v${PGROUTING_VERSION}.tar.gz
 
 Goto :ref:`install-short` to the extract and compile instructions.
 
@@ -88,7 +84,7 @@ To download the repository
 
     git clone git://github.com/pgRouting/pgrouting.git
     cd pgrouting
-    git checkout |release|
+    git checkout v${PGROUTING_VERSION}
 
 Goto :ref:`install-short` to the compile instructions (there is no tar ball).
 
@@ -111,13 +107,13 @@ pgRouting is an extension and depends on postGIS. Enabling postGIS before enabli
 
 .. rubric:: Upgrading the database
 
-To upgrade pgRouting in the database to version 2.4.0 use the following command:
+To upgrade pgRouting in the database to version ${PGROUTING_VERSION} use the following command:
 
 .. TODO: pumpup release must change this value
 
 .. code-block:: sql
 
-   ALTER EXTENSION pgrouting UPDATE TO "2.4.0";
+   ALTER EXTENSION pgrouting UPDATE TO "${PGROUTING_VERSION}";
 
 More information can be found in https://www.postgresql.org/docs/current/static/sql-createextension.html
 
@@ -133,9 +129,9 @@ To be able to compile pgRouting, make sure that the following dependencies are m
 
 * C and C++0x compilers
   * g++ version >= 4.8
-* Postgresql version >= 9.2
-* PostGIS version >= 2.0
-* The Boost Graph Library (BGL). Version >= 1.46
+* Postgresql version >= 9.3
+* PostGIS version >= 2.2
+* The Boost Graph Library (BGL). Version >= 1.53
 * CMake >= 3.2
 * CGAL >=  4.2
 
@@ -161,17 +157,29 @@ For testing
 
 Installing the compilation dependencies
 
+.. rubric:: Database dependencies
+
+.. code-block:: none
+
+    sudo apt-get install
+        postgresql-10 \
+        postgresql-server-dev-10 \
+        postgresql-10-postgis
+
+
+.. rubric:: Build dependencies
+
 .. code-block:: none
 
     sudo apt-get install
         cmake \
         g++ \
-        postgresql-9.3 \
-        postgresql-server-dev-9.3 \
         libboost-graph-dev \
         libcgal-dev
 
-Installing the optional dependencies
+.. rubric:: Optional dependencies
+
+For documentation and testing
 
 .. code-block:: none
 
@@ -179,7 +187,7 @@ Installing the optional dependencies
         texlive \
         doxygen \
         libtap-parser-sourcehandler-pgtap-perl \
-        postgresql-9.3-pgtap
+        postgresql-10-pgtap
 
 
 .. _install_configuring:

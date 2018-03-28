@@ -28,30 +28,24 @@ set -e
 
 # ----------------------
 #
-echo ------------------------------------
-echo All pgRouting versions to be updated must be installed before calling
-echo ------------------------------------
-echo -
-echo -
+echo **All pgRouting versions to be updated must be installed before calling**
+echo
+echo
 #
 # USAGE
 #
 #  bash tools/testers/update-tester.sh
 #
 
-CURRENT=2.5.2
+CURRENT=2.6.0
 
 if [ ! -f build/sql/pgrouting--$CURRENT.sql ]; then
-   echo "File not found:  build/lib/pgrouting--$CURRENT.sql "
+   echo "Not testing the current version, file not found:  build/lib/pgrouting--$CURRENT.sql "
    exit 1
 fi
 
 dropdb --if-exists ___test_update
 
-#make sure the scripts are the latest
-cp build/sql/pgrouting-* tools/sql-update-scripts
-#TODO automatically check  the diff is empty
-#git diff
 
 cd build
 sudo make install
@@ -61,8 +55,8 @@ cd ..
 
 function update_test {
 
-echo ------------------------------------
-echo ------------------------------------
+echo
+echo
 echo Updating from $1 to $2
 echo ------------------------------------
 
@@ -117,6 +111,8 @@ dropdb ___test_update
 ### updates from 2.5
 #------------------------------------
 
+update_test 2.5.3 $CURRENT
+update_test 2.5.2 $CURRENT
 update_test 2.5.1 $CURRENT
 update_test 2.5.0 $CURRENT
 
@@ -132,7 +128,7 @@ update_test 2.4.0 $CURRENT
 ### updates from 2.3.0
 #------------------------------------
 
-#update_test 2.3.2 $CURRENT
+update_test 2.3.2 $CURRENT
 update_test 2.3.1 $CURRENT
 update_test 2.3.0 $CURRENT
 

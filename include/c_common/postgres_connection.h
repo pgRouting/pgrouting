@@ -32,7 +32,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #ifdef __clang__
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-pedantic"
+#endif
+
+#ifdef __MSVC__
+#pragma warning(disable : 4200)
 #endif
 
 #include <postgres.h>
@@ -45,11 +50,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #ifdef __clang__
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wsign-conversion"
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "executor/spi.h"
+#include <executor/spi.h>
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -70,6 +78,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #ifdef __clang__
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #endif
 
@@ -77,7 +86,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include <funcapi.h>
 #include <fmgr.h>
 
 #ifdef __GNUC__

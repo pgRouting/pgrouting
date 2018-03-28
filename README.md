@@ -16,7 +16,7 @@ https://github.com/pgRouting/pgrouting/releases
 
 ## LINKS
 
-* http://pgrouting.org/ 
+* http://pgrouting.org/
 * http://docs.pgrouting.org/
 * https://github.com/pgRouting/pgrouting
 
@@ -100,12 +100,12 @@ Family of functions include:
 
 Building reqirements
 --------------------
-* Perl 
+* Perl
 * C and C++ compilers
   * GNU >= 4.6
   * MSVC >= 18.0
 * Postgresql >= 9.2
-* The Boost Graph Library (BGL) >= 1.46
+* The Boost Graph Library (BGL) >= 1.53
 * CMake >= 3.2
 * CGAL >= 4.4
 * Sphinx >= 1.2
@@ -133,7 +133,7 @@ For MinGW on Windows
 Also pre-built Windows binaries can be downloaded from https://postgis.net/windows_downloads
 
 For Linux
-	
+
 	mkdir build
 	cd build
 	cmake  ..

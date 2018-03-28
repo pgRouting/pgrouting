@@ -13,7 +13,7 @@ SELECT * FROM _pgr_pickDeliverEuclidean(
 SELECT lives_ok('q1', 'Original query should not fail');
 
 --------------------------------------
--- testing wrong data on max_cycles 
+-- testing wrong data on max_cycles
 --------------------------------------
 PREPARE q6 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
@@ -37,7 +37,7 @@ SELECT lives_ok('q61',
 
 
 --------------------------------------
--- testing wrong data on initial_sol 
+-- testing wrong data on initial_sol
 --------------------------------------
 PREPARE initsol1 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
@@ -75,7 +75,7 @@ SELECT throws_ok('initsol3',
     'Should throw: initial_sol = 0');
 
 --------------------------------------
--- testing wrong data on factor 
+-- testing wrong data on factor
 --------------------------------------
 PREPARE factor1 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
@@ -235,7 +235,7 @@ SELECT throws_ok('vehicles10',
     'vehicles10, Should throw: end_open > end_close');
 
 --------------------------------------
--- testing wrong data on orders 
+-- testing wrong data on orders
 --------------------------------------
 
 ---------------------

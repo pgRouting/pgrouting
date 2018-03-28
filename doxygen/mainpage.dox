@@ -1,7 +1,7 @@
 /*! \mainpage Developer's Documentation
- 
+
 @section intro_sec Introduction
- 
+
 This documentation is focused on the developer of [pgRouting](http://pgrouting.org).
 
 A developer might want to:
@@ -12,7 +12,7 @@ A developer might want to:
   - Add tests
     - regression
     - benchmark
- 
+
 The following steps are based on:
   - [My Experience with GitHub](https://github.com/pgRouting/pgrouting/wiki/My-Experience-with-GitHub)
 wirtten by Mohamed Zia
@@ -31,7 +31,7 @@ Step by Step processing
    - Additional information can be found in [fork-a-repo](https://help.github.com/articles/fork-a-repo)
 
 2. Now create a local clone of your above created fork
-   - [set up Git](https://help.github.com/articles/set-up-git) in your computer. 
+   - [set up Git](https://help.github.com/articles/set-up-git) in your computer.
    - clone your repo
 ~~~~{.c}
      git clone https://github.com/acountName/pgrouting pgrouting
@@ -43,12 +43,12 @@ Step by Step processing
 ~~~~
 
 4. Setting the remote fetching connections
-   - [More on remotes](https://help.github.com/categories/managing-remotes/) . 
+   - [More on remotes](https://help.github.com/categories/managing-remotes/) .
    - check the remote connection
 ~~~~{.c}
     git remote -v
 ~~~~
-   -  Add upstream remote (usually the main repository) 
+   -  Add upstream remote (usually the main repository)
 ~~~~{.c}
     git remote add upstream https://github.com/pgRouting/pgrouting
 ~~~~
@@ -79,7 +79,7 @@ So here are some basic rules about Master and develop:
      - It has to pass the tests on travis and Jenkins (linux & Windows)
      - Documentation must be "up to date"
      - Say that 99.9% is complete
-     
+
 
 The way we want to work:
    - If you want to work on a particular issue
@@ -92,20 +92,20 @@ The way we want to work:
      - Once is stable we will start making tests on Jenkins
    - When the work is that 99.9% complete we can:
      - Merge into develop
-     
+
 For the rest of the document the following branch has being created in the main repository:
 
   dev-myFeature
-   
+
 
 1. To get a list of all the branches
-  - 
+  -
 ~~~~{.c}
    git branch -a
 ~~~~
 
 2. To make sure you are in the correct branch
-  - 
+  -
 ~~~~{.c}
    git status
 ~~~~
@@ -153,7 +153,7 @@ For the rest of the document the following branch has being created in the main 
     <fix conflicts if any>
 ~~~~
 
-  
+
 @section up_to_date Keep Fork Up to Date
 
 1. To keep your local repository up-to-date
@@ -226,8 +226,8 @@ sudo make install
 cd ..
 
 # before testing everything
-tools/test-runner.pl -alg common 
-tools/test-runner.pl -alg dijkstra 
+tools/test-runner.pl -alg common
+tools/test-runner.pl -alg dijkstra
 tools/test-runner.pl -alg myfeature
 
 # test everything

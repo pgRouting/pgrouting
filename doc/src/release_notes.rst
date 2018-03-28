@@ -18,6 +18,8 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_6_0`
+* :ref:`changelog_2_5_3`
 * :ref:`changelog_2_5_2`
 * :ref:`changelog_2_5_1`
 * :ref:`changelog_2_5_0`
@@ -39,6 +41,52 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog end
 
+.. _changelog_2_6_0:
+
+pgRouting 2.6.0 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github.
+
+
+.. rubric:: New fexperimental functions
+
+*  pgr_lineGraphFull
+
+.. rubric:: Bug fixes
+
+* Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])
+
+  * without restrictions
+
+    * calls pgr_dijkstra when both end points have a fraction IN (0,1)
+    * calls pgr_withPoints when at least one fraction NOT IN (0,1)
+
+  * with restrictions
+
+    * calls original trsp code
+
+.. rubric:: Internal code
+
+* Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, text])
+
+  * Removed the use of pointers
+  * Internal code can accept BIGINT
+
+* Cleaned the internal code of withPoints
+
+
+.. _changelog_2_5_3:
+
+pgRouting 2.5.3 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL
+
 .. _changelog_2_5_2:
 
 pgRouting 2.5.2 Release Notes
@@ -48,7 +96,7 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.2
 
 .. rubric:: Bug fixes
 
-* Fix for postgresql 10.1: Removed a copiler condition
+* Fix for postgresql 10.1: Removed a compiler condition
 
 
 .. _changelog_2_5_1:
@@ -106,6 +154,7 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_bdDijkstraCost(many to many)
 * pgr_bdDijkstraCostMatrix
 * pgr_lineGraph
+* pgr_lineGraphFull
 * pgr_connectedComponents
 * pgr_strongComponents
 * pgr_biconnectedComponents

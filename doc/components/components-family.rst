@@ -188,7 +188,7 @@ Example:
 
 .. rubric:: Biconnected components
 
-The biconnected components of an undirected graph are the maximal subsets of vertices such that the removal of a vertex from 
+The biconnected components of an undirected graph are the maximal subsets of vertices such that the removal of a vertex from
 particular component will not disconnect the component. Unlike connected components, vertices may belong to multiple biconnected
 components. Vertices can be present in multiple biconnected components, but each edge can only be contained in a single biconnected
 component. So, the output only has edge version.
@@ -265,9 +265,9 @@ Example:
 
 .. rubric:: Articulation Points
 
-Those vertices that belong to more than one biconnected component are called 
-articulation points or, equivalently, cut vertices. Articulation points are 
-vertices whose removal would increase the number of connected components in 
+Those vertices that belong to more than one biconnected component are called
+articulation points or, equivalently, cut vertices. Articulation points are
+vertices whose removal would increase the number of connected components in
 the graph.
 
 **Notice**: This problem defines on an undirected graph.
@@ -333,7 +333,7 @@ Example:
    :width: 210px
    :height: 325px
 
-.. rubric:: Bridges 
+.. rubric:: Bridges
 
 A bridge is an edge of an undirected graph whose deletion increases its number
 of connected components.
@@ -459,7 +459,7 @@ Column         Type       Description
 ============== ========== =================================================
 **seq**        ``INT``    Sequential value starting from **1**.
 **component**  ``BIGINT`` Component identifier. It is equal to the minimum node identifier in the component.
-**n_seq**      ``INT``    It is a sequential value starting from **1** in a component. 
+**n_seq**      ``INT``    It is a sequential value starting from **1** in a component.
 **node**       ``BIGINT`` Identifier of the vertex.
 ============== ========== =================================================
 
@@ -478,7 +478,7 @@ Column         Type       Description
 ============== ========== =================================================
 **seq**        ``INT``    Sequential value starting from **1**.
 **component**  ``BIGINT`` Component identifier. It is equal to the minimum edge identifier in the component.
-**n_seq**      ``INT``    It is a sequential value starting from **1** in a component. 
+**n_seq**      ``INT``    It is a sequential value starting from **1** in a component.
 **edge**       ``BIGINT`` Identifier of the edge.
 ============== ========== =================================================
 

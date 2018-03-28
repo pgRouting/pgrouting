@@ -70,10 +70,10 @@ configure_file("configuration.conf" "configuration.conf")
 file(STRINGS configuration.conf PgRouting_CONFIGURATION_FILE)
 
 set(PgRouting_SOURCE_NAMES "")
-set(PgRouting_SQL_DIRECTORIES "") 
-set(PgRouting_DOC_DIRECTORIES "") 
+set(PgRouting_SQL_DIRECTORIES "")
+set(PgRouting_DOC_DIRECTORIES "")
 foreach(line ${PgRouting_CONFIGURATION_FILE})
-    string(REGEX REPLACE "^(#).*" "\\1" comment ${line}) 
+    string(REGEX REPLACE "^(#).*" "\\1" comment ${line})
     if("${comment}" MATCHES "#")
         continue()
     endif()
@@ -113,7 +113,7 @@ endif()
 set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "1.1")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
-set(BOOST_MINIMUM_VERSION "1.46")
+set(BOOST_MINIMUM_VERSION "1.53")
 set(CGAL_CXX_MINIMUM_VERSION "4.4")
 set(POSTGIS_MINIMUM_VERSION "2.0.0")
 set(GNU_CXX_MINIMUM_VERSION "4.6")
@@ -181,8 +181,8 @@ endif()
 #-----------------------------------------------------------------------------
 
 set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "5")
-set(PGROUTING_VERSION_PATCH "2")
+set(PGROUTING_VERSION_MINOR "6")
+set(PGROUTING_VERSION_PATCH "0")
 set(PGROUTING_VERSION_DEV "")
 
 set(PGROUTING_SHORT_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
@@ -301,7 +301,7 @@ endif()
 string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
 
 # for XbetaY XalphaY XrcY -> X.Y
-string(REGEX REPLACE "^([0-9]+)[beta|alpha|rc].*" "\\1.0" POSTGRESQL_VERSION ${POSTGRESQL_VERSION})
+string(REGEX REPLACE "^([0-9]+)[beta|alpha|rc|devel].*" "\\1.0" POSTGRESQL_VERSION ${POSTGRESQL_VERSION})
 
 #for X.Y.Z -> XY  Y<10
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
@@ -323,6 +323,7 @@ endif(WIN32)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DPGSQL_VERSION=${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DPGSQL_VERSION=${PGSQL_VERSION}")
+message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 
 
 #---------------------------------------------
@@ -360,8 +361,6 @@ include_directories(${CGAL_INCLUDE_DIR})
 #---------------------------------------------
 
 set(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/src/common/src
-    ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/include
     )
 
@@ -521,7 +520,7 @@ endif()
 #-------------------
 
 foreach (subdir ${PgRouting_SOURCE_NAMES})
-    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
+    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}")
 endforeach()
 
 
@@ -554,7 +553,6 @@ endforeach()
 # PGROUTING Library names
 #-----------------------------------------------------------------------------
 
-message("Building the library names")
 
 #----------------------
 # PGROUTING installation files names have the following name

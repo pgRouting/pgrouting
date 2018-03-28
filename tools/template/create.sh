@@ -31,7 +31,7 @@ fi
 #dont put pgr_ on MY_FUNCTION_NAME that is done automatically
 MY_FUNCTION_NAME="funnyDijkstra"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
-DEVELOPER_EMAIL="vicky_vergara\@hotmail.com" 
+DEVELOPER_EMAIL="vicky_vergara\@hotmail.com"
 YEAR="2017"
 
 # Note: the "\n     " (change line and four spaces) after each comma
@@ -51,7 +51,7 @@ MY_FUNCTION_NAME_LOWER=$(echo $MY_FUNCTION_NAME | tr 'A-Z' 'a-z')
 # Available types to store the edge information:
 #  http://docs.pgrouting.org/doxy/dev/structpgr__edge__t.html
 #  http://docs.pgrouting.org/doxy/dev/structPgr__edge__xy__t.html
-MY_RETURN_VALUE_TYPE="General_path_element_t" 
+MY_RETURN_VALUE_TYPE="General_path_element_t"
 MY_RETURN_VALUE_FILE=$(echo $MY_RETURN_VALUE_TYPE | tr 'A-Z' 'a-z')
 
 MY_EDGE_TYPE="pgr_edge_t"
@@ -67,7 +67,7 @@ MY_EDGE_FUNCTION="pgr_get_edges"
 
 #the above variables must be defined
 
-if test -z "$MY_FUNCTION_NAME"; then 
+if test -z "$MY_FUNCTION_NAME"; then
     exit
 fi
 
@@ -77,7 +77,7 @@ fi
 
 mkdir "$MY_FUNCTION_NAME"
 
-#copy to a working subdirectory 
+#copy to a working subdirectory
 cp -r sql  "$MY_FUNCTION_NAME"
 cp -r doc  "$MY_FUNCTION_NAME"
 cp -r test  "$MY_FUNCTION_NAME"
@@ -130,7 +130,7 @@ mv $MY_FUNCTION_NAME/pgtap/function1-innerQuery.sql        $MY_FUNCTION_NAME/pgt
 
 
 if [[ ! ( -d ../../doc/$MY_FUNCTION_NAME ) ]] ; then
-    mkdir ../../sql/$MY_FUNCTION_NAME
+    mkdir ../../doc/$MY_FUNCTION_NAME
 fi
 
 if [[ ! ( -d ../../sql/$MY_FUNCTION_NAME ) ]] ; then
@@ -143,18 +143,30 @@ if [[  "$1" == "clean"  ]] ; then
     rm -rf ../../sql/$MY_FUNCTION_NAME
     rm -rf ../../src/$MY_FUNCTION_NAME
     rm -rf ../../doc/$MY_FUNCTION_NAME
+    rm -rf ../../include/drivers/$MY_FUNCTION_NAME
+    rm -rf ../../test/$MY_FUNCTION_NAME
+    rm -rf ../../pgtap/$MY_FUNCTION_NAME
+
     mkdir -p ../../sql/$MY_FUNCTION_NAME
     mkdir -p ../../doc/$MY_FUNCTION_NAME
     mkdir -p ../../include/drivers/$MY_FUNCTION_NAME
+    mkdir -p ../../test/$MY_FUNCTION_NAME
+    mkdir -p ../../pgtap/$MY_FUNCTION_NAME
+
 
     #moving the whole structure to its final location
-    mv $MY_FUNCTION_NAME/pgtap              $MY_FUNCTION_NAME/test
+    mv $MY_FUNCTION_NAME/pgtap/*              ../../pgtap/$MY_FUNCTION_NAME
     mv $MY_FUNCTION_NAME/src/*driver.h      ../../include/drivers/$MY_FUNCTION_NAME
 
     mv $MY_FUNCTION_NAME/doc/*              ../../doc/$MY_FUNCTION_NAME
     mv $MY_FUNCTION_NAME/sql/*              ../../sql/$MY_FUNCTION_NAME
+    mv $MY_FUNCTION_NAME/test/*             ../../test/$MY_FUNCTION_NAME
+
     rm -rf  $MY_FUNCTION_NAME/doc
     rm -rf  $MY_FUNCTION_NAME/sql
+    rm -rf  $MY_FUNCTION_NAME/test
+    rm -rf  $MY_FUNCTION_NAME/pgtap
+
     mv $MY_FUNCTION_NAME                    ../../src
 fi
 

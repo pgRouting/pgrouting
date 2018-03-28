@@ -118,7 +118,7 @@ We get the same result as the simplest way to use the function.
        NOTICE:  ----> PGR ERROR in pgr_createVerticesTable: Wrong type of Column source: the_geom
        HINT:    ----> Expected type of the_geom is integer,smallint or bigint but USER-DEFINED was found
        NOTICE:  Unexpected error raise_exception
-       pgr_createverticestable 
+       pgr_createverticestable
        -------------------------
          FAIL
       (1 row)
@@ -195,7 +195,7 @@ The arguments need to be given in the order described in the parameters:
         NOTICE:  ----> PGR ERROR in pgr_createVerticesTable: Table mytable not found
         HINT:    ----> Check your table name
         NOTICE:  Unexpected error raise_exception
-        pgr_createverticestable 
+        pgr_createverticestable
         -------------------------
           FAIL
         (1 row)

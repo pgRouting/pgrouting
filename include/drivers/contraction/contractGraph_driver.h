@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
-#define SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_CONTRACTION_CONTRACTGRAPH_DRIVER_H_
+#define INCLUDE_DRIVERS_CONTRACTION_CONTRACTGRAPH_DRIVER_H_
 #pragma once
 
 #include "c_types/contracted_rt.h"
@@ -65,4 +65,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_CONTRACTION_CONTRACTGRAPH_DRIVER_H_

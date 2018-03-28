@@ -20,7 +20,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text)
+create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL)
     RETURNS SETOF pgr_costresult3 AS
 $body$
 /*
@@ -38,14 +38,29 @@ declare
     lrra boolean := false;
     seq integer := 0;
     seq2 integer := 0;
+    restrictions_query TEXT;
 
 begin
+    IF (turn_restrict_sql IS NULL) THEN
+        RAISE EXCEPTION 'Restrictions Missing';
+    END IF;
+
+    restrictions_query = $$
+    WITH old_restrictions AS ( $$ ||
+        $5 || $$
+    )
+    SELECT ROW_NUMBER() OVER() AS id,
+    _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path, ',')::INTEGER[])) AS path,
+    to_cost AS cost
+    FROM old_restrictions;
+    $$;
+
 
     -- loop through each pair of vids and compute the path
     for i in 1 .. array_length(vids, 1)-1 loop
         seq2 := seq2 + 1;
-        for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from _pgr_trsp(sql, vids[i], vids[i+1], directed, has_rcost, turn_restrict_sql) as a loop
+        for rr in select a.seq, seq2 as id1, a.node::INTEGER as id2, a.edge::INTEGER as id3, a.cost
+                    from _pgr_trsp(sql, restrictions_query, vids[i], vids[i+1], directed) as a loop
             -- filter out the individual path ends except the last one
             -- we might not want to do this so we can know where the via points are in the path result
             -- but this needs more thought

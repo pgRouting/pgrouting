@@ -47,7 +47,7 @@ class Line_vertex {
      Line_vertex() :
          id(0) {}
 
-     Line_vertex(const pgr_edge_t& edge) :
+     explicit Line_vertex(const pgr_edge_t& edge) :
          id(edge.id),
          vertex_id(edge.id),
          source(edge.source),

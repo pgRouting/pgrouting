@@ -16,21 +16,21 @@
 
 # A check condition to see if those variables are set
 
-SET(POSTGRESQL_BIN "" CACHE STRING "non-standard path to the postgresql program executables")    
+SET(POSTGRESQL_BIN "" CACHE STRING "non-standard path to the postgresql program executables")
 
 if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
     set(POSTGRESQL_FOUND TRUE)
 else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
 
     if(NOT "${POSTGRESQL_BIN}" STREQUAL "")
-        # Checking POSTGRESQL_PG_CONFIG 
+        # Checking POSTGRESQL_PG_CONFIG
         find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
             PATHS
             ${POSTGRESQL_BIN}
             NO_DEFAULT_PATH
             )
     else(NOT "${POSTGRESQL_BIN}" STREQUAL "")
-        # Checking POSTGRESQL_PG_CONFIG 
+        # Checking POSTGRESQL_PG_CONFIG
         find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
             PATHS
             /usr/lib/postgresql/*/bin/
@@ -47,7 +47,7 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
     endif(POSTGRESQL_PG_CONFIG)
 
 
-    # Checking POSTGRESQL_EXECUTABLE in all the dir (*) - implies that 
+    # Checking POSTGRESQL_EXECUTABLE in all the dir (*) - implies that
     find_program(POSTGRESQL_EXECUTABLE NAMES postgres
         PATHS
         ${T_POSTGRESQL_BIN}

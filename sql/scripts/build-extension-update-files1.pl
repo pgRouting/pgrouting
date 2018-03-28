@@ -19,7 +19,10 @@ my $version_2_2 = qr/(2.2.[\d+])/;
 my $version_2_3 = qr/(2.3.[\d+])/;
 my $version_2_4 = qr/(2.4.[\d+])/;
 my $version_2_5 = qr/(2.5.[\d+])/;
+my $version_2_6 = qr/(2.6.[\d+])/;
 my $version_2 = qr/(2.[\d+].[\d+])/;
+
+my $current = $version_2_6;
 
 
 sub Usage {
@@ -44,10 +47,10 @@ my $curr_sql_file_name = "$output_directory/pgrouting--$version.sql";
 
 # Verify Currently accepted old and new versions
 die "ERROR: 'build-extension-update-files1.pl' expected old version: 2.0.x ~~ 2.5.x\nHINT: Please check:\n  file: sql/CMakeLists.txt\n  Section: 'TARGET: update_files'"
-    unless $old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3|$version_2_4|$version_2_5/;
+    unless $old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3|$version_2_4|$version_2_5|$version_2_6/;
 
 die "ERROR: 'build-extension-update-files1.pl' expected version: 2.5.x\nHINT: ERROR on PGROUTING_VERSION variable\nor File sql/scripts/build-extension-update-files1.pl needs to be reviewed"
-    unless $version =~ /$version_2_5/;
+    unless $version =~ /$current/;
 
 die "ERROR: 'build-extension-update-files1.pl' can not upgrade from $old_version to $version\nHINT: Please check:\n  file: sql/CMakeLists.txt\n  Section: 'TARGET: update_files'" unless $version !~ $old_version;
 
@@ -63,7 +66,7 @@ die "ERROR: Failed to find: current signature file: '$curr_signature_file_name'\
 die "ERROR: Failed to find: current sql file: '$curr_sql_file_name'\n" unless -f $curr_sql_file_name;
 
 ######################################################
-# process section 
+# process section
 ######################################################
 #
 print "Building the updating files\n" if $DEBUG;
@@ -399,7 +402,7 @@ WHERE proname = 'pgr_trsp'
 
         push @commands, "-- pgr_trspviaedges\n";
         push @commands, "-- $old_version:  {sql, eids, pcts, directed, has_reverse_cost,turn_restrict_sql} \n";
-        push @commands, "-- $new_version:  {sql, eids, pcts, directed, has_rcost,       turn_restrict_sql}\n"; 
+        push @commands, "-- $new_version:  {sql, eids, pcts, directed, has_rcost,       turn_restrict_sql}\n";
         push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", $old_version, $new_version);
     }
 
@@ -424,7 +427,7 @@ sub pgr_bddijkstra {
 
         push @commands, "-- pgr_bddijkstra\n";
         push @commands, "-- $old_version: {      sql, source_vid, target_vid, directed, has_reverse_cost}   \n";
-        push @commands, "-- $new_version: {edges_sql,  start_vid,    end_vid, directed, has_rcost}\n"; 
+        push @commands, "-- $new_version: {edges_sql,  start_vid,    end_vid, directed, has_rcost}\n";
         my $update_command = "
 UPDATE pg_proc SET
 proargnames = '{\"edges_sql\",\"start_vid\",\"end_vid\",\"directed\",\"has_rcost\"}'
@@ -453,7 +456,7 @@ sub pgr_ksp {
 
         push @commands, "-- pgr_ksp\n";
         push @commands, "-- $old_version:  {      sql, start_vid, end_vid, k, directed, heap_paths, seq, path_id, path_seq, node,edge, cost, agg_cost}\n";
-        push @commands, "-- $new_version:  {edges_sql, start_vid, end_vid, k, directed, heap_paths, seq, path_id, path_seq, node,edge, cost, agg_cost}\n"; 
+        push @commands, "-- $new_version:  {edges_sql, start_vid, end_vid, k, directed, heap_paths, seq, path_id, path_seq, node,edge, cost, agg_cost}\n";
         push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  $old_version, $new_version);
     }
 
@@ -705,7 +708,7 @@ sub get_current_sql {
 
 
     $contents =~ s/\\echo Use "CREATE EXTENSION pgrouting" to load this file. \\quit//;
-        
+
     return $contents
 }
 

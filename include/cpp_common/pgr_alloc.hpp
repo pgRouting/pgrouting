@@ -29,19 +29,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-extern "C" {
-#if PGSQL_VERSION < 94
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
-#endif
+#include <string>
 
-#include "c_common/postgres_connection.h"
-#include "utils/palloc.h"
+extern "C" {
+
+extern
+void* SPI_palloc(size_t size);
+
+extern void *
+SPI_repalloc(void *pointer, size_t size);
+
+extern void
+SPI_pfree(void *pointer);
+
 }
 
-#include <string>
 
 /*! \fn pgr_alloc(std::size_t size, T *ptr)
 
@@ -74,7 +76,7 @@ template <typename T>
 T*
 pgr_free(T* ptr) {
     if (ptr) {
-        pfree(ptr);
+        SPI_pfree(ptr);
     }
     return nullptr;
 }

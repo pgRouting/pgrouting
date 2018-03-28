@@ -36,7 +36,7 @@ fi
 
 }
 
-function test_file {                                                                                                                                                        
+function test_file {
 
 if [ -f sql/sigs/pgrouting--$1.sig ]
 then
@@ -54,27 +54,27 @@ fi
 if [[ -z  $1 ]]; then
     echo "Mayor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 if [[ -z  $2 ]]; then
     echo "Minor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 
 if [[ -z  $3 ]]; then
     echo "Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 
 if [[ -z  $4 ]]; then
     echo "Last Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 
@@ -82,7 +82,7 @@ fi
 if [[ -z  $5 ]]; then
     echo "branch missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch RC DEBUG";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last branch DEBUG RC";
     exit 1;
 fi
 
@@ -109,11 +109,11 @@ echo
 
 GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
-if [[ "$GIT_BRANCH" == "$BRANCH" ]]; then
-    echo "- [x] Already in branch $BRANCH";
+if [[ "${GIT_BRANCH}" == "${BRANCH}" ]]; then
+    echo "- [x] Already in branch $BRANCH"
     echo
 else
-    error_msg "Current Branch is not: $BRANCH"
+    error_msg "Current Branch is not: $BRANCH,  found $GIT_BRANCH"
     exit 1
 fi
 
@@ -145,7 +145,7 @@ echo
 echo "### Verify release_notes.rst & NEWS"
 echo
 #---------------------------------------------------------------------
- 
+
 if [[ -n $DEBUG ]]; then
     echo
     echo "\`\`\`"
@@ -187,7 +187,7 @@ echo "- [x] NEWS is up to date"
 #---------------------------------------------------------------------
 echo
 echo "## Check version information"
-echo 
+echo
 #---------------------------------------------------------------------
 #---------------------------------------------------------------------
 echo
@@ -241,12 +241,12 @@ echo "- src/common/test/doc-pgr_version.result"
 
 if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
-    echo "cat src/common/test/doc-pgr_version.result | grep \"$MAYOR.$MINOR.$MICRO\""
+    echo "cat test/common/doc-pgr_version.result | grep \"$MAYOR.$MINOR.$MICRO\""
     echo "\`\`\`"
 fi
 
-if [[ $(cat src/common/test/doc-pgr_version.result | grep "$MAYOR.$MINOR.$MICRO") != " $MAYOR.$MINOR.$MICRO" ]]; then
-    error_msg "src/common/test/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO"
+if [[ $(cat test/common/doc-pgr_version.result | grep "$MAYOR.$MINOR.$MICRO") != " $MAYOR.$MINOR.$MICRO" ]]; then
+    error_msg "test/common/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO"
     exit 1
 else
     echo "  - [x]  src/common/test/doc-pgr_version.result"
@@ -282,6 +282,8 @@ echo
 echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
+test_file 2.6.0
+test_file 2.5.3
 test_file 2.5.2
 test_file 2.5.1
 test_file 2.5.0
@@ -323,7 +325,7 @@ if [[ "$BRANCH" == "develop" || $BRANCH == "master" || $BRANCH == "release/$MAYO
         bash tools/release-scripts/compile-release.sh 5 $MAYOR.$MINOR $MICRO
     fi
 fi
-bash tools/release-scripts/compile-release.sh 4.8   $MAYOR.$MINOR $MICRO
+bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
 
 echo - [x] completed local builds
 
@@ -331,23 +333,11 @@ echo - [x] completed local builds
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh 2.5.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-test_file 2.5.1
-test_file 2.5.0
-test_file 2.4.2
-test_file 2.4.1
-test_file 2.4.0
-test_file 2.3.2
-test_file 2.3.1
-test_file 2.3.0
-test_file 2.2.4
-test_file 2.2.3
-test_file 2.2.2
-test_file 2.2.1
-test_file 2.2.0
-test_file 2.1.0
-test_file 2.0.1
-test_file 2.0.0
+sh tools/release-scripts/get_signatures.sh $MAYOR.$MINOR.$MICRO ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+
+if [[ -z  "$DEBUG" ]]; then
+    git_no_change
+fi
 
 echo
 echo - [x] completed check: OK
@@ -380,8 +370,10 @@ if [[ $? != 0 ]]; then
     exit 1
 fi
 
-if [[ $(git status | grep 'Changes not staged for commit:') ]]; then
-    echo "FATAL: at least one result file changed"
+if [[ -z  "$DEBUG" ]]; then
+    git_no_change
+elif [[ $(git status | grep 'Changes not staged for commit:') ]]; then
+    echo "DEBUG WARNING: at least one file changed"
     git status
     exit 1
 fi

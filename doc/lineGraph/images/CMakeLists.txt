@@ -1,5 +1,7 @@
 SET(LOCAL_FILES
     lineGraph.png
+    transformation.png
+    original.png
     )
 
 foreach (f ${LOCAL_FILES})

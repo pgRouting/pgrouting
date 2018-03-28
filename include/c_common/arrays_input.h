@@ -27,6 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
+#include <stdint.h>
+
 // first file to include
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-pedantic"
@@ -40,7 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // for ArrayType
 #include "utils/array.h"
-#include <stdint.h>
 
 
 /** @brief enforces the input array to be @b NOT empty */

@@ -44,35 +44,35 @@ SELECT is((SELECT count(*)::INTEGER FROM incr_table_vertices_pgr WHERE chk is NU
 SELECT is((SELECT count(*)::INTEGER FROM incr_table_vertices_pgr WHERE ein is NULL), 8, '8 vertices are missing ein');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table_vertices_pgr WHERE eout is NULL), 8, '8 vertices are missing eout');
 
-INSERT INTO incr_table(id, dir, cost, reverse_cost, x1, y1, x2, y2, the_geom) 
+INSERT INTO incr_table(id, dir, cost, reverse_cost, x1, y1, x2, y2, the_geom)
 SELECT  id, dir, cost, reverse_cost, x1, y1, x2, y2, the_geom FROM edge_table WHERE id >= 9;
 SELECT is((SELECT count(*)::INTEGER FROM incr_table), 18, 'After inserting table has 18 edges');
 
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE source is NULL), 10, '10 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE target is NULL), 10, '10 edges are missing target');
 -- 10 edges must be updated the rest is untouched
-SELECT is((SELECT pgr_createTopology('incr_table',0.0001,clean:=false)), 'OK', 'OK Creating the topology'); 
+SELECT is((SELECT pgr_createTopology('incr_table',0.0001,clean:=false)), 'OK', 'OK Creating the topology');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE source is NULL), 0, '0 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE target is NULL), 0, '0 edges are missing target');
 
 
 -- 12 edges have 'B' the rest is wiped
-SELECT is((SELECT pgr_createTopology('incr_table',0.0001,rows_where:='dir=''B''',clean:=true)), 'OK', 'OK Creating the topology'); 
+SELECT is((SELECT pgr_createTopology('incr_table',0.0001,rows_where:='dir=''B''',clean:=true)), 'OK', 'OK Creating the topology');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE source is NULL), 6, '6 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE target is NULL), 6, '6 edges are missing target');
 
 -- 6 edges must be processed, the rest is untouched
-SELECT is((SELECT pgr_createTopology('incr_table',0.0001,clean:=false)), 'OK', 'OK Creating the topology'); 
+SELECT is((SELECT pgr_createTopology('incr_table',0.0001,clean:=false)), 'OK', 'OK Creating the topology');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE source is NULL), 0, '0 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE target is NULL), 0, '0 edges are missing target');
 
 --12 edgedds have 'B' the rest is untouched
-SELECT is((SELECT pgr_createTopology('incr_table',0.0001,rows_where:='dir=''B''',clean:=false)), 'OK', 'OK Creating the topology'); 
+SELECT is((SELECT pgr_createTopology('incr_table',0.0001,rows_where:='dir=''B''',clean:=false)), 'OK', 'OK Creating the topology');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE source is NULL), 0, '0 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE target is NULL), 0, '0 edges are missing target');
 
 
-SELECT is((SELECT pgr_createTopology('incr_table',0.0001,rows_where:='dir=''B''')), 'OK', 'OK Creating the topology'); 
+SELECT is((SELECT pgr_createTopology('incr_table',0.0001,rows_where:='dir=''B''')), 'OK', 'OK Creating the topology');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE source is NULL), 0, '0 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE target is NULL), 0, '0 edges are missing target');
 

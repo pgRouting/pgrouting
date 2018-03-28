@@ -1,10 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
-# Travis CI scripts 
+# Travis CI scripts
 # Copyright(c) pgRouting Contributors
 #
 # Test pgRouting
 # ------------------------------------------------------------------------------
+
+if [[ "$DOCUMENTATION" == "ON" ]]
+then
+    exit 0
+fi
+
 
 PGDATABASE="pgr_test__db__test"
 
@@ -17,17 +23,17 @@ POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
 echo "POSTGRESQL_VERSION $POSTGRESQL_VERSION"
 
 # exit script on error
-set -e 
+set -e
 ERROR=0
 
 # Define alias function for psql command
 run_psql () {
     PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -d $PGDATABASE -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
     if [ "$?" -ne 0 ]
-    then 
+    then
         echo "Test query failed: $@"
         ERROR=1
-    fi 
+    fi
 }
 
 # ------------------------------------------------------------------------------
@@ -47,8 +53,8 @@ run_psql  -c "CREATE EXTENSION pgrouting;"
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
-run_psql -c "SELECT version();"    
-run_psql -c "SELECT postgis_full_version();"    
+run_psql -c "SELECT version();"
+run_psql -c "SELECT postgis_full_version();"
 run_psql -c "SELECT pgr_version();"
 
 #PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
@@ -58,7 +64,7 @@ run_psql -c "SELECT pgr_version();"
 # ------------------------------------------------------------------------------
 # use -v -v for more verbose debuging output
 # ./tools/test-runner.pl -v -v -pgver $POSTGRESQL_VERSION
-#./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE 
+#./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE -v -alg ksp
 
 #cd ./tools/testers/
@@ -67,7 +73,7 @@ run_psql -c "SELECT pgr_version();"
 #dropdb ___pgr___test___
 #cd ../../
 
-./tools/testers/algorithm-tester.pl -pgver $POSTGRESQL_VERSION -pguser $PGUSER 
+./tools/testers/algorithm-tester.pl -pgver $POSTGRESQL_VERSION -pguser $PGUSER
 
 if [ "$?" -ne 0 ]
 then

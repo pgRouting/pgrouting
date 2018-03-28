@@ -21,7 +21,7 @@ Synopsis
 
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html 
+   :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
 
@@ -159,7 +159,7 @@ See Also
 --------
 
 * :ref:`maxFlow`, :ref:`pgr_pushRelabel <pgr_pushRelabel>`, :ref:`pgr_EdmondsKarp <pgr_edmondsKarp>`
-* http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html 
+* http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
 .. rubric:: Indices and tables
 

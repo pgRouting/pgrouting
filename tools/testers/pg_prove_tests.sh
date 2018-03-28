@@ -49,9 +49,8 @@ then
 fi
 
 
-pg_prove ../../src/lineGraph/test/pgtap/* $PGPORT -d $PGDATABASE -U $PGUSER
-
 pg_prove $PGPORT -d $PGDATABASE  -U $PGUSER ../../pgtap/*/*
+
 
 if [ "$?" -ne 0 ]
 then

@@ -23,8 +23,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DIJKSTRATRSP_RESTRICTION_H
-#define INCLUDE_DIJKSTRATRSP_RESTRICTION_H
+#ifndef INCLUDE_DIJKSTRATRSP_RESTRICTION_H_
+#define INCLUDE_DIJKSTRATRSP_RESTRICTION_H_
 #pragma once
 
 #include <sstream>
@@ -36,14 +36,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/restrict_t.h"
 
 class Restriction {
-    private:
+ private:
         int64_t m_id;
         std::vector< int64_t > m_restrict_edges;
         double m_cost;
 
-    public:
+ public:
         Restriction() = default;
-        Restriction(const Restrict_t &r);
+        explicit Restriction(const Restrict_t &r);
 
         int64_t id() const {return m_id;}
         void id(const int64_t& value) {m_id = value;}
@@ -52,14 +52,19 @@ class Restriction {
         void cost(const double& value) {m_cost = value;}
 
         std::vector< int64_t > restrict_edges() const {return m_restrict_edges;}
-        void restrict_edges(const int64_t& value) {m_restrict_edges.push_back(value);}
+
+        void restrict_edges(const int64_t& value) {
+            m_restrict_edges.push_back(value);
+        }
+
         void clear() {
             m_restrict_edges.clear();
         }
 
         int64_t restriction_size() const {return m_restrict_edges.size();}
 
-        friend std::ostream& operator << (std::ostream &log, const Restriction &r);
+        friend std::ostream& operator << (std::ostream &log,
+             const Restriction &r);
 };
 
-#endif // INCLUDE_DIJKSTRATRSP_RESTRICTION_H
+#endif  // INCLUDE_DIJKSTRATRSP_RESTRICTION_H_

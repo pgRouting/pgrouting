@@ -61,10 +61,10 @@ BEGIN
                       || ' count_q AS (SELECT dc.count = ac.count AS result FROM dc, ac)';
             value_query := ' vc AS (SELECT a.agg_cost/d.agg_cost <= ' || epsilon || '  AS result'
                 || ' from (SELECT agg_cost from astar WHERE edge = -1) AS a, (SELECT agg_cost from dijkstra WHERE edge = -1) AS d) ';
-                    
-            t_query := 'WITH ' 
-                || dijkstra_sql || ', ' 
-                || astar_sql || ', ' 
+
+            t_query := 'WITH '
+                || dijkstra_sql || ', '
+                || astar_sql || ', '
                 || count_query  || ', '
                 || value_query
                 || ' (SELECT * FROM count_q) UNION (SELECT * FROM vc)';
@@ -78,9 +78,9 @@ BEGIN
                 || ', true)) ';
             astar_sql := 'astar AS (SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true, ' || heuristic || ', ' || factor || ', ' || epsilon || ')) ';
-            t_query := 'WITH ' 
-                || dijkstra_sql || ', ' 
-                || astar_sql || ', ' 
+            t_query := 'WITH '
+                || dijkstra_sql || ', '
+                || astar_sql || ', '
                 || count_query  || ', '
                 || value_query
                 || ' (SELECT * FROM count_q) UNION (SELECT * FROM vc)';
@@ -95,9 +95,9 @@ BEGIN
                 || ', false)) ';
             astar_sql := 'astar AS (SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false, ' || heuristic || ', ' || factor || ', ' || epsilon || ')) ';
-            t_query := 'WITH ' 
-                || dijkstra_sql || ', ' 
-                || astar_sql || ', ' 
+            t_query := 'WITH '
+                || dijkstra_sql || ', '
+                || astar_sql || ', '
                 || count_query  || ', '
                 || value_query
                 || ' (SELECT * FROM count_q) UNION (SELECT * FROM vc)';
@@ -110,9 +110,9 @@ BEGIN
                 || ', false)) ';
             astar_sql := 'astar AS (SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false, ' || heuristic || ', ' || factor || ', ' || epsilon || ')) ';
-            t_query := 'WITH ' 
-                || dijkstra_sql || ', ' 
-                || astar_sql || ', ' 
+            t_query := 'WITH '
+                || dijkstra_sql || ', '
+                || astar_sql || ', '
                 || count_query  || ', '
                 || value_query
                 || ' (SELECT * FROM count_q) UNION (SELECT * FROM vc)';

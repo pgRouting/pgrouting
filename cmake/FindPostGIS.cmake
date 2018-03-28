@@ -1,5 +1,5 @@
 # (c) 2015  pgRouting colaborators
-# 
+#
 # Finds the most recent postGIS for a particular postgreSQL
 # We need this for the tests
 #

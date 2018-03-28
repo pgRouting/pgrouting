@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include "c_types/general_path_element_t.h"
-
 #include "cpp_common/path_t.h"
 #include "cpp_common/pgr_base_graph.hpp"
 
@@ -74,6 +73,7 @@ class Path {
     void push_back(Path_t data);
     const Path_t& operator[](size_t i) const {return path[i];}
     Path_t& operator[](size_t i) {return path[i];}
+    Path& renumber_vertices(int64_t value);
 
     pthIt begin() {return path.begin();}
     pthIt end() {return path.end();}
@@ -87,6 +87,8 @@ class Path {
     const Path_t& front() const {return path.front();}
     Path_t& front() {return path.front();}
     void sort_by_node_agg_cost();
+
+    void recalculate_agg_cost();
 
 
     Path_t set_data(

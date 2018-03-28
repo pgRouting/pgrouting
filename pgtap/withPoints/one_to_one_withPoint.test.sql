@@ -7,7 +7,7 @@ PREPARE q1 AS
 SELECT node, edge, agg_cost::TEXT FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, -5, 
+    -1, -5,
     driving_side := 'r',
     directed := true,
     details := true);
@@ -16,7 +16,7 @@ PREPARE q2 AS
 SELECT node, edge, agg_cost::TEXT FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, -5, 
+    -1, -5,
     driving_side := 'r',
     directed := true,
     details := false);
@@ -31,7 +31,7 @@ PREPARE q3 AS
 SELECT seq, path_seq, node, edge, cost::text, agg_cost::text FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, -5, 
+    -1, -5,
     driving_side := 'l',
     directed := true,
     details := true);
@@ -41,7 +41,7 @@ PREPARE q4 AS
 SELECT  seq, path_seq, node, edge, cost::text, agg_cost::text FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, -5, 
+    -1, -5,
     driving_side := 'l',
     directed := true,
     details := false);

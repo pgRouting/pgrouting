@@ -57,7 +57,7 @@ The main Characteristics are:
 - Running time (worse case scenario): :math:`O((V \log V + E))`
 - For large graphs where there is a path bewtween the starting vertex and ending vertex:
 
-  - It is expected to terminate faster than pgr_dijkstra 
+  - It is expected to terminate faster than pgr_dijkstra
 
 See Also
 -------------------------------------------------------------------------------
