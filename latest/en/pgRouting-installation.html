@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Installation &#8212; pgRouting Manual (2.5)</title>
+    <title>Installation &#8212; pgRouting Manual (2.6)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.2',
+        VERSION:     'v2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -178,20 +178,20 @@
 <div class="section" id="short-version">
 <span id="install-short"></span><h2>Short Version<a class="headerlink" href="#short-version" title="Permalink to this headline">¶</a></h2>
 <p>Extracting the tar ball</p>
-<div class="highlight-bash"><div class="highlight"><pre>tar xvfz pgrouting-2.4.0.tar.gz
-<span class="nb">cd </span>pgrouting-2.4.0
+<div class="highlight-bash"><div class="highlight"><pre><span></span>tar xvfz pgrouting-2.6.0.tar.gz
+<span class="nb">cd</span> pgrouting-2.6.0
 </pre></div>
 </div>
 <p>To compile assuming you have all the dependencies in your search path:</p>
-<div class="highlight-bash"><div class="highlight"><pre>mkdir build
-<span class="nb">cd </span>build
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir build
+<span class="nb">cd</span> build
 cmake  ..
 make
 sudo make install
 </pre></div>
 </div>
 <p>Once pgRouting is installed, it needs to be enabled in each individual database you want to use it in.</p>
-<div class="highlight-bash"><div class="highlight"><pre>createdb routing
+<div class="highlight-bash"><div class="highlight"><pre><span></span>createdb routing
 psql routing -c <span class="s1">&#39;CREATE EXTENSION postGIS&#39;</span>
 psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 </pre></div>
@@ -202,15 +202,15 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 <p>The pgRouting latest release can be found in <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
 <p class="rubric">wget</p>
 <p>To download this release:</p>
-<div class="highlight-bash"><div class="highlight"><pre>wget -O pgrouting-v2.4.0.tar.gz https://github.com/pgRouting/pgrouting/archive/v2.4.0.tar.gz
+<div class="highlight-bash"><div class="highlight"><pre><span></span>wget -O pgrouting-2.6.0.tar.gz https://github.com/pgRouting/pgrouting/archive/v2.6.0.tar.gz
 </pre></div>
 </div>
 <p>Goto <a class="reference internal" href="#install-short"><span class="std std-ref">Short Version</span></a> to the extract and compile instructions.</p>
 <p class="rubric">git</p>
 <p>To download the repository</p>
-<div class="highlight-bash"><div class="highlight"><pre>git clone git://github.com/pgRouting/pgrouting.git
-<span class="nb">cd </span>pgrouting
-git checkout |release|
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone git://github.com/pgRouting/pgrouting.git
+<span class="nb">cd</span> pgrouting
+git checkout v2.6.0
 </pre></div>
 </div>
 <p>Goto <a class="reference internal" href="#install-short"><span class="std std-ref">Short Version</span></a> to the compile instructions (there is no tar ball).</p>
@@ -219,13 +219,13 @@ git checkout |release|
 <span id="install-enable-db"></span><h2>Enabling and upgrading in the database<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Enabling the database</p>
 <p>pgRouting is an extension and depends on postGIS. Enabling postGIS before enabling pgRouting in the database</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span><span class="p">;</span>
 </pre></div>
 </div>
 <p class="rubric">Upgrading the database</p>
-<p>To upgrade pgRouting in the database to version 2.4.0 use the following command:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.4.0&quot;</span><span class="p">;</span>
+<p>To upgrade pgRouting in the database to version 2.6.0 use the following command:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.6.0&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>More information can be found in <a class="reference external" href="https://www.postgresql.org/docs/current/static/sql-createextension.html">https://www.postgresql.org/docs/current/static/sql-createextension.html</a></p>
@@ -237,9 +237,9 @@ git checkout |release|
 <ul class="simple">
 <li>C and C++0x compilers
 * g++ version &gt;= 4.8</li>
-<li>Postgresql version &gt;= 9.2</li>
-<li>PostGIS version &gt;= 2.0</li>
-<li>The Boost Graph Library (BGL). Version &gt;= 1.46</li>
+<li>Postgresql version &gt;= 9.3</li>
+<li>PostGIS version &gt;= 2.2</li>
+<li>The Boost Graph Library (BGL). Version &gt;= 1.53</li>
 <li>CMake &gt;= 3.2</li>
 <li>CGAL &gt;=  4.2</li>
 </ul>
@@ -260,21 +260,28 @@ git checkout |release|
 </ul>
 <p class="rubric">Example: Installing dependencies on linux</p>
 <p>Installing the compilation dependencies</p>
-<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install
+<p class="rubric">Database dependencies</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sudo apt-get install
+    postgresql-10 \
+    postgresql-server-dev-10 \
+    postgresql-10-postgis
+</pre></div>
+</div>
+<p class="rubric">Build dependencies</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sudo apt-get install
     cmake \
     g++ \
-    postgresql-9.3 \
-    postgresql-server-dev-9.3 \
     libboost-graph-dev \
     libcgal-dev
 </pre></div>
 </div>
-<p>Installing the optional dependencies</p>
-<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install -y python-sphinx \
+<p class="rubric">Optional dependencies</p>
+<p>For documentation and testing</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sudo apt-get install -y python-sphinx \
     texlive \
     doxygen \
     libtap-parser-sourcehandler-pgtap-perl \
-    postgresql-9.3-pgtap
+    postgresql-10-pgtap
 </pre></div>
 </div>
 </div>
@@ -283,14 +290,14 @@ git checkout |release|
 <p>pgRouting uses the <cite>cmake</cite> system to do the configuration.</p>
 <p>The build directory is different from the source directory</p>
 <p>Create the build directory</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir build
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir build
 </pre></div>
 </div>
 <div class="section" id="configurable-variables">
 <h3>Configurable variables<a class="headerlink" href="#configurable-variables" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">To see the variables that can be configured</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>build
-<span class="nv">$ </span>cmake -L ..
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> build
+$ cmake -L ..
 </pre></div>
 </div>
 <p class="rubric">Configuring The Documentation</p>
@@ -336,7 +343,7 @@ Some variables for the documentation:</p>
 </tbody>
 </table>
 <p>Configuring with documentation</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cmake -DWITH_DOC<span class="o">=</span>ON ..
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cmake -DWITH_DOC<span class="o">=</span>ON ..
 </pre></div>
 </div>
 <div class="admonition note">
@@ -349,9 +356,9 @@ Some variables for the documentation:</p>
 <span id="install-build"></span><h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
 <p>Using <code class="docutils literal"><span class="pre">make</span></code> to build the code and the documentation</p>
 <p>The following instructions start from <em>path/to/pgrouting/build</em></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>make          <span class="c"># build the code but not the documentation</span>
-<span class="nv">$ </span>make doc      <span class="c"># build only the documentation</span>
-<span class="nv">$ </span>make all doc  <span class="c"># build both the code and the documentation</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make          <span class="c1"># build the code but not the documentation</span>
+$ make doc      <span class="c1"># build only the documentation</span>
+$ make all doc  <span class="c1"># build both the code and the documentation</span>
 </pre></div>
 </div>
 <p>We have tested on several platforms, For installing or reinstalling all the steps are needed.</p>
@@ -360,24 +367,24 @@ Some variables for the documentation:</p>
 <p class="last">The sql signatures are configured and build in the <code class="docutils literal"><span class="pre">cmake</span></code> command.</p>
 </div>
 <p class="rubric">MinGW on Windows</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir build
-<span class="nv">$ </span><span class="nb">cd </span>build
-<span class="nv">$ </span>cmake -G<span class="s2">&quot;MSYS Makefiles&quot;</span> ..
-<span class="nv">$ </span>make
-<span class="nv">$ </span>make install
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir build
+$ <span class="nb">cd</span> build
+$ cmake -G<span class="s2">&quot;MSYS Makefiles&quot;</span> ..
+$ make
+$ make install
 </pre></div>
 </div>
 <p class="rubric">Linux</p>
 <p>The following instructions start from <em>path/to/pgrouting</em></p>
-<div class="highlight-bash"><div class="highlight"><pre>mkdir build
-<span class="nb">cd </span>build
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir build
+<span class="nb">cd</span> build
 cmake  ..
 make
 sudo make install
 </pre></div>
 </div>
 <p>When the configuration changes:</p>
-<div class="highlight-bash"><div class="highlight"><pre>rm -rf build
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rm -rf build
 </pre></div>
 </div>
 <p>and start the build process as mentioned above.</p>
@@ -386,7 +393,7 @@ sudo make install
 <span id="install-testing"></span><h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
 <p>Currently there is no <code class="code docutils literal"><span class="pre">make</span> <span class="pre">test</span></code> and testing is done as follows</p>
 <p>The following instructions start from <em>path/to/pgrouting/</em></p>
-<div class="highlight-none"><div class="highlight"><pre>tools/testers/algorithm-tester.pl
+<div class="highlight-none"><div class="highlight"><pre><span></span>tools/testers/algorithm-tester.pl
 createdb  -U &lt;user&gt; ___pgr___test___
 sh ./tools/testers/pg_prove_tests.sh &lt;user&gt;
 dropdb  -U &lt;user&gt; ___pgr___test___
@@ -415,9 +422,9 @@ dropdb  -U &lt;user&gt; ___pgr___test___
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
-      Last updated on Nov 12, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.0.<br/>
+      Last updated on Mar 26, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

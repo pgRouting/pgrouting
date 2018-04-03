@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Sample Data &#8212; pgRouting Manual (2.5)</title>
+    <title>Sample Data &#8212; pgRouting Manual (2.6)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.2',
+        VERSION:     'v2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -130,7 +130,7 @@
     </a>
   </li>
   <li>
-    <a href="pgRouting-concepts.html" title="Next Chapter: pgRouting Concepts"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgRouting Concep... &raquo;</span>
+    <a href="pgRouting-concepts.html" title="Next Chapter: pgRouting Concepts"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgRouting Concepts &raquo;</span>
     </a>
   </li>
               
@@ -163,7 +163,7 @@
 <p>The documentation provides very simple example queries based on a small sample network.
 To be able to execute the sample queries, run the following SQL commands to create a table with a small network data set.</p>
 <p class="rubric">Create table</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">edge_table</span> <span class="p">(</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">edge_table</span> <span class="p">(</span>
     <span class="nb">id</span> <span class="n">BIGSERIAL</span><span class="p">,</span>
     <span class="nb">dir</span> <span class="n">character</span> <span class="n">varying</span><span class="p">,</span>
     <span class="n">source</span> <span class="n">BIGINT</span><span class="p">,</span>
@@ -183,7 +183,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 </pre></div>
 </div>
 <p class="rubric">Insert data</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edge_table</span> <span class="p">(</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edge_table</span> <span class="p">(</span>
     <span class="n">category_id</span><span class="p">,</span> <span class="n">reverse_category_id</span><span class="p">,</span>
     <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span>
     <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span>
@@ -209,10 +209,10 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="mf">3.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span>  <span class="mf">3.5</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
 
 <span class="n">UPDATE</span> <span class="n">edge_table</span> <span class="n">SET</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="n">st_makeline</span><span class="p">(</span><span class="n">st_point</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">),</span><span class="n">st_point</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)),</span>
-<span class="nb">dir</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s">&#39;B&#39;</span>   <span class="o">--</span> <span class="n">both</span> <span class="n">ways</span>
-           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s">&#39;FT&#39;</span>  <span class="o">--</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESSTRING</span>
-           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s">&#39;TF&#39;</span>  <span class="o">--</span> <span class="n">reverse</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESTRING</span>
-           <span class="n">ELSE</span> <span class="s">&#39;&#39;</span> <span class="n">END</span><span class="p">;</span>                                <span class="o">--</span> <span class="n">unknown</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;B&#39;</span>   <span class="o">--</span> <span class="n">both</span> <span class="n">ways</span>
+           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;FT&#39;</span>  <span class="o">--</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESSTRING</span>
+           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;TF&#39;</span>  <span class="o">--</span> <span class="n">reverse</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESTRING</span>
+           <span class="n">ELSE</span> <span class="s1">&#39;&#39;</span> <span class="n">END</span><span class="p">;</span>                                <span class="o">--</span> <span class="n">unknown</span>
 
 </pre></div>
 </div>
@@ -220,7 +220,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <ul class="simple">
 <li>Before you test a routing function use this query to create a topology (fills the <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">target</span></code> columns).</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">);</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">);</span>
 
 </pre></div>
 </div>
@@ -229,7 +229,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <li>When points outside of the graph.</li>
 <li>Used with the <a class="reference internal" href="withPoints-family.html#withpoints"><span class="std std-ref">withPoints - Family of functions</span></a> functions.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">pointsOfInterest</span><span class="p">(</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">pointsOfInterest</span><span class="p">(</span>
     <span class="n">pid</span> <span class="n">BIGSERIAL</span><span class="p">,</span>
     <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span>
     <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span>
@@ -241,12 +241,12 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <span class="p">);</span>
 
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">fraction</span><span class="p">)</span> <span class="n">VALUES</span>
-<span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
-<span class="p">(</span><span class="mf">4.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span>  <span class="mi">15</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
-<span class="p">(</span><span class="mf">2.6</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span>  <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span>
-<span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span>   <span class="mi">6</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
-<span class="p">(</span><span class="mf">2.9</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span>   <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
-<span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">);</span>
+<span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">4.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span>  <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">2.6</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span>  <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span>   <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">2.9</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span>   <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">);</span>
 <span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="n">st_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 
 <span class="n">UPDATE</span> <span class="n">pointsOfInterest</span>
@@ -259,7 +259,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <ul class="simple">
 <li>Used with the <a class="reference internal" href="pgr_trsp.html#trsp"><span class="std std-ref">pgr_trsp - Turn Restriction Shortest Path (TRSP)</span></a> functions.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
     <span class="n">rid</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
     <span class="n">to_cost</span> <span class="n">FLOAT</span><span class="p">,</span>
     <span class="n">target_id</span> <span class="n">BIGINT</span><span class="p">,</span>
@@ -280,7 +280,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <ul class="simple">
 <li>Used with the <a class="reference internal" href="flow-family.html#maxflow"><span class="std std-ref">Flow - Family of functions</span></a> functions.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span class="o">/*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">categories</span> <span class="p">(</span>
     <span class="n">category_id</span> <span class="n">INTEGER</span><span class="p">,</span>
     <span class="n">category</span> <span class="n">text</span><span class="p">,</span>
@@ -288,10 +288,10 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <span class="p">);</span>
 
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">categories</span> <span class="n">VALUES</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;Category 1&#39;</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;Category 2&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;Category 3&#39;</span><span class="p">,</span>  <span class="mi">80</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">&#39;Category 4&#39;</span><span class="p">,</span>  <span class="mi">50</span><span class="p">);</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Category 1&#39;</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Category 2&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Category 3&#39;</span><span class="p">,</span>  <span class="mi">80</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Category 4&#39;</span><span class="p">,</span>  <span class="mi">50</span><span class="p">);</span>
 <span class="o">*/</span>
 </pre></div>
 </div>
@@ -299,7 +299,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <ul class="simple">
 <li>Used in some deprecated signatures or deprecated functions.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
 <span class="o">--</span> <span class="n">TODO</span> <span class="n">check</span> <span class="k">if</span> <span class="n">this</span> <span class="n">table</span> <span class="ow">is</span> <span class="n">still</span> <span class="n">used</span>
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertex_table</span> <span class="p">(</span>
     <span class="nb">id</span> <span class="n">SERIAL</span><span class="p">,</span>
@@ -352,7 +352,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 </div>
 <div class="section" id="pick-deliver-data">
 <span id="pickdeliverdata"></span><h3>Pick &amp; Deliver Data<a class="headerlink" href="#pick-deliver-data" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
 <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">customer</span> <span class="n">CASCADE</span><span class="p">;</span>
 <span class="n">CREATE</span> <span class="n">table</span> <span class="n">customer</span> <span class="p">(</span>
     <span class="nb">id</span> <span class="n">BIGINT</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
@@ -363,7 +363,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
     <span class="n">closetime</span> <span class="n">INTEGER</span><span class="p">,</span>
     <span class="n">servicetime</span> <span class="n">INTEGER</span><span class="p">,</span>
     <span class="n">pindex</span> <span class="n">BIGINT</span><span class="p">,</span>
-    <span class="n">dindex</span> <span class="n">BIGINT</span> 
+    <span class="n">dindex</span> <span class="n">BIGINT</span>
 <span class="p">);</span>
 
 
@@ -494,9 +494,9 @@ To be able to execute the sample queries, run the following SQL commands to crea
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
-      Last updated on Nov 12, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.0.<br/>
+      Last updated on Mar 26, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

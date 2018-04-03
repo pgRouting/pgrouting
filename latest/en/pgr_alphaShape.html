@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_alphaShape &#8212; pgRouting Manual (2.5)</title>
+    <title>pgr_alphaShape &#8212; pgRouting Manual (2.6)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.2',
+        VERSION:     'v2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -123,11 +123,11 @@
               
                 
   <li>
-    <a href="drivingDistance-category.html" title="Previous Chapter: Driving Distance - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Driving Distance...</span>
+    <a href="drivingDistance-category.html" title="Previous Chapter: Driving Distance - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Driving Dista...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_pointsAsPolygon.html" title="Next Chapter: pgr_pointsAsPolygon"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pointsAsPoly... &raquo;</span>
+    <a href="pgr_pointsAsPolygon.html" title="Next Chapter: pgr_pointsAsPolygon"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pointsAsPolygon &raquo;</span>
     </a>
   </li>
               
@@ -164,7 +164,7 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Returns a table with (x, y) rows that describe the vertices of an alpha shape.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">table</span><span class="p">()</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span> <span class="p">[,</span> <span class="n">float8</span> <span class="n">alpha</span><span class="p">]);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">table</span><span class="p">()</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span> <span class="p">[,</span> <span class="n">float8</span> <span class="n">alpha</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
@@ -175,7 +175,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">text</span></code> a SQL query, which should return a set of rows with the following columns:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_table</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_table</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -222,10 +222,10 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
 <p>PgRouting’s alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
 The first query, has the output ordered, he second query shows an example usage:</p>
 <p class="rubric">Example: the (ordered) results</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
-    <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s">&#39;) ORDER BY x, y;</span>
-  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>  
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
+    <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;) ORDER BY x, y;</span>
+  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>
 <span class="o">-----+-----</span>
    <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span>
  <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span>
@@ -241,31 +241,29 @@ The first query, has the output ordered, he second query shows an example usage:
 </div>
 <p class="rubric">Example: calculating the area</p>
 <p>Steps:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>Calculates the alpha shape</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>the <code class="code docutils literal"><span class="pre">ORDER</span> <span class="pre">BY</span></code> clause is not used.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">constructs a polygon</p>
-</li>
-<li><p class="first">and computes the area</p>
-</li>
+<li>constructs a polygon</li>
+<li>and computes the area</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="nb">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_MakePolygon</span><span class="p">(</span><span class="n">ST_AddPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">,</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">))))::</span><span class="n">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">st_area</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_MakePolygon</span><span class="p">(</span><span class="n">ST_AddPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">,</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">))))::</span><span class="n">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">st_area</span>
 <span class="n">FROM</span> <span class="p">(</span>
     <span class="n">SELECT</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">points</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">openline</span>
     <span class="n">FROM</span> <span class="p">(</span>
         <span class="n">SELECT</span> <span class="n">ST_MakePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">AS</span> <span class="n">points</span><span class="p">,</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="n">AS</span> <span class="nb">id</span>
         <span class="n">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span>
-            <span class="s">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
-            <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s">&#39;)</span>
+            <span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
+            <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;)</span>
         <span class="p">)</span> <span class="n">AS</span> <span class="n">a</span>
    <span class="p">)</span> <span class="n">AS</span> <span class="n">foo</span><span class="p">;</span>
- <span class="n">st_area</span> 
+ <span class="n">st_area</span>
 <span class="o">---------</span>
    <span class="mf">11.75</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -300,9 +298,9 @@ The first query, has the output ordered, he second query shows an example usage:
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
-      Last updated on Nov 12, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.0.<br/>
+      Last updated on Mar 26, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

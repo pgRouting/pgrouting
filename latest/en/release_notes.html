@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Release Notes &#8212; pgRouting Manual (2.5)</title>
+    <title>Release Notes &#8212; pgRouting Manual (2.6)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.2',
+        VERSION:     'v2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,12 +23,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="pgr_lineGraph - Experimental" href="pgr_lineGraph.html" />
+    <link rel="prev" title="Transformation - Family of functions" href="transformation-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -48,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -106,6 +106,8 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Release Notes</a><ul>
+<li><a class="reference internal" href="#pgrouting-2-6-0-release-notes">pgRouting 2.6.0 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-2-5-3-release-notes">pgRouting 2.5.3 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-5-2-release-notes">pgRouting 2.5.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-5-1-release-notes">pgRouting 2.5.1 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-5-0-release-notes">pgRouting 2.5.0 Release Notes</a></li>
@@ -146,7 +148,7 @@
               
                 
   <li>
-    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph - ...</span>
+    <a href="transformation-family.html" title="Previous Chapter: Transformation - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
     </a>
   </li>
               
@@ -179,6 +181,8 @@
 <p>To see the full list of changes check the list of <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> on Github.</p>
 <p class="rubric">Table of contents</p>
 <ul class="simple">
+<li><a class="reference internal" href="#changelog-2-6-0"><span class="std std-ref">pgRouting 2.6.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-5-3"><span class="std std-ref">pgRouting 2.5.3 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-5-2"><span class="std std-ref">pgRouting 2.5.2 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-5-1"><span class="std std-ref">pgRouting 2.5.1 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-5-0"><span class="std std-ref">pgRouting 2.5.0 Release Notes</span></a></li>
@@ -198,12 +202,52 @@
 <li><a class="reference internal" href="#changelog-2-0-0"><span class="std std-ref">pgRouting 2.0.0 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x Release Notes</span></a></li>
 </ul>
+<div class="section" id="pgrouting-2-6-0-release-notes">
+<span id="changelog-2-6-0"></span><h2>pgRouting 2.6.0 Release Notes<a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22%20">Git closed milestone for 2.6.0</a> on Github.</p>
+<p class="rubric">New fexperimental functions</p>
+<ul class="simple">
+<li>pgr_lineGraphFull</li>
+</ul>
+<p class="rubric">Bug fixes</p>
+<ul class="simple">
+<li>Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])<ul>
+<li>without restrictions<ul>
+<li>calls pgr_dijkstra when both end points have a fraction IN (0,1)</li>
+<li>calls pgr_withPoints when at least one fraction NOT IN (0,1)</li>
+</ul>
+</li>
+<li>with restrictions<ul>
+<li>calls original trsp code</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Internal code</p>
+<ul class="simple">
+<li>Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, text])<ul>
+<li>Removed the use of pointers</li>
+<li>Internal code can accept BIGINT</li>
+</ul>
+</li>
+<li>Cleaned the internal code of withPoints</li>
+</ul>
+</div>
+<div class="section" id="pgrouting-2-5-3-release-notes">
+<span id="changelog-2-5-3"></span><h2>pgRouting 2.5.3 Release Notes<a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.3%22%20">Git closed milestone for 2.5.3</a> on Github.</p>
+<p class="rubric">Bug fixes</p>
+<ul class="simple">
+<li>Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL</li>
+</ul>
+</div>
 <div class="section" id="pgrouting-2-5-2-release-notes">
 <span id="changelog-2-5-2"></span><h2>pgRouting 2.5.2 Release Notes<a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.2%22%20">Git closed milestone for 2.5.2</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Fix for postgresql 10.1: Removed a copiler condition</li>
+<li>Fix for postgresql 10.1: Removed a compiler condition</li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-1-release-notes">
@@ -253,6 +297,7 @@
 <li>pgr_bdDijkstraCost(many to many)</li>
 <li>pgr_bdDijkstraCostMatrix</li>
 <li>pgr_lineGraph</li>
+<li>pgr_lineGraphFull</li>
 <li>pgr_connectedComponents</li>
 <li>pgr_strongComponents</li>
 <li>pgr_biconnectedComponents</li>
@@ -700,9 +745,9 @@ The following release notes have been copied from the previous <code class="docu
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
-      Last updated on Nov 12, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.0.<br/>
+      Last updated on Mar 26, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

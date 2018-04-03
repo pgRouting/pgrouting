@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_johnson &#8212; pgRouting Manual (2.5)</title>
+    <title>pgr_johnson &#8212; pgRouting Manual (2.6)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.2',
+        VERSION:     'v2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -133,7 +133,7 @@
               
                 
   <li>
-    <a href="pgr_floydWarshall.html" title="Previous Chapter: pgr_floydWarshall"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_floydWarshal...</span>
+    <a href="pgr_floydWarshall.html" title="Previous Chapter: pgr_floydWarshall"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_floydWarshall</span>
     </a>
   </li>
   <li>
@@ -209,7 +209,7 @@ Represent the distance between vertices for which there is no path.<ul>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_johnson(edges_sql)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql)
 pgr johnson(edges_sql, directed)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
@@ -219,7 +219,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_johnson(edges_sql)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
 </div>
@@ -231,11 +231,11 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
-    <span class="s">&#39;SELECT source, target, cost FROM edge_table WHERE id &lt; 5</span>
-         <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s">&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT source, target, cost FROM edge_table WHERE id &lt; 5</span>
+         <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
 <span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
@@ -247,7 +247,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </div>
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_johnson(edges_sql, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql, directed)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
 </div>
@@ -259,12 +259,12 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
-    <span class="s">&#39;SELECT source, target, cost FROM edge_table WHERE id &lt; 5</span>
-         <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s">&#39;,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT source, target, cost FROM edge_table WHERE id &lt; 5</span>
+         <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;,</span>
     <span class="n">false</span>
 <span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span> 
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
@@ -437,9 +437,9 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.2.<br/>
-      Last updated on Nov 12, 2017.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.0.<br/>
+      Last updated on Mar 26, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>
