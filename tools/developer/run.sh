@@ -3,9 +3,9 @@
 set -e
 
 
-# This run.sh is intended for 2.6.0
+# This run.sh is intended for 2.6.1
 if [ -z $1 ]; then
-    VERSION="2.6.0"
+    VERSION="2.6.1"
 else
     VERSION=$1
 fi
@@ -35,7 +35,7 @@ cd build/
 #cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DPgRouting_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
 
 # when more than one postgres version is installed on the computer
-cmake  -DPOSTGRESQL_BIN=/usr/lib/postgresql/$PGSQL_VER/bin -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..  
+cmake  -DPOSTGRESQL_BIN=/usr/lib/postgresql/$PGSQL_VER/bin -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
 
 make
 sudo make install
@@ -51,7 +51,7 @@ echo --------------------------------------------
 tools/testers/algorithm-tester.pl  -alg withPoints -documentation
 
 # - when more than one postgres version is installed on the computer
-tools/testers/algorithm-tester.pl  -alg withPoints -documentation  -pgport $PGPORT 
+tools/testers/algorithm-tester.pl  -alg withPoints -documentation  -pgport $PGPORT
 
 
 echo
@@ -126,7 +126,7 @@ fi
 ########################################################
 #  Execute documentation queries for the whole project
 ########################################################
-tools/testers/algorithm-tester.pl  -documentation  -pgport $PGPORT 
+tools/testers/algorithm-tester.pl  -documentation  -pgport $PGPORT
 
 # update the trsp README.md file
 mv doc/queries/trsp_notes_v${VERSION}.queries doc/doc/trsp/README.md
@@ -144,7 +144,7 @@ fi
 
 
 
-tools/testers/algorithm-tester.pl -documentation  -pgport $PGPORT 
+tools/testers/algorithm-tester.pl -documentation  -pgport $PGPORT
 tools/testers/algorithm-tester.pl -pgport $PGPORT
 
 cd build
@@ -164,7 +164,7 @@ echo $PGPORT
 sh ./tools/testers/pg_prove_tests.sh vicky $PGPORT
 dropdb  -p $PGPORT ___pgr___test___
 
-#tools/testers/update-tester.sh 
+#tools/testers/update-tester.sh
 
 }
 

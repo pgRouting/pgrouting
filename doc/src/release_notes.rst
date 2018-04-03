@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_6_1`
 * :ref:`changelog_2_6_0`
 * :ref:`changelog_2_5_3`
 * :ref:`changelog_2_5_2`
@@ -40,6 +41,12 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_2_6_1:
+
+pgRouting 2.6.1 Release Notes
+-------------------------------------------------------------------------------
+
 
 .. _changelog_2_6_0:
 
