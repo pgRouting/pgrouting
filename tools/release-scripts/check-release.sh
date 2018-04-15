@@ -51,10 +51,10 @@ fi
 #---------------------------------------------------------------------
 
 
-MAYOR=2
-MINOR=6
-MICRO=1
-RC=""
+MAYOR=3
+MINOR=0
+MICRO=0
+RC="-dev"
 PREV_REL=2.6.0
 DEBUG=$1
 BRANCH="release/$MAYOR.$MINOR"
@@ -226,7 +226,8 @@ echo
 echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
-test_file 2.6.1
+test_file 3.0.0
+#test_file 2.6.1
 test_file 2.6.0
 test_file 2.5.3
 test_file 2.5.2
