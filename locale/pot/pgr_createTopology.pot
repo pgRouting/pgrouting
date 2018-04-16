@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,32 +57,66 @@ msgstr ""
 msgid "The topology creation function accepts the following parameters:"
 msgstr ""
 
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "edge_table"
+msgstr ""
+
 #: ../../build/doc/pgr_createTopology.rst:48
 msgid "``text`` Network table name. (may contain the schema name AS well)"
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "tolerance"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:49
 msgid "``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
 msgstr ""
 
+#: ../../build/doc/pgr_createTopology.rst:0
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "the_geom"
+msgstr ""
+
 #: ../../build/doc/pgr_createTopology.rst:50
 msgid "``text``  Geometry column name of the network table. Default value is ``the_geom``."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:0
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "id"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:51
 msgid "``text``  Primary key column name of the network table. Default value is ``id``."
 msgstr ""
 
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "source"
+msgstr ""
+
 #: ../../build/doc/pgr_createTopology.rst:52
 msgid "``text`` Source column name of the network table. Default value is ``source``."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "target"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:53
 msgid "``text``  Target column name of the network table.  Default value is ``target``."
 msgstr ""
 
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "rows_where"
+msgstr ""
+
 #: ../../build/doc/pgr_createTopology.rst:54
 msgid "``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate all rows that where ``source`` or ``target`` have a null value, otherwise the condition is used."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "clean"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:56
@@ -173,16 +207,32 @@ msgstr ""
 msgid "``bigint`` Identifier of the vertex."
 msgstr ""
 
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "cnt"
+msgstr ""
+
 #: ../../build/doc/pgr_createTopology.rst:96
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "chk"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:97
 msgid "``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
 msgstr ""
 
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "ein"
+msgstr ""
+
 #: ../../build/doc/pgr_createTopology.rst:98
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex AS incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:0
+msgid "eout"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:99

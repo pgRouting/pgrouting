@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -357,26 +357,34 @@ msgid ":ref:`pgr_vrp_basic`"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:166
-msgid "Graph Transformation"
+msgid "Graph Operations"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:167
-msgid ":doc:`pgr_lineGraph`"
+msgid ":ref:`transformation` - Maps a given graph to a new form"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:175
+#: ../../build/doc/transformation-family.rst:3
+msgid ":ref:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
+msgstr ""
+
+#: ../../build/doc/transformation-family.rst:4
+msgid ":ref:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:181
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:178
+#: ../../build/doc/proposed.rst:184
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:179
+#: ../../build/doc/proposed.rst:185
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:180
+#: ../../build/doc/proposed.rst:186
 msgid ":ref:`search`"
 msgstr ""
 

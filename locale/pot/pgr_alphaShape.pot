@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,20 +40,42 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: ../../build/doc/pgr_alphaShape.rst:0
+msgid "sql"
+msgstr ""
+
 #: ../../build/doc/pgr_alphaShape.rst:37
 msgid "``text`` a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:0
+msgid "id"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:43
 msgid "``int4`` identifier of the vertex"
 msgstr ""
 
+#: ../../build/doc/pgr_alphaShape.rst:0
+#: ../../build/doc/pgr_alphaShape.rst:0
+msgid "x"
+msgstr ""
+
 #: ../../build/doc/pgr_alphaShape.rst:44
 msgid "``float8`` x-coordinate"
 msgstr ""
 
+#: ../../build/doc/pgr_alphaShape.rst:0
+#: ../../build/doc/pgr_alphaShape.rst:0
+msgid "y"
+msgstr ""
+
 #: ../../build/doc/pgr_alphaShape.rst:45
 msgid "``float8`` y-coordinate"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:0
+msgid "alpha"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:47

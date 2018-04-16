@@ -38,6 +38,7 @@ fi
 
 COMMITS=`git rev-list HEAD --count`
 HASH=`git rev-parse --short HEAD`
-BRANCH="release/2.6"
+BRANCH="release/3.0"
+#BRANCH="master"
 echo $COMMITS-$HASH $BRANCH > $GIT_DIR/../VERSION
 git add $GIT_DIR/../VERSION

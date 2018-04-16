@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,6 +128,11 @@ msgstr ""
 msgid "The minimal signature is for a **directed** graph:"
 msgstr ""
 
+#: ../../build/doc/pgr_lineGraph.rst:0
+#: ../../build/doc/pgr_lineGraph.rst:0
+msgid "Example"
+msgstr ""
+
 #: ../../build/doc/pgr_lineGraph.rst:81
 msgid "Complete Signature"
 msgstr ""
@@ -150,6 +155,10 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the edges_sql query for dijkstra like functions"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "edges_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -249,8 +258,16 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -351,31 +368,27 @@ msgstr ""
 msgid "When `negative`: edge (`target`, `source`) does not exist, therefore it’s not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraph.rst:147
-msgid "Examples"
-msgstr ""
-
-#: ../../build/doc/pgr_lineGraph.rst:154
+#: ../../build/doc/pgr_lineGraph.rst:148
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraph.rst:156
+#: ../../build/doc/pgr_lineGraph.rst:150
 msgid "https://en.wikipedia.org/wiki/Line_graph"
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraph.rst:157
+#: ../../build/doc/pgr_lineGraph.rst:151
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraph.rst:160
+#: ../../build/doc/pgr_lineGraph.rst:154
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraph.rst:161
+#: ../../build/doc/pgr_lineGraph.rst:155
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraph.rst:162
+#: ../../build/doc/pgr_lineGraph.rst:156
 msgid ":ref:`search`"
 msgstr ""
 

@@ -30,7 +30,7 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
 The Floyd-Warshall algorithm, also known as Floyd's algorithm,
 is a good choice to calculate the sum of the costs of the shortest path for each
-pair of nodes in the graph, for *dense graphs*. We make use of the  Boost's
+pair of nodes in the graph, for *dense graphs*. We use Boost's
 implementation which runs in :math:`\Theta(V^3)` time,
 
 

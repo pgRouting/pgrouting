@@ -230,11 +230,14 @@ if (LOCALE)
         "${PGR_DOCUMENTATION_SOURCE_DIR}"
         "${CMAKE_SOURCE_DIR}/locale/pot"
 
-    COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale --language=${SPHINXINTL_LANGUAGE}
+    #COMMAND sphinx-intl update -p ${CMAKE_SOURCE_DIR}/locale/pot -d ${CMAKE_SOURCE_DIR}/locale --language=${SPHINXINTL_LANGUAGE}
+    COMMAND sphinx-intl update-txconfig-resources --locale-dir ${CMAKE_SOURCE_DIR}/locale --pot-dir ${CMAKE_SOURCE_DIR}/locale/pot --transifex-project-name pgrouting
 
-    COMMENT "Generating POT & PO files ..."
+
+    COMMENT "Generating POT files ..."
     SOURCES ${PgRouting_DOC_FILES}
     )
+    return()
 endif()
 
 

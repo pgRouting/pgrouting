@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,17 +113,17 @@ msgid "A connected component of an undirected graph is a set of vertices that ar
 msgstr ""
 
 #: ../../build/doc/components-family.rst:49
-#: ../../build/doc/components-family.rst:183
-#: ../../build/doc/components-family.rst:252
-#: ../../build/doc/components-family.rst:312
+#: ../../build/doc/components-family.rst:196
+#: ../../build/doc/components-family.rst:273
+#: ../../build/doc/components-family.rst:341
 msgid "**Notice**: This problem defines on an undirected graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:51
-#: ../../build/doc/components-family.rst:117
-#: ../../build/doc/components-family.rst:185
-#: ../../build/doc/components-family.rst:254
-#: ../../build/doc/components-family.rst:314
+#: ../../build/doc/components-family.rst:125
+#: ../../build/doc/components-family.rst:198
+#: ../../build/doc/components-family.rst:275
+#: ../../build/doc/components-family.rst:343
 msgid "Given the following query:"
 msgstr ""
 
@@ -132,565 +132,577 @@ msgid "pgr_connectedComponentsV(:math:`sql`)"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:56
-#: ../../build/doc/components-family.rst:122
-#: ../../build/doc/components-family.rst:190
-#: ../../build/doc/components-family.rst:259
-#: ../../build/doc/components-family.rst:319
+#: ../../build/doc/components-family.rst:130
+#: ../../build/doc/components-family.rst:203
+#: ../../build/doc/components-family.rst:280
+#: ../../build/doc/components-family.rst:348
 msgid "where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, reverse\\_cost_i)\\}`"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:58
-#: ../../build/doc/components-family.rst:124
-#: ../../build/doc/components-family.rst:192
-#: ../../build/doc/components-family.rst:261
-#: ../../build/doc/components-family.rst:321
+#: ../../build/doc/components-family.rst:132
+#: ../../build/doc/components-family.rst:205
+#: ../../build/doc/components-family.rst:282
+#: ../../build/doc/components-family.rst:350
 msgid "and"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:60
-#: ../../build/doc/components-family.rst:126
-#: ../../build/doc/components-family.rst:194
-#: ../../build/doc/components-family.rst:263
-#: ../../build/doc/components-family.rst:323
+#: ../../build/doc/components-family.rst:134
+#: ../../build/doc/components-family.rst:207
+#: ../../build/doc/components-family.rst:284
+#: ../../build/doc/components-family.rst:352
 msgid ":math:`source = \\bigcup source_i`,"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:61
-#: ../../build/doc/components-family.rst:127
-#: ../../build/doc/components-family.rst:195
-#: ../../build/doc/components-family.rst:264
-#: ../../build/doc/components-family.rst:324
+#: ../../build/doc/components-family.rst:135
+#: ../../build/doc/components-family.rst:208
+#: ../../build/doc/components-family.rst:285
+#: ../../build/doc/components-family.rst:353
 msgid ":math:`target = \\bigcup target_i`,"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:63
-#: ../../build/doc/components-family.rst:129
-#: ../../build/doc/components-family.rst:197
-#: ../../build/doc/components-family.rst:266
-#: ../../build/doc/components-family.rst:326
+#: ../../build/doc/components-family.rst:137
+#: ../../build/doc/components-family.rst:210
+#: ../../build/doc/components-family.rst:287
+#: ../../build/doc/components-family.rst:355
 msgid "The graphs are defined as follows:"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:65
-#: ../../build/doc/components-family.rst:199
-#: ../../build/doc/components-family.rst:268
-#: ../../build/doc/components-family.rst:328
+#: ../../build/doc/components-family.rst:212
+#: ../../build/doc/components-family.rst:289
+#: ../../build/doc/components-family.rst:357
 msgid "The weighted undirected graph, :math:`G(V,E)`, is definied by:"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:67
-#: ../../build/doc/components-family.rst:133
-#: ../../build/doc/components-family.rst:201
-#: ../../build/doc/components-family.rst:270
-#: ../../build/doc/components-family.rst:330
+#: ../../build/doc/components-family.rst:141
+#: ../../build/doc/components-family.rst:214
+#: ../../build/doc/components-family.rst:291
+#: ../../build/doc/components-family.rst:359
 msgid "the set of vertices  :math:`V`"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:69
-#: ../../build/doc/components-family.rst:203
-#: ../../build/doc/components-family.rst:272
-#: ../../build/doc/components-family.rst:332
+#: ../../build/doc/components-family.rst:216
+#: ../../build/doc/components-family.rst:293
+#: ../../build/doc/components-family.rst:361
 msgid ":math:`V = source \\cup target`"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:72
-#: ../../build/doc/components-family.rst:137
-#: ../../build/doc/components-family.rst:206
-#: ../../build/doc/components-family.rst:275
-#: ../../build/doc/components-family.rst:335
+#: ../../build/doc/components-family.rst:145
+#: ../../build/doc/components-family.rst:219
+#: ../../build/doc/components-family.rst:296
+#: ../../build/doc/components-family.rst:364
 msgid "the set of edges :math:`E`"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:74
-#: ../../build/doc/components-family.rst:208
-#: ../../build/doc/components-family.rst:277
-#: ../../build/doc/components-family.rst:337
-msgid ":math:`E = \\begin{cases} &\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} \\\\ \\cup &\\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  &\\quad  \\text{ if } reverse\\_cost = \\varnothing \\\\ \\\\ &\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} \\\\ \\cup &\\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} \\\\ \\cup &\\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} \\\\ \\cup &\\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} &\\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+#: ../../build/doc/components-family.rst:221
+#: ../../build/doc/components-family.rst:298
+#: ../../build/doc/components-family.rst:366
+msgid ":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & \\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup  \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:77
-#: ../../build/doc/components-family.rst:142
-#: ../../build/doc/components-family.rst:211
-#: ../../build/doc/components-family.rst:280
-#: ../../build/doc/components-family.rst:340
+#: ../../build/doc/components-family.rst:85
+#: ../../build/doc/components-family.rst:155
+#: ../../build/doc/components-family.rst:232
+#: ../../build/doc/components-family.rst:309
+#: ../../build/doc/components-family.rst:377
 msgid "Given:"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:79
-#: ../../build/doc/components-family.rst:144
-#: ../../build/doc/components-family.rst:213
-#: ../../build/doc/components-family.rst:282
-#: ../../build/doc/components-family.rst:342
+#: ../../build/doc/components-family.rst:87
+#: ../../build/doc/components-family.rst:157
+#: ../../build/doc/components-family.rst:234
+#: ../../build/doc/components-family.rst:311
+#: ../../build/doc/components-family.rst:379
 msgid ":math:`G(V,E)`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:81
-#: ../../build/doc/components-family.rst:146
-#: ../../build/doc/components-family.rst:215
-#: ../../build/doc/components-family.rst:284
-#: ../../build/doc/components-family.rst:344
+#: ../../build/doc/components-family.rst:89
+#: ../../build/doc/components-family.rst:159
+#: ../../build/doc/components-family.rst:236
+#: ../../build/doc/components-family.rst:313
+#: ../../build/doc/components-family.rst:381
 msgid "Then:"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:89
-#: ../../build/doc/components-family.rst:154
-#: ../../build/doc/components-family.rst:223
+#: ../../build/doc/components-family.rst:97
+#: ../../build/doc/components-family.rst:167
+#: ../../build/doc/components-family.rst:244
 msgid ":math:`\\boldsymbol{\\pi} = \\{(component_i, n\\_seq_i, node_i)\\}`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:98
-#: ../../build/doc/components-family.rst:163
-#: ../../build/doc/components-family.rst:232
-#: ../../build/doc/components-family.rst:298
-#: ../../build/doc/components-family.rst:358
+#: ../../build/doc/components-family.rst:106
+#: ../../build/doc/components-family.rst:176
+#: ../../build/doc/components-family.rst:253
+#: ../../build/doc/components-family.rst:327
+#: ../../build/doc/components-family.rst:395
 msgid "where:"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:92
+#: ../../build/doc/components-family.rst:100
 msgid ":math:`component_i = \\min \\{node_j | node_j \\in component_i\\}`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:93
-#: ../../build/doc/components-family.rst:158
-#: ../../build/doc/components-family.rst:227
+#: ../../build/doc/components-family.rst:101
+#: ../../build/doc/components-family.rst:171
+#: ../../build/doc/components-family.rst:248
 msgid ":math:`n\\_seq_i` is a sequential value starting from **1** in a component."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:94
-#: ../../build/doc/components-family.rst:159
+#: ../../build/doc/components-family.rst:102
+#: ../../build/doc/components-family.rst:172
 msgid ":math:`node_i \\in component_i`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:95
-#: ../../build/doc/components-family.rst:160
-#: ../../build/doc/components-family.rst:229
-#: ../../build/doc/components-family.rst:296
-#: ../../build/doc/components-family.rst:356
+#: ../../build/doc/components-family.rst:103
+#: ../../build/doc/components-family.rst:173
+#: ../../build/doc/components-family.rst:250
+#: ../../build/doc/components-family.rst:325
+#: ../../build/doc/components-family.rst:393
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:97
-#: ../../build/doc/components-family.rst:162
-#: ../../build/doc/components-family.rst:231
+#: ../../build/doc/components-family.rst:105
+#: ../../build/doc/components-family.rst:175
+#: ../../build/doc/components-family.rst:252
 msgid "`component` ascending"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:98
-#: ../../build/doc/components-family.rst:163
-#: ../../build/doc/components-family.rst:298
+#: ../../build/doc/components-family.rst:106
+#: ../../build/doc/components-family.rst:176
+#: ../../build/doc/components-family.rst:327
 msgid "`node` ascending"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:103
-#: ../../build/doc/components-family.rst:170
-#: ../../build/doc/components-family.rst:239
-#: ../../build/doc/components-family.rst:301
-#: ../../build/doc/components-family.rst:361
+#: ../../build/doc/components-family.rst:111
+#: ../../build/doc/components-family.rst:183
+#: ../../build/doc/components-family.rst:260
+#: ../../build/doc/components-family.rst:330
+#: ../../build/doc/components-family.rst:398
 msgid "Example:"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:101
+#: ../../build/doc/components-family.rst:109
 msgid "The first component is composed of nodes ``0``, ``1`` and ``4``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:102
+#: ../../build/doc/components-family.rst:110
 msgid "The second component is composed of node ``3``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:103
+#: ../../build/doc/components-family.rst:111
 msgid "The third component is composed of nodes ``2`` and ``5``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:111
+#: ../../build/doc/components-family.rst:119
 msgid "Strongly connected components"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:112
+#: ../../build/doc/components-family.rst:120
 msgid "A strongly connected component of a directed graph is a set of vertices that are all reachable from each other."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:115
+#: ../../build/doc/components-family.rst:123
 msgid "**Notice**: This problem defines on a directed graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:120
+#: ../../build/doc/components-family.rst:128
 msgid "pgr_strongComponentsV(:math:`sql`)"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:131
+#: ../../build/doc/components-family.rst:139
 msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:135
+#: ../../build/doc/components-family.rst:143
 msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:139
-msgid ":math:`E = \\begin{cases} &\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &\\quad  \\text{ if } reverse\\_cost = \\varnothing \\\\ \\\\ &\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} \\\\ \\cup &\\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} &\\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:157
-#: ../../build/doc/components-family.rst:226
-msgid ":math:`component_i = \\min {node_j | node_j \\in component_i}`"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:166
-msgid "The first component is composed of nodes ``1``, ``2`` and ``4``."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:167
-msgid "The second component is composed of node ``0``."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:168
-msgid "The third component is composed of node ``3``."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:169
-msgid "The fourth component is composed of node ``5``."
+#: ../../build/doc/components-family.rst:147
+msgid ":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & \\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:170
+#: ../../build/doc/components-family.rst:247
+msgid ":math:`component_i = \\min {node_j | node_j \\in component_i}`"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:179
+msgid "The first component is composed of nodes ``1``, ``2`` and ``4``."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:180
+msgid "The second component is composed of node ``0``."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:181
+msgid "The third component is composed of node ``3``."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:182
+msgid "The fourth component is composed of node ``5``."
+msgstr ""
+
+#: ../../build/doc/components-family.rst:183
 msgid "The fifth component is composed of node ``6``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:177
+#: ../../build/doc/components-family.rst:190
 msgid "Biconnected components"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:178
+#: ../../build/doc/components-family.rst:191
 msgid "The biconnected components of an undirected graph are the maximal subsets of vertices such that the removal of a vertex from particular component will not disconnect the component. Unlike connected components, vertices may belong to multiple biconnected components. Vertices can be present in multiple biconnected components, but each edge can only be contained in a single biconnected component. So, the output only has edge version."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:188
+#: ../../build/doc/components-family.rst:201
 msgid "pgr_biconnectedComponents(:math:`sql`)"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:228
+#: ../../build/doc/components-family.rst:249
 msgid ":math:`edge_i \\in component_i`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:232
-#: ../../build/doc/components-family.rst:358
+#: ../../build/doc/components-family.rst:253
+#: ../../build/doc/components-family.rst:395
 msgid "`edge` ascending"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:235
+#: ../../build/doc/components-family.rst:256
 msgid "The first component is composed of edges ``1 - 2``, ``0 - 1`` and ``0 - 2``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:236
+#: ../../build/doc/components-family.rst:257
 msgid "The second component is composed of edges ``2 - 4``, ``2 - 3`` and ``3 - 4``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:237
+#: ../../build/doc/components-family.rst:258
 msgid "The third component is composed of edge ``5 - 6``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:238
+#: ../../build/doc/components-family.rst:259
 msgid "The fourth component is composed of edge ``6 - 7``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:239
+#: ../../build/doc/components-family.rst:260
 msgid "The fifth component is composed of edges ``8 - 9``, ``9 - 10`` and ``8 - 10``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:246
+#: ../../build/doc/components-family.rst:267
 msgid "Articulation Points"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:247
+#: ../../build/doc/components-family.rst:268
 msgid "Those vertices that belong to more than one biconnected component are called articulation points or, equivalently, cut vertices. Articulation points are vertices whose removal would increase the number of connected components in the graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:257
+#: ../../build/doc/components-family.rst:278
 msgid "pgr_articulationPoints(:math:`sql`)"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:292
+#: ../../build/doc/components-family.rst:321
 msgid ":math:`\\boldsymbol{\\pi} = \\{node_i\\}`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:295
+#: ../../build/doc/components-family.rst:324
 msgid ":math:`node_i` is an articulation point."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:301
+#: ../../build/doc/components-family.rst:330
 msgid "Articulation points are nodes ``2`` and ``6``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:308
+#: ../../build/doc/components-family.rst:337
 msgid "Bridges"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:309
+#: ../../build/doc/components-family.rst:338
 msgid "A bridge is an edge of an undirected graph whose deletion increases its number of connected components."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:317
+#: ../../build/doc/components-family.rst:346
 msgid "pgr_bridges(:math:`sql`)"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:352
+#: ../../build/doc/components-family.rst:389
 msgid ":math:`\\boldsymbol{\\pi} = \\{edge_i\\}`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:355
+#: ../../build/doc/components-family.rst:392
 msgid ":math:`edge_i` is an edge."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:361
+#: ../../build/doc/components-family.rst:398
 msgid "Bridges are edges ``5 <--> 6`` and ``6 <--> 7``."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:370
+#: ../../build/doc/components-family.rst:407
 msgid "Description of the edges_sql query for components functions"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:372
+#: ../../build/doc/components-family.rst:0
+msgid "edges_sql"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:409
 msgid "an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:375
-#: ../../build/doc/components-family.rst:421
-#: ../../build/doc/components-family.rst:440
+#: ../../build/doc/components-family.rst:412
 #: ../../build/doc/components-family.rst:458
-#: ../../build/doc/components-family.rst:474
+#: ../../build/doc/components-family.rst:477
+#: ../../build/doc/components-family.rst:495
+#: ../../build/doc/components-family.rst:511
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:375
-#: ../../build/doc/components-family.rst:405
-#: ../../build/doc/components-family.rst:421
-#: ../../build/doc/components-family.rst:440
+#: ../../build/doc/components-family.rst:412
+#: ../../build/doc/components-family.rst:442
 #: ../../build/doc/components-family.rst:458
-#: ../../build/doc/components-family.rst:474
+#: ../../build/doc/components-family.rst:477
+#: ../../build/doc/components-family.rst:495
+#: ../../build/doc/components-family.rst:511
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:375
-#: ../../build/doc/components-family.rst:405
+#: ../../build/doc/components-family.rst:412
+#: ../../build/doc/components-family.rst:442
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:375
-#: ../../build/doc/components-family.rst:405
-#: ../../build/doc/components-family.rst:421
-#: ../../build/doc/components-family.rst:440
+#: ../../build/doc/components-family.rst:412
+#: ../../build/doc/components-family.rst:442
 #: ../../build/doc/components-family.rst:458
-#: ../../build/doc/components-family.rst:474
+#: ../../build/doc/components-family.rst:477
+#: ../../build/doc/components-family.rst:495
+#: ../../build/doc/components-family.rst:511
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:377
+#: ../../build/doc/components-family.rst:414
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:377
-#: ../../build/doc/components-family.rst:378
-#: ../../build/doc/components-family.rst:379
+#: ../../build/doc/components-family.rst:414
+#: ../../build/doc/components-family.rst:415
+#: ../../build/doc/components-family.rst:416
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:377
-#: ../../build/doc/components-family.rst:445
-#: ../../build/doc/components-family.rst:477
+#: ../../build/doc/components-family.rst:414
+#: ../../build/doc/components-family.rst:482
+#: ../../build/doc/components-family.rst:514
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:378
+#: ../../build/doc/components-family.rst:415
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:378
+#: ../../build/doc/components-family.rst:415
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:379
+#: ../../build/doc/components-family.rst:416
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:379
+#: ../../build/doc/components-family.rst:416
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:380
+#: ../../build/doc/components-family.rst:417
 msgid "**cost**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:380
-#: ../../build/doc/components-family.rst:384
+#: ../../build/doc/components-family.rst:417
+#: ../../build/doc/components-family.rst:421
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:380
+#: ../../build/doc/components-family.rst:417
 msgid "Weight of the edge  `(source, target)`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:382
+#: ../../build/doc/components-family.rst:419
 msgid "When negative: edge `(source, target)` does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:384
+#: ../../build/doc/components-family.rst:421
 msgid "**reverse_cost**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:384
+#: ../../build/doc/components-family.rst:421
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:384
+#: ../../build/doc/components-family.rst:421
 msgid "Weight of the edge `(target, source)`,"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:386
+#: ../../build/doc/components-family.rst:423
 msgid "When negative: edge `(target, source)` does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:390
+#: ../../build/doc/components-family.rst:427
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:392
+#: ../../build/doc/components-family.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:429
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:393
+#: ../../build/doc/components-family.rst:0
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:430
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:402
+#: ../../build/doc/components-family.rst:439
 msgid "Description of the parameters of the signatures"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:405
+#: ../../build/doc/components-family.rst:442
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:407
+#: ../../build/doc/components-family.rst:444
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:407
+#: ../../build/doc/components-family.rst:444
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:407
+#: ../../build/doc/components-family.rst:444
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:416
+#: ../../build/doc/components-family.rst:453
 msgid "Description of the return values for connected components and strongly connected components"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:418
+#: ../../build/doc/components-family.rst:455
 msgid "Returns set of ``(seq, component, n_seq, node)``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:423
-#: ../../build/doc/components-family.rst:442
 #: ../../build/doc/components-family.rst:460
-#: ../../build/doc/components-family.rst:476
+#: ../../build/doc/components-family.rst:479
+#: ../../build/doc/components-family.rst:497
+#: ../../build/doc/components-family.rst:513
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:423
-#: ../../build/doc/components-family.rst:425
-#: ../../build/doc/components-family.rst:442
-#: ../../build/doc/components-family.rst:444
 #: ../../build/doc/components-family.rst:460
-#: ../../build/doc/components-family.rst:476
+#: ../../build/doc/components-family.rst:462
+#: ../../build/doc/components-family.rst:479
+#: ../../build/doc/components-family.rst:481
+#: ../../build/doc/components-family.rst:497
+#: ../../build/doc/components-family.rst:513
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:423
-#: ../../build/doc/components-family.rst:442
 #: ../../build/doc/components-family.rst:460
-#: ../../build/doc/components-family.rst:476
+#: ../../build/doc/components-family.rst:479
+#: ../../build/doc/components-family.rst:497
+#: ../../build/doc/components-family.rst:513
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:424
-#: ../../build/doc/components-family.rst:443
+#: ../../build/doc/components-family.rst:461
+#: ../../build/doc/components-family.rst:480
 msgid "**component**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:424
-#: ../../build/doc/components-family.rst:426
-#: ../../build/doc/components-family.rst:443
-#: ../../build/doc/components-family.rst:445
 #: ../../build/doc/components-family.rst:461
-#: ../../build/doc/components-family.rst:477
+#: ../../build/doc/components-family.rst:463
+#: ../../build/doc/components-family.rst:480
+#: ../../build/doc/components-family.rst:482
+#: ../../build/doc/components-family.rst:498
+#: ../../build/doc/components-family.rst:514
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:424
+#: ../../build/doc/components-family.rst:461
 msgid "Component identifier. It is equal to the minimum node identifier in the component."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:425
-#: ../../build/doc/components-family.rst:444
+#: ../../build/doc/components-family.rst:462
+#: ../../build/doc/components-family.rst:481
 msgid "**n_seq**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:425
-#: ../../build/doc/components-family.rst:444
+#: ../../build/doc/components-family.rst:462
+#: ../../build/doc/components-family.rst:481
 msgid "It is a sequential value starting from **1** in a component."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:426
-#: ../../build/doc/components-family.rst:461
+#: ../../build/doc/components-family.rst:463
+#: ../../build/doc/components-family.rst:498
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:426
-#: ../../build/doc/components-family.rst:461
+#: ../../build/doc/components-family.rst:463
+#: ../../build/doc/components-family.rst:498
 msgid "Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:435
+#: ../../build/doc/components-family.rst:472
 msgid "Description of the return values for biconnected components, connected components (edge version) and strongly connected components"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:437
+#: ../../build/doc/components-family.rst:474
 msgid "Returns set of ``(seq, component, n_seq, edge)``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:443
+#: ../../build/doc/components-family.rst:480
 msgid "Component identifier. It is equal to the minimum edge identifier in the component."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:445
-#: ../../build/doc/components-family.rst:477
+#: ../../build/doc/components-family.rst:482
+#: ../../build/doc/components-family.rst:514
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:453
+#: ../../build/doc/components-family.rst:490
 msgid "Description of the return values for articulation points"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:455
-#: ../../build/doc/components-family.rst:471
+#: ../../build/doc/components-family.rst:492
+#: ../../build/doc/components-family.rst:508
 msgid "Returns set of ``(seq, node)``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:469
+#: ../../build/doc/components-family.rst:506
 msgid "Description of the return values for bridges"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:483
+#: ../../build/doc/components-family.rst:520
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:486
+#: ../../build/doc/components-family.rst:523
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:487
+#: ../../build/doc/components-family.rst:524
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:488
+#: ../../build/doc/components-family.rst:525
 msgid ":ref:`search`"
 msgstr ""
 

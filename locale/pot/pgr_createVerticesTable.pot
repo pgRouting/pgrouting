@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,20 +59,41 @@ msgstr ""
 msgid "The reconstruction of the vertices table  function accepts the following parameters:"
 msgstr ""
 
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "edge_table"
+msgstr ""
+
 #: ../../build/doc/pgr_createVerticesTable.rst:46
 msgid "``text`` Network table name. (may contain the schema name as well)"
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "the_geom"
 msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:47
 msgid "``text``  Geometry column name of the network table. Default value is ``the_geom``."
 msgstr ""
 
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "source"
+msgstr ""
+
 #: ../../build/doc/pgr_createVerticesTable.rst:48
 msgid "``text`` Source column name of the network table. Default value is ``source``."
 msgstr ""
 
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "target"
+msgstr ""
+
 #: ../../build/doc/pgr_createVerticesTable.rst:49
 msgid "``text``  Target column name of the network table.  Default value is ``target``."
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "rows_where"
 msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:50
@@ -135,20 +156,40 @@ msgstr ""
 msgid "The structure of the vertices table is:"
 msgstr ""
 
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "id"
+msgstr ""
+
 #: ../../build/doc/pgr_createVerticesTable.rst:82
 msgid "``bigint`` Identifier of the vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "cnt"
 msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:83
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
 msgstr ""
 
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "chk"
+msgstr ""
+
 #: ../../build/doc/pgr_createVerticesTable.rst:84
 msgid "``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
 msgstr ""
 
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "ein"
+msgstr ""
+
 #: ../../build/doc/pgr_createVerticesTable.rst:85
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:0
+msgid "eout"
 msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:86

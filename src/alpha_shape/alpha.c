@@ -122,7 +122,7 @@ static void compute_alpha_shape(
   int SPIcode;
   void *SPIplan;
   Portal SPIportal;
-  bool moredata = TRUE;
+  bool moredata = true;
   size_t ntuples;
   vertex_t *vertices = NULL;
   size_t total_tuples = 0;
@@ -153,8 +153,8 @@ static void compute_alpha_shape(
       return;
     }
 
-  while (moredata == TRUE) {
-      SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
+  while (moredata == true) {
+      SPI_cursor_fetch(SPIportal, true, TUPLIMIT);
 
       if (vertex_columns.id == -1) {
           if (fetch_vertices_columns(SPI_tuptable, &vertex_columns) == -1)
@@ -185,7 +185,7 @@ static void compute_alpha_shape(
             }
           SPI_freetuptable(tuptable);
         } else {
-          moredata = FALSE;
+          moredata = false;
         }
     }
 
