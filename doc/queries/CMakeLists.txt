@@ -9,7 +9,6 @@ SET(LOCAL_FILES
     doc-ksp.queries
     doc-pgr_boykovKolmogorov.queries
     doc-pgr_edmondsKarp.queries
-    doc-pgr_pushRelabel.queries
     doc-pgr_withPointsVia.queries
     doc-astar.queries
     doc-pgr_alphashape.queries
