@@ -9,6 +9,7 @@ SET(LOCAL_FILES
     doc-ksp.queries
     doc-pgr_boykovKolmogorov.queries
     doc-pgr_edmondsKarp.queries
+    doc-pgr_pushRelabel.queries
     doc-pgr_withPointsVia.queries
     doc-astar.queries
     doc-pgr_alphashape.queries
@@ -25,7 +26,6 @@ SET(LOCAL_FILES
     doc-contraction.queries
     doc-pgr_bdAstarCost.queries
     doc-pgr_dijkstra.queries
-    doc-pgr_labelGraph.queries
     doc-pgr_withPointsCost.queries
     doc-trsp.queries
     doc-floydWarshall.queries
