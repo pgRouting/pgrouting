@@ -487,5 +487,10 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     OUT target BIGINT
     )
   RETURNS SETOF RECORD AS
- '${MODULE_PATHNAME}', 'maximum_cardinality_matching'
-    LANGUAGE c VOLATILE;
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_maxCardinalityMatch($1, $2);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
