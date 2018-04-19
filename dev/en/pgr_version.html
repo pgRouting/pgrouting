@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_version &#8212; pgRouting Manual (2.6-dev)</title>
+    <title>pgr_version &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.6.0-dev',
+        VERSION:     'v3.0.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.6.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -214,25 +214,14 @@
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Query for full version string</li>
+<li>Query for the version string</li>
 </ul>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">version</span> <span class="n">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
  <span class="n">version</span>
 <span class="o">---------</span>
- <span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span>
+ <span class="mf">3.0</span><span class="o">.</span><span class="mi">0</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
-</pre></div>
-</div>
-<ul class="simple">
-<li>Query for <code class="docutils literal"><span class="pre">version</span></code> and <code class="docutils literal"><span class="pre">boost</span></code> attribute</li>
-</ul>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">version</span><span class="p">,</span> <span class="n">boost</span> <span class="k">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
-
-  <span class="k">version</span>  <span class="o">|</span> <span class="n">boost</span>
-<span class="c1">-----------+--------</span>
- <span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">49</span><span class="p">.</span><span class="mi">0</span>
-<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -258,8 +247,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Jan 22, 2018.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
+      Last updated on Apr 19, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

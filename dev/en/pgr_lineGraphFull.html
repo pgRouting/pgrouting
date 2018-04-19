@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (2.6-dev)</title>
+    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.6.0-dev',
+        VERSION:     'v3.0.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.6.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -193,18 +193,28 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>pgr_lineGraphFull, converts original directed graph to a directed line graph by converting each vertex to a complete graph and keeping all the original edges. The new connecting edges have a cost 0 and go between the adjacent original edges, respecting the directionality.</p>
-<p>A possible application of the resulting graph is “routing with two edge restrictions”:
-- Setting a cost of using the vertex when routing between edges on the connecting edge
-- Forbid the routing between two edges by removing the connecting edge</p>
+<dl class="docutils">
+<dt>A possible application of the resulting graph is “routing with two edge restrictions”:</dt>
+<dd><ul class="first last simple">
+<li>Setting a cost of using the vertex when routing between edges on the connecting edge</li>
+<li>Forbid the routing between two edges by removing the connecting edge</li>
+</ul>
+</dd>
+</dl>
 <p>This is possible because each of the intersections (vertices) in the original graph are now complete graphs that have a new edge for each possible turn across that intersection.</p>
 </div>
 <div class="section" id="characteristics">
 <h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
-<p>The main characteristics are:
-- This function is for directed graphs.
-- Results are undefined when a negative vertex id is used in the input graph.
-- Results are undefined when a duplicated edge id is used in the input graph.
-- Running time: TBD</p>
+<dl class="docutils">
+<dt>The main characteristics are:</dt>
+<dd><ul class="first last simple">
+<li>This function is for directed graphs.</li>
+<li>Results are undefined when a negative vertex id is used in the input graph.</li>
+<li>Results are undefined when a duplicated edge id is used in the input graph.</li>
+<li>Running time: TBD</li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
@@ -232,43 +242,41 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </tbody>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraphFull</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+      <span class="n">FROM</span> <span class="n">edge_table</span>
+      <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="s1">&#39;</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">edge</span>
 <span class="o">-----+--------+--------+------+------</span>
-   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-   <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
-   <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
-   <span class="mi">6</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-   <span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-   <span class="mi">9</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">10</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
-  <span class="mi">11</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
-  <span class="mi">12</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
-  <span class="mi">13</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">14</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">15</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">16</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">17</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
-  <span class="mi">18</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
-  <span class="mi">19</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">20</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
-  <span class="mi">21</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">22</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">23</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
-  <span class="mi">24</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">12</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span>
-  <span class="mi">25</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">26</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">12</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">27</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span>
-  <span class="mi">28</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">13</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">29</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">14</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">13</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
-  <span class="mi">30</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
-  <span class="mi">31</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
-  <span class="mi">32</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span>
-<span class="p">(</span><span class="mi">32</span> <span class="n">rows</span><span class="p">)</span>
+   <span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">4</span>
+   <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">7</span>
+   <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">9</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">10</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">11</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">12</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">13</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">14</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">15</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">16</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">17</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">18</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">19</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">20</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">21</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">22</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">23</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+  <span class="mi">24</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">25</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">8</span>
+  <span class="mi">26</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">27</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">10</span>
+  <span class="mi">28</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">28</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -405,15 +413,188 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </div>
 <div class="section" id="example-for-creating-table-that-identifies-transformed-vertices">
 <h2>Example for creating table that identifies transformed vertices<a class="headerlink" href="#example-for-creating-table-that-identifies-transformed-vertices" title="Permalink to this headline">¶</a></h2>
-<p>The vertices in the transformed graph are each created by splitting up the vertices in the original graph.
-Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph.
-One of the newly created vertices in the transformed graph will have the same vertex-id as the vertex that it was created from in the original graph,
-but the rest of the newly created vertices will have negative vertex ids.</p>
-<p>Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from.</p>
+<p>The vertices in the transformed graph are each created by splitting up the vertices in the original graph. Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph. One of the newly created vertices in the transformed graph will be given the same vertex-id as the vertex that it was created from in the original graph, but the rest of the newly created vertices will have negative vertex ids. Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from</p>
+<p>The first step is to store your results graph into a table and then create the vertex mapping table with one row for each distinct vertex id in the results graph.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>CREATE TABLE lineGraph_edges AS SELECT * FROM pgr_lineGraphFull(
+    $$SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id IN (4,7,8,10)$$
+);
+SELECT 28
+CREATE TABLE lineGraph_vertices AS
+SELECT *, NULL::BIGINT AS original_id
+FROM (SELECT source AS id FROM lineGraph_edges
+    UNION
+    SELECT target FROM lineGraph_edges) as foo
+ORDER BY id;
+SELECT 16
+</pre></div>
+</div>
+<p>Next, we set the original_id of all of the vertices in the results graph that were given the same vertex id as the vertex that it was created from in the original graph.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">r</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
+  <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">AS</span> <span class="n">v</span>
+  <span class="n">WHERE</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Then, we cross reference all of the other newly created vertices that do not have the same original_id and set their original_id values.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">unassignedVertices</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">original_id</span>
+       <span class="n">FROM</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">e</span>
+       <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">edgesWithUnassignedSource</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+        <span class="n">WHERE</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">source</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertices</span><span class="p">)),</span>
+<span class="n">edgesWithUnassignedSourcePlusVertices</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span>
+        <span class="n">FROM</span> <span class="n">edgesWithUnassignedSource</span>
+        <span class="n">JOIN</span> <span class="n">lineGraph_vertices</span>
+        <span class="n">ON</span><span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="nb">id</span><span class="p">)),</span>
+<span class="n">verticesFromEdgesWithUnassignedSource</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">edgesWithUnassignedSourcePlusVertices</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+                      <span class="n">edgesWithUnassignedSourcePlusVertices</span><span class="o">.</span><span class="n">original_id</span>
+        <span class="n">FROM</span> <span class="n">edgesWithUnassignedSourcePlusVertices</span>
+        <span class="n">JOIN</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">r</span>
+        <span class="n">ON</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">r</span><span class="o">.</span><span class="n">original_id</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">verticesFromEdgesWithUnassignedSource</span><span class="o">.</span><span class="n">original_id</span>
+  <span class="n">FROM</span> <span class="n">verticesFromEdgesWithUnassignedSource</span>
+  <span class="n">WHERE</span> <span class="n">verticesFromEdgesWithUnassignedSource</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">8</span>
+<span class="n">WITH</span>
+<span class="n">unassignedVertices</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">original_id</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">e</span>
+        <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">edgesWithUnassignedTarget</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+        <span class="n">WHERE</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">target</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertices</span><span class="p">)),</span>
+<span class="n">edgesWithUnassignedTargetPlusVertices</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span>
+        <span class="n">FROM</span> <span class="n">edgesWithUnassignedTarget</span>
+        <span class="n">JOIN</span> <span class="n">lineGraph_vertices</span>
+        <span class="n">ON</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="nb">id</span><span class="p">)),</span>
+<span class="n">verticesFromEdgesWithUnassignedTarget</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">edgesWithUnassignedTargetPlusVertices</span><span class="o">.</span><span class="n">source</span><span class="p">,</span>
+                     <span class="n">edgesWithUnassignedTargetPlusVertices</span><span class="o">.</span><span class="n">original_id</span>
+        <span class="n">FROM</span> <span class="n">edgesWithUnassignedTargetPlusVertices</span>
+        <span class="n">JOIN</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">r</span>
+        <span class="n">ON</span><span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">r</span><span class="o">.</span><span class="n">original_id</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">verticesFromEdgesWithUnassignedTarget</span><span class="o">.</span><span class="n">original_id</span>
+  <span class="n">FROM</span> <span class="n">verticesFromEdgesWithUnassignedTarget</span>
+  <span class="n">WHERE</span> <span class="n">verticesFromEdgesWithUnassignedTarget</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>The only vertices left that have not been mapped are a few of the leaf vertices from the original graph. The following sql completes the mapping for these leaf vertices (in the case of this example graph there are no leaf vertices but this is necessary for larger graphs).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">unassignedVertexIds</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_vertices</span>
+        <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">edgesWithUnassignedSource</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span><span class="n">edge</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+        <span class="n">WHERE</span> <span class="n">source</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertexIds</span><span class="p">)),</span>
+<span class="n">originalEdgesWithUnassignedSource</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">source</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span>
+        <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge</span> <span class="n">FROM</span> <span class="n">edgesWithUnassignedSource</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">d</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">source</span>
+                       <span class="n">FROM</span> <span class="n">originalEdgesWithUnassignedSource</span>
+                       <span class="n">WHERE</span> <span class="n">originalEdgesWithUnassignedSource</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span>
+                         <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge</span>
+                            <span class="n">FROM</span> <span class="n">edgesWithUnassignedSource</span>
+                            <span class="n">WHERE</span> <span class="n">edgesWithUnassignedSource</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+  <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertexIds</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">0</span>
+<span class="n">WITH</span>
+<span class="n">unassignedVertexIds</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_vertices</span>
+        <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">edgesWithUnassignedTarget</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">target</span><span class="p">,</span><span class="n">edge</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+        <span class="n">WHERE</span> <span class="n">target</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertexIds</span><span class="p">)),</span>
+<span class="n">originalEdgesWithUnassignedTarget</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">target</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span>
+        <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge</span> <span class="n">FROM</span> <span class="n">edgesWithUnassignedTarget</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">d</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">target</span>
+                       <span class="n">FROM</span> <span class="n">originalEdgesWithUnassignedTarget</span>
+                       <span class="n">WHERE</span> <span class="n">originalEdgesWithUnassignedTarget</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span>
+                         <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge</span>
+                            <span class="n">FROM</span> <span class="n">edgesWithUnassignedTarget</span>
+                            <span class="n">WHERE</span> <span class="n">edgesWithUnassignedTarget</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+  <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertexIds</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Now our vertex mapping table is complete:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lineGraph_vertices</span><span class="p">;</span>
+ <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
+<span class="o">-----+-------------</span>
+   <span class="mi">2</span> <span class="o">|</span>           <span class="mi">2</span>
+   <span class="mi">5</span> <span class="o">|</span>           <span class="mi">5</span>
+   <span class="mi">6</span> <span class="o">|</span>           <span class="mi">6</span>
+   <span class="mi">8</span> <span class="o">|</span>           <span class="mi">8</span>
+  <span class="mi">10</span> <span class="o">|</span>          <span class="mi">10</span>
+ <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>          <span class="mi">10</span>
+ <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>           <span class="mi">6</span>
+  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>           <span class="mi">8</span>
+  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">2</span>
+  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>           <span class="mi">5</span>
+<span class="p">(</span><span class="mi">16</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
 </div>
 <div class="section" id="example-for-running-a-dijkstra-s-shortest-path-with-turn-penalties">
 <h2>Example for running a dijkstra’s shortest path with turn penalties<a class="headerlink" href="#example-for-running-a-dijkstra-s-shortest-path-with-turn-penalties" title="Permalink to this headline">¶</a></h2>
 <p>One use case for this graph transformation is to be able to run a shortest path search that takes into account the cost or limitation of turning. Below is an example of running a dijkstra’s shortest path from vertex 2 to vertex 8 in the original graph, while adding a turn penalty cost of 100 to the turn from edge 4 to edge -7.</p>
+<p>First we must increase set the cost of making the turn to 100:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
+  <span class="n">SET</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">100</span>
+  <span class="n">WHERE</span> <span class="n">source</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">target</span>
+                     <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+                     <span class="n">WHERE</span> <span class="n">edge</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="n">AND</span> <span class="n">target</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">source</span>
+                                                      <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+                                                      <span class="n">WHERE</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Then we must run a dijkstra’s shortest path search using all of the vertices in the new graph that were created from vertex 2 as the starting point, and all of the vertices in the new graph that were created from vertex 8 as the ending point.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM
+  (SELECT * FROM
+    (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM lineGraph_edges$$,
+      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 2),
+      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 8)
+    )) as shortestPaths
+  WHERE start_vid = 2 AND end_vid = 8 AND (cost != 0 OR edge = -1)) as b;
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+  29 |        2 |         2 |       8 |   -1 |    1 |    1 |        0
+  31 |        4 |         2 |       8 |   -4 |    5 |    1 |        1
+  33 |        6 |         2 |       8 |  -10 |   25 |    1 |        2
+  35 |        8 |         2 |       8 |   -3 |    4 |    1 |        3
+  36 |        9 |         2 |       8 |    8 |   -1 |    0 |        4
+(5 rows)
+
+</pre></div>
+</div>
 <p>Normally the shortest path from vertex 2 to vertex 8 would have an aggregate cost of 2, but since there is a large penalty for making the turn needed to get this cost, the route goes through vertex 6 to avoid this turn.</p>
 <p>If you cross reference the node column in the dijkstra results with the vertex id mapping table, this will show you that the path goes from v2 -&gt; v5 -&gt; v6 -&gt; v5 -&gt; v8 in the original graph.</p>
 </div>
@@ -443,8 +624,8 @@ but the rest of the newly created vertices will have negative vertex ids.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.6.0-dev.<br/>
-      Last updated on Jan 22, 2018.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
+      Last updated on Apr 19, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
