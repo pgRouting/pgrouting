@@ -47,7 +47,12 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
-No change yet
+.. rubric:: Moved to legacy
+
+* Experimental functions
+
+  * pgr_labelGraph  -  Use the components family of functions instead.
+
 
 .. _changelog_2_6_0:
 
