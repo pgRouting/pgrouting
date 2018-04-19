@@ -47,14 +47,17 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
-No change yet
+.. rubric:: Moved to legacy
 
-* Renamed on version 2.5.0
+* Experimental functions
 
-  * pgr_maxFlowPushRelabel
-  * pgr_maxFlowBoykovKolmogorov
-  * pgr_maxFlowEdmondsKarp
-  * pgr_maximumcardinalitymatching
+  * pgr_labelGraph  -  Use the components family of functions instead.
+  * Max flow - functions were renamed on v2.5.0
+
+    * pgr_maxFlowPushRelabel
+    * pgr_maxFlowBoykovKolmogorov
+    * pgr_maxFlowEdmondsKarp
+    * pgr_maximumcardinalitymatching
 
 .. _changelog_2_6_0:
 
