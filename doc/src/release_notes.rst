@@ -49,6 +49,13 @@ pgRouting 3.0.0 Release Notes
 
 No change yet
 
+* Renamed on version 2.5.0
+
+  * pgr_maxFlowPushRelabel
+  * pgr_maxFlowBoykovKolmogorov
+  * pgr_maxFlowEdmondsKarp
+  * pgr_maximumcardinalitymatching
+
 .. _changelog_2_6_0:
 
 pgRouting 2.6.0 Release Notes
