@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015 ~ pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -20,6 +20,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
+----------------------------------------------------------------------------
+-- Experimental function: pgr_labelGraph
+-- Original developer: Zia Mohammed
+--
+-- Availability:
+--   - from v2.1
+--   - up to v2.6
+--   - moved to legacy on v3.0
+--
+-- Use Components family of functions instead
+----------------------------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION pgr_labelGraph(
                 edge_table text,
                 id text default 'id',
@@ -192,3 +205,292 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
+----------------------------------------------------------------------------
+-- Experimental functions:
+--   pgr_maxFlowPushRelabel
+--   pgr_maximumcardinalitymatching
+--   pgr_maxFlowBoykovKolmogorov
+--   pgr_maxFlowEdmondsKarp
+--
+-- Original developer: Andrea Nardelli
+-- mail: nrd.nardelli@gmail.com
+--
+-- Availability:
+--   - from v2.3
+--   - renamed on v2.5
+--   - moved old names to legacy on v3.0
+--
+-- Use current names of Flow family of functions instead
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+--   pgr_maxFlowPushRelabel
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_PushRelabel($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_PushRelabel($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_PushRelabel($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_PushRelabel($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+----------------------------------------------------------------------------
+--   pgr_maxFlowBoykovKolmogorov
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_boykovKolmogorov($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_boykovKolmogorov($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_boykovKolmogorov($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_boykovKolmogorov($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+----------------------------------------------------------------------------
+--   pgr_maxFlowEdmondsKarp
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_edmondsKarp($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_edmondsKarp($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_edmondsKarp($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_edmondsKarp($1, $2, $3);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+
+----------------------------------------------------------------------------
+--   pgr_maximumcardinalitymatching
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
+    edges_sql TEXT,
+    directed BOOLEAN DEFAULT TRUE,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_maxCardinalityMatch($1, $2);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;

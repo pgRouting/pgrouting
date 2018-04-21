@@ -52,7 +52,12 @@ pgRouting 3.0.0 Release Notes
 * Experimental functions
 
   * pgr_labelGraph  -  Use the components family of functions instead.
+  * Max flow - functions were renamed on v2.5.0
 
+    * pgr_maxFlowPushRelabel
+    * pgr_maxFlowBoykovKolmogorov
+    * pgr_maxFlowEdmondsKarp
+    * pgr_maximumcardinalitymatching
 
 .. _changelog_2_6_0:
 

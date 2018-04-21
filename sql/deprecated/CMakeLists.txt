@@ -12,9 +12,6 @@ SET(LOCAL_FILES
     pgr_vidsToDMatrix.sql
     dijkstra_v2.sql
     routing_dd.sql
-    maximum_cardinality_matching.sql
-    max_flow-deprecated.sql
-    deprecated-comments.sql
     )
 
 foreach (f ${LOCAL_FILES})
