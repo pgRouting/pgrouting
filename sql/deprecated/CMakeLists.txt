@@ -10,7 +10,6 @@ SET(LOCAL_FILES
     pgrouting_conversion_tools.sql
     pgrouting_dmatrix_tools.sql
     pgr_vidsToDMatrix.sql
-    dijkstra_v2.sql
     routing_dd.sql
     )
 
