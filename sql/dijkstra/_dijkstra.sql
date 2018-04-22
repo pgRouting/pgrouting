@@ -31,6 +31,7 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
     normal BOOLEAN DEFAULT true,
+    n_goals BIGINT DEFAULT 0,
 
     OUT seq integer,
     OUT path_seq integer,
