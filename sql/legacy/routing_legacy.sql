@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015  ~ pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
@@ -24,7 +24,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
--- V2 signature
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_dijkstra
+-- Developer:  Vicky Vergara
+--
+--
+-- Availability:
+--   - from v2.0
+--   - up to v2.1 (not including)
+--   - moved to legacy on v3.0
+--
+-- Use the new signatures of pgr_dijkstra instead
+----------------------------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
     edges_sql TEXT,
     start_vid INTEGER,
@@ -37,7 +50,6 @@ DECLARE
 has_reverse BOOLEAN;
 sql TEXT;
 BEGIN
-    RAISE NOTICE 'Deprecated function';
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
     sql = edges_sql;
     IF (has_reverse != has_rcost) THEN
@@ -55,5 +67,4 @@ $BODY$
 LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
-COMMENT ON FUNCTION pgr_dijkstra( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN) IS 'pgr_dijkstra(Deprecated signature)';
 

@@ -155,7 +155,6 @@ Experimental Functions
 
   contraction-family
   flow-family
-  pgr_labelGraph
   components-family
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot

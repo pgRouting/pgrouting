@@ -34,6 +34,7 @@ RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
 inner_sql TEXT;
+inner_sql_d TEXT;
 dijkstra_sql TEXT;
 astar_sql TEXT;
 BEGIN
@@ -43,16 +44,19 @@ BEGIN
 
             -- DIRECTED
             inner_sql := 'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true, true)';
+            dijkstra_sql := 'SELECT seq - 1::INTEGER, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+                || ', true)';
 
             astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true, true)';
             RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
 
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true, false)';
 
+            inner_sql_d := 'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2 FROM edge_table';
+            dijkstra_sql := 'SELECT seq - 1, node, edge, cost  FROM pgr_dijkstra($$' || inner_sql_d || '$$, ' || i || ', ' || j
+                || ', true)';
+
+            -- user contradiction
             astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true, false)';
             RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
@@ -60,8 +64,8 @@ BEGIN
 
 
             inner_sql := 'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2 FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true, false)';
+            dijkstra_sql := 'SELECT seq - 1, node, edge, cost  FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+                || ', true)';
 
             astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true, false)';
@@ -75,15 +79,15 @@ BEGIN
 
             -- UNDIRECTED
             inner_sql := 'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false, true)';
+            dijkstra_sql := 'SELECT seq - 1, node, edge, cost  FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+                || ', false)';
 
             astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false, true)';
             RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
 
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false, false)';
+            dijkstra_sql := 'SELECT seq - 1, node, edge, cost  FROM pgr_dijkstra($$' || inner_sql_d || '$$, ' || i || ', ' || j
+                || ', false)';
 
             astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false, false)';
@@ -92,8 +96,8 @@ BEGIN
 
 
             inner_sql := 'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2 FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false, false)';
+            dijkstra_sql := 'SELECT seq - 1, node, edge, cost  FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+                || ', false)';
 
             astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false, false)';
