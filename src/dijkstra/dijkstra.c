@@ -6,7 +6,7 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -52,6 +52,7 @@ process(
         bool directed,
         bool only_cost,
         bool normal,
+        int64_t n_goals,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -98,6 +99,7 @@ process(
             directed,
             only_cost,
             normal,
+            n_goals,
 
             result_tuples,
             result_count,
@@ -162,6 +164,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 PG_GETARG_BOOL(5),
+                PG_GETARG_INT64(6),
                 &result_tuples,
                 &result_count);
 
