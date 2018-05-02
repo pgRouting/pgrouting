@@ -16,8 +16,9 @@ https://github.com/pgRouting/pgrouting/releases
 
 ## LINKS
 
-* http://pgrouting.org/
-* http://docs.pgrouting.org/
+* https://pgrouting.org/
+* https://docs.pgrouting.org/
+* https://workshop.pgrouting.org/
 * https://github.com/pgRouting/pgrouting
 
 <table>
@@ -118,7 +119,7 @@ User's reqirements
 
 ## INSTALLATION
 
-See online documentation: http://docs.pgrouting.org/
+See online documentation: https://docs.pgrouting.org/
 
 ## COMPILATION
 
@@ -152,7 +153,7 @@ Postgresql 9.2+
 
 ## USAGE
 
-See online documentation: http://docs.pgrouting.org/dev/en/index.html
+See online documentation: https://docs.pgrouting.org/dev/en/index.html
 
 ## LICENSE
 
