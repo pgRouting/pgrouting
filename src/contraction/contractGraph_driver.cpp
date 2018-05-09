@@ -66,6 +66,8 @@ static void process_contraction(
         std::ostringstream &log,
         std::ostringstream &err) {
     graph.insert_edges(edges);
+    
+    #if 0
     /*
      * this check does not ignore vertices ids that do not belong to the graph
      */
@@ -76,11 +78,15 @@ static void process_contraction(
             return;
         }
     }
+    #endif
 
     Identifiers<typename G::V> forbid_vertices;
     for (const auto &vertex : forbidden_vertices) {
         if (graph.has_vertex(vertex)) {
             forbid_vertices += graph.get_V(vertex);
+        }
+        else {
+            err << "Invalid forbidden vertex: " << vertex << "\n";
         }
     }
 
