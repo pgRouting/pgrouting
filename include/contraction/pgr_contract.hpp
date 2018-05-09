@@ -88,8 +88,8 @@ class Pgr_contract {
             Identifiers<V> forbidden_vertices,
             std::vector<int64_t> contraction_order,
             int64_t max_cycles,
-            Identifiers<int64_t> &remaining_vertices,
-            std::vector<pgrouting::CH_edge> &shortcut_edges,
+            //Identifiers<int64_t> &remaining_vertices,
+            //std::vector<pgrouting::CH_edge> &shortcut_edges,
             std::ostringstream& debug) {
         std::deque<int64_t> contract_order;
         //  push -1 to indicate the start of the queue
@@ -146,12 +146,14 @@ class Pgr_contract {
                 }
             }
         }
+        #if 0
         remaining_vertices = graph.get_changed_vertices();
         debug << "Printing shortcuts\n";
         for (auto shortcut : graph.shortcuts) {
             debug << shortcut;
             shortcut_edges.push_back(shortcut);
         }
+        #endif
     }
 
 #if 0

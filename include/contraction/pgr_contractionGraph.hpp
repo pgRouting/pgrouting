@@ -293,6 +293,45 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
          shortcuts.push_back(edge);
      }
+
+
+
+     bool is_contracted(V v) {
+        return this->graph[v].has_contracted_vertices();
+     }
+
+     bool is_contracted(E e) {
+        return this->graph[e].id < -1;
+     }
+
+     void get_remaining_vertices(Identifiers<int64_t>& remaining_vertices) {
+        V vi;
+        for (auto vi = vertices(this->graph).first;
+                vi != vertices(this->graph).second;
+                ++vi) {
+            if (is_contracted(*vi)) {
+                remaining_vertices += this->graph[*vi].id;
+            }
+        }
+    }
+
+     void get_shortcuts(std::vector< CH_edge >& shortcut_edges) {
+         V vi;
+         EO_i out, out_end;
+         for (auto vi = vertices(this->graph).first;
+                vi != vertices(this->graph).second;
+                ++vi) {
+            if ((*vi) >= this->num_vertices()) break;
+         
+            for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
+                    out != out_end; ++out) {
+
+                if (is_contracted(*out)) {
+                    shortcut_edges.push_back(this->graph[*out]);
+                }
+            }
+        }
+     }
 };
 
 }  // namespace graph
