@@ -71,15 +71,37 @@ ROWS 1000;
 ---
 --- Use the new signatures of pgr_drivingDistance instead
 -----------------------------------------------------------------------------
--CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
--RETURNS SETOF pgr_costresult AS
--$BODY$
--    SELECT seq - 1, node::INTEGER, edge::INTEGER, agg_cost
--    FROM pgr_drivingDistance($1, ARRAY[$2]::BIGINT[], $3, $4);
--$BODY$
--LANGUAGE sql VOLATILE
--COST 100
--ROWS 1000;
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+RETURNS SETOF pgr_costresult AS
+$BODY$
+    SELECT seq - 1, node::INTEGER, edge::INTEGER, agg_cost
+    FROM pgr_drivingDistance($1, ARRAY[$2]::BIGINT[], $3, $4);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_ksp
+-- Developer:  Vicky Vergara
+--
+--
+-- Availability:
+--   - Created on v2.0.0
+--   - Deprecated on v2.1.0
+--   - moved to legacy on v3.0
+--
+-- Use the new signature of pgr_KSP instead
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid integer, end_vid integer, k integer, has_rcost boolean)
+RETURNS SETOF pgr_costresult3 AS
+$BODY$
+    SELECT ((row_number() over()) -1)::integer,  (path_id - 1)::integer, node::integer, edge::integer, cost
+    FROM pgr_ksp($1::text, $2::BIGINT, $3::BIGINT, $4, TRUE, FALSE) WHERE path_id <= k;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 ----------------------------------------------------------------------------
 -- Routing function: pgr_kdijkstraPath
@@ -133,4 +155,3 @@ $BODY$
 LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
-
