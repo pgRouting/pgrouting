@@ -27,13 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/components/articulationPoints_driver.h"
+#include "drivers/mcmf/minCostMaxFlow_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "components/pgr_components.hpp"
+#include "mcmf/pgr_minCostMaxFlow.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -50,20 +50,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-std::vector<pgr_components_rt>
-pgr_articulationPoints(
+std::vector<pgr_mcmf_t>
+pgr_minCostMaxFlow(
         G &graph) {
-    std::vector<pgr_components_rt> results;
-    Pgr_components< G > fn_components;
-    return fn_components.articulationPoints(graph);
+    std::vector<pgr_mcmf_t> results;
+    Pgr_mcmf< G > fn_mcmf;
+    return fn_mcmf.minCostMaxFlow(graph);
 }
 
 
 void
-do_pgr_articulationPoints(
+do_pgr_mcmf(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        pgr_components_rt **return_tuples,
+        pgr_mcmf_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -81,13 +81,13 @@ do_pgr_articulationPoints(
 
         graphType gType = UNDIRECTED;
 
-        std::vector<pgr_components_rt> results;
+        std::vector<pgr_mcmf_t> results;
 
-        log << "Working with Undirected Graph\n";
-        pgrouting::ComponentsUndiGraph undigraph(gType);
+        log << "Working with Directed Graph\n";
+        pgrouting::McmfDiGraph digraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_articulationPoints(
-                undigraph);
+        results = pgr_minCostMaxFlow(
+                digraph);
 
         auto count = results.size();
 
