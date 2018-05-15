@@ -31,9 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --
 --
 -- Availability:
---   - from v2.0
---   - up to v2.1 (not including)
---   - moved to legacy on v3.0
+--   - Created on v2.0.0
+--   - Deprecated signature on v2.1.0
+--   - Moved to legacy on v3.0
 --
 -- Use the new signatures of pgr_dijkstra instead
 ----------------------------------------------------------------------------
@@ -50,21 +50,65 @@ DECLARE
 has_reverse BOOLEAN;
 sql TEXT;
 BEGIN
-    has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
-    sql = edges_sql;
-    IF (has_reverse != has_rcost) THEN
-        IF (has_reverse) THEN
-            sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
-        ELSE
-            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
-        END IF;
-    END IF;
-
     RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
     FROM _pgr_dijkstra(sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
   END
 $BODY$
 LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_kdijkstraPath
+-- Developer: Steve Woodbridge
+--
+-- Availability:
+--   - Created on v2.0.0
+--   - Deprecated signature on v2.2.0
+--   - Moved to legacy on v3.0
+--
+-- Use the new signatures of pgr_dijkstra instead
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
+    sql text,
+    source INTEGER,
+    targets INTEGER ARRAY,
+    directed BOOLEAN,
+    has_rcost BOOLEAN)
+RETURNS SETOF pgr_costResult3 AS
+$BODY$
+SELECT (row_number() over () -1)::integer, end_vid::INTEGER, node::INTEGER, edge::INTEGER, cost
+FROM pgr_dijkstra($1, $2, $3, $4);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_kdijkstraCost
+-- Developer: Steve Woodbridge
+--
+-- Availability:
+--   - Created on v2.0.0
+--   - Deprecated signature on v2.2.0
+--   - Moved to legacy on v3.0
+--
+-- Use the new signatures of pgr_dijkstraCost instead
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_kdijkstracost(
+    sql text,
+    source INTEGER,
+    targets INTEGER array,
+    directed BOOLEAN,
+    has_rcost BOOLEAN)
+RETURNS SETOF pgr_costResult AS
+$BODY$
+  SELECT (row_number() over () -1)::integer, start_vid::integer, end_vid::INTEGER, agg_cost
+  FROM pgr_dijkstraCost($1, $2, $3, $4);
+$BODY$
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
