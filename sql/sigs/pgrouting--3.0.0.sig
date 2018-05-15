@@ -7,8 +7,6 @@ pgr_geomresult
 pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)
 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
-pgr_apspjohnson(text)
-pgr_apspwarshall(text,boolean,boolean)
 _pgr_array_reverse(anyarray)
 pgr_articulationpoints(text)
 pgr_astarcostmatrix(text,anyarray,boolean,integer,double precision,double precision)

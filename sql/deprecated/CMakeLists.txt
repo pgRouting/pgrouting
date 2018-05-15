@@ -1,8 +1,6 @@
 
 SET(LOCAL_FILES
     noUnderUtilities.sql
-    apsp_johnson_v2.2.sql
-    apsp_warshall_v2.2.sql
     astarV2.0.sql
     bd_astar_v2.sql
     bdDijkstra-v2.sql

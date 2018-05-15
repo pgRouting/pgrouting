@@ -155,3 +155,51 @@ $BODY$
 LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_apspJohnson
+-- Developer:  Vicky Vergara
+--
+--
+-- Availability:
+--   - Created on v2.0.0
+--   - Deprecated on v2.2.0
+--   - Moved to legacy on v3.0
+--
+-- Use the new signatures of pgr_johnson instead
+----------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION pgr_apspJohnson(edges_sql text)
+RETURNS SETOF pgr_costResult AS
+$BODY$
+    SELECT (row_number() over () - 1)::INTEGER, start_vid::INTEGER, end_vid::INTEGER, agg_cost
+    FROM  pgr_johnson($1, TRUE);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+
+
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_apspWarshall
+-- Developer:  Vicky Vergara
+--
+--
+-- Availability:
+--   - Created on v2.0.0
+--   - Deprecated on v2.2.0
+--   - Moved to legacy on v3.0
+--
+-- Use the new signatures of pgr_floydWarshall instead
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_apspWarshall(edges_sql text, directed BOOLEAN, has_rcost BOOLEAN)
+RETURNS SETOF pgr_costResult AS
+$BODY$
+    SELECT (row_number() over () -1)::INTEGER, start_vid::INTEGER, end_vid::INTEGER, agg_cost
+    FROM  pgr_floydWarshall($1, $2);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
