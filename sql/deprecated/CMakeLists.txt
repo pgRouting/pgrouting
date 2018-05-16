@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
     noUnderUtilities.sql
-    astarV2.0.sql
     bd_astar_v2.sql
     bdDijkstra-v2.sql
     pgrouting_conversion_tools.sql

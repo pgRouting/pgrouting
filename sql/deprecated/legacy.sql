@@ -18,16 +18,6 @@
 
 
 
--- Deprecated on 2.3.0
-CREATE OR REPLACE FUNCTION pgr_astar(edges_sql TEXT, source_id INTEGER, target_id INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
-RETURNS SETOF pgr_costresult AS
-$BODY$
-    SELECT seq - 1, node::INTEGER, edge::INTEGER, cost
-    FROM pgr_astar($1, ARRAY[$2], ARRAY[$3], $4);
-$BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
 
 
 

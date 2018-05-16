@@ -203,3 +203,31 @@ $BODY$
 LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_astar
+-- Developer:  Vicky Vergara
+--
+--
+-- Availability:
+--   - Created on v2.0.0
+--   - Deprecated on v2.3.0
+--   - Moved to legacy on v3.0
+--
+-- Use the new signatures of pgr_aStar instead
+----------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION pgr_astar(edges_sql TEXT, source_id INTEGER, target_id INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
+RETURNS SETOF pgr_costresult AS
+$BODY$
+DECLARE
+has_reverse BOOLEAN;
+sql TEXT;
+BEGIN
+    RETURN query SELECT seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+    FROM pgr_astar(sql, ARRAY[$2], ARRAY[$3], directed);
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
