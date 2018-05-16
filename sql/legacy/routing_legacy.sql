@@ -59,6 +59,28 @@ COST 100
 ROWS 1000;
 
 
+-----------------------------------------------------------------------------
+--- Routing function: pgr_drivingDistance
+--- Developer:  Vicky Vergara
+---
+---
+--- Availability:
+---   - Created on v2.0.0
+---   - Deprecated on  v2.1.0
+---   - moved to legacy on v3.0.0
+---
+--- Use the new signatures of pgr_drivingDistance instead
+-----------------------------------------------------------------------------
+-CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+-RETURNS SETOF pgr_costresult AS
+-$BODY$
+-    SELECT seq - 1, node::INTEGER, edge::INTEGER, agg_cost
+-    FROM pgr_drivingDistance($1, ARRAY[$2]::BIGINT[], $3, $4);
+-$BODY$
+-LANGUAGE sql VOLATILE
+-COST 100
+-ROWS 1000;
+
 ----------------------------------------------------------------------------
 -- Routing function: pgr_kdijkstraPath
 -- Developer: Steve Woodbridge
