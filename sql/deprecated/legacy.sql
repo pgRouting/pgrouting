@@ -10,25 +10,6 @@
 -- I do not know yet if they will create a conflict when putting the legacy
 
 -- Deprecated signature on 2.1.0
-CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    edges_sql TEXT,
-    start_vid INTEGER,
-    end_vid INTEGER,
-    directed BOOLEAN,
-    has_rcost BOOLEAN)
-RETURNS SETOF pgr_costresult AS
-$BODY$
-    SELECT seq-1 , node::integer, edge::integer, cost
-    FROM pgr_dijkstra($1, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed);
-$BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
-
-
-
-
--- Deprecated signature on 2.1.0
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
 RETURNS SETOF pgr_costresult AS
 $BODY$
@@ -81,39 +62,6 @@ LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
-
--- Deprecated on 2.2.0
-CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
-    sql text,
-    source INTEGER,
-    targets INTEGER ARRAY,
-    directed BOOLEAN,
-    has_rcost BOOLEAN)
-RETURNS SETOF pgr_costResult3 AS
-$BODY$
-    SELECT (row_number() over () -1)::integer, end_vid::INTEGER, node::INTEGER, edge::INTEGER, cost
-    FROM pgr_dijkstra($1, $2, $3, $4);
-$BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
-
-
--- Deprecated on 2.2.0
-CREATE OR REPLACE FUNCTION pgr_kdijkstracost(
-    sql text,
-    source INTEGER,
-    targets INTEGER array,
-    directed BOOLEAN,
-    has_rcost BOOLEAN)
-RETURNS SETOF pgr_costResult AS
-$BODY$
-    SELECT (row_number() over () -1)::integer, start_vid::integer, end_vid::INTEGER, agg_cost
-    FROM pgr_dijkstraCost($1, $2, $3, $4);
-$BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
 
 
 
