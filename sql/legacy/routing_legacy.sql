@@ -231,3 +231,62 @@ $BODY$
 LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
+
+
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_bdDijkstra
+-- Developer:  Vicky Vergara
+--
+--
+-- Availability:
+--   - Created on v2.0.0
+--   - Deprecated on v2.4.0
+--   - Moved to legacy on v3.0
+--
+-- Use the new signatures of pgr_bdDijkstra instead
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
+RETURNS SETOF pgr_costresult AS
+$BODY$
+DECLARE
+has_reverse BOOLEAN;
+sql TEXT;
+BEGIN
+    SELECT seq - 1 AS seq, node::integer AS id1, edge::integer AS id2, cost
+    FROM pgr_bdDijkstra($1, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4);
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
+
+
+
+----------------------------------------------------------------------------
+-- Routing function: pgr_bdAstar
+-- Developer:  Vicky Vergara
+--
+--
+-- Availability:
+--   - Created on v2.0.0
+--   - Deprecated on v2.5.0
+--   - Moved to legacy on v3.0
+--
+-- Use the new signatures of pgr_bdAstar instead
+----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_bdAstar(
+    edges_sql TEXT,
+    start_vid INTEGER,
+    end_vid INTEGER,
+    directed BOOLEAN,
+    has_rcost BOOLEAN)
+RETURNS SETOF pgr_costresult AS
+$BODY$
+    SELECT seq - 1 AS seq, node::integer AS id1, edge::integer AS id2, cost
+    FROM pgr_bdAstar($1, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;

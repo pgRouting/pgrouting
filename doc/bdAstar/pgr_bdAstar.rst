@@ -110,9 +110,6 @@ This usage finds the shortest path from the ``start_vid`` to the ``end_vid`` all
     * and/or **factor**
     * and/or **epsilon**.
 
-.. NOTE::
-    In the One to One signature, because of the deprecated signature existence, it is compulsory to indicate if the graph is **directed** or **undirected**.
-
 :Example: Directed using Heuristic 2
 
 .. literalinclude:: doc-pgr_bdAstar.queries

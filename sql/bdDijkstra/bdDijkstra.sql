@@ -29,27 +29,7 @@ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
     edges_sql TEXT,
     start_vid BIGINT,
     end_vid BIGINT,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], true, false) AS a;
-$BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
-
--- TODO directed BOOLEAN DEFAULT TRUE,  on version 3
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN,
+    directed BOOLEAN DEFAULT true,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
@@ -134,3 +114,8 @@ $BODY$
 LANGUAGE SQL VOLATILE
 COST 100
 ROWS 1000;
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgr_bdDijkstra(One to One)';
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgr_bdDijkstra(Many to One)';
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgr_bdDijkstra(One to Many)';
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgr_bdDijkstra(Many to Many)';

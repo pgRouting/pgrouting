@@ -1,8 +1,6 @@
 
 SET(LOCAL_FILES
     noUnderUtilities.sql
-    bd_astar_v2.sql
-    bdDijkstra-v2.sql
     pgrouting_conversion_tools.sql
     pgrouting_dmatrix_tools.sql
     pgr_vidsToDMatrix.sql
