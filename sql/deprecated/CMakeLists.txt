@@ -1,9 +1,5 @@
 
 SET(LOCAL_FILES
-    noUnderUtilities.sql
-    pgrouting_conversion_tools.sql
-    pgrouting_dmatrix_tools.sql
-    pgr_vidsToDMatrix.sql
     )
 
 foreach (f ${LOCAL_FILES})
