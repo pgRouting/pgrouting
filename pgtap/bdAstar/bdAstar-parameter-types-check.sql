@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(10);
+SELECT plan(8);
 
 
 SELECT has_function('pgr_bdastar',
@@ -9,9 +9,6 @@ SELECT has_function('pgr_bdastar',
 SELECT function_returns('pgr_bdastar',
     ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'numeric', 'numeric'],
     'setof record','Returns set record');
-
-SELECT has_function('pgr_bdastar',ARRAY['text', 'bigint', 'bigint']);
-SELECT function_returns('pgr_bdastar', ARRAY['text', 'bigint', 'bigint'], 'setof record','Returns set record');
 
 
 SELECT throws_ok(
