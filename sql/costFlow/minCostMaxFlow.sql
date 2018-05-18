@@ -27,20 +27,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+------------------------
+--    MANY TO MANY
+------------------------
+
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
-    TEXT,                           -- edges_sql
-    source_vid BIGINT,              -- source
-    target_vid BIGINT,              -- target
+    edges_sql TEXT,                 -- edges_sql
+    sources ANYARRAY,               -- sources
+    targets ANYARRAY,               -- targets
+    only_cost BOOLEAN DEFAULT false,
         OUT seq INTEGER,            -- seq
     OUT edge BIGINT,                -- edge_id
-    OUT start_vid BIGINT,           -- start vertex
-    OUT end_vid BIGINT,             -- end vertex
+    OUT source BIGINT,              -- start vertex
+    OUT target BIGINT,              -- end vertex
     OUT flow BIGINT,                -- flow
     OUT residual_capacity BIGINT,   -- residual capacity
     OUT cost float,                 -- cost
     OUT agg_cost float)             -- total cost
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'minCostMaxFlow'
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'minCostMaxFlow_many_to_many'
 LANGUAGE c IMMUTABLE STRICT;
 
