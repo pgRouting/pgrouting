@@ -48,7 +48,7 @@ extern "C" {
     void
         do_pgr_minCostMaxFlow(
                 pgr_costFlow_t  *data_edges,
-                size_t total_tuples,
+                size_t total_edges,
                 int64_t* source_vertices,
                 size_t size_source_verticesArr,
                 int64_t* sink_vertices,

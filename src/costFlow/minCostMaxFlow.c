@@ -58,8 +58,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/costFlow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(minCostMaxFlow);
+PGDLLEXPORT Datum minCostMaxFlow_many_to_many(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(minCostMaxFlow_many_to_many);
 
 
 /******************************************************************************/

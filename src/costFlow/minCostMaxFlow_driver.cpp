@@ -27,44 +27,52 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/mcmf/minCostMaxFlow_driver.h"
+#include "drivers/costFlow/minCostMaxFlow_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <set>
 
-#include "mcmf/pgr_minCostMaxFlow.hpp"
+#include "costFlow/pgr_minCostMaxFlow.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-
-
-
-
-/************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
- ***********************************************************/
-
+// not needed
+/*
 template < class G >
 static
-std::vector<pgr_mcmf_t>
+std::vector<pgr_flow_t>
 pgr_minCostMaxFlow(
-        G &graph) {
-    std::vector<pgr_mcmf_t> results;
-    Pgr_mcmf< G > fn_mcmf;
-    return fn_mcmf.minCostMaxFlow(graph);
+        G &graph,
+        std::vector<int64_t> sources,
+        std::vector<int64_t> targets,
+        bool only_cost) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+    Pgr_costFlow< G > fn_costFlow;
+    return fn_costFlow.minCostMaxFlow(graph, sources, targets, only_cost);
 }
+*/
 
 
 void
-do_pgr_mcmf(
-        pgr_edge_t  *data_edges,
-        size_t total_edges,
-        pgr_mcmf_t **return_tuples,
-        size_t *return_count,
+do_pgr_minCostMaxFlow(
+        pgr_costFlow_t  *data_edges, size_t total_edges,
+        int64_t *source_vertices, size_t size_source_verticesArr,
+        int64_t *sink_vertices, size_t size_sink_verticesArr,
+        bool only_cost,
+
+        pgr_flow_t **return_tuples, size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -79,31 +87,48 @@ do_pgr_mcmf(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = DIRECTED;
+        std::vector<pgr_costFlow_t> edges(data_edges, data_edges + total_edges);
+        std::set<int64_t> sources(
+                source_vertices, source_vertices + size_source_verticesArr);
+        std::set<int64_t> targets(
+                sink_vertices, sink_vertices + size_sink_verticesArr);
 
-        std::vector<pgr_mcmf_t> results;
+        std::set<int64_t> vertices(sources);
+        vertices.insert(targets.begin(), targets.end());
 
-        log << "Working with Directed Graph\n";
-        pgrouting::McmfDiGraph digraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_minCostMaxFlow(
-                digraph);
-
-        auto count = results.size();
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice <<
-                "No paths found between start_vid and end_vid vertices";
+        if (vertices.size()
+                != (sources.size() + targets.size())) {
+            *err_msg = pgr_msg("A source found as sink");
             return;
         }
 
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        for (size_t i = 0; i < count; i++) {
-            *((*return_tuples) + i) = results[i];
+        pgrouting::graph::PgrCostFlowGraph digraph(
+                edges, sources, targets);
+
+        double min_cost; 
+        min_cost = digraph.minCostMaxFlow();
+
+        std::vector<pgr_flow_t> flow_edges;
+
+        if (only_cost) {
+            pgr_flow_t edge;
+            edge.edge = -1;
+            edge.source = -1;
+            edge.target = -1;
+            edge.flow = -1;
+            edge.residual_capacity = -1;
+            edge.cost = min_cost;
+            edge.agg_cost = min_cost;
+            flow_edges.push_back(edge);
+        } else {
+            flow_edges = digraph.get_flow_edges();
         }
-        (*return_count) = count;
+
+        (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
+        for (size_t i = 0; i < flow_edges.size(); i++) {
+            (*return_tuples)[i] = flow_edges[i];
+        }
+        *return_count = flow_edges.size();
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
