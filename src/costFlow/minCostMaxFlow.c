@@ -56,7 +56,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get edges information */
 #include "c_common/edges_input.h"
 
-#include "drivers/mcmf/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
+#include "drivers/costFlow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(minCostMaxFlow);
@@ -71,7 +71,7 @@ process(
         ArrayType *starts,
         ArrayType *ends,
         bool only_cost,
-        pgr_mcmf_t **result_tuples,
+        pgr_flow_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -87,7 +87,7 @@ process(
         pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
     PGR_DBG("Load data");
-    pgr_mcmf_t *edges = NULL;
+    pgr_costFlow_t *edges = NULL;
 
     size_t total_edges = 0;
 
@@ -161,7 +161,7 @@ PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_mcmf_t *result_tuples = NULL;
+    pgr_flow_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -218,7 +218,7 @@ PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_mcmf_t*) funcctx->user_fctx;
+    result_tuples = (pgr_flow_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
