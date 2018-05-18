@@ -184,14 +184,9 @@ PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-#if 0
-                /*
-                 *  handling arrays example
-                 */
-
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
-#endif
+                PG_GETARG_BOOL(3),
                 &result_tuples,
                 &result_count);
 
