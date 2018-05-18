@@ -63,6 +63,6 @@ typedef struct {
   int64_t residual_capacity;
   float cost;
   float agg_cost;
-} pgr_flow_t;
+} pgr_mcmf_t;
 
 #endif  // INCLUDE_C_TYPES_PGR_MCMF_T_H_
