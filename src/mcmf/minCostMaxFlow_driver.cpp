@@ -79,7 +79,7 @@ do_pgr_mcmf(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = UNDIRECTED;
+        graphType gType = DIRECTED;
 
         std::vector<pgr_mcmf_t> results;
 
