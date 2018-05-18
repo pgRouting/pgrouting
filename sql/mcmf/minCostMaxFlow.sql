@@ -33,9 +33,10 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
     target_vid BIGINT,              -- target
         OUT seq INTEGER,            -- seq
     OUT edge BIGINT,                -- edge_id
+    OUT start_vid BIGINT,           -- start vertex
+    OUT end_vid BIGINT,             -- end vertex
     OUT flow BIGINT,                -- flow
     OUT residual_capacity BIGINT,   -- residual capacity
-    OUT agg_flow BIGINT,            -- total flow 
     OUT cost float,                 -- cost
     OUT agg_cost float)             -- total cost
 

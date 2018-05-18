@@ -215,24 +215,26 @@ PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
-               OUT seq INTEGER,
-               OUT component BIGINT,
-               OUT n_seq INTEGER,
-               OUT node BIGINT
          ***********************************************************************/
 
-        values = palloc(2 * sizeof(Datum));
-        nulls = palloc(2 * sizeof(bool));
+        values = palloc(8 * sizeof(Datum));
+        nulls = palloc(8 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 2; ++i) {
+        for (i = 0; i < 8; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].identifier);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
+        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].residual_capacity);
+        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[7] = Int64GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
