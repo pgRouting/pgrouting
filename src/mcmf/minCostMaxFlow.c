@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *  - should always be first in the C code
  */
 #include "c_common/postgres_connection.h"
+#include "utils/array.h"
 
 
 /* for macro PGR_DBG */
@@ -67,6 +68,9 @@ static
 void
 process(
         char* edges_sql,
+        ArrayType *starts,
+        ArrayType *ends,
+        bool only_cost,
         pgr_mcmf_t **result_tuples,
         size_t *result_count) {
     /*
@@ -74,20 +78,30 @@ process(
      */
     pgr_SPI_connect();
 
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
+    size_t size_source_verticesArr = 0;
+    int64_t* source_vertices =
+        pgr_get_bigIntArray(&size_source_verticesArr, starts);
+
+    size_t size_sink_verticesArr = 0;
+    int64_t* sink_vertices =
+        pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
     PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    pgr_mcmf_t *edges = NULL;
+
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_costflow_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
+        if (source_vertices)
+            pfree(source_vertices);
+        if (sink_vertices)
+            pfree(sink_vertices);
         PGR_DBG("No edges found");
         pgr_SPI_finish();
-        return;
+        return ;
     }
 
     PGR_DBG("Starting processing");
@@ -95,44 +109,45 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
+
     do_pgr_minCostMaxFlow(
-            edges,
-            total_edges,
-#if 0
-    /*
-     *  handling arrays example
-     */
+            edges, total_edges,
+            source_vertices, size_source_verticesArr,
+            sink_vertices, size_sink_verticesArr,
+            only_cost,
 
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
-#endif
+            result_tuples, result_count,
 
-            result_tuples,
-            result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_minCostMaxFlow", start_t, clock());
+    if (only_cost) {
+        time_msg(" processing pgr_minCostMaxFlow_Cost", start_t, clock());
+    } else {
+        time_msg(" processing pgr_minCostMaxFlow", start_t, clock());
+    }
+
     PGR_DBG("Returning %ld tuples", *result_count);
 
-    if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
+    if (edges)
+        pfree(edges);
+    if (source_vertices)
+        pfree(source_vertices);
+    if (sink_vertices)
+        pfree(sink_vertices);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
+
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-#if 0
-    /*
-     *  handling arrays example
-     */
-
-    if (end_vidsArr) pfree(end_vidsArr);
-    if (start_vidsArr) pfree(start_vidsArr);
-#endif
 
     pgr_SPI_finish();
 }
