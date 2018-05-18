@@ -61,6 +61,7 @@ typedef struct {
   int64_t target;
   int64_t flow;
   int64_t residual_capacity;
+  int64_t agg_flow;
   double  cost;
   double  agg_cost;
 } pgr_flow_t;
