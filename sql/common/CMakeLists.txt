@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
     pgRouting-header.sql
-    pgrouting-types.sql
     pgrouting_version.sql
     pgrouting_utilities.sql
     pgr_parameter_check.sql

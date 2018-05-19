@@ -151,8 +151,16 @@ CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
     via_vids ANYARRAY,
     directed BOOLEAN,
     has_rcost BOOLEAN,
-    restrictions_sql TEXT DEFAULT NULL)
-RETURNS SETOF pgr_costResult3 AS
+    restrictions_sql TEXT DEFAULT NULL,
+
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT id3 INTEGER,
+    OUT cost FLOAT
+)
+RETURNS SETOF RECORD AS
+
 $BODY$
 DECLARE
 has_reverse BOOLEAN;
@@ -175,8 +183,8 @@ BEGIN
 
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
-            (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost
-            FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
+            (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, a.cost
+            FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) AS a WHERE edge != -1;
         RETURN;
     END IF;
 
