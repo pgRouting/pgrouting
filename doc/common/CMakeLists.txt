@@ -1,9 +1,6 @@
 
 SET(LOCAL_FILES
-    cost_result.rst
-    geom_result.rst
     pgr_version.rst
-    types_index.rst
     )
 
 foreach (f ${LOCAL_FILES})

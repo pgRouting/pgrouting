@@ -1,8 +1,5 @@
 #VERSION pgrouting 3.0.0
 #TYPES
-pgr_costresult
-pgr_costresult3
-pgr_geomresult
 #FUNCTIONS
 pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)

@@ -38,8 +38,14 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     target_pos float8,
     directed boolean,
     has_reverse_cost boolean,
-    turn_restrict_sql text DEFAULT null)
-RETURNS SETOF pgr_costResult
+    turn_restrict_sql text DEFAULT null,
+
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT cost FLOAT
+)
+RETURNS SETOF record
 AS '${MODULE_PATHNAME}', 'turn_restrict_shortest_path_edge'
 LANGUAGE 'c' IMMUTABLE;
 
@@ -68,8 +74,14 @@ CREATE OR REPLACE FUNCTION pgr_trsp(
     end_vid INTEGER,
     directed BOOLEAN,
     has_rcost BOOLEAN,
-    restrictions_sql TEXT DEFAULT NULL)
-RETURNS SETOF pgr_costResult AS
+    restrictions_sql TEXT DEFAULT NULL,
+
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT cost FLOAT
+)
+RETURNS SETOF record AS
 $BODY$
 DECLARE
 has_reverse BOOLEAN;
@@ -94,7 +106,7 @@ BEGIN
 
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
-        RETURN query SELECT a.seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+        RETURN query SELECT a.seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, a.cost
         FROM pgr_dijkstra(new_sql, start_vid, end_vid, directed) a;
         RETURN;
     END IF;
@@ -113,7 +125,7 @@ BEGIN
 
 
     RETURN query
-        SELECT (seq - 1)::INTEGER, a.node::INTEGER, a.edge::INTEGER, a.cost
+        SELECT (a.seq - 1)::INTEGER, a.node::INTEGER, a.edge::INTEGER, a.cost
         FROM _pgr_trsp(new_sql, restrictions_query, start_vid, end_vid, directed) AS a;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
@@ -139,8 +151,16 @@ CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
     via_vids ANYARRAY,
     directed BOOLEAN,
     has_rcost BOOLEAN,
-    restrictions_sql TEXT DEFAULT NULL)
-RETURNS SETOF pgr_costResult3 AS
+    restrictions_sql TEXT DEFAULT NULL,
+
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT id3 INTEGER,
+    OUT cost FLOAT
+)
+RETURNS SETOF RECORD AS
+
 $BODY$
 DECLARE
 has_reverse BOOLEAN;
@@ -163,8 +183,8 @@ BEGIN
 
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
-            (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost
-            FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
+            (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, a.cost
+            FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) AS a WHERE edge != -1;
         RETURN;
     END IF;
 
@@ -197,8 +217,14 @@ CREATE OR REPLACE FUNCTION pgr_trsp(
     target_pos float8,
     directed boolean,
     has_reverse_cost boolean,
-    turn_restrict_sql text DEFAULT null)
-RETURNS SETOF pgr_costResult AS
+    turn_restrict_sql text DEFAULT null,
+
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT cost FLOAT
+)
+RETURNS SETOF record AS
 $BODY$
 DECLARE
 has_reverse BOOLEAN;

@@ -31,8 +31,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-CREATE OR  REPLACE FUNCTION pgr_tsp(sql text, start_id INTEGER, end_id INTEGER default (-1))
-returns setof pgr_costResult as
+CREATE OR  REPLACE FUNCTION pgr_tsp(
+    sql text, start_id INTEGER,
+    end_id INTEGER default (-1),
+
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT cost FLOAT
+)
+returns setof record as
 $body$
 DECLARE
 table_sql TEXT;
