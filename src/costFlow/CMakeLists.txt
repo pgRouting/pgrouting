@@ -1,4 +1,4 @@
 ADD_LIBRARY(costFlow OBJECT
-    minCostMaxFlow.c
+    minCostMaxFlow.c)
 
-    minCostMaxFlow_driver.cpp)
+#minCostMaxFlow_driver.cpp)
