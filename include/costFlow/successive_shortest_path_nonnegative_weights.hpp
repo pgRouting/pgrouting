@@ -23,7 +23,7 @@
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <boost/graph/properties.hpp>
 #include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/detail/augment.hpp>
+#include "detail_augment.hpp"
 
 namespace boost {
 
