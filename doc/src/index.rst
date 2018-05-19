@@ -60,19 +60,6 @@ Pgrouting Concepts
    pgr_version
 
 
-:ref:`Data Types <data_types>`
-===============================================================================
-
-
-- :ref:`type_cost_result` -  A set of records to describe a path result with cost attribute.
-- :ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a path result with cost attribute.
-- :ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute.
-
-.. toctree::
-   :hidden:
-
-   types_index
-
 
 :ref:`Topology Functions <topology_functions>`
 ===============================================================================
