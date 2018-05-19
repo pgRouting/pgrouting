@@ -25,6 +25,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
+
+CREATE TYPE pgr_geomResult AS
+(
+    seq integer,
+    id1 integer,
+    id2 integer,
+    geom geometry
+);
+
 ----------------------------------------------------------------------------
 -- Routing function: pgr_dijkstra
 -- Developer:  Vicky Vergara

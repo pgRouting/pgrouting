@@ -40,10 +40,3 @@ CREATE TYPE pgr_costResult3 AS
     cost float8
 );
 
-CREATE TYPE pgr_geomResult AS
-(
-    seq integer,
-    id1 integer,
-    id2 integer,
-    geom geometry
-);
