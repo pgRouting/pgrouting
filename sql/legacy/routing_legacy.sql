@@ -24,6 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+CREATE TYPE pgr_costResult AS
+(
+    seq integer,
+    id1 integer,
+    id2 integer,
+    cost float8
+);
 
 
 CREATE TYPE pgr_geomResult AS

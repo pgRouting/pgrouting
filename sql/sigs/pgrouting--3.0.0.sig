@@ -1,6 +1,5 @@
 #VERSION pgrouting 3.0.0
 #TYPES
-pgr_costresult
 pgr_costresult3
 #FUNCTIONS
 pgr_alphashape(text,double precision)
