@@ -91,7 +91,7 @@ process(
 
     size_t total_edges = 0;
 
-    pgr_get_costflow_edges(edges_sql, &edges, &total_edges);
+    pgr_get_costFlow_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
