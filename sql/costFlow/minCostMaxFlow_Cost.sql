@@ -1,8 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: pgr_flow_t.h
+File: minCostMaxFlow_Cost.sql
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2018 Maoguang Wang
+Mail: xjtumg1007@gmail.com
 
 ------
 
@@ -21,48 +26,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_FLOW_T_H_
-#define INCLUDE_C_TYPES_PGR_FLOW_T_H_
-#pragma once
+------------------------
+--    MANY TO MANY
+------------------------
 
+CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow_Cost(
+    edges_sql TEXT,                 -- edges_sql
+    sources ANYARRAY,               -- sources
+    targets ANYARRAY)               -- targets
+  RETURNS FLOAT AS
+  $BODY$
+        SELECT cost
+        FROM pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := true);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
 
-#ifdef __cplusplus
-
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
-#endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
-typedef struct {
-  int64_t edge;
-  int64_t source;
-  int64_t target;
-  int64_t flow;
-  int64_t residual_capacity;
-  double cost;
-  double agg_cost;
-} pgr_flow_t;
-
-#endif  // INCLUDE_C_TYPES_PGR_FLOW_T_H_
