@@ -154,7 +154,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum minCostMaxFlow_many_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
