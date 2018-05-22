@@ -42,8 +42,8 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
     OUT target BIGINT,              -- end vertex
     OUT flow BIGINT,                -- flow
     OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost float,                 -- cost
-    OUT agg_cost float)             -- total cost
+    OUT cost FLOAT,                 -- cost
+    OUT agg_cost FLOAT)             -- total cost
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'minCostMaxFlow_many_to_many'

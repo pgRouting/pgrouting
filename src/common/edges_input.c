@@ -555,7 +555,7 @@ get_edges_costFlow(
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_costFlow_edge(&tuple, &tupdesc, info,
-                                    &default_id, 0, 0,
+                                    &default_id, -1, 0,
                                     &(*edges)[total_tuples - ntuples + t],
                                     &valid_edges,
                                     true);

@@ -245,8 +245,8 @@ PGDLLEXPORT Datum minCostMaxFlow_many_to_many(PG_FUNCTION_ARGS) {
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
         values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].residual_capacity);
-        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Int64GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

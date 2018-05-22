@@ -226,7 +226,7 @@ PgrCostFlowGraph::get_flow_edges() const {
             edge.target = get_vertex_id((*e).m_target);
             edge.flow = capacity[*e] - residual_capacity[*e];
             edge.residual_capacity = residual_capacity[*e];
-            edge.cost = weight[*e];
+            edge.cost = weight[*e] * edge.flow;
             if (flow_edges.size() == 0)
                 edge.agg_cost = edge.cost;
             else
