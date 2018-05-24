@@ -127,5 +127,4 @@ do_pgr_prim(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-#endif
 }
