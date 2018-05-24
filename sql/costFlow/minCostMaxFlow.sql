@@ -56,8 +56,18 @@ LANGUAGE c IMMUTABLE STRICT;
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
     edges_sql TEXT,                 -- edges_sql
     sources BIGINT,                 -- source
-    targets ANYARRAY)               -- targets
-  RETURNS FLOAT AS
+    targets ANYARRAY,               -- targets
+    only_cost BOOLEAN DEFAULT false,
+        OUT seq INTEGER,            -- seq
+    OUT edge BIGINT,                -- edge_id
+    OUT source BIGINT,              -- start vertex
+    OUT target BIGINT,              -- end vertex
+    OUT flow BIGINT,                -- flow
+    OUT residual_capacity BIGINT,   -- residual capacity
+    OUT cost FLOAT,                 -- cost
+    OUT agg_cost FLOAT)             -- total cost
+
+  RETURNS SETOF RECORD AS
   $BODY$
         SELECT * 
         FROM pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := false);
@@ -67,12 +77,21 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
 ------------------------
 --    MANY TO ONE 
 ------------------------
-
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
     edges_sql TEXT,                 -- edges_sql
     sources ANYARRAY,               -- sources
-    targets BIGINT)                 -- target
-  RETURNS FLOAT AS
+    targets BIGINT,                 -- target
+    only_cost BOOLEAN DEFAULT false,
+        OUT seq INTEGER,            -- seq
+    OUT edge BIGINT,                -- edge_id
+    OUT source BIGINT,              -- start vertex
+    OUT target BIGINT,              -- end vertex
+    OUT flow BIGINT,                -- flow
+    OUT residual_capacity BIGINT,   -- residual capacity
+    OUT cost FLOAT,                 -- cost
+    OUT agg_cost FLOAT)             -- total cost
+
+  RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
         FROM pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
@@ -82,16 +101,23 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
 ------------------------
 --    ONE TO ONE 
 ------------------------
-
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
     edges_sql TEXT,                 -- edges_sql
     sources BIGINT,                 -- source
-    targets BIGINT)                 -- target
-  RETURNS FLOAT AS
+    targets BIGINT,                 -- target
+    only_cost BOOLEAN DEFAULT false,
+        OUT seq INTEGER,            -- seq
+    OUT edge BIGINT,                -- edge_id
+    OUT source BIGINT,              -- start vertex
+    OUT target BIGINT,              -- end vertex
+    OUT flow BIGINT,                -- flow
+    OUT residual_capacity BIGINT,   -- residual capacity
+    OUT cost FLOAT,                 -- cost
+    OUT agg_cost FLOAT)             -- total cost
+
+  RETURNS SETOF RECORD AS
   $BODY$
         SELECT * 
         FROM pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
   $BODY$
   LANGUAGE SQL VOLATILE;
-
-
