@@ -63,7 +63,6 @@ do_pgr_prim(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
-#if 0
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -74,7 +73,7 @@ do_pgr_prim(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
-
+#if 0
         graphType gType = UNDIRECTED;
 
         std::vector<pgr_prim_t> results;
@@ -108,6 +107,7 @@ do_pgr_prim(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
+#endif
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
