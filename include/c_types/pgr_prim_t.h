@@ -1,42 +1,61 @@
 /*PGR-GNU*****************************************************************
-File: prim.sql
-
-Generated with Template by:
-Copyright (c) 2016 pgRouting developers
-Mail: project@pgrouting.org
-
-Function's developer:
-Copyright (c) 2018 Aditya Pratap Singh
+File: pgr_prim_t.h
+Copyright (c) 2015 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
-
 ------
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 ********************************************************************PGR-GNU*/
+/*! @file */
 
-CREATE OR REPLACE FUNCTION pgr_prim(
-    TEXT,                       -- Edge sql
-        OUT seq INTEGER,        -- Seq
-    OUT start_node BIGINT,	-- Start node 
-    OUT end_node BIGINT,	-- End node 
-    OUT edge BIGINT,		-- Edge linked to that node
-    OUT cost FLOAT,		-- Cost of edge
-    OUT agg_cost FLOAT)		-- Total cost 
+#ifndef INCLUDE_C_TYPES_PGR_PRIM_T_H_
+#define INCLUDE_C_TYPES_PGR_PRIM_T_H_
+#pragma once
 
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'prim'
-LANGUAGE c IMMUTABLE STRICT;
 
+#ifdef __cplusplus
+
+#include <cstddef>
+
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
+
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
+
+typedef struct {
+    int seq;
+    int64_t start_node;
+    int64_t end_node;
+    int64_t edge;
+    double cost;
+    double agg_cost;
+} pgr_prim_t;
+
+#endif  // INCLUDE_C_TYPES_PGR_PRIM_T_H_

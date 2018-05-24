@@ -6,7 +6,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2018 Celia Virginia Vergara Castillo
+Copyright (c) 2018 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
 
 ------
