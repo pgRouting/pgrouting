@@ -77,6 +77,7 @@ do_pgr_bellman_ford(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    #if 0
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -152,4 +153,5 @@ do_pgr_bellman_ford(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
+    #endif
 }
