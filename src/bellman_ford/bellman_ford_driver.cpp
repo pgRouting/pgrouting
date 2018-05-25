@@ -64,7 +64,7 @@ pgr_bellman_ford(
 }
 
 /*TO DO: One to Many
-         Many to One 
+         Many to One
          Many to Many   */
 template < class G >
 std::deque< Path >
@@ -98,7 +98,7 @@ do_pgr_bellman_ford(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
-    
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -109,7 +109,7 @@ do_pgr_bellman_ford(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
-    
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         Path path;
@@ -155,7 +155,7 @@ do_pgr_bellman_ford(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-    
+
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -175,5 +175,5 @@ do_pgr_bellman_ford(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-    
+
 }
