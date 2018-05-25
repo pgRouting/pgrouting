@@ -88,7 +88,9 @@ do_pgr_bellman_ford(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
-
+        pgassert(false);
+        err << "this is a test of error message";
+    #if 0
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         Path path;
@@ -134,6 +136,7 @@ do_pgr_bellman_ford(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
+    #endif
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
