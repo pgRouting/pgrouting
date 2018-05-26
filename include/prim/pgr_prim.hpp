@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
+File: pgr_prim.hpp
+
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
 Copyright (c) 2018 Aditya Pratap Singh
 Mail: adityapratap.singh@gmail.com
 ------
@@ -30,7 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <algorithm>
 
-#include "pgr_primGraph.hpp"
+#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
 
 template < class G > class Pgr_prim;
 // user's functions
@@ -44,6 +48,8 @@ class Pgr_prim {
      std::vector<pgr_prim_t> prim(
              G &graph);
 
+     typedef typename G::V V;
+     typedef typename G::E_i E_i;
 };
 
 template < class G >
@@ -56,7 +62,7 @@ Pgr_prim< G >::prim(
     std::vector< pgr_prim_t > results;
 
     // Spanning of Tree using Prim Algorithm
-    pgrouting::PredecessorList p(totalNodes);
+    std::vector< V > p(totalNodes);
     boost::prim_minimum_spanning_tree(graph.graph, &p[0]);
 
     // generate result
@@ -67,7 +73,7 @@ Pgr_prim< G >::prim(
 	tmp.start_node = var;		//start node        
         if(p[i]!=i) {
             tmp.end_node = p[i];
-	    pgrouting::E_i ei, ei_end;
+	    E_i ei, ei_end;
  	    for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei) {
                 if( (source(*ei, graph.graph) ==p[i] && target(*ei, graph.graph)==var) || 
                       (target(*ei, graph.graph) ==p[i] && source(*ei, graph.graph)==var)){

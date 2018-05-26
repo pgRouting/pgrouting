@@ -1,10 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: prim.c
 Generated with Template by:
+
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
 Function's developer:
-Copyright (c) 2018 Celia Virginia Vergara Castillo
+Copyright (c) 2018 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
 ------
 This program is free software; you can redistribute it and/or modify
@@ -217,23 +219,22 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
                OUT agg_cost FLOAT
          ***********************************************************************/
 
-        values = palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(bool));
+        values = palloc(6 * sizeof(Datum));
+        nulls = palloc(6 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 7; ++i) {
+        for (i = 0; i < 6; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_node);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_node);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

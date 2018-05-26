@@ -1,8 +1,10 @@
 /*PGR-GNU*****************************************************************
 File: prim_driver.cpp
+
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
 Function's developer:
 Copyright (c) 2018 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
@@ -30,9 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-
-
-
 
 
 /************************************************************
@@ -79,11 +78,11 @@ do_pgr_prim(
         std::vector<pgr_prim_t> results;
 
         log << "Working with Undirected Graph\n";
-#if 0
+
 	pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_prim(
-                 undigraph);
+                    undigraph);
 
         auto count = results.size();
 
@@ -91,7 +90,7 @@ do_pgr_prim(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No paths found between start_vid and end_vid vertices";
+                "No paths found";
             return;
         }
 
@@ -107,7 +106,6 @@ do_pgr_prim(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-#endif
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
