@@ -73,13 +73,14 @@ do_pgr_prim(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
-#if 0
+
         graphType gType = UNDIRECTED;
 
         std::vector<pgr_prim_t> results;
 
         log << "Working with Undirected Graph\n";
-	pgrouting::PrimUndirectedGraph undigraph(gType);
+#if 0
+	pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_prim(
                  undigraph);
@@ -99,7 +100,6 @@ do_pgr_prim(
             *((*return_tuples) + i) = results[i];
         }
         (*return_count) = count;
-
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
