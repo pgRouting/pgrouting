@@ -85,7 +85,6 @@ process(
     }
 
     PGR_DBG("Starting processing");
-    total_edges = 0; //to check pgassert(total_edges != 0);
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
