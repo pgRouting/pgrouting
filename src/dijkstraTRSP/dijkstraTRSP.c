@@ -30,11 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /** @file dijkstraTRSP.c
  * @brief Connecting code with postgres.
  *
- * This file is fully documented for understanding
- *  how the postgres connectinon works
- *
- * TODO Remove unnecessary comments before submiting the function.
- * some comments are in form of PGR_DBG message
  */
 
 /**
@@ -45,24 +40,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges information */
-#include "c_common/edges_input.h"
-#include "c_common/restrict_input.h"
 
-#include "drivers/dijkstraTRSP/dijkstraTRSP_driver.h"  // the link to the C++ code of the function
+#include "c_common/edges_input.h"
+#include "c_common/restrictions_input.h"
+
+#include "drivers/dijkstraTRSP/dijkstraTRSP_driver.h"
 
 PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(dijkstraTRSP);
 
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -70,15 +60,14 @@ process(
         char *restrictions_sql,
         int64_t start_vid,
         int64_t end_vid,
+
         bool directed,
         bool only_cost,
         bool strict,
+
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
     (*result_tuples) = NULL;
     (*result_count) = 0;
     PGR_DBG("\n\n\n\n\n\nEdge query: %s\n", edges_sql);
@@ -101,10 +90,10 @@ process(
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     PGR_DBG("Load restrictions");
-    Restrict_t *restrictions = NULL;
+    Restriction_t *restrictions = NULL;
     size_t total_restrictions = 0;
 
-    pgr_get_restriction_data(restrictions_sql, &restrictions,
+    pgr_get_restrictions(restrictions_sql, &restrictions,
         &total_restrictions);
 
 #if 1
@@ -112,8 +101,8 @@ process(
     while (i < total_restrictions) {
         PGR_DBG("id: %ld cost: %lf", restrictions[i].id, restrictions[i].cost);
         int j = 0;
-        while (restrictions[i].restricted_edges[j] != -1) {
-            PGR_DBG("%ld ", restrictions[i].restricted_edges[j]);
+        while (restrictions[i].via[j] != -1) {
+            PGR_DBG("%ld ", restrictions[i].via[j]);
             j++;
         }
         PGR_DBG("\n");
@@ -162,20 +151,13 @@ process(
     if (restrictions) pfree(restrictions);
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -184,15 +166,14 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
         /*
-           TEXT,
-    TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-    strict BOOLEAN DEFAULT false
+           TEXT, -- edges_sql
+           TEXT, -- restrictions_sql
+           BIGINT, -- source
+           BIGINT, -- target
+           directed BOOLEAN DEFAULT true,
+           only_cost BOOLEAN DEFAULT false,
+           strict BOOLEAN DEFAULT false
          **********************************************************************/
 
 
@@ -209,10 +190,8 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
                 &result_count);
 
 
-        /*                                                                    */
-        /**********************************************************************/
 
-#if PGSQL_VERSION > 94
+#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;
@@ -244,11 +223,11 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
                OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT
+               OUT path_seq INTEGER,
+               OUT node BIGINT,
+               OUT edge BIGINT,
+               OUT cost FLOAT,
+               OUT agg_cost FLOAT
          ***********************************************************************/
 
         values = palloc(6 * sizeof(Datum));
@@ -260,25 +239,17 @@ PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-
-        PGR_DBG("Clean up code");
-
-        /**********************************************************************/
 
         SRF_RETURN_DONE(funcctx);
     }

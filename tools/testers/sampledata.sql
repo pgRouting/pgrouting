@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS edge_table;
 DROP TABLE IF EXISTS edge_table_vertices_pgr;
 DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS restrictions;
+DROP TABLE IF EXISTS new_restrictions;
 DROP TABLE IF EXISTS retrict;
 DROP TABLE IF EXISTS vertex_table;
 DROP TABLE IF EXISTS categories;
@@ -112,6 +113,18 @@ INSERT INTO restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
 (1, 100, 10,  7, NULL),
 (2,   4,  8,  3, 5),
 (3, 100,  9, 16, NULL);
+
+CREATE TABLE new_restrictions (
+    id BIGINT NOT NULL,
+    cost FLOAT,
+    target_id BIGINT,
+    path BIGINT[]
+);
+
+INSERT INTO new_restrictions (id, cost, target_id, path) VALUES
+(1, 100,  7,  ARRAY[4, 7]),
+(2, 100,  8,  ARRAY[4, 8]);
+
 
 --RESTRICTIONS END
 /*

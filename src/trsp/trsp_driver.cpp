@@ -68,7 +68,6 @@ do_trsp(
         pgassert(*notice_msg == NULL);
         pgassert(*err_msg == NULL);
 
-
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < restrictions_size; ++i) {
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));

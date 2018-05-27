@@ -34,12 +34,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <string>
 
-#include "dijkstraTRSP/pgr_dijkstraTRSP.hpp"
-
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#if 1
+#include "trsp/rule.h"
+
+#if 0
+#include "dijkstraTRSP/pgr_dijkstraTRSP.hpp"
+#endif
+
+
+#if 0
 template < class G >
 static
 Path
@@ -69,15 +74,20 @@ void
 do_pgr_dijkstraTRSP(
         pgr_edge_t *data_edges,
         size_t total_edges,
-        Restrict_t *restrictions,
+
+        Restriction_t *restrictions,
         size_t total_restrictions,
+
         int64_t start_vid,
         int64_t end_vid,
+
         bool directed,
         bool only_cost,
         bool strict,
+
         General_path_element_t **return_tuples,
         size_t *return_count,
+
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -93,10 +103,12 @@ do_pgr_dijkstraTRSP(
         pgassert(total_edges != 0);
 
         log << "\n---------------------------------------\nRestrictions data\n";
-        std::vector< Restriction > restrict_array;
-        for (size_t i = 0; i < total_restrictions; i++) {
-            restrict_array.push_back(Restriction(restrictions[i]));
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < total_restrictions; ++i) {
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+            log << ruleList.back();
         }
+#if 0
         log << "\n-----------------------------------------\nStart from here\n";
         for (const auto &it : restrict_array) {
             log << it << "\n";
@@ -153,16 +165,14 @@ do_pgr_dijkstraTRSP(
             path.generate_postgres_data(return_tuples, sequence);
             (*return_count) = sequence;
         }
-
+#endif
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
-        #if 0
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-        #endif
         pgassert(!log.str().empty());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);

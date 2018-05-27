@@ -32,39 +32,44 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "c_types/pgr_edge_t.h"
+#include "c_types/restriction_t.h"
 #include "c_types/general_path_element_t.h"
-#include "c_types/restrict_t.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
     /*********************************************************
-      TEXT,
-    TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
+
+      TEXT, -- edges_sql
+      TEXT, -- restrictions_sql
+      BIGINT, -- source
+      BIGINT, -- target
+      directed BOOLEAN DEFAULT true,
+      only_cost BOOLEAN DEFAULT false,
+      strict BOOLEAN DEFAULT false
      ********************************************************/
 
 
-    void
-        do_pgr_dijkstraTRSP(
-                pgr_edge_t  *data_edges,
-                size_t total_edges,
-                Restrict_t *restrictions,
-                size_t total_restrictions,
-                int64_t start_vid,
-                int64_t end_vid,
-                bool directed,
-                bool only_cost,
-                bool strict,
-                General_path_element_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+    void do_pgr_dijkstraTRSP(
+            pgr_edge_t  *data_edges,
+            size_t total_edges,
+
+            Restriction_t *restrictions,
+            size_t total_restrictions,
+
+            int64_t start_vid,
+            int64_t end_vid,
+
+            bool directed,
+            bool only_cost,
+            bool strict,
+
+            General_path_element_t **return_tuples,
+            size_t *return_count,
+            char ** log_msg,
+            char ** notice_msg,
+            char ** err_msg);
 
 
 #ifdef __cplusplus
