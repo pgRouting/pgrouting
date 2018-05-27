@@ -55,11 +55,6 @@ As part of the :ref:`dijkstra`
    :start-after: index from here
    :end-before: index to here
 
-:ref:`maxFlow`
-
-.. include:: flow-family.rst
-   :start-after: index from here
-   :end-before: index to here
 
 :ref:`withPoints`
 
@@ -94,7 +89,6 @@ As part of the :ref:`dijkstra`
     bdAstar-family
     bdDijkstra-family
     withPoints-family
-
     cost-category
     costMatrix-category
     KSP-category
@@ -154,7 +148,6 @@ Experimental Functions
   :hidden:
 
   contraction-family
-  flow-family
   components-family
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot

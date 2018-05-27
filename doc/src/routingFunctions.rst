@@ -36,6 +36,12 @@ Routing Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`flow-family`
+
+.. include:: flow-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 :ref:`pgr_ksp` - K-Shortest Path
 
 :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
@@ -61,6 +67,7 @@ Routing Functions
     pgr_bdAstar
     pgr_bdDijkstra
     dijkstra-family
+    flow-family
     pgr_KSP
     pgr_trsp
     TSP-family

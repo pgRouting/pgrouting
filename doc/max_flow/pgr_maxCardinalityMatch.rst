@@ -7,9 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_maxCardinalityMatch:
-
-pgr_maxCardinalityMatch - Proposed
+pgr_maxCardinalityMatch
 ============================================================
 
 
@@ -17,11 +15,6 @@ Synopsis
 ------------------------------------------------------------
 
 ``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a graph.
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
@@ -45,7 +38,7 @@ Synopsis
 * The graph can be **directed** or **undirected**.
 * Running time: :math:`O( E*V * \alpha(E,V))`
 
-    * :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
+  * :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
 
 
 .. _Ackermann function: https://en.wikipedia.org/wiki/Ackermann_function
@@ -55,15 +48,15 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_MaximumCardinalityMatching(edges_sql) - Proposed
-    pgr_MaximumCardinalityMatching(edges_sql, directed) - Proposed
+    pgr_MaximumCardinalityMatching(edges_sql)
+    pgr_MaximumCardinalityMatching(edges_sql, directed)
 
     RETURNS SET OF (seq, edge_id, source, target)
         OR EMPTY SET
 
 
 .. index::
-    single: MaximumCardinalityMatching(Minimal Use) - Proposed
+    single: MaximumCardinalityMatching(Minimal Use)
 
 
 
@@ -84,7 +77,7 @@ The minimal use calculates one possible maximum cardinality matching on a **dire
    :end-before: -- q2
 
 .. index::
-    single: MaximumCardinalityMatching(Complete Signature) - Proposed
+    single: MaximumCardinalityMatching(Complete Signature)
 
 Complete signature
 .............................................
@@ -105,11 +98,23 @@ The complete signature calculates one possible maximum cardinality matching.
 
 
 
-Description of the Signatures
+Parameters
 --------------------------------------------------------
 
+============== ================== ======== =========================================
+Parameter         Type            Default       Description
+============== ================== ======== =========================================
+**edges_sql**     ``TEXT``                 SQL query as described above.
+**directed**   ``BOOLEAN``        ``true`` Determines the type of the graph.
+                                           - When ``true`` Graph is considered `Directed`
+                                           - When ``false`` the graph is considered as `Undirected`.
 
-Description of the SQL query
+============== ================== ======== =========================================
+
+Inner query
+--------------------------------------------------------
+
+edges_sql
 ...........................................................
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
@@ -126,21 +131,11 @@ Column                Type                  Description
 
 Where:
 
-  - :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-  - :ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL FLOAT
 
-Description of the parameters of the signatures
-...........................................................
-
-================= ====================== =================================================
-Column            Type                   Description
-================= ====================== =================================================
-**edges_sql**     ``TEXT``               SQL query as described above.
-**directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Default TRUE.
-================= ====================== =================================================
-
-Description of the Result
-...........................................................
+Result Columns
+--------------------------------------------------------
 
 =====================  ====================  =================================================
 Column                 Type                  Description
@@ -154,7 +149,7 @@ Column                 Type                  Description
 See Also
 --------
 
-* :ref:`maxFlow`
+* :doc:`flow-family`
 * http://www.boost.org/libs/graph/doc/maximum_matching.html
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 * https://en.wikipedia.org/wiki/Ackermann_function

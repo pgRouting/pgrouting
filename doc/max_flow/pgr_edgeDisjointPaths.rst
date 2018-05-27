@@ -8,12 +8,10 @@
    ****************************************************************************
 
 
-.. _pgr_edgeDisjointPaths:
-
-pgr_edgeDisjointPaths - Proposed
+pgr_edgeDisjointPaths
 ==========================================
 
-Name
+Synopsis
 -------------------------------------------------------------------------------
 
 ``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
@@ -26,20 +24,12 @@ Name
 
 .. Rubric:: Availability: 2.3.0
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
-
-
-Synopsis
--------------------------------------------------------------------------------
 
 Calculates the edge disjoint paths between two groups of vertices.
 Utilizes underlying maximum flow algorithms to calculate the paths.
 
 Characteristics:
-----------------
+...............................................................................
 
 The main characterics are:
   - Calculates the edge disjoint paths between any two groups of vertices.
@@ -49,28 +39,25 @@ The main characterics are:
   - Uses :ref:`pgr_boykovKolmogorov` to calculate the paths.
 
 Signature Summary
------------------
+-------------------------------------------------------------------------------
 
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
-    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
-    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
-    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
-    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid [, directed])
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids [, directed])
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid [, directed])
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids [, directed])
 
     RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
     OR EMPTY SET
 
 
-Signatures
-----------
-
 .. index::
-    single: edgeDisjointPaths(Minimal Use) - Proposed
+    single: edgeDisjointPaths(Minimal Use)
 
 Minimal use
-.................
+...............................................................................
 
 .. code-block:: none
 
@@ -87,10 +74,10 @@ The minimal use is for a **directed** graph from one ``start_vid`` to one ``end_
    :end-before: -- q2
 
 .. index::
-    single: edgeDisjointPaths(One to One) - Proposed
+    single: edgeDisjointPaths(One to One)
 
 One to One
-.......................................
+...............................................................................
 
 This signature finds the set of dijoint paths from one ``start_vid`` to one ``end_vid``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
@@ -111,10 +98,10 @@ This signature finds the set of dijoint paths from one ``start_vid`` to one ``en
 
 
 .. index::
-    single: edgeDisjointPaths(One to Many) - Proposed
+    single: edgeDisjointPaths(One to Many)
 
 One to Many
-.......................................
+...............................................................................
 
 This signature finds the sset of disjoint paths  from the ``start_vid`` to each one of the ``end_vid`` in ``end_vids``:
   - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
@@ -140,10 +127,10 @@ This signature finds the sset of disjoint paths  from the ``start_vid`` to each 
 
 
 .. index::
-    single: edgeDisjointPaths(Many to One) - Proposed
+    single: edgeDisjointPaths(Many to One)
 
 Many to One
-.......................................
+...............................................................................
 
 This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to the ``end_vid``:
   - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
@@ -166,10 +153,10 @@ This signature finds the set of disjoint paths from each one of the ``start_vid`
 
 
 .. index::
-    single: edgeDisjointPaths(Many to Many) - Proposed
+    single: edgeDisjointPaths(Many to Many)
 
 Many to Many
-.......................................
+...............................................................................
 
 This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to each one of the ``end_vid`` in ``end_vids``:
   - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
@@ -191,18 +178,25 @@ This signature finds the set of disjoint paths from each one of the ``start_vid`
 
 
 
-Description of the Signatures
-----------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
+Parameters
+-------------------------------------------------------------------------------
 
 .. include:: pgr_dijkstra.rst
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
 
+Inner query
+-------------------------------------------------------------------------------
+
+edges_sql
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Return Columns
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_start
@@ -211,7 +205,7 @@ Description of the Signatures
 See Also
 --------
 
-* :ref:`maxFlow`
+* :doc:`flow-family`
 
 .. rubric:: Indices and tables
 
