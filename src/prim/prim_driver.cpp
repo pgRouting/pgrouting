@@ -6,25 +6,20 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2018 Celia Virginia Vergara Castillo
+Copyright (c) 2018 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
-
 ------
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 ********************************************************************PGR-GNU*/
 
 #include "drivers/prim/prim_driver.h"
@@ -37,9 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-
-
-
 
 
 /************************************************************
@@ -86,10 +78,11 @@ do_pgr_prim(
         std::vector<pgr_prim_t> results;
 
         log << "Working with Undirected Graph\n";
-        pgrouting::UndirectedGraph undigraph(gType); //
+
+	pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_prim(
-                 undigraph);
+                    undigraph);
 
         auto count = results.size();
 
@@ -97,7 +90,7 @@ do_pgr_prim(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No paths found between start_vid and end_vid vertices";
+                "No paths found";
             return;
         }
 
@@ -106,7 +99,6 @@ do_pgr_prim(
             *((*return_tuples) + i) = results[i];
         }
         (*return_count) = count;
-
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :

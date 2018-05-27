@@ -1,31 +1,25 @@
 /*PGR-GNU*****************************************************************
 File: prim.c
-
 Generated with Template by:
+
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2018 Celia Virginia Vergara Castillo
+Copyright (c) 2018 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
-
-
 ------
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 ********************************************************************PGR-GNU*/
 
 /** @file prim.c
@@ -224,23 +218,22 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
                OUT agg_cost FLOAT
          ***********************************************************************/
 
-        values = palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(bool));
+        values = palloc(6 * sizeof(Datum));
+        nulls = palloc(6 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 7; ++i) {
+        for (i = 0; i < 6; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_node);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_node);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
