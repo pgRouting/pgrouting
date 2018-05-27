@@ -105,9 +105,9 @@ void fetch_costFlow_edge(
         size_t *valid_edges,
         bool normal) {
     if (column_found(info[0].colNumber)) {
-        edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+        edge->edge_id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     } else {
-        edge->id = *default_id;
+        edge->edge_id = *default_id;
         ++(*default_id);
     }
 

@@ -55,6 +55,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 /* for functions to get edges information */
 #include "c_common/edges_input.h"
+/* for functions to get array input */
+#include "c_common/arrays_input.h"
 
 #include "drivers/costFlow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
 
@@ -83,7 +85,7 @@ process(
         pgr_get_bigIntArray(&size_source_verticesArr, starts);
 
     size_t size_sink_verticesArr = 0;
-    int64_t* sink_vertices =
+    int64_t* sink_vertices = 
         pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
     PGR_DBG("Load data");
@@ -154,7 +156,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum minCostMaxFlow_many_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
@@ -243,8 +245,8 @@ PGDLLEXPORT Datum minCostMaxFlow(PG_FUNCTION_ARGS) {
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
         values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].residual_capacity);
-        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Int64GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
