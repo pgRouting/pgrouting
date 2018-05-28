@@ -11,7 +11,7 @@ SELECT plan(20);
 PREPARE q1 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 3
 );
 
@@ -20,7 +20,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q2 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 3,
     FALSE
 );
@@ -30,7 +30,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q3 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     2, 3
 );
 
@@ -39,7 +39,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q4 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     2, 3,
     FALSE
 );
@@ -53,7 +53,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q5 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     6, 8
 );
 
@@ -62,7 +62,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q6 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     6, 8,
     FALSE
 );
@@ -72,7 +72,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q7 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     6, 8
 );
 
@@ -81,7 +81,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q8 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     6, 8,
     FALSE
 );
@@ -95,7 +95,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q9 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     1, 17
 );
 
@@ -104,7 +104,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q10 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     1, 17,
     FALSE
 );
@@ -114,7 +114,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q11 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     1, 17
 );
 
@@ -123,7 +123,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q12 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     1, 17,
     FALSE
 );
@@ -137,7 +137,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q13 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 2
 );
 
@@ -146,7 +146,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q14 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 2,
     FALSE
 );
@@ -156,7 +156,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q15 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     2, 2
 );
 
@@ -165,7 +165,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q16 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     2, 2,
     FALSE
 );
@@ -178,7 +178,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q17 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 14
 );
 
@@ -187,7 +187,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q18 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
-    'SELECT * FROM restrict WHERE id IN (1)',
+    'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 14,
     FALSE
 );
@@ -197,7 +197,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q19 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     2, 14
 );
 
@@ -206,7 +206,7 @@ SELECT * FROM pgr_dijkstraTR(
 PREPARE q20 AS
 SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
-    'SELECT * FROM restrict where id > 10',
+    'SELECT * FROM new_restrictions where id > 10',
     2, 14,
     FALSE
 );

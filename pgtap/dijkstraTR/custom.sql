@@ -13,7 +13,7 @@ PREPARE q1 AS
 SELECT seq,
        edge
 FROM pgr_dijkstraTR('SELECT id, source, target, cost, reverse_cost
-FROM edge_table', 'SELECT * FROM restrict WHERE id in (1)', 2, 8);
+FROM edge_table', 'SELECT * FROM new_restrictions WHERE id in (1)', 2, 8);
 
 PREPARE q2 AS
 SELECT seq, edge FROM ( VALUES
@@ -34,7 +34,7 @@ PREPARE q3 AS
 SELECT seq,
        edge
 FROM pgr_dijkstraTR('SELECT id, source, target, cost, reverse_cost
-FROM edge_table', 'SELECT * FROM restrict WHERE id in (2)', 8, 11);
+FROM edge_table', 'SELECT * FROM new_restrictions WHERE id in (2)', 8, 11);
 
 PREPARE q4 AS
 SELECT seq, edge FROM ( VALUES
@@ -52,7 +52,7 @@ PREPARE q5 AS
 SELECT seq,
        edge
 FROM pgr_dijkstraTR('SELECT id, source, target, cost, reverse_cost
-FROM edge_table', 'SELECT * FROM restrict WHERE id in (2, 3)', 7, 3);
+FROM edge_table', 'SELECT * FROM new_restrictions WHERE id in (2, 3)', 7, 3);
 
 PREPARE q6 AS
 SELECT seq, edge FROM ( VALUES
@@ -73,7 +73,7 @@ PREPARE q7 AS
 SELECT seq,
        edge
 FROM pgr_dijkstraTR('SELECT id, source, target, cost, reverse_cost
-FROM edge_table', 'SELECT * FROM restrict WHERE id in (4)', 7, 1);
+FROM edge_table', 'SELECT * FROM new_restrictions WHERE id in (4)', 7, 1);
 
 PREPARE q8 AS
 SELECT seq, edge FROM ( VALUES
@@ -94,7 +94,7 @@ PREPARE q9 AS
 SELECT seq,
        edge
 FROM pgr_dijkstraTR('SELECT id, source, target, cost, reverse_cost
-FROM edge_table', 'SELECT * FROM restrict WHERE id in (4, 5)', 8, 4);
+FROM edge_table', 'SELECT * FROM new_restrictions WHERE id in (4, 5)', 8, 4);
 
 PREPARE q10 AS
 SELECT seq, edge FROM ( VALUES
@@ -115,7 +115,7 @@ PREPARE q11 AS
 SELECT seq,
        edge
 FROM pgr_dijkstraTR('SELECT id, source, target, cost, reverse_cost
-FROM edge_table', 'SELECT * FROM restrict WHERE id in (4, 5)', 7, 1);
+FROM edge_table', 'SELECT * FROM new_restrictions WHERE id in (4, 5)', 7, 1);
 
 PREPARE q12 AS
 SELECT seq, edge FROM ( VALUES
@@ -140,7 +140,7 @@ PREPARE q13 AS
 SELECT seq,
        edge
 FROM pgr_dijkstraTR('SELECT id, source, target, cost, reverse_cost
-FROM edge_table', 'SELECT * FROM restrict WHERE id in (6, 7)', 12, 7);
+FROM edge_table', 'SELECT * FROM new_restrictions WHERE id in (6, 7)', 12, 7);
 
 PREPARE q14 AS
 SELECT seq, edge FROM ( VALUES

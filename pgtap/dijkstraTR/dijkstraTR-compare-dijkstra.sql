@@ -1,12 +1,12 @@
 \i setup.sql
 
-SELECT plan(1157);
+SELECT plan(5);
 
 SET client_min_messages TO ERROR;
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
-SELECT has_function('pgr_dijkstratrsp');
+SELECT has_function('pgr_dijkstratr');
 
 CREATE or REPLACE FUNCTION dijkstratrsp_compare_dijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
@@ -26,8 +26,8 @@ BEGIN
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            restricted_sql := 'SELECT * FROM restrict WHERE id IN (1)';
-            dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratrsp($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+            restricted_sql := 'SELECT * FROM new_restrictions WHERE id IN (1)';
+            dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratr($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
                 || ', true)';
             RETURN query SELECT set_eq(dijkstratrsp_sql, dijkstra_sql, dijkstratrsp_sql);
 
@@ -36,8 +36,8 @@ BEGIN
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            restricted_sql := 'SELECT * FROM restrict WHERE id in (1)';
-            dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratrsp($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+            restricted_sql := 'SELECT * FROM new_restrictions WHERE id in (1)';
+            dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratr($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
                 || ', false)';
             RETURN query SELECT set_eq(dijkstratrsp_sql, dijkstra_sql, dijkstratrsp_sql);
 
@@ -46,8 +46,8 @@ BEGIN
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            restricted_sql := 'SELECT * FROM restrict';
-            dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratrsp($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+            restricted_sql := 'SELECT * FROM new_restrictions';
+            dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratr($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
                 || ', true)';
             RETURN query SELECT set_eq(dijkstratrsp_sql, dijkstra_sql, dijkstratrsp_sql);
 
@@ -56,8 +56,8 @@ BEGIN
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            restricted_sql := 'SELECT * FROM restrict';
-            dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratrsp($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+            restricted_sql := 'SELECT * FROM new_restrictions';
+            dijkstratrsp_sql := 'SELECT * FROM pgr_dijkstratr($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
                 || ', false)';
             RETURN query SELECT set_eq(dijkstratrsp_sql, dijkstra_sql, dijkstratrsp_sql);
 
@@ -69,7 +69,7 @@ BEGIN
 END
 $BODY$
 language plpgsql;
-SELECT * from dijkstratrsp_compare_dijkstra();
+SELECT * from dijkstratrsp_compare_dijkstra(1);
 
 SELECT * FROM finish();
 ROLLBACK;
