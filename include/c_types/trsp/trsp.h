@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
+ * aint64 with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
@@ -24,14 +24,14 @@
 
 #define MAX_RULE_LENGTH 5
 
-#include "postgres.h"
+#include <postgres.h>
 #include <stdint.h>
 
 
 typedef struct edge {
-    long id;
-    long source;
-    long target;
+    int64 id;
+    int64 source;
+    int64 target;
     float8 cost;
     float8 reverse_cost;
 } edge_t;
@@ -44,8 +44,8 @@ typedef struct restrict_struct {
 restrict_t;
 
 typedef struct path_element {
-    long vertex_id;
-    long edge_id;
+    int64 vertex_id;
+    int64 edge_id;
     float8 cost;
 } path_element_tt;
 

@@ -1,3 +1,5 @@
+// Copyright 2012 steve
+
 #ifndef INCLUDE_TRSP_GRAPHDEFINITION_H_
 #define INCLUDE_TRSP_GRAPHDEFINITION_H_
 
@@ -16,14 +18,14 @@
 
 // using namespace std;
 
-typedef std::vector<long> LongVector;
+typedef std::vector<int64> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
-typedef std::pair<long, bool> PIB;
+typedef std::pair<int64, bool> PIB;
 typedef std::pair<double, PIB> PDP;
-typedef std::pair<double, std::vector<long> > PDVI;
+typedef std::pair<double, std::vector<int64> > PDVI;
 
 /*
-typedef struct edge 
+typedef struct edge
 {
     int id;
     int source;
@@ -32,7 +34,7 @@ typedef struct edge
     double reverse_cost;
 } edge_t;
 
-typedef struct path_element 
+typedef struct path_element
 {
     int vertex_id;
     int edge_id;
@@ -41,29 +43,29 @@ typedef struct path_element
 */
 
 typedef struct {
-    long ed_ind[2];
-    long v_pos[2];
+    int64 ed_ind[2];
+    int64 v_pos[2];
 } PARENT_PATH;
 
 typedef struct Rule {
     double cost;
-    std::vector<long> precedencelist;
-    Rule(double c, std::vector<long> p) : cost(c), precedencelist(p) { }
+    std::vector<int64> precedencelist;
+    Rule(double c, std::vector<int64> p) : cost(c), precedencelist(p) { }
 }Rule;
 
 typedef struct {
     double startCost, endCost;
 } CostHolder;
 
-typedef std::map<long, std::vector<Rule> > RuleTable;
+typedef std::map<int64, std::vector<Rule> > RuleTable;
 
 
 
 class GraphEdgeInfo {
  public:
-    long m_lEdgeID;
-    long m_lEdgeIndex;
-    short m_sDirection;
+    int64 m_lEdgeID;
+    int64 m_lEdgeIndex;
+    int64 m_sDirection;
     double m_dCost;
     double m_dReverseCost;
     LongVector m_vecStartConnectedEdge;
@@ -72,16 +74,16 @@ class GraphEdgeInfo {
     bool m_bIsLeadingRestrictedEdge;
     VectorOfLongVector m_vecRestrictedEdge;
 
-    long m_lStartNode;
-    long m_lEndNode;
+    int64 m_lStartNode;
+    int64 m_lEndNode;
 };
 
 
 
 
 typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
-typedef std::map<long, LongVector> Long2LongVectorMap;
-typedef std::map<long, long> Long2LongMap;
+typedef std::map<int64, LongVector> Long2LongVectorMap;
+typedef std::map<int64, int64> Long2LongMap;
 
 
 
@@ -91,25 +93,25 @@ class GraphDefinition {
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra(long start_vertex, long end_vertex,
+    int my_dijkstra(int64 start_vertex, int64 end_vertex,
                     size_t edge_count, char** err_msg);
 
     int my_dijkstra(edge_t *edges, size_t edge_count,
-                    long start_vertex, long end_vertex,
+                    int64 start_vertex, int64 end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
     int my_dijkstra(edge_t *edges, size_t edge_count,
-                    long start_vertex, long end_vertex,
+                    int64 start_vertex, int64 end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
     int my_dijkstra(edge_t *edges, size_t edge_count,
-                    long start_edge, double start_part,
-                    long end_edge, double end_part,
+                    int64 start_edge, double start_part,
+                    int64 end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
@@ -127,11 +129,11 @@ class GraphDefinition {
 
 
  private:
-    double construct_path(long ed_id, long v_pos);
-    void explore(long cur_node, GraphEdgeInfo& cur_edge, bool isStart,
+    double construct_path(int64 ed_id, int64 v_pos);
+    void explore(int64 cur_node, GraphEdgeInfo& cur_edge, bool isStart,
                  LongVector &vecIndex, std::priority_queue<PDP,
                  std::vector<PDP>, std::greater<PDP> > &que);
-    double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge,
+    double getRestrictionCost(int64 cur_node, GraphEdgeInfo& new_edge,
                               bool isStart);
     bool addEdge(edge edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge,
@@ -145,10 +147,10 @@ class GraphDefinition {
     GraphEdgeVector m_vecEdgeVector;
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
-    long max_node_id;
-    long max_edge_id;
-    long m_lStartEdgeId;
-    long m_lEndEdgeId;
+    int64 max_node_id;
+    int64 max_edge_id;
+    int64 m_lStartEdgeId;
+    int64 m_lEndEdgeId;
     double m_dStartpart;
     double m_dEndPart;
     bool isStartVirtual;

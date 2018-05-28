@@ -29,6 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#include <vector>
+#include <utility>
 #include "trsp/GraphDefinition.h"
 
 
@@ -51,7 +53,7 @@ int trsp_node_wrapper(
         size_t i, j;
         ruleTable.clear();
         for (i = 0; i < restrict_count; i++) {
-            std::vector<long> seq;
+            std::vector<int64> seq;
             seq.clear();
             seq.push_back(restricts[i].target_id);
             for (j = 0; j < MAX_RULE_LENGTH && restricts[i].via[j] > -1; j++) {
@@ -71,11 +73,11 @@ int trsp_node_wrapper(
             return EXIT_SUCCESS;
     }
     catch(std::exception& e) {
-        *err_msg = (char *) e.what();
+        *err_msg = const_cast<char *>(e.what());
         return -1;
     }
     catch(...) {
-        *err_msg = (char *) "Caught unknown exception!";
+        *err_msg = const_cast<char *>("Caught unknown exception!");
         return -1;
     }
 }
@@ -101,7 +103,7 @@ int trsp_edge_wrapper(
         size_t i, j;
         ruleTable.clear();
         for (i = 0; i < restrict_count; i++) {
-            std::vector<long> seq;
+            std::vector<int64> seq;
             seq.clear();
             seq.push_back(restricts[i].target_id);
             for (j = 0; j < MAX_RULE_LENGTH && restricts[i].via[j] >- 1; j++) {
@@ -122,11 +124,11 @@ int trsp_edge_wrapper(
             return EXIT_SUCCESS;
     }
     catch(std::exception& e) {
-        *err_msg = (char *) e.what();
+        *err_msg = const_cast<char *>(e.what());
         return -1;
     }
     catch(...) {
-        *err_msg = (char *) "Caught unknown exception!";
+        *err_msg = const_cast<char *>("Caught unknown exception!");
         return -1;
     }
 }

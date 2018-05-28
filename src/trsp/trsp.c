@@ -32,14 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #if 0
 #include "utils/array.h"
-#include "postgres.h"
+#include <postgres.h>
 #include "executor/spi.h"
-#include "funcapi.h"
+#include <funcapi.h>
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
 
-#include "fmgr.h"
+#include <fmgr.h>
 #endif
 
 #include "c_types/trsp/trsp.h"

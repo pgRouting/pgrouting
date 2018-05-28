@@ -267,7 +267,10 @@ class Pgr_dijkstra {
          std::deque<Path> paths;
 
          for (const auto &start : start_vertex) {
-             auto r_paths = dijkstra(graph, start, end_vertex, only_cost, n_goals);
+             auto r_paths = dijkstra(
+                     graph,
+                     start, end_vertex,
+                     only_cost, n_goals);
              paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
          }
 
@@ -750,6 +753,7 @@ class Pgr_dijkstra {
                   --m_n_goals;
                   if (m_n_goals == 0) throw found_goals();
               }
+
       private:
           std::set< V > m_goals;
           size_t m_n_goals;

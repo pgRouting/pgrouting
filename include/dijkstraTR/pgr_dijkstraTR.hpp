@@ -72,7 +72,7 @@ class Pgr_dijkstraTR {
          return executeDijkstraTR(graph);
      }
 
-     void clear() {};
+     void clear() {}
 
  private:
      Path executeDijkstraTR(G& graph) {
@@ -129,11 +129,13 @@ class Pgr_dijkstraTR {
 
      bool has_a_restriction(int64_t edge, int64_t index) {
 #if 0
-         auto lower_bound_cmp = [](const Restriction& r, const int64_t& target) {
+         auto lower_bound_cmp = [](
+                 const Restriction& r, const int64_t& target) {
              return r.restrict_edges()[0] < target;
          };
          auto edge_index = std::lower_bound(m_restrictions.begin(),
-                 m_restrictions.end(), edge, lower_bound_cmp) - m_restrictions.begin();
+                 m_restrictions.end(), edge,
+                 lower_bound_cmp) - m_restrictions.begin();
          log << "\nResult generated from lower_bound\n";
          while (edge_index < (int64_t)m_restrictions.size()) {
              auto r_edges = m_restrictions[edge_index].restrict_edges();

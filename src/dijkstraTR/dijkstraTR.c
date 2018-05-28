@@ -251,7 +251,6 @@ PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-
         SRF_RETURN_DONE(funcctx);
     }
 }
