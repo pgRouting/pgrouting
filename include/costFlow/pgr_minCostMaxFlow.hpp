@@ -171,7 +171,7 @@ void PgrCostFlowGraph::insert_edges(
         V v2 = get_boost_vertex(edge.target);
 
         e = add_edge(v1, v2, edge.cost, edge.capacity);
-        if (edge.reverse_capacity > 0)
+        if (edge.reverse_cost > 0)
             e_rev = add_edge(v2, v1, edge.reverse_cost, edge.reverse_capacity);
         else
             e_rev = add_edge(v2, v1, -edge.cost, 0);
