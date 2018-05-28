@@ -133,19 +133,18 @@ do_pgr_dijkstraTR(
                     strict);
         } else {
             log << "TODO Working with Undirected Graph\n";
-        #if 0
             pgrouting::UndirectedGraph undigraph(gType);
             Pgr_dijkstraTR < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
             path = pgr_dijkstraTR(undigraph,
-                    restrict_array,
-                    edges,
+                    ruleList,
+
                     start_vid,
                     end_vid,
+
                     logstr,
                     only_cost,
                     strict);
-        #endif
         }
 
         log << logstr;
