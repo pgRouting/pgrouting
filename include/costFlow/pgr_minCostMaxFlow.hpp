@@ -170,7 +170,7 @@ void PgrCostFlowGraph::insert_edges(
         V v2 = get_boost_vertex(edge.target);
 
         if (edge.capacity > 0) {
-            e1 = add_edge(v1, v2, edge.cost, edge.capacity);
+            e1 = add_edge(v1, v2, edge.cost, static_cast<double>(edge.capacity));
             e1_rev = add_edge(v2, v1, -edge.cost, 0);
 
             E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e1, edge.edge_id));
@@ -181,7 +181,7 @@ void PgrCostFlowGraph::insert_edges(
         }
 
         if (edge.reverse_capacity > 0) {
-            e2 = add_edge(v2, v1, edge.reverse_cost, edge.reverse_capacity);
+            e2 = add_edge(v2, v1, edge.reverse_cost, static_cast<double>(edge.reverse_capacity));
             e2_rev = add_edge(v1, v2, -edge.reverse_cost, 0);
 
             E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e2, edge.edge_id));
@@ -195,7 +195,6 @@ void PgrCostFlowGraph::insert_edges(
 
 void PgrCostFlowGraph::set_supersource(
         const std::set<int64_t> &source_vertices) {
-    bool added;
     supersource = add_vertex(graph);
     for (int64_t source_id : source_vertices) {
         PgrCostFlowGraph::V source = get_boost_vertex(source_id);
@@ -209,7 +208,6 @@ void PgrCostFlowGraph::set_supersource(
 
 void PgrCostFlowGraph::set_supersink(
         const std::set<int64_t> &sink_vertices) {
-    bool added;
     supersink = add_vertex(graph);
     for (int64_t sink_id : sink_vertices) {
         PgrCostFlowGraph::V sink = get_boost_vertex(sink_id);
@@ -233,9 +231,9 @@ PgrCostFlowGraph::get_flow_edges() const {
             edge.edge = get_edge_id(*e);
             edge.source = get_vertex_id((*e).m_source);
             edge.target = get_vertex_id((*e).m_target);
-            edge.flow = capacity[*e] - residual_capacity[*e];
+            edge.flow = static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
             edge.residual_capacity = residual_capacity[*e];
-            edge.cost = weight[*e] * edge.flow;
+            edge.cost = weight[*e] * static_cast<double>(edge.flow);
             if (flow_edges.size() == 0)
                 edge.agg_cost = edge.cost;
             else
