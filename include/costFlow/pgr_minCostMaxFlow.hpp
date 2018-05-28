@@ -47,11 +47,10 @@ namespace pgrouting {
 namespace graph {
 
 class PgrCostFlowGraph {
-     typedef boost::graph_traits<CostFlowGraph>::vertex_descriptor V;
-     typedef boost::graph_traits<CostFlowGraph>::edge_descriptor E;
+     typedef Traits::vertex_descriptor V;
+     typedef Traits::edge_descriptor E;
      typedef boost::graph_traits<CostFlowGraph>::vertex_iterator V_it;
      typedef boost::graph_traits<CostFlowGraph>::edge_iterator E_it;
-     typedef boost::graph_traits<CostFlowGraph>::out_edge_iterator Eout_it;
 
      Capacity capacity;
      ResidualCapacity residual_capacity;
@@ -180,9 +179,10 @@ void PgrCostFlowGraph::insert_edges(
             rev[e1] = e1_rev;
             rev[e1_rev] = e1;
         }
+
         if (edge.reverse_capacity > 0) {
             e2 = add_edge(v2, v1, edge.reverse_cost, edge.reverse_capacity);
-            e2_rev = add_edge(v2, v1, -edge.reverse_cost, 0);
+            e2_rev = add_edge(v1, v2, -edge.reverse_cost, 0);
 
             E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e2, edge.edge_id));
             E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e2_rev, edge.edge_id));

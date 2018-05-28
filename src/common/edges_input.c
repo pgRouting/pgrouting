@@ -133,8 +133,8 @@ void fetch_costFlow_edge(
         edge->reverse_cost = default_rcost;
     }
 
-    *valid_edges = edge->cost < 0? *valid_edges: *valid_edges + 1;
-    *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge->capacity < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge->reverse_capacity < 0? *valid_edges: *valid_edges + 1;
 }
 
 static
@@ -555,7 +555,7 @@ get_edges_costFlow(
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_costFlow_edge(&tuple, &tupdesc, info,
-                                    &default_id, -1, -1,
+                                    &default_id, -1, 0,
                                     &(*edges)[total_tuples - ntuples + t],
                                     &valid_edges,
                                     true);
