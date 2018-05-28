@@ -128,6 +128,12 @@ Experimental Functions
 
 ..  end-warn-expr
 
+:ref:`costFlow`
+
+.. include:: costFlow-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 
 :ref:`contraction` - Reduce network size using contraction techniques
 
@@ -156,6 +162,7 @@ Experimental Functions
   contraction-family
   flow-family
   components-family
+  costFlow-family
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
