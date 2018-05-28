@@ -206,170 +206,20 @@ void GraphDefinition::explore(
 }
 
 
-// -------------------------------------------------------------------------
-int GraphDefinition::multi_dijkstra(
-    edge_t *edges,
-    size_t edge_count,
-    std::vector<int> vertices,
-    bool directed,
-    bool has_reverse_cost,
-    path_element_tt **path,
-    size_t *path_count,
-    char **err_msg,
-    std::vector<PDVI> &ruleList) {
-    construct_graph(edges, edge_count, has_reverse_cost, directed);
-    if (ruleList.size() > 0) {
-        m_ruleTable.clear();
-        LongVector vecsource;
-        for (const auto &rule : ruleList) {
-            std::vector<int64> temp_precedencelist;
-            temp_precedencelist.clear();
-            for (auto const &seq : rule.second) {
-                temp_precedencelist.push_back(seq);
-            }
-            int64 dest_edge_id = rule.second[0];
-            if (m_ruleTable.find(dest_edge_id) != m_ruleTable.end()) {
-                m_ruleTable[dest_edge_id].push_back(Rule(rule.first,
-                    temp_precedencelist));
-            } else {
-                std::vector<Rule> temprules;
-                temprules.clear();
-                temprules.push_back(Rule(rule.first, temp_precedencelist));
-                m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
-            }
-        }
-        m_bIsturnRestrictOn = true;
-    }
-    parent = new PARENT_PATH[edge_count + 1];
-    m_dCost = new CostHolder[edge_count + 1];
-    m_vecPath.clear();
-    size_t i;
-    size_t total_vertices = vertices.size();
-    for (i = 0; i < total_vertices - 1; i++) {
-        int ret = my_dijkstra(vertices[i], vertices[i + 1], edge_count,
-                err_msg);
-        if (ret < 0) {
-            deleteall();
-            return -1;
-        }
-    }
-
-    *path = reinterpret_cast<path_element_tt *> (
-            malloc(sizeof(path_element_tt) * (m_vecPath.size() + 1)));
-    *path_count = static_cast<int>(m_vecPath.size());
-
-    for (size_t  i = 0; i < *path_count; i++) {
-        (*path)[i].vertex_id = m_vecPath[i].vertex_id;
-        (*path)[i].edge_id = m_vecPath[i].edge_id;
-        (*path)[i].cost = m_vecPath[i].cost;
-    }
-    deleteall();
-    return 0;
-}
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition::my_dijkstra(int64 start_vertex, int64 end_vertex,
-    size_t edge_count, char **err_msg) {
-    if (!m_bIsGraphConstructed) {
-        *err_msg = const_cast<char *>("Graph not Ready!");
-        return -1;
-    }
-    unsigned int i;
-    for (i = 0; i <= edge_count; i++) {
-        m_dCost[i].startCost = 1e15;
-        m_dCost[i].endCost = 1e15;
-    }
+int GraphDefinition::my_dijkstra1(
+        edge_t *edges, size_t edge_count,
+        int64 start_edge_id, double start_part,
+        int64 end_edge_id, double end_part,
+        bool directed, bool has_reverse_cost,
 
-    if (m_mapNodeId2Edge.find(start_vertex) == m_mapNodeId2Edge.end()) {
-        *err_msg = const_cast<char *>("Source Not Found");
-        deleteall();
-        return -1;
-    }
+        path_element_tt **path,
+        size_t *path_count,
+        char **err_msg,
+        std::vector<PDVI> &ruleList) {
 
-    if (m_mapNodeId2Edge.find(end_vertex) == m_mapNodeId2Edge.end()) {
-        *err_msg = const_cast<char *>("Destination Not Found");
-        deleteall();
-        return -1;
-    }
-
-    std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
-    LongVector vecsource = m_mapNodeId2Edge[start_vertex];
-    GraphEdgeInfo* cur_edge = NULL;
-
-    for (const auto &source : vecsource) {
-        cur_edge = m_vecEdgeVector[source];
-        if (cur_edge->m_lStartNode == start_vertex) {
-            if (cur_edge->m_dCost >= 0.0) {
-                m_dCost[cur_edge->m_lEdgeIndex].endCost = cur_edge->m_dCost;
-                parent[cur_edge->m_lEdgeIndex].v_pos[0] = -1;
-                parent[cur_edge->m_lEdgeIndex].ed_ind[0] = -1;
-                que.push(std::make_pair(cur_edge->m_dCost,
-                    std::make_pair(cur_edge->m_lEdgeIndex, true)));
-                }
-            } else {
-                if (cur_edge->m_dReverseCost >= 0.0) {
-                    m_dCost[cur_edge->m_lEdgeIndex].startCost =
-                    cur_edge->m_dReverseCost;
-                    parent[cur_edge->m_lEdgeIndex].v_pos[1] = -1;
-                    parent[cur_edge->m_lEdgeIndex].ed_ind[1] = -1;
-                    que.push(std::make_pair(cur_edge->m_dReverseCost,
-                        std::make_pair(cur_edge->m_lEdgeIndex, false)));
-                    }
-            }
-        }
-
-        int64 cur_node = -1;
-
-        while (!que.empty()) {
-            PDP cur_pos = que.top();
-            que.pop();
-            int64 cured_index = cur_pos.second.first;
-            cur_edge = m_vecEdgeVector[cured_index];
-
-            if (cur_pos.second.second) {  // explore edges connected to end node
-                cur_node = cur_edge->m_lEndNode;
-                if (cur_edge->m_dCost < 0.0)
-                    continue;
-                if (cur_node == end_vertex)
-                    break;
-                explore(cur_node, *cur_edge, true,
-                    cur_edge->m_vecEndConnedtedEdge, que);
-            } else {  // explore edges connected to start node
-                cur_node = cur_edge->m_lStartNode;
-                if (cur_edge->m_dReverseCost < 0.0)
-                    continue;
-                if (cur_node == end_vertex)
-                    break;
-                explore(cur_node, *cur_edge, false,
-                    cur_edge->m_vecStartConnectedEdge, que);
-            }
-        }
-        if (cur_node != end_vertex) {
-            *err_msg = const_cast<char *>("Path Not Found");
-            deleteall();
-            return -1;
-        } else {
-            if (cur_node == cur_edge->m_lStartNode) {
-                construct_path(cur_edge->m_lEdgeIndex, 1);
-            } else {
-                construct_path(cur_edge->m_lEdgeIndex, 0);
-            }
-            path_element_tt pelement;
-            pelement.vertex_id = end_vertex;
-            pelement.edge_id = -1;
-            pelement.cost = 0.0;
-            m_vecPath.push_back(pelement);
-        }
-    return 0;
-}
-
-
-// -------------------------------------------------------------------------
-int GraphDefinition::my_dijkstra(edge_t *edges, size_t edge_count,
-    int64 start_edge_id, double start_part, int64 end_edge_id, double end_part,
-    bool directed, bool has_reverse_cost, path_element_tt **path,
-    size_t *path_count, char **err_msg, std::vector<PDVI> &ruleList) {
     if (!m_bIsGraphConstructed) {
             init();
             construct_graph(edges, edge_count, has_reverse_cost, directed);
@@ -445,15 +295,25 @@ int GraphDefinition::my_dijkstra(edge_t *edges, size_t edge_count,
         }
     }
 
-    return(my_dijkstra(edges, edge_count, start_vertex, end_vertex, directed,
-        has_reverse_cost, path, path_count, err_msg, ruleList));
+    return(my_dijkstra2(
+                edges, edge_count,
+                start_vertex, end_vertex,
+                directed, has_reverse_cost,
+
+                path, path_count, err_msg,
+
+                ruleList));
 }
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, size_t edge_count,
-    int64 start_vertex, int64 end_vertex, bool directed, bool has_reverse_cost,
-    path_element_tt **path, size_t *path_count, char **err_msg,
+int GraphDefinition:: my_dijkstra2(
+        edge_t *edges, size_t edge_count,
+    int64 start_vertex, int64 end_vertex,
+    bool directed, bool has_reverse_cost,
+
+    path_element_tt **path, size_t *path_count,
+    char **err_msg,
     std::vector<PDVI> &ruleList) {
     m_ruleTable.clear();
     LongVector vecsource;
@@ -500,15 +360,20 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, size_t edge_count,
         }
     }
     m_bIsturnRestrictOn = true;
-    return(my_dijkstra(edges, edge_count, start_vertex, end_vertex, directed,
-        has_reverse_cost, path, path_count, err_msg));
+    return(my_dijkstra3(
+                edges, edge_count,
+                start_vertex, end_vertex,
+                directed, has_reverse_cost,
+                path, path_count, err_msg));
 }
 
-
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, size_t edge_count,
-    int64 start_vertex, int64 end_vertex, bool directed, bool has_reverse_cost,
-    path_element_tt **path, size_t *path_count, char **err_msg) {
+int GraphDefinition:: my_dijkstra3(
+        edge_t *edges, size_t edge_count,
+    int64 start_vertex, int64 end_vertex,
+    bool directed, bool has_reverse_cost,
+    path_element_tt **path, size_t *path_count, char **err_msg
+    ) {
     if (!m_bIsGraphConstructed) {
         init();
         construct_graph(edges, edge_count, has_reverse_cost, directed);
@@ -639,7 +504,6 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, size_t edge_count,
     deleteall();
     return 0;
 }
-
 
 // -------------------------------------------------------------------------
 bool GraphDefinition::get_single_cost(double total_cost, path_element_tt **path,

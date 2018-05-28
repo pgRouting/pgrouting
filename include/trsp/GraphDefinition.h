@@ -70,7 +70,6 @@ class GraphEdgeInfo {
     double m_dReverseCost;
     LongVector m_vecStartConnectedEdge;
     LongVector m_vecEndConnedtedEdge;
-    // LongVector m_vecConnectedNode;
     bool m_bIsLeadingRestrictedEdge;
     VectorOfLongVector m_vecRestrictedEdge;
 
@@ -93,36 +92,26 @@ class GraphDefinition {
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra(int64 start_vertex, int64 end_vertex,
-                    size_t edge_count, char** err_msg);
-
-    int my_dijkstra(edge_t *edges, size_t edge_count,
+    int my_dijkstra3(edge_t *edges, size_t edge_count,
                     int64 start_vertex, int64 end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
-    int my_dijkstra(edge_t *edges, size_t edge_count,
+    int my_dijkstra2(edge_t *edges, size_t edge_count,
                     int64 start_vertex, int64 end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
-    int my_dijkstra(edge_t *edges, size_t edge_count,
+    int my_dijkstra1(edge_t *edges, size_t edge_count,
                     int64 start_edge, double start_part,
                     int64 end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
-
-    int multi_dijkstra(edge_t *edges, size_t edge_count,
-                       std::vector<int> vertices,
-                       bool directed, bool has_reverse_cost,
-                       path_element_tt **path, size_t *path_count,
-                       char **err_msg,
-                       std::vector<PDVI> &ruleList);
 
     bool construct_graph(edge_t *edges, size_t edge_count,
                          bool has_reverse_cost, bool directed);
