@@ -166,21 +166,29 @@ PgrCostFlowGraph::E PgrCostFlowGraph::add_edge(
 void PgrCostFlowGraph::insert_edges(
         const std::vector<pgr_costFlow_t> &edges) {
     for (const auto edge : edges) {
-        PgrCostFlowGraph::E e, e_rev;
+        PgrCostFlowGraph::E e1, e1_rev, e2, e2_rev;
         V v1 = get_boost_vertex(edge.source);
         V v2 = get_boost_vertex(edge.target);
 
-        e = add_edge(v1, v2, edge.cost, edge.capacity);
-        if (edge.reverse_cost > 0)
-            e_rev = add_edge(v2, v1, edge.reverse_cost, edge.reverse_capacity);
-        else
-            e_rev = add_edge(v2, v1, -edge.cost, 0);
+        if (edge.cost > 0) {
+            e1 = add_edge(v1, v2, edge.cost, edge.capacity);
+            e1_rev = add_edge(v2, v1, -edge.cost, 0);
 
-        E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e, edge.edge_id));
-        E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e_rev, edge.edge_id));
+            E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e1, edge.edge_id));
+            E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e1_rev, edge.edge_id));
         
-        rev[e] = e_rev;
-        rev[e_rev] = e;
+            rev[e1] = e1_rev;
+            rev[e1_rev] = e1;
+        } else {
+            e2 = add_edge(v2, v1, edge.reverse_cost, edge.reverse_capacity);
+            e2_rev = add_edge(v2, v1, -edge.reverse_cost, 0);
+
+            E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e2, edge.edge_id));
+            E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e2_rev, edge.edge_id));
+        
+            rev[e2] = e2_rev;
+            rev[e2_rev] = e2;
+        }
     }
 }
 
