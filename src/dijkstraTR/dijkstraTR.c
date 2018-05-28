@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTRSP.c
+File: dijkstraTR.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/** @file dijkstraTRSP.c
+/** @file dijkstraTR.c
  * @brief Connecting code with postgres.
  *
  */
@@ -47,10 +47,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/restrictions_input.h"
 
-#include "drivers/dijkstraTRSP/dijkstraTRSP_driver.h"
+#include "drivers/dijkstraTR/dijkstraTR_driver.h"
 
-PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(dijkstraTRSP);
+PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(dijkstraTR);
 
 
 static
@@ -70,11 +70,12 @@ process(
     pgr_SPI_connect();
     (*result_tuples) = NULL;
     (*result_count) = 0;
-    PGR_DBG("\n\n\n\n\n\nEdge query: %s\n", edges_sql);
-    PGR_DBG("Restrictions query: %s\n", restrictions_sql);
-    PGR_DBG("source: %lu | destination: %lu\n\n", start_vid, end_vid);
 
+    PGR_DBG("Edge query: %s", edges_sql);
+    PGR_DBG("Restrictions query: %s", restrictions_sql);
+    PGR_DBG("source: %lu | destination: %lu", start_vid, end_vid);
     PGR_DBG("Load data");
+
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
@@ -96,10 +97,10 @@ process(
     pgr_get_restrictions(restrictions_sql, &restrictions,
         &total_restrictions);
 
-#if 1
+#if 0
     size_t i = 0;
     while (i < total_restrictions) {
-        PGR_DBG("id: %ld cost: %lf", restrictions[i].id, restrictions[i].cost);
+        PGR_DBG("id: %ld cost: %lf:", restrictions[i].id, restrictions[i].cost);
         int j = 0;
         while (restrictions[i].via[j] != -1) {
             PGR_DBG("%ld ", restrictions[i].via[j]);
@@ -121,7 +122,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_dijkstraTRSP(
+    do_pgr_dijkstraTR(
             edges,
             total_edges,
             restrictions,
@@ -137,7 +138,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_dijkstraTRSP", start_t, clock());
+    time_msg(" processing pgr_dijkstraTR", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
@@ -152,7 +153,7 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum dijkstraTRSP(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

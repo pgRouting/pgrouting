@@ -33,17 +33,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "c_types/restrict_t.h"
+#include "c_types/restriction_t.h"
 
 class Restriction {
- private:
-        int64_t m_id;
-        std::vector< int64_t > m_restrict_edges;
-        double m_cost;
-
  public:
         Restriction() = default;
-        explicit Restriction(const Restrict_t &r);
+        explicit Restriction(const Restriction_t &r);
 
         int64_t id() const {return m_id;}
         void id(const int64_t& value) {m_id = value;}
@@ -65,6 +60,11 @@ class Restriction {
 
         friend std::ostream& operator << (std::ostream &log,
              const Restriction &r);
+
+ private:
+        int64_t m_id;
+        std::vector< int64_t > m_via;
+        double m_cost;
 };
 
 #endif  // INCLUDE_DIJKSTRATRSP_RESTRICTION_H_

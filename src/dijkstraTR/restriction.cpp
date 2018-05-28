@@ -23,17 +23,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#include "dijkstraTRSP/restriction.h"
+#include "dijkstraTR/restriction.h"
 
 #include <vector>
 #include <memory>
 #include <utility>
 #include <limits>
 
-Restriction::Restriction(const Restrict_t &r) :
+Restriction::Restriction(const Restriction_t &r) :
     m_id(r.id),
     m_cost(r.cost) {
-        for (auto &it : r.restricted_edges) {
+        for (auto &it : r.via) {
             if (it == -1) break;
             restrict_edges(it);
         }
@@ -43,7 +43,7 @@ std::ostream&
 operator << (std::ostream &log, const Restriction& r) {
     log << "\n--------------------------------\nRestriction\n";
     log << "ID: " << r.id() << "\nRestricion edge sequence: ";
-    for (const auto &v : r.restrict_edges()) {
+    for (const auto &v : r.m_via) {
         log << v <<" ";
     }
     log << "\n";

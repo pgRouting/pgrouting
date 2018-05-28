@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    dijkstraTRSP.sql
+    dijkstraTR.sql
     )
 
 # Do not modify below this line

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTRSP_driver.cpp
+File: dijkstraTR_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/dijkstraTRSP/dijkstraTRSP_driver.h"
+#include "drivers/dijkstraTR/dijkstraTR_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -39,39 +39,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "trsp/rule.h"
 
-#if 0
-#include "dijkstraTRSP/pgr_dijkstraTRSP.hpp"
-#endif
+#include "cpp_common/basePath_SSEC.hpp"
+#include "dijkstraTR/pgr_dijkstraTR.hpp"
 
 
-#if 0
 template < class G >
 static
 Path
-pgr_dijkstraTRSP(
+pgr_dijkstraTR(
         G &graph,
-        const std::vector< Restriction >& restrictions_array,
-        const std::vector< pgr_edge_t > edges,
+        const std::vector<pgrouting::trsp::Rule> restrictions,
         int64_t source,
         int64_t target,
         std::string& log,
         bool only_cost = false,
         bool strict = false) {
-    Pgr_dijkstraTRSP< G > fn_TRSP;
-    Path path = fn_TRSP.dijkstraTRSP(graph,
-                    restrictions_array,
-                    edges,
+    Pgr_dijkstraTR< G > fn_TRSP;
+
+    auto path = fn_TRSP.dijkstraTR(graph,
+                    restrictions,
                     source,
                     target,
                     only_cost,
                     strict);
+
     log += fn_TRSP.log.str().c_str();
     return path;
 }
-#endif
 
 void
-do_pgr_dijkstraTRSP(
+do_pgr_dijkstraTR(
         pgr_edge_t *data_edges,
         size_t total_edges,
 
@@ -102,16 +99,14 @@ do_pgr_dijkstraTRSP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        log << "\n---------------------------------------\nRestrictions data\n";
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < total_restrictions; ++i) {
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
-            log << ruleList.back();
         }
-#if 0
-        log << "\n-----------------------------------------\nStart from here\n";
-        for (const auto &it : restrict_array) {
-            log << it << "\n";
+
+        log << "\n---------------------------------------\nRestrictions data\n";
+        for (const auto &r : ruleList) {
+            log << r << "\n";
         }
         log <<"------------------------------------------------------------\n";
 
@@ -124,23 +119,25 @@ do_pgr_dijkstraTRSP(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            Pgr_dijkstraTRSP < pgrouting::DirectedGraph > fn_TRSP;
+            Pgr_dijkstraTR < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(edges);
-            path = pgr_dijkstraTRSP(digraph,
-                    restrict_array,
-                    edges,
+            log << digraph;
+            path = pgr_dijkstraTR(digraph,
+                    ruleList,
+
                     start_vid,
                     end_vid,
+
                     logstr,
                     only_cost,
                     strict);
         } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            Pgr_dijkstraTRSP < pgrouting::UndirectedGraph > fn_TRSP;
-            undigraph.insert_edges(data_edges, total_edges);
+            log << "TODO Working with Undirected Graph\n";
         #if 0
-            path = pgr_dijkstraTRSP(undigraph,
+            pgrouting::UndirectedGraph undigraph(gType);
+            Pgr_dijkstraTR < pgrouting::UndirectedGraph > fn_TRSP;
+            undigraph.insert_edges(data_edges, total_edges);
+            path = pgr_dijkstraTR(undigraph,
                     restrict_array,
                     edges,
                     start_vid,
@@ -150,6 +147,7 @@ do_pgr_dijkstraTRSP(
                     strict);
         #endif
         }
+
         log << logstr;
         auto count = path.size();
         log << "\nCount = " << count;
@@ -165,7 +163,7 @@ do_pgr_dijkstraTRSP(
             path.generate_postgres_data(return_tuples, sequence);
             (*return_count) = sequence;
         }
-#endif
+
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :

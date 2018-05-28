@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_dijkstraTRSP(
+SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM restrict WHERE id IN (1)',
     2, 3
@@ -19,7 +19,7 @@ SELECT * FROM pgr_dijkstraTRSP(
 (6 rows)
 
 -- q2
-SELECT * FROM pgr_dijkstraTRSP(
+SELECT * FROM pgr_dijkstraTR(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM restrict WHERE id IN (1)',
     2, 3,

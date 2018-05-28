@@ -11,9 +11,9 @@ SELECT function_returns('pgr_dijkstratrsp',
     ARRAY['text', 'text', 'bigint', 'bigint', 'boolean','boolean','boolean'],
     'setof record');
 
-SELECT style_dijkstraTRSP('pgr_dijkstratrsp', ', $$SELECT * FROM restrict$$, 2, 3)');
-SELECT style_dijkstraTRSP('pgr_dijkstratrsp', ', $$SELECT * FROM restrict$$, 2, 3, true)');
-SELECT style_dijkstraTRSP('pgr_dijkstratrsp', ', $$SELECT * FROM restrict$$, 2, 3, false)');
+SELECT style_dijkstraTR('pgr_dijkstratrsp', ', $$SELECT * FROM restrict$$, 2, 3)');
+SELECT style_dijkstraTR('pgr_dijkstratrsp', ', $$SELECT * FROM restrict$$, 2, 3, true)');
+SELECT style_dijkstraTR('pgr_dijkstratrsp', ', $$SELECT * FROM restrict$$, 2, 3, false)');
 
 SELECT finish();
 ROLLBACK;

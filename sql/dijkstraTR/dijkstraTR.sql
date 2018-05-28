@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTRSP.sql
+File: dijkstraTR.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraTRSP(
+CREATE OR REPLACE FUNCTION pgr_dijkstraTR(
     TEXT,
     TEXT,
     BIGINT,
@@ -43,5 +43,5 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraTRSP(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'dijkstraTRSP'
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'dijkstraTR'
 LANGUAGE c IMMUTABLE STRICT;

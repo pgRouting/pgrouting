@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTRSP_driver.h
+File: dijkstraTR_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -51,7 +51,7 @@ extern "C" {
      ********************************************************/
 
 
-    void do_pgr_dijkstraTRSP(
+    void do_pgr_dijkstraTR(
             pgr_edge_t  *data_edges,
             size_t total_edges,
 

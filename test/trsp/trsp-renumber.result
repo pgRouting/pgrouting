@@ -16,19 +16,6 @@ SELECT * FROM pgr_trsp(
    5 |  22 |  -1 |    0
 (6 rows)
 
-CREATE TABLE new_restrictions (
-    id SERIAL PRIMARY KEY,
-    path BIGINT[],
-    cost float);
-CREATE TABLE
-INSERT INTO new_restrictions (path, cost) VALUES
- (ARRAY[4,7],   100),
- (ARRAY[8,11],  100),
- (ARRAY[7,01],  100),
- (ARRAY[3,8],     4),
- (ARRAY[61,9],  100),
- (ARRAY[3,5,8],   4);
-INSERT 0 6
 SELECT * FROM _pgr_trsp(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
     $$ SELECT 1 AS id, ARRAY[4,7] AS path, 100 AS cost $$,
