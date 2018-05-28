@@ -28,17 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_COSTFLOW_PGR_MINCOSTMAXFLOW_HPP_
 #pragma once
 
-
-#include "pgr_costFlowGraph.hpp"
-#include "successive_shortest_path_nonnegative_weights.hpp"
-#include "find_flow_cost.hpp"
-
 #include <map>
 #include <string>
 #include <utility>
 #include <vector>
 #include <set>
 #include <limits>
+
+#include "pgr_costFlowGraph.hpp"
+#include "successive_shortest_path_nonnegative_weights.hpp"
+#include "find_flow_cost.hpp"
 
 #include "c_types/pgr_flow_t.h"
 #include "c_types/pgr_costFlow_t.h"
@@ -156,7 +155,8 @@ PgrCostFlowGraph::E PgrCostFlowGraph::add_edge(
         PgrCostFlowGraph::V w, double wei, double cap) {
     bool b;
     PgrCostFlowGraph::E e;
-    boost::tie(e, b) = boost::add_edge(vertex(v, graph), vertex(w, graph), graph);
+    boost::tie(e, b) = boost::add_edge(vertex(v, graph),
+                                       vertex(w, graph), graph);
     capacity[e] = cap;
     weight[e] = wei;
     return e;
@@ -170,23 +170,29 @@ void PgrCostFlowGraph::insert_edges(
         V v2 = get_boost_vertex(edge.target);
 
         if (edge.capacity > 0) {
-            e1 = add_edge(v1, v2, edge.cost, static_cast<double>(edge.capacity));
+            e1 = add_edge(v1, v2, edge.cost,
+                                  static_cast<double>(edge.capacity));
             e1_rev = add_edge(v2, v1, -edge.cost, 0);
 
-            E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e1, edge.edge_id));
-            E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e1_rev, edge.edge_id));
-        
+            E_to_id.insert(std::pair<PgrCostFlowGraph::E,
+                                     int64_t>(e1, edge.edge_id));
+            E_to_id.insert(std::pair<PgrCostFlowGraph::E,
+                                     int64_t>(e1_rev, edge.edge_id));
+
             rev[e1] = e1_rev;
             rev[e1_rev] = e1;
         }
 
         if (edge.reverse_capacity > 0) {
-            e2 = add_edge(v2, v1, edge.reverse_cost, static_cast<double>(edge.reverse_capacity));
+            e2 = add_edge(v2, v1, edge.reverse_cost,
+                                  static_cast<double>(edge.reverse_capacity));
             e2_rev = add_edge(v1, v2, -edge.reverse_cost, 0);
 
-            E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e2, edge.edge_id));
-            E_to_id.insert(std::pair<PgrCostFlowGraph::E, int64_t>(e2_rev, edge.edge_id));
-        
+            E_to_id.insert(std::pair<PgrCostFlowGraph::E,
+                                     int64_t>(e2, edge.edge_id));
+            E_to_id.insert(std::pair<PgrCostFlowGraph::E,
+                                     int64_t>(e2_rev, edge.edge_id));
+
             rev[e2] = e2_rev;
             rev[e2_rev] = e2;
         }
@@ -199,7 +205,8 @@ void PgrCostFlowGraph::set_supersource(
     for (int64_t source_id : source_vertices) {
         PgrCostFlowGraph::V source = get_boost_vertex(source_id);
         PgrCostFlowGraph::E e, e_rev;
-        e = add_edge(supersource, source, 0, (std::numeric_limits<int32_t>::max)());
+        e = add_edge(supersource, source,
+                     0, (std::numeric_limits<int32_t>::max)());
         e_rev = add_edge(source, supersource, 0, 0);
         rev[e] = e_rev;
         rev[e_rev] = e;
@@ -231,7 +238,8 @@ PgrCostFlowGraph::get_flow_edges() const {
             edge.edge = get_edge_id(*e);
             edge.source = get_vertex_id((*e).m_source);
             edge.target = get_vertex_id((*e).m_target);
-            edge.flow = static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
+            edge.flow =
+                static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
             edge.residual_capacity = residual_capacity[*e];
             edge.cost = weight[*e] * static_cast<double>(edge.flow);
             if (flow_edges.size() == 0)

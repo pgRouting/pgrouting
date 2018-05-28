@@ -79,7 +79,7 @@ do_pgr_minCostMaxFlow(
         pgrouting::graph::PgrCostFlowGraph digraph(
                 edges, sources, targets);
 
-        double min_cost; 
+        double min_cost;
         min_cost = digraph.minCostMaxFlow();
 
         std::vector<pgr_flow_t> flow_edges;
