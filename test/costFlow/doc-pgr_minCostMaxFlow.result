@@ -83,5 +83,6 @@ SELECT * FROM pgr_minCostMaxFlow(
    9 |   14 |     13 |     10 |  100 |                30 |  100 |      600
 (9 rows)
 
+-- q5
 ROLLBACK;
 ROLLBACK

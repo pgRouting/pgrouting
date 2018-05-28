@@ -10,7 +10,7 @@
 .. _costFlow:
 
 Minimum Cost Maximum FLow - Family of functions
-===================================
+================================================
 
 
 .. include:: proposed.rst
@@ -33,7 +33,7 @@ Minimum Cost Maximum FLow - Family of functions
 
 
 Minimum Cost Maximum Flow Functions General Information
------------------------------------
+--------------------------------------------------------
 
 .. characteristics_start
 
@@ -130,6 +130,8 @@ Where:
 
 See Also
 --------
+* https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html
+
 
 .. rubric:: Indices and tables
 

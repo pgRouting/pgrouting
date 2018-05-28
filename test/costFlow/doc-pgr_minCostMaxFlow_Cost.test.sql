@@ -34,3 +34,5 @@ SELECT * FROM pgr_minCostMaxFlow_Cost(
      cost, reverse_cost FROM edge_table',
     ARRAY[7, 13], ARRAY[3, 9]
 );
+
+\echo -- q5
