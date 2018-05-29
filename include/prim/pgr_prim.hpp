@@ -74,7 +74,7 @@ class Pgr_prim {
     GenerateResults(
 	       const G &graph) {
 
-         size_t totalNodes = num_vertices(graph.graph); // Total Node in vertex    
+         size_t totalNodes = num_vertices(graph.graph); // Total Node in graph    
 
          /*Calculate connected components*/
          std::vector< int > components(totalNodes);
@@ -98,12 +98,14 @@ class Pgr_prim {
                                                weight_map(get(&G::G_T_E::cost, graph.graph)).root_vertex(component[i][0])
                                                );
                double totalcost = 0;
+               int seqCount = 0;
 
                /*Generate Result*/
                for (size_t j = 0; j < totalNodes; j++) {
      	         pgr_prim_t tmp;
 	         tmp.start_node = graph.graph[j].id;  // Start node         
                  if( static_cast< int >(j) == component[i][0] ){
+                               tmp.seq = ++seqCount;
                                tmp.edge = -1; 
                                tmp.end_node = -1;
                                tmp.cost = 0;
@@ -111,9 +113,11 @@ class Pgr_prim {
                                results.push_back(tmp); 	  
                  }     // for root node 
                  if(predecessors[j]!=j) { 
+                     tmp.seq = ++seqCount;
 	             tmp.end_node = graph.graph[predecessors[j]].id;  //end node
                      auto v_sn(graph.get_V(tmp.start_node));
 	             auto v_en(graph.get_V(tmp.end_node));
+
 	             auto cost = distances[v_sn] - distances[v_en];
                      auto edge_id = 
                        graph.get_edge_id(v_sn, v_en, cost);
