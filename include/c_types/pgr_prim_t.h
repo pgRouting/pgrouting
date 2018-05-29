@@ -51,6 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef struct {
     int seq;
+    int prim_path; 
     int64_t start_node;
     int64_t end_node;
     int64_t edge;

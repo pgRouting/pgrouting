@@ -98,14 +98,14 @@ class Pgr_prim {
                            boost::distance_map(&distances[0]).
                            weight_map(get(&G::G_T_E::cost, graph.graph)).root_vertex(component[i][0]));
                double totalcost = 0;
-               int seqCount = 0;
+               int pathCount = 0;
 
                /*Generate Result*/
                for (size_t j = 0; j < totalNodes; j++) {
      	         pgr_prim_t tmp;
 	             tmp.start_node = graph.graph[j].id;  // Start node         
                  if( static_cast< int >(j) == component[i][0] ){
-                               tmp.seq = ++seqCount;
+                               tmp.prim_path = ++pathCount;
                                tmp.edge = -1; 
                                tmp.end_node = -1;
                                tmp.cost = 0;
@@ -113,18 +113,18 @@ class Pgr_prim {
                                results.push_back(tmp); 	  
                  }     // for root node 
                  if(predecessors[j]!=j) { 
-                     tmp.seq = ++seqCount;
-	                 tmp.end_node = graph.graph[predecessors[j]].id;  //end node
+                     tmp.prim_path = ++pathCount;
+	                   tmp.end_node = graph.graph[predecessors[j]].id;  //end node
                      auto v_sn(graph.get_V(tmp.start_node));
-	                 auto v_en(graph.get_V(tmp.end_node));
+	                   auto v_en(graph.get_V(tmp.end_node));
 
-	                 auto cost = distances[v_sn] - distances[v_en];
+	                   auto cost = distances[v_sn] - distances[v_en];
                      auto edge_id = 
                        graph.get_edge_id(v_sn, v_en, cost);
-	                 totalcost += cost;    
+	                   totalcost += cost;    
  
-	                 tmp.edge = edge_id; 	  // edge_id
-	                 tmp.cost = cost; 		  // cost
+	                   tmp.edge = edge_id; 	        // edge_id
+	                   tmp.cost = cost; 		        // cost
                      tmp.agg_cost = totalcost;    // agg_cost
                      results.push_back(tmp);
                  } //IF
