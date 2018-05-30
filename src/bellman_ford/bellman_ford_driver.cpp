@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "bellman_ford/pgr_bellman_ford.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-
+/* One to One Bellman Ford Shortest Path */
 /************************************************************
   TEXT,
     BIGINT,
@@ -59,8 +59,29 @@ pgr_bellman_ford(
         int64_t target,
         bool only_cost = false) {
     Path path;
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
+    Pgr_bellman_ford< G > fn_bellman_ford;
+    return fn_bellman_ford.bellman_ford(graph, source, target, only_cost);
+}
+
+/*TO DO: One to Many
+         Many to One 
+         Many to Many   */
+template < class G >
+std::deque< Path >
+pgr_bellman_ford(
+        G &graph,
+        int64_t  source,
+        std::vector < int64_t > &targets,
+        bool only_cost = false) {
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+    Pgr_bellman_ford< G > fn_bellman_ford;
+    auto paths = fn_bellman_ford.bellman_ford(graph, source, targets, only_cost);
+
+    return paths;
 }
 
 
@@ -88,9 +109,7 @@ do_pgr_bellman_ford(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
-        pgassert(false);
-        err << "this is a test of error message";
-    #if 0
+    
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         Path path;
@@ -136,7 +155,7 @@ do_pgr_bellman_ford(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-    #endif
+    
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
