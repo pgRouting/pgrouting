@@ -84,7 +84,9 @@ pgr_bellman_ford(
     return paths;
 }
 
-
+/*TO DO: One to Many
+         Many to One 
+         Many to Many   */
 void
 do_pgr_bellman_ford(
         pgr_edge_t  *data_edges,
@@ -109,7 +111,7 @@ do_pgr_bellman_ford(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
-    
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         Path path;
