@@ -229,7 +229,7 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1); 
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].prim_path);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].prim_tree);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_node);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_node);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
