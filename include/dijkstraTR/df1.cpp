@@ -26,7 +26,7 @@ public:
   }
   void finish_vertex(MyVertex v, const MyGraph& g) const
   {
-	if (v = start) throw finish_dfs();
+	if (v == start) throw finish_dfs();
   }
 	MyVertex start;
 
