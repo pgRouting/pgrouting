@@ -34,7 +34,7 @@ public:
 
 int main()
 {
-	cout << "--------------";
+	cout << "--------------\n";
 	{
 
 		typedef std::pair < int, int >E;
@@ -61,7 +61,6 @@ int main()
 		MyGraph g1(edge_array, edge_array + sizeof(edge_array) / sizeof(E), 18);
 		MyVertex v = 1;
 		MyVisitor vis(v);
-		boost::depth_first_search(g1, boost::visitor(vis));
 
 
 		typedef std::map<MyVertex, boost::default_color_type> ColorMap;
