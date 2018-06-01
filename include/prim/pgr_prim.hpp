@@ -56,7 +56,8 @@ class Pgr_prim {
      typedef typename G::V V;
 
      std::vector<pgr_prim_t> prim(
-                 G &graph);
+                 G &graph,
+                 int64_t root_vertex);
 
  private:
      
@@ -69,13 +70,74 @@ class Pgr_prim {
          predecessors.clear();
          distances.clear();
      }
+     void resize(
+            const G &graph){
+          predecessors.resize(graph.num_vertices());
+          distances.resize(graph.num_vertices());
+     }
      
     std::vector< pgr_prim_t > 
-    GenerateResults(
-	       const G &graph) {
+    generatePrim(
+	       const G &graph,
+               int64_t root_vertex,
+               int prim_tree ) {
+
+
+         auto v_root(graph.get_V(root_vertex));
+         boost::prim_minimum_spanning_tree(
+               	      graph.graph,
+                      &predecessors[0],
+                      boost::distance_map(&distances[0]).
+                      weight_map(get(&G::G_T_E::cost, graph.graph)).root_vertex(v_root)); 
+         
+         size_t totalNodes = num_vertices(graph.graph);
+         std::vector< pgr_prim_t > results;
+
+         double totalcost = 0;
+         
+         pgr_prim_t tmp;
+         tmp.prim_tree = prim_tree; 
+         tmp.start_node = root_vertex;
+         tmp.edge = -1; 
+         tmp.end_node = -1;
+         tmp.cost = 0;
+         tmp.agg_cost = totalcost;
+         results.push_back(tmp); 	  
+          // for root node 
+         
+               /*Generate Result*/
+               for (size_t j = 0; j < totalNodes; j++) {
+     	           pgr_prim_t tmp;
+                   tmp.start_node = graph.graph[j].id;  // Start node          
+                   tmp.prim_tree = prim_tree; 
+                   if(predecessors[j]!=j) { 
+	                   tmp.end_node = graph.graph[predecessors[j]].id;  //end node
+                           auto v_sn(graph.get_V(tmp.start_node));
+	                   auto v_en(graph.get_V(tmp.end_node));
+
+	                   auto cost = distances[v_sn] - distances[v_en];
+                           auto edge_id = 
+                           graph.get_edge_id(v_sn, v_en, cost);
+	                   totalcost += cost;    
+ 
+	                   tmp.edge = edge_id; 	        // edge_id
+	                   tmp.cost = cost; 		    // cost
+                           tmp.agg_cost = totalcost;    // agg_cost
+                           results.push_back(tmp);
+                   } //IF
+               }//for j
+
+         return results;
+    }
+
+
+
+    std::vector< pgr_prim_t > 
+    disconnectedPrim(
+	       const G &graph ) {
 
          size_t totalNodes = num_vertices(graph.graph); // Total Node in graph    
-
+  
          /*Calculate connected components*/
          std::vector< int > components(totalNodes);
          size_t num_comps = boost::connected_components(graph.graph, &components[0]);
@@ -85,50 +147,43 @@ class Pgr_prim {
          for (size_t i = 0; i < totalNodes; i++)
              component[components[i]].push_back(i);
 
-         std::vector< pgr_prim_t > results;
+         std::vector< pgr_prim_t > results, tmpresults;
          for (size_t i = 0; i < num_comps; i++) {
             
                /*Implementation */
                clear();
-               predecessors.resize(graph.num_vertices());
-               distances.resize(graph.num_vertices());
-               boost::prim_minimum_spanning_tree(
-               	           graph.graph,
-					                 &predecessors[0],
-                           boost::distance_map(&distances[0]).
-                           weight_map(get(&G::G_T_E::cost, graph.graph)).root_vertex(component[i][0]));
-               double totalcost = 0;
-
-               /*Generate Result*/
-               for (size_t j = 0; j < totalNodes; j++) {
-     	         pgr_prim_t tmp;
-	             tmp.start_node = graph.graph[j].id;  // Start node
-                 tmp.prim_tree = static_cast< int >(i +1);         
-                 if( static_cast< int >(j) == component[i][0] ){
-                       tmp.edge = -1; 
-                       tmp.end_node = -1;
-                       tmp.cost = 0;
-                       tmp.agg_cost = totalcost;
-                       results.push_back(tmp); 	  
-                 }     // for root node 
-                 if(predecessors[j]!=j) { 
-	                     tmp.end_node = graph.graph[predecessors[j]].id;  //end node
-                       auto v_sn(graph.get_V(tmp.start_node));
-  	                   auto v_en(graph.get_V(tmp.end_node));
- 
-	                     auto cost = distances[v_sn] - distances[v_en];
-                       auto edge_id = 
-                       graph.get_edge_id(v_sn, v_en, cost);
-	                     totalcost += cost;    
- 
-	                     tmp.edge = edge_id; 	        // edge_id
-	                     tmp.cost = cost; 		    // cost
-                       tmp.agg_cost = totalcost;    // agg_cost
-                       results.push_back(tmp);
-                 } //IF
-               }//for j
+               resize(graph);
+               tmpresults = generatePrim(
+                             graph,
+                             graph.graph[component[i][0]].id,
+                             static_cast< int >(i + 1));
+               size_t size = component[i].size();
+               for (size_t j = 0; j < size; j++) {
+                   results.push_back(tmpresults[j]);
+               } 
          }//for i
          return results;
+    } 
+
+    std::vector< pgr_prim_t > 
+    Generatetree(
+	       const G &graph,
+               int64_t root_vertex) {
+
+         if(root_vertex == -1){
+             return disconnectedPrim(
+                          graph);
+         }
+         
+         if (!graph.has_vertex(root_vertex)){
+             std::vector< pgr_prim_t > results;
+             return results;
+         }
+                
+         return generatePrim(
+                             graph,
+                             root_vertex,
+                             1 );
      }     // main generate function
 			
 };
@@ -136,11 +191,14 @@ class Pgr_prim {
 template < class G >
 std::vector<pgr_prim_t>
 Pgr_prim< G >::prim(
-             G &graph) {
-
-	return GenerateResults(
-	            graph);
-}
+             G &graph,
+             int64_t root_vertex) {
+        clear();
+        resize(graph);
+	return Generatetree(
+	            graph,
+                    root_vertex);
+} 
 
 
 #endif  // INCLUDE_PRIM_PGR_PRIM_HPP_

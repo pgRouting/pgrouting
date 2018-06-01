@@ -46,10 +46,11 @@ template < class G >
 static
 std::vector<pgr_prim_t>
 pgr_prim(
-        G &graph) {
+        G &graph,
+        int64_t root_vertex) {
     std::vector<pgr_prim_t> results;
     Pgr_prim< G > fn_prim;
-    return fn_prim.prim(graph);
+    return fn_prim.prim(graph, root_vertex);
 }
 
 
@@ -57,6 +58,7 @@ void
 do_pgr_prim(
         pgr_edge_t  *data_edges,
         size_t total_edges,
+        int64_t root_vertex,
         pgr_prim_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -79,10 +81,11 @@ do_pgr_prim(
 
         log << "Working with Undirected Graph\n";
 
-	pgrouting::UndirectedGraph undigraph(gType);
+	    pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_prim(
-                    undigraph);
+                    undigraph,
+                    root_vertex);
 
         auto count = results.size();
 

@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_prim(
     TEXT,                       -- Edge sql
+    BIGINT,                     -- Root vertex 
         OUT seq INTEGER,        -- Seq
     Out prim_tree INTEGER,      -- Depend upon no.of connected component in graph      
     OUT start_node BIGINT,		-- Start node 
