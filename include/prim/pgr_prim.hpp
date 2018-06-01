@@ -54,6 +54,7 @@ class Pgr_prim {
  public:
 
      typedef typename G::V V;
+     typedef typename G::B_G B_G;
 
      std::vector<pgr_prim_t> prim(
                  G &graph,
@@ -64,9 +65,11 @@ class Pgr_prim {
      // Member
      std::vector< V > predecessors;
      std::vector< double > distances;
+     std::vector< V > data;
      
      //Functions
      void clear() {
+         data.clear();
          predecessors.clear();
          distances.clear();
      }
@@ -81,52 +84,53 @@ class Pgr_prim {
 	       const G &graph,
                int64_t root_vertex,
                int prim_tree ) {
-
-
+           
          auto v_root(graph.get_V(root_vertex));
+         
          boost::prim_minimum_spanning_tree(
                	      graph.graph,
                       &predecessors[0],
                       boost::distance_map(&distances[0]).
-                      weight_map(get(&G::G_T_E::cost, graph.graph)).root_vertex(v_root)); 
-         
-         size_t totalNodes = num_vertices(graph.graph);
+                      weight_map(get(&G::G_T_E::cost, graph.graph))
+                      .root_vertex(v_root)
+                      .visitor(prim_visitor(data))); 
+
          std::vector< pgr_prim_t > results;
 
          double totalcost = 0;
          
+         size_t size = data.size();
          pgr_prim_t tmp;
          tmp.prim_tree = prim_tree; 
          tmp.start_node = root_vertex;
-         tmp.edge = -1; 
+         tmp.edge = -1;
          tmp.end_node = -1;
          tmp.cost = 0;
          tmp.agg_cost = totalcost;
          results.push_back(tmp); 	  
           // for root node 
          
-               /*Generate Result*/
-               for (size_t j = 0; j < totalNodes; j++) {
-     	           pgr_prim_t tmp;
-                   tmp.start_node = graph.graph[j].id;  // Start node          
-                   tmp.prim_tree = prim_tree; 
-                   if(predecessors[j]!=j) { 
-	                   tmp.end_node = graph.graph[predecessors[j]].id;  //end node
-                           auto v_sn(graph.get_V(tmp.start_node));
-	                   auto v_en(graph.get_V(tmp.end_node));
+         for (size_t j = 1; j < size; j++){
+             pgr_prim_t tmp;
 
-	                   auto cost = distances[v_sn] - distances[v_en];
-                           auto edge_id = 
-                           graph.get_edge_id(v_sn, v_en, cost);
-	                   totalcost += cost;    
+             tmp.prim_tree = prim_tree;
+             tmp.start_node = graph.graph[predecessors[data[j]]].id;
+             tmp.end_node = graph.graph[data[j]].id;
  
-	                   tmp.edge = edge_id; 	        // edge_id
-	                   tmp.cost = cost; 		    // cost
-                           tmp.agg_cost = totalcost;    // agg_cost
-                           results.push_back(tmp);
-                   } //IF
-               }//for j
+             auto v_sn(graph.get_V(tmp.start_node));
+	     auto v_en(graph.get_V(tmp.end_node));
 
+	     auto cost = distances[v_sn] - distances[v_en];
+             auto edge_id = 
+             graph.get_edge_id(v_sn, v_en, cost);
+	     totalcost += cost;    
+ 
+	     tmp.edge = edge_id; 	        // edge_id
+	     tmp.cost = cost; 		    // cost
+             tmp.agg_cost = totalcost;    // agg_cost
+             results.push_back(tmp);
+
+         }
          return results;
     }
 
@@ -165,27 +169,21 @@ class Pgr_prim {
          return results;
     } 
 
-    std::vector< pgr_prim_t > 
-    Generatetree(
-	       const G &graph,
-               int64_t root_vertex) {
-
-         if(root_vertex == -1){
-             return disconnectedPrim(
-                          graph);
-         }
-         
-         if (!graph.has_vertex(root_vertex)){
-             std::vector< pgr_prim_t > results;
-             return results;
-         }
-                
-         return generatePrim(
-                             graph,
-                             root_vertex,
-                             1 );
-     }     // main generate function
 			
+     class prim_visitor : public boost::default_dijkstra_visitor {
+      public:
+          explicit prim_visitor(
+                  std::vector< V > &data) :
+                  m_data(data)  {}
+          template <class B_G>
+          void finish_vertex( V v, B_G& ){
+            m_data.push_back(v);
+          } 
+      private:
+          std::vector< V > &m_data;
+     };
+
+
 };
 
 template < class G >
@@ -195,9 +193,20 @@ Pgr_prim< G >::prim(
              int64_t root_vertex) {
         clear();
         resize(graph);
-	return Generatetree(
-	            graph,
-                    root_vertex);
+        if(root_vertex == -1){
+             return disconnectedPrim(
+                          graph);
+         }
+         
+         if (!graph.has_vertex(root_vertex)){
+             std::vector< pgr_prim_t > results;
+             return results;
+         }
+                
+        return generatePrim(
+                             graph,
+                             root_vertex,
+                             1 );
 } 
 
 
