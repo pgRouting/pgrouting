@@ -85,7 +85,7 @@ process(
         pgr_get_bigIntArray(&size_source_verticesArr, starts);
 
     size_t size_sink_verticesArr = 0;
-    int64_t* sink_vertices = 
+    int64_t* sink_vertices =
         pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
     PGR_DBG("Load data");
@@ -103,7 +103,7 @@ process(
             pfree(sink_vertices);
         PGR_DBG("No edges found");
         pgr_SPI_finish();
-        return ;
+        return;
     }
 
     PGR_DBG("Starting processing");
@@ -223,7 +223,6 @@ PGDLLEXPORT Datum minCostMaxFlow_many_to_many(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        //TODO(mg)
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
@@ -244,7 +243,8 @@ PGDLLEXPORT Datum minCostMaxFlow_many_to_many(PG_FUNCTION_ARGS) {
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].residual_capacity);
+        values[5] = Int64GetDatum(
+                result_tuples[funcctx->call_cntr].residual_capacity);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/

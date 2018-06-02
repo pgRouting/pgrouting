@@ -39,32 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-// not needed
-/*
-template < class G >
-static
-std::vector<pgr_flow_t>
-pgr_minCostMaxFlow(
-        G &graph,
-        std::vector<int64_t> sources,
-        std::vector<int64_t> targets,
-        bool only_cost) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-    Pgr_costFlow< G > fn_costFlow;
-    return fn_costFlow.minCostMaxFlow(graph, sources, targets, only_cost);
-}
-*/
-
-
 void
 do_pgr_minCostMaxFlow(
         pgr_costFlow_t  *data_edges, size_t total_edges,
@@ -105,7 +79,7 @@ do_pgr_minCostMaxFlow(
         pgrouting::graph::PgrCostFlowGraph digraph(
                 edges, sources, targets);
 
-        double min_cost; 
+        double min_cost;
         min_cost = digraph.minCostMaxFlow();
 
         std::vector<pgr_flow_t> flow_edges;

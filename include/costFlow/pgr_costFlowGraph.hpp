@@ -41,17 +41,20 @@ typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::directedS,
         boost::no_property,
         boost::property < boost::edge_capacity_t, double,
             boost::property < boost::edge_residual_capacity_t, double,
-                boost::property < boost::edge_reverse_t, Traits::edge_descriptor,
+                boost::property < boost::edge_reverse_t,
+                    Traits::edge_descriptor,
                     boost::property < boost::edge_weight_t, double>
                         >
                     >
                 > > CostFlowGraph;
 typedef boost::property_map < CostFlowGraph, boost::edge_capacity_t >::type
     Capacity;
-typedef boost::property_map < CostFlowGraph, boost::edge_residual_capacity_t>::type
-    ResidualCapacity;
-typedef boost::property_map < CostFlowGraph, boost::edge_weight_t >::type Weight;
-typedef boost::property_map < CostFlowGraph, boost::edge_reverse_t >::type Reversed;
+typedef boost::property_map < CostFlowGraph,
+        boost::edge_residual_capacity_t >::type ResidualCapacity;
+typedef boost::property_map < CostFlowGraph,
+        boost::edge_weight_t >::type Weight;
+typedef boost::property_map < CostFlowGraph,
+        boost::edge_reverse_t >::type Reversed;
 
 }  // namespace pgrouting
 
