@@ -40,8 +40,8 @@ extern "C" {
 
     /*********************************************************
       TEXT,
-    BIGINT,
-    BIGINT,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
      ********************************************************/
@@ -51,10 +51,13 @@ extern "C" {
         do_pgr_bellman_ford(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                int64_t start_vid,
-                int64_t end_vid,
+                int64_t* start_vidsArr, 
+                size_t size_start_vidsArr,
+                int64_t* end_vidsArr,
+                size_t size_end_vidsArr,
                 bool directed,
                 bool only_cost,
+
                 General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
