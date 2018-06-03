@@ -29,12 +29,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_prim(
     TEXT,                       -- Edge sql
+    BIGINT,                     -- Root vertex 
         OUT seq INTEGER,        -- Seq
-    OUT start_node BIGINT,	-- Start node 
-    OUT end_node BIGINT,	-- End node 
-    OUT edge BIGINT,		-- Edge linked to that node
-    OUT cost FLOAT,		-- Cost of edge
-    OUT agg_cost FLOAT)		-- Total cost 
+    Out prim_tree INTEGER,      -- Depend upon no.of connected component in graph      
+    OUT start_node BIGINT,		-- Start node 
+    OUT end_node BIGINT,		-- End node 
+    OUT edge BIGINT,			-- Edge linked to that node
+    OUT cost FLOAT,				-- Cost of edge
+    OUT agg_cost FLOAT)			-- Total cost 
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'prim'

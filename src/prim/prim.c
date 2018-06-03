@@ -61,6 +61,7 @@ static
 void
 process(
         char* edges_sql, 
+        int64_t root_vertex,
         pgr_prim_t **result_tuples,
         size_t *result_count) {
     /*
@@ -92,6 +93,7 @@ process(
     do_pgr_prim(
             edges,
             total_edges,
+            root_vertex,
 
 #if 0
     /*
@@ -164,6 +166,7 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_INT64(1),
 #if 0
                 /*
                  *  handling arrays example
@@ -218,22 +221,23 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
                OUT agg_cost FLOAT
          ***********************************************************************/
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+        values = palloc(7 * sizeof(Datum));
+        nulls = palloc(7 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_node);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1); 
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].prim_tree);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_node);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
