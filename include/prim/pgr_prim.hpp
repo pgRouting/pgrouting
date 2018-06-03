@@ -96,17 +96,17 @@ class Pgr_prim {
                       .visitor(prim_visitor(data))); 
 
          std::vector< pgr_prim_t > results;
-
          double totalcost = 0;
-         
          size_t size = data.size();
          pgr_prim_t tmp;
+         
          tmp.prim_tree = prim_tree; 
          tmp.start_node = root_vertex;
          tmp.edge = -1;
          tmp.end_node = -1;
          tmp.cost = 0;
          tmp.agg_cost = totalcost;
+
          results.push_back(tmp); 	  
           // for root node 
          
@@ -118,18 +118,17 @@ class Pgr_prim {
              tmp.end_node = graph.graph[data[j]].id;
  
              auto v_sn(graph.get_V(tmp.start_node));
-	     auto v_en(graph.get_V(tmp.end_node));
+	           auto v_en(graph.get_V(tmp.end_node));
 
-	     auto cost = distances[v_sn] - distances[v_en];
+	           auto cost = distances[v_sn] - distances[v_en];
              auto edge_id = 
              graph.get_edge_id(v_sn, v_en, cost);
-	     totalcost += cost;    
+	           totalcost += cost;    
  
-	     tmp.edge = edge_id; 	        // edge_id
-	     tmp.cost = cost; 		    // cost
+	           tmp.edge = edge_id; 	        // edge_id
+	           tmp.cost = cost; 		        // cost
              tmp.agg_cost = totalcost;    // agg_cost
              results.push_back(tmp);
-
          }
          return results;
     }

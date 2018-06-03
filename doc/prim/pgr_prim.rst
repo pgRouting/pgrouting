@@ -12,7 +12,7 @@
 pgr_prim
 ===============================================================================
 
-``pgr_prim`` — Returns the minimum spanning forest of graph using Prim algorithm.
+``pgr_prim`` — Returns the minimum spanning tree of graph using Prim algorithm.
 In particular, the Prim algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
@@ -44,15 +44,18 @@ Characteristics
 The main Characteristics are:
 
   - Process is done only on edges with positive costs.
+ 
   - It's implementation is on only undirected graph.
-  - It individually deal with all connected graph in disconnected graph.
-  - One node will be root vertex from where the span start for each tree.
-  - Any node can be root vertex the result will be same.
+  
+  - Span start from chosen root_vertex resulting subgraph.
+
+    - When root_vertex is `-1` then result is minimun spannig tree of disconnected graph.
+   
   - Values are returned when there is a minimum spanning tree.
 
-    - When there is no edge in graph then `agg_cost` is `0`.
+    - When there is no edge in graph then EMPTY SET is return.
   
-  - Running time: :math:`O(|No. of unconnected graph| * (E*log V))`
+  - Running time: :math:`O(E*log V)`
 
 
 Signatures
@@ -63,7 +66,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_prim(edges_sql)
+    pgr_prim(edges_sql, root_vertex)
 
     RETURNS SET OF (seq, prim_tree, start_node, end_node, edge, cost, agg_cost) 
        or EMPTY SET
@@ -72,20 +75,24 @@ The signature is for a **undirected** graph.
 
 :Example:
 
+Here root_vertex is `-1`. So, result is MST of disconnected graph.     
+
 .. literalinclude:: doc-pgr_prim.queries
    :start-after: -- q1
    :end-before: -- q2
 
-.. image:: images/prim_sampleData.png
-   :width: 685px
-   :height: 387px
 
+:Example: Additional example
 
-:Example: Additional exapmle
+Results is subgraph which contain root_vertex.
 
 .. literalinclude:: doc-pgr_prim.queries
    :start-after: -- q2
    :end-before: -- q3
+
+.. literalinclude:: doc-pgr_prim.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 
 Description of the edges_sql query for prim functions
@@ -122,6 +129,9 @@ Description of the parameters of the signatures
 Parameter           Type                   Default   Description
 =================== ====================== ========= =========================================
 **edges_sql**       ``TEXT``                         SQL query as described above.
+**root_vertex**     ``BIGINT``                       Root vertex from where spanning of tree start.
+
+                                                     - Root vertx is -1 then result is MST of disconnected graph.
 =================== ====================== ========= =========================================
 
 Description of the return values for prim algorithms
@@ -133,59 +143,20 @@ Returns set of ``(seq, prim_tree, start_node, end_node, edge, cost, agg_cost)``
 Column         Type        Description
 ============== =========== =================================================
 **seq**        ``INT``     Sequential value starting from **1**.
-**prim_tree**  ``BIGINT``  It represent the number of minimun spanning tree in unconnected graph.
-**start_node** ``BIGINT``  Identifier of the starting vertex of edge.
-**end_node**   ``BIGINT``  Identifier of the ending vertex of edge and predecessor of start_node. -1 for the root vertex.
-**edge**       ``BIGINT``  Identifier of the edge used to go from start_node to end_node or vice-versa. -1 when start_node is root vertex.
+**prim_tree**  ``BIGINT``  It represent **subgraph** in disconnected graph.
+**start_node** ``BIGINT``  Identifier of the starting vertex of spanning tree.
+**end_node**   ``BIGINT``  Identifier of the ending vertex of spanning tree. `-1` for the root vertex.
+**edge**       ``BIGINT``  Identifier of the edge used to go from start_node to end_node or vice-versa. `-1` for the root vertex.
 **cost**       ``FLOAT``   Cost to traverse from start_node using edge to the end_node.
-**agg_cost**   ``FLOAT``   Aggregate cost of edges that is covered in sapnning.
+**agg_cost**   ``FLOAT``   Aggregate cost of edges that is covered in spanning.
 
 ============== =========== =================================================
-
-Important
-------------------------------------------------------------------------------
-Order of start_node depend upon ascending identifier of edges **for each tree**.
-OR we can say ascending of vertex_id.
- 
-:Example:
-Edges
-
-Example of additional example for tree 1.   
- 
-.. code-block:: none
-   
-   edge_id | source | target  
-   --------+--------+-------
-         1 |      6 |     11 
-         2 |     10 |     11 
-         3 |     11 |     12 
-         4 |     10 |     13 
-         5 |      9 |     12 
-         6 |      4 |      9
- 
-Then the order will be
- 
-.. code-block:: none
-   
-   edge_id | order of start_node  
-   --------+-------------------
-         1 |      6, 11 
-         2 |         10 
-         3 |         12
-         4 |         13
-         5 |          9
-         6 |          4  
-
-So, the order of start_node is 6, 11, 12, 13, 9, 4.
-
-Where:
-6 will be root vertex.
  
 See Also
 -------------------------------------------------------------------------------
 
 * https://en.wikipedia.org/wiki/Prim%27s_algorithm
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
