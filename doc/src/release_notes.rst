@@ -47,6 +47,29 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
+.. rubric:: Proposed moved to official on pgRouting
+
+* Flow Family
+  * pgr_pushRelabel(one to one)
+  * pgr_pushRelabel(one to many)
+  * pgr_pushRelabel(many to one)
+  * pgr_pushRelabel(many to many)
+  * pgr_edmondsKarp(one to one)
+  * pgr_edmondsKarp(one to many)
+  * pgr_edmondsKarp(many to one)
+  * pgr_edmondsKarp(many to many)
+  * pgr_boykovKolmogorov (one to one)
+  * pgr_boykovKolmogorov (one to many)
+  * pgr_boykovKolmogorov (many to one)
+  * pgr_boykovKolmogorov (many to many)
+  * pgr_maxCardinalityMatching
+  * pgr_maxFlow
+  * pgr_edgeDisjointPaths(one to one)
+  * pgr_edgeDisjointPaths(one to many)
+  * pgr_edgeDisjointPaths(many to one)
+  * pgr_edgeDisjointPaths(many to many)
+
+
 .. rubric:: Moved to legacy
 
 * Experimental functions

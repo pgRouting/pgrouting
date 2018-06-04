@@ -156,10 +156,11 @@ Where:
 
 .. where_definition_ends
 
-.. basic_edges_sql_start
 
 Description of the edges_sql query for dijkstra like functions
 ...............................................................................
+
+.. basic_edges_sql_start
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -184,8 +185,8 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
-
 .. basic_edges_sql_end
+
 
 .. no_id_edges_sql_start
 
@@ -274,10 +275,11 @@ Where:
 
 .. xy_edges_sql_end
 
-.. flow_edges_sql_start
 
 Description of the edges_sql query for Max-flow like functions
 ...............................................................................
+
+.. flow_edges_sql_start
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -391,10 +393,10 @@ Column         Type       Description
 
 
 
-.. result_flow_start
-
 Description of the Return Values
 .....................................................................
+
+.. result_flow_start
 
 =====================  ====================  =================================================
 Column                 Type                  Description

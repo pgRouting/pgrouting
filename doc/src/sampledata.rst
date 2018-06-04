@@ -55,7 +55,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Categories
 
-- Used with the :ref:`maxFlow` functions.
+- Used with the :doc:`flow-family` functions.
 
 .. literalinclude:: ../../tools/testers/sampledata.sql
    :start-after: --RESTRICTIONS END

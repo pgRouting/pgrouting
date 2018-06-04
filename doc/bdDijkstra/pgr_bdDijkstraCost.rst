@@ -172,18 +172,22 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
    :start-after: -- q5
    :end-before: -- q6
 
+Parameters
+-------------------------------------------------------------------------------
 
+.. include:: pgr_dijkstra.rst
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
 
-Description of the Signatures
+Inner query
 -------------------------------------------------------------------------------
 
 .. include::  pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+Result Columns
+-------------------------------------------------------------------------------
 
 .. include::  pgRouting-concepts.rst
     :start-after: return_cost_start
