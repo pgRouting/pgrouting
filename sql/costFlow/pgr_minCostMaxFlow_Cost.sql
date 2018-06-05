@@ -38,7 +38,7 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow_Cost(
   RETURNS FLOAT AS
   $BODY$
         SELECT cost
-        FROM pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := true);
+        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := true);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -53,7 +53,7 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow_Cost(
   RETURNS FLOAT AS
   $BODY$
         SELECT cost
-        FROM pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := true);
+        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := true);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -68,7 +68,7 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow_Cost(
   RETURNS FLOAT AS
   $BODY$
         SELECT cost
-        FROM pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
+        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -83,7 +83,7 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow_Cost(
   RETURNS FLOAT AS
   $BODY$
         SELECT cost
-        FROM pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
+        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
