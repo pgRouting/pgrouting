@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
+        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := false);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -56,8 +56,8 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
     edges_sql TEXT,                 -- edges_sql
-    sources BIGINT,                 -- source
-    targets ANYARRAY,               -- targets
+    sources ANYARRAY,                 -- source
+    targets BIGINT,               -- targets
         OUT seq INTEGER,            -- seq
     OUT edge BIGINT,                -- edge_id
     OUT source BIGINT,              -- start vertex
@@ -70,17 +70,17 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := true);
+        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := false);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
 ------------------------
---    MANY TO ONE 
+--    ONE TO MANY 
 ------------------------
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
     edges_sql TEXT,                 -- edges_sql
-    sources ANYARRAY,               -- sources
-    targets BIGINT,                 -- target
+    sources BIGINT,               -- sources
+    targets ANYARRAY,                 -- target
         OUT seq INTEGER,            -- seq
     OUT edge BIGINT,                -- edge_id
     OUT source BIGINT,              -- start vertex
@@ -93,7 +93,7 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
+        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -117,7 +117,7 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := true);
+        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
   $BODY$
   LANGUAGE SQL VOLATILE;
 

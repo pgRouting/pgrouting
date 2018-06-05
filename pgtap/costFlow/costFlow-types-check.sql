@@ -9,7 +9,7 @@ SELECT has_function('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'bigint']);
 SELECT has_function('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'anyarray']);
 SELECT has_function('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'anyarray']);
 
-SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'biging'], 'setof record');
+SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'bigint'], 'setof record');
 SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'bigint'], 'setof record');
 SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'anyarray'], 'setof record');
 SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'anyarray'], 'setof record');
@@ -17,19 +17,19 @@ SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'anyarra
 -- column names
 SELECT bag_has(
     $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
-    $$SELECT '{"","","","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
+    $$SELECT '{"edges_sql", "sources", "targets", "seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
-    $$SELECT '{"","","","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
+    $$SELECT '{"edges_sql","sources","targets","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
-    $$SELECT '{"","","","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
+    $$SELECT '{"edges_sql","sources","targets","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
-    $$SELECT '{"","","","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
+    $$SELECT '{"edges_sql","sources","targets","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
 );
 
 -- pgr_mincostmaxflow works
@@ -68,8 +68,8 @@ SELECT
     'bigint'::text AS t4,
     'bigint'::text AS t5,
     'bigint'::text AS t6,
-    'float'::text AS t7,
-    'float'::text AS t8;
+    'double precision'::text AS t7,
+    'double precision'::text AS t8;
 
 PREPARE q1 AS
 SELECT pg_typeof(seq)::text AS t1,
