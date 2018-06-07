@@ -1,5 +1,5 @@
 
-SELECT plan(4);
+SELECT plan(10);
 
 SELECT has_function('pgr_bellman_ford');
 
@@ -16,6 +16,6 @@ SELECT function_returns('pgr_bellman_ford', ARRAY['text','anyarray','anyarray','
 -- testing column names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_bellman_ford'$$,
-    $$SELECT  '{"","","","directed","only_cost","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 
