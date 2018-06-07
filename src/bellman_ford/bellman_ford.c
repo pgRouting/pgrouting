@@ -104,18 +104,12 @@ process(
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    if (total_edges == 0) {
-        if (end_vidsArr) pfree(end_vidsArr);
-        if (start_vidsArr) pfree(start_vidsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
-        PGR_DBG("No edges found");
+        if (end_vidsArr) pfree(end_vidsArr);
+        if (start_vidsArr) pfree(start_vidsArr);
         pgr_SPI_finish();
         return;
     }
