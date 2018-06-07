@@ -74,11 +74,33 @@ class Pgr_dijkstraTR {
 
      void clear() {}
 
+/*
+ * IDEA
+
+select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id !=10 UNION select id, source, target, cost , -1 from edge_table WHERE id = 10', $$select id as edge_id, 'r'::CHAR AS side, 0.000001::FLOAT as fraction FROM edge_table WHERE id = 10$$, -1, 5);
+ seq | path_seq | node | edge |   cost   | agg_cost
+-----+----------+------+------+----------+----------
+   1 |        1 |   -1 |   10 | 0.999999 |        0
+   2 |        2 |   10 |   12 |        1 | 0.999999
+   3 |        3 |   11 |   13 |        1 | 1.999999
+   4 |        4 |   12 |   15 |        1 | 2.999999
+   5 |        5 |    9 |    9 |        1 | 3.999999
+   6 |        6 |    6 |    8 |        1 | 4.999999
+   7 |        7 |    5 |   -1 |        0 | 5.999999
+(7 rows)
+*/
  private:
      Path executeDijkstraTR(G& graph) {
          clear();
          curr_result_path = getDijkstraSolution(graph);
          log << curr_result_path;
+
+         log << "restrictions\n";
+         for (const auto r : m_restrictions) {
+             log << r << "\n";
+             has_restriction(curr_result_path, r);
+
+         }
 
 #if 0
          for (auto &path : curr_result_path) {
@@ -99,10 +121,12 @@ class Pgr_dijkstraTR {
      }
 
 
+#if 1
      Path getDijkstraSolution(G& graph) {
          Pgr_dijkstra< G > fn_dijkstra;
          return  fn_dijkstra.dijkstra(graph, m_start, m_end);
      }
+#endif
 
      bool has_restriction() {
 #if 0
@@ -126,6 +150,21 @@ class Pgr_dijkstraTR {
 #endif
          return false;
      }
+
+#if 1
+     bool has_restriction(Path path, pgrouting::trsp::Rule rule) {
+
+         for (const auto r: rule) {
+             log << r;
+         }
+
+         log << path;
+
+         return false;
+     }
+
+#endif
+
 
      bool has_a_restriction(int64_t edge, int64_t index) {
 #if 0

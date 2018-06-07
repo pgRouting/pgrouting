@@ -37,6 +37,8 @@ namespace trsp {
 
 
 class Rule {
+    using iterator = std::vector<int64_t>::iterator;
+
  public:
     explicit Rule(Restriction_t r);
 
@@ -45,6 +47,9 @@ class Rule {
     }
 
     const std::vector<int64_t> precedencelist() const;
+
+    iterator begin() { return m_all.begin(); };
+    iterator end() { return m_all.end(); };
 
     inline int64_t dest_id() const {
         return m_dest_id;
