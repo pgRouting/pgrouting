@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+	_bellman_ford.sql
     bellman_ford.sql
     )
 
