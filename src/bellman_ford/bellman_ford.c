@@ -104,13 +104,6 @@ process(
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    if (start_vid == end_vid) {
-        /*
-         * https://www.postgresql.org/docs/current/static/spi-spi-finish.html
-         */
-        pgr_SPI_finish();
-        return;
-    }
     if (total_edges == 0) {
         if (end_vidsArr) pfree(end_vidsArr);
         if (start_vidsArr) pfree(start_vidsArr);
@@ -166,14 +159,11 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-#if 0
-    /*
-     *  handling arrays example
-     */
+
 
     if (end_vidsArr) pfree(end_vidsArr);
     if (start_vidsArr) pfree(start_vidsArr);
-#endif
+
 
     pgr_SPI_finish();
 }

@@ -30,9 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --MANY TO MANY
 
 CREATE OR REPLACE FUNCTION pgr_bellman_ford(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
 
@@ -52,9 +52,9 @@ LANGUAGE c IMMUTABLE STRICT;
 --ONE TO ONE
 
 CREATE OR REPLACE FUNCTION pgr_bellman_ford(
-    edges_sql TEXT,
-    sources BIGINT,
-    targets BIGINT,
+    TEXT,
+    BIGINT,
+    BIGINT,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
     
@@ -77,9 +77,9 @@ LANGUAGE SQL VOLATILE;
 --ONE TO MANY
 
 CREATE OR REPLACE FUNCTION pgr_bellman_ford(
-    edges_sql TEXT,
-    sources BIGINT,
-    targets ANYARRAY,
+    TEXT,
+    BIGINT,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
     
@@ -102,9 +102,9 @@ LANGUAGE SQL VOLATILE;
 --MANY TO ONE
 
 CREATE OR REPLACE FUNCTION pgr_bellman_ford(
-    edges_sql TEXT,
-    sources ANYARRAY,
-    targets BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
     
