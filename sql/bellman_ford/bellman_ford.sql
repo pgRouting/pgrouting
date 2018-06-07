@@ -34,7 +34,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     ANYARRAY,
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
+    
     
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed , only_cost) AS a;
+    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false ) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
@@ -61,7 +61,6 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     BIGINT,
     BIGINT,
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
     
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -73,7 +72,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT * FROM
-     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, only_cost);
+     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
 $BODY$
 LANGUAGE SQL VOLATILE;
 
@@ -86,7 +85,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     BIGINT,
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
+
     
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -98,7 +97,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT * FROM
-     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, only_cost);
+     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false);
 $BODY$
 LANGUAGE SQL VOLATILE;
 
@@ -111,7 +110,6 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     ANYARRAY,
     BIGINT,
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
     
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -123,6 +121,6 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT * FROM
-     _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, only_cost);
+     _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
 $BODY$
 LANGUAGE SQL VOLATILE;
