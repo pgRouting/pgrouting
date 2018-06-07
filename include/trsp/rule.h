@@ -57,6 +57,7 @@ class Rule {
     int64_t m_dest_id;
     double m_cost;
     std::vector<int64_t> m_precedencelist;
+    std::vector<int64_t> m_all;
 };
 
 
