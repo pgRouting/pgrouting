@@ -35,7 +35,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
-
+    
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
@@ -44,8 +44,13 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'bellman_ford'
-LANGUAGE c IMMUTABLE STRICT;
+$BODY$
+    SELECT *
+    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 
 
@@ -68,7 +73,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT * FROM
-     pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, only_cost);
+     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, only_cost);
 $BODY$
 LANGUAGE SQL VOLATILE;
 
@@ -93,7 +98,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT * FROM
-     pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, only_cost);
+     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, only_cost);
 $BODY$
 LANGUAGE SQL VOLATILE;
 
@@ -118,6 +123,6 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT * FROM
-     pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, only_cost);
+     _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, only_cost);
 $BODY$
 LANGUAGE SQL VOLATILE;
