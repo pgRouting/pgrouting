@@ -65,7 +65,7 @@ END
 $BODY$
 language plpgsql;
 
-SELECT * from bellman_ford_compare_dijkstra();
+SELECT * from bellman_ford_compare_dijkstra(1);
 
 
 SELECT * FROM finish();

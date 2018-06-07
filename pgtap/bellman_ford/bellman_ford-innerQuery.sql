@@ -11,9 +11,9 @@ SELECT function_returns('pgr_bellman_ford',
     ARRAY['text', 'bigint', 'bigint', 'boolean','boolean'],
     'setof record');
 
-SELECT style_dijkstra('pgr_bellman_ford', ', 2, 3)');
-SELECT style_dijkstra('pgr_bellman_ford', ', 2, 3, true)');
-SELECT style_dijkstra('pgr_bellman_ford', ', 2, 3, false)');
+--SELECT style_dijkstra('pgr_bellman_ford', ', 2, 3)');
+--SELECT style_dijkstra('pgr_bellman_ford', ', 2, 3, true)');
+--SELECT style_dijkstra('pgr_bellman_ford', ', 2, 3, false)');
 
 
 
