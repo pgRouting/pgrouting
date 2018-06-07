@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
+    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed , only_cost) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
