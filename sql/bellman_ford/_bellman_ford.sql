@@ -26,9 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 --Many to Many
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+     TEXT,
+     ANYARRAY,
+     ANYARRAY,
     directed BOOLEAN ,
     only_cost BOOLEAN ,
     
