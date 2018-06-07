@@ -7,6 +7,7 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/depth_first_search.hpp>
 #include <iostream>
+#include <deque>
 using namespace std;
 
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS> MyGraph;
@@ -20,9 +21,10 @@ class MyVisitor : public boost::default_dfs_visitor
 public:
   MyVisitor(const MyVertex &v) : start(v) {}
 
-  void discover_vertex(MyVertex v, const MyGraph& g) const
+  void discover_vertex(MyVertex v, const MyGraph& g)
   {
-      std::cout << "\n" << v ;
+    std::cout << "\n" << v ;
+    workvertex.push_back(v);
     return;
   }
 
@@ -32,11 +34,22 @@ public:
       return;
   }
 
-  void finish_vertex(MyVertex v, const MyGraph& g) const
+  void forward_or_cross_edge(MyEdge e, const MyGraph& g) const
   {
+      cout << " forward_or_cross_edge" << e ;
+      return;
+  }
+
+
+  void finish_vertex(MyVertex v, const MyGraph& g)
+  {
+      workvertex.pop_back();
+//      std::cout << " finish_vertex" << v ;
       if (v == start) throw finish_dfs();
   }
   MyVertex start;
+
+  std::deque<MyVertex> workvertex;
 
 };
 
@@ -67,7 +80,7 @@ int main()
             E(16,17), E(17,16)
         };
         MyGraph g1(edge_array, edge_array + sizeof(edge_array) / sizeof(E), 18);
-        MyVertex v = 1;
+        MyVertex v = 5;
         MyVisitor vis(v);
 
 
