@@ -88,6 +88,16 @@ void Path::clear() {
     m_end_id = 0;
 }
 
+Path::pthIt Path::find_restriction(pgrouting::trsp::Rule &rule) {
+    return std::search(path.begin(), path.end(), rule.begin(), rule.end(),
+            [](Path_t p, int64_t e) { return p.edge == e;}
+            );
+}
+
+bool Path::has_restriction(pgrouting::trsp::Rule &rule) {
+    return find_restriction(rule) != path.end();
+}
+
 std::ostream& operator<<(std::ostream &log, const Path &path) {
     log << "Path: " << path.start_id() << " -> " << path.end_id() << "\n"
         << "seq\tnode\tedge\tcost\tagg_cost\n";
@@ -135,7 +145,6 @@ void Path::appendPath(const Path &o_path) {
 
 
 /*!
- 
     Path: 2 -> 9
     seq   node    edge    cost    agg_cost
     0     2       4       1       0

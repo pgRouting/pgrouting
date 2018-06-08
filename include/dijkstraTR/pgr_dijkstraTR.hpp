@@ -96,10 +96,9 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
          log << curr_result_path;
 
          log << "restrictions\n";
-         for (const auto r : m_restrictions) {
-             log << r << "\n";
-             has_restriction(curr_result_path, r);
-
+         for (auto r : m_restrictions) {
+             log << r << "-";
+             log << curr_result_path.has_restriction(r) << "\n";
          }
 
 #if 0
@@ -121,12 +120,10 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
      }
 
 
-#if 1
      Path getDijkstraSolution(G& graph) {
          Pgr_dijkstra< G > fn_dijkstra;
          return  fn_dijkstra.dijkstra(graph, m_start, m_end);
      }
-#endif
 
      bool has_restriction() {
 #if 0
@@ -151,16 +148,11 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
          return false;
      }
 
-#if 1
-     bool has_restriction(Path path, pgrouting::trsp::Rule rule) {
-
-         for (const auto r: rule) {
-             log << r;
-         }
-
-         log << path;
-
-         return false;
+#if 0
+     Path_t* has_restriction(Path path, pgrouting::trsp::Rule rule) {
+         return std::search(path.begin(), path.end(), rule.begin(), rule.end(),
+                 [](Path_t p, int64_t e) { return p.edge = e;}
+                 );
      }
 
 #endif
