@@ -1,6 +1,7 @@
 
 SET(LOCAL_FILES
-    prim.sql
+     prim.sql
+    _prim.sql
     )
 
 # Do not modify bellow this line
