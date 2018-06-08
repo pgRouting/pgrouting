@@ -28,17 +28,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION _pgr_prim(
-    edges_sql TEXT,                       -- Edge sql
-    root_vertex BIGINT,                   -- Root vertex 
-    use_root BOOLEAN DEFAULT false,       -- Use root_vertex    
+    edges_sql TEXT,             -- Edge sql
+    root_vertex BIGINT,         -- Root vertex 
+    use_root BOOLEAN,           -- Use root_vertex    
 
     OUT seq INTEGER,            -- Seq
-    Out prim_tree INTEGER,      -- Depend upon no.of connected component in graph      
-    OUT start_node BIGINT,	-- Start node 
-    OUT end_node BIGINT,	-- End node 
-    OUT edge BIGINT,		-- Edge linked to that node
-    OUT cost FLOAT,		-- Cost of edge
-    OUT agg_cost FLOAT)	        -- Total cost 
+    Out prim_tree INTEGER,      -- Root_vertex       
+    OUT node BIGINT,	        -- node of lightest weight
+    OUT edge BIGINT,	     	-- Edge linked to that node
+    OUT cost FLOAT,             -- Cost of edge
+    OUT agg_cost FLOAT,         -- Cost from root_vertex to node
+    OUT tree_cost FLOAT)        -- Spanning tree cost 
 RETURNS SETOF RECORD AS
 '${MODULE_PATHNAME}', 'prim'
 LANGUAGE c VOLATILE;

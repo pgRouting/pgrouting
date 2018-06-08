@@ -31,39 +31,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_prim(
     edges_sql TEXT,
-    root_vertex BIGINT,
 
     OUT seq INTEGER,            -- Seq
-    Out prim_tree INTEGER,      -- Depend upon no.of connected component in graph      
-    OUT start_node BIGINT,	-- Start node 
-    OUT end_node BIGINT,	-- End node 
-    OUT edge BIGINT,		-- Edge linked to that node
-    OUT cost FLOAT,		-- Cost of edge
-    OUT agg_cost FLOAT)	        -- Total cost 
+    Out prim_tree INTEGER,      -- Root_vertex       
+    OUT node BIGINT,	        -- node of lightest weight
+    OUT edge BIGINT,	     	-- Edge linked to that node
+    OUT cost FLOAT,             -- Cost of edge
+    OUT agg_cost FLOAT,         -- Cost from root_vertex to node
+    OUT tree_cost FLOAT)        -- Spanning tree cost
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_prim(_pgr_get_statement($1),$2,TRUE);
+    FROM _pgr_prim(_pgr_get_statement($1), CAST(0 AS BIGINT), FALSE);
 $BODY$
 LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_prim(
     edges_sql TEXT,
+    root_vertex BIGINT,
 
     OUT seq INTEGER,            -- Seq
-    Out prim_tree INTEGER,      -- Depend upon no.of connected component in graph      
-    OUT start_node BIGINT,	-- Start node 
-    OUT end_node BIGINT,	-- End node 
-    OUT edge BIGINT,		-- Edge linked to that node
-    OUT cost FLOAT,		-- Cost of edge
-    OUT agg_cost FLOAT)	        -- Total cost 
+    Out prim_tree INTEGER,      -- Root_vertex       
+    OUT node BIGINT,	        -- node of lightest weight
+    OUT edge BIGINT,	     	-- Edge linked to that node
+    OUT cost FLOAT,             -- Cost of edge
+    OUT agg_cost FLOAT,         -- Cost from root_vertex to node
+    OUT tree_cost FLOAT)        -- Spanning tree cost 
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_prim(_pgr_get_statement($1),CAST(0 AS BIGINT),FALSE);
+    FROM _pgr_prim(_pgr_get_statement($1), $2, TRUE);
 $BODY$
 LANGUAGE sql VOLATILE;
-
 
 COMMENT ON FUNCTION  pgr_prim(TEXT) IS 'pgr_prim()';
 COMMENT ON FUNCTION  pgr_prim(TEXT, BIGINT) IS 'pgr_prim(use root vertex)';
