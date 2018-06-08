@@ -148,16 +148,6 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
          return false;
      }
 
-#if 0
-     Path_t* has_restriction(Path path, pgrouting::trsp::Rule rule) {
-         return std::search(path.begin(), path.end(), rule.begin(), rule.end(),
-                 [](Path_t p, int64_t e) { return p.edge = e;}
-                 );
-     }
-
-#endif
-
-
      bool has_a_restriction(int64_t edge, int64_t index) {
 #if 0
          auto lower_bound_cmp = [](
