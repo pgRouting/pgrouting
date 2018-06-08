@@ -47,6 +47,7 @@ extern "C" {
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
                 int64_t root_vertex,
+                bool use_root,
                 pgr_prim_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,

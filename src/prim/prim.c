@@ -62,6 +62,7 @@ void
 process(
         char* edges_sql, 
         int64_t root_vertex,
+        bool use_root,
         pgr_prim_t **result_tuples,
         size_t *result_count) {
     /*
@@ -94,6 +95,7 @@ process(
             edges,
             total_edges,
             root_vertex,
+            use_root,
 
 #if 0
     /*
@@ -167,6 +169,7 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
+                PG_GETARG_BOOL(2),
 #if 0
                 /*
                  *  handling arrays example
@@ -233,11 +236,11 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1); 
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].prim_tree);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_node);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

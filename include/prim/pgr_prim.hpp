@@ -58,7 +58,8 @@ class Pgr_prim {
 
      std::vector<pgr_prim_t> prim(
                  G &graph,
-                 int64_t root_vertex);
+                 int64_t root_vertex,
+                 bool use_root);
 
  private:
      
@@ -82,8 +83,7 @@ class Pgr_prim {
     std::vector< pgr_prim_t > 
     generatePrim(
 	       const G &graph,
-               int64_t root_vertex,
-               int prim_tree ) {
+               int64_t root_vertex ) {
            
          auto v_root(graph.get_V(root_vertex));
          
@@ -100,12 +100,12 @@ class Pgr_prim {
          size_t size = data.size();
          pgr_prim_t tmp;
          
-         tmp.prim_tree = prim_tree; 
-         tmp.start_node = root_vertex;
+         tmp.prim_tree = static_cast< int >(root_vertex); 
+         tmp.node = static_cast< int >(root_vertex);
          tmp.edge = -1;
-         tmp.end_node = -1;
          tmp.cost = 0;
          tmp.agg_cost = totalcost;
+         tmp.tree_cost = totalcost;
 
          results.push_back(tmp); 	  
           // for root node 
@@ -113,21 +113,22 @@ class Pgr_prim {
          for (size_t j = 1; j < size; j++){
              pgr_prim_t tmp;
 
-             tmp.prim_tree = prim_tree;
-             tmp.start_node = graph.graph[predecessors[data[j]]].id;
-             tmp.end_node = graph.graph[data[j]].id;
+             tmp.prim_tree = static_cast< int >(root_vertex);  // prim_tree
+             auto start_node = graph.graph[predecessors[data[j]]].id;
+             tmp.node = graph.graph[data[j]].id; // node
  
-             auto v_sn(graph.get_V(tmp.start_node));
-	           auto v_en(graph.get_V(tmp.end_node));
+             auto v_sn(graph.get_V(start_node));
+             auto v_en(graph.get_V(tmp.node));
 
-	           auto cost = distances[v_sn] - distances[v_en];
+             auto cost = distances[v_sn] - distances[v_en];
              auto edge_id = 
              graph.get_edge_id(v_sn, v_en, cost);
 	           totalcost += cost;    
  
-	           tmp.edge = edge_id; 	        // edge_id
-	           tmp.cost = cost; 		        // cost
-             tmp.agg_cost = totalcost;    // agg_cost
+             tmp.edge = edge_id; 	     // edge_id
+             tmp.cost = cost; 		     // cost
+             tmp.agg_cost = totalcost;       // agg_cost
+             tmp.tree_cost = totalcost;      // tree_cost
              results.push_back(tmp);
          }
          return results;
@@ -158,8 +159,7 @@ class Pgr_prim {
                resize(graph);
                tmpresults = generatePrim(
                              graph,
-                             graph.graph[component[i][0]].id,
-                             static_cast< int >(i + 1));
+                             graph.graph[component[i][0]].id);
                size_t size = component[i].size();
                for (size_t j = 0; j < size; j++) {
                    results.push_back(tmpresults[j]);
@@ -189,10 +189,11 @@ template < class G >
 std::vector<pgr_prim_t>
 Pgr_prim< G >::prim(
              G &graph,
-             int64_t root_vertex) {
+             int64_t root_vertex,
+             bool use_root) {
         clear();
         resize(graph);
-        if(root_vertex == -1){
+        if(!use_root){
              return disconnectedPrim(
                           graph);
          }
@@ -204,8 +205,7 @@ Pgr_prim< G >::prim(
                 
         return generatePrim(
                              graph,
-                             root_vertex,
-                             1 );
+                             root_vertex);
 } 
 
 

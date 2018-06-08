@@ -47,10 +47,11 @@ static
 std::vector<pgr_prim_t>
 pgr_prim(
         G &graph,
-        int64_t root_vertex) {
+        int64_t root_vertex,
+        bool use_root ) {
     std::vector<pgr_prim_t> results;
     Pgr_prim< G > fn_prim;
-    return fn_prim.prim(graph, root_vertex);
+    return fn_prim.prim(graph, root_vertex, use_root);
 }
 
 
@@ -59,6 +60,7 @@ do_pgr_prim(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         int64_t root_vertex,
+        bool use_root,
         pgr_prim_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -85,7 +87,8 @@ do_pgr_prim(
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_prim(
                     undigraph,
-                    root_vertex);
+                    root_vertex, 
+                    use_root);
 
         auto count = results.size();
 
