@@ -100,8 +100,8 @@ class Pgr_prim {
          size_t size = data.size();
          pgr_prim_t tmp;
          
-         tmp.prim_tree = static_cast< int >(root_vertex); 
-         tmp.node = static_cast< int >(root_vertex);
+         tmp.root_vertex = root_vertex; 
+         tmp.node = root_vertex;
          tmp.edge = -1;
          tmp.cost = 0;
          tmp.agg_cost = totalcost;
@@ -113,7 +113,7 @@ class Pgr_prim {
          for (size_t j = 1; j < size; j++){
              pgr_prim_t tmp;
                
-             tmp.prim_tree = static_cast< int >(root_vertex);  // prim_tree
+             tmp.root_vertex = root_vertex;  // root_vertex
              auto start_node = graph.graph[predecessors[data[j]]].id;
              tmp.node = graph.graph[data[j]].id; // node
  

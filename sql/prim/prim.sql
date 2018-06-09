@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_prim(
     edges_sql TEXT,
 
     OUT seq INTEGER,            -- Seq
-    Out prim_tree INTEGER,      -- Root_vertex       
+    Out root_vertex BIGINT,     -- Root_vertex       
     OUT node BIGINT,	        -- node of lightest weight
     OUT edge BIGINT,	     	-- Edge linked to that node
     OUT cost FLOAT,             -- Cost of edge
@@ -51,7 +51,7 @@ CREATE OR REPLACE FUNCTION pgr_prim(
     root_vertex BIGINT,
 
     OUT seq INTEGER,            -- Seq
-    Out prim_tree INTEGER,      -- Root_vertex       
+    Out root_vertex BIGINT,     -- Root_vertex       
     OUT node BIGINT,	        -- node of lightest weight
     OUT edge BIGINT,	     	-- Edge linked to that node
     OUT cost FLOAT,             -- Cost of edge

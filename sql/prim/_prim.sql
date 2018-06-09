@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION _pgr_prim(
     use_root BOOLEAN,           -- Use root_vertex    
 
     OUT seq INTEGER,            -- Seq
-    Out prim_tree INTEGER,      -- Root_vertex       
+    Out root_vertex BIGINT,     -- Root_vertex       
     OUT node BIGINT,	        -- node of lightest weight
     OUT edge BIGINT,	     	-- Edge linked to that node
     OUT cost FLOAT,             -- Cost of edge
