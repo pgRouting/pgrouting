@@ -112,7 +112,7 @@ class Pgr_prim {
          
          for (size_t j = 1; j < size; j++){
              pgr_prim_t tmp;
-
+               
              tmp.prim_tree = static_cast< int >(root_vertex);  // prim_tree
              auto start_node = graph.graph[predecessors[data[j]]].id;
              tmp.node = graph.graph[data[j]].id; // node
@@ -122,12 +122,12 @@ class Pgr_prim {
 
              auto cost = distances[v_sn] - distances[v_en];
              auto edge_id = 
-             graph.get_edge_id(v_sn, v_en, cost);
-	           totalcost += cost;    
+                 graph.get_edge_id(v_sn, v_en, cost);
+	     totalcost += cost;    
  
              tmp.edge = edge_id; 	     // edge_id
              tmp.cost = cost; 		     // cost
-             tmp.agg_cost = totalcost;       // agg_cost
+             tmp.agg_cost = aggegrateCost(v_root, data[j]); // agg_cost
              tmp.tree_cost = totalcost;      // tree_cost
              results.push_back(tmp);
          }
@@ -135,7 +135,23 @@ class Pgr_prim {
     }
 
 
-
+    double aggegrateCost(
+                  V root_vertex,
+                  V find_node) {
+       double agg_cost = 0;
+    
+       for (V i = find_node; i!=root_vertex;){
+          
+          auto parent =  predecessors[i];
+          auto cost = distances[i] - distances[root_vertex]; 
+    
+          agg_cost += cost;
+          i = parent;
+       }
+       return agg_cost; 
+    }
+  
+  
     std::vector< pgr_prim_t > 
     disconnectedPrim(
 	       const G &graph ) {
