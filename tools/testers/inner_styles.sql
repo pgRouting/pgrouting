@@ -317,3 +317,94 @@ ALTER TABLE edge_table RENAME coming TO reverse_cost;
 END;
 $BODY$
 LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION style_cost_flow(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+--with reverse cost & with reverse_capacity
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost', 'reverse_cost'],
+    'id');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost', 'reverse_cost'],
+    'source');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost', 'reverse_cost'],
+    'target');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost', 'reverse_cost'],
+    'capacity');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost', 'reverse_cost'],
+    'reverse_capacity');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost', 'reverse_cost'],
+    'cost');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost', 'reverse_cost'],
+    'reverse_cost');
+
+--with reverse cost & without reverse_capacity
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost', 'reverse_cost'],
+    'id');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost', 'reverse_cost'],
+    'source');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost', 'reverse_cost'],
+    'target');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost', 'reverse_cost'],
+    'capacity');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost', 'reverse_cost'],
+    'cost');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost', 'reverse_cost'],
+    'reverse_cost');
+
+
+--without reverse cost & with reverse_capacity
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost'],
+    'id');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost'],
+    'source');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost'],
+    'target');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost'],
+    'capacity');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost'],
+    'reverse_capacity');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity', 'cost'],
+    'cost');
+
+--without reverse cost & without reverse_capacity
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost'],
+    'id');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost'],
+    'source');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost'],
+    'target');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost'],
+    'capacity');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'cost'],
+    'cost');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+

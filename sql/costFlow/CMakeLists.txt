@@ -1,7 +1,8 @@
 
 SET(LOCAL_FILES
     minCostMaxFlow.sql
-    minCostMaxFlow_Cost.sql
+    pgr_minCostMaxFlow.sql
+    pgr_minCostMaxFlow_Cost.sql
     )
 
 foreach (f ${LOCAL_FILES})
