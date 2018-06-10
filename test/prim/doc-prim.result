@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 -- q1
 SELECT * FROM pgr_prim(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table', -1
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
  seq | prim_tree | start_node | end_node | edge | cost | agg_cost 
 -----+-----------+------------+----------+------+------+----------

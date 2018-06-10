@@ -49,7 +49,7 @@ The main Characteristics are:
   
   - Span start from chosen root_vertex resulting subgraph.
 
-    - When root_vertex is `-1` then result is minimun spannig tree of disconnected graph.
+    - Default value of root_vertex is `-1` then result is minimun spannig tree of disconnected graph.
    
   - Values are returned when there is a minimum spanning tree.
 
@@ -66,6 +66,7 @@ Signatures
 
 .. code-block:: none
 
+    pgr_prim(edges_sql)
     pgr_prim(edges_sql, root_vertex)
 
     RETURNS SET OF (seq, prim_tree, start_node, end_node, edge, cost, agg_cost) 
@@ -129,9 +130,9 @@ Description of the parameters of the signatures
 Parameter           Type                   Default   Description
 =================== ====================== ========= =========================================
 **edges_sql**       ``TEXT``                         SQL query as described above.
-**root_vertex**     ``BIGINT``                       Root vertex from where spanning of tree start.
+**root_vertex**     ``BIGINT``              -1       Root vertex from where spanning of tree start.
 
-                                                     - Root vertx is -1 then result is MST of disconnected graph.
+                                                     - When root vertx is -1 then result is MST of disconnected graph.
 =================== ====================== ========= =========================================
 
 Description of the return values for prim algorithms

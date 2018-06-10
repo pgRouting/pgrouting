@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    _prim.sql
     prim.sql
     )
 
