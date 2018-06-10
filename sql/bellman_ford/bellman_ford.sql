@@ -27,13 +27,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--MANY TO MANY
+
 CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     TEXT,
-    BIGINT,
-    BIGINT,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-        OUT seq INTEGER,
+    
+    
+    OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -41,6 +44,83 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'bellman_ford'
-LANGUAGE c IMMUTABLE STRICT;
+$BODY$
+    SELECT *
+    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false ) AS a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
+
+
+--ONE TO ONE
+
+CREATE OR REPLACE FUNCTION pgr_bellman_ford(
+    TEXT,
+    BIGINT,
+    BIGINT,
+    directed BOOLEAN DEFAULT true,
+    
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT * FROM
+     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
+$BODY$
+LANGUAGE SQL VOLATILE;
+
+
+
+--ONE TO MANY
+
+CREATE OR REPLACE FUNCTION pgr_bellman_ford(
+    TEXT,
+    BIGINT,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+
+    
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT * FROM
+     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false);
+$BODY$
+LANGUAGE SQL VOLATILE;
+
+
+
+--MANY TO ONE
+
+CREATE OR REPLACE FUNCTION pgr_bellman_ford(
+    TEXT,
+    ANYARRAY,
+    BIGINT,
+    directed BOOLEAN DEFAULT true,
+    
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT * FROM
+     _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
+$BODY$
+LANGUAGE SQL VOLATILE;

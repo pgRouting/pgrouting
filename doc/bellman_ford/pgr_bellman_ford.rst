@@ -12,11 +12,11 @@
 pgr_bellman_ford
 ===============================================================================
 
-``pgr_bellman_ford`` — Returns the shortest path(s) using Dijkstra algorithm.
-In particular, the Dijkstra algorithm implemented by Boost.Graph.
+``pgr_bellman_ford`` — Returns the shortest path(s) using Bellman-Ford algorithm.
+In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
+   :target: http://www.boost.org/libs/graph/doc/bellman_ford_shortest.html
 
    Boost Graph Inside
 
@@ -24,10 +24,9 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 Synopsis
 -------------------------------------------------------------------------------
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
-It is a graph search algorithm that solves the shortest path problem for
-a graph with non-negative edge path costs, producing a shortest path from
-a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
+Bellman-Ford's algorithm, is named after Richard Bellman and Lester Ford, who first published it in 1958 and 1956, respectively.
+It is a graph search algorithm that computes shortest paths from
+a starting vertex (``start_vid``) to an ending vertex (``end_vid``) in a graph where some of the edge weights may be negative number. Though it is more versatile, it is slower than Dijkstra's algorithm/
 This implementation can be used with a directed graph and an undirected graph.
 
 Characteristics
@@ -131,7 +130,7 @@ Description of the Signatures
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
