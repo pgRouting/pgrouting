@@ -39,67 +39,53 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 
-
-
-/* One to One Bellman Ford Shortest Path */
+/* Bellman Ford Shortest Path */
 /************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
+    EDGE_SQL,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
  ***********************************************************/
 
-template < class G >
-static
-Path
-pgr_bellman_ford(
-        G &graph,
-        int64_t source,
-        int64_t target,
-        bool only_cost = false) {
-    Path path;
-    Pgr_bellman_ford< G > fn_bellman_ford;
-    return fn_bellman_ford.bellman_ford(graph, source, target, only_cost);
-}
-
-/*TO DO: One to Many
-         Many to One 
-         Many to Many   */
 template < class G >
 std::deque< Path >
 pgr_bellman_ford(
         G &graph,
-        int64_t  source,
-        std::vector < int64_t > &targets,
+        std::vector < int64_t > sources,
+        std::vector < int64_t > targets,
         bool only_cost = false) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
     std::sort(targets.begin(), targets.end());
     targets.erase(
             std::unique(targets.begin(), targets.end()),
             targets.end());
 
     Pgr_bellman_ford< G > fn_bellman_ford;
-    auto paths = fn_bellman_ford.bellman_ford(graph, source, targets, only_cost);
+    auto paths = fn_bellman_ford.bellman_ford(graph, sources, targets, only_cost);
 
     return paths;
 }
 
-/*TO DO: One to Many
-         Many to One 
-         Many to Many   */
 void
 do_pgr_bellman_ford(
         pgr_edge_t  *data_edges,
-        size_t total_edges,
-        int64_t start_vid,
-        int64_t end_vid,
-        bool directed,
-        bool only_cost,
-        General_path_element_t **return_tuples,
-        size_t *return_count,
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
+                size_t total_edges,
+                int64_t  *start_vidsArr,
+                size_t size_start_vidsArr,
+                int64_t  *end_vidsArr,
+                size_t size_end_vidsArr,
+                bool directed,
+                bool only_cost,
+                
+                General_path_element_t **return_tuples,
+                size_t *return_count,
+                char ** log_msg,
+                char ** notice_msg,
+                char ** err_msg) {
     
     std::ostringstream log;
     std::ostringstream err;
@@ -113,51 +99,54 @@ do_pgr_bellman_ford(
         pgassert(total_edges != 0);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
+        
+        log << "Inserting vertices into a c++ vector structure";
+        std::vector<int64_t>
+            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+        std::vector< int64_t >
+            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
-        Path path;
+        std::deque< Path >paths;
 
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            path = pgr_bellman_ford(digraph,
-                    start_vid,
-                    end_vid,
+            paths = pgr_bellman_ford(digraph,
+                    start_vertices, end_vertices,
                     only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_bellman_ford(
+            paths = pgr_bellman_ford(
                     undigraph,
-                    start_vid,
-                    end_vid,
+                    start_vertices, end_vertices,
                     only_cost);
         }
 
-        auto count = path.size();
+        size_t count(0);
+        count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No paths found between start_vid and end_vid vertices";
+                "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        size_t sequence = 0;
-        path.generate_postgres_data(return_tuples, sequence);
-        (*return_count) = sequence;
+        log << "\nConverting a set of paths into the tuples";
+        (*return_count) = (collapse_paths(return_tuples, paths));
 
-        pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-    
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -177,5 +166,4 @@ do_pgr_bellman_ford(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-    
 }

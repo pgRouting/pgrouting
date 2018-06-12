@@ -24,7 +24,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-------------------------
 --Many to Many
+-------------------------
+
 CREATE OR REPLACE FUNCTION _pgr_bellman_ford(
      TEXT,
      ANYARRAY,
@@ -33,12 +36,14 @@ CREATE OR REPLACE FUNCTION _pgr_bellman_ford(
     only_cost BOOLEAN ,
     
 
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
+    OUT seq integer,
+    OUT path_seq integer,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
+    OUT cost float,
+    OUT agg_cost float)
 
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'bellman_ford'
