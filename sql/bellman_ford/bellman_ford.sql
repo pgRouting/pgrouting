@@ -38,6 +38,8 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -45,7 +47,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false ) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
@@ -71,8 +73,8 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT * FROM
-     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
+    FROM _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE;
 
@@ -89,6 +91,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -96,8 +99,8 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT * FROM
-     _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false);
+    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
+    FROM _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE;
 
@@ -113,6 +116,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
     
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -120,7 +124,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT * FROM
-     _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
+    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost 
+    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE;

@@ -28,41 +28,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/** @file bellman_ford.c
- * @brief Conecting code with postgres.
- *
- * This file is fully documented for understanding
- *  how the postgres connectinon works
- *
- * TODO Remove unnecessary comments before submiting the function.
- * some comments are in form of PGR_DBG message
- */
 
-/**
- *  postgres_connection.h
- *
- *  - should allways be first in the C code
- */
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges informtion */
+
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+
 #include "drivers/bellman_ford/bellman_ford_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(bellman_ford);
 
-
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -74,13 +55,11 @@ process(
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
+    
     pgr_SPI_connect();
-
-        
+    
     PGR_DBG("Initializing arrays");
+
     int64_t* start_vidsArr = NULL;
     size_t size_start_vidsArr = 0;
     start_vidsArr = (int64_t*)
@@ -93,10 +72,7 @@ process(
         pgr_get_bigIntArray(&size_end_vidsArr, ends);
     PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
 
-    // start_vid, end_vid : Pass to driver file
-    int64_t start_vid = start_vidsArr[0];
-    int64_t end_vid = end_vidsArr[0];
-
+   
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
@@ -122,21 +98,14 @@ process(
     do_pgr_bellman_ford(
             edges,
             total_edges,
-            start_vid,
-            end_vid,
-#if 0
-    /*
-     *  handling arrays example
-     */
-
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
-#endif
-
             directed,
             only_cost,
+
             result_tuples,
             result_count,
+            
             &log_msg,
             &notice_msg,
             &err_msg);
@@ -147,6 +116,7 @@ process(
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
     }
+
     pgr_global_report(log_msg, notice_msg, err_msg);
 
     if (edges) pfree(edges);
@@ -154,26 +124,19 @@ process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-
     if (end_vidsArr) pfree(end_vidsArr);
     if (start_vidsArr) pfree(start_vidsArr);
-
-
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
+
 
 PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
+    /**************************************************************************/         
     General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -183,14 +146,14 @@ PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
         /*
-           TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-         **********************************************************************/
+        pgr_bellman_ford(
+            edge_sql TEXT,
+            start_vids ANYARRAY,
+            end_vids ANYARRAY,
+            directed BOOLEAN DEFAULT true)
+        */
+        /**********************************************************************/
 
 
         PGR_DBG("Calling process");
@@ -203,8 +166,6 @@ PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-
-        /*                                                                    */
         /**********************************************************************/
 
 #if PGSQL_VERSION > 94
@@ -236,32 +197,36 @@ PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS) {
         bool*        nulls;
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
         /*
-               OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT
-         ***********************************************************************/
-
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+            OUT seq INTEGER,
+            OUT path_seq INTEGER,
+            OUT start_vid BIGINT,
+            OUT end_vid BIGINT,
+            OUT node BIGINT,
+            OUT edge BIGINT,
+            OUT cost FLOAT,
+            OUT agg_cost FLOAT
+        */
+         /***********************************************************************/
+        size_t numb = 8;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -269,7 +234,6 @@ PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS) {
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
         PGR_DBG("Clean up code");
 

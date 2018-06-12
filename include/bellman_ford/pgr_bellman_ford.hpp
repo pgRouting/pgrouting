@@ -3,7 +3,7 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2018 SOurabh Garg
+Copyright (c) 2018 Sourabh Garg
 Mail to: sourabh.garg.mat14@gmail.com
 
 ------
