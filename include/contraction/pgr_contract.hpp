@@ -52,7 +52,6 @@ class Pgr_contract {
             Identifiers<V> forbidden_vertices,
             std::ostringstream& debug) {
         Pgr_deadend<G> deadendContractor;
-        debug << "Setting forbidden_vertices";
         deadendContractor.setForbiddenVertices(forbidden_vertices);
 
         deadendContractor.calculateVertices(graph);
@@ -62,6 +61,7 @@ class Pgr_contract {
         catch ( ... ) {
             debug << "Caught unknown exception!\n";
         }
+        debug << deadendContractor.debug.str();
     }
 
 

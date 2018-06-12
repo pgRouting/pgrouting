@@ -48,7 +48,7 @@ class CH_vertex {
     void cp_members(const CH_vertex &other) {
         this->id = other.id;
     }
-    void add_contracted_vertex(CH_vertex& v, int64_t vid);
+    void add_contracted_vertex(CH_vertex& v);
     void add_vertex_id(int64_t vid) {m_contracted_vertices += vid;}
     const Identifiers<int64_t>& contracted_vertices() const;
     bool has_contracted_vertices() const;

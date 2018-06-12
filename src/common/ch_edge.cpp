@@ -35,6 +35,8 @@ void
 CH_edge::cp_members(const CH_edge &other) {
     this->cost = other.cost;
     this->id = other.id;
+    this->source = other.source;
+    this->target = other.target;
     this->m_contracted_vertices += other.contracted_vertices();
 }
 
@@ -51,15 +53,16 @@ CH_edge::contracted_vertices() const {
 
 
 void
-CH_edge::add_contracted_vertex(CH_vertex& v, int64_t vid) {
-    m_contracted_vertices += vid;
+CH_edge::add_contracted_vertex(CH_vertex& v) {
+    m_contracted_vertices += v.id;
     m_contracted_vertices += v.contracted_vertices();
     //v.clear_contracted_vertices();
 }
 
 void
 CH_edge::add_contracted_edge_vertices(CH_edge &e) {
-    m_contracted_vertices += e.contracted_vertices();
+    if (e.has_contracted_vertices())
+        m_contracted_vertices += e.contracted_vertices();
     //e.clear_contracted_vertices();
 }
 

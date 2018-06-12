@@ -158,8 +158,8 @@ void get_postgres_result(
 
     for (auto edge : shortcut_edges) {
         int64_t* contracted_vertices = NULL;
-        auto ids = graph.get_ids(edge.contracted_vertices());
-
+        //auto ids = graph.get_ids(edge.contracted_vertices());
+        auto ids = edge.contracted_vertices();
         contracted_vertices = pgr_alloc(
                    ids.size(), contracted_vertices);
         int count = 0;

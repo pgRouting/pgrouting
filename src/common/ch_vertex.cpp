@@ -47,8 +47,8 @@ bool CH_vertex::has_contracted_vertices() const {
     return true;
 }
 
-void CH_vertex::add_contracted_vertex(CH_vertex& v, int64_t vid) {
-    m_contracted_vertices += vid;
+void CH_vertex::add_contracted_vertex(CH_vertex& v) {
+    m_contracted_vertices += v.id;
     m_contracted_vertices += v.contracted_vertices();
     //v.clear_contracted_vertices();
 }

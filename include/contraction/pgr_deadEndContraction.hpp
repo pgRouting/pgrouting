@@ -55,11 +55,11 @@ class Pgr_deadend {
      bool is_dead_end(G &graph, V v);
      void add_if_dead_end(G &graph, V v);
      void doContraction(G &graph);
+     std::ostringstream debug;
 
  private:
      Identifiers<V> deadendVertices;
      Identifiers<V> forbiddenVertices;
-     std::ostringstream debug;
 };
 
 /******* IMPLEMENTATION ************/
@@ -67,9 +67,7 @@ template < class G >
 void
 Pgr_deadend< G >::setForbiddenVertices(
         Identifiers<V> forbidden_vertices) {
-#ifndef NDEBUG
     debug << "Setting forbidden vertices\n";
-#endif
     forbiddenVertices = forbidden_vertices;
 }
 
@@ -81,13 +79,13 @@ void Pgr_deadend<G>::calculateVertices(G &graph) {
     for (auto vi = vertices(graph.graph).first;
             vi != vertices(graph.graph).second;
             ++vi) {
-#ifndef NDEBUG
+        
         debug << "Checking vertex " << graph[(*vi)].id << '\n';
-#endif
+
         if (is_dead_end(graph, *vi)) {
-#ifndef NDEBUG
+
             debug << "Adding " << graph[(*vi)].id << " to dead end" << '\n';
-#endif
+
             deadendVertices += (*vi);
         }
     }
@@ -96,9 +94,9 @@ void Pgr_deadend<G>::calculateVertices(G &graph) {
 
 template < class G >
 bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
-#ifndef NDEBUG
+
     debug << "Is dead end: " << graph.graph[v].id << "?\n";
-#endif
+
 
     if (forbiddenVertices.has(v)) {
         /**
@@ -333,9 +331,9 @@ Pgr_deadend<G>::add_if_dead_end(G &graph, V v) {
 template < class G >
 void
 Pgr_deadend<G>::doContraction(G &graph) {
-#ifndef NDEBUG
+
     debug << "Performing contraction\n";
-#endif
+
     std::priority_queue<V, std::vector<V>, std::greater<V> > deadendPriority;
 
     for (V deadendVertex : deadendVertices) {
@@ -354,16 +352,18 @@ Pgr_deadend<G>::doContraction(G &graph) {
             graph.find_adjacent_vertices(current_vertex);
 
         for (auto adjacent_vertex : adjacent_vertices) {
-#ifndef NDEBUG
+
             debug << "Contracting current vertex "
                 << graph[current_vertex].id << std::endl;
-#endif
-            graph[adjacent_vertex].add_contracted_vertex(
-                    graph[current_vertex], current_vertex);
 
-#ifndef NDEBUG
+            debug << "Adding contracted vertices of the vertex\n";
+                
+            graph[adjacent_vertex].add_contracted_vertex(
+                    graph[current_vertex]);
+
+
             debug << "Adding contracted vertices of the edge\n";
-#endif
+
             auto o_edges = out_edges(current_vertex, graph.graph);
             for (auto out = o_edges.first;
                     out != o_edges.second;
@@ -375,24 +375,25 @@ Pgr_deadend<G>::doContraction(G &graph) {
             auto i_edges = in_edges(current_vertex, graph.graph);
             for (auto in = i_edges.first;
                     in != i_edges.second; ++in) {
-#ifndef NDEBUG
+
                 debug << graph.graph[*in];
-#endif
+
                 graph.add_contracted_edge_vertices(adjacent_vertex, graph[*in]);
             }
-#ifndef NDEBUG
+
             debug << "Current Vertex:\n";
-            debug << graph[current_vertex];
+            debug << graph[current_vertex].id;
             debug << "Adjacent Vertex:\n";
-            debug << graph[adjacent_vertex];
-#endif
+            debug << graph[adjacent_vertex].id;
+
             graph.disconnect_vertex(current_vertex);
+            graph[current_vertex].clear_contracted_vertices();
             deadendVertices -= current_vertex;
-#ifndef NDEBUG
+
             debug << "Adjacent vertex dead_end?: "
                 << is_dead_end(graph, adjacent_vertex)
                 << std::endl;
-#endif
+
             if (is_dead_end(graph, adjacent_vertex)
                     && !forbiddenVertices.has(adjacent_vertex)) {
                 deadendVertices += adjacent_vertex;

@@ -48,7 +48,7 @@ class CH_edge {
 
      void cp_members(const CH_edge &other);
 
-     void add_contracted_vertex(CH_vertex& v, int64_t vid);
+     void add_contracted_vertex(CH_vertex& v);
      void add_contracted_edge_vertices(CH_edge& e);
 
      bool has_contracted_vertices() const;

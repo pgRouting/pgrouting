@@ -111,7 +111,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return adjacent_vertices;
      }
 
-
      std::vector<int64_t> get_ids(
              Identifiers<int64_t> boost_ids) const {
          std::vector<int64_t> ids(boost_ids.size());
@@ -236,7 +235,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
          size_t count = 0;
          for (auto idx :  this->graph[v].contracted_vertices()) {
-             ids[count++] =  this->graph[idx].id;
+             ids[count++] =  idx;
          }
          return ids;
      }
@@ -318,6 +317,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      void get_shortcuts(std::vector< CH_edge >& shortcut_edges) {
          V vi;
          EO_i out, out_end;
+         CH_edge e;
          for (auto vi = vertices(this->graph).first;
                 vi != vertices(this->graph).second;
                 ++vi) {
@@ -325,9 +325,13 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          
             for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
                     out != out_end; ++out) {
-
                 if (is_contracted(*out)) {
-                    shortcut_edges.push_back(this->graph[*out]);
+                    e.id = this->graph[*out].id;
+                    e.source = this->graph[this->source(*out)].id;
+                    e.target = this->graph[this->target(*out)].id;
+                    e.cost = this->graph[*out].cost;
+                    e.add_contracted_edge_vertices(this->graph[*out]);
+                    shortcut_edges.push_back(e);
                 }
             }
         }
