@@ -5,7 +5,7 @@ SELECT plan(5);
 PREPARE q1 AS
 SELECT * FROM pgr_prim(
   'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ', 18
+    FROM edge_table', 18
 );
 
 PREPARE q2 AS
@@ -23,7 +23,7 @@ FROM pgr_prim(
 ) WHERE cost < 0;
 
 
-SELECT is_empty('q1', 'Node 18: This node does not exists');
+SELECT is_empty('q1', '1: No_edge');
 SELECT is_empty('q2', 'Node 18: This node does not exists');
 SELECT is_empty('q3', 'No cost can be negative');
 
@@ -51,7 +51,7 @@ FROM pgr_prim(
 
 
 SELECT set_eq( 'q4', 'q5', '4: Spanning of edge 17');
-SELECT set_eq('q6', 'VALUES (1, 1, 16, -1, -1, 0, 0), (2, 1, 16, 17, 18, 1, 1)' , '5: Compare when node is 16 with actual result');
+SELECT set_eq('q6', 'VALUES (1, 16, 16, -1, 0, 0, 0), (2, 16, 17, 18, 1, 1, 1)' , '5: Compare when node is 16 with actual result');
 
 
 SELECT * FROM finish();
