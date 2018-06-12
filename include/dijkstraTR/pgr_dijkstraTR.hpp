@@ -101,21 +101,7 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
              log << curr_result_path.has_restriction(r) << "\n";
          }
 
-#if 0
-         for (auto &path : curr_result_path) {
-             m_edges_in_path.push_back(path.edge);
-         }
-         while (m_edges_in_path.size() && m_edges_in_path.back() == -1) {
-             m_edges_in_path.pop_back();
-         }
-
-         log << "Edges in m_edges_in_path:-------------------\n";
-         for (auto &it : m_edges_in_path) log << it << "\n";
-         log << "---------------------------------------------\n";
-         bool sol = has_restriction();
-         log << "Result of valid solution: " << sol << "\n";
-         if (sol) curr_result_path = Path();
-#endif
+         curr_result_path = get_no_restrictions_path(curr_result_path);
          return curr_result_path;
      }
 
@@ -125,60 +111,23 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
          return  fn_dijkstra.dijkstra(graph, m_start, m_end);
      }
 
-     bool has_restriction() {
-#if 0
-         auto sort_cmp = [](const pgrouting::trsp::Rule& left,
-                 const pgrouting::trsp::Rule& right) -> bool {
-             return left.restrict_edges()[0] <= right.restrict_edges()[0];
-         };
-         std::stable_sort(m_restrictions.begin(), m_restrictions.end(),
-                 sort_cmp);
-
-         log << "\nRestriction array after sorting.\n";
-         for (auto &it : m_restrictions) log << it << "\n";
-         log << "\nEnd\n";
-
-         size_t index = 0;
-         for (auto &edge : m_edges_in_path) {
-             if (has_a_restriction(edge, index))
-                 return true;
-             index++;
+     Path get_no_restrictions_path(Path &path) {
+         auto r = m_restrictions.begin();
+         while (r != m_restrictions.end() && path.find_restriction(*r) == path.end()) {
+             ++r;
          }
-#endif
-         return false;
+
+         /*
+          * There is no restriction found
+          */
+         if (r == m_restrictions.end()) return path;
+
+         log << "Found Restriction " << (*r) << "\n";
+         return path;
      }
 
-     bool has_a_restriction(int64_t edge, int64_t index) {
-#if 0
-         auto lower_bound_cmp = [](
-                 const Restriction& r, const int64_t& target) {
-             return r.restrict_edges()[0] < target;
-         };
-         auto edge_index = std::lower_bound(m_restrictions.begin(),
-                 m_restrictions.end(), edge,
-                 lower_bound_cmp) - m_restrictions.begin();
-         log << "\nResult generated from lower_bound\n";
-         while (edge_index < (int64_t)m_restrictions.size()) {
-             auto r_edges = m_restrictions[edge_index].restrict_edges();
-             if (r_edges[0] != edge) break;
-             log << m_restrictions[edge_index] << "\n";
-             bool okay = true;
-             size_t temp_edge_index = index;
 
-             for (auto &edge_id : r_edges) {
-                 if (temp_edge_index >= m_edges_in_path.size() ||
-                         m_edges_in_path[temp_edge_index] != edge_id) {
-                     okay = false;
-                     break;
-                 }
-                 temp_edge_index++;
-             }
-             log << "\nokay value = " << okay <<"\n";
-             if (okay) return true;
-             edge_index++;
-         }
-         log << "Ends Here\n";
-#endif
+     bool has_a_restriction(int64_t edge, int64_t index) {
          return false;
      }
 
