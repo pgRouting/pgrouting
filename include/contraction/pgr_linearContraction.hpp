@@ -123,14 +123,15 @@ bool Pgr_linear<G>::is_linear(G &graph, V v, std::ostringstream& debug) {
          * - fobbiden_vertices
          *   - Not considered as linear
          */
+        debug << graph.graph[v].id << " is forbidden !!" << std::endl;
         return false;
     }
 
 
 
-    bool adjacent_vertices_constraint = false;
-    bool degree_constraint = false;
-    bool contracted_vertices_constraint = false;
+    //bool adjacent_vertices_constraint = false;
+    //bool degree_constraint = false;
+    //bool contracted_vertices_constraint = false;
     
     // Checking adjacent vertices constraint
     auto adjacent_vertices = graph.find_adjacent_vertices(v);
@@ -144,12 +145,13 @@ bool Pgr_linear<G>::is_linear(G &graph, V v, std::ostringstream& debug) {
         V right_vertex = adjacent_vertices.front();
         adjacent_vertices.pop_front();
         if (is_shortcut_possible(graph, v, left_vertex, right_vertex)) {
-            degree_constraint = true;
+            debug << graph.graph[v].id << " is linear !!" << std::endl;
             return true;
         }
+        debug << graph.graph[v].id << " is not linear !!" << std::endl;
         return false;
     }
-
+    debug << graph.graph[v].id << " is not linear !!" << std::endl;
     return false;
 
 
