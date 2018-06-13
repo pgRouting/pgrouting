@@ -49,11 +49,13 @@ The main Characteristics are:
   
   - Span start from chosen root_vertex resulting subgraph.
 
-    - When root vertex is not given then result is minimun spannig tree of disconnected graph.
+    - When root vertex is not given then result is minimun spanning tree of disconnected graph.
    
   - Values are returned when there is a minimum spanning tree.
 
     - When there is no edge in graph then EMPTY SET is return.
+
+  - The minimum spanning tree is same for any root vertex. 
   
   - Running time: :math:`O(E*log V)`
 
