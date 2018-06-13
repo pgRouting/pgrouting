@@ -137,7 +137,7 @@ bool Pgr_linear<G>::is_linear(G &graph, V v, std::ostringstream& debug) {
     auto adjacent_vertices = graph.find_adjacent_vertices(v);
 
     if (adjacent_vertices.size() == 2) {
-        adjacent_vertices_constraint = true;
+        //adjacent_vertices_constraint = true;
 
         // Checking degree constraint
         V left_vertex = adjacent_vertices.front();
