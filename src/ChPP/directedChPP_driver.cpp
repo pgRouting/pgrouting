@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: minCostMaxFlow_driver.cpp
+File: directedChPP_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,20 +27,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/costFlow/minCostMaxFlow_driver.h"
+#include "drivers/ChPP/directedChPP_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <set>
 
-#include "costFlow/pgr_minCostMaxFlow.hpp"
+// work for both directed and undirected
+#include "ChPP/pgr_ChPP.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+//TODO(mg) parameters
 void
-do_pgr_minCostMaxFlow(
+do_pgr_directedChPP(
         pgr_costFlow_t  *data_edges, size_t total_edges,
         int64_t *source_vertices, size_t size_source_verticesArr,
         int64_t *sink_vertices, size_t size_sink_verticesArr,
@@ -61,6 +63,7 @@ do_pgr_minCostMaxFlow(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
+        /* TODO(mg)
         std::vector<pgr_costFlow_t> edges(data_edges, data_edges + total_edges);
         std::set<int64_t> sources(
                 source_vertices, source_vertices + size_source_verticesArr);
@@ -103,6 +106,7 @@ do_pgr_minCostMaxFlow(
             (*return_tuples)[i] = flow_edges[i];
         }
         *return_count = flow_edges.size();
+        */
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
