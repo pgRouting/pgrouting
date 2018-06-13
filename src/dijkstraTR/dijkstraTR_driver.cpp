@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-Path
+std::deque<Path>
 pgr_dijkstraTR(
         G &graph,
         const std::vector<pgrouting::trsp::Rule> restrictions,
@@ -56,7 +56,7 @@ pgr_dijkstraTR(
         bool strict = false) {
     Pgr_dijkstraTR< G > fn_TRSP;
 
-    auto path = fn_TRSP.dijkstraTR(graph,
+    auto paths = fn_TRSP.dijkstraTR(graph,
                     restrictions,
                     source,
                     target,
@@ -64,7 +64,7 @@ pgr_dijkstraTR(
                     strict);
 
     log += fn_TRSP.log.str().c_str();
-    return path;
+    return paths;
 }
 
 void
@@ -114,7 +114,8 @@ do_pgr_dijkstraTR(
 
         std::vector < pgr_edge_t > edges(data_edges, data_edges + total_edges);
 
-        Path path;
+        std::deque<Path> paths;
+
         std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
@@ -122,7 +123,7 @@ do_pgr_dijkstraTR(
             Pgr_dijkstraTR < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(edges);
             log << digraph;
-            path = pgr_dijkstraTR(digraph,
+            paths = pgr_dijkstraTR(digraph,
                     ruleList,
 
                     start_vid,
@@ -136,7 +137,7 @@ do_pgr_dijkstraTR(
             pgrouting::UndirectedGraph undigraph(gType);
             Pgr_dijkstraTR < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_dijkstraTR(undigraph,
+            paths = pgr_dijkstraTR(undigraph,
                     ruleList,
 
                     start_vid,
@@ -148,20 +149,25 @@ do_pgr_dijkstraTR(
         }
 
         log << logstr;
-        auto count = path.size();
+
+        auto count(count_tuples(paths));
         log << "\nCount = " << count;
 
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice <<
-                "No paths found between start_vid and end_vid vertices";
-        } else {
-            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        if (!(count == 0)) {
+            *return_tuples = NULL;
+            *return_tuples = pgr_alloc(count, (*return_tuples));
+
             size_t sequence = 0;
-            path.generate_postgres_data(return_tuples, sequence);
-            (*return_count) = sequence;
+            int route_id = 0;
+            for (const auto &path : paths) {
+                if (path.size() > 0)
+                    path.get_pg_turn_restricted_path(return_tuples, sequence, route_id);
+                    log << "the agg cost" << (*return_tuples)[0].agg_cost;
+                ++route_id;
+            }
         }
+        *return_count = count;
+
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?

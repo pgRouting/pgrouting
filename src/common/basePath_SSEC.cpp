@@ -23,6 +23,7 @@ along with this program; if not, write to the Free Software
 
 #include "cpp_common/basePath_SSEC.hpp"
 
+#include <limits>
 #include <deque>
 #include <iostream>
 #include <algorithm>
@@ -88,15 +89,30 @@ void Path::clear() {
     m_end_id = 0;
 }
 
-Path::pthIt Path::find_restriction(pgrouting::trsp::Rule &rule) {
-    return std::search(path.begin(), path.end(), rule.begin(), rule.end(),
+Path::ConstpthIt Path::find_restriction(
+        const pgrouting::trsp::Rule &rule) const {
+    return std::search(path.begin(),  path.end(), rule.begin(), rule.end(),
             [](Path_t p, int64_t e) { return p.edge == e;}
             );
 }
 
-bool Path::has_restriction(pgrouting::trsp::Rule &rule) {
+bool Path::has_restriction(
+        const pgrouting::trsp::Rule &rule) const {
     return find_restriction(rule) != path.end();
 }
+
+Path Path::inf_cost_on_restriction(
+        const pgrouting::trsp::Rule &rule) {
+    auto position = std::search(path.begin(),  path.end(), rule.begin(), rule.end(),
+            [](Path_t p, int64_t e) { return p.edge == e;}
+            );
+    if (position != path.end()) {
+        position->agg_cost = std::numeric_limits<double>::infinity();
+    }
+    return *this;
+}
+
+
 
 std::ostream& operator<<(std::ostream &log, const Path &path) {
     log << "Path: " << path.start_id() << " -> " << path.end_id() << "\n"
@@ -239,6 +255,22 @@ void Path::get_pg_ksp_path(
         (*ret_path)[sequence].agg_cost = (i == 0)?
             0 :
             (*ret_path)[sequence-1].agg_cost +  path[i-1].cost;
+        sequence++;
+    }
+}
+
+/* used by turn restricted */
+void Path::get_pg_turn_restricted_path(
+        General_path_element_t **ret_path,
+        size_t &sequence, int routeId) const {
+    for (unsigned int i = 0; i < path.size(); i++) {
+        (*ret_path)[sequence].seq = i + 1;
+        (*ret_path)[sequence].start_id = routeId;
+        (*ret_path)[sequence].end_id = end_id();
+        (*ret_path)[sequence].node = path[i].node;
+        (*ret_path)[sequence].edge = path[i].edge;
+        (*ret_path)[sequence].cost = path[i].cost;
+        (*ret_path)[sequence].agg_cost = path[i].agg_cost;
         sequence++;
     }
 }

@@ -96,8 +96,9 @@ class Path {
      * @param[in] rule A subpath of edges for turn restrictions
      * @returns the iterator of the path
      */
-    pthIt find_restriction(pgrouting::trsp::Rule &rule);
-    bool has_restriction(pgrouting::trsp::Rule &rule);
+    ConstpthIt find_restriction(const pgrouting::trsp::Rule &rule) const;
+    bool has_restriction(const pgrouting::trsp::Rule &rule) const;
+    Path inf_cost_on_restriction(const pgrouting::trsp::Rule &rule);
 
     Path_t set_data(
             int64_t d_from,
@@ -132,6 +133,10 @@ class Path {
             size_t &sequence) const;
 
     void get_pg_ksp_path(
+            General_path_element_t **ret_path,
+            size_t &sequence, int routeId) const;
+
+    void get_pg_turn_restricted_path(
             General_path_element_t **ret_path,
             size_t &sequence, int routeId) const;
 
