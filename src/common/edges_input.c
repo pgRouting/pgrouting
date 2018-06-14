@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
 #include <math.h>
+#include <float.h>
 #include <limits.h>
 
 static
