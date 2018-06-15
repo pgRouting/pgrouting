@@ -36,21 +36,21 @@ SELECT throws_ok(
 PREPARE all_return AS
 SELECT
     'integer'::text AS t1,
-    'integer'::text AS t2,
+    'bigint'::text AS t2,
     'bigint'::text AS t3,
     'bigint'::text AS t4,
-    'bigint'::text AS t5,
+    'double precision'::text AS t5,
     'double precision'::text AS t6,
     'double precision'::text AS t7;
 
 PREPARE q1 AS
 SELECT pg_typeof(seq)::text AS t1,
-       pg_typeof(prim_tree)::text AS t2,
-       pg_typeof(start_node)::text AS t3,
-       pg_typeof(end_node)::text AS t4,
-       pg_typeof(edge)::text AS t5,
-       pg_typeof(cost)::text AS t6,
-       pg_typeof(agg_cost)::text AS t7
+       pg_typeof(root_vertex)::text AS t2,
+       pg_typeof(node)::text AS t3,
+       pg_typeof(edge)::text AS t4,
+       pg_typeof(cost)::text AS t5,
+       pg_typeof(agg_cost)::text AS t6,
+       pg_typeof(tree_cost)::text AS t7
     FROM (
         SELECT * FROM pgr_prim(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -60,12 +60,12 @@ SELECT pg_typeof(seq)::text AS t1,
 
 PREPARE q2 AS
 SELECT pg_typeof(seq)::text AS t1,
-       pg_typeof(prim_tree)::text AS t2,
-       pg_typeof(start_node)::text AS t3,
-       pg_typeof(end_node)::text AS t4,
-       pg_typeof(edge)::text AS t5,
-       pg_typeof(cost)::text AS t6,
-       pg_typeof(agg_cost)::text AS t7
+       pg_typeof(root_vertex)::text AS t2,
+       pg_typeof(node)::text AS t3,
+       pg_typeof(edge)::text AS t4,
+       pg_typeof(cost)::text AS t5,
+       pg_typeof(agg_cost)::text AS t6,
+       pg_typeof(tree_cost)::text AS t7
     FROM (
         SELECT * FROM pgr_prim(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table'

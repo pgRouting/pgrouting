@@ -45,15 +45,19 @@ The main Characteristics are:
 
   - Process is done only on edges with positive costs.
  
-  - It's implementation is on only undirected graph.
+  - It's implementation is only on undirected graph.
   
   - Span start from chosen root_vertex resulting subgraph.
 
-    - Default value of root_vertex is `-1` then result is minimun spannig tree of disconnected graph.
+    - When root vertex is not given then result is minimun spanning tree of disconnected graph.
    
   - Values are returned when there is a minimum spanning tree.
 
     - When there is no edge in graph then EMPTY SET is return.
+
+  - The minimum spanning tree is same for any root vertex. 
+
+  - It does not produce correct results on graphs with parallel edges.
   
   - Running time: :math:`O(E*log V)`
 
@@ -69,21 +73,36 @@ Signatures
     pgr_prim(edges_sql)
     pgr_prim(edges_sql, root_vertex)
 
-    RETURNS SET OF (seq, prim_tree, start_node, end_node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) 
        or EMPTY SET
 
 The signature is for a **undirected** graph.
 
+pgr_prim without root vertex
+.......................................
 :Example:
 
-Here root_vertex is `-1`. So, result is MST of disconnected graph.     
+.. code-block:: none
+
+    pgr_prim(TEXT edges_sql);
+    RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPTY SET
+
+When root vertex is not given then result is MST of disconnected graph.     
 
 .. literalinclude:: doc-pgr_prim.queries
    :start-after: -- q1
    :end-before: -- q2
 
 
-:Example: Additional example
+pgr_prim with root vertex
+.......................................
+
+:Example: 
+
+.. code-block:: none
+
+    pgr_prim(TEXT edges_sql, BIGINT root_vertex);
+    RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPTY SET
 
 Results is subgraph which contain root_vertex.
 
@@ -126,32 +145,33 @@ Where:
 Description of the parameters of the signatures
 ...............................................................................
 
-=================== ====================== ========= =========================================
+=================== ====================== ========= =================================================
 Parameter           Type                   Default   Description
-=================== ====================== ========= =========================================
+=================== ====================== ========= =================================================
 **edges_sql**       ``TEXT``                         SQL query as described above.
-**root_vertex**     ``BIGINT``              -1       Root vertex from where spanning of tree start.
+**root_vertex**     ``BIGINT``                       Root vertex from where spanning of tree start and 
+                                                     resulting in subgraph.
 
-                                                     - When root vertx is -1 then result is MST of disconnected graph.
-=================== ====================== ========= =========================================
+                                                     - In the absence of root vertex the result is 
+                                                       MST of disconnected graph.
+=================== ====================== ========= =================================================
 
 Description of the return values for prim algorithms
 .............................................................................................................................
 
-Returns set of ``(seq, prim_tree, start_node, end_node, edge, cost, agg_cost)``
+Returns set of ``(seq, root_vertex, node, edge, cost, agg_cost, tree_cost)``
 
-============== =========== =================================================
-Column         Type        Description
-============== =========== =================================================
-**seq**        ``INT``     Sequential value starting from **1**.
-**prim_tree**  ``BIGINT``  It represent **subgraph** in disconnected graph.
-**start_node** ``BIGINT``  Identifier of the starting vertex of spanning tree.
-**end_node**   ``BIGINT``  Identifier of the ending vertex of spanning tree. `-1` for the root vertex.
-**edge**       ``BIGINT``  Identifier of the edge used to go from start_node to end_node or vice-versa. `-1` for the root vertex.
-**cost**       ``FLOAT``   Cost to traverse from start_node using edge to the end_node.
-**agg_cost**   ``FLOAT``   Aggregate cost of edges that is covered in spanning.
-
-============== =========== =================================================
+===============  =========== ====================================================
+Column           Type        Description
+===============  =========== ====================================================
+**seq**          ``INT``     Sequential value starting from **1**.
+**root_vertex**  ``BIGINT``  Root vertex from where spanning of tree start.
+**node**         ``BIGINT``  Identifier of the node in spanning tree.
+**edge**         ``BIGINT``  Identifier of the edge used to go to node.
+**cost**         ``FLOAT``   Cost to traverse of edge to the node.
+**agg_cost**     ``FLOAT``   Aggregate cost from node to root_vertex.
+**tree_cost**    ``FLOAT``   Aggregate cost of edges that is covered in spanning.
+===============  =========== ====================================================
  
 See Also
 -------------------------------------------------------------------------------
