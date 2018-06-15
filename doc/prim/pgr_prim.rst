@@ -56,6 +56,8 @@ The main Characteristics are:
     - When there is no edge in graph then EMPTY SET is return.
 
   - The minimum spanning tree is same for any root vertex. 
+
+  - It does not produce correct results on graphs with parallel edges.
   
   - Running time: :math:`O(E*log V)`
 
