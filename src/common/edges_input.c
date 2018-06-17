@@ -29,6 +29,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
+#include <math.h>
+#include <float.h>
+#include <limits.h>
 
 static
 void fetch_basic_edge(
@@ -88,6 +91,12 @@ void fetch_edge(
     } else {
         edge->reverse_cost = default_rcost;
     }
+
+    edge->cost = isinf(edge->cost)?
+        DBL_MAX : edge->cost;
+
+    edge->reverse_cost = isinf(edge->reverse_cost)?
+        DBL_MAX : edge->reverse_cost;
 
     *valid_edges = edge->cost < 0? *valid_edges: *valid_edges + 1;
     *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;

@@ -27,6 +27,7 @@ along with this program; if not, write to the Free Software
 #include <iostream>
 #include <algorithm>
 #include <utility>
+#include <cmath>
 
 #include "c_types/general_path_element_t.h"
 #include "cpp_common/pgr_assert.h"
@@ -135,7 +136,7 @@ void Path::appendPath(const Path &o_path) {
 
 
 /*!
- 
+
     Path: 2 -> 9
     seq   node    edge    cost    agg_cost
     0     2       4       1       0
@@ -192,9 +193,14 @@ void Path::generate_postgres_data(
     int i = 1;
     double total_cost = 0;
     for (const auto e : path) {
+        auto agg_cost = std::fabs(e.agg_cost - std::numeric_limits<double>::max()) < 1?
+            std::numeric_limits<double>::infinity() : e.agg_cost;
+        auto cost = std::fabs(e.cost - std::numeric_limits<double>::max()) < 1?
+            std::numeric_limits<double>::infinity() : e.cost;
+
         (*postgres_data)[sequence] =
-        {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
-        total_cost += e.cost;
+        {i, start_id(), end_id(), e.node, e.edge, cost, agg_cost};
+        total_cost += cost;
         ++i;
         ++sequence;
     }
