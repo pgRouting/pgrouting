@@ -240,10 +240,11 @@ Parameter           Type                   Default   Description
 .. pgr_dijkstra_via_parameters_end
 
 
-.. xy_edges_sql_start
 
-Description of the edges_sql query for astar like functions
-...............................................................................
+edges_sql query for :doc:`aStar-family` and :doc:`aStar-family` functions
+.............................................................................................
+
+.. xy_edges_sql_start
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -374,10 +375,11 @@ Column         Type       Description
 
 .. return_path_end
 
-.. return_cost_start
 
-Description of the return values for a Cost function
+Description of the return values for a :doc:`costMatrix-category` function
 ...............................................................................
+
+.. return_cost_start
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 

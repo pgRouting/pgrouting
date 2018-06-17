@@ -12,7 +12,7 @@
 pgr_aStarCost
 ===============================================================================
 
-Name
+Synopsis
 -------------------------------------------------------------------------------
 
 ``pgr_aStarCost`` — Returns the aggregate cost shortest path using :doc:`pgr_aStar` algorithm.
@@ -24,22 +24,56 @@ Name
 
 .. rubric:: Availability: 2.4.0
 
+
+.. rubric:: Characteristics
+
+The main Characteristics are:
+
+* Using internaly the :doc:`pgr_aStar` algorithm
+* Default kind of graph is **directed**  when
+
+  * ``directed`` flag is missing.
+  * ``directed`` flag is set to true
+
+* Ordering is:
+
+  *  first by ``start_vid``
+  *  then by ``end_vid``
+
+* Let :math:`v` and :math:`u` are nodes on the graph:
+
+  * when there is no path from :math:`v` to :math:`u`:
+
+    * no corresponding row is returned
+    * ``agg_cost`` from :math:`v` to :math:`u` is :math:`\infty`
+
+  * when :math:`v = u` then
+
+    * no corresponding row is returned
+    * ``agg_cost`` from `v` to `u` is :math:`0`
+
+* The result is equivalent to the union of the results of the `pgr_aStarCost(` `One to One`_ `)` on the:
+
+  * `One to Many`_
+  * `Many to One`_
+  * `Many to Many`_
+
+
+
+
 Signature Summary
 -----------------
 
 .. code-block:: none
 
     pgr_aStarCost(edges_sql, start_vid, end_vid)
-    pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
-    pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon)
-    pgr_aStarCost(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon)
-    pgr_aStarCost(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon)
+    pgr_aStarCost(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_aStarCost(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_aStarCost(edges_sql, starts_vid, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_aStarCost(edges_sql, starts_vid, end_vids [, directed, heuristic, factor, epsilon])
 
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-
-Signatures
------------------
 
 
 .. index::
@@ -68,10 +102,10 @@ One to One
 ...............................................................................
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+    pgr_aStarCost(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-:Example: Setting a Heuristic
+:Example: Using heuristic `2`
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q2
@@ -87,20 +121,10 @@ One to many
 
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-This signature finds a path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform a one to one `pgr_astar`
-where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
-
-- The result is equivalent to the union of the results of the one to one `pgr_astar`.
-- The extra ``end_vid`` column in the result is used to distinguish to which path it belongs.
-
-:Example:
+:Example: From vertex `2` to vertices `3` and `12` using heuristic `2`
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q3
@@ -114,20 +138,10 @@ Many to One
 
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform several one to one `pgr_aStar`
-where the ending vertex is fixed.
-
-- The result is the union of the results of the one to one `pgr_aStar`.
-- The extra ``start_vid`` column  in the result is used to distinguish to which path it belongs.
-
-:Example:
+:Example: From vertices `2` and `7` to vertices `3` and `12` using heuristic `0`
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q4
@@ -143,20 +157,8 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
-
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
-for all ``start_vids``.
-
-- The result is the union of the results of the one to one `pgr_dijkstra`.
-- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
-
-The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -167,26 +169,13 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 
 
 
-
-
-Description of the Signatures
---------------------------------
-
-..
-    description of the edges_sql queries
-
-.. include:: pgRouting-concepts.rst
-    :start-after: xy_edges_sql_start
-    :end-before: xy_edges_sql_end
-
-
-Description of the parameters of the signatures
-.................................................
+Parameters
+--------------------------------------------------------
 
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as described above.
+**edges_sql**    ``TEXT``               `edges_sql`_ inner query.
 **start_vid**    ``ANY-INTEGER``        Starting vertex identifier.
 **end_vid**      ``ANY-INTEGER``        Ending vertex identifier.
 **directed**     ``BOOLEAN``            - Optional.
@@ -196,18 +185,30 @@ Parameter        Type                   Description
 
 **heuristic**    ``INTEGER``            (optional). Heuristic number. Current valid values 0~5. Default ``5``
 
-                                          - 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
-                                          - 1: h(v) abs(max(dx, dy))
-                                          - 2: h(v) abs(min(dx, dy))
-                                          - 3: h(v) = dx * dx + dy * dy
-                                          - 4: h(v) = sqrt(dx * dx + dy * dy)
-                                          - 5: h(v) = abs(dx) + abs(dy)
+                                        - 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
+                                        - 1: h(v) abs(max(dx, dy))
+                                        - 2: h(v) abs(min(dx, dy))
+                                        - 3: h(v) = dx * dx + dy * dy
+                                        - 4: h(v) = sqrt(dx * dx + dy * dy)
+                                        - 5: h(v) = abs(dx) + abs(dy)
 
 **factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``. See :ref:`astar_factor`
 **epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
 ================ ====================== =================================================
 
 
+Inner query
+--------------------------------------------------------
+
+edges_sql
+...........................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: xy_edges_sql_start
+    :end-before: xy_edges_sql_end
+
+Result Columns
+--------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
@@ -222,9 +223,7 @@ See Also
 * :doc:`aStar-family`
 * :doc:`cost-category`
 * :doc:`costMatrix-category`
-* :doc:`sampledata` network.
-* http://www.boost.org/libs/graph/doc/astar_search.html
-* http://en.wikipedia.org/wiki/A*_search_algorithm
+* Examples use :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
