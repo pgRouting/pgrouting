@@ -259,7 +259,7 @@ Parameter        Type                   Description
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`astar`
+* :doc:`aStar-family`
 * :doc:`sampledata`
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm

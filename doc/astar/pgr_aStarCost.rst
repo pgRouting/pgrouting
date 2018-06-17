@@ -9,13 +9,13 @@
 
 .. _pgr_aStarCost:
 
-pgr_aStarCost -- proposed
+pgr_aStarCost
 ===============================================================================
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_aStarCost`` — Returns the aggregate cost shortest path using :ref:`astar` algorithm.
+``pgr_aStarCost`` — Returns the aggregate cost shortest path using :doc:`pgr_aStar` algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org//libs/graph/doc/astar_search.html
@@ -27,17 +27,13 @@ Name
 Signature Summary
 -----------------
 
-.. include:: proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vid, end_vid) -- Proposed
-    pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
-    pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
-    pgr_aStarCost(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
-    pgr_aStarCost(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, start_vid, end_vid)
+    pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+    pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon)
+    pgr_aStarCost(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon)
+    pgr_aStarCost(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon)
 
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
@@ -47,7 +43,7 @@ Signatures
 
 
 .. index::
-    single: aStarCost(Minimal Signature) -- Proposed
+    single: aStarCost(Minimal Signature)
 
 Minimal Signature
 ...............................................................................
@@ -66,7 +62,7 @@ Minimal Signature
 
 
 .. index::
-    single: aStarCost(One to One) -- Proposed
+    single: aStarCost(One to One)
 
 One to One
 ...............................................................................
@@ -84,7 +80,7 @@ One to One
 
 
 .. index::
-    single: aStarCost(One to Many) -- Proposed
+    single: aStarCost(One to Many)
 
 One to many
 .......................................
@@ -111,7 +107,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
    :end-before: --q4
 
 .. index::
-    single: aStarCost(Many to One) -- Proposed
+    single: aStarCost(Many to One)
 
 Many to One
 .......................................
@@ -140,7 +136,7 @@ where the ending vertex is fixed.
 
 
 .. index::
-    single: aStarCost(Many to Many) -- Proposed
+    single: aStarCost(Many to Many)
 
 Many to Many
 .......................................
@@ -223,7 +219,9 @@ Parameter        Type                   Description
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`astar`.
+* :doc:`aStar-family`
+* :doc:`cost-category`
+* :doc:`costMatrix-category`
 * :doc:`sampledata` network.
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm

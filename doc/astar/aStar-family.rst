@@ -16,9 +16,9 @@ The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a h
 
 .. index from here
 
-- :ref:`pgr_aStar` - A* algorithm for the shortest path.
-- :ref:`pgr_aStarCost` - Get the aggregate cost of the shortest paths.
-- :ref:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths.
+- :doc:`pgr_aStar` - A* algorithm for the shortest path.
+- :doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths.
+- :doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths.
 
 .. index to here
 
@@ -97,9 +97,9 @@ latitude  conversion                                  Factor
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_aStar`
-* :ref:`pgr_aStarCost`
-* :ref:`pgr_aStarCostMatrix`
+* :doc:`pgr_aStar`
+* :doc:`pgr_aStarCost`
+* :doc:`pgr_aStarCostMatrix`
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
 

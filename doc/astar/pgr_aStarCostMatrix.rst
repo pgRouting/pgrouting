@@ -7,22 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_aStarCostMatrix:
-
-pgr_aStarCostMatrix - proposed
+pgr_aStarCostMatrix
 ===============================================================================
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_aStar`.
-
-
-.. include:: proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
-
+``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -51,7 +42,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: aStarCostMatrix(Minimal Use) - Proposed
+    single: aStarCostMatrix(Minimal Use)
 
 Minimal Signature
 ...............................................................................
@@ -74,7 +65,7 @@ The minimal signature:
 
 
 .. index::
-    single: aStarCostMatrix(Complete Signature) - Proposed
+    single: aStarCostMatrix(Complete Signature)
 
 Complete Signature
 ...............................................................................
@@ -149,9 +140,9 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`astar`
-* :ref:`costMatrix`
-* :ref:`tsp`
+* :doc:`aStar-family`
+* :doc:`costMatrix-category`
+* :doc:`TSP-family`
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
