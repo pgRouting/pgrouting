@@ -33,16 +33,15 @@ Characteristics
 -------------------------------------------------------------------------------
 
 The main Characteristics are:
-  - Process is done only on edges with positive costs.
+  - Process is valid for edges with both positive and negative edge weights.
   - Values are returned when there is a path.
 
-    - When the starting vertex and ending vertex are the same, there is no path.
+    - When the start vertex and the end vertex are the same, there is no path. The agg_cost would be 0.
 
-      - The `agg_cost` the non included values `(v, v)` is `0`
+    - When the start vertex and the end vertex are different, and there exists a path between them without having a ‘negative cycle’. The agg_cost would be some finite value denoting the shortest distance between them.
+    - When the start vertex and the end vertex are different, and there exists a path between them, but it contains a ‘negative cycle’. In such case, agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost can’t be defined for them.
 
-    - When the starting vertex and ending vertex are the different and there is no path:
-
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
+    - When the start vertex and the end vertex are different, and there is no path. The agg_cost is :math:`\infty`.
 
   - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
 
@@ -51,7 +50,7 @@ The main Characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(| start\_vids | * ( V * E))`
 
 
 Signature Summary
@@ -59,7 +58,11 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_dijkstra(edges_sql, start_vid,  end_vid)
+    pgr_bellman_ford(edges_sql, start_vid,  end_vid)
+    pgr_bellman_ford(edges_sql, start_vid,  end_vid,  directed:=true)
+    pgr_bellman_ford(edges_sql, start_vid,  end_vids, directed:=true)
+    pgr_bellman_ford(edges_sql, start_vids, end_vid,  directed:=true)
+    pgr_bellman_ford(edges_sql, start_vids, end_vids, directed:=true)
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
         OR EMPTY SET
@@ -76,10 +79,10 @@ Minimal signature
 
 .. code-block:: none
 
-    pgr_bellman_ford(edges_sql, start_vid, end_vid)
+    pgr_bellman_ford(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
 
 :Example:
 
@@ -89,14 +92,15 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 
 .. index::
-    single: bellman_ford(Complete signature)
+    single: bellman_ford(One to One)
 
-Complete Signature
+pgr_bellman_ford One to One
 .......................................
 
 .. code-block:: none
 
-    pgr_bellman_ford(edges_sql, start_vid, end_vid, directed);
+    pgr_bellman_ford(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
+        BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
@@ -110,6 +114,96 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
    :end-before: -- q3
 
 
+.. index::
+    single: bellman_ford(One to Many)
+
+pgr_bellman_ford One to many
+.......................................
+
+.. code-block:: none
+
+    pgr_bellman_ford(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
+        BOOLEAN directed:=true);
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform a one to one `pgr_bellman_ford`
+where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
+
+  - The result is equivalent to the union of the results of the one to one `pgr_bellman_ford`.
+  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-pgr_bellman_ford.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+
+
+
+.. index::
+    single: bellman_ford(Many to One)
+
+pgr_bellman_ford Many to One
+.......................................
+
+.. code-block:: none
+
+    pgr_bellman_ford(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
+        BOOLEAN directed:=true);
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to one `pgr_bellman_ford`
+where the ending vertex is fixed.
+
+  - The result is the union of the results of the one to one `pgr_bellman_ford`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-pgr_bellman_ford.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+
+
+.. index::
+    single: bellman_ford(Many to Many)
+
+pgr_bellman_ford Many to Many
+.......................................
+
+.. code-block:: none
+
+    pgr_bellman_ford(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
+        BOOLEAN directed:=true);
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to Many `pgr_bellman_ford`
+for all ``start_vids``.
+
+  - The result is the union of the results of the one to one `pgr_bellman_ford`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-pgr_bellman_ford.queries
+   :start-after: -- q5
+   :end-before: -- q6
 
 Description of the Signatures
 -------------------------------------------------------------------------------
@@ -118,13 +212,31 @@ Description of the Signatures
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+
+.. pgr_bellman_ford_parameters_start
+
+Description of the parameters of the signatures
+...............................................................................
+
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**sql**        ``TEXT``                    SQL query as described above.
+**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                           - When ``false`` the graph is considered as `Undirected`.
+============== ================== ======== =================================================
+
+.. pgr_bellman_ford_parameters_end
+
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_start
     :end-before: return_path_end
+
 
 
 See Also
