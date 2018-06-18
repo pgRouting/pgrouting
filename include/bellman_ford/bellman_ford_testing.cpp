@@ -15,22 +15,8 @@ struct edge_writer
 		: m_g(g), m_parent(p)
 	{
 	}
-
-	template < typename Edge >
-	void operator() (std::ostream & out, const Edge & e) const
-	{
-		out << "[label=\"" << get(edge_weight, m_g, e) << "\"";
-		typename graph_traits < Graph >::vertex_descriptor
-			u = source(e, m_g), v = target(e, m_g);
-		if (m_parent[v] == u)
-			out << ", color=\"black\"";
-		else
-			out << ", color=\"grey\"";
-		out << "]";
-	}
-	const Graph & m_g;
-	ParentMap m_parent;
 };
+
 template < typename Graph, typename Parent >
 edge_writer < Graph, Parent >
 make_edge_writer(const Graph & g, const Parent & p)
@@ -54,14 +40,9 @@ int main()
 
 	typedef adjacency_list < vecS, vecS, directedS,
 		no_property, EdgeProperties> Graph;
-#if defined(BOOST_MSVC) && BOOST_MSVC <= 1300
-	// VC++ can't handle the iterator constructor
-	Graph g(N);
-	for (std::size_t j = 0; j < n_edges; ++j)
-		add_edge(edge_array[j].first, edge_array[j].second, g);
-#else
+
 	Graph g(edge_array, edge_array + n_edges, N);
-#endif
+
 	graph_traits < Graph >::edge_iterator ei, ei_end;
 	property_map<Graph, int EdgeProperties::*>::type
 		weight_pmap = get(&EdgeProperties::weight, g);
@@ -75,30 +56,23 @@ int main()
 		parent[i] = i;
 	distance[a] = 0;
 
-#if defined(BOOST_MSVC) && BOOST_MSVC <= 1300
-	bool r = bellman_ford_shortest_paths
-	(g, int(N), weight_pmap, &parent[0], &distance[0],
-		closed_plus<int>(), std::less<int>(), default_bellman_visitor());
-#else
-	for (int j = 1; j <= N+1; j++)
-	{
-		bool r = bellman_ford_shortest_paths
-		(g, j, weight_map(weight_pmap).distance_map(&distance[0]).
+
+
+		bool r = bellman_ford_shortest_paths(g, int(N), weight_map(weight_pmap).distance_map(&distance[0]).
 			predecessor_map(&parent[0]).root_vertex(0));
-#endif
-		std::cout << "Iteration == " << int(j) << "\n";
+
+		
 		if (r)
 			for (i = 0; i < N; ++i)
 				std::cout << name[i] << ": " << std::setw(3) << distance[i]
 				<< " " << name[parent[i]] << std::endl;
 		else
 		{
-			std::cout << "negative cycle" << std::endl;
+			std::cout << "negative weight cycle" << std::endl;
 			for (i = 0; i < N; ++i)
 				std::cout << name[i] << ": " << std::setw(3) << distance[i]
 				<< " " << name[parent[i]] << std::endl;
 		}
-	}
 	
 
 	while (1)
