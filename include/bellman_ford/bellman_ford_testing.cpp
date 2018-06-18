@@ -50,7 +50,7 @@ int main()
 	const int n_edges = 8;
 	E edge_array[] = { E(a, b), E(a, c), E(b, c), E(b, d),
 		E(b, e), E(d, c), E(d, b), E(e, d) };
-	int weight[n_edges] = { -1, 4, 3, 2, 2, 5, 1, -3 };
+	int weight[n_edges] = { -1, 4, 3, 2, 2, 5, 1, -4 };
 
 	typedef adjacency_list < vecS, vecS, directedS,
 		no_property, EdgeProperties> Graph;
@@ -86,7 +86,7 @@ int main()
 		(g, j, weight_map(weight_pmap).distance_map(&distance[0]).
 			predecessor_map(&parent[0]).root_vertex(0));
 #endif
-		std::cout << "j== " << int(j) << "\n";
+		std::cout << "Iteration == " << int(j) << "\n";
 		if (r)
 			for (i = 0; i < N; ++i)
 				std::cout << name[i] << ": " << std::setw(3) << distance[i]
