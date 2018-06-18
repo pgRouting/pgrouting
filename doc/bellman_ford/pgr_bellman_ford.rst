@@ -86,7 +86,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 :Example:
 
-.. literalinclude:: doc-pgrBellmanFord.queries
+.. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -109,7 +109,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 
 :Example:
 
-.. literalinclude:: doc-pgrBellmanFord.queries
+.. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -138,7 +138,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 :Example:
 
-.. literalinclude:: doc-pgrBellmanFord.queries
+.. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -169,7 +169,7 @@ where the ending vertex is fixed.
 
 :Example:
 
-.. literalinclude:: doc-pgrBellmanFord.queries
+.. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -201,7 +201,7 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 
 :Example:
 
-.. literalinclude:: doc-pgrBellmanFord.queries
+.. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q5
    :end-before: -- q6
 
