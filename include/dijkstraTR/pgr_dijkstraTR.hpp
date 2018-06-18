@@ -69,7 +69,7 @@ class Pgr_dijkstraTR {
          m_strict = strict;
          m_only_cost = only_cost;
 
-         return Yen(graph, source, target, 1, false);
+         return Yen(graph, source, target, 10, true);
      }
 
 
@@ -329,6 +329,7 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
 			 if (spurPath.size() > 0) {
 				 rootPath.appendPath(spurPath);
 				 m_Heap.insert(rootPath);
+                 add_to_solution_set(rootPath);
 			 }
 
 			 graph.restore_graph();
