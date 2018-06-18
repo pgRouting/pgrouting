@@ -1,7 +1,7 @@
 BEGIN;
 BEGIN
 -- q1
-SELECT * FROM pgrBellmanFord(
+SELECT * FROM pgr_bellmanFord(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3
 );
@@ -16,7 +16,7 @@ SELECT * FROM pgrBellmanFord(
 (6 rows)
 
 -- q2
-SELECT * FROM pgrBellmanFord(
+SELECT * FROM pgr_bellmanFord(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
     FALSE
@@ -28,7 +28,7 @@ SELECT * FROM pgrBellmanFord(
 (2 rows)
 
 -- q3
-SELECT * FROM pgrBellmanFord(
+SELECT * FROM pgr_bellmanFord(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3,5],
     FALSE
@@ -44,7 +44,7 @@ SELECT * FROM pgrBellmanFord(
 (6 rows)
 
 -- q4
-SELECT * FROM pgrBellmanFord(
+SELECT * FROM pgr_bellmanFord(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2,11], 5
 );
@@ -60,7 +60,7 @@ SELECT * FROM pgrBellmanFord(
 (7 rows)
 
 -- q5
-SELECT * FROM pgrBellmanFord(
+SELECT * FROM pgr_bellmanFord(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2,11], ARRAY[3,5],
     FALSE
