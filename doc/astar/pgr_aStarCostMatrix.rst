@@ -20,9 +20,6 @@ Synopsis
 
    Boost Graph Inside
 
-.. rubric:: Availability
-
-* New on version 2.4.0
 
 .. rubric:: Characteristics
 
@@ -45,6 +42,9 @@ The main Characteristics are:
 
 * When the graph is **undirected** the cost matrix is symmetric
 
+.. rubric:: Availability
+
+* New on version 2.4.0
 
 Signature Summary
 -------------------------------------------------------------------------------

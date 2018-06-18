@@ -20,9 +20,6 @@ Synopsis
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.4.0
-
-
 .. rubric:: Characteristics
 
 .. include:: aStar-family.rst
@@ -35,6 +32,9 @@ Synopsis
   * `pgr_aStarCost(` `Many to One`_ `)`
   * `pgr_aStarCost(` `Many to Many`_ `)`
 
+.. rubric::
+
+* New in v2.4.0
 
 
 Signature Summary
