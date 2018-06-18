@@ -30,7 +30,46 @@ The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a h
     pgr_aStarCostMatrix
 
 
-The problem definition (Advanced documentation)
+General Information
+--------------------------------------------------------------------------------
+
+The main Characteristics are:
+
+.. astar general info start
+
+* Default kind of graph is **directed**  when
+
+  * ``directed`` flag is missing.
+  * ``directed`` flag is set to true
+
+* Unless specified otherwise, ordering is:
+
+  *  first by ``start_vid`` (if exists)
+  *  then by ``end_vid``
+
+* Values are returned when there is a path
+* Let :math:`v` and :math:`u` be nodes on the graph:
+
+  * If there is no path from :math:`v` to :math:`u`:
+
+    * no corresponding row is returned
+    * ``agg_cost`` from :math:`v` to :math:`u` is :math:`\infty`
+
+  * There is no path when :math:`v = u` therefore
+
+    * no corresponding row is returned
+    * ``agg_cost`` from `v` to `u` is :math:`0`
+
+* Edges with negative costs are not included in the graph.
+* When (x,y) coordinates for the same vertex identifier differ:
+
+  * A random selection of the vertex's (x,y) coordinates is used.
+
+* Running time: :math:`O((E + V) * \log V)`
+
+.. astar general info end
+
+Advanced documentation
 -----------------------------------------------
 
 The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic, that is an estimation of the remaining cost from the vertex to the goal,
