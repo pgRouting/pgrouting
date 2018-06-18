@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --Many to Many
 -------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_bellman_ford(
+CREATE OR REPLACE FUNCTION _pgrBellmanFord(
      TEXT,
      ANYARRAY,
      ANYARRAY,

@@ -7,12 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_bellman_ford:
+.. _pgrBellmanFord:
 
-pgr_bellman_ford
+pgrBellmanFord
 ===============================================================================
 
-``pgr_bellman_ford`` — Returns the shortest path(s) using Bellman-Ford algorithm.
+``pgrBellmanFord`` — Returns the shortest path(s) using Bellman-Ford algorithm.
 In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
@@ -58,11 +58,11 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_bellman_ford(edges_sql, start_vid,  end_vid)
-    pgr_bellman_ford(edges_sql, start_vid,  end_vid,  directed:=true)
-    pgr_bellman_ford(edges_sql, start_vid,  end_vids, directed:=true)
-    pgr_bellman_ford(edges_sql, start_vids, end_vid,  directed:=true)
-    pgr_bellman_ford(edges_sql, start_vids, end_vids, directed:=true)
+    pgrBellmanFord(edges_sql, start_vid,  end_vid)
+    pgrBellmanFord(edges_sql, start_vid,  end_vid,  directed:=true)
+    pgrBellmanFord(edges_sql, start_vid,  end_vids, directed:=true)
+    pgrBellmanFord(edges_sql, start_vids, end_vid,  directed:=true)
+    pgrBellmanFord(edges_sql, start_vids, end_vids, directed:=true)
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
         OR EMPTY SET
@@ -79,14 +79,14 @@ Minimal signature
 
 .. code-block:: none
 
-    pgr_bellman_ford(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
+    pgrBellmanFord(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
 
 :Example:
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgrBellmanFord.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -94,12 +94,12 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 .. index::
     single: bellman_ford(One to One)
 
-pgr_bellman_ford One to One
+pgrBellmanFord One to One
 .......................................
 
 .. code-block:: none
 
-    pgr_bellman_ford(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
+    pgrBellmanFord(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
         BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
@@ -109,7 +109,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 
 :Example:
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgrBellmanFord.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -117,12 +117,12 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 .. index::
     single: bellman_ford(One to Many)
 
-pgr_bellman_ford One to many
+pgrBellmanFord One to many
 .......................................
 
 .. code-block:: none
 
-    pgr_bellman_ford(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
+    pgrBellmanFord(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
@@ -130,15 +130,15 @@ This signature finds the shortest path from one ``start_vid`` to each ``end_vid`
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-Using this signature, will load once the graph and perform a one to one `pgr_bellman_ford`
+Using this signature, will load once the graph and perform a one to one `pgrBellmanFord`
 where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
-  - The result is equivalent to the union of the results of the one to one `pgr_bellman_ford`.
+  - The result is equivalent to the union of the results of the one to one `pgrBellmanFord`.
   - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgrBellmanFord.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -148,12 +148,12 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 .. index::
     single: bellman_ford(Many to One)
 
-pgr_bellman_ford Many to One
+pgrBellmanFord Many to One
 .......................................
 
 .. code-block:: none
 
-    pgr_bellman_ford(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
+    pgrBellmanFord(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
         BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 
@@ -161,15 +161,15 @@ This signature finds the shortest path from each ``start_vid`` in  ``start_vids`
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-Using this signature, will load once the graph and perform several one to one `pgr_bellman_ford`
+Using this signature, will load once the graph and perform several one to one `pgrBellmanFord`
 where the ending vertex is fixed.
 
-  - The result is the union of the results of the one to one `pgr_bellman_ford`.
+  - The result is the union of the results of the one to one `pgrBellmanFord`.
   - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgrBellmanFord.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -178,12 +178,12 @@ where the ending vertex is fixed.
 .. index::
     single: bellman_ford(Many to Many)
 
-pgr_bellman_ford Many to Many
+pgrBellmanFord Many to Many
 .......................................
 
 .. code-block:: none
 
-    pgr_bellman_ford(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
+    pgrBellmanFord(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
@@ -191,17 +191,17 @@ This signature finds the shortest path from each ``start_vid`` in  ``start_vids`
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-Using this signature, will load once the graph and perform several one to Many `pgr_bellman_ford`
+Using this signature, will load once the graph and perform several one to Many `pgrBellmanFord`
 for all ``start_vids``.
 
-  - The result is the union of the results of the one to one `pgr_bellman_ford`.
+  - The result is the union of the results of the one to one `pgrBellmanFord`.
   - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgrBellmanFord.queries
    :start-after: -- q5
    :end-before: -- q6
 
@@ -213,7 +213,7 @@ Description of the Signatures
     :end-before: basic_edges_sql_end
 
 
-.. pgr_bellman_ford_parameters_start
+.. pgrBellmanFord_parameters_start
 
 Description of the parameters of the signatures
 ...............................................................................
@@ -230,7 +230,7 @@ Column         Type               Default     Description
                                            - When ``false`` the graph is considered as `Undirected`.
 ============== ================== ======== =================================================
 
-.. pgr_bellman_ford_parameters_end
+.. pgrBellmanFord_parameters_end
 
 
 .. include:: pgRouting-concepts.rst
