@@ -74,7 +74,7 @@ Signature Summary
 Optional parameters are `named parameters` and have a default value.
 
 .. index::
-    single: aStar(Minimal Use) -- New Signature
+    single: aStar(Minimal Use)
 
 
 Minimal Signature
@@ -94,7 +94,7 @@ Minimal Signature
 
 
 .. index::
-    single: aStar(One to One) -- New Signature
+    single: aStar(One to One)
 
 
 One to One
@@ -178,11 +178,27 @@ Parameters
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
-**edges_sql**    ``TEXT``               edges_sql`_ inner query.
-**start_vid**    ``ANY-INTEGER``        Starting vertex identifier.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of starting vertices identifiers.
-**end_vid**      ``ANY-INTEGER``        Ending vertex identifier.
-**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of ending vertices identifiers.
+**edges_sql**    ``TEXT``               `edges_sql`_ inner query.
+**start_vid**    ``ANY-INTEGER``        Starting vertex identifier. Parameter in:
+
+                                        * `One to One`_
+                                        * `One to Many`_
+
+**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of starting vertices identifiers. Parameter in:
+
+                                        * `Many to One`_
+                                        * `Many to Many`_
+
+**end_vid**      ``ANY-INTEGER``        Ending vertex identifier. Parameter in:
+
+                                        * `One to One`_
+                                        * `Many to One`_
+
+**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of ending vertices identifiers. Parameter in:
+
+                                        * `One to Many`_
+                                        * `Many to Many`_
+
 ================ ====================== =================================================
 
 .. rubric:: Optional Parameters
@@ -223,8 +239,8 @@ Result Columns
 --------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+    :start-after: return_path_short_start
+    :end-before: return_path_short_end
 
 
 See Also

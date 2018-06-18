@@ -106,24 +106,15 @@ Parameters
 Parameter        Type                   Description
 ================ ====================== =================================================
 **edges_sql**    ``TEXT``               `edges_sql`_  inner query.
-**vids**         ``ARRAY[ANY-INTEGER]`` Array of vertices_identifiers.
-**directed**     ``BOOLEAN``            - Optional.
-
-                                          - When ``false`` the graph is considered as Undirected.
-                                          - Default is ``true`` which considers the graph as Directed.
-
-**heuristic**    ``INTEGER``            (optional). Heuristic number. Current valid values 0~5. Default ``5``
-
-                                        - 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
-                                        - 1: h(v) abs(max(dx, dy))
-                                        - 2: h(v) abs(min(dx, dy))
-                                        - 3: h(v) = dx * dx + dy * dy
-                                        - 4: h(v) = sqrt(dx * dx + dy * dy)
-                                        - 5: h(v) = abs(dx) + abs(dy)
-
-**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``.
-**epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
+**vids**         ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers.
 ================ ====================== =================================================
+
+.. rubric:: Optional Parameters
+
+.. include:: pgr_aStar.rst
+    :start-after: rubric:: Optional Parameters
+    :end-before: aStar aStarCost parameters end
+
 
 
 Inner query
