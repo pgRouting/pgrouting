@@ -112,7 +112,7 @@ Working with cost/reverse_cost as length in meters, x/y in lat/lon:
 Factor =  would depend on the location of the points:
 
 ======== ================================= ==========
-latitude  conversion                        Factor
+Latitude  Conversion                        Factor
 ======== ================================= ==========
 45       1 longitude degree is  78846.81 m   78846
  0       1 longitude degree is 111319.46 m  111319
@@ -125,7 +125,7 @@ Factor: would depend on the location of the points and on the average speed
 say 25m/s is the speed.
 
 ======== =========================================== ==========
-latitude  conversion                                  Factor
+Latitude  Conversion                                  Factor
 ======== =========================================== ==========
 45       1 longitude degree is (78846.81m)/(25m/s)   3153 s
  0       1 longitude degree is (111319.46 m)/(25m/s) 4452 s
