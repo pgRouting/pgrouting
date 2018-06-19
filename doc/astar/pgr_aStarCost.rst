@@ -32,7 +32,7 @@ Synopsis
   * `pgr_aStarCost(` `Many to One`_ `)`
   * `pgr_aStarCost(` `Many to Many`_ `)`
 
-.. rubric::
+.. rubric:: Availability
 
 * New in v2.4.0
 

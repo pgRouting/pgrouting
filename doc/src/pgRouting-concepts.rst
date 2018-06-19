@@ -133,6 +133,53 @@ to get more information about each step in the path.
 
 * :ref:`pgr_dijkstra`
 
+Group of Functions
+-------------------------------------------------------------------------------
+
+A function might have different overloads.
+Across this documentation, to indicate which overload we use the following terms:
+
+* `One to One`_
+* `One to Many`_
+* `Many to One`_
+* `Many to Many`_
+
+Depending on the overload are the parameters used, keeping consistency across
+all functions.
+
+One to One
+...............................................................................
+
+When routing from:
+
+* From **one** starting vertex
+* to **one** ending vertex
+
+One to Many
+...............................................................................
+
+When routing from:
+
+* From **one** starting vertex
+* to **many** ending vertices
+
+Many to One
+...............................................................................
+
+When routing from:
+
+* From **many** starting vertices
+* to **one** ending vertex
+
+Many to Many
+...............................................................................
+
+When routing from:
+
+* From **many** starting vertices
+* to **many** ending vertices
+
+
 
 
 .. _inner_queries:
@@ -352,8 +399,7 @@ Return columns & values
 
 There are several kinds of columns returned are depending of the function.
 
-
-Description of the return values for a path
+Return values for a path
 ...............................................................................
 
 .. return_path_short_start
@@ -366,18 +412,16 @@ Column         Type       Description
 **seq**        ``INT``    Sequential value starting from **1**.
 **path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
 **start_vid**  ``BIGINT`` Identifier of the starting vertex.
+                          Returned when multiple starting vetrices are in the query.
 
-                          * Returned when multiple starting vetrices are in the query.
-
-                            * `Many to One`_
-                            * `Many to Many`_
+                          * `Many to One`_
+                          * `Many to Many`_
 
 **end_vid**    ``BIGINT`` Identifier of the ending vertex.
+                          Returned when multiple ending vertices are in the query.
 
-                          * Returned when multiple ending vertices are in the query.
-
-                            * `One to Many`_
-                            * `Many to Many`_
+                          * `One to Many`_
+                          * `Many to Many`_
 
 **node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
 **edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
@@ -386,6 +430,10 @@ Column         Type       Description
 ============== ========== =================================================
 
 .. return_path_short_end
+
+
+Return values for multiple paths from the same source and destination
+...............................................................................
 
 .. return_path_start
 
@@ -398,18 +446,17 @@ Column         Type       Description
 **path_id**    ``INT``    Path identifier. Has value **1** for the first of a path. Used when there are multiple paths for the same ``start_vid`` to ``end_vid`` combination.
 **path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
 **start_vid**  ``BIGINT`` Identifier of the starting vertex.
+                          Returned when multiple starting vetrices are in the query.
 
-                          * Returned when multiple starting vetrices are in the query.
+                          * `Many to One`_
+                          * `Many to Many`_
 
-                            * `Many to One`_
-                            * `Many to Many`_
 
 **end_vid**    ``BIGINT`` Identifier of the ending vertex.
+                          Returned when multiple ending vertices are in the query.
 
-                          * Returned when multiple ending vertices are in the query.
-
-                            * `One to Many`_
-                            * `Many to Many`_
+                          * `One to Many`_
+                          * `Many to Many`_
 
 **node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
 **start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
