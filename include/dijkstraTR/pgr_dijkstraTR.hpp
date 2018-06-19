@@ -102,7 +102,7 @@ class Pgr_dijkstraTR : public Pgr_messages {
         pgassert(m_Heap.empty());
         pgassert(m_ResultSet.empty());
 
-        log << std::string(__PRETTY_FUNCTION__) << "\n";
+        log << std::string(__FUNCTION__) << "\n";
 
         m_strict = strict;
         m_only_cost = only_cost;
@@ -148,7 +148,7 @@ WHERE id = 10$$,
              int K,
              bool heap_paths) {
 
-        log << std::string(__PRETTY_FUNCTION__) << "\n";
+        log << std::string(__FUNCTION__) << "\n";
 
          /*
           * No path: already in destination
@@ -214,7 +214,7 @@ WHERE id = 10$$,
      }
 
      void executeYen(G &graph, int K) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
 
          curr_result_path = getFirstSolution(graph);
          add_to_solution_set(curr_result_path);
@@ -239,7 +239,7 @@ WHERE id = 10$$,
      }
 
      Path getFirstSolution(G &graph) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
          Pgr_dijkstra< G > fn_dijkstra;
          auto path = fn_dijkstra.dijkstra(graph, m_start, m_end);
 
@@ -253,7 +253,7 @@ WHERE id = 10$$,
       * empties containers
       */
      void clear() {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
          m_Heap.clear();
          m_ResultSet.clear();
          m_solutions.clear();
@@ -278,7 +278,7 @@ WHERE id = 10$$,
 #endif
 
      Path getDijkstraSolution(G& graph) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
          Pgr_dijkstra< G > fn_dijkstra;
          return  fn_dijkstra.dijkstra(graph, m_start, m_end);
      }
@@ -290,7 +290,7 @@ WHERE id = 10$$,
       * @param[in] path to add
       */
      void add_to_solution_set(const Path &path) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
          if (path.empty()) return;
          if (has_restriction(path)) return;
 
@@ -305,7 +305,7 @@ WHERE id = 10$$,
       * @params[in] path that is being analized
       */
      Path inf_cost_on_restriction(Path &path) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
          for (const auto r : m_restrictions) {
              path = path.inf_cost_on_restriction(r);
          }
@@ -313,7 +313,7 @@ WHERE id = 10$$,
      }
 
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
          for (auto &p : paths) {
              p = inf_cost_on_restriction(p);
          }
@@ -321,17 +321,21 @@ WHERE id = 10$$,
      }
 
      bool has_restriction(const Path &path) const {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
-         auto r = m_restrictions.begin();
-         while (r != m_restrictions.end() && path.has_restriction(*r)) {
-             ++r;
+         log << std::string(__FUNCTION__) << "\n";
+         for (const auto r :  m_restrictions) {
+             if (path.has_restriction(r)) {
+                 log <<"   ---> has restriction" << r << "\n";
+                 return true;
+             } else {
+                 log <<"   ---> No restriction" << r << "\n";
+             }
          }
 
-         return r != m_restrictions.end();
+         return false;
      }
 
 	 void doNextCycle(G &graph) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
 		 int64_t spurNodeId;
 
 
@@ -382,7 +386,7 @@ WHERE id = 10$$,
 	 }
 #endif
 	 void removeVertices(G &graph, const Path &subpath) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n";
 		 for (const auto &e : subpath)
 			 graph.disconnect_vertex(e.node);
 	 }
