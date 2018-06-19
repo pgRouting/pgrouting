@@ -39,55 +39,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "trsp/rule.h"
 #include "c_types/line_graph_rt.h"
-#include "lineGraph/pgr_lineGraph.hpp"
+#include "cpp_common/pgr_messages.h"
 
+namespace pgrouting {
 
 template < class G >
-class Pgr_dijkstraTR {
- public:
-     std::deque<Path> dijkstraTR(
-             G& graph,
-             const std::vector<pgrouting::trsp::Rule> &restrictions,
-             int64_t source,
-             int64_t target,
-             bool only_cost,
-             bool strict) {
-         if (source == target) {
-             return std::deque<Path>();
-         }
-
-         if (!graph.has_vertex(source) || !graph.has_vertex(target)) {
-             return std::deque<Path>();
-         }
-
-         v_source = graph.get_V(source);
-         v_target = graph.get_V(target);
-
-         m_start = source;
-         m_end = target;
-         m_restrictions = restrictions;
-         m_strict = strict;
-         m_only_cost = only_cost;
-
-         return Yen(graph, source, target, 10, true);
-     }
-
-
-/*
- * IDEA
-
-select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id !=10 UNION select id, source, target, cost , -1 from edge_table WHERE id = 10', $$select id as edge_id, 'r'::CHAR AS side, 0.000001::FLOAT as fraction FROM edge_table WHERE id = 10$$, -1, 5);
- seq | path_seq | node | edge |   cost   | agg_cost
------+----------+------+------+----------+----------
-   1 |        1 |   -1 |   10 | 0.999999 |        0
-   2 |        2 |   10 |   12 |        1 | 0.999999
-   3 |        3 |   11 |   13 |        1 | 1.999999
-   4 |        4 |   12 |   15 |        1 | 2.999999
-   5 |        5 |    9 |    9 |        1 | 3.999999
-   6 |        6 |    6 |    8 |        1 | 4.999999
-   7 |        7 |    5 |   -1 |        0 | 5.999999
-(7 rows)
-*/
+class Pgr_dijkstraTR : public Pgr_messages {
  private:
 	class compPaths {
      public:
@@ -133,6 +90,52 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
           }
      };
 
+ public:
+     std::deque<Path> dijkstraTR(
+             G& graph,
+             const std::vector<pgrouting::trsp::Rule> &restrictions,
+             int64_t source,
+             int64_t target,
+             bool only_cost,
+             bool strict) {
+        pgassert(m_restrictions.empty());
+        pgassert(m_Heap.empty());
+        pgassert(m_ResultSet.empty());
+
+        log << std::string(__PRETTY_FUNCTION__) << "\n";
+
+        m_strict = strict;
+        m_only_cost = only_cost;
+
+        m_restrictions = restrictions;
+
+
+        return Yen(graph, source, target, 10, true);
+    }
+
+
+/*
+ * IDEA
+
+select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost
+FROM edge_table WHERE id !=10
+UNION select id, source, target, cost , -1 from edge_table WHERE id = 10',
+$$select id as edge_id, 'r'::CHAR AS side, 0.000001::FLOAT as fraction
+FROM edge_table
+WHERE id = 10$$,
+-1, 5);
+ seq | path_seq | node | edge |   cost   | agg_cost
+-----+----------+------+------+----------+----------
+   1 |        1 |   -1 |   10 | 0.999999 |        0
+   2 |        2 |   10 |   12 |        1 | 0.999999
+   3 |        3 |   11 |   13 |        1 | 1.999999
+   4 |        4 |   12 |   15 |        1 | 2.999999
+   5 |        5 |    9 |    9 |        1 | 3.999999
+   6 |        6 |    6 |    8 |        1 | 4.999999
+   7 |        7 |    5 |   -1 |        0 | 5.999999
+(7 rows)
+*/
+
      /*!
       * @param[in] start_vertex original id of vertex
       * @param[in] end_vertex original id of vertex
@@ -144,6 +147,9 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
              int64_t end_vertex,
              int K,
              bool heap_paths) {
+
+        log << std::string(__PRETTY_FUNCTION__) << "\n";
+
          /*
           * No path: already in destination
           */
@@ -159,14 +165,21 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
              return std::deque<Path>();
          }
 
-         m_ResultSet.clear();
-         m_Heap.clear();
+         /*
+          * clean up containers
+          */
+         clear();
 
          v_source = graph.get_V(start_vertex);
          v_target = graph.get_V(end_vertex);
          m_start = start_vertex;
          m_end = end_vertex;
+
          executeYen(graph, K);
+
+         if (!m_solutions.empty()) {
+             return m_solutions;
+         }
 
          while (!m_ResultSet.empty()) {
              m_Heap.insert(*m_ResultSet.begin());
@@ -201,7 +214,8 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
      }
 
      void executeYen(G &graph, int K) {
-         clear();
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
+
          curr_result_path = getFirstSolution(graph);
          add_to_solution_set(curr_result_path);
 
@@ -219,12 +233,13 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
               * Debug mode
               */
 #ifndef NDEBUG
-             log << "end of while heap size" << m_Heap.size();
+             log << "end of while heap size:" << m_Heap.size() << "\n";
 #endif
          }
      }
 
      Path getFirstSolution(G &graph) {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
          Pgr_dijkstra< G > fn_dijkstra;
          auto path = fn_dijkstra.dijkstra(graph, m_start, m_end);
 
@@ -233,13 +248,19 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
 		 return path;
      }
 
+     /** \brief containers cleanup
+      *
+      * empties containers
+      */
      void clear() {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
          m_Heap.clear();
          m_ResultSet.clear();
-         m_pathWithNoRestrictions.clear();
+         m_solutions.clear();
      }
 
 
+#if 0
      Path executeDijkstraTR(G& graph) {
          clear();
          curr_result_path = getDijkstraSolution(graph);
@@ -254,9 +275,10 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
          curr_result_path = get_no_restrictions_path(curr_result_path);
          return curr_result_path;
      }
-
+#endif
 
      Path getDijkstraSolution(G& graph) {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
          Pgr_dijkstra< G > fn_dijkstra;
          return  fn_dijkstra.dijkstra(graph, m_start, m_end);
      }
@@ -268,10 +290,12 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
       * @param[in] path to add
       */
      void add_to_solution_set(const Path &path) {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
          if (path.empty()) return;
          if (has_restriction(path)) return;
 
-         m_pathWithNoRestrictions.insert(path);
+         log << "adding to solution set" << path;
+         m_solutions.push_back(path);
      }
 
 
@@ -281,6 +305,7 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
       * @params[in] path that is being analized
       */
      Path inf_cost_on_restriction(Path &path) {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
          for (const auto r : m_restrictions) {
              path = path.inf_cost_on_restriction(r);
          }
@@ -288,6 +313,7 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
      }
 
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
          for (auto &p : paths) {
              p = inf_cost_on_restriction(p);
          }
@@ -295,6 +321,7 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
      }
 
      bool has_restriction(const Path &path) const {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
          auto r = m_restrictions.begin();
          while (r != m_restrictions.end() && path.has_restriction(*r)) {
              ++r;
@@ -304,6 +331,7 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
      }
 
 	 void doNextCycle(G &graph) {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
 		 int64_t spurNodeId;
 
 
@@ -337,6 +365,7 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
 	 }
 
 
+#if 0
 	 Path get_no_restrictions_path(Path &path) {
 		 auto r = m_restrictions.begin();
 		 while (r != m_restrictions.end() && path.find_restriction(*r) == path.end()) {
@@ -351,22 +380,23 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
 		 log << "Found Restriction " << (*r) << "\n";
 		 return path;
 	 }
-
+#endif
 	 void removeVertices(G &graph, const Path &subpath) {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
 		 for (const auto &e : subpath)
 			 graph.disconnect_vertex(e.node);
 	 }
 
  private:
 	 typedef typename G::V V;
+	 std::vector<pgrouting::trsp::Rule> m_restrictions;
+	 bool m_only_cost;
+	 bool m_strict;
+
 	 V v_source;
 	 V v_target;
 	 int64_t m_start;
 	 int64_t m_end;
-	 std::vector<pgrouting::trsp::Rule> m_restrictions;
-	 std::vector< int64_t > m_edges_in_path;
-	 bool m_only_cost;
-	 bool m_strict;
 	 Path curr_result_path;
 
 	 typedef std::set<Path, compPaths> pSet;
@@ -374,11 +404,13 @@ select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost FROM
 	 pSet m_Heap;  //!< the heap
 
 	 //! ordered set of shortest paths
-	 pSet m_pathWithNoRestrictions;
+     std::deque<Path> m_solutions;
+     bool found;
 
- public:
-	 std::ostringstream log;
+
 };
+
+}  // namespace pgrouting
 
 
 

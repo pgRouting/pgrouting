@@ -42,6 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "dijkstraTR/pgr_dijkstraTR.hpp"
 
+using pgrouting::Pgr_dijkstraTR;
+using pgrouting::trsp::Rule;
 
 template < class G >
 static
@@ -63,7 +65,7 @@ pgr_dijkstraTR(
                     only_cost,
                     strict);
 
-    log += fn_TRSP.log.str().c_str();
+    log += fn_TRSP.get_log();
     return paths;
 }
 
@@ -101,7 +103,7 @@ do_pgr_dijkstraTR(
 
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < total_restrictions; ++i) {
-            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+            ruleList.push_back(Rule(*(restrictions + i)));
         }
 
         log << "\n---------------------------------------\nRestrictions data\n";
