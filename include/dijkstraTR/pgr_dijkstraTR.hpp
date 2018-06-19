@@ -260,23 +260,6 @@ WHERE id = 10$$,
      }
 
 
-#if 0
-     Path executeDijkstraTR(G& graph) {
-         clear();
-         curr_result_path = getDijkstraSolution(graph);
-         log << curr_result_path;
-
-         log << "restrictions\n";
-         for (auto r : m_restrictions) {
-             log << r << "-";
-             log << curr_result_path.has_restriction(r) << "\n";
-         }
-
-         curr_result_path = get_no_restrictions_path(curr_result_path);
-         return curr_result_path;
-     }
-#endif
-
      Path getDijkstraSolution(G& graph) {
          log << std::string(__FUNCTION__) << "\n";
          Pgr_dijkstra< G > fn_dijkstra;
@@ -360,8 +343,8 @@ WHERE id = 10$$,
 
 			 if (spurPath.size() > 0) {
 				 rootPath.appendPath(spurPath);
-				 m_Heap.insert(rootPath);
                  add_to_solution_set(rootPath);
+				 m_Heap.insert(rootPath);
 			 }
 
 			 graph.restore_graph();
@@ -369,22 +352,6 @@ WHERE id = 10$$,
 	 }
 
 
-#if 0
-	 Path get_no_restrictions_path(Path &path) {
-		 auto r = m_restrictions.begin();
-		 while (r != m_restrictions.end() && path.find_restriction(*r) == path.end()) {
-			 ++r;
-		 }
-
-		 /*
-		  * There is no restriction found
-		  */
-		 if (r == m_restrictions.end()) return path;
-
-		 log << "Found Restriction " << (*r) << "\n";
-		 return path;
-	 }
-#endif
 	 void removeVertices(G &graph, const Path &subpath) {
          log << std::string(__FUNCTION__) << "\n";
 		 for (const auto &e : subpath)
