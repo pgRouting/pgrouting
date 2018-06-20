@@ -177,6 +177,8 @@ WHERE id = 10$$,
          m_start = start_vertex;
          m_end = end_vertex;
 
+         return std::deque<Path>();
+
          try {
              executeYen(graph, K);
          } catch(found_goals &) {
