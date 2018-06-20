@@ -116,17 +116,18 @@ INSERT INTO restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
 
 CREATE TABLE new_restrictions (
     id SERIAL PRIMARY KEY,
-    path BIGINT[]
+    path BIGINT[],
+    cost float
 );
 
-INSERT INTO new_restrictions (path) VALUES
-(ARRAY[4, 7]),
-(ARRAY[8, 11]),
-(ARRAY[4, 8]),
-(ARRAY[5, 9]),
-(ARRAY[10, 12]),
-(ARRAY[9, 15]),
-(ARRAY[3, 5, 8]);
+INSERT INTO new_restrictions (path, cost) VALUES
+(ARRAY[4, 7], 100),
+(ARRAY[8, 11], 100),
+(ARRAY[4, 8], 100),
+(ARRAY[5, 9], 100),
+(ARRAY[10, 12], 100),
+(ARRAY[9, 15], 100),
+(ARRAY[3, 5, 8], 100);
 
 
 --RESTRICTIONS END

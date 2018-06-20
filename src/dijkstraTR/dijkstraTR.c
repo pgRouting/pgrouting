@@ -69,7 +69,6 @@ process(
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
-    pgr_SPI_connect();
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
@@ -79,14 +78,14 @@ process(
     PGR_DBG("Load data");
 
     if (p_k < 0) {
-        pgr_SPI_finish();
         return;
     };
 
     if (start_vid == end_vid) {
-        pgr_SPI_finish();
         return;
     }
+
+    pgr_SPI_connect();
 
     size_t k = (size_t)p_k;
 
@@ -141,11 +140,13 @@ process(
         if (*result_tuples) pfree(*result_tuples);
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
-    if (edges) pfree(edges);
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-    if (restrictions) pfree(restrictions);
+
+    if (edges) {pfree(edges); edges = NULL;};
+    if (log_msg) {pfree(log_msg); log_msg = NULL;};
+    if (notice_msg) {pfree(notice_msg); notice_msg = NULL;};
+    if (err_msg) {pfree(err_msg); err_msg = NULL;};
+    if (restrictions) {pfree(restrictions); edges = NULL;};
+
     pgr_SPI_finish();
 }
 

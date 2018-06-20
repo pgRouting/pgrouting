@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(20);
+SELECT plan(16);
 
 ----------------------------------------------------------------------------------------------------------------
 -- testing from an existing starting vertex to a non-existing destination
@@ -13,6 +13,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 3,
+    3,
     strict := false
 );
 
@@ -24,6 +25,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 3,
+    3,
     FALSE,
     strict := false
 );
@@ -35,6 +37,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     2, 3,
+    3,
     strict := false
 );
 
@@ -45,6 +48,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     2, 3,
+    3,
     FALSE,
     strict := false
 );
@@ -65,6 +69,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     6, 8,
+    3,
     strict := false
 );
 
@@ -75,6 +80,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     6, 8,
+    3,
     FALSE,
     strict := false
 );
@@ -86,6 +92,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     6, 8,
+    3,
     strict := false
 );
 
@@ -96,6 +103,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     6, 8,
+    3,
     FALSE,
     strict := false
 );
@@ -116,6 +124,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     1, 17,
+    3,
     strict := false
 );
 
@@ -126,6 +135,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     1, 17,
+    3,
     FALSE,
     strict := false
 );
@@ -137,6 +147,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     1, 17,
+    3,
     strict := false
 );
 
@@ -147,6 +158,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     1, 17,
+    3,
     FALSE,
     strict := false
 );
@@ -167,6 +179,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 2,
+    3,
     strict := false
 );
 
@@ -177,6 +190,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 2,
+    3,
     FALSE,
     strict := false
 );
@@ -188,6 +202,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     2, 2,
+    3,
     strict := false
 );
 
@@ -198,6 +213,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     2, 2,
+    3,
     FALSE,
     strict := false
 );
@@ -206,6 +222,7 @@ SELECT is_empty('q13');
 SELECT is_empty('q14');
 SELECT is_empty('q15');
 SELECT is_empty('q16');
+
 ----------------------------------------------------------------------------------------------------------------
 -- testing from an existing starting vertex in one component to an existing destination in another component
 ----------------------------------------------------------------------------------------------------------------
@@ -216,6 +233,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 14,
+    3,
     strict := false
 );
 
@@ -226,6 +244,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 14,
+    3,
     FALSE,
     strict := false
 );
@@ -237,6 +256,7 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM new_restrictions where id > 10',
     2, 14,
+    3,
     strict := false
 );
 
@@ -247,16 +267,18 @@ SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM new_restrictions where id > 10',
     2, 14,
+    3,
     FALSE,
     strict := false
 );
 
+/*
 SELECT is_empty('q17');
 SELECT is_empty('q18');
 SELECT is_empty('q19');
 SELECT is_empty('q20');
 ----------------------------------------------------------------------------------------------------------------
-
+*/
 
 SELECT * FROM finish();
 ROLLBACK;
