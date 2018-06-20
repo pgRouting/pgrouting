@@ -177,7 +177,8 @@ WHERE id = 10$$,
              executeYen(graph, K);
          } catch(found_goals &) {
              pgassert(!m_solutions.empty());
-             return m_solutions;
+             std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
+             return solutions;
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -189,6 +190,11 @@ WHERE id = 10$$,
          }
 
 
+         if (!m_solutions.empty()) {
+             log << "Found solutions " << m_solutions.size() << "\n";
+             std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
+             return sort_results(solutions);
+         }
 
 
          while (!m_ResultSet.empty()) {
@@ -205,7 +211,12 @@ WHERE id = 10$$,
          return l_ResultList;
      }
 
-    void sort_results(std::deque<Path> paths) {
+     std::deque<Path> sort_results(
+             std::deque<Path> &paths
+             ) {
+        std::sort(paths.begin(), paths.end(), compPaths());
+
+        /*
         std::stable_sort(paths.begin(), paths.end(),
                 [](const Path &left, const Path &right) -> bool {
                 for (size_t i = 0;
@@ -220,6 +231,8 @@ WHERE id = 10$$,
          std::stable_sort(paths.begin(), paths.end(),
                  [](const Path &left, const Path &right) {
                  return left.size() < right.size();});
+        */
+         return paths;
     }
 
      void executeYen(G &graph, size_t K) {
@@ -286,8 +299,9 @@ WHERE id = 10$$,
          if (path.empty()) return;
          if (has_restriction(path)) return;
 
-         log << "adding to solution set" << path;
-         m_solutions.push_back(path);
+         m_solutions.insert(path);
+         log << "adding to solution set" << path << "size" << m_solutions.size();
+
          if (m_stop_on_first) throw found_goals();
      }
 
@@ -386,7 +400,8 @@ WHERE id = 10$$,
 	 pSet m_Heap;  //!< the heap
 
 	 //! ordered set of shortest paths
-     std::deque<Path> m_solutions;
+     pSet m_solutions;
+
      bool m_stop_on_first;
 
      struct found_goals{};

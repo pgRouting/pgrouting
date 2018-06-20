@@ -156,7 +156,7 @@ bool Path::isEqual(const Path &subpath) const {
 
 void Path::appendPath(const Path &o_path) {
     path.insert(path.end(), o_path.path.begin(), o_path.path.end());
-    m_tot_cost +=  o_path.m_tot_cost;
+    recalculate_agg_cost();
 }
 
 
