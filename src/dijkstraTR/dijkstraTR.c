@@ -61,9 +61,9 @@ process(
         int64_t start_vid,
         int64_t end_vid,
 
+        int p_k,
         bool directed,
-        bool only_cost,
-        bool strict,
+        bool stop_on_first,
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -76,16 +76,21 @@ process(
     PGR_DBG("source: %lu | destination: %lu", start_vid, end_vid);
     PGR_DBG("Load data");
 
-    pgr_edge_t *edges = NULL;
-    size_t total_edges = 0;
+    if (p_k < 0) {
+        pgr_SPI_finish();
+        return;
+    };
 
     if (start_vid == end_vid) {
-        /*
-         * https://www.postgresql.org/docs/current/static/spi-spi-finish.html
-         */
         pgr_SPI_finish();
         return;
     }
+
+    size_t k = (size_t)p_k;
+
+    pgr_edge_t *edges = NULL;
+    size_t total_edges = 0;
+
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
@@ -96,20 +101,6 @@ process(
 
     pgr_get_restrictions(restrictions_sql, &restrictions,
         &total_restrictions);
-
-#if 0
-    size_t i = 0;
-    while (i < total_restrictions) {
-        PGR_DBG("id: %ld cost: %lf:", restrictions[i].id, restrictions[i].cost);
-        int j = 0;
-        while (restrictions[i].via[j] != -1) {
-            PGR_DBG("%ld ", restrictions[i].via[j]);
-            j++;
-        }
-        PGR_DBG("\n");
-        i++;
-    }
-#endif
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
@@ -129,9 +120,10 @@ process(
             total_restrictions,
             start_vid,
             end_vid,
+            k,
             directed,
-            only_cost,
-            strict,
+            stop_on_first,
+
             result_tuples,
             result_count,
             &log_msg,
@@ -168,13 +160,19 @@ PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-           TEXT, -- edges_sql
-           TEXT, -- restrictions_sql
-           BIGINT, -- source
-           BIGINT, -- target
+           TEXT,   -- edges_sql
+           TEXT,   -- restrictions_sql
+           BIGINT, -- start_vertex
+           BIGINT, -- end_vertex
+           INTEGER,-- K cycles
            directed BOOLEAN DEFAULT true,
-           only_cost BOOLEAN DEFAULT false,
-           strict BOOLEAN DEFAULT false
+           stop_on_first BOOLEAN DEFAULT true,
+           OUT seq INTEGER,
+           OUT path_seq INTEGER,
+           OUT node BIGINT,
+           OUT edge BIGINT,
+           OUT cost FLOAT,
+           OUT agg_cost FLOAT)
          **********************************************************************/
 
 
@@ -184,13 +182,11 @@ PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
-                PG_GETARG_BOOL(4),
+                PG_GETARG_INT32(4),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
                 &result_tuples,
                 &result_count);
-
-
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;

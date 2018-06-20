@@ -96,21 +96,20 @@ class Pgr_dijkstraTR : public Pgr_messages {
              const std::vector<pgrouting::trsp::Rule> &restrictions,
              int64_t source,
              int64_t target,
-             bool only_cost,
-             bool strict) {
+             size_t k,
+             bool stop_on_first) {
         pgassert(m_restrictions.empty());
         pgassert(m_Heap.empty());
         pgassert(m_ResultSet.empty());
 
         log << std::string(__FUNCTION__) << "\n";
 
-        m_strict = strict;
-        m_only_cost = only_cost;
 
+        m_stop_on_first = stop_on_first;
         m_restrictions = restrictions;
 
 
-        return Yen(graph, source, target, 10, true);
+        return Yen(graph, source, target, k);
     }
 
 
@@ -145,8 +144,7 @@ WHERE id = 10$$,
      std::deque<Path> Yen(G &graph,
              int64_t  start_vertex,
              int64_t end_vertex,
-             int K,
-             bool heap_paths) {
+             size_t K) {
 
         log << std::string(__FUNCTION__) << "\n";
 
@@ -175,11 +173,23 @@ WHERE id = 10$$,
          m_start = start_vertex;
          m_end = end_vertex;
 
-         executeYen(graph, K);
-
-         if (!m_solutions.empty()) {
+         try {
+             executeYen(graph, K);
+         } catch(found_goals &) {
+             pgassert(!m_solutions.empty());
              return m_solutions;
+         } catch (boost::exception const& ex) {
+             (void)ex;
+             throw;
+         } catch (std::exception &e) {
+             (void)e;
+             throw;
+         } catch (...) {
+             throw;
          }
+
+
+
 
          while (!m_ResultSet.empty()) {
              m_Heap.insert(*m_ResultSet.begin());
@@ -188,32 +198,31 @@ WHERE id = 10$$,
 
          std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
 
-#if 0
-         std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
-                 [](const Path &left, const Path &right) -> bool {
-                 for (size_t i = 0;
-                         i < (std::min)(left.size(), right.size());
-                         ++i) {
-                 if (left[i].node < right[i].node) return true;
-                 if (left[i].node > right[i].node) return false;
-                 }
-                 return false;
-                 });
-
-         std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
-                 [](const Path &left, const Path &right) {
-                 return left.size() < right.size();});
-#endif
-
-         if (!heap_paths && l_ResultList.size() > (size_t) K)
-             l_ResultList.resize(K);
+         /* TODO  l_ResultList.resize(x); where x is the number of paths with less restrictions */
 
          l_ResultList = inf_cost_on_restriction(l_ResultList);
 
          return l_ResultList;
      }
 
-     void executeYen(G &graph, int K) {
+    void sort_results(std::deque<Path> paths) {
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &left, const Path &right) -> bool {
+                for (size_t i = 0;
+                        i < (std::min)(left.size(), right.size());
+                        ++i) {
+                if (left[i].node < right[i].node) return true;
+                if (left[i].node > right[i].node) return false;
+                }
+                return false;
+                });
+
+         std::stable_sort(paths.begin(), paths.end(),
+                 [](const Path &left, const Path &right) {
+                 return left.size() < right.size();});
+    }
+
+     void executeYen(G &graph, size_t K) {
          log << std::string(__FUNCTION__) << "\n";
 
          curr_result_path = getFirstSolution(graph);
@@ -279,6 +288,7 @@ WHERE id = 10$$,
 
          log << "adding to solution set" << path;
          m_solutions.push_back(path);
+         if (m_stop_on_first) throw found_goals();
      }
 
 
@@ -368,6 +378,7 @@ WHERE id = 10$$,
 	 V v_target;
 	 int64_t m_start;
 	 int64_t m_end;
+
 	 Path curr_result_path;
 
 	 typedef std::set<Path, compPaths> pSet;
@@ -376,8 +387,9 @@ WHERE id = 10$$,
 
 	 //! ordered set of shortest paths
      std::deque<Path> m_solutions;
-     bool found;
+     bool m_stop_on_first;
 
+     struct found_goals{};
 
 };
 

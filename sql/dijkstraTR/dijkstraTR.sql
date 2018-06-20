@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTR.sql
+File: turnRestrictedPath.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,14 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraTR(
-    TEXT,
-    TEXT,
-    BIGINT,
-    BIGINT,
+CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
+    TEXT,   -- edges_sql
+    TEXT,   -- restrictions_sql
+    BIGINT, -- start_vertex
+    BIGINT, -- end_vertex
+    INTEGER,-- K cycles
     directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-    strict BOOLEAN DEFAULT true,
+    stop_on_first BOOLEAN DEFAULT true,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,

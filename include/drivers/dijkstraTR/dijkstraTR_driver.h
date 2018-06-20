@@ -61,9 +61,9 @@ extern "C" {
             int64_t start_vid,
             int64_t end_vid,
 
+            size_t k,
             bool directed,
-            bool only_cost,
-            bool strict,
+            bool stop_on_first,
 
             General_path_element_t **return_tuples,
             size_t *return_count,

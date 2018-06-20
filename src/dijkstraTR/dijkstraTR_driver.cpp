@@ -54,16 +54,16 @@ pgr_dijkstraTR(
         int64_t source,
         int64_t target,
         std::string& log,
-        bool only_cost = false,
-        bool strict = false) {
+        size_t k,
+        bool stop_on_first) {
     Pgr_dijkstraTR< G > fn_TRSP;
 
     auto paths = fn_TRSP.dijkstraTR(graph,
                     restrictions,
                     source,
                     target,
-                    only_cost,
-                    strict);
+                    k,
+                    stop_on_first);
 
     log += fn_TRSP.get_log();
     return paths;
@@ -80,9 +80,9 @@ do_pgr_dijkstraTR(
         int64_t start_vid,
         int64_t end_vid,
 
+        size_t k,
         bool directed,
-        bool only_cost,
-        bool strict,
+        bool stop_on_first,
 
         General_path_element_t **return_tuples,
         size_t *return_count,
@@ -132,8 +132,8 @@ do_pgr_dijkstraTR(
                     end_vid,
 
                     logstr,
-                    only_cost,
-                    strict);
+                    k,
+                    stop_on_first);
         } else {
             log << "TODO Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
@@ -146,8 +146,9 @@ do_pgr_dijkstraTR(
                     end_vid,
 
                     logstr,
-                    only_cost,
-                    strict);
+
+                    k,
+                    stop_on_first);
         }
 
         log << logstr;
