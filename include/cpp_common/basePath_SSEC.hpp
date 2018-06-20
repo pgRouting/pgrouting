@@ -69,6 +69,7 @@ class Path {
 
     size_t size() const {return path.size();}
     bool empty() const {return path.empty();}
+    size_t countInfinityCost() const;
 
     void push_front(Path_t data);
     void push_back(Path_t data);

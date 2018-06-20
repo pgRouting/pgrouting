@@ -178,7 +178,7 @@ WHERE id = 10$$,
          } catch(found_goals &) {
              pgassert(!m_solutions.empty());
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
-             return solutions;
+             return sort_results(solutions);
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -208,7 +208,7 @@ WHERE id = 10$$,
 
          l_ResultList = inf_cost_on_restriction(l_ResultList);
 
-         return l_ResultList;
+         return sort_results(l_ResultList);
      }
 
      std::deque<Path> sort_results(
@@ -216,22 +216,11 @@ WHERE id = 10$$,
              ) {
         std::sort(paths.begin(), paths.end(), compPaths());
 
-        /*
         std::stable_sort(paths.begin(), paths.end(),
                 [](const Path &left, const Path &right) -> bool {
-                for (size_t i = 0;
-                        i < (std::min)(left.size(), right.size());
-                        ++i) {
-                if (left[i].node < right[i].node) return true;
-                if (left[i].node > right[i].node) return false;
-                }
-                return false;
+                return (left.countInfinityCost() < right.countInfinityCost());
                 });
 
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &left, const Path &right) {
-                 return left.size() < right.size();});
-        */
          return paths;
     }
 

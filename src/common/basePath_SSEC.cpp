@@ -23,6 +23,7 @@ along with this program; if not, write to the Free Software
 
 #include "cpp_common/basePath_SSEC.hpp"
 
+#include <cmath>
 #include <limits>
 #include <deque>
 #include <iostream>
@@ -129,6 +130,14 @@ std::ostream& operator<<(std::ostream &log, const Path &path) {
     return log;
 }
 
+size_t Path::countInfinityCost() const {
+    return std::count_if(path.begin(), path.end(),
+            [](Path_t const&p) -> size_t
+            {
+            return std::isinf(p.agg_cost);
+            });
+
+}
 
 
 Path Path::getSubpath(unsigned int j) const {
