@@ -55,6 +55,7 @@ pgr_dijkstraTR(
         int64_t target,
         std::string& log,
         size_t k,
+        bool heap_paths,
         bool stop_on_first) {
     Pgr_dijkstraTR< G > fn_TRSP;
 
@@ -63,6 +64,7 @@ pgr_dijkstraTR(
                     source,
                     target,
                     k,
+                    heap_paths,
                     stop_on_first);
 
     log += fn_TRSP.get_log();
@@ -82,6 +84,7 @@ do_pgr_dijkstraTR(
 
         size_t k,
         bool directed,
+        bool heap_paths,
         bool stop_on_first,
 
         General_path_element_t **return_tuples,
@@ -133,6 +136,7 @@ do_pgr_dijkstraTR(
 
                     logstr,
                     k,
+                    heap_paths,
                     stop_on_first);
         } else {
             log << "TODO Working with Undirected Graph\n";
@@ -148,6 +152,7 @@ do_pgr_dijkstraTR(
                     logstr,
 
                     k,
+                    heap_paths,
                     stop_on_first);
         }
 

@@ -34,7 +34,9 @@ CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
     BIGINT, -- end_vertex
     INTEGER,-- K cycles
     directed BOOLEAN DEFAULT true,
+    heap_paths BOOLEAN DEFAULT false,
     stop_on_first BOOLEAN DEFAULT true,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,

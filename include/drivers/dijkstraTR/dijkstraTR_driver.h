@@ -63,6 +63,7 @@ extern "C" {
 
             size_t k,
             bool directed,
+            bool heap_paths,
             bool stop_on_first,
 
             General_path_element_t **return_tuples,

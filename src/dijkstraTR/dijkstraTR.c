@@ -63,6 +63,7 @@ process(
 
         int p_k,
         bool directed,
+        bool heap_paths,
         bool stop_on_first,
 
         General_path_element_t **result_tuples,
@@ -122,6 +123,7 @@ process(
             end_vid,
             k,
             directed,
+            heap_paths,
             stop_on_first,
 
             result_tuples,
@@ -166,7 +168,9 @@ PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS) {
            BIGINT, -- end_vertex
            INTEGER,-- K cycles
            directed BOOLEAN DEFAULT true,
+           heap_paths BOOLEAN DEFAULT false,
            stop_on_first BOOLEAN DEFAULT true,
+
            OUT seq INTEGER,
            OUT path_seq INTEGER,
            OUT node BIGINT,
@@ -185,6 +189,7 @@ PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT32(4),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
+                PG_GETARG_BOOL(7),
                 &result_tuples,
                 &result_count);
 

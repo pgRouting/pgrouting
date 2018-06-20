@@ -97,6 +97,7 @@ class Pgr_dijkstraTR : public Pgr_messages {
              int64_t source,
              int64_t target,
              size_t k,
+             bool heap_paths,
              bool stop_on_first) {
         pgassert(m_restrictions.empty());
         pgassert(m_Heap.empty());
@@ -106,6 +107,7 @@ class Pgr_dijkstraTR : public Pgr_messages {
 
 
         m_stop_on_first = stop_on_first;
+        m_heap_paths = heap_paths;
         m_restrictions = restrictions;
 
 
@@ -208,21 +210,43 @@ WHERE id = 10$$,
 
          l_ResultList = inf_cost_on_restriction(l_ResultList);
 
-         return sort_results(l_ResultList);
+         return get_results(l_ResultList);
      }
 
      std::deque<Path> sort_results(
              std::deque<Path> &paths
              ) {
-        std::sort(paths.begin(), paths.end(), compPaths());
+         if (paths.empty()) return paths;
 
-        std::stable_sort(paths.begin(), paths.end(),
-                [](const Path &left, const Path &right) -> bool {
-                return (left.countInfinityCost() < right.countInfinityCost());
-                });
+         std::sort(paths.begin(), paths.end(), compPaths());
 
+         std::stable_sort(paths.begin(), paths.end(),
+                 [](const Path &left, const Path &right) -> bool {
+                 return (left.countInfinityCost() < right.countInfinityCost());
+                 });
          return paths;
-    }
+     }
+
+     std::deque<Path> get_results (
+             std::deque<Path> &paths
+             ) {
+
+         paths = sort_results(paths);
+
+         if (m_heap_paths) return paths;
+
+         auto count = paths.begin()->countInfinityCost();
+
+         paths.erase(
+                 std::remove_if(
+                     paths.begin(), paths.end(),
+                     [&count](const Path &p){return count != p.countInfinityCost();}
+                     ),
+                 paths.end());
+         return paths;
+     }
+
+
 
      void executeYen(G &graph, size_t K) {
          log << std::string(__FUNCTION__) << "\n";
@@ -392,6 +416,7 @@ WHERE id = 10$$,
      pSet m_solutions;
 
      bool m_stop_on_first;
+     bool m_heap_paths;
 
      struct found_goals{};
 
