@@ -36,6 +36,7 @@ CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
     directed BOOLEAN DEFAULT true,
     heap_paths BOOLEAN DEFAULT false,
     stop_on_first BOOLEAN DEFAULT true,
+    strict BOOLEAN DEFAULT false,
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,

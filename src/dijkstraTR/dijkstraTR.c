@@ -65,6 +65,7 @@ process(
         bool directed,
         bool heap_paths,
         bool stop_on_first,
+        bool strict,
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -125,6 +126,7 @@ process(
             directed,
             heap_paths,
             stop_on_first,
+            strict,
 
             result_tuples,
             result_count,
@@ -190,6 +192,7 @@ PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
+                PG_GETARG_BOOL(8),
                 &result_tuples,
                 &result_count);
 

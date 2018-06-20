@@ -9,7 +9,7 @@ SELECT plan(20);
 -- in directed graph
 -- with restrictions
 PREPARE q1 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 3
@@ -18,7 +18,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- with restrictions
 PREPARE q2 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 3,
@@ -28,7 +28,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- without restrictions
 PREPARE q3 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     2, 3
@@ -37,7 +37,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- without restrictions
 PREPARE q4 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     2, 3,
@@ -51,7 +51,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- with restrictions
 PREPARE q5 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     6, 8
@@ -60,7 +60,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- with restrictions
 PREPARE q6 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     6, 8,
@@ -70,7 +70,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- without restrictions
 PREPARE q7 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     6, 8
@@ -79,7 +79,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- without restrictions
 PREPARE q8 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     6, 8,
@@ -93,7 +93,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- with restrictions
 PREPARE q9 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     1, 17
@@ -102,7 +102,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- with restrictions
 PREPARE q10 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     1, 17,
@@ -112,7 +112,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- without restrictions
 PREPARE q11 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     1, 17
@@ -121,7 +121,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- without restrictions
 PREPARE q12 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     1, 17,
@@ -135,7 +135,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- with restrictions
 PREPARE q13 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 2
@@ -144,7 +144,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- with restrictions
 PREPARE q14 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 2,
@@ -154,7 +154,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- without restrictions
 PREPARE q15 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     2, 2
@@ -163,7 +163,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- without restrictions
 PREPARE q16 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
     'SELECT * FROM new_restrictions where id > 10',
     2, 2,
@@ -176,7 +176,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- with restrictions
 PREPARE q17 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 14
@@ -185,7 +185,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- with restrictions
 PREPARE q18 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM new_restrictions WHERE id IN (1)',
     2, 14,
@@ -195,7 +195,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in directed graph
 -- without restrictions
 PREPARE q19 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM new_restrictions where id > 10',
     2, 14
@@ -204,7 +204,7 @@ SELECT * FROM pgr_dijkstraTR(
 -- in undirected graph
 -- without restrictions
 PREPARE q20 AS
-SELECT * FROM pgr_dijkstraTR(
+SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
     'SELECT * FROM new_restrictions where id > 10',
     2, 14,

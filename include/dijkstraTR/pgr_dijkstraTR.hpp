@@ -98,7 +98,8 @@ class Pgr_dijkstraTR : public Pgr_messages {
              int64_t target,
              size_t k,
              bool heap_paths,
-             bool stop_on_first) {
+             bool stop_on_first,
+             bool strict) {
         pgassert(m_restrictions.empty());
         pgassert(m_Heap.empty());
         pgassert(m_ResultSet.empty());
@@ -108,6 +109,7 @@ class Pgr_dijkstraTR : public Pgr_messages {
 
         m_stop_on_first = stop_on_first;
         m_heap_paths = heap_paths;
+        m_strict = strict;
         m_restrictions = restrictions;
 
 
@@ -230,6 +232,7 @@ WHERE id = 10$$,
      std::deque<Path> get_results (
              std::deque<Path> &paths
              ) {
+         if (m_strict) return std::deque<Path>();
 
          paths = sort_results(paths);
 
