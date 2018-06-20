@@ -45,7 +45,11 @@ void fetch_restriction(
     /*
      * reading the cost
      */
-    restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
+    if (column_found(info[1].colNumber)) {
+        restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
+    } else {
+        restriction->cost = -1;
+    }
 
     restriction->via = NULL;
     restriction->via_size = 0;
@@ -85,6 +89,7 @@ pgr_get_restrictions(
     info[1].eType = ANY_NUMERICAL;
     info[2].eType = ANY_INTEGER_ARRAY;
 
+    info[1].strict = false;
 
     size_t ntuples;
     size_t total_tuples;
