@@ -177,8 +177,6 @@ WHERE id = 10$$,
          m_start = start_vertex;
          m_end = end_vertex;
 
-         return std::deque<Path>();
-
          try {
              executeYen(graph, K);
          } catch(found_goals &) {
@@ -209,8 +207,6 @@ WHERE id = 10$$,
          }
 
          std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
-
-         /* TODO  l_ResultList.resize(x); where x is the number of paths with less restrictions */
 
          l_ResultList = inf_cost_on_restriction(l_ResultList);
 

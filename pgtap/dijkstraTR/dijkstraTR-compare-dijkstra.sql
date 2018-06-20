@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(9);
+SELECT plan(41);
 
 SET client_min_messages TO ERROR;
 
@@ -63,24 +63,22 @@ $BODY$
 language plpgsql;
 SELECT * from dijkstratrsp_compare_dijkstra(1, 1);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 2);
-/*
-SELECT * from dijkstratrsp_compare_dijkstra(1, 3);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 4);
+--SELECT * from dijkstratrsp_compare_dijkstra(1, 3);
+--SELECT * from dijkstratrsp_compare_dijkstra(1, 4);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 5);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 6);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 7);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 8);
+--SELECT * from dijkstratrsp_compare_dijkstra(1, 7);
+--SELECT * from dijkstratrsp_compare_dijkstra(1, 8);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 9);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 10);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 11);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 12);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 13);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 14);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 15);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 16);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 17);
+--SELECT * from dijkstratrsp_compare_dijkstra(1, 14);
+--SELECT * from dijkstratrsp_compare_dijkstra(1, 15);
+--SELECT * from dijkstratrsp_compare_dijkstra(1, 16);
+--SELECT * from dijkstratrsp_compare_dijkstra(1, 17);
 SELECT * from dijkstratrsp_compare_dijkstra(1, 18);
-*/
 
 SELECT * FROM finish();
 ROLLBACK;
