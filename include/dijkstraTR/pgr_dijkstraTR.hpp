@@ -200,6 +200,9 @@ WHERE id = 10$$,
              return sort_results(solutions);
          }
 
+         if (m_ResultSet.empty()) {
+             return std::deque<Path>();
+         }
 
          while (!m_ResultSet.empty()) {
              m_Heap.insert(*m_ResultSet.begin());
