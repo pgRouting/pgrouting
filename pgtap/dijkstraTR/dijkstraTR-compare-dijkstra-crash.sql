@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(41);
+SELECT plan(1297);
 
 SET client_min_messages TO ERROR;
 
@@ -20,40 +20,40 @@ BEGIN
 
     restricted_sql := 'SELECT * FROM new_restrictions WHERE id > 10';
 
-            -- DIRECTED with reverse cost
-            inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
+    -- DIRECTED with reverse cost
+    inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
+    dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+        || ', true)';
 
-            dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
-                || ', 3, true)';
-            RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
+    dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+        || ', 3, true)';
+    RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
 
-            -- UNDIRECTED with reverse_cost
-            inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-            dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
-                || ', 3, false)';
-            RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
+    -- UNDIRECTED with reverse_cost
+    inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
+    dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+        || ', false)';
+    dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+        || ', 3, false)';
+    RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
 
-            -- DIRECTED without reverse_cost
-            inner_sql := 'SELECT id, source, target, cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
+    -- DIRECTED without reverse_cost
+    inner_sql := 'SELECT id, source, target, cost FROM edge_table';
+    dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+        || ', true)';
 
-            dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
-                || ', 3, true)';
-            RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
+    dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+        || ', 3, true)';
+    RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
 
-            -- UNDIRECTED without reverse_cost
-            inner_sql := 'SELECT id, source, target, cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
+    -- UNDIRECTED without reverse_cost
+    inner_sql := 'SELECT id, source, target, cost FROM edge_table';
+    dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+        || ', false)';
 
-            dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
-                || ', 3, false)';
-            RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
+    dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+        || ', 3, false)';
+    RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
 
 
 
@@ -61,24 +61,38 @@ BEGIN
 END
 $BODY$
 language plpgsql;
-SELECT * from dijkstratrsp_compare_dijkstra(1, 1);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 2);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 3);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 4);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 5);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 6);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 7);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 8);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 9);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 10);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 11);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 12);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 13);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 14);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 15);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 16);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 17);
-SELECT * from dijkstratrsp_compare_dijkstra(1, 18);
+
+
+CREATE or REPLACE FUNCTION turnrestricted_compare_dijkstra(i INTEGER, j INTEGER)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+FOR a IN 1..j LOOP
+ RETURN query SELECT * from dijkstratrsp_compare_dijkstra(i, a);
+END LOOP;
+END;
+$BODY$
+language plpgsql;
+
+
+SELECT * from turnrestricted_compare_dijkstra(1, 18);
+SELECT * from turnrestricted_compare_dijkstra(2, 18);
+SELECT * from turnrestricted_compare_dijkstra(3, 18);
+SELECT * from turnrestricted_compare_dijkstra(4, 18);
+SELECT * from turnrestricted_compare_dijkstra(5, 18);
+SELECT * from turnrestricted_compare_dijkstra(6, 18);
+SELECT * from turnrestricted_compare_dijkstra(7, 18);
+SELECT * from turnrestricted_compare_dijkstra(8, 18);
+SELECT * from turnrestricted_compare_dijkstra(9, 18);
+SELECT * from turnrestricted_compare_dijkstra(10, 18);
+SELECT * from turnrestricted_compare_dijkstra(11, 18);
+SELECT * from turnrestricted_compare_dijkstra(12, 18);
+SELECT * from turnrestricted_compare_dijkstra(13, 18);
+SELECT * from turnrestricted_compare_dijkstra(14, 18);
+SELECT * from turnrestricted_compare_dijkstra(15, 18);
+SELECT * from turnrestricted_compare_dijkstra(16, 18);
+SELECT * from turnrestricted_compare_dijkstra(17, 18);
+SELECT * from turnrestricted_compare_dijkstra(18, 18);
 
 SELECT * FROM finish();
 ROLLBACK;
