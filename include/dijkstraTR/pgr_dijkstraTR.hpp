@@ -47,7 +47,7 @@ namespace pgrouting {
 namespace yen {
 
 template < typename G >
-class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
+class Pgr_dijkstraTR : public Pgr_ksp< G > {
  private:
  public:
      std::deque<Path> dijkstraTR(
@@ -63,7 +63,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
         pgassert(this->m_Heap.empty());
         pgassert(this->m_ResultSet.empty());
 
-        log << std::string(__FUNCTION__) << "\n";
+        this->log << std::string(__FUNCTION__) << "\n";
 
 
         m_stop_on_first = stop_on_first;
@@ -87,7 +87,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
              int64_t end_vertex,
              size_t K) {
 
-        log << std::string(__FUNCTION__) << "\n";
+        this->log << std::string(__FUNCTION__) << "\n";
 
          /*
           * No path: already in destination
@@ -132,7 +132,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 
 
          if (!m_solutions.empty()) {
-             log << "Found solutions " << m_solutions.size() << "\n";
+             this->log << "Found solutions " << m_solutions.size() << "\n";
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
              return sort_results(solutions);
          }
@@ -190,7 +190,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 
 
      void executeYen(G &graph, size_t K) {
-         log << std::string(__FUNCTION__) << "\n";
+         this->log << std::string(__FUNCTION__) << "\n";
 
          this->curr_result_path = this->getFirstSolution(graph);
          add_to_solution_set(this->curr_result_path);
@@ -209,7 +209,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
               * Debug mode
               */
 #ifndef NDEBUG
-             log << "end of while heap size:" << this->m_Heap.size() << "\n";
+             this->log << "end of while heap size:" << this->m_Heap.size() << "\n";
 #endif
          }
      }
@@ -219,7 +219,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
       * empties containers
       */
      void clear() {
-         log << std::string(__FUNCTION__) << "\n";
+         this->log << std::string(__FUNCTION__) << "\n";
 #if 0
          this->clear();
 #endif
@@ -236,12 +236,12 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
       * @param[in] path to add
       */
      void add_to_solution_set(const Path &path) {
-         log << std::string(__FUNCTION__) << "\n";
+         this->log << std::string(__FUNCTION__) << "\n";
          if (path.empty()) return;
          if (has_restriction(path)) return;
 
          m_solutions.insert(path);
-         log << "adding to solution set" << path << "size" << m_solutions.size();
+         this->log << "adding to solution set" << path << "size" << m_solutions.size();
 
          if (m_stop_on_first) throw found_goals();
      }
@@ -253,7 +253,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
       * @params[in] path that is being analized
       */
      Path inf_cost_on_restriction(Path &path) {
-         log << std::string(__FUNCTION__) << "\n";
+         this->log << std::string(__FUNCTION__) << "\n";
          for (const auto r : m_restrictions) {
              path = path.inf_cost_on_restriction(r);
          }
@@ -261,7 +261,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
      }
 
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
-         log << std::string(__FUNCTION__) << "\n";
+         this->log << std::string(__FUNCTION__) << "\n";
          for (auto &p : paths) {
              p = inf_cost_on_restriction(p);
          }
@@ -269,13 +269,13 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
      }
 
      bool has_restriction(const Path &path) const {
-         log << std::string(__FUNCTION__) << "\n";
+         this->log << std::string(__FUNCTION__) << "\n";
          for (const auto r :  m_restrictions) {
              if (path.has_restriction(r)) {
-                 log <<"   ---> has restriction" << r << "\n";
+                 this->log <<"   ---> has restriction" << r << "\n";
                  return true;
              } else {
-                 log <<"   ---> No restriction" << r << "\n";
+                 this->log <<"   ---> No restriction" << r << "\n";
              }
          }
 
@@ -283,7 +283,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
      }
 
 	 void doNextCycle(G &graph) {
-         log << std::string(__FUNCTION__) << "\n";
+         this->log << std::string(__FUNCTION__) << "\n";
 		 int64_t spurNodeId;
 
 

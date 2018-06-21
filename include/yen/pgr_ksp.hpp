@@ -37,13 +37,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/compPaths.h"
+#include "cpp_common/pgr_messages.h"
 #include "cpp_common/basePath_SSEC.hpp"
 
 namespace pgrouting {
 namespace yen {
 
 template < class G >
-class Pgr_ksp {
+class Pgr_ksp :  public Pgr_messages {
  public:
      std::deque<Path> Yen(
              G &graph,
@@ -148,7 +149,9 @@ class Pgr_ksp {
          return path;
      }
 
- private:
+     void on_insert_to_heap(const Path) {
+     };
+
      //! Performs the next cycle of the algorithm
      void doNextCycle(G &graph) {
          int64_t spurNodeId;
@@ -176,6 +179,7 @@ class Pgr_ksp {
              if (spurPath.size() > 0) {
                  rootPath.appendPath(spurPath);
                  m_Heap.insert(rootPath);
+                 on_insert_to_heap(rootPath);
              }
 
              graph.restore_graph();
@@ -206,7 +210,7 @@ class Pgr_ksp {
      pSet m_ResultSet;  //!< ordered set of shortest paths
      pSet m_Heap;  //!< the heap
 
-     std::ostringstream log;
+     //std::ostringstream log;
 };
 
 
