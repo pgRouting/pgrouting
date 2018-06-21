@@ -149,7 +149,7 @@ class Pgr_ksp :  public Pgr_messages {
          return path;
      }
 
-     void on_insert_to_heap(const Path) {
+     virtual void on_insert_to_heap(const Path) {
      };
 
      //! Performs the next cycle of the algorithm

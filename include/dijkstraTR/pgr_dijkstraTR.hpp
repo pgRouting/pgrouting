@@ -193,7 +193,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          this->log << std::string(__FUNCTION__) << "\n";
 
          this->curr_result_path = this->getFirstSolution(graph);
-         add_to_solution_set(this->curr_result_path);
+         on_insert_first_solution(this->curr_result_path);
 
          if (this->m_ResultSet.size() == 0) return;  // no path found
 
@@ -235,7 +235,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
       *
       * @param[in] path to add
       */
-     void add_to_solution_set(const Path &path) {
+     void on_insert_first_solution(const Path &path) {
          this->log << std::string(__FUNCTION__) << "\n";
          if (path.empty()) return;
          if (has_restriction(path)) return;
@@ -246,6 +246,16 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          if (m_stop_on_first) throw found_goals();
      }
 
+     void on_insert_to_heap(const Path &path) {
+         this->log << std::string(__FUNCTION__) << "\n";
+         if (path.empty()) return;
+         if (has_restriction(path)) return;
+
+         m_solutions.insert(path);
+         this->log << "adding to solution set" << path << "size" << m_solutions.size();
+
+         if (m_stop_on_first) throw found_goals();
+     }
 
 
      /*! sets an inf value on agg_cost on the vertex/edge where the restriction begins
@@ -308,7 +318,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
 			 if (spurPath.size() > 0) {
 				 rootPath.appendPath(spurPath);
-                 add_to_solution_set(rootPath);
+                 on_insert_to_heap(rootPath);
 				 this->m_Heap.insert(rootPath);
 			 }
 
