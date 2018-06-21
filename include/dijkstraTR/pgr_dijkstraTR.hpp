@@ -214,17 +214,6 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
          }
      }
 
-#if 1
-     Path getFirstSolution(G &graph) {
-         log << std::string(__FUNCTION__) << "\n";
-         Pgr_dijkstra< G > fn_dijkstra;
-         auto path = fn_dijkstra.dijkstra(graph, this->m_start, this->m_end);
-
-         if (path.empty()) return path;
-         this->m_ResultSet.insert(path);
-		 return path;
-     }
-#endif
      /** \brief containers cleanup
       *
       * empties containers
