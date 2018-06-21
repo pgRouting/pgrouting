@@ -109,10 +109,10 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
           */
          clear();
 
-         v_source = graph.get_V(start_vertex);
-         v_target = graph.get_V(end_vertex);
-         m_start = start_vertex;
-         m_end = end_vertex;
+         this->v_source = graph.get_V(start_vertex);
+         this->v_target = graph.get_V(end_vertex);
+         this->m_start = start_vertex;
+         this->m_end = end_vertex;
 
          try {
              executeYen(graph, K);
@@ -192,16 +192,16 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
      void executeYen(G &graph, size_t K) {
          log << std::string(__FUNCTION__) << "\n";
 
-         curr_result_path = this->getFirstSolution(graph);
-         add_to_solution_set(curr_result_path);
+         this->curr_result_path = this->getFirstSolution(graph);
+         add_to_solution_set(this->curr_result_path);
 
          if (this->m_ResultSet.size() == 0) return;  // no path found
 
          while (this->m_ResultSet.size() < (unsigned int) K) {
              doNextCycle(graph);
              if (this->m_Heap.empty()) break;
-             curr_result_path = *this->m_Heap.begin();
-             this->m_ResultSet.insert(curr_result_path);
+             this->curr_result_path = *this->m_Heap.begin();
+             this->m_ResultSet.insert(this->curr_result_path);
              this->m_Heap.erase(this->m_Heap.begin());
              /*
               * without the next line withpointsKSP hungs with:
@@ -218,7 +218,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
      Path getFirstSolution(G &graph) {
          log << std::string(__FUNCTION__) << "\n";
          Pgr_dijkstra< G > fn_dijkstra;
-         auto path = fn_dijkstra.dijkstra(graph, m_start, m_end);
+         auto path = fn_dijkstra.dijkstra(graph, this->m_start, this->m_end);
 
          if (path.empty()) return path;
          this->m_ResultSet.insert(path);
@@ -243,7 +243,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
      Path getDijkstraSolution(G& graph) {
          log << std::string(__FUNCTION__) << "\n";
          Pgr_dijkstra< G > fn_dijkstra;
-         return  fn_dijkstra.dijkstra(graph, m_start, m_end);
+         return  fn_dijkstra.dijkstra(graph, this->m_start, this->m_end);
      }
 
      /*! adds to the solution set if the path has no restriction
@@ -304,10 +304,10 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 		 int64_t spurNodeId;
 
 
-		 for (unsigned int i = 0; i < curr_result_path.size(); ++i) {
-			 spurNodeId = curr_result_path[i].node;
+		 for (unsigned int i = 0; i < this->curr_result_path.size(); ++i) {
+			 spurNodeId = this->curr_result_path[i].node;
 
-			 auto rootPath = curr_result_path.getSubpath(i);
+			 auto rootPath = this->curr_result_path.getSubpath(i);
 
 			 for (const auto &path : this->m_ResultSet) {
 				 if (path.isEqual(rootPath)) {
@@ -321,7 +321,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 			 this->removeVertices(graph, rootPath);
 
 			 Pgr_dijkstra< G > fn_dijkstra;
-			 auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
+			 auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, this->m_end);
 
 			 if (spurPath.size() > 0) {
 				 rootPath.appendPath(spurPath);
@@ -345,18 +345,17 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
  private:
 	 typedef typename G::V V;
 	 std::vector<pgrouting::trsp::Rule> m_restrictions;
-	 bool m_only_cost;
 	 bool m_strict;
 
-	 V v_source;
-	 V v_target;
-	 int64_t m_start;
-	 int64_t m_end;
 
-	 Path curr_result_path;
 
 	 typedef std::set<Path, compPathsLess> pSet;
 #if 0
+	 V this->v_source;
+	 V this->v_target;
+	 int64_t this->m_start;
+	 int64_t this->m_end;
+	 Path this->curr_result_path;
 	 pSet this->m_ResultSet;  //!< ordered set of shortest paths
 	 pSet this->m_Heap;  //!< the heap
 #endif
