@@ -43,11 +43,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 
 
+namespace pgrouting{
 
 //******************************************
 
 template < class G >
-class Pgr_bellman_ford : public pgrouting::Pgr_messages {
+class Pgr_bellman_ford : public Pgr_messages {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -312,5 +313,5 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
 };
 
 
- //namespace
+ }//namespace
 #endif  // INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_
