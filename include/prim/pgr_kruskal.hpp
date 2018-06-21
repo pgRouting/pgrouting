@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <iostream>
 #include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/kruskal_min_spanning_tree.hpp>
 
 #include <deque>
 #include <set>
@@ -51,19 +52,47 @@ class Pgr_kruskal {
  public:
 
      typedef typename G::V V;
-     typedef typename G::B_G B_G;
+     typedef typename G::E E;
 
-     std::vector<pgr_prim_t> kruskal(
+     std::vector< V > predecessors;
+     std::vector<pgr_kruskal_t> kruskal(
                  G &graph);
+
+     std::vector< pgr_kruskal_t > 
+     generateKruskal(
+	       const G &graph ) {
+       typename std::vector < E >::iterator ei;
+     
+       std::vector < E > spanning_tree;
+       boost::kruskal_minimum_spanning_tree(
+                              graph.graph, 
+                              std::back_inserter(spanning_tree),
+                              boost::weight_map(get(&G::G_T_E::cost, graph.graph))
+                              );
+     
+       std::vector< pgr_kruskal_t > results;
+       double totalcost = 0;
+ 
+        for (ei = spanning_tree.begin(); ei != spanning_tree.end(); ++ei) {
+          pgr_kruskal_t tmp;
+
+          tmp.edge =  source(*ei, graph.graph);
+          tmp.cost = 111; 		     // cost
+          tmp.tree_cost = tmp.cost; 
+          results.push_back(tmp);
+
+        }
+       return results; 
+     }
 };
 
 template < class G >
-std::vector<pgr_prim_t>
+std::vector<pgr_kruskal_t>
 Pgr_kruskal< G >::kruskal(
                 G &graph) {
- 
-             std::vector< pgr_prim_t > results;
-             return results;        
+          
+      return generateKruskal(
+                             graph);     
 } 
 
 

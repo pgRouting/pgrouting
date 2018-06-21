@@ -35,10 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-std::vector<pgr_prim_t>
+std::vector<pgr_kruskal_t>
 pgr_kruskal(
         G &graph ) {
-    std::vector<pgr_prim_t> results;
+    std::vector<pgr_kruskal_t> results;
     Pgr_kruskal< G > fn_kruskal;
     return fn_kruskal.kruskal(graph);
 }
@@ -48,7 +48,7 @@ void
 do_pgr_kruskal(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        pgr_prim_t **return_tuples, 
+        pgr_kruskal_t **return_tuples, 
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -66,7 +66,7 @@ do_pgr_kruskal(
 
         graphType gType = UNDIRECTED;
 
-        std::vector<pgr_prim_t> results;
+        std::vector<pgr_kruskal_t> results;
 
         log << "Working with Undirected Graph\n";
 

@@ -1,55 +1,59 @@
 /*PGR-GNU*****************************************************************
-File: kruskal_driver.h
-
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Function's developer:
-Copyright (c) 2018 Aditya Pratap Singh
+File: pgr_kruskal_t.h
+Copyright (c) 2015 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
-
 ------
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 ********************************************************************PGR-GNU*/
+/*! @file */
 
-#ifndef INCLUDE_DRIVERS_PRIM_KRUSKAL_DRIVER_H_
-#define INCLUDE_DRIVERS_PRIM_KRUSKAL_DRIVER_H_
+#ifndef INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
+#define INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
 #pragma once
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_kruskal_t.h"
 
 #ifdef __cplusplus
-extern "C" {
+
+#include <cstddef>
+
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
 #endif
 
-    void
-        do_pgr_kruskal(
-                pgr_edge_t  *data_edges,
-                size_t total_edges,
-                pgr_kruskal_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+#include <postgres.h>
 
-#ifdef __cplusplus
-}
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
 #endif
 
-#endif  // INCLUDE_DRIVERS_PRIM_KRUSKAL_DRIVER_H_
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
+#include <stdint.h>
+
+
+typedef struct {
+    int seq;
+    int64_t edge;
+    double cost;
+    double tree_cost;
+} pgr_kruskal_t;
+
+#endif  // INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
