@@ -334,31 +334,13 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 	 }
 
 
-#if 0
-	 void removeVertices(G &graph, const Path &subpath) {
-         log << std::string(__FUNCTION__) << "\n";
-		 for (const auto &e : subpath)
-			 graph.disconnect_vertex(e.node);
-	 }
-#endif
-
  private:
-	 typedef typename G::V V;
 	 std::vector<pgrouting::trsp::Rule> m_restrictions;
 	 bool m_strict;
 
 
 
 	 typedef std::set<Path, compPathsLess> pSet;
-#if 0
-	 V this->v_source;
-	 V this->v_target;
-	 int64_t this->m_start;
-	 int64_t this->m_end;
-	 Path this->curr_result_path;
-	 pSet this->m_ResultSet;  //!< ordered set of shortest paths
-	 pSet this->m_Heap;  //!< the heap
-#endif
 
 	 //! ordered set of shortest paths
      pSet m_solutions;
