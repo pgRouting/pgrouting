@@ -37,6 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 
 
+using pgrouting::yen::Pgr_ksp;
+
 
 void  do_pgr_ksp(
         pgr_edge_t *data_edges,

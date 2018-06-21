@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/compPaths.h"
 
 #include "trsp/rule.h"
 #include "c_types/line_graph_rt.h"
@@ -43,53 +44,55 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
+#if 0
+class compPaths {
+ public:
+     bool operator()(const Path &p1, const Path &p2) const {
+         /*
+          * less cost is best
+          */
+         if (p1.tot_cost() > p2.tot_cost())
+             return  false;
+         if (p1.tot_cost() < p2.tot_cost())
+             return  true;
+
+          pgassert(p1.tot_cost() == p2.tot_cost());
+
+          // paths costs are equal now check by length
+          if (p1.size() > p2.size())
+              return false;
+          if (p1.size() < p2.size())
+              return true;
+
+          pgassert(p1.tot_cost() == p2.tot_cost());
+          pgassert(p1.size() == p2.size());
+
+          // paths weights & lengths are equal now check by node ID
+          unsigned int i;
+          for (i = 0; i < p1.size(); i++) {
+              if (p1[i].node >  p2[i].node)
+                  return false;
+              if (p1[i].node <  p2[i].node)
+                  return true;
+          }
+
+          pgassert(p1.tot_cost() == p2.tot_cost());
+          pgassert(p1.size() == p2.size());
+#ifdef NDEBUG
+          for (i = 0; i < p1.size(); i++) {
+              pgassert(p1[i].node == p2[i].node);
+          }
+#endif
+
+          // we got here and everything is equal
+          return false;
+     }
+};
+#endif
+
 template < class G >
 class Pgr_dijkstraTR : public Pgr_messages {
  private:
-	class compPaths {
-     public:
-		 bool operator()(const Path &p1, const Path &p2) const {
-			 /*
-			  * less cost is best
-			  */
-			 if (p1.tot_cost() > p2.tot_cost())
-				 return  false;
-			 if (p1.tot_cost() < p2.tot_cost())
-				 return  true;
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-
-              // paths costs are equal now check by length
-              if (p1.size() > p2.size())
-                  return false;
-              if (p1.size() < p2.size())
-                  return true;
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-              pgassert(p1.size() == p2.size());
-
-              // paths weights & lengths are equal now check by node ID
-              unsigned int i;
-              for (i = 0; i < p1.size(); i++) {
-                  if (p1[i].node >  p2[i].node)
-                      return false;
-                  if (p1[i].node <  p2[i].node)
-                      return true;
-              }
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-              pgassert(p1.size() == p2.size());
-#ifdef NDEBUG
-              for (i = 0; i < p1.size(); i++) {
-                  pgassert(p1[i].node == p2[i].node);
-              }
-#endif
-
-              // we got here and everything is equal
-              return false;
-          }
-     };
-
  public:
      std::deque<Path> dijkstraTR(
              G& graph,
@@ -116,28 +119,6 @@ class Pgr_dijkstraTR : public Pgr_messages {
         return Yen(graph, source, target, k);
     }
 
-
-/*
- * IDEA
-
-select * FROM pgr_withPoints('SELECT id, source, target, cost, reverse_cost
-FROM edge_table WHERE id !=10
-UNION select id, source, target, cost , -1 from edge_table WHERE id = 10',
-$$select id as edge_id, 'r'::CHAR AS side, 0.000001::FLOAT as fraction
-FROM edge_table
-WHERE id = 10$$,
--1, 5);
- seq | path_seq | node | edge |   cost   | agg_cost
------+----------+------+------+----------+----------
-   1 |        1 |   -1 |   10 | 0.999999 |        0
-   2 |        2 |   10 |   12 |        1 | 0.999999
-   3 |        3 |   11 |   13 |        1 | 1.999999
-   4 |        4 |   12 |   15 |        1 | 2.999999
-   5 |        5 |    9 |    9 |        1 | 3.999999
-   6 |        6 |    6 |    8 |        1 | 4.999999
-   7 |        7 |    5 |   -1 |        0 | 5.999999
-(7 rows)
-*/
 
      /*!
       * @param[in] start_vertex original id of vertex
@@ -221,7 +202,7 @@ WHERE id = 10$$,
              ) {
          if (paths.empty()) return paths;
 
-         std::sort(paths.begin(), paths.end(), compPaths());
+         std::sort(paths.begin(), paths.end(), compPathsLess());
 
          std::stable_sort(paths.begin(), paths.end(),
                  [](const Path &left, const Path &right) -> bool {
@@ -412,7 +393,7 @@ WHERE id = 10$$,
 
 	 Path curr_result_path;
 
-	 typedef std::set<Path, compPaths> pSet;
+	 typedef std::set<Path, compPathsLess> pSet;
 	 pSet m_ResultSet;  //!< ordered set of shortest paths
 	 pSet m_Heap;  //!< the heap
 

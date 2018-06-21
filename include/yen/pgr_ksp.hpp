@@ -35,7 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/compPaths.h"
 #include "cpp_common/basePath_SSEC.hpp"
+
+namespace pgrouting {
+namespace yen {
 
 template < class G >
 class Pgr_ksp {
@@ -49,6 +53,7 @@ class Pgr_ksp {
      void clear();
 
  private:
+#if 0
      class compPaths {
       public:
           bool operator()(const Path &p1, const Path &p2) const {
@@ -92,6 +97,7 @@ class Pgr_ksp {
               return false;
           }
      };
+#endif
 
      //! the actual algorithm
      void executeYen(G &graph, int top_k);
@@ -118,7 +124,7 @@ class Pgr_ksp {
 
      Path curr_result_path;  //!< storage for the current result
 
-     typedef std::set<Path, compPaths> pSet;
+     typedef std::set<Path, compPathsLess> pSet;
      pSet m_ResultSet;  //!< ordered set of shortest paths
      pSet m_Heap;  //!< the heap
 
@@ -260,4 +266,6 @@ void Pgr_ksp< G >::executeYen(G &graph, int K) {
     }
 }
 
+}  // namespace yen
+}  // namespace pgrouting
 #endif  // INCLUDE_YEN_PGR_KSP_HPP_
