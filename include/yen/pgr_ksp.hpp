@@ -150,6 +150,7 @@ class Pgr_ksp :  public Pgr_messages {
      }
 
      virtual void on_insert_to_heap(const Path) {
+         log << std::string(__PRETTY_FUNCTION__) << "\n";
      };
 
      //! Performs the next cycle of the algorithm

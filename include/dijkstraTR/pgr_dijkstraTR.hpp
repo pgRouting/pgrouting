@@ -198,7 +198,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          if (this->m_ResultSet.size() == 0) return;  // no path found
 
          while (this->m_ResultSet.size() < (unsigned int) K) {
-             doNextCycle(graph);
+             this->doNextCycle(graph);
              if (this->m_Heap.empty()) break;
              this->curr_result_path = *this->m_Heap.begin();
              this->m_ResultSet.insert(this->curr_result_path);
@@ -219,12 +219,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
       * empties containers
       */
      void clear() {
-         this->log << std::string(__FUNCTION__) << "\n";
-#if 0
-         this->clear();
-#endif
-         this->m_Heap.clear();
-         this->m_ResultSet.clear();
+         Pgr_ksp<G>::clear();
          m_solutions.clear();
      }
 
@@ -247,7 +242,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      }
 
      void on_insert_to_heap(const Path &path) {
-         this->log << std::string(__FUNCTION__) << "\n";
+         this->log << std::string(__PRETTY_FUNCTION__) << "\n";
          if (path.empty()) return;
          if (has_restriction(path)) return;
 
@@ -292,6 +287,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          return false;
      }
 
+#if 1
 	 void doNextCycle(G &graph) {
          this->log << std::string(__FUNCTION__) << "\n";
 		 int64_t spurNodeId;
@@ -325,7 +321,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 			 graph.restore_graph();
 		 }
 	 }
-
+#endif
 
  private:
 	 std::vector<pgrouting::trsp::Rule> m_restrictions;
