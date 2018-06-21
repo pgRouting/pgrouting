@@ -102,6 +102,7 @@ class Pgr_ksp {
 
      void clear() {
          m_Heap.clear();
+         m_ResultSet.clear();
      }
 
 
@@ -110,7 +111,7 @@ class Pgr_ksp {
      //! the actual algorithm
      void executeYen(G &graph, int K) {
          clear();
-         getFirstSolution(graph);
+         curr_result_path = getFirstSolution(graph);
 
          if (m_ResultSet.size() == 0) return;  // no path found
 
@@ -135,17 +136,19 @@ class Pgr_ksp {
      ///@{
 
      //! Performs the first Dijkstra of the algorithm
-     void getFirstSolution(G &graph) {
+ protected:
+     Path getFirstSolution(G &graph) {
          Path path;
 
          Pgr_dijkstra< G > fn_dijkstra;
          path = fn_dijkstra.dijkstra(graph, m_start, m_end);
 
-         if (path.empty()) return;
-         curr_result_path = path;
-         m_ResultSet.insert(curr_result_path);
+         if (path.empty()) return path;
+         m_ResultSet.insert(path);
+         return path;
      }
 
+ private:
      //! Performs the next cycle of the algorithm
      void doNextCycle(G &graph) {
          int64_t spurNodeId;
@@ -179,6 +182,7 @@ class Pgr_ksp {
          }
      }
 
+ protected:
      //! stores in subPath the first i elements of path
      void removeVertices(G &graph, const Path &subpath) {
          for (const auto &e : subpath)
@@ -187,7 +191,7 @@ class Pgr_ksp {
 
      ///@}
 
- private:
+ protected:
      /** @name members */
      ///@{
      typedef typename G::V V;

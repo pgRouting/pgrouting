@@ -60,8 +60,8 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
              bool stop_on_first,
              bool strict) {
         pgassert(m_restrictions.empty());
-        pgassert(m_Heap.empty());
-        pgassert(m_ResultSet.empty());
+        pgassert(this->m_Heap.empty());
+        pgassert(this->m_ResultSet.empty());
 
         log << std::string(__FUNCTION__) << "\n";
 
@@ -137,16 +137,16 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
              return sort_results(solutions);
          }
 
-         if (m_ResultSet.empty()) {
+         if (this->m_ResultSet.empty()) {
              return std::deque<Path>();
          }
 
-         while (!m_ResultSet.empty()) {
-             m_Heap.insert(*m_ResultSet.begin());
-             m_ResultSet.erase(m_ResultSet.begin());
+         while (!this->m_ResultSet.empty()) {
+             this->m_Heap.insert(*this->m_ResultSet.begin());
+             this->m_ResultSet.erase(this->m_ResultSet.begin());
          }
 
-         std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
+         std::deque<Path> l_ResultList(this->m_Heap.begin(), this->m_Heap.end());
 
          l_ResultList = inf_cost_on_restriction(l_ResultList);
 
@@ -192,46 +192,50 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
      void executeYen(G &graph, size_t K) {
          log << std::string(__FUNCTION__) << "\n";
 
-         curr_result_path = getFirstSolution(graph);
+         curr_result_path = this->getFirstSolution(graph);
          add_to_solution_set(curr_result_path);
 
-         if (m_ResultSet.size() == 0) return;  // no path found
+         if (this->m_ResultSet.size() == 0) return;  // no path found
 
-         while (m_ResultSet.size() < (unsigned int) K) {
+         while (this->m_ResultSet.size() < (unsigned int) K) {
              doNextCycle(graph);
-             if (m_Heap.empty()) break;
-             curr_result_path = *m_Heap.begin();
-             m_ResultSet.insert(curr_result_path);
-             m_Heap.erase(m_Heap.begin());
+             if (this->m_Heap.empty()) break;
+             curr_result_path = *this->m_Heap.begin();
+             this->m_ResultSet.insert(curr_result_path);
+             this->m_Heap.erase(this->m_Heap.begin());
              /*
               * without the next line withpointsKSP hungs with:
               * c++ 4.6
               * Debug mode
               */
 #ifndef NDEBUG
-             log << "end of while heap size:" << m_Heap.size() << "\n";
+             log << "end of while heap size:" << this->m_Heap.size() << "\n";
 #endif
          }
      }
 
+#if 1
      Path getFirstSolution(G &graph) {
          log << std::string(__FUNCTION__) << "\n";
          Pgr_dijkstra< G > fn_dijkstra;
          auto path = fn_dijkstra.dijkstra(graph, m_start, m_end);
 
          if (path.empty()) return path;
-         m_ResultSet.insert(path);
+         this->m_ResultSet.insert(path);
 		 return path;
      }
-
+#endif
      /** \brief containers cleanup
       *
       * empties containers
       */
      void clear() {
          log << std::string(__FUNCTION__) << "\n";
-         m_Heap.clear();
-         m_ResultSet.clear();
+#if 0
+         this->clear();
+#endif
+         this->m_Heap.clear();
+         this->m_ResultSet.clear();
          m_solutions.clear();
      }
 
@@ -305,7 +309,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 
 			 auto rootPath = curr_result_path.getSubpath(i);
 
-			 for (const auto &path : m_ResultSet) {
+			 for (const auto &path : this->m_ResultSet) {
 				 if (path.isEqual(rootPath)) {
 					 if (path.size() > i + 1) {
 						 graph.disconnect_edge(path[i].node,     // from
@@ -314,7 +318,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 				 }
 			 }
 
-			 removeVertices(graph, rootPath);
+			 this->removeVertices(graph, rootPath);
 
 			 Pgr_dijkstra< G > fn_dijkstra;
 			 auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
@@ -322,7 +326,7 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 			 if (spurPath.size() > 0) {
 				 rootPath.appendPath(spurPath);
                  add_to_solution_set(rootPath);
-				 m_Heap.insert(rootPath);
+				 this->m_Heap.insert(rootPath);
 			 }
 
 			 graph.restore_graph();
@@ -330,11 +334,13 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 	 }
 
 
+#if 0
 	 void removeVertices(G &graph, const Path &subpath) {
          log << std::string(__FUNCTION__) << "\n";
 		 for (const auto &e : subpath)
 			 graph.disconnect_vertex(e.node);
 	 }
+#endif
 
  private:
 	 typedef typename G::V V;
@@ -350,8 +356,10 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
 	 Path curr_result_path;
 
 	 typedef std::set<Path, compPathsLess> pSet;
-	 pSet m_ResultSet;  //!< ordered set of shortest paths
-	 pSet m_Heap;  //!< the heap
+#if 0
+	 pSet this->m_ResultSet;  //!< ordered set of shortest paths
+	 pSet this->m_Heap;  //!< the heap
+#endif
 
 	 //! ordered set of shortest paths
      pSet m_solutions;
