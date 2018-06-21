@@ -229,12 +229,6 @@ class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
      }
 
 
-     Path getDijkstraSolution(G& graph) {
-         log << std::string(__FUNCTION__) << "\n";
-         Pgr_dijkstra< G > fn_dijkstra;
-         return  fn_dijkstra.dijkstra(graph, this->m_start, this->m_end);
-     }
-
      /*! adds to the solution set if the path has no restriction
       *
       * path is added when there is a path and has no restriction
