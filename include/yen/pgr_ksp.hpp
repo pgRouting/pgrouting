@@ -50,7 +50,7 @@ class Pgr_ksp :  public Pgr_messages {
              G &graph,
              int64_t  start_vertex,
              int64_t end_vertex,
-             int K,
+             size_t K,
              bool heap_paths) {
          /*
           * No path: already in destination
@@ -95,7 +95,7 @@ class Pgr_ksp :  public Pgr_messages {
                  [](const Path &left, const Path &right) {
                  return left.size() < right.size();});
 
-         if (!heap_paths && l_ResultList.size() > (size_t) K)
+         if (!heap_paths && l_ResultList.size() > K)
              l_ResultList.resize(K);
 
          return l_ResultList;
@@ -110,13 +110,13 @@ class Pgr_ksp :  public Pgr_messages {
  private:
 
      //! the actual algorithm
-     void executeYen(G &graph, int K) {
+     void executeYen(G &graph, size_t K) {
          clear();
          curr_result_path = getFirstSolution(graph);
 
          if (m_ResultSet.size() == 0) return;  // no path found
 
-         while (m_ResultSet.size() < (unsigned int) K) {
+         while (m_ResultSet.size() <  K) {
              doNextCycle(graph);
              if (m_Heap.empty()) break;
              curr_result_path = *m_Heap.begin();
@@ -149,10 +149,12 @@ class Pgr_ksp :  public Pgr_messages {
          return path;
      }
 
+ public:
      virtual void on_insert_to_heap(const Path) {
          log << std::string(__PRETTY_FUNCTION__) << "\n";
      };
 
+ protected:
      //! Performs the next cycle of the algorithm
      void doNextCycle(G &graph) {
          int64_t spurNodeId;
@@ -180,7 +182,7 @@ class Pgr_ksp :  public Pgr_messages {
              if (spurPath.size() > 0) {
                  rootPath.appendPath(spurPath);
                  m_Heap.insert(rootPath);
-                 on_insert_to_heap(rootPath);
+                 this->on_insert_to_heap(rootPath);
              }
 
              graph.restore_graph();

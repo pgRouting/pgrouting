@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -51,7 +51,7 @@ process(
         char* points_sql,
         int64_t start_pid,
         int64_t end_pid,
-        int k,
+        int p_k,
 
         bool directed,
         bool heap_paths,
@@ -60,6 +60,12 @@ process(
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
+    if (p_k < 0) {
+        return;
+    };
+
+    size_t k = (size_t)p_k;
+
     driving_side[0] = (char) tolower(driving_side[0]);
     PGR_DBG("driving side:%c", driving_side[0]);
     if (!((driving_side[0] == 'r')

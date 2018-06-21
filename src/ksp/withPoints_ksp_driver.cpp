@@ -57,7 +57,7 @@ do_pgr_withPointsKsp(
         pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
         int64_t start_pid,
         int64_t end_pid,
-        int k,
+        size_t k,
         bool directed,
         bool heap_paths,
         char driving_side,

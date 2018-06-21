@@ -81,13 +81,14 @@ process(
         return;
     };
 
+    size_t k = (size_t)p_k;
+
     if (start_vid == end_vid) {
         return;
     }
 
     pgr_SPI_connect();
 
-    size_t k = (size_t)p_k;
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
