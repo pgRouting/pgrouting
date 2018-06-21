@@ -53,51 +53,6 @@ class Pgr_ksp {
      void clear();
 
  private:
-#if 0
-     class compPaths {
-      public:
-          bool operator()(const Path &p1, const Path &p2) const {
-              /*
-               * less cost is best
-               */
-              if (p1.tot_cost() > p2.tot_cost())
-                  return  false;
-              if (p1.tot_cost() < p2.tot_cost())
-                return  true;
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-
-              // paths costs are equal now check by length
-              if (p1.size() > p2.size())
-                  return false;
-              if (p1.size() < p2.size())
-                  return true;
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-              pgassert(p1.size() == p2.size());
-
-              // paths weights & lengths are equal now check by node ID
-              unsigned int i;
-              for (i = 0; i < p1.size(); i++) {
-                  if (p1[i].node >  p2[i].node)
-                      return false;
-                  if (p1[i].node <  p2[i].node)
-                      return true;
-              }
-
-              pgassert(p1.tot_cost() == p2.tot_cost());
-              pgassert(p1.size() == p2.size());
-#ifdef NDEBUG
-              for (i = 0; i < p1.size(); i++) {
-                  pgassert(p1[i].node == p2[i].node);
-              }
-#endif
-
-              // we got here and everything is equal
-              return false;
-          }
-     };
-#endif
 
      //! the actual algorithm
      void executeYen(G &graph, int top_k);
