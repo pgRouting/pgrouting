@@ -65,6 +65,7 @@ do_pgr_directedChPP(
         std::deque< Path > paths;
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
+        //TODO(mg) fix signature
         paths = pgr_directedChPP(
                 digraph,
                 only_cost);
