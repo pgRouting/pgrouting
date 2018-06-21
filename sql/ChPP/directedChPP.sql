@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: minCostMaxFlow.sql
+File: directedChPP.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,24 +27,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-------------------------
---    MANY TO MANY
-------------------------
-
-CREATE OR REPLACE FUNCTION _pgr_minCostMaxFlow(
+CREATE OR REPLACE FUNCTION _pgr_directedChPP(
     edges_sql TEXT,                 -- edges_sql
-    sources ANYARRAY,               -- sources
-    targets ANYARRAY,               -- targets
     only_cost BOOLEAN DEFAULT false,
         OUT seq INTEGER,            -- seq
+    OUT node BIGINT,                -- node_id
     OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
     OUT cost FLOAT,                 -- cost
     OUT agg_cost FLOAT)             -- total cost
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'minCostMaxFlow_many_to_many'
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'directedChPP'
 LANGUAGE c IMMUTABLE STRICT;
