@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <functional>
 #include <limits>
-
+#include "cpp_common/pgr_messages.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
@@ -47,11 +47,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //******************************************
 
 template < class G >
-class Pgr_bellman_ford {
+class Pgr_bellman_ford : public pgrouting::Pgr_messages {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
-
      //@}
 
      //! @name BellmanFord
@@ -63,7 +62,9 @@ class Pgr_bellman_ford {
              int64_t end_vertex,
              bool only_cost = false) {
          clear();
-
+         log << std::string(__FUNCTION__) << "\n";
+         
+         
          // adjust predecessors and distances vectors
          predecessors.resize(graph.num_vertices());
          distances.resize(graph.num_vertices());
@@ -98,7 +99,7 @@ class Pgr_bellman_ford {
              bool only_cost= false) {
          // adjust predecessors and distances vectors
          clear();
-
+         log << std::string(__FUNCTION__) << "\n";
          predecessors.resize(graph.num_vertices());
          distances.resize(graph.num_vertices());
 
@@ -137,7 +138,7 @@ class Pgr_bellman_ford {
              int64_t end_vertex,
              bool only_cost = false) {
          std::deque<Path> paths;
-
+         log << std::string(__FUNCTION__) << "\n";
          for (const auto &start : start_vertex) {
              paths.push_back(
                      bellman_ford(graph, start, end_vertex, only_cost));
@@ -159,6 +160,7 @@ class Pgr_bellman_ford {
              bool only_cost = false) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
+         log << std::string(__FUNCTION__) << "\n";
          for (const auto &start : start_vertex) {
              auto r_paths = bellman_ford(graph, start, end_vertex, only_cost);
              paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
@@ -183,13 +185,16 @@ class Pgr_bellman_ford {
                  G &graph,
                  V source,
                  V target) {
+         log << std::string(__FUNCTION__) << "\n";
+         
          try {
-             boost::bellman_ford_shortest_paths(graph.graph, int(graph.num_vertices()),
+             bool negative = boost::bellman_ford_shortest_paths(graph.graph, int(graph.num_vertices()),
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
                      .root_vertex(source)
                      .visitor(bellman_ford_one_goal_visitor(target)));
+             
          } catch(found_goals &) {
              return true;
          } catch (boost::exception const& ex) {
@@ -208,6 +213,7 @@ class Pgr_bellman_ford {
              G &graph,
              V source,
              const std::vector< V > &targets) {
+        log << std::string(__FUNCTION__) << "\n";
          try {
              boost::bellman_ford_shortest_paths(graph.graph, int(graph.num_vertices()),
                      boost::predecessor_map(&predecessors[0])
@@ -244,6 +250,7 @@ class Pgr_bellman_ford {
              V source,
              std::vector< V > &targets,
              bool only_cost) const {
+        log << std::string(__FUNCTION__) << "\n";
          std::deque<Path> paths;
          for (const auto target : targets) {
              paths.push_back(Path(
@@ -305,5 +312,5 @@ class Pgr_bellman_ford {
 };
 
 
-
+ //namespace
 #endif  // INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_
