@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "dijkstra/pgr_dijkstra.hpp"
+#include "yen/pgr_ksp.hpp"
 
 #include <sstream>
 #include <deque>
@@ -37,15 +38,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/compPaths.h"
+#include "cpp_common/pgr_messages.h"
 
 #include "trsp/rule.h"
 #include "c_types/line_graph_rt.h"
-#include "cpp_common/pgr_messages.h"
 
 namespace pgrouting {
+namespace yen {
 
-template < class G >
-class Pgr_dijkstraTR : public Pgr_messages {
+template < typename G >
+class Pgr_dijkstraTR : public Pgr_messages, protected Pgr_ksp< G > {
  private:
  public:
      std::deque<Path> dijkstraTR(
@@ -361,6 +363,7 @@ class Pgr_dijkstraTR : public Pgr_messages {
 
 };
 
+}  // namespace yen
 }  // namespace pgrouting
 
 

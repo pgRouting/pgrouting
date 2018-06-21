@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "dijkstraTR/pgr_dijkstraTR.hpp"
 
-using pgrouting::Pgr_dijkstraTR;
+using pgrouting::yen::Pgr_dijkstraTR;
 using pgrouting::trsp::Rule;
 
 template < class G >
