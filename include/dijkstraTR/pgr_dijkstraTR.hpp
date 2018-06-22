@@ -61,10 +61,9 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
              m_stop_on_first(stop_on_first),
              m_solutions(solutions),
              m_restrictions(restrictions) {
-                //pgassert(m_solutions.size()==1);
          }
 
-         void on_insert_first_solution (const Path path) {
+         void on_insert_first_solution (const Path path) const {
              if (path.empty()) return;
              if (has_restriction(path)) return;
 
@@ -74,12 +73,10 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          };
 
          void on_insert_to_heap(const Path path) const {
-             //pgassert(false);
              if (path.empty()) return;
              if (has_restriction(path)) return;
 
              m_solutions.insert(path);
-             pgassert(m_solutions.size()==2);
 
              if (m_stop_on_first) {
                  throw found_goals();
@@ -175,7 +172,8 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
 
          try {
-             executeYen(graph);
+              Pgr_ksp< G >::executeYen(graph);
+              //executeYen(graph);
          } catch(found_goals &) {
              pgassert(!m_solutions.empty());
              this->log << "On catch m_stop_on_first" << m_stop_on_first << "\n";
@@ -238,7 +236,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      }
 
 
-
+#if 0
      void executeYen(G &graph) {
          this->log << std::string(__FUNCTION__) << "\n";
 
@@ -259,7 +257,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
              this->m_Heap.erase(this->m_Heap.begin());
          }
      }
-
+#endif
      /** \brief containers cleanup
       *
       * empties containers

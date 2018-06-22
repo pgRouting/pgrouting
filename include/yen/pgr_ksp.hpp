@@ -118,7 +118,7 @@ class Pgr_ksp :  public Pgr_messages {
          }
      };
 
- private:
+ protected:
      //! the actual algorithm
      void executeYen(G &graph) {
          clear();
