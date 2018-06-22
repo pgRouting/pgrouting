@@ -53,7 +53,9 @@ pgr_bellman_ford(
         G &graph,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
-        bool only_cost = false) {
+        std::string& log,
+        bool only_cost = false
+        ) {
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
@@ -66,7 +68,7 @@ pgr_bellman_ford(
 
     Pgr_bellman_ford< G > fn_bellman_ford;
     auto paths = fn_bellman_ford.bellman_ford(graph, sources, targets, only_cost);
-
+    log += fn_bellman_ford.get_log();
     return paths;
 }
 
@@ -107,24 +109,26 @@ do_pgr_bellman_ford(
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
         std::deque< Path >paths;
-
+        std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_all_edges(data_edges, total_edges);
             paths = pgr_bellman_ford(digraph,
                     start_vertices, end_vertices,
+                     logstr,
                     only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_all_edges(data_edges, total_edges);
             paths = pgr_bellman_ford(
                     undigraph,
                     start_vertices, end_vertices,
+                     logstr,
                     only_cost);
         }
-
+        log << logstr;
         size_t count(0);
         count = count_tuples(paths);
 
