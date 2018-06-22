@@ -152,9 +152,40 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          return get_results(l_ResultList);
      }
 
+     class Myvisitor : public Pgr_ksp<G>::Visitor {
+         Myvisitor(
+                 pSet &solutions,
+                 std::vector<trsp::Rule> &restrictions):
+             m_solutions(solutions),
+             m_restrictions(restrictions) {
+         }
+
+         void on_insert_to_heap(const Path path) const {
+             if (path.empty()) return;
+             if (has_restriction(path)) return;
+
+             m_solutions.insert(path);
+
+             if (m_stop_on_first) throw found_goals();
+         }
+
+         bool has_restriction(const Path &path) const {
+             for (const auto r :  m_restrictions) {
+                 if (path.has_restriction(r)) {
+                     return true;
+                 } else {
+                 }
+             }
+
+             return false;
+         }
+         pSet &m_solutions;
+         std::vector<trsp::Rule> &m_restrictions;
+     };
+
+ private:
      std::deque<Path> sort_results(
-             std::deque<Path> &paths
-             ) {
+             std::deque<Path> &paths) {
          if (paths.empty()) return paths;
          paths = Pgr_ksp<G>::sort_results(paths);
 
@@ -166,8 +197,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      }
 
      std::deque<Path> get_results (
-             std::deque<Path> &paths
-             ) {
+             std::deque<Path> &paths) {
          if (m_strict) return std::deque<Path>();
 
          paths = sort_results(paths);
@@ -237,38 +267,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
              if (m_stop_on_first) throw found_goals();
      };
-#if 0
-     class Myvisitor : public Pgr_ksp<G> Visitor {
-         Myvisitor(
-                 pSet &solutions,
-                 std::vector<trsp::Rule> &restrictions):
-             m_solutions(solutions),
-             m_restrictions(restrictions) {
-         }
-
-         void on_insert_to_heap(const Path path) const {
-             if (path.empty()) return;
-             if (has_restriction(path)) return;
-
-             solutions.insert(path);
-
-             if (m_stop_on_first) throw found_goals();
-         }
-
-         bool has_restriction(const Path &path) const {
-             for (const auto r :  m_restrictions) {
-                 if (path.has_restriction(r)) {
-                     return true;
-                 } else {
-                 }
-             }
-
-             return false;
-         }
-         pSet &m_solutions;
-         std::vector<trsp::Rule> &m_restrictions
-     };
-#endif
      void on_insert_to_heap (const Path path) {
              if (path.empty()) return;
              if (has_restriction(path)) return;
