@@ -95,6 +95,7 @@ class Pgr_ksp :  public Pgr_messages {
          auto paths = get_results();
 
          if (!m_heap_paths && paths.size() > m_K) paths.resize(m_K);
+
          return paths;
      }
 

@@ -118,9 +118,9 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
 
         m_stop_on_first = stop_on_first;
-        m_heap_paths = heap_paths;
         m_strict = strict;
         m_restrictions = restrictions;
+        m_heap_paths = heap_paths;
 
         this->log << "m_stop_on_first" << m_stop_on_first << "\n";
 
@@ -166,6 +166,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          this->m_start = start_vertex;
          this->m_end = end_vertex;
          this->m_K = K;
+         Pgr_ksp<G>::m_heap_paths = true;
          delete this->m_vis;
          this->m_vis = new Myvisitor(m_solutions, m_restrictions, m_stop_on_first);
 
@@ -198,12 +199,11 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
          auto solutions = Pgr_ksp<G>::get_results();
 
-         solutions = inf_cost_on_restriction(solutions);
+
 
          return get_results(solutions);
      }
 
- public:
  private:
      std::deque<Path> sort_results(
              std::deque<Path> &paths) {
@@ -221,9 +221,14 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          if (paths.empty()) return paths;
          if (m_strict) return std::deque<Path>();
 
+         paths = inf_cost_on_restriction(paths);
+
          paths = sort_results(paths);
-         if (m_heap_paths) return paths;
+
          auto count = paths.begin()->countInfinityCost();
+
+
+         if (m_heap_paths) return paths;
 
          paths.erase(
                  std::remove_if(
@@ -236,28 +241,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      }
 
 
-#if 0
-     void executeYen(G &graph) {
-         this->log << std::string(__FUNCTION__) << "\n";
-
-         this->curr_result_path = this->getFirstSolution(graph);
-         On_insert_first_solution(this->curr_result_path);
-
-         if (this->m_ResultSet.size() == 0) return;  // no path found
-
-         this->log << "m_stop_on_first" << m_stop_on_first << "\n";
-         Myvisitor vis(m_solutions, m_restrictions, m_stop_on_first);
-         while (this->m_ResultSet.size() < this->m_K) {
-
-             Pgr_ksp< G >::doNextCycle(graph);
-
-             if (this->m_Heap.empty()) break;
-             this->curr_result_path = *this->m_Heap.begin();
-             this->m_ResultSet.insert(this->curr_result_path);
-             this->m_Heap.erase(this->m_Heap.begin());
-         }
-     }
-#endif
      /** \brief containers cleanup
       *
       * empties containers
@@ -268,60 +251,18 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      }
 
 
-     /*! adds to the solution set if the path has no restriction
-      *
-      * path is added when there is a path and has no restriction
-      *
-      * @param[in] path to add
-      */
-     void On_insert_first_solution (const Path path) {
-             if (path.empty()) return;
-             if (has_restriction(path)) return;
-
-             this->log << "inserting first solution";
-             m_solutions.insert(path);
-
-             if (m_stop_on_first) throw found_goals();
-     };
-#if 0
-     void on_insert_to_heap (const Path path) {
-             if (path.empty()) return;
-             if (has_restriction(path)) return;
-
-             m_solutions.insert(path);
-
-             if (m_stop_on_first) throw found_goals();
-         }
-#endif
-
-     bool has_restriction(const Path &path) const {
-         for (const auto r :  m_restrictions) {
-             if (path.has_restriction(r)) {
-                 return true;
-             } else {
-             }
-         }
-
-         return false;
-     }
 
      /*! sets an inf value on agg_cost on the vertex/edge where the restriction begins
       *
       * @params[in] path that is being analized
       */
-     Path inf_cost_on_restriction(Path &path) {
-         this->log << std::string(__FUNCTION__) << "\n";
-         for (const auto r : m_restrictions) {
-             path = path.inf_cost_on_restriction(r);
-         }
-         return path;
-     }
-
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
          this->log << std::string(__FUNCTION__) << "\n";
          if (paths.empty()) return paths;
          for (auto &p : paths) {
-             p = inf_cost_on_restriction(p);
+             for (const auto r : m_restrictions) {
+                 p = p.inf_cost_on_restriction(r);
+             }
          }
          return paths;
      }
@@ -330,10 +271,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
  private:
 	 std::vector<pgrouting::trsp::Rule> m_restrictions;
 	 bool m_strict;
-
-	 //! ordered set of shortest paths
      pSet m_solutions;
-
      bool m_stop_on_first;
      bool m_heap_paths;
 

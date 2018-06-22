@@ -37,8 +37,8 @@ FROM pgr_turnRestrictedPath(
     stop_on_first:=false
 );
 
-SELECT set_eq('r1', 'q1', 'Should return r1 result (one cycle)');
-SELECT set_eq('r1', 'q2', 'Should return r1 result (one cycle, Dont stop_on_first)');
+SELECT set_eq('q1', 'r1', 'Should return r1 result (one cycle)');
+SELECT set_eq('q2', 'r1', 'Should return r1 result (one cycle, Dont stop_on_first)');
 
 -------------------------------------------------------------
 -- queries that return r2
@@ -67,7 +67,7 @@ FROM pgr_turnRestrictedPath(
     stop_on_first:=false
 );
 
-SELECT set_eq('r2', 'q3', 'Should return r2 result (3 cycle, Dont stop_on_first)');
+SELECT set_eq('q3', 'r2', 'Should return r2 result (3 cycle, Dont stop_on_first)');
 
 -------------------------------------------------------------
 -- queries that return r3
@@ -98,8 +98,8 @@ FROM pgr_turnRestrictedPath(
     heap_paths:=true
 )  WHERE agg_cost = FLOAT8 '+infinity';
 
-SELECT set_eq('r3', 'q4', 'Should return r3 result (1 cycle)');
-SELECT set_eq('r3', 'q7', 'Should return r3 result (1 cycle, Heap paths)');
+SELECT set_eq('q4', 'r3', 'Should return r3 result (1 cycle)');
+SELECT set_eq('q7', 'r3', 'Should return r3 result (1 cycle, Heap paths)');
 
 -------------------------------------------------------------
 -- queries that return r4
@@ -120,6 +120,7 @@ FROM pgr_turnRestrictedPath(
 ) WHERE agg_cost = FLOAT8 '+infinity';
 
 
+
 PREPARE q6 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
@@ -130,8 +131,8 @@ FROM pgr_turnRestrictedPath(
     stop_on_first:=false
 ) WHERE agg_cost = FLOAT8 '+infinity';
 
-SELECT set_eq('r4', 'q5', 'Should return r4 result (2 cycle, Dont stop_on_first)');
-SELECT set_eq('r4', 'q6', 'Should return r4 result (2 cycle, Dont stop_on_first)');
+SELECT set_eq('q5', 'r4', 'q5 Should return r4 result (2 cycle, Dont stop_on_first)');
+SELECT set_eq('q6', 'r4', 'q6 Should return r4 result (2 cycle, Dont stop_on_first)');
 
 
 ----------------------------------------
@@ -168,8 +169,9 @@ FROM pgr_turnRestrictedPath(
     stop_on_first:=false
 ) WHERE agg_cost = FLOAT8 '+infinity';
 
-SELECT set_eq('r5', 'q8', 'Should return r4 result (2 cycle, Dont stop_on_first, heap paths)');
-SELECT set_eq('r5', 'q9', 'Should return r4 result (3 cycle, Dont stop_on_first, heap paths)');
+SELECT set_eq('q8', 'r5', 'Should return r4 result (2 cycle, Dont stop_on_first, heap paths)');
+SELECT set_eq('q9', 'r5', 'Should return r4 result (3 cycle, Dont stop_on_first, heap paths)');
+
 
 SELECT finish();
 ROLLBACK;
