@@ -50,6 +50,7 @@ template < typename G >
 class Pgr_dijkstraTR : public Pgr_ksp< G > {
 	 typedef std::set<Path, compPathsLess> pSet;
  public:
+
      std::deque<Path> dijkstraTR(
              G& graph,
              const std::vector<pgrouting::trsp::Rule> &restrictions,
@@ -71,6 +72,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
         m_strict = strict;
         m_restrictions = restrictions;
 
+        this->log << "m_stop_on_first" << m_stop_on_first << "\n";
 
         return Yen(graph, source, target, k);
     }
@@ -113,11 +115,13 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          this->v_target = graph.get_V(end_vertex);
          this->m_start = start_vertex;
          this->m_end = end_vertex;
+         this->m_K = K;
 
          try {
-             executeYen(graph, K);
+             executeYen(graph);
          } catch(found_goals &) {
              pgassert(!m_solutions.empty());
+             this->log << "On catch m_stop_on_first" << m_stop_on_first << "\n";
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
              return sort_results(solutions);
          } catch (boost::exception const& ex) {
@@ -133,6 +137,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
          if (!m_solutions.empty()) {
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
+             this->log << "outside of catch size" << m_solutions.size() << "\n";
              return sort_results(solutions);
          }
 
@@ -143,35 +148,49 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          return get_results(solutions);
      }
 
+ public:
+     struct found_goals{};
      class Myvisitor : public Pgr_ksp<G>::Visitor {
+      public:
          Myvisitor(
                  pSet &solutions,
-                 std::vector<trsp::Rule> &restrictions):
+                 std::vector<trsp::Rule> &restrictions,
+                 bool stop_on_first
+                 ):
+             m_stop_on_first(stop_on_first),
              m_solutions(solutions),
              m_restrictions(restrictions) {
+                //pgassert(m_solutions.size()==1);
          }
 
          void on_insert_to_heap(const Path path) const {
+             //pgassert(false);
              if (path.empty()) return;
              if (has_restriction(path)) return;
 
              m_solutions.insert(path);
+             pgassert(m_solutions.size()==2);
 
-             if (m_stop_on_first) throw found_goals();
+             if (m_stop_on_first) {
+                 throw found_goals();
+             }
          }
 
+      //private:
          bool has_restriction(const Path &path) const {
              for (const auto r :  m_restrictions) {
                  if (path.has_restriction(r)) {
                      return true;
-                 } else {
                  }
              }
 
              return false;
          }
+
+         bool m_stop_on_first;
          pSet &m_solutions;
          std::vector<trsp::Rule> &m_restrictions;
+         size_t count;
      };
 
  private:
@@ -207,7 +226,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
 
 
-     void executeYen(G &graph, size_t K) {
+     void executeYen(G &graph) {
          this->log << std::string(__FUNCTION__) << "\n";
 
          this->curr_result_path = this->getFirstSolution(graph);
@@ -215,22 +234,20 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
          if (this->m_ResultSet.size() == 0) return;  // no path found
 
-         while (this->m_ResultSet.size() < (unsigned int) K) {
-             //Pgr_ksp< G >::doNextCycle(graph);
-             this->doNextCycle(graph);
+         this->log << "m_stop_on_first" << m_stop_on_first << "\n";
+         Myvisitor vis(m_solutions, m_restrictions, m_stop_on_first);
+         while (this->m_ResultSet.size() < this->m_K) {
+
+             this->log << "cycle" << this->m_ResultSet.size() << "\n";
+             this->log << "size" << m_solutions.size() << "\n";
+             //Pgr_ksp< G >::doNextCycle(graph, vis);
+             doNextCycle(graph, vis);
+             pgassert(vis.m_solutions.size() == m_solutions.size());
 
              if (this->m_Heap.empty()) break;
              this->curr_result_path = *this->m_Heap.begin();
              this->m_ResultSet.insert(this->curr_result_path);
              this->m_Heap.erase(this->m_Heap.begin());
-             /*
-              * without the next line withpointsKSP hungs with:
-              * c++ 4.6
-              * Debug mode
-              */
-#ifndef NDEBUG
-             this->log << "end of while heap size:" << this->m_Heap.size() << "\n";
-#endif
          }
      }
 
@@ -254,6 +271,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
              if (path.empty()) return;
              if (has_restriction(path)) return;
 
+             this->log << "inserting first solution";
              m_solutions.insert(path);
 
              if (m_stop_on_first) throw found_goals();
@@ -301,7 +319,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      }
 
 #if 1
-	 void doNextCycle(G &graph) {
+	 void doNextCycle(G &graph, Myvisitor &vis) {
          this->log << std::string(__FUNCTION__) << "\n";
 		 int64_t spurNodeId;
 
@@ -327,8 +345,8 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
 			 if (spurPath.size() > 0) {
 				 rootPath.appendPath(spurPath);
-                 on_insert_to_heap(rootPath);
 				 this->m_Heap.insert(rootPath);
+                 vis.on_insert_to_heap(rootPath);
 			 }
 
 			 graph.restore_graph();
@@ -346,7 +364,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      bool m_stop_on_first;
      bool m_heap_paths;
 
-     struct found_goals{};
 
 };
 
