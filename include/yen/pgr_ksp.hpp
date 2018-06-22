@@ -188,16 +188,6 @@ class Pgr_ksp :  public Pgr_messages {
              graph.disconnect_vertex(e.node);
      }
 
-     /** @brief Sort the paths */
-     std::deque<Path> sort_results(
-             std::deque<Path> paths
-             ) {
-         if (paths.empty()) return paths;
-         std::sort(paths.begin(), paths.end(), compPathsLess());
-
-         return paths;
-     }
-
      std::deque<Path> get_results() {
          if (this->m_ResultSet.empty()) {
              return std::deque<Path>();
@@ -210,7 +200,8 @@ class Pgr_ksp :  public Pgr_messages {
          }
          pgassert(!paths.empty());
 
-         paths = sort_results(paths);
+         std::sort(paths.begin(), paths.end(), compPathsLess());
+
          return paths;
      }
 
