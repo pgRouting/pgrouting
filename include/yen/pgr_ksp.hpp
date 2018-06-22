@@ -109,6 +109,10 @@ class Pgr_ksp :  public Pgr_messages {
       public:
           virtual ~Visitor() {}
 
+         virtual void on_insert_first_solution(const Path) const {
+             /* noop */
+         }
+
          virtual void on_insert_to_heap(const Path) const {
              /* noop */
          }
@@ -119,6 +123,7 @@ class Pgr_ksp :  public Pgr_messages {
      void executeYen(G &graph) {
          clear();
          curr_result_path = getFirstSolution(graph);
+         m_vis->on_insert_first_solution(curr_result_path);
 
          if (m_ResultSet.size() == 0) return;  // no path found
 

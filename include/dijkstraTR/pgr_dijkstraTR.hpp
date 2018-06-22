@@ -64,6 +64,15 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
                 //pgassert(m_solutions.size()==1);
          }
 
+         void on_insert_first_solution (const Path path) {
+             if (path.empty()) return;
+             if (has_restriction(path)) return;
+
+             m_solutions.insert(path);
+
+             if (m_stop_on_first) throw found_goals();
+         };
+
          void on_insert_to_heap(const Path path) const {
              //pgassert(false);
              if (path.empty()) return;
@@ -242,8 +251,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          Myvisitor vis(m_solutions, m_restrictions, m_stop_on_first);
          while (this->m_ResultSet.size() < this->m_K) {
 
-             this->log << "cycle" << this->m_ResultSet.size() << "\n";
-             this->log << "size" << m_solutions.size() << "\n";
              Pgr_ksp< G >::doNextCycle(graph);
 
              if (this->m_Heap.empty()) break;
@@ -278,6 +285,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
              if (m_stop_on_first) throw found_goals();
      };
+#if 0
      void on_insert_to_heap (const Path path) {
              if (path.empty()) return;
              if (has_restriction(path)) return;
@@ -286,6 +294,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
              if (m_stop_on_first) throw found_goals();
          }
+#endif
 
      bool has_restriction(const Path &path) const {
          for (const auto r :  m_restrictions) {
@@ -297,7 +306,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
          return false;
      }
-
 
      /*! sets an inf value on agg_cost on the vertex/edge where the restriction begins
       *
