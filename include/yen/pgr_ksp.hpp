@@ -128,14 +128,6 @@ class Pgr_ksp :  public Pgr_messages {
              curr_result_path = *m_Heap.begin();
              m_ResultSet.insert(curr_result_path);
              m_Heap.erase(m_Heap.begin());
-             /*
-              * without the next line withpointsKSP hungs with:
-              *  c++ 4.6
-              *  Debug mode
-              */
-#ifndef NDEBUG
-             log << "end of while heap size" << m_Heap.size();
-#endif
          }
      }
 
