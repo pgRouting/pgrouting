@@ -53,7 +53,7 @@ class Pgr_kruskal {
 
      typedef typename G::V V;
      typedef typename G::E E;
-
+     typedef typename G::E_i E_i;
      std::vector< V > predecessors;
      std::vector<pgr_kruskal_t> kruskal(
                  G &graph);
@@ -73,12 +73,28 @@ class Pgr_kruskal {
        std::vector< pgr_kruskal_t > results;
        double totalcost = 0;
  
-        for (ei = spanning_tree.begin(); ei != spanning_tree.end(); ++ei) {
-          pgr_kruskal_t tmp;
+       E_i ei1, ei_end1;
 
-          tmp.edge =  source(*ei, graph.graph);
-          tmp.cost = 111; 		     // cost
-          tmp.tree_cost = tmp.cost; 
+       for (ei = spanning_tree.begin(); ei != spanning_tree.end(); ++ei) {
+          pgr_kruskal_t tmp; 
+          for (boost::tie(ei1, ei_end1) = edges(graph.graph); ei1 != ei_end1; ++ei1) {
+              if(*ei == *ei1){
+                tmp.cost = graph[*ei1].cost;   
+                break;
+              }          
+          }
+          auto start_node = graph.graph[source(*ei, graph.graph)].id;
+          auto end_node = graph.graph[target(*ei, graph.graph)].id; // node
+         
+          auto v_sn(graph.get_V(start_node));
+          auto v_en(graph.get_V(end_node));
+
+          auto edge_id = 
+                 graph.get_edge_id(v_sn, v_en, tmp.cost);
+	  totalcost += tmp.cost;    
+ 
+          tmp.edge = edge_id;	     // edge_id 
+          tmp.tree_cost = totalcost; 
           results.push_back(tmp);
 
         }
