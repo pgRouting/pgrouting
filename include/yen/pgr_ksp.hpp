@@ -45,6 +45,8 @@ namespace yen {
 
 template < class G >
 class Pgr_ksp :  public Pgr_messages {
+     typedef typename G::V V;
+     typedef std::set<Path, compPathsLess> pSet;
  public:
      std::deque<Path> Yen(
              G &graph,
@@ -58,6 +60,7 @@ class Pgr_ksp :  public Pgr_messages {
          if ((start_vertex == end_vertex) || (K == 0)) {
              return std::deque<Path>();
          }
+
          /*
           * no path: disconnected vertices
           */
@@ -65,40 +68,34 @@ class Pgr_ksp :  public Pgr_messages {
                  || !graph.has_vertex(end_vertex)) {
              return std::deque<Path>();
          }
-         m_ResultSet.clear();
-         m_Heap.clear();
+
+         /*
+          * clean up containers
+          */
+         clear();
+
 
          v_source = graph.get_V(start_vertex);
          v_target = graph.get_V(end_vertex);
          m_start = start_vertex;
          m_end = end_vertex;
-         executeYen(graph, K);
+         m_K = K;
+         m_heap_paths = heap_paths;
+
+
+         executeYen(graph);
+
+         if (this->m_ResultSet.empty()) {
+             return std::deque<Path>();
+         }
 
          while (!m_ResultSet.empty()) {
              m_Heap.insert(*m_ResultSet.begin());
              m_ResultSet.erase(m_ResultSet.begin());
          }
-         std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
+         std::deque<Path> paths(m_Heap.begin(), m_Heap.end());
 
-         std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
-                 [](const Path &left, const Path &right) -> bool {
-                 for (size_t i = 0;
-                         i < (std::min)(left.size(), right.size());
-                         ++i) {
-                 if (left[i].node < right[i].node) return true;
-                 if (left[i].node > right[i].node) return false;
-                 }
-                 return false;
-                 });
-
-         std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
-                 [](const Path &left, const Path &right) {
-                 return left.size() < right.size();});
-
-         if (!heap_paths && l_ResultList.size() > K)
-             l_ResultList.resize(K);
-
-         return l_ResultList;
+         return get_results(paths);
      }
 
      void clear() {
@@ -107,17 +104,26 @@ class Pgr_ksp :  public Pgr_messages {
      }
 
 
- private:
 
+     class Visitor {
+      public:
+         void on_insert_to_heap(const Path) const {
+             /* noop */
+         }
+     };
+
+ private:
      //! the actual algorithm
-     void executeYen(G &graph, size_t K) {
+     void executeYen(G &graph) {
          clear();
          curr_result_path = getFirstSolution(graph);
 
          if (m_ResultSet.size() == 0) return;  // no path found
 
-         while (m_ResultSet.size() <  K) {
-             doNextCycle(graph);
+         Visitor vis;
+
+         while (m_ResultSet.size() <  m_K) {
+             doNextCycle(graph, vis);
              if (m_Heap.empty()) break;
              curr_result_path = *m_Heap.begin();
              m_ResultSet.insert(curr_result_path);
@@ -149,14 +155,10 @@ class Pgr_ksp :  public Pgr_messages {
          return path;
      }
 
- public:
-     virtual void on_insert_to_heap(const Path) {
-         log << std::string(__PRETTY_FUNCTION__) << "\n";
-     };
 
  protected:
      //! Performs the next cycle of the algorithm
-     void doNextCycle(G &graph) {
+     void doNextCycle(G &graph, Visitor &vis) {
          int64_t spurNodeId;
 
 
@@ -182,7 +184,7 @@ class Pgr_ksp :  public Pgr_messages {
              if (spurPath.size() > 0) {
                  rootPath.appendPath(spurPath);
                  m_Heap.insert(rootPath);
-                 this->on_insert_to_heap(rootPath);
+                 vis.on_insert_to_heap(rootPath);
              }
 
              graph.restore_graph();
@@ -196,24 +198,45 @@ class Pgr_ksp :  public Pgr_messages {
              graph.disconnect_vertex(e.node);
      }
 
+     /** @brief Sort the paths */
+     std::deque<Path> sort_results(
+             std::deque<Path> paths
+             ) {
+         if (paths.empty()) return paths;
+         std::sort(paths.begin(), paths.end(), compPathsLess());
+
+         return paths;
+     }
+
+     std::deque<Path> get_results (
+             std::deque<Path> &paths
+             ) {
+         if (paths.empty()) return paths;
+
+         paths = sort_results(paths);
+         if (m_heap_paths) return paths;
+         if (paths.size() > m_K) paths.resize(m_K);
+
+         return paths;
+     }
+
      ///@}
 
  protected:
      /** @name members */
      ///@{
-     typedef typename G::V V;
      V v_source;  //!< source descriptor
      V v_target;  //!< target descriptor
      int64_t m_start;  //!< source id
      int64_t m_end;   //!< target id
+     size_t m_K;
+     bool m_heap_paths;
 
      Path curr_result_path;  //!< storage for the current result
 
-     typedef std::set<Path, compPathsLess> pSet;
      pSet m_ResultSet;  //!< ordered set of shortest paths
      pSet m_Heap;  //!< the heap
 
-     //std::ostringstream log;
 };
 
 

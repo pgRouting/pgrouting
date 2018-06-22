@@ -48,7 +48,7 @@ namespace yen {
 
 template < typename G >
 class Pgr_dijkstraTR : public Pgr_ksp< G > {
- private:
+	 typedef std::set<Path, compPathsLess> pSet;
  public:
      std::deque<Path> dijkstraTR(
              G& graph,
@@ -132,7 +132,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
 
          if (!m_solutions.empty()) {
-             this->log << "Found solutions " << m_solutions.size() << "\n";
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
              return sort_results(solutions);
          }
@@ -157,8 +156,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
              std::deque<Path> &paths
              ) {
          if (paths.empty()) return paths;
-
-         std::sort(paths.begin(), paths.end(), compPathsLess());
+         paths = Pgr_ksp<G>::sort_results(paths);
 
          std::stable_sort(paths.begin(), paths.end(),
                  [](const Path &left, const Path &right) -> bool {
@@ -173,9 +171,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          if (m_strict) return std::deque<Path>();
 
          paths = sort_results(paths);
-
          if (m_heap_paths) return paths;
-
          auto count = paths.begin()->countInfinityCost();
 
          paths.erase(
@@ -184,6 +180,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
                      [&count](const Path &p){return count != p.countInfinityCost();}
                      ),
                  paths.end());
+
          return paths;
      }
 
@@ -193,12 +190,14 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          this->log << std::string(__FUNCTION__) << "\n";
 
          this->curr_result_path = this->getFirstSolution(graph);
-         on_insert_first_solution(this->curr_result_path);
+         On_insert_first_solution(this->curr_result_path);
 
          if (this->m_ResultSet.size() == 0) return;  // no path found
 
          while (this->m_ResultSet.size() < (unsigned int) K) {
+             //Pgr_ksp< G >::doNextCycle(graph);
              this->doNextCycle(graph);
+
              if (this->m_Heap.empty()) break;
              this->curr_result_path = *this->m_Heap.begin();
              this->m_ResultSet.insert(this->curr_result_path);
@@ -230,26 +229,64 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
       *
       * @param[in] path to add
       */
-     void on_insert_first_solution(const Path &path) {
-         this->log << std::string(__FUNCTION__) << "\n";
-         if (path.empty()) return;
-         if (has_restriction(path)) return;
+     void On_insert_first_solution (const Path path) {
+             if (path.empty()) return;
+             if (has_restriction(path)) return;
 
-         m_solutions.insert(path);
-         this->log << "adding to solution set" << path << "size" << m_solutions.size();
+             m_solutions.insert(path);
 
-         if (m_stop_on_first) throw found_goals();
-     }
+             if (m_stop_on_first) throw found_goals();
+     };
+#if 0
+     class Myvisitor : public Pgr_ksp<G> Visitor {
+         Myvisitor(
+                 pSet &solutions,
+                 std::vector<trsp::Rule> &restrictions):
+             m_solutions(solutions),
+             m_restrictions(restrictions) {
+         }
 
-     void on_insert_to_heap(const Path &path) {
-         this->log << std::string(__PRETTY_FUNCTION__) << "\n";
-         if (path.empty()) return;
-         if (has_restriction(path)) return;
+         void on_insert_to_heap(const Path path) const {
+             if (path.empty()) return;
+             if (has_restriction(path)) return;
 
-         m_solutions.insert(path);
-         this->log << "adding to solution set" << path << "size" << m_solutions.size();
+             solutions.insert(path);
 
-         if (m_stop_on_first) throw found_goals();
+             if (m_stop_on_first) throw found_goals();
+         }
+
+         bool has_restriction(const Path &path) const {
+             for (const auto r :  m_restrictions) {
+                 if (path.has_restriction(r)) {
+                     return true;
+                 } else {
+                 }
+             }
+
+             return false;
+         }
+         pSet &m_solutions;
+         std::vector<trsp::Rule> &m_restrictions
+     };
+#endif
+     void on_insert_to_heap (const Path path) {
+             if (path.empty()) return;
+             if (has_restriction(path)) return;
+
+             m_solutions.insert(path);
+
+             if (m_stop_on_first) throw found_goals();
+         }
+
+     bool has_restriction(const Path &path) const {
+         for (const auto r :  m_restrictions) {
+             if (path.has_restriction(r)) {
+                 return true;
+             } else {
+             }
+         }
+
+         return false;
      }
 
 
@@ -271,20 +308,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
              p = inf_cost_on_restriction(p);
          }
          return paths;
-     }
-
-     bool has_restriction(const Path &path) const {
-         this->log << std::string(__FUNCTION__) << "\n";
-         for (const auto r :  m_restrictions) {
-             if (path.has_restriction(r)) {
-                 this->log <<"   ---> has restriction" << r << "\n";
-                 return true;
-             } else {
-                 this->log <<"   ---> No restriction" << r << "\n";
-             }
-         }
-
-         return false;
      }
 
 #if 1
@@ -329,7 +352,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
 
 
-	 typedef std::set<Path, compPathsLess> pSet;
 
 	 //! ordered set of shortest paths
      pSet m_solutions;
