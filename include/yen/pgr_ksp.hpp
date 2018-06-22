@@ -85,17 +85,10 @@ class Pgr_ksp :  public Pgr_messages {
 
          executeYen(graph);
 
-         if (this->m_ResultSet.empty()) {
-             return std::deque<Path>();
-         }
+         auto paths = get_results();
 
-         while (!m_ResultSet.empty()) {
-             m_Heap.insert(*m_ResultSet.begin());
-             m_ResultSet.erase(m_ResultSet.begin());
-         }
-         std::deque<Path> paths(m_Heap.begin(), m_Heap.end());
-
-         return get_results(paths);
+         if (!m_heap_paths && paths.size() > m_K) paths.resize(m_K);
+         return paths;
      }
 
      void clear() {
@@ -200,15 +193,19 @@ class Pgr_ksp :  public Pgr_messages {
          return paths;
      }
 
-     std::deque<Path> get_results (
-             std::deque<Path> &paths
-             ) {
-         if (paths.empty()) return paths;
+     std::deque<Path> get_results() {
+         if (this->m_ResultSet.empty()) {
+             return std::deque<Path>();
+         }
+
+         std::deque<Path> paths(m_ResultSet.begin(), m_ResultSet.end());
+
+         if (m_heap_paths && !m_Heap.empty()) {
+            paths.insert(paths.end(), m_Heap.begin(), m_Heap.end());
+         }
+         pgassert(!paths.empty());
 
          paths = sort_results(paths);
-         if (m_heap_paths) return paths;
-         if (paths.size() > m_K) paths.resize(m_K);
-
          return paths;
      }
 

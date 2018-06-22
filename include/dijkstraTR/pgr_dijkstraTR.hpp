@@ -136,20 +136,11 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
              return sort_results(solutions);
          }
 
-         if (this->m_ResultSet.empty()) {
-             return std::deque<Path>();
-         }
+         auto solutions = Pgr_ksp<G>::get_results();
 
-         while (!this->m_ResultSet.empty()) {
-             this->m_Heap.insert(*this->m_ResultSet.begin());
-             this->m_ResultSet.erase(this->m_ResultSet.begin());
-         }
+         solutions = inf_cost_on_restriction(solutions);
 
-         std::deque<Path> l_ResultList(this->m_Heap.begin(), this->m_Heap.end());
-
-         l_ResultList = inf_cost_on_restriction(l_ResultList);
-
-         return get_results(l_ResultList);
+         return get_results(solutions);
      }
 
      class Myvisitor : public Pgr_ksp<G>::Visitor {
@@ -187,7 +178,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      std::deque<Path> sort_results(
              std::deque<Path> &paths) {
          if (paths.empty()) return paths;
-         paths = Pgr_ksp<G>::sort_results(paths);
 
          std::stable_sort(paths.begin(), paths.end(),
                  [](const Path &left, const Path &right) -> bool {
@@ -198,6 +188,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
      std::deque<Path> get_results (
              std::deque<Path> &paths) {
+         if (paths.empty()) return paths;
          if (m_strict) return std::deque<Path>();
 
          paths = sort_results(paths);
@@ -302,6 +293,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
          this->log << std::string(__FUNCTION__) << "\n";
+         if (paths.empty()) return paths;
          for (auto &p : paths) {
              p = inf_cost_on_restriction(p);
          }
@@ -347,9 +339,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
  private:
 	 std::vector<pgrouting::trsp::Rule> m_restrictions;
 	 bool m_strict;
-
-
-
 
 	 //! ordered set of shortest paths
      pSet m_solutions;
