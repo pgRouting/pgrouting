@@ -50,6 +50,50 @@ template < typename G >
 class Pgr_dijkstraTR : public Pgr_ksp< G > {
 	 typedef std::set<Path, compPathsLess> pSet;
  public:
+     struct found_goals{};
+     class Myvisitor : public Pgr_ksp<G>::Visitor {
+      public:
+         Myvisitor(
+                 pSet &solutions,
+                 std::vector<trsp::Rule> &restrictions,
+                 bool stop_on_first
+                 ):
+             m_stop_on_first(stop_on_first),
+             m_solutions(solutions),
+             m_restrictions(restrictions) {
+                //pgassert(m_solutions.size()==1);
+         }
+
+         void on_insert_to_heap(const Path path) const {
+             //pgassert(false);
+             if (path.empty()) return;
+             if (has_restriction(path)) return;
+
+             m_solutions.insert(path);
+             pgassert(m_solutions.size()==2);
+
+             if (m_stop_on_first) {
+                 throw found_goals();
+             }
+         }
+
+      //private:
+         bool has_restriction(const Path &path) const {
+             for (const auto r :  m_restrictions) {
+                 if (path.has_restriction(r)) {
+                     return true;
+                 }
+             }
+
+             return false;
+         }
+
+         bool m_stop_on_first;
+         pSet &m_solutions;
+         std::vector<trsp::Rule> &m_restrictions;
+         size_t count;
+     };
+
 
      std::deque<Path> dijkstraTR(
              G& graph,
@@ -116,6 +160,10 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          this->m_start = start_vertex;
          this->m_end = end_vertex;
          this->m_K = K;
+         delete this->m_vis;
+         this->m_vis = new Myvisitor(m_solutions, m_restrictions, m_stop_on_first);
+
+
 
          try {
              executeYen(graph);
@@ -149,50 +197,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      }
 
  public:
-     struct found_goals{};
-     class Myvisitor : public Pgr_ksp<G>::Visitor {
-      public:
-         Myvisitor(
-                 pSet &solutions,
-                 std::vector<trsp::Rule> &restrictions,
-                 bool stop_on_first
-                 ):
-             m_stop_on_first(stop_on_first),
-             m_solutions(solutions),
-             m_restrictions(restrictions) {
-                //pgassert(m_solutions.size()==1);
-         }
-
-         void on_insert_to_heap(const Path path) const {
-             //pgassert(false);
-             if (path.empty()) return;
-             if (has_restriction(path)) return;
-
-             m_solutions.insert(path);
-             pgassert(m_solutions.size()==2);
-
-             if (m_stop_on_first) {
-                 throw found_goals();
-             }
-         }
-
-      //private:
-         bool has_restriction(const Path &path) const {
-             for (const auto r :  m_restrictions) {
-                 if (path.has_restriction(r)) {
-                     return true;
-                 }
-             }
-
-             return false;
-         }
-
-         bool m_stop_on_first;
-         pSet &m_solutions;
-         std::vector<trsp::Rule> &m_restrictions;
-         size_t count;
-     };
-
  private:
      std::deque<Path> sort_results(
              std::deque<Path> &paths) {
@@ -240,9 +244,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
              this->log << "cycle" << this->m_ResultSet.size() << "\n";
              this->log << "size" << m_solutions.size() << "\n";
-             //Pgr_ksp< G >::doNextCycle(graph, vis);
-             doNextCycle(graph, vis);
-             pgassert(vis.m_solutions.size() == m_solutions.size());
+             Pgr_ksp< G >::doNextCycle(graph);
 
              if (this->m_Heap.empty()) break;
              this->curr_result_path = *this->m_Heap.begin();
@@ -318,41 +320,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          return paths;
      }
 
-#if 1
-	 void doNextCycle(G &graph, Myvisitor &vis) {
-         this->log << std::string(__FUNCTION__) << "\n";
-		 int64_t spurNodeId;
-
-
-		 for (unsigned int i = 0; i < this->curr_result_path.size(); ++i) {
-			 spurNodeId = this->curr_result_path[i].node;
-
-			 auto rootPath = this->curr_result_path.getSubpath(i);
-
-			 for (const auto &path : this->m_ResultSet) {
-				 if (path.isEqual(rootPath)) {
-					 if (path.size() > i + 1) {
-						 graph.disconnect_edge(path[i].node,     // from
-								 path[i + 1].node);  // to
-					 }
-				 }
-			 }
-
-			 this->removeVertices(graph, rootPath);
-
-			 Pgr_dijkstra< G > fn_dijkstra;
-			 auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, this->m_end);
-
-			 if (spurPath.size() > 0) {
-				 rootPath.appendPath(spurPath);
-				 this->m_Heap.insert(rootPath);
-                 vis.on_insert_to_heap(rootPath);
-			 }
-
-			 graph.restore_graph();
-		 }
-	 }
-#endif
 
  private:
 	 std::vector<pgrouting::trsp::Rule> m_restrictions;

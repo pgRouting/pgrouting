@@ -49,10 +49,10 @@ class Pgr_ksp :  public Pgr_messages {
      typedef std::set<Path, compPathsLess> pSet;
  public:
      Pgr_ksp() {
-         this->m_vis = new Visitor;
+         m_vis = new Visitor;
      };
      ~Pgr_ksp() {
-         delete this->m_vis;
+         delete m_vis;
      }
 
      std::deque<Path> Yen(
@@ -107,7 +107,9 @@ class Pgr_ksp :  public Pgr_messages {
 
      class Visitor {
       public:
-         void on_insert_to_heap(const Path) const {
+          virtual ~Visitor() {}
+
+         virtual void on_insert_to_heap(const Path) const {
              /* noop */
          }
      };
@@ -121,7 +123,7 @@ class Pgr_ksp :  public Pgr_messages {
          if (m_ResultSet.size() == 0) return;  // no path found
 
          while (m_ResultSet.size() <  m_K) {
-             doNextCycle(graph, m_vis);
+             doNextCycle(graph);
              if (m_Heap.empty()) break;
              curr_result_path = *m_Heap.begin();
              m_ResultSet.insert(curr_result_path);
@@ -148,7 +150,7 @@ class Pgr_ksp :  public Pgr_messages {
 
  protected:
      //! Performs the next cycle of the algorithm
-     void doNextCycle(G &graph, Visitor *vis) {
+     void doNextCycle(G &graph) {
          int64_t spurNodeId;
 
 
@@ -174,7 +176,7 @@ class Pgr_ksp :  public Pgr_messages {
              if (spurPath.size() > 0) {
                  rootPath.appendPath(spurPath);
                  m_Heap.insert(rootPath);
-                 vis->on_insert_to_heap(rootPath);
+                 m_vis->on_insert_to_heap(rootPath);
              }
 
              graph.restore_graph();
