@@ -38,15 +38,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/compPaths.h"
 #include "cpp_common/pgr_messages.h"
-
-#include "trsp/rule.h"
+#include "cpp_common/rule.h"
 #include "c_types/line_graph_rt.h"
 
 namespace pgrouting {
 namespace yen {
 
 template < typename G >
-class Pgr_dijkstraTR : public Pgr_ksp< G > {
+class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 	 typedef std::set<Path, compPathsLess> pSet;
  public:
      struct found_goals{};
@@ -100,7 +99,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
      };
 
 
-     std::deque<Path> dijkstraTR(
+     std::deque<Path> turnRestrictedPath(
              G& graph,
              const std::vector<pgrouting::trsp::Rule> &restrictions,
              int64_t source,
@@ -169,7 +168,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
          } catch(found_goals &) {
              pgassert(!m_solutions.empty());
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
-             return sort_results(solutions);
+             return solutions;
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -183,7 +182,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
          if (!m_solutions.empty()) {
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
-             return sort_results(solutions);
+             return solutions;
          }
 
          auto solutions = Pgr_ksp<G>::get_results();

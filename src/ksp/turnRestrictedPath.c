@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTR.c
+File: turnRestrictedPath.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307@gmail.com
+Copyright (c) 2018 vicky Vergara
+Mail: vicky@georepublic.de
 
 ------
 
@@ -27,16 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/** @file dijkstraTR.c
- * @brief Connecting code with postgres.
- *
+/** @file turnRestrictedPath.c
  */
 
-/**
- *  postgres_connection.h
- *
- *  - should always be first in the C code
- */
 #include "c_common/postgres_connection.h"
 
 
@@ -47,10 +40,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/restrictions_input.h"
 
-#include "drivers/dijkstraTR/dijkstraTR_driver.h"
+#include "drivers/yen/turnRestrictedPath_driver.h"
 
-PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(dijkstraTR);
+PGDLLEXPORT Datum turnRestrictedPath(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(turnRestrictedPath);
 
 
 static
@@ -72,11 +65,6 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Edge query: %s", edges_sql);
-    PGR_DBG("Restrictions query: %s", restrictions_sql);
-    PGR_DBG("source: %lu | destination: %lu", start_vid, end_vid);
-    PGR_DBG("Load data");
-
     if (p_k < 0) {
         return;
     };
@@ -84,6 +72,7 @@ process(
     size_t k = (size_t)p_k;
 
     if (start_vid == end_vid) {
+        PGR_DBG("Source and target are the same");
         return;
     }
 
@@ -95,9 +84,7 @@ process(
 
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total %ld edges in query:", total_edges);
 
-    PGR_DBG("Load restrictions");
     Restriction_t *restrictions = NULL;
     size_t total_restrictions = 0;
 
@@ -110,12 +97,11 @@ process(
         return;
     }
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_dijkstraTR(
+    do_pgr_turnRestrictedPath(
             edges,
             total_edges,
             restrictions,
@@ -134,8 +120,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_dijkstraTR", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
+    time_msg(" processing pgr_turnRestrictedPath", start_t, clock());
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
@@ -151,7 +136,8 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum dijkstraTR(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum
+turnRestrictedPath(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

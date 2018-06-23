@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/dijkstraTR/dijkstraTR_driver.h"
+#include "drivers/yen/turnRestrictedPath_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -40,9 +40,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/rule.h"
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "dijkstraTR/pgr_dijkstraTR.hpp"
+#include "yen/pgr_turnRestrictedPath.hpp"
 
-using pgrouting::yen::Pgr_dijkstraTR;
+using pgrouting::yen::Pgr_turnRestrictedPath;
 using pgrouting::trsp::Rule;
 
 template < class G >
@@ -58,9 +58,9 @@ pgr_dijkstraTR(
         bool heap_paths,
         bool stop_on_first,
         bool strict) {
-    Pgr_dijkstraTR< G > fn_TRSP;
+    Pgr_turnRestrictedPath< G > fn_TRSP;
 
-    auto paths = fn_TRSP.dijkstraTR(graph,
+    auto paths = fn_TRSP.turnRestrictedPath(graph,
                     restrictions,
                     source,
                     target,
@@ -128,7 +128,7 @@ do_pgr_dijkstraTR(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            Pgr_dijkstraTR < pgrouting::DirectedGraph > fn_TRSP;
+            Pgr_turnRestrictedPath < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(edges);
             log << digraph;
             paths = pgr_dijkstraTR(digraph,
@@ -145,7 +145,7 @@ do_pgr_dijkstraTR(
         } else {
             log << "TODO Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            Pgr_dijkstraTR < pgrouting::UndirectedGraph > fn_TRSP;
+            Pgr_turnRestrictedPath < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
             paths = pgr_dijkstraTR(undigraph,
                     ruleList,

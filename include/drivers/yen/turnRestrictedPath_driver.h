@@ -51,7 +51,7 @@ extern "C" {
      ********************************************************/
 
 
-    void do_pgr_dijkstraTR(
+    void do_pgr_turnRestrictedPath(
             pgr_edge_t  *data_edges,
             size_t total_edges,
 
