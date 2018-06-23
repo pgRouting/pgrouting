@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/general_path_element_t.h"
 #include "cpp_common/path_t.h"
 #include "cpp_common/pgr_base_graph.hpp"
-#include "trsp/rule.h"
+#include "cpp_common/rule.h"
 
 
 class Path {
