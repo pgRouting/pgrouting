@@ -46,5 +46,5 @@ CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'dijkstraTR'
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'turnRestrictedPath'
 LANGUAGE c IMMUTABLE STRICT;

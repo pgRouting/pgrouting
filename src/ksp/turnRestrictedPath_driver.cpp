@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTR_driver.cpp
+File: turnRestrictedPath_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -74,7 +74,7 @@ pgr_dijkstraTR(
 }
 
 void
-do_pgr_dijkstraTR(
+do_pgr_turnRestrictedPath(
         pgr_edge_t *data_edges,
         size_t total_edges,
 
