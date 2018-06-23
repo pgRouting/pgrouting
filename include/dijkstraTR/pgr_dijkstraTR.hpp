@@ -26,7 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DIJKSTRATR_PGR_DIJKSTRATR_HPP_
 #pragma once
 
-#include "dijkstra/pgr_dijkstra.hpp"
 #include "yen/pgr_ksp.hpp"
 
 #include <sstream>
@@ -83,7 +82,7 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
              }
          }
 
-      //private:
+      private:
          bool has_restriction(const Path &path) const {
              for (const auto r :  m_restrictions) {
                  if (path.has_restriction(r)) {
@@ -114,15 +113,10 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
         pgassert(this->m_Heap.empty());
         pgassert(this->m_ResultSet.empty());
 
-        this->log << std::string(__FUNCTION__) << "\n";
-
-
         m_stop_on_first = stop_on_first;
         m_strict = strict;
         m_restrictions = restrictions;
         m_heap_paths = heap_paths;
-
-        this->log << "m_stop_on_first" << m_stop_on_first << "\n";
 
         return Yen(graph, source, target, k);
     }
@@ -138,8 +132,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
              int64_t  start_vertex,
              int64_t end_vertex,
              size_t K) {
-
-        this->log << std::string(__FUNCTION__) << "\n";
 
          /*
           * No path: already in destination
@@ -174,10 +166,8 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
          try {
               Pgr_ksp< G >::executeYen(graph);
-              //executeYen(graph);
          } catch(found_goals &) {
              pgassert(!m_solutions.empty());
-             this->log << "On catch m_stop_on_first" << m_stop_on_first << "\n";
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
              return sort_results(solutions);
          } catch (boost::exception const& ex) {
@@ -193,29 +183,15 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
          if (!m_solutions.empty()) {
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
-             this->log << "outside of catch size" << m_solutions.size() << "\n";
              return sort_results(solutions);
          }
 
          auto solutions = Pgr_ksp<G>::get_results();
 
-
-
          return get_results(solutions);
      }
 
  private:
-     std::deque<Path> sort_results(
-             std::deque<Path> &paths) {
-         if (paths.empty()) return paths;
-
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &left, const Path &right) -> bool {
-                 return (left.countInfinityCost() < right.countInfinityCost());
-                 });
-         return paths;
-     }
-
      std::deque<Path> get_results (
              std::deque<Path> &paths) {
          if (paths.empty()) return paths;
@@ -223,7 +199,10 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
 
          paths = inf_cost_on_restriction(paths);
 
-         paths = sort_results(paths);
+         std::stable_sort(paths.begin(), paths.end(),
+                 [](const Path &left, const Path &right) -> bool {
+                 return (left.countInfinityCost() < right.countInfinityCost());
+                 });
 
          auto count = paths.begin()->countInfinityCost();
 
@@ -257,7 +236,6 @@ class Pgr_dijkstraTR : public Pgr_ksp< G > {
       * @params[in] path that is being analized
       */
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
-         this->log << std::string(__FUNCTION__) << "\n";
          if (paths.empty()) return paths;
          for (auto &p : paths) {
              for (const auto r : m_restrictions) {
