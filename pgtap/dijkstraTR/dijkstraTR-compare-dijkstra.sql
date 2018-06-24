@@ -25,7 +25,7 @@ BEGIN
     dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
         || ', true)';
 
-    dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+    dijkstratr_sql := 'SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
         || ', 3, true)';
     RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
 
@@ -33,7 +33,7 @@ BEGIN
     inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
     dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
         || ', false)';
-    dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+    dijkstratr_sql := 'SELECT  seq, path_seq, node, edge, cost, agg_cost FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
         || ', 3, false)';
     RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
 
@@ -42,7 +42,7 @@ BEGIN
     dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
         || ', true)';
 
-    dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+    dijkstratr_sql := 'SELECT  seq, path_seq, node, edge, cost, agg_cost FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
         || ', 3, true)';
     RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
 
@@ -51,7 +51,7 @@ BEGIN
     dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
         || ', false)';
 
-    dijkstratr_sql := 'SELECT * FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
+    dijkstratr_sql := 'SELECT  seq, path_seq, node, edge, cost, agg_cost FROM pgr_turnrestrictedpath($$' || inner_sql || '$$, $$' || restricted_sql || '$$, '|| i || ', ' || j
         || ', 3, false)';
     RETURN query SELECT set_eq(dijkstratr_sql, dijkstra_sql, dijkstratr_sql);
 

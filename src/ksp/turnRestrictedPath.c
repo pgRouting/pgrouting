@@ -60,9 +60,9 @@ process(
         bool stop_on_first,
         bool strict,
 
-        General_path_element_t **result_tuples,
+        General_path_element_t **path,
         size_t *result_count) {
-    (*result_tuples) = NULL;
+    (*path) = NULL;
     (*result_count) = 0;
 
     if (p_k < 0) {
@@ -114,7 +114,7 @@ process(
             stop_on_first,
             strict,
 
-            result_tuples,
+            path,
             result_count,
             &log_msg,
             &notice_msg,
@@ -123,7 +123,7 @@ process(
     time_msg(" processing pgr_turnRestrictedPath", start_t, clock());
 
     if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
+        if (*path) pfree(*path);
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
@@ -141,7 +141,7 @@ turnRestrictedPath(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    General_path_element_t  *result_tuples = NULL;
+    General_path_element_t  *path = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -181,7 +181,7 @@ turnRestrictedPath(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
                 PG_GETARG_BOOL(8),
-                &result_tuples,
+                &path,
                 &result_count);
 
 #if PGSQL_VERSION > 95
@@ -189,7 +189,7 @@ turnRestrictedPath(PG_FUNCTION_ARGS) {
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
-        funcctx->user_fctx = result_tuples;
+        funcctx->user_fctx = path;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
@@ -204,7 +204,7 @@ turnRestrictedPath(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    path = (General_path_element_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -223,21 +223,25 @@ turnRestrictedPath(PG_FUNCTION_ARGS) {
                OUT agg_cost FLOAT
          ***********************************************************************/
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+        size_t v_count = 7;
+
+        values = palloc(v_count * sizeof(Datum));
+        nulls = palloc(v_count * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < v_count; ++i) {
             nulls[i] = false;
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[1] = Int32GetDatum(path[funcctx->call_cntr].start_id + 1);
+        values[2] = Int32GetDatum(path[funcctx->call_cntr].seq);
+        values[3] = Int64GetDatum(path[funcctx->call_cntr].node);
+        values[4] = Int64GetDatum(path[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(path[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(path[funcctx->call_cntr].agg_cost);
+
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

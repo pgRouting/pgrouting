@@ -14,5 +14,5 @@ SELECT function_returns('pgr_turnrestrictedpath',
 -- testing column names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_turnrestrictedpath'$$,
-    $$SELECT  '{"","","","","","directed","heap_paths","stop_on_first","strict","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"","","","","","directed","heap_paths","stop_on_first","strict","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
 );

@@ -13,7 +13,8 @@ SELECT * FROM pgr_turnRestrictedPath(
 SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM new_restrictions',
-    2, 12, 3
+    2, 12, 3,
+    heap_paths := true
 );
 
 \echo -- q4

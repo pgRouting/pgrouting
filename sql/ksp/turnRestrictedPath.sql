@@ -39,6 +39,7 @@ CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
     strict BOOLEAN DEFAULT false,
 
     OUT seq INTEGER,
+    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
