@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 --MANY TO MANY
 
-CREATE OR REPLACE FUNCTION pgr_bellman_ford(
+CREATE OR REPLACE FUNCTION pgr_bellmanFord(
     TEXT,
     ANYARRAY,
     ANYARRAY,
@@ -48,7 +48,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false ) AS a;
+    FROM _pgr_bellmanFord(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false ) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
@@ -58,7 +58,7 @@ ROWS 1000;
 
 --ONE TO ONE
 
-CREATE OR REPLACE FUNCTION pgr_bellman_ford(
+CREATE OR REPLACE FUNCTION pgr_bellmanFord(
     TEXT,
     BIGINT,
     BIGINT,
@@ -74,7 +74,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
-    FROM _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
+    FROM _pgr_bellmanFord(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE;
 
@@ -82,7 +82,7 @@ LANGUAGE SQL VOLATILE;
 
 --ONE TO MANY
 
-CREATE OR REPLACE FUNCTION pgr_bellman_ford(
+CREATE OR REPLACE FUNCTION pgr_bellmanFord(
     TEXT,
     BIGINT,
     ANYARRAY,
@@ -100,7 +100,7 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
-    FROM _pgr_bellman_ford(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false) AS a;
+    FROM _pgr_bellmanFord(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE;
 
@@ -108,7 +108,7 @@ LANGUAGE SQL VOLATILE;
 
 --MANY TO ONE
 
-CREATE OR REPLACE FUNCTION pgr_bellman_ford(
+CREATE OR REPLACE FUNCTION pgr_bellmanFord(
     TEXT,
     ANYARRAY,
     BIGINT,
@@ -125,6 +125,6 @@ CREATE OR REPLACE FUNCTION pgr_bellman_ford(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost 
-    FROM _pgr_bellman_ford(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
+    FROM _pgr_bellmanFord(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE;
