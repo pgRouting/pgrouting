@@ -34,21 +34,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <set>
 
-// work for both directed and undirected
+// work for only directed
 #include "ChPP/pgr_ChPP.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-//TODO(mg) parameters
 void
 do_pgr_directedChPP(
-        pgr_costFlow_t  *data_edges, size_t total_edges,
-        int64_t *source_vertices, size_t size_source_verticesArr,
-        int64_t *sink_vertices, size_t size_sink_verticesArr,
+        pgr_edge_t *data_edges, size_t total_edges,
         bool only_cost,
 
-        pgr_flow_t **return_tuples, size_t *return_count,
+        General_path_element_t **return_tuples, size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -63,52 +60,32 @@ do_pgr_directedChPP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        /* TODO(mg)
-        std::vector<pgr_costFlow_t> edges(data_edges, data_edges + total_edges);
-        std::set<int64_t> sources(
-                source_vertices, source_vertices + size_source_verticesArr);
-        std::set<int64_t> targets(
-                sink_vertices, sink_vertices + size_sink_verticesArr);
+        graphType gType = DIRECTED;
 
-        std::set<int64_t> vertices(sources);
-        vertices.insert(targets.begin(), targets.end());
+        std::deque< Path > paths;
+        pgrouting::DirectedGraph digraph(gType);
+        digraph.insert_edges(data_edges, total_edges);
+        //TODO(mg) fix signature
+        paths = pgr_directedChPP(
+                digraph,
+                only_cost);
+        
+        size_t count(0);
+        count = count_tuples(paths);
 
-        if (vertices.size()
-                != (sources.size() + targets.size())) {
-            *err_msg = pgr_msg("A source found as sink");
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice <<
+                "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
-        pgrouting::graph::PgrCostFlowGraph digraph(
-                edges, sources, targets);
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        log << "\nConverting a set of paths into the tuples";
+        (*return_count) = (collapse_paths(return_tuples, paths));
 
-        double min_cost;
-        min_cost = digraph.minCostMaxFlow();
-
-        std::vector<pgr_flow_t> flow_edges;
-
-        if (only_cost) {
-            pgr_flow_t edge;
-            edge.edge = -1;
-            edge.source = -1;
-            edge.target = -1;
-            edge.flow = -1;
-            edge.residual_capacity = -1;
-            edge.cost = min_cost;
-            edge.agg_cost = min_cost;
-            flow_edges.push_back(edge);
-        } else {
-            flow_edges = digraph.get_flow_edges();
-        }
-
-        (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
-        for (size_t i = 0; i < flow_edges.size(); i++) {
-            (*return_tuples)[i] = flow_edges[i];
-        }
-        *return_count = flow_edges.size();
-        */
-
-        pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());

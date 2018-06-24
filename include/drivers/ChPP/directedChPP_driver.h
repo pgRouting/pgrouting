@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_CHPP_DIRECTEDCHPP_DRIVER_H_
 #pragma once
 
-#include "c_types/pgr_flow_t.h"
-#include "c_types/pgr_costFlow_t.h"
+#include "c_types/pgr_edge_t.h"
+#include "c_types/general_path_element_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -47,14 +47,10 @@ extern "C" {
 
     void
         do_pgr_directedChPP(
-                pgr_costFlow_t  *data_edges,
+                pgr_edge_t  *data_edges,
                 size_t total_edges,
-                int64_t* source_vertices,
-                size_t size_source_verticesArr,
-                int64_t* sink_vertices,
-                size_t size_sink_verticesArr,
                 bool only_cost,
-                pgr_flow_t **return_tuples,
+                General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

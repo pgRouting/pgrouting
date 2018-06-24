@@ -55,8 +55,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 /* for functions to get edges information */
 #include "c_common/edges_input.h"
-/* for functions to get array input */
-#include "c_common/arrays_input.h"
 
 #include "drivers/ChPP/directedChPP_driver.h"  // the link to the C++ code of the function
 
@@ -70,41 +68,23 @@ static
 void
 process(
         char* edges_sql,
-        ArrayType *starts,
-        ArrayType *ends,
-        /*TODO(mg)
         bool only_cost,
-        pgr_flow_t **result_tuples,
-        */
+        General_path_element_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
     pgr_SPI_connect();
 
-    /*TODO(mg)
-    size_t size_source_verticesArr = 0;
-    int64_t* source_vertices =
-        pgr_get_bigIntArray(&size_source_verticesArr, starts);
-
-    size_t size_sink_verticesArr = 0;
-    int64_t* sink_vertices =
-        pgr_get_bigIntArray(&size_sink_verticesArr, ends);
-
     PGR_DBG("Load data");
-    pgr_costFlow_t *edges = NULL;
-
+    pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_costFlow_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges);
+
     PGR_DBG("Total %ld edges in query:", total_edges);
-    */
 
     if (total_edges == 0) {
-        if (source_vertices)
-            pfree(source_vertices);
-        if (sink_vertices)
-            pfree(sink_vertices);
         PGR_DBG("No edges found");
         pgr_SPI_finish();
         return;
@@ -116,11 +96,8 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
 
-    //TODO(mg) parameters
     do_pgr_directedChPP(
             edges, total_edges,
-            source_vertices, size_source_verticesArr,
-            sink_vertices, size_sink_verticesArr,
             only_cost,
 
             result_tuples, result_count,
@@ -139,10 +116,6 @@ process(
 
     if (edges)
         pfree(edges);
-    if (source_vertices)
-        pfree(source_vertices);
-    if (sink_vertices)
-        pfree(sink_vertices);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -220,7 +193,7 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_flow_t*) funcctx->user_fctx;
+    result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -233,27 +206,21 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
         /*
          ***********************************************************************/
 
-        /*TODO(mg)
-        values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(bool));
+        values = palloc(5 * sizeof(Datum));
+        nulls = palloc(5 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 8; ++i) {
+        for (i = 0; i < 5; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
-        values[5] = Int64GetDatum(
-                result_tuples[funcctx->call_cntr].residual_capacity);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        */
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

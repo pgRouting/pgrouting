@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_minCostMaxFlow.sql
+File: pgr_directedChPP.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,97 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-------------------------
---    ONE TO ONE 
-------------------------
-CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
+CREATE OR REPLACE FUNCTION pgr_directedChPP(
     edges_sql TEXT,                 -- edges_sql
-    sources BIGINT,                 -- source
-    targets BIGINT,                 -- target
         OUT seq INTEGER,            -- seq
+    OUT node BIGINT,                -- node_id
     OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
     OUT cost FLOAT,                 -- cost
     OUT agg_cost FLOAT)             -- total cost
 
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
+        FROM _pgr_directedChPP(_pgr_get_statement($1), only_cost := false);
   $BODY$
   LANGUAGE SQL VOLATILE;
-
-------------------------
---    MANY TO ONE 
-------------------------
-
-CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
-    edges_sql TEXT,                 -- edges_sql
-    sources ANYARRAY,                 -- source
-    targets BIGINT,               -- targets
-        OUT seq INTEGER,            -- seq
-    OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
-
-  RETURNS SETOF RECORD AS
-  $BODY$
-        SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
-
-------------------------
---    ONE TO MANY 
-------------------------
-CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
-    edges_sql TEXT,                 -- edges_sql
-    sources BIGINT,               -- sources
-    targets ANYARRAY,                 -- target
-        OUT seq INTEGER,            -- seq
-    OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
-
-  RETURNS SETOF RECORD AS
-  $BODY$
-        SELECT *
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := false);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
-
-------------------------
---    MANY TO MANY
-------------------------
-
-CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
-    edges_sql TEXT,                 -- edges_sql
-    sources ANYARRAY,               -- sources
-    targets ANYARRAY,               -- targets
-        OUT seq INTEGER,            -- seq
-    OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
-
-  RETURNS SETOF RECORD AS
-  $BODY$
-        SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := false);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
-
