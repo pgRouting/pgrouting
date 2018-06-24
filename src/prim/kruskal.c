@@ -61,7 +61,7 @@ static
 void
 process(
         char* edges_sql, 
-        pgr_prim_t **result_tuples,
+        pgr_kruskal_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -123,7 +123,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_prim_t *result_tuples = NULL;
+    pgr_kruskal_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -164,7 +164,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_prim_t*) funcctx->user_fctx;
+    result_tuples = (pgr_kruskal_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -172,20 +172,21 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(bool));
+        values = palloc(5 * sizeof(Datum));
+        nulls = palloc(5 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 4; ++i) {
+        for (i = 0; i < 5; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1); 
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].sub_graph);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

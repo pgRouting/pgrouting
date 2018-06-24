@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <iostream>
 #include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/connected_components.hpp>
+#include <boost/graph/kruskal_min_spanning_tree.hpp>
 
 #include <deque>
 #include <set>
@@ -51,19 +53,76 @@ class Pgr_kruskal {
  public:
 
      typedef typename G::V V;
-     typedef typename G::B_G B_G;
+     typedef typename G::E E;
 
-     std::vector<pgr_prim_t> kruskal(
+     std::vector<pgr_kruskal_t> kruskal(
                  G &graph);
+
+ private:
+
+     std::vector< pgr_kruskal_t > 
+     generateKruskal(
+	    const G &graph ) {
+       typename std::vector < E >::iterator ei;
+     
+       std::vector < E > spanning_tree;
+       boost::kruskal_minimum_spanning_tree(
+                              graph.graph, 
+                              std::back_inserter(spanning_tree),
+                              boost::weight_map(get(&G::G_T_E::cost, graph.graph))
+                              );
+     
+       std::vector< pgr_kruskal_t > results;
+       size_t totalNodes = num_vertices(graph.graph); // Total Node in graph    
+  
+       /*Calculate connected components*/
+       std::vector< int > components(totalNodes);
+       size_t num_comps = boost::connected_components(graph.graph, &components[0]);
+         
+       std::vector< std::vector< int64_t > > component;
+       component.resize(num_comps);
+       for (size_t i = 0; i < totalNodes; i++)
+           component[components[i]].push_back(i);
+
+       size_t size = component.size(); 
+       for (size_t i = 0; i < size; i++){
+
+         double totalcost = 0;
+         for (ei = spanning_tree.begin(); ei != spanning_tree.end(); ++ei) {
+
+            if(components[source(*ei, graph.graph)] == static_cast< int > (i)){
+        
+               pgr_kruskal_t tmp; 
+
+               tmp.sub_graph = static_cast< int > (i+1);
+               tmp.cost = graph[*ei].cost;  // cost
+ 
+               auto start_node = graph.graph[source(*ei, graph.graph)].id;
+               auto end_node = graph.graph[target(*ei, graph.graph)].id; // node
+               auto v_sn(graph.get_V(start_node));
+               auto v_en(graph.get_V(end_node));
+
+               auto edge_id = 
+                    graph.get_edge_id(v_sn, v_en, tmp.cost);
+	       totalcost += tmp.cost;       
+ 
+               tmp.edge = edge_id;	     // edge_id 
+               tmp.tree_cost = totalcost;    // tree_cost 
+               results.push_back(tmp);
+            }
+         }  
+       }
+       return results; 
+     }
 };
 
 template < class G >
-std::vector<pgr_prim_t>
+std::vector<pgr_kruskal_t>
 Pgr_kruskal< G >::kruskal(
                 G &graph) {
- 
-             std::vector< pgr_prim_t > results;
-             return results;        
+          
+      return generateKruskal(
+                             graph);     
 } 
 
 

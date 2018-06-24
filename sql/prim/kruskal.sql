@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_kruskal(
     edges_sql TEXT,             -- Edge sql
 
-    OUT seq INTEGER,            -- Seq      
+    OUT seq INTEGER,            -- Seq
+    OUT sub_graph INTEGER,      -- Subgraph
     OUT edge BIGINT,	     	-- Edge linked to that node
     OUT cost FLOAT,             -- Cost of edge
     OUT tree_cost FLOAT)        -- Spanning tree cost 
