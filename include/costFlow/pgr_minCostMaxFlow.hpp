@@ -65,6 +65,8 @@ class PgrCostFlowGraph {
          return boost::find_flow_cost(graph);
      }
 
+     PgrCostFlowGraph(){};
+
      PgrCostFlowGraph(
              const std::vector<pgr_costFlow_t> &edges,
              const std::set<int64_t> &source_vertices,

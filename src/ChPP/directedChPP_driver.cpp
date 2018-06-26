@@ -64,7 +64,7 @@ do_pgr_directedChPP(
                 data_edges, total_edges);
 
         double min_cost;
-        min_cost = digraph.directedChPP();
+        min_cost = digraph.DirectedChPP();
 
         std::vector<General_path_element_t> path_edges;
 

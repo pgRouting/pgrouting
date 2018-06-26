@@ -141,7 +141,7 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_flow_t *result_tuples = NULL;
+    General_path_element_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -164,8 +164,6 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 &result_tuples,
                 &result_count);

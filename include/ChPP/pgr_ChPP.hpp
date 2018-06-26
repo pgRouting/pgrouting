@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <algorithm>
 
-#include "costFlow/pgr_costFlowGraph.hpp"
+#include "costFlow/pgr_minCostMaxFlow.hpp"
 #include "c_types/general_path_element_t.h"
 #include "c_types/pgr_edge_t.h"
 
@@ -63,7 +63,7 @@ class PgrDirectedChPPGraph {
      int64_t totalDeg;
      int64_t superSource, superTarget;
 
-     PgrCostFlowGraph flowGraph;
+     graph::PgrCostFlowGraph flowGraph;
      std::vector<pgr_edge_t> resultEdges;
 };
 
@@ -127,7 +127,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
     // build full edges
     std::map<int64_t, int>::iterator iter;
     totalDeg = 0;
-    for (iter = deg.begin(); iter != deg.end(); deg++) {
+    for (iter = deg.begin(); iter != deg.end(); iter++) {
         int64_t p = iter->first;
         int d = iter->second;
         if (d == 0)
@@ -139,7 +139,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         edge.reverse_cost = -1.0;
         edge.cost = 0.0;
         edge.capacity = abs(d);
-        edge.id = 0;
+        edge.edge_id = 0;
         if (d > 0)
             edge.source = p, edge.target = superTarget;
         if (d < 0)
