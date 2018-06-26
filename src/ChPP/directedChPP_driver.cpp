@@ -63,12 +63,7 @@ do_pgr_directedChPP(
         graphType gType = DIRECTED;
 
         std::deque< Path > paths;
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
-        //TODO(mg) fix signature
-        paths = pgr_directedChPP(
-                digraph,
-                only_cost);
+        pgrouting::graph::PgrDirectedChPPGraph(data_edges, total_edges);
         
         size_t count(0);
         count = count_tuples(paths);
