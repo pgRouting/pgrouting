@@ -28,14 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CHPP_PGR_CHPP_HPP_
 #pragma once
 
-#include <map>
-#include <string>
-#include <utility>
-#include <vector>
-#include <set>
-#include <limits>
-#include <algorithm>
-
 #include "costFlow/pgr_minCostMaxFlow.hpp"
 #include "c_types/general_path_element_t.h"
 #include "c_types/pgr_edge_t.h"
