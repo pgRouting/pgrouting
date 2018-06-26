@@ -70,6 +70,8 @@ class PgrCostFlowGraph {
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices);
 
+     int64_t get_max_flow() const;
+
      std::vector<pgr_flow_t> get_flow_edges() const;
 
  private:
@@ -224,6 +226,19 @@ void PgrCostFlowGraph::set_supersink(
         rev[e] = e_rev;
         rev[e_rev] = e;
     }
+}
+
+int64_t
+PgrCostFlowGraph::get_max_flow() const {
+    int64_t max_flow = 0;
+    E_it e, e_end;
+    for (boost::tie(e, e_end) = boost::edges(graph); e != e_end; ++e) {
+        if (((capacity[*e] - residual_capacity[*e]) > 0) &&
+                ((*e).m_source == supersource))
+            max_flow += 
+                static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
+    }
+    return max_flow;
 }
 
 std::vector<pgr_flow_t>
