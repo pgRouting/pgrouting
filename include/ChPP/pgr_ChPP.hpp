@@ -35,6 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
+#include "costFlow/pgr_costFlowGraph.hpp"
+#include "c_types/general_path_element_t.h"
+#include "c_types/pgr_edge_t.h"
+
 namespace pgrouting {
 namespace graph {
 }  // namespace graph
