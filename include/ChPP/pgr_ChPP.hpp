@@ -41,6 +41,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 namespace graph {
+
+class PgrDirectedChPPGraph {
+ public:
+     PgrDirectedChPPGraph(
+             pgr_edge_t *data_edges,
+             size_t total_edges);
+     double DirectedChPP() {
+         double min_cost = flowGraph.minCostMaxFlow();
+
+
+ private:
+     PgrCostFlowGraph flowGraph;
+     std::vector<pgr_edge_t> resultEdges;
 }  // namespace graph
 }  // namespace pgrouting
 
