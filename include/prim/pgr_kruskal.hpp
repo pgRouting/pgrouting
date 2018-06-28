@@ -82,7 +82,12 @@ class Pgr_kruskal {
        std::vector< std::vector< int64_t > > component;
        component.resize(num_comps);
        for (size_t i = 0; i < totalNodes; i++)
-           component[components[i]].push_back(i);
+           component[components[i]].push_back(graph[i].id);
+       for (size_t i = 0; i < num_comps; i++) {
+           std::sort(component[i].begin(), component[i].end());
+       }
+       sort(component.begin(), component.end());
+
 
        size_t size = component.size(); 
        for (size_t i = 0; i < size; i++){
@@ -94,7 +99,7 @@ class Pgr_kruskal {
         
                pgr_kruskal_t tmp; 
 
-               tmp.sub_graph = static_cast< int > (i+1);
+               tmp.component = component[i][0];;
                tmp.cost = graph[*ei].cost;  // cost
  
                auto start_node = graph.graph[source(*ei, graph.graph)].id;
