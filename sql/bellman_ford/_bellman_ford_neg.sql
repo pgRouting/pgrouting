@@ -28,7 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --Many to Many
 -------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_bellmanFord(
+CREATE OR REPLACE FUNCTION _pgr_bellmanFordNeg(
+     TEXT,
      TEXT,
      ANYARRAY,
      ANYARRAY,
@@ -46,6 +47,6 @@ CREATE OR REPLACE FUNCTION _pgr_bellmanFord(
     OUT agg_cost float)
 
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'bellman_ford'
+'${MODULE_PATHNAME}', 'bellman_ford_neg'
 LANGUAGE c IMMUTABLE STRICT;
 
