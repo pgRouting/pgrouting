@@ -43,12 +43,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 
 
-namespace pgrouting{
 
 //******************************************
 
 template < class G >
-class Pgr_bellman_ford : public Pgr_messages {
+class Pgr_bellman_ford : public pgrouting::Pgr_messages {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -194,10 +193,7 @@ class Pgr_bellman_ford : public Pgr_messages {
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
                      .root_vertex(source)
-                     .visitor(bellman_ford_one_goal_visitor(target)));
-             
-         } catch(found_goals &) {
-             return true;
+                     );  
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -221,10 +217,7 @@ class Pgr_bellman_ford : public Pgr_messages {
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
                      .root_vertex(source)
-                     .visitor(bellman_ford_many_goal_visitor(targets))
                      );
-         } catch(found_goals &) {
-             return true;
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -267,51 +260,11 @@ class Pgr_bellman_ford : public Pgr_messages {
 
      //! @name members
      //@{
-     struct found_goals{};  //!< exception for termination
      std::vector< V > predecessors;
      std::vector< double > distances;
-     std::ostringstream log;
+     
      //@}
 
-
-
-     //! @name Stopping classes
-     //@{
-
-     //! class for stopping when 1 target is found
-     class bellman_ford_one_goal_visitor : public boost::default_bellman_visitor {
-      public:
-          explicit bellman_ford_one_goal_visitor(V goal) : m_goal(goal) {}
-          template <class B_G>
-              void examine_vertex(V &u, B_G &) {
-                  if (u == m_goal) throw found_goals();
-              }
-      private:
-          V m_goal;
-     };
-
-
-     //! class for stopping when all targets are found
-     class bellman_ford_many_goal_visitor : public boost::default_bellman_visitor {
-      public:
-          explicit bellman_ford_many_goal_visitor(std::vector< V > goals)
-              :m_goals(goals.begin(), goals.end()) {}
-          template <class B_G>
-              void examine_vertex(V u, B_G &) {
-                  auto s_it = m_goals.find(u);
-                  if (s_it == m_goals.end()) return;
-                  // we found one more goal
-                  m_goals.erase(s_it);
-                  if (m_goals.size() == 0) throw found_goals();
-              }
-      private:
-          std::set< V > m_goals;
-     };
-
-
-     //@}
 };
 
-
- }//namespace
 #endif  // INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_
