@@ -22,8 +22,8 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_DIJKSTRATR_PGR_DIJKSTRATR_HPP_
-#define INCLUDE_DIJKSTRATR_PGR_DIJKSTRATR_HPP_
+#ifndef INCLUDE_YEN_PGR_TURNRESTRICTEDPATH_HPP_
+#define INCLUDE_YEN_PGR_TURNRESTRICTEDPATH_HPP_
 #pragma once
 
 #include "yen/pgr_ksp.hpp"
@@ -46,7 +46,8 @@ namespace yen {
 
 template < typename G >
 class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
-	 typedef std::set<Path, compPathsLess> pSet;
+     typedef std::set<Path, compPathsLess> pSet;
+
  public:
      struct found_goals{};
      class Myvisitor : public Pgr_ksp<G>::Visitor {
@@ -54,21 +55,20 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          Myvisitor(
                  pSet &solutions,
                  std::vector<trsp::Rule> &restrictions,
-                 bool stop_on_first
-                 ):
+                 bool stop_on_first):
              m_stop_on_first(stop_on_first),
              m_solutions(solutions),
              m_restrictions(restrictions) {
-         }
+             }
 
-         void on_insert_first_solution (const Path path) const {
+         void on_insert_first_solution(const Path path) const {
              if (path.empty()) return;
              if (has_restriction(path)) return;
 
              m_solutions.insert(path);
 
              if (m_stop_on_first) throw found_goals();
-         };
+         }
 
          void on_insert_to_heap(const Path path) const {
              if (path.empty()) return;
@@ -131,7 +131,6 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
              int64_t  start_vertex,
              int64_t end_vertex,
              size_t K) {
-
          /*
           * No path: already in destination
           */
@@ -159,7 +158,10 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          this->m_K = K;
          Pgr_ksp<G>::m_heap_paths = true;
          delete this->m_vis;
-         this->m_vis = new Myvisitor(m_solutions, m_restrictions, m_stop_on_first);
+         this->m_vis = new Myvisitor(
+                 m_solutions,
+                 m_restrictions,
+                 m_stop_on_first);
 
 
 
@@ -191,7 +193,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
      }
 
  private:
-     std::deque<Path> get_results (
+     std::deque<Path> get_results(
              std::deque<Path> &paths) {
          if (paths.empty()) return paths;
          if (m_strict) return std::deque<Path>();
@@ -211,8 +213,9 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          paths.erase(
                  std::remove_if(
                      paths.begin(), paths.end(),
-                     [&count](const Path &p){return count != p.countInfinityCost();}
-                     ),
+                     [&count](const Path &p){
+                     return count != p.countInfinityCost();
+                     }),
                  paths.end());
 
          return paths;
@@ -246,13 +249,11 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
 
  private:
-	 std::vector<pgrouting::trsp::Rule> m_restrictions;
-	 bool m_strict;
+     std::vector<pgrouting::trsp::Rule> m_restrictions;
+     bool m_strict;
      pSet m_solutions;
      bool m_stop_on_first;
      bool m_heap_paths;
-
-
 };
 
 }  // namespace yen
@@ -260,4 +261,4 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
 
 
-#endif  // INCLUDE_DIJKSTRATR_PGR_DIJKSTRATR_HPP_
+#endif  // INCLUDE_YEN_PGR_TURNRESTRICTEDPATH_HPP_

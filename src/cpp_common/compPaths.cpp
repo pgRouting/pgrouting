@@ -37,14 +37,14 @@ bool compPathsLess::operator()(const Path &p1, const Path &p2) const {
     /*
      * less cost is best
      */
-    if (!(std::fabs(p2.tot_cost() - p1.tot_cost()) < std::numeric_limits<double>::epsilon())) {
+    if (!(std::fabs(p2.tot_cost() - p1.tot_cost())
+                <
+                std::numeric_limits<double>::epsilon())) {
     if (p1.tot_cost() > p2.tot_cost())
         return  false;
     if (p1.tot_cost() < p2.tot_cost())
         return  true;
     }
-
-    pgassert(std::fabs(p2.tot_cost() - p1.tot_cost()) < std::numeric_limits<double>::epsilon());
 
     // paths costs are equal now check by length
     if (p1.size() > p2.size())

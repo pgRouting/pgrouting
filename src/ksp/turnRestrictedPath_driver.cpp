@@ -173,9 +173,13 @@ do_pgr_turnRestrictedPath(
             size_t sequence = 0;
             int route_id = 0;
             for (const auto &path : paths) {
-                if (path.size() > 0)
-                    path.get_pg_turn_restricted_path(return_tuples, sequence, route_id);
-                    log << "the agg cost" << (*return_tuples)[0].agg_cost;
+                if (path.size() > 0) {
+                    path.get_pg_turn_restricted_path(
+                            return_tuples,
+                            sequence,
+                            route_id);
+                }
+                log << "the agg cost" << (*return_tuples)[0].agg_cost;
                 ++route_id;
             }
         }

@@ -93,8 +93,7 @@ void Path::clear() {
 Path::ConstpthIt Path::find_restriction(
         const pgrouting::trsp::Rule &rule) const {
     return std::search(path.begin(),  path.end(), rule.begin(), rule.end(),
-            [](Path_t p, int64_t e) { return p.edge == e;}
-            );
+            [](Path_t p, int64_t e) {return p.edge == e;});
 }
 
 bool Path::has_restriction(
@@ -104,9 +103,9 @@ bool Path::has_restriction(
 
 Path Path::inf_cost_on_restriction(
         const pgrouting::trsp::Rule &rule) {
-    auto position = std::search(path.begin(),  path.end(), rule.begin(), rule.end(),
-            [](Path_t p, int64_t e) { return p.edge == e;}
-            );
+    auto position = std::search(
+            path.begin(),  path.end(), rule.begin(), rule.end(),
+            [](Path_t p, int64_t e) { return p.edge == e;});
     if (position != path.end()) {
         position->agg_cost = std::numeric_limits<double>::infinity();
     }
@@ -132,11 +131,9 @@ std::ostream& operator<<(std::ostream &log, const Path &path) {
 
 size_t Path::countInfinityCost() const {
     return std::count_if(path.begin(), path.end(),
-            [](Path_t const&p) -> size_t
-            {
+            [](Path_t const&p) -> size_t {
             return std::isinf(p.agg_cost);
             });
-
 }
 
 

@@ -19,8 +19,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_IJKSTRATR_PGR_DIJKSTRATR_HPP_
-#define INCLUDE_IJKSTRATR_PGR_DIJKSTRATR_HPP_
+#ifndef INCLUDE_CPP_COMMON_COMPPATHS_H_
+#define INCLUDE_CPP_COMMON_COMPPATHS_H_
 #pragma once
 
 #include "cpp_common/basePath_SSEC.hpp"
@@ -47,4 +47,4 @@ class compPathsLess {
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_DIJKSTRATR_PGR_DIJKSTRATR_HPP_
+#endif  // INCLUDE_CPP_COMMON_COMPPATHS_H_

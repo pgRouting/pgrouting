@@ -47,10 +47,11 @@ template < class G >
 class Pgr_ksp :  public Pgr_messages {
      typedef typename G::V V;
      typedef std::set<Path, compPathsLess> pSet;
+
  public:
      Pgr_ksp() {
          m_vis = new Visitor;
-     };
+     }
      ~Pgr_ksp() {
          delete m_vis;
      }
@@ -231,7 +232,6 @@ class Pgr_ksp :  public Pgr_messages {
      pSet m_Heap;  //!< the heap
 
      Visitor *m_vis;
-
 };
 
 

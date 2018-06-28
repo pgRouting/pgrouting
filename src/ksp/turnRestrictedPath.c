@@ -67,7 +67,7 @@ process(
 
     if (p_k < 0) {
         return;
-    };
+    }
 
     size_t k = (size_t)p_k;
 
@@ -127,11 +127,11 @@ process(
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) {pfree(edges); edges = NULL;};
-    if (log_msg) {pfree(log_msg); log_msg = NULL;};
-    if (notice_msg) {pfree(notice_msg); notice_msg = NULL;};
-    if (err_msg) {pfree(err_msg); err_msg = NULL;};
-    if (restrictions) {pfree(restrictions); edges = NULL;};
+    if (edges) {pfree(edges); edges = NULL;}
+    if (log_msg) {pfree(log_msg); log_msg = NULL;}
+    if (notice_msg) {pfree(notice_msg); notice_msg = NULL;}
+    if (err_msg) {pfree(err_msg); err_msg = NULL;}
+    if (restrictions) {pfree(restrictions); edges = NULL;}
 
     pgr_SPI_finish();
 }

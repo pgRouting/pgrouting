@@ -62,7 +62,7 @@ process(
         size_t *result_count) {
     if (p_k < 0) {
         return;
-    };
+    }
 
     size_t k = (size_t)p_k;
 

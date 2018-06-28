@@ -48,7 +48,7 @@ void compute(
     pgr_SPI_connect();
     if (p_k < 0) {
         return;
-    };
+    }
 
     size_t k = (size_t)p_k;
 
