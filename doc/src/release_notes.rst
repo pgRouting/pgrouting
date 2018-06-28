@@ -49,7 +49,22 @@ pgRouting 3.0.0 Release Notes
 
 .. rubric:: Proposed moved to official on pgRouting
 
+* aStar Family
+
+  * pgr_aStar(one to many)
+  * pgr_aStar(many to one)
+  * pgr_aStar(many to many)
+  * pgr_aStarCost(one to one)
+  * pgr_aStarCost(one to many)
+  * pgr_aStarCost(many to one)
+  * pgr_aStarCost(many to many)
+  * pgr_aStarCostMatrix(one to one)
+  * pgr_aStarCostMatrix(one to many)
+  * pgr_aStarCostMatrix(many to one)
+  * pgr_aStarCostMatrix(many to many)
+
 * Flow Family
+
   * pgr_pushRelabel(one to one)
   * pgr_pushRelabel(one to many)
   * pgr_pushRelabel(many to one)
@@ -68,6 +83,7 @@ pgRouting 3.0.0 Release Notes
   * pgr_edgeDisjointPaths(one to many)
   * pgr_edgeDisjointPaths(many to one)
   * pgr_edgeDisjointPaths(many to many)
+
 
 
 .. rubric:: Moved to legacy
