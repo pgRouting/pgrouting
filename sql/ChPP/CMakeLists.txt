@@ -2,8 +2,7 @@
 SET(LOCAL_FILES
     directedChPP.sql
     pgr_directedChPP.sql
-    pgr_directedChPP_Cost.sql
-    )
+    pgr_directedChPP_Cost.sql)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

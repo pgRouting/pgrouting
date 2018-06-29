@@ -42,8 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 do_pgr_minCostMaxFlow(
         pgr_costFlow_t  *data_edges, size_t total_edges,
-        int64_t *source_vertices, size_t size_source_verticesArr,
-        int64_t *sink_vertices, size_t size_sink_verticesArr,
+        int64_t *sourceVertices, size_t sizeSourceVerticesArr,
+        int64_t *sinkVertices, size_t sizeSinkVerticesArr,
         bool only_cost,
 
         pgr_flow_t **return_tuples, size_t *return_count,
@@ -63,9 +63,9 @@ do_pgr_minCostMaxFlow(
 
         std::vector<pgr_costFlow_t> edges(data_edges, data_edges + total_edges);
         std::set<int64_t> sources(
-                source_vertices, source_vertices + size_source_verticesArr);
+                sourceVertices, sourceVertices + sizeSourceVerticesArr);
         std::set<int64_t> targets(
-                sink_vertices, sink_vertices + size_sink_verticesArr);
+                sinkVertices, sinkVertices + sizeSinkVerticesArr);
 
         std::set<int64_t> vertices(sources);
         vertices.insert(targets.begin(), targets.end());
@@ -80,7 +80,7 @@ do_pgr_minCostMaxFlow(
                 edges, sources, targets);
 
         double min_cost;
-        min_cost = digraph.minCostMaxFlow();
+        min_cost = digraph.MinCostMaxFlow();
 
         std::vector<pgr_flow_t> flow_edges;
 
@@ -95,7 +95,7 @@ do_pgr_minCostMaxFlow(
             edge.agg_cost = min_cost;
             flow_edges.push_back(edge);
         } else {
-            flow_edges = digraph.get_flow_edges();
+            flow_edges = digraph.GetFlowEdges();
         }
 
         (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));

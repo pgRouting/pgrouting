@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 
 // work for only directed
-#include "ChPP/pgr_ChPP.hpp"
+#include "ChPP/pgr_directedChPP.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -60,19 +60,26 @@ do_pgr_directedChPP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = DIRECTED;
+        pgrouting::graph::PgrDirectedChPPGraph digraph(
+                data_edges, total_edges);
 
-        std::deque< Path > paths;
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
-        //TODO(mg) fix signature
-        paths = pgr_directedChPP(
-                digraph,
-                only_cost);
+        double minCost;
+        minCost = digraph.DirectedChPP();
+
+        std::vector<General_path_element_t> pathEdges;
+
+        if (only_cost) {
+            General_path_element_t edge;
+            edge.seq = -1;
+            edge.node = edge.edge = -1;
+            edge.cost = edge.agg_cost = minCost;
+            pathEdges.push_back(edge);
+        } else {
+            //pathEdges = digraph.GetPathEdges();
+        }
+
+        size_t count = pathEdges.size();
         
-        size_t count(0);
-        count = count_tuples(paths);
-
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
@@ -83,8 +90,10 @@ do_pgr_directedChPP(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
-        (*return_count) = (collapse_paths(return_tuples, paths));
+        for (size_t i = 0; i < count; i++) {
+            (*return_tuples)[i] = pathEdges[i];
+        }
+        *return_count = count;
 
         *log_msg = log.str().empty()?
             *log_msg :

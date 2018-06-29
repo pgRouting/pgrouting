@@ -80,13 +80,13 @@ process(
      */
     pgr_SPI_connect();
 
-    size_t size_source_verticesArr = 0;
-    int64_t* source_vertices =
-        pgr_get_bigIntArray(&size_source_verticesArr, starts);
+    size_t sizeSourceVerticesArr = 0;
+    int64_t* sourceVertices =
+        pgr_get_bigIntArray(&sizeSourceVerticesArr, starts);
 
-    size_t size_sink_verticesArr = 0;
-    int64_t* sink_vertices =
-        pgr_get_bigIntArray(&size_sink_verticesArr, ends);
+    size_t sizeSinkVerticesArr = 0;
+    int64_t* sinkVertices =
+        pgr_get_bigIntArray(&sizeSinkVerticesArr, ends);
 
     PGR_DBG("Load data");
     pgr_costFlow_t *edges = NULL;
@@ -97,10 +97,10 @@ process(
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
-        if (source_vertices)
-            pfree(source_vertices);
-        if (sink_vertices)
-            pfree(sink_vertices);
+        if (sourceVertices)
+            pfree(sourceVertices);
+        if (sinkVertices)
+            pfree(sinkVertices);
         PGR_DBG("No edges found");
         pgr_SPI_finish();
         return;
@@ -114,8 +114,8 @@ process(
 
     do_pgr_minCostMaxFlow(
             edges, total_edges,
-            source_vertices, size_source_verticesArr,
-            sink_vertices, size_sink_verticesArr,
+            sourceVertices, sizeSourceVerticesArr,
+            sinkVertices, sizeSinkVerticesArr,
             only_cost,
 
             result_tuples, result_count,
@@ -134,10 +134,10 @@ process(
 
     if (edges)
         pfree(edges);
-    if (source_vertices)
-        pfree(source_vertices);
-    if (sink_vertices)
-        pfree(sink_vertices);
+    if (sourceVertices)
+        pfree(sourceVertices);
+    if (sinkVertices)
+        pfree(sinkVertices);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);

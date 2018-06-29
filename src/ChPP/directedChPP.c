@@ -141,7 +141,7 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_flow_t *result_tuples = NULL;
+    General_path_element_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -164,9 +164,7 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_ARRAYTYPE_P(2),
-                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);
 
@@ -219,8 +217,8 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
