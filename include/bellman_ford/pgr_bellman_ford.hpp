@@ -160,7 +160,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              bool only_cost = false) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
-         log << std::string(__FUNCTION__) << "\n"
+         log << std::string(__FUNCTION__) << "\n";
          
          for (const auto &start : start_vertex) {
              auto r_paths = bellman_ford(graph, start, end_vertex, only_cost);
