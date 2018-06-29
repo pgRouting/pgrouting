@@ -687,6 +687,7 @@ class Pgr_base_graph {
              graph[e].cost = edge.cost;
              graph[e].id = edge.id;
          }
+         
 
          if (edge.reverse_cost >= 0 && (is_directed()
                      || (is_undirected() && edge.cost != edge.reverse_cost))) {
