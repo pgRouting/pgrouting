@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <string>
 #include <functional>
 #include <limits>
 #include "cpp_common/pgr_messages.h"
@@ -63,8 +64,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              bool only_cost = false) {
          clear();
          log << std::string(__FUNCTION__) << "\n";
-         
-         
+        
          // adjust predecessors and distances vectors
          predecessors.resize(graph.num_vertices());
          distances.resize(graph.num_vertices());
@@ -102,7 +102,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          log << std::string(__FUNCTION__) << "\n";
          predecessors.resize(graph.num_vertices());
          distances.resize(graph.num_vertices());
-
+         
          // get the graphs source and target
          if (!graph.has_vertex(start_vertex))
              return std::deque<Path>();
@@ -114,7 +114,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
                  s_v_targets.insert(graph.get_V(vertex));
              }
          }
-
+         
          std::vector< V > v_targets(s_v_targets.begin(), s_v_targets.end());
          // perform the algorithm
          bellman_ford_1_to_many(graph, v_source, v_targets);
@@ -160,12 +160,14 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              bool only_cost = false) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
-         log << std::string(__FUNCTION__) << "\n";
+         log << std::string(__FUNCTION__) << "\n"
+         
          for (const auto &start : start_vertex) {
              auto r_paths = bellman_ford(graph, start, end_vertex, only_cost);
              paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
          }
-
+         
+         
          std::sort(paths.begin(), paths.end(),
                  [](const Path &e1, const Path &e2)->bool {
                  return e1.end_id() < e2.end_id();
