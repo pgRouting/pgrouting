@@ -23,8 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "trsp/rule.h"
+#include "cpp_common/rule.h"
 
+#include <vector>
 #include <algorithm>
 
 
@@ -34,7 +35,8 @@ namespace trsp {
 
     Rule::Rule(Restriction_t r) :
         m_cost(r.cost),
-        m_precedencelist(r.via, r.via + r.via_size) {
+        m_precedencelist(r.via, r.via + r.via_size),
+        m_all(r.via, r.via + r.via_size) {
             m_dest_id = m_precedencelist.back();
             m_precedencelist.pop_back();
             std::reverse(m_precedencelist.begin(), m_precedencelist.end());
@@ -47,11 +49,11 @@ namespace trsp {
 
 
     std::ostream& operator<<(std::ostream& log, const Rule &r) {
-        log << r.m_cost << ", (";
-        for (const auto e : r.m_precedencelist) {
+        log << "(";
+        for (const auto e : r.m_all) {
             log << e << ",";
         }
-        log << ")";
+        log <<  ")";
         return log;
     }
 

@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/general_path_element_t.h"
 #include "cpp_common/path_t.h"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/rule.h"
 
 
 class Path {
@@ -68,6 +69,7 @@ class Path {
 
     size_t size() const {return path.size();}
     bool empty() const {return path.empty();}
+    size_t countInfinityCost() const;
 
     void push_front(Path_t data);
     void push_back(Path_t data);
@@ -90,6 +92,14 @@ class Path {
 
     void recalculate_agg_cost();
 
+    /** \brief get the iterator of the path where the (restriction) rule starts
+     *
+     * @param[in] rule A subpath of edges for turn restrictions
+     * @returns the iterator of the path
+     */
+    ConstpthIt find_restriction(const pgrouting::trsp::Rule &rule) const;
+    bool has_restriction(const pgrouting::trsp::Rule &rule) const;
+    Path inf_cost_on_restriction(const pgrouting::trsp::Rule &rule);
 
     Path_t set_data(
             int64_t d_from,
@@ -124,6 +134,10 @@ class Path {
             size_t &sequence) const;
 
     void get_pg_ksp_path(
+            General_path_element_t **ret_path,
+            size_t &sequence, int routeId) const;
+
+    void get_pg_turn_restricted_path(
             General_path_element_t **ret_path,
             size_t &sequence, int routeId) const;
 

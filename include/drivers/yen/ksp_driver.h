@@ -39,7 +39,7 @@ extern "C" {
             size_t total_edges,
             int64_t  start_vid,
             int64_t end_vid,
-            int no_paths,
+            size_t K,
             bool directed,
             bool heap_paths,
             General_path_element_t **return_tuples,

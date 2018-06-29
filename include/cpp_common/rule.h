@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TRSP_RULE_H_
-#define INCLUDE_TRSP_RULE_H_
+#ifndef INCLUDE_CPP_COMMON_RULE_H_
+#define INCLUDE_CPP_COMMON_RULE_H_
 
 
 #include <vector>
@@ -37,6 +37,9 @@ namespace trsp {
 
 
 class Rule {
+    using iterator = std::vector<int64_t>::iterator;
+    using constiterator = std::vector<int64_t>::const_iterator;
+
  public:
     explicit Rule(Restriction_t r);
 
@@ -45,6 +48,12 @@ class Rule {
     }
 
     const std::vector<int64_t> precedencelist() const;
+
+    constiterator begin() const { return m_all.begin(); }
+    constiterator end() const { return m_all.end(); }
+
+    iterator begin() { return m_all.begin(); }
+    iterator end() { return m_all.end(); }
 
     inline int64_t dest_id() const {
         return m_dest_id;
@@ -57,6 +66,7 @@ class Rule {
     int64_t m_dest_id;
     double m_cost;
     std::vector<int64_t> m_precedencelist;
+    std::vector<int64_t> m_all;
 };
 
 
@@ -65,4 +75,4 @@ class Rule {
 }  // namespace trsp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_TRSP_RULE_H_
+#endif  // INCLUDE_CPP_COMMON_RULE_H_

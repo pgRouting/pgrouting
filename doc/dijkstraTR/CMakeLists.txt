@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    pgr_dijkstraTRSP.rst
+    pgr_dijkstraTR.rst
     )
 
 foreach (f ${LOCAL_FILES})

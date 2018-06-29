@@ -1,8 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: ksp.c
+File: turnRestrictedPath.c
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2018 vicky Vergara
+Mail: vicky@georepublic.de
 
 ------
 
@@ -22,48 +27,69 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+/** @file turnRestrictedPath.c
+ */
+
 #include "c_common/postgres_connection.h"
+
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
 #include "c_common/edges_input.h"
+#include "c_common/restrictions_input.h"
 
-#include "drivers/yen/ksp_driver.h"
+#include "drivers/yen/turnRestrictedPath_driver.h"
 
-PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(kshortest_path);
+PGDLLEXPORT Datum turnRestrictedPath(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(turnRestrictedPath);
+
 
 static
-void compute(
+void
+process(
         char* edges_sql,
-        int64_t start_vertex,
-        int64_t end_vertex,
+        char *restrictions_sql,
+        int64_t start_vid,
+        int64_t end_vid,
 
         int p_k,
         bool directed,
         bool heap_paths,
-        General_path_element_t **result_tuples, size_t *result_count) {
-    pgr_SPI_connect();
+        bool stop_on_first,
+        bool strict,
+
+        General_path_element_t **path,
+        size_t *result_count) {
+    (*path) = NULL;
+    (*result_count) = 0;
+
     if (p_k < 0) {
         return;
     }
 
     size_t k = (size_t)p_k;
 
-    PGR_DBG("Load data");
+    if (start_vid == end_vid) {
+        PGR_DBG("Source and target are the same");
+        return;
+    }
+
+    pgr_SPI_connect();
+
+
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
 
-    if (start_vertex == end_vertex) {
-        pgr_SPI_finish();
-        return;
-    }
-
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total %ld edges in query:", total_edges);
+
+    Restriction_t *restrictions = NULL;
+    size_t total_restrictions = 0;
+
+    pgr_get_restrictions(restrictions_sql, &restrictions,
+        &total_restrictions);
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
@@ -71,55 +97,51 @@ void compute(
         return;
     }
 
-
-    PGR_DBG("Calling do_pgr_ksp\n");
-    PGR_DBG("heap_paths = %i\n", heap_paths);
-
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-
-    do_pgr_ksp(
+    do_pgr_turnRestrictedPath(
             edges,
             total_edges,
-            start_vertex,
-            end_vertex,
+            restrictions,
+            total_restrictions,
+            start_vid,
+            end_vid,
             k,
             directed,
             heap_paths,
-            result_tuples,
+            stop_on_first,
+            strict,
+
+            path,
             result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-    time_msg(" processing KSP", start_t, clock());
 
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
+    time_msg(" processing pgr_turnRestrictedPath", start_t, clock());
+
+    if (err_msg) {
+        if (*path) pfree(*path);
     }
-
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
+    if (edges) {pfree(edges); edges = NULL;}
+    if (log_msg) {pfree(log_msg); log_msg = NULL;}
+    if (notice_msg) {pfree(notice_msg); notice_msg = NULL;}
+    if (err_msg) {pfree(err_msg); err_msg = NULL;}
+    if (restrictions) {pfree(restrictions); edges = NULL;}
 
-
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    pfree(edges);
     pgr_SPI_finish();
 }
 
-
 PGDLLEXPORT Datum
-kshortest_path(PG_FUNCTION_ARGS) {
+turnRestrictedPath(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
-    General_path_element_t      *path = NULL;
+    TupleDesc           tuple_desc;
+
+    General_path_element_t  *path = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -128,27 +150,39 @@ kshortest_path(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
+        /**********************************************************************/
         /*
-           CREATE OR REPLACE FUNCTION _pgr_ksp(
-           sql text,
-           start_vid bigint,
-           end_vid bigint,
-           k integer,
-           directed boolean,
-           heap_paths boolean
-           */
+           TEXT,   -- edges_sql
+           TEXT,   -- restrictions_sql
+           BIGINT, -- start_vertex
+           BIGINT, -- end_vertex
+           INTEGER,-- K cycles
+           directed BOOLEAN DEFAULT true,
+           heap_paths BOOLEAN DEFAULT false,
+           stop_on_first BOOLEAN DEFAULT true,
+
+           OUT seq INTEGER,
+           OUT path_seq INTEGER,
+           OUT node BIGINT,
+           OUT edge BIGINT,
+           OUT cost FLOAT,
+           OUT agg_cost FLOAT)
+         **********************************************************************/
+
+
         PGR_DBG("Calling process");
-        compute(
+        process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
-                PG_GETARG_INT32(3),
-                PG_GETARG_BOOL(4),
+                PG_GETARG_INT64(3),
+                PG_GETARG_INT32(4),
                 PG_GETARG_BOOL(5),
+                PG_GETARG_BOOL(6),
+                PG_GETARG_BOOL(7),
+                PG_GETARG_BOOL(8),
                 &path,
                 &result_count);
-        PGR_DBG("Total number of tuples to be returned %ld \n", result_count);
-
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -157,35 +191,46 @@ kshortest_path(PG_FUNCTION_ARGS) {
 #endif
         funcctx->user_fctx = path;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                         "that cannot accept type record\n")));
+                         "that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
 
-
     funcctx = SRF_PERCALL_SETUP();
-
-
     tuple_desc = funcctx->tuple_desc;
     path = (General_path_element_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
-        Datum *values;
-        bool* nulls;
+        Datum        *values;
+        bool*        nulls;
 
-        values = palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(bool));
+        /**********************************************************************/
+        /*                          MODIFY AS NEEDED                          */
+        /*
+               OUT seq INTEGER,
+               OUT path_seq INTEGER,
+               OUT node BIGINT,
+               OUT edge BIGINT,
+               OUT cost FLOAT,
+               OUT agg_cost FLOAT
+         ***********************************************************************/
+
+        size_t v_count = 7;
+
+        values = palloc(v_count * sizeof(Datum));
+        nulls = palloc(v_count * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 7; ++i) {
+        for (i = 0; i < v_count; ++i) {
             nulls[i] = false;
         }
 
@@ -197,10 +242,11 @@ kshortest_path(PG_FUNCTION_ARGS) {
         values[5] = Float8GetDatum(path[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(path[funcctx->call_cntr].agg_cost);
 
+
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
-    } else {   /* do when there is no more left */
+    } else {
         SRF_RETURN_DONE(funcctx);
     }
 }

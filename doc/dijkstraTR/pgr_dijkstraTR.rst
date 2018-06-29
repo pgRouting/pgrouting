@@ -7,12 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstraTRSP:
+.. _pgr_dijkstraTR:
 
-pgr_dijkstraTRSP
+pgr_dijkstraTR
 ===============================================================================
 
-``pgr_dijkstraTRSP`` — Returns the shortest path(s) using Dijkstra algorithm.
+``pgr_dijkstraTR`` — Returns the shortest path(s) using Dijkstra algorithm.
 In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
@@ -70,34 +70,34 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstraTRSP(Minimal Use)
+    single: dijkstraTR(Minimal Use)
 
 Minimal signature
 .......................................
 
 .. code-block:: none
 
-    pgr_dijkstraTRSP(edges_sql, start_vid, end_vid)
+    pgr_dijkstraTR(edges_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
 
 :Example:
 
-.. literalinclude:: doc-pgr_dijkstraTRSP.queries
+.. literalinclude:: doc-pgr_dijkstraTR.queries
    :start-after: -- q1
    :end-before: -- q2
 
 
 .. index::
-    single: dijkstraTRSP(Complete signature)
+    single: dijkstraTR(Complete signature)
 
 Complete Signature
 .......................................
 
 .. code-block:: none
 
-    pgr_dijkstraTRSP(edges_sql, start_vid, end_vid, directed);
+    pgr_dijkstraTR(edges_sql, start_vid, end_vid, directed);
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
@@ -106,7 +106,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 
 :Example:
 
-.. literalinclude:: doc-pgr_dijkstraTRSP.queries
+.. literalinclude:: doc-pgr_dijkstraTR.queries
    :start-after: -- q2
    :end-before: -- q3
 

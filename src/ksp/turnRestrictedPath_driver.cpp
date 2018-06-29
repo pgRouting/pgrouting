@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTRSP_driver.cpp
+File: turnRestrictedPath_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,57 +27,72 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/dijkstraTRSP/dijkstraTRSP_driver.h"
+#include "drivers/yen/turnRestrictedPath_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <string>
 
-#include "dijkstraTRSP/pgr_dijkstraTRSP.hpp"
-
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#if 1
+#include "cpp_common/rule.h"
+
+#include "cpp_common/basePath_SSEC.hpp"
+#include "yen/pgr_turnRestrictedPath.hpp"
+
+using pgrouting::yen::Pgr_turnRestrictedPath;
+using pgrouting::trsp::Rule;
+
 template < class G >
 static
-Path
-pgr_dijkstraTRSP(
+std::deque<Path>
+pgr_dijkstraTR(
         G &graph,
-        const std::vector< Restriction >& restrictions_array,
-        const std::vector< pgr_edge_t > edges,
+        const std::vector<pgrouting::trsp::Rule> restrictions,
         int64_t source,
         int64_t target,
         std::string& log,
-        bool only_cost = false,
-        bool strict = false) {
-    Pgr_dijkstraTRSP< G > fn_TRSP;
-    Path path = fn_TRSP.dijkstraTRSP(graph,
-                    restrictions_array,
-                    edges,
+        size_t k,
+        bool heap_paths,
+        bool stop_on_first,
+        bool strict) {
+    Pgr_turnRestrictedPath< G > fn_TRSP;
+
+    auto paths = fn_TRSP.turnRestrictedPath(graph,
+                    restrictions,
                     source,
                     target,
-                    only_cost,
+                    k,
+                    heap_paths,
+                    stop_on_first,
                     strict);
-    log += fn_TRSP.log.str().c_str();
-    return path;
+
+    log += fn_TRSP.get_log();
+    return paths;
 }
-#endif
 
 void
-do_pgr_dijkstraTRSP(
+do_pgr_turnRestrictedPath(
         pgr_edge_t *data_edges,
         size_t total_edges,
-        Restrict_t *restrictions,
+
+        Restriction_t *restrictions,
         size_t total_restrictions,
+
         int64_t start_vid,
         int64_t end_vid,
+
+        size_t k,
         bool directed,
-        bool only_cost,
+        bool heap_paths,
+        bool stop_on_first,
         bool strict,
+
         General_path_element_t **return_tuples,
         size_t *return_count,
+
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -92,14 +107,14 @@ do_pgr_dijkstraTRSP(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        log << "\n---------------------------------------\nRestrictions data\n";
-        std::vector< Restriction > restrict_array;
-        for (size_t i = 0; i < total_restrictions; i++) {
-            restrict_array.push_back(Restriction(restrictions[i]));
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < total_restrictions; ++i) {
+            ruleList.push_back(Rule(*(restrictions + i)));
         }
-        log << "\n-----------------------------------------\nStart from here\n";
-        for (const auto &it : restrict_array) {
-            log << it << "\n";
+
+        log << "\n---------------------------------------\nRestrictions data\n";
+        for (const auto &r : ruleList) {
+            log << r << "\n";
         }
         log <<"------------------------------------------------------------\n";
 
@@ -107,62 +122,77 @@ do_pgr_dijkstraTRSP(
 
         std::vector < pgr_edge_t > edges(data_edges, data_edges + total_edges);
 
-        Path path;
+        std::deque<Path> paths;
+
         std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            Pgr_dijkstraTRSP < pgrouting::DirectedGraph > fn_TRSP;
+            Pgr_turnRestrictedPath < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(edges);
-            path = pgr_dijkstraTRSP(digraph,
-                    restrict_array,
-                    edges,
+            log << digraph;
+            paths = pgr_dijkstraTR(digraph,
+                    ruleList,
+
                     start_vid,
                     end_vid,
+
                     logstr,
-                    only_cost,
+                    k,
+                    heap_paths,
+                    stop_on_first,
                     strict);
         } else {
-            log << "Working with Undirected Graph\n";
+            log << "TODO Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            Pgr_dijkstraTRSP < pgrouting::UndirectedGraph > fn_TRSP;
+            Pgr_turnRestrictedPath < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(data_edges, total_edges);
-        #if 0
-            path = pgr_dijkstraTRSP(undigraph,
-                    restrict_array,
-                    edges,
+            paths = pgr_dijkstraTR(undigraph,
+                    ruleList,
+
                     start_vid,
                     end_vid,
+
                     logstr,
-                    only_cost,
+
+                    k,
+                    heap_paths,
+                    stop_on_first,
                     strict);
-        #endif
         }
+
         log << logstr;
-        auto count = path.size();
+
+        auto count(count_tuples(paths));
         log << "\nCount = " << count;
 
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice <<
-                "No paths found between start_vid and end_vid vertices";
-        } else {
-            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        if (!(count == 0)) {
+            *return_tuples = NULL;
+            *return_tuples = pgr_alloc(count, (*return_tuples));
+
             size_t sequence = 0;
-            path.generate_postgres_data(return_tuples, sequence);
-            (*return_count) = sequence;
+            int route_id = 0;
+            for (const auto &path : paths) {
+                if (path.size() > 0) {
+                    path.get_pg_turn_restricted_path(
+                            return_tuples,
+                            sequence,
+                            route_id);
+                }
+                log << "the agg cost" << (*return_tuples)[0].agg_cost;
+                ++route_id;
+            }
         }
+        *return_count = count;
+
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
-        #if 0
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-        #endif
         pgassert(!log.str().empty());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
