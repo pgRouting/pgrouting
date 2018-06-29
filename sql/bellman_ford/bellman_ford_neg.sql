@@ -116,7 +116,7 @@ LANGUAGE SQL VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_bellmanFord(
     TEXT,
-    TEXT
+    TEXT,
     ANYARRAY,
     BIGINT,
     directed BOOLEAN DEFAULT true,
