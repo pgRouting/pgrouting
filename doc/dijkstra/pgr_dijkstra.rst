@@ -211,23 +211,15 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
    :start-after: -- q5
    :end-before: -- q6
 
-Description of the Signatures
+Parameters
 -------------------------------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
 
 .. pgr_dijkstra_parameters_start
 
-Description of the parameters of the signatures
-...............................................................................
-
 ============== ================== ======== =================================================
-Column         Type               Default     Description
+Parameter      Type               Default     Description
 ============== ================== ======== =================================================
-**sql**        ``TEXT``                    SQL query as described above.
+**edges_sql**  ``TEXT``                    Inner SQL query as described bellow.
 **start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
 **start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
 **end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
@@ -238,6 +230,18 @@ Column         Type               Default     Description
 
 .. pgr_dijkstra_parameters_end
 
+Inner query
+-------------------------------------------------------------------------------
+
+edges_sql
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Return Columns
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_start

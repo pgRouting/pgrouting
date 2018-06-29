@@ -10,7 +10,7 @@
 
 .. _pgr_edmondsKarp:
 
-pgr_edmondsKarp - Proposed
+pgr_edmondsKarp
 ============================================
 
 
@@ -30,10 +30,6 @@ Synopsis
 * Renamed 2.5.0, Previous name pgr_maxFlowEdmondsKarp
 * New in 2.3.0
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 
 .. include::  flow-family.rst
     :start-after: characteristics_start
@@ -46,17 +42,17 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_edmondsKarp(edges_sql, source,  target) - Proposed
-    pgr_edmondsKarp(edges_sql, sources, target) - Proposed
-    pgr_edmondsKarp(edges_sql, source,  targets) - Proposed
-    pgr_edmondsKarp(edges_sql, sources, targets) - Proposed
+    pgr_edmondsKarp(edges_sql, source,  target)
+    pgr_edmondsKarp(edges_sql, sources, target)
+    pgr_edmondsKarp(edges_sql, source,  targets)
+    pgr_edmondsKarp(edges_sql, sources, targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 
 
 .. index::
-    single: edmondsKarp(One to One) - Proposed
+    single: edmondsKarp(One to One)
 
 One to One
 .....................................................................
@@ -77,7 +73,7 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 
 .. index::
-    single: edmondsKarp(One to Many) - Proposed
+    single: edmondsKarp(One to Many)
 
 One to Many
 .....................................................................
@@ -98,7 +94,7 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 
 .. index::
-    single: edmondsKarp(Many to One) - Proposed
+    single: edmondsKarp(Many to One)
 
 Many to One
 .....................................................................
@@ -119,7 +115,7 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 
 
 .. index::
-    single: edmondsKarp(Many to Many) - Proposed
+    single: edmondsKarp(Many to Many)
 
 Many to Many
 .....................................................................
@@ -138,18 +134,25 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
    :start-after: -- q4
    :end-before: -- q5
 
-Description of the Signatures
+Parameters
 --------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: flow_edges_sql_start
-    :end-before: flow_edges_sql_end
-
 
 .. include::  ./pgr_maxFlow.rst
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
+Inner query
+--------------------------------------------------------
+
+edges_sql
+...........................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
+
+Result Columns
+--------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: result_flow_start
@@ -159,7 +162,7 @@ Description of the Signatures
 See Also
 --------
 
-* :ref:`maxFlow`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :ref:`pgr_PushRelabel <pgr_pushRelabel>`
+* :doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_pushRelabel`
 * http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 
