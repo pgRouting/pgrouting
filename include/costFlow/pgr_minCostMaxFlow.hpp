@@ -57,7 +57,7 @@ class PgrCostFlowGraph {
      Weight weight;
 
  public:
-     double minCostMaxFlow() {
+     double MinCostMaxFlow() {
          boost::successive_shortest_path_nonnegative_weights(
              graph,
              supersource,
@@ -72,38 +72,38 @@ class PgrCostFlowGraph {
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices);
 
-     int64_t get_max_flow() const;
+     int64_t GetMaxFlow() const;
 
-     std::vector<pgr_flow_t> get_flow_edges() const;
+     std::vector<pgr_flow_t> GetFlowEdges() const;
 
  private:
-     V get_boost_vertex(int64_t id) const {
-         return id_to_V.at(id);
+     V GetBoostVertex(int64_t id) const {
+         return idToV.at(id);
      }
 
-     int64_t get_vertex_id(V v) const {
-         return V_to_id.at(v);
+     int64_t GetVertexId(V v) const {
+         return vToId.at(v);
      }
 
-     int64_t get_edge_id(E e) const {
-         return E_to_id.at(e);
+     int64_t GetEdgeId(E e) const {
+         return eToId.at(e);
      }
 
-     void set_supersource(
+     void SetSupersource(
              const std::set<int64_t> &source_vertices);
-     void set_supersink(
+     void SetSupersink(
              const std::set<int64_t> &sink_vertices);
 
-     E add_edge(V v, V w, double wei, double cap);
+     E AddEdge(V v, V w, double wei, double cap);
 
-     void insert_edges(
+     void InsertEdges(
              const std::vector<pgr_costFlow_t> &edges);
 
      /*
       * vertices = {sources} U {sink} U {edges.source} U {edge.target}
       */
      template <typename T>
-     void add_vertices(
+     void AddVertices(
              const T &edges,
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices) {
@@ -117,19 +117,19 @@ class PgrCostFlowGraph {
 
          for (const auto id : vertices) {
              V v = add_vertex(graph);
-             id_to_V.insert(std::pair<int64_t, V>(id, v));
-             V_to_id.insert(std::pair<V, int64_t>(v, id));
+             idToV.insert(std::pair<int64_t, V>(id, v));
+             vToId.insert(std::pair<V, int64_t>(v, id));
          }
 
-         set_supersource(source_vertices);
-         set_supersink(sink_vertices);
+         SetSupersource(source_vertices);
+         SetSupersink(sink_vertices);
      }
 
  private:
      CostFlowGraph graph;
-     std::map<int64_t, V> id_to_V;
-     std::map<V, int64_t> V_to_id;
-     std::map<E, int64_t> E_to_id;
+     std::map<int64_t, V> idToV;
+     std::map<V, int64_t> vToId;
+     std::map<E, int64_t> eToId;
 
 
     /* In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity

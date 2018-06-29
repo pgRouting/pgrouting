@@ -38,21 +38,22 @@ namespace graph {
 class PgrDirectedChPPGraph {
  public:
      PgrDirectedChPPGraph(
-             const pgr_edge_t *data_edges,
-             const size_t total_edges);
+             const pgr_edge_t *dataEdges,
+             const size_t totalEdges);
 
      double DirectedChPP() {
-         double min_cost = flowGraph.minCostMaxFlow();
-         int64_t max_flow = flowGraph.get_max_flow();
-         if (max_flow == totalDeg)
-             return min_cost;
+         double minAddedCost = flowGraph.MinCostMaxFlow();
+         int64_t maxFlow = flowGraph.GetMaxFlow();
+         if (maxFlow == totalDeg)
+             return minAddedCost + totalCost;
          return -1.0;
      }
 
-     std::vector<General_path_element_t> get_path_edges();
+     std::vector<General_path_element_t> GetPathEdges();
 
  private:
      int64_t totalDeg;
+     double totalCost;
      int64_t superSource, superTarget;
 
      graph::PgrCostFlowGraph flowGraph;
@@ -60,22 +61,24 @@ class PgrDirectedChPPGraph {
 };
 
 PgrDirectedChPPGraph::PgrDirectedChPPGraph(
-        const pgr_edge_t *data_edges,
-        const size_t total_edges) {
+        const pgr_edge_t *dataEdges,
+        const size_t totalEdges) {
     resultEdges.clear();
-    for (size_t i = 0; i < total_edges; i++) {
+    for (size_t i = 0; i < totalEdges; i++) {
         pgr_edge_t edge;
-        edge.id = data_edges[i].id;
-        edge.source = data_edges[i].source;
-        edge.target = data_edges[i].target;
+        edge.id = dataEdges[i].id;
+        edge.source = dataEdges[i].source;
+        edge.target = dataEdges[i].target;
         edge.reverse_cost = -1;
-        if (data_edges[i].cost > 0) {
-            edge.cost = data_edges[i].cost;
+        if (dataEdges[i].cost > 0) {
+            edge.cost = dataEdges[i].cost;
+            totalCost += edge.cost;
             resultEdges.push_back(edge);
         }
-        if (data_edges[i].reverse_cost > 0) {
+        if (dataEdges[i].reverse_cost > 0) {
             std::swap(edge.source, edge.target);
-            edge.cost = data_edges[i].reverse_cost;
+            edge.cost = dataEdges[i].reverse_cost;
+            totalCost += edge.cost;
             resultEdges.push_back(edge);
         }
     }

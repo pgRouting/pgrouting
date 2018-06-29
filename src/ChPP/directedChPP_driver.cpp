@@ -63,21 +63,22 @@ do_pgr_directedChPP(
         pgrouting::graph::PgrDirectedChPPGraph digraph(
                 data_edges, total_edges);
 
-        double min_cost;
-        min_cost = digraph.DirectedChPP();
+        double minCost;
+        minCost = digraph.DirectedChPP();
 
-        std::vector<General_path_element_t> path_edges;
+        std::vector<General_path_element_t> pathEdges;
 
         if (only_cost) {
             General_path_element_t edge;
             edge.seq = -1;
             edge.node = edge.edge = -1;
-            edge.cost = edge.agg_cost = min_cost;
-            path_edges.push_back(edge);
+            edge.cost = edge.agg_cost = minCost;
+            pathEdges.push_back(edge);
         } else {
-            path_edges = digraph.get_path_edges();
+            //pathEdges = digraph.GetPathEdges();
         }
-        size_t count = path_edges.size();
+
+        size_t count = pathEdges.size();
         
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -90,7 +91,7 @@ do_pgr_directedChPP(
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         for (size_t i = 0; i < count; i++) {
-            (*return_tuples)[i] = path_edges[i];
+            (*return_tuples)[i] = pathEdges[i];
         }
         *return_count = count;
 

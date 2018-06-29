@@ -31,19 +31,19 @@ namespace graph {
 
 PgrCostFlowGraph::PgrCostFlowGraph(
         const std::vector<pgr_costFlow_t> &edges,
-        const std::set<int64_t> &source_vertices,
-        const std::set<int64_t> &sink_vertices) {
-    add_vertices(edges, source_vertices, sink_vertices);
+        const std::set<int64_t> &sourceVertices,
+        const std::set<int64_t> &sinkVertices) {
+    AddVertices(edges, sourceVertices, sinkVertices);
 
     capacity = get(boost::edge_capacity, graph);
     weight = get(boost::edge_weight, graph);
     rev = get(boost::edge_reverse, graph);
     residual_capacity = get(boost::edge_residual_capacity, graph);
 
-    insert_edges(edges);
+    InsertEdges(edges);
 }
 
-PgrCostFlowGraph::E PgrCostFlowGraph::add_edge(
+PgrCostFlowGraph::E PgrCostFlowGraph::AddEdge(
         PgrCostFlowGraph::V v,
         PgrCostFlowGraph::V w, double wei, double cap) {
     bool b;
@@ -55,108 +55,108 @@ PgrCostFlowGraph::E PgrCostFlowGraph::add_edge(
     return e;
 }
 
-void PgrCostFlowGraph::insert_edges(
+void PgrCostFlowGraph::InsertEdges(
         const std::vector<pgr_costFlow_t> &edges) {
     for (const auto edge : edges) {
-        PgrCostFlowGraph::E e1, e1_rev, e2, e2_rev;
-        V v1 = get_boost_vertex(edge.source);
-        V v2 = get_boost_vertex(edge.target);
+        PgrCostFlowGraph::E e1, e1Rev, e2, e2Rev;
+        V v1 = GetBoostVertex(edge.source);
+        V v2 = GetBoostVertex(edge.target);
 
         if (edge.capacity > 0) {
-            e1 = add_edge(v1, v2, edge.cost,
+            e1 = AddEdge(v1, v2, edge.cost,
                                   static_cast<double>(edge.capacity));
-            e1_rev = add_edge(v2, v1, -edge.cost, 0);
+            e1Rev = AddEdge(v2, v1, -edge.cost, 0);
 
-            E_to_id.insert(std::pair<PgrCostFlowGraph::E,
+            eToId.insert(std::pair<PgrCostFlowGraph::E,
                                      int64_t>(e1, edge.edge_id));
-            E_to_id.insert(std::pair<PgrCostFlowGraph::E,
-                                     int64_t>(e1_rev, edge.edge_id));
+            eToId.insert(std::pair<PgrCostFlowGraph::E,
+                                     int64_t>(e1Rev, edge.edge_id));
 
-            rev[e1] = e1_rev;
-            rev[e1_rev] = e1;
+            rev[e1] = e1Rev;
+            rev[e1Rev] = e1;
         }
 
         if (edge.reverse_capacity > 0) {
-            e2 = add_edge(v2, v1, edge.reverse_cost,
+            e2 = AddEdge(v2, v1, edge.reverse_cost,
                                   static_cast<double>(edge.reverse_capacity));
-            e2_rev = add_edge(v1, v2, -edge.reverse_cost, 0);
+            e2Rev = AddEdge(v1, v2, -edge.reverse_cost, 0);
 
-            E_to_id.insert(std::pair<PgrCostFlowGraph::E,
+            eToId.insert(std::pair<PgrCostFlowGraph::E,
                                      int64_t>(e2, edge.edge_id));
-            E_to_id.insert(std::pair<PgrCostFlowGraph::E,
-                                     int64_t>(e2_rev, edge.edge_id));
+            eToId.insert(std::pair<PgrCostFlowGraph::E,
+                                     int64_t>(e2Rev, edge.edge_id));
 
-            rev[e2] = e2_rev;
-            rev[e2_rev] = e2;
+            rev[e2] = e2Rev;
+            rev[e2Rev] = e2;
         }
     }
 }
 
-void PgrCostFlowGraph::set_supersource(
-        const std::set<int64_t> &source_vertices) {
+void PgrCostFlowGraph::SetSupersource(
+        const std::set<int64_t> &sourceVertices) {
     supersource = add_vertex(graph);
-    for (int64_t source_id : source_vertices) {
-        PgrCostFlowGraph::V source = get_boost_vertex(source_id);
-        PgrCostFlowGraph::E e, e_rev;
-        e = add_edge(supersource, source,
+    for (int64_t source_id : sourceVertices) {
+        PgrCostFlowGraph::V source = GetBoostVertex(source_id);
+        PgrCostFlowGraph::E e, eRev;
+        e = AddEdge(supersource, source,
                      0, (std::numeric_limits<int32_t>::max)());
-        e_rev = add_edge(source, supersource, 0, 0);
-        rev[e] = e_rev;
-        rev[e_rev] = e;
+        eRev = AddEdge(source, supersource, 0, 0);
+        rev[e] = eRev;
+        rev[eRev] = e;
     }
 }
 
-void PgrCostFlowGraph::set_supersink(
-        const std::set<int64_t> &sink_vertices) {
+void PgrCostFlowGraph::SetSupersink(
+        const std::set<int64_t> &sinkVertices) {
     supersink = add_vertex(graph);
-    for (int64_t sink_id : sink_vertices) {
-        PgrCostFlowGraph::V sink = get_boost_vertex(sink_id);
-        PgrCostFlowGraph::E e, e_rev;
-        e = add_edge(sink, supersink, 0, (std::numeric_limits<int32_t>::max)());
-        e_rev = add_edge(supersink, sink, 0, 0);
-        rev[e] = e_rev;
-        rev[e_rev] = e;
+    for (int64_t sink_id : sinkVertices) {
+        PgrCostFlowGraph::V sink = GetBoostVertex(sink_id);
+        PgrCostFlowGraph::E e, eRev;
+        e = AddEdge(sink, supersink, 0, (std::numeric_limits<int32_t>::max)());
+        eRev = AddEdge(supersink, sink, 0, 0);
+        rev[e] = eRev;
+        rev[eRev] = e;
     }
 }
 
 int64_t
-PgrCostFlowGraph::get_max_flow() const {
-    int64_t max_flow = 0;
-    E_it e, e_end;
-    for (boost::tie(e, e_end) = boost::edges(graph); e != e_end; ++e) {
+PgrCostFlowGraph::GetMaxFlow() const {
+    int64_t maxFlow = 0;
+    E_it e, eEnd;
+    for (boost::tie(e, eEnd) = boost::edges(graph); e != eEnd; ++e) {
         if (((capacity[*e] - residual_capacity[*e]) > 0) &&
                 ((*e).m_source == supersource))
-            max_flow += 
+            maxFlow += 
                 static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
     }
-    return max_flow;
+    return maxFlow;
 }
 
 std::vector<pgr_flow_t>
-PgrCostFlowGraph::get_flow_edges() const {
-    std::vector<pgr_flow_t> flow_edges;
-    E_it e, e_end;
-    for (boost::tie(e, e_end) = boost::edges(graph); e != e_end; ++e) {
+PgrCostFlowGraph::GetFlowEdges() const {
+    std::vector<pgr_flow_t> flowEdges;
+    E_it e, eEnd;
+    for (boost::tie(e, eEnd) = boost::edges(graph); e != eEnd; ++e) {
         if (((capacity[*e] - residual_capacity[*e]) > 0) &&
                 ((*e).m_source != supersource) &&
                 ((*e).m_target != supersink)) {
             pgr_flow_t edge;
-            edge.edge = get_edge_id(*e);
-            edge.source = get_vertex_id((*e).m_source);
-            edge.target = get_vertex_id((*e).m_target);
+            edge.edge = GetEdgeId(*e);
+            edge.source = GetVertexId((*e).m_source);
+            edge.target = GetVertexId((*e).m_target);
             edge.flow =
                 static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
             edge.residual_capacity =
                 static_cast<int64_t>(residual_capacity[*e]);
             edge.cost = weight[*e] * static_cast<double>(edge.flow);
-            if (flow_edges.size() == 0)
+            if (flowEdges.size() == 0)
                 edge.agg_cost = edge.cost;
             else
-                edge.agg_cost = (flow_edges.back()).agg_cost + edge.cost;
-            flow_edges.push_back(edge);
+                edge.agg_cost = (flowEdges.back()).agg_cost + edge.cost;
+            flowEdges.push_back(edge);
         }
     }
-    return flow_edges;
+    return flowEdges;
 }
 
 }  // namespace graph
