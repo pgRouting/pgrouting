@@ -1,4 +1,4 @@
-ADD_LIBRARY(prim OBJECT
+ADD_LIBRARY(mst OBJECT
     kruskal.c
     kruskal_driver.cpp
     prim.c
