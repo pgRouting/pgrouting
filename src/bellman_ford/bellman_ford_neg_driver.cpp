@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/bellman_ford/bellman_ford_driver.h"
+#include "drivers/bellman_ford/bellman_ford_neg_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -72,9 +72,11 @@ pgr_bellman_ford(
 }
 
 void
-do_pgr_bellman_ford(
-        pgr_edge_t  *data_edges,
-                size_t total_edges,
+do_pgr_bellman_ford_neg(
+                pgr_edge_t  *positive_edges,
+                size_t total_positive_edges,
+                pgr_edge_t  *negative_edges,
+                size_t total_negative_edges,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,
                 int64_t  *end_vidsArr,
@@ -91,6 +93,7 @@ do_pgr_bellman_ford(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    size_t total_edges =  total_positive_edges + total_negative_edges;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
@@ -102,6 +105,7 @@ do_pgr_bellman_ford(
         graphType gType = directed? DIRECTED: UNDIRECTED;
         
         log << "Inserting vertices into a c++ vector structure";
+        
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
@@ -112,7 +116,9 @@ do_pgr_bellman_ford(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges(positive_edges, total_positive_edges);
+            digraph.insert_negative_edges(negative_edges, total_negative_edges);
+            log << digraph;
             paths = pgr_bellman_ford(digraph,
                     start_vertices, 
                     end_vertices,
@@ -121,7 +127,9 @@ do_pgr_bellman_ford(
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_edges(positive_edges, total_positive_edges);
+            undigraph.insert_negative_edges(negative_edges, total_negative_edges);
+            log << undigraph;
             paths = pgr_bellman_ford(
                     undigraph,
                     start_vertices, 

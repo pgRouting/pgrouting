@@ -45,7 +45,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-
 //******************************************
 
 template < class G >
@@ -53,7 +52,6 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
-     typename G::EO_i out, out_end;
      //@}
 
      //! @name BellmanFord
@@ -104,7 +102,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          log << std::string(__FUNCTION__) << "\n";
          predecessors.resize(graph.num_vertices());
          distances.resize(graph.num_vertices());
-         log << " in one_to_many"<<"\n";
+         
          // get the graphs source and target
          if (!graph.has_vertex(start_vertex))
              return std::deque<Path>();
@@ -163,22 +161,6 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
          log << std::string(__FUNCTION__) << "\n";
-         log << "----------------------------------------------------\n";
-         for (auto vi = vertices(graph.graph).first;
-                 vi != vertices(graph.graph).second; ++vi) {
-             if ((*vi) >= graph.num_vertices()) break;
-             log << (*vi) << ": " << " out_edges_of(" << graph.graph[(*vi)] << "):";
-             for (boost::tie(out, out_end) = out_edges(*vi, graph.graph);
-                     out != out_end; ++out) {
-                 log << ' '
-                     << graph.graph[*out].id << "=("
-                     << graph[graph.source(*out)].id << ", "
-                     << graph[graph.target(*out)].id << ") = "
-                     << graph.graph[*out].cost <<"\t";
-             }
-             log << std::endl;
-         }
-         log <<"-------------------------------------------------\n";
          
          for (const auto &start : start_vertex) {
              auto r_paths = bellman_ford(graph, start, end_vertex, only_cost);
@@ -213,8 +195,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
                      .root_vertex(source)
-                     );
-             
+                     );  
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -281,52 +262,11 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
 
      //! @name members
      //@{
-     struct found_goals{};  //!< exception for termination
      std::vector< V > predecessors;
      std::vector< double > distances;
      
      //@}
 
-
-
-     //! @name Stopping classes
-     //@{
-
-     //! class for stopping when 1 target is found
-     class bellman_ford_one_goal_visitor : public boost::default_bellman_visitor {
-      public:
-          explicit bellman_ford_one_goal_visitor(V goal) : m_goal(goal) {}
-          template <class B_G>
-              void examine_vertex(V &u, B_G &) {
-                log << std::string(__FUNCTION__) << "\n";    
-                  if (u == m_goal) throw found_goals();
-              }
-      private:
-          V m_goal;
-     };
-
-
-     //! class for stopping when all targets are found
-     class bellman_ford_many_goal_visitor : public boost::default_bellman_visitor {
-      public:
-          explicit bellman_ford_many_goal_visitor(std::vector< V > goals)
-              :m_goals(goals.begin(), goals.end()) {}
-          template <class B_G>
-              void examine_vertex(V u, B_G &) {
-                  auto s_it = m_goals.find(u);
-                  if (s_it == m_goals.end()) return;
-                  // we found one more goal
-                  m_goals.erase(s_it);
-                  if (m_goals.size() == 0) throw found_goals();
-              }
-      private:
-          std::set< V > m_goals;
-     };
-
-
-     //@}
 };
 
-
- //namespace
 #endif  // INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_
