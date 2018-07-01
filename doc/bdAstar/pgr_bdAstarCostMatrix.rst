@@ -15,7 +15,7 @@ pgr_bdAstarCostMatrix - proposed
 Name
 -------------------------------------------------------------------------------
 
-``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_bdAstar`.
+``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_bdAstar`.
 
 
 .. figure:: images/boost-inside.jpeg
@@ -132,7 +132,7 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`bdAstar`
+* :doc:`pgr_bdAstar`
 * :ref:`costMatrix`
 * :ref:`tsp`
 * The queries use the :doc:`sampledata` network.
