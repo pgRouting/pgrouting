@@ -57,9 +57,6 @@ Signature Summary
 
 
 
-.. index::
-    single: aStarCostMatrix(Minimal Use)
-
 Minimal Signature
 ...............................................................................
 
@@ -82,7 +79,7 @@ The minimal signature:
 
 
 .. index::
-    single: aStarCostMatrix(Complete Signature)
+    single: aStarCostMatrix
 
 Complete Signature
 ...............................................................................

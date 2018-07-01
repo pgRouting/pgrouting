@@ -73,9 +73,6 @@ Signature Summary
 
 Optional parameters are `named parameters` and have a default value.
 
-.. index::
-    single: aStar(Minimal Use)
-
 
 Minimal Signature
 ...............................................................................

@@ -55,9 +55,6 @@ Optional parameters are `named parameters` and have a default value.
 
 
 
-.. index::
-    single: aStarCost(Minimal Signature)
-
 Minimal Signature
 ...............................................................................
 
@@ -75,7 +72,7 @@ Minimal Signature
 
 
 .. index::
-    single: aStarCost(One to One)
+    single: bdAstarCost(One to One)
 
 One to One
 ...............................................................................
@@ -93,7 +90,7 @@ One to One
 
 
 .. index::
-    single: aStarCost(One to Many)
+    single: bdAstarCost(One to Many)
 
 One to many
 .......................................
@@ -110,7 +107,7 @@ One to many
    :end-before: --q4
 
 .. index::
-    single: aStarCost(Many to One)
+    single: bdAstarCost(Many to One)
 
 Many to One
 .......................................
@@ -129,7 +126,7 @@ Many to One
 
 
 .. index::
-    single: aStarCost(Many to Many)
+    single: bdAstarCost(Many to Many)
 
 Many to Many
 .......................................

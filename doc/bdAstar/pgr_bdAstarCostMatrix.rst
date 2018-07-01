@@ -57,10 +57,6 @@ Signature Summary
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
-
-.. index::
-    single: aStarCostMatrix(Minimal Use)
-
 Minimal Signature
 ...............................................................................
 
@@ -83,7 +79,7 @@ The minimal signature:
 
 
 .. index::
-    single: bdAstarCostMatrix(Complete Signature)
+    single: bdAstarCostMatrix
 
 Complete Signature
 ...............................................................................

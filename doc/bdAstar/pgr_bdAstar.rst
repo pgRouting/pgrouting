@@ -71,10 +71,6 @@ Signature Summary
 Optional parameters are `named parameters` and have a default value.
 
 
-.. index::
-    single: bdAstar(Minimal Use) -- New Signature
-
-
 Minimal Signature
 ...............................................................................
 
@@ -92,7 +88,7 @@ Minimal Signature
 
 
 .. index::
-    single: bdAstar(One to One) -- New Signature
+    single: bdAstar(One to One)
 
 
 One to One
@@ -110,7 +106,7 @@ One to One
 
 
 .. index::
-    single: bdAstar(One to Many) - Proposed
+    single: bdAstar(One to Many)
 
 One to many
 .......................................
@@ -127,7 +123,7 @@ One to many
    :end-before: -- q4
 
 .. index::
-    single: bdAstar(Many to One) - Proposed
+    single: bdAstar(Many to One)
 
 
 Many to One
@@ -146,7 +142,7 @@ Many to One
 
 
 .. index::
-    single: bdAstar(Many to Many) - Proposed
+    single: bdAstar(Many to Many)
 
 Many to Many
 .......................................
