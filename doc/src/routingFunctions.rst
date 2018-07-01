@@ -30,7 +30,12 @@ Routing Functions
    :end-before: index to here
 
 
-:ref:`pgr_bdAstar` - Bi-directional A* Shortest Path
+:doc:`bdAstar-family`
+
+.. include:: bdAstar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 
 :ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 
@@ -70,6 +75,7 @@ Routing Functions
 
     allpairs-family
     aStar-family
+    bdAstar-family
     pgr_bdDijkstra
     dijkstra-family
     flow-family

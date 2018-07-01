@@ -18,6 +18,20 @@ pgRouting 3.0.0 Release Notes
   * pgr_aStarCostMatrix(many to one)
   * pgr_aStarCostMatrix(many to many)
 
+* bdAstar Family
+
+  * pgr_bdAstar(one to many)
+  * pgr_bdAstar(many to one)
+  * pgr_bdAstar(many to many)
+  * pgr_bdAstarCost(one to one)
+  * pgr_bdAstarCost(one to many)
+  * pgr_bdAstarCost(many to one)
+  * pgr_bdAstarCost(many to many)
+  * pgr_bdAstarCostMatrix(one to one)
+  * pgr_bdAstarCostMatrix(one to many)
+  * pgr_bdAstarCostMatrix(many to one)
+  * pgr_bdAstarCostMatrix(many to many)
+
 * Flow Family
 
   * pgr_pushRelabel(one to one)

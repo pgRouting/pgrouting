@@ -53,10 +53,6 @@ Signature Summary
 Optional parameters are `named parameters` and have a default value.
 
 
-
-.. index::
-    single: aStarCost(Minimal Signature)
-
 Minimal Signature
 ...............................................................................
 

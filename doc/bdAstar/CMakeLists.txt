@@ -1,8 +1,9 @@
 
 SET(LOCAL_FILES
     bdAstar-family.rst
-    pgr_bdAstarCost.rst
     pgr_bdAstar.rst
+    pgr_bdAstarCost.rst
+    pgr_bdAstarCostMatrix.rst
     )
 
 foreach (f ${LOCAL_FILES})

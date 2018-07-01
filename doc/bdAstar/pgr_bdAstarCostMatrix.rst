@@ -7,13 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_aStarCostMatrix
+pgr_bdAstarCostMatrix
 ===============================================================================
 
 Synopsis
 -------------------------------------------------------------------------------
 
-``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
+``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -25,7 +25,7 @@ Synopsis
 
 The main Characteristics are:
 
-* Using internaly the :doc:`pgr_aStar` algorithm
+* Using internaly the :doc:`pgr_bdAstar` algorithm
 * Returns a cost matrix.
 * No ordering is performed
 * let `v` and `u` are nodes on the graph:
@@ -44,17 +44,17 @@ The main Characteristics are:
 
 .. rubric:: Availability
 
-* New on version 2.4.0
+* Official on v3.0.0
+* Proposed on v2.5.0
 
 Signature Summary
 -------------------------------------------------------------------------------
 
 .. code-block:: none
 
-    pgr_aStarCostMatrix(edges_sql, vids)
-    pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
+    pgr_bdAstarCostMatrix(edges_sql, vids)
+    pgr_bdAstarCostMatrix(edges_sql, vids [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
-
 
 
 Minimal Signature
@@ -66,7 +66,7 @@ The minimal signature:
 
 .. code-block:: none
 
-    pgr_aStarCostMatrix(edges_sql, vids)
+    pgr_bdAstarCostMatrix(edges_sql, vids)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -79,14 +79,14 @@ The minimal signature:
 
 
 .. index::
-    single: aStarCostMatrix
+    single: bdAstarCostMatrix
 
 Complete Signature
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
+    pgr_bdAstarCostMatrix(edges_sql, vids [, directed, heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -146,6 +146,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`aStar-family`
+* :doc:`bdAstar-family`
 * :doc:`cost-category`
 * :doc:`costMatrix-category`
 * :doc:`TSP-family`

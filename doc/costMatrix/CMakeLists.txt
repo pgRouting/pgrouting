@@ -4,7 +4,6 @@ SET(LOCAL_FILES
     pgr_bdDijkstraCostMatrix.rst
     pgr_withPointsCostMatrix.rst
     cost-category.rst
-    pgr_bdAstarCostMatrix.rst
     pgr_dijkstraCostMatrix.rst
     )
 
