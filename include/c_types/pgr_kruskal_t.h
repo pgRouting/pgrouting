@@ -1,5 +1,6 @@
 /*PGR-GNU*****************************************************************
 File: pgr_kruskal_t.h
+
 Copyright (c) 2015 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
 ------
@@ -51,7 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef struct {
     int seq;
-    int sub_graph; 
+    int64_t component; 
     int64_t edge;
     double cost;
     double tree_cost;

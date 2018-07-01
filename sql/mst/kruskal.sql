@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: prim_driver.h
+File: kruskal.sql
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -27,35 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_PRIM_PRIM_DRIVER_H_
-#define INCLUDE_DRIVERS_PRIM_PRIM_DRIVER_H_
-#pragma once
+CREATE OR REPLACE FUNCTION pgr_kruskal(
+    edges_sql TEXT,             -- Edge sql
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_prim_t.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*********************************************************
-   TEXT,
-********************************************************/
-
-    void
-        do_pgr_prim(
-                pgr_edge_t  *data_edges,
-                size_t total_edges,
-                int64_t root_vertex,
-                bool use_root,
-                pgr_prim_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_PRIM_PRIM_DRIVER_H_
+    OUT seq INTEGER,            -- Seq
+    OUT component BIGINT,       -- the lowest number of the node in the component
+    OUT edge BIGINT,	     	-- Edge linked to that node
+    OUT cost FLOAT,             -- Cost of edge
+    OUT tree_cost FLOAT)        -- Spanning tree cost 
+RETURNS SETOF RECORD AS
+'${MODULE_PATHNAME}', 'kruskal'
+LANGUAGE c VOLATILE;

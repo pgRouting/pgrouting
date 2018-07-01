@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: kruskal.c
+File: prim.c
 Generated with Template by:
 
 Copyright (c) 2015 pgRouting developers
@@ -22,7 +22,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-/** @file kruskal.c
+/** @file prim.c
  * @brief Conecting code with postgres.
  *
  * This file is fully documented for understanding
@@ -49,10 +49,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get edges information */
 #include "c_common/edges_input.h"
 
-#include "drivers/prim/kruskal_driver.h"  // the link to the C++ code of the function
+#include "drivers/mst/prim_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(kruskal);
+PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(prim);
 
 
 /******************************************************************************/
@@ -61,7 +61,9 @@ static
 void
 process(
         char* edges_sql, 
-        pgr_kruskal_t **result_tuples,
+        int64_t root_vertex,
+        bool use_root,
+        pgr_prim_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -87,18 +89,21 @@ process(
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
-    char *notice_msg = NULL;	
+    char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_kruskal(
+    do_pgr_prim(
             edges,
             total_edges,
+            root_vertex,
+            use_root,
+
             result_tuples,
             result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_kruskal", start_t, clock());
+    time_msg(" processing pgr_prim", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
@@ -116,14 +121,14 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_kruskal_t *result_tuples = NULL;
+    pgr_prim_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -133,10 +138,11 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_INT64(1),
+                PG_GETARG_BOOL(2),
                 &result_tuples,
                 &result_count);
 
@@ -164,7 +170,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_kruskal_t*) funcctx->user_fctx;
+    result_tuples = (pgr_prim_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -172,21 +178,23 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        values = palloc(7 * sizeof(Datum));
+        nulls = palloc(7 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1); 
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].sub_graph);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].root_vertex);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

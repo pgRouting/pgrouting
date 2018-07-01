@@ -22,25 +22,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#include "drivers/prim/prim_driver.h"
+#include "drivers/mst/prim_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "prim/pgr_prim.hpp"
+#include "mst/pgr_prim.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-
-/************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
- ***********************************************************/
 
 template < class G >
 static

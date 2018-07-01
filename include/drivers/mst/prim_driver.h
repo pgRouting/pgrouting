@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: kruskal_driver.h
+File: prim_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,22 +27,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_PRIM_KRUSKAL_DRIVER_H_
-#define INCLUDE_DRIVERS_PRIM_KRUSKAL_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_MST_PRIM_DRIVER_H_
+#define INCLUDE_DRIVERS_MST_PRIM_DRIVER_H_
 #pragma once
 
 #include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_kruskal_t.h"
+#include "c_types/pgr_prim_t.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+/*********************************************************
+   TEXT,
+********************************************************/
+
     void
-        do_pgr_kruskal(
+        do_pgr_prim(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                pgr_kruskal_t **return_tuples,
+                int64_t root_vertex,
+                bool use_root,
+                pgr_prim_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
@@ -52,4 +58,4 @@ extern "C" {
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_PRIM_KRUSKAL_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_MST_PRIM_DRIVER_H_

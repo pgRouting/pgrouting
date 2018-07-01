@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_PRIM_PGR_PRIM_HPP_
-#define INCLUDE_PRIM_PGR_PRIM_HPP_
+#ifndef INCLUDE_MST_PGR_PRIM_HPP_
+#define INCLUDE_MST_PGR_PRIM_HPP_
 #pragma once
 
 #include <boost/config.hpp>
@@ -225,4 +225,4 @@ Pgr_prim< G >::prim(
 } 
 
 
-#endif  // INCLUDE_PRIM_PGR_PRIM_HPP_
+#endif  // INCLUDE_MST_PGR_PRIM_HPP_
