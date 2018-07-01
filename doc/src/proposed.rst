@@ -37,12 +37,6 @@ As part of the :ref:`dijkstra`
 
 .. rubric:: Families
 
-:ref:`bdAstar`
-
-.. include:: bdAstar-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
 :ref:`bdDijkstra`
 
 .. include:: bdDijkstra-family.rst
@@ -79,8 +73,6 @@ As part of the :ref:`dijkstra`
 .. toctree::
     :hidden:
 
-    aStar-family
-    bdAstar-family
     bdDijkstra-family
     withPoints-family
     cost-category
