@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "pgRouting Concepts"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "Contents"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
@@ -52,16 +48,32 @@ msgstr ""
 msgid "How you load your data will depend in what form it comes it. There are various OpenSource tools that can help you, like:"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "osm2pgrouting"
+msgstr ""
+
 #: ../../build/doc/pgRouting-concepts.rst:56
 msgid "this is a tool for loading OSM data into postgresql with pgRouting requirements"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "shp2pgsql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:57
 msgid "this is the postgresql shapefile loader"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ogr2ogr"
+msgstr ""
+
 #: ../../build/doc/pgRouting-concepts.rst:58
 msgid "this is a vector data conversion utility"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "osm2pgsql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:59
@@ -145,12 +157,29 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
 #: ../../build/doc/pgRouting-concepts.rst:154
 #: ../../build/doc/pgRouting-concepts.rst:184
 #: ../../build/doc/pgRouting-concepts.rst:214
 #: ../../build/doc/pgRouting-concepts.rst:271
 #: ../../build/doc/pgRouting-concepts.rst:302
 msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:155
@@ -162,6 +191,13 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:162
 msgid "Description of the edges_sql query for dijkstra like functions"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "edges_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:164
@@ -476,6 +512,10 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:312
 msgid "Description of the Points SQL query"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "points_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:319

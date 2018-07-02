@@ -3,9 +3,9 @@
 set -e
 
 
-# This run.sh is intended for 2.6.0
+# This run.sh is intended for 3.0.0
 if [ -z $1 ]; then
-    VERSION="2.6.0"
+    VERSION="3.0.0"
 else
     VERSION=$1
 fi
@@ -21,6 +21,7 @@ echo ------------------------------------
 echo Compiling with $1
 echo ------------------------------------
 
+# when more than one gcc compiler is installed on the computer
 #sudo update-alternatives --set gcc /usr/bin/gcc-$1
 
 cd build/
@@ -33,9 +34,10 @@ cd build/
 
 # with documentation
 #cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DPgRouting_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
+#cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DCMAKE_BUILD_TYPE=Debug ..
 
 # when more than one postgres version is installed on the computer
-cmake  -DPOSTGRESQL_BIN=/usr/lib/postgresql/$PGSQL_VER/bin -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..  
+cmake  -DPOSTGRESQL_BIN=/usr/lib/postgresql/$PGSQL_VER/bin -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
 
 make
 sudo make install
@@ -48,10 +50,10 @@ echo  Execute documentation queries for a particular directory
 echo --------------------------------------------
 
 # - when one postgres version is installed on the computer
-tools/testers/algorithm-tester.pl  -alg withPoints -documentation
+#tools/testers/algorithm-tester.pl  -alg withPoints -documentation
 
 # - when more than one postgres version is installed on the computer
-tools/testers/algorithm-tester.pl  -alg withPoints -documentation  -pgport $PGPORT 
+tools/testers/algorithm-tester.pl  -alg withPoints -documentation  -pgport $PGPORT
 
 
 echo
@@ -63,7 +65,7 @@ echo --------------------------------------------
 tools/developer/taptest.sh  withPoints/*
 
 # - when more than one postgres version is installed on the computer
-tools/developer/taptest.sh  withPoints/* -p $PGPORT
+#tools/developer/taptest.sh  withPoints/* -p $PGPORT
 
 echo
 echo --------------------------------------------
@@ -74,7 +76,7 @@ echo --------------------------------------------
 tools/developer/taptest.sh  withPoints/undirected_equalityDD.sql
 
 # - when more than one postgres version is installed on the computer
-tools/developer/taptest.sh  withPoints/undirected_equalityDD.sql  -p $PGPORT
+#tools/developer/taptest.sh  withPoints/undirected_equalityDD.sql  -p $PGPORT
 
 
 
@@ -87,20 +89,19 @@ echo --------------------------------------------
 sh tools/release-scripts/get_signatures.sh $VERSION ____sigs_routing____ sql/sigs
 
 # when more than one postgres version is installed on the computer
-sh tools/release-scripts/get_signatures.sh $VERSION ____sigs_routing____ sql/sigs -p $PGPORT
+#sh tools/release-scripts/get_signatures.sh $VERSION ____sigs_routing____ sql/sigs -p $PGPORT
 
-# this is for version <2.6.0
-#cp build/sql/pgrouting--*.sql tools/sql-update-scripts
+
 if [[ $(git status | grep 'pgrouting--') ]]; then
     echo "**************************************************"
     echo "           WARNING"
-    echo "the signatures changed, copying generated files"
+    echo "the signatures changed, copyed the generated files"
     echo "Plese verify the changes are minimal"
     echo "**************************************************"
     git diff
 fi
 
-exit 0
+#exit 0
 
 ################################
 ################################
@@ -113,7 +114,7 @@ echo
 echo --------------------------------------------
 echo  Verify NEWS
 echo --------------------------------------------
-release-scripts/notes2news.pl
+tools/release-scripts/notes2news.pl
 if [[ $(git status | grep 'NEWS') ]]; then
     echo "**************************************************"
     echo "           WARNING"
@@ -126,10 +127,9 @@ fi
 ########################################################
 #  Execute documentation queries for the whole project
 ########################################################
-tools/testers/algorithm-tester.pl  -documentation  -pgport $PGPORT 
+tools/testers/algorithm-tester.pl  -documentation  -pgport $PGPORT
 
 # update the trsp README.md file
-mv doc/queries/trsp_notes_v${VERSION}.queries doc/doc/trsp/README.md
 cp test/trsp/trsp_notes_v${VERSION}.result doc/trsp/README.md
 
 if [[ $(git status | grep 'trsp_notes') ]]; then
@@ -138,19 +138,17 @@ if [[ $(git status | grep 'trsp_notes') ]]; then
     echo "The trsp notes changed"
     echo "Plese verify the changes are OK"
     echo "**************************************************"
-    git diff
+    git diff doc/trsp/README.md
 fi
 
 
 
-
-tools/testers/algorithm-tester.pl -documentation  -pgport $PGPORT 
 tools/testers/algorithm-tester.pl -pgport $PGPORT
 
 cd build
-rm -rf doc/*
+#rm -rf doc/*
 make doc
-rm -rf doxygen/*
+#rm -rf doxygen/*
 make doxy
 cd ..
 
@@ -164,7 +162,7 @@ echo $PGPORT
 sh ./tools/testers/pg_prove_tests.sh vicky $PGPORT
 dropdb  -p $PGPORT ___pgr___test___
 
-#tools/testers/update-tester.sh 
+#tools/testers/update-tester.sh
 
 }
 

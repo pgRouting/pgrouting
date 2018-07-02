@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,335 +64,347 @@ msgstr ""
 msgid "Short Version"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:37
+#: ../../build/doc/pgRouting-installation.rst:35
 msgid "Extracting the tar ball"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:44
+#: ../../build/doc/pgRouting-installation.rst:42
 msgid "To compile assuming you have all the dependencies in your search path:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:54
+#: ../../build/doc/pgRouting-installation.rst:52
 msgid "Once pgRouting is installed, it needs to be enabled in each individual database you want to use it in."
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:66
+#: ../../build/doc/pgRouting-installation.rst:64
 msgid "Get the sources"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:69
+#: ../../build/doc/pgRouting-installation.rst:67
 msgid "The pgRouting latest release can be found in https://github.com/pgRouting/pgrouting/releases/latest"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:72
+#: ../../build/doc/pgRouting-installation.rst:70
 msgid "wget"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:73
+#: ../../build/doc/pgRouting-installation.rst:71
 msgid "To download this release:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:81
+#: ../../build/doc/pgRouting-installation.rst:77
 msgid "Goto :ref:`install-short` to the extract and compile instructions."
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:84
+#: ../../build/doc/pgRouting-installation.rst:80
 msgid "git"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:85
+#: ../../build/doc/pgRouting-installation.rst:81
 msgid "To download the repository"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:93
+#: ../../build/doc/pgRouting-installation.rst:89
 msgid "Goto :ref:`install-short` to the compile instructions (there is no tar ball)."
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:100
+#: ../../build/doc/pgRouting-installation.rst:96
 msgid "Enabling and upgrading in the database"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:103
+#: ../../build/doc/pgRouting-installation.rst:99
 msgid "Enabling the database"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:104
+#: ../../build/doc/pgRouting-installation.rst:100
 msgid "pgRouting is an extension and depends on postGIS. Enabling postGIS before enabling pgRouting in the database"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:113
+#: ../../build/doc/pgRouting-installation.rst:109
 msgid "Upgrading the database"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:114
-msgid "To upgrade pgRouting in the database to version 2.4.0 use the following command:"
+#: ../../build/doc/pgRouting-installation.rst:110
+msgid "To upgrade pgRouting in the database to version 2.6.0 use the following command:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:122
+#: ../../build/doc/pgRouting-installation.rst:118
 msgid "More information can be found in https://www.postgresql.org/docs/current/static/sql-createextension.html"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:128
+#: ../../build/doc/pgRouting-installation.rst:124
 msgid "Dependencies"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:131
+#: ../../build/doc/pgRouting-installation.rst:127
 msgid "Compilation Dependencies"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:132
+#: ../../build/doc/pgRouting-installation.rst:128
 msgid "To be able to compile pgRouting, make sure that the following dependencies are met:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:134
+#: ../../build/doc/pgRouting-installation.rst:130
 msgid "C and C++0x compilers * g++ version >= 4.8"
 msgstr ""
 
+#: ../../build/doc/pgRouting-installation.rst:132
+msgid "Postgresql version >= 9.3"
+msgstr ""
+
+#: ../../build/doc/pgRouting-installation.rst:133
+msgid "PostGIS version >= 2.2"
+msgstr ""
+
+#: ../../build/doc/pgRouting-installation.rst:134
+msgid "The Boost Graph Library (BGL). Version >= 1.53"
+msgstr ""
+
+#: ../../build/doc/pgRouting-installation.rst:135
+msgid "CMake >= 3.2"
+msgstr ""
+
 #: ../../build/doc/pgRouting-installation.rst:136
-msgid "Postgresql version >= 9.2"
-msgstr ""
-
-#: ../../build/doc/pgRouting-installation.rst:137
-msgid "PostGIS version >= 2.0"
-msgstr ""
-
-#: ../../build/doc/pgRouting-installation.rst:138
-msgid "The Boost Graph Library (BGL). Version >= 1.46"
-msgstr ""
-
-#: ../../build/doc/pgRouting-installation.rst:139
-msgid "CMake >= 2.8.8"
-msgstr ""
-
-#: ../../build/doc/pgRouting-installation.rst:140
 msgid "CGAL >=  4.2"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:144
+#: ../../build/doc/pgRouting-installation.rst:140
 msgid "optional dependencies"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:145
+#: ../../build/doc/pgRouting-installation.rst:141
 msgid "For user's documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:147
+#: ../../build/doc/pgRouting-installation.rst:143
 msgid "Sphinx >= 1.1"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:148
+#: ../../build/doc/pgRouting-installation.rst:144
 msgid "Latex"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:150
+#: ../../build/doc/pgRouting-installation.rst:146
 msgid "For developer's documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:152
+#: ../../build/doc/pgRouting-installation.rst:148
 msgid "Doxygen >= 1.7"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:154
+#: ../../build/doc/pgRouting-installation.rst:150
 msgid "For testing"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:156
+#: ../../build/doc/pgRouting-installation.rst:152
 msgid "pgtap"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:157
+#: ../../build/doc/pgRouting-installation.rst:153
 msgid "pg_prove"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:161
+#: ../../build/doc/pgRouting-installation.rst:157
 msgid "Example: Installing dependencies on linux"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:162
+#: ../../build/doc/pgRouting-installation.rst:158
 msgid "Installing the compilation dependencies"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:174
-msgid "Installing the optional dependencies"
+#: ../../build/doc/pgRouting-installation.rst:161
+msgid "Database dependencies"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:188
+#: ../../build/doc/pgRouting-installation.rst:171
+msgid "Build dependencies"
+msgstr ""
+
+#: ../../build/doc/pgRouting-installation.rst:181
+msgid "Optional dependencies"
+msgstr ""
+
+#: ../../build/doc/pgRouting-installation.rst:182
+msgid "For documentation and testing"
+msgstr ""
+
+#: ../../build/doc/pgRouting-installation.rst:196
 msgid "Configuring"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:190
+#: ../../build/doc/pgRouting-installation.rst:198
 msgid "pgRouting uses the `cmake` system to do the configuration."
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:192
+#: ../../build/doc/pgRouting-installation.rst:200
 msgid "The build directory is different from the source directory"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:194
+#: ../../build/doc/pgRouting-installation.rst:202
 msgid "Create the build directory"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:201
+#: ../../build/doc/pgRouting-installation.rst:209
 msgid "Configurable variables"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:205
+#: ../../build/doc/pgRouting-installation.rst:213
 msgid "To see the variables that can be configured"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:213
+#: ../../build/doc/pgRouting-installation.rst:221
 msgid "Configuring The Documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:214
+#: ../../build/doc/pgRouting-installation.rst:222
 msgid "Most of the effort of the documentation has being on the HTML files. Some variables for the documentation:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:218
+#: ../../build/doc/pgRouting-installation.rst:226
 msgid "Variable"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:218
+#: ../../build/doc/pgRouting-installation.rst:226
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:218
+#: ../../build/doc/pgRouting-installation.rst:226
 msgid "Comment"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:220
+#: ../../build/doc/pgRouting-installation.rst:228
 msgid "WITH_DOC"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:220
-#: ../../build/doc/pgRouting-installation.rst:223
-#: ../../build/doc/pgRouting-installation.rst:224
-#: ../../build/doc/pgRouting-installation.rst:225
+#: ../../build/doc/pgRouting-installation.rst:228
+#: ../../build/doc/pgRouting-installation.rst:231
+#: ../../build/doc/pgRouting-installation.rst:232
+#: ../../build/doc/pgRouting-installation.rst:233
 msgid "BOOL=OFF"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:220
+#: ../../build/doc/pgRouting-installation.rst:228
 msgid "Turn on/off building the documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:221
+#: ../../build/doc/pgRouting-installation.rst:229
 msgid "BUILD_HTML"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:221
-#: ../../build/doc/pgRouting-installation.rst:222
+#: ../../build/doc/pgRouting-installation.rst:229
+#: ../../build/doc/pgRouting-installation.rst:230
 msgid "BOOL=ON"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:221
+#: ../../build/doc/pgRouting-installation.rst:229
 msgid "If ON, turn on/off building HTML for user's documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:222
+#: ../../build/doc/pgRouting-installation.rst:230
 msgid "BUILD_DOXY"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:222
+#: ../../build/doc/pgRouting-installation.rst:230
 msgid "If ON, turn on/off building HTML for developer's documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:223
+#: ../../build/doc/pgRouting-installation.rst:231
 msgid "BUILD_LATEX"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:223
+#: ../../build/doc/pgRouting-installation.rst:231
 msgid "If ON, turn on/off building PDF"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:224
+#: ../../build/doc/pgRouting-installation.rst:232
 msgid "BUILD_MAN"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:224
+#: ../../build/doc/pgRouting-installation.rst:232
 msgid "If ON, turn on/off building MAN pages"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:225
+#: ../../build/doc/pgRouting-installation.rst:233
 msgid "DOC_USE_BOOTSTRAP"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:225
+#: ../../build/doc/pgRouting-installation.rst:233
 msgid "If ON, use sphinx-bootstrap for HTML pages of the users documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:228
+#: ../../build/doc/pgRouting-installation.rst:236
 msgid "Configuring with documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:234
+#: ../../build/doc/pgRouting-installation.rst:242
 msgid "Most of the effort of the documentation has being on the html files."
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:240
+#: ../../build/doc/pgRouting-installation.rst:248
 msgid "Building"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:242
+#: ../../build/doc/pgRouting-installation.rst:250
 msgid "Using ``make`` to build the code and the documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:244
+#: ../../build/doc/pgRouting-installation.rst:252
 msgid "The following instructions start from *path/to/pgrouting/build*"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:253
+#: ../../build/doc/pgRouting-installation.rst:261
 msgid "We have tested on several platforms, For installing or reinstalling all the steps are needed."
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:255
+#: ../../build/doc/pgRouting-installation.rst:263
 msgid "The sql signatures are configured and build in the ``cmake`` command."
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:258
+#: ../../build/doc/pgRouting-installation.rst:266
 msgid "MinGW on Windows"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:269
+#: ../../build/doc/pgRouting-installation.rst:277
 msgid "Linux"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:270
+#: ../../build/doc/pgRouting-installation.rst:278
 msgid "The following instructions start from *path/to/pgrouting*"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:280
+#: ../../build/doc/pgRouting-installation.rst:288
 msgid "When the configuration changes:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:286
+#: ../../build/doc/pgRouting-installation.rst:294
 msgid "and start the build process as mentioned above."
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:291
+#: ../../build/doc/pgRouting-installation.rst:299
 msgid "Testing"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:293
+#: ../../build/doc/pgRouting-installation.rst:301
 msgid "Currently there is no :code:`make test` and testing is done as follows"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:295
+#: ../../build/doc/pgRouting-installation.rst:303
 msgid "The following instructions start from *path/to/pgrouting/*"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:305
+#: ../../build/doc/pgRouting-installation.rst:313
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:308
+#: ../../build/doc/pgRouting-installation.rst:316
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:309
+#: ../../build/doc/pgRouting-installation.rst:317
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:310
+#: ../../build/doc/pgRouting-installation.rst:318
 msgid ":ref:`search`"
 msgstr ""
 

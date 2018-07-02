@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,26 +114,22 @@ msgid "Examples"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:58
-msgid "Query for full version string"
+msgid "Query for the version string"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:66
-msgid "Query for ``version`` and ``boost`` attribute"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:78
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:81
+#: ../../build/doc/pgr_version.rst:69
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:82
+#: ../../build/doc/pgr_version.rst:70
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:83
+#: ../../build/doc/pgr_version.rst:71
 msgid ":ref:`search`"
 msgstr ""
 

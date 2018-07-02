@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,7 @@ msgid "Renamed on 2.2.0, previous name pgr_apspWarshall"
 msgstr ""
 
 #: ../../build/doc/pgr_floydWarshall.rst:31
-msgid "The Floyd-Warshall algorithm, also known as Floyd's algorithm, is a good choice to calculate the sum of the costs of the shortest path for each pair of nodes in the graph, for *dense graphs*. We make use of the  Boost's implementation which runs in :math:`\\Theta(V^3)` time,"
+msgid "The Floyd-Warshall algorithm, also known as Floyd's algorithm, is a good choice to calculate the sum of the costs of the shortest path for each pair of nodes in the graph, for *dense graphs*. We use Boost's implementation which runs in :math:`\\Theta(V^3)` time,"
 msgstr ""
 
 #: ../../build/doc/pgr_floydWarshall.rst:38
@@ -104,12 +104,20 @@ msgstr ""
 msgid "Minimal Signature"
 msgstr ""
 
+#: ../../build/doc/pgr_floydWarshall.rst:0
+msgid "Example 1"
+msgstr ""
+
 #: ../../build/doc/pgr_floydWarshall.rst:84
 msgid "On a directed graph."
 msgstr ""
 
 #: ../../build/doc/pgr_floydWarshall.rst:95
 msgid "Complete Signature"
+msgstr ""
+
+#: ../../build/doc/pgr_floydWarshall.rst:0
+msgid "Example 2"
 msgstr ""
 
 #: ../../build/doc/pgr_floydWarshall.rst:103
@@ -122,6 +130,10 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description of the edges_sql query (id is not necessary)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "edges_sql"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -207,8 +219,16 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:26

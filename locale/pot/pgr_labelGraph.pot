@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,24 +148,48 @@ msgstr ""
 msgid "Function accepts the following parameters:"
 msgstr ""
 
+#: ../../build/doc/pgr_labelGraph.rst:0
+msgid "edge_table"
+msgstr ""
+
 #: ../../build/doc/pgr_labelGraph.rst:64
 msgid "``text`` Network table name, with optional schema name."
+msgstr ""
+
+#: ../../build/doc/pgr_labelGraph.rst:0
+msgid "id"
 msgstr ""
 
 #: ../../build/doc/pgr_labelGraph.rst:65
 msgid "``text`` Primary key column name of the network table. Default is ``id``."
 msgstr ""
 
+#: ../../build/doc/pgr_labelGraph.rst:0
+msgid "source"
+msgstr ""
+
 #: ../../build/doc/pgr_labelGraph.rst:66
 msgid "``text`` Source column name generated after ``pgr_createTopology()``. Default is ``source``."
+msgstr ""
+
+#: ../../build/doc/pgr_labelGraph.rst:0
+msgid "target"
 msgstr ""
 
 #: ../../build/doc/pgr_labelGraph.rst:67
 msgid "``text`` Target column name generated after ``pgr_createTopology()``. Default is ``target``."
 msgstr ""
 
+#: ../../build/doc/pgr_labelGraph.rst:0
+msgid "subgraph"
+msgstr ""
+
 #: ../../build/doc/pgr_labelGraph.rst:68
 msgid "``text`` Column name which will hold the integer labels for each sub-graph. Default is ``subgraph``."
+msgstr ""
+
+#: ../../build/doc/pgr_labelGraph.rst:0
+msgid "rows_where"
 msgstr ""
 
 #: ../../build/doc/pgr_labelGraph.rst:69

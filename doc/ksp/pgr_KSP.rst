@@ -112,9 +112,6 @@ Column         Type        Description
 ============== =========== =================================================
 
 
-.. warning:: During the transition to 3.0, because pgr_ksp version 2.0 doesn't have defined a directed flag nor a heap_path flag, when pgr_ksp is used with only one flag version 2.0 signature will be used.
-
-
 Additional Examples
 ------------------------------------------------------------------------------------------
 

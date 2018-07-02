@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.5.0-alpha
+# Copyright (C) pgRouting Contributors - Version v2.6.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2018-03-28 07:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,36 +72,72 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "edge_table"
+msgstr ""
+
 #: ../../build/doc/pgr_analyzeOneWay.rst:57
 msgid "``text`` Network table name. (may contain the schema name as well)"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "s_in_rules"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:58
 msgid "``text[]`` source node **in** rules"
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "s_out_rules"
+msgstr ""
+
 #: ../../build/doc/pgr_analyzeOneWay.rst:59
 msgid "``text[]`` source node **out** rules"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "t_in_rules"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:60
 msgid "``text[]`` target node **in** rules"
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "t_out_rules"
+msgstr ""
+
 #: ../../build/doc/pgr_analyzeOneWay.rst:61
 msgid "``text[]`` target node **out** rules"
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "oneway"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:62
 msgid "``text`` oneway column name name of the network table. Default value is ``oneway``."
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "source"
+msgstr ""
+
 #: ../../build/doc/pgr_analyzeOneWay.rst:63
 msgid "``text`` Source column name of the network table. Default value is ``source``."
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "target"
+msgstr ""
+
 #: ../../build/doc/pgr_analyzeOneWay.rst:64
 msgid "``text``  Target column name of the network table.  Default value is ``target``."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "two_way_if_null"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:65
@@ -160,24 +196,48 @@ msgstr ""
 msgid "The structure of the vertices table is:"
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "id"
+msgstr ""
+
 #: ../../build/doc/pgr_analyzeOneWay.rst:91
 msgid "``bigint`` Identifier of the vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "cnt"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:92
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGgraph <pgr_analyze_graph>`."
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "chk"
+msgstr ""
+
 #: ../../build/doc/pgr_analyzeOneWay.rst:93
 msgid "``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "ein"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:94
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex as incoming."
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "eout"
+msgstr ""
+
 #: ../../build/doc/pgr_analyzeOneWay.rst:95
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex as outgoing."
+msgstr ""
+
+#: ../../build/doc/pgr_analyzeOneWay.rst:0
+msgid "the_geom"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:96

@@ -25,33 +25,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
--- V3
+-- one to one
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
     TEXT,
     BIGINT,
     BIGINT,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed:=true, only_cost:=false) AS a;
-$BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
-
-
--- V3
-CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    TEXT,
-    BIGINT,
-    BIGINT,
-    BOOLEAN,
+    directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
     epsilon NUMERIC DEFAULT 1.0,
@@ -148,8 +127,6 @@ ROWS 1000;
 
 
 -- COMMENTS
-
-COMMENT ON FUNCTION pgr_bdAstar(TEXT, BIGINT, BIGINT) IS 'pgr_bdAstar(One to One)';
 COMMENT ON FUNCTION pgr_bdAstar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_bdAstar(One to One)';
 COMMENT ON FUNCTION pgr_bdAstar(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_bdAstar(Many to One)';
 COMMENT ON FUNCTION pgr_bdAstar(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_bdAstar(One to Many)';

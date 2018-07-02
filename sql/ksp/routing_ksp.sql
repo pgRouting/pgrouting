@@ -23,56 +23,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-CREATE OR REPLACE FUNCTION _pgr_ksp(edges_sql text, start_vid bigint, end_vid bigint, k integer, directed boolean, heap_paths boolean,
-  OUT seq integer, OUT path_id integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
-    '${MODULE_PATHNAME}', 'kshortest_path'
-    LANGUAGE c STABLE STRICT;
+CREATE OR REPLACE FUNCTION pgr_ksp(
+    edges_sql text,
+    start_vid BIGINT,
+    end_vid BIGINT,
+    k INTEGER,
+    directed BOOLEAN DEFAULT true,
+    heap_paths BOOLEAN DEFAULT false,
 
--- V2 the graph is directed and there are no heap paths
-CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid integer, end_vid integer, k integer, has_rcost boolean)
-  RETURNS SETOF pgr_costresult3 AS
-  $BODY$
-  DECLARE
-  has_reverse boolean;
-  sql TEXT;
-  BEGIN
-      RAISE NOTICE 'Deprecated signature of pgr_ksp';
-      has_reverse =_pgr_parameter_check('dijkstra', edges_sql::text, false);
-      sql = edges_sql;
-      IF (has_reverse != has_rcost) THEN
-         IF (has_rcost) THEN
-           -- user says that it has reverse_cost but its not true
-           RAISE EXCEPTION 'has_reverse_cost set to true but reverse_cost not found';
-         ELSE
-           -- user says that it does not have reverse_cost but it does have it
-           -- to ignore we remove reverse_cost from the query
-           sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
-         END IF;
-      END IF;
-
-      RETURN query SELECT ((row_number() over()) -1)::integer  AS seq,  (path_id - 1)::integer AS id1, node::integer AS id2, edge::integer AS id3, cost
-            FROM _pgr_ksp(sql::text, start_vid, end_vid, k, TRUE, FALSE) WHERE path_id <= k;
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;
-
-
-CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid bigint, end_vid bigint, k integer,
-  directed boolean default true, heap_paths boolean default false,
-  --directed boolean, heap_paths boolean,
-  OUT seq integer, OUT path_id integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
-  $BODY$
-  DECLARE
-  BEGIN
-         RETURN query SELECT *
-                FROM _pgr_ksp(edges_sql::text, start_vid, end_vid, k, directed, heap_paths);
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'${MODULE_PATHNAME}', 'kshortest_path'
+LANGUAGE C VOLATILE STRICT;
 

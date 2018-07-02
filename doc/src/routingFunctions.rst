@@ -23,9 +23,19 @@ Routing Functions
 - :ref:`pgr_floydWarshall` - Floyd-Warshall's Algorithm
 - :ref:`pgr_johnson`- Johnson’s Algorithm
 
-:ref:`pgr_astar` - Shortest Path A*
+:doc:`aStar-family`
 
-:ref:`pgr_bdAstar` - Bi-directional A* Shortest Path
+.. include:: aStar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+
+:doc:`bdAstar-family`
+
+.. include:: bdAstar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 
 :ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 
@@ -33,6 +43,12 @@ Routing Functions
 :ref:`dijkstra`
 
 .. include:: dijkstra-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`flow-family`
+
+.. include:: flow-family.rst
    :start-after: index from here
    :end-before: index to here
 
@@ -58,9 +74,11 @@ Routing Functions
     :hidden:
 
     allpairs-family
-    pgr_bdAstar
+    aStar-family
+    bdAstar-family
     pgr_bdDijkstra
     dijkstra-family
+    flow-family
     pgr_KSP
     pgr_trsp
     TSP-family

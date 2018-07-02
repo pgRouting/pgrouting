@@ -4,9 +4,9 @@ File: withPoints_driver.h
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -51,7 +51,7 @@ extern "C" {
             pgr_edge_t  *edges_of_points,   size_t total_edges_of_points,
             int64_t start_pid,
             int64_t end_pid,
-            int k,
+            size_t k,
             bool directed,
             bool heap_paths,
             char driving_side,

@@ -20,8 +20,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL)
-    RETURNS SETOF pgr_costresult3 AS
+create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL,
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT id3 INTEGER,
+    OUT cost FLOAT
+)
+RETURNS SETOF RECORD AS
 $body$
 /*
  *  pgr_trsp(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
@@ -33,10 +39,10 @@ $body$
 */
 declare
     i integer;
-    rr pgr_costresult3;
-    lrr pgr_costresult3;
+    rr RECORD;
+    lrr RECORD;
     lrra boolean := false;
-    seq integer := 0;
+    seq1 integer := 0;
     seq2 integer := 0;
     restrictions_query TEXT;
 
@@ -69,32 +75,50 @@ begin
                 lrr := rr;
                 lrra := true;
             else
-                seq := seq + 1;
-                rr.seq := seq;
-                return next rr;
+                seq1 := seq1 + 1;
+                rr.seq := seq1;
+
+                seq := rr.seq;
+                id1 := rr.id1;
+                id2 := rr.id2;
+                id3 := rr.id3;
+                cost := rr.cost;
+                return next;
             end if;
         end loop;
     end loop;
 
     if lrra then
-        seq := seq + 1;
-        lrr.seq := seq;
-        return next lrr;
+        seq1 := seq1 + 1;
+        lrr.seq := seq1;
+
+        seq := lrr.seq;
+        id1 := lrr.id1;
+        id2 := lrr.id2;
+        id3 := lrr.id3;
+        cost := lrr.cost;
+        return next;
     end if;
     return;
 end;
 $body$
-    language plpgsql stable
-    cost 100
-    rows 1000;
+language plpgsql stable
+cost 100
+rows 1000;
 
 
 
 
 ----------------------------------------------------------------------------------------------------------
 
-create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text)
-    RETURNS SETOF pgr_costresult3 AS
+create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text,
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT id3 INTEGER,
+    OUT cost FLOAT
+)
+RETURNS SETOF RECORD AS
 $body$
 /*
  *  pgr_trsp(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
@@ -107,10 +131,10 @@ $body$
 */
 declare
     i integer;
-    rr pgr_costresult3;
-    lrr pgr_costresult3;
+    rr RECORD;
+    lrr RECORD;
     first boolean := true;
-    seq integer := 0;
+    seq1 integer := 0;
     seq2 integer :=0;
     has_reverse BOOLEAN;
     point_is_vertex BOOLEAN := false;
@@ -118,6 +142,7 @@ declare
     f float;
 
 begin
+    SELECT 0::INTEGER AS seq, NULL::INTEGER AS id1, NULL::INTEGER AS id2, NULL::INTEGER AS id3, NULL::FLOAT AS cost INTO lrr;
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
     IF (has_reverse != has_rcost) THEN
@@ -137,7 +162,7 @@ begin
 
     IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) AND NOT point_is_vertex THEN
         -- no restrictions then its a _pgr_withPointsVia
-        RETURN query SELECT a.seq::INTEGER, path_id::INTEGER AS id1, node::INTEGER AS id2, edge::INTEGER AS id3, cost
+        RETURN query SELECT a.seq::INTEGER, path_id::INTEGER AS id1, node::INTEGER AS id2, edge::INTEGER AS id3, a.cost
         FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed) a;
         RETURN;
     END IF;
@@ -186,21 +211,33 @@ begin
                         rr.id2 := lrr.id2;
                     end if;
                 else
-                    seq := seq + 1;
-                    lrr.seq := seq;
-                    return next lrr;
+                    seq1 := seq1 + 1;
+                    lrr.seq := seq1;
+
+                    seq := lrr.seq;
+                    id1 := lrr.id1;
+                    id2 := lrr.id2;
+                    id3 := lrr.id3;
+                    cost := lrr.cost;
+                    return next;
                     lrr := rr;
                 end if;
             end if;
         end loop;
     end loop;
 
-    seq := seq + 1;
-    lrr.seq := seq;
-    return next lrr;
+    seq1 := seq1 + 1;
+    lrr.seq := seq1;
+
+    seq := lrr.seq;
+    id1 := lrr.id1;
+    id2 := lrr.id2;
+    id3 := lrr.id3;
+    cost := lrr.cost;
+    return next;
     return;
 end;
 $body$
-    language plpgsql stable
-    cost 100
-    rows 1000;
+language plpgsql stable
+cost 100
+rows 1000;

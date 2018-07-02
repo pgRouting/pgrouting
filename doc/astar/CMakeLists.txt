@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     aStar-family.rst
     pgr_aStarCost.rst
+    pgr_aStarCostMatrix.rst
     pgr_aStar.rst
     )
 

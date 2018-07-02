@@ -40,11 +40,17 @@ void compute(
         char* edges_sql,
         int64_t start_vertex,
         int64_t end_vertex,
-        int k,
+
+        int p_k,
         bool directed,
         bool heap_paths,
         General_path_element_t **result_tuples, size_t *result_count) {
     pgr_SPI_connect();
+    if (p_k < 0) {
+        return;
+    }
+
+    size_t k = (size_t)p_k;
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;

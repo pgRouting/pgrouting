@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
 File: pgr_components_rt.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2017 Maoguang Wang
+Mail: xjtumg1007@gmail.com
 
 ------
 

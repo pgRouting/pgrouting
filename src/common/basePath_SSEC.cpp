@@ -23,10 +23,13 @@ along with this program; if not, write to the Free Software
 
 #include "cpp_common/basePath_SSEC.hpp"
 
+#include <cmath>
+#include <limits>
 #include <deque>
 #include <iostream>
 #include <algorithm>
 #include <utility>
+#include <cmath>
 
 #include "c_types/general_path_element_t.h"
 #include "cpp_common/pgr_assert.h"
@@ -88,6 +91,30 @@ void Path::clear() {
     m_end_id = 0;
 }
 
+Path::ConstpthIt Path::find_restriction(
+        const pgrouting::trsp::Rule &rule) const {
+    return std::search(path.begin(),  path.end(), rule.begin(), rule.end(),
+            [](Path_t p, int64_t e) {return p.edge == e;});
+}
+
+bool Path::has_restriction(
+        const pgrouting::trsp::Rule &rule) const {
+    return find_restriction(rule) != path.end();
+}
+
+Path Path::inf_cost_on_restriction(
+        const pgrouting::trsp::Rule &rule) {
+    auto position = std::search(
+            path.begin(),  path.end(), rule.begin(), rule.end(),
+            [](Path_t p, int64_t e) { return p.edge == e;});
+    if (position != path.end()) {
+        position->agg_cost = std::numeric_limits<double>::infinity();
+    }
+    return *this;
+}
+
+
+
 std::ostream& operator<<(std::ostream &log, const Path &path) {
     log << "Path: " << path.start_id() << " -> " << path.end_id() << "\n"
         << "seq\tnode\tedge\tcost\tagg_cost\n";
@@ -103,6 +130,12 @@ std::ostream& operator<<(std::ostream &log, const Path &path) {
     return log;
 }
 
+size_t Path::countInfinityCost() const {
+    return std::count_if(path.begin(), path.end(),
+            [](Path_t const&p) -> size_t {
+            return std::isinf(p.agg_cost);
+            });
+}
 
 
 Path Path::getSubpath(unsigned int j) const {
@@ -130,12 +163,11 @@ bool Path::isEqual(const Path &subpath) const {
 
 void Path::appendPath(const Path &o_path) {
     path.insert(path.end(), o_path.path.begin(), o_path.path.end());
-    m_tot_cost +=  o_path.m_tot_cost;
+    recalculate_agg_cost();
 }
 
 
 /*!
- 
     Path: 2 -> 9
     seq   node    edge    cost    agg_cost
     0     2       4       1       0
@@ -192,9 +224,14 @@ void Path::generate_postgres_data(
     int i = 1;
     double total_cost = 0;
     for (const auto e : path) {
+        auto agg_cost = std::fabs(e.agg_cost - std::numeric_limits<double>::max()) < 1?
+            std::numeric_limits<double>::infinity() : e.agg_cost;
+        auto cost = std::fabs(e.cost - std::numeric_limits<double>::max()) < 1?
+            std::numeric_limits<double>::infinity() : e.cost;
+
         (*postgres_data)[sequence] =
-        {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
-        total_cost += e.cost;
+        {i, start_id(), end_id(), e.node, e.edge, cost, agg_cost};
+        total_cost += cost;
         ++i;
         ++sequence;
     }
@@ -230,6 +267,22 @@ void Path::get_pg_ksp_path(
         (*ret_path)[sequence].agg_cost = (i == 0)?
             0 :
             (*ret_path)[sequence-1].agg_cost +  path[i-1].cost;
+        sequence++;
+    }
+}
+
+/* used by turn restricted */
+void Path::get_pg_turn_restricted_path(
+        General_path_element_t **ret_path,
+        size_t &sequence, int routeId) const {
+    for (unsigned int i = 0; i < path.size(); i++) {
+        (*ret_path)[sequence].seq = i + 1;
+        (*ret_path)[sequence].start_id = routeId;
+        (*ret_path)[sequence].end_id = end_id();
+        (*ret_path)[sequence].node = path[i].node;
+        (*ret_path)[sequence].edge = path[i].edge;
+        (*ret_path)[sequence].cost = path[i].cost;
+        (*ret_path)[sequence].agg_cost = path[i].agg_cost;
         sequence++;
     }
 }

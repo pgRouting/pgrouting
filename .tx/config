@@ -382,3 +382,13 @@ file_filter = locale/<lang>/LC_MESSAGES/pgr_strongComponents.po
 source_file = locale/pot/pgr_strongComponents.pot
 source_lang = en
 
+[pgrouting.transformation-family]
+file_filter = locale/<lang>/LC_MESSAGES/transformation-family.po
+source_file = locale/pot/transformation-family.pot
+source_lang = en
+
+[pgrouting.pgr_lineGraphFull]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_lineGraphFull.po
+source_file = locale/pot/pgr_lineGraphFull.pot
+source_lang = en
+

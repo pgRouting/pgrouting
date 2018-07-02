@@ -27,38 +27,42 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of (seq, id1, id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path.
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_trsp(sql text, source integer, target integer,
+  pgr_trsp(sql text, source integer, target integer,
                     directed boolean, has_rcost boolean [,restrict_sql text]);
+  RETURNS SETOF (seq, id1, id2, cost)
 
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_trsp(sql text, source_edge integer, source_pos float8,
+  pgr_trsp(sql text, source_edge integer, source_pos float8,
 	                target_edge integer, target_pos float8,
                     directed boolean, has_rcost boolean [,restrict_sql text]);
+  RETURNS SETOF (seq, id1, id2, cost)
 
 .. code-block:: sql
 
-    pgr_costResult3[] pgr_trspViaVertices(sql text, vids integer[],
+  pgr_trspViaVertices(sql text, vids integer[],
                     directed boolean, has_rcost boolean
                     [, turn_restrict_sql text]);
+  RETURNS SETOF (seq, id1, id2, id3, cost)
 
 .. code-block:: sql
 
-     pgr_costResult3[] pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
+  pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
                     directed boolean, has_rcost boolean
                     [, turn_restrict_sql text]);
+  RETURNS SETOF (seq, id1, id2, id3, cost)
 
 Description
 -------------------------------------------------------------------------------
 
 The Turn Restricted Shortest Path algorithm (TRSP) is similar to the shooting star in that you can specify turn restrictions.
 
-The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.
+The TRSP setup is mostly the same as :doc:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.
 
 
 :sql: a SQL query, which should return a set of rows with the following columns:
@@ -96,7 +100,7 @@ Another variant of TRSP allows to specify **EDGE id** of source and target toget
 :target_edge: ``int4`` **EDGE id** of the end edge
 :target_pos: ``float8`` fraction of 1 defines the position on the end edge
 
-Returns set of :ref:`type_cost_result`:
+Returns set of:
 
 :seq:   row sequence
 :id1:   node ID
@@ -149,7 +153,7 @@ Another variant of TRSP allows to specify **EDGE id** together with a fraction t
 :eids: ``int4`` An ordered array of **EDGE id** that the path has to traverse
 :pcts: ``float8`` An array of fractional positions along the respective edges in ``eids``, where 0.0 is the start of the edge and 1.0 is the end of the eadge.
 
-Returns set of :ref:`type_cost_result`:
+Returns set of:
 
 :seq:   row sequence
 :id1:   route ID
@@ -200,8 +204,6 @@ The queries use the :doc:`sampledata` network.
 
 See Also
 -------------------------------------------------------------------------------
-
-* :ref:`type_cost_result`
 
 .. rubric:: Indices and tables
 

@@ -145,13 +145,13 @@ Next, we set the original_id of all of the vertices in the results graph that we
    :start-after: -- q3
    :end-before: -- q4
 
-Then, we cross reference all of the other newly created vertices that do not have the same original_id and set thier original_id values. 
+Then, we cross reference all of the other newly created vertices that do not have the same original_id and set their original_id values. 
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q4
    :end-before: -- q5
 
-The only vertices left that have not been mapped are a few of the leaf vertices from the original graph. The following sql completes the mapping for these leaf vertices (in the case of this example graph there are no leaf vertices but this is nessessary for larger graphs).
+The only vertices left that have not been mapped are a few of the leaf vertices from the original graph. The following sql completes the mapping for these leaf vertices (in the case of this example graph there are no leaf vertices but this is necessary for larger graphs).
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q5

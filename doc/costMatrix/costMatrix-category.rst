@@ -14,25 +14,31 @@ Cost Matrix - Category
 
 .. index from here
 
-* :ref:`pgr_aStarCostMatrix`
-* :ref:`pgr_bdAstarCostMatrix`
-* :ref:`pgr_bdDijkstraCostMatrix`
-* :ref:`pgr_dijkstraCostMatrix`
-* :ref:`pgr_withPointsCostMatrix`
+* :doc:`pgr_aStarCostMatrix`
+* :doc:`pgr_dijkstraCostMatrix`
 
 .. index to here
+
+
+.. rubric:: proposed
 
 .. include:: proposed.rst
     :start-after: begin-warning
     :end-before: end-warning
 
+.. proposed index start
+
+* :doc:`pgr_bdAstarCostMatrix`
+* :doc:`pgr_bdDijkstraCostMatrix`
+* :doc:`pgr_withPointsCostMatrix`
+
+.. proposed index end
+
 .. toctree::
     :hidden:
 
-    pgr_aStarCostMatrix
     pgr_bdAstarCostMatrix
     pgr_bdDijkstraCostMatrix
-    pgr_dijkstraCostMatrix
     pgr_withPointsCostMatrix
 
 

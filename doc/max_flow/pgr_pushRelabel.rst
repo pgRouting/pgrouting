@@ -10,7 +10,7 @@
 
 .. _pgr_pushRelabel:
 
-pgr_pushRelabel - Proposed
+pgr_pushRelabel
 ============================================
 
 
@@ -30,10 +30,6 @@ Synopsis
 * Renamed 2.5.0, Previous name pgr_maxFlowPushRelabel
 * New in 2.3.0
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. include::  flow-family.rst
     :start-after: characteristics_start
     :end-before: characteristics_end
@@ -45,16 +41,16 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_pushRelabel(edges_sql, source,  target) - Proposed
-    pgr_pushRelabel(edges_sql, sources, target) - Proposed
-    pgr_pushRelabel(edges_sql, source,  targets) - Proposed
-    pgr_pushRelabel(edges_sql, sources, targets) - Proposed
+    pgr_pushRelabel(edges_sql, source,  target)
+    pgr_pushRelabel(edges_sql, sources, target)
+    pgr_pushRelabel(edges_sql, source,  targets)
+    pgr_pushRelabel(edges_sql, sources, targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 
 .. index::
-    single: pushRelabel(One to One) - Proposed
+    single: pushRelabel(One to One)
 
 One to One
 .....................................................................
@@ -75,7 +71,7 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 
 .. index::
-    single: pushRelabel(One to Many) - Proposed
+    single: pushRelabel(One to Many)
 
 One to Many
 .....................................................................
@@ -96,7 +92,7 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 
 .. index::
-    single: pushRelabel(Many to One) - Proposed
+    single: pushRelabel(Many to One)
 
 Many to One
 .....................................................................
@@ -117,7 +113,7 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 
 
 .. index::
-    single: pushRelabel(Many to Many) - Proposed
+    single: pushRelabel(Many to Many)
 
 Many to Many
 .....................................................................
@@ -136,28 +132,35 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
    :start-after: -- q4
    :end-before: -- q5
 
-Description of the Signatures
+Parameters
 --------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: flow_edges_sql_start
-    :end-before: flow_edges_sql_end
-
 
 .. include::  ./pgr_maxFlow.rst
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
+Inner query
+--------------------------------------------------------
+
+edges_sql
+...........................................................
 
 .. include:: pgRouting-concepts.rst
-    :start-after: result_flow_start
-    :end-before: result_flow_end
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
+
+Result Columns
+--------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+   :start-after: result_flow_start
+   :end-before: result_flow_end
 
 
 See Also
 --------
 
-* :ref:`maxFlow`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :ref:`pgr_edmondsKarp <pgr_edmondsKarp>`
+* :doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_edmondsKarp`
 * http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
