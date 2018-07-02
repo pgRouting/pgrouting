@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_boykovKolmogorov - Proposed &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>pgr_boykovKolmogorov &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_maxCardinalityMatch - Proposed" href="pgr_maxCardinalityMatch.html" />
-    <link rel="prev" title="pgr_edmondsKarp - Proposed" href="pgr_edmondsKarp.html" />
+    <link rel="next" title="pgr_maxCardinalityMatch" href="pgr_maxCardinalityMatch.html" />
+    <link rel="prev" title="pgr_edmondsKarp" href="pgr_edmondsKarp.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -81,12 +81,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
-</ul>
 <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -103,7 +103,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_boykovKolmogorov - Proposed</a><ul>
+<li><a class="reference internal" href="#">pgr_boykovKolmogorov</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#signature-summary">Signature Summary</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
@@ -112,12 +112,12 @@
 <li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-max-flow-like-functions">Description of the edges_sql query for Max-flow like functions</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-flow-signatures">Description of the Parameters of the Flow Signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values">Description of the Return Values</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -130,11 +130,11 @@
               
                 
   <li>
-    <a href="pgr_edmondsKarp.html" title="Previous Chapter: pgr_edmondsKarp - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edmondsKa...</span>
+    <a href="pgr_edmondsKarp.html" title="Previous Chapter: pgr_edmondsKarp"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edmondsKarp</span>
     </a>
   </li>
   <li>
-    <a href="pgr_maxCardinalityMatch.html" title="Next Chapter: pgr_maxCardinalityMatch - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_maxCardin... &raquo;</span>
+    <a href="pgr_maxCardinalityMatch.html" title="Next Chapter: pgr_maxCardinalityMatch"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_maxCardin... &raquo;</span>
     </a>
   </li>
               
@@ -162,12 +162,12 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-boykovkolmogorov-proposed">
-<span id="pgr-boykovkolmogorov"></span><h1>pgr_boykovKolmogorov - Proposed<a class="headerlink" href="#pgr-boykovkolmogorov-proposed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-boykovkolmogorov">
+<span id="id1"></span><h1>pgr_boykovKolmogorov<a class="headerlink" href="#pgr-boykovkolmogorov" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_boykovKolmogorov</span></code> — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.</p>
-<div class="figure" id="id1">
+<div class="figure" id="id2">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
@@ -176,28 +176,6 @@
 <li>Renamed 2.5.0, Previous name pgr_maxFlowBoykovKolmogorov</li>
 <li>New in 2.3.0</li>
 </ul>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>Experimental functions</p>
-<ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
-</ul>
-</li>
-</ul>
-</div>
 <p class="rubric">Characteristics</p>
 <ul class="simple">
 <li>The graph is <strong>directed</strong>.</li>
@@ -224,10 +202,10 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_boykovKolmogorov(edges_sql, source,  target) - Proposed
-pgr_boykovKolmogorov(edges_sql, sources, target) - Proposed
-pgr_boykovKolmogorov(edges_sql, source,  targets) - Proposed
-pgr_boykovKolmogorov(edges_sql, sources, targets) - Proposed
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_boykovKolmogorov(edges_sql, source,  target)
+pgr_boykovKolmogorov(edges_sql, sources, target)
+pgr_boykovKolmogorov(edges_sql, source,  targets)
+pgr_boykovKolmogorov(edges_sql, sources, targets)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
 OR EMPTY SET
 </pre></div>
@@ -388,10 +366,55 @@ OR EMPTY SET
 </div>
 </div>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-edges-sql-query-for-max-flow-like-functions">
-<h3>Description of the edges_sql query for Max-flow like functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-max-flow-like-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="18%" />
+<col width="8%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>The edges SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the starting vertex of the flow.</td>
+</tr>
+<tr class="row-even"><td><strong>sources</strong></td>
+<td><code class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></code></td>
+<td>&#160;</td>
+<td>Array of identifiers of the starting vertices of the flow.</td>
+</tr>
+<tr class="row-odd"><td><strong>target</strong></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the ending vertex of the flow.</td>
+</tr>
+<tr class="row-even"><td><strong>targets</strong></td>
+<td><code class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></code></td>
+<td>&#160;</td>
+<td>Array of identifiers of the ending vertices of the flow.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="edges-sql">
+<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -460,53 +483,9 @@ OR EMPTY SET
 </tbody>
 </table>
 </div>
-<div class="section" id="description-of-the-parameters-of-the-flow-signatures">
-<h3>Description of the Parameters of the Flow Signatures<a class="headerlink" href="#description-of-the-parameters-of-the-flow-signatures" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="14%" />
-<col width="18%" />
-<col width="8%" />
-<col width="59%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>The edges SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the starting vertex of the flow.</td>
-</tr>
-<tr class="row-even"><td><strong>sources</strong></td>
-<td><code class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
-<td>Array of identifiers of the starting vertices of the flow.</td>
-</tr>
-<tr class="row-odd"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the ending vertex of the flow.</td>
-</tr>
-<tr class="row-even"><td><strong>targets</strong></td>
-<td><code class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
-<td>Array of identifiers of the ending vertices of the flow.</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div class="section" id="description-of-the-return-values">
-<h3>Description of the Return Values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
@@ -547,11 +526,10 @@ OR EMPTY SET
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="flow-family.html#maxflow"><span class="std std-ref">Flow - Family of functions</span></a>, <a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><span class="std std-ref">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><span class="std std-ref">pgr_EdmondsKarp</span></a></li>
+<li><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Family of functions</span></a>, <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a></li>
 <li><a class="reference external" href="http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html">http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html</a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
@@ -575,7 +553,7 @@ OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on May 19, 2018.<br/>
+      Last updated on Jul 01, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

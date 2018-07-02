@@ -271,11 +271,27 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
 <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
 
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">new_restrictions</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="n">SERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">path</span> <span class="n">BIGINT</span><span class="p">[],</span>
+    <span class="n">cost</span> <span class="nb">float</span>
+<span class="p">);</span>
+
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">new_restrictions</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">100</span><span class="p">);</span>
+
+
 </pre></div>
 </div>
 <p class="rubric">Categories</p>
 <ul class="simple">
-<li>Used with the <a class="reference internal" href="flow-family.html#maxflow"><span class="std std-ref">Flow - Family of functions</span></a> functions.</li>
+<li>Used with the <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Family of functions</span></a> functions.</li>
 </ul>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">categories</span> <span class="p">(</span>
@@ -492,7 +508,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on May 19, 2018.<br/>
+      Last updated on Jul 01, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

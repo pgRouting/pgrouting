@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_aStarCostMatrix - proposed &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>pgr_aStarCostMatrix &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bidirectional A* - Family of functions" href="bdAstar-family.html" />
-    <link rel="prev" title="pgr_aStarCost – proposed" href="pgr_aStarCost.html" />
+    <link rel="prev" title="pgr_aStarCost" href="pgr_aStarCost.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -81,11 +81,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -103,22 +103,20 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_aStarCostMatrix - proposed</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
+<li><a class="reference internal" href="#">pgr_aStarCostMatrix</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#signature-summary">Signature Summary</a><ul>
 <li><a class="reference internal" href="#minimal-signature">Minimal Signature</a></li>
 <li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-astar-like-functions">Description of the edges_sql query for astar like functions</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values-for-a-cost-function">Description of the return values for a Cost function</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -131,7 +129,7 @@
               
                 
   <li>
-    <a href="pgr_aStarCost.html" title="Previous Chapter: pgr_aStarCost – proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_aStarCost...</span>
+    <a href="pgr_aStarCost.html" title="Previous Chapter: pgr_aStarCost"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_aStarCost</span>
     </a>
   </li>
   <li>
@@ -163,36 +161,40 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-astarcostmatrix-proposed">
-<span id="pgr-astarcostmatrix"></span><h1>pgr_aStarCostMatrix - proposed<a class="headerlink" href="#pgr-astarcostmatrix-proposed" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_aStarCostMatrix</span></code> - Calculates the a cost matrix using <a class="reference internal" href="pgr_aStar.html#pgr-astar"><span class="std std-ref">pgr_aStar</span></a>.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>Proposed functions for next mayor release.</p>
-<ul class="last simple">
-<li>They are not officially in the current release.</li>
-<li>They will likely officially be part of the next mayor release:<ul>
-<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might not change. (But still can)</li>
-<li>Signature might not change. (But still can)</li>
-<li>Functionality might not change. (But still can)</li>
-<li>pgTap tests have being done. But might need more.</li>
-<li>Documentation might need refinement.</li>
-</ul>
-</li>
-</ul>
-</div>
+  <div class="section" id="pgr-astarcostmatrix">
+<h1>pgr_aStarCostMatrix<a class="headerlink" href="#pgr-astarcostmatrix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">pgr_aStarCostMatrix</span></code> - Calculates the a cost matrix using <a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a>.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
-<p class="rubric">Availability: 2.4.0</p>
-</div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Using aStar algorithm, calculate and return a cost matrix.</p>
+<p class="rubric">Characteristics</p>
+<p>The main Characteristics are:</p>
+<ul class="simple">
+<li>Using internaly the <a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> algorithm</li>
+<li>Returns a cost matrix.</li>
+<li>No ordering is performed</li>
+<li>let <cite>v</cite> and <cite>u</cite> are nodes on the graph:<ul>
+<li>when there is no path from <cite>v</cite> to <cite>u</cite>:<ul>
+<li>no corresponding row is returned</li>
+<li>cost from <cite>v</cite> to <cite>u</cite> is <span class="math">\(\inf\)</span></li>
+</ul>
+</li>
+<li>when <span class="math">\(v = u\)</span> then<ul>
+<li>no corresponding row is returned</li>
+<li>cost from <cite>v</cite> to <cite>u</cite> is <span class="math">\(0\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>When the graph is <strong>undirected</strong> the cost matrix is symmetric</li>
+</ul>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>New on version 2.4.0</li>
+</ul>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
@@ -201,18 +203,12 @@ pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
-<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>The minimal signature:</dt>
-<dd><ul class="first last simple">
+<h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<p>The minimal signature:</p>
+<ul class="simple">
 <li>Is for a <strong>directed</strong> graph.</li>
 </ul>
-</dd>
-</dl>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -249,7 +245,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 </div>
 <div class="section" id="complete-signature">
-<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -258,11 +254,10 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Symmetric cost matrix for vertices 1, 2, 3, and 4 using heuristic 2.</td>
 </tr>
 </tbody>
 </table>
-<p>This example returns a symmetric cost matrix.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCostMatrix</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
@@ -288,10 +283,87 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 </div>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-edges-sql-query-for-astar-like-functions">
-<h3>Description of the edges_sql query for astar like functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-astar-like-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="25%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td><a class="reference internal" href="#edges-sql">edges_sql</a>  inner query.</td>
+</tr>
+<tr class="row-odd"><td><strong>vids</strong></td>
+<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
+<td>Array of vertices identifiers.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Optional Parameters</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="19%" />
+<col width="7%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>directed</strong></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal"><span class="pre">true</span></code></td>
+<td><ul class="first last simple">
+<li>When <code class="docutils literal"><span class="pre">true</span></code> the graph is considered as Directed.</li>
+<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>heuristic</strong></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal"><span class="pre">5</span></code></td>
+<td><p class="first">Heuristic number. Current valid values 0~5. Default <code class="docutils literal"><span class="pre">5</span></code></p>
+<ul class="last simple">
+<li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
+<li>1: h(v) abs(max(dx, dy))</li>
+<li>2: h(v) abs(min(dx, dy))</li>
+<li>3: h(v) = dx * dx + dy * dy</li>
+<li>4: h(v) = sqrt(dx * dx + dy * dy)</li>
+<li>5: h(v) = abs(dx) + abs(dy)</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>factor</strong></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  See <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></td>
+</tr>
+<tr class="row-odd"><td><strong>epsilon</strong></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>For less restricted results. <span class="math">\(epsilon &gt;= 1\)</span>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="edges-sql">
+<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -382,68 +454,9 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </tbody>
 </table>
 </div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="14%" />
-<col width="19%" />
-<col width="67%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>Edges SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>vids</strong></td>
-<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td>Array of vertices_identifiers.</td>
-</tr>
-<tr class="row-even"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td><ul class="first last simple">
-<li>Optional.<ul>
-<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
-<li>Default is <code class="docutils literal"><span class="pre">true</span></code> which considers the graph as Directed.</li>
-</ul>
-</li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><strong>heuristic</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td><p class="first">(optional). Heuristic number. Current valid values 0~5. Default <code class="docutils literal"><span class="pre">5</span></code></p>
-<blockquote class="last">
-<div><ul class="simple">
-<li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
-<li>1: h(v) abs(max(dx, dy))</li>
-<li>2: h(v) abs(min(dx, dy))</li>
-<li>3: h(v) = dx * dx + dy * dy</li>
-<li>4: h(v) = sqrt(dx * dx + dy * dy)</li>
-<li>5: h(v) = abs(dx) + abs(dy)</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="row-even"><td><strong>factor</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td>(optional). For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  Default <code class="docutils literal"><span class="pre">1</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><strong>epsilon</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td>(optional). For less restricted results. <span class="math">\(epsilon &gt;= 1\)</span>.  Default <code class="docutils literal"><span class="pre">1</span></code>.</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div class="section" id="description-of-the-return-values-for-a-cost-function">
-<h3>Description of the return values for a Cost function<a class="headerlink" href="#description-of-the-return-values-for-a-cost-function" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -473,14 +486,13 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Use with tsp</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Use with <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a></td>
 </tr>
 </tbody>
 </table>
@@ -509,9 +521,10 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="aStar-family.html#astar"><span class="std std-ref">aStar - Family of functions</span></a></li>
-<li><a class="reference internal" href="costMatrix-category.html#costmatrix"><span class="std std-ref">Cost Matrix - Category</span></a></li>
-<li><a class="reference internal" href="TSP-family.html#tsp"><span class="std std-ref">Traveling Sales Person - Family of functions</span></a></li>
+<li><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a></li>
+<li><a class="reference internal" href="cost-category.html"><span class="doc">Cost - Category</span></a></li>
+<li><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a></li>
+<li><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></li>
 <li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
@@ -535,7 +548,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on May 19, 2018.<br/>
+      Last updated on Jul 01, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

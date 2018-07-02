@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_maxCardinalityMatch - Proposed &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>pgr_maxCardinalityMatch &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_edgeDisjointPaths - Proposed" href="pgr_edgeDisjointPaths.html" />
-    <link rel="prev" title="pgr_boykovKolmogorov - Proposed" href="pgr_boykovKolmogorov.html" />
+    <link rel="next" title="pgr_edgeDisjointPaths" href="pgr_edgeDisjointPaths.html" />
+    <link rel="prev" title="pgr_boykovKolmogorov" href="pgr_boykovKolmogorov.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -81,12 +81,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
-</ul>
 <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -103,19 +103,19 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_maxCardinalityMatch - Proposed</a><ul>
+<li><a class="reference internal" href="#">pgr_maxCardinalityMatch</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#signature-summary">Signature Summary</a><ul>
 <li><a class="reference internal" href="#minimal-use">Minimal Use</a></li>
 <li><a class="reference internal" href="#complete-signature">Complete signature</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-sql-query">Description of the SQL query</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-result">Description of the Result</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -128,11 +128,11 @@
               
                 
   <li>
-    <a href="pgr_boykovKolmogorov.html" title="Previous Chapter: pgr_boykovKolmogorov - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_boykovKol...</span>
+    <a href="pgr_boykovKolmogorov.html" title="Previous Chapter: pgr_boykovKolmogorov"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_boykovKolmogorov</span>
     </a>
   </li>
   <li>
-    <a href="pgr_edgeDisjointPaths.html" title="Next Chapter: pgr_edgeDisjointPaths - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_edgeDisjo... &raquo;</span>
+    <a href="pgr_edgeDisjointPaths.html" title="Next Chapter: pgr_edgeDisjointPaths"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_edgeDisjointPaths &raquo;</span>
     </a>
   </li>
               
@@ -160,33 +160,11 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-maxcardinalitymatch-proposed">
-<span id="pgr-maxcardinalitymatch"></span><h1>pgr_maxCardinalityMatch - Proposed<a class="headerlink" href="#pgr-maxcardinalitymatch-proposed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-maxcardinalitymatch">
+<h1>pgr_maxCardinalityMatch<a class="headerlink" href="#pgr-maxcardinalitymatch" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_maxCardinalityMatch</span></code> — Calculates a maximum cardinality matching in a graph.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>Experimental functions</p>
-<ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
-</ul>
-</li>
-</ul>
-</div>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/maximum_matching.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
@@ -197,30 +175,24 @@
 <li>New in 2.3.0</li>
 </ul>
 <p class="rubric">Characteristics</p>
-<ul>
-<li><p class="first">A matching or independent edge set in a graph is a set of edges without common vertices.</p>
-</li>
-<li><p class="first">A maximum matching is a matching that contains the largest possible number of edges.</p>
 <ul class="simple">
+<li>A matching or independent edge set in a graph is a set of edges without common vertices.</li>
+<li>A maximum matching is a matching that contains the largest possible number of edges.<ul>
 <li>There may be many maximum matchings.</li>
 <li>Calculates <strong>one</strong> possible maximum cardinality matching in a graph.</li>
 </ul>
 </li>
-<li><p class="first">The graph can be <strong>directed</strong> or <strong>undirected</strong>.</p>
-</li>
-<li><p class="first">Running time: <span class="math">\(O( E*V * \alpha(E,V))\)</span></p>
-<blockquote>
-<div><ul class="simple">
+<li>The graph can be <strong>directed</strong> or <strong>undirected</strong>.</li>
+<li>Running time: <span class="math">\(O( E*V * \alpha(E,V))\)</span><ul>
 <li><span class="math">\(\alpha(E,V)\)</span> is the inverse of the <a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">Ackermann function</a>.</li>
 </ul>
-</div></blockquote>
 </li>
 </ul>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_MaximumCardinalityMatching(edges_sql) - Proposed
-pgr_MaximumCardinalityMatching(edges_sql, directed) - Proposed
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_MaximumCardinalityMatching(edges_sql)
+pgr_MaximumCardinalityMatching(edges_sql, directed)
 
 RETURNS SET OF (seq, edge_id, source, target)
     OR EMPTY SET
@@ -294,10 +266,42 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </div>
 </div>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-sql-query">
-<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="19%" />
+<col width="8%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>directed</strong></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal"><span class="pre">true</span></code></td>
+<td>Determines the type of the graph.
+- When <code class="docutils literal"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite>
+- When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="edges-sql">
+<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -342,57 +346,20 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </tbody>
 </table>
 <p>Where:</p>
-<blockquote>
-<div><ul class="simple">
-<li><table class="first docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
 </tr>
-</tbody>
-</table>
-</li>
-<li><table class="first docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-NUMERIC:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="23%" />
-<col width="60%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional) Determines the type of the graph. Default TRUE.</td>
+<tr class="field-even field"><th class="field-name">ANY-NUMERIC:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL FLOAT</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="description-of-the-result">
-<h3>Description of the Result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="22%" />
@@ -425,11 +392,10 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="flow-family.html#maxflow"><span class="std std-ref">Flow - Family of functions</span></a></li>
+<li><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Family of functions</span></a></li>
 <li><a class="reference external" href="http://www.boost.org/libs/graph/doc/maximum_matching.html">http://www.boost.org/libs/graph/doc/maximum_matching.html</a></li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Matching_%28graph_theory%29">https://en.wikipedia.org/wiki/Matching_%28graph_theory%29</a></li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">https://en.wikipedia.org/wiki/Ackermann_function</a></li>
@@ -455,7 +421,7 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on May 19, 2018.<br/>
+      Last updated on Jul 01, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

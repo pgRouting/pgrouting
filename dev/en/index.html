@@ -199,6 +199,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#group-of-functions">Group of Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#inner-queries">Inner Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#return-columns-values">Return columns &amp; values</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#advanced-topics">Advanced Topics</a></li>
@@ -234,8 +235,18 @@
 <li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><span class="std std-ref">pgr_floydWarshall</span></a> - Floyd-Warshall’s Algorithm</li>
 <li><a class="reference internal" href="pgr_johnson.html#pgr-johnson"><span class="std std-ref">pgr_johnson</span></a>- Johnson’s Algorithm</li>
 </ul>
-<p><a class="reference internal" href="pgr_aStar.html#pgr-astar"><span class="std std-ref">pgr_aStar</span></a> - Shortest Path A*</p>
-<p><a class="reference internal" href="pgr_bdAstar.html#pgr-bdastar"><span class="std std-ref">pgr_bdAstar</span></a> - Bi-directional A* Shortest Path</p>
+<p><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* algorithm for the shortest path.</li>
+<li><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a> - Get the aggregate cost of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a> - Get the cost matrix of the shortest paths.</li>
+</ul>
+<p><a class="reference internal" href="bdAstar-family.html"><span class="doc">Bidirectional A* - Family of functions</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> - Bidirectional A* algorithm for obtaining paths.</li>
+<li><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - Bidirectional A* algorithm to calculate the cost of the paths.</li>
+<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a> - Bidirectional A* algorithm to calculate a cost matrix of paths.</li>
+</ul>
 <p><a class="reference internal" href="pgr_bdDijkstra.html#pgr-bddijkstra"><span class="std std-ref">pgr_bdDijkstra</span></a> - Bi-directional Dijkstra Shortest Path</p>
 <p><a class="reference internal" href="dijkstra-family.html#dijkstra"><span class="std std-ref">Dijkstra - Family of functions</span></a></p>
 <ul class="simple">
@@ -245,6 +256,18 @@
 <li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><span class="std std-ref">pgr_drivingDistance</span></a> - Use pgr_dijkstra to calculate catchament information.</li>
 <li><a class="reference internal" href="pgr_KSP.html#pgr-ksp"><span class="std std-ref">pgr_KSP</span></a> - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.</li>
 <li><a class="reference internal" href="pgr_dijkstraVia.html#pgr-dijkstravia"><span class="std std-ref">pgr_dijkstraVia - Proposed</span></a> - Get a route of a seuence of vertices.</li>
+</ul>
+<p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Family of functions</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
+<li><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Boykov and Kolmogorov with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Push and relabel algorithm with details of flow on edges.</li>
+<li>Applications<ul>
+<li><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calculates edge disjoint paths between two groups of vertices.</li>
+<li><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calculates a maximum cardinality matching in a graph.</li>
+</ul>
+</li>
 </ul>
 <p><a class="reference internal" href="pgr_KSP.html#pgr-ksp"><span class="std std-ref">pgr_KSP</span></a> - K-Shortest Path</p>
 <p><a class="reference internal" href="pgr_trsp.html#trsp"><span class="std std-ref">pgr_trsp</span></a> - Turn Restriction Shortest Path (TRSP)</p>
@@ -321,7 +344,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on May 19, 2018.<br/>
+      Last updated on Jul 01, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
