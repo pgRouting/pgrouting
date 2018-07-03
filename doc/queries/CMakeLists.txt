@@ -46,6 +46,7 @@ SET(LOCAL_FILES
     doc-gsoc_vrppdtw.queries
     doc-pgr_lineGraph.queries
     doc-pgr_lineGraphFull.queries
+    doc-pgr_bellman_ford.queries
     )
 
 foreach (f ${LOCAL_FILES})
