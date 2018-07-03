@@ -7,9 +7,9 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgrBellmanFord:
+.. _pgr_bellmanFord:
 
-pgr_bellmanFord
+pgr_bellmanFord - Experimental
 ===============================================================================
 
 ``pgr_bellmanFord`` — Returns the shortest path(s) using Bellman-Ford algorithm.
@@ -19,6 +19,10 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
    :target: http://www.boost.org/libs/graph/doc/bellman_ford_shortest.html
 
    Boost Graph Inside
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 Synopsis
@@ -72,7 +76,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: bellman_ford(Minimal Use)
+    single: bellman_ford(Minimal Use) - Experimental
 
 Minimal signature
 .......................................
@@ -92,7 +96,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 
 .. index::
-    single: bellman_ford(One to One)
+    single: bellman_ford(One to One) - Experimental
 
 pgr_bellmanFord One to One
 .......................................
@@ -115,7 +119,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 
 
 .. index::
-    single: bellman_ford(One to Many)
+    single: bellman_ford(One to Many) - Experimental
 
 pgr_bellmanFord One to many
 .......................................
@@ -146,7 +150,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 
 .. index::
-    single: bellman_ford(Many to One)
+    single: bellman_ford(Many to One) - Experimental
 
 pgr_bellmanFord Many to One
 .......................................
@@ -176,7 +180,7 @@ where the ending vertex is fixed.
 
 
 .. index::
-    single: bellman_ford(Many to Many)
+    single: bellman_ford(Many to Many) - Experimental
 
 pgr_bellmanFord Many to Many
 .......................................
@@ -205,13 +209,8 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
    :start-after: -- q5
    :end-before: -- q6
 
-Description of the Signatures
+Parameters
 -------------------------------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
 
 .. pgr_bellmanFord_parameters_start
 
@@ -219,9 +218,9 @@ Description of the parameters of the signatures
 ...............................................................................
 
 ============== ================== ======== =================================================
-Column         Type               Default     Description
+Parameter      Type               Default     Description
 ============== ================== ======== =================================================
-**sql**        ``TEXT``                    SQL query as described above.
+**edges_sql**        ``TEXT``                    SQL query as described above.
 **start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
 **start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
 **end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
@@ -232,10 +231,19 @@ Column         Type               Default     Description
 
 .. pgr_bellmanFord_parameters_end
 
+Inner Query
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Results Columns
+-------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_short_start
+    :end-before: return_path_short_end
 
 
 
@@ -243,7 +251,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
