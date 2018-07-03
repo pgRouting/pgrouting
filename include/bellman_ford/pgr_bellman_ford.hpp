@@ -117,7 +117,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          
          std::vector< V > v_targets(s_v_targets.begin(), s_v_targets.end());
          // perform the algorithm
-         bellman_ford_1_to_many(graph, v_source, v_targets);
+         bellman_ford_1_to_many(graph, v_source);
 
          std::deque< Path > paths;
          // get the results // route id are the targets
@@ -210,8 +210,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      //! Call to BellmanFord  1 source to many targets
      bool bellman_ford_1_to_many(
              G &graph,
-             V source,
-             const std::vector< V > &targets) {
+             V source) {
         log << std::string(__FUNCTION__) << "\n";
          try {
              boost::bellman_ford_shortest_paths(graph.graph, int(graph.num_vertices()),
