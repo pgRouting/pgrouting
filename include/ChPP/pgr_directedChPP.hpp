@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "costFlow/pgr_minCostMaxFlow.hpp"
 #include "c_types/general_path_element_t.h"
 #include "c_types/pgr_edge_t.h"
+#include "c_types/pgr_flow_t.h"
 
 namespace pgrouting {
 namespace graph {
@@ -52,12 +53,23 @@ class PgrDirectedChPPGraph {
      std::vector<General_path_element_t> GetPathEdges();
 
  private:
+     bool EulerCircuitDFS(int64_t p);
+     void BuildResultGraph();
+
+ private:
      int64_t totalDeg;
      double totalCost;
      int64_t superSource, superTarget;
+     int64_t startPoint;
 
      graph::PgrCostFlowGraph flowGraph;
      std::vector<pgr_edge_t> resultEdges;
+
+     std::vector<std::pair<int64_t, std::vector<size_t> > > resultGraph;
+     std::map<int64_t, size_t> VToVecid;
+     std::vector<bool> edgeVisited;
+
+     std::vector<General_path_element_t> resultPath;
 };
 
 PgrDirectedChPPGraph::PgrDirectedChPPGraph(
@@ -69,8 +81,9 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         edge.id = dataEdges[i].id;
         edge.source = dataEdges[i].source;
         edge.target = dataEdges[i].target;
-        edge.reverse_cost = -1;
+        edge.reverse_cost = -1.0;
         if (dataEdges[i].cost > 0) {
+            startPoint = edge.source;
             edge.cost = dataEdges[i].cost;
             totalCost += edge.cost;
             resultEdges.push_back(edge);
@@ -104,7 +117,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         edges.push_back(edge);
     }
 
-    // find source & target
+    // find superSource & superTarget
     superSource = superTarget = -1;
     int64_t iPointId = 1;
     while (superSource == -1 || superTarget == -1) {
@@ -145,6 +158,92 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
     PgrCostFlowGraph graph(edges, sources, targets);
     flowGraph = graph;
 }
+
+std::vector<General_path_element_t>
+PgrDirectedChPPGraph::GetPathEdges() {
+
+    // catch new edges
+    std::vector<pgr_flow_t> addedEdges = flowGraph.GetFlowEdges();
+    for (auto &flow_t : addedEdges) {
+        if (flow_t.source != superSource && flow_t.source != superTarget)
+            if (flow_t.target != superSource && flow_t.target != superTarget) {
+                pgr_edge_t newEdge;
+                newEdge.id = flow_t.edge;
+                newEdge.source = flow_t.source;
+                newEdge.target = flow_t.target;
+                newEdge.cost = flow_t.cost / static_cast<double>(flow_t.flow);
+                newEdge.reverse_cost = -1.0;
+                while (flow_t.flow--)
+                    resultEdges.push_back(newEdge);
+            }
+    }
+
+    BuildResultGraph();
+
+    bool succ = EulerCircuitDFS(startPoint);
+    if (!succ)
+        resultPath.clear();
+    else {
+        General_path_element_t newElement;
+        newElement.node = startPoint;
+        newElement.edge = -1;
+        newElement.cost = 0; 
+        newElement.seq = resultPath.back().seq + 1;
+        newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
+        resultPath.push_back(newElement);
+    }
+    return resultPath;
+}
+    
+// perform DFS approach to generate Euler circuit
+// TODO(mg) find suitable API in BGL, maybe DfsVisitor will work.
+// Implement DFS without BGL for now
+bool
+PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p) {
+    /*
+    for (std::vector<size_t>::iterator iter = resultGraph[VToVecid[p]].second.begin();
+         iter != resultGraph[VToVecid[p]].second.end();
+         ++iter) {
+        if (!edgeVisited[*iter]) {
+            edgeVisited[*iter] = true;
+            EulerCircuitDFS(resultEdges[*iter].target, iter);
+        }
+    }
+    edge_t = resultEdges[*edgeToFaIter];
+    General_path_element_t newElement;
+    newElement.node = edge_t.source;
+    newElement.edge = edge_t.id;
+    newElement.cost = edge_t.cost;
+    if (resultPath.empty()) {
+        newElement.seq = 1;
+        newElement.agg_cost = 0.0;
+    } else {
+        newElement.seq = resultPath.back().seq + 1;
+        newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
+    }
+
+    resultPath.push_back(newElement);
+    */
+}
+
+void
+PgrDirectedChPPGraph::BuildResultGraph() {
+    resultGraph.clear();
+    VToVecid.clear();
+    edgeVisited.clear();
+    resultPath.resize(resultEdges.size());
+    for (size_t i = 0; i < resultEdges.size(); i++) {
+        pgr_edge_t edge_t = resultEdges[i];
+        edgeVisited.push_back(false);
+        if (VToVecid.find(edge_t.source) == VToVecid.end()) {
+            VToVecid.insert(std::pair<int64_t, size_t>(edge_t.source, resultGraph.size()));
+            resultGraph.resize(resultGraph.size() + 1);
+        }
+        size_t vid = VToVecid[edge_t.source];
+        resultGraph[vid].second.push_back(i);
+    }
+}
+
 
 }  // namespace graph
 }  // namespace pgrouting

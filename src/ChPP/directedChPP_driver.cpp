@@ -69,13 +69,15 @@ do_pgr_directedChPP(
         std::vector<General_path_element_t> pathEdges;
 
         if (only_cost) {
-            General_path_element_t edge;
-            edge.seq = -1;
-            edge.node = edge.edge = -1;
-            edge.cost = edge.agg_cost = minCost;
-            pathEdges.push_back(edge);
+            if (minCost > 0.0) {
+                General_path_element_t edge;
+                edge.seq = -1;
+                edge.node = edge.edge = -1;
+                edge.cost = edge.agg_cost = minCost;
+                pathEdges.push_back(edge);
+            }
         } else {
-            //pathEdges = digraph.GetPathEdges();
+            pathEdges = digraph.GetPathEdges();
         }
 
         size_t count = pathEdges.size();
