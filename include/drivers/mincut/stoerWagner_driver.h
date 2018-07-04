@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: stoerWagner.sql
+File: stoerWagner_driver.h
 
 Generated with Template by:
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -27,13 +27,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_stoerWagner(
-    edges_sql TEXT,             -- Edge sql
+#ifndef INCLUDE_DRIVERS_MINCUT_STOERWAGNER_DRIVER_H_
+#define INCLUDE_DRIVERS_MINCUT_STOERWAGNER_DRIVER_H_
+#pragma once
 
-    OUT seq INTEGER,            -- Seq
-    OUT mincut FLOAT,           -- min-cut weight of a undirected graph.
-    OUT set_of_vertices INT,    -- divides the set of vertices into two, non-empty sets 
-    OUT vertices BIGINT)        -- vertices of partition 
-RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'stoerWagner'
-LANGUAGE c VOLATILE;
+#include "c_types/pgr_edge_t.h"
+#include "c_types/pgr_stoerWagner_t.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    void
+        do_pgr_stoerWagner(
+                pgr_edge_t  *data_edges,
+                size_t total_edges,
+                pgr_stoerWagner_t **return_tuples,
+                size_t *return_count,
+                char ** log_msg,
+                char ** notice_msg,
+                char ** err_msg);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_DRIVERS_MINCUT_STOERWAGNER_DRIVER_H_
