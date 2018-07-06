@@ -28,9 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <iostream>
 #include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/connected_components.hpp>
+#include <boost/graph/graph_traits.hpp>
+#include <boost/graph/one_bit_color_map.hpp>
 #include <boost/graph/stoer_wagner_min_cut.hpp>
 #include <boost/property_map/property_map.hpp>
+#include <boost/typeof/typeof.hpp>
 
 #include <deque>
 #include <set>
@@ -55,22 +57,61 @@ class Pgr_stoerWagner {
 
      typedef typename G::V V;
      typedef typename G::E E;
+     typedef typename G::E_i E_i;
 
      std::vector<pgr_stoerWagner_t> stoerWagner(
                  G &graph);
 
+ private:
+   
+     std::vector< double > distances;
+
+     std::vector< pgr_stoerWagner_t > 
+     generatestoerWagner(
+	    const G &graph ) {
+       
+       std::vector< pgr_stoerWagner_t > results;
+       auto parities = boost::make_one_bit_color_map(num_vertices(graph.graph), get(boost::vertex_index, graph.graph));
+       
+       double w = stoer_wagner_min_cut(
+                                   graph.graph, 
+                                   get(&G::G_T_E::cost, graph.graph), 
+                                   boost::parity_map(parities)
+                                   ); 
+
+       double totalcost = 0;
+       E_i ei, ei_end;
+       for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ei++) {
+  
+          auto s = source(*ei, graph.graph);
+          auto t = target(*ei, graph.graph); 
+
+          if ( get(parities, s) != get(parities, t) )
+             {
+               pgr_stoerWagner_t tmp;
+
+               tmp.cost = graph[*ei].cost;
+
+               auto edge_id =  
+                 graph.get_edge_id(source(*ei, graph.graph), target(*ei, graph.graph), tmp.cost);
+	        
+               tmp.edge = edge_id;
+               totalcost += tmp.cost; 
+               tmp.mincut = totalcost;
+               results.push_back(tmp);
+             }
+       }        
+       return results; 
+     }
 };
 
 template < class G >
 std::vector<pgr_stoerWagner_t>
 Pgr_stoerWagner< G >::stoerWagner(
                 G &graph) {
-   
-      std::vector<pgr_stoerWagner_t> result;
-      
-      return result;    
-      //return generatestoerWagner(
-      //                       graph);     
+       
+      return generatestoerWagner(
+                             graph);     
 } 
 
 
