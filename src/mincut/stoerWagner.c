@@ -183,9 +183,9 @@ PGDLLEXPORT Datum stoerWagner(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1); 
-        values[1] = Float8GetDatum(result_tuples[funcctx->call_cntr].mincut);
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].set_of_vertices);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].vertices);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].mincut);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

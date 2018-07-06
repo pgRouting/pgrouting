@@ -52,9 +52,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef struct {
     int seq;
+    int64_t edge; 
+    double cost;
     double mincut;
-    int set_of_vertices; 
-    int64_t vertices;
 } pgr_stoerWagner_t;
 
 #endif  // INCLUDE_C_TYPES_PGR_STOERWAGNER_T_H_
