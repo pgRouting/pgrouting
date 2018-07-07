@@ -1,0 +1,24 @@
+% source: http://people.sc.fsu.edu/~jburkardt/data/metis_graph/
+%  A very small example of an unweighted graph
+%  stored in the METIS graph file format.
+%
+%  The first non-comment line lists 
+%  the number of vertices (7) and edges (11).
+%
+%  The next line notes that vertex 1 is connected to vertices 5, 3 and 2.
+%  Subsequent lines list the neighbors of successive vertices.
+%
+%  Notice that each edge is listed twice.  There are 11 edges,
+%  but 22 edge entries.
+%
+ 7 11
+%
+%  Here begins the list of vertex neighbors for each vertex:
+%
+ 5  3  2
+ 1  3  4
+ 5  4  2  1
+ 2  3  6  7
+ 1  3  6
+ 5  4  7
+ 6  4

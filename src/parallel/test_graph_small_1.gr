@@ -1,0 +1,18 @@
+% A small weighted graph 
+% (stored in the METIS graph file format)
+% The first non-comment line lists
+% the number of vertices(5), edges(9)
+%
+%  FMT has the following meanings:
+%    0  the graph has no weights (in this case, you can omit FMT);
+%    1  the graph has edge weights;
+%   10  the graph has vertex weights;
+%   11  the graph has both edge and vertex weights.
+5 9 1
+
+%  Following lines list the neighbors of successive vertices.
+3 1
+2 2 4 1 5 2
+2 7 4 3
+5 1
+1 1 2 1
