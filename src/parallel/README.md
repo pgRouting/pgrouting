@@ -2,7 +2,7 @@
 
 ## MPI Implementation
 To get started with boost.MPI(parallel graphs), we first requires a working MPI(message passing interface) implementation.
-There are many conforming MPI implementations available, boost.MPI is fine with any. 
+There are many conforming MPI implementations available, boost.MPI is fine with any one.[2][3] 
 * Open MPI
 * MPICH 1.x
 
@@ -64,7 +64,7 @@ Use boost_mpi_test.cpp program to check whether your graph distriution works cor
 >>> mpic++ -I/path/to/boost/mpi boost_mpi_test.cpp -Llibdir -lboost_mpi -lboost_serialization -lboost_system -lboost_graph_parallel -o boost_mpi_test_output
 >>> mpirun -np 2 ./boost_mpi_test_output
 ```
-You should get the following output(or similar), after running above program and we are ready to move on further.
+You should get the following output(or similar), after running above program and we are ready to move on further to test other parallel graph algorithms over different graphs[1].
 ```
 >>>Graph vertices distribution among multiple processes(or processors):
  Process: 0: Chicago, population 9500000
@@ -77,3 +77,8 @@ Process: 0: Indianapolis -> Cincinnati
 >>>Edges distribution among multiple processes(or processors):
  Process: 1: Bloomington -> Indianapolis
 ```
+
+## References:
+1. Graph examples- http://people.sc.fsu.edu/~jburkardt/data/metis_graph/
+2. MPI and Boost installation: https://www.boost.org/doc/libs/1_43_0/doc/html/mpi/getting_started.html#mpi.installation
+3. MPI Tutorials: http://mpitutorial.com/tutorials/installing-mpich2/
