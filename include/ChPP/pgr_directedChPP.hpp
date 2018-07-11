@@ -146,7 +146,10 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
         edge.cost = 0.0;
-        edge.capacity = abs(d);
+        if (d > 0)
+            edge.capacity = d;
+        else
+            edge.capacity = -d;
         edge.edge_id = 0;
         if (d > 0)
             edge.source = p, edge.target = superTarget;
@@ -205,29 +208,32 @@ PgrDirectedChPPGraph::GetPathEdges() {
 bool
 PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p,
 				      std::vector<size_t>::iterator edgeToFaIter) {
+    if (edgeToFaIter != resultGraph[VToVecid[p]].second.end()) {
+        pgr_edge_t edge_t = resultEdges[*edgeToFaIter];
+    	General_path_element_t newElement;
+    	newElement.node = edge_t.source;
+    	newElement.edge = edge_t.id;
+        newElement.cost = edge_t.cost;
+    	if (resultPath.empty()) {
+            newElement.seq = 1;
+            newElement.agg_cost = 0.0;
+    	} else {
+            newElement.seq = resultPath.back().seq + 1;
+            newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
+    	}
+    	resultPath.push_back(newElement);
+	}
+            
     for (std::vector<size_t>::iterator iter = resultGraph[VToVecid[p]].second.begin();
          iter != resultGraph[VToVecid[p]].second.end();
          ++iter) {
         if (!edgeVisited[*iter]) {
-            if (edgeToFaIter != resultGraph[VToVecid[p]].second.end()) {
-                pgr_edge_t edge_t = resultEdges[*edgeToFaIter];
-    	    	General_path_element_t newElement;
-    	    	newElement.node = edge_t.source;
-    	    	newElement.edge = edge_t.id;
-    	    	newElement.cost = edge_t.cost;
-    	    	if (resultPath.empty()) {
-                    newElement.seq = 1;
-                    newElement.agg_cost = 0.0;
-    	    	} else {
-            	    newElement.seq = resultPath.back().seq + 1;
-            	    newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
-    	    	}
-                edgeVisited[*iter] = true;
-    	        resultPath.push_back(newElement);
-                EulerCircuitDFS(resultEdges[*iter].target, iter);
-	        }
+            edgeVisited[*iter] = true;
+            EulerCircuitDFS(resultEdges[*iter].target, iter);
+            break;
         }
     }
+    return true;
 }
 
 void
@@ -235,7 +241,6 @@ PgrDirectedChPPGraph::BuildResultGraph() {
     resultGraph.clear();
     VToVecid.clear();
     edgeVisited.clear();
-    resultPath.resize(resultEdges.size());
     for (size_t i = 0; i < resultEdges.size(); i++) {
         pgr_edge_t edge_t = resultEdges[i];
         edgeVisited.push_back(false);
@@ -245,6 +250,7 @@ PgrDirectedChPPGraph::BuildResultGraph() {
         }
         size_t vid = VToVecid[edge_t.source];
         resultGraph[vid].second.push_back(i);
+        resultGraph[vid].first = edge_t.source;
     }
 }
 
