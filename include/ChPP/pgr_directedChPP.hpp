@@ -53,7 +53,7 @@ class PgrDirectedChPPGraph {
      std::vector<General_path_element_t> GetPathEdges();
 
  private:
-     bool EulerCircuitDFS(int64_t p);
+     bool EulerCircuitDFS(int64_t p, std::vector<size_t>::iterator edgeToFaIter);
      void BuildResultGraph();
 
  private:
@@ -161,7 +161,6 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
 
 std::vector<General_path_element_t>
 PgrDirectedChPPGraph::GetPathEdges() {
-
     // catch new edges
     std::vector<pgr_flow_t> addedEdges = flowGraph.GetFlowEdges();
     for (auto &flow_t : addedEdges) {
@@ -188,15 +187,16 @@ PgrDirectedChPPGraph::GetPathEdges() {
         newElement.node = startPoint;
         newElement.edge = -1;
         newElement.cost = 0; 
-	if (resultPath.empty()) {
-	    newElement.seq = 1;
-	    newElement.agg_cost = 0.0;	
-	} else {
+	    if (resultPath.empty()) {
+	        newElement.seq = 1;
+	        newElement.agg_cost = 0.0;	
+	    } else {
             newElement.seq = resultPath.back().seq + 1;
             newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
-	}
+	    }
         resultPath.push_back(newElement);
-    } return resultPath;
+    }
+    return resultPath;
 }
     
 // perform DFS approach to generate Euler circuit
@@ -209,8 +209,8 @@ PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p,
          iter != resultGraph[VToVecid[p]].second.end();
          ++iter) {
         if (!edgeVisited[*iter]) {
-	    if (edgeToFaIter != resultGraph[VToVecid[p]].second.end()) {
-	    	edge_t = resultEdges[*edgeToFaIter];
+            if (edgeToFaIter != resultGraph[VToVecid[p]].second.end()) {
+                pgr_edge_t edge_t = resultEdges[*edgeToFaIter];
     	    	General_path_element_t newElement;
     	    	newElement.node = edge_t.source;
     	    	newElement.edge = edge_t.id;
@@ -222,11 +222,10 @@ PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p,
             	    newElement.seq = resultPath.back().seq + 1;
             	    newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
     	    	}
-	    }
-
-            edgeVisited[*iter] = true;
-    	    resultPath.push_back(newElement);
-            EulerCircuitDFS(resultEdges[*iter].target, iter);
+                edgeVisited[*iter] = true;
+    	        resultPath.push_back(newElement);
+                EulerCircuitDFS(resultEdges[*iter].target, iter);
+	        }
         }
     }
 }
