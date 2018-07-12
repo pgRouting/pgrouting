@@ -16,4 +16,6 @@ Convert dot file in distributed graph's image  with following command:
 >>> dot -Tpng test_graph_small_1-dijkstra.dot > output.png
 ```
 
-![Distributed Graph](codeSG/pgrouting/tree/parallelDijkstra/src/parallel/Example_1/output.png)
+![](https://github.com/codeSG/pgrouting/blob/parallelDijkstra/src/parallel/Example_1/output.png)
+
+Here, **value** inside the nodes shows the distance from the source vertex (distance = 0)
