@@ -62,6 +62,9 @@ class PgrDirectedChPPGraph {
      int64_t superSource, superTarget;
      int64_t startPoint;
 
+     std::map<std::pair<int64_t, int64_t>, // source, target
+              std::pair<int64_t, double> > edgeToId; // edge_id, cost
+
      graph::PgrCostFlowGraph flowGraph;
      std::vector<pgr_edge_t> resultEdges;
 
@@ -105,6 +108,17 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
     for (size_t i = 0; i < resultEdges.size(); i++) {
         deg[resultEdges[i].source]++;
         deg[resultEdges[i].target]--;
+
+        if (edgeToId.find(std::make_pair(resultEdges[i].source, resultEdges[i].target)) ==
+                edgeToId.end()) {
+            edgeToId.insert(std::make_pair(std::make_pair(resultEdges[i].source, resultEdges[i].target),
+                                           std::make_pair(resultEdges[i].id, resultEdges[i].cost)));
+        } else {
+            if (edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)].second >
+                    resultEdges[i].cost)
+                edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)] = 
+                    std::make_pair(resultEdges[i].id, resultEdges[i].cost);
+        }
 
         pgr_costFlow_t edge;
         edge.edge_id = resultEdges[i].id;
@@ -170,10 +184,10 @@ PgrDirectedChPPGraph::GetPathEdges() {
         if (flow_t.source != superSource && flow_t.source != superTarget)
             if (flow_t.target != superSource && flow_t.target != superTarget) {
                 pgr_edge_t newEdge;
-                newEdge.id = flow_t.edge;
                 newEdge.source = flow_t.source;
                 newEdge.target = flow_t.target;
-                newEdge.cost = flow_t.cost / static_cast<double>(flow_t.flow);
+                newEdge.id = edgeToId[std::make_pair(newEdge.source, newEdge.target)].first;
+                newEdge.cost = edgeToId[std::make_pair(newEdge.source, newEdge.target)].second;
                 newEdge.reverse_cost = -1.0;
                 while (flow_t.flow--)
                     resultEdges.push_back(newEdge);
