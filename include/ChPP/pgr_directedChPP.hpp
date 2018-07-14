@@ -55,6 +55,7 @@ class PgrDirectedChPPGraph {
  private:
      bool EulerCircuitDFS(int64_t p, std::vector<size_t>::iterator edgeToFaIter);
      void BuildResultGraph();
+     bool JudgeCoveredAllEdges();
 
  private:
      int64_t totalDeg;
@@ -176,6 +177,14 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
     flowGraph = graph;
 }
 
+bool
+PgrDirectedChPPGraph::JudgeCoveredAllEdges() {
+    for (const auto b : edgeVisited)
+        if (!b)
+            return false;
+    return true;
+}
+
 std::vector<General_path_element_t>
 PgrDirectedChPPGraph::GetPathEdges() {
     // catch new edges
@@ -196,8 +205,9 @@ PgrDirectedChPPGraph::GetPathEdges() {
 
     BuildResultGraph();
 
-    bool succ = EulerCircuitDFS(startPoint, resultGraph[VToVecid[startPoint]].second.end());
-    if (!succ)
+    EulerCircuitDFS(startPoint, resultGraph[VToVecid[startPoint]].second.end());
+
+    if (!JudgeCoveredAllEdges())
         resultPath.clear();
     else {
         General_path_element_t newElement;

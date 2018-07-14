@@ -67,19 +67,9 @@ do_pgr_directedChPP(
         minCost = digraph.DirectedChPP();
 
         std::vector<General_path_element_t> pathEdges;
+        pathEdges = digraph.GetPathEdges();
 
-        if (only_cost) {
-            if (minCost > 0.0) {
-                General_path_element_t edge;
-                edge.seq = -1;
-                edge.node = edge.edge = -1;
-                edge.cost = edge.agg_cost = minCost;
-                pathEdges.push_back(edge);
-            }
-        } else {
-            pathEdges = digraph.GetPathEdges();
-        }
-
+       
         size_t count = pathEdges.size();
         
         if (count == 0) {
@@ -87,8 +77,19 @@ do_pgr_directedChPP(
             (*return_count) = 0;
             notice <<
                 "No paths found";
-            *log_msg = pgr_msg(notice.str().c_str());
+            *err_msg = pgr_msg(notice.str().c_str());
             return;
+        }
+
+        if (only_cost) {
+            if (minCost >= 0.0) {
+                pathEdges.clear();
+                General_path_element_t edge;
+                edge.seq = -1;
+                edge.node = edge.edge = -1;
+                edge.cost = edge.agg_cost = minCost;
+                pathEdges.push_back(edge);
+            }
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
