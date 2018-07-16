@@ -63,15 +63,16 @@ class Pgr_stoerWagner {
                  G &graph);
 
  private:
-   
-     std::vector< double > distances;
-
+  
      std::vector< pgr_stoerWagner_t > 
      generatestoerWagner(
 	    const G &graph ) {
        
        std::vector< pgr_stoerWagner_t > results;
-       auto parities = boost::make_one_bit_color_map(num_vertices(graph.graph), get(boost::vertex_index, graph.graph));
+       auto parities = boost::make_one_bit_color_map(
+                                        num_vertices(graph.graph), 
+                                        get(boost::vertex_index, graph.graph)
+                                        );
        
        double w = stoer_wagner_min_cut(
                                    graph.graph, 
@@ -100,7 +101,9 @@ class Pgr_stoerWagner {
                tmp.mincut = totalcost;
                results.push_back(tmp);
              }
-       }        
+       }
+
+       pgassert(w == totalcost);        
        return results; 
      }
 };
@@ -109,7 +112,8 @@ template < class G >
 std::vector<pgr_stoerWagner_t>
 Pgr_stoerWagner< G >::stoerWagner(
                 G &graph) {
-       
+            
+      pgassert(num_vertices(graph.graph) > 1); 
       return generatestoerWagner(
                              graph);     
 } 
