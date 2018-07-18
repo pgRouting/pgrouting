@@ -53,14 +53,18 @@ class PgrDirectedChPPGraph {
      std::vector<General_path_element_t> GetPathEdges();
 
  private:
-     bool EulerCircuitDFS(int64_t p);
+     bool EulerCircuitDFS(int64_t p, std::vector<size_t>::iterator edgeToFaIter);
      void BuildResultGraph();
+     bool JudgeCoveredAllEdges();
 
  private:
      int64_t totalDeg;
      double totalCost;
      int64_t superSource, superTarget;
      int64_t startPoint;
+
+     std::map<std::pair<int64_t, int64_t>, // source, target
+              std::pair<int64_t, double> > edgeToId; // edge_id, cost
 
      graph::PgrCostFlowGraph flowGraph;
      std::vector<pgr_edge_t> resultEdges;
@@ -106,6 +110,17 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         deg[resultEdges[i].source]++;
         deg[resultEdges[i].target]--;
 
+        if (edgeToId.find(std::make_pair(resultEdges[i].source, resultEdges[i].target)) ==
+                edgeToId.end()) {
+            edgeToId.insert(std::make_pair(std::make_pair(resultEdges[i].source, resultEdges[i].target),
+                                           std::make_pair(resultEdges[i].id, resultEdges[i].cost)));
+        } else {
+            if (edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)].second >
+                    resultEdges[i].cost)
+                edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)] = 
+                    std::make_pair(resultEdges[i].id, resultEdges[i].cost);
+        }
+
         pgr_costFlow_t edge;
         edge.edge_id = resultEdges[i].id;
         edge.reverse_capacity = -1;
@@ -146,7 +161,10 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
         edge.cost = 0.0;
-        edge.capacity = abs(d);
+        if (d > 0)
+            edge.capacity = d;
+        else
+            edge.capacity = -d;
         edge.edge_id = 0;
         if (d > 0)
             edge.source = p, edge.target = superTarget;
@@ -159,19 +177,26 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
     flowGraph = graph;
 }
 
+bool
+PgrDirectedChPPGraph::JudgeCoveredAllEdges() {
+    for (const auto b : edgeVisited)
+        if (!b)
+            return false;
+    return true;
+}
+
 std::vector<General_path_element_t>
 PgrDirectedChPPGraph::GetPathEdges() {
-
     // catch new edges
     std::vector<pgr_flow_t> addedEdges = flowGraph.GetFlowEdges();
     for (auto &flow_t : addedEdges) {
         if (flow_t.source != superSource && flow_t.source != superTarget)
             if (flow_t.target != superSource && flow_t.target != superTarget) {
                 pgr_edge_t newEdge;
-                newEdge.id = flow_t.edge;
                 newEdge.source = flow_t.source;
                 newEdge.target = flow_t.target;
-                newEdge.cost = flow_t.cost / static_cast<double>(flow_t.flow);
+                newEdge.id = edgeToId[std::make_pair(newEdge.source, newEdge.target)].first;
+                newEdge.cost = edgeToId[std::make_pair(newEdge.source, newEdge.target)].second;
                 newEdge.reverse_cost = -1.0;
                 while (flow_t.flow--)
                     resultEdges.push_back(newEdge);
@@ -180,23 +205,25 @@ PgrDirectedChPPGraph::GetPathEdges() {
 
     BuildResultGraph();
 
-    bool succ = EulerCircuitDFS(startPoint, resultGraph[VToVecid[startPoint]].second.end());
-    if (!succ)
+    EulerCircuitDFS(startPoint, resultGraph[VToVecid[startPoint]].second.end());
+
+    if (!JudgeCoveredAllEdges())
         resultPath.clear();
     else {
         General_path_element_t newElement;
         newElement.node = startPoint;
         newElement.edge = -1;
         newElement.cost = 0; 
-	if (resultPath.empty()) {
-	    newElement.seq = 1;
-	    newElement.agg_cost = 0.0;	
-	} else {
+	    if (resultPath.empty()) {
+	        newElement.seq = 1;
+	        newElement.agg_cost = 0.0;	
+	    } else {
             newElement.seq = resultPath.back().seq + 1;
             newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
-	}
+	    }
         resultPath.push_back(newElement);
-    } return resultPath;
+    }
+    return resultPath;
 }
     
 // perform DFS approach to generate Euler circuit
@@ -205,30 +232,32 @@ PgrDirectedChPPGraph::GetPathEdges() {
 bool
 PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p,
 				      std::vector<size_t>::iterator edgeToFaIter) {
+    if (edgeToFaIter != resultGraph[VToVecid[p]].second.end()) {
+        pgr_edge_t edge_t = resultEdges[*edgeToFaIter];
+    	General_path_element_t newElement;
+    	newElement.node = edge_t.source;
+    	newElement.edge = edge_t.id;
+        newElement.cost = edge_t.cost;
+    	if (resultPath.empty()) {
+            newElement.seq = 1;
+            newElement.agg_cost = 0.0;
+    	} else {
+            newElement.seq = resultPath.back().seq + 1;
+            newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
+    	}
+    	resultPath.push_back(newElement);
+	}
+            
     for (std::vector<size_t>::iterator iter = resultGraph[VToVecid[p]].second.begin();
          iter != resultGraph[VToVecid[p]].second.end();
          ++iter) {
         if (!edgeVisited[*iter]) {
-	    if (edgeToFaIter != resultGraph[VToVecid[p]].second.end()) {
-	    	edge_t = resultEdges[*edgeToFaIter];
-    	    	General_path_element_t newElement;
-    	    	newElement.node = edge_t.source;
-    	    	newElement.edge = edge_t.id;
-    	    	newElement.cost = edge_t.cost;
-    	    	if (resultPath.empty()) {
-                    newElement.seq = 1;
-                    newElement.agg_cost = 0.0;
-    	    	} else {
-            	    newElement.seq = resultPath.back().seq + 1;
-            	    newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
-    	    	}
-	    }
-
             edgeVisited[*iter] = true;
-    	    resultPath.push_back(newElement);
             EulerCircuitDFS(resultEdges[*iter].target, iter);
+            break;
         }
     }
+    return true;
 }
 
 void
@@ -236,7 +265,6 @@ PgrDirectedChPPGraph::BuildResultGraph() {
     resultGraph.clear();
     VToVecid.clear();
     edgeVisited.clear();
-    resultPath.resize(resultEdges.size());
     for (size_t i = 0; i < resultEdges.size(); i++) {
         pgr_edge_t edge_t = resultEdges[i];
         edgeVisited.push_back(false);
@@ -246,6 +274,7 @@ PgrDirectedChPPGraph::BuildResultGraph() {
         }
         size_t vid = VToVecid[edge_t.source];
         resultGraph[vid].second.push_back(i);
+        resultGraph[vid].first = edge_t.source;
     }
 }
 
