@@ -16,8 +16,7 @@ SELECT bag_has(
 -- pgr_directedchpp_cost works
 PREPARE t1 AS
 SELECT * FROM pgr_directedchpp_cost(
-    -- TODO(mg) fix sql query
-    'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table where id < 17'
 );
 
 SELECT lives_ok('t1', 'pgr_directedchpp_cost');
@@ -31,8 +30,7 @@ PREPARE q1 AS
 SELECT pg_typeof(pgr_directedChPP_Cost)::text AS t1
     FROM (
         SELECT * FROM pgr_directedchpp_cost(
-            -- TODO(mg) fix sql query
-            'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
+            'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table where id < 17'
         ) ) AS a
     limit 1;
 
