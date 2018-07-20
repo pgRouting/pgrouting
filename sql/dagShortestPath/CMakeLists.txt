@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+	_dagShortestPath.sql
     dagShortestPath.sql
     )
 

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dagShortestPath.sql
+File: _dagShortestPath.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,12 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_dagShortestPath(
+CREATE OR REPLACE FUNCTION _pgr_dagShortestPath(
     TEXT,
     BIGINT,
     BIGINT,
-
-    OUT seq INTEGER,
+    directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
+        OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -40,10 +41,6 @@ CREATE OR REPLACE FUNCTION pgr_dagShortestPath(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dagShortestPath(_pgr_get_statement($1), $2::BIGINT, $3::BIGINT, true, false ) AS a;
-$BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'dagShortestPath'
+LANGUAGE c IMMUTABLE STRICT;
+
