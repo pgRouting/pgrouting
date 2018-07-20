@@ -24,9 +24,15 @@
 
 #define MAX_RULE_LENGTH 5
 
-#include <postgres.h>
-#include <stdint.h>
 
+/* for int64_t */
+#ifdef __cplusplus
+#   include <cstdint>
+typedef int64_t int64;
+typedef double float8;
+#else
+#   include <stdint.h>
+#endif
 
 typedef struct edge {
     int64 id;

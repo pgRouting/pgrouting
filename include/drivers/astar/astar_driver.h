@@ -4,9 +4,9 @@ File: astarOneToMany_driver.h
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -29,6 +29,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_ASTAR_ASTAR_DRIVER_H_
 #define INCLUDE_DRIVERS_ASTAR_ASTAR_DRIVER_H_
 #pragma once
+
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#endif
 
 #include "c_types/pgr_edge_xy_t.h"
 #include "c_types/general_path_element_t.h"

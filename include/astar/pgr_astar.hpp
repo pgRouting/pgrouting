@@ -204,16 +204,22 @@ class Pgr_astar {
                   switch (m_heuristic) {
                       case 0:
                           current = 0;
+                          break;
                       case 1:
                           current = std::fabs((std::max)(dx, dy)) * m_factor;
+                          break;
                       case 2:
                           current = std::fabs((std::min)(dx, dy)) * m_factor;
+                          break;
                       case 3:
                           current = (dx * dx + dy * dy) * m_factor * m_factor;
+                          break;
                       case 4:
                           current = std::sqrt(dx * dx + dy * dy) * m_factor;
+                          break;
                       case 5:
                           current = (std::fabs(dx) + std::fabs(dy)) * m_factor;
+                          break;
                       default:
                           current = 0;
                   }
