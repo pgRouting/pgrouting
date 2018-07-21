@@ -33,6 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_edge_t.h"
 #include "c_types/pgr_flow_t.h"
 
+#include <stack>
+
 namespace pgrouting {
 namespace graph {
 
@@ -53,8 +55,9 @@ class PgrDirectedChPPGraph {
      std::vector<General_path_element_t> GetPathEdges();
 
  private:
-     bool EulerCircuitDFS(int64_t p, std::vector<size_t>::iterator edgeToFaIter);
+     bool EulerCircuitDFS(int64_t p);
      void BuildResultGraph();
+     void BuildResultPath();
      bool JudgeCoveredAllEdges();
 
  private:
@@ -64,7 +67,7 @@ class PgrDirectedChPPGraph {
      int64_t startPoint;
 
      std::map<std::pair<int64_t, int64_t>, // source, target
-              std::pair<int64_t, double> > edgeToId; // edge_id, cost
+              size_t> edgeToId; // index in resultEdges 
 
      graph::PgrCostFlowGraph flowGraph;
      std::vector<pgr_edge_t> resultEdges;
@@ -73,6 +76,7 @@ class PgrDirectedChPPGraph {
      std::map<int64_t, size_t> VToVecid;
      std::vector<bool> edgeVisited;
 
+     std::stack<int64_t> pathStack; // node stack
      std::vector<General_path_element_t> resultPath;
 };
 
@@ -112,13 +116,11 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
 
         if (edgeToId.find(std::make_pair(resultEdges[i].source, resultEdges[i].target)) ==
                 edgeToId.end()) {
-            edgeToId.insert(std::make_pair(std::make_pair(resultEdges[i].source, resultEdges[i].target),
-                                           std::make_pair(resultEdges[i].id, resultEdges[i].cost)));
+            edgeToId.insert(std::make_pair(std::make_pair(resultEdges[i].source, resultEdges[i].target), i));
         } else {
-            if (edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)].second >
+            if (resultEdges[edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)]].cost >
                     resultEdges[i].cost)
-                edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)] = 
-                    std::make_pair(resultEdges[i].id, resultEdges[i].cost);
+                edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)] = i;
         }
 
         pgr_costFlow_t edge;
@@ -195,8 +197,8 @@ PgrDirectedChPPGraph::GetPathEdges() {
                 pgr_edge_t newEdge;
                 newEdge.source = flow_t.source;
                 newEdge.target = flow_t.target;
-                newEdge.id = edgeToId[std::make_pair(newEdge.source, newEdge.target)].first;
-                newEdge.cost = edgeToId[std::make_pair(newEdge.source, newEdge.target)].second;
+                newEdge.id = resultEdges[edgeToId[std::make_pair(newEdge.source, newEdge.target)]].id;
+                newEdge.cost = resultEdges[edgeToId[std::make_pair(newEdge.source, newEdge.target)]].cost;
                 newEdge.reverse_cost = -1.0;
                 while (flow_t.flow--)
                     resultEdges.push_back(newEdge);
@@ -205,37 +207,28 @@ PgrDirectedChPPGraph::GetPathEdges() {
 
     BuildResultGraph();
 
-    EulerCircuitDFS(startPoint, resultGraph[VToVecid[startPoint]].second.end());
+    EulerCircuitDFS(startPoint);
+
+    BuildResultPath();
 
     if (!JudgeCoveredAllEdges())
         resultPath.clear();
-    else {
-        General_path_element_t newElement;
-        newElement.node = startPoint;
-        newElement.edge = -1;
-        newElement.cost = 0; 
-	    if (resultPath.empty()) {
-	        newElement.seq = 1;
-	        newElement.agg_cost = 0.0;	
-	    } else {
-            newElement.seq = resultPath.back().seq + 1;
-            newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
-	    }
-        resultPath.push_back(newElement);
-    }
     return resultPath;
 }
-    
-// perform DFS approach to generate Euler circuit
-// TODO(mg) find suitable API in BGL, maybe DfsVisitor will work.
-// Implement DFS without BGL for now
-bool
-PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p,
-				      std::vector<size_t>::iterator edgeToFaIter) {
-    if (edgeToFaIter != resultGraph[VToVecid[p]].second.end()) {
-        pgr_edge_t edge_t = resultEdges[*edgeToFaIter];
-    	General_path_element_t newElement;
-    	newElement.node = edge_t.source;
+
+void
+PgrDirectedChPPGraph::BuildResultPath() {
+    if (pathStack.empty())
+        return;
+    int64_t preNode = pathStack.top();
+    pathStack.pop();
+
+    General_path_element_t newElement;
+    while (!pathStack.empty()) {
+        int64_t nowNode = pathStack.top();
+        pathStack.pop();
+        pgr_edge_t edge_t = resultEdges[edgeToId[std::make_pair(preNode, nowNode)]];
+        newElement.node = edge_t.source;
     	newElement.edge = edge_t.id;
         newElement.cost = edge_t.cost;
     	if (resultPath.empty()) {
@@ -246,17 +239,35 @@ PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p,
             newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
     	}
     	resultPath.push_back(newElement);
+        preNode = nowNode;
 	}
-            
+    newElement.node = preNode;
+    newElement.edge = -1;
+    newElement.cost = 0; 
+	if (resultPath.empty()) {
+	    newElement.seq = 1;
+	    newElement.agg_cost = 0.0;	
+	} else {
+        newElement.seq = resultPath.back().seq + 1;
+        newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
+	}
+    resultPath.push_back(newElement);
+}
+    
+// perform DFS approach to generate Euler circuit
+// TODO(mg) find suitable API in BGL, maybe DfsVisitor will work.
+// Implement DFS without BGL for now
+bool
+PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p) {
     for (std::vector<size_t>::iterator iter = resultGraph[VToVecid[p]].second.begin();
          iter != resultGraph[VToVecid[p]].second.end();
          ++iter) {
         if (!edgeVisited[*iter]) {
             edgeVisited[*iter] = true;
-            EulerCircuitDFS(resultEdges[*iter].target, iter);
-            break;
+            EulerCircuitDFS(resultEdges[*iter].target);
         }
     }
+    pathStack.push(p);
     return true;
 }
 
