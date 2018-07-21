@@ -88,10 +88,13 @@ class Pgr_astar {
          // perform the algorithm
          astar_1_to_1(graph, v_source, v_target, heuristic, factor, epsilon);
 
-         return  Path(graph,
+         auto solution = Path(graph, Path(graph,
                  v_source, v_target,
                  predecessors, distances,
-                 only_cost);
+                 false), only_cost);
+
+         return solution;
+
      }
 
      //! astar 1 to many
@@ -348,11 +351,11 @@ class Pgr_astar {
              bool only_cost) const {
          std::deque<Path> paths;
          for (const auto &target : targets) {
-             paths.push_back(
-                     Path(graph,
+             auto p = Path(graph,
                          source, target,
                          predecessors, distances,
-                         only_cost));
+                         false);
+             paths.push_back(Path(graph, p, only_cost));
          }
          return paths;
      }
