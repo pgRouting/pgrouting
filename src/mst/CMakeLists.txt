@@ -3,4 +3,6 @@ ADD_LIBRARY(mst OBJECT
     kruskal_driver.cpp
     prim.c
     prim_driver.cpp
+    randomSpanningTree.c
+    randomSpanningTree_driver.cpp
     )
