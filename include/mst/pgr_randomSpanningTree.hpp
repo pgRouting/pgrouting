@@ -27,17 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 #include <iostream>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/connected_components.hpp>
-#include <boost/graph/kruskal_min_spanning_tree.hpp>
-
-#include <deque>
-#include <set>
 #include <vector>
-#include <algorithm>
-#include <sstream>
-#include <functional>
-#include <limits>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/random_spanning_tree.hpp>
+#include <boost/random/random_number_generator.hpp>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -56,18 +49,88 @@ class Pgr_randomSpanningTree {
      typedef typename G::E E;
 
      std::vector<pgr_randomSpanningTree_t> randomSpanningTree(
-                 G &graph);
+                 G &graph,
+                 int64_t root_vertex);
+
+ private:
+      //Member
+      std::vector< V > predecessors;
+ 
+      // Function
+      std::vector< pgr_randomSpanningTree_t > 
+      undirectedGraph(
+	       const G &graph,
+               int64_t root_vertex) {
+ 
+         std::ostringstream err;
+         auto v_root(graph.get_V(root_vertex));
+         
+         std::mt19937_64 rng;
+        
+         try {
+           boost::random_spanning_tree(
+                      graph.graph,
+                      rng,
+                      boost::root_vertex(v_root)
+                      .predecessor_map(&predecessors[0])
+                      .weight_map(get(&G::G_T_E::cost, graph.graph))
+              );
+ 
+         } catch (std::exception const &ex) {
+             err << ex.what();
+         } catch (...) {
+             err << "Unknown exception caught";
+         }  
+
+         std::vector< pgr_randomSpanningTree_t > resul;
+         return resul;
+         /*std::vector< pgr_randomSpanningTree_t > results;
+         double totalcost = 0;
+         pgr_randomSpanningTree_t tmp;
+    
+         tmp.edge = -1;
+         tmp.cost = 0;
+         tmp.tree_cost = totalcost;
+
+         results.push_back(tmp); 	  
+          // for root node 
+         
+         for (size_t j = 0; j < predecessors.size(); j++){
+           if(j != v_root ){ 
+             pgr_randomSpanningTree_t tmp;
+               
+             auto start_node = graph.graph[predecessors[j]].id;
+             auto end_node = graph.graph[j].id; // node
+ 
+             auto v_sn(graph.get_V(start_node));
+             auto v_en(graph.get_V(end_node));
+
+             //auto cost = graph[boost::edge(predecessors[j], j, graph.graph).first].cost;
+             //auto edge_id = 
+                 //graph.get_edge_id(v_sn, v_en, cost);
+	     //totalcost += cost;    
+ 
+             tmp.edge = 1; 	     // edge_id
+             tmp.cost = 11; 		     // cost
+             tmp.tree_cost = 22;      // tree_cost
+             results.push_back(tmp);
+           }
+         }
+         return results;*/
+    }
+
 };
 
 template < class G >
 std::vector<pgr_randomSpanningTree_t>
 Pgr_randomSpanningTree< G >::randomSpanningTree(
-                G &graph) {
+                G &graph,
+                int64_t root_vertex ) {
           
-      std::vector< pgr_randomSpanningTree_t > results;
-      return results; 
-      //return generateKruskal(
-      //                       graph);     
+      predecessors.clear();
+      return undirectedGraph(
+                           graph,
+                           root_vertex );     
 } 
 
 
