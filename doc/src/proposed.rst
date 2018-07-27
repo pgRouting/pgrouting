@@ -134,6 +134,12 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:ref:`ChPP`
+
+.. include:: ChPP-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 
 :ref:`contraction` - Reduce network size using contraction techniques
 
@@ -163,6 +169,7 @@ Experimental Functions
   flow-family
   components-family
   costFlow-family
+  ChPP-family
   pgr_gsoc_vrppdtw
   pgr_vrpOneDepot
 
