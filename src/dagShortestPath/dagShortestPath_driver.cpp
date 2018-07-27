@@ -68,8 +68,8 @@ pgr_dagShortestPath(
             targets.end());
 
     
-    Pgr_dag< G > fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(graph, sources, targets, only_cost);
+    Pgr_dag< G > fn_dag;
+    auto paths = fn_dag.dag(graph, sources, targets, only_cost);
     
     return paths;
 }
