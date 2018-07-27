@@ -51,16 +51,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ***********************************************************/
 
 template < class G >
-static
-Path
+std::deque< Path >
 pgr_dagShortestPath(
         G &graph,
-        int64_t source,
-        int64_t target,
+        std::vector < int64_t > sources,
+        std::vector < int64_t > targets,
         bool only_cost = false) {
-    Path path;
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+    
+    Pgr_dag< G > fn_dijkstra;
+    auto paths = fn_dijkstra.dijkstra(graph, sources, targets, only_cost);
+    
+    return paths;
 }
 
 
@@ -68,15 +79,19 @@ void
 do_pgr_dagShortestPath(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        int64_t start_vid,
-        int64_t end_vid,
+        int64_t  *start_vidsArr,
+        size_t size_start_vidsArr,
+        int64_t  *end_vidsArr,
+        size_t size_end_vidsArr,
         bool directed,
         bool only_cost,
+
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -90,28 +105,35 @@ do_pgr_dagShortestPath(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        Path path;
+        log << "Inserting vertices into a c++ vector structure";
+        std::vector<int64_t>
+            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+        std::vector< int64_t >
+            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+
+        std::deque< Path >paths;
 
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            path = pgr_dagShortestPath(digraph,
-                    start_vid,
-                    end_vid,
+            paths = pgr_dagShortestPath(digraph,
+                    start_vertices, 
+                    end_vertices,
                     only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_dagShortestPath(
+            paths = pgr_dagShortestPath(
                     undigraph,
-                    start_vid,
-                    end_vid,
+                    start_vertices, 
+                    end_vertices,
                     only_cost);
         }
 
-        auto count = path.size();
+        size_t count(0);
+        count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -122,11 +144,9 @@ do_pgr_dagShortestPath(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        size_t sequence = 0;
-        path.generate_postgres_data(return_tuples, sequence);
-        (*return_count) = sequence;
+        log << "\nConverting a set of paths into the tuples";
+        (*return_count) = (collapse_paths(return_tuples, paths));
 
-        pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());

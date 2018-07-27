@@ -29,11 +29,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "c_common/postgres_connection.h"
+#include "utils/array.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
+#include "c_common/arrays_input.h"
 #include "drivers/dagShortestPath/dagShortestPath_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum dagShortestPath(PG_FUNCTION_ARGS);
@@ -46,15 +48,10 @@ static
 void
 process(
         char* edges_sql,
-        int64_t start_vid,
-        int64_t end_vid,
-#if 0
-        /*
-         * handling arrays example
-         */
+     /*   int64_t start_vid,
+        int64_t end_vid,*/
         ArrayType *starts,
         ArrayType *ends,
-#endif
         bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
@@ -65,10 +62,7 @@ process(
     pgr_SPI_connect();
 
 
-#if 0
-    /*
-     *  handling arrays example
-     */
+
 
     PGR_DBG("Initializing arrays");
     int64_t* start_vidsArr = NULL;
@@ -82,7 +76,7 @@ process(
     end_vidsArr = (int64_t*)
         pgr_get_bigIntArray(&size_end_vidsArr, ends);
     PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
-#endif
+
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -90,14 +84,6 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-
-    if (start_vid == end_vid) {
-        /*
-         * https://www.postgresql.org/docs/current/static/spi-spi-finish.html
-         */
-        pgr_SPI_finish();
-        return;
-    }
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
@@ -116,16 +102,8 @@ process(
     do_pgr_dagShortestPath(
             edges,
             total_edges,
-            start_vid,
-            end_vid,
-#if 0
-    /*
-     *  handling arrays example
-     */
-
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
-#endif
 
             directed,
             only_cost,
@@ -147,14 +125,10 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-#if 0
-    /*
-     *  handling arrays example
-     */
+
 
     if (end_vidsArr) pfree(end_vidsArr);
     if (start_vidsArr) pfree(start_vidsArr);
-#endif
 
     pgr_SPI_finish();
 }
@@ -193,16 +167,8 @@ PGDLLEXPORT Datum dagShortestPath(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
-                PG_GETARG_INT64(2),
-#if 0
-                /*
-                 *  handling arrays example
-                 */
-
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
-#endif
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
@@ -212,7 +178,7 @@ PGDLLEXPORT Datum dagShortestPath(PG_FUNCTION_ARGS) {
         /*                                                                    */
         /**********************************************************************/
 
-#if PGSQL_VERSION > 94
+#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;

@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dag_shortest_paths.hpp>
-
+#include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <deque>
 #include <set>
 #include <vector>
@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-template < class G > class Pgr_dijkstra;
+template < class G > class Pgr_dag;
 // user's functions
 // for development
 
@@ -59,7 +59,7 @@ pgr_drivingDistance(
         double distance,
         bool equicost,
         std::ostringstream &log) {
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_dag< G > fn_dijkstra;
     return fn_dijkstra.drivingDistance(
             graph,
             start_vids,
@@ -69,25 +69,13 @@ pgr_drivingDistance(
 }
 
 
-/* 1 to 1*/
-template < class G >
-Path
-pgr_dijkstra(
-        G &graph,
-        int64_t source,
-        int64_t target,
-        bool only_cost = false) {
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
-}
-
 
 
 
 //******************************************
 
 template < class G >
-class Pgr_dijkstra {
+class Pgr_dag {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -331,7 +319,7 @@ class Pgr_dijkstra {
              V source,
              double distance) {
          try {
-             boost::dag_shortest_paths(graph.graph, source,
+             boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
