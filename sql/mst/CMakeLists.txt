@@ -3,6 +3,9 @@ SET(LOCAL_FILES
     kruskal.sql
     _prim.sql
     prim.sql
+    prim.sql
+    _randomSpanningTree.sql
+    randomSpanningTree.sql
     )
 
 # Do not modify bellow this line
