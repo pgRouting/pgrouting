@@ -4,8 +4,6 @@ SET(LOCAL_FILES
     _prim.sql
     prim.sql
     prim.sql
-    _randomSpanningTree.sql
-    randomSpanningTree.sql
     )
 
 # Do not modify bellow this line
