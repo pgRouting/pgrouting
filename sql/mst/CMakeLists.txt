@@ -3,7 +3,7 @@ SET(LOCAL_FILES
     kruskal.sql
     _prim.sql
     prim.sql
-    randomSpanningTree.sql
+    prim.sql
     )
 
 # Do not modify bellow this line

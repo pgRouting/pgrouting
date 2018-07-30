@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_kruskal.hpp
+File: pgr_randomSpanningTree.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -21,28 +21,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MST_PGR_KRUSKAL_HPP_
-#define INCLUDE_MST_PGR_KRUSKAL_HPP_
+#ifndef INCLUDE_MST_PGR_RANDOM_SPANNING_TREE_HPP_
+#define INCLUDE_MST_PGR_RANDOM_SPANNING_TREE_HPP_
 #pragma once
 
 #include <boost/config.hpp>
 #include <iostream>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/connected_components.hpp>
-#include <boost/graph/kruskal_min_spanning_tree.hpp>
-
-#include <deque>
-#include <set>
 #include <vector>
-#include <algorithm>
-#include <sstream>
-#include <functional>
-#include <limits>
+#include <exception>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/random_spanning_tree.hpp>
+#include <boost/random/random_number_generator.hpp>
+#include <boost/graph/graph_traits.hpp>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
-template < class G > class Pgr_kruskal;
+template < class G > class Pgr_randomSpanningTree;
 // user's functions
 // for development
 
@@ -56,19 +51,93 @@ class Pgr_randomSpanningTree {
      typedef typename G::E E;
 
      std::vector<pgr_randomSpanningTree_t> randomSpanningTree(
-                 G &graph);
+                 G &graph,
+                 int64_t root_vertex);
+
+ private:
+      //Member
+      std::vector< V > predecessors;
+ 
+      // Function
+      std::vector< pgr_randomSpanningTree_t > 
+      undirectedGraph(
+	       const G &graph,
+               int64_t root_vertex) {
+ 
+         std::ostringstream log;
+         auto v_root(graph.get_V(root_vertex));
+         
+         std::minstd_rand rng;
+         //TODO aps
+         //This function is running in infinte loop
+         try {
+           boost::random_spanning_tree(
+                      graph.graph,
+                      rng,
+                      boost::root_vertex(v_root)
+         	      .predecessor_map(&predecessors[0])
+                      .weight_map(get(&G::G_T_E::cost, graph.graph))
+              );
+ 
+         } catch (std::exception const &ex) {
+             log << ex.what();
+         } catch (...) {
+             log << "Unknown exception caught";
+         }  
+
+         std::vector< pgr_randomSpanningTree_t > resul;
+         return resul;
+         std::vector< pgr_randomSpanningTree_t > results;
+         double totalcost = 0;
+         pgr_randomSpanningTree_t tmp;
+    
+         tmp.root_vertex = root_vertex; 
+         tmp.edge = -1;
+         tmp.cost = 0;
+         tmp.tree_cost = totalcost;
+
+         results.push_back(tmp); 	  
+         
+         for (size_t j = 0; j < predecessors.size(); j++){
+           if(j != v_root ){ 
+             pgr_randomSpanningTree_t tmp;
+               
+             auto start_node = graph.graph[predecessors[j]].id;
+             auto end_node = graph.graph[j].id; // node
+ 
+             auto v_sn(graph.get_V(start_node));
+             auto v_en(graph.get_V(end_node));
+
+             auto cost = graph[boost::edge(predecessors[j], j, graph.graph).first].cost;
+             auto edge_id = 
+                 graph.get_edge_id(v_sn, v_en, cost);
+	     totalcost += cost;    
+ 
+             tmp.root_vertex = root_vertex;
+             tmp.edge = edge_id; 	     // edge_id
+             tmp.cost = cost; 		     // cost
+             tmp.tree_cost = totalcost;      // tree_cost
+             results.push_back(tmp);
+           }
+         }
+         return results;
+    }
+
 };
 
 template < class G >
 std::vector<pgr_randomSpanningTree_t>
 Pgr_randomSpanningTree< G >::randomSpanningTree(
-                G &graph) {
+                G &graph,
+                int64_t root_vertex ) {
           
-      std::vector< pgr_randomSpanningTree_t > results;
-      return results; 
-      //return generateKruskal(
-      //                       graph);     
+      predecessors.clear();
+      //TODO aps 
+      //Currently only running for undirected graph
+      return undirectedGraph(
+                           graph,
+                           root_vertex );     
 } 
 
 
-#endif  // INCLUDE_MST_PGR_KRUSKAL_HPP_
+#endif  // INCLUDE_MST_PGR_RANDOM_SPANNING_TREE_HPP_

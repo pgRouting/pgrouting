@@ -37,10 +37,11 @@ template < class G >
 static
 std::vector<pgr_randomSpanningTree_t>
 pgr_randomSpanningTree(
-        G &graph ) {
+        G &graph,
+        int64_t root_vertex ) {
     std::vector<pgr_randomSpanningTree_t> results;
     Pgr_randomSpanningTree< G > fn_randomSpanningTree;
-    return fn_randomSpanningTree.randomSpanningTree(graph);
+    return fn_randomSpanningTree.randomSpanningTree(graph, root_vertex);
 }
 
 
@@ -48,6 +49,7 @@ void
 do_pgr_randomSpanningTree(
         pgr_edge_t  *data_edges,
         size_t total_edges,
+        int64_t root_vertex,
         bool directed,
         pgr_randomSpanningTree_t **return_tuples, 
         size_t *return_count,
@@ -74,13 +76,15 @@ do_pgr_randomSpanningTree(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             results = pgr_randomSpanningTree(
-                    digraph);
+                    digraph,
+                    root_vertex);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             results = pgr_randomSpanningTree(
-                    undigraph);
+                    undigraph,
+                    root_vertex);
         }
 
         auto count = results.size();
