@@ -22,41 +22,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-/** @file randomSpanningTree.c
- * @brief Conecting code with postgres.
- *
- * This file is fully documented for understanding
- *  how the postgres connectinon works
- *
- * TODO Remove unnecessary comments before submiting the function.
- * some comments are in form of PGR_DBG message
- */
-
-/**
- *  postgres_connection.h
- *
- *  - should always be first in the C code
- */
+#include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
-
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges information */
+
 #include "c_common/edges_input.h"
 
-#include "drivers/mst/randomSpanningTree_driver.h"  // the link to the C++ code of the function
+#include "drivers/mst/randomSpanningTree_driver.h"  
 
 PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(randomSpanningTree);
 
-
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -123,14 +102,9 @@ process(
 PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
-
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
+                                                  
     pgr_randomSpanningTree_t *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -145,10 +119,6 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(2),
                 &result_tuples,
                 &result_count);
-
-
-        /*                                                                    */
-        /**********************************************************************/
 
 #if PGSQL_VERSION > 94
         funcctx->max_calls = (uint32_t)result_count;
@@ -199,12 +169,8 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
         PGR_DBG("Clean up code");
-
-        /**********************************************************************/
 
         SRF_RETURN_DONE(funcctx);
     }

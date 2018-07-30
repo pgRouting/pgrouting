@@ -22,34 +22,16 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-/** @file stoerWagner.c
- * @brief Conecting code with postgres.
- *
- * This file is fully documented for understanding
- *  how the postgres connectinon works
- *
- * TODO Remove unnecessary comments before submiting the function.
- * some comments are in form of PGR_DBG message
- */
-
-/**
- *  postgres_connection.h
- *
- *  - should always be first in the C code
- */
+#include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
-
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges information */
+
 #include "c_common/edges_input.h"
 
-#include "drivers/mincut/stoerWagner_driver.h"  // the link to the C++ code of the function
+#include "drivers/mincut/stoerWagner_driver.h"
 
 PGDLLEXPORT Datum stoerWagner(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(stoerWagner);
