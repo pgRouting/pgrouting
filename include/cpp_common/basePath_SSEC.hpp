@@ -179,6 +179,46 @@ class Path {
         }
 
 
+    template <typename G> Path(
+            const G &graph,
+            const Path original,
+            bool only_cost) :
+        m_start_id(original.m_start_id),
+        m_end_id(original.m_end_id),
+        m_tot_cost(0) {
+            if (original.path.empty()) return;
+
+            std::deque<Path_t> only_cost_path;
+            typename G::EO_i ei, ei_end;
+
+//            auto last_node = m_start_id;
+            for (const auto &p : original.path) {
+                boost::tie(ei, ei_end) = out_edges(graph.get_V(p.node), graph.graph);
+
+                if (p.edge == -1) {
+                    path.push_back({m_end_id, -1, 0, 0});
+                } else {
+                    for( ; ei != ei_end; ++ei) {
+                        if (graph[*ei].id == p.edge) {
+                            auto cost = graph[*ei].cost;
+                            push_back({p.node, p.edge, cost, 0});
+                        }
+                    }
+                }
+//                last_node = p.node;
+            }
+            recalculate_agg_cost();
+
+            if (only_cost) {
+                path.clear();
+                path.push_back(
+                        {m_end_id,
+                        -1,
+                        m_tot_cost,
+                        m_tot_cost});
+            }
+        }
+
     template <typename G , typename V> Path(
             G &graph,
             V v_source,

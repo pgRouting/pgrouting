@@ -24,6 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#endif
+
 #include "c_types/column_info_t.h"
 
 #include "c_common/debug_macro.h"

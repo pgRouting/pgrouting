@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -30,6 +30,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
 #define INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
 #pragma once
+
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#endif
 
 #include "c_types/pgr_edge_t.h"
 #include "c_types/matrix_cell_t.h"

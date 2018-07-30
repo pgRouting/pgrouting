@@ -26,9 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_POINTS_INPUT_H_
 #pragma once
 
+/* for size-t */
+#include <stddef.h>
+
 #include "c_types/point_on_edge_t.h"
 
-/*! @brief pgr_get_points 
+/*! @brief pgr_get_points
 
 For queries of the type:
 ~~~~{.c}

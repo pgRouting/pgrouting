@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_bdAstar.hpp 
+File: pgr_bdAstar.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -168,7 +168,7 @@ class Pgr_bidirectional {
                 v_min_node,
                 forward_predecessor,
                 forward_cost,
-                only_cost,
+                false,
                 true);
         Path backward_path(
                 graph,
@@ -176,14 +176,16 @@ class Pgr_bidirectional {
                 v_min_node,
                 backward_predecessor,
                 backward_cost,
-                only_cost,
+                false,
                 false);
         m_log << forward_path;
         backward_path.reverse();
         m_log << backward_path;
         forward_path.append(backward_path);
+        auto p = Path(graph, forward_path, only_cost);
         m_log << forward_path;
-        return forward_path;
+        m_log << p;
+        return p;
     }
 
 

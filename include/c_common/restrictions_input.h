@@ -26,6 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_RESTRICTIONS_INPUT_H_
 #pragma once
 
+/* for size-t */
+#include <stddef.h>
+
 #include "c_types/restriction_t.h"
 
 void pgr_get_restrictions(

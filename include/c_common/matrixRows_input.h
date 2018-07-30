@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_MATRIXROWS_INPUT_H_
 #pragma once
 
+#include <stddef.h>
+
 #include "c_types/matrix_cell_t.h"
 
 /*!
