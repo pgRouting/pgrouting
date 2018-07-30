@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Function's developer:
+Copyright (c) 2017 Maoguang Wang
+Mail: xjtumg1007@gmail.com
 
 ------
 
@@ -30,6 +30,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_COMPONENTS_CONNECTEDCOMPONENTS_DRIVER_H_
 #define INCLUDE_DRIVERS_COMPONENTS_CONNECTEDCOMPONENTS_DRIVER_H_
 #pragma once
+
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#endif
 
 #include "c_types/pgr_edge_t.h"
 #include "c_types/pgr_components_rt.h"

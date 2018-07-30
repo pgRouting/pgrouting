@@ -34,9 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 @param[in] colNumber Column number (count starts at 1).
 
-@return @b TRUE when colNumber exist. 
+@return @b TRUE when colNumber exist.
         @b FALSE when colNumber was not found.
- 
+
  */
 bool column_found(int colNumber);
 
@@ -47,9 +47,9 @@ bool column_found(int colNumber);
 @param[in] info_size  number of columns.
 
 @throw ERROR Unknown type of column.
-  
+
 @return NULL is always returned.
- 
+
  */
 void pgr_fetch_column_info(
         Column_info_t info[],
@@ -94,7 +94,7 @@ void pgr_check_char_type(Column_info_t info);
 /*!
 @brief The function check whether column type is TEXT or not.
        Where TEXT is SQL type:
-            TEXT 
+            TEXT
 
 @param[in] info contain column information.
 
@@ -112,7 +112,7 @@ void pgr_check_boolean_type(Column_info_t info);
 @param[in] info contain column information.
 
 @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
-  
+
  */
 
 void pgr_check_any_integerarray_type(Column_info_t info);
@@ -125,7 +125,7 @@ void pgr_check_any_integerarray_type(Column_info_t info);
 @param[in]  info          contain column information.
 @param[in]  strict        boolean value of strict.
 @param[in]  default_value returned when column contain NULL value.
-  
+
 @throw ERROR Unexpected Column type. Expected column type is CHAR.
 @throw ERROR When value of column is NULL.
 
@@ -150,7 +150,7 @@ char pgr_SPI_getChar(
 @throw ERROR No elements found in ARRAY.
 @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
 @throw ERROR NULL value found in Array.
-  
+
 @return Array of columns value is returned.
 
  */
@@ -171,7 +171,7 @@ pgr_SPI_getBigIntArr(
 
 @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
 @throw ERROR When value of column is NULL.
-  
+
 @return Integer type of column value is returned.
 
  */
@@ -201,11 +201,11 @@ double  pgr_SPI_getFloat8(
         Column_info_t info);
 /*!
 @brief Function returns the string representation of the value of specified column.
- 
+
 @param[in]  tuple   input row to be examined.
 @param[in]  tupdesc input row description.
 @param[in]  info    contain column information.
-  
+
 @return Pointer of string is returned.
 
  */

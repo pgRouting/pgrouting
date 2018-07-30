@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
+#include <limits>
 
 #include "dijkstra/pgr_dijkstra.hpp"
 
@@ -59,7 +60,10 @@ pgr_dijkstra(
             targets.end());
 
     Pgr_dijkstra< G > fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(graph, sources, targets, only_cost, n_goals);
+    auto paths = fn_dijkstra.dijkstra(
+            graph,
+            sources, targets,
+            only_cost, n_goals);
 
     if (!normal) {
         for (auto &path : paths) {

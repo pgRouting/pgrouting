@@ -37,29 +37,12 @@ As part of the :ref:`dijkstra`
 
 .. rubric:: Families
 
-:ref:`astar`
-
-.. include:: aStar-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
-:ref:`bdAstar`
-
-.. include:: bdAstar-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
 :ref:`bdDijkstra`
 
 .. include:: bdDijkstra-family.rst
    :start-after: index from here
    :end-before: index to here
 
-:ref:`maxFlow`
-
-.. include:: flow-family.rst
-   :start-after: index from here
-   :end-before: index to here
 
 :ref:`withPoints`
 
@@ -69,17 +52,17 @@ As part of the :ref:`dijkstra`
 
 .. rubric:: categories
 
-:ref:`Cost`
+:doc:`cost-category`
 
 .. include:: cost-category.rst
-   :start-after: index from here
-   :end-before: index to here
+   :start-after: proposed index start
+   :end-before: proposed index end
 
 :ref:`CostMatrix`
 
 .. include:: costMatrix-category.rst
-   :start-after: index from here
-   :end-before: index to here
+   :start-after: proposed index start
+   :end-before: proposed index end
 
 :ref:`KSP`
 
@@ -90,11 +73,8 @@ As part of the :ref:`dijkstra`
 .. toctree::
     :hidden:
 
-    aStar-family
-    bdAstar-family
     bdDijkstra-family
     withPoints-family
-
     cost-category
     costMatrix-category
     KSP-category
@@ -166,7 +146,6 @@ Experimental Functions
   :hidden:
 
   contraction-family
-  flow-family
   components-family
   costFlow-family
   ChPP-family

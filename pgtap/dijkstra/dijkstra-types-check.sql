@@ -3,14 +3,10 @@
 
 SET client_min_messages TO WARNING;
 
-SELECT plan(46);
+SELECT plan(45);
 
 SELECT can(ARRAY['pgr_dijkstra']);
 
-SELECT todo_start('remove on version 3.0');
---V2.0
-SELECT hasnt_function('pgr_dijkstra', ARRAY['text','integer','integer','boolean','boolean'],'Remove old signature on version 3.0');
-SELECT todo_end();
 
 SELECT hasnt_function('pgr_dijkstra', ARRAY['text','bigint','integer','boolean','boolean']);
 SELECT hasnt_function('pgr_dijkstra', ARRAY['text','integer','bigint','boolean','boolean']);

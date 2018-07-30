@@ -47,6 +47,59 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
+.. rubric:: Proposed moved to official on pgRouting
+
+* aStar Family
+
+  * pgr_aStar(one to many)
+  * pgr_aStar(many to one)
+  * pgr_aStar(many to many)
+  * pgr_aStarCost(one to one)
+  * pgr_aStarCost(one to many)
+  * pgr_aStarCost(many to one)
+  * pgr_aStarCost(many to many)
+  * pgr_aStarCostMatrix(one to one)
+  * pgr_aStarCostMatrix(one to many)
+  * pgr_aStarCostMatrix(many to one)
+  * pgr_aStarCostMatrix(many to many)
+
+* bdAstar Family
+
+  * pgr_bdAstar(one to many)
+  * pgr_bdAstar(many to one)
+  * pgr_bdAstar(many to many)
+  * pgr_bdAstarCost(one to one)
+  * pgr_bdAstarCost(one to many)
+  * pgr_bdAstarCost(many to one)
+  * pgr_bdAstarCost(many to many)
+  * pgr_bdAstarCostMatrix(one to one)
+  * pgr_bdAstarCostMatrix(one to many)
+  * pgr_bdAstarCostMatrix(many to one)
+  * pgr_bdAstarCostMatrix(many to many)
+
+* Flow Family
+
+  * pgr_pushRelabel(one to one)
+  * pgr_pushRelabel(one to many)
+  * pgr_pushRelabel(many to one)
+  * pgr_pushRelabel(many to many)
+  * pgr_edmondsKarp(one to one)
+  * pgr_edmondsKarp(one to many)
+  * pgr_edmondsKarp(many to one)
+  * pgr_edmondsKarp(many to many)
+  * pgr_boykovKolmogorov (one to one)
+  * pgr_boykovKolmogorov (one to many)
+  * pgr_boykovKolmogorov (many to one)
+  * pgr_boykovKolmogorov (many to many)
+  * pgr_maxCardinalityMatching
+  * pgr_maxFlow
+  * pgr_edgeDisjointPaths(one to one)
+  * pgr_edgeDisjointPaths(one to many)
+  * pgr_edgeDisjointPaths(many to one)
+  * pgr_edgeDisjointPaths(many to many)
+
+
+
 .. rubric:: Moved to legacy
 
 * Experimental functions

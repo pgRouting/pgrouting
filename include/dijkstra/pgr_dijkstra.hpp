@@ -166,7 +166,9 @@ class Pgr_dijkstra {
 
          // adjust predecessors and distances vectors
          predecessors.resize(graph.num_vertices());
-         distances.resize(graph.num_vertices());
+         distances.resize(
+                 graph.num_vertices(),
+                 std::numeric_limits<double>::infinity());
 
 
          if (!graph.has_vertex(start_vertex)
@@ -205,7 +207,10 @@ class Pgr_dijkstra {
          clear();
 
          predecessors.resize(graph.num_vertices());
-         distances.resize(graph.num_vertices());
+         distances.resize(
+                 graph.num_vertices(),
+                 std::numeric_limits<double>::infinity());
+
 
          // get the graphs source and target
          if (!graph.has_vertex(start_vertex))
@@ -267,7 +272,10 @@ class Pgr_dijkstra {
          std::deque<Path> paths;
 
          for (const auto &start : start_vertex) {
-             auto r_paths = dijkstra(graph, start, end_vertex, only_cost, n_goals);
+             auto r_paths = dijkstra(
+                     graph,
+                     start, end_vertex,
+                     only_cost, n_goals);
              paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
          }
 
@@ -427,7 +435,9 @@ class Pgr_dijkstra {
          clear();
 
          predecessors.resize(graph.num_vertices());
-         distances.resize(graph.num_vertices());
+         distances.resize(
+                 graph.num_vertices(),
+                 std::numeric_limits<double>::infinity());
 
          // get source;
          if (!graph.has_vertex(start_vertex)) {
@@ -502,7 +512,7 @@ class Pgr_dijkstra {
          predecessors.resize(graph.num_vertices());
          distances.resize(
                  graph.num_vertices(),
-                 std::numeric_limits<double>::max());
+                 std::numeric_limits<double>::infinity());
 
          /*
           * Vector to store the different predessesors
@@ -660,6 +670,7 @@ class Pgr_dijkstra {
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
+                     .distance_inf(std::numeric_limits<double>::infinity())
                      .visitor(dijkstra_many_goal_visitor(targets, n_goals)));
          } catch(found_goals &) {
              return true;
@@ -750,6 +761,7 @@ class Pgr_dijkstra {
                   --m_n_goals;
                   if (m_n_goals == 0) throw found_goals();
               }
+
       private:
           std::set< V > m_goals;
           size_t m_n_goals;

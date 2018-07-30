@@ -7,28 +7,22 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _maxFlow:
-
 Flow - Family of functions
 ===================================
 
 .. index from here
 
-* :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
-* :ref:`pgr_BoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
-* :ref:`pgr_EdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
-* :ref:`pgr_PushRelabel` - Push and relabel algorithm with details of flow on edges.
+* :doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
+* :doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
+* :doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
+* :doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on edges.
 * Applications
 
-  * :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
-  * :ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph.
+  * :doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
+  * :doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph.
 
 .. index to here
 
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
 
 .. toctree::
     :hidden:
@@ -73,7 +67,7 @@ Flow Functions General Information
 
 
 
-Problem definition
+Adcanced Documentation
 ------------------------
 
 A flow network is a directed graph where each edge has a capacity and a flow.
@@ -118,9 +112,9 @@ Given:
 
 Then:
 
-     :math:`pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}`
+- :math:`pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}`
 
-     :math:`\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
+- :math:`\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
 
 Where:
 

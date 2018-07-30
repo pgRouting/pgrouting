@@ -9,7 +9,7 @@
 
 .. _pgr_maxFlow:
 
-pgr_maxFlow - Proposed
+pgr_maxFlow
 ============================================
 
 
@@ -25,10 +25,6 @@ Synopsis
    Boost Graph Inside
 
 .. Rubric:: Availability: 2.4.0
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
 
 
 .. rubric:: Characteristics
@@ -56,7 +52,7 @@ Signature Summary
 
 
 .. index::
-    single: maxFlow(One to One) - Proposed
+    single: maxFlow(One to One)
 
 One to One
 .....................................................................
@@ -76,7 +72,7 @@ Calculates the maximum flow from the `source` to the `target`.
 
 
 .. index::
-    single: maxFlow(One to Many) - Proposed
+    single: maxFlow(One to Many)
 
 One to Many
 .....................................................................
@@ -96,7 +92,7 @@ Calculates the maximum flow from the `source` to all of the `targets`.
 
 
 .. index::
-    single: maxFlow(Many to One) - Proposed
+    single: maxFlow(Many to One)
 
 Many to One
 .....................................................................
@@ -116,7 +112,7 @@ Calculates the maximum flow from all the `sources` to the `target`.
 
 
 .. index::
-    single: maxFlow(Many to Many) - Proposed
+    single: maxFlow(Many to Many)
 
 Many to Many
 .....................................................................
@@ -134,19 +130,11 @@ Calculates the maximum flow from all of the `sources` to all of the `targets`.
    :start-after: -- q4
    :end-before: -- q5
 
-Description of the Signatures
+
+Parameters
 --------------------------------------------------------
 
-
-.. include:: pgRouting-concepts.rst
-    :start-after: flow_edges_sql_start
-    :end-before: flow_edges_sql_end
-
-
 .. pgr_flow_parameters_start
-
-Description of the Parameters of the Flow Signatures
-...............................................................................
 
 ============== ================== ======== =================================================
 Column         Type               Default     Description
@@ -160,10 +148,19 @@ Column         Type               Default     Description
 
 .. pgr_flow_parameters_end
 
+Inner query
+--------------------------------------------------------
+
+edges_sql
+...........................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
 
 
-Description of the return value
-.....................................................................
+Return Columns
+--------------------------------------------------------
 
 ====================== =================================================
 Type                   Description
@@ -174,7 +171,7 @@ Type                   Description
 See Also
 --------
 
-* :ref:`maxFlow`
+* :doc:`flow-family`
 * http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 

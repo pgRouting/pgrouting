@@ -27,32 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_TYPES_PICKDELIVER_VEHICLE_T_H_
 #pragma once
 
-
+/* for int64_t */
 #ifdef __cplusplus
-
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
+#   include <cstdint>
+#else
+#   include <stdint.h>
 #endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
 
 /*
  * its with either (foo_x, foo_y) pairs for eucledian or with foo_node_id (for matrix)

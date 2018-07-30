@@ -6,8 +6,8 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2017 Maoguang Wang
+Mail: xjtumg1007@gmail.com
 
 
 ------
@@ -39,10 +39,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 /**
- *  postgres_connection.h 
+ *  postgres_connection.h
  *
  *  - should always be first in the C code
  */
+#include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
 

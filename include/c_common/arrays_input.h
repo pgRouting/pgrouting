@@ -29,9 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdint.h>
 
-// first file to include
 #ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
+#   if __GNUC__ > 5
+#       pragma GCC diagnostic ignored "-Wpedantic"
+#   else
+#       pragma GCC diagnostic ignored "-pedantic"
+#   endif
 #endif
 
 #include <postgres.h>

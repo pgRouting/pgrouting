@@ -50,7 +50,7 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Anthony Tasca, Virginia Vergara
+Virginia Vergara
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
 
@@ -62,8 +62,8 @@ These are corporate entities that have contributed developer time, hosting, or d
 - `Georepublic <https://georepublic.info/en/>`__
 - `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
 - `iMaptools <http://imaptools.com>`__
+- `Leopark <https://www.leopark.mx/>`__
 - `Paragon Corporation <http://www.paragoncorporation.com/>`_
-- `Versaterm Inc. <http://www.versaterm.com/>`__
 
 Contributors Past & Present:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

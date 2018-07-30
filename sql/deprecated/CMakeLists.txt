@@ -1,16 +1,5 @@
 
 SET(LOCAL_FILES
-    noUnderUtilities.sql
-    apsp_johnson_v2.2.sql
-    apsp_warshall_v2.2.sql
-    astarV2.0.sql
-    bd_astar_v2.sql
-    bdDijkstra-v2.sql
-    kdijkstra-V2.2.sql
-    pgrouting_conversion_tools.sql
-    pgrouting_dmatrix_tools.sql
-    pgr_vidsToDMatrix.sql
-    routing_dd.sql
     )
 
 foreach (f ${LOCAL_FILES})

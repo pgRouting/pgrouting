@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
 File: pgr_components_rt.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2017 Maoguang Wang
+Mail: xjtumg1007@gmail.com
 
 ------
 
@@ -28,31 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
+/* for int64_t */
 #ifdef __cplusplus
-
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
+#   include <cstdint>
+#else
+#   include <stdint.h>
 #endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
 
 
 typedef struct {

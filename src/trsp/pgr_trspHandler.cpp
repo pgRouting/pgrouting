@@ -46,7 +46,6 @@ Pgr_trspHandler::Pgr_trspHandler(
         const bool directed,
         const std::vector<Rule> &ruleList) :
     m_ruleTable() {
-
     initialize_restrictions(ruleList);
 
     m_min_id = renumber_edges(edges, edge_count);
@@ -55,7 +54,6 @@ Pgr_trspHandler::Pgr_trspHandler(
             edges,
             edge_count,
             directed);
-
 }
 
 
@@ -207,7 +205,7 @@ void Pgr_trspHandler::explore(
 
             if (totalCost < m_dCost[index].endCost) {
                 m_dCost[index].endCost = totalCost;
-                m_parent[edge.idx()].v_pos[RC_EDGE] = (isStart? C_EDGE : RC_EDGE);
+                m_parent[edge.idx()].v_pos[RC_EDGE] = isStart? C_EDGE : RC_EDGE;
                 m_parent[edge.idx()].e_idx[RC_EDGE] =
                     cur_edge.idx();
 
@@ -223,7 +221,7 @@ void Pgr_trspHandler::explore(
 
             if (totalCost < m_dCost[index].startCost) {
                 m_dCost[index].startCost = totalCost;
-                m_parent[edge.idx()].v_pos[C_EDGE] = (isStart? C_EDGE : RC_EDGE);
+                m_parent[edge.idx()].v_pos[C_EDGE] = isStart? C_EDGE : RC_EDGE;
                 m_parent[edge.idx()].e_idx[C_EDGE] = cur_edge.idx();
 
                 add_to_que(totalCost, edge.idx(), false);
@@ -437,7 +435,6 @@ void Pgr_trspHandler::construct_graph(
         pgr_edge_t* edges,
         const size_t edge_count,
         const bool directed) {
-
     for (size_t i = 0; i < edge_count; i++) {
         auto current_edge = &edges[i];
 

@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_EDGES_INPUT_H_
 #pragma once
 
+/* for size-t */
+#include <stddef.h>
 #include "c_types/pgr_costFlow_t.h"
 #include "c_types/pgr_flow_t.h"
 #include "c_types/pgr_basic_edge_t.h"
@@ -34,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 /*! @brief edges_sql without id parameter
- 
+
 ~~~~{.c}
 SELECT source, target, cost, [reverse_cost]
 FROM edge_table;

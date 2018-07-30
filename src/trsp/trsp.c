@@ -30,45 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 
 
-#if 0
-#include "utils/array.h"
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-
-#include "fmgr.h"
-#endif
-
 #include "c_types/trsp/trsp.h"
 
-#if 0
-PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-#endif
 PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
-#if 0
-#undef DEBUG
-// #define DEBUG 1
-
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, ...) do { ; } while (0)
-#endif
-#endif
-
-#if 0
-// The number of tuples to fetch from the SPI cursor at each iteration
-#define TUPLIMIT 1000
-
-// #ifdef PG_MODULE_MAGIC
-// PG_MODULE_MAGIC;
-// #endif
-#endif
 
 typedef struct edge_columns {
   int id;
@@ -86,16 +51,6 @@ typedef struct restrict_columns {
 
 
 
-#if 0
-static char *
-text2char(text *in) {
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
-#endif
 
 static int
 finish(int code, int ret) {
@@ -231,10 +186,6 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
       target_edge->reverse_cost =  DatumGetFloat8(binval);
     }
 
-  /*
-  PGR_DBG("edge: %i, %i, %i, %f, %f", target_edge->id, target_edge->source,
-    target_edge->target, target_edge->cost, target_edge->reverse_cost);
-  */
 }
 
 
@@ -367,7 +318,6 @@ static int compute_trsp(
 
       ntuples = SPI_processed;
 
-      // PGR_DBG("Reading edges: %i - %i", total_tuples, total_tuples+ntuples);
 
       total_tuples += ntuples;
 
@@ -387,14 +337,11 @@ static int compute_trsp(
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
           for (t = 0; t < ntuples; t++) {
-              // if (t%100 == 0) { PGR_DBG("    t: %i", t); }
               HeapTuple tuple = tuptable->vals[t];
               fetch_edge(&tuple, &tupdesc, &edge_columns,
                          &edges[total_tuples - ntuples + t]);
           }
-          // PGR_DBG("calling SPI_freetuptable");
           SPI_freetuptable(tuptable);
-          // PGR_DBG("back from SPI_freetuptable");
       } else {
           moredata = false;
       }
@@ -402,8 +349,6 @@ static int compute_trsp(
   SPI_cursor_close(SPIportal);
 
   // defining min and max vertex id
-
-  // DBG("Total %i edge tuples", total_tuples);
 
   for (z = 0; z < total_tuples; z++) {
     if (edges[z].source < v_min_id)
@@ -418,7 +363,6 @@ static int compute_trsp(
     if (edges[z].target > v_max_id)
       v_max_id = edges[z].target;
 
-    // DBG("%i <-> %i", v_min_id, v_max_id);
   }
 
   // ::::::::::::::::::::::::::::::::::::
@@ -441,8 +385,6 @@ static int compute_trsp(
     edges[z].source -= v_min_id;
     edges[z].target -= v_min_id;
     edges[z].cost = edges[z].cost;
-    // PGR_DBG("edgeID: %i SRc:%i - %i, cost: %f",
-    // edges[z].id,edges[z].source, edges[z].target,edges[z].cost);
   }
 
   PGR_DBG("Min vertex id: %ld , Max vid: %ld", v_min_id, v_max_id);
@@ -497,8 +439,6 @@ static int compute_trsp(
           ntuples = SPI_processed;
           total_restrict_tuples += ntuples;
 
-          // DBG("Reading Restrictions: %i", total_restrict_tuples);
-
           if (ntuples > 0) {
               if (!restricts)
                 restricts = palloc(total_restrict_tuples * sizeof(restrict_t));
@@ -528,49 +468,23 @@ static int compute_trsp(
       SPI_cursor_close(SPIportal);
   }
 
-#ifdef DEBUG_OFF
-    int t;
-    for (t=0; t < total_restrict_tuples; t++) {
-        PGR_DBG("restricts: %.2f, %i, %i, %i, %i, %i, %i",
-        restricts[t].to_cost, restricts[t].target_id, restricts[t].via[0],
-        restricts[t].via[1], restricts[t].via[2], restricts[t].via[3],
-        restricts[t].via[4]);
-    }
-#endif
-
   PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
 
-  if (dovertex) {
-      PGR_DBG("Calling trsp_node_wrapper\n");
-      /** hack always returns 0 -1 when
-      installed on EDB VC++ 64-bit without this **/
-      #if defined(__MINGW64__)
-        // elog(NOTICE,"Calling trsp_node_wrapper\n");
-      #endif
-      ret = trsp_node_wrapper(edges, total_tuples,
-                        restricts, total_restrict_tuples,
-                        start_id, end_id,
-                        directed, has_reverse_cost,
-                        path, path_count, &err_msg);
-  } else {
       PGR_DBG("Calling trsp_edge_wrapper\n");
       ret = trsp_edge_wrapper(edges, total_tuples,
                         restricts, total_restrict_tuples,
                         start_id, start_pos, end_id, end_pos,
                         directed, has_reverse_cost,
                         path, path_count, &err_msg);
-  }
 
   PGR_DBG("Message received from inside:");
   PGR_DBG("%s", err_msg);
 
-  // DBG("SIZE %i\n",*path_count);
 
   // ::::::::::::::::::::::::::::::::
   // :: restoring original vertex id
   // ::::::::::::::::::::::::::::::::
   for (z = 0; z < *path_count; z++) {
-    // PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
     if (z || (*path)[z].vertex_id != -1)
         (*path)[z].vertex_id += v_min_id;
   }
@@ -580,7 +494,6 @@ static int compute_trsp(
   PGR_DBG("*path_count = %ld\n", *path_count);
 
   if (ret < 0) {
-      // elog(ERROR, "Error computing path: %s", err_msg);
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
         errmsg("Error computing path: %s", err_msg)));
     }
@@ -589,152 +502,10 @@ static int compute_trsp(
 }
 
 
-#if 0
-PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-PGDLLEXPORT Datum
-turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS) {
-  FuncCallContext     *funcctx;
-#if 0
-  uint32_t             call_cntr;
-  int                  max_calls;
-#endif
-  TupleDesc            tuple_desc;
-  path_element_tt      *path;
-  char *               sql;
-
-
-  // stuff done only on the first call of the function
-  if (SRF_IS_FIRSTCALL()) {
-      MemoryContext   oldcontext;
-      size_t path_count = 0;
-
-      int ret = -1;
-      if (ret == -1) {}  // to avoid warning set but not used
-
-      int i;
-
-      // create a function context for cross-call persistence
-      funcctx = SRF_FIRSTCALL_INIT();
-
-      // switch to memory context appropriate for multiple function calls
-      oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-      // verify that the first 5 args are not NULL
-      for (i = 0; i < 5; i++)
-        if (PG_ARGISNULL(i)) {
-            elog(ERROR, "turn_restrict_shortest_path(): "
-            "Argument %i may not be NULL", i+1);
-        }
-
-      if (PG_ARGISNULL(5)) {
-        sql = NULL;
-      } else {
-        sql = text_to_cstring(PG_GETARG_TEXT_P(5));
-        if (strlen(sql) == 0)
-            sql = NULL;
-      }
-
-      PGR_DBG("Calling compute_trsp");
-
-
-      ret = compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
-                                   1,  // do vertex
-                                   PG_GETARG_INT32(1),
-                                   0.5,
-                                   PG_GETARG_INT32(2),
-                                   0.5,
-                                   PG_GETARG_BOOL(3),
-                                   PG_GETARG_BOOL(4),
-                                   sql,
-                                   &path, &path_count);
-#ifdef DEBUG
-      double total_cost = 0;
-      PGR_DBG("Ret is %i", ret);
-      if (ret >= 0) {
-          int i;
-          for (i = 0; i < path_count; i++) {
-         // PGR_DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-           // PGR_DBG("        edge_id    %i ", path[i].edge_id);
-             // PGR_DBG("        cost       %f ", path[i].cost);
-              total_cost += path[i].cost;
-            }
-        }
-        PGR_DBG("Total cost is: %f", total_cost);
-#endif
-
-      // total number of tuples to be returned
-#if 1
-#if PGSQL_VERSION > 95
-        funcctx->max_calls = path_count;
-#else
-        funcctx->max_calls = (uint32_t)path_count;
-#endif
-#else
-      funcctx->max_calls = path_count;
-#endif
-      funcctx->user_fctx = path;
-
-      funcctx->tuple_desc =
-        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
-
-      MemoryContextSwitchTo(oldcontext);
-    }
-
-  // stuff done on every call of the function
-  funcctx = SRF_PERCALL_SETUP();
-
-#if 0
-  call_cntr = funcctx->call_cntr;
-  max_calls = funcctx->max_calls;
-#endif
-  tuple_desc = funcctx->tuple_desc;
-  path = (path_element_tt*) funcctx->user_fctx;
-
-  if (funcctx->call_cntr < funcctx->max_calls) {
-      // do when there is more left to send
-      HeapTuple    tuple;
-      Datum        result;
-      Datum *values;
-      bool* nulls;
-
-      values = palloc(4 * sizeof(Datum));
-      nulls = palloc(4 * sizeof(char));
-
-      values[0] = Int32GetDatum(funcctx->call_cntr);
-      nulls[0] = false;
-      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
-      nulls[1] = false;
-      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
-      nulls[2] = false;
-      values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
-      nulls[3] = false;
-
-      tuple = heap_form_tuple(tuple_desc, values, nulls);
-
-      // make the tuple into a datum
-      result = HeapTupleGetDatum(tuple);
-
-      // clean up (this is not really necessary)
-      pfree(values);
-      pfree(nulls);
-
-      SRF_RETURN_NEXT(funcctx, result);
-  } else {  // do when there is no more left
-      PGR_DBG("Going to free path");
-      if (path) free(path);
-      SRF_RETURN_DONE(funcctx);
-    }
-}
-#endif
-
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
 PGDLLEXPORT Datum
 turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-#if 0
-  uint32_t             call_cntr;
-  uint32_t             max_calls;
-#endif
   TupleDesc            tuple_desc;
   path_element_tt      *path;
   char *               sql;
@@ -743,9 +514,6 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       size_t path_count = 0;
-#ifdef DEBUG
-      int ret = -1;
-#endif
       int i;
       double s_pos;
       double e_pos;
@@ -791,9 +559,6 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
 
       PGR_DBG("Calling compute_trsp");
 
-#ifdef DEBUG
-      ret =
-#endif
          compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
                                    0,  // sdo edge
                                    PG_GETARG_INT32(1),
@@ -804,35 +569,24 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
                                    PG_GETARG_BOOL(6),
                                    sql,
                                    &path, &path_count);
-#ifdef DEBUG
-      double total_cost = 0;
-      PGR_DBG("Ret is %i", ret);
-      if (ret >= 0) {
-          int i;
-          for (i = 0; i < path_count; i++) {
-         //     PGR_DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-           //   PGR_DBG("        edge_id    %i ", path[i].edge_id);
-             // PGR_DBG("        cost       %f ", path[i].cost);
-              total_cost+=path[i].cost;
-            }
-        }
-        PGR_DBG("Total cost is: %f", total_cost);
-#endif
 
       // total number of tuples to be returned
-#if 1
 #if PGSQL_VERSION > 95
         funcctx->max_calls = path_count;
 #else
         funcctx->max_calls = (uint32_t)path_count;
 #endif
-#else
-      funcctx->max_calls = path_count;
-#endif
-      funcctx->user_fctx = path;
 
-      funcctx->tuple_desc =
-        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
+        funcctx->user_fctx = path;
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE) {
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
+        }
+
+      funcctx->tuple_desc = tuple_desc;
 
       MemoryContextSwitchTo(oldcontext);
     }
@@ -840,10 +594,6 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
   // stuff done on every call of the function
   funcctx = SRF_PERCALL_SETUP();
 
-#if 0
-  call_cntr = funcctx->call_cntr;
-  max_calls = funcctx->max_calls;
-#endif
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_tt*) funcctx->user_fctx;
 

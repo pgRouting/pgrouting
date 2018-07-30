@@ -7,24 +7,30 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _Cost:
-
 Cost - Category
 ===============================================================================
 
 .. index from here
 
-* :ref:`pgr_aStarCost`
-* :ref:`pgr_bdAstarCost`
-* :ref:`pgr_bdDijkstraCost`
-* :ref:`pgr_dijkstraCost`
-* :ref:`pgr_withPointsCost`
+* :doc:`pgr_aStarCost`
+* :doc:`pgr_dijkstraCost`
 
 .. index to here
+
+.. rubric:: Proposed
 
 .. include:: proposed.rst
     :start-after: begin-warning
     :end-before: end-warning
+
+.. proposed index start
+
+* :doc:`pgr_bdAstarCost`
+* :doc:`pgr_bdDijkstraCost`
+* :doc:`pgr_withPointsCost`
+
+.. proposed index end
+
 
 General Information
 -------------------------------------------------------------------------------
