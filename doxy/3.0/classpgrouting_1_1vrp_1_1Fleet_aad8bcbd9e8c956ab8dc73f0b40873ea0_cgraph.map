@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Fleet::get_truck" name="pgrouting::vrp::Fleet::get_truck">
+<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html#ab95afb74f6165ef76d6caf7415b378c6" title="get_log " alt="" coords="192,5,363,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="198,71,357,98"/>
+<area shape="rect" id="node4" href="$classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47" title="Identifiers::size" alt="" coords="222,122,333,149"/>
+</map>

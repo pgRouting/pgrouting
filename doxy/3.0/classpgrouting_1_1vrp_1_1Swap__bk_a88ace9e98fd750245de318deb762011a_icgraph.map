@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Swap_bk::empty" name="pgrouting::vrp::Swap_bk::empty">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Optimize.html#ad1d48cf5916df017926e6d0d7b1fd987" title="pgrouting::vrp::Optimize\l::inter_swap" alt="" coords="405,5,567,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a59e81988357151065d6dd02c742a3d84" title="pgrouting::vrp::Optimize\l::swap_order" alt="" coords="196,35,357,76"/>
+</map>

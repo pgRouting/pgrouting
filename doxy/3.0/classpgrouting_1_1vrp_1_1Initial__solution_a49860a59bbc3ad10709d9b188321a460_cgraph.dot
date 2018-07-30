@@ -1,0 +1,27 @@
+digraph "pgrouting::vrp::Initial_solution::do_while_foo"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pgrouting::vrp::Initial\l_solution::do_while_foo",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Identifiers::empty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classIdentifiers.html#a0a1293343a6e3215a27676c74678866e"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Identifiers::front",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classIdentifiers.html#ac85cf83ff216a673caa44eeebf4078ef"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::Pgr_messages\l::get_log",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__messages.html#ab95afb74f6165ef76d6caf7415b378c6",tooltip="get_log "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="pgrouting::vrp::Fleet\l::get_truck",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8"];
+  Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Identifiers::size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classIdentifiers.html#a17cdab4d4ac56ffbea0c6bf1a19b0f47"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Identifiers::has",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classIdentifiers.html#a8478c7e81c288e05c0eb7988869d5997",tooltip="true ids() has element "];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="pgrouting::vrp::Initial\l_solution::invariant",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Initial__solution.html#aa1c085b868556edc9b6bab0ed9dda889"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="pgrouting::vrp::Solution\l::is_feasable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Solution.html#a371eb25be74472610011a18ac21c62fc"];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="pgrouting::vrp::Fleet\l::release_truck",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

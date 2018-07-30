@@ -1,0 +1,8 @@
+<map id="pgrouting::vrp::Vehicle::insert" name="pgrouting::vrp::Vehicle::insert">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a121239d471cfeefc7c40b23bf787a837" title="pgrouting::vrp::Vehicle\l::cost" alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#acc73992a7fe2a903bdaf35c5b3da0d09" title="pgrouting::vrp::Vehicle\l::cost_compare" alt="" coords="205,71,357,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6" title="pgrouting::Identifier::idx" alt="" coords="405,166,564,193"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af98de97049075d4db58f3e97dc9185aa" title="@ { " alt="" coords="205,188,357,229"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8" title="Invariant The path must: " alt="" coords="409,247,561,288"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0d79d716f770c845cfb2e811688fc350" title="Swap two nodes in the path. " alt="" coords="205,305,357,347"/>
+</map>

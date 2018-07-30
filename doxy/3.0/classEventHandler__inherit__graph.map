@@ -1,0 +1,4 @@
+<map id="EventHandler" name="EventHandler">
+<area shape="rect" id="node2" href="$classSIGINT__Handler.html" title="SIGINT_Handler" alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="$classSIGQUIT__Handler.html" title="SIGQUIT_Handler" alt="" coords="148,80,277,107"/>
+</map>

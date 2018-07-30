@@ -1,0 +1,16 @@
+digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/pgr_components_rt.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/c_types/pgr_components_rt.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/articulationPoints_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$articulationPoints__driver_8h.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/biconnectedComponents_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$biconnectedComponents__driver_8h.html"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/bridges_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$bridges__driver_8h.html"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/connectedComponents_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$connectedComponents__driver_8h.html"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/components\l/strongComponents_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$strongComponents__driver_8h.html"];
+}

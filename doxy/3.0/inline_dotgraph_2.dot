@@ -1,0 +1,14 @@
+
+graph G {
+graph [rankdir=LR];
+subgraph cluster0 {
+node [shape=point,height=0.2,style=filled,color=black];
+style=filled;
+color=lightgrey;
+a0; a1; a2;
+label = "rest of graph";
+}
+v [color=green];
+v -- a0;
+v -- a0;
+}

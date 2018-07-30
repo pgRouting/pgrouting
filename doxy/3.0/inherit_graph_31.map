@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classPgr__dijkstra_1_1dijkstra__distance__visitor.html" title="class for stopping when a distance/cost has being surpassed " alt="" coords="212,5,375,47"/>
+<area shape="rect" id="node3" href="$classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html" title="class for stopping when a distance/cost has being surpassed " alt="" coords="212,70,375,126"/>
+<area shape="rect" id="node4" href="$classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html" title="class for stopping when all targets are found " alt="" coords="205,149,381,191"/>
+<area shape="rect" id="node5" href="$classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html" title="class for stopping when 1 target is found " alt="" coords="211,215,376,256"/>
+</map>

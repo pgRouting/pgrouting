@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Vehicle::pop_back" name="pgrouting::vrp::Vehicle::pop_back">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ad1920dd6aed04b9381b9b2ec78dddc47" title="Erase node.id() " alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8" title="Invariant The path must: " alt="" coords="405,35,557,76"/>
+</map>

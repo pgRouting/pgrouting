@@ -1,0 +1,8 @@
+<map id="pgrouting::vrp::Tw_node::arrival_j_opens_i" name="pgrouting::vrp::Tw_node::arrival_j_opens_i">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ab5e20b48da4b3dfc53b6aa945d7e92e7" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="216,191,379,232"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a07176d58948ca42cec03baf24a1dd8e3" title="True when arrivalTime in the time window. " alt="" coords="697,163,825,204"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3203e380901c818a47a62a6df113892a" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="475,42,601,98"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a5f5fa98be2d17c9232813cf350f20e74" title="pgrouting::vrp::Tw\l_node::is_partially\l_waitTime_compatible_IJ" alt="" coords="453,122,623,178"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aea8358d87dde8ba8e719e7f96a99850a" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="441,253,635,295"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aaf8d97b788b38d5294a611e8f8192980" title="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ" alt="" coords="427,319,649,360"/>
+</map>

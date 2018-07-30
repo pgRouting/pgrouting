@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Dnode" name="pgrouting::vrp::Dnode">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Base__node.html" title="The Base_node class defines the operations that can be performed in a 2D node. " alt="" coords="5,13,180,39"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title="pgrouting::vrp::PD\l_problem" alt="" coords="205,5,333,47"/>
+</map>

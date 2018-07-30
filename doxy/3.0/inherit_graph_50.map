@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, T_V, T_E \&gt;" alt="" coords="5,129,200,170"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__componentsGraph.html" title="pgrouting::graph::Pgr\l_componentsGraph\&lt; G,\l T_V, T_E \&gt;" alt="" coords="259,5,420,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html" title="pgrouting::graph::Pgr\l_contractionGraph\&lt; G,\l T_V, T_E \&gt;" alt="" coords="262,85,417,141"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html" title="pgrouting::graph::Pgr\l_lineGraph\&lt; G, T_V, T_E \&gt;" alt="" coords="248,165,431,206"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html" title="pgrouting::graph::Pgr\l_lineGraphFull\&lt; G, T\l_V, T_E \&gt;" alt="" coords="268,229,411,285"/>
+</map>

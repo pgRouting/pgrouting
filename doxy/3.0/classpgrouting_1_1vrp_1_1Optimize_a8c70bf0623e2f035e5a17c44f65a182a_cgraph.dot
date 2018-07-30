@@ -1,0 +1,16 @@
+digraph "pgrouting::vrp::Optimize::inter_swap"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pgrouting::vrp::Optimize\l::inter_swap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pgrouting::vrp::Optimize\l::decrease_truck",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#aa287600aa1843dbaeec1b67934b102ef"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::vrp::Optimize\l::inter_swap",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#ad1d48cf5916df017926e6d0d7b1fd987"];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::vrp::Solution::tau",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Solution.html#a0646c3f46c2553bb17f57c34d2cb0611"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="pgrouting::vrp::Optimize\l::sort_by_size",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#a29de55e95d9d5b588e4691ed9dde085b"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

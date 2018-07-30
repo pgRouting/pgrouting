@@ -1,0 +1,15 @@
+digraph "pgrouting::vrp::Vehicle_pickDeliver::set_compatibles"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pgrouting::vrp::Vehicle\l_pickDeliver::set_compatibles",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pgrouting::vrp::Vehicle\l_pickDeliver::is_order\l_feasable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a295058a55941fda712442687710e0800"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::vrp::Vehicle\l_pickDeliver::orders",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a00be9b14d548b9bb959baf395fec7e62"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::vrp::PD\l_Orders::set_compatibles",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1PD__Orders.html#a45389632b30c241b8ad9d6d962b59ed0"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="pgrouting::vrp::Vehicle\l::speed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#abf9aa7c148625b9f7a4a29d7e8640ef3"];
+}

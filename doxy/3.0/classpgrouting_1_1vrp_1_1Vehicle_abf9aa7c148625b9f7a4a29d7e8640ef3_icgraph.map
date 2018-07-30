@@ -1,0 +1,10 @@
+<map id="pgrouting::vrp::Vehicle::speed" name="pgrouting::vrp::Vehicle::speed">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a37934771b6c2ed2644eec4e61a7cfe5a" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="228,5,380,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a045c3a9a58b87092413c650be2529d13" title="pgrouting::vrp::Vehicle\l::end_site" alt="" coords="228,71,380,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a25fa4725c5aefec021fae42463761476" title="Evaluate: Evaluate a path from the given position. " alt="" coords="228,136,380,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a25205f348a0a62cdb393d7d8dc5b4a04" title="pgrouting::vrp::Vehicle\l::getPosHighLimit" alt="" coords="228,201,380,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a33132adc9569cfe7b774673035d2c070" title="pgrouting::vrp::Vehicle\l::getPosLowLimit" alt="" coords="228,267,380,308"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a6b87e5fcd837821ae04884a9d767efb7" title="pgrouting::vrp::Vehicle\l::is_phony" alt="" coords="228,332,380,373"/>
+<area shape="rect" id="node8" href="$namespacepgrouting_1_1vrp.html#ad52d4d4bcd5667c19bd9c78f72dde8c7" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="218,398,390,425"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a0c933b7eb549491fc0a6e40a599e3ad8" title="pgrouting::vrp::Vehicle\l_pickDeliver::set_compatibles" alt="" coords="205,449,403,491"/>
+</map>

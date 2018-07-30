@@ -1,0 +1,11 @@
+<map id="pgrouting::vrp::Vehicle::capacity" name="pgrouting::vrp::Vehicle::capacity">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a37934771b6c2ed2644eec4e61a7cfe5a" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="432,35,584,76"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aeec21aba283e23f4bf2a355f4f7c2764" title="@ { " alt="" coords="432,156,584,197"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a25205f348a0a62cdb393d7d8dc5b4a04" title="pgrouting::vrp::Vehicle\l::getPosHighLimit" alt="" coords="432,257,584,299"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a33132adc9569cfe7b774673035d2c070" title="pgrouting::vrp::Vehicle\l::getPosLowLimit" alt="" coords="432,385,584,427"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a43b1afad2e0d74af5b5d79dbd6829446" title="pgrouting::vrp::Vehicle\l::insert_less_travel_time" alt="" coords="213,5,377,47"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a80a01b40f29f6c46466f5c89bdc2c136" title="@ { " alt="" coords="219,291,371,332"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0f40da226509de18ccac4c6b982038af" title="pgrouting::vrp::Vehicle\l::position_limits" alt="" coords="219,356,371,397"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0d79d716f770c845cfb2e811688fc350" title="Swap two nodes in the path. " alt="" coords="219,123,371,164"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a8c27c36d047770d21cbd575ca4e2057d" title="pgrouting::vrp::Vehicle::tau" alt="" coords="205,473,384,499"/>
+</map>

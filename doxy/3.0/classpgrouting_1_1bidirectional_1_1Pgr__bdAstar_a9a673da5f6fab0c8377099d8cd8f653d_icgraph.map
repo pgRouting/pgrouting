@@ -1,0 +1,5 @@
+<map id="pgrouting::bidirectional::Pgr_bdAstar::heuristic" name="pgrouting::bidirectional::Pgr_bdAstar::heuristic">
+<area shape="rect" id="node2" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a0b3f52c63c12f661299b548ae8f6de9d" title="pgrouting::bidirectional\l::Pgr_bdAstar::explore\l_backward" alt="" coords="226,5,378,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ad5fe61d93d747314b9584134478db019" title="pgrouting::bidirectional\l::Pgr_bdAstar::explore\l_forward" alt="" coords="226,85,378,141"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ab4a598217cd6f47403c6905d2793436a" title="pgrouting::bidirectional\l::Pgr_bdAstar::pgr_bdAstar" alt="" coords="212,165,392,206"/>
+</map>

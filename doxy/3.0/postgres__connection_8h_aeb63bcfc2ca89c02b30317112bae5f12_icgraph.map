@@ -1,0 +1,12 @@
+<map id="pgr_SPI_prepare" name="pgr_SPI_prepare">
+<area shape="rect" id="node2" href="$edges__input_8c.html#ab0db65aa6de02562c019ab29c2d46db7" title="get_edges_5_columns" alt="" coords="185,5,337,32"/>
+<area shape="rect" id="node3" href="$edges__input_8c.html#a7212342c0a0fc0ce4cfce8bfecffc551" title="get_edges_9_columns" alt="" coords="185,56,337,83"/>
+<area shape="rect" id="node4" href="$edges__input_8c.html#ac7601ed1a32c26cfadce2793a618214e" title="get_edges_basic" alt="" coords="201,107,321,133"/>
+<area shape="rect" id="node5" href="$edges__input_8c.html#ab9561bc873997fb2d1766e3f18c91875" title="get_edges_flow" alt="" coords="205,157,318,184"/>
+<area shape="rect" id="node6" href="$coordinates__input_8h.html#a54deb1af794ff39f4589ca73b610b6d5" title="bigint id, float x, float y, " alt="" coords="192,208,331,235"/>
+<area shape="rect" id="node7" href="$matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5" title="bigint start_vid, bigint end_vid, float agg_cost, " alt="" coords="190,259,333,285"/>
+<area shape="rect" id="node8" href="$orders__input_8c.html#ab3262397da4122ba16c4a04490c075d2" title="pgr_get_pd_orders_general" alt="" coords="172,309,351,336"/>
+<area shape="rect" id="node9" href="$points__input_8h.html#ac232d3ed3b477a88ecbb17992c083aa8" title="pgr_get_points " alt="" coords="208,360,315,387"/>
+<area shape="rect" id="node10" href="$restrictions__input_8h.html#ad63bede1afc0fe03735388c928c104fd" title="pgr_get_restrictions" alt="" coords="193,411,329,437"/>
+<area shape="rect" id="node11" href="$vehicles__input_8c.html#af860b69fdf7c334dd9d9f37f60a33355" title="pgr_get_vehicles_general" alt="" coords="177,461,346,488"/>
+</map>

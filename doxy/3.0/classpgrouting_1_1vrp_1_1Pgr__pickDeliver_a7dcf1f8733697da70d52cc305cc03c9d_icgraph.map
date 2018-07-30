@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Pgr_pickDeliver::get_postgres_result" name="pgrouting::vrp::Pgr_pickDeliver::get_postgres_result">
+<area shape="rect" id="node2" href="$pickDeliver__driver_8h.html#a06ef15d03d851e390ca5c6572fc92091" title="do_pgr_pickDeliver" alt="" coords="259,5,393,32"/>
+<area shape="rect" id="node3" href="$pickDeliverEuclidean__driver_8h.html#a53635cc50e8e7d8107be4bbee505b3f7" title="do_pgr_pickDeliverEuclidean" alt="" coords="231,56,421,83"/>
+</map>

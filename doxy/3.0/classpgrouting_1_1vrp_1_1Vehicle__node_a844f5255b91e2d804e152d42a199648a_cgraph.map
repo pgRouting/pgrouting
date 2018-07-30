@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Vehicle_node::arrival_i_arrives_j" name="pgrouting::vrp::Vehicle_node::arrival_i_arrives_j">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a1471454a7717cc13ec4e18250348ae9d" title="Truck&#39;s arrival_time to this node. " alt="" coords="220,5,372,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a5d4391a08d6d4f59bf282ea12735224e" title="Returns the service time for this node. " alt="" coords="227,71,365,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a5c38c9da463ed2d27d21d18fb99efcd2" title="time = distance / speed. " alt="" coords="223,136,369,177"/>
+</map>

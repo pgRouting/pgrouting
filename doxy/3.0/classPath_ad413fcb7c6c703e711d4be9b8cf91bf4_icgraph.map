@@ -1,0 +1,10 @@
+<map id="Path::empty" name="Path::empty">
+<area shape="rect" id="node2" href="$classpgrouting_1_1Pg__points__graph.html#a1daf3e5eb10e11a86029ba839cb3ec64" title="pgrouting::Pg_points\l_graph::adjust_pids" alt="" coords="169,5,311,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="157,71,323,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Pg__points__graph.html#a7fa7df5b7e6aa95d4813b06bb5aa435a" title="pgrouting::Pg_points\l_graph::eliminate_details_dd" alt="" coords="147,136,333,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html#ab1e74052fcc8f94169073d3cbde15bd1" title="Performs the first Dijkstra of the algorithm. " alt="" coords="165,201,315,243"/>
+<area shape="rect" id="node6" href="$classPath.html#adf67930d9eaea5c23c9a5262fc846a73" title="Path::isEqual" alt="" coords="190,267,290,294"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath_1_1Myvisitor.html#a11029293a074afb421dbd00f59de9300" title="pgrouting::yen::Pgr\l_turnRestrictedPath\l::Myvisitor::on_insert\l_first_solution" alt="" coords="168,319,312,389"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath_1_1Myvisitor.html#a5521025e1fe240a8281ffadf3f1d2b2c" title="pgrouting::yen::Pgr\l_turnRestrictedPath\l::Myvisitor::on_insert\l_to_heap" alt="" coords="168,413,312,484"/>
+<area shape="rect" id="node9" href="$namespacepgRouting.html#ab0332a7731ec5fe2696668fd206fc3a6" title="pgRouting::pgr_dijkstraVia" alt="" coords="153,509,327,535"/>
+</map>

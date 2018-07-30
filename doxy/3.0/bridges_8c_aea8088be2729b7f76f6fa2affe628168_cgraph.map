@@ -1,0 +1,8 @@
+<map id="process" name="process">
+<area shape="rect" id="node2" href="$bridges__driver_8cpp.html#a54edc68b39cf4ff4c4bb2f33caa041e6" title="do_pgr_bridges" alt="" coords="127,5,238,32"/>
+<area shape="rect" id="node3" href="$edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76" title="basic edge_sql " alt="" coords="129,56,236,83"/>
+<area shape="rect" id="node4" href="$e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2" title="notice &amp; error " alt="" coords="122,107,243,133"/>
+<area shape="rect" id="node5" href="$postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64" title="pgr_SPI_connect" alt="" coords="121,157,244,184"/>
+<area shape="rect" id="node6" href="$postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f" title="pgr_SPI_finish" alt="" coords="129,208,236,235"/>
+<area shape="rect" id="node7" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="143,259,222,285"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Optimize::save_if_best" name="pgrouting::vrp::Optimize::save_if_best">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Solution.html#a207a641b1f0404bbe1a1061024b303b7" title="pgrouting::vrp::Solution\l::cost_str" alt="" coords="445,26,601,67"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Solution.html#a2bda1f2451fe1c361b76d1ee9a1ba732" title="pgrouting::vrp::Solution\l::duration" alt="" coords="228,26,384,67"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Solution.html#a0646c3f46c2553bb17f57c34d2cb0611" title="pgrouting::vrp::Solution::tau" alt="" coords="215,92,397,119"/>
+</map>

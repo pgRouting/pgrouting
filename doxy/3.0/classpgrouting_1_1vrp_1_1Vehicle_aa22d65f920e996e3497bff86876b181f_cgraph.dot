@@ -1,0 +1,22 @@
+digraph "pgrouting::vrp::Vehicle::insert"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pgrouting::vrp::Vehicle\l::insert",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pgrouting::vrp::Vehicle\l::cost",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a121239d471cfeefc7c40b23bf787a837"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::vrp::Vehicle\l::cost_compare",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#acc73992a7fe2a903bdaf35c5b3da0d09"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::Identifier::idx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Identifier.html#a8a62909e1ef823d91e630c53132c14e6"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="pgrouting::vrp::Vehicle\l::insert",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#af98de97049075d4db58f3e97dc9185aa",tooltip="@ { "];
+  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="pgrouting::vrp::Vehicle\l::invariant",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8",tooltip="Invariant The path must: "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="pgrouting::vrp::Vehicle\l::swap",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a0d79d716f770c845cfb2e811688fc350",tooltip="Swap two nodes in the path. "];
+  Node7 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

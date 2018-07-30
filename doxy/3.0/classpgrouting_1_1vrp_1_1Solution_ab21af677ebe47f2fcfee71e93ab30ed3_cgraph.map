@@ -1,0 +1,13 @@
+<map id="pgrouting::vrp::Solution::operator=" name="pgrouting::vrp::Solution::operator=">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Solution.html#a207a641b1f0404bbe1a1061024b303b7" title="pgrouting::vrp::Solution\l::cost_str" alt="" coords="440,179,596,221"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Solution.html#a42b1ebb630efe2ef004521e7a10a400f" title="pgrouting::vrp::Solution\l::cvTot" alt="" coords="223,49,379,90"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Solution.html#a2bda1f2451fe1c361b76d1ee9a1ba732" title="pgrouting::vrp::Solution\l::duration" alt="" coords="223,114,379,155"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Solution.html#a371eb25be74472610011a18ac21c62fc" title="pgrouting::vrp::Solution\l::is_feasable" alt="" coords="223,179,379,221"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Solution.html#a15fee2726b63f1fac8ed8f759e0e1b64" title="pgrouting::vrp::Solution\l::operator\&lt;" alt="" coords="223,245,379,286"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Solution.html#aeee2388e51cb0460bcbf8637f97d2aec" title="pgrouting::vrp::Solution\l::sort_by_id" alt="" coords="223,310,379,351"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Solution.html#a0646c3f46c2553bb17f57c34d2cb0611" title="pgrouting::vrp::Solution::tau" alt="" coords="209,376,392,403"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Solution.html#a727fb92ce20cd84bb852a75707cd7eca" title="pgrouting::vrp::Solution\l::total_service_time" alt="" coords="223,427,379,469"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Solution.html#a28dcd2a29635b96fa63478f3686ca0ab" title="pgrouting::vrp::Solution\l::total_travel_time" alt="" coords="223,493,379,534"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1Solution.html#ab6eaa4dbe06708054c4d27a46e3b2fbc" title="pgrouting::vrp::Solution\l::twvTot" alt="" coords="223,558,379,599"/>
+<area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1Solution.html#ac05b7458daf5673c21ecd5f0ea057ca3" title="pgrouting::vrp::Solution\l::wait_time" alt="" coords="223,623,379,665"/>
+</map>

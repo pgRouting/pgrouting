@@ -1,0 +1,7 @@
+<map id="pgrouting::vrp::Vehicle_node::has_cv" name="pgrouting::vrp::Vehicle_node::has_cv">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a844f5255b91e2d804e152d42a199648a" title="@ { " alt="" coords="205,5,372,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="213,71,365,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8849b4f343980675cde9e63d686590d0" title="@ { " alt="" coords="420,100,547,141"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aec14d55e21b2be5f18d2f29d3cdf78de" title="is_end " alt="" coords="225,188,352,229"/>
+<area shape="rect" id="node6" href="$pgr__tsp_8cpp.html#ae0eace0f5ad927638e3f80c3efb3411e" title="pred" alt="" coords="265,254,312,281"/>
+</map>

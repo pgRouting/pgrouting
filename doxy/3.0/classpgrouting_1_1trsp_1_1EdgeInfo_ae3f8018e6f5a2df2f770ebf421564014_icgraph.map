@@ -1,0 +1,4 @@
+<map id="pgrouting::trsp::EdgeInfo::connect_endEdge" name="pgrouting::trsp::EdgeInfo::connect_endEdge">
+<area shape="rect" id="node2" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a125a7eac894d46e06b83d574f6b3bdc2" title="pgrouting::trsp::Pgr\l_trspHandler::connectEndEdge" alt="" coords="221,5,424,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#ad9cb3be3a38069b030ddee9255b42069" title="pgrouting::trsp::Pgr\l_trspHandler::connectStartEdge" alt="" coords="219,71,427,112"/>
+</map>

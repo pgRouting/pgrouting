@@ -1,0 +1,23 @@
+digraph "pgrouting::vrp::Vehicle::speed"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pgrouting::vrp::Vehicle\l::speed",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pgrouting::vrp::Vehicle\l::deltaTime",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a37934771b6c2ed2644eec4e61a7cfe5a"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::vrp::Vehicle\l::end_site",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a045c3a9a58b87092413c650be2529d13"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::vrp::Vehicle\l::evaluate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a25fa4725c5aefec021fae42463761476",tooltip="Evaluate: Evaluate a path from the given position. "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="pgrouting::vrp::Vehicle\l::getPosHighLimit",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a25205f348a0a62cdb393d7d8dc5b4a04"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="pgrouting::vrp::Vehicle\l::getPosLowLimit",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a33132adc9569cfe7b774673035d2c070"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="pgrouting::vrp::Vehicle\l::is_phony",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a6b87e5fcd837821ae04884a9d767efb7"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="pgrouting::vrp::operator\<\<",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting_1_1vrp.html#ad52d4d4bcd5667c19bd9c78f72dde8c7"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="pgrouting::vrp::Vehicle\l_pickDeliver::set_compatibles",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a0c933b7eb549491fc0a6e40a599e3ad8"];
+}

@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::PD_Orders::add_order" name="pgrouting::vrp::PD_Orders::add_order">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a87ba9f138cb87373726d87a88a3f264b" title="pgrouting::vrp::Pgr\l_pickDeliver::add_base_node" alt="" coords="187,5,380,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a29ac4c9f908dc5a106f360e97660b6d1" title="pgrouting::vrp::Pgr\l_pickDeliver::add_node" alt="" coords="204,71,363,112"/>
+</map>

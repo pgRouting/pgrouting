@@ -1,0 +1,5 @@
+<map id="pgrouting::graph::PgrFlowGraph::PgrFlowGraph" name="pgrouting::graph::PgrFlowGraph::PgrFlowGraph">
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5910494389846e0c9c5892180d4cc9dd" title="pgrouting::graph::PgrFlow\lGraph::add_vertices" alt="" coords="226,5,397,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a1205cab14888698d33ef2119f9df058a" title="pgrouting::graph::PgrFlow\lGraph::insert_edges" alt="" coords="226,71,397,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a65541cac3e38500f1b052730c513cbfb" title="pgrouting::graph::PgrFlow\lGraph::insert_edges_push\l_relabel" alt="" coords="224,135,399,191"/>
+</map>

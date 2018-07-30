@@ -1,0 +1,4 @@
+<map id="pgrouting::graph::PgrFlowGraph::add_vertices" name="pgrouting::graph::PgrFlowGraph::add_vertices">
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a6d9fcc65f99c73ac788f61ea0219e9f2" title="pgrouting::graph::PgrFlow\lGraph::set_supersink" alt="" coords="224,5,395,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#af8575d1d61fb2bbbd0f1b9255e20309c" title="pgrouting::graph::PgrFlow\lGraph::set_supersource" alt="" coords="224,71,395,112"/>
+</map>

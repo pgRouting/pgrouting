@@ -1,0 +1,18 @@
+<map id="do_pgr_withPoints" name="do_pgr_withPoints">
+<area shape="rect" id="node2" href="$basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0" title="collapse_paths" alt="" coords="217,5,327,32"/>
+<area shape="rect" id="node3" href="$basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="224,56,320,83"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="189,158,355,199"/>
+<area shape="rect" id="node5" href="$classPath.html#ac7035439d26c9e76a20ca1a06541923e" title="Path::start_id" alt="" coords="409,136,509,163"/>
+<area shape="rect" id="node6" href="$classPath.html#af813241de9d44cf689932d9166147cf0" title="Path::end_id" alt="" coords="412,205,507,232"/>
+<area shape="rect" id="node7" href="$namespacepgrouting.html#a7f6c592f35e628f82429127580ed29fb" title="pgrouting::extract\l_vertices" alt="" coords="211,275,333,317"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1Pgr__messages.html#a8619f0b2a947f14ef8e5528712f4c0fb" title="get_error " alt="" coords="187,341,357,382"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1Pgr__messages.html#ab95afb74f6165ef76d6caf7415b378c6" title="get_log " alt="" coords="187,406,357,447"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1Pgr__messages.html#a6645d774cbe015af7efffb814dbf81e5" title="get_error " alt="" coords="187,471,357,513"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="183,537,361,578"/>
+<area shape="rect" id="node12" href="$classpgrouting_1_1Pg__points__graph.html#acda09e8f54404caf64d2d00d574de81c" title="pgrouting::Pg_points\l_graph::new_edges" alt="" coords="201,602,343,643"/>
+<area shape="rect" id="node13" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="422,744,497,771"/>
+<area shape="rect" id="node14" href="$withPoints__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa" title="pgr_dijkstra" alt="" coords="227,719,317,745"/>
+<area shape="rect" id="node15" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="237,769,307,796"/>
+<area shape="rect" id="node16" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="236,820,308,847"/>
+<area shape="rect" id="node17" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="195,871,349,913"/>
+</map>

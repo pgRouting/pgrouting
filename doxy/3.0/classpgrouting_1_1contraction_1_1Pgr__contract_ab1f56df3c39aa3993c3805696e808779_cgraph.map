@@ -1,0 +1,5 @@
+<map id="pgrouting::contraction::Pgr_contract::perform_linear" name="pgrouting::contraction::Pgr_contract::perform_linear">
+<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a1bae6a3ec231a3048e243ff087997853" title="pgrouting::contraction\l::Pgr_linear::calculateVertices" alt="" coords="221,5,417,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#aef91793bf9d9b4e12b2b648268f64545" title="pgrouting::contraction\l::Pgr_linear::doContraction" alt="" coords="230,71,407,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#aca168a86598cacddb73e51b7802c856a" title="pgrouting::contraction\l::Pgr_linear::setForbiddenVertices" alt="" coords="209,136,428,177"/>
+</map>

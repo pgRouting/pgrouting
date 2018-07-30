@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Vehicle_node::feasible" name="pgrouting::vrp::Vehicle_node::feasible">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#aa0a1e0f38690886132d58a5eb924cb81" title="@ { " alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a1bf6691edaa8813f83a9b6bf6e1f517d" title="True when not violation. " alt="" coords="205,71,357,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a2d3598803ab92c22cefe9e05cacda906" title="True when at this node does not violate time windows. " alt="" coords="205,136,357,177"/>
+</map>

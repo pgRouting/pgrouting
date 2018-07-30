@@ -1,0 +1,14 @@
+<map id="pgrouting::Identifier::id" name="pgrouting::Identifier::id">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Dnode.html#ad84e5cf02cc247f4fbbea1873ea36dbf" title="pgrouting::vrp::Dnode\l::distance" alt="" coords="220,5,367,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a735015a1c30c5a1680d2ab303f1aa4c9" title="pgrouting::vrp::Vehicle\l::get_postgres_result" alt="" coords="431,317,583,359"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a6b87e5fcd837821ae04884a9d767efb7" title="pgrouting::vrp::Vehicle\l::is_phony" alt="" coords="217,123,369,164"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Optimize.html#a18e362ade6f898d3b1cbba0505e5abcf" title="pgrouting::vrp::Optimize\l::move_reduce_cost" alt="" coords="213,188,374,229"/>
+<area shape="rect" id="node6" href="$namespacepgrouting_1_1vrp.html#ac16d581d93de7b0c834f5236f3302e5b" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="207,254,379,281"/>
+<area shape="rect" id="node7" href="$namespacepgrouting.html#a1c8b6dbb6aca870e491d897cf57d89c6" title="pgrouting::operator\&lt;\&lt;" alt="" coords="220,305,367,331"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Base__node.html#af1ab36460d3bffbe0928b94f5f1be2aa" title="pgrouting::vrp::Base\l_node::operator==" alt="" coords="224,356,363,397"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Node.html#a7f3f7d12be628dcebe49a4905b80b7f9" title="pgrouting::vrp::Node\l::operator==" alt="" coords="223,421,363,463"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Node.html#a50ab66bd3b6d40a453e46c118167f293" title="pgrouting::vrp::Node\l::print" alt="" coords="223,487,363,528"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1Base__node.html#a5b0286a545a05c3c4f67f633a8897321" title="pgrouting::vrp::Base\l_node::print" alt="" coords="224,552,363,593"/>
+<area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a8c27c36d047770d21cbd575ca4e2057d" title="pgrouting::vrp::Vehicle::tau" alt="" coords="204,618,383,645"/>
+<area shape="rect" id="node13" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784" title="pgrouting::vrp::Vehicle\l::Vehicle" alt="" coords="431,636,583,677"/>
+</map>

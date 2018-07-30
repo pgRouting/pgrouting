@@ -1,0 +1,15 @@
+digraph "pgrouting::algorithms::Pgr_astar::astar"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pgrouting::algorithms\l::Pgr_astar::astar",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pgrouting::algorithms\l::Pgr_astar::astar_1\l_to_many",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1algorithms_1_1Pgr__astar.html#a76f171bc1f300a5682242449a61c455d",tooltip="Call to astar 1 source to many targets. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::algorithms\l::Pgr_astar::clear",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1algorithms_1_1Pgr__astar.html#afbf710a4c295a0befdd7c505303a713a"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Path::end_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#af813241de9d44cf689932d9166147cf0"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="pgrouting::algorithms\l::Pgr_astar::get_paths",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1algorithms_1_1Pgr__astar.html#a89fb73b1c6f774208f39e84574bef341"];
+}

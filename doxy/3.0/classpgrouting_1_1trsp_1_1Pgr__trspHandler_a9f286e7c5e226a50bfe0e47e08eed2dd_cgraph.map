@@ -1,0 +1,8 @@
+<map id="pgrouting::trsp::Pgr_trspHandler::initialize_que" name="pgrouting::trsp::Pgr_trspHandler::initialize_que">
+<area shape="rect" id="node2" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a08f8116952de134836abdc50a73e8d58" title="pgrouting::trsp::Pgr\l_trspHandler::add_to_que" alt="" coords="242,5,413,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#ad7fd842963acdd914da270e22e401b4e" title="pgrouting::trsp::EdgeInfo\l::cost" alt="" coords="245,71,410,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a9a20b8f019e4abaab929c847197ba2b2" title="pgrouting::trsp::EdgeInfo\l::endNode" alt="" coords="245,136,410,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#abaf90473661c155e5ef59bb95e61b170" title="pgrouting::trsp::EdgeInfo::idx" alt="" coords="232,202,423,229"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a712ced190209eb79b1fa57f5b4d988dc" title="pgrouting::trsp::EdgeInfo\l::r_cost" alt="" coords="245,253,410,295"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#a3b31168c37b69ee3659df693194d7791" title="pgrouting::trsp::EdgeInfo\l::startNode" alt="" coords="245,319,410,360"/>
+</map>

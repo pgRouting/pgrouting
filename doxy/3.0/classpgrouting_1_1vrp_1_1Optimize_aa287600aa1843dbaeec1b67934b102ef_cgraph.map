@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Optimize::decrease_truck" name="pgrouting::vrp::Optimize::decrease_truck">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Optimize.html#a4dcb408130c2ed4164b8d754d11ad44b" title="pgrouting::vrp::Optimize\l::delete_empty_truck" alt="" coords="215,5,376,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f" title="pgrouting::vrp::Optimize\l::save_if_best" alt="" coords="424,35,585,76"/>
+</map>

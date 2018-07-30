@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Optimize::move_order" name="pgrouting::vrp::Optimize::move_order">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="215,5,367,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a86b06781ecdb38ddaea6547f58696fac" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="415,64,573,105"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="215,123,367,164"/>
+</map>

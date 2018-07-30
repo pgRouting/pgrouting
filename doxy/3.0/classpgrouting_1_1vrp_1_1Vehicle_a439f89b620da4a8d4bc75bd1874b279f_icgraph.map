@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Vehicle::twvTot" name="pgrouting::vrp::Vehicle::twvTot">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a121239d471cfeefc7c40b23bf787a837" title="pgrouting::vrp::Vehicle\l::cost" alt="" coords="219,5,371,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#abd3797dabefe02f778bb100bbafab566" title="pgrouting::vrp::Vehicle\l::has_twv" alt="" coords="219,71,371,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a8c27c36d047770d21cbd575ca4e2057d" title="pgrouting::vrp::Vehicle::tau" alt="" coords="205,137,384,163"/>
+</map>

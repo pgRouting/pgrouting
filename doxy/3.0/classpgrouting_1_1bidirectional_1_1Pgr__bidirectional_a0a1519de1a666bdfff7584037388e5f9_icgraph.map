@@ -1,0 +1,4 @@
+<map id="pgrouting::bidirectional::Pgr_bidirectional::bidirectional" name="pgrouting::bidirectional::Pgr_bidirectional::bidirectional">
+<area shape="rect" id="node2" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ab4a598217cd6f47403c6905d2793436a" title="pgrouting::bidirectional\l::Pgr_bdAstar::pgr_bdAstar" alt="" coords="270,5,450,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a5ec4cc07272c3b59d5adaa4b788600ef" title="pgrouting::bidirectional\l::Pgr_bdDijkstra::pgr_bdDijkstra" alt="" coords="256,71,464,112"/>
+</map>
