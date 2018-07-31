@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: pgr_flow_t.h
+File: pgr_costFlow_t.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2018 Maoguang Wang
+Mail: xjtumg1007@gmail.com
 
 ------
 
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_FLOW_T_H_
-#define INCLUDE_C_TYPES_PGR_FLOW_T_H_
+#ifndef INCLUDE_C_TYPES_PGR_COSTFLOW_T_H_
+#define INCLUDE_C_TYPES_PGR_COSTFLOW_T_H_
 #pragma once
 
 /* for int64_t */
@@ -34,14 +34,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
+
 typedef struct {
-  int64_t edge;
+  int64_t edge_id;
   int64_t source;
   int64_t target;
-  int64_t flow;
-  int64_t residual_capacity;
+  int64_t capacity;
+  int64_t reverse_capacity;
   double cost;
-  double agg_cost;
-} pgr_flow_t;
+  double reverse_cost;
+} pgr_costFlow_t;
 
-#endif  // INCLUDE_C_TYPES_PGR_FLOW_T_H_
+#endif  // INCLUDE_C_TYPES_PGR_COSTFLOW_T_H_

@@ -1,8 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: pgr_flow_t.h
+File: pgr_directedChPP_Cost.sql
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2018 Maoguang Wang
+Mail: xjtumg1007@gmail.com
 
 ------
 
@@ -21,27 +26,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_FLOW_T_H_
-#define INCLUDE_C_TYPES_PGR_FLOW_T_H_
-#pragma once
-
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
-#endif
-
-typedef struct {
-  int64_t edge;
-  int64_t source;
-  int64_t target;
-  int64_t flow;
-  int64_t residual_capacity;
-  double cost;
-  double agg_cost;
-} pgr_flow_t;
-
-#endif  // INCLUDE_C_TYPES_PGR_FLOW_T_H_
+CREATE OR REPLACE FUNCTION pgr_directedChPP_Cost(
+    edges_sql TEXT)                 -- edges_sql
+  RETURNS FLOAT AS
+  $BODY$
+        SELECT cost
+        FROM _pgr_directedChPP(_pgr_get_statement($1), only_cost := true);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
