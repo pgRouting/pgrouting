@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include <stdbool.h>
+#include "c_common/postgres_connection.h"
 #include "c_common/get_check_data.h"
 #include "c_common/arrays_input.h"
 
@@ -103,7 +105,7 @@ void pgr_fetch_column_info(
 }
 
 /*
- * [BPCHAROID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#afa7749dbe36d31874205189d9d6b21d7)  
+ * [BPCHAROID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#afa7749dbe36d31874205189d9d6b21d7)
  * [INT2ARRAYOID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#ac265fe7b0bb75fead13b16bf072722e9)
  */
 

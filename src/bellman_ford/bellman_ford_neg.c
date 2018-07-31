@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
+#include <stdbool.h>
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
@@ -183,7 +183,7 @@ PGDLLEXPORT Datum bellman_ford_neg(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
 
-#if PGSQL_VERSION > 94
+#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;

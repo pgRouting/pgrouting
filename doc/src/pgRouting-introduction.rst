@@ -62,6 +62,7 @@ These are corporate entities that have contributed developer time, hosting, or d
 - `Georepublic <https://georepublic.info/en/>`__
 - `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
 - `iMaptools <http://imaptools.com>`__
+- `Leopark <https://www.leopark.mx/>`__
 - `Paragon Corporation <http://www.paragoncorporation.com/>`_
 
 Contributors Past & Present:
