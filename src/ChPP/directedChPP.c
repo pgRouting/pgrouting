@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *  - should always be first in the C code
  */
+#include <stdbool.h>
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
