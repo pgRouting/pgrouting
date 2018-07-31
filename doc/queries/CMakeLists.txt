@@ -46,6 +46,7 @@ SET(LOCAL_FILES
     doc-gsoc_vrppdtw.queries
     doc-pgr_lineGraph.queries
     doc-pgr_lineGraphFull.queries
+    doc-pgr_bellman_ford.queries
     doc-pgr_minCostMaxFlow.queries
     doc-pgr_minCostMaxFlow_Cost.queries
     )
