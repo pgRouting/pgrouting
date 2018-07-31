@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for size-t */
 #include <stddef.h>
-
+#include "c_types/pgr_costFlow_t.h"
 #include "c_types/pgr_flow_t.h"
 #include "c_types/pgr_basic_edge_t.h"
 #include "c_types/pgr_edge_t.h"
@@ -138,6 +138,27 @@ bigint reverse_capacity
 void pgr_get_flow_edges(
     char *sql,
     pgr_edge_t **edges,
+    size_t *total_edges);
+
+/*! @brief read edges for cost flow
+
+Edges:
+
+bigint id,
+bigint source,
+bigint target,
+bigint capacity,
+bigint reverse_capacity
+float cost,
+float reverse_cost
+
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
+*/
+void pgr_get_costFlow_edges(
+    char *sql,
+    pgr_costFlow_t **edges,
     size_t *total_edges);
 
 /*! @brief read basic edges

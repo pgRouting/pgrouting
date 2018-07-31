@@ -355,6 +355,39 @@ Where:
 .. flow_edges_sql_end
 
 
+.. costFlow_edges_sql_start
+
+Description of the edges_sql query for Min-Cost Max-flow like functions
+...............................................................................
+
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
+
+==================== =================== ======== =================================================
+Column               Type                Default  Description
+==================== =================== ======== =================================================
+**id**               ``ANY-INTEGER``              Identifier of the edge.
+**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
+**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
+**capacity**         ``ANY-INTEGER``              Capacity of the edge  `(source, target)`
+
+                                                  - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
+**reverse_capacity** ``ANY-INTEGER``       -1     Capacity of the edge `(target, source)`,
+
+                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+**cost**             ``ANY-NUMERICAL``            Weight of the edge  `(source, target)` if it exists.
+**reverse_cost**     ``ANY-NUMERICAL``     0      Weight of the edge `(target, source)` if it exists.
+==================== =================== ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: smallint, int, bigint, real, float
+
+
+.. costFlow_edges_sql_end
+
+
 
 .. points_sql_start
 
@@ -506,6 +539,28 @@ Column                 Type                  Description
 =====================  ====================  =================================================
 
 .. result_flow_end
+
+
+
+.. result_costFlow_start
+
+Description of the Return Values
+.....................................................................
+
+=====================  ====================  =================================================
+Column                 Type                  Description
+=====================  ====================  =================================================
+**seq**                ``INT``               Sequential value starting from **1**.
+**edge**               ``BIGINT``            Identifier of the edge in the original query(edges_sql).
+**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
+**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
+**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
+**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
+**cost**               ``FLOAT``             The cost of sending this flow through the edge in the direction (source, target).
+**agg_cost**           ``FLOAT``             The aggregate cost.
+=====================  ====================  =================================================
+
+.. result_costFlow_end
 
 .. _advanced_topics:
 

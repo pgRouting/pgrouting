@@ -47,6 +47,8 @@ SET(LOCAL_FILES
     doc-pgr_lineGraph.queries
     doc-pgr_lineGraphFull.queries
     doc-pgr_bellman_ford.queries
+    doc-pgr_minCostMaxFlow.queries
+    doc-pgr_minCostMaxFlow_Cost.queries
     )
 
 foreach (f ${LOCAL_FILES})
