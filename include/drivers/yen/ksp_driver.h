@@ -26,6 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_YEN_KSP_DRIVER_H_
 #pragma once
 
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#endif
+
 #include "c_types/pgr_edge_t.h"
 #include "c_types/general_path_element_t.h"
 

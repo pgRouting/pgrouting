@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *  Before exiting the C code the pointers need to be freed:
  *   - This task can be done when there is no error,
- *   - Call to ERROR, gives the control back to postgreSQL 
+ *   - Call to ERROR, gives the control back to postgreSQL
  *     - leaves a leak
  *
  * on C++ side, the message to be returned;
@@ -102,7 +102,7 @@ pgr_notice2(
 
 /*! @brief error with no hint
  *
- * 
+ *
  *  ~~~~{.c}
  *  if (err_msg) {
  *      pfree(<data>);

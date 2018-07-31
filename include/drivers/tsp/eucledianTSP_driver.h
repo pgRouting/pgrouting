@@ -31,6 +31,13 @@
 #define INCLUDE_DRIVERS_TSP_EUCLEDIANTSP_DRIVER_H_
 #pragma once
 
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#endif
+
 #include "c_types/coordinate_t.h"
 #include "c_types/general_path_element_t.h"
 

@@ -32,6 +32,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_PICKDELIVER_PICKDELIVER_DRIVER_H_
 #pragma once
 
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#endif
+
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "c_types/matrix_cell_t.h"

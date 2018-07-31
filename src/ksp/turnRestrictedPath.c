@@ -27,9 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/** @file turnRestrictedPath.c
- */
+/** @file turnRestrictedPath.c */
 
+#include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
 

@@ -22,35 +22,14 @@
 
 #ifndef INCLUDE_C_TYPES_TRSP_TYPES_H_
 #define INCLUDE_C_TYPES_TRSP_TYPES_H_
+#pragma once
 
-
+/* for int64_t */
 #ifdef __cplusplus
-
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
+#   include <cstdint>
+#else
+#   include <stdint.h>
 #endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
 
 typedef struct  {
     int64_t id;
@@ -72,7 +51,5 @@ typedef struct path_element {
     int64_t edge_id;
     double cost;
 } path_element_tt;
-
-
 
 #endif  // INCLUDE_C_TYPES_TRSP_TYPES_H_
