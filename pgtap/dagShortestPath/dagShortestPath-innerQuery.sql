@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(47);
+SELECT plan(2);
 SET client_min_messages TO ERROR;
 
 
@@ -10,11 +10,6 @@ SELECT has_function('pgr_dagshortestpath',
 SELECT function_returns('pgr_dagshortestpath',
     ARRAY['text', 'bigint', 'bigint'],
     'setof record');
-
-SELECT style_dijkstra('pgr_dagshortestpath', ', 2, 3)');
-
-
-
 
 SELECT finish();
 ROLLBACK;
