@@ -1,5 +1,7 @@
 BEGIN;
 BEGIN
+SET client_min_messages TO NOTICE;
+SET
 -- q1
 SELECT * FROM pgr_dagShortestPath(
     'SELECT id, source, target, cost FROM edge_table',
@@ -46,8 +48,8 @@ SELECT * FROM pgr_dagShortestPath(
 
 -- q4
 SELECT * FROM pgr_dagShortestPath(
-'SELECT id, source, target, cost FROM edge_table2',
-ARRAY[1, 4],ARRAY[12,6]
+    'SELECT id, source, target, cost FROM edge_table',
+    ARRAY[1, 4],ARRAY[12,6]
 );
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------

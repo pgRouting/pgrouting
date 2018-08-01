@@ -91,11 +91,10 @@ class Pgr_dag {
              G &graph,
              int64_t start_vertex,
              const std::vector< int64_t > &end_vertex,
-             bool only_cost,
-             size_t n_goals = std::numeric_limits<size_t>::max()) {
+             bool only_cost) {
          // adjust predecessors and distances vectors
          clear();
-
+         size_t n_goals = std::numeric_limits<size_t>::max();
          predecessors.resize(graph.num_vertices());
          distances.resize(
                  graph.num_vertices(),
@@ -156,8 +155,7 @@ class Pgr_dag {
              G &graph,
              const std::vector< int64_t > &start_vertex,
              const std::vector< int64_t > &end_vertex,
-             bool only_cost,
-             size_t n_goals = std::numeric_limits<size_t>::max()) {
+             bool only_cost) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
 
@@ -165,7 +163,7 @@ class Pgr_dag {
              auto r_paths = dag(
                      graph,
                      start, end_vertex,
-                     only_cost, n_goals);
+                     only_cost);
              paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
          }
 
@@ -193,7 +191,7 @@ class Pgr_dag {
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
-                     );
+                     .visitor(dijkstra_one_goal_visitor(target)));
          } catch(found_goals &) {
              return true;
          } catch (boost::exception const& ex) {
@@ -220,7 +218,7 @@ class Pgr_dag {
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
                      .distance_inf(std::numeric_limits<double>::infinity())
-                     );
+                     .visitor(dijkstra_many_goal_visitor(targets, n_goals)));
          } catch(found_goals &) {
              return true;
          } catch (boost::exception const& ex) {
@@ -273,7 +271,7 @@ class Pgr_dag {
      std::ostringstream log;
      //@}
 
-     /*
+     
      //! @name Stopping classes
      //@{
      //! class for stopping when 1 target is found
@@ -317,7 +315,7 @@ class Pgr_dag {
           std::set< V > m_goals;
           size_t m_n_goals;
      };
-     */
+     
 };
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_

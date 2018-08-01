@@ -7,7 +7,7 @@ SELECT * FROM pgr_dagShortestPath(
 
 \echo -- q2
 SELECT * FROM pgr_dagShortestPath(
-    'SELECT id, source, target, costt FROM edge_table',
+    'SELECT id, source, target, cost FROM edge_table',
     1, ARRAY[5,6]
 );
 \echo -- q3
