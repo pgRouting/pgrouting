@@ -40,6 +40,8 @@ typedef struct {
   int64_t target;
   int64_t flow;
   int64_t residual_capacity;
+  double cost;
+  double agg_cost;
 } pgr_flow_t;
 
 #endif  // INCLUDE_C_TYPES_PGR_FLOW_T_H_

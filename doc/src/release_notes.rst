@@ -231,6 +231,10 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_biconnectedComponents
 * pgr_articulationPoints
 * pgr_bridges
+* pgr_minCostMaxFlow
+* pgr_minCostMaxFlow_Cost
+* pgr_directedChPP
+* pgr_directedChPP_Cost
 
 .. rubric:: Deprecated Signatures
 
