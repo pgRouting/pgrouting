@@ -1,4 +1,5 @@
 <map id="pgrouting::Pgr_messages" name="pgrouting::Pgr_messages">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pg__points__graph.html" title="pgrouting::Pg_points\l_graph" alt="" coords="5,80,147,121"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html" title="pgrouting::yen::Pgr\l_ksp\&lt; G \&gt;" alt="" coords="171,80,303,121"/>
+<area shape="rect" id="node2" href="$classPgr__bellman__ford.html" title="Pgr_bellman_ford\&lt; G \&gt;" alt="" coords="5,87,163,114"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Pg__points__graph.html" title="pgrouting::Pg_points\l_graph" alt="" coords="187,80,328,121"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html" title="pgrouting::yen::Pgr\l_ksp\&lt; G \&gt;" alt="" coords="353,80,485,121"/>
 </map>

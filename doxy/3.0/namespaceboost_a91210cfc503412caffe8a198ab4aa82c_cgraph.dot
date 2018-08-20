@@ -1,0 +1,13 @@
+digraph "boost::successive_shortest_path_nonnegative_weights"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="boost::successive_shortest\l_path_nonnegative_weights",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="boost::detail::augment",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespaceboost_1_1detail.html#a6619c7053acb74f1872e1336eb13dc56"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="boost::detail::make\l_mapReducedWeight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespaceboost_1_1detail.html#a3370ddb9d6b743c334a4eb2315095c30"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="boost::detail::residual\l_graph",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespaceboost_1_1detail.html#a58d525522e1e55ec695e13b9801da50d"];
+}

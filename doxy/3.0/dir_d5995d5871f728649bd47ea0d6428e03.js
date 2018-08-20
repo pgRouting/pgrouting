@@ -26,6 +26,9 @@ var dir_d5995d5871f728649bd47ea0d6428e03 =
     [ "pgr_components_rt.h", "pgr__components__rt_8h.html", [
       [ "pgr_components_rt", "structpgr__components__rt.html", "structpgr__components__rt" ]
     ] ],
+    [ "pgr_costFlow_t.h", "pgr__costFlow__t_8h.html", [
+      [ "pgr_costFlow_t", "structpgr__costFlow__t.html", "structpgr__costFlow__t" ]
+    ] ],
     [ "pgr_edge_t.h", "pgr__edge__t_8h.html", [
       [ "pgr_edge_t", "structpgr__edge__t.html", "structpgr__edge__t" ]
     ] ],
@@ -34,6 +37,18 @@ var dir_d5995d5871f728649bd47ea0d6428e03 =
     ] ],
     [ "pgr_flow_t.h", "pgr__flow__t_8h.html", [
       [ "pgr_flow_t", "structpgr__flow__t.html", "structpgr__flow__t" ]
+    ] ],
+    [ "pgr_kruskal_t.h", "pgr__kruskal__t_8h.html", [
+      [ "pgr_kruskal_t", "structpgr__kruskal__t.html", "structpgr__kruskal__t" ]
+    ] ],
+    [ "pgr_prim_t.h", "pgr__prim__t_8h.html", [
+      [ "pgr_prim_t", "structpgr__prim__t.html", "structpgr__prim__t" ]
+    ] ],
+    [ "pgr_randomSpanningTree_t.h", "pgr__randomSpanningTree__t_8h.html", [
+      [ "pgr_randomSpanningTree_t", "structpgr__randomSpanningTree__t.html", "structpgr__randomSpanningTree__t" ]
+    ] ],
+    [ "pgr_stoerWagner_t.h", "pgr__stoerWagner__t_8h.html", [
+      [ "pgr_stoerWagner_t", "structpgr__stoerWagner__t.html", "structpgr__stoerWagner__t" ]
     ] ],
     [ "point_on_edge_t.h", "point__on__edge__t_8h.html", [
       [ "Point_on_edge_t", "structPoint__on__edge__t.html", "structPoint__on__edge__t" ]

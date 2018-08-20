@@ -1,0 +1,11 @@
+digraph "/home/vicky/pgrouting/pgrouting/pgrouting/src/bellman_ford/src" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_762e7e224ab5a7615d8c08e2cd437628 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="bellman_ford" fontname="Helvetica", fontsize="10", URL="dir_762e7e224ab5a7615d8c08e2cd437628.html"]
+  dir_9191c0734895e6338de6a16c99080f45 [shape=box, label="src", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_9191c0734895e6338de6a16c99080f45.html"];
+  }
+  dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" fillcolor="white" style="filled" color="red" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+  dir_9191c0734895e6338de6a16c99080f45->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="10", labeldistance=1.5 headhref="dir_000056_000000.html"];
+}

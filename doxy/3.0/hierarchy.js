@@ -8,10 +8,13 @@ var hierarchy =
       [ "pgrouting::algorithms::Pgr_astar< G >::astar_one_goal_visitor", "classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html", null ]
     ] ],
     [ "default_dijkstra_visitor", null, [
+      [ "Pgr_dag< G >::dijkstra_many_goal_visitor", "classPgr__dag_1_1dijkstra__many__goal__visitor.html", null ],
+      [ "Pgr_dag< G >::dijkstra_one_goal_visitor", "classPgr__dag_1_1dijkstra__one__goal__visitor.html", null ],
       [ "Pgr_dijkstra< G >::dijkstra_distance_visitor", "classPgr__dijkstra_1_1dijkstra__distance__visitor.html", null ],
       [ "Pgr_dijkstra< G >::dijkstra_distance_visitor_no_init", "classPgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html", null ],
       [ "Pgr_dijkstra< G >::dijkstra_many_goal_visitor", "classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html", null ],
-      [ "Pgr_dijkstra< G >::dijkstra_one_goal_visitor", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html", null ]
+      [ "Pgr_dijkstra< G >::dijkstra_one_goal_visitor", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html", null ],
+      [ "Pgr_prim< G >::prim_visitor", "classPgr__prim_1_1prim__visitor.html", null ]
     ] ],
     [ "Column_info_t", "structColumn__info__t.html", null ],
     [ "contracted_rt", "structcontracted__rt.html", null ],
@@ -20,6 +23,8 @@ var hierarchy =
     [ "edge", "structedge.html", null ],
     [ "edge_columns", "structedge__columns.html", null ],
     [ "edge_t", "structedge__t.html", null ],
+    [ "edge_writer< Graph, ParentMap >", "structedge__writer.html", null ],
+    [ "EdgeProperties", "structEdgeProperties.html", null ],
     [ "EventHandler", "classEventHandler.html", [
       [ "SIGINT_Handler", "classSIGINT__Handler.html", null ],
       [ "SIGQUIT_Handler", "classSIGQUIT__Handler.html", null ]
@@ -48,11 +53,22 @@ var hierarchy =
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", null ],
     [ "Pgr_components< G >", "classPgr__components.html", null ],
     [ "pgr_components_rt", "structpgr__components__rt.html", null ],
+    [ "pgr_costFlow_t", "structpgr__costFlow__t.html", null ],
+    [ "Pgr_dag< G >", "classPgr__dag.html", null ],
+    [ "Pgr_dag< G >::found_goals", "structPgr__dag_1_1found__goals.html", null ],
     [ "Pgr_dijkstra< G >", "classPgr__dijkstra.html", null ],
     [ "Pgr_dijkstra< G >::found_goals", "structPgr__dijkstra_1_1found__goals.html", null ],
     [ "pgr_edge_t", "structpgr__edge__t.html", null ],
     [ "Pgr_edge_xy_t", "structPgr__edge__xy__t.html", null ],
     [ "pgr_flow_t", "structpgr__flow__t.html", null ],
+    [ "Pgr_kruskal< G >", "classPgr__kruskal.html", null ],
+    [ "pgr_kruskal_t", "structpgr__kruskal__t.html", null ],
+    [ "Pgr_prim< G >", "classPgr__prim.html", null ],
+    [ "pgr_prim_t", "structpgr__prim__t.html", null ],
+    [ "Pgr_randomSpanningTree< G >", "classPgr__randomSpanningTree.html", null ],
+    [ "pgr_randomSpanningTree_t", "structpgr__randomSpanningTree__t.html", null ],
+    [ "Pgr_stoerWagner< G >", "classPgr__stoerWagner.html", null ],
+    [ "pgr_stoerWagner_t", "structpgr__stoerWagner__t.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >", "classpgrouting_1_1algorithms_1_1Pgr__astar.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >::found_goals", "structpgrouting_1_1algorithms_1_1Pgr__astar_1_1found__goals.html", null ],
     [ "pgrouting::Basic_edge", "classpgrouting_1_1Basic__edge.html", null ],
@@ -74,6 +90,8 @@ var hierarchy =
       [ "pgrouting::graph::Pgr_lineGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html", null ],
       [ "pgrouting::graph::Pgr_lineGraphFull< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html", null ]
     ] ],
+    [ "pgrouting::graph::PgrCostFlowGraph", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html", null ],
+    [ "pgrouting::graph::PgrDirectedChPPGraph", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html", null ],
     [ "pgrouting::graph::PgrFlowGraph", "classpgrouting_1_1graph_1_1PgrFlowGraph.html", null ],
     [ "pgrouting::Identifier", "classpgrouting_1_1Identifier.html", [
       [ "pgrouting::vrp::Base_node", "classpgrouting_1_1vrp_1_1Base__node.html", [
@@ -91,6 +109,7 @@ var hierarchy =
     [ "pgrouting::Line_vertex", "classpgrouting_1_1Line__vertex.html", null ],
     [ "pgrouting::Pg_points_graph::pointCompare", "structpgrouting_1_1Pg__points__graph_1_1pointCompare.html", null ],
     [ "pgrouting::Pgr_messages", "classpgrouting_1_1Pgr__messages.html", [
+      [ "Pgr_bellman_ford< G >", "classPgr__bellman__ford.html", null ],
       [ "pgrouting::Pg_points_graph", "classpgrouting_1_1Pg__points__graph.html", null ],
       [ "pgrouting::yen::Pgr_ksp< G >", "classpgrouting_1_1yen_1_1Pgr__ksp.html", [
         [ "pgrouting::yen::Pgr_turnRestrictedPath< G >", "classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath.html", null ]
@@ -126,6 +145,9 @@ var hierarchy =
     [ "pgrouting::yen::Pgr_turnRestrictedPath< G >::found_goals", "structpgrouting_1_1yen_1_1Pgr__turnRestrictedPath_1_1found__goals.html", null ],
     [ "PickDeliveryOrders_t", "structPickDeliveryOrders__t.html", null ],
     [ "Point_on_edge_t", "structPoint__on__edge__t.html", null ],
+    [ "put_get_helper", null, [
+      [ "boost::detail::MapReducedWeight< Graph, Weight, Distance, Reversed >", "classboost_1_1detail_1_1MapReducedWeight.html", null ]
+    ] ],
     [ "restrict_columns", "structrestrict__columns.html", null ],
     [ "restrict_struct", "structrestrict__struct.html", null ],
     [ "Restriction_t", "structRestriction__t.html", null ],

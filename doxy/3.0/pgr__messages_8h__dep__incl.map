@@ -1,7 +1,8 @@
 <map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/pgr_messages.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/pgr_messages.h">
 <area shape="rect" id="node2" href="$pgr__messages_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/pgr_messages.cpp" alt="" coords="5,131,232,187"/>
-<area shape="rect" id="node3" href="$pd__problem_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pd_problem.h" alt="" coords="256,131,427,187"/>
-<area shape="rect" id="node4" href="$pgr__withPoints_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/withPoints/pgr\l_withPoints.hpp" alt="" coords="451,124,605,195"/>
-<area shape="rect" id="node5" href="$pgr__ksp_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_ksp.hpp" alt="" coords="630,131,797,187"/>
-<area shape="rect" id="node6" href="$pgr__turnRestrictedPath_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_turnRestricted\lPath.hpp" alt="" coords="672,243,875,313"/>
+<area shape="rect" id="node3" href="$pgr__bellman__ford_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/bellman_ford\l/pgr_bellman_ford.hpp" alt="" coords="257,124,407,195"/>
+<area shape="rect" id="node4" href="$pd__problem_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pd_problem.h" alt="" coords="432,131,603,187"/>
+<area shape="rect" id="node5" href="$pgr__withPoints_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/withPoints/pgr\l_withPoints.hpp" alt="" coords="627,124,781,195"/>
+<area shape="rect" id="node6" href="$pgr__ksp_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_ksp.hpp" alt="" coords="806,131,973,187"/>
+<area shape="rect" id="node7" href="$pgr__turnRestrictedPath_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_turnRestricted\lPath.hpp" alt="" coords="848,243,1051,313"/>
 </map>

@@ -1,0 +1,4 @@
+<map id="pgrouting::graph::PgrCostFlowGraph::MinCostMaxFlow" name="pgrouting::graph::PgrCostFlowGraph::MinCostMaxFlow">
+<area shape="rect" id="node2" href="$namespaceboost.html#a10dc4b67de36b21d18a1038aab436522" title="boost::find_flow_cost" alt="" coords="266,5,413,32"/>
+<area shape="rect" id="node3" href="$namespaceboost.html#a91210cfc503412caffe8a198ab4aa82c" title="boost::successive_shortest\l_path_nonnegative_weights" alt="" coords="248,57,431,98"/>
+</map>

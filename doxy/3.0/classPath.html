@@ -124,8 +124,6 @@ $(document).ready(function(){initNavTree('classPath.html','');});
 Collaboration diagram for Path:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPath__coll__graph.png" border="0" usemap="#Path_coll__map" alt="Collaboration graph"/></div>
-<map name="Path_coll__map" id="Path_coll__map">
-</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -1267,7 +1265,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00054">m_end_id</a>.</p>
 
-<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00274">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00101">pgrouting::algorithms::Pgr_astar&lt; G &gt;::astar()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00200">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00177">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00221">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00257">get_pg_ksp_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00275">get_pg_turn_restricted_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00118">operator&lt;&lt;()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00291">pgrouting::trsp::Pgr_trspHandler::process()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00388">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00274">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00101">pgrouting::algorithms::Pgr_astar&lt; G &gt;::astar()</a>, <a class="el" href="pgr__bellman__ford_8hpp_source.html#l00095">Pgr_bellman_ford&lt; G &gt;::bellman_ford()</a>, <a class="el" href="pgr__dagShortestPath_8hpp_source.html#l00090">Pgr_dag&lt; G &gt;::dag()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00200">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00177">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00221">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00257">get_pg_ksp_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00275">get_pg_turn_restricted_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00118">operator&lt;&lt;()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00291">pgrouting::trsp::Pgr_trspHandler::process()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00388">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classPath.html#a8c5819a5378819252ee3e99a5104c43d">m_end_id</a>;}</div><div class="ttc" id="classPath_html_a8c5819a5378819252ee3e99a5104c43d"><div class="ttname"><a href="classPath.html#a8c5819a5378819252ee3e99a5104c43d">Path::m_end_id</a></div><div class="ttdeci">int64_t m_end_id</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00054">basePath_SSEC.hpp:54</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -1277,17 +1275,19 @@ Here is the caller graph for this function:</div>
 <map name="classPath_af813241de9d44cf689932d9166147cf0_icgraph" id="classPath_af813241de9d44cf689932d9166147cf0_icgraph">
 <area shape="rect" id="node2" href="classpgrouting_1_1Pg__points__graph.html#a1daf3e5eb10e11a86029ba839cb3ec64" title="pgrouting::Pg_points\l_graph::adjust_pids" alt="" coords="187,5,328,47"/>
 <area shape="rect" id="node3" href="classpgrouting_1_1algorithms_1_1Pgr__astar.html#a187eb488ab36784f3d5e36b30b3cfe0f" title="astar 1 to many " alt="" coords="186,71,329,112"/>
-<area shape="rect" id="node4" href="classPgr__dijkstra.html#a9c5d25643cf6504b4d9cb2fc9e008437" title="Dijkstra 1 to many. " alt="" coords="187,137,328,163"/>
-<area shape="rect" id="node5" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="415,217,544,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="174,239,341,280"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1Pg__points__graph.html#a7fa7df5b7e6aa95d4813b06bb5aa435a" title="pgrouting::Pg_points\l_graph::eliminate_details_dd" alt="" coords="164,304,351,345"/>
-<area shape="rect" id="node8" href="classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba" title="Path::generate_postgres_data" alt="" coords="159,370,355,397"/>
-<area shape="rect" id="node9" href="classPath.html#a41e7ec521ecff8c58aa091a7e1bfe0aa" title="Path::get_pg_ksp_path" alt="" coords="179,421,335,447"/>
-<area shape="rect" id="node10" href="classPath.html#a76f73d6a209fb1fc542d4564f42db566" title="Path::get_pg_turn_restricted_path" alt="" coords="148,471,367,498"/>
-<area shape="rect" id="node11" href="classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20" title="Path::getSubpath" alt="" coords="196,522,319,549"/>
-<area shape="rect" id="node12" href="basePath__SSEC_8cpp.html#aa16afa1050f3d97fc530c0ec237c1216" title="operator\&lt;\&lt;" alt="" coords="215,573,300,599"/>
-<area shape="rect" id="node13" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aa9906883b4fdee00762ac1866329d0c2" title="process " alt="" coords="182,624,333,665"/>
-<area shape="rect" id="node14" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="168,689,347,731"/>
+<area shape="rect" id="node4" href="classPgr__bellman__ford.html#a55b69b28e979ea0ee5213a4fbff51808" title="BellmanFord 1 to many. " alt="" coords="155,137,360,163"/>
+<area shape="rect" id="node5" href="classPgr__dag.html#a60291964fef435995a7c44da20ff0e8d" title="Dijkstra 1 to many. " alt="" coords="208,187,307,214"/>
+<area shape="rect" id="node6" href="classPgr__dijkstra.html#a9c5d25643cf6504b4d9cb2fc9e008437" title="Dijkstra 1 to many. " alt="" coords="187,238,328,265"/>
+<area shape="rect" id="node7" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="415,318,544,345"/>
+<area shape="rect" id="node8" href="classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="174,340,341,381"/>
+<area shape="rect" id="node9" href="classpgrouting_1_1Pg__points__graph.html#a7fa7df5b7e6aa95d4813b06bb5aa435a" title="pgrouting::Pg_points\l_graph::eliminate_details_dd" alt="" coords="164,405,351,447"/>
+<area shape="rect" id="node10" href="classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba" title="Path::generate_postgres_data" alt="" coords="159,471,355,498"/>
+<area shape="rect" id="node11" href="classPath.html#a41e7ec521ecff8c58aa091a7e1bfe0aa" title="Path::get_pg_ksp_path" alt="" coords="179,522,335,549"/>
+<area shape="rect" id="node12" href="classPath.html#a76f73d6a209fb1fc542d4564f42db566" title="Path::get_pg_turn_restricted_path" alt="" coords="148,573,367,599"/>
+<area shape="rect" id="node13" href="classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20" title="Path::getSubpath" alt="" coords="196,623,319,650"/>
+<area shape="rect" id="node14" href="basePath__SSEC_8cpp.html#aa16afa1050f3d97fc530c0ec237c1216" title="operator\&lt;\&lt;" alt="" coords="215,674,300,701"/>
+<area shape="rect" id="node15" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aa9906883b4fdee00762ac1866329d0c2" title="process " alt="" coords="182,725,333,767"/>
+<area shape="rect" id="node16" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="168,791,347,832"/>
 </map>
 </div>
 </p>
@@ -1515,7 +1515,7 @@ Here is the call graph for this function:</div>
 
 <p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00066">end_id()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00052">path</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00064">start_id()</a>.</p>
 
-<p>Referenced by <a class="el" href="basePath__SSEC_8hpp_source.html#l00090">front()</a>.</p>
+<p>Referenced by <a class="el" href="src_2bellman__ford__driver_8cpp_source.html#l00068">do_pgr_bellman_ford()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00090">front()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                {</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordtype">int</span> i = 1;</div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">double</span> total_cost = 0;</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> e : <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>) {</div><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keyword">auto</span> agg_cost = std::fabs(e.agg_cost - std::numeric_limits&lt;double&gt;::max()) &lt; 1?</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            std::numeric_limits&lt;double&gt;::infinity() : e.agg_cost;</div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keyword">auto</span> cost = std::fabs(e.cost - std::numeric_limits&lt;double&gt;::max()) &lt; 1?</div><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            std::numeric_limits&lt;double&gt;::infinity() : e.cost;</div><div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        (*postgres_data)[sequence] =</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        {i, <a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>(), <a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>(), e.node, e.edge, cost, agg_cost};</div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        total_cost += cost;</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        ++i;</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        ++sequence;</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}</div><div class="ttc" id="classPath_html_af813241de9d44cf689932d9166147cf0"><div class="ttname"><a href="classPath.html#af813241de9d44cf689932d9166147cf0">Path::end_id</a></div><div class="ttdeci">int64_t end_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00066">basePath_SSEC.hpp:66</a></div></div>
 <div class="ttc" id="classPath_html_ac7035439d26c9e76a20ca1a06541923e"><div class="ttname"><a href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00064">basePath_SSEC.hpp:64</a></div></div>
 <div class="ttc" id="classPath_html_a0078a9d54940355ab4e63f7d90c9b911"><div class="ttname"><a href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">Path::path</a></div><div class="ttdeci">std::deque&lt; Path_t &gt; path</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00052">basePath_SSEC.hpp:52</a></div></div>
@@ -1536,7 +1536,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPath_ae1f419fc9e3cb3d6d4a51621b7f0beba_icgraph.png" border="0" usemap="#classPath_ae1f419fc9e3cb3d6d4a51621b7f0beba_icgraph" alt=""/></div>
 <map name="classPath_ae1f419fc9e3cb3d6d4a51621b7f0beba_icgraph" id="classPath_ae1f419fc9e3cb3d6d4a51621b7f0beba_icgraph">
-<area shape="rect" id="node2" href="classPath.html#a6fc87e41a998bdfe9fd94c3647e6f2ba" title="Path::front" alt="" coords="249,5,332,32"/>
+<area shape="rect" id="node2" href="src_2bellman__ford__driver_8cpp.html#a754e723582fb2a56d5939bc9f068408a" title="do_pgr_bellman_ford" alt="" coords="249,5,392,32"/>
+<area shape="rect" id="node3" href="classPath.html#a6fc87e41a998bdfe9fd94c3647e6f2ba" title="Path::front" alt="" coords="279,56,362,83"/>
 </map>
 </div>
 </p>
@@ -2289,7 +2290,7 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00070">70</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="pgr__ksp_8hpp_source.html#l00160">pgrouting::yen::Pgr_ksp&lt; G &gt;::doNextCycle()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00338">equi_cost()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00153">isEqual()</a>, <a class="el" href="compPaths_8cpp_source.html#l00036">pgrouting::compPathsLess::operator()()</a>, and <a class="el" href="pgr__dijkstraVia_8hpp_source.html#l00045">pgRouting::pgr_dijkstraVia()</a>.</p>
+<p>Referenced by <a class="el" href="src_2bellman__ford__driver_8cpp_source.html#l00068">do_pgr_bellman_ford()</a>, <a class="el" href="pgr__ksp_8hpp_source.html#l00160">pgrouting::yen::Pgr_ksp&lt; G &gt;::doNextCycle()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00338">equi_cost()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00153">isEqual()</a>, <a class="el" href="compPaths_8cpp_source.html#l00036">pgrouting::compPathsLess::operator()()</a>, and <a class="el" href="pgr__dijkstraVia_8hpp_source.html#l00045">pgRouting::pgr_dijkstraVia()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.size();}</div><div class="ttc" id="classPath_html_a0078a9d54940355ab4e63f7d90c9b911"><div class="ttname"><a href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">Path::path</a></div><div class="ttdeci">std::deque&lt; Path_t &gt; path</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00052">basePath_SSEC.hpp:52</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -2297,11 +2298,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPath_a173f5f76fcc498b81b97261251d6a9a3_icgraph.png" border="0" usemap="#classPath_a173f5f76fcc498b81b97261251d6a9a3_icgraph" alt=""/></div>
 <map name="classPath_a173f5f76fcc498b81b97261251d6a9a3_icgraph" id="classPath_a173f5f76fcc498b81b97261251d6a9a3_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1yen_1_1Pgr__ksp.html#a1ff5255c35221d033252cb9360929c97" title="Performs the next cycle of the algorithm. " alt="" coords="156,5,291,47"/>
-<area shape="rect" id="node3" href="basePath__SSEC_8cpp.html#a5ec42f9cedce93c209092bc259b9c56c" title="equi_cost" alt="" coords="184,71,263,98"/>
-<area shape="rect" id="node4" href="classPath.html#adf67930d9eaea5c23c9a5262fc846a73" title="Path::isEqual" alt="" coords="173,122,273,149"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1compPathsLess.html#ada4f3092ce886ff87470368bd6802e2d" title="pgrouting::compPathsLess\l::operator()" alt="" coords="135,173,312,215"/>
-<area shape="rect" id="node6" href="namespacepgRouting.html#ab0332a7731ec5fe2696668fd206fc3a6" title="pgRouting::pgr_dijkstraVia" alt="" coords="136,239,311,266"/>
+<area shape="rect" id="node2" href="src_2bellman__ford__driver_8cpp.html#a754e723582fb2a56d5939bc9f068408a" title="do_pgr_bellman_ford" alt="" coords="152,5,295,32"/>
+<area shape="rect" id="node3" href="classpgrouting_1_1yen_1_1Pgr__ksp.html#a1ff5255c35221d033252cb9360929c97" title="Performs the next cycle of the algorithm. " alt="" coords="156,57,291,98"/>
+<area shape="rect" id="node4" href="basePath__SSEC_8cpp.html#a5ec42f9cedce93c209092bc259b9c56c" title="equi_cost" alt="" coords="184,123,263,149"/>
+<area shape="rect" id="node5" href="classPath.html#adf67930d9eaea5c23c9a5262fc846a73" title="Path::isEqual" alt="" coords="173,173,273,200"/>
+<area shape="rect" id="node6" href="classpgrouting_1_1compPathsLess.html#ada4f3092ce886ff87470368bd6802e2d" title="pgrouting::compPathsLess\l::operator()" alt="" coords="135,225,312,266"/>
+<area shape="rect" id="node7" href="namespacepgRouting.html#ab0332a7731ec5fe2696668fd206fc3a6" title="pgRouting::pgr_dijkstraVia" alt="" coords="136,291,311,317"/>
 </map>
 </div>
 </p>
@@ -2371,7 +2373,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00053">m_start_id</a>.</p>
 
-<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00274">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00142">pgrouting::algorithms::Pgr_astar&lt; G &gt;::astar()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00095">pgrouting::trsp::Pgr_trspHandler::construct_path()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00244">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00177">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00338">equi_cost()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00221">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00241">get_pg_dd_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00118">operator&lt;&lt;()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00291">pgrouting::trsp::Pgr_trspHandler::process()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00388">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00274">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00142">pgrouting::algorithms::Pgr_astar&lt; G &gt;::astar()</a>, <a class="el" href="pgr__bellman__ford_8hpp_source.html#l00135">Pgr_bellman_ford&lt; G &gt;::bellman_ford()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00095">pgrouting::trsp::Pgr_trspHandler::construct_path()</a>, <a class="el" href="pgr__dagShortestPath_8hpp_source.html#l00133">Pgr_dag&lt; G &gt;::dag()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00244">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00177">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00338">equi_cost()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00221">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00241">get_pg_dd_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00118">operator&lt;&lt;()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00291">pgrouting::trsp::Pgr_trspHandler::process()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00388">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classPath.html#ac83e28d421e342efe8f03428036f4bf7">m_start_id</a>;}</div><div class="ttc" id="classPath_html_ac83e28d421e342efe8f03428036f4bf7"><div class="ttname"><a href="classPath.html#ac83e28d421e342efe8f03428036f4bf7">Path::m_start_id</a></div><div class="ttdeci">int64_t m_start_id</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00053">basePath_SSEC.hpp:53</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -2379,20 +2381,22 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPath_ac7035439d26c9e76a20ca1a06541923e_icgraph.png" border="0" usemap="#classPath_ac7035439d26c9e76a20ca1a06541923e_icgraph" alt=""/></div>
 <map name="classPath_ac7035439d26c9e76a20ca1a06541923e_icgraph" id="classPath_ac7035439d26c9e76a20ca1a06541923e_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1Pg__points__graph.html#a1daf3e5eb10e11a86029ba839cb3ec64" title="pgrouting::Pg_points\l_graph::adjust_pids" alt="" coords="181,5,322,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1algorithms_1_1Pgr__astar.html#a540dad9278b2222a4e8d0b0f173353b4" title="pgrouting::algorithms\l::Pgr_astar::astar" alt="" coords="180,71,323,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#afb0d7e7d3049ca1c2a003b0571fcc02d" title="pgrouting::trsp::Pgr\l_trspHandler::construct_path" alt="" coords="156,136,347,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="397,165,576,207"/>
-<area shape="rect" id="node6" href="classPgr__dijkstra.html#a40223def5edfcf8bcc11243d806d3b9f" title="Pgr_dijkstra::dijkstra" alt="" coords="181,253,322,279"/>
-<area shape="rect" id="node7" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="422,333,551,359"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="168,355,335,396"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1Pg__points__graph.html#a7fa7df5b7e6aa95d4813b06bb5aa435a" title="pgrouting::Pg_points\l_graph::eliminate_details_dd" alt="" coords="158,420,345,461"/>
-<area shape="rect" id="node10" href="basePath__SSEC_8cpp.html#a5ec42f9cedce93c209092bc259b9c56c" title="equi_cost" alt="" coords="212,486,291,513"/>
-<area shape="rect" id="node11" href="classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba" title="Path::generate_postgres_data" alt="" coords="153,537,349,563"/>
-<area shape="rect" id="node12" href="classPath.html#a6a3dbe49a76b4057460266cbbd9225c8" title="Path::get_pg_dd_path" alt="" coords="177,587,326,614"/>
-<area shape="rect" id="node13" href="classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20" title="Path::getSubpath" alt="" coords="190,638,313,665"/>
-<area shape="rect" id="node14" href="basePath__SSEC_8cpp.html#aa16afa1050f3d97fc530c0ec237c1216" title="operator\&lt;\&lt;" alt="" coords="209,689,294,715"/>
-<area shape="rect" id="node15" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aa9906883b4fdee00762ac1866329d0c2" title="process " alt="" coords="176,740,327,781"/>
+<area shape="rect" id="node2" href="classpgrouting_1_1Pg__points__graph.html#a1daf3e5eb10e11a86029ba839cb3ec64" title="pgrouting::Pg_points\l_graph::adjust_pids" alt="" coords="185,5,327,47"/>
+<area shape="rect" id="node3" href="classpgrouting_1_1algorithms_1_1Pgr__astar.html#a540dad9278b2222a4e8d0b0f173353b4" title="pgrouting::algorithms\l::Pgr_astar::astar" alt="" coords="185,71,327,112"/>
+<area shape="rect" id="node4" href="classPgr__bellman__ford.html#aad744bfcd6273f92bdde808f9e6c8bd1" title="Pgr_bellman_ford::bellman_ford" alt="" coords="153,137,359,163"/>
+<area shape="rect" id="node5" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#afb0d7e7d3049ca1c2a003b0571fcc02d" title="pgrouting::trsp::Pgr\l_trspHandler::construct_path" alt="" coords="161,188,351,229"/>
+<area shape="rect" id="node6" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="407,217,585,259"/>
+<area shape="rect" id="node7" href="classPgr__dag.html#a82b049aa2f14ccd8994793501fb801ed" title="Pgr_dag::dag" alt="" coords="207,305,305,331"/>
+<area shape="rect" id="node8" href="classPgr__dijkstra.html#a40223def5edfcf8bcc11243d806d3b9f" title="Pgr_dijkstra::dijkstra" alt="" coords="185,355,327,382"/>
+<area shape="rect" id="node9" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="431,435,561,462"/>
+<area shape="rect" id="node10" href="classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="173,457,339,499"/>
+<area shape="rect" id="node11" href="classpgrouting_1_1Pg__points__graph.html#a7fa7df5b7e6aa95d4813b06bb5aa435a" title="pgrouting::Pg_points\l_graph::eliminate_details_dd" alt="" coords="163,523,349,564"/>
+<area shape="rect" id="node12" href="basePath__SSEC_8cpp.html#a5ec42f9cedce93c209092bc259b9c56c" title="equi_cost" alt="" coords="217,589,295,615"/>
+<area shape="rect" id="node13" href="classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba" title="Path::generate_postgres_data" alt="" coords="158,639,354,666"/>
+<area shape="rect" id="node14" href="classPath.html#a6a3dbe49a76b4057460266cbbd9225c8" title="Path::get_pg_dd_path" alt="" coords="181,690,331,717"/>
+<area shape="rect" id="node15" href="classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20" title="Path::getSubpath" alt="" coords="195,741,317,767"/>
+<area shape="rect" id="node16" href="basePath__SSEC_8cpp.html#aa16afa1050f3d97fc530c0ec237c1216" title="operator\&lt;\&lt;" alt="" coords="213,791,299,818"/>
+<area shape="rect" id="node17" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aa9906883b4fdee00762ac1866329d0c2" title="process " alt="" coords="181,843,331,884"/>
 </map>
 </div>
 </p>
@@ -2721,7 +2725,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPath.html">Path</a></li>
-    <li class="footer">Generated on Mon Jul 30 2018 10:11:05 for PGROUTING by
+    <li class="footer">Generated on Mon Aug 20 2018 11:14:33 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

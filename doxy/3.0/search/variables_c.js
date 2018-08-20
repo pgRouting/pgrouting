@@ -5,6 +5,7 @@ var searchData=
   ['path',['path',['../classPath.html#a0078a9d54940355ab4e63f7d90c9b911',1,'Path']]],
   ['path_5fid',['path_id',['../structRoutes__t.html#ae9d26e92b596aff25c77b1b751758633',1,'Routes_t']]],
   ['path_5fseq',['path_seq',['../structRoutes__t.html#acb143a564da1fb8a5ba85f809bf021c9',1,'Routes_t']]],
+  ['pathstack',['pathStack',['../classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2a65264a96511f166d85919938e3d516',1,'pgrouting::graph::PgrDirectedChPPGraph']]],
   ['pg_5fmodule_5fmagic',['PG_MODULE_MAGIC',['../dijkstra_8c.html#a509119277abe280e6db17c34f79e01cf',1,'dijkstra.c']]],
   ['pick_5fclose_5ft',['pick_close_t',['../structPickDeliveryOrders__t.html#a207146edd7b53729eafec494550113a7',1,'PickDeliveryOrders_t']]],
   ['pick_5fnode_5fid',['pick_node_id',['../structPickDeliveryOrders__t.html#a1a921f0db33908a6cd835088291760fb',1,'PickDeliveryOrders_t']]],
@@ -15,7 +16,7 @@ var searchData=
   ['pid',['pid',['../structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9',1,'Point_on_edge_t']]],
   ['point',['point',['../classpgrouting_1_1XY__vertex.html#adcaa8dc8d7d6b6c7ff0b9d25e45ce332',1,'pgrouting::XY_vertex']]],
   ['precedencelist',['precedencelist',['../structRule.html#ae5cb09cab4717d32ece0f96c9dea4805',1,'Rule']]],
-  ['predecessors',['predecessors',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#adb34490a0056ac03f31ad34996542082',1,'pgrouting::algorithms::Pgr_astar::predecessors()'],['../classPgr__dijkstra.html#a9ef39b953a6e26c217548bd480a639b1',1,'Pgr_dijkstra::predecessors()']]],
+  ['predecessors',['predecessors',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#adb34490a0056ac03f31ad34996542082',1,'pgrouting::algorithms::Pgr_astar::predecessors()'],['../classPgr__bellman__ford.html#a53a81923b7242c8c03bce51ad00e0089',1,'Pgr_bellman_ford::predecessors()'],['../classPgr__dag.html#a666ec597baa5952ef87783d58765e119',1,'Pgr_dag::predecessors()'],['../classPgr__dijkstra.html#a9ef39b953a6e26c217548bd480a639b1',1,'Pgr_dijkstra::predecessors()'],['../classPgr__prim.html#a5c3efdb90d96eaaa401f5036e717d85b',1,'Pgr_prim::predecessors()'],['../classPgr__randomSpanningTree.html#ae00a1310a360af276e63fe2c87ff2965',1,'Pgr_randomSpanningTree::predecessors()']]],
   ['prev_5fsize',['prev_size',['../alpha__driver_8cpp.html#a7118ea995babe95c18fc3899f93d697a',1,'alpha_driver.cpp']]],
   ['problem',['problem',['../classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621',1,'pgrouting::vrp::PD_problem']]],
   ['propmapindex',['propmapIndex',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad11cbc975516d6a569ec89a5de618e33',1,'pgrouting::graph::Pgr_base_graph']]]

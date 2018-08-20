@@ -150,6 +150,10 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>seq
 : <a class="el" href="structGeneral__path__element__t.html#a418496a4d4cb1aa0724bd998f6c5ea40">General_path_element_t</a>
+, <a class="el" href="structpgr__kruskal__t.html#a112d9dee0b3709ecc72ebd263574993e">pgr_kruskal_t</a>
+, <a class="el" href="structpgr__prim__t.html#af0ec433a59ad2034f1c87e77aa42868e">pgr_prim_t</a>
+, <a class="el" href="structpgr__randomSpanningTree__t.html#a184d506ddae55b34047a1ad08b69b73e">pgr_randomSpanningTree_t</a>
+, <a class="el" href="structpgr__stoerWagner__t.html#ade431ae42d584f756b10c2f8cb5871dc">pgr_stoerWagner_t</a>
 </li>
 <li>serviceTime
 : <a class="el" href="structGeneral__vehicle__orders__t.html#ae3d128e43d4ad64ec58e887e71a05067">General_vehicle_orders_t</a>
@@ -177,6 +181,7 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 , <a class="el" href="structLine__graph__full__rt.html#a0a69e95b0f13e80aab5f9386293da3de">Line_graph_full_rt</a>
 , <a class="el" href="structLine__graph__rt.html#a49ac5dee722c59bed69515020ba402a0">Line_graph_rt</a>
 , <a class="el" href="structpgr__basic__edge__t.html#acd325a50d26a09269e1731fd5f5cfb71">pgr_basic_edge_t</a>
+, <a class="el" href="structpgr__costFlow__t.html#a49bc65d67e9408b96ebd25c387aa43a2">pgr_costFlow_t</a>
 , <a class="el" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">pgr_edge_t</a>
 , <a class="el" href="structPgr__edge__xy__t.html#aaa4df304d97f6b0ff634c630212103bc">Pgr_edge_xy_t</a>
 , <a class="el" href="structpgr__flow__t.html#a67975c9beaa8c9f424b6dfd90c7015c8">pgr_flow_t</a>
@@ -218,6 +223,9 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 : <a class="el" href="structCostHolder.html#a702908851334ffea78596831f79e94e7">CostHolder</a>
 , <a class="el" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler_1_1CostHolder.html#abe09bdca66047a8f52aaa106d74c9ceb">pgrouting::trsp::Pgr_trspHandler::CostHolder</a>
 </li>
+<li>startPoint
+: <a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a9142476b7eeaaa82816fe6baf77843d5">pgrouting::graph::PgrDirectedChPPGraph</a>
+</li>
 <li>stop_id
 : <a class="el" href="structGeneral__vehicle__orders__t.html#a3b5fa78f433fe996af4d3f434c23cc25">General_vehicle_orders_t</a>
 </li>
@@ -235,10 +243,20 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 : <a class="el" href="structColumn__info__t.html#a72833df7d9b7fd577a9e5c866c390518">Column_info_t</a>
 </li>
 <li>supersink
-: <a class="el" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#ac0a7cc98e74d7910d17b04ca87482b21">pgrouting::graph::PgrFlowGraph</a>
+: <a class="el" href="classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a4e5f12d99a3aaeec6784668617ad2c8f">pgrouting::graph::PgrCostFlowGraph</a>
+, <a class="el" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#ac0a7cc98e74d7910d17b04ca87482b21">pgrouting::graph::PgrFlowGraph</a>
+</li>
+<li>supersource
+: <a class="el" href="classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a52391548d28b58228961818e908f73c1">pgrouting::graph::PgrCostFlowGraph</a>
+</li>
+<li>superSource
+: <a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a93e755c24c4c6916a176a6e1d2de8777">pgrouting::graph::PgrDirectedChPPGraph</a>
 </li>
 <li>supersource
 : <a class="el" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a44ad558a727e2f9d29e22ddd5a212487">pgrouting::graph::PgrFlowGraph</a>
+</li>
+<li>superTarget
+: <a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a58a5a884928922c65762392822d7a28d">pgrouting::graph::PgrDirectedChPPGraph</a>
 </li>
 <li>swap_count
 : <a class="el" href="classpgrouting_1_1tsp_1_1TSP.html#a67dedaf0e84ebce1af96d68c46712a80">pgrouting::tsp::TSP&lt; MATRIX &gt;</a>
@@ -249,7 +267,7 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jul 30 2018 10:11:07 for PGROUTING by
+    <li class="footer">Generated on Mon Aug 20 2018 11:14:40 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

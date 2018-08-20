@@ -76,18 +76,19 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Contraction.html",
-"classGraphDefinition.html#af6ee01a277cab98e970b09e6f48103ce",
-"classpgrouting_1_1Identifier.html#aa0a3f24509bd2aded9e50436a1cf285b",
-"classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#a09d144ae10e7f38708dfe6f10521bdc6",
-"classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a51d3dae600843a57ab20c42accfb5db1",
-"classpgrouting_1_1tsp_1_1TSP.html#aefc002eb4850028ef3d20a86c657835b",
-"classpgrouting_1_1vrp_1_1Solution.html#a727fb92ce20cd84bb852a75707cd7eca",
-"classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a6608a42ff54a288e2e1b3bed58c8bcaa",
-"dir_f413d2883acb285bdeb0fac3ae939ed0.html",
-"globals_func_r.html",
-"pgr__assert_8h.html#ad0b8692b21986a9d86dcf801b7433791",
-"structPgr__edge__xy__t.html#a6ee26f23bfc079a5e9583a7edcb683d4",
-"withPoints__ksp_8c.html#a529e030fae0081bd61ab19d92bcdc3e1"
+"classGraphDefinition.html#a01ad124fbb08139fb8b1653081c4e0a7",
+"classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html#aee0ef1e68371b29dc7f98fd02c099cd3",
+"classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ac170db6074beff0055040e570fdb725d",
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#a821adfac3c93392e5603f96b02f317ca",
+"classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a57a154893d0534f034e1dddbc03fe89f",
+"classpgrouting_1_1vrp_1_1Fleet.html#a59bc82f526ef19fe0fd430c73b8efb81",
+"classpgrouting_1_1vrp_1_1Tw__node.html#a8aaa05f836014b72c8ab64353f81886c",
+"classpgrouting_1_1yen_1_1Pgr__ksp.html#add4f27ae948dc9ecd510b71980f42a48",
+"e__report_8h.html",
+"globals_n.html",
+"pgr__allpairs_8hpp.html",
+"solution_8h_source.html",
+"structpgr__randomSpanningTree__t.html#a23a8a8651b82419136e5852cd74d08e4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

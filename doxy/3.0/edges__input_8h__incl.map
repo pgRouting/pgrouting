@@ -1,6 +1,7 @@
 <map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_common/edges_input.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_common/edges_input.h">
-<area shape="rect" id="node3" href="$pgr__flow__t_8h.html" title="c_types/pgr_flow_t.h" alt="" coords="99,124,242,151"/>
-<area shape="rect" id="node4" href="$pgr__basic__edge__t_8h.html" title="c_types/pgr_basic_edge_t.h" alt="" coords="266,124,451,151"/>
-<area shape="rect" id="node5" href="$pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="476,124,623,151"/>
-<area shape="rect" id="node6" href="$pgr__edge__xy__t_8h.html" title="c_types/pgr_edge_xy_t.h" alt="" coords="647,124,815,151"/>
+<area shape="rect" id="node3" href="$pgr__costFlow__t_8h.html" title="c_types/pgr_costFlow_t.h" alt="" coords="99,124,271,151"/>
+<area shape="rect" id="node4" href="$pgr__flow__t_8h.html" title="c_types/pgr_flow_t.h" alt="" coords="295,124,438,151"/>
+<area shape="rect" id="node5" href="$pgr__basic__edge__t_8h.html" title="c_types/pgr_basic_edge_t.h" alt="" coords="462,124,647,151"/>
+<area shape="rect" id="node6" href="$pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="672,124,819,151"/>
+<area shape="rect" id="node7" href="$pgr__edge__xy__t_8h.html" title="c_types/pgr_edge_xy_t.h" alt="" coords="843,124,1011,151"/>
 </map>

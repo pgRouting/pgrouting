@@ -15,9 +15,11 @@ var searchData=
   ['add_5fvehicle',['add_vehicle',['../classpgrouting_1_1vrp_1_1Fleet.html#ac6175454144f3417e7fd582b87eabc52',1,'pgrouting::vrp::Fleet']]],
   ['add_5fvertex_5fid',['add_vertex_id',['../classpgrouting_1_1CH__vertex.html#ab03c743fffb91f4514914701e1f3fee3',1,'pgrouting::CH_vertex']]],
   ['add_5fvertices',['add_vertices',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab13f36eb0578e04260de70dcde6850ab',1,'pgrouting::graph::Pgr_base_graph::add_vertices()'],['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5910494389846e0c9c5892180d4cc9dd',1,'pgrouting::graph::PgrFlowGraph::add_vertices()']]],
-  ['addedge',['addEdge',['../classGraphDefinition.html#a2c40687b3b05b7420adc718ede9af365',1,'GraphDefinition::addEdge()'],['../classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5e621263225f8e2c3240df97949d52c1',1,'pgrouting::trsp::Pgr_trspHandler::addEdge()']]],
+  ['addedge',['addEdge',['../classGraphDefinition.html#a2c40687b3b05b7420adc718ede9af365',1,'GraphDefinition::addEdge()'],['../classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5e621263225f8e2c3240df97949d52c1',1,'pgrouting::trsp::Pgr_trspHandler::addEdge()'],['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ae332714d0cac50310333a89b2912954b',1,'pgrouting::graph::PgrCostFlowGraph::AddEdge()']]],
+  ['addvertices',['AddVertices',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a5b3d68bbd6e999a34a040b7027994b36',1,'pgrouting::graph::PgrCostFlowGraph']]],
   ['adjacent',['adjacent',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#addda685ddfaf2e8f9769a34ef6ba5c77',1,'pgrouting::graph::Pgr_base_graph']]],
   ['adjust_5fpids',['adjust_pids',['../classpgrouting_1_1Pg__points__graph.html#a66a8d1a0fef72e913ec6c2250c695346',1,'pgrouting::Pg_points_graph::adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, Path &amp;path)'],['../classpgrouting_1_1Pg__points__graph.html#a1daf3e5eb10e11a86029ba839cb3ec64',1,'pgrouting::Pg_points_graph::adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, const int64_t &amp;start_pid, const int64_t &amp;end_pid, Path &amp;path)']]],
+  ['aggegratecost',['aggegrateCost',['../classPgr__prim.html#a8d071f4c333f855852d6963a6b58f60f',1,'Pgr_prim']]],
   ['alpha_5fedges',['alpha_edges',['../alpha__driver_8cpp.html#a269b1986c0b1002e29ca46fbd69d10c6',1,'alpha_driver.cpp']]],
   ['alpha_5fshape',['alpha_shape',['../alpha__driver_8cpp.html#a656e571bf590b5b3f71939592d599690',1,'alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **return_tuples, size_t *res_count, char **err_msg):&#160;alpha_driver.cpp'],['../alpha__driver_8h.html#a64fca5dabc4ad9db224e524a154bbff1',1,'alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg):&#160;alpha_driver.cpp']]],
   ['alphashape',['alphashape',['../alpha_8c.html#a7539769eb3b91d75704c2d9b775129c3',1,'alpha.c']]],
@@ -36,5 +38,6 @@ var searchData=
   ['astar_5f1_5fto_5fmany',['astar_1_to_many',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#a76f171bc1f300a5682242449a61c455d',1,'pgrouting::algorithms::Pgr_astar']]],
   ['astar_5fmany_5fgoals_5fvisitor',['astar_many_goals_visitor',['../classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__many__goals__visitor.html#a699356fb36f7f33a0a2c18457fb5d399',1,'pgrouting::algorithms::Pgr_astar::astar_many_goals_visitor']]],
   ['astar_5fone_5fgoal_5fvisitor',['astar_one_goal_visitor',['../classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html#a80ed5c36c3e0e54776457e1f12eccd32',1,'pgrouting::algorithms::Pgr_astar::astar_one_goal_visitor']]],
-  ['astarmanytomany',['astarManyToMany',['../astar_8c.html#adbf9c70afae231caaa6d9fd3d343f47c',1,'astar.c']]]
+  ['astarmanytomany',['astarManyToMany',['../astar_8c.html#adbf9c70afae231caaa6d9fd3d343f47c',1,'astar.c']]],
+  ['augment',['augment',['../namespaceboost_1_1detail.html#a6619c7053acb74f1872e1336eb13dc56',1,'boost::detail']]]
 ];

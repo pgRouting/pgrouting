@@ -11,5 +11,8 @@ var searchData=
   ['max_5fflow_5fdriver_2eh',['max_flow_driver.h',['../max__flow__driver_8h.html',1,'']]],
   ['maximum_5fcardinality_5fmatching_2ec',['maximum_cardinality_matching.c',['../maximum__cardinality__matching_8c.html',1,'']]],
   ['maximum_5fcardinality_5fmatching_5fdriver_2ecpp',['maximum_cardinality_matching_driver.cpp',['../maximum__cardinality__matching__driver_8cpp.html',1,'']]],
-  ['maximum_5fcardinality_5fmatching_5fdriver_2eh',['maximum_cardinality_matching_driver.h',['../maximum__cardinality__matching__driver_8h.html',1,'']]]
+  ['maximum_5fcardinality_5fmatching_5fdriver_2eh',['maximum_cardinality_matching_driver.h',['../maximum__cardinality__matching__driver_8h.html',1,'']]],
+  ['mincostmaxflow_2ec',['minCostMaxFlow.c',['../minCostMaxFlow_8c.html',1,'']]],
+  ['mincostmaxflow_5fdriver_2ecpp',['minCostMaxFlow_driver.cpp',['../minCostMaxFlow__driver_8cpp.html',1,'']]],
+  ['mincostmaxflow_5fdriver_2eh',['minCostMaxFlow_driver.h',['../minCostMaxFlow__driver_8h.html',1,'']]]
 ];

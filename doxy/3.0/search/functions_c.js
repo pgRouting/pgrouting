@@ -1,12 +1,18 @@
 var searchData=
 [
+  ['main',['main',['../bellman__ford__testing_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'bellman_ford_testing.cpp']]],
+  ['make_5fedge_5fwriter',['make_edge_writer',['../bellman__ford__testing_8cpp.html#aa7ccc1f1c19123078db6695150f2380b',1,'bellman_ford_testing.cpp']]],
+  ['make_5fmapreducedweight',['make_mapReducedWeight',['../namespaceboost_1_1detail.html#a3370ddb9d6b743c334a4eb2315095c30',1,'boost::detail']]],
   ['make_5fmatrix',['make_matrix',['../classPgr__allpairs.html#a0b54e6286cca3290ac107dbf76cce130',1,'Pgr_allpairs']]],
   ['make_5fresult',['make_result',['../classPgr__allpairs.html#a51687b103791fd97b3743e8f05d72aa2',1,'Pgr_allpairs::make_result(const G &amp;graph, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix, size_t &amp;result_tuple_count, Matrix_cell_t **postgres_rows) const '],['../classPgr__allpairs.html#a3978f56a3f11ee235fea38b2408ef8ac',1,'Pgr_allpairs::make_result(G &amp;graph, std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix, std::vector&lt; Matrix_cell_t &gt; &amp;rows)']]],
   ['many_5fto_5fmany_5fdijkstra',['many_to_many_dijkstra',['../dijkstra_8c.html#a1bb7c1d86b852022aeb2f209c3528417',1,'dijkstra.c']]],
   ['many_5fwithpointsdd',['many_withPointsDD',['../many__to__dist__withPointsDD_8c.html#ad2891d45a1da4a420ccac452fc92259f',1,'many_to_dist_withPointsDD.c']]],
+  ['mapreducedweight',['MapReducedWeight',['../classboost_1_1detail_1_1MapReducedWeight.html#a4d90d8452f9d70ffa244d9992541e1a5',1,'boost::detail::MapReducedWeight']]],
   ['max_5fcycles',['max_cycles',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a258460907dbf4aeea16ce5dfff7478db',1,'pgrouting::vrp::Pgr_pickDeliver']]],
   ['max_5fflow_5fmany_5fto_5fmany',['max_flow_many_to_many',['../max__flow_8c.html#a681248d427de12e71817df02076246d9',1,'max_flow.c']]],
   ['maximum_5fcardinality_5fmatching',['maximum_cardinality_matching',['../classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#a8400b1f3f77de81fdffc433d5522fa26',1,'pgrouting::flow::PgrCardinalityGraph::maximum_cardinality_matching()'],['../maximum__cardinality__matching_8c.html#abecab1857778932b653593abda4dde28',1,'maximum_cardinality_matching():&#160;maximum_cardinality_matching.c']]],
+  ['mincostmaxflow',['MinCostMaxFlow',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a28c4c1b3af55280347d2f79b8387ef90',1,'pgrouting::graph::PgrCostFlowGraph']]],
+  ['mincostmaxflow_5fmany_5fto_5fmany',['minCostMaxFlow_many_to_many',['../minCostMaxFlow_8c.html#ae37ca593d3aa77b9c55bbe2d35e72eb3',1,'minCostMaxFlow.c']]],
   ['move_5fduration_5fbased',['move_duration_based',['../classpgrouting_1_1vrp_1_1Optimize.html#a558f3e604fc7df1a6b90edfb2135d632',1,'pgrouting::vrp::Optimize']]],
   ['move_5forder',['move_order',['../classpgrouting_1_1vrp_1_1Optimize.html#a4f8e527bcd5a3ffc23dff8c3951dc337',1,'pgrouting::vrp::Optimize']]],
   ['move_5freduce_5fcost',['move_reduce_cost',['../classpgrouting_1_1vrp_1_1Optimize.html#a18e362ade6f898d3b1cbba0505e5abcf',1,'pgrouting::vrp::Optimize']]],

@@ -3,30 +3,39 @@
 <area shape="rect" id="node3" href="$astar_8c.html#adbf9c70afae231caaa6d9fd3d343f47c" title="astarManyToMany" alt="" coords="114,56,245,83"/>
 <area shape="rect" id="node4" href="$bdAstar_8c.html#a330536d15ec4a98cfcedec686dd1beca" title="bd_astar" alt="" coords="143,107,215,133"/>
 <area shape="rect" id="node5" href="$bdDijkstra_8c.html#a15c450e8b0f1fc7425706793227c48a5" title="bdDijkstra" alt="" coords="139,157,220,184"/>
-<area shape="rect" id="node6" href="$biconnectedComponents_8c.html#abd0e2f6f4006b9bef24305df23ee66db" title="postgres_connection.h " alt="" coords="96,208,263,235"/>
-<area shape="rect" id="node7" href="$bridges_8c.html#a5dbe44d5a42d734213825965d978b2b9" title="postgres_connection.h " alt="" coords="147,259,211,285"/>
-<area shape="rect" id="node8" href="$connectedComponents_8c.html#a5e0477c2969e990884e82d377264c37a" title="postgres_connection.h " alt="" coords="101,309,257,336"/>
-<area shape="rect" id="node9" href="$contractGraph_8c.html#a49d0cb0e1a6cc99c9e6cf4ecb9ba609b" title="contractGraph" alt="" coords="127,360,231,387"/>
-<area shape="rect" id="node10" href="$dijkstraVia_8c.html#ada3c99b7af59eabdb7bc8c62cc1cdb0a" title="dijkstraVia" alt="" coords="138,411,221,437"/>
-<area shape="rect" id="node11" href="$many__to__dist__driving__distance_8c.html#aa06bcbb9f84b2c97db4ff61efb2851f0" title="driving_many_to_dist" alt="" coords="107,461,252,488"/>
-<area shape="rect" id="node12" href="$edge__disjoint__paths_8c.html#a428ef5f43c537f6aa69378581e302e65" title="edge_disjoint_paths\l_many_to_many" alt="" coords="111,513,248,554"/>
-<area shape="rect" id="node13" href="$eucledianTSP_8c.html#adf80487dfc6947bf2381c9a40302897b" title="eucledianTSP" alt="" coords="128,579,231,605"/>
-<area shape="rect" id="node14" href="$floydWarshall_8c.html#a658917e09af94c77c65736d7094d0084" title="floydWarshall" alt="" coords="129,629,230,656"/>
-<area shape="rect" id="node15" href="$johnson_8c.html#a0015d89bfe4db8a835ae5e01e5f582d5" title="johnson" alt="" coords="146,680,213,707"/>
-<area shape="rect" id="node16" href="$ksp_8c.html#a44f9fbe5816152227d56c4dbaea59e7d" title="kshortest_path" alt="" coords="125,731,233,757"/>
-<area shape="rect" id="node17" href="$lineGraph_8c.html#a0ccb6069f5d32ede9f4f1d24eaddca06" title="postgres_connection.h " alt="" coords="141,781,218,808"/>
-<area shape="rect" id="node18" href="$lineGraphFull_8c.html#a337d9496ccf3fd17bf9bde910d1916d9" title="lineGraphFull" alt="" coords="130,832,229,859"/>
-<area shape="rect" id="node19" href="$dijkstra_8c.html#a1bb7c1d86b852022aeb2f209c3528417" title="many_to_many_dijkstra" alt="" coords="99,883,259,909"/>
-<area shape="rect" id="node20" href="$many__to__dist__withPointsDD_8c.html#ad2891d45a1da4a420ccac452fc92259f" title="many_withPointsDD" alt="" coords="108,933,251,960"/>
-<area shape="rect" id="node21" href="$max__flow_8c.html#a681248d427de12e71817df02076246d9" title="max_flow_many_to_many" alt="" coords="92,984,267,1011"/>
-<area shape="rect" id="node22" href="$maximum__cardinality__matching_8c.html#abecab1857778932b653593abda4dde28" title="maximum_cardinality\l_matching" alt="" coords="107,1035,252,1077"/>
-<area shape="rect" id="node23" href="$newTSP_8c.html#a828abbb0dd60d155e407b9c264994cf1" title="newTSP" alt="" coords="143,1101,215,1128"/>
-<area shape="rect" id="node24" href="$pickDeliver_8c.html#a7a053147dbbef85c2a19449d5300b785" title="pickDeliver" alt="" coords="136,1152,223,1179"/>
-<area shape="rect" id="node25" href="$pickDeliverEuclidean_8c.html#a9dab1ef459721270f9983aca53c49112" title="pickDeliverEuclidean" alt="" coords="107,1203,251,1229"/>
-<area shape="rect" id="node26" href="$strongComponents_8c.html#afe480bc4995e169ffeb9d3a798ab0d44" title="postgres_connection.h " alt="" coords="113,1253,245,1280"/>
-<area shape="rect" id="node27" href="$trsp_8c.html#a938bf6c15c229413b975362c1bc510ce" title="turn_restrict_shortest\l_path_edge" alt="" coords="107,1305,252,1346"/>
-<area shape="rect" id="node28" href="$new__trsp_8c.html#af4c89ac067e86726831df12f92af3c5d" title="turn_restriction" alt="" coords="125,1371,233,1397"/>
-<area shape="rect" id="node29" href="$turnRestrictedPath_8c.html#a2a474bbd7f19e833cc8817b94ff838f2" title="turnRestrictedPath" alt="" coords="114,1421,245,1448"/>
-<area shape="rect" id="node30" href="$withPoints_8c.html#aaab3ed3bcdef5263b2ac3bc56dcfe410" title="withPoints" alt="" coords="138,1472,221,1499"/>
-<area shape="rect" id="node31" href="$withPoints__ksp_8c.html#ab57087c2c4297cb378bb89fae9e3d7fc" title="withPoints_ksp" alt="" coords="124,1523,235,1549"/>
+<area shape="rect" id="node6" href="$bellman__ford_8c.html#ac4f56d50c4ba19a987b13e70a6e1463f" title="bellman_ford" alt="" coords="131,208,227,235"/>
+<area shape="rect" id="node7" href="$bellman__ford__neg_8c.html#ae118dd73b7882364887c8b11b1196921" title="bellman_ford_neg" alt="" coords="117,259,241,285"/>
+<area shape="rect" id="node8" href="$biconnectedComponents_8c.html#abd0e2f6f4006b9bef24305df23ee66db" title="postgres_connection.h " alt="" coords="96,309,263,336"/>
+<area shape="rect" id="node9" href="$bridges_8c.html#a5dbe44d5a42d734213825965d978b2b9" title="postgres_connection.h " alt="" coords="147,360,211,387"/>
+<area shape="rect" id="node10" href="$connectedComponents_8c.html#a5e0477c2969e990884e82d377264c37a" title="postgres_connection.h " alt="" coords="101,411,257,437"/>
+<area shape="rect" id="node11" href="$contractGraph_8c.html#a49d0cb0e1a6cc99c9e6cf4ecb9ba609b" title="contractGraph" alt="" coords="127,461,231,488"/>
+<area shape="rect" id="node12" href="$dagShortestPath_8c.html#af8c2794c88c01060332bc8fd952076f7" title="dagShortestPath" alt="" coords="120,512,239,539"/>
+<area shape="rect" id="node13" href="$dijkstraVia_8c.html#ada3c99b7af59eabdb7bc8c62cc1cdb0a" title="dijkstraVia" alt="" coords="138,563,221,589"/>
+<area shape="rect" id="node14" href="$directedChPP_8c.html#ae89cd425499f1e8727e766d38c014bb6" title="postgres_connection.h " alt="" coords="128,613,231,640"/>
+<area shape="rect" id="node15" href="$many__to__dist__driving__distance_8c.html#aa06bcbb9f84b2c97db4ff61efb2851f0" title="driving_many_to_dist" alt="" coords="107,664,252,691"/>
+<area shape="rect" id="node16" href="$edge__disjoint__paths_8c.html#a428ef5f43c537f6aa69378581e302e65" title="edge_disjoint_paths\l_many_to_many" alt="" coords="111,715,248,757"/>
+<area shape="rect" id="node17" href="$eucledianTSP_8c.html#adf80487dfc6947bf2381c9a40302897b" title="eucledianTSP" alt="" coords="128,781,231,808"/>
+<area shape="rect" id="node18" href="$floydWarshall_8c.html#a658917e09af94c77c65736d7094d0084" title="floydWarshall" alt="" coords="129,832,230,859"/>
+<area shape="rect" id="node19" href="$johnson_8c.html#a0015d89bfe4db8a835ae5e01e5f582d5" title="johnson" alt="" coords="146,883,213,909"/>
+<area shape="rect" id="node20" href="$kruskal_8c.html#ae13be52df7d53ae0e308ea523444fd99" title="kruskal" alt="" coords="147,933,211,960"/>
+<area shape="rect" id="node21" href="$ksp_8c.html#a44f9fbe5816152227d56c4dbaea59e7d" title="kshortest_path" alt="" coords="125,984,233,1011"/>
+<area shape="rect" id="node22" href="$lineGraph_8c.html#a0ccb6069f5d32ede9f4f1d24eaddca06" title="postgres_connection.h " alt="" coords="141,1035,218,1061"/>
+<area shape="rect" id="node23" href="$lineGraphFull_8c.html#a337d9496ccf3fd17bf9bde910d1916d9" title="lineGraphFull" alt="" coords="130,1085,229,1112"/>
+<area shape="rect" id="node24" href="$dijkstra_8c.html#a1bb7c1d86b852022aeb2f209c3528417" title="many_to_many_dijkstra" alt="" coords="99,1136,259,1163"/>
+<area shape="rect" id="node25" href="$many__to__dist__withPointsDD_8c.html#ad2891d45a1da4a420ccac452fc92259f" title="many_withPointsDD" alt="" coords="108,1187,251,1213"/>
+<area shape="rect" id="node26" href="$max__flow_8c.html#a681248d427de12e71817df02076246d9" title="max_flow_many_to_many" alt="" coords="92,1237,267,1264"/>
+<area shape="rect" id="node27" href="$maximum__cardinality__matching_8c.html#abecab1857778932b653593abda4dde28" title="maximum_cardinality\l_matching" alt="" coords="107,1289,252,1330"/>
+<area shape="rect" id="node28" href="$minCostMaxFlow_8c.html#ae37ca593d3aa77b9c55bbe2d35e72eb3" title="postgres_connection.h " alt="" coords="98,1354,261,1395"/>
+<area shape="rect" id="node29" href="$newTSP_8c.html#a828abbb0dd60d155e407b9c264994cf1" title="newTSP" alt="" coords="143,1420,215,1447"/>
+<area shape="rect" id="node30" href="$pickDeliver_8c.html#a7a053147dbbef85c2a19449d5300b785" title="pickDeliver" alt="" coords="136,1471,223,1497"/>
+<area shape="rect" id="node31" href="$pickDeliverEuclidean_8c.html#a9dab1ef459721270f9983aca53c49112" title="pickDeliverEuclidean" alt="" coords="107,1521,251,1548"/>
+<area shape="rect" id="node32" href="$prim_8c.html#aa7d8aaafc3d67bc89de8898b87ee9d84" title="prim" alt="" coords="156,1572,203,1599"/>
+<area shape="rect" id="node33" href="$randomSpanningTree_8c.html#af3053b78814b65ec9a988ff04879a308" title="randomSpanningTree" alt="" coords="107,1623,252,1649"/>
+<area shape="rect" id="node34" href="$stoerWagner_8c.html#adc38e9c59eb5b52a25cc85d59ac585c9" title="stoerWagner" alt="" coords="131,1673,227,1700"/>
+<area shape="rect" id="node35" href="$strongComponents_8c.html#afe480bc4995e169ffeb9d3a798ab0d44" title="postgres_connection.h " alt="" coords="113,1724,245,1751"/>
+<area shape="rect" id="node36" href="$trsp_8c.html#a938bf6c15c229413b975362c1bc510ce" title="turn_restrict_shortest\l_path_edge" alt="" coords="107,1775,252,1817"/>
+<area shape="rect" id="node37" href="$new__trsp_8c.html#af4c89ac067e86726831df12f92af3c5d" title="turn_restriction" alt="" coords="125,1841,233,1868"/>
+<area shape="rect" id="node38" href="$turnRestrictedPath_8c.html#a2a474bbd7f19e833cc8817b94ff838f2" title="turnRestrictedPath" alt="" coords="114,1892,245,1919"/>
+<area shape="rect" id="node39" href="$withPoints_8c.html#aaab3ed3bcdef5263b2ac3bc56dcfe410" title="withPoints" alt="" coords="138,1943,221,1969"/>
+<area shape="rect" id="node40" href="$withPoints__ksp_8c.html#ab57087c2c4297cb378bb89fae9e3d7fc" title="withPoints_ksp" alt="" coords="124,1993,235,2020"/>
 </map>
