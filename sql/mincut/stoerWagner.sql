@@ -36,4 +36,4 @@ CREATE OR REPLACE FUNCTION pgr_stoerWagner(
     OUT mincut FLOAT)           -- vertices of partition, min-cut weight of a undirected graph 
 RETURNS SETOF RECORD AS
 '${MODULE_PATHNAME}', 'stoerWagner'
-LANGUAGE c VOLATILE;
+LANGUAGE c VOLATILE STRICT;

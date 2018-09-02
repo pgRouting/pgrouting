@@ -40,4 +40,4 @@ CREATE OR REPLACE FUNCTION _pgr_randomSpanningTree(
     OUT tree_cost FLOAT)        -- Spanning tree cost 
 RETURNS SETOF RECORD AS
 '${MODULE_PATHNAME}', 'randomSpanningTree'
-LANGUAGE c VOLATILE;
+LANGUAGE c VOLATILE STRICT;
