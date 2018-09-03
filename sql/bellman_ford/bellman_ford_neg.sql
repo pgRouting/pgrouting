@@ -55,8 +55,6 @@ $BODY$
     FROM _pgr_bellmanFordNeg(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], $4::BIGINT[], directed, false ) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
-COST 100
-ROWS 1000;
 
 
 

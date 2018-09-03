@@ -50,8 +50,6 @@ $BODY$
     FROM _pgr_bellmanFord(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false ) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
-COST 100
-ROWS 1000;
 
 
 
