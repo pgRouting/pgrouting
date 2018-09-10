@@ -46,7 +46,7 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -68,7 +68,7 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -90,7 +90,7 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), $2::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true, normal:=false) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -113,7 +113,7 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), $2::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
