@@ -48,6 +48,6 @@ BEGIN
         FROM _pgr_withPoints($1, $2, $3, $3, $4,  $5, TRUE, TRUE) AS a;
 END
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;
