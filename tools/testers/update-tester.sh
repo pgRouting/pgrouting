@@ -24,7 +24,7 @@
 
 # ********************************************************************PGR-GNU*/
 
-set -e
+#set -e
 
 # ----------------------
 #
@@ -39,10 +39,14 @@ echo -
 #  bash tools/testers/update-tester.sh
 #
 
-CURRENT=2.5.2
+cd build
+sudo make install
+cd ..
+
+CURRENT=2.5.4
 
 if [ ! -f build/sql/pgrouting--$CURRENT.sql ]; then
-   echo "File not found:  build/lib/pgrouting--$CURRENT.sql "
+   echo "File not found:  build/sql/pgrouting--$CURRENT.sql "
    exit 1
 fi
 
@@ -53,10 +57,6 @@ cp build/sql/pgrouting-* tools/sql-update-scripts
 #TODO automatically check  the diff is empty
 #git diff
 
-cd build
-sudo make install
-cd ..
-
 
 
 function update_test {
@@ -66,14 +66,15 @@ echo ------------------------------------
 echo Updating from $1 to $2
 echo ------------------------------------
 
-INSTALLED=$(locate /usr/share/postgresql/9.3/extension/pgrouting--$1.sql)
+INSTALLED=$(locate /usr/share/postgresql/9.5/extension/pgrouting--$1.sql)
+echo "INSTALLED $INSTALLED"
 
-if [ "$INSTALLED" == "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql" ]
+if [ "$INSTALLED" == "/usr/share/postgresql/9.5/extension/pgrouting--$1.sql" ]
 then
-    echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql found"
+    echo "/usr/share/postgresql/9.5/extension/pgrouting--$1.sql found"
 else
-    echo "FATAL: /usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
-    exit 1
+    echo "FATAL: /usr/share/postgresql/9.5/extension/pgrouting--$1.sql Not found"
+    return 1
 fi
 
 
@@ -81,6 +82,7 @@ createdb  ___test_update
 psql  ___test_update  <<EOF
 CREATE extension postgis;
 CREATE extension pgrouting with version '$1';
+SELECT pgr_version();
 EOF
 
 OLD_VERSION=$(psql ___test_update -t -c 'SELECT version FROM pgr_version()')
@@ -90,12 +92,16 @@ if [ "b$OLD_VERSION" != "b $1" ]
 then
     echo "ERROR: Version $1 not found on the system"
     dropdb ___test_update
-    exit 1
+    return 1
 fi
 
 
 
-psql ___test_update -c "ALTER extension pgrouting update to '$2'"
+psql ___test_update <<EOF
+ALTER extension pgrouting update to '$2';
+SELECT pgr_version();
+EOF
+
 
 
 NEW_VERSION=$(psql ___test_update -t -c 'SELECT version FROM pgr_version()')
@@ -106,7 +112,7 @@ if [ "b$NEW_VERSION" != "b $2" ]
 then
     echo "FAIL: Could not update from version $1 to version $2"
     dropdb ___test_update
-    exit 1
+    return 1
 fi
 
 dropdb ___test_update
@@ -117,6 +123,8 @@ dropdb ___test_update
 ### updates from 2.5
 #------------------------------------
 
+update_test 2.5.3 $CURRENT
+update_test 2.5.2 $CURRENT
 update_test 2.5.1 $CURRENT
 update_test 2.5.0 $CURRENT
 

@@ -36,7 +36,7 @@ fi
 
 }
 
-function test_file {                                                                                                                                                        
+function test_file {
 
 if [ -f sql/sigs/pgrouting--$1.sig ]
 then
@@ -145,7 +145,7 @@ echo
 echo "### Verify release_notes.rst & NEWS"
 echo
 #---------------------------------------------------------------------
- 
+
 if [[ -n $DEBUG ]]; then
     echo
     echo "\`\`\`"
@@ -187,7 +187,7 @@ echo "- [x] NEWS is up to date"
 #---------------------------------------------------------------------
 echo
 echo "## Check version information"
-echo 
+echo
 #---------------------------------------------------------------------
 #---------------------------------------------------------------------
 echo
@@ -282,6 +282,7 @@ echo
 echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
+test_file 2.5.4
 test_file 2.5.3
 test_file 2.5.2
 test_file 2.5.1
@@ -332,7 +333,9 @@ echo - [x] completed local builds
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh 2.5.2 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.5.4 ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
+test_file 2.5.3
+test_file 2.5.2
 test_file 2.5.1
 test_file 2.5.0
 test_file 2.4.2
