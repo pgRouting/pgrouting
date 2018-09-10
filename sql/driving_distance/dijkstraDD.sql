@@ -53,7 +53,7 @@ $BODY$
     SELECT a.seq, a.node, a.edge, a.cost, a.agg_cost
     FROM pgr_drivingDistance($1, ARRAY[$2]::BIGINT[], $3, $4, false) a;
 $BODY$
-LANGUAGE SQL VOLATILE
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
