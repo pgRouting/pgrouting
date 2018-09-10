@@ -47,7 +47,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     )
   RETURNS SETOF RECORD AS
  '${MODULE_PATHNAME}', 'edge_disjoint_paths_many_to_many'
-    LANGUAGE c VOLATILE;
+    LANGUAGE c VOLATILE STRICT;
 
 /***********************************
         ONE TO ONE
@@ -71,7 +71,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     SELECT a.seq, a.path_id, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
     FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
   $BODY$
-LANGUAGE sql VOLATILE;
+LANGUAGE sql VOLATILE STRICT;
 
 /***********************************
         ONE TO MANY
@@ -96,7 +96,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     SELECT a.seq, a.path_id, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4) AS a;
   $BODY$
-LANGUAGE sql VOLATILE;
+LANGUAGE sql VOLATILE STRICT;
 
 /***********************************
         MANY TO ONE
@@ -121,4 +121,4 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     SELECT a.seq, a.path_id, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
   $BODY$
-LANGUAGE sql VOLATILE;
+LANGUAGE sql VOLATILE STRICT;
