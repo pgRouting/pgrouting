@@ -55,7 +55,7 @@ CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid integer, end_vid in
             FROM _pgr_ksp(sql::text, start_vid, end_vid, k, TRUE, FALSE) WHERE path_id <= k;
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE
+  LANGUAGE plpgsql VOLATILE STRICT
   COST 100
   ROWS 1000;
 
