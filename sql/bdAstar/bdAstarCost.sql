@@ -42,7 +42,7 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -63,7 +63,7 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -84,7 +84,7 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -105,7 +105,7 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
