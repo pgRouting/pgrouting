@@ -35,7 +35,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
         SELECT flow
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], algorithm := 1, only_flow := true);
   $BODY$
-  LANGUAGE SQL VOLATILE;
+  LANGUAGE SQL VOLATILE STRICT;
 
 /***********************************
         ONE TO ONE
@@ -51,7 +51,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
         SELECT *
         FROM pgr_maxflow($1, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[]);
   $BODY$
-  LANGUAGE SQL VOLATILE;
+  LANGUAGE SQL VOLATILE STRICT;
 
 /***********************************
         ONE TO MANY
@@ -67,7 +67,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
         SELECT *
         FROM pgr_maxflow($1, ARRAY[$2]::BIGINT[], $3::BIGINT[]);
   $BODY$
-  LANGUAGE SQL VOLATILE;
+  LANGUAGE SQL VOLATILE STRICT;
 
 /***********************************
         MANY TO ONE
@@ -83,5 +83,5 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
         SELECT *
         FROM pgr_maxflow($1, $2::BIGINT[], ARRAY[$3]::BIGINT[]);
   $BODY$
-  LANGUAGE SQL VOLATILE;
+  LANGUAGE SQL VOLATILE STRICT;
 

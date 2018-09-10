@@ -45,7 +45,7 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 1);
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE sql VOLATILE STRICT;
 
 
 
@@ -65,7 +65,7 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 1);
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE sql VOLATILE STRICT;
 
 
 
@@ -85,7 +85,7 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 1);
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE sql VOLATILE STRICT;
 
 
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
@@ -104,5 +104,5 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 1);
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE sql VOLATILE STRICT;
 
