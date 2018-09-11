@@ -37,4 +37,4 @@ CREATE OR REPLACE FUNCTION pgr_kruskal(
     OUT tree_cost FLOAT)        -- Spanning tree cost 
 RETURNS SETOF RECORD AS
 '${MODULE_PATHNAME}', 'kruskal'
-LANGUAGE c VOLATILE;
+LANGUAGE c VOLATILE STRICT;
