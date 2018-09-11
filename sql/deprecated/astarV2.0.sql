@@ -45,6 +45,6 @@ BEGIN
     FROM pgr_astar(sql, ARRAY[$2], ARRAY[$3], directed);
 END
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;

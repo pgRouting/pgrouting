@@ -53,7 +53,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source BIGINT, di
                 FROM pgr_drivingDistance($1, ARRAY[$2]::BIGINT[], $3, $4, false);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE
+  LANGUAGE plpgsql VOLATILE STRICT
   COST 100
   ROWS 1000;
 
