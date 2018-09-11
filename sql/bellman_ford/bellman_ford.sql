@@ -1,13 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: bellman_ford.sql
 
-Generated with Template by:
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2018 Sourabh Garg
+Mail: sourabh.garg.mat@gmail.com
 
 ------
 
@@ -50,9 +49,7 @@ $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_bellmanFord(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false ) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
+LANGUAGE sql VOLATILE STRICT;
 
 
 
@@ -76,7 +73,7 @@ $BODY$
     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
     FROM _pgr_bellmanFord(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 
@@ -102,7 +99,7 @@ $BODY$
     SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
     FROM _pgr_bellmanFord(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false) AS a;
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 
@@ -127,4 +124,4 @@ $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost 
     FROM _pgr_bellmanFord(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;

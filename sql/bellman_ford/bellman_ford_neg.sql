@@ -54,9 +54,7 @@ $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_bellmanFordNeg(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], $4::BIGINT[], directed, false ) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
-COST 100
-ROWS 1000;
+LANGUAGE sql VOLATILE STRICT;
 
 
 
@@ -82,7 +80,7 @@ $BODY$
     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost 
     FROM _pgr_bellmanFordNeg(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], directed, false) AS a;
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 
@@ -108,7 +106,7 @@ $BODY$
     SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost 
     FROM _pgr_bellmanFordNeg(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4::BIGINT[], directed, false) AS a;
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 
@@ -134,4 +132,4 @@ $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost 
     FROM _pgr_bellmanFordNeg(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], ARRAY[$4]::BIGINT[], directed, false) AS a;
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
