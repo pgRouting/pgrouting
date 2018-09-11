@@ -44,7 +44,7 @@ $BODY$
     SELECT *
     FROM _pgr_prim(_pgr_get_statement($1), CAST(0 AS BIGINT), FALSE);
 $BODY$
-LANGUAGE sql VOLATILE;
+LANGUAGE sql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_prim(
     edges_sql TEXT,
@@ -62,7 +62,7 @@ $BODY$
     SELECT *
     FROM _pgr_prim(_pgr_get_statement($1), $2, TRUE);
 $BODY$
-LANGUAGE sql VOLATILE;
+LANGUAGE sql VOLATILE STRICT;
 
 COMMENT ON FUNCTION  pgr_prim(TEXT) IS 'pgr_prim()';
 COMMENT ON FUNCTION  pgr_prim(TEXT, BIGINT) IS 'pgr_prim(use root vertex)';
