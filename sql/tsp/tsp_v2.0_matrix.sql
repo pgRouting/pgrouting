@@ -46,7 +46,7 @@ BEGIN
     END LOOP;
 END;
 $body$
-language plpgsql volatile cost 500 ROWS 50;
+language plpgsql volatile STRICT cost 500 ROWS 50;
 
 
 
@@ -92,4 +92,4 @@ BEGIN
     DROP TABLE ___tmp2;
 END;
 $body$
-language plpgsql volatile cost 500 ROWS 50;
+language plpgsql volatile STRICT cost 500 ROWS 50;
