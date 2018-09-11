@@ -49,7 +49,7 @@ CREATE OR REPLACE FUNCTION pgr_apspJohnson(edges_sql text)
          FROM  pgr_johnson(sql, TRUE);
   END
 $BODY$
-  LANGUAGE plpgsql VOLATILE
+  LANGUAGE plpgsql VOLATILE STRICT
   COST 100
   ROWS 1000;
 

@@ -48,6 +48,6 @@ BEGIN
     FROM _pgr_bdDijkstra(new_sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
   END
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;

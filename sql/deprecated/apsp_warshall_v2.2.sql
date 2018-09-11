@@ -50,7 +50,7 @@ CREATE OR REPLACE FUNCTION pgr_apspWarshall(edges_sql text, directed boolean, ha
          FROM  pgr_floydWarshall(sql, directed);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE
+  LANGUAGE plpgsql VOLATILE STRICT
   COST 100
   ROWS 1000;
 
