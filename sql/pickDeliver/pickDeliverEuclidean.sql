@@ -50,5 +50,5 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
 
   RETURNS SETOF RECORD AS
  '${MODULE_PATHNAME}', 'pickDeliverEuclidean'
-    LANGUAGE c VOLATILE;
+    LANGUAGE c VOLATILE STRICT;
 
