@@ -49,7 +49,7 @@ $BODY$
             ARRAY[$4]::BIGINT[],
             directed) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -82,7 +82,7 @@ $BODY$
             $4::bigint[],
             directed) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -115,7 +115,7 @@ $BODY$
             ARRAY[$4]::BIGINT[],
             $5) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -148,7 +148,7 @@ $BODY$
             $4::bigint[],
             $5) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
