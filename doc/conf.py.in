@@ -240,7 +240,7 @@ latex_domain_indices = False
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index_man', 'pgrouting', u'pgRouting Reference', u'pgRouting Contributors', 7)
+    ('index', 'pgrouting', u'pgRouting Reference', u'pgRouting Contributors', 7)
 ]
 
 # If true, show URL addresses after external links.
