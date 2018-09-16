@@ -64,7 +64,7 @@ $BODY$
     SELECT a.seq, a.node, a.edge, a.cost, a.agg_cost
     FROM pgr_withPointsDD($1, $2, ARRAY[$3]::BIGINT[], $4, $5, $6, $7, false) a;
 $BODY$
-LANGUAGE SQL VOLATILE
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 

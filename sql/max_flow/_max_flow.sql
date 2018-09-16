@@ -45,6 +45,6 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     )
   RETURNS SETOF RECORD AS
  '${MODULE_PATHNAME}', 'max_flow_many_to_many'
-    LANGUAGE c VOLATILE;
+    LANGUAGE c VOLATILE STRICT;
 
 

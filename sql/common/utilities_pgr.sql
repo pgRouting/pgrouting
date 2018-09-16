@@ -214,7 +214,7 @@ BEGIN
     IF (sql IS NULL) THEN
       RETURN   o_sql;
     ELSE
-      RETURN  regexp_replace(sql, '(.)* as ', '', 'i');
+      RETURN  regexp_replace(regexp_replace(regexp_replace(sql, '\s(as)\s', '___foo___', 'i'), '^.*___foo___', '','i'), ';$', '');
     END IF;
 END
 $BODY$

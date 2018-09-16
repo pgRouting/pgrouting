@@ -238,6 +238,9 @@ union_sql2 TEXT;
 final_sql TEXT;
 
 BEGIN
+    IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
+        RETURN;
+    END IF;
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
 
     new_sql := sql;
