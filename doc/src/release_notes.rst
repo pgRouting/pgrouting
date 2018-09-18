@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_5_4`
 * :ref:`changelog_2_5_3`
 * :ref:`changelog_2_5_2`
 * :ref:`changelog_2_5_1`
@@ -39,6 +40,17 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_2_5_4:
+
+pgRouting 2.5.4 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* Fix server crash on several functions.
 
 .. _changelog_2_5_3:
 

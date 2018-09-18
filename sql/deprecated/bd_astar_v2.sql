@@ -53,7 +53,7 @@ BEGIN
     FROM _pgr_bdAstar(new_sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed);
   END
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;
 

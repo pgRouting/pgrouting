@@ -158,7 +158,7 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
          FROM pgr_dijkstraVia(new_edges, via_vertices, directed, has_rcost);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE
+  LANGUAGE plpgsql VOLATILE STRICT
   COST 100
   ROWS 1000;
 

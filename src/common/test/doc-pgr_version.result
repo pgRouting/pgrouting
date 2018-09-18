@@ -4,9 +4,9 @@ SET client_min_messages TO NOTICE;
 SET
 -- q1
 SELECT version FROM pgr_version();
- version 
+ version
 ---------
- 2.5.3
+ 2.5.4
 (1 row)
 
 -- q2
