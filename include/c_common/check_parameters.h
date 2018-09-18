@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: matrix_cell_t.h
+File: check_parameters.h
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+vicky_vergara@hotmail.com
 
 ------
 
@@ -21,48 +21,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_MATRIX_CELL_T_H_
-#define INCLUDE_C_TYPES_MATRIX_CELL_T_H_
+#ifndef INCLUDE_C_COMMON_CHECK_PARAMETERS_H_
+#define INCLUDE_C_COMMON_CHECK_PARAMETERS_H_
 #pragma once
 
+#include "c_common/postgres_connection.h"
 
-#ifdef __cplusplus
+void
+check_parameters(
+        int heuristic,
+        double factor,
+        double epsilon);
 
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#if __GNUC__ > 5
-#pragma GCC diagnostic ignored "-Wpedantic"
-#else
-#pragma GCC diagnostic ignored "-pedantic"
-#endif
-#endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
-typedef struct matrix_cell {
-    int64_t from_vid;
-    int64_t to_vid;
-    double cost;
-} Matrix_cell_t;
-
-#endif  // INCLUDE_C_TYPES_MATRIX_CELL_T_H_
+#endif  // INCLUDE_C_COMMON_CHECK_PARAMETERS_H_
