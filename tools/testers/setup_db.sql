@@ -22,9 +22,12 @@ CREATE EXTENSION pgrouting;
 BEGIN;
 
     \i sampledata.sql
+    \i vrppdtw_data.sql
+    \i vrpOneDepot.data
     \i innerQuery.sql
     \i innerQuery_old.sql
     \i inner_styles.sql
     \i old_inner_styles.sql
+    \i no_crash_test.sql
 
 END;

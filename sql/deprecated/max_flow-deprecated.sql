@@ -49,7 +49,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
         FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
@@ -69,7 +69,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
         FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
@@ -89,7 +89,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
         FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 /***********************************
         ONE TO MANY
@@ -115,7 +115,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
         FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
@@ -135,7 +135,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
         FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
@@ -155,7 +155,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
         FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 /***********************************
         MANY TO ONE
@@ -181,7 +181,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
         FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
@@ -201,7 +201,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
         FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
@@ -221,7 +221,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
         FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 /***********************************
         MANY TO MANY
@@ -248,7 +248,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
         FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
@@ -268,7 +268,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
         FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
@@ -288,5 +288,5 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
         FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE plpgsql VOLATILE STRICT;
 

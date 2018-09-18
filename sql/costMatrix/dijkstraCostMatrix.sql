@@ -40,7 +40,7 @@ BEGIN
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $2, $3, true) a;
 END
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;
 

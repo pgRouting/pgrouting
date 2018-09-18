@@ -47,7 +47,7 @@ $BODY$
     SELECT $3, $4, a.agg_cost
     FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -71,7 +71,7 @@ $BODY$
     SELECT $3, a.end_pid, a.agg_cost
     FROM _pgr_withPoints(_pgr_get_statement($1), $2, ARRAY[$3]::BIGINT[], $4::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -95,7 +95,7 @@ $BODY$
     SELECT a.start_pid, $4, a.agg_cost
     FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -119,6 +119,6 @@ $BODY$
     SELECT a.start_pid, a.end_pid, a.agg_cost
     FROM _pgr_withPoints(_pgr_get_statement($1), $2, $3::BIGINT[], $4::BIGINT[], $5,  $6, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE sql VOLATILE
+LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;

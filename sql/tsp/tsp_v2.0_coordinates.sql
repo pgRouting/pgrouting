@@ -86,4 +86,4 @@ BEGIN
 
 END;
 $body$
-language plpgsql volatile cost 500 ROWS 50;
+language plpgsql volatile STRICT cost 500 ROWS 50;
