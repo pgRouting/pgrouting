@@ -67,7 +67,7 @@ BEGIN
                 || astar_sql || ', '
                 || count_query  || ', '
                 || value_query
-                || ' (SELECT * FROM count_q) UNION (SELECT * FROM vc)';
+                || ' (SELECT * FROM count_q) UNION (SELECT * FROM vc) LIMIT 1';
 
             RETURN query SELECT results_eq(t_query, 'select true', t_query);
 
