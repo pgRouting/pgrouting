@@ -1,5 +1,6 @@
 ADD_LIBRARY(common OBJECT
     postgres_connection.c
+    check_parameters.c
     e_report.c
     #restrict_input.c
     basePath_SSEC.cpp

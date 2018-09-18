@@ -1,8 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: matrix_cell_t.h
+File: astarOneToOne.c
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail:
 
 ------
 
@@ -21,48 +26,29 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_MATRIX_CELL_T_H_
-#define INCLUDE_C_TYPES_MATRIX_CELL_T_H_
-#pragma once
+#include "c_common/check_parameters.h"
 
 
-#ifdef __cplusplus
+void
+check_parameters(
+        int heuristic,
+        double factor,
+        double epsilon) {
+    if (heuristic > 5 || heuristic < 0) {
+        ereport(ERROR,
+                (errmsg("Unknown heuristic"),
+                 errhint("Valid values: 0~5")));
+    }
+    if (factor <= 0) {
+        ereport(ERROR,
+                (errmsg("Factor value out of range"),
+                 errhint("Valid values: positive non zero")));
+    }
+    if (epsilon < 1) {
+        ereport(ERROR,
+                (errmsg("Epsilon value out of range"),
+                 errhint("Valid values: 1 or greater than 1")));
+    }
+}
 
-#include <cstddef>
-
-#else  // __cplusplus
-
-// for bool
-#ifdef __GNUC__
-#if __GNUC__ > 5
-#pragma GCC diagnostic ignored "-Wpedantic"
-#else
-#pragma GCC diagnostic ignored "-pedantic"
-#endif
-#endif
-
-#include <postgres.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-// For NULL & size_t
-#include <stdlib.h>
-
-
-#endif  // __cplusplus
-
-// For int64_t etc
-#include <stdint.h>
-
-
-typedef struct matrix_cell {
-    int64_t from_vid;
-    int64_t to_vid;
-    double cost;
-} Matrix_cell_t;
-
-#endif  // INCLUDE_C_TYPES_MATRIX_CELL_T_H_
