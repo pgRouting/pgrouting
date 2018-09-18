@@ -8,9 +8,9 @@ SELECT * FROM pgr_bdAstarCost(
     FROM edge_table',
     2, 3
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
+         2 |       3 |       10
 (1 row)
 
 -- q2
@@ -20,9 +20,9 @@ SELECT * FROM pgr_bdAstarCost(
     2, 3,
     true, heuristic := 2
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
+         2 |       3 |        6
 (1 row)
 
 -- q3
@@ -32,10 +32,10 @@ SELECT * FROM pgr_bdAstarCost(
     2, ARRAY[3, 11],
     heuristic := 3, factor := 3.5
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
-         2 |      11 |        3
+         2 |       3 |    66.25
+         2 |      11 |     27.5
 (2 rows)
 
 -- q4
@@ -45,10 +45,10 @@ SELECT * FROM pgr_bdAstarCost(
     ARRAY[2, 7], 3,
     false, heuristic := 4
 );
- start_vid | end_vid | agg_cost 
------------+---------+----------
-         2 |       3 |        1
-         7 |       3 |        4
+ start_vid | end_vid |     agg_cost
+-----------+---------+------------------
+         2 |       3 |                1
+         7 |       3 | 7.65028153987288
 (2 rows)
 
 -- q5
@@ -58,12 +58,12 @@ SELECT * FROM pgr_bdAstarCost(
     ARRAY[2, 7], ARRAY[3, 11],
     factor := 0.5
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
-         2 |      11 |        3
-         7 |       3 |        6
-         7 |      11 |        4
+         2 |       3 |      7.5
+         2 |      11 |        4
+         7 |       3 |     11.5
+         7 |      11 |      6.5
 (4 rows)
 
 -- q6
