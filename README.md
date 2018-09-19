@@ -20,18 +20,22 @@ It uses Sphinx template styles, but it is not generated automatically.
 
 # for user's documentation in develop
 
+```
 rm -Rf dev 
 mkdir dev
-cp -r build/doc/_build/html dev 
-rm -rf dev/en/_sources
+cp -r build/doc/html dev 
 git add dev
+```
 
 # for developers documentation
-    
-rm -Rf doxy/2.5
-cp -r build/doxygen/html doxy/2.5
-git add doxy/2.5
 
+``` 
+rm -Rf doxy/3.0
+cp -r build/doxygen/html doxy/3.0
+git add doxy/3.0
+```
+
+# for the pdf
 
     cp build/latex/pgRoutingDocumentation.pdf dev/
     gzip -c build/man/pgrouting.7 > dev/pgrouting.7.gz
