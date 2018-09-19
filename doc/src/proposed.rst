@@ -114,7 +114,7 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
-:ref:`ChPP`
+:doc:`ChPP-family`
 
 .. include:: ChPP-family.rst
    :start-after: index from here
@@ -144,8 +144,11 @@ Experimental Functions
 
 .. rubric:: Shortest Path Algorithms
 
-- :ref:`pgr_bellmanFord` - Return shortest path for a undirected or directed  negative weighted graph.
-- :ref:`pgr_dagShortestPath` - Return shortest path for directed acyclic graph
+- :doc:`pgr_bellmanFord` - Return shortest path for a undirected or directed  negative weighted graph.
+- :doc:`pgr_dagShortestPath` - Return shortest path for directed acyclic graph
+- :doc:`pgr_kruskal` - TBD
+- :doc:`pgr_prim` - TBD
+- :doc:`pgr_stoerWagner` - TBD
 
 .. toctree::
   :hidden:
@@ -158,7 +161,10 @@ Experimental Functions
   pgr_vrpOneDepot
   pgr_bellmanFord
   pgr_dagShortestPath
-  
+  pgr_kruskal
+  pgr_prim
+  pgr_stoerWagner
+
 
 .. rubric:: Graph Operations
 
@@ -171,9 +177,9 @@ Experimental Functions
 .. toctree::
   :hidden:
 
+  transformation-family
   pgr_lineGraph
   pgr_lineGraphFull
-  transformation-family
 
 See Also
 -------------------------------------------------------------------------------

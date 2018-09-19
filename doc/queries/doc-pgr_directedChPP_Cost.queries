@@ -8,7 +8,7 @@ SELECT * FROM pgr_directedChPP_Cost(
      source, target,
      cost, reverse_cost FROM edge_table where id < 17'
 );
- pgr_directedchpp_cost 
+ pgr_directedchpp_cost
 -----------------------
                     34
 (1 row)
@@ -19,7 +19,7 @@ SELECT * FROM pgr_directedChPP_Cost(
      source, target,
      cost, reverse_cost FROM edge_table where id = 9 or id = 11 or id = 13 or id = 15'
 );
- pgr_directedchpp_cost 
+ pgr_directedchpp_cost
 -----------------------
                      8
 (1 row)

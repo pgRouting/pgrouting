@@ -7,12 +7,27 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _ChPP:
-
 Chinese Postman Problem - Family of functions
 ================================================
 
+.. index from here
+
+pgr_directedChPP_Cost.rst  pgr_directedChPP.rst
+* :doc:`pgr_directedChPP` - Get the aggregate cost of the shortest paths.
+* :doc:`pgr_directedChPP_Cost` - Dijkstra's algorithm for the shortest paths.
+
+.. index to here
+
+.. toctree::
+  :hidden:
+
+  pgr_directedChPP
+  pgr_directedChPP_Cost
+
+
+
 Given the following query:
+
 
 
 pgr_directedChPP(:math:`sql`)
