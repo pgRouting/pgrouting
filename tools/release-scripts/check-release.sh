@@ -264,16 +264,9 @@ if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
 fi
 
-if [[ "$BRANCH" != "master" &&  "$BRANCH" != "release/$MAYOR.$MINOR" ]]; then
-    if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
-        error_msg "VERSION should have release/$MAYOR.$MINOR"
-        exit 1
-    fi
-else
-    if [[ $(cat VERSION | grep "master") != *"master" ]]; then
-        error_msg "VERSION should have master"
-        exit 1
-    fi
+if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
+    error_msg "VERSION should have release/$MAYOR.$MINOR"
+    exit 1
 fi
 echo "  -[x] VERSION file branch: OK"
 
@@ -310,21 +303,13 @@ echo
 #---------------------------------------------------------------------
 if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
-    echo "bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO"
-    echo "bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO"
-    echo "bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO"
+    echo "bash tools/release-scripts/compile-release.sh 8   $MAYOR.$MINOR $MICRO"
     echo "bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO"
     echo "\`\`\`"
 fi
 
 
-if [[ "$BRANCH" == "develop" || $BRANCH == "master" || $BRANCH == "release/$MAYOR.$MINOR" ]]; then
-    if [[ -z  "$DEBUG" ]]; then
-        bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
-        bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
-        bash tools/release-scripts/compile-release.sh 5 $MAYOR.$MINOR $MICRO
-    fi
-fi
+bash tools/release-scripts/compile-release.sh 8 $MAYOR.$MINOR $MICRO
 bash tools/release-scripts/compile-release.sh 4.8   $MAYOR.$MINOR $MICRO
 
 echo - [x] completed local builds
