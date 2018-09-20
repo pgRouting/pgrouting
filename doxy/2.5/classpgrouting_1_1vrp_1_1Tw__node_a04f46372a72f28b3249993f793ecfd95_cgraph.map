@@ -1,0 +1,11 @@
+<map id="pgrouting::vrp::Tw_node::window_length" name="pgrouting::vrp::Tw_node::window_length">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#afd31f5b45277da0062025e66a37f4ea1" title="is_delivery " alt="" coords="214,5,341,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#af8a766186c1d523c30888fa4ee9f8a28" title="is_dump " alt="" coords="214,71,341,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aec14d55e21b2be5f18d2f29d3cdf78de" title="is_end " alt="" coords="214,136,341,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ac96a7c9513543d661976f989a4c13626" title="is_Load " alt="" coords="214,201,341,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a0d7d424f0132c1f1ed75e9c5b1e3d55e" title="is_pickup " alt="" coords="214,267,341,308"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8849b4f343980675cde9e63d686590d0" title="@ { " alt="" coords="214,332,341,373"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a678e5b28472cdeb2342cff53104d481e" title="pgrouting::vrp::Tw\l_node::operator==" alt="" coords="213,397,341,439"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a5c38c9da463ed2d27d21d18fb99efcd2" title="time = distance / speed. " alt="" coords="204,463,351,504"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a6836b6dbb111f5a8fbe9423d95784787" title="pgrouting::vrp::Tw\l_node::type_str" alt="" coords="214,528,341,569"/>
+</map>

@@ -2,7 +2,7 @@
 <area shape="rect" id="node2" href="$lineGraph__driver_8cpp.html#a6f7c6b35f9831bd5250675dbabf08921" title="get_postgres_result" alt="" coords="197,5,333,32"/>
 <area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a32640e84c6abe522dcbeef889481a21b" title="pgrouting::graph::Pgr\l_lineGraph::get_postgres\l_results_directed" alt="" coords="182,56,349,112"/>
 <area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#afcb16f0c7fea50b08e05c6840f45d41e" title="pgrouting::graph::Pgr\l_lineGraph::get_postgres\l_results_undirected" alt="" coords="182,136,349,192"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7" title="Inserts count edges of type T into the graph. " alt="" coords="176,215,355,257"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="176,215,355,257"/>
 <area shape="rect" id="node6" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ad3c671cf7edd4bec040526a3ee1cede4" title="pgrouting::graph::Pgr\l_lineGraph::insert_vertices" alt="" coords="177,281,354,322"/>
 <area shape="rect" id="node7" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="231,347,300,373"/>
 <area shape="rect" id="node8" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="229,397,301,424"/>

@@ -3,7 +3,7 @@ digraph "do_pgr_withPoints"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="do_pgr_withPoints",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 [label="do_pgr_withPoints",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="check_points",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__withPoints_8cpp.html#aafd53873fa63967f96fc3bfcd6481d6c"];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -23,13 +23,13 @@ digraph "do_pgr_withPoints"
   Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node9 [label="pgrouting::extract\l_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting.html#a7f6c592f35e628f82429127580ed29fb"];
   Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="pgrouting::graph::Pgr\l_base_graph::insert_edges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a620afb6a1b4be1a20a90fe6e58063ad7",tooltip="Inserts count edges of type T into the graph. "];
+  Node10 [label="pgrouting::graph::Pgr\l_base_graph::insert_edges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25",tooltip="Inserts count edges of type T into the graph. "];
   Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node11 [label="pgr_alloc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c",tooltip="allocates memory "];
+  Node11 [label="pgr_alloc",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c",tooltip="allocates memory "];
   Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node12 [label="pgr_dijkstra",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa"];
   Node1 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node13 [label="pgr_free",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6"];
+  Node13 [label="pgr_free",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6"];
   Node1 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 [label="pgr_msg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e"];
   Node14 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

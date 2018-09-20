@@ -10,6 +10,7 @@ var dir_93d6226967e8e187d15fc6a8b74b4a3e =
     ] ],
     [ "ch_vertex.cpp", "ch__vertex_8cpp.html", "ch__vertex_8cpp" ],
     [ "ch_vertex.h", "ch__vertex_8h.html", "ch__vertex_8h" ],
+    [ "check_parameters.c", "check__parameters_8c.html", "check__parameters_8c" ],
     [ "coordinates_input.c", "coordinates__input_8c.html", "coordinates__input_8c" ],
     [ "e_report.c", "e__report_8c.html", "e__report_8c" ],
     [ "edges_input.c", "edges__input_8c.html", "edges__input_8c" ],

@@ -5,5 +5,5 @@ var searchData=
   ['node_5fid',['node_id',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a512937fe4b72890a7834abb0bd7e5f45',1,'pgrouting::vrp::Pgr_pickDeliver']]],
   ['nodesok',['nodesOK',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ad26d3f2cc122835364eb1ee97d090415',1,'pgrouting::vrp::Pgr_pickDeliver']]],
   ['num_5fedges',['num_edges',['../classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ad5d090fe6bea62ee76d98c7d0ae1ae56',1,'pgrouting::graph::Pgr_lineGraph']]],
-  ['num_5fvertices',['num_vertices',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a4d7890a5a5fc336bbe905c17e74b0877',1,'pgrouting::graph::Pgr_base_graph']]]
+  ['num_5fvertices',['num_vertices',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a9672a3cc32e6fcd84f8e6c23116ae664',1,'pgrouting::graph::Pgr_base_graph']]]
 ];

@@ -1,11 +1,11 @@
 <map id="do_pgr_pickDeliver" name="do_pgr_pickDeliver">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html#a99a9dde300a4a8e5ce8abc8b0560b9f8" title="clear " alt="" coords="191,5,361,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__messages.html#a8619f0b2a947f14ef8e5528712f4c0fb" title="get_error " alt="" coords="191,70,361,111"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Pgr__messages.html#ab95afb74f6165ef76d6caf7415b378c6" title="get_log " alt="" coords="191,135,361,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a7dcf1f8733697da70d52cc305cc03c9d" title="pgrouting::vrp::Pgr\l_pickDeliver::get_postgres\l_result" alt="" coords="187,200,365,256"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a7b198bf18edfd06d330aa4cbe47543f4" title="pgrouting::tsp::Dmatrix\l::has_no_infinity" alt="" coords="199,279,353,321"/>
-<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="413,371,488,397"/>
-<area shape="rect" id="node8" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="240,396,312,423"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a92a46ffb84ddb2f728d6b500788f505c" title="pgrouting::vrp::Pgr\l_pickDeliver::solve" alt="" coords="209,447,343,489"/>
-<area shape="rect" id="node10" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="199,513,353,554"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html#a99a9dde300a4a8e5ce8abc8b0560b9f8" title="clear " alt="" coords="190,5,361,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__messages.html#a8619f0b2a947f14ef8e5528712f4c0fb" title="get_error " alt="" coords="190,71,361,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Pgr__messages.html#ab95afb74f6165ef76d6caf7415b378c6" title="get_log " alt="" coords="190,136,361,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a7dcf1f8733697da70d52cc305cc03c9d" title="pgrouting::vrp::Pgr\l_pickDeliver::get_postgres\l_result" alt="" coords="187,201,364,257"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a7b198bf18edfd06d330aa4cbe47543f4" title="pgrouting::tsp::Dmatrix\l::has_no_infinity" alt="" coords="198,280,353,321"/>
+<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="412,371,487,398"/>
+<area shape="rect" id="node8" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="239,397,311,423"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a92a46ffb84ddb2f728d6b500788f505c" title="pgrouting::vrp::Pgr\l_pickDeliver::solve" alt="" coords="209,448,342,489"/>
+<area shape="rect" id="node10" href="$classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2" title="AssertFailedException\l::what" alt="" coords="199,513,352,555"/>
 </map>

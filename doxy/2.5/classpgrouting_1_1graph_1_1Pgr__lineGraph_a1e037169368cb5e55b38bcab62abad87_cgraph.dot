@@ -3,9 +3,7 @@ digraph "pgrouting::graph::Pgr_lineGraph::insert_vertices"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="pgrouting::graph::Pgr\l_lineGraph::insert_vertices",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 [label="pgrouting::graph::Pgr\l_lineGraph::insert_vertices",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pgrouting::graph::Pgr\l_lineGraph::add_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#aafb693cfdf9559f569c8203a404c5d0c"];
-  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="pgrouting::graph::Pgr\l_lineGraph::extract_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#aec1226ab45fce0e04150df284156357b"];
+  Node2 [label="pgrouting::extract\l_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting.html#a7f6c592f35e628f82429127580ed29fb"];
 }

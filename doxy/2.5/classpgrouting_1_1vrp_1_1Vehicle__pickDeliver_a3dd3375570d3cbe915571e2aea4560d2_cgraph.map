@@ -1,11 +1,11 @@
 <map id="pgrouting::vrp::Vehicle_pickDeliver::do_while_feasable" name="pgrouting::vrp::Vehicle_pickDeliver::do_while_feasable">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="433,125,585,166"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8" title="Invariant The path must: " alt="" coords="640,210,792,251"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#adba42b168e6b63a40466ed043f40cf21" title="pgrouting::vrp::PD\l_Orders::find_best_I" alt="" coords="223,86,363,127"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#ae625fa7656f8284dfca19f9a0f04dae0" title="pgrouting::vrp::PD\l_Orders::find_best_J" alt="" coords="222,151,365,193"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="217,319,369,361"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="427,386,592,427"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0ff5f16ae974de8e47b34dd92cd84570" title="pgrouting::vrp::Vehicle\l::is_feasable" alt="" coords="433,269,585,310"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a29fa1db0481ca446927ff0cbb8356c04" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size" alt="" coords="209,385,378,426"/>
-<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="428,5,591,46"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="431,125,583,167"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a36df8fd6ae985f8f0a27b84638d075b8" title="Invariant The path must: " alt="" coords="637,211,789,252"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#adba42b168e6b63a40466ed043f40cf21" title="pgrouting::vrp::PD\l_Orders::find_best_I" alt="" coords="221,87,361,128"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#ae625fa7656f8284dfca19f9a0f04dae0" title="pgrouting::vrp::PD\l_Orders::find_best_J" alt="" coords="220,152,363,193"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="215,320,367,361"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="424,387,589,428"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0ff5f16ae974de8e47b34dd92cd84570" title="pgrouting::vrp::Vehicle\l::is_feasable" alt="" coords="431,269,583,311"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a29fa1db0481ca446927ff0cbb8356c04" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size" alt="" coords="207,385,376,427"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="425,5,588,47"/>
 </map>

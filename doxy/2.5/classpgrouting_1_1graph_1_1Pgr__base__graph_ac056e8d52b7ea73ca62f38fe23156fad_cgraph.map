@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::out_degree" name="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::out_degree">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a48ba617e2737dd31d6bbcff15b46b8f4" title="get the vertex descriptor of the vertex " alt="" coords="221,5,363,46"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#aced852a5c5116cafdb61af4eaa28dc02" title="True when vid is in the graph. " alt="" coords="208,70,376,111"/>
-</map>

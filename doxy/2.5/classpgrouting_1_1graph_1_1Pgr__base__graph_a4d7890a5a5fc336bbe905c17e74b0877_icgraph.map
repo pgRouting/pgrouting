@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::Pgr_base_graph::num_vertices" name="pgrouting::graph::Pgr_base_graph::num_vertices">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7f603fd8f15e4fda81925399a9197fdb" title="adds the vertices into the graph " alt="" coords="237,5,392,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#adf97e69a48e3d65856b77fdc19d741eb" title="Inserts count edges of type pgr_edge_t into the graph. " alt="" coords="237,85,392,141"/>
-</map>

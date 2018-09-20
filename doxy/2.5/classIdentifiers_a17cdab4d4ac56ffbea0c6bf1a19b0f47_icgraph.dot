@@ -3,7 +3,7 @@ digraph "Identifiers::size"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="Identifiers::size",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 [label="Identifiers::size",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="do_pgr_contractGraph",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$contractGraph__driver_8h.html#a20a03b3811bd108cfc729e9e22a92591"];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -19,11 +19,12 @@ digraph "Identifiers::size"
   Node7 [label="pgrouting::vrp::Fleet\l::get_truck",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8"];
   Node7 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="pgrouting::CH_vertex\l::has_contracted_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1CH__vertex.html#a5b4ea7e85837a910dbaac111b454eddc"];
+  Node8 [label="pgrouting::CH_vertex\l::has_contracted_vertices",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1CH__vertex.html#a5b4ea7e85837a910dbaac111b454eddc"];
   Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="pgrouting::contraction\l::Pgr_deadend::is_dead_end",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ad86d555801d7bcdc29209f75dae1d83f",tooltip="true when v is a dead end "];
+  Node9 [label="pgrouting::contraction\l::Pgr_deadend::is_dead_end",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ad86d555801d7bcdc29209f75dae1d83f",tooltip="true when v is a dead end "];
   Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="pgrouting::contraction\l::Pgr_linear::is_linear",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a593081fe63e6d9e62a7368ae6ed0c1d1"];
+  Node10 [label="pgrouting::contraction\l::Pgr_linear::is_linear",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a593081fe63e6d9e62a7368ae6ed0c1d1"];
+  Node10 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node11 [label="pgrouting::vrp::operator\<\<",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135"];
   Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

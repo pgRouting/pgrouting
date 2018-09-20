@@ -1,5 +1,10 @@
 var NAVTREEINDEX5 =
 {
+"classpgrouting_1_1vrp_1_1Optimize.html#a29de55e95d9d5b588e4691ed9dde085b":[5,0,0,6,5,22],
+"classpgrouting_1_1vrp_1_1Optimize.html#a2bda1f2451fe1c361b76d1ee9a1ba732":[5,0,0,6,5,8],
+"classpgrouting_1_1vrp_1_1Optimize.html#a371eb25be74472610011a18ac21c62fc":[5,0,0,6,5,13],
+"classpgrouting_1_1vrp_1_1Optimize.html#a390eb9c248578d9c4ae07677a96473ef":[5,0,0,6,5,9],
+"classpgrouting_1_1vrp_1_1Optimize.html#a39173d526079577d40c59371bcfcc680":[5,0,0,6,5,26],
 "classpgrouting_1_1vrp_1_1Optimize.html#a3d0a917f2993449c45ce0febbff2e13f":[5,0,0,6,5,25],
 "classpgrouting_1_1vrp_1_1Optimize.html#a42b1ebb630efe2ef004521e7a10a400f":[5,0,0,6,5,4],
 "classpgrouting_1_1vrp_1_1Optimize.html#a4dcb408130c2ed4164b8d754d11ad44b":[5,0,0,6,5,7],
@@ -244,10 +249,5 @@ var NAVTREEINDEX5 =
 "classpgrouting_1_1vrp_1_1Vehicle.html#a9cb6b091de8c2761330eeefb864cae83":[5,0,0,6,14,20],
 "classpgrouting_1_1vrp_1_1Vehicle.html#aa22d65f920e996e3497bff86876b181f":[5,0,0,6,14,25],
 "classpgrouting_1_1vrp_1_1Vehicle.html#aa6625d4f26aeb5f8d43e2e9ac23ed621":[5,0,0,6,14,53],
-"classpgrouting_1_1vrp_1_1Vehicle.html#aa75494af64693c9ad42ee84d8d8d8afc":[5,0,0,6,14,13],
-"classpgrouting_1_1vrp_1_1Vehicle.html#aa7d6e872a8ac0e52f899827a52b6ffcc":[5,0,0,6,14,33],
-"classpgrouting_1_1vrp_1_1Vehicle.html#aa996853fc75d4ba9bbb6181d22f4dc02":[5,0,0,6,14,29],
-"classpgrouting_1_1vrp_1_1Vehicle.html#aac46d18126e93540a1d7321281a1fc02":[5,0,0,6,14,32],
-"classpgrouting_1_1vrp_1_1Vehicle.html#abd3797dabefe02f778bb100bbafab566":[5,0,0,6,14,21],
-"classpgrouting_1_1vrp_1_1Vehicle.html#abf9aa7c148625b9f7a4a29d7e8640ef3":[5,0,0,6,14,38]
+"classpgrouting_1_1vrp_1_1Vehicle.html#aa75494af64693c9ad42ee84d8d8d8afc":[5,0,0,6,14,13]
 };

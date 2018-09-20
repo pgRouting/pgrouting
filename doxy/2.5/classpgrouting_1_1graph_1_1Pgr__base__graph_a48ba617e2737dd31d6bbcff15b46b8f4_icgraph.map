@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::get_V" name="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;::get_V">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#aac41e36df4c781649a2287799878b295" title="add edges(shortuct) to the graph during contraction " alt="" coords="208,5,365,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#af14120e5a508dfe9baa0c527de8968c2" title="get the contracted vertex ids of a given vertex in array format " alt="" coords="209,85,364,141"/>
-</map>

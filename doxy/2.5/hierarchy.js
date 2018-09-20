@@ -42,11 +42,6 @@ var hierarchy =
     [ "Path_t", "structPath__t.html", null ],
     [ "Pgr_allpairs< G >", "classPgr__allpairs.html", null ],
     [ "Pgr_allpairs< G >::inf_plus< T >", "structPgr__allpairs_1_1inf__plus.html", null ],
-    [ "pgrouting::graph::Pgr_base_graph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", [
-      [ "pgrouting::graph::Pgr_componentsGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html", null ],
-      [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ],
-      [ "pgrouting::graph::Pgr_lineGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html", null ]
-    ] ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", null ],
     [ "Pgr_components< G >", "classPgr__components.html", null ],
     [ "pgr_components_rt", "structpgr__components__rt.html", null ],
@@ -72,7 +67,11 @@ var hierarchy =
     [ "pgrouting::contraction::Pgr_deadend< G >", "classpgrouting_1_1contraction_1_1Pgr__deadend.html", null ],
     [ "pgrouting::contraction::Pgr_linear< G >", "classpgrouting_1_1contraction_1_1Pgr__linear.html", null ],
     [ "pgrouting::flow::PgrCardinalityGraph< G >", "classpgrouting_1_1flow_1_1PgrCardinalityGraph.html", null ],
-    [ "pgrouting::graph::Pgr_base_graph< G, Vertex, Edge >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", null ],
+    [ "pgrouting::graph::Pgr_base_graph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", [
+      [ "pgrouting::graph::Pgr_componentsGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html", null ],
+      [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ],
+      [ "pgrouting::graph::Pgr_lineGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html", null ]
+    ] ],
     [ "pgrouting::graph::PgrFlowGraph", "classpgrouting_1_1graph_1_1PgrFlowGraph.html", null ],
     [ "pgrouting::Identifier", "classpgrouting_1_1Identifier.html", [
       [ "pgrouting::vrp::Base_node", "classpgrouting_1_1vrp_1_1Base__node.html", [
