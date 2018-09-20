@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.3',
+        VERSION:     'v2.5.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -136,7 +136,7 @@
     </a>
   </li>
   <li>
-    <a href="drivingDistance-category.html" title="Next Chapter: Driving Distance - Category"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Driving Distance... &raquo;</span>
+    <a href="drivingDistance-category.html" title="Next Chapter: Driving Distance - Category"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Driving Dista... &raquo;</span>
     </a>
   </li>
               
@@ -183,7 +183,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql)
 pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
     max_processing_time,
@@ -198,7 +198,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql)
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
@@ -212,7 +212,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </table>
 <p>Because the documentation examples are auto generated and tested for non changing results,
 and the default is to have random execution, the example is wrapping the actual call.</p>
-<div class="highlight-default"><div class="highlight"><pre>WITH
+<div class="highlight-default"><div class="highlight"><pre><span></span>WITH
 query AS (
     SELECT * FROM pgr_eucledianTSP(
         $$
@@ -231,7 +231,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 18;
 </div>
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql,
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
     max_processing_time,
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
@@ -241,7 +241,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <p class="rubric">Example:</p>
-<div class="highlight-default"><div class="highlight"><pre>SELECT* from pgr_eucledianTSP(
+<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT* from pgr_eucledianTSP(
     $$
     SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
     $$,
@@ -307,7 +307,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tbody>
 </table>
 <p>When the value of <strong>id</strong> is not given then the coordinates will receive an <strong>id</strong> starting from 1, in the order given.</p>
-<div class="highlight-default"><div class="highlight"><pre>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
 Description Of the Control parameters
 .....................................................................
 
@@ -335,7 +335,7 @@ Parameter                       Type         Default       Description
 
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
 Description of the return columns
 ...............................................................................
 
@@ -368,7 +368,7 @@ Column           Type              Description
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre>SET client_min_messages TO DEBUG1;
+<div class="highlight-default"><div class="highlight"><pre><span></span>SET client_min_messages TO DEBUG1;
 SET
 SELECT* from pgr_eucledianTSP(
     $$
@@ -443,9 +443,9 @@ Best cost reached = 18.7796
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.3.<br/>
-      Last updated on Mar 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
+      Last updated on Sep 20, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

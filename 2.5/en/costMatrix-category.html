@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.3',
+        VERSION:     'v2.5.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -193,9 +193,8 @@
 <div class="section" id="characteristics">
 <h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <p>The main Characteristics are:</p>
-<ul>
-<li><p class="first">Can be used as input to <a class="reference internal" href="pgr_TSP.html#pgr-tsp"><span class="std std-ref">pgr_TSP</span></a>.</p>
-<ul>
+<ul class="simple">
+<li>Can be used as input to <a class="reference internal" href="pgr_TSP.html#pgr-tsp"><span class="std std-ref">pgr_TSP</span></a>.<ul>
 <li><table class="first docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -205,28 +204,21 @@
 </tbody>
 </table>
 </li>
-<li><p class="first">It will be the users responsibility to make the matrix symmetric.</p>
-<ul class="simple">
+<li>It will be the users responsibility to make the matrix symmetric.<ul>
 <li>By using geometric or harmonic average of the non symmetric values.</li>
 <li>By using max or min the non symmetric values.</li>
 <li>By setting the upper triangle to be the mirror image of the lower triangle.</li>
 <li>By setting the lower triangle to be the mirror image of the upper triangle.</li>
 </ul>
 </li>
-<li><p class="first">It is also the users responsibility to fix an <span class="math">\(\infty\)</span> value.</p>
-</li>
+<li>It is also the users responsibility to fix an <span class="math">\(\infty\)</span> value.</li>
 </ul>
 </li>
-<li><p class="first">Each function works as part of the family it belongs to.</p>
-</li>
-<li><p class="first">It does not return a path.</p>
-</li>
-<li><p class="first">Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.</p>
-</li>
-<li><p class="first">Process is done only on edges with positive costs.</p>
-</li>
-<li><p class="first">Values are returned when there is a path.</p>
-<ul class="simple">
+<li>Each function works as part of the family it belongs to.</li>
+<li>It does not return a path.</li>
+<li>Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.</li>
+<li>Process is done only on edges with positive costs.</li>
+<li>Values are returned when there is a path.<ul>
 <li>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
 <li>When the starting vertex and ending vertex are the same, there is no path.<ul>
 <li>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite>.</li>
@@ -238,23 +230,18 @@
 </li>
 </ul>
 </li>
-<li><p class="first">Let be the case the values returned are stored in a table, so the unique index would be the pair: <cite>(start_vid, end_vid)</cite>.</p>
-</li>
-<li><p class="first">Depending on the function and its parameters, the results can be symmetric.</p>
-<ul class="simple">
+<li>Let be the case the values returned are stored in a table, so the unique index would be the pair: <cite>(start_vid, end_vid)</cite>.</li>
+<li>Depending on the function and its parameters, the results can be symmetric.<ul>
 <li>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</li>
 </ul>
 </li>
-<li><p class="first">Any duplicated value in the <cite>start_vids</cite> are ignored.</p>
-</li>
-<li><p class="first">The returned values are ordered:</p>
-<ul class="simple">
+<li>Any duplicated value in the <cite>start_vids</cite> are ignored.</li>
+<li>The returned values are ordered:<ul>
 <li><cite>start_vid</cite> ascending</li>
 <li><cite>end_vid</cite> ascending</li>
 </ul>
 </li>
-<li><p class="first">Running time: approximately <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></p>
-</li>
+<li>Running time: approximately <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></li>
 </ul>
 </div>
 <div class="section" id="see-also">
@@ -283,9 +270,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.3.<br/>
-      Last updated on Mar 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
+      Last updated on Sep 20, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

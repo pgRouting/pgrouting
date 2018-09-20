@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.3',
+        VERSION:     'v2.5.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -137,11 +137,11 @@
               
                 
   <li>
-    <a href="pgr_maxCardinalityMatch.html" title="Previous Chapter: pgr_maxCardinalityMatch - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_maxCardinali...</span>
+    <a href="pgr_maxCardinalityMatch.html" title="Previous Chapter: pgr_maxCardinalityMatch - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_maxCardin...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_labelGraph.html" title="Next Chapter: pgr_labelGraph - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_labelGraph -... &raquo;</span>
+    <a href="pgr_labelGraph.html" title="Next Chapter: pgr_labelGraph - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_labelGrap... &raquo;</span>
     </a>
   </li>
               
@@ -223,7 +223,7 @@ Utilizes underlying maximum flow algorithms to calculate the paths.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
 pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
 pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
 pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
@@ -238,7 +238,7 @@ OR EMPTY SET
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-use">
 <span id="index-0"></span><h3>Minimal use<a class="headerlink" href="#minimal-use" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -252,8 +252,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -279,7 +279,7 @@ OR EMPTY SET
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -292,8 +292,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
     <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span>
 <span class="p">);</span>
@@ -329,7 +329,7 @@ OR EMPTY SET
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
 RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -342,8 +342,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">3</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -379,7 +379,7 @@ OR EMPTY SET
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
 RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -392,8 +392,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -429,7 +429,7 @@ OR EMPTY SET
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -442,8 +442,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -691,9 +691,9 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.3.<br/>
-      Last updated on Mar 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
+      Last updated on Sep 20, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.3',
+        VERSION:     'v2.5.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -132,11 +132,11 @@
               
                 
   <li>
-    <a href="pgr_bridges.html" title="Previous Chapter: pgr_bridges - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bridges - Ex...</span>
+    <a href="pgr_bridges.html" title="Previous Chapter: pgr_bridges - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bridges -...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDepot ... &raquo;</span>
+    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDep... &raquo;</span>
     </a>
   </li>
               
@@ -194,7 +194,7 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
 RETURNS SET OF pgr_costResult[]:
 </pre></div>
 </div>
@@ -203,13 +203,13 @@ RETURNS SET OF pgr_costResult[]:
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="complete-signature">
 <span id="index-0"></span><h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
 Returns set of pgr_costResult[]:
 </pre></div>
 </div>
 <p class="rubric">Example: Show the id1</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">id1</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
-    <span class="s">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">id1</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">id1</span><span class="p">;</span>
  <span class="n">id1</span> 
 <span class="o">-----</span>
@@ -370,8 +370,8 @@ Returns set of pgr_costResult[]:
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Example: Total number of rows returned</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
-    <span class="s">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
  <span class="n">count</span> 
 <span class="o">-------</span>
    <span class="mi">126</span>
@@ -380,8 +380,8 @@ Returns set of pgr_costResult[]:
 </pre></div>
 </div>
 <p class="rubric">Example: Results for only id1 values: 1, 5, and 9</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
-    <span class="s">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
     <span class="n">WHERE</span> <span class="n">id1</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span>       <span class="n">cost</span>       
 <span class="o">-----+-----+-----+------------------</span>
@@ -454,9 +454,9 @@ Returns set of pgr_costResult[]:
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.3.<br/>
-      Last updated on Mar 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
+      Last updated on Sep 20, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.3',
+        VERSION:     'v2.5.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -164,7 +164,7 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>This function analyzes oneway streets in a graph and identifies any flipped segments.</p>
-<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span></span><span class="nb">text</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span>
                        <span class="nb">text</span><span class="p">[]</span> <span class="n">s_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">s_out_rules</span><span class="p">,</span>
                        <span class="nb">text</span><span class="p">[]</span> <span class="n">t_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">t_out_rules</span><span class="p">,</span>
                        <span class="nb">text</span> <span class="n">oneway</span><span class="o">=</span><span class="s1">&#39;oneway&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="k">source</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span>
@@ -256,7 +256,7 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
 <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
 <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
 <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
@@ -307,9 +307,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.3.<br/>
-      Last updated on Mar 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
+      Last updated on Sep 20, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

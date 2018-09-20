@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.3',
+        VERSION:     'v2.5.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -124,11 +124,11 @@
               
                 
   <li>
-    <a href="routingFunctions.html" title="Previous Chapter: Routing Functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Routing Function...</span>
+    <a href="routingFunctions.html" title="Previous Chapter: Routing Functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Routing Functions</span>
     </a>
   </li>
   <li>
-    <a href="pgr_floydWarshall.html" title="Next Chapter: pgr_floydWarshall"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_floydWarshal... &raquo;</span>
+    <a href="pgr_floydWarshall.html" title="Next Chapter: pgr_floydWarshall"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_floydWarshall &raquo;</span>
     </a>
   </li>
               
@@ -177,12 +177,12 @@
 <div class="section" id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>The following data was used</p>
-<div class="highlight-none"><div class="highlight"><pre>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
+<div class="highlight-none"><div class="highlight"><pre><span></span>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
 wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;http://www.overpass-api.de/api/xapi?*[bbox=][@meta]&quot;
 </pre></div>
 </div>
 <p>Data processing was done with osm2pgrouting-alpha</p>
-<div class="highlight-none"><div class="highlight"><pre>createdb portland
+<div class="highlight-none"><div class="highlight"><pre><span></span>createdb portland
 psql -c &quot;create extension postgis&quot; portland
 psql -c &quot;create extension pgrouting&quot; portland
 osm2pgrouting -f sampledata.osm -d portland -s 0
@@ -203,7 +203,7 @@ osm2pgrouting -f sampledata.osm -d portland -s 0
 The density of the passed graph is extremely low.
 For each &lt;SIZE&gt; 30 tests were executed to get the average
 The tested query is:</p>
-<div class="highlight-none"><div class="highlight"><pre>SELECT count(*) FROM pgr_floydWarshall(
+<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT count(*) FROM pgr_floydWarshall(
    &#39;SELECT gid as id, source, target, cost, reverse_cost FROM ways where id &lt;=  &lt;SIZE&gt;&#39;);
 
 SELECT count(*) FROM pgr_johnson(
@@ -402,14 +402,14 @@ SELECT count(*) FROM pgr_johnson(
 The density of the passed graph higher than of the Test One.
 For each &lt;SIZE&gt; 30 tests were executed to get the average
 The tested edge query is:</p>
-<div class="highlight-none"><div class="highlight"><pre>WITH
+<div class="highlight-none"><div class="highlight"><pre><span></span>WITH
     buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom FROM ways),
     bbox AS (SELECT ST_Envelope(ST_Extent(geom)) as box from buffer)
 SELECT gid as id, source, target, cost, reverse_cost FROM ways where the_geom &amp;&amp; (SELECT box from bbox);
 </pre></div>
 </div>
 <p>The tested queries</p>
-<div class="highlight-none"><div class="highlight"><pre>SELECT count(*) FROM pgr_floydWarshall(&lt;edge query&gt;)
+<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT count(*) FROM pgr_floydWarshall(&lt;edge query&gt;)
 SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 </pre></div>
 </div>
@@ -601,9 +601,9 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.3.<br/>
-      Last updated on Mar 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
+      Last updated on Sep 20, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>

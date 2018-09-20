@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.5.3',
+        VERSION:     'v2.5.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -139,11 +139,11 @@
               
                 
   <li>
-    <a href="withPoints-family.html" title="Previous Chapter: withPoints - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; withPoints - Fam...</span>
+    <a href="withPoints-family.html" title="Previous Chapter: withPoints - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; withPoints - ...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsCost.html" title="Next Chapter: pgr_withPointsCost - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_withPointsCo... &raquo;</span>
+    <a href="pgr_withPointsCost.html" title="Next Chapter: pgr_withPointsCost - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
     </a>
   </li>
               
@@ -229,7 +229,7 @@ Using Dijkstra algorithm, find the shortest path(s)</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
 pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
 pgr_withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details)
 pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
@@ -251,7 +251,7 @@ RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cos
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -263,9 +263,9 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
 <span class="o">-----+----------+------+------+------+----------</span>
@@ -281,7 +281,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="one-to-one">
 <span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid,
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </pre></div>
@@ -294,9 +294,9 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
@@ -316,7 +316,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="one-to-many">
 <span id="index-2"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vid, end_vids,
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vid, end_vids,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 </pre></div>
@@ -329,9 +329,9 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
 <span class="o">-----+----------+---------+------+------+------+----------</span>
@@ -350,7 +350,7 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="many-to-one">
 <span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vids, end_vid,
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vids, end_vid,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 </pre></div>
@@ -363,9 +363,9 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
 <span class="o">-----+----------+-----------+------+------+------+----------</span>
@@ -385,7 +385,7 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="many-to-many">
 <span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vids, end_vids,
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vids, end_vids,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </pre></div>
@@ -398,9 +398,9 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -721,19 +721,19 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="p">(</span><span class="s">&#39;(&#39;</span> <span class="o">||</span> <span class="n">start_pid</span> <span class="o">||</span> <span class="s">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s">&#39;) at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s">&#39;th step:&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
-        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s">&#39; visits&#39;</span>
-            <span class="n">ELSE</span> <span class="s">&#39; passes in front of&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="s1">&#39;(&#39;</span> <span class="o">||</span> <span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39;) at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step:&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
+        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
+            <span class="n">ELSE</span> <span class="s1">&#39; passes in front of&#39;</span>
         <span class="n">END</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
-        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">node</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="s">&#39;Point&#39;</span>
-            <span class="n">ELSE</span> <span class="s">&#39;Vertex&#39;</span>
+        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">node</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="s1">&#39;Point&#39;</span>
+            <span class="n">ELSE</span> <span class="s1">&#39;Vertex&#39;</span>
         <span class="n">END</span> <span class="k">as</span> <span class="n">is_a</span><span class="p">,</span>
         <span class="nb">abs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">as</span> <span class="nb">id</span>
     <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-        <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-        <span class="s">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-        <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span>
+        <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
         <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">)</span>
     <span class="n">WHERE</span> <span class="n">node</span> <span class="n">IN</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
          <span class="n">path_at</span>         <span class="o">|</span>       <span class="n">status</span>        <span class="o">|</span>  <span class="n">is_a</span>  <span class="o">|</span> <span class="nb">id</span> 
@@ -766,19 +766,19 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="p">(</span><span class="s">&#39;(&#39;</span> <span class="o">||</span> <span class="n">start_pid</span> <span class="o">||</span> <span class="s">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s">&#39;) at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s">&#39;th step:&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
-        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s">&#39; visits&#39;</span>
-            <span class="n">ELSE</span> <span class="s">&#39; passes in front of&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="s1">&#39;(&#39;</span> <span class="o">||</span> <span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39;) at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step:&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
+        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
+            <span class="n">ELSE</span> <span class="s1">&#39; passes in front of&#39;</span>
         <span class="n">END</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
-        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">node</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="s">&#39;Point&#39;</span>
-            <span class="n">ELSE</span> <span class="s">&#39;Vertex&#39;</span>
+        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">node</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="s1">&#39;Point&#39;</span>
+            <span class="n">ELSE</span> <span class="s1">&#39;Vertex&#39;</span>
         <span class="n">END</span> <span class="k">as</span> <span class="n">is_a</span><span class="p">,</span>
         <span class="nb">abs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">as</span> <span class="nb">id</span>
     <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-        <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-        <span class="s">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-        <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span>
+        <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
         <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">)</span>
     <span class="n">WHERE</span> <span class="n">node</span> <span class="n">IN</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
          <span class="n">path_at</span>         <span class="o">|</span>       <span class="n">status</span>        <span class="o">|</span>  <span class="n">is_a</span>  <span class="o">|</span> <span class="nb">id</span> 
@@ -811,9 +811,9 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
     <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span><span class="p">,</span>
     <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
@@ -878,9 +878,9 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.3.<br/>
-      Last updated on Mar 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
+      Last updated on Sep 20, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
 </footer>
