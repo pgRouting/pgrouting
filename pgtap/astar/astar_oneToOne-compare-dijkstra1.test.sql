@@ -131,7 +131,7 @@ SELECT * from astarCompareDijkstra(5, 1, 78846, 1);
 SELECT * from astarCompareDijkstra(5, 1, 78846, 1.5);
 SELECT * from astarCompareDijkstra(5, 2, 78846, 1);
 SELECT * from astarCompareDijkstra(5, 2, 78846, 1.5);
-SELECT * from astarCompareDijkstra(5, 3, 78846, 1);
+SELECT * from astarCompareDijkstra(5, 0, 78846, 1);
 SELECT * from astarCompareDijkstra(5, 3, 78846, 1.5);
 SELECT * from astarCompareDijkstra(5, 4, 78846, 1);
 SELECT * from astarCompareDijkstra(5, 4, 78846, 1.5);

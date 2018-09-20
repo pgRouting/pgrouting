@@ -57,17 +57,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "executor/spi.h"
 
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#pragma GCC diagnostic pop
-#pragma GCC diagnostic pop
-#endif
-
-#ifdef __clang__
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
-#endif
 
 #include "utils/builtins.h"  // for text_to_cstring
 
@@ -89,9 +78,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif
 
 #ifdef __clang__
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop
 #pragma clang diagnostic pop
 #endif
 
