@@ -91,6 +91,10 @@ div.highlight {
   background: none;
 }
 
+a.headerlink {
+  margin-left: 0.25em;
+}
+
 a.footnote-reference {
   vertical-align: super;
   font-size: 75%;
