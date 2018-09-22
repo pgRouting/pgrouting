@@ -6,9 +6,9 @@
 
 ### Branches
 
-* The *master* branch has the release  2.5.2
-* The *release/2.5* branch has the next micro-release 2.5.3 (if needed)
-* The *develop* branch has the development of the next minor-release 2.6.0-dev
+* The *master* branch has the release  2.6.1
+* The *release/2.5* branch has the next micro-release 2.5.4 (if needed)
+* The *develop* branch has the development of the next release 3.0.0-dev
 
 For the complete list of releases go to:
 https://github.com/pgRouting/pgrouting/releases
