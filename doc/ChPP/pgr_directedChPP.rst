@@ -10,7 +10,7 @@
 
 .. _pgr_directedChPP:
 
-pgr_directedChPP - Experimental 
+pgr_directedChPP - Experimental
 ============================================
 
 
@@ -51,7 +51,7 @@ Signature Summary
 
 
 .. index::
-    single: directedChPP - Experimental 
+    single: directedChPP - Experimental
 
 
 Signature
@@ -65,7 +65,7 @@ Signature
 
 
 .. index::
-    single: directedChPP - Experimental 
+    single: directedChPP - Experimental
 
 
 Description of the Signatures
@@ -76,20 +76,24 @@ Description of the Signatures
     :end-before: basic_edges_sql_end
 
 
-.. include::  ./pgr_directedChPP_Cost.rst
+.. include:: pgr_directedChPP_Cost.rst
     :start-after: pgr_directedChPP_parameters_start
     :end-before: pgr_directedChPP_parameters_end
 
 
+Return Columns
+-------------------------------------------------------------------------------
+
 .. include:: pgRouting-concepts.rst
-    :start-after: result_path_start
-    :end-before: result_path_end
+    :start-after: return_path_start
+    :end-before: return_path_end
+
 
 
 See Also
 --------
 
-* :ref:`ChPP`
+* :doc:`ChPP-family`
 
 .. rubric:: Indices and tables
 

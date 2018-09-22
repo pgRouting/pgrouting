@@ -9,7 +9,7 @@
 
 .. _pgr_directedChPP_Cost:
 
-pgr_directedChPP_Cost - Experimental 
+pgr_directedChPP_Cost - Experimental
 ============================================
 
 
@@ -46,11 +46,11 @@ Signature Summary
 .. code-block:: none
 
     pgr_directedChPP_Cost(edges_sql)
-    RETURNS FLOAT 
+    RETURNS FLOAT
 
 
 .. index::
-    single: directedChPP_Cost - Experimental 
+    single: directedChPP_Cost - Experimental
 
 
 Signature
@@ -64,7 +64,7 @@ Signature
 
 
 .. index::
-    single: directedChPP_Cost - Experimental 
+    single: directedChPP_Cost - Experimental
 
 
 Description of the Signatures
@@ -103,7 +103,7 @@ Type                   Description
 See Also
 --------
 
-* :ref:`ChPP`
+* :doc:`ChPP-family`
 
 .. rubric:: Indices and tables
 
