@@ -5,4 +5,6 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/pgr_alloc.
   Node1 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/cpp_common/pgr\l_alloc.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="cstring",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }

@@ -9,4 +9,6 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/c_common/check_parame
   Node3 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/bdAstar/bdAstar.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bdAstar_8c.html"];
   Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/check_parameters.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$check__parameters_8c.html"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/src/check\l_parameters.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$src_2check__parameters_8c.html"];
 }

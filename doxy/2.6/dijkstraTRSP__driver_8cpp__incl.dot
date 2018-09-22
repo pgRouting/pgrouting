@@ -22,7 +22,7 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/src/dijkstraTRSP/dijkstraTRSP
   Node8 [label="cpp_common/pgr_assert.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__assert_8h.html",tooltip="Assertions Handling. "];
   Node8 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="cpp_common/pgr_alloc.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html"];
+  Node9 [label="cpp_common/pgr_alloc.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html"];
   Node9 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }
