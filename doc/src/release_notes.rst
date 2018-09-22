@@ -48,6 +48,40 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 2.6.1 Release Notes
 -------------------------------------------------------------------------------
 
+To see the issues closed by this release see the `Git closed milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github.
+
+* Fixes server crash on several functions.
+
+  * pgr_floydWarshall
+  * pgr_johnson
+  * pgr_astar
+  * pgr_bdAstar
+  * pgr_bdDijstra
+  * pgr_alphashape
+  * pgr_dijkstraCostMatrix
+  * pgr_dijkstra
+  * pgr_dijkstraCost
+  * pgr_drivingDistance
+  * pgr_KSP
+  * pgr_dijkstraVia (proposed)
+  * pgr_boykovKolmogorov (proposed)
+  * pgr_edgeDisjointPaths (proposed)
+  * pgr_edmondsKarp (proposed)
+  * pgr_maxCardinalityMatch (proposed)
+  * pgr_maxFlow (proposed)
+  * pgr_withPoints (proposed)
+  * pgr_withPointsCost (proposed)
+  * pgr_withPointsKSP (proposed)
+  * pgr_withPointsDD (proposed)
+  * pgr_withPointsCostMatrix (proposed)
+  * pgr_contractGraph (experimental)
+  * pgr_pushRelabel (experimental)
+  * pgr_vrpOneDepot (experimental)
+  * pgr_gsoc_vrppdtw (experimental)
+  * Fixes for deprecated functions where also applied but not tested
+
+* Removed compilation warning for g++8
+* Fixed a fallthrugh on Astar and bdAstar.
 
 .. _changelog_2_6_0:
 
@@ -122,7 +156,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.4
 
 * Removed compilation warning for g++8
 * Fixed a fallthrugh on Astar and bdAstar.
->>>>>>> 83b8d30... updating NEWS VERSION, script & queries with current results
 
 .. _changelog_2_5_3:
 

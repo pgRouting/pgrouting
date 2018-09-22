@@ -37,7 +37,7 @@ echo
 #  bash tools/testers/update-tester.sh
 #
 
-CURRENT=2.6.0
+CURRENT=2.6.1
 
 if [ ! -f build/sql/pgrouting--$CURRENT.sql ]; then
    echo "Not testing the current version, file not found:  build/lib/pgrouting--$CURRENT.sql "
@@ -60,19 +60,20 @@ echo
 echo Updating from $1 to $2
 echo ------------------------------------
 
-INSTALLED=$(locate /usr/share/postgresql/9.3/extension/pgrouting--$1.sql)
+INSTALLED=$(locate /usr/share/postgresql/9.5/extension/pgrouting--$1.sql)
 
-if [ "$INSTALLED" == "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql" ]
+if [ "$INSTALLED" == "/usr/share/postgresql/9.5/extension/pgrouting--$1.sql" ]
 then
-    echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql found"
+    echo "/usr/share/postgresql/9.5/extension/pgrouting--$1.sql found"
 else
-    echo "FATAL: /usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
+    echo "FATAL: /usr/share/postgresql/9.5/extension/pgrouting--$1.sql Not found"
     exit 1
 fi
 
 
 createdb  ___test_update
 psql  ___test_update  <<EOF
+SELECT version();
 CREATE extension postgis;
 CREATE extension pgrouting with version '$1';
 EOF
@@ -108,9 +109,16 @@ dropdb ___test_update
 } # end of function
 
 #------------------------------------
+### updates from 2.6
+#------------------------------------
+
+update_test 2.6.0 $CURRENT
+
+#------------------------------------
 ### updates from 2.5
 #------------------------------------
 
+update_test 2.5.4 $CURRENT
 update_test 2.5.3 $CURRENT
 update_test 2.5.2 $CURRENT
 update_test 2.5.1 $CURRENT

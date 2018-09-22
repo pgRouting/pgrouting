@@ -32,7 +32,11 @@
 
 // for bool
 #ifdef __GNUC__
+#if __GNUC__ > 5
+#pragma GCC diagnostic ignored "-Wpedantic"
+#else
 #pragma GCC diagnostic ignored "-pedantic"
+#endif
 #endif
 
 #include <postgres.h>

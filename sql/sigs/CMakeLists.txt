@@ -1,4 +1,6 @@
 SET(OLD_SIGNATURES
+    2.6.0
+
     2.5.4
     2.5.3
     2.5.2
