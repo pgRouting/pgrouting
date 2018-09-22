@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.6.0',
+        VERSION:     'v2.6.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false,
@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.6.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -437,7 +437,7 @@ SELECT 16
 <span class="n">UPDATE</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<p>Then, we cross reference all of the other newly created vertices that do not have the same original_id and set thier original_id values.</p>
+<p>Then, we cross reference all of the other newly created vertices that do not have the same original_id and set their original_id values.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">unassignedVertices</span>
   <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">original_id</span>
@@ -490,7 +490,7 @@ SELECT 16
 <span class="n">UPDATE</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>The only vertices left that have not been mapped are a few of the leaf vertices from the original graph. The following sql completes the mapping for these leaf vertices (in the case of this example graph there are no leaf vertices but this is nessessary for larger graphs).</p>
+<p>The only vertices left that have not been mapped are a few of the leaf vertices from the original graph. The following sql completes the mapping for these leaf vertices (in the case of this example graph there are no leaf vertices but this is necessary for larger graphs).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">unassignedVertexIds</span>
   <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span>
@@ -624,8 +624,8 @@ SELECT 16
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.6.0.<br/>
-      Last updated on Mar 26, 2018.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.1.<br/>
+      Last updated on Sep 21, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
