@@ -72,7 +72,6 @@ Signatures
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
         OR EMPTY SET
 
-
 .. rubric:: Minimal signature
 
 .. code-block:: none
@@ -88,7 +87,6 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. index::
     single: dijkstra(One to One)
 
@@ -102,8 +100,9 @@ One to One
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 :Example:
 
@@ -125,14 +124,15 @@ One to many
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 Using this signature, will load once the graph and perform a one to one `pgr_dijkstra`
 where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
-  - The result is equivalent to the union of the results of the one to one `pgr_dijkstra`.
-  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+- The result is equivalent to the union of the results of the one to one `pgr_dijkstra`.
+- The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -153,14 +153,15 @@ Many to One
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 Using this signature, will load once the graph and perform several one to one `pgr_dijkstra`
 where the ending vertex is fixed.
 
-  - The result is the union of the results of the one to one `pgr_dijkstra`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_dijkstra`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -180,15 +181,17 @@ Many to Many
         BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each 
+``end_vid`` in ``end_vids``:
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
 for all ``start_vids``.
 
-  - The result is the union of the results of the one to one `pgr_dijkstra`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_dijkstra`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
@@ -220,8 +223,7 @@ Parameter      Type               Default     Description
 Inner query
 -------------------------------------------------------------------------------
 
-edges_sql
-...............................................................................
+.. rubric::edges_sql
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -236,7 +238,7 @@ Return Columns
 
 
 Additional Examples
---------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 The examples of this section are based on the :doc:`sampledata` network.
 
@@ -251,8 +253,6 @@ The examples in this section use the following :ref:`fig1`
    :start-after: -- q7
    :end-before: -- q8
 
-
-
 :Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
 
 The examples in this section use the following :ref:`fig2`
@@ -260,7 +260,6 @@ The examples in this section use the following :ref:`fig2`
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q9
    :end-before: -- q10
-
 
 :Examples: For queries marked as ``directed`` with ``cost`` column
 
@@ -270,7 +269,6 @@ The examples in this section use the following :ref:`fig3`
    :start-after: -- q11
    :end-before: -- q12
 
-
 :Examples: For queries marked as ``undirected`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig4`
@@ -279,9 +277,8 @@ The examples in this section use the following :ref:`fig4`
    :start-after: -- q13
    :end-before: -- q14
 
-
 Equvalences between signatures
-.........................................................................................
+...............................................................................
 
 :Examples: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
 
@@ -292,8 +289,6 @@ The examples in this section use the following:
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q15
    :end-before: -- q16
-
-
 
 :Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
 
