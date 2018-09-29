@@ -131,7 +131,7 @@ node id along with the cost or geometry for the step in the path from *start*
 to *end*. Using the ids you can join these result back to your edge table
 to get more information about each step in the path.
 
-* :ref:`pgr_dijkstra`
+* :doc:`pgr_dijkstra`
 
 Group of Functions
 -------------------------------------------------------------------------------
