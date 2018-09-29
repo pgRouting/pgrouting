@@ -25,7 +25,7 @@ pgr_bdDijkstra
 * pgr_bdDijkstra(other signatures) 2.5.0
 
 Signature Summary
------------------
+-------------------------------------------------------------------------------
 
 .. code-block:: none
 
@@ -57,7 +57,7 @@ Signatures
     single: bdDijkstra(Minimal Use)
 
 Minimal signature
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -77,7 +77,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
     single: bdDijkstra(One to One)
 
 One to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -129,7 +129,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 
 Many to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -158,7 +158,7 @@ where the ending vertex is fixed.
     single: bdDijkstra(Many to Many) - Proposed
 
 Many to Many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -204,9 +204,6 @@ Result Columns
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_start
     :end-before: return_path_end
-
-
-
 
 See Also
 -------------------------------------------------------------------------------
