@@ -98,7 +98,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 .. index::
     single: bellman_ford(One to One) - Experimental
 
-pgr_bellmanFord One to One
+One to One
 .......................................
 
 .. code-block:: none
@@ -121,7 +121,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 .. index::
     single: bellman_ford(One to Many) - Experimental
 
-pgr_bellmanFord One to many
+One to many
 .......................................
 
 .. code-block:: none
@@ -152,7 +152,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 .. index::
     single: bellman_ford(Many to One) - Experimental
 
-pgr_bellmanFord Many to One
+Many to One
 .......................................
 
 .. code-block:: none
@@ -182,7 +182,7 @@ where the ending vertex is fixed.
 .. index::
     single: bellman_ford(Many to Many) - Experimental
 
-pgr_bellmanFord Many to Many
+Many to Many
 .......................................
 
 .. code-block:: none

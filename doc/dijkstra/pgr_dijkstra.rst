@@ -100,7 +100,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 .. index::
     single: dijkstra(One to One)
 
-pgr_dijkstra One to One
+One to One
 .......................................
 
 .. code-block:: none
@@ -123,7 +123,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 .. index::
     single: dijkstra(One to Many)
 
-pgr_dijkstra One to many
+One to many
 .......................................
 
 .. code-block:: none
@@ -154,7 +154,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 .. index::
     single: dijkstra(Many to One)
 
-pgr_dijkstra Many to One
+Many to One
 .......................................
 
 .. code-block:: none
@@ -184,7 +184,7 @@ where the ending vertex is fixed.
 .. index::
     single: dijkstra(Many to Many)
 
-pgr_dijkstra Many to Many
+Many to Many
 .......................................
 
 .. code-block:: none
