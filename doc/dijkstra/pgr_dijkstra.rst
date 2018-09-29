@@ -25,7 +25,7 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 * pgr_dijkstra(one to one) 2.0.0, signature change 2.1.0
 * pgr_dijkstra(other signatures) 2.1.0
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
@@ -33,9 +33,6 @@ It is a graph search algorithm that solves the shortest path problem for
 a graph with non-negative edge path costs, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 This implementation can be used with a directed graph and an undirected graph.
-
-Characteristics
--------------------------------------------------------------------------------
 
 The main Characteristics are:
   - Process is done only on edges with positive costs.
@@ -59,8 +56,10 @@ The main Characteristics are:
   - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -74,14 +73,7 @@ Signature Summary
         OR EMPTY SET
 
 
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: dijkstra(Minimal Use)
-
-Minimal signature
-.......................................
+.. rubric:: Minimal signature
 
 .. code-block:: none
 
@@ -101,7 +93,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
     single: dijkstra(One to One)
 
 One to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -124,7 +116,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
     single: dijkstra(One to Many)
 
 One to many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -148,14 +140,11 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
    :start-after: -- q3
    :end-before: -- q4
 
-
-
-
 .. index::
     single: dijkstra(Many to One)
 
 Many to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -179,13 +168,11 @@ where the ending vertex is fixed.
    :start-after: -- q4
    :end-before: -- q5
 
-
-
 .. index::
     single: dijkstra(Many to Many)
 
 Many to Many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -256,8 +243,7 @@ The examples of this section are based on the :doc:`sampledata` network.
 The examples include combinations from starting vertices 2 and 11 to ending vertices 3 and 5 in a directed and
 undirected graph with and with out reverse_cost.
 
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
-.........................................................................................
+:Examples: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
 
 The examples in this section use the following :ref:`fig1`
 
@@ -267,8 +253,7 @@ The examples in this section use the following :ref:`fig1`
 
 
 
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-.........................................................................................
+:Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
 
 The examples in this section use the following :ref:`fig2`
 
@@ -277,8 +262,7 @@ The examples in this section use the following :ref:`fig2`
    :end-before: -- q10
 
 
-Examples for queries marked as ``directed`` with ``cost`` column
-.........................................................................................
+:Examples: For queries marked as ``directed`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig3`
 
@@ -287,8 +271,7 @@ The examples in this section use the following :ref:`fig3`
    :end-before: -- q12
 
 
-Examples for queries marked as ``undirected`` with ``cost`` column
-.........................................................................................
+:Examples: For queries marked as ``undirected`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig4`
 
@@ -321,8 +304,6 @@ The examples in this section use the following:
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q17
    :end-before: -- q18
-
-
 
 See Also
 -------------------------------------------------------------------------------
