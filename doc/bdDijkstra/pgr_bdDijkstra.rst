@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_bdDijkstra:
-
 pgr_bdDijkstra
 ===============================================================================
 
@@ -24,8 +22,10 @@ pgr_bdDijkstra
 * pgr_bdDijkstra(one to one) 2.0.0, Signature changed 2.4.0
 * pgr_bdDijkstra(other signatures) 2.5.0
 
-Signature Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -47,17 +47,7 @@ Signature Summary
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
-
-
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: bdDijkstra(Minimal Use)
-
-Minimal signature
-...............................................................................
+..rubric:: Minimal signature
 
 .. code-block:: none
 
@@ -71,7 +61,6 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
    :start-after: -- q1
    :end-before: -- q2
-
 
 .. index::
     single: bdDijkstra(One to One)
@@ -100,7 +89,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
     single: bdDijkstra(One to Many) - Proposed
 
 One to many
-..............................................................................
+...............................................................................
 
 .. code-block:: none
 
@@ -126,7 +115,6 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 .. index::
     single: bdDijkstra(Many to One) - Proposed
-
 
 Many to One
 ...............................................................................
