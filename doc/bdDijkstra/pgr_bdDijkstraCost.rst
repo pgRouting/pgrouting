@@ -23,12 +23,10 @@ pgr_bdDijkstraCost - Proposed
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
-
 
 .. code-block:: none
 
@@ -55,7 +53,6 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 .. literalinclude:: doc-pgr_bdDijkstraCost.queries
    :start-after: -- q1
    :end-before: -- q2
-
 
 .. index::
     single: bdDijkstraCost(One to One)

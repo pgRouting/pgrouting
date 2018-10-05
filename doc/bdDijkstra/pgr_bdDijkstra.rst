@@ -84,7 +84,6 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
    :start-after: -- q2
    :end-before: -- q3
 
-
 .. index::
     single: bdDijkstra(One to Many) - Proposed
 
@@ -140,7 +139,6 @@ where the ending vertex is fixed.
 .. literalinclude:: doc-pgr_bdDijkstra.queries
    :start-after: -- q4
    :end-before: -- q5
-
 
 .. index::
     single: bdDijkstra(Many to Many) - Proposed
