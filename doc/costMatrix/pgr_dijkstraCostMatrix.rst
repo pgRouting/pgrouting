@@ -70,13 +70,8 @@ This example returns a symmetric cost matrix.
    :start-after: -- dijkstra q2
    :end-before: -- dijkstra q3
 
-.. rubric:: Description of the Signatures
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-.. rubric:: Parameters of the signatures
+Parameters
+-------------------------------------------------------------------------------
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -86,11 +81,23 @@ Parameter        Type                   Description
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 ================ ====================== =================================================
 
+Inner query
+-------------------------------------------------------------------------------
+
+.. rubric::edges_sql
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Return Columns
+-------------------------------------------------------------------------------
+
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: Use with tsp
@@ -102,9 +109,9 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`dijkstra`
-* :ref:`costMatrix`
-* :ref:`tsp`
+* :doc:`dijkstra-family`
+* :doc:`costMatrix-category`
+* :doc:`TSP-family`
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
