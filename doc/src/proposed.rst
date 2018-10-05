@@ -32,8 +32,8 @@ Stable Proposed Functions
 
 As part of the :ref:`dijkstra`
 
-- :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
-- :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
+- :doc:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
+- :doc:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
 
 .. rubric:: Families
 

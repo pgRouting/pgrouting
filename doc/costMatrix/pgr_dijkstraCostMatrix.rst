@@ -7,21 +7,14 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstraCostMatrix:
-
 pgr_dijkstraCostMatrix - proposed
 ===============================================================================
 
-Name
--------------------------------------------------------------------------------
-
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
-
 
 .. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -30,13 +23,12 @@ Name
 
 .. rubric:: Availability: 2.3.0
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Using Dijkstra algorithm, calculate and return a cost matrix.
 
-Signature Summary
------------------
+.. rubric:: Signature Summary
 
 .. code-block:: none
 
@@ -44,16 +36,10 @@ Signature Summary
     pgr_dijkstraCostMatrix(edges_sql, start_vids, directed)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
-
 Signatures
 -------------------------------------------------------------------------------
 
-.. index::
-    single: dijkstraCostMatrix(Minimal Use) - Proposed
-
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -63,26 +49,18 @@ The minimal signature:
     pgr_dijkstraCostMatrix(edges_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
 :Example: Cost matrix for vertices 1, 2, 3, and 4.
-
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- dijkstra q1
    :end-before: -- dijkstra q2
 
-
-.. index::
-    single: dijkstraCostMatrix(Complete Signature) - Proposed
-
-Complete Signature
-...............................................................................
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
     pgr_dijkstraCostMatrix(edges_sql, start_vids, directed:=true)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
-
 
 :Example: Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.
 
@@ -92,18 +70,13 @@ This example returns a symmetric cost matrix.
    :start-after: -- dijkstra q2
    :end-before: -- dijkstra q3
 
-
-Description of the Signatures
--------------------------------------------------------------------------------
+.. rubric:: Description of the Signatures
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-
-
-Description of the parameters of the signatures
-...............................................................................
+.. rubric:: Parameters of the signatures
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -113,11 +86,9 @@ Parameter        Type                   Description
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 ================ ====================== =================================================
 
-
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
-
 
 Examples
 -------------------------------------------------------------------------------
@@ -127,7 +98,6 @@ Examples
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- dijkstra q3
    :end-before: -- dijkstra q4
-
 
 See Also
 -------------------------------------------------------------------------------
