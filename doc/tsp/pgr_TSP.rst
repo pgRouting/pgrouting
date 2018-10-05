@@ -115,10 +115,10 @@ Column        Type              Description
 
 Can be Used with:
 
-* :ref:`pgr_dijkstraCostmatrix`
-* :ref:`pgr_withPointsCostmatrix`
-* :ref:`pgr_floydWarshall`
-* :ref:`pgr_johnson`
+* :doc:`pgr_dijkstraCostMatrix`
+* :doc:`pgr_withPointsCostMatrix`
+* :doc:`pgr_floydWarshall`
+* :doc:`pgr_johnson`
 
 To generate a symmetric matrix
 

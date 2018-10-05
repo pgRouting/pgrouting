@@ -7,18 +7,11 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstraVia:
-
 pgr_dijkstraVia - Proposed
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_dijkstraVia`` — Using dijkstra algorithm, it finds the route that goes through
 a list of vertices.
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -26,7 +19,6 @@ a list of vertices.
    Boost Graph Inside
 
 .. rubric:: Availability: 2.2.0
-
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -38,8 +30,10 @@ The paths represents the sections of the route.
 
 .. note:: This is a proposed function
 
-Signatrue Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Signature Summary
 
 .. code-block:: none
 
@@ -49,14 +43,7 @@ Signatrue Summary
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
         node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: dijkstraVia(Minimal Use) - proposed
-
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 .. code-block:: none
 
@@ -73,8 +60,7 @@ Minimal Signature
 .. index::
     single: dijkstraVia(Full signature) - proposed
 
-Complete Signature
-...............................................................................
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
@@ -82,16 +68,13 @@ Complete Signature
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
         node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 
-
 :Example: Find the route that visits the vertices 1 3 9  in that order on an undirected graph, avoiding U-turns when possible
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q0
     :end-before: -- q1
 
-
-Description of the Signature
--------------------------------------------------------------------------------
+.. rubric:: Description of the Signature
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -101,8 +84,7 @@ Description of the Signature
     :start-after: pgr_dijkstra_via_parameters_start
     :end-before: pgr_dijkstra_via_parameters_end
 
-Description of the parameters of the signatures
-...............................................................................
+.. rubric:: Parameters of the signatures
 
 =================== ====================== =================================================
 Parameter           Type                   Description
@@ -114,9 +96,7 @@ Parameter           Type                   Description
 **U_turn_on_edge**  ``BOOLEAN``            (optional) Default is true (is directed). When set to false the graph is considered as Undirected
 =================== ====================== =================================================
 
-
-Description of the return values
-...............................................................................
+.. rubric:: Description of the return values
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 
@@ -134,7 +114,6 @@ Column             Type          Description
 **agg_cost**       ``FLOAT``     Total cost from ``start_vid`` to ``end_vid`` of the path.
 **route_agg_cost** ``FLOAT``     Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the current ``path_pid`` .
 ================== ============= =================================================
-
 
 Examples
 -------------------------------------------------------------------------------
@@ -173,7 +152,6 @@ Examples
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q6
-
 
 See Also
 -------------------------------------------------------------------------------

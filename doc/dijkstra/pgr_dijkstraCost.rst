@@ -7,14 +7,8 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstraCost:
-
 pgr_dijkstraCost
 ===============================================================================
-
-
-Synopsis
--------------------------------------------------------------------------------
 
 ``pgr_dijkstraCost``
 
@@ -30,12 +24,15 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 
 * pgr_dijkstraCost(all signatures) 2.2.0
 
+Synopsis
+-------------------------------------------------------------------------------
+
 The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for a subset of pairs of nodes of the graph.
 We make use of the Boost's implementation of dijkstra which runs in
 :math:`O(V \log V + E)` time.
 
-Characteristics
+Description
 -------------------------------------------------------------------------------
 
 The main Characteristics are:
@@ -70,8 +67,10 @@ The main Characteristics are:
 
   - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
-Signature Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Signature Summary
 
 .. code-block:: none
 
@@ -84,15 +83,7 @@ Signature Summary
 	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
 
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-	single: dijkstraCost(Minimal Use)
-
-Minimal signature
-...............................................................................
+.. rubric:: Minimal signature
 
 The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
 
@@ -101,21 +92,17 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
      pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
 	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-
-.. rubric:: Example
+:Example:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q1
    :end-before: --q2
 
-
-
 .. index::
 	single: dijkstraCost(One to One)
 
-pgr_dijkstraCost One to One
+One to One
 ...............................................................................
-
 
 This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
@@ -137,7 +124,7 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 .. index::
     single: dijkstraCost(One to Many)
 
-pgr_dijkstraCost One to Many
+One to Many
 ...............................................................................
 
 .. code-block:: none
@@ -150,20 +137,16 @@ This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-
 :Example:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q4
    :end-before: --q5
 
-
-
-
 .. index::
 	single: dijkstraCost(Many to One)
 
-pgr_dijkstraCost Many to One
+Many to One
 ...............................................................................
 
 .. code-block:: none
@@ -176,19 +159,16 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-
 :Example:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q3
     :end-before: --q4
 
-
-
 .. index::
 	single: dijkstraCost(Many to Many)
 
-pgr_dijkstraCost Many to Many
+Many to Many
 ...............................................................................
 
 .. code-block:: none
@@ -207,14 +187,12 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
    :start-after: --q5
    :end-before: --q6
 
-
 Parameters
 -------------------------------------------------------------------------------
 
 .. include:: pgr_dijkstra.rst
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
-
 
 Inner query
 -------------------------------------------------------------------------------
@@ -245,8 +223,6 @@ Additional Examples
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q7
     :end-before: --q8
-
-
 
 See Also
 -------------------------------------------------------------------------------
