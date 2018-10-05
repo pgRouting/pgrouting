@@ -78,7 +78,7 @@ Signatures
 .. index::
     single: dagShortestPath(One to One) - Experimental
 
-pgr_dagShortestPath One to One
+One to One
 .......................................
 
 .. code-block:: none
@@ -97,7 +97,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 .. index::
     single: dagShortestPath(One to Many) - Experimental
 
-pgr_dagShortestPath One to Many
+One to Many
 .......................................
 
 .. code-block:: none
@@ -119,7 +119,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 .. index::
     single: dagShortestPath(Many to One) - Experimental
 
-pgr_dagShortestPath Many to One
+Many to One
 .......................................
 
 .. code-block:: none
@@ -141,7 +141,7 @@ where the ending vertex is fixed.
 .. index::
     single: dagShortestPath(Many to Many) - Experimental
 
-pgr_dagShortestPath Many to Many
+Many to Many
 .......................................
 
 .. code-block:: none
