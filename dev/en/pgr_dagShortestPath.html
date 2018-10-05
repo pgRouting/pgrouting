@@ -108,10 +108,10 @@
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 <li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#pgr-dagshortestpath-one-to-one">pgr_dagShortestPath One to One</a></li>
-<li><a class="reference internal" href="#pgr-dagshortestpath-one-to-many">pgr_dagShortestPath One to Many</a></li>
-<li><a class="reference internal" href="#pgr-dagshortestpath-many-to-one">pgr_dagShortestPath Many to One</a></li>
-<li><a class="reference internal" href="#pgr-dagshortestpath-many-to-many">pgr_dagShortestPath Many to Many</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
+<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
@@ -243,8 +243,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pgr-dagshortestpath-one-to-one">
-<span id="index-0"></span><h3>pgr_dagShortestPath One to One<a class="headerlink" href="#pgr-dagshortestpath-one-to-one" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="one-to-one">
+<span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dagShortestPath(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid);
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -273,8 +273,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
 </div>
 </div>
-<div class="section" id="pgr-dagshortestpath-one-to-many">
-<span id="index-1"></span><h3>pgr_dagShortestPath One to Many<a class="headerlink" href="#pgr-dagshortestpath-one-to-many" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="one-to-many">
+<span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dagShortestPath(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids);
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -308,8 +308,8 @@ where the starting vertex is fixed, and stop when all <code class="docutils lite
 </pre></div>
 </div>
 </div>
-<div class="section" id="pgr-dagshortestpath-many-to-one">
-<span id="index-2"></span><h3>pgr_dagShortestPath Many to One<a class="headerlink" href="#pgr-dagshortestpath-many-to-one" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="many-to-one">
+<span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dagShortestPath(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid);
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -342,8 +342,8 @@ where the ending vertex is fixed.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="pgr-dagshortestpath-many-to-many">
-<span id="index-3"></span><h3>pgr_dagShortestPath Many to Many<a class="headerlink" href="#pgr-dagshortestpath-many-to-many" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="many-to-many">
+<span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dagShortestPath((TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids);
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -533,8 +533,8 @@ for all <code class="docutils literal"><span class="pre">start_vids</span></code
 <td><p class="first">Identifier of the starting vertex.
 Returned when multiple starting vetrices are in the query.</p>
 <ul class="last simple">
-<li><a href="#id2"><span class="problematic" id="id3">`Many to One`_</span></a></li>
-<li><a href="#id4"><span class="problematic" id="id5">`Many to Many`_</span></a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 </ul>
 </td>
 </tr>
@@ -543,8 +543,8 @@ Returned when multiple starting vetrices are in the query.</p>
 <td><p class="first">Identifier of the ending vertex.
 Returned when multiple ending vertices are in the query.</p>
 <ul class="last simple">
-<li><a href="#id6"><span class="problematic" id="id7">`One to Many`_</span></a></li>
-<li><a href="#id8"><span class="problematic" id="id9">`Many to Many`_</span></a></li>
+<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 </ul>
 </td>
 </tr>
@@ -594,7 +594,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Sep 22, 2018.<br/>
+      Last updated on Oct 05, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

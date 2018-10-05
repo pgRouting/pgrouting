@@ -22,7 +22,6 @@ It uses Sphinx template styles, but it is not generated automatically.
 
 ```
 rm -Rf dev 
-mkdir dev
 cp -r build/doc/html dev 
 git add dev
 ```
