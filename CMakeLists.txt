@@ -24,20 +24,9 @@ endif()
 #---------------------------------------------
 # Setting kind of build
 #---------------------------------------------
-#
-# for developing
-# cmake -DMAKE_BUILD_TYPE=Develop
-#----------------------
 
-message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
-if (CMAKE_BUILD_TYPE MATCHES Develop)
-    set(CMAKE_BUILD_TYPE Debug CACHE STRING
-        "Choose the type of build, options are: None Debug Release RelWithDebInfo
-        MinSizeRel."
-        FORCE)
-    set(WITH_INTERNAL_TESTS)
-endif()
-message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(BuildType)
 
 
 #---------------------------------------------
@@ -129,7 +118,6 @@ message(STATUS "MSVC_CXX_MINIMUM_VERSION=${MSVC_CXX_MINIMUM_VERSION}")
 # adding cmake modules
 #---------------------------------------------
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 foreach(dir ${CMAKE_MODULE_PATH})
     message(STATUS "dir='${dir}'")
 endforeach()
