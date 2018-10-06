@@ -31,7 +31,7 @@ pgr_bdDijkstra
 
 * New on v2.0.0:
 
-  * pgr_astar(One to One)
+  * pgr_bdDijkstra(One to One)
 
 
 Signatures
