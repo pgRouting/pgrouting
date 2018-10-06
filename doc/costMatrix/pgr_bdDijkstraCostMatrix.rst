@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_bdDijkstraCostMatrix - proposed
+pgr_bdDijkstraCostMatrix
 ===============================================================================
 
 Name
@@ -21,11 +21,11 @@ Name
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.5.0
+.. rubric:: Availability:
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+* Official on v3.0.0
+* Proposed on v2.5.0
+
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -37,8 +37,7 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vids)
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vids, directed)
+    pgr_bdDijkstraCostMatrix(edges_sql, start_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -47,7 +46,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: bdDijkstraCostMatrix(Minimal Use) - Proposed
+    single: bdDijkstraCostMatrix(Minimal Use)
 
 Minimal Signature
 ...............................................................................
@@ -70,14 +69,14 @@ The minimal signature:
 
 
 .. index::
-    single: bdDijkstraCostMatrix(Complete Signature) - Proposed
+    single: bdDijkstraCostMatrix(Complete Signature)
 
 Complete Signature
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vids, directed:=true)
+    pgr_bdDijkstraCostMatrix(edges_sql, start_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 

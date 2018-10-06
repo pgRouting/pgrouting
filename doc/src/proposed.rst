@@ -36,13 +36,6 @@ As part of the :doc:`dijkstra-family`
 
 .. rubric:: Families
 
-:doc:`bdDijkstra-family`
-
-.. include:: bdDijkstra-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
-
 :doc:`withPoints-family`
 
 .. include:: withPoints-family.rst
@@ -72,7 +65,6 @@ As part of the :doc:`dijkstra-family`
 .. toctree::
     :hidden:
 
-    bdDijkstra-family
     withPoints-family
     cost-category
     costMatrix-category
