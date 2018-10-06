@@ -20,7 +20,7 @@ a list of vertices.
 
 .. rubric:: Availability: 2.2.0
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Given a list of vertices and a graph, this function is equivalent to finding the
@@ -33,7 +33,7 @@ The paths represents the sections of the route.
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Signature Summary
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -74,29 +74,20 @@ Signatures
     :start-after: -- q0
     :end-before: -- q1
 
-.. rubric:: Description of the Signature
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
 
 .. include:: pgRouting-concepts.rst
     :start-after: pgr_dijkstra_via_parameters_start
     :end-before: pgr_dijkstra_via_parameters_end
 
-.. rubric:: Parameters of the signatures
+Inner query
+-------------------------------------------------------------------------------
 
-=================== ====================== =================================================
-Parameter           Type                   Description
-=================== ====================== =================================================
-**edges_sql**       ``TEXT``               SQL query as described above.
-**via_vertices**    ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers
-**directed**        ``BOOLEAN``            (optional) Default is true (is directed). When set to false the graph is considered as Undirected
-**strict**          ``BOOLEAN``            (optional) ignores if a subsection of the route is missing and returns everything it found Default is true (is directed). When set to false the graph is considered as Undirected
-**U_turn_on_edge**  ``BOOLEAN``            (optional) Default is true (is directed). When set to false the graph is considered as Undirected
-=================== ====================== =================================================
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-.. rubric:: Description of the return values
+Return Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 
@@ -115,7 +106,7 @@ Column             Type          Description
 **route_agg_cost** ``FLOAT``     Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the current ``path_pid`` .
 ================== ============= =================================================
 
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example 1: Find the route that visits the vertices 1 5 3 9 4 in that order
@@ -148,7 +139,7 @@ Examples
     :start-after: -- q5
     :end-before: -- q6
 
-:Example 6: show the route's seq and aggregate cost and a status of "passes in front" or "visits" node 9
+:Example 6: Show the route's seq and aggregate cost and a status of "passes in front" or "visits" node 9
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q6
