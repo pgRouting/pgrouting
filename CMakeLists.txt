@@ -26,15 +26,25 @@ endif()
 #---------------------------------------------
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-include(BuildType)
+include(pgr/BuildType)
 
 
 #---------------------------------------------
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING)
+project(PGROUTING
+    VERSION 3.0.0
+    LANGUAGES C CXX )
+set(PGROUTING_VERSION_DEV "-dev")
 
+include(pgr/GitInfo)
+include(pgr/Version)
+
+
+#----------------------
+# PGROUTING library name used in the pgr_functions
+#  '$libdir/${PGROUTING_LIBRARY_NAME}'
 #---------------------------------------------
 #---------------------------------------------
 #---------------------------------------------
@@ -157,50 +167,6 @@ else()
 endif()
 
 
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-# PGROUTING version variables
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-
-set(PGROUTING_VERSION_MAJOR "3")
-set(PGROUTING_VERSION_MINOR "0")
-set(PGROUTING_VERSION_PATCH "0")
-set(PGROUTING_VERSION_DEV "-dev")
-
-set(PGROUTING_SHORT_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
-set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
-set(PGROUTING_FULL_VERSION "v${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}")
-
-
-#---------------------------------------------
-# Variables used in pgr_version()
-#---------------------------------------------
-file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
-
-set(PGROUTING_GIT_HASH "")
-string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
-
-#if (NOT "${PGROUTING_GIT_BRANCH}" STREQUAL "master")
-#    set (PGROUTING_GIT_HASH  "")
-#    set (PGROUTING_GIT_BRANCH  "")
-#endif()
-
-
-if (PGROUTING_DEBUG)
-    message(STATUS "PGROUTING_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "PGROUTING_SHORT_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "PGROUTING_FULL_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "VERSION file contents: ${PGROUTING_BUILD_STRING}")
-    message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
-    message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
-    message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
-    message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
-    message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
-endif()
 
 #----------------------
 # PGROUTING library name used in the pgr_functions
