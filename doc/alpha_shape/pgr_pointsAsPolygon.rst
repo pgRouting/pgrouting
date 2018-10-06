@@ -73,7 +73,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_drivingDistance` - Driving Distance
-* :ref:`pgr_alphashape` - Alpha shape computation
+* :doc:`pgr_alphaShape` - Alpha shape computation
 
 .. rubric:: Indices and tables
 
