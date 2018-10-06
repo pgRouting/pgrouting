@@ -104,7 +104,6 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_dijkstraCost</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
@@ -174,15 +173,12 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 <ul class="simple">
 <li>pgr_dijkstraCost(all signatures) 2.2.0</li>
 </ul>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">pgr_dijkstraCost</span></code> algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for a subset of pairs of nodes of the graph.
 We make use of the Boost’s implementation of dijkstra which runs in
 <span class="math">\(O(V \log V + E)\)</span> time.</p>
-</div>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
@@ -629,7 +625,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 05, 2018.<br/>
+      Last updated on Oct 06, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
