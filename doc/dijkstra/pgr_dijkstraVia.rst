@@ -74,7 +74,6 @@ Signatures
     :start-after: -- q0
     :end-before: -- q1
 
-
 .. include:: pgRouting-concepts.rst
     :start-after: pgr_dijkstra_via_parameters_start
     :end-before: pgr_dijkstra_via_parameters_end
