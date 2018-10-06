@@ -42,12 +42,6 @@ include(pgr/GitInfo)
 include(pgr/Version)
 
 
-#----------------------
-# PGROUTING library name used in the pgr_functions
-#  '$libdir/${PGROUTING_LIBRARY_NAME}'
-#---------------------------------------------
-#---------------------------------------------
-#---------------------------------------------
 
 
 #=============================================
@@ -167,12 +161,6 @@ else()
 endif()
 
 
-
-#----------------------
-# PGROUTING library name used in the pgr_functions
-#  '$libdir/${PGROUTING_LIBRARY_NAME}'
-#----------------------
-set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
 
 
 #-----------------------------------------------------------------------------
@@ -508,7 +496,12 @@ endforeach()
 #----------------------
 # PGROUTING installation files names have the following name
 #----------------------
-set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_SHORT_VERSION}")
+set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_LIB_VERSION}")
+
+if (PGROUTING_DEBUG)
+    message(STATUS "PGROUTING_LIB_NAME ${PGROUTING_LIB_NAME}")
+endif()
+
 
 
 add_library(${PGROUTING_LIB_NAME}

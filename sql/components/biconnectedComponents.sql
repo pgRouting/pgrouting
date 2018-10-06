@@ -35,6 +35,6 @@ CREATE OR REPLACE FUNCTION pgr_biconnectedComponents(
     OUT edge BIGINT)            -- the number of the edge
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'biconnectedComponents'
+'$MODULE_PATHNAME', 'biconnectedComponents'
 LANGUAGE c IMMUTABLE STRICT;
 

@@ -1,5 +1,9 @@
 
-if(EXISTS "${CMAKE_SOURCE_DIR}/.git")
+option(SET_VERSION_BRANCH
+    "Set ON|OFF (default=OFF) to build the version file" OFF)
+
+
+if ((CMAKE_BUILD_TYPE == "Debug") AND (EXISTS "${CMAKE_SOURCE_DIR}/.git"))
 
     # Get the current working branch
     execute_process(
@@ -16,6 +20,19 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/.git")
         OUTPUT_VARIABLE PGROUTING_GIT_HASH
         OUTPUT_STRIP_TRAILING_WHITESPACE
         )
+
+    # Get the number of commits of the working branch
+    execute_process(
+        COMMAND git rev-list HEAD --count
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        OUTPUT_VARIABLE PGROUTING_GIT_COMMITS
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+        )
+
+    if (SET_VERSION_BRANCH)
+        file(WRITE "${PGROUTING_SOURCE_DIR}/VERSION" "${PGROUTING_GIT_COMMITS}-${PGROUTING_GIT_HASH} ${SET_VERSION_BRANCH}")
+    endif()
+
 else()
 
     #---------------------------------------------
@@ -35,7 +52,7 @@ add_definitions("-DPGROUTING_GIT_HASH=${PGROUTING_GIT_HASH}")
 add_definitions("-DPGROUTING_GIT_BRANCH=${PGROUTING_GIT_BRANCH}")
 
 if (PGROUTING_DEBUG)
-    message(STATUS "PGROUTING_GIT_BRANCH: ${GROUTING_GIT_BRANCH}")
+    message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
     message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
 endif()
 

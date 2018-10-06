@@ -41,6 +41,6 @@ CREATE OR REPLACE FUNCTION _pgr_dagShortestPath(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'dagShortestPath'
+'$MODULE_PATHNAME', 'dagShortestPath'
 LANGUAGE c IMMUTABLE STRICT;
 

@@ -37,5 +37,5 @@ CREATE OR REPLACE FUNCTION _pgr_directedChPP(
     OUT agg_cost FLOAT)             -- total cost
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'directedChPP'
+'${MODULE_PATHNAME}', 'directedChPP'
 LANGUAGE c IMMUTABLE STRICT;
