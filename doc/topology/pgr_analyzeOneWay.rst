@@ -89,8 +89,8 @@ The vertices table can be created with :ref:`pgr_createVerticesTable <pgr_create
 The structure of the vertices table is:
 
 :id: ``bigint`` Identifier of the vertex.
-:cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGgraph <pgr_analyze_graph>`.
-:chk: ``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
+:cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`.
+:chk: ``integer``  Indicator that the vertex might have a problem. See :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`.
 :ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming.
 :eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing.
 :the_geom: ``geometry`` Point geometry of the vertex.
@@ -134,7 +134,7 @@ See Also
 
 * :ref:`topology`  for an overview of a topology for routing algorithms.
 * :ref:`analytics` for an overview of the analysis of a graph.
-* :ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge table.
+* :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
 * :ref:`pgr_create_vert_table` to reconstruct the vertices table based on the source and target information.
 
 .. rubric:: Indices and tables
