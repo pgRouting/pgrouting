@@ -15,11 +15,11 @@ Driving Distance - Category
 
 .. index from here
 
-* :ref:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra
-* :ref:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
+* :doc:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra
+* :doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
 * Post pocessing
 
-  * :ref:`pgr_alphaShape` - Alpha shape computation
+  * :doc:`pgr_alphaShape` - Alpha shape computation
   * :ref:`pgr_points_as_polygon` - Polygon around a set of points
 
 .. index to here
