@@ -106,7 +106,7 @@ but we have some basic tools that might help.
                                          direction)
     select pgr_nodeNetwork('myroads', 0.001);
 
-* :ref:`pgr_analyze_graph`
+* :doc:`pgr_analyzeGraph`
 * :ref:`pgr_analyze_oneway`
 * :ref:`pgr_node_network`
 
@@ -687,7 +687,7 @@ We do not current have any visualization tools for these problems, but I have us
 Analyze a Graph
 ...............................................................................
 
-With :ref:`pgr_analyze_graph` the graph can be checked for errors. For example for table "mytab" that has "mytab_vertices_pgr" as the vertices table:
+With :doc:`pgr_analyzeGraph` the graph can be checked for errors. For example for table "mytab" that has "mytab_vertices_pgr" as the vertices table:
 
 .. code-block:: sql
 
