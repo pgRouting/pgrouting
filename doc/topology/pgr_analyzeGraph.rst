@@ -10,14 +10,9 @@
 pgr_analyzeGraph
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_analyzeGraph`` — Analyzes the network topology.
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 The function returns:
@@ -34,9 +29,6 @@ The function returns:
                            text the_geom:='the_geom', text id:='id',
                            text source:='source',text target:='target',text rows_where:='true')
 
-Description
--------------------------------------------------------------------------------
-
 .. rubric:: Prerequisites
 
 The  edge table to be analyzed must contain a source column and a target column filled with id's of the vertices of the segments and the corresponding vertices table <edge_table>_vertices_pgr that stores the vertices information.
@@ -44,7 +36,8 @@ The  edge table to be analyzed must contain a source column and a target column 
 - Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
 - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
 
-.. rubric:: Parameters
+Parameters
+-------------------------------------------------------------------------------
 
 The analyze graph function accepts the following parameters:
 
@@ -91,7 +84,7 @@ The structure of the vertices table is:
 * New in version 2.0.0
 
 Usage when the edge table's columns MATCH the default values:
--------------------------------------------------------------------------------
+...............................................................................
 
 .. rubric:: The simplest way to use pgr_analyzeGraph is:
 
@@ -167,7 +160,7 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 
 
 Usage when the edge table's columns DO NOT MATCH the default values:
--------------------------------------------------------------------------------
+...............................................................................
 
 For the following table
 
@@ -257,7 +250,7 @@ Selecting the rows WHERE the geometry is near the place='myhouse' of the table `
 
 
 
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
