@@ -174,8 +174,8 @@ The examples in this section use the following :ref:`fig4`
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_alphashape` - Alpha shape computation
-* :ref:`pgr_points_as_polygon` - Polygon around set of points
+* :doc:`pgr_alphaShape` - Alpha shape computation
+* :doc:`pgr_pointsAsPolygon` - Polygon around set of points
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

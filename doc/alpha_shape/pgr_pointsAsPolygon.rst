@@ -7,21 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_points_as_polygon:
-
 pgr_pointsAsPolygon
 ===============================================================================
 
-.. index::
-    single: pgr_pointsAsPolygon(text,float8)
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_pointsAsPolygon`` — Draws an alpha shape around given set of points.
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Returns the alpha shape as (multi)polygon geometry.
@@ -30,8 +21,7 @@ Returns the alpha shape as (multi)polygon geometry.
 
     geometry pgr_pointsAsPolygon(text sql [, float8 alpha]);
 
-
-Description
+Parameters
 -------------------------------------------------------------------------------
 
 :sql: ``text`` a SQL query, which should return a set of rows with the following columns:
@@ -49,15 +39,13 @@ Description
 
 Returns a (multi)polygon geometry (with holes).
 
-
 .. rubric:: History
 
 * Renamed in version 2.0.0
 * Added alpha argument with default 0 (use optimal value) in version 2.1.0
 * Supported to return a (multi)polygon geometry (with holes) in version 2.1.0
 
-
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 In the following query there is no way to control which point in the polygon is the first in the list, so you may get similar but different results than the following which are also correct.
 
@@ -65,15 +53,13 @@ In the following query there is no way to control which point in the polygon is 
    :start-after: --q1
    :end-before: --q2
 
-
 The query use the :doc:`sampledata` network.
-
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_drivingDistance` - Driving Distance
-* :ref:`pgr_alphashape` - Alpha shape computation
+* :doc:`pgr_alphaShape` - Alpha shape computation
 
 .. rubric:: Indices and tables
 
