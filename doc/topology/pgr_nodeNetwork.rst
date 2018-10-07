@@ -389,7 +389,7 @@ See Also
 -------------------------------------------------------------------------------
 
 :ref:`topology` for an overview of a topology for routing algorithms.
-:ref:`pgr_analyze_oneway` to analyze directionality of the edges.
+:doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 :ref:`pgr_create_topology` to create a topology based on the geometry.
 :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
 

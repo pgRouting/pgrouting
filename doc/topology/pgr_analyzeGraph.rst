@@ -75,8 +75,8 @@ The structure of the vertices table is:
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this vertex.
 :chk: ``integer``  Indicator that the vertex might have a problem.
-:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
+:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 .. rubric:: History
@@ -385,7 +385,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`topology`  for an overview of a topology for routing algorithms.
-* :ref:`pgr_analyze_oneway` to analyze directionality of the edges.
+* :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 * :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to reconstruct the vertices table based on the source and target information.
 * :ref:`pgr_nodeNetwork <pgr_node_network>` to create nodes to a not noded edge table.
 
