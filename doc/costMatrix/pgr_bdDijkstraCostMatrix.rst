@@ -7,15 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_bdDijkstraCostMatrix:
-
 pgr_bdDijkstraCostMatrix - proposed
 ===============================================================================
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_bdDijkstra`.
+``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_bdDijkstra`.
 
 
 .. figure:: images/boost-inside.jpeg
