@@ -7,14 +7,14 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_analyzeOneway
+pgr_analyzeOneWay
 ===============================================================================
 
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_analyzeOneway`` — Analyzes oneway Sstreets and identifies flipped segments.
+``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped segments.
 
 
 Synopsis
@@ -27,7 +27,7 @@ This function analyzes oneway streets in a graph and identifies any flipped segm
 
 .. code-block:: sql
 
-	text pgr_analyzeOneway(geom_table text,
+	text pgr_analyzeOneWay(geom_table text,
 			       text[] s_in_rules, text[] s_out_rules,
                                text[] t_in_rules, text[] t_out_rules,
 			       text oneway='oneway', text source='source', text target='target',
@@ -104,7 +104,7 @@ Examples
 
 .. code-block:: sql
 
-	SELECT pgr_analyzeOneway('edge_table',
+	SELECT pgr_analyzeOneWay('edge_table',
         ARRAY['', 'B', 'TF'],
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'FT'],
@@ -119,7 +119,7 @@ Examples
 	NOTICE:  Analysis 100% complete ...
 	NOTICE:  Found 0 potential problems in directionality
 
-	pgr_analyzeoneway
+	pgr_analyzeOneWay
 	-------------------
 	OK
 	(1 row)

@@ -75,7 +75,7 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requierment of the :doc:`pgr_analyzeGraph <pgr_analyzeGraph>` and the :doc:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
+The vertices table is a requierment of the :doc:`pgr_analyzeGraph <pgr_analyzeGraph>` and the :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>` functions.
 
 The structure of the vertices table is:
 
@@ -287,7 +287,7 @@ See Also
 
 * :ref:`topology`  for an overview of a topology for routing algorithms.
 * :ref:`pgr_createTopology <pgr_create_topology>` to create a topology based on the geometry.
-* :doc:`pgr_analyze_graph` to analyze the edges and vertices of the edge table.
+* :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
 * :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 
 .. rubric:: Indices and tables
