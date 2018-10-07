@@ -88,15 +88,15 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requirement of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
+The vertices table is a requirement of the :doc:`pgr_analyzeGraph <pgr_analyzeGraph>` and the :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>` functions.
 
 The structure of the vertices table is:
 
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
 :chk: ``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
-:ein: ``integer`` Number of vertices in the edge_table that reference this vertex AS incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex AS outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
+:ein: ``integer`` Number of vertices in the edge_table that reference this vertex AS incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+:eout: ``integer`` Number of vertices in the edge_table that reference this vertex AS outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 .. rubric:: History

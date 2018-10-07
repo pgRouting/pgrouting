@@ -75,15 +75,15 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requierment of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
+The vertices table is a requierment of the :doc:`pgr_analyzeGraph <pgr_analyzeGraph>` and the :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>` functions.
 
 The structure of the vertices table is:
 
 :id: ``bigint`` Identifier of the vertex.
-:cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
-:chk: ``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
-:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
+:cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`.
+:chk: ``integer``  Indicator that the vertex might have a problem. See :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`.
+:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 .. rubric:: History
@@ -288,7 +288,7 @@ See Also
 * :ref:`topology`  for an overview of a topology for routing algorithms.
 * :ref:`pgr_createTopology <pgr_create_topology>` to create a topology based on the geometry.
 * :ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge table.
-* :ref:`pgr_analyze_oneway` to analyze directionality of the edges.
+* :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 
 .. rubric:: Indices and tables
 
