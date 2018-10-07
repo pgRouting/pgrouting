@@ -10,29 +10,9 @@
 pgr_analyzeOneWay
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped segments.
 
-
-Synopsis
--------------------------------------------------------------------------------
-
 This function analyzes oneway streets in a graph and identifies any flipped segments.
-
-.. index::
-	single: analyzeOneway(Complete Signature)
-
-.. code-block:: sql
-
-	text pgr_analyzeOneWay(geom_table text,
-			       text[] s_in_rules, text[] s_out_rules,
-                               text[] t_in_rules, text[] t_out_rules,
-			       text oneway='oneway', text source='source', text target='target',
-			       boolean two_way_if_null=true);
-
 
 Description
 -------------------------------------------------------------------------------
@@ -50,7 +30,19 @@ The  edge table to be analyzed must contain a source column and a target column 
 - Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
 - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
 
-.. rubric:: Parameters
+Signatures
+-------------------------------------------------------------------------------
+
+.. code-block:: sql
+
+	text pgr_analyzeOneWay(geom_table text,
+			       text[] s_in_rules, text[] s_out_rules,
+                               text[] t_in_rules, text[] t_out_rules,
+			       text oneway='oneway', text source='source', text target='target',
+			       boolean two_way_if_null=true);
+
+Parameters
+-------------------------------------------------------------------------------
 
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
 :s_in_rules: ``text[]`` source node **in** rules
@@ -63,7 +55,6 @@ The  edge table to be analyzed must contain a source column and a target column 
 :two_way_if_null: ``boolean`` flag to treat oneway NULL values as bi-directional.  Default value is ``true``.
 
 .. note:: It is strongly recommended to use the named notation. See :ref:`pgr_createVerticesTable <pgr_create_vert_table>` or :ref:`pgr_createTopology <pgr_create_topology>` for examples.
-
 
 The function returns:
 
@@ -93,13 +84,11 @@ The structure of the vertices table is:
 :eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
-
 .. rubric:: History
 
 * New in version 2.0.0
 
-
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -125,7 +114,6 @@ Examples
 	(1 row)
 
 The queries use the :doc:`sampledata` network.
-
 
 See Also
 -------------------------------------------------------------------------------
