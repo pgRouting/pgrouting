@@ -33,6 +33,6 @@ CREATE OR REPLACE FUNCTION pgr_bridges(
     OUT edge BIGINT)            -- the number of the edge
 
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'bridges'
+'MODULE_PATHNAME', 'bridges'
 LANGUAGE c IMMUTABLE STRICT;
 

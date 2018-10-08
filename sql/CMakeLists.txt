@@ -22,14 +22,15 @@ add_subdirectory(sigs)
 # configuring the PgRouting_SQL_FILES variable
 #-------------------
 
-set(MODULE_PATHNAME "$libdir/libpgrouting-${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
+set(PGROUTING_MODULE_PATHNAME "$libdir/libpgrouting-${PGROUTING_LIB_VERSION}")
 
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory(${subdir})
 endforeach()
 
-if (PgRouting_DEBUG)
+if (PGROUTING_DEBUG)
     message(STATUS "PgRouting_SQL_FILES=")
+    message(STATUS "PGROUTING_MODULE_PATHNAME ${PGROUTING_MODULE_PATHNAME}")
     foreach (f ${PgRouting_SQL_FILES})
         message(STATUS ${f})
     endforeach()

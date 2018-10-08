@@ -47,5 +47,5 @@ CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'turnRestrictedPath'
+'MODULE_PATHNAME', 'turnRestrictedPath'
 LANGUAGE c IMMUTABLE STRICT;

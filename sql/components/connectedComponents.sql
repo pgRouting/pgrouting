@@ -35,6 +35,6 @@ CREATE OR REPLACE FUNCTION pgr_connectedComponents(
     OUT node BIGINT)            -- the number of the node
 
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'connectedComponents'
+'MODULE_PATHNAME', 'connectedComponents'
 LANGUAGE c IMMUTABLE STRICT;
 

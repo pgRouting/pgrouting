@@ -37,7 +37,7 @@ CREATE OR REPLACE FUNCTION _pgr_randomSpanningTree(
     OUT root_vertex BIGINT,     -- Root_vetex
     OUT edge BIGINT,	     	-- Edge linked to that node
     OUT cost FLOAT,             -- Cost of edge
-    OUT tree_cost FLOAT)        -- Spanning tree cost 
+    OUT tree_cost FLOAT)        -- Spanning tree cost
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'randomSpanningTree'
+'MODULE_PATHNAME', 'randomSpanningTree'
 LANGUAGE c VOLATILE STRICT;

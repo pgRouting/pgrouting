@@ -32,8 +32,8 @@ CREATE OR REPLACE FUNCTION pgr_stoerWagner(
 
     OUT seq INTEGER,            -- Seq
     OUT edge BIGINT,            -- edges which divides the set of vertices into two.
-    OUT cost FLOAT,             -- cost of edge 
-    OUT mincut FLOAT)           -- vertices of partition, min-cut weight of a undirected graph 
+    OUT cost FLOAT,             -- cost of edge
+    OUT mincut FLOAT)           -- vertices of partition, min-cut weight of a undirected graph
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'stoerWagner'
+'MODULE_PATHNAME', 'stoerWagner'
 LANGUAGE c VOLATILE STRICT;

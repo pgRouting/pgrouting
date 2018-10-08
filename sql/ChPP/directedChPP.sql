@@ -37,5 +37,5 @@ CREATE OR REPLACE FUNCTION _pgr_directedChPP(
     OUT agg_cost FLOAT)             -- total cost
 
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'directedChPP'
+'MODULE_PATHNAME', 'directedChPP'
 LANGUAGE c IMMUTABLE STRICT;

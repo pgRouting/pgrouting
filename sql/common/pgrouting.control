@@ -1,6 +1,7 @@
 # pgRouting Extension
 comment = 'pgRouting Extension'
 default_version = '${PGROUTING_VERSION}'
+module_pathname = '${PGROUTING_MODULE_PATHNAME}'
 relocatable = true
 requires = 'plpgsql'
 requires = 'postgis'
