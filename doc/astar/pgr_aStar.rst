@@ -10,9 +10,6 @@
 pgr_aStar
 ===============================================================================
 
-Synopsis
--------------------------------------------------------------------------------
-
 ``pgr_aStar`` — Returns the shortest path using A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
@@ -20,9 +17,8 @@ Synopsis
 
    Boost Graph Inside
 
-
-
-.. rubric:: Characteristics
+Description
+-------------------------------------------------------------------------------
 
 The main Characteristics are:
 
@@ -37,8 +33,6 @@ The main Characteristics are:
   * `pgr_aStar(` `Many to Many`_ `)`
 
 * ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
-
-
 
 .. rubric:: Availability:
 
@@ -56,10 +50,10 @@ The main Characteristics are:
 
   * pgr_astar(One to One)
 
-
-
-Signature Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -73,9 +67,7 @@ Signature Summary
 
 Optional parameters are `named parameters` and have a default value.
 
-
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 .. code-block:: none
 
@@ -88,11 +80,8 @@ Minimal Signature
    :start-after: --q1
    :end-before: --q2
 
-
-
 .. index::
     single: aStar(One to One)
-
 
 One to One
 ...............................................................................
@@ -107,13 +96,11 @@ One to One
    :start-after: --q2
    :end-before: --q3
 
-
-
 .. index::
     single: astar(One to Many)
 
 One to many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -130,7 +117,7 @@ One to many
     single: aStar(Many to One)
 
 Many to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -143,13 +130,11 @@ Many to One
    :start-after: --q4
    :end-before: --q5
 
-
-
 .. index::
     single: aStar(Many to Many)
 
 Many to Many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -162,15 +147,10 @@ Many to Many
    :start-after: --q5
    :end-before: --q6
 
-
-
-
 Parameters
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. aStar aStarCost parameters start
-
-
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -222,23 +202,21 @@ Parameter        Type                   Default  Description
 .. aStar aStarCost parameters end
 
 Inner query
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 edges_sql
-...........................................................
-
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
 Result Columns
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_short_start
     :end-before: return_path_short_end
-
 
 See Also
 -------------------------------------------------------------------------------
