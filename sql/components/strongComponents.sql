@@ -35,6 +35,6 @@ CREATE OR REPLACE FUNCTION pgr_strongComponents(
     OUT node BIGINT)            -- the number of the node
 
 RETURNS SETOF RECORD AS
-'$MODULE_PATHNAME', 'strongComponents'
+'${MODULE_PATHNAME}', 'strongComponents'
 LANGUAGE c IMMUTABLE STRICT;
 
