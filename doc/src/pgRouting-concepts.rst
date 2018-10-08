@@ -107,9 +107,9 @@ but we have some basic tools that might help.
     select pgr_nodeNetwork('myroads', 0.001);
 
 * :doc:`pgr_analyzeGraph`
-* :ref:`pgr_analyze_oneway`
 * :doc:`pgr_analyzeOneWay`
-* :ref:`pgr_node_network`
+* :doc:`pgr_analyzeOneWay`
+* :doc:`pgr_nodeNetwork`
 
 
 .. _compute_path:
