@@ -208,7 +208,7 @@ The queries use the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_drivingDistance` - Driving distance using dijkstra.
+* :doc:`pgr_drivingDistance` - Driving distance using dijkstra.
 * :doc:`pgr_alphaShape` - Alpha shape computation.
 * :doc:`pgr_pointsAsPolygon` - Polygon around set of points.
 

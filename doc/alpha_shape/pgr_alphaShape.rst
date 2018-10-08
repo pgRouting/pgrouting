@@ -55,7 +55,6 @@ Additional Examples
 PgRouting's alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
 The first query, has the output ordered, he second query shows an example usage:
 
-
 .. rubric:: Example: the (ordered) results
 
 .. literalinclude:: doc-pgr_alphashape.queries

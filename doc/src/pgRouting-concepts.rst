@@ -106,8 +106,9 @@ but we have some basic tools that might help.
                                          direction)
     select pgr_nodeNetwork('myroads', 0.001);
 
-* :ref:`pgr_analyze_graph`
-* :ref:`pgr_analyze_oneway`
+* :doc:`pgr_analyzeGraph`
+* :doc:`pgr_analyzeOneWay`
+* :doc:`pgr_analyzeOneWay`
 * :ref:`pgr_node_network`
 
 
@@ -687,7 +688,7 @@ We do not current have any visualization tools for these problems, but I have us
 Analyze a Graph
 ...............................................................................
 
-With :ref:`pgr_analyze_graph` the graph can be checked for errors. For example for table "mytab" that has "mytab_vertices_pgr" as the vertices table:
+With :doc:`pgr_analyzeGraph` the graph can be checked for errors. For example for table "mytab" that has "mytab_vertices_pgr" as the vertices table:
 
 .. code-block:: sql
 
@@ -746,7 +747,7 @@ If you want to visualize these on a graphic image, then you can use something li
 Analyze One Way Streets
 ...............................................................................
 
-:ref:`pgr_analyze_oneway` analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.
+:doc:`pgr_analyzeOneWay` analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.
 
 This query will add two columns to the vertices_tmp table ``ein int`` and ``eout int`` and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.
 

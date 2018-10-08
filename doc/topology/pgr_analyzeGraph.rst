@@ -7,19 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_analyze_graph:
-
 pgr_analyzeGraph
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_analyzeGraph`` — Analyzes the network topology.
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 The function returns:
@@ -36,9 +29,6 @@ The function returns:
                            text the_geom:='the_geom', text id:='id',
                            text source:='source',text target:='target',text rows_where:='true')
 
-Description
--------------------------------------------------------------------------------
-
 .. rubric:: Prerequisites
 
 The  edge table to be analyzed must contain a source column and a target column filled with id's of the vertices of the segments and the corresponding vertices table <edge_table>_vertices_pgr that stores the vertices information.
@@ -46,7 +36,8 @@ The  edge table to be analyzed must contain a source column and a target column 
 - Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
 - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
 
-.. rubric:: Parameters
+Parameters
+-------------------------------------------------------------------------------
 
 The analyze graph function accepts the following parameters:
 
@@ -84,8 +75,8 @@ The structure of the vertices table is:
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this vertex.
 :chk: ``integer``  Indicator that the vertex might have a problem.
-:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
+:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 .. rubric:: History
@@ -93,7 +84,7 @@ The structure of the vertices table is:
 * New in version 2.0.0
 
 Usage when the edge table's columns MATCH the default values:
--------------------------------------------------------------------------------
+...............................................................................
 
 .. rubric:: The simplest way to use pgr_analyzeGraph is:
 
@@ -169,7 +160,7 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 
 
 Usage when the edge table's columns DO NOT MATCH the default values:
--------------------------------------------------------------------------------
+...............................................................................
 
 For the following table
 
@@ -259,7 +250,7 @@ Selecting the rows WHERE the geometry is near the place='myhouse' of the table `
 
 
 
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -394,7 +385,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`topology`  for an overview of a topology for routing algorithms.
-* :ref:`pgr_analyze_oneway` to analyze directionality of the edges.
+* :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 * :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to reconstruct the vertices table based on the source and target information.
 * :ref:`pgr_nodeNetwork <pgr_node_network>` to create nodes to a not noded edge table.
 
