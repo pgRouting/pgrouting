@@ -10,9 +10,6 @@
 pgr_aStarCost
 ===============================================================================
 
-Synopsis
--------------------------------------------------------------------------------
-
 ``pgr_aStarCost`` — Returns the aggregate cost shortest path using :doc:`pgr_aStar` algorithm.
 
 .. figure:: images/boost-inside.jpeg
@@ -20,7 +17,8 @@ Synopsis
 
    Boost Graph Inside
 
-.. rubric:: Characteristics
+Description
+-------------------------------------------------------------------------------
 
 .. include:: aStar-family.rst
    :start-after: astar general info start
@@ -36,9 +34,10 @@ Synopsis
 
 * New in v2.4.0
 
+Signatures
+-------------------------------------------------------------------------------
 
-Signature Summary
------------------
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -52,9 +51,7 @@ Signature Summary
 
 Optional parameters are `named parameters` and have a default value.
 
-
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 .. code-block:: none
 
@@ -67,13 +64,12 @@ Minimal Signature
    :start-after: --q1
    :end-before: --q2
 
-
-
 .. index::
     single: aStarCost(One to One)
 
 One to One
 ...............................................................................
+
 .. code-block:: none
 
     pgr_aStarCost(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
@@ -85,13 +81,11 @@ One to One
    :start-after: --q2
    :end-before: --q3
 
-
-
 .. index::
     single: aStarCost(One to Many)
 
 One to many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -108,7 +102,7 @@ One to many
     single: aStarCost(Many to One)
 
 Many to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -121,13 +115,11 @@ Many to One
    :start-after: --q4
    :end-before: --q5
 
-
-
 .. index::
     single: aStarCost(Many to Many)
 
 Many to Many
-.......................................
+..............................................................................
 
 .. code-block:: none
 
@@ -140,36 +132,29 @@ Many to Many
    :start-after: --q5
    :end-before: --q6
 
-
-
-
 Parameters
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. include:: pgr_aStar.rst
    :start-after: aStar aStarCost parameters start
    :end-before: aStar aStarCost parameters end
 
-
 Inner query
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 edges_sql
-...........................................................
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
 Result Columns
---------------------------------------------------------
+--------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
-
-
-
 
 See Also
 -------------------------------------------------------------------------------
