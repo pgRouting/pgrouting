@@ -19,11 +19,11 @@ Components - Family of functions
 
 .. index from here
 
-* :ref:`pgr_connectedComponents` - Return the connected components of an undirected graph.
-* :ref:`pgr_strongComponents` - Return the strongly connected components of a directed graph.
-* :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph.
-* :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph.
-* :ref:`pgr_bridges` - Return the bridges of an undirected graph.
+* :doc:`pgr_connectedComponents` - Return the connected components of an undirected graph.
+* :doc:`pgr_strongComponents` - Return the strongly connected components of a directed graph.
+* :doc:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph.
+* :doc:`pgr_articulationPoints` - Return the articulation points of an undirected graph.
+* :doc:`pgr_bridges` - Return the bridges of an undirected graph.
 
 .. index to here
 
@@ -403,7 +403,10 @@ Example:
 
 .. components_edges_sql_start
 
-Description of the edges_sql query for components functions
+Inner query
+-------------------------------------------------------------------------------
+
+edges_sql
 ...............................................................................
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
@@ -435,8 +438,8 @@ Where:
 
 .. components_parameters_start
 
-Description of the parameters of the signatures
-...............................................................................
+Parameters
+-------------------------------------------------------------------------------
 
 =================== ====================== ========= =========================================
 Parameter           Type                   Default   Description
@@ -486,8 +489,8 @@ Column         Type       Description
 
 .. return_cutvertices_start
 
-Description of the return values for articulation points
-..............................................................
+Result Columns (pgr_articulationPoints)
+-------------------------------------------------------------------------------
 
 Returns set of ``(seq, node)``
 

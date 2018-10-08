@@ -108,8 +108,7 @@ but we have some basic tools that might help.
 
 * :doc:`pgr_analyzeGraph`
 * :doc:`pgr_analyzeOneWay`
-* :doc:`pgr_analyzeOneWay`
-* :ref:`pgr_node_network`
+* :doc:`pgr_nodeNetwork`
 
 
 .. _compute_path:

@@ -131,11 +131,11 @@ Experimental Functions
 
 :ref:`components` - Analyze components within a graph
 
--  :ref:`pgr_connectedComponents` - Return the connected components of an undirected graph
--  :ref:`pgr_strongComponents` - Return the strongly connected components of a directed graph
--  :ref:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph
--  :ref:`pgr_articulationPoints` - Return the articulation points of an undirected graph
--  :ref:`pgr_bridges` - Return the bridges of an undirected graph
+-  :doc:`pgr_connectedComponents` - Return the connected components of an undirected graph
+-  :doc:`pgr_strongComponents` - Return the strongly connected components of a directed graph
+-  :doc:`pgr_biconnectedComponents` - Return the biconnected components of an undirected graph
+-  :doc:`pgr_articulationPoints` - Return the articulation points of an undirected graph
+-  :doc:`pgr_bridges` - Return the bridges of an undirected graph
 
 .. rubric:: VRP
 

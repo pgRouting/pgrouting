@@ -61,7 +61,7 @@ Pgrouting Concepts
 
 
 
-:ref:`Topology Functions <topology_functions>`
+:doc:`topology-functions <topology-functions>`
 ===============================================================================
 
 -  :ref:`pgr_create_topology` -  to create a topology based on the geometry.

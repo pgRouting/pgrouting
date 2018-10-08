@@ -7,11 +7,8 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_articulationPoints:
-
 pgr_articulationPoints - Experimental
 ===============================================================================
-
 
 ``pgr_articulationPoints`` - Return the articulation points of an undirected graph.
 In particular, the algorithm implemented by Boost.Graph.
@@ -25,8 +22,7 @@ In particular, the algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Those vertices that belong to more than one biconnected component are called
@@ -35,22 +31,13 @@ vertices whose removal would increase the number of connected components in
 the graph.
 This implementation can only be used with an undirected graph.
 
-Characteristics
--------------------------------------------------------------------------------
-
 The main Characteristics are:
-
-  - The returned values are ordered:
-
-    - `node` ascending
-
-  - Running time: :math:`O(V + E)`
+-The returned values are ordered:
+- `node` ascending
+- Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-    single: articulationPoints
 
 .. code-block:: none
 
@@ -71,16 +58,14 @@ The signature is for a **undirected** graph.
    :width: 560px
    :height: 362px
 
-Description of the Signatures
--------------------------------------------------------------------------------
-
-.. include:: components-family.rst
-    :start-after: components_edges_sql_start
-    :end-before: components_edges_sql_end
 
 .. include:: components-family.rst
     :start-after: components_parameters_start
     :end-before: components_parameters_end
+
+.. include:: components-family.rst
+    :start-after: components_edges_sql_start
+    :end-before: components_edges_sql_end
 
 .. include:: components-family.rst
     :start-after: return_cutvertices_start

@@ -285,8 +285,8 @@ The example uses the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`topology`  for an overview of a topology for routing algorithms.
-* :ref:`pgr_createTopology <pgr_create_topology>` to create a topology based on the geometry.
+* :doc:`topology-functions`  for an overview of a topology for routing algorithms.
+* :doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based on the geometry.
 * :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
 * :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 
