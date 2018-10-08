@@ -10,9 +10,6 @@
 pgr_aStarCostMatrix
 ===============================================================================
 
-Synopsis
--------------------------------------------------------------------------------
-
 ``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
 
 .. figure:: images/boost-inside.jpeg
@@ -20,8 +17,8 @@ Synopsis
 
    Boost Graph Inside
 
-
-.. rubric:: Characteristics
+Description
+-------------------------------------------------------------------------------
 
 The main Characteristics are:
 
@@ -46,8 +43,10 @@ The main Characteristics are:
 
 * New on version 2.4.0
 
-Signature Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -55,10 +54,7 @@ Signature Summary
     pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
-
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 The minimal signature:
 
@@ -69,26 +65,21 @@ The minimal signature:
     pgr_aStarCostMatrix(edges_sql, vids)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
 :Example: Cost matrix for vertices 1, 2, 3, and 4.
-
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- astar q1
    :end-before: -- astar q2
 
-
 .. index::
     single: aStarCostMatrix
 
-Complete Signature
-...............................................................................
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
     pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
-
 
 :Example: Symmetric cost matrix for vertices 1, 2, 3, and 4 using heuristic 2.
 
@@ -97,7 +88,7 @@ Complete Signature
    :end-before: -- astar q3
 
 Parameters
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -111,8 +102,6 @@ Parameter        Type                   Description
 .. include:: pgr_aStar.rst
     :start-after: rubric:: Optional Parameters
     :end-before: aStar aStarCost parameters end
-
-
 
 Inner query
 --------------------------------------------------------
@@ -131,7 +120,6 @@ Result Columns
     :start-after: return_cost_start
     :end-before: return_cost_end
 
-
 Additional Examples
 -------------------------------------------------------------------------------
 
@@ -140,7 +128,6 @@ Additional Examples
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- astar q3
    :end-before: -- astar q4
-
 
 See Also
 -------------------------------------------------------------------------------
