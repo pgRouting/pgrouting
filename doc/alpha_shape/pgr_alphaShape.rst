@@ -21,7 +21,7 @@ Returns a table with (x, y) rows that describe the vertices of an alpha shape.
 
 	table() pgr_alphaShape(text sql [, float8 alpha]);
 
-Signatures
+Parameters
 -------------------------------------------------------------------------------
 
 :sql: ``text`` a SQL query, which should return a set of rows with the following columns:
@@ -80,7 +80,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_drivingDistance` - Driving Distance
-* :ref:`pgr_points_as_polygon` - Polygon around set of points
+* :doc:`pgr_pointsAsPolygon` - Polygon around set of points
 
 .. rubric:: Indices and tables
 
