@@ -10,9 +10,6 @@
 pgr_bdAstar
 ===============================================================================
 
-Synopsis
--------------------------------------------------------------------------------
-
 ``pgr_bdAstar`` — Returns the shortest path using Bidirectional A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
@@ -20,7 +17,8 @@ Synopsis
 
    Boost Graph Inside
 
-.. rubric:: Characteristics
+Description
+-------------------------------------------------------------------------------
 
 The main Characteristics are:
 
@@ -35,7 +33,6 @@ The main Characteristics are:
   * `pgr_bdAstar(` `Many to Many`_ `)`
 
 * ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
-
 
 .. rubric:: Availability:
 
@@ -53,9 +50,10 @@ The main Characteristics are:
 
   * pgr_astar(One to One)
 
-
-Signature Summary
+Signature
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -70,9 +68,7 @@ Signature Summary
 
 Optional parameters are `named parameters` and have a default value.
 
-
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 .. code-block:: none
 
@@ -85,11 +81,8 @@ Minimal Signature
    :start-after: -- q1
    :end-before: -- q2
 
-
-
 .. index::
     single: bdAstar(One to One)
-
 
 One to One
 ...............................................................................
@@ -104,12 +97,11 @@ One to One
    :start-after: -- q2
    :end-before: -- q3
 
-
 .. index::
     single: bdAstar(One to Many)
 
 One to many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -125,9 +117,8 @@ One to many
 .. index::
     single: bdAstar(Many to One)
 
-
 Many to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -140,12 +131,11 @@ Many to One
    :start-after: -- q4
    :end-before: -- q5
 
-
 .. index::
     single: bdAstar(Many to Many)
 
 Many to Many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -159,33 +149,28 @@ Many to Many
    :end-before: -- q6
 
 Parameters
---------------------------------------------------------
-
+-------------------------------------------------------------------------------
 
 .. include:: pgr_aStar.rst
    :start-after: aStar aStarCost parameters start
    :end-before: aStar aStarCost parameters end
 
-
 Inner query
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 edges_sql
-...........................................................
-
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
 Result Columns
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_start
     :end-before: return_path_end
-
-
 
 See Also
 -------------------------------------------------------------------------------
