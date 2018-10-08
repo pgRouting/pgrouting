@@ -17,6 +17,9 @@ pgr_bdDijkstra
 
    Boost Graph Inside
 
+Description
+-------------------------------------------------------------------------------
+
 .. rubric:: Availability:
 
 * pgr_bdDijkstra(one to one) 2.0.0, Signature changed 2.4.0
@@ -195,7 +198,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * The queries use the :doc:`sampledata` network.
-* :ref:`bdDijkstra`
+* :doc:`pgr_bdDijkstra`
 * http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
 
