@@ -10,16 +10,9 @@
 pgr_alphaShape
 ===============================================================================
 
-.. index::
-	single: pgr_alphashape(text,float8)
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_alphaShape`` — Core function for alpha shape computation.
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Returns a table with (x, y) rows that describe the vertices of an alpha shape.
@@ -28,8 +21,7 @@ Returns a table with (x, y) rows that describe the vertices of an alpha shape.
 
 	table() pgr_alphaShape(text sql [, float8 alpha]);
 
-
-Description
+Parameters
 -------------------------------------------------------------------------------
 
 :sql: ``text`` a SQL query, which should return a set of rows with the following columns:
@@ -58,11 +50,10 @@ If a result includes multiple outer/inner rings, return those with separator row
 * Added alpha argument with default 0 (use optimal value) in version 2.1.0
 * Supported to return multiple outer/inner ring coordinates with separator row (x=NULL and y=NULL) in version 2.1.0
 
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 PgRouting's alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
 The first query, has the output ordered, he second query shows an example usage:
-
 
 .. rubric:: Example: the (ordered) results
 
@@ -83,15 +74,13 @@ Steps:
    :start-after: -- q2
    :end-before: -- q3
 
-
-
 The queries use the :doc:`sampledata` network.
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_drivingDistance` - Driving Distance
-* :ref:`pgr_points_as_polygon` - Polygon around set of points
+* :doc:`pgr_pointsAsPolygon` - Polygon around set of points
 
 .. rubric:: Indices and tables
 

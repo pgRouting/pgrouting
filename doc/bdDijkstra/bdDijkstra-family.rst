@@ -14,9 +14,9 @@ Bidirectional Dijkstra - Family of functions
 
 .. index from here
 
-* :ref:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths.
+* :doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths.
 * :doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of the shortest paths
-* :ref:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths.
+* :doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths.
 
 .. index to here
 

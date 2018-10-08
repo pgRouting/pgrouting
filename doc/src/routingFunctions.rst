@@ -37,7 +37,7 @@ Routing Functions
    :end-before: index to here
 
 
-:ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
+:doc:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 
 
 :ref:`dijkstra`
