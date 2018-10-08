@@ -51,50 +51,7 @@ include(pgr/Version)
 #---------------------------------------------
 #  PGROUTING_SOURCE_NAMES
 #---------------------------------------------
-#
-# Name of the directories that have C/C++ code
-#  - <directory>/src/CMakelists.txt must exist
-#  - <directory>/sql/CMakeLists.txt  must exist
-#----------------------
-configure_file("configuration.conf" "configuration.conf")
-file(STRINGS configuration.conf PGROUTING_CONFIGURATION_FILE)
-
-set(PGROUTING_SOURCE_NAMES "")
-set(PGROUTING_SQL_DIRECTORIES "")
-set(PGROUTING_DOC_DIRECTORIES "")
-foreach(line ${PGROUTING_CONFIGURATION_FILE})
-    string(REGEX REPLACE "^(#).*" "\\1" comment ${line})
-    if("${comment}" MATCHES "#")
-        continue()
-    endif()
-    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\1" directory ${line})
-    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\2" has_code ${line})
-    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\3" has_sql ${line})
-    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\4" has_doc ${line})
-
-    string(STRIP ${directory} directory)
-    string(STRIP ${has_code} has_code)
-    string(STRIP ${has_sql} has_sql)
-    string(STRIP ${has_doc} has_doc)
-
-
-    if( ${has_code} MATCHES "Y")
-        list(APPEND PGROUTING_SOURCE_NAMES "${directory}")
-    endif()
-    if( ${has_sql} MATCHES "Y")
-        list(APPEND PGROUTING_SQL_DIRECTORIES "${directory}")
-    endif()
-    if( ${has_doc} MATCHES "Y")
-        list(APPEND PGROUTING_DOC_DIRECTORIES "${directory}")
-    endif()
-endforeach()
-
-if (PGROUTING_DEBUG)
-    message(STATUS "${PGROUTING_SOURCE_NAMES}")
-    message(STATUS "${PGROUTING_SQL_DIRECTORIES}")
-    message(STATUS "${PGROUTING_DOC_DIRECTORIES}")
-endif()
-
+include(pgr/Configure)
 
 
 #---------------------------------------------
@@ -550,10 +507,3 @@ install(FILES
 #-----------------------------------------------------------------------------
 add_subdirectory(doxygen)
 add_subdirectory(doc)
-
-
-if (PGROUTING_DEBUG)
-    foreach (f ${PGROUTING_SQL_FILES})
-        message(STATUS ${f})
-    endforeach()
-endif()
