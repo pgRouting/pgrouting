@@ -20,8 +20,8 @@ Routing Functions
 
 :ref:`all_pairs`
 
-- :ref:`pgr_floydWarshall` - Floyd-Warshall's Algorithm
-- :ref:`pgr_johnson`- Johnson’s Algorithm
+- :doc:`pgr_floydWarshall` - Floyd-Warshall's Algorithm
+- :doc:`pgr_johnson`- Johnson’s Algorithm
 
 :doc:`aStar-family`
 
@@ -40,7 +40,7 @@ Routing Functions
 :doc:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 
 
-:ref:`dijkstra`
+:doc:`pgr_dijkstra`
 
 .. include:: dijkstra-family.rst
    :start-after: index from here
