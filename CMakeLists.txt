@@ -49,7 +49,7 @@ include(pgr/Version)
 #=============================================
 
 #---------------------------------------------
-#  PgRouting_SOURCE_NAMES
+#  PGROUTING_SOURCE_NAMES
 #---------------------------------------------
 #
 # Name of the directories that have C/C++ code
@@ -57,12 +57,12 @@ include(pgr/Version)
 #  - <directory>/sql/CMakeLists.txt  must exist
 #----------------------
 configure_file("configuration.conf" "configuration.conf")
-file(STRINGS configuration.conf PgRouting_CONFIGURATION_FILE)
+file(STRINGS configuration.conf PGROUTING_CONFIGURATION_FILE)
 
-set(PgRouting_SOURCE_NAMES "")
-set(PgRouting_SQL_DIRECTORIES "")
-set(PgRouting_DOC_DIRECTORIES "")
-foreach(line ${PgRouting_CONFIGURATION_FILE})
+set(PGROUTING_SOURCE_NAMES "")
+set(PGROUTING_SQL_DIRECTORIES "")
+set(PGROUTING_DOC_DIRECTORIES "")
+foreach(line ${PGROUTING_CONFIGURATION_FILE})
     string(REGEX REPLACE "^(#).*" "\\1" comment ${line})
     if("${comment}" MATCHES "#")
         continue()
@@ -79,20 +79,20 @@ foreach(line ${PgRouting_CONFIGURATION_FILE})
 
 
     if( ${has_code} MATCHES "Y")
-        list(APPEND PgRouting_SOURCE_NAMES "${directory}")
+        list(APPEND PGROUTING_SOURCE_NAMES "${directory}")
     endif()
     if( ${has_sql} MATCHES "Y")
-        list(APPEND PgRouting_SQL_DIRECTORIES "${directory}")
+        list(APPEND PGROUTING_SQL_DIRECTORIES "${directory}")
     endif()
     if( ${has_doc} MATCHES "Y")
-        list(APPEND PgRouting_DOC_DIRECTORIES "${directory}")
+        list(APPEND PGROUTING_DOC_DIRECTORIES "${directory}")
     endif()
 endforeach()
 
 if (PGROUTING_DEBUG)
-    message(STATUS "${PgRouting_SOURCE_NAMES}")
-    message(STATUS "${PgRouting_SQL_DIRECTORIES}")
-    message(STATUS "${PgRouting_DOC_DIRECTORIES}")
+    message(STATUS "${PGROUTING_SOURCE_NAMES}")
+    message(STATUS "${PGROUTING_SQL_DIRECTORIES}")
+    message(STATUS "${PGROUTING_DOC_DIRECTORIES}")
 endif()
 
 
@@ -295,7 +295,7 @@ include_directories(${CGAL_INCLUDE_DIR})
 
 #---------------------------------------------
 #---------------------------------------------
-# PgRouting includes
+# PGROUTING includes
 #---------------------------------------------
 #---------------------------------------------
 
@@ -451,14 +451,14 @@ endif()
 
 if(WITH_INTERNAL_TESTS)
     message("Including InternalQueryTests")
-    set(PgRouting_SOURCE_NAMES ${PgRouting_SOURCE_NAMES} "internalQueryTests")
+    set(PGROUTING_SOURCE_NAMES ${PGROUTING_SOURCE_NAMES} "internalQueryTests")
 endif()
 
 #-------------------
 # add the subdirectories that have the C/C++ code
 #-------------------
 
-foreach (subdir ${PgRouting_SOURCE_NAMES})
+foreach (subdir ${PGROUTING_SOURCE_NAMES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}")
 endforeach()
 
@@ -483,7 +483,7 @@ LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 #-------------------
 # pgRouting objects to be linked
 #-------------------
-foreach (subdir ${PgRouting_SOURCE_NAMES} )
+foreach (subdir ${PGROUTING_SOURCE_NAMES} )
     set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
 endforeach()
 
@@ -539,7 +539,7 @@ add_subdirectory(sql)
 
 install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 install(FILES
-    ${PgRouting_SQL_FILES_TO_INSTALL}
+    ${PGROUTING_SQL_FILES_TO_INSTALL}
     DESTINATION "${SHARE_DIR}"
     )
 
@@ -553,7 +553,7 @@ add_subdirectory(doc)
 
 
 if (PGROUTING_DEBUG)
-    foreach (f ${PgRouting_SQL_FILES})
+    foreach (f ${PGROUTING_SQL_FILES})
         message(STATUS ${f})
     endforeach()
 endif()

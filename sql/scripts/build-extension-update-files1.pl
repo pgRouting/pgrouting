@@ -33,7 +33,7 @@ sub Usage {
 }
 
 my $old_version = shift @ARGV || die "Missing: old version to convert";
-my $DEBUG = "@PgRouting_DEBUG@";
+my $DEBUG = "@PGROUTING_DEBUG@";
 my $version = "@PGROUTING_VERSION@";
 my $signature_dir = '@CMAKE_CURRENT_BINARY_DIR@/../sigs';
 my $output_directory = '@CMAKE_CURRENT_BINARY_DIR@/..';
