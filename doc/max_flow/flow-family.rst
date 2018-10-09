@@ -55,7 +55,7 @@ Flow Functions General Information
   - Edges with zero flow are omitted.
 
 - Creates a **super source** and edges to all the source(s), and a **super target** and the edges from all the targets(s).
-- The maximum flow through the graph is guaranteed to be the value returned by :ref:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and can be calculated:
+- The maximum flow through the graph is guaranteed to be the value returned by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and can be calculated:
 
   - By aggregation of the outgoing flow from the sources
   - By aggregation of the incoming flow to the targets
@@ -63,7 +63,7 @@ Flow Functions General Information
 .. characteristics_end
 
 
-:ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :ref:`pgr_pushRelabel <pgr_pushRelabel>`, :ref:`pgr_edmondsKarp <pgr_edmondsKarp>`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary.
+:doc:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary.
 
 
 
