@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_withPointsCost:
-
 pgr_withPointsCost - Proposed
 ===============================================================================
 
@@ -286,7 +284,7 @@ The queries use the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`withPoints`
+* :doc:`withPoints-family`
 
 .. rubric:: Indices and tables
 
