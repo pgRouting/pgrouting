@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_floydWarshall:
-
 pgr_floydWarshall
 ===============================================================================
 
@@ -151,7 +149,7 @@ Column        Type          Description
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_johnson`
+* :doc:`pgr_johnson`
 * `Boost floyd-Warshall <http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
 * Queries uses the :doc:`sampledata` network.
 

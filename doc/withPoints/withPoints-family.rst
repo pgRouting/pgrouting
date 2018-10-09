@@ -7,9 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-
-.. _withPoints:
-
 withPoints - Family of functions
 ===============================================================================
 
@@ -17,11 +14,11 @@ When points are also given as input:
 
 .. index from here
 
-- :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
-- :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-- :ref:`pgr_withPointsCostMatrix` - Costs of the shortest paths.
-- :ref:`pgr_withPointsKSP` - K shortest paths.
-- :ref:`pgr_withPointsDD` - Driving distance.
+- :doc:`pgr_withPoints` - Route from/to points anywhere on the graph.
+- :doc:`pgr_withPointsCost` - Costs of the shortest paths.
+- :doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths.
+- :doc:`pgr_withPointsKSP` - K shortest paths.
+- :doc:`pgr_withPointsDD` - Driving distance.
 
 .. index to here
 

@@ -7,9 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-
-.. _routing_functions:
-
 *******************************************************************************
 Routing Functions
 *******************************************************************************
@@ -18,7 +15,7 @@ Routing Functions
     from-here
 
 
-:ref:`all_pairs`
+:doc:`allpairs-family`
 
 - :doc:`pgr_floydWarshall` - Floyd-Warshall's Algorithm
 - :doc:`pgr_johnson`- Johnson’s Algorithm
@@ -40,7 +37,7 @@ Routing Functions
 :doc:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 
 
-:doc:`pgr_dijkstra`
+:doc:`dijkstra-family`
 
 .. include:: dijkstra-family.rst
    :start-after: index from here
@@ -52,17 +49,17 @@ Routing Functions
    :start-after: index from here
    :end-before: index to here
 
-:ref:`pgr_ksp` - K-Shortest Path
+:doc:`pgr_KSP` - K-Shortest Path
 
-:ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
+:doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
 
-:ref:`tsp`
+:doc:`pgr_TSP`
 
 .. include:: TSP-family.rst
    :start-after: index from here
    :end-before: index to here
 
-:ref:`drivingDistance`
+:doc:`drivingDistance-category`
 
 .. include:: drivingDistance-category.rst
    :start-after: index from here

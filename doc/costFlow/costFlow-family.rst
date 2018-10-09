@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _costFlow:
-
 Minimum Cost Maximum FLow - Family of functions
 ================================================
 
@@ -19,8 +17,8 @@ Minimum Cost Maximum FLow - Family of functions
 
 .. index from here
 
-* :ref:`pgr_minCostMaxFlow_Cost` - Only the Min Cost calculation.
-* :ref:`pgr_minCostMaxFlow` - Details of flow and cost on edges.
+* :doc:`pgr_minCostMaxFlow_Cost` - Only the Min Cost calculation.
+* :doc:`pgr_minCostMaxFlow` - Details of flow and cost on edges.
 
 .. index to here
 
@@ -53,7 +51,7 @@ Minimum Cost Maximum Flow Functions General Information
   - Edges with zero flow are omitted.
 
 - Creates a **super source** and edges to all the source(s), and a **super target** and the edges from all the targets(s).
-- The minimum cost through the graph is guaranteed to be the value returned by :ref:`pgr_minCostMaxFlow_Cost <pgr_minCostMaxFlow_Cost>` when executed with the same parameters and can be calculated:
+- The minimum cost through the graph is guaranteed to be the value returned by :doc:`pgr_minCostMaxFlow_Cost <pgr_minCostMaxFlow_Cost>` when executed with the same parameters and can be calculated:
 
   - By aggregation of the outgoing flow cost from the sources
   - By aggregation of the incoming flow cost to the targets
@@ -61,7 +59,7 @@ Minimum Cost Maximum Flow Functions General Information
 .. characteristics_end
 
 
-:ref:`pgr_minCostMaxFlow <pgr_minCostMaxFlow>`  is the minimum cost and that minimum is guaranteed to be the same on the functions :ref:`pgr_minCostMaxFlow <pgr_minCostMaxFlow>`, but the actual flow through each edge may vary.
+:doc:`pgr_minCostMaxFlow <pgr_minCostMaxFlow>`  is the minimum cost and that minimum is guaranteed to be the same on the functions :doc:`pgr_minCostMaxFlow <pgr_minCostMaxFlow>`, but the actual flow through each edge may vary.
 
 
 

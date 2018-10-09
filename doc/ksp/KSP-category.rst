@@ -7,16 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-
-.. _KSP:
-
 KSP Category
 ===============================================================================
 
 .. index from here
 
-* :ref:`pgr_KSP` - Driving Distance based on pgr_dijkstra
-* :ref:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra
+* :doc:`pgr_KSP` - Driving Distance based on pgr_dijkstra
+* :doc:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra
 
 .. index to here
 

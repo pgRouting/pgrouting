@@ -5,9 +5,8 @@
 
     This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
-   ****************************************************************************
 
-.. _Stable:
+.. _stable:
 
 Stable Proposed Functions
 ==================================
@@ -30,21 +29,21 @@ Stable Proposed Functions
 
 
 
-As part of the :ref:`dijkstra`
+As part of the :doc:`dijkstra-family`
 
 - :doc:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
 - :doc:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
 
 .. rubric:: Families
 
-:ref:`bdDijkstra`
+:doc:`bdDijkstra-family`
 
 .. include:: bdDijkstra-family.rst
    :start-after: index from here
    :end-before: index to here
 
 
-:ref:`withPoints`
+:doc:`withPoints-family`
 
 .. include:: withPoints-family.rst
    :start-after: index from here
@@ -58,13 +57,13 @@ As part of the :ref:`dijkstra`
    :start-after: proposed index start
    :end-before: proposed index end
 
-:ref:`CostMatrix`
+:doc:`costMatrix-category`
 
 .. include:: costMatrix-category.rst
    :start-after: proposed index start
    :end-before: proposed index end
 
-:ref:`KSP`
+:doc:`KSP-category`
 
 .. include:: KSP-category.rst
    :start-after: index from here
@@ -108,7 +107,7 @@ Experimental Functions
 
 ..  end-warn-expr
 
-:ref:`costFlow`
+:doc:`costFlow-family`
 
 .. include:: costFlow-family.rst
    :start-after: index from here
@@ -121,15 +120,15 @@ Experimental Functions
    :end-before: index to here
 
 
-:ref:`contraction` - Reduce network size using contraction techniques
+:doc:`contraction-family` - Reduce network size using contraction techniques
 
-- :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
+- :doc:`pgr_contractGraph` - Reduce network size using contraction techniques
 
 
 
 .. rubric:: Graph Analysis
 
-:ref:`components` - Analyze components within a graph
+:doc:`components-family` - Analyze components within a graph
 
 -  :doc:`pgr_connectedComponents` - Return the connected components of an undirected graph
 -  :doc:`pgr_strongComponents` - Return the strongly connected components of a directed graph
@@ -139,8 +138,8 @@ Experimental Functions
 
 .. rubric:: VRP
 
-- :ref:`pgr_gsocvrppdtw`
-- :ref:`pgr_vrp_basic`
+- :doc:`pgr_gsoc_vrppdtw`
+- :doc:`pgr_vrpOneDepot`
 
 .. rubric:: Shortest Path Algorithms
 
@@ -168,7 +167,7 @@ Experimental Functions
 
 .. rubric:: Graph Operations
 
-:ref:`transformation` - Maps a given graph to a new form
+:doc:`transformation-family` - Maps a given graph to a new form
 
 .. include:: transformation-family.rst
    :start-after: index from here

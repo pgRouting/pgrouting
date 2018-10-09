@@ -27,8 +27,8 @@ So by counting the number of edges entering and exiting each node we can identif
 
 The  edge table to be analyzed must contain a source column and a target column filled with id's of the vertices of the segments and the corresponding vertices table <edge_table>_vertices_pgr that stores the vertices information.
 
-- Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
-- Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
+- Use :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` to create the vertices table.
+- Use :doc:`pgr_createTopology <pgr_createTopology>` to create the topology and the vertices table.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ Parameters
 :target: ``text``  Target column name of the network table.  Default value is ``target``.
 :two_way_if_null: ``boolean`` flag to treat oneway NULL values as bi-directional.  Default value is ``true``.
 
-.. note:: It is strongly recommended to use the named notation. See :ref:`pgr_createVerticesTable <pgr_create_vert_table>` or :ref:`pgr_createTopology <pgr_create_topology>` for examples.
+.. note:: It is strongly recommended to use the named notation. See :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>` for examples.
 
 The function returns:
 
@@ -73,7 +73,7 @@ The rules are defined as an array of text strings that if match the ``oneway`` v
 
 .. rubric:: The Vertices Table
 
-The vertices table can be created with :ref:`pgr_createVerticesTable <pgr_create_vert_table>` or :ref:`pgr_createTopology <pgr_create_topology>`
+The vertices table can be created with :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`
 
 The structure of the vertices table is:
 
@@ -118,10 +118,10 @@ The queries use the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`topology`  for an overview of a topology for routing algorithms.
+* :doc:`topology-functions`  for an overview of a topology for routing algorithms.
 * :ref:`analytics` for an overview of the analysis of a graph.
 * :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
-* :ref:`pgr_create_vert_table` to reconstruct the vertices table based on the source and target information.
+* :doc:`pgr_createVerticesTable` to reconstruct the vertices table based on the source and target information.
 
 .. rubric:: Indices and tables
 

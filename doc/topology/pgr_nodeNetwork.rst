@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_node_network:
-
 pgr_nodeNetwork
 ===============================================================================
 
@@ -57,8 +55,8 @@ The output table will have for  ``edge_table_noded``
 :id: ``bigint`` Unique identifier for the table
 :old_id: ``bigint``  Identifier of the edge in original table
 :sub_id: ``integer`` Segment number of the original edge
-:source: ``integer`` Empty source column to be used with  :ref:`pgr_create_topology` function
-:target: ``integer`` Empty target column to be used with  :ref:`pgr_create_topology` function
+:source: ``integer`` Empty source column to be used with  :doc:`pgr_createTopology` function
+:target: ``integer`` Empty target column to be used with  :doc:`pgr_createTopology` function
 :the geom: ``geometry`` Geometry column of the noded network
 
 .. rubric:: History
@@ -388,9 +386,9 @@ Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 is a
 See Also
 -------------------------------------------------------------------------------
 
-:ref:`topology` for an overview of a topology for routing algorithms.
+:doc:`topology-functions` for an overview of a topology for routing algorithms.
 :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
-:ref:`pgr_create_topology` to create a topology based on the geometry.
+:doc:`pgr_createTopology` to create a topology based on the geometry.
 :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
 
 .. rubric:: Indices and tables

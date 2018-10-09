@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _CostMatrix:
-
 Cost Matrix - Category
 ===============================================================================
 
@@ -48,7 +46,7 @@ General Information
 Synopsis
 ...................
 
-:ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` must value :math:`\infty`.
+:doc:`TSP-family` needs as input a symmetric cost matrix and no edge `(u, v)` must value :math:`\infty`.
 
 This collection of functions will return a cost matrix in form of a table.
 
@@ -58,7 +56,7 @@ Characteristics
 
 The main Characteristics are:
 
-* Can be used as input to :ref:`pgr_tsp`.
+* Can be used as input to :doc:`pgr_TSP`.
 
   * :directly: when the resulting matrix is symmetric and there is no :math:`\infty` value.
   * It will be the users responsibility to make the matrix symmetric.
@@ -106,7 +104,7 @@ The main Characteristics are:
 See Also
 ................
 
-* :ref:`pgr_tsp`
+* :doc:`TSP-family`
 
 .. rubric:: Indices and tables
 

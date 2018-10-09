@@ -79,7 +79,7 @@ The queries use the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_drivingDistance` - Driving Distance
+* :doc:`pgr_drivingDistance` - Driving Distance
 * :doc:`pgr_pointsAsPolygon` - Polygon around set of points
 
 .. rubric:: Indices and tables

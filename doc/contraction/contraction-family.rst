@@ -7,9 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-
-.. _contraction:
-
 Contraction - Family of functions
 ===============================================================================
 
@@ -18,7 +15,7 @@ Contraction - Family of functions
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-:ref:`pgr_contractGraph`
+:doc:`pgr_contractGraph`
 
 .. toctree::
     :hidden:
@@ -518,7 +515,7 @@ See Also
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
-* The queries use :ref:`pgr_contractGraph` function and the :doc:`sampledata` network.
+* The queries use :doc:`pgr_contractGraph` function and the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

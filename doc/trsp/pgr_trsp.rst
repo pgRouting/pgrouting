@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _trsp:
-
 pgr_trsp - Turn Restriction Shortest Path (TRSP)
 ===============================================================================
 

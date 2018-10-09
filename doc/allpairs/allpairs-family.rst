@@ -7,9 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _all_pairs:
-
-
 All Pairs - Family of Functions
 ===============================================================================
 
@@ -17,8 +14,8 @@ The following functions work on all vertices pair combinations
 
 .. index from here
 
-    - :ref:`pgr_floydWarshall` - Floyd-Warshall's algorithm.
-    - :ref:`pgr_johnson` - Johnson's algorithm
+    - :doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm.
+    - :doc:`pgr_johnson` - Johnson's algorithm
 
 .. index to here
 
@@ -173,8 +170,8 @@ The results of this tests are presented as:
 See Also
 .........................................
 
-* :ref:`pgr_johnson`
-* :ref:`pgr_floydWarshall`
+* :doc:`pgr_johnson`
+* :doc:`pgr_floydWarshall`
 * `Boost floyd-Warshall <http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
 
 .. rubric:: Indices and tables

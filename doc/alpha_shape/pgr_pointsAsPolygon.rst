@@ -58,7 +58,7 @@ The query use the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_drivingDistance` - Driving Distance
+* :doc:`pgr_drivingDistance` - Driving Distance
 * :doc:`pgr_alphaShape` - Alpha shape computation
 
 .. rubric:: Indices and tables

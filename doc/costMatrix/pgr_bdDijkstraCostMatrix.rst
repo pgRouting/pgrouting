@@ -129,9 +129,9 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`bdDijkstra`
-* :ref:`costMatrix`
-* :ref:`tsp`
+* :doc:`pgr_bdDijkstra`
+* :doc:`costMatrix-category`
+* :doc:`pgr_TSP`
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
