@@ -7,9 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-
-.. _pgr_minCostMaxFlow:
-
 pgr_minCostMaxFlow - Experimental 
 ============================================
 
@@ -152,7 +149,7 @@ Description of the Signatures
 See Also
 --------
 
-* :ref:`costFlow`
+* :doc:`costFlow-family`
 * https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html
 
 .. rubric:: Indices and tables

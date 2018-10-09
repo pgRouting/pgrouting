@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstraTR:
-
 pgr_dijkstraTR
 ===============================================================================
 
@@ -138,7 +136,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

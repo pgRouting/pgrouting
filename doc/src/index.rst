@@ -52,7 +52,7 @@ Pgrouting Concepts
 
 .. rubric:: Reference
 
-:ref:`pgr_version` - to get pgRouting's version information.
+:doc:`pgr_version` - to get pgRouting's version information.
 
 .. toctree::
    :hidden:
@@ -61,14 +61,14 @@ Pgrouting Concepts
 
 
 
-:doc:`topology-functions <topology-functions>`
+:doc:`topology-functions`
 ===============================================================================
 
--  :ref:`pgr_create_topology` -  to create a topology based on the geometry.
--  :ref:`pgr_create_vert_table` - to reconstruct the vertices table based on the source and target information.
+-  :doc:`pgr_createTopology` -  to create a topology based on the geometry.
+-  :doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on the source and target information.
 -  :doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table.
 -  :doc:`pgr_analyzeOneWay` - to analyze directionality of the edges.
--  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
+-  :doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table.
 
 .. toctree::
    :hidden:
@@ -76,7 +76,7 @@ Pgrouting Concepts
    topology-functions
 
 
-:ref:`Routing functions <routing_functions>`
+:doc:`routingFunctions`
 ===============================================================================
 
 .. toctree::
@@ -94,7 +94,7 @@ Pgrouting Concepts
 Available Functions but not official pgRouting functions
 ===============================================================================
 
-- :ref:`Stable`
+- :ref:`stable`
 - :ref:`proposed`
 
 .. toctree::
@@ -104,7 +104,7 @@ Available Functions but not official pgRouting functions
 
 
 
-:ref:`Change Log <change_log>`
+:doc:`release_notes`
 ===============================================================================
 
 .. include:: release_notes.rst

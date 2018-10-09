@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_withPointsCostMatrix:
-
 pgr_withPointsCostMatrix - proposed
 ===============================================================================
 
@@ -150,9 +148,9 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`withPoints`
-* :ref:`costMatrix`
-* :ref:`tsp`
+* :doc:`pgr_withPoints`
+* :doc:`costMatrix-category`
+* :doc:`pgr_TSP`
 * `sampledata` network.
 
 .. rubric:: Indices and tables

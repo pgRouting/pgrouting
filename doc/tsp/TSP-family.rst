@@ -7,15 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _tsp:
-
 Traveling Sales Person - Family of functions
 ===============================================================================
 
 .. index from here
 
-* :ref:`pgr_TSP` - When input is given as matrix cell information.
-* :ref:`pgr_eucledianTSP` - When input are coordinates.
+* :doc:`pgr_TSP` - When input is given as matrix cell information.
+* :doc:`pgr_eucledianTSP` - When input are coordinates.
 
 .. index to here
 

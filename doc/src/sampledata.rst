@@ -39,7 +39,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 .. rubric:: Points of interest
 
 - When points outside of the graph.
-- Used with the :ref:`withPoints` functions.
+- Used with the :doc:`withPoints-family` functions.
 
 .. literalinclude:: ../../tools/testers/sampledata.sql
    :start-after: --POINTS CREATE
@@ -47,7 +47,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Restrictions
 
-- Used with the :ref:`trsp` functions.
+- Used with the :doc:`pgr_trsp` functions.
 
 .. literalinclude:: ../../tools/testers/sampledata.sql
    :start-after: --RESTRICTIONS CREATE

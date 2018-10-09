@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_withPointsVia:
-
 pgr_withPointsVia - Proposed
 ===============================================================================
 
@@ -188,9 +186,9 @@ The examples in this section use the following :ref:`fig1`
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_drivingDistance` - Driving distance using dijkstra.
-* :ref:`pgr_alphashape` - Alpha shape computation.
-* :ref:`pgr_points_as_polygon` - Polygon around set of points.
+* :doc:`pgr_drivingDistance` - Driving distance using dijkstra.
+* :doc:`pgr_alphaShape` - Alpha shape computation.
+* :doc:`pgr_pointsAsPolygon` - Polygon around set of points.
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

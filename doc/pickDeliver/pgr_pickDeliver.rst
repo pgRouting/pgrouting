@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_pickDeliver:
-
 pgr_pickDeliver - Proposed
 ===============================================================================
 
@@ -213,7 +211,7 @@ This example use the following data: TODO put link
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`VRP`
+* :doc:`VRP-category`
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

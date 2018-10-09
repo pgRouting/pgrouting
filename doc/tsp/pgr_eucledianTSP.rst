@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_eucledianTSP:
-
 pgr_eucledianTSP
 =============================================================================
 
@@ -144,7 +142,7 @@ The queries use the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`tsp`
+* :doc:`TSP-family`
 * http://en.wikipedia.org/wiki/Traveling_salesman_problem
 * http://en.wikipedia.org/wiki/Simulated_annealing
 

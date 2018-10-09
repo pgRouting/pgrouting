@@ -80,7 +80,7 @@ used for routing with pgrouting. We provide a tool that will help with this:
 
     select pgr_createTopology('myroads', 0.000001);
 
-* :ref:`pgr_create_topology`
+* :doc:`pgr_createTopology`
 
 .. _check_graph:
 
@@ -580,7 +580,7 @@ Routing Topology
 
 Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information associated with them. To create a useful topology the data needs to be "noded". This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.
 
-You can use the :ref:`graph analysis functions <analytics>` to help you see where you might have topology problems in your data. If you need to node your data, we also have a function :ref:`pgr_nodeNetwork() <pgr_node_network>` that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.
+You can use the :ref:`graph analysis functions <analytics>` to help you see where you might have topology problems in your data. If you need to node your data, we also have a function :doc:`pgr_nodeNetwork() <pgr_nodeNetwork>` that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.
 
 For example, when you have an overpass and underpass intersection, you do not want these noded, but pgr_nodeNetwork does not know that is the case and will node them which is not good because then the router will be able to turn off the overpass onto the underpass like it was a flat 2D intersection. To deal with this problem some data sets use z-levels at these types of intersections and other data might not node these intersection which would be ok.
 
@@ -605,7 +605,7 @@ For those cases where topology needs to be added the following functions may be 
 
     SELECT pgr_createTopology('edge_table', 0.000001, 'the_geom', 'id');
 
-The function :ref:`pgr_createTopology() <pgr_create_topology>` will create the ``vertices_tmp`` table and populate the ``source`` and ``target`` columns. The following example populated the remaining columns. In this example, the ``fcc`` column contains feature class code and the ``CASE`` statements converts it to an average speed.
+The function :doc:`pgr_createTopology <pgr_createTopology>` will create the ``vertices_tmp`` table and populate the ``source`` and ``target`` columns. The following example populated the remaining columns. In this example, the ``fcc`` column contains feature class code and the ``CASE`` statements converts it to an average speed.
 
 .. code-block:: sql
 

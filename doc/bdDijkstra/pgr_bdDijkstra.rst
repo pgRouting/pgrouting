@@ -195,7 +195,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * The queries use the :doc:`sampledata` network.
-* :ref:`bdDijkstra`
+* :doc:`bdDijkstra-family`
 * http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
 

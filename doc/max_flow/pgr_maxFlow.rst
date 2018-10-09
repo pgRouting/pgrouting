@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_maxFlow:
-
 pgr_maxFlow
 ============================================
 
@@ -35,7 +33,7 @@ Synopsis
   - There is no flow when a **source** is the same as a **target**.
 
 - Any duplicated value in the source(s) or target(s) are ignored.
-- Uses the :ref:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
+- Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
 
 * Running time: :math:`O( V ^ 3)`
 
