@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_minCostMaxFlow_Cost:
-
 pgr_minCostMaxFlow_Cost - Experimental 
 ============================================
 
@@ -38,7 +36,7 @@ Synopsis
   - There is no flow when a **source** is the same as a **target**.
 
 - Any duplicated value in the source(s) or target(s) are ignored.
-- Uses the :ref:`pgr_minCostMaxFlow <pgr_minCostMaxFlow>` algorithm.
+- Uses the :doc:`pgr_minCostMaxFlow <pgr_minCostMaxFlow>` algorithm.
 
 * Running time: :math:`O(U * (E + V * logV))`, where :math:`U` is the value of the max flow. :math:`U` is upper bound on number of iteration. In many real world cases number of iterations is much smaller than :math:`U`.
 
@@ -173,7 +171,7 @@ Type                   Description
 See Also
 --------
 
-* :ref:`costFlow`
+* :doc:`costFlow-family`
 * https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html
 
 .. rubric:: Indices and tables
