@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_johnson:
-
 pgr_johnson
 ===============================================================================
 
@@ -150,7 +148,7 @@ Column        Type          Description
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_floydWarshall`
+* :doc:`pgr_floydWarshall`
 * `Boost Johnson <http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_ algorithm implementation.
 * Queries uses the :doc:`sampledata` network.
 
