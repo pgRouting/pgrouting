@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_create_topology:
-
 pgr_createTopology
 ===============================================================================
 
@@ -246,8 +244,8 @@ The example uses the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`topology` for an overview of a topology for routing algorithms.
-* :ref:`pgr_create_vert_table` to reconstruct the vertices table based on the source and target information.
+* :doc:`topology-functions` for an overview of a topology for routing algorithms.
+* :doc:`pgr_createVerticesTable` to reconstruct the vertices table based on the source and target information.
 * :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
 
 .. rubric:: Indices and tables
