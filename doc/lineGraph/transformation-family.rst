@@ -7,15 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _transformation:
-
 Transformation - Family of functions
 ===============================================================================
 
 .. index from here
 
-* :ref:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph.
-* :ref:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph.
+* :doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph.
+* :doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph.
 
 .. index to here
 
