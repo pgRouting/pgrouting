@@ -32,6 +32,16 @@ Description
 
   * pgr_bdDijkstra(One to One)
 
+* Proposed on v2.5.0 and Official on v3.0.0:
+
+  * pgr_bdDijkstra(One to Many)
+  * pgr_bdDijkstra(Many to One)
+  * pgr_bdDijkstra(Many to Many)
+
+* Signature change on v2.4.0
+
+  * pgr_bdDijkstra(One to One)
+
 * New on v2.0.0:
 
   * pgr_bdDijkstra(One to One)
