@@ -17,6 +17,9 @@ pgr_bdDijkstra
 
    Boost Graph Inside
 
+Description
+-------------------------------------------------------------------------------
+
 .. rubric:: Availability:
 
 * Proposed on v2.5.0 and Official on v3.0.0:

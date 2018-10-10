@@ -25,9 +25,7 @@ Bidirectional A* - Family of functions
     pgr_bdAstarCost
     pgr_bdAstarCostMatrix
 
-
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Based on A* algorithm, the bidirectional search finds a shortest path from
@@ -35,9 +33,6 @@ a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 It runs two simultaneous searches: one forward from the ``start_vid``, and one backward from the ``end_vid``,
 stopping when the two meet in the middle.
 This implementation can be used with a directed graph and an undirected graph.
-
-Characteristics
--------------------------------------------------------------------------------
 
 The main Characteristics are:
 
@@ -57,8 +52,8 @@ The main Characteristics are:
 
   - It is expected to terminate faster than pgr_astar
 
-Description of the Signatures
---------------------------------
+Signatures
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
@@ -66,8 +61,8 @@ Description of the Signatures
 
 .. parameters_begin
 
-Description of the parameters of the signatures
-.................................................
+Parameters
+-------------------------------------------------------------------------------
 
 ================ ====================== =================================================
 Parameter        Type                   Description
