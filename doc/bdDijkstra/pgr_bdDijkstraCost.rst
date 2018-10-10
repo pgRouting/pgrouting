@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_bdDijkstraCost - Proposed
+pgr_bdDijkstraCost
 ===============================================================================
 
 ``pgr_bdDijkstraCost`` — Returns the shortest path(s)'s cost using Bidirectional Dijkstra algorithm.
@@ -17,11 +17,10 @@ pgr_bdDijkstraCost - Proposed
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.5.0
+.. rubric:: Availability:
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+* Official on v3.0.0
+* Proposed on v2.5.0
 
 Signatures
 -------------------------------------------------------------------------------
@@ -77,9 +76,9 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
    :end-before: -- q3
 
 .. index::
-    single: bdDijkstraCost(One to Many) - Proposed
+    single: bdDijkstraCost(One to Many)
 
-One to many
+One to Many
 ...............................................................................
 
 .. code-block:: none
@@ -105,7 +104,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
    :end-before: -- q4
 
 .. index::
-    single: bdDijkstraCost(Many to One) - Proposed
+    single: bdDijkstraCost(Many to One)
 
 Many to One
 ...............................................................................
@@ -134,7 +133,7 @@ where the ending vertex is fixed.
 
 
 .. index::
-    single: bdDijkstraCost(Many to Many) - Proposed
+    single: bdDijkstraCost(Many to Many)
 
 Many to Many
 ...............................................................................

@@ -26,9 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 -- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
+    TEXT, -- edges_sql
+    BIGINT, -- start_vid
+    BIGINT, -- end_vid
     directed BOOLEAN DEFAULT true,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -47,9 +47,9 @@ ROWS 1000;
 
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vids ANYARRAY,
+    TEXT, -- edges_sql
+    BIGINT, -- start_vid
+    ANYARRAY, -- end_vids
     directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -70,9 +70,9 @@ ROWS 1000;
 
 -- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vid BIGINT,
+    TEXT, -- edges_sql
+    ANYARRAY, -- start_vids
+    BIGINT, -- end_vid
     directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -94,9 +94,9 @@ ROWS 1000;
 
 -- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT, -- edges_sql
+    ANYARRAY, -- start_vids
+    ANYARRAY, -- end_vids
     directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,

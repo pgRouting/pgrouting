@@ -33,8 +33,11 @@ Routing Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`bdDijkstra-family`
 
-:doc:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
+.. include:: bdDijkstra-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
 
 :doc:`dijkstra-family`
@@ -73,7 +76,7 @@ Routing Functions
     allpairs-family
     aStar-family
     bdAstar-family
-    pgr_bdDijkstra
+    bdDijkstra-family
     dijkstra-family
     flow-family
     pgr_KSP

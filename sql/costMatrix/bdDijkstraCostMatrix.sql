@@ -25,11 +25,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
---  BIDIRECTIONAL DIJKSTRA Matrix
+CREATE OR REPLACE FUNCTION pgr_bdDijkstraCostMatrix(
+    TEXT, -- edges_sql
+    ANYARRAY, -- vids
+    directed BOOLEAN DEFAULT true,
 
-
-CREATE OR REPLACE FUNCTION pgr_bdDijkstraCostMatrix(edges_sql TEXT, vids ANYARRAY, directed BOOLEAN DEFAULT true,
-    OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
@@ -39,5 +42,4 @@ LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
-
-
+COMMENT ON FUNCTION pgr_bdDijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN) IS 'pgr_bdDijkstraCostMatrix(edges_sql, vids [, directed:=true])';

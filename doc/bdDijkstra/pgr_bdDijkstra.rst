@@ -22,8 +22,20 @@ Description
 
 .. rubric:: Availability:
 
-* pgr_bdDijkstra(one to one) 2.0.0, Signature changed 2.4.0
-* pgr_bdDijkstra(other signatures) 2.5.0
+* Proposed on v2.5.0 and Official on v3.0.0:
+
+  * pgr_bdDijkstra(One to Many)
+  * pgr_bdDijkstra(Many to One)
+  * pgr_bdDijkstra(Many to Many)
+
+* Signature change on v2.4.0
+
+  * pgr_bdDijkstra(One to One)
+
+* New on v2.0.0:
+
+  * pgr_bdDijkstra(One to One)
+
 
 Signatures
 -------------------------------------------------------------------------------
@@ -32,25 +44,15 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid,  end_vid)
-    pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
-.. code-block:: none
-
-    pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
-    pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
-    pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
+    pgr_bdDijkstra(edges_sql, start_vid, end_vid [, directed])
+    pgr_bdDijkstra(edges_sql, start_vid, end_vids [, directed])
+    pgr_bdDijkstra(edges_sql, start_vids, end_vid [, directed])
+    pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
-..rubric:: Minimal signature
+.. rubric:: Minimal signature
 
 .. code-block:: none
 
@@ -73,8 +75,9 @@ One to One
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bdDijkstra(edges_sql, start_vid, end_vid [, directed])
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
 
@@ -95,8 +98,9 @@ One to many
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bdDijkstra(edges_sql, start_vid, end_vids [, directed])
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
 
@@ -123,8 +127,9 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bdDijkstra(edges_sql, start_vids, end_vid [, directed])
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
 
@@ -151,8 +156,9 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
 
