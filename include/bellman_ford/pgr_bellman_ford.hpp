@@ -96,7 +96,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              G &graph,
              int64_t start_vertex,
              const std::vector< int64_t > &end_vertex,
-             bool only_cost= false) {
+             bool only_cost = false) {
          // adjust predecessors and distances vectors
          clear();
          log << std::string(__FUNCTION__) << "\n";
@@ -190,12 +190,13 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          log << std::string(__FUNCTION__) << "\n";
 
          try {
-             bool negative = boost::bellman_ford_shortest_paths(graph.graph, int(graph.num_vertices()),
+             bool negative = boost::bellman_ford_shortest_paths(
+                     graph.graph,
+                     static_cast<int>(graph.num_vertices()),
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
-                     .root_vertex(source)
-                     );
+                     .root_vertex(source));
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -213,12 +214,13 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              V source) {
         log << std::string(__FUNCTION__) << "\n";
          try {
-             boost::bellman_ford_shortest_paths(graph.graph, int(graph.num_vertices()),
+             boost::bellman_ford_shortest_paths(
+                     graph.graph,
+                     static_cast<int>(graph.num_vertices()),
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
-                     .root_vertex(source)
-                     );
+                     .root_vertex(source));
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -265,7 +267,6 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      std::vector< double > distances;
 
      //@}
-
 };
 
 #endif  // INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_

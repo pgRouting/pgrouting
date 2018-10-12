@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
-#define INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#ifndef INCLUDE_DAGSHORTESTPATH_PGR_DAGSHORTESTPATH_HPP_
+#define INCLUDE_DAGSHORTESTPATH_PGR_DAGSHORTESTPATH_HPP_
 #pragma once
 
 #include <boost/config.hpp>
@@ -315,7 +315,6 @@ class Pgr_dag {
           std::set< V > m_goals;
           size_t m_n_goals;
      };
-
 };
 
-#endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#endif  // INCLUDE_DAGSHORTESTPATH_PGR_DAGSHORTESTPATH_HPP_

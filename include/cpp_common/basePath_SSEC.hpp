@@ -193,12 +193,14 @@ class Path {
 
 //            auto last_node = m_start_id;
             for (const auto &p : original.path) {
-                boost::tie(ei, ei_end) = out_edges(graph.get_V(p.node), graph.graph);
+                boost::tie(ei, ei_end) = out_edges(
+                        graph.get_V(p.node),
+                        graph.graph);
 
                 if (p.edge == -1) {
                     path.push_back({m_end_id, -1, 0, 0});
                 } else {
-                    for( ; ei != ei_end; ++ei) {
+                    for ( ; ei != ei_end; ++ei) {
                         if (graph[*ei].id == p.edge) {
                             auto cost = graph[*ei].cost;
                             push_back({p.node, p.edge, cost, 0});
