@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
+#include <string>
 
 #include "bellman_ford/pgr_bellman_ford.hpp"
 
@@ -66,7 +68,8 @@ pgr_bellman_ford(
             targets.end());
 
     Pgr_bellman_ford< G > fn_bellman_ford;
-    auto paths = fn_bellman_ford.bellman_ford(graph, sources, targets, only_cost);
+    auto paths = fn_bellman_ford.bellman_ford(
+            graph, sources, targets, only_cost);
     log += fn_bellman_ford.get_log();
     return paths;
 }
@@ -89,7 +92,6 @@ do_pgr_bellman_ford_neg(
                 char ** log_msg,
                 char ** notice_msg,
                 char ** err_msg) {
-
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -128,7 +130,9 @@ do_pgr_bellman_ford_neg(
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(positive_edges, total_positive_edges);
-            undigraph.insert_negative_edges(negative_edges, total_negative_edges);
+            undigraph.insert_negative_edges(
+                    negative_edges,
+                    total_negative_edges);
             log << undigraph;
             paths = pgr_bellman_ford(
                     undigraph,

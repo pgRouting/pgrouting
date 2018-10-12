@@ -219,7 +219,6 @@ int GraphDefinition::my_dijkstra1(
         size_t *path_count,
         char **err_msg,
         std::vector<PDVI> &ruleList) {
-
     if (!m_bIsGraphConstructed) {
             init();
             construct_graph(edges, edge_count, has_reverse_cost, directed);

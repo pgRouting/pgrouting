@@ -162,7 +162,6 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-
         PGR_DBG("Clean up code");
 
         SRF_RETURN_DONE(funcctx);

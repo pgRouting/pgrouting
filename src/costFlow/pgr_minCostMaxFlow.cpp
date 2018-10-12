@@ -26,6 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "costFlow/pgr_minCostMaxFlow.hpp"
 
+#include <set>
+#include <vector>
+#include <utility>
+#include <limits>
+
 namespace pgrouting {
 namespace graph {
 

@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 
-#include "drivers/bellman_ford/bellman_ford_driver.h"  // the link to the C++ code of the function
+#include "drivers/bellman_ford/bellman_ford_driver.h"
 
 PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(bellman_ford);
@@ -55,7 +55,6 @@ process(
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
-
     pgr_SPI_connect();
 
     PGR_DBG("Initializing arrays");
@@ -207,7 +206,7 @@ PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS) {
             OUT cost FLOAT,
             OUT agg_cost FLOAT
         */
-         /***********************************************************************/
+        /**********************************************************************/
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));

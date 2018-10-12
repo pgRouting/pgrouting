@@ -56,7 +56,6 @@ process(
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
-
     pgr_SPI_connect();
 
     PGR_DBG("Initializing arrays");
@@ -82,13 +81,17 @@ process(
     size_t total_positive_edges = 0;
 
     pgr_get_edges(edges_sql, &positive_edges, &total_positive_edges);
-    PGR_DBG("Total positive weighted edges in query: %ld", total_positive_edges);
+    PGR_DBG(
+            "Total positive weighted edges in query: %ld",
+            total_positive_edges);
 
     pgr_edge_t *negative_edges = NULL;
     size_t total_negative_edges = 0;
 
     pgr_get_edges(neg_edges_sql, &negative_edges, &total_negative_edges);
-    PGR_DBG("Total negative weighted edges in query: %ld", total_negative_edges);
+    PGR_DBG(
+            "Total negative weighted edges in query: %ld",
+            total_negative_edges);
 
     size_t total_edges = total_positive_edges + total_negative_edges;
 
@@ -222,7 +225,7 @@ PGDLLEXPORT Datum bellman_ford_neg(PG_FUNCTION_ARGS) {
             OUT cost FLOAT,
             OUT agg_cost FLOAT
         */
-         /***********************************************************************/
+        /**********************************************************************/
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));

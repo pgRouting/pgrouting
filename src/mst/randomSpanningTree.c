@@ -159,7 +159,8 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].root_vertex);
+        values[1] =
+            Int64GetDatum(result_tuples[funcctx->call_cntr].root_vertex);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
@@ -169,7 +170,6 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-
         PGR_DBG("Clean up code");
 
         SRF_RETURN_DONE(funcctx);

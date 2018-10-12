@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
 
 #include "dagShortestPath/pgr_dagShortestPath.hpp"
 
@@ -91,7 +92,6 @@ do_pgr_dagShortestPath(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
-
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
