@@ -236,6 +236,9 @@ endif(Boost_INCLUDE_DIRS)
 
 include_directories(${Boost_INCLUDE_DIRS})
 
+# TODO define BOOST_VERSION_OK when boost version >= 1.55.0
+# pass as parameter to the compilation
+# if not defined, it uses the boost files copied in the repository
 
 #---------------------------------------------
 #---------------------------------------------
