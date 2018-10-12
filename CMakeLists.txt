@@ -8,7 +8,11 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
 if(POLICY CMP0046)
-    cmake_policy(SET CMP0046 OLD)
+    cmake_policy(SET CMP0046 NEW)
+endif()
+
+if(POLICY CMP0054)
+    cmake_policy(SET CMP0054 NEW)
 endif()
 
 if ( ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR} )
@@ -20,91 +24,34 @@ endif()
 #---------------------------------------------
 # Setting kind of build
 #---------------------------------------------
-#
-# for developing
-# cmake -DMAKE_BUILD_TYPE=Develop
-#----------------------
 
-message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
-if (CMAKE_BUILD_TYPE MATCHES Develop)
-    set(CMAKE_BUILD_TYPE Debug CACHE STRING
-        "Choose the type of build, options are: None Debug Release RelWithDebInfo
-        MinSizeRel."
-        FORCE)
-    set(WITH_INTERNAL_TESTS)
-endif()
-message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(pgr/BuildType)
 
 
 #---------------------------------------------
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING)
+project(PGROUTING
+    VERSION 3.0.0
+    LANGUAGES C CXX )
+set(PGROUTING_VERSION_DEV "-dev")
 
-#---------------------------------------------
-#---------------------------------------------
-#---------------------------------------------
+include(pgr/GitInfo)
+include(pgr/Version)
 
-if(POLICY CMP0054)
-   cmake_policy(SET CMP0054 OLD)
-endif()
 
-if(MSVC)
-    cmake_policy(SET CMP0046 OLD)
-endif()
+
 
 #=============================================
 # Set the working directories
 #=============================================
 
 #---------------------------------------------
-#  PgRouting_SOURCE_NAMES
+#  PGROUTING_SOURCE_NAMES
 #---------------------------------------------
-#
-# Name of the directories that have C/C++ code
-#  - <directory>/src/CMakelists.txt must exist
-#  - <directory>/sql/CMakeLists.txt  must exist
-#----------------------
-configure_file("configuration.conf" "configuration.conf")
-file(STRINGS configuration.conf PgRouting_CONFIGURATION_FILE)
-
-set(PgRouting_SOURCE_NAMES "")
-set(PgRouting_SQL_DIRECTORIES "")
-set(PgRouting_DOC_DIRECTORIES "")
-foreach(line ${PgRouting_CONFIGURATION_FILE})
-    string(REGEX REPLACE "^(#).*" "\\1" comment ${line})
-    if("${comment}" MATCHES "#")
-        continue()
-    endif()
-    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\1" directory ${line})
-    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\2" has_code ${line})
-    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\3" has_sql ${line})
-    string(REGEX REPLACE "^(.*)\\|(.*)\\|(.*)\\|(.*)" "\\4" has_doc ${line})
-
-    string(STRIP ${directory} directory)
-    string(STRIP ${has_code} has_code)
-    string(STRIP ${has_sql} has_sql)
-    string(STRIP ${has_doc} has_doc)
-
-
-    if( ${has_code} MATCHES "Y")
-        list(APPEND PgRouting_SOURCE_NAMES "${directory}")
-    endif()
-    if( ${has_sql} MATCHES "Y")
-        list(APPEND PgRouting_SQL_DIRECTORIES "${directory}")
-    endif()
-    if( ${has_doc} MATCHES "Y")
-        list(APPEND PgRouting_DOC_DIRECTORIES "${directory}")
-    endif()
-endforeach()
-
-if (PGROUTING_DEBUG)
-    message(STATUS "${PgRouting_SOURCE_NAMES}")
-    message(STATUS "${PgRouting_SQL_DIRECTORIES}")
-    message(STATUS "${PgRouting_DOC_DIRECTORIES}")
-endif()
-
+include(pgr/Configure)
 
 
 #---------------------------------------------
@@ -132,7 +79,6 @@ message(STATUS "MSVC_CXX_MINIMUM_VERSION=${MSVC_CXX_MINIMUM_VERSION}")
 # adding cmake modules
 #---------------------------------------------
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 foreach(dir ${CMAKE_MODULE_PATH})
     message(STATUS "dir='${dir}'")
 endforeach()
@@ -172,56 +118,6 @@ else()
 endif()
 
 
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-# PGROUTING version variables
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-
-set(PGROUTING_VERSION_MAJOR "3")
-set(PGROUTING_VERSION_MINOR "0")
-set(PGROUTING_VERSION_PATCH "0")
-set(PGROUTING_VERSION_DEV "-dev")
-
-set(PGROUTING_SHORT_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
-set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
-set(PGROUTING_FULL_VERSION "v${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}")
-
-
-#---------------------------------------------
-# Variables used in pgr_version()
-#---------------------------------------------
-file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
-
-set(PGROUTING_GIT_HASH "")
-string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
-
-#if (NOT "${PGROUTING_GIT_BRANCH}" STREQUAL "master")
-#    set (PGROUTING_GIT_HASH  "")
-#    set (PGROUTING_GIT_BRANCH  "")
-#endif()
-
-
-if (PGROUTING_DEBUG)
-    message(STATUS "PGROUTING_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "PGROUTING_SHORT_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "PGROUTING_FULL_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "VERSION file contents: ${PGROUTING_BUILD_STRING}")
-    message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
-    message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
-    message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
-    message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
-    message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
-endif()
-
-#----------------------
-# PGROUTING library name used in the pgr_functions
-#  '$libdir/${PGROUTING_LIBRARY_NAME}'
-#----------------------
-set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
 
 
 #-----------------------------------------------------------------------------
@@ -356,7 +252,7 @@ include_directories(${CGAL_INCLUDE_DIR})
 
 #---------------------------------------------
 #---------------------------------------------
-# PgRouting includes
+# PGROUTING includes
 #---------------------------------------------
 #---------------------------------------------
 
@@ -512,14 +408,14 @@ endif()
 
 if(WITH_INTERNAL_TESTS)
     message("Including InternalQueryTests")
-    set(PgRouting_SOURCE_NAMES ${PgRouting_SOURCE_NAMES} "internalQueryTests")
+    set(PGROUTING_SOURCE_NAMES ${PGROUTING_SOURCE_NAMES} "internalQueryTests")
 endif()
 
 #-------------------
 # add the subdirectories that have the C/C++ code
 #-------------------
 
-foreach (subdir ${PgRouting_SOURCE_NAMES})
+foreach (subdir ${PGROUTING_SOURCE_NAMES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}")
 endforeach()
 
@@ -544,7 +440,7 @@ LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 #-------------------
 # pgRouting objects to be linked
 #-------------------
-foreach (subdir ${PgRouting_SOURCE_NAMES} )
+foreach (subdir ${PGROUTING_SOURCE_NAMES} )
     set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
 endforeach()
 
@@ -557,7 +453,12 @@ endforeach()
 #----------------------
 # PGROUTING installation files names have the following name
 #----------------------
-set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_SHORT_VERSION}")
+set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_LIB_VERSION}")
+
+if (PGROUTING_DEBUG)
+    message(STATUS "PGROUTING_LIB_NAME ${PGROUTING_LIB_NAME}")
+endif()
+
 
 
 add_library(${PGROUTING_LIB_NAME}
@@ -595,7 +496,7 @@ add_subdirectory(sql)
 
 install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 install(FILES
-    ${PgRouting_SQL_FILES_TO_INSTALL}
+    ${PGROUTING_SQL_FILES_TO_INSTALL}
     DESTINATION "${SHARE_DIR}"
     )
 
@@ -606,10 +507,3 @@ install(FILES
 #-----------------------------------------------------------------------------
 add_subdirectory(doxygen)
 add_subdirectory(doc)
-
-
-if (PGROUTING_DEBUG)
-    foreach (f ${PgRouting_SQL_FILES})
-        message(STATUS ${f})
-    endforeach()
-endif()

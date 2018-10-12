@@ -12,7 +12,7 @@ use strict;
 use Data::Dumper;
 use File::Find();
 
-my $DEBUG="@PgRouting_DEBUG@";
+my $DEBUG="@PGROUTING_DEBUG@";
 
 use vars qw/*name *dir *prune/;
 *name   = *File::Find::name;
@@ -28,15 +28,15 @@ sub Usage {
 
 my $version = "@PGROUTING_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
-my $PgRouting_SQL_FILES =  "@PgRouting_SQL_FILES@";
-my @sql_file = split(/;/, $PgRouting_SQL_FILES);
-my $out_file_name = "$working_directory/@PgRouting_CURRENT_SQL_FILE@";
+my $PGROUTING_SQL_FILES =  "@PGROUTING_SQL_FILES@";
+my @sql_file = split(/;/, $PGROUTING_SQL_FILES);
+my $out_file_name = "$working_directory/@PGROUTING_CURRENT_SQL_FILE@";
 
 print "Working_directory $working_directory\n"      if $DEBUG;
 print "out_file_name $out_file_name\n"      if $DEBUG;
 
 open(OUT, ">", "$out_file_name")
-    || die "@PgRouting_CURRENT_SQL_FILE@ ERROR: failed to create: '$out_file_name' : $!\n";
+    || die "@PGROUTING_CURRENT_SQL_FILE@ ERROR: failed to create: '$out_file_name' : $!\n";
 
 foreach my $f (@sql_file) {
     print "--  $f\n" if $DEBUG;

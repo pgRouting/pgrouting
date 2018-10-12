@@ -33,6 +33,6 @@ CREATE OR REPLACE FUNCTION pgr_articulationPoints(
     OUT node BIGINT)            -- the number of the node
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'articulationPoints'
+'MODULE_PATHNAME', 'articulationPoints'
 LANGUAGE c IMMUTABLE STRICT;
 

@@ -7,7 +7,7 @@
 
 
 
-#set (PgRouting_DEBUG "1")
+#set (PGROUTING_DEBUG "1")
 
 #-------------------
 # add the signatrues subdirectory
@@ -19,18 +19,19 @@ add_subdirectory(sigs)
 #-------------------
 # From the parent get the subdirectories that have the SQL files
 #
-# configuring the PgRouting_SQL_FILES variable
+# configuring the PGROUTING_SQL_FILES variable
 #-------------------
 
-set(MODULE_PATHNAME "$libdir/libpgrouting-${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
+set(PGROUTING_MODULE_PATHNAME "$libdir/libpgrouting-${PGROUTING_LIB_VERSION}")
 
-foreach (subdir ${PgRouting_SQL_DIRECTORIES})
+foreach (subdir ${PGROUTING_SQL_DIRECTORIES})
     add_subdirectory(${subdir})
 endforeach()
 
-if (PgRouting_DEBUG)
-    message(STATUS "PgRouting_SQL_FILES=")
-    foreach (f ${PgRouting_SQL_FILES})
+if (PGROUTING_DEBUG)
+    message(STATUS "PGROUTING_SQL_FILES=")
+    message(STATUS "PGROUTING_MODULE_PATHNAME ${PGROUTING_MODULE_PATHNAME}")
+    foreach (f ${PGROUTING_SQL_FILES})
         message(STATUS ${f})
     endforeach()
 endif()
@@ -38,18 +39,18 @@ endif()
 
 
 #-------------------
-# TARGET: PgRouting_SQL_FILE
+# TARGET: PGROUTING_SQL_FILE
 #
 # Builds:  pgrouting--${PGROUTING_VERSION}.sql
 #
 # add the scripts subdirectory
-# the variable ${PgRouting_SQL_FILES} should already be set at this point
+# the variable ${PGROUTING_SQL_FILES} should already be set at this point
 #
 # has the perl for building the current sql file
 # has the perl for building the update files
 #-------------------
 
-set(PgRouting_CURRENT_SQL_FILE "pgrouting--${PGROUTING_VERSION}.sql")
+set(PGROUTING_CURRENT_SQL_FILE "pgrouting--${PGROUTING_VERSION}.sql")
 
 # subdirectory that has the perl files
 add_subdirectory(scripts)
@@ -57,23 +58,23 @@ add_subdirectory(scripts)
 
 
 add_custom_command(
-    OUTPUT ${PgRouting_CURRENT_SQL_FILE}
-    COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-file.pl '${PgRouting_SQL_FILES}'
+    OUTPUT ${PGROUTING_CURRENT_SQL_FILE}
+    COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-file.pl '${PGROUTING_SQL_FILES}'
     DEPENDS
     scripts/build-extension-file.pl
-    ${PgRouting_SQL_FILES}
+    ${PGROUTING_SQL_FILES}
     )
 
-add_custom_target(PgRouting_SQL_FILE ALL
+add_custom_target(PGROUTING_SQL_FILE ALL
     DEPENDS
-    ${PgRouting_CURRENT_SQL_FILE}
+    ${PGROUTING_CURRENT_SQL_FILE}
     )
 
 #-------------------
 # TARGET: update_files
 #-------------------
 
-if (PgRouting_DEBUG)
+if (PGROUTING_DEBUG)
     message(STATUS "OLD_SIGNATURES=")
     foreach (s ${OLD_SIGNATURES})
         message(STATUS ${s})
@@ -82,14 +83,14 @@ endif()
 
 foreach (old_s ${OLD_SIGNATURES})
     SET (UPDATE_FILES ${UPDATE_FILES} pgrouting--${old_s}--${PGROUTING_VERSION}.sql)
-    SET (PgRouting_SQL_FILES_TO_INSTALL ${PgRouting_SQL_FILES_TO_INSTALL} "${CMAKE_CURRENT_BINARY_DIR}/pgrouting--${old_s}--${PGROUTING_VERSION}.sql")
+    SET (PGROUTING_SQL_FILES_TO_INSTALL ${PGROUTING_SQL_FILES_TO_INSTALL} "${CMAKE_CURRENT_BINARY_DIR}/pgrouting--${old_s}--${PGROUTING_VERSION}.sql")
     add_custom_command(
         OUTPUT pgrouting--${old_s}--${PGROUTING_VERSION}.sql
-        COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl ${old_s} ${PgRouting_DEBUG}
+        COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl ${old_s} ${PGROUTING_DEBUG}
         DEPENDS
         ./scripts/build-extension-update-files1.pl
-        ${PgRouting_CURRENT_SQL_FILE}
-        PgRouting_SQL_FILE
+        ${PGROUTING_CURRENT_SQL_FILE}
+        PGROUTING_SQL_FILE
         ./sigs/pgrouting--${old_s}.sig
         )
 endforeach()
@@ -99,4 +100,4 @@ add_custom_target(update_files ALL
     ${UPDATE_FILES}
     )
 
-SET(PgRouting_SQL_FILES_TO_INSTALL  ${PgRouting_SQL_FILES_TO_INSTALL} ${CMAKE_CURRENT_BINARY_DIR}/${PgRouting_CURRENT_SQL_FILE} "${CMAKE_CURRENT_BINARY_DIR}/common/pgrouting.control" PARENT_SCOPE)
+SET(PGROUTING_SQL_FILES_TO_INSTALL  ${PGROUTING_SQL_FILES_TO_INSTALL} ${CMAKE_CURRENT_BINARY_DIR}/${PGROUTING_CURRENT_SQL_FILE} "${CMAKE_CURRENT_BINARY_DIR}/common/pgrouting.control" PARENT_SCOPE)

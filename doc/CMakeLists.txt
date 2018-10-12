@@ -52,14 +52,14 @@ foreach(opt BUILD_HTML BUILD_LATEX BUILD_MAN SINGLEHTML EPUB DUMMY)
     if (${${opt}} OR WITH_ALL_DOC)
         string(TOLOWER ${opt} val)
         string(REPLACE "build_" "" val ${val})
-        list(APPEND PgRouting_DOC_TARGETS ${val})
+        list(APPEND PGROUTING_DOC_TARGETS ${val})
         set(WITH_DOC ON)
     endif()
 endforeach()
 
 
 
-message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
+message(STATUS "PGROUTING_DOC_TARGETS = ${PGROUTING_DOC_TARGETS}")
 
 #---------------------------------------------
 #---------------------------------------------
@@ -75,8 +75,8 @@ message(STATUS "PgRouting_DOC_TARGETS = ${PgRouting_DOC_TARGETS}")
 # Available Languages
 # English is always built
 #---------------------------------------------
-set(PgRouting_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
-set(PgRouting_ENGLISH "en")
+set(PGROUTING_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
+set(PGROUTING_ENGLISH "en")
 
 #---------------------------------------------
 # Language options
@@ -84,9 +84,9 @@ set(PgRouting_ENGLISH "en")
 option(WITH_ALL_LANG
     "Set ON|OFF (default=OFF) to build all the supported languages:
     Main Language will always be built:
-    ${PgRouting_ENGLISH}
+    ${PGROUTING_ENGLISH}
     Optional languages:
-    ${PgRouting_SUPPORTED_LANGUAGES}
+    ${PGROUTING_SUPPORTED_LANGUAGES}
 
     When OFF and want to build specific optional language, use the language code in capital letters:
     -D ES=ON
@@ -94,7 +94,7 @@ option(WITH_ALL_LANG
     OFF
     )
 
-foreach(lang ${PgRouting_SUPPORTED_LANGUAGES})
+foreach(lang ${PGROUTING_SUPPORTED_LANGUAGES})
     string(TOUPPER ${lang} val)
     option(${val}
         "Set ON|OFF (default=OFF) build ${lang} Documentation" OFF)
@@ -103,10 +103,10 @@ endforeach()
 #---------------------------------------------
 # Catching the language options to be build
 #---------------------------------------------
-foreach(lang ${PgRouting_SUPPORTED_LANGUAGES})
+foreach(lang ${PGROUTING_SUPPORTED_LANGUAGES})
     string(TOUPPER ${lang} opt)
     if (${opt} OR WITH_ALL_LANG)
-        list(APPEND PgRouting_BUILD_LANGUAGES ${lang})
+        list(APPEND PGROUTING_BUILD_LANGUAGES ${lang})
     endif()
 endforeach()
 
@@ -114,14 +114,14 @@ endforeach()
 # All languages po files are to be generated
 #---------------------------------------------
 
-set (SPHINXINTL_LANGUAGE  ${PgRouting_ENGLISH})
-foreach(lang ${PgRouting_BUILD_LANGUAGES})
+set (SPHINXINTL_LANGUAGE  ${PGROUTING_ENGLISH})
+foreach(lang ${PGROUTING_BUILD_LANGUAGES})
     set(SPHINXINTL_LANGUAGE "${SPHINXINTL_LANGUAGE},${lang}")
 endforeach()
 
 
-list(APPEND PgRouting_BUILD_LANGUAGES  ${PgRouting_ENGLISH})
-message(STATUS "PgRouting_BUILD_LANGUAGES = ${PgRouting_BUILD_LANGUAGES}")
+list(APPEND PGROUTING_BUILD_LANGUAGES  ${PGROUTING_ENGLISH})
+message(STATUS "PGROUTING_BUILD_LANGUAGES = ${PGROUTING_BUILD_LANGUAGES}")
 message(STATUS "SPHINXINTL_LANGUAGE = ${SPHINXINTL_LANGUAGE}")
 
 
@@ -185,7 +185,7 @@ message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
 #---------------------------------------------
 # Adding documentation directories
 #---------------------------------------------
-foreach (subdir ${PgRouting_DOC_DIRECTORIES} "src" "queries")
+foreach (subdir ${PGROUTING_DOC_DIRECTORIES} "src" "queries")
     add_subdirectory(${subdir})
 endforeach()
 
@@ -235,7 +235,7 @@ if (LOCALE)
 
 
     COMMENT "Generating POT files ..."
-    SOURCES ${PgRouting_DOC_FILES}
+    SOURCES ${PGROUTING_DOC_FILES}
     )
     return()
 endif()
@@ -246,7 +246,7 @@ add_custom_target(doc
     COMMENT "Building documentation with Sphinx")
 
 
-foreach (target ${PgRouting_DOC_TARGETS})
+foreach (target ${PGROUTING_DOC_TARGETS})
     add_custom_target("${target}"
         COMMENT "Building ${target} documentation with Sphinx")
 
@@ -254,7 +254,7 @@ foreach (target ${PgRouting_DOC_TARGETS})
         "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
         "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/index.html")
 
-    foreach (lang ${PgRouting_BUILD_LANGUAGES})
+    foreach (lang ${PGROUTING_BUILD_LANGUAGES})
         add_custom_target(
             "${target}-${lang}"
             COMMAND ${SPHINX_EXECUTABLE}
@@ -270,8 +270,8 @@ foreach (target ${PgRouting_DOC_TARGETS})
             "${PGR_DOCUMENTATION_BUILD_DIR}/${target}/${lang}"
 
             COMMENT "Generating ${target}/${lang} documentation ..."
-            SOURCES ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES}
-            DEPENDS ${PgRouting_DOC_FILES}  ${PgRouting_IMG_FILES}
+            SOURCES ${PGROUTING_DOC_FILES}  ${PGROUTING_IMG_FILES}
+            DEPENDS ${PGROUTING_DOC_FILES}  ${PGROUTING_IMG_FILES}
             )
         add_dependencies(${target} "${target}-${lang}")
 

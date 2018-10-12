@@ -37,6 +37,6 @@ CREATE OR REPLACE FUNCTION _trsp(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'turn_restriction'
+'MODULE_PATHNAME', 'turn_restriction'
 LANGUAGE 'c' VOLATILE;
 

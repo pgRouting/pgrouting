@@ -35,7 +35,7 @@ CREATE OR REPLACE FUNCTION _pgr_bellmanFordNeg(
      ANYARRAY,
     directed BOOLEAN ,
     only_cost BOOLEAN ,
-    
+
 
     OUT seq integer,
     OUT path_seq integer,
@@ -47,6 +47,6 @@ CREATE OR REPLACE FUNCTION _pgr_bellmanFordNeg(
     OUT agg_cost float)
 
 RETURNS SETOF RECORD AS
-'${MODULE_PATHNAME}', 'bellman_ford_neg'
+'MODULE_PATHNAME', 'bellman_ford_neg'
 LANGUAGE c IMMUTABLE STRICT;
 
