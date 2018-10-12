@@ -1,4 +1,4 @@
-ADD_LIBRARY(contraction OBJECT 
-    contractGraph.c 
+ADD_LIBRARY(contraction OBJECT
+    contractGraph.c
     contractGraph_driver.cpp
     )

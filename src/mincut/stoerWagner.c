@@ -42,7 +42,7 @@ PG_FUNCTION_INFO_V1(stoerWagner);
 static
 void
 process(
-        char* edges_sql, 
+        char* edges_sql,
         pgr_stoerWagner_t **result_tuples,
         size_t *result_count) {
     /*
@@ -69,7 +69,7 @@ process(
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
-    char *notice_msg = NULL;	
+    char *notice_msg = NULL;
     char *err_msg = NULL;
     do_pgr_stoerWagner(
             edges,
@@ -164,7 +164,7 @@ PGDLLEXPORT Datum stoerWagner(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1); 
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].mincut);

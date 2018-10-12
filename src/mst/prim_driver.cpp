@@ -79,7 +79,7 @@ do_pgr_prim(
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_prim(
                     undigraph,
-                    root_vertex, 
+                    root_vertex,
                     use_root);
 
         auto count = results.size();

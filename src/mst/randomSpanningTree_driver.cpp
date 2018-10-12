@@ -51,7 +51,7 @@ do_pgr_randomSpanningTree(
         size_t total_edges,
         int64_t root_vertex,
         bool directed,
-        pgr_randomSpanningTree_t **return_tuples, 
+        pgr_randomSpanningTree_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -102,7 +102,7 @@ do_pgr_randomSpanningTree(
             *((*return_tuples) + i) = results[i];
         }
         (*return_count) = count;
-   
+
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :

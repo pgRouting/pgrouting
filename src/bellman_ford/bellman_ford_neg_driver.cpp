@@ -83,13 +83,13 @@ do_pgr_bellman_ford_neg(
                 size_t size_end_vidsArr,
                 bool directed,
                 bool only_cost,
-                
+
                 General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
                 char ** err_msg) {
-    
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -103,9 +103,9 @@ do_pgr_bellman_ford_neg(
         pgassert(total_edges != 0);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        
+
         log << "Inserting vertices into a c++ vector structure";
-        
+
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
@@ -120,7 +120,7 @@ do_pgr_bellman_ford_neg(
             digraph.insert_negative_edges(negative_edges, total_negative_edges);
             log << digraph;
             paths = pgr_bellman_ford(digraph,
-                    start_vertices, 
+                    start_vertices,
                     end_vertices,
                     logstr,
                     only_cost);
@@ -132,7 +132,7 @@ do_pgr_bellman_ford_neg(
             log << undigraph;
             paths = pgr_bellman_ford(
                     undigraph,
-                    start_vertices, 
+                    start_vertices,
                     end_vertices,
                     logstr,
                     only_cost);

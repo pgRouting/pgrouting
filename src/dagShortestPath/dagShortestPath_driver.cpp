@@ -67,10 +67,10 @@ pgr_dagShortestPath(
             std::unique(targets.begin(), targets.end()),
             targets.end());
 
-    
+
     Pgr_dag< G > fn_dag;
     auto paths = fn_dag.dag(graph, sources, targets, only_cost);
-    
+
     return paths;
 }
 
@@ -118,7 +118,7 @@ do_pgr_dagShortestPath(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             paths = pgr_dagShortestPath(digraph,
-                    start_vertices, 
+                    start_vertices,
                     end_vertices,
                     only_cost);
         } else {
@@ -127,7 +127,7 @@ do_pgr_dagShortestPath(
             undigraph.insert_edges(data_edges, total_edges);
             paths = pgr_dagShortestPath(
                     undigraph,
-                    start_vertices, 
+                    start_vertices,
                     end_vertices,
                     only_cost);
         }

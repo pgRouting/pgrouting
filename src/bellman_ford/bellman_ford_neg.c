@@ -56,9 +56,9 @@ process(
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
-    
+
     pgr_SPI_connect();
-    
+
     PGR_DBG("Initializing arrays");
 
     int64_t* start_vidsArr = NULL;
@@ -73,7 +73,7 @@ process(
         pgr_get_bigIntArray(&size_end_vidsArr, ends);
     PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
 
-   
+
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
@@ -118,7 +118,7 @@ process(
 
             result_tuples,
             result_count,
-            
+
             &log_msg,
             &notice_msg,
             &err_msg);
@@ -148,7 +148,7 @@ PGDLLEXPORT Datum bellman_ford_neg(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/         
+    /**************************************************************************/
     General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
     /**************************************************************************/
@@ -241,7 +241,7 @@ PGDLLEXPORT Datum bellman_ford_neg(PG_FUNCTION_ARGS) {
         values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        
+
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

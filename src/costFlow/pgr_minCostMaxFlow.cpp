@@ -3,7 +3,7 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2018 Maoguang Wang 
+Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
 ------
@@ -126,7 +126,7 @@ PgrCostFlowGraph::GetMaxFlow() const {
     for (boost::tie(e, eEnd) = boost::edges(graph); e != eEnd; ++e) {
         if (((capacity[*e] - residual_capacity[*e]) > 0) &&
                 ((*e).m_source == supersource))
-            maxFlow += 
+            maxFlow +=
                 static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
     }
     return maxFlow;

@@ -162,7 +162,7 @@ Fleet::add_vehicle(
 }
 
 /*!
-  builds a fleet from a vector of Vehicle_t 
+  builds a fleet from a vector of Vehicle_t
 
   - creates a phoney truck with unlimited capacity and unlimited closing times
   - checks that the number of vehicles is a legal value
