@@ -26,13 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <boost/config.hpp>
-#include <iostream>
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/prim_minimum_spanning_tree.hpp>
 
-#include <deque>
-#include <set>
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <sstream>
@@ -52,7 +50,6 @@ template < class G > class Pgr_prim;
 template < class G >
 class Pgr_prim {
  public:
-
      typedef typename G::V V;
      typedef typename G::B_G B_G;
 
@@ -62,33 +59,32 @@ class Pgr_prim {
                  bool use_root);
 
  private:
-
      // Member
      std::vector< V > predecessors;
      std::vector< double > distances;
      std::vector< V > data;
 
-     //Functions
+     // Functions
      void clear() {
          data.clear();
          predecessors.clear();
          distances.clear();
      }
+
      void resize(
-            const G &graph){
+            const G &graph) {
           predecessors.resize(graph.num_vertices());
           distances.resize(graph.num_vertices());
      }
 
     std::vector< pgr_prim_t >
     generatePrim(
-	       const G &graph,
+           const G &graph,
                int64_t root_vertex ) {
-
          auto v_root(graph.get_V(root_vertex));
 
          boost::prim_minimum_spanning_tree(
-               	      graph.graph,
+                      graph.graph,
                       &predecessors[0],
                       boost::distance_map(&distances[0]).
                       weight_map(get(&G::G_T_E::cost, graph.graph))
@@ -110,12 +106,12 @@ class Pgr_prim {
          results.push_back(tmp);
           // for root node
 
-         for (size_t j = 1; j < size; j++){
+         for (size_t j = 1; j < size; j++) {
              pgr_prim_t tmp;
 
              tmp.root_vertex = root_vertex;  // root_vertex
              auto start_node = graph.graph[predecessors[data[j]]].id;
-             tmp.node = graph.graph[data[j]].id; // node
+             tmp.node = graph.graph[data[j]].id;  // node
 
              auto v_sn(graph.get_V(start_node));
              auto v_en(graph.get_V(tmp.node));
@@ -123,11 +119,11 @@ class Pgr_prim {
              auto cost = distances[v_sn] - distances[v_en];
              auto edge_id =
                  graph.get_edge_id(v_sn, v_en, cost);
-	     totalcost += cost;
+         totalcost += cost;
 
-             tmp.edge = edge_id; 	     // edge_id
-             tmp.cost = cost; 		     // cost
-             tmp.agg_cost = aggegrateCost(v_root, data[j]); // agg_cost
+             tmp.edge = edge_id;         // edge_id
+             tmp.cost = cost;            // cost
+             tmp.agg_cost = aggegrateCost(v_root, data[j]);  // agg_cost
              tmp.tree_cost = totalcost;      // tree_cost
              results.push_back(tmp);
          }
@@ -140,8 +136,7 @@ class Pgr_prim {
                   V find_node) {
        double agg_cost = 0;
 
-       for (V i = find_node; i!=root_vertex;){
-
+       for (V i = find_node; i != root_vertex;) {
           auto parent =  predecessors[i];
           auto cost = distances[i] - distances[root_vertex];
 
@@ -154,23 +149,23 @@ class Pgr_prim {
 
     std::vector< pgr_prim_t >
     disconnectedPrim(
-	       const G &graph ) {
-
-         size_t totalNodes = num_vertices(graph.graph); // Total Node in graph
+           const G &graph ) {
+         size_t totalNodes = num_vertices(graph.graph);  // Total Node in graph
 
          /*Calculate connected components*/
          std::vector< int > components(totalNodes);
-         size_t num_comps = boost::connected_components(graph.graph, &components[0]);
+         size_t num_comps =
+             boost::connected_components(graph.graph, &components[0]);
 
          std::vector< std::vector< int64_t > > component;
          component.resize(num_comps);
-         for (size_t i = 0; i < totalNodes; i++)
+         for (size_t i = 0; i < totalNodes; i++) {
              component[components[i]].push_back(i);
+         }
 
          std::vector< pgr_prim_t > results, tmpresults;
          for (size_t i = 0; i < num_comps; i++) {
-
-               /*Implementation */
+               /* Implementation */
                clear();
                resize(graph);
                tmpresults = generatePrim(
@@ -180,7 +175,7 @@ class Pgr_prim {
                for (size_t j = 0; j < size; j++) {
                    results.push_back(tmpresults[j]);
                }
-         }//for i
+         }  // for i
          return results;
     }
 
@@ -191,14 +186,12 @@ class Pgr_prim {
                   std::vector< V > &data) :
                   m_data(data)  {}
           template <class B_G>
-          void finish_vertex( V v, B_G& ){
+          void finish_vertex(V v, B_G&) {
             m_data.push_back(v);
           }
       private:
           std::vector< V > &m_data;
      };
-
-
 };
 
 template < class G >
@@ -209,12 +202,11 @@ Pgr_prim< G >::prim(
              bool use_root) {
         clear();
         resize(graph);
-        if(!use_root){
-             return disconnectedPrim(
-                          graph);
+        if (!use_root) {
+             return disconnectedPrim(graph);
          }
 
-         if (!graph.has_vertex(root_vertex)){
+         if (!graph.has_vertex(root_vertex)) {
              std::vector< pgr_prim_t > results;
              return results;
          }
