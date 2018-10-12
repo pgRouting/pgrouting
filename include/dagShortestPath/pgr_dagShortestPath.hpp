@@ -49,7 +49,7 @@ class Pgr_dag {
      typedef typename G::V V;
      typedef typename G::E E;
 
-    
+
      //! Dijkstra 1 to 1
      Path dag(
              G &graph,
@@ -271,7 +271,7 @@ class Pgr_dag {
      std::ostringstream log;
      //@}
 
-     
+
      //! @name Stopping classes
      //@{
      //! class for stopping when 1 target is found
@@ -315,7 +315,7 @@ class Pgr_dag {
           std::set< V > m_goals;
           size_t m_n_goals;
      };
-     
+
 };
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_

@@ -55,7 +55,7 @@ class PD_Orders : public PD_problem {
 
  public:
      /*! @name constructors
-      * @{ 
+      * @{
       */
      PD_Orders() = default;
      PD_Orders(const PD_Orders&) = default;

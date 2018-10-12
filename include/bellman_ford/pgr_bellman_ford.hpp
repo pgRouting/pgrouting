@@ -64,7 +64,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              bool only_cost = false) {
          clear();
          log << std::string(__FUNCTION__) << "\n";
-        
+
          // adjust predecessors and distances vectors
          predecessors.resize(graph.num_vertices());
          distances.resize(graph.num_vertices());
@@ -102,7 +102,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          log << std::string(__FUNCTION__) << "\n";
          predecessors.resize(graph.num_vertices());
          distances.resize(graph.num_vertices());
-         
+
          // get the graphs source and target
          if (!graph.has_vertex(start_vertex))
              return std::deque<Path>();
@@ -114,7 +114,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
                  s_v_targets.insert(graph.get_V(vertex));
              }
          }
-         
+
          std::vector< V > v_targets(s_v_targets.begin(), s_v_targets.end());
          // perform the algorithm
          bellman_ford_1_to_many(graph, v_source);
@@ -161,13 +161,13 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
          log << std::string(__FUNCTION__) << "\n";
-         
+
          for (const auto &start : start_vertex) {
              auto r_paths = bellman_ford(graph, start, end_vertex, only_cost);
              paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
          }
-         
-         
+
+
          std::sort(paths.begin(), paths.end(),
                  [](const Path &e1, const Path &e2)->bool {
                  return e1.end_id() < e2.end_id();
@@ -188,14 +188,14 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
                  V source,
                  V target) {
          log << std::string(__FUNCTION__) << "\n";
-         
+
          try {
              bool negative = boost::bellman_ford_shortest_paths(graph.graph, int(graph.num_vertices()),
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
                      .root_vertex(source)
-                     );  
+                     );
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -232,7 +232,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      }
 
 
-     // To Empty predecessors and distances vector for each function call 
+     // To Empty predecessors and distances vector for each function call
      void clear() {
          predecessors.clear();
          distances.clear();
@@ -263,7 +263,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      //@{
      std::vector< V > predecessors;
      std::vector< double > distances;
-     
+
      //@}
 
 };

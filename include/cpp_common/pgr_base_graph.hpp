@@ -420,7 +420,7 @@ class Pgr_base_graph {
       * for (vertex : vertices)
       *    precondition(!has_vertex(vertex.id));
       * ~~~~~
-      * 
+      *
       *
       * POSTCONDITIONS:
       * ~~~~~{.c}
@@ -687,7 +687,7 @@ class Pgr_base_graph {
              graph[e].cost = edge.cost;
              graph[e].id = edge.id;
          }
-         
+
 
          if (edge.reverse_cost >= 0 && (is_directed()
                      || (is_undirected() && edge.cost != edge.reverse_cost))) {
@@ -925,7 +925,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_neg_edge(const T &edge, bool normal) {
 
     pgassert(vertices_map.find(edge.source) != vertices_map.end());
     pgassert(vertices_map.find(edge.target) != vertices_map.end());
-    
+
     boost::tie(e, inserted) =
             boost::add_edge(vm_s, vm_t, graph);
         if(edge.cost<0)
@@ -942,7 +942,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_neg_edge(const T &edge, bool normal) {
           graph[e].cost = (-0.5)*edge.reverse_cost; // reading negative edges as positive
         else
           graph[e].cost = edge.reverse_cost;
-        
+
         graph[e].id = normal? edge.id : -edge.id;
       }
 

@@ -70,7 +70,7 @@ class Order : public Identifier {
      const Vehicle_node& pickup() const;
 
      /*! Get a subset of the orders that can be placed after @b this order
-      
+
       @dot
       digraph G {
       graph [rankdir=LR];
@@ -98,7 +98,7 @@ class Order : public Identifier {
       * @{
       */
 
-     /*! @brief validate a pickup/delivery order 
+     /*! @brief validate a pickup/delivery order
       *
       * An order is valid when:
       *   - The pickup is well formed
@@ -162,7 +162,7 @@ class Order : public Identifier {
       @enddot
 
       @todo TODO
-      - compatibility changes based on the speed this is not taking that into account (here) 
+      - compatibility changes based on the speed this is not taking that into account (here)
       - check where is it talking that into account
       */
      Identifiers<size_t> m_compatibleJ;

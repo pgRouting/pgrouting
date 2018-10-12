@@ -3,7 +3,7 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2017 Maoguang Wang 
+Copyright (c) 2017 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
 ------

@@ -3,7 +3,7 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2018 Maoguang Wang 
+Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
 ------
@@ -67,7 +67,7 @@ class PgrDirectedChPPGraph {
      int64_t startPoint;
 
      std::map<std::pair<int64_t, int64_t>, // source, target
-              size_t> edgeToId; // index in resultEdges 
+              size_t> edgeToId; // index in resultEdges
 
      graph::PgrCostFlowGraph flowGraph;
      std::vector<pgr_edge_t> resultEdges;
@@ -174,7 +174,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
             edge.source = superSource, edge.target = p;
         edges.push_back(edge);
     }
-    
+
     PgrCostFlowGraph graph(edges, sources, targets);
     flowGraph = graph;
 }
@@ -243,17 +243,17 @@ PgrDirectedChPPGraph::BuildResultPath() {
 	}
     newElement.node = preNode;
     newElement.edge = -1;
-    newElement.cost = 0; 
+    newElement.cost = 0;
 	if (resultPath.empty()) {
 	    newElement.seq = 1;
-	    newElement.agg_cost = 0.0;	
+	    newElement.agg_cost = 0.0;
 	} else {
         newElement.seq = resultPath.back().seq + 1;
         newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
 	}
     resultPath.push_back(newElement);
 }
-    
+
 // perform DFS approach to generate Euler circuit
 // TODO(mg) find suitable API in BGL, maybe DfsVisitor will work.
 // Implement DFS without BGL for now

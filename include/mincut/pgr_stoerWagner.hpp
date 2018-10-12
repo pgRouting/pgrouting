@@ -63,29 +63,29 @@ class Pgr_stoerWagner {
                  G &graph);
 
  private:
-  
-     std::vector< pgr_stoerWagner_t > 
+
+     std::vector< pgr_stoerWagner_t >
      generatestoerWagner(
 	    const G &graph ) {
-       
+
        std::vector< pgr_stoerWagner_t > results;
        auto parities = boost::make_one_bit_color_map(
-                                        num_vertices(graph.graph), 
+                                        num_vertices(graph.graph),
                                         get(boost::vertex_index, graph.graph)
                                         );
-       
+
        double w = stoer_wagner_min_cut(
-                                   graph.graph, 
-                                   get(&G::G_T_E::cost, graph.graph), 
+                                   graph.graph,
+                                   get(&G::G_T_E::cost, graph.graph),
                                    boost::parity_map(parities)
-                                   ); 
+                                   );
 
        double totalcost = 0;
        E_i ei, ei_end;
        for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ei++) {
-  
+
           auto s = source(*ei, graph.graph);
-          auto t = target(*ei, graph.graph); 
+          auto t = target(*ei, graph.graph);
 
           if ( get(parities, s) != get(parities, t) )
              {
@@ -93,18 +93,18 @@ class Pgr_stoerWagner {
 
                tmp.cost = graph[*ei].cost;
 
-               auto edge_id =  
+               auto edge_id =
                  graph.get_edge_id(source(*ei, graph.graph), target(*ei, graph.graph), tmp.cost);
-	        
+
                tmp.edge = edge_id;
-               totalcost += tmp.cost; 
+               totalcost += tmp.cost;
                tmp.mincut = totalcost;
                results.push_back(tmp);
              }
        }
 
-       pgassert(w == totalcost);        
-       return results; 
+       pgassert(w == totalcost);
+       return results;
      }
 };
 
@@ -112,11 +112,11 @@ template < class G >
 std::vector<pgr_stoerWagner_t>
 Pgr_stoerWagner< G >::stoerWagner(
                 G &graph) {
-            
-      pgassert(num_vertices(graph.graph) > 1); 
+
+      pgassert(num_vertices(graph.graph) > 1);
       return generatestoerWagner(
-                             graph);     
-} 
+                             graph);
+}
 
 
 #endif  // INCLUDE_MINCUT_PGR_STOERWAGNER_HPP_

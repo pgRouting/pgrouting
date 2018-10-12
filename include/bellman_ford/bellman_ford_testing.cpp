@@ -61,7 +61,7 @@ int main()
 		bool r = bellman_ford_shortest_paths(g, int(N), weight_map(weight_pmap).distance_map(&distance[0]).
 			predecessor_map(&parent[0]).root_vertex(0));
 
-		
+
 		if (r)
 			for (i = 0; i < N; ++i)
 				std::cout << name[i] << ": " << std::setw(3) << distance[i]
@@ -73,7 +73,7 @@ int main()
 				std::cout << name[i] << ": " << std::setw(3) << distance[i]
 				<< " " << name[parent[i]] << std::endl;
 		}
-	
+
 
 	while (1)
 	{

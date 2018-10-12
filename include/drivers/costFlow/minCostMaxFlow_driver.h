@@ -5,8 +5,8 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
-Copyright (c) 2018 Maoguang Wang 
+Function's developer:
+Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
 ------
