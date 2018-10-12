@@ -1,3 +1,5 @@
+# http://editorconfig.org
+
 # top-most EditorConfig file
 root = true
 
@@ -5,18 +7,31 @@ root = true
 [*]
 indent_size = 4
 indent_style = space
-
 charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-# C source and header files
-[*.{c,h}]
+# C++ files want tab indentation
+[*.{c,h,cpp,hpp,inl}]
+indent_style = space
 indent_size = 4
+
+# Makefiles want tab indentation
+[Makefile]
+indent_style = tab
+indent_size = 8
+
+# YML files want space indentation
+[*.yml]
 indent_style = space
 
-# YAML and RST files
-[*.{rst,yml}]
-indent_size = 2
+# CMake configuration files
+[CMakeLists.txt,*.cmake]
+indent_style = space
+indent_size = 4
+
+# RST files
+[*.rst]
+indent_size = 3
 indent_style = space
