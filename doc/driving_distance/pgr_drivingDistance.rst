@@ -10,12 +10,7 @@
 pgr_drivingDistance
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_drivingDistance`` - Returns the driving distance from a start node.
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -27,14 +22,16 @@ Name
 * pgr_drivingDistance(single vertex) 2.0.0, signature change 2.1.0
 * pgr_drivingDistance(multiple vertices) 2.1.0
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Using the Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``.
 The edges extracted will conform to the corresponding spanning tree.
 
-Signature Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: sql
 
@@ -44,56 +41,35 @@ Signature Summary
 
     RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
 
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-	single: drivingDistance(Minimal Use)
-
-Minimal Use
-...................
+.. rubric:: Minimal Use
 
 .. code-block:: sql
 
     pgr_drivingDistance(edges_sql, start_vid, distance)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-
-
 .. index::
 	single: drivingDistance(Single Start Vertex)
 
-Driving Distance From A Single Starting Vertex
-..............................................
+.. rubric:: Driving Distance From A Single Starting Vertex
 
 .. code-block:: sql
 
     pgr_drivingDistance(edges_sql, start_vid, distance, directed)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-
 .. index::
 	single: drivingDistance(Multiple Starting Vertices)
 
-Driving Distance From Multiple Starting Vertices
-.................................................
+.. rubric:: Driving Distance From Multiple Starting Vertices
 
 .. code-block:: sql
 
     pgr_drivingDistance(edges_sql, start_vids, distance, directed, equicost)
     RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
 
-Description of the Signatures
+Parameters 
 -------------------------------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-
-Description of the parameters of the signatures
-.................................................
 
 ============== ====================== =================================================
 Column          Type                  Description
@@ -106,10 +82,15 @@ Column          Type                  Description
 **equicost**   ``BOOLEAN``            (optional). When ``true`` the node will only appear in the closest ``start_vid`` list.  Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.
 ============== ====================== =================================================
 
+Inner query
+-------------------------------------------------------------------------------
 
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-Description of the return values
-.................................................
+Result Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(seq [, start_v], node, edge, cost, agg_cost)``
 
@@ -124,13 +105,10 @@ Column         Type        Description
 **agg_cost**   ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
 ============== =========== =================================================
 
-
-
 Additional Examples
 -------------------------------------------------------------------------------
 
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
-................................................................................................
+:Example: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
 
 The examples in this section use the following :ref:`fig1`
 
@@ -138,8 +116,7 @@ The examples in this section use the following :ref:`fig1`
    :start-after: --q1
    :end-before: --q2
 
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-................................................................................................
+:Example: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
 
 The examples in this section use the following :ref:`fig2`
 
@@ -148,8 +125,7 @@ The examples in this section use the following :ref:`fig2`
    :start-after: --q2
    :end-before: --q3
 
-Examples for queries marked as ``directed`` with ``cost`` column
-......................................................................................
+:Example: For queries marked as ``directed`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig3`
 
@@ -157,17 +133,13 @@ The examples in this section use the following :ref:`fig3`
    :start-after: --q3
    :end-before: --q4
 
-
-
-Examples for queries marked as ``undirected`` with ``cost`` column
-......................................................................................
+:Example: For queries marked as ``undirected`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig4`
 
 .. literalinclude:: doc-pgr_drivingDistance.queries
    :start-after: --q4
    :end-before: --q5
-
 
 See Also
 -------------------------------------------------------------------------------

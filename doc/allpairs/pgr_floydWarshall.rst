@@ -10,7 +10,7 @@
 pgr_floydWarshall
 ===============================================================================
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_floydWarshall`` - Returns the sum of the costs of the shortest path for each
@@ -25,15 +25,10 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
 * Renamed on 2.2.0, previous name pgr_apspWarshall
 
-
 The Floyd-Warshall algorithm, also known as Floyd's algorithm,
 is a good choice to calculate the sum of the costs of the shortest path for each
 pair of nodes in the graph, for *dense graphs*. We use Boost's
 implementation which runs in :math:`\Theta(V^3)` time,
-
-
-Characteristics
-----------------
 
 The main Characteristics are:
   - It does not return a path.
@@ -55,8 +50,10 @@ The main Characteristics are:
 
   - **Recommended, use a bounding box of no more than 3500 edges.**
 
-Signature Summary
---------------------------------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -64,15 +61,7 @@ Signature Summary
     pgr floydWarshall(edges_sql, directed)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 
-Signatures
---------------------------------------------
-
-
-.. index::
-    single: floydWarshall(Minimal Signature)
-
-Minimal Signature
-...................
+.. rubric:: Minimal Signature
 
 .. code-block:: none
 
@@ -85,18 +74,12 @@ Minimal Signature
    :start-after: -- q1
    :end-before: -- q2
 
-
-.. index::
-    single: floydWarshall(Complete Signature)
-
-Complete Signature
-...................
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
     pgr_floydWarshall(edges_sql, directed)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
-
 
 :Example 2: On an undirected graph.
 
@@ -104,16 +87,8 @@ Complete Signature
    :start-after: -- q2
    :end-before: -- q3
 
-Description of the Signatures
-------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: no_id_edges_sql_start
-    :end-before: no_id_edges_sql_end
-
-
-Description of the parameters of the signatures
-................................................
+Parameters 
+-------------------------------------------------------------------------------
 
 Receives  ``(edges_sql, directed)``
 
@@ -124,9 +99,15 @@ Parameter     Type          Description
 **directed**  ``BOOLEAN``   (optional) Default is true (is directed). When set to false the graph is considered as Undirected
 ============= ============= =================================================
 
+Inner query
+-------------------------------------------------------------------------------
 
-Description of the return values
-..................................
+.. include:: pgRouting-concepts.rst
+    :start-after: no_id_edges_sql_start
+    :end-before: no_id_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 
@@ -137,10 +118,6 @@ Column        Type          Description
 **end_vid**   ``BIGINT``    Identifier of the ending vertex.
 **agg_cost**  ``FLOAT``     Total cost from ``start_vid`` to ``end_vid``.
 ============= ============= =================================================
-
-
-
-
 
 .. rubric:: History
 
