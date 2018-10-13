@@ -200,10 +200,10 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
    :start-after: -- q5
    :end-before: -- q6
 
+.. pgr_dijkstra_parameters_start
+
 Parameters
 -------------------------------------------------------------------------------
-
-.. pgr_dijkstra_parameters_start
 
 ============== ================== ======== =================================================
 Parameter      Type               Default     Description
