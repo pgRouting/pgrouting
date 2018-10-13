@@ -10,7 +10,6 @@
 pgr_connectedComponents - Experimental
 ===============================================================================
 
-
 ``pgr_connectedComponents`` — Return the connected components of an undirected graph using a DFS-based approach.
 In particular, the algorithm implemented by Boost.Graph.
 
@@ -23,27 +22,23 @@ In particular, the algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 A connected component of an undirected graph is a set of vertices that are all reachable
 from each other.
 This implementation can only be used with an undirected graph.
 
-Characteristics
--------------------------------------------------------------------------------
-
 The main Characteristics are:
 
-  - Components are described by vertices
+- Components are described by vertices
 
-  - The returned values are ordered:
+- The returned values are ordered:
 
-    - `component` ascending
-    - `node` ascending
+  - `component` ascending
+  - `node` ascending
 
-  - Running time: :math:`O(V + E)`
+- Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -70,21 +65,20 @@ The signature is for a **undirected** graph.
    :width: 685px
    :height: 387px
 
-Description of the Signatures
--------------------------------------------------------------------------------
-
-.. include:: components-family.rst
-    :start-after: components_edges_sql_start
-    :end-before: components_edges_sql_end
-
 .. include:: components-family.rst
     :start-after: components_parameters_start
     :end-before: components_parameters_end
 
 .. include:: components-family.rst
+    :start-after: components_edges_sql_start
+    :end-before: components_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+.. include:: components-family.rst
     :start-after: return_componentsV_start
     :end-before: return_componentsV_end
-
 
 See Also
 -------------------------------------------------------------------------------

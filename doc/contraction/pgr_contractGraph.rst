@@ -23,14 +23,10 @@ pgr_contractGraph - Experimental
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
--------------
+Description
+-------------------------------------------------------------------------------
 
 Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms.
-
-Characteristics
--------------------------------------------------------------------------------
 
 The main Characteristics are:
   - Process is done only on edges with positive costs.
@@ -47,10 +43,10 @@ The main Characteristics are:
     - column `id` ascending when type = `v`
     - column `id` descending when type = `e`
 
+Signatures
+-------------------------------------------------------------------------------
 
-
-Signature Summary:
-------------------
+.. rubric:: Summary
 
 The pgr_contractGraph function has the following signatures:
 
@@ -61,15 +57,7 @@ The pgr_contractGraph function has the following signatures:
 
     RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: contractGraph(Minimal Use)
-
-Minimal signature
-.......................................
+.. rubric:: Minimal signature
 
 .. code-block:: none
 
@@ -81,8 +69,7 @@ Minimal signature
    :start-after: -- q1
    :end-before: -- q2
 
-Complete signature
-.......................................
+.. rubric:: Complete signature
 
 .. code-block:: none
 
@@ -94,13 +81,7 @@ Complete signature
    :start-after: -- q2
    :end-before: -- q3
 
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-
-Description of the parameters of the signatures
+Parameters
 -------------------------------------------------------------------------------
 
 ======================= ====================== =================================================
@@ -116,8 +97,14 @@ Column                  Type                   Description
                                                * When ``false`` the graph is considered as `Undirected`.
 ======================= ====================== =================================================
 
+Inner query
+-------------------------------------------------------------------------------
 
-Description of the return values
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Result Columns
 -------------------------------------------------------------------------------
 
 RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)
@@ -146,8 +133,8 @@ Column                       Type                Description
 **cost**                     ``FLOAT``           Weight of the edge (`source`, `target`). Valid values when `type = 'e'`.
 ============================ =================   ===================================================================
 
-Examples
-========
+Additional Examples 
+-------------------------------------------------------------------------------
 
 :Example: Only dead end contraction
 
@@ -161,6 +148,8 @@ Examples
    :start-after: -- q4
    :end-before: -- q5
 
+See Also
+-------------------------------------------------------------------------------
 
 .. rubric:: Indices and tables
 

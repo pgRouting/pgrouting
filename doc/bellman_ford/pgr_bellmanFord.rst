@@ -22,17 +22,13 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Bellman-Ford's algorithm, is named after Richard Bellman and Lester Ford, who first published it in 1958 and 1956, respectively.
 It is a graph search algorithm that computes shortest paths from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``) in a graph where some of the edge weights may be negative number. Though it is more versatile, it is slower than Dijkstra's algorithm/
 This implementation can be used with a directed graph and an undirected graph.
-
-Characteristics
--------------------------------------------------------------------------------
 
 The main Characteristics are:
   - Process is valid for edges with both positive and negative edge weights.
@@ -55,8 +51,10 @@ The main Characteristics are:
   - Running time: :math:`O(| start\_vids | * ( V * E))`
 
 
-Signature Summary
------------------
+Signatures 
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -69,15 +67,7 @@ Signature Summary
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
         OR EMPTY SET
 
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: bellman_ford(Minimal Use) - Experimental
-
-Minimal signature
-.......................................
+.. rubric:: Minimal signature
 
 .. code-block:: none
 
@@ -92,12 +82,11 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. index::
     single: bellman_ford(One to One) - Experimental
 
 One to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -106,8 +95,9 @@ One to One
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 :Example:
 
@@ -115,12 +105,11 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
    :start-after: -- q2
    :end-before: -- q3
 
-
 .. index::
     single: bellman_ford(One to Many) - Experimental
 
 One to many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -129,14 +118,15 @@ One to many
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 Using this signature, will load once the graph and perform a one to one `pgr_bellmanFord`
 where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
-  - The result is equivalent to the union of the results of the one to one `pgr_bellmanFord`.
-  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+- The result is equivalent to the union of the results of the one to one `pgr_bellmanFord`.
+- The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -144,14 +134,11 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
    :start-after: -- q3
    :end-before: -- q4
 
-
-
-
 .. index::
     single: bellman_ford(Many to One) - Experimental
 
 Many to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -160,14 +147,15 @@ Many to One
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 Using this signature, will load once the graph and perform several one to one `pgr_bellmanFord`
 where the ending vertex is fixed.
 
-  - The result is the union of the results of the one to one `pgr_bellmanFord`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_bellmanFord`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 :Example:
 
@@ -175,13 +163,11 @@ where the ending vertex is fixed.
    :start-after: -- q4
    :end-before: -- q5
 
-
-
 .. index::
     single: bellman_ford(Many to Many) - Experimental
 
 Many to Many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -190,14 +176,15 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 Using this signature, will load once the graph and perform several one to Many `pgr_bellmanFord`
 for all ``start_vids``.
 
-  - The result is the union of the results of the one to one `pgr_bellmanFord`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+- The result is the union of the results of the one to one `pgr_bellmanFord`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
@@ -212,8 +199,7 @@ Parameters
 
 .. pgr_bellmanFord_parameters_start
 
-Description of the parameters of the signatures
-...............................................................................
+.. rubric:: Description of the parameters of the signatures
 
 ============== ================== ======== =================================================
 Parameter      Type               Default     Description
@@ -242,8 +228,6 @@ Results Columns
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_short_start
     :end-before: return_path_short_end
-
-
 
 See Also
 -------------------------------------------------------------------------------

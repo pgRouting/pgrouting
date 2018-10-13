@@ -22,17 +22,16 @@ In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for
 weighted directed acyclic graph, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
-This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph. The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm. 
 
-Characteristics
--------------------------------------------------------------------------------
+This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph. 
+
+The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm. 
 
 The main Characteristics are:
   - Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings.
@@ -56,8 +55,10 @@ The main Characteristics are:
   - Running time: :math:`O(| start\_vids | * (V + E))`
 
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -70,14 +71,11 @@ Signature Summary
         OR EMPTY SET
 
 
-Signatures
--------------------------------------------------------------------------------
-
 .. index::
     single: dagShortestPath(One to One) - Experimental
 
 One to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -96,7 +94,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
     single: dagShortestPath(One to Many) - Experimental
 
 One to Many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -118,7 +116,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
     single: dagShortestPath(Many to One) - Experimental
 
 Many to One
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -140,7 +138,7 @@ where the ending vertex is fixed.
     single: dagShortestPath(Many to Many) - Experimental
 
 Many to Many
-.......................................
+...............................................................................
 
 .. code-block:: none
 
@@ -177,7 +175,6 @@ Parameter      Type               Default     Description
 ============== ================== ======== =================================================
 
 .. pgr_dagShortestPath_parameters_end
-
 
 Inner Query
 -------------------------------------------------------------------------------

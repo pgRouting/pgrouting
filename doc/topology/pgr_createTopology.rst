@@ -10,13 +10,9 @@
 pgr_createTopology
 ===============================================================================
 
-Name
--------------------------------------------------------------------------------
-
 ``pgr_createTopology`` — Builds a network topology based on the geometry information.
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 The function returns:
@@ -24,8 +20,8 @@ The function returns:
 - ``OK`` after the network topology has been built and the vertices table created.
 - ``FAIL`` when the network topology was not built due to an error.
 
-.. index::
-    single: createTopology(Complete Signature)
+Signatures
+-------------------------------------------------------------------------------
 
 .. code-block:: none
 
@@ -34,12 +30,8 @@ The function returns:
                            text source:='source',text target:='target',
                            text rows_where:='true', boolean clean:=false)
 
-
-
-Description
+Parameters
 -------------------------------------------------------------------------------
-
-.. rubric:: Parameters
 
 The topology creation function accepts the following parameters:
 
@@ -83,7 +75,6 @@ The function returns:
   * The names of source , target or id are the same.
   * The SRID of the geometry could not be determined.
 
-
 .. rubric:: The Vertices Table
 
 The vertices table is a requirement of the :doc:`pgr_analyzeGraph <pgr_analyzeGraph>` and the :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>` functions.
@@ -102,15 +93,13 @@ The structure of the vertices table is:
 * Renamed in version 2.0.0
 
 Usage when the edge table's columns MATCH the default values:
--------------------------------------------------------------------------------
+...............................................................................
 
-.. rubric:: The simplest way to use pgr_createTopology is:
+The simplest way to use pgr_createTopology is:
 
 .. literalinclude:: doc-pgr_createTopology.queries
    :start-after: --q1
    :end-before: --q1.1
-
-
 
 .. rubric:: When the arguments are given in the order described in the parameters:
 
@@ -120,7 +109,6 @@ We get the same result AS the simplest way to use the function.
    :start-after: --q2
    :end-before: --q2.1
 
-
 .. warning::  | An error would occur when the arguments are not given in the appropriate order:
     | In this example, the column ``id`` of the table ``ege_table`` is passed to the function as the geometry column,
     | and the geometry column ``the_geom`` is passed to the function as the id column.
@@ -128,7 +116,6 @@ We get the same result AS the simplest way to use the function.
     .. literalinclude:: doc-pgr_createTopology.queries
        :start-after: --q3
        :end-before: --q3.1
-
 
 .. rubric:: When using the named notation
 
@@ -167,11 +154,8 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
    :start-after: --q9
    :end-before: --q9.1
 
-
-
-
 Usage when the edge table's columns DO NOT MATCH the default values:
--------------------------------------------------------------------------------
+...............................................................................
 
 For the following table
 
@@ -197,8 +181,6 @@ Note that this example uses clean flag. So it recreates the whole vertices table
        :start-after: --q12
        :end-before: --q12.1
 
-
-
 .. rubric:: When using the named notation
 
 In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
@@ -212,7 +194,6 @@ The order of the parameters do not matter:
    :start-after: --q14
    :end-before: --q14.1
 
-
 .. rubric:: Selecting rows using rows_where parameter
 
 Based on id:
@@ -221,16 +202,16 @@ Based on id:
    :start-after: --q15
    :end-before: --q15.1
 
-
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
 .. literalinclude:: doc-pgr_createTopology.queries
    :start-after: --q16
    :end-before: --q16.1
 
-
-Examples with full output
+Additional Examples 
 -------------------------------------------------------------------------------
+
+:Example:  With full output
 
 This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges.
 
@@ -239,7 +220,6 @@ This example start a clean topology, with 5 edges, and then its incremented to t
    :end-before: --q17.1
 
 The example uses the :doc:`sampledata` network.
-
 
 See Also
 -------------------------------------------------------------------------------

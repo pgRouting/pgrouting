@@ -10,7 +10,6 @@
 pgr_bridges - Experimental
 ===============================================================================
 
-
 ``pgr_bridges`` - Return the bridges of an undirected graph.
 
 .. figure:: images/boost-inside.jpeg
@@ -22,24 +21,20 @@ pgr_bridges - Experimental
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 A bridge is an edge of an undirected graph whose deletion increases its number
 of connected components.
 This implementation can only be used with an undirected graph.
 
-Characteristics
--------------------------------------------------------------------------------
-
 The main Characteristics are:
 
-  - The returned values are ordered:
+- The returned values are ordered:
 
-    - `edge` ascending
+  - `edge` ascending
 
-  - Running time: :math:`O(E * (V + E))`
+- Running time: :math:`O(E * (V + E))`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -66,21 +61,19 @@ The signature is for a **undirected** graph.
    :width: 560px
    :height: 381px
 
-Description of the Signatures
--------------------------------------------------------------------------------
-
-.. include:: components-family.rst
-    :start-after: components_edges_sql_start
-    :end-before: components_edges_sql_end
-
 .. include:: components-family.rst
     :start-after: components_parameters_start
     :end-before: components_parameters_end
 
 .. include:: components-family.rst
+    :start-after: components_edges_sql_start
+    :end-before: components_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+.. include:: components-family.rst
     :start-after: return_bridges_start
     :end-before: return_bridges_end
-
 
 See Also
 -------------------------------------------------------------------------------
