@@ -7,8 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_MY_FUNCTION_NAME:
-
 pgr_MY_FUNCTION_NAME
 ===============================================================================
 
@@ -20,8 +18,7 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
@@ -29,9 +26,6 @@ It is a graph search algorithm that solves the shortest path problem for
 a graph with non-negative edge path costs, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 This implementation can be used with a directed graph and an undirected graph.
-
-Characteristics
--------------------------------------------------------------------------------
 
 The main Characteristics are:
   - Process is done only on edges with positive costs.
@@ -54,9 +48,10 @@ The main Characteristics are:
 
   - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
+Signatures
+------------------------------------------------------------------------------
 
-Signature Summary
------------------
+..rubric:: Summary
 
 .. code-block:: none
 
@@ -65,15 +60,7 @@ Signature Summary
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
         OR EMPTY SET
 
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: MY_FUNCTION_NAME(Minimal Use)
-
-Minimal signature
-.......................................
+..rubric:: Minimal signature
 
 .. code-block:: none
 
@@ -88,12 +75,10 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. index::
     single: MY_FUNCTION_NAME(Complete signature)
 
-Complete Signature
-.......................................
+..rubric:: Complete Signature
 
 .. code-block:: none
 
@@ -110,23 +95,35 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
    :start-after: -- q2
    :end-before: -- q3
 
+Parameters
+-------------------------------------------------------------------------------
 
+.. include:: pgr_dijkstra.rst
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
 
-Description of the Signatures
+Inner query
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+Result Columns
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_start
     :end-before: return_path_end
 
+Aditional Examples 
+-------------------------------------------------------------------------------
+
+:Example:
+
+.. literalinclude:: doc-pgr_MY_FUNCTION_NAME.queries
+   :start-after: -- q2
+   :end-before: -- q3
 
 See Also
 -------------------------------------------------------------------------------
