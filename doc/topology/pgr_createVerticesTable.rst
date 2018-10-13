@@ -10,13 +10,9 @@
 pgr_createVerticesTable
 ===============================================================================
 
-Name
--------------------------------------------------------------------------------
-
 ``pgr_createVerticesTable`` — Reconstructs the vertices table based on the source and target information.
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 The function returns:
@@ -24,20 +20,16 @@ The function returns:
 - ``OK`` after the vertices table has been reconstructed.
 - ``FAIL`` when the vertices table was not reconstructed due to an error.
 
-.. index::
-	single: createVerticesTable(Complete Signature)
+Signatures
+-------------------------------------------------------------------------------
 
 .. code-block:: sql
 
 	pgr_createVerticesTable(edge_table, the_geom, source, target, rows_where)
     RETURNS VARCHAR
 
-
-
-Description
+Parameters
 -------------------------------------------------------------------------------
-
-.. Rubric:: Parameters
 
 The reconstruction of the vertices table  function accepts the following parameters:
 
@@ -89,7 +81,7 @@ The structure of the vertices table is:
 * Renamed in version 2.0.0
 
 Usage when the edge table's columns MATCH the default values:
--------------------------------------------------------------------------------
+...............................................................................
 
 .. rubric:: The simplest way to use pgr_createVerticesTable is:
 
@@ -120,7 +112,6 @@ We get the same result as the simplest way to use the function.
        -------------------------
          FAIL
       (1 row)
-
 
 .. rubric:: When using the named notation
 
@@ -162,10 +153,8 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
 	SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 
-
-
 Usage when the edge table's columns DO NOT MATCH the default values:
--------------------------------------------------------------------------------
+...............................................................................
 
 For the following table
 
@@ -198,7 +187,6 @@ The arguments need to be given in the order described in the parameters:
           FAIL
         (1 row)
 
-
 .. rubric:: When using the named notation
 
 The order of the parameters do not matter:
@@ -212,7 +200,6 @@ The order of the parameters do not matter:
 	 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom');
 
 In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
-
 
 .. rubric:: Selecting rows using rows_where parameter
 
@@ -252,9 +239,7 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 	SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
 	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 
-
-
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -276,9 +261,7 @@ Examples
 	 OK
 	(1 row)
 
-
 The example uses the :doc:`sampledata` network.
-
 
 See Also
 -------------------------------------------------------------------------------

@@ -450,8 +450,7 @@ Parameter           Type                   Default   Description
 
 .. return_componentsV_start
 
-Description of the return values for connected components and strongly connected components
-.............................................................................................................................
+.. rubric:: Description of the return values for connected components and strongly connected components
 
 Returns set of ``(seq, component, n_seq, node)``
 
@@ -469,8 +468,7 @@ Column         Type       Description
 
 .. return_componentsE_start
 
-Description of the return values for biconnected components, connected components (edge version) and strongly connected components
-.................................................................................................................................................
+.. rubric:: Description of the return values for biconnected components, connected components (edge version) and strongly connected components
 
 Returns set of ``(seq, component, n_seq, edge)``
 
@@ -503,8 +501,7 @@ Column         Type       Description
 
 .. return_bridges_start
 
-Description of the return values for bridges
-..............................................................
+.. rubric:: Description of the return values for bridges
 
 Returns set of ``(seq, node)``
 

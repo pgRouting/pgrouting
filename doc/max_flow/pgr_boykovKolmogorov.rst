@@ -10,12 +10,10 @@
 pgr_boykovKolmogorov
 ============================================
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
@@ -33,8 +31,10 @@ Synopsis
 
 * Running time: Polynomial
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -45,12 +45,11 @@ Signature Summary
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-
 .. index::
     single: boykovKolmogorov(One to One)
 
 One to One
-.....................................................................
+...............................................................................
 
 Calculates the flow on the graph edges that maximizes the flow from the `source` to the `target`.
 
@@ -66,12 +65,11 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. index::
     single: boykovKolmogorov(One to Many)
 
 One to Many
-.....................................................................
+...............................................................................
 
 Calculates the flow on the graph edges that maximizes the flow from the `source` to all of the `targets`.
 
@@ -87,12 +85,11 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
    :start-after: -- q2
    :end-before: -- q3
 
-
 .. index::
     single: boykovKolmogorov(Many to One)
 
 Many to One
-.....................................................................
+...............................................................................
 
 Calculates the flow on the graph edges that maximizes the flow from all of the `sources` to the `target`.
 
@@ -108,12 +105,11 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
    :start-after: -- q3
    :end-before: -- q4
 
-
 .. index::
     single: boykovKolmogorov(Many to Many)
 
 Many to Many
-.....................................................................
+...............................................................................
 
 Calculates the flow on the graph edges that maximizes the flow from all of the `sources` to all of the `targets`.
 
@@ -130,32 +126,31 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
    :end-before: -- q5
 
 Parameters
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. include::  ./pgr_maxFlow.rst
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
 Inner query
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 edges_sql
-...........................................................
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
 Result Columns
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: result_flow_start
     :end-before: result_flow_end
 
-
 See Also
---------
+-------------------------------------------------------------------------------
 
 * :doc:`flow-family`, :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`
 * http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html

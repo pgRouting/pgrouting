@@ -10,9 +10,6 @@
 pgr_bdDijkstraCostMatrix
 ===============================================================================
 
-Name
--------------------------------------------------------------------------------
-
 ``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_bdDijkstra`.
 
 
@@ -26,59 +23,47 @@ Name
 * Official on v3.0.0
 * Proposed on v2.5.0
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Using Dijkstra algorithm, calculate and return a cost matrix.
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
     pgr_bdDijkstraCostMatrix(edges_sql, start_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
-
-Signatures
--------------------------------------------------------------------------------
-
 .. index::
     single: bdDijkstraCostMatrix(Minimal Use)
 
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 The minimal signature:
-    - Is for a **directed** graph.
+
+- Is for a **directed** graph.
 
 .. code-block:: none
 
     pgr_bdDijkstraCostMatrix(edges_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
 :Example: Cost matrix for vertices 1, 2, 3, and 4.
-
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- bdDijkstra q1
    :end-before: -- bdDijkstra q2
 
-
-.. index::
-    single: bdDijkstraCostMatrix(Complete Signature)
-
-Complete Signature
-...............................................................................
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
     pgr_bdDijkstraCostMatrix(edges_sql, start_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
-
 
 :Example: Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.
 
@@ -88,18 +73,8 @@ This example returns a symmetric cost matrix.
    :start-after: -- bdDijkstra q2
    :end-before: -- bdDijkstra q3
 
-
-Description of the Signatures
+Parameters 
 -------------------------------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-
-
-Description of the parameters of the signatures
-...............................................................................
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -109,13 +84,21 @@ Parameter        Type                   Description
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 ================ ====================== =================================================
 
+Inner query
+-------------------------------------------------------------------------------
 
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: Use with tsp
@@ -123,7 +106,6 @@ Examples
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- bdDijkstra q3
    :end-before: -- bdDijkstra q4
-
 
 See Also
 -------------------------------------------------------------------------------
