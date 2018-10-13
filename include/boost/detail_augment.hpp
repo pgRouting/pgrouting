@@ -1,6 +1,6 @@
 //=======================================================================
 // Copyright 2013 University of Warsaw.
-// Authors: Piotr Wygocki 
+// Authors: Piotr Wygocki
 //
 // Distributed under the Boost Software License, Version 1.0. (See
 // accompanying file LICENSE_1_0.txt or copy at
@@ -25,10 +25,10 @@ residual_graph(const Graph& g, ResCapMap residual_capacity) {
 template <class Graph, class PredEdgeMap, class ResCapMap,
          class RevEdgeMap>
 inline void
-augment(const Graph& g, 
+augment(const Graph& g,
         typename graph_traits<Graph>::vertex_descriptor src,
         typename graph_traits<Graph>::vertex_descriptor sink,
-        PredEdgeMap p, 
+        PredEdgeMap p,
         ResCapMap residual_capacity,
         RevEdgeMap reverse_edge)
 {

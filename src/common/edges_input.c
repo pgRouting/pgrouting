@@ -24,6 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 
+#include <math.h>
+#include <float.h>
+#include <limits.h>
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
@@ -36,9 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
-#include <math.h>
-#include <float.h>
-#include <limits.h>
 
 static
 void fetch_basic_edge(

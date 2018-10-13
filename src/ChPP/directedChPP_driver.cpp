@@ -5,7 +5,7 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
@@ -69,9 +69,9 @@ do_pgr_directedChPP(
         std::vector<General_path_element_t> pathEdges;
         pathEdges = digraph.GetPathEdges();
 
-       
+
         size_t count = pathEdges.size();
-        
+
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;

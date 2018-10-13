@@ -401,7 +401,9 @@ class Pgr_base_graph {
          }
 
          template < typename T >
-         void insert_negative_edges(const std::vector<T> &edges, bool normal = true) {
+         void insert_negative_edges(
+                 const std::vector<T> &edges,
+                 bool normal = true) {
           for (const auto edge : edges) {
                  graph_add_neg_edge(edge, normal);
              }
@@ -420,7 +422,7 @@ class Pgr_base_graph {
       * for (vertex : vertices)
       *    precondition(!has_vertex(vertex.id));
       * ~~~~~
-      * 
+      *
       *
       * POSTCONDITIONS:
       * ~~~~~{.c}
@@ -687,7 +689,7 @@ class Pgr_base_graph {
              graph[e].cost = edge.cost;
              graph[e].id = edge.id;
          }
-         
+
 
          if (edge.reverse_cost >= 0 && (is_directed()
                      || (is_undirected() && edge.cost != edge.reverse_cost))) {
@@ -925,27 +927,30 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_neg_edge(const T &edge, bool normal) {
 
     pgassert(vertices_map.find(edge.source) != vertices_map.end());
     pgassert(vertices_map.find(edge.target) != vertices_map.end());
-    
+
     boost::tie(e, inserted) =
             boost::add_edge(vm_s, vm_t, graph);
-        if(edge.cost<0)
-          graph[e].cost = (-0.5)*edge.cost;  // reading negative edges as positive
-        else
-          graph[e].cost = edge.cost;
+        if (edge.cost < 0) {
+            // reading negative edges as positive
+            graph[e].cost = (-0.5)*edge.cost;
+        } else {
+            graph[e].cost = edge.cost;
+        }
         graph[e].id = edge.id;
 
-    if  (m_gType == DIRECTED
-              || (m_gType == UNDIRECTED && edge.cost > edge.reverse_cost)){
+    if (m_gType == DIRECTED
+              || (m_gType == UNDIRECTED && edge.cost > edge.reverse_cost)) {
         boost::tie(e, inserted) =
             boost::add_edge(vm_t, vm_s, graph);
-        if(edge.reverse_cost<0)
-          graph[e].cost = (-0.5)*edge.reverse_cost; // reading negative edges as positive
-        else
-          graph[e].cost = edge.reverse_cost;
-        
+        if (edge.reverse_cost < 0) {
+            // reading negative edges as positive
+            graph[e].cost = (-0.5)*edge.reverse_cost;
+        } else {
+            graph[e].cost = edge.reverse_cost;
+        }
+
         graph[e].id = normal? edge.id : -edge.id;
       }
-
 }
 
 /******************  PRIVATE *******************/

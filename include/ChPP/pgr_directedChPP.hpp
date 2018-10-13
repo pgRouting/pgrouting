@@ -3,7 +3,7 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2018 Maoguang Wang 
+Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
 ------
@@ -28,12 +28,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CHPP_PGR_DIRECTEDCHPP_HPP_
 #pragma once
 
+#include <map>
+#include <vector>
+#include <utility>
+#include <set>
+#include <limits>
+#include <stack>
+
 #include "costFlow/pgr_minCostMaxFlow.hpp"
 #include "c_types/general_path_element_t.h"
 #include "c_types/pgr_edge_t.h"
 #include "c_types/pgr_flow_t.h"
-
-#include <stack>
 
 namespace pgrouting {
 namespace graph {
@@ -66,8 +71,8 @@ class PgrDirectedChPPGraph {
      int64_t superSource, superTarget;
      int64_t startPoint;
 
-     std::map<std::pair<int64_t, int64_t>, // source, target
-              size_t> edgeToId; // index in resultEdges 
+     std::map<std::pair<int64_t, int64_t>,  // source, target
+              size_t> edgeToId;  // index in resultEdges
 
      graph::PgrCostFlowGraph flowGraph;
      std::vector<pgr_edge_t> resultEdges;
@@ -76,7 +81,7 @@ class PgrDirectedChPPGraph {
      std::map<int64_t, size_t> VToVecid;
      std::vector<bool> edgeVisited;
 
-     std::stack<int64_t> pathStack; // node stack
+     std::stack<int64_t> pathStack;  // node stack
      std::vector<General_path_element_t> resultPath;
 };
 
@@ -118,9 +123,11 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
                 edgeToId.end()) {
             edgeToId.insert(std::make_pair(std::make_pair(resultEdges[i].source, resultEdges[i].target), i));
         } else {
-            if (resultEdges[edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)]].cost >
-                    resultEdges[i].cost)
+            if (resultEdges[edgeToId[
+                    std::make_pair(resultEdges[i].source, resultEdges[i].target)]].cost >
+                    resultEdges[i].cost) {
                 edgeToId[std::make_pair(resultEdges[i].source, resultEdges[i].target)] = i;
+            }
         }
 
         pgr_costFlow_t edge;
@@ -174,7 +181,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
             edge.source = superSource, edge.target = p;
         edges.push_back(edge);
     }
-    
+
     PgrCostFlowGraph graph(edges, sources, targets);
     flowGraph = graph;
 }
@@ -192,17 +199,24 @@ PgrDirectedChPPGraph::GetPathEdges() {
     // catch new edges
     std::vector<pgr_flow_t> addedEdges = flowGraph.GetFlowEdges();
     for (auto &flow_t : addedEdges) {
-        if (flow_t.source != superSource && flow_t.source != superTarget)
+        if (flow_t.source != superSource && flow_t.source != superTarget) {
             if (flow_t.target != superSource && flow_t.target != superTarget) {
                 pgr_edge_t newEdge;
                 newEdge.source = flow_t.source;
                 newEdge.target = flow_t.target;
-                newEdge.id = resultEdges[edgeToId[std::make_pair(newEdge.source, newEdge.target)]].id;
-                newEdge.cost = resultEdges[edgeToId[std::make_pair(newEdge.source, newEdge.target)]].cost;
+                newEdge.id =
+                    resultEdges[edgeToId[std::make_pair(
+                            newEdge.source,
+                            newEdge.target)]].id;
+                newEdge.cost =
+                    resultEdges[edgeToId[std::make_pair(
+                            newEdge.source,
+                            newEdge.target)]].cost;
                 newEdge.reverse_cost = -1.0;
                 while (flow_t.flow--)
                     resultEdges.push_back(newEdge);
             }
+        }
     }
 
     BuildResultGraph();
@@ -227,39 +241,42 @@ PgrDirectedChPPGraph::BuildResultPath() {
     while (!pathStack.empty()) {
         int64_t nowNode = pathStack.top();
         pathStack.pop();
-        pgr_edge_t edge_t = resultEdges[edgeToId[std::make_pair(preNode, nowNode)]];
+        pgr_edge_t edge_t =
+            resultEdges[edgeToId[std::make_pair(preNode, nowNode)]];
         newElement.node = edge_t.source;
-    	newElement.edge = edge_t.id;
+        newElement.edge = edge_t.id;
         newElement.cost = edge_t.cost;
-    	if (resultPath.empty()) {
+        if (resultPath.empty()) {
             newElement.seq = 1;
             newElement.agg_cost = 0.0;
-    	} else {
+        } else {
             newElement.seq = resultPath.back().seq + 1;
-            newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
-    	}
-    	resultPath.push_back(newElement);
+            newElement.agg_cost =
+                resultPath.back().agg_cost + resultPath.back().cost;
+        }
+        resultPath.push_back(newElement);
         preNode = nowNode;
-	}
+    }
     newElement.node = preNode;
     newElement.edge = -1;
-    newElement.cost = 0; 
-	if (resultPath.empty()) {
-	    newElement.seq = 1;
-	    newElement.agg_cost = 0.0;	
-	} else {
+    newElement.cost = 0;
+    if (resultPath.empty()) {
+        newElement.seq = 1;
+        newElement.agg_cost = 0.0;
+    } else {
         newElement.seq = resultPath.back().seq + 1;
-        newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
-	}
+        newElement.agg_cost =
+            resultPath.back().agg_cost + resultPath.back().cost;
+    }
     resultPath.push_back(newElement);
 }
-    
+
 // perform DFS approach to generate Euler circuit
 // TODO(mg) find suitable API in BGL, maybe DfsVisitor will work.
 // Implement DFS without BGL for now
 bool
 PgrDirectedChPPGraph::EulerCircuitDFS(int64_t p) {
-    for (std::vector<size_t>::iterator iter = resultGraph[VToVecid[p]].second.begin();
+    for (auto iter = resultGraph[VToVecid[p]].second.begin();
          iter != resultGraph[VToVecid[p]].second.end();
          ++iter) {
         if (!edgeVisited[*iter]) {
@@ -280,7 +297,10 @@ PgrDirectedChPPGraph::BuildResultGraph() {
         pgr_edge_t edge_t = resultEdges[i];
         edgeVisited.push_back(false);
         if (VToVecid.find(edge_t.source) == VToVecid.end()) {
-            VToVecid.insert(std::pair<int64_t, size_t>(edge_t.source, resultGraph.size()));
+            VToVecid.insert(
+                    std::pair<int64_t, size_t>(
+                        edge_t.source,
+                        resultGraph.size()));
             resultGraph.resize(resultGraph.size() + 1);
         }
         size_t vid = VToVecid[edge_t.source];

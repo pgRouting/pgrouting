@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
+#include <string>
 
 #include "bellman_ford/pgr_bellman_ford.hpp"
 
@@ -66,7 +68,8 @@ pgr_bellman_ford(
             targets.end());
 
     Pgr_bellman_ford< G > fn_bellman_ford;
-    auto paths = fn_bellman_ford.bellman_ford(graph, sources, targets, only_cost);
+    auto paths = fn_bellman_ford.bellman_ford(
+            graph, sources, targets, only_cost);
     log += fn_bellman_ford.get_log();
     return paths;
 }
@@ -83,13 +86,12 @@ do_pgr_bellman_ford_neg(
                 size_t size_end_vidsArr,
                 bool directed,
                 bool only_cost,
-                
+
                 General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
                 char ** err_msg) {
-    
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -103,9 +105,9 @@ do_pgr_bellman_ford_neg(
         pgassert(total_edges != 0);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        
+
         log << "Inserting vertices into a c++ vector structure";
-        
+
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
@@ -120,7 +122,7 @@ do_pgr_bellman_ford_neg(
             digraph.insert_negative_edges(negative_edges, total_negative_edges);
             log << digraph;
             paths = pgr_bellman_ford(digraph,
-                    start_vertices, 
+                    start_vertices,
                     end_vertices,
                     logstr,
                     only_cost);
@@ -128,11 +130,13 @@ do_pgr_bellman_ford_neg(
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(positive_edges, total_positive_edges);
-            undigraph.insert_negative_edges(negative_edges, total_negative_edges);
+            undigraph.insert_negative_edges(
+                    negative_edges,
+                    total_negative_edges);
             log << undigraph;
             paths = pgr_bellman_ford(
                     undigraph,
-                    start_vertices, 
+                    start_vertices,
                     end_vertices,
                     logstr,
                     only_cost);

@@ -1,6 +1,6 @@
 //=======================================================================
 // Copyright 2013 University of Warsaw.
-// Authors: Piotr Wygocki 
+// Authors: Piotr Wygocki
 //
 // Distributed under the Boost Software License, Version 1.0. (See
 // accompanying file LICENSE_1_0.txt or copy at
@@ -22,18 +22,18 @@ find_flow_cost(const Graph & g, Capacity capacity, ResidualCapacity residual_cap
     BGL_FORALL_EDGES_T(e, g, Graph) {
         if(get(capacity, e) > Cost(0)) {
             cost +=  (get(capacity, e) - get(residual_capacity, e)) * get(weight, e);
-        } 
+        }
     }
     return cost;
 }
 
-template <class Graph, class P, class T, class R> 
+template <class Graph, class P, class T, class R>
 typename property_traits<typename property_map < Graph, edge_capacity_t >::type>::value_type
 find_flow_cost(const Graph & g,
                const bgl_named_params<P, T, R>& params) {
     return find_flow_cost(g,
            choose_const_pmap(get_param(params, edge_capacity), g, edge_capacity),
-           choose_const_pmap(get_param(params, edge_residual_capacity), 
+           choose_const_pmap(get_param(params, edge_residual_capacity),
                        g, edge_residual_capacity),
            choose_const_pmap(get_param(params, edge_weight), g, edge_weight));
 }

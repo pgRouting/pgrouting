@@ -6,7 +6,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2018 Sourabh Garg 
+Copyright (c) 2018 Sourabh Garg
 Mail: sourabh.garg.mat@gmail.com
 
 ------

@@ -49,7 +49,7 @@ namespace pgrouting {
  *      pgrouting::Line_vertex,
  *      pgrouting::Basic_edge > line(graphType::DIRECTED);
  * ~~~~
- */    
+ */
 typedef boost::adjacency_list < boost::vecS, boost::vecS,
     boost::bidirectionalS,
     Line_vertex, Basic_edge > LinearDirectedGraph;

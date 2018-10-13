@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-File: pgr_bdDijkstra.hpp 
+File: pgr_bdDijkstra.hpp
 
 Copyright (c) 2016 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com

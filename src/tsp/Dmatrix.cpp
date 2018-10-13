@@ -134,7 +134,7 @@ Dmatrix::has_no_infinity() const {
  *  The sum of the lengths of any two sides of a triangle is greater than the length of the third side.
  *  NOTE: can also be equal for streets
  * costs[i][k] != inf
- * costs[i][k] <= costs[i][j] + costs[j][k] 
+ * costs[i][k] <= costs[i][j] + costs[j][k]
  */
 bool
 Dmatrix::obeys_triangle_inequality() const {
@@ -170,7 +170,7 @@ Dmatrix::is_symmetric() const {
 
 
 /**
- * 
+ *
  */
 std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
     for (const auto id : matrix.ids) {

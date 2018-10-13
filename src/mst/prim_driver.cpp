@@ -75,11 +75,11 @@ do_pgr_prim(
 
         log << "Working with Undirected Graph\n";
 
-	    pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_prim(
                     undigraph,
-                    root_vertex, 
+                    root_vertex,
                     use_root);
 
         auto count = results.size();

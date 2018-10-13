@@ -4,7 +4,7 @@ File: dijkstraViaVertex_driver.cpp
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 
 ------

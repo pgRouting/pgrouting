@@ -3,7 +3,7 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2018 Maoguang Wang 
+Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
 ------
@@ -35,9 +35,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "pgr_costFlowGraph.hpp"
-#include "successive_shortest_path_nonnegative_weights.hpp"
-#include "find_flow_cost.hpp"
+#include "costFlow/pgr_costFlowGraph.hpp"
+#ifdef BOOST_VERSION_OK
+#include <boost/graph/successive_shortest_path_nonnegative_weights.hpp>
+#include <boost/graph/find_flow_cost.hpp>
+#else
+#include "boost/successive_shortest_path_nonnegative_weights.hpp"
+#include "boost/find_flow_cost.hpp"
+#endif
+
 
 #include "c_types/pgr_flow_t.h"
 #include "c_types/pgr_costFlow_t.h"
@@ -65,7 +71,7 @@ class PgrCostFlowGraph {
          return boost::find_flow_cost(graph);
      }
 
-     PgrCostFlowGraph(){};
+     PgrCostFlowGraph() = default;
 
      PgrCostFlowGraph(
              const std::vector<pgr_costFlow_t> &edges,

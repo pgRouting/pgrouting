@@ -48,7 +48,7 @@ void
 do_pgr_kruskal(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        pgr_kruskal_t **return_tuples, 
+        pgr_kruskal_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -90,7 +90,7 @@ do_pgr_kruskal(
             *((*return_tuples) + i) = results[i];
         }
         (*return_count) = count;
-   
+
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :

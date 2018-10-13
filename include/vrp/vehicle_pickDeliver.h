@@ -156,7 +156,7 @@ class Vehicle_pickDeliver : public Vehicle {
       */
      void erase(const Order &order);
 
-     /* @brief 
+     /* @brief
       */
      Order get_first_order() const;
      Order get_worse_order(Identifiers<size_t> of_this_subset) const;

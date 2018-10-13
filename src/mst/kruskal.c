@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 
 
-#include "drivers/mst/kruskal_driver.h"  
+#include "drivers/mst/kruskal_driver.h"
 
 PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(kruskal);
@@ -40,7 +40,7 @@ PG_FUNCTION_INFO_V1(kruskal);
 static
 void
 process(
-        char* edges_sql, 
+        char* edges_sql,
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
     /*
@@ -67,7 +67,7 @@ process(
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
-    char *notice_msg = NULL;	
+    char *notice_msg = NULL;
     char *err_msg = NULL;
     do_pgr_kruskal(
             edges,
@@ -151,7 +151,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1); 
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
@@ -162,7 +162,6 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-
         PGR_DBG("Clean up code");
 
         SRF_RETURN_DONE(funcctx);

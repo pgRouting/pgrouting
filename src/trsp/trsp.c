@@ -185,7 +185,6 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
         elog(ERROR, "reverse_cost contains a null value");
       target_edge->reverse_cost =  DatumGetFloat8(binval);
     }
-
 }
 
 
@@ -362,7 +361,6 @@ static int compute_trsp(
 
     if (edges[z].target > v_max_id)
       v_max_id = edges[z].target;
-
   }
 
   // ::::::::::::::::::::::::::::::::::::
