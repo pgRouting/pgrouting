@@ -209,6 +209,9 @@ Description of the edges_sql query for dijkstra like functions
 
 .. basic_edges_sql_start
 
+Inner query
+-------------------------------------------------------------------------------
+
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
 ================= =================== ======== =================================================
@@ -469,6 +472,9 @@ Return values for multiple paths from the same source and destination
 ...............................................................................
 
 .. return_path_start
+
+Result Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
 
