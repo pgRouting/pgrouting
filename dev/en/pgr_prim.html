@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_prim &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>pgr_prim - Experimental &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_stoerWagner" href="pgr_stoerWagner.html" />
-    <link rel="prev" title="pgr_kruskal" href="pgr_kruskal.html" />
+    <link rel="next" title="Transformation - Family of functions (Experimental)" href="transformation-family.html" />
+    <link rel="prev" title="pgr_kruskal - Experimental" href="pgr_kruskal.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -103,7 +103,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_prim</a><ul>
+<li><a class="reference internal" href="#">pgr_prim - Experimental</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
@@ -126,11 +126,11 @@
               
                 
   <li>
-    <a href="pgr_kruskal.html" title="Previous Chapter: pgr_kruskal"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_kruskal</span>
+    <a href="pgr_kruskal.html" title="Previous Chapter: pgr_kruskal - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_kruskal -...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_stoerWagner.html" title="Next Chapter: pgr_stoerWagner"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_stoerWagner &raquo;</span>
+    <a href="transformation-family.html" title="Next Chapter: Transformation - Family of functions (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Transformatio... &raquo;</span>
     </a>
   </li>
               
@@ -158,13 +158,35 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-prim">
-<h1>pgr_prim<a class="headerlink" href="#pgr-prim" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-prim-experimental">
+<h1>pgr_prim - Experimental<a class="headerlink" href="#pgr-prim-experimental" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_prim</span></code> — Returns the minimum spanning tree of graph using Prim algorithm.
 In particular, the Prim algorithm implemented by Boost.Graph.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/prim_minimum_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Experimental functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -186,8 +208,8 @@ forest.</p>
 <p>The main Characteristics are:</p>
 <blockquote>
 <div><ul class="simple">
+<li>It’s implementation is only on <strong>undirected graph</strong>.</li>
 <li>Process is done only on edges with positive costs.</li>
-<li>It’s implementation is only on undirected graph.</li>
 <li>Span start from chosen root_vertex resulting subgraph.<ul>
 <li>When root vertex is not given then result is minimun spanning tree of disconnected graph.</li>
 </ul>
@@ -197,7 +219,6 @@ forest.</p>
 </ul>
 </li>
 <li>The minimum spanning tree is same for any root vertex.</li>
-<li>It does not produce correct results on graphs with parallel edges.</li>
 <li>Running time: <span class="math">\(O(E*log V)\)</span></li>
 </ul>
 </div></blockquote>
@@ -230,7 +251,7 @@ RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPT
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_prim</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span>
 <span class="o">-----+-------------+------+------+------+----------+-----------</span>
    <span class="mi">1</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span>
    <span class="mi">2</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
@@ -272,7 +293,7 @@ RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPT
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_prim</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span> <span class="mi">4</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span>
 <span class="o">-----+-------------+------+------+------+----------+-----------</span>
    <span class="mi">1</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span>
    <span class="mi">2</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
@@ -292,9 +313,9 @@ RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPT
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_prim</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table where id &gt; 10&#39;</span><span class="p">,</span> <span class="mi">9</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id &gt; 10&#39;</span><span class="p">,</span> <span class="mi">9</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span>
 <span class="o">-----+-------------+------+------+------+----------+-----------</span>
    <span class="mi">1</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span>
    <span class="mi">2</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>

@@ -104,12 +104,14 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_createVerticesTable</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-match-the-default-values">Usage when the edge table’s columns MATCH the default values:</a></li>
 <li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Usage when the edge table’s columns DO NOT MATCH the default values:</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -156,25 +158,24 @@
       
   <div class="section" id="pgr-createverticestable">
 <h1>pgr_createVerticesTable<a class="headerlink" href="#pgr-createverticestable" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_createVerticesTable</span></code> — Reconstructs the vertices table based on the source and target information.</p>
-</div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The function returns:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">OK</span></code> after the vertices table has been reconstructed.</li>
 <li><code class="docutils literal"><span class="pre">FAIL</span></code> when the vertices table was not reconstructed due to an error.</li>
 </ul>
-<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span></span>    <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">)</span>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span></span>    <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="nb">VARCHAR</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Parameters</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>The reconstruction of the vertices table  function accepts the following parameters:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -244,9 +245,8 @@
 <ul class="simple">
 <li>Renamed in version 2.0.0</li>
 </ul>
-</div>
 <div class="section" id="usage-when-the-edge-table-s-columns-match-the-default-values">
-<h2>Usage when the edge table’s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h2>
+<h3>Usage when the edge table’s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">The simplest way to use pgr_createVerticesTable is:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
 </pre></div>
@@ -301,7 +301,7 @@
 </div>
 </div>
 <div class="section" id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
-<h2>Usage when the edge table’s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h2>
+<h3>Usage when the edge table’s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h3>
 <p>For the following table</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">mytable</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">mytable</span> <span class="k">AS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">the_geom</span> <span class="k">AS</span> <span class="n">mygeom</span><span class="p">,</span><span class="k">source</span> <span class="k">AS</span> <span class="n">src</span> <span class="p">,</span><span class="n">target</span> <span class="k">AS</span> <span class="n">tgt</span> <span class="k">FROM</span> <span class="n">edge_table</span><span class="p">)</span> <span class="p">;</span>
@@ -369,8 +369,9 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sql"><div class="highlight"><pre><span></span>    <span class="k">SELECT</span> <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
     <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>

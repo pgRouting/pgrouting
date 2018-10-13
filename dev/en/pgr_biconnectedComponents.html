@@ -104,18 +104,14 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_biconnectedComponents - Experimental</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
 <li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#description-of-the-return-values-for-biconnected-components-connected-components-edge-version-and-strongly-connected-components">Description of the return values for biconnected components, connected components (edge version) and strongly connected components</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -190,19 +186,15 @@ In particular, the algorithm implemented by Boost.Graph.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The biconnected components of an undirected graph are the maximal subsets of vertices such that the removal of a vertex from
 particular component will not disconnect the component. Unlike connected components, vertices may belong to multiple biconnected
 components. Vertices can be present in multiple biconnected components, but each edge can only be contained in a single biconnected
 component. So, the output only has edge version.</p>
 <p>This implementation can only be used with an undirected graph.</p>
-</div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <p>The main Characteristics are:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Components are described by edges</li>
 <li>The returned values are ordered:<ul>
 <li><cite>component</cite> ascending</li>
@@ -211,7 +203,6 @@ component. So, the output only has edge version.</p>
 </li>
 <li>Running time: <span class="math">\(O(V + E)\)</span></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
@@ -259,8 +250,30 @@ RETURNS SET OF (seq, component, n_seq, edge)
 </div>
 <a class="reference internal image-reference" href="_images/bcc_sampledata.png"><img alt="_images/bcc_sampledata.png" src="_images/bcc_sampledata.png" style="width: 705px; height: 373px;" /></a>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="24%" />
+<col width="10%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>SQL query as described above.</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
@@ -337,32 +350,9 @@ RETURNS SET OF (seq, component, n_seq, edge)
 </table>
 </div>
 </div>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="21%" />
-<col width="24%" />
-<col width="10%" />
-<col width="45%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>SQL query as described above.</td>
-</tr>
-</tbody>
-</table>
-<div class="section" id="description-of-the-return-values-for-biconnected-components-connected-components-edge-version-and-strongly-connected-components">
-<h3>Description of the return values for biconnected components, connected components (edge version) and strongly connected components<a class="headerlink" href="#description-of-the-return-values-for-biconnected-components-connected-components-edge-version-and-strongly-connected-components" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Description of the return values for biconnected components, connected components (edge version) and strongly connected components</p>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">n_seq,</span> <span class="pre">edge)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -395,7 +385,6 @@ RETURNS SET OF (seq, component, n_seq, edge)
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>

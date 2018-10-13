@@ -167,12 +167,12 @@
 </li>
 </ul>
 </div>
-<p>As part of the <a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Family of functions</span></a></p>
-<ul class="simple">
-<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix - proposed</span></a> Use pgr_dijkstra to calculate a cost matrix.</li>
-<li><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Use pgr_dijkstra to make a route via vertices.</li>
-</ul>
 <p class="rubric">Families</p>
+<p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Family of functions</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix - proposed</span></a> - Use pgr_dijkstra to create a costs matrix.</li>
+<li><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Get a route of a seuence of vertices.</li>
+</ul>
 <p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a></p>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> - Route from/to points anywhere on the graph.</li>
@@ -184,19 +184,18 @@
 <p class="rubric">categories</p>
 <p><a class="reference internal" href="cost-category.html"><span class="doc">Cost - Category</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a></li>
-<li><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></li>
 <li><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Proposed</span></a></li>
 </ul>
 <p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></li>
-<li><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></li>
 <li><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - proposed</span></a></li>
+</ul>
+<p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Driving Distance - Category</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> - Driving Distance based on pgr_withPoints</li>
 </ul>
 <p><a class="reference internal" href="KSP-category.html"><span class="doc">KSP Category</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Driving Distance based on pgr_dijkstra</li>
 <li><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Proposed</span></a> - Driving Distance based on pgr_dijkstra</li>
 </ul>
 <div class="toctree-wrapper compound">
@@ -226,48 +225,58 @@
 </li>
 </ul>
 </div>
-<p><a class="reference internal" href="costFlow-family.html"><span class="doc">Minimum Cost Maximum FLow - Family of functions</span></a></p>
+<p class="rubric">Families</p>
+<p><a class="reference internal" href="costFlow-family.html"><span class="doc">Minimum Cost Maximum FLow - Family of functions (Experimental)</span></a></p>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_minCostMaxFlow_Cost.html"><span class="doc">pgr_minCostMaxFlow_Cost - Experimental</span></a> - Only the Min Cost calculation.</li>
 <li><a class="reference internal" href="pgr_minCostMaxFlow.html"><span class="doc">pgr_minCostMaxFlow - Experimental</span></a> - Details of flow and cost on edges.</li>
 </ul>
-<p><a class="reference internal" href="ChPP-family.html"><span class="doc">Chinese Postman Problem - Family of functions</span></a></p>
-<p>pgr_directedChPP_Cost.rst  pgr_directedChPP.rst
-* <a class="reference internal" href="pgr_directedChPP.html"><span class="doc">pgr_directedChPP - Experimental</span></a> - Get the aggregate cost of the shortest paths.
-* <a class="reference internal" href="pgr_directedChPP_Cost.html"><span class="doc">pgr_directedChPP_Cost - Experimental</span></a> - Dijkstra’s algorithm for the shortest paths.</p>
-<p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Family of functions</span></a> - Reduce network size using contraction techniques</p>
+<p><a class="reference internal" href="chinesePostmanProblem-family.html"><span class="doc">Chinese Postman Problem - Family of functions (Experimental)</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_contractGraph.html"><span class="doc">pgr_contractGraph - Experimental</span></a> - Reduce network size using contraction techniques</li>
+<li><a class="reference internal" href="pgr_directedChPP.html"><span class="doc">pgr_directedChPP - Experimental</span></a></li>
+<li><a class="reference internal" href="pgr_directedChPP_Cost.html"><span class="doc">pgr_directedChPP_Cost - Experimental</span></a></li>
 </ul>
-<p class="rubric">Graph Analysis</p>
-<p><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions</span></a> - Analyze components within a graph</p>
+<p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Family of functions (Experimental)</span></a> - Reduce network size using contraction techniques</p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents - Experimental</span></a> - Return the connected components of an undirected graph</li>
-<li><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents - Experimental</span></a> - Return the strongly connected components of a directed graph</li>
-<li><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents - Experimental</span></a> - Return the biconnected components of an undirected graph</li>
-<li><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints - Experimental</span></a> - Return the articulation points of an undirected graph</li>
-<li><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges - Experimental</span></a> - Return the bridges of an undirected graph</li>
+<li><a class="reference internal" href="pgr_contractGraph.html"><span class="doc">pgr_contractGraph - Experimental</span></a></li>
 </ul>
+<p><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions (Experimental)</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents - Experimental</span></a> - Return the connected components of an undirected graph.</li>
+<li><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents - Experimental</span></a> - Return the strongly connected components of a directed graph.</li>
+<li><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents - Experimental</span></a> - Return the biconnected components of an undirected graph.</li>
+<li><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints - Experimental</span></a> - Return the articulation points of an undirected graph.</li>
+<li><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges - Experimental</span></a> - Return the bridges of an undirected graph.</li>
+</ul>
+<p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Spanning Tree - Family of functions (Experimental)</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_randomSpanTree.html"><span class="doc">pgr_randomSpanTree - Experimental</span></a></li>
+<li>For <strong>Undirected</strong> Graphs only:<ul>
+<li><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal - Experimental</span></a></li>
+<li><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim - Experimental</span></a></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="transformation-family.html"><span class="doc">Transformation - Family of functions (Experimental)</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_lineGraph.html"><span class="doc">pgr_lineGraph - Experimental</span></a> - Transformation algorithm for generating a Line Graph.</li>
+<li><a class="reference internal" href="pgr_lineGraphFull.html"><span class="doc">pgr_lineGraphFull - Experimental</span></a> - Transformation algorithm for generating a Line Graph out of each vertex in the input graph.</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">Others</p>
 <p class="rubric">VRP</p>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_gsoc_vrppdtw.html"><span class="doc">pgr_gsoc_vrppdtw - Experimental</span></a></li>
 <li><a class="reference internal" href="pgr_vrpOneDepot.html"><span class="doc">pgr_vrpOneDepot - Experimental</span></a></li>
 </ul>
-<p class="rubric">Shortest Path Algorithms</p>
-<ul class="simple">
-<li><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimental</span></a> - Return shortest path for a undirected or directed  negative weighted graph.</li>
-<li><a class="reference internal" href="pgr_dagShortestPath.html"><span class="doc">pgr_dagShortestPath - Experimental</span></a> - Return shortest path for directed acyclic graph</li>
-<li><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal</span></a> - TBD</li>
-<li><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a> - TBD</li>
-<li><a class="reference internal" href="pgr_stoerWagner.html"><span class="doc">pgr_stoerWagner</span></a> - TBD</li>
-</ul>
 <div class="toctree-wrapper compound">
 </div>
-<p class="rubric">Graph Operations</p>
-<p><a class="reference internal" href="transformation-family.html"><span class="doc">Transformation - Family of functions</span></a> - Maps a given graph to a new form</p>
+<p class="rubric">Shortest Path Algorithms</p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_lineGraph.html"><span class="doc">pgr_lineGraph - Experimental</span></a> - Transformation algorithm for generating a Line Graph.</li>
-<li><a class="reference internal" href="pgr_lineGraphFull.html"><span class="doc">pgr_lineGraphFull - Experimental</span></a> - Transformation algorithm for generating a Line Graph out of each vertex in the input graph.</li>
+<li><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimental</span></a></li>
+<li><a class="reference internal" href="pgr_dagShortestPath.html"><span class="doc">pgr_dagShortestPath - Experimental</span></a></li>
+<li><a class="reference internal" href="pgr_stoerWagner.html"><span class="doc">pgr_stoerWagner - Experimental</span></a></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>

@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Components - Family of functions" href="components-family.html" />
-    <link rel="prev" title="Contraction - Family of functions" href="contraction-family.html" />
+    <link rel="next" title="Components - Family of functions (Experimental)" href="components-family.html" />
+    <link rel="prev" title="Contraction - Family of functions (Experimental)" href="contraction-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -104,19 +104,15 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_contractGraph - Experimental</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary:</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#minimal-signature">Minimal signature</a></li>
-<li><a class="reference internal" href="#complete-signature">Complete signature</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values">Description of the return values</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </ul>
 </li>
@@ -126,11 +122,11 @@
               
                 
   <li>
-    <a href="contraction-family.html" title="Previous Chapter: Contraction - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Contraction -...</span>
+    <a href="contraction-family.html" title="Previous Chapter: Contraction - Family of functions (Experimental)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Contraction -...</span>
     </a>
   </li>
   <li>
-    <a href="components-family.html" title="Next Chapter: Components - Family of functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Components - ... &raquo;</span>
+    <a href="components-family.html" title="Next Chapter: Components - Family of functions (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Components - ... &raquo;</span>
     </a>
   </li>
               
@@ -188,12 +184,9 @@
 </li>
 </ul>
 </div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms.</p>
-</div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
@@ -213,8 +206,9 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary:<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <p>The pgr_contractGraph function has the following signatures:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_contractGraph(edges_sql, contraction_order)
 pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
@@ -222,11 +216,7 @@ pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, 
 RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="minimal-signature">
-<span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Minimal signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_contractGraph(edges_sql, contraction_order)
 </pre></div>
 </div>
@@ -254,9 +244,7 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="complete-signature">
-<h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Complete signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
 </pre></div>
 </div>
@@ -284,6 +272,59 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 
 </pre></div>
 </div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="14%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>contraction_order</strong></td>
+<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
+<td><dl class="first last docutils">
+<dt>Ordered contraction operations.</dt>
+<dd><ul class="first last simple">
+<li>1 = Dead end contraction</li>
+<li>2 = Linear contraction</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>forbidden_vertices</strong></td>
+<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
+<td>(optional). Identifiers of vertices forbidden from contraction. Default is an empty array.</td>
+</tr>
+<tr class="row-odd"><td><strong>max_cycles</strong></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td>(optional). Number of times the contraction operations on <cite>contraction_order</cite> will be performed. Default is 1.</td>
+</tr>
+<tr class="row-even"><td><strong>directed</strong></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><ul class="first last simple">
+<li>When <code class="docutils literal"><span class="pre">true</span></code> the graph is considered as <cite>Directed</cite>.</li>
+<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -354,59 +395,8 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="15%" />
-<col width="14%" />
-<col width="71%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>contraction_order</strong></td>
-<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td><dl class="first last docutils">
-<dt>Ordered contraction operations.</dt>
-<dd><ul class="first last simple">
-<li>1 = Dead end contraction</li>
-<li>2 = Linear contraction</li>
-</ul>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="row-even"><td><strong>forbidden_vertices</strong></td>
-<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td>(optional). Identifiers of vertices forbidden from contraction. Default is an empty array.</td>
-</tr>
-<tr class="row-odd"><td><strong>max_cycles</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td>(optional). Number of times the contraction operations on <cite>contraction_order</cite> will be performed. Default is 1.</td>
-</tr>
-<tr class="row-even"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td><ul class="first last simple">
-<li>When <code class="docutils literal"><span class="pre">true</span></code> the graph is considered as <cite>Directed</cite>.</li>
-<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)</p>
 <p>The function returns a single row. The columns of the row are:</p>
 <table border="1" class="docutils">
@@ -476,9 +466,8 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -522,11 +511,15 @@ RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 
 </pre></div>
 </div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
+</div>
 </div>
 
 

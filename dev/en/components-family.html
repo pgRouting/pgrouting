@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Components - Family of functions &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>Components - Family of functions (Experimental) &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -103,21 +103,14 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Components - Family of functions</a><ul>
+<li><a class="reference internal" href="#">Components - Family of functions (Experimental)</a><ul>
 <li><a class="reference internal" href="#the-problem-definition">The problem definition</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
 <li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#description-of-the-return-values-for-connected-components-and-strongly-connected-components">Description of the return values for connected components and strongly connected components</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values-for-biconnected-components-connected-components-edge-version-and-strongly-connected-components">Description of the return values for biconnected components, connected components (edge version) and strongly connected components</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns-pgr-articulationpoints">Result Columns (pgr_articulationPoints)</a><ul>
-<li><a class="reference internal" href="#description-of-the-return-values-for-bridges">Description of the return values for bridges</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#result-columns-pgr-articulationpoints">Result Columns (pgr_articulationPoints)</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -162,8 +155,8 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="components-family-of-functions">
-<h1>Components - Family of functions<a class="headerlink" href="#components-family-of-functions" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="components-family-of-functions-experimental">
+<h1>Components - Family of functions (Experimental)<a class="headerlink" href="#components-family-of-functions-experimental" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Experimental functions</p>
@@ -592,8 +585,7 @@ of connected components.</p>
 </tr>
 </tbody>
 </table>
-<div class="section" id="description-of-the-return-values-for-connected-components-and-strongly-connected-components">
-<h3>Description of the return values for connected components and strongly connected components<a class="headerlink" href="#description-of-the-return-values-for-connected-components-and-strongly-connected-components" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Description of the return values for connected components and strongly connected components</p>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">n_seq,</span> <span class="pre">node)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -626,9 +618,7 @@ of connected components.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="description-of-the-return-values-for-biconnected-components-connected-components-edge-version-and-strongly-connected-components">
-<h3>Description of the return values for biconnected components, connected components (edge version) and strongly connected components<a class="headerlink" href="#description-of-the-return-values-for-biconnected-components-connected-components-edge-version-and-strongly-connected-components" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Description of the return values for biconnected components, connected components (edge version) and strongly connected components</p>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">n_seq,</span> <span class="pre">edge)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -662,7 +652,6 @@ of connected components.</p>
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="result-columns-pgr-articulationpoints">
 <h2>Result Columns (pgr_articulationPoints)<a class="headerlink" href="#result-columns-pgr-articulationpoints" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
@@ -689,8 +678,7 @@ of connected components.</p>
 </tr>
 </tbody>
 </table>
-<div class="section" id="description-of-the-return-values-for-bridges">
-<h3>Description of the return values for bridges<a class="headerlink" href="#description-of-the-return-values-for-bridges" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Description of the return values for bridges</p>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -715,7 +703,6 @@ of connected components.</p>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>

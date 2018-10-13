@@ -28,7 +28,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_kruskal" href="pgr_kruskal.html" />
+    <link rel="next" title="pgr_stoerWagner - Experimental" href="pgr_stoerWagner.html" />
     <link rel="prev" title="pgr_bellmanFord - Experimental" href="pgr_bellmanFord.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -104,9 +104,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_dagShortestPath - Experimental</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">One to Many</a></li>
@@ -136,7 +134,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_kruskal.html" title="Next Chapter: pgr_kruskal"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_kruskal &raquo;</span>
+    <a href="pgr_stoerWagner.html" title="Next Chapter: pgr_stoerWagner - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_stoerWagn... &raquo;</span>
     </a>
   </li>
               
@@ -194,15 +192,13 @@ In particular, the DAG shortest paths algorithm implemented by Boost.Graph.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for
 weighted directed acyclic graph, producing a shortest path from
-a starting vertex (<code class="docutils literal"><span class="pre">start_vid</span></code>) to an ending vertex (<code class="docutils literal"><span class="pre">end_vid</span></code>).
-This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph. The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG’s than either the Dijkstra or Bellman-Ford algorithm.</p>
-</div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+a starting vertex (<code class="docutils literal"><span class="pre">start_vid</span></code>) to an ending vertex (<code class="docutils literal"><span class="pre">end_vid</span></code>).</p>
+<p>This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph.</p>
+<p>The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG’s than either the Dijkstra or Bellman-Ford algorithm.</p>
 <dl class="docutils">
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
@@ -229,8 +225,9 @@ This implementation can only be used with a directed graph with no cycles i.e. d
 </dd>
 </dl>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dagShortestPath(edges_sql, start_vid,  end_vid)
 pgr_dagShortestPath(edges_sql, start_vids,  end_vid)
 pgr_dagShortestPath(edges_sql, start_vid,  end_vids)
@@ -240,9 +237,6 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dagShortestPath(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid);
