@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_kruskal(
-    edges_sql TEXT,             -- Edge sql
+    TEXT,             -- Edge sql
 
     OUT seq INTEGER,            -- Seq
     OUT component BIGINT,       -- the lowest number of the node in the component
@@ -36,5 +36,10 @@ CREATE OR REPLACE FUNCTION pgr_kruskal(
     OUT cost FLOAT,             -- Cost of edge
     OUT tree_cost FLOAT)        -- Spanning tree cost
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'kruskal'
-LANGUAGE c VOLATILE STRICT;
+$BODY$
+    SELECT *
+    FROM _pgr_kruskal(_pgr_get_statement($1));
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+COMMENT ON FUNCTION pgr_kruskal(TEXT) IS 'pgr_kruskal(edge_sql): Experimental, Undirected Graph';

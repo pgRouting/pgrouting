@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: randomSpanningTree.sql
+File: kruskal.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,34 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_randomSpanningTree(
-    edges_sql TEXT,             -- Edge sql
-    root BIGINT,
-    directed BOOLEAN,
+CREATE OR REPLACE FUNCTION _pgr_kruskal(
+    TEXT,             -- Edge sql
 
     OUT seq INTEGER,            -- Seq
-    OUT root_vertex BIGINT,
+    OUT component BIGINT,       -- the lowest number of the node in the component
     OUT edge BIGINT,	     	-- Edge linked to that node
     OUT cost FLOAT,             -- Cost of edge
-    OUT tree_cost FLOAT)        -- Spanning tree cost 
+    OUT tree_cost FLOAT)        -- Spanning tree cost
 RETURNS SETOF RECORD AS
-$BODY$
-DECLARE
-    connectedComponent BIGINT;
-BEGIN
-     SELECT COUNT(DISTINCT component) INTO connectedComponent 
-                         FROM pgr_connectedComponents(
-                                      'SELECT id, source, target, cost, reverse_cost 
-                              FROM edge_table'
-                         );
-
-    IF (connectedComponent == 1)THEN
-       SELECT *
-       FROM _pgr_randomSpanningTreee(_pgr_get_statement($1), $2, $3, TRUE);
-    ELSE 
-       SELECT *
-       FROM _pgr_randomSpanningTreee(_pgr_get_statement($1), $2, $3, FALSE);
-    END IF;
-END;
-$BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+'MODULE_PATHNAME', 'kruskal'
+LANGUAGE C VOLATILE STRICT;

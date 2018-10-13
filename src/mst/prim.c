@@ -41,13 +41,11 @@ void
 process(
         char* edges_sql,
         int64_t root_vertex,
-        bool use_root,
         pgr_prim_t **result_tuples,
         size_t *result_count) {
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
     pgr_SPI_connect();
+
+    bool use_root = (root_vertex != 0);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -116,7 +114,6 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
-                PG_GETARG_BOOL(2),
                 &result_tuples,
                 &result_count);
 
