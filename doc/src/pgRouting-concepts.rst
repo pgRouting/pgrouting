@@ -237,8 +237,7 @@ Where:
 
 .. no_id_edges_sql_start
 
-Description of the edges_sql query (id is not necessary)
-...............................................................................
+.. rubric:: Description of the edges_sql query (id is not necessary)
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 

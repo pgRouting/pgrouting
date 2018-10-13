@@ -51,7 +51,7 @@ Signatures
     single: maxFlow(One to One)
 
 One to One
-.....................................................................
+...............................................................................
 
 Calculates the maximum flow from the `source` to the `target`.
 
@@ -70,7 +70,7 @@ Calculates the maximum flow from the `source` to the `target`.
     single: maxFlow(One to Many)
 
 One to Many
-.....................................................................
+...............................................................................
 
 Calculates the maximum flow from the `source` to all of the `targets`.
 
@@ -89,7 +89,7 @@ Calculates the maximum flow from the `source` to all of the `targets`.
     single: maxFlow(Many to One)
 
 Many to One
-.....................................................................
+...............................................................................
 
 Calculates the maximum flow from all the `sources` to the `target`.
 
@@ -108,7 +108,7 @@ Calculates the maximum flow from all the `sources` to the `target`.
     single: maxFlow(Many to Many)
 
 Many to Many
-.....................................................................
+...............................................................................
 
 Calculates the maximum flow from all of the `sources` to all of the `targets`.
 
