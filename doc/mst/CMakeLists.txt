@@ -1,8 +1,7 @@
 
 SET(LOCAL_FILES
-    doc-pgr_kruskal.queries
-    pgr_kruskal.rst 
-    doc-pgr_prim.queries
+    spanningTree-family.rst
+    pgr_kruskal.rst
     pgr_prim.rst
     )
 

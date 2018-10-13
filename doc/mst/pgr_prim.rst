@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_prim
+pgr_prim - Proposed
 ===============================================================================
 
 ``pgr_prim`` — Returns the minimum spanning tree of graph using Prim algorithm.
@@ -18,22 +18,26 @@ In particular, the Prim algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 
 Synopsis
 -------------------------------------------------------------------------------
 
 The prim algorithm was developed in 1930 by Czech mathematician Vojtěch Jarník.
-It is a greedy algorithm that finds a minimum spanning tree for a weighted 
-undirected graph. This means it finds a subset of the edges that forms a tree 
-that includes every vertex, where the total weight of all the edges in the tree 
-is minimized. The algorithm operates by building this tree one vertex at a time, 
-from an arbitrary starting vertex, at each step adding the cheapest possible 
+It is a greedy algorithm that finds a minimum spanning tree for a weighted
+undirected graph. This means it finds a subset of the edges that forms a tree
+that includes every vertex, where the total weight of all the edges in the tree
+is minimized. The algorithm operates by building this tree one vertex at a time,
+from an arbitrary starting vertex, at each step adding the cheapest possible
 connection from the tree to another vertex.
 
-This algorithms find the minimum spanning forest in a possibly disconnected 
-graph; in contrast, the most basic form of Prim's algorithm only finds minimum 
-spanning trees in connected graphs. However, running Prim's algorithm separately 
-for each connected component of the graph, then it is called minimum spanning 
+This algorithms find the minimum spanning forest in a possibly disconnected
+graph; in contrast, the most basic form of Prim's algorithm only finds minimum
+spanning trees in connected graphs. However, running Prim's algorithm separately
+for each connected component of the graph, then it is called minimum spanning
 forest.
 
 Characteristics
@@ -41,23 +45,26 @@ Characteristics
 
 The main Characteristics are:
 
+  - It's implementation is only on **undirected graph**.
+
   - Process is done only on edges with positive costs.
- 
-  - It's implementation is only on undirected graph.
-  
+
   - Span start from chosen root_vertex resulting subgraph.
 
     - When root vertex is not given then result is minimun spanning tree of disconnected graph.
-   
+
   - Values are returned when there is a minimum spanning tree.
 
     - When there is no edge in graph then EMPTY SET is return.
 
-  - The minimum spanning tree is same for any root vertex. 
+  - The minimum spanning tree is same for any root vertex.
 
-  - It does not produce correct results on graphs with parallel edges.
-  
   - Running time: :math:`O(E*log V)`
+
+
+.. Note: From boost Graph:
+   "The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges."
+
 
 
 Signatures
@@ -71,7 +78,7 @@ Signatures
     pgr_prim(edges_sql)
     pgr_prim(edges_sql, root_vertex)
 
-    RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) 
+    RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost)
        or EMPTY SET
 
 The signature is for a **undirected** graph.
@@ -85,7 +92,7 @@ pgr_prim without root vertex
     pgr_prim(TEXT edges_sql);
     RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPTY SET
 
-When root vertex is not given then result is MST of disconnected graph.     
+When root vertex is not given then result is MST of disconnected graph.
 
 .. literalinclude:: doc-pgr_prim.queries
    :start-after: -- q1
@@ -95,7 +102,7 @@ When root vertex is not given then result is MST of disconnected graph.
 pgr_prim with root vertex
 .......................................
 
-:Example: 
+:Example:
 
 .. code-block:: none
 
@@ -147,10 +154,10 @@ Description of the parameters of the signatures
 Parameter           Type                   Default   Description
 =================== ====================== ========= =================================================
 **edges_sql**       ``TEXT``                         SQL query as described above.
-**root_vertex**     ``BIGINT``                       Root vertex from where spanning of tree start and 
+**root_vertex**     ``BIGINT``                       Root vertex from where spanning of tree start and
                                                      resulting in subgraph.
 
-                                                     - In the absence of root vertex the result is 
+                                                     - In the absence of root vertex the result is
                                                        MST of disconnected graph.
 =================== ====================== ========= =================================================
 
@@ -170,7 +177,7 @@ Column           Type        Description
 **agg_cost**     ``FLOAT``   Aggregate cost from node to root_vertex.
 **tree_cost**    ``FLOAT``   Aggregate cost of edges that is covered in spanning.
 ===============  =========== ====================================================
- 
+
 See Also
 -------------------------------------------------------------------------------
 
