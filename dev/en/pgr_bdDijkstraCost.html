@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_bdDijkstraCost - Proposed &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>pgr_bdDijkstraCost &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_bdDijkstraCostMatrix - proposed" href="pgr_bdDijkstraCostMatrix.html" />
-    <link rel="prev" title="Bidirectional Dijkstra - Family of functions" href="bdDijkstra-family.html" />
+    <link rel="next" title="pgr_bdDijkstraCostMatrix" href="pgr_bdDijkstraCostMatrix.html" />
+    <link rel="prev" title="pgr_bdDijkstra" href="pgr_bdDijkstra.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -81,11 +81,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -103,10 +103,10 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_bdDijkstraCost - Proposed</a><ul>
+<li><a class="reference internal" href="#">pgr_bdDijkstraCost</a><ul>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
-<li><a class="reference internal" href="#one-to-many">One to many</a></li>
+<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
 <li><a class="reference internal" href="#many-to-one">Many to One</a></li>
 <li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 </ul>
@@ -126,11 +126,11 @@
               
                 
   <li>
-    <a href="bdDijkstra-family.html" title="Previous Chapter: Bidirectional Dijkstra - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Bidirectional...</span>
+    <a href="pgr_bdDijkstra.html" title="Previous Chapter: pgr_bdDijkstra"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bdDijkstra</span>
     </a>
   </li>
   <li>
-    <a href="pgr_bdDijkstraCostMatrix.html" title="Next Chapter: pgr_bdDijkstraCostMatrix - proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bdDijkstr... &raquo;</span>
+    <a href="pgr_bdDijkstraCostMatrix.html" title="Next Chapter: pgr_bdDijkstraCostMatrix"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bdDijkstr... &raquo;</span>
     </a>
   </li>
               
@@ -158,36 +158,18 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-bddijkstracost-proposed">
-<h1>pgr_bdDijkstraCost - Proposed<a class="headerlink" href="#pgr-bddijkstracost-proposed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-bddijkstracost">
+<h1>pgr_bdDijkstraCost<a class="headerlink" href="#pgr-bddijkstracost" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_bdDijkstraCost</span></code> — Returns the shortest path(s)’s cost using Bidirectional Dijkstra algorithm.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
-<p class="rubric">Availability: 2.5.0</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>Experimental functions</p>
-<ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
+<p class="rubric">Availability:</p>
+<ul class="simple">
+<li>Official on v3.0.0</li>
+<li>Proposed on v2.5.0</li>
 </ul>
-</li>
-</ul>
-</div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
@@ -260,7 +242,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </div>
 </div>
 <div class="section" id="one-to-many">
-<span id="index-1"></span><h3>One to many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
+<span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -564,7 +546,7 @@ for all <code class="docutils literal"><span class="pre">start_vids</span></code
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
-<li><a class="reference internal" href="pgr_bdDijkstra.html#pgr-bddijkstra"><span class="std std-ref">pgr_bdDijkstra</span></a></li>
+<li><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a></li>
 <li><a class="reference external" href="http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf">http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf</a></li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Bidirectional_search">https://en.wikipedia.org/wiki/Bidirectional_search</a></li>
 </ul>
@@ -589,7 +571,7 @@ for all <code class="docutils literal"><span class="pre">start_vids</span></code
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 06, 2018.<br/>
+      Last updated on Oct 13, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

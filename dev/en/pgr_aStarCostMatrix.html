@@ -104,12 +104,8 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_aStarCostMatrix</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a><ul>
-<li><a class="reference internal" href="#minimal-signature">Minimal Signature</a></li>
-<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
 <li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
@@ -163,14 +159,13 @@
       
   <div class="section" id="pgr-astarcostmatrix">
 <h1>pgr_aStarCostMatrix<a class="headerlink" href="#pgr-astarcostmatrix" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_aStarCostMatrix</span></code> - Calculates the a cost matrix using <a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a>.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
-<p class="rubric">Characteristics</p>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The main Characteristics are:</p>
 <ul class="simple">
 <li>Using internaly the <a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> algorithm</li>
@@ -196,15 +191,15 @@
 <li>New on version 2.4.0</li>
 </ul>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids)
 pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
-<div class="section" id="minimal-signature">
-<h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Minimal Signature</p>
 <p>The minimal signature:</p>
 <ul class="simple">
 <li>Is for a <strong>directed</strong> graph.</li>
@@ -243,9 +238,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="complete-signature">
-<span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="index-0">Complete Signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -280,7 +273,6 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="parameters">
@@ -548,7 +540,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 06, 2018.<br/>
+      Last updated on Oct 13, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

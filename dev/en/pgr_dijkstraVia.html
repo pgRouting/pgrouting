@@ -104,12 +104,12 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_dijkstraVia - Proposed</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#return-columns">Return Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -163,8 +163,8 @@ a list of vertices.</p>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 <p class="rubric">Availability: 2.2.0</p>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Given a list of vertices and a graph, this function is equivalent to finding the
 shortest path between <span class="math">\(vertex_i\)</span> and <span class="math">\(vertex_{i+1}\)</span> for all <span class="math">\(i &lt; size\_of(vertex_via)\)</span>.</p>
 <p>The paths represents the sections of the route.</p>
@@ -175,7 +175,7 @@ shortest path between <span class="math">\(vertex_i\)</span> and <span class="ma
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Signature Summary</p>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstraVia(edges_sql, via_vertices)
 pgr_dijkstraVia(edges_sql, via_vertices, directed, strict, U_turn_on_edge)
 
@@ -247,7 +247,66 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 
 </pre></div>
 </div>
-<p class="rubric">Description of the Signature</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="9%" />
+<col width="4%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>via_vertices</strong></td>
+<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
+<td>&#160;</td>
+<td>Array of ordered vertices identifiers that are going to be visited.</td>
+</tr>
+<tr class="row-even"><td><strong>directed</strong></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal"><span class="pre">true</span></code></td>
+<td><ul class="first last simple">
+<li>When <code class="docutils literal"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></li>
+<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>strict</strong></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
+<td><ul class="first last simple">
+<li>When <code class="docutils literal"><span class="pre">false</span></code> ignores missing paths returning all paths found</li>
+<li>When <code class="docutils literal"><span class="pre">true</span></code> if a path is missing stops and returns <cite>EMPTY SET</cite></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>U_turn_on_edge</strong></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal"><span class="pre">true</span></code></td>
+<td><ul class="first last simple">
+<li>When <code class="docutils literal"><span class="pre">true</span></code> departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same <cite>id</cite> is allowed.</li>
+<li>When <code class="docutils literal"><span class="pre">false</span></code> when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same <cite>id</cite> is used when no other path is found.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -317,99 +376,9 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 </tr>
 </tbody>
 </table>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="8%" />
-<col width="9%" />
-<col width="4%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>via_vertices</strong></td>
-<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td>&#160;</td>
-<td>Array of ordered vertices identifiers that are going to be visited.</td>
-</tr>
-<tr class="row-even"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td><code class="docutils literal"><span class="pre">true</span></code></td>
-<td><ul class="first last simple">
-<li>When <code class="docutils literal"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></li>
-<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><strong>strict</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td><code class="docutils literal"><span class="pre">false</span></code></td>
-<td><ul class="first last simple">
-<li>When <code class="docutils literal"><span class="pre">false</span></code> ignores missing paths returning all paths found</li>
-<li>When <code class="docutils literal"><span class="pre">true</span></code> if a path is missing stops and returns <cite>EMPTY SET</cite></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><strong>U_turn_on_edge</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td><code class="docutils literal"><span class="pre">true</span></code></td>
-<td><ul class="first last simple">
-<li>When <code class="docutils literal"><span class="pre">true</span></code> departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same <cite>id</cite> is allowed.</li>
-<li>When <code class="docutils literal"><span class="pre">false</span></code> when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same <cite>id</cite> is used when no other path is found.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Parameters of the signatures</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="9%" />
-<col width="10%" />
-<col width="81%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>via_vertices</strong></td>
-<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td>Array of vertices identifiers</td>
-</tr>
-<tr class="row-even"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional) Default is true (is directed). When set to false the graph is considered as Undirected</td>
-</tr>
-<tr class="row-odd"><td><strong>strict</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional) ignores if a subsection of the route is missing and returns everything it found Default is true (is directed). When set to false the graph is considered as Undirected</td>
-</tr>
-<tr class="row-even"><td><strong>U_turn_on_edge</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional) Default is true (is directed). When set to false the graph is considered as Undirected</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Description of the return values</p>
+</div>
+<div class="section" id="return-columns">
+<h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -467,9 +436,8 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -598,7 +566,7 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example 6:</th><td class="field-body">show the route’s seq and aggregate cost and a status of “passes in front” or “visits” node 9</td>
+<tr class="field-odd field"><th class="field-name">Example 6:</th><td class="field-body">Show the route’s seq and aggregate cost and a status of “passes in front” or “visits” node 9</td>
 </tr>
 </tbody>
 </table>
@@ -648,7 +616,7 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 06, 2018.<br/>
+      Last updated on Oct 13, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

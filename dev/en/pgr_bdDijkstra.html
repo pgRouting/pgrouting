@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
-    <link rel="prev" title="pgr_bdAstarCostMatrix" href="pgr_bdAstarCostMatrix.html" />
+    <link rel="next" title="pgr_bdDijkstraCost" href="pgr_bdDijkstraCost.html" />
+    <link rel="prev" title="Bidirectional Dijkstra - Family of functions" href="bdDijkstra-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -84,8 +84,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -104,9 +104,8 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_bdDijkstra</a><ul>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#minimal-signature">Minimal signature</a></li>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">One to many</a></li>
 <li><a class="reference internal" href="#many-to-one">Many to One</a></li>
@@ -128,11 +127,11 @@
               
                 
   <li>
-    <a href="pgr_bdAstarCostMatrix.html" title="Previous Chapter: pgr_bdAstarCostMatrix"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bdAstarCostMatrix</span>
+    <a href="bdDijkstra-family.html" title="Previous Chapter: Bidirectional Dijkstra - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Bidirectional...</span>
     </a>
   </li>
   <li>
-    <a href="dijkstra-family.html" title="Next Chapter: Dijkstra - Family of functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Dijkstra - Fa... &raquo;</span>
+    <a href="pgr_bdDijkstraCost.html" title="Next Chapter: pgr_bdDijkstraCost"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bdDijkstraCost &raquo;</span>
     </a>
   </li>
               
@@ -161,60 +160,55 @@
     <div class="col-md-12 content">
       
   <div class="section" id="pgr-bddijkstra">
-<span id="id1"></span><h1>pgr_bdDijkstra<a class="headerlink" href="#pgr-bddijkstra" title="Permalink to this headline">¶</a></h1>
+<h1>pgr_bdDijkstra<a class="headerlink" href="#pgr-bddijkstra" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_bdDijkstra</span></code> — Returns the shortest path(s) using Bidirectional Dijkstra algorithm.</p>
-<div class="figure" id="id2">
+<div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Availability:</p>
 <ul class="simple">
-<li>pgr_bdDijkstra(one to one) 2.0.0, Signature changed 2.4.0</li>
-<li>pgr_bdDijkstra(other signatures) 2.5.0</li>
+<li>Proposed on v2.5.0 and Official on v3.0.0:<ul>
+<li>pgr_bdDijkstra(One to Many)</li>
+<li>pgr_bdDijkstra(Many to One)</li>
+<li>pgr_bdDijkstra(Many to Many)</li>
 </ul>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid,  end_vid)
-pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
-RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>Experimental functions</p>
-<ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
+</li>
+<li>Signature change on v2.4.0<ul>
+<li>pgr_bdDijkstra(One to One)</li>
+</ul>
+</li>
+<li>Proposed on v2.5.0 and Official on v3.0.0:<ul>
+<li>pgr_bdDijkstra(One to Many)</li>
+<li>pgr_bdDijkstra(Many to One)</li>
+<li>pgr_bdDijkstra(Many to Many)</li>
+</ul>
+</li>
+<li>Signature change on v2.4.0<ul>
+<li>pgr_bdDijkstra(One to One)</li>
+</ul>
+</li>
+<li>New on v2.0.0:<ul>
+<li>pgr_bdDijkstra(One to One)</li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
-pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
-pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vid [, directed])
+pgr_bdDijkstra(edges_sql, start_vid, end_vids [, directed])
+pgr_bdDijkstra(edges_sql, start_vids, end_vid [, directed])
+pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
 
 RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="minimal-signature">
-<span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Minimal signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vid)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -244,11 +238,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 </pre></div>
 </div>
-</div>
 <div class="section" id="one-to-one">
-<span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
-RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+<span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vid [, directed])
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <p>This signature finds the shortest path from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
@@ -279,9 +273,10 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </div>
 </div>
 <div class="section" id="one-to-many">
-<span id="index-2"></span><h3>One to many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
-RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+<span id="index-1"></span><h3>One to many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vids [, directed])
+RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <p>This signature finds the shortest path from one <code class="docutils literal"><span class="pre">start_vid</span></code> to each <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</p>
@@ -324,9 +319,10 @@ where the starting vertex is fixed, and stop when all <code class="docutils lite
 </div>
 </div>
 <div class="section" id="many-to-one">
-<span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
-RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+<span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vids, end_vid [, directed])
+RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <p>This signature finds the shortest path from each <code class="docutils literal"><span class="pre">start_vid</span></code> in  <code class="docutils literal"><span class="pre">start_vids</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
@@ -372,9 +368,10 @@ where the ending vertex is fixed.</p>
 </div>
 </div>
 <div class="section" id="many-to-many">
-<span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+<span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
+RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <p>This signature finds the shortest path from each <code class="docutils literal"><span class="pre">start_vid</span></code> in  <code class="docutils literal"><span class="pre">start_vids</span></code> to each <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</p>
@@ -639,7 +636,7 @@ Returned when multiple ending vertices are in the query.</p>
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
-<li><a class="reference internal" href="bdDijkstra-family.html#bddijkstra"><span class="std std-ref">Bidirectional Dijkstra - Family of functions</span></a></li>
+<li><a class="reference internal" href="bdDijkstra-family.html"><span class="doc">Bidirectional Dijkstra - Family of functions</span></a></li>
 <li><a class="reference external" href="http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf">http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf</a></li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Bidirectional_search">https://en.wikipedia.org/wiki/Bidirectional_search</a></li>
 </ul>
@@ -664,7 +661,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 06, 2018.<br/>
+      Last updated on Oct 13, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

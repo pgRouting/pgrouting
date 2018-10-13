@@ -107,9 +107,12 @@
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-components-functions">Description of the edges_sql query for components functions</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
+<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#description-of-the-return-values-for-connected-components-and-strongly-connected-components">Description of the return values for connected components and strongly connected components</a></li>
 </ul>
 </li>
@@ -158,7 +161,7 @@
     <div class="col-md-12 content">
       
   <div class="section" id="pgr-strongcomponents-experimental">
-<span id="pgr-strongcomponents"></span><h1>pgr_strongComponents - Experimental<a class="headerlink" href="#pgr-strongcomponents-experimental" title="Permalink to this headline">¶</a></h1>
+<h1>pgr_strongComponents - Experimental<a class="headerlink" href="#pgr-strongcomponents-experimental" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_strongComponents</span></code> — Return the strongly connected components of a directed graph using Tarjan’s algorithm based on DFS.
 In particular, the algorithm implemented by Boost.Graph.</p>
 <div class="figure" id="id1">
@@ -255,8 +258,11 @@ RETURNS SET OF (seq, component, n_seq, node)
 </div>
 <div class="section" id="description-of-the-signatures">
 <h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-edges-sql-query-for-components-functions">
-<h3>Description of the edges_sql query for components functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-components-functions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="edges-sql">
+<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -327,8 +333,9 @@ RETURNS SET OF (seq, component, n_seq, node)
 </tbody>
 </table>
 </div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="21%" />
@@ -351,7 +358,6 @@ RETURNS SET OF (seq, component, n_seq, node)
 </tr>
 </tbody>
 </table>
-</div>
 <div class="section" id="description-of-the-return-values-for-connected-components-and-strongly-connected-components">
 <h3>Description of the return values for connected components and strongly connected components<a class="headerlink" href="#description-of-the-return-values-for-connected-components-and-strongly-connected-components" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">n_seq,</span> <span class="pre">node)</span></code></p>
@@ -415,7 +421,7 @@ RETURNS SET OF (seq, component, n_seq, node)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 06, 2018.<br/>
+      Last updated on Oct 13, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

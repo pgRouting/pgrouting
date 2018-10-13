@@ -104,10 +104,9 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_pointsAsPolygon</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -153,20 +152,17 @@
     <div class="col-md-12 content">
       
   <div class="section" id="pgr-pointsaspolygon">
-<span id="pgr-points-as-polygon"></span><h1>pgr_pointsAsPolygon<a class="headerlink" href="#pgr-pointsaspolygon" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h1>pgr_pointsAsPolygon<a class="headerlink" href="#pgr-pointsaspolygon" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_pointsAsPolygon</span></code> — Draws an alpha shape around given set of points.</p>
-</div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Returns the alpha shape as (multi)polygon geometry.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span> <span class="p">[,</span> <span class="n">float8</span> <span class="n">alpha</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -203,8 +199,8 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
 <li>Supported to return a (multi)polygon geometry (with holes) in version 2.1.0</li>
 </ul>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <p>In the following query there is no way to control which point in the polygon is the first in the list, so you may get similar but different results than the following which are also correct.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
         <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;));</span>
@@ -220,8 +216,8 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><span class="std std-ref">pgr_drivingDistance</span></a> - Driving Distance</li>
-<li><a class="reference internal" href="pgr_alphaShape.html#pgr-alphashape"><span class="std std-ref">pgr_alphaShape</span></a> - Alpha shape computation</li>
+<li><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Driving Distance</li>
+<li><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Alpha shape computation</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -244,7 +240,7 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 06, 2018.<br/>
+      Last updated on Oct 13, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

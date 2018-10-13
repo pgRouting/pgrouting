@@ -155,7 +155,7 @@
     <div class="col-md-12 content">
       
   <div class="section" id="pgr-createtopology">
-<span id="pgr-create-topology"></span><h1>pgr_createTopology<a class="headerlink" href="#pgr-createtopology" title="Permalink to this headline">¶</a></h1>
+<h1>pgr_createTopology<a class="headerlink" href="#pgr-createtopology" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_createTopology</span></code> — Builds a network topology based on the geometry information.</p>
@@ -235,7 +235,7 @@ all rows that where <code class="docutils literal"><span class="pre">source</spa
 </li>
 </ul>
 <p class="rubric">The Vertices Table</p>
-<p>The vertices table is a requirement of the <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a> functions.</p>
+<p>The vertices table is a requirement of the <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> functions.</p>
 <p>The structure of the vertices table is:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -243,13 +243,13 @@ all rows that where <code class="docutils literal"><span class="pre">source</spa
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">bigint</span></code> Identifier of the vertex.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a>.</td>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a>.</td>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex AS incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a>.</td>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex AS incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex AS outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><span class="std std-ref">pgr_analyzeOneway</span></a>.</td>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex AS outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal"><span class="pre">geometry</span></code> Point geometry of the vertex.</td>
 </tr>
@@ -526,9 +526,9 @@ The order of the parameters do not matter:</p>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgRouting-concepts.html#topology"><span class="std std-ref">Routing Topology</span></a> for an overview of a topology for routing algorithms.</li>
-<li><a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><span class="std std-ref">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</li>
-<li><a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><span class="std std-ref">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</li>
+<li><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a> for an overview of a topology for routing algorithms.</li>
+<li><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</li>
+<li><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -551,7 +551,7 @@ The order of the parameters do not matter:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 06, 2018.<br/>
+      Last updated on Oct 13, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

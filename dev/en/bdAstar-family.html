@@ -104,12 +104,9 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Bidirectional A* - Family of functions</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -155,7 +152,7 @@
     <div class="col-md-12 content">
       
   <div class="section" id="bidirectional-a-family-of-functions">
-<span id="bdastar"></span><h1>Bidirectional A* - Family of functions<a class="headerlink" href="#bidirectional-a-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<h1>Bidirectional A* - Family of functions<a class="headerlink" href="#bidirectional-a-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> - Bidirectional A* algorithm for obtaining paths.</li>
 <li><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - Bidirectional A* algorithm to calculate the cost of the paths.</li>
@@ -163,16 +160,13 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Based on A* algorithm, the bidirectional search finds a shortest path from
 a starting vertex (<code class="docutils literal"><span class="pre">start_vid</span></code>) to an ending vertex (<code class="docutils literal"><span class="pre">end_vid</span></code>).
 It runs two simultaneous searches: one forward from the <code class="docutils literal"><span class="pre">start_vid</span></code>, and one backward from the <code class="docutils literal"><span class="pre">end_vid</span></code>,
 stopping when the two meet in the middle.
 This implementation can be used with a directed graph and an undirected graph.</p>
-</div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <p>The main Characteristics are:</p>
 <ul class="simple">
 <li>Process is done only on edges with positive costs.</li>
@@ -192,8 +186,8 @@ This implementation can be used with a directed graph and an undirected graph.</
 </li>
 </ul>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -283,8 +277,9 @@ This implementation can be used with a directed graph and an undirected graph.</
 </tr>
 </tbody>
 </table>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -355,7 +350,6 @@ This implementation can be used with a directed graph and an undirected graph.</
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
@@ -379,7 +373,7 @@ This implementation can be used with a directed graph and an undirected graph.</
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 06, 2018.<br/>
+      Last updated on Oct 13, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
