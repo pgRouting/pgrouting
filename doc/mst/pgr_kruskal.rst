@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_kruskal
+pgr_kruskal - Experimental
 ===============================================================================
 
 ``pgr_kruskal`` — Returns the minimum spanning tree of graph using Kruskal algorithm.
@@ -18,16 +18,20 @@ In particular, the Kruskal algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 Synopsis
 -------------------------------------------------------------------------------
 
-Kruskal's algorithm is a minimum-spanning-tree algorithm which finds an edge 
-of the least possible weight that connects any two trees in the forest. It is 
-a greedy algorithm in graph theory as it finds a minimum spanning tree for a 
-connected weighted undirected graph adding increasing cost arcs at each step. 
-This means it finds a subset of the edges that forms a tree that includes every 
-vertex, where the total weight of all the edges in the tree is minimized. If the 
-graph is not connected, then it finds a minimum spanning forest (a minimum 
+Kruskal's algorithm is a minimum-spanning-tree algorithm which finds an edge
+of the least possible weight that connects any two trees in the forest. It is
+a greedy algorithm in graph theory as it finds a minimum spanning tree for a
+connected weighted undirected graph adding increasing cost arcs at each step.
+This means it finds a subset of the edges that forms a tree that includes every
+vertex, where the total weight of all the edges in the tree is minimized. If the
+graph is not connected, then it finds a minimum spanning forest (a minimum
 spanning tree for each connected component).
 
 Characteristics
@@ -35,30 +39,30 @@ Characteristics
 
 The main Characteristics are:
 
+  - It's implementation is only on **undirected graph**.
+
   - Process is done only on edges with positive costs.
- 
-  - It's implementation is only on undirected graph.
-  
+
   - Edges are in ascending order by weight for each component.
-   
+
   - Values are returned when there is a minimum spanning tree.
 
     - When there is no edge in graph then EMPTY SET is return.
-  
-  - Running time: :math:`O(E*log E)`
+
+  - Running time: :math:`O(E * log E)`
 
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: kruskal
+    single: kruskal - Experimental
 
 .. code-block:: none
 
     pgr_kruskal(edges_sql)
 
-    RETURNS SET OF (seq, component, edge, cost, tree_cost) 
+    RETURNS SET OF (seq, component, edge, cost, tree_cost)
        or EMPTY SET
 
 The signature is for a **undirected** graph.
@@ -130,7 +134,7 @@ Column           Type        Description
 **cost**         ``FLOAT``   Cost to traverse of edge.
 **tree_cost**    ``FLOAT``   Aggregate cost of edges that is covered in spanning.
 ===============  =========== ====================================================
- 
+
 See Also
 -------------------------------------------------------------------------------
 

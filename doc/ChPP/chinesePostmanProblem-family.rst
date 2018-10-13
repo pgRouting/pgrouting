@@ -7,14 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Chinese Postman Problem - Family of functions
-================================================
+Chinese Postman Problem - Family of functions (Experimental)
+=============================================================
 
 .. index from here
 
-pgr_directedChPP_Cost.rst  pgr_directedChPP.rst
-* :doc:`pgr_directedChPP` - Get the aggregate cost of the shortest paths.
-* :doc:`pgr_directedChPP_Cost` - Dijkstra's algorithm for the shortest paths.
+* :doc:`pgr_directedChPP`
+* :doc:`pgr_directedChPP_Cost`
 
 .. index to here
 

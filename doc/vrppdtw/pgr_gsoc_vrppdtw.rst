@@ -34,7 +34,7 @@ Signatures
 -----------
 
 .. index::
-    single: gsoc_vrppdtw(Complete Signature) - proposed
+    single: gsoc_vrppdtw(Complete Signature) - Experimental
 
 
 Complete signature

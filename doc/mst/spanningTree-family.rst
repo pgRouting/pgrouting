@@ -7,36 +7,31 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Driving Distance - Category
+Spanning Tree - Family of functions (Experimental)
 ===============================================================================
+
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 .. index from here
 
-* :doc:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra
-* Post pocessing
+* :doc:`pgr_randomSpanTree`
+* For **Undirected** Graphs only:
 
-  * :doc:`pgr_alphaShape` - Alpha shape computation
-  * :doc:`pgr_pointsAsPolygon` - Polygon around a set of points
+  * :doc:`pgr_kruskal`
+  * :doc:`pgr_prim`
 
 .. index to here
 
-.. rubric:: Proposed
-
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
-.. index proposed from here
-
-* :doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
-
-.. index proposed to here
 
 .. toctree::
     :hidden:
 
-    pgr_alphaShape.rst
-    pgr_pointsAsPolygon.rst
+    pgr_randomSpanTree
+    pgr_kruskal
+    pgr_prim
 
 
 See Also
@@ -46,3 +41,6 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
+
+
+

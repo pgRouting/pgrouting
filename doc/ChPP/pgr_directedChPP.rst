@@ -90,7 +90,7 @@ Return Columns
 See Also
 --------
 
-* :doc:`ChPP-family`
+* :doc:`chinesePostmanProblem-family`
 
 .. rubric:: Indices and tables
 
