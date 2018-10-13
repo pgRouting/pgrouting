@@ -7,9 +7,8 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Minimum Cost Maximum FLow - Family of functions
-================================================
-
+Minimum Cost Maximum FLow - Family of functions (Experimental)
+==================================================================
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr

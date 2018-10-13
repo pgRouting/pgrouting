@@ -53,6 +53,9 @@ SET(LOCAL_FILES
     doc-pgr_dagShortestPath.queries
     doc-pgr_directedChPP.queries
     doc-pgr_directedChPP_Cost.queries
+    doc-pgr_kruskal.queries
+    doc-pgr_prim.queries
+    doc-pgr_randomSpanTree.queries
     )
 
 foreach (f ${LOCAL_FILES})

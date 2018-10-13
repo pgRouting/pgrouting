@@ -13,7 +13,6 @@ Driving Distance - Category
 .. index from here
 
 * :doc:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra
-* :doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
 * Post pocessing
 
   * :doc:`pgr_alphaShape` - Alpha shape computation
@@ -21,6 +20,17 @@ Driving Distance - Category
 
 .. index to here
 
+.. rubric:: Proposed
+
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
+.. index proposed from here
+
+* :doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
+
+.. index proposed to here
 
 .. toctree::
     :hidden:

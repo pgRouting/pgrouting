@@ -7,20 +7,21 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Spanning Tree - Family of functions (proposed)
+Spanning Tree - Family of functions (Experimental)
 ===============================================================================
 
-.. index from here
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-* :doc:`pgr_randomSpanTree` - Use pgr_dijkstra to create a costs matrix.
+.. index from here
+
+* :doc:`pgr_randomSpanTree`
 * For **Undirected** Graphs only:
 
-   * :doc:`pgr_kurskal` - Dijkstra's algorithm for the shortest paths.
-   * :doc:`pgr_prim` - Get the aggregate cost of the shortest paths.
+  * :doc:`pgr_kruskal`
+  * :doc:`pgr_prim`
 
 .. index to here
 
@@ -29,7 +30,7 @@ Spanning Tree - Family of functions (proposed)
     :hidden:
 
     pgr_randomSpanTree
-    pgr_kurskal
+    pgr_kruskal
     pgr_prim
 
 

@@ -13,11 +13,20 @@ KSP Category
 .. index from here
 
 * :doc:`pgr_KSP` - Driving Distance based on pgr_dijkstra
-* :doc:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra
 
 .. index to here
 
+.. rubric:: Proposed
 
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
+.. index proposed from here
+
+* :doc:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra
+
+.. index proposed to here
 
 .. rubric:: Indices and tables
 

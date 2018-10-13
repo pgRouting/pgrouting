@@ -13,6 +13,10 @@ pgr_dijkstraVia - Proposed
 ``pgr_dijkstraVia`` — Using dijkstra algorithm, it finds the route that goes through
 a list of vertices.
 
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 

@@ -24,13 +24,11 @@ Cost Matrix - Category
     :start-after: begin-warning
     :end-before: end-warning
 
-.. proposed index start
+.. index proposed from here
 
-* :doc:`pgr_bdAstarCostMatrix`
-* :doc:`pgr_bdDijkstraCostMatrix`
 * :doc:`pgr_withPointsCostMatrix`
 
-.. proposed index end
+.. index proposed to here
 
 .. toctree::
     :hidden:

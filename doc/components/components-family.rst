@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Components - Family of functions
+Components - Family of functions (Experimental)
 ===============================================================================
 
 

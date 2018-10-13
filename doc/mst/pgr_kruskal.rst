@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_kruskal - Proposed
+pgr_kruskal - Experimental
 ===============================================================================
 
 ``pgr_kruskal`` — Returns the minimum spanning tree of graph using Kruskal algorithm.
@@ -56,7 +56,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: kruskal - Proposed
+    single: kruskal - Experimental
 
 .. code-block:: none
 

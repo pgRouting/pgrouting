@@ -23,13 +23,11 @@ Cost - Category
     :start-after: begin-warning
     :end-before: end-warning
 
-.. proposed index start
+.. index proposed from here
 
-* :doc:`pgr_bdAstarCost`
-* :doc:`pgr_bdDijkstraCost`
 * :doc:`pgr_withPointsCost`
 
-.. proposed index end
+.. index proposed to here
 
 
 General Information

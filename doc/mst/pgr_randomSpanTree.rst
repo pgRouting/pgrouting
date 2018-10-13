@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_randomSpanTree - Proposed
+pgr_randomSpanTree - Experimental
 ===============================================================================
 
 ``pgr_randomSpanTree`` — Random spanning tree of a graph using the algorithm implemented by Boost.Graph.
@@ -30,7 +30,7 @@ Characteristics
 -------------------------------------------------------------------------------
 
 - **CRASHES THE SERVER**
-TBD
+- TBD
 
 
 Signatures

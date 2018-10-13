@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_stoerWagner
+pgr_stoerWagner - Experimental
 ===============================================================================
 
 ``pgr_stoerWagner`` — Returns the weight of the min-cut of graph using stoerWagner algorithm.
@@ -21,19 +21,19 @@ Function determines a min-cut and the min-cut weight of a connected, undirected 
 Synopsis
 -------------------------------------------------------------------------------
 
-In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to solve 
-the minimum cut problem in undirected weighted graphs with non-negative weights. 
-The essential idea of this algorithm is to shrink the graph by merging the most 
+In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to solve
+the minimum cut problem in undirected weighted graphs with non-negative weights.
+The essential idea of this algorithm is to shrink the graph by merging the most
 intensive vertices, until the graph only contains two combined vertex sets.
-At each phase, the algorithm finds the minimum s-t cut for two vertices s and t 
-chosen as its will. Then the algorithm shrinks the edge between s and t to 
-search for non s-t cuts. The minimum cut found in all phases will be the 
+At each phase, the algorithm finds the minimum s-t cut for two vertices s and t
+chosen as its will. Then the algorithm shrinks the edge between s and t to
+search for non s-t cuts. The minimum cut found in all phases will be the
 minimum weighted cut of the graph.
 
-A cut is a partition of the vertices of a graph into two disjoint subsets. A 
-minimum cut is a cut for which the size or weight of the cut is not larger than 
-the size of any other cut. For an unweighted graph, the minimum cut would simply 
-be the cut with the least edges. For a weighted graph, the sum of all edges' 
+A cut is a partition of the vertices of a graph into two disjoint subsets. A
+minimum cut is a cut for which the size or weight of the cut is not larger than
+the size of any other cut. For an unweighted graph, the minimum cut would simply
+be the cut with the least edges. For a weighted graph, the sum of all edges'
 weight on the cut determines whether it is a minimum cut.
 
 Characteristics
@@ -42,19 +42,19 @@ Characteristics
 The main Characteristics are:
 
   - Process is done only on edges with positive costs.
- 
+
   - It's implementation is only on undirected graph.
-  
-  - Sum of the weights of all edges between the two sets is mincut. A min-cut 
+
+  - Sum of the weights of all edges between the two sets is mincut. A min-cut
     is a cut having the least weight.
-   
+
   - Values are returned when graph is connected.
 
     - When there is no edge in graph then EMPTY SET is return.
     - When the graph is unconnected then EMPTY SET is return.
 
   - Sometimes a graph has multiple min-cuts, but all have the same weight. The this function determines exactly one of the min-cuts as well as its weight.
-  
+
   - Running time: :math:`O(V*E + V^2*log V)`.
 
 
@@ -62,13 +62,13 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: stoerWagner
+    single: stoerWagner - Experimental
 
 .. code-block:: none
 
     pgr_stoerWagner(edges_sql)
 
-    RETURNS SET OF (seq, edge, cost, mincut) 
+    RETURNS SET OF (seq, edge, cost, mincut)
        or EMPTY SET
 
 The signature is for a **undirected** graph.
@@ -145,7 +145,7 @@ Column           Type        Description
 **cost**         ``FLOAT``   Cost to traverse of edge.
 **mincut**       ``FLOAT``   Min-cut weight of a undirected graph.
 ===============  =========== ============================================================
- 
+
 See Also
 -------------------------------------------------------------------------------
 

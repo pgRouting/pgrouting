@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    ChPP-family.rst
+    chinesePostmanProblem-family.rst
     pgr_directedChPP.rst
     pgr_directedChPP_Cost.rst
     )

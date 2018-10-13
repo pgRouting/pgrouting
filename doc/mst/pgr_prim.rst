@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_prim - Proposed
+pgr_prim - Experimental
 ===============================================================================
 
 ``pgr_prim`` — Returns the minimum spanning tree of graph using Prim algorithm.
@@ -71,7 +71,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: prim
+    single: prim - Experimental
 
 .. code-block:: none
 

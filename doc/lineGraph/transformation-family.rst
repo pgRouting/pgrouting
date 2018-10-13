@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Transformation - Family of functions
+Transformation - Family of functions (Experimental)
 ===============================================================================
 
 .. index from here

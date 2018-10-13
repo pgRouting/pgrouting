@@ -12,7 +12,11 @@ withPoints - Family of functions
 
 When points are also given as input:
 
-.. index from here
+.. include:: proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+.. index proposed from here
 
 - :doc:`pgr_withPoints` - Route from/to points anywhere on the graph.
 - :doc:`pgr_withPointsCost` - Costs of the shortest paths.
@@ -20,7 +24,7 @@ When points are also given as input:
 - :doc:`pgr_withPointsKSP` - K shortest paths.
 - :doc:`pgr_withPointsDD` - Driving distance.
 
-.. index to here
+.. index proposed to here
 
 .. toctree::
     :hidden:
@@ -32,10 +36,6 @@ When points are also given as input:
     pgr_withPointsDD
 
 
-
-.. include:: proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 
 

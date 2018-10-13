@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Contraction - Family of functions
+Contraction - Family of functions (Experimental)
 ===============================================================================
 
 
@@ -15,7 +15,11 @@ Contraction - Family of functions
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-:doc:`pgr_contractGraph`
+.. index from here
+
+* :doc:`pgr_contractGraph`
+
+.. index to here
 
 .. toctree::
     :hidden:
