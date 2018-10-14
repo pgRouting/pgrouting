@@ -10,8 +10,7 @@
 pgr_maxCardinalityMatch
 ============================================================
 
-
-Synopsis
+Description
 ------------------------------------------------------------
 
 ``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a graph.
@@ -25,7 +24,6 @@ Synopsis
 
 * Renamed 2.5.0, Previous name pgr_maximumCardinalityMatching
 * New in 2.3.0
-
 
 .. rubric:: Characteristics
 
@@ -43,8 +41,10 @@ Synopsis
 
 .. _Ackermann function: https://en.wikipedia.org/wiki/Ackermann_function
 
-Signature Summary
-------------------------------------------------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -54,14 +54,7 @@ Signature Summary
     RETURNS SET OF (seq, edge_id, source, target)
         OR EMPTY SET
 
-
-.. index::
-    single: MaximumCardinalityMatching(Minimal Use)
-
-
-
-Minimal Use
-.............................................
+.. rubric:: Minimal Use
 
 .. code-block:: none
 
@@ -79,14 +72,12 @@ The minimal use calculates one possible maximum cardinality matching on a **dire
 .. index::
     single: MaximumCardinalityMatching(Complete Signature)
 
-Complete signature
-.............................................
+.. rubric:: Complete signature
 
 .. code-block:: none
 
     pgr_MaximumCardinalityMatching(edges_sql, directed)
     RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
-
 
 The complete signature calculates one possible maximum cardinality matching.
 
@@ -96,10 +87,8 @@ The complete signature calculates one possible maximum cardinality matching.
    :start-after: -- q2
    :end-before: -- q3
 
-
-
 Parameters
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 ============== ================== ======== =========================================
 Parameter         Type            Default       Description
@@ -112,10 +101,10 @@ Parameter         Type            Default       Description
 ============== ================== ======== =========================================
 
 Inner query
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 edges_sql
-...........................................................
+...............................................................................
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -135,7 +124,7 @@ Where:
 :ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL FLOAT
 
 Result Columns
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 =====================  ====================  =================================================
 Column                 Type                  Description
@@ -147,7 +136,7 @@ Column                 Type                  Description
 =====================  ====================  =================================================
 
 See Also
---------
+-------------------------------------------------------------------------------
 
 * :doc:`flow-family`
 * http://www.boost.org/libs/graph/doc/maximum_matching.html

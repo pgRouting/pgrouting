@@ -10,16 +10,9 @@
 pgr_version
 ===============================================================================
 
-.. index::
-	single: version()
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_version`` — Query for pgRouting version information.
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Returns a table with pgRouting version information.
@@ -28,8 +21,7 @@ Returns a table with pgRouting version information.
 
 	table() pgr_version();
 
-
-Description
+Result Columns
 -------------------------------------------------------------------------------
 
 Returns a table with:
@@ -44,13 +36,11 @@ Column        Type       Description
 **boost**    ``varchar`` Boost version
 ===========  =========== ===============================
 
-
 .. rubric:: History
 
 * New in version 2.0.0
 
-
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 * Query for the version string
@@ -58,7 +48,6 @@ Examples
 .. literalinclude:: doc-pgr_version.queries
    :start-after: -- q1
    :end-before: -- q2
-
 
 See Also
 -------------------------------------------------------------------------------
