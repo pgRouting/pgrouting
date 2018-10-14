@@ -16,14 +16,10 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 	single: trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
 	single: trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
 
-Name
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_trsp`` — Returns the shortest path with support for turn restrictions.
-
-
-Synopsis
--------------------------------------------------------------------------------
 
 The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of (seq, id1, id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path.
 
@@ -55,8 +51,7 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
                     [, turn_restrict_sql text]);
   RETURNS SETOF (seq, id1, id2, id3, cost)
 
-Description
--------------------------------------------------------------------------------
+.. rubric:: Characteristics
 
 The Turn Restricted Shortest Path algorithm (TRSP) is similar to the shooting star in that you can specify turn restrictions.
 
@@ -110,14 +105,12 @@ Returns set of:
 * New in version 2.0.0
 
 Support for Vias
---------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. warning:: The Support for Vias functions are prototypes. Not all corner cases are being considered.
 
 
 We also have support for vias where you can say generate a from A to B to C, etc. We support both methods above only you pass an array of vertices or and array of edges and percentage position along the edge in two arrays.
-
-
 
 :sql: a SQL query, which should return a set of rows with the following columns:
 
@@ -159,22 +152,20 @@ Returns set of:
 :id3:   edge ID (``-1`` for the last row)
 :cost:  cost to traverse from ``id2`` using ``id3``
 
-
 .. rubric:: History
 
 * Via Support prototypes new in version 2.1.0
 
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
-**Without turn restrictions**
+:Example: Without turn restrictions
 
 .. literalinclude:: doc-trsp.queries
    :start-after: --q1
    :end-before: --q2
 
-
-**With turn restrictions**
+:Example: With turn restrictions
 
 Then a query with turn restrictions is created as:
 
@@ -182,13 +173,11 @@ Then a query with turn restrictions is created as:
    :start-after: --q3
    :end-before: --q4
 
-
 An example query using vertex ids and via points:
 
 .. literalinclude:: doc-trsp.queries
    :start-after: --q4
    :end-before: --q5
-
 
 An example query using edge ids and vias:
 
@@ -196,9 +185,7 @@ An example query using edge ids and vias:
    :start-after: --q5
    :end-before: --q6
 
-
 The queries use the :doc:`sampledata` network.
-
 
 See Also
 -------------------------------------------------------------------------------

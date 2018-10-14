@@ -8,14 +8,12 @@
    ****************************************************************************
 
 pgr_maxFlow
-============================================
+===============================================================================
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm.
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
@@ -23,7 +21,6 @@ Synopsis
    Boost Graph Inside
 
 .. Rubric:: Availability: 2.4.0
-
 
 .. rubric:: Characteristics
 
@@ -37,8 +34,10 @@ Synopsis
 
 * Running time: :math:`O( V ^ 3)`
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -47,7 +46,6 @@ Signature Summary
     pgr_maxFlow(edges_sql, source,  targets)
     pgr_maxFlow(edges_sql, sources,  targets)
     RETURNS BIGINT
-
 
 .. index::
     single: maxFlow(One to One)
@@ -68,7 +66,6 @@ Calculates the maximum flow from the `source` to the `target`.
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. index::
     single: maxFlow(One to Many)
 
@@ -87,7 +84,6 @@ Calculates the maximum flow from the `source` to all of the `targets`.
 .. literalinclude:: doc-pgr_maxFlow.queries
    :start-after: -- q2
    :end-before: -- q3
-
 
 .. index::
     single: maxFlow(Many to One)
@@ -108,7 +104,6 @@ Calculates the maximum flow from all the `sources` to the `target`.
    :start-after: -- q3
    :end-before: -- q4
 
-
 .. index::
     single: maxFlow(Many to Many)
 
@@ -128,9 +123,8 @@ Calculates the maximum flow from all of the `sources` to all of the `targets`.
    :start-after: -- q4
    :end-before: -- q5
 
-
 Parameters
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. pgr_flow_parameters_start
 
@@ -147,18 +141,17 @@ Column         Type               Default     Description
 .. pgr_flow_parameters_end
 
 Inner query
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 edges_sql
-...........................................................
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
-
 Return Columns
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 ====================== =================================================
 Type                   Description
@@ -167,7 +160,7 @@ Type                   Description
 ====================== =================================================
 
 See Also
---------
+-------------------------------------------------------------------------------
 
 * :doc:`flow-family`
 * http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html

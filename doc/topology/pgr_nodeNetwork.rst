@@ -10,17 +10,13 @@
 pgr_nodeNetwork
 ===============================================================================
 
-Name
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_nodeNetwork`` - Nodes an network edge table.
 
 :Author: Nicolas Ribot
 :Copyright: Nicolas Ribot, The source code is released under the MIT-X license.
-
-
-Synopsis
--------------------------------------------------------------------------------
 
 The function reads edges from a not "noded" network table and writes the "noded" edges into a new table.
 
@@ -32,9 +28,7 @@ The function reads edges from a not "noded" network table and writes the "noded"
     pgr_nodenetwork(edge_table, tolerance, id, text the_geom, table_ending, rows_where, outall)
     RETURNS TEXT
 
-
-Description
--------------------------------------------------------------------------------
+.. rubric:: Characteristics
 
 A common problem associated with bringing GIS data into pgRouting is the fact that the data is often not "noded" correctly. This will create invalid topologies, which will result in routes that are incorrect.
 
@@ -43,6 +37,7 @@ What we mean by "noded" is that at every intersection in the road network all th
 This function reads the ``edge_table`` table, that has a primary key column ``id`` and geometry column named ``the_geom`` and intersect all the segments in it against all the other segments and then creates a table ``edge_table_noded``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node.
 
 Parameters
+-------------------------------------------------------------------------------
 
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
 :tolerance: ``float8`` tolerance for coincident points (in projection unit)dd
@@ -63,8 +58,7 @@ The output table will have for  ``edge_table_noded``
 
 * New in version 2.0.0
 
-
-Example
+Examples
 -------------------------------------------------------------------------------
 
 Let's create the topology for the data in :doc:`sampledata`
@@ -202,7 +196,6 @@ Now let's analyze the new topology
 	--------------------
  	 OK
 	(1 row)
-
 
 Images
 -------------------------------------------------------------------------------

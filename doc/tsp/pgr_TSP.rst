@@ -10,7 +10,7 @@
 pgr_TSP
 =============================================================================
 
-Name
+Description
 -------------------------------------------------------------------------------
 
 * ``pgr_TSP`` - Returns a route that visits all the nodes exactly once.
@@ -19,20 +19,19 @@ Name
 
 * Signature changed 2.3.0
 
-
-Synopsis
--------------------------------------------------------------------------------
+.. Rubric:: Characteristics
 
 The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:
 
-  - Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
+- Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
 
 This implementation uses simulated annealing to return the approximate solution when the input is given in the form of matrix cell contents.
 The matrix information must be symmetrical.
 
-
-Signature Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. Rubric:: Summary
 
 .. code-block:: none
 
@@ -45,15 +44,10 @@ Signature Summary
         randomize,
     RETURNS SETOF (seq, node, cost, agg_cost)
 
-Signatures
--------------------------------------------------------------------------------
-
-
 .. index::
     single: TSP(Basic Use)
 
-Basic Use
-...............................................................................
+.. rubric:: Basic Use
 
 .. code-block:: none
 
@@ -75,8 +69,7 @@ and the default is to have random execution, the example is wrapping the actual 
 .. index::
     single: TSP(Complete Signature)
 
-Complete Signature
-...............................................................................
+., rubric:: Complete Signature
 
 .. code-block:: none
 
@@ -89,19 +82,16 @@ Complete Signature
         randomize,
     RETURNS SETOF (seq, node, cost, agg_cost)
 
-
-.. rubric:: Example:
+:Example:
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q2
    :end-before: -- q3
 
-
-Description of the Signatures
+Inner query
 -------------------------------------------------------------------------------
 
-Description of the Matrix Cell SQL query
-...............................................................................
+.. rubric:: Description of the Matrix Cell SQL query
 
 ============= =========== =================================================
 Column        Type              Description
@@ -135,11 +125,7 @@ symmetric by fixing the non symmetric values according to your application needs
    :start-after: tsp return values begin
    :end-before: tsp return values end
 
-
-
-
-
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: Using with points of interest.
@@ -154,8 +140,6 @@ To generate a symmetric matrix:
    :end-before: -- q4
 
 The queries use the :doc:`sampledata` network.
-
-
 
 See Also
 -------------------------------------------------------------------------------
