@@ -10,25 +10,23 @@
 pgr_eucledianTSP
 =============================================================================
 
-Name
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_eucledianTSP`` - Returns a route that visits all the coordinates pairs exactly once.
 
 .. rubric:: Availability: 2.3.0
 
-
-Synopsis
--------------------------------------------------------------------------------
-
 The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:
 
-  - Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
+- Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
 
 This implementation uses simulated annealing to return the approximate solution when the input is given in the form of coordinates.
 
-Signature Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -41,15 +39,7 @@ Signature Summary
         randomize,
     RETURNS SETOF (seq, node, cost, agg_cost)
 
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: eucledianTSP(Basic Use)
-
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 .. code-block:: none
 
@@ -65,12 +55,7 @@ and the default is to have random execution, the example is wrapping the actual 
    :start-after: -- q1
    :end-before: -- q2
 
-
-.. index::
-    single: eucledianTSP(Complete Signature)
-
-Complete Signature
-...............................................................................
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
@@ -83,14 +68,19 @@ Complete Signature
         randomize,
     RETURNS SETOF (seq, node, cost, agg_cost)
 
-
 .. rubric:: Example:
 
 .. literalinclude:: doc-pgr_eucledianTSP.queries
    :start-after: -- q2
    :end-before: -- q3
 
-Description of the Signatures
+Parameters
+-------------------------------------------------------------------------------
+.. literalinclude:: TSP-family.rst
+   :start-after: tsp control parameters begin
+   :end-before: tsp control parameters end
+
+Inner query
 -------------------------------------------------------------------------------
 
 Description of the coordinates SQL query
@@ -104,22 +94,16 @@ Column  Type              Description
 **y**   ``FLOAT``   Y value of the coordinate.
 ======= =========== =================================================
 
-
 When the value of **id** is not given then the coordinates will receive an **id** starting from 1, in the order given.
 
-
-.. literalinclude:: TSP-family.rst
-   :start-after: tsp control parameters begin
-   :end-before: tsp control parameters end
-
+Result Columns
+-------------------------------------------------------------------------------
 
 .. literalinclude:: TSP-family.rst
    :start-after: tsp return values begin
    :end-before: tsp return values end
 
-
-
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: Skipping the Simulated Annealing & showing some process information
@@ -128,16 +112,11 @@ Examples
    :start-after: -- q3
    :end-before: -- q4
 
-
-
 The queries use the :doc:`sampledata` network.
-
 
 .. rubric:: History
 
 * New in version 2.3.0
-
-
 
 See Also
 -------------------------------------------------------------------------------

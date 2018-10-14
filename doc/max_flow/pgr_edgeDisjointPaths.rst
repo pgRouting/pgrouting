@@ -7,11 +7,10 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-
 pgr_edgeDisjointPaths
 ==========================================
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
@@ -24,12 +23,8 @@ Synopsis
 
 .. Rubric:: Availability: 2.3.0
 
-
 Calculates the edge disjoint paths between two groups of vertices.
 Utilizes underlying maximum flow algorithms to calculate the paths.
-
-Characteristics:
-...............................................................................
 
 The main characterics are:
   - Calculates the edge disjoint paths between any two groups of vertices.
@@ -38,8 +33,10 @@ The main characterics are:
   - One to many, many to one, many to many versions are also supported.
   - Uses :doc:`pgr_boykovKolmogorov` to calculate the paths.
 
-Signature Summary
+Signatures 
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -52,12 +49,7 @@ Signature Summary
     RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
     OR EMPTY SET
 
-
-.. index::
-    single: edgeDisjointPaths(Minimal Use)
-
-Minimal use
-...............................................................................
+.. rubric:: Minimal use
 
 .. code-block:: none
 
@@ -80,9 +72,9 @@ One to One
 ...............................................................................
 
 This signature finds the set of dijoint paths from one ``start_vid`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 .. code-block:: none
 
@@ -96,7 +88,6 @@ This signature finds the set of dijoint paths from one ``start_vid`` to one ``en
    :start-after: -- q2
    :end-before: -- q3
 
-
 .. index::
     single: edgeDisjointPaths(One to Many)
 
@@ -104,13 +95,12 @@ One to Many
 ...............................................................................
 
 This signature finds the sset of disjoint paths  from the ``start_vid`` to each one of the ``end_vid`` in ``end_vids``:
-  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  - on an **undirected** graph when ``directed`` flag is set to ``false``.
-  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
-  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
 
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
 
-
+- The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+- The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 .. code-block:: none
 
@@ -124,8 +114,6 @@ This signature finds the sset of disjoint paths  from the ``start_vid`` to each 
    :start-after: -- q3
    :end-before: -- q4
 
-
-
 .. index::
     single: edgeDisjointPaths(Many to One)
 
@@ -133,10 +121,12 @@ Many to One
 ...............................................................................
 
 This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to the ``end_vid``:
-  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  - on an **undirected** graph when ``directed`` flag is set to ``false``.
-  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 .. code-block:: none
 
@@ -150,8 +140,6 @@ This signature finds the set of disjoint paths from each one of the ``start_vid`
    :start-after: -- q4
    :end-before: -- q5
 
-
-
 .. index::
     single: edgeDisjointPaths(Many to Many)
 
@@ -159,10 +147,12 @@ Many to Many
 ...............................................................................
 
 This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to each one of the ``end_vid`` in ``end_vids``:
-  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  - on an **undirected** graph when ``directed`` flag is set to ``false``.
-  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
-  - The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+- O a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+- On an **undirected** graph when ``directed`` flag is set to ``false``.
+
+- The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+- The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 .. code-block:: none
 
@@ -175,8 +165,6 @@ This signature finds the set of disjoint paths from each one of the ``start_vid`
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q5
    :end-before: -- q6
-
-
 
 Parameters
 -------------------------------------------------------------------------------
@@ -203,7 +191,7 @@ Return Columns
     :end-before: return_path_end
 
 See Also
---------
+-------------------------------------------------------------------------------
 
 * :doc:`flow-family`
 

@@ -10,8 +10,7 @@
 pgr_gsoc_vrppdtw - Experimental
 ===============================================================================
 
-
-Name
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_gsoc_vrppdtw`` — Returns a solution for `Pick and Delivery` with `time windows` Vehicle Routing Problem
@@ -20,25 +19,17 @@ Name
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+Signatures
+-------------------------------------------------------------------------------
 
-Signature Summary
------------------
-
+.. rubric:: Summary
 
 .. code-block:: none
 
     pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
     RETURNS SET OF pgr_costResult[]:
 
-Signatures
------------
-
-.. index::
-    single: gsoc_vrppdtw(Complete Signature) - Experimental
-
-
-Complete signature
-...................
+.. rubric:: Complete signature
 
 .. code-block:: none
 
@@ -52,12 +43,21 @@ Complete signature
    :start-after: --q1
    :end-before: --q2
 
+Parameters
+-------------------------------------------------------------------------------
 
-Description of the Signatures
--------------------------------
+================== ===========  =================================================
+Column             Type            Description
+================== ===========  =================================================
+**sql**            ``TEXT``     SQL query as described above.
+**vehicle_num**    ``INTEGER``  Maximum number of vehicles in the result. (currently is ignored)
+**capacity**       ``INTEGER``  Capacity of the vehicle.
+================== ===========  =================================================
 
-Description of the sql query
-.........................................................................................
+Inner query
+-------------------------------------------------------------------------------
+
+.. rubric:: Description of the sql query
 
 ================  ===================   =================================================
 Column            Type                  Description
@@ -80,19 +80,8 @@ Column            Type                  Description
 **dIndex**        ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
 ================  ===================   =================================================
 
-Description of the parameters of the signatures
-.........................................................................................
-
-================== ===========  =================================================
-Column             Type            Description
-================== ===========  =================================================
-**sql**            ``TEXT``     SQL query as described above.
-**vehicle_num**    ``INTEGER``  Maximum number of vehicles in the result. (currently is ignored)
-**capacity**       ``INTEGER``  Capacity of the vehicle.
-================== ===========  =================================================
-
-Description of the result
-.........................................................................................
+Result Columns
+-------------------------------------------------------------------------------
 
 RETURNS SET OF pgr_costResult[]:
 
@@ -106,9 +95,7 @@ Column             Type            Description
                                 - when ``id2 = 0`` for the second time for the same ``id1``, then has the total time for the current ``id1``
 ================== =========== =================================================
 
-
-
-Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 .. rubric:: Example: Total number of rows returned
