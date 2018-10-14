@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_PRIM_T_H_
-#define INCLUDE_C_TYPES_PGR_PRIM_T_H_
+#ifndef INCLUDE_C_TYPES_PGR_PRIM_RT_H_
+#define INCLUDE_C_TYPES_PGR_PRIM_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -30,13 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct {
-    int seq;
     int64_t root_vertex;
     int64_t node;
     int64_t edge;
     double cost;
     double agg_cost;
     double tree_cost;
-} pgr_prim_t;
+} pgr_prim_rt;
 
-#endif  // INCLUDE_C_TYPES_PGR_PRIM_T_H_
+#endif  // INCLUDE_C_TYPES_PGR_PRIM_RT_H_

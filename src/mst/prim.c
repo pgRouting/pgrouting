@@ -41,7 +41,7 @@ void
 process(
         char* edges_sql,
         int64_t root_vertex,
-        pgr_prim_t **result_tuples,
+        pgr_prim_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -102,7 +102,7 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    pgr_prim_t *result_tuples = NULL;
+    pgr_prim_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -137,7 +137,7 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_prim_t*) funcctx->user_fctx;
+    result_tuples = (pgr_prim_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
