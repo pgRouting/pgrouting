@@ -153,9 +153,11 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodes);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodet);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].min_node);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

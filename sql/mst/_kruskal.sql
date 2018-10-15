@@ -31,10 +31,11 @@ CREATE OR REPLACE FUNCTION _pgr_kruskal(
     TEXT,             -- Edge sql
 
     OUT seq INTEGER,            -- Seq
-    OUT component BIGINT,       -- the lowest number of the node in the component
+    OUT component BIGINT,       -- component (the lowest number of the node in the spanning tree)
+    OUT nodes BIGINT,	     	-- Node that its arrived to
+    OUT nodet BIGINT,	     	-- Node that its arrived to
     OUT edge BIGINT,	     	-- Edge linked to that node
-    OUT cost FLOAT,             -- Cost of edge
-    OUT tree_cost FLOAT)        -- Spanning tree cost
+    OUT cost FLOAT)             -- Cost of edge
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'kruskal'
 LANGUAGE C VOLATILE STRICT;
