@@ -189,8 +189,8 @@ Pgr_prim<G>::disconnectedPrim(const G &graph) {
     std::vector<std::vector<int64_t>> component;
     component.resize(num_comps);
 
-    for (size_t i = 0; i < totalNodes; i++) {
-        component[components[i]].push_back(i);
+    for (auto v : boost::make_iterator_range(vertices(graph.graph))) {
+        component[components[v]].push_back(v);
     }
 
     std::vector<pgr_prim_rt> results;
