@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION _pgr_kruskal(
     TEXT,             -- Edge sql
+    /* TODO
+    get_component INTEGER DEFAULT 0, -- 0 = No, 1 = yes with seq numbering, 2 = yes with min vertex id as root vertex
+    order_by INTEGER DEFAULT 0,      -- 0 = order of discovery, 1 = dfs, 2 = bfs
+*/
 
     OUT seq INTEGER,            -- Seq
     OUT component BIGINT,       -- component (the lowest number of the node in the spanning tree)
