@@ -39,8 +39,8 @@ std::vector<pgr_kruskal_t>
 pgr_kruskal(
         G &graph ) {
     std::vector<pgr_kruskal_t> results;
-    Pgr_kruskal< G > fn_kruskal;
-    return fn_kruskal.kruskal(graph);
+    pgrouting::functions::Pgr_kruskal< G > kruskal;
+    return kruskal(graph);
 }
 
 
