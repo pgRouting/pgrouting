@@ -17,6 +17,10 @@ pgr_aStarCost
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* New in v2.4.0
+
 Description
 -------------------------------------------------------------------------------
 
@@ -29,10 +33,6 @@ Description
   * `pgr_aStarCost(` `One to Many`_ `)`
   * `pgr_aStarCost(` `Many to One`_ `)`
   * `pgr_aStarCost(` `Many to Many`_ `)`
-
-.. rubric:: Availability
-
-* New in v2.4.0
 
 Signatures
 -------------------------------------------------------------------------------
