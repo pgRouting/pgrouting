@@ -18,7 +18,7 @@ Function determines a min-cut and the min-cut weight of a connected, undirected 
 
    Boost Graph Inside
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to solve
@@ -36,26 +36,21 @@ the size of any other cut. For an unweighted graph, the minimum cut would simply
 be the cut with the least edges. For a weighted graph, the sum of all edges'
 weight on the cut determines whether it is a minimum cut.
 
-Characteristics
--------------------------------------------------------------------------------
+**The main Characteristics are:**
 
-The main Characteristics are:
+- Process is done only on edges with positive costs.
+- It's implementation is only on undirected graph.
+- Sum of the weights of all edges between the two sets is mincut. 
+  
+  - A **mincut** is a cut having the least weight.
 
-  - Process is done only on edges with positive costs.
+- Values are returned when graph is connected.
 
-  - It's implementation is only on undirected graph.
+  - When there is no edge in graph then EMPTY SET is return.
+  - When the graph is unconnected then EMPTY SET is return.
 
-  - Sum of the weights of all edges between the two sets is mincut. A min-cut
-    is a cut having the least weight.
-
-  - Values are returned when graph is connected.
-
-    - When there is no edge in graph then EMPTY SET is return.
-    - When the graph is unconnected then EMPTY SET is return.
-
-  - Sometimes a graph has multiple min-cuts, but all have the same weight. The this function determines exactly one of the min-cuts as well as its weight.
-
-  - Running time: :math:`O(V*E + V^2*log V)`.
+- Sometimes a graph has multiple min-cuts, but all have the same weight. The this function determines exactly one of the min-cuts as well as its weight.
+- **Running time:** :math:`O(V*E + V^2*log V)`.
 
 
 Signatures
@@ -84,20 +79,17 @@ The signature is for a **undirected** graph.
    :start-after: -- q1
    :end-before: -- q2
 
-Additional example:
+Parameters
+-------------------------------------------------------------------------------
 
-.. literalinclude:: doc-pgr_stoerWagner.queries
-   :start-after: -- q2
-   :end-before: -- q3
+=================== ====================== ========= =================================================
+Parameter           Type                   Default   Description
+=================== ====================== ========= =================================================
+**edges_sql**       ``TEXT``                         SQL query as described above.
+=================== ====================== ========= =================================================
 
-Use pgr_connectedComponents( ) function in query:
-
-.. literalinclude:: doc-pgr_stoerWagner.queries
-   :start-after: -- q3
-   :end-before: -- q4
-
-Description of the edges_sql query for stoerWagner functions
-...............................................................................
+Inner query
+-------------------------------------------------------------------------------
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -122,18 +114,8 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
-
-Description of the parameters of the signatures
-...............................................................................
-
-=================== ====================== ========= =================================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =================================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
-=================== ====================== ========= =================================================
-
-Description of the return values for stoerWagner algorithms
-.............................................................................................................................
+Result Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(seq, edge, cost, mincut)``
 
@@ -145,6 +127,19 @@ Column           Type        Description
 **cost**         ``FLOAT``   Cost to traverse of edge.
 **mincut**       ``FLOAT``   Min-cut weight of a undirected graph.
 ===============  =========== ============================================================
+
+Additional Example:
+-------------------------------------------------------------------------------
+
+.. literalinclude:: doc-pgr_stoerWagner.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+Use pgr_connectedComponents( ) function in query:
+
+.. literalinclude:: doc-pgr_stoerWagner.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------

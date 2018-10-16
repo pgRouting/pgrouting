@@ -22,8 +22,7 @@ In particular, the Prim algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 The prim algorithm was developed in 1930 by Czech mathematician Vojtěch Jarník.
@@ -40,27 +39,20 @@ spanning trees in connected graphs. However, running Prim's algorithm separately
 for each connected component of the graph, then it is called minimum spanning
 forest.
 
-Characteristics
--------------------------------------------------------------------------------
+**The main Characteristics are:**
 
-The main Characteristics are:
+- It's implementation is only on **undirected graph**.
+- Process is done only on edges with positive costs.
+- Span start from chosen root_vertex resulting subgraph.
 
-  - It's implementation is only on **undirected graph**.
+  - When root vertex is not given then result is minimun spanning tree of disconnected graph.
 
-  - Process is done only on edges with positive costs.
+- Values are returned when there is a minimum spanning tree.
 
-  - Span start from chosen root_vertex resulting subgraph.
+  - When there is no edge in graph then EMPTY SET is return.
 
-    - When root vertex is not given then result is minimun spanning tree of disconnected graph.
-
-  - Values are returned when there is a minimum spanning tree.
-
-    - When there is no edge in graph then EMPTY SET is return.
-
-  - The minimum spanning tree is same for any root vertex.
-
-  - Running time: :math:`O(E*log V)`
-
+- The minimum spanning tree is same for any root vertex.
+- Running time: :math:`O(E*log V)`
 
 .. Note: From boost Graph:
    "The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges."
@@ -83,8 +75,8 @@ Signatures
 
 The signature is for a **undirected** graph.
 
-pgr_prim without root vertex
-.......................................
+.. rubric:: pgr_prim without root vertex
+
 :Example:
 
 .. code-block:: none
@@ -98,9 +90,7 @@ When root vertex is not given then result is MST of disconnected graph.
    :start-after: -- q1
    :end-before: -- q2
 
-
-pgr_prim with root vertex
-.......................................
+.. rubric:: pgr_prim with root vertex
 
 :Example:
 
@@ -119,9 +109,22 @@ Results is subgraph which contain root_vertex.
    :start-after: -- q3
    :end-before: -- q4
 
+Parameters
+-------------------------------------------------------------------------------
 
-Description of the edges_sql query for prim functions
-...............................................................................
+=================== ====================== ========= =================================================
+Parameter           Type                   Default   Description
+=================== ====================== ========= =================================================
+**edges_sql**       ``TEXT``                         SQL query as described above.
+**root_vertex**     ``BIGINT``                       Root vertex from where spanning of tree start and
+                                                     resulting in subgraph.
+
+                                                     - In the absence of root vertex the result is
+                                                       MST of disconnected graph.
+=================== ====================== ========= =================================================
+
+Inner query
+-------------------------------------------------------------------------------
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -146,23 +149,10 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
+Result Columns 
+-------------------------------------------------------------------------------
 
-Description of the parameters of the signatures
-...............................................................................
-
-=================== ====================== ========= =================================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =================================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
-**root_vertex**     ``BIGINT``                       Root vertex from where spanning of tree start and
-                                                     resulting in subgraph.
-
-                                                     - In the absence of root vertex the result is
-                                                       MST of disconnected graph.
-=================== ====================== ========= =================================================
-
-Description of the return values for prim algorithms
-.............................................................................................................................
+.. rubric:: For prim algorithms
 
 Returns set of ``(seq, root_vertex, node, edge, cost, agg_cost, tree_cost)``
 
