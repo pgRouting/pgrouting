@@ -111,6 +111,7 @@ Inner query
 .. include:: pgRouting-concepts.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
+
 Result Columns
 -------------------------------------------------------------------------------
 
