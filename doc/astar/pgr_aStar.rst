@@ -17,24 +17,7 @@ pgr_aStar
 
    Boost Graph Inside
 
-Description
--------------------------------------------------------------------------------
-
-The main Characteristics are:
-
-.. include:: aStar-family.rst
-   :start-after: astar general info start
-   :end-before: astar general info end
-
-* The results are equivalent to the union of the results of the `pgr_aStar(` `One to One`_ `)` on the:
-
-  * `pgr_aStar(` `One to Many`_ `)`
-  * `pgr_aStar(` `Many to One`_ `)`
-  * `pgr_aStar(` `Many to Many`_ `)`
-
-* ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
-
-.. rubric:: Availability:
+.. rubric:: Availability
 
 * Proposed on v2.4.0 and Official on v3.0.0:
 
@@ -49,6 +32,23 @@ The main Characteristics are:
 * New on v2.0.0:
 
   * pgr_astar(One to One)
+
+Description
+-------------------------------------------------------------------------------
+
+**The main Characteristics are:**
+
+.. include:: aStar-family.rst
+   :start-after: astar general info start
+   :end-before: astar general info end
+
+* The results are equivalent to the union of the results of the `pgr_aStar(` `One to One`_ `)` on the:
+
+  * `pgr_aStar(` `One to Many`_ `)`
+  * `pgr_aStar(` `Many to One`_ `)`
+  * `pgr_aStar(` `Many to Many`_ `)`
+
+* ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -178,7 +178,8 @@ Parameter        Type                   Description
 
 ================ ====================== =================================================
 
-.. rubric:: Optional Parameters
+Optional Parameters
+...............................................................................
 
 ================ ====================== ======== =================================================
 Parameter        Type                   Default  Description

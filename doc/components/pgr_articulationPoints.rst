@@ -36,9 +36,9 @@ the graph.
 This implementation can only be used with an undirected graph.
 
 The main Characteristics are:
--The returned values are ordered:
-- `node` ascending
-- Running time: :math:`O(V + E)`
+ - The returned values are ordered:
+ - `node` ascending
+ - Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
