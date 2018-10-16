@@ -16,19 +16,17 @@ pgr_lineGraphFull - Experimental
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
+
 pgr_lineGraphFull, converts original directed graph to a directed line graph by converting each vertex to a complete graph and keeping all the original edges. The new connecting edges have a cost 0 and go between the adjacent original edges, respecting the directionality.
 
-A possible application of the resulting graph is "routing with two edge restrictions":
-  - Setting a cost of using the vertex when routing between edges on the connecting edge
-  - Forbid the routing between two edges by removing the connecting edge
+A possible application of the resulting graph is **"routing with two edge restrictions"**:
+
+- Setting a cost of using the vertex when routing between edges on the connecting edge
+- Forbid the routing between two edges by removing the connecting edge
 
 This is possible because each of the intersections (vertices) in the original graph are now complete graphs that have a new edge for each possible turn across that intersection.
-
-Characteristics
--------------------------------------------------------------------------------
 
 The main characteristics are:
   - This function is for directed graphs.
@@ -36,8 +34,10 @@ The main characteristics are:
   - Results are undefined when a duplicated edge id is used in the input graph.
   - Running time: TBD
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -45,14 +45,7 @@ Signature Summary
     RETURNS SET OF (seq, source, target, cost, edge) 
         OR EMPTY SET
 
-Signatures
-------------------------------------------------------------------------------
-
-.. index::
-    single: lineGraphFull(Only signature)
-
-Minimal signature
------------------------------------------------
+.. rubric:: Minimal signature
 
 .. code-block:: none
 
@@ -65,17 +58,10 @@ Minimal signature
    :start-after: -- q1
    :end-before: -- q2
 
-Description of the Signatures
--------------------------------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
 .. pgr_lineGraphFull_parameters_start
 
-Description of the parameters of the signatures
-...............................................................................
+Parameters
+-------------------------------------------------------------------------------
 
 ============== ================== ======== =================================================
 Column         Type               Default     Description
@@ -85,6 +71,12 @@ Column         Type               Default     Description
 
 .. pgr_lineGraphFull_parameters_end
 
+Inner query
+-------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Additional Examples
 -------------------------------------------------------------------------------
@@ -93,8 +85,7 @@ The examples of this section are based on the :doc:`sampledata` network.
 
 The examples include the subgraph including edges 4, 7, 8, and 10 with reverse_cost.
 
-Example for generating the LineGraphFull
--------------------------------------------------------------------------------
+:Example: For generating the LineGraphFull
 
 This example displays how this graph transformation works to create additional edges for each possible turn in a graph.
 
@@ -126,8 +117,7 @@ This example displays how this graph transformation works to create additional e
 
 In the transformed graph, all of the edges from the original graph are still present (yellow), but we now have additional edges for every turn that could be made across vertex 6 (orange).
 
-Example for creating table that identifies transformed vertices
------------------------------------------------------------------------------
+:Example: For creating table that identifies transformed vertices
  
 The vertices in the transformed graph are each created by splitting up the vertices in the original graph. Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph. One of the newly created vertices in the transformed graph will be given the same vertex-id as the vertex that it was created from in the original graph, but the rest of the newly created vertices will have negative vertex ids. Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from
 
@@ -161,8 +151,7 @@ Now our vertex mapping table is complete:
    :start-after: -- q6
    :end-before: -- q7
 
-Example for running a dijkstra's shortest path with turn penalties
------------------------------------------------------------------------------
+:Example: For running a dijkstra's shortest path with turn penalties
 
 One use case for this graph transformation is to be able to run a shortest path search that takes into account the cost or limitation of turning. Below is an example of running a dijkstra's shortest path from vertex 2 to vertex 8 in the original graph, while adding a turn penalty cost of 100 to the turn from edge 4 to edge -7.
 
@@ -181,7 +170,6 @@ Then we must run a dijkstra's shortest path search using all of the vertices in 
 Normally the shortest path from vertex 2 to vertex 8 would have an aggregate cost of 2, but since there is a large penalty for making the turn needed to get this cost, the route goes through vertex 6 to avoid this turn.
 
 If you cross reference the node column in the dijkstra results with the vertex id mapping table, this will show you that the path goes from v2 -> v5 -> v6 -> v5 -> v8 in the original graph.
-
 
 See Also
 -----------------------------------------------------------------------------
