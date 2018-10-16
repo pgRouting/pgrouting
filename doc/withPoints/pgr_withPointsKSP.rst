@@ -10,12 +10,7 @@
 pgr_withPointsKSP - Proposed
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm.
-
 
 .. include:: proposed.rst
    :start-after: begin-warning
@@ -28,15 +23,16 @@ Name
 
 .. rubric:: Availability: 2.2.0
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Modifies the graph to include the points defined in the ``points_sql`` and
 using Yen algorithm, finds the K shortest paths.
 
+Signatures
+-------------------------------------------------------------------------------
 
-Signature Summary
------------------
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -44,26 +40,19 @@ Signature Summary
     pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
-Signatures
------------
-
-.. index::
-    single: withPointsKSP(Minimal Signature) - Proposed
-
-Minimal Usage
-....................................
+.. rubric:: Minimal Usage
 
 The minimal usage:
-    - Is for a **directed** graph.
-    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-    - No **details** are given about distance of other points of the query.
-    - No **heap paths** are returned.
+
+- Is for a **directed** graph.
+- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+- No **details** are given about distance of other points of the query.
+- No **heap paths** are returned.
 
 .. code-block:: none
 
     pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
-
 
 :Example:
 
@@ -71,11 +60,7 @@ The minimal usage:
    :start-after: --q1
    :end-before: --q2
 
-.. index::
-    single: withPointsKSP(Complete Signature) - Proposed
-
-Complete Signature
-....................................
+.. rubric:: Complete Signature
 
 Finds the K shortest paths depending on the optional parameters setup.
 
@@ -85,33 +70,14 @@ Finds the K shortest paths depending on the optional parameters setup.
         directed:=true, heap_paths:=false, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
-
 :Example: With details.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
    :start-after: --q2
    :end-before: --q3
 
-Description of the Signatures
--------------------------------
-
-
-..
-    description of the sql queries
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-.. include:: pgRouting-concepts.rst
-    :start-after: points_sql_start
-    :end-before: points_sql_end
-
-
-
-Description of the parameters of the signatures
-..............................................................
-
+Parameters 
+-------------------------------------------------------------------------------
 
 ================ ================= =================================================
 Parameter        Type              Description
@@ -132,9 +98,21 @@ Parameter        Type              Description
                                    Default is ``false`` which ignores other points of the points_sql.
 ================ ================= =================================================
 
+Inner query
+-------------------------------------------------------------------------------
 
-Description of the return values
-..............................................................
+..
+    description of the sql queries
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: pgRouting-concepts.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+Result Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
 
@@ -156,9 +134,7 @@ Column           Type              Description
 
 ============ =========== =================================================
 
-
-
-Examples
+Additional Examples
 --------------------------------------------------------------------------------------
 
 :Example: Left side driving topology with details.
@@ -178,7 +154,6 @@ The queries use the :doc:`sampledata` network.
 .. rubric:: History
 
 * Proposed in version 2.2
-
 
 See Also
 -------------------------------------------------------------------------------
