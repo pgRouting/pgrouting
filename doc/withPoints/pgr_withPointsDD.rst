@@ -10,17 +10,11 @@
 pgr_withPointsDD - Proposed
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
-
 
 .. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -29,7 +23,7 @@ Name
 
 .. rubric:: Availability: 2.2.0
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Modify the graph to include points and
@@ -37,9 +31,10 @@ using Dijkstra algorithm, extracts all the nodes and points that have costs less
 than or equal to the value ``distance`` from the starting point.
 The edges extracted will conform the corresponding spanning tree.
 
+Signatures
+-------------------------------------------------------------------------------
 
-Signature Summary
------------------
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -48,26 +43,19 @@ Signature Summary
     pgr_withPointsDD(edges_sql, points_sql, start_vids, distance, directed, driving_side, details, equicost)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-Signatures
-------------
-
-.. index::
-    single: withPointsDD(Minimal Use) - proposed
-
-Minimal Use
-..................................
+.. rubric:: Minimal Use
 
 The minimal signature:
-    - Is for a **directed** graph.
-    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-    - No **details** are given about distance of other points of the query.
+
+- Is for a **directed** graph.
+- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+- No **details** are given about distance of other points of the query.
 
 .. code-block:: none
 
     pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
         directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
 
 :Example:
 
@@ -78,8 +66,7 @@ The minimal signature:
 .. index::
     single: withPointsDD(Single Start Vertex) - proposed
 
-Driving distance from a single point
-..............................................
+.. rubric:: Driving distance from a single point
 
 Finds the driving distance depending on the optional parameters setup.
 
@@ -98,8 +85,7 @@ Finds the driving distance depending on the optional parameters setup.
 .. index::
     single: withPointsDD(Multiple Starting Vertices) - proposed
 
-Driving distance from many starting points
-..................................................
+.. rubric:: Driving distance from many starting points
 
 Finds the driving distance depending on the optional parameters setup.
 
@@ -109,28 +95,8 @@ Finds the driving distance depending on the optional parameters setup.
         directed:=true, driving_side:='b', details:=false, equicost:=false)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-
-
-
-Description of the Signatures
-----------------------------------
-
-..
-    description of the sql queries
-
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-.. include:: pgRouting-concepts.rst
-    :start-after: points_sql_start
-    :end-before: points_sql_end
-
-
-Description of the parameters of the signatures
-........................................................
-
+Parameters 
+-------------------------------------------------------------------------------
 
 ================ ================= =================================================
 Parameter        Type              Description
@@ -150,9 +116,22 @@ Parameter        Type              Description
 **equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.
 ================ ================= =================================================
 
+Inner query
+-------------------------------------------------------------------------------
 
-Description of the return values
-........................................................
+..
+    description of the sql queries
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: pgRouting-concepts.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(seq, node, edge, cost, agg_cost)``
 
@@ -172,10 +151,10 @@ Column           Type              Description
 
 ============ =========== =================================================
 
-
-
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+Additional Examples
 --------------------------------------------------------------------------------------
+
+.. rubric:: Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns.
 
 The examples in this section use the following :ref:`fig1`
 
@@ -191,17 +170,11 @@ The examples in this section use the following :ref:`fig1`
    :start-after: --q4
    :end-before: --q5
 
-
-
-
 The queries use the :doc:`sampledata` network.
-
-
 
 .. rubric:: History
 
 * Proposed in version 2.2
-
 
 See Also
 -------------------------------------------------------------------------------
