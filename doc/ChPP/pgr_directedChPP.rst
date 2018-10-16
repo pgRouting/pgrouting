@@ -10,8 +10,7 @@
 pgr_directedChPP - Experimental
 ============================================
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_directedChPP`` — Calculates the shortest circuit path which contains every edge in a directed graph and starts and ends on the same vertex.
@@ -26,33 +25,21 @@ Synopsis
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Characteristics
------------------
 The main characteristics are:
+- Process is done only on edges with **positive** costs.
+- There is no path when the graph is not connected.
+- We will return **no path found** error if there is no path.
+- Running time: :math:`O(E * (E + V * logV))`
 
-  - Process is done only on edges with **positive** costs.
-  - There is no path when the graph is not connected.
-  - We will return **no path found** error if there is no path.
-  - Running time: :math:`O(E * (E + V * logV))`
+Signatures
+-------------------------------------------------------------------------------
 
-
-Signature Summary
------------------
-
+.. rubric:: Summary
 .. code-block:: none
 
     pgr_directedChPP(edges_sql)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
     OR EMPTY SET
-
-
-.. index::
-    single: directedChPP - Experimental
-
-
-Signature
------------------
 
 :Example:
 
@@ -60,35 +47,29 @@ Signature
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. index::
     single: directedChPP - Experimental
 
-
-Description of the Signatures
---------------------------------------------------------
+Inner query
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-
 .. include:: pgr_directedChPP_Cost.rst
     :start-after: pgr_directedChPP_parameters_start
     :end-before: pgr_directedChPP_parameters_end
 
-
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_start
     :end-before: return_path_end
 
-
-
 See Also
---------
+-------------------------------------------------------------------------------
 
 * :doc:`chinesePostmanProblem-family`
 
