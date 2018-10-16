@@ -14,6 +14,10 @@ pgr_analyzeOneWay
 
 This function analyzes oneway streets in a graph and identifies any flipped segments.
 
+.. rubric:: Availability
+
+* New in version 2.0.0
+
 Description
 -------------------------------------------------------------------------------
 
@@ -83,10 +87,6 @@ The structure of the vertices table is:
 :ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming.
 :eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing.
 :the_geom: ``geometry`` Point geometry of the vertex.
-
-.. rubric:: History
-
-* New in version 2.0.0
 
 Additional Examples
 -------------------------------------------------------------------------------
