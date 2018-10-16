@@ -10,12 +10,7 @@
 pgr_withPoints - Proposed
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_withPoints`` - Returns the shortest path in a graph with additional temporary vertices.
-
 
 .. include:: proposed.rst
    :start-after: begin-warning
@@ -29,14 +24,11 @@ Name
 
 .. rubric:: Availability: 2.2.0
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, find the shortest path(s)
-
-Characteristics:
--------------------------------------------------------------------------------
 
 The main Characteristics are:
 
@@ -62,8 +54,10 @@ The main Characteristics are:
 - Running time: :math:`O(|start\_vids|\times(V \log V + E))`
 
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -74,15 +68,7 @@ Signature Summary
     pgr_withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details)
     RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
-
-Signatures
--------------------
-
-.. index::
-    single: withPoints(Minimal Use) - Proposed
-
-Minimal Use
-.....................................................................
+.. rubric:: Minimal Use
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -94,7 +80,6 @@ The minimal signature:
     pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
-
 :Example: From point 1 to point 3
 
 .. literalinclude:: doc-pgr_withPoints.queries
@@ -105,8 +90,7 @@ The minimal signature:
     single: withPoints(One to One) - Proposed
 
 One to One
-.....................................................................
-
+...............................................................................
 
 .. code-block:: none
 
@@ -114,20 +98,17 @@ One to One
         directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
-
 :Example: From point 1 to vertex 3
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e2
    :end-before: --e3
 
-
-
 .. index::
     single: withPoints(One to Many) - Proposed
 
 One to Many
-.....................................................................
+...............................................................................
 
 .. code-block:: none
 
@@ -135,27 +116,23 @@ One to Many
         directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
-
 :Example: From point 1 to point 3 and vertex 5
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e3
    :end-before: --e4
 
-
-
 .. index::
     single: withPoints(Many to One) - Proposed
 
 Many to One
-.....................................................................
+...............................................................................
 
 .. code-block:: none
 
     pgr_withPoints(edges_sql, points_sql, start_vids, end_vid,
         directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
-
 
 :Example: From point 1 and vertex 2  to point 3
 
@@ -167,8 +144,7 @@ Many to One
     single: withPoints(Many to Many) - Proposed
 
 Many to Many
-.....................................................................
-
+...............................................................................
 
 .. code-block:: none
 
@@ -176,34 +152,14 @@ Many to Many
         directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
-
 :Example: From point 1 and vertex 2  to point 3 and vertex 7
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e5
    :end-before: --q2
 
-
-
-
-Description of the Signatures
----------------------------------
-
-..
-    description of the sql queries
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-.. include:: pgRouting-concepts.rst
-    :start-after: points_sql_start
-    :end-before: points_sql_end
-
-
-Description of the parameters of the signatures
-.....................................................................
-
+Parameters
+-------------------------------------------------------------------------------
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -224,9 +180,22 @@ Parameter        Type                   Description
                                         Default is ``false`` which ignores other points of the points_sql.
 ================ ====================== =================================================
 
+Inner query
+-------------------------------------------------------------------------------
 
-Description of the return values
-.....................................................................
+..
+    description of the sql queries
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: pgRouting-concepts.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(seq, [path_seq,] [start_vid,] [end_vid,] node, edge, cost, agg_cost)``
 
@@ -252,10 +221,8 @@ Column           Type              Description
 
 ============= =========== =================================================
 
-
-
-Examples
---------------------------------------------------------------------------------------
+Additional Examples
+-------------------------------------------------------------------------------
 
 :Example: Which path (if any) passes in front of point 6 or vertex 6 with **right** side driving topology.
 
@@ -275,15 +242,11 @@ Examples
    :start-after: --q4
    :end-before: --q5
 
-
-The queries use the :doc:`sampledata` network.
-
-
+The queries use the :doc:`sampledata` network
 
 .. rubric:: History
 
 * Proposed in version 2.2
-
 
 See Also
 -------------------------------------------------------------------------------

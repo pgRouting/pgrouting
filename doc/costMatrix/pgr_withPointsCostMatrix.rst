@@ -10,18 +10,11 @@
 pgr_withPointsCostMatrix - proposed
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
-
 
 .. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
-
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -30,9 +23,10 @@ Name
 
 .. rubric:: Availability: 2.2.0
 
-
-Signature Summary
+Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -42,15 +36,7 @@ Signature Summary
 
 .. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.
 
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: withPointsCostMatrix(Minimal use) - Proposed
-
-Minimal Signature
-...............................................................................
+.. rubric:: Minimal Signature
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -61,26 +47,22 @@ The minimal signature:
     pgr_withPointsCostMatrix(edges_sql, points_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
 :Example:
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- withPoints q1
    :end-before: -- withPoints q2
 
-
 .. index::
     single: withPointsCostMatrix(Complete Signature) - Proposed
 
-Complete Signature
-...............................................................................
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
     pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids,
         directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
-
 
 :Example: returning a symmetrical cost matrix
 
@@ -92,27 +74,8 @@ Complete Signature
    :start-after: -- withPoints q2
    :end-before: -- withPoints q3
 
-
-
-Description of the Signatures
+Parameters
 -------------------------------------------------------------------------------
-
-..
-    description of the sql queries
-
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-.. include:: pgRouting-concepts.rst
-    :start-after: points_sql_start
-    :end-before: points_sql_end
-
-
-Description of the parameters of the signatures
-...............................................................................
-
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -128,13 +91,25 @@ Parameter        Type                   Description
 
 ================ ====================== =================================================
 
-
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 
+Inner query
+-------------------------------------------------------------------------------
 
-Examples
+..
+    description of the sql queries
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: pgRouting-concepts.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: Use with tsp
@@ -142,8 +117,6 @@ Examples
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- withPoints q3
    :end-before: -- withPoints q4
-
-
 
 See Also
 -------------------------------------------------------------------------------
