@@ -47,8 +47,10 @@ void
 do_pgr_kruskal(
         pgr_edge_t  *data_edges,
         size_t total_edges,
+        int64_t root,
         int order_by,
         bool get_components,
+        bool use_root,
 
         pgr_kruskal_t **return_tuples,
         size_t *return_count,
@@ -76,7 +78,11 @@ do_pgr_kruskal(
         undigraph.insert_edges(data_edges, total_edges);
 
         pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
-        auto results = kruskal(undigraph, order_by, get_components);
+
+        auto results = use_root?
+            kruskal(undigraph, root, order_by) :
+            kruskal(undigraph, order_by, get_components);
+
 
         auto count = results.size();
 

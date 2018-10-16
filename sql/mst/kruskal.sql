@@ -29,8 +29,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_kruskal(
     TEXT,             -- Edge sql
-    order_by INTEGER DEFAULT 0,      -- 0 = order of discovery, 1 = dfs, 2 = bfs
-    get_component BOOLEAN DEFAULT false, -- false = No, true = yes with min vertex id as root vertex
+
+    get_component BOOLEAN DEFAULT false,
+    order_by INTEGER DEFAULT 0,
 
     OUT seq INTEGER,
     OUT root BIGINT,
@@ -44,8 +45,35 @@ CREATE OR REPLACE FUNCTION pgr_kruskal(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, $3);
+    FROM _pgr_kruskal(_pgr_get_statement($1), 0, $3, $2, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_kruskal(text,integer,boolean) IS 'pgr_kruskal(edge_sql): Experimental, Undirected Graph';
+
+
+
+CREATE OR REPLACE FUNCTION pgr_kruskal(
+    TEXT,        -- Edge sql
+    BIGINT, -- root vertex
+
+    order_by INTEGER DEFAULT 1,
+
+    OUT seq INTEGER,
+    OUT root BIGINT,
+    OUT depth BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, $3, true, true);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+
+COMMENT ON FUNCTION pgr_kruskal(TEXT, BOOLEAN, INTEGER) IS 'pgr_kruskal(edge_sql): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskal(TEXT, BIGINT, INTEGER) IS 'pgr_kruskal(edge_sql, root): Experimental, Undirected Graph';

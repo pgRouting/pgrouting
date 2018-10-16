@@ -11,5 +11,12 @@ SELECT * FROM pgr_kruskal(
     order_by := 2,
     get_component := true
 );
-
 \echo -- q3
+SELECT * FROM pgr_kruskal(
+    'SELECT id, source, target, cost, reverse_cost
+         FROM edge_table',
+    5,
+    order_by := 2
+);
+
+\echo -- q4

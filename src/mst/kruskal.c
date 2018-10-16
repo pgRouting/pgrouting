@@ -41,8 +41,10 @@ static
 void
 process(
         char* edges_sql,
+        int64_t root,
         int order_by,
         bool get_components,
+        bool use_root,
 
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
@@ -71,8 +73,10 @@ process(
     char *err_msg = NULL;
     do_pgr_kruskal(
             edges, total_edges,
+            root,
             order_by,
             get_components,
+            use_root,
 
             result_tuples,
             result_count,
@@ -112,8 +116,10 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT32(1),
-                PG_GETARG_BOOL(2),
+                PG_GETARG_INT64(1),
+                PG_GETARG_INT32(2),
+                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 

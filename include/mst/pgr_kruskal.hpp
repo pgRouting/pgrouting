@@ -87,6 +87,11 @@ class Pgr_kruskal {
  public:
      std::vector<pgr_kruskal_t> operator() (
              G &graph,
+             int64_t root,
+             int m_order_by);
+
+     std::vector<pgr_kruskal_t> operator() (
+             G &graph,
              int m_order_by,
              bool m_get_component);
 
@@ -118,6 +123,8 @@ class Pgr_kruskal {
  private:
      bool m_get_component;
      int  m_order_by;
+     int64_t  m_root;
+     bool  m_use_root;
 
      struct InSpanning {
          std::set<E> edges;
@@ -155,11 +162,19 @@ Pgr_kruskal<G>::get_results(
     for (const auto edge : order) {
         auto u = graph.source(edge);
         auto v = graph.target(edge);
+        if (depth[u] == 0 && depth[v] != 0) {
+            std::swap(u, v);
+        }
+
         auto component = m_get_component? m_tree_id[m_components[u]] : 0;
-        if (m_order_by && agg_cost[u] == 0) {
+        if (m_order_by && depth[u] == 0 && depth[v] == 0) {
+            if (m_use_root && graph[u].id != m_root) std::swap(u, v);
+            if (!m_use_root && graph[u].id != component) std::swap(u, v);
+
+            depth[u] = 1;
             results.push_back({
                 component,
-                    0,
+                m_order_by? depth[u] : 0,
                     graph[u].id,
                     -1,
                     0.0,
@@ -228,7 +243,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, m_spanning_tree, {});
 
     /*
-     * order b dfs
+     * order by dfs
      */
     if (m_order_by == 1 ) {
         std::vector<E> visited_order;
@@ -239,11 +254,17 @@ Pgr_kruskal<G>::order_results(const G &graph) {
         return get_results(visited_order, graph);
     }
 
+    std::vector<int64_t> roots;
+    if (m_use_root) {
+        roots.push_back(m_root);
+    } else {
+        roots =  m_tree_id;
+    }
     /*
-     * order biy bfs
+     * order by bfs
      */
     using bfs_visitor = visitors::Bfs_visitor<E>;
-    for (auto root : m_tree_id) {
+    for (auto root : roots) {
         std::vector<E> visited_order;
         boost::breadth_first_search(mst,
                 graph.get_V(root),
@@ -285,6 +306,20 @@ Pgr_kruskal<G>::operator() (
         bool get_component) {
     m_order_by = order_by;
     m_get_component = get_component || (m_order_by == 2);
+    m_use_root = false;
+    return generateKruskal(graph);
+}
+
+template <class G>
+std::vector<pgr_kruskal_t>
+Pgr_kruskal<G>::operator() (
+        G &graph,
+        int64_t root,
+        int order_by) {
+    m_root = root;
+    m_order_by = order_by;
+    m_get_component = true;
+    m_use_root = true;
     return generateKruskal(graph);
 }
 

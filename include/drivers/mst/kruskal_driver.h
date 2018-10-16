@@ -50,8 +50,10 @@ extern "C" {
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
 
+                int64_t root,
                 int order_by,
                 bool get_components,
+                bool use_root,
 
                 pgr_kruskal_t **return_tuples,
                 size_t *return_count,
