@@ -17,22 +17,54 @@ pgr_vrpOneDepot - Experimental
 
 **No documentation available**
 
-Example:
+Description
 -------------------------------------------------------------------------------
 
+TBD
 
-Current Result
-...............................................................................
+The main Characteristics are:
+  - **CRASHES THE SERVER**
+  - TBD
+
+Signatures
+-------------------------------------------------------------------------------
+
+TBD
+
+.. rubric:: Summary 
+
+TBD
+
+Parameters
+-------------------------------------------------------------------------------
+
+TBD
+
+Inner query
+-------------------------------------------------------------------------------
+
+*Description of the edges_sql query for pgr_randomSpanTree functions*
+
+TBD
+
+Result Columns
+-------------------------------------------------------------------------------
 
 .. literalinclude:: doc-pgr_vrpOneDepot.queries
 
+*Description of the return values for pgr_randomSpanTree algorithms*
 
-Data
--------------------------------------------------------------------------------
+TBD
+
+.. rubric:: Data
 
 .. literalinclude:: ../../tools/testers/vrpOneDepot.data
 
 
+Additional Example:
+-------------------------------------------------------------------------------
+
+:Example:
 
 See Also
 -------------------------------------------------------------------------------
