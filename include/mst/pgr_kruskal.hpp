@@ -114,18 +114,41 @@ class Pgr_kruskal {
              T order,
              bool get_component,
              const G &graph) {
-        std::vector<pgr_kruskal_t> results;
-        for (const auto edge : order) {
-            m_results.push_back({
-                get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
-                graph[graph.source(edge)].id,
-                graph[graph.target(edge)].id,
-                graph[edge].id,
-                graph[edge].cost,
-                0
-            });
-        }
-        return m_results;
+         for (const auto edge : order) {
+             m_results.push_back({
+                 get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
+                 graph[graph.source(edge)].id,
+                 graph[graph.target(edge)].id,
+                 graph[edge].id,
+                 graph[edge].cost,
+                 0
+             });
+         }
+         return m_results;
+     }
+
+     std::vector<pgr_kruskal_t> get_agg_cost(
+             bool get_component,
+             const G &graph) {
+         std::vector<pgr_kruskal_t> results;
+         std::vector<double> agg_cost(graph.num_vertices());
+         for (const auto edge : m_results) {
+             if (agg_cost[graph.get_V(edge.nodes)] == 0) {
+                 results.push_back({
+                     edge.component, -1, edge.nodes, -1, 0.0, 0.0 });
+             }
+             agg_cost[graph.get_V(edge.nodet)] = agg_cost[graph.get_V(edge.nodes)] + edge.cost;
+
+             results.push_back({
+                 edge.component,
+                 -1,
+                 edge.nodet,
+                 edge.edge,
+                 edge.cost,
+                 agg_cost[graph.get_V(edge.nodet)],
+             });
+         }
+         return results;
      }
 
  private:
@@ -215,7 +238,8 @@ Pgr_kruskal<G>::order_results(int order_by, bool get_component, const G &graph) 
         using dfs_visitor = visitors::Dfs_visitor<E>;
         boost::depth_first_search(mst, visitor(dfs_visitor(visited_order)));
 
-        return get_results(visited_order, get_component, graph);
+        get_results(visited_order, get_component, graph);
+        return get_agg_cost(get_component, graph);
     }
 
     /*
@@ -231,8 +255,7 @@ Pgr_kruskal<G>::order_results(int order_by, bool get_component, const G &graph) 
         get_results(visited_order, get_component, graph);
     }
 
-
-    return m_results;
+    return get_agg_cost(get_component, graph);
 }
 
 
