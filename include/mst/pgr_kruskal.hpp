@@ -68,13 +68,14 @@ class Dfs_visitor : public boost::default_dfs_visitor {
         explicit Dfs_visitor(
                 std::vector<E> &data) :
             m_data(data)  {}
-        template <class B_G>
+        template <typename B_G>
             void tree_edge(E e, const B_G&) {
                 m_data.push_back(e);
             }
     private:
         std::vector<E> &m_data;
 };
+
 }  // namespace visitors
 
 
@@ -84,16 +85,16 @@ namespace functions {
 template <class G>
 class Pgr_kruskal {
  public:
-     typedef typename G::B_G B_G;
-     typedef typename G::V V;
-     typedef typename G::E E;
-
      std::vector<pgr_kruskal_t> operator() (
              G &graph,
              int order_by,
              bool get_component);
 
  private:
+     typedef typename G::B_G B_G;
+     typedef typename G::V V;
+     typedef typename G::E E;
+
      std::vector<pgr_kruskal_t> generateKruskal(
              G &graph,
              int order_by,
@@ -107,6 +108,25 @@ class Pgr_kruskal {
              int order_by,
              bool get_component,
              const G &graph);
+
+     template <typename T>
+     std::vector<pgr_kruskal_t> get_results(
+             T order,
+             bool get_component,
+             const G &graph) {
+        std::vector<pgr_kruskal_t> results;
+        for (const auto edge : order) {
+            m_results.push_back({
+                get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
+                graph[graph.source(edge)].id,
+                graph[graph.target(edge)].id,
+                graph[edge].id,
+                graph[edge].cost,
+                0
+            });
+        }
+        return m_results;
+     }
 
  private:
      struct InSpanning {
@@ -132,6 +152,7 @@ class Pgr_kruskal {
 
 
 
+/* IMPLEMENTATION */
 
 /* @brief maps component number with smallest original vertex id
  *
@@ -140,11 +161,9 @@ class Pgr_kruskal {
 template <class G>
 std::vector<int64_t>
 Pgr_kruskal<G>::component_id(bool get_component, const G &graph) {
-    //m_results.push_back({2, -1, get_component, -10,-10,-10,-1});
     if (!get_component) {
         return std::vector<int64_t>();
     }
-    //m_results.push_back({3, -1, get_component, -10,-10,-10,-1});
 
     m_components.resize(num_vertices(graph.graph));
 
@@ -173,80 +192,51 @@ Pgr_kruskal<G>::component_id(bool get_component, const G &graph) {
 template <class G>
 std::vector<pgr_kruskal_t>
 Pgr_kruskal<G>::order_results(int order_by, bool get_component, const G &graph) {
-    //m_results.push_back({4, -10, order_by, get_component, -10,-10,-1});
-
     /*
      * No particular order
      */
     if (order_by == 0) {
-        for (const auto edge : spanning_tree.edges) {
-            m_results.push_back({
-                get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
-                std::min(graph[graph.source(edge)].id, graph[graph.target(edge)].id),
-                std::max(graph[graph.source(edge)].id, graph[graph.target(edge)].id),
-                graph[edge].id,
-                graph[edge].cost,
-                0
-            });
-        }
-
-        return m_results;
+        return get_results(spanning_tree.edges, get_component, graph);
     }
 
 
 
-    if (order_by == 1 ) {
-        typedef typename G::B_G B_G;
-        typedef typename G::E E;
+    typedef typename G::B_G B_G;
+    typedef typename G::E E;
 
-        boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, spanning_tree, {});
+    boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, spanning_tree, {});
+
+    /*
+     * order b dfs
+     */
+    if (order_by == 1 ) {
         std::vector<E> visited_order;
 
         using dfs_visitor = visitors::Dfs_visitor<E>;
         boost::depth_first_search(mst, visitor(dfs_visitor(visited_order)));
 
-        for (const auto edge: visited_order) {
-            m_results.push_back({
-                get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
-                graph[graph.source(edge)].id,
-                graph[graph.target(edge)].id,
-                graph[edge].id,
-                graph[edge].cost,
-                0
-            });
-        }
-    } else {
-        typedef typename G::B_G B_G;
-        typedef typename G::E E;
-
-        boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, spanning_tree, {});
-
-        using bfs_visitor = visitors::Bfs_visitor<E>;
-        for (auto root : m_tree_id) {
-            std::vector<E> visited_order;
-            boost::breadth_first_search(mst,
-                    graph.get_V(root),
-                    visitor(bfs_visitor(visited_order)));
-
-            for (const auto edge: visited_order) {
-                m_results.push_back({
-                    get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
-                    graph[graph.source(edge)].id,
-                    graph[graph.target(edge)].id,
-                    graph[edge].id,
-                    graph[edge].cost,
-                    0
-                });
-            }
-        }
+        return get_results(visited_order, get_component, graph);
     }
+
+    /*
+     * order biy bfs
+     */
+    using bfs_visitor = visitors::Bfs_visitor<E>;
+    for (auto root : m_tree_id) {
+        std::vector<E> visited_order;
+        boost::breadth_first_search(mst,
+                graph.get_V(root),
+                visitor(bfs_visitor(visited_order)));
+
+        get_results(visited_order, get_component, graph);
+    }
+
 
     return m_results;
 }
 
 
 
-/* IMPLEMENTATION */
 template <class G>
 std::vector<pgr_kruskal_t>
 Pgr_kruskal<G>::generateKruskal(

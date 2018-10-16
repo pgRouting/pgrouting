@@ -46,9 +46,6 @@ process(
 
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;
@@ -120,8 +117,8 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-#if PGSQL_VERSION > 94
-        funcctx->max_calls = (uint32_t)result_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
@@ -148,12 +145,13 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        size_t num  = 7;
+        values = palloc(num * sizeof(Datum));
+        nulls = palloc(num * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
@@ -171,7 +169,6 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        PGR_DBG("Clean up code");
 
         SRF_RETURN_DONE(funcctx);
     }
