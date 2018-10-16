@@ -21,37 +21,40 @@ pgr_randomSpanTree - Experimental
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 TBD
 
-Characteristics
--------------------------------------------------------------------------------
-
-- **CRASHES THE SERVER**
-- TBD
-
+The main Characteristics are:
+  - **CRASHES THE SERVER**
+  - TBD
 
 Signatures
 -------------------------------------------------------------------------------
 
 TBD
 
-
-Description of the edges_sql query for pgr_randomSpanTree functions
-...............................................................................
+.. rubric:: Summary 
 
 TBD
 
-Description of the parameters of the signatures
-...............................................................................
+Parameters
+-------------------------------------------------------------------------------
 
 TBD
 
+Inner query
+-------------------------------------------------------------------------------
 
-Description of the return values for pgr_randomSpanTree algorithms
-.............................................................................................................................
+*Description of the edges_sql query for pgr_randomSpanTree functions*
+
+TBD
+
+Result Columns
+-------------------------------------------------------------------------------
+
+*Description of the return values for pgr_randomSpanTree algorithms*
 
 TBD
 

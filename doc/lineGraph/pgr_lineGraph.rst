@@ -17,19 +17,17 @@ pgr_lineGraph - Experimental
 
    Boost Graph Inside
 
-
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Given a graph G, its line graph L(G) is a graph such that:-
 
-- each vertex of L(G) represents an edge of G
-- two vertices of L(G) are adjacent if and only if their corresponding edges share a common endpoint in G.
+- Each vertex of L(G) represents an edge of G
+- Two vertices of L(G) are adjacent if and only if their corresponding edges share a common endpoint in G.
 
 The following figures show a graph (left, with blue vertices) and its
 Line Graph (right, with green vertices).
@@ -39,8 +37,10 @@ Line Graph (right, with green vertices).
 .. |first| image:: images/lineGraph.png
    :align: middle
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -48,15 +48,7 @@ Signature Summary
     RETURNS SET OF (seq, source, target, cost, reverse_cost)
         OR EMPTY SET
 
-
-Signatures
--------------------------------------------------------------------------------
-
-.. index::
-    single: lineGraph(Minimal Use)
-
-Minimal signature
-.......................................
+.. rubric:: Minimal signature
 
 .. code-block:: none
 
@@ -71,12 +63,10 @@ The minimal signature is for a **directed** graph:
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. index::
     single: lineGraph(Complete signature)
 
-Complete Signature
-.......................................
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
@@ -84,8 +74,9 @@ Complete Signature
     RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 
 This signature returns the Line Graph of the current graph:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+-  On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+-  On an **undirected** graph when ``directed`` flag is set to ``false``.
 
 :Example:
 
@@ -93,17 +84,7 @@ This signature returns the Line Graph of the current graph:
    :start-after: -- q2
    :end-before: -- q3
 
-
-
-Description of the Signatures
--------------------------------------------------------------------------------
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-
-Description of the parameters of the signatures
+Parameters 
 -------------------------------------------------------------------------------
 
 ======================= ====================== =================================================
@@ -114,7 +95,14 @@ Column                  Type                   Description
                                                * When ``false`` the graph is considered as `Undirected`.
 ======================= ====================== =================================================
 
-Description of the return values
+Inner query
+-------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Result Columns
 -------------------------------------------------------------------------------
 
 RETURNS SETOF  (seq, source, target, cost, reverse_cost)
@@ -140,7 +128,6 @@ Column                       Type                Description
 
                                                  * When `negative`: edge (`target`, `source`) does not exist, therefore it’s not part of the graph.
 ============================ =================   ===================================================================
-
 
 See Also
 -------------------------------------------------------------------------------
