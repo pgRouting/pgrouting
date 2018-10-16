@@ -22,7 +22,7 @@ In particular, the Kruskal algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Kruskal's algorithm is a minimum-spanning-tree algorithm which finds an edge
@@ -34,23 +34,16 @@ vertex, where the total weight of all the edges in the tree is minimized. If the
 graph is not connected, then it finds a minimum spanning forest (a minimum
 spanning tree for each connected component).
 
-Characteristics
--------------------------------------------------------------------------------
+**The main Characteristics are:**
 
-The main Characteristics are:
+- It's implementation is only on **undirected graph**.
+- Process is done only on edges with positive costs.
+- Edges are in ascending order by weight for each component.
+- Values are returned when there is a minimum spanning tree.
 
-  - It's implementation is only on **undirected graph**.
+  - When there is no edge in graph then EMPTY SET is return.
 
-  - Process is done only on edges with positive costs.
-
-  - Edges are in ascending order by weight for each component.
-
-  - Values are returned when there is a minimum spanning tree.
-
-    - When there is no edge in graph then EMPTY SET is return.
-
-  - Running time: :math:`O(E * log E)`
-
+- Running time: :math:`O(E * log E)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -78,14 +71,19 @@ The signature is for a **undirected** graph.
    :start-after: -- q1
    :end-before: -- q2
 
-Additional example:
+Parameters
+-------------------------------------------------------------------------------
 
-.. literalinclude:: doc-pgr_kruskal.queries
-   :start-after: -- q2
-   :end-before: -- q3
+=================== ====================== ========= =================================================
+Parameter           Type                   Default   Description
+=================== ====================== ========= =================================================
+**edges_sql**       ``TEXT``                         SQL query as described above.
+=================== ====================== ========= =================================================
 
-Description of the edges_sql query for kruskal functions
-...............................................................................
+Inner query
+-------------------------------------------------------------------------------
+
+.. rubric:: Description of the edges_sql query for kruskal functions
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -110,18 +108,10 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
+Result Columns
+-------------------------------------------------------------------------------
 
-Description of the parameters of the signatures
-...............................................................................
-
-=================== ====================== ========= =================================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =================================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
-=================== ====================== ========= =================================================
-
-Description of the return values for kruskal algorithms
-.............................................................................................................................
+.. Rubric:: For kruskal algorithms
 
 Returns set of ``(seq, component, edge, cost, tree_cost)``
 
@@ -134,6 +124,13 @@ Column           Type        Description
 **cost**         ``FLOAT``   Cost to traverse of edge.
 **tree_cost**    ``FLOAT``   Aggregate cost of edges that is covered in spanning.
 ===============  =========== ====================================================
+
+Additional Example
+-------------------------------------------------------------------------------
+
+.. literalinclude:: doc-pgr_kruskal.queries
+   :start-after: -- q2
+   :end-before: -- q3
 
 See Also
 -------------------------------------------------------------------------------
