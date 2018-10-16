@@ -390,8 +390,7 @@ Where:
 
 .. points_sql_start
 
-Description of the Points SQL query
-...............................................................................
+.. rubric:: Description of the Points SQL query
 
 :points_sql: an SQL query, which should return a set of rows with the following columns:
 
