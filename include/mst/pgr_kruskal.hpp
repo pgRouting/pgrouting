@@ -88,16 +88,24 @@ class Pgr_kruskal {
      typedef typename G::V V;
      typedef typename G::E E;
 
-     std::vector<pgr_kruskal_t> operator() (G &graph);
+     std::vector<pgr_kruskal_t> operator() (
+             G &graph,
+             int order_by,
+             bool get_component);
 
  private:
-     std::vector<pgr_kruskal_t> generateKruskal(G &graph);
+     std::vector<pgr_kruskal_t> generateKruskal(
+             G &graph,
+             int order_by,
+             bool get_component);
+
      std::vector<int64_t> component_id(
              bool get_component,
              const G &graph);
+
      std::vector<pgr_kruskal_t> order_results(
-             int get_component,
              int order_by,
+             bool get_component,
              const G &graph);
 
  private:
@@ -132,10 +140,13 @@ class Pgr_kruskal {
 template <class G>
 std::vector<int64_t>
 Pgr_kruskal<G>::component_id(bool get_component, const G &graph) {
+    //m_results.push_back({2, -1, get_component, -10,-10,-10,-1});
     if (!get_component) {
-        m_components.clear();
         return std::vector<int64_t>();
     }
+    //m_results.push_back({3, -1, get_component, -10,-10,-10,-1});
+
+    m_components.resize(num_vertices(graph.graph));
 
     /*
      * Calculate connected components
@@ -161,24 +172,24 @@ Pgr_kruskal<G>::component_id(bool get_component, const G &graph) {
 
 template <class G>
 std::vector<pgr_kruskal_t>
-Pgr_kruskal<G>::order_results(int get_component, int order_by, const G &graph) {
+Pgr_kruskal<G>::order_results(int order_by, bool get_component, const G &graph) {
+    //m_results.push_back({4, -10, order_by, get_component, -10,-10,-1});
 
     /*
-     * order by discovered edge
-     * No aggregate costs given back on result
+     * No particular order
      */
     if (order_by == 0) {
         for (const auto edge : spanning_tree.edges) {
             m_results.push_back({
                 get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
                 std::min(graph[graph.source(edge)].id, graph[graph.target(edge)].id),
-                graph[graph.source(edge)].id,
-                graph[graph.target(edge)].id,
+                std::max(graph[graph.source(edge)].id, graph[graph.target(edge)].id),
                 graph[edge].id,
                 graph[edge].cost,
                 0
             });
         }
+
         return m_results;
     }
 
@@ -197,20 +208,6 @@ Pgr_kruskal<G>::order_results(int get_component, int order_by, const G &graph) {
         for (const auto edge: visited_order) {
             m_results.push_back({
                 get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
-            std::min(graph[graph.source(edge)].id, graph[graph.target(edge)].id),
-            graph[graph.source(edge)].id,
-            graph[graph.target(edge)].id,
-            graph[edge].id,
-            graph[edge].cost,
-            0
-            });
-        }
-    } else {
-#if 1
-        for (const auto edge : spanning_tree.edges) {
-            m_results.push_back({
-                get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
-                std::min(graph[graph.source(edge)].id, graph[graph.target(edge)].id),
                 graph[graph.source(edge)].id,
                 graph[graph.target(edge)].id,
                 graph[edge].id,
@@ -218,25 +215,22 @@ Pgr_kruskal<G>::order_results(int get_component, int order_by, const G &graph) {
                 0
             });
         }
-        m_results.push_back({-1,-1,-1,-1,-1,-1,-1});
-#else
+    } else {
         typedef typename G::B_G B_G;
         typedef typename G::E E;
-        typedef typename G::V V;
 
         boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, spanning_tree, {});
-        std::vector<E> visited_order;
 
         using bfs_visitor = visitors::Bfs_visitor<E>;
-        for (auto root : tree_id) {
+        for (auto root : m_tree_id) {
+            std::vector<E> visited_order;
             boost::breadth_first_search(mst,
-                    root_vertex(root)
-                    .visitor(bfs_visitor(visited_order)));
+                    graph.get_V(root),
+                    visitor(bfs_visitor(visited_order)));
 
             for (const auto edge: visited_order) {
                 m_results.push_back({
                     get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
-                    std::min(graph[graph.source(edge)].id, graph[graph.target(edge)].id),
                     graph[graph.source(edge)].id,
                     graph[graph.target(edge)].id,
                     graph[edge].id,
@@ -245,9 +239,7 @@ Pgr_kruskal<G>::order_results(int get_component, int order_by, const G &graph) {
                 });
             }
         }
-#endif
     }
-
 
     return m_results;
 }
@@ -257,19 +249,14 @@ Pgr_kruskal<G>::order_results(int get_component, int order_by, const G &graph) {
 /* IMPLEMENTATION */
 template <class G>
 std::vector<pgr_kruskal_t>
-Pgr_kruskal<G>::generateKruskal(G &graph) {
-    // TODO move to parameters
-    /* false = no dont get
-     * true = yes get with root_vertex
-     */
-    bool get_component = false;
-    int order_by = 2;
-    get_component = get_component || (order_by == 2);
-
+Pgr_kruskal<G>::generateKruskal(
+        G &graph,
+        int order_by,
+        bool get_component) {
     spanning_tree.clear();
     m_components.clear();
     m_results.clear();
-    m_components.resize(num_vertices(graph.graph));
+    m_tree_id.clear();
 
     boost::kruskal_minimum_spanning_tree(
             graph.graph,
@@ -278,13 +265,17 @@ Pgr_kruskal<G>::generateKruskal(G &graph) {
 
     m_tree_id = component_id(get_component, graph);
 
-    return order_results(get_component, order_by, graph);
+    return order_results(order_by, get_component, graph);
 }
 
 template <class G>
 std::vector<pgr_kruskal_t>
-Pgr_kruskal<G>::operator() (G &graph) {
-    return generateKruskal(graph);
+Pgr_kruskal<G>::operator() (
+        G &graph,
+        int order_by,
+        bool get_component) {
+    get_component = get_component || (order_by == 2);
+    return generateKruskal(graph, order_by, get_component);
 }
 
 

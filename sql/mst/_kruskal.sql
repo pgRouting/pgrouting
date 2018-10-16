@@ -29,15 +29,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION _pgr_kruskal(
     TEXT,             -- Edge sql
-    -- order_by INTEGER DEFAULT 0,      -- 0 = order of discovery, 1 = dfs, 2 = bfs
-    -- get_component INTEGER DEFAULT false, -- false = No, true = yes with min vertex id as root vertex
+    order_by INTEGER,      -- 0 = order of discovery, 1 = dfs, 2 = bfs
+    get_component BOOLEAN, -- false = No, true = yes with min vertex id as root vertex
 
     OUT seq INTEGER,            -- Seq
-    OUT component BIGINT,       -- component (the lowest number of the node in the spanning tree)
-    OUT nodes BIGINT,	     	-- Node that its arrived to
-    OUT nodet BIGINT,	     	-- Node that its arrived to
-    OUT edge BIGINT,	     	-- Edge linked to that node
-    OUT cost FLOAT)             -- Cost of edge
+    OUT root BIGINT,
+    OUT nodes BIGINT,
+    OUT nodet BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'kruskal'
 LANGUAGE C VOLATILE STRICT;

@@ -41,6 +41,9 @@ static
 void
 process(
         char* edges_sql,
+        int order_by,
+        bool get_components,
+
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
     /*
@@ -70,8 +73,10 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
     do_pgr_kruskal(
-            edges,
-            total_edges,
+            edges, total_edges,
+            order_by,
+            get_components,
+
             result_tuples,
             result_count,
             &log_msg,
@@ -110,6 +115,8 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_INT32(1),
+                PG_GETARG_BOOL(2),
                 &result_tuples,
                 &result_count);
 
@@ -157,7 +164,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodet);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].min_node);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

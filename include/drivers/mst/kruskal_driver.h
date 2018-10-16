@@ -49,6 +49,10 @@ extern "C" {
         do_pgr_kruskal(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
+
+                int order_by,
+                bool get_components,
+
                 pgr_kruskal_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
