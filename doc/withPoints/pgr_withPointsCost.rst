@@ -10,17 +10,11 @@
 pgr_withPointsCost - Proposed
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
 ``pgr_withPointsCost`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
-
 
 .. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -29,14 +23,11 @@ Name
 
 .. rubric:: Availability: 2.2.0
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s) found.
-
-Characteristics:
-----------------
 
 The main Characteristics are:
   - It does not return a path.
@@ -76,8 +67,10 @@ The main Characteristics are:
   - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -89,25 +82,20 @@ Signature Summary
 
 .. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.
 
-
-Signatures
-------------
-
 .. index::
     single: withPointsCost(Minimal Use) - proposed
 
-Minimal Use
-.........................................
+.. rubric:: Minimal Use
 
 The minimal signature:
-    - Is for a **directed** graph.
-    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+
+- Is for a **directed** graph.
+- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
 
 .. code-block:: none
 
     pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
-
 
 :Example:
 
@@ -119,8 +107,7 @@ The minimal signature:
     single: withPointsCost(One To One) - proposed
 
 One to One
-.........................................
-
+...............................................................................
 
 .. code-block:: none
 
@@ -128,20 +115,17 @@ One to One
         directed:=true, driving_side:='b')
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-
 :Example:
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --e2
    :end-before: --e3
 
-
 .. index::
     single: withPointsCost(One To Many) - proposed
 
 One to Many
-.........................................
-
+...............................................................................
 
 .. code-block:: none
 
@@ -149,26 +133,23 @@ One to Many
         directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
 :Example:
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --e3
    :end-before: --e4
 
-
 .. index::
     single: withPointsCost(Many To One) - proposed
 
 Many to One
-.........................................
+...............................................................................
 
 .. code-block:: none
 
     pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid,
         directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
-
 
 :Example:
 
@@ -180,7 +161,7 @@ Many to One
     single: withPointsCost(Many To Many) - proposed
 
 Many to Many
-.........................................
+...............................................................................
 
 .. code-block:: none
 
@@ -188,34 +169,14 @@ Many to Many
         directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-
 :Example:
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --e5
    :end-before: --q2
 
-
-
-
-Description of the Signatures
----------------------------------
-
-..
-    description of the sql queries
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-.. include:: pgRouting-concepts.rst
-    :start-after: points_sql_start
-    :end-before: points_sql_end
-
-
-Description of the parameters of the signatures
-.................................................
-
+Parameters
+-------------------------------------------------------------------------------
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -234,9 +195,21 @@ Parameter        Type                   Description
 
 ================ ====================== =================================================
 
+Inner query
+-------------------------------------------------------------------------------
+..
+    description of the sql queries
 
-Description of the return values
-.................................................
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: pgRouting-concepts.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 
@@ -248,10 +221,8 @@ Column           Type              Description
 **agg_cost**  ``FLOAT``   Aggregate cost from ``start_vid`` to ``end_vid``.
 ============= =========== =================================================
 
-
-
-Examples
---------------------------------------------------------------------------------------
+Additional Examples
+-------------------------------------------------------------------------------
 
 :Example: With **right** side driving topology.
 
@@ -271,15 +242,11 @@ Examples
    :start-after: --q4
    :end-before: --q5
 
-
 The queries use the :doc:`sampledata` network.
-
-
 
 .. rubric:: History
 
 * Proposed in version 2.2
-
 
 See Also
 -------------------------------------------------------------------------------

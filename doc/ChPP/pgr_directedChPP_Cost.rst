@@ -10,12 +10,10 @@
 pgr_directedChPP_Cost - Experimental
 ============================================
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_directedChPP_Cost`` — Calculates the minimum costs of a circuit path which contains every edge in a directed graph and starts and ends on the same vertex.
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
@@ -26,33 +24,25 @@ Synopsis
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-Characteristics
------------------
 The main characteristics are:
+- Process is done only on edges with **positive** costs.  
+- There is no return value when the graph is not connected.
+- We will return **no path found** error if there is no path.
+- It does not returns a path.
+- Running time: :math:`O(E * (E + V * logV))`
 
-  - Process is done only on edges with **positive** costs.
-  - There is no return value when the graph is not connected.
-  - We will return **no path found** error if there is no path.
-  - It does not returns a path.
-  - Running time: :math:`O(E * (E + V * logV))`
+Signatures
+-------------------------------------------------------------------------------
 
-
-Signature Summary
------------------
+.. rubric:: Summary
 
 .. code-block:: none
 
     pgr_directedChPP_Cost(edges_sql)
     RETURNS FLOAT
 
-
 .. index::
     single: directedChPP_Cost - Experimental
-
-
-Signature
------------------
 
 :Example:
 
@@ -60,24 +50,20 @@ Signature
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. index::
     single: directedChPP_Cost - Experimental
 
-
-Description of the Signatures
---------------------------------------------------------
-
+Inner query
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-
 .. pgr_directedChPP_parameters_start
 
-Description of the Parameters of the Chinese Postman Problem Signatures
-...............................................................................
+Parameters
+-------------------------------------------------------------------------------
 
 ============== ================== ======== =================================================
 Column         Type               Default     Description
@@ -87,10 +73,8 @@ Column         Type               Default     Description
 
 .. pgr_directedChPP_parameters_end
 
-
-
-Description of the return value
-.....................................................................
+Result Columns
+-------------------------------------------------------------------------------
 
 ====================== =================================================
 Type                   Description
@@ -99,7 +83,7 @@ Type                   Description
 ====================== =================================================
 
 See Also
---------
+-------------------------------------------------------------------------------
 
 * :doc:`chinesePostmanProblem-family`
 
