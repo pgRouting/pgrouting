@@ -356,8 +356,7 @@ Where:
 
 .. costFlow_edges_sql_start
 
-Description of the edges_sql query for Min-Cost Max-flow like functions
-...............................................................................
+.. rubric:: Description of the edges_sql query for Min-Cost Max-flow like functions
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -543,8 +542,8 @@ Column                 Type                  Description
 
 .. result_costFlow_start
 
-Description of the Return Values
-.....................................................................
+Result Columns
+-------------------------------------------------------------------------------
 
 =====================  ====================  =================================================
 Column                 Type                  Description

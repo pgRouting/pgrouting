@@ -10,12 +10,10 @@
 pgr_minCostMaxFlow_Cost - Experimental 
 ============================================
 
-
-Synopsis
+Description
 -------------------------------------------------------------------------------
 
 ``pgr_minCostMaxFlow`` — Calculates the minmum cost maximum flow in a directed graph from the source(s) to the targets(s).
-
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
@@ -26,8 +24,7 @@ Synopsis
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
-.. rubric:: Characteristics
+**The main characteristics are:**
 
 - The graph is **directed**.
 - **The cost value of all input edges must be nonnegative.**
@@ -40,8 +37,10 @@ Synopsis
 
 * Running time: :math:`O(U * (E + V * logV))`, where :math:`U` is the value of the max flow. :math:`U` is upper bound on number of iteration. In many real world cases number of iterations is much smaller than :math:`U`.
 
-Signature Summary
------------------
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -51,12 +50,11 @@ Signature Summary
     pgr_minCostMaxFlow_Cost(edges_sql, sources, targets)
     RETURNS FLOAT 
 
-
 .. index::
     single: minCostMaxFlow_Cost(One to One) - Experimental 
 
 One to One
-.....................................................................
+...............................................................................
 
 Calculates the minimum cost maximum flow from the `source` to the `target`.
 
@@ -71,32 +69,11 @@ Calculates the minimum cost maximum flow from the `source` to the `target`.
    :start-after: -- q1
    :end-before: -- q2
 
-
-.. index::
-    single: minCostMaxFlow_Cost(Many to One) - Experimental 
-
-Many to One 
-.....................................................................
-
-Calculates the minimum cost maximum flow from the `sources` to all of the `target`.
-
-.. code-block:: none
-
-    pgr_minCostMaxFlow_Cost(edges_sql, sources, target)
-    RETURNS FLOAT 
-
-:Example:
-
-.. literalinclude:: doc-pgr_minCostMaxFlow_Cost.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-
 .. index::
     single: minCostMaxFlow_Cost(One to Many) - Experimental 
 
 One to Many 
-.....................................................................
+...............................................................................
 
 Calculates the minimum cost maximum flow from the `source` to all of the `targets`.
 
@@ -111,12 +88,30 @@ Calculates the minimum cost maximum flow from the `source` to all of the `target
    :start-after: -- q3
    :end-before: -- q4
 
+.. index::
+    single: minCostMaxFlow_Cost(Many to One) - Experimental 
+
+Many to One 
+...............................................................................
+
+Calculates the minimum cost maximum flow from the `sources` to all of the `target`.
+
+.. code-block:: none
+
+    pgr_minCostMaxFlow_Cost(edges_sql, sources, target)
+    RETURNS FLOAT 
+
+:Example:
+
+.. literalinclude:: doc-pgr_minCostMaxFlow_Cost.queries
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: minCostMaxFlow_Cost(Many to Many) - Experimental 
 
 Many to Many
-.....................................................................
+...............................................................................
 
 Calculates the minimum cost maximum flow from the `sources` to all of the `targets`.
 
@@ -131,19 +126,10 @@ Calculates the minimum cost maximum flow from the `sources` to all of the `targe
    :start-after: -- q4
    :end-before: -- q5
 
-Description of the Signatures
---------------------------------------------------------
-
-
-.. include:: pgRouting-concepts.rst
-    :start-after: costFlow_edges_sql_start
-    :end-before: costFlow_edges_sql_end
-
-
 .. pgr_costFlow_parameters_start
 
-Description of the Parameters of the Cost Flow Signatures
-...............................................................................
+Parameters
+-------------------------------------------------------------------------------
 
 ============== ================== ======== =================================================
 Column         Type               Default     Description
@@ -157,10 +143,15 @@ Column         Type               Default     Description
 
 .. pgr_costFlow_parameters_end
 
+Inner query
+-------------------------------------------------------------------------------
 
+.. include:: pgRouting-concepts.rst
+    :start-after: costFlow_edges_sql_start
+    :end-before: costFlow_edges_sql_end
 
-Description of the return value
-.....................................................................
+Result Columns
+-------------------------------------------------------------------------------
 
 ====================== =================================================
 Type                   Description
@@ -169,7 +160,7 @@ Type                   Description
 ====================== =================================================
 
 See Also
---------
+-------------------------------------------------------------------------------
 
 * :doc:`costFlow-family`
 * https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html
