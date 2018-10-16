@@ -87,106 +87,105 @@ class Pgr_kruskal {
  public:
      std::vector<pgr_kruskal_t> operator() (
              G &graph,
-             int order_by,
-             bool get_component);
+             int m_order_by,
+             bool m_get_component);
 
  private:
      typedef typename G::B_G B_G;
      typedef typename G::V V;
      typedef typename G::E E;
 
-     std::vector<pgr_kruskal_t> generateKruskal(
-             G &graph,
-             int order_by,
-             bool get_component);
+     /* Does all the work */
+     std::vector<pgr_kruskal_t> generateKruskal(G &graph);
 
-     std::vector<int64_t> component_id(
-             bool get_component,
-             const G &graph);
+     /* @brief maps component number with smallest original vertex id */
+     void calculate_component(const G &graph);
 
-     std::vector<pgr_kruskal_t> order_results(
-             int order_by,
-             bool get_component,
-             const G &graph);
+     /** @brief ordering of the results
+      *
+      * Orders by
+      * - no order
+      * - DFS
+      * - BFS
+      */
+     std::vector<pgr_kruskal_t> order_results(const G &graph);
 
      template <typename T>
      std::vector<pgr_kruskal_t> get_results(
              T order,
-             bool get_component,
-             const G &graph) {
-         for (const auto edge : order) {
-             m_results.push_back({
-                 get_component? m_tree_id[m_components[graph.source(edge)]] : 0,
-                 graph[graph.source(edge)].id,
-                 graph[graph.target(edge)].id,
-                 graph[edge].id,
-                 graph[edge].cost,
-                 0
-             });
-         }
-         return m_results;
-     }
-
-     std::vector<pgr_kruskal_t> get_agg_cost(
-             bool get_component,
-             const G &graph) {
-         std::vector<pgr_kruskal_t> results;
-         std::vector<double> agg_cost(graph.num_vertices());
-         for (const auto edge : m_results) {
-             if (agg_cost[graph.get_V(edge.nodes)] == 0) {
-                 results.push_back({
-                     edge.component, -1, edge.nodes, -1, 0.0, 0.0 });
-             }
-             agg_cost[graph.get_V(edge.nodet)] = agg_cost[graph.get_V(edge.nodes)] + edge.cost;
-
-             results.push_back({
-                 edge.component,
-                 -1,
-                 edge.nodet,
-                 edge.edge,
-                 edge.cost,
-                 agg_cost[graph.get_V(edge.nodet)],
-             });
-         }
-         return results;
-     }
+             const G &graph);
 
  private:
+     bool m_get_component;
+     int  m_order_by;
+
      struct InSpanning {
          std::set<E> edges;
          bool operator()(E e) const { return edges.count(e); }
          void clear() { edges.clear(); }
-     } spanning_tree;
+     } m_spanning_tree;
 
      /** m_components[v]:
-      *  - is empty (when get_component = 0)
-      *  - has the component number of vertex v (when get_component != 0)
+      *  - is empty (when m_get_component = 0)
+      *  - has the component number of vertex v (when m_get_component != 0)
       */
      std::vector<size_t> m_components;
      /** m_tree_id[v]:
-      *  - is empty (when get_component = 0)
-      *  - has the component number of vertex v (when get_component = 1)
-      *  - has the min vertex id that belongs to the component (when get_component = 2)
+      *  - is empty (when m_get_component = 0)
+      *  - has the component number of vertex v (when m_get_component = 1)
+      *  - has the min vertex id that belongs to the component (when m_get_component = 2)
       */
      std::vector<int64_t> m_tree_id;
      std::vector<pgr_kruskal_t> m_results;
 
 };
 
-
-
 /* IMPLEMENTATION */
 
-/* @brief maps component number with smallest original vertex id
- *
- *
- */
 template <class G>
-std::vector<int64_t>
-Pgr_kruskal<G>::component_id(bool get_component, const G &graph) {
-    if (!get_component) {
-        return std::vector<int64_t>();
+template <typename T>
+std::vector<pgr_kruskal_t>
+Pgr_kruskal<G>::get_results(
+        T order,
+        const G &graph) {
+    std::vector<pgr_kruskal_t> results;
+    std::vector<double> agg_cost(graph.num_vertices(), 0);
+    std::vector<int64_t> depth(graph.num_vertices(), 0);
+
+    for (const auto edge : order) {
+        auto u = graph.source(edge);
+        auto v = graph.target(edge);
+        auto component = m_get_component? m_tree_id[m_components[u]] : 0;
+        if (m_order_by && agg_cost[u] == 0) {
+            results.push_back({
+                component,
+                    0,
+                    graph[u].id,
+                    -1,
+                    0.0,
+                    0.0 });
+        }
+
+        agg_cost[v] = agg_cost[u] + graph[edge].cost;
+        depth[v] = depth[u] + 1;
+
+        results.push_back({
+            component,
+                m_order_by? depth[v] : 0,
+                graph[v].id,
+                graph[edge].id,
+                graph[edge].cost,
+                m_order_by? agg_cost[v] : 0.0
+        });
     }
+    return results;
+}
+
+
+template <class G>
+void
+Pgr_kruskal<G>::calculate_component(const G &graph) {
+    if (!m_get_component) return;
 
     m_components.resize(num_vertices(graph.graph));
 
@@ -199,27 +198,26 @@ Pgr_kruskal<G>::component_id(bool get_component, const G &graph) {
             graph.graph,
             &m_components[0]);
 
-    std::vector<int64_t> tree_id(num_comps, 0);
+    m_tree_id.resize(num_comps, 0);
 
     for (const auto v : boost::make_iterator_range(vertices(graph.graph))) {
-        tree_id[m_components[v]] =
-            (tree_id[m_components[v]] == 0
-             || tree_id[m_components[v]] >= graph[v].id) ?
-            graph[v].id : tree_id[m_components[v]];
+        m_tree_id[m_components[v]] =
+            (m_tree_id[m_components[v]] == 0
+             || m_tree_id[m_components[v]] >= graph[v].id) ?
+            graph[v].id : m_tree_id[m_components[v]];
     }
-    return tree_id;
 }
 
 
 
 template <class G>
 std::vector<pgr_kruskal_t>
-Pgr_kruskal<G>::order_results(int order_by, bool get_component, const G &graph) {
+Pgr_kruskal<G>::order_results(const G &graph) {
     /*
      * No particular order
      */
-    if (order_by == 0) {
-        return get_results(spanning_tree.edges, get_component, graph);
+    if (m_order_by == 0) {
+        return get_results(m_spanning_tree.edges, graph);
     }
 
 
@@ -227,19 +225,18 @@ Pgr_kruskal<G>::order_results(int order_by, bool get_component, const G &graph) 
     typedef typename G::B_G B_G;
     typedef typename G::E E;
 
-    boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, spanning_tree, {});
+    boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, m_spanning_tree, {});
 
     /*
      * order b dfs
      */
-    if (order_by == 1 ) {
+    if (m_order_by == 1 ) {
         std::vector<E> visited_order;
 
         using dfs_visitor = visitors::Dfs_visitor<E>;
         boost::depth_first_search(mst, visitor(dfs_visitor(visited_order)));
 
-        get_results(visited_order, get_component, graph);
-        return get_agg_cost(get_component, graph);
+        return get_results(visited_order, graph);
     }
 
     /*
@@ -252,33 +249,32 @@ Pgr_kruskal<G>::order_results(int order_by, bool get_component, const G &graph) 
                 graph.get_V(root),
                 visitor(bfs_visitor(visited_order)));
 
-        get_results(visited_order, get_component, graph);
+        auto results = get_results(visited_order, graph);
+        m_results.insert(m_results.end(), results.begin(), results.end());
     }
 
-    return get_agg_cost(get_component, graph);
+    return m_results;
 }
 
 
 
 template <class G>
 std::vector<pgr_kruskal_t>
-Pgr_kruskal<G>::generateKruskal(
-        G &graph,
-        int order_by,
-        bool get_component) {
-    spanning_tree.clear();
+Pgr_kruskal<G>::generateKruskal(G &graph) {
+    m_spanning_tree.clear();
     m_components.clear();
     m_results.clear();
     m_tree_id.clear();
 
     boost::kruskal_minimum_spanning_tree(
             graph.graph,
-            std::inserter(spanning_tree.edges, spanning_tree.edges.end()),
+            std::inserter(m_spanning_tree.edges, m_spanning_tree.edges.end()),
             boost::weight_map(get(&G::G_T_E::cost, graph.graph)));
 
-    m_tree_id = component_id(get_component, graph);
+    calculate_component(graph);
 
-    return order_results(order_by, get_component, graph);
+    m_results = order_results(graph);
+    return m_results;
 }
 
 template <class G>
@@ -287,8 +283,9 @@ Pgr_kruskal<G>::operator() (
         G &graph,
         int order_by,
         bool get_component) {
-    get_component = get_component || (order_by == 2);
-    return generateKruskal(graph, order_by, get_component);
+    m_order_by = order_by;
+    m_get_component = get_component || (m_order_by == 2);
+    return generateKruskal(graph);
 }
 
 

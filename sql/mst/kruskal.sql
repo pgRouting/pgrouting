@@ -34,8 +34,8 @@ CREATE OR REPLACE FUNCTION pgr_kruskal(
 
     OUT seq INTEGER,
     OUT root BIGINT,
-    OUT nodes BIGINT,
-    OUT nodet BIGINT,
+    OUT depth BIGINT,
+    OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
