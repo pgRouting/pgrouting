@@ -30,12 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_kruskal(
     TEXT,             -- Edge sql
     BIGINT,           -- tree root for traversal
-    order_by INTEGER,
     get_component BOOLEAN,
+    order_by INTEGER,
     use_root BOOLEAN,
 
     OUT seq INTEGER,
-    OUT root BIGINT,
+    OUT component BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,

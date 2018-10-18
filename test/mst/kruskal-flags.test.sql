@@ -49,3 +49,16 @@ SELECT * FROM pgr_kruskal(
     5,
     order_by := 2
 );
+
+SELECT * FROM pgr_kruskal(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    5,
+    order_by := 1
+);
+
+SELECT * FROM pgr_kruskal(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    5,
+    order_by := 1,
+    get_component := true
+);

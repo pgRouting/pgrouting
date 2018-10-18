@@ -34,7 +34,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskal(
     order_by INTEGER DEFAULT 0,
 
     OUT seq INTEGER,
-    OUT root BIGINT,
+    OUT component BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -45,7 +45,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskal(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), 0, $3, $2, false);
+    FROM _pgr_kruskal(_pgr_get_statement($1), 0, $2, $3, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
@@ -56,10 +56,11 @@ CREATE OR REPLACE FUNCTION pgr_kruskal(
     TEXT,        -- Edge sql
     BIGINT, -- root vertex
 
+    get_component BOOLEAN DEFAULT false,
     order_by INTEGER DEFAULT 1,
 
     OUT seq INTEGER,
-    OUT root BIGINT,
+    OUT component BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -70,10 +71,10 @@ CREATE OR REPLACE FUNCTION pgr_kruskal(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, $3, true, true);
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, $3, $4, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 
 COMMENT ON FUNCTION pgr_kruskal(TEXT, BOOLEAN, INTEGER) IS 'pgr_kruskal(edge_sql): Experimental, Undirected Graph';
-COMMENT ON FUNCTION pgr_kruskal(TEXT, BIGINT, INTEGER) IS 'pgr_kruskal(edge_sql, root): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskal(TEXT, BIGINT, BOOLEAN, INTEGER) IS 'pgr_kruskal(edge_sql, root): Experimental, Undirected Graph';

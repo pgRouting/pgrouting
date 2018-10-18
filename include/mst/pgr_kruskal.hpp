@@ -46,6 +46,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
+namespace {
+struct found_goals{}; //!< exception for dfs termination
+}  // namespace
+
 namespace  visitors {
 
 template <class E>
@@ -76,6 +80,28 @@ class Dfs_visitor : public boost::default_dfs_visitor {
         std::vector<E> &m_data;
 };
 
+template <typename V, typename E>
+class Dfs_visitor_with_root : public boost::default_dfs_visitor {
+    public:
+        Dfs_visitor_with_root(
+                V root,
+                std::vector<E> &data) :
+            m_data(data),
+            m_root(root) {}
+        template <typename B_G>
+            void tree_edge(E e, const B_G&) {
+                m_data.push_back(e);
+            }
+        template <typename B_G>
+            void start_vertex(V v, const B_G&) {
+                if (v != m_root) throw found_goals();
+            }
+
+    private:
+        std::vector<E> &m_data;
+        V m_root;
+};
+
 }  // namespace visitors
 
 
@@ -88,7 +114,8 @@ class Pgr_kruskal {
      std::vector<pgr_kruskal_t> operator() (
              G &graph,
              int64_t root,
-             int m_order_by);
+             int m_order_by,
+             bool m_get_component);
 
      std::vector<pgr_kruskal_t> operator() (
              G &graph,
@@ -131,6 +158,7 @@ class Pgr_kruskal {
          bool operator()(E e) const { return edges.count(e); }
          void clear() { edges.clear(); }
      } m_spanning_tree;
+     std::vector<E> m_added_order;
 
      /** m_components[v]:
       *  - is empty (when m_get_component = 0)
@@ -232,20 +260,22 @@ Pgr_kruskal<G>::order_results(const G &graph) {
      * No particular order
      */
     if (m_order_by == 0) {
-        return get_results(m_spanning_tree.edges, graph);
+        return get_results(m_added_order, graph);
     }
 
 
 
     typedef typename G::B_G B_G;
     typedef typename G::E E;
+    typedef typename G::V V;
 
+    m_spanning_tree.edges.insert(m_added_order.begin(), m_added_order.end());
     boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, m_spanning_tree, {});
 
     /*
      * order by dfs
      */
-    if (m_order_by == 1 ) {
+    if (!m_use_root && m_order_by == 1 ) {
         std::vector<E> visited_order;
 
         using dfs_visitor = visitors::Dfs_visitor<E>;
@@ -254,12 +284,39 @@ Pgr_kruskal<G>::order_results(const G &graph) {
         return get_results(visited_order, graph);
     }
 
+    if (m_use_root && m_order_by == 1 ) {
+        std::vector<E> visited_order;
+
+        using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
+        try {
+            boost::depth_first_search(
+                    mst,
+                    visitor(dfs_visitor(graph.get_V(m_root), visited_order))
+                    .root_vertex(graph.get_V(m_root))
+                    );
+        } catch(found_goals &) {
+            ;
+        } catch (boost::exception const& ex) {
+            (void)ex;
+            throw;
+        } catch (std::exception &e) {
+            (void)e;
+            throw;
+        } catch (...) {
+            throw;
+        }
+
+        return get_results(visited_order, graph);
+    }
+
+
     std::vector<int64_t> roots;
     if (m_use_root) {
         roots.push_back(m_root);
     } else {
         roots =  m_tree_id;
     }
+
     /*
      * order by bfs
      */
@@ -286,10 +343,11 @@ Pgr_kruskal<G>::generateKruskal(G &graph) {
     m_components.clear();
     m_results.clear();
     m_tree_id.clear();
+    m_added_order.clear();
 
     boost::kruskal_minimum_spanning_tree(
             graph.graph,
-            std::inserter(m_spanning_tree.edges, m_spanning_tree.edges.end()),
+            std::back_inserter(m_added_order),
             boost::weight_map(get(&G::G_T_E::cost, graph.graph)));
 
     calculate_component(graph);
@@ -305,7 +363,7 @@ Pgr_kruskal<G>::operator() (
         int order_by,
         bool get_component) {
     m_order_by = order_by;
-    m_get_component = get_component || (m_order_by == 2);
+    m_get_component = get_component;
     m_use_root = false;
     return generateKruskal(graph);
 }
@@ -315,10 +373,11 @@ std::vector<pgr_kruskal_t>
 Pgr_kruskal<G>::operator() (
         G &graph,
         int64_t root,
-        int order_by) {
+        int order_by,
+        bool get_component) {
     m_root = root;
     m_order_by = order_by;
-    m_get_component = true;
+    m_get_component = get_component;
     m_use_root = true;
     return generateKruskal(graph);
 }

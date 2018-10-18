@@ -42,8 +42,8 @@ void
 process(
         char* edges_sql,
         int64_t root,
-        int order_by,
         bool get_components,
+        int order_by,
         bool use_root,
 
         pgr_kruskal_t **result_tuples,
@@ -114,11 +114,18 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
 
 
         PGR_DBG("Calling process");
+        /*
+           TEXT,             -- Edge sql
+           BIGINT,           -- tree root for traversal
+           get_component BOOLEAN,
+           order_by INTEGER,
+           use_root BOOLEAN
+        */
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
-                PG_GETARG_INT32(2),
-                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(2),
+                PG_GETARG_INT32(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);

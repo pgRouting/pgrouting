@@ -80,7 +80,7 @@ do_pgr_kruskal(
         pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
 
         auto results = use_root?
-            kruskal(undigraph, root, order_by) :
+            kruskal(undigraph, root, order_by, get_components) :
             kruskal(undigraph, order_by, get_components);
 
 
