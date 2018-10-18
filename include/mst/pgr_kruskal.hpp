@@ -309,6 +309,10 @@ Pgr_kruskal<G>::order_results(const G &graph) {
         return get_results(visited_order, graph);
     }
 
+    /*
+     * order by bfs
+     */
+    calculate_component(graph);
 
     std::vector<int64_t> roots;
     if (m_use_root) {
@@ -317,9 +321,6 @@ Pgr_kruskal<G>::order_results(const G &graph) {
         roots =  m_tree_id;
     }
 
-    /*
-     * order by bfs
-     */
     using bfs_visitor = visitors::Bfs_visitor<E>;
     for (auto root : roots) {
         std::vector<E> visited_order;
@@ -350,7 +351,6 @@ Pgr_kruskal<G>::generateKruskal(G &graph) {
             std::back_inserter(m_added_order),
             boost::weight_map(get(&G::G_T_E::cost, graph.graph)));
 
-    calculate_component(graph);
 
     m_results = order_results(graph);
     return m_results;
@@ -363,7 +363,7 @@ Pgr_kruskal<G>::operator() (
         int order_by,
         bool get_component) {
     m_order_by = order_by;
-    m_get_component = get_component;
+    m_get_component = order_by == 2;
     m_use_root = false;
     return generateKruskal(graph);
 }
@@ -376,8 +376,8 @@ Pgr_kruskal<G>::operator() (
         int order_by,
         bool get_component) {
     m_root = root;
-    m_order_by = order_by;
-    m_get_component = get_component;
+    m_order_by = !order_by ? 1 : order_by;
+    m_get_component = order_by == 2;
     m_use_root = true;
     return generateKruskal(graph);
 }

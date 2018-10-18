@@ -24,6 +24,7 @@ BEGIN
 
         q1 := q1 || ')';
 
+        -- RAISE WARNING '%', q1;
 
 
         RETURN query SELECT * FROM lives_ok(q1);

@@ -40,9 +40,9 @@ PG_FUNCTION_INFO_V1(kruskal);
 static
 int
 get_order(char * order_by) {
-    int order = toupper(order_by[0]);
-    if ('D' == order) return 1;
-    else if ('B' == order) return 2;
+    int order = tolower(order_by[0]);
+    if ('d' == order) return 1;
+    if ('b' == order) return 2;
     return 0;
 }
 
@@ -57,6 +57,7 @@ process(
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
     int order_by = get_order(p_order_by);
+    PGR_DBG("order by %ld", order_by);
 
 
     pgr_SPI_connect();
