@@ -38,16 +38,27 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(kruskal);
 
 static
+int
+get_order(char * order_by) {
+    int order = toupper(order_by[0]);
+    if ('D' == order) return 1;
+    else if ('B' == order) return 2;
+    return 0;
+}
+
+static
 void
 process(
         char* edges_sql,
         int64_t root,
-        bool get_components,
-        int order_by,
+        char * p_order_by,
         bool use_root,
 
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
+    int order_by = get_order(p_order_by);
+
+
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;
@@ -75,7 +86,7 @@ process(
             edges, total_edges,
             root,
             order_by,
-            get_components,
+            false,
             use_root,
 
             result_tuples,
@@ -124,9 +135,8 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
-                PG_GETARG_BOOL(2),
-                PG_GETARG_INT32(3),
-                PG_GETARG_BOOL(4),
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                PG_GETARG_BOOL(3),
                 &result_tuples,
                 &result_count);
 
@@ -170,12 +180,11 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodes);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodet);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodes);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodet);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

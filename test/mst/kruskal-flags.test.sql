@@ -1,64 +1,48 @@
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
 SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    get_component := false
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'
 );
 
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    get_component := false
+    order_by := 'dfs'
 );
 
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    get_component := true
+    'dfs'
 );
 
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    order_by := 1
+    order_by := 'dfs'
 );
 
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    order_by := 1,
-    get_component := true
-);
-
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    order_by := 2,
-    get_component := true
-);
-
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    order_by := 2,
-    get_component := true
-);
-
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    order_by := 2,
-    get_component := true
+    'dfs'
 );
 
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     5,
-    order_by := 2
+    order_by := 'dfs'
 );
 
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     5,
-    order_by := 1
+    order_by := 'bfs'
 );
 
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    5,
-    order_by := 1,
-    get_component := true
+    5
 );
+
+SELECT * FROM pgr_kruskal(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    order_by := ''
+);
+
