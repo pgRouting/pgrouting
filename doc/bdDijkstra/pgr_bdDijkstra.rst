@@ -17,9 +17,6 @@ pgr_bdDijkstra
 
    Boost Graph Inside
 
-Description
--------------------------------------------------------------------------------
-
 .. rubric:: Availability:
 
 * Proposed on v2.5.0 and Official on v3.0.0:
@@ -45,6 +42,10 @@ Description
 * New on v2.0.0:
 
   * pgr_bdDijkstra(One to One)
+
+Description
+-------------------------------------------------------------------------------
+* **TBD**
 
 Signatures
 -------------------------------------------------------------------------------
