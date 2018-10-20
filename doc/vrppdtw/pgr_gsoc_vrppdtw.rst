@@ -10,14 +10,20 @@
 pgr_gsoc_vrppdtw - Experimental
 ===============================================================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_gsoc_vrppdtw`` — Returns a solution for `Pick and Delivery` with `time windows` Vehicle Routing Problem
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
+
+.. rubric:: Availability
+
+* **TBD**
+
+Description
+-------------------------------------------------------------------------------
+
+* **TBD**
 
 Signatures
 -------------------------------------------------------------------------------
