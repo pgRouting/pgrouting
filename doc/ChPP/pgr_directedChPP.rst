@@ -10,9 +10,6 @@
 pgr_directedChPP - Experimental
 ============================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_directedChPP`` — Calculates the shortest circuit path which contains every edge in a directed graph and starts and ends on the same vertex.
 
 
@@ -25,7 +22,15 @@ Description
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-The main characteristics are:
+.. rubric:: Availability
+
+* **TBD**
+
+Description
+-------------------------------------------------------------------------------
+
+**The main characteristics are:**
+
 - Process is done only on edges with **positive** costs.
 - There is no path when the graph is not connected.
 - We will return **no path found** error if there is no path.
