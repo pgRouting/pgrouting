@@ -21,7 +21,9 @@ pgr_dijkstraCostMatrix - proposed
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.3.0
+.. rubric:: Availability
+
+2.3.0
 
 Description
 -------------------------------------------------------------------------------
