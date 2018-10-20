@@ -17,6 +17,10 @@ pgr_aStarCostMatrix
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* New on version 2.4.0
+
 Description
 -------------------------------------------------------------------------------
 
@@ -38,10 +42,6 @@ The main Characteristics are:
     * cost from `v` to `u` is :math:`0`
 
 * When the graph is **undirected** the cost matrix is symmetric
-
-.. rubric:: Availability
-
-* New on version 2.4.0
 
 Signatures
 -------------------------------------------------------------------------------
