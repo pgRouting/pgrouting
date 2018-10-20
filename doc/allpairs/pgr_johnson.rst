@@ -10,9 +10,6 @@
 pgr_johnson
 ===============================================================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_johnson`` - Returns the sum of the costs of the shortest path for each
 pair of nodes in the graph using Floyd-Warshall algorithm.
 
@@ -21,9 +18,14 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.0.0
+.. rubric:: Availability
 
-* Renamed on 2.2.0, previous name pgr_apspJohnson
+* 2.0.0
+
+* Re-design of pgr_apspJohnson in Version 2.2.0
+
+Description
+-------------------------------------------------------------------------------
 
 The Johnson algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for each pair of nodes in the graph, for *sparse graphs*.
@@ -115,10 +117,6 @@ Column        Type          Description
 **end_vid**   ``BIGINT``    Identifier of the ending vertex.
 **agg_cost**  ``FLOAT``     Total cost from ``start_vid`` to ``end_vid``.
 ============= ============= =================================================
-
-.. rubric:: History
-
-* Re-design of pgr_apspJohnson in Version 2.2.0
 
 See Also
 -------------------------------------------------------------------------------
