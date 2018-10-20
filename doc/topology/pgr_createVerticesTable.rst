@@ -12,6 +12,10 @@ pgr_createVerticesTable
 
 ``pgr_createVerticesTable`` — Reconstructs the vertices table based on the source and target information.
 
+.. rubric:: Availability
+
+* Renamed in version 2.0.0
+
 Description
 -------------------------------------------------------------------------------
 
@@ -75,10 +79,6 @@ The structure of the vertices table is:
 :ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
 :eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
-
-.. rubric:: History
-
-* Renamed in version 2.0.0
 
 Usage when the edge table's columns MATCH the default values:
 ...............................................................................
