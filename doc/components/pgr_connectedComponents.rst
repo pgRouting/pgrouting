@@ -22,6 +22,10 @@ In particular, the algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+.. rubric:: Availability
+
+* **TBD**
+
 Description
 -------------------------------------------------------------------------------
 
@@ -29,7 +33,7 @@ A connected component of an undirected graph is a set of vertices that are all r
 from each other.
 This implementation can only be used with an undirected graph.
 
-The main Characteristics are:
+**The main Characteristics are:**
 
 - Components are described by vertices
 
