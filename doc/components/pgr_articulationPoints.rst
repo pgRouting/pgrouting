@@ -22,6 +22,10 @@ In particular, the algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+.. rubric:: Availability
+
+* **TBD**
+
 Description
 -------------------------------------------------------------------------------
 
@@ -32,9 +36,9 @@ the graph.
 This implementation can only be used with an undirected graph.
 
 The main Characteristics are:
--The returned values are ordered:
-- `node` ascending
-- Running time: :math:`O(V + E)`
+ - The returned values are ordered:
+ - `node` ascending
+ - Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -58,7 +62,6 @@ The signature is for a **undirected** graph.
    :width: 560px
    :height: 362px
 
-
 .. include:: components-family.rst
     :start-after: components_parameters_start
     :end-before: components_parameters_end
@@ -70,7 +73,6 @@ The signature is for a **undirected** graph.
 .. include:: components-family.rst
     :start-after: return_cutvertices_start
     :end-before: return_cutvertices_end
-
 
 See Also
 -------------------------------------------------------------------------------

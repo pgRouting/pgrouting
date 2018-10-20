@@ -12,6 +12,12 @@ pgr_alphaShape
 
 ``pgr_alphaShape`` — Core function for alpha shape computation.
 
+.. rubric:: Availability
+
+* Renamed in version 2.0.0
+* Added alpha argument with default 0 (use optimal value) in version 2.1.0
+* Supported to return multiple outer/inner ring coordinates with separator row (x=NULL and y=NULL) in version 2.1.0
+
 Description
 -------------------------------------------------------------------------------
 
@@ -43,12 +49,6 @@ Returns a vertex record for each row:
 :y: y-coordinate
 
 If a result includes multiple outer/inner rings, return those with separator row (x=NULL and y=NULL).
-
-.. rubric:: History
-
-* Renamed in version 2.0.0
-* Added alpha argument with default 0 (use optimal value) in version 2.1.0
-* Supported to return multiple outer/inner ring coordinates with separator row (x=NULL and y=NULL) in version 2.1.0
 
 Additional Examples
 -------------------------------------------------------------------------------
