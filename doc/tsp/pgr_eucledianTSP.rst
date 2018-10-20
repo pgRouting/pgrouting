@@ -10,12 +10,14 @@
 pgr_eucledianTSP
 =============================================================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_eucledianTSP`` - Returns a route that visits all the coordinates pairs exactly once.
 
-.. rubric:: Availability: 2.3.0
+.. rubric:: Availability
+
+* New in version 2.3.0
+
+Description
+-------------------------------------------------------------------------------
 
 The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:
 
@@ -113,10 +115,6 @@ Additional Examples
    :end-before: -- q4
 
 The queries use the :doc:`sampledata` network.
-
-.. rubric:: History
-
-* New in version 2.3.0
 
 See Also
 -------------------------------------------------------------------------------
