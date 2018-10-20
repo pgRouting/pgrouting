@@ -7,7 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-
 pgr_dijkstra
 ===============================================================================
 
@@ -53,7 +52,6 @@ The main Characteristics are:
     - `end_vid` ascending
 
   - Running time: :math:`O(| start\_vids | * (V \log V + E))`
-
 
 Signatures
 -------------------------------------------------------------------------------
