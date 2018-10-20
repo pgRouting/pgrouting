@@ -21,6 +21,10 @@ pgr_bridges - Experimental
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+.. rubric:: Availability
+
+* **TBD**
+
 Description
 -------------------------------------------------------------------------------
 
@@ -28,7 +32,7 @@ A bridge is an edge of an undirected graph whose deletion increases its number
 of connected components.
 This implementation can only be used with an undirected graph.
 
-The main Characteristics are:
+**The main Characteristics are:**
 
 - The returned values are ordered:
 
