@@ -17,6 +17,22 @@ pgr_bdAstar
 
    Boost Graph Inside
 
+.. rubric:: Availability:
+
+* Proposed on v2.5.0 and Official on v3.0.0:
+
+  * pgr_astar(One to Many)
+  * pgr_astar(Many to One)
+  * pgr_astar(Many to Many)
+
+* Signature change on v2.5.0
+
+  * pgr_astar(One to One)
+
+* New on v2.0.0:
+
+  * pgr_astar(One to One)
+
 Description
 -------------------------------------------------------------------------------
 
@@ -33,22 +49,6 @@ The main Characteristics are:
   * `pgr_bdAstar(` `Many to Many`_ `)`
 
 * ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
-
-.. rubric:: Availability:
-
-* Proposed on v2.5.0 and Official on v3.0.0:
-
-  * pgr_astar(One to Many)
-  * pgr_astar(Many to One)
-  * pgr_astar(Many to Many)
-
-* Signature change on v2.5.0
-
-  * pgr_astar(One to One)
-
-* New on v2.0.0:
-
-  * pgr_astar(One to One)
 
 Signature
 -------------------------------------------------------------------------------
