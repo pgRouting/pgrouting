@@ -8,10 +8,7 @@
    ****************************************************************************
 
 pgr_maxCardinalityMatch
-============================================================
-
-Description
-------------------------------------------------------------
+===============================================================================
 
 ``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a graph.
 
@@ -20,12 +17,16 @@ Description
 
    Boost Graph Inside
 
-.. Rubric:: Availability:
+.. Rubric:: Availability
 
 * Renamed 2.5.0, Previous name pgr_maximumCardinalityMatching
+
 * New in 2.3.0
 
-.. rubric:: Characteristics
+Description
+-------------------------------------------------------------------------------
+
+**The main characteristics are:**
 
 * A matching or independent edge set in a graph is a set of edges without common vertices.
 * A maximum matching is a matching that contains the largest possible number of edges.
@@ -37,7 +38,6 @@ Description
 * Running time: :math:`O( E*V * \alpha(E,V))`
 
   * :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
-
 
 .. _Ackermann function: https://en.wikipedia.org/wiki/Ackermann_function
 
