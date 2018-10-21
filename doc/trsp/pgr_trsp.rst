@@ -16,10 +16,16 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 	single: trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
 	single: trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
 
+``pgr_trsp`` — Returns the shortest path with support for turn restrictions.
+
+.. rubric:: Availability
+
+* New in version 2.0.0
+
+* Via Support prototypes new in version 2.1.0
+
 Description
 -------------------------------------------------------------------------------
-
-``pgr_trsp`` — Returns the shortest path with support for turn restrictions.
 
 The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of (seq, id1, id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path.
 
@@ -51,7 +57,7 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
                     [, turn_restrict_sql text]);
   RETURNS SETOF (seq, id1, id2, id3, cost)
 
-.. rubric:: Characteristics
+**The main characteristics are:**
 
 The Turn Restricted Shortest Path algorithm (TRSP) is similar to the shooting star in that you can specify turn restrictions.
 
@@ -100,10 +106,6 @@ Returns set of:
 :id2:   edge ID (``-1`` for the last row)
 :cost:  cost to traverse from ``id1`` using ``id2``
 
-.. rubric:: History
-
-* New in version 2.0.0
-
 Support for Vias
 -------------------------------------------------------------------------------
 
@@ -151,10 +153,6 @@ Returns set of:
 :id2:   node ID
 :id3:   edge ID (``-1`` for the last row)
 :cost:  cost to traverse from ``id2`` using ``id3``
-
-.. rubric:: History
-
-* Via Support prototypes new in version 2.1.0
 
 Additional Examples
 -------------------------------------------------------------------------------
