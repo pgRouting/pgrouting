@@ -104,19 +104,10 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_withPointsCostMatrix - proposed</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#minimal-signature">Minimal Signature</a></li>
-<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-points-sql-query">Description of the Points SQL query</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -163,8 +154,6 @@
       
   <div class="section" id="pgr-withpointscostmatrix-proposed">
 <h1>pgr_withPointsCostMatrix - proposed<a class="headerlink" href="#pgr-withpointscostmatrix-proposed" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_withPointsCostMatrix</span></code> - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -187,9 +176,9 @@
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 <p class="rubric">Availability: 2.2.0</p>
-</div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids)
 pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids, directed, driving_side)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -199,11 +188,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <p class="first admonition-title">Note</p>
 <p class="last">There is no <strong>details</strong> flag, unlike the other members of the withPoints family of functions.</p>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="minimal-signature">
-<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Minimal Signature</p>
 <dl class="docutils">
 <dt>The minimal signature:</dt>
 <dd><ul class="first last simple">
@@ -246,9 +231,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="complete-signature">
-<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="index-0">Complete Signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids,
     directed:=true, driving_side:=&#39;b&#39;)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -290,144 +273,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="12%" />
-<col width="14%" />
-<col width="6%" />
-<col width="69%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the edge.</td>
-</tr>
-<tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the first end point vertex of the edge.</td>
-</tr>
-<tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the second end point vertex of the edge.</td>
-</tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>-1</td>
-<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Where:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
-<div class="section" id="description-of-the-points-sql-query">
-<h3>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">points_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="10%" />
-<col width="14%" />
-<col width="76%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>pid</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td><p class="first">(optional) Identifier of the point.</p>
-<ul class="last simple">
-<li>If column present, it can not be NULL.</li>
-<li>If column not present, a sequential identifier will be given automatically.</li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><strong>edge_id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
-<td>Identifier of the “closest” edge to the point.</td>
-</tr>
-<tr class="row-even"><td><strong>fraction</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>Value in &lt;0,1&gt; that indicates the relative postition from the first end point of the edge.</td>
-</tr>
-<tr class="row-odd"><td><strong>side</strong></td>
-<td><code class="docutils literal"><span class="pre">CHAR</span></code></td>
-<td><p class="first">(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the point is:</p>
-<ul class="last simple">
-<li>In the right, left of the edge or</li>
-<li>If it doesn’t matter with ‘b’ or NULL.</li>
-<li>If column not present ‘b’ is considered.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Where:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -501,9 +348,142 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </tbody>
 </table>
 </div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>&#160;</td>
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>-1</td>
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Description of the Points SQL query</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">points_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="14%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>pid</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><p class="first">(optional) Identifier of the point.</p>
+<ul class="last simple">
+<li>If column present, it can not be NULL.</li>
+<li>If column not present, a sequential identifier will be given automatically.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>edge_id</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td>Identifier of the “closest” edge to the point.</td>
+</tr>
+<tr class="row-even"><td><strong>fraction</strong></td>
+<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>Value in &lt;0,1&gt; that indicates the relative postition from the first end point of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>side</strong></td>
+<td><code class="docutils literal"><span class="pre">CHAR</span></code></td>
+<td><p class="first">(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the point is:</p>
+<ul class="last simple">
+<li>In the right, left of the edge or</li>
+<li>If it doesn’t matter with ‘b’ or NULL.</li>
+<li>If column not present ‘b’ is considered.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -562,7 +542,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

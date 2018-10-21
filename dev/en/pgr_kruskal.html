@@ -104,14 +104,12 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_kruskal - Experimental</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-kruskal-functions">Description of the edges_sql query for kruskal functions</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values-for-kruskal-algorithms">Description of the return values for kruskal algorithms</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#additional-example">Additional Example</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -186,8 +184,8 @@ In particular, the Kruskal algorithm implemented by Boost.Graph.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Kruskal’s algorithm is a minimum-spanning-tree algorithm which finds an edge
 of the least possible weight that connects any two trees in the forest. It is
 a greedy algorithm in graph theory as it finds a minimum spanning tree for a
@@ -196,12 +194,8 @@ This means it finds a subset of the edges that forms a tree that includes every
 vertex, where the total weight of all the edges in the tree is minimized. If the
 graph is not connected, then it finds a minimum spanning forest (a minimum
 spanning tree for each connected component).</p>
-</div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
-<p>The main Characteristics are:</p>
-<blockquote>
-<div><ul class="simple">
+<p><strong>The main Characteristics are:</strong></p>
+<ul class="simple">
 <li>It’s implementation is only on <strong>undirected graph</strong>.</li>
 <li>Process is done only on edges with positive costs.</li>
 <li>Edges are in ascending order by weight for each component.</li>
@@ -211,7 +205,6 @@ spanning tree for each connected component).</p>
 </li>
 <li>Running time: <span class="math">\(O(E * log E)\)</span></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
@@ -258,27 +251,35 @@ RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
 
 </pre></div>
 </div>
-<p>Additional example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskal</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-         <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="s1">&#39;</span>
-<span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">tree_cost</span>
-<span class="o">-----+-----------+------+------+-----------</span>
-   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span>
-   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span>
-   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">4</span>
-   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">5</span>
-   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span>
-   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">14</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
-   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">16</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
-<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
 </div>
-<div class="section" id="description-of-the-edges-sql-query-for-kruskal-functions">
-<h3>Description of the edges_sql query for kruskal functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-kruskal-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="22%" />
+<col width="9%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>SQL query as described above.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Description of the edges_sql query for kruskal functions</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -349,33 +350,9 @@ RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
 </tbody>
 </table>
 </div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="19%" />
-<col width="22%" />
-<col width="9%" />
-<col width="49%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>SQL query as described above.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="description-of-the-return-values-for-kruskal-algorithms">
-<h3>Description of the return values for kruskal algorithms<a class="headerlink" href="#description-of-the-return-values-for-kruskal-algorithms" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">For kruskal algorithms</p>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">tree_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -413,6 +390,26 @@ RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
 </tbody>
 </table>
 </div>
+<div class="section" id="additional-example">
+<h2>Additional Example<a class="headerlink" href="#additional-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskal</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+         <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="s1">&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">tree_cost</span>
+<span class="o">-----+-----------+------+------+-----------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">4</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">5</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">14</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">16</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
+<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -441,7 +438,7 @@ RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

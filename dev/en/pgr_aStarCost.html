@@ -112,7 +112,10 @@
 <li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional Parameters</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
 <li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
 </ul>
@@ -169,6 +172,10 @@
 <a class="reference external image-reference" href="http://www.boost.org//libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>New in v2.4.0</li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -210,10 +217,6 @@
 <li><cite>pgr_aStarCost(</cite> <a class="reference internal" href="#many-to-many">Many to Many</a> <cite>)</cite></li>
 </ul>
 </li>
-</ul>
-<p class="rubric">Availability</p>
-<ul class="simple">
-<li>New in v2.4.0</li>
 </ul>
 </div>
 <div class="section" id="signatures">
@@ -416,7 +419,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<p class="rubric">Optional Parameters</p>
+<div class="section" id="optional-parameters">
+<h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -467,6 +471,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
@@ -623,7 +628,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

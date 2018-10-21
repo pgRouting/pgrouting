@@ -104,19 +104,10 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_TSP</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#basic-use">Basic Use</a></li>
-<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-matrix-cell-sql-query">Description of the Matrix Cell SQL query</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -163,8 +154,8 @@
       
   <div class="section" id="pgr-tsp">
 <h1>pgr_TSP<a class="headerlink" href="#pgr-tsp" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">pgr_TSP</span></code> - Returns a route that visits all the nodes exactly once.</li>
 </ul>
@@ -172,20 +163,17 @@
 <ul class="simple">
 <li>Signature changed 2.3.0</li>
 </ul>
-</div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Characteristics</p>
 <p>The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?</li>
 </ul>
-</div></blockquote>
 <p>This implementation uses simulated annealing to return the approximate solution when the input is given in the form of matrix cell contents.
 The matrix information must be symmetrical.</p>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_TSP(matrix_cell_sql)
 pgr_TSP(matrix_cell_sql,
     start_id, end_id,
@@ -196,11 +184,7 @@ pgr_TSP(matrix_cell_sql,
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="basic-use">
-<span id="index-0"></span><h3>Basic Use<a class="headerlink" href="#basic-use" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="index-0">Basic Use</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_TSP(matrix_cell_sql)
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
@@ -235,9 +219,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 14;
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="complete-signature">
-<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p id="index-1">., rubric:: Complete Signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_TSP(matrix_cell_sql,
     start_id, end_id,
     max_processing_time,
@@ -247,7 +229,14 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 14;
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
-<p class="rubric">Example:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_dijkstraCostMatrix(
@@ -280,11 +269,9 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-matrix-cell-sql-query">
-<h3>Description of the Matrix Cell SQL query<a class="headerlink" href="#description-of-the-matrix-cell-sql-query" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Description of the Matrix Cell SQL query</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -375,9 +362,8 @@ Column           Type              Description
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -443,7 +429,7 @@ Column           Type              Description
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

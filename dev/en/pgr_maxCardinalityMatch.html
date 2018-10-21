@@ -104,12 +104,8 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_maxCardinalityMatch</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a><ul>
-<li><a class="reference internal" href="#minimal-use">Minimal Use</a></li>
-<li><a class="reference internal" href="#complete-signature">Complete signature</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
 <li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
@@ -162,8 +158,8 @@
       
   <div class="section" id="pgr-maxcardinalitymatch">
 <h1>pgr_maxCardinalityMatch<a class="headerlink" href="#pgr-maxcardinalitymatch" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_maxCardinalityMatch</span></code> — Calculates a maximum cardinality matching in a graph.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/maximum_matching.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -189,8 +185,9 @@
 </li>
 </ul>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_MaximumCardinalityMatching(edges_sql)
 pgr_MaximumCardinalityMatching(edges_sql, directed)
 
@@ -198,8 +195,7 @@ RETURNS SET OF (seq, edge_id, source, target)
     OR EMPTY SET
 </pre></div>
 </div>
-<div class="section" id="minimal-use">
-<span id="index-0"></span><h3>Minimal Use<a class="headerlink" href="#minimal-use" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Minimal Use</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_MaximumCardinalityMatching(edges_sql)
 RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </pre></div>
@@ -230,9 +226,7 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="complete-signature">
-<span id="index-1"></span><h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="index-0">Complete signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_MaximumCardinalityMatching(edges_sql, directed)
 RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </pre></div>
@@ -263,7 +257,6 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 <span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="parameters">
@@ -421,7 +414,7 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

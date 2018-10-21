@@ -104,11 +104,9 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#support-for-vias">Support for Vias</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -155,12 +153,9 @@
       
   <div class="section" id="pgr-trsp-turn-restriction-shortest-path-trsp">
 <h1>pgr_trsp - Turn Restriction Shortest Path (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<span id="index-0"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_trsp</span></code> — Returns the shortest path with support for turn restrictions.</p>
-</div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of (seq, id1, id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
                   <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span> <span class="p">[,</span><span class="n">restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
@@ -185,9 +180,7 @@
 <span class="k">RETURNS</span> <span class="k">SETOF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">id3</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Characteristics</p>
 <p>The Turn Restricted Shortest Path algorithm (TRSP) is similar to the shooting star in that you can specify turn restrictions.</p>
 <p>The TRSP setup is mostly the same as <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">Dijkstra shortest path</span></a> with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -378,9 +371,16 @@
 <li>Via Support prototypes new in version 2.1.0</li>
 </ul>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p><strong>Without turn restrictions</strong></p>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Without turn restrictions</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span>
@@ -397,7 +397,14 @@
 
 </pre></div>
 </div>
-<p><strong>With turn restrictions</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">With turn restrictions</td>
+</tr>
+</tbody>
+</table>
 <p>Then a query with turn restrictions is created as:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
@@ -521,7 +528,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

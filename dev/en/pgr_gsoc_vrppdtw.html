@@ -104,19 +104,12 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_gsoc_vrppdtw - Experimental</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#complete-signature">Complete signature</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-sql-query">Description of the sql query</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-result">Description of the result</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -163,8 +156,8 @@
       
   <div class="section" id="pgr-gsoc-vrppdtw-experimental">
 <h1>pgr_gsoc_vrppdtw - Experimental<a class="headerlink" href="#pgr-gsoc-vrppdtw-experimental" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></code> — Returns a solution for <cite>Pick and Delivery</cite> with <cite>time windows</cite> Vehicle Routing Problem</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -189,17 +182,14 @@
 </ul>
 </div>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
 RETURNS SET OF pgr_costResult[]:
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="complete-signature">
-<span id="index-0"></span><h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Complete signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
 Returns set of pgr_costResult[]:
 </pre></div>
@@ -225,11 +215,39 @@ Returns set of pgr_costResult[]:
 </pre></div>
 </div>
 </div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="12%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>vehicle_num</strong></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td>Maximum number of vehicles in the result. (currently is ignored)</td>
+</tr>
+<tr class="row-even"><td><strong>capacity</strong></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td>Capacity of the vehicle.</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-sql-query">
-<h3>Description of the sql query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Description of the sql query</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -291,38 +309,8 @@ Returns set of pgr_costResult[]:
 </tbody>
 </table>
 </div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="19%" />
-<col width="12%" />
-<col width="69%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>vehicle_num</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td>Maximum number of vehicles in the result. (currently is ignored)</td>
-</tr>
-<tr class="row-even"><td><strong>capacity</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td>Capacity of the vehicle.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="description-of-the-result">
-<h3>Description of the result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>RETURNS SET OF pgr_costResult[]:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -363,9 +351,8 @@ Returns set of pgr_costResult[]:
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Example: Total number of rows returned</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_gsoc_vrppdtw</span><span class="p">(</span>
     <span class="s1">&#39;SELECT * FROM customer ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
@@ -452,7 +439,7 @@ Returns set of pgr_costResult[]:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

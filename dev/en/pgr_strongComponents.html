@@ -104,15 +104,11 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_strongComponents - Experimental</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
-<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -187,26 +183,21 @@ In particular, the algorithm implemented by Boost.Graph.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>A strongly connected component of a directed graph is a set of vertices that are all reachable
 from each other.
 This implementation can only be used with a directed graph.</p>
-</div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
-<p>The main Characteristics are:</p>
-<blockquote>
-<div><ul class="simple">
+<p><strong>The main Characteristics are:</strong></p>
+<ul class="simple">
 <li>Components are described by vertices</li>
 <li>The returned values are ordered:<ul>
 <li><cite>component</cite> ascending</li>
 <li><cite>node</cite> ascending</li>
 </ul>
 </li>
-<li>Running time: <span class="math">\(O(V + E)\)</span></li>
+<li><strong>Running time:</strong> <span class="math">\(O(V + E)\)</span></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
@@ -253,13 +244,33 @@ RETURNS SET OF (seq, component, n_seq, node)
 </div>
 <a class="reference internal image-reference" href="_images/scc_sampledata.png"><img alt="_images/scc_sampledata.png" src="_images/scc_sampledata.png" style="width: 707px; height: 355px;" /></a>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="24%" />
+<col width="10%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>SQL query as described above.</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="edges-sql">
-<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -330,31 +341,8 @@ RETURNS SET OF (seq, component, n_seq, node)
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="21%" />
-<col width="24%" />
-<col width="10%" />
-<col width="45%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>SQL query as described above.</td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Description of the return values for connected components and strongly connected components</p>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">n_seq,</span> <span class="pre">node)</span></code></p>
 <table border="1" class="docutils">
@@ -416,7 +404,7 @@ RETURNS SET OF (seq, component, n_seq, node)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

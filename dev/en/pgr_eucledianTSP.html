@@ -104,19 +104,15 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_eucledianTSP</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#minimal-signature">Minimal Signature</a></li>
-<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
 <li><a class="reference internal" href="#description-of-the-coordinates-sql-query">Description of the coordinates SQL query</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -163,23 +159,19 @@
       
   <div class="section" id="pgr-euclediantsp">
 <h1>pgr_eucledianTSP<a class="headerlink" href="#pgr-euclediantsp" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_eucledianTSP</span></code> - Returns a route that visits all the coordinates pairs exactly once.</p>
 <p class="rubric">Availability: 2.3.0</p>
-</div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?</li>
 </ul>
-</div></blockquote>
 <p>This implementation uses simulated annealing to return the approximate solution when the input is given in the form of coordinates.</p>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql)
 pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
@@ -190,11 +182,7 @@ pgr_eucledianTSP(coordinates_sql,
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="minimal-signature">
-<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Minimal Signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql)
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
@@ -225,9 +213,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 18;
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="complete-signature">
-<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Complete Signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
     max_processing_time,
@@ -271,9 +257,39 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 </div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+Description Of the Control parameters
+.....................................................................
+
+The control parameters are optional, and have a default value.
+
+=============================== ===========  ============  =================================================
+Parameter                       Type         Default       Description
+=============================== ===========  ============  =================================================
+**start_vid**                   ``BIGINT``    `0`          The greedy part of the implementation will use this identifier.
+**end_vid**                     ``BIGINT``    `0`          Last visiting vertex before returning to start_vid.
+**max_processing_time**         ``FLOAT``    `+infinity`   Stop the annealing processing when the value is reached.
+**tries_per_temperature**       ``INTEGER``  `500`         Maximum number of times a neighbor(s) is searched in each temperature.
+**max_changes_per_temperature** ``INTEGER``  `60`          Maximum number of times the solution is changed in each temperature.
+**max_consecutive_non_changes** ``INTEGER``  `100`         Maximum number of consecutive times the solution is not changed in each temperature.
+**initial_temperature**         ``FLOAT``    `100`         Starting temperature.
+**final_temperature**           ``FLOAT``    `0.1`         Ending temperature.
+**cooling_factor**              ``FLOAT``    `0.9`         Value between between 0 and 1 (not including) used to calculate the next temperature.
+**randomize**                   ``BOOLEAN``  `true`        Choose the random seed
+
+                                                           - true: Use current time as seed
+                                                           - false: Use `1` as seed. Using this value will get the same results with the same data in each execution.
+
+=============================== ===========  ============  =================================================
+
+
+</pre></div>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-coordinates-sql-query">
 <h3>Description of the coordinates SQL query<a class="headerlink" href="#description-of-the-coordinates-sql-query" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -304,34 +320,10 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tbody>
 </table>
 <p>When the value of <strong>id</strong> is not given then the coordinates will receive an <strong>id</strong> starting from 1, in the order given.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
-Description Of the Control parameters
-.....................................................................
-
-The control parameters are optional, and have a default value.
-
-=============================== ===========  ============  =================================================
-Parameter                       Type         Default       Description
-=============================== ===========  ============  =================================================
-**start_vid**                   ``BIGINT``    `0`          The greedy part of the implementation will use this identifier.
-**end_vid**                     ``BIGINT``    `0`          Last visiting vertex before returning to start_vid.
-**max_processing_time**         ``FLOAT``    `+infinity`   Stop the annealing processing when the value is reached.
-**tries_per_temperature**       ``INTEGER``  `500`         Maximum number of times a neighbor(s) is searched in each temperature.
-**max_changes_per_temperature** ``INTEGER``  `60`          Maximum number of times the solution is changed in each temperature.
-**max_consecutive_non_changes** ``INTEGER``  `100`         Maximum number of consecutive times the solution is not changed in each temperature.
-**initial_temperature**         ``FLOAT``    `100`         Starting temperature.
-**final_temperature**           ``FLOAT``    `0.1`         Ending temperature.
-**cooling_factor**              ``FLOAT``    `0.9`         Value between between 0 and 1 (not including) used to calculate the next temperature.
-**randomize**                   ``BOOLEAN``  `true`        Choose the random seed
-
-                                                           - true: Use current time as seed
-                                                           - false: Use `1` as seed. Using this value will get the same results with the same data in each execution.
-
-=============================== ===========  ============  =================================================
-
-
-</pre></div>
 </div>
+</div>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>
 Description of the return columns
 ...............................................................................
@@ -354,9 +346,8 @@ Column           Type              Description
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -441,7 +432,7 @@ Best cost reached = 18.7796
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

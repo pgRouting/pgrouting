@@ -104,12 +104,8 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_edgeDisjointPaths</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a><ul>
-<li><a class="reference internal" href="#characteristics">Characteristics:</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a><ul>
-<li><a class="reference internal" href="#minimal-use">Minimal use</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">One to Many</a></li>
 <li><a class="reference internal" href="#many-to-one">Many to One</a></li>
@@ -168,8 +164,8 @@
       
   <div class="section" id="pgr-edgedisjointpaths">
 <h1>pgr_edgeDisjointPaths<a class="headerlink" href="#pgr-edgedisjointpaths" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_edgeDisjointPaths</span></code> — Calculates edge disjoint paths between two groups of vertices.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -178,8 +174,6 @@
 <p class="rubric">Availability: 2.3.0</p>
 <p>Calculates the edge disjoint paths between two groups of vertices.
 Utilizes underlying maximum flow algorithms to calculate the paths.</p>
-<div class="section" id="characteristics">
-<h3>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>The main characterics are:</dt>
 <dd><ul class="first last simple">
@@ -192,9 +186,9 @@ Utilizes underlying maximum flow algorithms to calculate the paths.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
 pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid [, directed])
 pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids [, directed])
@@ -205,8 +199,7 @@ RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost
 OR EMPTY SET
 </pre></div>
 </div>
-<div class="section" id="minimal-use">
-<span id="index-0"></span><h3>Minimal use<a class="headerlink" href="#minimal-use" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Minimal use</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
@@ -237,17 +230,13 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
 <div class="section" id="one-to-one">
-<span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>This signature finds the set of dijoint paths from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</dt>
-<dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+<span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
+<p>This signature finds the set of dijoint paths from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
+<ul class="simple">
+<li>On a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
+<li>On an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
 </ul>
-</dd>
-</dl>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
@@ -287,17 +276,14 @@ OR EMPTY SET
 </div>
 </div>
 <div class="section" id="one-to-many">
-<span id="index-2"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>This signature finds the sset of disjoint paths  from the <code class="docutils literal"><span class="pre">start_vid</span></code> to each one of the <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</dt>
-<dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+<span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
+<p>This signature finds the sset of disjoint paths  from the <code class="docutils literal"><span class="pre">start_vid</span></code> to each one of the <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</p>
+<ul class="simple">
+<li>On a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
+<li>On an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
 <li>The result is equivalent to the union of the results of the one to one <cite>pgr_edgeDisjointPaths</cite>.</li>
 <li>The extra <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
 </ul>
-</dd>
-</dl>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
 RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
@@ -337,17 +323,14 @@ OR EMPTY SET
 </div>
 </div>
 <div class="section" id="many-to-one">
-<span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>This signature finds the set of disjoint paths from each one of the <code class="docutils literal"><span class="pre">start_vid</span></code> in <code class="docutils literal"><span class="pre">start_vids</span></code> to the <code class="docutils literal"><span class="pre">end_vid</span></code>:</dt>
-<dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+<span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
+<p>This signature finds the set of disjoint paths from each one of the <code class="docutils literal"><span class="pre">start_vid</span></code> in <code class="docutils literal"><span class="pre">start_vids</span></code> to the <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
+<ul class="simple">
+<li>On a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
+<li>On an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
 <li>The result is equivalent to the union of the results of the one to one <cite>pgr_edgeDisjointPaths</cite>.</li>
 <li>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
 </ul>
-</dd>
-</dl>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
 RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
@@ -387,17 +370,14 @@ OR EMPTY SET
 </div>
 </div>
 <div class="section" id="many-to-many">
-<span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>This signature finds the set of disjoint paths from each one of the <code class="docutils literal"><span class="pre">start_vid</span></code> in <code class="docutils literal"><span class="pre">start_vids</span></code> to each one of the <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</dt>
-<dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+<span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
+<p>This signature finds the set of disjoint paths from each one of the <code class="docutils literal"><span class="pre">start_vid</span></code> in <code class="docutils literal"><span class="pre">start_vids</span></code> to each one of the <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</p>
+<ul class="simple">
+<li>O a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
+<li>On an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
 <li>The result is equivalent to the union of the results of the one to one <cite>pgr_edgeDisjointPaths</cite>.</li>
 <li>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> and <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
 </ul>
-</dd>
-</dl>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
@@ -685,7 +665,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

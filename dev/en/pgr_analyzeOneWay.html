@@ -156,6 +156,10 @@
 <h1>pgr_analyzeOneWay<a class="headerlink" href="#pgr-analyzeoneway" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_analyzeOneWay</span></code> — Analyzes oneway Sstreets and identifies flipped segments.</p>
 <p>This function analyzes oneway streets in a graph and identifies any flipped segments.</p>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The analyses of one way segments is pretty simple but can be a powerful tools to identifying some the potential problems created by setting the direction of a segment the wrong way. A node is a <cite>source</cite> if it has edges the exit from that node and no edges enter that node. Conversely, a node is a <cite>sink</cite> if all edges enter the node but none exit that node. For a <cite>source</cite> type node it is logically impossible to exist because no vehicle can exit the node if no vehicle and enter the node. Likewise, if you had a <cite>sink</cite> node you would have an infinite number of vehicle piling up on this node because you can enter it but not leave it.</p>
@@ -245,10 +249,6 @@
 </tr>
 </tbody>
 </table>
-<p class="rubric">History</p>
-<ul class="simple">
-<li>New in version 2.0.0</li>
-</ul>
 </div>
 <div class="section" id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
@@ -304,7 +304,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

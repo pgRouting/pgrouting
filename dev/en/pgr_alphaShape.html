@@ -154,6 +154,12 @@
   <div class="section" id="pgr-alphashape">
 <h1>pgr_alphaShape<a class="headerlink" href="#pgr-alphashape" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_alphaShape</span></code> — Core function for alpha shape computation.</p>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+<li>Added alpha argument with default 0 (use optimal value) in version 2.1.0</li>
+<li>Supported to return multiple outer/inner ring coordinates with separator row (x=NULL and y=NULL) in version 2.1.0</li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Returns a table with (x, y) rows that describe the vertices of an alpha shape.</p>
@@ -203,12 +209,6 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
 </tbody>
 </table>
 <p>If a result includes multiple outer/inner rings, return those with separator row (x=NULL and y=NULL).</p>
-<p class="rubric">History</p>
-<ul class="simple">
-<li>Renamed in version 2.0.0</li>
-<li>Added alpha argument with default 0 (use optimal value) in version 2.1.0</li>
-<li>Supported to return multiple outer/inner ring coordinates with separator row (x=NULL and y=NULL) in version 2.1.0</li>
-</ul>
 </div>
 <div class="section" id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
@@ -292,7 +292,7 @@ The first query, has the output ordered, he second query shows an example usage:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

@@ -302,56 +302,6 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </tbody>
 </table>
 <p class="rubric">Optional Parameters</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="14%" />
-<col width="19%" />
-<col width="7%" />
-<col width="60%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td><code class="docutils literal"><span class="pre">true</span></code></td>
-<td><ul class="first last simple">
-<li>When <code class="docutils literal"><span class="pre">true</span></code> the graph is considered as Directed.</li>
-<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><strong>heuristic</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td><code class="docutils literal"><span class="pre">5</span></code></td>
-<td><p class="first">Heuristic number. Current valid values 0~5. Default <code class="docutils literal"><span class="pre">5</span></code></p>
-<ul class="last simple">
-<li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
-<li>1: h(v) abs(max(dx, dy))</li>
-<li>2: h(v) abs(min(dx, dy))</li>
-<li>3: h(v) = dx * dx + dy * dy</li>
-<li>4: h(v) = sqrt(dx * dx + dy * dy)</li>
-<li>5: h(v) = abs(dx) + abs(dy)</li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><strong>factor</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><code class="docutils literal"><span class="pre">1</span></code></td>
-<td>For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  See <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></td>
-</tr>
-<tr class="row-odd"><td><strong>epsilon</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><code class="docutils literal"><span class="pre">1</span></code></td>
-<td>For less restricted results. <span class="math">\(epsilon &gt;= 1\)</span>.</td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
@@ -542,7 +492,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

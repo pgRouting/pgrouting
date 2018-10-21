@@ -112,7 +112,10 @@
 <li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional Parameters</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
 <li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
 </ul>
@@ -486,7 +489,8 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) o
 </tr>
 </tbody>
 </table>
-<p class="rubric">Optional Parameters</p>
+<div class="section" id="optional-parameters">
+<h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -537,6 +541,7 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) o
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
@@ -742,7 +747,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

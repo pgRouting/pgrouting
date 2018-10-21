@@ -104,20 +104,11 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_johnson</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#minimal-signature">Minimal Signature</a></li>
-<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-id-is-not-necessary">Description of the edges_sql query (id is not necessary)</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values">Description of the return values</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -164,8 +155,8 @@
       
   <div class="section" id="pgr-johnson">
 <h1>pgr_johnson<a class="headerlink" href="#pgr-johnson" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_johnson</span></code> - Returns the sum of the costs of the shortest path for each
 pair of nodes in the graph using Floyd-Warshall algorithm.</p>
 <div class="figure" id="id1">
@@ -179,9 +170,6 @@ pair of nodes in the graph using Floyd-Warshall algorithm.</p>
 <p>The Johnson algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for each pair of nodes in the graph, for <em>sparse graphs</em>.
 It usees the Boost’s implementation which runs in <span class="math">\(O(V E \log V)\)</span> time,</p>
-</div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
@@ -204,18 +192,15 @@ Represent the distance between vertices for which there is no path.<ul>
 </dd>
 </dl>
 </div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql)
 pgr johnson(edges_sql, directed)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
 </div>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="minimal-signature">
-<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Minimal Signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
@@ -241,9 +226,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="complete-signature">
-<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Complete Signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql, directed)
 RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
@@ -274,11 +257,36 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
 </div>
 </div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>Receives  <code class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">directed)</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>directed</strong></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td>(optional) Default is true (is directed). When set to false the graph is considered as Undirected</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="description-of-the-signatures">
-<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-edges-sql-query-id-is-not-necessary">
-<h3>Description of the edges_sql query (id is not necessary)<a class="headerlink" href="#description-of-the-edges-sql-query-id-is-not-necessary" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Description of the edges_sql query (id is not necessary)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -344,35 +352,8 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </tbody>
 </table>
 </div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<p>Receives  <code class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">directed)</span></code></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="79%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional) Default is true (is directed). When set to false the graph is considered as Undirected</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="description-of-the-return-values">
-<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -406,7 +387,6 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 <li>Re-design of pgr_apspJohnson in Version 2.2.0</li>
 </ul>
 </div>
-</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -435,7 +415,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

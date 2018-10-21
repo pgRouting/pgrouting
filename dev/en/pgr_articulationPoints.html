@@ -107,10 +107,7 @@
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
-<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#result-columns-pgr-articulationpoints">Result Columns (pgr_articulationPoints)</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -186,6 +183,10 @@ In particular, the algorithm implemented by Boost.Graph.</p>
 </li>
 </ul>
 </div>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li><strong>TBD</strong></li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Those vertices that belong to more than one biconnected component are called
@@ -193,10 +194,15 @@ articulation points or, equivalently, cut vertices. Articulation points are
 vertices whose removal would increase the number of connected components in
 the graph.
 This implementation can only be used with an undirected graph.</p>
-<p>The main Characteristics are:
--The returned values are ordered:
-- <cite>node</cite> ascending
-- Running time: <span class="math">\(O(V + E)\)</span></p>
+<dl class="docutils">
+<dt>The main Characteristics are:</dt>
+<dd><ul class="first last simple">
+<li>The returned values are ordered:</li>
+<li><cite>node</cite> ascending</li>
+<li>Running time: <span class="math">\(O(V + E)\)</span></li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
@@ -257,8 +263,6 @@ RETURNS SET OF (seq, node)
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="edges-sql">
-<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -329,7 +333,6 @@ RETURNS SET OF (seq, node)
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="result-columns-pgr-articulationpoints">
 <h2>Result Columns (pgr_articulationPoints)<a class="headerlink" href="#result-columns-pgr-articulationpoints" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
@@ -384,7 +387,7 @@ RETURNS SET OF (seq, node)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

@@ -104,16 +104,11 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_prim - Experimental</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#pgr-prim-without-root-vertex">pgr_prim without root vertex</a></li>
-<li><a class="reference internal" href="#pgr-prim-with-root-vertex">pgr_prim with root vertex</a></li>
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-prim-functions">Description of the edges_sql query for prim functions</a></li>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values-for-prim-algorithms">Description of the return values for prim algorithms</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -188,8 +183,8 @@ In particular, the Prim algorithm implemented by Boost.Graph.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The prim algorithm was developed in 1930 by Czech mathematician Vojtěch Jarník.
 It is a greedy algorithm that finds a minimum spanning tree for a weighted
 undirected graph. This means it finds a subset of the edges that forms a tree
@@ -202,12 +197,8 @@ graph; in contrast, the most basic form of Prim’s algorithm only finds minimum
 spanning trees in connected graphs. However, running Prim’s algorithm separately
 for each connected component of the graph, then it is called minimum spanning
 forest.</p>
-</div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
-<p>The main Characteristics are:</p>
-<blockquote>
-<div><ul class="simple">
+<p><strong>The main Characteristics are:</strong></p>
+<ul class="simple">
 <li>It’s implementation is only on <strong>undirected graph</strong>.</li>
 <li>Process is done only on edges with positive costs.</li>
 <li>Span start from chosen root_vertex resulting subgraph.<ul>
@@ -221,7 +212,6 @@ forest.</p>
 <li>The minimum spanning tree is same for any root vertex.</li>
 <li>Running time: <span class="math">\(O(E*log V)\)</span></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
@@ -233,8 +223,7 @@ RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost)
 </pre></div>
 </div>
 <p>The signature is for a <strong>undirected</strong> graph.</p>
-<div class="section" id="pgr-prim-without-root-vertex">
-<h3>pgr_prim without root vertex<a class="headerlink" href="#pgr-prim-without-root-vertex" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">pgr_prim without root vertex</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -274,9 +263,7 @@ RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPT
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="pgr-prim-with-root-vertex">
-<h3>pgr_prim with root vertex<a class="headerlink" href="#pgr-prim-with-root-vertex" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">pgr_prim with root vertex</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -329,8 +316,44 @@ RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPT
 </pre></div>
 </div>
 </div>
-<div class="section" id="description-of-the-edges-sql-query-for-prim-functions">
-<h3>Description of the edges_sql query for prim functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-prim-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="22%" />
+<col width="9%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>root_vertex</strong></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td>&#160;</td>
+<td><p class="first">Root vertex from where spanning of tree start and
+resulting in subgraph.</p>
+<ul class="last simple">
+<li>In the absence of root vertex the result is
+MST of disconnected graph.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -401,44 +424,9 @@ RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPT
 </tbody>
 </table>
 </div>
-<div class="section" id="description-of-the-parameters-of-the-signatures">
-<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="19%" />
-<col width="22%" />
-<col width="9%" />
-<col width="49%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>root_vertex</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Root vertex from where spanning of tree start and
-resulting in subgraph.</p>
-<ul class="last simple">
-<li>In the absence of root vertex the result is
-MST of disconnected graph.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="description-of-the-return-values-for-prim-algorithms">
-<h3>Description of the return values for prim algorithms<a class="headerlink" href="#description-of-the-return-values-for-prim-algorithms" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">For prim algorithms</p>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">root_vertex,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">tree_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -484,7 +472,6 @@ MST of disconnected graph.</li>
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -512,7 +499,7 @@ MST of disconnected graph.</li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

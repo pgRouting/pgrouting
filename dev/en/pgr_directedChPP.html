@@ -104,15 +104,11 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_directedChPP - Experimental</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
-<li><a class="reference internal" href="#signature">Signature</a></li>
-<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
-<li><a class="reference internal" href="#description-of-the-parameters-of-the-chinese-postman-problem-signatures">Description of the Parameters of the Chinese Postman Problem Signatures</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#return-columns">Return Columns</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -159,8 +155,8 @@
       
   <div class="section" id="pgr-directedchpp-experimental">
 <h1>pgr_directedChPP - Experimental<a class="headerlink" href="#pgr-directedchpp-experimental" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_directedChPP</span></code> — Calculates the shortest circuit path which contains every edge in a directed graph and starts and ends on the same vertex.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -188,29 +184,20 @@
 </li>
 </ul>
 </div>
+<p>The main characteristics are:
+- Process is done only on edges with <strong>positive</strong> costs.
+- There is no path when the graph is not connected.
+- We will return <strong>no path found</strong> error if there is no path.
+- Running time: <span class="math">\(O(E * (E + V * logV))\)</span></p>
 </div>
-<div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
-<p>The main characteristics are:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Process is done only on edges with <strong>positive</strong> costs.</li>
-<li>There is no path when the graph is not connected.</li>
-<li>We will return <strong>no path found</strong> error if there is no path.</li>
-<li>Running time: <span class="math">\(O(E * (E + V * logV))\)</span></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="signature-summary">
-<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_directedChPP(edges_sql)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-</div>
-<div class="section" id="signature">
-<span id="index-0"></span><h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -266,8 +253,8 @@ OR EMPTY SET
 </pre></div>
 </div>
 </div>
-<div class="section" id="description-of-the-signatures">
-<span id="index-1"></span><h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="inner-query">
+<span id="index-0"></span><h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -337,8 +324,9 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="section" id="description-of-the-parameters-of-the-chinese-postman-problem-signatures">
-<h3>Description of the Parameters of the Chinese Postman Problem Signatures<a class="headerlink" href="#description-of-the-parameters-of-the-chinese-postman-problem-signatures" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="16%" />
@@ -362,9 +350,8 @@ OR EMPTY SET
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="return-columns">
-<h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -468,7 +455,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 13, 2018.<br/>
+      Last updated on Oct 20, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
