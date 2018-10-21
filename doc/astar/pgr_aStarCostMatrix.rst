@@ -97,11 +97,13 @@ Parameter        Type                   Description
 **vids**         ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers.
 ================ ====================== =================================================
 
-.. rubric:: Optional Parameters
+Optional Parameters
+...............................................................................
 
 .. include:: pgr_aStar.rst
-    :start-after: rubric:: Optional Parameters
-    :end-before: aStar aStarCost parameters end
+   :start-after: aStar optional parameters start
+   :end-before: aStar optional parameters end
+
 
 Inner query
 --------------------------------------------------------

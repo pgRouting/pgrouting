@@ -137,8 +137,16 @@ Parameters
 -------------------------------------------------------------------------------
 
 .. include:: pgr_aStar.rst
-   :start-after: aStar aStarCost parameters start
-   :end-before: aStar aStarCost parameters end
+   :start-after: aStar parameters start
+   :end-before: aStar parameters end
+
+Optional Parameters
+...............................................................................
+
+.. include:: pgr_aStar.rst
+   :start-after: aStar optional parameters start
+   :end-before: aStar optional parameters end
+
 
 Inner query
 -------------------------------------------------------------------------------
