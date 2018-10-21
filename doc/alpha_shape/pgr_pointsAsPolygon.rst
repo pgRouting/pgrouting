@@ -12,6 +12,12 @@ pgr_pointsAsPolygon
 
 ``pgr_pointsAsPolygon`` — Draws an alpha shape around given set of points.
 
+.. rubric:: Availability
+
+* Renamed in version 2.0.0
+* Added alpha argument with default 0 (use optimal value) in version 2.1.0
+* Supported to return a (multi)polygon geometry (with holes) in version 2.1.0
+
 Description
 -------------------------------------------------------------------------------
 
@@ -38,12 +44,6 @@ Parameters
     For more information, see `CGAL - 2D Alpha Shapes <http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html>`_.
 
 Returns a (multi)polygon geometry (with holes).
-
-.. rubric:: History
-
-* Renamed in version 2.0.0
-* Added alpha argument with default 0 (use optimal value) in version 2.1.0
-* Supported to return a (multi)polygon geometry (with holes) in version 2.1.0
 
 Additional Examples
 -------------------------------------------------------------------------------
