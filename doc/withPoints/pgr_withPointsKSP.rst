@@ -21,7 +21,11 @@ pgr_withPointsKSP - Proposed
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.2.0
+.. rubric:: Availability
+
+* 2.2.0
+
+* Proposed in version 2.2
 
 Description
 -------------------------------------------------------------------------------
@@ -100,7 +104,6 @@ Parameter        Type              Description
 
 Inner query
 -------------------------------------------------------------------------------
-
 ..
     description of the sql queries
 
@@ -151,10 +154,6 @@ Additional Examples
    :end-before: --q5
 
 The queries use the :doc:`sampledata` network.
-
-.. rubric:: History
-
-* Proposed in version 2.2
 
 See Also
 -------------------------------------------------------------------------------

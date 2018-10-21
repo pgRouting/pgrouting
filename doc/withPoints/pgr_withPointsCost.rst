@@ -21,7 +21,11 @@ pgr_withPointsCost - Proposed
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.2.0
+.. rubric:: Availability
+
+* 2.2.0
+
+* Proposed in version 2.2
 
 Description
 -------------------------------------------------------------------------------
@@ -29,7 +33,7 @@ Description
 Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s) found.
 
-The main Characteristics are:
+The main characteristics are:
   - It does not return a path.
   - Returns the sum of the costs of the shortest path for pair combination of vertices in the modified graph.
   - Vertices of the graph are:
@@ -243,10 +247,6 @@ Additional Examples
    :end-before: --q5
 
 The queries use the :doc:`sampledata` network.
-
-.. rubric:: History
-
-* Proposed in version 2.2
 
 See Also
 -------------------------------------------------------------------------------
