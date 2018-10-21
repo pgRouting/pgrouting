@@ -172,6 +172,23 @@
 <a class="reference external image-reference" href="http://www.boost.org//libs/graph"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
+<p class="rubric">Availability:</p>
+<ul class="simple">
+<li>Proposed on v2.5.0 and Official on v3.0.0:<ul>
+<li>pgr_astar(One to Many)</li>
+<li>pgr_astar(Many to One)</li>
+<li>pgr_astar(Many to Many)</li>
+</ul>
+</li>
+<li>Signature change on v2.5.0<ul>
+<li>pgr_astar(One to One)</li>
+</ul>
+</li>
+<li>New on v2.0.0:<ul>
+<li>pgr_astar(One to One)</li>
+</ul>
+</li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The main Characteristics are:</p>
@@ -215,23 +232,6 @@
 </ul>
 </li>
 <li><code class="docutils literal"><span class="pre">start_vid</span></code> and <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
-</ul>
-<p class="rubric">Availability:</p>
-<ul class="simple">
-<li>Proposed on v2.5.0 and Official on v3.0.0:<ul>
-<li>pgr_astar(One to Many)</li>
-<li>pgr_astar(Many to One)</li>
-<li>pgr_astar(Many to Many)</li>
-</ul>
-</li>
-<li>Signature change on v2.5.0<ul>
-<li>pgr_astar(One to One)</li>
-</ul>
-</li>
-<li>New on v2.0.0:<ul>
-<li>pgr_astar(One to One)</li>
-</ul>
-</li>
 </ul>
 </div>
 <div class="section" id="signature">
@@ -747,7 +747,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 20, 2018.<br/>
+      Last updated on Oct 21, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

@@ -154,8 +154,6 @@
       
   <div class="section" id="pgr-tsp">
 <h1>pgr_TSP<a class="headerlink" href="#pgr-tsp" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">pgr_TSP</span></code> - Returns a route that visits all the nodes exactly once.</li>
 </ul>
@@ -163,7 +161,9 @@
 <ul class="simple">
 <li>Signature changed 2.3.0</li>
 </ul>
-<p class="rubric">Characteristics</p>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>The main characteristics are:</strong></p>
 <p>The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:</p>
 <ul class="simple">
 <li>Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?</li>
@@ -219,7 +219,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 14;
 
 </pre></div>
 </div>
-<p id="index-1">., rubric:: Complete Signature</p>
+<p class="rubric" id="index-1">Complete Signature</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_TSP(matrix_cell_sql,
     start_id, end_id,
     max_processing_time,
@@ -429,7 +429,7 @@ Column           Type              Description
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 20, 2018.<br/>
+      Last updated on Oct 21, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

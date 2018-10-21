@@ -154,6 +154,12 @@
   <div class="section" id="pgr-pointsaspolygon">
 <h1>pgr_pointsAsPolygon<a class="headerlink" href="#pgr-pointsaspolygon" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">pgr_pointsAsPolygon</span></code> — Draws an alpha shape around given set of points.</p>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+<li>Added alpha argument with default 0 (use optimal value) in version 2.1.0</li>
+<li>Supported to return a (multi)polygon geometry (with holes) in version 2.1.0</li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Returns the alpha shape as (multi)polygon geometry.</p>
@@ -192,12 +198,6 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
 </tbody>
 </table>
 <p>Returns a (multi)polygon geometry (with holes).</p>
-<p class="rubric">History</p>
-<ul class="simple">
-<li>Renamed in version 2.0.0</li>
-<li>Added alpha argument with default 0 (use optimal value) in version 2.1.0</li>
-<li>Supported to return a (multi)polygon geometry (with holes) in version 2.1.0</li>
-</ul>
 </div>
 <div class="section" id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
@@ -240,7 +240,7 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 20, 2018.<br/>
+      Last updated on Oct 21, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

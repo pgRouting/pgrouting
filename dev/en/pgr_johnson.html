@@ -155,18 +155,19 @@
       
   <div class="section" id="pgr-johnson">
 <h1>pgr_johnson<a class="headerlink" href="#pgr-johnson" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_johnson</span></code> - Returns the sum of the costs of the shortest path for each
 pair of nodes in the graph using Floyd-Warshall algorithm.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
-<p class="rubric">Availability: 2.0.0</p>
+<p class="rubric">Availability</p>
 <ul class="simple">
-<li>Renamed on 2.2.0, previous name pgr_apspJohnson</li>
+<li>2.0.0</li>
+<li>Re-design of pgr_apspJohnson in Version 2.2.0</li>
 </ul>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The Johnson algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for each pair of nodes in the graph, for <em>sparse graphs</em>.
 It usees the Boost’s implementation which runs in <span class="math">\(O(V E \log V)\)</span> time,</p>
@@ -382,10 +383,6 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<p class="rubric">History</p>
-<ul class="simple">
-<li>Re-design of pgr_apspJohnson in Version 2.2.0</li>
-</ul>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -415,7 +412,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 20, 2018.<br/>
+      Last updated on Oct 21, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
