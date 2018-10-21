@@ -10,9 +10,6 @@
 pgr_minCostMaxFlow_Cost - Experimental 
 ============================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_minCostMaxFlow`` — Calculates the minmum cost maximum flow in a directed graph from the source(s) to the targets(s).
 
 .. figure:: images/boost-inside.jpeg
@@ -23,6 +20,13 @@ Description
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
+
+.. rubric:: Availability
+
+* **TBD**
+
+Description
+-------------------------------------------------------------------------------
 
 **The main characteristics are:**
 
