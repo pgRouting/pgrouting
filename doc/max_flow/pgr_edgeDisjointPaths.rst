@@ -10,9 +10,6 @@
 pgr_edgeDisjointPaths
 ==========================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
 
 
@@ -21,7 +18,12 @@ Description
 
    Boost Graph Inside
 
-.. Rubric:: Availability: 2.3.0
+.. Rubric:: Availability
+
+2.3.0
+
+Description
+-------------------------------------------------------------------------------
 
 Calculates the edge disjoint paths between two groups of vertices.
 Utilizes underlying maximum flow algorithms to calculate the paths.

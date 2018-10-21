@@ -79,7 +79,6 @@ Signatures
 
 	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-
 .. rubric:: Minimal signature
 
 The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
@@ -116,7 +115,6 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q2
     :end-before: --q3
-
 
 .. index::
     single: dijkstraCost(One to Many)

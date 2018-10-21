@@ -10,9 +10,6 @@
 pgr_boykovKolmogorov
 ============================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
 .. figure:: images/boost-inside.jpeg
@@ -24,6 +21,9 @@ Description
 
 * Renamed 2.5.0, Previous name pgr_maxFlowBoykovKolmogorov
 * New in 2.3.0
+
+Description
+-------------------------------------------------------------------------------
 
 .. include::  flow-family.rst
     :start-after: characteristics_start

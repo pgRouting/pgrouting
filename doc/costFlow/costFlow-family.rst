@@ -30,12 +30,11 @@ Minimum Cost Maximum FLow - Family of functions (Experimental)
 
 
 Minimum Cost Maximum Flow Functions General Information
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. characteristics_start
 
-.. rubric:: Characteristics
-
+**The main characteristics are:**
 
 - The graph is **directed**.
 - Process is done only on edges with positive capacities.

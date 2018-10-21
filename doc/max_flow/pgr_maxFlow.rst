@@ -10,9 +10,6 @@
 pgr_maxFlow
 ===============================================================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm.
 
 .. figure:: images/boost-inside.jpeg
@@ -20,9 +17,14 @@ Description
 
    Boost Graph Inside
 
-.. Rubric:: Availability: 2.4.0
+.. Rubric:: Availability
 
-.. rubric:: Characteristics
+* 2.4.0
+
+Description
+-------------------------------------------------------------------------------
+
+**The main characteristics are:**
 
 - The graph is **directed**.
 - When the maximum flow is 0 then there is no flow and **0** is returned.

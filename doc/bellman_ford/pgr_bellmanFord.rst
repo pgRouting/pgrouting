@@ -22,6 +22,10 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+.. rubric:: Availability
+
+* **TBD**
+
 Description
 -------------------------------------------------------------------------------
 

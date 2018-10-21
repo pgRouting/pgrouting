@@ -21,14 +21,19 @@ pgr_dijkstraCostMatrix - proposed
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.3.0
+.. rubric:: Availability
+
+2.3.0
 
 Description
 -------------------------------------------------------------------------------
 
 Using Dijkstra algorithm, calculate and return a cost matrix.
 
-.. rubric:: Signature Summary
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -36,13 +41,11 @@ Using Dijkstra algorithm, calculate and return a cost matrix.
     pgr_dijkstraCostMatrix(edges_sql, start_vids, directed)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-Signatures
--------------------------------------------------------------------------------
-
 .. rubric:: Minimal Signature
 
 The minimal signature:
-    - Is for a **directed** graph.
+
+- Is for a **directed** graph.
 
 .. code-block:: none
 

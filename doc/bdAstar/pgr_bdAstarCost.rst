@@ -17,6 +17,11 @@ pgr_bdAstarCost
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* Official in v3.0.0
+* Proposed in v2.5.0
+
 Description
 -------------------------------------------------------------------------------
 
@@ -29,11 +34,6 @@ Description
   * `pgr_bdAstarCost(` `One to Many`_ `)`
   * `pgr_bdAstarCost(` `Many to One`_ `)`
   * `pgr_bdAstarCost(` `Many to Many`_ `)`
-
-.. rubric:: Availability
-
-* Official in v3.0.0
-* Proposed in v2.5.0
 
 Signatures
 -------------------------------------------------------------------------------

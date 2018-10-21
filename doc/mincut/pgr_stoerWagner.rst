@@ -18,6 +18,10 @@ Function determines a min-cut and the min-cut weight of a connected, undirected 
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* **TBD**
+
 Description
 -------------------------------------------------------------------------------
 
@@ -36,7 +40,7 @@ the size of any other cut. For an unweighted graph, the minimum cut would simply
 be the cut with the least edges. For a weighted graph, the sum of all edges'
 weight on the cut determines whether it is a minimum cut.
 
-**The main Characteristics are:**
+**The main characteristics are:**
 
 - Process is done only on edges with positive costs.
 - It's implementation is only on undirected graph.
@@ -51,7 +55,6 @@ weight on the cut determines whether it is a minimum cut.
 
 - Sometimes a graph has multiple min-cuts, but all have the same weight. The this function determines exactly one of the min-cuts as well as its weight.
 - **Running time:** :math:`O(V*E + V^2*log V)`.
-
 
 Signatures
 -------------------------------------------------------------------------------

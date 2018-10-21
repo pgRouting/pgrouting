@@ -10,9 +10,6 @@
 pgr_directedChPP_Cost - Experimental
 ============================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_directedChPP_Cost`` — Calculates the minimum costs of a circuit path which contains every edge in a directed graph and starts and ends on the same vertex.
 
 .. figure:: images/boost-inside.jpeg
@@ -23,6 +20,13 @@ Description
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
+
+.. rubric:: Availability
+
+* **TBD**
+
+Description
+-------------------------------------------------------------------------------
 
 The main characteristics are:
 - Process is done only on edges with **positive** costs.  

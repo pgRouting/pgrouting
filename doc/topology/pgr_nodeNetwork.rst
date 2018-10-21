@@ -10,9 +10,6 @@
 pgr_nodeNetwork
 ===============================================================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_nodeNetwork`` - Nodes an network edge table.
 
 :Author: Nicolas Ribot
@@ -28,7 +25,14 @@ The function reads edges from a not "noded" network table and writes the "noded"
     pgr_nodenetwork(edge_table, tolerance, id, text the_geom, table_ending, rows_where, outall)
     RETURNS TEXT
 
-.. rubric:: Characteristics
+.. rubric:: Availability
+
+* New in version 2.0.0
+
+Description
+-------------------------------------------------------------------------------
+
+**The main characteristics are:**
 
 A common problem associated with bringing GIS data into pgRouting is the fact that the data is often not "noded" correctly. This will create invalid topologies, which will result in routes that are incorrect.
 
@@ -53,10 +57,6 @@ The output table will have for  ``edge_table_noded``
 :source: ``integer`` Empty source column to be used with  :doc:`pgr_createTopology` function
 :target: ``integer`` Empty target column to be used with  :doc:`pgr_createTopology` function
 :the geom: ``geometry`` Geometry column of the noded network
-
-.. rubric:: History
-
-* New in version 2.0.0
 
 Examples
 -------------------------------------------------------------------------------

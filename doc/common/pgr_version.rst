@@ -12,6 +12,10 @@ pgr_version
 
 ``pgr_version`` — Query for pgRouting version information.
 
+.. rubric:: Availability
+
+* New in version 2.0.0
+
 Description
 -------------------------------------------------------------------------------
 
@@ -35,10 +39,6 @@ Column        Type       Description
 **branch**   ``varchar`` Git branch of pgRouting build
 **boost**    ``varchar`` Boost version
 ===========  =========== ===============================
-
-.. rubric:: History
-
-* New in version 2.0.0
 
 Additional Examples
 -------------------------------------------------------------------------------

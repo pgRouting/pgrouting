@@ -22,6 +22,10 @@ In particular, the Prim algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+.. rubric:: Availability
+
+* **TBD**
+
 Description
 -------------------------------------------------------------------------------
 
@@ -39,7 +43,7 @@ spanning trees in connected graphs. However, running Prim's algorithm separately
 for each connected component of the graph, then it is called minimum spanning
 forest.
 
-**The main Characteristics are:**
+**The main characteristics are:**
 
 - It's implementation is only on **undirected graph**.
 - Process is done only on edges with positive costs.
