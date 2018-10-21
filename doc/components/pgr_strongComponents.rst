@@ -22,6 +22,10 @@ In particular, the algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+.. rubric:: Availiability
+
+* **TBD**
+
 Description
 -------------------------------------------------------------------------------
 
@@ -29,7 +33,7 @@ A strongly connected component of a directed graph is a set of vertices that are
 from each other.
 This implementation can only be used with a directed graph.
 
-**The main Characteristics are:**
+**The main characteristics are:**
 
 - Components are described by vertices
 - The returned values are ordered:
@@ -37,7 +41,7 @@ This implementation can only be used with a directed graph.
   - `component` ascending
   - `node` ascending
 
-- **Running time:** :math:`O(V + E)`
+* Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
