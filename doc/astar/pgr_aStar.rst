@@ -58,10 +58,10 @@ Signatures
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, starts_vids, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, starts_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, start_vid,  end_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, start_vid,  end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, start_vids, end_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, start_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
