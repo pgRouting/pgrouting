@@ -69,7 +69,7 @@ and the default is to have random execution, the example is wrapping the actual 
 .. index::
     single: TSP(Complete Signature)
 
-., rubric:: Complete Signature
+.. rubric:: Complete Signature
 
 .. code-block:: none
 
