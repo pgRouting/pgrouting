@@ -17,7 +17,7 @@ pgr_pushRelabel
 
    Boost Graph Inside
 
-.. Rubric:: Availability:
+.. Rubric:: Availability
 
 * Renamed 2.5.0, Previous name pgr_maxFlowPushRelabel
 * New in 2.3.0
