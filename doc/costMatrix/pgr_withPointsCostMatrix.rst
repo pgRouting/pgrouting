@@ -21,7 +21,14 @@ pgr_withPointsCostMatrix - proposed
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.2.0
+.. rubric:: Availability
+
+* 2.2.0
+
+Description
+-------------------------------------------------------------------------------
+
+* **TBD**
 
 Signatures
 -------------------------------------------------------------------------------

@@ -21,7 +21,11 @@ pgr_withPointsDD - Proposed
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.2.0
+.. rubric:: Availability
+
+* 2.2.0
+
+* Proposed in version 2.2
 
 Description
 -------------------------------------------------------------------------------
@@ -171,10 +175,6 @@ The examples in this section use the following :ref:`fig1`
    :end-before: --q5
 
 The queries use the :doc:`sampledata` network.
-
-.. rubric:: History
-
-* Proposed in version 2.2
 
 See Also
 -------------------------------------------------------------------------------

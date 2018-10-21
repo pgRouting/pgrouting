@@ -16,13 +16,16 @@ pgr_withPoints - Proposed
    :start-after: begin-warning
    :end-before: end-warning
 
-
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.2.0
+.. rubric:: Availability
+
+* 2.2.0
+
+* Proposed in version 2.2
 
 Description
 -------------------------------------------------------------------------------
@@ -30,7 +33,7 @@ Description
 Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, find the shortest path(s)
 
-The main Characteristics are:
+**The main characteristics are:**
 
 - Process is done only on edges with positive costs.
 - Vertices of the graph are:
@@ -243,10 +246,6 @@ Additional Examples
    :end-before: --q5
 
 The queries use the :doc:`sampledata` network
-
-.. rubric:: History
-
-* Proposed in version 2.2
 
 See Also
 -------------------------------------------------------------------------------
