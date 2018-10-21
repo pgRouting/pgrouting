@@ -10,9 +10,6 @@
 pgr_KSP
 ===============================================================================
 
-Description
--------------------------------------------------------------------------------
-
 ``pgr_KSP`` — Returns the "K" shortest paths.
 
 
@@ -21,11 +18,16 @@ Description
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.0.0
+.. rubric:: Availability
+
+* 2.0.0
 
 * Signature change 2.1.0
 
-**The K shortest path routing algorithm based on Yen's algorithm. "K" is the number of shortest paths desired.**
+Description
+-------------------------------------------------------------------------------
+
+The K shortest path routing algorithm based on Yen's algorithm. "K" is the number of shortest paths desired.
 
 Signatures 
 -------------------------------------------------------------------------------
