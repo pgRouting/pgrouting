@@ -94,7 +94,7 @@ One to One
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`\{3, 12\}` on an **undirected** graph using heuristic :math:`2`
+:Example: From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
    :start-after: --q2
@@ -129,7 +129,7 @@ Many to One
     pgr_aStar(edges_sql, starts_vids, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed** graph using heuristic  :math:`0`
+:Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic  :math:`0`
 
 .. literalinclude:: doc-astar.queries
    :start-after: --q4
@@ -146,7 +146,7 @@ Many to Many
     pgr_aStar(edges_sql, starts_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon]
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
+:Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
    :start-after: --q5
