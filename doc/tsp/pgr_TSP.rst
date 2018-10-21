@@ -10,16 +10,16 @@
 pgr_TSP
 =============================================================================
 
-Description
--------------------------------------------------------------------------------
-
 * ``pgr_TSP`` - Returns a route that visits all the nodes exactly once.
 
 .. rubric:: Availability: 2.0.0
 
 * Signature changed 2.3.0
 
-.. Rubric:: Characteristics
+Description
+-------------------------------------------------------------------------------
+
+**The main characteristics are:**
 
 The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:
 
