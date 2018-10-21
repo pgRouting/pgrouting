@@ -19,7 +19,8 @@ pgr_aStar
 
 .. rubric:: Availability
 
-* Proposed on v2.4.0 and Official on v3.0.0:
+* Official on v3.0.0
+* Proposed on v2.4.0:
 
   * pgr_astar(One to Many)
   * pgr_astar(Many to One)
@@ -57,24 +58,25 @@ Signatures
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid)
-    pgr_aStar(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_aStar(edges_sql, start_vid, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
     pgr_aStar(edges_sql, starts_vids, end_vid [, directed, heuristic, factor, epsilon])
     pgr_aStar(edges_sql, starts_vids, end_vids [, directed, heuristic, factor, epsilon])
+
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-      OR EMPTY SET
+    OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
 
-.. rubric:: Minimal Signature
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_aStar(edges_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
-:Example: Using the defaults
+:Example: From vertex :math:`2` to vertex :math:`12` on a **directed** graph
 
 .. literalinclude:: doc-astar.queries
    :start-after: --q1
@@ -87,10 +89,11 @@ One to One
 ...............................................................................
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_aStar(edges_sql, start_vid, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
-:Example: Undirected using  Heuristic 2
+:Example: From vertex :math:`2` to vertex  :math:`\{3, 12\}` on an undirected graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
    :start-after: --q2
@@ -105,9 +108,10 @@ One to many
 .. code-block:: none
 
     pgr_aStar(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
-:Example: From vertex `2` to vertices :math:`\{3, 12\}` using heuristic `2`
+:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
    :start-after: --q3
@@ -150,7 +154,7 @@ Many to Many
 Parameters
 -------------------------------------------------------------------------------
 
-.. aStar aStarCost parameters start
+.. aStar parameters start
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -178,8 +182,12 @@ Parameter        Type                   Description
 
 ================ ====================== =================================================
 
+.. aStar parameters end
+
 Optional Parameters
 ...............................................................................
+
+.. aStar optional parameters start
 
 ================ ====================== ======== =================================================
 Parameter        Type                   Default  Description
@@ -200,7 +208,7 @@ Parameter        Type                   Default  Description
 **epsilon**      ``FLOAT``              ``1``    For less restricted results. :math:`epsilon >= 1`.
 ================ ====================== ======== =================================================
 
-.. aStar aStarCost parameters end
+.. aStar optional parameters end
 
 Inner query
 -------------------------------------------------------------------------------
