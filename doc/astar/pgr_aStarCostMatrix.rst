@@ -24,7 +24,7 @@ pgr_aStarCostMatrix
 Description
 -------------------------------------------------------------------------------
 
-The main characteristics are:
+**The main characteristics are:**
 
 * Using internaly the :doc:`pgr_aStar` algorithm
 * Returns a cost matrix.
