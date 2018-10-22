@@ -26,7 +26,7 @@ pgr_aStar
   * pgr_astar(Many to One)
   * pgr_astar(Many to Many)
 
-* Signature change on v2.3.0
+* Signature change on v2.3.0:
 
   * pgr_astar(One to One)
 
