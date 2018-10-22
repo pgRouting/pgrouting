@@ -75,14 +75,16 @@ Signatures
      pgr_dijkstraCost(edges_sql, start_vids, end_vid,  directed);
      pgr_dijkstraCost(edges_sql, start_vid,  end_vids, directed);
      pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
-     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+     RETURNS SET OF (start_vid, end_vid, agg_cost)
+     OR EMPTY SET
 
 .. rubric:: Using defaults
 
 .. code-block:: none
 
      pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid);
-     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+     RETURNS SET OF (start_vid, end_vid, agg_cost)
+     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
 
@@ -100,7 +102,8 @@ One to One
 
     pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
     BOOLEAN directed:=true);
-    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
 
@@ -118,7 +121,8 @@ One to Many
 
     pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
-    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed** graph
 
@@ -136,7 +140,8 @@ Many to One
 
     pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
     BOOLEAN directed:=true);
-    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 7\}` to vertex :math:`3` on a **directed** graph
 
@@ -154,7 +159,8 @@ Many to Many
 
     pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
-    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a **directed** graph
 
