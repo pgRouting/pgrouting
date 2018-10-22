@@ -29,57 +29,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_kruskal(
     TEXT,
-    max_depth INTEGER DEFAULT 0,
 
     OUT seq INTEGER,
-    OUT depth BIGINT,
-    OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost FLOAT
-    OUT agg_cost FLOAT)
+    OUT cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), 0::BIGINT, '', $2);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
-
-CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
-    TEXT,   -- Edge sql
-    BIGINT, -- root vertex
-
-    max_depth INTEGER DEFAULT 0,
-
-    OUT seq INTEGER,
-    OUT depth BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', $3);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
-
-
-CREATE OR REPLACE FUNCTION pgr_kruskalBFS(
-    TEXT,   -- Edge sql
-    BIGINT, -- root vertex
-
-    max_depth INTEGER DEFAULT 0,
-
-    OUT seq INTEGER,
-    OUT depth BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'BFS', $3);
+    SELECT seq, edge, cost
+    FROM _pgr_kruskal(_pgr_get_statement($1), 0::BIGINT, '', 0, -1);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 

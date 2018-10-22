@@ -51,6 +51,7 @@ do_pgr_kruskal(
         int order_by,
         bool use_root,
         int max_depth,
+        double distance,
 
         pgr_kruskal_t **return_tuples,
         size_t *return_count,
@@ -80,7 +81,7 @@ do_pgr_kruskal(
         pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
 
         auto results = use_root?
-            kruskal(undigraph, root, order_by, max_depth) :
+            kruskal(undigraph, root, order_by, max_depth, distance) :
             kruskal(undigraph, order_by, max_depth);
 
 

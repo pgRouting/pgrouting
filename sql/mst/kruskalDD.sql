@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: kruskal_driver.h
+File: kruskalDFS.sql
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -27,43 +27,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_MST_KRUSKAL_DRIVER_H_
-#define INCLUDE_DRIVERS_MST_KRUSKAL_DRIVER_H_
-#pragma once
+CREATE OR REPLACE FUNCTION pgr_kruskalDD (
+    TEXT,   -- Edge sql
+    BIGINT, -- root vertex
 
-/* for size-t */
-#ifdef __cplusplus
-#   include <cstddef>
-#else
-#   include <stddef.h>
-#endif
+    distance FLOAT,
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_kruskal_t.h"
+    OUT seq INTEGER,
+    OUT depth BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', 0, $3);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
-    void
-        do_pgr_kruskal(
-                pgr_edge_t  *data_edges,
-                size_t total_edges,
-
-                int64_t root,
-                int order_by,
-                bool use_root,
-                int max_depth,
-                double distance,
-
-                pgr_kruskal_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_MST_KRUSKAL_DRIVER_H_
+--COMMENT ON FUNCTION pgr_kruskal(TEXT, TEXT, INTEGER) IS 'pgr_kruskal(edge_sql): Experimental, Undirected Graph';
+--COMMENT ON FUNCTION pgr_kruskal(TEXT, BIGINT, TEXT, INTEGER) IS 'pgr_kruskal(edge_sql, root): Experimental, Undirected Graph';

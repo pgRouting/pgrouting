@@ -32,6 +32,7 @@ CREATE OR REPLACE FUNCTION _pgr_kruskal(
     BIGINT,           -- tree root for traversal
     order_by TEXT,
     max_depth INTEGER,
+    distance FLOAT,
 
     OUT seq INTEGER,
     OUT depth BIGINT,

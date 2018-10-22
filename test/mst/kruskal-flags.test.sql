@@ -4,11 +4,6 @@ SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'
 );
 
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    max_depth := 3
-);
-
 SELECT * FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     0
@@ -42,3 +37,10 @@ SELECT * FROM pgr_kruskalBFS(
     5,
     max_depth := 3
 );
+
+SELECT * FROM pgr_kruskalDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    5,
+    3.5
+);
+
