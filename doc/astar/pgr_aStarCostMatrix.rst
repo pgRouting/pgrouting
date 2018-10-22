@@ -69,7 +69,8 @@ Signatures
 .. index::
     single: aStarCostMatrix
 
-.. rubric:: Complete Signature
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
