@@ -67,7 +67,12 @@ Signatures
    :start-after: -- astar q1
    :end-before: -- astar q2
 
-.. rubric::  Complete Signature
+
+.. index::
+    single: bdaStarCostMatrix
+
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
