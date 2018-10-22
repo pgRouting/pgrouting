@@ -41,33 +41,28 @@ Signatures
 .. index::
     single: bdDijkstraCostMatrix(Minimal Use)
 
-.. rubric:: Minimal Signature
-
-The minimal signature:
-
-- Is for a **directed** graph.
+.. rubric:: Using default
 
 .. code-block:: none
 
     pgr_bdDijkstraCostMatrix(edges_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Cost matrix for vertices 1, 2, 3, and 4.
+:Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- bdDijkstra q1
    :end-before: -- bdDijkstra q2
 
-.. rubric:: Complete Signature
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
     pgr_bdDijkstraCostMatrix(edges_sql, start_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.
-
-This example returns a symmetric cost matrix.
+:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- bdDijkstra q2
