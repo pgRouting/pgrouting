@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(44);
+SELECT plan(10);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -22,42 +22,16 @@ subs TEXT[];
 BEGIN
     -- kruskal with no root vertex
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
-    '$$BFS$$::TEXT'
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$'
     ]::TEXT[];
+
     subs = ARRAY[
-    'NULL',
     'NULL'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_kruskal', params, subs);
 
     params[1] := '$$edges$$';
-    RETURN query SELECT * FROM no_crash_test('pgr_kruskal', params, subs);
-
-    params[2] := '$$DFS$$';
-    RETURN query SELECT * FROM no_crash_test('pgr_kruskal', params, subs);
-
-
-    -- kruskal with root vertex
-    params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
-    '5',
-    '$$BFS$$::TEXT'
-    ]::TEXT[];
-
-    subs = ARRAY[
-    'NULL',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    'NULL'
-    ]::TEXT[];
-
-    RETURN query SELECT * FROM no_crash_test('pgr_kruskal', params, subs);
-
-    params[1] := '$$edges$$';
-    RETURN query SELECT * FROM no_crash_test('pgr_kruskal', params, subs);
-
-    params[3] := '$$DFS$$';
     RETURN query SELECT * FROM no_crash_test('pgr_kruskal', params, subs);
 
 END

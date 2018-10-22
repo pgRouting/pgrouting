@@ -197,7 +197,8 @@ Pgr_kruskal<G>::get_results(
         }
 
         auto component = m_get_component? m_tree_id[m_components[u]] : 0;
-        if (m_order_by && depth[u] == 0 && depth[v] == 0) {
+        if ((m_order_by && depth[u] == 0 && depth[v] == 0)
+                ) {
             if (m_use_root && graph[u].id != m_root) std::swap(u, v);
             if (!m_use_root && graph[u].id != component) std::swap(u, v);
 
@@ -214,9 +215,9 @@ Pgr_kruskal<G>::get_results(
         agg_cost[v] = agg_cost[u] + graph[edge].cost;
         depth[v] = depth[u] + 1;
 
-        if ((!m_max_depth && m_distance < 0)
+        if ((!m_max_depth || m_distance < 0)
                 || m_max_depth >= depth[v]
-                || m_distance > agg_cost[v]) {
+                || m_distance >= agg_cost[v]) {
             results.push_back({
                 component,
                 m_order_by? depth[v] : 0,

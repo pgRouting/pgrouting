@@ -47,5 +47,4 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 
---COMMENT ON FUNCTION pgr_kruskal(TEXT, TEXT, INTEGER) IS 'pgr_kruskal(edge_sql): Experimental, Undirected Graph';
---COMMENT ON FUNCTION pgr_kruskal(TEXT, BIGINT, TEXT, INTEGER) IS 'pgr_kruskal(edge_sql, root): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalDFS(edge_sql, root [, max_depth]): Experimental, Undirected Graph';

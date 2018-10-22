@@ -5,17 +5,3 @@ SELECT * FROM pgr_kruskal(
 );
 
 \echo -- q2
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost
-         FROM edge_table',
-    order_by := 'DFS'
-);
-\echo -- q3
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost
-         FROM edge_table',
-    5,
-    order_by := 'BFS'
-);
-
-\echo -- q4
