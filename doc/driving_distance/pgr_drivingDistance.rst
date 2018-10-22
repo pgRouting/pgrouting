@@ -19,8 +19,17 @@ pgr_drivingDistance
 
 .. rubric:: Availability
 
-* pgr_drivingDistance(single vertex) 2.0.0, signature change 2.1.0
-* pgr_drivingDistance(multiple vertices) 2.1.0
+* New on v2.1.0:
+
+  * pgr_drivingDistance(multiple vertices)
+
+* Signature change on v2.1.0:
+
+  * pgr_drivingDistance(single vertex)
+
+* New on v2.0.0:
+
+  * pgr_drivingDistance(single vertex)
 
 Description
 -------------------------------------------------------------------------------
@@ -35,38 +44,44 @@ Signatures
 
 .. code-block:: sql
 
-    pgr_drivingDistance(edges_sql, start_vid, distance)
-    pgr_drivingDistance(edges_sql, start_vid, distance, directed)
-    pgr_drivingDistance(edges_sql, start_vids, distance, directed, equicost)
-
+    pgr_drivingDistance(edges_sql, start_vid,  distance [, directed])
+    pgr_drivingDistance(edges_sql, start_vids, distance [, directed] [, equicost])
     RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
 
-.. rubric:: Minimal Use
+.. rubric:: Using defaults
 
 .. code-block:: sql
 
     pgr_drivingDistance(edges_sql, start_vid, distance)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+:Example: **TBD**
 
 .. index::
 	single: drivingDistance(Single Start Vertex)
 
-.. rubric:: Driving Distance From A Single Starting Vertex
+Single Vertex
+...............................................................................
 
 .. code-block:: sql
 
-    pgr_drivingDistance(edges_sql, start_vid, distance, directed)
+    pgr_drivingDistance(edges_sql, start_vid, distance [, directed])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+:Example: **TBD**
 
 .. index::
 	single: drivingDistance(Multiple Starting Vertices)
 
-.. rubric:: Driving Distance From Multiple Starting Vertices
+Multiple Vertices
+...............................................................................
 
 .. code-block:: sql
 
-    pgr_drivingDistance(edges_sql, start_vids, distance, directed, equicost)
+    pgr_drivingDistance(edges_sql, start_vids, distance, [, directed] [, equicost])
     RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
+
+:Example: **TBD**
 
 Parameters 
 -------------------------------------------------------------------------------
