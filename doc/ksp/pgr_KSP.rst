@@ -20,9 +20,9 @@ pgr_KSP
 
 .. rubric:: Availability
 
-* 2.0.0
+* Signature change on v2.1.0
 
-* Signature change 2.1.0
+* New on v2.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -36,23 +36,30 @@ Signatures
 
 .. code-block:: sql
 
-    pgr_KSP(edges_sql, start_vid, end_vid, K);
-    pgr_KSP(edges_sql, start_vid, end_vid, k, directed, heap_paths)
+    pgr_KSP(edges_sql, start_vid, end_vid, K [, directed] [, heap_paths])
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
-.. rubric:: Minimal Signature
+.. rubric:: Using default
 
 .. code-block:: sql
 
     pgr_ksp(edges_sql, start_vid, end_vid, K);
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
-.. rubric:: Complete Signature
+:Example: **TBD**
+
+.. index::
+    single: KSP
+
+Complete Signature
+...............................................................................
 
 .. code-block:: sql
 
-    pgr_KSP(edges_sql, start_vid, end_vid, k, directed, heap_paths)
+    pgr_KSP(edges_sql, start_vid, end_vid, K [, directed] [, heap_paths])
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+
+:Example: **TBD**
 
 Parameters 
 -------------------------------------------------------------------------------

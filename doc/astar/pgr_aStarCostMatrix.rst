@@ -24,7 +24,7 @@ pgr_aStarCostMatrix
 Description
 -------------------------------------------------------------------------------
 
-The main Characteristics are:
+**The main characteristics are:**
 
 * Using internaly the :doc:`pgr_aStar` algorithm
 * Returns a cost matrix.
@@ -50,22 +50,17 @@ Signatures
 
 .. code-block:: none
 
-    pgr_aStarCostMatrix(edges_sql, vids)
-    pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
+    pgr_aStarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. rubric:: Minimal Signature
-
-The minimal signature:
-
-* Is for a **directed** graph.
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_aStarCostMatrix(edges_sql, vids)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Cost matrix for vertices 1, 2, 3, and 4.
+:Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- astar q1
@@ -74,14 +69,15 @@ The minimal signature:
 .. index::
     single: aStarCostMatrix
 
-.. rubric:: Complete Signature
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
-    pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
+    pgr_aStarCostMatrix(edges_sql, vids, [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Symmetric cost matrix for vertices 1, 2, 3, and 4 using heuristic 2.
+:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- astar q2
@@ -97,17 +93,19 @@ Parameter        Type                   Description
 **vids**         ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers.
 ================ ====================== =================================================
 
-.. rubric:: Optional Parameters
+Optional Parameters
+...............................................................................
 
 .. include:: pgr_aStar.rst
-    :start-after: rubric:: Optional Parameters
-    :end-before: aStar aStarCost parameters end
+   :start-after: aStar optional parameters start
+   :end-before: aStar optional parameters end
+
 
 Inner query
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 edges_sql
-...........................................................
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start

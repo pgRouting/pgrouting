@@ -19,24 +19,25 @@ pgr_bdAstar
 
 .. rubric:: Availability:
 
-* Proposed on v2.5.0 and Official on v3.0.0:
+* Official on v3.0.0
+* Proposed on v2.5.0:
 
-  * pgr_astar(One to Many)
-  * pgr_astar(Many to One)
-  * pgr_astar(Many to Many)
+  * pgr_bdAstar(One to Many)
+  * pgr_bdAstar(Many to One)
+  * pgr_bdAstar(Many to Many)
 
-* Signature change on v2.5.0
+* Signature change on v2.5.0:
 
-  * pgr_astar(One to One)
+  * pgr_bdAastar(One to One)
 
 * New on v2.0.0:
 
-  * pgr_astar(One to One)
+  * pgr_bdAstar(One to One)
 
 Description
 -------------------------------------------------------------------------------
 
-The main Characteristics are:
+**The main characteristics are:**
 
 .. include:: aStar-family.rst
    :start-after: astar general info start
@@ -57,25 +58,24 @@ Signature
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vid)
-    pgr_bdAstar(edges_sql, start_vid, end_vid, [, directed, heuristic, factor, epsilon])
-    pgr_bdAstar(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
-    pgr_bdAstar(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
-    pgr_bdAstar(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_bdAstar(edges_sql, start_vid,  end_vid,  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, start_vid,  end_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, start_vids, end_vid   [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, start_vids, end_vids  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
 
-.. rubric:: Minimal Signature
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_bdAstar(edges_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
-:Example: Using the defaults
+:Example: From vertex :math:`2` to vertex :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bdAstar.queries
    :start-after: -- q1
@@ -88,10 +88,10 @@ One to One
 ...............................................................................
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_bdAstar(edges_sql, start_vid, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
-:Example: Directed using Heuristic 2
+:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-pgr_bdAstar.queries
    :start-after: -- q2
@@ -105,10 +105,10 @@ One to many
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_bdAstar(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-:Example: Directed using Heuristic 3 and a factor of 3.5
+:Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed** graph using heuristic :math:`3` and factor :math:`3.5`
 
 .. literalinclude:: doc-pgr_bdAstar.queries
    :start-after: -- q3
@@ -122,10 +122,10 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_bdAstar(edges_sql, start_vids, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-:Example: Undirected graph with Heuristic 4
+:Example: From vertices :math:`\{2, 7\}` to vertex :math:`3` on an **undirected** graph using heuristic :math:`4`
 
 .. literalinclude:: doc-pgr_bdAstar.queries
    :start-after: -- q4
@@ -139,10 +139,10 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_bdAstar(edges_sql, start_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-:Example: Directed graph with a factor of 0.5
+:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a **directed** graph using factor :math:`0.5`
 
 .. literalinclude:: doc-pgr_bdAstar.queries
    :start-after: -- q5
@@ -152,8 +152,16 @@ Parameters
 -------------------------------------------------------------------------------
 
 .. include:: pgr_aStar.rst
-   :start-after: aStar aStarCost parameters start
-   :end-before: aStar aStarCost parameters end
+   :start-after: aStar parameters start
+   :end-before: aStar parameters end
+
+Optional Parameters
+...............................................................................
+
+.. include:: pgr_aStar.rst
+   :start-after: aStar optional parameters start
+   :end-before: aStar optional parameters end
+
 
 Inner query
 -------------------------------------------------------------------------------
