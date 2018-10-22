@@ -31,7 +31,7 @@ CREATE OR REPLACE FUNCTION _pgr_kruskal(
     TEXT,             -- Edge sql
     BIGINT,           -- tree root for traversal
     order_by TEXT,
-    use_root BOOLEAN,
+    max_depth INTEGER,
 
     OUT seq INTEGER,
     OUT depth BIGINT,

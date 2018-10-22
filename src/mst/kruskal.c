@@ -52,12 +52,24 @@ process(
         char* edges_sql,
         int64_t root,
         char * p_order_by,
-        bool use_root,
+        int max_depth,
 
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
     int order_by = get_order(p_order_by);
-    PGR_DBG("order by %ld", order_by);
+    PGR_DBG("root %d", root);
+    PGR_DBG("order by %d", order_by);
+    PGR_DBG("max_depth %d", max_depth);
+    bool use_root = root;
+    /*
+     * No root vertex && no ordering && max_depth
+     * is pgr_kruskal
+     */
+    order_by = max_depth && !order_by? 1 : order_by;
+    PGR_DBG("root %d", root);
+    PGR_DBG("order by %d", order_by);
+    PGR_DBG("max_depth %d", max_depth);
+
 
 
     pgr_SPI_connect();
@@ -87,8 +99,8 @@ process(
             edges, total_edges,
             root,
             order_by,
-            false,
             use_root,
+            max_depth,
 
             result_tuples,
             result_count,
@@ -137,7 +149,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
-                PG_GETARG_BOOL(3),
+                PG_GETARG_INT32(3),
                 &result_tuples,
                 &result_count);
 

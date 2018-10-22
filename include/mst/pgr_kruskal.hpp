@@ -115,12 +115,12 @@ class Pgr_kruskal {
              G &graph,
              int64_t root,
              int m_order_by,
-             bool m_get_component);
+             int max_depth);
 
      std::vector<pgr_kruskal_t> operator() (
              G &graph,
              int m_order_by,
-             bool m_get_component);
+             int max_depth);
 
  private:
      typedef typename G::B_G B_G;
@@ -152,6 +152,7 @@ class Pgr_kruskal {
      int  m_order_by;
      int64_t  m_root;
      bool  m_use_root;
+     int  m_max_depth;
 
      struct InSpanning {
          std::set<E> edges;
@@ -212,14 +213,16 @@ Pgr_kruskal<G>::get_results(
         agg_cost[v] = agg_cost[u] + graph[edge].cost;
         depth[v] = depth[u] + 1;
 
-        results.push_back({
-            component,
+        if (!m_max_depth || m_max_depth >= depth[v]) {
+            results.push_back({
+                component,
                 m_order_by? depth[v] : 0,
                 graph[v].id,
                 graph[edge].id,
                 graph[edge].cost,
                 m_order_by? agg_cost[v] : 0.0
-        });
+            });
+        }
     }
     return results;
 }
@@ -361,10 +364,11 @@ std::vector<pgr_kruskal_t>
 Pgr_kruskal<G>::operator() (
         G &graph,
         int order_by,
-        bool get_component) {
+        int max_depth) {
     m_order_by = order_by;
     m_get_component = order_by == 2;
     m_use_root = false;
+    m_max_depth = max_depth;
     return generateKruskal(graph);
 }
 
@@ -374,11 +378,12 @@ Pgr_kruskal<G>::operator() (
         G &graph,
         int64_t root,
         int order_by,
-        bool get_component) {
+        int max_depth) {
     m_root = root;
     m_order_by = !order_by ? 1 : order_by;
     m_get_component = order_by == 2;
     m_use_root = true;
+    m_max_depth = max_depth;
     return generateKruskal(graph);
 }
 

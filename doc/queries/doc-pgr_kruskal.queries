@@ -31,27 +31,10 @@ SELECT * FROM pgr_kruskal(
          FROM edge_table',
     order_by := 'DFS'
 );
- seq | depth | node | edge | cost | agg_cost
------+-------+------+------+------+----------
-   1 |     1 |    2 |   -1 |    0 |        0
-   2 |     2 |    1 |    1 |    1 |        1
-   3 |     2 |    3 |    2 |    1 |        1
-   4 |     3 |    4 |    3 |    1 |        2
-   5 |     4 |    9 |   16 |    1 |        3
-   6 |     5 |   12 |   15 |    1 |        4
-   7 |     6 |   11 |   13 |    1 |        5
-   8 |     7 |    6 |   11 |    1 |        6
-   9 |     7 |   10 |   12 |    1 |        6
-  10 |     8 |    5 |   10 |    1 |        7
-  11 |     9 |    8 |    7 |    1 |        8
-  12 |    10 |    7 |    6 |    1 |        9
-  13 |     8 |   13 |   14 |    1 |        7
-  14 |     1 |   15 |   -1 |    0 |        0
-  15 |     2 |   14 |   17 |    1 |        1
-  16 |     1 |   17 |   -1 |    0 |        0
-  17 |     2 |   16 |   18 |    1 |        1
-(17 rows)
-
+ERROR:  function pgr_kruskal(unknown, order_by => unknown) does not exist
+LINE 1: SELECT * FROM pgr_kruskal(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 -- q3
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost
@@ -59,23 +42,7 @@ SELECT * FROM pgr_kruskal(
     5,
     order_by := 'BFS'
 );
- seq | depth | node | edge | cost | agg_cost
------+-------+------+------+------+----------
-   1 |     1 |    5 |   -1 |    0 |        0
-   2 |     2 |    8 |    7 |    1 |        1
-   3 |     2 |   10 |   10 |    1 |        1
-   4 |     3 |    7 |    6 |    1 |        2
-   5 |     3 |   11 |   12 |    1 |        2
-   6 |     3 |   13 |   14 |    1 |        2
-   7 |     4 |    6 |   11 |    1 |        3
-   8 |     4 |   12 |   13 |    1 |        3
-   9 |     5 |    9 |   15 |    1 |        4
-  10 |     6 |    4 |   16 |    1 |        5
-  11 |     7 |    3 |    3 |    1 |        6
-  12 |     8 |    2 |    2 |    1 |        7
-  13 |     9 |    1 |    1 |    1 |        8
-(13 rows)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 -- q4
 ROLLBACK;
 ROLLBACK

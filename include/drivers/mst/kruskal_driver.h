@@ -52,8 +52,8 @@ extern "C" {
 
                 int64_t root,
                 int order_by,
-                bool get_components,
                 bool use_root,
+                int max_depth,
 
                 pgr_kruskal_t **return_tuples,
                 size_t *return_count,

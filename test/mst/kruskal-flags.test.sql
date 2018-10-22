@@ -6,43 +6,39 @@ SELECT * FROM pgr_kruskal(
 
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    order_by := 'dfs'
+    max_depth := 3
 );
 
-SELECT * FROM pgr_kruskal(
+SELECT * FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'dfs'
+    0
 );
 
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    order_by := 'dfs'
-);
 
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'dfs'
-);
-
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    5,
-    order_by := 'dfs'
-);
-
-SELECT * FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    5,
-    order_by := 'bfs'
-);
-
-SELECT * FROM pgr_kruskal(
+SELECT * FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     5
 );
 
-SELECT * FROM pgr_kruskal(
+SELECT * FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    order_by := ''
+    5,
+    max_depth := 3
 );
 
+SELECT * FROM pgr_kruskalBFS(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    0
+);
+
+
+SELECT * FROM pgr_kruskalBFS(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    5
+);
+
+SELECT * FROM pgr_kruskalBFS(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    5,
+    max_depth := 3
+);
