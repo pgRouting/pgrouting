@@ -105,7 +105,10 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_KSP</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
@@ -163,8 +166,8 @@
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>2.0.0</li>
-<li>Signature change 2.1.0</li>
+<li>Signature change on v2.1.0</li>
+<li>New on v2.0.0</li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -173,20 +176,37 @@
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_KSP</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">K</span><span class="p">);</span>
-<span class="n">pgr_KSP</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">heap_paths</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_KSP</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">K</span> <span class="p">[,</span> <span class="n">directed</span><span class="p">]</span> <span class="p">[,</span> <span class="n">heap_paths</span><span class="p">])</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_id</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
 </div>
-<p class="rubric">Minimal Signature</p>
+<p class="rubric">Using default</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_ksp</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">K</span><span class="p">);</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_id</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
 </div>
-<p class="rubric">Complete Signature</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_KSP</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">heap_paths</span><span class="p">)</span>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><strong>TBD</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="complete-signature">
+<span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pgr_KSP</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">K</span> <span class="p">[,</span> <span class="n">directed</span><span class="p">]</span> <span class="p">[,</span> <span class="n">heap_paths</span><span class="p">])</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_id</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><strong>TBD</strong></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="parameters">
@@ -698,7 +718,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 21, 2018.<br/>
+      Last updated on Oct 22, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

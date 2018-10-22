@@ -105,8 +105,14 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_bdAstarCostMatrix</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional Parameters</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
 <li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
 </ul>
@@ -171,7 +177,7 @@
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>The main Characteristics are:</p>
+<p><strong>The main Characteristics are:</strong></p>
 <ul class="simple">
 <li>Using internaly the <a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> algorithm</li>
 <li>Returns a cost matrix.</li>
@@ -195,16 +201,11 @@
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, vids)
-pgr_bdAstarCostMatrix(edges_sql, vids [, directed, heuristic, factor, epsilon])
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
-<p class="rubric">Minimal Signature</p>
-<p>The minimal signature:</p>
-<ul class="simple">
-<li>Is for a <strong>directed</strong> graph.</li>
-</ul>
+<p class="rubric">Using defaults</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, vids)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -213,7 +214,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for vertices 1, 2, 3, and 4.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for vertices <span class="math">\(\{1, 2, 3, 4\}\)</span> on a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -239,8 +240,9 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 </pre></div>
 </div>
-<p class="rubric">Complete Signature</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, vids [, directed, heuristic, factor, epsilon])
+<div class="section" id="complete-signature">
+<span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
@@ -248,7 +250,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Symmetric cost matrix for vertices 1, 2, 3, and 4 using heuristic 2.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Symmetric cost matrix for vertices <span class="math">\(\{1, 2, 3, 4\}\)</span> on an <strong>undirected</strong> graph using heuristic <span class="math">\(2\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -276,6 +278,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -301,7 +304,59 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </tr>
 </tbody>
 </table>
-<p class="rubric">Optional Parameters</p>
+<div class="section" id="optional-parameters">
+<h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="19%" />
+<col width="7%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>directed</strong></td>
+<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal"><span class="pre">true</span></code></td>
+<td><ul class="first last simple">
+<li>When <code class="docutils literal"><span class="pre">true</span></code> the graph is considered as Directed.</li>
+<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>heuristic</strong></td>
+<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal"><span class="pre">5</span></code></td>
+<td><p class="first">Heuristic number. Current valid values 0~5. Default <code class="docutils literal"><span class="pre">5</span></code></p>
+<ul class="last simple">
+<li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
+<li>1: h(v) abs(max(dx, dy))</li>
+<li>2: h(v) abs(min(dx, dy))</li>
+<li>3: h(v) = dx * dx + dy * dy</li>
+<li>4: h(v) = sqrt(dx * dx + dy * dy)</li>
+<li>5: h(v) = abs(dx) + abs(dy)</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>factor</strong></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  See <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></td>
+</tr>
+<tr class="row-odd"><td><strong>epsilon</strong></td>
+<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>For less restricted results. <span class="math">\(epsilon &gt;= 1\)</span>.</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
@@ -492,7 +547,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 21, 2018.<br/>
+      Last updated on Oct 22, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

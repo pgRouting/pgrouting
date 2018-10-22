@@ -105,7 +105,10 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_bdDijkstraCostMatrix</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
@@ -177,11 +180,7 @@
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
-<p class="rubric" id="index-0">Minimal Signature</p>
-<p>The minimal signature:</p>
-<ul class="simple">
-<li>Is for a <strong>directed</strong> graph.</li>
-</ul>
+<p class="rubric" id="index-0">Using default</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstraCostMatrix(edges_sql, start_vid)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -190,7 +189,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for vertices 1, 2, 3, and 4.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for vertices <span class="math">\(\{1, 2, 3, 4\}\)</span> on a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -216,7 +215,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 </pre></div>
 </div>
-<p class="rubric">Complete Signature</p>
+<div class="section" id="complete-signature">
+<h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstraCostMatrix(edges_sql, start_vids [, directed])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -225,11 +225,10 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Symmetric cost matrix for vertices <span class="math">\(\{1, 2, 3, 4\}\)</span> on an <strong>undirected</strong> graph</td>
 </tr>
 </tbody>
 </table>
-<p>This example returns a symmetric cost matrix.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstraCostMatrix</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
@@ -252,6 +251,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="parameters">
@@ -448,7 +448,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 21, 2018.<br/>
+      Last updated on Oct 22, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

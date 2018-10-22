@@ -168,7 +168,8 @@
 </div>
 <p class="rubric">Availability:</p>
 <ul class="simple">
-<li>Proposed on v2.5.0 and Official on v3.0.0:<ul>
+<li>Official on v3.0.0</li>
+<li>Proposed on v2.5.0:<ul>
 <li>pgr_bdDijkstra(One to Many)</li>
 <li>pgr_bdDijkstra(Many to One)</li>
 <li>pgr_bdDijkstra(Many to Many)</li>
@@ -178,13 +179,13 @@
 <li>pgr_bdDijkstra(One to One)</li>
 </ul>
 </li>
-<li>Proposed on v2.5.0 and Official on v3.0.0:<ul>
+<li>Proposed on v2.5.0:<ul>
 <li>pgr_bdDijkstra(One to Many)</li>
 <li>pgr_bdDijkstra(Many to One)</li>
 <li>pgr_bdDijkstra(Many to Many)</li>
 </ul>
 </li>
-<li>Signature change on v2.4.0<ul>
+<li>Signature change on v2.4.0:<ul>
 <li>pgr_bdDijkstra(One to One)</li>
 </ul>
 </li>
@@ -202,21 +203,20 @@
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vid [, directed])
-pgr_bdDijkstra(edges_sql, start_vid, end_vids [, directed])
-pgr_bdDijkstra(edges_sql, start_vids, end_vid [, directed])
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid,  end_vid  [, directed])
+pgr_bdDijkstra(edges_sql, start_vid,  end_vids [, directed])
+pgr_bdDijkstra(edges_sql, start_vids, end_vid  [, directed])
 pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
-
 RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<p class="rubric">Minimal signature</p>
+<p class="rubric">Using defaults</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_bdDijkstra(edges_sql, start_vid, end_vid)
-RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
-<p>The minimal signature is for a <strong>directed</strong> graph from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -248,16 +248,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<p>This signature finds the shortest path from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
-<ul class="simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
-</ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math">\(2\)</span> to vertex  <span class="math">\(3\)</span> on an <strong>undirected</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -282,22 +277,11 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<p>This signature finds the shortest path from one <code class="docutils literal"><span class="pre">start_vid</span></code> to each <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</p>
-<ul class="simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
-</ul>
-<p>Using this signature, will load once the graph and perform a one to one <cite>pgr_dijkstra</cite>
-where the starting vertex is fixed, and stop when all <code class="docutils literal"><span class="pre">end_vids</span></code> are reached.</p>
-<ul class="simple">
-<li>The result is equivalent to the union of the results of the one to one <cite>pgr_dijkstra</cite>.</li>
-<li>The extra <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
-</ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math">\(2\)</span> to vertices <span class="math">\(\{3, 11\}\)</span> on a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -328,22 +312,11 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<p>This signature finds the shortest path from each <code class="docutils literal"><span class="pre">start_vid</span></code> in  <code class="docutils literal"><span class="pre">start_vids</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
-<ul class="simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
-</ul>
-<p>Using this signature, will load once the graph and perform several one to one <cite>pgr_dijkstra</cite>
-where the ending vertex is fixed.</p>
-<ul class="simple">
-<li>The result is the union of the results of the one to one <cite>pgr_dijkstra</cite>.</li>
-<li>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
-</ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math">\(\{2, 7\}\)</span> to vertex <span class="math">\(3\)</span> on a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -377,23 +350,11 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<p>This signature finds the shortest path from each <code class="docutils literal"><span class="pre">start_vid</span></code> in  <code class="docutils literal"><span class="pre">start_vids</span></code> to each <code class="docutils literal"><span class="pre">end_vid</span></code> in <code class="docutils literal"><span class="pre">end_vids</span></code>:</p>
-<ul class="simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
-</ul>
-<p>Using this signature, will load once the graph and perform several one to Many <cite>pgr_dijkstra</cite>
-for all <code class="docutils literal"><span class="pre">start_vids</span></code>.</p>
-<ul class="simple">
-<li>The result is the union of the results of the one to one <cite>pgr_dijkstra</cite>.</li>
-<li>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
-</ul>
-<p>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> and <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math">\(\{2, 7\}\)</span> to vertices <span class="math">\(\{3, 11\}\)</span> on a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -664,7 +625,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 21, 2018.<br/>
+      Last updated on Oct 22, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
