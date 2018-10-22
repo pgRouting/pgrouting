@@ -22,17 +22,17 @@ pgr_bdAstar
 * Official on v3.0.0
 * Proposed on v2.5.0:
 
-  * pgr_astar(One to Many)
-  * pgr_astar(Many to One)
-  * pgr_astar(Many to Many)
+  * pgr_bdAstar(One to Many)
+  * pgr_bdAstar(Many to One)
+  * pgr_bdAstar(Many to Many)
 
 * Signature change on v2.5.0:
 
-  * pgr_astar(One to One)
+  * pgr_bdAastar(One to One)
 
 * New on v2.0.0:
 
-  * pgr_astar(One to One)
+  * pgr_bdAstar(One to One)
 
 Description
 -------------------------------------------------------------------------------
