@@ -19,7 +19,8 @@ pgr_bdDijkstra
 
 .. rubric:: Availability:
 
-* Proposed on v2.5.0 and Official on v3.0.0:
+* Official on v3.0.0
+* Proposed on v2.5.0:
 
   * pgr_bdDijkstra(One to Many)
   * pgr_bdDijkstra(Many to One)
@@ -29,13 +30,13 @@ pgr_bdDijkstra
 
   * pgr_bdDijkstra(One to One)
 
-* Proposed on v2.5.0 and Official on v3.0.0:
+* Proposed on v2.5.0:
 
   * pgr_bdDijkstra(One to Many)
   * pgr_bdDijkstra(Many to One)
   * pgr_bdDijkstra(Many to Many)
 
-* Signature change on v2.4.0
+* Signature change on v2.4.0:
 
   * pgr_bdDijkstra(One to One)
 
@@ -54,22 +55,20 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid, end_vid [, directed])
-    pgr_bdDijkstra(edges_sql, start_vid, end_vids [, directed])
-    pgr_bdDijkstra(edges_sql, start_vids, end_vid [, directed])
+    pgr_bdDijkstra(edges_sql, start_vid,  end_vid  [, directed])
+    pgr_bdDijkstra(edges_sql, start_vid,  end_vids [, directed])
+    pgr_bdDijkstra(edges_sql, start_vids, end_vid  [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
-
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
-.. rubric:: Minimal signature
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_bdDijkstra(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
-
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
 :Example:
 
@@ -89,12 +88,7 @@ One to One
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
-
--  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
--  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
+:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
    :start-after: -- q2
@@ -112,18 +106,7 @@ One to many
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
-
--  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
--  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform a one to one `pgr_dijkstra`
-where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
-
-- The result is equivalent to the union of the results of the one to one `pgr_dijkstra`.
-- The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
-
-:Example:
+:Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
    :start-after: -- q3
@@ -141,18 +124,7 @@ Many to One
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
-
--  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
--  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform several one to one `pgr_dijkstra`
-where the ending vertex is fixed.
-
-- The result is the union of the results of the one to one `pgr_dijkstra`.
-- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
-
-:Example:
+:Example: From vertices :math:`\{2, 7\}` to vertex :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
    :start-after: -- q4
@@ -170,20 +142,7 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
-
--  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
--  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
-for all ``start_vids``.
-
-- The result is the union of the results of the one to one `pgr_dijkstra`.
-- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
-
-The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
-
-:Example:
+:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
    :start-after: -- q5
