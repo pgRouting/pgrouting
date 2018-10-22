@@ -22,7 +22,7 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 
 .. rubric:: Availability
 
-* pgr_dijkstraCost(all signatures) 2.2.0
+* New on v2.2.0
 
 Description
 -------------------------------------------------------------------------------
@@ -67,28 +67,24 @@ The main Characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Signature Summary
+.. rubric:: Summary
 
 .. code-block:: none
 
-     pgr_dijkstraCost(edges_sql, start_vid, end_vid);
-     pgr_dijkstraCost(edges_sql, start_vid, end_vid, directed);
-     pgr_dijkstraCost(edges_sql, start_vids, end_vid, directed);
-     pgr_dijkstraCost(edges_sql, start_vid, end_vids, directed);
+     pgr_dijkstraCost(edges_sql, start_vid,  end_vid,  directed);
+     pgr_dijkstraCost(edges_sql, start_vids, end_vid,  directed);
+     pgr_dijkstraCost(edges_sql, start_vid,  end_vids, directed);
      pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
+     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
-
-.. rubric:: Minimal signature
-
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+.. rubric:: Using defaults
 
 .. code-block:: none
 
-     pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
-	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+     pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid);
+     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-:Example:
+:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q1
@@ -100,17 +96,13 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 One to One
 ...............................................................................
 
-This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
 .. code-block:: none
 
     pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
-			 BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    BOOLEAN directed:=true);
+    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-:Example:
+:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q2
@@ -125,14 +117,10 @@ One to Many
 .. code-block:: none
 
     pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
-	    BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    BOOLEAN directed:=true);
+    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
+:Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q4
@@ -147,14 +135,10 @@ Many to One
 .. code-block:: none
 
     pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
-			 BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    BOOLEAN directed:=true);
+    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
+:Example: From vertices :math:`\{2, 7\}` to vertex :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q3
@@ -169,14 +153,10 @@ Many to Many
 .. code-block:: none
 
     pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
-	    BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    BOOLEAN directed:=true);
+    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
+:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q5
