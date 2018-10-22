@@ -41,24 +41,23 @@ Signatures
 
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vid, end_vid)
-    pgr_aStarCost(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
-    pgr_aStarCost(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
-    pgr_aStarCost(edges_sql, starts_vid, end_vid [, directed, heuristic, factor, epsilon])
-    pgr_aStarCost(edges_sql, starts_vid, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_aStarCost(edges_sql, start_vid, end_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(edges_sql, start_vid, end_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
 
-.. rubric:: Minimal Signature
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_aStarCost(edges_sql, start_vid, end_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-:Example: Using the defaults
+:Example: From vertex :math:`2` to vertex  :math:`12` on a **directed** graph
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q1
@@ -72,10 +71,10 @@ One to One
 
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_aStarCost(edges_sql, start_vid, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-:Example: Using heuristic `2`
+:Example: From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q2
@@ -89,10 +88,10 @@ One to many
 
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_aStarCost(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-:Example: From vertex `2` to vertices :math:`\{3, 12\}` using heuristic `2`
+:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q3
@@ -106,10 +105,10 @@ Many to One
 
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_aStarCost(edges_sql, start_vids, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` using heuristic `0`
+:Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic :math:`0`
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q4
@@ -123,10 +122,10 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_aStarCost(edges_sql, start_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` using heuristic `2`
+:Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q5
