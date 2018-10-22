@@ -7,14 +7,10 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_dijkstraCostMatrix - proposed
+pgr_dijkstraCostMatrix
 ===============================================================================
 
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
-
-.. include:: proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -23,7 +19,8 @@ pgr_dijkstraCostMatrix - proposed
 
 .. rubric:: Availability
 
-2.3.0
+* Official on v3.0.0
+* Proposed on v2.3.0
 
 Description
 -------------------------------------------------------------------------------
@@ -37,37 +34,35 @@ Signatures
 
 .. code-block:: none
 
-    pgr_dijkstraCostMatrix(edges_sql, start_vids)
-    pgr_dijkstraCostMatrix(edges_sql, start_vids, directed)
+    pgr_dijkstraCostMatrix(edges_sql, start_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. rubric:: Minimal Signature
-
-The minimal signature:
-
-- Is for a **directed** graph.
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_dijkstraCostMatrix(edges_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Cost matrix for vertices 1, 2, 3, and 4.
+:Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- dijkstra q1
    :end-before: -- dijkstra q2
 
-.. rubric:: Complete Signature
+
+.. index::
+    single: dijkstraCostMatrix
+    
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraCostMatrix(edges_sql, start_vids, directed:=true)
+    pgr_dijkstraCostMatrix(edges_sql, start_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.
-
-This example returns a symmetric cost matrix.
+:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- dijkstra q2
