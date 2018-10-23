@@ -106,7 +106,8 @@ One to many
 .. code-block:: none
 
     pgr_bdAstar(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed** graph using heuristic :math:`3` and factor :math:`3.5`
 
@@ -123,7 +124,8 @@ Many to One
 .. code-block:: none
 
     pgr_bdAstar(edges_sql, start_vids, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 7\}` to vertex :math:`3` on an **undirected** graph using heuristic :math:`4`
 
@@ -140,7 +142,8 @@ Many to Many
 .. code-block:: none
 
     pgr_bdAstar(edges_sql, start_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a **directed** graph using factor :math:`0.5`
 
