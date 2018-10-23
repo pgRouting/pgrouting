@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: _prim.sql
+File: kruskal.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,17 +27,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_prim(
-    TEXT,           -- Edge sql
-    BIGINT,         -- Root vertex
+CREATE OR REPLACE FUNCTION _pgr_kruskal(
+    TEXT,             -- Edge sql
+    BIGINT,           -- tree root for traversal
+    order_by TEXT,
+    max_depth INTEGER,
+    distance FLOAT,
 
-    OUT seq INTEGER,            -- Seq
-    Out root_vertex BIGINT,     -- Root_vertex
-    OUT node BIGINT,	        -- node of lightest weight
-    OUT edge BIGINT,	     	-- Edge linked to that node
-    OUT cost FLOAT,             -- Cost of edge
-    OUT agg_cost FLOAT,         -- Cost from root_vertex to node
-    OUT tree_cost FLOAT)        -- Spanning tree cost
+    OUT seq INTEGER,
+    OUT depth BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'prim'
+'MODULE_PATHNAME', 'kruskal'
 LANGUAGE C VOLATILE STRICT;

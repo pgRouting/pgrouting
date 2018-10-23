@@ -30,11 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct {
-    int seq;
     int64_t component;
+    int64_t nodes;
+    int64_t nodet;
     int64_t edge;
     double cost;
-    double tree_cost;
+    double agg_cost;
 } pgr_kruskal_t;
 
 #endif  // INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_

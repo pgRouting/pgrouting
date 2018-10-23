@@ -1,0 +1,30 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- q1
+SELECT * FROM pgr_kruskalDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    5,
+    3.5
+);
+ seq | depth | node | edge | cost | agg_cost
+-----+-------+------+------+------+----------
+   1 |     1 |    5 |   -1 |    0 |        0
+   2 |     2 |    8 |    7 |    1 |        1
+   3 |     3 |    7 |    6 |    1 |        2
+   4 |     2 |   10 |   10 |    1 |        1
+   5 |     3 |   11 |   12 |    1 |        2
+   6 |     4 |    6 |   11 |    1 |        3
+   7 |     4 |   12 |   13 |    1 |        3
+   8 |     5 |    9 |   15 |    1 |        4
+   9 |     6 |    4 |   16 |    1 |        5
+  10 |     7 |    3 |    3 |    1 |        6
+  11 |     8 |    2 |    2 |    1 |        7
+  12 |     9 |    1 |    1 |    1 |        8
+  13 |     3 |   13 |   14 |    1 |        2
+(13 rows)
+
+-- q2
+ROLLBACK;
+ROLLBACK

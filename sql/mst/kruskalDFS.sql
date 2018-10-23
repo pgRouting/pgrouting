@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: _prim.sql
+File: kruskalDFS.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,17 +27,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_prim(
-    TEXT,           -- Edge sql
-    BIGINT,         -- Root vertex
+CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
+    TEXT,   -- Edge sql
+    BIGINT, -- root vertex
 
-    OUT seq INTEGER,            -- Seq
-    Out root_vertex BIGINT,     -- Root_vertex
-    OUT node BIGINT,	        -- node of lightest weight
-    OUT edge BIGINT,	     	-- Edge linked to that node
-    OUT cost FLOAT,             -- Cost of edge
-    OUT agg_cost FLOAT,         -- Cost from root_vertex to node
-    OUT tree_cost FLOAT)        -- Spanning tree cost
+    max_depth INTEGER DEFAULT 0,
+
+    OUT seq INTEGER,
+    OUT depth BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'prim'
-LANGUAGE C VOLATILE STRICT;
+$BODY$
+    SELECT *
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', $3, -1);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+
+COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalDFS(edge_sql, root [, max_depth]): Experimental, Undirected Graph';

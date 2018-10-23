@@ -38,9 +38,8 @@ static
 std::vector<pgr_kruskal_t>
 pgr_kruskal(
         G &graph ) {
-    std::vector<pgr_kruskal_t> results;
-    Pgr_kruskal< G > fn_kruskal;
-    return fn_kruskal.kruskal(graph);
+    pgrouting::functions::Pgr_kruskal< G > kruskal;
+    return kruskal(graph);
 }
 
 
@@ -48,8 +47,15 @@ void
 do_pgr_kruskal(
         pgr_edge_t  *data_edges,
         size_t total_edges,
+        int64_t root,
+        int order_by,
+        bool use_root,
+        int max_depth,
+        double distance,
+
         pgr_kruskal_t **return_tuples,
         size_t *return_count,
+
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -66,14 +72,18 @@ do_pgr_kruskal(
 
         graphType gType = UNDIRECTED;
 
-        std::vector<pgr_kruskal_t> results;
 
         log << "Working with Undirected Graph\n";
 
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_kruskal(
-                    undigraph);
+
+        pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
+
+        auto results = use_root?
+            kruskal(undigraph, root, order_by, max_depth, distance) :
+            kruskal(undigraph, order_by, max_depth);
+
 
         auto count = results.size();
 

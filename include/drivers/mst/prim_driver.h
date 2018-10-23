@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_prim_t.h"
+#include "c_types/pgr_prim_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,7 +51,7 @@ extern "C" {
                 size_t total_edges,
                 int64_t root_vertex,
                 bool use_root,
-                pgr_prim_t **return_tuples,
+                pgr_prim_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

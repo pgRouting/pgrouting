@@ -1,42 +1,50 @@
 /*PGR-GNU*****************************************************************
-File: pgr_prim_t.h
+File: kruskalBFS.sql
 
-Copyright (c) 2015 Aditya Pratap Singh
+Generated with Template by:
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2018 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
+
 ------
+
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
+
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
+
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_PRIM_T_H_
-#define INCLUDE_C_TYPES_PGR_PRIM_T_H_
-#pragma once
+CREATE OR REPLACE FUNCTION pgr_kruskalBFS(
+    TEXT,   -- Edge sql
+    BIGINT, -- root vertex
 
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
-#endif
+    max_depth INTEGER DEFAULT 0,
 
-typedef struct {
-    int seq;
-    int64_t root_vertex;
-    int64_t node;
-    int64_t edge;
-    double cost;
-    double agg_cost;
-    double tree_cost;
-} pgr_prim_t;
+    OUT seq INTEGER,
+    OUT depth BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'BFS', $3, -1);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
 
-#endif  // INCLUDE_C_TYPES_PGR_PRIM_T_H_
+
+COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalBFS(edge_sql, root [, max_depth]): Experimental, Undirected Graph';

@@ -1,0 +1,78 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+--q1
+SELECT * FROM pgr_kruskalDFS(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    0
+);
+ seq | depth | node | edge | cost | agg_cost
+-----+-------+------+------+------+----------
+   1 |     1 |    2 |   -1 |    0 |        0
+   2 |     2 |    1 |    1 |    1 |        1
+   3 |     2 |    3 |    2 |    1 |        1
+   4 |     3 |    4 |    3 |    1 |        2
+   5 |     4 |    9 |   16 |    1 |        3
+   6 |     5 |   12 |   15 |    1 |        4
+   7 |     6 |   11 |   13 |    1 |        5
+   8 |     7 |    6 |   11 |    1 |        6
+   9 |     7 |   10 |   12 |    1 |        6
+  10 |     8 |    5 |   10 |    1 |        7
+  11 |     9 |    8 |    7 |    1 |        8
+  12 |    10 |    7 |    6 |    1 |        9
+  13 |     8 |   13 |   14 |    1 |        7
+  14 |     1 |   15 |   -1 |    0 |        0
+  15 |     2 |   14 |   17 |    1 |        1
+  16 |     1 |   17 |   -1 |    0 |        0
+  17 |     2 |   16 |   18 |    1 |        1
+(17 rows)
+
+--q2
+SELECT * FROM pgr_kruskalDFS(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    5
+);
+ seq | depth | node | edge | cost | agg_cost
+-----+-------+------+------+------+----------
+   1 |     1 |    5 |   -1 |    0 |        0
+   2 |     2 |    8 |    7 |    1 |        1
+   3 |     3 |    7 |    6 |    1 |        2
+   4 |     2 |   10 |   10 |    1 |        1
+   5 |     3 |   11 |   12 |    1 |        2
+   6 |     4 |    6 |   11 |    1 |        3
+   7 |     4 |   12 |   13 |    1 |        3
+   8 |     5 |    9 |   15 |    1 |        4
+   9 |     6 |    4 |   16 |    1 |        5
+  10 |     7 |    3 |    3 |    1 |        6
+  11 |     8 |    2 |    2 |    1 |        7
+  12 |     9 |    1 |    1 |    1 |        8
+  13 |     3 |   13 |   14 |    1 |        2
+(13 rows)
+
+--q3
+SELECT * FROM pgr_kruskalDFS(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    5,
+    max_depth := 3
+);
+ seq | depth | node | edge | cost | agg_cost
+-----+-------+------+------+------+----------
+   1 |     1 |    5 |   -1 |    0 |        0
+   2 |     2 |    8 |    7 |    1 |        1
+   3 |     3 |    7 |    6 |    1 |        2
+   4 |     2 |   10 |   10 |    1 |        1
+   5 |     3 |   11 |   12 |    1 |        2
+   6 |     4 |    6 |   11 |    1 |        3
+   7 |     4 |   12 |   13 |    1 |        3
+   8 |     5 |    9 |   15 |    1 |        4
+   9 |     6 |    4 |   16 |    1 |        5
+  10 |     7 |    3 |    3 |    1 |        6
+  11 |     8 |    2 |    2 |    1 |        7
+  12 |     9 |    1 |    1 |    1 |        8
+  13 |     3 |   13 |   14 |    1 |        2
+(13 rows)
+
+--q4
+ROLLBACK;
+ROLLBACK

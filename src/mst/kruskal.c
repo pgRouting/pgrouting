@@ -38,14 +38,33 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(kruskal);
 
 static
+int
+get_order(char * order_by) {
+    int order = tolower(order_by[0]);
+    if ('d' == order) return 1;
+    if ('b' == order) return 2;
+    return 0;
+}
+
+static
 void
 process(
         char* edges_sql,
+        int64_t root,
+        char * p_order_by,
+        int max_depth,
+        double distance,
+
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
+    int order_by = get_order(p_order_by);
+    bool use_root = root;
+
+    PGR_DBG("root %ld", root);
+    PGR_DBG("order by %d", order_by);
+    PGR_DBG("max_depth %d", max_depth);
+
+
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;
@@ -70,8 +89,13 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
     do_pgr_kruskal(
-            edges,
-            total_edges,
+            edges, total_edges,
+            root,
+            order_by,
+            use_root,
+            max_depth,
+            distance,
+
             result_tuples,
             result_count,
             &log_msg,
@@ -108,13 +132,23 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
 
 
         PGR_DBG("Calling process");
+        /*
+           TEXT,             -- Edge sql
+           BIGINT,           -- tree root for traversal
+           order_by TEXT,
+           max_depth INTEGER
+        */
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_INT64(1),
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                PG_GETARG_INT32(3),
+                PG_GETARG_FLOAT8(4),
                 &result_tuples,
                 &result_count);
 
-#if PGSQL_VERSION > 94
-        funcctx->max_calls = (uint32_t)result_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
@@ -141,28 +175,29 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        size_t num  = 7;
+        values = palloc(num * sizeof(Datum));
+        nulls = palloc(num * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodes);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodet);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        PGR_DBG("Clean up code");
 
         SRF_RETURN_DONE(funcctx);
     }

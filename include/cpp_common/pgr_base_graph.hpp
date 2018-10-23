@@ -204,7 +204,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
 
 namespace graph {
 
-template <class G, typename T_V, typename T_E>
+template <typename G, typename T_V, typename T_E>
 class Pgr_base_graph {
  public:
      /** @name Graph related types

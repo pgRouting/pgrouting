@@ -36,14 +36,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-std::vector<pgr_prim_t>
+std::vector<pgr_prim_rt>
 pgr_prim(
         G &graph,
         int64_t root_vertex,
         bool use_root ) {
-    std::vector<pgr_prim_t> results;
-    Pgr_prim< G > fn_prim;
-    return fn_prim.prim(graph, root_vertex, use_root);
+    std::vector<pgr_prim_rt> results;
+    pgrouting::functions::Pgr_prim<G> prim;
+    return prim(graph, root_vertex, use_root);
 }
 
 
@@ -53,7 +53,7 @@ do_pgr_prim(
         size_t total_edges,
         int64_t root_vertex,
         bool use_root,
-        pgr_prim_t **return_tuples,
+        pgr_prim_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -71,7 +71,7 @@ do_pgr_prim(
 
         graphType gType = UNDIRECTED;
 
-        std::vector<pgr_prim_t> results;
+        std::vector<pgr_prim_rt> results;
 
         log << "Working with Undirected Graph\n";
 
@@ -87,8 +87,7 @@ do_pgr_prim(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No spanning tree found";
             return;
         }
 

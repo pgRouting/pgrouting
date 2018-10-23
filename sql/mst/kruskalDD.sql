@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: randomSpanningTree.sql
+File: kruskalDFS.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,34 +27,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_randomSpanningTree(
-    edges_sql TEXT,             -- Edge sql
-    root BIGINT,
-    directed BOOLEAN,
+CREATE OR REPLACE FUNCTION pgr_kruskalDD (
+    TEXT,   -- Edge sql
+    BIGINT, -- root vertex
 
-    OUT seq INTEGER,            -- Seq
-    OUT root_vertex BIGINT,
-    OUT edge BIGINT,	     	-- Edge linked to that node
-    OUT cost FLOAT,             -- Cost of edge
-    OUT tree_cost FLOAT)        -- Spanning tree cost 
+    distance FLOAT,
+
+    OUT seq INTEGER,
+    OUT depth BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-DECLARE
-    connectedComponent BIGINT;
-BEGIN
-     SELECT COUNT(DISTINCT component) INTO connectedComponent 
-                         FROM pgr_connectedComponents(
-                                      'SELECT id, source, target, cost, reverse_cost 
-                              FROM edge_table'
-                         );
-
-    IF (connectedComponent == 1)THEN
-       SELECT *
-       FROM _pgr_randomSpanningTreee(_pgr_get_statement($1), $2, $3, TRUE);
-    ELSE 
-       SELECT *
-       FROM _pgr_randomSpanningTreee(_pgr_get_statement($1), $2, $3, FALSE);
-    END IF;
-END;
+    SELECT *
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', 0, $3);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
+
+
+COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT) IS 'pgr_kruskalDD(edge_sql, root , distance): Experimental, Undirected Graph';
