@@ -76,7 +76,7 @@ Signatures
     pgr_dijkstra(edges_sql, start_vids, end_vid  [, directed])
     pgr_dijkstra(edges_sql, start_vids, end_vids [, directed])
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-    or EMPTY SET
+    OR EMPTY SET
 
 .. rubric:: Using defaults
 
@@ -102,7 +102,7 @@ One to One
     pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
     BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
-    or EMPTY SET
+    OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph 
 
@@ -121,7 +121,7 @@ One to many
     pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) 
-    or EMPTY SET
+    OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** graph
 
@@ -140,7 +140,7 @@ Many to One
     pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
         BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) 
-    or EMPTY SET
+    OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
 
@@ -159,7 +159,7 @@ Many to Many
     pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) 
-    or EMPTY SET
+    OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph
 
