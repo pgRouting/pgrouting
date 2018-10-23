@@ -47,7 +47,10 @@ void
 do_pgr_kruskal(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        int64_t root,
+
+        int64_t *rootsArr,
+        size_t size_rootsArr,
+
         int order_by,
         bool use_root,
         int max_depth,
@@ -72,6 +75,8 @@ do_pgr_kruskal(
 
         graphType gType = UNDIRECTED;
 
+        std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
+
 
         log << "Working with Undirected Graph\n";
 
@@ -81,9 +86,8 @@ do_pgr_kruskal(
         pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
 
         auto results = use_root?
-            kruskal(undigraph, root, order_by, max_depth, distance) :
+            kruskal(undigraph, roots, order_by, max_depth, distance) :
             kruskal(undigraph, order_by, max_depth);
-
 
         auto count = results.size();
 

@@ -50,7 +50,9 @@ extern "C" {
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
 
-                int64_t root,
+                int64_t *root,
+                size_t total_roots,
+
                 int order_by,
                 bool use_root,
                 int max_depth,
