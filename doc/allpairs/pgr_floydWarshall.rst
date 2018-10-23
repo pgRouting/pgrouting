@@ -20,10 +20,8 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
 .. rubric:: Availability
 
-* 2.0.0
-
-* Re-design of pgr_apspWarshall in Version 2.2.0
-
+* Signature change on v2.2.0
+* New on v2.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -60,31 +58,34 @@ Signatures
 
 .. code-block:: none
 
-    pgr_floydWarshall(edges_sql)
-    pgr floydWarshall(edges_sql, directed)
-    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+    pgr floydWarshall(edges_sql [, directed])
+    RETURNS SET OF (start_vid, end_vid,  agg_cost) 
+    or EMPTY SET
 
-.. rubric:: Minimal Signature
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_floydWarshall(edges_sql)
-    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+    RETURNS SET OF (start_vid, end_vid,  agg_cost) 
+    or EMPTY SET
 
-:Example 1: On a directed graph.
+:Example 1: For vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
 
 .. literalinclude:: doc-floydWarshall.queries
    :start-after: -- q1
    :end-before: -- q2
 
-.. rubric:: Complete Signature
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
-    pgr_floydWarshall(edges_sql, directed)
-    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+    pgr_floydWarshall(edges_sql [, directed])
+    RETURNS SET OF (start_vid, end_vid,  agg_cost)
+    or EMPTY SET
 
-:Example 2: On an undirected graph.
+:Example 2: For vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
 
 .. literalinclude:: doc-floydWarshall.queries
    :start-after: -- q2
@@ -93,7 +94,7 @@ Signatures
 Parameters 
 -------------------------------------------------------------------------------
 
-Receives  ``(edges_sql, directed)``
+Receives  ``(edges_sql [, directed])``
 
 ============= ============= =================================================
 Parameter     Type          Description
