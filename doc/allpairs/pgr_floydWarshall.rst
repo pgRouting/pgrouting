@@ -60,7 +60,7 @@ Signatures
 
     pgr floydWarshall(edges_sql [, directed])
     RETURNS SET OF (start_vid, end_vid,  agg_cost) 
-    or EMPTY SET
+    OR EMPTY SET
 
 .. rubric:: Using defaults
 
@@ -68,7 +68,7 @@ Signatures
 
     pgr_floydWarshall(edges_sql)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) 
-    or EMPTY SET
+    OR EMPTY SET
 
 :Example 1: For vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
 
@@ -83,7 +83,7 @@ Complete Signature
 
     pgr_floydWarshall(edges_sql [, directed])
     RETURNS SET OF (start_vid, end_vid,  agg_cost)
-    or EMPTY SET
+    OR EMPTY SET
 
 :Example 2: For vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
 
@@ -93,8 +93,6 @@ Complete Signature
 
 Parameters 
 -------------------------------------------------------------------------------
-
-Receives  ``(edges_sql [, directed])``
 
 ============= ============= =================================================
 Parameter     Type          Description
