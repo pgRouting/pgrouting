@@ -42,10 +42,10 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bdAstarCost(edges_sql, start_vid, end_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstarCost(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstarCost(edges_sql, start_vid, end_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstarCost(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(edges_sql, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(edges_sql, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(edges_sql, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(edges_sql, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (start_vid, end_vid, agg_cost) 
     OR EMPTY SET
@@ -56,8 +56,9 @@ Optional parameters are `named parameters` and have a default value.
 
 .. code-block:: none
 
-    pgr_bdAstarCost(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
+    pgr_bdAstarCost(edges_sql, from_vid,  to_vid)
+    RETURNS SET OF (start_vid, end_vid, agg_cost) 
+    OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex :math:`12` on a **directed** graph
 
@@ -73,7 +74,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_bdAstarCost(edges_sql, start_vid, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(edges_sql, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) 
     OR EMPTY SET
 
@@ -91,7 +92,7 @@ One to many
 
 .. code-block:: none
 
-    pgr_bdAstarCost(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(edges_sql, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) 
     OR EMPTY SET
 
@@ -109,7 +110,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bdAstarCost(edges_sql, start_vids, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(edges_sql, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) 
     OR EMPTY SET
 
@@ -127,7 +128,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bdAstarCost(edges_sql, start_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(edges_sql, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost) 
     OR EMPTY SET
 

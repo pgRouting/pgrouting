@@ -71,10 +71,10 @@ Signatures
 
 .. code-block:: none
 
-     pgr_dijkstraCost(edges_sql, start_vid,  end_vid,  directed);
-     pgr_dijkstraCost(edges_sql, start_vids, end_vid,  directed);
-     pgr_dijkstraCost(edges_sql, start_vid,  end_vids, directed);
-     pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
+     pgr_dijkstraCost(edges_sql, from_vid,  to_vid  [, directed])
+     pgr_dijkstraCost(edges_sql, from_vid,  to_vids [, directed])
+     pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
+     pgr_dijkstraCost(edges_sql, from_vids, to_vids [, directed])
      RETURNS SET OF (start_vid, end_vid, agg_cost)
      OR EMPTY SET
 
@@ -82,7 +82,7 @@ Signatures
 
 .. code-block:: none
 
-     pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid);
+     pgr_dijkstraCost(edges_sql, from_vid,  to_vid)
      RETURNS SET OF (start_vid, end_vid, agg_cost)
      OR EMPTY SET
 
@@ -100,8 +100,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
-    BOOLEAN directed:=true);
+    pgr_dijkstraCost(edges_sql, from_vid,  to_vid  [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -119,8 +118,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
-    BOOLEAN directed:=true);
+    pgr_dijkstraCost(edges_sql, from_vid,  to_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -138,8 +136,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
-    BOOLEAN directed:=true);
+     pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -157,8 +154,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
-    BOOLEAN directed:=true);
+    pgr_dijkstraCost(edges_sql, from_vids, to_vids [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 

@@ -58,10 +58,10 @@ Signature
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid,  end_vid,  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstar(edges_sql, start_vid,  end_vids  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstar(edges_sql, start_vids, end_vid   [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstar(edges_sql, start_vids, end_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, from_vid,  to_vid,  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -88,7 +88,7 @@ One to One
 ...............................................................................
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, from_vid,  to_vid,  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph using heuristic :math:`2`
@@ -105,7 +105,7 @@ One to many
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -123,7 +123,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vids, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -141,7 +141,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(edges_sql, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) 
     OR EMPTY SET
 
