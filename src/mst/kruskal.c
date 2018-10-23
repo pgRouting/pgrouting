@@ -24,12 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
+#include <utils/array.h>
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
 #include "c_common/edges_input.h"
+#include "c_common/arrays_input.h"
 
 
 #include "drivers/mst/kruskal_driver.h"
@@ -50,7 +51,7 @@ static
 void
 process(
         char* edges_sql,
-        int64_t root,
+        ArrayType *roots,
         char * p_order_by,
         int max_depth,
         double distance,
@@ -58,14 +59,17 @@ process(
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
     int order_by = get_order(p_order_by);
-    bool use_root = root;
 
-    PGR_DBG("root %ld", root);
+    int64_t* rootsArr = NULL;
+    size_t size_rootsArr = 0;
+
     PGR_DBG("order by %d", order_by);
     PGR_DBG("max_depth %d", max_depth);
 
-
     pgr_SPI_connect();
+
+    rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
+    bool use_root = (size_rootsArr > 1) || (size_rootsArr == 1 && rootsArr[0] != 0);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -90,7 +94,7 @@ process(
     char *err_msg = NULL;
     do_pgr_kruskal(
             edges, total_edges,
-            root,
+            rootsArr, size_rootsArr,
             order_by,
             use_root,
             max_depth,
@@ -140,7 +144,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         */
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
+                PG_GETARG_ARRAYTYPE_P(1),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
                 PG_GETARG_INT32(3),
                 PG_GETARG_FLOAT8(4),
@@ -187,11 +191,12 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodes);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].nodet);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

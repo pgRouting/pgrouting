@@ -30,9 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct {
-    int64_t component;
-    int64_t nodes;
-    int64_t nodet;
+    int64_t from_v;
+    int64_t depth;
+    int64_t node;
     int64_t edge;
     double cost;
     double agg_cost;

@@ -15,3 +15,9 @@ SELECT * FROM pgr_kruskalDFS(
     max_depth := 3
 );
 \echo --q4
+SELECT * FROM pgr_kruskalBFS(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    ARRAY[5, 3],
+    max_depth := 3
+);
+\echo --q5

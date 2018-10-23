@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(44);
+SELECT plan(86);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -55,8 +55,47 @@ BEGIN
     params[1] := '$$edges$$';
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalDFS', params, subs);
 
-    subs[2] := 'NULL::INTEGER';
+    subs[2] := 'NULL::BIGINT';
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalDFS', params, subs);
+
+    -- kruskalDFS Multiple vertices
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    'ARRAY[5,3]'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDFS', params, subs);
+
+    params[1] := '$$edges$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDFS', params, subs);
+
+    subs[2] := 'NULL::BIGINT';
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDFS', params, subs);
+
+    -- kruskalDFS with depth Multiple vertices
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    'ARRAY[5,3]',
+    '3'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    'NULL::INTEGER'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDFS', params, subs);
+
+    params[1] := '$$edges$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDFS', params, subs);
+
+    subs[2] := 'NULL::BIGINT[]';
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDFS', params, subs);
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

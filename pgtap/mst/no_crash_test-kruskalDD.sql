@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(18);
+SELECT plan(42);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -37,6 +37,28 @@ BEGIN
 
     params[1] := '$$edges$$';
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
+
+    -- kruskalDD Multiple vertices
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    'ARRAY[5,3]',
+    '3.5'
+    ]::TEXT[];
+
+    subs = ARRAY[
+    'NULL',
+    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
+
+    params[1] := '$$edges$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
+
+    subs[2] := 'NULL::BIGINT[]';
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
+
 
 END
 $BODY$
