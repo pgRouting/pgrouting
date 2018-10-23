@@ -37,6 +37,7 @@ Signatures
     pgr_bdDijkstraCost(edges_sql, start_vid,  end_vids [, directed])
     pgr_bdDijkstraCost(edges_sql, start_vids, end_vid  [, directed])
     pgr_bdDijkstraCost(edges_sql, start_vids, end_vids [, directed])
+    
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
