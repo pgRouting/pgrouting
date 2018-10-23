@@ -113,7 +113,7 @@ class Pgr_kruskal {
  public:
      std::vector<pgr_kruskal_t> operator() (
              G &graph,
-             int64_t root,
+             std::vector<int64_t> root,
              int m_order_by,
              int max_depth,
              double distance);
@@ -146,12 +146,13 @@ class Pgr_kruskal {
      template <typename T>
      std::vector<pgr_kruskal_t> get_results(
              T order,
+             int64_t root,
              const G &graph);
 
  private:
      bool m_get_component;
      int  m_order_by;
-     int64_t  m_root;
+     std::vector<int64_t> m_root;
      bool  m_use_root;
      int  m_max_depth;
      double  m_distance;
@@ -184,6 +185,7 @@ template <typename T>
 std::vector<pgr_kruskal_t>
 Pgr_kruskal<G>::get_results(
         T order,
+        int64_t root,
         const G &graph) {
     std::vector<pgr_kruskal_t> results;
     std::vector<double> agg_cost(graph.num_vertices(), 0);
@@ -199,12 +201,12 @@ Pgr_kruskal<G>::get_results(
         auto component = m_get_component? m_tree_id[m_components[u]] : 0;
         if ((m_order_by && depth[u] == 0 && depth[v] == 0)
                 ) {
-            if (m_use_root && graph[u].id != m_root) std::swap(u, v);
+            if (m_use_root && graph[u].id != root) std::swap(u, v);
             if (!m_use_root && graph[u].id != component) std::swap(u, v);
 
             depth[u] = 1;
             results.push_back({
-                component,
+                root,
                 m_order_by? depth[u] : 0,
                     graph[u].id,
                     -1,
@@ -219,7 +221,7 @@ Pgr_kruskal<G>::get_results(
                 || m_max_depth >= depth[v]
                 || m_distance >= agg_cost[v]) {
             results.push_back({
-                component,
+                root,
                 m_order_by? depth[v] : 0,
                 graph[v].id,
                 graph[edge].id,
@@ -267,7 +269,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
      * No particular order
      */
     if (m_order_by == 0) {
-        return get_results(m_added_order, graph);
+        return get_results(m_added_order, 0, graph);
     }
 
 
@@ -288,32 +290,36 @@ Pgr_kruskal<G>::order_results(const G &graph) {
         using dfs_visitor = visitors::Dfs_visitor<E>;
         boost::depth_first_search(mst, visitor(dfs_visitor(visited_order)));
 
-        return get_results(visited_order, graph);
+        return get_results(visited_order, 0, graph);
     }
 
     if (m_use_root && m_order_by == 1 ) {
-        std::vector<E> visited_order;
+        std::vector<pgr_kruskal_t> results;
+        for (const auto root : m_root) {
+            std::vector<E> visited_order;
 
-        using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
-        try {
-            boost::depth_first_search(
-                    mst,
-                    visitor(dfs_visitor(graph.get_V(m_root), visited_order))
-                    .root_vertex(graph.get_V(m_root))
-                    );
-        } catch(found_goals &) {
-            ;
-        } catch (boost::exception const& ex) {
-            (void)ex;
+            using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
+            try {
+                boost::depth_first_search(
+                        mst,
+                        visitor(dfs_visitor(graph.get_V(root), visited_order))
+                        .root_vertex(graph.get_V(root))
+                        );
+            } catch(found_goals &) {
+                ;
+            } catch (boost::exception const& ex) {
+                (void)ex;
+                throw;
+            } catch (std::exception &e) {
+                (void)e;
+                throw;
+            } catch (...) {
             throw;
-        } catch (std::exception &e) {
-            (void)e;
-            throw;
-        } catch (...) {
-            throw;
+            }
+            auto result = get_results(visited_order, root, graph);
+            results.insert(results.end(), result.begin(), result.end());
         }
-
-        return get_results(visited_order, graph);
+        return results;
     }
 
     /*
@@ -323,7 +329,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
 
     std::vector<int64_t> roots;
     if (m_use_root) {
-        roots.push_back(m_root);
+        roots = m_root;
     } else {
         roots =  m_tree_id;
     }
@@ -335,7 +341,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
                 graph.get_V(root),
                 visitor(bfs_visitor(visited_order)));
 
-        auto results = get_results(visited_order, graph);
+        auto results = get_results(visited_order, root, graph);
         m_results.insert(m_results.end(), results.begin(), results.end());
     }
 
@@ -370,6 +376,7 @@ Pgr_kruskal<G>::operator() (
         int order_by,
         int max_depth) {
     m_order_by = order_by;
+    m_root.clear();
     m_get_component = order_by == 2;
     m_use_root = false;
     m_max_depth = max_depth;
@@ -380,7 +387,7 @@ template <class G>
 std::vector<pgr_kruskal_t>
 Pgr_kruskal<G>::operator() (
         G &graph,
-        int64_t root,
+        std::vector<int64_t> root,
         int order_by,
         int max_depth,
         double distance) {

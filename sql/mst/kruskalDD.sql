@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: kruskalDFS.sql
+File: kruskalDD.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -30,10 +30,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
-
-    distance FLOAT,
+    FLOAT,  -- distance
 
     OUT seq INTEGER,
+    OUT from_v BIGINT,
+    OUT depth BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT seq, from_v, depth, node, edge, cost, agg_cost
+    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', 0, $3);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+
+CREATE OR REPLACE FUNCTION pgr_kruskalDD (
+    TEXT,   -- Edge sql
+    ANYARRAY, -- root vertex
+
+    FLOAT, -- distance
+
+    OUT seq INTEGER,
+    OUT from_v BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -46,5 +67,5 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
-
-COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT) IS 'pgr_kruskalDD(edge_sql, root , distance): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT) IS 'pgr_kruskalDD(Single vertex): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, FLOAT) IS 'pgr_kruskalDD(Multiple vertices): Experimental, Undirected Graph';

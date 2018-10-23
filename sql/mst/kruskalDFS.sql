@@ -34,6 +34,27 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
     max_depth INTEGER DEFAULT 0,
 
     OUT seq INTEGER,
+    OUT from_v BIGINT,
+    OUT depth BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT seq, from_v, depth, node, edge, cost, agg_cost
+    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', $3, -1);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
+    TEXT,   -- Edge sql
+    ANYARRAY, -- root vertex
+
+    max_depth INTEGER DEFAULT 0,
+
+    OUT seq INTEGER,
+    OUT from_v BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -46,5 +67,5 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
-
-COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalDFS(edge_sql, root [, max_depth]): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalDFS(Single vertex): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalDFS(Multiple vertives): Experimental, Undirected Graph';
