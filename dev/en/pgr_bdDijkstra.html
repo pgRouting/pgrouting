@@ -207,6 +207,7 @@
 pgr_bdDijkstra(edges_sql, start_vid,  end_vids [, directed])
 pgr_bdDijkstra(edges_sql, start_vids, end_vid  [, directed])
 pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
+
 RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -625,7 +626,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 22, 2018.<br/>
+      Last updated on Oct 24, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

@@ -224,11 +224,10 @@ This implementation can be used with a directed graph and an undirected graph.</
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(edges_sql, start_vid,  end_vid,  directed:=true)
-pgr_dijkstra(edges_sql, start_vid,  end_vids, directed:=true)
-pgr_dijkstra(edges_sql, start_vids, end_vid,  directed:=true)
-pgr_dijkstra(edges_sql, start_vids, end_vids, directed:=true)
-
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(edges_sql, start_vid,  end_vid  [, directed])
+pgr_dijkstra(edges_sql, start_vid,  end_vids [, directed])
+pgr_dijkstra(edges_sql, start_vids, end_vid  [, directed])
+pgr_dijkstra(edges_sql, start_vids, end_vids [, directed])
 RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -266,7 +265,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
 BOOLEAN directed:=true);
-RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -295,7 +295,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 <span id="index-1"></span><h3>One to many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
 BOOLEAN directed:=true);
-RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -328,7 +329,8 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
     BOOLEAN directed:=true);
-RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -361,7 +363,8 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY S
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1200,7 +1203,7 @@ undirected graph with and with out reverse_cost.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 22, 2018.<br/>
+      Last updated on Oct 24, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

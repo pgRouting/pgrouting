@@ -105,7 +105,10 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_floydWarshall</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
@@ -163,8 +166,8 @@ pair of nodes in the graph using Floyd-Warshall algorithm.</p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>2.0.0</li>
-<li>Re-design of pgr_apspWarshall in Version 2.2.0</li>
+<li>Signature change on v2.2.0</li>
+<li>New on v2.0.0</li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -198,21 +201,22 @@ Represent the distance between vertices for which there is no path.<ul>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_floydWarshall(edges_sql)
-pgr floydWarshall(edges_sql, directed)
-RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr floydWarshall(edges_sql [, directed])
+RETURNS SET OF (start_vid, end_vid,  agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
-<p class="rubric">Minimal Signature</p>
+<p class="rubric">Using defaults</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_floydWarshall(edges_sql)
-RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+RETURNS SET OF (start_vid, end_vid,  agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body">On a directed graph.</td>
+<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body">For vertices <span class="math">\(\{1, 2, 3, 4\}\)</span> on a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -228,16 +232,18 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 
 </pre></div>
 </div>
-<p class="rubric">Complete Signature</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_floydWarshall(edges_sql, directed)
-RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+<div class="section" id="complete-signature">
+<h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_floydWarshall(edges_sql [, directed])
+RETURNS SET OF (start_vid, end_vid,  agg_cost)
+OR EMPTY SET
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example 2:</th><td class="field-body">On an undirected graph.</td>
+<tr class="field-odd field"><th class="field-name">Example 2:</th><td class="field-body">For vertices <span class="math">\(\{1, 2, 3, 4\}\)</span> on an <strong>undirected</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -258,9 +264,9 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p>Receives  <code class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">directed)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -412,7 +418,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 22, 2018.<br/>
+      Last updated on Oct 24, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
