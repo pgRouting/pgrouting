@@ -58,11 +58,11 @@ Signatures
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid,  end_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, start_vid,  end_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, start_vids, end_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, start_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
-
+    pgr_aStar(edges_sql, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+   
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -72,7 +72,7 @@ Optional parameters are `named parameters` and have a default value.
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid)
+    pgr_aStar(edges_sql, from_vid, to_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -90,7 +90,8 @@ One to One
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -108,7 +109,7 @@ One to many
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(edges_sql, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -126,8 +127,9 @@ Many to One
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, starts_vids, end_vid [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_aStar(edges_sql, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
 :Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic  :math:`0`
 
@@ -143,8 +145,9 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, starts_vids, end_vids [, directed] [, heuristic] [, factor] [, epsilon]
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_aStar(edges_sql, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
 
@@ -161,22 +164,22 @@ Parameters
 Parameter        Type                   Description
 ================ ====================== =================================================
 **edges_sql**    ``TEXT``               `edges_sql`_ inner query.
-**start_vid**    ``ANY-INTEGER``        Starting vertex identifier. Parameter in:
+**from_vid**     ``ANY-INTEGER``        Starting vertex identifier. Parameter in:
 
                                         * `One to One`_
                                         * `One to Many`_
 
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of starting vertices identifiers. Parameter in:
+**from_vids**    ``ARRAY[ANY-INTEGER]`` Array of starting vertices identifiers. Parameter in:
 
                                         * `Many to One`_
                                         * `Many to Many`_
 
-**end_vid**      ``ANY-INTEGER``        Ending vertex identifier. Parameter in:
+**to_vid**       ``ANY-INTEGER``        Ending vertex identifier. Parameter in:
 
                                         * `One to One`_
                                         * `Many to One`_
 
-**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of ending vertices identifiers. Parameter in:
+**to_vids**      ``ARRAY[ANY-INTEGER]`` Array of ending vertices identifiers. Parameter in:
 
                                         * `One to Many`_
                                         * `Many to Many`_

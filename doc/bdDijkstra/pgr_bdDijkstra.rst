@@ -59,6 +59,7 @@ Signatures
     pgr_bdDijkstra(edges_sql, start_vid,  end_vids [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vid  [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
+    
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 

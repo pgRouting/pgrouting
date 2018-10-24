@@ -33,10 +33,11 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, start_vid,  end_vid  [, directed])
-    pgr_bdDijkstraCost(edges_sql, start_vid,  end_vids [, directed])
-    pgr_bdDijkstraCost(edges_sql, start_vids, end_vid  [, directed])
-    pgr_bdDijkstraCost(edges_sql, start_vids, end_vids [, directed])
+    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vid  [, directed])
+    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vids [, directed])
+    pgr_bdDijkstraCost(edges_sql, from_vids, to_vid  [, directed])
+    pgr_bdDijkstraCost(edges_sql, from_vids, to_vids [, directed])
+    
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -44,7 +45,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, start_vid, end_vid)
+    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -62,7 +63,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, start_vid, end_vid [, directed])
+    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vid  [, directed])
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -80,7 +81,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid, end_vids [, directed])
+    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vids [, directed])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -98,7 +99,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vids, end_vid [, directed])
+    pgr_bdDijkstraCost(edges_sql, from_vids, to_vids [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
