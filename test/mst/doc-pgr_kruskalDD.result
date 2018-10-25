@@ -1,66 +1,43 @@
-BEGIN;
-BEGIN
-SET client_min_messages TO NOTICE;
-SET
--- q1
-SELECT * FROM pgr_kruskalDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    2,
-    3
-);
- seq | from_v | depth | node | edge | cost | agg_cost
------+--------+-------+------+------+------+----------
-   1 |      2 |     1 |    2 |   -1 |    0 |        0
-   2 |      2 |     2 |    1 |    1 |    1 |        1
-   3 |      2 |     2 |    3 |    2 |    1 |        1
-   4 |      2 |     3 |    4 |    3 |    1 |        2
-   5 |      2 |     4 |    9 |   16 |    1 |        3
-   6 |      2 |     5 |   12 |   15 |    1 |        4
-   7 |      2 |     6 |   11 |   13 |    1 |        5
-   8 |      2 |     7 |    6 |   11 |    1 |        6
-   9 |      2 |     7 |   10 |   12 |    1 |        6
-  10 |      2 |     8 |    5 |   10 |    1 |        7
-  11 |      2 |     9 |    8 |    7 |    1 |        8
-  12 |      2 |    10 |    7 |    6 |    1 |        9
-  13 |      2 |     8 |   13 |   14 |    1 |        7
-(13 rows)
-
--- q2
-SELECT * FROM pgr_kruskalDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    ARRAY[2,13],
-    3
-);
- seq | from_v | depth | node | edge | cost | agg_cost
------+--------+-------+------+------+------+----------
-   1 |      2 |     1 |    2 |   -1 |    0 |        0
-   2 |      2 |     2 |    1 |    1 |    1 |        1
-   3 |      2 |     2 |    3 |    2 |    1 |        1
-   4 |      2 |     3 |    4 |    3 |    1 |        2
-   5 |      2 |     4 |    9 |   16 |    1 |        3
-   6 |      2 |     5 |   12 |   15 |    1 |        4
-   7 |      2 |     6 |   11 |   13 |    1 |        5
-   8 |      2 |     7 |    6 |   11 |    1 |        6
-   9 |      2 |     7 |   10 |   12 |    1 |        6
-  10 |      2 |     8 |    5 |   10 |    1 |        7
-  11 |      2 |     9 |    8 |    7 |    1 |        8
-  12 |      2 |    10 |    7 |    6 |    1 |        9
-  13 |      2 |     8 |   13 |   14 |    1 |        7
-  14 |     13 |     1 |   13 |   -1 |    0 |        0
-  15 |     13 |     2 |   10 |   14 |    1 |        1
-  16 |     13 |     3 |    5 |   10 |    1 |        2
-  17 |     13 |     4 |    8 |    7 |    1 |        3
-  18 |     13 |     5 |    7 |    6 |    1 |        4
-  19 |     13 |     3 |   11 |   12 |    1 |        2
-  20 |     13 |     4 |    6 |   11 |    1 |        3
-  21 |     13 |     4 |   12 |   13 |    1 |        3
-  22 |     13 |     5 |    9 |   15 |    1 |        4
-  23 |     13 |     6 |    4 |   16 |    1 |        5
-  24 |     13 |     7 |    3 |    3 |    1 |        6
-  25 |     13 |     8 |    2 |    2 |    1 |        7
-  26 |     13 |     9 |    1 |    1 |    1 |        8
-(26 rows)
-
--- q3
-ROLLBACK;
-ROLLBACK
+> BEGIN;
+> BEGIN
+> SET client_min_messages TO NOTICE;
+> SET
+> -- q1
+> SELECT * FROM pgr_kruskalDD(
+>     \'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id\',
+>     2, 3.5
+> );
+>  seq | from_v | depth | node | edge | cost | agg_cost
+> -----+--------+-------+------+------+------+----------
+>    1 |      2 |     1 |    1 |   -1 |    0 |        0
+>    2 |      2 |     2 |    2 |    1 |    1 |        1
+>    3 |      2 |     3 |    3 |    2 |    1 |        2
+>    4 |      2 |     4 |    4 |    3 |    1 |        3
+> (4 rows)
+>
+> -- q2
+> SELECT * FROM pgr_kruskalDD(
+>     \'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id\',
+>     ARRAY[2,13],
+>     3.5
+> );
+>  seq | from_v | depth | node | edge | cost | agg_cost
+> -----+--------+-------+------+------+------+----------
+>    1 |      2 |     1 |    1 |   -1 |    0 |        0
+>    2 |      2 |     2 |    2 |    1 |    1 |        1
+>    3 |      2 |     3 |    3 |    2 |    1 |        2
+>    4 |      2 |     4 |    4 |    3 |    1 |        3
+>    5 |     13 |     1 |   10 |   -1 |    0 |        0
+>    6 |     13 |     2 |   13 |   14 |    1 |        1
+>    7 |     13 |     2 |    5 |   10 |    1 |        1
+>    8 |     13 |     3 |    8 |    7 |    1 |        2
+>    9 |     13 |     4 |    7 |    6 |    1 |        3
+>   10 |     13 |     2 |   11 |   12 |    1 |        1
+>   11 |     13 |     3 |    6 |   11 |    1 |        2
+>   12 |     13 |     3 |   12 |   13 |    1 |        2
+>   13 |     13 |     4 |    9 |   15 |    1 |        3
+> (13 rows)
+>
+> -- q3
+> ROLLBACK;
+> ROLLBACK

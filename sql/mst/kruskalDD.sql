@@ -42,7 +42,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, from_v, depth, node, edge, cost, agg_cost
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', 0, $3);
+    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', -1, $3);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
@@ -63,7 +63,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', 0, $3);
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', -1, $3);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 

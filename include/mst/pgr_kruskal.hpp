@@ -154,8 +154,14 @@ class Pgr_kruskal {
      int  m_order_by;
      std::vector<int64_t> m_root;
      bool  m_use_root;
+     bool  m_use_depth;
+     bool  m_use_distance;
      int  m_max_depth;
      double  m_distance;
+     bool m_is_kruskal;
+     bool m_is_kruskalDD;
+     bool m_is_kruskalDFS;
+     bool m_is_kruskalBFS;
 
      struct InSpanning {
          std::set<E> edges;
@@ -185,11 +191,12 @@ template <typename T>
 std::vector<pgr_kruskal_t>
 Pgr_kruskal<G>::get_results(
         T order,
-        int64_t root,
+        int64_t p_root,
         const G &graph) {
     std::vector<pgr_kruskal_t> results;
     std::vector<double> agg_cost(graph.num_vertices(), 0);
     std::vector<int64_t> depth(graph.num_vertices(), 0);
+    int64_t root(p_root);
 
     for (const auto edge : order) {
         auto u = graph.source(edge);
@@ -199,11 +206,12 @@ Pgr_kruskal<G>::get_results(
         }
 
         auto component = m_get_component? m_tree_id[m_components[u]] : 0;
-        if ((m_order_by && depth[u] == 0 && depth[v] == 0)
-                ) {
+        if (m_order_by && depth[u] == 0 && depth[v] == 0) {
             if (m_use_root && graph[u].id != root) std::swap(u, v);
             if (!m_use_root && graph[u].id != component) std::swap(u, v);
+            if (graph[u].id > graph[v].id) std::swap(u, v);
 
+            root = p_root? p_root: graph[u].id;
             depth[u] = 1;
             results.push_back({
                 root,
@@ -217,9 +225,10 @@ Pgr_kruskal<G>::get_results(
         agg_cost[v] = agg_cost[u] + graph[edge].cost;
         depth[v] = depth[u] + 1;
 
-        if ((!m_max_depth || m_distance < 0)
-                || m_max_depth >= depth[v]
-                || m_distance >= agg_cost[v]) {
+        if (m_is_kruskal
+                || (m_is_kruskalBFS  && m_max_depth >= depth[v])
+                || (m_is_kruskalDFS  && m_max_depth >= depth[v])
+                || (m_is_kruskalDD  && m_distance >= agg_cost[v])) {
             results.push_back({
                 root,
                 m_order_by? depth[v] : 0,
@@ -284,7 +293,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     /*
      * order by dfs
      */
-    if (!m_use_root && m_order_by == 1 ) {
+    if (!m_use_root && m_order_by == 1) {
         std::vector<E> visited_order;
 
         using dfs_visitor = visitors::Dfs_visitor<E>;
@@ -375,11 +384,16 @@ Pgr_kruskal<G>::operator() (
         G &graph,
         int order_by,
         int max_depth) {
-    m_order_by = order_by;
+    m_order_by = 0;
     m_root.clear();
     m_get_component = order_by == 2;
     m_use_root = false;
     m_max_depth = max_depth;
+    m_distance = -1;
+    m_use_depth = m_max_depth >= 0;
+    m_use_distance = m_distance >= 0;
+    pgassert(!m_order_by);
+    pgassert(!m_use_depth || !m_use_distance);
     return generateKruskal(graph);
 }
 
@@ -391,12 +405,26 @@ Pgr_kruskal<G>::operator() (
         int order_by,
         int max_depth,
         double distance) {
+    pgassert(!root.empty());
     m_root = root;
+    m_order_by = order_by;
     m_distance = distance;
-    m_order_by = !order_by ? 1 : order_by;
-    m_get_component = order_by == 2;
-    m_use_root = true;
     m_max_depth = max_depth;
+    m_get_component = order_by == 2;
+    m_use_root = root.size() > 1 || root[0] != 0;
+    m_use_depth = m_max_depth >= 0;
+    m_use_distance = m_distance >= 0;
+    m_is_kruskal = (m_order_by == 0) && (m_max_depth < 0) && (m_distance < 0);
+    m_is_kruskalDD = (m_order_by == 1) && (m_max_depth < 0) && (m_distance >= 0);
+    m_is_kruskalDFS = (m_order_by == 1) && (m_max_depth >= 0) && (m_distance < 0);
+    m_is_kruskalBFS = (m_order_by == 2) && (m_max_depth >= 0) && (m_distance < 0);
+
+    pgassert((!m_use_root && root[0]==0) || m_use_root);
+    pgassert(!m_order_by || m_use_depth ||  m_use_distance);
+    pgassert((m_order_by == 0 && !m_use_depth && !m_use_distance)
+            || (m_order_by == 1 && (m_use_distance || m_use_depth))
+            || (m_order_by == 2 && !m_use_distance && m_use_depth));
+
     return generateKruskal(graph);
 }
 
