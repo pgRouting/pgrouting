@@ -209,7 +209,7 @@ Pgr_kruskal<G>::get_results(
         if (m_order_by && depth[u] == 0 && depth[v] == 0) {
             if (m_use_root && graph[u].id != root) std::swap(u, v);
             if (!m_use_root && graph[u].id != component) std::swap(u, v);
-            if (graph[u].id > graph[v].id) std::swap(u, v);
+            if (!p_root && graph[u].id > graph[v].id) std::swap(u, v);
 
             root = p_root? p_root: graph[u].id;
             depth[u] = 1;
@@ -226,7 +226,8 @@ Pgr_kruskal<G>::get_results(
         depth[v] = depth[u] + 1;
 
         if (m_is_kruskal
-                || (m_is_kruskalBFS  && m_max_depth >= depth[v])
+                || (m_max_depth == 0)
+                || (m_is_kruskalBFS  && (m_max_depth >= depth[v]))
                 || (m_is_kruskalDFS  && m_max_depth >= depth[v])
                 || (m_is_kruskalDD  && m_distance >= agg_cost[v])) {
             results.push_back({
