@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION pgr_prim(
     TEXT,                       -- edges_sql
     BIGINT DEFAULT 0,
 
-    OUT seq INTEGER,            -- Seq
+    OUT seq BIGINT,            -- Seq
     Out root_vertex BIGINT,     -- Root_vertex
     OUT node BIGINT,	        -- node of lightest weight
     OUT edge BIGINT,	     	-- Edge linked to that node

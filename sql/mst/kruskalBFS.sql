@@ -31,9 +31,9 @@ CREATE OR REPLACE FUNCTION pgr_kruskalBFS(
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
 
-    max_depth INTEGER DEFAULT 0,
+    max_depth BIGINT DEFAULT 0,
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
     OUT from_v BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
@@ -51,9 +51,9 @@ CREATE OR REPLACE FUNCTION pgr_kruskalBFS(
     TEXT,   -- Edge sql
     ANYARRAY, -- root vertex
 
-    max_depth INTEGER DEFAULT 0,
+    max_depth BIGINT DEFAULT 0,
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
     OUT from_v BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
@@ -69,5 +69,5 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 
-COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalBFS(Single Vertex): Experimental, Undirected Graph';
-COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, ANYARRAY, INTEGER) IS 'pgr_kruskalBFS(Multiple Vertices): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, BIGINT, BIGINT) IS 'pgr_kruskalBFS(Single Vertex): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, ANYARRAY, BIGINT) IS 'pgr_kruskalBFS(Multiple Vertices): Experimental, Undirected Graph';

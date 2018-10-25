@@ -35,7 +35,7 @@ SELECT throws_ok(
 
 PREPARE all_return AS
 SELECT
-    'integer'::text AS t1,
+    'bigint'::text AS t1,
     'bigint'::text AS t2,
     'bigint'::text AS t3,
     'bigint'::text AS t4,

@@ -190,7 +190,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);

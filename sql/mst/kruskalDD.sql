@@ -32,7 +32,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     BIGINT, -- root vertex
     FLOAT,  -- distance
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
     OUT from_v BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
@@ -53,7 +53,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
 
     FLOAT, -- distance
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
     OUT from_v BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
