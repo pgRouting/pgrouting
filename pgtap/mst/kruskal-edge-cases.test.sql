@@ -16,10 +16,10 @@ SELECT *
 FROM pgr_kruskal(
     'SELECT id, source, target, cost
      FROM edge_table WHERE cost < 0 ORDER BY id'
-) WHERE cost < 0;
+);
 
 SELECT is_empty('kruskal1', 'No_edge -> No answer');
-SELECT is_empty('kruskal2', 'Negative Cost -> no answer');
+SELECT is_empty('kruskal2', 'ALL Negative Cost -> no answer');
 
 
 --

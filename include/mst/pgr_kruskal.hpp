@@ -43,12 +43,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "mst/details.hpp"
 
 namespace pgrouting {
-
-namespace {
-struct found_goals{}; //!< exception for dfs termination
-}  // namespace
 
 namespace  visitors {
 
@@ -304,25 +301,29 @@ Pgr_kruskal<G>::order_results(const G &graph) {
             std::vector<E> visited_order;
 
             using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
-            try {
-                boost::depth_first_search(
-                        mst,
-                        visitor(dfs_visitor(graph.get_V(root), visited_order))
-                        .root_vertex(graph.get_V(root))
-                        );
-            } catch(found_goals &) {
-                ;
-            } catch (boost::exception const& ex) {
-                (void)ex;
-                throw;
-            } catch (std::exception &e) {
-                (void)e;
-                throw;
-            } catch (...) {
-            throw;
+            if (graph.has_vertex(root)) {
+                try {
+                    boost::depth_first_search(
+                            mst,
+                            visitor(dfs_visitor(graph.get_V(root), visited_order))
+                            .root_vertex(graph.get_V(root))
+                            );
+                } catch(found_goals &) {
+                    ;
+                } catch (boost::exception const& ex) {
+                    (void)ex;
+                    throw;
+                } catch (std::exception &e) {
+                    (void)e;
+                    throw;
+                } catch (...) {
+                    throw;
+                }
+                auto result = get_results(visited_order, root, graph);
+                results.insert(results.end(), result.begin(), result.end());
+            } else {
+                results.push_back({root, 0, root, -1, 0.0, 0.0});
             }
-            auto result = get_results(visited_order, root, graph);
-            results.insert(results.end(), result.begin(), result.end());
         }
         return results;
     }
@@ -382,6 +383,7 @@ Pgr_kruskal<G>::operator() (
         int order_by,
         int max_depth,
         double distance) {
+    if (root.empty()) root.push_back(0);
     pgassert(!root.empty());
     m_root = root;
     m_order_by = order_by;

@@ -80,12 +80,6 @@ process(
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;

@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "mst/pgr_kruskal.hpp"
+#include "mst/details.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -70,7 +71,6 @@ do_pgr_kruskal(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
         graphType gType = UNDIRECTED;
 
@@ -79,16 +79,22 @@ do_pgr_kruskal(
         roots.erase(
                 std::unique(roots.begin(), roots.end()),
                 roots.end());
-        std::remove(roots.begin(), roots.end(), 0);
+        roots.erase(
+                std::remove(roots.begin(), roots.end(), 0),
+                roots.end());
+        log << "roots size:" << roots.size() << "\n";
 
-        log << "Working with Undirected Graph\n";
-
-        pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
-
-        pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
-
-        auto results = kruskal(undigraph, roots, order_by, max_depth, distance);
+        std::vector<pgr_kruskal_t> results;
+        if (total_edges == 0) {
+            results = pgrouting::get_no_edge_graph_result(roots);
+        } else {
+            log << "Working with Undirected Graph\n";
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_edges);
+            log << "The Graph:\n" << undigraph;
+            pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
+            results = kruskal(undigraph, roots, order_by, max_depth, distance);
+        }
 
         auto count = results.size();
 
