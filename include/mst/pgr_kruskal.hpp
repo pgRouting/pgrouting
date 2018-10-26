@@ -118,11 +118,6 @@ class Pgr_kruskal {
              int max_depth,
              double distance);
 
-     std::vector<pgr_kruskal_t> operator() (
-             G &graph,
-             int m_order_by,
-             int max_depth);
-
  private:
      typedef typename G::B_G B_G;
      typedef typename G::V V;
@@ -377,25 +372,6 @@ Pgr_kruskal<G>::generateKruskal(G &graph) {
 
     m_results = order_results(graph);
     return m_results;
-}
-
-template <class G>
-std::vector<pgr_kruskal_t>
-Pgr_kruskal<G>::operator() (
-        G &graph,
-        int order_by,
-        int max_depth) {
-    m_order_by = 0;
-    m_root.clear();
-    m_get_component = order_by == 2;
-    m_use_root = false;
-    m_max_depth = max_depth;
-    m_distance = -1;
-    m_use_depth = m_max_depth >= 0;
-    m_use_distance = m_distance >= 0;
-    pgassert(!m_order_by);
-    pgassert(!m_use_depth || !m_use_distance);
-    return generateKruskal(graph);
 }
 
 template <class G>
