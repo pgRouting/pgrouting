@@ -52,7 +52,6 @@ do_pgr_kruskal(
         size_t size_rootsArr,
 
         int order_by,
-        bool use_root,
         int max_depth,
         double distance,
 

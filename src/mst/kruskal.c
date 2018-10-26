@@ -69,7 +69,6 @@ process(
     pgr_SPI_connect();
 
     rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
-    bool use_root = (size_rootsArr > 1) || (size_rootsArr == 1 && rootsArr[0] != 0);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -96,7 +95,6 @@ process(
             edges, total_edges,
             rootsArr, size_rootsArr,
             order_by,
-            use_root,
             max_depth,
             distance,
 

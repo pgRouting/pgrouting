@@ -54,7 +54,6 @@ extern "C" {
                 size_t total_roots,
 
                 int order_by,
-                bool use_root,
                 int max_depth,
                 double distance,
 
