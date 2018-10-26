@@ -76,6 +76,11 @@ do_pgr_kruskal(
         graphType gType = UNDIRECTED;
 
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
+        std::sort(roots.begin(), roots.end());
+        roots.erase(
+                std::unique(roots.begin(), roots.end()),
+                roots.end());
+        std::remove(roots.begin(), roots.end(), 0);
 
         log << "Working with Undirected Graph\n";
 
