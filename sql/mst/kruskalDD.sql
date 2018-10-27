@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     FLOAT,  -- distance
 
     OUT seq BIGINT,
-    OUT from_v BIGINT,
+    OUT start_vid BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -41,7 +41,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, from_v, depth, node, edge, cost, agg_cost
+    SELECT seq, start_vid, depth, node, edge, cost, agg_cost
     FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', -1, $3);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
@@ -54,7 +54,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     FLOAT, -- distance
 
     OUT seq BIGINT,
-    OUT from_v BIGINT,
+    OUT start_vid BIGINT,
     OUT depth BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,

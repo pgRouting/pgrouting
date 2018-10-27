@@ -31,37 +31,23 @@ Description
 Using the Dijkstra algorithm, extracts all the nodes that have costs less than
 or equal to the value distance.
 
-
-
 **The main Characteristics are:**
 
 - It's implementation is only on **undirected** graph.
-- The edges extracted will conform to the corresponding minimum spanning tree.
-- The total weight of all the edges in the tree or forest is minimized.
-- If the graph is connected
-
-  - The resulting edges make up a tree
-
-- If the graph is not connected,
-
-  - Finds a minimum spanning tree for each connected component.
-  - The resulting edges make up a forest.
-
 - Process is done only on edges with positive costs.
-- EMPTY SET is returned when there are no edges in the graph.
-- Returned edges are Depth First Search order.
+- Returned tree edges of a root vertex are on Depth First Search order.
 - Running time: :math:`O(E * log E)`
 
   - Kruskal Running time: :math:`O(E * log E)`
-  - DFS Running time: :math:`O(E + V)`
+  - Depth First Search Running time: :math:`O(E + V)`
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, start_vid, distance)
-    pgr_kruskal(edges_sql, start_vids, distance)
+    pgr_kruskal(edges_sql, root_vid, distance)
+    pgr_kruskal(edges_sql, root_vids, distance)
 
     RETURNS SET OF (seq, from_v, depth, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -74,12 +60,12 @@ Single vertex
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, start_vid, distance)
+    pgr_kruskal(edges_sql, root_vid, distance)
 
     RETURNS SET OF (seq, from_v, depth, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: A Minimum Spanning Forest of all the graph
+:Example: The Minimum Spanning Tree starting on vertex :math:`2` with aggregate cost < math:`3.5`
 
 .. literalinclude:: doc-pgr_kruskalDD.queries
    :start-after: -- q1
@@ -93,12 +79,12 @@ Multiple vertices
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, start_vids, distance)
+    pgr_kruskal(edges_sql, root_vids, distance)
 
     RETURNS SET OF (seq, from_v, depth, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: TBD
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with aggregate cost < :math:`3.5`
 
 .. literalinclude:: doc-pgr_kruskalDD.queries
    :start-after: -- q2
@@ -111,12 +97,16 @@ Parameters
 Parameter           Type                   Description
 =================== ====================== =================================================
 **edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
-**start_vid**       ``BIGINT``             Identifier of the starting vertex.
+**root_vid**        ``BIGINT``             Identifier of the root vertex of the tree.
 
-                                           When :math:`0` gets the DFS of the spanning forest
-                                           starting in aleatory nodes.
+                                           - When :math:`0` gets the spanning forest
+                                             starting in aleatory nodes for each tree.
 
-**start_vids**      ``ARRAY[ANY-INTEGER]`` Array of identifiers of the starting vertices.
+**root_vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
+
+                                           - :math:`0` values are ignored
+                                           - For optimization purposes, any duplicated value is ignored.
+
 **distance**        ``FLOAT``              Upper limit for the inclusion of the node in the result.
 =================== ====================== =================================================
 
@@ -138,7 +128,10 @@ Returns set of ``(seq, component, edge, cost, tree_cost)``
 Column           Type        Description
 ===============  =========== ====================================================
 **seq**          ``BIGINT``  Sequential value starting from :math:`1`.
-**from_v**       ``BIGINT``  Identifier of the starting vertex.
+**start_vid**    ``BIGINT``  Identifier of the starting vertex.
+
+                             - In `Multiple Vertices`_ results are in ascending order.
+
 **node**         ``BIGINT``  Identifier of ``node`` reached using ``edge``
 **edge**         ``BIGINT``  Identifier of the ``edge`` used to arrive to node.
 

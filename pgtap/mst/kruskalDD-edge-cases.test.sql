@@ -49,7 +49,7 @@ SELECT set_eq('kruskal3',
 
 --
 PREPARE kruskal4 AS
-SELECT seq, from_v, depth, node, edge, agg_cost <= 3.5
+SELECT seq, start_vid, depth, node, edge, agg_cost <= 3.5
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost
      FROM edge_table',
@@ -72,7 +72,7 @@ SELECT set_eq('kruskal4',
 
 --
 PREPARE kruskal5 AS
-SELECT seq, from_v, depth, node, edge, agg_cost <= 3.5
+SELECT seq, start_vid, depth, node, edge, agg_cost <= 3.5
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table',

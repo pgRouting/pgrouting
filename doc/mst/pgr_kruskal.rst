@@ -35,11 +35,10 @@ of the least possible weight that connects any two trees in the forest.
 It is a greedy algorithm, as it finds a minimum spanning tree for a
 connected weighted undirected graph by adding increasing cost arcs at each step.
 
-
-
 **The main Characteristics are:**
 
 - It's implementation is only on **undirected** graph.
+- Process is done only on edges with positive costs.
 - The total weight of all the edges in the tree or forest is minimized.
 - If the graph is connected
 
@@ -50,7 +49,6 @@ connected weighted undirected graph by adding increasing cost arcs at each step.
   - Finds a minimum spanning tree for each connected component.
   - The resulting edges make up a forest.
 
-- Process is done only on edges with positive costs.
 - EMPTY SET is returned when there are no edges in the graph.
 - Returned edges are in the order they were added to the tree.
 - Running time: :math:`O(E * log E)`

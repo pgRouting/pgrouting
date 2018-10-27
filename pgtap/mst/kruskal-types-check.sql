@@ -47,8 +47,8 @@ SELECT bag_has(
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_kruskaldfs'$$,
     $$VALUES
-        ('{"","","max_depth","seq","from_v","depth","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","max_depth","seq","from_v","depth","node","edge","cost","agg_cost"}'::TEXT[])
+        ('{"","","max_depth","seq","start_vid","depth","node","edge","cost","agg_cost"}'::TEXT[]),
+        ('{"","","max_depth","seq","start_vid","depth","node","edge","cost","agg_cost"}'::TEXT[])
     $$
 );
 
@@ -67,8 +67,8 @@ SELECT bag_has(
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_kruskalbfs'$$,
     $$VALUES
-        ('{"","","max_depth","seq","from_v","depth","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","max_depth","seq","from_v","depth","node","edge","cost","agg_cost"}'::TEXT[])
+        ('{"","","max_depth","seq","start_vid","depth","node","edge","cost","agg_cost"}'::TEXT[]),
+        ('{"","","max_depth","seq","start_vid","depth","node","edge","cost","agg_cost"}'::TEXT[])
     $$
 );
 
@@ -87,8 +87,8 @@ SELECT bag_has(
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_kruskaldd'$$,
     $$VALUES
-        ('{"","","","seq","from_v","depth","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","seq","from_v","depth","node","edge","cost","agg_cost"}'::TEXT[])
+        ('{"","","","seq","start_vid","depth","node","edge","cost","agg_cost"}'::TEXT[]),
+        ('{"","","","seq","start_vid","depth","node","edge","cost","agg_cost"}'::TEXT[])
     $$
 );
 
