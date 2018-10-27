@@ -15,7 +15,7 @@ SELECT * FROM pgr_kruskalDD(
    4 |         2 |     3 |    4 |    3 |    1 |        2
    5 |         2 |     4 |    9 |   16 |    1 |        3
 (5 rows)
->
+
 -- q2
 SELECT * FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
@@ -37,7 +37,7 @@ SELECT * FROM pgr_kruskalDD(
   11 |        13 |     4 |    6 |   11 |    1 |        3
   12 |        13 |     4 |   12 |   13 |    1 |        3
 (12 rows)
->
+
 -- q3
 ROLLBACK;
 ROLLBACK
