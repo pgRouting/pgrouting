@@ -35,13 +35,14 @@ This implementation can only be used with a directed graph.
 
 **The main characteristics are:**
 
+- The signature is for a **directed** graph.
 - Components are described by vertices
 - The returned values are ordered:
 
   - `component` ascending
   - `node` ascending
 
-* Running time: :math:`O(V + E)`
+- Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -54,19 +55,13 @@ Signatures
     pgr_strongComponents(edges_sql)
 
     RETURNS SET OF (seq, component, n_seq, node)
-        OR EMPTY SET
+    OR EMPTY SET
 
-The signature is for a **directed** graph.
-
-:Example:
+:Example: The strong components of the graph
 
 .. literalinclude:: doc-pgr_strongComponents.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. image:: images/scc_sampledata.png
-   :width: 707px
-   :height: 355px
 
 .. include:: components-family.rst
     :start-after: components_parameters_start
