@@ -112,7 +112,7 @@ class Pgr_kruskal {
              G &graph,
              std::vector<int64_t> root,
              int m_order_by,
-             int max_depth,
+             int64_t max_depth,
              double distance);
 
  private:
@@ -148,7 +148,7 @@ class Pgr_kruskal {
      bool  m_use_root;
      bool  m_use_depth;
      bool  m_use_distance;
-     int  m_max_depth;
+     int64_t  m_max_depth;
      double  m_distance;
      bool m_is_kruskal;
      bool m_is_kruskalDD;
@@ -204,21 +204,20 @@ Pgr_kruskal<G>::get_results(
             if (!p_root && graph[u].id > graph[v].id) std::swap(u, v);
 
             root = p_root? p_root: graph[u].id;
-            depth[u] = 0;
+            depth[u] = -1;
             results.push_back({
                 root,
-                m_order_by? depth[u] : 0,
-                    graph[u].id,
-                    -1,
-                    0.0,
-                    0.0 });
+                0,
+                graph[u].id,
+                -1,
+                0.0,
+                0.0 });
         }
 
         agg_cost[v] = agg_cost[u] + graph[edge].cost;
-        depth[v] = depth[u] + 1;
+        depth[v] = depth[u] == -1? 1 : depth[u] + 1;
 
         if (m_is_kruskal
-                || (m_max_depth == 0)
                 || (m_is_kruskalBFS  && (m_max_depth >= depth[v]))
                 || (m_is_kruskalDFS  && m_max_depth >= depth[v])
                 || (m_is_kruskalDD  && m_distance >= agg_cost[v])) {
@@ -385,7 +384,7 @@ Pgr_kruskal<G>::operator() (
         G &graph,
         std::vector<int64_t> root,
         int order_by,
-        int max_depth,
+        int64_t max_depth,
         double distance) {
     if (root.empty()) root.push_back(0);
     pgassert(!root.empty());
@@ -403,11 +402,12 @@ Pgr_kruskal<G>::operator() (
     m_is_kruskalBFS = (m_order_by == 2) && (m_max_depth >= 0) && (m_distance < 0);
 
     pgassert((!m_use_root && root[0]==0) || m_use_root);
-    pgassert(!m_order_by || m_use_depth ||  m_use_distance);
+#if 0
+    pgassert(m_order_by && (m_use_depth ||  m_use_distance));
     pgassert((m_order_by == 0 && !m_use_depth && !m_use_distance)
             || (m_order_by == 1 && (m_use_distance || m_use_depth))
             || (m_order_by == 2 && !m_use_distance && m_use_depth));
-
+#endif
     return generateKruskal(graph);
 }
 

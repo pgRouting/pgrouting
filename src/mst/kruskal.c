@@ -53,7 +53,7 @@ process(
         char* edges_sql,
         ArrayType *roots,
         char * p_order_by,
-        int max_depth,
+        int64_t max_depth,
         double distance,
 
         pgr_kruskal_t **result_tuples,
@@ -138,7 +138,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
-                PG_GETARG_INT32(3),
+                PG_GETARG_INT64(3),
                 PG_GETARG_FLOAT8(4),
                 &result_tuples,
                 &result_count);

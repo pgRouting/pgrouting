@@ -53,7 +53,7 @@ do_pgr_kruskal(
         size_t size_rootsArr,
 
         int order_by,
-        int max_depth,
+        int64_t max_depth,
         double distance,
 
         pgr_kruskal_t **return_tuples,
