@@ -10,7 +10,7 @@
 pgr_kruskalDD - Experimental
 ===============================================================================
 
-``pgr_kruskalDD`` — Returns the driving distance using Kruskal algorithm
+``pgr_kruskalDD`` — Returns the catchament nodes using Kruskal algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html
@@ -28,14 +28,14 @@ pgr_kruskalDD - Experimental
 Description
 -------------------------------------------------------------------------------
 
-Using the Dijkstra algorithm, extracts all the nodes that have costs less than
+Using Kruskal algorithm, extracts the nodes that have aggregate costs less than
 or equal to the value distance.
 
 **The main Characteristics are:**
 
 - It's implementation is only on **undirected** graph.
 - Process is done only on edges with positive costs.
-- Returned tree edges of a root vertex are on Depth First Search order.
+- Returned tree nodes from a root vertex are on Depth First Search order.
 - Running time: :math:`O(E * log E)`
 
   - Kruskal Running time: :math:`O(E * log E)`
