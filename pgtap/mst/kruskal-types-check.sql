@@ -87,8 +87,8 @@ SELECT bag_has(
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_kruskaldd'$$,
     $$VALUES
-        ('{"","","","seq","start_vid","depth","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","seq","start_vid","depth","node","edge","cost","agg_cost"}'::TEXT[])
+        ('{"","","","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+        ('{"","","","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$
 );
 

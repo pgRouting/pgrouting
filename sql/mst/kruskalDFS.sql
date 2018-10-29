@@ -42,7 +42,7 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, start_vid, depth, node, edge, cost, agg_cost
+    SELECT *
     FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', $3, -1);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

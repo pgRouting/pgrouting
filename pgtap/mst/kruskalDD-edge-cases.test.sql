@@ -1,19 +1,20 @@
 \i setup.sql
 
-SELECT plan(5);
+SELECT plan(8);
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
 --
 PREPARE kruskal1 AS
-SELECT * FROM pgr_kruskalDD(
+SELECT *
+FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id > 18',
     21, 3.5
 );
 
 SELECT set_eq('kruskal1',
-    $$VALUES (1,21,0,21,-1,0,0) $$,
+    $$VALUES (1,0,21,21,-1,0,0) $$,
     '1: Empty Graph -> Only root vertex is returned');
 
 
@@ -28,8 +29,8 @@ FROM pgr_kruskalDD(
 
 SELECT set_eq('kruskal2',
     $$VALUES
-        (1,21,0,21,-1,0,0),
-        (2,45,0,45,-1,0,0)
+        (1,0,21,21,-1,0,0),
+        (2,0,45,45,-1,0,0)
     $$,
     '2: Empty graph -> Only root vertices are returned');
 
@@ -44,7 +45,7 @@ FROM pgr_kruskalDD(
 );
 
 SELECT set_eq('kruskal3',
-    $$VALUES (1,21,0,21,-1,0,0) $$,
+    $$VALUES (1,0,21,21,-1,0,0) $$,
     '1: Root not in Graph -> Only root vertex is returned');
 
 --
@@ -96,6 +97,47 @@ SELECT set_eq('kruskal5',
     $$,
     '5: root = 0 -> forset (with random root vertices)');
 
+
+PREPARE kruskal6 AS
+SELECT *
+FROM pgr_kruskalDD(
+    'SELECT id, source, target, cost, reverse_cost
+     FROM edge_table',
+    4, -3
+);
+
+SELECT throws_ok('kruskal6',
+    'P0001',
+    'Negative value found on ''distance''',
+    'Negative distance throws');
+
+
+
+PREPARE kruskal7 AS
+SELECT *
+FROM pgr_kruskalDD(
+    'SELECT id, source, target, cost, reverse_cost
+     FROM edge_table',
+    ARRAY[4, 10], -3
+);
+
+SELECT throws_ok('kruskal7',
+    'P0001',
+    'Negative value found on ''distance''',
+    'Negative distance throws');
+
+--
+PREPARE kruskal8 AS
+SELECT *
+FROM pgr_kruskalDD(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    4, 0
+);
+
+SELECT set_eq('kruskal8',
+    $$VALUES (1,0,4,4,-1,0,0) $$,
+    '6: 0 distance -> Only root vertex is returned');
 
 
 SELECT * FROM finish();

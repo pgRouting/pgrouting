@@ -33,18 +33,26 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     FLOAT,  -- distance
 
     OUT seq BIGINT,
-    OUT start_vid BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, start_vid, depth, node, edge, cost, agg_cost
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''distance'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+    RETURN QUERY
+    SELECT *
     FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', -1, $3);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 
 CREATE OR REPLACE FUNCTION pgr_kruskalDD (
@@ -54,18 +62,26 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     FLOAT, -- distance
 
     OUT seq BIGINT,
-    OUT start_vid BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''distance'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+    RETURN QUERY
     SELECT *
     FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', -1, $3);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT) IS 'pgr_kruskalDD(Single vertex): Experimental, Undirected Graph';
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, FLOAT) IS 'pgr_kruskalDD(Multiple vertices): Experimental, Undirected Graph';
