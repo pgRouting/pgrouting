@@ -19,9 +19,12 @@ pgr_maxCardinalityMatch
 
 .. Rubric:: Availability
 
-* Renamed 2.5.0, Previous name pgr_maximumCardinalityMatching
 
-* New in 2.3.0
+* Official on v3.0.0
+* Renamed on v2.5.0
+* Experimental on v2.3.0
+
+  * pgr_maximumCardinalityMatching
 
 Description
 -------------------------------------------------------------------------------
@@ -35,6 +38,7 @@ Description
   * Calculates **one** possible maximum cardinality matching in a graph.
 
 * The graph can be **directed** or **undirected**.
+
 * Running time: :math:`O( E*V * \alpha(E,V))`
 
   * :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
@@ -52,18 +56,16 @@ Signatures
     pgr_MaximumCardinalityMatching(edges_sql, directed)
 
     RETURNS SET OF (seq, edge_id, source, target)
-        OR EMPTY SET
+    OR EMPTY SET
 
-.. rubric:: Minimal Use
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_MaximumCardinalityMatching(edges_sql)
     RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
-The minimal use calculates one possible maximum cardinality matching on a **directed** graph.
-
-:Example:
+:Example: For a **directed** graph
 
 .. literalinclude:: doc-pgr_maxCardinalityMatch.queries
    :start-after: -- q1
@@ -72,16 +74,15 @@ The minimal use calculates one possible maximum cardinality matching on a **dire
 .. index::
     single: MaximumCardinalityMatching(Complete Signature)
 
-.. rubric:: Complete signature
+Complete signature
+...............................................................................
 
 .. code-block:: none
 
     pgr_MaximumCardinalityMatching(edges_sql, directed)
     RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
-The complete signature calculates one possible maximum cardinality matching.
-
-:Example:
+:Example: For an **undirected** graph
 
 .. literalinclude:: doc-pgr_maxCardinalityMatch.queries
    :start-after: -- q2

@@ -20,7 +20,6 @@ pgr_edmondsKarp
 
 .. Rubric:: Availability
 
-
 * Official on v3.0.0
 * Renamed on v2.5.0
 * Experimental on v2.3.0
@@ -98,7 +97,7 @@ Many to One
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11` to 
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_edmondsKarp.queries
    :start-after: -- q3
@@ -116,7 +115,7 @@ Many to Many
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example:From vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`
+:Example: From vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`
 
 .. literalinclude:: doc-pgr_edmondsKarp.queries
    :start-after: -- q4

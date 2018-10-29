@@ -34,7 +34,8 @@ Description
 
 - Any duplicated value in the source(s) or target(s) are ignored.
 - Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
-- Running time: :math:`O( V ^ 3)`
+
+* Running time: :math:`O( V ^ 3)`
 
 Signatures
 -------------------------------------------------------------------------------
