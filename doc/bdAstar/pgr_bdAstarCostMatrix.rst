@@ -25,7 +25,7 @@ pgr_bdAstarCostMatrix
 Description
 -------------------------------------------------------------------------------
 
-**The main Characteristics are:**
+**The main characteristics are:**
 
 * Using internaly the :doc:`pgr_bdAstar` algorithm
 * Returns a cost matrix.

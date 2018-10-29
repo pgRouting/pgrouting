@@ -32,7 +32,7 @@ of the shortest path for a subset of pairs of nodes of the graph.
 We make use of the Boost's implementation of dijkstra which runs in
 :math:`O(V \log V + E)` time.
 
-The main Characteristics are:
+The main characteristics are:
   - It does not return a path.
   - Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.
   - Process is done only on edges with positive costs.

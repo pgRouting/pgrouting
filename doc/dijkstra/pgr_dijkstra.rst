@@ -43,7 +43,7 @@ a graph with non-negative edge path costs, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 This implementation can be used with a directed graph and an undirected graph.
 
-The main Characteristics are:
+The main characteristics are:
   - Process is done only on edges with positive costs.
   - Values are returned when there is a path.
 
