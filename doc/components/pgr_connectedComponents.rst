@@ -33,8 +33,9 @@ A connected component of an undirected graph is a set of vertices that are all r
 from each other.
 This implementation can only be used with an undirected graph.
 
-**The main Characteristics are:**
+**The main characteristics are:**
 
+- The signature is for an **undirected** graph.
 - Components are described by vertices
 
 - The returned values are ordered:
@@ -55,19 +56,13 @@ Signatures
     pgr_connectedComponents(edges_sql)
 
     RETURNS SET OF (seq, component, n_seq, node)
-        OR EMPTY SET
+    OR EMPTY SET
 
-The signature is for a **undirected** graph.
-
-:Example:
+:Example: The connected components of the graph
 
 .. literalinclude:: doc-pgr_connectedComponents.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. image:: images/cc_sampledata.png
-   :width: 685px
-   :height: 387px
 
 .. include:: components-family.rst
     :start-after: components_parameters_start
