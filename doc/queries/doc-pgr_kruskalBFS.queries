@@ -31,7 +31,7 @@ SELECT * FROM pgr_kruskalBFS(
 --q2
 SELECT * FROM pgr_kruskalBFS(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    ARRAY[13,2], max_depth => 3
+    ARRAY[13,2], max_depth := 3
 );
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
