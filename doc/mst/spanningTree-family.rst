@@ -23,6 +23,7 @@ Spanning Tree - Family of functions (Experimental)
   * :doc:`pgr_kruskal`
   * :doc:`pgr_kruskalDD`
   * :doc:`pgr_kruskalDFS`
+  * :doc:`pgr_kruskalBFS`
   * :doc:`pgr_prim`
 
 .. index to here
@@ -35,6 +36,7 @@ Spanning Tree - Family of functions (Experimental)
     pgr_kruskal
     pgr_kruskalDD
     pgr_kruskalDFS
+    pgr_kruskalBFS
     pgr_prim
 
 

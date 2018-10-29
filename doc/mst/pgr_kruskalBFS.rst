@@ -7,10 +7,10 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_kruskalDFS - Experimental
+pgr_kruskalBFS - Experimental
 ===============================================================================
 
-``pgr_kruskalDFS`` — Kruskal algorithm for Minimum Spanning Tree with Depth First
+``pgr_kruskalBFS`` — Kruskal algorithm for Minimum Spanning Tree with Breath First
 Search ordering.
 
 .. figure:: images/boost-inside.jpeg
@@ -29,43 +29,42 @@ Search ordering.
 Description
 -------------------------------------------------------------------------------
 
-Using the Kruskal algorithm, visits and extracts the nodes in Depth First Search
+Using the Kruskal algorithm, visits and extracts the nodes in Breath First Search
 ordering
 
 **The main Characteristics are:**
 
 - It's implementation is only on **undirected** graph.
 - Process is done only on edges with positive costs.
-- Returned tree vertices are in Depth First Search order.
-- Running time: :math:`O(E * log E)`
+- Returned tree vertices are in Breath First Search order.
 - Kruskal Running time: :math:`O(E * log E)`
-- Depth First Search Running time: :math:`O(E + V)`
+- Breath First Search Running time: :math:`O(E + V)`
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. code-block:: none
 
-    pgr_kruskalDFS(edges_sql, root_vid [, max_depth])
-    pgr_kruskalDFS(edges_sql, root_vids [, max_depth])
+    pgr_kruskalBFS(edges_sql, root_vid [, max_depth])
+    pgr_kruskalBFS(edges_sql, root_vids [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
-    single: kruskalDFS(Single vertex) - Experimental
+    single: kruskalBFS(Single vertex) - Experimental
 
 Single vertex
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_kruskalDFS(edges_sql, root_vid [, max_depth])
+    pgr_kruskalBFS(edges_sql, root_vid [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertex :math:`2`
+:Example: The Minimum Spanning Tree of the graph
 
-.. literalinclude:: doc-pgr_kruskalDFS.queries
+.. literalinclude:: doc-pgr_kruskalBFS.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -77,13 +76,13 @@ Multiple vertices
 
 .. code-block:: none
 
-    pgr_kruskalDFS(edges_sql, root_vids [, max_depth])
+    pgr_kruskalBFS(edges_sql, root_vids [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with :math:`depth <= 3`
 
-.. literalinclude:: doc-pgr_kruskalDFS.queries
+.. literalinclude:: doc-pgr_kruskalBFS.queries
    :start-after: --q2
    :end-before: --q3
 
@@ -128,6 +127,7 @@ Inner query
 
 Result Columns
 -------------------------------------------------------------------------------
+
 
 .. include:: pgr_kruskalDD.rst
    :start-after: result columns start

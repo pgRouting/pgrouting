@@ -36,10 +36,8 @@ or equal to the value distance.
 - It's implementation is only on **undirected** graph.
 - Process is done only on edges with positive costs.
 - Returned tree nodes from a root vertex are on Depth First Search order.
-- Running time: :math:`O(E * log E)`
-
-  - Kruskal Running time: :math:`O(E * log E)`
-  - Depth First Search Running time: :math:`O(E + V)`
+- Kruskal Running time: :math:`O(E * log E)`
+- Depth First Search Running time: :math:`O(E + V)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -49,8 +47,7 @@ Signatures
     pgr_kruskal(edges_sql, root_vid, distance)
     pgr_kruskal(edges_sql, root_vids, distance)
 
-    RETURNS SET OF (seq, from_v, depth, node, edge, cost, agg_cost)
-    OR EMPTY SET
+    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
     single: kruskal(Single vertex) - Experimental
@@ -62,10 +59,9 @@ Single vertex
 
     pgr_kruskal(edges_sql, root_vid, distance)
 
-    RETURNS SET OF (seq, from_v, depth, node, edge, cost, agg_cost)
-    OR EMPTY SET
+    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertex :math:`2` with aggregate cost < math:`3.5`
+:Example: The Minimum Spanning Tree starting on vertex :math:`2` with :math:`agg\_cost <= 3.5`
 
 .. literalinclude:: doc-pgr_kruskalDD.queries
    :start-after: -- q1
@@ -81,10 +77,9 @@ Multiple vertices
 
     pgr_kruskal(edges_sql, root_vids, distance)
 
-    RETURNS SET OF (seq, from_v, depth, node, edge, cost, agg_cost)
-    OR EMPTY SET
+    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with aggregate cost < :math:`3.5`
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with :math:`agg\_cost <= 3.5`;
 
 .. literalinclude:: doc-pgr_kruskalDD.queries
    :start-after: -- q2
@@ -107,7 +102,9 @@ Parameter           Type                   Description
                                            - :math:`0` values are ignored
                                            - For optimization purposes, any duplicated value is ignored.
 
-**distance**        ``FLOAT``              Upper limit for the inclusion of the node in the result.
+**distance**        ``NUMERIC``            Upper limit for the inclusion of the node in the result.
+
+                                           - When ``Negative`` **Throws error**
 =================== ====================== =================================================
 
 Inner query
@@ -122,25 +119,32 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, component, edge, cost, tree_cost)``
+.. result columns start
+
+Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
 
 ===============  =========== ====================================================
 Column           Type        Description
 ===============  =========== ====================================================
 **seq**          ``BIGINT``  Sequential value starting from :math:`1`.
-**start_vid**    ``BIGINT``  Identifier of the starting vertex.
+**depth**        ``BIGINT``  Depth of the ``node``.
+
+                             - :math:`0`  when ``node`` = ``start_vid``.
+
+**start_vid**    ``BIGINT``  Identifier of the root vertex.
 
                              - In `Multiple Vertices`_ results are in ascending order.
 
-**node**         ``BIGINT``  Identifier of ``node`` reached using ``edge``
-**edge**         ``BIGINT``  Identifier of the ``edge`` used to arrive to node.
+**node**         ``BIGINT``  Identifier of ``node`` reached using ``edge``.
+**edge**         ``BIGINT``  Identifier of the ``edge`` used to arrive to ``node``.
 
-                             - :math:`-1`  when ``node`` = ``from_v``.
+                             - :math:`-1`  when ``node`` = ``start_vid``.
 
 **cost**         ``FLOAT``   Cost to traverse ``edge``.
-**agg_cost**     ``FLOAT``   Aggregate cost from ``from_v`` to ``node``.
+**agg_cost**     ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
 ===============  =========== ====================================================
 
+.. result columns end
 
 See Also
 -------------------------------------------------------------------------------
