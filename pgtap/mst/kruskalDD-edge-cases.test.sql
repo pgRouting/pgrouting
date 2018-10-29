@@ -59,12 +59,12 @@ FROM pgr_kruskalDD(
 
 SELECT set_eq('kruskal4',
     $$VALUES
-        (1,4,1,4,-1,true),
-        (2,4,2,9,16,true),
-        (3,4,3,6,9,true),
-        (4,4,4,3,5,true),
-        (5,4,4,5,8,true),
-        (6,4,4,11,11,true),
+        (1,4,0,4,-1,true),
+        (2,4,1,9,16,true),
+        (3,4,2,6,9,true),
+        (4,4,3,3,5,true),
+        (5,4,3,5,8,true),
+        (6,4,3,11,11,true),
         (7,21,0,21,-1,true)
     $$,
     '4: Root not in Graph -> Only root vertex is returned, Root in graph -> spanning tree is returned');
@@ -81,18 +81,18 @@ FROM pgr_kruskalDD(
 
 SELECT set_eq('kruskal5',
     $$VALUES
-        (1,1,1,1,-1,true),
-        (2,1,2,2,1,true),
-        (3,1,3,3,2,true),
-        (4,1,4,4,3,true),
-        (5,1,4,6,5,true),
-        (6,1,3,5,4,true),
-        (7,1,4,8,7,true),
-        (8,1,4,10,10,true),
-        (9,14,1,14,-1,true),
-        (10,14,2,15,17,true),
-        (11,16,1,16,-1,true),
-        (12,16,2,17,18,true)
+        (1,1,0,1,-1,true),
+        (2,1,1,2,1,true),
+        (3,1,2,3,2,true),
+        (4,1,3,4,3,true),
+        (5,1,3,6,5,true),
+        (6,1,2,5,4,true),
+        (7,1,3,8,7,true),
+        (8,1,3,10,10,true),
+        (9,14,0,14,-1,true),
+        (10,14,1,15,17,true),
+        (11,16,0,16,-1,true),
+        (12,16,1,17,18,true)
     $$,
     '5: root = 0 -> forset (with random root vertices)');
 

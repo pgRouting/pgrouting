@@ -4,6 +4,7 @@ SET(LOCAL_FILES
     spanningTree-family.rst
     pgr_kruskal.rst
     pgr_kruskalDD.rst
+    pgr_kruskalDFS.rst
     pgr_prim.rst
     )
 

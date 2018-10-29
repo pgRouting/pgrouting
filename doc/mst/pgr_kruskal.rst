@@ -11,7 +11,6 @@ pgr_kruskal - Experimental
 ===============================================================================
 
 ``pgr_kruskal`` — Returns the minimum spanning tree of graph using Kruskal algorithm.
-In particular, the Kruskal algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html

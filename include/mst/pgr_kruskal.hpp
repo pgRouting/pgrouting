@@ -204,7 +204,7 @@ Pgr_kruskal<G>::get_results(
             if (!p_root && graph[u].id > graph[v].id) std::swap(u, v);
 
             root = p_root? p_root: graph[u].id;
-            depth[u] = 1;
+            depth[u] = 0;
             results.push_back({
                 root,
                 m_order_by? depth[u] : 0,
@@ -343,12 +343,16 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     using bfs_visitor = visitors::Bfs_visitor<E>;
     for (auto root : roots) {
         std::vector<E> visited_order;
-        boost::breadth_first_search(mst,
-                graph.get_V(root),
-                visitor(bfs_visitor(visited_order)));
+        if (graph.has_vertex(root)) {
+            boost::breadth_first_search(mst,
+                    graph.get_V(root),
+                    visitor(bfs_visitor(visited_order)));
 
-        auto results = get_results(visited_order, root, graph);
-        m_results.insert(m_results.end(), results.begin(), results.end());
+            auto results = get_results(visited_order, root, graph);
+            m_results.insert(m_results.end(), results.begin(), results.end());
+        } else {
+            m_results.push_back({root, 0, root, -1, 0.0, 0.0});
+        }
     }
 
     return m_results;
