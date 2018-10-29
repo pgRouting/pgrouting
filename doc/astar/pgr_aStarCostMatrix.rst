@@ -19,7 +19,7 @@ pgr_aStarCostMatrix
 
 .. rubric:: Availability
 
-* New on version 2.4.0
+* New on v2.4.0
 
 Description
 -------------------------------------------------------------------------------
