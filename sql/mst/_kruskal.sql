@@ -35,8 +35,8 @@ CREATE OR REPLACE FUNCTION _pgr_kruskal(
     distance FLOAT,
 
     OUT seq BIGINT,
-    OUT start_vid BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,

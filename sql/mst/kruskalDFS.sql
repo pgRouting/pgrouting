@@ -34,18 +34,27 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
     max_depth BIGINT DEFAULT 0,
 
     OUT seq BIGINT,
-    OUT start_vid BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
     SELECT *
     FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', $3, -1);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
     TEXT,   -- Edge sql
@@ -54,8 +63,8 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
     max_depth BIGINT DEFAULT 0,
 
     OUT seq BIGINT,
-    OUT start_vid BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
