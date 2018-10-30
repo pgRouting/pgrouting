@@ -14,7 +14,7 @@ pgr_createVerticesTable
 
 .. rubric:: Availability
 
-* Renamed in version 2.0.0
+* Renamed in v2.0.0
 
 Description
 -------------------------------------------------------------------------------
