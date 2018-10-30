@@ -23,9 +23,7 @@ pgr_withPointsCost - Proposed
 
 .. rubric:: Availability
 
-* 2.2.0
-
-* Proposed in version 2.2
+* Proposed in v2.2
 
 Description
 -------------------------------------------------------------------------------
@@ -57,7 +55,7 @@ The main characteristics are:
   - If the values returned are stored in a table, the unique index would be the pair:
     `(start_vid, end_vid)`.
 
-  - For undirected graphs, the results are symmetric.
+  - For **undirected** graphs, the results are **symmetric**.
 
     - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
@@ -70,7 +68,6 @@ The main characteristics are:
 
   - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
-
 Signatures
 -------------------------------------------------------------------------------
 
@@ -78,10 +75,10 @@ Signatures
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid, directed, driving_side)
-    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids, directed, driving_side)
-    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid, directed, driving_side)
-    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side])
+    pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side])
+    pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side])
+    pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 .. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.
@@ -89,19 +86,18 @@ Signatures
 .. index::
     single: withPointsCost(Minimal Use) - proposed
 
-.. rubric:: Minimal Use
-
-The minimal signature:
-
-- Is for a **directed** graph.
-- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example:
+:Example: From point :math:`1` to point :math:`3`
+
+- For a **directed** graph.
+- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --e1
@@ -115,11 +111,10 @@ One to One
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid,
-        directed:=true, driving_side:='b')
+    pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-:Example:
+:Example: From point :math:`1` to vertex :math:`3` on an **undirected** graph.
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --e2
@@ -133,11 +128,10 @@ One to Many
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids,
-        directed:=true, driving_side:='b')
+    pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example:
+:Example: From point :math:`1` to point :math:`3` and vertex :math:`5` on a **directed** graph.
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --e3
@@ -151,11 +145,10 @@ Many to One
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid,
-        directed:=true, driving_side:='b')
+    pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example:
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` on a **directed** graph.
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --e4
@@ -169,11 +162,10 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids,
-        directed:=true, driving_side:='b')
+    pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example:
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :math:`7` on a **directed** graph.
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --e5
@@ -215,8 +207,6 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(start_vid, end_vid, agg_cost)``
-
 ============= =========== =================================================
 Column           Type              Description
 ============= =========== =================================================
@@ -228,19 +218,19 @@ Column           Type              Description
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: With **right** side driving topology.
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :math:`7`, with **right** side driving topology
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --q2
    :end-before: --q3
 
-:Example: With **left** side driving topology.
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :math:`7`, with **left** side driving topology
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --q3
    :end-before: --q4
 
-:Example: Does not matter driving side.
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :math:`7`, does not matter driving side.
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --q4

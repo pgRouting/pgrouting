@@ -23,8 +23,6 @@ pgr_withPoints - Proposed
 
 .. rubric:: Availability
 
-* 2.2.0
-
 * Proposed in v2.2
 
 Description
@@ -230,7 +228,7 @@ Additional Examples
    :start-after: --q3
    :end-before: --q4
 
-:Example: Many to many example with a twist: on an **undirected** graph and showing details.
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` to vertex :math:`7` on an **undirected** graph, with details.
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --q4

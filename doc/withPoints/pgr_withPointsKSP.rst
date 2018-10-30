@@ -23,15 +23,13 @@ pgr_withPointsKSP - Proposed
 
 .. rubric:: Availability
 
-* 2.2.0
-
-* Proposed in version 2.2
+* Proposed in v2.2
 
 Description
 -------------------------------------------------------------------------------
 
 Modifies the graph to include the points defined in the ``points_sql`` and
-using Yen algorithm, finds the K shortest paths.
+using Yen algorithm, finds the :math:`K` shortest paths.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -40,41 +38,38 @@ Signatures
 
 .. code-block:: none
 
-    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
-    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details)
+    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K [, directed] [, heap_paths] [, driving_side] [, details])
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
-.. rubric:: Minimal Usage
-
-The minimal usage:
-
-- Is for a **directed** graph.
-- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-- No **details** are given about distance of other points of the query.
-- No **heap paths** are returned.
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
-:Example:
+:Example: From point :math:`1` to point :math:`2` in :math:`2` cycles
+
+- For a **directed** graph.
+- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+- No **details** are given about distance of other points of the query.
+- No **heap paths** are returned.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
    :start-after: --q1
    :end-before: --q2
 
-.. rubric:: Complete Signature
+Complete Signature
+...............................................................................
 
-Finds the K shortest paths depending on the optional parameters setup.
+Finds the :math:`K` shortest paths depending on the optional parameters setup.
 
 .. code-block:: none
 
-    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K,
-        directed:=true, heap_paths:=false, driving_side:='b', details:=false)
+    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K [, directed] [, heap_paths] [, driving_side] [, details])
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
-:Example: With details.
+:Example: From point :math:`1` to vertex :math:`6` in :math:`2` cycles with details.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
    :start-after: --q2
@@ -118,8 +113,6 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
-
 ============ =========== =================================================
 Column           Type              Description
 ============ =========== =================================================
@@ -141,13 +134,13 @@ Column           Type              Description
 Additional Examples
 --------------------------------------------------------------------------------------
 
-:Example: Left side driving topology with details.
+:Example: Left side driving topology from point :math:`1` to point :math:`2` in :math:`2` cycles, with details
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
    :start-after: --q3
    :end-before: --q4
 
-:Example: Right side driving topology with heap paths and details.
+:Example: Right side driving topology from point :math:`1` to point :math:`2` in :math:`2` cycles, with heap paths and details
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
    :start-after: --q4
