@@ -28,9 +28,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN DEFAULT TRUE,
-  OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'johnson'
-    LANGUAGE c VOLATILE STRICT;
+CREATE OR REPLACE FUNCTION _pgr_johnson(
+    edges_sql TEXT,
+    directed BOOLEAN,
 
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost float)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME', 'johnson'
+LANGUAGE C VOLATILE STRICT;
+
+CREATE OR REPLACE FUNCTION pgr_johnson(
+    TEXT,    -- edges_sql (required)
+    directed BOOLEAN DEFAULT TRUE,
+
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost float)
+RETURNS SETOF RECORD AS
+$BODY$
+
+    SELECT *
+    FROM _pgr_johnson(_pgr_get_statement($1), $2);
+
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN) IS 'pgr_johnson(edges_sql(id,source,target,cost[,reverse_cost]), [,directed])';
