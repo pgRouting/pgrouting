@@ -103,6 +103,12 @@ Column           Type        Description
 **cost**         ``FLOAT``   Cost to traverse of edge.
 ===============  =========== ====================================================
 
+Additional Example
+-------------------------------------------------------------------------------
+
+.. literalinclude:: doc-pgr_kruskal.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 See Also
 -------------------------------------------------------------------------------

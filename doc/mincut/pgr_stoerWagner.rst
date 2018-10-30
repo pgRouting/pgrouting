@@ -43,7 +43,7 @@ weight on the cut determines whether it is a minimum cut.
 **The main characteristics are:**
 
 - Process is done only on edges with positive costs.
-- It's implementation is only on undirected graph.
+- It's implementation is only on **undirected** graph.
 - Sum of the weights of all edges between the two sets is mincut. 
   
   - A **mincut** is a cut having the least weight.
@@ -54,7 +54,8 @@ weight on the cut determines whether it is a minimum cut.
   - When the graph is unconnected then EMPTY SET is return.
 
 - Sometimes a graph has multiple min-cuts, but all have the same weight. The this function determines exactly one of the min-cuts as well as its weight.
-- **Running time:** :math:`O(V*E + V^2*log V)`.
+
+* Running time: :math:`O(V*E + V^2*log V)`.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -67,16 +68,15 @@ Signatures
     pgr_stoerWagner(edges_sql)
 
     RETURNS SET OF (seq, edge, cost, mincut)
-       or EMPTY SET
+    OR EMPTY SET
 
-The signature is for a **undirected** graph.
-
-:Example:
+:Example: * **TBD**
 
 .. code-block:: none
 
     pgr_stoerWagner(TEXT edges_sql);
-    RETURNS SET OF (seq, edge, cost, mincut) or EMPTY SET
+    RETURNS SET OF (seq, edge, cost, mincut) 
+    OR EMPTY SET
 
 .. literalinclude:: doc-pgr_stoerWagner.queries
    :start-after: -- q1
