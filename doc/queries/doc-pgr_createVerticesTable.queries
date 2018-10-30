@@ -55,6 +55,24 @@ NOTICE:  Unexpected error raise_exception
 (1 row)
 
 --q3.1
+--q3.23
+SELECT  pgr_createVerticesTable('edge_table',the_geom:='the_geom',source:='source',target:='target');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
+--q3.24
 --q4
 SELECT  pgr_createVerticesTable('edge_table',source:='source',target:='target',the_geom:='the_geom');
 NOTICE:  PROCESSING:

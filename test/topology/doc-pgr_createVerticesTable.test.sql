@@ -12,6 +12,10 @@ SELECT  pgr_createVerticesTable('edge_table','the_geom','source','target');
 SELECT  pgr_createVerticesTable('edge_table','source','the_geom','target');
 \echo --q3.1
 
+\echo --q3.23
+SELECT  pgr_createVerticesTable('edge_table',the_geom:='the_geom',source:='source',target:='target');
+\echo --q3.24
+
 \echo --q4
 SELECT  pgr_createVerticesTable('edge_table',source:='source',target:='target',the_geom:='the_geom');
 \echo --q4.1
