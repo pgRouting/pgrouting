@@ -39,7 +39,7 @@ Signatures
     pgr_KSP(edges_sql, start_vid, end_vid, K [, directed] [, heap_paths])
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
-.. rubric:: Using default
+.. rubric:: Using defaults
 
 .. code-block:: sql
 

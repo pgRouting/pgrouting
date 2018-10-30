@@ -28,18 +28,10 @@ pgr_lineGraph - Experimental
 Description
 -------------------------------------------------------------------------------
 
-Given a graph G, its line graph L(G) is a graph such that:-
+Given a graph G, its line graph L(G) is a graph such that:
 
 - Each vertex of L(G) represents an edge of G
 - Two vertices of L(G) are adjacent if and only if their corresponding edges share a common endpoint in G.
-
-The following figures show a graph (left, with blue vertices) and its
-Line Graph (right, with green vertices).
-
-| |first|
-
-.. |first| image:: images/lineGraph.png
-   :align: middle
 
 Signatures
 -------------------------------------------------------------------------------
@@ -50,18 +42,16 @@ Signatures
 
     pgr_lineGraph(edges_sql, directed)
     RETURNS SET OF (seq, source, target, cost, reverse_cost)
-        OR EMPTY SET
+    OR EMPTY SET
 
-.. rubric:: Minimal signature
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_lineGraph(edges_sql)
-    RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
+    RETURNS SET OF (seq, source, target, cost, reverse_cost) OR EMPTY SET
 
-The minimal signature is for a **directed** graph:
-
-:Example:
+:Example: For a **directed** graph
 
 .. literalinclude:: doc-pgr_lineGraph.queries
    :start-after: -- q1
@@ -70,19 +60,15 @@ The minimal signature is for a **directed** graph:
 .. index::
     single: lineGraph(Complete signature)
 
-.. rubric:: Complete Signature
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
     pgr_lineGraph(edges_sql, directed);
-    RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
+    RETURNS SET OF (seq, source, target, cost, reverse_cost) OR EMPTY SET
 
-This signature returns the Line Graph of the current graph:
-
--  On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
--  On an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
+:Example: For an **undirected** graph
 
 .. literalinclude:: doc-pgr_lineGraph.queries
    :start-after: -- q2
