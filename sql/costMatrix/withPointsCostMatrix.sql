@@ -32,9 +32,10 @@ MANY TO MANY
 */
 
 CREATE OR REPLACE FUNCTION pgr_withPointsCostMatrix(
-    edges_sql TEXT,
-    points_sql TEXT,
-    pids ANYARRAY,
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- points_sql (required)
+    ANYARRAY, -- pids (required)
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
@@ -43,11 +44,13 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCostMatrix(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT a.start_pid, a.end_pid, a.agg_cost
-        FROM _pgr_withPoints($1, $2, $3, $3, $4,  $5, TRUE, TRUE) AS a;
-END
+    SELECT a.start_pid, a.end_pid, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), _pgr_get_statement($2), $3, $3, $4,  $5, TRUE, TRUE) AS a;
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+COMMENT ON FUNCTION pgr_withPointsCostMatrix(TEXT, TEXT, ANYARRAY, BOOLEAN, CHAR) IS
+'pgr_withPointsCostMatrix(edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), pids, [,directed, driving_side])';
+
