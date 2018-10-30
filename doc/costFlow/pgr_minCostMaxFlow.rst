@@ -41,9 +41,9 @@ Signatures
 
 .. code-block:: none
 
-    pgr_minCostMaxFlow(edges_sql, source, target)
+    pgr_minCostMaxFlow(edges_sql, source,  target)
     pgr_minCostMaxFlow(edges_sql, sources, target)
-    pgr_minCostMaxFlow(edges_sql, source, targets)
+    pgr_minCostMaxFlow(edges_sql, source,  targets)
     pgr_minCostMaxFlow(edges_sql, sources, targets)
     RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
@@ -54,15 +54,13 @@ Signatures
 One to One
 ...............................................................................
 
-Calculates the minimum cost maximum flow from the `source` to the `target`.
-
 .. code-block:: none
 
     pgr_minCostMaxFlow(edges_sql, source, target)
     RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example:
+:Example: From vertex :math:`2` to vertex :math:`3`
 
 .. literalinclude:: doc-pgr_minCostMaxFlow.queries
    :start-after: -- q1
@@ -74,15 +72,13 @@ Calculates the minimum cost maximum flow from the `source` to the `target`.
 One to Many 
 ...............................................................................
 
-Calculates the minimum cost maximum flow from the `source` to all of the `targets`.
-
 .. code-block:: none
 
     pgr_minCostMaxFlow(edges_sql, source, targets)
     RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example:
+:Example: From vertex :math:`13` to vertices :math:`\{7, 1, 4\}`
 
 .. literalinclude:: doc-pgr_minCostMaxFlow.queries
    :start-after: -- q3
@@ -94,15 +90,13 @@ Calculates the minimum cost maximum flow from the `source` to all of the `target
 Many to One 
 ...............................................................................
 
-Calculates the minimum cost maximum flow from the `sources` to all of the `target`.
-
 .. code-block:: none
 
     pgr_minCostMaxFlow(edges_sql, sources, target)
     RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example:
+:Example: From vertices :math:`\{1, 7, 14\}` to vertex :math:`12`
 
 .. literalinclude:: doc-pgr_minCostMaxFlow.queries
    :start-after: -- q2
@@ -114,14 +108,12 @@ Calculates the minimum cost maximum flow from the `sources` to all of the `targe
 Many to Many
 ...............................................................................
 
-Calculates the minimum cost maximum flow from the `sources` to all of the `targets`.
-
 .. code-block:: none
 
     pgr_maxFlow(edges_sql, sources, targets)
     RETURNS FLOAT 
 
-:Example:
+:Example: From vertices :math:`\{7, 13\}` to vertices :math:`\{3, 9\}`
 
 .. literalinclude:: doc-pgr_minCostMaxFlow.queries
    :start-after: -- q4
