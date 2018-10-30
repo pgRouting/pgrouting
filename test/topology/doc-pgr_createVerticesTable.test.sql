@@ -89,8 +89,6 @@ SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:=
                             rows_where:='the_geom && (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 \echo --q19.1
 
-Additional Examples¶
-
 \echo --q20
  SELECT pgr_createVerticesTable('edge_table');
 \echo --q20.1

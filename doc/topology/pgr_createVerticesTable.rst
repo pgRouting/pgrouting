@@ -247,9 +247,9 @@ The order of the parameters do not matter:
 
 	 SELECT  pgr_createVerticesTable('mytable',the_geom:='mygeom',source:='src',target:='tgt');
 
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
-       :start-after: --q13
-       :end-before: --q13.1
+.. literalinclude:: doc-pgr_createVerticesTable.queries
+   :start-after: --q13
+   :end-before: --q13.1
 
 .. code-block:: sql
 
@@ -261,34 +261,37 @@ In this scenario omitting a parameter would create an error because the default 
 
 Selecting rows based on the gid.
 
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
-       :start-after: --q14
-       :end-before: --q14.1
+.. literalinclude:: doc-pgr_createVerticesTable.queries
+    :start-after: --q14
+    :end-before: --q14.1
 
 .. code-block:: sql
 
 	 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',rows_where:='gid < 10');
 
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
-       :start-after: --q15
-       :end-before: --q15.1
+.. literalinclude:: doc-pgr_createVerticesTable.queries
+   :start-after: --q15
+   :end-before: --q15.1
+
 .. code-block:: sql
 
 	 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',rows_where:='gid < 10');
 
-Selecting the rows where the geometry is near the geometry of row with ``gid`` =5 .
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
-       :start-after: --q16
-       :end-before: --q16.1
+Selecting the rows where the geometry is near the geometry of row with ``gid`` =5.
+
+.. literalinclude:: doc-pgr_createVerticesTable.queries
+   :start-after: --q16
+   :end-before: --q16.1
 
 .. code-block:: sql
 
 	 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
 	                            rows_where:='the_geom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)');
 
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
-       :start-after: --q17
-       :end-before: --q17.1
+.. literalinclude:: doc-pgr_createVerticesTable.queries
+   :start-after: --q17
+   :end-before: --q17.1
+
 .. code-block:: sql
 
 	 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
@@ -296,9 +299,9 @@ Selecting the rows where the geometry is near the geometry of row with ``gid`` =
 
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
-       :start-after: --q18
-       :end-before: --q18.1
+.. literalinclude:: doc-pgr_createVerticesTable.queries
+   :start-after: --q18
+   :end-before: --q18.1
 
 .. code-block:: sql
 
@@ -307,9 +310,9 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 	SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
 	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
-       :start-after: --q19
-       :end-before: --q19.1
+.. literalinclude:: doc-pgr_createVerticesTable.queries
+   :start-after: --q19
+   :end-before: --q19.1
 
 .. code-block:: sql
 
@@ -319,9 +322,9 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 Additional Examples
 -------------------------------------------------------------------------------
 
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
-       :start-after: --q20
-       :end-before: --q20.1
+.. literalinclude:: doc-pgr_createVerticesTable.queries
+   :start-after: --q20
+   :end-before: --q20.1
 
 .. code-block:: sql
 

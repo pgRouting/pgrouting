@@ -343,11 +343,22 @@ NOTICE:  select * from public.mytable WHERE true AND (the_geom && (SELECT st_buf
 
 --q19.1
 --q20
-Additional Examples¶
- SELECT pgr_createVerticesTable('edge_table');
-ERROR:  syntax error at or near "Additional"
-LINE 1: Additional Examples¶
-        ^
+SELECT pgr_createVerticesTable('edge_table');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+NOTICE:                                         FOR   18  EDGES
+NOTICE:    Edges with NULL geometry,source or target: 0
+NOTICE:                              Edges processed: 18
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createverticestable
+-------------------------
+ OK
+(1 row)
+
 --q20.1
 ROLLBACK;
 ROLLBACK
