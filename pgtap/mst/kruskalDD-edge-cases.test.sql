@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(8);
+SELECT plan(9);
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
@@ -109,7 +109,7 @@ FROM pgr_kruskalDD(
 SELECT throws_ok('kruskal6',
     'P0001',
     'Negative value found on ''distance''',
-    'Negative distance throws');
+    '6: Negative distance throws');
 
 
 
@@ -124,7 +124,7 @@ FROM pgr_kruskalDD(
 SELECT throws_ok('kruskal7',
     'P0001',
     'Negative value found on ''distance''',
-    'Negative distance throws');
+    '7:Negative distance throws');
 
 --
 PREPARE kruskal8 AS
@@ -137,7 +137,35 @@ FROM pgr_kruskalDD(
 
 SELECT set_eq('kruskal8',
     $$VALUES (1,0,4,4,-1,0,0) $$,
-    '6: 0 distance -> Only root vertex is returned');
+    '8: 0 distance -> Only root vertex is returned');
+
+
+--
+PREPARE kruskal9 AS
+SELECT seq, depth, start_vid, node, edge
+FROM pgr_kruskalDD(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    4, 'Infinity'
+);
+
+SELECT set_eq('kruskal9',
+    $$VALUES
+       (1,  0,      4, 4,-1),
+       (2,  1,      4, 3, 3),
+       (3,  2,      4, 2, 2),
+       (4,  3,      4, 1, 1),
+       (5,  3,      4, 5, 4),
+       (6,  4,      4, 8, 7),
+       (7,  5,      4, 7, 6),
+       (8,  4,      4,10,10),
+       (9,  5,      4,13,14),
+      (10,  2,      4, 6, 5),
+      (11,  3,      4, 9, 9),
+      (12,  3,      4,11,11),
+      (13,  4,      4,12,13)
+    $$,
+    '9: 0 distance -> Only root vertex is returned');
 
 
 SELECT * FROM finish();
