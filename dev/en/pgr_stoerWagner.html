@@ -184,7 +184,7 @@ weight on the cut determines whether it is a minimum cut.</p>
 <p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
 <li>Process is done only on edges with positive costs.</li>
-<li>It’s implementation is only on undirected graph.</li>
+<li>It’s implementation is only on <strong>undirected</strong> graph.</li>
 <li>Sum of the weights of all edges between the two sets is mincut.<ul>
 <li>A <strong>mincut</strong> is a cut having the least weight.</li>
 </ul>
@@ -195,7 +195,9 @@ weight on the cut determines whether it is a minimum cut.</p>
 </ul>
 </li>
 <li>Sometimes a graph has multiple min-cuts, but all have the same weight. The this function determines exactly one of the min-cuts as well as its weight.</li>
-<li><strong>Running time:</strong> <span class="math">\(O(V*E + V^2*log V)\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Running time: <span class="math">\(O(V*E + V^2*log V)\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="signatures">
@@ -203,20 +205,23 @@ weight on the cut determines whether it is a minimum cut.</p>
 <div class="highlight-none" id="index-0"><div class="highlight"><pre><span></span>pgr_stoerWagner(edges_sql)
 
 RETURNS SET OF (seq, edge, cost, mincut)
-   or EMPTY SET
+OR EMPTY SET
 </pre></div>
 </div>
-<p>The signature is for a <strong>undirected</strong> graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TBD</strong></li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_stoerWagner(TEXT edges_sql);
-RETURNS SET OF (seq, edge, cost, mincut) or EMPTY SET
+RETURNS SET OF (seq, edge, cost, mincut)
+OR EMPTY SET
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_stoerWagner</span><span class="p">(</span>
@@ -428,7 +433,7 @@ $$
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 21, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

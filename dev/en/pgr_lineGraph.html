@@ -105,7 +105,10 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_lineGraph - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
@@ -188,36 +191,30 @@
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Given a graph G, its line graph L(G) is a graph such that:-</p>
+<p>Given a graph G, its line graph L(G) is a graph such that:</p>
 <ul class="simple">
 <li>Each vertex of L(G) represents an edge of G</li>
 <li>Two vertices of L(G) are adjacent if and only if their corresponding edges share a common endpoint in G.</li>
 </ul>
-<p>The following figures show a graph (left, with blue vertices) and its
-Line Graph (right, with green vertices).</p>
-<div class="line-block">
-<div class="line"><img alt="first" class="align-middle" src="_images/lineGraph.png" /></div>
-</div>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql, directed)
 RETURNS SET OF (seq, source, target, cost, reverse_cost)
-    OR EMPTY SET
+OR EMPTY SET
 </pre></div>
 </div>
-<p class="rubric">Minimal signature</p>
+<p class="rubric">Using defaults</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql)
-RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
+RETURNS SET OF (seq, source, target, cost, reverse_cost) OR EMPTY SET
 </pre></div>
 </div>
-<p>The minimal signature is for a <strong>directed</strong> graph:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">For a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -270,21 +267,17 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 
 </pre></div>
 </div>
-<p class="rubric" id="index-0">Complete Signature</p>
+<div class="section" id="complete-signature">
+<span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql, directed);
-RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
+RETURNS SET OF (seq, source, target, cost, reverse_cost) OR EMPTY SET
 </pre></div>
 </div>
-<p>This signature returns the Line Graph of the current graph:</p>
-<ul class="simple">
-<li>On a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>On an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
-</ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">For an <strong>undirected</strong> graph</td>
 </tr>
 </tbody>
 </table>
@@ -316,6 +309,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 <span class="p">(</span><span class="mi">19</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="parameters">
@@ -502,7 +496,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 24, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

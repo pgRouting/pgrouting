@@ -194,7 +194,7 @@
 <dl class="docutils">
 <dt>The main characteristics are:</dt>
 <dd><ul class="first last simple">
-<li>This function is for directed graphs.</li>
+<li>This function is for <strong>directed</strong> graphs.</li>
 <li>Results are undefined when a negative vertex id is used in the input graph.</li>
 <li>Results are undefined when a duplicated edge id is used in the input graph.</li>
 <li>Running time: TBD</li>
@@ -210,7 +210,7 @@ RETURNS SET OF (seq, source, target, cost, edge)
     OR EMPTY SET
 </pre></div>
 </div>
-<p class="rubric">Minimal signature</p>
+<p class="rubric">Using defaults</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraphFull(TEXT edges_sql)
 RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </pre></div>
@@ -219,7 +219,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Full line graph of subgraph of edges <span class="math">\(\{4, 7, 8, 10\}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -619,7 +619,7 @@ SELECT 16
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 21, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

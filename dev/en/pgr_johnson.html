@@ -175,7 +175,7 @@ pair of nodes in the graph using Floyd-Warshall algorithm.</p>
 of the shortest path for each pair of nodes in the graph, for <em>sparse graphs</em>.
 It usees the Boost’s implementation which runs in <span class="math">\(O(V E \log V)\)</span> time,</p>
 <dl class="docutils">
-<dt>The main Characteristics are:</dt>
+<dt>The main characteristics are:</dt>
 <dd><ul class="first last simple">
 <li>It does not return a path.</li>
 <li>Returns the sum of the costs of the shortest path for each pair of nodes in the graph.</li>
@@ -201,13 +201,13 @@ Represent the distance between vertices for which there is no path.<ul>
 <p class="rubric">Summary</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql)
 pgr johnson(edges_sql [, directed])
-RETURNS SET OF (start_vid, end_vid,  agg_cost)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
 <p class="rubric">Using default</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql)
-RETURNS SET OF (start_vid, end_vid,  agg_cost)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
@@ -235,7 +235,7 @@ OR EMPTY SET
 <div class="section" id="complete-signature">
 <h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_johnson(edges_sql[, directed])
-RETURNS SET OF (start_vid, end_vid,  agg_cost)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
@@ -419,7 +419,7 @@ OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 24, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

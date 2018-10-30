@@ -194,30 +194,29 @@ articulation points or, equivalently, cut vertices. Articulation points are
 vertices whose removal would increase the number of connected components in
 the graph.
 This implementation can only be used with an undirected graph.</p>
-<dl class="docutils">
-<dt>The main Characteristics are:</dt>
-<dd><ul class="first last simple">
-<li>The returned values are ordered:</li>
+<p><strong>The main characteristics are:</strong></p>
+<ul class="simple">
+<li>The signature is for an <strong>undirected</strong> graph.</li>
+<li>The returned values are ordered:<ul>
 <li><cite>node</cite> ascending</li>
+</ul>
+</li>
 <li>Running time: <span class="math">\(O(V + E)\)</span></li>
 </ul>
-</dd>
-</dl>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_articulationPoints(edges_sql)
 
 RETURNS SET OF (seq, node)
-    OR EMPTY SET
+OR EMPTY SET
 </pre></div>
 </div>
-<p>The signature is for a <strong>undirected</strong> graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">The articulation points of the graph</td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +233,6 @@ RETURNS SET OF (seq, node)
 
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/ap_sampledata.png"><img alt="_images/ap_sampledata.png" src="_images/ap_sampledata.png" style="width: 560px; height: 362px;" /></a>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -387,7 +385,7 @@ RETURNS SET OF (seq, node)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 24, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

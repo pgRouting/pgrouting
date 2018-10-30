@@ -186,7 +186,7 @@
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li>2.2.0</li>
-<li>Proposed in version 2.2</li>
+<li>Proposed in v2.2</li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -211,31 +211,23 @@ Using Dijkstra algorithm, find the shortest path(s)</p>
 <li>The returned values are ordered:
 - start_vid ascending
 - end_vid ascending</li>
+</ul>
+<ul class="simple">
 <li>Running time: <span class="math">\(O(|start\_vids|\times(V \log V + E))\)</span></li>
 </ul>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
-pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
-pgr_withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details)
-pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
-pgr_withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side] [, details])
+pgr_withPoints(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side] [, details])
+pgr_withPoints(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side] [, details])
+pgr_withPoints(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side] [, details])
 RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 </pre></div>
 </div>
-<p class="rubric">Minimal Use</p>
-<dl class="docutils">
-<dt>The minimal signature:</dt>
-<dd><ul class="first last simple">
-<li>Is for a <strong>directed</strong> graph.</li>
-<li>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</li>
-<li>No <strong>details</strong> are given about distance of other points of points_sql query.</li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
+<p class="rubric">Using defaults</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vid, to_vid)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -243,7 +235,13 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point 1 to point 3</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">From point <span class="math">\(1\)</span> to point <span class="math">\(3\)</span></p>
+<ul class="last simple">
+<li>For a <strong>directed</strong> graph.</li>
+<li>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</li>
+<li>No <strong>details</strong> are given about distance of other points of points_sql query.</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -264,8 +262,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid,
-    directed:=true, driving_side:=&#39;b&#39;, details:=false)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side] [, details])
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -273,7 +270,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point 1 to vertex 3</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point <span class="math">\(1\)</span> to vertex <span class="math">\(3\)</span> with details of passing points</td>
 </tr>
 </tbody>
 </table>
@@ -299,8 +296,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="one-to-many">
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vid, end_vids,
-    directed:=true, driving_side:=&#39;b&#39;, details:=false)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side] [, details])
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -308,7 +304,7 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point 1 to point 3 and vertex 5</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point <span class="math">\(1\)</span> to point <span class="math">\(3\)</span> and vertex <span class="math">\(5\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -333,8 +329,7 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vids, end_vid,
-    directed:=true, driving_side:=&#39;b&#39;, details:=false)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side] [, details])
 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -342,7 +337,7 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point 1 and vertex 2  to point 3</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point <span class="math">\(1\)</span> and vertex <span class="math">\(2\)</span> to point <span class="math">\(3\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -368,8 +363,7 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, start_vids, end_vids,
-    directed:=true, driving_side:=&#39;b&#39;, details:=false)
+<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side] [, details])
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -377,7 +371,7 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point 1 and vertex 2  to point 3 and vertex 7</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point <span class="math">\(1\)</span> and vertex <span class="math">\(2\)</span>  to point <span class="math">\(3\)</span> and vertex <span class="math">\(7\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -611,7 +605,6 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">[path_seq,]</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -695,7 +688,7 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Which path (if any) passes in front of point 6 or vertex 6 with <strong>right</strong> side driving topology.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Which path (if any) passes in front of point <span class="math">\(6\)</span> or vertex <span class="math">\(6\)</span> with <strong>right</strong> side driving topology.</td>
 </tr>
 </tbody>
 </table>
@@ -740,7 +733,7 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Which path (if any) passes in front of point 6 or vertex 6 with <strong>left</strong> side driving topology.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Which path (if any) passes in front of point <span class="math">\(6\)</span> or vertex <span class="math">\(6\)</span> with <strong>left</strong> side driving topology.</td>
 </tr>
 </tbody>
 </table>
@@ -785,7 +778,7 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Many to many example with a twist: on undirected graph and showing details.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Many to many example with a twist: on an <strong>undirected</strong> graph and showing details.</td>
 </tr>
 </tbody>
 </table>
@@ -853,7 +846,7 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 24, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

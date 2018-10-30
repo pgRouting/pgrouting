@@ -171,8 +171,12 @@
 </div>
 <p class="rubric">Availability:</p>
 <ul class="simple">
-<li>Renamed 2.5.0, Previous name pgr_maxFlowBoykovKolmogorov</li>
-<li>New in 2.3.0</li>
+<li>Official on v3.0.0</li>
+<li>Renamed on v2.5.0</li>
+<li>Experimental on v2.3.0<ul>
+<li>pgr_maxFlowBoykovKolmogorov</li>
+</ul>
+</li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -213,7 +217,6 @@ OR EMPTY SET
 </div>
 <div class="section" id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<p>Calculates the flow on the graph edges that maximizes the flow from the <cite>source</cite> to the <cite>target</cite>.</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_boykovKolmogorov(edges_sql, source,  target)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
 OR EMPTY SET
@@ -223,7 +226,7 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math">\(6\)</span> to vertex <span class="math">\(11\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -249,7 +252,6 @@ OR EMPTY SET
 </div>
 <div class="section" id="one-to-many">
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<p>Calculates the flow on the graph edges that maximizes the flow from the <cite>source</cite> to all of the <cite>targets</cite>.</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_boykovKolmogorov(edges_sql, source,  targets)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
 OR EMPTY SET
@@ -259,7 +261,7 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math">\(6\)</span> to vertices <span class="math">\(\{1, 3, 11\}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -290,7 +292,6 @@ OR EMPTY SET
 </div>
 <div class="section" id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<p>Calculates the flow on the graph edges that maximizes the flow from all of the <cite>sources</cite> to the <cite>target</cite>.</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_boykovKolmogorov(edges_sql, sources,  target)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
 OR EMPTY SET
@@ -300,7 +301,7 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math">\(\{6, 8, 12\}\)</span> to vertex <span class="math">\(11\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -326,7 +327,6 @@ OR EMPTY SET
 </div>
 <div class="section" id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<p>Calculates the flow on the graph edges that maximizes the flow from all of the <cite>sources</cite> to all of the <cite>targets</cite>.</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>pgr_boykovKolmogorov(edges_sql, sources,  targets)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
 OR EMPTY SET
@@ -336,7 +336,7 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math">\(\{6, 8, 12\}\)</span> to vertices <span class="math">\(\{1, 3, 11\}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -554,7 +554,7 @@ OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 24, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

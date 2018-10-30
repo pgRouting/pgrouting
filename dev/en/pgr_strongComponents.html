@@ -194,14 +194,13 @@ from each other.
 This implementation can only be used with a directed graph.</p>
 <p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
+<li>The signature is for a <strong>directed</strong> graph.</li>
 <li>Components are described by vertices</li>
 <li>The returned values are ordered:<ul>
 <li><cite>component</cite> ascending</li>
 <li><cite>node</cite> ascending</li>
 </ul>
 </li>
-</ul>
-<ul class="simple">
 <li>Running time: <span class="math">\(O(V + E)\)</span></li>
 </ul>
 </div>
@@ -210,15 +209,14 @@ This implementation can only be used with a directed graph.</p>
 <div class="highlight-none" id="index-0"><div class="highlight"><pre><span></span>pgr_strongComponents(edges_sql)
 
 RETURNS SET OF (seq, component, n_seq, node)
-    OR EMPTY SET
+OR EMPTY SET
 </pre></div>
 </div>
-<p>The signature is for a <strong>directed</strong> graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">The strong components of the graph</td>
 </tr>
 </tbody>
 </table>
@@ -248,7 +246,6 @@ RETURNS SET OF (seq, component, n_seq, node)
 
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/scc_sampledata.png"><img alt="_images/scc_sampledata.png" src="_images/scc_sampledata.png" style="width: 707px; height: 355px;" /></a>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -410,7 +407,7 @@ RETURNS SET OF (seq, component, n_seq, node)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 24, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>

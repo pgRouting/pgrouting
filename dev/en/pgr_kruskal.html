@@ -28,7 +28,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_prim - Experimental" href="pgr_prim.html" />
+    <link rel="next" title="pgr_kruskalDD - Experimental" href="pgr_kruskalDD.html" />
     <link rel="prev" title="pgr_randomSpanTree - Experimental" href="pgr_randomSpanTree.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -126,7 +126,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_prim.html" title="Next Chapter: pgr_prim - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_prim - Ex... &raquo;</span>
+    <a href="pgr_kruskalDD.html" title="Next Chapter: pgr_kruskalDD - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_kruskalDD... &raquo;</span>
     </a>
   </li>
               
@@ -156,8 +156,7 @@
       
   <div class="section" id="pgr-kruskal-experimental">
 <h1>pgr_kruskal - Experimental<a class="headerlink" href="#pgr-kruskal-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">pgr_kruskal</span></code> — Returns the minimum spanning tree of graph using Kruskal algorithm.
-In particular, the Kruskal algorithm implemented by Boost.Graph.</p>
+<p><code class="docutils literal"><span class="pre">pgr_kruskal</span></code> — Returns the minimum spanning tree of graph using Kruskal algorithm.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
@@ -186,27 +185,31 @@ In particular, the Kruskal algorithm implemented by Boost.Graph.</p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li><strong>TBD</strong></li>
+<li>Experimental on v3.0.0</li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Kruskal’s algorithm is a minimum-spanning-tree algorithm which finds an edge
-of the least possible weight that connects any two trees in the forest. It is
-a greedy algorithm in graph theory as it finds a minimum spanning tree for a
-connected weighted undirected graph adding increasing cost arcs at each step.
-This means it finds a subset of the edges that forms a tree that includes every
-vertex, where the total weight of all the edges in the tree is minimized. If the
-graph is not connected, then it finds a minimum spanning forest (a minimum
-spanning tree for each connected component).</p>
+<p>Kruskal’s algorithm is a greedy minimum spanning tree algorithm that in each
+cycle finds and adds the edge
+of the least possible weight that connects any two trees in the forest.
+It is a greedy algorithm, as it finds a minimum spanning tree for a
+connected weighted undirected graph by adding increasing cost arcs at each step.</p>
 <p><strong>The main Characteristics are:</strong></p>
 <ul class="simple">
-<li>It’s implementation is only on <strong>undirected graph</strong>.</li>
+<li>It’s implementation is only on <strong>undirected</strong> graph.</li>
 <li>Process is done only on edges with positive costs.</li>
-<li>Edges are in ascending order by weight for each component.</li>
-<li>Values are returned when there is a minimum spanning tree.<ul>
-<li>When there is no edge in graph then EMPTY SET is return.</li>
+<li>The total weight of all the edges in the tree or forest is minimized.</li>
+<li>If the graph is connected<ul>
+<li>The resulting edges make up a tree</li>
 </ul>
 </li>
+<li>If the graph is not connected,<ul>
+<li>Finds a minimum spanning tree for each connected component.</li>
+<li>The resulting edges make up a forest.</li>
+</ul>
+</li>
+<li>EMPTY SET is returned when there are no edges in the graph.</li>
+<li>Returned edges are in the order they were added to the tree.</li>
 <li>Running time: <span class="math">\(O(E * log E)\)</span></li>
 </ul>
 </div>
@@ -214,23 +217,18 @@ spanning tree for each connected component).</p>
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none" id="index-0"><div class="highlight"><pre><span></span>pgr_kruskal(edges_sql)
 
-RETURNS SET OF (seq, component, edge, cost, tree_cost)
-   or EMPTY SET
+RETURNS SET OF (seq, edge, cost)
+OR EMPTY SET
 </pre></div>
 </div>
-<p>The signature is for a <strong>undirected</strong> graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">A minimum Spanning Tree</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_kruskal(TEXT edges_sql);
-RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
-</pre></div>
-</div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskal</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
         <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;</span>
@@ -276,14 +274,13 @@ RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
 <td>&#160;</td>
-<td>SQL query as described above.</td>
+<td>SQL query described in <a class="reference internal" href="#inner-query">Inner query</a>.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Description of the edges_sql query for kruskal functions</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -356,7 +353,6 @@ RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
 </div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">For kruskal algorithms</p>
 <p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">tree_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -372,30 +368,46 @@ RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal"><span class="pre">INT</span></code></td>
+<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
-<tr class="row-odd"><td><strong>component</strong></td>
+<tr class="row-odd"><td><strong>edge</strong></td>
 <td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Lowest number of the node in the component.</td>
+<td>Identifier of the edge.</td>
 </tr>
-<tr class="row-even"><td><strong>edge</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the edge of lightest weight.</td>
-</tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
+<tr class="row-even"><td><strong>cost</strong></td>
 <td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
 <td>Cost to traverse of edge.</td>
-</tr>
-<tr class="row-even"><td><strong>tree_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td>Aggregate cost of edges that is covered in spanning.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="additional-example">
 <h2>Additional Example<a class="headerlink" href="#additional-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskal</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">-----+------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">12</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">13</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">14</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
+<span class="p">(</span><span class="mi">14</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -424,7 +436,7 @@ RETURNS SET OF (seq, component, edge, cost, tree_cost) or EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 24, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
