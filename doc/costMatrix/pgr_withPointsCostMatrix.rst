@@ -23,7 +23,7 @@ pgr_withPointsCostMatrix - proposed
 
 .. rubric:: Availability
 
-* 2.2.0
+* Proposed on v2.2.0
 
 Description
 -------------------------------------------------------------------------------
@@ -37,13 +37,12 @@ Signatures
 
 .. code-block:: none
 
-    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids)
-    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids, directed, driving_side)
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 .. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.
 
-.. rubric:: Minimal Signature
+.. rubric:: Using default
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -54,7 +53,8 @@ The minimal signature:
     pgr_withPointsCostMatrix(edges_sql, points_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example:
+:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on a **directed** graph
+
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- withPoints q1
@@ -63,7 +63,8 @@ The minimal signature:
 .. index::
     single: withPointsCostMatrix(Complete Signature) - Proposed
 
-.. rubric:: Complete Signature
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
@@ -71,10 +72,10 @@ The minimal signature:
         directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: returning a symmetrical cost matrix
+:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected** graph
 
+* Returning a **symmetrical** cost matrix
 * Using the default **side** value on the **points_sql** query
-* Using an undirected graph
 * Using the default **driving_side** value
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
@@ -119,7 +120,7 @@ Inner query
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Use with tsp
+:Example: :doc:`pgr_TSP` using ``pgr_withPointsCostMatrix`` for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- withPoints q3

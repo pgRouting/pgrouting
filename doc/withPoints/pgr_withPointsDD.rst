@@ -23,9 +23,7 @@ pgr_withPointsDD - Proposed
 
 .. rubric:: Availability
 
-* 2.2.0
-
-* Proposed in version 2.2
+* Proposed in v2.2
 
 Description
 -------------------------------------------------------------------------------
@@ -42,26 +40,26 @@ Signatures
 
 .. code-block:: none
 
-    pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
-    pgr_withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details)
-    pgr_withPointsDD(edges_sql, points_sql, start_vids, distance, directed, driving_side, details, equicost)
+    pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-.. rubric:: Minimal Use
+.. rubric:: Using defaults
 
-The minimal signature:
-
-- Is for a **directed** graph.
+- For a **directed** graph.
 - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
 - No **details** are given about distance of other points of the query.
 
 .. code-block:: none
 
     pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
-        directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-:Example:
+:Example: From point :math:`1` with :math:`agg\_cost <= 3.8`
+
+- For a **directed** graph.
+- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+- No **details** are given about distance of other points of the query.
+
 
 .. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q1
@@ -70,17 +68,17 @@ The minimal signature:
 .. index::
     single: withPointsDD(Single Start Vertex) - proposed
 
-.. rubric:: Driving distance from a single point
+Single vertex
+...............................................................................
 
 Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-    pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
-        directed:=true, driving_side:='b', details:=false)
+    pgr_withPointsDD(edges_sql, points_sql, from_vid,  distance [, directed] [, driving_side] [, details])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-:Example: Right side driving topology
+:Example: Right side driving topology, from point :math:`1` with :math:`agg\_cost <= 3.8`
 
 .. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q2
@@ -89,14 +87,14 @@ Finds the driving distance depending on the optional parameters setup.
 .. index::
     single: withPointsDD(Multiple Starting Vertices) - proposed
 
-.. rubric:: Driving distance from many starting points
+Multiple vertices
+...............................................................................
 
 Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-    pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
-        directed:=true, driving_side:='b', details:=false, equicost:=false)
+    pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 Parameters 
@@ -137,8 +135,6 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, node, edge, cost, agg_cost)``
-
 ============ =========== =================================================
 Column           Type              Description
 ============ =========== =================================================
@@ -162,13 +158,13 @@ Additional Examples
 
 The examples in this section use the following :ref:`fig1`
 
-:Example: Left side driving topology
+:Example: Left side driving topology from point :math:`1` with :math:`agg\_cost <= 3.8`, with details
 
 .. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q3
    :end-before: --q4
 
-:Example: Does not matter driving side.
+:Example: From point :math:`1` with :math:`agg\_cost <= 3.8`, does not matter driving side, with details
 
 .. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q4
