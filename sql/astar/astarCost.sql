@@ -28,9 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_aStarCost(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vid BIGINT,
+    TEXT,     -- edges sql (required)
+    BIGINT,   -- from_vid (required)
+    BIGINT,   -- to_vid (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
@@ -51,9 +52,10 @@ COST 100
 ROWS 1000;
 
 CREATE OR REPLACE FUNCTION pgr_aStarCost(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vids ANYARRAY,
+    TEXT,       -- edges sql (required)
+    BIGINT,     -- from_vid (required)
+    ANYARRAY,   -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
@@ -73,9 +75,10 @@ COST 100
 ROWS 1000;
 
 CREATE OR REPLACE FUNCTION pgr_aStarCost(
-    edges_sql TEXT, -- XY edges sql
-    start_vids ANYARRAY,
-    end_vid BIGINT,
+    TEXT,       -- edges sql (required)
+    ANYARRAY,   -- from_vids (required)
+    BIGINT,     -- to_vid (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
@@ -95,9 +98,10 @@ COST 100
 ROWS 1000;
 
 CREATE OR REPLACE FUNCTION pgr_aStarCost(
-    edges_sql TEXT, -- XY edges sql
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,       -- edges sql (required)
+    ANYARRAY,   -- from_vids (required)
+    ANYARRAY,   -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
@@ -120,7 +124,11 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_aStarCost(One to One)';
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_aStarCost(One to Many)';
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_aStarCost(Many to One)';
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_aStarCost(Many to Many)';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_aStarCost--One to One--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vid, to_vid [,directed ,heuristic, factor ,epsilon])';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_aStarCost--One to Many--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vid, to_vids [,directed, heuristic, factor, epsilon])';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_aStarCost--Many to One--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vids, to_vid [,directed, heuristic, factor, epsilon])';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_aStarCost--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vids, to_vids [,directed, heuristic, factor, epsilon])';
