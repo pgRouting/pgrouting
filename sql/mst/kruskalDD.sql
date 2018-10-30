@@ -30,42 +30,58 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
-    FLOAT,  -- distance
+    NUMERIC,  -- distance
 
-    OUT seq INTEGER,
-    OUT from_v BIGINT,
+    OUT seq BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, from_v, depth, node, edge, cost, agg_cost
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', 0, $3);
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''distance'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+    RETURN QUERY
+    SELECT *
+    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', -1, $3::FLOAT);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 
 CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     ANYARRAY, -- root vertex
 
-    FLOAT, -- distance
+    NUMERIC, -- distance
 
-    OUT seq INTEGER,
-    OUT from_v BIGINT,
+    OUT seq BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', 0, $3);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''distance'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
 
-COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT) IS 'pgr_kruskalDD(Single vertex): Experimental, Undirected Graph';
-COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, FLOAT) IS 'pgr_kruskalDD(Multiple vertices): Experimental, Undirected Graph';
+    RETURN QUERY
+    SELECT *
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', -1, $3::FLOAT);
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+
+COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, NUMERIC) IS 'pgr_kruskalDD(Single vertex): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, NUMERIC) IS 'pgr_kruskalDD(Multiple vertices): Experimental, Undirected Graph';

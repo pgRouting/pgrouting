@@ -54,8 +54,7 @@ extern "C" {
                 size_t total_roots,
 
                 int order_by,
-                bool use_root,
-                int max_depth,
+                int64_t max_depth,
                 double distance,
 
                 pgr_kruskal_t **return_tuples,

@@ -31,41 +31,59 @@ CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
 
-    max_depth INTEGER DEFAULT 0,
+    max_depth BIGINT DEFAULT 9223372036854775807,
 
-    OUT seq INTEGER,
-    OUT from_v BIGINT,
+    OUT seq BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, from_v, depth, node, edge, cost, agg_cost
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
+    SELECT *
     FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', $3, -1);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
     TEXT,   -- Edge sql
     ANYARRAY, -- root vertex
 
-    max_depth INTEGER DEFAULT 0,
+    max_depth BIGINT DEFAULT 9223372036854775807,
 
-    OUT seq INTEGER,
-    OUT from_v BIGINT,
+    OUT seq BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
     SELECT *
     FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', $3, -1);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalDFS(Single vertex): Experimental, Undirected Graph';
-COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalDFS(Multiple vertives): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, BIGINT) IS 'pgr_kruskalDFS(Single vertex): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, BIGINT) IS 'pgr_kruskalDFS(Multiple vertives): Experimental, Undirected Graph';

@@ -53,7 +53,7 @@ process(
         char* edges_sql,
         ArrayType *roots,
         char * p_order_by,
-        int max_depth,
+        int64_t max_depth,
         double distance,
 
         pgr_kruskal_t **result_tuples,
@@ -69,7 +69,6 @@ process(
     pgr_SPI_connect();
 
     rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
-    bool use_root = (size_rootsArr > 1) || (size_rootsArr == 1 && rootsArr[0] != 0);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -81,12 +80,6 @@ process(
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
@@ -96,7 +89,6 @@ process(
             edges, total_edges,
             rootsArr, size_rootsArr,
             order_by,
-            use_root,
             max_depth,
             distance,
 
@@ -146,7 +138,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
-                PG_GETARG_INT32(3),
+                PG_GETARG_INT64(3),
                 PG_GETARG_FLOAT8(4),
                 &result_tuples,
                 &result_count);
@@ -190,9 +182,9 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
+        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);

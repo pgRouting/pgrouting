@@ -163,7 +163,7 @@ Returns set of ``(seq, root_vertex, node, edge, cost, agg_cost, tree_cost)``
 ===============  =========== ====================================================
 Column           Type        Description
 ===============  =========== ====================================================
-**seq**          ``INT``     Sequential value starting from **1**.
+**seq**          ``BIGINT``  Sequential value starting from **1**.
 **root_vertex**  ``BIGINT``  Root vertex from where spanning of tree start.
 **node**         ``BIGINT``  Identifier of the node in spanning tree.
 **edge**         ``BIGINT``  Identifier of the edge used to go to node.

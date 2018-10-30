@@ -15,11 +15,11 @@ PREPARE kruskal2 AS
 SELECT *
 FROM pgr_kruskal(
     'SELECT id, source, target, cost
-     FROM edge_table ORDER BY id'
-) WHERE cost < 0;
+     FROM edge_table WHERE cost < 0 ORDER BY id'
+);
 
 SELECT is_empty('kruskal1', 'No_edge -> No answer');
-SELECT is_empty('kruskal2', 'Negative Cost -> no answer');
+SELECT is_empty('kruskal2', 'ALL Negative Cost -> no answer');
 
 
 --
@@ -59,6 +59,7 @@ $$VALUES
 (17 , 1.289),
 (18 , 1.324)$$,
 '4: kruskal result');
+
 
 SELECT * FROM finish();
 ROLLBACK;

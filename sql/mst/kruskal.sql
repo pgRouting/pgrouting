@@ -30,13 +30,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_kruskal(
     TEXT,
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, edge, cost
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[0]::BIGINT[], '', 0, -1);
+    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[0]::BIGINT[], '', -1, -1);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 

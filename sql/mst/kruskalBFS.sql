@@ -31,43 +31,61 @@ CREATE OR REPLACE FUNCTION pgr_kruskalBFS(
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
 
-    max_depth INTEGER DEFAULT 0,
+    max_depth BIGINT DEFAULT 9223372036854775807,
 
-    OUT seq INTEGER,
-    OUT from_v BIGINT,
+    OUT seq BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, from_v, depth, node, edge, cost, agg_cost
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
+    SELECT *
     FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'BFS', $3, -1);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_kruskalBFS(
     TEXT,   -- Edge sql
     ANYARRAY, -- root vertex
 
-    max_depth INTEGER DEFAULT 0,
+    max_depth BIGINT DEFAULT 9223372036854775807,
 
-    OUT seq INTEGER,
-    OUT from_v BIGINT,
+    OUT seq BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
     SELECT *
     FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'BFS', $3, -1);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, BIGINT, INTEGER) IS 'pgr_kruskalBFS(Single Vertex): Experimental, Undirected Graph';
-COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, ANYARRAY, INTEGER) IS 'pgr_kruskalBFS(Multiple Vertices): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, BIGINT, BIGINT) IS 'pgr_kruskalBFS(Single Vertex): Experimental, Undirected Graph';
+COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, ANYARRAY, BIGINT) IS 'pgr_kruskalBFS(Multiple Vertices): Experimental, Undirected Graph';

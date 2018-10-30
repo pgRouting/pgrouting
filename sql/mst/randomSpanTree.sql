@@ -32,7 +32,7 @@ CREATE OR REPLACE FUNCTION pgr_randomSpanTree(
     root BIGINT,
     directed BOOLEAN DEFAULT TRUE,
 
-    OUT seq INTEGER,            -- Seq
+    OUT seq BIGINT,            -- Seq
     OUT root_vertex BIGINT,
     OUT edge BIGINT,	     	-- Edge linked to that node
     OUT cost FLOAT,             -- Cost of edge

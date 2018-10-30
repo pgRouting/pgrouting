@@ -31,12 +31,12 @@ CREATE OR REPLACE FUNCTION _pgr_kruskal(
     TEXT,             -- Edge sql
     ANYARRAY,           -- tree root for traversal
     order_by TEXT,
-    max_depth INTEGER,
+    max_depth BIGINT,
     distance FLOAT,
 
-    OUT seq INTEGER,
-    OUT from_v BIGINT,
+    OUT seq BIGINT,
     OUT depth BIGINT,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
