@@ -30,7 +30,7 @@ Description
 
 * TBD
 
-The main Characteristics are:
+The main characteristics are:
   - **CRASHES THE SERVER**
 
 * TBD
