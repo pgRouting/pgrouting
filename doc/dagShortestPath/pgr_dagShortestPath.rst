@@ -33,11 +33,11 @@ Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that s
 weighted directed acyclic graph, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 
-This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph. 
+This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph. 
 
 The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm. 
 
-The main Characteristics are:
+The main characteristics are:
   - Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings.
   - Values are returned when there is a path.
 
@@ -56,7 +56,7 @@ The main Characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Running time: :math:`O(| start\_vids | * (V + E))`
+  * Running time: :math:`O(| start\_vids | * (V + E))`
 
 
 Signatures
@@ -66,13 +66,13 @@ Signatures
 
 .. code-block:: none
 
-    pgr_dagShortestPath(edges_sql, start_vid,  end_vid)
-    pgr_dagShortestPath(edges_sql, start_vids,  end_vid)
-    pgr_dagShortestPath(edges_sql, start_vid,  end_vids)
-    pgr_dagShortestPath(edges_sql, start_vids,  end_vids)
+    pgr_dagShortestPath(edges_sql, from_vid,  to_vid)
+    pgr_dagShortestPath(edges_sql, from_vid,  to_vids)
+    pgr_dagShortestPath(edges_sql, from_vids, to_vid)
+    pgr_dagShortestPath(edges_sql, from_vids, to_vids)
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-        OR EMPTY SET
+    OR EMPTY SET
 
 
 .. index::
@@ -83,12 +83,11 @@ One to One
 
 .. code-block:: none
 
-    pgr_dagShortestPath(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_dagShortestPath(edges_sql, from_vid,  to_vid)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
-This signature finds the shortest path from one ``start_vid`` to one ``end_vid``.
-
-:Example:
+:Example: From vertex :math:`1` to vertex :math:`6` 
 
 .. literalinclude:: doc-pgr_dagShortestPath.queries
    :start-after: -- q1
@@ -102,15 +101,11 @@ One to Many
 
 .. code-block:: none
 
-    pgr_dagShortestPath(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_dagShortestPath(edges_sql, from_vid,  to_vids)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
-This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``.
-
-Using this signature, will load once the graph and perform a one to one `pgr_bellmanFord`
-where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
-
-:Example:
+:Example: From vertex :math:`1` to vertices :math:`\{ 5, 6\}` 
 
 .. literalinclude:: doc-pgr_dagShortestPath.queries
    :start-after: -- q2
@@ -124,15 +119,11 @@ Many to One
 
 .. code-block:: none
 
-    pgr_dagShortestPath(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_dagShortestPath(edges_sql, from_vids, to_vid)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``.
-
-Using this signature, will load once the graph and perform several one to one `pgr_bellmanFord`
-where the ending vertex is fixed.
-
-:Example:
+:Example: From vertices :math:`\{1, 3\}` to vertex :math:`6` 
 
 .. literalinclude:: doc-pgr_dagShortestPath.queries
    :start-after: -- q3
@@ -146,15 +137,12 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_dagShortestPath((TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_dagShortestPath(edges_sql, from_vids, to_vids)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``.
+:Example: From vertices :math:`\{1, 4\}` to vertices :math:`\{12, 6\}`
 
-Using this signature, will load once the graph and perform several one to Many `pgr_bellmanFord`
-for all ``start_vids``.
-
-:Example:
 
 .. literalinclude:: doc-pgr_dagShortestPath.queries
    :start-after: -- q4
@@ -165,8 +153,7 @@ Parameters
 
 .. pgr_dagShortestPath_parameters_start
 
-Description of the parameters of the signatures
-...............................................................................
+.. rubric:: Description of the parameters of the signatures
 
 ============== ================== ======== =================================================
 Parameter      Type               Default     Description

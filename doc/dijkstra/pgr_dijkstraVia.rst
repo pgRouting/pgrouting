@@ -24,7 +24,7 @@ a list of vertices.
 
 .. rubric:: Availability
 
-2.2.0
+* New on v2.2.0
 
 Description
 -------------------------------------------------------------------------------
@@ -34,8 +34,6 @@ shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i
 
 The paths represents the sections of the route.
 
-.. note:: This is a proposed function
-
 Signatures
 -------------------------------------------------------------------------------
 
@@ -43,21 +41,21 @@ Signatures
 
 .. code-block:: none
 
-    pgr_dijkstraVia(edges_sql, via_vertices)
-    pgr_dijkstraVia(edges_sql, via_vertices, directed, strict, U_turn_on_edge)
-
+    pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
+        node, edge, cost, agg_cost, route_agg_cost) 
+    OR EMPTY SET
 
-.. rubric:: Minimal Signature
+.. rubric:: Using default
 
 .. code-block:: none
 
     pgr_dijkstraVia(edges_sql, via_vertices)
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
+        node, edge, cost, agg_cost, route_agg_cost) 
+    OR EMPTY SET
 
-:Example: Find the route that visits the vertices 1 3 9  in that order
+:Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}`  in that order
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: --q00
@@ -66,15 +64,17 @@ Signatures
 .. index::
     single: dijkstraVia(Full signature) - proposed
 
-.. rubric:: Complete Signature
+Complete Signature
+...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraVia(edges_sql, via_vertices, directed, strict, U_turn_on_edge)
+    pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
+        node, edge, cost, agg_cost, route_agg_cost) 
+    OR EMPTY SET
 
-:Example: Find the route that visits the vertices 1 3 9  in that order on an undirected graph, avoiding U-turns when possible
+:Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}` in that order on an **undirected** graph, avoiding U-turns when possible
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q0
@@ -114,7 +114,7 @@ Column             Type          Description
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices 1 5 3 9 4 in that order
+:Example 1: Find the route that visits the vertices :math:`\{1, 5, 3, 9, 4\}` in that order
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q1
@@ -144,7 +144,7 @@ Additional Examples
     :start-after: -- q5
     :end-before: -- q6
 
-:Example 6: Show the route's seq and aggregate cost and a status of "passes in front" or "visits" node 9
+:Example 6: Show the route's seq and aggregate cost and a status of "passes in front" or "visits" node :math:`9`
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q6

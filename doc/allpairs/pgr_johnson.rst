@@ -30,7 +30,7 @@ The Johnson algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for each pair of nodes in the graph, for *sparse graphs*.
 It usees the Boost's implementation which runs in :math:`O(V E \log V)` time,
 
-The main Characteristics are:
+The main characteristics are:
   - It does not return a path.
   - Returns the sum of the costs of the shortest path for each pair of nodes in the graph.
   - Process is done only on edges with positive costs.
@@ -57,7 +57,7 @@ Signatures
 
     pgr_johnson(edges_sql)
     pgr johnson(edges_sql [, directed])
-    RETURNS SET OF (start_vid, end_vid,  agg_cost) 
+    RETURNS SET OF (start_vid, end_vid, agg_cost) 
     OR EMPTY SET
 
 .. rubric:: Using default
@@ -65,7 +65,7 @@ Signatures
 .. code-block:: none
 
     pgr_johnson(edges_sql)
-    RETURNS SET OF (start_vid, end_vid,  agg_cost) 
+    RETURNS SET OF (start_vid, end_vid, agg_cost) 
     OR EMPTY SET
 
 :Example 1: For vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
@@ -80,7 +80,7 @@ Complete Signature
 .. code-block:: none
 
     pgr_johnson(edges_sql[, directed])
-    RETURNS SET OF (start_vid, end_vid,  agg_cost) 
+    RETURNS SET OF (start_vid, end_vid, agg_cost) 
     OR EMPTY SET
 
 :Example 2: For vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph

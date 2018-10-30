@@ -31,7 +31,7 @@ is a good choice to calculate the sum of the costs of the shortest path for each
 pair of nodes in the graph, for *dense graphs*. We use Boost's
 implementation which runs in :math:`\Theta(V^3)` time,
 
-The main Characteristics are:
+The main characteristics are:
   - It does not return a path.
   - Returns the sum of the costs of the shortest path for each pair of nodes in the graph.
   - Process is done only on edges with positive costs.

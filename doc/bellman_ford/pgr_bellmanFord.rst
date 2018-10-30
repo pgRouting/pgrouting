@@ -34,7 +34,7 @@ It is a graph search algorithm that computes shortest paths from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``) in a graph where some of the edge weights may be negative number. Though it is more versatile, it is slower than Dijkstra's algorithm/
 This implementation can be used with a directed graph and an undirected graph.
 
-The main Characteristics are:
+The main characteristics are:
   - Process is valid for edges with both positive and negative edge weights.
   - Values are returned when there is a path.
 
@@ -62,25 +62,23 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bellmanFord(edges_sql, start_vid,  end_vid)
-    pgr_bellmanFord(edges_sql, start_vid,  end_vid,  directed:=true)
-    pgr_bellmanFord(edges_sql, start_vid,  end_vids, directed:=true)
-    pgr_bellmanFord(edges_sql, start_vids, end_vid,  directed:=true)
-    pgr_bellmanFord(edges_sql, start_vids, end_vids, directed:=true)
+    pgr_bellmanFord(edges_sql, from_vid,  to_vid  [, directed])
+    pgr_bellmanFord(edges_sql, from_vid,  to_vids [, directed])
+    pgr_bellmanFord(edges_sql, from_vids, to_vid  [, directed])
+    pgr_bellmanFord(edges_sql, from_vids, to_vids [, directed])
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-        OR EMPTY SET
+    OR EMPTY SET
 
-.. rubric:: Minimal signature
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_bellmanFord(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
-
-:Example:
+:Example: From vertex :math:`2` to vertex :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q1
@@ -94,16 +92,11 @@ One to One
 
 .. code-block:: none
 
-    pgr_bellmanFord(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
-        BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bellmanFord(edges_sql, from_vid,  to_vid  [, directed])
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
-This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
-
-- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-- On an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
+:Example: From vertex :math:`2` to vertex :math:`3` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q2
@@ -117,22 +110,11 @@ One to many
 
 .. code-block:: none
 
-    pgr_bellmanFord(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
-        BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bellmanFord(edges_sql, from_vid,  to_vids [, directed])
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
-This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
-
-- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-- On an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform a one to one `pgr_bellmanFord`
-where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
-
-- The result is equivalent to the union of the results of the one to one `pgr_bellmanFord`.
-- The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
-
-:Example:
+:Example: From vertex :math:`2` to vertices :math:`\{ 3, 5\}` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q3
@@ -146,22 +128,11 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bellmanFord(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
-        BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bellmanFord(edges_sql, from_vids, to_vid  [, directed])
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) 
+    OR EMPTY SET
 
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
-
-- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-- On an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform several one to one `pgr_bellmanFord`
-where the ending vertex is fixed.
-
-- The result is the union of the results of the one to one `pgr_bellmanFord`.
-- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
-
-:Example:
+:Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q4
@@ -175,24 +146,11 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bellmanFord(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
-        BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bellmanFord(edges_sql, from_vids, to_vids [, directed])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
-This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
-
-- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-- On an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Using this signature, will load once the graph and perform several one to Many `pgr_bellmanFord`
-for all ``start_vids``.
-
-- The result is the union of the results of the one to one `pgr_bellmanFord`.
-- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
-
-The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
-
-:Example:
+:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph 
 
 .. literalinclude:: doc-pgr_bellman_ford.queries
    :start-after: -- q5

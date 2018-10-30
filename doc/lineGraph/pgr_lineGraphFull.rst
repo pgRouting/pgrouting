@@ -33,7 +33,7 @@ A possible application of the resulting graph is **"routing with two edge restri
 This is possible because each of the intersections (vertices) in the original graph are now complete graphs that have a new edge for each possible turn across that intersection.
 
 The main characteristics are:
-  - This function is for directed graphs.
+  - This function is for **directed** graphs.
   - Results are undefined when a negative vertex id is used in the input graph.
   - Results are undefined when a duplicated edge id is used in the input graph.
   - Running time: TBD
@@ -49,14 +49,14 @@ Signatures
     RETURNS SET OF (seq, source, target, cost, edge) 
         OR EMPTY SET
 
-.. rubric:: Minimal signature
+.. rubric:: Using defaults
 
 .. code-block:: none
 
     pgr_lineGraphFull(TEXT edges_sql)
     RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 
-:Example:
+:Example: Full line graph of subgraph of edges :math:`\{4, 7, 8, 10\}`
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q1

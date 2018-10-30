@@ -19,7 +19,7 @@ pgr_maxFlow
 
 .. Rubric:: Availability
 
-* 2.4.0
+* New on v2.4.0
 
 Description
 -------------------------------------------------------------------------------
@@ -27,8 +27,9 @@ Description
 **The main characteristics are:**
 
 - The graph is **directed**.
-- When the maximum flow is 0 then there is no flow and **0** is returned.
-
+- Calculates the maximum flow from the `source(s)` to the `target(s)`.
+  
+  - When the maximum flow is **0** then there is no flow and **0** is returned.
   - There is no flow when a **source** is the same as a **target**.
 
 - Any duplicated value in the source(s) or target(s) are ignored.
@@ -55,14 +56,12 @@ Signatures
 One to One
 ...............................................................................
 
-Calculates the maximum flow from the `source` to the `target`.
-
 .. code-block:: none
 
     pgr_maxFlow(edges_sql, source,  target)
     RETURNS BIGINT
 
-:Example:
+:Example: From vertex :math:`6` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_maxFlow.queries
    :start-after: -- q1
@@ -74,14 +73,12 @@ Calculates the maximum flow from the `source` to the `target`.
 One to Many
 ...............................................................................
 
-Calculates the maximum flow from the `source` to all of the `targets`.
-
 .. code-block:: none
 
     pgr_maxFlow(edges_sql, source,  targets)
     RETURNS BIGINT
 
-:Example:
+:Example: From vertex :math:`6` to vertices :math:`\{11, 1, 13\}`
 
 .. literalinclude:: doc-pgr_maxFlow.queries
    :start-after: -- q2
@@ -93,14 +90,12 @@ Calculates the maximum flow from the `source` to all of the `targets`.
 Many to One
 ...............................................................................
 
-Calculates the maximum flow from all the `sources` to the `target`.
-
 .. code-block:: none
 
     pgr_maxFlow(edges_sql, sources,  target)
     RETURNS BIGINT
 
-:Example:
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11` 
 
 .. literalinclude:: doc-pgr_maxFlow.queries
    :start-after: -- q3
@@ -112,14 +107,12 @@ Calculates the maximum flow from all the `sources` to the `target`.
 Many to Many
 ...............................................................................
 
-Calculates the maximum flow from all of the `sources` to all of the `targets`.
-
 .. code-block:: none
 
     pgr_maxFlow(edges_sql, sources,  targets)
     RETURNS BIGINT
 
-:Example:
+:Example: From vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`
 
 .. literalinclude:: doc-pgr_maxFlow.queries
    :start-after: -- q4

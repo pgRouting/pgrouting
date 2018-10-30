@@ -24,6 +24,8 @@ pgr_aStarCost
 Description
 -------------------------------------------------------------------------------
 
+**The main characteristics are:**
+
 .. include:: aStar-family.rst
    :start-after: astar general info start
    :end-before: astar general info end

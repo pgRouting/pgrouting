@@ -20,7 +20,7 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 
 .. rubric:: Availability
 
-* New in version 2.0.0
+* New on v2.0.0
 
 * Via Support prototypes new in version 2.1.0
 

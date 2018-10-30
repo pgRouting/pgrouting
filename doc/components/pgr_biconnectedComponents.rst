@@ -22,7 +22,7 @@ In particular, the algorithm implemented by Boost.Graph.
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-:: rubric:: Availability
+.. rubric:: Availability
 
 * **TBD**
 
@@ -36,14 +36,14 @@ component. So, the output only has edge version.
 
 This implementation can only be used with an undirected graph.
 
-The main Characteristics are:
+**The main characteristics are:**
 
-- Components are described by edges
-
+- The signature is for an **undirected** graph.
+- Components are described by edges.
 - The returned values are ordered:
 
-  - `component` ascending
-  - `edge` ascending
+  - `component` ascending.
+  - `edge` ascending.
 
 - Running time: :math:`O(V + E)`
 
@@ -58,19 +58,13 @@ Signatures
     pgr_biconnectedComponents(edges_sql)
 
     RETURNS SET OF (seq, component, n_seq, edge)
-        OR EMPTY SET
+    OR EMPTY SET
 
-The signature is for a **undirected** graph.
-
-:Example:
+:Example: The biconnected components of the graph
 
 .. literalinclude:: doc-pgr_biconnectedComponents.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. image:: images/bcc_sampledata.png
-   :width: 705px
-   :height: 373px
 
 .. include:: components-family.rst
     :start-after: components_parameters_start

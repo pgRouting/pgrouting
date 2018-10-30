@@ -71,7 +71,7 @@ Signatures
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
     OR EMPTY SET
 
-:Example:
+:Example: From vertex :math:`2` to vertex  :math:`3`
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
    :start-after: -- q1

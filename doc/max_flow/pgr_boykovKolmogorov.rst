@@ -19,8 +19,11 @@ pgr_boykovKolmogorov
 
 .. Rubric:: Availability:
 
-* Renamed 2.5.0, Previous name pgr_maxFlowBoykovKolmogorov
-* New in 2.3.0
+* Official on v3.0.0
+* Renamed on v2.5.0
+* Experimental on v2.3.0
+
+  * pgr_maxFlowBoykovKolmogorov
 
 Description
 -------------------------------------------------------------------------------
@@ -51,15 +54,13 @@ Signatures
 One to One
 ...............................................................................
 
-Calculates the flow on the graph edges that maximizes the flow from the `source` to the `target`.
-
 .. code-block:: none
 
     pgr_boykovKolmogorov(edges_sql, source,  target)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example:
+:Example:  From vertex :math:`6` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q1
@@ -71,15 +72,13 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 One to Many
 ...............................................................................
 
-Calculates the flow on the graph edges that maximizes the flow from the `source` to all of the `targets`.
-
 .. code-block:: none
 
     pgr_boykovKolmogorov(edges_sql, source,  targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example:
+:Example: From vertex :math:`6` to vertices :math:`\{1, 3, 11\}`
 
 .. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q2
@@ -91,15 +90,13 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 Many to One
 ...............................................................................
 
-Calculates the flow on the graph edges that maximizes the flow from all of the `sources` to the `target`.
-
 .. code-block:: none
 
     pgr_boykovKolmogorov(edges_sql, sources,  target)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example:
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11` 
 
 .. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q3
@@ -111,15 +108,13 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 Many to Many
 ...............................................................................
 
-Calculates the flow on the graph edges that maximizes the flow from all of the `sources` to all of the `targets`.
-
 .. code-block:: none
 
     pgr_boykovKolmogorov(edges_sql, sources,  targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example:
+:Example: From vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`
 
 .. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q4

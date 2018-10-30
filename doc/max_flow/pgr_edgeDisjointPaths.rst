@@ -20,7 +20,7 @@ pgr_edgeDisjointPaths
 
 .. Rubric:: Availability
 
-2.3.0
+* New on v2.3.0
 
 Description
 -------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ Signatures
     RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
     OR EMPTY SET
 
-.. rubric:: Minimal use
+.. rubric:: Using defaults
 
 .. code-block:: none
 
@@ -59,9 +59,7 @@ Signatures
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-The minimal use is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
-
-:Example:
+:Example: From vertex :math:`3` to vertex :math:`5` on a **directed** graph 
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q1
@@ -73,18 +71,13 @@ The minimal use is for a **directed** graph from one ``start_vid`` to one ``end_
 One to One
 ...............................................................................
 
-This signature finds the set of dijoint paths from one ``start_vid`` to one ``end_vid``:
-
-- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-- On an **undirected** graph when ``directed`` flag is set to ``false``.
-
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example:
+:Example: From vertex :math:`3` to vertex :math:`5` on an **undirected** graph 
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q2
@@ -96,21 +89,14 @@ This signature finds the set of dijoint paths from one ``start_vid`` to one ``en
 One to Many
 ...............................................................................
 
-This signature finds the sset of disjoint paths  from the ``start_vid`` to each one of the ``end_vid`` in ``end_vids``:
-
-- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-- On an **undirected** graph when ``directed`` flag is set to ``false``.
-
-- The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
-- The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
-
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
     RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example:
+:Example: From vertex :math:`3` to vertices :math:`\{4, 5, 10\}` on a **directed** graph 
+
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q3
@@ -122,21 +108,14 @@ This signature finds the sset of disjoint paths  from the ``start_vid`` to each 
 Many to One
 ...............................................................................
 
-This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to the ``end_vid``:
-
-- On a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-- On an **undirected** graph when ``directed`` flag is set to ``false``.
-
-- The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
-- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
-
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
     RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example:
+:Example: From vertices :math:`\{3, 6\}` to vertex :math:`5` on a **directed** graph 
+
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q4
@@ -148,21 +127,14 @@ This signature finds the set of disjoint paths from each one of the ``start_vid`
 Many to Many
 ...............................................................................
 
-This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to each one of the ``end_vid`` in ``end_vids``:
-
-- O a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-- On an **undirected** graph when ``directed`` flag is set to ``false``.
-
-- The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
-- The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
-
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example:
+:Example: From vertices :math:`\{3, 6\}` to vertices :math:`\{4, 5, 10\}` on a **directed** graph 
+
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q5

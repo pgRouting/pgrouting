@@ -32,8 +32,9 @@ A bridge is an edge of an undirected graph whose deletion increases its number
 of connected components.
 This implementation can only be used with an undirected graph.
 
-**The main Characteristics are:**
+**The main characteristics are:**
 
+- The signature is for an **undirected** graph.
 - The returned values are ordered:
 
   - `edge` ascending
@@ -51,19 +52,13 @@ Signatures
     pgr_bridges(edges_sql)
 
     RETURNS SET OF (seq, node)
-        OR EMPTY SET
+    OR EMPTY SET
 
-The signature is for a **undirected** graph.
-
-:Example:
+:Example: The bridges of the graph
 
 .. literalinclude:: doc-pgr_bridges.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. image:: images/bridge_sampledata.png
-   :width: 560px
-   :height: 381px
 
 .. include:: components-family.rst
     :start-after: components_parameters_start

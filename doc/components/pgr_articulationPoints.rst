@@ -35,10 +35,14 @@ vertices whose removal would increase the number of connected components in
 the graph.
 This implementation can only be used with an undirected graph.
 
-The main Characteristics are:
- - The returned values are ordered:
- - `node` ascending
- - Running time: :math:`O(V + E)`
+**The main characteristics are:**
+
+- The signature is for an **undirected** graph.
+- The returned values are ordered:
+
+  - `node` ascending
+
+- Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -48,19 +52,13 @@ Signatures
     pgr_articulationPoints(edges_sql)
 
     RETURNS SET OF (seq, node)
-        OR EMPTY SET
+    OR EMPTY SET
 
-The signature is for a **undirected** graph.
-
-:Example:
+:Example: The articulation points of the graph
 
 .. literalinclude:: doc-pgr_articulationPoints.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. image:: images/ap_sampledata.png
-   :width: 560px
-   :height: 362px
 
 .. include:: components-family.rst
     :start-after: components_parameters_start
