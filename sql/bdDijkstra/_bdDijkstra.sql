@@ -23,13 +23,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
--- bdDijkstra MANY TO MANY
+-------------
+-- bdDijkstra
+-------------
 CREATE OR REPLACE FUNCTION _pgr_bdDijkstra(
-    TEXT, -- edges_sql
-    ANYARRAY, -- start_vids
-    ANYARRAY, -- end_vids
-    directed BOOLEAN DEFAULT true,
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- start_vids (required)
+    ANYARRAY, -- end_vids (required)
+    directed BOOLEAN,
     only_cost BOOLEAN DEFAULT false,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
