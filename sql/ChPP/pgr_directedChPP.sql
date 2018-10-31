@@ -45,4 +45,4 @@ LANGUAGE SQL VOLATILE;
 
 -- COMMENTS
 COMMENT ON FUNCTION pgr_directedChPP(TEXT) IS
-'pgr_directedChPP(edges_sql(id,source,target,cost[,reverse_cost]), For directed graph);
+'pgr_directedChPP(edges_sql(id,source,target,cost[,reverse_cost]), For directed graph)';
