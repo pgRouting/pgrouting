@@ -26,9 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
-    TEXT, -- edges_sql
-    BIGINT, -- start_vid
-    BIGINT, -- end_vid
+    TEXT,   -- edges_sql (required)
+    BIGINT, -- from_vid (requiered)
+    BIGINT, -- to_vid (requiered)
     directed BOOLEAN DEFAULT TRUE,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -44,9 +44,9 @@ ROWS 1000;
 
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
-    TEXT, -- edges_sql
-    BIGINT, -- start_vid
-    end_vids ANYARRAY, -- end_vids
+    TEXT,     -- edges_sql (requiered)
+    BIGINT,   -- from_vid (requiered)
+    ANYARRAY, -- to_vids (requiered)
     directed BOOLEAN DEFAULT TRUE,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -63,9 +63,9 @@ ROWS 1000;
 
 -- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
-    edges_sql TEXT, -- edges_sql
-    start_vids ANYARRAY, -- start_vids
-    BIGINT, -- end_vid
+    TEXT,     -- edges_sql (requiered)
+    ANYARRAY, -- from_vids (requiered)
+    BIGINT,   -- to_vid (requiered)
     directed BOOLEAN DEFAULT TRUE,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -83,9 +83,9 @@ ROWS 1000;
 
 -- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
-    TEXT, -- edges_sql
-    ANYARRAY, -- start_vids
-    ANYARRAY, -- end_vids
+    TEXT,     -- edges_sql (requiered)
+    ANYARRAY, -- from_vids (requiered)
+    ANYARRAY, -- to_vids (requiered)
     directed BOOLEAN DEFAULT TRUE,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -99,7 +99,13 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgr_bdDijkstraCost(One to One)';
-COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgr_bdDijkstraCost(Many to One)';
-COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgr_bdDijkstraCost(One to Many)';
-COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgr_bdDijkstraCost(Many to Many)';
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgr_bdDijkstraCost--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid [,directed])';
+COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN)
+IS 'pgr_bdDijkstraCost--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids [,directed])';
+COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgr_bdDijkstraCost--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid [,directed])';
+COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgr_bdDijkstraCost--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids [,directed])';
