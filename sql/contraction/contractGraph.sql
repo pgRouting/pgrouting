@@ -73,6 +73,6 @@ LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_contractGraph(TEXT, BIGINT[], BOOLEAN, INTEGER, BIGINT[])
-IS 'pgr_contractGraph(edges_sql(id,source,target,cost[,reverse_cost]), contraction_order, [,directed ,max_cycles, forbidden_vertices])';
+COMMENT ON FUNCTION pgr_contractGraph(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
+IS 'EXPERIMENTAL pgr_contractGraph(edges_sql(id,source,target,cost[,reverse_cost]), contraction_order, [,directed ,max_cycles, forbidden_vertices])';
 
