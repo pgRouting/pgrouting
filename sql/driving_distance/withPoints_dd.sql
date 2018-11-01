@@ -104,5 +104,5 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_withPointsDD(Single_vertex) -- edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), from_vid, distance [,directed, driving_side, details]';
-COMMENT ON FUNCTION pgr_withPointsDD(TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsDD(Multiple vertices) -- edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), from_vids, distance [,directed, driving_side, details, equicost]';
