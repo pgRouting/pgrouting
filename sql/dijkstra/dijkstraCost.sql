@@ -24,9 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-------------------
+-------------------
 -- pgr_dijkstraCost
-------------------
+-------------------
 
 -- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
@@ -63,8 +63,8 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true) AS a;
+    SELECT start_vid, end_vid, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -86,8 +86,8 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
+    SELECT start_vid, end_vid, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -109,8 +109,8 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true) AS a;
+    SELECT start_vid, end_vid, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
