@@ -24,11 +24,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
--- V3 signature 1 to 1
+---------------
+-- pgr_dijkstra
+---------------
+
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
+    TEXT,   -- edges_sql (required)
+    BIGINT, -- from_vids (required)
+    BIGINT, -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
 
     OUT seq integer,
@@ -47,10 +52,12 @@ COST 100
 ROWS 1000;
 
 
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vids ANYARRAY,
+    TEXT,     -- edges_sql (required)
+    BIGINT,   -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
 
     OUT seq integer,
@@ -70,13 +77,14 @@ COST 100
 ROWS 1000;
 
 
-
-
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vid BIGINT,
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    BIGINT,   -- to_vid (required)
+
     directed BOOLEAN DEFAULT true,
+
     OUT seq integer,
     OUT path_seq integer,
     OUT start_vid BIGINT,
@@ -94,14 +102,16 @@ COST 100
 ROWS 1000;
 
 
-
-
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
-    OUT seq integer, OUT path_seq integer,
+
+    OUT seq integer,
+    OUT path_seq integer,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
@@ -119,7 +129,11 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION  pgr_dijkstra(TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgr_dijkstra(One to One)';
-COMMENT ON FUNCTION  pgr_dijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgr_dijkstra(One to Many)';
-COMMENT ON FUNCTION  pgr_dijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgr_dijkstra(Many to One)';
-COMMENT ON FUNCTION  pgr_dijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgr_dijkstra(Many to Many)';
+COMMENT ON FUNCTION pgr_dijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgr_dijkstra--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid [,directed])';
+COMMENT ON FUNCTION pgr_dijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
+IS 'pgr_dijkstra--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids [,directed])';
+COMMENT ON FUNCTION pgr_dijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgr_dijkstra--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid [,directed])';
+COMMENT ON FUNCTION pgr_dijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgr_dijkstra--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids [,directed])';
