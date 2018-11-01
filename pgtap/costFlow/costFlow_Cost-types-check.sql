@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(21);
+SELECT plan(18);
 
 SELECT has_function('pgr_mincostmaxflow_cost');
 
@@ -15,21 +15,9 @@ SELECT function_returns('pgr_mincostmaxflow_cost', ARRAY['text', 'bigint', 'anya
 SELECT function_returns('pgr_mincostmaxflow_cost', ARRAY['text', 'anyarray', 'anyarray'], 'double precision');
 
 -- column names
-SELECT bag_has(
+SELECT set_eq(
     $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow_cost'$$,
-    $$SELECT '{"edges_sql", "sources", "targets"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow_cost'$$,
-    $$SELECT '{"edges_sql","sources","targets"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow_cost'$$,
-    $$SELECT '{"edges_sql","sources","targets"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow_cost'$$,
-    $$SELECT '{"edges_sql","sources","targets"}'::TEXT[] $$
+    $$SELECT NULL::TEXT[] $$
 );
 
 -- pgr_mincostmaxflow_cost works

@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(21);
+SELECT plan(18);
 
 SELECT has_function('pgr_mincostmaxflow');
 
@@ -15,21 +15,11 @@ SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'anyarray'
 SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'anyarray'], 'setof record');
 
 -- column names
-SELECT bag_has(
+SELECT set_eq(
     $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
-    $$SELECT '{"edges_sql", "sources", "targets", "seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
-    $$SELECT '{"edges_sql","sources","targets","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
-    $$SELECT '{"edges_sql","sources","targets","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
-    $$SELECT '{"edges_sql","sources","targets","seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[] $$
+    $$VALUES
+        ('{"","","", "seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[])
+    $$
 );
 
 -- pgr_mincostmaxflow works
