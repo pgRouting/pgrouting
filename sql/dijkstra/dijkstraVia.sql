@@ -25,9 +25,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
+------------------
+-- pgr_dijkstraVia
+------------------
+
+CREATE OR REPLACE FUNCTION _pgr_dijkstraVia(
     edges_sql TEXT,
-    via_vertices ANYARRAY,
+    via_vids ANYARRAY,
+    directed BOOLEAN,
+    strict BOOLEAN,
+    U_turn_on_edge BOOLEAN,
+
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT,
+    OUT route_agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME', 'dijkstraVia'
+LANGUAGE c VOLATILE STRICT;
+
+
+CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- via_vids (required)
     directed BOOLEAN DEFAULT TRUE,
     strict BOOLEAN DEFAULT FALSE,
     U_turn_on_edge BOOLEAN DEFAULT TRUE,
@@ -43,9 +70,15 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     OUT cost FLOAT,
     OUT agg_cost FLOAT,
     OUT route_agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_dijkstraVia(_pgr_get_statement($1), $2, $3 , $4, $5);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST 100
+ROWS 1000;
 
-  RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'dijkstraVia'
-    LANGUAGE c VOLATILE STRICT;
-
+COMMENT ON FUNCTION pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_dijkstraVia(edges_sql(id,source,target,cost[,reverse_cost]), via_vids, [,directed, strict, U_turn_on_edge])';
 
