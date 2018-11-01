@@ -33,7 +33,8 @@ CREATE OR REPLACE FUNCTION _pgr_dagShortestPath(
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
-        OUT seq INTEGER,
+
+    OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
