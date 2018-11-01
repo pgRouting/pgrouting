@@ -93,5 +93,5 @@ ROWS 1000;
 COMMENT ON FUNCTION pgr_drivingDistance(TEXT, BIGINT, FLOAT, BOOLEAN)
 IS 'pgr_drivingDistance(Single_vertex) -- edges_sql(id,source,target,cost[,reverse_cost]), from_vid, distance [,directed]';
 COMMENT ON FUNCTION pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
-IS 'pgr_drivingDistance(Multiple verteices) -- edges_sql(id,source,target,cost[,reverse_cost]), from_vid, distance [,directed, equicost]';
+IS 'pgr_drivingDistance(Multiple vertices) -- edges_sql(id,source,target,cost[,reverse_cost]), from_vids, distance [,directed, equicost]';
 
