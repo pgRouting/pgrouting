@@ -113,7 +113,7 @@ COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, BIGINT)
 IS 'pgr_edmondsKarp(One to One)
  - Directed graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from vertex
    - to vertex';
 
@@ -121,7 +121,7 @@ COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, ANYARRAY)
 IS 'pgr_edmondsKarp(One to Many)
  - Directed graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from vertex
    - to ARRAY[vertices identifiers]';
 
@@ -129,7 +129,7 @@ COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_edmondsKarp(Many to One)
  - Directed graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from ARRAY[vertices identifiers]
    - to vertex';
 
@@ -137,6 +137,6 @@ COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, ANYARRAY)
 IS 'pgr_edmondsKarp(Many to Many)
  - Directed graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from ARRAY[vertices identifiers]
    - to ARRAY[vertices identifiers]';
