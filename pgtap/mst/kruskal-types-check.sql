@@ -31,11 +31,6 @@ SELECT has_function('pgr_kruskaldd',  ARRAY['text','bigint','double precision'])
 SELECT has_function('pgr_kruskaldd',  ARRAY['text','anyarray','double precision']);
 
 
-SELECT function_returns('pgr_kruskaldd',  ARRAY['text','bigint','numeric'], 'setof record');
-SELECT function_returns('pgr_kruskaldd',  ARRAY['text','anyarray','numeric'], 'setof record');
-SELECT function_returns('pgr_kruskaldd',  ARRAY['text','bigint','double precision'], 'setof record');
-SELECT function_returns('pgr_kruskaldd',  ARRAY['text','anyarray','double precision'], 'setof record');
-
 -- pgr_kruskal
 -- parameter names
 SELECT set_eq(
@@ -104,7 +99,9 @@ SELECT set_eq(
         ('{25,20,701,20,20,20,20,20,701,701}'::OID[]),
         ('{25,2277,701,20,20,20,20,20,701,701}'::OID[]),
         ('{25,20,1700,20,20,20,20,20,701,701}'::OID[]),
-        ('{25,2277,1700,20,20,20,20,20,701,701}'::OID[])
+        ('{25,2277,1700,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,20,701,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,701,20,20,20,20,20,701,701}'::OID[])
     $$
 );
 
