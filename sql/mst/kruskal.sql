@@ -44,9 +44,9 @@ LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, BIGINT)
-IS 'pgr_kruskalDFS(Single Vertex)
+COMMENT ON FUNCTION pgr_kruskal(TEXT)
+IS 'pgr_kruskal
  - EXPERIMENTAL
  - Undirected graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]';
