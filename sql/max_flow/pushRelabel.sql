@@ -113,7 +113,7 @@ COMMENT ON FUNCTION pgr_pushRelabel(TEXT, BIGINT, BIGINT)
 IS 'pgr_pushRelabel(One to One)
  - Directed graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from vertex
    - to vertex';
 
@@ -121,7 +121,7 @@ COMMENT ON FUNCTION pgr_pushRelabel(TEXT, BIGINT, ANYARRAY)
 IS 'pgr_pushRelabel(One to Many)
  - Directed graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from vertex
    - to ARRAY[vertices identifiers]';
 
@@ -129,7 +129,7 @@ COMMENT ON FUNCTION pgr_pushRelabel(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_pushRelabel(Many to One)
  - Directed graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from ARRAY[vertices identifiers]
    - to vertex';
 
@@ -137,6 +137,6 @@ COMMENT ON FUNCTION pgr_pushRelabel(TEXT, ANYARRAY, ANYARRAY)
 IS 'pgr_pushRelabel(Many to Many)
  - Directed graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from ARRAY[vertices identifiers]
    - to ARRAY[vertices identifiers]';
