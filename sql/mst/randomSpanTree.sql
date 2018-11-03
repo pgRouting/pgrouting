@@ -28,8 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_randomSpanTree(
-    edges_sql TEXT,             -- Edge sql
-    root BIGINT,
+    TEXT,   -- edges_sql (required)
+    BIGINT, -- root (required)
+
     directed BOOLEAN DEFAULT TRUE,
 
     OUT seq BIGINT,            -- Seq
@@ -58,3 +59,13 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
+COMMENT ON FUNCTION pgr_randomSpanTree(TEXT, BIGINT)
+IS 'pgr_randomSpanTree
+ - EXPERIMENTAL
+ - Undirected graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - root vertex identifier
+ - Optional Parameters
+   - directed: default ''true''';
