@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(21);
+SELECT plan(18);
 
 SELECT has_function('pgr_maxflow');
 
@@ -15,21 +15,9 @@ SELECT function_returns('pgr_maxflow', ARRAY[ 'text', 'anyarray', 'bigint' ], 'b
 SELECT function_returns('pgr_maxflow', ARRAY[ 'text', 'anyarray', 'anyarray' ], 'bigint');
 
 -- testing column names
-SELECT bag_has(
+SELECT set_eq(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  '{"edges_sql","source_vertices","sink_vertices"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  '{"edges_sql","source_vertices","sink_vertices"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  '{"edges_sql","source_vertices","sink_vertices"}'::TEXT[] $$
-);
-SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  '{"edges_sql","source_vertices","sink_vertices"}'::TEXT[] $$
+    $$SELECT  NULL::TEXT[] $$
 );
 
 
