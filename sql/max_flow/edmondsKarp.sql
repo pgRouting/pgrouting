@@ -25,21 +25,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ------------------------------------
--- 3 pgr_edmondsKarp
+-- 2 boykov_kolmogorov
 ------------------------------------
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    TEXT,
-    BIGINT,
-    BIGINT,
+    TEXT, -- edges_sql (required)
+    BIGINT, -- from_vids (required)
+    BIGINT, -- to_vid (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
+    OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
@@ -50,16 +50,16 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    TEXT,
-    BIGINT,
-    ANYARRAY,
+    TEXT, -- edges_sql (required)
+    BIGINT, -- from_vid (required)
+    ANYARRAY, -- to_vids (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
+    OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
@@ -70,16 +70,16 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    TEXT,
-    ANYARRAY,
-    BIGINT,
+    TEXT, -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    BIGINT, -- to_vid (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
+    OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
@@ -89,16 +89,16 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    TEXT,
-    ANYARRAY,
-    ANYARRAY,
+    TEXT, -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
+    OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
@@ -106,3 +106,37 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   $BODY$
   LANGUAGE sql VOLATILE STRICT;
 
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, BIGINT)
+IS 'pgr_edmondsKarp(One to One)
+ - Directed graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - from vertex
+   - to vertex';
+
+COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, ANYARRAY)
+IS 'pgr_edmondsKarp(One to Many)
+ - Directed graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - from vertex
+   - to ARRAY[vertices identifiers]';
+
+COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, BIGINT)
+IS 'pgr_edmondsKarp(Many to One)
+ - Directed graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - from ARRAY[vertices identifiers]
+   - to vertex';
+
+COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, ANYARRAY)
+IS 'pgr_edmondsKarp(Many to Many)
+ - Directed graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - from ARRAY[vertices identifiers]
+   - to ARRAY[vertices identifiers]';
