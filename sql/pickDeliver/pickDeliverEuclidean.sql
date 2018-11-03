@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
     TEXT, -- orders_sql
     TEXT, -- vehicles_sql
+
     factor FLOAT DEFAULT 1,
     max_cycles INTEGER DEFAULT 10,
     initial_sol INTEGER DEFAULT 4,
@@ -45,10 +46,61 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
     OUT arrival_time FLOAT,
     OUT wait_time FLOAT,
     OUT service_time FLOAT,
-    OUT departure_time FLOAT
-)
+    OUT departure_time FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME', 'pickDeliverEuclidean'
+LANGUAGE c VOLATILE STRICT;
 
-  RETURNS SETOF RECORD AS
- 'MODULE_PATHNAME', 'pickDeliverEuclidean'
-    LANGUAGE c VOLATILE STRICT;
+CREATE OR REPLACE FUNCTION pgr_pickDeliverEuclidean(
+    TEXT, -- orders_sql (required)
+    TEXT, -- vehicles_sql (required)
 
+    factor FLOAT DEFAULT 1,
+    max_cycles INTEGER DEFAULT 10,
+    initial_sol INTEGER DEFAULT 4,
+
+    OUT seq INTEGER,
+    OUT vehicle_seq INTEGER,
+    OUT vehicle_id BIGINT,
+    OUT stop_seq INTEGER,
+    OUT stop_type INTEGER,
+    OUT order_id BIGINT,
+    OUT cargo FLOAT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_pickDeliverEuclidean(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_pickDeliverEuclidean(TEXT, TEXT, FLOAT, INTEGER, INTEGER)
+IS 'pgr_pickDeliverEuclidean
+ - PRE-EXPERIMENTAL
+ - NOT DOCUMENTED
+ - Parameters:
+   - orders SQL with columns:
+     - id, demand, p_x, p_t, d_x, d_y, p_open, p_close, d_open, d_close
+     - optional columns:
+       - p_service := 0
+       - d_service := 0
+   - vehicles SQL with columns:
+     - id, start_x, start_y, capacity, start_open, start_close
+     - optional columns:
+       - speed := 1
+       - start_service := 0
+       - end_x := start_x
+       - end_y := start_y
+       - end_open := start_open
+       - end_close := start_close
+       - end_service := 0
+ - Optional Parameters:
+   - factor: default ''1''
+   - max_cycles: default ''10''
+   - initial_sol: default ''4''';
