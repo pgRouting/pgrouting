@@ -41,7 +41,10 @@ Last changes: 2013-03-22
 2014-july: fixes issue 211
 */
 
-CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision,
+CREATE OR REPLACE FUNCTION pgr_createtopology(
+    text, -- edge table (required)
+    double precision, -- tolerance (required)
+
 		   the_geom text default 'the_geom', id text default 'id',
 		   source text default 'source', target text default 'target',rows_where text default 'true',
 		   clean boolean default FALSE)
@@ -49,6 +52,8 @@ RETURNS VARCHAR AS
 $BODY$
 
 DECLARE
+    edge_table TEXT := $1;
+    tolerance FLOAT := $2;
     points record;
     sridinfo record;
     source_id bigint;
@@ -281,9 +286,19 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text,boolean)
-IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', target:=''target'',rows_where:=''true'' - fills columns source and target in the geometry table and creates a vertices table for selected rows';
 
 
+-- COMMENTS
 
-
+COMMENT ON FUNCTION pgr_createTopology(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT, BOOLEAN) IS
+'pgr_createverticestable
+ - Parameters
+   - Edge table name
+   - tolerance
+ - Optional parameters
+   - the_geom := ''the_geom''
+   - id := ''id''
+   - source := ''source''
+   - target := ''target''
+   - rows_where := ''true''
+   - clean := false';
