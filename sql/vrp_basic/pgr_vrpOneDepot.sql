@@ -28,10 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --
 
 create or replace function pgr_vrpOneDepot(
-	order_sql text,
-	vehicle_sql text,
-	cost_sql text,
-	depot_id integer,
+	text,  -- order_sql
+	text, -- vehicle_sql
+	text, -- cost_sql
+	integer, -- depot_id
 
 	OUT oid integer,
 	OUT opos integer,
@@ -40,17 +40,22 @@ create or replace function pgr_vrpOneDepot(
 	OUT tdepart integer)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT order_id::INTEGER, stop_seq::INTEGER, vehicle_id::INTEGER, arrival_time::INTEGER, departure_time::INTEGER
+    SELECT order_id::INTEGER, stop_seq::INTEGER, vehicle_id::INTEGER, arrival_time::INTEGER, departure_time::INTEGER
     FROM _pgr_vrpOneDepot($1, $2,
        '
             SELECT src_id AS start_vid, dest_id AS end_vid, traveltime AS agg_cost FROM ('||$3||') AS a
        ',
-        $4
-    ) a;
-END
+       $4);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT
-COST 100
+LANGUAGE SQL VOLATILE STRICT
+COST 1000
 ROWS 1000;
 
+COMMENT ON FUNCTION pgr_vrpOneDepot(TEXT, TEXT, TEXT, INTEGER)
+IS 'pgr_vrpOneDepot
+ - EXPERIMENTAL
+ - Parameters
+   - orders SQL with columns: id, x, y, order_unit, open_time, close_time, service_time
+   - vehicle SQL with columns: vehicle_id, capacity, case_no
+   - cost SQL with columns: src_id, dest_id, cost, distance, traveltime
+   - depot id';
