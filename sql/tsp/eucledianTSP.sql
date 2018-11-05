@@ -23,6 +23,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
 CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     coordinates_sql TEXT,
     start_id BIGINT DEFAULT 0,
@@ -46,6 +47,58 @@ CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     OUT agg_cost FLOAT)
 RETURNS SETOF record
 AS 'MODULE_PATHNAME', 'eucledianTSP'
-LANGUAGE c VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT;
 
 
+CREATE OR REPLACE FUNCTION pgr_euclideanTSP(
+    TEXT, -- coordinates_sql (required)
+
+    start_id BIGINT DEFAULT 0,
+    end_id BIGINT DEFAULT 0,
+
+    max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
+
+    tries_per_temperature INTEGER DEFAULT 500,
+    max_changes_per_temperature INTEGER DEFAULT 60,
+    max_consecutive_non_changes INTEGER DEFAULT 100,
+
+    initial_temperature FLOAT DEFAULT 100,
+    final_temperature FLOAT DEFAULT 0.1,
+    cooling_factor FLOAT DEFAULT 0.9,
+
+    randomize BOOLEAN DEFAULT true,
+
+    OUT seq integer,
+    OUT node BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM pgr_eucledianTSP(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_euclideanTSP(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
+IS 'pgr_euclideanTSP
+ - Parameters
+   - coordinates SQL with columns: id, x, y
+ - Optional parameters
+    - start_id := 0
+    - end_id := 0
+
+    - max_processing_time := ''+infinity''::FLOAT
+
+    - tries_per_temperature := 500
+    - max_changes_per_temperature :=  60
+    - max_consecutive_non_changes :=  100
+
+    - initial_temperature FLOAT := 100
+    - final_temperature := 0.1
+    - cooling_factor := 0.9
+
+    - randomize := true';
