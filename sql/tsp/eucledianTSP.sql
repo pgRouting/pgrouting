@@ -75,7 +75,7 @@ CREATE OR REPLACE FUNCTION pgr_euclideanTSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM pgr_eucledianTSP(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+    FROM pgr_eucledianTSP(_pgr_get_statement($1), $2,$3, $4, $5,$6,$7, $8,$9,$10, $11);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100

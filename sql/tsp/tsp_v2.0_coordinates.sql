@@ -95,3 +95,8 @@ BEGIN
 END;
 $body$
 language plpgsql volatile STRICT cost 500 ROWS 50;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_tsp(text, INTEGER, INTEGER)
+IS 'DEPRECATED';
