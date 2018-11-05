@@ -78,11 +78,22 @@ Makes more checks:
            (edge_tab text, the_geom text, tolerance double precision)
 */
 
-CREATE OR REPLACE FUNCTION pgr_analyzegraph(edge_table text,tolerance double precision,the_geom text default 'the_geom',id text default 'id',source text default 'source',target text default 'target',rows_where text default 'true')
+CREATE OR REPLACE FUNCTION pgr_analyzegraph(
+    text, -- edge table (required)
+    double precision, -- tolerance (required)
+
+    the_geom text default 'the_geom',
+    id text default 'id',
+    source text default 'source',
+    target text default 'target',
+    rows_where text default 'true')
+
 RETURNS character varying AS
 $BODY$
 
 DECLARE
+    edge_table TEXT := $1;
+    tolerance TEXT := $2;
     points record;
     seg record;
     naming record;
@@ -370,9 +381,6 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_analyzeGraph(text,double precision,text,text,text,text,text) IS 'args: edge_table, tolerance,the_geom:=''the_geom'',id:=''id'',source column:=''source'', target column:=''target'' rows_where:=''true'' - creates a vertices table based on the geometry for selected rows';
-
-
 
 
 
@@ -445,11 +453,12 @@ a network that is not properly noded.
 */
 
 CREATE OR REPLACE FUNCTION pgr_analyzeOneway(
-   edge_table text,
-   s_in_rules TEXT[],
-   s_out_rules TEXT[],
-   t_in_rules TEXT[],
-   t_out_rules TEXT[],
+   text,
+   TEXT[], -- s_in_rules (required)
+   TEXT[], -- s_out_rules (required)
+   TEXT[], -- t_in_rules (required)
+   TEXT[], -- t_out_rules (required)
+
    two_way_if_null boolean default true,
    oneway text default 'oneway',
    source text default 'source',
@@ -459,6 +468,11 @@ $BODY$
 
 
 DECLARE
+    edge_table TEXT := $1;
+    s_in_rules TEXT[] := $2;
+    s_out_rules TEXT[] := $3;
+    t_in_rules TEXT[] := $4;
+    t_out_rules TEXT[] := $5;
     rule text;
     ecnt integer;
     instr text;
@@ -605,6 +619,30 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_analyzeOneway(text,TEXT[],TEXT[], TEXT[],TEXT[],boolean,text,text,text)
-IS 'args:edge_table , s_in_rules , s_out_rules, t_in_rules , t_out_rules, two_way_if_null:= true, oneway:=''oneway'',source:= ''source'',target:=''target'' - Analizes the directionality of the edges based on the rules';
+-- COMMENTS
 
+COMMENT ON FUNCTION pgr_analyzeOneway(text,TEXT[],TEXT[], TEXT[],TEXT[],boolean,text,text,text)
+IS 'pgr_analyzeOneway
+ - Parameters
+   - edge table
+   - source in rules
+   - source out rules,
+   - target in rules
+   - target out rules,
+ - Optional parameters
+   - two_way_if_null := true
+   - oneway := ''oneway'',
+   - source := ''source''
+   - target:=''target''';
+
+COMMENT ON FUNCTION pgr_analyzegraph(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT)
+IS 'pgr_createverticestable
+ - Parameters
+   - Edge table name
+   - tolerance
+ - Optional parameters
+   - the_geom: default ''the_geom''
+   - id := ''id''
+   - source := ''source''
+   - target := ''target''
+   - rows_where := ''true''';
