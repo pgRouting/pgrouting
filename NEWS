@@ -2,6 +2,16 @@
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
+pgRouting 2.5.5 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the [Git closed milestone for 2.5.5 ](https://github.com/pgRouting/pgrouting/issues?q=milestone:2.5.5) on Github.
+
+*Bug fixes*
+
+* Fixes driving distance when vertex is not part of the graph
+
+
 *New Experimental functions*
 
 * Prim family
