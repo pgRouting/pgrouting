@@ -588,7 +588,7 @@ class Pgr_dijkstra {
                  /*
                   * The vertex does not exist on the graph
                   */
-                 if (pred[i - 1].empty()) {pgassert(false); continue;}
+                 if (pred[i - 1].empty()) break;
 
 
                  /*

@@ -20,6 +20,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 * :ref:`changelog_2_6_1`
 * :ref:`changelog_2_6_0`
+* :ref:`changelog_2_5_5`
 * :ref:`changelog_2_5_4`
 * :ref:`changelog_2_5_3`
 * :ref:`changelog_2_5_2`
@@ -116,6 +117,17 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
   * Internal code can accept BIGINT
 
 * Cleaned the internal code of withPoints
+
+.. _changelog_2_5_5:
+
+pgRouting 2.5.5 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?q=milestone:2.5.5>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* Fixes driving distance when vertex is not part of the graph
 
 .. _changelog_2_5_4:
 
