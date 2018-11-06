@@ -29,6 +29,10 @@ SELECT has_function('pgr_kruskaldd',  ARRAY['text','bigint','numeric']);
 SELECT has_function('pgr_kruskaldd',  ARRAY['text','anyarray','numeric']);
 SELECT has_function('pgr_kruskaldd',  ARRAY['text','bigint','double precision']);
 SELECT has_function('pgr_kruskaldd',  ARRAY['text','anyarray','double precision']);
+SELECT function_returns('pgr_kruskaldd',  ARRAY['text','bigint','numeric'],  'setof record');
+SELECT function_returns('pgr_kruskaldd',  ARRAY['text','anyarray','numeric'],  'setof record');
+SELECT function_returns('pgr_kruskaldd',  ARRAY['text','bigint','double precision'],  'setof record');
+SELECT function_returns('pgr_kruskaldd',  ARRAY['text','anyarray','double precision'],  'setof record');
 
 
 -- pgr_kruskal
