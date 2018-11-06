@@ -24,12 +24,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--------------------
+-- _pgr_dijkstraNear
+--------------------
 
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
-    TEXT,     -- edges_sql
-    BIGINT,   -- source
-    ANYARRAY, -- array of targets
-    BIGINT,   -- stop at value should be >=1
+    TEXT,     -- edges_sql (required)
+    BIGINT,   -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+    BIGINT,   -- stop_at (required)
+
     directed BOOLEAN DEFAULT true,
 
     OUT seq integer,
@@ -41,21 +46,21 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $5, false, true, $4) AS a;
+    SELECT seq, path_seq, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $5, false, true, $4);
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, BIGINT, ANYARRAY, BIGINT, BOOLEAN) IS '_pgr_dijkstra(1 to Many with limit of goals)';
 
 
-
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
-    TEXT,     -- edges_sql
-    ANYARRAY, -- array of sources
-    BIGINT,   -- target
-    BIGINT,   -- stop at value should be >=1
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    BIGINT,   -- to_vids (required)
+    BIGINT,   -- stop_at (required)
+
     directed BOOLEAN DEFAULT true,
 
     OUT seq integer,
@@ -67,19 +72,20 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $5, false, false, $4) AS a;
+    SELECT seq, path_seq, start_vid, node, edge, cost, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $5, false, false, $4);
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BIGINT, BOOLEAN) IS '_pgr_dijkstraNear(Many to 1 with limit of goals)';
 
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
-    TEXT,     -- edges_sql
-    ANYARRAY, -- array of sources
-    ANYARRAY, -- array of targets
-    BIGINT,   -- stop at value should be >=1
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+    BIGINT,   -- stop_at (required)
+
     directed BOOLEAN DEFAULT true,
 
     OUT seq integer,
@@ -92,11 +98,18 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $5, false, false, $4) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $5, false, false, $4);
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN) IS '_pgr_dijkstraNear(1 to Many with limit of goals)';
 
+-- COMMENTS
+
+COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, BIGINT, ANYARRAY, BIGINT, BOOLEAN) IS
+'PRE-EXPERIMENTAL _pgr_dijkstra(1 to Many) - edges_sql(source,target,cost[,reverse_cost]), from_vid, to_vids, stop_at [,directed]';
+COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BIGINT, BOOLEAN) IS
+'PRE-EXPERIMENTAL _pgr_dijkstraNear(Many to 1) - edges_sql(source,target,cost[,reverse_cost]), from_vids, to_vid, stop_at [,directed]';
+COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN) IS
+'PRE-EXPERIMENTAL _pgr_dijkstraNear(1 to Many - edges_sql(source,target,cost[,reverse_cost]), from_vids, to_vids, stop_at [,directed]';

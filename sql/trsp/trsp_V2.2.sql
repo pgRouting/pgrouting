@@ -69,11 +69,12 @@ $$ LANGUAGE 'sql' STRICT IMMUTABLE;
    - a call is made to trsp without only the positive values
 */
 CREATE OR REPLACE FUNCTION pgr_trsp(
-    edges_sql TEXT,
-    start_vid INTEGER,
-    end_vid INTEGER,
-    directed BOOLEAN,
-    has_rcost BOOLEAN,
+    TEXT, -- edges SQL (required)
+    INTEGER, -- from_vid (required)
+    INTEGER, -- to_vid (required)
+    BOOLEAN, -- directed (required)
+    BOOLEAN, -- has_rcost (required)
+
     restrictions_sql TEXT DEFAULT NULL,
 
     OUT seq INTEGER,
@@ -84,6 +85,12 @@ CREATE OR REPLACE FUNCTION pgr_trsp(
 RETURNS SETOF record AS
 $BODY$
 DECLARE
+    edges_sql TEXT    := $1;
+    start_vid INTEGER := $2;
+    end_vid INTEGER   := $3;
+    directed BOOLEAN  := $4;
+    has_rcost BOOLEAN := $5;
+
 has_reverse BOOLEAN;
 new_sql TEXT;
 restrictions_query TEXT;
@@ -147,10 +154,11 @@ ROWS 1000;
    - a call is made to trspViaVertices without only the positive values
 */
 CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
-    edges_sql TEXT,
-    via_vids ANYARRAY,
-    directed BOOLEAN,
-    has_rcost BOOLEAN,
+    TEXT, -- edges SQL (required)
+    ANYARRAY,  -- via vids (required)
+    BOOLEAN, -- directed (required)
+    BOOLEAN, -- has_rcost (required)
+
     restrictions_sql TEXT DEFAULT NULL,
 
     OUT seq INTEGER,
@@ -163,6 +171,11 @@ RETURNS SETOF RECORD AS
 
 $BODY$
 DECLARE
+    edges_sql TEXT     := $1;
+    via_vids INTEGER[] := $2;
+    directed BOOLEAN   := $3;
+    has_rcost BOOLEAN  := $4;
+
 has_reverse BOOLEAN;
 new_sql TEXT;
 BEGIN
@@ -210,13 +223,14 @@ ROWS 1000;
       - calls original trsp code
 */
 CREATE OR REPLACE FUNCTION pgr_trsp(
-    sql text,
-    source_eid integer,
-    source_pos float8,
-    target_eid integer,
-    target_pos float8,
-    directed boolean,
-    has_reverse_cost boolean,
+    TEXT,    -- sql (required)
+    INTEGER, -- source_eid (required)
+    FLOAT,   -- source_pos (required)
+    INTEGER, -- target_eid (required)
+    FLOAT,   -- target_pos (required)
+    BOOLEAN, -- directed (required)
+    BOOLEAN, -- has_reverse_cost (required)
+
     turn_restrict_sql text DEFAULT null,
 
     OUT seq INTEGER,
@@ -227,6 +241,14 @@ CREATE OR REPLACE FUNCTION pgr_trsp(
 RETURNS SETOF record AS
 $BODY$
 DECLARE
+    sql TEXT                 := $1;
+    source_eid INTEGER       := $2;
+    source_pos FLOAT         := $3;
+    target_eid INTEGER       := $4;
+    target_pos FLOAT         := $5;
+    directed BOOLEAN         := $6;
+    has_reverse_cost BOOLEAN := $7;
+
 has_reverse BOOLEAN;
 new_sql TEXT;
 trsp_sql TEXT;
@@ -336,3 +358,39 @@ $BODY$
 LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
+
+-- COMMNETS
+
+COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN, TEXT)
+IS 'pgr_trsp
+ - Parameters
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - from vertex identifier
+   - to vertex identifier
+   - directed
+   - has reverse cost
+ - Optional parameters
+   - restrictions_sql := NULL';
+
+COMMENT ON FUNCTION pgr_trspViaVertices(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, TEXT)
+IS 'pgr_trspViaVertices
+ - Parameters
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - ARRAY[Via vertices identifiers
+   - directed
+   - has reverse cost
+ - Optional parameters
+   - restrictions_sql := NULL';
+
+COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
+IS 'pgr_trsp
+ - Parameters
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - source edge identifier
+   - fraction position on source edge
+   - target edge identifier
+   - fraction position on target edge
+   - directed
+   - has reverse cost
+ - Optional parameters
+   - turn_restrict_sql := NULL';

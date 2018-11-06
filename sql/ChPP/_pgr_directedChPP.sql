@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: directedChPP.sql
+File: _pgr_directedChPP.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,14 +27,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------------------------------------------------------------------------
+-- ChPP
+-----------------------------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION _pgr_directedChPP(
-    edges_sql TEXT,                 -- edges_sql
-    only_cost BOOLEAN DEFAULT false,
-        OUT seq INTEGER,            -- seq
-    OUT node BIGINT,                -- node_id
-    OUT edge BIGINT,                -- edge_id
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
+    edges_sql TEXT,
+
+    only_cost BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'directedChPP'

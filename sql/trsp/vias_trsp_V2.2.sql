@@ -111,7 +111,15 @@ rows 1000;
 
 ----------------------------------------------------------------------------------------------------------
 
-create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text,
+create or replace function pgr_trspViaEdges(
+    text,      -- SQL (required)
+    integer[], -- eids (required)
+    FLOAT[],   -- pcts (required)
+    BOOLEAN,   -- directed (required)
+    BOOLEAN,   -- has_rcost (requierd)
+
+    turn_restrict_sql text DEFAULT NULL::text,
+
     OUT seq INTEGER,
     OUT id1 INTEGER,
     OUT id2 INTEGER,
@@ -130,6 +138,12 @@ $body$
  *
 */
 declare
+    sql TEXT          := $1;
+    eids INTEGER[]    := $2;
+    pcts FLOAT[]      := $3;
+    directed BOOLEAN  := $4;
+    has_rcost BOOLEAN := $5;
+
     i integer;
     rr RECORD;
     lrr RECORD;
@@ -241,3 +255,16 @@ $body$
 language plpgsql stable
 cost 100
 rows 1000;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_trspViaEdges(TEXT, INTEGER[], FLOAT[], BOOLEAN, BOOLEAN, TEXT)
+IS 'pgr_trspViaEdges
+ - Parameters
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - ARRAY[Via edge identifiers]
+   - ARRAY[fraction position on via edges]
+   - directed
+   - has reverse cost
+ - Optional parameters
+   - turn_restrict_sql := NULL';

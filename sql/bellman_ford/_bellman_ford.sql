@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+File: bellman_ford_neg.sql
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,25 +26,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 -------------------------
---Many to Many
+-- pgr_bellmanFord
 -------------------------
 
 CREATE OR REPLACE FUNCTION _pgr_bellmanFord(
-     TEXT,
-     ANYARRAY,
-     ANYARRAY,
-    directed BOOLEAN ,
-    only_cost BOOLEAN ,
+    edges_sql TEXT,
+    from_vids ANYARRAY,
+    to_vids   ANYARRAY,
+    directed  BOOLEAN,
+    only_cost BOOLEAN,
 
-
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'bellman_ford'

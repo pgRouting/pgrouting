@@ -23,7 +23,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-CREATE OR REPLACE FUNCTION pgr_TSP(
+CREATE OR REPLACE FUNCTION _pgr_TSP(
     matrix_row_sql TEXT,
     start_id BIGINT DEFAULT 0,
     end_id BIGINT DEFAULT 0,
@@ -48,3 +48,55 @@ RETURNS SETOF record
 AS 'MODULE_PATHNAME', 'newTSP'
 LANGUAGE c VOLATILE STRICT;
 
+CREATE OR REPLACE FUNCTION pgr_TSP(
+    matrix_row_sql TEXT,
+
+    start_id BIGINT DEFAULT 0,
+    end_id BIGINT DEFAULT 0,
+
+    max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
+
+    tries_per_temperature INTEGER DEFAULT 500,
+    max_changes_per_temperature INTEGER DEFAULT 60,
+    max_consecutive_non_changes INTEGER DEFAULT 100,
+
+    initial_temperature FLOAT DEFAULT 100,
+    final_temperature FLOAT DEFAULT 0.1,
+    cooling_factor FLOAT DEFAULT 0.9,
+
+    randomize BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT node BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_TSP(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_TSP(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
+IS 'pgr_TSP
+ - Parameters
+   - matrix SQL with columns: start_vid, end_vid, agg_cost
+ - Optional parameters
+    - start_id := 0
+    - end_id := 0
+
+    - max_processing_time := ''+infinity''::FLOAT
+
+    - tries_per_temperature := 500
+    - max_changes_per_temperature :=  60
+    - max_consecutive_non_changes :=  100
+
+    - initial_temperature FLOAT := 100
+    - final_temperature := 0.1
+    - cooling_factor := 0.9
+
+    - randomize := true';

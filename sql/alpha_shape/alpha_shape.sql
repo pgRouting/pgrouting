@@ -30,10 +30,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- vertex ids.
 -----------------------------------------------------------------------
 */
-CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
+CREATE OR REPLACE FUNCTION pgr_alphashape(
+    text, -- sql (required)
+    alpha float8 DEFAULT 0,
+
+    OUT x float8,
+    OUT y float8)
     RETURNS SETOF record
     AS 'MODULE_PATHNAME', 'alphashape'
     LANGUAGE c VOLATILE STRICT;
+
+COMMENT ON FUNCTION pgr_alphashape(TEXT, FLOAT8) IS 'pgr_alphashape(sql(id,x,y) [,alpha])';
 
 /*
 ----------------------------------------------------------
@@ -41,7 +48,10 @@ CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT 
 -- ** This should be rewritten as an aggregate. **
 ----------------------------------------------------------
 */
-CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAULT 0)
+CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(
+    varchar, -- query (required)
+    alpha float8 DEFAULT 0)
+
 	RETURNS geometry AS
 	$$
 	DECLARE
@@ -59,7 +69,7 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAU
 		geoms := array[]::geometry[];
 		i := 1;
 
-		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''', ' || alpha || ')'
+		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| $1 || ''', ' || alpha || ')'
 		LOOP
 			x[i] = vertex_result.x;
 			y[i] = vertex_result.y;
@@ -98,3 +108,4 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAU
 	$$
 	LANGUAGE 'plpgsql' VOLATILE STRICT;
 
+COMMENT ON FUNCTION pgr_pointsAsPolygon(VARCHAR, FLOAT8) IS 'pgr_pointsAsPolygon(sql(id,x,y) [,alpha])';

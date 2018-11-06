@@ -27,14 +27,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_strongComponents(
-    TEXT,                       -- edges_sql
-        OUT seq INTEGER,        -- seq
-    OUT component BIGINT,       -- the lowest number of the node in the component
-    OUT n_seq INTEGER,          -- nth_seq of the node in the component
-    OUT node BIGINT)            -- the number of the node
+-----------------------
+-- pgr_strongComponents
+-----------------------
+CREATE OR REPLACE FUNCTION _pgr_strongComponents(
+    edges_sql TEXT,
+
+    OUT seq INTEGER,
+    OUT component BIGINT,
+    OUT n_seq INTEGER,
+    OUT node BIGINT)
 
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'strongComponents'
 LANGUAGE c IMMUTABLE STRICT;
+
+CREATE OR REPLACE FUNCTION pgr_strongComponents(
+    TEXT, -- edges_sql (required)
+
+    OUT seq INTEGER,
+    OUT component BIGINT,
+    OUT n_seq INTEGER,
+    OUT node BIGINT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_strongComponents(_pgr_get_statement($1));
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+-- COMMENTS
+COMMENT ON FUNCTION pgr_strongComponents(TEXT) IS
+'pgr_strongComponents(edges_sql(id,source,target,cost[,reverse_cost]) For directed graph';
 

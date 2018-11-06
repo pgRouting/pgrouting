@@ -8,9 +8,9 @@ SELECT has_function('pgr_directedchpp_cost', ARRAY['text']);
 SELECT function_returns('pgr_directedchpp_cost', ARRAY['text'], 'double precision');
 
 -- column names
-SELECT bag_has(
+SELECT set_eq(
     $$SELECT proargnames from pg_proc where proname = 'pgr_directedchpp_cost'$$,
-    $$SELECT '{"edges_sql"}'::TEXT[] $$
+    $$SELECT NULL::TEXT[] $$
 );
 
 -- pgr_directedchpp_cost works

@@ -37,7 +37,9 @@ CREATE OR REPLACE FUNCTION _pgr_astar(
     factor FLOAT DEFAULT 1.0,
     epsilon FLOAT DEFAULT 1.0,
     only_cost BOOLEAN DEFAULT false,
-    normal BOOLEAN DEFAULT false,
+
+    -- SET to false on Many to One
+    normal BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,

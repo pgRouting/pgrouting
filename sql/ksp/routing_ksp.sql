@@ -22,14 +22,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------
+-- pgr_ksp
+-----------
 
-CREATE OR REPLACE FUNCTION pgr_ksp(
+CREATE OR REPLACE FUNCTION _pgr_ksp(
     edges_sql text,
     start_vid BIGINT,
     end_vid BIGINT,
     k INTEGER,
-    directed BOOLEAN DEFAULT true,
-    heap_paths BOOLEAN DEFAULT false,
+
+    directed BOOLEAN,
+    heap_paths BOOLEAN,
 
     OUT seq INTEGER,
     OUT path_id INTEGER,
@@ -41,3 +45,33 @@ CREATE OR REPLACE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'kshortest_path'
 LANGUAGE C VOLATILE STRICT;
+
+CREATE OR REPLACE FUNCTION pgr_ksp(
+    text, -- edges_sql (required)
+    BIGINT, -- from_vids (required)
+    BIGINT,   -- to_vids (required)
+    INTEGER, -- K (required)
+
+    directed BOOLEAN DEFAULT true,
+    heap_paths BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_ksp(_pgr_get_statement($1), $2, $3, $4, $5, $6);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
+IS 'pgr_ksp -- edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid, K [,directed, heap_paths]';

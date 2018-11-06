@@ -17,8 +17,8 @@ SELECT function_returns('pgr_contractgraph', ARRAY[
 
 PREPARE parameters AS
 SELECT array[
-'edges_sql',
-'contraction_order',
+'',
+'',
 'max_cycles',
 'forbidden_vertices',
 'directed',
@@ -30,7 +30,7 @@ SELECT array[
 'target',
 'cost'];
 
-SELECT set_has(
+SELECT set_eq(
     $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contractgraph'$$,
     'parameters');
 

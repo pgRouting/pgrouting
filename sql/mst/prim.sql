@@ -33,8 +33,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION pgr_prim(
-    TEXT,                       -- edges_sql
-    BIGINT DEFAULT 0,
+    TEXT,  -- edges_sql (required)
+
+    root BIGINT DEFAULT 0,
 
     OUT seq BIGINT,            -- Seq
     Out root_vertex BIGINT,     -- Root_vertex
@@ -50,4 +51,12 @@ $BODY$
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
-COMMENT ON FUNCTION  pgr_prim(TEXT, BIGINT) IS 'pgr_prim: Undirected Graph only';
+COMMENT ON FUNCTION pgr_prim(TEXT, BIGINT)
+IS 'pgr_prim
+ - EXPERIMENTAL
+ - Undirected graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+ - Optional Parameters
+   - root';
+

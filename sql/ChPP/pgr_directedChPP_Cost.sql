@@ -28,10 +28,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_directedChPP_Cost(
-    edges_sql TEXT)                 -- edges_sql
-  RETURNS FLOAT AS
-  $BODY$
-        SELECT cost
-        FROM _pgr_directedChPP(_pgr_get_statement($1), only_cost := true);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
+    TEXT -- edges_sql (required)
+)
+RETURNS FLOAT AS
+$BODY$
+    SELECT cost
+    FROM _pgr_directedChPP(_pgr_get_statement($1), only_cost := true);
+$BODY$
+LANGUAGE SQL VOLATILE;
+
+-- COMMENTS
+COMMENT ON FUNCTION pgr_directedChPP_Cost(TEXT) IS
+'pgr_directedChPP_Cost(edges_sql(id,source,target,cost[,reverse_cost]), For directed graph)';

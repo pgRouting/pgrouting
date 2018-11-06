@@ -28,96 +28,101 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ------------------------
---    ONE TO ONE 
+-- pgr_minCostMaxFlow
 ------------------------
+
+--    ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
-    edges_sql TEXT,                 -- edges_sql
-    sources BIGINT,                 -- source
-    targets BIGINT,                 -- target
-        OUT seq INTEGER,            -- seq
-    OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
+    TEXT,   -- edges_sql (required)
+    BIGINT,   -- source (required)
+    BIGINT,   -- target (required)
 
-  RETURNS SETOF RECORD AS
-  $BODY$
-        SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 
-------------------------
---    MANY TO ONE 
-------------------------
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
+$BODY$
+LANGUAGE SQL VOLATILE;
 
+--    MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
-    edges_sql TEXT,                 -- edges_sql
-    sources ANYARRAY,                 -- source
-    targets BIGINT,               -- targets
-        OUT seq INTEGER,            -- seq
-    OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
+    TEXT,   -- edges_sql (required)
+    ANYARRAY,   -- source (required)
+    BIGINT, -- targets (required)
 
-  RETURNS SETOF RECORD AS
-  $BODY$
-        SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
+$BODY$
+LANGUAGE SQL VOLATILE;
 
-------------------------
---    ONE TO MANY 
-------------------------
+--    ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
-    edges_sql TEXT,                 -- edges_sql
-    sources BIGINT,               -- sources
-    targets ANYARRAY,                 -- target
-        OUT seq INTEGER,            -- seq
-    OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
+    TEXT,   -- edges_sql (required)
+    BIGINT, -- sources (required)
+    ANYARRAY,   -- target (required)
 
-  RETURNS SETOF RECORD AS
-  $BODY$
-        SELECT *
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := false);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := false);
+$BODY$
+LANGUAGE SQL VOLATILE;
 
-------------------------
 --    MANY TO MANY
-------------------------
-
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
-    edges_sql TEXT,                 -- edges_sql
-    sources ANYARRAY,               -- sources
-    targets ANYARRAY,               -- targets
-        OUT seq INTEGER,            -- seq
-    OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
+    TEXT,   -- edges_sql (required)
+    ANYARRAY, -- sources (required)
+    ANYARRAY, -- targets (required)
 
-  RETURNS SETOF RECORD AS
-  $BODY$
-        SELECT * 
-        FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := false);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_minCostMaxFlow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := false);
+$BODY$
+LANGUAGE SQL VOLATILE;
 
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_minCostMaxFlow(TEXT, BIGINT, BIGINT)
+IS 'EXPERIMENTAL pgr_minCostMaxFlow--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid';
+COMMENT ON FUNCTION pgr_minCostMaxFlow(TEXT, BIGINT, ANYARRAY)
+IS 'EXPERIMENTAL pgr_minCostMaxFlow--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids';
+COMMENT ON FUNCTION pgr_minCostMaxFlow(TEXT, ANYARRAY, BIGINT)
+IS 'EXPERIMENTAL pgr_minCostMaxFlow--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid';
+COMMENT ON FUNCTION pgr_minCostMaxFlow(TEXT, ANYARRAY, ANYARRAY)
+IS 'EXPERIMENTAL pgr_minCostMaxFlow--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids';

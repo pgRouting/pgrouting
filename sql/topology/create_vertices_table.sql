@@ -50,7 +50,7 @@ Last changes: 2013-03-22
 */
 
 CREATE OR REPLACE FUNCTION pgr_createverticestable(
-   edge_table text,
+   text,  -- edge table (required)
    the_geom text DEFAULT 'the_geom'::text,
    source text DEFAULT 'source'::text,
    target text DEFAULT 'target'::text,
@@ -59,6 +59,7 @@ CREATE OR REPLACE FUNCTION pgr_createverticestable(
   RETURNS text AS
 $BODY$
 DECLARE
+    edge_table TEXT := $1;
     naming record;
     sridinfo record;
     sname text;
@@ -250,5 +251,14 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_createVerticesTable(text,text,text,text,text)
-IS 'args: edge_table, the_geom:=''the_geom'',source:=''source'', target:=''target'' rows_where:=''true'' - creates a vertices table based on the source and target identifiers for selected rows';
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT) IS
+'pgr_createverticestable
+ - Parameters
+   - Edge table name
+ - Optional parameters
+   - the_geom := ''the_geom''
+   - source := ''source''
+   - target := ''target''
+   - rows_where := ''true''';
