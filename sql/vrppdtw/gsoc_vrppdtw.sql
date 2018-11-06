@@ -1,7 +1,7 @@
 CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(
-    sql text,
-    vehicle_num INTEGER,
-    capacity INTEGER,
+    text, -- SQL (required)
+    INTEGER, -- vehicle_num (required)
+    INTEGER, -- capacity (required)
 
     OUT seq INTEGER,
     OUT id1 INTEGER,
@@ -22,3 +22,11 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+COMMENT ON FUNCTION pgr_gsoc_vrppdtw(TEXT, INTEGER, INTEGER)
+IS 'pgr_vrpOneDepot
+ - EXPERIMENTAL
+ - Parameters
+   - customer SQL with columns: id, x, y, demand, openTime, closeTime, serviceTime, pIndex, dIndex
+   - number of vehicles
+   - capacity of the vehicles';
