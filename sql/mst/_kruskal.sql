@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION _pgr_kruskal(
-    TEXT,             -- Edge sql
+    TEXT,               -- Edge sql
     ANYARRAY,           -- tree root for traversal
     order_by TEXT,
     max_depth BIGINT,
@@ -44,3 +44,8 @@ CREATE OR REPLACE FUNCTION _pgr_kruskal(
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'kruskal'
 LANGUAGE C VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_kruskal(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
+IS 'pgRouting internal function';
