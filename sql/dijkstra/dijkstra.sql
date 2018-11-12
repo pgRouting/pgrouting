@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
     TEXT,   -- edges_sql (required)
-    BIGINT, -- from_vids (required)
-    BIGINT, -- to_vids (required)
+    BIGINT, -- from_vid (required)
+    BIGINT, -- to_vid (required)
 
     directed BOOLEAN DEFAULT true,
 
@@ -52,10 +52,10 @@ COST 100
 ROWS 1000;
 
 
--- ONE to ONE
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
     TEXT,     -- edges_sql (required)
-    BIGINT,   -- from_vids (required)
+    BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vids (required)
 
     directed BOOLEAN DEFAULT true,
@@ -77,7 +77,7 @@ COST 100
 ROWS 1000;
 
 
--- ONE to ONE
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -102,7 +102,7 @@ COST 100
 ROWS 1000;
 
 
--- ONE to ONE
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -130,7 +130,15 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_dijkstra--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid [,directed])';
+IS 'pgr_dijkstra(One to One)
+ - Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To vertex identifier
+ - Optional Parameters
+   - directed := true
+';
+
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_dijkstra--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids [,directed])';
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
