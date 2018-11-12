@@ -49,4 +49,7 @@ IS 'pgr_kruskal
  - EXPERIMENTAL
  - Undirected graph
  - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]';
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskal.html
+';
