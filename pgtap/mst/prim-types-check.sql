@@ -1,79 +1,114 @@
 \i setup.sql
 
-SELECT plan(7);
+SELECT plan(30);
 
-SELECT has_function('pgr_prim', ARRAY['text', 'bigint']);
+----------------------------------
+-- tests for all
+-- prefix:  pgr_prim
+----------------------------------
 
-SELECT function_returns('pgr_prim', ARRAY['text', 'bigint'], 'setof record');
+SELECT has_function('pgr_prim');
+SELECT has_function('pgr_prim',    ARRAY['text']);
+SELECT function_returns('pgr_prim', ARRAY['text'], 'setof record');
 
--- flags
--- error
+SELECT todo_start();
+SELECT has_function('pgr_primdfs');
+SELECT has_function('pgr_primdfs', ARRAY['text','bigint','bigint']);
+SELECT has_function('pgr_primdfs', ARRAY['text','anyarray','bigint']);
+SELECT function_returns('pgr_primdfs', ARRAY['text','bigint','bigint'],  'setof record');
+SELECT function_returns('pgr_primdfs', ARRAY['text','anyarray','bigint'],  'setof record');
 
-SELECT lives_ok(
-    'SELECT * FROM pgr_prim(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table''
-    )',
-    '4: Documentation says works with no flags');
+SELECT has_function('pgr_primbfs');
+SELECT has_function('pgr_primbfs', ARRAY['text','bigint','bigint']);
+SELECT has_function('pgr_primbfs', ARRAY['text','anyarray','bigint']);
+SELECT function_returns('pgr_primbfs', ARRAY['text','bigint','bigint'],  'setof record');
+SELECT function_returns('pgr_primbfs', ARRAY['text','anyarray','bigint'],  'setof record');
+
+SELECT has_function('pgr_primdd');
+SELECT has_function('pgr_primdd',  ARRAY['text','bigint','numeric']);
+SELECT has_function('pgr_primdd',  ARRAY['text','anyarray','numeric']);
+SELECT has_function('pgr_primdd',  ARRAY['text','bigint','double precision']);
+SELECT has_function('pgr_primdd',  ARRAY['text','anyarray','double precision']);
+SELECT function_returns('pgr_primdd',  ARRAY['text','bigint','numeric'],  'setof record');
+SELECT function_returns('pgr_primdd',  ARRAY['text','anyarray','numeric'],  'setof record');
+SELECT function_returns('pgr_primdd',  ARRAY['text','bigint','double precision'],  'setof record');
+SELECT function_returns('pgr_primdd',  ARRAY['text','anyarray','double precision'],  'setof record');
 
 
-SELECT lives_ok(
-    'SELECT * FROM pgr_prim(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table'',
-        4
-    )',
-    '5: Documentation says works with 1 flag');
+-- pgr_prim
+-- parameter names
+SELECT set_eq(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_prim'$$,
+    $$SELECT  '{"","seq","edge","cost"}'::TEXT[] $$
+);
 
-SELECT throws_ok(
-    'SELECT * FROM pgr_prim(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
-        3, 2
-    )','42883','function pgr_prim(unknown, integer, integer) does not exist',
-    '6: Documentation says it does not work with 2 flags');
+-- parameter types
+SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_prim'$$,
+    $$SELECT  '{25,20,20,701}'::OID[] $$
+);
 
 
--- prepare for testing return types
+-- pgr_primdfs
+-- parameter names
+SELECT set_eq(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_primdfs'$$,
+    $$VALUES
+        ('{"","","max_depth","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
+    $$
+);
 
-PREPARE all_return AS
-SELECT
-    'bigint'::text AS t1,
-    'bigint'::text AS t2,
-    'bigint'::text AS t3,
-    'bigint'::text AS t4,
-    'double precision'::text AS t5,
-    'double precision'::text AS t6,
-    'double precision'::text AS t7;
+-- parameter types
+SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_primdfs'$$,
+    $$VALUES
+        ('{25,20,20,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,20,20,20,20,20,20,701,701}'::OID[])
+    $$
+);
 
-PREPARE q1 AS
-SELECT pg_typeof(seq)::text AS t1,
-       pg_typeof(root_vertex)::text AS t2,
-       pg_typeof(node)::text AS t3,
-       pg_typeof(edge)::text AS t4,
-       pg_typeof(cost)::text AS t5,
-       pg_typeof(agg_cost)::text AS t6,
-       pg_typeof(tree_cost)::text AS t7
-    FROM (
-        SELECT * FROM pgr_prim(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            4
-        ) ) AS a
-    limit 1;
 
-PREPARE q2 AS
-SELECT pg_typeof(seq)::text AS t1,
-       pg_typeof(root_vertex)::text AS t2,
-       pg_typeof(node)::text AS t3,
-       pg_typeof(edge)::text AS t4,
-       pg_typeof(cost)::text AS t5,
-       pg_typeof(agg_cost)::text AS t6,
-       pg_typeof(tree_cost)::text AS t7
-    FROM (
-        SELECT * FROM pgr_prim(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table'
-        ) ) AS a
-    limit 1;
+-- pgr_primbfs
+-- parameter names
+SELECT set_eq(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_primbfs'$$,
+    $$VALUES
+        ('{"","","max_depth","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
+    $$
+);
 
-SELECT set_eq('q1', 'all_return', 'Expected returning, columns names & types');
-SELECT set_eq('q2', 'all_return', 'Expected returning, columns names & types');
+-- parameter types
+SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_primbfs'$$,
+    $$VALUES
+        ('{25,20,20,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,20,20,20,20,20,20,701,701}'::OID[])
+    $$
+);
+
+
+-- pgr_primdd
+-- parameter names
+SELECT set_eq(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_primdd'$$,
+    $$VALUES
+        ('{"","","","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
+    $$
+);
+
+-- parameter types
+SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_primdd'$$,
+    $$VALUES
+        ('{25,20,701,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,701,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,20,1700,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,1700,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,20,701,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,701,20,20,20,20,20,701,701}'::OID[])
+    $$
+);
+SELECT todo_end();
 
 
 SELECT * FROM finish();

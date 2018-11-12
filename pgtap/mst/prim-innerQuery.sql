@@ -1,16 +1,13 @@
 \i setup.sql
 
-SELECT plan(93);
+SELECT plan(180);
 
-
-SELECT has_function('pgr_prim');
-
-SELECT has_function('pgr_prim', ARRAY['text', 'bigint']);
-
-SELECT function_returns('pgr_prim', ARRAY['text', 'bigint'], 'setof record');
-
-SELECT style_dijkstra('pgr_prim', ', 4)');
 SELECT style_dijkstra('pgr_prim', ')');
+SELECT todo_start();
+SELECT style_dijkstra('pgr_primDFS', ', 5)');
+SELECT style_dijkstra('pgr_primBFS', ', 5)');
+SELECT style_dijkstra('pgr_primDD', ', 5, 3.5)');
+SELECT todo_end();
 
 SELECT finish();
 ROLLBACK;

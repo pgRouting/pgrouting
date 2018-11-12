@@ -35,28 +35,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_prim(
     TEXT,  -- edges_sql (required)
 
-    root BIGINT DEFAULT 0,
-
-    OUT seq BIGINT,            -- Seq
-    Out root_vertex BIGINT,     -- Root_vertex
-    OUT node BIGINT,	        -- node of lightest weight
-    OUT edge BIGINT,	     	-- Edge linked to that node
-    OUT cost FLOAT,             -- Cost of edge
-    OUT agg_cost FLOAT,         -- Cost from root_vertex to node
-    OUT tree_cost FLOAT)        -- Spanning tree cost
+    OUT seq BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
-    FROM _pgr_prim(_pgr_get_statement($1), $2);
+    SELECT seq, edge, cost
+    FROM _pgr_prim(_pgr_get_statement($1), 0);
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_prim(TEXT, BIGINT)
+COMMENT ON FUNCTION pgr_prim(TEXT)
 IS 'pgr_prim
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
- - Optional Parameters
-   - root';
-
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_prim.html
+';

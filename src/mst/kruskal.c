@@ -33,19 +33,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 
 
+#include "drivers/mst/mst_common.h"
 #include "drivers/mst/kruskal_driver.h"
 
 PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(kruskal);
 
-static
-int
-get_order(char * order_by) {
-    int order = tolower(order_by[0]);
-    if ('d' == order) return 1;
-    if ('b' == order) return 2;
-    return 0;
-}
 
 static
 void
