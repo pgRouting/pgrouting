@@ -34,7 +34,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     BIGINT, -- from_vids (required)
     BIGINT, -- to_vids (required)
 
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -131,7 +131,17 @@ IS 'pgr_dijkstraCost(One to One)
 ';
 
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN)
-IS 'pgr_dijkstraCost--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids [,directed])';
+IS 'pgr_dijkstraCost(One to Many)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
+
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_dijkstraCost--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid [,directed])';
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
