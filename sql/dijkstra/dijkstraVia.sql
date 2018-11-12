@@ -57,7 +57,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     ANYARRAY, -- via_vids (required)
     
     directed BOOLEAN DEFAULT true,
-    strict BOOLEAN DEFAULT FALSE,
+    strict BOOLEAN DEFAULT false,
     U_turn_on_edge BOOLEAN DEFAULT true,
 
 
