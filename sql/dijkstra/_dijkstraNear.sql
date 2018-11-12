@@ -37,13 +37,13 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, end_vid, node, edge, cost, agg_cost
@@ -63,13 +63,13 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, node, edge, cost, agg_cost
@@ -88,14 +88,14 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT end_vid BIGINT,
     OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
