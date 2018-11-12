@@ -135,5 +135,16 @@ IS 'pgr_dijkstraNear(Many to One)
    - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
 ';
 
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN) IS
-'PRE-EXPERIMENTAL _pgr_dijkstraNear(1 to Many - edges_sql(source,target,cost[,reverse_cost]), from_vids, to_vids, stop_at [,directed]';
+COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN) 
+IS 'pgr_dijkstraNear(Many to Many)
+- PRE-EXPERIMENTAL 
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To ARRAY[vertices identifiers]
+   - Stop at nth found
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+'; 
