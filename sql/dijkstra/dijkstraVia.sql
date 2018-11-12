@@ -55,9 +55,9 @@ LANGUAGE c VOLATILE STRICT;
 CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- via_vids (required)
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
     strict BOOLEAN DEFAULT FALSE,
-    U_turn_on_edge BOOLEAN DEFAULT TRUE,
+    U_turn_on_edge BOOLEAN DEFAULT true,
 
 
     OUT seq INTEGER,
@@ -78,6 +78,12 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
 
 COMMENT ON FUNCTION pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_dijkstraVia(edges_sql(id,source,target,cost[,reverse_cost]), via_vids, [,directed, strict, U_turn_on_edge])';
