@@ -36,12 +36,12 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
@@ -60,13 +60,13 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
@@ -85,13 +85,13 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
@@ -110,14 +110,14 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
@@ -166,4 +166,13 @@ IS 'pgr_dijkstra(Many to One)
 ';
 
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgr_dijkstra--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids [,directed])';
+IS 'pgr_dijkstra(Many to Many)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstra.html
+';
