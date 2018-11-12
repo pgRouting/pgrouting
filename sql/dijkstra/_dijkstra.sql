@@ -33,14 +33,19 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(
     normal BOOLEAN DEFAULT true,
     n_goals BIGINT DEFAULT 0,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'many_to_many_dijkstra'
-LANGUAGE c VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_dijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, BIGINT)
+IS 'pgRouting internal function';
