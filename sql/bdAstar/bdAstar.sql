@@ -51,15 +51,36 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
+COMMENT ON FUNCTION pgr_bdAstar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
+IS 'pgr_bdAstar(One to One)
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - From vertex identifier
+   - To vertex identifier
+ - Optional Parameters: 
+   - directed := true
+   - heuristic := 5
+   - factor := 1
+   - epsilon := 1
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdAstar.html
+';
+
+
 -- one to many
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vids (required)
+
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
     epsilon NUMERIC DEFAULT 1.0,
+
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT end_vid BIGINT,
