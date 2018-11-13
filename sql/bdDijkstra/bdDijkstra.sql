@@ -53,7 +53,21 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgr_bdDijkstra(One to One)
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - From vertex identifier
+   - To vertex identifier
+ - Optional Parameters: 
+   - directed := true
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
+
 -- ONE TO MANY
+
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
     TEXT,    -- edges_sql (required)
     BIGINT,   -- from_vid (required)
