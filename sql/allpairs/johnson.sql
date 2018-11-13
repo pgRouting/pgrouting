@@ -70,7 +70,7 @@ IS 'pgRouting internal function';
 COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN) 
 IS 'pgr_johnson
  - Parameters:
-   - edges SQL with columns: source,target,cost[,reverse_cost]) 
+   - edges SQL with columns: source, target, cost [,reverse_cost]) 
  - Optional Parameters: 
    - directed := true
  - Documentation:
