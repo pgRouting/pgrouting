@@ -31,12 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -------------
 
 
-------------------
--- pgr_bdDijkstra
-------------------
-
-
-
 CREATE OR REPLACE FUNCTION _pgr_bdDijkstra(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- start_vids (required)
@@ -60,8 +54,5 @@ LANGUAGE c VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_bdAstar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
-
-
-
