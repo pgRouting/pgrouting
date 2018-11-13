@@ -35,7 +35,7 @@ CREATE OR REPLACE FUNCTION _pgr_johnson(
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'johnson'
 LANGUAGE C VOLATILE STRICT;
@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION pgr_johnson(
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
 
@@ -61,4 +61,12 @@ LANGUAGE SQL VOLATILE STRICT;
 COMMENT ON FUNCTION _pgr_johnson(TEXT, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN) IS 'pgr_johnson(edges_sql(id,source,target,cost[,reverse_cost]), [,directed])';
+COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN) 
+IS 'pgr_johnson
+ - Parameters:
+   - edges SQL with columns: source,target,cost[,reverse_cost]) 
+ - Optional Parameters: 
+   - directed := 
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+';
