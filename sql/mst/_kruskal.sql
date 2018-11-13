@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_kruskal(
     TEXT,             -- Edge sql
     ANYARRAY,         -- tree root for traversal
-    order_by TEXT,
+    fn_suffix TEXT,
     max_depth BIGINT,
     distance FLOAT,
 

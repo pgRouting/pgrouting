@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "c_types/pgr_mst_rt.h"
 
-
 #include "drivers/mst/mst_common.h"
 #include "drivers/mst/kruskal_driver.h"
 
@@ -46,7 +45,7 @@ void
 process(
         char* edges_sql,
         ArrayType *roots,
-        char * p_order_by,
+        char * fn_suffix,
         int64_t max_depth,
         double distance,
 
@@ -56,25 +55,20 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
 
-    int order_by = get_order(p_order_by, &err_msg);
+    int order_by = get_order(fn_suffix, &err_msg);
     if (err_msg) {
         pgr_global_report(log_msg, notice_msg, err_msg);
         return;
     }
 
-    char * fn_name = get_name(0, p_order_by, &err_msg);
+    char * fn_name = get_name(0, fn_suffix, &err_msg);
     if (err_msg) {
         pgr_global_report(log_msg, notice_msg, err_msg);
         return;
     }
-
-
 
     int64_t* rootsArr = NULL;
     size_t size_rootsArr = 0;
-
-    PGR_DBG("order by %d", order_by);
-    PGR_DBG("max_depth %d", max_depth);
 
     pgr_SPI_connect();
 
@@ -83,14 +77,11 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total %ld edges in query:", total_edges);
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     do_pgr_kruskal(
             edges, total_edges,
@@ -106,7 +97,6 @@ process(
             &err_msg);
 
     time_msg(fn_name, start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
@@ -134,13 +124,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        PGR_DBG("Calling process");
-        /*
-           TEXT,             -- Edge sql
-           BIGINT,           -- tree root for traversal
-           order_by TEXT,
-           max_depth INTEGER
-        */
+        /* Edge sql, tree roots, fn_suffix, max_depth, distance */
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
@@ -188,7 +172,6 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
@@ -202,7 +185,6 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-
         SRF_RETURN_DONE(funcctx);
     }
 }

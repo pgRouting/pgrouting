@@ -93,7 +93,7 @@ class Pgr_prim {
      typedef typename G::V V;
      typedef typename G::B_G B_G;
 
-     std::vector<pgr_prim_rt> operator() (
+     std::vector<pgr_mst_rt> operator() (
                  G &graph,
                  int64_t root_vertex,
                  bool use_root);
@@ -108,12 +108,12 @@ class Pgr_prim {
 
      void resize(const G &graph);
 
-     std::vector< pgr_prim_rt >
+     std::vector< pgr_mst_rt >
          generatePrim(
                  const G &graph,
                  int64_t root_vertex );
 
-     std::vector< pgr_prim_rt > disconnectedPrim(const G &graph);
+     std::vector< pgr_mst_rt > disconnectedPrim(const G &graph);
 
  private:
      // Member
@@ -132,7 +132,7 @@ Pgr_prim<G>::resize(const G &graph) {
 
 
 template <class G>
-std::vector<pgr_prim_rt>
+std::vector<pgr_mst_rt>
 Pgr_prim<G>::generatePrim(
         const G &graph,
         int64_t root_vertex ) {
@@ -149,12 +149,12 @@ Pgr_prim<G>::generatePrim(
             .root_vertex(v_root)
             .visitor(prim_visitor(data)));
 
-    std::vector<pgr_prim_rt> results;
+    std::vector<pgr_mst_rt> results;
     double totalcost = 0;
 
     for (const auto v : data) {
         if (v == data[0]) {
-            results.push_back({root_vertex, root_vertex, -1, 0, totalcost, totalcost});
+            results.push_back({root_vertex, -2, root_vertex, -1, 0, totalcost});
             continue;
         }
 
@@ -164,19 +164,20 @@ Pgr_prim<G>::generatePrim(
         auto edge_id = graph.get_edge_id(v_sn, v, cost);
         totalcost += cost;
 
-        results.push_back({ root_vertex,
+        results.push_back({
+            root_vertex,
+            -2,
             node,
             edge_id,
             cost,
-            prim_aggegrateCost(predecessors, distances, v_root, v),
-            totalcost});  // tree_cost
+            prim_aggegrateCost(predecessors, distances, v_root, v)});
     }
     return results;
 }
 
 
 template <class G>
-std::vector<pgr_prim_rt>
+std::vector<pgr_mst_rt>
 Pgr_prim<G>::disconnectedPrim(const G &graph) {
     size_t totalNodes = num_vertices(graph.graph);
 
@@ -193,7 +194,7 @@ Pgr_prim<G>::disconnectedPrim(const G &graph) {
         component[components[v]].push_back(v);
     }
 
-    std::vector<pgr_prim_rt> results;
+    std::vector<pgr_mst_rt> results;
     for (const auto c : component) {
         /* Implementation */
         auto tmpresults = generatePrim(
@@ -207,7 +208,7 @@ Pgr_prim<G>::disconnectedPrim(const G &graph) {
 
 
 template <class G>
-std::vector<pgr_prim_rt>
+std::vector<pgr_mst_rt>
 Pgr_prim<G>::operator() (
         G &graph,
         int64_t root_vertex,
@@ -217,7 +218,7 @@ Pgr_prim<G>::operator() (
     }
 
     if (!graph.has_vertex(root_vertex)) {
-        return std::vector<pgr_prim_rt>();
+        return std::vector<pgr_mst_rt>();
     }
 
     return generatePrim(

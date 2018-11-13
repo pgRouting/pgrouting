@@ -41,7 +41,7 @@ CREATE OR REPLACE FUNCTION pgr_prim(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, edge, cost
-    FROM _pgr_prim(_pgr_get_statement($1), 0);
+    FROM _pgr_prim(_pgr_get_statement($1), ARRAY[0]::BIGINT[], '', -1, -1);
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
