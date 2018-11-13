@@ -109,7 +109,6 @@ IS 'pgr_bdAstar(One to Many)
    - ${PGROUTING_DOC_LINK}/pgr_bdAstar.html
 ';
 
-
 -- many to one
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
     TEXT,     -- edges_sql (required)
@@ -136,6 +135,22 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+COMMENT ON FUNCTION pgr_bdAstar(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
+IS 'pgr_bdAstar(Many to One)
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - From ARRAY[vertices identifiers]
+   - To vertex identifier
+ - Optional Parameters: 
+   - directed := true
+   - heuristic := 5
+   - factor := 1
+   - epsilon := 1
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdAstar.html
+';
+
 
 -- many to many
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
