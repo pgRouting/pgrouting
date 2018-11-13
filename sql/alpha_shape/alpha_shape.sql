@@ -31,16 +31,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------------------------------------------------------------
 */
 CREATE OR REPLACE FUNCTION pgr_alphashape(
-    text, -- sql (required)
-    alpha float8 DEFAULT 0,
+    TEXT, -- sql (required)
+    alpha FLOAT8 DEFAULT 0,
 
-    OUT x float8,
-    OUT y float8)
+    OUT x FLOAT8,
+    OUT y FLOAT8)
     RETURNS SETOF record
     AS 'MODULE_PATHNAME', 'alphashape'
     LANGUAGE c VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_alphashape(TEXT, FLOAT8) IS 'pgr_alphashape(sql(id,x,y) [,alpha])';
+COMMENT ON FUNCTION pgr_alphashape(TEXT, FLOAT8)
+IS 'pgr_alphashape
+- Parameters
+	- An SQL with columns: id, x, y 
+- Optional Parameters
+	- alpha := 0
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_alphashape.html
+';
 
 /*
 ----------------------------------------------------------
@@ -49,8 +57,8 @@ COMMENT ON FUNCTION pgr_alphashape(TEXT, FLOAT8) IS 'pgr_alphashape(sql(id,x,y) 
 ----------------------------------------------------------
 */
 CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(
-    varchar, -- query (required)
-    alpha float8 DEFAULT 0)
+    VARCHAR, -- query (required)
+    alpha FLOAT8 DEFAULT 0)
 
 	RETURNS geometry AS
 	$$
@@ -61,9 +69,9 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(
 		i int;
 		n int;
 		spos int;
-		q text;
-		x float8[];
-		y float8[];
+		q TEXT;
+		x FLOAT8[];
+		y FLOAT8[];
 
 	BEGIN
 		geoms := array[]::geometry[];
@@ -83,7 +91,7 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(
 		END IF;
 
 		spos := 1;
-		q := 'SELECT ST_GeometryFromText(''POLYGON((';
+		q := 'SELECT ST_GeometryFromTEXT(''POLYGON((';
 		FOR i IN 1..n LOOP
 			IF x[i] IS NULL AND y[i] IS NULL THEN
 				q := q || ', ' || x[spos] || ' ' || y[spos] || '))'',0) AS geom;';
@@ -93,7 +101,7 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(
 			ELSE
 				IF q = '' THEN
 					spos := i;
-					q := 'SELECT ST_GeometryFromText(''POLYGON((';
+					q := 'SELECT ST_GeometryFromTEXT(''POLYGON((';
 				END IF;
 				IF i = spos THEN
 					q := q || x[spos] || ' ' || y[spos];
@@ -108,4 +116,12 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(
 	$$
 	LANGUAGE 'plpgsql' VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_pointsAsPolygon(VARCHAR, FLOAT8) IS 'pgr_pointsAsPolygon(sql(id,x,y) [,alpha])';
+COMMENT ON FUNCTION pgr_pointsAsPolygon(VARCHAR, FLOAT8)
+IS 'pgr_pointsAsPolygon
+- Parameters
+	- An SQL with columns: id, x, y 
+- Optional Parameters
+	- alpha := 0
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_pointsAsPolygon.html
+';
