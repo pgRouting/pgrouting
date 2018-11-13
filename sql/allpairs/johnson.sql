@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
 CREATE OR REPLACE FUNCTION _pgr_johnson(
     edges_sql TEXT,
     directed BOOLEAN,
@@ -54,5 +55,10 @@ $BODY$
 
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_johnson(TEXT, BOOLEAN)
+IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN) IS 'pgr_johnson(edges_sql(id,source,target,cost[,reverse_cost]), [,directed])';
