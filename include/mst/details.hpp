@@ -30,10 +30,10 @@ namespace pgrouting {
 namespace {
 struct found_goals{}; //!< exception for dfs termination
 
-std::vector<pgr_kruskal_t>
+std::vector<pgr_mst_rt>
 get_no_edge_graph_result(
         std::vector<int64_t> roots) {
-    std::vector<pgr_kruskal_t> results;
+    std::vector<pgr_mst_rt> results;
     if (roots.empty()) return results;
     for (auto const root : roots) {
         results.push_back({root, 0, root, -1, 0.0, 0.0});

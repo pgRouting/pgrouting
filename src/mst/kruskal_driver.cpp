@@ -28,15 +28,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "mst/pgr_kruskal.hpp"
-#include "mst/details.hpp"
+#include "c_types/pgr_mst_rt.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "mst/pgr_kruskal.hpp"
+#include "mst/details.hpp"
+
 template < class G >
 static
-std::vector<pgr_kruskal_t>
+std::vector<pgr_mst_rt>
 pgr_kruskal(
         G &graph ) {
     pgrouting::functions::Pgr_kruskal< G > kruskal;
@@ -56,7 +58,7 @@ do_pgr_kruskal(
         int64_t max_depth,
         double distance,
 
-        pgr_kruskal_t **return_tuples,
+        pgr_mst_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,
@@ -84,7 +86,7 @@ do_pgr_kruskal(
                 roots.end());
         log << "roots size:" << roots.size() << "\n";
 
-        std::vector<pgr_kruskal_t> results;
+        std::vector<pgr_mst_rt> results;
         if (total_edges == 0) {
             results = pgrouting::get_no_edge_graph_result(roots);
         } else {

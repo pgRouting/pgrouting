@@ -108,7 +108,7 @@ namespace functions {
 template <class G>
 class Pgr_kruskal {
  public:
-     std::vector<pgr_kruskal_t> operator() (
+     std::vector<pgr_mst_rt> operator() (
              G &graph,
              std::vector<int64_t> root,
              int m_order_by,
@@ -121,7 +121,7 @@ class Pgr_kruskal {
      typedef typename G::E E;
 
      /* Does all the work */
-     std::vector<pgr_kruskal_t> generateKruskal(G &graph);
+     std::vector<pgr_mst_rt> generateKruskal(G &graph);
 
      /* @brief maps component number with smallest original vertex id */
      void calculate_component(const G &graph);
@@ -133,10 +133,10 @@ class Pgr_kruskal {
       * - DFS
       * - BFS
       */
-     std::vector<pgr_kruskal_t> order_results(const G &graph);
+     std::vector<pgr_mst_rt> order_results(const G &graph);
 
      template <typename T>
-     std::vector<pgr_kruskal_t> get_results(
+     std::vector<pgr_mst_rt> get_results(
              T order,
              int64_t root,
              const G &graph);
@@ -173,19 +173,19 @@ class Pgr_kruskal {
       *  - has the min vertex id that belongs to the component (when m_get_component = 2)
       */
      std::vector<int64_t> m_tree_id;
-     std::vector<pgr_kruskal_t> m_results;
+     std::vector<pgr_mst_rt> m_results;
 };
 
 /* IMPLEMENTATION */
 
 template <class G>
 template <typename T>
-std::vector<pgr_kruskal_t>
+std::vector<pgr_mst_rt>
 Pgr_kruskal<G>::get_results(
         T order,
         int64_t p_root,
         const G &graph) {
-    std::vector<pgr_kruskal_t> results;
+    std::vector<pgr_mst_rt> results;
     std::vector<double> agg_cost(graph.num_vertices(), 0);
     std::vector<int64_t> depth(graph.num_vertices(), 0);
     int64_t root(p_root);
@@ -264,7 +264,7 @@ Pgr_kruskal<G>::calculate_component(const G &graph) {
 
 
 template <class G>
-std::vector<pgr_kruskal_t>
+std::vector<pgr_mst_rt>
 Pgr_kruskal<G>::order_results(const G &graph) {
     /*
      * No particular order
@@ -295,7 +295,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     }
 
     if (m_use_root && m_order_by == 1 ) {
-        std::vector<pgr_kruskal_t> results;
+        std::vector<pgr_mst_rt> results;
         for (const auto root : m_root) {
             std::vector<E> visited_order;
 
@@ -360,7 +360,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
 
 
 template <class G>
-std::vector<pgr_kruskal_t>
+std::vector<pgr_mst_rt>
 Pgr_kruskal<G>::generateKruskal(G &graph) {
     m_spanning_tree.clear();
     m_components.clear();
@@ -379,7 +379,7 @@ Pgr_kruskal<G>::generateKruskal(G &graph) {
 }
 
 template <class G>
-std::vector<pgr_kruskal_t>
+std::vector<pgr_mst_rt>
 Pgr_kruskal<G>::operator() (
         G &graph,
         std::vector<int64_t> root,

@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
-#define INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
+#ifndef INCLUDE_C_TYPES_PGR_MST_RT_H_
+#define INCLUDE_C_TYPES_PGR_MST_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -36,6 +36,6 @@ typedef struct {
     int64_t edge;
     double cost;
     double agg_cost;
-} pgr_kruskal_t;
+} pgr_mst_rt;
 
-#endif  // INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
+#endif  // INCLUDE_C_TYPES_PGR_MST_RT_H_
