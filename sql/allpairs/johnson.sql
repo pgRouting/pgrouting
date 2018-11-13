@@ -35,6 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------
 
 
+------------------
+-- pgr_johnson
+------------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_johnson(
     edges_sql TEXT,
     directed BOOLEAN,
