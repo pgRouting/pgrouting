@@ -24,6 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--------------------
+-- pgr_bdAstarCost
+--------------------
 
 -- one to one
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
