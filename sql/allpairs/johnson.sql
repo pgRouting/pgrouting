@@ -42,7 +42,7 @@ LANGUAGE C VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_johnson(
     TEXT,    -- edges_sql (required)
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -66,7 +66,7 @@ IS 'pgr_johnson
  - Parameters:
    - edges SQL with columns: source,target,cost[,reverse_cost]) 
  - Optional Parameters: 
-   - directed := 
+   - directed := true
  - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
 ';
