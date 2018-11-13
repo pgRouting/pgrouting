@@ -178,8 +178,8 @@ COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, F
 IS 'pgr_astar(Many to One)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
-   - From vertex identifier
-   - To ARRAY[vertices identifiers]
+   - From ARRAY[vertices identifiers]
+   - To vertex identifier
  - Optional Parameters: 
    - directed := true
    - heuristic := 5
@@ -190,7 +190,7 @@ IS 'pgr_astar(Many to One)
 ';
 
 
-   COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
+  COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
 IS 'pgr_astar(Many to Many)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
