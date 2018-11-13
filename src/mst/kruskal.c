@@ -51,7 +51,23 @@ process(
 
         pgr_kruskal_t **result_tuples,
         size_t *result_count) {
-    int order_by = get_order(p_order_by);
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
+
+    int order_by = get_order(p_order_by, &err_msg);
+    if (err_msg) {
+        pgr_global_report(log_msg, notice_msg, err_msg);
+        return;
+    }
+
+    char * fn_name = get_name(0, p_order_by, &err_msg);
+    if (err_msg) {
+        pgr_global_report(log_msg, notice_msg, err_msg);
+        return;
+    }
+
+
 
     int64_t* rootsArr = NULL;
     size_t size_rootsArr = 0;
@@ -75,9 +91,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_kruskal(
             edges, total_edges,
             rootsArr, size_rootsArr,
@@ -91,7 +104,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_kruskal", start_t, clock());
+    time_msg(fn_name, start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {

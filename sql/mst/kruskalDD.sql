@@ -50,7 +50,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', -1, $3::FLOAT);
+    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -77,7 +77,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', -1, $3::FLOAT);
+    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -106,7 +106,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', -1, $3);
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DD', -1, $3);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -135,7 +135,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DFS', -1, $3::FLOAT);
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DD', -1, $3::FLOAT);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
