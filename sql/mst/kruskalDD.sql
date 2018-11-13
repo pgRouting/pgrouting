@@ -149,7 +149,10 @@ IS 'pgr_kruskalDD(Single Vertex)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - from root vertex identifier
-   - distance';
+   - distance
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+';
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, NUMERIC)
 IS 'pgr_kruskalDD(multiple Vertices)
@@ -158,7 +161,10 @@ IS 'pgr_kruskalDD(multiple Vertices)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - from ARRAY[root vertices identifiers]
-   - distance';
+   - distance
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+';
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT)
 IS 'pgr_kruskalDD(Single Vertex)
@@ -167,7 +173,10 @@ IS 'pgr_kruskalDD(Single Vertex)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - from root vertex identifier
-   - distance';
+   - distance
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+';
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, FLOAT)
 IS 'pgr_kruskalDD(multiple Vertices)
@@ -176,4 +185,7 @@ IS 'pgr_kruskalDD(multiple Vertices)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - from ARRAY[root vertices identifiers]
-   - distance';
+   - distance
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+';
