@@ -27,6 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------------
+-- pgr_astar
+-----------------
+
+
 CREATE OR REPLACE FUNCTION pgr_astar(
     TEXT,     -- edges sql (required)
     BIGINT,   -- from_vid (required)

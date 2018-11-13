@@ -34,6 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------
 
 
+-----------------
+-- pgr_astar
+-----------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_astar(
     edges_sql TEXT, -- XY edges sql
     start_vids ANYARRAY,
