@@ -28,6 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+---------------------
+-- pgr_floydWarshall
+---------------------
+
 CREATE OR REPLACE FUNCTION _pgr_floydWarshall(
     edges_sql TEXT,
     directed BOOLEAN,
@@ -64,7 +68,7 @@ IS 'pgRouting internal function';
 COMMENT ON FUNCTION pgr_floydWarshall(TEXT, BOOLEAN) 
 IS 'pgr_floydWarshall
  - Parameters:
-   - edges SQL with columns: source,target,cost[,reverse_cost]) 
+   - edges SQL with columns: source, target, cost [,reverse_cost]) 
  - Optional Parameters: 
    - directed := true
  - Documentation:
