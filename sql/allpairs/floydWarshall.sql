@@ -61,5 +61,12 @@ LANGUAGE SQL VOLATILE STRICT;
 COMMENT ON FUNCTION _pgr_floydWarshall(TEXT, BOOLEAN)
 IS 'pgRouting internal function';
 
-
-COMMENT ON FUNCTION pgr_floydWarshall(TEXT, BOOLEAN) IS 'pgr_floydWarshall(edges_sql(id,source,target,cost[,reverse_cost]), [,directed])';
+COMMENT ON FUNCTION pgr_floydWarshall(TEXT, BOOLEAN) 
+IS 'pgr_floydWarshall
+ - Parameters:
+   - edges SQL with columns: source,target,cost[,reverse_cost]) 
+ - Optional Parameters: 
+   - directed := true
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_floydWarshall.html
+';
