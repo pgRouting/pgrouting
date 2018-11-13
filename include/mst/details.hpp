@@ -30,12 +30,24 @@ namespace pgrouting {
 namespace {
 struct found_goals{}; //!< exception for dfs termination
 
+std::vector<int64_t>
+clean_vids(std::vector<int64_t> vids) {
+    std::sort(vids.begin(), vids.end());
+    vids.erase(
+            std::unique(vids.begin(), vids.end()),
+            vids.end());
+    vids.erase(
+            std::remove(vids.begin(), vids.end(), 0),
+            vids.end());
+    return vids;
+}
+
 std::vector<pgr_mst_rt>
 get_no_edge_graph_result(
-        std::vector<int64_t> roots) {
+        std::vector<int64_t> vids) {
     std::vector<pgr_mst_rt> results;
-    if (roots.empty()) return results;
-    for (auto const root : roots) {
+    if (vids.empty()) return results;
+    for (auto const root : clean_vids(vids)) {
         results.push_back({root, 0, root, -1, 0.0, 0.0});
     }
     return results;

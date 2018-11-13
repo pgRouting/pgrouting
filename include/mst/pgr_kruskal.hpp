@@ -108,11 +108,21 @@ namespace functions {
 template <class G>
 class Pgr_kruskal {
  public:
-     std::vector<pgr_mst_rt> operator() (
+     std::vector<pgr_mst_rt> kruskal(G &graph);
+
+     std::vector<pgr_mst_rt> kruskalBFS(
              G &graph,
-             std::vector<int64_t> root,
-             int m_order_by,
-             int64_t max_depth,
+             std::vector<int64_t> roots,
+             int64_t max_depth);
+
+     std::vector<pgr_mst_rt> kruskalDFS(
+             G &graph,
+             std::vector<int64_t> roots,
+             int64_t max_depth);
+
+     std::vector<pgr_mst_rt> kruskalDD(
+             G &graph,
+             std::vector<int64_t> roots,
              double distance);
 
  private:
@@ -142,6 +152,7 @@ class Pgr_kruskal {
              const G &graph);
 
  private:
+     std::string m_suffix;
      bool m_get_component;
      int  m_order_by;
      std::vector<int64_t> m_root;
@@ -150,10 +161,6 @@ class Pgr_kruskal {
      bool  m_use_distance;
      int64_t  m_max_depth;
      double  m_distance;
-     bool m_is_kruskal;
-     bool m_is_kruskalDD;
-     bool m_is_kruskalDFS;
-     bool m_is_kruskalBFS;
 
      struct InSpanning {
          std::set<E> edges;
@@ -217,10 +224,10 @@ Pgr_kruskal<G>::get_results(
         agg_cost[v] = agg_cost[u] + graph[edge].cost;
         depth[v] = depth[u] == -1? 1 : depth[u] + 1;
 
-        if (m_is_kruskal
-                || (m_is_kruskalBFS  && (m_max_depth >= depth[v]))
-                || (m_is_kruskalDFS  && m_max_depth >= depth[v])
-                || (m_is_kruskalDD  && m_distance >= agg_cost[v])) {
+        if ((m_suffix == "")
+                || ((m_suffix == "BFS")   && (m_max_depth >= depth[v]))
+                || ((m_suffix == "DFS")  && m_max_depth >= depth[v])
+                || ((m_suffix == "DD")  && m_distance >= agg_cost[v])) {
             results.push_back({
                 root,
                 m_order_by? depth[v] : 0,
@@ -378,36 +385,75 @@ Pgr_kruskal<G>::generateKruskal(G &graph) {
     return m_results;
 }
 
+
 template <class G>
 std::vector<pgr_mst_rt>
-Pgr_kruskal<G>::operator() (
-        G &graph,
-        std::vector<int64_t> root,
-        int order_by,
-        int64_t max_depth,
-        double distance) {
-    if (root.empty()) root.push_back(0);
-    pgassert(!root.empty());
-    m_root = root;
-    m_order_by = order_by;
-    m_distance = distance;
-    m_max_depth = max_depth;
-    m_get_component = order_by == 2;
-    m_use_root = root.size() > 1 || root[0] != 0;
-    m_use_depth = m_max_depth >= 0;
-    m_use_distance = m_distance >= 0;
-    m_is_kruskal = (m_order_by == 0) && (m_max_depth < 0) && (m_distance < 0);
-    m_is_kruskalDD = (m_order_by == 1) && (m_max_depth < 0) && (m_distance >= 0);
-    m_is_kruskalDFS = (m_order_by == 1) && (m_max_depth >= 0) && (m_distance < 0);
-    m_is_kruskalBFS = (m_order_by == 2) && (m_max_depth >= 0) && (m_distance < 0);
+Pgr_kruskal<G>::kruskal(
+        G &graph) {
+    m_suffix = "";
+    m_order_by = 0;
+    m_get_component = false;
+    m_use_root = false;
+    m_distance = -1;
+    m_max_depth = -1;
+    m_root.clear();
+    m_root.push_back(0);
 
-    pgassert((!m_use_root && root[0]==0) || m_use_root);
-#if 0
-    pgassert(m_order_by && (m_use_depth ||  m_use_distance));
-    pgassert((m_order_by == 0 && !m_use_depth && !m_use_distance)
-            || (m_order_by == 1 && (m_use_distance || m_use_depth))
-            || (m_order_by == 2 && !m_use_distance && m_use_depth));
-#endif
+    return generateKruskal(graph);
+}
+
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_kruskal<G>::kruskalBFS(
+        G &graph,
+        std::vector<int64_t> roots,
+        int64_t max_depth) {
+    m_suffix = "BFS";
+    m_order_by = 2;
+    m_get_component = true;
+    m_distance = -1;
+    m_max_depth = max_depth;
+    m_root = clean_vids(roots);
+    if (m_root.empty()) m_root.push_back(0);
+    m_use_root = m_root.size() > 1 || m_root[0] != 0;
+
+    return generateKruskal(graph);
+}
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_kruskal<G>::kruskalDFS(
+        G &graph,
+        std::vector<int64_t> roots,
+        int64_t max_depth) {
+    m_suffix = "DFS";
+    m_order_by = 1;
+    m_get_component = false;
+    m_distance = -1;
+    m_max_depth = max_depth;
+    m_root = clean_vids(roots);
+    if (m_root.empty()) m_root.push_back(0);
+    m_use_root = m_root.size() > 1 || m_root[0] != 0;
+
+    return generateKruskal(graph);
+}
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_kruskal<G>::kruskalDD(
+        G &graph,
+        std::vector<int64_t> roots,
+        double distance) {
+    m_suffix = "DD";
+    m_order_by = 1;
+    m_get_component = false;
+    m_distance = distance;
+    m_max_depth = -1;
+    m_root = clean_vids(roots);
+    if (m_root.empty()) m_root.push_back(0);
+    m_use_root = m_root.size() > 1 || m_root[0] != 0;
+
     return generateKruskal(graph);
 }
 

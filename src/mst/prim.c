@@ -61,7 +61,7 @@ process(
         return;
     }
 
-    char * fn_name = get_name(0, fn_suffix, &err_msg);
+    char * fn_name = get_name(1, fn_suffix, &err_msg);
     if (err_msg) {
         pgr_global_report(log_msg, notice_msg, err_msg);
         return;
@@ -74,26 +74,15 @@ process(
 
     rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
 
-
-    bool use_root = (rootsArr[0] != 0);
-
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total %ld edges in query:", total_edges);
 
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     do_pgr_prim(
             edges, total_edges,

@@ -86,6 +86,7 @@ process(
     do_pgr_kruskal(
             edges, total_edges,
             rootsArr, size_rootsArr,
+            fn_suffix,
             order_by,
             max_depth,
             distance,

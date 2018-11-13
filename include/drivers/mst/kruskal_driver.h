@@ -53,6 +53,8 @@ extern "C" {
                 int64_t *root,
                 size_t total_roots,
 
+                char* fn_suffix,
+
                 int order_by,
                 int64_t max_depth,
                 double distance,
