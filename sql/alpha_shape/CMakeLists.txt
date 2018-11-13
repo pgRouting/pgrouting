@@ -1,6 +1,7 @@
 
 SET(LOCAL_FILES
     alpha_shape.sql
+    pointsAsPolygon.sql
     )
 
 foreach (f ${LOCAL_FILES})
