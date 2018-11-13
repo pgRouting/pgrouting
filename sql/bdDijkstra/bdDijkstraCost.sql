@@ -25,6 +25,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
+----------------------
+-- pgr_bdDijkstraCost
+----------------------
+
+
+
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (requiered)
