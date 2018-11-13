@@ -24,6 +24,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+----------------
+----------------
+-- _bdAstar
+----------------
+----------------
+
 CREATE OR REPLACE FUNCTION _pgr_bdAstar(
     TEXT,
     ANYARRAY,
@@ -46,4 +52,9 @@ RETURNS SETOF RECORD AS
     'MODULE_PATHNAME', 'bd_astar'
 LANGUAGE C VOLATILE STRICT;
 
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_bdAstar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT, BOOLEAN)
+IS 'pgRouting internal function';
 
