@@ -34,7 +34,7 @@ CREATE OR REPLACE FUNCTION _pgr_floydWarshall(
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'floydWarshall'
 LANGUAGE C VOLATILE STRICT;
@@ -42,11 +42,11 @@ LANGUAGE C VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_floydWarshall(
     TEXT,    -- edges_sql (required)
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
 
