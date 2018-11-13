@@ -26,9 +26,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ----------------
 ----------------
--- _bdAstar
+-- bdAstar
 ----------------
 ----------------
+
+----------------
+-- pgr_bdAstar
+----------------
+
+
 
 CREATE OR REPLACE FUNCTION _pgr_bdAstar(
     TEXT,
