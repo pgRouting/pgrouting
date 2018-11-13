@@ -51,6 +51,24 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_aStarCost(One to One)
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - From vertex identifier
+   - To vertex identifier
+ - Optional Parameters: 
+   - directed := true
+   - heuristic := 5
+   - factor := 1
+   - epsilon := 1
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_astar.html
+';
+
+
+
 CREATE OR REPLACE FUNCTION pgr_aStarCost(
     TEXT,       -- edges sql (required)
     BIGINT,     -- from_vid (required)
@@ -73,6 +91,7 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
 
 CREATE OR REPLACE FUNCTION pgr_aStarCost(
     TEXT,       -- edges sql (required)
@@ -124,8 +143,6 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
-IS 'pgr_aStarCost--One to One--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vid, to_vid [,directed ,heuristic, factor ,epsilon])';
 COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
 IS 'pgr_aStarCost--One to Many--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vid, to_vids [,directed, heuristic, factor, epsilon])';
 COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
