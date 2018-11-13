@@ -65,9 +65,7 @@ IS 'pgr_bdDijkstra(One to One)
    - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
 ';
 
-
 -- ONE TO MANY
-
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
     TEXT,    -- edges_sql (required)
     BIGINT,   -- from_vid (required)
@@ -167,6 +165,18 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgr_bdDijkstra(Many to Many)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
@@ -176,4 +186,5 @@ IS 'pgr_bdDijkstra--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_bdDijkstra--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid [,directed])';
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgr_bdDijkstra--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids [,directed])';
+IS 'pgr_bdDijkstra--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]),
+ from_vids, to_vids [,directed])';
