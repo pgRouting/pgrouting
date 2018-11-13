@@ -56,4 +56,10 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_floydWarshall(TEXT, BOOLEAN)
+IS 'pgRouting internal function';
+
+
 COMMENT ON FUNCTION pgr_floydWarshall(TEXT, BOOLEAN) IS 'pgr_floydWarshall(edges_sql(id,source,target,cost[,reverse_cost]), [,directed])';
