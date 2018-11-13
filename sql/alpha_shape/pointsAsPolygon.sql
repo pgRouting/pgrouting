@@ -96,9 +96,9 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(
 
 COMMENT ON FUNCTION pgr_pointsAsPolygon(VARCHAR, FLOAT8)
 IS 'pgr_pointsAsPolygon
-- Parameters
+- Parameters:
 	- An SQL with columns: id, x, y 
-- Optional Parameters
+- Optional Parameters:
 	- alpha := 0
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_pointsAsPolygon.html
