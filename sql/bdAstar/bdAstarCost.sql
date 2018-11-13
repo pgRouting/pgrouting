@@ -126,7 +126,20 @@ COST 100
 ROWS 1000;
 
 COMMENT ON FUNCTION pgr_bdAstarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
-IS 'pgr_bdAstarCost--Many to One--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vids, to_vid [,directed, heuristic, factor, epsilon])';
+IS 'pgr_bdAstarCost(Many to One)
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - From ARRAY[vertices identifiers]
+   - To vertex identifier
+ - Optional Parameters: 
+   - directed := true
+   - heuristic := 5
+   - factor := 1
+   - epsilon := 1
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+';
+
 
 
 -- many to many
