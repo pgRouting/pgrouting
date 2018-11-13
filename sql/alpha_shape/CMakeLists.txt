@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    alpha_shape.sql
+    alphaShape.sql
     pointsAsPolygon.sql
     )
 
