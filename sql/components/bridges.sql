@@ -53,5 +53,15 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
-COMMENT ON FUNCTION pgr_bridges(TEXT) IS
-'pgr_bridges(edges_sql(id,source,target,cost[,reverse_cost]) For undirected graph';
+
+COMMENT ON FUNCTION _pgr_bridges(TEXT)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION pgr_bridges(TEXT) 
+IS'pgr_bridges
+- Undirected graph
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bridges.html
+';
