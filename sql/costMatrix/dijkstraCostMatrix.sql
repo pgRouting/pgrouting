@@ -53,9 +53,9 @@ IS 'pgr_dijkstraCostMatrix
 - EXPERIMENTAL
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - - ARRAY [vertices identifiers]
+    - ARRAY [vertices identifiers]
 - Optional Parameters
     - directed := true
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_withPointsCostMatrix.html
+    - ${PGROUTING_DOC_LINK}/pgr_dijkstraCostMatrix.html
 ';
