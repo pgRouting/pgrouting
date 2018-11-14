@@ -70,7 +70,7 @@ do_pgr_kruskal(
         std::vector<pgr_mst_rt> results;
 
         if (total_edges == 0) {
-            results = pgrouting::get_no_edge_graph_result(roots);
+            results = pgrouting::details::get_no_edge_graph_result(roots);
         } else {
             pgrouting::UndirectedGraph undigraph(UNDIRECTED);
             undigraph.insert_edges(data_edges, total_edges);

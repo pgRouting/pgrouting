@@ -51,6 +51,8 @@ process(
 
         pgr_mst_rt **result_tuples,
         size_t *result_count) {
+    pgr_SPI_connect();
+
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
@@ -63,8 +65,6 @@ process(
 
     int64_t* rootsArr = NULL;
     size_t size_rootsArr = 0;
-
-    pgr_SPI_connect();
 
     rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
 

@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-#include "mst/mst_visitors.hpp"
+#include "mst/visitors.hpp"
 #include "mst/details.hpp"
 
 namespace pgrouting {
@@ -352,7 +352,7 @@ Pgr_kruskal<G>::kruskalBFS(
     m_get_component = true;
     m_distance = -1;
     m_max_depth = max_depth;
-    m_roots = clean_vids(roots);
+    m_roots = details::clean_vids(roots);
 
     return generateKruskal(graph);
 }
@@ -368,7 +368,7 @@ Pgr_kruskal<G>::kruskalDFS(
     m_get_component = false;
     m_distance = -1;
     m_max_depth = max_depth;
-    m_roots = clean_vids(roots);
+    m_roots = details::clean_vids(roots);
 
     return generateKruskal(graph);
 }
@@ -384,7 +384,7 @@ Pgr_kruskal<G>::kruskalDD(
     m_get_component = false;
     m_distance = distance;
     m_max_depth = -1;
-    m_roots = clean_vids(roots);
+    m_roots = details::clean_vids(roots);
 
     return generateKruskal(graph);
 }

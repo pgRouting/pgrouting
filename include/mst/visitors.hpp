@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MST_MST_VISITORS_HPP_
-#define INCLUDE_MST_MST_VISITORS_HPP_
+#ifndef INCLUDE_MST_VISITORS_HPP_
+#define INCLUDE_MST_VISITORS_HPP_
 #pragma once
 
 #include <boost/config.hpp>
@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
 #include <vector>
-#include "mst/details.hpp" // for found_goals()
+#include "mst/details.hpp"  // for found_goals()
 
 namespace pgrouting {
 namespace  visitors {
@@ -39,73 +39,73 @@ namespace  visitors {
 /* Prim */
 template <class V>
 class Prim_visitor : public boost::default_dijkstra_visitor {
-    public:
-        explicit Prim_visitor(
-                std::vector<V> &data) :
-            m_data(data)  {}
-        template <class B_G>
-            void finish_vertex(V v, B_G&) {
-                m_data.push_back(v);
-            }
-    private:
-        std::vector<V> &m_data;
+ public:
+     explicit Prim_visitor(
+             std::vector<V> &data) :
+         m_data(data)  {}
+     template <class B_G>
+         void finish_vertex(V v, B_G&) {
+             m_data.push_back(v);
+         }
+ private:
+     std::vector<V> &m_data;
 };
 
 /* BFS */
 template <class E>
 class Bfs_visitor : public boost::default_bfs_visitor {
-    public:
-        explicit Bfs_visitor(
-                std::vector<E> &data) :
-            m_data(data)  {}
-        template <class B_G>
-            void tree_edge(E e, const B_G&) {
-                m_data.push_back(e);
-            }
-    private:
-        std::vector<E> &m_data;
+ public:
+     explicit Bfs_visitor(
+             std::vector<E> &data) :
+         m_data(data)  {}
+     template <class B_G>
+         void tree_edge(E e, const B_G&) {
+             m_data.push_back(e);
+         }
+ private:
+     std::vector<E> &m_data;
 };
 
 /* DFS */
 template <class E>
 class Dfs_visitor : public boost::default_dfs_visitor {
-    public:
-        explicit Dfs_visitor(
-                std::vector<E> &data) :
-            m_data(data)  {}
-        template <typename B_G>
-            void tree_edge(E e, const B_G&) {
-                m_data.push_back(e);
-            }
-    private:
-        std::vector<E> &m_data;
+ public:
+     explicit Dfs_visitor(
+             std::vector<E> &data) :
+         m_data(data)  {}
+     template <typename B_G>
+         void tree_edge(E e, const B_G&) {
+             m_data.push_back(e);
+         }
+ private:
+     std::vector<E> &m_data;
 };
 
 /* DFS */
 template <typename V, typename E>
 class Dfs_visitor_with_root : public boost::default_dfs_visitor {
-    public:
-        Dfs_visitor_with_root(
-                V root,
-                std::vector<E> &data) :
-            m_data(data),
-            m_roots(root) {}
-        template <typename B_G>
-            void tree_edge(E e, const B_G&) {
-                m_data.push_back(e);
-            }
-        template <typename B_G>
-            void start_vertex(V v, const B_G&) {
-                if (v != m_roots) throw found_goals();
-            }
+ public:
+     Dfs_visitor_with_root(
+             V root,
+             std::vector<E> &data) :
+         m_data(data),
+         m_roots(root) {}
+     template <typename B_G>
+         void tree_edge(E e, const B_G&) {
+             m_data.push_back(e);
+         }
+     template <typename B_G>
+         void start_vertex(V v, const B_G&) {
+             if (v != m_roots) throw found_goals();
+         }
 
-    private:
-        std::vector<E> &m_data;
-        V m_roots;
+ private:
+     std::vector<E> &m_data;
+     V m_roots;
 };
 
 
 }  // namespace visitors
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MST_MST_VISITORS_HPP_
+#endif  // INCLUDE_MST_VISITORS_HPP_
