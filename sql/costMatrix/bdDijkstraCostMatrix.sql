@@ -24,6 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------------------------
+-- pgr_bdDijkstraCostMatrix
+-----------------------------
 
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCostMatrix(
     TEXT,     -- edges_sql (required)
@@ -43,5 +46,16 @@ LANGUAGE SQL VOLATILE
 COST 100
 ROWS 1000;
 
-COMMENT ON FUNCTION pgr_bdDijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN) IS
-'pgr_bdDijkstraCostMatrix(edges_sql(id,source,target,cost[,reverse_cost]), vids, [,directed])';
+-- COMMENT
+
+COMMENT ON FUNCTION pgr_bdDijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN) 
+IS 'pgr_bdDijkstraCostMatrix
+- EXPERIMENTAL
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - ARRAY [vertices identifiers]
+- Optional Parameters
+    - directed := true
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCostMatrix.html
+';
