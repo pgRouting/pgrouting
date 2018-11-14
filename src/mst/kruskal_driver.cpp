@@ -65,9 +65,9 @@ do_pgr_kruskal(
         pgassert(*return_count == 0);
 
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
+        std::string suffix(fn_suffix);
 
         std::vector<pgr_mst_rt> results;
-        std::string suffix(fn_suffix);
 
         if (total_edges == 0) {
             results = pgrouting::get_no_edge_graph_result(roots);
