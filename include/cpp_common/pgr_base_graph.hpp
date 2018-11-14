@@ -647,6 +647,38 @@ class Pgr_base_graph {
 
      int64_t get_edge_id(V from, V to, double &distance) const;
 
+     E get_edge(
+             V from,
+             V to,
+             double &distance) const {
+         E e;
+         EO_i out_i, out_end;
+         V v_source, v_target;
+         double minCost =  (std::numeric_limits<double>::max)();
+         E minEdge;
+         bool valid = false;
+         for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
+                 out_i != out_end; ++out_i) {
+             e = *out_i;
+             if (!valid) {
+                 minEdge = e;
+                 valid = true;
+             }
+             v_target = target(e);
+             v_source = source(e);
+             if ((from == v_source) && (to == v_target)
+                     && (distance == graph[e].cost)) {
+                 return e;
+             }
+             if ((from == v_source) && (to == v_target)
+                     && (minCost > graph[e].cost)) {
+                 minCost = graph[e].cost;
+                 minEdge = e;
+             }
+         }
+         return minEdge;
+     }
+
      size_t num_vertices() const { return boost::num_vertices(graph);}
      size_t num_edges() const { return boost::num_edges(graph);}
 
@@ -813,6 +845,8 @@ Pgr_base_graph< G, T_V, T_E >::restore_graph() {
         removed_edges.pop_front();
     }
 }
+
+
 
 
 template < class G, typename T_V, typename T_E >
