@@ -69,7 +69,7 @@ double prim_aggegrateCost(
     return agg_cost;
 }
 
-}  // namespace visitors
+}
 
 namespace functions {
 
@@ -222,13 +222,15 @@ template <class G>
 std::vector<pgr_mst_rt>
 Pgr_prim<G>::prim(
         G &graph) {
+    this->mst();
+#if 0
     this->m_suffix = "";
     this->m_order_by = 0;
     this->m_get_component = false;
     this->m_distance = -1;
     this->m_max_depth = -1;
     this->m_roots.clear();
-
+#endif
     return disconnectedPrim(graph);
 }
 
@@ -238,12 +240,15 @@ Pgr_prim<G>::primBFS(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth) {
+        this->mstBFS(roots, max_depth);
+#if 0
     this->m_suffix = "BFS";
     this->m_order_by = 2;
     this->m_get_component = true;
     this->m_distance = -1;
     this->m_max_depth = max_depth;
     this->m_roots = details::clean_vids(roots);
+#endif
 
     return this->m_roots.empty()? disconnectedPrim(graph)
         : generatePrim(graph);
@@ -255,12 +260,15 @@ Pgr_prim<G>::primDFS(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth) {
+    this->mstDFS(roots, max_depth);
+#if 0
     this->m_suffix = "DFS";
     this->m_order_by = 1;
     this->m_get_component = false;
     this->m_distance = -1;
     this->m_max_depth = max_depth;
     this->m_roots = details::clean_vids(roots);
+#endif
 
     return this->m_roots.empty()? disconnectedPrim(graph)
         : generatePrim(graph);
@@ -272,12 +280,15 @@ Pgr_prim<G>::primDD(
         G &graph,
         std::vector<int64_t> roots,
         double distance) {
+    this->mstDD(roots, distance);
+#if 0
     this->m_suffix = "DD";
     this->m_order_by = 1;
     this->m_get_component = false;
     this->m_distance = distance;
     this->m_max_depth = -1;
     this->m_roots = details::clean_vids(roots);
+#endif
 
     return generatePrim(graph);
 }
