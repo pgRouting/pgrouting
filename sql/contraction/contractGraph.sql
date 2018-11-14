@@ -87,12 +87,12 @@ COMMENT ON FUNCTION pgr_contractGraph(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN
 IS 'pgr_contractGraph
 - EXPERIMENTAL
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - ARRAY [Contraction order]
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - ARRAY [Contraction order]
 - Optional Parameters
-   - max_cycles := 1
-   - forbidden_vertices := ARRAY[]::BIGINT[]
-   - directed := true
+    - max_cycles := 1
+    - forbidden_vertices := ARRAY[]::BIGINT[]
+    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_contractGraph.html
+    - ${PGROUTING_DOC_LINK}/pgr_contractGraph.html
 ';

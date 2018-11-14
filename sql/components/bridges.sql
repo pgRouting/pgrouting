@@ -61,7 +61,7 @@ COMMENT ON FUNCTION pgr_bridges(TEXT)
 IS'pgr_bridges
 - Undirected graph
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bridges.html
+    - ${PGROUTING_DOC_LINK}/pgr_bridges.html
 ';

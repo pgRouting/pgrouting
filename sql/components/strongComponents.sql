@@ -68,8 +68,8 @@ COMMENT ON FUNCTION pgr_strongComponents(TEXT)
 IS'pgr_strongComponents
 - Directed graph
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_strongComponents.html
+    - ${PGROUTING_DOC_LINK}/pgr_strongComponents.html
 ';
 
