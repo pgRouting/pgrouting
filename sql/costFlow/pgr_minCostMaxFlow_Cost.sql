@@ -64,6 +64,7 @@ CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow_Cost(
     TEXT,   -- edges_sql (required)
     ANYARRAY, -- sources (required)
     BIGINT)   -- target (required)
+
 RETURNS FLOAT AS
 $BODY$
     SELECT cost
@@ -106,8 +107,17 @@ IS 'pgr_minCostMaxFlow_Cost(One to Many)
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_minCostMaxFlow_Cost.html
   ';
-  
+
 COMMENT ON FUNCTION pgr_minCostMaxFlow_Cost(TEXT, ANYARRAY, BIGINT)
-IS 'EXPERIMENTAL pgr_minCostMaxFlow_Cost--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid';
+IS 'pgr_minCostMaxFlow_Cost (Many to One)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]vertex identifier
+  - To vertex identifier
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_minCostMaxFlow_Cost.html
+';
+
 COMMENT ON FUNCTION pgr_minCostMaxFlow_Cost(TEXT, ANYARRAY, ANYARRAY)
 IS 'EXPERIMENTAL pgr_minCostMaxFlow_Cost--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids';
