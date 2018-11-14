@@ -27,9 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
------------------------------------------------------------------------------
+----------
 -- ChPP
------------------------------------------------------------------------------
+----------
+
 
 CREATE OR REPLACE FUNCTION _pgr_directedChPP(
     edges_sql TEXT,
@@ -45,3 +46,8 @@ CREATE OR REPLACE FUNCTION _pgr_directedChPP(
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'directedChPP'
 LANGUAGE c IMMUTABLE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_directedChPP(TEXT, BOOLEAN)
+IS 'pgRouting internal function';
