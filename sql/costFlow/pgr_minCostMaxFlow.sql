@@ -148,8 +148,8 @@ IS 'pgr_minCostMaxFlow (Many to One)
 - EXPERIMENTAL
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - From vertex identifier
-  - To ARRAY[vertices identifiers]
+  - From ARRAY[vertices identifiers]vertex identifier
+  - To vertex identifier
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_minCostMaxFlow.html
 ';
@@ -159,7 +159,7 @@ IS 'EXPERIMENTAL pgr_minCostMaxFlow (Many to Many)
 - EXPERIMENTAL
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - From vertex identifier
+  - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_minCostMaxFlow.html
