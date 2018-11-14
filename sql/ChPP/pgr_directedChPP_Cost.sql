@@ -51,7 +51,7 @@ IS 'pgr_directedChPP_Cost
 - EXPERIMENTAL
 - Directed graph
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+	- Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_directedChPP_Cost.html
+	- ${PGROUTING_DOC_LINK}/pgr_directedChPP_Cost.html
 ';
