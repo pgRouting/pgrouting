@@ -43,7 +43,8 @@ do_pgr_prim(
         int64_t *rootsArr,
         size_t size_rootsArr,
 
-        int order_by,
+        char* fn_suffix,
+
         int64_t max_depth,
         double distance,
 
@@ -63,28 +64,30 @@ do_pgr_prim(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = UNDIRECTED;
-
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
-        std::sort(roots.begin(), roots.end());
-        roots.erase(
-                std::unique(roots.begin(), roots.end()),
-                roots.end());
-        roots.erase(
-                std::remove(roots.begin(), roots.end(), 0),
-                roots.end());
+        std::string suffix(fn_suffix);
 
         std::vector<pgr_mst_rt> results;
 
         if (total_edges == 0) {
             results = pgrouting::get_no_edge_graph_result(roots);
         } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(UNDIRECTED);
             undigraph.insert_edges(data_edges, total_edges);
-            log << "The Graph:\n" << undigraph;
             pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
-            results = prim(undigraph, roots[0], roots[0] != 0);
+            if (suffix == "") {
+                results = prim.prim(undigraph);
+            } else if (suffix == "BFS") {
+                results = prim.primBFS(undigraph, roots, max_depth);
+            } else if (suffix == "DFS") {
+                results = prim.primDFS(undigraph, roots, max_depth);
+            } else if (suffix == "DD") {
+                results = prim.primDD(undigraph, roots, distance);
+            } else {
+                err << "Unknown Prim function";
+                *err_msg = pgr_msg(err.str().c_str());
+                return;
+            }
         }
 
         auto count = results.size();

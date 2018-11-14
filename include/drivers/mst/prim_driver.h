@@ -52,7 +52,8 @@ void do_pgr_prim(
         int64_t *rootsArr,
         size_t size_rootsArr,
 
-        int order_by,
+        char* fn_suffix,
+
         int64_t max_depth,
         double distance,
 

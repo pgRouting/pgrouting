@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <vector>
+#include <algorithm>
 #include "c_types/pgr_edge_t.h"
 
 namespace pgrouting {

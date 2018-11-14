@@ -34,12 +34,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 #include <sstream>
-#include <functional>
 #include <limits>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_assert.h"
+
+#include "mst/details.hpp"
 
 
 //******************************************
@@ -98,6 +99,24 @@ class Pgr_prim {
                  int64_t root_vertex,
                  bool use_root);
 
+     std::vector<pgr_mst_rt> prim(G &graph);
+
+     std::vector<pgr_mst_rt> primBFS(
+             G &graph,
+             std::vector<int64_t> roots,
+             int64_t max_depth);
+
+     std::vector<pgr_mst_rt> primDFS(
+             G &graph,
+             std::vector<int64_t> roots,
+             int64_t max_depth);
+
+     std::vector<pgr_mst_rt> primDD(
+             G &graph,
+             std::vector<int64_t> roots,
+             double distance);
+
+
  private:
      // Functions
      void clear() {
@@ -108,10 +127,12 @@ class Pgr_prim {
 
      void resize(const G &graph);
 
-     std::vector< pgr_mst_rt >
-         generatePrim(
-                 const G &graph,
-                 int64_t root_vertex );
+     std::vector<pgr_mst_rt> generatePrim(
+             const G &graph,
+             int64_t root_vertex );
+
+     std::vector<pgr_mst_rt> generatePrim(
+             const G &graph);
 
      std::vector< pgr_mst_rt > disconnectedPrim(const G &graph);
 
@@ -120,6 +141,14 @@ class Pgr_prim {
      std::vector<V> predecessors;
      std::vector<double> distances;
      std::vector<V> data;
+
+     std::string m_suffix;
+     bool m_get_component;
+     int  m_order_by;
+     std::vector<int64_t> m_roots;
+     int64_t  m_max_depth;
+     double  m_distance;
+     std::vector<pgr_mst_rt> m_results;
 };
 
 
@@ -130,6 +159,17 @@ Pgr_prim<G>::resize(const G &graph) {
     distances.resize(graph.num_vertices());
 }
 
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::generatePrim(
+        const G &graph) {
+    for (auto r : m_roots) {
+        auto result = generatePrim(graph, r);
+        m_results.insert(m_results.end(), result.begin(), result.end());
+    }
+    return m_results;
+}
 
 template <class G>
 std::vector<pgr_mst_rt>
@@ -205,6 +245,67 @@ Pgr_prim<G>::disconnectedPrim(const G &graph) {
     return results;
 }
 
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::prim(
+        G &graph) {
+    m_suffix = "";
+    m_order_by = 0;
+    m_get_component = false;
+    m_distance = -1;
+    m_max_depth = -1;
+    m_roots.clear();
+
+    return disconnectedPrim(graph);
+}
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::primBFS(
+        G &graph,
+        std::vector<int64_t> roots,
+        int64_t max_depth) {
+    m_suffix = "BFS";
+    m_order_by = 2;
+    m_get_component = true;
+    m_distance = -1;
+    m_max_depth = max_depth;
+    m_roots = clean_vids(roots);
+
+    return generatePrim(graph);
+}
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::primDFS(
+        G &graph,
+        std::vector<int64_t> roots,
+        int64_t max_depth) {
+    m_suffix = "DFS";
+    m_order_by = 1;
+    m_get_component = false;
+    m_distance = -1;
+    m_max_depth = max_depth;
+    m_roots = clean_vids(roots);
+
+    return generatePrim(graph);
+}
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::primDD(
+        G &graph,
+        std::vector<int64_t> roots,
+        double distance) {
+    m_suffix = "DD";
+    m_order_by = 1;
+    m_get_component = false;
+    m_distance = distance;
+    m_max_depth = -1;
+    m_roots = clean_vids(roots);
+
+    return generatePrim(graph);
+}
 
 
 template <class G>

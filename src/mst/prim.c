@@ -55,12 +55,6 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
 
-    int order_by = get_order(fn_suffix, &err_msg);
-    if (err_msg) {
-        pgr_global_report(log_msg, notice_msg, err_msg);
-        return;
-    }
-
     char * fn_name = get_name(1, fn_suffix, &err_msg);
     if (err_msg) {
         pgr_global_report(log_msg, notice_msg, err_msg);
@@ -87,7 +81,9 @@ process(
     do_pgr_prim(
             edges, total_edges,
             rootsArr, size_rootsArr,
-            order_by,
+
+            fn_suffix,
+
             max_depth,
             distance,
 
