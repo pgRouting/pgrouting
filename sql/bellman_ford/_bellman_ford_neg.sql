@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 -------------------------
--- _pgr_bellmanFordNeg
+-- pgr_bellmanFordNeg
 -------------------------
 
 CREATE OR REPLACE FUNCTION _pgr_bellmanFordNeg(
@@ -49,4 +49,7 @@ CREATE OR REPLACE FUNCTION _pgr_bellmanFordNeg(
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'bellman_ford_neg'
 LANGUAGE C IMMUTABLE STRICT;
+
+COMMENT ON FUNCTION _pgr_bellmanFordNeg(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
 
