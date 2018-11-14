@@ -45,7 +45,6 @@ do_pgr_kruskal(
 
         char* fn_suffix,
 
-        int order_by,
         int64_t max_depth,
         double distance,
 
@@ -73,10 +72,8 @@ do_pgr_kruskal(
         if (total_edges == 0) {
             results = pgrouting::get_no_edge_graph_result(roots);
         } else {
-            log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(UNDIRECTED);
             undigraph.insert_edges(data_edges, total_edges);
-            log << "The Graph:\n" << undigraph;
             pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
             if (suffix == "") {
                 results = kruskal.kruskal(undigraph);

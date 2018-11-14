@@ -55,7 +55,6 @@ extern "C" {
 
                 char* fn_suffix,
 
-                int order_by,
                 int64_t max_depth,
                 double distance,
 

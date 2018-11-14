@@ -55,7 +55,6 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
 
-    int order_by = get_order(fn_suffix, &err_msg);
     if (err_msg) {
         pgr_global_report(log_msg, notice_msg, err_msg);
         return;
@@ -87,7 +86,6 @@ process(
             edges, total_edges,
             rootsArr, size_rootsArr,
             fn_suffix,
-            order_by,
             max_depth,
             distance,
 

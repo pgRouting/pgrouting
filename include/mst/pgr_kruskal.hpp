@@ -156,9 +156,6 @@ class Pgr_kruskal {
      bool m_get_component;
      int  m_order_by;
      std::vector<int64_t> m_root;
-     bool  m_use_root;
-     bool  m_use_depth;
-     bool  m_use_distance;
      int64_t  m_max_depth;
      double  m_distance;
 
@@ -206,8 +203,8 @@ Pgr_kruskal<G>::get_results(
 
         auto component = m_get_component? m_tree_id[m_components[u]] : 0;
         if (m_order_by && depth[u] == 0 && depth[v] == 0) {
-            if (m_use_root && graph[u].id != root) std::swap(u, v);
-            if (!m_use_root && graph[u].id != component) std::swap(u, v);
+            if (!m_root.empty() && graph[u].id != root) std::swap(u, v);
+            if (m_root.empty() && graph[u].id != component) std::swap(u, v);
             if (!p_root && graph[u].id > graph[v].id) std::swap(u, v);
 
             root = p_root? p_root: graph[u].id;
@@ -292,7 +289,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     /*
      * order by dfs
      */
-    if (!m_use_root && m_order_by == 1) {
+    if (m_root.empty() && m_order_by == 1) {
         std::vector<E> visited_order;
 
         using dfs_visitor = visitors::Dfs_visitor<E>;
@@ -301,7 +298,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
         return get_results(visited_order, 0, graph);
     }
 
-    if (m_use_root && m_order_by == 1 ) {
+    if (!m_root.empty() && m_order_by == 1 ) {
         std::vector<pgr_mst_rt> results;
         for (const auto root : m_root) {
             std::vector<E> visited_order;
@@ -340,7 +337,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     calculate_component(graph);
 
     std::vector<int64_t> roots;
-    if (m_use_root) {
+    if (!m_root.empty()) {
         roots = m_root;
     } else {
         roots =  m_tree_id;
@@ -393,11 +390,9 @@ Pgr_kruskal<G>::kruskal(
     m_suffix = "";
     m_order_by = 0;
     m_get_component = false;
-    m_use_root = false;
     m_distance = -1;
     m_max_depth = -1;
     m_root.clear();
-    m_root.push_back(0);
 
     return generateKruskal(graph);
 }
@@ -415,8 +410,6 @@ Pgr_kruskal<G>::kruskalBFS(
     m_distance = -1;
     m_max_depth = max_depth;
     m_root = clean_vids(roots);
-    if (m_root.empty()) m_root.push_back(0);
-    m_use_root = m_root.size() > 1 || m_root[0] != 0;
 
     return generateKruskal(graph);
 }
@@ -433,8 +426,6 @@ Pgr_kruskal<G>::kruskalDFS(
     m_distance = -1;
     m_max_depth = max_depth;
     m_root = clean_vids(roots);
-    if (m_root.empty()) m_root.push_back(0);
-    m_use_root = m_root.size() > 1 || m_root[0] != 0;
 
     return generateKruskal(graph);
 }
@@ -451,8 +442,6 @@ Pgr_kruskal<G>::kruskalDD(
     m_distance = distance;
     m_max_depth = -1;
     m_root = clean_vids(roots);
-    if (m_root.empty()) m_root.push_back(0);
-    m_use_root = m_root.size() > 1 || m_root[0] != 0;
 
     return generateKruskal(graph);
 }
