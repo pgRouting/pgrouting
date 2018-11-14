@@ -42,66 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "mst/mst_visitors.hpp"
 #include "mst/details.hpp"
 
 namespace pgrouting {
-
-namespace  visitors {
-
-template <class E>
-class Bfs_visitor : public boost::default_bfs_visitor {
-    public:
-        explicit Bfs_visitor(
-                std::vector<E> &data) :
-            m_data(data)  {}
-        template <class B_G>
-            void tree_edge(E e, const B_G&) {
-                m_data.push_back(e);
-            }
-    private:
-        std::vector<E> &m_data;
-};
-
-template <class E>
-class Dfs_visitor : public boost::default_dfs_visitor {
-    public:
-        explicit Dfs_visitor(
-                std::vector<E> &data) :
-            m_data(data)  {}
-        template <typename B_G>
-            void tree_edge(E e, const B_G&) {
-                m_data.push_back(e);
-            }
-    private:
-        std::vector<E> &m_data;
-};
-
-template <typename V, typename E>
-class Dfs_visitor_with_root : public boost::default_dfs_visitor {
-    public:
-        Dfs_visitor_with_root(
-                V root,
-                std::vector<E> &data) :
-            m_data(data),
-            m_roots(root) {}
-        template <typename B_G>
-            void tree_edge(E e, const B_G&) {
-                m_data.push_back(e);
-            }
-        template <typename B_G>
-            void start_vertex(V v, const B_G&) {
-                if (v != m_roots) throw found_goals();
-            }
-
-    private:
-        std::vector<E> &m_data;
-        V m_roots;
-};
-
-}  // namespace visitors
-
-
-
 namespace functions {
 
 template <class G>
