@@ -6,6 +6,7 @@ SET(LOCAL_FILES
 
     prim.sql
     primDFS.sql
+    primBFS.sql
 
     kruskal.sql
     kruskalDFS.sql
