@@ -27,7 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-struct found_goals{}; //!< exception for dfs termination
+//! exception for dfs termination
+struct found_goals{};
 
 namespace details {
 

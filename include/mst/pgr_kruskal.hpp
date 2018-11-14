@@ -33,12 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/kruskal_min_spanning_tree.hpp>
 #include <boost/graph/filtered_graph.hpp>
 
-#include <iostream>
-#include <numeric>
+#include <set>
+#include <string>
+#include <utility>
 #include <vector>
-#include <sstream>
-#include <functional>
-#include <limits>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -227,7 +225,8 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     typedef typename G::V V;
 
     m_spanning_tree.edges.insert(m_added_order.begin(), m_added_order.end());
-    boost::filtered_graph<B_G, InSpanning, boost::keep_all> mst(graph.graph, m_spanning_tree, {});
+    boost::filtered_graph<B_G, InSpanning, boost::keep_all>
+        mst(graph.graph, m_spanning_tree, {});
 
     /*
      * order by dfs
@@ -241,7 +240,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
         return get_results(visited_order, 0, graph);
     }
 
-    if (!m_roots.empty() && m_order_by == 1 ) {
+    if (!m_roots.empty() && m_order_by == 1) {
         std::vector<pgr_mst_rt> results;
         for (const auto root : m_roots) {
             std::vector<E> visited_order;
@@ -250,12 +249,11 @@ Pgr_kruskal<G>::order_results(const G &graph) {
             if (graph.has_vertex(root)) {
                 try {
                     boost::depth_first_search(
-                            mst,
-                            visitor(dfs_visitor(graph.get_V(root), visited_order))
-                            .root_vertex(graph.get_V(root))
-                            );
+                        mst,
+                        visitor(dfs_visitor(graph.get_V(root), visited_order))
+                        .root_vertex(graph.get_V(root)));
                 } catch(found_goals &) {
-                    ;
+                    {}
                 } catch (boost::exception const& ex) {
                     (void)ex;
                     throw;

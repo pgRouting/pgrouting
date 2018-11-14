@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <string>
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -74,7 +75,10 @@ do_pgr_kruskal(
         } else {
             pgrouting::UndirectedGraph undigraph(UNDIRECTED);
             undigraph.insert_edges(data_edges, total_edges);
-            pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
+
+            pgrouting::functions::Pgr_kruskal
+                <pgrouting::UndirectedGraph> kruskal;
+
             if (suffix == "") {
                 results = kruskal.kruskal(undigraph);
             } else if (suffix == "BFS") {
