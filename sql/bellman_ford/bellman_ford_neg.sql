@@ -27,6 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+------------------
+-- pgr_bellmanFord
+------------------
+
+
 --ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_bellmanFord(
     TEXT,   -- edges_sql (required)
@@ -126,7 +131,21 @@ LANGUAGE SQL VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_bellmanFord--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), neg_edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid [,directed])';
+IS 'pgr_bellmanFord(One to One)
+- EXPERIMENTAL
+- Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To vertex identifier
+- Optional Parameters: 
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+';
+
+
+
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_bellmanFord--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), neg_edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids [,directed])';
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN)
