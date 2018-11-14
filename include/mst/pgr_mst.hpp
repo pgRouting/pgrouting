@@ -44,47 +44,11 @@ namespace functions {
 
 template <class G>
 class Pgr_mst {
-#if 0
- public:
-     std::vector<pgr_mst_rt> mst(G &graph);
-
-     std::vector<pgr_mst_rt> mstBFS(
-             G &graph,
-             std::vector<int64_t> roots,
-             int64_t max_depth);
-
-     std::vector<pgr_mst_rt> mstDFS(
-             G &graph,
-             std::vector<int64_t> roots,
-             int64_t max_depth);
-
-     std::vector<pgr_mst_rt> mstDD(
-             G &graph,
-             std::vector<int64_t> roots,
-             double distance);
-#endif
  protected:
      typedef typename G::B_G B_G;
      typedef typename G::V V;
      typedef typename G::E E;
 
-#if 0
-     /* Does all the work */
-     std::vector<pgr_mst_rt> generateKruskal(G &graph);
-
-     /* @brief maps component number with smallest original vertex id */
-     void calculate_component(const G &graph);
-     std::vector<pgr_mst_rt> order_results(const G &graph);
-
-     template <typename T>
-         std::vector<pgr_mst_rt> get_results(
-                 T order,
-                 int64_t root,
-                 const G &graph);
-#endif
-
-
-     /* IMPLEMENTATION */
 
      template <typename T>
          std::vector<pgr_mst_rt>
@@ -267,28 +231,6 @@ class Pgr_mst {
 
              return m_results;
          }
-
-
-#if 0
-     template <class G>
-         std::vector<pgr_mst_rt>
-         Pgr_mst<G>::generateKruskal(G &graph) {
-             m_spanning_tree.clear();
-             m_components.clear();
-             m_results.clear();
-             m_tree_id.clear();
-             m_added_order.clear();
-
-             boost::mst_minimum_spanning_tree(
-                     graph.graph,
-                     std::back_inserter(m_added_order),
-                     boost::weight_map(get(&G::G_T_E::cost, graph.graph)));
-
-
-             m_results = order_results(graph);
-             return m_results;
-         }
-#endif
 
 
      void mst() {
