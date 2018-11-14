@@ -135,7 +135,7 @@ ROWS 1000;
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_bdDijkstra(One to One)
 - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
    - To vertex identifier
 - Optional Parameters: 
