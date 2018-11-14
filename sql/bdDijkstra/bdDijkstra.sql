@@ -53,17 +53,6 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_bdDijkstra(One to One)
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
-   - From vertex identifier
-   - To vertex identifier
- - Optional Parameters: 
-   - directed := true
- - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
-';
 
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
@@ -89,18 +78,6 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
-IS 'pgr_bdDijkstra(One to Many)
-- Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From vertex identifier
-   - To ARRAY[vertices identifiers]
-- Optional Parameters
-   - directed := true
-- Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
-';
-
 
 -- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
@@ -125,18 +102,6 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
-
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgr_bdDijkstra(Many to One)
-- Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From ARRAY[vertices identifiers]
-   - To vertex identifier
-- Optional Parameters
-   - directed := true
-- Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
-';
 
 
 
@@ -165,6 +130,44 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgr_bdDijkstra(One to One)
+- Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - From vertex identifier
+   - To vertex identifier
+- Optional Parameters: 
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
+IS 'pgr_bdDijkstra(One to Many)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgr_bdDijkstra(Many to One)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To vertex identifier
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_bdDijkstra(Many to Many)
 - Parameters:
@@ -176,15 +179,3 @@ IS 'pgr_bdDijkstra(Many to Many)
 - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
 ';
-
--- COMMENTS
-
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_bdDijkstra--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid [,directed])';
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
-IS 'pgr_bdDijkstra--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids [,directed])';
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgr_bdDijkstra--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid [,directed])';
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgr_bdDijkstra--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]),
- from_vids, to_vids [,directed])';
