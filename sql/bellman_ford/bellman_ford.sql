@@ -133,6 +133,7 @@ LANGUAGE sql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_bellmanFord(One to One)
+- EXPERIMENTAL
 - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
@@ -144,9 +145,9 @@ IS 'pgr_bellmanFord(One to One)
 ';
 
 
-
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_bellmanFord(One to Many)
+- EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
@@ -160,6 +161,7 @@ IS 'pgr_bellmanFord(One to Many)
 
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_bellmanFord(Many to One)
+- EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
@@ -173,6 +175,7 @@ IS 'pgr_bellmanFord(Many to One)
 
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_bellmanFord(Many to Many)
+- EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
