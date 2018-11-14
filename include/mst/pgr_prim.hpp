@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "mst/visitors.hpp"
 #include "mst/details.hpp"
+#include "mst/pgr_mst.hpp"
 
 
 //******************************************
@@ -73,7 +74,7 @@ double prim_aggegrateCost(
 namespace functions {
 
 template <class G>
-class Pgr_prim {
+class Pgr_prim : public Pgr_mst<G> {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -119,7 +120,9 @@ class Pgr_prim {
      std::vector<pgr_mst_rt> generatePrim(
              const G &graph);
 
+#if 0
      void calculate_component(const G &graph);
+#endif
      std::vector< pgr_mst_rt > disconnectedPrim(const G &graph);
 
  private:
@@ -127,23 +130,28 @@ class Pgr_prim {
      std::vector<V> predecessors;
      std::vector<double> distances;
      std::vector<V> data;
-
-     std::string m_suffix;
-     bool m_get_component;
-     int  m_order_by;
-     std::vector<int64_t> m_roots;
-     int64_t  m_max_depth;
-     double  m_distance;
-     std::vector<pgr_mst_rt> m_results;
      std::set<V> m_unassigned;
+
+#if 0
      std::set<V> m_assigned;
+     std::vector<int64_t> this->m_roots;
+     bool this->m_get_component;
+     int  this->m_order_by;
+     int64_t  this->m_max_depth;
+     double  this->m_distance;
+     std::vector<E> this->m_added_order;
      struct InSpanning {
          std::set<E> edges;
          bool operator()(E e) const { return edges.count(e); }
          void clear() { edges.clear(); }
-     } m_spanning_tree;
-     std::vector<E> m_added_order;
+     } this->m_spanning_tree;
+     std::vector<pgr_mst_rt> this->m_results;
+     std::string this->m_suffix;
+     std::vector<int64_t> this->m_tree_id;
+     std::vector<size_t> this->m_components;
+#endif
 
+#if 0
      /** @brief ordering of the results
       *
       * Orders by
@@ -152,15 +160,12 @@ class Pgr_prim {
       * - BFS
       */
      std::vector<pgr_mst_rt> order_results(const G &graph);
-
-     std::vector<size_t> m_components;
-     std::vector<int64_t> m_tree_id;
      template <typename T>
      std::vector<pgr_mst_rt> get_results(
              T order,
              int64_t root,
              const G &graph);
-
+#endif
 };
 
 
@@ -176,11 +181,11 @@ template <class G>
 std::vector<pgr_mst_rt>
 Pgr_prim<G>::generatePrim(
         const G &graph) {
-    for (auto r : m_roots) {
+    for (auto r : this->m_roots) {
         auto result = generatePrim(graph, r);
-        m_results.insert(m_results.end(), result.begin(), result.end());
+        this->m_results.insert(this->m_results.end(), result.begin(), result.end());
     }
-    return m_results;
+    return this->m_results;
 }
 
 template <class G>
@@ -221,7 +226,7 @@ Pgr_prim<G>::generatePrim(
 
         auto cost = distances[u] - distances[v];
         auto edge = graph.get_edge(u, v, cost);
-        m_added_order.push_back(edge);
+        this->m_added_order.push_back(edge);
     }
     return std::vector<pgr_mst_rt>();
 }
@@ -247,20 +252,20 @@ Pgr_prim<G>::disconnectedPrim(const G &graph) {
         results.insert(results.end(), tmpresults.begin(), tmpresults.end());
     }
 
-    m_results = order_results(graph);
-    return m_results;
+    this->m_results = this->order_results(graph);
+    return this->m_results;
 }
 
 template <class G>
 std::vector<pgr_mst_rt>
 Pgr_prim<G>::prim(
         G &graph) {
-    m_suffix = "";
-    m_order_by = 0;
-    m_get_component = false;
-    m_distance = -1;
-    m_max_depth = -1;
-    m_roots.clear();
+    this->m_suffix = "";
+    this->m_order_by = 0;
+    this->m_get_component = false;
+    this->m_distance = -1;
+    this->m_max_depth = -1;
+    this->m_roots.clear();
 
     return disconnectedPrim(graph);
 }
@@ -271,14 +276,14 @@ Pgr_prim<G>::primBFS(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth) {
-    m_suffix = "BFS";
-    m_order_by = 2;
-    m_get_component = true;
-    m_distance = -1;
-    m_max_depth = max_depth;
-    m_roots = details::clean_vids(roots);
+    this->m_suffix = "BFS";
+    this->m_order_by = 2;
+    this->m_get_component = true;
+    this->m_distance = -1;
+    this->m_max_depth = max_depth;
+    this->m_roots = details::clean_vids(roots);
 
-    return m_roots.empty()? disconnectedPrim(graph)
+    return this->m_roots.empty()? disconnectedPrim(graph)
         : generatePrim(graph);
 }
 
@@ -288,14 +293,14 @@ Pgr_prim<G>::primDFS(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth) {
-    m_suffix = "DFS";
-    m_order_by = 1;
-    m_get_component = false;
-    m_distance = -1;
-    m_max_depth = max_depth;
-    m_roots = details::clean_vids(roots);
+    this->m_suffix = "DFS";
+    this->m_order_by = 1;
+    this->m_get_component = false;
+    this->m_distance = -1;
+    this->m_max_depth = max_depth;
+    this->m_roots = details::clean_vids(roots);
 
-    return m_roots.empty()? disconnectedPrim(graph)
+    return this->m_roots.empty()? disconnectedPrim(graph)
         : generatePrim(graph);
 }
 
@@ -305,12 +310,12 @@ Pgr_prim<G>::primDD(
         G &graph,
         std::vector<int64_t> roots,
         double distance) {
-    m_suffix = "DD";
-    m_order_by = 1;
-    m_get_component = false;
-    m_distance = distance;
-    m_max_depth = -1;
-    m_roots = details::clean_vids(roots);
+    this->m_suffix = "DD";
+    this->m_order_by = 1;
+    this->m_get_component = false;
+    this->m_distance = distance;
+    this->m_max_depth = -1;
+    this->m_roots = details::clean_vids(roots);
 
     return generatePrim(graph);
 }
@@ -335,6 +340,7 @@ Pgr_prim<G>::operator() (
             root_vertex);
 }
 
+#if 0
 template <class G>
 template <typename T>
 std::vector<pgr_mst_rt>
@@ -354,10 +360,10 @@ Pgr_prim<G>::get_results(
             std::swap(u, v);
         }
 
-        auto component = m_get_component? m_tree_id[m_components[u]] : 0;
-        if (m_order_by && depth[u] == 0 && depth[v] == 0) {
-            if (!m_roots.empty() && graph[u].id != root) std::swap(u, v);
-            if (m_roots.empty() && graph[u].id != component) std::swap(u, v);
+        auto component = this->m_get_component? this->m_tree_id[this->m_components[u]] : 0;
+        if (this->m_order_by && depth[u] == 0 && depth[v] == 0) {
+            if (!this->m_roots.empty() && graph[u].id != root) std::swap(u, v);
+            if (this->m_roots.empty() && graph[u].id != component) std::swap(u, v);
             if (!p_root && graph[u].id > graph[v].id) std::swap(u, v);
 
             root = p_root? p_root: graph[u].id;
@@ -374,17 +380,17 @@ Pgr_prim<G>::get_results(
         agg_cost[v] = agg_cost[u] + graph[edge].cost;
         depth[v] = depth[u] == -1? 1 : depth[u] + 1;
 
-        if ((m_suffix == "")
-                || ((m_suffix == "BFS")   && (m_max_depth >= depth[v]))
-                || ((m_suffix == "DFS")  && m_max_depth >= depth[v])
-                || ((m_suffix == "DD")  && m_distance >= agg_cost[v])) {
+        if ((this->m_suffix == "")
+                || ((this->m_suffix == "BFS")   && (this->m_max_depth >= depth[v]))
+                || ((this->m_suffix == "DFS")  && this->m_max_depth >= depth[v])
+                || ((this->m_suffix == "DD")  && this->m_distance >= agg_cost[v])) {
             results.push_back({
                 root,
-                    m_order_by? depth[v] : 0,
+                    this->m_order_by? depth[v] : 0,
                     graph[v].id,
                     graph[edge].id,
                     graph[edge].cost,
-                    m_order_by? agg_cost[v] : 0.0
+                    this->m_order_by? agg_cost[v] : 0.0
             });
         }
     }
@@ -397,8 +403,8 @@ Pgr_prim<G>::order_results(const G &graph) {
     /*
      * No particular order
      */
-    if (m_order_by == 0) {
-        return get_results(m_added_order, 0, graph);
+    if (this->m_order_by == 0) {
+        return get_results(this->m_added_order, 0, graph);
     }
 
 
@@ -407,14 +413,14 @@ Pgr_prim<G>::order_results(const G &graph) {
     typedef typename G::E E;
     typedef typename G::V V;
 
-    m_spanning_tree.edges.insert(m_added_order.begin(), m_added_order.end());
+    this->m_spanning_tree.edges.insert(this->m_added_order.begin(), this->m_added_order.end());
     boost::filtered_graph<B_G, InSpanning, boost::keep_all>
-        mst(graph.graph, m_spanning_tree, {});
+        mst(graph.graph, this->m_spanning_tree, {});
 
     /*
      * order by dfs
      */
-    if (m_roots.empty() && m_order_by == 1) {
+    if (this->m_roots.empty() && this->m_order_by == 1) {
         std::vector<E> visited_order;
 
         using dfs_visitor = visitors::Dfs_visitor<E>;
@@ -422,9 +428,9 @@ Pgr_prim<G>::order_results(const G &graph) {
 
         return get_results(visited_order, 0, graph);
     }
-    if (!m_roots.empty() && m_order_by == 1) {
+    if (!this->m_roots.empty() && this->m_order_by == 1) {
         std::vector<pgr_mst_rt> results;
-        for (const auto root : m_roots) {
+        for (const auto root : this->m_roots) {
             std::vector<E> visited_order;
 
             using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
@@ -460,10 +466,10 @@ Pgr_prim<G>::order_results(const G &graph) {
     calculate_component(graph);
 
     std::vector<int64_t> roots;
-    if (!m_roots.empty()) {
-        roots = m_roots;
+    if (!this->m_roots.empty()) {
+        roots = this->m_roots;
     } else {
-        roots =  m_tree_id;
+        roots =  this->m_tree_id;
     }
 
     using bfs_visitor = visitors::Bfs_visitor<E>;
@@ -475,21 +481,21 @@ Pgr_prim<G>::order_results(const G &graph) {
                     visitor(bfs_visitor(visited_order)));
 
             auto results = get_results(visited_order, root, graph);
-            m_results.insert(m_results.end(), results.begin(), results.end());
+            this->m_results.insert(this->m_results.end(), results.begin(), results.end());
         } else {
-            m_results.push_back({root, 0, root, -1, 0.0, 0.0});
+            this->m_results.push_back({root, 0, root, -1, 0.0, 0.0});
         }
     }
 
-    return m_results;
+    return this->m_results;
 }
 
 template <class G>
 void
 Pgr_prim<G>::calculate_component(const G &graph) {
-    if (!m_get_component) return;
+    if (!this->m_get_component) return;
 
-    m_components.resize(num_vertices(graph.graph));
+    this->m_components.resize(num_vertices(graph.graph));
 
     /*
      * Calculate connected components
@@ -498,17 +504,18 @@ Pgr_prim<G>::calculate_component(const G &graph) {
      */
     auto num_comps = boost::connected_components(
             graph.graph,
-            &m_components[0]);
+            &this->m_components[0]);
 
-    m_tree_id.resize(num_comps, 0);
+    this->m_tree_id.resize(num_comps, 0);
 
     for (const auto v : boost::make_iterator_range(vertices(graph.graph))) {
-        m_tree_id[m_components[v]] =
-            (m_tree_id[m_components[v]] == 0
-             || m_tree_id[m_components[v]] >= graph[v].id) ?
-            graph[v].id : m_tree_id[m_components[v]];
+        this->m_tree_id[this->m_components[v]] =
+            (this->m_tree_id[this->m_components[v]] == 0
+             || this->m_tree_id[this->m_components[v]] >= graph[v].id) ?
+            graph[v].id : this->m_tree_id[this->m_components[v]];
     }
 }
+#endif
 
 
 
