@@ -101,7 +101,9 @@ CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
     TEXT,     -- edges_sql (requiered)
     ANYARRAY, -- from_vids (requiered)
     BIGINT,   -- to_vid (requiered)
+
     directed BOOLEAN DEFAULT TRUE,
+    
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
@@ -114,7 +116,17 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-
+COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgr_dijkstraCost(Many to One)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To vertex identifier
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
 
 -- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
