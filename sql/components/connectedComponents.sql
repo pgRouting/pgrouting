@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------------
 -- pgr_connectedComponents
 --------------------------
+
 CREATE OR REPLACE FUNCTION _pgr_connectedComponents(
     edges_sql TEXT,
 
@@ -75,5 +76,5 @@ IS'pgr_connectedComponents
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+   - ${PGROUTING_DOC_LINK}/pgr_connectedComponents.html
 ';
