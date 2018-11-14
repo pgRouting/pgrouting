@@ -53,7 +53,7 @@ LANGUAGE SQL VOLATILE;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_directedChPP(TEXT) 
-IS 'pgr_directedChPP(One to One)
+IS 'pgr_directedChPP
 - EXPERIMENTAL
 - Directed graph
 - Parameters:
