@@ -84,19 +84,19 @@ class Dfs_visitor_with_root : public boost::default_dfs_visitor {
                 V root,
                 std::vector<E> &data) :
             m_data(data),
-            m_root(root) {}
+            m_roots(root) {}
         template <typename B_G>
             void tree_edge(E e, const B_G&) {
                 m_data.push_back(e);
             }
         template <typename B_G>
             void start_vertex(V v, const B_G&) {
-                if (v != m_root) throw found_goals();
+                if (v != m_roots) throw found_goals();
             }
 
     private:
         std::vector<E> &m_data;
-        V m_root;
+        V m_roots;
 };
 
 }  // namespace visitors
@@ -155,7 +155,7 @@ class Pgr_kruskal {
      std::string m_suffix;
      bool m_get_component;
      int  m_order_by;
-     std::vector<int64_t> m_root;
+     std::vector<int64_t> m_roots;
      int64_t  m_max_depth;
      double  m_distance;
 
@@ -203,8 +203,8 @@ Pgr_kruskal<G>::get_results(
 
         auto component = m_get_component? m_tree_id[m_components[u]] : 0;
         if (m_order_by && depth[u] == 0 && depth[v] == 0) {
-            if (!m_root.empty() && graph[u].id != root) std::swap(u, v);
-            if (m_root.empty() && graph[u].id != component) std::swap(u, v);
+            if (!m_roots.empty() && graph[u].id != root) std::swap(u, v);
+            if (m_roots.empty() && graph[u].id != component) std::swap(u, v);
             if (!p_root && graph[u].id > graph[v].id) std::swap(u, v);
 
             root = p_root? p_root: graph[u].id;
@@ -289,7 +289,7 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     /*
      * order by dfs
      */
-    if (m_root.empty() && m_order_by == 1) {
+    if (m_roots.empty() && m_order_by == 1) {
         std::vector<E> visited_order;
 
         using dfs_visitor = visitors::Dfs_visitor<E>;
@@ -298,9 +298,9 @@ Pgr_kruskal<G>::order_results(const G &graph) {
         return get_results(visited_order, 0, graph);
     }
 
-    if (!m_root.empty() && m_order_by == 1 ) {
+    if (!m_roots.empty() && m_order_by == 1 ) {
         std::vector<pgr_mst_rt> results;
-        for (const auto root : m_root) {
+        for (const auto root : m_roots) {
             std::vector<E> visited_order;
 
             using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
@@ -337,8 +337,8 @@ Pgr_kruskal<G>::order_results(const G &graph) {
     calculate_component(graph);
 
     std::vector<int64_t> roots;
-    if (!m_root.empty()) {
-        roots = m_root;
+    if (!m_roots.empty()) {
+        roots = m_roots;
     } else {
         roots =  m_tree_id;
     }
@@ -392,7 +392,7 @@ Pgr_kruskal<G>::kruskal(
     m_get_component = false;
     m_distance = -1;
     m_max_depth = -1;
-    m_root.clear();
+    m_roots.clear();
 
     return generateKruskal(graph);
 }
@@ -409,7 +409,7 @@ Pgr_kruskal<G>::kruskalBFS(
     m_get_component = true;
     m_distance = -1;
     m_max_depth = max_depth;
-    m_root = clean_vids(roots);
+    m_roots = clean_vids(roots);
 
     return generateKruskal(graph);
 }
@@ -425,7 +425,7 @@ Pgr_kruskal<G>::kruskalDFS(
     m_get_component = false;
     m_distance = -1;
     m_max_depth = max_depth;
-    m_root = clean_vids(roots);
+    m_roots = clean_vids(roots);
 
     return generateKruskal(graph);
 }
@@ -441,7 +441,7 @@ Pgr_kruskal<G>::kruskalDD(
     m_get_component = false;
     m_distance = distance;
     m_max_depth = -1;
-    m_root = clean_vids(roots);
+    m_roots = clean_vids(roots);
 
     return generateKruskal(graph);
 }
