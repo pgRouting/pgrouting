@@ -27,9 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
--------------------------------------------------------------------------------
+---------------
+---------------
 --  COMPONENTS
--------------------------------------------------------------------------------
+---------------
+---------------
 
 --------------------------
 -- pgr_connectedComponents
@@ -46,6 +48,7 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'connectedComponents'
 LANGUAGE c IMMUTABLE STRICT;
 
+
 CREATE OR REPLACE FUNCTION pgr_connectedComponents(
     TEXT, -- edges_sql (required)
 
@@ -61,6 +64,17 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
-COMMENT ON FUNCTION pgr_connectedComponents(TEXT) IS
-'pgr_connectedComponents(edges_sql(id,source,target,cost[,reverse_cost]) For undirected graph';
 
+
+COMMENT ON FUNCTION _pgr_connectedComponents(TEXT)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION pgr_connectedComponents(TEXT) 
+IS'pgr_connectedComponents
+- Undirected graph
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
