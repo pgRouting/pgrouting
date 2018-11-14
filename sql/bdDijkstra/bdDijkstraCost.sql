@@ -30,12 +30,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ----------------------
 
 
-
+-- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (requiered)
     BIGINT, -- to_vid (requiered)
+
     directed BOOLEAN DEFAULT TRUE,
+
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
@@ -47,6 +49,19 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgr_bdDijkstraCost(One to One)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To vertex identifier
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+';
+
 
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
