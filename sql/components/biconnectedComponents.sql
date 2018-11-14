@@ -68,7 +68,7 @@ COMMENT ON FUNCTION pgr_biconnectedComponents(TEXT)
 IS'pgr_biconnectedComponents
 - Undirected graph
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_biconnectedComponents.html
+    - ${PGROUTING_DOC_LINK}/pgr_biconnectedComponents.html
 ';
