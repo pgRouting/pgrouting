@@ -46,7 +46,6 @@ LANGUAGE SQL VOLATILE;
 
 -- COMMENTS
 
-
 COMMENT ON FUNCTION pgr_directedChPP_Cost(TEXT) 
 IS 'pgr_directedChPP_Cost
 - EXPERIMENTAL
