@@ -26,27 +26,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/connected_components.hpp>
 #include <boost/graph/depth_first_search.hpp>
 #include <boost/graph/breadth_first_search.hpp>
-#include <boost/graph/kruskal_min_spanning_tree.hpp>
-#include <boost/graph/filtered_graph.hpp>
+#include <boost/graph/dijkstra_shortest_paths.hpp>
 
-#include <iostream>
-#include <numeric>
 #include <vector>
-#include <sstream>
-#include <functional>
-#include <limits>
-
-#include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
-#include "mst/details.hpp"
+#include "mst/details.hpp" // for found_goals()
 
 namespace pgrouting {
 namespace  visitors {
 
+/* Prim */
+template <class V>
+class Prim_visitor : public boost::default_dijkstra_visitor {
+    public:
+        explicit Prim_visitor(
+                std::vector<V> &data) :
+            m_data(data)  {}
+        template <class B_G>
+            void finish_vertex(V v, B_G&) {
+                m_data.push_back(v);
+            }
+    private:
+        std::vector<V> &m_data;
+};
+
+/* BFS */
 template <class E>
 class Bfs_visitor : public boost::default_bfs_visitor {
     public:
@@ -61,6 +66,7 @@ class Bfs_visitor : public boost::default_bfs_visitor {
         std::vector<E> &m_data;
 };
 
+/* DFS */
 template <class E>
 class Dfs_visitor : public boost::default_dfs_visitor {
     public:
@@ -75,6 +81,7 @@ class Dfs_visitor : public boost::default_dfs_visitor {
         std::vector<E> &m_data;
 };
 
+/* DFS */
 template <typename V, typename E>
 class Dfs_visitor_with_root : public boost::default_dfs_visitor {
     public:
@@ -96,6 +103,7 @@ class Dfs_visitor_with_root : public boost::default_dfs_visitor {
         std::vector<E> &m_data;
         V m_roots;
 };
+
 
 }  // namespace visitors
 }  // namespace pgrouting

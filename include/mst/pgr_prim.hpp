@@ -40,30 +40,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "mst/mst_visitors.hpp"
 #include "mst/details.hpp"
 
 
 //******************************************
 
 namespace pgrouting {
-namespace  visitors {
-
-template <class V>
-class Prim_visitor : public boost::default_dijkstra_visitor {
-    public:
-        explicit Prim_visitor(
-                std::vector<V> &data) :
-            m_data(data)  {}
-        template <class B_G>
-        void finish_vertex(V v, B_G&) {
-            m_data.push_back(v);
-        }
-    private:
-        std::vector<V> &m_data;
-};
-
-}  // namespace visitors
-
 namespace {
 
 template <class V>
