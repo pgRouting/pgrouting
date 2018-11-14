@@ -27,6 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------------------------
+-- pgr_aStarCostMatrix
+-----------------------------
+
+
 CREATE OR REPLACE FUNCTION pgr_aStarCostMatrix(
     TEXT,     -- edges sql (required)
     ANYARRAY, -- vids (required)
@@ -49,5 +54,18 @@ LANGUAGE SQL VOLATILE
 COST 100
 ROWS 1000;
 
-COMMENT ON FUNCTION pgr_aStarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS
-'pgr_aStarCostMatrix(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), vids, [,directed ,heuristic, factor ,epsilon])';
+-- COMMENT
+
+COMMENT ON FUNCTION pgr_aStarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) 
+IS 'pgr_aStarCostMatrix
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+    - ARRAY [vertices identifiers]
+- Optional Parameters: 
+    - directed := true
+    - heuristic := 5
+    - factor := 1
+    - epsilon := 1
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_aStarCostMatrix.html
+';
