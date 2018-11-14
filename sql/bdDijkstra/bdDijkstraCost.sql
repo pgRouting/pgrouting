@@ -119,50 +119,50 @@ ROWS 1000;
 COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_bdDijkstraCost(One to One)
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From vertex identifier
-   - To vertex identifier
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To vertex identifier
 - Optional Parameters
-   - directed := true
+  - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
 ';
 
 
 COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_bdDijkstraCost(One to Many)
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From vertex identifier
-   - To ARRAY[vertices identifiers]
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To ARRAY[vertices identifiers]
 - Optional Parameters
-   - directed := true
+  - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
 ';
 
 
 COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_bdDijkstraCost(Many to One)
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From ARRAY[vertices identifiers]
-   - To vertex identifier
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To vertex identifier
 - Optional Parameters
-   - directed := true
+  - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
 ';
 
 
 COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_bdDijkstraCost(Many to Many)
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From ARRAY[vertices identifiers]
-   - To ARRAY[vertices identifiers]
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To ARRAY[vertices identifiers]
 - Optional Parameters
-   - directed := true
+  - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
 ';
