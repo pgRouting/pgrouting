@@ -1,11 +1,8 @@
 /*PGR-GNU*****************************************************************
 File: pgr_mst.hpp
 
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Copyright (c) 2018 Aditya Pratap Singh
-adityapratap.singh28@gmail.com
+Copyright (c) 2018 Vicky Vergara
+mail: vicky at georepublic dot de
 
 ------
 This program is free software; you can redistribute it and/or modify
