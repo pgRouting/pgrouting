@@ -11,7 +11,6 @@ SELECT has_function('pgr_prim');
 SELECT has_function('pgr_prim',    ARRAY['text']);
 SELECT function_returns('pgr_prim', ARRAY['text'], 'setof record');
 
-SELECT todo_start();
 SELECT has_function('pgr_primdfs');
 SELECT has_function('pgr_primdfs', ARRAY['text','bigint','bigint']);
 SELECT has_function('pgr_primdfs', ARRAY['text','anyarray','bigint']);
@@ -108,7 +107,6 @@ SELECT set_eq(
         ('{25,2277,701,20,20,20,20,20,701,701}'::OID[])
     $$
 );
-SELECT todo_end();
 
 
 SELECT * FROM finish();
