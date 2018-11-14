@@ -63,12 +63,11 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
--- COMMENTS
 
+-- COMMENTS
 
 COMMENT ON FUNCTION _pgr_connectedComponents(TEXT)
 IS 'pgRouting internal function';
-
 
 COMMENT ON FUNCTION pgr_connectedComponents(TEXT) 
 IS'pgr_connectedComponents
