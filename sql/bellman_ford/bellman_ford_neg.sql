@@ -135,8 +135,8 @@ COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_bellmanFord(One to One)
 - EXPERIMENTAL
 - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
    - To vertex identifier
 - Optional Parameters: 
@@ -146,13 +146,12 @@ IS 'pgr_bellmanFord(One to One)
 ';
 
 
-
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_bellmanFord(One to Many)
 - EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+   - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
    - To ARRAY[vertices identifiers]
 - Optional Parameters
@@ -167,7 +166,7 @@ IS 'pgr_bellmanFord(Many to One)
 - EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+   - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
    - To vertex identifier
 - Optional Parameters
@@ -176,12 +175,13 @@ IS 'pgr_bellmanFord(Many to One)
    - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
 ';
 
+
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_bellmanFord(Many to Many)
 - EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+   - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
    - To ARRAY[vertices identifiers]
 - Optional Parameters
