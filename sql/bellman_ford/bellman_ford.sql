@@ -135,13 +135,13 @@ COMMENT ON FUNCTION pgr_bellmanFord(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_bellmanFord(One to One)
 - EXPERIMENTAL
 - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From vertex identifier
-   - To vertex identifier
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To vertex identifier
 - Optional Parameters: 
-   - directed := true
+  - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
 ';
 
 
@@ -149,13 +149,13 @@ COMMENT ON FUNCTION pgr_bellmanFord(TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_bellmanFord(One to Many)
 - EXPERIMENTAL
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From vertex identifier
-   - To ARRAY[vertices identifiers]
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To ARRAY[vertices identifiers]
 - Optional Parameters
-   - directed := true
+  - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
 ';
 
 
@@ -163,13 +163,13 @@ COMMENT ON FUNCTION pgr_bellmanFord(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_bellmanFord(Many to One)
 - EXPERIMENTAL
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From ARRAY[vertices identifiers]
-   - To vertex identifier
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To vertex identifier
 - Optional Parameters
-   - directed := true
+  - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
 ';
 
 
@@ -177,11 +177,11 @@ COMMENT ON FUNCTION pgr_bellmanFord(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_bellmanFord(Many to Many)
 - EXPERIMENTAL
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From ARRAY[vertices identifiers]
-   - To ARRAY[vertices identifiers]
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To ARRAY[vertices identifiers]
 - Optional Parameters
-   - directed := true
+  - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
 ';
