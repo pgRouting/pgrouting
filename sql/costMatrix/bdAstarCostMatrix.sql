@@ -25,7 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
---  BIDIRECTIONAL ASTAR Matrix
+-----------------------------
+-- pgr_bdAstarCostMatrix
+-----------------------------
 
 
 CREATE OR REPLACE FUNCTION pgr_bdAstarCostMatrix(
@@ -49,5 +51,19 @@ LANGUAGE SQL VOLATILE
 COST 100
 ROWS 1000;
 
-COMMENT ON FUNCTION pgr_bdAstarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS
-'pgr_bdAstarCostMatrix(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), vids, [,directed ,heuristic, factor ,epsilon])';
+
+-- COMMENT 
+
+COMMENT ON FUNCTION pgr_bdAstarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) 
+IS 'pgr_bdAstarCostMatrix
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+    - ARRAY [vertices identifiers]
+- Optional Parameters: 
+    - directed := true
+    - heuristic := 5
+    - factor := 1
+    - epsilon := 1
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_bdAstarCostMatrix.html
+';
