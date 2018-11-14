@@ -28,8 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ------------------------
+------------------------
 -- costFlow
 ------------------------
+------------------------
+
+
+------------------------
+-- pgr_minCostMaxFlow
+------------------------
+
 
 CREATE OR REPLACE FUNCTION _pgr_minCostMaxFlow(
     edges_sql TEXT,
@@ -49,3 +57,10 @@ CREATE OR REPLACE FUNCTION _pgr_minCostMaxFlow(
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'minCostMaxFlow_many_to_many'
 LANGUAGE c IMMUTABLE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_minCostMaxFlow(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+  
+
