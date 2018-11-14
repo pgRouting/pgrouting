@@ -139,36 +139,48 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, NUMERIC)
 IS 'pgr_primDD(Single Vertex)
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from root vertex identifier
-   - distance';
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - from root vertex identifier
+    - distance
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_primDD.html
+';
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, ANYARRAY, NUMERIC)
 IS 'pgr_primDD(multiple Vertices)
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from ARRAY[root vertices identifiers]
-   - distance';
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - from ARRAY[root vertices identifiers]
+    - distance
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_primDD.html
+';
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, FLOAT)
 IS 'pgr_primDD(Single Vertex)
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from root vertex identifier
-   - distance';
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - from root vertex identifier
+    - distance
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_primDD.html
+';
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, ANYARRAY, FLOAT)
 IS 'pgr_primDD(multiple Vertices)
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from ARRAY[root vertices identifiers]
-   - distance';
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - from ARRAY[root vertices identifiers]
+    - distance
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_primDD.html
+';

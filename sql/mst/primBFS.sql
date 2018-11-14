@@ -94,12 +94,12 @@ IS 'pgr_primBFS(Single Vertex)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from root vertex identifier
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - from root vertex identifier
 - Optional parameters
-   - max_depth := 9223372036854775807
+    - max_depth := 9223372036854775807
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_primBFS.html
+    - ${PGROUTING_DOC_LINK}/pgr_primBFS.html
 ';
 
 COMMENT ON FUNCTION pgr_primBFS(TEXT, ANYARRAY, BIGINT)
@@ -107,10 +107,10 @@ IS 'pgr_primBFS(multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from ARRAY[root vertices identifiers]
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - from ARRAY[root vertices identifiers]
 - Optional parameters
-   - max_depth := 9223372036854775807
+    - max_depth := 9223372036854775807
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_primBFS.html
+    - ${PGROUTING_DOC_LINK}/pgr_primBFS.html
 ';
