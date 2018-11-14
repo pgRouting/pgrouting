@@ -53,6 +53,7 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE;
 
+
 --    MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_minCostMaxFlow(
     TEXT,   -- edges_sql (required)
@@ -116,10 +117,20 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE;
 
+
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_minCostMaxFlow(TEXT, BIGINT, BIGINT)
-IS 'EXPERIMENTAL pgr_minCostMaxFlow--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid';
+IS 'pgr_minCostMaxFlow (One to One)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To vertex identifier
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_minCostMaxFlow.html
+';
+
 COMMENT ON FUNCTION pgr_minCostMaxFlow(TEXT, BIGINT, ANYARRAY)
 IS 'EXPERIMENTAL pgr_minCostMaxFlow--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids';
 COMMENT ON FUNCTION pgr_minCostMaxFlow(TEXT, ANYARRAY, BIGINT)
