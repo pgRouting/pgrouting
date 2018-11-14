@@ -177,4 +177,15 @@ IS 'pgr_bellmanFord(Many to One)
 ';
 
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgr_bellmanFord--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), neg_edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids [,directed])';
+IS 'pgr_bellmanFord(Many to Many)
+- EXPERIMENTAL
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+';
