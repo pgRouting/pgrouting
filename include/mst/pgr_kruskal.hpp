@@ -88,11 +88,10 @@ Pgr_kruskal<G>::generateKruskal(G &graph) {
     this->m_components.clear();
     this->m_results.clear();
     this->m_tree_id.clear();
-    this->m_added_order.clear();
 
     boost::kruskal_minimum_spanning_tree(
             graph.graph,
-            std::back_inserter(this->m_added_order),
+            std::inserter(this->m_spanning_tree.edges, this->m_spanning_tree.edges.begin()),
             boost::weight_map(get(&G::G_T_E::cost, graph.graph)));
 
 

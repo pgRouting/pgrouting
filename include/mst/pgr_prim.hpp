@@ -188,7 +188,7 @@ Pgr_prim<G>::generatePrim(
 
         auto cost = distances[u] - distances[v];
         auto edge = graph.get_edge(u, v, cost);
-        this->m_added_order.push_back(edge);
+        this->m_spanning_tree.edges.insert(edge);
     }
     return std::vector<pgr_mst_rt>();
 }
