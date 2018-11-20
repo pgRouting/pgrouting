@@ -1,0 +1,26 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- q1
+SELECT * FROM pgr_primDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    2, 3.5
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+(0 rows)
+
+-- q2
+SELECT * FROM pgr_primDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    ARRAY[13,2],
+    3.5
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+(0 rows)
+
+-- q3
+ROLLBACK;
+ROLLBACK

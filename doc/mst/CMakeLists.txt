@@ -2,11 +2,17 @@
 SET(LOCAL_FILES
     pgr_randomSpanTree.rst
     spanningTree-family.rst
+    kruskal-family.rst
+    prim-family.rst
     pgr_kruskal.rst
     pgr_kruskalDD.rst
     pgr_kruskalDFS.rst
     pgr_kruskalBFS.rst
+
     pgr_prim.rst
+    pgr_primDD.rst
+    pgr_primDFS.rst
+    pgr_primBFS.rst
     )
 
 foreach (f ${LOCAL_FILES})

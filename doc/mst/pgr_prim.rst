@@ -24,7 +24,9 @@ In particular, the Prim algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* **TBD**
+* Experimental:
+
+  * v3.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -85,7 +87,7 @@ The signature is for a **undirected** graph.
 
 .. code-block:: none
 
-    pgr_prim(TEXT edges_sql);
+    pgr_prim(TEXT edges_sql) - Experimental
     RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPTY SET
 
 When root vertex is not given then result is MST of disconnected graph.
@@ -153,7 +155,7 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
-Result Columns 
+Result Columns
 -------------------------------------------------------------------------------
 
 .. rubric:: For prim algorithms

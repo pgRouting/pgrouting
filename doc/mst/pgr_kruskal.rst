@@ -36,21 +36,11 @@ connected weighted undirected graph by adding increasing cost arcs at each step.
 
 **The main Characteristics are:**
 
-- It's implementation is only on **undirected** graph.
-- Process is done only on edges with positive costs.
-- The total weight of all the edges in the tree or forest is minimized.
-- If the graph is connected
-
-  - The resulting edges make up a tree
-
-- If the graph is not connected,
-
-  - Finds a minimum spanning tree for each connected component.
-  - The resulting edges make up a forest.
+.. include:: kruskal-family.rst
+   :start-after: kruskal-description-start
+   :end-before: kruskal-description-end
 
 - EMPTY SET is returned when there are no edges in the graph.
-- Returned edges are in the order they were added to the tree.
-- Running time: :math:`O(E * log E)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -66,7 +56,7 @@ Signatures
     OR EMPTY SET
 
 
-:Example: A minimum Spanning Tree
+:Example: Minimum Spanning Forest
 
 .. literalinclude:: doc-pgr_kruskal.queries
    :start-after: -- q1
@@ -75,11 +65,11 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== ========= =================================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =================================================
-**edges_sql**       ``TEXT``                         SQL query described in `Inner query`_.
-=================== ====================== ========= =================================================
+=================== ====================== =================================================
+Parameter           Type                   Description
+=================== ====================== =================================================
+**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
+=================== ====================== =================================================
 
 Inner query
 -------------------------------------------------------------------------------
@@ -100,15 +90,9 @@ Column           Type        Description
 ===============  =========== ====================================================
 **seq**          ``BIGINT``  Sequential value starting from **1**.
 **edge**         ``BIGINT``  Identifier of the edge.
-**cost**         ``FLOAT``   Cost to traverse of edge.
+**cost**         ``FLOAT``   Cost to traverse the edge.
 ===============  =========== ====================================================
 
-Additional Example
--------------------------------------------------------------------------------
-
-.. literalinclude:: doc-pgr_kruskal.queries
-   :start-after: -- q1
-   :end-before: -- q2
 
 See Also
 -------------------------------------------------------------------------------
