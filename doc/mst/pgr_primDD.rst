@@ -10,10 +10,10 @@
 pgr_primDD - Experimental
 ===============================================================================
 
-``pgr_primDD`` — Returns the catchament nodes using Prim algorithm.
+``pgr_primDD`` — Returns catchament nodes using Prim algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/prim_min_spanning_tree.html
+   :target: https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html
 
    Boost Graph Inside
 
@@ -23,41 +23,44 @@ pgr_primDD - Experimental
 
 .. rubric:: Availability
 
-* Experimental on v3.0.0
+* Experimental
+
+  * v3.0.0
 
 Description
 -------------------------------------------------------------------------------
 
 Using Prim algorithm, extracts the nodes that have aggregate costs less than
-or equal to the value distance.
+or equal to `distance`.
 
 **The main Characteristics are:**
 
-- It's implementation is only on **undirected** graph.
-- Process is done only on edges with positive costs.
+.. include:: prim-family.rst
+   :start-after: prim-description-start
+   :end-before: prim-description-end
+
 - Returned tree nodes from a root vertex are on Depth First Search order.
-- Prim Running time: :math:`O(E * log E)`
-- Depth First Search Running time: :math:`O(E + V)`
+- Depth First Search running time: :math:`O(E + V)`
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. code-block:: none
 
-    pgr_prim(edges_sql, root_vid, distance)
-    pgr_prim(edges_sql, root_vids, distance)
+    pgr_prim(Edges SQL, root vid, distance)
+    pgr_prim(Edges SQL, root vids, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
-    single: prim(Single vertex) - Experimental
+    single: primDD(Single vertex) - Experimental
 
 Single vertex
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_prim(edges_sql, root_vid, distance)
+    pgr_primDD(Edges SQL, root vid, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -68,14 +71,14 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: prim(Multiple vertices) - Experimental
+    single: primDD(Multiple vertices) - Experimental
 
 Multiple vertices
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_prim(edges_sql, root_vids, distance)
+    pgr_primDD(Edges SQL, root vids, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -85,66 +88,12 @@ Multiple vertices
    :start-after: -- q2
    :end-before: -- q3
 
-Parameters
--------------------------------------------------------------------------------
+.. Parameters, Inner query & result columns
 
-=================== ====================== =================================================
-Parameter           Type                   Description
-=================== ====================== =================================================
-**edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
-**root_vid**        ``BIGINT``             Identifier of the root vertex of the tree.
+.. literalinclude:: pgr_kruskalDD.rst
+   :start-after: mst-information-start
+   :end-before: mst-information-end
 
-                                           - When :math:`0` gets the spanning forest
-                                             starting in aleatory nodes for each tree.
-
-**root_vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
-
-                                           - :math:`0` values are ignored
-                                           - For optimization purposes, any duplicated value is ignored.
-
-**distance**        ``NUMERIC``            Upper limit for the inclusion of the node in the result.
-
-                                           - When ``Negative`` **Throws error**
-=================== ====================== =================================================
-
-Inner query
--------------------------------------------------------------------------------
-
-.. rubric::edges_sql
-
-.. include:: pgRouting-concepts.rst
-   :start-after: basic_edges_sql_start
-   :end-before: basic_edges_sql_end
-
-Result Columns
--------------------------------------------------------------------------------
-
-.. result columns start
-
-Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
-
-===============  =========== ====================================================
-Column           Type        Description
-===============  =========== ====================================================
-**seq**          ``BIGINT``  Sequential value starting from :math:`1`.
-**depth**        ``BIGINT``  Depth of the ``node``.
-
-                             - :math:`0`  when ``node`` = ``start_vid``.
-
-**start_vid**    ``BIGINT``  Identifier of the root vertex.
-
-                             - In `Multiple Vertices`_ results are in ascending order.
-
-**node**         ``BIGINT``  Identifier of ``node`` reached using ``edge``.
-**edge**         ``BIGINT``  Identifier of the ``edge`` used to arrive to ``node``.
-
-                             - :math:`-1`  when ``node`` = ``start_vid``.
-
-**cost**         ``FLOAT``   Cost to traverse ``edge``.
-**agg_cost**     ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
-===============  =========== ====================================================
-
-.. result columns end
 
 See Also
 -------------------------------------------------------------------------------

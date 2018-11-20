@@ -62,6 +62,8 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
+.. mst_information_start
+
 Parameters
 -------------------------------------------------------------------------------
 
@@ -83,7 +85,8 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, component, edge, cost, tree_cost)``
+
+Returns set of ``(seq, edge, cost)``
 
 ===============  =========== ====================================================
 Column           Type        Description
@@ -92,6 +95,8 @@ Column           Type        Description
 **edge**         ``BIGINT``  Identifier of the edge.
 **cost**         ``FLOAT``   Cost to traverse the edge.
 ===============  =========== ====================================================
+
+.. mst_information_end
 
 
 See Also

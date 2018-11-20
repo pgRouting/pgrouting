@@ -23,7 +23,9 @@ pgr_kruskalDD - Experimental
 
 .. rubric:: Availability
 
-* Experimental on v3.0.0
+* Experimental
+
+  * v3.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -33,10 +35,11 @@ or equal to the value distance.
 
 **The main Characteristics are:**
 
-- It's implementation is only on **undirected** graph.
-- Process is done only on edges with positive costs.
+.. include:: kruskal-family.rst
+   :start-after: kruskal-description-start
+   :end-before: kruskal-description-end
+
 - Returned tree nodes from a root vertex are on Depth First Search order.
-- Kruskal Running time: :math:`O(E * log E)`
 - Depth First Search Running time: :math:`O(E + V)`
 
 Signatures
@@ -44,20 +47,20 @@ Signatures
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, root_vid, distance)
+    pgr_kruskalDD(edges_sql, root_vid, distance)
     pgr_kruskal(edges_sql, root_vids, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
-    single: kruskal(Single vertex) - Experimental
+    single: kruskalDD(Single vertex) - Experimental
 
 Single vertex
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, root_vid, distance)
+    pgr_kruskalDD(edges_sql, root_vid, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -68,14 +71,14 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: kruskal(Multiple vertices) - Experimental
+    single: kruskalDD(Multiple vertices) - Experimental
 
 Multiple vertices
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, root_vids, distance)
+    pgr_kruskalDD(edges_sql, root_vids, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -84,6 +87,8 @@ Multiple vertices
 .. literalinclude:: doc-pgr_kruskalDD.queries
    :start-after: -- q2
    :end-before: -- q3
+
+.. mst-information-start
 
 Parameters
 -------------------------------------------------------------------------------
@@ -94,11 +99,13 @@ Parameter           Type                   Description
 **edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
 **root_vid**        ``BIGINT``             Identifier of the root vertex of the tree.
 
+                                           - Used on `Single vertex`_
                                            - When :math:`0` gets the spanning forest
                                              starting in aleatory nodes for each tree.
 
 **root_vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
 
+                                           - Used on `Multiple vertices`_
                                            - :math:`0` values are ignored
                                            - For optimization purposes, any duplicated value is ignored.
 
@@ -145,6 +152,8 @@ Column           Type        Description
 ===============  =========== ====================================================
 
 .. result columns end
+
+.. mst-information-end
 
 See Also
 -------------------------------------------------------------------------------

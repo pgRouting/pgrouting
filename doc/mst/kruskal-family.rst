@@ -56,7 +56,7 @@ two trees in the forest.
   - Finds a minimum spanning tree for each connected component.
   - The resulting edges make up a forest.
 
-- Kruskal running time: :math:`O(E * log E)`
+- Kruskal's running time: :math:`O(E * log E)`
 
 .. kruskal-description-end
 
