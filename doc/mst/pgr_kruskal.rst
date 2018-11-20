@@ -23,7 +23,9 @@ pgr_kruskal - Experimental
 
 .. rubric:: Availability
 
-* Experimental on v3.0.0
+* Experimental
+
+  * v3.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -102,11 +104,11 @@ Column           Type        Description
 See Also
 -------------------------------------------------------------------------------
 
-* https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
+* `Boost: Kruskal's Algorithm  <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Wikipedia: Kruskal's Algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-

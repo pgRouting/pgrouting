@@ -137,12 +137,11 @@ Result Columns
 See Also
 -------------------------------------------------------------------------------
 
-- `Boost Kruskal documentation <https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html>`__
-- Kruskal on `wikipedia <https://en.wikipedia.org/wiki/Kruskal%27s_algorithm>`__
-- The queries use the :doc:`sampledata` network.
+* `Boost: Kruskal's Algorithm  <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Wikipedia: Kruskal's Algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-

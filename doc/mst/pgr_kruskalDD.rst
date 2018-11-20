@@ -13,7 +13,7 @@ pgr_kruskalDD - Experimental
 ``pgr_kruskalDD`` — Returns the catchament nodes using Kruskal algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html
+   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
 
    Boost Graph Inside
 
@@ -48,7 +48,7 @@ Signatures
 .. code-block:: none
 
     pgr_kruskalDD(edges_sql, root_vid, distance)
-    pgr_kruskal(edges_sql, root_vids, distance)
+    pgr_kruskalDD(edges_sql, root_vids, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -109,10 +109,15 @@ Parameter           Type                   Description
                                            - :math:`0` values are ignored
                                            - For optimization purposes, any duplicated value is ignored.
 
-**distance**        ``NUMERIC``            Upper limit for the inclusion of the node in the result.
+**distance**        ``ANY-NUMERIC``        Upper limit for the inclusion of the node in the result.
 
                                            - When ``Negative`` **Throws error**
 =================== ====================== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC
 
 Inner query
 -------------------------------------------------------------------------------
@@ -158,12 +163,11 @@ Column           Type        Description
 See Also
 -------------------------------------------------------------------------------
 
-- `Boost Kruskal documentation <https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html>`__
-- Kruskal on `wikipedia <https://en.wikipedia.org/wiki/Kruskal%27s_algorithm>`__
-- The queries use the :doc:`sampledata` network.
+* `Boost: Kruskal's Algorithm  <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Wikipedia: Kruskal's Algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
