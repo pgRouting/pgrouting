@@ -91,19 +91,18 @@ Multiple vertices
 
 .. Parameters, Inner query & result columns
 
-
 .. include:: pgr_kruskalDD.rst
-   :start-after: mst-information-start
-   :end-before: mst-information-end
+   :start-after: mstDD-information-start
+   :end-before: mstDD-information-end
 
 
 See Also
 -------------------------------------------------------------------------------
 
 
-- `Boost: Prim's documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-- `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
-- The queries use the :doc:`sampledata` network.
+* `Boost: Prim's documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
+* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

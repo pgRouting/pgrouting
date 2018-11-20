@@ -87,6 +87,9 @@ Multiple vertices
    :start-after: --q2
    :end-before: --q3
 
+
+.. mstfs-information-start
+
 Parameters
 -------------------------------------------------------------------------------
 
@@ -96,11 +99,13 @@ Parameter           Type                   Description
 **edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
 **root_vid**        ``BIGINT``             Identifier of the root vertex of the tree.
 
+                                           - Used on `Single vertex`_
                                            - When :math:`0` gets the spanning forest
                                              starting in aleatory nodes for each tree.
 
 **root_vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
 
+                                           - Used on `Multiple vertices`_
                                            - :math:`0` values are ignored
                                            - For optimization purposes, any duplicated value is ignored.
 =================== ====================== =================================================
@@ -114,7 +119,7 @@ Parameter           Type        Default                     Description
 =================== =========== =========================== =================================================
 **max_depth**       ``BIGINT``  :math:`9223372036854775807` Upper limit for depth of node in the tree
 
-                                                            - When Negative throws error
+                                                            - When ``Negative`` **Throws error**
 =================== =========== =========================== =================================================
 
 Inner query
@@ -133,6 +138,7 @@ Result Columns
    :start-after: result columns start
    :end-before: result columns end
 
+.. mstfs-information-end
 
 See Also
 -------------------------------------------------------------------------------

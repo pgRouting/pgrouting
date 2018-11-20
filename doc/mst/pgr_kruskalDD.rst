@@ -88,7 +88,7 @@ Multiple vertices
    :start-after: -- q2
    :end-before: -- q3
 
-.. mst-information-start
+.. mstDD-information-start
 
 Parameters
 -------------------------------------------------------------------------------
@@ -158,7 +158,7 @@ Column           Type        Description
 
 .. result columns end
 
-.. mst-information-end
+.. mstDD-information-end
 
 See Also
 -------------------------------------------------------------------------------
