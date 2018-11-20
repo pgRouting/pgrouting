@@ -67,7 +67,7 @@ class Pgr_mst {
              }
 
              auto component = m_get_component? m_tree_id[m_components[u]] : 0;
-             if (m_order_by && depth[u] == 0 && depth[v] == 0) {
+             if (m_suffix != "" && depth[u] == 0 && depth[v] == 0) {
                  if (!m_roots.empty() && graph[u].id != root) std::swap(u, v);
                  if (m_roots.empty() && graph[u].id != component) std::swap(u, v);
                  if (!p_root && graph[u].id > graph[v].id) std::swap(u, v);
@@ -92,11 +92,11 @@ class Pgr_mst {
                      || ((m_suffix == "DD")  && m_distance >= agg_cost[v])) {
                  results.push_back({
                      root,
-                         m_order_by? depth[v] : 0,
+                         m_suffix != ""? depth[v] : 0,
                          graph[v].id,
                          graph[edge].id,
                          graph[edge].cost,
-                         m_order_by? agg_cost[v] : 0.0
+                         m_suffix != ""? agg_cost[v] : 0.0
                  });
              }
          }
@@ -274,7 +274,6 @@ class Pgr_mst {
 
      void mst() {
          m_suffix = "";
-         m_order_by = 0;
          m_get_component = false;
          m_distance = -1;
          m_max_depth = -1;
@@ -286,7 +285,6 @@ class Pgr_mst {
              std::vector<int64_t> roots,
              int64_t max_depth) {
          m_suffix = "BFS";
-         m_order_by = 2;
          m_get_component = true;
          m_distance = -1;
          m_max_depth = max_depth;
@@ -297,7 +295,6 @@ class Pgr_mst {
              std::vector<int64_t> roots,
              int64_t max_depth) {
          m_suffix = "DFS";
-         m_order_by = 1;
          m_get_component = false;
          m_distance = -1;
          m_max_depth = max_depth;
@@ -308,7 +305,6 @@ class Pgr_mst {
              std::vector<int64_t> roots,
              double distance) {
          m_suffix = "DD";
-         m_order_by = 1;
          m_get_component = false;
          m_distance = distance;
          m_max_depth = -1;
@@ -318,7 +314,6 @@ class Pgr_mst {
  protected:
      std::vector<int64_t> m_roots;
      bool m_get_component;
-     int  m_order_by;
      int64_t  m_max_depth;
      double  m_distance;
      std::vector<E> m_added_order;
