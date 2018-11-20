@@ -47,11 +47,12 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 2.5.5 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?q=milestone:2.5.5>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github.
 
 .. rubric:: Bug fixes
 
 * Fixes driving distance when vertex is not part of the graph
+* Fixes windows test
 
 .. _changelog_2_5_4:
 
