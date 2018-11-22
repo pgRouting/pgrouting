@@ -78,7 +78,7 @@ class Pgr_mst {
           * order by bfs
           */
          if (m_suffix == "BFS") {
-             return bfs_ordering(graph);
+             return bfs_order(graph);
          }
 
          /*
@@ -88,6 +88,20 @@ class Pgr_mst {
          return std::vector<pgr_mst_rt>();
      }
 
+     std::vector<pgr_mst_rt>
+     no_order(const G &graph) {
+         return no_ordering(graph);
+     }
+
+     std::vector<pgr_mst_rt>
+     dfs_order(const G &graph) {
+         return dfs_ordering(graph);
+     }
+
+     std::vector<pgr_mst_rt>
+     bfs_order(const G &graph) {
+         return bfs_ordering(graph);
+     }
 
      void mst() {
          m_suffix = "";
@@ -315,6 +329,7 @@ class Pgr_mst {
 
      std::vector<pgr_mst_rt>
      bfs_ordering(const G &graph) {
+         m_results.clear();
          /*
           * order by bfs
           */
