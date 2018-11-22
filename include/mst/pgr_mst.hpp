@@ -56,7 +56,6 @@ class Pgr_mst {
      void clear() {
          this->m_spanning_tree.clear();
          this->m_components.clear();
-         this->m_results.clear();
          this->m_tree_id.clear();
      }
 
@@ -141,10 +140,6 @@ class Pgr_mst {
          void clear() { edges.clear(); }
      } m_spanning_tree;
 
-     /**
-      * stores the sorted results
-      */
-     std::vector<pgr_mst_rt> m_results;
 
      /** m_components[v]:
       *  - is empty (when m_get_component = 0)
@@ -173,6 +168,7 @@ class Pgr_mst {
              int64_t p_root,
              const G &graph) {
          std::vector<pgr_mst_rt> results;
+
          std::vector<double> agg_cost(graph.num_vertices(), 0);
          std::vector<int64_t> depth(graph.num_vertices(), 0);
          int64_t root(p_root);
@@ -276,7 +272,7 @@ class Pgr_mst {
 
      std::vector<pgr_mst_rt>
      dfs_ordering(const G &graph) {
-         m_results.clear();
+         std::vector<pgr_mst_rt> results;
 
          boost::filtered_graph<B_G, InSpanning, boost::keep_all>
              mstGraph(graph.graph, m_spanning_tree, {});
@@ -318,7 +314,7 @@ class Pgr_mst {
 
      std::vector<pgr_mst_rt>
      bfs_ordering(const G &graph) {
-         m_results.clear();
+         std::vector<pgr_mst_rt> results;
          /*
           * order by bfs
           */
@@ -342,14 +338,14 @@ class Pgr_mst {
                          graph.get_V(root),
                          visitor(bfs_visitor(visited_order)));
 
-                 auto results = get_results(visited_order, root, graph);
-                 m_results.insert(m_results.end(), results.begin(), results.end());
+                 auto tree_results = get_results(visited_order, root, graph);
+                 results.insert(results.end(), tree_results.begin(), tree_results.end());
              } else {
-                 m_results.push_back({root, 0, root, -1, 0.0, 0.0});
+                 results.push_back({root, 0, root, -1, 0.0, 0.0});
              }
          }
 
-         return m_results;
+         return results;
      }
 
 };
