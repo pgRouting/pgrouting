@@ -233,8 +233,7 @@ Pgr_prim<G>::primBFS(
         std::vector<int64_t> roots,
         int64_t max_depth) {
     this->mstBFS(roots, max_depth);
-    return this->m_roots.empty()? disconnectedPrim(graph)
-        : generatePrim(graph);
+    return disconnectedPrim(graph);
 }
 
 template <class G>
@@ -244,8 +243,7 @@ Pgr_prim<G>::primDFS(
         std::vector<int64_t> roots,
         int64_t max_depth) {
     this->mstDFS(roots, max_depth);
-    return this->m_roots.empty()? disconnectedPrim(graph)
-        : generatePrim(graph);
+    return disconnectedPrim(graph);
 }
 
 template <class G>
@@ -255,7 +253,7 @@ Pgr_prim<G>::primDD(
         std::vector<int64_t> roots,
         double distance) {
     this->mstDD(roots, distance);
-    return generatePrim(graph);
+    return disconnectedPrim(graph);
 }
 
 
