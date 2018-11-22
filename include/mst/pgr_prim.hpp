@@ -88,7 +88,7 @@ class Pgr_prim : public Pgr_mst<G> {
              const G &graph,
              int64_t root_vertex );
 
-     void primForest(const G &graph);
+     void generate_mst(const G &graph);
 
  private:
      // Member
@@ -145,7 +145,9 @@ Pgr_prim<G>::primTree(
 
 template <class G>
 void
-Pgr_prim<G>::primForest(const G &graph) {
+Pgr_prim<G>::generate_mst(const G &graph) {
+    this->clear();
+
     size_t totalNodes = num_vertices(graph.graph);
 
     m_unassigned.clear();
@@ -167,9 +169,7 @@ template <class G>
 std::vector<pgr_mst_rt>
 Pgr_prim<G>::prim(
         G &graph) {
-    this->mst();
-    primForest(graph);
-    return this->no_order(graph);
+    return this->mst(graph);
 }
 
 template <class G>
@@ -178,9 +178,7 @@ Pgr_prim<G>::primBFS(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth) {
-    this->mstBFS(roots, max_depth);
-    primForest(graph);
-    return this->bfs_order(graph);
+    return this->mstBFS(graph, roots, max_depth);
 }
 
 template <class G>
@@ -189,9 +187,7 @@ Pgr_prim<G>::primDFS(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth) {
-    this->mstDFS(roots, max_depth);
-    primForest(graph);
-    return this->dfs_order(graph);
+    return this->mstDFS(graph, roots, max_depth);
 }
 
 template <class G>
@@ -200,9 +196,7 @@ Pgr_prim<G>::primDD(
         G &graph,
         std::vector<int64_t> roots,
         double distance) {
-    this->mstDD(roots, distance);
-    primForest(graph);
-    return this->dfs_order(graph);
+    return this->mstDD(graph, roots, distance);
 }
 
 

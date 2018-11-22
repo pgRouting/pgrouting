@@ -73,18 +73,14 @@ class Pgr_kruskal : public Pgr_mst<G> {
      typedef typename G::E E;
 
      /* Does all the work */
-     void generateKruskal(G &graph);
-
+     void generate_mst(const G &graph);
 };
 
 
 template <class G>
 void
-Pgr_kruskal<G>::generateKruskal(G &graph) {
-    this->m_spanning_tree.clear();
-    this->m_components.clear();
-    this->m_results.clear();
-    this->m_tree_id.clear();
+Pgr_kruskal<G>::generate_mst(const G &graph) {
+    this->clear();
 
     boost::kruskal_minimum_spanning_tree(
             graph.graph,
@@ -97,9 +93,7 @@ template <class G>
 std::vector<pgr_mst_rt>
 Pgr_kruskal<G>::kruskal(
         G &graph) {
-    this->mst();
-    generateKruskal(graph);
-    return this->no_order(graph);
+    return this->mst(graph);
 }
 
 
@@ -109,9 +103,7 @@ Pgr_kruskal<G>::kruskalBFS(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth) {
-    this->mstBFS(roots, max_depth);
-    generateKruskal(graph);
-    return this->bfs_order(graph);
+    return this->mstBFS(graph, roots, max_depth);
 }
 
 template <class G>
@@ -120,9 +112,7 @@ Pgr_kruskal<G>::kruskalDFS(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth) {
-    this->mstDFS(roots, max_depth);
-    generateKruskal(graph);
-    return this->dfs_order(graph);
+    return this->mstDFS(graph, roots, max_depth);
 }
 
 template <class G>
@@ -131,9 +121,7 @@ Pgr_kruskal<G>::kruskalDD(
         G &graph,
         std::vector<int64_t> roots,
         double distance) {
-    this->mstDD(roots, distance);
-    generateKruskal(graph);
-    return this->dfs_order(graph);
+    return this->mstDD(graph, roots, distance);
 }
 
 

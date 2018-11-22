@@ -51,41 +51,13 @@ class Pgr_mst {
 
 
  protected:
-     /** @brief ordering of the results
-      *
-      * Orders by
-      * - no order
-      * - DFS
-      * - BFS
-      */
-     std::vector<pgr_mst_rt>
-     order_results(const G &graph) {
-         /*
-          * No particular order
-          */
-         if (m_suffix == "") {
-             return no_ordering(graph);
-         }
+     virtual void generate_mst(const G &graph) = 0;
 
-         /*
-          * order by dfs
-          */
-         if (m_suffix == "DFS" || m_suffix == "DD") {
-             return dfs_ordering(graph);
-         }
-
-         /*
-          * order by bfs
-          */
-         if (m_suffix == "BFS") {
-             return bfs_order(graph);
-         }
-
-         /*
-          * Something went wrong
-          */
-         pgassert(false);
-         return std::vector<pgr_mst_rt>();
+     void clear() {
+         this->m_spanning_tree.clear();
+         this->m_components.clear();
+         this->m_results.clear();
+         this->m_tree_id.clear();
      }
 
      std::vector<pgr_mst_rt>
@@ -103,16 +75,20 @@ class Pgr_mst {
          return bfs_ordering(graph);
      }
 
-     void mst() {
+     std::vector<pgr_mst_rt> mst(const G &graph) {
          m_suffix = "";
          m_get_component = false;
          m_distance = -1;
          m_max_depth = -1;
          m_roots.clear();
+
+         this->generate_mst(graph);
+         return no_order(graph);
      }
 
 
-     void mstBFS(
+     std::vector<pgr_mst_rt> mstBFS(
+             const G &graph,
              std::vector<int64_t> roots,
              int64_t max_depth) {
          m_suffix = "BFS";
@@ -120,9 +96,13 @@ class Pgr_mst {
          m_distance = -1;
          m_max_depth = max_depth;
          m_roots = details::clean_vids(roots);
+
+         this->generate_mst(graph);
+         return bfs_order(graph);
      }
 
-     void mstDFS(
+     std::vector<pgr_mst_rt> mstDFS(
+             const G &graph,
              std::vector<int64_t> roots,
              int64_t max_depth) {
          m_suffix = "DFS";
@@ -130,9 +110,13 @@ class Pgr_mst {
          m_distance = -1;
          m_max_depth = max_depth;
          m_roots = details::clean_vids(roots);
+
+         this->generate_mst(graph);
+         return dfs_order(graph);
      }
 
-     void mstDD(
+     std::vector<pgr_mst_rt> mstDD(
+             const G &graph,
              std::vector<int64_t> roots,
              double distance) {
          m_suffix = "DD";
@@ -140,6 +124,9 @@ class Pgr_mst {
          m_distance = distance;
          m_max_depth = -1;
          m_roots = details::clean_vids(roots);
+
+         this->generate_mst(graph);
+         return dfs_order(graph);
      }
 
  protected:
