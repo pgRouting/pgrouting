@@ -1,16 +1,11 @@
 \i setup.sql
 
-SELECT plan(10);
+SELECT plan(9);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
 
-PREPARE null_vertex AS
-SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
-
-
 SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
-SELECT is_empty('null_vertex', 'Should be empty to tests be meaningful');
 
 
 CREATE OR REPLACE FUNCTION test_function()

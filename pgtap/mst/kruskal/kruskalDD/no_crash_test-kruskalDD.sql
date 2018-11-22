@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(82);
+SELECT plan(114);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -71,10 +71,15 @@ BEGIN
     '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
     'NULL::numeric'
     ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
 
+    params[3] := '3.5::float';
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
 
     params[1] := '$$edges$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
+
+    params[3] := '3.5::numeric';
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
 
     -- kruskalDD Multiple vertices
@@ -89,10 +94,15 @@ BEGIN
     '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
     'NULL::numeric'
     ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
 
+    params[3] := '3.5::float';
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
 
     params[1] := '$$edges$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
+
+    params[3] := '3.5::numeric';
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalDD', params, subs);
 
     subs[2] := 'NULL::BIGINT[]';
