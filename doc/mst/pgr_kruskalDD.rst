@@ -10,7 +10,7 @@
 pgr_kruskalDD - Experimental
 ===============================================================================
 
-``pgr_kruskalDD`` — Returns the catchament nodes using Kruskal algorithm.
+``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
@@ -23,15 +23,15 @@ pgr_kruskalDD - Experimental
 
 .. rubric:: Availability
 
-* Experimental
+* New as experimental on v3.0.0
 
-  * v3.0.0
 
 Description
 -------------------------------------------------------------------------------
 
-Using Kruskal algorithm, extracts the nodes that have aggregate costs less than
-or equal to the value distance.
+Using Kruskal's algorithm, extracts the nodes that have aggregate costs less than
+or equal to the value ``Distance`` within the calculated minimum spanning tree.
+
 
 **The main Characteristics are:**
 
@@ -40,7 +40,7 @@ or equal to the value distance.
    :end-before: kruskal-description-end
 
 - Returned tree nodes from a root vertex are on Depth First Search order.
-- Depth First Search Running time: :math:`O(E + V)`
+- Depth First Search running time: :math:`O(E + V)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -96,20 +96,20 @@ Parameters
 =================== ====================== =================================================
 Parameter           Type                   Description
 =================== ====================== =================================================
-**edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
-**root_vid**        ``BIGINT``             Identifier of the root vertex of the tree.
+**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
+**Root vid**        ``BIGINT``             Identifier of the root vertex of the tree.
 
                                            - Used on `Single vertex`_
                                            - When :math:`0` gets the spanning forest
                                              starting in aleatory nodes for each tree.
 
-**root_vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
+**Root vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
 
                                            - Used on `Multiple vertices`_
                                            - :math:`0` values are ignored
                                            - For optimization purposes, any duplicated value is ignored.
 
-**distance**        ``ANY-NUMERIC``        Upper limit for the inclusion of the node in the result.
+**Distance**        ``ANY-NUMERIC``        Upper limit for the inclusion of the node in the result.
 
                                            - When ``Negative`` **Throws error**
 =================== ====================== =================================================
@@ -163,9 +163,11 @@ Column           Type        Description
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`spanningTree-family`
+* :doc:`kruskal-family`
+* The queries use the :doc:`sampledata` network.
 * `Boost: Kruskal's Algorithm  <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
 * `Wikipedia: Kruskal's Algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
-* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

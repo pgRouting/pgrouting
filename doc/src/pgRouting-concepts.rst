@@ -209,7 +209,7 @@ Description of the edges_sql query for dijkstra like functions
 
 .. basic_edges_sql_start
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+:Edges SQL: an SQL query, which should return a set of rows with the following columns:
 
 ================= =================== ======== =================================================
 Column            Type                 Default  Description

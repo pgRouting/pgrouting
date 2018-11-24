@@ -26,8 +26,7 @@ SELECT * FROM pgr_primDD(
 -- q2
 SELECT * FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    ARRAY[13,2],
-    3.5
+    ARRAY[13,2], 3.5
 );
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------

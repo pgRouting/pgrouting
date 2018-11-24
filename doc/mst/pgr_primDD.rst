@@ -10,7 +10,7 @@
 pgr_primDD - Experimental
 ===============================================================================
 
-``pgr_primDD`` — Returns catchament nodes using Prim algorithm.
+``pgr_primDD`` — Catchament nodes using Prim's algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html
@@ -23,15 +23,13 @@ pgr_primDD - Experimental
 
 .. rubric:: Availability
 
-* Experimental
-
-  * v3.0.0
+* New as experimental on v3.0.0
 
 Description
 -------------------------------------------------------------------------------
 
 Using Prim algorithm, extracts the nodes that have aggregate costs less than
-or equal to `distance`.
+or equal to the value ``Distance`` within the calculated minimum spanning tree.
 
 **The main Characteristics are:**
 
@@ -44,6 +42,8 @@ or equal to `distance`.
 
 Signatures
 -------------------------------------------------------------------------------
+
+.. rubric:: Summary
 
 .. code-block:: none
 
@@ -99,7 +99,8 @@ Multiple vertices
 See Also
 -------------------------------------------------------------------------------
 
-
+* :doc:`spanningTree-family`
+* :doc:`prim-family`
 * `Boost: Prim's documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
 * `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
 * The queries use the :doc:`sampledata` network.

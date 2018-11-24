@@ -6,7 +6,6 @@ SELECT * FROM pgr_primDD(
 \echo -- q2
 SELECT * FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    ARRAY[13,2],
-    3.5
+    ARRAY[13,2], 3.5
 );
 \echo -- q3
