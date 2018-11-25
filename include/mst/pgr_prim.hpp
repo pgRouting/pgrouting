@@ -28,8 +28,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/prim_minimum_spanning_tree.hpp>
 #include <boost/graph/filtered_graph.hpp>
+
+#if BOOST_VERSION_OK
+#include <boost/graph/dijkstra_shortest_paths.hpp>
+#else
+#include "boost/dijkstra_shortest_paths.hpp"
+#endif
+
+#include <boost/graph/prim_minimum_spanning_tree.hpp>
 
 #include <iostream>
 #include <vector>

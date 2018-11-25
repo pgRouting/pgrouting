@@ -74,7 +74,7 @@ do_pgr_prim(
             results = pgrouting::details::get_no_edge_graph_result(roots);
         } else {
             pgrouting::UndirectedGraph undigraph(UNDIRECTED);
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_min_edges_no_parallel(data_edges, total_edges);
             pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
             if (suffix == "") {
                 results = prim.prim(undigraph);

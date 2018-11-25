@@ -385,29 +385,43 @@ class Pgr_base_graph {
         No edge is inserted when there is an error on the vertices
         @param edges
       */
-     template < typename T >
-         void insert_edges(const std::vector<T> &edges, bool normal = true) {
+     template <typename T>
+     void
+     insert_edges(const std::vector<T> &edges, bool normal = true) {
 #if 0
-             // This code does not work with contraction
-             if (num_vertices() == 0) {
-                 auto vertices = pgrouting::extract_vertices(edges);
-                 pgassert(pgrouting::check_vertices(vertices) == 0);
-                 add_vertices(vertices);
-             }
+         // This code does not work with contraction
+         if (num_vertices() == 0) {
+             auto vertices = pgrouting::extract_vertices(edges);
+             pgassert(pgrouting::check_vertices(vertices) == 0);
+             add_vertices(vertices);
+         }
 #endif
-             for (const auto edge : edges) {
-                 graph_add_edge(edge, normal);
-             }
+         for (const auto edge : edges) {
+             graph_add_edge(edge, normal);
          }
+     }
 
-         template < typename T >
-         void insert_negative_edges(
-                 const std::vector<T> &edges,
-                 bool normal = true) {
-          for (const auto edge : edges) {
-                 graph_add_neg_edge(edge, normal);
-             }
+     template <typename T>
+     void insert_min_edges_no_parallel(const T *edges, int64_t count) {
+         insert_edges(std::vector<T>(edges, edges + count));
+     }
+
+     template <typename T>
+     void
+     insert_min_edges_no_parallel(const std::vector<T> &edges) {
+         for (const auto edge : edges) {
+             graph_add_min_edge_no_parallel(edge);
          }
+     }
+
+     template < typename T >
+     void insert_negative_edges(
+             const std::vector<T> &edges,
+             bool normal = true) {
+         for (const auto edge : edges) {
+             graph_add_neg_edge(edge, normal);
+         }
+     }
      //@}
 
  private:
@@ -688,6 +702,9 @@ class Pgr_base_graph {
      template < typename T >
          void graph_add_edge(const T &edge, bool normal = true);
 
+     template < typename T >
+         void graph_add_min_edge_no_parallel(const T &edge);
+
       template < typename T >
          void graph_add_neg_edge(const T &edge, bool normal = true);
      /**
@@ -933,7 +950,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge, bool normal) {
 
     if (edge.reverse_cost >= 0
             && (m_gType == DIRECTED
-              || (m_gType == UNDIRECTED && edge.cost != edge.reverse_cost))) {
+                || (m_gType == UNDIRECTED && edge.cost != edge.reverse_cost))) {
         boost::tie(e, inserted) =
             boost::add_edge(vm_t, vm_s, graph);
 
@@ -942,7 +959,63 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge, bool normal) {
     }
 }
 
+template < class G, typename T_V, typename T_E >
+template < typename T>
+void
+Pgr_base_graph< G, T_V, T_E >::graph_add_min_edge_no_parallel(const T &edge) {
+    bool inserted;
+    typename Pgr_base_graph< G, T_V, T_E >::E e;
+    if ((edge.cost < 0) && (edge.reverse_cost < 0))
+        return;
 
+    /*
+     * true: for source
+     * false: for target
+     */
+    auto vm_s = get_V(T_V(edge, true));
+    auto vm_t = get_V(T_V(edge, false));
+
+    pgassert(vertices_map.find(edge.source) != vertices_map.end());
+    pgassert(vertices_map.find(edge.target) != vertices_map.end());
+    if (edge.cost >= 0) {
+        E e1;
+        bool found;
+        boost::tie(e1, found) = edge(vm_s, vm_t, graph);
+        if (found) {
+            if (edge.cost < graph[e1].cost) {
+                graph[e1].cost = edge.cost;
+                graph[e1].id = edge.id;
+            }
+        } else {
+            boost::tie(e, inserted) =
+                boost::add_edge(vm_s, vm_t, graph);
+            graph[e].cost = edge.cost;
+            graph[e].id = edge.id;
+        }
+    }
+
+    if (edge.reverse_cost >= 0
+            && (m_gType == DIRECTED
+                || (m_gType == UNDIRECTED && edge.cost != edge.reverse_cost))) {
+        E e1;
+        bool found;
+        boost::tie(e1, found) = edge(vm_t, vm_s, graph);
+        if (found) {
+            if (edge.reverse_cost < graph[e1].cost) {
+                graph[e1].cost = edge.reverse_cost;
+                graph[e1].id = edge.id;
+            }
+        } else {
+            boost::tie(e, inserted) =
+                boost::add_edge(vm_t, vm_s, graph);
+
+            graph[e].cost = edge.reverse_cost;
+            graph[e].id = edge.id;
+        }
+    }
+}
+
+#if 1
 /*
 Add edges with negative cost(either cost or reverse_cost or both)
 Reading them into graph as positive cost ( edge_cost = (-1)* edge_negative_cost) [L931 & L941]
@@ -986,6 +1059,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_neg_edge(const T &edge, bool normal) {
         graph[e].id = normal? edge.id : -edge.id;
       }
 }
+#endif
 
 /******************  PRIVATE *******************/
 

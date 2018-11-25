@@ -36,7 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #include "costFlow/pgr_costFlowGraph.hpp"
-#ifdef BOOST_VERSION_OK
+
+#if BOOST_VERSION_OK
 #include <boost/graph/successive_shortest_path_nonnegative_weights.hpp>
 #include <boost/graph/find_flow_cost.hpp>
 #else
