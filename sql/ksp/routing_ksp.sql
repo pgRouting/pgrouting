@@ -78,4 +78,15 @@ COMMENT ON FUNCTION _pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
-IS 'pgr_ksp -- edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid, K [,directed, heap_paths]';
+IS 'pgr_ksp
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From vertex identifier
+    - To vertex identifier
+    - K
+- Optional Parameters
+    - directed := true
+    - heap_paths := false
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_ksp.html
+';
