@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(4);
+SELECT plan(5);
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
@@ -30,9 +30,12 @@ FROM pgr_prim(
      FROM edge_table'
 ) WHERE edge < 0;
 
+SELECT lives_ok('prim4',
+    '3: Should live');
+
 SELECT set_eq('prim4',
     $$VALUES (0)$$,
-    '3: No edge with negative values');
+    '4: No edge with negative values');
 
 --
 PREPARE prim5 AS
