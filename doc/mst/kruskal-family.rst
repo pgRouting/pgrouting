@@ -73,8 +73,8 @@ Inner query
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost: Kruskal's Algorithm  <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
-* `Wikipedia: Kruskal's Algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
+* `Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
 .. rubric:: Indices and tables
 

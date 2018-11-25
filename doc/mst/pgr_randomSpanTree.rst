@@ -40,7 +40,7 @@ Signatures
 
 * TBD
 
-.. rubric:: Summary 
+.. rubric:: Summary
 
 * TBD
 

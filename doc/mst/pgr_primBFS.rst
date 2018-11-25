@@ -10,7 +10,7 @@
 pgr_primBFS - Experimental
 ===============================================================================
 
-``pgr_primBFS`` — Prim algorithm for Minimum Spanning Tree with Breath First
+``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth First
 Search ordering.
 
 .. figure:: images/boost-inside.jpeg
@@ -24,22 +24,21 @@ Search ordering.
 
 .. rubric:: Availability
 
-* Experimental
-
-  * v3.0.0
+* New as experimental on v3.0.0
 
 Description
 -------------------------------------------------------------------------------
 
-Using the Prim algorithm, visits and extracts the nodes in Breath First Search
-ordering
+Visits and extracts the nodes information in Breath First Search ordering
+of the Minimum Spanning Tree created with Prims's algorithm.
 
 **The main Characteristics are:**
 
-- It's implementation is only on **undirected** graph.
-- Process is done only on edges with positive costs.
-- Returned tree vertices are in Breath First Search order.
-- Prim Running time: :math:`O(E * log E)`
+.. include:: prim-family.rst
+   :start-after: prim-description-start
+   :end-before: prim-description-end
+
+- Returned tree nodes from a root vertex are on Breath First Search order
 - Breath First Search Running time: :math:`O(E + V)`
 
 Signatures
@@ -47,8 +46,8 @@ Signatures
 
 .. code-block:: none
 
-    pgr_primBFS(edges_sql, root_vid [, max_depth])
-    pgr_primBFS(edges_sql, root_vids [, max_depth])
+    pgr_primBFS(Edges SQL, Root vid [, max_depth])
+    pgr_primBFS(Edges SQL, Root vids [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -60,11 +59,11 @@ Single vertex
 
 .. code-block:: none
 
-    pgr_primBFS(edges_sql, root_vid [, max_depth])
+    pgr_primBFS(Edges SQL, Root vid [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree of the graph
+:Example: The Minimum Spanning Tree having as root vertex :math:`2`
 
 .. literalinclude:: doc-pgr_primBFS.queries
    :start-after: --q1
@@ -78,7 +77,7 @@ Multiple vertices
 
 .. code-block:: none
 
-    pgr_primBFS(edges_sql, root_vids [, max_depth])
+    pgr_primBFS(Edges SQL, Root vids [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -98,9 +97,11 @@ Multiple vertices
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost: Prim's documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
+* :doc:`spanningTree-family`
+* :doc:`prim-family`
 * The queries use the :doc:`sampledata` network.
+* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
 
 .. rubric:: Indices and tables
 

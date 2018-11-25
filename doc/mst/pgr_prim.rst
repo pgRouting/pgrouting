@@ -76,9 +76,8 @@ See Also
 * :doc:`spanningTree-family`
 * :doc:`prim-family`
 * The queries use the :doc:`sampledata` network.
-
-* `Boost: Prim's Algorithm  <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's Algorithm <https://en.wikipedia.org/wiki/Prim's_algorithm>`__
+* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
 
 .. rubric:: Indices and tables
 

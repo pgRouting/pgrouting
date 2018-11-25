@@ -24,23 +24,21 @@ Search ordering.
 
 .. rubric:: Availability
 
-* Experimental
-
-  * v3.0.0
+* New as experimental on v3.0.0
 
 Description
 -------------------------------------------------------------------------------
 
-Using the Prim algorithm, visits and extracts the nodes in Depth First Search
-ordering
+Visits and extracts the nodes information in Depth First Search ordering
+of the Minimum Spanning Tree created using Prims's algorithm.
 
 **The main Characteristics are:**
 
-- It's implementation is only on **undirected** graph.
-- Process is done only on edges with positive costs.
-- Returned tree vertices are in Depth First Search order.
-- Running time: :math:`O(E * log E)`
-- Prim Running time: :math:`O(E * log E)`
+.. include:: prim-family.rst
+   :start-after: prim-description-start
+   :end-before: prim-description-end
+
+- Returned tree nodes from a root vertex are on Depth First Search order
 - Depth First Search Running time: :math:`O(E + V)`
 
 Signatures
@@ -48,8 +46,8 @@ Signatures
 
 .. code-block:: none
 
-    pgr_primDFS(edges_sql, root_vid [, max_depth])
-    pgr_primDFS(edges_sql, root_vids [, max_depth])
+    pgr_primDFS(Edges SQL, Root vid [, max_depth])
+    pgr_primDFS(Edges SQL, Root vids [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -61,11 +59,11 @@ Single vertex
 
 .. code-block:: none
 
-    pgr_primDFS(edges_sql, root_vid [, max_depth])
+    pgr_primDFS(Edges SQL, Root vid [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertex :math:`2`
+:Example: The Minimum Spanning Tree having as root vertex :math:`2`
 
 .. literalinclude:: doc-pgr_primDFS.queries
    :start-after: --q1
@@ -79,7 +77,7 @@ Multiple vertices
 
 .. code-block:: none
 
-    pgr_primDFS(edges_sql, root_vids [, max_depth])
+    pgr_primDFS(Edges SQL, Root vids [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -99,9 +97,11 @@ Multiple vertices
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost: Prim's documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
+* :doc:`spanningTree-family`
+* :doc:`prim-family`
 * The queries use the :doc:`sampledata` network.
+* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
 
 .. rubric:: Indices and tables
 
