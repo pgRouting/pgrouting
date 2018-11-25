@@ -53,6 +53,7 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_dagShortestPath(
     TEXT,     -- edges_sql (required)
@@ -125,7 +126,17 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, BIGINT, BIGINT)
-IS 'EXPERIMENTAL pgr_dagShortestPath--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid)';
+IS 'pgr_dagShortestPath(One to One)
+- EXPERIMENTAL
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From vertex identifier
+    - To vertex identifier
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
+';
+
+
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, BIGINT, ANYARRAY)
 IS 'EXPERIMENTAL pgr_dagShortestPath--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids)';
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, ANYARRAY, BIGINT)
