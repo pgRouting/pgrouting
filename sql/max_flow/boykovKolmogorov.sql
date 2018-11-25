@@ -25,13 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ------------------------------------
--- 2 boykov_kolmogorov
+-- boykov_kolmogorov
 ------------------------------------
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
     TEXT, -- edges_sql (required)
-    BIGINT, -- from_vids (required)
+    BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
 
     OUT seq INTEGER,
@@ -88,6 +88,7 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
   LANGUAGE sql VOLATILE STRICT;
 
 
+
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -111,27 +112,38 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, BIGINT, BIGINT)
 IS 'pgr_boykovKolmogorov(One to One)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from vertex
-   - to vertex';
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from vertex
+  - to vertex
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
+
 
 COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, BIGINT, ANYARRAY)
 IS 'pgr_boykovKolmogorov(One to Many)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from vertex
-   - to ARRAY[vertices identifiers]';
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from vertex
+  - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
+
 
 COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_boykovKolmogorov(Many to One)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from ARRAY[vertices identifiers]
-   - to vertex';
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from ARRAY[vertices identifiers]
+  - to vertex
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
 
 COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, ANYARRAY, ANYARRAY)
 IS 'pgr_boykovKolmogorov(Many to Many)
@@ -139,4 +151,8 @@ IS 'pgr_boykovKolmogorov(Many to Many)
  - Parameters:
    - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - from ARRAY[vertices identifiers]
-   - to ARRAY[vertices identifiers]';
+   - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
+
