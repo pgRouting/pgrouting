@@ -103,6 +103,19 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgr_withPointsDD(Single_vertex) -- edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), from_vid, distance [,directed, driving_side, details]';
+IS 'pgr_withPointsDD(Single Vertex)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with colums: [pid], edge_id, fraction[,side]
+    - From vertex identifier
+    - Distance
+- Optional Parameters
+    - directed := true
+    - driving_side := b
+    - details := false
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_withPointsDD.html
+';
+
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsDD(Multiple vertices) -- edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), from_vids, distance [,directed, driving_side, details, equicost]';
