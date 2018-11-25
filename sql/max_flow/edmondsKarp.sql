@@ -24,14 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-------------------------------------
+-------------------
 -- pgr_edmondsKarp
-------------------------------------
+-------------------
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
-    BIGINT, -- from_vids (required)
+    BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
 
     OUT seq INTEGER,
@@ -111,32 +111,44 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, BIGINT)
 IS 'pgr_edmondsKarp(One to One)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from vertex
-   - to vertex';
+- Directed graph
+- Parameters:
+   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+   - From vertex
+   - To vertex
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+';
 
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, ANYARRAY)
 IS 'pgr_edmondsKarp(One to Many)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from vertex
-   - to ARRAY[vertices identifiers]';
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From vertex
+  - To ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+';
 
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_edmondsKarp(Many to One)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from ARRAY[vertices identifiers]
-   - to vertex';
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From ARRAY[vertices identifiers]
+  - To vertex
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+';
 
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, ANYARRAY)
 IS 'pgr_edmondsKarp(Many to Many)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from ARRAY[vertices identifiers]
-   - to ARRAY[vertices identifiers]';
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From ARRAY[vertices identifiers]
+  - To ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+';
