@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    _max_flow.sql
+    _maxflow.sql
     edmondsKarp.sql
     boykovKolmogorov.sql
     pushRelabel.sql
