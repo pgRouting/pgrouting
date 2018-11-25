@@ -107,7 +107,12 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- COMMENTS
+
+COMMENT ON FUNCTION _pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_withPointsDD(Single Vertex)
@@ -123,6 +128,7 @@ IS 'pgr_withPointsDD(Single Vertex)
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_withPointsDD.html
 ';
+
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsDD(Multiple Vertices)
