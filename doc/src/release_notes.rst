@@ -45,6 +45,22 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
+.. rubric:: New Experimental functions
+
+* Prim family
+
+  * pgr_prim
+  * pgr_primDD
+  * pgr_primDFS
+  * pgr_primBFS
+
+* Kruskal family
+
+  * pgr_kruskal
+  * pgr_kruskalDD
+  * pgr_kruskalDFS
+  * pgr_kruskalBFS
+
 .. rubric:: Proposed moved to official on pgRouting
 
 * aStar Family
