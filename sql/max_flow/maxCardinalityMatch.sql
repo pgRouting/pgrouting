@@ -43,7 +43,7 @@ LANGUAGE c VOLATILE STRICT;
 CREATE OR REPLACE FUNCTION pgr_maxCardinalityMatch(
     TEXT, -- edges_sql (required)
 
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
 
     OUT seq INTEGER,
     OUT edge BIGINT,
@@ -58,9 +58,21 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_maxCardinalityMatch(TEXT, BOOLEAN) 
+IS 'pgRouting internal function';
+
+
 COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT, BOOLEAN)
 IS 'pgr_maxCardinalityMatch
- - Parameters:
-   - edges SQL with columns: id, source, target, going [,coming]
- - Optional Parameters:
-   - directed';
+- Parameters:
+  - Edges SQL with columns: id, source, target, going [,coming]
+- Optional Parameters:
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
+
