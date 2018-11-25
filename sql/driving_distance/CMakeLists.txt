@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
     withPoints_dd.sql
-    dijkstraDD.sql
+    drivingDistance.sql
     )
 
 foreach (f ${LOCAL_FILES})
