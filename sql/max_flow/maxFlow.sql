@@ -24,14 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-------------------------------------
+---------------
 -- pgr_maxFlow
-------------------------------------
+---------------
 
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
-    BIGINT, -- from_vids (required)
+    BIGINT, -- from_vid (required)
     BIGINT) -- to_vid (required)
   RETURNS BIGINT AS
   $BODY$
@@ -83,32 +83,44 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, BIGINT, BIGINT)
 IS 'pgr_maxFlow(One to One)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from vertex
-   - to vertex';
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from vertex
+  - to vertex
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, BIGINT, ANYARRAY)
 IS 'pgr_maxFlow(One to Many)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from vertex
-   - to ARRAY[vertices identifiers]';
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from vertex
+  - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_maxFlow(Many to One)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from ARRAY[vertices identifiers]
-   - to vertex';
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from ARRAY[vertices identifiers]
+  - to vertex
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, ANYARRAY, ANYARRAY)
 IS 'pgr_maxFlow(Many to Many)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from ARRAY[vertices identifiers]
-   - to ARRAY[vertices identifiers]';
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from ARRAY[vertices identifiers]
+  - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';
