@@ -77,7 +77,6 @@ COST 100
 ROWS 1000;
 
 
-
 -- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_dagShortestPath(
     TEXT,     -- edges_sql (required)
@@ -136,9 +135,17 @@ IS 'pgr_dagShortestPath(One to One)
     - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
 ';
 
-
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, BIGINT, ANYARRAY)
-IS 'EXPERIMENTAL pgr_dagShortestPath--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids)';
+IS 'pgr_dagShortestPath(One to Many)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
+';
+
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, ANYARRAY, BIGINT)
 IS 'EXPERIMENTAL pgr_dagShortestPath--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid)';
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, ANYARRAY, ANYARRAY)
