@@ -52,10 +52,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
     BIGINT,  -- to_vid (required)
     INTEGER, -- K (required)
 
-    directed BOOLEAN DEFAULT TRUE,
-    heap_paths BOOLEAN DEFAULT FALSE,
+    directed BOOLEAN DEFAULT true,
+    heap_paths BOOLEAN DEFAULT false,
     driving_side CHAR DEFAULT 'b',
-    details BOOLEAN DEFAULT FALSE,
+    details BOOLEAN DEFAULT false,
 
     OUT seq INTEGER, OUT path_id INTEGER, OUT path_seq INTEGER,
     OUT node BIGINT, OUT edge BIGINT,
@@ -75,5 +75,18 @@ COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOL
 IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
-IS 'PROPOSED pgr_withPointsKSP -- edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), from_vid, to_vid, K [,directed, heap_paths, driving_side, details]';
-
+IS 'pgr_withPointsKSP
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with colums: [pid], edge_id, fraction[,side]
+    - From vertex identifier
+    - To vertex identifier
+    - K
+- Optional Parameters
+    - directed := true
+    - heap paths := false
+    - driving side := b
+    - details := false
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_withPointsKSP.html
+';
