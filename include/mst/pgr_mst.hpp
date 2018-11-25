@@ -48,6 +48,7 @@ class Pgr_mst {
      typedef typename G::B_G B_G;
      typedef typename G::V V;
      typedef typename G::E E;
+     typedef typename G::E_i E_i;
 
 
  protected:
@@ -81,6 +82,7 @@ class Pgr_mst {
          m_max_depth = -1;
          m_roots.clear();
 
+         no_neg_costs(graph);
          this->generate_mst(graph);
          return no_order(graph);
      }
@@ -243,14 +245,14 @@ class Pgr_mst {
      }
 
      std::vector<pgr_mst_rt>
-     no_ordering(const G &graph) {
-         return get_results(m_spanning_tree.edges, 0, graph);
-     }
+         no_ordering(const G &graph) {
+             return get_results(m_spanning_tree.edges, 0, graph);
+         }
 
      std::vector<pgr_mst_rt>
-     dfs_forest(const G &graph) {
-         boost::filtered_graph<B_G, InSpanning, boost::keep_all>
-             mstGraph(graph.graph, m_spanning_tree, {});
+         dfs_forest(const G &graph) {
+             boost::filtered_graph<B_G, InSpanning, boost::keep_all>
+                 mstGraph(graph.graph, m_spanning_tree, {});
              std::vector<E> visited_order;
 
              using dfs_visitor = visitors::Dfs_visitor<E>;
@@ -267,50 +269,50 @@ class Pgr_mst {
              }
 
              return get_results(visited_order, 0, graph);
-     }
+         }
 
 
      std::vector<pgr_mst_rt>
-     dfs_ordering(const G &graph) {
-         std::vector<pgr_mst_rt> results;
-
-         boost::filtered_graph<B_G, InSpanning, boost::keep_all>
-             mstGraph(graph.graph, m_spanning_tree, {});
-
-         if (m_roots.empty()) {
-             return dfs_forest(graph);
-         } else {
+         dfs_ordering(const G &graph) {
              std::vector<pgr_mst_rt> results;
-             for (const auto root : m_roots) {
-                 std::vector<E> visited_order;
 
-                 using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
-                 if (graph.has_vertex(root)) {
-                     try {
-                         boost::depth_first_search(
-                                 mstGraph,
-                                 visitor(dfs_visitor(graph.get_V(root), visited_order))
-                                 .root_vertex(graph.get_V(root)));
-                     } catch(found_goals &) {
-                         {}
-                     } catch (boost::exception const& ex) {
-                         (void)ex;
-                         throw;
-                     } catch (std::exception &e) {
-                         (void)e;
-                         throw;
-                     } catch (...) {
-                         throw;
+             boost::filtered_graph<B_G, InSpanning, boost::keep_all>
+                 mstGraph(graph.graph, m_spanning_tree, {});
+
+             if (m_roots.empty()) {
+                 return dfs_forest(graph);
+             } else {
+                 std::vector<pgr_mst_rt> results;
+                 for (const auto root : m_roots) {
+                     std::vector<E> visited_order;
+
+                     using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
+                     if (graph.has_vertex(root)) {
+                         try {
+                             boost::depth_first_search(
+                                     mstGraph,
+                                     visitor(dfs_visitor(graph.get_V(root), visited_order))
+                                     .root_vertex(graph.get_V(root)));
+                         } catch(found_goals &) {
+                             {}
+                         } catch (boost::exception const& ex) {
+                             (void)ex;
+                             throw;
+                         } catch (std::exception &e) {
+                             (void)e;
+                             throw;
+                         } catch (...) {
+                             throw;
+                         }
+                         auto result = get_results(visited_order, root, graph);
+                         results.insert(results.end(), result.begin(), result.end());
+                     } else {
+                         results.push_back({root, 0, root, -1, 0.0, 0.0});
                      }
-                     auto result = get_results(visited_order, root, graph);
-                     results.insert(results.end(), result.begin(), result.end());
-                 } else {
-                     results.push_back({root, 0, root, -1, 0.0, 0.0});
                  }
+                 return results;
              }
-             return results;
          }
-     }
 
      std::vector<pgr_mst_rt>
      bfs_ordering(const G &graph) {
@@ -347,6 +349,14 @@ class Pgr_mst {
 
          return results;
      }
+
+     bool no_neg_costs(const G &graph) {
+         E_i  ei, ei_end;
+         for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei)
+             pgassert(graph[*ei].cost > 0);
+         return true;
+     }
+
 
 };
 
