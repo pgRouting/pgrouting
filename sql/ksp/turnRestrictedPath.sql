@@ -90,5 +90,22 @@ COMMENT ON FUNCTION _pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER,
 IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
-IS 'EXPERIMENTAL pgr_turnRestrictedPath -- edges_sql(id,source,target,cost[,reverse_cost]), restrictions_sql(id,cost,path), from_vid, to_vid, K [,directed, heap_paths, stop_on_first, strict]';
+IS 'pgr_turnRestrictedPath 
+- EXPERIMENTAL
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Restrictions SQL with colums: id, cost, path
+    - From vertex identifier
+    - To vertex identifier
+    - K
+- Optional Parameters
+    - directed := true
+    - heap paths := false
+    - stop on first := true
+    - strict := false
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_turnRestrictedPath.html
+';
+
+-- edges_sql(id,source,target,cost[,reverse_cost]), restrictions_sql(id,cost,path), from_vid, to_vid, K [,directed, heap_paths, stop_on_first, strict]';
 
