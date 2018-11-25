@@ -86,6 +86,9 @@ ROWS 1000;
 
 -- COMMENTS
 
+COMMENT ON FUNCTION _pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
 COMMENT ON FUNCTION pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'EXPERIMENTAL pgr_turnRestrictedPath -- edges_sql(id,source,target,cost[,reverse_cost]), restrictions_sql(id,cost,path), from_vid, to_vid, K [,directed, heap_paths, stop_on_first, strict]';
 
