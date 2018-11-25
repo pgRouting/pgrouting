@@ -71,6 +71,9 @@ ROWS 1000;
 
 -- COMMENTS
 
+COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgRouting internal function';
+
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
 IS 'PROPOSED pgr_withPointsKSP -- edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), from_vid, to_vid, K [,directed, heap_paths, driving_side, details]';
 
