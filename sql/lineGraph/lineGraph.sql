@@ -65,7 +65,11 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- COMMENTS
+
+COMMENT ON FUNCTION _pgr_lineGraph(TEXT, BOOLEAN)
+IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_lineGraph(TEXT, BOOLEAN)
 IS 'pgr_lineGraph
