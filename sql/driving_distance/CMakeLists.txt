@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    withPoints_dd.sql
+    withPointsDD.sql
     drivingDistance.sql
     )
 
