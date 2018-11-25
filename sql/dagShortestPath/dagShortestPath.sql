@@ -147,7 +147,16 @@ IS 'pgr_dagShortestPath(One to Many)
 ';
 
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, ANYARRAY, BIGINT)
-IS 'EXPERIMENTAL pgr_dagShortestPath--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid)';
+IS 'pgr_dagShortestPath(Many to One)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To vertex identifier 
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
+';
+
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, ANYARRAY, ANYARRAY)
 IS 'EXPERIMENTAL pgr_dagShortestPath--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids)';
 
