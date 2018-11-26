@@ -44,12 +44,12 @@ CREATE OR REPLACE FUNCTION _pgr_edgeDisjointPaths(
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
+RETURNS SEtoF RECORD AS
 'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
 LANGUAGE C VOLATILE STRICT;
 
 
--- ONE TO ONE
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,   --edges_sql (required)
     BIGINT, -- From_vid (required)
@@ -64,7 +64,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
+  RETURNS SEtoF RECORD AS
   $BODY$
     SELECT a.seq, a.path_id, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
     From _pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
@@ -72,7 +72,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
 LANGUAGE SQL VOLATILE STRICT;
 
 
--- ONE TO MANY
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,     --edges_sql (required)
     BIGINT,   -- From_vid (required)
@@ -89,7 +89,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     OUT cost FLOAT,
     OUT agg_cost FLOAT
     )
-  RETURNS SETOF RECORD AS
+  RETURNS SEtoF RECORD AS
   $BODY$
     SELECT a.seq, a.path_id, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     From _pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4) AS a;
@@ -97,7 +97,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
 LANGUAGE SQL VOLATILE STRICT;
 
 
--- MANY TO ONE
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,     --edges_sql (required)
     ANYARRAY, -- From_vids (required)
@@ -114,7 +114,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     OUT cost FLOAT,
     OUT agg_cost FLOAT
     )
-  RETURNS SETOF RECORD AS
+  RETURNS SEtoF RECORD AS
   $BODY$
     SELECT a.seq, a.path_id, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
     From _pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
@@ -122,7 +122,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
 LANGUAGE SQL VOLATILE STRICT;
 
 
--- MANY TO MANY
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,     --edges_sql (required)
     ANYARRAY, -- From_vids (required)
@@ -139,7 +139,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
+  RETURNS SEtoF RECORD AS
   $BODY$
     SELECT *
     From _pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4) AS a;
@@ -159,7 +159,7 @@ IS 'pgr_edgeDisjointPaths(One to One)
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From vertex identifier
-  - To vertex identifier
+  - to vertex identifier
 - Optional Parameters
    - directed := true
 - Documentation:
@@ -172,7 +172,7 @@ IS 'pgr_edgeDisjointPaths(One to Many)
  - Parameters:
    - dges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
-   - To ARRAY[vertices identifiers]
+   - to ARRAY[vertices identifiers]
 - Optional Parameters
    - directed := true
 - Documentation:
@@ -185,7 +185,7 @@ IS 'pgr_edgeDisjointPaths(Many to One)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
-   - To vertex identifier
+   - to vertex identifier
 - Optional Parameters
    - directed := true
 - Documentation:
@@ -198,7 +198,7 @@ IS 'pgr_edgeDisjointPaths(Many to Many)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
-   - To ARRAY[vertices identifiers]
+   - to ARRAY[vertices identifiers]
 - Optional Parameters
    - directed := true
 - Documentation:
