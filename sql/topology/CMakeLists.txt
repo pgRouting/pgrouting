@@ -2,7 +2,7 @@
 SET(LOCAL_FILES
     pgrouting_topology.sql
     pgrouting_analytics.sql
-    create_vertices_table.sql
+    createverticestable.sql
     nodeNetwork.sql
     )
 
