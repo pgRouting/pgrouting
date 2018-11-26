@@ -147,6 +147,10 @@ LANGUAGE SQL VOLATILE STRICT;
 -- COMMENTS
 
 
+COMMENT ON FUNCTION _pgr_edgeDisjointPaths(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
+
 COMMENT ON FUNCTION pgr_edgeDisjointPaths(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_edgeDisjointPaths(One to One)
 - Parameters:
