@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_edmondsKarp
 -------------------
 
-
+-- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -48,7 +48,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -68,7 +68,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -88,6 +88,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
+-- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -109,6 +110,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 -- COMMENTS
 
+
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, BIGINT)
 IS 'pgr_edmondsKarp(One to One)
 - Directed graph
@@ -119,6 +121,7 @@ IS 'pgr_edmondsKarp(One to One)
 - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
 ';
+
 
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, ANYARRAY)
 IS 'pgr_edmondsKarp(One to Many)
@@ -131,6 +134,7 @@ IS 'pgr_edmondsKarp(One to Many)
   - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
 ';
 
+
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_edmondsKarp(Many to One)
 - Directed graph
@@ -141,6 +145,7 @@ IS 'pgr_edmondsKarp(Many to One)
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
 ';
+
 
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, ANYARRAY)
 IS 'pgr_edmondsKarp(Many to Many)
