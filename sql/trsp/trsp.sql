@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
 --------------
 -- _pgr_trsp
 --------------
@@ -150,3 +151,18 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
+-- COMMENT
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
+IS '_pgr_trsp(One to One)
+- Directed graph
+- Parameters:
+   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+   - Restrictions SQL with colums: id, cost, path
+   - From vertex
+   - to vertex
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/_pgr_trsp.html
+';
