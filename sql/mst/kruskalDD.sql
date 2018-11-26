@@ -27,6 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+-----------------
+-- pgr_kruskalDD
+-----------------
+
+
 -- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
@@ -81,6 +87,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
 
 -- MULTIPLE VERTICES
 CREATE OR REPLACE FUNCTION pgr_kruskalDD (
@@ -140,7 +147,9 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, NUMERIC)
 IS 'pgr_kruskalDD(Single Vertex)
@@ -154,8 +163,9 @@ IS 'pgr_kruskalDD(Single Vertex)
    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
 ';
 
+
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, NUMERIC)
-IS 'pgr_kruskalDD(multiple Vertices)
+IS 'pgr_kruskalDD(Multiple Vertices)
  - EXPERIMENTAL
  - Undirected graph
  - Parameters:
@@ -165,6 +175,7 @@ IS 'pgr_kruskalDD(multiple Vertices)
  - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
 ';
+
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT)
 IS 'pgr_kruskalDD(Single Vertex)
@@ -178,8 +189,9 @@ IS 'pgr_kruskalDD(Single Vertex)
    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
 ';
 
+
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, FLOAT)
-IS 'pgr_kruskalDD(multiple Vertices)
+IS 'pgr_kruskalDD(Multiple Vertices)
  - EXPERIMENTAL
  - Undirected graph
  - Parameters:
