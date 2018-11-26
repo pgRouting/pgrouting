@@ -241,12 +241,14 @@ include_directories(${Boost_INCLUDE_DIRS})
 # dijkstra_shortest_paths.hpp has an error fix on 1.55
 #  error affects prim
 # BOOST_VERSION_OK if 1, use the boost file copy in the repository
-if (${Boost_VERSION} VERSION_GREATER "1.54")
-    set(BOOST_VERSION_OK "1")
-else()
+if ("${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}" VERSION_LESS "1.55.0")
     set(BOOST_VERSION_OK "0")
+else()
+    set(BOOST_VERSION_OK "1")
 endif()
 
+message(STATUS "Boost VERSION ${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
+message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_VERSION_OK=${BOOST_VERSION_OK}")
 
 #---------------------------------------------
