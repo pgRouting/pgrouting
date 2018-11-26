@@ -5,6 +5,7 @@ SET(LOCAL_FILES
     #_randomSpanTree.sql
     
     _kruskal.sql
+    _prim.sql
     prim.sql
     kruskal.sql
     kruskalDFS.sql
