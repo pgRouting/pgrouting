@@ -27,6 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+----------
+----------
+-- mst
+----------
+----------
+
+
+----------------
+-- _pgr_prim
+----------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_prim(
     TEXT,             -- Edge sql
     ANYARRAY,         -- tree root for traversal
