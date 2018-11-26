@@ -82,6 +82,7 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+
 -- MULTIPLE VERTICES
 CREATE OR REPLACE FUNCTION pgr_primDD (
     TEXT,   -- Edge sql
@@ -149,9 +150,9 @@ IS 'pgr_primDD(Single Vertex)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from root vertex identifier
-    - distance
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
+    - Distance
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
@@ -162,9 +163,9 @@ IS 'pgr_primDD(Multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from ARRAY[root vertices identifiers]
-    - distance
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
+    - Distance
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
@@ -175,10 +176,10 @@ IS 'pgr_primDD(Single Vertex)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from root vertex identifier
-    - distance
-- Documentation:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
+    - Distance
+- DocumentatiEdgeson:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
 
@@ -188,9 +189,9 @@ IS 'pgr_primDD(Multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from ARRAY[root vertices identifiers]
-    - distance
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
+    - Distance
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
