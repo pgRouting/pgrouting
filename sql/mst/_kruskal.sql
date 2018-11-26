@@ -48,8 +48,4 @@ LANGUAGE C VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_kruskal(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
-<<<<<<< HEAD
 IS 'pgRouting internal function';
-=======
-IS 'pgRouting internal function';
->>>>>>> ac6a2a490af5b209c0ef67df6c258f238f6fecf4

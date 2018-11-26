@@ -132,7 +132,7 @@ Pgr_prim<G>::primTree(
          * its not a tree, its a forest
          * - v is not on current tree
          */
-        if (isinf(distances[v])) continue;
+        if (std::isinf(distances[v])) continue;
         m_unassigned.erase(v);
 
 
