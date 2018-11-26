@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 
 
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -41,7 +42,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -54,7 +55,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -67,6 +68,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   LANGUAGE sql VOLATILE STRICT;
 
 
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -80,6 +82,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, BIGINT, BIGINT)
 IS 'pgr_maxFlow(One to One)
