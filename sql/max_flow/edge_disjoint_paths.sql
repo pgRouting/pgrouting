@@ -71,6 +71,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
   $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
+
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,     --edges_sql (required)
@@ -95,6 +96,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
   $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
+
 -- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,     --edges_sql (required)
@@ -118,6 +120,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     From _pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
   $BODY$
 LANGUAGE SQL VOLATILE STRICT;
+
 
 -- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
@@ -168,7 +171,7 @@ COMMENT ON FUNCTION pgr_edgeDisjointPaths(TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_edgeDisjointPaths(One to Many)
  - Parameters:
    - dges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From vertex
+   - From vertex identifier
    - To ARRAY[vertices identifiers]
 - Optional Parameters
    - directed := true
@@ -182,7 +185,7 @@ IS 'pgr_edgeDisjointPaths(Many to One)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
-   - To vertex
+   - To vertex identifier
 - Optional Parameters
    - directed := true
 - Documentation:
