@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_edmondsKarp
 -------------------
 
--- ONE TO ONE
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -40,7 +40,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     OUT end_vid BIGINT,
     OUT flow BIGINT,
     OUT residual_capacity BIGINT)
-  RETURNS SETOF RECORD AS
+  RETURNS SEtoF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 3);
@@ -48,7 +48,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
--- ONE TO MANY
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -60,7 +60,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     OUT end_vid BIGINT,
     OUT flow BIGINT,
     OUT residual_capacity BIGINT)
-  RETURNS SETOF RECORD AS
+  RETURNS SEtoF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 3);
@@ -68,7 +68,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
--- MANY TO ONE
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -80,7 +80,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     OUT end_vid BIGINT,
     OUT flow BIGINT,
     OUT residual_capacity BIGINT)
-  RETURNS SETOF RECORD AS
+  RETURNS SEtoF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 3);
@@ -88,7 +88,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
--- MANY TO MANY
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -100,7 +100,7 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     OUT end_vid BIGINT,
     OUT flow BIGINT,
     OUT residual_capacity BIGINT)
-  RETURNS SETOF RECORD AS
+  RETURNS SEtoF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 3);
@@ -117,7 +117,7 @@ IS 'pgr_edmondsKarp(One to One)
 - Parameters:
    - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - From vertex
-   - To vertex
+   - to vertex
 - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
 ';
@@ -129,7 +129,7 @@ IS 'pgr_edmondsKarp(One to Many)
 - Parameters:
   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
   - From vertex
-  - To ARRAY[vertices identifiers]
+  - to ARRAY[vertices identifiers]
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
 ';
@@ -141,7 +141,7 @@ IS 'pgr_edmondsKarp(Many to One)
 - Parameters:
   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
   - From ARRAY[vertices identifiers]
-  - To vertex
+  - to vertex
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
 ';
@@ -153,7 +153,7 @@ IS 'pgr_edmondsKarp(Many to Many)
 - Parameters:
   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
   - From ARRAY[vertices identifiers]
-  - To ARRAY[vertices identifiers]
+  - to ARRAY[vertices identifiers]
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
 ';
