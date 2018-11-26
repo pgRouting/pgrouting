@@ -41,6 +41,18 @@ Last changes: 2013-03-22
 2014-july: fixes issue 211
 */
 
+---------------
+---------------
+-- topology
+---------------
+---------------
+
+
+-----------------------
+-- pgr_createtopology
+-----------------------
+
+
 CREATE OR REPLACE FUNCTION pgr_createtopology(
     text, -- edge table (required)
     double precision, -- tolerance (required)
@@ -289,6 +301,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_createTopology(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT, BOOLEAN) IS
 'pgr_createverticestable
