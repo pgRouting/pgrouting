@@ -22,6 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--------------
+-- pgr_primDD
+--------------
+
+
 -- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_primDD (
     TEXT,   -- Edge sql
@@ -135,7 +140,9 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, NUMERIC)
 IS 'pgr_primDD(Single Vertex)
@@ -149,8 +156,9 @@ IS 'pgr_primDD(Single Vertex)
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
 
+
 COMMENT ON FUNCTION pgr_primDD(TEXT, ANYARRAY, NUMERIC)
-IS 'pgr_primDD(multiple Vertices)
+IS 'pgr_primDD(Multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
@@ -160,6 +168,7 @@ IS 'pgr_primDD(multiple Vertices)
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
+
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, FLOAT)
 IS 'pgr_primDD(Single Vertex)
@@ -173,8 +182,9 @@ IS 'pgr_primDD(Single Vertex)
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
 
+
 COMMENT ON FUNCTION pgr_primDD(TEXT, ANYARRAY, FLOAT)
-IS 'pgr_primDD(multiple Vertices)
+IS 'pgr_primDD(Multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
