@@ -152,17 +152,21 @@ COST 100
 ROWS 1000;
 
 
--- COMMENT
+-- COMMENTS
 
 
 COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
-IS '_pgr_trsp(One to One)
-- Directed graph
-- Parameters:
-   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - Restrictions SQL with colums: id, cost, path
-   - From vertex
-   - to vertex
-- Documentation:
-   - ${PGROUTING_DOC_LINK}/_pgr_trsp.html
-';
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
