@@ -50,9 +50,9 @@ Last changes: 2013-03-22
 */
 
 
-------------------------
+---------------------------
 -- pgr_createverticestable
-------------------------
+---------------------------
 
 
 CREATE OR REPLACE FUNCTION pgr_createverticestable(
