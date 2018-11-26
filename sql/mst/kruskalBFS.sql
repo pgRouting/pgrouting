@@ -98,7 +98,10 @@ IS 'pgr_kruskalBFS(Single Vertex)
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - from root vertex identifier
  - Optional parameters
-   - max_depth: default 9223372036854775807';
+   - max_depth: default 9223372036854775807
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalBFS.html
+';
 
 COMMENT ON FUNCTION pgr_kruskalBFS(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_kruskalBFS(multiple Vertices)
@@ -108,4 +111,7 @@ IS 'pgr_kruskalBFS(multiple Vertices)
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - from ARRAY[root vertices identifiers]
  - Optional parameters
-   - max_depth: default 9223372036854775807';
+   - max_depth: default 9223372036854775807
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalBFS.html
+';

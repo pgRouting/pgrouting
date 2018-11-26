@@ -31,19 +31,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- ONE to MANY
 CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
     TEXT,     -- edges_sql (required)
-    BIGINT,   -- from_vids (required)
+    BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vids (required)
     BIGINT,   -- stop_at (required)
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, end_vid, node, edge, cost, agg_cost
@@ -58,18 +58,18 @@ ROWS 1000;
 CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
-    BIGINT,   -- to_vids (required)
+    BIGINT,   -- to_vid (required)
     BIGINT,   -- stop_at (required)
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, node, edge, cost, agg_cost
@@ -88,14 +88,14 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstraNear(
 
     directed BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT path_seq integer,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT end_vid BIGINT,
     OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost float,
-    OUT agg_cost float)
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
@@ -107,9 +107,44 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, BIGINT, ANYARRAY, BIGINT, BOOLEAN) IS
-'PRE-EXPERIMENTAL _pgr_dijkstra(1 to Many) - edges_sql(source,target,cost[,reverse_cost]), from_vid, to_vids, stop_at [,directed]';
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BIGINT, BOOLEAN) IS
-'PRE-EXPERIMENTAL _pgr_dijkstraNear(Many to 1) - edges_sql(source,target,cost[,reverse_cost]), from_vids, to_vid, stop_at [,directed]';
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN) IS
-'PRE-EXPERIMENTAL _pgr_dijkstraNear(1 to Many - edges_sql(source,target,cost[,reverse_cost]), from_vids, to_vids, stop_at [,directed]';
+COMMENT ON FUNCTION _pgr_dijkstraNear(TEXT, BIGINT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgr_dijkstraNear(One to Many)
+- PRE-EXPERIMENTAL
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To ARRAY[vertices identifiers]
+   - Stop at nth found
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+';
+
+COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BIGINT, BOOLEAN) 
+IS 'pgr_dijkstraNear(Many to One)
+- PRE-EXPERIMENTAL
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To vertex identifier
+   - Stop at nth found
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+';
+
+COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN) 
+IS 'pgr_dijkstraNear(Many to Many)
+- PRE-EXPERIMENTAL 
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To ARRAY[vertices identifiers]
+   - Stop at nth found
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+'; 

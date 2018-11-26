@@ -24,6 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--------------------
+-- pgr_bdAstarCost
+--------------------
 
 -- one to one
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
@@ -48,6 +51,7 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- one to many
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
     TEXT,     -- edges_sql (required)
@@ -71,6 +75,7 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- many to one
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
     TEXT,     -- edges_sql (required)
@@ -93,6 +98,8 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+
 
 -- many to many
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
@@ -121,10 +128,64 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_bdAstarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
-IS 'pgr_bdAstarCost--One to One--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vid, to_vid [,directed ,heuristic, factor ,epsilon])';
+IS 'pgr_bdAstarCost(One to One)
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+  - From vertex identifier
+  - To vertex identifier
+- Optional Parameters: 
+  - directed := true
+  - heuristic := 5
+  - factor := 1
+  - epsilon := 1
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+';
+
+
 COMMENT ON FUNCTION pgr_bdAstarCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
-IS 'pgr_bdAstarCost--One to Many--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vid, to_vids [,directed, heuristic, factor, epsilon])';
+IS 'pgr_bdAstarCost(One to Many)
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+  - From vertex identifier
+  - To ARRAY[vertices identifiers]
+- Optional Parameters: 
+  - directed := true
+  - heuristic := 5
+  - factor := 1
+  - epsilon := 1
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+';
+
+
 COMMENT ON FUNCTION pgr_bdAstarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
-IS 'pgr_bdAstarCost--Many to One--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vids, to_vid [,directed, heuristic, factor, epsilon])';
+IS 'pgr_bdAstarCost(Many to One)
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+  - From ARRAY[vertices identifiers]
+  - To vertex identifier
+- Optional Parameters: 
+  - directed := true
+  - heuristic := 5
+  - factor := 1
+  - epsilon := 1
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+';
+
+
 COMMENT ON FUNCTION pgr_bdAstarCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
-IS 'pgr_bdAstarCost--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost],x1,y1,x2,y2), from_vids, to_vids [,directed, heuristic, factor, epsilon])';
+IS 'pgr_bdAstarCost(Many to Many)
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+  - From ARRAY[vertices identifiers]
+  - To ARRAY[vertices identifiers]
+- Optional Parameters: 
+  - directed := true
+  - heuristic := 5
+  - factor := 1
+  - epsilon := 1
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+';

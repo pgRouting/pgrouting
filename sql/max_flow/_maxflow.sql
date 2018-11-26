@@ -24,18 +24,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
-----------------------------
---    MANY TO MANY
-----------------------------
+--------------
+--------------
+-- maxflow
+--------------
+--------------
 
 
 CREATE OR REPLACE FUNCTION _pgr_maxflow(
     edges_sql TEXT,
     sources ANYARRAY,
     targets ANYARRAY,
+
     algorithm INTEGER DEFAULT 1,
     only_flow BOOLEAN DEFAULT false,
+
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -47,4 +50,8 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
  'MODULE_PATHNAME', 'max_flow_many_to_many'
     LANGUAGE c VOLATILE STRICT;
 
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_maxflow(TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN) 
+IS 'pgRouting internal function';
 

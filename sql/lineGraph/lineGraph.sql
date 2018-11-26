@@ -27,6 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+----------------------
+-- pgr_lineGraph
+----------------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_lineGraph(
     TEXT, -- edges_sql
 
@@ -60,7 +65,11 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- COMMENTS
+
+COMMENT ON FUNCTION _pgr_lineGraph(TEXT, BOOLEAN)
+IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_lineGraph(TEXT, BOOLEAN)
 IS 'pgr_lineGraph
@@ -68,4 +77,5 @@ IS 'pgr_lineGraph
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
  - Optional Parameters:
-   - directed';
+   - directed := true
+   ';

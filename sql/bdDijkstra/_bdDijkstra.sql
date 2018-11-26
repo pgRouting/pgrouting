@@ -23,15 +23,22 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
+-------------
 -------------
 -- bdDijkstra
 -------------
+-------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_bdDijkstra(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- start_vids (required)
     ANYARRAY, -- end_vids (required)
+
     directed BOOLEAN,
     only_cost BOOLEAN DEFAULT false,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
@@ -44,3 +51,8 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'bdDijkstra'
 LANGUAGE c VOLATILE STRICT;
 
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';

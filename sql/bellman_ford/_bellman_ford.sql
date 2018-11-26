@@ -24,9 +24,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
 -------------------------
--- pgr_bellmanFord
+-------------------------
+-- bellman_ford
+-------------------------
 -------------------------
 
 CREATE OR REPLACE FUNCTION _pgr_bellmanFord(
@@ -49,3 +50,8 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'bellman_ford'
 LANGUAGE c IMMUTABLE STRICT;
 
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_bellmanFord(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';

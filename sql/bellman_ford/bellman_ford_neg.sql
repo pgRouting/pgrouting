@@ -27,6 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+------------------
+-- pgr_bellmanFord
+------------------
+
+
 --ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_bellmanFord(
     TEXT,   -- edges_sql (required)
@@ -57,6 +62,7 @@ CREATE OR REPLACE FUNCTION pgr_bellmanFord(
     TEXT,     -- neg_edges_sql (required)
     BIGINT,   -- from_vids (required)
     ANYARRAY, -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
 
     OUT seq INTEGER,
@@ -126,10 +132,60 @@ LANGUAGE SQL VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_bellmanFord--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), neg_edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid [,directed])';
+IS 'pgr_bellmanFord(One to One)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To vertex identifier
+- Optional Parameters: 
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+';
+
+
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN)
-IS 'pgr_bellmanFord--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), neg_edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids [,directed])';
+IS 'pgr_bellmanFord(One to Many)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To ARRAY[vertices identifiers]
+- Optional Parameters
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+';
+
+
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgr_bellmanFord--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), neg_edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid [,directed])';
+IS 'pgr_bellmanFord(Many to One)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To vertex identifier
+- Optional Parameters
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+';
+
+
 COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgr_bellmanFord--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), neg_edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids [,directed])';
+IS 'pgr_bellmanFord(Many to Many)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To ARRAY[vertices identifiers]
+- Optional Parameters
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+';

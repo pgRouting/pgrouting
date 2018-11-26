@@ -1,8 +1,9 @@
 
 SET(LOCAL_FILES
-    pgrouting_topology.sql
-    pgrouting_analytics.sql
-    create_vertices_table.sql
+    createtopology.sql
+    analyzegraph.sql
+    analyzeOneway.sql
+    createverticestable.sql
     nodeNetwork.sql
     )
 

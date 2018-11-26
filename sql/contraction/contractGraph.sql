@@ -28,8 +28,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 --------------------
+--------------------
 -- contraction
 --------------------
+--------------------
+
+--------------------
+-- pgr_contractGraph
+--------------------
+
 
 CREATE OR REPLACE FUNCTION _pgr_contractGraph(
     edges_sql TEXT,
@@ -73,6 +80,19 @@ LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_contractGraph(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
-IS 'EXPERIMENTAL pgr_contractGraph(edges_sql(id,source,target,cost[,reverse_cost]), contraction_order, [,directed ,max_cycles, forbidden_vertices])';
+COMMENT ON FUNCTION _pgr_contractGraph(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
+IS 'pgRouting internal function';
 
+COMMENT ON FUNCTION pgr_contractGraph(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
+IS 'pgr_contractGraph
+- EXPERIMENTAL
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - ARRAY [Contraction order]
+- Optional Parameters
+    - max_cycles := 1
+    - forbidden_vertices := ARRAY[]::BIGINT[]
+    - directed := true
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_contractGraph.html
+';

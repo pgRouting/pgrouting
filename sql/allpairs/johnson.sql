@@ -28,24 +28,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------------
+-----------------
+-- johnson
+-----------------
+-----------------
+
+
+------------------
+-- pgr_johnson
+------------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_johnson(
     edges_sql TEXT,
     directed BOOLEAN,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'johnson'
 LANGUAGE C VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_johnson(
     TEXT,    -- edges_sql (required)
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
 
@@ -55,4 +67,17 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN) IS 'pgr_johnson(edges_sql(id,source,target,cost[,reverse_cost]), [,directed])';
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_johnson(TEXT, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN) 
+IS 'pgr_johnson
+- Parameters:
+    - edges SQL with columns: source, target, cost [,reverse_cost]) 
+- Optional Parameters: 
+    - directed := true
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+';

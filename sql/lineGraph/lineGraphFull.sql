@@ -27,6 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+----------------------
+----------------------
+-- lineGraph
+----------------------
+----------------------
+
+
+----------------------
+-- pgr_lineGraphFull
+----------------------
+
 CREATE OR REPLACE FUNCTION _pgr_lineGraphFull(
     TEXT, -- edges_sql
 
@@ -56,7 +67,11 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- COMMENTS
+
+COMMENT ON FUNCTION _pgr_lineGraphFull(TEXT)
+IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_lineGraphFull(TEXT)
 IS 'pgr_lineGraphFull

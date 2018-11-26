@@ -38,7 +38,7 @@ Last changes: 2013-03-22
 
 
 /*
-.. function:: pgr_createVerticesTable(edge_table text, the_geom text, source text default 'source', target text default 'target')
+.. function:: pgr_createVerticesTable(edge_table TEXT, the_geom TEXT, source TEXT default 'source', target TEXT default 'target')
 
   Based on "source" and "target" columns creates the vetrices_pgr table for edge_table
   Ignores rows where "source" or "target" have NULL values
@@ -50,39 +50,39 @@ Last changes: 2013-03-22
 */
 
 CREATE OR REPLACE FUNCTION pgr_createverticestable(
-   text,  -- edge table (required)
-   the_geom text DEFAULT 'the_geom'::text,
-   source text DEFAULT 'source'::text,
-   target text DEFAULT 'target'::text,
-    rows_where text DEFAULT 'true'::text
+   TEXT,  -- edge table (required)
+   the_geom TEXT DEFAULT 'the_geom'::TEXT,
+   source TEXT DEFAULT 'source'::TEXT,
+   target TEXT DEFAULT 'target'::TEXT,
+    rows_where TEXT DEFAULT 'true'::TEXT
 )
-  RETURNS text AS
+  RETURNS TEXT AS
 $BODY$
 DECLARE
     edge_table TEXT := $1;
     naming record;
     sridinfo record;
-    sname text;
-    tname text;
-    tabname text;
-    vname text;
-    vertname text;
-    gname text;
-    sourcename text;
-    targetname text;
-    query text;
+    sname TEXT;
+    tname TEXT;
+    tabname TEXT;
+    vname TEXT;
+    vertname TEXT;
+    gname TEXT;
+    sourcename TEXT;
+    targetname TEXT;
+    query TEXT;
     ecnt bigint;
-    srid integer;
-    sourcetype text;
-    targettype text;
-    sql text;
-    totcount integer;
-    i integer;
-    notincluded integer;
-    included integer;
-    debuglevel text;
-    dummyRec text;
-    fnName text;
+    srid INTEGER;
+    sourcetype TEXT;
+    targettype TEXT;
+    sql TEXT;
+    totcount INTEGER;
+    i INTEGER;
+    notincluded INTEGER;
+    included INTEGER;
+    debuglevel TEXT;
+    dummyRec TEXT;
+    fnName TEXT;
     err bool;
 
 
@@ -122,13 +122,13 @@ BEGIN
     select * into targettype from _pgr_getColumnType(sname,tname,targetname,1, fnName);
 
 
-    err = sourcetype not in('integer','smallint','bigint');
+    err = sourcetype not in('INTEGER','smallint','bigint');
     perform _pgr_onError(err, 2, fnName,
-        'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found');
+        'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or bigint but '||sourcetype||' was found');
 
-    err = targettype not in('integer','smallint','bigint');
+    err = targettype not in('INTEGER','smallint','bigint');
     perform _pgr_onError(err, 2, fnName,
-        'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found');
+        'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found');
 
   raise debug '-->Column types:OK';
 
@@ -147,9 +147,9 @@ BEGIN
   raise DEBUG '     --> OK';
 
   raise debug 'Checking and creating Indices';
-     perform _pgr_createIndex(sname, tname , sourcename , 'btree'::text);
-     perform _pgr_createIndex(sname, tname , targetname , 'btree'::text);
-     perform _pgr_createIndex(sname, tname , gname , 'gist'::text);
+     perform _pgr_createIndex(sname, tname , sourcename , 'btree'::TEXT);
+     perform _pgr_createIndex(sname, tname , targetname , 'btree'::TEXT);
+     perform _pgr_createIndex(sname, tname , gname , 'gist'::TEXT);
   raise DEBUG '-->Check and create indices: OK';
 
      gname=quote_ident(gname);
@@ -192,7 +192,7 @@ BEGIN
            execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
        ELSE
            set client_min_messages  to warning;
-       	   execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
+       	   execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt INTEGER,chk INTEGER,ein INTEGER,eout INTEGER)';
        END IF;
        execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
                 quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
@@ -253,12 +253,15 @@ $BODY$
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT) IS
-'pgr_createverticestable
+COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT) 
+IS 'pgr_createverticestable
  - Parameters
    - Edge table name
  - Optional parameters
    - the_geom := ''the_geom''
    - source := ''source''
    - target := ''target''
-   - rows_where := ''true''';
+   - rows_where := ''true''
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_createverticestable.html
+';

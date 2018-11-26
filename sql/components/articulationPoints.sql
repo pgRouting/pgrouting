@@ -54,5 +54,15 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
-COMMENT ON FUNCTION pgr_articulationPoints(TEXT) IS
-'pgr_articulationPoints(edges_sql(id,source,target,cost[,reverse_cost]) For undirected graph';
+
+COMMENT ON FUNCTION _pgr_articulationPoints(TEXT)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION pgr_articulationPoints(TEXT) 
+IS'pgr_articulationPoints
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_articulationPoints.html
+';

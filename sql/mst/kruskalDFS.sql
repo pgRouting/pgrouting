@@ -102,7 +102,10 @@ IS 'pgr_kruskalDFS(Single Vertex)
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - from root vertex identifier
  - Optional parameters
-   - max_depth: default 9223372036854775807';
+   - max_depth: default 9223372036854775807
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalDFS.html
+';
 
 COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_kruskalDFS(multiple Vertices)
@@ -112,4 +115,7 @@ IS 'pgr_kruskalDFS(multiple Vertices)
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - from ARRAY[root vertices identifiers]
  - Optional parameters
-   - max_depth: default 9223372036854775807';
+   - max_depth: default 9223372036854775807
+   - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_kruskalDFS.html
+';

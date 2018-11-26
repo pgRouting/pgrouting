@@ -23,6 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 -------------------
+-------------------
+-- driving_distance
+-------------------
+-------------------
+
+
+-------------------
 -- pgr_withPointsDD
 -------------------
 
@@ -32,10 +39,10 @@ CREATE OR REPLACE FUNCTION _pgr_withPointsDD(
     start_pid ANYARRAY,
     distance FLOAT,
 
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b',
-    details BOOLEAN DEFAULT FALSE,
-    equicost BOOLEAN DEFAULT FALSE,
+    details BOOLEAN DEFAULT false,
+    equicost BOOLEAN DEFAULT false,
 
     OUT seq INTEGER,
     OUT start_vid BIGINT,
@@ -55,9 +62,9 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     BIGINT, -- from_vid (required)
     FLOAT,  -- distance (required)
 
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b',
-    details BOOLEAN DEFAULT FALSE,
+    details BOOLEAN DEFAULT false,
 
     OUT seq INTEGER,
     OUT node BIGINT,
@@ -80,10 +87,10 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     ANYARRAY, -- from_vid (required)
     FLOAT,    -- distance (required)
 
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b',
-    details BOOLEAN DEFAULT FALSE,
-    equicost BOOLEAN DEFAULT FALSE,
+    details BOOLEAN DEFAULT false,
+    equicost BOOLEAN DEFAULT false,
 
     OUT seq INTEGER,
     OUT start_vid BIGINT,
@@ -100,9 +107,41 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- COMMENTS
 
+COMMENT ON FUNCTION _pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgr_withPointsDD(Single_vertex) -- edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), from_vid, distance [,directed, driving_side, details]';
+IS 'pgr_withPointsDD(Single Vertex)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with colums: [pid], edge_id, fraction[,side]
+    - From vertex identifier
+    - Distance
+- Optional Parameters
+    - directed := true
+    - driving_side := b
+    - details := false
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_withPointsDD.html
+';
+
+
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
-IS 'pgr_withPointsDD(Multiple vertices) -- edges_sql(id,source,target,cost[,reverse_cost]), points_sql([pid],edge_id,fraction[,side]), from_vids, distance [,directed, driving_side, details, equicost]';
+IS 'pgr_withPointsDD(Multiple Vertices)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with colums: [pid], edge_id, fraction[,side]
+    - From ARRAY[vertices identifiers]
+    - Distance
+- Optional Parameters
+    - directed := true
+    - driving_side := b
+    - details := false
+    - equicost := false
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_withPointsDD.html
+';

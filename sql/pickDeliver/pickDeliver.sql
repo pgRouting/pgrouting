@@ -85,6 +85,11 @@ LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
+
+COMMENT ON FUNCTION _pgr_pickDeliver(TEXT, TEXT, TEXT, FLOAT, INTEGER, INTEGER)
+IS 'pgRouting internal function';
+
+
 COMMENT ON FUNCTION pgr_pickDeliver(TEXT, TEXT, TEXT, FLOAT, INTEGER, INTEGER)
 IS 'pgr_pickDeliver
  - PRE-EXPERIMENTAL
@@ -108,6 +113,9 @@ IS 'pgr_pickDeliver
      - end_vid
      - agg_cost
  - Optional Parameters:
-   - factor: default ''1''
-   - max_cycles: default ''10''
-   - initial_sol: default ''4''';
+   - factor: default := 1
+   - max_cycles: default := 10
+   - initial_sol: default := 4
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_pickDeliver.html
+';

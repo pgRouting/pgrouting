@@ -21,13 +21,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
------------
+---------------
+---------------
 -- pgr_ksp
------------
+---------------
+---------------
 
 CREATE OR REPLACE FUNCTION _pgr_ksp(
-    edges_sql text,
+    edges_sql TEXT,
     start_vid BIGINT,
     end_vid BIGINT,
     k INTEGER,
@@ -47,7 +48,7 @@ RETURNS SETOF RECORD AS
 LANGUAGE C VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_ksp(
-    text, -- edges_sql (required)
+    TEXT, -- edges_sql (required)
     BIGINT, -- from_vids (required)
     BIGINT,   -- to_vids (required)
     INTEGER, -- K (required)
@@ -73,5 +74,19 @@ ROWS 1000;
 
 -- COMMENTS
 
+COMMENT ON FUNCTION _pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
 COMMENT ON FUNCTION pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
-IS 'pgr_ksp -- edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid, K [,directed, heap_paths]';
+IS 'pgr_ksp
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From vertex identifier
+    - To vertex identifier
+    - K
+- Optional Parameters
+    - directed := true
+    - heap_paths := false
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_ksp.html
+';

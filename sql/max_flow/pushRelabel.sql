@@ -29,9 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ------------------------------------
 
 
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
     TEXT, -- edges_sql (required)
-    BIGINT, -- from_vids (required)
+    BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
 
     OUT seq INTEGER,
@@ -48,7 +49,7 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -68,7 +69,7 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -88,6 +89,7 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
   LANGUAGE sql VOLATILE STRICT;
 
 
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -109,34 +111,50 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
 
 -- COMMENTS
 
+
 COMMENT ON FUNCTION pgr_pushRelabel(TEXT, BIGINT, BIGINT)
 IS 'pgr_pushRelabel(One to One)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from vertex
-   - to vertex';
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From vertex identifier
+  - To vertex identifier
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';
+
 
 COMMENT ON FUNCTION pgr_pushRelabel(TEXT, BIGINT, ANYARRAY)
 IS 'pgr_pushRelabel(One to Many)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from vertex
-   - to ARRAY[vertices identifiers]';
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From vertex identifie
+  - To ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';
+
 
 COMMENT ON FUNCTION pgr_pushRelabel(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_pushRelabel(Many to One)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from ARRAY[vertices identifiers]
-   - to vertex';
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From ARRAY[vertices identifiers]
+  - To vertex identifie
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';
+
 
 COMMENT ON FUNCTION pgr_pushRelabel(TEXT, ANYARRAY, ANYARRAY)
 IS 'pgr_pushRelabel(Many to Many)
- - Directed graph
- - Parameters:
-   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
-   - from ARRAY[vertices identifiers]
-   - to ARRAY[vertices identifiers]';
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From ARRAY[vertices identifiers]
+  - To ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';

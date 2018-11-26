@@ -27,7 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
 -------------------------
 -- pgr_turnRestrictedPath
 -------------------------
@@ -55,6 +54,7 @@ CREATE OR REPLACE FUNCTION _pgr_turnRestrictedPath(
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'turnRestrictedPath'
 LANGUAGE c IMMUTABLE STRICT;
+
 
 CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
     TEXT,   -- edges_sql (required)
@@ -84,8 +84,29 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- COMMENTS
 
+COMMENT ON FUNCTION _pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+
 COMMENT ON FUNCTION pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
-IS 'EXPERIMENTAL pgr_turnRestrictedPath -- edges_sql(id,source,target,cost[,reverse_cost]), restrictions_sql(id,cost,path), from_vid, to_vid, K [,directed, heap_paths, stop_on_first, strict]';
+IS 'pgr_turnRestrictedPath 
+- EXPERIMENTAL
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Restrictions SQL with colums: id, cost, path
+    - From vertex identifier
+    - To vertex identifier
+    - K
+- Optional Parameters
+    - directed := true
+    - heap paths := false
+    - stop on first := true
+    - strict := false
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_turnRestrictedPath.html
+';
+
 

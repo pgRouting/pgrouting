@@ -30,8 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ----------------------------
 -- pgr_biconnectedComponents
 ----------------------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_biconnectedComponents(
     edges_sql TEXT,
+
     OUT seq INTEGER,
     OUT component BIGINT,
     OUT n_seq INTEGER,
@@ -55,6 +58,17 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
+
 -- COMMENTS
-COMMENT ON FUNCTION pgr_biconnectedComponents(TEXT) IS
-'pgr_biconnectedComponents(edges_sql(id,source,target,cost[,reverse_cost]) For undirected graph';
+
+COMMENT ON FUNCTION _pgr_biconnectedComponents(TEXT)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION pgr_biconnectedComponents(TEXT) 
+IS'pgr_biconnectedComponents
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_biconnectedComponents.html
+';

@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
-    routing_ksp.sql
-    withPoints_ksp.sql
+    ksp.sql
+    withPointsKSP.sql
     turnRestrictedPath.sql
     )
 

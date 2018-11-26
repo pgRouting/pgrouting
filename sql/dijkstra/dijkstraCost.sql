@@ -34,11 +34,11 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
     BIGINT, -- from_vids (required)
     BIGINT, -- to_vids (required)
 
-    directed BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT true,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
@@ -60,7 +60,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
@@ -83,7 +83,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
@@ -106,7 +106,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
@@ -119,10 +119,49 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_dijkstraCost--One to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vid [,directed])';
+IS 'pgr_dijkstraCost(One to One)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To vertex identifier
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
+
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN)
-IS 'pgr_dijkstraCost--One to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vid, to_vids [,directed])';
+IS 'pgr_dijkstraCost(One to Many)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
+
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgr_dijkstraCost--Many to One--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vid [,directed])';
+IS 'pgr_dijkstraCost(Many to One)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To vertex identifier
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
+
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgr_dijkstraCost--Many to Many--(edges_sql(id,source,target,cost[,reverse_cost]), from_vids, to_vids [,directed])';
+IS 'pgr_dijkstraCost(Many to Many)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';

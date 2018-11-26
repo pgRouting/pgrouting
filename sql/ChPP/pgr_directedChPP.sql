@@ -27,6 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+--------------------
+-- pgr_directedChPP
+--------------------
+
+
+
 CREATE OR REPLACE FUNCTION pgr_directedChPP(
     TEXT, -- edges_sql (required)
 
@@ -44,5 +51,13 @@ $BODY$
 LANGUAGE SQL VOLATILE;
 
 -- COMMENTS
-COMMENT ON FUNCTION pgr_directedChPP(TEXT) IS
-'pgr_directedChPP(edges_sql(id,source,target,cost[,reverse_cost]), For directed graph)';
+
+COMMENT ON FUNCTION pgr_directedChPP(TEXT) 
+IS 'pgr_directedChPP
+- EXPERIMENTAL
+- Directed graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_directedChPP.html
+';
