@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
 ------------
 -- pgr_prim
 ------------
@@ -45,12 +46,16 @@ $BODY$
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
+
+-- COMMENT
+
+
 COMMENT ON FUNCTION pgr_prim(TEXT)
 IS 'pgr_prim
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_prim.html
 ';
