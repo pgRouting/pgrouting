@@ -247,9 +247,6 @@ else()
     set(BOOST_VERSION_OK "0")
 endif()
 
-set(BOOST_VERSION_OK "0")
-message(STATUS "BOOST_VERSION_OK: ${BOOST_VERSION_OK}")
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_VERSION_OK=${BOOST_VERSION_OK}")
 
 #---------------------------------------------
