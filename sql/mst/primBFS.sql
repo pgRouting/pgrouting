@@ -22,9 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
 -----------------
 -- pgr_primBFS
 -----------------
+
 
 -- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_primBFS(
@@ -55,6 +57,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
 
 -- MULTIPLE VERTICES
 CREATE OR REPLACE FUNCTION pgr_primBFS(
@@ -89,26 +92,28 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 -- COMMENTS
 
+
 COMMENT ON FUNCTION pgr_primBFS(TEXT, BIGINT, BIGINT)
 IS 'pgr_primBFS(Single Vertex)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from root vertex identifier
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
 - Optional parameters
     - max_depth := 9223372036854775807
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_primBFS.html
 ';
 
+
 COMMENT ON FUNCTION pgr_primBFS(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_primBFS(multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from ARRAY[root vertices identifiers]
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
 - Optional parameters
     - max_depth := 9223372036854775807
 - Documentation:
