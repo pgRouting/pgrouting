@@ -6,7 +6,7 @@ SET(LOCAL_FILES
     pushRelabel.sql
     maxFlow.sql
     maxCardinalityMatch.sql
-    edge_disjoint_paths.sql
+    edgeDisjointPaths.sql
     )
 
 foreach (f ${LOCAL_FILES})
