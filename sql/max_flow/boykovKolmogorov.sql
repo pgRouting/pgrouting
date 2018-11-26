@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ------------------------------------
 
 
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -48,7 +49,7 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -68,7 +69,7 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -88,7 +89,7 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -109,6 +110,7 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, BIGINT, BIGINT)
 IS 'pgr_boykovKolmogorov(One to One)
@@ -144,6 +146,7 @@ IS 'pgr_boykovKolmogorov(Many to One)
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
 ';
+
 
 COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, ANYARRAY, ANYARRAY)
 IS 'pgr_boykovKolmogorov(Many to Many)
