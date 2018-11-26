@@ -78,7 +78,13 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
+
 -- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_pickDeliverEuclidean(TEXT, TEXT, FLOAT, INTEGER, INTEGER)
+IS 'pgRouting internal function';
+
 
 COMMENT ON FUNCTION pgr_pickDeliverEuclidean(TEXT, TEXT, FLOAT, INTEGER, INTEGER)
 IS 'pgr_pickDeliverEuclidean
@@ -103,4 +109,7 @@ IS 'pgr_pickDeliverEuclidean
  - Optional Parameters:
    - factor: default ''1''
    - max_cycles: default ''10''
-   - initial_sol: default ''4''';
+   - initial_sol: default ''4''
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_pickDeliver.html
+';
