@@ -21,6 +21,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--------------
+--------------
+-- trsp
+--------------
+--------------
+
+
+--------------
+-- _trsp
+--------------
+
+
 CREATE OR REPLACE FUNCTION _trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
