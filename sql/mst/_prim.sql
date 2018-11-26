@@ -28,16 +28,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION _pgr_prim(
-    TEXT,           -- Edge sql
-    BIGINT,         -- Root vertex
+    TEXT,             -- Edge sql
+    ANYARRAY,         -- tree root for traversal
+    order_by TEXT,
+    max_depth BIGINT,
+    distance FLOAT,
 
-    OUT seq BIGINT,            -- Seq
-    Out root_vertex BIGINT,     -- Root_vertex
-    OUT node BIGINT,	        -- node of lightest weight
-    OUT edge BIGINT,	     	-- Edge linked to that node
-    OUT cost FLOAT,             -- Cost of edge
-    OUT agg_cost FLOAT,         -- Cost from root_vertex to node
-    OUT tree_cost FLOAT)        -- Spanning tree cost
+    OUT seq BIGINT,
+    OUT depth BIGINT,
+    OUT start_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'prim'
 LANGUAGE C VOLATILE STRICT;

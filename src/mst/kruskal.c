@@ -23,72 +23,70 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
+
 #include "c_common/postgres_connection.h"
-#include <utils/array.h>
+#include "utils/array.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_types/pgr_mst_rt.h"
 
-
+#include "drivers/mst/mst_common.h"
 #include "drivers/mst/kruskal_driver.h"
 
 PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(kruskal);
 
-static
-int
-get_order(char * order_by) {
-    int order = tolower(order_by[0]);
-    if ('d' == order) return 1;
-    if ('b' == order) return 2;
-    return 0;
-}
 
 static
 void
 process(
         char* edges_sql,
         ArrayType *roots,
-        char * p_order_by,
+        char * fn_suffix,
         int64_t max_depth,
         double distance,
 
-        pgr_kruskal_t **result_tuples,
+        pgr_mst_rt **result_tuples,
         size_t *result_count) {
-    int order_by = get_order(p_order_by);
+    pgr_SPI_connect();
+
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
+
+    if (err_msg) {
+        pgr_global_report(log_msg, notice_msg, err_msg);
+        return;
+    }
+
+    char * fn_name = get_name(0, fn_suffix, &err_msg);
+    if (err_msg) {
+        pgr_global_report(log_msg, notice_msg, err_msg);
+        return;
+    }
 
     int64_t* rootsArr = NULL;
     size_t size_rootsArr = 0;
-
-    PGR_DBG("order by %d", order_by);
-    PGR_DBG("max_depth %d", max_depth);
-
-    pgr_SPI_connect();
 
     rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total %ld edges in query:", total_edges);
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_kruskal(
             edges, total_edges,
             rootsArr, size_rootsArr,
-            order_by,
+            fn_suffix,
             max_depth,
             distance,
 
@@ -98,8 +96,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg(" processing pgr_kruskal", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
+    time_msg(fn_name, start_t, clock());
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
@@ -118,7 +115,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    pgr_kruskal_t *result_tuples = NULL;
+    pgr_mst_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -127,13 +124,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        PGR_DBG("Calling process");
-        /*
-           TEXT,             -- Edge sql
-           BIGINT,           -- tree root for traversal
-           order_by TEXT,
-           max_depth INTEGER
-        */
+        /* Edge sql, tree roots, fn_suffix, max_depth, distance */
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
@@ -163,7 +154,7 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_kruskal_t*) funcctx->user_fctx;
+    result_tuples = (pgr_mst_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -181,7 +172,6 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
@@ -195,7 +185,6 @@ PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-
         SRF_RETURN_DONE(funcctx);
     }
 }

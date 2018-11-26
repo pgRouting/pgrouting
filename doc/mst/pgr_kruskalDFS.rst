@@ -29,16 +29,16 @@ Search ordering.
 Description
 -------------------------------------------------------------------------------
 
-Using the Kruskal algorithm, visits and extracts the nodes in Depth First Search
-ordering
+Visits and extracts the nodes information in Depth First Search ordering
+of the Minimum Spanning Tree created using Kruskal's algorithm.
 
 **The main Characteristics are:**
 
-- It's implementation is only on **undirected** graph.
-- Process is done only on edges with positive costs.
-- Returned tree vertices are in Depth First Search order.
-- Running time: :math:`O(E * log E)`
-- Kruskal Running time: :math:`O(E * log E)`
+.. include:: kruskal-family.rst
+   :start-after: kruskal-description-start
+   :end-before: kruskal-description-end
+
+- Returned tree nodes from a root vertex are on Depth First Search order
 - Depth First Search Running time: :math:`O(E + V)`
 
 Signatures
@@ -46,8 +46,8 @@ Signatures
 
 .. code-block:: none
 
-    pgr_kruskalDFS(edges_sql, root_vid [, max_depth])
-    pgr_kruskalDFS(edges_sql, root_vids [, max_depth])
+    pgr_kruskalDFS(Edges SQL, Root vid [, max_depth])
+    pgr_kruskalDFS(Edges SQL, Root vids [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -59,7 +59,7 @@ Single vertex
 
 .. code-block:: none
 
-    pgr_kruskalDFS(edges_sql, root_vid [, max_depth])
+    pgr_kruskalDFS(Edges SQL, Root vid [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -77,7 +77,7 @@ Multiple vertices
 
 .. code-block:: none
 
-    pgr_kruskalDFS(edges_sql, root_vids [, max_depth])
+    pgr_kruskalDFS(Edges SQL, Root vids [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -87,20 +87,25 @@ Multiple vertices
    :start-after: --q2
    :end-before: --q3
 
+
+.. mstfs-information-start
+
 Parameters
 -------------------------------------------------------------------------------
 
 =================== ====================== =================================================
 Parameter           Type                   Description
 =================== ====================== =================================================
-**edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
-**root_vid**        ``BIGINT``             Identifier of the root vertex of the tree.
+**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
+**Root vid**        ``BIGINT``             Identifier of the root vertex of the tree.
 
-                                           - When :math:`0` gets the spanning forest
-                                             starting in aleatory nodes for each tree.
+                                           - Used on `Single vertex`_
+                                           - When value is :math:`0` then gets the spanning forest
+                                             starting in aleatory nodes for each tree in the forest.
 
-**root_vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
+**Root vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
 
+                                           - Used on `Multiple vertices`_
                                            - :math:`0` values are ignored
                                            - For optimization purposes, any duplicated value is ignored.
 =================== ====================== =================================================
@@ -114,13 +119,13 @@ Parameter           Type        Default                     Description
 =================== =========== =========================== =================================================
 **max_depth**       ``BIGINT``  :math:`9223372036854775807` Upper limit for depth of node in the tree
 
-                                                            - When Negative throws error
+                                                            - When value is ``Negative`` then **throws error**
 =================== =========== =========================== =================================================
 
 Inner query
 -------------------------------------------------------------------------------
 
-.. rubric::edges_sql
+.. rubric::Edges SQL
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
@@ -133,16 +138,18 @@ Result Columns
    :start-after: result columns start
    :end-before: result columns end
 
+.. mstfs-information-end
 
 See Also
 -------------------------------------------------------------------------------
 
-- `Boost Kruskal documentation <https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html>`__
-- Kruskal on `wikipedia <https://en.wikipedia.org/wiki/Kruskal%27s_algorithm>`__
-- The queries use the :doc:`sampledata` network.
+* :doc:`spanningTree-family`
+* :doc:`kruskal-family`
+* The queries use the :doc:`sampledata` network.
+* `Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-

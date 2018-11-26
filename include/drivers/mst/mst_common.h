@@ -1,41 +1,54 @@
 /*PGR-GNU*****************************************************************
-File: pgr_kruskal_t.h
+File: mst_common.h
 
-Copyright (c) 2015 Aditya Pratap Singh
-Mail: adityapratap.singh28@gmail.com
+Copyright (c) 2018 Vicky Vergara
+Mail: vicky at georepublic dot de
+
 ------
+
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
+
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
+
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
-#define INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
+********************************************************************PGR-GNU*/
+
+#ifndef INCLUDE_DRIVERS_MST_MST_COMMON_H_
+#define INCLUDE_DRIVERS_MST_MST_COMMON_H_
 #pragma once
 
-/* for int64_t */
 #ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
+extern "C" {
 #endif
 
-typedef struct {
-    int64_t from_v;
-    int64_t depth;
-    int64_t node;
-    int64_t edge;
-    double cost;
-    double agg_cost;
-} pgr_kruskal_t;
+/**
+ * @brief defines ordering
+ *
+ * @param[in] fn_suffix
+ * @param[in] err_msg
+ *
+ * @return
+ * 0 = no matter
+ * 1 = DFS
+ * 2 = BFS
+ */
+int
+get_order(char * fn_suffix, char ** err_msg);
 
-#endif  // INCLUDE_C_TYPES_PGR_KRUSKAL_T_H_
+char *
+get_name(int fn_id, char * fn_suffix, char ** err_msg);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_DRIVERS_MST_MST_COMMON_H_

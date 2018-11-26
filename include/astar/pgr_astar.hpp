@@ -94,7 +94,6 @@ class Pgr_astar {
                  false), only_cost);
 
          return solution;
-
      }
 
      //! astar 1 to many

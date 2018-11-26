@@ -23,5 +23,5 @@ createdb  $PGFLAGS  ___pgr___test___
 
 cd tools/testers/
 psql $PGFLAGS  -f setup_db.sql -d ___pgr___test___
-pg_prove $PGFLAGS  -d ___pgr___test___ ../../pgtap/$DIR
+pg_prove --recurse --ext .sql $PGFLAGS  -d ___pgr___test___ ../../pgtap/$DIR
 dropdb $PGFLAGS  ___pgr___test___

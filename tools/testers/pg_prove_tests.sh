@@ -49,7 +49,7 @@ then
 fi
 
 
-pg_prove $PGPORT -d $PGDATABASE  -U $PGUSER  ../../pgtap/*/*
+pg_prove --recurse --ext .sql $PGPORT -d $PGDATABASE  -U $PGUSER  ../../pgtap/
 
 
 if [ "$?" -ne 0 ]

@@ -44,15 +44,15 @@ if test -z "$DIRECTORY"; then
     echo --------------------
     echo ------   *.c  ------
     echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/*/*.c
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/*/*.c
     echo --------------------
     echo ------ *.cpp  ------
     echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/*/*.cpp
+    python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references  --linelength=120 src/*/*.cpp
     echo --------------------
     echo ------ HEADERS  ------
     echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h --filter=-runtime/references \
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
         include/*/*.h* \
         include/*/*/*.h*
 
@@ -62,7 +62,7 @@ else
     echo --------------------
     echo ------ IN PLACE HEADERS  ------
     echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h --filter=-runtime/references \
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
         include/*/*.h* \
         include/*/*/*.h*
 
@@ -70,11 +70,11 @@ else
         echo --------------------
         echo ------   *.c  ------
         echo --------------------
-        python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/$DIRECTORY/*.c
+        python code_linter/styleguide/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/$DIRECTORY/*.c
         echo --------------------
         echo ------ *.cpp  ------
         echo --------------------
-        python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/$DIRECTORY/*.cpp
+        python code_linter/styleguide/cpplint/cpplint.py  --linelength=120 --filter=-runtime/references src/$DIRECTORY/*.cpp
         echo --------------------
         echo ------   C HEADER  ------
         echo --------------------
@@ -85,7 +85,7 @@ else
         echo --------------------
         echo ------ C++ HEADER  ------
         echo --------------------
-        python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp --filter=-runtime/references include/$DIRECTORY/*.h*
+        python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp  --linelength=120 --filter=-runtime/references include/$DIRECTORY/*.h*
         echo --------------------
         echo ------ this shouild fail  ------
         echo --------------------
