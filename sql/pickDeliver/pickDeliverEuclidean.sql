@@ -107,9 +107,9 @@ IS 'pgr_pickDeliverEuclidean
        - end_close := start_close
        - end_service := 0
  - Optional Parameters:
-   - factor: default ''1''
-   - max_cycles: default ''10''
-   - initial_sol: default ''4''
+   - factor: default := 1
+   - max_cycles: default := 10
+   - initial_sol: default := 4
 - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_pickDeliver.html
 ';

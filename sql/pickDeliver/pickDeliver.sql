@@ -113,9 +113,9 @@ IS 'pgr_pickDeliver
      - end_vid
      - agg_cost
  - Optional Parameters:
-   - factor: default ''1''
-   - max_cycles: default ''10''
-   - initial_sol: default ''4''
+   - factor: default := 1
+   - max_cycles: default := 10
+   - initial_sol: default := 4
 - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_pickDeliver.html
 ';
