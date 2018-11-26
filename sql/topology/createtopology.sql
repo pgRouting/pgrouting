@@ -57,8 +57,11 @@ CREATE OR REPLACE FUNCTION pgr_createtopology(
     text, -- edge table (required)
     double precision, -- tolerance (required)
 
-		   the_geom text default 'the_geom', id text default 'id',
-		   source text default 'source', target text default 'target',rows_where text default 'true',
+		   the_geom text default 'the_geom', 
+           id text default 'id',
+		   source text default 'source', 
+           target text default 'target',
+           rows_where text default 'true',
 		   clean boolean default FALSE)
 RETURNS VARCHAR AS
 $BODY$
@@ -303,8 +306,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION pgr_createTopology(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT, BOOLEAN) IS
-'pgr_createverticestable
+COMMENT ON FUNCTION pgr_createTopology(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT, BOOLEAN) 
+IS 'pgr_createverticestable
  - Parameters
    - Edge table name
    - tolerance
@@ -314,4 +317,7 @@ COMMENT ON FUNCTION pgr_createTopology(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT
    - source := ''source''
    - target := ''target''
    - rows_where := ''true''
-   - clean := false';
+   - clean := false
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_createTopology.html
+';
