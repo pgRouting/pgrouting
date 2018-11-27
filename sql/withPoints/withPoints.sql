@@ -94,6 +94,7 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pid BIGINT,
+    
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
@@ -163,6 +164,21 @@ IS 'pgr_withPoints (One to One)
 
 COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_withPoints (One to Many)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From vertex identifier
+    - To vertex identifier
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+    - details := ''false''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+';
+
+
+COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPoints (Many to One)
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - From vertex identifier
