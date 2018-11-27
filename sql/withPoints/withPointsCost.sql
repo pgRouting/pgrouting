@@ -27,10 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*
-ONE TO ONE
-*/
 
+----------------------
+-- pgr_withPointsCost
+----------------------
+
+
+-- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
     points_sql TEXT,
@@ -51,10 +54,8 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-/*
-ONE TO MANY
-*/
 
+-- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
     points_sql TEXT,
@@ -75,10 +76,8 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-/*
-MANY TO ONE
-*/
 
+-- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
     points_sql TEXT,
@@ -99,10 +98,8 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-/*
-MANY TO MANY
-*/
 
+-- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
     points_sql TEXT,
