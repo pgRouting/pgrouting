@@ -24,6 +24,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+--------------------
+-- pgr_eucledianTSP
+--------------------
+
+
 CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     coordinates_sql TEXT,
     start_id BIGINT DEFAULT 0,
@@ -81,7 +87,9 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_euclideanTSP(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
 IS 'pgr_euclideanTSP
