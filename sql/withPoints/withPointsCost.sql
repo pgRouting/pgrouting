@@ -39,6 +39,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     points_sql TEXT,
     BIGINT,
     BIGINT,
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
@@ -119,3 +120,21 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_withPointsCost(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN, CHAR)
+IS 'pgr_withPointsCost (One to One)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex/point identifier
+    - To vertex/point identifier
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPointsCost.html
+';
