@@ -84,7 +84,8 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
     points_sql TEXT,
     start_pids ANYARRAY,
-    BIGINT,
+    end_pid BIGINT,
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
@@ -148,6 +149,21 @@ IS 'pgr_withPointsCost (One to Many)
     - Points SQL with columns: [pid], edge_id, fraction[,side]
     - From vertex/point identifier
     - To ARRAY[vertices/points identifiers]
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPointsCost.html
+';
+
+
+COMMENT ON FUNCTION pgr_withPointsCost(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN, CHAR)
+IS 'pgr_withPointsCost (Many to One)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From ARRAY[vertices/points identifiers]
+    - To vertex/point identifier
 - Optional Parameters
     - directed := ''true''
     - driving_side := ''b''
