@@ -60,28 +60,13 @@ COST 100
 ROWS 1000;
 
 
-COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgr_withPoints (One to One)
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From vertex identifier
-    - To vertex identifier
-- Optional Parameters
-    - directed := ''true''
-    - driving_side := ''b''
-    - details := ''false''
-- Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
-';
-
-
-
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
     start_pid BIGINT,
     end_pids ANYARRAY,
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
@@ -103,7 +88,7 @@ COST 100
 ROWS 1000;
 
 
--- ANY TO ONE
+-- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -160,3 +145,32 @@ ROWS 1000;
 
 -- COMMENTS
 
+
+COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPoints (One to One)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From vertex identifier
+    - To vertex identifier
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+    - details := ''false''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+';
+
+
+COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPoints (One to Many)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From vertex identifier
+    - To vertex identifier
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+    - details := ''false''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+';
