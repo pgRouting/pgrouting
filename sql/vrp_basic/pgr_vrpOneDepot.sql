@@ -55,11 +55,18 @@ LANGUAGE SQL VOLATILE STRICT
 COST 1000
 ROWS 1000;
 
+
+-- COMMENTS
+
+
 COMMENT ON FUNCTION pgr_vrpOneDepot(TEXT, TEXT, TEXT, INTEGER)
 IS 'pgr_vrpOneDepot
- - EXPERIMENTAL
- - Parameters
-   - orders SQL with columns: id, x, y, order_unit, open_time, close_time, service_time
-   - vehicle SQL with columns: vehicle_id, capacity, case_no
-   - cost SQL with columns: src_id, dest_id, cost, distance, traveltime
-   - depot id';
+- EXPERIMENTAL
+- Parameters
+  - orders SQL with columns: id, x, y, order_unit, open_time, close_time, service_time
+  - vehicle SQL with columns: vehicle_id, capacity, case_no
+  - cost SQL with columns: src_id, dest_id, cost, distance, traveltime
+  - depot id
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_trsp.html
+';
