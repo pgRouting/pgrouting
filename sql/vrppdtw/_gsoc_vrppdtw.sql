@@ -93,3 +93,11 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_gsoc_vrppdtw(TEXT, INTEGER, FLOAT, FLOAT, INTEGER)
+IS 'pgRouting internal function';
+
