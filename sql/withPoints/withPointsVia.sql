@@ -30,9 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
-    sql text,
-    via_edges bigint[],
-    fraction float[],
+    sql TEXT,
+    via_edges BIGINT[],
+    fraction FLOAT[],
     directed BOOLEAN DEFAULT TRUE,
 
     OUT seq INTEGER,
@@ -167,3 +167,8 @@ CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
   ROWS 1000;
 
 
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_withPointsVia(TEXT, BIGINT[], FLOAT[], BOOLEAN)
+IS 'pgRouting internal function';
