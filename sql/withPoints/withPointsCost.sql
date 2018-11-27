@@ -37,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     edges_sql TEXT,
     points_sql TEXT,
-    BIGINT,
-    BIGINT,
+    start_pid BIGINT,
+    end_pid BIGINT,
 
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
