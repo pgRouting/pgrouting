@@ -58,10 +58,17 @@ LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
+-- COMMENTS
+
+
 COMMENT ON FUNCTION pgr_gsoc_vrppdtw(TEXT, INTEGER, INTEGER)
-IS 'pgr_vrpOneDepot
- - EXPERIMENTAL
- - Parameters
-   - customer SQL with columns: id, x, y, demand, openTime, closeTime, serviceTime, pIndex, dIndex
-   - number of vehicles
-   - capacity of the vehicles';
+IS 'pgr_gsoc_vrppdtw
+- EXPERIMENTAL
+- Parameters
+  - customer SQL with columns: id, x, y, demand, openTime, closeTime, serviceTime, pIndex, dIndex
+  - number of vehicles
+  - capacity of the vehicles
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_gsoc_vrppdtw.html
+';
