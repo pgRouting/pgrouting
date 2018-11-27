@@ -23,6 +23,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
+
+-------------
+-- _pgr_TSP
+-------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_TSP(
     matrix_row_sql TEXT,
     start_id BIGINT DEFAULT 0,
@@ -47,6 +54,7 @@ CREATE OR REPLACE FUNCTION _pgr_TSP(
 RETURNS SETOF record
 AS 'MODULE_PATHNAME', 'newTSP'
 LANGUAGE c VOLATILE STRICT;
+
 
 CREATE OR REPLACE FUNCTION pgr_TSP(
     matrix_row_sql TEXT,
@@ -79,7 +87,9 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_TSP(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
 IS 'pgr_TSP
