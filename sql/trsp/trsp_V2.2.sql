@@ -30,6 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
+--------------
+-- _pgr_trsp
+--------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,
     source_eid integer,
@@ -359,38 +364,59 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
--- COMMNETS
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION _pgr_array_reverse(ANYARRAY)
+IS 'pgRouting internal function';
+
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trsp
- - Parameters
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from vertex identifier
-   - to vertex identifier
-   - directed
-   - has reverse cost
- - Optional parameters
-   - restrictions_sql := NULL';
+- Parameters
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - from vertex identifier
+    - to vertex identifier
+    - directed
+    - has reverse cost
+- Optional parameters
+    - restrictions_sql := NULL
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_trsp.html
+';
+
 
 COMMENT ON FUNCTION pgr_trspViaVertices(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trspViaVertices
- - Parameters
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - ARRAY[Via vertices identifiers
-   - directed
-   - has reverse cost
- - Optional parameters
-   - restrictions_sql := NULL';
+- Parameters
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - ARRAY[Via vertices identifiers
+    - directed
+    - has reverse cost
+- Optional parameters
+    - restrictions_sql := NULL
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_trspViaVertices.html
+';
+
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trsp
- - Parameters
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - source edge identifier
-   - fraction position on source edge
-   - target edge identifier
-   - fraction position on target edge
-   - directed
-   - has reverse cost
- - Optional parameters
-   - turn_restrict_sql := NULL';
+- Parameters
+    - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - source edge identifier
+    - fraction position on source edge
+    - target edge identifier
+    - fraction position on target edge
+    - directed
+    - has reverse cost
+- Optional parameters
+    - turn_restrict_sql := NULL
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_trsp.html
+';
