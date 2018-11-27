@@ -122,6 +122,7 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pids ANYARRAY,
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
@@ -151,8 +152,9 @@ COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN, CHAR, BO
 IS 'pgr_withPoints (One to One)
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From vertex identifier
-    - To vertex identifier
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex identifier/point identifier
+    - To vertex identifier/point identifier
 - Optional Parameters
     - directed := ''true''
     - driving_side := ''b''
@@ -166,8 +168,9 @@ COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN, CHAR, 
 IS 'pgr_withPoints (One to Many)
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From vertex identifier
-    - To ARRAY[vertices identifiers]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex identifier/point identifier
+    - To ARRAY[vertices/points identifier]
 - Optional Parameters
     - directed := ''true''
     - driving_side := ''b''
@@ -181,8 +184,9 @@ COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN, CHAR, 
 IS 'pgr_withPoints (Many to One)
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From  ARRAY[vertices identifiers]
-    - To vertex identifier
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From  ARRAY[vertices/points identifiers]
+    - To vertex identifier/point identifier
 - Optional Parameters
     - directed := ''true''
     - driving_side := ''b''
@@ -196,8 +200,9 @@ COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR
 IS 'pgr_withPoints (Many to Many)
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From ARRAY[vertices identifiers]
-    - To ARRAY[vertices identifiers]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From ARRAY[vertices/points identifiers]
+    - To ARRAY[vertices/points identifiers]
 - Optional Parameters
     - directed := ''true''
     - driving_side := ''b''
