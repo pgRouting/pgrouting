@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 
+-- TODO deprecated and renamed with underscore
 CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     coordinates_sql TEXT,
     start_id BIGINT DEFAULT 0,
@@ -89,6 +90,12 @@ ROWS 1000;
 
 
 -- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_eucledianTSP(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
+IS 'pgRouting internal function
+This function is deprecated
+Use pgr_euclideanTSP instead';
 
 
 COMMENT ON FUNCTION pgr_euclideanTSP(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
