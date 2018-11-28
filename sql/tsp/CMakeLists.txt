@@ -2,7 +2,7 @@
 SET(LOCAL_FILES
     tsp_v2.0_matrix.sql
     tsp_v2.0_coordinates.sql
-    routing_tsp_wrappers.sql
+    _makeDistanceMatrix.sql
     TSP.sql
     eucledianTSP.sql
     )

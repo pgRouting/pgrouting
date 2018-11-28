@@ -22,6 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--------------
+-- pgr_primDD
+--------------
+
+
 -- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_primDD (
     TEXT,   -- Edge sql
@@ -76,6 +81,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
 
 -- MULTIPLE VERTICES
 CREATE OR REPLACE FUNCTION pgr_primDD (
@@ -135,52 +141,57 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, NUMERIC)
 IS 'pgr_primDD(Single Vertex)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from root vertex identifier
-    - distance
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
+    - Distance
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
 
+
 COMMENT ON FUNCTION pgr_primDD(TEXT, ANYARRAY, NUMERIC)
-IS 'pgr_primDD(multiple Vertices)
+IS 'pgr_primDD(Multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from ARRAY[root vertices identifiers]
-    - distance
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
+    - Distance
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
+
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, FLOAT)
 IS 'pgr_primDD(Single Vertex)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from root vertex identifier
-    - distance
-- Documentation:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
+    - Distance
+- DocumentatiEdgeson:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';
 
+
 COMMENT ON FUNCTION pgr_primDD(TEXT, ANYARRAY, FLOAT)
-IS 'pgr_primDD(multiple Vertices)
+IS 'pgr_primDD(Multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from ARRAY[root vertices identifiers]
-    - distance
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
+    - Distance
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_primDD.html
 ';

@@ -20,7 +20,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL,
+
+
+-----------------------
+-- vias_trsp_V2.2.sql
+-----------------------
+
+
+CREATE OR REPLACE FUNCTION _pgr_trspViaVertices
+    (sql text, 
+    vids integer[], 
+    directed boolean,
+    has_rcost boolean,
+    turn_restrict_sql text DEFAULT NULL,
+
     OUT seq INTEGER,
     OUT id1 INTEGER,
     OUT id2 INTEGER,
@@ -256,7 +269,13 @@ language plpgsql stable
 cost 100
 rows 1000;
 
+
 -- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_trspViaVertices(TEXT, INTEGER [], BOOLEAN, BOOLEAN, TEXT)
+IS 'pgRouting internal function';
+
 
 COMMENT ON FUNCTION pgr_trspViaEdges(TEXT, INTEGER[], FLOAT[], BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trspViaEdges
@@ -267,4 +286,7 @@ IS 'pgr_trspViaEdges
    - directed
    - has reverse cost
  - Optional parameters
-   - turn_restrict_sql := NULL';
+   - turn_restrict_sql := NULL
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_trspViaEdges.html
+';

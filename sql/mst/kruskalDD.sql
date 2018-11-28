@@ -27,6 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+-----------------
+-- pgr_kruskalDD
+-----------------
+
+
 -- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
@@ -81,6 +87,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
 
 -- MULTIPLE VERTICES
 CREATE OR REPLACE FUNCTION pgr_kruskalDD (
@@ -140,52 +147,57 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, NUMERIC)
 IS 'pgr_kruskalDD(Single Vertex)
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from root vertex identifier
-   - distance
- - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
+    - Distance
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
 ';
 
+
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, NUMERIC)
-IS 'pgr_kruskalDD(multiple Vertices)
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from ARRAY[root vertices identifiers]
-   - distance
- - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+IS 'pgr_kruskalDD(Multiple Vertices)
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
+    - Distance
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
 ';
+
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT)
 IS 'pgr_kruskalDD(Single Vertex)
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from root vertex identifier
-   - distance
- - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
+    - Distance
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
 ';
 
+
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, FLOAT)
-IS 'pgr_kruskalDD(multiple Vertices)
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - from ARRAY[root vertices identifiers]
-   - distance
- - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+IS 'pgr_kruskalDD(Multiple Vertices)
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
+    - Distance
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
 ';

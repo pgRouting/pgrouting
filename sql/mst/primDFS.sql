@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_primDFS
 -----------------
 
+
 -- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_primDFS(
     TEXT,   -- Edge sql
@@ -55,6 +56,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
 
 -- MULTIPLE VERTICES
 CREATE OR REPLACE FUNCTION pgr_primDFS(
@@ -89,13 +91,14 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 -- COMMENTS
 
+
 COMMENT ON FUNCTION pgr_primDFS(TEXT, BIGINT, BIGINT)
 IS 'pgr_primDFS(Single Vertex)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from root vertex identifier
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
 - Optional parameters
     - max_depth := 9223372036854775807
 - Documentation:
@@ -103,12 +106,12 @@ IS 'pgr_primDFS(Single Vertex)
 ';
 
 COMMENT ON FUNCTION pgr_primDFS(TEXT, ANYARRAY, BIGINT)
-IS 'pgr_primDFS(multiple Vertices)
+IS 'pgr_primDFS(Multiple Vertices)
 - EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from ARRAY[root vertices identifiers]
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
 - Optional parameters
     - max_depth := 9223372036854775807
 - Documentation:

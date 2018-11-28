@@ -24,7 +24,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_unnest_matrix(matrix float8[][], OUT start_vid integer, OUT end_vid integer, out agg_cost float8)
+
+----------------
+----------------
+-- tsp
+----------------
+----------------
+
+
+-----------------------
+-- _pgr_unnest_matrix
+-----------------------
+
+
+CREATE OR REPLACE FUNCTION _pgr_unnest_matrix
+    (matrix float8[][], 
+
+    OUT start_vid integer, 
+    OUT end_vid integer, 
+    out agg_cost float8)
 RETURNS SETOF record AS
 
 $body$
@@ -49,11 +67,12 @@ $body$
 language plpgsql volatile STRICT cost 500 ROWS 50;
 
 
+CREATE OR REPLACE FUNCTION pgr_tsp
+    (matrix float8[][],
 
-CREATE OR REPLACE FUNCTION pgr_tsp(
-    matrix float8[][],
     startpt INTEGER,
     endpt INTEGER DEFAULT -1,
+
     OUT seq INTEGER,
     OUT id INTEGER)
 RETURNS SETOF record AS
@@ -97,5 +116,17 @@ language plpgsql volatile STRICT cost 500 ROWS 50;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_tsp(FLOAT[][], INTEGER, INTEGER)
+
+COMMENT ON FUNCTION _pgr_unnest_matrix(FLOAT[][])
 IS 'DEPRECATED';
+
+
+COMMENT ON FUNCTION pgr_tsp(FLOAT[][], INTEGER, INTEGER)
+IS 'pgr_tsp
+- Parameters
+    - Matrix
+    - startpt
+    - endpt
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_tsp.html
+';

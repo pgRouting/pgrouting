@@ -33,8 +33,16 @@ THE SOFTWARE.
 ********************************************************************PGR-MIT*/
 
 
+----------------------------
+-- _pgr_makeDistanceMatrix
+----------------------------
 
-create or replace function _pgr_makeDistanceMatrix(sqlin text, OUT dmatrix double precision[], OUT ids integer[])
+
+create or replace function _pgr_makeDistanceMatrix
+  (sqlin text, 
+
+  OUT dmatrix double precision[],
+  OUT ids integer[])
   as
 $body$
 declare
@@ -61,3 +69,9 @@ end;
 $body$
 language plpgsql stable cost 10;
 
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_makeDistanceMatrix(TEXT)
+IS 'pgRouting internal function';

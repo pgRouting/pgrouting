@@ -24,10 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- Core function for vrp with sigle depot computation
 -- See README for description
 -----------------------------------------------------------------------
---
---
 
-create or replace function pgr_vrpOneDepot(
+
+--------------------
+-- pgr_vrpOneDepot
+--------------------
+
+
+CREATE OR REPLACE FUNCTION pgr_vrpOneDepot(
 	text,  -- order_sql
 	text, -- vehicle_sql
 	text, -- cost_sql
@@ -51,11 +55,18 @@ LANGUAGE SQL VOLATILE STRICT
 COST 1000
 ROWS 1000;
 
+
+-- COMMENTS
+
+
 COMMENT ON FUNCTION pgr_vrpOneDepot(TEXT, TEXT, TEXT, INTEGER)
 IS 'pgr_vrpOneDepot
- - EXPERIMENTAL
- - Parameters
-   - orders SQL with columns: id, x, y, order_unit, open_time, close_time, service_time
-   - vehicle SQL with columns: vehicle_id, capacity, case_no
-   - cost SQL with columns: src_id, dest_id, cost, distance, traveltime
-   - depot id';
+- EXPERIMENTAL
+- Parameters
+  - orders SQL with columns: id, x, y, order_unit, open_time, close_time, service_time
+  - vehicle SQL with columns: vehicle_id, capacity, case_no
+  - cost SQL with columns: src_id, dest_id, cost, distance, traveltime
+  - depot id
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_trsp.html
+';

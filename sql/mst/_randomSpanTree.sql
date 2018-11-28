@@ -27,6 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------------------
+-- _pgr_randomSpanTree
+-----------------------
+
 CREATE OR REPLACE FUNCTION _pgr_randomSpanTree(
     TEXT,       -- Edge sql
     BIGINT,     -- Root
@@ -41,3 +45,11 @@ CREATE OR REPLACE FUNCTION _pgr_randomSpanTree(
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'randomSpanningTree'
 LANGUAGE C VOLATILE STRICT;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_randomSpanTree(TEXT, BIGINT, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+

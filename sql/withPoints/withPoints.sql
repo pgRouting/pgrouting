@@ -27,14 +27,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*
-ONE TO ONE
-*/
+
+--------------------
+-- pgr_withPoints
+--------------------
+
+
+-- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
     start_pid BIGINT,
     end_pid BIGINT,
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
@@ -55,14 +60,13 @@ COST 100
 ROWS 1000;
 
 
-/*
-ONE TO MANY
-*/
+-- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
     start_pid BIGINT,
     end_pids ANYARRAY,
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
@@ -83,14 +87,14 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-/*
-MANY TO ONE
-*/
+
+-- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pid BIGINT,
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
@@ -111,14 +115,14 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-/*
-MANY TO MANY
-*/
+
+-- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pids ANYARRAY,
+
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
@@ -139,3 +143,70 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPoints (One to One)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex identifier/point identifier
+    - To vertex identifier/point identifier
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+    - details := ''false''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+';
+
+
+COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPoints (One to Many)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex identifier/point identifier
+    - To ARRAY[vertices/points identifier]
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+    - details := ''false''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+';
+
+
+COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPoints (Many to One)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From  ARRAY[vertices/points identifiers]
+    - To vertex identifier/point identifier
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+    - details := ''false''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+';
+
+
+COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPoints (Many to Many)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From ARRAY[vertices/points identifiers]
+    - To ARRAY[vertices/points identifiers]
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+    - details := ''false''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+';

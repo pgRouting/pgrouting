@@ -23,6 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+---------------------------
+-- pgr_nodeNetwork
+---------------------------
+
+
 CREATE OR REPLACE FUNCTION pgr_nodeNetwork(
     text, -- edge table (required)
     double precision, -- tolerance (required)
@@ -295,14 +301,19 @@ $BODY$
 
 -- COMMENTS
 
+
 COMMENT ON FUNCTION pgr_nodeNetwork(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, BOOLEAN)
-IS 'pgr_createverticestable
- - Parameters
-   - Edge table name
-   - tolerance
- - Optional parameters
-   - id := ''id''
-   - the_geom := ''the_geom''
-   - table_ending := ''noded''
-   - rows_where := ''''
-   - outall := false';
+IS 'pgr_nodeNetwork
+- Parameters
+  - Edge table name
+  - tolerance
+- Optional parameters
+  - id := ''id''
+  - the_geom := ''the_geom''
+  - table_ending := ''noded''
+  - rows_where := ''''
+  - outall := false
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_nodeNetwork.html
+';
+

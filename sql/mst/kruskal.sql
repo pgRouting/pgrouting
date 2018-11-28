@@ -27,6 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+---------------
+-- pgr_kruskal
+---------------
+
+
 CREATE OR REPLACE FUNCTION pgr_kruskal(
     TEXT, -- edges-sql (required)
 
@@ -41,15 +47,15 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 
-
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_kruskal(TEXT)
 IS 'pgr_kruskal
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
- - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_kruskal.html
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+	- Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+	- ${PGROUTING_DOC_LINK}/pgr_kruskal.html
 ';

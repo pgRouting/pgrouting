@@ -78,6 +78,12 @@ Makes more checks:
            (edge_tab text, the_geom text, tolerance double precision)
 */
 
+
+-----------------------
+-- pgr_analyzegraph
+-----------------------
+
+
 CREATE OR REPLACE FUNCTION pgr_analyzegraph(
     text, -- edge table (required)
     double precision, -- tolerance (required)
@@ -458,12 +464,15 @@ a network that is not properly noded.
 
 COMMENT ON FUNCTION pgr_analyzegraph(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT)
 IS 'pgr_createverticestable
- - Parameters
-   - Edge table name
-   - tolerance
- - Optional parameters
-   - the_geom: default ''the_geom''
-   - id := ''id''
-   - source := ''source''
-   - target := ''target''
-   - rows_where := ''true''';
+- Parameters
+  - Edge table name
+  - tolerance
+- Optional parameters
+  - the_geom: default ''the_geom''
+  - id := ''id''
+  - source := ''source''
+  - target := ''target''
+  - rows_where := ''true''
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_analyzegraph.html
+';

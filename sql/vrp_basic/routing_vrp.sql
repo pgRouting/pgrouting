@@ -24,10 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- Core function for vrp with sigle depot computation
 -- See README for description
 -----------------------------------------------------------------------
---
---
 
-create or replace function pgr_vrpOneDepot(
+
+--------------------
+-- pgr_vrpOneDepot
+--------------------
+
+-- TODO delete unused file
+CREATE OR REPLACE FUNCTION pgr_vrpOneDepot(
 	order_sql text,
 	vehicle_sql text,
 	cost_sql text,

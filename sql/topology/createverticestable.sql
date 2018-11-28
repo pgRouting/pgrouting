@@ -49,6 +49,12 @@ Last changes: 2013-03-22
     Created 2013-08-19
 */
 
+
+---------------------------
+-- pgr_createverticestable
+---------------------------
+
+
 CREATE OR REPLACE FUNCTION pgr_createverticestable(
    TEXT,  -- edge table (required)
    the_geom TEXT DEFAULT 'the_geom'::TEXT,
@@ -251,17 +257,19 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
+
 -- COMMENTS
+
 
 COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT) 
 IS 'pgr_createverticestable
- - Parameters
-   - Edge table name
- - Optional parameters
-   - the_geom := ''the_geom''
-   - source := ''source''
-   - target := ''target''
-   - rows_where := ''true''
+- Parameters
+  - Edge table name
+- Optional parameters
+  - the_geom := ''the_geom''
+  - source := ''source''
+  - target := ''target''
+  - rows_where := ''true''
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_createverticestable.html
+  - ${PGROUTING_DOC_LINK}/pgr_createverticestable.html
 ';
