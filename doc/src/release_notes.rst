@@ -53,6 +53,7 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.5
 
 * Fixes driving distance when vertex is not part of the graph
 * Fixes windows test
+* Fixes build for python3 and perl5
 
 .. _changelog_2_5_4:
 
