@@ -7,6 +7,8 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. _change_log:
+
 Release Notes
 ===============================================================================
 
@@ -17,6 +19,8 @@ To see the full list of changes check the list of `Git commits <https://github.c
 .. changelog start
 
 * :ref:`changelog_3_0_0`
+* :ref:`changelog_2_6_2`
+* :ref:`changelog_2_6_1`
 * :ref:`changelog_2_6_0`
 * :ref:`changelog_2_5_5`
 * :ref:`changelog_2_5_4`
@@ -46,20 +50,6 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
-.. _changelog_2_5_5:
-
-pgRouting 2.5.5 Release Notes
--------------------------------------------------------------------------------
-
-To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github.
-
-.. rubric:: Bug fixes
-
-* Fixes driving distance when vertex is not part of the graph
-* Fixes windows test
-* Fixes build for python3 and perl5
-
-.. _changelog_2_5_4:
 
 .. rubric:: New Experimental functions
 
@@ -156,6 +146,61 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.5
     * pgr_maxFlowEdmondsKarp
     * pgr_maximumcardinalitymatching
 
+
+
+.. _changelog_2_6_2:
+
+pgRouting 2.6.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* `#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving distance when vertex is not part of the graph
+* `#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows test
+* `#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build for python3 and perl5
+
+.. _changelog_2_6_1:
+
+pgRouting 2.6.1 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github.
+
+* Fixes server crash on several functions.
+
+  * pgr_floydWarshall
+  * pgr_johnson
+  * pgr_astar
+  * pgr_bdAstar
+  * pgr_bdDijstra
+  * pgr_alphashape
+  * pgr_dijkstraCostMatrix
+  * pgr_dijkstra
+  * pgr_dijkstraCost
+  * pgr_drivingDistance
+  * pgr_KSP
+  * pgr_dijkstraVia (proposed)
+  * pgr_boykovKolmogorov (proposed)
+  * pgr_edgeDisjointPaths (proposed)
+  * pgr_edmondsKarp (proposed)
+  * pgr_maxCardinalityMatch (proposed)
+  * pgr_maxFlow (proposed)
+  * pgr_withPoints (proposed)
+  * pgr_withPointsCost (proposed)
+  * pgr_withPointsKSP (proposed)
+  * pgr_withPointsDD (proposed)
+  * pgr_withPointsCostMatrix (proposed)
+  * pgr_contractGraph (experimental)
+  * pgr_pushRelabel (experimental)
+  * pgr_vrpOneDepot (experimental)
+  * pgr_gsoc_vrppdtw (experimental)
+  * Fixes for deprecated functions where also applied but not tested
+
+* Removed compilation warning for g++8
+* Fixed a fallthrugh on Astar and bdAstar.
+
 .. _changelog_2_6_0:
 
 pgRouting 2.6.0 Release Notes
@@ -190,6 +235,58 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
 
 * Cleaned the internal code of withPoints
 
+.. _changelog_2_5_5:
+
+pgRouting 2.5.5 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github.
+
+.. rubric:: Bug fixes
+
+* Fixes driving distance when vertex is not part of the graph
+* Fixes windows test
+* Fixes build for python3 and perl5
+
+.. _changelog_2_5_4:
+
+pgRouting 2.5.4 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github.
+
+* Fixes server crash on several functions.
+
+  * pgr_floydWarshall
+  * pgr_johnson
+  * pgr_astar
+  * pgr_bdAstar
+  * pgr_bdDijstra
+  * pgr_alphashape
+  * pgr_dijkstraCostMatrix
+  * pgr_dijkstra
+  * pgr_dijkstraCost
+  * pgr_drivingDistance
+  * pgr_KSP
+  * pgr_dijkstraVia (proposed)
+  * pgr_boykovKolmogorov (proposed)
+  * pgr_edgeDisjointPaths (proposed)
+  * pgr_edmondsKarp (proposed)
+  * pgr_maxCardinalityMatch (proposed)
+  * pgr_maxFlow (proposed)
+  * pgr_withPoints (proposed)
+  * pgr_withPointsCost (proposed)
+  * pgr_withPointsKSP (proposed)
+  * pgr_withPointsDD (proposed)
+  * pgr_withPointsCostMatrix (proposed)
+  * pgr_contractGraph (experimental)
+  * pgr_pushRelabel (experimental)
+  * pgr_vrpOneDepot (experimental)
+  * pgr_gsoc_vrppdtw (experimental)
+  * Fixes for deprecated functions where also applied but not tested
+
+* Removed compilation warning for g++8
+* Fixed a fallthrugh on Astar and bdAstar.
 
 .. _changelog_2_5_3:
 
@@ -275,10 +372,6 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_biconnectedComponents
 * pgr_articulationPoints
 * pgr_bridges
-* pgr_minCostMaxFlow
-* pgr_minCostMaxFlow_Cost
-* pgr_directedChPP
-* pgr_directedChPP_Cost
 
 .. rubric:: Deprecated Signatures
 
