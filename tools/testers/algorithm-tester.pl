@@ -35,7 +35,7 @@ eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
 if 0; #$running_under_some_shell
 
 use strict;
-use warnings;
+use lib './';
 use File::Find ();
 use File::Basename;
 use Data::Dumper;
@@ -198,6 +198,7 @@ $postgis_ver = '' if ! $postgis_ver;
 
 # cfgs = SET of configuration file names
 # c  one file in cfgs
+# print join("\n",@cfgs),"\n";
 for my $c (@cfgs) {
     my $found = 0;
 
@@ -575,6 +576,7 @@ sub want_tests {
 #    ||
     /^test\.conf\z/s &&
     push @cfgs, $name;
+    #print join("\n",@cfgs),"\n";
 }
 
 
