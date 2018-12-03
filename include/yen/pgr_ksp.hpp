@@ -60,7 +60,7 @@ class Pgr_ksp {
               if (p1.tot_cost() < p2.tot_cost())
                 return  true;
 
-              pgassert(p1.tot_cost() == p2.tot_cost());
+              //pgassert(p1.tot_cost() == p2.tot_cost());
 
               // paths costs are equal now check by length
               if (p1.size() > p2.size())
