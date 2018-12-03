@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Bidirectional Dijkstra - Family of functions &#8212; pgRouting Manual (2.5)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v2.5.4',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -49,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.5</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -165,7 +157,7 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Based on Dijkstra’s algorithm, the bidirectional search finds a shortest path
-a starting vertex (<code class="docutils literal"><span class="pre">start_vid</span></code>) to an ending vertex (<code class="docutils literal"><span class="pre">end_vid</span></code>).
+a starting vertex (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) to an ending vertex (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).
 It runs two simultaneous searches: one forward from the source, and one backward from the target,
 stopping when the two meet in the middle.
 This implementation can be used with a directed graph and an undirected graph.</p>
@@ -181,10 +173,10 @@ This implementation can be used with a directed graph and an undirected graph.</
 </ul>
 </li>
 <li>When the starting vertex and ending vertex are the different and there is no path:<ul>
-<li>The <cite>agg_cost</cite> the non included values <cite>(u, v)</cite> is <span class="math">\(\infty\)</span></li>
+<li>The <cite>agg_cost</cite> the non included values <cite>(u, v)</cite> is <span class="math notranslate nohighlight">\(\infty\)</span></li>
 </ul>
 </li>
-<li>Running time (worse case scenario): <span class="math">\(O((V \log V + E))\)</span></li>
+<li>Running time (worse case scenario): <span class="math notranslate nohighlight">\(O((V \log V + E))\)</span></li>
 <li>For large graphs where there is a path bewtween the starting vertex and ending vertex:<ul>
 <li>It is expected to terminate faster than pgr_dijkstra</li>
 </ul>
@@ -213,9 +205,9 @@ This implementation can be used with a directed graph and an undirected graph.</
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
-      Last updated on Sep 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.5.<br/>
+      Last updated on Dec 02, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

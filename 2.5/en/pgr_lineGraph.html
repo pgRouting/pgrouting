@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>pgr_lineGraph - Experimental &#8212; pgRouting Manual (2.5)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v2.5.4',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -49,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.5.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.5</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -166,7 +158,7 @@
       
   <div class="section" id="pgr-linegraph-experimental">
 <span id="pgr-linegraph"></span><h1>pgr_lineGraph - Experimental<a class="headerlink" href="#pgr-linegraph-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">pgr_lineGraph</span></code> — Transforms a given graph into its corresponding edge-based graph.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> — Transforms a given graph into its corresponding edge-based graph.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
@@ -208,7 +200,7 @@ Line Graph (right, with green vertices).</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql, directed)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql, directed)
 RETURNS SET OF (seq, source, target, cost, reverse_cost)
     OR EMPTY SET
 </pre></div>
@@ -218,7 +210,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost)
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql)
 RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </pre></div>
 </div>
@@ -231,7 +223,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span> 
@@ -271,15 +263,15 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </div>
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql, directed);
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_lineGraph(edges_sql, directed);
 RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </pre></div>
 </div>
 <dl class="docutils">
 <dt>This signature returns the Line Graph of the current graph:</dt>
 <dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal"><span class="pre">true</span></code>.</li>
-<li>on an <strong>undirected</strong> graph when <code class="docutils literal"><span class="pre">directed</span></code> flag is set to <code class="docutils literal"><span class="pre">false</span></code>.</li>
+<li>on a <strong>directed</strong> graph when <code class="docutils literal notranslate"><span class="pre">directed</span></code> flag is missing or is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</li>
+<li>on an <strong>undirected</strong> graph when <code class="docutils literal notranslate"><span class="pre">directed</span></code> flag is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</li>
 </ul>
 </dd>
 </dl>
@@ -291,7 +283,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -489,22 +481,22 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
@@ -513,7 +505,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
@@ -552,14 +544,14 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
 <td><ul class="first last simple">
-<li>When <code class="docutils literal"><span class="pre">true</span></code> the graph is considered as <cite>Directed</cite>.</li>
-<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</li>
+<li>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered as <cite>Directed</cite>.</li>
+<li>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</li>
 </ul>
 </td>
 </tr>
@@ -583,11 +575,11 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td><p class="first">Identifier of the source vertex of the current edge <cite>id</cite>.</p>
 <ul class="last simple">
 <li>When <cite>negative</cite>: the source is the reverse edge in the original graph.</li>
@@ -595,7 +587,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td><p class="first">Identifier of the target vertex of the current edge <cite>id</cite>.</p>
 <ul class="last simple">
 <li>When <cite>negative</cite>: the target is the reverse edge in the original graph.</li>
@@ -603,7 +595,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><p class="first">Weight of the edge (<cite>source</cite>, <cite>target</cite>).</p>
 <ul class="last simple">
 <li>When <cite>negative</cite>: edge (<cite>source</cite>, <cite>target</cite>) does not exist, therefore it’s not part of the graph.</li>
@@ -611,7 +603,7 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><p class="first">Weight of the edge (<cite>target</cite>, <cite>source</cite>).</p>
 <ul class="last simple">
 <li>When <cite>negative</cite>: edge (<cite>target</cite>, <cite>source</cite>) does not exist, therefore it’s not part of the graph.</li>
@@ -647,9 +639,9 @@ RETURNS SET OF (seq, source, target, cost, reverse_cost) or EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.5.4.<br/>
-      Last updated on Sep 20, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.5.<br/>
+      Last updated on Dec 02, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>
