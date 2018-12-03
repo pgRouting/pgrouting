@@ -1,0 +1,13 @@
+<map id="pgrouting::vrp::Tw_node::closes" name="pgrouting::vrp::Tw_node::closes">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#ac6175454144f3417e7fd582b87eabc52" title="pgrouting::vrp::Fleet\l::add_vehicle" alt="" coords="393,311,532,352"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="180,49,345,91"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af16bda121ef322dc50702241a9b20985" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="187,115,339,156"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76" title="is_delivery " alt="" coords="199,180,326,221"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262" title="is_dump " alt="" coords="199,245,326,287"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="199,311,326,352"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f" title="is_Load " alt="" coords="199,376,326,417"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0923a9c16a3fa7b95123fcc76bd7c499" title="pgrouting::vrp::Vehicle\l::is_ok" alt="" coords="187,441,339,483"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b" title="is_pickup " alt="" coords="199,507,326,548"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="199,572,326,613"/>
+<area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784" title="pgrouting::vrp::Vehicle\l::Vehicle" alt="" coords="187,637,339,679"/>
+</map>

@@ -3,11 +3,11 @@ digraph "pgrouting::tsp::Dmatrix::set"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="pgrouting::tsp::Dmatrix::set",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pgrouting::tsp::Dmatrix\l::get_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1Dmatrix.html#a4824434e65d99df5a57764e8b3bf7aef",tooltip="idx -> original id "];
-  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="pgrouting::tsp::Dmatrix\l::get_index",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1Dmatrix.html#a246cfe9b55dfea352065c3222d973d47",tooltip="original id -> idx "];
-  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="pgrouting::tsp::Dmatrix\l::has_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1Dmatrix.html#a5a70d03ab1a750cd07b71f758395bdff",tooltip="original id -> true "];
+  Node79 [label="pgrouting::tsp::Dmatrix::set",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node79 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node80 [label="pgrouting::tsp::Dmatrix\l::get_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1Dmatrix.html#a6ab28b03bce8234b17d021a88997937b",tooltip="idx -> original id "];
+  Node79 -> Node81 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node81 [label="pgrouting::tsp::Dmatrix\l::get_index",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1Dmatrix.html#acd3455be4c2e72e6877163b3c317c063",tooltip="original id -> idx "];
+  Node79 -> Node82 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node82 [label="pgrouting::tsp::Dmatrix\l::has_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1Dmatrix.html#a09895e26fdb2c72ce8acad8251a69123",tooltip="original id -> true "];
 }

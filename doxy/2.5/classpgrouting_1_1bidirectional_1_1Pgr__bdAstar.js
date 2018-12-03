@@ -14,7 +14,7 @@ var classpgrouting_1_1bidirectional_1_1Pgr__bdAstar =
     [ "found", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a13542537894b7e6e0a00937a4cfcaac8", null ],
     [ "heuristic", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a9a673da5f6fab0c8377099d8cd8f653d", null ],
     [ "initialize", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#adcd46d9c2709a597a33379aa3541bde0", null ],
-    [ "log", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a9f46d85304598d59946b36904bad8bb3", null ],
+    [ "log", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ae649f49489a4496cdeb9166c3ecc53d9", null ],
     [ "pgr_bdAstar", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ab4a598217cd6f47403c6905d2793436a", null ],
     [ "backward_cost", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#adf12f52fa9cd644c77a6acbcca8fc9f8", null ],
     [ "backward_edge", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a4d8eb8fd150e8963800fd84d9bd5d524", null ],

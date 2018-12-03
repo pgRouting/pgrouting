@@ -1,0 +1,6 @@
+<map id="pgrouting::vrp::Vehicle::has_cv" name="pgrouting::vrp::Vehicle::has_cv">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="419,27,571,69"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af03e827c78c15067dd25279ed354150a" title="pgrouting::vrp::Vehicle\l::is_feasable" alt="" coords="212,27,364,69"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="205,93,371,134"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="207,158,369,199"/>
+</map>

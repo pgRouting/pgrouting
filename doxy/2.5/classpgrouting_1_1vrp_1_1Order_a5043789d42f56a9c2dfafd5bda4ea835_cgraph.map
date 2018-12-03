@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Order::isCompatibleIJ" name="pgrouting::vrp::Order::isCompatibleIJ">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#a909823e836bd8fb257eede3dc13ba61e" title="The delivery node identifier. " alt="" coords="205,5,347,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="195,71,357,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Order.html#aabef0d026576976f0e0eddd40171645b" title="The delivery node identifier. " alt="" coords="205,136,347,177"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="pgrouting::vrp::Vehicle::deltaTime" name="pgrouting::vrp::Vehicle::deltaTime">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="218,5,345,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece" title="True when arrivalTime is before it opens. " alt="" coords="205,71,357,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="212,136,351,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#adc318f75bf9a66664c2d2cefa4939c8d" title="pgrouting::vrp::Vehicle\l::speed" alt="" coords="205,201,357,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="208,267,355,308"/>
+</map>

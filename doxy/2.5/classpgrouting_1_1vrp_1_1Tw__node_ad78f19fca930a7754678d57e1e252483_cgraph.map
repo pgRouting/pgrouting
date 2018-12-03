@@ -1,0 +1,6 @@
+<map id="pgrouting::vrp::Tw_node::is_start" name="pgrouting::vrp::Tw_node::is_start">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="186,5,313,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="186,71,313,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="186,136,313,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="180,201,319,243"/>
+</map>

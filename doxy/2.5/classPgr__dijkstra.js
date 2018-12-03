@@ -23,7 +23,7 @@ var classPgr__dijkstra =
     [ "execute_drivingDistance", "classPgr__dijkstra.html#acd2295cfb5f7b22c5164dc8b3b709549", null ],
     [ "execute_drivingDistance_no_init", "classPgr__dijkstra.html#a2c160563e844c2e90cb853954950dbbd", null ],
     [ "get_drivingDistance_with_equicost_paths", "classPgr__dijkstra.html#a1ad615c70bc2db48c8a057a1184c9f60", null ],
-    [ "get_paths", "classPgr__dijkstra.html#a59197d3314b41211608254dfd94fe6fa", null ],
+    [ "get_paths", "classPgr__dijkstra.html#a941f0239c68a6b07ee6f2ca69b66b82e", null ],
     [ "distances", "classPgr__dijkstra.html#abb45493b234950e9f4466412169b3905", null ],
     [ "log", "classPgr__dijkstra.html#ab486bbfad385578ea1463e49cffa363c", null ],
     [ "nodesInDistance", "classPgr__dijkstra.html#a0c015629879ec92a2160bcc64ddcc7f1", null ],

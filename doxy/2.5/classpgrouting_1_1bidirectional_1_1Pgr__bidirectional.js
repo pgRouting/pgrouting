@@ -13,7 +13,7 @@ var classpgrouting_1_1bidirectional_1_1Pgr__bidirectional =
     [ "explore_forward", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a6c4b2976e7ee0e9c301f1071fdc5903f", null ],
     [ "found", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a13542537894b7e6e0a00937a4cfcaac8", null ],
     [ "initialize", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adcd46d9c2709a597a33379aa3541bde0", null ],
-    [ "log", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a9f46d85304598d59946b36904bad8bb3", null ],
+    [ "log", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ae649f49489a4496cdeb9166c3ecc53d9", null ],
     [ "backward_cost", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8", null ],
     [ "backward_edge", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4d8eb8fd150e8963800fd84d9bd5d524", null ],
     [ "backward_finished", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab11a1d3c3525c178718d172ce3dbc655", null ],

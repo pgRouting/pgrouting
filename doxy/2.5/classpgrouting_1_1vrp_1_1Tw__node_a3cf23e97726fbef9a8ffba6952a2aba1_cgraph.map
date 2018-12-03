@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Tw_node::arrival_j_opens_i" name="pgrouting::vrp::Tw_node::arrival_j_opens_i">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="226,5,353,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="220,71,359,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="216,136,363,177"/>
+</map>
