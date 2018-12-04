@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>pgr_strongComponents - Experimental &#8212; pgRouting Manual (2.6)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v2.6.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -49,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.6.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -162,7 +154,7 @@
       
   <div class="section" id="pgr-strongcomponents-experimental">
 <span id="pgr-strongcomponents"></span><h1>pgr_strongComponents - Experimental<a class="headerlink" href="#pgr-strongcomponents-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">pgr_strongComponents</span></code> — Return the strongly connected components of a directed graph using Tarjan’s algorithm based on DFS.
+<p><code class="docutils literal notranslate"><span class="pre">pgr_strongComponents</span></code> — Return the strongly connected components of a directed graph using Tarjan’s algorithm based on DFS.
 In particular, the algorithm implemented by Boost.Graph.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/strong_components.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -207,13 +199,13 @@ This implementation can only be used with a directed graph.</p>
 <li><cite>node</cite> ascending</li>
 </ul>
 </li>
-<li>Running time: <span class="math">\(O(V + E)\)</span></li>
+<li>Running time: <span class="math notranslate nohighlight">\(O(V + E)\)</span></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none" id="index-0"><div class="highlight"><pre><span></span>pgr_strongComponents(edges_sql)
+<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_strongComponents(edges_sql)
 
 RETURNS SET OF (seq, component, n_seq, node)
     OR EMPTY SET
@@ -228,7 +220,7 @@ RETURNS SET OF (seq, component, n_seq, node)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_strongComponents</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_strongComponents</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">n_seq</span> <span class="o">|</span> <span class="n">node</span>
@@ -284,22 +276,22 @@ RETURNS SET OF (seq, component, n_seq, node)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
@@ -308,7 +300,7 @@ RETURNS SET OF (seq, component, n_seq, node)
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
@@ -348,7 +340,7 @@ RETURNS SET OF (seq, component, n_seq, node)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>&#160;</td>
 <td>SQL query as described above.</td>
 </tr>
@@ -357,7 +349,7 @@ RETURNS SET OF (seq, component, n_seq, node)
 </div>
 <div class="section" id="description-of-the-return-values-for-connected-components-and-strongly-connected-components">
 <h3>Description of the return values for connected components and strongly connected components<a class="headerlink" href="#description-of-the-return-values-for-connected-components-and-strongly-connected-components" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">n_seq,</span> <span class="pre">node)</span></code></p>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">n_seq,</span> <span class="pre">node)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -372,19 +364,19 @@ RETURNS SET OF (seq, component, n_seq, node)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal"><span class="pre">INT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
 <tr class="row-odd"><td><strong>component</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Component identifier. It is equal to the minimum node identifier in the component.</td>
 </tr>
 <tr class="row-even"><td><strong>n_seq</strong></td>
-<td><code class="docutils literal"><span class="pre">INT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
 <td>It is a sequential value starting from <strong>1</strong> in a component.</td>
 </tr>
 <tr class="row-odd"><td><strong>node</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the vertex.</td>
 </tr>
 </tbody>
@@ -417,9 +409,9 @@ RETURNS SET OF (seq, component, n_seq, node)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.6.1.<br/>
-      Last updated on Sep 21, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.2.<br/>
+      Last updated on Dec 03, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

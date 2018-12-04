@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>pgr_withPointsKSP - Proposed &#8212; pgRouting Manual (2.6)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v2.6.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -49,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.6.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.6.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -171,7 +163,7 @@
 <span id="pgr-withpointsksp"></span><h1>pgr_withPointsKSP - Proposed<a class="headerlink" href="#pgr-withpointsksp-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_withPointsKSP</span></code> - Find the K shortest paths using Yen’s algorithm.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> - Find the K shortest paths using Yen’s algorithm.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Proposed functions for next mayor release.</p>
@@ -196,12 +188,12 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Modifies the graph to include the points defined in the <code class="docutils literal"><span class="pre">points_sql</span></code> and
+<p>Modifies the graph to include the points defined in the <code class="docutils literal notranslate"><span class="pre">points_sql</span></code> and
 using Yen algorithm, finds the K shortest paths.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
 pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </pre></div>
@@ -221,7 +213,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -233,7 +225,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
@@ -260,7 +252,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 <div class="section" id="complete-signature">
 <span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <p>Finds the K shortest paths depending on the optional parameters setup.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K,
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K,
     directed:=true, heap_paths:=false, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </pre></div>
@@ -273,7 +265,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
@@ -329,22 +321,22 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
@@ -353,7 +345,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
@@ -399,7 +391,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>pid</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td><p class="first">(optional) Identifier of the point.</p>
 <ul class="last simple">
 <li>If column present, it can not be NULL.</li>
@@ -408,15 +400,15 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </td>
 </tr>
 <tr class="row-odd"><td><strong>edge_id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Identifier of the “closest” edge to the point.</td>
 </tr>
 <tr class="row-even"><td><strong>fraction</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>Value in &lt;0,1&gt; that indicates the relative postition from the first end point of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>side</strong></td>
-<td><code class="docutils literal"><span class="pre">CHAR</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></td>
 <td><p class="first">(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the point is:</p>
 <ul class="last simple">
 <li>In the right, left of the edge or</li>
@@ -455,35 +447,35 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>Edges SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>points_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>Points SQL query as described above.</td>
 </tr>
 <tr class="row-even"><td><strong>start_pid</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Starting point id.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_pid</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>Ending point id.</td>
 </tr>
 <tr class="row-even"><td><strong>K</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td>Number of shortest paths.</td>
 </tr>
 <tr class="row-odd"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional). When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal"><span class="pre">true</span></code> which considers the graph as Directed.</td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
+<td>(optional). When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal notranslate"><span class="pre">true</span></code> which considers the graph as Directed.</td>
 </tr>
 <tr class="row-even"><td><strong>heap_paths</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional). When <code class="docutils literal"><span class="pre">true</span></code> the paths calculated to get the shortests paths will be returned also. Default is <code class="docutils literal"><span class="pre">false</span></code> only the K shortest paths are returned.</td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
+<td>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the paths calculated to get the shortests paths will be returned also. Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> only the K shortest paths are returned.</td>
 </tr>
 <tr class="row-odd"><td><strong>driving_side</strong></td>
-<td><code class="docutils literal"><span class="pre">CHAR</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></td>
 <td><dl class="first last docutils">
 <dt>(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the driving side is:</dt>
 <dd><ul class="first last simple">
@@ -496,16 +488,16 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </td>
 </tr>
 <tr class="row-even"><td><strong>details</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional). When <code class="docutils literal"><span class="pre">true</span></code> the results will include the driving distance to the points with in the <code class="docutils literal"><span class="pre">distance</span></code>.
-Default is <code class="docutils literal"><span class="pre">false</span></code> which ignores other points of the points_sql.</td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
+<td>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the driving distance to the points with in the <code class="docutils literal notranslate"><span class="pre">distance</span></code>.
+Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> which ignores other points of the points_sql.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
 <h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -520,49 +512,49 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td>Row sequence.</td>
 </tr>
 <tr class="row-odd"><td><strong>path_seq</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td>Relative position in the path of node and edge. Has value 1 for the beginning of a path.</td>
 </tr>
 <tr class="row-even"><td><strong>path_id</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td>Path identifier. The ordering of the paths: For two paths i, j if i &lt; j then agg_cost(i) &lt;= agg_cost(j).</td>
 </tr>
 <tr class="row-odd"><td><strong>node</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the node in the path. Negative values are the identifiers of a point.</td>
 </tr>
 <tr class="row-even"><td><strong>edge</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Identifier of the edge used to go from <code class="docutils literal"><span class="pre">node</span></code> to the next node in the path sequence.</dt>
+<dt>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence.</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">-1</span></code> for the last row in the path sequence.</li>
+<li><code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last row in the path sequence.</li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Cost to traverse from <code class="docutils literal"><span class="pre">node</span></code> using <code class="docutils literal"><span class="pre">edge</span></code> to the next <code class="docutils literal"><span class="pre">node</span></code> in the path sequence.</dt>
+<dt>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">0</span></code> for the last row in the path sequence.</li>
+<li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the path sequence.</li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
 <tr class="row-even"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Aggregate cost from <code class="docutils literal"><span class="pre">start_pid</span></code> to <code class="docutils literal"><span class="pre">node</span></code>.</dt>
+<dt>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">0</span></code> for the first row in the path sequence.</li>
+<li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the path sequence.</li>
 </ul>
 </dd>
 </dl>
@@ -582,7 +574,7 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
@@ -617,7 +609,7 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
@@ -688,9 +680,9 @@ Default is <code class="docutils literal"><span class="pre">false</span></code> 
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.6.1.<br/>
-      Last updated on Sep 21, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.6.2.<br/>
+      Last updated on Dec 03, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>
