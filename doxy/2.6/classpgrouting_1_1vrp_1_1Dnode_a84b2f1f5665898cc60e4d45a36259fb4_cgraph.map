@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Dnode::distance" name="pgrouting::vrp::Dnode::distance">
+<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a785a95db8b70df2c05370cf8bb121ea5" title="pgrouting::tsp::Dmatrix\l::distance" alt="" coords="200,5,355,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#acd3455be4c2e72e6877163b3c317c063" title="original id &#45;&gt; idx " alt="" coords="403,35,557,76"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833" title="pgrouting::Identifier::id" alt="" coords="202,122,353,149"/>
+</map>

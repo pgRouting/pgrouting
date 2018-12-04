@@ -1,0 +1,11 @@
+digraph "Pgr_allpairs::make_result"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node70 [label="Pgr_allpairs::make\l_result",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node70 -> Node71 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node71 [label="Pgr_allpairs::floydWarshall",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPgr__allpairs.html#a318e417ba9ba05931990de83d7ee6176"];
+  Node70 -> Node76 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node76 [label="Pgr_allpairs::johnson",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPgr__allpairs.html#abbf7d46c07a89b9568dd266b97cc4781"];
+}

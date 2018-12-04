@@ -1,6 +1,6 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/pgr_edge_xy_t.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/pgr_edge_xy_t.h">
-<area shape="rect" id="node2" href="$edges__input_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/c_common/edges\l_input.h" alt="" coords="5,124,180,195"/>
-<area shape="rect" id="node3" href="$xy__vertex_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/cpp_common/xy\l_vertex.h" alt="" coords="204,124,371,195"/>
-<area shape="rect" id="node4" href="$astar__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/astar\l/astar_driver.h" alt="" coords="395,124,545,195"/>
-<area shape="rect" id="node5" href="$bdAstar__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/bdAstar\l/bdAstar_driver.h" alt="" coords="569,124,728,195"/>
+<map id="pgr_edge_xy_t.h" name="pgr_edge_xy_t.h">
+<area shape="rect" id="node2" href="$edges__input_8h.html" title="edges_input.h" alt="" coords="5,80,108,107"/>
+<area shape="rect" id="node3" href="$xy__vertex_8h.html" title="xy_vertex.h" alt="" coords="133,80,223,107"/>
+<area shape="rect" id="node4" href="$astar__driver_8h.html" title="astar_driver.h" alt="" coords="247,80,349,107"/>
+<area shape="rect" id="node5" href="$bdAstar__driver_8h.html" title="bdAstar_driver.h" alt="" coords="373,80,490,107"/>
 </map>

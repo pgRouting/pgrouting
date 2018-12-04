@@ -1,0 +1,7 @@
+<map id="pgrouting::vrp::Tw_node::is_tight_compatible_IJ" name="pgrouting::vrp::Tw_node::is_tight_compatible_IJ">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="248,5,413,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="461,77,624,119"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="249,123,412,164"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576" title="True when arrivalTime is after it closes. " alt="" coords="470,156,615,197"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece" title="True when arrivalTime is before it opens. " alt="" coords="255,240,407,281"/>
+</map>

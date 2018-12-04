@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::position_limits" name="pgrouting::vrp::Vehicle::position_limits">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a6dfe1539c3277ae6568309e8e5e4d374" title="pgrouting::vrp::Vehicle\l::capacity" alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="205,71,357,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a6b87e5fcd837821ae04884a9d767efb7" title="pgrouting::vrp::Vehicle\l::is_phony" alt="" coords="205,136,357,177"/>
-</map>

@@ -1,0 +1,3 @@
+<map id="pgrouting::vrp::Order::is_valid" name="pgrouting::vrp::Order::is_valid">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#a20706ce64b90c0e628fb51da79f1e490" title="Given an order, Cycle trhugh all the trucks to verify if the order can be served by at least one truc..." alt="" coords="195,5,333,47"/>
+</map>

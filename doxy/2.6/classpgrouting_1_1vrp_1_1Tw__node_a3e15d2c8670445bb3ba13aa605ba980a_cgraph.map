@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Tw_node::is_compatible_IJ" name="pgrouting::vrp::Tw_node::is_compatible_IJ">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="216,5,379,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576" title="True when arrivalTime is after it closes. " alt="" coords="225,71,370,112"/>
+</map>

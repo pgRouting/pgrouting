@@ -1,7 +1,7 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/identifier.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/identifier.h">
-<area shape="rect" id="node2" href="$identifier_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/common/identifier.cpp" alt="" coords="5,109,181,165"/>
-<area shape="rect" id="node3" href="$base__node_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/base_node.h" alt="" coords="206,109,373,165"/>
-<area shape="rect" id="node4" href="$order_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/order.h" alt="" coords="397,109,547,165"/>
-<area shape="rect" id="node5" href="$tw__node_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/tw_node.h" alt="" coords="571,109,725,165"/>
-<area shape="rect" id="node6" href="$vehicle_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/vehicle.h" alt="" coords="749,109,899,165"/>
+<map id="identifier.h" name="identifier.h">
+<area shape="rect" id="node2" href="$identifier_8cpp.html" title="identifier.cpp" alt="" coords="5,80,101,107"/>
+<area shape="rect" id="node3" href="$base__node_8h.html" title="base_node.h" alt="" coords="125,80,221,107"/>
+<area shape="rect" id="node4" href="$order_8h.html" title="order.h" alt="" coords="246,80,309,107"/>
+<area shape="rect" id="node5" href="$tw__node_8h.html" title="tw_node.h" alt="" coords="333,80,416,107"/>
+<area shape="rect" id="node6" href="$vehicle_8h.html" title="vehicle.h" alt="" coords="440,80,515,107"/>
 </map>

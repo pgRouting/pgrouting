@@ -12,7 +12,7 @@ var classpgrouting_1_1algorithms_1_1Pgr__astar =
     [ "astar_1_to_1", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#adf6a495f8da1568e6443abea0c69951b", null ],
     [ "astar_1_to_many", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a76f171bc1f300a5682242449a61c455d", null ],
     [ "clear", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#afbf710a4c295a0befdd7c505303a713a", null ],
-    [ "get_paths", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a89fb73b1c6f774208f39e84574bef341", null ],
+    [ "get_paths", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a25640e114b393e16ef7aebf5b3851c58", null ],
     [ "distances", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#affc05350450a79f61ec402f4871ad1a7", null ],
     [ "nodesInDistance", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a22cd0da84b9ae7e326a595bdc941d11f", null ],
     [ "predecessors", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#adb34490a0056ac03f31ad34996542082", null ]

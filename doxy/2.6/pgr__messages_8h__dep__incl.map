@@ -1,5 +1,5 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/pgr_messages.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/cpp_common/pgr_messages.h">
-<area shape="rect" id="node2" href="$pgr__messages_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/pgr_messages.cpp" alt="" coords="5,131,232,187"/>
-<area shape="rect" id="node3" href="$pd__problem_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pd_problem.h" alt="" coords="256,131,427,187"/>
-<area shape="rect" id="node4" href="$pgr__withPoints_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/withPoints/pgr\l_withPoints.hpp" alt="" coords="451,124,605,195"/>
+<map id="pgr_messages.h" name="pgr_messages.h">
+<area shape="rect" id="node2" href="$pgr__messages_8cpp.html" title="pgr_messages.cpp" alt="" coords="5,80,137,107"/>
+<area shape="rect" id="node3" href="$pd__problem_8h.html" title="pd_problem.h" alt="" coords="161,80,261,107"/>
+<area shape="rect" id="node4" href="$pgr__withPoints_8hpp.html" title="pgr_withPoints.hpp" alt="" coords="286,80,419,107"/>
 </map>

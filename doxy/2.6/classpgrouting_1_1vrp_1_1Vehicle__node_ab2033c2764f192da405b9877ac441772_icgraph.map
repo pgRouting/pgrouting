@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Vehicle_node::has_cv" name="pgrouting::vrp::Vehicle_node::has_cv">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8" title="True doesn&#39;t have twc nor cv (including total counts) " alt="" coords="205,71,357,112"/>
+</map>

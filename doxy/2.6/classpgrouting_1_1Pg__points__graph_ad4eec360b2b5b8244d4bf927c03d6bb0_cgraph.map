@@ -1,0 +1,7 @@
+<map id="pgrouting::Pg_points_graph::eliminate_details_dd" name="pgrouting::Pg_points_graph::eliminate_details_dd">
+<area shape="rect" id="node2" href="$classPath.html#a75bd5ccf60152fefaff1df56be09946b" title="Path::empty" alt="" coords="271,5,364,32"/>
+<area shape="rect" id="node3" href="$classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="270,56,365,83"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Pg__points__graph.html#a51a2eb6cb4f7efa76bdbf8ef60b47048" title="pgrouting::Pg_points\l_graph::get_edge_data" alt="" coords="240,107,395,149"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1Pg__points__graph.html#a9ef279b5c23bc9ffba4d8effd0f1b4c2" title="pgrouting::Pg_points\l_graph::get_edge_id" alt="" coords="247,173,388,214"/>
+<area shape="rect" id="node6" href="$classPath.html#a969ad8937eb448f350193fd203ad97d2" title="Path::start_id" alt="" coords="267,239,367,265"/>
+</map>

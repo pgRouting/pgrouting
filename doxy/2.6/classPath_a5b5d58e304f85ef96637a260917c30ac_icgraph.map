@@ -3,8 +3,8 @@
 <area shape="rect" id="node3" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#afb0d7e7d3049ca1c2a003b0571fcc02d" title="pgrouting::trsp::Pgr\l_trspHandler::construct_path" alt="" coords="173,57,364,98"/>
 <area shape="rect" id="node4" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="412,86,591,127"/>
 <area shape="rect" id="node5" href="$classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a" title="Pgr_dijkstra::drivingDistance\l_no_equicost" alt="" coords="174,174,363,215"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1Pg__points__graph.html#afb5f097e63bec94e140eedd9ce9ba451" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="418,258,585,299"/>
-<area shape="rect" id="node7" href="$classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4" title="Path::empty" alt="" coords="222,291,315,317"/>
-<area shape="rect" id="node8" href="$classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20" title="Path::getSubpath" alt="" coords="207,341,330,368"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1Pg__points__graph.html#a3116d404b1aeab4255b83a96c040686c" title="pgrouting::Pg_points\l_graph::eliminate_details" alt="" coords="418,258,585,299"/>
+<area shape="rect" id="node7" href="$classPath.html#a75bd5ccf60152fefaff1df56be09946b" title="Path::empty" alt="" coords="222,291,315,317"/>
+<area shape="rect" id="node8" href="$classPath.html#a6e915a3786eccd377d84a284b3152e2b" title="Path::getSubpath" alt="" coords="207,341,330,368"/>
 <area shape="rect" id="node9" href="$classPath.html#aa756b9e7d3f6da13211097788882378a" title="Path::Path" alt="" coords="227,392,311,419"/>
 </map>

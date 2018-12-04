@@ -1,4 +1,4 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/lineGraph/pgr_lineGraph.hpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/lineGraph/pgr_lineGraph.hpp">
-<area shape="rect" id="node2" href="$lineGraph__driver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/lineGraph/lineGraph\l_driver.cpp" alt="" coords="5,124,168,195"/>
-<area shape="rect" id="node3" href="$pgr__dijkstraTRSP_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/dijkstraTRSP\l/pgr_dijkstraTRSP.hpp" alt="" coords="192,124,347,195"/>
+<map id="pgr_lineGraph.hpp" name="pgr_lineGraph.hpp">
+<area shape="rect" id="node2" href="$lineGraph__driver_8cpp.html" title="lineGraph_driver.cpp" alt="" coords="5,80,147,107"/>
+<area shape="rect" id="node3" href="$pgr__dijkstraTRSP_8hpp.html" title="pgr_dijkstraTRSP.hpp" alt="" coords="171,80,322,107"/>
 </map>

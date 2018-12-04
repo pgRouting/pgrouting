@@ -1,9 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::is_valid" name="pgrouting::vrp::Tw_node::is_valid">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#afd31f5b45277da0062025e66a37f4ea1" title="is_delivery " alt="" coords="180,5,307,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#af8a766186c1d523c30888fa4ee9f8a28" title="is_dump " alt="" coords="180,71,307,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aec14d55e21b2be5f18d2f29d3cdf78de" title="is_end " alt="" coords="180,136,307,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ac96a7c9513543d661976f989a4c13626" title="is_Load " alt="" coords="180,201,307,243"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a0d7d424f0132c1f1ed75e9c5b1e3d55e" title="is_pickup " alt="" coords="180,267,307,308"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8849b4f343980675cde9e63d686590d0" title="@ { " alt="" coords="180,332,307,373"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a8aaa05f836014b72c8ab64353f81886c" title="Returns the type of this node. " alt="" coords="180,397,307,439"/>
-</map>

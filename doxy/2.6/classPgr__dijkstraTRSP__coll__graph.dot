@@ -5,10 +5,10 @@ digraph "Pgr_dijkstraTRSP&lt; G &gt;"
   Node1 [label="Pgr_dijkstraTRSP\< G \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" curr_result_path" ,fontname="Helvetica"];
   Node2 [label="Path",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPath.html"];
-  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_restrictions" ,fontname="Helvetica"];
-  Node3 [label="std::vector\< Restriction \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_edges_in_path" ,fontname="Helvetica"];
-  Node4 [label="std::vector\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" log" ,fontname="Helvetica"];
-  Node5 [label="std::ostringstream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_restrictions" ,fontname="Helvetica"];
+  Node7 [label="std::vector\< Restriction \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_edges_in_path" ,fontname="Helvetica"];
+  Node9 [label="std::vector\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" log" ,fontname="Helvetica"];
+  Node11 [label="std::ostringstream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
 }

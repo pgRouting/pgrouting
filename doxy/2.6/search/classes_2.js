@@ -7,6 +7,5 @@ var searchData=
   ['comppaths',['compPaths',['../classPgr__ksp_1_1compPaths.html',1,'Pgr_ksp']]],
   ['contracted_5frt',['contracted_rt',['../structcontracted__rt.html',1,'']]],
   ['coordinate_5ft',['Coordinate_t',['../structCoordinate__t.html',1,'']]],
-  ['costholder',['CostHolder',['../structCostHolder.html',1,'']]],
-  ['costholder',['CostHolder',['../classpgrouting_1_1trsp_1_1Pgr__trspHandler_1_1CostHolder.html',1,'pgrouting::trsp::Pgr_trspHandler']]]
+  ['costholder',['CostHolder',['../structCostHolder.html',1,'CostHolder'],['../classpgrouting_1_1trsp_1_1Pgr__trspHandler_1_1CostHolder.html',1,'pgrouting::trsp::Pgr_trspHandler::CostHolder']]]
 ];

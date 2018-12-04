@@ -1,0 +1,8 @@
+<map id="pgrouting::vrp::Vehicle::duration" name="pgrouting::vrp::Vehicle::duration">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a446393c0863473ebf3f6db060ddae597" title="pgrouting::vrp::Vehicle\l::cost" alt="" coords="229,5,381,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ad31399fe507a2e19da0e1357b94bffc7" title="pgrouting::vrp::Vehicle\l::free_time" alt="" coords="229,71,381,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae986b7aeb637a21092142846e6c99799" title="pgrouting::vrp::Vehicle\l_pickDeliver::get_worse_order" alt="" coords="205,136,404,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="452,253,604,295"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Optimize.html#aab099b1d7832d0017fef2dcce969611e" title="pgrouting::vrp::Optimize\l::sort_by_duration" alt="" coords="224,253,385,295"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a8c24ca81fed1ec1d0e2a9e9a327cd91b" title="pgrouting::vrp::Vehicle::tau" alt="" coords="215,319,394,346"/>
+</map>
