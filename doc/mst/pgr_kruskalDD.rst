@@ -10,10 +10,10 @@
 pgr_kruskalDD - Experimental
 ===============================================================================
 
-``pgr_kruskalDD`` — Returns the catchament nodes using Kruskal algorithm.
+``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html
+   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
 
    Boost Graph Inside
 
@@ -23,41 +23,44 @@ pgr_kruskalDD - Experimental
 
 .. rubric:: Availability
 
-* Experimental on v3.0.0
+* New as experimental on v3.0.0
+
 
 Description
 -------------------------------------------------------------------------------
 
-Using Kruskal algorithm, extracts the nodes that have aggregate costs less than
-or equal to the value distance.
+Using Kruskal's algorithm, extracts the nodes that have aggregate costs less than
+or equal to the value ``Distance`` within the calculated minimum spanning tree.
+
 
 **The main Characteristics are:**
 
-- It's implementation is only on **undirected** graph.
-- Process is done only on edges with positive costs.
+.. include:: kruskal-family.rst
+   :start-after: kruskal-description-start
+   :end-before: kruskal-description-end
+
 - Returned tree nodes from a root vertex are on Depth First Search order.
-- Kruskal Running time: :math:`O(E * log E)`
-- Depth First Search Running time: :math:`O(E + V)`
+- Depth First Search running time: :math:`O(E + V)`
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, root_vid, distance)
-    pgr_kruskal(edges_sql, root_vids, distance)
+    pgr_kruskalDD(edges_sql, root_vid, distance)
+    pgr_kruskalDD(edges_sql, root_vids, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
-    single: kruskal(Single vertex) - Experimental
+    single: kruskalDD(Single vertex) - Experimental
 
 Single vertex
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, root_vid, distance)
+    pgr_kruskalDD(edges_sql, root_vid, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -68,14 +71,14 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: kruskal(Multiple vertices) - Experimental
+    single: kruskalDD(Multiple vertices) - Experimental
 
 Multiple vertices
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_kruskal(edges_sql, root_vids, distance)
+    pgr_kruskalDD(edges_sql, root_vids, distance)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -85,27 +88,36 @@ Multiple vertices
    :start-after: -- q2
    :end-before: -- q3
 
+.. mstDD-information-start
+
 Parameters
 -------------------------------------------------------------------------------
 
 =================== ====================== =================================================
 Parameter           Type                   Description
 =================== ====================== =================================================
-**edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
-**root_vid**        ``BIGINT``             Identifier of the root vertex of the tree.
+**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
+**Root vid**        ``BIGINT``             Identifier of the root vertex of the tree.
 
+                                           - Used on `Single vertex`_
                                            - When :math:`0` gets the spanning forest
                                              starting in aleatory nodes for each tree.
 
-**root_vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
+**Root vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
 
+                                           - Used on `Multiple vertices`_
                                            - :math:`0` values are ignored
                                            - For optimization purposes, any duplicated value is ignored.
 
-**distance**        ``NUMERIC``            Upper limit for the inclusion of the node in the result.
+**Distance**        ``ANY-NUMERIC``        Upper limit for the inclusion of the node in the result.
 
-                                           - When ``Negative`` **Throws error**
+                                           - When the value is Negative **throws error**
 =================== ====================== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC
 
 Inner query
 -------------------------------------------------------------------------------
@@ -146,15 +158,18 @@ Column           Type        Description
 
 .. result columns end
 
+.. mstDD-information-end
+
 See Also
 -------------------------------------------------------------------------------
 
-- `Boost Kruskal documentation <https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html>`__
-- Kruskal on `wikipedia <https://en.wikipedia.org/wiki/Kruskal%27s_algorithm>`__
-- The queries use the :doc:`sampledata` network.
+* :doc:`spanningTree-family`
+* :doc:`kruskal-family`
+* The queries use the :doc:`sampledata` network.
+* `Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-

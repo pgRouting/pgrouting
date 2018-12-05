@@ -27,14 +27,55 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_lineGraphFull(
+----------------------
+----------------------
+-- lineGraph
+----------------------
+----------------------
+
+
+----------------------
+-- pgr_lineGraphFull
+----------------------
+
+CREATE OR REPLACE FUNCTION _pgr_lineGraphFull(
     TEXT, -- edges_sql
+
     OUT seq INTEGER,
     OUT source BIGINT,
     OUT target BIGINT,
     OUT cost FLOAT,
     OUT edge BIGINT)
-
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'lineGraphFull'
-LANGUAGE c IMMUTABLE STRICT;
+LANGUAGE C IMMUTABLE STRICT;
+
+CREATE OR REPLACE FUNCTION pgr_lineGraphFull(
+    TEXT, -- edges_sql (required)
+
+    OUT seq INTEGER,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT cost FLOAT,
+    OUT edge BIGINT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_lineGraphFull(_pgr_get_statement($1))
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_lineGraphFull(TEXT)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION pgr_lineGraphFull(TEXT)
+IS 'pgr_lineGraphFull
+ - EXPERIMENTAL
+ - For Directed Graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]';

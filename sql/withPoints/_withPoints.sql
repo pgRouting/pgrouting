@@ -27,6 +27,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+------------------
+------------------
+-- withPoints
+------------------
+------------------
+
+
+------------------
+-- _pgr_withPoints
+------------------
+
+
 CREATE OR REPLACE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -52,3 +65,9 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'withPoints'
 LANGUAGE c VOLATILE;
 
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_withPoints(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';

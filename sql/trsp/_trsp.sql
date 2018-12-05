@@ -21,6 +21,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--------------
+--------------
+-- trsp
+--------------
+--------------
+
+
+--------------
+-- _trsp
+--------------
+
+
 CREATE OR REPLACE FUNCTION _trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
@@ -40,3 +52,9 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'turn_restriction'
 LANGUAGE 'c' VOLATILE;
 
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';

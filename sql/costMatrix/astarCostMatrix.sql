@@ -27,25 +27,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_astarCostMatrix(
-    edges_sql TEXT, -- XY edges sql
-    vids ANYARRAY,
+-----------------------------
+-- pgr_aStarCostMatrix
+-----------------------------
+
+
+CREATE OR REPLACE FUNCTION pgr_aStarCostMatrix(
+    TEXT,     -- edges sql (required)
+    ANYARRAY, -- vids (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
     epsilon FLOAT DEFAULT 1.0,
+
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT a.start_vid, a.end_vid, a.agg_cost
+    SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_astar(_pgr_get_statement($1), $2, $2, $3, $4, $5::FLOAT, $6::FLOAT, true) a;
-END
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE SQL VOLATILE
 COST 100
 ROWS 1000;
 
+-- COMMENT
+
+COMMENT ON FUNCTION pgr_aStarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) 
+IS 'pgr_aStarCostMatrix
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+    - ARRAY [vertices identifiers]
+- Optional Parameters: 
+    - directed := true
+    - heuristic := 5
+    - factor := 1
+    - epsilon := 1
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_aStarCostMatrix.html
+';

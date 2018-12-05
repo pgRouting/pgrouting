@@ -7,6 +7,10 @@
 #   SPHINX_VERSION    - the version of Sphinx which was found, e.g. "1.0.7"
 
 #=============================================================================
+#
+# Copyright (C) 2018 Vicky Vergara
+# Modification for python3
+#
 # Copyright (C) 2011 Marie Rognes and Johannes Ring
 # All rights reserved.
 #
@@ -52,10 +56,13 @@ find_program(SPHINX_EXECUTABLE sphinx-build
 if (SPHINX_EXECUTABLE)
   # Try to check Sphinx version by importing Sphinx
   execute_process(
-    COMMAND ${PYTHON_EXECUTABLE} -c "import sphinx; print sphinx.__version__"
+    COMMAND ${SPHINX_EXECUTABLE} --version
     OUTPUT_VARIABLE SPHINX_VERSION
     OUTPUT_STRIP_TRAILING_WHITESPACE)
 
+  message(STATUS "SPHINX_VERSION ${SPHINX_VERSION}")
+  string(REGEX MATCH "[0-9]+\.[0-9]+.\[0-9]+" SPHINX_VERSION "${SPHINX_VERSION}")
+  message(STATUS "SPHINX_VERSION ${SPHINX_VERSION}")
   if (Sphinx_FIND_VERSION)
     # Check if version found is >= required version
     if (NOT "${SPHINX_VERSION}" VERSION_LESS "${Sphinx_FIND_VERSION}")
@@ -76,4 +83,3 @@ mark_as_advanced(
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Sphinx DEFAULT_MSG
   SPHINX_EXECUTABLE SPHINX_VERSION_OK)
-

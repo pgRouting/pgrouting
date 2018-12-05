@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_kruskal.hpp
+File: pgr_details.h
 
 Copyright (c) 2018 Vicky Vergara
 
@@ -18,30 +18,28 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MST_DETAILS_KRUSKAL_HPP_
-#define INCLUDE_MST_DETAILS_KRUSKAL_HPP_
+#ifndef INCLUDE_MST_DETAILS_HPP_
+#define INCLUDE_MST_DETAILS_HPP_
 #pragma once
 
 #include <vector>
-#include "c_types/pgr_edge_t.h"
+#include "c_types/pgr_mst_rt.h"
 
 namespace pgrouting {
 
-namespace {
-struct found_goals{}; //!< exception for dfs termination
+//! exception for dfs termination
+struct found_goals{};
 
-std::vector<pgr_kruskal_t>
+namespace details {
+
+std::vector<int64_t>
+clean_vids(std::vector<int64_t> vids);
+
+std::vector<pgr_mst_rt>
 get_no_edge_graph_result(
-        std::vector<int64_t> roots) {
-    std::vector<pgr_kruskal_t> results;
-    if (roots.empty()) return results;
-    for (auto const root : roots) {
-        results.push_back({root, 0, root, -1, 0.0, 0.0});
-    }
-    return results;
-}
+        std::vector<int64_t> vids);
 
-}  //namespace
+}  // namespace details
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MST_DETAILS_KRUSKAL_HPP_
+#endif  // INCLUDE_MST_DETAILS_HPP_

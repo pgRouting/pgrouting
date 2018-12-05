@@ -24,12 +24,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+-------------------
+-- pgr_bdDijkstra
+-------------------
+
+
 -- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    TEXT, -- edges_sql
-    BIGINT, -- start_vid
-    BIGINT, -- end_vid
+    TEXT,   -- edges_sql (required)
+    BIGINT, -- from_vid
+    BIGINT, -- to_vid
+
     directed BOOLEAN DEFAULT true,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
@@ -45,12 +53,15 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    TEXT, -- edges_sql
-    BIGINT, -- start_vid
-    ANYARRAY, -- end_vids
+    TEXT,    -- edges_sql (required)
+    BIGINT,   -- from_vid (required)
+    ANYARRAY, -- to_vids (required)
+
     directed BOOLEAN DEFAULT TRUE,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT end_vid BIGINT,
@@ -70,10 +81,12 @@ ROWS 1000;
 
 -- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    TEXT, -- edges_sql
-    ANYARRAY, -- start_vids
-    BIGINT, -- end_vid
+    TEXT,    -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    BIGINT,   -- to_vid (required)
+
     directed BOOLEAN DEFAULT TRUE,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
@@ -94,10 +107,12 @@ ROWS 1000;
 
 -- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
-    TEXT, -- edges_sql
-    ANYARRAY, -- start_vids
-    ANYARRAY, -- end_vids
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+
     directed BOOLEAN DEFAULT TRUE,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
@@ -115,7 +130,52 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgr_bdDijkstra(One to One)';
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgr_bdDijkstra(Many to One)';
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgr_bdDijkstra(One to Many)';
-COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgr_bdDijkstra(Many to Many)';
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgr_bdDijkstra(One to One)
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To vertex identifier
+- Optional Parameters: 
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
+IS 'pgr_bdDijkstra(One to Many)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From vertex identifier
+  - To ARRAY[vertices identifiers]
+- Optional Parameters
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgr_bdDijkstra(Many to One)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To vertex identifier
+- Optional Parameters
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgr_bdDijkstra(Many to Many)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[vertices identifiers]
+  - To ARRAY[vertices identifiers]
+- Optional Parameters
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';

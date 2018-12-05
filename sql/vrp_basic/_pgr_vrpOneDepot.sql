@@ -27,6 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+--------------------
+-- _pgr_vrpOneDepot
+--------------------
+
 
 CREATE OR REPLACE FUNCTION _pgr_vrpOneDepot(
     TEXT, -- customers_sql
@@ -99,3 +103,9 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_vrpOneDepot(TEXT, TEXT, TEXT, INTEGER)
+IS 'pgRouting internal function';

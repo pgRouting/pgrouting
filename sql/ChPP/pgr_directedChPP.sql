@@ -27,17 +27,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_directedChPP(
-    edges_sql TEXT,                 -- edges_sql
-        OUT seq INTEGER,            -- seq
-    OUT node BIGINT,                -- node_id
-    OUT edge BIGINT,                -- edge_id
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
 
-  RETURNS SETOF RECORD AS
-  $BODY$
-        SELECT * 
-        FROM _pgr_directedChPP(_pgr_get_statement($1), only_cost := false);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
+--------------------
+-- pgr_directedChPP
+--------------------
+
+
+
+CREATE OR REPLACE FUNCTION pgr_directedChPP(
+    TEXT, -- edges_sql (required)
+
+    OUT seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_directedChPP(_pgr_get_statement($1), only_cost := false);
+$BODY$
+LANGUAGE SQL VOLATILE;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_directedChPP(TEXT) 
+IS 'pgr_directedChPP
+- EXPERIMENTAL
+- Directed graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_directedChPP.html
+';

@@ -8,9 +8,9 @@ SELECT has_function('pgr_directedchpp', ARRAY['text']);
 SELECT function_returns('pgr_directedchpp', ARRAY['text'], 'setof record');
 
 -- column names
-SELECT bag_has(
+SELECT set_eq(
     $$SELECT proargnames from pg_proc where proname = 'pgr_directedchpp'$$,
-    $$SELECT '{"edges_sql", "seq", "node", "edge", "cost", "agg_cost"}'::TEXT[] $$
+    $$SELECT '{"", "seq", "node", "edge", "cost", "agg_cost"}'::TEXT[] $$
 );
 
 -- pgr_directedchpp works

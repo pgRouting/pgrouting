@@ -22,9 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
--------------------------------
--- trsp: one to one
--------------------------------
+
+--------------
+-- _pgr_trsp
+--------------
+
+
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
@@ -54,9 +58,7 @@ COST 100
 ROWS 1000;
 
 
--------------------------------
--- trsp: one to many
--------------------------------
+-- ONE to MANY 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
@@ -87,9 +89,7 @@ COST 100
 ROWS 1000;
 
 
--------------------------------
--- trsp: many to one
--------------------------------
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
@@ -119,9 +119,8 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
--------------------------------
--- trsp: many to many
--------------------------------
+
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
@@ -151,4 +150,23 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
 

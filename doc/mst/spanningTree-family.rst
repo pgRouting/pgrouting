@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Spanning Tree - Family of functions (Experimental)
+Spanning Tree - Families of functions (Experimental)
 ===============================================================================
 
 
@@ -18,13 +18,8 @@ Spanning Tree - Family of functions (Experimental)
 .. index from here
 
 * :doc:`pgr_randomSpanTree`
-* For **Undirected** Graphs only:
-
-  * :doc:`pgr_kruskal`
-  * :doc:`pgr_kruskalDD`
-  * :doc:`pgr_kruskalDFS`
-  * :doc:`pgr_kruskalBFS`
-  * :doc:`pgr_prim`
+* :doc:`kruskal-family`
+* :doc:`prim-family`
 
 .. index to here
 
@@ -33,15 +28,15 @@ Spanning Tree - Family of functions (Experimental)
     :hidden:
 
     pgr_randomSpanTree
-    pgr_kruskal
-    pgr_kruskalDD
-    pgr_kruskalDFS
-    pgr_kruskalBFS
-    pgr_prim
+    kruskal-family
+    prim-family
 
 
 See Also
 -------------------------------------------------------------------------------
+
+* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
 
 .. rubric:: Indices and tables
 

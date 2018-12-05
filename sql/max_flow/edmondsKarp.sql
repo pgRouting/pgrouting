@@ -24,23 +24,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-------------------------------------
--- 3 pgr_edmondsKarp
-------------------------------------
+-------------------
+-- pgr_edmondsKarp
+-------------------
 
-
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    TEXT,
-    BIGINT,
-    BIGINT,
+    TEXT, -- edges_sql (required)
+    BIGINT, -- from_vid (required)
+    BIGINT, -- to_vid (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
+    OUT residual_capacity BIGINT)
+  RETURNS SEtoF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 3);
@@ -48,19 +48,19 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    TEXT,
-    BIGINT,
-    ANYARRAY,
+    TEXT, -- edges_sql (required)
+    BIGINT, -- from_vid (required)
+    ANYARRAY, -- to_vids (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
+    OUT residual_capacity BIGINT)
+  RETURNS SEtoF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 3);
@@ -68,19 +68,19 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    TEXT,
-    ANYARRAY,
-    BIGINT,
+    TEXT, -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    BIGINT, -- to_vid (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
+    OUT residual_capacity BIGINT)
+  RETURNS SEtoF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 3);
@@ -88,21 +88,72 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
   LANGUAGE sql VOLATILE STRICT;
 
 
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    TEXT,
-    ANYARRAY,
-    ANYARRAY,
+    TEXT, -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
+    OUT residual_capacity BIGINT)
+  RETURNS SEtoF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 3);
   $BODY$
   LANGUAGE sql VOLATILE STRICT;
 
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, BIGINT)
+IS 'pgr_edmondsKarp(One to One)
+- Directed graph
+- Parameters:
+   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+   - From vertex
+   - to vertex
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+';
+
+
+COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, ANYARRAY)
+IS 'pgr_edmondsKarp(One to Many)
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From vertex
+  - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+';
+
+
+COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, BIGINT)
+IS 'pgr_edmondsKarp(Many to One)
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From ARRAY[vertices identifiers]
+  - to vertex
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+';
+
+
+COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, ANYARRAY, ANYARRAY)
+IS 'pgr_edmondsKarp(Many to Many)
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - From ARRAY[vertices identifiers]
+  - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+';

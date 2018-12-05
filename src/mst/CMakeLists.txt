@@ -1,4 +1,7 @@
 ADD_LIBRARY(mst OBJECT
+    mst_common.cpp
+    details.cpp
+
     kruskal.c
     kruskal_driver.cpp
 

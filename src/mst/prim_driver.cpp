@@ -27,34 +27,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-
-#include "mst/pgr_prim.hpp"
+#include <string>
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-
-template < class G >
-static
-std::vector<pgr_prim_rt>
-pgr_prim(
-        G &graph,
-        int64_t root_vertex,
-        bool use_root ) {
-    std::vector<pgr_prim_rt> results;
-    pgrouting::functions::Pgr_prim<G> prim;
-    return prim(graph, root_vertex, use_root);
-}
+#include "mst/pgr_prim.hpp"
+#include "mst/details.hpp"
 
 
 void
 do_pgr_prim(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        int64_t root_vertex,
-        bool use_root,
-        pgr_prim_rt **return_tuples,
+
+        int64_t *rootsArr,
+        size_t size_rootsArr,
+
+        char* fn_suffix,
+
+        int64_t max_depth,
+        double distance,
+
+        pgr_mst_rt **return_tuples,
         size_t *return_count,
+
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -67,20 +64,32 @@ do_pgr_prim(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
-        graphType gType = UNDIRECTED;
+        std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
+        std::string suffix(fn_suffix);
 
-        std::vector<pgr_prim_rt> results;
+        std::vector<pgr_mst_rt> results;
 
-        log << "Working with Undirected Graph\n";
-
-        pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_prim(
-                    undigraph,
-                    root_vertex,
-                    use_root);
+        if (total_edges == 0) {
+            results = pgrouting::details::get_no_edge_graph_result(roots);
+        } else {
+            pgrouting::UndirectedGraph undigraph(UNDIRECTED);
+            undigraph.insert_min_edges_no_parallel(data_edges, total_edges);
+            pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
+            if (suffix == "") {
+                results = prim.prim(undigraph);
+            } else if (suffix == "BFS") {
+                results = prim.primBFS(undigraph, roots, max_depth);
+            } else if (suffix == "DFS") {
+                results = prim.primDFS(undigraph, roots, max_depth);
+            } else if (suffix == "DD") {
+                results = prim.primDD(undigraph, roots, distance);
+            } else {
+                err << "Unknown Prim function";
+                *err_msg = pgr_msg(err.str().c_str());
+                return;
+            }
+        }
 
         auto count = results.size();
 
@@ -96,6 +105,7 @@ do_pgr_prim(
             *((*return_tuples) + i) = results[i];
         }
         (*return_count) = count;
+
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :

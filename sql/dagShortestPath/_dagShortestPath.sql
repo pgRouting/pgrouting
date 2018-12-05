@@ -27,13 +27,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+---------------------
+---------------------
+-- dagShortestPath
+---------------------
+---------------------
+
+---------------------------
+--_pgr_dagShortestPath
+---------------------------
+
 CREATE OR REPLACE FUNCTION _pgr_dagShortestPath(
     TEXT,
     ANYARRAY,
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
-        OUT seq INTEGER,
+
+    OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -44,3 +55,7 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'dagShortestPath'
 LANGUAGE c IMMUTABLE STRICT;
 
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_dagShortestPath(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';

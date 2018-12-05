@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    directedChPP.sql
+    _pgr_directedChPP.sql
     pgr_directedChPP.sql
     pgr_directedChPP_Cost.sql)
 

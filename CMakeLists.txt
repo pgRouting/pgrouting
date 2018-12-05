@@ -234,11 +234,22 @@ else(Boost_INCLUDE_DIRS)
     message(FATAL_ERROR " Please check your Boost installation ")
 endif(Boost_INCLUDE_DIRS)
 
+
 include_directories(${Boost_INCLUDE_DIRS})
 
-# TODO define BOOST_VERSION_OK when boost version >= 1.55.0
-# pass as parameter to the compilation
-# if not defined, it uses the boost files copied in the repository
+# Boost for Chinese postman needs 1.55 at least
+# dijkstra_shortest_paths.hpp has an error fix on 1.55
+#  error affects prim
+# BOOST_VERSION_OK if 1, use the boost file copy in the repository
+if ("${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}" VERSION_LESS "1.55.0")
+    set(BOOST_VERSION_OK "0")
+else()
+    set(BOOST_VERSION_OK "1")
+endif()
+
+message(STATUS "Boost VERSION ${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
+message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_VERSION_OK=${BOOST_VERSION_OK}")
 
 #---------------------------------------------
 #---------------------------------------------
@@ -273,6 +284,7 @@ if (PGROUTING_DEBUG)
     message(STATUS "POSTGRESQL_VERSION is ${PGSQL_VERSION}")
     message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
     message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
+    message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
     message(STATUS "CGAL_INCLUDE_DIR: ${CGAL_INCLUDE_DIR}")
     message(STATUS "PGROUTING_INCLUDE_DIRECTORIES = ${PGROUTING_INCLUDE_DIRECTORIES}")
     message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")

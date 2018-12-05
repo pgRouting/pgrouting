@@ -28,23 +28,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ------------------------
---    MANY TO MANY
+------------------------
+-- costFlow
+------------------------
 ------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_minCostMaxFlow(
-    edges_sql TEXT,                 -- edges_sql
-    sources ANYARRAY,               -- sources
-    targets ANYARRAY,               -- targets
-    only_cost BOOLEAN DEFAULT false,
-        OUT seq INTEGER,            -- seq
-    OUT edge BIGINT,                -- edge_id
-    OUT source BIGINT,              -- start vertex
-    OUT target BIGINT,              -- end vertex
-    OUT flow BIGINT,                -- flow
-    OUT residual_capacity BIGINT,   -- residual capacity
-    OUT cost FLOAT,                 -- cost
-    OUT agg_cost FLOAT)             -- total cost
 
+------------------------
+-- pgr_minCostMaxFlow
+------------------------
+
+
+CREATE OR REPLACE FUNCTION _pgr_minCostMaxFlow(
+    edges_sql TEXT,
+    sources ANYARRAY,
+    targets ANYARRAY,
+
+    only_cost BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'minCostMaxFlow_many_to_many'
 LANGUAGE c IMMUTABLE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_minCostMaxFlow(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+  
+

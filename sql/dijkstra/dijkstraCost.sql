@@ -24,20 +24,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-------------------
+-- pgr_dijkstraCost
+-------------------
 
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
-    edges_sql TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT TRUE,
+    TEXT,   -- edges_sql (required)
+    BIGINT, -- from_vids (required)
+    BIGINT, -- to_vids (required)
+
+    directed BOOLEAN DEFAULT true,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
+    SELECT start_vid, end_vid, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -45,39 +50,21 @@ ROWS 1000;
 
 
 
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
-    edges_sql TEXT,
-    BIGINT,
-    end_vids ANYARRAY,
+    TEXT,     -- edges_sql (required)
+    BIGINT,   -- from_vid (required)
+    ANYARRAY, -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true) AS a;
-$BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
-
-
-
-
-CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
-    OUT agg_cost float)
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
+    SELECT start_vid, end_vid, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -86,18 +73,44 @@ ROWS 1000;
 
 
 
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    BIGINT,   -- to_vid (required)
+
     directed BOOLEAN DEFAULT true,
+
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT agg_cost float)
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true) AS a;
+    SELECT start_vid, end_vid, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true);
+$BODY$
+LANGUAGE sql VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+
+
+
+-- MANY to MANY
+CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+
+    directed BOOLEAN DEFAULT true,
+
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT start_vid, end_vid, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -105,7 +118,50 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION  pgr_dijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgr_dijkstraCost(One to One)';
-COMMENT ON FUNCTION  pgr_dijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgr_dijkstraCost(One to Many)';
-COMMENT ON FUNCTION  pgr_dijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgr_dijkstraCost(Many to One)';
-COMMENT ON FUNCTION  pgr_dijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgr_dijkstraCost(Many to Many)';
+COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgr_dijkstraCost(One to One)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To vertex identifier
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
+
+COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN)
+IS 'pgr_dijkstraCost(One to Many)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
+
+COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgr_dijkstraCost(Many to One)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To vertex identifier
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
+
+COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgr_dijkstraCost(Many to Many)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';

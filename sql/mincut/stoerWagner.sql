@@ -27,13 +27,53 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_stoerWagner(
-    edges_sql TEXT,             -- Edge sql
+---------------
+---------------
+-- mincut
+---------------
+---------------
 
-    OUT seq INTEGER,            -- Seq
-    OUT edge BIGINT,            -- edges which divides the set of vertices into two.
-    OUT cost FLOAT,             -- cost of edge
-    OUT mincut FLOAT)           -- vertices of partition, min-cut weight of a undirected graph
+-------------------
+-- pgr_stoerWagner
+-------------------
+
+
+CREATE OR REPLACE FUNCTION _pgr_stoerWagner(
+    edges_sql TEXT,
+
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT mincut FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'stoerWagner'
 LANGUAGE c VOLATILE STRICT;
+
+CREATE OR REPLACE FUNCTION pgr_stoerWagner(
+    edges_sql TEXT, -- edges_sql (required)
+
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT mincut FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_stoerWagner(_pgr_get_statement($1));
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_stoerWagner(TEXT)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION pgr_stoerWagner(TEXT)
+IS 'pgr_stoerWagner
+ - EXPERIMENTAL
+ - Undirected graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]';

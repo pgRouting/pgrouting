@@ -20,7 +20,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL,
+
+
+-----------------------
+-- vias_trsp_V2.2.sql
+-----------------------
+
+
+CREATE OR REPLACE FUNCTION _pgr_trspViaVertices
+    (sql text, 
+    vids integer[], 
+    directed boolean,
+    has_rcost boolean,
+    turn_restrict_sql text DEFAULT NULL,
+
     OUT seq INTEGER,
     OUT id1 INTEGER,
     OUT id2 INTEGER,
@@ -111,7 +124,15 @@ rows 1000;
 
 ----------------------------------------------------------------------------------------------------------
 
-create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text,
+create or replace function pgr_trspViaEdges(
+    text,      -- SQL (required)
+    integer[], -- eids (required)
+    FLOAT[],   -- pcts (required)
+    BOOLEAN,   -- directed (required)
+    BOOLEAN,   -- has_rcost (requierd)
+
+    turn_restrict_sql text DEFAULT NULL::text,
+
     OUT seq INTEGER,
     OUT id1 INTEGER,
     OUT id2 INTEGER,
@@ -130,6 +151,12 @@ $body$
  *
 */
 declare
+    sql TEXT          := $1;
+    eids INTEGER[]    := $2;
+    pcts FLOAT[]      := $3;
+    directed BOOLEAN  := $4;
+    has_rcost BOOLEAN := $5;
+
     i integer;
     rr RECORD;
     lrr RECORD;
@@ -241,3 +268,25 @@ $body$
 language plpgsql stable
 cost 100
 rows 1000;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_trspViaVertices(TEXT, INTEGER [], BOOLEAN, BOOLEAN, TEXT)
+IS 'pgRouting internal function';
+
+
+COMMENT ON FUNCTION pgr_trspViaEdges(TEXT, INTEGER[], FLOAT[], BOOLEAN, BOOLEAN, TEXT)
+IS 'pgr_trspViaEdges
+ - Parameters
+   - edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - ARRAY[Via edge identifiers]
+   - ARRAY[fraction position on via edges]
+   - directed
+   - has reverse cost
+ - Optional parameters
+   - turn_restrict_sql := NULL
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_trspViaEdges.html
+';

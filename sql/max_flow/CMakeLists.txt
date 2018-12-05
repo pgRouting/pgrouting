@@ -1,12 +1,12 @@
 
 SET(LOCAL_FILES
-    _max_flow.sql
+    _maxflow.sql
     edmondsKarp.sql
     boykovKolmogorov.sql
     pushRelabel.sql
     maxFlow.sql
     maxCardinalityMatch.sql
-    edge_disjoint_paths.sql
+    edgeDisjointPaths.sql
     )
 
 foreach (f ${LOCAL_FILES})

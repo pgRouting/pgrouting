@@ -25,21 +25,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ------------------------------------
--- 2 boykov_kolmogorov
+-- pgr_boykovKolmogorov
 ------------------------------------
 
 
+-- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    TEXT,
-    BIGINT,
-    BIGINT,
+    TEXT, -- edges_sql (required)
+    BIGINT, -- from_vid (required)
+    BIGINT, -- to_vid (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
+    OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
@@ -48,18 +49,18 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    TEXT,
-    BIGINT,
-    ANYARRAY,
+    TEXT, -- edges_sql (required)
+    BIGINT, -- from_vid (required)
+    ANYARRAY, -- to_vids (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
+    OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
@@ -68,18 +69,18 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
   LANGUAGE sql VOLATILE STRICT;
 
 
-
+-- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    TEXT,
-    ANYARRAY,
-    BIGINT,
+    TEXT, -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    BIGINT, -- to_vid (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
+    OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
@@ -88,21 +89,73 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
   LANGUAGE sql VOLATILE STRICT;
 
 
+-- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    TEXT,
-    ANYARRAY,
-    ANYARRAY,
+    TEXT, -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
+
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
+    OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
         SELECT *
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 2);
   $BODY$
   LANGUAGE sql VOLATILE STRICT;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, BIGINT, BIGINT)
+IS 'pgr_boykovKolmogorov(One to One)
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from vertex
+  - to vertex
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
+
+
+COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, BIGINT, ANYARRAY)
+IS 'pgr_boykovKolmogorov(One to Many)
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from vertex
+  - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
+
+
+COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, ANYARRAY, BIGINT)
+IS 'pgr_boykovKolmogorov(Many to One)
+- Directed graph
+- Parameters:
+  - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - from ARRAY[vertices identifiers]
+  - to vertex
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
+
+
+COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, ANYARRAY, ANYARRAY)
+IS 'pgr_boykovKolmogorov(Many to Many)
+ - Directed graph
+ - Parameters:
+   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+   - from ARRAY[vertices identifiers]
+   - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+';
 

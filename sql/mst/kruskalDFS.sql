@@ -27,6 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+
+-----------------
+-- pgr_kruskalDFS
+-----------------
+
+
+-- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
@@ -56,9 +63,10 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+-- MULTIPLE VERTICES
 CREATE OR REPLACE FUNCTION pgr_kruskalDFS(
-    TEXT,   -- Edge sql
-    ANYARRAY, -- root vertex
+    TEXT,     -- Edge sql
+    ANYARRAY, -- root vertices
 
     max_depth BIGINT DEFAULT 9223372036854775807,
 
@@ -85,5 +93,33 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, BIGINT) IS 'pgr_kruskalDFS(Single vertex): Experimental, Undirected Graph';
-COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, BIGINT) IS 'pgr_kruskalDFS(Multiple vertives): Experimental, Undirected Graph';
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, BIGINT)
+IS 'pgr_kruskalDFS(Single Vertex)
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - from root vertex identifier
+- Optional parameters
+  - max_depth: default 9223372036854775807
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_kruskalDFS.html
+';
+
+
+COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, ANYARRAY, BIGINT)
+IS 'pgr_kruskalDFS(Multiple Vertices)
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - from ARRAY[root vertices identifiers]
+- Optional parameters
+  - max_depth: default 9223372036854775807
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_kruskalDFS.html
+';

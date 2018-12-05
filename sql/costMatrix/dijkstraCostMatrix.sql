@@ -24,25 +24,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------------------------
+-- dijkstraCostMatrix
+-----------------------------
 
---  DIJKSTRA DMatrix
 
-/***********************************
-        MANY TO MANY
-***********************************/
+CREATE OR REPLACE FUNCTION pgr_dijkstraCostMatrix(
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- vids (required)
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraCostMatrix(edges_sql TEXT, vids ANYARRAY, directed BOOLEAN DEFAULT true,
-    OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
+    directed BOOLEAN DEFAULT true,
+
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $2, $3, true) a;
-END
+    SELECT a.start_vid, a.end_vid, a.agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $2, $3, TRUE) a;
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+-- COMMENT
 
-
+COMMENT ON FUNCTION pgr_dijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN) 
+IS 'pgr_dijkstraCostMatrix
+- EXPERIMENTAL
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - ARRAY [vertices identifiers]
+- Optional Parameters
+    - directed := true
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_dijkstraCostMatrix.html
+';

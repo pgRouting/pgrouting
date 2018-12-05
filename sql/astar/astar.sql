@@ -27,10 +27,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-----------------
+-- pgr_astar
+-----------------
+
+
 CREATE OR REPLACE FUNCTION pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vid BIGINT,
+    TEXT,     -- edges sql (required)
+    BIGINT,   -- from_vid (required)
+    BIGINT,   -- to_vid (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
@@ -52,14 +58,17 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 CREATE OR REPLACE FUNCTION pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vids ANYARRAY,
+    TEXT,       -- edges sql (required)
+    BIGINT,     -- from_vid (required)
+    ANYARRAY,   -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
     epsilon FLOAT DEFAULT 1.0,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT end_vid BIGINT,
@@ -77,14 +86,17 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 CREATE OR REPLACE FUNCTION pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vids ANYARRAY,
-    end_vid BIGINT,
+    TEXT,       -- edges sql (required)
+    ANYARRAY,   -- from_vids (required)
+    BIGINT,     -- to_vid (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
     epsilon FLOAT DEFAULT 1.0,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
@@ -102,14 +114,17 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
 CREATE OR REPLACE FUNCTION pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,       -- edges sql (required)
+    ANYARRAY,   -- from_vids (required)
+    ANYARRAY,   -- to_vids (required)
+
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
     epsilon FLOAT DEFAULT 1.0,
+
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
@@ -131,7 +146,66 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(One to One)';
-COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(One to Many)';
-COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(Many to One)';
-COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(Many to Many)';
+
+COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_astar(One to One)
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+  - From vertex identifier
+  - To vertex identifier
+- Optional Parameters: 
+  - directed := true
+  - heuristic := 5
+  - factor := 1
+  - epsilon := 1
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_astar.html
+';
+
+
+COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_astar(One to Many)
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+  - From vertex identifier
+  - To ARRAY[vertices identifiers]
+- Optional Parameters: 
+  - directed := true
+  - heuristic := 5
+  - factor := 1
+  - epsilon := 1
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_astar.html
+';
+
+
+COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_astar(Many to One)
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+  - From ARRAY[vertices identifiers]
+  - To vertex identifier
+- Optional Parameters: 
+  - directed := true
+  - heuristic := 5
+  - factor := 1
+  - epsilon := 1
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_astar.html
+';
+
+
+  COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_astar(Many to Many)
+ - Parameters:
+   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - From ARRAY[vertices identifiers]
+   - To ARRAY[vertices identifiers]
+ - Optional Parameters: 
+   - directed := true
+   - heuristic := 5
+   - factor := 1
+   - epsilon := 1
+ - Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_astar.html
+';

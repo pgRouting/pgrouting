@@ -59,6 +59,9 @@ SET(LOCAL_FILES
     doc-pgr_kruskalDFS.queries
     doc-pgr_kruskalBFS.queries
     doc-pgr_prim.queries
+    doc-pgr_primDD.queries
+    doc-pgr_primDFS.queries
+    doc-pgr_primBFS.queries
     doc-pgr_randomSpanTree.queries
     )
 

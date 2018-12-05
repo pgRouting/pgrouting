@@ -29,10 +29,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
+-----------------------
+-- pgr_tsp
+-----------------------
 
 
 CREATE OR  REPLACE FUNCTION pgr_tsp(
-    sql text, start_id INTEGER,
+    sql text, 
+    start_id INTEGER,
     end_id INTEGER default (-1),
 
     OUT seq INTEGER,
@@ -95,3 +99,10 @@ BEGIN
 END;
 $body$
 language plpgsql volatile STRICT cost 500 ROWS 50;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_tsp(text, INTEGER, INTEGER)
+IS 'DEPRECATED';

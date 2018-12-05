@@ -27,21 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-
-#include "mst/pgr_kruskal.hpp"
-#include "mst/details.hpp"
+#include <string>
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-template < class G >
-static
-std::vector<pgr_kruskal_t>
-pgr_kruskal(
-        G &graph ) {
-    pgrouting::functions::Pgr_kruskal< G > kruskal;
-    return kruskal(graph);
-}
+#include "mst/pgr_kruskal.hpp"
+#include "mst/details.hpp"
 
 
 void
@@ -52,11 +44,12 @@ do_pgr_kruskal(
         int64_t *rootsArr,
         size_t size_rootsArr,
 
-        int order_by,
+        char* fn_suffix,
+
         int64_t max_depth,
         double distance,
 
-        pgr_kruskal_t **return_tuples,
+        pgr_mst_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,
@@ -72,28 +65,33 @@ do_pgr_kruskal(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = UNDIRECTED;
-
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
-        std::sort(roots.begin(), roots.end());
-        roots.erase(
-                std::unique(roots.begin(), roots.end()),
-                roots.end());
-        roots.erase(
-                std::remove(roots.begin(), roots.end(), 0),
-                roots.end());
-        log << "roots size:" << roots.size() << "\n";
+        std::string suffix(fn_suffix);
 
-        std::vector<pgr_kruskal_t> results;
+        std::vector<pgr_mst_rt> results;
+
         if (total_edges == 0) {
-            results = pgrouting::get_no_edge_graph_result(roots);
+            results = pgrouting::details::get_no_edge_graph_result(roots);
         } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(UNDIRECTED);
             undigraph.insert_edges(data_edges, total_edges);
-            log << "The Graph:\n" << undigraph;
-            pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
-            results = kruskal(undigraph, roots, order_by, max_depth, distance);
+
+            pgrouting::functions::Pgr_kruskal
+                <pgrouting::UndirectedGraph> kruskal;
+
+            if (suffix == "") {
+                results = kruskal.kruskal(undigraph);
+            } else if (suffix == "BFS") {
+                results = kruskal.kruskalBFS(undigraph, roots, max_depth);
+            } else if (suffix == "DFS") {
+                results = kruskal.kruskalDFS(undigraph, roots, max_depth);
+            } else if (suffix == "DD") {
+                results = kruskal.kruskalDD(undigraph, roots, distance);
+            } else {
+                err << "Unknown Kruskal function";
+                *err_msg = pgr_msg(err.str().c_str());
+                return;
+            }
         }
 
         auto count = results.size();
@@ -101,8 +99,7 @@ do_pgr_kruskal(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No spanning tree found";
             return;
         }
 

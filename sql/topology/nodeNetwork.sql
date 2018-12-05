@@ -23,14 +23,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_nodeNetwork(edge_table text, tolerance double precision,
-			id text default 'id', the_geom text default 'the_geom', table_ending text default 'noded',
-            rows_where text DEFAULT ''::text, outall boolean DEFAULT false) RETURNS text AS
+
+---------------------------
+-- pgr_nodeNetwork
+---------------------------
+
+
+CREATE OR REPLACE FUNCTION pgr_nodeNetwork(
+    text, -- edge table (required)
+    double precision, -- tolerance (required)
+
+    id text default 'id',
+    the_geom text default 'the_geom',
+    table_ending text default 'noded',
+    rows_where text DEFAULT ''::text,
+    outall boolean DEFAULT false)
+RETURNS text AS
 $BODY$
 DECLARE
 	/*
 	 * Author: Nicolas Ribot, 2013
 	*/
+    edge_table TEXT := $1;
+    tolerance TEXT := $2;
 	p_num int := 0;
 	p_ret text := '';
     pgis_ver_old boolean := _pgr_versionless(postgis_lib_version(), '2.1.0.0');
@@ -284,6 +299,21 @@ $BODY$
     LANGUAGE 'plpgsql' VOLATILE STRICT COST 100;
 
 
-COMMENT ON FUNCTION pgr_nodeNetwork(text, double precision, text, text, text, text, boolean )
- IS  'edge_table, tolerance, id:=''id'', the_geom:=''the_geom'', table_ending:=''noded'' ';
+-- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_nodeNetwork(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, BOOLEAN)
+IS 'pgr_nodeNetwork
+- Parameters
+  - Edge table name
+  - tolerance
+- Optional parameters
+  - id := ''id''
+  - the_geom := ''the_geom''
+  - table_ending := ''noded''
+  - rows_where := ''''
+  - outall := false
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_nodeNetwork.html
+';
 

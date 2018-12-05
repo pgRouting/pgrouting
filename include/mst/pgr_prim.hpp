@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: pgr_prim.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Aditya Pratap Singh
@@ -28,75 +28,60 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/filtered_graph.hpp>
+
+#if BOOST_VERSION_OK
+#include <boost/graph/dijkstra_shortest_paths.hpp>
+#else
+#include "boost/dijkstra_shortest_paths.hpp"
+#endif
+
 #include <boost/graph/prim_minimum_spanning_tree.hpp>
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <sstream>
-#include <functional>
 #include <limits>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "mst/visitors.hpp"
+#include "mst/details.hpp"
+#include "mst/pgr_mst.hpp"
+
 
 //******************************************
 
 namespace pgrouting {
-namespace  visitors {
-
-template <class V>
-class Prim_visitor : public boost::default_dijkstra_visitor {
-    public:
-        explicit Prim_visitor(
-                std::vector<V> &data) :
-            m_data(data)  {}
-        template <class B_G>
-        void finish_vertex(V v, B_G&) {
-            m_data.push_back(v);
-        }
-    private:
-        std::vector<V> &m_data;
-};
-
-}  // namespace visitors
-
-namespace {
-
-template <class V>
-double prim_aggegrateCost(
-        const std::vector<V> &predecessors,
-        const std::vector<double> &distances,
-        V root_vertex,
-        V find_node) {
-    double agg_cost = 0;
-
-    for (V i = find_node; i != root_vertex;) {
-        auto parent =  predecessors[i];
-        auto cost = distances[i] - distances[root_vertex];
-
-        agg_cost += cost;
-        i = parent;
-    }
-    return agg_cost;
-}
-
-}  // namespace visitors
-
 namespace functions {
 
 template <class G>
-class Pgr_prim {
- public:
+class Pgr_prim : public Pgr_mst<G> {
      typedef typename G::V V;
+     typedef typename G::E E;
      typedef typename G::B_G B_G;
 
-     std::vector<pgr_prim_rt> operator() (
-                 G &graph,
-                 int64_t root_vertex,
-                 bool use_root);
+ public:
+     std::vector<pgr_mst_rt> prim(G &graph);
+
+     std::vector<pgr_mst_rt> primBFS(
+             G &graph,
+             std::vector<int64_t> roots,
+             int64_t max_depth);
+
+     std::vector<pgr_mst_rt> primDFS(
+             G &graph,
+             std::vector<int64_t> roots,
+             int64_t max_depth);
+
+     std::vector<pgr_mst_rt> primDD(
+             G &graph,
+             std::vector<int64_t> roots,
+             double distance);
+
 
  private:
      // Functions
@@ -106,38 +91,31 @@ class Pgr_prim {
          distances.clear();
      }
 
-     void resize(const G &graph);
+     void primTree(
+             const G &graph,
+             int64_t root_vertex );
 
-     std::vector< pgr_prim_rt >
-         generatePrim(
-                 const G &graph,
-                 int64_t root_vertex );
-
-     std::vector< pgr_prim_rt > disconnectedPrim(const G &graph);
+     void generate_mst(const G &graph);
 
  private:
      // Member
      std::vector<V> predecessors;
      std::vector<double> distances;
      std::vector<V> data;
+     std::set<V> m_unassigned;
 };
 
 
 template <class G>
 void
-Pgr_prim<G>::resize(const G &graph) {
-    predecessors.resize(graph.num_vertices());
-    distances.resize(graph.num_vertices());
-}
-
-
-template <class G>
-std::vector<pgr_prim_rt>
-Pgr_prim<G>::generatePrim(
+Pgr_prim<G>::primTree(
         const G &graph,
         int64_t root_vertex ) {
     clear();
-    resize(graph);
+
+    predecessors.resize(graph.num_vertices());
+    distances.resize(graph.num_vertices());
+
     auto v_root(graph.get_V(root_vertex));
 
     using prim_visitor = visitors::Prim_visitor<V>;
@@ -149,81 +127,86 @@ Pgr_prim<G>::generatePrim(
             .root_vertex(v_root)
             .visitor(prim_visitor(data)));
 
-    std::vector<pgr_prim_rt> results;
-    double totalcost = 0;
-
     for (const auto v : data) {
-        if (v == data[0]) {
-            results.push_back({root_vertex, root_vertex, -1, 0, totalcost, totalcost});
-            continue;
-        }
+        /*
+         * its not a tree, its a forest
+         * - v is not on current tree
+         */
+        if (std::isinf(distances[v])) continue;
+        m_unassigned.erase(v);
 
-        auto node = graph.graph[v].id;
-        auto v_sn(graph.get_V(graph.graph[predecessors[v]].id));
-        auto cost = distances[v_sn] - distances[v];
-        auto edge_id = graph.get_edge_id(v_sn, v, cost);
-        totalcost += cost;
 
-        results.push_back({ root_vertex,
-            node,
-            edge_id,
-            cost,
-            prim_aggegrateCost(predecessors, distances, v_root, v),
-            totalcost});  // tree_cost
+        auto u = predecessors[v];
+
+        /*
+         * Not a valid edge
+         */
+        if (u == v) continue;
+
+        auto cost = distances[u] - distances[v];
+        auto edge = graph.get_edge(u, v, cost);
+        this->m_spanning_tree.edges.insert(edge);
     }
-    return results;
 }
 
 
 template <class G>
-std::vector<pgr_prim_rt>
-Pgr_prim<G>::disconnectedPrim(const G &graph) {
+void
+Pgr_prim<G>::generate_mst(const G &graph) {
+    this->clear();
+
     size_t totalNodes = num_vertices(graph.graph);
 
-
-    /*Calculate connected components*/
-    std::vector<size_t> components(totalNodes);
-    auto num_comps =
-        boost::connected_components(graph.graph, &components[0]);
-
-    std::vector<std::vector<int64_t>> component;
-    component.resize(num_comps);
-
-    for (auto v : boost::make_iterator_range(vertices(graph.graph))) {
-        component[components[v]].push_back(v);
+    m_unassigned.clear();
+    for (V v = 0; v < totalNodes; ++v) {
+            m_unassigned.insert(m_unassigned.end(), v);
     }
 
-    std::vector<pgr_prim_rt> results;
-    for (const auto c : component) {
-        /* Implementation */
-        auto tmpresults = generatePrim(
+    std::vector<pgr_mst_rt> results;
+    while (!m_unassigned.empty()) {
+        auto root = *m_unassigned.begin();
+        m_unassigned.erase(m_unassigned.begin());
+        primTree(
                 graph,
-                graph.graph[c[0]].id);
-        results.insert(results.end(), tmpresults.begin(), tmpresults.end());
+                graph.graph[root].id);
     }
-    return results;
 }
-
-
 
 template <class G>
-std::vector<pgr_prim_rt>
-Pgr_prim<G>::operator() (
-        G &graph,
-        int64_t root_vertex,
-        bool use_root) {
-    if (!use_root) {
-        return disconnectedPrim(graph);
-    }
-
-    if (!graph.has_vertex(root_vertex)) {
-        return std::vector<pgr_prim_rt>();
-    }
-
-    return generatePrim(
-            graph,
-            root_vertex);
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::prim(
+        G &graph) {
+    return this->mst(graph);
 }
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::primBFS(
+        G &graph,
+        std::vector<int64_t> roots,
+        int64_t max_depth) {
+    return this->mstBFS(graph, roots, max_depth);
+}
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::primDFS(
+        G &graph,
+        std::vector<int64_t> roots,
+        int64_t max_depth) {
+    return this->mstDFS(graph, roots, max_depth);
+}
+
+template <class G>
+std::vector<pgr_mst_rt>
+Pgr_prim<G>::primDD(
+        G &graph,
+        std::vector<int64_t> roots,
+        double distance) {
+    return this->mstDD(graph, roots, distance);
+}
+
+
 
 }  // namespace functions
 }  // namespace pgrouting

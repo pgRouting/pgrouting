@@ -27,12 +27,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_articulationPoints(
-    TEXT,                       -- edges_sql
-        OUT seq INTEGER,        -- seq
-    OUT node BIGINT)            -- the number of the node
+-------------------------
+-- pgr_articulationPoints
+-------------------------
 
+CREATE OR REPLACE FUNCTION _pgr_articulationPoints(
+    edges_sql TEXT,
+
+    OUT seq INTEGER,
+    OUT node BIGINT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'articulationPoints'
 LANGUAGE c IMMUTABLE STRICT;
 
+
+CREATE OR REPLACE FUNCTION pgr_articulationPoints(
+    TEXT,   -- edges_sql (required)
+
+    OUT seq INTEGER,
+    OUT node BIGINT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_articulationPoints(_pgr_get_statement($1));
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_articulationPoints(TEXT)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION pgr_articulationPoints(TEXT) 
+IS'pgr_articulationPoints
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_articulationPoints.html
+';
