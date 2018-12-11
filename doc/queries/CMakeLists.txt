@@ -63,6 +63,7 @@ SET(LOCAL_FILES
     doc-pgr_primDFS.queries
     doc-pgr_primBFS.queries
     doc-pgr_randomSpanTree.queries
+    doc-pgr_extractVertices.queries
     )
 
 foreach (f ${LOCAL_FILES})
