@@ -15,6 +15,7 @@ SET(LOCAL_FILES
     doc-pgr_alphashape.queries
     doc-pgr_createTopology.queries
     doc-pgr_createVerticesTable.queries
+    doc-pgr_analyzeOneWay.queries
     doc-pgr_eucledianTSP.queries
     doc-pgr_TSP.queries
     doc-pickDeliverEuclidean.queries

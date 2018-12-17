@@ -91,27 +91,9 @@ The structure of the vertices table is:
 Additional Examples
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
-
-	SELECT pgr_analyzeOneWay('edge_table',
-        ARRAY['', 'B', 'TF'],
-        ARRAY['', 'B', 'FT'],
-        ARRAY['', 'B', 'FT'],
-        ARRAY['', 'B', 'TF'],
-        oneway:='dir');
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analyzeGraph('edge_table','{"",B,TF}','{"",B,FT}','{"",B,FT}','{"",B,TF}','dir','source','target',t)
-	NOTICE:  Analyzing graph for one way street errors.
-	NOTICE:  Analysis 25% complete ...
-	NOTICE:  Analysis 50% complete ...
-	NOTICE:  Analysis 75% complete ...
-	NOTICE:  Analysis 100% complete ...
-	NOTICE:  Found 0 potential problems in directionality
-
-	pgr_analyzeOneWay
-	-------------------
-	OK
-	(1 row)
+.. literalinclude:: doc-pgr_analyzeOneWay.queries
+   :start-after: --q1
+   :end-before: --q1.1
 
 The queries use the :doc:`sampledata` network.
 
