@@ -64,11 +64,9 @@ Pgrouting Concepts
 :doc:`topology-functions`
 ===============================================================================
 
--  :doc:`pgr_createTopology` -  to create a topology based on the geometry.
--  :doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on the source and target information.
--  :doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table.
--  :doc:`pgr_analyzeOneWay` - to analyze directionality of the edges.
--  :doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table.
+.. include:: topology-functions.rst
+   :start-after: topology_index_start
+   :end-before: topology_index_end
 
 .. toctree::
    :hidden:

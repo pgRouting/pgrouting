@@ -5,6 +5,7 @@ SET(LOCAL_FILES
     analyzeOneway.sql
     createverticestable.sql
     nodeNetwork.sql
+    extractVertices.sql
     )
 
 foreach (f ${LOCAL_FILES})
