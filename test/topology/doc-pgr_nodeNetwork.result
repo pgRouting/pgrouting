@@ -126,7 +126,7 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 --q6.1
---7
+--q7
 alter table edge_table drop column if exists old_id;
 NOTICE:  column "old_id" of relation "edge_table" does not exist, skipping
 ALTER TABLE
