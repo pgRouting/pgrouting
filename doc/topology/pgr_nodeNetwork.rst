@@ -63,139 +63,39 @@ Examples
 
 Let's create the topology for the data in :doc:`sampledata`
 
-.. code-block:: sql
-
-	SELECT pgr_createTopology('edge_table', 0.001);
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','true')
-	NOTICE:  Performing checks, pelase wait .....
-	NOTICE:  Creating Topology, Please wait...
-	NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
-	NOTICE:  Rows with NULL geometry or NULL id: 0
-	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
-	NOTICE:  ----------------------------------------------
- 	pgr_createtopology
-	--------------------
- 	 OK
-	(1 row)
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q1
+   :end-before: --q1.1
 
 Now we can analyze the network.
 
-.. code-block:: sql
-
-	SELECT pgr_analyzegraph('edge_table', 0.001);
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
-	NOTICE:  Performing checks, pelase wait...
-	NOTICE:  Analyzing for dead ends. Please wait...
-	NOTICE:  Analyzing for gaps. Please wait...
-	NOTICE:  Analyzing for isolated edges. Please wait...
-	NOTICE:  Analyzing for ring geometries. Please wait...
-	NOTICE:  Analyzing for intersections. Please wait...
-	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-	NOTICE:                    Isolated segments: 2
-	NOTICE:                            Dead ends: 7
-	NOTICE:  Potential gaps found near dead ends: 1
-	NOTICE:               Intersections detected: 1
-	NOTICE:                      Ring geometries: 0
- 	pgr_analyzegraph
-	------------------
- 	 OK
-	(1 row)
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q2
+   :end-before: --q2.1
 
 The analysis tell us that the network has a gap and an intersection. We try to fix the problem using:
 
-.. code-block:: sql
-
-	SELECT pgr_nodeNetwork('edge_table', 0.001);
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_nodeNetwork('edge_table',0.001,'the_geom','id','noded')
-	NOTICE:  Performing checks, pelase wait .....
-	NOTICE:  Processing, pelase wait .....
-	NOTICE:    Split Edges: 3
-	NOTICE:   Untouched Edges: 15
-	NOTICE:       Total original Edges: 18
-	NOTICE:   Edges generated: 6
-	NOTICE:   Untouched Edges: 15
-	NOTICE:         Total New segments: 21
-	NOTICE:   New Table: public.edge_table_noded
-	NOTICE:  ----------------------------------
- 	pgr_nodenetwork
-	-----------------
- 	 OK
-	(1 row)
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q3
+   :end-before: --q3.1
 
 Inspecting the generated table, we can see that edges 13,14 and 18 has been segmented
 
-.. code-block:: sql
-
-	SELECT old_id,sub_id FROM edge_table_noded ORDER BY old_id,sub_id;
- 	 old_id | sub_id
-	--------+--------
-  	 1      |      1
-  	 2      |      1
-  	 3      |      1
-  	 4      |      1
-  	 5      |      1
-  	 6      |      1
-  	 7      |      1
-  	 8      |      1
-  	 9      |      1
- 	 10     |      1
- 	 11     |      1
- 	 12     |      1
- 	 13     |      1
- 	 13     |      2
- 	 14     |      1
- 	 14     |      2
- 	 15     |      1
- 	 16     |      1
- 	 17     |      1
- 	 18     |      1
- 	 18     |      2
-	(21 rows)
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q4
+   :end-before: --q4.1
 
 We can create the topology of the new network
 
-.. code-block:: sql
-
-	SELECT pgr_createTopology('edge_table_noded', 0.001);
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_createTopology('edge_table_noded',0.001,'the_geom','id','source','target','true')
-	NOTICE:  Performing checks, pelase wait .....
-	NOTICE:  Creating Topology, Please wait...
-	NOTICE:  -------------> TOPOLOGY CREATED FOR  21 edges
-	NOTICE:  Rows with NULL geometry or NULL id: 0
-	NOTICE:  Vertices table for table public.edge_table_noded is: public.edge_table_noded_vertices_pgr
-	NOTICE:  ----------------------------------------------
- 	pgr_createtopology
-	--------------------
- 	 OK
-	(1 row)
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q5
+   :end-before: --q5.1
 
 Now let's analyze the new topology
 
-.. code-block:: sql
-
-	SELECT pgr_analyzegraph('edge_table_noded', 0.001);
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analyzeGraph('edge_table_noded',0.001,'the_geom','id','source','target','true')
-	NOTICE:  Performing checks, pelase wait...
-	NOTICE:  Analyzing for dead ends. Please wait...
-	NOTICE:  Analyzing for gaps. Please wait...
-	NOTICE:  Analyzing for isolated edges. Please wait...
-	NOTICE:  Analyzing for ring geometries. Please wait...
-	NOTICE:  Analyzing for intersections. Please wait...
-	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-	NOTICE:                    Isolated segments: 0
-	NOTICE:                            Dead ends: 6
-	NOTICE:  Potential gaps found near dead ends: 0
-	NOTICE:               Intersections detected: 0
-	NOTICE:                      Ring geometries: 0
- 	pgr_createtopology
-	--------------------
- 	 OK
-	(1 row)
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q6
+   :end-before: --q6.1
 
 Images
 -------------------------------------------------------------------------------
@@ -267,114 +167,33 @@ Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 i
 - Add a column old_id into edge_table, this column is going to keep track the id of the original edge
 - Insert only the segmented edges, that is, the ones whose max(sub_id) >1
 
-.. code-block:: sql
-
-	alter table edge_table drop column if exists old_id;
-	alter table edge_table add column old_id integer;
-	insert into edge_table (old_id,dir,cost,reverse_cost,the_geom)
-   		(with
-       		segmented as (select old_id,count(*) as i from edge_table_noded group by old_id)
-   		select  segments.old_id,dir,cost,reverse_cost,segments.the_geom
-       			from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id)
-       			where edges.id in (select old_id from segmented where i>1) );
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q7
+   :end-before: --q7.1
 
 We recreate the topology:
 
-.. code-block:: sql
-
-	SELECT pgr_createTopology('edge_table', 0.001);
-
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','true')
-	NOTICE:  Performing checks, pelase wait .....
-	NOTICE:  Creating Topology, Please wait...
-	NOTICE:  -------------> TOPOLOGY CREATED FOR  24 edges
-	NOTICE:  Rows with NULL geometry or NULL id: 0
-	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
-	NOTICE:  ----------------------------------------------
- 	pgr_createtopology
-	--------------------
- 	OK
-	(1 row)
-
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q8
+   :end-before: --q8.1
 
 To get the same analysis results as the topology of edge_table_noded, we do the following query:
 
-.. code-block:: sql
-
-	SELECT pgr_analyzegraph('edge_table', 0.001,rows_where:='id not in (select old_id from edge_table where old_id is not null)');
-
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target',
-                                   'id not in (select old_id from edge_table where old_id is not null)')
-	NOTICE:  Performing checks, pelase wait...
-	NOTICE:  Analyzing for dead ends. Please wait...
-	NOTICE:  Analyzing for gaps. Please wait...
-	NOTICE:  Analyzing for isolated edges. Please wait...
-	NOTICE:  Analyzing for ring geometries. Please wait...
-	NOTICE:  Analyzing for intersections. Please wait...
-	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-	NOTICE:                    Isolated segments: 0
-	NOTICE:                            Dead ends: 6
-	NOTICE:  Potential gaps found near dead ends: 0
-	NOTICE:               Intersections detected: 0
-	NOTICE:                      Ring geometries: 0
- 	pgr_createtopology
-	--------------------
- 	OK
-	(1 row)
-
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q9
+   :end-before: --q9.1
 
 To get the same analysis results as the original edge_table, we do the following query:
 
-.. code-block:: sql
-
-	SELECT pgr_analyzegraph('edge_table', 0.001,rows_where:='old_id is null')
-
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','old_id is null')
-	NOTICE:  Performing checks, pelase wait...
-	NOTICE:  Analyzing for dead ends. Please wait...
-	NOTICE:  Analyzing for gaps. Please wait...
-	NOTICE:  Analyzing for isolated edges. Please wait...
-	NOTICE:  Analyzing for ring geometries. Please wait...
-	NOTICE:  Analyzing for intersections. Please wait...
-	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-	NOTICE:                    Isolated segments: 2
-	NOTICE:                            Dead ends: 7
-	NOTICE:  Potential gaps found near dead ends: 1
-	NOTICE:               Intersections detected: 1
-	NOTICE:                      Ring geometries: 0
- 	pgr_createtopology
-	--------------------
- 	OK
-	(1 row)
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q10
+   :end-before: --q10.1
 
 Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 is an under pass and there is also a street level juction, and the same happens with edges 17 and 13.
 
-.. code-block:: sql
-
-	SELECT pgr_analyzegraph('edge_table', 0.001);
-
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
-	NOTICE:  Performing checks, pelase wait...
-	NOTICE:  Analyzing for dead ends. Please wait...
-	NOTICE:  Analyzing for gaps. Please wait...
-	NOTICE:  Analyzing for isolated edges. Please wait...
-	NOTICE:  Analyzing for ring geometries. Please wait...
-	NOTICE:  Analyzing for intersections. Please wait...
-	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-	NOTICE:                    Isolated segments: 0
-	NOTICE:                            Dead ends: 3
-	NOTICE:  Potential gaps found near dead ends: 0
-	NOTICE:               Intersections detected: 5
-	NOTICE:                      Ring geometries: 0
- 	pgr_createtopology
-	--------------------
- 	OK
-	(1 row)
-
+.. literalinclude:: doc-pgr_nodeNetwork.queries
+   :start-after: --q11
+   :end-before: --q11.1
 
 See Also
 -------------------------------------------------------------------------------
